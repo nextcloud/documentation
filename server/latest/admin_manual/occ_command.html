@@ -62,7 +62,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release_schedule.html">Maintenance and release schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdpr/index.html">GDPR compliance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="declarations/index.html">Declarations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
@@ -84,6 +84,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#enabling-autocompletion">Enabling autocompletion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#limitations-in-maintenance-mode">Limitations in maintenance mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging">Debugging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#command-reference">Command reference</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="occ_apps.html">Apps, background jobs &amp; config commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="occ_database.html">DAV &amp; database commands</a></li>
@@ -364,6 +365,25 @@ shell’s profile (eg. <code class="docutils literal notranslate"><span class="p
 </aside>
 </aside>
 </section>
+<section id="debugging">
+<span id="occ-debugging"></span><h2>Debugging<a class="headerlink" href="#debugging" title="Link to this heading"></a></h2>
+<p>Every <code class="docutils literal notranslate"><span class="pre">occ</span></code> command accepts the standard Symfony Console verbosity flags:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-v</span></code> — normal output (errors, warnings, and key messages)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-vv</span></code> — verbose output (additional progress detail)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-vvv</span></code> — debug output (full trace, useful for diagnosing command failures)</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span> <span class="o">--</span><span class="nb">all</span> <span class="o">-</span><span class="n">vv</span>
+</pre></div>
+</div>
+<p>To also enable debug-level log output from Nextcloud itself, set the
+<code class="docutils literal notranslate"><span class="pre">NC_loglevel</span></code> environment variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NC_loglevel</span><span class="o">=</span><span class="mi">0</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">status</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="configuration_server/logging_configuration.html"><span class="doc">Logging</span></a> for more on log levels.</p>
+</section>
 <section id="command-reference">
 <h2>Command reference<a class="headerlink" href="#command-reference" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
@@ -390,12 +410,17 @@ shell’s profile (eg. <code class="docutils literal notranslate"><span class="p
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="occ_files.html">Files commands</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="occ_files.html#federation-sync">Federation sync</a></li>
 <li class="toctree-l2"><a class="reference internal" href="occ_files.html#file-operations">File operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="occ_files.html#files-sharing">Files Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#object-store">Object store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#preview">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#trash-bin">Trash bin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#file-versions">File versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#file-sharing">File sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#federation-sync">Federation sync</a></li>
 <li class="toctree-l2"><a class="reference internal" href="occ_files.html#files-external">Files external</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#trashbin">Trashbin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#versions">Versions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="occ_files.html#integrity-check">Integrity check</a></li>
-<li class="toctree-l2"><a class="reference internal" href="occ_files.html#l10n-create-javascript-translation-files-for-apps">l10n, create JavaScript translation files for apps</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="occ_ldap.html">LDAP commands</a><ul>
@@ -410,19 +435,25 @@ shell’s profile (eg. <code class="docutils literal notranslate"><span class="p
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="occ_system.html">System &amp; maintenance commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#admin-delegation">Admin delegation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#background-jobs">Background jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#broadcast">Broadcast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#info">Info</a></li>
 <li class="toctree-l2"><a class="reference internal" href="occ_system.html#logging-commands">Logging commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="occ_system.html#maintenance-commands">Maintenance commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#oauth2">OAuth2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="occ_system.html#security">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#setup-checks">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#share-operations">Share operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#snowflake-ids">Snowflake IDs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="occ_system.html#status">Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="occ_system.html#trashbin">Trashbin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="occ_system.html#versions">Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#task-processing">Task processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#theming">Theming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#webhook-listeners">Webhook listeners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#workflows">Workflows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="occ_system.html#command-line-installation">Command line installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="occ_system.html#command-line-upgrade">Command line upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="occ_system.html#antivirus">Antivirus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="occ_system.html#setupchecks">Setupchecks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="occ_system.html#snowflake-ids">Snowflake IDs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="occ_system.html#share-operations">Share operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="occ_system.html#debugging">Debugging</a></li>
 </ul>
 </li>
 </ul>

@@ -87,6 +87,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#adding-translations">Adding translations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#testing-translations">Testing translations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#console-commands">Console commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#l10n-createjs">l10n:createjs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
@@ -471,6 +475,27 @@ For vue js code, see the javascript section.</p>
 <h2>Testing translations<a class="headerlink" href="#testing-translations" title="Link to this heading"></a></h2>
 <p>You can use the query parameter <code class="docutils literal notranslate"><span class="pre">forceLanguage</span></code> to force a specific language for a web request (API or frontend). See <a class="reference internal" href="../client_apis/OCS/ocs-api-overview.html#api-force-language"><span class="std std-ref">Forcing language for a given call</span></a>.</p>
 </section>
+<section id="console-commands">
+<h2>Console commands<a class="headerlink" href="#console-commands" title="Link to this heading"></a></h2>
+<section id="l10n-createjs">
+<h3>l10n:createjs<a class="headerlink" href="#l10n-createjs" title="Link to this heading"></a></h3>
+<p>Generate JavaScript translation files for an app from its <code class="docutils literal notranslate"><span class="pre">l10n/</span></code> source
+files. Pass the app ID and optionally a specific language code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">l10n</span><span class="p">:</span><span class="n">createjs</span> <span class="n">myapp</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">l10n</span><span class="p">:</span><span class="n">createjs</span> <span class="n">myapp</span> <span class="n">de</span>
+</pre></div>
+</div>
+<p>When no language is specified, JavaScript files are generated for all
+available languages. The output files are written to the app’s <code class="docutils literal notranslate"><span class="pre">l10n/</span></code>
+directory as <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;.js</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;.json</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command is intended for development and CI pipelines. In production,
+JavaScript translation files are generated automatically during app
+installation and updates.</p>
+</div>
+</section>
+</section>
 </section>
 
 
@@ -485,7 +510,7 @@ For vue js code, see the javascript section.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Apr 25, 2026.
+      <span class="lastupdated">Last updated on Apr 26, 2026.
       </span></p>
   </div>
 

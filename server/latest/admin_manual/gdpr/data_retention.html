@@ -1,0 +1,443 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data retention &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e7c79d26" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/gdpr/data_retention.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Helpful apps" href="helpful_apps.html" />
+    <link rel="prev" title="Responding to data subject requests" href="subject_rights.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">GDPR compliance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="personal_data.html">Personal data stored</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subject_rights.html">Responding to data subject requests</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data retention</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#trash-bin">Trash bin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-versions">File versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#activity-log">Activity log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#remember-me-tokens">Remember-me tokens</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#session-lifetime">Session lifetime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#server-and-web-server-logs">Server and web server logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary-table">Summary table</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="helpful_apps.html">Helpful apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookies.html">Cookies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">GDPR compliance</a></li>
+      <li class="breadcrumb-item active">Data retention</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/gdpr/data_retention.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-retention">
+<span id="gdpr-data-retention"></span><h1>Data retention<a class="headerlink" href="#data-retention" title="Link to this heading"></a></h1>
+<p>Nextcloud retains several categories of data beyond the point when a user
+considers them “deleted.” This page describes the configurable retention
+periods and how to align them with your data minimisation obligations under
+GDPR Article 5(1)(e).</p>
+<p>All settings below are configured in <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code>. See
+<a class="reference internal" href="../configuration_server/config_sample_php_parameters.html"><span class="doc">Configuration Parameters</span></a> for the full
+parameter reference.</p>
+<section id="trash-bin">
+<h2>Trash bin<a class="headerlink" href="#trash-bin" title="Link to this heading"></a></h2>
+<p>When a user deletes a file it moves to the trash bin. The retention policy
+is controlled by <code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;trashbin_retention_obligation&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Available values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">auto</span></code> (default) — keep deleted files for at least 30 days; remove sooner
+if the user is running low on quota.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">D1,</span> <span class="pre">auto</span></code> — keep for at least D1 days; remove sooner if quota is low.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">auto,</span> <span class="pre">D2</span></code> — remove sooner if quota is low; guarantee deletion after D2
+days regardless.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">D1,</span> <span class="pre">D2</span></code> — keep for at least D1 days; guarantee deletion after D2 days.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">disabled</span></code> — never automatically empty the trash bin.</p></li>
+</ul>
+<p>For GDPR purposes, <code class="docutils literal notranslate"><span class="pre">disabled</span></code> means deleted files are retained indefinitely
+— avoid it unless you have a specific reason. Setting a firm maximum (e.g.
+<code class="docutils literal notranslate"><span class="pre">'30,</span> <span class="pre">60'</span></code>) gives users a predictable deletion guarantee.</p>
+<p>Users with the appropriate permissions can empty their own trash bin at any
+time from the Files app, or an administrator can run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">cleanup</span> <span class="o">&lt;</span><span class="n">uid</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>To expire files across all users according to the current policy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">expire</span>
+</pre></div>
+</div>
+</section>
+<section id="file-versions">
+<h2>File versions<a class="headerlink" href="#file-versions" title="Link to this heading"></a></h2>
+<p>The Versions app stores previous copies of modified files. Retention is
+controlled by <code class="docutils literal notranslate"><span class="pre">versions_retention_obligation</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;versions_retention_obligation&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Available values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">auto</span></code> (default) — versions are pruned according to a built-in schedule
+(more versions kept for recent changes, fewer for older ones). See
+<a class="reference internal" href="../configuration_files/file_versioning.html"><span class="doc">Controlling file versions and aging</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">D,</span> <span class="pre">auto</span></code> — keep versions for at least D days, then apply the automatic
+schedule.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">auto,</span> <span class="pre">D</span></code> — apply the automatic schedule; guarantee deletion after D days.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">D1,</span> <span class="pre">D2</span></code> — keep for at least D1 days; guarantee deletion after D2 days.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">disabled</span></code> — never automatically remove versions.</p></li>
+</ul>
+<p>To remove versions immediately:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span> <span class="o">&lt;</span><span class="n">uid</span><span class="o">&gt;</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">expire</span> <span class="o">&lt;</span><span class="n">uid</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="activity-log">
+<h2>Activity log<a class="headerlink" href="#activity-log" title="Link to this heading"></a></h2>
+<p>The activity log records file and sharing events per user. Entries older
+than the configured number of days are deleted by the daily cron job:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;activity_expire_days&#39;</span> <span class="o">=&gt;</span> <span class="mi">365</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Set this to a lower value to reduce the personal data footprint. Setting it
+to <code class="docutils literal notranslate"><span class="pre">0</span></code> disables automatic expiry (entries are kept indefinitely).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The activity log is distinct from the system audit log produced by the
+<code class="docutils literal notranslate"><span class="pre">admin_audit</span></code> app. Audit log retention is controlled by your log
+rotation configuration, not by this setting.</p>
+</div>
+</section>
+<section id="remember-me-tokens">
+<h2>Remember-me tokens<a class="headerlink" href="#remember-me-tokens" title="Link to this heading"></a></h2>
+<p>When users select “Remember me” at login, Nextcloud stores a long-lived
+authentication cookie. Its lifetime is controlled by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;remember_login_cookie_lifetime&#39;</span> <span class="o">=&gt;</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">15</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>The default is 15 days. Reducing this value means users must re-authenticate
+more frequently but limits the exposure window for stolen tokens.</p>
+</section>
+<section id="session-lifetime">
+<h2>Session lifetime<a class="headerlink" href="#session-lifetime" title="Link to this heading"></a></h2>
+<p>Active sessions expire when the browser is closed (session cookies). There
+is no server-side session expiry setting in core; sessions are invalidated
+when the user logs out or an administrator revokes them via:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">auth</span><span class="o">-</span><span class="n">tokens</span><span class="p">:</span><span class="n">delete</span> <span class="o">&lt;</span><span class="n">uid</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="server-and-web-server-logs">
+<h2>Server and web server logs<a class="headerlink" href="#server-and-web-server-logs" title="Link to this heading"></a></h2>
+<p>Web server access logs and the Nextcloud application log contain IP addresses
+and other personal data. Storing them indefinitely is not considered legitimate
+usage under GDPR. Rotate logs regularly and encrypt archived logs to protect
+the personal data they contain.</p>
+<p>A minimal <code class="docutils literal notranslate"><span class="pre">logrotate</span></code> configuration that rotates daily and keeps logs for a
+limited period:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/var/log/nextcloud/*.log {
+    daily
+    rotate 90
+    compress
+    shred
+    missingok
+    notifempty
+}
+</pre></div>
+</div>
+<p>Adjust the <code class="docutils literal notranslate"><span class="pre">rotate</span></code> value to match your legal obligations and security
+requirements. If you are legally required to retain logs for a specific period
+(e.g. for compliance with national cybersecurity laws), that overrides the
+minimisation principle — but you must disclose the retention period in your
+privacy policy.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nextcloud’s brute-force protection stores IP addresses of failed logins, but
+these are automatically deleted after 24 hours or upon a successful login and
+do not require manual management.</p>
+</div>
+</section>
+<section id="backups">
+<h2>Backups<a class="headerlink" href="#backups" title="Link to this heading"></a></h2>
+<p>When you fulfil a right-to-erasure request by deleting an account, the data
+also exists in any backups you hold. GDPR’s right to erasure extends to backup
+copies unless retaining them is required by law or necessary for legal defence.</p>
+<p>Practical approaches:</p>
+<ul class="simple">
+<li><p><strong>Time-limited backups</strong> — set a backup retention policy (e.g. 90 days) so
+that personal data is eventually purged from backups automatically, even if
+you cannot remove it on demand.</p></li>
+<li><p><strong>Isolated backups</strong> — ensure backups can never be restored to a live
+production instance without a deliberate recovery procedure, so that
+deleted data cannot accidentally reappear.</p></li>
+<li><p><strong>Encrypted backups</strong> — encrypt backup media so that the data cannot be read
+if the media is lost or transferred.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Removing a specific user’s data from an existing backup is technically
+complex (often impractical for tape or snapshot-based backups) and may
+require rethinking your backup strategy if you are subject to frequent
+erasure requests at scale.</p>
+</div>
+</section>
+<section id="summary-table">
+<h2>Summary table<a class="headerlink" href="#summary-table" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Data category</p></th>
+<th class="head"><p>Config key</p></th>
+<th class="head"><p>Default retention</p></th>
+<th class="head"><p>Minimum recommended</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Trash bin</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code></p></td>
+<td><p>30 days (auto)</p></td>
+<td><p>Set a firm maximum (e.g. <code class="docutils literal notranslate"><span class="pre">auto,</span> <span class="pre">60</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>File versions</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">versions_retention_obligation</span></code></p></td>
+<td><p>auto schedule</p></td>
+<td><p>Set a firm maximum (e.g. <code class="docutils literal notranslate"><span class="pre">auto,</span> <span class="pre">180</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p>Activity log</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">activity_expire_days</span></code></p></td>
+<td><p>365 days</p></td>
+<td><p>90–180 days</p></td>
+</tr>
+<tr class="row-odd"><td><p>Remember-me tokens</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">remember_login_cookie_lifetime</span></code></p></td>
+<td><p>15 days</p></td>
+<td><p>7–15 days</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="subject_rights.html" class="btn btn-neutral float-left" title="Responding to data subject requests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="helpful_apps.html" class="btn btn-neutral float-right" title="Helpful apps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

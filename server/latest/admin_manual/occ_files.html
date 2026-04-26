@@ -62,7 +62,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release_schedule.html">Maintenance and release schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdpr/index.html">GDPR compliance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="declarations/index.html">Declarations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
@@ -81,17 +81,23 @@
 <li class="toctree-l2"><a class="reference internal" href="occ_command.html#running-occ">Running occ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="occ_command.html#enabling-autocompletion">Enabling autocompletion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="occ_command.html#limitations-in-maintenance-mode">Limitations in maintenance mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html#debugging">Debugging</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="occ_command.html#command-reference">Command reference</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="occ_apps.html">Apps, background jobs &amp; config commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="occ_database.html">DAV &amp; database commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="occ_encryption.html">Encryption commands</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Files commands</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#federation-sync">Federation sync</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-operations">File operations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#files-sharing">Files Sharing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#object-store">Object store</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preview">Preview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trash-bin">Trash bin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-versions">File versions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-sharing">File sharing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#federation-sync">Federation sync</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#files-external">Files external</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trashbin">Trashbin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#versions">Versions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#integrity-check">Integrity check</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#l10n-create-javascript-translation-files-for-apps">l10n, create JavaScript translation files for apps</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="occ_ldap.html">LDAP commands</a></li>
@@ -177,304 +183,1021 @@
            <div itemprop="articleBody">
              
   <section id="files-commands">
-<h1>Files commands<a class="headerlink" href="#files-commands" title="Link to this heading"></a></h1>
-<p>Encryption commands have moved to <a class="reference internal" href="occ_encryption.html"><span class="doc">Encryption commands</span></a>.</p>
-<section id="federation-sync">
-<span id="federation-sync-label"></span><h2>Federation sync<a class="headerlink" href="#federation-sync" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This command is only available when the “Federation” app (<code class="docutils literal notranslate"><span class="pre">federation</span></code>) is
-enabled.</p>
-</div>
-<p>Synchronize the addressbooks of all federated Nextcloud servers:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">federation</span><span class="p">:</span><span class="n">sync</span><span class="o">-</span><span class="n">addressbooks</span>  <span class="n">Synchronizes</span> <span class="n">addressbooks</span> <span class="n">of</span> <span class="nb">all</span>
-                              <span class="n">federated</span> <span class="n">clouds</span>
+<span id="file-operations-label"></span><h1>Files commands<a class="headerlink" href="#files-commands" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#file-operations" id="id6">File operations</a></p></li>
+<li><p><a class="reference internal" href="#object-store" id="id7">Object store</a></p></li>
+<li><p><a class="reference internal" href="#preview" id="id8">Preview</a></p></li>
+<li><p><a class="reference internal" href="#trash-bin" id="id9">Trash bin</a></p></li>
+<li><p><a class="reference internal" href="#file-versions" id="id10">File versions</a></p></li>
+<li><p><a class="reference internal" href="#file-sharing" id="id11">File sharing</a></p></li>
+<li><p><a class="reference internal" href="#federation-sync" id="id12">Federation sync</a></p></li>
+<li><p><a class="reference internal" href="#files-external" id="id13">Files external</a></p></li>
+<li><p><a class="reference internal" href="#trashbin" id="id14">Trashbin</a></p></li>
+<li><p><a class="reference internal" href="#versions" id="id15">Versions</a></p></li>
+<li><p><a class="reference internal" href="#integrity-check" id="id16">Integrity check</a></p></li>
+</ul>
+</nav>
+<p>The <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands in this section cover day-to-day file management,
+storage maintenance, and sharing administration. They let you scan and
+repair the file cache, move or delete files on behalf of users, manage
+trash and version history, configure external storage mounts, inspect
+object store contents, and verify app integrity from the command line.</p>
+<p>Several sections require specific apps to be enabled. All of the following
+are shipped with Nextcloud and can be enabled in the Apps menu:</p>
+<ul class="simple">
+<li><p><strong>Trash bin</strong> commands require the <strong>Deleted files</strong> app (<code class="docutils literal notranslate"><span class="pre">files_trashbin</span></code>) — enabled by default</p></li>
+<li><p><strong>File versions</strong> commands require the <strong>Versions</strong> app (<code class="docutils literal notranslate"><span class="pre">files_versions</span></code>) — enabled by default</p></li>
+<li><p><strong>Federation sync</strong> requires the <strong>Federation</strong> app (<code class="docutils literal notranslate"><span class="pre">federation</span></code>) — enabled by default</p></li>
+<li><p><strong>External storage</strong> commands require the <strong>External storage support</strong> app (<code class="docutils literal notranslate"><span class="pre">files_external</span></code>) — not enabled by default</p></li>
+</ul>
+<section id="file-operations">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">File operations</a><a class="headerlink" href="#file-operations" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">files</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">cleanup</span>                        <span class="n">remove</span> <span class="n">file</span> <span class="n">cache</span> <span class="n">entries</span> <span class="k">with</span> <span class="n">no</span> <span class="n">matching</span> <span class="n">storage</span> <span class="n">entry</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">copy</span>                           <span class="n">copy</span> <span class="n">a</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">delete</span>                         <span class="n">delete</span> <span class="n">a</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">get</span>                            <span class="n">get</span> <span class="n">the</span> <span class="n">contents</span> <span class="n">of</span> <span class="n">a</span> <span class="n">file</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">mount</span><span class="p">:</span><span class="nb">list</span>                     <span class="nb">list</span> <span class="nb">all</span> <span class="n">mounts</span> <span class="k">for</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">mount</span><span class="p">:</span><span class="n">refresh</span>                  <span class="n">refresh</span> <span class="n">the</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">mounts</span> <span class="k">for</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">move</span>                           <span class="n">move</span> <span class="n">a</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">put</span>                            <span class="n">write</span> <span class="n">content</span> <span class="n">to</span> <span class="n">a</span> <span class="n">file</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">reminders</span>                      <span class="nb">list</span> <span class="n">file</span> <span class="n">reminders</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">repair</span><span class="o">-</span><span class="n">tree</span>                    <span class="n">repair</span> <span class="n">malformed</span> <span class="n">filesystem</span> <span class="n">tree</span> <span class="n">structures</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">sanitize</span><span class="o">-</span><span class="n">filenames</span>             <span class="n">rename</span> <span class="n">files</span> <span class="n">that</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">match</span> <span class="n">the</span> <span class="n">current</span> <span class="n">filename</span> <span class="n">constraints</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">scan</span>                           <span class="n">rescan</span> <span class="n">the</span> <span class="n">filesystem</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">scan</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">data</span>                  <span class="n">rescan</span> <span class="n">the</span> <span class="n">AppData</span> <span class="n">folder</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">transfer</span><span class="o">-</span><span class="n">ownership</span>             <span class="n">transfer</span> <span class="nb">all</span> <span class="n">files</span> <span class="ow">and</span> <span class="n">shares</span> <span class="kn">from</span><span class="w"> </span><span class="nn">one</span> <span class="n">user</span> <span class="n">to</span> <span class="n">another</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">windows</span><span class="o">-</span><span class="n">compatible</span><span class="o">-</span><span class="n">filenames</span>   <span class="n">toggle</span> <span class="n">enforcement</span> <span class="n">of</span> <span class="n">Windows</span><span class="o">-</span><span class="n">compatible</span> <span class="n">filenames</span>
 </pre></div>
 </div>
-<p>In Nextcloud, servers connected with federation shares can share user
-address books, and auto-complete usernames in share dialogs. Use this command
-to synchronize federated servers:</p>
+<section id="files-cleanup">
+<h3>files:cleanup<a class="headerlink" href="#files-cleanup" title="Link to this heading"></a></h3>
+<p>Remove all file cache entries that have no matching entry in the storage
+table. Run this after removing orphaned storage records or after a migration
+that left the file cache in an inconsistent state:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">cleanup</span>
+</pre></div>
+</div>
+</section>
+<section id="files-copy">
+<h3>files:copy<a class="headerlink" href="#files-copy" title="Link to this heading"></a></h3>
+<p>Copy a file or folder within Nextcloud. Source and target accept either a
+Nextcloud path or a numeric file ID:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">copy</span> <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Photos</span> \
+  <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Photos</span><span class="o">-</span><span class="n">backup</span>
+</pre></div>
+</div>
+<p>If the target path already exists and is a folder, the source is copied
+into it (standard cp behaviour). Use <code class="docutils literal notranslate"><span class="pre">--no-target-directory</span></code> / <code class="docutils literal notranslate"><span class="pre">-T</span></code> to
+overwrite the target folder instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">copy</span> <span class="o">-</span><span class="n">T</span> <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Photos</span> \
+  <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Photos</span><span class="o">-</span><span class="n">backup</span>
+</pre></div>
+</div>
+<p>If the target exists the command asks for confirmation. Use <code class="docutils literal notranslate"><span class="pre">--force</span></code> /
+<code class="docutils literal notranslate"><span class="pre">-f</span></code> to skip the prompt and suppress type-mismatch warnings.</p>
+</section>
+<section id="files-delete">
+<h3>files:delete<a class="headerlink" href="#files-delete" title="Link to this heading"></a></h3>
+<p>Delete a file or folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">delete</span> <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">old</span><span class="o">-</span><span class="n">draft</span><span class="o">.</span><span class="n">pdf</span>
+</pre></div>
+</div>
+<p>The command asks for confirmation before deleting. Use <code class="docutils literal notranslate"><span class="pre">--force</span></code> / <code class="docutils literal notranslate"><span class="pre">-f</span></code>
+to skip the prompt.</p>
+<p>If the path points to the root of a share received by a user, the command
+asks whether to unshare (remove the user’s access) rather than delete the
+underlying file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo -E -u www-data php occ files:delete /layla/files/Shared-Folder
+  /layla/files/Shared-Folder in a shared file, do you want to unshare
+  the file from layla instead of deleting the source file? [Y/n]
+</pre></div>
+</div>
+<p>When the file is accessible by multiple users, the command lists all
+affected users and asks for confirmation before proceeding.</p>
+</section>
+<section id="files-get">
+<h3>files:get<a class="headerlink" href="#files-get" title="Link to this heading"></a></h3>
+<p>Download a file from Nextcloud to a local path. The source argument accepts
+either a Nextcloud path or a numeric file ID:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">get</span> <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span> \
+  <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span>
+</pre></div>
+</div>
+<p>Omit the output path (or pass <code class="docutils literal notranslate"><span class="pre">-</span></code>) to write to standard output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">get</span> <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span> <span class="o">-</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Writing binary files to a terminal can corrupt your terminal session.
+Nextcloud will refuse to write binary content to STDOUT unless you
+explicitly pass <code class="docutils literal notranslate"><span class="pre">-</span></code> as the output path.</p>
+</div>
+</section>
+<section id="files-mount-list">
+<h3>files:mount:list<a class="headerlink" href="#files-mount-list" title="Link to this heading"></a></h3>
+<p>List all registered mounts for a user, including mount point, storage ID,
+provider, and whether the mount is still actively provided:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">mount</span><span class="p">:</span><span class="nb">list</span> <span class="n">layla</span>
+<span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="p">:</span> <span class="n">local</span><span class="p">::</span><span class="n">home</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span>
+        <span class="o">-</span> <span class="n">provider</span><span class="p">:</span> <span class="n">OC</span>\<span class="n">Files</span>\<span class="n">Mount</span>\<span class="n">LocalRootMountProvider</span>
+        <span class="o">-</span> <span class="n">storage</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="o">-</span> <span class="n">root</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Stale mounts (registered in the cache but no longer provided) are marked
+with <code class="docutils literal notranslate"><span class="pre">registered</span> <span class="pre">but</span> <span class="pre">no</span> <span class="pre">longer</span> <span class="pre">provided</span></code>.</p>
+</section>
+<section id="files-mount-refresh">
+<h3>files:mount:refresh<a class="headerlink" href="#files-mount-refresh" title="Link to this heading"></a></h3>
+<p>Re-register all currently active mounts for a user in the mount cache.
+Useful after mount configuration changes that were not automatically
+picked up:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">mount</span><span class="p">:</span><span class="n">refresh</span> <span class="n">layla</span>
+  <span class="n">Registered</span> <span class="mi">3</span> <span class="n">mounts</span>
+</pre></div>
+</div>
+</section>
+<section id="files-move">
+<h3>files:move<a class="headerlink" href="#files-move" title="Link to this heading"></a></h3>
+<p>Move a file or folder within Nextcloud:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">move</span> \
+  <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">draft</span><span class="o">.</span><span class="n">pdf</span> \
+  <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">Archive</span><span class="o">/</span><span class="n">draft</span><span class="o">.</span><span class="n">pdf</span>
+</pre></div>
+</div>
+<p>If the target already exists, the command asks for confirmation. Use
+<code class="docutils literal notranslate"><span class="pre">--force</span></code> / <code class="docutils literal notranslate"><span class="pre">-f</span></code> to skip the prompt. If source and target are different
+types (file vs. folder), the target is deleted before the move; the command
+refuses if the target is a mount root or is not deletable.</p>
+</section>
+<section id="files-put">
+<h3>files:put<a class="headerlink" href="#files-put" title="Link to this heading"></a></h3>
+<p>Upload a local file to Nextcloud. The target argument accepts either a
+Nextcloud path or a numeric file ID of an existing file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">put</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span> \
+  <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span>
+</pre></div>
+</div>
+<p>Read from standard input by passing <code class="docutils literal notranslate"><span class="pre">-</span></code> as the source:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span> <span class="o">|</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">put</span> <span class="o">-</span> \
+  <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span>
+</pre></div>
+</div>
+</section>
+<section id="files-reminders">
+<h3>files:reminders<a class="headerlink" href="#files-reminders" title="Link to this heading"></a></h3>
+<p>List all file reminders across all users, or for a specific user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">reminders</span>
+<span class="o">+-------+---------+-------------------------------------------+---------------------------+</span>
+<span class="o">|</span> <span class="n">User</span>  <span class="o">|</span> <span class="n">File</span> <span class="n">Id</span> <span class="o">|</span> <span class="n">Path</span>                                      <span class="o">|</span> <span class="n">Due</span> <span class="n">Date</span> <span class="p">(</span><span class="n">UTC</span><span class="p">)</span>            <span class="o">|</span>
+<span class="o">+-------+---------+-------------------------------------------+---------------------------+</span>
+<span class="o">|</span> <span class="n">layla</span> <span class="o">|</span> <span class="mi">42</span>      <span class="o">|</span> <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span>         <span class="o">|</span> <span class="mi">2026</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">01</span><span class="n">T09</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="o">|</span>
+<span class="o">+-------+---------+-------------------------------------------+---------------------------+</span>
+
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">reminders</span> <span class="n">layla</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> for machine-readable output.</p>
+</section>
+<section id="files-repair-tree">
+<h3>files:repair-tree<a class="headerlink" href="#files-repair-tree" title="Link to this heading"></a></h3>
+<p>Repair entries in the file cache whose stored path does not match the path
+derived from their parent. This can cause files to appear in the wrong
+location: listing a folder shows the file, but accessing it by path fails.
+The command resets each affected entry to its correct path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">repair</span><span class="o">-</span><span class="n">tree</span>
+</pre></div>
+</div>
+</section>
+<section id="files-sanitize-filenames">
+<span id="occ-files-sanitize-filenames"></span><h3>files:sanitize-filenames<a class="headerlink" href="#files-sanitize-filenames" title="Link to this heading"></a></h3>
+<p>Rename files that do not comply with the current filename constraints (for
+example, after enabling <a class="reference internal" href="configuration_files/windows_compatible_filenames.html#windows-compatible-filenames"><span class="std std-ref">Windows-compatible filenames</span></a>). Run for all users or a specific user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">sanitize</span><span class="o">-</span><span class="n">filenames</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">sanitize</span><span class="o">-</span><span class="n">filenames</span> <span class="n">layla</span>
+</pre></div>
+</div>
+<p>Invalid characters are replaced with a space, underscore, or dash —
+whichever is allowed by the current constraints. Use
+<code class="docutils literal notranslate"><span class="pre">--char-replacement</span></code> to specify the replacement character when none of
+those defaults are permitted:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">sanitize</span><span class="o">-</span><span class="n">filenames</span> \
+  <span class="o">--</span><span class="n">char</span><span class="o">-</span><span class="n">replacement</span><span class="o">=</span><span class="n">_</span> <span class="n">layla</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> to preview the renames without making changes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">sanitize</span><span class="o">-</span><span class="n">filenames</span> <span class="o">--</span><span class="n">dry</span><span class="o">-</span><span class="n">run</span>
+</pre></div>
+</div>
+</section>
+<section id="files-scan">
+<span id="occ-files-scan-label"></span><h3>files:scan<a class="headerlink" href="#files-scan" title="Link to this heading"></a></h3>
+<p>Scan for new or changed files and update the file cache. Run for all users,
+a specific user, or a specific path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span> <span class="o">--</span><span class="nb">all</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span> <span class="n">layla</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span> <span class="n">layla</span> <span class="n">fred</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--path</span></code> to limit the scan to a specific directory. The path must
+include the user ID and <code class="docutils literal notranslate"><span class="pre">files/</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span> <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/layla/files/Photos&quot;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--path</span></code>, <code class="docutils literal notranslate"><span class="pre">--all</span></code>, and <code class="docutils literal notranslate"><span class="pre">[user_id]</span></code> options are mutually exclusive;
+only one may be given at a time.</p>
+<p>Additional options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--generate-metadata</span></code> — generate metadata (e.g. EXIF data) for scanned files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--unscanned</span></code> — only scan files marked as not yet fully scanned (useful when
+triggering the scan that the background job would otherwise run)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--shallow</span></code> — do not scan folders recursively</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--home-only</span></code> — skip external storages and shares, scan only the home storage</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--quiet</span></code> — suppress output; without this option, statistics are shown after the scan</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> — machine-readable output</p></li>
+</ul>
+<p>Use <code class="docutils literal notranslate"><span class="pre">-v</span></code> to see each file as it is processed. Verbosity levels <code class="docutils literal notranslate"><span class="pre">-vv</span></code> and
+<code class="docutils literal notranslate"><span class="pre">-vvv</span></code> are silently capped to <code class="docutils literal notranslate"><span class="pre">-v</span></code>.</p>
+<p>A background job runs every 10 minutes to scan files with an unknown size in
+the file cache, so routine rescans are handled automatically. Use this command
+when you need an immediate rescan — for example after copying files directly
+into the data directory, after a migration, or to investigate file cache
+inconsistencies. The background scan can be disabled by setting
+<code class="docutils literal notranslate"><span class="pre">'files_no_background_scan'</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code> in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>.</p>
+</section>
+<section id="files-scan-app-data">
+<h3>files:scan-app-data<a class="headerlink" href="#files-scan-app-data" title="Link to this heading"></a></h3>
+<p>Rescan the <code class="docutils literal notranslate"><span class="pre">appdata</span></code> directory and update the file cache for files shared
+between users (avatar images, file previews, cached CSS, etc.):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">data</span>
+</pre></div>
+</div>
+<p>Limit the scan to a specific appdata subdirectory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">data</span> <span class="n">preview</span>
+</pre></div>
+</div>
+<p>Unlike <code class="docutils literal notranslate"><span class="pre">files:scan</span></code>, there is no background job that automatically rescans
+appdata. Run this command manually when the appdata file cache may have become
+inconsistent; for example, after restoring appdata from a backup, after
+manually moving or copying files into the appdata directory, or when previews
+or avatars are not displaying correctly despite the underlying files being
+present on disk.</p>
+</section>
+<section id="files-transfer-ownership">
+<h3>files:transfer-ownership<a class="headerlink" href="#files-transfer-ownership" title="Link to this heading"></a></h3>
+<p>Transfer all files and shares from one user to another. Useful before
+removing a user account:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">transfer</span><span class="o">-</span><span class="n">ownership</span> <span class="n">layla</span> <span class="n">fred</span>
+</pre></div>
+</div>
+<p>The transferred files appear in a subdirectory inside the destination
+user’s home folder.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unless server-side encryption is enabled, the command initialises the
+destination user’s file system if they have not yet logged in. If the
+destination user’s data directory cannot be written to, the command
+reports: <code class="docutils literal notranslate"><span class="pre">unable</span> <span class="pre">to</span> <span class="pre">rename,</span> <span class="pre">destination</span> <span class="pre">directory</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">writable</span></code>.</p>
+</div>
+<p>If the destination user’s home is empty, use <code class="docutils literal notranslate"><span class="pre">--move</span></code> to move files
+directly into the root without creating a subdirectory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">transfer</span><span class="o">-</span><span class="n">ownership</span> <span class="o">--</span><span class="n">move</span> <span class="n">layla</span> <span class="n">fred</span>
+</pre></div>
+</div>
+<p>Transfer only a specific folder with <code class="docutils literal notranslate"><span class="pre">--path</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">transfer</span><span class="o">-</span><span class="n">ownership</span> \
+  <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;Documents/Project&quot;</span> <span class="n">layla</span> <span class="n">fred</span>
+</pre></div>
+</div>
+<p>Incoming shares (files shared with the source user) are not transferred by
+default because ownership remains with the original sharer. Transfer them
+with <code class="docutils literal notranslate"><span class="pre">--transfer-incoming-shares=1</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">transfer</span><span class="o">-</span><span class="n">ownership</span> \
+  <span class="o">--</span><span class="n">transfer</span><span class="o">-</span><span class="n">incoming</span><span class="o">-</span><span class="n">shares</span><span class="o">=</span><span class="mi">1</span> <span class="n">layla</span> <span class="n">fred</span>
+</pre></div>
+</div>
+<p>Set <code class="docutils literal notranslate"><span class="pre">'transferIncomingShares'</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code> in <code class="docutils literal notranslate"><span class="pre">config.php</span></code> to always
+transfer incoming shares. The command-line option takes precedence:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">transfer</span><span class="o">-</span><span class="n">ownership</span> \
+  <span class="o">--</span><span class="n">transfer</span><span class="o">-</span><span class="n">incoming</span><span class="o">-</span><span class="n">shares</span><span class="o">=</span><span class="mi">0</span> <span class="n">layla</span> <span class="n">fred</span>
+</pre></div>
+</div>
+<p>Users may also transfer files selectively via the web interface. See
+<a class="reference external" href="https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html">user documentation</a>
+for details.</p>
+</section>
+<section id="files-windows-compatible-filenames">
+<span id="occ-files-windows-filenames"></span><h3>files:windows-compatible-filenames<a class="headerlink" href="#files-windows-compatible-filenames" title="Link to this heading"></a></h3>
+<p>Toggle enforcement of <a class="reference internal" href="configuration_files/windows_compatible_filenames.html#windows-compatible-filenames"><span class="std std-ref">Windows-compatible filenames</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">windows</span><span class="o">-</span><span class="n">compatible</span><span class="o">-</span><span class="n">filenames</span> <span class="o">--</span><span class="n">enable</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">windows</span><span class="o">-</span><span class="n">compatible</span><span class="o">-</span><span class="n">filenames</span> <span class="o">--</span><span class="n">disable</span>
+</pre></div>
+</div>
+<p>After enabling, run <code class="docutils literal notranslate"><span class="pre">files:sanitize-filenames</span></code> to rename any existing
+files that do not comply.</p>
+</section>
+</section>
+<section id="object-store">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Object store</a><a class="headerlink" href="#object-store" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">files</span>
+ <span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="n">delete</span>                  <span class="n">delete</span> <span class="n">an</span> <span class="nb">object</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="nb">object</span> <span class="n">store</span>
+ <span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="n">get</span>                     <span class="n">get</span> <span class="n">the</span> <span class="n">contents</span> <span class="n">of</span> <span class="n">an</span> <span class="nb">object</span>
+ <span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="n">info</span>                    <span class="n">get</span> <span class="n">the</span> <span class="n">metadata</span> <span class="n">of</span> <span class="n">an</span> <span class="nb">object</span>
+ <span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="nb">list</span>                    <span class="nb">list</span> <span class="nb">all</span> <span class="n">objects</span> <span class="ow">in</span> <span class="n">the</span> <span class="nb">object</span> <span class="n">store</span>
+ <span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="n">orphans</span>                 <span class="nb">list</span> <span class="n">objects</span> <span class="ow">in</span> <span class="n">the</span> <span class="nb">object</span> <span class="n">store</span> <span class="k">with</span> <span class="n">no</span> <span class="n">matching</span> <span class="n">database</span> <span class="n">entry</span>
+ <span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="n">put</span>                     <span class="n">write</span> <span class="n">a</span> <span class="n">file</span> <span class="n">to</span> <span class="n">the</span> <span class="nb">object</span> <span class="n">store</span>
+</pre></div>
+</div>
+<p>These commands operate directly on the underlying object storage (S3, Swift,
+etc.) used as Nextcloud’s primary storage. They bypass the file cache and
+normal access controls.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>These commands manipulate objects directly in the object store. Writing
+or deleting objects that belong to existing files will corrupt those
+files. Use them only for debugging or recovery, never for routine file
+management.</p>
+</div>
+<section id="files-object-list">
+<h3>files:object:list<a class="headerlink" href="#files-object-list" title="Link to this heading"></a></h3>
+<p>List all objects in the object store. Requires the configured object store
+to support metadata listing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="nb">list</span>
+<span class="o">+------------+--------+-------------------------------+</span>
+<span class="o">|</span> <span class="n">URN</span>        <span class="o">|</span> <span class="n">Size</span>   <span class="o">|</span> <span class="n">Last</span> <span class="n">modified</span>                 <span class="o">|</span>
+<span class="o">+------------+--------+-------------------------------+</span>
+<span class="o">|</span> <span class="n">urn</span><span class="p">:</span><span class="n">oid</span><span class="p">:</span><span class="mi">1</span>  <span class="o">|</span> <span class="mi">512</span>    <span class="o">|</span> <span class="mi">2026</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="n">T00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="o">|</span>
+<span class="o">|</span> <span class="n">urn</span><span class="p">:</span><span class="n">oid</span><span class="p">:</span><span class="mi">42</span> <span class="o">|</span> <span class="mi">204800</span> <span class="o">|</span> <span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">01</span><span class="n">T12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>     <span class="o">|</span>
+<span class="o">+------------+--------+-------------------------------+</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--bucket</span></code> / <code class="docutils literal notranslate"><span class="pre">-b</span></code> if the bucket cannot be determined from the
+config. Use <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> for machine-readable output.</p>
+</section>
+<section id="files-object-get">
+<h3>files:object:get<a class="headerlink" href="#files-object-get" title="Link to this heading"></a></h3>
+<p>Download an object from the object store to a local file. Pass <code class="docutils literal notranslate"><span class="pre">-</span></code> as the
+output path to write to standard output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="n">get</span> <span class="n">urn</span><span class="p">:</span><span class="n">oid</span><span class="p">:</span><span class="mi">42</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">recovered</span><span class="o">.</span><span class="n">pdf</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="n">get</span> <span class="n">urn</span><span class="p">:</span><span class="n">oid</span><span class="p">:</span><span class="mi">42</span> <span class="o">-</span>
+</pre></div>
+</div>
+</section>
+<section id="files-object-info">
+<h3>files:object:info<a class="headerlink" href="#files-object-info" title="Link to this heading"></a></h3>
+<p>Show metadata (size, MIME type, last-modified date) for an object:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="n">info</span> <span class="n">urn</span><span class="p">:</span><span class="n">oid</span><span class="p">:</span><span class="mi">42</span>
+  <span class="o">-</span> <span class="n">size</span><span class="p">:</span> <span class="mi">200</span> <span class="n">KB</span>
+  <span class="o">-</span> <span class="n">mimetype</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">pdf</span>
+  <span class="o">-</span> <span class="n">mtime</span><span class="p">:</span> <span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">01</span><span class="n">T12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> for machine-readable output.</p>
+</section>
+<section id="files-object-put">
+<h3>files:object:put<a class="headerlink" href="#files-object-put" title="Link to this heading"></a></h3>
+<p>Upload a local file to the object store under the given object name. Read
+from standard input by passing <code class="docutils literal notranslate"><span class="pre">-</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="n">put</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">data</span><span class="o">.</span><span class="n">bin</span> <span class="n">urn</span><span class="p">:</span><span class="n">oid</span><span class="p">:</span><span class="mi">42</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="n">put</span> <span class="o">-</span> <span class="n">urn</span><span class="p">:</span><span class="n">oid</span><span class="p">:</span><span class="mi">42</span>
+</pre></div>
+</div>
+<p>If the object already corresponds to a file in the database, the command
+warns and asks for confirmation before overwriting. To update a file safely,
+use <code class="docutils literal notranslate"><span class="pre">files:put</span></code> with the file ID instead.</p>
+</section>
+<section id="files-object-delete">
+<h3>files:object:delete<a class="headerlink" href="#files-object-delete" title="Link to this heading"></a></h3>
+<p>Delete an object from the object store:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="n">delete</span> <span class="n">urn</span><span class="p">:</span><span class="n">oid</span><span class="p">:</span><span class="mi">42</span>
+</pre></div>
+</div>
+<p>If the object belongs to a file in the database, the command warns that
+deleting it will corrupt the file and shows the file ID so you can use
+<code class="docutils literal notranslate"><span class="pre">files:delete</span></code> instead for a clean removal.</p>
+</section>
+<section id="files-object-orphans">
+<h3>files:object:orphans<a class="headerlink" href="#files-object-orphans" title="Link to this heading"></a></h3>
+<p>List objects in the object store that have no matching entry in the file
+cache database. These are objects that Nextcloud no longer tracks and may
+be safe to remove after investigation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="n">orphans</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> for machine-readable output. Requires the
+object store to support metadata listing.</p>
+</section>
+</section>
+<section id="preview">
+<span id="occ-cleanup-previews"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink">Preview</a><a class="headerlink" href="#preview" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">preview</span>
+ <span class="n">preview</span><span class="p">:</span><span class="n">cleanup</span>                      <span class="n">remove</span> <span class="nb">all</span> <span class="n">generated</span> <span class="n">preview</span> <span class="n">files</span>
+</pre></div>
+</div>
+<section id="preview-cleanup">
+<h3>preview:cleanup<a class="headerlink" href="#preview-cleanup" title="Link to this heading"></a></h3>
+<p>Remove all generated preview files. Useful after changing preview
+configuration (sizes, quality, or supported file types), or on installations
+using object storage as primary storage where the preview folder cannot be
+deleted manually:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">preview</span><span class="p">:</span><span class="n">cleanup</span>
+  <span class="n">Previews</span> <span class="n">removed</span>
+</pre></div>
+</div>
+<p>After running this command, Nextcloud regenerates previews on demand as
+users access files.</p>
+<p>See <a class="reference internal" href="configuration_files/previews_configuration.html"><span class="doc">Previews configuration</span></a> for preview settings.</p>
+</section>
+</section>
+<section id="trash-bin">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Trash bin</a><a class="headerlink" href="#trash-bin" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">trashbin</span>
+ <span class="n">trashbin</span><span class="p">:</span><span class="n">cleanup</span>                     <span class="n">permanently</span> <span class="n">delete</span> <span class="nb">all</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">trash</span> <span class="k">for</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">trashbin</span><span class="p">:</span><span class="n">expire</span>                      <span class="n">expire</span> <span class="n">trash</span> <span class="n">items</span> <span class="n">that</span> <span class="n">exceed</span> <span class="n">the</span> <span class="n">configured</span> <span class="n">retention</span> <span class="n">period</span>
+ <span class="n">trashbin</span><span class="p">:</span><span class="n">size</span>                        <span class="n">show</span> <span class="ow">or</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">target</span> <span class="n">trash</span> <span class="nb">bin</span> <span class="n">size</span>
+</pre></div>
+</div>
+<section id="trashbin-size">
+<h3>trashbin:size<a class="headerlink" href="#trashbin-size" title="Link to this heading"></a></h3>
+<p>Show the current trash bin size target:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">size</span>
+  <span class="n">Default</span> <span class="n">size</span><span class="p">:</span> <span class="n">default</span> <span class="p">(</span><span class="mi">50</span><span class="o">%</span> <span class="n">of</span> <span class="n">available</span> <span class="n">space</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Show the effective size for a specific user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">size</span> <span class="o">--</span><span class="n">user</span> <span class="n">layla</span>
+  <span class="n">default</span> <span class="p">(</span><span class="mi">50</span><span class="o">%</span> <span class="n">of</span> <span class="n">available</span> <span class="n">space</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Set the global default target size. Accepts human-readable sizes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">size</span> <span class="mi">10</span><span class="n">GB</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changing the global default immediately triggers a cleanup of existing
+trash bins. A user’s trash may temporarily exceed the configured size
+until the user next moves a file to trash.</p>
+</div>
+<p>Set a per-user target size:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">size</span> <span class="o">--</span><span class="n">user</span> <span class="n">layla</span> <span class="mi">2</span><span class="n">GB</span>
+</pre></div>
+</div>
+</section>
+<section id="trashbin-cleanup">
+<h3>trashbin:cleanup<a class="headerlink" href="#trashbin-cleanup" title="Link to this heading"></a></h3>
+<p>Permanently delete all files in the trash bin for one or more users, or
+for all users:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">cleanup</span> <span class="n">layla</span>
+  <span class="n">Remove</span> <span class="n">deleted</span> <span class="n">files</span> <span class="n">of</span>   <span class="n">layla</span>
+
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">cleanup</span> <span class="n">layla</span> <span class="n">fred</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">cleanup</span> <span class="o">--</span><span class="nb">all</span><span class="o">-</span><span class="n">users</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> to see the amount of data freed per user. Either a user
+ID or <code class="docutils literal notranslate"><span class="pre">--all-users</span></code> must be given; the two cannot be combined.</p>
+</section>
+<section id="trashbin-expire">
+<h3>trashbin:expire<a class="headerlink" href="#trashbin-expire" title="Link to this heading"></a></h3>
+<p>Expire trash items that exceed the configured retention period, as defined
+by <code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code> in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">expire</span> <span class="n">layla</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">expire</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only runs when a custom retention period is configured. If
+Nextcloud is set to auto-expiration (the default), the command exits with
+an informational message and does nothing; auto-expiration is handled by
+the background job instead.</p>
+</div>
+<p>See <a class="reference internal" href="configuration_files/file_versioning.html"><span class="doc">Controlling file versions and aging</span></a> for retention configuration.</p>
+</section>
+</section>
+<section id="file-versions">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">File versions</a><a class="headerlink" href="#file-versions" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">versions</span>
+ <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span>                     <span class="n">delete</span> <span class="n">stored</span> <span class="n">file</span> <span class="n">versions</span>
+ <span class="n">versions</span><span class="p">:</span><span class="n">expire</span>                      <span class="n">expire</span> <span class="n">file</span> <span class="n">versions</span> <span class="n">that</span> <span class="n">exceed</span> <span class="n">the</span> <span class="n">configured</span> <span class="n">retention</span> <span class="n">period</span>
+</pre></div>
+</div>
+<section id="versions-cleanup">
+<h3>versions:cleanup<a class="headerlink" href="#versions-cleanup" title="Link to this heading"></a></h3>
+<p>Delete stored file versions for one or more users, all users, or a specific
+path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span> <span class="n">layla</span>
+  <span class="n">Delete</span> <span class="n">versions</span> <span class="n">of</span>   <span class="n">layla</span>
+
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span> <span class="n">layla</span> <span class="n">fred</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--path</span></code> to limit deletion to a specific directory. The path must
+include the user ID and <code class="docutils literal notranslate"><span class="pre">files/</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span> \
+  <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/layla/files/Documents&quot;</span> <span class="n">layla</span>
+</pre></div>
+</div>
+</section>
+<section id="versions-expire">
+<h3>versions:expire<a class="headerlink" href="#versions-expire" title="Link to this heading"></a></h3>
+<p>Expire file versions that exceed the configured retention period, as defined
+by <code class="docutils literal notranslate"><span class="pre">versions_retention_obligation</span></code> in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">expire</span> <span class="n">layla</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">expire</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only runs when a custom retention period is configured. If
+Nextcloud is set to auto-expiration (the default), the command exits and
+does nothing; auto-expiration is handled by the background job instead.</p>
+</div>
+<p>See <a class="reference internal" href="configuration_files/file_versioning.html"><span class="doc">Controlling file versions and aging</span></a> for retention configuration.</p>
+</section>
+</section>
+<section id="file-sharing">
+<span id="occ-sharing-label"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">File sharing</a><a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sharing</span>
+ <span class="n">sharing</span><span class="p">:</span><span class="n">cleanup</span><span class="o">-</span><span class="n">remote</span><span class="o">-</span><span class="n">storages</span>      <span class="n">clean</span> <span class="n">up</span> <span class="n">remote</span> <span class="n">storage</span> <span class="n">entries</span> <span class="k">with</span> <span class="n">no</span> <span class="n">matching</span> <span class="n">federated</span> <span class="n">share</span>
+ <span class="n">sharing</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">orphan</span><span class="o">-</span><span class="n">shares</span>         <span class="n">delete</span> <span class="n">shares</span> <span class="n">where</span> <span class="n">the</span> <span class="n">owner</span> <span class="n">no</span> <span class="n">longer</span> <span class="n">has</span> <span class="n">file</span> <span class="n">access</span>
+ <span class="n">sharing</span><span class="p">:</span><span class="n">expiration</span><span class="o">-</span><span class="n">notification</span>      <span class="n">notify</span> <span class="n">share</span> <span class="n">initiators</span> <span class="n">when</span> <span class="n">a</span> <span class="n">share</span> <span class="n">expires</span> <span class="n">the</span> <span class="nb">next</span> <span class="n">day</span>
+ <span class="n">sharing</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">share</span><span class="o">-</span><span class="n">owners</span>             <span class="n">fix</span> <span class="n">share</span> <span class="n">owner</span> <span class="n">after</span> <span class="n">a</span> <span class="n">legacy</span> <span class="n">transfer</span><span class="o">-</span><span class="n">ownership</span> <span class="n">operation</span>
+<span class="n">share</span>
+ <span class="n">share</span><span class="p">:</span><span class="nb">list</span>                           <span class="nb">list</span> <span class="n">available</span> <span class="n">shares</span>
+</pre></div>
+</div>
+<section id="share-list">
+<h3>share:list<a class="headerlink" href="#share-list" title="Link to this heading"></a></h3>
+<p>List shares across the instance. Without options, lists all shares:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">share</span><span class="p">:</span><span class="nb">list</span>
+<span class="o">+----+-------+-------------------------------+------+-------+-----------+-------+</span>
+<span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">file</span>  <span class="o">|</span> <span class="n">source</span><span class="o">-</span><span class="n">path</span>                   <span class="o">|</span> <span class="nb">type</span> <span class="o">|</span> <span class="n">owner</span> <span class="o">|</span> <span class="n">recipient</span> <span class="o">|</span> <span class="n">by</span>    <span class="o">|</span>
+<span class="o">+----+-------+-------------------------------+------+-------+-----------+-------+</span>
+<span class="o">|</span> <span class="mi">1</span>  <span class="o">|</span> <span class="mi">42</span>    <span class="o">|</span> <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">rep</span><span class="o">...</span> <span class="o">|</span> <span class="n">user</span> <span class="o">|</span> <span class="n">layla</span> <span class="o">|</span> <span class="n">fred</span>      <span class="o">|</span> <span class="n">layla</span> <span class="o">|</span>
+<span class="o">+----+-------+-------------------------------+------+-------+-----------+-------+</span>
+</pre></div>
+</div>
+<p>Filter options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--owner</span></code> — only shares owned by a specific user</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--recipient</span></code> — only shares with a specific recipient</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--by</span></code> — only shares initiated by a specific user</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--file</span></code> — only shares of a specific file (path or file ID)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--parent</span></code> — only shares of files inside a specific folder</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--recursive</span></code> — combine with <code class="docutils literal notranslate"><span class="pre">--parent</span></code> to include nested shares</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--type</span></code> — filter by share type: <code class="docutils literal notranslate"><span class="pre">user</span></code>, <code class="docutils literal notranslate"><span class="pre">group</span></code>, <code class="docutils literal notranslate"><span class="pre">link</span></code>,
+<code class="docutils literal notranslate"><span class="pre">email</span></code>, <code class="docutils literal notranslate"><span class="pre">remote</span></code>, <code class="docutils literal notranslate"><span class="pre">room</span></code>, <code class="docutils literal notranslate"><span class="pre">deck</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--status</span></code> — only shares with a specific status</p></li>
+</ul>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> for machine-readable output.</p>
+</section>
+<section id="sharing-cleanup-remote-storages">
+<h3>sharing:cleanup-remote-storages<a class="headerlink" href="#sharing-cleanup-remote-storages" title="Link to this heading"></a></h3>
+<p>Remove <code class="docutils literal notranslate"><span class="pre">shared::</span></code> storage entries from the database that have no matching
+entry in the <code class="docutils literal notranslate"><span class="pre">shares_external</span></code> table. These orphaned entries are left
+behind when a federated share is removed without proper cleanup:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">sharing</span><span class="p">:</span><span class="n">cleanup</span><span class="o">-</span><span class="n">remote</span><span class="o">-</span><span class="n">storages</span>
+  <span class="mi">5</span> <span class="n">remote</span> <span class="n">storage</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">need</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">to</span> <span class="n">be</span> <span class="n">checked</span>
+  <span class="mi">3</span> <span class="n">remote</span> <span class="n">share</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">exist</span>
+  <span class="n">deleting</span> <span class="n">shared</span><span class="p">::</span><span class="n">abc123</span> <span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="o">...</span> <span class="n">deleted</span> <span class="mi">1</span> <span class="n">storage</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> to preview what would be deleted without making changes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">sharing</span><span class="p">:</span><span class="n">cleanup</span><span class="o">-</span><span class="n">remote</span><span class="o">-</span><span class="n">storages</span> <span class="o">--</span><span class="n">dry</span><span class="o">-</span><span class="n">run</span>
+</pre></div>
+</div>
+</section>
+<section id="sharing-delete-orphan-shares">
+<h3>sharing:delete-orphan-shares<a class="headerlink" href="#sharing-delete-orphan-shares" title="Link to this heading"></a></h3>
+<p>Delete shares where the owner has lost access to the shared file or the
+file no longer exists:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo -E -u www-data php occ sharing:delete-orphan-shares
+  /layla/files/Documents/report.pdf owned by layla
+    file still exists but the share owner lost access to it,
+    run occ info:file 42 for more information about the file
+  Delete 1 orphan shares? [y/N]
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--force</span></code> / <code class="docutils literal notranslate"><span class="pre">-f</span></code> to delete without prompting. Filter to shares by a
+specific user with <code class="docutils literal notranslate"><span class="pre">--owner</span></code> or to shares with a specific user with
+<code class="docutils literal notranslate"><span class="pre">--with</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">sharing</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">orphan</span><span class="o">-</span><span class="n">shares</span> <span class="o">--</span><span class="n">owner</span> <span class="n">layla</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">sharing</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">orphan</span><span class="o">-</span><span class="n">shares</span> <span class="o">--</span><span class="k">with</span> <span class="n">fred</span>
+</pre></div>
+</div>
+</section>
+<section id="sharing-expiration-notification">
+<h3>sharing:expiration-notification<a class="headerlink" href="#sharing-expiration-notification" title="Link to this heading"></a></h3>
+<p>Send in-app notifications to share initiators whose shares expire the
+following day. Run this daily via a cron job to ensure timely notifications:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">sharing</span><span class="p">:</span><span class="n">expiration</span><span class="o">-</span><span class="n">notification</span>
+</pre></div>
+</div>
+</section>
+<section id="sharing-fix-share-owners">
+<h3>sharing:fix-share-owners<a class="headerlink" href="#sharing-fix-share-owners" title="Link to this heading"></a></h3>
+<p>Fix the recorded owner of shares that were broken by a <code class="docutils literal notranslate"><span class="pre">transfer-ownership</span></code>
+operation performed on an older Nextcloud version. Use <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> to
+preview changes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">sharing</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">share</span><span class="o">-</span><span class="n">owners</span> <span class="o">--</span><span class="n">dry</span><span class="o">-</span><span class="n">run</span>
+  <span class="n">Share</span> <span class="k">with</span> <span class="nb">id</span> <span class="mi">7</span> <span class="p">(</span><span class="n">target</span><span class="p">:</span> <span class="o">/</span><span class="n">fred</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span><span class="p">)</span> <span class="n">can</span> <span class="n">be</span>
+  <span class="n">updated</span> <span class="n">to</span> <span class="n">owner</span> <span class="n">layla</span>
+
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">sharing</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">share</span><span class="o">-</span><span class="n">owners</span>
+  <span class="n">Share</span> <span class="k">with</span> <span class="nb">id</span> <span class="mi">7</span> <span class="p">(</span><span class="n">target</span><span class="p">:</span> <span class="o">/</span><span class="n">fred</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span><span class="p">)</span> <span class="n">updated</span> <span class="n">to</span> <span class="n">owner</span> <span class="n">layla</span>
+  <span class="n">No</span> <span class="n">broken</span> <span class="n">shares</span> <span class="n">detected</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="federation-sync">
+<span id="federation-sync-label"></span><h2><a class="toc-backref" href="#id12" role="doc-backlink">Federation sync</a><a class="headerlink" href="#federation-sync" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">federation</span>
+ <span class="n">federation</span><span class="p">:</span><span class="n">sync</span><span class="o">-</span><span class="n">addressbooks</span>         <span class="n">synchronize</span> <span class="n">address</span> <span class="n">books</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">federated</span> <span class="n">clouds</span>
+</pre></div>
+</div>
+<section id="federation-sync-addressbooks">
+<h3>federation:sync-addressbooks<a class="headerlink" href="#federation-sync-addressbooks" title="Link to this heading"></a></h3>
+<p>Synchronize the shared address books of all federated Nextcloud servers.
+Federated servers share user address books so that usernames auto-complete
+in share dialogs. Run this command to trigger an immediate sync rather than
+waiting for the background job:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">federation</span><span class="p">:</span><span class="n">sync</span><span class="o">-</span><span class="n">addressbooks</span>
 </pre></div>
 </div>
 </section>
-<section id="file-operations">
-<span id="file-operations-label"></span><h2>File operations<a class="headerlink" href="#file-operations" title="Link to this heading"></a></h2>
-<p>Available <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands for the <code class="docutils literal notranslate"><span class="pre">files</span></code> namespace:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">files</span><span class="p">:</span><span class="n">cleanup</span>                    <span class="n">cleanup</span> <span class="n">filecache</span>
-<span class="n">files</span><span class="p">:</span><span class="n">copy</span>                       <span class="n">Copy</span> <span class="n">a</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span>
-<span class="n">files</span><span class="p">:</span><span class="n">delete</span>                     <span class="n">Delete</span> <span class="n">a</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span>
-<span class="n">files</span><span class="p">:</span><span class="n">get</span>                        <span class="n">Get</span> <span class="n">the</span> <span class="n">contents</span> <span class="n">of</span> <span class="n">a</span> <span class="n">file</span>
-<span class="n">files</span><span class="p">:</span><span class="n">move</span>                       <span class="n">Move</span> <span class="n">a</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span>
-<span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="n">delete</span>              <span class="n">Delete</span> <span class="n">an</span> <span class="nb">object</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="nb">object</span> <span class="n">store</span>
-<span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="n">get</span>                 <span class="n">Get</span> <span class="n">the</span> <span class="n">contents</span> <span class="n">of</span> <span class="n">an</span> <span class="nb">object</span>
-<span class="n">files</span><span class="p">:</span><span class="nb">object</span><span class="p">:</span><span class="n">put</span>                 <span class="n">Write</span> <span class="n">a</span> <span class="n">file</span> <span class="n">to</span> <span class="n">the</span> <span class="nb">object</span> <span class="n">store</span>
-<span class="n">files</span><span class="p">:</span><span class="n">put</span>                        <span class="n">Write</span> <span class="n">contents</span> <span class="n">of</span> <span class="n">a</span> <span class="n">file</span>
-<span class="n">files</span><span class="p">:</span><span class="n">recommendations</span><span class="p">:</span><span class="n">recommend</span>
-<span class="n">files</span><span class="p">:</span><span class="n">reminders</span>                  <span class="n">List</span> <span class="n">file</span> <span class="n">reminders</span>
-<span class="n">files</span><span class="p">:</span><span class="n">repair</span><span class="o">-</span><span class="n">tree</span>                <span class="n">Try</span> <span class="ow">and</span> <span class="n">repair</span> <span class="n">malformed</span> <span class="n">filesystem</span> <span class="n">tree</span> <span class="n">structures</span>
-<span class="n">files</span><span class="p">:</span><span class="n">scan</span>                       <span class="n">rescan</span> <span class="n">filesystem</span>
-<span class="n">files</span><span class="p">:</span><span class="n">scan</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">data</span>              <span class="n">rescan</span> <span class="n">the</span> <span class="n">AppData</span> <span class="n">folder</span>
-<span class="n">files</span><span class="p">:</span><span class="n">transfer</span><span class="o">-</span><span class="n">ownership</span>         <span class="n">All</span> <span class="n">files</span> <span class="ow">and</span> <span class="n">folders</span> <span class="n">are</span> <span class="n">moved</span> <span class="n">to</span> <span class="n">another</span> <span class="n">user</span> <span class="o">-</span> <span class="n">outgoing</span> <span class="n">shares</span> <span class="ow">and</span> <span class="n">incoming</span> <span class="n">user</span> <span class="n">file</span> <span class="n">shares</span> <span class="p">(</span><span class="n">optionally</span><span class="p">)</span> <span class="n">are</span> <span class="n">moved</span> <span class="k">as</span> <span class="n">well</span><span class="o">.</span>
-</pre></div>
-</div>
-<section id="scan">
-<span id="occ-files-scan-label"></span><h3>Scan<a class="headerlink" href="#scan" title="Link to this heading"></a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">files:scan</span></code> command scans for new files and updates the file cache. You
-may rescan all files, per-user, a space-delimited list of users, and limit the
-search path. If not using <code class="docutils literal notranslate"><span class="pre">--quiet</span></code>, statistics will be shown at the end of
-the scan:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span> <span class="o">--</span><span class="n">help</span>
-<span class="n">Description</span><span class="p">:</span>
-  <span class="n">rescan</span> <span class="n">filesystem</span>
-
-<span class="n">Usage</span><span class="p">:</span>
-  <span class="n">files</span><span class="p">:</span><span class="n">scan</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="p">]</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">user_id</span><span class="o">&gt;...</span><span class="p">]</span>
-
-<span class="n">Arguments</span><span class="p">:</span>
-  <span class="n">user_id</span>                  <span class="n">will</span> <span class="n">rescan</span> <span class="nb">all</span> <span class="n">files</span> <span class="n">of</span> <span class="n">the</span> <span class="n">given</span> <span class="n">user</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-
-<span class="n">Options</span><span class="p">:</span>
-      <span class="o">--</span><span class="n">output</span><span class="p">[</span><span class="o">=</span><span class="n">OUTPUT</span><span class="p">]</span>    <span class="n">Output</span> <span class="nb">format</span> <span class="p">(</span><span class="n">plain</span><span class="p">,</span> <span class="n">json</span> <span class="ow">or</span> <span class="n">json_pretty</span><span class="p">,</span> <span class="n">default</span> <span class="ow">is</span> <span class="n">plain</span><span class="p">)</span> <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;plain&quot;</span><span class="p">]</span>
-  <span class="o">-</span><span class="n">p</span><span class="p">,</span> <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="n">PATH</span>          <span class="n">limit</span> <span class="n">rescan</span> <span class="n">to</span> <span class="n">this</span> <span class="n">path</span><span class="p">,</span> <span class="n">eg</span><span class="o">.</span> <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/alice/files/Music&quot;</span><span class="p">,</span> <span class="n">the</span> <span class="n">user_id</span> <span class="ow">is</span> <span class="n">determined</span> <span class="n">by</span> <span class="n">the</span> <span class="n">path</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">user_id</span> <span class="n">parameter</span> <span class="ow">and</span> <span class="o">--</span><span class="nb">all</span> <span class="n">are</span> <span class="n">ignored</span>
-      <span class="o">--</span><span class="n">generate</span><span class="o">-</span><span class="n">metadata</span>  <span class="n">Generate</span> <span class="n">metadata</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">scanned</span> <span class="n">files</span>
-      <span class="o">--</span><span class="nb">all</span>                <span class="n">will</span> <span class="n">rescan</span> <span class="nb">all</span> <span class="n">files</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">known</span> <span class="n">users</span>
-      <span class="o">--</span><span class="n">unscanned</span>          <span class="n">only</span> <span class="n">scan</span> <span class="n">files</span> <span class="n">which</span> <span class="n">are</span> <span class="n">marked</span> <span class="k">as</span> <span class="ow">not</span> <span class="n">fully</span> <span class="n">scanned</span>
-      <span class="o">--</span><span class="n">shallow</span>            <span class="n">do</span> <span class="ow">not</span> <span class="n">scan</span> <span class="n">folders</span> <span class="n">recursively</span>
-      <span class="o">--</span><span class="n">home</span><span class="o">-</span><span class="n">only</span>          <span class="n">only</span> <span class="n">scan</span> <span class="n">the</span> <span class="n">home</span> <span class="n">storage</span><span class="p">,</span> <span class="n">ignoring</span> <span class="nb">any</span> <span class="n">mounted</span> <span class="n">external</span> <span class="n">storage</span> <span class="ow">or</span> <span class="n">share</span>
-  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>               <span class="n">Display</span> <span class="n">help</span> <span class="k">for</span> <span class="n">the</span> <span class="n">given</span> <span class="n">command</span><span class="o">.</span> <span class="n">When</span> <span class="n">no</span> <span class="n">command</span> <span class="ow">is</span> <span class="n">given</span> <span class="n">display</span> <span class="n">help</span> <span class="k">for</span> <span class="n">the</span> <span class="nb">list</span> <span class="n">command</span>
-  <span class="o">-</span><span class="n">q</span><span class="p">,</span> <span class="o">--</span><span class="n">quiet</span>              <span class="n">Do</span> <span class="ow">not</span> <span class="n">output</span> <span class="nb">any</span> <span class="n">message</span>
-  <span class="o">-</span><span class="n">V</span><span class="p">,</span> <span class="o">--</span><span class="n">version</span>            <span class="n">Display</span> <span class="n">this</span> <span class="n">application</span> <span class="n">version</span>
-      <span class="o">--</span><span class="n">ansi</span><span class="o">|--</span><span class="n">no</span><span class="o">-</span><span class="n">ansi</span>     <span class="n">Force</span> <span class="p">(</span><span class="ow">or</span> <span class="n">disable</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ansi</span><span class="p">)</span> <span class="n">ANSI</span> <span class="n">output</span>
-  <span class="o">-</span><span class="n">n</span><span class="p">,</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">interaction</span>     <span class="n">Do</span> <span class="ow">not</span> <span class="n">ask</span> <span class="nb">any</span> <span class="n">interactive</span> <span class="n">question</span>
-      <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">warnings</span>        <span class="n">Skip</span> <span class="k">global</span> <span class="n">warnings</span><span class="p">,</span> <span class="n">show</span> <span class="n">command</span> <span class="n">output</span> <span class="n">only</span>
-  <span class="o">-</span><span class="n">v</span><span class="o">|</span><span class="n">vv</span><span class="o">|</span><span class="n">vvv</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>     <span class="n">Increase</span> <span class="n">the</span> <span class="n">verbosity</span> <span class="n">of</span> <span class="n">messages</span><span class="p">:</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">normal</span> <span class="n">output</span><span class="p">,</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">more</span> <span class="n">verbose</span> <span class="n">output</span> <span class="ow">and</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">debug</span>
-</pre></div>
-</div>
-<p>Verbosity levels of <code class="docutils literal notranslate"><span class="pre">-vv</span></code> or <code class="docutils literal notranslate"><span class="pre">-vvv</span></code> are automatically reset to <code class="docutils literal notranslate"><span class="pre">-v</span></code></p>
-<p>Note for option <code class="docutils literal notranslate"><span class="pre">--unscanned</span></code>:
-In general there is a background job (through cron) that will do that scan periodically.
-The <code class="docutils literal notranslate"><span class="pre">--unscanned</span></code> option makes it possible to trigger this from the CLI.</p>
-<p>When using the <code class="docutils literal notranslate"><span class="pre">--path</span></code> option, the path must consist of following
-components:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;user_id/files/path&quot;</span>
-  <span class="ow">or</span>
-<span class="s2">&quot;user_id/files/mount_name&quot;</span>
-  <span class="ow">or</span>
-<span class="s2">&quot;user_id/files/mount_name/path&quot;</span>
-</pre></div>
-</div>
-<p>where the term <code class="docutils literal notranslate"><span class="pre">files</span></code> is mandatory.</p>
-<p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/alice/files/Music&quot;</span>
-</pre></div>
-</div>
-<p>In the example above, the user_id <code class="docutils literal notranslate"><span class="pre">alice</span></code> is determined implicitly from the
-path component given.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">--path</span></code>, <code class="docutils literal notranslate"><span class="pre">--all</span></code> and <code class="docutils literal notranslate"><span class="pre">[user_id]</span></code> parameters are exclusive - only
-one must be specified.</p>
-</section>
-<section id="scan-appdata">
-<h3>Scan appdata<a class="headerlink" href="#scan-appdata" title="Link to this heading"></a></h3>
-<p>Appdata is a folder inside of the data directory which contains files that
-are shared between users and can be put there by the server or apps like
-avatar images, file previews and cached CSS files for example.</p>
-<p>Since the regular files scan only operates on user files the <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">files:scan-app-data</span></code>
-command will check the appdata directory and make sure that the filecache is consistent
-with the files on the actual storage.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span>
-  <span class="n">files</span><span class="p">:</span><span class="n">scan</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">data</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="p">]</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">folder</span><span class="o">&gt;</span><span class="p">]</span>
-
-<span class="n">Arguments</span><span class="p">:</span>
-  <span class="n">folder</span>                 <span class="n">The</span> <span class="n">appdata</span> <span class="n">subfolder</span> <span class="n">to</span> <span class="n">scan</span> <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</section>
-<section id="cleanup-previews">
-<span id="occ-cleanup-previews"></span><h3>Cleanup previews<a class="headerlink" href="#cleanup-previews" title="Link to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">preview:cleanup</span></code> removes all of the server’s preview files. This is useful
-when changing the previews configuration (sizes, quality or file), and especially
-on systems using Object Storage as Primary Storage where the <code class="docutils literal notranslate"><span class="pre">appdata_xxx/preview</span></code>
-folder can’t simply be deleted.</p>
-<p>See <a class="reference internal" href="configuration_files/previews_configuration.html"><span class="doc">Previews configuration</span></a>.</p>
-</section>
-<section id="cleanup">
-<h3>Cleanup<a class="headerlink" href="#cleanup" title="Link to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">files:cleanup</span></code> tidies up the server’s file cache by deleting all file
-entries that have no matching entries in the storage table.</p>
-</section>
-<section id="repair-tree">
-<h3>Repair-Tree<a class="headerlink" href="#repair-tree" title="Link to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">files:repair-tree</span></code> try and repair malformed filesystem tree structures.
-If for any reason the path of an entry in the filecache doesn’t match with
-it’s expected path, based on the path of it’s parent node, you end up with an
-entry in the filecache that exists in different places based on how the entry
-is generated. For example, if while listing folder <code class="docutils literal notranslate"><span class="pre">/foo</span></code> it contains a file
-<code class="docutils literal notranslate"><span class="pre">bar.txt</span></code>, but when trying to do anything with <code class="docutils literal notranslate"><span class="pre">/foo/bar.txt</span></code> the file
-doesn’t exists.</p>
-<p>This command attempts to repair such entries by querying for entries where the path
-doesn’t match the expected path based on it’s parent path and filename and resets it’s
-path to the expected one.</p>
-</section>
-<section id="sanitize-filenames">
-<span id="occ-files-sanitize-filenames"></span><h3>Sanitize filenames<a class="headerlink" href="#sanitize-filenames" title="Link to this heading"></a></h3>
-<p>This command allows to automatically rename files not matching the current file naming constraints,
-for example after enabling the <a class="reference internal" href="configuration_files/windows_compatible_filenames.html#windows-compatible-filenames"><span class="std std-ref">Windows compatible filenames</span></a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span>
-  <span class="n">files</span><span class="p">:</span><span class="n">sanitize</span><span class="o">-</span><span class="n">filenames</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="p">]</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">user_id</span><span class="o">&gt;...</span><span class="p">]</span>
-
-<span class="n">Arguments</span><span class="p">:</span>
-  <span class="n">user_id</span>                                 <span class="n">Limit</span> <span class="n">filename</span> <span class="n">sanitizing</span> <span class="n">to</span> <span class="n">files</span> <span class="n">given</span> <span class="n">user</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">have</span> <span class="n">access</span> <span class="n">to</span>
-
-<span class="n">Options</span><span class="p">:</span>
-     <span class="o">--</span><span class="n">dry</span><span class="o">-</span><span class="n">run</span>                            <span class="n">Do</span> <span class="ow">not</span> <span class="n">actually</span> <span class="n">rename</span> <span class="nb">any</span> <span class="n">files</span> <span class="n">but</span> <span class="n">just</span> <span class="n">check</span> <span class="n">filenames</span><span class="o">.</span>
- <span class="o">-</span><span class="n">c</span><span class="p">,</span> <span class="o">--</span><span class="n">char</span><span class="o">-</span><span class="n">replacement</span><span class="o">=</span><span class="n">CHAR</span><span class="o">-</span><span class="n">REPLACEMENT</span>  <span class="n">Replacement</span> <span class="k">for</span> <span class="n">invalid</span> <span class="n">character</span> <span class="p">(</span><span class="n">by</span> <span class="n">default</span> <span class="n">space</span><span class="p">,</span> <span class="n">underscore</span> <span class="ow">or</span> <span class="n">dash</span> <span class="ow">is</span> <span class="n">used</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>When running this command without parameters it will scan all files of all users
-for filenames not comply with the current filename constraints and try to automatically
-rename those files.
-Invalid characters will be replaced by default with either a space, underscore, or dash
-depending on which characters are allowed.
-If your constraints forbid all of them, then you have to provide an character replacement
-yourself by specifying the <code class="docutils literal notranslate"><span class="pre">--char-replacement</span></code> option.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> option allows to perform the sanitizing without the actual renaming,
-this is useful for estimating the execution time and to get an overview on what renaming
-actions will be performed.</p>
-</section>
-<section id="transfer">
-<h3>Transfer<a class="headerlink" href="#transfer" title="Link to this heading"></a></h3>
-<p>The command <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">files:transfer-ownership</span></code> can be used to transfer files from one user to another:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span>
-  <span class="n">files</span><span class="p">:</span><span class="n">transfer</span><span class="o">-</span><span class="n">ownership</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">source</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">destination</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span>
-
-<span class="n">Arguments</span><span class="p">:</span>
-  <span class="n">source</span><span class="o">-</span><span class="n">user</span>                                                <span class="n">owner</span> <span class="n">of</span> <span class="n">files</span> <span class="n">which</span> <span class="n">shall</span> <span class="n">be</span> <span class="n">moved</span>
-  <span class="n">destination</span><span class="o">-</span><span class="n">user</span>                                           <span class="n">user</span> <span class="n">who</span> <span class="n">will</span> <span class="n">be</span> <span class="n">the</span> <span class="n">new</span> <span class="n">owner</span> <span class="n">of</span> <span class="n">the</span> <span class="n">files</span>
-
-<span class="n">Options</span><span class="p">:</span>
-      <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="n">PATH</span>                                            <span class="n">selectively</span> <span class="n">provide</span> <span class="n">the</span> <span class="n">path</span> <span class="n">to</span> <span class="n">transfer</span><span class="o">.</span> <span class="n">For</span> <span class="n">example</span> <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;folder_name&quot;</span> <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
-      <span class="o">--</span><span class="n">move</span>                                                 <span class="n">move</span> <span class="n">data</span> <span class="kn">from</span><span class="w"> </span><span class="nn">source</span> <span class="n">user</span> <span class="n">to</span> <span class="n">root</span> <span class="n">directory</span> <span class="n">of</span> <span class="n">destination</span> <span class="n">user</span><span class="p">,</span> <span class="n">which</span> <span class="n">must</span> <span class="n">be</span> <span class="n">empty</span>
-      <span class="o">--</span><span class="n">transfer</span><span class="o">-</span><span class="n">incoming</span><span class="o">-</span><span class="n">shares</span><span class="p">[</span><span class="o">=</span><span class="n">TRANSFER</span><span class="o">-</span><span class="n">INCOMING</span><span class="o">-</span><span class="n">SHARES</span><span class="p">]</span>  <span class="n">transfer</span> <span class="n">incoming</span> <span class="n">user</span> <span class="n">file</span> <span class="n">shares</span> <span class="n">to</span> <span class="n">destination</span> <span class="n">user</span><span class="o">.</span> <span class="n">Usage</span><span class="p">:</span> <span class="o">--</span><span class="n">transfer</span><span class="o">-</span><span class="n">incoming</span><span class="o">-</span><span class="n">shares</span><span class="o">=</span><span class="mi">1</span> <span class="p">(</span><span class="n">value</span> <span class="n">required</span><span class="p">)</span> <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>You may transfer all files and shares from one user to another. This is useful
-before removing a user:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">transfer</span><span class="o">-</span><span class="n">ownership</span> <span class="o">&lt;</span><span class="n">source</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">destination</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>The transferred files will appear inside a new sub-directory in the destination user’s home.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Unless server side encryption is enabled, <strong>the command will init the &lt;destination-user&gt; file system</strong> in Nextcloud versions <strong>22.2.6, 23.0.3 and since 24</strong>. When it is unable to create the user’s folder in the data directory it will show the following error: <code class="docutils literal notranslate"><span class="pre">unable</span> <span class="pre">to</span> <span class="pre">rename,</span> <span class="pre">destination</span> <span class="pre">directory</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">writable</span></code>. Before 22.2.6 the command <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">files:transfer-ownership</span></code> would only work after the user has logged in for the first time.</p>
-</div>
-<p>If the destination user has no files at all (empty home), it is possible to also transfer all the source user’s files by passing <code class="docutils literal notranslate"><span class="pre">--move</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">transfer</span><span class="o">-</span><span class="n">ownership</span> <span class="o">--</span><span class="n">move</span> <span class="o">&lt;</span><span class="n">source</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">destination</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>In this case no sub-directory is created and all files will appear directly in the root of the user’s home.</p>
-<p>It is also possible to transfer only one directory along with its contents. This can be useful to restructure your organization or quotas. The <code class="docutils literal notranslate"><span class="pre">--path</span></code> argument is given as the path to the directory as seen from the source user:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">transfer</span><span class="o">-</span><span class="n">ownership</span> <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;path_to_dir&quot;</span> <span class="o">&lt;</span><span class="n">source</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">destination</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>Incoming shares are not moved by default because the sharing user holds the ownership of the respective files. There is however an option to enable moving incoming shares.</p>
-<p>In case the incoming shares must be transferred as well, use the argument <code class="docutils literal notranslate"><span class="pre">--transfer-incoming-shares</span></code> with <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code> as parameters</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">transfer</span><span class="o">-</span><span class="n">ownership</span> <span class="o">--</span><span class="n">transfer</span><span class="o">-</span><span class="n">incoming</span><span class="o">-</span><span class="n">shares</span><span class="o">=</span><span class="mi">1</span> <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;path_to_dir&quot;</span> <span class="o">&lt;</span><span class="n">source</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">destination</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>As an alternative, the system configuration option <code class="docutils literal notranslate"><span class="pre">transferIncomingShares</span></code> in config.php can be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> to always transfer incoming shares.</p>
-<p>The command line option <code class="docutils literal notranslate"><span class="pre">--transfer-incoming-shares</span></code> overwrites the config.php option <code class="docutils literal notranslate"><span class="pre">transferIncomingShares</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">'transferIncomingShares</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code> can be overwritten by:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">transfer</span><span class="o">-</span><span class="n">ownership</span> <span class="o">--</span><span class="n">transfer</span><span class="o">-</span><span class="n">incoming</span><span class="o">-</span><span class="n">shares</span><span class="o">=</span><span class="mi">0</span> <span class="o">&lt;</span><span class="n">source</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">destination</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>Users may also transfer files or folders selectively by themselves.
-See <a class="reference external" href="https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html">user documentation</a> for details.</p>
-</section>
-<section id="toggle-windows-compatibility">
-<span id="occ-files-windows-filenames"></span><h3>Toggle Windows compatibility<a class="headerlink" href="#toggle-windows-compatibility" title="Link to this heading"></a></h3>
-<p>The command <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">files:windows-compatible-filenames</span></code> can be used to toggle
-enforcing <a class="reference internal" href="configuration_files/windows_compatible_filenames.html#windows-compatible-filenames"><span class="std std-ref">Windows compatible filenames</span></a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span>
-  <span class="n">files</span><span class="p">:</span><span class="n">windows</span><span class="o">-</span><span class="n">compatible</span><span class="o">-</span><span class="n">filenames</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span>
-
-<span class="n">Options</span><span class="p">:</span>
-      <span class="o">--</span><span class="n">enable</span>                  <span class="n">enable</span> <span class="n">enforcing</span> <span class="n">windows</span> <span class="n">compatible</span> <span class="n">filenames</span>
-      <span class="o">--</span><span class="n">disable</span>                 <span class="n">disable</span> <span class="n">enforcing</span> <span class="n">windows</span> <span class="n">compatible</span> <span class="n">filenames</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="files-sharing">
-<span id="occ-sharing-label"></span><h2>Files Sharing<a class="headerlink" href="#files-sharing" title="Link to this heading"></a></h2>
-<p>Commands for handling shares:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sharing</span>
- <span class="n">sharing</span><span class="p">:</span><span class="n">cleanup</span><span class="o">-</span><span class="n">remote</span><span class="o">-</span><span class="n">storages</span>  <span class="n">Cleanup</span> <span class="n">shared</span> <span class="n">storage</span> <span class="n">entries</span> <span class="n">that</span> <span class="n">have</span> <span class="n">no</span> <span class="n">matching</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">shares_external</span> <span class="n">table</span>
- <span class="n">sharing</span><span class="p">:</span><span class="n">expiration</span><span class="o">-</span><span class="n">notification</span>  <span class="n">Notify</span> <span class="n">share</span> <span class="n">initiators</span> <span class="n">when</span> <span class="n">a</span> <span class="n">share</span> <span class="n">will</span> <span class="n">expire</span> <span class="n">the</span> <span class="nb">next</span> <span class="n">day</span>
- <span class="n">sharing</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">orphan</span><span class="o">-</span><span class="n">shares</span>     <span class="n">Delete</span> <span class="n">shares</span> <span class="n">where</span> <span class="n">the</span> <span class="n">owner</span> <span class="n">no</span> <span class="n">longer</span> <span class="n">has</span> <span class="n">access</span> <span class="n">to</span> <span class="n">the</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">the</span> <span class="n">file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">available</span> <span class="n">anymore</span>
-</pre></div>
-</div>
 </section>
 <section id="files-external">
-<span id="files-external-label"></span><h2>Files external<a class="headerlink" href="#files-external" title="Link to this heading"></a></h2>
-<p>These commands are used for managing Nextcloud’s <em>External Storage</em> feature. In
-addition to replicating the configuration capabilities in the Web UI, additional
-capabilities include exporting / importing configurations, scanning <em>External
-Storage</em> mounts that require login credentials, and configuring update notifications
-(if supported by the storage type).</p>
+<span id="files-external-label"></span><h2><a class="toc-backref" href="#id13" role="doc-backlink">Files external</a><a class="headerlink" href="#files-external" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">files_external</span>
+ <span class="n">files_external</span><span class="p">:</span><span class="n">applicable</span>            <span class="n">manage</span> <span class="n">applicable</span> <span class="n">users</span> <span class="ow">and</span> <span class="n">groups</span> <span class="k">for</span> <span class="n">a</span> <span class="n">mount</span>
+ <span class="n">files_external</span><span class="p">:</span><span class="n">backends</span>              <span class="n">show</span> <span class="n">available</span> <span class="n">authentication</span> <span class="ow">and</span> <span class="n">storage</span> <span class="n">backends</span>
+ <span class="n">files_external</span><span class="p">:</span><span class="n">config</span>                <span class="n">manage</span> <span class="n">backend</span> <span class="n">configuration</span> <span class="k">for</span> <span class="n">a</span> <span class="n">mount</span>
+ <span class="n">files_external</span><span class="p">:</span><span class="n">create</span>                <span class="n">create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">mount</span> <span class="n">configuration</span>
+ <span class="n">files_external</span><span class="p">:</span><span class="n">delete</span>                <span class="n">delete</span> <span class="n">an</span> <span class="n">external</span> <span class="n">mount</span>
+ <span class="n">files_external</span><span class="p">:</span><span class="n">dependencies</span>          <span class="n">check</span> <span class="k">for</span> <span class="n">missing</span> <span class="n">dependencies</span> <span class="n">needed</span> <span class="k">for</span> <span class="n">mounting</span> <span class="n">external</span> <span class="n">storages</span>
+ <span class="n">files_external</span><span class="p">:</span><span class="n">export</span>                <span class="n">export</span> <span class="n">mount</span> <span class="n">configurations</span>
+ <span class="n">files_external</span><span class="p">:</span><span class="kn">import</span><span class="w">                </span><span class="nn">import</span> <span class="n">mount</span> <span class="n">configurations</span>
+ <span class="n">files_external</span><span class="p">:</span><span class="nb">list</span>                  <span class="nb">list</span> <span class="n">configured</span> <span class="n">admin</span> <span class="ow">or</span> <span class="n">personal</span> <span class="n">mounts</span>
+ <span class="n">files_external</span><span class="p">:</span><span class="n">notify</span>                <span class="n">listen</span> <span class="k">for</span> <span class="n">active</span> <span class="n">update</span> <span class="n">notifications</span> <span class="k">for</span> <span class="n">a</span> <span class="n">configured</span> <span class="n">external</span> <span class="n">mount</span>
+ <span class="n">files_external</span><span class="p">:</span><span class="n">option</span>                <span class="n">manage</span> <span class="n">mount</span> <span class="n">options</span> <span class="k">for</span> <span class="n">a</span> <span class="n">mount</span>
+ <span class="n">files_external</span><span class="p">:</span><span class="n">scan</span>                  <span class="n">scan</span> <span class="n">an</span> <span class="n">external</span> <span class="n">storage</span> <span class="k">for</span> <span class="n">changed</span> <span class="n">files</span>
+ <span class="n">files_external</span><span class="p">:</span><span class="n">verify</span>                <span class="n">verify</span> <span class="n">mount</span> <span class="n">configuration</span>
+</pre></div>
+</div>
+<p>Manage Nextcloud’s external storage mounts. Commands that read or write
+mount configuration operate on the same data as the <strong>External Storages</strong>
+admin settings page.</p>
+<section id="files-external-list">
+<h3>files_external:list<a class="headerlink" href="#files-external-list" title="Link to this heading"></a></h3>
+<p>List configured mounts. Without arguments, lists admin-level mounts:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="nb">list</span>
+<span class="o">+----+------------------+-----------+--------------+---------+--------+-------+</span>
+<span class="o">|</span> <span class="n">ID</span> <span class="o">|</span> <span class="n">Mount</span> <span class="n">Point</span>      <span class="o">|</span> <span class="n">Storage</span>   <span class="o">|</span> <span class="n">Auth</span><span class="o">.</span> <span class="n">Type</span>   <span class="o">|</span> <span class="n">Config</span>  <span class="o">|</span> <span class="n">Status</span> <span class="o">|</span> <span class="n">Users</span> <span class="o">|</span>
+<span class="o">+----+------------------+-----------+--------------+---------+--------+-------+</span>
+<span class="o">|</span> <span class="mi">1</span>  <span class="o">|</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">data</span>     <span class="o">|</span> <span class="n">amazons3</span>  <span class="o">|</span> <span class="n">builtin</span>      <span class="o">|</span> <span class="n">valid</span>   <span class="o">|</span> <span class="n">ok</span>     <span class="o">|</span> <span class="nb">all</span>   <span class="o">|</span>
+<span class="o">+----+------------------+-----------+--------------+---------+--------+-------+</span>
+</pre></div>
+</div>
+<p>List personal mounts for a specific user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="nb">list</span> <span class="n">layla</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> for machine-readable output. Add
+<code class="docutils literal notranslate"><span class="pre">--show-password</span></code> to include credentials in the output.</p>
+</section>
+<section id="files-external-create">
+<h3>files_external:create<a class="headerlink" href="#files-external-create" title="Link to this heading"></a></h3>
+<p>Create a new mount configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">create</span> \
+  <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">photos</span> <span class="n">amazons3</span> <span class="n">builtin</span><span class="p">::</span><span class="n">builtin</span> \
+  <span class="o">--</span><span class="n">config</span> <span class="n">bucket</span><span class="o">=</span><span class="n">my</span><span class="o">-</span><span class="n">nextcloud</span><span class="o">-</span><span class="n">photos</span> \
+  <span class="o">--</span><span class="n">config</span> <span class="n">region</span><span class="o">=</span><span class="n">eu</span><span class="o">-</span><span class="n">central</span><span class="o">-</span><span class="mi">1</span> \
+  <span class="o">--</span><span class="n">config</span> <span class="n">key</span><span class="o">=</span><span class="n">AKIAIOSFODNN7EXAMPLE</span> \
+  <span class="o">--</span><span class="n">config</span> <span class="n">secret</span><span class="o">=</span><span class="n">wJalrXUtnFEMI</span><span class="o">/</span><span class="n">K7MDENG</span><span class="o">/</span><span class="n">bPxRfiCYEXAMPLEKEY</span>
+</pre></div>
+</div>
+<p>Arguments:</p>
+<ul class="simple">
+<li><p><strong>mount-point</strong> — the path inside Nextcloud (e.g. <code class="docutils literal notranslate"><span class="pre">/shared/photos</span></code>)</p></li>
+<li><p><strong>storage-backend</strong> — the storage type identifier (e.g. <code class="docutils literal notranslate"><span class="pre">amazons3</span></code>,
+<code class="docutils literal notranslate"><span class="pre">sftp</span></code>, <code class="docutils literal notranslate"><span class="pre">smb</span></code>, <code class="docutils literal notranslate"><span class="pre">owncloud</span></code>)</p></li>
+<li><p><strong>auth-backend</strong> — the authentication method (e.g. <code class="docutils literal notranslate"><span class="pre">builtin::builtin</span></code>,
+<code class="docutils literal notranslate"><span class="pre">password::sessioncredentials</span></code>)</p></li>
+</ul>
+<p>Use <code class="docutils literal notranslate"><span class="pre">files_external:backends</span></code> to list all available storage and
+authentication backends.</p>
+<p>For a personal mount, specify the user with <code class="docutils literal notranslate"><span class="pre">--user</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">create</span> \
+  <span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">s3</span> <span class="n">amazons3</span> <span class="n">builtin</span><span class="p">::</span><span class="n">builtin</span> \
+  <span class="o">--</span><span class="n">config</span> <span class="n">bucket</span><span class="o">=</span><span class="n">layla</span><span class="o">-</span><span class="n">bucket</span> \
+  <span class="o">--</span><span class="n">user</span> <span class="n">layla</span>
+</pre></div>
+</div>
+</section>
+<section id="files-external-config">
+<h3>files_external:config<a class="headerlink" href="#files-external-config" title="Link to this heading"></a></h3>
+<p>Read or write individual backend configuration options for a mount. Use the
+mount ID from <code class="docutils literal notranslate"><span class="pre">files_external:list</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">config</span> <span class="mi">1</span> <span class="n">get</span> <span class="n">bucket</span>
+  <span class="n">my</span><span class="o">-</span><span class="n">nextcloud</span><span class="o">-</span><span class="n">photos</span>
+
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">config</span> <span class="mi">1</span> <span class="nb">set</span> <span class="n">bucket</span> <span class="n">new</span><span class="o">-</span><span class="n">bucket</span><span class="o">-</span><span class="n">name</span>
+</pre></div>
+</div>
+</section>
+<section id="files-external-applicable">
+<h3>files_external:applicable<a class="headerlink" href="#files-external-applicable" title="Link to this heading"></a></h3>
+<p>Manage which users and groups have access to a mount:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">applicable</span> <span class="mi">1</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">user</span> <span class="n">layla</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">applicable</span> <span class="mi">1</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">group</span> <span class="n">milliways</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">applicable</span> <span class="mi">1</span> <span class="o">--</span><span class="n">remove</span><span class="o">-</span><span class="n">user</span> <span class="n">layla</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">applicable</span> <span class="mi">1</span> <span class="o">--</span><span class="n">remove</span><span class="o">-</span><span class="n">group</span> <span class="n">milliways</span>
+</pre></div>
+</div>
+<p>A mount with no users or groups assigned is available to all users.</p>
+</section>
+<section id="files-external-option">
+<h3>files_external:option<a class="headerlink" href="#files-external-option" title="Link to this heading"></a></h3>
+<p>Read or write mount options such as <code class="docutils literal notranslate"><span class="pre">enable_sharing</span></code> or
+<code class="docutils literal notranslate"><span class="pre">filesystem_check_changes</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">option</span> <span class="mi">1</span> <span class="n">get</span> <span class="n">enable_sharing</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">option</span> <span class="mi">1</span> <span class="nb">set</span> <span class="n">enable_sharing</span> <span class="n">true</span>
+</pre></div>
+</div>
+</section>
+<section id="files-external-verify">
+<h3>files_external:verify<a class="headerlink" href="#files-external-verify" title="Link to this heading"></a></h3>
+<p>Test the configuration of a mount and report whether a connection can be
+established:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">verify</span> <span class="mi">1</span>
+  <span class="o">+----------+---------+</span>
+  <span class="o">|</span> <span class="n">Result</span>   <span class="o">|</span> <span class="n">Message</span> <span class="o">|</span>
+  <span class="o">+----------+---------+</span>
+  <span class="o">|</span> <span class="n">success</span>  <span class="o">|</span>         <span class="o">|</span>
+  <span class="o">+----------+---------+</span>
+</pre></div>
+</div>
+<p>Pass additional configuration key-value pairs (e.g. credentials) with
+<code class="docutils literal notranslate"><span class="pre">--config</span></code> when the stored configuration is incomplete:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">verify</span> <span class="mi">1</span> \
+  <span class="o">--</span><span class="n">config</span> <span class="n">user</span><span class="o">=</span><span class="n">layla</span> <span class="o">--</span><span class="n">config</span> <span class="n">password</span><span class="o">=</span><span class="n">secret</span>
+</pre></div>
+</div>
+</section>
+<section id="files-external-delete">
+<h3>files_external:delete<a class="headerlink" href="#files-external-delete" title="Link to this heading"></a></h3>
+<p>Delete a mount configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">delete</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>The command asks for confirmation. Use <code class="docutils literal notranslate"><span class="pre">--yes</span></code> to skip the prompt.</p>
+</section>
+<section id="files-external-scan">
+<h3>files_external:scan<a class="headerlink" href="#files-external-scan" title="Link to this heading"></a></h3>
+<p>Scan an external storage for changed files and update the file cache. Useful
+for storage backends that do not support active change notifications:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">scan</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>For mounts that use session credentials, pass them with <code class="docutils literal notranslate"><span class="pre">--user</span></code> and
+<code class="docutils literal notranslate"><span class="pre">--password</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">scan</span> <span class="mi">1</span> \
+  <span class="o">--</span><span class="n">user</span> <span class="n">layla</span> <span class="o">--</span><span class="n">password</span> <span class="n">secret</span>
+</pre></div>
+</div>
+</section>
+<section id="files-external-export">
+<h3>files_external:export<a class="headerlink" href="#files-external-export" title="Link to this heading"></a></h3>
+<p>Export all admin mounts to JSON:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">export</span> <span class="o">&gt;</span> <span class="n">mounts</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>Export personal mounts for a specific user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">export</span> <span class="n">layla</span> <span class="o">&gt;</span> <span class="n">layla</span><span class="o">-</span><span class="n">mounts</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>Use the exported JSON with <code class="docutils literal notranslate"><span class="pre">files_external:import</span></code> to replicate the
+configuration on another Nextcloud instance.</p>
+</section>
+<section id="files-external-import">
+<h3>files_external:import<a class="headerlink" href="#files-external-import" title="Link to this heading"></a></h3>
+<p>Import mount configurations from a JSON file produced by
+<code class="docutils literal notranslate"><span class="pre">files_external:export</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="kn">import</span><span class="w"> </span><span class="nn">mounts.json</span>
+</pre></div>
+</div>
+<p>Import as personal mounts for a specific user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="kn">import</span><span class="w"> \</span>
+<span class="w">  </span><span class="o">--</span><span class="n">user</span> <span class="n">layla</span> <span class="n">layla</span><span class="o">-</span><span class="n">mounts</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+</section>
+<section id="files-external-backends">
+<h3>files_external:backends<a class="headerlink" href="#files-external-backends" title="Link to this heading"></a></h3>
+<p>List all available storage and authentication backends:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">backends</span>
+</pre></div>
+</div>
+<p>Filter by type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">backends</span> <span class="n">storage</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">backends</span> <span class="n">authentication</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> to inspect the full capability and
+configuration schema for each backend.</p>
+</section>
+<section id="files-external-notify">
+<h3>files_external:notify<a class="headerlink" href="#files-external-notify" title="Link to this heading"></a></h3>
+<p>Listen for active change notifications from an external mount that supports
+push-based update events (e.g. SMB with inotify):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">notify</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>This is a long-running process; run it under a process supervisor or in a
+dedicated systemd service.</p>
+</section>
+<section id="files-external-dependencies">
+<h3>files_external:dependencies<a class="headerlink" href="#files-external-dependencies" title="Link to this heading"></a></h3>
+<p>Check for any missing PHP extensions or system packages required to use the
+configured external storage backends:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">dependencies</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="trashbin">
+<span id="trashbin-label"></span><h2><a class="toc-backref" href="#id14" role="doc-backlink">Trashbin</a><a class="headerlink" href="#trashbin" title="Link to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>These commands are only available when the “External storage support” app
-(<code class="docutils literal notranslate"><span class="pre">files_external</span></code>) is enabled.</p>
+<p>These commands are only available when the “Deleted files” app
+(<code class="docutils literal notranslate"><span class="pre">files_trashbin</span></code>) is enabled.</p>
 </div>
-<p>Available commands for the “files_external” namespace:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">files_external</span><span class="p">:</span><span class="n">applicable</span>   <span class="n">Manage</span> <span class="n">applicable</span> <span class="n">users</span> <span class="ow">and</span> <span class="n">groups</span> <span class="k">for</span> <span class="n">a</span> <span class="n">mount</span>
-<span class="n">files_external</span><span class="p">:</span><span class="n">backends</span>     <span class="n">Show</span> <span class="n">available</span> <span class="n">authentication</span> <span class="ow">and</span> <span class="n">storage</span> <span class="n">backends</span>
-<span class="n">files_external</span><span class="p">:</span><span class="n">config</span>       <span class="n">Manage</span> <span class="n">backend</span> <span class="n">configuration</span> <span class="k">for</span> <span class="n">a</span> <span class="n">mount</span>
-<span class="n">files_external</span><span class="p">:</span><span class="n">create</span>       <span class="n">Create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">mount</span> <span class="n">configuration</span>
-<span class="n">files_external</span><span class="p">:</span><span class="n">delete</span>       <span class="n">Delete</span> <span class="n">an</span> <span class="n">external</span> <span class="n">mount</span>
-<span class="n">files_external</span><span class="p">:</span><span class="n">export</span>       <span class="n">Export</span> <span class="n">mount</span> <span class="n">configurations</span>
-<span class="n">files_external</span><span class="p">:</span><span class="kn">import</span><span class="w">       </span><span class="nn">Import</span> <span class="n">mount</span> <span class="n">configurations</span>
-<span class="n">files_external</span><span class="p">:</span><span class="nb">list</span>         <span class="n">List</span> <span class="n">configured</span> <span class="n">admin</span> <span class="ow">or</span> <span class="n">personal</span> <span class="n">mounts</span>
-<span class="n">files_external</span><span class="p">:</span><span class="n">notify</span>       <span class="n">Listen</span> <span class="k">for</span> <span class="n">active</span> <span class="n">update</span> <span class="n">notifications</span> <span class="k">for</span> <span class="n">a</span> <span class="n">configured</span> <span class="n">external</span> <span class="n">mount</span>
-<span class="n">files_external</span><span class="p">:</span><span class="n">option</span>       <span class="n">Manage</span> <span class="n">mount</span> <span class="n">options</span> <span class="k">for</span> <span class="n">a</span> <span class="n">mount</span>
-<span class="n">files_external</span><span class="p">:</span><span class="n">scan</span>         <span class="n">Scan</span> <span class="n">an</span> <span class="n">external</span> <span class="n">storage</span> <span class="k">for</span> <span class="n">changed</span> <span class="n">files</span>
-<span class="n">files_external</span><span class="p">:</span><span class="n">verify</span>       <span class="n">Verify</span> <span class="n">mount</span> <span class="n">configuration</span>
-<span class="n">files_external</span><span class="p">:</span><span class="n">dependencies</span> <span class="n">Check</span> <span class="k">for</span> <span class="nb">any</span> <span class="n">missing</span> <span class="n">dependencies</span> <span class="n">needed</span> <span class="k">for</span> <span class="n">mounting</span> <span class="n">external</span> <span class="n">storages</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">trashbin</span>
+ <span class="n">trashbin</span><span class="p">:</span><span class="n">cleanup</span>  <span class="n">remove</span> <span class="n">deleted</span> <span class="n">files</span>
+ <span class="n">trashbin</span><span class="p">:</span><span class="n">expire</span>   <span class="n">expire</span> <span class="n">deleted</span> <span class="n">files</span> <span class="n">according</span> <span class="n">to</span> <span class="n">the</span> <span class="n">configured</span> <span class="n">retention</span> <span class="n">policy</span>
+ <span class="n">trashbin</span><span class="p">:</span><span class="n">restore</span>  <span class="n">restore</span> <span class="nb">all</span> <span class="n">deleted</span> <span class="n">files</span> <span class="n">according</span> <span class="n">to</span> <span class="n">the</span> <span class="n">given</span> <span class="n">filters</span>
+ <span class="n">trashbin</span><span class="p">:</span><span class="n">size</span>     <span class="n">configure</span> <span class="ow">or</span> <span class="n">show</span> <span class="n">the</span> <span class="n">target</span> <span class="n">trashbin</span> <span class="n">size</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">files_external:scan</span></code> provides the ability to provide a username and/or password for cases where login credentials are used.</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">files_external:export</span></code> to export all admin mounts to stdout, and
-<code class="docutils literal notranslate"><span class="pre">files_external:export</span> <span class="pre">[user_id]</span></code> to export the mounts of the specified
-Nextcloud user.</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">files_external:import</span> <span class="pre">[filename]</span></code> to import legacy JSON configurations,
-and to copy external mount configurations to another Nextcloud server.</p>
+<section id="id1">
+<h3>trashbin:cleanup<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Remove all deleted files for all users, or for specific users:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">cleanup</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">cleanup</span> <span class="n">layla</span> <span class="n">fred</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>trashbin:expire<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>Apply the configured trashbin retention policy and remove files that have
+exceeded the maximum retention age. Runs for all users by default, or for
+specific users:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">expire</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">expire</span> <span class="n">layla</span>
+</pre></div>
+</div>
+</section>
+<section id="trashbin-restore">
+<h3>trashbin:restore<a class="headerlink" href="#trashbin-restore" title="Link to this heading"></a></h3>
+<p>Restore deleted files according to the given filters. Restore all deleted files
+for all users:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">restore</span> <span class="o">--</span><span class="nb">all</span><span class="o">-</span><span class="n">users</span>
+</pre></div>
+</div>
+<p>Restore deleted files for specific users:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">restore</span> <span class="n">layla</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--scope</span></code> to limit the restore to a specific scope; one of <code class="docutils literal notranslate"><span class="pre">user</span></code>,
+<code class="docutils literal notranslate"><span class="pre">groupfolders</span></code>, or <code class="docutils literal notranslate"><span class="pre">all</span></code> (default: <code class="docutils literal notranslate"><span class="pre">user</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">restore</span> <span class="o">--</span><span class="n">scope</span> <span class="n">groupfolders</span> <span class="n">layla</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--since</span></code> and <code class="docutils literal notranslate"><span class="pre">--until</span></code> to limit the restore to files deleted within
+a given time window. Both options accept any format supported by PHP
+<code class="docutils literal notranslate"><span class="pre">strtotime</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">restore</span> <span class="o">--</span><span class="n">scope</span> <span class="nb">all</span> \
+  <span class="o">--</span><span class="n">since</span> <span class="s2">&quot;2026-08-01 11:55:22&quot;</span> <span class="o">--</span><span class="n">until</span> <span class="s2">&quot;2026-08-02 01:33:00&quot;</span> <span class="n">layla</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> to simulate the restore without making any changes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">restore</span> <span class="o">--</span><span class="n">dry</span><span class="o">-</span><span class="n">run</span> <span class="o">--</span><span class="nb">all</span><span class="o">-</span><span class="n">users</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">-v</span></code> or <code class="docutils literal notranslate"><span class="pre">-vv</span></code> to see more detail about the restore process and why
+some files may be skipped.</p>
+</div>
+</section>
+<section id="id3">
+<h3>trashbin:size<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>Show or configure the target trashbin size. When called without arguments,
+shows the current configured size:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">size</span>
+</pre></div>
+</div>
+<p>Set the default trashbin size for all users:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">size</span> <span class="mi">10</span><span class="n">GB</span>
+</pre></div>
+</div>
+<p>Set the trashbin size for a specific user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">size</span> <span class="o">--</span><span class="n">user</span> <span class="n">layla</span> <span class="mi">5</span><span class="n">GB</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="versions">
+<span id="versions-label"></span><h2><a class="toc-backref" href="#id15" role="doc-backlink">Versions</a><a class="headerlink" href="#versions" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These commands are only available when the “Versions” app
+(<code class="docutils literal notranslate"><span class="pre">files_versions</span></code>) is enabled.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">versions</span>
+ <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span>  <span class="n">delete</span> <span class="n">file</span> <span class="n">versions</span>
+ <span class="n">versions</span><span class="p">:</span><span class="n">expire</span>   <span class="n">expire</span> <span class="n">file</span> <span class="n">versions</span> <span class="n">according</span> <span class="n">to</span> <span class="n">the</span> <span class="n">configured</span> <span class="n">retention</span> <span class="n">policy</span>
+</pre></div>
+</div>
+<section id="id4">
+<h3>versions:cleanup<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>Delete all file versions for all users, or for specific users. Use <code class="docutils literal notranslate"><span class="pre">--path</span></code>
+to limit deletion to a specific path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span> <span class="n">layla</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span> <span class="n">layla</span> <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/files/Documents&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>versions:expire<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>Apply the configured version retention policy and remove versions that have
+exceeded the maximum retention age. Runs for all users by default, or for
+specific users:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">expire</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">expire</span> <span class="n">layla</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="integrity-check">
-<span id="integrity-check-label"></span><h2>Integrity check<a class="headerlink" href="#integrity-check" title="Link to this heading"></a></h2>
-<p>Apps which have a <code class="docutils literal notranslate"><span class="pre">Featured</span></code> tag MUST be code signed with Nextcloud. Unsigned featured apps won’t be installable anymore. Code signing is optional for all third-party applications:</p>
+<span id="integrity-check-label"></span><h2><a class="toc-backref" href="#id16" role="doc-backlink">Integrity check</a><a class="headerlink" href="#integrity-check" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">integrity</span>
- <span class="n">integrity</span><span class="p">:</span><span class="n">check</span><span class="o">-</span><span class="n">app</span>                 <span class="n">Check</span> <span class="n">app</span> <span class="n">integrity</span> <span class="n">using</span> <span class="n">a</span> <span class="n">signature</span><span class="o">.</span>
- <span class="n">integrity</span><span class="p">:</span><span class="n">check</span><span class="o">-</span><span class="n">core</span>                <span class="n">Check</span> <span class="n">core</span> <span class="n">integrity</span> <span class="n">using</span> <span class="n">a</span> <span class="n">signature</span><span class="o">.</span>
- <span class="n">integrity</span><span class="p">:</span><span class="n">sign</span><span class="o">-</span><span class="n">app</span>                  <span class="n">Signs</span> <span class="n">an</span> <span class="n">app</span> <span class="n">using</span> <span class="n">a</span> <span class="n">private</span> <span class="n">key</span><span class="o">.</span>
- <span class="n">integrity</span><span class="p">:</span><span class="n">sign</span><span class="o">-</span><span class="n">core</span>                 <span class="n">Sign</span> <span class="n">core</span> <span class="n">using</span> <span class="n">a</span> <span class="n">private</span> <span class="n">key</span>
+ <span class="n">integrity</span><span class="p">:</span><span class="n">check</span><span class="o">-</span><span class="n">app</span>                  <span class="n">check</span> <span class="n">integrity</span> <span class="n">of</span> <span class="n">an</span> <span class="n">app</span> <span class="n">using</span> <span class="n">a</span> <span class="n">signature</span>
+ <span class="n">integrity</span><span class="p">:</span><span class="n">check</span><span class="o">-</span><span class="n">core</span>                 <span class="n">check</span> <span class="n">core</span> <span class="n">integrity</span> <span class="n">using</span> <span class="n">a</span> <span class="n">signature</span>
+ <span class="n">integrity</span><span class="p">:</span><span class="n">sign</span><span class="o">-</span><span class="n">app</span>                   <span class="n">sign</span> <span class="n">an</span> <span class="n">app</span> <span class="n">using</span> <span class="n">a</span> <span class="n">private</span> <span class="n">key</span>
 </pre></div>
 </div>
-<p>After creating your signing key, sign your app like this example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">integrity</span><span class="p">:</span><span class="n">sign</span><span class="o">-</span><span class="n">app</span> <span class="o">--</span><span class="n">privateKey</span><span class="o">=/</span><span class="n">Users</span><span class="o">/</span><span class="n">lukasreschke</span><span class="o">/</span><span class="n">contacts</span><span class="o">.</span><span class="n">key</span> <span class="o">--</span><span class="n">certificate</span><span class="o">=/</span><span class="n">Users</span><span class="o">/</span><span class="n">lukasreschke</span><span class="o">/</span><span class="n">CA</span><span class="o">/</span><span class="n">contacts</span><span class="o">.</span><span class="n">crt</span> <span class="o">--</span><span class="n">path</span><span class="o">=/</span><span class="n">Users</span><span class="o">/</span><span class="n">lukasreschke</span><span class="o">/</span><span class="n">Programming</span><span class="o">/</span><span class="n">contacts</span>
+<p>Apps that carry a <code class="docutils literal notranslate"><span class="pre">Featured</span></code> tag must be code-signed by Nextcloud.
+Unsigned featured apps cannot be installed.</p>
+<section id="integrity-check-app">
+<h3>integrity:check-app<a class="headerlink" href="#integrity-check-app" title="Link to this heading"></a></h3>
+<p>Check the integrity of an app against its signature:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">integrity</span><span class="p">:</span><span class="n">check</span><span class="o">-</span><span class="n">app</span> <span class="n">contacts</span>
 </pre></div>
 </div>
-<p>Verify your app:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">integrity</span><span class="p">:</span><span class="n">check</span><span class="o">-</span><span class="n">app</span> <span class="o">--</span><span class="n">path</span><span class="o">=/</span><span class="n">pathto</span><span class="o">/</span><span class="n">app</span> <span class="n">appname</span>
+<p>Check all installed apps at once:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">integrity</span><span class="p">:</span><span class="n">check</span><span class="o">-</span><span class="n">app</span> <span class="o">--</span><span class="nb">all</span>
 </pre></div>
 </div>
-<p>When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See <a class="reference external" href="https://docs.nextcloud.com/server/latest/developer_manual/app_publishing_maintenance/code_signing.html#how-to-get-your-app-signed">Code Signing</a> in the Developer manual for more detailed information.</p>
-<p><code class="docutils literal notranslate"><span class="pre">integrity:sign-core</span></code> is for Nextcloud core developers only.</p>
-<p>See <a class="reference internal" href="issues/code_signing.html"><span class="doc">Code signing</span></a> to learn more.</p>
+<p>When the app passes, the command produces no output (use <code class="docutils literal notranslate"><span class="pre">-v</span></code> to confirm).
+When it fails, each integrity error is listed with details. Use
+<code class="docutils literal notranslate"><span class="pre">--path</span></code> to point to a non-standard app location:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">integrity</span><span class="p">:</span><span class="n">check</span><span class="o">-</span><span class="n">app</span> \
+  <span class="o">--</span><span class="n">path</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">myapp</span> <span class="n">myapp</span>
+</pre></div>
+</div>
+<p>Apps without a <code class="docutils literal notranslate"><span class="pre">signature.json</span></code> file are skipped with an informational
+message.</p>
 </section>
-<section id="l10n-create-javascript-translation-files-for-apps">
-<span id="create-javascript-translation-files-label"></span><h2>l10n, create JavaScript translation files for apps<a class="headerlink" href="#l10n-create-javascript-translation-files-for-apps" title="Link to this heading"></a></h2>
-<p>This command is for app developers to update their translation mechanism from
-ownCloud 7 to Nextcloud.</p>
+<section id="integrity-check-core">
+<h3>integrity:check-core<a class="headerlink" href="#integrity-check-core" title="Link to this heading"></a></h3>
+<p>Check the integrity of Nextcloud core against its signature:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">integrity</span><span class="p">:</span><span class="n">check</span><span class="o">-</span><span class="n">core</span>
+</pre></div>
+</div>
+</section>
+<section id="integrity-sign-app">
+<h3>integrity:sign-app<a class="headerlink" href="#integrity-sign-app" title="Link to this heading"></a></h3>
+<p>Sign an app with a private key before distribution. Requires the key and
+certificate obtained through the Nextcloud signing process:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">integrity</span><span class="p">:</span><span class="n">sign</span><span class="o">-</span><span class="n">app</span> \
+  <span class="o">--</span><span class="n">path</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">app</span> \
+  <span class="o">--</span><span class="n">privateKey</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">myapp</span><span class="o">.</span><span class="n">key</span> \
+  <span class="o">--</span><span class="n">certificate</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">myapp</span><span class="o">.</span><span class="n">crt</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://docs.nextcloud.com/server/latest/developer_manual/app_publishing_maintenance/code_signing.html">Code Signing</a>
+in the Developer manual for the full signing process.</p>
+</section>
 </section>
 </section>
 
