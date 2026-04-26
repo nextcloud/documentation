@@ -62,7 +62,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release_schedule.html">Maintenance and release schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdpr/index.html">GDPR compliance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="declarations/index.html">Declarations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
@@ -81,6 +81,7 @@
 <li class="toctree-l2"><a class="reference internal" href="occ_command.html#running-occ">Running occ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="occ_command.html#enabling-autocompletion">Enabling autocompletion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="occ_command.html#limitations-in-maintenance-mode">Limitations in maintenance mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html#debugging">Debugging</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="occ_command.html#command-reference">Command reference</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="occ_apps.html">Apps, background jobs &amp; config commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="occ_database.html">DAV &amp; database commands</a></li>
@@ -89,19 +90,25 @@
 <li class="toctree-l3"><a class="reference internal" href="occ_ldap.html">LDAP commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="occ_users.html">User &amp; group commands</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">System &amp; maintenance commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#admin-delegation">Admin delegation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#background-jobs">Background jobs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#broadcast">Broadcast</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#info">Info</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#logging-commands">Logging commands</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#maintenance-commands">Maintenance commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#oauth2">OAuth2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#security">Security</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-checks">Setup checks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#share-operations">Share operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#snowflake-ids">Snowflake IDs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#status">Status</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#trashbin">Trashbin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#versions">Versions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-processing">Task processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theming">Theming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#webhook-listeners">Webhook listeners</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#workflows">Workflows</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#command-line-installation">Command line installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#command-line-upgrade">Command line upgrade</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#antivirus">Antivirus</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#setupchecks">Setupchecks</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#snowflake-ids">Snowflake IDs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#share-operations">Share operations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#debugging">Debugging</a></li>
 </ul>
 </li>
 </ul>
@@ -185,452 +192,481 @@
              
   <section id="system-maintenance-commands">
 <h1>System &amp; maintenance commands<a class="headerlink" href="#system-maintenance-commands" title="Link to this heading"></a></h1>
-<section id="logging-commands">
-<span id="logging-commands-label"></span><h2>Logging commands<a class="headerlink" href="#logging-commands" title="Link to this heading"></a></h2>
-<p>These commands view and configure your Nextcloud logging preferences:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span>
- <span class="n">log</span><span class="p">:</span><span class="n">file</span>        <span class="n">manipulate</span> <span class="n">Nextcloud</span> <span class="n">logging</span> <span class="n">backend</span>
- <span class="n">log</span><span class="p">:</span><span class="n">manage</span>      <span class="n">manage</span> <span class="n">logging</span> <span class="n">configuration</span>
- <span class="n">log</span><span class="p">:</span><span class="n">tail</span>        <span class="n">tail</span> <span class="n">the</span> <span class="n">nextcloud</span> <span class="n">logfile</span> <span class="p">[</span><span class="n">requires</span> <span class="n">app</span> <span class="s2">&quot;Log Reader&quot;</span> <span class="n">to</span> <span class="n">be</span> <span class="n">enabled</span><span class="p">]</span>
- <span class="n">log</span><span class="p">:</span><span class="n">watch</span>       <span class="n">watch</span> <span class="n">the</span> <span class="n">nextcloud</span> <span class="n">logfile</span> <span class="n">live</span> <span class="p">[</span><span class="n">requires</span> <span class="n">app</span> <span class="s2">&quot;Log Reader&quot;</span> <span class="n">to</span> <span class="n">be</span> <span class="n">enabled</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>Run <code class="docutils literal notranslate"><span class="pre">log:file</span> <span class="pre">[--]</span> <span class="pre">[--enable]</span> <span class="pre">[--file]</span> <span class="pre">[--rotate-size]</span></code> to see your current logging status:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">log</span><span class="p">:</span><span class="n">file</span>
-<span class="n">Log</span> <span class="n">backend</span> <span class="n">Nextcloud</span><span class="p">:</span> <span class="n">enabled</span>
-<span class="n">Log</span> <span class="n">file</span><span class="p">:</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">log</span>
-<span class="n">Rotate</span> <span class="n">at</span><span class="p">:</span> <span class="n">disabled</span>
-</pre></div>
-</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands in this section cover server administration, background
+job management, and operational tasks. They let you configure logging and
+theming, manage background jobs and AI task processing, administer OAuth2
+clients, delegation rules and workflows, check server status, and perform
+installation and upgrade procedures from the command line.</p>
+<nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">--enable</span></code> turns on logging.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--file</span></code> sets a different log file path.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--rotate-size</span></code> sets your rotation by log file size in bytes with; 0 disables rotation.</p></li>
+<li><p><a class="reference internal" href="#admin-delegation" id="id1">Admin delegation</a></p></li>
+<li><p><a class="reference internal" href="#background-jobs" id="id2">Background jobs</a></p></li>
+<li><p><a class="reference internal" href="#broadcast" id="id3">Broadcast</a></p></li>
+<li><p><a class="reference internal" href="#info" id="id4">Info</a></p></li>
+<li><p><a class="reference internal" href="#logging-commands" id="id5">Logging commands</a></p></li>
+<li><p><a class="reference internal" href="#maintenance-commands" id="id6">Maintenance commands</a></p></li>
+<li><p><a class="reference internal" href="#oauth2" id="id7">OAuth2</a></p></li>
+<li><p><a class="reference internal" href="#security" id="id8">Security</a></p></li>
+<li><p><a class="reference internal" href="#setup-checks" id="id9">Setup checks</a></p></li>
+<li><p><a class="reference internal" href="#share-operations" id="id10">Share operations</a></p></li>
+<li><p><a class="reference internal" href="#snowflake-ids" id="id11">Snowflake IDs</a></p></li>
+<li><p><a class="reference internal" href="#status" id="id12">Status</a></p></li>
+<li><p><a class="reference internal" href="#task-processing" id="id13">Task processing</a></p></li>
+<li><p><a class="reference internal" href="#theming" id="id14">Theming</a></p></li>
+<li><p><a class="reference internal" href="#webhook-listeners" id="id15">Webhook listeners</a></p></li>
+<li><p><a class="reference internal" href="#workflows" id="id16">Workflows</a></p></li>
+<li><p><a class="reference internal" href="#command-line-installation" id="id17">Command line installation</a></p></li>
+<li><p><a class="reference internal" href="#command-line-upgrade" id="id18">Command line upgrade</a></p></li>
+<li><p><a class="reference internal" href="#antivirus" id="id19">Antivirus</a></p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">log:manage</span> <span class="pre">[--backend]</span> <span class="pre">[--level]</span> <span class="pre">[--timezone]</span></code> sets your logging backend, log level, and timezone. The defaults
-are <code class="docutils literal notranslate"><span class="pre">file</span></code>, <code class="docutils literal notranslate"><span class="pre">warning</span></code>, and <code class="docutils literal notranslate"><span class="pre">UTC</span></code>. Available options are:</p>
+</nav>
+<section id="admin-delegation">
+<span id="admin-delegation-label"></span><h2><a class="toc-backref" href="#id1" role="doc-backlink">Admin delegation</a><a class="headerlink" href="#admin-delegation" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">admin-delegation</span></code> commands allow granting non-admin groups access to
+specific admin settings panels, without giving them full administrator
+privileges:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">admin</span><span class="o">-</span><span class="n">delegation</span>
+ <span class="n">admin</span><span class="o">-</span><span class="n">delegation</span><span class="p">:</span><span class="n">add</span>     <span class="n">add</span> <span class="n">setting</span> <span class="n">delegation</span> <span class="n">to</span> <span class="n">a</span> <span class="n">group</span>
+ <span class="n">admin</span><span class="o">-</span><span class="n">delegation</span><span class="p">:</span><span class="n">remove</span>  <span class="n">remove</span> <span class="n">settings</span> <span class="n">delegation</span> <span class="kn">from</span><span class="w"> </span><span class="nn">a</span> <span class="n">group</span>
+ <span class="n">admin</span><span class="o">-</span><span class="n">delegation</span><span class="p">:</span><span class="n">show</span>    <span class="n">show</span> <span class="n">delegated</span> <span class="n">settings</span>
+</pre></div>
+</div>
+<section id="admin-delegation-add">
+<h3>admin-delegation:add<a class="headerlink" href="#admin-delegation-add" title="Link to this heading"></a></h3>
+<p>Delegate an admin settings class to a group:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">admin</span><span class="o">-</span><span class="n">delegation</span><span class="p">:</span><span class="n">add</span> \
+  <span class="s1">&#39;OCA\Settings\Settings\Admin\Sharing&#39;</span> <span class="n">milliways</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">settingClass</span></code> argument must be the fully qualified PHP class name of a
+settings class that implements <code class="docutils literal notranslate"><span class="pre">IDelegatedSettings</span></code>. Common examples:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">--backend</span> <span class="pre">[file,</span> <span class="pre">syslog,</span> <span class="pre">errorlog,</span> <span class="pre">systemd]</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--level</span> <span class="pre">[debug|info|warning|error|fatal]</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--timezone</span></code> according to <a class="reference external" href="https://www.php.net/manual/en/timezones.php">https://www.php.net/manual/en/timezones.php</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCA\Settings\Settings\Admin\Sharing</span></code> — sharing administration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCA\Settings\Settings\Admin\Users</span></code> — user management</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCA\Settings\Settings\Admin\Mail</span></code> — email configuration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCA\Theming\Settings\Admin</span></code> — theming settings</p></li>
 </ul>
 </section>
+<section id="admin-delegation-remove">
+<h3>admin-delegation:remove<a class="headerlink" href="#admin-delegation-remove" title="Link to this heading"></a></h3>
+<p>Remove a settings delegation from a group:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">admin</span><span class="o">-</span><span class="n">delegation</span><span class="p">:</span><span class="n">remove</span> \
+  <span class="s1">&#39;OCA\Settings\Settings\Admin\Sharing&#39;</span> <span class="n">milliways</span>
+</pre></div>
+</div>
+</section>
+<section id="admin-delegation-show">
+<h3>admin-delegation:show<a class="headerlink" href="#admin-delegation-show" title="Link to this heading"></a></h3>
+<p>Show all currently configured settings delegations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">admin</span><span class="o">-</span><span class="n">delegation</span><span class="p">:</span><span class="n">show</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> for machine-readable output.</p>
+</section>
+</section>
+<section id="background-jobs">
+<span id="occ-background-jobs-label"></span><h2><a class="toc-backref" href="#id2" role="doc-backlink">Background jobs</a><a class="headerlink" href="#background-jobs" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">background-job</span></code> commands let you inspect and execute individual
+background jobs. The separate <code class="docutils literal notranslate"><span class="pre">background:cron</span></code>, <code class="docutils literal notranslate"><span class="pre">background:ajax</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">background:webcron</span></code> commands configure how the background job scheduler is
+triggered:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">background</span>
+ <span class="n">background</span><span class="p">:</span><span class="n">ajax</span>     <span class="n">use</span> <span class="n">ajax</span> <span class="n">to</span> <span class="n">run</span> <span class="n">background</span> <span class="n">jobs</span>
+ <span class="n">background</span><span class="p">:</span><span class="n">cron</span>     <span class="n">use</span> <span class="n">cron</span> <span class="n">to</span> <span class="n">run</span> <span class="n">background</span> <span class="n">jobs</span>
+ <span class="n">background</span><span class="p">:</span><span class="n">webcron</span>  <span class="n">use</span> <span class="n">webcron</span> <span class="n">to</span> <span class="n">run</span> <span class="n">background</span> <span class="n">jobs</span>
+<span class="n">background</span><span class="o">-</span><span class="n">job</span>
+ <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">delete</span>   <span class="n">remove</span> <span class="n">a</span> <span class="n">background</span> <span class="n">job</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">database</span>
+ <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">execute</span>  <span class="n">execute</span> <span class="n">a</span> <span class="n">single</span> <span class="n">background</span> <span class="n">job</span> <span class="n">manually</span>
+ <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="nb">list</span>     <span class="nb">list</span> <span class="n">background</span> <span class="n">jobs</span>
+ <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">worker</span>   <span class="n">run</span> <span class="n">a</span> <span class="n">background</span> <span class="n">job</span> <span class="n">worker</span>
+</pre></div>
+</div>
+<section id="background-cron">
+<h3>background:cron<a class="headerlink" href="#background-cron" title="Link to this heading"></a></h3>
+<p>Set the background job execution mode to cron. Nextcloud recommends the
+system cron mode for production instances:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="p">:</span><span class="n">cron</span>
+  <span class="n">Set</span> <span class="n">mode</span> <span class="k">for</span> <span class="n">background</span> <span class="n">jobs</span> <span class="n">to</span> <span class="s1">&#39;cron&#39;</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">background:ajax</span></code> to switch to the in-browser AJAX scheduler or
+<code class="docutils literal notranslate"><span class="pre">background:webcron</span></code> for an external webcron service instead.</p>
+<p>See <a class="reference internal" href="configuration_server/background_jobs_configuration.html"><span class="doc">Background jobs</span></a> for a full
+guide to configuring the background job scheduler.</p>
+</section>
+<section id="background-job-delete">
+<h3>background-job:delete<a class="headerlink" href="#background-job-delete" title="Link to this heading"></a></h3>
+<p>Remove a background job from the database. The command shows the job details
+and asks for confirmation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo -E -u www-data php occ background-job:delete 42
+  Job class: OCA\Files\BackgroundJob\ScanFiles
+  Arguments: []
+
+  Do you really want to delete this background job? It could create some misbehaviours in Nextcloud. (y/N)
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Deleting a background job can cause Nextcloud features to stop working
+correctly. Only delete jobs that you know are safe to remove, such as
+duplicate or orphaned entries.</p>
+</div>
+</section>
+<section id="background-job-execute">
+<h3>background-job:execute<a class="headerlink" href="#background-job-execute" title="Link to this heading"></a></h3>
+<p>Execute a single background job by its database ID:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">execute</span> <span class="mi">42</span>
+</pre></div>
+</div>
+<p>The command shows the job’s class, type, last run time, and next scheduled
+execution before running it. If the job was recently run and is not yet due,
+it may be skipped; use <code class="docutils literal notranslate"><span class="pre">--force-execute</span></code> to run it regardless:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">execute</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">execute</span> <span class="mi">42</span>
+</pre></div>
+</div>
+</section>
+<section id="background-job-list">
+<h3>background-job:list<a class="headerlink" href="#background-job-list" title="Link to this heading"></a></h3>
+<p>List all background jobs registered in the database:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo -E -u www-data php occ background-job:list
++----+------------------------------------------------------+---------------------------+------------+
+| id | class                                                | last_run                  | argument   |
++----+------------------------------------------------------+---------------------------+------------+
+| 1  | OCA\Files\BackgroundJob\ScanFiles                    | 2025-06-23T10:00:00+00:00 | []         |
+| 2  | OCA\Activity\BackgroundJob\DigestMail                | 2025-06-23T08:00:00+00:00 | []         |
+| 3  | OC\Share20\SharesReminderJob                         | 2025-06-23T07:00:00+00:00 | []         |
++----+------------------------------------------------------+---------------------------+------------+
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">-c</span></code> / <code class="docutils literal notranslate"><span class="pre">--class</span></code> to filter by job class, <code class="docutils literal notranslate"><span class="pre">-l</span></code> / <code class="docutils literal notranslate"><span class="pre">--limit</span></code> to
+control how many jobs are shown (default: 500), and <code class="docutils literal notranslate"><span class="pre">-o</span></code> / <code class="docutils literal notranslate"><span class="pre">--offset</span></code> to
+page through results.</p>
+</section>
+<section id="background-job-worker">
+<h3>background-job:worker<a class="headerlink" href="#background-job-worker" title="Link to this heading"></a></h3>
+<p>Run a continuous background job worker. This is an alternative to system cron
+for environments where you want to run background jobs from a persistent
+process rather than a periodic cron invocation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">worker</span>
+</pre></div>
+</div>
+<p>By default the worker runs indefinitely, polling for new jobs every second.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--once</span></code> to process at most one job then exit (equivalent to a single
+cron run):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">worker</span> <span class="o">--</span><span class="n">once</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--stop_after</span></code> to set a maximum runtime before the worker exits cleanly
+(the currently running job is allowed to finish). Accepts seconds, or values
+like <code class="docutils literal notranslate"><span class="pre">30s</span></code>, <code class="docutils literal notranslate"><span class="pre">10m</span></code>, <code class="docutils literal notranslate"><span class="pre">2h</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">worker</span> <span class="o">--</span><span class="n">stop_after</span> <span class="mi">1</span><span class="n">h</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--interval</span></code> to set the poll interval in seconds (default: 1). Set to
+<code class="docutils literal notranslate"><span class="pre">0</span></code> to process jobs once and exit if none are found:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">worker</span> <span class="o">--</span><span class="n">interval</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>Pass one or more job class names to process only jobs of those types:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">worker</span> \
+  <span class="s1">&#39;OCA\Files\BackgroundJob\ScanFiles&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="broadcast">
+<span id="broadcast-label"></span><h2><a class="toc-backref" href="#id3" role="doc-backlink">Broadcast</a><a class="headerlink" href="#broadcast" title="Link to this heading"></a></h2>
+<p>Send a test Server-Sent Events (SSE) broadcast to verify that real-time push
+notifications are working:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">broadcast</span><span class="p">:</span><span class="n">test</span> <span class="n">layla</span>
+</pre></div>
+</div>
+<p>Pass a custom event name as the second argument (default: <code class="docutils literal notranslate"><span class="pre">test</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">broadcast</span><span class="p">:</span><span class="n">test</span> <span class="n">layla</span> <span class="n">my</span><span class="o">-</span><span class="n">event</span>
+</pre></div>
+</div>
+</section>
+<section id="info">
+<span id="info-label"></span><h2><a class="toc-backref" href="#id4" role="doc-backlink">Info</a><a class="headerlink" href="#info" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">info</span></code> commands display detailed information about files and storages.
+They are useful for debugging file access problems, investigating storage
+layout, and identifying space usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">info</span>
+ <span class="n">info</span><span class="p">:</span><span class="n">file</span>        <span class="n">get</span> <span class="n">information</span> <span class="k">for</span> <span class="n">a</span> <span class="n">file</span>
+ <span class="n">info</span><span class="p">:</span><span class="n">file</span><span class="p">:</span><span class="n">space</span>  <span class="n">summarize</span> <span class="n">space</span> <span class="n">usage</span> <span class="n">of</span> <span class="n">a</span> <span class="n">folder</span>
+ <span class="n">info</span><span class="p">:</span><span class="n">storage</span>     <span class="n">get</span> <span class="n">information</span> <span class="k">for</span> <span class="n">a</span> <span class="n">single</span> <span class="n">storage</span>
+ <span class="n">info</span><span class="p">:</span><span class="n">storages</span>    <span class="nb">list</span> <span class="n">storages</span> <span class="n">ordered</span> <span class="n">by</span> <span class="n">file</span> <span class="n">count</span>
+</pre></div>
+</div>
+<section id="info-file">
+<h3>info:file<a class="headerlink" href="#info-file" title="Link to this heading"></a></h3>
+<p>Show detailed information for a file or folder identified by file ID or path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">info</span><span class="p">:</span><span class="n">file</span> <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span>
+  <span class="n">FileId</span><span class="p">:</span> <span class="mi">12345</span>
+  <span class="n">MimeType</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">pdf</span>
+  <span class="n">Modified</span><span class="p">:</span> <span class="mi">2025</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">01</span><span class="n">T14</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">00</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+  <span class="n">Encrypted</span><span class="p">:</span> <span class="n">false</span>
+  <span class="n">Size</span><span class="p">:</span> <span class="mi">204800</span>
+  <span class="n">ETag</span><span class="p">:</span> <span class="n">abc123</span>
+  <span class="n">Permissions</span><span class="p">:</span> <span class="mi">27</span>
+  <span class="n">Users</span> <span class="k">with</span> <span class="n">access</span><span class="p">:</span> <span class="n">layla</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">-c</span></code> / <code class="docutils literal notranslate"><span class="pre">--children</span></code> to list the immediate contents of a folder.
+Use <code class="docutils literal notranslate"><span class="pre">--storage-tree</span></code> to display the storage and cache wrapping tree.</p>
+</section>
+<section id="info-file-space">
+<h3>info:file:space<a class="headerlink" href="#info-file-space" title="Link to this heading"></a></h3>
+<p>Show how much space a folder uses, with a ranked breakdown of the largest
+items:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">info</span><span class="p">:</span><span class="n">file</span><span class="p">:</span><span class="n">space</span> <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Videos</span>
+  <span class="n">Total</span><span class="p">:</span> <span class="mf">14.7</span> <span class="n">GB</span>
+  <span class="o">+------------------+--------+</span>
+  <span class="o">|</span> <span class="n">Path</span>             <span class="o">|</span> <span class="n">Size</span>   <span class="o">|</span>
+  <span class="o">+------------------+--------+</span>
+  <span class="o">|</span> <span class="n">lecture</span><span class="o">-</span><span class="mf">2025.</span><span class="n">mp4</span> <span class="o">|</span> <span class="mf">8.2</span> <span class="n">GB</span> <span class="o">|</span>
+  <span class="o">|</span> <span class="n">demo</span><span class="o">-</span><span class="n">video</span><span class="o">.</span><span class="n">mp4</span>   <span class="o">|</span> <span class="mf">4.1</span> <span class="n">GB</span> <span class="o">|</span>
+  <span class="o">+------------------+--------+</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">-c</span></code> / <code class="docutils literal notranslate"><span class="pre">--count</span></code> to change the number of items shown (default: 25),
+or <code class="docutils literal notranslate"><span class="pre">-a</span></code> / <code class="docutils literal notranslate"><span class="pre">--all</span></code> to show all items.</p>
+</section>
+<section id="info-storage">
+<h3>info:storage<a class="headerlink" href="#info-storage" title="Link to this heading"></a></h3>
+<p>Show information for a single storage by its numeric storage ID:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">info</span><span class="p">:</span><span class="n">storage</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</section>
+<section id="info-storages">
+<h3>info:storages<a class="headerlink" href="#info-storages" title="Link to this heading"></a></h3>
+<p>List all storages ordered by the number of files they contain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">info</span><span class="p">:</span><span class="n">storages</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">-c</span></code> / <code class="docutils literal notranslate"><span class="pre">--count</span></code> to limit the number of storages shown (default: 25),
+or <code class="docutils literal notranslate"><span class="pre">-a</span></code> / <code class="docutils literal notranslate"><span class="pre">--all</span></code> to list all storages.</p>
+</section>
+</section>
+<section id="logging-commands">
+<span id="logging-commands-label"></span><h2><a class="toc-backref" href="#id5" role="doc-backlink">Logging commands</a><a class="headerlink" href="#logging-commands" title="Link to this heading"></a></h2>
+<p>These commands view and configure your Nextcloud logging preferences:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span>
+ <span class="n">log</span><span class="p">:</span><span class="n">file</span>    <span class="n">manipulate</span> <span class="n">Nextcloud</span> <span class="n">logging</span> <span class="n">backend</span>
+ <span class="n">log</span><span class="p">:</span><span class="n">manage</span>  <span class="n">manage</span> <span class="n">logging</span> <span class="n">configuration</span>
+ <span class="n">log</span><span class="p">:</span><span class="n">tail</span>    <span class="n">tail</span> <span class="n">the</span> <span class="n">Nextcloud</span> <span class="n">logfile</span> <span class="p">[</span><span class="n">requires</span> <span class="n">app</span> <span class="s2">&quot;Log Reader&quot;</span> <span class="n">to</span> <span class="n">be</span> <span class="n">enabled</span><span class="p">]</span>
+ <span class="n">log</span><span class="p">:</span><span class="n">watch</span>   <span class="n">watch</span> <span class="n">the</span> <span class="n">Nextcloud</span> <span class="n">logfile</span> <span class="n">live</span> <span class="p">[</span><span class="n">requires</span> <span class="n">app</span> <span class="s2">&quot;Log Reader&quot;</span> <span class="n">to</span> <span class="n">be</span> <span class="n">enabled</span><span class="p">]</span>
+</pre></div>
+</div>
+<section id="log-file">
+<h3>log:file<a class="headerlink" href="#log-file" title="Link to this heading"></a></h3>
+<p>Show the current logging status:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">log</span><span class="p">:</span><span class="n">file</span>
+  <span class="n">Log</span> <span class="n">backend</span> <span class="n">Nextcloud</span><span class="p">:</span> <span class="n">enabled</span>
+  <span class="n">Log</span> <span class="n">file</span><span class="p">:</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">log</span>
+  <span class="n">Rotate</span> <span class="n">at</span><span class="p">:</span> <span class="n">disabled</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--enable</span></code> to turn on the Nextcloud log backend, <code class="docutils literal notranslate"><span class="pre">--file</span></code> to set a
+different log file path, and <code class="docutils literal notranslate"><span class="pre">--rotate-size</span></code> to rotate the log at a given
+file size in bytes (<code class="docutils literal notranslate"><span class="pre">0</span></code> disables rotation).</p>
+</section>
+<section id="log-manage">
+<h3>log:manage<a class="headerlink" href="#log-manage" title="Link to this heading"></a></h3>
+<p>Set the logging backend, log level, and timezone. The defaults are <code class="docutils literal notranslate"><span class="pre">file</span></code>,
+<code class="docutils literal notranslate"><span class="pre">warning</span></code>, and <code class="docutils literal notranslate"><span class="pre">UTC</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">log</span><span class="p">:</span><span class="n">manage</span> <span class="o">--</span><span class="n">backend</span> <span class="n">file</span> <span class="o">--</span><span class="n">level</span> <span class="n">warning</span> <span class="o">--</span><span class="n">timezone</span> <span class="n">UTC</span>
+  <span class="n">Log</span> <span class="n">backend</span><span class="p">:</span> <span class="n">file</span>
+  <span class="n">Log</span> <span class="n">level</span><span class="p">:</span> <span class="ne">Warning</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+  <span class="n">Log</span> <span class="n">timezone</span><span class="p">:</span> <span class="n">UTC</span>
+</pre></div>
+</div>
+<p>Options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--backend</span></code> — one of: <code class="docutils literal notranslate"><span class="pre">file</span></code>, <code class="docutils literal notranslate"><span class="pre">syslog</span></code>, <code class="docutils literal notranslate"><span class="pre">errorlog</span></code>, <code class="docutils literal notranslate"><span class="pre">systemd</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--level</span></code> — one of: <code class="docutils literal notranslate"><span class="pre">debug</span></code>, <code class="docutils literal notranslate"><span class="pre">info</span></code>, <code class="docutils literal notranslate"><span class="pre">warning</span></code>, <code class="docutils literal notranslate"><span class="pre">error</span></code>, <code class="docutils literal notranslate"><span class="pre">fatal</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--timezone</span></code> — a PHP timezone name; see <a class="reference external" href="https://www.php.net/manual/en/timezones.php">https://www.php.net/manual/en/timezones.php</a></p></li>
+</ul>
+</section>
+</section>
 <section id="maintenance-commands">
-<span id="maintenance-commands-label"></span><h2>Maintenance commands<a class="headerlink" href="#maintenance-commands" title="Link to this heading"></a></h2>
-<p>Use these commands when you upgrade Nextcloud, manage encryption, perform
-backups and other tasks that require locking users out until you are finished:</p>
+<span id="maintenance-commands-label"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink">Maintenance commands</a><a class="headerlink" href="#maintenance-commands" title="Link to this heading"></a></h2>
+<p>Use these commands when you upgrade Nextcloud, perform backups, or carry out
+other tasks that require locking users out temporarily:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">maintenance</span>
- <span class="n">maintenance</span><span class="p">:</span><span class="n">data</span><span class="o">-</span><span class="n">fingerprint</span>        <span class="n">update</span> <span class="n">the</span> <span class="n">systems</span> <span class="n">data</span><span class="o">-</span><span class="n">fingerprint</span> <span class="n">after</span> <span class="n">a</span> <span class="n">backup</span> <span class="ow">is</span> <span class="n">restored</span>
- <span class="n">maintenance</span><span class="p">:</span><span class="n">mimetype</span><span class="p">:</span><span class="n">update</span><span class="o">-</span><span class="n">db</span>      <span class="n">Update</span> <span class="n">database</span> <span class="n">mimetypes</span> <span class="ow">and</span> <span class="n">update</span> <span class="n">filecache</span>
- <span class="n">maintenance</span><span class="p">:</span><span class="n">mimetype</span><span class="p">:</span><span class="n">update</span><span class="o">-</span><span class="n">js</span>      <span class="n">Update</span> <span class="n">mimetypelist</span><span class="o">.</span><span class="n">js</span>
- <span class="n">maintenance</span><span class="p">:</span><span class="n">mode</span>                    <span class="nb">set</span> <span class="n">maintenance</span> <span class="n">mode</span>
- <span class="n">maintenance</span><span class="p">:</span><span class="n">repair</span>                  <span class="n">repair</span> <span class="n">this</span> <span class="n">installation</span>
- <span class="n">maintenance</span><span class="p">:</span><span class="n">theme</span><span class="p">:</span><span class="n">update</span>            <span class="n">Apply</span> <span class="n">custom</span> <span class="n">theme</span> <span class="n">changes</span>
- <span class="n">maintenance</span><span class="p">:</span><span class="n">update</span><span class="p">:</span><span class="n">htaccess</span>         <span class="n">Updates</span> <span class="n">the</span> <span class="o">.</span><span class="n">htaccess</span> <span class="n">file</span>
- <span class="n">maintenance</span><span class="p">:</span><span class="n">repair</span><span class="o">-</span><span class="n">share</span><span class="o">-</span><span class="n">owner</span>      <span class="n">Fix</span> <span class="n">some</span> <span class="n">shares</span> <span class="n">owner</span> <span class="k">if</span> <span class="n">it</span> <span class="n">felt</span> <span class="n">out</span> <span class="n">of</span> <span class="n">sync</span>
+ <span class="n">maintenance</span><span class="p">:</span><span class="n">data</span><span class="o">-</span><span class="n">fingerprint</span>    <span class="n">update</span> <span class="n">the</span> <span class="n">systems</span> <span class="n">data</span><span class="o">-</span><span class="n">fingerprint</span> <span class="n">after</span> <span class="n">a</span> <span class="n">backup</span> <span class="ow">is</span> <span class="n">restored</span>
+ <span class="n">maintenance</span><span class="p">:</span><span class="n">mimetype</span><span class="p">:</span><span class="n">update</span><span class="o">-</span><span class="n">db</span>  <span class="n">update</span> <span class="n">database</span> <span class="n">mimetypes</span> <span class="ow">and</span> <span class="n">update</span> <span class="n">filecache</span>
+ <span class="n">maintenance</span><span class="p">:</span><span class="n">mimetype</span><span class="p">:</span><span class="n">update</span><span class="o">-</span><span class="n">js</span>  <span class="n">update</span> <span class="n">mimetypelist</span><span class="o">.</span><span class="n">js</span>
+ <span class="n">maintenance</span><span class="p">:</span><span class="n">mode</span>                <span class="nb">set</span> <span class="n">maintenance</span> <span class="n">mode</span>
+ <span class="n">maintenance</span><span class="p">:</span><span class="n">repair</span>              <span class="n">repair</span> <span class="n">this</span> <span class="n">installation</span>
+ <span class="n">maintenance</span><span class="p">:</span><span class="n">repair</span><span class="o">-</span><span class="n">share</span><span class="o">-</span><span class="n">owner</span>  <span class="n">fix</span> <span class="n">some</span> <span class="n">shares</span> <span class="n">owner</span> <span class="k">if</span> <span class="n">it</span> <span class="n">fell</span> <span class="n">out</span> <span class="n">of</span> <span class="n">sync</span>
+ <span class="n">maintenance</span><span class="p">:</span><span class="n">theme</span><span class="p">:</span><span class="n">update</span>        <span class="n">apply</span> <span class="n">custom</span> <span class="n">theme</span> <span class="n">changes</span>
+ <span class="n">maintenance</span><span class="p">:</span><span class="n">update</span><span class="p">:</span><span class="n">htaccess</span>     <span class="n">update</span> <span class="n">the</span> <span class="o">.</span><span class="n">htaccess</span> <span class="n">file</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">maintenance:mode</span></code> locks the sessions of all logged-in users, including
-administrators, and displays a status screen warning that the server is in
-maintenance mode. Users who are not already logged in cannot log in until
-maintenance mode is turned off. When you take the server out of maintenance mode
-logged-in users must refresh their Web browsers to continue working:</p>
+<section id="maintenance-data-fingerprint">
+<h3>maintenance:data-fingerprint<a class="headerlink" href="#maintenance-data-fingerprint" title="Link to this heading"></a></h3>
+<p>After restoring a backup of your data directory or the database, run this
+command once. It updates the ETag for all files, allowing sync clients to
+detect that files were modified:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">data</span><span class="o">-</span><span class="n">fingerprint</span>
+</pre></div>
+</div>
+</section>
+<section id="maintenance-mimetype-update-db-and-maintenance-mimetype-update-js">
+<h3>maintenance:mimetype:update-db and maintenance:mimetype:update-js<a class="headerlink" href="#maintenance-mimetype-update-db-and-maintenance-mimetype-update-js" title="Link to this heading"></a></h3>
+<p>Update the Nextcloud database and file cache with changed mimetypes from
+<code class="docutils literal notranslate"><span class="pre">config/mimetypemapping.json</span></code>. Run after modifying that file. Pass
+<code class="docutils literal notranslate"><span class="pre">--repair-filecache</span></code> to apply the change to existing files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">mimetype</span><span class="p">:</span><span class="n">update</span><span class="o">-</span><span class="n">db</span> <span class="o">--</span><span class="n">repair</span><span class="o">-</span><span class="n">filecache</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">maintenance:mimetype:update-js</span></code> regenerates the client-side mimetype list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">mimetype</span><span class="p">:</span><span class="n">update</span><span class="o">-</span><span class="n">js</span>
+</pre></div>
+</div>
+</section>
+<section id="maintenance-mode">
+<h3>maintenance:mode<a class="headerlink" href="#maintenance-mode" title="Link to this heading"></a></h3>
+<p>Lock the sessions of all logged-in users, including administrators, and display
+a status screen warning that the server is in maintenance mode. Users who are
+not already logged in cannot log in until maintenance mode is turned off. When
+the server comes out of maintenance mode, logged-in users must refresh their
+browser to continue working:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">mode</span> <span class="o">--</span><span class="n">on</span>
+  <span class="n">Maintenance</span> <span class="n">mode</span> <span class="n">enabled</span>
+
 <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">mode</span> <span class="o">--</span><span class="n">off</span>
+  <span class="n">Maintenance</span> <span class="n">mode</span> <span class="n">disabled</span>
 </pre></div>
 </div>
-<p>After restoring a backup of your data directory or the database, you should always
-call <code class="docutils literal notranslate"><span class="pre">maintenance:data-fingerprint</span></code> once. This changes the ETag for all files
-in the communication with sync clients, allowing them to realize a file was modified.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">maintenance:repair</span></code> command runs automatically during upgrades to clean
-up the database, so while you can run it manually there usually isn’t a need
-to:</p>
+</section>
+<section id="maintenance-repair">
+<h3>maintenance:repair<a class="headerlink" href="#maintenance-repair" title="Link to this heading"></a></h3>
+<p>Runs automatically during upgrades to clean up the database. You can also run
+it manually if needed:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">repair</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">maintenance:mimetype:update-db</span></code> updates the Nextcloud database and file cache
-with changed mimetypes found in <code class="docutils literal notranslate"><span class="pre">config/mimetypemapping.json</span></code>. Run this
-command after modifying <code class="docutils literal notranslate"><span class="pre">config/mimetypemapping.json</span></code>. If you change a
-mimetype, run <code class="docutils literal notranslate"><span class="pre">maintenance:mimetype:update-db</span> <span class="pre">--repair-filecache</span></code> to apply the
-change to existing files.</p>
-<p>Run the <code class="docutils literal notranslate"><span class="pre">maintenance:theme:update</span></code> command if the icons of your custom theme are not
-updated correctly. This updates the mimetypelist.js and clears the image cache.</p>
+</section>
+<section id="maintenance-repair-share-owner">
+<h3>maintenance:repair-share-owner<a class="headerlink" href="#maintenance-repair-share-owner" title="Link to this heading"></a></h3>
+<p>Fix share owner records that have fallen out of sync with the actual file
+ownership:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">repair</span><span class="o">-</span><span class="n">share</span><span class="o">-</span><span class="n">owner</span>
+</pre></div>
+</div>
+</section>
+<section id="maintenance-theme-update">
+<h3>maintenance:theme:update<a class="headerlink" href="#maintenance-theme-update" title="Link to this heading"></a></h3>
+<p>Run when icons in a custom theme are not updating correctly. This rebuilds the
+mimetype list and clears the image cache:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">theme</span><span class="p">:</span><span class="n">update</span>
+</pre></div>
+</div>
+</section>
+<section id="maintenance-update-htaccess">
+<h3>maintenance:update:htaccess<a class="headerlink" href="#maintenance-update-htaccess" title="Link to this heading"></a></h3>
+<p>Regenerate the <code class="docutils literal notranslate"><span class="pre">.htaccess</span></code> file from the current configuration. Run this
+after changing URL rewriting settings or after an upgrade if the file appears
+outdated:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">update</span><span class="p">:</span><span class="n">htaccess</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="oauth2">
+<span id="oauth2-label"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">OAuth2</a><a class="headerlink" href="#oauth2" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command is only available when <code class="docutils literal notranslate"><span class="pre">'oauth2.enable_oc_clients'</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code>
+is set in <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code>. It is intended for ownCloud-to-Nextcloud
+migrations only.</p>
+</div>
+<p>Import an OAuth2 client record from an ownCloud database during a migration.
+The <code class="docutils literal notranslate"><span class="pre">client-id</span></code> and <code class="docutils literal notranslate"><span class="pre">client-secret</span></code> arguments come directly from the
+<code class="docutils literal notranslate"><span class="pre">oc_oauth2_clients</span></code> table in the ownCloud database:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">oauth2</span><span class="p">:</span><span class="n">import</span><span class="o">-</span><span class="n">legacy</span><span class="o">-</span><span class="n">oc</span><span class="o">-</span><span class="n">client</span> \
+  <span class="o">&lt;</span><span class="n">client</span><span class="o">-</span><span class="nb">id</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">client</span><span class="o">-</span><span class="n">secret</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 </section>
 <section id="security">
-<span id="security-commands-label"></span><h2>Security<a class="headerlink" href="#security" title="Link to this heading"></a></h2>
-<p>Use these commands to manage server-wide security related parameters. Currently this
-includes <a class="reference internal" href="configuration_server/bruteforce_configuration.html"><span class="doc">Brute force protection</span></a> and SSL certificates (the latter are useful when
-creating federation connections with other Nextcloud servers that use self-signed certificates:</p>
+<span id="security-commands-label"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink">Security</a><a class="headerlink" href="#security" title="Link to this heading"></a></h2>
+<p>Use these commands to manage server-wide security parameters, including
+<a class="reference internal" href="configuration_server/bruteforce_configuration.html"><span class="doc">Brute force protection</span></a> and trusted SSL
+certificates. Trusted certificates are useful when creating federation
+connections with servers that use self-signed certificates:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">security</span>
  <span class="n">security</span><span class="p">:</span><span class="n">bruteforce</span><span class="p">:</span><span class="n">attempts</span>  <span class="n">show</span> <span class="n">bruteforce</span> <span class="n">attempts</span> <span class="n">status</span> <span class="k">for</span> <span class="n">a</span> <span class="n">given</span> <span class="n">IP</span> <span class="n">address</span>
- <span class="n">security</span><span class="p">:</span><span class="n">bruteforce</span><span class="p">:</span><span class="n">reset</span>     <span class="n">resets</span> <span class="n">bruteforce</span> <span class="n">attempts</span> <span class="k">for</span> <span class="n">a</span> <span class="n">given</span> <span class="n">IP</span> <span class="n">address</span>
+ <span class="n">security</span><span class="p">:</span><span class="n">bruteforce</span><span class="p">:</span><span class="n">reset</span>     <span class="n">reset</span> <span class="n">bruteforce</span> <span class="n">attempts</span> <span class="k">for</span> <span class="n">a</span> <span class="n">given</span> <span class="n">IP</span> <span class="n">address</span>
  <span class="n">security</span><span class="p">:</span><span class="n">certificates</span>         <span class="nb">list</span> <span class="n">trusted</span> <span class="n">certificates</span>
+ <span class="n">security</span><span class="p">:</span><span class="n">certificates</span><span class="p">:</span><span class="n">export</span>  <span class="n">export</span> <span class="n">the</span> <span class="n">certificate</span> <span class="n">bundle</span>
  <span class="n">security</span><span class="p">:</span><span class="n">certificates</span><span class="p">:</span><span class="kn">import</span><span class="w">  </span><span class="nn">import</span> <span class="n">trusted</span> <span class="n">certificate</span>
  <span class="n">security</span><span class="p">:</span><span class="n">certificates</span><span class="p">:</span><span class="n">remove</span>  <span class="n">remove</span> <span class="n">trusted</span> <span class="n">certificate</span>
 </pre></div>
 </div>
-<p>Reset an IP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">security</span><span class="p">:</span><span class="n">bruteforce</span><span class="p">:</span><span class="n">reset</span> <span class="p">[</span><span class="n">IP</span> <span class="n">address</span><span class="p">]</span>
+<section id="security-bruteforce-attempts">
+<h3>security:bruteforce:attempts<a class="headerlink" href="#security-bruteforce-attempts" title="Link to this heading"></a></h3>
+<p>Show the current bruteforce throttle status for an IP address, including the
+number of recorded attempts and the current delay being applied. Optionally
+filter by action name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">security</span><span class="p">:</span><span class="n">bruteforce</span><span class="p">:</span><span class="n">attempts</span> <span class="mf">192.168.1.100</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">security</span><span class="p">:</span><span class="n">bruteforce</span><span class="p">:</span><span class="n">attempts</span> <span class="mf">192.168.1.100</span> <span class="n">login</span>
 </pre></div>
 </div>
-<p>This example lists your installed certificates:</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> for machine-readable output.</p>
+</section>
+<section id="security-bruteforce-reset">
+<h3>security:bruteforce:reset<a class="headerlink" href="#security-bruteforce-reset" title="Link to this heading"></a></h3>
+<p>Clear all recorded bruteforce attempts for an IP address, removing any login
+delay immediately:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">security</span><span class="p">:</span><span class="n">bruteforce</span><span class="p">:</span><span class="n">reset</span> <span class="mf">192.168.1.100</span>
+</pre></div>
+</div>
+</section>
+<section id="security-certificates">
+<h3>security:certificates<a class="headerlink" href="#security-certificates" title="Link to this heading"></a></h3>
+<p>List all trusted certificates installed on the server:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">security</span><span class="p">:</span><span class="n">certificates</span>
+<span class="o">+---------------------+-------------+-------------------+-------------+-----------+</span>
+<span class="o">|</span> <span class="n">File</span> <span class="n">Name</span>           <span class="o">|</span> <span class="n">Common</span> <span class="n">Name</span> <span class="o">|</span> <span class="n">Organization</span>      <span class="o">|</span> <span class="n">Valid</span> <span class="n">Until</span> <span class="o">|</span> <span class="n">Issued</span> <span class="n">By</span> <span class="o">|</span>
+<span class="o">+---------------------+-------------+-------------------+-------------+-----------+</span>
+<span class="o">|</span> <span class="n">myserver</span><span class="o">.</span><span class="n">crt</span>        <span class="o">|</span> <span class="n">myserver</span>    <span class="o">|</span> <span class="n">My</span> <span class="n">Org</span>            <span class="o">|</span> <span class="mi">2026</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span>  <span class="o">|</span> <span class="n">My</span> <span class="n">CA</span>     <span class="o">|</span>
+<span class="o">+---------------------+-------------+-------------------+-------------+-----------+</span>
 </pre></div>
 </div>
-<p>Import a new certificate:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">security</span><span class="p">:</span><span class="n">certificates</span><span class="p">:</span><span class="kn">import</span><span class="w"> </span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">certificate</span>
-</pre></div>
-</div>
-<p>Remove a certificate:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">security</span><span class="p">:</span><span class="n">certificates</span><span class="p">:</span><span class="n">remove</span> <span class="p">[</span><span class="n">certificate</span> <span class="n">name</span><span class="p">]</span>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> for machine-readable output.</p>
+</section>
+<section id="security-certificates-export">
+<h3>security:certificates:export<a class="headerlink" href="#security-certificates-export" title="Link to this heading"></a></h3>
+<p>Export the full certificate bundle to stdout. Useful for backup or inspection:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">security</span><span class="p">:</span><span class="n">certificates</span><span class="p">:</span><span class="n">export</span>
 </pre></div>
 </div>
 </section>
-<section id="status">
-<h2>Status<a class="headerlink" href="#status" title="Link to this heading"></a></h2>
-<p>Use the status command to retrieve information about the current installation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -E -u www-data php occ status
-  - installed: true
-  - version: 25.0.2.3
-  - versionstring: 25.0.2
-  - edition:
-  - maintenance: false
-  - needsDbUpgrade: false
-  - productname: Nextcloud
-  - extendedSupport: false
-</pre></div>
-</div>
-<p>This information can also be formatted via JSON instead of plain text:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -E -u www-data php occ status --output=json_pretty
-{
-    &quot;installed&quot;: true,
-    &quot;version&quot;: &quot;25.0.2.3&quot;,
-    &quot;versionstring&quot;: &quot;25.0.2&quot;,
-    &quot;edition&quot;: &quot;&quot;,
-    &quot;maintenance&quot;: false,
-    &quot;needsDbUpgrade&quot;: false,
-    &quot;productname&quot;: &quot;Nextcloud&quot;,
-    &quot;extendedSupport&quot;: false
-}
-</pre></div>
-</div>
-<section id="status-return-code">
-<h3>Status return code<a class="headerlink" href="#status-return-code" title="Link to this heading"></a></h3>
-<p>And finally, the <code class="docutils literal notranslate"><span class="pre">-e</span></code> (for exit code) parameter can be used to check
-the state of the nextcloud installation via return code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -E -u www-data php occ status -e
-$ echo $?
-0
-$ sudo -E -u www-data php occ maintenance:mode --on
-Maintenance mode enabled
-$ sudo -E -u www-data php occ status -e
-$ echo $?
-1
-$ sudo -E -u www-data php occ maintenance:mode --off
-Maintenance mode disabled
-$ sudo -E -u www-data php occ status -e
-$ echo $?
-0
-</pre></div>
-</div>
-<p>Note that by default there is no output when run with <code class="docutils literal notranslate"><span class="pre">-e</span></code>. This is
-intentional, so it can be used in scripts, monitoring checks, and systemd
-units.</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Return code</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>0</p></td>
-<td><p>normal operation</p></td>
-</tr>
-<tr class="row-odd"><td><p>1</p></td>
-<td><p>maintenance mode is enabled; the instance is currently
-unavailable to users.</p></td>
-</tr>
-<tr class="row-even"><td><p>2</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-E</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">upgrade</span></code> is required</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="trashbin">
-<span id="trashbin-label"></span><h2>Trashbin<a class="headerlink" href="#trashbin" title="Link to this heading"></a></h2>
-<p>These commands allow for manually managing various aspects of the trash bin (deleted files):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">trashbin</span>
- <span class="n">trashbin</span><span class="p">:</span><span class="n">cleanup</span>      <span class="n">Permanently</span> <span class="n">remove</span> <span class="n">deleted</span> <span class="n">files</span>
- <span class="n">trashbin</span><span class="p">:</span><span class="n">expire</span>       <span class="n">Expires</span> <span class="n">the</span> <span class="n">users</span> <span class="n">trashbin</span>
- <span class="n">trashbin</span><span class="p">:</span><span class="n">size</span>         <span class="n">Configure</span> <span class="n">the</span> <span class="n">target</span> <span class="n">trashbin</span> <span class="n">size</span>
- <span class="n">trashbin</span><span class="p">:</span><span class="n">restore</span>      <span class="n">Restore</span> <span class="nb">all</span> <span class="n">deleted</span> <span class="n">files</span> <span class="n">according</span> <span class="n">to</span> <span class="n">the</span> <span class="n">given</span> <span class="n">filters</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>These commands are only available when the “Deleted files” app
-(<code class="docutils literal notranslate"><span class="pre">files_trashbin</span></code>) is enabled.</p>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">trashbin:cleanup</span>&#160; <span class="pre">[--all-users]</span> <span class="pre">[--]</span> <span class="pre">[&lt;user_id&gt;...]</span></code> command removes the deleted files of the specified
-users in a space-delimited list, or all users if –all-users is specified.</p>
-<p>This example permanently removes the deleted files of all users:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">cleanup</span> <span class="o">--</span><span class="nb">all</span><span class="o">-</span><span class="n">users</span>
-<span class="n">Remove</span> <span class="nb">all</span> <span class="n">deleted</span> <span class="n">files</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">users</span>
-<span class="n">Remove</span> <span class="n">deleted</span> <span class="n">files</span> <span class="k">for</span> <span class="n">users</span> <span class="n">on</span> <span class="n">backend</span> <span class="n">Database</span>
- <span class="n">freda</span>
- <span class="n">molly</span>
- <span class="n">stash</span>
- <span class="n">rosa</span>
- <span class="n">edward</span>
-</pre></div>
-</div>
-<p>This example permanently removes the deleted files of users molly and freda:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">cleanup</span> <span class="n">molly</span> <span class="n">freda</span>
-<span class="n">Remove</span> <span class="n">deleted</span> <span class="n">files</span> <span class="n">of</span>   <span class="n">molly</span>
-<span class="n">Remove</span> <span class="n">deleted</span> <span class="n">files</span> <span class="n">of</span>   <span class="n">freda</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">trashbin:restore</span>&#160; <span class="pre">[--all-users]</span> <span class="pre">[--scope[=SCOPE]]</span> <span class="pre">[--since[=SINCE]]</span> <span class="pre">[--until[=UNTIL]]</span> <span class="pre">[--dry-run]</span> <span class="pre">[--]</span> <span class="pre">[&lt;user_id&gt;...]</span></code> command restores the deleted files of the specified
-users in a space-delimited list, or all users if –all-users is specified.</p>
-<p>This example restores the deleted user-files of all users:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">restore</span> <span class="o">--</span><span class="nb">all</span><span class="o">-</span><span class="n">users</span>
-</pre></div>
-</div>
-<p>This example restores the deleted user-files of users molly and freda:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">restore</span> <span class="n">molly</span> <span class="n">freda</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">--scope</span></code> option can be used to limit the restore to a specific scope.
-Possible values are “user”, “groupfolders” or “all” [default: “user”].</p>
-<p>This example restores the deleted files of all groupfolders which are visible to the user freda:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">restore</span> <span class="o">--</span><span class="n">scope</span> <span class="n">groupfolders</span> <span class="n">freda</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">--since</span></code> and <code class="docutils literal notranslate"><span class="pre">--until</span></code> options can be used to limit the restore to files deleted inside of the given time period.</p>
-<p>This example restores the locally deleted files and files of any groupfolders which are visible to the user
-freda. Additionally the files have to be deleted between <code class="docutils literal notranslate"><span class="pre">01.08.2023</span> <span class="pre">11:55:22</span></code> and <code class="docutils literal notranslate"><span class="pre">02.08.2023</span> <span class="pre">01:33</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">restore</span> <span class="o">--</span><span class="n">scope</span> <span class="nb">all</span> <span class="o">--</span><span class="n">since</span> <span class="s2">&quot;01.08.2023 11:55:22&quot;</span> <span class="o">--</span><span class="n">until</span> <span class="s2">&quot;02.08.2023 01:33&quot;</span> <span class="n">freda</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> option can be used to simulate the restore without actually restoring the files.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You can use the verbose options (<code class="docutils literal notranslate"><span class="pre">-v</span></code> or <code class="docutils literal notranslate"><span class="pre">-vv</span></code>) to get more information about
-the restore process and why some files might be skipped.</p>
-</div>
-</section>
-<section id="versions">
-<span id="versions-label"></span><h2>Versions<a class="headerlink" href="#versions" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This command is only available when the “Versions” app (<code class="docutils literal notranslate"><span class="pre">files_versions</span></code>) is
-enabled.</p>
-</div>
-<p>Use this command to delete file versions for specific users, or for all users
-when none are specified:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">versions</span>
- <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span>   <span class="n">Delete</span> <span class="n">versions</span>
- <span class="n">versions</span><span class="p">:</span><span class="n">expire</span>    <span class="n">Expires</span> <span class="n">the</span> <span class="n">users</span> <span class="n">file</span> <span class="n">versions</span>
-</pre></div>
-</div>
-<p>This example deletes all versions for all users:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span>
-<span class="n">Delete</span> <span class="nb">all</span> <span class="n">versions</span>
-<span class="n">Delete</span> <span class="n">versions</span> <span class="k">for</span> <span class="n">users</span> <span class="n">on</span> <span class="n">backend</span> <span class="n">Database</span>
-  <span class="n">freda</span>
-  <span class="n">molly</span>
-  <span class="n">stash</span>
-  <span class="n">rosa</span>
-  <span class="n">edward</span>
-</pre></div>
-</div>
-<p>You can delete versions for specific users in a space-delimited list:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span> <span class="n">freda</span> <span class="n">molly</span>
-<span class="n">Delete</span> <span class="n">versions</span> <span class="n">of</span>   <span class="n">freda</span>
-<span class="n">Delete</span> <span class="n">versions</span> <span class="n">of</span>   <span class="n">molly</span>
+<section id="security-certificates-import">
+<h3>security:certificates:import<a class="headerlink" href="#security-certificates-import" title="Link to this heading"></a></h3>
+<p>Install a trusted certificate from a file. The certificate name is derived from
+the filename:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">security</span><span class="p">:</span><span class="n">certificates</span><span class="p">:</span><span class="kn">import</span><span class="w"> </span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">certificate</span><span class="o">.</span><span class="n">crt</span>
 </pre></div>
 </div>
 </section>
-<section id="command-line-installation">
-<span id="command-line-installation-label"></span><h2>Command line installation<a class="headerlink" href="#command-line-installation" title="Link to this heading"></a></h2>
-<p>These commands are available only after you have downloaded and unpacked the
-Nextcloud archive, and taken no further installation steps.</p>
-<p>You can install Nextcloud entirely from the command line. After downloading the
-tarball and copying Nextcloud into the appropriate directories you can use <code class="docutils literal notranslate"><span class="pre">occ</span></code>
-commands in place of running the graphical Installation Wizard.</p>
-<p>Then choose your <code class="docutils literal notranslate"><span class="pre">occ</span></code> options. This lists your available options:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">occ</span>
-<span class="n">Nextcloud</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">installed</span> <span class="o">-</span> <span class="n">only</span> <span class="n">a</span> <span class="n">limited</span> <span class="n">number</span> <span class="n">of</span> <span class="n">commands</span> <span class="n">are</span> <span class="n">available</span>
-<span class="n">Nextcloud</span> <span class="n">version</span> <span class="mf">19.0.0</span>
-
-<span class="n">Usage</span><span class="p">:</span>
- <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">command</span> <span class="p">[</span><span class="n">arguments</span><span class="p">]</span>
-
-<span class="n">Options</span><span class="p">:</span>
- <span class="o">--</span><span class="n">help</span> <span class="p">(</span><span class="o">-</span><span class="n">h</span><span class="p">)</span>           <span class="n">Display</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span>
- <span class="o">--</span><span class="n">quiet</span> <span class="p">(</span><span class="o">-</span><span class="n">q</span><span class="p">)</span>          <span class="n">Do</span> <span class="ow">not</span> <span class="n">output</span> <span class="nb">any</span> <span class="n">message</span>
- <span class="o">--</span><span class="n">verbose</span> <span class="p">(</span><span class="o">-</span><span class="n">v</span><span class="o">|</span><span class="n">vv</span><span class="o">|</span><span class="n">vvv</span><span class="p">)</span> <span class="n">Increase</span> <span class="n">the</span> <span class="n">verbosity</span> <span class="n">of</span> <span class="n">messages</span><span class="p">:</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">normal</span>
- <span class="n">output</span><span class="p">,</span>  <span class="mi">2</span> <span class="k">for</span> <span class="n">more</span> <span class="n">verbose</span> <span class="n">output</span> <span class="ow">and</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">debug</span>
- <span class="o">--</span><span class="n">version</span> <span class="p">(</span><span class="o">-</span><span class="n">V</span><span class="p">)</span>        <span class="n">Display</span> <span class="n">this</span> <span class="n">application</span> <span class="n">version</span>
- <span class="o">--</span><span class="n">ansi</span>                <span class="n">Force</span> <span class="n">ANSI</span> <span class="n">output</span>
- <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ansi</span>             <span class="n">Disable</span> <span class="n">ANSI</span> <span class="n">output</span>
- <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">interaction</span> <span class="p">(</span><span class="o">-</span><span class="n">n</span><span class="p">)</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">ask</span> <span class="nb">any</span> <span class="n">interactive</span> <span class="n">question</span>
-
-<span class="n">Available</span> <span class="n">commands</span><span class="p">:</span>
- <span class="n">check</span>                 <span class="n">check</span> <span class="n">dependencies</span> <span class="n">of</span> <span class="n">the</span> <span class="n">server</span> <span class="n">environment</span>
- <span class="n">help</span>                  <span class="n">Displays</span> <span class="n">help</span> <span class="k">for</span> <span class="n">a</span> <span class="n">command</span>
- <span class="nb">list</span>                  <span class="n">Lists</span> <span class="n">commands</span>
- <span class="n">status</span>                <span class="n">show</span> <span class="n">some</span> <span class="n">status</span> <span class="n">information</span>
- <span class="n">app</span>
- <span class="n">l10n</span>
- <span class="n">l10n</span><span class="p">:</span><span class="n">createjs</span>         <span class="n">Create</span> <span class="n">javascript</span> <span class="n">translation</span> <span class="n">files</span> <span class="k">for</span> <span class="n">a</span> <span class="n">given</span> <span class="n">app</span>
- <span class="n">maintenance</span>
- <span class="n">maintenance</span><span class="p">:</span><span class="n">install</span>   <span class="n">install</span> <span class="n">Nextcloud</span>
-</pre></div>
-</div>
-<p>Display your <code class="docutils literal notranslate"><span class="pre">maintenance:install</span></code> options:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">help</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">install</span>
-<span class="n">Nextcloud</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">installed</span> <span class="o">-</span> <span class="n">only</span> <span class="n">a</span> <span class="n">limited</span> <span class="n">number</span> <span class="n">of</span> <span class="n">commands</span> <span class="n">are</span> <span class="n">available</span>
-<span class="n">Usage</span><span class="p">:</span>
- <span class="n">maintenance</span><span class="p">:</span><span class="n">install</span> <span class="p">[</span><span class="o">--</span><span class="n">database</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">]</span>
-<span class="p">[</span><span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">user</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="k">pass</span><span class="p">[</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">]]</span>
-<span class="p">[</span><span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">table</span><span class="o">-</span><span class="n">prefix</span><span class="p">[</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">]]</span> <span class="p">[</span><span class="o">--</span><span class="n">admin</span><span class="o">-</span><span class="n">user</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">admin</span><span class="o">-</span><span class="k">pass</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">]</span>
-<span class="p">[</span><span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="nb">dir</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">]</span>
-
-<span class="n">Options</span><span class="p">:</span>
- <span class="o">--</span><span class="n">database</span>               <span class="n">Supported</span> <span class="n">database</span> <span class="nb">type</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;sqlite&quot;</span><span class="p">)</span>
- <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">name</span>          <span class="n">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">database</span>
- <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">host</span>          <span class="n">Hostname</span> <span class="n">of</span> <span class="n">the</span> <span class="n">database</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
- <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">user</span>          <span class="n">User</span> <span class="n">name</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">the</span> <span class="n">database</span>
- <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="k">pass</span>          <span class="n">Password</span> <span class="n">of</span> <span class="n">the</span> <span class="n">database</span> <span class="n">user</span>
- <span class="o">--</span><span class="n">admin</span><span class="o">-</span><span class="n">user</span>             <span class="n">User</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">admin</span> <span class="n">account</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">)</span>
- <span class="o">--</span><span class="n">admin</span><span class="o">-</span><span class="k">pass</span>             <span class="n">Password</span> <span class="n">of</span> <span class="n">the</span> <span class="n">admin</span> <span class="n">account</span>
- <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="nb">dir</span>               <span class="n">Path</span> <span class="n">to</span> <span class="n">data</span> <span class="n">directory</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span>
-                          <span class="s2">&quot;/var/www/nextcloud/data&quot;</span><span class="p">)</span>
- <span class="o">--</span><span class="n">help</span> <span class="p">(</span><span class="o">-</span><span class="n">h</span><span class="p">)</span>              <span class="n">Display</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span>
- <span class="o">--</span><span class="n">quiet</span> <span class="p">(</span><span class="o">-</span><span class="n">q</span><span class="p">)</span>             <span class="n">Do</span> <span class="ow">not</span> <span class="n">output</span> <span class="nb">any</span> <span class="n">message</span>
- <span class="o">--</span><span class="n">verbose</span> <span class="p">(</span><span class="o">-</span><span class="n">v</span><span class="o">|</span><span class="n">vv</span><span class="o">|</span><span class="n">vvv</span><span class="p">)</span>    <span class="n">Increase</span> <span class="n">the</span> <span class="n">verbosity</span> <span class="n">of</span> <span class="n">messages</span><span class="p">:</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">normal</span>
-  <span class="n">output</span><span class="p">,</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">more</span> <span class="n">verbose</span> <span class="n">output</span> <span class="ow">and</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">debug</span>
- <span class="o">--</span><span class="n">version</span> <span class="p">(</span><span class="o">-</span><span class="n">V</span><span class="p">)</span>           <span class="n">Display</span> <span class="n">this</span> <span class="n">application</span> <span class="n">version</span>
- <span class="o">--</span><span class="n">ansi</span>                   <span class="n">Force</span> <span class="n">ANSI</span> <span class="n">output</span>
- <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ansi</span>                <span class="n">Disable</span> <span class="n">ANSI</span> <span class="n">output</span>
- <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">interaction</span> <span class="p">(</span><span class="o">-</span><span class="n">n</span><span class="p">)</span>    <span class="n">Do</span> <span class="ow">not</span> <span class="n">ask</span> <span class="nb">any</span> <span class="n">interactive</span> <span class="n">question</span>
-</pre></div>
-</div>
-<p>This example completes the installation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span>
-<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">install</span> <span class="o">--</span><span class="n">database</span>
-<span class="s2">&quot;mysql&quot;</span> <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">name</span> <span class="s2">&quot;nextcloud&quot;</span>  <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">user</span> <span class="s2">&quot;root&quot;</span> <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="k">pass</span>
-<span class="s2">&quot;password&quot;</span> <span class="o">--</span><span class="n">admin</span><span class="o">-</span><span class="n">user</span> <span class="s2">&quot;admin&quot;</span> <span class="o">--</span><span class="n">admin</span><span class="o">-</span><span class="k">pass</span> <span class="s2">&quot;password&quot;</span>
-<span class="n">Nextcloud</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">installed</span> <span class="o">-</span> <span class="n">only</span> <span class="n">a</span> <span class="n">limited</span> <span class="n">number</span> <span class="n">of</span> <span class="n">commands</span> <span class="n">are</span> <span class="n">available</span>
-<span class="n">Nextcloud</span> <span class="n">was</span> <span class="n">successfully</span> <span class="n">installed</span>
-</pre></div>
-</div>
-<p>Supported databases are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">sqlite</span> <span class="p">(</span><span class="n">SQLite3</span> <span class="o">-</span> <span class="n">Nextcloud</span> <span class="n">Community</span> <span class="n">edition</span> <span class="n">only</span><span class="p">)</span>
-<span class="o">-</span> <span class="n">mysql</span> <span class="p">(</span><span class="n">MySQL</span><span class="o">/</span><span class="n">MariaDB</span><span class="p">)</span>
-<span class="o">-</span> <span class="n">pgsql</span> <span class="p">(</span><span class="n">PostgreSQL</span><span class="p">)</span>
-<span class="o">-</span> <span class="n">oci</span> <span class="p">(</span><span class="n">Oracle</span> <span class="o">-</span> <span class="n">Nextcloud</span> <span class="n">Enterprise</span> <span class="n">edition</span> <span class="n">only</span><span class="p">)</span>
+<section id="security-certificates-remove">
+<h3>security:certificates:remove<a class="headerlink" href="#security-certificates-remove" title="Link to this heading"></a></h3>
+<p>Remove a trusted certificate by its file name (as shown in
+<code class="docutils literal notranslate"><span class="pre">security:certificates</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">security</span><span class="p">:</span><span class="n">certificates</span><span class="p">:</span><span class="n">remove</span> <span class="n">my</span><span class="o">-</span><span class="n">certificate</span>
 </pre></div>
 </div>
 </section>
-<section id="command-line-upgrade">
-<span id="command-line-upgrade-label"></span><h2>Command line upgrade<a class="headerlink" href="#command-line-upgrade" title="Link to this heading"></a></h2>
-<p>These commands are available only after you have downloaded upgraded packages or
-tar archives, and before you complete the upgrade.</p>
-<p>List all options:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">upgrade</span> <span class="o">-</span><span class="n">h</span>
-<span class="n">Usage</span><span class="p">:</span>
-<span class="n">upgrade</span> <span class="p">[</span><span class="o">--</span><span class="n">quiet</span><span class="p">]</span>
-
-<span class="n">Options</span><span class="p">:</span>
-<span class="o">--</span><span class="n">help</span> <span class="p">(</span><span class="o">-</span><span class="n">h</span><span class="p">)</span>            <span class="n">Display</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span><span class="o">.</span>
-<span class="o">--</span><span class="n">quiet</span> <span class="p">(</span><span class="o">-</span><span class="n">q</span><span class="p">)</span>           <span class="n">Do</span> <span class="ow">not</span> <span class="n">output</span> <span class="nb">any</span> <span class="n">message</span><span class="o">.</span>
-<span class="o">--</span><span class="n">verbose</span> <span class="p">(</span><span class="o">-</span><span class="n">v</span><span class="o">|</span><span class="n">vv</span><span class="o">|</span><span class="n">vvv</span><span class="p">)</span>  <span class="n">Increase</span> <span class="n">the</span> <span class="n">verbosity</span> <span class="n">of</span> <span class="n">messages</span><span class="p">:</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">normal</span> <span class="n">output</span><span class="p">,</span>
-  <span class="mi">2</span> <span class="k">for</span> <span class="n">more</span> <span class="n">verbose</span> <span class="n">output</span> <span class="ow">and</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">debug</span><span class="o">.</span>
-<span class="o">--</span><span class="n">version</span> <span class="p">(</span><span class="o">-</span><span class="n">V</span><span class="p">)</span>         <span class="n">Display</span> <span class="n">this</span> <span class="n">application</span> <span class="n">version</span><span class="o">.</span>
-<span class="o">--</span><span class="n">ansi</span>                 <span class="n">Force</span> <span class="n">ANSI</span> <span class="n">output</span><span class="o">.</span>
-<span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ansi</span>              <span class="n">Disable</span> <span class="n">ANSI</span> <span class="n">output</span><span class="o">.</span>
-<span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">interaction</span> <span class="p">(</span><span class="o">-</span><span class="n">n</span><span class="p">)</span>  <span class="n">Do</span> <span class="ow">not</span> <span class="n">ask</span> <span class="nb">any</span> <span class="n">interactive</span> <span class="n">question</span>
-</pre></div>
-</div>
-<p>When you are performing an update or upgrade on your Nextcloud server (see the
-Maintenance section of this manual), it is better to use <code class="docutils literal notranslate"><span class="pre">occ</span></code> to perform the
-database upgrade step, rather than the Web GUI, in order to avoid timeouts. PHP
-scripts invoked from the Web interface are limited to 3600 seconds. In larger
-environments this may not be enough, leaving the system in an inconsistent
-state. After performing all the preliminary steps (see
-<a class="reference internal" href="maintenance/upgrade.html"><span class="doc">How to upgrade</span></a>) use this command to upgrade your databases,
-like this example on CentOS Linux. Note how it details the steps:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">upgrade</span>
-<span class="n">Nextcloud</span> <span class="ow">or</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> <span class="n">apps</span> <span class="n">require</span> <span class="n">upgrade</span> <span class="o">-</span> <span class="n">only</span> <span class="n">a</span> <span class="n">limited</span> <span class="n">number</span> <span class="n">of</span>
-<span class="n">commands</span> <span class="n">are</span> <span class="n">available</span>
-<span class="n">Turned</span> <span class="n">on</span> <span class="n">maintenance</span> <span class="n">mode</span>
-<span class="n">Checked</span> <span class="n">database</span> <span class="n">schema</span> <span class="n">update</span>
-<span class="n">Checked</span> <span class="n">database</span> <span class="n">schema</span> <span class="n">update</span> <span class="k">for</span> <span class="n">apps</span>
-<span class="n">Updated</span> <span class="n">database</span>
-<span class="n">Updating</span> <span class="o">&lt;</span><span class="n">gallery</span><span class="o">&gt;</span> <span class="o">...</span>
-<span class="n">Updated</span> <span class="o">&lt;</span><span class="n">gallery</span><span class="o">&gt;</span> <span class="n">to</span> <span class="mf">0.6.1</span>
-<span class="n">Updating</span> <span class="o">&lt;</span><span class="n">activity</span><span class="o">&gt;</span> <span class="o">...</span>
-<span class="n">Updated</span> <span class="o">&lt;</span><span class="n">activity</span><span class="o">&gt;</span> <span class="n">to</span> <span class="mf">2.1.0</span>
-<span class="n">Update</span> <span class="n">successful</span>
-<span class="n">Turned</span> <span class="n">off</span> <span class="n">maintenance</span> <span class="n">mode</span>
-</pre></div>
-</div>
-<p>Enabling verbosity displays timestamps:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">upgrade</span> <span class="o">-</span><span class="n">v</span>
-<span class="n">Nextcloud</span> <span class="ow">or</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> <span class="n">apps</span> <span class="n">require</span> <span class="n">upgrade</span> <span class="o">-</span> <span class="n">only</span> <span class="n">a</span> <span class="n">limited</span> <span class="n">number</span> <span class="n">of</span> <span class="n">commands</span> <span class="n">are</span> <span class="n">available</span>
-<span class="mi">2015</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">23</span><span class="n">T09</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">0000</span> <span class="n">Turned</span> <span class="n">on</span> <span class="n">maintenance</span> <span class="n">mode</span>
-<span class="mi">2015</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">23</span><span class="n">T09</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">0000</span> <span class="n">Checked</span> <span class="n">database</span> <span class="n">schema</span> <span class="n">update</span>
-<span class="mi">2015</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">23</span><span class="n">T09</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">0000</span> <span class="n">Checked</span> <span class="n">database</span> <span class="n">schema</span> <span class="n">update</span> <span class="k">for</span> <span class="n">apps</span>
-<span class="mi">2015</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">23</span><span class="n">T09</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">0000</span> <span class="n">Updated</span> <span class="n">database</span>
-<span class="mi">2015</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">23</span><span class="n">T09</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">0000</span> <span class="n">Updated</span> <span class="o">&lt;</span><span class="n">files_sharing</span><span class="o">&gt;</span> <span class="n">to</span> <span class="mf">0.6.6</span>
-<span class="mi">2015</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">23</span><span class="n">T09</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">0000</span> <span class="n">Update</span> <span class="n">successful</span>
-<span class="mi">2015</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">23</span><span class="n">T09</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">0000</span> <span class="n">Turned</span> <span class="n">off</span> <span class="n">maintenance</span> <span class="n">mode</span>
-</pre></div>
-</div>
-<p>If there is an error it throws an exception, and the error is detailed in your
-Nextcloud logfile, so you can use the log output to figure out what went wrong,
-or to use in a bug report:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Turned</span> <span class="n">on</span> <span class="n">maintenance</span> <span class="n">mode</span>
-<span class="n">Checked</span> <span class="n">database</span> <span class="n">schema</span> <span class="n">update</span>
-<span class="n">Checked</span> <span class="n">database</span> <span class="n">schema</span> <span class="n">update</span> <span class="k">for</span> <span class="n">apps</span>
-<span class="n">Updated</span> <span class="n">database</span>
-<span class="n">Updating</span> <span class="o">&lt;</span><span class="n">files_sharing</span><span class="o">&gt;</span> <span class="o">...</span>
-<span class="ne">Exception</span>
-<span class="n">ServerNotAvailableException</span><span class="p">:</span> <span class="n">LDAP</span> <span class="n">server</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">available</span>
-<span class="n">Update</span> <span class="n">failed</span>
-<span class="n">Turned</span> <span class="n">off</span> <span class="n">maintenance</span> <span class="n">mode</span>
-</pre></div>
-</div>
 </section>
-<section id="antivirus">
-<span id="antivirus-commands-label"></span><h2>Antivirus<a class="headerlink" href="#antivirus" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>These commands require the <a class="reference external" href="https://apps.nextcloud.com/apps/files_antivirus">files_antivirus</a> app to be installed and enabled.</p>
-</div>
-<p>Get info about files in the scan queue:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">status</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>Manually trigger the background scan:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">background</span><span class="o">-</span><span class="n">scan</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">m</span> <span class="n">MAX</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>Manually scan a single file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">scan</span> <span class="o">&lt;</span><span class="n">path</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>Mark a file as scanned or unscanned:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">mark</span> <span class="o">&lt;</span><span class="n">path</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">scanned</span><span class="o">|</span><span class="n">unscanned</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</section>
-<section id="setupchecks">
-<span id="setupchecks-commands-label"></span><h2>Setupchecks<a class="headerlink" href="#setupchecks" title="Link to this heading"></a></h2>
-<p>Run the setupchecks via occ:</p>
+<section id="setup-checks">
+<span id="setupchecks-commands-label"></span><h2><a class="toc-backref" href="#id9" role="doc-backlink">Setup checks</a><a class="headerlink" href="#setup-checks" title="Link to this heading"></a></h2>
+<p>Run the setup checks from the command line to verify your installation
+configuration:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">setupchecks</span>
 </pre></div>
 </div>
@@ -644,11 +680,50 @@ network:
   ...
 </pre></div>
 </div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> for machine-readable output suitable for
+automated monitoring.</p>
+</section>
+<section id="share-operations">
+<span id="share-operations-label"></span><h2><a class="toc-backref" href="#id10" role="doc-backlink">Share operations</a><a class="headerlink" href="#share-operations" title="Link to this heading"></a></h2>
+<p>Available <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands for the <code class="docutils literal notranslate"><span class="pre">share</span></code> namespace:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">share</span>
+ <span class="n">share</span><span class="p">:</span><span class="nb">list</span>  <span class="nb">list</span> <span class="n">available</span> <span class="n">shares</span>
+</pre></div>
+</div>
+<section id="share-list">
+<span id="occ-share-list-label"></span><h3>share:list<a class="headerlink" href="#share-list" title="Link to this heading"></a></h3>
+<p>List all shares on the system:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">share</span><span class="p">:</span><span class="nb">list</span>
+</pre></div>
+</div>
+<p>Filter by owner, recipient, or the user who created the share:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">share</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">owner</span> <span class="n">layla</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">share</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">recipient</span> <span class="n">fred</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">share</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">by</span> <span class="n">layla</span>
+</pre></div>
+</div>
+<p>Filter by a specific file path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">share</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">file</span> <span class="s2">&quot;/layla/files/Documents/report.pdf&quot;</span>
+</pre></div>
+</div>
+<p>Filter by a folder; use <code class="docutils literal notranslate"><span class="pre">--recursive</span></code> to include shares nested anywhere
+inside it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">share</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">parent</span> <span class="s2">&quot;/layla/files/Projects&quot;</span> <span class="o">--</span><span class="n">recursive</span>
+</pre></div>
+</div>
+<p>Filter by share type (one of <code class="docutils literal notranslate"><span class="pre">user</span></code>, <code class="docutils literal notranslate"><span class="pre">group</span></code>, <code class="docutils literal notranslate"><span class="pre">link</span></code>, <code class="docutils literal notranslate"><span class="pre">email</span></code>,
+<code class="docutils literal notranslate"><span class="pre">remote</span></code>, <code class="docutils literal notranslate"><span class="pre">room</span></code>, <code class="docutils literal notranslate"><span class="pre">deck</span></code>) or by share status:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">share</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="nb">type</span> <span class="n">link</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">share</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">status</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="snowflake-ids">
-<span id="snowflakes-commands-label"></span><h2>Snowflake IDs<a class="headerlink" href="#snowflake-ids" title="Link to this heading"></a></h2>
-<p>You can decode Snowflake IDs with occ:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">decode</span><span class="o">-</span><span class="n">snowflake</span> <span class="o">&lt;</span><span class="n">snowflake_id</span><span class="o">&gt;</span>
+<span id="snowflakes-commands-label"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">Snowflake IDs</a><a class="headerlink" href="#snowflake-ids" title="Link to this heading"></a></h2>
+<p>Nextcloud uses Snowflake IDs for unique identifiers in several subsystems.
+Decode a Snowflake ID to inspect its embedded timestamp and metadata:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">snowflake</span><span class="p">:</span><span class="n">decode</span> <span class="mi">6768789079123765868</span>
 </pre></div>
 </div>
 <p>Example output:</p>
@@ -659,30 +734,411 @@ network:
 <span class="o">|</span> <span class="n">Created</span> <span class="kn">from</span><span class="w"> </span><span class="nn">CLI</span>   <span class="o">|</span> <span class="n">no</span>                      <span class="o">|</span>
 <span class="o">|</span> <span class="n">Server</span> <span class="n">ID</span>          <span class="o">|</span> <span class="mi">441</span>                     <span class="o">|</span>
 <span class="o">|</span> <span class="n">Sequence</span> <span class="n">ID</span>        <span class="o">|</span> <span class="mi">2668</span>                    <span class="o">|</span>
-<span class="o">|</span> <span class="n">Creation</span> <span class="n">timestamp</span> <span class="o">|</span> <span class="mf">3335258318.050</span>          <span class="o">|</span>
-<span class="o">|</span> <span class="n">Creation</span> <span class="n">date</span>      <span class="o">|</span> <span class="mi">2075</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">09</span> <span class="mi">12</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mf">38.050</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">Creation</span> <span class="n">timestamp</span> <span class="o">|</span> <span class="mf">1575981518.050</span>          <span class="o">|</span>
+<span class="o">|</span> <span class="n">Creation</span> <span class="n">date</span>      <span class="o">|</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">10</span> <span class="mi">11</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mf">38.050</span> <span class="o">|</span>
 <span class="o">+--------------------+-------------------------+</span>
 </pre></div>
 </div>
 </section>
-<section id="share-operations">
-<span id="share-operations-label"></span><h2>Share operations<a class="headerlink" href="#share-operations" title="Link to this heading"></a></h2>
-<p>Available <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands for the <code class="docutils literal notranslate"><span class="pre">share</span></code> namespace:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">share</span><span class="p">:</span><span class="nb">list</span>                       <span class="nb">list</span> <span class="n">shares</span> <span class="n">on</span> <span class="n">the</span> <span class="n">system</span>
+<section id="status">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Status</a><a class="headerlink" href="#status" title="Link to this heading"></a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">status</span></code> command to retrieve information about the current
+installation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">status</span>
+  <span class="o">-</span> <span class="n">installed</span><span class="p">:</span> <span class="n">true</span>
+  <span class="o">-</span> <span class="n">version</span><span class="p">:</span> <span class="mf">30.0.0.0</span>
+  <span class="o">-</span> <span class="n">versionstring</span><span class="p">:</span> <span class="mf">30.0.0</span>
+  <span class="o">-</span> <span class="n">edition</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">maintenance</span><span class="p">:</span> <span class="n">false</span>
+  <span class="o">-</span> <span class="n">needsDbUpgrade</span><span class="p">:</span> <span class="n">false</span>
+  <span class="o">-</span> <span class="n">productname</span><span class="p">:</span> <span class="n">Nextcloud</span>
+  <span class="o">-</span> <span class="n">extendedSupport</span><span class="p">:</span> <span class="n">false</span>
 </pre></div>
 </div>
-<section id="list">
-<span id="occ-share-list-label"></span><h3>List<a class="headerlink" href="#list" title="Link to this heading"></a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">share:list</span></code> command lists all shares created on the system, with optional filters for recipient,
-sharee, shared file and more.</p>
-</section>
-</section>
-<section id="debugging">
-<span id="occ-debugging"></span><h2>Debugging<a class="headerlink" href="#debugging" title="Link to this heading"></a></h2>
-<p>In certain situations it’s necessary to generate debugging information, e.g. before submitting a bug report. You can run <code class="docutils literal notranslate"><span class="pre">occ</span></code> with debug logging:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NC_loglevel</span><span class="o">=</span><span class="mi">0</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="o">-</span><span class="n">h</span>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> for machine-readable output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">status</span> <span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">json_pretty</span>
+<span class="p">{</span>
+    <span class="s2">&quot;installed&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;30.0.0.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;versionstring&quot;</span><span class="p">:</span> <span class="s2">&quot;30.0.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;edition&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;maintenance&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;needsDbUpgrade&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;productname&quot;</span><span class="p">:</span> <span class="s2">&quot;Nextcloud&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;extendedSupport&quot;</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
 </pre></div>
 </div>
+<section id="status-return-code">
+<h3>Status return code<a class="headerlink" href="#status-return-code" title="Link to this heading"></a></h3>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">-e</span></code> flag to get a machine-readable exit code reflecting the
+installation state. There is no output by default, making it suitable for
+scripts, monitoring checks, and systemd units:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo -E -u www-data php occ status -e
+echo $?
+0
+sudo -E -u www-data php occ maintenance:mode --on
+Maintenance mode enabled
+sudo -E -u www-data php occ status -e
+echo $?
+1
+sudo -E -u www-data php occ maintenance:mode --off
+Maintenance mode disabled
+sudo -E -u www-data php occ status -e
+echo $?
+0
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Return code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>normal operation</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>maintenance mode is enabled; the instance is currently
+unavailable to users</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code> is required</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="task-processing">
+<span id="taskprocessing-label"></span><h2><a class="toc-backref" href="#id13" role="doc-backlink">Task processing</a><a class="headerlink" href="#task-processing" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">taskprocessing</span></code> commands manage AI and background task processing jobs.
+Task processing provides infrastructure for AI features such as text
+generation, image classification, and speech-to-text:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">taskprocessing</span>
+ <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="o">-</span><span class="nb">type</span><span class="p">:</span><span class="nb">set</span><span class="o">-</span><span class="n">enabled</span> <span class="n">enable</span> <span class="ow">or</span> <span class="n">disable</span> <span class="n">a</span> <span class="n">task</span> <span class="nb">type</span>
+ <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="p">:</span><span class="n">cleanup</span>          <span class="n">cleanup</span> <span class="n">old</span> <span class="n">tasks</span>
+ <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="p">:</span><span class="n">get</span>              <span class="n">display</span> <span class="nb">all</span> <span class="n">information</span> <span class="k">for</span> <span class="n">a</span> <span class="n">specific</span> <span class="n">task</span>
+ <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="p">:</span><span class="nb">list</span>             <span class="nb">list</span> <span class="n">tasks</span>
+ <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="p">:</span><span class="n">stats</span>            <span class="n">get</span> <span class="n">statistics</span> <span class="k">for</span> <span class="n">tasks</span>
+ <span class="n">taskprocessing</span><span class="p">:</span><span class="n">worker</span>                <span class="n">run</span> <span class="n">a</span> <span class="n">dedicated</span> <span class="n">worker</span> <span class="k">for</span> <span class="n">synchronous</span> <span class="n">TaskProcessing</span> <span class="n">providers</span>
+</pre></div>
+</div>
+<section id="taskprocessing-task-type-set-enabled">
+<h3>taskprocessing:task-type:set-enabled<a class="headerlink" href="#taskprocessing-task-type-set-enabled" title="Link to this heading"></a></h3>
+<p>Enable or disable a task type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="o">-</span><span class="nb">type</span><span class="p">:</span><span class="nb">set</span><span class="o">-</span><span class="n">enabled</span> <span class="n">core</span><span class="p">:</span><span class="n">text2text</span> <span class="mi">1</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="o">-</span><span class="nb">type</span><span class="p">:</span><span class="nb">set</span><span class="o">-</span><span class="n">enabled</span> <span class="n">core</span><span class="p">:</span><span class="n">text2text</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="taskprocessing-task-cleanup">
+<h3>taskprocessing:task:cleanup<a class="headerlink" href="#taskprocessing-task-cleanup" title="Link to this heading"></a></h3>
+<p>Delete old task records and their associated output files. By default, tasks
+older than four months are removed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="p">:</span><span class="n">cleanup</span>
+</pre></div>
+</div>
+<p>Pass a maximum age in seconds to override the default:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="p">:</span><span class="n">cleanup</span> <span class="mi">2592000</span>
+</pre></div>
+</div>
+</section>
+<section id="taskprocessing-task-get">
+<h3>taskprocessing:task:get<a class="headerlink" href="#taskprocessing-task-get" title="Link to this heading"></a></h3>
+<p>Display all information for a specific task by its numeric ID:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="p">:</span><span class="n">get</span> <span class="mi">42</span>
+</pre></div>
+</div>
+</section>
+<section id="taskprocessing-task-list">
+<h3>taskprocessing:task:list<a class="headerlink" href="#taskprocessing-task-list" title="Link to this heading"></a></h3>
+<p>List task processing tasks:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="p">:</span><span class="nb">list</span>
+</pre></div>
+</div>
+<p>Filter by user, type, app, or custom ID:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">userIdFilter</span> <span class="n">layla</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="nb">type</span> <span class="n">core</span><span class="p">:</span><span class="n">text2text</span>
+</pre></div>
+</div>
+<p>Filter by status (0=UNKNOWN, 1=SCHEDULED, 2=RUNNING, 3=SUCCESSFUL, 4=FAILED,
+5=CANCELLED):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">status</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p>Other available filters: <code class="docutils literal notranslate"><span class="pre">--appId</span></code>, <code class="docutils literal notranslate"><span class="pre">--customId</span></code>, <code class="docutils literal notranslate"><span class="pre">--scheduledAfter</span></code>,
+<code class="docutils literal notranslate"><span class="pre">--endedBefore</span></code>.</p>
+</section>
+<section id="taskprocessing-task-stats">
+<h3>taskprocessing:task:stats<a class="headerlink" href="#taskprocessing-task-stats" title="Link to this heading"></a></h3>
+<p>Show statistics for tasks (max/average running time, queuing time, and
+input/output sizes). Accepts the same filter options as
+<code class="docutils literal notranslate"><span class="pre">taskprocessing:task:list</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="p">:</span><span class="n">stats</span>
+</pre></div>
+</div>
+</section>
+<section id="taskprocessing-worker">
+<h3>taskprocessing:worker<a class="headerlink" href="#taskprocessing-worker" title="Link to this heading"></a></h3>
+<p>Run a dedicated worker that processes tasks from synchronous TaskProcessing
+providers. Use this when you want to offload AI task execution to a separate
+process:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">worker</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--once</span></code> to process at most one task then exit. Use <code class="docutils literal notranslate"><span class="pre">--timeout</span></code> to set
+a maximum runtime in seconds (default: <code class="docutils literal notranslate"><span class="pre">0</span></code> = run indefinitely). Use
+<code class="docutils literal notranslate"><span class="pre">--taskTypes</span></code> (repeatable) to restrict the worker to specific task type IDs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">worker</span> \
+  <span class="o">--</span><span class="n">taskTypes</span> <span class="n">core</span><span class="p">:</span><span class="n">text2text</span> <span class="o">--</span><span class="n">once</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="theming">
+<span id="theming-label"></span><h2><a class="toc-backref" href="#id14" role="doc-backlink">Theming</a><a class="headerlink" href="#theming" title="Link to this heading"></a></h2>
+<p>The Theming app (<code class="docutils literal notranslate"><span class="pre">theming</span></code>) is always enabled. The <code class="docutils literal notranslate"><span class="pre">theming:config</span></code>
+command lets you view and update theming settings without logging into the web
+interface:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">theming</span>
+ <span class="n">theming</span><span class="p">:</span><span class="n">config</span>  <span class="nb">set</span> <span class="n">theming</span> <span class="n">app</span> <span class="n">config</span> <span class="n">values</span>
+</pre></div>
+</div>
+<section id="theming-config">
+<h3>theming:config<a class="headerlink" href="#theming-config" title="Link to this heading"></a></h3>
+<p>With no arguments, show all current theming values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span>
+  <span class="n">Current</span> <span class="n">theming</span> <span class="n">config</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">Nextcloud</span>
+  <span class="n">url</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">com</span>
+  <span class="n">slogan</span><span class="p">:</span> <span class="n">a</span> <span class="n">safe</span> <span class="n">home</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">your</span> <span class="n">data</span>
+  <span class="o">...</span>
+</pre></div>
+</div>
+<p>Show the current value of a single key:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">name</span>
+</pre></div>
+</div>
+<p>Set a value:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">name</span> <span class="s2">&quot;Acme Cloud&quot;</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">url</span> <span class="s2">&quot;https://acme.example.com&quot;</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">slogan</span> <span class="s2">&quot;Secure file sync for Acme&quot;</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">primary_color</span> <span class="s2">&quot;#0082c9&quot;</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">background_color</span> <span class="s2">&quot;#00679e&quot;</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">disable</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">theming</span> <span class="n">true</span>
+</pre></div>
+</div>
+<p>To set an image, pass the path to the image file as the value:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">logo</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">logo</span><span class="o">.</span><span class="n">png</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">favicon</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">favicon</span><span class="o">.</span><span class="n">ico</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">background</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">background</span><span class="o">.</span><span class="n">jpg</span>
+</pre></div>
+</div>
+<p>Reset a key to its default:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="o">--</span><span class="n">reset</span> <span class="n">name</span>
+</pre></div>
+</div>
+<p>Supported text keys: <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">url</span></code>, <code class="docutils literal notranslate"><span class="pre">imprintUrl</span></code>, <code class="docutils literal notranslate"><span class="pre">privacyUrl</span></code>,
+<code class="docutils literal notranslate"><span class="pre">slogan</span></code>, <code class="docutils literal notranslate"><span class="pre">primary_color</span></code>, <code class="docutils literal notranslate"><span class="pre">background_color</span></code>, <code class="docutils literal notranslate"><span class="pre">disable-user-theming</span></code>.</p>
+<p>Supported image keys: <code class="docutils literal notranslate"><span class="pre">background</span></code>, <code class="docutils literal notranslate"><span class="pre">logo</span></code>, <code class="docutils literal notranslate"><span class="pre">logoheader</span></code>, <code class="docutils literal notranslate"><span class="pre">favicon</span></code>.</p>
+</section>
+</section>
+<section id="webhook-listeners">
+<span id="webhook-listeners-label"></span><h2><a class="toc-backref" href="#id15" role="doc-backlink">Webhook listeners</a><a class="headerlink" href="#webhook-listeners" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Webhook listeners app (<code class="docutils literal notranslate"><span class="pre">webhook_listeners</span></code>) is shipped with Nextcloud
+but not enabled by default. Enable it in the Apps menu before using these
+commands.</p>
+</div>
+<p>List all webhook listener configurations registered on the server. Each entry
+shows the listener ID, the user or app that registered it, the HTTP method and
+target URI, the Nextcloud event it listens for, any event filter, and the
+configured authentication method (<code class="docutils literal notranslate"><span class="pre">none</span></code> or <code class="docutils literal notranslate"><span class="pre">header</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">webhook_listeners</span><span class="p">:</span><span class="nb">list</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> for machine-readable output, which also includes
+the full header and authentication data fields:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">webhook_listeners</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">json_pretty</span>
+</pre></div>
+</div>
+<p>Webhook listeners are configured through the Admin settings UI or the REST API.
+This command is read-only — it provides an audit view of what listeners are
+active without needing to access the web interface.</p>
+</section>
+<section id="workflows">
+<span id="workflows-label"></span><h2><a class="toc-backref" href="#id16" role="doc-backlink">Workflows</a><a class="headerlink" href="#workflows" title="Link to this heading"></a></h2>
+<p>The Workflow engine (<code class="docutils literal notranslate"><span class="pre">workflowengine</span></code>) is always enabled:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">workflows</span>
+ <span class="n">workflows</span><span class="p">:</span><span class="nb">list</span>  <span class="nb">list</span> <span class="n">configured</span> <span class="n">workflows</span>
+</pre></div>
+</div>
+<section id="workflows-list">
+<h3>workflows:list<a class="headerlink" href="#workflows-list" title="Link to this heading"></a></h3>
+<p>List configured workflow rules. Use the optional <code class="docutils literal notranslate"><span class="pre">scope</span></code> argument to filter
+by scope; <code class="docutils literal notranslate"><span class="pre">admin</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">user</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">workflows</span><span class="p">:</span><span class="nb">list</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">workflows</span><span class="p">:</span><span class="nb">list</span> <span class="n">user</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">workflows</span><span class="p">:</span><span class="nb">list</span> <span class="n">user</span> <span class="n">layla</span>
+</pre></div>
+</div>
+<p>The output is a JSON representation of the configured workflow operations.</p>
+</section>
+</section>
+<section id="command-line-installation">
+<span id="command-line-installation-label"></span><h2><a class="toc-backref" href="#id17" role="doc-backlink">Command line installation</a><a class="headerlink" href="#command-line-installation" title="Link to this heading"></a></h2>
+<p>These commands are only available before Nextcloud has been installed, after
+you have unpacked the archive and copied Nextcloud into the appropriate
+directories.</p>
+<p>Display the available installation options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">install</span> <span class="o">--</span><span class="n">help</span>
+<span class="n">Nextcloud</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">installed</span> <span class="o">-</span> <span class="n">only</span> <span class="n">a</span> <span class="n">limited</span> <span class="n">number</span> <span class="n">of</span> <span class="n">commands</span> <span class="n">are</span> <span class="n">available</span>
+
+<span class="n">Usage</span><span class="p">:</span>
+  <span class="n">maintenance</span><span class="p">:</span><span class="n">install</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span>
+
+<span class="n">Options</span><span class="p">:</span>
+      <span class="o">--</span><span class="n">database</span><span class="p">[</span><span class="o">=</span><span class="n">DATABASE</span><span class="p">]</span>                  <span class="n">Supported</span> <span class="n">database</span> <span class="nb">type</span> <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;sqlite&quot;</span><span class="p">]</span>
+      <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">name</span><span class="p">[</span><span class="o">=</span><span class="n">DATABASE</span><span class="o">-</span><span class="n">NAME</span><span class="p">]</span>        <span class="n">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">database</span>
+      <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">host</span><span class="p">[</span><span class="o">=</span><span class="n">DATABASE</span><span class="o">-</span><span class="n">HOST</span><span class="p">]</span>        <span class="n">Hostname</span> <span class="n">of</span> <span class="n">the</span> <span class="n">database</span> <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">]</span>
+      <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">port</span><span class="p">[</span><span class="o">=</span><span class="n">DATABASE</span><span class="o">-</span><span class="n">PORT</span><span class="p">]</span>        <span class="n">Port</span> <span class="n">of</span> <span class="n">the</span> <span class="n">database</span>
+      <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">user</span><span class="p">[</span><span class="o">=</span><span class="n">DATABASE</span><span class="o">-</span><span class="n">USER</span><span class="p">]</span>        <span class="n">User</span> <span class="n">name</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">the</span> <span class="n">database</span>
+      <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="k">pass</span><span class="p">[</span><span class="o">=</span><span class="n">DATABASE</span><span class="o">-</span><span class="n">PASS</span><span class="p">]</span>        <span class="n">Password</span> <span class="n">of</span> <span class="n">the</span> <span class="n">database</span> <span class="n">user</span>
+      <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">table</span><span class="o">-</span><span class="n">prefix</span><span class="p">[</span><span class="o">=...</span><span class="p">]</span>          <span class="n">Table</span> <span class="n">prefix</span> <span class="k">for</span> <span class="n">every</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">database</span>
+      <span class="o">--</span><span class="n">admin</span><span class="o">-</span><span class="n">user</span><span class="p">[</span><span class="o">=</span><span class="n">ADMIN</span><span class="o">-</span><span class="n">USER</span><span class="p">]</span>              <span class="n">User</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">admin</span> <span class="n">account</span> <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">]</span>
+      <span class="o">--</span><span class="n">admin</span><span class="o">-</span><span class="k">pass</span><span class="p">[</span><span class="o">=</span><span class="n">ADMIN</span><span class="o">-</span><span class="n">PASS</span><span class="p">]</span>              <span class="n">Password</span> <span class="n">of</span> <span class="n">the</span> <span class="n">admin</span> <span class="n">account</span>
+      <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="nb">dir</span><span class="p">[</span><span class="o">=</span><span class="n">DATA</span><span class="o">-</span><span class="n">DIR</span><span class="p">]</span>                  <span class="n">Path</span> <span class="n">to</span> <span class="n">data</span> <span class="n">directory</span> <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;/var/www/nextcloud/data&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This example installs Nextcloud with a MySQL database:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">install</span> \
+  <span class="o">--</span><span class="n">database</span> <span class="n">mysql</span> \
+  <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">name</span> <span class="n">nextcloud</span> \
+  <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">host</span> <span class="mf">127.0.0.1</span> \
+  <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">user</span> <span class="n">nextcloud</span> \
+  <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="k">pass</span> <span class="n">secret</span> \
+  <span class="o">--</span><span class="n">admin</span><span class="o">-</span><span class="n">user</span> <span class="n">admin</span> \
+  <span class="o">--</span><span class="n">admin</span><span class="o">-</span><span class="k">pass</span> <span class="n">password</span>
+  <span class="n">Nextcloud</span> <span class="n">was</span> <span class="n">successfully</span> <span class="n">installed</span>
+</pre></div>
+</div>
+<p>Supported databases:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sqlite</span></code> — SQLite (community edition only; not recommended for production)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mysql</span></code> — MySQL or MariaDB</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgsql</span></code> — PostgreSQL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oci</span></code> — Oracle (Nextcloud Enterprise only)</p></li>
+</ul>
+</section>
+<section id="command-line-upgrade">
+<span id="command-line-upgrade-label"></span><h2><a class="toc-backref" href="#id18" role="doc-backlink">Command line upgrade</a><a class="headerlink" href="#command-line-upgrade" title="Link to this heading"></a></h2>
+<p>These commands are available after downloading an upgraded package or tarball,
+and before completing the upgrade.</p>
+<p>When performing an upgrade, use <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code> instead of the web-based
+upgrader to avoid PHP timeout limits (the web interface enforces a 3600-second
+limit). On large installations this may not be sufficient, leaving the system
+in an inconsistent state.</p>
+<p>After completing all preliminary steps (see <a class="reference internal" href="maintenance/upgrade.html"><span class="doc">How to upgrade</span></a>),
+run the upgrade:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">upgrade</span>
+  <span class="n">Nextcloud</span> <span class="ow">or</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> <span class="n">apps</span> <span class="n">require</span> <span class="n">upgrade</span> <span class="o">-</span> <span class="n">only</span> <span class="n">a</span> <span class="n">limited</span> <span class="n">number</span> <span class="n">of</span>
+  <span class="n">commands</span> <span class="n">are</span> <span class="n">available</span>
+  <span class="n">Turned</span> <span class="n">on</span> <span class="n">maintenance</span> <span class="n">mode</span>
+  <span class="n">Checked</span> <span class="n">database</span> <span class="n">schema</span> <span class="n">update</span>
+  <span class="n">Checked</span> <span class="n">database</span> <span class="n">schema</span> <span class="n">update</span> <span class="k">for</span> <span class="n">apps</span>
+  <span class="n">Updated</span> <span class="n">database</span>
+  <span class="n">Updating</span> <span class="o">&lt;</span><span class="n">gallery</span><span class="o">&gt;</span> <span class="o">...</span>
+  <span class="n">Updated</span> <span class="o">&lt;</span><span class="n">gallery</span><span class="o">&gt;</span> <span class="n">to</span> <span class="mf">0.6.1</span>
+  <span class="n">Updating</span> <span class="o">&lt;</span><span class="n">activity</span><span class="o">&gt;</span> <span class="o">...</span>
+  <span class="n">Updated</span> <span class="o">&lt;</span><span class="n">activity</span><span class="o">&gt;</span> <span class="n">to</span> <span class="mf">2.1.0</span>
+  <span class="n">Update</span> <span class="n">successful</span>
+  <span class="n">Turned</span> <span class="n">off</span> <span class="n">maintenance</span> <span class="n">mode</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">-v</span></code> to display timestamps on each step:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">upgrade</span> <span class="o">-</span><span class="n">v</span>
+  <span class="mi">2025</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">23</span><span class="n">T09</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">0000</span> <span class="n">Turned</span> <span class="n">on</span> <span class="n">maintenance</span> <span class="n">mode</span>
+  <span class="mi">2025</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">23</span><span class="n">T09</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">0000</span> <span class="n">Checked</span> <span class="n">database</span> <span class="n">schema</span> <span class="n">update</span>
+  <span class="mi">2025</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">23</span><span class="n">T09</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">0000</span> <span class="n">Checked</span> <span class="n">database</span> <span class="n">schema</span> <span class="n">update</span> <span class="k">for</span> <span class="n">apps</span>
+  <span class="mi">2025</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">23</span><span class="n">T09</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">0000</span> <span class="n">Updated</span> <span class="n">database</span>
+  <span class="mi">2025</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">23</span><span class="n">T09</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">0000</span> <span class="n">Updated</span> <span class="o">&lt;</span><span class="n">files_sharing</span><span class="o">&gt;</span> <span class="n">to</span> <span class="mf">0.6.6</span>
+  <span class="mi">2025</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">23</span><span class="n">T09</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">0000</span> <span class="n">Update</span> <span class="n">successful</span>
+  <span class="mi">2025</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">23</span><span class="n">T09</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">15</span><span class="o">+</span><span class="mi">0000</span> <span class="n">Turned</span> <span class="n">off</span> <span class="n">maintenance</span> <span class="n">mode</span>
+</pre></div>
+</div>
+<p>If an error occurs, the exception is logged in the Nextcloud log file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Turned</span> <span class="n">on</span> <span class="n">maintenance</span> <span class="n">mode</span>
+<span class="n">Checked</span> <span class="n">database</span> <span class="n">schema</span> <span class="n">update</span>
+<span class="n">Checked</span> <span class="n">database</span> <span class="n">schema</span> <span class="n">update</span> <span class="k">for</span> <span class="n">apps</span>
+<span class="n">Updated</span> <span class="n">database</span>
+<span class="n">Updating</span> <span class="o">&lt;</span><span class="n">files_sharing</span><span class="o">&gt;</span> <span class="o">...</span>
+<span class="ne">Exception</span>
+<span class="n">ServerNotAvailableException</span><span class="p">:</span> <span class="n">LDAP</span> <span class="n">server</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">available</span>
+<span class="n">Update</span> <span class="n">failed</span>
+<span class="n">Turned</span> <span class="n">off</span> <span class="n">maintenance</span> <span class="n">mode</span>
+</pre></div>
+</div>
+</section>
+<section id="antivirus">
+<span id="antivirus-commands-label"></span><h2><a class="toc-backref" href="#id19" role="doc-backlink">Antivirus</a><a class="headerlink" href="#antivirus" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These commands require the <a class="reference external" href="https://apps.nextcloud.com/apps/files_antivirus">files_antivirus</a> app to be installed and enabled.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">files_antivirus</span>
+ <span class="n">files_antivirus</span><span class="p">:</span><span class="n">background</span><span class="o">-</span><span class="n">scan</span>  <span class="n">run</span> <span class="n">the</span> <span class="n">background</span> <span class="n">scan</span>
+ <span class="n">files_antivirus</span><span class="p">:</span><span class="n">mark</span>             <span class="n">mark</span> <span class="n">a</span> <span class="n">file</span> <span class="k">as</span> <span class="n">scanned</span> <span class="ow">or</span> <span class="n">unscanned</span>
+ <span class="n">files_antivirus</span><span class="p">:</span><span class="n">scan</span>             <span class="n">scan</span> <span class="n">a</span> <span class="n">file</span>
+ <span class="n">files_antivirus</span><span class="p">:</span><span class="n">status</span>           <span class="n">show</span> <span class="n">antivirus</span> <span class="n">scanner</span> <span class="n">status</span>
+</pre></div>
+</div>
+<section id="files-antivirus-background-scan">
+<h3>files_antivirus:background-scan<a class="headerlink" href="#files-antivirus-background-scan" title="Link to this heading"></a></h3>
+<p>Trigger the background antivirus scan manually. By default all pending files
+are processed. Use <code class="docutils literal notranslate"><span class="pre">--max</span></code> to limit the number of files scanned in a single
+run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">background</span><span class="o">-</span><span class="n">scan</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">background</span><span class="o">-</span><span class="n">scan</span> <span class="o">--</span><span class="nb">max</span> <span class="mi">500</span>
+</pre></div>
+</div>
+</section>
+<section id="files-antivirus-mark">
+<h3>files_antivirus:mark<a class="headerlink" href="#files-antivirus-mark" title="Link to this heading"></a></h3>
+<p>Mark a file as scanned or unscanned. The <code class="docutils literal notranslate"><span class="pre">file</span></code> argument is the path to the
+file and <code class="docutils literal notranslate"><span class="pre">mode</span></code> is either <code class="docutils literal notranslate"><span class="pre">scanned</span></code> or <code class="docutils literal notranslate"><span class="pre">unscanned</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">mark</span> <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span> <span class="n">scanned</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">mark</span> <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span> <span class="n">unscanned</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--forever</span></code> (<code class="docutils literal notranslate"><span class="pre">-f</span></code>) when marking a file as scanned to permanently
+exclude it from future rescans:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">mark</span> <span class="o">--</span><span class="n">forever</span> <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span> <span class="n">scanned</span>
+</pre></div>
+</div>
+</section>
+<section id="files-antivirus-scan">
+<h3>files_antivirus:scan<a class="headerlink" href="#files-antivirus-scan" title="Link to this heading"></a></h3>
+<p>Scan a single file immediately and report the result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">scan</span> <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--debug</span></code> to enable verbose backend output, useful when diagnosing
+scanner connectivity issues:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">scan</span> <span class="o">--</span><span class="n">debug</span> <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span>
+</pre></div>
+</div>
+</section>
+<section id="files-antivirus-status">
+<h3>files_antivirus:status<a class="headerlink" href="#files-antivirus-status" title="Link to this heading"></a></h3>
+<p>Show the current antivirus scanner status, including the configured backend
+and whether the scanner is reachable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">status</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">-v</span></code> for additional backend detail.</p>
+</section>
 </section>
 </section>
 

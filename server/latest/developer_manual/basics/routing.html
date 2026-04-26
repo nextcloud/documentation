@@ -71,6 +71,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#default-values-for-suburl">Default values for subURL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#registering-resources">Registering resources</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#using-the-urlgenerator">Using the URLGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#console-commands">Console commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#router-list">router:list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#router-match">router:match</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="dependency_injection.html">Dependency injection</a></li>
@@ -330,6 +335,42 @@ If you use a CamelCase name as <em>myCamelCaseApp</em>,</p>
 </pre></div>
 </div>
 </section>
+<section id="console-commands">
+<h2>Console commands<a class="headerlink" href="#console-commands" title="Link to this heading"></a></h2>
+<p>Two <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands help inspect and debug the routing table:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">router</span>
+ <span class="n">router</span><span class="p">:</span><span class="nb">list</span>   <span class="nb">list</span> <span class="n">routes</span><span class="p">,</span> <span class="n">optionally</span> <span class="n">filtered</span> <span class="n">by</span> <span class="n">app</span>
+ <span class="n">router</span><span class="p">:</span><span class="n">match</span>  <span class="n">match</span> <span class="n">a</span> <span class="n">URL</span> <span class="n">path</span> <span class="n">to</span> <span class="n">a</span> <span class="n">route</span>
+</pre></div>
+</div>
+<section id="router-list">
+<h3>router:list<a class="headerlink" href="#router-list" title="Link to this heading"></a></h3>
+<p>List all registered routes. Optionally filter to one or more apps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">router</span><span class="p">:</span><span class="nb">list</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">router</span><span class="p">:</span><span class="nb">list</span> <span class="n">myapp</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--ocs</span></code> to show only OCS API routes, or <code class="docutils literal notranslate"><span class="pre">--index</span></code> to show only
+<code class="docutils literal notranslate"><span class="pre">index.php</span></code> routes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">router</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">ocs</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">router</span><span class="p">:</span><span class="nb">list</span> <span class="n">myapp</span> <span class="o">--</span><span class="n">index</span>
+</pre></div>
+</div>
+</section>
+<section id="router-match">
+<h3>router:match<a class="headerlink" href="#router-match" title="Link to this heading"></a></h3>
+<p>Match a URL path against the routing table and show which route and controller
+it resolves to. Useful for debugging why a request is landing in the wrong
+place:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">router</span><span class="p">:</span><span class="n">match</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">myapp</span><span class="o">/</span><span class="n">authors</span><span class="o">/</span><span class="mi">3</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--method</span></code> to match against a specific HTTP verb (default: <code class="docutils literal notranslate"><span class="pre">GET</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">router</span><span class="p">:</span><span class="n">match</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">myapp</span><span class="o">/</span><span class="n">authors</span><span class="o">/</span><span class="mi">3</span> <span class="o">--</span><span class="n">method</span><span class="o">=</span><span class="n">POST</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 
@@ -344,7 +385,7 @@ If you use a CamelCase name as <em>myCamelCaseApp</em>,</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Apr 25, 2026.
+      <span class="lastupdated">Last updated on Apr 26, 2026.
       </span></p>
   </div>
 

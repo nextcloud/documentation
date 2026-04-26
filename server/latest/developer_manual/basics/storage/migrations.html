@@ -270,31 +270,73 @@ instance into your migration class like this:</p>
 </section>
 <section id="console-commands">
 <span id="migration-console-command"></span><h2>Console commands<a class="headerlink" href="#console-commands" title="Link to this heading"></a></h2>
-<p>There are some console commands, which should help developers to create or deal
-with migrations, which are only available if you are running your
-Nextcloud <strong>in debug mode</strong>:</p>
-<ul class="simple">
-<li><p><cite>migrations:execute</cite>: Executes a single migration version manually.
-The version argument is the class name of the migration, without the
-“Version” prefix. For example if your migration was named
-<cite>Version2404Date20220903071748</cite> the version would be <cite>2404Date20220903071748</cite>.</p></li>
-<li><p><cite>migrations:generate</cite>:
-This is needed to create a new migration file. This takes 2 arguments,
-first one is the <cite>appid</cite>, the second one should be the <cite>version`of your
-app as an integer. We recommend to use the major and minor digits of your apps
-version for that. This allows you to introduce a new migration in your branch
-for a Nextcloud version if there is already a migration path for a newer one
-in another branch. Since you can’t change this retroactive, we recommend to
-leave enough space in between and therefore map the numbers to 3 digits:
-`1.0.x =&gt; 1000</cite>, <cite>2.34.x =&gt; 2034</cite>, etc.</p></li>
-<li><p><cite>migrations:migrate</cite>: Execute a migration to a specified or the latest available version.</p></li>
-<li><p><cite>migrations:status</cite>: View the status of a set of migrations.</p></li>
-</ul>
+<p>The following <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands help you create and manage migrations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">migrations</span>
+ <span class="n">migrations</span><span class="p">:</span><span class="n">execute</span>  <span class="n">execute</span> <span class="n">a</span> <span class="n">single</span> <span class="n">migration</span> <span class="n">version</span> <span class="n">manually</span>
+ <span class="n">migrations</span><span class="p">:</span><span class="n">generate</span> <span class="n">generate</span> <span class="n">a</span> <span class="n">new</span> <span class="n">migration</span> <span class="n">file</span> <span class="k">for</span> <span class="n">an</span> <span class="n">app</span>
+ <span class="n">migrations</span><span class="p">:</span><span class="n">migrate</span>  <span class="n">execute</span> <span class="n">migrations</span> <span class="n">to</span> <span class="n">a</span> <span class="n">specified</span> <span class="ow">or</span> <span class="n">the</span> <span class="n">latest</span> <span class="n">version</span>
+ <span class="n">migrations</span><span class="p">:</span><span class="n">preview</span>  <span class="n">preview</span> <span class="n">available</span> <span class="n">DB</span> <span class="n">migrations</span> <span class="n">before</span> <span class="n">an</span> <span class="n">upgrade</span>
+ <span class="n">migrations</span><span class="p">:</span><span class="n">status</span>   <span class="n">view</span> <span class="n">the</span> <span class="n">status</span> <span class="n">of</span> <span class="n">migrations</span> <span class="k">for</span> <span class="n">an</span> <span class="n">app</span>
+</pre></div>
+</div>
+<section id="migrations-execute">
+<h3>migrations:execute<a class="headerlink" href="#migrations-execute" title="Link to this heading"></a></h3>
+<p>Execute a single migration version manually. The <code class="docutils literal notranslate"><span class="pre">version</span></code> argument is the
+migration class name without the <code class="docutils literal notranslate"><span class="pre">Version</span></code> prefix — for example, if your
+migration is named <code class="docutils literal notranslate"><span class="pre">Version2404Date20220903071748</span></code>, the version is
+<code class="docutils literal notranslate"><span class="pre">2404Date20220903071748</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">migrations</span><span class="p">:</span><span class="n">execute</span> <span class="n">myapp</span> <span class="mi">2404</span><span class="n">Date20220903071748</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>After generating a migration, you might need to run <cite>composer dump-autoload</cite>
-to be able to execute it.</p>
+<p>Without debug mode enabled, <code class="docutils literal notranslate"><span class="pre">migrations:execute</span></code> will refuse to run a
+version that has already been executed or that would roll back a previous
+migration. Enable debug mode (<code class="docutils literal notranslate"><span class="pre">’debug’</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code> in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>) to
+override this restriction during development.</p>
 </div>
+</section>
+<section id="migrations-generate">
+<h3>migrations:generate<a class="headerlink" href="#migrations-generate" title="Link to this heading"></a></h3>
+<p>Generate a new migration file for an app. The <code class="docutils literal notranslate"><span class="pre">version</span></code> argument is the
+major version of your app as an integer. Use the major and minor digits of
+your app version, mapped to 3 digits (<code class="docutils literal notranslate"><span class="pre">1.0.x</span> <span class="pre">=&gt;</span> <span class="pre">1000</span></code>, <code class="docutils literal notranslate"><span class="pre">2.34.x</span> <span class="pre">=&gt;</span> <span class="pre">2034</span></code>),
+to leave room for parallel branch migrations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">migrations</span><span class="p">:</span><span class="n">generate</span> <span class="n">myapp</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+<p>The generated file is placed in <code class="docutils literal notranslate"><span class="pre">apps/myapp/lib/Migration/</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After generating a migration you may need to run <code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">dump-autoload</span></code>
+before it can be executed.</p>
+</div>
+</section>
+<section id="migrations-migrate">
+<h3>migrations:migrate<a class="headerlink" href="#migrations-migrate" title="Link to this heading"></a></h3>
+<p>Execute all pending migrations for an app, or migrate to a specific version.
+Accepts a version number (<code class="docutils literal notranslate"><span class="pre">YYYYMMDDHHMMSS</span></code>) or an alias (<code class="docutils literal notranslate"><span class="pre">first</span></code>,
+<code class="docutils literal notranslate"><span class="pre">prev</span></code>, <code class="docutils literal notranslate"><span class="pre">next</span></code>, <code class="docutils literal notranslate"><span class="pre">latest</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">migrations</span><span class="p">:</span><span class="n">migrate</span> <span class="n">myapp</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">migrations</span><span class="p">:</span><span class="n">migrate</span> <span class="n">myapp</span> <span class="n">prev</span>
+</pre></div>
+</div>
+</section>
+<section id="migrations-preview">
+<h3>migrations:preview<a class="headerlink" href="#migrations-preview" title="Link to this heading"></a></h3>
+<p>Preview the DB migrations that would be applied during an upgrade to a given
+version, without executing them:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">migrations</span><span class="p">:</span><span class="n">preview</span> <span class="mf">30.0.0</span>
+</pre></div>
+</div>
+</section>
+<section id="migrations-status">
+<h3>migrations:status<a class="headerlink" href="#migrations-status" title="Link to this heading"></a></h3>
+<p>Show which migrations have been executed and which are pending for an app:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">migrations</span><span class="p">:</span><span class="n">status</span> <span class="n">myapp</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="adding-indices">
 <h2>Adding indices<a class="headerlink" href="#adding-indices" title="Link to this heading"></a></h2>
@@ -348,7 +390,7 @@ to be able to execute it.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Apr 25, 2026.
+      <span class="lastupdated">Last updated on Apr 26, 2026.
       </span></p>
   </div>
 

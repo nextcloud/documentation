@@ -193,8 +193,22 @@ They should be stored as <code class="docutils literal notranslate"><span class=
 </section>
 <section id="decode-a-snowflake-id">
 <h2>Decode a Snowflake ID<a class="headerlink" href="#decode-a-snowflake-id" title="Link to this heading"></a></h2>
-<p>IDs can be decoded with <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">snowflake:decode</span> <span class="pre">&lt;id&gt;</span></code> command.</p>
-<p>It’s also possible to decode IDs in your code, for example to get creation time of your object:</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">snowflake:decode</span></code> command to inspect a Snowflake ID from the
+command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">snowflake</span><span class="p">:</span><span class="n">decode</span> <span class="mi">6768789079123765868</span>
+<span class="o">+--------------------+-------------------------+</span>
+<span class="o">|</span> <span class="n">Snowflake</span> <span class="n">ID</span>       <span class="o">|</span> <span class="mi">6768789079123765868</span>     <span class="o">|</span>
+<span class="o">|</span> <span class="n">Seconds</span>            <span class="o">|</span> <span class="mi">1575981518</span>              <span class="o">|</span>
+<span class="o">|</span> <span class="n">Milliseconds</span>       <span class="o">|</span> <span class="mi">50</span>                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">Created</span> <span class="kn">from</span><span class="w"> </span><span class="nn">CLI</span>   <span class="o">|</span> <span class="n">no</span>                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">Server</span> <span class="n">ID</span>          <span class="o">|</span> <span class="mi">441</span>                     <span class="o">|</span>
+<span class="o">|</span> <span class="n">Sequence</span> <span class="n">ID</span>        <span class="o">|</span> <span class="mi">12</span>                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">Creation</span> <span class="n">timestamp</span> <span class="o">|</span> <span class="mf">1575981518.050</span>          <span class="o">|</span>
+<span class="o">|</span> <span class="n">Creation</span> <span class="n">date</span>      <span class="o">|</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">10</span> <span class="mi">13</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mf">38.050</span> <span class="o">|</span>
+<span class="o">+--------------------+-------------------------+</span>
+</pre></div>
+</div>
+<p>It’s also possible to decode IDs in your code, for example to get the creation time of your object:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
 
@@ -233,7 +247,7 @@ They should be stored as <code class="docutils literal notranslate"><span class=
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Apr 25, 2026.
+      <span class="lastupdated">Last updated on Apr 26, 2026.
       </span></p>
   </div>
 
