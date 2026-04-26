@@ -1,0 +1,87 @@
+# SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
+# SPDX-License-Identifier: MIT
+
+name: Labeling
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+jobs:
+  label-by-files:
+    if: github.event_name == 'pull_request'
+    name: Label by changed files
+
+    runs-on: ubuntu-latest-low
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Apply labels based on changed files
+        uses: actions/labeler@8558fd74291d67161a8a78ce36a881fa63b766a9 # v5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          sync-labels: false
+
+  triage-pr:
+    needs: [label-by-files]
+    if: >
+      always() &&
+      github.event_name == 'pull_request' &&
+      (github.event.action == 'opened' || github.event.action == 'reopened')
+    name: Apply default PR triage label
+
+    runs-on: ubuntu-latest-low
+
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Add '3. to review' if no triage label is set
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const triageLabels = ['0. Needs triage', '1. to develop', '2. developing', '3. to review', '4. to release']
+            const currentLabels = context.payload.pull_request.labels.map(l => l.name)
+            if (!triageLabels.some(l => currentLabels.includes(l))) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                labels: ['3. to review'],
+              })
+            }
+
+  triage-issue:
+    if: github.event_name == 'issues'
+    name: Apply default issue triage label
+
+    runs-on: ubuntu-latest-low
+
+    permissions:
+      issues: write
+
+    steps:
+      - name: Add '0. Needs triage' if no triage label is set
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const triageLabels = ['0. Needs triage', '1. to develop', '2. developing', '3. to review', '4. to release']
+            const currentLabels = context.payload.issue.labels.map(l => l.name)
+            if (!triageLabels.some(l => currentLabels.includes(l))) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.issue.number,
+                labels: ['0. Needs triage'],
+              })
+            }

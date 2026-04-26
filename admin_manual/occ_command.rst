@@ -29,6 +29,17 @@ The HTTP user is different on the various Linux distributions:
 * The HTTP user and group in Arch Linux is http.
 * The HTTP user in openSUSE is wwwrun, and the HTTP group is www.
 
+.. note::
+
+   APCu is disabled by default for the command-line mode of PHP, which can cause issues with Nextcloud's ``occ`` command. Please make sure you set the ``apc.enable_cli`` parameter to ``1`` in your PHP CLI's ``php.ini`` configuration file or append ``--define apc.enable_cli=1`` each time you invoke ``occ`` - e.g.::
+
+     sudo -u www-data php --define apc.enable_cli=1 occ config:list system
+
+   If you fail to do this, you will receive output such as the following::
+
+     An unhandled exception has been thrown:
+     OCP\HintException: [0]: Memcache \OC\Memcache\APCu not available for local cache (Is the matching PHP module installed and enabled?)
+
 If your HTTP server is configured to use a different PHP version than the
 default (/usr/bin/php), ``occ`` should be run with the same version. For
 example, in CentOS 6.5 with SCL-PHP70 installed, the command looks like this::
@@ -188,6 +199,28 @@ A command may use events to communicate with other apps. An app can only react t
 .. [2] `Calendar app event listener for UserDeletedEvent <https://github.com/nextcloud/calendar/blob/87e8586971a8676dc15a90f0cd969274678b7009/lib/Listener/UserDeletedListener.php>`_
 
 
+.. _occ_debugging:
+
+Debugging
+---------
+
+Every ``occ`` command accepts the standard Symfony Console verbosity flags:
+
+* ``-v`` — normal output (errors, warnings, and key messages)
+* ``-vv`` — verbose output (additional progress detail)
+* ``-vvv`` — debug output (full trace, useful for diagnosing command failures)
+
+Example::
+
+ sudo -E -u www-data php occ files:scan --all -vv
+
+To also enable debug-level log output from Nextcloud itself, set the
+``NC_loglevel`` environment variable::
+
+ NC_loglevel=0 sudo -E -u www-data php occ status
+
+See :doc:`configuration_server/logging_configuration` for more on log levels.
+
 Command reference
 -----------------
 
@@ -196,6 +229,7 @@ Command reference
 
    occ_apps
    occ_database
+   occ_encryption
    occ_files
    occ_ldap
    occ_users

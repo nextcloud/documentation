@@ -7,7 +7,7 @@ Nextcloud filesystem API
 
 High level guide to using the Nextcloud filesystem API.
 
-Because users can choose their storage backend, the filesystem should be accessed by using the appropriate filesystem classes. For a simplified filesystem for app specific data see `IAppData <appdata.html>`_
+Because users can choose their storage backend, the filesystem should be accessed by using the appropriate filesystem classes. For a simplified filesystem for app specific data see :doc:`IAppData <appdata>`
 
 Node API
 ^^^^^^^^

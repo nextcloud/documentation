@@ -16,8 +16,8 @@ permissions:
   packages: write
 
 jobs:
-  build-and-push:
-    name: Build and push sphinx-latex image
+  build-and-publish:
+    name: Build and publish sphinx-latex Docker image
     runs-on: ubuntu-latest
 
     steps:
@@ -44,7 +44,7 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
             type=sha,prefix=sha-
 
-      - name: Build and push Docker image
+      - name: Build and publish Docker image
         uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7.1.0
         with:
           context: .docker/sphinx-latex

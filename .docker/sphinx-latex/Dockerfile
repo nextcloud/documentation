@@ -8,8 +8,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
+    git \
+    lsb-release \
     make \
-    python3-pip \
     latexmk \
     tex-gyre \
     texlive-fonts-extra \
@@ -21,3 +24,7 @@ RUN apt-get update \
     xindy \
   && mktexlsr \
   && rm -rf /var/lib/apt/lists/*
+
+# Allow pip to install packages system-wide inside the container when running
+# as root (avoids PEP 668 "externally managed environment" error)
+RUN printf '[global]\nbreak-system-packages = true\n' > /etc/pip.conf

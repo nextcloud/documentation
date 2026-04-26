@@ -145,7 +145,12 @@ current_docs = 'admin_manual'
 html_context['versions'] = generateVersionsDocs(current_docs)
 html_context['theme_vcs_pageview_mode'] += current_docs
 
+# -- URL redirects -----------------------------------------------------------
+# https://documatt.gitlab.io/sphinx-reredirects/usage.html
+
 redirects = {
     # consolidated with Deployment chapter 4/2026
     "desktop/accountcommand": "desktop/massdeployment",
+    # Moved 2026-03
+    "configuration_server/automatic_configuration": "../installation/automatic_configuration.html",
 }

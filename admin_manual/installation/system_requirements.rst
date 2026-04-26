@@ -48,7 +48,7 @@ To ensure the full functionality of your Nextcloud, please make sure that the se
 
 CPU Architecture and OS
 ^^^^^^^^^^^^^^^^^^^^^^^
-A 64-bit CPU, OS and PHP is required for Nextcloud to run well.
+A 64-bit CPU, OS and PHP is strongly recommended for Nextcloud.
 
 32-bit systems are supported, with the following known limitations:
 
@@ -132,8 +132,8 @@ Talk App
 
 - **iOS** 16.0+
 - **Android** 8.0+
-- **Nextcloud Server** 19.0+
-- **Nextcloud Talk** 9.0+
+- **Nextcloud Server** 22.0+
+- **Nextcloud Talk** 12.0+
 
 Web browser
 -----------
@@ -146,6 +146,5 @@ of a browser from this list, or one based on those:
 - Google **Chrome**/Chromium
 - Apple **Safari**
 
-.. note:: If you want to use Nextcloud Talk you should use Mozilla **Firefox** 52+ or Google **Chrome**/Chromium 49+ to have
-          the full experience with video calls and screensharing. Google Chrome/Chromium requires an additional plugin for
-          screensharing.
+.. note:: If you want to use Nextcloud Talk you should use the latest version of Mozilla **Firefox** or 
+          Google **Chrome**/Chromium to have the full experience with video calls and screensharing.
