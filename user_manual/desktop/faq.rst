@@ -4,7 +4,7 @@ FAQ
 
 How the "Edit locally" functionality works
 ------------------------------------------
-This functionality depends on the desktop client ability to register the mime to handle the nc:// scheme. That is the handler used by the server to open a file locally. This will allow the desktop client to open a document with the local editor when you click on the option "Edit locally" in your Nextcloud instance. 
+This functionality depends on the desktop client ability to register the nc:// protocol handler. That is the handler used by the server to open a file locally. This will allow the desktop client to open a document with the local editor when you click on the option "Edit locally" in your Nextcloud instance. 
 
 .. note:: 
    Without properly registering the mime, independent of the browser and distro being used, the desktop client will fail to open a document with the local editor when you click on the option "Edit locally" in your Nextcloud instance.
@@ -24,9 +24,9 @@ We use AppImage due to its universal compatibility but to take full advantage of
 On Windows
 ^^^^^^^^^^
 
-The MSI installer will alter your system registry to register the mime to handle the nc:// scheme. 
+The MSI installer will alter your system registry to register the nc:// protocol handler. 
 
-Alternatively, you can manually register the mime to handle the nc:// scheme:
+Alternatively, you can manually register the nc:// protocol handler:
 
 1. Save the following content to a .reg file:
 
