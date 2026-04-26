@@ -186,7 +186,7 @@ Previously the audit logfile was defined in the app config. This config is still
 
 	occ config:app:set admin_audit logfile --value=/var/log/nextcloud/audit.log
 
-.. _PHP date function: http://www.php.net/manual/en/function.date.php
+.. _PHP date function: https://www.php.net/manual/en/function.date.php
 
 Workflow log
 ------------

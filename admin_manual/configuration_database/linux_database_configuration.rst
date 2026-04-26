@@ -6,7 +6,7 @@ Nextcloud requires a database in which administrative data is stored. The follow
 
 * `MySQL <https://www.mysql.com/>`_ / `MariaDB <https://mariadb.org/>`_
 * `PostgreSQL <https://www.postgresql.org/>`_
-* `Oracle <http://www.oracle.com/>`_ (*only for Nextcloud Enterprise*)
+* `Oracle <https://www.oracle.com/>`_ (*only for Nextcloud Enterprise*)
 
 The PostgreSQL or MariaDB databases are the recommended database engines.
 
