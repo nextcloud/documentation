@@ -32,7 +32,7 @@ The recording will start shortly, and you will see a red indicator next to the c
 .. image:: images/stop-recording.png
     :width: 500px
 
-After stopping a recording, the server will take some time to prepare and save the recorded file. The moderator, who started the recording, receives a notification when the file is uploaded. From there, it can be shared in the chat.
+After stopping a recording, the server will take a few minutes to prepare and save the recorded file. The moderator, who started the recording, receives a notification when the file is uploaded. From there, it can be shared in the chat.
 
 .. image:: images/share-recording-notification.png
     :width: 300px
