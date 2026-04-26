@@ -9,7 +9,7 @@ Migrating from ownCloud
 
 Currently migrating from ownCloud is like performing a manual update.
 So it is quite easy, to migrate from one ownCloud version to at least one Nextcloud version.
-However this does only work with versions that are close enough database and code-wise.
+However this does only work with versions that are sufficiently compatible in database schema and codebase.
 See the table below for a version map, where migrating is easily possible:
 
 +-------------------+-------------------------------+
