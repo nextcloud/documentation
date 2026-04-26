@@ -38,7 +38,6 @@ templates_path = [
     '_templates',
 ]
 
-
 exclude_patterns = [
     '_build',
 ]
@@ -67,8 +66,12 @@ html_static_path = ['../_shared_assets/static']
 html_short_title = "User Manual"
 # disable "Created using Sphinx" in the HTML footer (default is True)
 html_show_sphinx = False
-# disable including the reST sources in the HTML build as _sources/name (default is True)
-html_copy_source = False 
+
+# Add canonical link in all generated pages linking to their respective equivalent
+# in `stable` (regardless of which version of the docs someone lands in).
+# Note, there is an argument to be made for having this link to `latest` instead,
+# but this is likely good enough and the most conservative for now.
+html_baseurl = "https://docs.nextcloud.com/server/stable/user_manual/"
 
 # -- Options for HTML help output --------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-help-output
@@ -84,12 +87,9 @@ epub_author = u'The Nextcloud developers'
 epub_publisher = u'The Nextcloud developers'
 epub_copyright = u'2012-2025, The Nextcloud developers'
 
-# -- Options for LaTeX output ------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-latex-output
+# -- Options for LaTeX output --------------------------------------------------
 
-
-latex_elements = {
-}
+latex_elements = {}
 latex_documents = [
     (
         'contents',
@@ -150,6 +150,19 @@ pdf_documents = [
 current_docs = 'user_manual'
 html_context['versions'] = generateVersionsDocs(current_docs)
 html_context['theme_vcs_pageview_mode'] += current_docs
-html_context['available_languages'] = [
-    ]
 
+# Automatically detect available languages and pass to template
+
+locale_path = os.path.join(os.path.dirname(__file__), 'locale')
+available_languages = []
+
+if os.path.isdir(locale_path):
+    available_languages = [
+        lang for lang in os.listdir(locale_path)
+        if os.path.isdir(os.path.join(locale_path, lang)) and lang != 'source'
+    ]
+    if 'en' not in available_languages:
+        available_languages.append('en')
+    available_languages.sort()
+
+html_context['available_languages'] = available_languages

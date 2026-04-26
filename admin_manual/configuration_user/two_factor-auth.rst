@@ -43,14 +43,10 @@ types of factors. Three providers are automatically installed (but may need to b
 
 Other 2FA providers may be found in the App Store. 
 
-.. TODO ON RELEASE: Update version number above on release
-
 .. figure:: ../images/2fa-app-install.png
 
 Developers can also `implement new two-factor provider 
 apps <https://docs.nextcloud.com/server/latest/developer_manual/digging_deeper/two-factor-provider.html>`_.
-
-.. TODO ON RELEASE: Update version number above on release
 
 Enforcing two-factor authentication
 -----------------------------------

@@ -57,7 +57,7 @@ Speech-To-Text
 In order to make use of Speech-to-Text, you will need an app that provides a Speech-To-Text backend:
 
 * :ref:`stt_whisper2<ai-app-stt_whisper2>` - Runs open source AI Speech-To-Text models on your own server hardware  (Customer support available upon request)
-* *integration_openai* - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
+* `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
 Text processing
 ~~~~~~~~~~~~~~~
@@ -65,7 +65,7 @@ Text processing
 In order to make use of text processing features in the assistant, you will need an app that provides a Text processing backend:
 
 * :ref:`llm2<ai-app-llm2>` - Runs open source AI language models locally on your own server hardware (Customer support available upon request)
-* *integration_openai* - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
+* * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * *integration_watsonx* - Integrates with the IBM watsonx.ai API to provide AI functionality from IBM Cloud servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
 These apps currently implement the following Assistant Tasks:
@@ -85,17 +85,39 @@ Text-To-Image
 In order to make use of Text-To-Image features, you will need an app that provides an image generation backend:
 
 * :ref:`tex2image_stablediffusion2<ai-app-text2image_stablediffusion2>` (Customer support available upon request)
-* *integration_openai* - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
+* * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * *integration_replicate* - Integrates with the replicate API to provide AI functionality from replicate servers (see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
 Context Chat
 ~~~~~~~~~~~~
 
-In order to make use of our special Context Chat feature, offering in-context insights about your own data stored in Nextcloud, you will need the following apps:
+In order to make use of our special Context Chat feature, offering insights about your own documents and data stored in Nextcloud, you will need the following apps:
 
 * :ref:`context_chat + context_chat_backend<ai-app-context_chat>` -  (Customer support available upon request)
 
 You will also need a text processing provider as specified above (ie. llm2, integration_openai or integration_watsonx).
+
+Chat
+~~~~
+
+In order to make use of our "Chat with AI" feature you will need any one of the following apps:
+
+* :ref:`llm2<ai-app-llm2>` - Runs open source AI language models locally on your own server hardware (Customer support available upon request)
+* * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
+
+
+Voice Chat
+~~~~~~~~~~
+
+In order to make use of our "Audio chat" feature which allows you to interact with the assistant Chat via your Voice and Ears as if in a real conversation, you will need any of the following set of apps:
+
+* Either
+    * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
+
+* Or
+    * :ref:`llm2<ai-app-llm2>` - Runs open source AI language models locally on your own server hardware (Customer support available upon request)
+    * :ref:`stt_whisper2<ai-app-stt_whisper2>` - Runs open source AI Speech-To-Text models on your own server hardware  (Customer support available upon request)
+    * :ref:`text2speech_kokoro<ai-app-text2speech_kokoro>` - Runs open source AI Text-To-Speech models on your own server hardware (Customer support available upon request)
 
 Context Agent
 ~~~~~~~~~~~~~
@@ -111,10 +133,10 @@ You will also need a text processing provider as specified above (ie. *llm2* or 
 Text-To-Speech
 ~~~~~~~~~~~~~~
 
-In order to make use of Text-To-Speech, you will need an app that provides a Text-To-Speech backend:
+In order to make use of Text-To-Speech, you will need an app that provides a Text-To-Speech backend, which is one of the following:
 
-* *integration_openai* - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
-* *text2speech_kokoro* - Runs a local model
+* `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
+* :ref:`text2speech_kokoro<ai-app-text2speech_kokoro>` - Runs open source AI Text-To-Speech models on your own server hardware (Customer support available upon request)
 
 Configuration
 -------------

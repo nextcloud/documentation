@@ -343,9 +343,31 @@ iOS
 Adding translations
 -------------------
 
-The steps how to set up translations for an app have been moved to it's own page in the "App development" chapter: :ref:`Translation setup`
+The steps how to set up translations for an app have been moved to it's own page in the "App development" chapter: :ref:`Translation`
 
 Testing translations
 --------------------
 
 You can use the query parameter ``forceLanguage`` to force a specific language for a web request (API or frontend). See :ref:`Forcing language for a given call<api-force-language>`.
+
+Console commands
+----------------
+
+l10n\:createjs
+^^^^^^^^^^^^^^
+
+Generate JavaScript translation files for an app from its ``l10n/`` source
+files. Pass the app ID and optionally a specific language code::
+
+ sudo -E -u www-data php occ l10n:createjs myapp
+ sudo -E -u www-data php occ l10n:createjs myapp de
+
+When no language is specified, JavaScript files are generated for all
+available languages. The output files are written to the app's ``l10n/``
+directory as ``<lang>.js`` and ``<lang>.json``.
+
+.. note::
+
+   This command is intended for development and CI pipelines. In production,
+   JavaScript translation files are generated automatically during app
+   installation and updates.

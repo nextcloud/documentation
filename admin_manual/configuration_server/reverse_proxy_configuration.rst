@@ -146,7 +146,21 @@ Caddy
 
         reverse_proxy {$NEXTCLOUD_HOST:localhost}
     }
+   
+Pomerium
+^^^^^^^^
+::
 
+    - from: https://subdomain.example.com
+      path: /.well-known/carddav
+      redirect:
+        path_redirect: /remote.php/dav/
+    - from: https://subdomain.example.com
+      path: /.well-known/caldav
+      redirect:
+        path_redirect: /remote.php/dav/
+
+Thanks to `@JeffMatson <https://github.com/JeffMatson>`_ for Pomerium example.
 
 Example
 -------
@@ -168,7 +182,7 @@ you can set the following parameters inside the :file:`config/config.php`.
     'overwriteprotocol' => 'https',
     'overwritewebroot'  => '/domain.tld/nextcloud',
     'overwritecondaddr' => '^10\.0\.0\.1$',
-    'overwrite.cli.url' => 'https://domain.tld/,
+    'overwrite.cli.url' => 'https://domain.tld/',
   );
 
 .. note:: If you want to use the SSL proxy during installation you have to

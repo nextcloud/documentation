@@ -38,20 +38,21 @@ The following PHP modules **must** be installed and enabled for Nextcloud Server
 - `fileinfo` (included with PHP)
 - `filter` (only on Mageia and FreeBSD)
 - `GD`
-- `hash` (only on FreeBSD)
-- `JSON` (included with PHP)
-- `libxml` (requires Linux package `libxml2` version >= 2.7.0)
+- `xml` (provides SimpleXML, XMLReader and XMLWriter; requires Linux package `libxml2` version >= 2.7.0)
 - `mbstring`
 - `OpenSSL` (included with PHP)
 - `posix`
 - `session` (included with PHP)
-- `SimpleXML`
-- `XMLReader`
-- `XMLWriter`
 - `zip`
 - `zlib`
 
-The `ctype`, `fileinfo`, `JSON` and `OpenSSL` modules are generally included and enabled in PHP by default. Often 
+.. note::
+   The PHP "xml" extension is commonly packaged as `php-xml` or shown as `libxml` by OS package managers. This
+   extension provides the underlying libxml2 bindings and exposes SimpleXML, XMLReader and XMLWriter. Ensure the
+   corresponding `php-xml` (or distribution-specific) package is installed so that SimpleXML, XMLReader and XMLWriter
+   are available to PHP.
+
+The `ctype`, `fileinfo`, and `OpenSSL` modules are generally included and enabled in PHP by default. Often 
 some of the other required modules are automatically installed by OS distribution package managers. 
 
 **How to check if a module is enabled:**  
@@ -59,7 +60,7 @@ some of the other required modules are automatically installed by OS distributio
 - Run ``php -m | grep -i <module_name>``. If you see output, the module is active.
 
 .. note::
-    The `filter` and `hash` modules are required only on Mageia and FreeBSD.  
+    The `filter` module is required only on Mageia and FreeBSD.  
 
 --------------------------------
 Required PHP Database Connectors
@@ -83,6 +84,7 @@ These modules are not required, but are highly recommended to improve functional
     bcrypt will be used if Argon2 is unavailable, but if passwords were previously hashed with Argon2 
     (such as when migrating an existing Nextcloud Server installation to a new server environment) and this 
     module is missing, accounts will not be able to log-in).
+- `sysvsem`: Enables System V semaphores used by Nextcloud to coordinate preview generation across PHP processes. Recommended; if missing, previews still work but may be less reliable under heavy load.
 
 -------------------------------
 Recommended PHP Caching Modules
@@ -193,45 +195,74 @@ Notes on PHP `ini` Configuration
 PHP Module Quick Reference Table
 --------------------------------
 
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| Module           | Required | Recommended | For Specific App | Description                                   |
-+==================+==========+=============+==================+===============================================+
-| ctype            | ✓        |             |                  | Core functionality                            |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| curl             | ✓        |             |                  | HTTP requests                                 |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| intl             |          | ✓           |                  | Improves translations and sorting             |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| sodium           |          | ✓           |                  | Argon2 password hashing                       |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| ldap             |          |             | ✓                | LDAP integration                              |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| smbclient        |          |             | ✓                | SMB/CIFS integration                          |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| ftp              |          |             | ✓                | FTP storage/authentication                    |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| imap             |          |             | ✓                | External user authentication                  |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| gmp              |          |             | ✓ (optional)     | SFTP storage                                  |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| exif             |          |             | ✓ (optional)     | Image rotation in Pictures app                |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| apcu             |          | ✓           |                  | Performance caching                           |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| memcached        |          | ✓           |                  | Performance caching                           |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| redis            |          | ✓           |                  | Transactional File Locking                    |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| imagick          |          |             | ✓ (optional)     | Image previews                                |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| avconv/ffmpeg    |          |             | ✓ (optional)     | Video previews                                |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| Open/LibreOffice |          |             | ✓ (optional)     | Document previews                             |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| pcntl            |          |             | ✓ (optional)     | Command interruption in CLI                   |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
-| phar             |          |             | ✓ (optional)     | Needed for command-line updater               |
-+------------------+----------+-------------+------------------+-----------------------------------------------+
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| Module            | Required | Recommended | For Specific App   | Description                                   |
++===================+==========+=============+====================+===============================================+
+| ctype             |    ✓     |             |                    | Core functionality                            |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| curl              |    ✓     |             |                    | HTTP requests                                 |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| DOM               |    ✓     |             |                    | Document Object Model (XML/HTML handling)     |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| fileinfo          |    ✓     |             |                    | File type detection                           |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| filter*           |    ✓*    |             |                    | Data filtering and validation (Mageia/FreeBSD)|
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| GD                |    ✓     |             |                    | Image processing                              |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| xml               |    ✓     |             |                    | XML parsing (libxml2 >= 2.7.0) — provides the |
+|                   |          |             |                    | php 'xml' extension which exposes SimpleXML,  |
+|                   |          |             |                    | XMLReader and XMLWriter                       |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| mbstring          |    ✓     |             |                    | Multibyte character handling                  |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| OpenSSL           |    ✓     |             |                    | Secure communications                         |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| posix             |    ✓     |             |                    | POSIX functions                               |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| session           |    ✓     |             |                    | Session support                               |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| zip               |    ✓     |             |                    | Zip file handling                             |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| zlib              |    ✓     |             |                    | Compression and decompression                 |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| intl              |          |     ✓       |                    | Improves translations and sorting             |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| sodium            |          |     ✓       |                    | Argon2 password hashing                       |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| sysvsem           |          |     ✓       |                    | System V semaphore support used to coordinate |
+|                   |          |             |                    | preview generation across PHP processes.      |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| ldap              |          |             |        ✓           | LDAP integration                              |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| smbclient         |          |             |        ✓           | SMB/CIFS integration                          |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| ftp               |          |             |        ✓           | FTP storage/authentication                    |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| imap              |          |             |        ✓           | External user authentication                  |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| gmp               |          |             |   ✓ (optional)     | SFTP storage                                  |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| exif              |          |             |   ✓ (optional)     | Image rotation in Pictures app                |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| apcu              |          |     ✓       |                    | Performance caching                           |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| memcached         |          |     ✓       |                    | Performance caching                           |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| redis             |          |     ✓       |                    | Transactional File Locking                    |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| imagick           |          |             |   ✓ (optional)     | Image previews                                |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| avconv/ffmpeg     |          |             |   ✓ (optional)     | Video previews                                |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| Open/LibreOffice  |          |             |   ✓ (optional)     | Document previews                             |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| pcntl             |          |             |   ✓ (optional)     | Command interruption in CLI                   |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+| phar              |          |             |   ✓ (optional)     | Needed for command-line updater               |
++-------------------+----------+-------------+--------------------+-----------------------------------------------+
+
+\*The filter module is required only on Mageia and FreeBSD.
 
 -----------------
 Further Resources

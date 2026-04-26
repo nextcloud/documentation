@@ -248,6 +248,8 @@ security headers are shipped.
 .. _Web TLS Profiler: https://tlsprofiler.danielfett.de/
 .. _RFC 4086 ("Randomness Requirements for Security"): https://tools.ietf.org/html/rfc4086#section-5.2
 
+.. _connections_to_remote_servers:
+
 Connections to remote servers
 -----------------------------
 
@@ -255,7 +257,7 @@ Some functionalities require the Nextcloud server to be able to connect remote s
 This paragraph also includes the data which is being transmitted to the Nextcloud GmbH.
 Depending on your server setup, these are the possible connections:
 
-- nextcloud.com, startpage.com, eff.org, edri.org
+- connectivity.nextcloud.com, www.eff.org, edri.org
 	- `optional (config)`_
 	- for checking the internet connection
 - cloud.nextcloud.com
@@ -264,10 +266,11 @@ Depending on your server setup, these are the possible connections:
 - updates.nextcloud.com
 	- to check for available Nextcloud server updates
 	- submitted data: server version, subscription key, install time, instance id, instance size
-- apps.nextcloud.com
-	- to check for available apps and their updates 
+- apps.nextcloud.com, ltd[1-3].nextcloud.com, garm[1-5].nextcloud.com
+	- to check for available apps and their updates
+	- source is apps.nextcloud.com the ltd and garm servers are just mirroring the apps.json file
 	- submitted data: subscription key
-- github.com, objects.githubusercontent.com
+- github.com, objects.githubusercontent.com, release-assets.githubusercontent.com
 	- to download Nextcloud standard apps
 	- to download Nextcloud server releases
 - push-notifications.nextcloud.com
@@ -284,12 +287,23 @@ Depending on your server setup, these are the possible connections:
 	- optional
 	- if the admin has agreed to share anonymized server data
 	- submitted data: statistical data. see here for the `detailed field list`_
+- nominatim.openstreetmap.org
+	- optional
+	- if the weather status app is enabled and used
+	- submitted data: address manually entered by the user to resolve to longitude and latitude
+- api.opentopodata.org
+	- optional
+	- if the weather status app is enabled and used
+	- submitted data: address manually entered by the user to resolve the altitude of the location
+- api.met.no
+	- optional
+	- if the weather status app is enabled and used
+	- submitted data: longitude and latitude configured in the weather status app by the individual user
 - Any remote Nextcloud server that is connected with federated sharing
+- When downloading apps from the App store other domains might be accessed, based on the choice of the app developers where they host the releases. For all official Nextcloud apps this is not the case though, because they are hosted on Github.
 
 .. _optional (config): https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#has-internet-connection
-.. _detailed field list : https://github.com/nextcloud/survey_client
-
-.. TODO ON RELEASE: Update version number above on release
+.. _detailed field list: https://github.com/nextcloud/survey_client
 
 
 Setup fail2ban

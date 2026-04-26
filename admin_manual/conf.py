@@ -31,6 +31,7 @@ extensions += [
     'rst2pdf.pdfbuilder',
     'sphinx.ext.intersphinx',
     'sphinx_toolbox.sidebar_links',
+    'sphinx_reredirects',
 ]
 
 templates_path = [
@@ -55,6 +56,12 @@ html_static_path = ['../_shared_assets/static']
 html_short_title = "Server Admin Manual"
 # disable "Created using Sphinx" in the HTML footer (default is True)
 html_show_sphinx = False
+
+# Add canonical link in all generated pages linking to their respective equivalent
+# in `stable` (regardless of which version of the docs someone lands in).
+# Note, there is an argument to be made for having this link to `latest` instead,
+# but this is likely good enough and the most conservative for now.
+html_baseurl = "https://docs.nextcloud.com/server/stable/admin_manual/"
 
 # -- Options for HTML help output --------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-help-output
@@ -137,3 +144,13 @@ pdf_documents = [
 current_docs = 'admin_manual'
 html_context['versions'] = generateVersionsDocs(current_docs)
 html_context['theme_vcs_pageview_mode'] += current_docs
+
+# -- URL redirects -----------------------------------------------------------
+# https://documatt.gitlab.io/sphinx-reredirects/usage.html
+
+redirects = {
+    # consolidated with Deployment chapter 4/2026
+    "desktop/accountcommand": "desktop/massdeployment",
+    # Moved 2026-03
+    "configuration_server/automatic_configuration": "../installation/automatic_configuration.html",
+}

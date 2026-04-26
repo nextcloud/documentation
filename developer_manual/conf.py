@@ -63,6 +63,12 @@ html_short_title = "Developer Manual"
 # disable "Created using Sphinx" in the HTML footer (default is True)
 html_show_sphinx = False
 
+# Add canonical link in all generated pages linking to their respective equivalent
+# in `stable` (regardless of which version of the docs someone lands in).
+# Note, there is an argument to be made for having this link to `latest` instead,
+# but this is likely good enough and the most conservative for now.
+html_baseurl = "https://docs.nextcloud.com/server/stable/developer_manual/"
+
 html_last_updated_fmt = "%b %d, %Y"
 
 # -- Options for HTML help output --------------------------------------------
@@ -94,7 +100,7 @@ epub_copyright = "2012-2024, The Nextcloud developers"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-latex-output
 
 latex_elements = {
-    "preamble": "\extrafloats{100}\maxdeadcycles=500\DeclareUnicodeCharacter{274C}{\sffamily X}",
+    "preamble": "\\extrafloats{100}\\maxdeadcycles=500\\DeclareUnicodeCharacter{274C}{\\sffamily X}",
 }
 latex_documents = [
     (
@@ -171,4 +177,6 @@ redirects = {
     "digging_deeper/changelog": "../app_publishing_maintenance/app_upgrade_guide/index.html",
     # Removed 2025-04
     "basics/front-end/l10n": "../translations.html",
+    # Moved 2026-04 - Upgrade to 34 moved to release notes
+    "app_publishing_maintenance/app_upgrade_guide/upgrade_to_34": "../../release_notes/critical_changes.html",
 }

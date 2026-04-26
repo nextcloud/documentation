@@ -13,4 +13,5 @@ grouped from other parts of documentation.
    ExAppDevelopmentSteps
    ExAppOverview
    ExAppLifecycle
+   ExAppHarpIntegration
 

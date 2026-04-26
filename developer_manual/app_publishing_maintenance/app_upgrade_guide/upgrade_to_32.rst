@@ -50,6 +50,7 @@ Deprecated APIs
 
 - ``--color-error-rgb``, ``--color-info-rgb``, ``--color-success-rgb``, ``--color-warning-rgb`` are deprecated.
   Instead use the native CSS color utils with the the existing variables like ``--color-error`` and similar.
+- The ``OC.SystemTags`` api is deprecated. If you need to get the list of system tags, check `this merge request <https://github.com/nextcloud/files_retention/pull/855>`_ for how to fetch the tags directly.
 
 Back-end changes
 ----------------
@@ -104,6 +105,7 @@ Added APIs
 - New method ``\OCP\Files\Template\BeforeGetTemplatesEvent::shouldGetFields`` to get the event's ``withFields`` property, which should determine whether or not to perform template field extraction on the returned templates.
 - New method ``\OCP\IUser::canChangeEmail`` allowing to check if the user backend allows the user to change their email address.
 - New method ``\OCP\IDateTimeZone::getDefaultTimezone`` allowing to get the default timezone configured for Nextcloud.
+- New method ``\OCA\Files_Versions\Versions\IVersionBackend::getRevision`` to get the version revision from a node.
 - New ``OCP\SystemTag\TagAssignedEvent`` emitted by the system tag object mapper
 - New ``OCP\SystemTag\TagUnassignedEvent`` emitted by the system tag object mapper
 - Task processing API:
@@ -112,6 +114,8 @@ Added APIs
   - New task processing task type ``OCP\TaskProcessing\AnalyzeImages`` to ask questions about images.
   - New method ``OCP\TaskProcessing\Manager::getAvailableTaskTypeIds`` to list only task type IDs without meta-data (faster than ``OCP\TaskProcessing\Manager::getAvailableTaskTypes``)
 
+- New ``OCP\Mail\IEmailValidator`` to validate an email address.
+
 Changed APIs
 ^^^^^^^^^^^^
 
@@ -119,6 +123,7 @@ Changed APIs
 - ``\OCP\Files\Template\BeforeGetTemplatesEvent`` now takes an optional boolean constructor value, ``withFields``, that allows you to explicitly control whether template fields should be extracted. The default value is ``false``.
 - ``\OCP\IDateTimeZone::getTimezone`` now has a new optional string parameter ``userId`` allowing to request the timezone of another user than the current.
 - ``\OCP\IDBConnection::getDatabaseProvider`` now has a new optional boolean parameter ``strict``. When specified the output will differentiate between MySQL and MariaDB. Otherwise MariaDB will be returned as MySQL
+- ``\OCP\Notification\INotification::setIcon``, ``\OCP\Notification\INotification::setLink`` and ``\OCP\Notification\IAction::setLink`` now throw ``\OCP\Notification\InvalidValueException`` when the provided link is not absolute as previously announced in :doc:`./upgrade_to_30`
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
@@ -131,6 +136,7 @@ Deprecated APIs
 - ``\OC_User::clearBackends`` is deprecated, please use ``\OCP\IUserManager::clearBackends`` available since 8.0.0
 - ``\OC_Helper::isReadOnlyConfigEnabled`` is deprecated, please use the ``config_is_read_only`` system config directly.
 - ``\OCP\OCM\IOCMProvider`` is deprecated, please use ``\OCP\OCM\ICapabilityAwareOCMProvider`` available since 32.0.0
+- ``\OCP\Mail\IMailer::validateMailAddress`` is deprecated, please use ``\OCP\Mail\IEmailValidator`` available since 32.0.0
 
 Removed APIs
 ^^^^^^^^^^^^
