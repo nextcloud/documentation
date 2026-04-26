@@ -14,8 +14,7 @@ To restore a specific version of a file, click the circular arrow to the right.
 Click on the timestamp to download it.
 
 The versioning app expires old versions automatically to make sure that
-the user doesn't run out of space. This pattern is used to delete
-old versions:
+the user doesn't run out of space. This pattern is used to delete old versions:
 
 * For the first second we keep one version
 * For the first 10 seconds Nextcloud keeps one version every 2 seconds
@@ -25,8 +24,7 @@ old versions:
 * For the first 30 days Nextcloud keeps one version every day
 * After the first 30 days Nextcloud keeps one version every week
 
-The versions are adjusted along this pattern every time a new version gets
-created.
+The versions are adjusted along this pattern every time a new version gets created.
 
 The version app never uses more than 50% of the user's currently available free
 space. If the stored versions exceed this limit, Nextcloud deletes the oldest

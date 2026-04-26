@@ -23,11 +23,9 @@ Personal settings section *Groupware* moved to *Availability*
 -------------------------------------------------------------
 
 Up to Nextcloud 25 there had been a :ref:`settings section<settings-section>` *Groupware* with the ID ``groupware``. As
-of Nextcloud 26 this section doesn't exist anymore. Existing server settings were moved to a new section
-*Availability*/``availability``.
+of Nextcloud 26 this section doesn't exist anymore. Existing server settings were moved to a new section *Availability*/``availability``.
 
-If your app provides groupware-related settings, see if they make can be shown on the *Availability* page or need a new
-app-provided section.
+If your app provides groupware-related settings, see if they make can be shown on the *Availability* page or need a new app-provided section.
 
 Front-end changes
 -----------------

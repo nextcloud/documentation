@@ -197,8 +197,7 @@ Color picker
 
 For certain elements of your UI you might want to allow people to set colors. This can easily be achieved using a color
 picker with some predefined colors. Be cautious about using different colors in the UI. In most Nextcloud apps like Deck
-and Calendar, user defined colors for UI elements are used sparingly and shown as a circle next to the element they
-refer to.
+and Calendar, user defined colors for UI elements are used sparingly and shown as a circle next to the element they refer to.
 
 In addition to these 2 pickers, there is also the `emoji picker <https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=ncemojipicker>`_ and the `timezone picker <https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=nctimezonepicker>`_ which can be also be used in your app. 
 
@@ -282,8 +281,7 @@ remaining, and make sure to provide feedback when the process has been completed
 .. image:: ../images/meter-settings.png
    :alt: Meter in Files for storage quota
 
-The progress bar component is also sometimes used as a meter to visualize data as seen in the settings for Files to show
-the quota.
+The progress bar component is also sometimes used as a meter to visualize data as seen in the settings for Files to show the quota.
 
 .. _User bubbles:
 

@@ -146,8 +146,7 @@ called to render the widget in the frontend. The user interface can be added to
 the provided DOM element `el`.
 
 The following example shows how a Vue.js component could be used to render the
-widget user interface, however this approach works for any other framework as well
-as plain JavaScript:
+widget user interface, however this approach works for any other framework as well as plain JavaScript:
 
 
 .. code-block:: javascript
@@ -175,8 +174,7 @@ Render dashboard widgets using the API
 
 Dashboard widgets can be rendered in the browser using the dashboard API. This allows to render
 widgets without any JavaScript and frontend code. This new method is beneficial for performance as
-the widgets are rendered from API data using a generic vue.js component provided by the Dashboard
-app.
+the widgets are rendered from API data using a generic vue.js component provided by the Dashboard app.
 
 To render a widget using the new API, you need to implement the
 :ref:`OCP\\Dashboard\\IAPIWidgetV2<IAPIWidgetV2>` interface. Optionally, you may implement the
@@ -186,8 +184,7 @@ periodically.
 Providing widgets to clients
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To provide more information about your widget through the dashboard API for clients, you can implement
-those additional interfaces:
+To provide more information about your widget through the dashboard API for clients, you can implement those additional interfaces:
 
 * IButtonWidget to add buttons to be rendered by the client in the widget
 * IIconWidget to set the widget icon URL
@@ -308,8 +305,7 @@ If you want to render a widget in the browser using this API you must implement 
 old method. The type of a widget will be detected automatically during the registration. When
 migrating old, JavaScript based widgets the **load** method should be left empty.
 
-This interface adds a single method **getItemsV2** which returns
-`OCP\\Dashboard\\Model\\WidgetItems`.
+This interface adds a single method **getItemsV2** which returns `OCP\\Dashboard\\Model\\WidgetItems`.
 
 .. code-block:: php
 

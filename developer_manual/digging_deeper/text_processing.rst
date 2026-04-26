@@ -46,8 +46,7 @@ The following task types are available:
 Tasks
 ^^^^^
 To create a task we use the ``\OCP\TextProcessing\Task`` class. Its constructor takes the following arguments: ``new
-\OCP\TextProcessing\Task(string $type, string $input, string $appId, ?string $userId, string $identifier = '')``. For
-example:
+\OCP\TextProcessing\Task(string $type, string $input, string $appId, ?string $userId, string $identifier = '')``. For example:
 
 .. code-block:: php
 
@@ -293,8 +292,7 @@ Streamlining processing for fast providers
 
 Downstream consumers of the TextProcessing API can optimize execution of tasks if they know how long a task will run
 with your provider. To allow this kind of optimization you can provide an estimate of how much time your provider
-typically takes. To do this you simply implement the additional ``OCP\TextProcessing\IProviderWithExpectedRuntime``
-interface
+typically takes. To do this you simply implement the additional ``OCP\TextProcessing\IProviderWithExpectedRuntime`` interface
 
 .. code-block:: php
     :emphasize-lines: 10,14,29,30,31
@@ -340,8 +338,7 @@ Providing more task types
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you would like to implement providers that handle additional task types, you can create your own TaskType classes
-implementing the ``OCP\TextProcessing\ITaskType``
-interface:
+implementing the ``OCP\TextProcessing\ITaskType`` interface:
 
 .. code-block:: php
 

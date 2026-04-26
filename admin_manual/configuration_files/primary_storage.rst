@@ -4,8 +4,7 @@ Configuring Object Storage as Primary Storage
 
 Nextcloud allows to configure object storages like OpenStack Swift or
 Amazon Simple Storage Service (S3) or any compatible S3-implementation
-(e.g. Minio or Ceph Object Gateway) as primary storage replacing the default
-storage of files.
+(e.g. Minio or Ceph Object Gateway) as primary storage replacing the default storage of files.
 
 By default, files are stored in :code:`nextcloud/data` or another directory configured
 in the :code:`config.php` of your Nextcloud instance. This data directory might
@@ -128,8 +127,7 @@ Simple Storage Service (S3)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Simple Storage Service (S3) backend mounts a bucket on an Amazon S3 object
-storage or compatible implementation (e.g. Minio or Ceph Object Gateway) into the
-virtual filesystem.
+storage or compatible implementation (e.g. Minio or Ceph Object Gateway) into the virtual filesystem.
 
 The class to be used is :code:`\\OC\\Files\\ObjectStore\\S3`
 
@@ -175,8 +173,7 @@ Minimum required parameters are:
           values (see below) exactly match your situation. In particular, your :code:`region` (if Amazon 
 	  hosted) or :code:`hostname` (if non-Amazon hosted).
 
-Optional parameters most commonly needing adjustment (and their defaults values if left 
-unconfigured):
+Optional parameters most commonly needing adjustment (and their defaults values if left unconfigured):
 
 * :code:`region` defaults to :code:`eu-west-1`
 * :code:`storageClass` defaults to :code:`STANDARD`
@@ -210,8 +207,7 @@ Optional parameters less commonly needing adjustment:
 **If you are using Amazon S3:** the :code:`region` parameter is required unless you're happy with 
 the default of :code:`eu-west-1`. There is no need to override the :code:`hostname` or :code:`port`. 
 And :code:`storageClass` only needs to be modified if you're using a different configuration at AWS. 
-Lastly, :code:`use_path_style` is rarely required with Amazon, but some legacy Amazon datacenters 
-may require it.
+Lastly, :code:`use_path_style` is rarely required with Amazon, but some legacy Amazon datacenters may require it.
 
 **If you using a non-Amazon hosted S3 store:** you will need to set the :code:`hostname` 
 parameter (and can ignore the :code:`region` parameter). You may need to use :code:`use_path_style` 
@@ -223,8 +219,7 @@ Setting :code:`use_path_style` to true configures the S3 client to make requests
 Microsoft Azure Blob Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Azure Blob Storage backend mounts a container on Microsoft's Azure Blob Storage into the
-virtual filesystem.
+The Azure Blob Storage backend mounts a container on Microsoft's Azure Blob Storage into the virtual filesystem.
 
 The class to be used is :code:`\\OC\\Files\\ObjectStore\\Azure`
 
@@ -244,11 +239,9 @@ The class to be used is :code:`\\OC\\Files\\ObjectStore\\Azure`
 Multibucket Object Store
 ------------------------
 
-It's possible to configure Nextcloud to distribute the data over multiple buckets
-for scalability purposes.
+It's possible to configure Nextcloud to distribute the data over multiple buckets for scalability purposes.
 
-To setup multiple buckets, set :code:`'multibucket => true'` in the object store
-configuration in :code:`config.php`:
+To setup multiple buckets, set :code:`'multibucket => true'` in the object store configuration in :code:`config.php`:
 
 ::
 
@@ -278,8 +271,7 @@ You can find out more information about upscaling with object storage and Nextcl
 Multibucket Object Store with per Bucket configuration overrides
 ----------------------------------------------------------------
 
-When using an Object Store with :code:`'multibucket => true'` it is possible to configure overrides for all config
-options per bucket:
+When using an Object Store with :code:`'multibucket => true'` it is possible to configure overrides for all config options per bucket:
 
 ::
 
@@ -297,8 +289,7 @@ options per bucket:
 	],
 
 This can be useful for example if you want to configure credentials per bucket that is used by a Team folder.
-A script for provisioning new Team folders this way could look like this (first make sure the bucket exists with those
-credentials):
+A script for provisioning new Team folders this way could look like this (first make sure the bucket exists with those credentials):
 
 ::
 
@@ -356,8 +347,7 @@ Than any newly created user will have their files put on :code:`server3`.
 .. note:: As with multibucket object store, the user-to-instance mapping is only created once,
           so only newly created users will be mapped to the new default instance.
 
-It is possible to mix different object store backends and multibucket and non-multibucket in
-a multi-instance configuration.
+It is possible to mix different object store backends and multibucket and non-multibucket in a multi-instance configuration.
 
 ---------------------------
 S3 SSE-C encryption support

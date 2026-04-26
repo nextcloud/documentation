@@ -61,8 +61,7 @@ Filters
 ~~~~~~~
 
 When registering a webhook listener, you can specify a filter parameter (``eventFilter``).
-The filter is evaluated against the **complete webhook payload envelope**, which has this
-structure:
+The filter is evaluated against the **complete webhook payload envelope**, which has this structure:
 
 .. code-block:: json
 

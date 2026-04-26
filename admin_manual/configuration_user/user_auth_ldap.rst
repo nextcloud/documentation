@@ -6,8 +6,7 @@ Nextcloud ships with an LDAP application to allow LDAP users (including Active
 Directory) to appear in your Nextcloud user listings. These users will
 authenticate to Nextcloud with their LDAP credentials, so you don't have to
 create separate Nextcloud user accounts for them. You will manage their Nextcloud
-group memberships, quotas, and sharing permissions just like any other Nextcloud
-user.
+group memberships, quotas, and sharing permissions just like any other Nextcloud user.
 
 .. note:: The PHP LDAP module is required; this is supplied by ``php-ldap`` on
    most distributions.
@@ -38,8 +37,7 @@ Nextcloud. Then go to your Admin page to configure it.
 
 The LDAP configuration panel has four tabs. A correctly completed first tab
 ("Server") is mandatory to access the other tabs. A green indicator lights when
-the configuration is correct. Hover your cursor over the fields to see some
-pop-up tooltips.
+the configuration is correct. Hover your cursor over the fields to see some pop-up tooltips.
 
 Server tab
 ^^^^^^^^^^
@@ -151,8 +149,7 @@ is matched against (e.g. LDAP/AD username, email address). You may select
 multiple user details. (You may bypass the form fields and enter a raw LDAP
 filter if you prefer.)
 
-You may override your User Filter settings on the Users tab by using a raw
-LDAP filter.
+You may override your User Filter settings on the Users tab by using a raw LDAP filter.
 
 .. figure:: ../images/ldap-wizard-3-login.png
    :alt: Login filter
@@ -231,8 +228,7 @@ Advanced settings
 -----------------
 
 The LDAP Advanced Setting section contains options that are not needed for a
-working connection. This provides controls to disable the current
-configuration,
+working connection. This provides controls to disable the current configuration,
 configure replica hosts, and various performance-enhancing options.
 
 The Advanced Settings are structured into four parts:
@@ -302,8 +298,7 @@ Cache Time-To-Live:
   * ten minutes: *600*
   * one hour: *3600*
 
-See the Caching section below for detailed information on how the cache
-operates.
+See the Caching section below for detailed information on how the cache operates.
 
 .. _ldap_directory_settings:
 
@@ -489,8 +484,7 @@ User Profile attributes
 After configuring those attributes, the User Profile data will be overwritten with the according data from LDAP.  The
 checksum of data from LDAP will be stored in user settings ``user_ldap``, ``lastProfileChecksum`` and profile update is
 skipped as long as data from LDAP doesn't change.  If ``memcache.distributed`` is enabled in ``config.php`` the checksum
-will be cached and the checking will be skipped, as long as the cached value exists (expires after ``ldapCacheTTL``
-seconds).
+will be cached and the checking will be skipped, as long as the cached value exists (expires after ``ldapCacheTTL`` seconds).
 
 Please be aware:
   - The user can change the data in profile, but it will get overwritten if changed in LDAP
@@ -663,8 +657,7 @@ quota or the avatar. This happens on every login, the first detection of a user
 from LDAP and regularly by a background job.
 
 The interval value determines the time between updates of the values and is
-used to avoid frequent overhead, including time-expensive write actions to
-the database.
+used to avoid frequent overhead, including time-expensive write actions to the database.
 
 The interval is described in seconds and it defaults to 86400 equalling a day.
 It is not a per-configuration option.
@@ -740,8 +733,7 @@ Nextcloud avatar integration
 Nextcloud supports user profile pictures, which are also called avatars. If a user
 has a photo stored in the *jpegPhoto* or *thumbnailPhoto* attribute on your LDAP
 server, it will be used as their avatar. In this case the user cannot alter their
-avatar (on their Personal page) as it must be changed in LDAP. *jpegPhoto* is
-preferred over *thumbnailPhoto*.
+avatar (on their Personal page) as it must be changed in LDAP. *jpegPhoto* is preferred over *thumbnailPhoto*.
 
 .. figure:: ../images/ldap-fetched-avatar.png
    :alt: Profile picture fetched from LDAP.
@@ -780,8 +772,7 @@ those options are available:
 
   ``occ ldap:set-config "s01" "ldapUserAvatarRule" "data:selfiePhoto"``
 
-The "s01" refers to the configuration ID as can be retrieved per
-``occ ldap:show-config``.
+The "s01" refers to the configuration ID as can be retrieved per ``occ ldap:show-config``.
 
 Troubleshooting, tips and tricks
 --------------------------------
@@ -937,5 +928,4 @@ Note
 
 When a LDAP object's name or surname, that is display name attribute, by default
 "displayname", is left empty, Nextcloud will treat it as an empty object, therefore
-no results from this user or AD-Object will be shown to avoid gathering of
-technical accounts.
+no results from this user or AD-Object will be shown to avoid gathering of technical accounts.

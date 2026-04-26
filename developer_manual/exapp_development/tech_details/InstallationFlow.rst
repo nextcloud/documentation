@@ -47,10 +47,8 @@ Init
 After the application is ready, which is determined by the previous step,
 AppAPI sends a ``POST`` request to the ``/init`` application endpoint.
 
-*If the application does not need to carry out long initialization, it has an option to not implement "/init" endpoint,
-so
-AppAPI will get 404 or 501 error on it's request, but you can consider that initialization to be done and this section
-can be skipped.*
+*If the application does not need to carry out long initialization, it has an option to not implement "/init" endpoint, so
+AppAPI will get 404 or 501 error on it's request, but you can consider that initialization to be done and this section can be skipped.*
 
 In case you want to implement "/init" endpoint, your application should:
 
@@ -64,8 +62,7 @@ In case you want to implement "/init" endpoint, your application should:
 Possible values for **progress** are integers from 1 to 100;
 after receiving the value 100, the **application is considered initialized and ready to work**.
 
-If, at the initialization stage, the application has a critical error due to which its further operation is impossible,
-``"error": "some error"``
+If, at the initialization stage, the application has a critical error due to which its further operation is impossible, ``"error": "some error"``
 should be added to the ``OCS request`` for setting progress,
 with a short explanation at what stage this error occurred.
 
@@ -76,8 +73,7 @@ Example of request payload with error::
 Enabled
 -------
 
-After receiving **progress: 100** (*or when the ExApp is not implementing the "/init" endpoint*), AppAPI enables the
-application.
+After receiving **progress: 100** (*or when the ExApp is not implementing the "/init" endpoint*), AppAPI enables the application.
 
 To enable or disable the application, a PUT request is sent to the ``/enabled`` endpoint.
 
@@ -101,8 +97,7 @@ This approach ensures that the application's state can be easily toggled using a
 .. note:: The ``/enabled`` endpoint shares both **enabling** and **disabling**,
 	so the app should determine what is going on using the ``enabled`` input parameter of the request.
 
-Inside the ``/enabled`` handler, the application should register all actions related to the Nextcloud, such as the UI
-and other stuff.
+Inside the ``/enabled`` handler, the application should register all actions related to the Nextcloud, such as the UI and other stuff.
 
 The response for this request should contain::
 

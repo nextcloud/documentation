@@ -30,8 +30,7 @@ The moderator of the conversation can start a recording together with a call sta
 
 The recording will start shortly, and you will see a red indicator next to the call time. You can stop the recording at
 any time while the call is still ongoing by clicking on that indicator and selecting "Stop recording", or by using the
-same action in the top-bar menu. If you do not manually stop the recording, it will end automatically when the call
-ends.
+same action in the top-bar menu. If you do not manually stop the recording, it will end automatically when the call ends.
 
 .. image:: images/stop-recording.png
     :width: 500px

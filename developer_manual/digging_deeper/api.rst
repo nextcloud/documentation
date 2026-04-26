@@ -24,8 +24,7 @@ Same rules apply to ``OCP\EventsDispatcher\Event`` that have the ``OCP\AppFramew
 ``Implementable``, ``Dispatchable`` and ``Throwable``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Interfaces, Enums and classes that have the ``OCP\AppFramework\Attribute\Implementable`` attribute, can be implemented
-by apps.
+Interfaces, Enums and classes that have the ``OCP\AppFramework\Attribute\Implementable`` attribute, can be implemented by apps.
 This means the server side can **not** extend the interface with new methods or reduce returned types of existing
 methods without it being consider an API break.
 However argument types of existing methods can be reduced.
@@ -36,11 +35,9 @@ and ``Exception`` with the ``OCP\AppFramework\Attribute\Throwable`` attribute.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Despite not being implementable for all apps, some interfaces can have the
-``OCP\AppFramework\Attribute\ExceptionalImplementable`` attribute indicating that they are implementable by a single app
-(or multiple).
+``OCP\AppFramework\Attribute\ExceptionalImplementable`` attribute indicating that they are implementable by a single app (or multiple).
 In those cases the general ``OCP\AppFramework\Attribute\Consumable`` rules apply, but the app maintainers or repository
-of named exceptions have to be informed during the process of a pull request, leaving them enough time to align with the
-upcoming change.
+of named exceptions have to be informed during the process of a pull request, leaving them enough time to align with the upcoming change.
 
 
 PHP unstable API

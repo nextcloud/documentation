@@ -5,8 +5,7 @@ Desktop Client Deployment and Setup
 This chapter describes administrator-facing deployment and setup options for the Nextcloud Desktop client.
 
 These options are intended for managed rollouts and other administrative scenarios, such as deployment scripts,
-software-management platforms, login scripts, MDM or RMM workflows, and other automated installation or configuration
-processes.
+software-management platforms, login scripts, MDM or RMM workflows, and other automated installation or configuration processes.
 
 Depending on your deployment goals, you can use the desktop client in one of several ways:
 
@@ -33,11 +32,9 @@ Use the option that best matches your deployment goal:
 Advanced Windows deployment options
 -----------------------------------
 
-If you just want to install the desktop client on your local system, simply launch the ``.msi`` file and follow the
-installation wizard.
+If you just want to install the desktop client on your local system, simply launch the ``.msi`` file and follow the installation wizard.
 
-The following options are intended for advanced Windows installations, for example when automating deployment or
-customizing installed features.
+The following options are intended for advanced Windows installations, for example when automating deployment or customizing installed features.
 
 .. note::
 
@@ -81,8 +78,7 @@ You can also choose to only install the client itself by using the following com
 
    msiexec /passive /i Nextcloud-x.y.z-x64.msi ADDDEFAULT=Client
 
-For example, if you want to install everything except the ``DesktopShortcut`` and the ``ShellExtensions`` feature, you
-have two possibilities:
+For example, if you want to install everything except the ``DesktopShortcut`` and the ``ShellExtensions`` feature, you have two possibilities:
 
 1. Explicitly name all the features you actually want to install (whitelist), where ``Client`` is always installed anyway::
 
@@ -129,8 +125,7 @@ You can adjust the installation folder by specifying the ``INSTALLDIR`` property
 
 Be careful when using PowerShell instead of ``cmd.exe``; getting the whitespace escaping right can be tricky.
 
-Specifying ``INSTALLDIR`` like this only works on first installation; you cannot simply re-run the ``.msi`` with a
-different path.
+Specifying ``INSTALLDIR`` like this only works on first installation; you cannot simply re-run the ``.msi`` with a different path.
 If you still need to change it, uninstall the client first and then reinstall it to the new location.
 
 Disabling automatic updates
@@ -147,8 +142,7 @@ To launch the client automatically after installation, pass the ``LAUNCH`` prope
 
    msiexec /i Nextcloud-x.y.z-x64.msi LAUNCH="1"
 
-This option also removes the checkbox that lets users decide whether to launch the client during non-passive or
-non-quiet installations.
+This option also removes the checkbox that lets users decide whether to launch the client during non-passive or non-quiet installations.
 
 .. note::
 
@@ -339,8 +333,7 @@ Interactive wizard preconfiguration
 -----------------------------------
 
 If you want to automate the Account Setup Wizard so that users can skip entering
-the server URL and local sync folder path in the UI, you can use command-line
-parameters.
+the server URL and local sync folder path in the UI, you can use command-line parameters.
 
 When you specify both, the desktop client's Account Setup Wizard will jump straight to opening a browser for account
 authentication or connection without the need to enter any of the connection details.
@@ -365,8 +358,7 @@ Behavior
 These options affect the behavior of the interactive setup wizard.
 They do not directly create an account in the same way as non-interactive account provisioning.
 
-Use this approach when you want the user to complete setup interactively, but want to prefill, constrain, or guide the
-process.
+Use this approach when you want the user to complete setup interactively, but want to prefill, constrain, or guide the process.
 
 Examples
 ~~~~~~~~

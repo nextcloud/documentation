@@ -102,8 +102,7 @@ Running your ExApp with a non-root user
   it is recommended to run application containers as non-root users for security reasons
   whenever possible.
 
-To run the main process as a non-root user while remaining compatible with HaRP and AppAPI,
-ensure the following:
+To run the main process as a non-root user while remaining compatible with HaRP and AppAPI, ensure the following:
 
 1. Keep image default user as `root`, drop to less privileged service user at runtime. 
 
@@ -243,11 +242,9 @@ Integration test example
 -------------------------
 
 An example test suite used to validate HaRP support for an ExApp is available
-in the `workflow_ocr_backend` repository (example commit that added HaRP
-support and tests):
+in the `workflow_ocr_backend` repository (example commit that added HaRP support and tests):
 
 - https://github.com/R0Wi-DEV/workflow_ocr_backend/blob/f5ae6efb6e4a3307328a188898968abf000511ab/test/test_harp_integration.py
 
 This test demonstrates automated verification of FRP connection and runtime
-behaviour; it can be used as a reference when adding CI checks for HaRP
-compatibility.
+behaviour; it can be used as a reference when adding CI checks for HaRP compatibility.

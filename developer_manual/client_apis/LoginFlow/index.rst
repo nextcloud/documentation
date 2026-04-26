@@ -13,8 +13,7 @@ login credentials. This will assure that each client gets its own set of credent
 Opening the webview
 -------------------
 
-The client should open a webview to :code:`<server>/index.php/login/flow`. Be sure to set the :code:`OCS-APIREQUEST`
-header to :code:`true`.
+The client should open a webview to :code:`<server>/index.php/login/flow`. Be sure to set the :code:`OCS-APIREQUEST` header to :code:`true`.
 
 The client will register a URL handler to catch urls of the :code:`nc` protocol. This is required to obtain the
 credentials in the final stage.
@@ -67,8 +66,7 @@ Converting to app passwords
 ---------------------------
 
 Old configurations of clients might still be using username and passwords. The login flow ensures that each device has
-an unique app password. In order to facilitate transparent migration to app passwords there is an endpoint that can be
-called by client.
+an unique app password. In order to facilitate transparent migration to app passwords there is an endpoint that can be called by client.
 
 If the client is authenticated with an app password a 403 will be returned. If the client is authenticating with a real
 password an app password will be generated and returned.

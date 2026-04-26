@@ -24,8 +24,7 @@ it is better to use some other form of encryption such as file-level or whole
 disk encryption. Because the keys are kept on your Nextcloud server, it is
 possible for your Nextcloud administrator to snoop in your files, and if the server is
 compromised the intruder may get access to your files. (Read
-`Encryption in Nextcloud <https://nextcloud.com/blog/encryption-in-nextcloud/>`_
-to learn more.)
+`Encryption in Nextcloud <https://nextcloud.com/blog/encryption-in-nextcloud/>`_ to learn more.)
 
 Encryption FAQ
 --------------
@@ -102,8 +101,7 @@ Share owners may need to re-share files after encryption is enabled; users
 trying to access the share will see a message advising them to ask the share
 owner to re-share the file with them. For individual shares, un-share and
 re-share the file. For group shares, share with any individuals who can't access
-the share. This updates the encryption, and then the share owner can remove the
-individual shares.
+the share. This updates the encryption, and then the share owner can remove the individual shares.
 
 Recovery key password
 ^^^^^^^^^^^^^^^^^^^^^

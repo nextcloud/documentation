@@ -91,8 +91,7 @@ Configure your sharing policy on your Admin page in the Sharing section.
   a disclaimer text on public links with hidden file lists. If you enable this feature a text input will be shown to input the disclaimer text.
 
 With ``Default share permissions`` you are able to set the default permissions
-for user-shares (``Create``, ``Change``, ``Delete`` and ``Reshare``) without
-forcing them.
+for user-shares (``Create``, ``Change``, ``Delete`` and ``Reshare``) without forcing them.
 
 .. note:: Nextcloud does not preserve the mtime (modification time) of
    directories, though it does update the mtimes on files. See
@@ -107,8 +106,7 @@ forcing them.
 Advanced settings
 -------------------------------------------------------------------
 
-Here are some edge case settings which are not editable from the web interface, because they are only useful to small
-subset of administrators.
+Here are some edge case settings which are not editable from the web interface, because they are only useful to small subset of administrators.
 
 You can use the ``occ`` command to update those, for example:
 
@@ -173,8 +171,7 @@ Trashbin contents are not transferred::
 
  occ files:transfer-ownership user1 user2
 
-(See :doc:`../occ_command` for a complete ``occ``
-reference.)
+(See :doc:`../occ_command` for a complete ``occ`` reference.)
 
 Users may also transfer files or folders selectively by themselves.
 See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_ for details.
@@ -194,15 +191,13 @@ establishing permanent file shares. Simply create a shared folder in the usual
 way, and share it with the users or groups who need to use it. Set the
 appropriate permissions on it, and then no matter which users come and go, the
 file shares will remain. Because all files added to the share, or edited in it,
-automatically become owned by the owner of the share regardless of who adds or
-edits them.
+automatically become owned by the owner of the share regardless of who adds or edits them.
 
 Using File Drop Share links
 ------------------------------
 
 Using a File Drop Share allows users to upload files to Nextcloud through an unauthenticated session.
-File Drop Share links will only work when ``Allow public uploads`` is checked in the Sharing section of the
-Administration Settings page.
+File Drop Share links will only work when ``Allow public uploads`` is checked in the Sharing section of the Administration Settings page.
 
 .. note:: File Drop Shares currently have a limitation in that any files uploaded through an unauthenticated session will not be chunked.
     Therefore the maximum file size that can be uploaded through File Drop Shares depends entirely on settings set within your environment.

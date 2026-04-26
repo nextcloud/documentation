@@ -4,8 +4,7 @@ Background jobs
 A system like Nextcloud sometimes requires tasks to be done on a regular basis
 without the need for user interaction or hindering Nextcloud performance. For
 that purpose, as a system administrator, you can define background jobs (for
-example, database clean-ups) which are executed without any need for user
-interaction.
+example, database clean-ups) which are executed without any need for user interaction.
 
 These jobs are typically referred to as *cron jobs*.  Cron jobs are commands or
 shell-based scripts that are scheduled to run periodically at fixed times,
@@ -126,8 +125,7 @@ systemd
 
 If systemd is installed on the system, a systemd timer could be an alternative to a cronjob.
 
-This approach requires two files: **nextcloudcron.service** and **nextcloudcron.timer**. Create these two files in
-``/etc/systemd/system/``.
+This approach requires two files: **nextcloudcron.service** and **nextcloudcron.timer**. Create these two files in ``/etc/systemd/system/``.
 
 **nextcloudcron.service** should look like this::
 

@@ -44,8 +44,7 @@ If you prefer, you may also connect your computer to your Nextcloud server by
 using any third-party client that supports the WebDAV protocol (including what may be
 built into your operating system).
 
-You can also use third-party WebDAV capable apps to connect your mobile
-device to Nextcloud.
+You can also use third-party WebDAV capable apps to connect your mobile device to Nextcloud.
 
 When using third-party clients, keep in mind that they may not be optimized for use with
 Nextcloud or implement capabilities you consider important to your use case.
@@ -115,8 +114,7 @@ Accessing files with KDE and Dolphin file manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Navigate to System Settings -> Networking -> Online Accounts
-#. Click "Add Account..."
-#. Click Nextcloud
+#. Click "Add Account..." #. Click Nextcloud
 #. Enter your server address
 #. Follow the on-screen instructions to log in
 #. After logging in, ensure you enable "Storage" in the "Use This Account For" section
@@ -265,8 +263,7 @@ Nextcloud to one or more directories of your local hard drive.
 Mapping drives with the command line
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following example shows how to map a drive using the command line. To map
-the drive:
+The following example shows how to map a drive using the command line. To map the drive:
 
 #. Open a command prompt in Windows.
 #. Enter the following line in the command prompt to map to the computer Z
@@ -389,8 +386,7 @@ Solution 2
 
 The Windows WebDAV Client might not support TLSv1.1 and TLSv1.2 connections. If
 you have restricted your server config to only provide TLSv1.1 and above the
-connection to your server might fail. Please refer to the WinHTTP_ documentation
-for further information.
+connection to your server might fail. Please refer to the WinHTTP_ documentation for further information.
 
 .. _WinHTTP: https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features
 
@@ -404,13 +400,11 @@ Solution
 ^^^^^^^^
 
 Windows limits the maximum size a file transferred from or to a WebDAV share
-may have. You can increase the value ``FileSizeLimitInBytes`` in
-``HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters``
+may have. You can increase the value ``FileSizeLimitInBytes`` in ``HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters``
 by clicking on **Modify**.
 
 To increase the limit to the maximum value of 4GB, select **Decimal**, enter a
-value of ``4294967295``, and reboot Windows or restart the **WebClient**
-service.
+value of ``4294967295``, and reboot Windows or restart the **WebClient** service.
 
 Problem
 ^^^^^^^
@@ -550,8 +544,7 @@ Accessing files using WinSCP
 
 You can `download <https://winscp.net/eng/downloads.php/>`_ the portable version of WinSCP and run it on Linux through `Wine <https://wiki.winehq.org/Main_Page/>`_.
 
-To run WinSCP on Linux, download wine through your distribution's package manager, then run it with the command: ``wine
-WinSCP.exe``.
+To run WinSCP on Linux, download wine through your distribution's package manager, then run it with the command: ``wine WinSCP.exe``.
 
 To connect to Nextcloud:
 

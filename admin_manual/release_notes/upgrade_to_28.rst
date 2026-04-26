@@ -67,8 +67,7 @@ To enable it, add ``'OC\Preview\EMF'`` to ``enabledPreviewProviders``.
 
 
 Until Nextcloud 28, the same LibreOffice user profile was used to generate the previews. LibreOffice can only be invoked
-once per user profile, so the generation of a preview for an office file would fail if another one were created right
-now.
+once per user profile, so the generation of a preview for an office file would fail if another one were created right now.
 
 Beginning with Nextcloud 28, a different LibreOffice user profile is used for each file. Downside: If you upload 100 emf
 files, you may end up with 100 LibreOffice
@@ -76,8 +75,7 @@ invocations. Though, you can use ``preview_concurrency_new`` and ``preview_concu
 previews that can be generated concurrently when php-sysvsem is available.
 
 The configuration option ``preview_office_cl_parameters`` was removed with Nextcloud 28. 
-We expect LibreOffice to be started with the given parameters, so it's unfavorable to have a configuration option to
-change the parameters.
+We expect LibreOffice to be started with the given parameters, so it's unfavorable to have a configuration option to change the parameters.
 Please reach out to us via https://github.com/nextcloud/server/pull/41395 if that's causing any trouble for you. 
 
 

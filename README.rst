@@ -20,8 +20,7 @@ Please work in the appropriate branch: ``stable``-branches are for the respectiv
 
 Wrap prose lines at **120 characters** where practical. Long URLs, code
 examples, and table cells may exceed this limit. See the
-`Style Guide <https://github.com/nextcloud/documentation/blob/master/style_guide.rst>`_
-for full guidance.
+`Style Guide <https://github.com/nextcloud/documentation/blob/master/style_guide.rst>`_ for full guidance.
 
 .. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
    config.sample.php file; changes to this file must be made in core `<https://github.com/nextcloud/server/tree/master/config>`_
@@ -48,8 +47,7 @@ Style
 
 Source files are written using the `Sphinx Documentation Generator
 <https://www.sphinx-doc.org/en/master/>`_. The syntax follows the `reStructuredText
-<https://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
-from GitHub.
+<https://docutils.sourceforge.net/rst.html>`_ style, and can also be edited from GitHub.
 
 Structure
 ---------
@@ -66,8 +64,7 @@ Editing
 
 Contributing to the documentation requires a GitHub account. Make sure you are
 working in the correct branch for your version of Nextcloud or client apps.
-If your edits pertain to multiple manual versions, be prepared to backport as
-needed.
+If your edits pertain to multiple manual versions, be prepared to backport as needed.
 
 To edit a document, you can edit the .rst files on your local system, or work
 directly on GitHub. The latter is only suitable for small fixes and improvements
@@ -88,8 +85,7 @@ editing, make your edits, then push your new branch to GitHub and open a new PR.
 
 To edit on GitHub, fork the repository (see top-right of the screen, under
 your username). You will then be able to make changes easily. Once done,
-you can create a pull request and get the changes reviewed and back into
-the official repository.
+you can create a pull request and get the changes reviewed and back into the official repository.
 
 When editing either on your own local PC or on GitHub, be sure to sign of
 commits, to certify adherence to the Developer Certificate of Origin,
@@ -216,10 +212,8 @@ Using the VSCode DevContainer
 
 This repository contains a full-featured `VSCode DevContainer <https://code.visualstudio.com/docs/devcontainers/containers>`_.
 You can use it in your local development environment or via `GitHub Codespaces <https://github.com/features/codespaces>`_.
-Just open the container an use one of the commands from above to build the project. For example ``make`` to build the
-full
-documentation, ``make html`` to build the HTML documentation or ``make pdf`` to build the PDF documentation. You can
-also use
+Just open the container an use one of the commands from above to build the project. For example ``make`` to build the full
+documentation, ``make html`` to build the HTML documentation or ``make pdf`` to build the PDF documentation. You can also use
 ``make SPHINXBUILD=sphinx-autobuild html`` in combination with `port forwarding <https://code.visualstudio.com/docs/devcontainers/containers#_forwarding-or-publishing-a-port>`_
 to  watch file changes and automatically reload the html preview.
 

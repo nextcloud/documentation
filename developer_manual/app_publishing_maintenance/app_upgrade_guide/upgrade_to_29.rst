@@ -78,5 +78,4 @@ Removed events
 Changed behavior
 ^^^^^^^^^^^^^^^^
 
-The dashboard no longer loads the sidebar or Viewer scripts, if your dashboard widget relies on this it should emit the
-required events itself.
+The dashboard no longer loads the sidebar or Viewer scripts, if your dashboard widget relies on this it should emit the required events itself.

@@ -263,8 +263,7 @@ Alternatively, you can use the ``#[UseSession]`` attribute to automatically open
 In case the session may be read and written by concurrent requests of your application, keeping the session open during
 your controller method execution may be required to ensure that the session is locked and no other request can write to
 the session at the same time. When reopening the session, the session data will also get updated with the latest changes
-from other requests. Using the annotation will keep the session lock for the whole duration of the controller method
-execution.
+from other requests. Using the annotation will keep the session lock for the whole duration of the controller method execution.
 
 For additional information on how session locking works in PHP see the article about `PHP Session Locking: How To Prevent Sessions Blocking in PHP requests <https://ma.ttias.be/php-session-locking-prevent-sessions-blocking-in-requests/>`_.
 
@@ -352,8 +351,7 @@ Similar to how every controller receives a request object, every controller meth
 This can be in the form of a Response subclass or in the form of a value that can be handled by a registered responder.
 
 There are different kinds of responses available, like HTML-based responses, data responses, or other.
-The app decides of which kind the response is, by returning an appropriate ``Response`` object in the corresponding
-controller method.
+The app decides of which kind the response is, by returning an appropriate ``Response`` object in the corresponding controller method.
 The following sections give an overview over the various kinds and how to implement them.
 
 .. _controller_html_responses:
@@ -363,10 +361,8 @@ HTML-based Responses
 
 HTML pages are typically served using template responses.
 This is typically used as a starting point to load the website.
-This code linked by the template is by default encapsulated by the server to provide some common styling (e.g. the
-header row).
-The code then uses JavaScript to load further components (see :ref:`Frontend building in Vue<ApplicationJs>`) and the
-actual data.
+This code linked by the template is by default encapsulated by the server to provide some common styling (e.g. the header row).
+The code then uses JavaScript to load further components (see :ref:`Frontend building in Vue<ApplicationJs>`) and the actual data.
 This section only focuses on the actual HTML content, not the data to fill into the dynamic pages.
 
 .. _controller_template:
@@ -374,8 +370,7 @@ This section only focuses on the actual HTML content, not the data to fill into 
 Templates
 ^^^^^^^^^
 
-A :doc:`template <front-end/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the
-following parameters:
+A :doc:`template <front-end/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
 
 * **appName**: tells the template engine in which app the template should be located
 * **templateName**: the name of the template inside the templates/ folder without the .php extension
@@ -410,8 +405,7 @@ following parameters:
 
 Showing a template is the only exception to the rule to :ref:`not disable CSRF checks <csrf_introduction>`:
 The user might type the URL directly (or use a browser bookmark or similar) to navigate to a HTML template.
-Therefore, usage of the ``#[NoCSRFRequired]`` attribute (see :ref:`below<controller_authentication>`) is acceptable in
-this context.
+Therefore, usage of the ``#[NoCSRFRequired]`` attribute (see :ref:`below<controller_authentication>`) is acceptable in this context.
 
 Public page templates
 ^^^^^^^^^^^^^^^^^^^^^
@@ -459,8 +453,7 @@ templates<controller_template>` regarding the CSRF checks hold true:
 The usage of ``#[NoCSRFRequired]`` for public pages is considered acceptable for some pages:
 Each page that the user should be able to directly access (by typing/pasting the URL in the browser or clicking on a
 link in a mail) should have this attribute set.
-For multi-page forms in the second and later stages, this should **not** be set as the user should follow the series of
-pages.
+For multi-page forms in the second and later stages, this should **not** be set as the user should follow the series of pages.
 
 Data-based responses
 --------------------
@@ -508,11 +501,9 @@ of a **DataResponse** in the following way:
 
     }
 
-For ``OCSController`` classes and their methods, :ref:`responders <controller-responders>` can be registered as with any
-other ``Controller`` method.
+For ``OCSController`` classes and their methods, :ref:`responders <controller-responders>` can be registered as with any other ``Controller`` method.
 The ``OCSController`` class have however automatically two responders pre-installed:
-Both JSON (``application/json``) and XML (``text/xml``) are generated on-the-fly depending on the request by the
-browser/user.
+Both JSON (``application/json``) and XML (``text/xml``) are generated on-the-fly depending on the request by the browser/user.
 To select the output format, the ``?format=`` query parameter or the ``Accept`` header of the request work out of the
 box, no intervention is required.
 It is advised to prefer the header generally, as this is the more standardized way.
@@ -520,8 +511,7 @@ It is advised to prefer the header generally, as this is the more standardized w
 To make routing work for OCS, the route must be registered in the core.
 This can be done in two ways:
 You can add an attribute `#[ApiRoute]` to the controller method.
-Alternatively, you can add :ref:`a separate 'ocs' entry<routes_ocs>` to the routing table in ``appinfo/routes.php`` of
-your app.
+Alternatively, you can add :ref:`a separate 'ocs' entry<routes_ocs>` to the routing table in ``appinfo/routes.php`` of your app.
 Inside these, there are the same information as there are for normal routes.
 
 .. code-block:: php
@@ -799,8 +789,7 @@ Streamed and lazily rendered responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By default all responses are rendered at once and sent as a string through middleware. In certain cases this is not a
-desirable behavior, for instance if you want to stream a file in order to save memory. To do that use the now available
-**OCP\\AppFramework\\Http\\StreamResponse** class:
+desirable behavior, for instance if you want to stream a file in order to save memory. To do that use the now available **OCP\\AppFramework\\Http\\StreamResponse** class:
 
 .. code-block:: php
 
@@ -915,8 +904,7 @@ fine as this is a template response).
 
     }
 
-If the page should only be visible to the admin, you can keep the restrictive default by omitting the attribute
-``#[NoAdminRequired]``.
+If the page should only be visible to the admin, you can keep the restrictive default by omitting the attribute ``#[NoAdminRequired]``.
 
 Getting data from the backend using AJAX requests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1114,13 +1102,11 @@ Modifying the content security policy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By default Nextcloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a `Content Security Policy <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_.
-However if an app relies on third-party media or other features which are forbidden by the current policy the policy can
-be relaxed.
+However if an app relies on third-party media or other features which are forbidden by the current policy the policy can be relaxed.
 
 .. note:: Double check your content and edge cases before you relax the policy! Also read the `documentation provided by MDN <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_
 
-To relax the policy pass an instance of the ContentSecurityPolicy class to your response. The methods on the class can
-be chained.
+To relax the policy pass an instance of the ContentSecurityPolicy class to your response. The methods on the class can be chained.
 
 The following methods turn off security features by passing in **true** as the **$isAllowed** parameter
 

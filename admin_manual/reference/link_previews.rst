@@ -33,8 +33,7 @@ How does it work?
 The Nextcloud frontend asks the server to resolve the links via an API request. A rich object is returned as a response
 and is used by the frontend to render the preview.
 
-The apps can optionally register a custom reference widget to render a specific rich object type (on the links it
-supports).
+The apps can optionally register a custom reference widget to render a specific rich object type (on the links it supports).
 Therefore the apps have complete freedom over how some previews look like.
 
 Known link preview providers

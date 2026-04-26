@@ -76,8 +76,7 @@ For more resources on PHPUnit visit: https://www.phpunit.de/manual/current/en/wr
 
 Bootstrapping Nextcloud
 ^^^^^^^^^^^^^^^^^^^^^^^
-If you use Nextcloud functions or classes in your code, you'll need to make them available to your test by bootstrapping
-Nextcloud.
+If you use Nextcloud functions or classes in your code, you'll need to make them available to your test by bootstrapping Nextcloud.
 
 To do this, you'll need to provide the ``--bootstrap`` argument when running PHPUnit:
 
@@ -100,8 +99,7 @@ adjust your php.ini and file rights.
 
 Running unit tests for the Nextcloud server project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The server project provides server unit tests using different database backends like sqlite, mysql, pgsql, oci (for
-Oracle).
+The server project provides server unit tests using different database backends like sqlite, mysql, pgsql, oci (for Oracle).
 Every database to test needs to accessible either
 
 - natively, setup with

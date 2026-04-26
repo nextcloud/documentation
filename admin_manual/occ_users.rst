@@ -154,8 +154,7 @@ use ``--limit`` and ``--offset`` to page through larger sets::
    - layla: Layla Smith
    - fred: Fred Jones
 
-Use ``--disabled`` to list only disabled users, and ``--info`` to include
-additional backend details.
+Use ``--disabled`` to list only disabled users, and ``--info`` to include additional backend details.
 
 user:info
 ^^^^^^^^^
@@ -512,13 +511,9 @@ use in workflows and automated actions.
 
 Tags have three access levels:
 
-========== ======== ==========
-Level      Visible¹ Assignable²
-========== ======== ==========
-public     Yes      Yes
-restricted Yes      No
-invisible  No       No
-========== ======== ==========
+========== ======== ========== Level      Visible¹ Assignable²
+========== ======== ========== public     Yes      Yes
+restricted Yes      No invisible  No       No ========== ======== ==========
 
 | ¹ User can see the tag
 | ² User can assign the tag to a file

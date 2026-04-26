@@ -62,8 +62,7 @@ connection with user names exchanged.
 The prerequisiste for a green status is that the trusted servers were maintained
 in both interacting Nextcloud servers. 
 Additionally ``occ federation:sync-addressbooks`` must have been executed (part of 
-cron job list). The delay to execute the cron is based on local configuration of
-the cron frequency.
+cron job list). The delay to execute the cron is based on local configuration of the cron frequency.
 
 .. figure:: images/federation-1.png
 
@@ -97,8 +96,7 @@ federated cloud share link by clicking the **Accept** button.
 
 .. figure:: images/create_public_share-10.png
 
-Un-check the ``Share link`` checkbox to disable any federated cloud share 
-created this way.
+Un-check the ``Share link`` checkbox to disable any federated cloud share created this way.
 
 Configuration tips
 ------------------
@@ -140,5 +138,4 @@ This can be controlled with a ``occ`` command:
 
     occ config:app:set --value false --type boolean files_sharing show_federated_shares_as_internal
 
-Set the value to ``true`` to display federated shares mixed with internal shares, or ``false`` to keep them in a
-separate section (default).
+Set the value to ``true`` to display federated shares mixed with internal shares, or ``false`` to keep them in a separate section (default).

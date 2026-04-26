@@ -47,8 +47,7 @@ For public *file* shares, you may allow editing the file with one of Nextcloud's
 Internal shares with users and groups
 -------------------------------------
 
-When sharing with users, groups, circles or members of a Talk conversation, rights for the files or folder contents are
-adjustable:
+When sharing with users, groups, circles or members of a Talk conversation, rights for the files or folder contents are adjustable:
 
 .. figure:: ../images/sharing_internal.png
 
@@ -99,13 +98,11 @@ users on other Nextcloud servers.
 Creating a new Federation Share
 -------------------------------
 
-Federation sharing is enabled by default. Follow these steps to create a new share with other Nextcloud or ownCloud
-servers:
+Federation sharing is enabled by default. Follow these steps to create a new share with other Nextcloud or ownCloud servers:
 
 Go to your ``Files`` page and click the Share icon on the file or directory
 you want to share. In the sidebar enter the username and URL of the remote user
-in this form: ``<username>@<nc-server-url>``. In this example, that is
-``bob@cloud.example.com``:
+in this form: ``<username>@<nc-server-url>``. In this example, that is ``bob@cloud.example.com``:
 
 .. figure:: ../images/share-federation-1.png
 
@@ -117,8 +114,7 @@ The sharee is receiving a notification in their Nextcloud, allowing them to eith
 Adding a public share to your Nextcloud
 ---------------------------------------
 
-Nextcloud public link share pages offer an option to add that file or folder as a federated share into your own
-Nextcloud instance.
+Nextcloud public link share pages offer an option to add that file or folder as a federated share into your own Nextcloud instance.
 Just enter your ``<username>@<nc-server-url>`` just like shown for outbound shares above:
 
 .. figure:: ../images/share-federation-3-public.png

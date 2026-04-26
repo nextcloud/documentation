@@ -64,8 +64,7 @@ Deprecation of injection of named services
 
 Apps had been able to query core services like the implementation of the interface ``\OCP\ITagManager`` as
 ``TagManager``. To unify the service resolution with type hints for the constructor injection, the named resolution is
-deprecated, logs warnings and will be removed in the future. Use the fully-qualifier class name (with the `::class`
-constant) instead:
+deprecated, logs warnings and will be removed in the future. Use the fully-qualifier class name (with the `::class` constant) instead:
 
 If you had
 
@@ -79,8 +78,7 @@ change your code to
 
   $tagManager = \OC::$server->query(\OCP\ITagManager::class);
 
-On constructor arguments you should always type-hint the service by its interface. If you do so already, nothing changes
-for you.
+On constructor arguments you should always type-hint the service by its interface. If you do so already, nothing changes for you.
 
 New APIs
 ^^^^^^^^

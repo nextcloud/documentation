@@ -53,16 +53,14 @@ Alternatively, choose the ``blur`` option to blur your live video background.
 Immediately join a call
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-If you wish to skip ``Media settings`` in the future, toggle the ``Skip device preview before joining a call`` switch in
-app settings.
+If you wish to skip ``Media settings`` in the future, toggle the ``Skip device preview before joining a call`` switch in app settings.
 For future calls in this conversation, you will join directly, skipping the preview dialog.
 
 Record a call
 ^^^^^^^^^^^^^
 
 If you started the call and wish to record it, check the ``Start recording immediately with the call`` checkbox.
-The call recording option might not be available to you, depending on whether your system administrators have enabled
-this option
+The call recording option might not be available to you, depending on whether your system administrators have enabled this option
 and whether you have ``Moderator`` permission for the conversation.
 If you are joining and the call is being recorded, you might be required to consent before being allowed to join.
 For more information, see :ref:`Call recording <call-recording>`.
@@ -93,13 +91,11 @@ tapping the ``Phone`` or ``Video`` icon in the top bar.
 The ``Phone`` icon starts a voice-only call; the ``Video`` icon starts a video call.
 
 A voice call uses the device microphone and earpiece, like a regular phone call.
-A video call uses the loudspeaker in hands-free mode and enables your front-facing camera by default; you can disable it
-at any time.
+A video call uses the loudspeaker in hands-free mode and enables your front-facing camera by default; you can disable it at any time.
 
 If someone else starts a call, you may receive a notification and your device may ring or vibrate,
 depending on your notification settings.
-Tap ``Phone`` or ``Video`` to join, or tap the red button to decline. Declining dismisses the call notification on that
-device.
+Tap ``Phone`` or ``Video`` to join, or tap the red button to decline. Declining dismisses the call notification on that device.
 
 You can control your microphone and camera (if in a video call) with the options shown at the bottom of the screen.
 
@@ -174,14 +170,12 @@ The reactions button lets you send an emoji reaction to all participants in the 
 .. image:: images/calls/call-reactions.png
     :width: 400px
 
-Every participant will see the emoji rising from the bottom of their call screen. The emoji disappears after two
-seconds.
+Every participant will see the emoji rising from the bottom of their call screen. The emoji disappears after two seconds.
 
 Raise hand
 ^^^^^^^^^^
 
-Clicking ``Raise hand`` will notify moderators and show an icon next to your name. This is also available via the
-keyboard shortcut ``R``.
+Clicking ``Raise hand`` will notify moderators and show an icon next to your name. This is also available via the keyboard shortcut ``R``.
 
 Full screen
 ^^^^^^^^^^^

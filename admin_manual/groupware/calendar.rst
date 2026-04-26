@@ -14,8 +14,7 @@ calendar, and sending email notifications about upcoming events.
 
 .. versionadded:: 30 The section will be hidden if no app makes use of the CalDAV backend.
 
-Starting from Nextcloud 30, the calendar server settings section will be hidden if no app uses the
-CalDAV backend.
+Starting from Nextcloud 30, the calendar server settings section will be hidden if no app uses the CalDAV backend.
 Install and enable an appropriate app to show the section again, e.g.
 `Calendar <https://apps.nextcloud.com/apps/calendar>`_ or
 `Tasks <https://apps.nextcloud.com/apps/tasks>`_.
@@ -35,8 +34,7 @@ By default users can export their calendar data from the event editor. Admins ca
 Invitations
 -----------
 Nextcloud can send invitations for event attendees if this option is activated.
-Be sure to have configured the email server first so that the invitations go through.
-See :doc:`../configuration_server/email_configuration`.
+Be sure to have configured the email server first so that the invitations go through. See :doc:`../configuration_server/email_configuration`.
 
 You must also make sure the "Send invitations to attendees" setting is activated in the admin setting groupware section
 for the emails to be sent.
@@ -45,8 +43,7 @@ Administrators can disable the sending of invitations to external participants w
 
  sudo -E -u www-data php occ config:app:set dav caldav_external_attendees_disabled --value yes
 
-This prevents invitations from being sent to attendees outside the instance and hides external contacts from the invitee
-search.
+This prevents invitations from being sent to attendees outside the instance and hides external contacts from the invitee search.
 
 Birthday calendar
 -----------------
@@ -61,8 +58,7 @@ Reminder notifications
 Nextcloud handles sending notifications for events.
 
 Nextcloud currently handles two types of reminder notifications: Built-in Nextcloud notifications and
-email notifications. For the emails to be send, you'll need a configured email server.
-See :doc:`../configuration_server/email_configuration`.
+email notifications. For the emails to be send, you'll need a configured email server. See :doc:`../configuration_server/email_configuration`.
 
 Make sure the "Send notifications for events" and the "Enable notifications for events via push" are activated in the
 admin setting groupware section for this feature to work.
@@ -71,8 +67,7 @@ Background jobs
 ~~~~~~~~~~~~~~~
 Running background jobs can be an expensive task when there are a large number of events, reminders, event sharees and
 attendees. However, this needs to happen
-often enough so that the notifications are sent on time. To accomplish this you should use a dedicated ``occ`` command
-that runs
+often enough so that the notifications are sent on time. To accomplish this you should use a dedicated ``occ`` command that runs
 more often than the standard ``cron`` system::
 
  # crontab -u www-data -e
@@ -84,8 +79,7 @@ You'll also need to change the sending mode from ``background-job`` to ``occ``::
 
  sudo -E -u www-data php occ config:app:set dav sendEventRemindersMode --value occ
 
-If you don't use this dedicated command, the reminders will just be sent as soon as possible when the background jobs
-run.
+If you don't use this dedicated command, the reminders will just be sent as soon as possible when the background jobs run.
 
 Event alarm types
 -----------------
@@ -170,8 +164,7 @@ Trash bin
 
 Nextcloud supports a calendar, events and tasks trash bin.
 
-The default delay before objects are purged from the trash bin is 30 days. A background job runs every 6 hours to clean
-up expired objects.
+The default delay before objects are purged from the trash bin is 30 days. A background job runs every 6 hours to clean up expired objects.
 
 To set up a different retention period, change the ``calendarRetentionObligation`` option::
 
@@ -189,8 +182,7 @@ app that provides a backend for this.
 Once a backend app is installed, the app typically allows admins, or even users, to define the resources, but this is
 subject of the specific implementation.
 
-Nextcloud periodically queries all registered backends, therefore new/updated resources and rooms will show with a
-delay.
+Nextcloud periodically queries all registered backends, therefore new/updated resources and rooms will show with a delay.
 
 Known backends
 ~~~~~~~~~~~~~~

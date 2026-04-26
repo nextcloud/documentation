@@ -4,8 +4,7 @@ Nextcloud Assistant
 
 .. _ai-app-assistant:
 
-Nextcloud assistant is the primary graphical user interface for interacting with artificial intelligence features in
-Nextcloud.
+Nextcloud assistant is the primary graphical user interface for interacting with artificial intelligence features in Nextcloud.
 
 It offers the graphical user interface for the unified AI Task processing API offering features like summarizing text,
 generating headlines, asking arbitrary questions, transcription of media files, image generation and it integrates with
@@ -61,8 +60,7 @@ need. For each app documented here you will find its hardware requirements.
 Machine translation
 ~~~~~~~~~~~~~~~~~~~
 
-In order to make use of machine translation features in the assistant, you will need an app that provides a translation
-backend:
+In order to make use of machine translation features in the assistant, you will need an app that provides a translation backend:
 * :ref:`translate2 (ExApp)<ai-app-translate2>` - Runs open source AI translation models locally on your own server
   hardware (Customer support available upon request)
 * *integration_deepl* - Integrates with the deepl API to provide translation functionality from Deepl.com servers (Only
@@ -80,8 +78,7 @@ In order to make use of Speech-to-Text, you will need an app that provides a Spe
 Text processing
 ~~~~~~~~~~~~~~~
 
-In order to make use of text processing features in the assistant, you will need an app that provides a Text processing
-backend:
+In order to make use of text processing features in the assistant, you will need an app that provides a Text processing backend:
 
 * :ref:`llm2<ai-app-llm2>` - Runs open source AI language models locally on your own server hardware (Customer support
   available upon request)
@@ -159,8 +156,7 @@ You will also need a text processing provider as specified above (ie. *llm2* or 
 Text-To-Speech
 ~~~~~~~~~~~~~~
 
-In order to make use of Text-To-Speech, you will need an app that provides a Text-To-Speech backend, which is one of the
-following:
+In order to make use of Text-To-Speech, you will need an app that provides a Text-To-Speech backend, which is one of the following:
 
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * :ref:`text2speech_kokoro<ai-app-text2speech_kokoro>` - Runs open source AI Text-To-Speech models on your own server
@@ -284,8 +280,7 @@ often and may mention the user's language in an unusual manner.
    occ config:app:set assistant chat_user_instructions_title --value="hello title"
 
 This field is appended to the block of chat messages, i.e. attached after the messages. It is done this way to allow it
-to be used even with text completion models which could have the instructions as "The title for the above conversation
-could be \"".
+to be used even with text completion models which could have the instructions as "The title for the above conversation could be \"".
 
 3. Last N messages to consider for chat completions
 

@@ -46,8 +46,7 @@ App bootstrap logic
 ^^^^^^^^^^^^^^^^^^^
 
 The code that initializes an app or anything that should run for every request and command is now moved to a dedicated
-and typed API. The ``appinfo/app.php`` is therefore obsolete and deprecated. See :ref:`bootstrapping<Bootstrapping>` for
-details.
+and typed API. The ``appinfo/app.php`` is therefore obsolete and deprecated. See :ref:`bootstrapping<Bootstrapping>` for details.
 
 .. _upgrade-psr3:
 
@@ -71,12 +70,10 @@ on it is highly recommended to use this interface mainly as the old ``\OCP\ICont
 
 The interfaces ``\OCP\AppFramework\IAppContainer`` and ``\OCP\IServerContainer`` will remain, but they won't extend the
 ``IContainer`` anymore once that interface gets removed. As a result, ``IAppContainer`` and ``IServerContainer`` will
-eventually become tagging interfaces with the sole purpose of making it possible to have either the app or server
-container injected explicitly.
+eventually become tagging interfaces with the sole purpose of making it possible to have either the app or server container injected explicitly.
 
 If your app requires Nextcloud 20 or later, you can replace any of the old type hints with one of
-``\Psr\Container\ContainerInterface`` and replace calls of ``query`` with ``get``, e.g. on the closures used when
-registering services:
+``\Psr\Container\ContainerInterface`` and replace calls of ``query`` with ``get``, e.g. on the closures used when registering services:
 
 .. code-block:: php
 

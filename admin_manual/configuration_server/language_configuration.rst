@@ -21,8 +21,7 @@ Force language
 --------------
 
 If you want to force a specific language, users will no longer be able to change
-their language in the personal settings. You can set a **force_language** parameter
-in the :file:`config/config.php`.
+their language in the personal settings. You can set a **force_language** parameter in the :file:`config/config.php`.
 
 ::
 
@@ -56,8 +55,7 @@ Force locale
 --------------
 
 If you want to force a specific locale, users will no longer be able to change
-their locale in the personal settings. You can set a **force_locale** parameter
-in the :file:`config/config.php`.
+their locale in the personal settings. You can set a **force_locale** parameter in the :file:`config/config.php`.
 
 ::
 

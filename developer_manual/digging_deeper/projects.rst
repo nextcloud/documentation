@@ -11,8 +11,7 @@ Register a resource provider
 ----------------------------
 
 Things like files, deck cards and talk rooms are called Resources in projects.
-In order to add your own resource type, we need to create a class implementing the
-``OCP\Collaboration\Resources\IProvider`` interface.
+In order to add your own resource type, we need to create a class implementing the ``OCP\Collaboration\Resources\IProvider`` interface.
 
 .. code-block:: php
 
@@ -130,16 +129,14 @@ Provide a user interface
 
 The user interface can be registered through the public ``OCP.Collaboration.registerType``
 JavaScript method. The first parameter represents the resource type that has already
-been specified in the ``IResourceProvider`` implementation. The second parameter is an object with
-three properties:
+been specified in the ``IResourceProvider`` implementation. The second parameter is an object with three properties:
 
   * ``typeString`` A localized string that will be displayed in the dropdown when choosing which resource type to link to
   * ``typeIconClass`` A CSS class of the icon that should be used for this entry
   * ``action`` An async function that will produce a resource picker UI and resolves with the resource id
 
 The following example shows how a Vue.js component could be used to render the
-widget user interface, however this approach works for any other framework as well
-as plain JavaScript:
+widget user interface, however this approach works for any other framework as well as plain JavaScript:
 
 
 .. code-block:: javascript
@@ -198,8 +195,7 @@ we can simply dispatch it when we render our main page template.
 	}
 
 
-In our Vue app, we can then render the pre-built projects picker available in the npm package
-``nextcloud-vue-collections``.
+In our Vue app, we can then render the pre-built projects picker available in the npm package ``nextcloud-vue-collections``.
 
 .. code-block:: html
 

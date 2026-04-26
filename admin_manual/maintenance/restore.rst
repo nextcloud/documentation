@@ -2,12 +2,10 @@
 Restoring backup
 ================
 
-To restore a Nextcloud installation there are four main things you need to
-restore:
+To restore a Nextcloud installation there are four main things you need to restore:
 
 #. The configuration directory
-#. The data directory
-#. The database
+#. The data directory #. The database
 #. The theme directory
 
 .. note:: You must have both the database and data directory. You cannot

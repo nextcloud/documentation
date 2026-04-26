@@ -33,8 +33,7 @@ this: :ref:`OCS Text-To-Image API<ocs-text2image-api>`
 Tasks
 ^^^^^
 To create a task we use the ``\OCP\TextToImage\Task`` class. Its constructor takes the following arguments: ``new
-\OCP\TextToImage\Task(string $input, string $appId, int $numberOfImages, ?string $userId, string $identifier = '')``.
-For example:
+\OCP\TextToImage\Task(string $input, string $appId, int $numberOfImages, ?string $userId, string $identifier = '')``. For example:
 
 .. code-block:: php
 
@@ -209,16 +208,13 @@ A **Text-To-Image provider** is a class that implements the interface ``OCP\Text
         }
     }
 
-The method ``getId`` returns a string to uniquely identify the registered provider. You can use the class name for this
-for example.
+The method ``getId`` returns a string to uniquely identify the registered provider. You can use the class name for this for example.
 
-The method ``getName`` returns a string to identify the registered provider in the user interface and should be
-localized.
+The method ``getName`` returns a string to identify the registered provider in the user interface and should be localized.
 
 The method ``generate`` implements the image generation step. It gets passed an array of ``resource`` values. The length
 of the array indicates how many images should be generated. Each image should be written to one of the resources, e.g.
-using ``fwrite()``. In case execution fails for some reason, you should throw a ``RuntimeException`` with an explanatory
-error message.
+using ``fwrite()``. In case execution fails for some reason, you should throw a ``RuntimeException`` with an explanatory error message.
 
 The class would typically be saved into a file in ``lib/TextToImage`` of your app but you are free to put it elsewhere
 as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.

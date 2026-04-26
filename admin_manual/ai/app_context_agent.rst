@@ -374,8 +374,7 @@ These tools can also be combined by the agent to fulfil tasks like the following
 Custom Tools using MCP
 -----------------------
 
-Model Context Protocol (MCP) is a protocol that enables Large Language Models (LLMs) to interact with external data
-sources and tools.
+Model Context Protocol (MCP) is a protocol that enables Large Language Models (LLMs) to interact with external data sources and tools.
 The Context Agent app allows administrators to extend its capabilities by adding custom services via MCP. This can be
 configured in the admin settings under "MCP Config," where you can provide a JSON configuration in the following format:
 
@@ -429,8 +428,7 @@ Using Nextcloud MCP Server
 Context Agent exposes an MCP server that can be used by other large language models or applications to access the tools
 provided by Context Agent.
 The server will be available at `https://your-nextcloud-domain.com/index.php/apps/app_api/proxy/context_agent/mcp/`, and
-it requires authentication via an app password passed in the `Authorization` header. Ex: `Authorization: Bearer
-<app-password>`.
+it requires authentication via an app password passed in the `Authorization` header. Ex: `Authorization: Bearer <app-password>`.
 
 Scaling
 -------

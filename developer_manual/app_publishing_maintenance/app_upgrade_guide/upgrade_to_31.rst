@@ -11,8 +11,7 @@ User-, guest-, and public-template layout
 The main layout for all apps (the user, guest and public template) has been changed,
 the main content is no longer rendered within a ``<main>`` element with the class ``content`` but in a ``div`` element
 with the class ``content``.
-The reason for this is to allow writing Vue 3 based apps which would incorrectly render two stacked ``main``-elements
-otherwise.
+The reason for this is to allow writing Vue 3 based apps which would incorrectly render two stacked ``main``-elements otherwise.
 
 For Vue 2 apps this **does not change anything**.
 But if you just use vanilla templates or other frameworks this changes the page layout and might require adjustments.
@@ -34,10 +33,8 @@ Files and Files sharing
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 With Nextcloud 28 the Files app front-end was migrated to Vue and the private API ( ``OCA.Files`` ) was removed,
-but for public shares the legacy frontend-end was still used. With Nextcloud 31 public shares also use the new Vue
-front-end.
-This means accessing the legacy private API in ``OCA.Files`` is no longer possible, all existing apps should migrate to
-the :ref:`public API<js-library_nextcloud-files>`.
+but for public shares the legacy frontend-end was still used. With Nextcloud 31 public shares also use the new Vue front-end.
+This means accessing the legacy private API in ``OCA.Files`` is no longer possible, all existing apps should migrate to the :ref:`public API<js-library_nextcloud-files>`.
 
 To make migration easier utility functions are provided in the ``@nextcloud/sharing``
 :ref:`package<js-library_nextcloud-sharing>`

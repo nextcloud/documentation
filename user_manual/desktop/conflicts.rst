@@ -28,8 +28,7 @@ two files on your local machine:
 
 In this situation the file ``mydata.txt`` has the remote changes (and will continue
 to be updated with further remote changes when they happen), but your local
-adjustments have not been sent to the server (unless the server enables conflict
-uploading, see below).
+adjustments have not been sent to the server (unless the server enables conflict uploading, see below).
 
 The desktop client notifies you of this situation via system notifications, the
 system tray icon and a yellow "unresolved conflicts" badge in the account settings
@@ -39,8 +38,7 @@ and clicking one of them opens an explorer window pointing at the relevant file.
 To resolve this conflict, open both files, compare the differences and copy your
 local changes from the "conflicted copy" file into the base file where applicable.
 In this example you might change ``mydata.txt`` to say "local and remote contents"
-and delete the file with "conflicted copy" in its name. With that, the conflict
-is resolved.
+and delete the file with "conflicted copy" in its name. With that, the conflict is resolved.
 
 Uploading conflicts (experimental)
 ----------------------------------
@@ -51,9 +49,7 @@ is that you, the author of the changes, are the best person for resolving the
 conflict and showing the conflict to other users might create confusion.
 
 However, in some scenarios it makes a lot of sense to upload these conflicting
-changes such that local work can become visible even if the conflict won't be
-resolved immediately.
+changes such that local work can become visible even if the conflict won't be resolved immediately.
 
 In the future there might be a server-wide switch for this behavior. For now it
-can already be tested by setting the environment variable
-``OWNCLOUD_UPLOAD_CONFLICT_FILES=1``.
+can already be tested by setting the environment variable ``OWNCLOUD_UPLOAD_CONFLICT_FILES=1``.

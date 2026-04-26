@@ -57,8 +57,7 @@ Creating a user is done by passing a username and password to the create method:
 Modifying users
 ---------------
 
-Users can be modified by getting a user by the userId or by a search pattern. The returned user objects can then be used
-to:
+Users can be modified by getting a user by the userId or by a search pattern. The returned user objects can then be used to:
 
 * Delete them
 * Set a new password

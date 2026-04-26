@@ -14,8 +14,7 @@ Settings
 
 An app can register both admin settings as well as personal settings.
 Settings are divided into sections to group similar settings together.
-For example, in the **Sharing** section are only settings (built-in and of apps)
-related to sharing.
+For example, in the **Sharing** section are only settings (built-in and of apps) related to sharing.
 
 Settings form
 -------------
@@ -199,8 +198,7 @@ would be the final relative path.
 Then, the implementing class should be added to the info.xml. Settings will be
 registered upon installation and update. When settings are added to an existing,
 installed, and enabled app, it should be made sure that the version is
-increased so Nextcloud can register the class. It is only possible to register
-one ISettings implementer.
+increased so Nextcloud can register the class. It is only possible to register one ISettings implementer.
 
 For a more complex example using embedded templates have a look at the
 implementation of the **user_ldap** app.

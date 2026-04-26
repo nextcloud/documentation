@@ -6,8 +6,7 @@ Open Metrics exporter
 
 Nextcloud allows to export metrics using `OpenMetrics <https://openmetrics.io/>`_ format.
 
-The data is available on the ``/metrics`` endpoint and can then be imported into any OpenMetrics (formerly Prometheus)
-enabled tool.
+The data is available on the ``/metrics`` endpoint and can then be imported into any OpenMetrics (formerly Prometheus) enabled tool.
 
 
 Register a new exporter

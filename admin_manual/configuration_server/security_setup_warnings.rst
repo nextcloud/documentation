@@ -18,8 +18,7 @@ Cache warnings
 --------------
 
 "No memory cache has been configured. To enhance your performance please 
-configure a memcache if available." Nextcloud supports multiple php caching
-extensions:
+configure a memcache if available." Nextcloud supports multiple php caching extensions:
 
 * APCu (minimum required PHP extension version 4.0.6)
 * Memcached
@@ -33,14 +32,12 @@ If you see "*{Cache}* below version *{Version}* is installed. for stability and
 performance reasons we recommend to update to a newer *{Cache}* version" then
 you need to upgrade, or, if you're not using it, remove it.
 
-You are not required to use any caches, but caches improve server performance. 
-See :doc:`caching_configuration`.
+You are not required to use any caches, but caches improve server performance. See :doc:`caching_configuration`.
 
 Transactional file locking is disabled
 --------------------------------------
 
-"Transactional file locking is disabled, this might lead to issues with race
-conditions."
+"Transactional file locking is disabled, this might lead to issues with race conditions."
 
 Please see :doc:`../configuration_files/files_locking_transactional` on how
 to correctly configure your environment for transactional file locking.

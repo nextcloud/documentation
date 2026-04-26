@@ -19,8 +19,7 @@ Collabora Online Enterprise based version through a `Nextcloud support subscript
 <https://nextcloud.com/enterprise/>`_.
 
 We are able to provide a solution for Online Office for the entire Nextcloud community through our partnership with
-Collabora with various deployment options. Enterprise users looking for a more reliable solution should contact
-Nextcloud Sales.
+Collabora with various deployment options. Enterprise users looking for a more reliable solution should contact Nextcloud Sales.
 
 
 .. toctree::

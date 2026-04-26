@@ -33,8 +33,7 @@ Mitigations
 
 There are basically 3 options on how deadlocks can be handled properly.
 It is not critical for all use case to handle them, however as per
-recommendation of MySQL/MariaDB the application should be prepared to
-handle them properly.
+recommendation of MySQL/MariaDB the application should be prepared to handle them properly.
 
 Ignoring deadlocks
 ^^^^^^^^^^^^^^^^^^

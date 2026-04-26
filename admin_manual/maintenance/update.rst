@@ -72,8 +72,7 @@ The built-in updater performs these operations:
 Using the web based updater
 ---------------------------
 
-Using the built-in updater to update your Nextcloud installation is just a few
-steps:
+Using the built-in updater to update your Nextcloud installation is just a few steps:
 
 1.  You should see a notification at the top of any Nextcloud page when there is
     a new update available. Go to the admin settings page and scroll to the
@@ -219,8 +218,7 @@ It is possible to run the command line based updater in a non-interactive mode.
 The updater then doesn't ask any interactive questions. It is assumed that if
 an update is available it should be installed and the ``occ upgrade`` command
 is executed as well. After finishing the maintenance mode will be turned off
-except an error occurred during the ``occ upgrade`` or the replacement of the
-code.
+except an error occurred during the ``occ upgrade`` or the replacement of the code.
 
 To execute this, run the command with the ``--no-interaction`` option. (i.e.
 ``sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar --no-interaction``)

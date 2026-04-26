@@ -66,8 +66,7 @@ Installation
 Supplying alternate models
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This app allows supplying alternate LLM models as *gguf* files in the ``/nc_app_llm2_data`` directory of the docker
-container.
+This app allows supplying alternate LLM models as *gguf* files in the ``/nc_app_llm2_data`` directory of the docker container.
 
 1. Download a **gguf** model e.g. from huggingface
 2. Copy the **gguf** file to ``/nc_app_llm2_data`` inside the docker container
@@ -81,8 +80,7 @@ Configuring alternate models
 Since every model requires slightly different inference parameters, you can pass along a configuration file for the
 alternate model files you supply.
 
-The configuration file for a model file must have the same name as the model file but must end in ``.json`` instead of
-``.gguf``.
+The configuration file for a model file must have the same name as the model file but must end in ``.json`` instead of ``.gguf``.
 
 The strings ``{system_prompt}`` and ``{user_prompt}`` are variables that will be filled in by the app, so they must be
 part of your prompt template.
@@ -118,8 +116,7 @@ Scaling
 -------
 
 It is currently not possible to scale this app, we are working on this. Based on our calculations an instance has a
-rough capacity of 1000 user requests per hour. However, this number is based on theory and we do appreciate real-world
-feedback on this.
+rough capacity of 1000 user requests per hour. However, this number is based on theory and we do appreciate real-world feedback on this.
 If you would like to scale up your language model usage, we recommend using an :ref:`AI as a Service provider<ai-ai_as_a_service>` or hosting a service compatible with the OpenAI API yourself that can be scaled up and connecting nextcloud to it via the `integration_openai app <https://apps.nextcloud.com/apps/integration_openai>`_.
 
 App store
@@ -157,8 +154,7 @@ Known Limitations
 Addendum: Running with a fully open model
 -----------------------------------------
 
-If you would like to use a fully open model that scores a green score on our Ethical AI rating, we recommend the
-following model:
+If you would like to use a fully open model that scores a green score on our Ethical AI rating, we recommend the following model:
 
 * Olmo 3 (either in 7B or 32B): `<https://huggingface.co/allenai/Olmo-3-7B-Instruct>`_
 

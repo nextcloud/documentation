@@ -55,8 +55,7 @@ For example, you can place this before returning your TemplateResponse in your c
     $this->eventDispatcher->dispatchTyped(new OCP\Collaboration\Reference\RenderReferenceEvent());
 
 This is done in
-`Text <https://github.com/nextcloud/text/blob/8a17046aa440df841fe9182205d80ce937068c1a/lib/Listeners/LoadViewerListener.php#L52>`_
-and
+`Text <https://github.com/nextcloud/text/blob/8a17046aa440df841fe9182205d80ce937068c1a/lib/Listeners/LoadViewerListener.php#L52>`_ and
 `Talk <https://github.com/nextcloud/spreed/blob/1f1acbd95943e6184e29de8044cd9d8e775ac7c5/lib/Controller/PageController.php#L280>`_
 if you need more examples.
 
@@ -92,8 +91,7 @@ NcReferenceWidget
 ~~~~~~~~~~~~~~~~~
 
 You can display a preview for a specific link by using the ``<NcReferenceWidget>`` component.
-You need to ask the server to resolve the link to get a reference object that you can then give as a property
-to NcReferenceWidget.
+You need to ask the server to resolve the link to get a reference object that you can then give as a property to NcReferenceWidget.
 
 To resolve a link:
 
@@ -269,8 +267,7 @@ The picker result then gets directly inserted in the content.
 NcReferencePickerModal
 ~~~~~~~~~~~~~~~~~~~~~~
 
-You display the Smart Picker by using the NcReferencePickerModal Vue component. It is available in the Nextcloud Vue
-library.
+You display the Smart Picker by using the NcReferencePickerModal Vue component. It is available in the Nextcloud Vue library.
 
 .. code-block:: javascript
 
@@ -294,8 +291,7 @@ It takes 2 parameters:
   displayed first.
 * isInsideViewer (optional): This will be passed internally to NcReferencePickerModal as the isInsideViewer prop.
 
-This function returns a promise that resolves with the picker result. This promise is rejected if the user closes
-the Smart Picker.
+This function returns a promise that resolves with the picker result. This promise is rejected if the user closes the Smart Picker.
 
 .. code-block:: javascript
 
@@ -325,8 +321,7 @@ So we are mostly interested in the second type here: The ones using unified sear
 
 In Nextcloud's web UI, those providers are rendered with a
 `generic search Vue component <https://github.com/nextcloud/nextcloud-vue/blob/master/src/components/NcRichText/NcReferencePicker/NcSearch.vue>`_
-which shows a search input, lists the search result in a dropdown menu and directly submits the URL of the selected
-result.
+which shows a search input, lists the search result in a dropdown menu and directly submits the URL of the selected result.
 The search is done by directly querying the Unified Search OCS API. This is described later.
 
 To implement something similar to the Smart Picker in a client, it is required to know how to:
@@ -492,23 +487,18 @@ Extend link preview support
 
 This section is focusing on the methods of the ``IReferenceProvider`` interface.
 
-Links that are not matched by any reference provider will always be handled by the server's OpenGraph provider as a
-fallback.
+Links that are not matched by any reference provider will always be handled by the server's OpenGraph provider as a fallback.
 This provider will try to get the information declared in the target page's meta tag. The link preview will be rendered
-with the
-default widget.
+with the default widget.
 
-For your provider to properly handle some links, you need to implement the ``matchReference`` and ``resolve``
-methods of ``IReferenceProvider``.
+For your provider to properly handle some links, you need to implement the ``matchReference`` and ``resolve`` methods of ``IReferenceProvider``.
 
-In order to resolve links from a public share, ``resolvePublic`` from ``IPublicReferenceProvider`` has to be implemented
-additionally.
+In order to resolve links from a public share, ``resolvePublic`` from ``IPublicReferenceProvider`` has to be implemented additionally.
 
 Match links
 ~~~~~~~~~~~
 
-The ``matchReference`` method of ``IReferenceProvider`` tells the reference manager if a provider supports a link or
-not.
+The ``matchReference`` method of ``IReferenceProvider`` tells the reference manager if a provider supports a link or not.
 
 .. code-block:: php
 
@@ -520,8 +510,7 @@ not.
 Resolving links
 ~~~~~~~~~~~~~~~
 
-The ``resolve`` method of ``IReferenceProvider`` is used to get information about a link and return it as a
-``OCP\Collaboration\Reference\Reference`` object.
+The ``resolve`` method of ``IReferenceProvider`` is used to get information about a link and return it as a ``OCP\Collaboration\Reference\Reference`` object.
 
 Respectively the ``resolvePublic`` method of ``IPublicReferenceProvider`` is used to get information about a
 link from a public share (available since Nextcloud 30).
@@ -715,8 +704,7 @@ along the ``registerWidget`` function.
 
 Apps will determine if they can render the interactive widget or not.
 
-When writing a custom widget make sure properly handle different restrictions to ensure that the widget is usable in any
-integrating app.
+When writing a custom widget make sure properly handle different restrictions to ensure that the widget is usable in any integrating app.
 
 - The width of the widget should be flexible and not exceed the width of the parent element.
 - The height can be flexible but might be limited by the parent element, so ensure that the widget can be scrolled if
@@ -751,16 +739,13 @@ Provide generic data for clients
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the web interface, the links that your app resolves are rendered with the OpenGraph widget
-or the custom reference widget you implemented. So you have complete freedom on which data format you put in your rich
-objects
+or the custom reference widget you implemented. So you have complete freedom on which data format you put in your rich objects
 because you also control the web rendering implementation.
 
-But as the web UI components cannot be used by desktop or mobile clients, they have to specifically support some rich
-objects
+But as the web UI components cannot be used by desktop or mobile clients, they have to specifically support some rich objects
 that are properly formatted.
 
-Here are some formatting suggestions for a few use cases. Use them if you want your resolved links to be rendered in
-clients.
+Here are some formatting suggestions for a few use cases. Use them if you want your resolved links to be rendered in clients.
 The idea is to add a generic attribute in your rich objects, regardless of the rich object type.
 
 Version control issue
@@ -784,8 +769,7 @@ Example implementation: `GitHub integration issue link preview <https://github.c
 Version control pull request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Set the rich object's ``vcs_pull_request`` attribute to an object which contains the same attributes as in ``vcs_issue``
-plus these ones:
+Set the rich object's ``vcs_pull_request`` attribute to an object which contains the same attributes as in ``vcs_issue`` plus these ones:
 
 * ``merged``: Is it merged? (boolean)
 * ``draft``: Is it a draft? (boolean)
@@ -821,15 +805,13 @@ Extend the Smart Picker
 
 If you want your reference provider to appear in the Smart Picker to search/get links,
 it needs to be discoverable
-(extend the ``OCP\Collaboration\Reference\ADiscoverableReferenceProvider`` abstract class)
-and either
+(extend the ``OCP\Collaboration\Reference\ADiscoverableReferenceProvider`` abstract class) and either
 
 * support one or multiple Unified Search providers
 * or register a custom picker component
 
 This is an exclusive choice. You can't support search providers AND register a custom picker component.
-If you still want to mix both approaches, you can register a custom picker component which includes a custom search
-feature.
+If you still want to mix both approaches, you can register a custom picker component which includes a custom search feature.
 
 Extending ``ADiscoverableReferenceProvider`` implies defining those methods:
 
@@ -871,8 +853,7 @@ This function takes 3 parameters:
 
 The creation callback must return a ``NcCustomPickerRenderResult`` object to which you have to give the DOM element
 you just created and optionally an object (the Vue instance for example).
-This render result will be then be passed to the destroy callback to let you properly clean and delete your custom
-component.
+This render result will be then be passed to the destroy callback to let you properly clean and delete your custom component.
 
 To register a Vue component as a custom picker component:
 
@@ -927,6 +908,5 @@ To register anything else:
         renderResult.element.remove()
     })
 
-In your custom component, just emit the ``submit`` event with the result as the event's data to pass it back to the
-Smart Picker.
+In your custom component, just emit the ``submit`` event with the result as the event's data to pass it back to the Smart Picker.
 You can also emit the ``cancel`` event to abort and go back.

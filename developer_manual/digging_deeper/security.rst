@@ -63,8 +63,7 @@ Remote Host Validation
 ----------------------
 
 Nextcloud can help validating a remote host so that no internal infrastructure is contacted by user-provided host names
-or IPs. The validator ``\OCP\Security\IRemoteHostValidator`` can be :ref:`injected<dependency-injection>` into any app
-class:
+or IPs. The validator ``\OCP\Security\IRemoteHostValidator`` can be :ref:`injected<dependency-injection>` into any app class:
 
 .. code-block:: php
 

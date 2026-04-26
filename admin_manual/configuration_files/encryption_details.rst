@@ -2,8 +2,7 @@
 Server-side encryption details
 ==============================
 
-This document describes the server-side encryption scheme implemented by Nextcloud's default encryption module. This
-includes:
+This document describes the server-side encryption scheme implemented by Nextcloud's default encryption module. This includes:
 
 - the encryption and signature of files with a master key.
 - the encryption and signature of files with a public sharing key.
@@ -32,8 +31,7 @@ Key type: public sharing key
 ----------------------------
 
 The public sharing key is used to secure files that have been publicly shared. The advantage of the public sharing key
-is that it is independent of the selected encryption mode so that Nextcloud is able to provide publicly shared files to
-outside parties.
+is that it is independent of the selected encryption mode so that Nextcloud is able to provide publicly shared files to outside parties.
 
 Key type: recovery key
 ----------------------
@@ -42,8 +40,7 @@ The recovery key is used to provide a restore mechanism in cases where the user 
 administrator has enabled the recovery key feature and the user has opted into using the recovery key feature. The
 recovery key can then be used to restore files when users have lost their passwords. The recovery key is protected by a
 recovery password that the server administrator should store securely. The advantage of the recovery key is that files
-can be recovered but has the disadvantage that the server administrator is able to decrypt user files without knowing
-any user password.
+can be recovered but has the disadvantage that the server administrator is able to decrypt user files without knowing any user password.
 
 Key type: user key
 ------------------
@@ -209,8 +206,7 @@ the ``hash()`` function. ``$instanceId`` can be retrieved as ``instanceid`` from
 can be retrieved as ``secret`` from the ``config.php``.
 
 The encryption key is then derived by creating a raw SHA256-PBKDF2 hash of the password with the salt, 100.000 rounds
-and (by default) with a target size of 32 bytes (as required for AES-256-CTR) with the ``hash_hmac()`` function (denoted
-as ``$passphrase``).
+and (by default) with a target size of 32 bytes (as required for AES-256-CTR) with the ``hash_hmac()`` function (denoted as ``$passphrase``).
 
 The used password depends on the key type:
 
@@ -229,8 +225,7 @@ The initialization vector is generated as a random string of 16 bytes with the `
 Sign the private key
 ^^^^^^^^^^^^^^^^^^^^
 
-The message authentication key is derived by creating a raw SHA512 hash of ``$passphrase.$version.$position."a"`` with
-the ``hash()`` function.
+The message authentication key is derived by creating a raw SHA512 hash of ``$passphrase.$version.$position."a"`` with the ``hash()`` function.
 
 - ``$version`` is always ``"0"``.
 - ``$position`` is always ``"0"``.
@@ -289,14 +284,12 @@ Encrypt the blocks
 
 For each block the initialization vector is generated as a random string of 16 bytes with the ``random_bytes()``
 function (denoted as ``$iv[$position]``). The block is (by default) AES-256-CTR encrypted with the ``$iv[$position]``
-and the ``$filekey`` with the ``openssl_encrypt()`` function and returned as Base64 encoded without zero-padding
-(denoted as ``$encrypted[$position]``).
+and the ``$filekey`` with the ``openssl_encrypt()`` function and returned as Base64 encoded without zero-padding (denoted as ``$encrypted[$position]``).
 
 Sign the blocks
 ^^^^^^^^^^^^^^^
 
-The message authentication key is derived by creating a raw SHA512 hash of ``$filekey.$version.$position."a"`` with the
-``hash()`` function.
+The message authentication key is derived by creating a raw SHA512 hash of ``$filekey.$version.$position."a"`` with the ``hash()`` function.
 
 - ``$version`` is the ``encrypted`` value that can be retrieved from the ``oc_filecache`` table in the database and must
   not be zero. Take into account that a file in the ``oc_filecache`` table is identified by its ``path`` value as well
@@ -334,8 +327,7 @@ the ``hash()`` function. ``$instanceId`` can be retrieved as ``instanceid`` from
 can be retrieved as ``secret`` from the ``config.php``.
 
 The decryption key is then derived by creating a raw SHA256-PBKDF2 hash of the password with the salt, 100.000 rounds
-and (by default) with a target size of 32 bytes (as required for AES-256-CTR) with the ``hash_hmac()`` function (denoted
-as ``$passphrase``).
+and (by default) with a target size of 32 bytes (as required for AES-256-CTR) with the ``hash_hmac()`` function (denoted as ``$passphrase``).
 
 The used password depends on the key type:
 
@@ -347,8 +339,7 @@ The used password depends on the key type:
 Check the signature
 ^^^^^^^^^^^^^^^^^^^
 
-The message authentication key is derived by creating a raw SHA512 hash of ``$passphrase.$version.$position."a"`` with
-the ``hash()`` function.
+The message authentication key is derived by creating a raw SHA512 hash of ``$passphrase.$version.$position."a"`` with the ``hash()`` function.
 
 - ``$version`` is always ``"0"``.
 - ``$position`` is always ``"0"``.
@@ -360,8 +351,7 @@ which is checked with the ``hash_equals()`` function.
 Decrypt the private key
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The private key is (by default) AES-256-CTR decrypted with the ``$iv`` and the ``$passphrase`` with the
-``openssl_decrypt()`` function.
+The private key is (by default) AES-256-CTR decrypted with the ``$iv`` and the ``$passphrase`` with the ``openssl_decrypt()`` function.
 
 Decryption: read the file key
 -----------------------------
@@ -397,8 +387,7 @@ encrypted block may be shorter. Each block is referenced by its zero-based index
 Check the block signatures
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The message authentication key is derived by creating a raw SHA512 hash of ``$filekey.$version.$position."a"`` with the
-``hash()`` function.
+The message authentication key is derived by creating a raw SHA512 hash of ``$filekey.$version.$position."a"`` with the ``hash()`` function.
 
 - ``$version`` is the ``encrypted`` value that can be retrieved from the ``oc_filecache`` table in the database and must
   not be zero. Take into account that a file in the ``oc_filecache`` table is identified by its ``path`` value as well
@@ -417,8 +406,7 @@ message authentication key with the ``hash_hmac()`` function. Only proceed when 
 Decrypt the blocks
 ^^^^^^^^^^^^^^^^^^
 
-Each block is (by default) AES-256-CTR decrypted with the ``$iv[$position]`` and the ``$filekey`` with the
-``openssl_decrypt()`` function.
+Each block is (by default) AES-256-CTR decrypted with the ``$iv[$position]`` and the ``$filekey`` with the ``openssl_decrypt()`` function.
 
 Sources
 -------

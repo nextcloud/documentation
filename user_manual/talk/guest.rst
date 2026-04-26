@@ -20,8 +20,7 @@ You can also change your name later by clicking the ``Edit`` button, located top
 .. image:: images/change-name.png
     :width: 400px
 
-Your camera and microphone settings can be found in the ``Settings`` menu. There you can also find a list of shortcuts
-you can use.
+Your camera and microphone settings can be found in the ``Settings`` menu. There you can also find a list of shortcuts you can use.
 
 .. image:: images/guest-settings.png
     :width: 600px
@@ -83,8 +82,7 @@ An invitation can be done via inserting the email address in ``Participants`` ta
 .. image:: images/guest-email-invitation.png
     :width: 500px
 
-You can bulk invite email participants by uploading a CSV file. The option is available in the conversation settings
-under ``Meeting`` section.
+You can bulk invite email participants by uploading a CSV file. The option is available in the conversation settings under ``Meeting`` section.
 
 .. image:: images/guest-invitation-bulk.png
     :width: 500px

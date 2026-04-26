@@ -9,8 +9,7 @@ Task Processing
 Nextcloud offers a **Task Processing** API which replaces the previously introduced :ref:`Text
 Processing<text_processing>`, :ref:`TextToImage<text2image>` and :ref:`Speech-To-Text<speech-to-text>` APIs. The overall
 idea is that there is a central OCP API that apps can use to schedule all kinds of tasks (mainly intended for AI tasks).
-To be technology agnostic any other app can provide this task functionality by registering Task Processing providers for
-specific Task types.
+To be technology agnostic any other app can provide this task functionality by registering Task Processing providers for specific Task types.
 
 Consuming the Task Processing API
 ---------------------------------
@@ -202,8 +201,7 @@ readable name and description using the ``getName()``, ``getDescription()`` and 
 Shape types
 ~~~~~~~~~~~
 
-Input and output shape keys can have one of a pre-defined set of types, which are enumerated in the
-``\OCP\TaskProcessing\EShapeType`` Enum:
+Input and output shape keys can have one of a pre-defined set of types, which are enumerated in the ``\OCP\TaskProcessing\EShapeType`` Enum:
 
 .. code-block:: php
 
@@ -230,8 +228,7 @@ id. Similarly, if the task outputs an image, you will receive a file ID in that 
 Tasks
 ^^^^^
 To create a task we use the ``\OCP\TaskProcessing\Task`` class. Its constructor takes the following arguments: ``new
-\OCP\TaskProcessing\Task(string $taskTypeId, array $input, string $appId, ?string $userId, string $customId = '')``. For
-example:
+\OCP\TaskProcessing\Task(string $taskTypeId, array $input, string $appId, ?string $userId, string $customId = '')``. For example:
 
 .. code-block:: php
 
@@ -350,8 +347,7 @@ The corresponding ``MyPromptResultListener`` class can look like:
 Implementing a TaskProcessing provider
 --------------------------------------
 
-A **Task processing provider** will usually be a class that implements the interface
-``OCP\TaskProcessing\ISynchrounousProvider``.
+A **Task processing provider** will usually be a class that implements the interface ``OCP\TaskProcessing\ISynchrounousProvider``.
 
 .. code-block:: php
 
@@ -452,10 +448,8 @@ elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection con
 Providing additional inputs and outputs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Built-in task types often only specify the most basic input and output slots. If you would like to offer more input
-options
-with your provider you can specify optional inputs and outputs using the ``getOptionalInputShape`` and
-``getOptionalOutputShape`` methods.
+Built-in task types often only specify the most basic input and output slots. If you would like to offer more input options
+with your provider you can specify optional inputs and outputs using the ``getOptionalInputShape`` and ``getOptionalOutputShape`` methods.
 You will need to return an associative array of ``\OCP\TaskProcessing\ShapeDescriptor`` objects.
 
 .. code-block:: php
@@ -479,8 +473,7 @@ In the same vein you can also provide optional output shape slots in addition to
 Providing input defaults
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-With the method ``getInputShapeDefaults`` you can specify default values for input slots (which are defined by the task
-type). For example:
+With the method ``getInputShapeDefaults`` you can specify default values for input slots (which are defined by the task type). For example:
 
 .. code-block:: php
 
@@ -505,12 +498,10 @@ The same works for your optional input shapes that you defined in ``getOptionalI
 Working with Enum shape types
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Both input and output shapes as well as the optional input and output shapes allow declaring slots of type ``'Enum'``.
-An Enum
+Both input and output shapes as well as the optional input and output shapes allow declaring slots of type ``'Enum'``. An Enum
 is a type that only allows values from a pre-defined set. In the case of the TaskProcessing API this set is not defined
 by the task type, but
-by the provider implementing the task type using ``getInputShapeEnumValues``, ``getOutputShapeEnumValues``,
-``getOptionalInputShapeEnumValues`` and ``getOptionalOutputShapeEnumValues``.
+by the provider implementing the task type using ``getInputShapeEnumValues``, ``getOutputShapeEnumValues``, ``getOptionalInputShapeEnumValues`` and ``getOptionalOutputShapeEnumValues``.
 
 You could, for example, implement the above tone of voice slot using an Enum:
 
@@ -588,8 +579,7 @@ Internal task types
 .. versionadded:: 33.0.0
 
 Other apps and clients will assume that task types are user-facing and will display them on the frontend. If your custom
-task types are not intended to be shown to users, you should implement the ``IInternalTaskType`` interface instead. This
-will
+task types are not intended to be shown to users, you should implement the ``IInternalTaskType`` interface instead. This will
 make sure that other apps and clients know not to show your custom task type to end users.
 
 
@@ -598,17 +588,13 @@ Triggerable providers
 
 .. versionadded:: 33.0.0
 
-Synchronous providers are executed automatically by a background job that will usually be targeted by a worker to make
-sure
-that it runs almost instantly. ExApps on the other hand used to have to poll the server for new tasks. Since the
-introduction of triggerable
-providers ExApps are now notified immediately of new tasks when they are scheduled. This is implemented via the
-``ITriggerableProvider`` interface,
+Synchronous providers are executed automatically by a background job that will usually be targeted by a worker to make sure
+that it runs almost instantly. ExApps on the other hand used to have to poll the server for new tasks. Since the introduction of triggerable
+providers ExApps are now notified immediately of new tasks when they are scheduled. This is implemented via the ``ITriggerableProvider`` interface,
 which adds an additional ``trigger(): void`` method to the provider interface which is called when a new task is
 scheduled for this provider and
 there are no running tasks for it at the moment. Usually if you implement a provider in PHP you will not have to deal
-with this interface but it is documented
-here for completeness.
+with this interface but it is documented here for completeness.
 
 Provider and task type registration
 -----------------------------------

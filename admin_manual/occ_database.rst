@@ -123,8 +123,7 @@ group the destination user is not a member of.
 Use ``-f`` / ``--force`` to proceed anyway: conflicting group shares are
 dropped, and if the calendar name is already taken at the destination a
 new name is tried automatically (``personal-1``, ``personal-2``, up to
-ten attempts). The command fails if no free name is found within those
-attempts.
+ten attempts). The command fails if no free name is found within those attempts.
 
 dav\:clear-calendar-unshares
 """"""""""""""""""""""""""""
@@ -436,8 +435,7 @@ Limit output to a single table::
  sudo -E -u www-data php occ db:schema:export oc_filecache
 
 Use ``--sql`` to output SQL ``CREATE TABLE`` statements instead of the
-default structured format. Use ``--output=json_pretty`` for
-machine-readable output.
+default structured format. Use ``--output=json_pretty`` for machine-readable output.
 
 db:schema:expected
 """"""""""""""""""
@@ -449,8 +447,7 @@ divergences caused by incomplete upgrades or manual changes::
  sudo -E -u www-data php occ db:schema:expected
  sudo -E -u www-data php occ db:schema:expected oc_filecache
 
-Supports the same ``--sql`` and ``--output`` options as
-``db:schema:export``.
+Supports the same ``--sql`` and ``--output`` options as ``db:schema:export``.
 
 
 Data conversions
@@ -482,8 +479,7 @@ db:convert-type
 
 Convert the Nextcloud database from SQLite to MySQL, MariaDB, or
 PostgreSQL. SQLite is suitable for testing and single-user setups, but
-production servers with multiple users should use one of the other
-supported databases.
+production servers with multiple users should use one of the other supported databases.
 
 Requirements:
 

@@ -53,8 +53,7 @@ To provide calendar(s) you have to write a class that implements the ``OCP\Calen
         }
     }
 
-This ``CalendarProvider`` class is then registered in the :ref:`register method of your Application
-class<Bootstrapping>` with ``$context->registerCalendarProvider(CalendarProvider::class);``.
+This ``CalendarProvider`` class is then registered in the :ref:`register method of your Application class<Bootstrapping>` with ``$context->registerCalendarProvider(CalendarProvider::class);``.
 
 
 Write support
@@ -141,8 +140,7 @@ The calendar object class
 -------------------------
 
 There needs to be a class that represents a single entry in a calendar. The naming of said class is arbitrary, it must
-however implement the interfaces ``\Sabre\CalDAV\ICalendarObject`` and ``\Sabre\CalDAV\IACL``. The basic structure looks
-like this:
+however implement the interfaces ``\Sabre\CalDAV\ICalendarObject`` and ``\Sabre\CalDAV\IACL``. The basic structure looks like this:
 
 .. code-block:: php
 
@@ -178,8 +176,7 @@ now, they are saved into attributes for later usage.
 Basic event information -- INode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are some basic methods that need to be implemented on each calendar object instance. These are defined
-``\Sabre\DAV\INode``.
+There are some basic methods that need to be implemented on each calendar object instance. These are defined ``\Sabre\DAV\INode``.
 
 
 Removal of entries
@@ -198,8 +195,7 @@ Removal of calendar events is not allowed in this example. Otherwise, the backen
 Fetching the name of an event
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-The name of the event can be obtained using the ``getName`` method. Here, the saved name in the attributes is just
-returned.
+The name of the event can be obtained using the ``getName`` method. Here, the saved name in the attributes is just returned.
 
 .. code-block:: php
 
@@ -336,8 +332,7 @@ planning to allow clients to update events, you need to implement the parsing, v
 Access restrictions -- IACL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The calendar entities are completed by a set of access rules. These allow a client to know if certain actions are to be
-allowed or not.
+The calendar entities are completed by a set of access rules. These allow a client to know if certain actions are to be allowed or not.
 
 Ownership
 !!!!!!!!!
@@ -475,11 +470,9 @@ The calendar should not be removed by means of the CalDAV interface. Thus, nothi
 Getting the modification timestamp
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-The last time the calendar is modified allows clients to optimize their requests. This method should return the
-corresponding unix timestamp.
+The last time the calendar is modified allows clients to optimize their requests. This method should return the corresponding unix timestamp.
 
-A fallback is to provide the value ``null`` as return value. This tells that the last modification time is not known at
-the moment.
+A fallback is to provide the value ``null`` as return value. This tells that the last modification time is not known at the moment.
 
 .. code-block:: php
 
@@ -627,13 +620,10 @@ Fetching the access rules of the calendar
 The ACL defined for this calendar must be returned by the method ``getACL``. For the exact definitions, see the
 documentation of Sabre. At the time of writing this was:
 
-=============  ===============================   =====================================================
-entry          values                            description
-=============  ===============================   =====================================================
+=============  ===============================   ===================================================== entry          values                            description =============  ===============================   =====================================================
 ``principal``  uri of principal                  The role or person trying to access the calendar
 ``privilege``  ``{DAV:}read``, ``{DAV:}write``   Is the role allowed to read or to write
-``protected``  ``true``, ``false``               if ``true``, this rule is not allowed to change
-=============  ===============================   =====================================================
+``protected``  ``true``, ``false``               if ``true``, this rule is not allowed to change =============  ===============================   =====================================================
 
 .. code-block:: php
 
@@ -747,8 +737,7 @@ instance is a (relative) uri (string) that identifies the calendar uniquely. The
 class to extract the appropriate entries that should be present in the calendar.
 
 The function ``hasCalendarInCalendarHome`` checks if a certain combination of ``principalUri`` and ``calendarUri``
-exist. Here, it is just hard-coded to exactly one calendar, but in your own implementation you should do more stringent
-checks.
+exist. Here, it is just hard-coded to exactly one calendar, but in your own implementation you should do more stringent checks.
 
 Finally, there is a function to query for a single calendar instance using ``getCalendarInCalendarHome``. It returns a
 single calendar instance or ``null`` if no matching calendar is found.

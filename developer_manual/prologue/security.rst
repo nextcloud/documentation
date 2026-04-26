@@ -42,8 +42,7 @@ Cross site scripting
 `Cross site scripting <https://en.wikipedia.org/wiki/Cross-site_scripting>`_ happens when user input is passed directly to templates. A potential attacker might be able to inject HTML/JavaScript into the page to steal the users session, log keyboard entries, even perform DDOS attacks on other websites or other malicious actions.
 
 Despite the fact that Nextcloud uses Content-Security-Policy to prevent the execution of inline JavaScript code
-developers are still required to prevent XSS. CSP is just another layer of defense that is not implemented in all web
-browsers.
+developers are still required to prevent XSS. CSP is just another layer of defense that is not implemented in all web browsers.
 
 To prevent XSS in your app you have to sanitize the templates and all JavaScripts which performs a DOM manipulation.
 
@@ -77,8 +76,7 @@ Also **validate URLs to start with the expected protocol** (starts with http for
 JavaScript
 ^^^^^^^^^^
 
-Avoid manipulating the HTML directly via JavaScript, this often leads to XSS since people often forget to sanitize
-variables:
+Avoid manipulating the HTML directly via JavaScript, this often leads to XSS since people often forget to sanitize variables:
 
 .. code-block:: js
 
@@ -104,8 +102,7 @@ An even better way to make your app safer is to use the jQuery built-in function
 
   messageTd.text(username);
 
-It may also be wise to choose a proper JavaScript framework like Vue.js which automatically handles the JavaScript
-escaping for you.
+It may also be wise to choose a proper JavaScript framework like Vue.js which automatically handles the JavaScript escaping for you.
 
 Clickjacking
 ------------
@@ -123,8 +120,7 @@ Code executions / file inclusions
 Code Execution means that an attacker is able to include an arbitrary PHP file. This PHP file runs with all the
 privileges granted to the normal application and can do an enormous amount of damage.
 
-Code executions and file inclusions can be easily prevented by **never** allowing user-input to run through the
-following functions:
+Code executions and file inclusions can be easily prevented by **never** allowing user-input to run through the following functions:
 
 * **include()**
 * **require()**
@@ -219,8 +215,7 @@ Nextcloud offers three simple checks:
 Using the App Framework, these checks are already automatically performed for each request and have to be explicitly
 turned off by using annotations above your controller method,  see :doc:`../basics/controllers`.
 
-Additionally always check if the user has the right to perform that action. (e.g. a user should not be able to delete
-other users' bookmarks).
+Additionally always check if the user has the right to perform that action. (e.g. a user should not be able to delete other users' bookmarks).
 
 Sensitive data exposure
 -----------------------
@@ -245,19 +240,16 @@ To prevent CSRF in an app, be sure to call the following method at the top of al
   OCP\JSON::callCheck();
 
 If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly
-exclude it by setting the ``#[NoCSRFRequired]`` attribute or ``@NoCSRFRequired`` annotation before the controller
-method, see :doc:`../basics/controllers`.
+exclude it by setting the ``#[NoCSRFRequired]`` attribute or ``@NoCSRFRequired`` annotation before the controller method, see :doc:`../basics/controllers`.
 
 Additionally, it is advised to carefully select the HTTP method used for requests.
 Requests of type ``GET`` should not alter data but just read existing data.
-This way, at least no typed (or copied) URL might alter data (e.g. clicking a link from a spam mail message by
-accident).
+This way, at least no typed (or copied) URL might alter data (e.g. clicking a link from a spam mail message by accident).
 
 Unvalidated redirects
 ---------------------
 
-This is more of an annoyance than a critical security vulnerability since it may be used for social engineering or
-phishing.
+This is more of an annoyance than a critical security vulnerability since it may be used for social engineering or phishing.
 
 Always validate the URL before redirecting if the requested URL is on the same domain or an allowed resource.
 
@@ -284,8 +276,7 @@ Assume, there is a website published on host A.
 The URL would for example be ``https://A/path/to/index.html``.
 If there is a _different_ host B that serves a resource (e.g. an image file) as ``https://B/assets/image.jpg``, the
 index file on host A could simply link to the image on B.
-However, to protect B and its property (the image), the browsers do not silently embed the image of B into the page of
-A.
+However, to protect B and its property (the image), the browsers do not silently embed the image of B into the page of A.
 Instead, B is kindly asked by the browser if embedding is allowed (the so-called `preflight <https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request>`_).
 
 To do so, there is a first request made to the resource on B with the ``OPTIONS`` HTTP command/verb.
@@ -296,8 +287,7 @@ Only if the destination server B confirms cross site resource sharing is allowed
 Basically, accessing foreign resources is not limited to embedding images.
 Using JavaScript, arbitrary XHR/Ajax requests can be directed at arbitrary other hosts, which might be used to call APIs
 that leak your data.
-There are some safety measurements in place (especially about cookie handling), but one has still to be careful not to
-leak information unwillingly.
+There are some safety measurements in place (especially about cookie handling), but one has still to be careful not to leak information unwillingly.
 Especially, if the destination server B allows to sent credentials using ``Access-Control-Allow-Credentials: true``,
 cross site scripting is very critical.
 You need :ref:`CSRF protection <csrf_introduction>` in place or your users are at relatively high risk.

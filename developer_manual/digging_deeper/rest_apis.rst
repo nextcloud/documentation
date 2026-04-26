@@ -32,8 +32,7 @@ It is recommended though to inherit from ApiController and add ``#[CORS]`` attri
 
     }
 
-CORS also needs a separate URL for the preflighted **OPTIONS** request that can easily be added by adding the following
-route:
+CORS also needs a separate URL for the preflighted **OPTIONS** request that can easily be added by adding the following route:
 
 .. code-block:: php
 
@@ -166,13 +165,11 @@ These ways depend on your API configuration (what you allow) and on which route 
 Methods from ``Controller`` classes can return ``DataResponse`` objects similar to ``OCSController`` class methods.
 For methods of a ``Controller`` class, the data of this response is sent e.g. as JSON as you provide it.
 Basically, the output is very similar to what ``json_encode`` would do.
-In contrast, the ``OCSController`` will encapsulate the data in an outer shell that provides some more (meta)
-information.
+In contrast, the ``OCSController`` will encapsulate the data in an outer shell that provides some more (meta) information.
 For example a status code (similar to the HTTP status code) is transmitted at top level.
 The actual data is transmitted in the ``data`` property.
 
-As a rule of thumb one can conclude that OCS provides a good way to handle most use cases including sufficient security
-checks.
+As a rule of thumb one can conclude that OCS provides a good way to handle most use cases including sufficient security checks.
 The only exception to this is if you want to provide an API for external usage where you have to comply with an
 externally defined API scheme.
 Here, the encapsulation introduced in OCS and CSRF checks might be in your way.

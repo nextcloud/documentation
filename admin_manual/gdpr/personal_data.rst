@@ -37,8 +37,7 @@ Each field has a configurable **scope** that controls who can see it:
 private, local (visible to other users on the same instance), federated
 (shared with trusted federation partners), or published (shared with the
 public lookup server). Administrators can restrict or enforce these scopes
-server-wide. See :doc:`../configuration_user/profile_configuration` for
-details.
+server-wide. See :doc:`../configuration_user/profile_configuration` for details.
 
 Files and metadata
 ------------------
@@ -89,8 +88,7 @@ When the Talk app is enabled:
 Server and web server logs
 --------------------------
 
-Personal data is also present in server logs, independent of what users
-intentionally store:
+Personal data is also present in server logs, independent of what users intentionally store:
 
 * **Web server access logs** — your web server (Apache, nginx) records the IP
   address, timestamp, and URL of every request. IP addresses are personal data

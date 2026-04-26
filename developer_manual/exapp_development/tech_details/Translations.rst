@@ -5,8 +5,7 @@ Translations
 
 ExApps translations work in the :ref:`same way as for PHP apps<Translations>` with a few adjustments and differences.
 
-In short, you just have to provide the ``l10n/<lang>.js`` (for front-end) and ``l10n/<lang>.json`` (for back-end) files
-for your app.
+In short, you just have to provide the ``l10n/<lang>.js`` (for front-end) and ``l10n/<lang>.json`` (for back-end) files for your app.
 
 
 Front-end
@@ -46,8 +45,7 @@ You can then compile them to ``.mo`` files using `ui_example's <https://github.c
 Manual install
 **************
 
-For the ``manual-install`` type, an administrator will have to manually extract to the server's `writable apps directory <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#apps-paths>`_ ``l10n`` folder of the ExApp
-(e.g. ``/path/to/apps-writable/<appid>/l10n/*.(js|json)``).
+For the ``manual-install`` type, an administrator will have to manually extract to the server's `writable apps directory <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#apps-paths>`_ ``l10n`` folder of the ExApp (e.g. ``/path/to/apps-writable/<appid>/l10n/*.(js|json)``).
 This will allow the server to access the ExApp's strings with translations.
 
 .. note::
@@ -68,5 +66,4 @@ Translation tool
 
 To add support for your language in Nextcloud `translationtool <https://github.com/nextcloud/docker-ci/tree/master/translations/translationtool>`_,
 feel free to create an issue in the `nextcloud/docker-ci <https://github.com/nextcloud/docker-ci>`_ repository
-or open a pull request with the changes made in the ``createPotFile`` function to extract and convert translation
-strings.
+or open a pull request with the changes made in the ``createPotFile`` function to extract and convert translation strings.

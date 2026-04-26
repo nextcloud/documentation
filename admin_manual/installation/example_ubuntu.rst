@@ -78,8 +78,7 @@ Now download the archive of the latest Nextcloud version:
 
     sudo chown -R www-data:www-data /var/www/nextcloud
 
-On other HTTP servers it is recommended to install Nextcloud outside of the
-document root.
+On other HTTP servers it is recommended to install Nextcloud outside of the document root.
 
 Next steps
 ----------

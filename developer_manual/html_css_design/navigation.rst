@@ -173,10 +173,8 @@ For the global rules and/or layout, you can check the dedicated :ref:`popover me
         </ul>
     </div>
 
-The menu is hidden by default and has to be triggered by adding the ``open`` class to the ``app-navigation-entry-menu``
-div.
-In case of AngularJS the following small directive can be added to handle all the display and click logic out of the
-box:
+The menu is hidden by default and has to be triggered by adding the ``open`` class to the ``app-navigation-entry-menu`` div.
+In case of AngularJS the following small directive can be added to handle all the display and click logic out of the box:
 
 .. code-block:: js
 
@@ -289,8 +287,7 @@ The same way we display the menu three-dot-icon button, you're allowed to use up
 Drag and drop
 -------------
 
-The class which should be applied to a first level element **li** that hosts or can host a second level is
-**drag-and-drop**.
+The class which should be applied to a first level element **li** that hosts or can host a second level is **drag-and-drop**.
 This will cause the hovered entry to slide down giving a visual hint that it can accept the dragged element.
 In case of jQuery UI's droppable feature, the **hoverClass** option should be set to the **drag-and-drop** class.
 

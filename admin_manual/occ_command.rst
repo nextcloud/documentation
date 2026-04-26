@@ -6,8 +6,7 @@ Using the occ command
 
 Nextcloud's ``occ`` command (origins from "ownCloud Console") is Nextcloud's command-line
 interface. You can perform many common server operations with ``occ``, such as
-installing and upgrading Nextcloud, manage users, encryption, passwords, LDAP
-setting, and more.
+installing and upgrading Nextcloud, manage users, encryption, passwords, LDAP setting, and more.
 
 ``occ`` is in the :file:`nextcloud/` directory; for example
 :file:`/var/www/nextcloud` on Ubuntu Linux. ``occ`` is a PHP script. **You must
@@ -142,8 +141,7 @@ or ``json_pretty``::
  }
 
 This output option is available on all list and list-like commands:
-``status``, ``check``, ``app:list``, ``config:list``, ``encryption:status``
-and ``encryption:list-modules``
+``status``, ``check``, ``app:list``, ``config:list``, ``encryption:status`` and ``encryption:list-modules``
 
 Environment variables
 ^^^^^^^^^^^^^^^^^^^^^

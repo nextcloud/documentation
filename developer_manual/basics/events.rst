@@ -28,8 +28,7 @@ unexpected changes in the API that are hard to find after the initial implementa
 Naming scheme
 `````````````
 
-The name should reflect the subject and the actions. Suffixing event classes with `Event` makes it easier to recognize
-their purpose.
+The name should reflect the subject and the actions. Suffixing event classes with `Event` makes it easier to recognize their purpose.
 
 For example, if a user is created, a `UserCreatedEvent` will be emitted.
 
@@ -319,8 +318,7 @@ This event is triggered during the setup of the SabreDAV server to allow the reg
 
 .. versionadded:: 20
 
-This event is triggered during the setup of the SabreDAV server to allow the registration of additional authentication
-backends.
+This event is triggered during the setup of the SabreDAV server to allow the registration of additional authentication backends.
 
 ``\OCA\DAV\Events\SubscriptionCreatedEvent``
 ********************************************
@@ -411,8 +409,7 @@ Hooks
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
 Hooks are used to execute code before or after an event has occurred. This is for instance useful to run cleanup code
-after users, groups or files have been deleted. Hooks should be registered in the :doc:`Bootstrapping process
-<../app_development/bootstrap>`.
+after users, groups or files have been deleted. Hooks should be registered in the :doc:`Bootstrapping process <../app_development/bootstrap>`.
 
 Available hooks
 ```````````````
@@ -492,8 +489,7 @@ Hooks available in scope **\\OC\\Group**:
 Filesystem root
 ```````````````
 
-Injectable from the ServerContainer by calling the method **getRootFolder()**, **getUserFolder()** or
-**getAppFolder()**.
+Injectable from the ServerContainer by calling the method **getRootFolder()**, **getUserFolder()** or **getAppFolder()**.
 
 To enable these events for your app you should add the following to your `info.xml` file:
 

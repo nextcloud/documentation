@@ -183,8 +183,7 @@ Download a file
 ---------------
 
 Download an existing file on the cloud server. The info needed is path of the
-file on the server and targetDirectory, path where the file will be stored on
-the device.
+file on the server and targetDirectory, path where the file will be stored on the device.
 
 Code example
 ^^^^^^^^^^^^
@@ -257,8 +256,7 @@ Move a file or folder
 ---------------------
 
 Move an existing file or folder to a different location in the Nextcloud server. Parameters needed are the path
-to the file or folder to move, and the new path desired for it. The parent folder of the new path must exist in
-the server.
+to the file or folder to move, and the new path desired for it. The parent folder of the new path must exist in the server.
 
 When the parameter 'overwrite' is set to 'true', the file or folder is moved even if the new path is already
 used by a different file or folder. This one will be replaced by the former.

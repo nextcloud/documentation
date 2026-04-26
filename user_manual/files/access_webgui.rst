@@ -15,8 +15,7 @@ Tagging files
 
 You can assign tags to files. To create tags, open a file to the Details view.
 Then type your tags. To enter more than one tag press the return key after
-creating each tag. All tags are system tags, and are shared by all users on your
-Nextcloud server.
+creating each tag. All tags are system tags, and are shared by all users on your Nextcloud server.
 
 .. figure:: ../images/files_page-7.png
    :alt: Creating file tags.
@@ -78,8 +77,7 @@ The **Settings** gear icon at the lower left allows you to show or hide hidden
 files in your Nextcloud Web interface. These are also called dotfiles, because
 they are prefixed with a dot, e.g. ``.mailfile``. The dot tells your operating
 system to hide these files in your file browsers, unless you choose to display
-them. Usually these are configuration files, so having the option to hide them
-reduces clutter.
+them. Usually these are configuration files, so having the option to hide them reduces clutter.
 
 .. figure:: ../images/hidden_files.png
    :alt: Hiding or displaying hidden files.
@@ -98,8 +96,7 @@ Navigating inside your Nextcloud
 
 Navigating through folders in Nextcloud is as simple as clicking on a folder to
 open it and using the back button on your browser to move to a previous level.
-Nextcloud also provides a navigation bar at the top of the Files field for quick
-navigation.
+Nextcloud also provides a navigation bar at the top of the Files field for quick navigation.
 
 Sharing status icons
 --------------------
@@ -139,8 +136,7 @@ select all files in the current directory, click on the checkbox located at the
 top of the files listing.
 
 When you select multiple files, you can delete all of them, or download them as
-a ZIP file by using the ``Delete`` or ``Download`` buttons that appear at the
-top.
+a ZIP file by using the ``Delete`` or ``Download`` buttons that appear at the top.
 
 .. note:: If the ``Download`` button is not visible, the administrator has
    disabled this feature.

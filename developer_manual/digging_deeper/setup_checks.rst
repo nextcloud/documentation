@@ -167,10 +167,8 @@ The ``run`` function of the JavaScript modules setup check could look like:
 
 The ``runRequest`` is provided by the ``CheckServerResponseTrait``, it accepts a HTTP request method
 as the first parameter (in this example ``HEAD``) and an URL with an absolute path, so meaning
-the full path but no host set, like provided when using the URL generator. One example string would be
-``nextcloud/apps/settings/js/esm-test.mjs``.
-Internally the function requests that URL on all possible URLs (using the current host, the trusted domains and the cli
-overwrite URL),
+the full path but no host set, like provided when using the URL generator. One example string would be ``nextcloud/apps/settings/js/esm-test.mjs``.
+Internally the function requests that URL on all possible URLs (using the current host, the trusted domains and the cli overwrite URL),
 and then yields a result for each request.
 
 ``CheckServerResponseTrait::serverConfigHelp`` provides information about

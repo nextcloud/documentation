@@ -39,8 +39,7 @@ IE11 removal
 ^^^^^^^^^^^^
 
 Internet Explorer 11 was phased out over the past few releases and starting with Nextcloud 22 the front-end code isn't
-transpiled for IE11 any longer. You may also drop IE11 from your app as core components will possibly fail with this
-browser anyway.
+transpiled for IE11 any longer. You may also drop IE11 from your app as core components will possibly fail with this browser anyway.
 
 Deprecated global variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -82,8 +81,7 @@ anymore. Apps have to migrate their schema to nullable boolean columns.
 HTTP 401 for invalid username/password
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When invalid username/password is sent to a Nextcloud API, Nextcloud will now respond with a HTTP 401 status instead of
-403.
+When invalid username/password is sent to a Nextcloud API, Nextcloud will now respond with a HTTP 401 status instead of 403.
 
 
 Removed APIs

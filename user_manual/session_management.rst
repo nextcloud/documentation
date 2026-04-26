@@ -2,14 +2,12 @@
 Manage connected browsers and devices
 =====================================
 
-The personal settings page allows you to have an overview on the connected
-browsers and devices.
+The personal settings page allows you to have an overview on the connected browsers and devices.
 
 Managing connected browsers
 ---------------------------
 
-In the list of connected browsers you see which browsers connected to your
-account recently:
+In the list of connected browsers you see which browsers connected to your account recently:
 
 .. figure:: images/settings_sessions.png
      :alt: List of browser sessions.

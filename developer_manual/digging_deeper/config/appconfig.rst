@@ -28,8 +28,7 @@ In addition to simple read/write operations, ``IAppConfig`` supports:
 AppFramework
 ------------
 
-The AppConfig API is also available in AppFramework through
-``OCP\AppFramework\Services\IAppConfig``.
+The AppConfig API is also available in AppFramework through ``OCP\AppFramework\Services\IAppConfig``.
 
 All methods from that interface are scoped to your app automatically, so you do not
 need to pass an app ID explicitly.

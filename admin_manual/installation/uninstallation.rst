@@ -2,8 +2,7 @@
 Uninstallation
 ==============
 
-The application is stored in a server directory and works with a database to store the metadata for files and their
-shares (EFSS functionality).
+The application is stored in a server directory and works with a database to store the metadata for files and their shares (EFSS functionality).
 
 There are no general uninstallation instructions, as Nextcloud offers a high degree of flexibility with regard to the
 operating model or operating platform; examples include abstract containers, virtual machines or “bare metal”, i.e.
@@ -21,8 +20,7 @@ the corresponding data is located.
 For uninstallation, a decision must be made as to whether the file storage should be backed up or whether the data
 should also be deleted. In addition, either the corresponding servers must be completely deprovisioned or the
 application directory deleted, as well as the database schemas and Redis entries, depending on the deployment scenario.
-If dedicated containers or virtual machines are used, these must be deprovisioned and the Nextcloud application must
-also be deprovisioned.
+If dedicated containers or virtual machines are used, these must be deprovisioned and the Nextcloud application must also be deprovisioned.
 
 To uninstall, you can read values from your configuration in ``config`` directory. Check:
 

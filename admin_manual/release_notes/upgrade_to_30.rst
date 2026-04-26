@@ -14,8 +14,7 @@ Web server configuration
 ------------------------
 
 Make sure that your web server is serving files with the ``webp`` extension (WebP images) correctly as static assets.
-This is included in the shipped ``.htaccess`` file but if you use another web server or custom configuration you need to
-check this manually.
+This is included in the shipped ``.htaccess`` file but if you use another web server or custom configuration you need to check this manually.
 
 Nextcloud configuration
 -----------------------
@@ -49,11 +48,9 @@ user:report and the support app.
 AppAPI (app_api) is now a default app
 -------------------------------------
 
-Starting with Nextcloud 30.0.1, the AppAPI app is included and enabled by default. See :doc:`../exapps_management/index`
-for details.
+Starting with Nextcloud 30.0.1, the AppAPI app is included and enabled by default. See :doc:`../exapps_management/index` for details.
 
-You can disable this app in the standard manner via the *Apps* menu if you do not expect to use AppAPI integrations in
-the near future.
+You can disable this app in the standard manner via the *Apps* menu if you do not expect to use AppAPI integrations in the near future.
 
 If AppAPI is disabled, other apps that depend on it will not be visible in the app store. AppAPI-related setup checks
 will also be deactivated.

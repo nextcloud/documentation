@@ -44,8 +44,7 @@ Your Linux distribution should have packages for all required modules.
 See :doc:`php_configuration` for a list of required and suggested modules.
 
 You don’t need the WebDAV module for your Web server (i.e. Apache’s
-``mod_webdav``), as Nextcloud has a built-in WebDAV server of its own,
-SabreDAV.
+``mod_webdav``), as Nextcloud has a built-in WebDAV server of its own, SabreDAV.
 If ``mod_webdav`` is enabled you must disable it for Nextcloud. (See
 :ref:`apache_configuration_label` for an example configuration.)
 
@@ -237,8 +236,7 @@ Setting up background jobs
 --------------------------
 
 Nextcloud requires that some tasks are run regularly. These may include
-maintenance tasks to ensure optimal performance or time sensitive tasks like
-sending notifications.
+maintenance tasks to ensure optimal performance or time sensitive tasks like sending notifications.
 
 See :doc:`../configuration_server/background_jobs_configuration` for a detailed
 description and the benefits.
@@ -263,8 +261,7 @@ Overview
 implementation of PHP containing features useful for busy web sites and large web 
 applications. Using it with Nextcloud is an advanced topic and requires getting
 familiar with how PHP-FPM functions. In most cases the defaults are not ideal for
-use with Nextcloud. Here we'll highlight a few of the most important areas that
-should be adjusted.
+use with Nextcloud. Here we'll highlight a few of the most important areas that should be adjusted.
 
 Process manager
 ^^^^^^^^^^^^^^^

@@ -16,8 +16,7 @@ functionality by registering a Speech-To-Text provider.
 Consuming the Speech-To-Text API
 --------------------------------
 
-To consume the Speech-To-Text API, you will need ``\OCP\SpeechToText\ISpeechToTextManager``. This manager offers the
-following methods:
+To consume the Speech-To-Text API, you will need ``\OCP\SpeechToText\ISpeechToTextManager``. This manager offers the following methods:
 
  * ``hasProviders()`` This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use Speech-To-Text.
  * ``transcribeFile(File $file)`` This method takes a ``OCP\Files\File`` Object which should point to a media file and will attempt to transcribe it **in the current process**. It will thus block until transcription has finished and will return the transcript as a string. Using this method is thus only recommend in CLI commands or Background Jobs when you are not limited by any HTTP request timeouts and execution time limits.
@@ -33,8 +32,7 @@ obtain the transcript or be notified of any failure.
  * ``OCP\SpeechToText\Events\TranscriptionFailedEvent`` This event class offers the ``getErrorMessage()`` method which returns the error message as a string (only in English and for debugging purposes, so don't show this to the user)
 
 Both classes provide the ``$appId`` and ``$userId`` params that you initially passed to ``scheduleFileTranscription``
-via ``getAppId()`` and ``getUserId()`` as well as ``getFileId()`` and ``getFile()`` to access the media file that was
-transcribed.
+via ``getAppId()`` and ``getUserId()`` as well as ``getFileId()`` and ``getFile()`` to access the media file that was transcribed.
 
 
 For example, in your ``lib/AppInfo/Application.php`` file:
@@ -126,8 +124,7 @@ Provider with user context
 .. versionadded:: 29.0.0
 
 Sometimes the processing of a the task may depend upon which user requested the task.
-You can now obtain this information in your provider by additionally implementing the
-``OCP\SpeechToText\ISpeechToTextProviderWithUserId`` interface:
+You can now obtain this information in your provider by additionally implementing the ``OCP\SpeechToText\ISpeechToTextProviderWithUserId`` interface:
 
 .. code-block:: php
     :emphasize-lines: 9,12,14,25,26,27

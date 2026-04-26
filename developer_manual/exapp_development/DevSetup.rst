@@ -5,8 +5,7 @@ Setting up dev environment
 
 AppAPI development requires a Nextcloud development environment setup.
 We highly recommend using `Julius Knorr's Docker setup <https://github.com/juliusknorr/nextcloud-docker-dev>`_ for this.
-For an alternate environment without using Docker, please refer to the setup instructions in :doc:`Getting started
-<../getting_started/devenv>`.
+For an alternate environment without using Docker, please refer to the setup instructions in :doc:`Getting started <../getting_started/devenv>`.
 
 Suggested IDE: **PhpStorm**, though you can certainly use any IDE of your preference such as **VS Code** or **Vim**.
 
@@ -14,8 +13,7 @@ Install AppAPI
 """"""""""""""
 
 All ExApps require the `AppAPI <https://apps.nextcloud.com/apps/app_api>`_ Nextcloud app as a dependency.
-As of Nextcloud version 30.0.1, AppAPI is automatically installed by default.
-If you prefer,
+As of Nextcloud version 30.0.1, AppAPI is automatically installed by default. If you prefer,
 you can also build the latest development version of AppAPI from the source code,
 in which case uninstall the release version of AppAPI and perform the following steps.
 
@@ -55,8 +53,7 @@ There are two types of Deploy daemons that can be used for development and testi
 2. ``docker_install``: This type of Deploy daemon is running in a Docker container.
 
 You can register (create) these daemons in the AppAPI admin settings.
-For the equivalent ``occ`` command or an explanation of the Deploy daemon parameters,
-see :ref:`occ_daemon_config_registration`.
+For the equivalent ``occ`` command or an explanation of the Deploy daemon parameters, see :ref:`occ_daemon_config_registration`.
 
 Docker Socket Proxy
 *******************

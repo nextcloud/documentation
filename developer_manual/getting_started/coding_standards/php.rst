@@ -133,8 +133,7 @@ Unit tests must always extend the ``\Test\TestCase`` class, which takes care
 of cleaning up the installation after the test.
 
 If a test is run with multiple different values, a data provider must be used.
-The name of the data provider method must not start with ``test`` and must end
-with ``Data``.
+The name of the data provider method must not start with ``test`` and must end with ``Data``.
 
 .. code-block:: php
 

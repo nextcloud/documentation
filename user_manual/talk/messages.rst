@@ -69,8 +69,7 @@ Then, you can add a title and description for the thread and start the discussio
 .. image:: images/thread-example.png
    :width: 600px
 
-You can view all replies in a thread either from the replies button on the message or from ``Shared items`` tab in the
-content sidebar.
+You can view all replies in a thread either from the replies button on the message or from ``Shared items`` tab in the content sidebar.
 
 .. image:: images/threads-list-shared-items.png
    :width: 500px

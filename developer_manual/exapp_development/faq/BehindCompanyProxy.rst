@@ -30,8 +30,7 @@ environment which may already be using proxy settings specified in your web serv
 Permanent Solution
 ------------------
 
-To permanently configure proxy settings for PHP CLI, you can either modify the PHP CLI ``php.ini`` file or set
-environment variables system-wide.
+To permanently configure proxy settings for PHP CLI, you can either modify the PHP CLI ``php.ini`` file or set environment variables system-wide.
 
 Method 1: Edit PHP CLI php.ini File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

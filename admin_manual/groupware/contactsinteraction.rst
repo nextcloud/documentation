@@ -5,8 +5,7 @@ Contacts Interaction
 The Contacts Interaction app automatically tracks which people a user has recently interacted with
 and provides this data as a read-only CardDAV address book called **Recently contacted**. This
 enables autocomplete suggestions in sharing dialogs, email composition, calendar invitations and
-other places that query the user's address books — even for people who are not saved as explicit
-contacts.
+other places that query the user's address books — even for people who are not saved as explicit contacts.
 
 The app is shipped with Nextcloud and enabled by default. It can be disabled.
 
@@ -38,8 +37,7 @@ For new contacts, a minimal vCard is generated containing:
 * ``CATEGORIES``: Set to ``Recently contacted``, which allows the Contacts app to identify entries
   from this address book and offer users the option to copy them to a regular address book.
 
-If the same person is contacted again, the existing entry's timestamp is updated rather than
-creating a duplicate.
+If the same person is contacted again, the existing entry's timestamp is updated rather than creating a duplicate.
 
 The recently contacted address book
 ------------------------------------

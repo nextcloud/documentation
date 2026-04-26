@@ -7,21 +7,18 @@ latest features and bug fixes for your Nextcloud synchronization client.
 
 The Automatic Updater updates only on macOS and Windows computers; Linux
 users only need to use their normal package managers. However, on Linux systems
-the Updater will check for updates and notify you when a new version is
-available.
+the Updater will check for updates and notify you when a new version is available.
 
 Basic Workflow
 --------------
 
-The following sections describe how to use the Automatic Updater on different
-operating systems.
+The following sections describe how to use the Automatic Updater on different operating systems.
 
 Windows
 ^^^^^^^
 
 The Nextcloud client checks for updates and downloads them when available. You
-can view the update status under ``Settings -> General -> Updates`` in the
-Nextcloud client.
+can view the update status under ``Settings -> General -> Updates`` in the Nextcloud client.
 
 If an update is available, and has been successfully downloaded, the Nextcloud
 client starts a silent update prior to its next launch and then restarts
@@ -35,8 +32,7 @@ macOS
 The macOS client has an autoupdater which uses the Sparkle framework.
 This autoupdater is bundled into the client App Bundle and checks for updates
 on launch, notifying you if an update is available. This will present a pop-up
-that can let you automatically download and install the latest client update
-with one click.
+that can let you automatically download and install the latest client update with one click.
 
 In versions of the client where the Sparkle-based autoupdater is not bundled,
 a clickable notification will appear informing of an update being available.
@@ -51,8 +47,7 @@ Linux
 
 Linux distributions provide their own update tools, so Nextcloud clients that use
 the Linux operating system do not perform any updates on their own. The client
-will inform you (``Settings -> General -> Updates``) when an update is
-available.
+will inform you (``Settings -> General -> Updates``) when an update is available.
 
 Preventing Automatic Updates
 ----------------------------

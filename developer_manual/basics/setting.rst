@@ -46,8 +46,7 @@ In our case we will create an admin section class in **<myapp>/lib/Sections/Note
     }
 
 
-The next step is to fill the new admin section with am admin setting. For that, we create a new class
-in *<myapp>/lib/Settings/NotesAdmin.php**.
+The next step is to fill the new admin section with am admin setting. For that, we create a new class in *<myapp>/lib/Settings/NotesAdmin.php**.
 
 .. code-block:: php
 
@@ -144,8 +143,7 @@ and implement two additional methods.
     }
 
 Additionally, if your setting class needs to fetch data or send data to some admin-only
-controllers, you will need to mark the methods in the controller as accessible by the
-setting with attribute.
+controllers, you will need to mark the methods in the controller as accessible by the setting with attribute.
 
 .. note::
 
@@ -169,8 +167,7 @@ setting with attribute.
     }
 
 
-If you have several ``IDelegatedSettings`` classes that are needed for a function, simply add the annotation multiple
-times.
+If you have several ``IDelegatedSettings`` classes that are needed for a function, simply add the annotation multiple times.
 them in the key "settings" and they must separate with semi-colons.
 
 .. note::

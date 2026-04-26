@@ -14,12 +14,10 @@ for when files and folders in the trash bin will be permanently deleted.
 The app allows for two settings, a minimum time for trash bin retention,
 and a maximum time for trash bin retention.
 Minimum time is the number of days a file will be kept, after which it
-may be deleted. Maximum time is the number of days at which it is guaranteed
-to be deleted.
+may be deleted. Maximum time is the number of days at which it is guaranteed to be deleted.
 Both minimum and maximum times can be set together to explicitly define
 file and folder deletion. For migration purposes, this setting is installed
-initially set to "auto", which is equivalent to the default setting in
-Nextcloud.
+initially set to "auto", which is equivalent to the default setting in Nextcloud.
 
 You may alter the default pattern in ``config.php``. The default setting is
 ``auto``, which sets the default pattern::

@@ -39,8 +39,7 @@ The left sidebar provides filters to narrow down the activity stream:
   delete, rename, move).
 
 Additional filters may appear depending on which apps are installed
-on your Nextcloud instance (e.g. **Favorites**, **Calendar**,
-**Contacts**).
+on your Nextcloud instance (e.g. **Favorites**, **Calendar**, **Contacts**).
 
 .. figure:: images/activity-stream-self.png
 
@@ -57,8 +56,7 @@ Activity in the Files sidebar
 You can also view activities for a specific file or folder directly
 from the Files app. Select a file, open the sidebar and click on the
 **Activity** tab. This shows only the events related to that
-particular file, such as when it was created, modified, shared, or
-tagged.
+particular file, such as when it was created, modified, shared, or tagged.
 
 .. figure:: images/activity-sidebar.png
 
@@ -87,16 +85,14 @@ Notification settings
 ---------------------
 
 You can choose how you want to be notified about different types of
-activities. Go to **Settings** > **Personal** > **Notifications** to
-configure your preferences.
+activities. Go to **Settings** > **Personal** > **Notifications** to configure your preferences.
 
 .. figure:: images/activity-settings-personal.png
 
    *Personal notification settings for the Activity app.*
 
 The settings are organized by category (e.g. **Files**, **Sharing**,
-**Calendar, contacts and tasks**). For each activity type you can
-choose to receive:
+**Calendar, contacts and tasks**). For each activity type you can choose to receive:
 
 * **Mail** notifications (email)
 * **Push** notifications (mobile and desktop)
@@ -108,8 +104,7 @@ notifications for each activity type.
 Email notification frequency
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Below the notification matrix you can choose how often email
-notifications are sent:
+Below the notification matrix you can choose how often email notifications are sent:
 
 * **As soon as possible** sends an email shortly after each event.
 * **Hourly** batches notifications and sends them once per hour.

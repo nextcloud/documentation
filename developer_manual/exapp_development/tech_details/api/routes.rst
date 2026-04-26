@@ -4,8 +4,7 @@
 Routes
 ======
 
-All ExApps must declare the routes that are allowed to be accessed via the AppAPI ExApp proxy
-(``/apps/app_api/proxy/*``).
+All ExApps must declare the routes that are allowed to be accessed via the AppAPI ExApp proxy (``/apps/app_api/proxy/*``).
 
 
 Register

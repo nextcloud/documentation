@@ -70,8 +70,7 @@ Generally search storage wrapper has an equivalent cache wrapper encapsulating t
 to provide the same behavior modifications when reading metadata from the cache.
 
 Wrappers can be layered to stack the behavior of the wrappers, for example the ``groupfolders`` app works by
-stacking a wrapper to provide access to a single folder on the root storage with a wrapper to limit the permissions
-of the storage.
+stacking a wrapper to provide access to a single folder on the root storage with a wrapper to limit the permissions of the storage.
 
 .. code-block:: text
 

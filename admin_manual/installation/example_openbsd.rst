@@ -99,8 +99,7 @@ PHP
 Assuming that you are on OpenBSD -current (or >= 6.8-stable) you could use PHP 8.2 so I will keep this version, but the
 concept is the same for other version.
 
-The PHP packages will be available since you installed Nextcloud with pkg_add, so you just need to adjust a bit your
-php.ini.
+The PHP packages will be available since you installed Nextcloud with pkg_add, so you just need to adjust a bit your php.ini.
 
 It is recommended to add opcache to it::
 

@@ -28,8 +28,7 @@ Navigation → Content → Sidebar
 This layout is used in Files, Calendar, Deck, and Tasks.
 
 This layout has the :ref:`Navigation` on the left, the :ref:`Content` in the middle, and a :ref:`Sidebar` on the right.
-The main content depends on the navigation, and the sidebar which is closed by default contains details of an item in
-the main content.
+The main content depends on the navigation, and the sidebar which is closed by default contains details of an item in the main content.
 
 For example, in the Files app, the files in the main content varies based on what is selected in the navigation. The
 sidebar would open when the user wants to see the details of a file.

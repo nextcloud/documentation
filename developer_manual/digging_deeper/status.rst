@@ -3,8 +3,7 @@ User Status
 ===========
 
 Nextcloud allows user to publish their current status. The status is then
-available in various part of the user interface (e.g. participants list in
-a Talk room).
+available in various part of the user interface (e.g. participants list in a Talk room).
 
 Query Status
 ------------
@@ -48,8 +47,7 @@ user execute an action in the UI.
 If the status is supposed to be reverted with an upcoming action from the
 user, `setUserStatus` will require to be called with `$createBackup = true`.
 
-This then can be reverted with a call to `revertUserStatus` with the same
-`$messageId` and `$status`.
+This then can be reverted with a call to `revertUserStatus` with the same `$messageId` and `$status`.
 
 .. code-block:: php
 

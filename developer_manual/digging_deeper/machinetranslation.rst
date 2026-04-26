@@ -80,8 +80,7 @@ Provider with user context
 .. versionadded:: 29.0.0
 
 Sometimes the processing of a the task may depend upon which user requested the task.
-You can now obtain this information in your provider by additionally implementing the
-``OCP\Translation\ITranslationProviderWithUserId`` interface:
+You can now obtain this information in your provider by additionally implementing the ``OCP\Translation\ITranslationProviderWithUserId`` interface:
 
 .. code-block:: php
     :emphasize-lines: 9,12,14,29,30,31
@@ -170,8 +169,7 @@ languages from text input. You can use this as follows:
     }
 
 The method ``detectLanguage`` takes a text in some language and outputs the code of that language, or ``null`` in case
-detection wasn't successful. The language code that this method returns should be one of the languages returned in
-``getAvailableLanguages``.
+detection wasn't successful. The language code that this method returns should be one of the languages returned in ``getAvailableLanguages``.
 
 Provider registration
 ---------------------

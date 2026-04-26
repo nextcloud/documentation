@@ -20,8 +20,7 @@ Storage configuration
 ---------------------
 
 To access the settings for configuring external storage mounts, click on your Profile icon
-in the top right and select settings from the dropdown.  On the left side under Administration
-select External Storage.
+in the top right and select settings from the dropdown.  On the left side under Administration select External Storage.
 
 To create a new external storage mount, select an available backend from the
 dropdown **Add storage**. Each backend has different required options, which 
@@ -32,13 +31,11 @@ are configured in the configuration fields.
 Each backend may also accept multiple authentication methods. These are selected 
 with the dropdown under **Authentication**. Different backends support different 
 authentication mechanisms; some specific to the backend, others are more 
-generic. See :doc:`external_storage/auth_mechanisms` for more detailed 
-information.
+generic. See :doc:`external_storage/auth_mechanisms` for more detailed information.
 
 When you select an authentication mechanism, the configuration fields change as 
 appropriate for the mechanism. The SFTP backend, for one example, supports 
-**username and password**, **Log-in credentials, save in session**, and **RSA 
-public key**.
+**username and password**, **Log-in credentials, save in session**, and **RSA public key**.
 
 .. figure:: external_storage/images/auth_mechanism.png
    :alt: An SFTP configuration example.
@@ -62,8 +59,7 @@ Use ``$user`` for automatic substitution with the logged in user's username.
 Use ``$home`` for automatic substitution with a configurable home directory variable
 (requires LDAP, see :ref:`LDAP_Special_Attributes` in the LDAP configuration documentation for details)
 
-In the following example, the mount point for a logged in user "alice" would substitute 
-to ``/opt/userDirectories/alice/myPictures``.
+In the following example, the mount point for a logged in user "alice" would substitute to ``/opt/userDirectories/alice/myPictures``.
 
 .. figure:: external_storage/images/externalStorages_variables.png
    :alt: External storage user variable substitution
@@ -112,8 +108,7 @@ Using self-signed certificates
 When using self-signed certificates for external storage mounts the certificate
 must be imported into the personal settings of the user. Please refer to 
 `Nextcloud HTTPS External Mount 
-<https://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_
-for more information.
+<https://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_ for more information.
 
 Available storage backends
 --------------------------
@@ -140,8 +135,7 @@ Allow users to mount external Storage
 
 Check **Enable User External Storage** to allow your users to mount their own 
 external storage services, and check the backends you want to allow. Beware, as 
-this allows a user to make potentially arbitrary connections to other services 
-on your network!
+this allows a user to make potentially arbitrary connections to other services on your network!
 
 .. figure:: external_storage/images/user_mounts.png
    :alt: Checkboxes to allow users to mount external storage services.
@@ -149,10 +143,8 @@ on your network!
 Adding files to external storages
 ---------------------------------
 
-We recommend configuring the background job **Webcron** or
-**Cron** (see :doc:`../configuration_server/background_jobs_configuration`)
-to enable Nextcloud to automatically detect files added to your external
-storages.
+We recommend configuring the background job **Webcron** or **Cron** (see :doc:`../configuration_server/background_jobs_configuration`)
+to enable Nextcloud to automatically detect files added to your external storages.
 
 Nextcloud may not always be able to find out what has been
 changed remotely (files changed without going through Nextcloud), especially

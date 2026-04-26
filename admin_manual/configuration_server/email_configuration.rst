@@ -14,8 +14,7 @@ able to send emails. You may have a mail server on the same machine as Nextcloud
 or it may be a remote server.
 
 To access the setup page below log in with an admin account. Click on your avatar
-in the top right, and then click Settings. On the left side under Administration and
-click Basic settings.
+in the top right, and then click Settings. On the left side under Administration and click Basic settings.
 
 .. figure:: ../images/smtp-config-wizard.png
 
@@ -41,10 +40,8 @@ Mail Providers
 A mail provider is an app that provides outbound mail service to Nextcloud and allows the sending of system emails
 directly through a user's configured personal email account instead of the system email account.
 At present, this functionality is limited to calendar invitations.
-This feature automatically matches a users email address to a configured mail provider account, when a system message is
-sent.
-The only app that supports this functionality at present is Nextcloud Mail 4.1 or higher, a configured email account is
-required.
+This feature automatically matches a users email address to a configured mail provider account, when a system message is sent.
+The only app that supports this functionality at present is Nextcloud Mail 4.1 or higher, a configured email account is required.
 
 Configuring an SMTP server
 --------------------------
@@ -164,8 +161,7 @@ SMTP
 If you want to send email using a local or remote SMTP server it is necessary
 to enter the name or IP address of the server, optionally followed by a colon
 separated port number, e.g. **:425**. If this value is not given the default
-port 25/tcp will be used unless you change that by modifying the
-**mail_smtpport** parameter.
+port 25/tcp will be used unless you change that by modifying the **mail_smtpport** parameter.
 
 ::
 
@@ -187,15 +183,13 @@ necessary that you increase the SMTP timeout to e.g. 30s:
 
     "mail_smtptimeout"  => 30,
 
-If the SMTP server accepts insecure connections, the default setting can be
-used:
+If the SMTP server accepts insecure connections, the default setting can be used:
 
 ::
 
     "mail_smtpsecure"   => '',
 
-The connection will be upgraded automatically via STARTTLS if the SMTP server
-supports it.
+The connection will be upgraded automatically via STARTTLS if the SMTP server supports it.
 
 If required by the SMTP server, a secure SSL/TLS connection can be enforced
 via the SMTPS protocol which uses the port 465/tcp:
@@ -214,8 +208,7 @@ authentication, if not, the default values can be taken as is.
     "mail_smtpname"     => "",
     "mail_smtppassword" => "",
 
-If SMTP authentication is required you have to set the required username
-and password.
+If SMTP authentication is required you have to set the required username and password.
 
 ::
 
@@ -285,8 +278,7 @@ messages by enabling the ``mail_smtpdebug`` parameter and temporarily setting yo
     "mail_smtpdebug" => true,
     "loglevel" => 0,
 
-Be cautious setting your ``loglevel`` to DEBUG (``0``) since it'll apply to everything occurring on your NC instance,
-not just email.
+Be cautious setting your ``loglevel`` to DEBUG (``0``) since it'll apply to everything occurring on your NC instance, not just email.
 And don't forget to set it back to a more reasonable level when you're done troubleshooting:
 
 ::
@@ -303,8 +295,7 @@ Why is my web domain different from my mail domain?
 
 The default domain name used for the sender address is the hostname
 where your Nextcloud installation is served. If you have a different mail domain
-name you can override this behavior by setting the following configuration
-parameter:
+name you can override this behavior by setting the following configuration parameter:
 
 ::
 

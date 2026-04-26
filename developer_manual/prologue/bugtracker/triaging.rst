@@ -18,14 +18,12 @@ Helping to bring the number of issues down makes it easier for developers to spe
 triagers thus **contribute greatly to Nextcloud development**! Triaging a bug doesn’t take long so the work comes in
 small chunks and you don’t need many skills, just some patience and sometimes perseverance.
 
-Bug triagers who contribute significantly should ask to be listed as an active contributor on the `nextcloud.com
-<https://nextcloud.com>`_ page!
+Bug triagers who contribute significantly should ask to be listed as an active contributor on the `nextcloud.com <https://nextcloud.com>`_ page!
 
 How do you triage bugs
 ----------------------
 
-The process of checking, reproducing and closing invalid issues is called ‘bug triaging‘. Issues can be divided in one
-of three kinds:
+The process of checking, reproducing and closing invalid issues is called ‘bug triaging‘. Issues can be divided in one of three kinds:
 
 1. Bugs or feature requests which come with all needed information to allow a developer to fix or work on them
 2. Incomplete or duplicate bug reports or feature requests
@@ -133,8 +131,7 @@ about what went wrong.
 Determining if the report is complete
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Now that you know that the bug report is unique, and that is not an external issue, you need to check all the needed
-information is there.
+Now that you know that the bug report is unique, and that is not an external issue, you need to check all the needed information is there.
 
 Check `our bug reporting guidelines <https://github.com/nextcloud/server/blob/master/CONTRIBUTING.md#submitting-issues>`_ and make sure bug reports comply with it! The information asked in the `issue template <https://raw.github.com/nextcloud/server/master/issue_template.md>`_ is needed for developers to solve issues.
 

@@ -5,8 +5,7 @@ Memory caching
 You can significantly improve your Nextcloud server performance with memory 
 caching, where frequently-requested objects are stored in memory for faster 
 retrieval. There are two types of caches to use: a PHP opcode cache, which is 
-commonly called *opcache*, and data cache for your web server, commonly called
-"memcache".
+commonly called *opcache*, and data cache for your web server, commonly called "memcache".
 
 .. note:: If you do not install and enable a local memcache you will see a
    warning on your Nextcloud admin page. **A memcache is not required. You
@@ -153,8 +152,7 @@ that cached objects are available for as long as they are needed.
 
 Nextcloud uses the PhpRedis PHP extension. This extension provides an API for
 communicating with Redis-compatible key-value stores. Redis Open Source is the
-formally tested backend; Valkey and KeyDB are expected to work as compatible
-backends as well.
+formally tested backend; Valkey and KeyDB are expected to work as compatible backends as well.
 
 The Redis PHP module must be version 2.2.6+. If you are running a Linux 
 distribution that does not package the supported versions of this module,
@@ -363,8 +361,7 @@ configure it to launch at startup.
 
 On Red Hat/CentOS/Fedora install ``memcached`` and
 ``php-pecl-memcached``. It will not start automatically, so you must use
-your service manager to start ``memcached``, and to launch it at boot as a
-daemon.
+your service manager to start ``memcached``, and to launch it at boot as a daemon.
 
 You can verify that the Memcached daemon is running with ``ps ax``::
 

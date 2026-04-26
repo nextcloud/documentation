@@ -12,8 +12,7 @@ Nextcloud emits a preload event so DAV plugins can fetch data for the
 collection's children in one go. The goal is to avoid N+1 database queries by
 preloading what your property handlers need before per-node property handling
 starts. In practice, this means your plugin can fill a cache up front, then
-read from it in the usual ``propFind`` handlers for a faster and more
-efficient response.
+read from it in the usual ``propFind`` handlers for a faster and more efficient response.
 
 When the event is emitted
 -------------------------

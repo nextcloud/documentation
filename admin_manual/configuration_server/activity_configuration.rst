@@ -128,8 +128,7 @@ data, for example administrators. Set the config value
     'second_admin'
   ]
 
-For these users, their activity records will never be deleted from the
-database.
+For these users, their activity records will never be deleted from the database.
 
 
 Better scheduling of activity emails

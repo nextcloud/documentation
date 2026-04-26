@@ -115,5 +115,4 @@ help of the ``IActionFactory``.
 User status
 ^^^^^^^^^^^
 
-Providers can set a user status via ``IEntry::setStatus``. This mechanism is reserved for Nextcloud's user status. Don't
-use it.
+Providers can set a user status via ``IEntry::setStatus``. This mechanism is reserved for Nextcloud's user status. Don't use it.

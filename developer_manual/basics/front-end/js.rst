@@ -161,8 +161,7 @@ Loading initial state
 
 Often apps have some kind of initial state. Often the first thing a script does
 is querying an endpoint to obtain this initial state. This makes the user
-experience sub optimal as they have to wait for yet another request to finish
-loading.
+experience sub optimal as they have to wait for yet another request to finish loading.
 
 To provide the initial state in a standardized way quickly to the javascript
 Nextcloud provides an API. The API consists of a PHP part (that supplies the state)
@@ -180,17 +179,14 @@ to your app, so you don't have to provide your app id anymore.
   If you want to inject your state on a general page. For example the initial state of the notifications app. The callback will be invoked if and only if a template is rendered.
 
 You call both methods with the name of your app and a key. This is to scope
-the states properly. You will need both when retrieving the initial state in
-javascript.
+the states properly. You will need both when retrieving the initial state in javascript.
 
 The data for the initial state is converted to JSON. So be sure that the
-data you provide (either in $data or as a return from the $closure) can be converted
-to JSON.
+data you provide (either in $data or as a return from the $closure) can be converted to JSON.
 
 Obtaining the initial state in JavaScript
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-To obtain the initial state in your JavaScript you have to only call one
-function
+To obtain the initial state in your JavaScript you have to only call one function
 
 - Vue way with `@nextcloud/initial-state <https://github.com/nextcloud/nextcloud-initial-state>`_:
 

@@ -27,8 +27,7 @@ Parameters
 ----------
 
 Please notice that the Nextcloud preview system comes already with sensible 
-defaults, and therefore it is usually unnecessary to adjust those configuration 
-values. 
+defaults, and therefore it is usually unnecessary to adjust those configuration values.
 
 But deemed necessary, following changes have to be made in ``config/config.php`` file. As a best practice, take a backup
 of this config file before making a lot of changes.
@@ -43,8 +42,7 @@ Disabling previews:
 Under certain circumstances, for example if the server has limited 
 resources, you might want to consider disabling the generation of previews. 
 Note that if you do this all previews in all apps are disabled, including 
-the Gallery app, and will display generic icons instead of 
-thumbnails.
+the Gallery app, and will display generic icons instead of thumbnails.
 
 Set the configuration option ``enable_previews`` to ``false``:
 
@@ -95,8 +93,7 @@ If you want to disable scaling at all, you can set the config value to '1':
   <?php
     'preview_max_scale_factor' => 1,
 
-If you want to disable the maximum scaling factor, you can set the config value 
-to 'null':
+If you want to disable the maximum scaling factor, you can set the config value to 'null':
 
 ::
 

@@ -34,8 +34,7 @@ when compared to the standard :file:`config.php` file.
 Automatic configurations examples
 ---------------------------------
 
-The following sections provide sample automatic configuration examples and what information is requested at the end of
-the configuration.
+The following sections provide sample automatic configuration examples and what information is requested at the end of the configuration.
 
 Data Directory
 ^^^^^^^^^^^^^^
@@ -53,8 +52,7 @@ Using the following parameter settings, the "Finish setup" screen requests datab
 SQLite database
 ^^^^^^^^^^^^^^^
 
-Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials
-settings.
+Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
 
 ::
 
@@ -68,8 +66,7 @@ settings.
 MySQL database
 ^^^^^^^^^^^^^^
 
-Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials
-settings.
+Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
 
 ::
 
@@ -86,8 +83,7 @@ settings.
 PostgreSQL database
 ^^^^^^^^^^^^^^^^^^^
 
-Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials
-settings.
+Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
 
 ::
 

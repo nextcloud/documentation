@@ -67,8 +67,7 @@ The details of this change can also be seen in the `pull request on GitHub <http
 *********************
 
 The HTTP client library behind the Nextcloud HTTP client was updated for PHP 8 compatibility. The Nextcloud abstraction
-remained untouched and will work like before. If you used Guzzle directly, make sure you don't use the fluent API on
-requests or responses.
+remained untouched and will work like before. If you used Guzzle directly, make sure you don't use the fluent API on requests or responses.
 
 ``psr/log``
 ***********
@@ -104,8 +103,7 @@ Last version with database.xml support and migration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Nextcloud 21 is the last major release that supports an app's ``appinfo/database.xml`` to define the database schema.
-This is your last chance to automatically convert this deprecated file into the new migration classes using ``occ
-migrations:generate-from-schema``.
+This is your last chance to automatically convert this deprecated file into the new migration classes using ``occ migrations:generate-from-schema``.
 
 Replaced well-known handler API
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

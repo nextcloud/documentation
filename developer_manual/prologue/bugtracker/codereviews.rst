@@ -19,8 +19,7 @@ Precondition
 ------------
 
 From now on no direct commits/pushes to the main or any of the stable branches are
-allowed in general.  **Every code** change - **even one liners** - have to be
-reviewed!
+allowed in general.  **Every code** change - **even one liners** - have to be reviewed!
 
 How will it work?
 -----------------

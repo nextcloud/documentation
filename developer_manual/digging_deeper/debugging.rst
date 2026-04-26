@@ -53,8 +53,7 @@ Using a PHP debugger (XDebug)
 Using a debugger connected to PHP allows you to step through code line by line, view variables at each line and even
 change values while the code is running. The de-facto standard debugger for PHP is XDebug, available as an installable
 package in many distributions. It just provides the PHP side however, so you will need a frontend to actually control
-XDebug. When installed, it needs to be enabled in :file:`php.ini`, along with some parameters to enable connections to
-the debugging interface:
+XDebug. When installed, it needs to be enabled in :file:`php.ini`, along with some parameters to enable connections to the debugging interface:
 
 .. code-block:: ini
 

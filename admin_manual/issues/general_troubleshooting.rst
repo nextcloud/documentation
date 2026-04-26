@@ -36,8 +36,7 @@ configuration report with the :ref:`occ config command
 General troubleshooting
 -----------------------
 
-Check the Nextcloud :doc:`../installation/system_requirements`, especially
-supported browser versions.
+Check the Nextcloud :doc:`../installation/system_requirements`, especially supported browser versions.
 
 When you see warnings about ``code integrity``, refer to :doc:`code_signing`.
 
@@ -57,8 +56,7 @@ encountered an unexpected condition that prevented it from fulfilling the reques
 
 This error response is a generic "catch-all" response. To find out the source of the
 error you will need to check your Nextcloud log (located in `data/nextcloud.log` by 
-default) and possibly your web server's error log (depending on where the failure is
-occurring). 
+default) and possibly your web server's error log (depending on where the failure is occurring).
 
 .. tip:: Whenever possible, Nextcloud will include the "Request id" in the error. This
     request ID can be searched for in your Nextcloud log file to find entries associated
@@ -68,8 +66,7 @@ Nextcloud log files
 ^^^^^^^^^^^^^^^^^^^
 
 The Nextcloud log file is located in the data directory by default - e.g.
-``data/nextcloud.log``. If the Web UI is still reachable, it is also available
-via *Administration settings->Logging*.
+``data/nextcloud.log``. If the Web UI is still reachable, it is also available via *Administration settings->Logging*.
 
 .. tip:: When asking for help, the entire raw log entry is generally required.
 
@@ -119,8 +116,7 @@ contains just this line::
 
  <?php phpinfo(); ?>
 
-Open this file in a Web browser by pointing your browser to
-``localhost/phpinfo.php``:
+Open this file in a Web browser by pointing your browser to ``localhost/phpinfo.php``:
 
 .. figure:: ../images/phpinfo.png
 
@@ -203,8 +199,7 @@ Web server and PHP modules
    may not work at all on Lighttpd.
 
 There are some Web server or PHP modules which are known to cause various
-problems like broken uploads/downloads. The following shows a draft overview of
-these modules:
+problems like broken uploads/downloads. The following shows a draft overview of these modules:
 
 1. Apache
 
@@ -234,8 +229,7 @@ these modules:
 Troubleshooting WebDAV
 ----------------------
 
-Nextcloud uses SabreDAV, and the SabreDAV documentation is comprehensive and
-helpful.
+Nextcloud uses SabreDAV, and the SabreDAV documentation is comprehensive and helpful.
 
 .. note: Lighttpd is not supported on Nextcloud, and Lighttpd WebDAV does not
    work with Nextcloud.
@@ -268,8 +262,7 @@ Some clients - especially on iOS/macOS - have problems finding the proper
 sync URL, even when explicitly configured to use it.
 
 If you want to use CalDAV or CardDAV clients or other clients that require service discovery
-together with Nextcloud it is important to have a correct working setup of the following
-URLs:
+together with Nextcloud it is important to have a correct working setup of the following URLs:
 
 | ``https://example.com/.well-known/carddav``
 | ``https://example.com/.well-known/caldav``
@@ -473,8 +466,7 @@ Nextcloud recommends Using Nextcloud Enterprise for deploying instances with mor
 like a broken server or a data leak become very serious.
 
 If there is an issue with the server, 500 people can't work. A data leak would risk the data of many users. In short,
-the server should be considered mission-critical. We believe you and your users would have a better experience with
-Nextcloud Enterprise.
+the server should be considered mission-critical. We believe you and your users would have a better experience with Nextcloud Enterprise.
 
 Nextcloud Enterprise is pre-configured and optimised for the needs of professional organisations rather than home users.
 It comes with support, security and scaling benefits, compliance expertise, and access to our knowledge about running a
@@ -497,5 +489,4 @@ Other issues
 
 Some services like *Cloudflare* can cause issues by minimizing JavaScript
 and loading it only when needed. When having issues like a not working
-login button or creating new users make sure to disable such services
-first.
+login button or creating new users make sure to disable such services first.

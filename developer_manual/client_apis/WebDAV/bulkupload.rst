@@ -13,8 +13,7 @@ many small files together in order to optimize the use of network bandwidth.
 Usage
 -----
 
-The API is only available for registered users of your instance. And uses the path:
-``<server>/remote.php/dav/bulk``.
+The API is only available for registered users of your instance. And uses the path: ``<server>/remote.php/dav/bulk``.
 
 Starting a bulk upload
 ^^^^^^^^^^^^^^^^^^^^^^^^^

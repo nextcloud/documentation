@@ -2,8 +2,7 @@
 WebDAV
 ======
 
-Use this backend to mount a directory from any WebDAV server, or another 
-Nextcloud server.
+Use this backend to mount a directory from any WebDAV server, or another Nextcloud server.
 
 You need the following information:
 
@@ -23,7 +22,6 @@ directory. The default is to use the whole root.
    <https://documentation.cpanel.net/display/ALD/Web+Disk>`_ to enable WebDAV 
    functionality.
 
-See :doc:`../external_storage_configuration_gui` for additional mount 
-options and information.
+See :doc:`../external_storage_configuration_gui` for additional mount options and information.
 
 See :doc:`auth_mechanisms` for more information on authentication schemes.

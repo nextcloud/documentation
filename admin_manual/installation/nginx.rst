@@ -4,8 +4,7 @@
 NGINX configuration
 ===================
 
-This page covers how to run a Nextcloud server using NGINX backed by PHP-FPM, which is also an officially supported
-setup.
+This page covers how to run a Nextcloud server using NGINX backed by PHP-FPM, which is also an officially supported setup.
 
 - You need to insert the following code into **your Nginx configuration file**.
   Choose the appropriate example based on whether you are deploying :ref:`nginx_webroot_example` (i.e. :code:`https://cloud.example.com/`) or :ref:`nginx_subdir_example` (i.e. :code:`https://cloud.example.com/nextcloud`).
@@ -70,8 +69,7 @@ PHP-Handler Configuration / Avoiding "502 Bad Gateway"
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The :code:`server` line within the :code:`upstream php-handler` above needs to be adjusted to reflect your local PHP FPM
-configuration. It must match whatever is configured for the :code:`listen` directive within the PHP FPM pool you'll be
-using for NC.
+configuration. It must match whatever is configured for the :code:`listen` directive within the PHP FPM pool you'll be using for NC.
 
 Many Linux distributions define a listener for a default PHP-FPM pool called :code:`www` in a file called
 :code:`www.conf` located somewhere like :code:`/etc/php/8.1/pool.d`.
@@ -88,8 +86,7 @@ for maximum performance (though either will work as long as your NGINX and PHP F
 
 After deciding how you'd prefer to connect NGINX with PHP FPM (and, if necessary, updating your local PHP FPM
 configuration and restarting FPM), set your NGINX configuration's :code:`upstream php-handler` :code:`server` to match
-your preference (Note: If using UNIX sockets, prepend :code:`unix:` in the NGINX configuration, but *not* in your PHP
-FPM :code:`www.conf`).
+your preference (Note: If using UNIX sockets, prepend :code:`unix:` in the NGINX configuration, but *not* in your PHP FPM :code:`www.conf`).
 
 Suppressing log messages
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -157,8 +154,7 @@ Other parameters besides the above are relevant to uploading large files (see :r
 Login loop without any clue in access.log, error.log, nor nextcloud.log
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you after fresh installation (Centos 7 with nginx) have problem with first login, you should as first check these
-files:
+If you after fresh installation (Centos 7 with nginx) have problem with first login, you should as first check these files:
 
 .. code-block:: bash
 

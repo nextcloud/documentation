@@ -9,15 +9,13 @@ Context Chat is an :ref:`assistant<ai-app-assistant>` feature that is implemente
  * the ``context_chat`` app, written purely in PHP
  * the ``context_chat_backend`` ExternalApp written in Python
 
-Together they provide the ContextChat *text processing* and *search* tasks accessible via the :ref:`Nextcloud Assistant
-app<ai-app-assistant>`.
+Together they provide the ContextChat *text processing* and *search* tasks accessible via the :ref:`Nextcloud Assistant app<ai-app-assistant>`.
 
 The ``context_chat`` and ``context_chat_backend`` apps will use the configured text-to-text task processing provider,
 which is required on a fresh install. It can be configured to run open source models entirely on-premises, see the list
 of providers :ref:`here <tp-consumer-apps>` in the "Backend apps" section.
 
-This app supports input and output in the same languages that the currently configured text-to-text task processing
-provider supports.
+This app supports input and output in the same languages that the currently configured text-to-text task processing provider supports.
 
 Requirements
 ------------
@@ -47,8 +45,7 @@ Space usage
 ~~~~~~~~~~~
 
 This app employs a bundled DB with Vector support called `PostgreSQL <https://www.postgresql.org/>`_. All the users'
-textual data is duplicated, chunked and stored on disk in this vector DB along with semantic embedding vectors for the
-content.
+textual data is duplicated, chunked and stored on disk in this vector DB along with semantic embedding vectors for the content.
 
 Installation
 ------------
@@ -108,8 +105,7 @@ Synchronous indexing
 
    occ context_chat:scan <user_id>
 
-**Note**: The synchronous command could take several days to complete. On larger systems we thus recommend to use
-auto-indexing.
+**Note**: The synchronous command could take several days to complete. On larger systems we thus recommend to use auto-indexing.
 
 Scaling
 -------
@@ -135,8 +131,7 @@ One part of the system that cannot be scaled yet is the parsing of the documents
 This is currently done in a single instance of the ``context_chat_backend`` ExApp.
 It is a CPU-bound task so having a powerful CPU will help speed up the parsing process.
 
-If ``context_chat_backend`` is already deployed, you can change these environment variables by redeploying it with the
-new values.
+If ``context_chat_backend`` is already deployed, you can change these environment variables by redeploying it with the new values.
 
 1. Go to Apps page -> search for "Context Chat Backend"
 2. Disable and remove the app taking care the data is not removed

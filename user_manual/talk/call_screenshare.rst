@@ -10,8 +10,7 @@ Click the monitor icon in the toolbar to share your screen.
 
 Depending on your browser or the Talk Desktop client, you will get the option to share a monitor, an application window,
 or a single browser tab.
-If video from your camera is also available, other participants will see it in a small presenter view next to the screen
-share.
+If video from your camera is also available, other participants will see it in a small presenter view next to the screen share.
 
 .. image:: images/share-screen-with-camera.png
     :width: 700px

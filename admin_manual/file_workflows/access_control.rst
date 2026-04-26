@@ -43,8 +43,7 @@ Denying access to folders
 
 The easiest way to block access to a folder, is to use a collaborative tag. As
 mentioned in the :ref:`Available rules <available-rules-label>` section below,
-either the file itself or one of the parents needs to have the given tag
-assigned.
+either the file itself or one of the parents needs to have the given tag assigned.
 
 So you just need to assign the tag to the folder or file, and then block the
 tag with a rule group. The check is independent of the user's permissions for
@@ -65,8 +64,7 @@ engine will block any attempt to upload the file. The safest way to define the r
 is to use a regular expression, as it will help you cover all the known media types
 used for the type of file you're trying to block.
 
-The following example prevents zip files from being uploaded by using the regular
-expression: ``/^application\/(zip|x-zip-compressed)$/i``
+The following example prevents zip files from being uploaded by using the regular expression: ``/^application\/(zip|x-zip-compressed)$/i``
 
     .. figure:: images/files_access_control_block_mimetype.png
        :alt: Prevent upload based on mimetype
@@ -84,8 +82,7 @@ files. Since at this point they are no user and therefore no member of the
 blocked group, they will be able to read and change the file.
 
 The recommended work around is to create the same rule again, and deny access
-for all users that are ``not member of`` a group, that contains all users of
-your installation.
+for all users that are ``not member of`` a group, that contains all users of your installation.
 
 External storage
 ^^^^^^^^^^^^^^^^
@@ -100,8 +97,7 @@ external storage`` option, when trying to to completely lock out users.
 Available rules
 ---------------
 
-All rules can also be inverted (from ``is`` to ``is not``) using the operator
-option.
+All rules can also be inverted (from ``is`` to ``is not``) using the operator option.
 
 * **File collaborative tag:** Either the file itself, or any of the file
   owner's parent folders needs to be tagged with the tag.

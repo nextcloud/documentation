@@ -16,22 +16,19 @@ Nextcloud maintains a read-only address book containing contact information of a
 
 Disabled users are removed from this address book.
 
-You can disable or enable access to the system address book by using the administration interface or with a command line
-command.
+You can disable or enable access to the system address book by using the administration interface or with a command line command.
 
 Please note that this does not influence :ref:`Federated sharing<label-direct-share-link>`.
 
 Command Line
 ^^^^^^^^^^^^
 
-Run ``occ config:app:set dav system_addressbook_exposed --value="no"`` to disable access to the system address book for
-all users.
+Run ``occ config:app:set dav system_addressbook_exposed --value="no"`` to disable access to the system address book for all users.
 
 Administration interface
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Navigate to *Administration Settings* -> *Groupware* -> *System Address Book* section and toggle the *Enable system
-address book* option.
+Navigate to *Administration Settings* -> *Groupware* -> *System Address Book* section and toggle the *Enable system address book* option.
 
 
 .. warning:: If clients have already connected to the CalDAV endpoint, the clients might experience sync issues after system address book access was disabled. This can often be remedied by choosing a different default address book on the client and forcing a resync.
@@ -40,11 +37,9 @@ Privacy and User Property Scopes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Contact information in the system address book is taken from users' :ref:`profile information<profile>`. Profile
-properties are only written to the system contact if the :ref:`scope<profile-property-scopes>` is set to *Local* or
-higher.
+properties are only written to the system contact if the :ref:`scope<profile-property-scopes>` is set to *Local* or higher.
 
-Users who set all their property scopes to *Private* are removed from the system address book and therefore not seen by
-other users.
+Users who set all their property scopes to *Private* are removed from the system address book and therefore not seen by other users.
 
 :ref:`File sharing settings<file-sharing-configuration>` controls the enumeration of other users.
 

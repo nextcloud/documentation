@@ -6,11 +6,9 @@ Download
 --------
 
 You can download the latest version of the Nextcloud Desktop Synchronization Client
-from the `Nextcloud download page`_. Clients are available for Linux, macOS, and
-Microsoft Windows.
+from the `Nextcloud download page`_. Clients are available for Linux, macOS, and Microsoft Windows.
 
-You will also find links to source code archives and older versions on the
-download page.
+You will also find links to source code archives and older versions on the download page.
 
 Supported server versions
 -------------------------
@@ -48,8 +46,7 @@ configured the desktop client will automatically keep itself updated; see
 
 For administrator-focused deployment options such as advanced Windows MSI
 configuration, non-interactive account provisioning, and command-line wizard
-preconfiguration, see the Admin Manual chapter on desktop client deployment and
-setup.
+preconfiguration, see the Admin Manual chapter on desktop client deployment and setup.
 
 Install on Linux
 ----------------
@@ -59,8 +56,7 @@ the `Nextcloud download page`_.
 
 Some Linux distributions also provide the Nextcloud desktop client through their
 package managers. These packages are maintained by the distribution or community,
-not by Nextcloud. If you prefer a package-managed installation, refer to your
-distribution's documentation.
+not by Nextcloud. If you prefer a package-managed installation, refer to your distribution's documentation.
 
 Linux users must also have a password manager enabled, such as GNOME Keyring or
 KWallet, so that the desktop client can log in automatically.
@@ -92,8 +88,7 @@ with a provider. Press ``Create account with Provider`` in that case.
    :alt: form for entering Nextcloud server URL
 
 Enter the URL for your Nextcloud instance. The URL is the same URL that
-you type into your browser when you try to access your Nextcloud
-instance.
+you type into your browser when you try to access your Nextcloud instance.
 
 .. image:: images/wizard_flow2.png
    :alt: form waiting for authorization
@@ -113,8 +108,7 @@ go back to the wizard.
 
 On the local folder options screen, you may sync all of your files on
 the Nextcloud server, or select individual folders. The default local
-sync folder is ``Nextcloud``, in your home directory. You may change
-this as well.
+sync folder is ``Nextcloud``, in your home directory. You may change this as well.
 
 When you have completed selecting your sync folders, click the *Connect*
 button at the bottom right. The client will attempt to connect to your

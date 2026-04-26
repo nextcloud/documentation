@@ -5,16 +5,13 @@ Synchronizing with iOS
 Calendar
 --------
 
-#. Open the settings application.
-#. Select Apps.
-#. Select Calendar.
+#. Open the settings application. #. Select Apps. #. Select Calendar.
 #. Select Calendar Accounts.
 #. Select Add Account.
 #. Select Other as account type.
 #. Select Add CalDAV account.
 #. For server, type the domain name of your server i.e. ``example.com``.
-#. Enter your user name and password.
-#. Select Next.
+#. Enter your user name and password. #. Select Next.
 #. Open Advanced Settings
 #. For server, type the domain name of your server and path, i.e.,
    ``example.com/remote.php/dav/principals/users/username/`` (replace **example.com** and **username**).
@@ -35,17 +32,14 @@ Your calendar will now be visible in the Calendar application.
 Contacts
 --------
 
-#. Open the settings application.
-#. Select Apps.
-#. Select Contacts.
+#. Open the settings application. #. Select Apps. #. Select Contacts.
 #. Select Contacts Accounts.
 #. Select Add Account.
 #. Select Other as account type.
 #. Select Add CardDAV account.
 #. For server, type the domain name of your server and path, i.e.,
    ``example.com/remote.php/dav/principals/users/username/`` (replace **example.com** and **username**).
-#. Enter your user name and password.
-#. Select Next.
+#. Enter your user name and password. #. Select Next.
 
 You should now find your contacts in the address book of your iPhone.
 

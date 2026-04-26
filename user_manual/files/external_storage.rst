@@ -38,8 +38,7 @@ Sharing files from external storage
 
 Sharing from an external storage mount works the same as sharing any other file or
 folder — use the share icon in the Files view. Sharing must be explicitly enabled on
-each mount by your administrator, so the share icon may not be available on all
-mounts.
+each mount by your administrator, so the share icon may not be available on all mounts.
 
 .. note::
    Server-side encryption is not available for external mounts pointing to other
@@ -73,8 +72,7 @@ To remove a mount, open the three-dot overflow menu next to it and select **Dele
 Supported backends
 ------------------
 
-The following backends may be available, depending on what your administrator has
-enabled:
+The following backends may be available, depending on what your administrator has enabled:
 
 * **Amazon S3** — Amazon Simple Storage Service buckets and S3-compatible storage.
 * **FTP** — FTP and FTPS servers.

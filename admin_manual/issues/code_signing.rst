@@ -20,8 +20,7 @@ Why did Nextcloud add code signing?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By supporting Code Signing we add another layer of security by ensuring that
-nobody other than authorized persons can push updates for applications, and
-ensuring proper upgrades.
+nobody other than authorized persons can push updates for applications, and ensuring proper upgrades.
 
 Do we lock down Nextcloud?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -29,8 +28,7 @@ Do we lock down Nextcloud?
 The Nextcloud project is open source and always will be. We do not want to
 make it more difficult for our users to run Nextcloud. Any code signing errors on
 upgrades will not prevent Nextcloud from running, but will display a warning on
-the Admin page. For applications that are not tagged "Official" the code signing
-process is optional.
+the Admin page. For applications that are not tagged "Official" the code signing process is optional.
 
 Not open source anymore?
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -54,8 +52,7 @@ Fixing invalid code integrity messages
 --------------------------------------
 
 A code integrity error message ("Some files have not passed the integrity check…") appears on your Nextcloud admin page
-under "Overview", which provides
-the following options:
+under "Overview", which provides the following options:
 
 1. Link to this documentation entry.
 2. Show a list of invalid files.
@@ -161,8 +158,7 @@ In above error output it can be seen that:
 The solution is to upload the correct "index.php" and "version.php" files, and
 delete the "test.php" file. For the calendar exception contact the developer of
 the application. For other means on how to receive support please take a look at
-https://nextcloud.com/support/. After fixing these problems verify by clicking
-"Rescan…".
+https://nextcloud.com/support/. After fixing these problems verify by clicking "Rescan…".
 
 .. note:: When using a FTP client to upload those files make sure it is using the
    ``Binary`` transfer mode instead of the ``ASCII`` transfer mode.

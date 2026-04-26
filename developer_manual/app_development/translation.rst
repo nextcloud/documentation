@@ -73,8 +73,7 @@ That would sync the translations for the branches (``main`` and ``master`` are a
 Excluding files ``.l10nignore``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Add one more file called :file:`.l10nignore` in root of the repository and the files and folders to ignore for
-translations.
+Add one more file called :file:`.l10nignore` in root of the repository and the files and folders to ignore for translations.
 This should be used to exclude files that create false-positive translations, such as:
 
 - Compiled JavaScript files ``js/``
@@ -93,8 +92,7 @@ Clone the `nextcloud/docker-ci <https://github.com/nextcloud/docker-ci/>`_ repos
 
 Repository permissions
 ^^^^^^^^^^^^^^^^^^^^^^
-Now the GitHub account `@nextcloud-bot <https://github.com/nextcloud-bot>`_ needs to get ``write`` access to your
-repository.
+Now the GitHub account `@nextcloud-bot <https://github.com/nextcloud-bot>`_ needs to get ``write`` access to your repository.
 You can invite it from your repository settings::
 
     https://github.com/<user-name>/<repo-name>/settings/access

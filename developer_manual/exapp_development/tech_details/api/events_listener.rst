@@ -78,7 +78,6 @@ Supported event sub-types:
 	* ``NodeRenamedEvent``
 	* ``NodeCopiedEvent``
 
-For all Node events, ``event_data`` contains a ``target`` key which has the same format as in :ref:`FileActionsMenu
-payload <node_info>`.
+For all Node events, ``event_data`` contains a ``target`` key which has the same format as in :ref:`FileActionsMenu payload <node_info>`.
 
 For ``NodeCopiedEvent`` and ``NodeRenamedEvent``, there is also a ``source`` key in the same format.

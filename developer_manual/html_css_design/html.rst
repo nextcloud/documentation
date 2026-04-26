@@ -26,8 +26,7 @@ Please use the html5 ``progress`` element.
 Checkboxes and radios
 ---------------------
 
-As default html5 checkboxes & radios are **not** customizable, we created an override using label and ``::after``
-elements.
+As default html5 checkboxes & radios are **not** customizable, we created an override using label and ``::after`` elements.
 
 There are 2 colors:
 

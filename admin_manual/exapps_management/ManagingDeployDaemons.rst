@@ -19,8 +19,7 @@ Register Deploy Daemon (DaemonConfig).
 
 Command: ``app_api:daemon:register [--net NET] [--haproxy_password HAPROXY_PASSWORD] [--compute_device COMPUTE_DEVICE]
 [--set-default] [--harp] [--harp_frp_address HARP_FRP_ADDRESS] [--harp_shared_key HARP_SHARED_KEY]
-[--harp_docker_socket_port HARP_DOCKER_SOCKET_PORT] [--harp_exapp_direct] [--] <name> <display-name> <accepts-deploy-id>
-<protocol> <host> <nextcloud_url>``
+[--harp_docker_socket_port HARP_DOCKER_SOCKET_PORT] [--harp_exapp_direct] [--] <name> <display-name> <accepts-deploy-id> <protocol> <host> <nextcloud_url>``
 
 Arguments
 *********
@@ -115,8 +114,7 @@ Usage Examples
 DeployConfig
 ************
 
-DeployConfig is a set of additional options in Daemon config, which are used in deployment algorithms to configure
-ExApp container.
+DeployConfig is a set of additional options in Daemon config, which are used in deployment algorithms to configure ExApp container.
 
 .. code-block:: json
 

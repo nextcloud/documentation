@@ -8,8 +8,7 @@ With Nextcloud Hub 26 Winter we are introducing a new client integration API. It
 integrations on Desktop and Mobile.
 For now we support adding app-defined actions to a "context menu" of files and folders.
 
-It allows providing easy integration of specific actions on clients without the need to write and maintain code on those
-platforms.
+It allows providing easy integration of specific actions on clients without the need to write and maintain code on those platforms.
 
 Supported clients
 -----------------
@@ -122,8 +121,7 @@ The declarative UI response allows the app to send back a new UI to be rendered 
     }
   }
 
-At the moment only rows with text and url elements are supported, but in the future we will add more elements and
-options.
+At the moment only rows with text and url elements are supported, but in the future we will add more elements and options.
 
 Tooltip Response
 ^^^^^^^^^^^^^^^^

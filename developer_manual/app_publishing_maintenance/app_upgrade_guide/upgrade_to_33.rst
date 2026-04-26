@@ -16,16 +16,14 @@ This release includes breaking API changes, so you’ll need to update your code
 
 To improve developer experience, we’ve expanded the context object passed to file actions.
 It now includes additional fields such as the current folder and the current file list.
-Function signatures have also changed: Action handlers now use destructured parameters instead of positional array
-arguments.
+Function signatures have also changed: Action handlers now use destructured parameters instead of positional array arguments.
 
 You can find the full changelog and migration details in the repository: `nextcloud-files (4.0.0 beta) <https://github.com/nextcloud-libraries/nextcloud-files>`_.
 
 Sidebar
 """""""
 
-The files API was changed in this release to use the Node API (available since Nextcloud 27) instead of the legacy
-``FileInfo`` API.
+The files API was changed in this release to use the Node API (available since Nextcloud 27) instead of the legacy ``FileInfo`` API.
 For this the way to register sidebar tabs and actions has changed.
 The ``OCA.Files.Sidebar`` API was removed and replaced with a new sidebar API available from the `@nextcloud/files <https://www.npmjs.com/package/@nextcloud/files>`_ package.
 

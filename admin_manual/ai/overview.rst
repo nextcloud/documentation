@@ -5,16 +5,14 @@ Overview
 
 We strive to bring Artificial Intelligence features to Nextcloud. This section highlights these features, how they work
 and where to find them.
-All of these features are completely optional. If you want to have them on your server, you need to install them via
-separate Nextcloud Apps.
+All of these features are completely optional. If you want to have them on your server, you need to install them via separate Nextcloud Apps.
 
 Overview of AI features
 -----------------------
 
 Nextcloud uses modularity to separate raw AI functionality from the Graphical User interfaces and apps that make use of
 said functionality. Each instance can thus make use of various backends that provide the functionality for the same
-frontends and the same functionality can be implemented by multiple apps using on-premises processing or third-party AI
-service providers.
+frontends and the same functionality can be implemented by multiple apps using on-premises processing or third-party AI service providers.
 
 .. figure:: images/ai_overview.png
   :scale: 60%
@@ -84,8 +82,7 @@ Until Hub 3, we succeeded in offering features without relying on proprietary bl
 there is a large community developing ethical, safe and privacy-respecting technologies, there are many other relevant
 technologies users might want to use. We want to provide users with these cutting-edge technologies – but also be
 transparent. For some use cases, ChatGPT might be a reasonable solution, while for more private, professional or
-sensitive data, it is paramount to have a local, on-prem, open solution. To differentiate these, we developed an Ethical
-AI Rating.
+sensitive data, it is paramount to have a local, on-prem, open solution. To differentiate these, we developed an Ethical AI Rating.
 
 The rating has four levels:
  * Red
@@ -149,8 +146,7 @@ Machine translation
 
 As you can see in the table above we have multiple apps offering machine translation capabilities. Each app brings its
 own set of supported languages.
-In downstream apps like the Text app, users can use the translation functionality regardless of which app implements it
-behind the scenes.
+In downstream apps like the Text app, users can use the translation functionality regardless of which app implements it behind the scenes.
 
 Frontend apps
 ~~~~~~~~~~~~~
@@ -201,8 +197,7 @@ Image generation
 .. _t2i-consumer-apps:
 
 As you can see in the table above we have multiple apps offering Image generation capabilities. In downstream apps like
-the Text-to-Image helper app, users can use the image generation functionality regardless of which app implements it
-behind the scenes.
+the Text-to-Image helper app, users can use the image generation functionality regardless of which app implements it behind the scenes.
 
 Frontend apps
 ~~~~~~~~~~~~~
@@ -230,8 +225,7 @@ Text-To-Speech
 .. _t2s-consumer-apps:
 
 As you can see in the table above we have multiple apps offering speech generation capabilities. In downstream apps like
-the assistant app, users can use the speech generation functionality regardless of which app implements it behind the
-scenes.
+the assistant app, users can use the speech generation functionality regardless of which app implements it behind the scenes.
 
 Frontend apps
 ~~~~~~~~~~~~~
@@ -249,8 +243,7 @@ Context Chat
 ^^^^^^^^^^^^
 Our Context Chat feature was introduced in Nextcloud Hub 7 (v28). It allows asking questions to the assistant related to
 your documents in Nextcloud. You will need to install both the context_chat app as well as the context_chat_backend
-External App. Be prepared that things might break or be a little rough around the edges. We look forward to your
-feedback!
+External App. Be prepared that things might break or be a little rough around the edges. We look forward to your feedback!
 
 Frontend apps
 ~~~~~~~~~~~~~
@@ -362,8 +355,7 @@ Backend apps
 Improve AI task pickup speed
 ----------------------------
 
-Most AI tasks will be run as part of the background job system in Nextcloud which only runs jobs every 5 minutes by
-default.
+Most AI tasks will be run as part of the background job system in Nextcloud which only runs jobs every 5 minutes by default.
 To pick up scheduled jobs faster you can set up background job workers inside your Nextcloud main server/container that
 process AI tasks as soon as they are scheduled.
 If the PHP code or the Nextcloud settings values are changed while a worker is running, those changes won't be effective
@@ -379,8 +371,7 @@ Screen or tmux session
 
 Run the following occ command inside a screen or a tmux session, preferably 4 or more times for parallel processing of
 multiple requests by different or the same user (and as a requirement for some apps like context_chat).
-It would be best to run one command per screen session or per tmux window/pane to keep the logs visible and the worker
-easily restartable.
+It would be best to run one command per screen session or per tmux window/pane to keep the logs visible and the worker easily restartable.
 
 .. code-block:: bash
 

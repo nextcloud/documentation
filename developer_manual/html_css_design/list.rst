@@ -92,8 +92,7 @@ Rules and information
 Popovermenu in item
 ====================
 
-If you need a menu inside an item, you need to wrap it with the ``icon-more`` ``div`` inside a ``app-content-list-menu``
-div.
+If you need a menu inside an item, you need to wrap it with the ``icon-more`` ``div`` inside a ``app-content-list-menu`` div.
 
 .. figure:: ../images/list-menu.png
    :alt: Content list with menu

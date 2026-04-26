@@ -9,13 +9,11 @@ Collabora Online Server
 ***********************
 
 URL (and port) of the Collabora Online server that provides the editing functionality as a WOPI client. Collabora Online
-should use the same protocol (``http://`` or ``https://``) as the server installation. Naturally, ``https://`` is
-recommended.
+should use the same protocol (``http://`` or ``https://``) as the server installation. Naturally, ``https://`` is recommended.
 
 Restrict usage to specific groups
 *********************************
-By default the app is enabled for all. When this setting is active, only members of specified groups can use Nextcloud
-Office.
+By default the app is enabled for all. When this setting is active, only members of specified groups can use Nextcloud Office.
 
 Restrict edit to specific groups
 ********************************
@@ -30,8 +28,7 @@ created in Office Open XML (OOXML) format.
 Enable access for external apps
 *******************************
 Nextcloud internally passes an access token to Collabora Online that is used later by it to do various operations. By
-default, it's not possible to generate this token by 3rd parties; only Nextcloud can generate and pass it to Collabora
-Online.
+default, it's not possible to generate this token by 3rd parties; only Nextcloud can generate and pass it to Collabora Online.
 
 In some applications, it might be necessary to generate the token by a 3rd party application. For this, one needs to add
 the 3rd party application (external apps) in this setting. You need to add an application identifier and a secret
@@ -65,8 +62,7 @@ Custom fonts
 ************
 
 When you install coolwsd package, the post-install script will look for additional fonts on your system, and install
-them in the systemplate. If you install fonts to your system after installing coolwsd, you need to update the
-systemplate manually.
+them in the systemplate. If you install fonts to your system after installing coolwsd, you need to update the systemplate manually.
 
 .. code-block:: bash
 
@@ -80,8 +76,7 @@ systemplate manually.
 Secure view settings
 ********************
 
-The secure view settings enables Nextcloud to embed watermarks on your office files. The watermark may be set according
-to different rules:
+The secure view settings enables Nextcloud to embed watermarks on your office files. The watermark may be set according to different rules:
 
 - **Tags:** will watermark files for files containing the defined tags
 - **Groups:** will watermark files when opened by users belonging to the defined groups.

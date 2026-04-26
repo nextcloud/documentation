@@ -20,8 +20,7 @@ Usage
 
 The idea is that apps install these packages via `npm` and bundle the code with tools like `Babel
 <https://babeljs.io/>`_, `Webpack <https://webpack.js.org/>`_ or `Parcel <https://parceljs.org/>`_. This ensures that an
-app runs the exact same code independent of the Nextcloud version and also reduces the chances of running into conflicts
-with other apps.
+app runs the exact same code independent of the Nextcloud version and also reduces the chances of running into conflicts with other apps.
 
 For more details on the design considerations see `the discussion on GitHub <https://github.com/nextcloud/server/issues/15932>`_.
 
@@ -80,8 +79,7 @@ This package provides access to UI dialogs in Nextcloud. Documentation: https://
 ``@nextcloud/files``
 ^^^^^^^^^^^^^^^^^^^^
 
-This package provides methods to access the public API of the Files app, helper functions to access Nextcloud files
-using WebDAV,
+This package provides methods to access the public API of the Files app, helper functions to access Nextcloud files using WebDAV,
 and utility functions to work with files and folders. Documentation: https://nextcloud-libraries.github.io/nextcloud-files/
 
 ``@nextcloud/initial-state``
@@ -125,8 +123,7 @@ This package provides helpers to generate URLs, e.g. to access assets and REST A
 ^^^^^^^^^^^^^^^^^^^^^^
 
 This package provides helpers interact with the Files sharing app, e.g. to detect if the current page is a public share
-and retrieving the sharing token.
-Documentation: https://nextcloud-libraries.github.io/nextcloud-sharing/
+and retrieving the sharing token. Documentation: https://nextcloud-libraries.github.io/nextcloud-sharing/
 
 .. _js-library_nextcloud-vue:
 

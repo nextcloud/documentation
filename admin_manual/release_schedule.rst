@@ -33,8 +33,7 @@ correct critical bugs and security vulnerabilities.
 Major releases
 ~~~~~~~~~~~~~~
 
-Major releases usually introduce new features and often also include changes "under the hood". These changes may be
-extensive.
+Major releases usually introduce new features and often also include changes "under the hood". These changes may be extensive.
 
 A specific major release is indicated by the first part of the version string. For example, Nextcloud Server ``28.0.4``
 is major release ``28``. And ``27.1.7`` is major release ``27``.
@@ -49,11 +48,9 @@ Maintenance releases
 ~~~~~~~~~~~~~~~~~~~~
 
 Maintenance releases deliberately **do not** introduce new features or breaking changes. This is meant to reduce the
-risks and impact associated with deploying updates so that critical bugs or security vulnerabilities can be rapidly and
-routinely addressed.
+risks and impact associated with deploying updates so that critical bugs or security vulnerabilities can be rapidly and routinely addressed.
 
-Maintenance releases are published (generally simultaneously) for all stable major releases that have not reached
-end-of-life status.
+Maintenance releases are published (generally simultaneously) for all stable major releases that have not reached end-of-life status.
 
 These releases should not have app compatibility concerns or introduce changes requiring retraining end users.
 
@@ -100,8 +97,7 @@ Installation version
 ---------------------
 
 Since multiple major releases are published throughout the year and each is supported for a year with any relevant bug
-and security fixes, you have discretion as to which which major to deploy initially as well as when to upgrade to a new
-major.
+and security fixes, you have discretion as to which which major to deploy initially as well as when to upgrade to a new major.
 
 .. note:: If you're planning to deploy Nextcloud in an enterprise setting and your usage will be mission-critical, the developers can help you choose, via an `Enterprise services arrangement <https://nextcloud.com/enterprise/>`_, the major version most suitable for your particular use case as well as help make sure it's deployed optimally while addressing any critical problems that arise with you one-on-one.
 
@@ -133,8 +129,7 @@ Beta releases and Release candidates
 Before a new final major release is published, typically at least four beta releases are published followed by two
 release candidates, with an interval of one week between each.
 
-Before a new final maintenance release is published, one release candidate is published approximately one week
-beforehand.
+Before a new final maintenance release is published, one release candidate is published approximately one week beforehand.
 
 Anticipated dates for each release can be found on `detailed schedule <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_.
 
@@ -155,7 +150,6 @@ Downgrading is not supported officially between any major, maintenance, or pre-r
 Bug reporting
 -------------
 
-Before reporting bugs, please make sure you're running a still supported major release *and* the latest maintenance
-release for it.
+Before reporting bugs, please make sure you're running a still supported major release *and* the latest maintenance release for it.
 
 .. tip:: Nextcloud GmbH - which employs many of the core developers - offers `Nextcloud Enterprise services <https://nextcloud.com/enterprise/>`_ providing direct access to Nextcloud engineering expertise where usage is mission-critical. Among other things, they can help you choose the major version most appropriate to your use case (and make sure it's deployed optimally).

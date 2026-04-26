@@ -51,7 +51,6 @@ Optionally, a 32-byte base64 encoded SSE-C key can be provided for server side e
 .. figure:: images/amazons3.png
    :alt:
 
-See :doc:`../external_storage_configuration_gui` for additional mount
-options and information.
+See :doc:`../external_storage_configuration_gui` for additional mount options and information.
 
 See :doc:`auth_mechanisms` for more information on authentication schemes.

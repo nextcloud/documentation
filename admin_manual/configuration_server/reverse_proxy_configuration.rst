@@ -13,8 +13,7 @@ Defining trusted proxies
 
 For security, you must explicitly define the proxy servers that Nextcloud is to
 trust. Connections from trusted proxies will be specially treated to get the
-real client information, for use in access control and logging. Parameters are
-configured in :file:`config/config.php`
+real client information, for use in access control and logging. Parameters are configured in :file:`config/config.php`
 
 Set the :file:`trusted_proxies` parameter as an array of:
 
@@ -34,8 +33,7 @@ configured with the **forwarded_for_headers** parameter. This parameter is an
 array of PHP lookup strings, for example 'X-Forwarded-For' becomes
 'HTTP_X_FORWARDED_FOR'. Incorrectly setting this parameter may allow clients
 to spoof their IP address as visible to Nextcloud, even when going through the
-trusted proxy! The correct value for this parameter is dependent on your
-proxy software.
+trusted proxy! The correct value for this parameter is dependent on your proxy software.
 
 Overwrite parameters
 --------------------
@@ -122,8 +120,7 @@ HAProxy
 
 NGINX
 ^^^^^
-If using nginx as Nextcloud's webserver from behind another nginx reverse proxy, put this only in the reverse proxy's
-configuration.
+If using nginx as Nextcloud's webserver from behind another nginx reverse proxy, put this only in the reverse proxy's configuration.
 ::
 
     location /.well-known/carddav {

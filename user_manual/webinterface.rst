@@ -102,5 +102,4 @@ Unified search
 
 Nextcloud's unified search combines results from all your installed apps
 (Files, Mail, Contacts, Calendar, etc.) into a single view. Click the search
-magnifier in the header, type your search term, and results appear grouped
-by app.
+magnifier in the header, type your search term, and results appear grouped by app.

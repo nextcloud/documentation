@@ -11,8 +11,7 @@ jobs in Nextcloud that send out the activity emails. Or expire the trashbin.
 
 Types of background jobs
 ------------------------
-Nextcloud by default offers you two types of background jobs. The ``\OCP\BackgroundJob\QueuedJob``
-and ``\OCP\BackgroundJob\TimedJob``.
+Nextcloud by default offers you two types of background jobs. The ``\OCP\BackgroundJob\QueuedJob`` and ``\OCP\BackgroundJob\TimedJob``.
 
 The ``QueuedJob`` is for one time jobs. This can for example be triggered by inserting
 a job because an event happened. The ``TimedJob`` has a method ``setInterval`` where
@@ -61,8 +60,7 @@ required to be set.
 In this case it is a background job that runs every hour. And we take the ``uid`` argument
 to pass on to the service to run the background job.
 
-The ``run`` function is the main thing you need to implement and where all the
-logic happens.
+The ``run`` function is the main thing you need to implement and where all the logic happens.
 
 .. _app-backgroundjobs-time-sensitivity:
 
@@ -121,8 +119,7 @@ You can register your jobs in your info.xml by adding;
     </background-jobs>
 
 This will on install/update of the application add the job ``OCA\MyApp\Cron\SomeTask``.
-Of course in this case the arguments passed to your ``run`` function is just an empty
-array.
+Of course in this case the arguments passed to your ``run`` function is just an empty array.
 
 Registering manually
 ^^^^^^^^^^^^^^^^^^^^
@@ -163,14 +160,12 @@ For example you could add or remove a certain job based on some controller:
         }
     }
 
-This provides more fine grained control and you can pass arguments to your background
-jobs easily.
+This provides more fine grained control and you can pass arguments to your background jobs easily.
 
 Scheduling
 ^^^^^^^^^^
 
-A background job can be scheduled to run after a specific time and date. This avoids maintaining a time check inside a
-background job.
+A background job can be scheduled to run after a specific time and date. This avoids maintaining a time check inside a background job.
 
 Beware that the reliability of the execution time is limited. Systems that do not use system cron may have no active
 users and therefore no reliable cron trigger at the target time. System cron can also not guarantee that the job is

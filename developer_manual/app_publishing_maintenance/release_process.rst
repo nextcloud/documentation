@@ -10,8 +10,7 @@ Release process
 Overview
 --------
 
-This page documents the overall process and tasks of releasing a Nextcloud app to the public, as well as preparation and
-follow-up tasks.
+This page documents the overall process and tasks of releasing a Nextcloud app to the public, as well as preparation and follow-up tasks.
 
 Not all of the described steps will apply to all apps. Some require fewer steps, for others there is some additional
 work to do. Adjust the process accordingly.
@@ -117,8 +116,7 @@ other setting will make the server ignore nightly releases.
 The release
 -----------
 
-From an abstract point of view the main part of doing a release is transforming the source code into an installable
-software component.
+From an abstract point of view the main part of doing a release is transforming the source code into an installable software component.
 
 This part is typically scripted and highly depends on the type of app. The following list is incomplete but should give
 a rough idea of what steps a release script should contain:
@@ -152,8 +150,7 @@ requires a branching off the current main branch.
 Prepare follow-up releases
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The target milestone was closed in the release preparation. Now it's time to create a new milestone for the next
-release(s).
+The target milestone was closed in the release preparation. Now it's time to create a new milestone for the next release(s).
 
 
 Shipped Apps
@@ -197,7 +194,6 @@ Hybrid Distribution
 ~~~~~~~~~~~~~~~~~~~
 
 In very rare situations apps can be shipped **and** distributed via the app store. In those cases it is important to
-ensure the shipped version is equal or higher than the app store version to prevent a downgrade during the update of
-Nextcloud.
+ensure the shipped version is equal or higher than the app store version to prevent a downgrade during the update of Nextcloud.
 
 Hybrid distribution is not recommended.

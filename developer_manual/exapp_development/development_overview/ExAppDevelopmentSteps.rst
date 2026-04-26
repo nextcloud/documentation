@@ -14,8 +14,7 @@ as they are usually similar to the ExApp backend to which Nextcloud communicates
 
 You can think of each ExApp as a microservice (Docker container)
 that runs separately from Nextcloud on the Deploy daemon, which can be remote or local.
-The communication between Nextcloud and ExApp is done via network secured with :doc:`AppAPIAuth
-<../tech_details/Authentication>`.
+The communication between Nextcloud and ExApp is done via network secured with :doc:`AppAPIAuth <../tech_details/Authentication>`.
 
 Let's go through the ExApp development steps briefly.
 

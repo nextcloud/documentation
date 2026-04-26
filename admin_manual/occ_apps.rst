@@ -221,8 +221,7 @@ exist. To update an existing value,  set ``--update-only``::
 
 Note that in order to write a Boolean, float, or integer value to the
 configuration file, you need to specify the type on your command. This
-applies only to the ``config:system:set`` command. The following values are
-known:
+applies only to the ``config:system:set`` command. The following values are known:
 
 * ``boolean``
 * ``float``

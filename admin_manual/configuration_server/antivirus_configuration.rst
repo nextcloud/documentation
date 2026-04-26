@@ -9,8 +9,7 @@ Files integrates the open source anti-virus engine `ClamAV
 of malware including Trojan horses, viruses, and worms, and it operates on all
 major file types including Windows, Linux, and Mac files, compressed files,
 executables, image files, Flash, PDF, and many others. ClamAV's Freshclam
-daemon automatically updates its malware signature database at scheduled
-intervals.
+daemon automatically updates its malware signature database at scheduled intervals.
 
 ClamAV runs on Linux and any Unix-type operating system, and Microsoft Windows.
 However, it has only been tested with Nextcloud on Linux, so these instructions
@@ -104,16 +103,14 @@ Enabling the antivirus app for files
 ------------------------------------
 
 Place the ``files_antivirus`` app into the ``apps`` directory of your Nextcloud
-server. Then the app shows up on the Nextcloud Apps page where it simply can be
-enabled.
+server. Then the app shows up on the Nextcloud Apps page where it simply can be enabled.
 
 .. figure:: ../images/antivirus-app.png
 
 Configuring ClamAV on Nextcloud
 -------------------------------
 
-Next, go to your Nextcloud Admin page and set your Nextcloud logging level to
-Everything.
+Next, go to your Nextcloud Admin page and set your Nextcloud logging level to Everything.
 
 .. figure:: ../images/antivirus-logging.png
 
@@ -173,8 +170,7 @@ back and change all of your logging to less verbose levels.
 Confirm everything is working
 -----------------------------
 
-Every antivirus provider implements a test virus string, that way tests are quite easy. You find the files here:
-https://www.eicar.org/download-anti-malware-testfile/
+Every antivirus provider implements a test virus string, that way tests are quite easy. You find the files here: https://www.eicar.org/download-anti-malware-testfile/
 
 Uploading the file will trigger an error:
    "Virus Win.Test.EICAR_HDB-1 is detected in the file. Upload cannot be completed."

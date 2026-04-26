@@ -92,8 +92,7 @@ To get started you create a new yaml file in the ``.github/workflows`` directory
         - name: Delete crt and key from local storage
           run: rm -f ~/.nextcloud/certificates/*
 
-Make sure to check the used actions for useful updates, as they are pinned to a specific sha1 to prevent unnoticed
-harmful changes.
+Make sure to check the used actions for useful updates, as they are pinned to a specific sha1 to prevent unnoticed harmful changes.
 
 For this workflow to work we need to provide a few variables.
 
@@ -119,8 +118,7 @@ Save your rules and at the bottom add the following environment secrets.
 * ``APPSTORE_TOKEN`` you get this from the App Store as a registered developer https://apps.nextcloud.com/account/token
 
 If your app does not live in the Nextcloud organization you may also add the secrets above to the "Secrets" section but
-be careful everyone with write access to your repository will be able to create releases. Make also sure to delete the
-environment statement.
+be careful everyone with write access to your repository will be able to create releases. Make also sure to delete the environment statement.
 
 If you don't use code signing for your app you can delete the following section in your yaml.
 
@@ -134,8 +132,7 @@ Also make sure to remove ``environment: release`` .
 
 Makefile changes for code signing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-As your certificate and your private key now are stored in environment variables you need somehow convert them to a
-file.
+As your certificate and your private key now are stored in environment variables you need somehow convert them to a file.
 One example you may use is provided by the news app.
 
 .. code-block:: php

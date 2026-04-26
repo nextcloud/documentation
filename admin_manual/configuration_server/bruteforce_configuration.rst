@@ -82,8 +82,7 @@ The brute force settings app
 This app, which shipped and enabled by default, makes it possible (via the Web UI) to view the status of a 
 connection and modify certain parameters of the brute force protection built into Nextcloud Server.
 
-The user interface added by this app is found under *Administration settings -> Security* under the *Brute-force 
-IP whitelist* heading.
+The user interface added by this app is found under *Administration settings -> Security* under the *Brute-force IP whitelist* heading.
 
 Currently an admin can view the status of the IP address they are connecting from as well as specify IPv4 or IPv6 
 addresses and ranges to exempt from brute force protection.
@@ -135,8 +134,7 @@ Look for entries that start with any of the following:
 If all clients appear to be coming from the same IP address and that IP address happens to be your 
 proxy, you need to review your ``trusted_proxies`` configuration. 
 
-If the IP address is a common connection point, such as a multi-user office location, it can be an option to whitelist
-it,
+If the IP address is a common connection point, such as a multi-user office location, it can be an option to whitelist it,
 with the draw back that users have to be trust-worthy.
 
 For testing purposes you want want to whitelist your own IP address to see if the problem disappears.

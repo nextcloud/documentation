@@ -51,6 +51,5 @@ ExApps management list of apps from App Store is empty
 ------------------------------------------------------
 
 This issue may occur if you are loading the ExApps management (or regular Apps management) page
-frequently during the short period of time, and therefore your IP address can be blocked by the App Store rate-limits
-protection.
+frequently during the short period of time, and therefore your IP address can be blocked by the App Store rate-limits protection.
 Please wait a while and try again.

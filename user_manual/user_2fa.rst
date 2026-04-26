@@ -12,8 +12,7 @@ receive or a code you generate on your phone or another device
 more can be added.
 
 Once a two-factor authentication app has been enabled by your administrator
-you can enable and configure it in :doc:`userpreferences`. Below you can
-see how.
+you can enable and configure it in :doc:`userpreferences`. Below you can see how.
 
 Configuring two-factor authentication
 -------------------------------------
@@ -26,8 +25,7 @@ example this is TOTP, a Google Authenticator compatible time-based code:
 
 You will see your secret and a QR code which can be scanned by the TOTP app
 on your phone (or another device). Depending on the app or tool, type in the
-code or scan the QR and your device will show a login code which changes
-every 30 seconds.
+code or scan the QR and your device will show a login code which changes every 30 seconds.
 
 Recovery codes in case you lost your 2nd factor
 -----------------------------------------------

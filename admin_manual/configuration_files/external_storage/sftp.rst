@@ -2,8 +2,7 @@
 SFTP
 ====
 
-Nextcloud's SFTP (SSH File Transfer Protocol) backend supports both password and 
-public key authentication. 
+Nextcloud's SFTP (SSH File Transfer Protocol) backend supports both password and public key authentication.
 
 The **Host** field is required. The default port is 22 (SSH).
 
@@ -20,7 +19,6 @@ private key to authenticate to the SFTP server.
 The default **Remote Subfolder** is the root directory (``/``) of the remote 
 SFTP server, and you may enter any directory you wish.
 
-See :doc:`../external_storage_configuration_gui` for additional mount 
-options and information.
+See :doc:`../external_storage_configuration_gui` for additional mount options and information.
 
 See :doc:`auth_mechanisms` for more information on authentication schemes.

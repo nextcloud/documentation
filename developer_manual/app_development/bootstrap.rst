@@ -4,10 +4,8 @@
 Bootstrapping
 =============
 
-Every php process has a relatively short lifespan that lasts as long as the HTTP request or the invocation of the
-command
-line program. At the beginning of this lifespan, Nextcloud initializes its services. At the same time, any additional
-apps
+Every php process has a relatively short lifespan that lasts as long as the HTTP request or the invocation of the command
+line program. At the beginning of this lifespan, Nextcloud initializes its services. At the same time, any additional apps
 might want to register their services to Nextcloud as well. This event is called the *bootstrapping* and this chapter
 shall shed some light on how to hook into this with an app.
 
@@ -17,14 +15,12 @@ shall shed some light on how to hook into this with an app.
 The Application class
 ---------------------
 
-The `Application` class is the main entry point of an app. This class is optional but highly recommended if your app
-needs
+The `Application` class is the main entry point of an app. This class is optional but highly recommended if your app needs
 to register any services or run some code for every request.
 
 
 Nextcloud will try to autoload the class from the namespace ``\OCA\<App namespace>\AppInfo\Application``, like 
-``\OCA\MyApp\AppInfo\Application``, where *MyApp* would be the name of your app. The file will therefore have the
-location ``myapp/lib/AppInfo/Application.php``.
+``\OCA\MyApp\AppInfo\Application``, where *MyApp* would be the name of your app. The file will therefore have the location ``myapp/lib/AppInfo/Application.php``.
 
 .. code-block:: php
 
@@ -45,8 +41,7 @@ location ``myapp/lib/AppInfo/Application.php``.
 
     }
 
-The class **must** extend ``OCP\AppFramework\App`` and may optionally implement
-``\OCP\AppFramework\Bootstrap\IBootstrap``:
+The class **must** extend ``OCP\AppFramework\App`` and may optionally implement ``\OCP\AppFramework\Bootstrap\IBootstrap``:
 
 .. code-block:: php
     :caption: lib/AppInfo/Application.php
@@ -100,16 +95,14 @@ capabilities appropriate for their stage.
 Bootstrapping process
 ---------------------
 
-To give a better overview of *when* each of the bootstrapping stages are reached and how they app can interact with
-them,
+To give a better overview of *when* each of the bootstrapping stages are reached and how they app can interact with them,
 this section explains the changes done for Nextcloud 20.
 
 Nextcloud 20 and later
 **********************
 
 Nextcloud 20 is the first release with the interface ``\OCP\AppFramework\Bootstrap\IBootstrap``. This interface can be
-implemented by your app's ``Application`` class to signal that it wants to act on the bootstrapping stages. The major
-difference
+implemented by your app's ``Application`` class to signal that it wants to act on the bootstrapping stages. The major difference
 between this and the old process is that the bootstrapping is not performed in sequence, but apps register and boot
 interleaved. This should ensure that an app that ``boot``\s can rely on all other apps' registration to be finished.
 

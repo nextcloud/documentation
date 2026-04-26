@@ -19,8 +19,7 @@ file corruption during normal operation. It performs these functions:
 What Transactional File locking is not for: it will not prevent multiple users
 from editing the same document, or give notice that other users are working on
 the same document. Multiple users can open and edit a file at the same time and
-Transactional File locking does not prevent this. Rather, it prevents
-simultaneous file saving.
+Transactional File locking does not prevent this. Rather, it prevents simultaneous file saving.
 
 Transactional File locking will use the database locking backend by default. This
 places a significant load on your database. Setting ``memcache.locking`` relieves
@@ -54,8 +53,7 @@ recommended if Redis is running on the same system as Nextcloud) use this exampl
        'timeout' => 0.0,
         ),
 
-See ``config.sample.php`` to see configuration examples for Redis, and for all
-supported memcaches.
+See ``config.sample.php`` to see configuration examples for Redis, and for all supported memcaches.
 
 Learn more about Redis at `Redis <https://redis.io/>`_. Memcached, the popular
 distributed memory caching system, is not suitable for the new file locking

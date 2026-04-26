@@ -57,8 +57,7 @@ To use a color (instead of an image) for the background:
 Icon theming
 ------------
 
-Based on your settings, Nextcloud will automatically generate favicons and a header logo using your logo and theme
-color.
+Based on your settings, Nextcloud will automatically generate favicons and a header logo using your logo and theme color.
 
 This requires:
 
@@ -73,8 +72,7 @@ Branded clients
 .. note:: Nextcloud GmbH - the company that employs Nextcloud's core maintainers - offers branding services, providing sync clients (mobile and desktop) that use your corporate identity and are pre-configured for your users. For more information on advanced branding and enterprise support offerings, `contact Nextcloud GmbH <https://nextcloud.com/enterprise/>`_.
 
 The theming app supports changing the URLs for the mobile apps (Android and iOS) that appear when users access the web
-interface from mobile devices. By default, these links point to the official Nextcloud apps, but you can set them to
-branded versions.
+interface from mobile devices. By default, these links point to the official Nextcloud apps, but you can set them to branded versions.
 
 Set custom app links using the ``occ`` command:
 

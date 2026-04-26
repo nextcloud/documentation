@@ -212,8 +212,7 @@ are shown by latest activity up top.
 
 If your app includes comment support, the "Write comment" input box should be placed here so it is nicely integrated.
 
-If there is the possibility to restore earlier versions, this can be integrated using a 3-dot action menu on any past
-activity.
+If there is the possibility to restore earlier versions, this can be integrated using a 3-dot action menu on any past activity.
 
 Sharing
 ^^^^^^^

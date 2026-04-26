@@ -9,8 +9,7 @@ See `reStructuredText Primer <https://www.sphinx-doc.org/en/master/usage/restruc
 for a complete Sphinx/RST markup reference.
 
 This is the official style guide for the Nextcloud Administration and User
-manuals. Please follow these conventions for consistency, and easier
-proofreading and copyediting.
+manuals. Please follow these conventions for consistency, and easier proofreading and copyediting.
 
 When you are writing your text, make it as literal and specific as possible. Put
 yourself in the place of the person who is using Nextcloud and looking for
@@ -20,8 +19,7 @@ fields to fill out. Give complete information; for example, when configuring a
 timeout value be sure to say if it is in seconds or some other value. Say
 ``config.php`` rather than "the configuration file". When you are describing
 features of a GUI administration form use the exact literal names of buttons,
-form fields, and menus. Specify if menus are dropdown, right-click,
-left-click, or mouseover.
+form fields, and menus. Specify if menus are dropdown, right-click, left-click, or mouseover.
 
 Page filenames
 --------------
@@ -115,8 +113,7 @@ Use lowercase with hyphens for image names, for example image-name.png.
 Images should be in .png format. Keep your screenshots focused on the items you 
 are describing. When you need an image of something large like a configuration 
 form on the Nextcloud admin page, narrow your Web browser to fold the fields 
-into a smaller space, because a long skinny graphic is not very readable. Think 
-square.
+into a smaller space, because a long skinny graphic is not very readable. Think square.
 
 Both images and figures must have brief and descriptive alt tags and all 
 figures must have captions with figure numbers. Sphinx RST markup does not 
@@ -245,8 +242,7 @@ correctly. The most common languages used in this documentation are:
    Plain text with no syntax highlighting — for log output, error messages, or
    file paths that do not fit another category.
 
-Use ``.. code-block:: none`` only as a last resort when no other type is
-appropriate.
+Use ``.. code-block:: none`` only as a last resort when no other type is appropriate.
 
 Version-specific content
 ------------------------
@@ -280,8 +276,7 @@ ranges write "Nextcloud 28 and later" or "Nextcloud 27–29".
 Internal cross-references
 --------------------------
 
-Prefer internal cross-references over hard-coded URLs so that links survive
-page moves.
+Prefer internal cross-references over hard-coded URLs so that links survive page moves.
 
 **Same manual — use** ``:doc:``
    When the target page is in the same manual as the current page, always use a

@@ -8,8 +8,7 @@ like Files, Activity and Photos there are other apps like Calendar, Contacts,
 Talk and more which are enhancing the features of your Nextcloud server.
 
 After installing the Nextcloud server, you might want to consider about enabling,
-disabling or even restricting some apps to groups depending on your and your users'
-needs.
+disabling or even restricting some apps to groups depending on your and your users' needs.
 
 Apps
 ----
@@ -20,8 +19,7 @@ Apps
 During the Nextcloud server installation, some apps are enabled by default.
 To see which apps are enabled go to your Apps page.
 
-Those apps are supported and developed by Nextcloud GmbH directly and
-have an **Featured**-tag.
+Those apps are supported and developed by Nextcloud GmbH directly and have an **Featured**-tag.
 
 .. note:: Your Nextcloud server needs to be able to communicate with
           ``https://apps.nextcloud.com``, ``https://ltd[1-3].nextcloud.com``, ``https://garm[1-5].nextcloud.com`` to list and download apps. Please make sure to whitelist this target in your firewall or proxy if necessary.
@@ -55,8 +53,7 @@ If the app is not part of the Nextcloud installation, it will be downloaded from
 the app store, installed and enabled.
 
 App updates will also be offered to you on this page. Simply click on the **Update**
-button to update a specific app or use the **Update all** button on top of the page to
-update all apps.
+button to update a specific app or use the **Update all** button on top of the page to update all apps.
 
 .. note:: **Beta releases**: You can also install beta releases of apps directly from here by
           switching your Nextcloud to the beta channel in the admin overview.
@@ -64,10 +61,8 @@ update all apps.
 Update notifications
 ^^^^^^^^^^^^^^^^^^^^
 
-The always installed ``updatenotification`` app allows administrators to be notified on available app and Nextcloud
-updates.
-Moreover, since Nextcloud 29, this app also allows to notify users about updated apps and the changes that are included
-in the update.
+The always installed ``updatenotification`` app allows administrators to be notified on available app and Nextcloud updates.
+Moreover, since Nextcloud 29, this app also allows to notify users about updated apps and the changes that are included in the update.
 This notification is enabled by default if the app provides a changelog.
 
 To disable user notifications use:
@@ -85,8 +80,7 @@ By default guest users, when using the guests app, are not notified, to enable n
 Enabling apps via occ command
 -----------------------------
 
-In addition to managing apps via the web interface, administrators can also enable or disable apps using the `occ`
-command.
+In addition to managing apps via the web interface, administrators can also enable or disable apps using the `occ` command.
 
 To enable an app, use the following command:
 
@@ -127,8 +121,7 @@ Using custom app directories
 Use the **apps_paths** array in ``config.php`` to set any custom apps directory
 locations. The key **path** defines the absolute file system path to the app
 folder. The key **url** defines the HTTP web path to that folder, starting at
-the Nextcloud web root. The key **writable** indicates if a user can install apps
-in that folder.
+the Nextcloud web root. The key **writable** indicates if a user can install apps in that folder.
 
 Example: To ensure that the default ``/apps/`` folder only contains apps shipped
 with Nextcloud, follow this example to setup an ``/extra-apps/`` folder
@@ -163,8 +156,7 @@ which will be used to store any additional apps you install:
 Using a self hosted apps store
 ------------------------------
 
-Enables the installation of apps from a self hosted apps store. Requires that at least one of the configured apps
-directories is writeable.
+Enables the installation of apps from a self hosted apps store. Requires that at least one of the configured apps directories is writeable.
 
 To enable a self hosted apps store:
 

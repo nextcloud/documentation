@@ -5,8 +5,7 @@ Cookies
 =======
 
 Nextcloud only stores cookies that are necessary for it to function. All
-cookies are set by your Nextcloud server directly — no third-party cookies
-are involved.
+cookies are set by your Nextcloud server directly — no third-party cookies are involved.
 
 Under GDPR, only cookies that store or transmit personal data require a legal
 basis or consent. Of the cookies listed below, only the remember-me cookies

@@ -16,8 +16,7 @@ Front-end changes
 Status colors are now based on secondary styling
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The status colors like ``error``, ``success`` or ``warning`` are now based on the secondary style rather than the
-primary style.
+The status colors like ``error``, ``success`` or ``warning`` are now based on the secondary style rather than the primary style.
 This means they are now much lighter and thus cannot be used for usage such as text or border colors.
 To mitigate this following new CSS variables are introduced:
 
@@ -28,8 +27,7 @@ To mitigate this following new CSS variables are introduced:
 - ``--color-border-success`` to be used as border color for elements having a success state such as an input was saved
   or similar.
 
-Please note that there are no text and border variants for ``warning`` and ``info`` as we design wise discourage them on
-text and borders.
+Please note that there are no text and border variants for ``warning`` and ``info`` as we design wise discourage them on text and borders.
 
 Additionally as sometimes elements need a status color with proper contrast we now provide following variables for
 status elements like icons:

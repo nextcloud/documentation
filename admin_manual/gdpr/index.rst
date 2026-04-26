@@ -6,8 +6,7 @@ GDPR compliance
 
 Nextcloud is designed to be operated fully on-premises, keeping personal data
 under your organisation's control. This chapter provides guidance for
-administrators on meeting their obligations under the General Data Protection
-Regulation (GDPR).
+administrators on meeting their obligations under the General Data Protection Regulation (GDPR).
 
 .. note::
    This documentation describes Nextcloud's built-in capabilities. It does not

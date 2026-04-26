@@ -5,8 +5,7 @@ Responding to data subject requests
 =====================================
 
 GDPR grants individuals several rights over their personal data. This page
-describes how to fulfil the most common requests using Nextcloud's built-in
-tools.
+describes how to fulfil the most common requests using Nextcloud's built-in tools.
 
 You must respond to subject access requests within **one month**. If a request
 is complex or you receive a high volume, you can extend this by a further two

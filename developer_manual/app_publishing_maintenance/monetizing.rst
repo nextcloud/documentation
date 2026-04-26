@@ -7,8 +7,7 @@ Monetizing your app
 .. sectionauthor:: Edward Ly <contact@edward.ly>
 
 
-The Nextcloud app store offers various features that enable app developers to receive some financial compensation for
-their work.
+The Nextcloud app store offers various features that enable app developers to receive some financial compensation for their work.
 
 Donations
 ---------
@@ -24,8 +23,7 @@ The currently supported types include ``paypal`` and ``stripe``.
 Having a type will display the corresponding service logo next to the donation link (or a generic logo if the type is
 not specified or is set to ``other``).
 If a link/button title is not specified, it defaults to ``Donate to support this app``.
-These buttons will appear in the appstore and in the app settings, and clicking on them will open their links in a new
-browser tab.
+These buttons will appear in the appstore and in the app settings, and clicking on them will open their links in a new browser tab.
 
 .. note:: All donations received go directly to the developers. Nextcloud does not keep any commissions.
 

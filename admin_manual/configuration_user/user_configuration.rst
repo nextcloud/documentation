@@ -194,8 +194,7 @@ trash bin is set at 50% of quota. Deleted file aging is set at 30 days. When
 deleted files exceed 50% of quota then the oldest files are removed until the
 total is below 50%.
 
-When version control is enabled, the older file versions are not counted
-against quotas.
+When version control is enabled, the older file versions are not counted against quotas.
 
 When a user creates a public share via URL, and allows uploads, any uploaded
 files count against that user's quota.
@@ -221,8 +220,7 @@ activate the configuration option files_sharing:hide_disabled_user_shares::
  occ config:app:set files_sharing hide_disabled_user_shares --value yes
 
 You will find all disabled users in the **disabled**-section on the left pane.
-Enabling users is as easy as disabling them. Just click on the "..."-menu, and
-select **Enable**.
+Enabling users is as easy as disabling them. Just click on the "..."-menu, and select **Enable**.
 
 Deleting users
 --------------

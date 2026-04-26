@@ -166,7 +166,6 @@ Tests user-related LDAP settings::
 ldap\:show-remnants
 ^^^^^^^^^^^^^^^^^^^
 
-Used to cleaning up the LDAP mappings table, and is
-documented in :doc:`../configuration_user/user_auth_ldap_cleanup`.
+Used to cleaning up the LDAP mappings table, and is documented in :doc:`../configuration_user/user_auth_ldap_cleanup`.
 
 

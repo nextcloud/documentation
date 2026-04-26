@@ -142,8 +142,7 @@ List all background jobs registered in the database::
  +----+------------------------------------------------------+---------------------------+------------+
 
 Use ``-c`` / ``--class`` to filter by job class, ``-l`` / ``--limit`` to
-control how many jobs are shown (default: 500), and ``-o`` / ``--offset`` to
-page through results.
+control how many jobs are shown (default: 500), and ``-o`` / ``--offset`` to page through results.
 
 background-job\:worker
 """""""""""""""""""""""
@@ -511,8 +510,7 @@ Example output::
    ✓ Internet connectivity
    ...
 
-Use ``--output=json_pretty`` for machine-readable output suitable for
-automated monitoring.
+Use ``--output=json_pretty`` for machine-readable output suitable for automated monitoring.
 
 
 .. _share_operations_label:
@@ -704,8 +702,7 @@ Filter by status (0=UNKNOWN, 1=SCHEDULED, 2=RUNNING, 3=SUCCESSFUL, 4=FAILED,
 
  sudo -E -u www-data php occ taskprocessing:task:list --status 4
 
-Other available filters: ``--appId``, ``--customId``, ``--scheduledAfter``,
-``--endedBefore``.
+Other available filters: ``--appId``, ``--customId``, ``--scheduledAfter``, ``--endedBefore``.
 
 taskprocessing\:task\:stats
 """"""""""""""""""""""""""""
@@ -842,8 +839,7 @@ Command line installation
 -------------------------
 
 These commands are only available before Nextcloud has been installed, after
-you have unpacked the archive and copied Nextcloud into the appropriate
-directories.
+you have unpacked the archive and copied Nextcloud into the appropriate directories.
 
 Display the available installation options::
 

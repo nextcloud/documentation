@@ -64,8 +64,7 @@ configured on your client.
    Please note that this will also erase some of your settings about which
    files to download.
 
-See https://github.com/owncloud/client/issues/5226 for more discussion of this
-issue.
+See https://github.com/owncloud/client/issues/5226 for more discussion of this issue.
 
 "Connection closed" message when syncing files
 ----------------------------------------------
@@ -147,8 +146,7 @@ Log Files
 Effectively debugging software requires as much relevant information as can be
 obtained.  To assist the Nextcloud support personnel, please try to provide as
 many relevant logs as possible. Log output can help  with tracking down
-problems and, if you report a bug, log output can help to resolve an issue more
-quickly.
+problems and, if you report a bug, log output can help to resolve an issue more quickly.
 
   .. warning:: Log files contain sensitive information. You may wish to redact sensitive details or to only share limited excerpts.
 
@@ -215,8 +213,7 @@ or directory.  This is a useful option for troubleshooting sporadic issues as
 it enables you to log large amounts of data and bypass the limited buffer
 settings associated with the log window.
 
-To enable logging to a directory, stop the client and add the following to the General section in the configuration
-file:
+To enable logging to a directory, stop the client and add the following to the General section in the configuration file:
 
 ::
 
@@ -289,8 +286,7 @@ Webserver Log Files
 
 It can be helpful to view your webserver's error log file to isolate any
 Nextcloud-related problems. For Apache on Linux, the error logs are typically
-located in the ``/var/log/apache2`` directory. Some helpful files include the
-following:
+located in the ``/var/log/apache2`` directory. Some helpful files include the following:
 
 - ``error_log`` -- Maintains errors associated with PHP code.
 - ``access_log`` -- Typically records all requests handled by the server; very
@@ -305,8 +301,7 @@ Core Dumps
 
 On macOS and Linux systems, and in the unlikely event the client software
 crashes, the client is able to write a core dump file.  Obtaining a core dump
-file can assist Nextcloud Customer Support tremendously in the debugging
-process.
+file can assist Nextcloud Customer Support tremendously in the debugging process.
 
 To enable the writing of core dump files, you must define the
 ``OWNCLOUD_CORE_DUMP`` environment variable on the system.

@@ -23,8 +23,7 @@ The `OIDC Identity Provider community app <https://apps.nextcloud.com/apps/oidc>
 can be installed to make Nextcloud an identity provider for other services.
 
 This app will allow any Nextcloud user (managed by any user backend) to authenticate during an Oidc login flow.
-This is useful if you want your Nextcloud instance to be the authority regarding authentication and user profile data
-among multiple services.
+This is useful if you want your Nextcloud instance to be the authority regarding authentication and user profile data among multiple services.
 
 Bearer token validation
 -----------------------

@@ -54,8 +54,7 @@ relevant github actions in our `nextcloud template repository <https://github.co
 Static analysis
 ---------------
 
-`Psalm`_ is a static analysis tool that can check if your app code uses all types correctly, like if classes and methods
-exist.
+`Psalm`_ is a static analysis tool that can check if your app code uses all types correctly, like if classes and methods exist.
 For the basic setup see the `Psalm`_ website. In order to let Psalm know about Nextcloud interfaces (the OCP namespace),
 you can install the `API package <https://packagist.org/packages/nextcloud/ocp>`_.
 Afterwards you'll be able to check the app with the following ``psalm.xml`` that should be put into the root of the app.

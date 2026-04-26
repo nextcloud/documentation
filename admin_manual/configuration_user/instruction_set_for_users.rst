@@ -511,8 +511,7 @@ XML output
 Promote user to subadmin
 ------------------------
 
-Makes a user the subadmin of a group. Authentication is done by sending a Basic
-HTTP Authorization header.
+Makes a user the subadmin of a group. Authentication is done by sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/subadmins**
 

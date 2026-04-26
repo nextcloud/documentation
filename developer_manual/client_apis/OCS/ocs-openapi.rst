@@ -2,8 +2,7 @@
 OCS OpenAPI tutorial
 ====================
 
-This page explains how to add OpenAPI support to your app so you can automatically generate an OpenAPI specification
-from your code.
+This page explains how to add OpenAPI support to your app so you can automatically generate an OpenAPI specification from your code.
 
 Please read the whole tutorial before starting to adapt your app.
 
@@ -440,8 +439,7 @@ responses and will not be represented correctly in the extracted OpenAPI specifi
 DO NOT use the ``addHeader`` (use ``setHeaders``)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Psalm cannot trace headers set via ``addHeader()``, so they cannot be validated or included correctly in the extracted
-specification.
+Psalm cannot trace headers set via ``addHeader()``, so they cannot be validated or included correctly in the extracted specification.
 Use the ``setHeaders`` method instead.
 
 .. collapse:: Examples
@@ -539,8 +537,7 @@ Let's imagine you built a Todo list app for Nextcloud and have the following con
         }
     }
 
-What you want to do now is to firstly create the correct parameter annotations and add descriptions. It could look like
-this:
+What you want to do now is to firstly create the correct parameter annotations and add descriptions. It could look like this:
 
 .. code-block:: php
 
@@ -619,8 +616,7 @@ The return type for [`DataResponse`](https://github.com/nextcloud/server/blob/ma
 +--------------------------+----------------------------+
 
 Afterwards you can add the return types to all the other methods.
-If two different status codes return the same data structure and headers, you can use the union operator to indicate it:
-``Http::STATUS_BAD_REQUEST|Http::STATUS_NOT_FOUND``.
+If two different status codes return the same data structure and headers, you can use the union operator to indicate it: ``Http::STATUS_BAD_REQUEST|Http::STATUS_NOT_FOUND``.
 
 If you wonder about the return type syntax, the psalm documentation on [typing in Psalm](https://psalm.dev/docs/annotating_code/typing_in_psalm/) might be helpful.
 
@@ -690,8 +686,7 @@ Constants are available in ``OCP\AppFramework\Http\Attribute\OpenAPI::SCOPE_*`` 
 A controller and methods can have multiple scopes, however when a method has the attribute set,
 all scopes from the controller are ignored.
 
-Methods that require admin permissions due to missing ``#[NoAdminRequired]`` or a present ``#[PublicPage]`` attribute or
-the
+Methods that require admin permissions due to missing ``#[NoAdminRequired]`` or a present ``#[PublicPage]`` attribute or the
 matching annotation, default to the ``OpenAPI::SCOPE_ADMINISTRATION`` scope.
 
 .. code-block:: php
@@ -704,8 +699,7 @@ matching annotation, default to the ``OpenAPI::SCOPE_ADMINISTRATION`` scope.
         ...
     }
 
-The different scopes will be saved as ``openapi.json`` for the default scope and ``openapi-{scope}.json`` for the
-others.
+The different scopes will be saved as ``openapi.json`` for the default scope and ``openapi-{scope}.json`` for the others.
 
 Tags
 ----
@@ -757,8 +751,7 @@ To import and use the type definition you have to import it in your controller:
         ...
     }
 
-Now you can replace every occurrence of ``array{id: int, title: string, description: ?string, image: ?string}`` with
-``TodoItem``.
+Now you can replace every occurrence of ``array{id: int, title: string, description: ?string, image: ?string}`` with ``TodoItem``.
 
 Handle exceptions
 -----------------
@@ -801,8 +794,7 @@ Ignore certain endpoints
 The tool already ignores all the endpoints that are not reachable from the outside, but some apps have reachable
 endpoints that are not APIs (e.g. serving some HTML).
 To ignore those you can add the ``#[OpenAPI(scope: OpenAPI::SCOPE_IGNORE)]`` attribute to the controller method
-or the controller class. There is also a deprecated ``#[IgnoreOpenAPI]`` attribute (deprecated since Nextcloud 28) for
-compatibility, but
+or the controller class. There is also a deprecated ``#[IgnoreOpenAPI]`` attribute (deprecated since Nextcloud 28) for compatibility, but
 ``OpenAPI::SCOPE_IGNORE`` should be preferred:
 
 .. code-block:: php
@@ -822,8 +814,7 @@ compatibility, but
 Expose capabilities
 -------------------
 
-Imagine we take the same Todo app of the previous example and want to expose some capabilities to let clients know what
-they can expect.
+Imagine we take the same Todo app of the previous example and want to expose some capabilities to let clients know what they can expect.
 
 .. code-block:: php
 

@@ -23,8 +23,7 @@ Doing so also allows users to enforce dark or light theme, high contrast or othe
 Primary color variables
 -----------------------
 
-The primary color is the main accent color that can be configured by the administrator or the user (if user theming is
-enabled).
+The primary color is the main accent color that can be configured by the administrator or the user (if user theming is enabled).
 
 +----------------------------------------------+------------------+-------------------------------------------------------------------------------------------+
 | Variable                                     | Example          | Usage                                                                                     |

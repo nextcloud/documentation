@@ -52,8 +52,7 @@ Filenames
 
 We do not have strict rules for filenames, either kebab case or camel case will work.
 
-Yet we strongly recommend for Vue apps to follow the Vue recommendations and use the same filename as the component
-name.
+Yet we strongly recommend for Vue apps to follow the Vue recommendations and use the same filename as the component name.
 E.g. if your component is called ``AppRoot`` then the file should be called ``AppRoot.vue``.
 
 Code style

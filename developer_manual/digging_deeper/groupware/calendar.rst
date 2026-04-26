@@ -61,8 +61,7 @@ Study the interface ``\OCP\Calendar\ICalendarQuery`` to learn more about other q
 Calendars
 ~~~~~~~~~
 
-You can access calendars through the ``IManager``. :ref:`Inject <dependency-injection>` the service, then use the
-``getCalendarsForPrincipal`` method.
+You can access calendars through the ``IManager``. :ref:`Inject <dependency-injection>` the service, then use the ``getCalendarsForPrincipal`` method.
 
 You can either query all calendars of the principal if you omit the second argument, or look for specific calendars
 only. See the examples below.
@@ -105,16 +104,14 @@ only. See the examples below.
 
     }
 
-The returned objects implement ``\OCP\Calendar\ICalendar``. Study the interface methods to discover what data is
-available.
+The returned objects implement ``\OCP\Calendar\ICalendar``. Study the interface methods to discover what data is available.
 
 .. note:: All calendars are by default only readable, therefore ``ICalendar`` does not offer methods for mutation. Some of the calendars are mutable, however, and they may further extend the interface ``\OCP\Calendar\ICreateFromString``.
 
 Create calendar events
 ----------------------
 
-Calendar events can either be imported from raw ICS strings or built programmatically using the
-``ICalendarEventBuilder`` interface.
+Calendar events can either be imported from raw ICS strings or built programmatically using the ``ICalendarEventBuilder`` interface.
 Please consider the example below to see both methods in action.
 
 .. code-block:: php

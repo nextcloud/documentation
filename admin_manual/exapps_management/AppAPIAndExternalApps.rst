@@ -6,8 +6,7 @@ AppAPI and External Apps
 
 Previously, Nextcloud only supported applications written in the PHP programming language.
 In order to support a wider range of use cases,
-an ecosystem for **ExApps** (short for "External Apps") was introduced, allowing for the installation of apps as Docker
-containers.
+an ecosystem for **ExApps** (short for "External Apps") was introduced, allowing for the installation of apps as Docker containers.
 
 Most of our :doc:`Artificial Intelligence <../ai/index>` (AI) apps are developed as ExApps and thus may require some
 preparation of your Nextcloud instance before you can install them.
@@ -55,8 +54,7 @@ HaRP
 8. Set up a location redirect in your Nextcloud's main proxy configuration to redirect requests to the HaRP container. Some examples for popular reverse proxies can be found in `Configuring Your Reverse Proxy <https://github.com/nextcloud/harp?tab=readme-ov-file#configuring-your-reverse-proxy>`_ in the HaRP readme.
 9. Test the whole setup with "Test deploy" in the 3-dots menu of the Deploy Daemon.
 
-This is suitable for local setups where the Nextcloud server and the ExApps are on the same machine or in the same
-docker network.
+This is suitable for local setups where the Nextcloud server and the ExApps are on the same machine or in the same docker network.
 The ExApps in this configuration or the ExApp server need not expose any ExApp related port (23000-23999) necessarily to
 the host, nor do they need to be reachable from the host. They should be able to reach the HaRP container at the FRP
 port and the Nextcloud instance.

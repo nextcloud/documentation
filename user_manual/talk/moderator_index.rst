@@ -2,8 +2,7 @@ For moderators
 ==============
 
 As a moderator you can create and configure conversations, manage participants,
-run webinars with a lobby, record calls, set up breakout rooms, and integrate
-external chat services.
+run webinars with a lobby, record calls, set up breakout rooms, and integrate external chat services.
 
 .. note::
    Moderator-only actions inside conversations and calls are also described

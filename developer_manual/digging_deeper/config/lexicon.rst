@@ -4,8 +4,7 @@ Lexicon
 
 .. versionadded:: 32
 
-Since v32, Nextcloud provides a way to centralize the definition of your app's configuration keys and values in a single
-place.
+Since v32, Nextcloud provides a way to centralize the definition of your app's configuration keys and values in a single place.
 
 
 .. _concept-overview:
@@ -31,8 +30,7 @@ Details about each config key are:
 Registering your Lexicon
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Lexicon is set in a local class that implements `\OCP\Config\Lexicon\ILexicon` and registered from your
-``Application.php``:
+The Lexicon is set in a local class that implements `\OCP\Config\Lexicon\ILexicon` and registered from your ``Application.php``:
 
 .. code-block:: php
 
@@ -105,8 +103,7 @@ Each config key is defined in a object through those arguments:
 Preset
 ^^^^^^
 
-With 32, Nextcloud comes with a list of `preset` to ease the default user experience, based on the context of the
-instance.
+With 32, Nextcloud comes with a list of `preset` to ease the default user experience, based on the context of the instance.
 The selection of a preset is optional and can be done right after the setup of Nextcloud, and any time in the future
 using this occ command:
 

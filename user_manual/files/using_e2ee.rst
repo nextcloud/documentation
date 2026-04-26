@@ -3,8 +3,7 @@ Using end-to-end encryption
 =============================================
 
 If enabled server side, Nextcloud provides the possibility to encrypt your files on your devices.
-This is called end-to-end encryption, or E2EE, because the files are encrypted on your device and only decrypted on your
-device.
+This is called end-to-end encryption, or E2EE, because the files are encrypted on your device and only decrypted on your device.
 The server never sees the unencrypted files, further protecting user privacy and data security.
 
 Enabling E2EE
@@ -208,8 +207,7 @@ Adding an E2EE device
 
 In the browser, first enable E2EE in the personal settings. This is needed, as E2EE is less secure in the browser,
 requiring you to fully trust the administrator to not alter the source code the browser will execute.
-E2EE folders are currently read-only. Therefore, it is not possible to add, remove, edit, or share an E2EE file from the
-browser.
+E2EE folders are currently read-only. Therefore, it is not possible to add, remove, edit, or share an E2EE file from the browser.
 
 .. image:: ../images/e2ee-web-add-1.png
     :width: 750px

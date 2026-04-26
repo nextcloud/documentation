@@ -51,8 +51,7 @@ Unregister
 Command: ``app_api:app:unregister [--rm-data] [--force] [--silent] [--] <appid>``
 
 To remove an ExApp, you can use the unregister command.
-By default, this command does *not* delete the ExApp's persistent storage (data volume) to avoid accidental removal of
-any user data.
+By default, this command does *not* delete the ExApp's persistent storage (data volume) to avoid accidental removal of any user data.
 
 Arguments
 *********

@@ -157,6 +157,5 @@ Additionally you can overwrite the ``showAuthenticate`` and ``showAuthFailed`` f
 if you do not want to use the default authentication pages.
 
 The ``authFailed`` and ``authSucceeded`` functions can be overwritten as well and are
-called depending on the if authentication passed or not. You can handle additional logging
-there for example.
+called depending on the if authentication passed or not. You can handle additional logging there for example.
 

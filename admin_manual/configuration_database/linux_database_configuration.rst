@@ -34,8 +34,7 @@ As discussed above Nextcloud is using the ``TRANSACTION_READ_COMMITTED`` transac
 level. Some database configurations are enforcing other transaction isolation levels. To avoid
 data loss under high load scenarios (e.g. by using the sync client with many clients/users and
 many parallel operations) you need to configure the transaction isolation level accordingly.
-Please refer to the `MySQL manual <https://dev.mysql.com/doc/refman/8.0/en/set-transaction.html>`_
-for detailed information.
+Please refer to the `MySQL manual <https://dev.mysql.com/doc/refman/8.0/en/set-transaction.html>`_ for detailed information.
 
 Parameters
 ----------
@@ -142,8 +141,7 @@ When using MariaDB use::
 
   mariadb -uroot -p
 
-Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the following lines and confirm them with the
-enter key:
+Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the following lines and confirm them with the enter key:
 
 ::
 
@@ -181,8 +179,7 @@ SSL for MySQL Database
 
 Enabling SSL is only necessary if your database does not reside on the same server as your Nextcloud instance.
 If you do not connect over localhost and need to allow remote connections then you should enable SSL.
-This just covers the SSL database configuration on the Nextcloud server. First you need to configure your database
-server accordingly.
+This just covers the SSL database configuration on the Nextcloud server. First you need to configure your database server accordingly.
 
 ::
 
@@ -206,8 +203,7 @@ For further services and users, we recommend to create a separate
 database or PostgreSQL instance.
 
 If you decide to use a PostgreSQL database make sure that you have installed
-and enabled the PostgreSQL extension in PHP. The PHP configuration in :file:`/etc/php7/conf.d/pgsql.ini` could look
-like this:
+and enabled the PostgreSQL extension in PHP. The PHP configuration in :file:`/etc/php7/conf.d/pgsql.ini` could look like this:
 
 ::
 
@@ -244,8 +240,7 @@ You can quit the prompt by entering::
 A Nextcloud instance configured with PostgreSQL would contain the path to the socket on
 which the database is running as the hostname, the system username the PHP process is using,
 and an empty password to access it, and the name of the database. The :file:`config/config.php` as
-created by the :doc:`../installation/installation_wizard` would therefore contain entries like
-this:
+created by the :doc:`../installation/installation_wizard` would therefore contain entries like this:
 
 ::
 
@@ -310,8 +305,7 @@ How to work around "general error: 2006 MySQL server has gone away"
 
 The database request takes too long and therefore the MySQL server times out. It's
 also possible that the server is dropping a packet that is too large. Please
-refer to the manual of your database for how to raise the configuration options
-``wait_timeout`` and/or ``max_allowed_packet``.
+refer to the manual of your database for how to raise the configuration options ``wait_timeout`` and/or ``max_allowed_packet``.
 
 Some shared hosters are not allowing the access to these config options. For such
 systems Nextcloud is providing a ``dbdriveroptions`` configuration option within your
@@ -339,8 +333,7 @@ itself works correctly, see the next question.
 How can I find out if a created user can access a database?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The easiest way to test if a database is accessible is by starting the
-command line interface:
+The easiest way to test if a database is accessible is by starting the command line interface:
 
 **MySQL**:
 

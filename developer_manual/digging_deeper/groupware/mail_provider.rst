@@ -119,8 +119,7 @@ the server repository. (lib/public/Mail/Provider)
 Providing a Mail Service
 ------------------------
 
-For your app to provide mail service to other apps, your app needs to implement two main interfaces plus interfaces for
-the supported functionality.
+For your app to provide mail service to other apps, your app needs to implement two main interfaces plus interfaces for the supported functionality.
 
 Step 1: Create a Mail Provider Class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -227,8 +226,7 @@ varies between protocols this class also needs to be extended with the appropria
 Step 3: Register the Mail Provider
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The registration is performed at the initial stages of your app being loaded by the Nextcloud system, inside the
-'AppInfo/Application.php' file
+The registration is performed at the initial stages of your app being loaded by the Nextcloud system, inside the 'AppInfo/Application.php' file
 
 .. code-block:: php
     

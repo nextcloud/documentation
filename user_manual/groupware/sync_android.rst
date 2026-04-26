@@ -46,8 +46,7 @@ With the Nextcloud mobile app
 
 Without the Nextcloud mobile app
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-If you do not want to install the Nextcloud mobile app, the following
-steps are required:
+If you do not want to install the Nextcloud mobile app, the following steps are required:
 
 1. Install `DAVx⁵ (formerly known as DAVDroid) <https://www.davx5.com/download/>`_ on your Android device, 
    `from Google Play Store <https://play.google.com/store/apps/details?id=at.bitfire.davdroid>`__ or 

@@ -164,8 +164,7 @@ Search in mailbox
 .. versionadded:: 2.1
 
 At the top of the envelope list in any mail layout, there is a search field shortcut for searching email subjects.
-Starting from ``version 3.7``, this shortcut allows you to search by subject, recipient (to), or sender (from) by
-default.
+Starting from ``version 3.7``, this shortcut allows you to search by subject, recipient (to), or sender (from) by default.
 
 
 Advanced search in mailbox
@@ -252,10 +251,8 @@ Recipient info on composer
 
 When you add your first recipient or contact in the "To" field, a right pane will appear displaying the saved profile
 details of that contact.
-Adding a second contact will collapse the list, allowing you to select and expand any contact you added to view their
-details.
-If you prefer to focus solely on writing in the composer, you can hide the right pane by clicking the expand icon in the
-top-right corner.
+Adding a second contact will collapse the list, allowing you to select and expand any contact you added to view their details.
+If you prefer to focus solely on writing in the composer, you can hide the right pane by clicking the expand icon in the top-right corner.
 To show the right pane again, simply click the minimize icon in the same location.
 
 Mention contacts
@@ -273,10 +270,8 @@ Text blocks
 
 .. versionadded:: 5.2
 
-Text blocks are predefined snippets of text that can be inserted into your email. They can be created and managed in the
-mail settings.
-They can be inserted into the composer by typing ``!`` and then selecting the block from the list or from the composer
-actions.
+Text blocks are predefined snippets of text that can be inserted into your email. They can be created and managed in the mail settings.
+They can be inserted into the composer by typing ``!`` and then selecting the block from the list or from the composer actions.
 Text blocks can be shared with users and user groups.
 
 Outbox
@@ -319,8 +314,7 @@ Add a submailbox
 
 Shared mailbox
 ~~~~~~~~~~~~~~~
-If a mailbox was shared with you with some specific rights, that mailbox will show as a new mailbox with a shared icon
-as below:
+If a mailbox was shared with you with some specific rights, that mailbox will show as a new mailbox with a shared icon as below:
 
 .. figure:: images/shared-mailbox-icon.png
 
@@ -472,8 +466,7 @@ Autoresponders
 .. versionadded:: 3.5 Autoresponder can follow system settings.
 
 The autoresponder is off by default. It can be set manually, or follow the system settings. Following system settings
-means that the long absence message entered on the :ref:`Absence settings section <groupware-absence>` is applied
-automatically.
+means that the long absence message entered on the :ref:`Absence settings section <groupware-absence>` is applied automatically.
 
 Filter
 ~~~~~~

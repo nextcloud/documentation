@@ -39,8 +39,7 @@ We have adjusted the default maximum chunk size for big file uploading.
 Previously it was set to 10MiB, it is now increased to 100MiB.
 
 Also the configuration was moved from an app configuration to the system configuration (``config.php``).
-If you set up a custom value previously the value will be automatically migrated to the system configuration during the
-update.
+If you set up a custom value previously the value will be automatically migrated to the system configuration during the update.
 But if you need to set a new custom value you need now to use the system configuration, see also
 :ref:`files_configure_max_chunk_size`.
 
@@ -60,11 +59,9 @@ See :doc:`../configuration_files/previews_configuration` for details on how to e
 AppAPI (app_api) is now a default app
 -------------------------------------
 
-Starting with Nextcloud 30.0.1, the AppAPI app is included and enabled by default. See :doc:`../exapps_management/index`
-for details.
+Starting with Nextcloud 30.0.1, the AppAPI app is included and enabled by default. See :doc:`../exapps_management/index` for details.
 
-You can disable this app in the standard manner via the *Apps* menu if you do not expect to use AppAPI integrations in
-the near future.
+You can disable this app in the standard manner via the *Apps* menu if you do not expect to use AppAPI integrations in the near future.
 
 If AppAPI is disabled, other apps that depend on it will not be visible in the app store. AppAPI-related setup checks
 will also be deactivated.

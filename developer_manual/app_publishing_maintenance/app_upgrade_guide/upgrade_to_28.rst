@@ -121,18 +121,14 @@ The details of this change can also be seen in the `pull request on GitHub <http
 ``symfony/event-dispatcher``
 ****************************
 
-Over the last 2 major versions the ``symfony/event-dispatcher`` package first deprecated and then removed the way
-Nextcloud
-server dispatched old events. This means the way we wrapped away symfony's
-``\Symfony\Component\EventDispatcher\EventDispatcherInterface``
-as well as using the ``\Symfony\Component\EventDispatcher\GenericEvent`` could not be kept alive in a backwards
-compatible way.
+Over the last 2 major versions the ``symfony/event-dispatcher`` package first deprecated and then removed the way Nextcloud
+server dispatched old events. This means the way we wrapped away symfony's ``\Symfony\Component\EventDispatcher\EventDispatcherInterface``
+as well as using the ``\Symfony\Component\EventDispatcher\GenericEvent`` could not be kept alive in a backwards compatible way.
 
 Therefore migrating from ``\Symfony\Component\EventDispatcher\EventDispatcherInterface``
 to ``\OCP\EventDispatcher\IEventDispatcher`` (exists since Nextcloud 17) is required to be compatible with Nextcloud 28.
 All code places that dispatched a ``\Symfony\Component\EventDispatcher\GenericEvent`` have been adjusted
-and have ``\OCP\EventDispatcher\Event`` based dedicated event now that is dispatched as a typed-event so all available
-parameters are documented.
+and have ``\OCP\EventDispatcher\Event`` based dedicated event now that is dispatched as a typed-event so all available parameters are documented.
 
 The details of this change can also be seen in the todo items that are linked from the `pull request on GitHub <https://github.com/nextcloud/server/pull/38546>`__.
 

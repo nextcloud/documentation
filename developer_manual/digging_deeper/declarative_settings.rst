@@ -30,8 +30,7 @@ Additionally, you can register multiple declarative parameter schemes per applic
 Class-based schema registration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To register a declarative settings schema using a class, you need to create a class that implements the
-``OCP\Settings\IDeclarativeSettingsForm`` interface:
+To register a declarative settings schema using a class, you need to create a class that implements the ``OCP\Settings\IDeclarativeSettingsForm`` interface:
 
 .. code-block:: php
 	:emphasize-lines: 8,11
@@ -104,8 +103,7 @@ After that, you can register schema class using ``IRegistrationContext->register
 Event-based schema registration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To register a declarative settings schema using an event system you need to implement event listener for
-``OCP\Settings\Events\DeclarativeSettingsRegisterFormEvent``:
+To register a declarative settings schema using an event system you need to implement event listener for ``OCP\Settings\Events\DeclarativeSettingsRegisterFormEvent``:
 
 .. code-block:: php
 
@@ -176,14 +174,12 @@ There are two types of schema ``storage_type`` supported:
 Internal storage type
 ---------------------
 
-Internal (``storage_type='internal'``) storage type is handled by core, you don't have to implement additional handlers
-for that.
+Internal (``storage_type='internal'``) storage type is handled by core, you don't have to implement additional handlers for that.
 
 Section type admin
 ******************
 
-For declarative settings schema with ``section_type`` set to ``DeclarativeSettingsTypes::SECTION_TYPE_ADMIN`` - settings
-values
+For declarative settings schema with ``section_type`` set to ``DeclarativeSettingsTypes::SECTION_TYPE_ADMIN`` - settings values
 are stored in ``appconfig`` table.
 
 Accessible via ``OCP\IConfig->getAppValue`` interface.
@@ -191,8 +187,7 @@ Accessible via ``OCP\IConfig->getAppValue`` interface.
 Section type personal
 *********************
 
-For declarative settings schema with ``section_type`` set to ``DeclarativeSettingsTypes::SECTION_TYPE_PERSONAL`` -
-settings values
+For declarative settings schema with ``section_type`` set to ``DeclarativeSettingsTypes::SECTION_TYPE_PERSONAL`` - settings values
 are user specific and stored in ``preferences`` table.
 
 Accessible via ``OCP\IConfig->getUserValue`` interface.
@@ -461,8 +456,7 @@ Select and Multi-select
 Sensitive field type
 --------------------
 
-Since Nextcloud 32 there is a new field attribute ``sensitive: true/false`` available for
-``DeclarativeSettingsTypes::TEXT``, ``DeclarativeSettingsTypes::PASSWORD`` types.
+Since Nextcloud 32 there is a new field attribute ``sensitive: true/false`` available for ``DeclarativeSettingsTypes::TEXT``, ``DeclarativeSettingsTypes::PASSWORD`` types.
 The values of such fields are stored in an encrypted form in the database and are not exposed to the UI.
 
 

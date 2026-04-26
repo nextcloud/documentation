@@ -39,8 +39,7 @@ distribution this will either be
 * **/srv/http**
 
 
-Then identify the user and group the Web server is running as and the Apache user and group for the **chown** command
-will either be
+Then identify the user and group the Web server is running as and the Apache user and group for the **chown** command will either be
 
 * **http**
 * **www-data**
@@ -101,8 +100,7 @@ Install the viewer app::
   git clone https://github.com/nextcloud/viewer.git
 
 Make sure to use a version compatible with the server by checking out the matching tag.
-You can check the ``appinfo/info.xml`` of the app to see if its ``min-version`` field is compatible with the current
-server.
+You can check the ``appinfo/info.xml`` of the app to see if its ``min-version`` field is compatible with the current server.
 
 When upgrading the server code you might need to upgrade the app code as well before running ``occ upgrade``.
 
@@ -138,8 +136,7 @@ or to prune all merged branches, you would execute this::
 
   find . -maxdepth 3 -type d -name .git -exec sh -c 'cd "{}"/../ && pwd && git remote prune origin' \;
 
-It is even easier if you create alias from these commands in case you want to avoid retyping those each time you need
-them.
+It is even easier if you create alias from these commands in case you want to avoid retyping those each time you need them.
 
 
 .. _GitHub: https://github.com/nextcloud

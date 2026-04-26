@@ -51,8 +51,7 @@ URL using the following command::
 
   nextcloudcmd [OPTIONS...] sourcedir nextcloudurl
 
-where ``sourcedir`` is the local directory and ``nextcloudurl`` is
-the server URL.
+where ``sourcedir`` is the local directory and ``nextcloudurl`` is the server URL.
 
 Other command line switches supported by ``nextcloudcmd`` include the following:
 

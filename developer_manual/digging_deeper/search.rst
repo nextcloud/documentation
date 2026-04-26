@@ -5,8 +5,7 @@ Search
 ======
 
 Nextcloud 20 offers a new **unified search**. The overall idea is to have one combined view for search, but have results
-of any data source displayed there. Hence this is logic is built on a pluggable architecture where apps register their
-search providers.
+of any data source displayed there. Hence this is logic is built on a pluggable architecture where apps register their search providers.
 
 Concept overview
 ----------------
@@ -21,8 +20,7 @@ Hence the search process consists of two steps.
  1. Fetch the current set of search provider IDs
  2. Fetch each provider’s search results
 
-These two steps have to be run consecutively, but the individual requests in the second step can be dispatched and
-processed concurrently.
+These two steps have to be run consecutively, but the individual requests in the second step can be dispatched and processed concurrently.
 
 Fetching provider IDs
 ^^^^^^^^^^^^^^^^^^^^^
@@ -177,8 +175,7 @@ long as it’s loadable by Nextcloud’s :ref:`dependency injection container<de
 Advanced search provider
 ------------------------ 
 
-Since Nextcloud 28.0, it is possible to use advanced search providers by implementing
-``\OCP\Search\IFilteringProvider``.
+Since Nextcloud 28.0, it is possible to use advanced search providers by implementing ``\OCP\Search\IFilteringProvider``.
 This interface allows to supports other filtering types.
 
 .. code-block:: php
@@ -238,15 +235,13 @@ This interface allows to supports other filtering types.
 ``getSupportedFilters`` lists the filters supported by the provider. If filters send by client are not supported, the
 provider will not receive the request.
 
-``getCustomFilters`` allows to declare specific filters. In current state, the specific filters will only be available
-in the API.
+``getCustomFilters`` allows to declare specific filters. In current state, the specific filters will only be available in the API.
 
 External search provider
 ------------------------
 
 Since Nextcloud 32, to improve privacy, you can extend your provider with the ``\OCP\Search\IExternalProvider``
-interface and implement the ``isExternalProvider()`` method to indicate that the search is performed on external
-(3rd-party) resources.
+interface and implement the ``isExternalProvider()`` method to indicate that the search is performed on external (3rd-party) resources.
 In the Unified Search UI, searching through these providers is disabled by default (via toggle switch).
 
 
@@ -375,8 +370,7 @@ Each of the result entry has
 * A boolean rounded, whether the thumbnail should be rounded, e.g. when it’s an avatar
 
 Apps **may** return the full result in ``search``, but in most cases the size of the result set can become too big to
-fit into one HTTP request and is complicated to display to the user, hence the set should be split into chunks – it
-should be **paginated**.
+fit into one HTTP request and is complicated to display to the user, hence the set should be split into chunks – it should be **paginated**.
 
 Pagination
 ^^^^^^^^^^
@@ -551,8 +545,7 @@ in those clients, hence it’s possible to add optional string attributes to eac
 Declare in-app search 
 ---------------------
 
-If your application also have in-app search (like ``mail`` or ``talk``), your provider can also implements interface
-``\OCP\Search\IInAppSearch``.
+If your application also have in-app search (like ``mail`` or ``talk``), your provider can also implements interface ``\OCP\Search\IInAppSearch``.
 
 This will add a link for it after search results.
 

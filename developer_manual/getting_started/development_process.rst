@@ -7,8 +7,7 @@ This page gives an overview of how Nextcloud code is developed.
 Source Code Version Control
 ---------------------------
 
-Nextcloud uses `git <https://git-scm.com/>`_ to manage revisions of the code. Software components have their own
-repositories.
+Nextcloud uses `git <https://git-scm.com/>`_ to manage revisions of the code. Software components have their own repositories.
 
 Branch Names
 ^^^^^^^^^^^^
@@ -93,8 +92,7 @@ If appropriate, mention any major concerns in the backport PR so other code revi
 Ideally, when triggering/requesting a backport, also explain *why* the backport is necessary (if it's not obvious). This
 will further help reviewers.
 
-TLDR: Backporting bug fixes to older versions of code can have unintended side effects. Not every fix needs to be
-backported. Use caution.
+TLDR: Backporting bug fixes to older versions of code can have unintended side effects. Not every fix needs to be backported. Use caution.
 
 Automatic Backport
 ******************

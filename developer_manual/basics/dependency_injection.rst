@@ -353,8 +353,7 @@ implementation needs to be wired up in the container:
 Predefined core services
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following parameter names and type hints can be used to inject core services instead of using
-**$container->getServer()->getServiceX()**
+The following parameter names and type hints can be used to inject core services instead of using **$container->getServer()->getServiceX()**
 
 Parameters:
 
@@ -441,8 +440,7 @@ Which classes should be added
 -----------------------------
 
 In general all of the app's controllers need to be registered inside the container. Then the following question is: What
-goes into the constructor of the controller? Pass everything into the controller constructor that matches one of the
-following criteria:
+goes into the constructor of the controller? Pass everything into the controller constructor that matches one of the following criteria:
 
 * It does I/O (database, write/read to files)
 * It is a global (e.g. $_POST, etc. This is in the request class by the way)
@@ -483,7 +481,6 @@ Accessing the container from anywhere
 
 Sometimes it can be hard to inject some service inside legacy code, in these cases
 you can use :code:`OCP\Server::get(MyService::class)`. This should only be used as
-the last resort, as this makes your code more complicated to unit test and is
-considered an anti-pattern.
+the last resort, as this makes your code more complicated to unit test and is considered an anti-pattern.
 
 

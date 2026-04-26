@@ -6,8 +6,7 @@ OCS Text-To-Image API
 
 .. versionadded:: 28
 
-The OCS Text-To-Image API allows you to run image generation tasks implemented by apps using  :ref:`the backend
-Text-To-Image API<text2image>`.
+The OCS Text-To-Image API allows you to run image generation tasks implemented by apps using  :ref:`the backend Text-To-Image API<text2image>`.
 
 The base URL for all calls to this API is: ``<nextcloud_base_url>/ocs/v2.php/text2image/``
 
@@ -55,8 +54,7 @@ Schedule a task
 |``identifier``     | string      | An app-defined identifier for the task (optional)                              |
 +-------------------+-------------+--------------------------------------------------------------------------------+
 
-If possible the task will be executed while the request is processed on the server, otherwise it is scheduled as a
-background job.
+If possible the task will be executed while the request is processed on the server, otherwise it is scheduled as a background job.
 
 * Response:
     - Status code:

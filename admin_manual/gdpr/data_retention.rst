@@ -6,8 +6,7 @@ Data retention
 
 Nextcloud retains several categories of data beyond the point when a user
 considers them "deleted." This page describes the configurable retention
-periods and how to align them with your data minimisation obligations under
-GDPR Article 5(1)(e).
+periods and how to align them with your data minimisation obligations under GDPR Article 5(1)(e).
 
 All settings below are configured in ``config/config.php``. See
 :doc:`../configuration_server/config_sample_php_parameters` for the full
@@ -112,8 +111,7 @@ and other personal data. Storing them indefinitely is not considered legitimate
 usage under GDPR. Rotate logs regularly and encrypt archived logs to protect
 the personal data they contain.
 
-A minimal ``logrotate`` configuration that rotates daily and keeps logs for a
-limited period:
+A minimal ``logrotate`` configuration that rotates daily and keeps logs for a limited period:
 
 .. code-block:: text
 
@@ -129,8 +127,7 @@ limited period:
 Adjust the ``rotate`` value to match your legal obligations and security
 requirements. If you are legally required to retain logs for a specific period
 (e.g. for compliance with national cybersecurity laws), that overrides the
-minimisation principle — but you must disclose the retention period in your
-privacy policy.
+minimisation principle — but you must disclose the retention period in your privacy policy.
 
 .. note::
    Nextcloud's brute-force protection stores IP addresses of failed logins, but

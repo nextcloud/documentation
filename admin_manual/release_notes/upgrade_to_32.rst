@@ -28,8 +28,7 @@ During the upgrade to Nextcloud 32 the system address book might become disabled
 the default limit of 5000 users. This is to prevent performance issues. You can re-enable the system address book using
 the command line or administration interface.
 
-For more information about the system address book, see the documentation. :ref:`System Address Book
-<system-address-book>`
+For more information about the system address book, see the documentation. :ref:`System Address Book <system-address-book>`
 
 Previews
 --------
@@ -44,8 +43,7 @@ AppAPI (app_api) setup checks expanded
 Starting with Nextcloud 30.0.1, the AppAPI app is included and enabled by default. See :doc:`../exapps_management/index`
 for details. Additionally, as of version 32.0.0, the AppAPI has expanded its setup checks.
 
-You can disable this app in the standard manner via the *Apps* menu if you do not expect to use AppAPI integrations in
-the near future.
+You can disable this app in the standard manner via the *Apps* menu if you do not expect to use AppAPI integrations in the near future.
 
 If AppAPI is disabled, other apps that depend on it will not be visible in the app store. AppAPI-related setup checks
 will also be deactivated.
@@ -56,8 +54,7 @@ S3 integrity protections enabled, configuration update may be needed
 The AWS SDK for PHP was updated and now supports the data integrity protections for S3.
 
 >= Nextcloud 32.0.2: If your S3 backend does not support the data integrity protection, you can disable it by adding
-``'request_checksum_calculation' => 'when_required',`` and ``'response_checksum_validation' => 'when_required',`` to the
-object store configuration.
+``'request_checksum_calculation' => 'when_required',`` and ``'response_checksum_validation' => 'when_required',`` to the object store configuration.
 
 >= Nextcloud 32.0.3: S3 data integrity protections are disabled by default and are now opt-in.
 

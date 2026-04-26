@@ -20,8 +20,7 @@ To access your personal settings:
    the server. These links do not appear to a non-administrator user.
 
 The options listed in the Personal Settings Page depend on the applications that
-are enabled by the administrator. Some of the features you will see
-include the following:
+are enabled by the administrator. Some of the features you will see include the following:
 
 * Usage and available quota
 * Manage your profile picture

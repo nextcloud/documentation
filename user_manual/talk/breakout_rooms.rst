@@ -11,8 +11,7 @@ of the call can create multiple breakout rooms and assign participants to each r
 Configure breakout rooms
 ------------------------
 
-To create breakout rooms, you need to be a moderator in a group conversation. Click on the top-bar menu and click on
-``Setup breakout rooms``.
+To create breakout rooms, you need to be a moderator in a group conversation. Click on the top-bar menu and click on ``Setup breakout rooms``.
 
 .. image:: images/talk-breakout-rooms-setup.png
     :width: 400px
@@ -46,8 +45,7 @@ From the sidebar header, you can:
 .. image:: images/talk-breakout-rooms-sidebar-header.png
     :width: 400px
 
-From the breakout room element in the sidebar, you can also join a particular breakout room or send a message to a
-specific room.
+From the breakout room element in the sidebar, you can also join a particular breakout room or send a message to a specific room.
 
 .. image:: images/talk-breakout-rooms-sidebar-item.png
     :width: 400px

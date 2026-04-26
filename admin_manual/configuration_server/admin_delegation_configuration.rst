@@ -26,8 +26,7 @@ Usage
 ~~~~~
 
 By default only members of the ``admin`` group can access *Administration settings*. You can
-create additional user groups (or use existing ones) and then grant these groups access to specific
-settings.
+create additional user groups (or use existing ones) and then grant these groups access to specific settings.
 
 While logged in to an account that is a member of the ``admin`` group, go to
 *Administration settings* -> *Administration privilege*. You will be presented with the list of
@@ -37,8 +36,7 @@ settings pages and sections, including for any installed apps, that support dele
 
 By clicking on the combo box, you will be able to choose which groups are able to access the
 selected settings. You can revoke access at any time by removing the group from the selection
-(or, if you wish only to revoke access for an individual account, by removing that account from
-the configured group).
+(or, if you wish only to revoke access for an individual account, by removing that account from the configured group).
 
 .. tip::
   Not every settings page or section supports delegation. This is either because delegating

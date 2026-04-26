@@ -28,8 +28,7 @@ server uses a self-signed certificate.
    is not set to ``0`` in your ``php.ini``. See :ref:`label-phpinfo` to learn 
    how to find the right ``php.ini`` file to edit.
 
-See :doc:`../external_storage_configuration_gui` for additional mount 
-options and information.
+See :doc:`../external_storage_configuration_gui` for additional mount options and information.
 
 FTP uses the password authentication scheme; see :doc:`auth_mechanisms` for 
 more information on authentication schemes.

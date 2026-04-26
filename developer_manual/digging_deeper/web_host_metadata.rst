@@ -30,8 +30,7 @@ A well known handler is a simple class that implements the ``\OCP\Http\WellKnown
 
 The basic concept is that every handler will be called consecutively. A handler can react to the request and return a
 new response object or modify the one of the previous handler. The first handler will get a ``$previousResponse`` of
-null. The second handler gets whatever the first handler returned, so either ``null`` or an instance of
-``\OCP\Http\WellKnown\IResponse``.
+null. The second handler gets whatever the first handler returned, so either ``null`` or an instance of ``\OCP\Http\WellKnown\IResponse``.
 
 
 Example generic handler

@@ -7,11 +7,9 @@ Release notes
 Critical changes
 ----------------
 
-Once you've installed and configured your server, you will want to keep it up to date with the latest Nextcloud
-features.
+Once you've installed and configured your server, you will want to keep it up to date with the latest Nextcloud features.
 
-These sub pages will cover the most important changes in Nextcloud, as well as some guides on how to upgrade existing
-installations.
+These sub pages will cover the most important changes in Nextcloud, as well as some guides on how to upgrade existing installations.
 
 .. toctree::
    :maxdepth: 1

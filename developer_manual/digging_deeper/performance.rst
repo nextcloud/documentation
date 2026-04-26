@@ -87,15 +87,13 @@ Single instance database offer strong consistency. Clusters can offer it too, bu
 and admins occasionally choose to relax these guarantees to increase throughput. One of these allowed inconsistencies
 can happen on read/write split clusters, where some nodes handle only read (SELECT) operations while other can handle
 read and write (SELECT, INSERT, UPDATE and DELETE). Keeping replica nodes in sync with primary nodes is expensive.
-Allowing a few milliseconds of delay for the data to propagate from primary to replica allows the primary to process
-more queries.
+Allowing a few milliseconds of delay for the data to propagate from primary to replica allows the primary to process more queries.
 
 .. versionadded:: 29
   Nextcloud installations can have a primary connection and a number of replica connections. The database abstraction will automatically split read and write operations. Reads go to a replica, unless they happen in a transaction. Writes always go to the primary. As soon as a table has been written to, subsequent reads go to the primary too.
 
 Other installations do this split inside the cluster or with a database load balancer that sends queries to one or
-another node based on criteria, round robin, etc. This means that Nextcloud can't always influence where queries are
-executed.
+another node based on criteria, round robin, etc. This means that Nextcloud can't always influence where queries are executed.
 
 It is important for Nextcloud developers to keep this in mind when writing database queries, especially when it is a
 series of queries. The next sections cover common anti-patterns and solutions.
@@ -137,8 +135,7 @@ Don't mix them database operations with file system operations, for example.
 Measuring performance
 ^^^^^^^^^^^^^^^^^^^^^
 
-If you do bigger changes in the architecture or the database structure you should always double check the positive or
-negative performance impact.
+If you do bigger changes in the architecture or the database structure you should always double check the positive or negative performance impact.
 
 The recommendation is to automatically do 10000 PROPFINDs or file uploads, measure the time and compare the time before
 and after the change.

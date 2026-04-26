@@ -75,8 +75,7 @@ The General Request and Response View
    :alt: Profiler general request and response view showing controller, response headers, and request parameters
 
 This view gives you general information about the request. For example,
-which Controller and method was used, what where the response headers, the
-request parameters, ...
+which Controller and method was used, what where the response headers, the request parameters, ...
 
 The Database Queries View
 .........................
@@ -97,8 +96,7 @@ your queries are using Database indexes when possible.
 The LDAP View
 .............
 
-This view is very similar to the database queries view and display all the database
-queries.
+This view is very similar to the database queries view and display all the database queries.
 
 
 The Event View

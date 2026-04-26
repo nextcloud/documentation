@@ -48,8 +48,7 @@ Nextcloud must be upgraded step by step:
 
 **Wait for background migrations to finish after major upgrades**. After upgrading to a new major version, some
 migrations are scheduled to run
-as a background job. If you plan to upgrade directly to another major version (e.g. 24 -> 25 -> 26) you need to make
-sure these
+as a background job. If you plan to upgrade directly to another major version (e.g. 24 -> 25 -> 26) you need to make sure these
 migrations were executed before starting the next upgrade. To do so you should run the ``cron.php`` file 2-3 times, for example::
 
  $ sudo -E -u www-data php -f /var/www/nextcloud/cron.php
@@ -96,8 +95,7 @@ backup before every upgrade.
 Then review third-party apps, if you have any, for compatibility with the new
 Nextcloud release. Any apps that are not developed by Nextcloud show a 3rd party
 designation. **Install unsupported apps at your own risk**. Then, before the
-upgrade, all 3rd party apps must be disabled. After the upgrade is complete you
-may re-enable them.
+upgrade, all 3rd party apps must be disabled. After the upgrade is complete you may re-enable them.
 
 Maintenance mode
 ----------------

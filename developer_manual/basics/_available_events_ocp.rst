@@ -287,8 +287,7 @@ Event to allow to register the direct editor.
 .. versionadded:: 18
 
 Class GenericEvent
-convenience re-implementation of \Symfony\Component\GenericEvent against
-\OCP\EventDispatcher\Event
+convenience re-implementation of \Symfony\Component\GenericEvent against \OCP\EventDispatcher\Event
 
 ``OCP\Federation\Events\TrustedServerRemovedEvent``
 ***************************************************
@@ -363,8 +362,7 @@ Event emitted when a user mount was moved.
 
 .. versionadded:: 25
 
-This event is triggered when a user tries to download a file
-directly.
+This event is triggered when a user tries to download a file directly.
 
 ``OCP\Files\Events\BeforeFileScannedEvent``
 *******************************************
@@ -727,8 +725,7 @@ Emitted before the rendering step of the public profile page happens.
 Allows to inject something into the default content policy. This is for
 example useful when you're injecting Javascript code into a view belonging
 to another controller and cannot modify its Content-Security-Policy itself.
-Note that the adjustment is only applied to applications that use AppFramework
-controllers.
+Note that the adjustment is only applied to applications that use AppFramework controllers.
 
 WARNING: Using this API incorrectly may make the instance more insecure.
 Do think twice before adding whitelisting resources. Please do also note

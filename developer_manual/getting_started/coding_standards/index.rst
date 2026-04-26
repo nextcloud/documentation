@@ -30,8 +30,7 @@ Labels
 
 We assign labels to issues and pull requests to make it easy to find them and to signal what needs to be done.
 Some of these are assigned by the developers, others by QA, bug triagers, project lead or maintainers and so on.
-It is not desired that users/reporters of bugs assign labels themselves, unless they are developers/contributors to
-Nextcloud.
+It is not desired that users/reporters of bugs assign labels themselves, unless they are developers/contributors to Nextcloud.
 
 The most important labels and their meaning:
 
@@ -105,8 +104,7 @@ License headers
 ---------------
 
 Nextcloud is licensed under the `GNU Affero General Public License v3.0 <https://www.gnu.org/licenses/agpl>`_.
-From 16 June 2016, we switched to "GNU Affero General Public License v3.0 or later" for better long-term
-maintainability.
+From 16 June 2016, we switched to "GNU Affero General Public License v3.0 or later" for better long-term maintainability.
 
 If you create a new file please use this header:
 

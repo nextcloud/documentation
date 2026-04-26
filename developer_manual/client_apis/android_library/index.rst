@@ -33,8 +33,7 @@ Nextcloud Android Library allows a developer to communicate with any Nextcloud
 server; among the features included are file synchronization, upload and
 download of files, delete or rename files and folders, etc.
 
-This library may be added to a project and seamlessly integrates any
-application with Nextcloud.
+This library may be added to a project and seamlessly integrates any application with Nextcloud.
 
 The tool needed is any IDE for Android; the preferred IDE at the moment is Android Studio.
 

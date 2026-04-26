@@ -12,8 +12,7 @@ hard limits that cannot be exceeded:
 * < 2GB with IE6 - IE8
 * < 4GB with IE9 - IE11
 
-64-bit filesystems have much higher limits; consult the documentation for your
-filesystem.
+64-bit filesystems have much higher limits; consult the documentation for your filesystem.
 
 .. note:: The Nextcloud sync client is not affected by these upload limits
    as it is uploading files in smaller chunks. See `Client documentation <https://docs.nextcloud.com/desktop/latest/advancedusage.html>`_
@@ -100,8 +99,7 @@ nginx
 
 If your site is behind a nginx frontend (for example a loadbalancer):
 
-By default, downloads will be limited to 1GB due to ``proxy_buffering`` and ``proxy_max_temp_file_size`` on the
-frontend.
+By default, downloads will be limited to 1GB due to ``proxy_buffering`` and ``proxy_max_temp_file_size`` on the frontend.
 
 * If you can access the frontend's configuration, disable `proxy_buffering <https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffering>`_ or increase `proxy_max_temp_file_size <https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_max_temp_file_size>`_ from the default 1GB.
 * If you do not have access to the frontend, set the `X-Accel-Buffering <https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffering>`_ header to ``add_header X-Accel-Buffering no;`` on your backend server.

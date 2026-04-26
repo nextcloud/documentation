@@ -7,8 +7,7 @@ Profiles
 The user profile displays information about an account.
 Profiles are enabled by default.
 
-Users can enable or disable their own profile in **Personal settings** under
-**Personal info**.
+Users can enable or disable their own profile in **Personal settings** under **Personal info**.
 
 As an administrator, you can:
 
@@ -63,8 +62,7 @@ To disable profile functionality for all users, add this to ``config.php``:
 Profile field visibility settings
 ---------------------------------
 
-Each profile field has its own **profile visibility** setting (stored per user in the
-profile configuration):
+Each profile field has its own **profile visibility** setting (stored per user in the profile configuration):
 
 - **Show to everyone** (``show``): visible to anyone, including unauthenticated visitors,
   *subject to the field's property scope*.
@@ -320,8 +318,7 @@ To override one or several default visibility scopes for *new users*, use
     \OCP\Accounts\IAccountManager::PROPERTY_ROLE => \OCP\Accounts\IAccountManager::SCOPE_FEDERATED,
   ]
 
-In the above example, phone and role are overwritten to ``Private`` and
-``Federated`` respectively.
+In the above example, phone and role are overwritten to ``Private`` and ``Federated`` respectively.
 
 .. note::
    Use ``\OCP\Accounts\IAccountManager`` constants for both property keys and scope values.
@@ -402,8 +399,7 @@ The scope key is the property name with ``Scope`` appended. Available keys:
 
 ``displaynameScope``, ``emailScope``, ``phoneScope``, ``addressScope``,
 ``websiteScope``, ``twitterScope``, ``blueskyScope``, ``fediverseScope``,
-``organisationScope``, ``roleScope``, ``headlineScope``, ``biographyScope``,
-``birthdateScope``, ``avatarScope``, ``pronounsScope``
+``organisationScope``, ``roleScope``, ``headlineScope``, ``biographyScope``, ``birthdateScope``, ``avatarScope``, ``pronounsScope``
 
 Allowed scope values:
 

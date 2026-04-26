@@ -2,8 +2,7 @@
 Conversations
 =============
 
-Chats and calls take place in conversations. You can create any number of conversations. There are different types of
-conversations:
+Chats and calls take place in conversations. You can create any number of conversations. There are different types of conversations:
 
 1. Private (one-to-one) conversations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -16,15 +15,13 @@ address, phone number, or other details they have shared in their profile.
     :width: 300px
 
 Nobody except you and the other person can see this conversation or join a call in it.
-You can extend an ongoing call to a new group conversation by adding more people. Call will be continued there without
-interruption.
+You can extend an ongoing call to a new group conversation by adding more people. Call will be continued there without interruption.
 
 .. image:: images/one-to-one-extend.png
     :width: 300px
 
 If a user becomes unavailable and has set an **out-of-office** status in ``Personal settings > Availability``, you will
-find additional information in this conversation, such as provided description, absence date, or their replacement
-person.
+find additional information in this conversation, such as provided description, absence date, or their replacement person.
 
 .. image:: images/one-to-one-out-of-office.png
     :width: 500px
@@ -44,8 +41,7 @@ It can also be opened to registered users (or users from 'Guests' app), so they 
 
 3. Note to self
 ^^^^^^^^^^^^^^^
-This is a special conversation with yourself. Messages here do not have a limit for editing or deletion. You can use it
-to:
+This is a special conversation with yourself. Messages here do not have a limit for editing or deletion. You can use it to:
 
 - **Take notes**: write down ideas, reminders, or important information you want to keep handy.
 - **Create to-do lists**: use Markdown syntax to create checklists for tasks you need to complete.
@@ -100,8 +96,7 @@ on ``Create a new conversation``.
     :width: 400px
 
 You can then pick a name for the conversation, put a description, and set up an avatar for it (with uploaded photo or
-emoji), and select if the conversation should be open to external users and if other users on the server can see and
-join the conversation.
+emoji), and select if the conversation should be open to external users and if other users on the server can see and join the conversation.
 
 .. image:: images/creating-open-conversation.png
     :width: 500px
@@ -119,8 +114,7 @@ After confirmation you will be redirected to the new conversation and can start 
 Filter your conversations
 -------------------------
 
-You can filter your conversations using the filter button next to the search field. There are several options for
-filtering:
+You can filter your conversations using the filter button next to the search field. There are several options for filtering:
 1. **Unread mentions**: view unread private conversations, or group conversations, where you have been mentioned.
 2. **Unread messages**: view unread messages in all conversations you are a part of.
 3. **Event conversations**: view all conversations, created for upcoming or past events.
@@ -152,8 +146,7 @@ Managing a conversation
 -----------------------
 
 You are always moderator in your new conversation. In the participant list you can promote other participants to
-moderators using the ``...`` menu to the right of their user name, assign them custom permissions or remove them from
-the conversation.
+moderators using the ``...`` menu to the right of their user name, assign them custom permissions or remove them from the conversation.
 
 Changing permissions of a user that joined a public conversation will also permanently add them to the conversation.
 
@@ -225,8 +218,7 @@ You can change this behavior in the conversation settings. Additionally, you can
 .. image:: images/conversation-notifications.png
     :width: 300px
 
-To have more control over your privacy, you can also configure the visibility of your typing and read indicators in
-``Talk settings``:
+To have more control over your privacy, you can also configure the visibility of your typing and read indicators in ``Talk settings``:
 
 .. image:: images/privacy-settings.png
     :width: 600px

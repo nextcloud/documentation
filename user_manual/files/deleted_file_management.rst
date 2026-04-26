@@ -20,8 +20,7 @@ files count against your quota, not files which were shared with you.
 What happens when shared files are deleted
 ------------------------------------------
 
-Deleting files gets a little complicated when they are shared files, as this
-scenario illustrates:
+Deleting files gets a little complicated when they are shared files, as this scenario illustrates:
 
 1. User1 shares a folder "test" with User2 and User3
 2. User2 (the recipient) deletes a file/folder "sub" inside of "test"

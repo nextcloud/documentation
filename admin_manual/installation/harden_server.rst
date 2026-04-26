@@ -22,8 +22,7 @@ This access token uniquely identifies a user and should not be stored on any sys
 The user password is also stored encrypted in the Nextcloud database. For encryption of the password, the token and an
 instance-specific secret is used.
 
-Leakage of the access token can have negative security consequences. Depending on the data access by the actor, the risk
-here is different:
+Leakage of the access token can have negative security consequences. Depending on the data access by the actor, the risk here is different:
 
 - An actor with access to only the access token can impersonate users and login as them.
 - An actor with access to the access token, the Nextcloud config file, and the Nextcloud database can decrypt user
@@ -62,8 +61,7 @@ Enable hardening modules such as SELinux
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is highly recommended to enable hardening modules such as SELinux where 
-possible. See :doc:`../installation/selinux_configuration` to learn more about 
-SELinux.
+possible. See :doc:`../installation/selinux_configuration` to learn more about SELinux.
 
 Deployment
 ----------
@@ -72,8 +70,7 @@ Place data directory outside of the web root
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is highly recommended to place your data directory outside of the Web root 
-(i.e. outside of ``/var/www``). It is easiest to do this on a new 
-installation.
+(i.e. outside of ``/var/www``). It is easiest to do this on a new installation.
 
 .. Doc on moving data dir coming soon
 .. You may also move your data directory on an existing 
@@ -197,15 +194,13 @@ This can be achieved with this kind of setting, usually using private IP ranges:
 
 All requests originating from IP addresses outside of these ranges will not be able to execute admin actions.
 
-Administrators connected from untrusted IP addresses will be able to use Nextcloud, but all admin specific actions will
-be hidden.
+Administrators connected from untrusted IP addresses will be able to use Nextcloud, but all admin specific actions will be hidden.
 
 Use a dedicated domain for Nextcloud
 ------------------------------------
 
 Administrators are encouraged to install Nextcloud on a dedicated domain such as 
-cloud.domain.tld instead of domain.tld to gain all the benefits offered by the 
-Same-Origin-Policy.
+cloud.domain.tld instead of domain.tld to gain all the benefits offered by the Same-Origin-Policy.
 
 Ensure that your Nextcloud instance is installed in a DMZ
 ---------------------------------------------------------
@@ -222,8 +217,7 @@ firewall rules are in place.
 Serve security related headers by the Web server
 ------------------------------------------------
 
-Basic security headers are served by Nextcloud already in a default environment. 
-These include:
+Basic security headers are served by Nextcloud already in a default environment. These include:
 
 - ``X-Content-Type-Options: nosniff``
 	- Instructs some browsers to not sniff the mimetype of files. This is used for example to prevent browsers from interpreting text files as JavaScript.
@@ -341,13 +335,11 @@ Fail2ban introduction
 ^^^^^^^^^^^^^^^^^^^^^
 
 Fail2ban is a service that uses iptables to automatically drop connections for a
-pre-defined amount of time from IPs that continuously failed to authenticate to 
-the configured services.
+pre-defined amount of time from IPs that continuously failed to authenticate to the configured services.
 
 In order to setup fail2ban, you first need to download and install it on your
 server. Downloads for several distributions can be found on `fail2ban download
-page`_. It is often available from most distributions' package managers (e.g.
-``apt-get``).
+page`_. It is often available from most distributions' package managers (e.g. ``apt-get``).
 
 The standard path for fail2ban's configuration is ``/etc/fail2ban``.
 
@@ -355,8 +347,7 @@ Setup a filter and a jail for Nextcloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A filter defines regex rules to identify when users fail to authenticate on 
-Nextcloud's user interface, WebDAV, or use an untrusted domain to access the 
-server.
+Nextcloud's user interface, WebDAV, or use an untrusted domain to access the server.
 
 Create a file in ``/etc/fail2ban/filter.d`` named ``nextcloud.conf`` with the 
 following contents::
@@ -368,8 +359,7 @@ following contents::
               ^\{%(_groupsre)s,?\s*"remoteAddr":"<HOST>"%(_groupsre)s,?\s*"message":"Trusted domain error.
   datepattern = ,?\s*"time"\s*:\s*"%%Y-%%m-%%d[T ]%%H:%%M:%%S(%%z)?"
 
-The jail file defines how to handle the failed authentication attempts found by 
-the Nextcloud filter.
+The jail file defines how to handle the failed authentication attempts found by the Nextcloud filter.
 
 Create a file in ``/etc/fail2ban/jail.d`` named ``nextcloud.local`` with the 
 following contents::
@@ -387,8 +377,7 @@ following contents::
 
 Ensure to replace ``logpath`` with your installation's ``nextcloud.log`` 
 location. If you are using ports other than ``80`` and ``443`` for your 
-Web server you should replace those too. The ``bantime`` and ``findtime`` are 
-defined in seconds.
+Web server you should replace those too. The ``bantime`` and ``findtime`` are defined in seconds.
 
 Restart the fail2ban service. You can check the status of your Nextcloud jail by 
 running::

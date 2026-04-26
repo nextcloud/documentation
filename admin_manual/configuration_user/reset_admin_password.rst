@@ -22,5 +22,4 @@ learn more about using the ``occ`` command.
  Confirm the new password: 
  Successfully reset password for admin
  
-If your Nextcloud username is not ``admin``, then substitute your Nextcloud 
-username.
+If your Nextcloud username is not ``admin``, then substitute your Nextcloud username.

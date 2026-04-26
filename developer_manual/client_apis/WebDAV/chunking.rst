@@ -13,8 +13,7 @@ which will fail your entire upload. Nextcloud has a chunking API where you can
 upload smaller chunks which will be assembled on the server once they are all uploaded.
 
 There are two versions of the chunking API. Version 1 is the original version and version 2 was built as a backward
-compatible extension to support uploads directly to supporting target storages like S3. Version 2 is the recommended
-version to use.
+compatible extension to support uploads directly to supporting target storages like S3. Version 2 is the recommended version to use.
 
 Version 2 comes with a few additional requirements and limitations to consider (compared to version 1):
 
@@ -37,8 +36,7 @@ The API is only available for registered users of your instance. And uses the pa
 Starting a chunked upload
 -------------------------
 
-A chunked upload is handled in 1 folder. This is the location all the chunks
-are uploaded to.
+A chunked upload is handled in 1 folder. This is the location all the chunks are uploaded to.
 
 Start by creating a folder with a unique name. You can list the current available
 folder but if you take a random UUID chances of collision are tiny.

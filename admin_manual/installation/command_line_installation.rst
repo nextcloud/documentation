@@ -4,8 +4,7 @@ Installing from command line
 
 It is now possible to install Nextcloud entirely from the command line. This is 
 convenient for scripted operations, headless servers, and sysadmins who prefer 
-the command line. There are three stages to installing Nextcloud via the command 
-line:
+the command line. There are three stages to installing Nextcloud via the command line:
 
 1. Download the Nextcloud code and unpack the tarball in the appropriate directories. (See :doc:`source_installation`.)
 

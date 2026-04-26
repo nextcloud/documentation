@@ -5,10 +5,8 @@ Using the Contacts app
 The Contacts app is not enabled by default in Nextcloud |version| and needs to
 be installed separately from our App Store.
 
-The Nextcloud Contacts app is similar to other mobile contact applications, but
-with more functionality.
-Let's run through basic features that will help you maintain your address book
-in the application.
+The Nextcloud Contacts app is similar to other mobile contact applications, but with more functionality.
+Let's run through basic features that will help you maintain your address book in the application.
 
 Below, you will learn how to add contacts, edit or remove contacts, upload a
 contact picture and manage your address books.
@@ -29,8 +27,7 @@ To add contacts into your address book, you can use one of the following methods
 * Import contacts using a Virtual Contact File (VCF/vCard) file
 * Add contacts manually
 
-The fastest way to add a contact is to use a Virtual Contact File
-(VCF/vCard) file.
+The fastest way to add a contact is to use a Virtual Contact File (VCF/vCard) file.
 
 
 Importing Virtual Contacts
@@ -127,8 +124,7 @@ network. Currently, the following social networks are supported:
 Social avatars are only retrieved if publicly available without login to the
 respective social network. In the contact user settings on the contacts page,
 you can activate auto-updates from social media. This will update avatars
-with social profile data on a weekly basis. Social networks are checked in the
-order listed above.
+with social profile data on a weekly basis. Social networks are checked in the order listed above.
 
 Managing multiple Contacts at a time
 ------------------------------------
@@ -143,8 +139,7 @@ This will bring up a menu at the top of the contacts list with various actions y
 .. figure:: images/contact_multiselect.png
     :alt: Contact multiselect actions
 
-In batch mode, the cross icon button will unselect all selected contacts, while the trash bin icon button will delete
-all selected contacts.
+In batch mode, the cross icon button will unselect all selected contacts, while the trash bin icon button will delete all selected contacts.
 
 .. note:: You might not be able to modify or delete certain contacts, for example if they are in a read-only address book. In that case, relevant actions will be disabled.
 

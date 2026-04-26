@@ -3,8 +3,7 @@ Using the Synchronization Client
 ================================
 
 The Nextcloud Desktop Client remains in the background and is visible as an icon
-in the system tray (Windows, KDE), menu bar (macOS), or notification area
-(Linux).
+in the system tray (Windows, KDE), menu bar (macOS), or notification area (Linux).
 
 .. figure:: images/icon.png
    :alt: Status icon, green circle and white checkmark
@@ -45,8 +44,7 @@ incorrect login or server URL.
 Systray Icon
 ------------
 
-A right-click on the systray icon opens a menu for quick access to multiple
-operations.
+A right-click on the systray icon opens a menu for quick access to multiple operations.
 
 .. figure:: images/traymenu.png
    :alt: the right-click sync client menu
@@ -98,8 +96,7 @@ the sync status bar offers additional options:
 
 **Pause Sync** pauses sync operations without making any changes to your
 account. It will continue to update file and folder lists, without
-downloading or updating files. To stop all sync activity use **Remove
-Folder Sync Connection**.
+downloading or updating files. To stop all sync activity use **Remove Folder Sync Connection**.
 
 .. figure:: images/general_settings_folder_context_menu.png
    :alt: Extra options for sync operations
@@ -126,8 +123,7 @@ type icons, for your system file manager (Explorer on Windows, Finder on Mac and
 Nautilus on Linux) to indicate the sync status of your Nextcloud files.
 
 The overlay icons are similar to the systray icons introduced above. They
-behave differently on files and directories according to sync status
-and errors.
+behave differently on files and directories according to sync status and errors.
 
 The overlay icon of an individual file indicates its current sync state. If the
 file is in sync with the server version, it displays a green checkmark.
@@ -135,8 +131,7 @@ file is in sync with the server version, it displays a green checkmark.
 If the file is ignored from syncing, for example because it is on your
 exclude list, or because it is a symbolic link, it displays a warning icon.
 
-If there is a sync error, or the file is blacklisted, it displays an
-eye-catching red X.
+If there is a sync error, or the file is blacklisted, it displays an eye-catching red X.
 
 If the file is waiting to be synced, or is currently syncing, the overlay
 icon displays a blue cycling icon.
@@ -145,8 +140,7 @@ When the client is offline, no icons are shown to reflect that the
 folder is currently out of sync and no changes are synced to the server.
 
 The overlay icon of a synced directory indicates the status of the files in the
-directory. If there are any sync errors, the directory is marked with a warning
-icon.
+directory. If there are any sync errors, the directory is marked with a warning icon.
 
 If a directory includes ignored files that are marked with warning icons
 that does not change the status of the parent directories.
@@ -177,8 +171,7 @@ button on the left hand side of the text **Clear status message after**.
 
 If you are happy with the status you have created you can enable this
 status with the button **Set status message**. If you had already a
-status set, you can clear the status by clicking the cutton **Clear
-status message**.
+status set, you can clear the status by clicking the cutton **Clear status message**.
 
 Sharing From Your Desktop
 -------------------------
@@ -191,8 +184,7 @@ depending on the used file manager. Available are e.g. ``nautilus-nextcloud``
 Nextcloud users the same way as in your Nextcloud Web interface.
 
 In your file explorer, click on a file and in the context menu go to
-**Nextcloud** and then lick on **Share options** to bring up the Share
-dialog.
+**Nextcloud** and then lick on **Share options** to bring up the Share dialog.
 
 .. figure:: images/share_context_menu.png
    :alt: Sharing from Windows Explorer.
@@ -238,15 +230,12 @@ can use the *Ignored Files Editor* (General tab).
 
 .. figure:: images/ignored_files_editor.png
 
-For your convenience, the editor is pre-populated with a default list of
-typical
+For your convenience, the editor is pre-populated with a default list of typical
 ignore patterns. These patterns are contained in a system file (typically
 ``sync-exclude.lst``) located in the Nextcloud Client application directory. You
-cannot modify these pre-populated patterns directly from the editor. However,
-if
+cannot modify these pre-populated patterns directly from the editor. However, if
 necessary, you can hover over any pattern in the list to show the path and
-filename associated with that pattern, locate the file, and edit the
-``sync-exclude.lst`` file.
+filename associated with that pattern, locate the file, and edit the ``sync-exclude.lst`` file.
 
 .. note:: Modifying the global exclude definition file might render the client
    unusable or result in undesired behavior.
@@ -270,8 +259,7 @@ contains a check mark, in addition to ignoring the file or directory component
 matched by the pattern, any matched files are also deemed "fleeting metadata"
 and removed by the client.
 
-In addition to excluding files and directories that use patterns defined in
-this list:
+In addition to excluding files and directories that use patterns defined in this list:
 
 - The Nextcloud Client always excludes files containing characters that cannot
   be synchronized to other file systems.

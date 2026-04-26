@@ -47,8 +47,7 @@ Triggers box of the Flow and select "Nextcloud"
 .. image:: images/windmill_add_trigger.png
    :alt: Screenshot of adding a Nextcloud trigger in a workflow
 
-Now you can choose an event out of a drop-down list  of events that your flow should react to. You can additionally fill
-in some parameters:
+Now you can choose an event out of a drop-down list  of events that your flow should react to. You can additionally fill in some parameters:
 
 * *Event filters* allows more fine grained filtering for which events should be used. The filter condition as well as
   the available events with their payloads is documented in the :ref:`webhook_listeners
@@ -64,8 +63,7 @@ You can add more than one trigger to a flow.
 Nextcloud Scripts
 -----------------
 
-Nextcloud makes available a variety of scripts to be used in Windmill for interfacing with Nextcloud apps. You can find
-them
+Nextcloud makes available a variety of scripts to be used in Windmill for interfacing with Nextcloud apps. You can find them
 at https://hub.windmill.dev/integrations/nextcloud and https://hub.windmill.dev/integrations/nextcloud/approvals
 or in your windmill instance when selecting existing scripts for creating a new workflow.
 
@@ -166,8 +164,7 @@ Passing values between blocks
 When specifying script inputs you can either fill the parameters with static values or make references to the workflow
 input and the previous workflow steps.
 
-In order to reference the workflow input (details about the event that triggered the webhook), use the ``flow_input``
-variable.
+In order to reference the workflow input (details about the event that triggered the webhook), use the ``flow_input`` variable.
 For example, ``flow_input.event.form.hash`` will reference the hash of a form from a nextcloud Forms event. As it is a
 JavaScript expression and not a static value, you have to switch the parameter input with the button next to it.
 
@@ -177,25 +174,21 @@ JavaScript expression and not a static value, you have to switch the parameter i
 The fields available for each event are listed in the :ref:`webhook_listeners documentation<webhook_listeners>`.
 
 Each step in a workflow is automatically assigned a letter identifier.
-In order to reference results from previous steps in your parameters, use the ``results`` variable with the id of the
-step
-to reference as a sub property. For example, use ``results.e.submission.answers`` to use the answers of of a form
-submission
+In order to reference results from previous steps in your parameters, use the ``results`` variable with the id of the step
+to reference as a sub property. For example, use ``results.e.submission.answers`` to use the answers of of a form submission
 retrieved via the "Get form submission from Nextcloud Forms" script identified with the letter "e". You can identify the
 letters in the flow overview diagram.
 
 Approval/Suspend steps
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Windmill allows using so-called approval steps, which are essentially asynchronous scripts that wait for the call to an
-additional webhook URL.
+Windmill allows using so-called approval steps, which are essentially asynchronous scripts that wait for the call to an additional webhook URL.
 The most prominent use case for this are approval workflows where you get automated input from somewhere which needs to
 be approved by a human.
 Once the human approves or disapproves by triggering the webhook URL the workflow will resume.
 
 In order to turn a newly added step into an approval step, the workflow edit screen,
-select the script and in the bottom right pan, go in the "Advanced" tab, "Suspend" sub tab and check
-"Suspend/Approval/Prompt".
+select the script and in the bottom right pan, go in the "Advanced" tab, "Suspend" sub tab and check "Suspend/Approval/Prompt".
 
 .. image:: images/windmill_approval_step_config.png
    :alt: Screenshot of the workspace edit screen to turn a normal step into an Approval step

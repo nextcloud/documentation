@@ -246,8 +246,7 @@ Types
 
 The following properties should be annotated by types, to not only assure that the types are converted correctly for
 storing them in the database
-(e.g. PHP casts false to the empty string which fails on PostgreSQL) but also for casting them when they are retrieved
-from the database.
+(e.g. PHP casts false to the empty string which fails on PostgreSQL) but also for casting them when they are retrieved from the database.
 
 The following types (as part of ``OCP\DB\Types``) can be added for a field:
 
@@ -369,8 +368,7 @@ they are neither loaded from database rows nor are their values persisted.
     }
 
 It is important to define getters and setters for any transient attributes.
-Do not use the :ref:`magic getters and setters<database-entity-attribute-access>` of attributes that map to database
-columns.
+Do not use the :ref:`magic getters and setters<database-entity-attribute-access>` of attributes that map to database columns.
 
 Slugs
 ^^^^^
@@ -390,8 +388,7 @@ Since the URL allows only certain values, the entity base class provides a slugi
 Table management tips
 ---------------------
 
-It makes sense to apply some general tips from the beginning, so you don't have to migrate your data and schema later
-on.
+It makes sense to apply some general tips from the beginning, so you don't have to migrate your data and schema later on.
 
 1. Don't use table name longer than 23 characters. As Oracle is limited to 30 chars and we need 3 more for ``oc_`` at
    the beginning and 5 for the primary key suffix ``_pkey``.
@@ -431,8 +428,7 @@ on.
 Querying the database provider
 ------------------------------
 
-If you would like to find out which database your app is running on, use the ``IDBConnection::getDatabaseProvider``
-method.
+If you would like to find out which database your app is running on, use the ``IDBConnection::getDatabaseProvider`` method.
 This can be helpful in cases where specific databases have their own
 requirements, such as Oracle limiting ``IN``- queries to 1000 expressions.
 

@@ -80,8 +80,7 @@ XML output
 Reading a configuration
 -----------------------
 
-Returns all keys and values of the specified LDAP configuration. Authentication is done by sending a basic HTTP
-authentication header.
+Returns all keys and values of the specified LDAP configuration. Authentication is done by sending a basic HTTP authentication header.
 
 **Syntax: ocs/v2.php/apps/user_ldap/api/v1/config/{configID}**
 

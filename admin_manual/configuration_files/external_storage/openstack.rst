@@ -35,10 +35,8 @@ It may be necessary to specify a **Region**. Your region should be named in
 your account information, and you can read about Rackspace regions at 
 `About Regions <https://support.rackspace.com/how-to/about-regions/>`_.
 
-The timeout of HTTP requests is set in the **Request timeout** field, in 
-seconds.
+The timeout of HTTP requests is set in the **Request timeout** field, in seconds.
 
-See :doc:`../external_storage_configuration_gui` for additional mount 
-options and information.
+See :doc:`../external_storage_configuration_gui` for additional mount options and information.
 
 See :doc:`auth_mechanisms` for more information on authentication schemes.

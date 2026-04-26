@@ -62,8 +62,7 @@ instance, importing is the best way to do so.
 Import an Event/Add .ics Event
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In many places, you can download event details as an .ics file, or via a button saying "ical", "Apple Calendar" or
-"Outlook".
+In many places, you can download event details as an .ics file, or via a button saying "ical", "Apple Calendar" or "Outlook".
 
 
 1. Click on the settings-icon labeled with ``Calendar settings`` at the bottom-left.
@@ -101,8 +100,7 @@ Calendar Transparency
 ~~~~~~~~~~~~~~~~~~~~~
 
 You can toggle the checkbox "Never show me as busy (set calendar to transparent)" to influence if this calendars' events
-are taken into account in Free/Busy calculations. If checked, no events in this calendar will be taken into account,
-your schedule will
+are taken into account in Free/Busy calculations. If checked, no events in this calendar will be taken into account, your schedule will
 always be free, regardless of an events' settings.
 
 .. figure:: images/calendar_transparency.png
@@ -128,8 +126,7 @@ Federated calendar sharing
 .. versionchanged:: 33.0.0 Federated calendar shares support read/write access.
 
 Sharing a calendar with a user on another Nextcloud instance works just like sharing with a local user.
-The difference is that you need to use the federated user identifier as the recipient, which has the format
-``<username>@<instance>`` (e.g. ``alice@cloud.example.com``).
+The difference is that you need to use the federated user identifier as the recipient, which has the format ``<username>@<instance>`` (e.g. ``alice@cloud.example.com``).
 
 Starting with Nextcloud 33, federated shares support full read/write access, allowing remote users to
 create, edit, and delete events in the shared calendar. In Nextcloud 32, federated shares were read-only.
@@ -170,8 +167,7 @@ Subscribe to a Calendar
 You can subscribe to iCal calendars directly inside of your Nextcloud. By
 supporting this interoperable standard (RFC 5545) we made Nextcloud calendar
 compatible to Google Calendar, Apple iCloud and many other calendar-servers
-you can exchange your calendars with, including subscription links from calendar published on other Nextcloud instances,
-as described above.
+you can exchange your calendars with, including subscription links from calendar published on other Nextcloud instances, as described above.
 
 1. Click on ``+ New calendar`` in the left sidebar
 2. Click on ``+ New subscription from link (read-only)``
@@ -327,8 +323,7 @@ You can import attachments to your events either by uploading them or adding the
 .. note:: Attachments can be added while creating new events or editing existent ones.
    Newly uploaded files will be saved in files by default in the calendar folder in the root directory.
 
-You can change the attachment folder by going to ``Calendar settings`` in the bottom left corner and changing ``default
-attachments location``.
+You can change the attachment folder by going to ``Calendar settings`` in the bottom left corner and changing ``default attachments location``.
 
 .. figure:: images/calendar_attachments_location.png
    :scale: 60%
@@ -369,8 +364,7 @@ Trash bin
 
 If you delete events, tasks or a calendar in Calendar, your data is not gone yet. Instead, those items will be collected
 in a *trash bin*. This offers you to undo a deletion. After a period which defaults to 30 days (your administration may
-have changed this setting), those items will be deleted permanently. You can also permanently delete items earlier if
-you wish.
+have changed this setting), those items will be deleted permanently. You can also permanently delete items earlier if you wish.
 
 .. figure:: images/calendar_trash_bin.png
 
@@ -411,16 +405,14 @@ people<calendar-attendees>` in Calendar. Some connected clients like Thunderbird
 
 .. figure:: images/caldav_availability.png
 
-You can configure one-time absences on top of your regular availability in the :ref:`Absence settings section
-<groupware-absence>`.
+You can configure one-time absences on top of your regular availability in the :ref:`Absence settings section <groupware-absence>`.
 
 Birthday calendar
 -----------------
 
 The birthday calendar is a auto-generated calendar which will automatically
 fetch the birthdays from your contacts. The only way to edit this calendar is by
-filing your contacts with birthday dates. You can not directly edit this calendar
-from the calendar-app.
+filing your contacts with birthday dates. You can not directly edit this calendar from the calendar-app.
 
 .. note:: If you do not see the birthday calendar, your Administrator may have
           disabled this for your server.
@@ -454,8 +446,7 @@ increment is the rate at which possible slots are available.
 For example, you could have one hour long slots, but you give them away at 30 minute increments so an attendee can book
 at 9:00AM but also at 9:30AM.
 Optional infos about location and a description give the attendees some more context.Every booked appointment will be
-written into one of your calendars, so you can chose which one that should be. Appointments can be *public* or
-*private*.
+written into one of your calendars, so you can chose which one that should be. Appointments can be *public* or *private*.
 Public appointments can be discovered through the profile page of a Nextcloud user. Private appointments are only
 accessible to the people who receive the secret URL.
 
@@ -472,16 +463,14 @@ Some appointments require time to prepare, e.g. when you meet at a venue and you
 The organizer can chose to select a time duration that must be free. Only slots that do not conflict with other events
 during the preparation time will be available. Moreover there is the option to specify a time after each appointment
 that has to be free.
-To prevent an attendee from booking too short notice it's possible to configure how soon the next possible appointment
-might take place.
+To prevent an attendee from booking too short notice it's possible to configure how soon the next possible appointment might take place.
 Setting a maximum number of slots per day can limit how many appointments are possibly booked by attendees.
 
 .. figure:: images/appointment_config_limits.png
 
 The configured appointment will then be listed in the left sidebar. Via the three dot menu, you can preview the
 appointment. You can copy the link to the appointment and share it with your target attendees,
-or let them discover your public appointment via the profile page. You can also edit or delete the appointment
-configuration.
+or let them discover your public appointment via the profile page. You can also edit or delete the appointment configuration.
 
 .. figure:: images/appointment_config_options.png
 
@@ -533,8 +522,7 @@ separate events in the calendar for the organizer.
 
 .. figure:: images/appointment_calendar_prep.png
 
-As with any other event that has attendees, changes and cancellations will trigger a notification to the attendee's
-email.
+As with any other event that has attendees, changes and cancellations will trigger a notification to the attendee's email.
 
 If attendees wish to cancel the appointment they have to get in contact with the organizer, so that the organizer can
 cancel or even delete the event.
@@ -584,15 +572,13 @@ The key difference is the "Proposed times" selection, where the user can select 
 user can add as many time slots as they want, and each time slot can be edited or removed as needed.
 
 Once the user has filled out all the required details, title, duration, participants and selected the proposed times,
-they can click the "Create" button to create the proposal. This will save the proposal and send notifications to all the
-selected participants.
+they can click the "Create" button to create the proposal. This will save the proposal and send notifications to all the selected participants.
 
 Editing a proposal
 ~~~~~~~~~~~~~~~~~~
 
 A user can edit an existing proposal by clicking on the three dot menu next to a proposal item in the proposal list and
-selecting "Edit". This will open the same modal as when creating a new proposal, but with all the existing details
-filled out.
+selecting "Edit". This will open the same modal as when creating a new proposal, but with all the existing details filled out.
 
 After making any necessary changes, the user can click the "Update" button to save the changes. This will also send
 notifications to all the participants about the updated proposal.

@@ -6,8 +6,7 @@ Get list of apps
 ----------------
 
 Returns a list of apps installed on the Nextcloud server. Authentication is done 
-by sending a Basic HTTP Authorization 
-header.
+by sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/apps/**
 
@@ -106,8 +105,7 @@ XML output
 Enable an app
 -------------
 
-Enable an app.  Authentication is done by sending a Basic HTTP Authorization 
-header.
+Enable an app.  Authentication is done by sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/apps/{appid}**
 

@@ -6,13 +6,11 @@ Quick start
 -----------
 
 When Nextcloud prerequisites are fulfilled and all Nextcloud files are installed,
-the last step to completing the installation is running the Installation
-Wizard.
+the last step to completing the installation is running the Installation Wizard.
 This is just three steps:
 
 #. Point your Web browser to ``http://localhost/nextcloud``
-#. Enter your desired administration account name and password.
-#. Click **Install**.
+#. Enter your desired administration account name and password. #. Click **Install**.
 
 .. figure:: images/install-wizard-initial.png
    :scale: 75%
@@ -75,11 +73,9 @@ connectors must be installed before you run the Installation Wizard. When
 you install Nextcloud from packages all the necessary dependencies will be
 satisfied (see :doc:`source_installation` for a detailed listing of required
 and optional PHP modules). If only one database driver is available, the wizard
-will show a notice and a link to the documentation on how to install additional
-PHP modules.
+will show a notice and a link to the documentation on how to install additional PHP modules.
 
-When you select a database other than SQLite, the wizard exposes additional
-fields:
+When you select a database other than SQLite, the wizard exposes additional fields:
 
 * **Database user**: The username to connect to the database server. If this
   user has sufficient privileges (e.g. the ability to query ``mysql.user`` for
@@ -103,8 +99,7 @@ Automatic database user creation
 
 When the provided database user has administrative privileges, the installer
 attempts to create a dedicated database user with privileges limited to the
-Nextcloud database. This avoids storing your administrative database credentials
-in ``config.php``.
+Nextcloud database. This avoids storing your administrative database credentials in ``config.php``.
 
 If privileges are sufficient, the install creates a user named ``oc_admin``. 
 If that user already exists, a numeric suffix is appended (``oc_admin1``, 

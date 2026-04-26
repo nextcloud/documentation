@@ -5,8 +5,7 @@ OCC Command
 ===========
 
 This API allows you to register OCC CLI commands.
-The principle is similar to the regular occ command for PHP apps that are working within the context of the Nextcloud
-instance,
+The principle is similar to the regular occ command for PHP apps that are working within the context of the Nextcloud instance,
 but for ExApps, it is a trigger via the Nextcloud OCC interface to perform some action on the ExApp side.
 
 

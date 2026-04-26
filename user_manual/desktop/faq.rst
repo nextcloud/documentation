@@ -49,8 +49,7 @@ Some Files Are Continuously Uploaded to the Server, Even When They Are Not Modif
 
 It is possible that another program is changing the modification date of the file.
 If the file is uses the ``.eml`` extension, Windows automatically and
-continually changes all files, unless you remove
-``\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PropertySystem\PropertyHandlers``
+continually changes all files, unless you remove ``\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PropertySystem\PropertyHandlers``
 from the windows registry.
 See https://petersteier.wordpress.com/2011/10/22/windows-indexer-changes-modification-dates-of-eml-files/ for more information.
 
@@ -61,8 +60,7 @@ The sync client has been intentionally limited to sync no deeper than 100
 sub-directories. The hard limit exists to guard against bugs with cycles
 like symbolic link loops.
 When a deeply nested directory is excluded from synchronization it will be
-listed with other ignored files and directories in the "Not synced" tab of
-the "Activity" pane.
+listed with other ignored files and directories in the "Not synced" tab of the "Activity" pane.
 
 There Was A Warning About Changes In Synchronized Folders Not Being Tracked Reliably.
 -------------------------------------------------------------------------------------

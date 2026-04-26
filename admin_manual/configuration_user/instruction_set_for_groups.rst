@@ -88,8 +88,7 @@ XML output
 Get members of a group
 ----------------------
 
-Retrieves a list of group members. Authentication is done by sending a Basic 
-HTTP Authorization header.
+Retrieves a list of group members. Authentication is done by sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/groups/{groupid}**
 

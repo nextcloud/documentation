@@ -81,8 +81,7 @@ Finally, test the whole setup with "Test deploy" in the 3-dots menu of the deplo
 Nextcloud and Docker on the same host - with Nextcloud in Docker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When Nextcloud is installed in Docker, the HaRP container can be created in the same docker network as the Nextcloud
-instance.
+When Nextcloud is installed in Docker, the HaRP container can be created in the same docker network as the Nextcloud instance.
 
 Create a HaRP container with ``--network <nextcloud_docker_network_name>`` option, where
 ``<nextcloud_docker_network_name>`` is the name of the Docker network in which Nextcloud is accessible.
@@ -566,8 +565,7 @@ Briefly, it will look like this (*haproxy_host==daemon host value*):
 
 NC --> *https* --> ``haproxy_host:ex_app_port`` --> *http* --> ``localhost:ex_app_port``
 
-When the protocol is not ``https`` but ``http``, then what will be the endpoint where to send requests is determined by
-``$deployConfig['net']`` value.
+When the protocol is not ``https`` but ``http``, then what will be the endpoint where to send requests is determined by ``$deployConfig['net']`` value.
 
 If ``net`` is defined and equal to ``host``, then AppAPI assumes that ExApp is installed somewhere in the current host
 network and will be available on ``localhost`` loop-back adapter.

@@ -9,16 +9,14 @@ other hand. A user defines a workflow rule that is triggered by a certain event 
 based on user defined checks.
 
 An example flow might be converting Word documents into PDF when they are added to one folder, then move that Word
-document to another folder once it's finished. This workflow would deal with the file entity's create event and act on
-that file.
+document to another folder once it's finished. This workflow would deal with the file entity's create event and act on that file.
 
 At 36c3 blizzz gave a talk explaining Flow and `how to write actions and triggers. <https://media.ccc.de/v/36c3-oio-174-building-nextcloud-flow>`_ You can `find the slides of their talk here. <https://web.archive.org/web/20220219081809/https://nextcloud.com/wp-content/themes/next/assets/files/Building_nextcloud_flow.pdf>`_
 
 Entities
 ========
 
-If you want to expose events via Nextcloud Flow, you need to define an entity, which is a class implementing
-``OCP\WorkflowEngine\IEntity``.
+If you want to expose events via Nextcloud Flow, you need to define an entity, which is a class implementing ``OCP\WorkflowEngine\IEntity``.
 
 The entity class will expose a name for the User interface via ``getName()`` and an icon URL ``getIcon()``.
 
@@ -26,8 +24,7 @@ The ``getEvents()`` method returns an array of all events that this entity can u
 user in the flow interface.
 
 For all events that happen on the nextcloud instance (see :ref:`Events` for all known built-in events),
-``prepareRuleMatcher()`` will be called, so it can check whether this event is one of the ones that the entity makes
-available in flow.
+``prepareRuleMatcher()`` will be called, so it can check whether this event is one of the ones that the entity makes available in flow.
 
 If that is the case, the entity can assign itself to the rule matcher.
 
@@ -48,8 +45,7 @@ configuration for your flow in the settings. The function must check that the co
 is not the case.
 Once your operation is configured by the user, its ``onEvent`` method will be called on any event it is configured for,
 even if the rules are not matching. So you need to use the ``$ruleMatcher`` parameter to loop through matching rules and
-check if there are any. For each match the 'operation' key in the array is what the user configured for this rule in the
-settings.
+check if there are any. For each match the 'operation' key in the array is what the user configured for this rule in the settings.
 
 Configuration Component
 =======================

@@ -91,8 +91,7 @@ Construction of migration classes
 ---------------------------------
 
 All migration classes are constructed via :ref:`dependency-injection`. So if your migration
-steps need additional dependencies, these can be defined in the constructor of your migration
-class.
+steps need additional dependencies, these can be defined in the constructor of your migration class.
 
 **Example:** If your migration needs to execute SQL statements, inject a `OCP\\IDBConnection`
 instance into your migration class like this:

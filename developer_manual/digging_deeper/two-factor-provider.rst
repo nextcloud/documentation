@@ -134,8 +134,7 @@ Provide personal settings (optional)
 
 Like other Nextcloud apps, two-factor providers often require user configuration to work. In Nextcloud
 15 a new, consolidated two-factor settings section was added. To add personal provider settings there,
-a provider must implement the `IProvidesPersonalSettings <https://github.com/nextcloud/server/blob/master/lib/public/Authentication/TwoFactorAuth/IProvidesPersonalSettings.php>`_
-interface.
+a provider must implement the `IProvidesPersonalSettings <https://github.com/nextcloud/server/blob/master/lib/public/Authentication/TwoFactorAuth/IProvidesPersonalSettings.php>`_ interface.
 
 
 Make a provider activatable by the admin (optional)

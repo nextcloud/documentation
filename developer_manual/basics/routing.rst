@@ -85,8 +85,7 @@ So, the configured URL for the OCS endpoint in the example would be ``<server>/o
 Extracting values from the URL
 ------------------------------
 
-It is possible to extract values from the URL to allow RESTful URL design. To extract a value, you have to wrap it
-inside curly braces:
+It is possible to extract values from the URL to allow RESTful URL design. To extract a value, you have to wrap it inside curly braces:
 
 .. code-block:: php
 
@@ -165,8 +164,7 @@ array containing pairs of **'urlparameter' => 'defaultvalue'**:
 Registering resources
 ---------------------
 
-When dealing with resources, writing routes can become quite repetitive since most of the time routes for the following
-tasks are needed:
+When dealing with resources, writing routes can become quite repetitive since most of the time routes for the following tasks are needed:
 
 * Get all entries
 * Get one entry by id
@@ -251,8 +249,7 @@ which will allow to use it to generate a URL for a redirect. For more details on
         }
     }
 
-URLGenerator is case sensitive, so **appName** must match **exactly** the name you use in :doc:`configuration
-<../basics/storage/configuration>`.
+URLGenerator is case sensitive, so **appName** must match **exactly** the name you use in :doc:`configuration <../basics/storage/configuration>`.
 If you use a CamelCase name as *myCamelCaseApp*,
 
 .. code-block:: php

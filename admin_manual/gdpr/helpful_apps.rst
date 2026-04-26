@@ -4,8 +4,7 @@
 Helpful apps
 ============
 
-Several apps are available from the Nextcloud App Store to help you meet
-specific GDPR obligations.
+Several apps are available from the Nextcloud App Store to help you meet specific GDPR obligations.
 
 Imprint (Theming app)
 ---------------------
@@ -36,8 +35,7 @@ Install it from the Apps page or via occ::
   sudo -E -u www-data php occ app:install drop_account
 
 Once installed, users see a **Delete account** button in
-**Personal Settings → Personal Info**. They must confirm their password before
-the deletion proceeds.
+**Personal Settings → Personal Info**. They must confirm their password before the deletion proceeds.
 
 .. warning::
    Account deletion via this app also removes all of the user's files. Make
@@ -55,8 +53,7 @@ users a self-service way to invoke their GDPR rights directly from their
 Personal Settings, without needing to contact an administrator by email or
 through an external channel.
 
-Once installed, two buttons appear in every user's **Personal Settings →
-Personal Info** page:
+Once installed, two buttons appear in every user's **Personal Settings → Personal Info** page:
 
 * **Request data export** — sends an email to all administrators notifying
   them that the user is requesting a copy of their data.

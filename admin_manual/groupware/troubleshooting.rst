@@ -50,8 +50,7 @@ If you get an error like:
 
 ``PATCH https://example.com/remote.php/dav HTTP/1.0 501 Not Implemented``
 
-it is likely because of a misconfigured web server. Please refer to :ref:`trouble-webdav-label` for troubleshooting
-steps.
+it is likely because of a misconfigured web server. Please refer to :ref:`trouble-webdav-label` for troubleshooting steps.
 
 Mail
 ----
@@ -210,8 +209,7 @@ To enable the global debug logging on versions 5.1.0 and above, just run the fol
 All subsequent outgoing connections made by the mail app will then be written to the ``data`` directory. The file naming
 follows the following format: ``mail-{{userId}}-{{accountId}}-{{protocol}}.log`` (e.g., `mail-admin-49-imap.log`).
 
-The global debug logging can be disabled once you've collected the necessary data by running the following command on
-the server:
+The global debug logging can be disabled once you've collected the necessary data by running the following command on the server:
 
 ::
 
@@ -273,8 +271,7 @@ To troubleshoot synchronization or threading problems it's helpful to run the sy
 
 .. note:: 1393 represents the :ref:`account ID <mail_get_account_ids_groupware>`.
 
-The command offers a ``--force`` option. Use it wisely as it doesn't perform the same path a typical web triggered sync
-request would do.
+The command offers a ``--force`` option. Use it wisely as it doesn't perform the same path a typical web triggered sync request would do.
 
 The output will look similar to this::
 

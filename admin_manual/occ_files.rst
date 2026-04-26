@@ -272,8 +272,7 @@ Unlike ``files:scan``, there is no background job that automatically rescans
 appdata. Run this command manually when the appdata file cache may have become
 inconsistent; for example, after restoring appdata from a backup, after
 manually moving or copying files into the appdata directory, or when previews
-or avatars are not displaying correctly despite the underlying files being
-present on disk.
+or avatars are not displaying correctly despite the underlying files being present on disk.
 
 files:transfer-ownership
 """"""""""""""""""""""""
@@ -283,8 +282,7 @@ removing a user account::
 
  sudo -E -u www-data php occ files:transfer-ownership layla fred
 
-The transferred files appear in a subdirectory inside the destination
-user's home folder.
+The transferred files appear in a subdirectory inside the destination user's home folder.
 
 .. note::
 
@@ -317,8 +315,7 @@ transfer incoming shares. The command-line option takes precedence::
    --transfer-incoming-shares=0 layla fred
 
 Users may also transfer files selectively via the web interface. See
-`user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_
-for details.
+`user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_ for details.
 
 .. _occ_files_windows_filenames:
 
@@ -349,8 +346,7 @@ Object store
   files:object:put                     write a file to the object store
 
 These commands operate directly on the underlying object storage (S3, Swift,
-etc.) used as Nextcloud's primary storage. They bypass the file cache and
-normal access controls.
+etc.) used as Nextcloud's primary storage. They bypass the file cache and normal access controls.
 
 .. warning::
 
@@ -455,8 +451,7 @@ deleted manually::
  sudo -E -u www-data php occ preview:cleanup
    Previews removed
 
-After running this command, Nextcloud regenerates previews on demand as
-users access files.
+After running this command, Nextcloud regenerates previews on demand as users access files.
 
 See :doc:`configuration_files/previews_configuration` for preview settings.
 
@@ -722,8 +717,7 @@ Files external
   files_external:verify                verify mount configuration
 
 Manage Nextcloud's external storage mounts. Commands that read or write
-mount configuration operate on the same data as the **External Storages**
-admin settings page.
+mount configuration operate on the same data as the **External Storages** admin settings page.
 
 files_external:list
 """""""""""""""""""
@@ -764,8 +758,7 @@ Arguments:
 * **auth-backend** — the authentication method (e.g. ``builtin::builtin``,
   ``password::sessioncredentials``)
 
-Use ``files_external:backends`` to list all available storage and
-authentication backends.
+Use ``files_external:backends`` to list all available storage and authentication backends.
 
 For a personal mount, specify the user with ``--user``::
 
@@ -898,8 +891,7 @@ push-based update events (e.g. SMB with inotify)::
 
  sudo -E -u www-data php occ files_external:notify 1
 
-This is a long-running process; run it under a process supervisor or in a
-dedicated systemd service.
+This is a long-running process; run it under a process supervisor or in a dedicated systemd service.
 
 files_external:dependencies
 """"""""""""""""""""""""""""
@@ -1063,8 +1055,7 @@ When it fails, each integrity error is listed with details. Use
  sudo -E -u www-data php occ integrity:check-app \
    --path=/var/www/nextcloud/apps/myapp myapp
 
-Apps without a ``signature.json`` file are skipped with an informational
-message.
+Apps without a ``signature.json`` file are skipped with an informational message.
 
 integrity:check-core
 """""""""""""""""""""

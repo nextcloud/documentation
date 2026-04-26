@@ -10,8 +10,7 @@ ones that match your setup and revisit the rest as your instance grows.
 Using cron to perform background jobs
 -------------------------------------
 
-See :doc:`../configuration_server/background_jobs_configuration` for a description and the
-benefits.
+See :doc:`../configuration_server/background_jobs_configuration` for a description and the benefits.
 
 Reducing system load
 --------------------
@@ -24,8 +23,7 @@ can help you identify the process or drive that slows down your system.
 First, make sure that you have installed and assigned enough RAM. Minimize swap 
 usage as much as possible, as excessive swapping can severely degrade performance.
 If you run your database inside a VM, use a dedicated block device for database storage
-rather than storing it inside the VM's disk image file, to reduce latency caused by 
-multiple abstraction layers.
+rather than storing it inside the VM's disk image file, to reduce latency caused by multiple abstraction layers.
 
 .. _caching:
 
@@ -37,8 +35,7 @@ set to ``2`` (WARN) in new installations. Sometimes this parameter is inadverten
 left at the DEBUG level (``0``) after troubleshooting. In some older installations, this 
 parameter may also be something other than the default. Use ``0`` (DEBUG) 
 when you have a problem to diagnose, and then reset your log level to a 
-less-verbose level. DEBUG outputs a lot of information, and can affect your 
-server performance.
+less-verbose level. DEBUG outputs a lot of information, and can affect your server performance.
 
 Debug Mode
 ----------
@@ -69,8 +66,7 @@ Replacing SQLite
 SQLite is a suitable database for some use cases, but using MariaDB, MySQL, or PostgreSQL can be 
 more beneficial with Nextcloud.
 
-If you do not select a database at installation time, SQLite is used by default because it does not require 
-any external components.
+If you do not select a database at installation time, SQLite is used by default because it does not require any external components.
 
 However, MySQL/MariaDB or PostgreSQL are generally recommended for Nextcloud because of the 
 `performance limitations of SQLite with highly concurrent applications
@@ -113,8 +109,7 @@ AES-NI extension. This can both speed up these operations while lowering
 processing overhead. This requires a processor with the `AES-NI instruction set
 <https://wikipedia.org/wiki/AES_instruction_set>`_.
 
-Here are some examples of how to check if your CPU/environment supports the
-AES-NI extension:
+Here are some examples of how to check if your CPU/environment supports the AES-NI extension:
 
 * For each CPU core present: ``grep flags /proc/cpuinfo`` or as a summary for
   all cores: ``grep -m 1 '^flags' /proc/cpuinfo``. If the result contains
@@ -193,8 +188,7 @@ the cache or invalidating this particular script).
 Sizing
 ^^^^^^
 
-If any OPcache size limit exceeds 90% of its allocated size, the admin panel will show a related warning and suggest
-changes.
+If any OPcache size limit exceeds 90% of its allocated size, the admin panel will show a related warning and suggest changes.
 
 For more details, check the `official PHP documentation <https://php.net/manual/en/opcache.configuration.php>`_. To monitor OPcache usage and clear individual or all cache entries, you can use `opcache-gui <https://github.com/amnuts/opcache-gui>`_.
 

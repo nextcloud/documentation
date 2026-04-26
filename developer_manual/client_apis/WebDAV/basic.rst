@@ -11,12 +11,10 @@ for each operation, further information for each operation can be found in the c
 WebDAV basics
 -------------
 
-The base url for all (authenticated) WebDAV operations for a Nextcloud instance is :code:`/remote.php/dav`. For file
-operations, this usually
+The base url for all (authenticated) WebDAV operations for a Nextcloud instance is :code:`/remote.php/dav`. For file operations, this usually
 means paths below :code:`/remote.php/dav/files/{user}/...`.
 
-All requests need to provide authentication information, either as a basic auth header or by passing a set of valid
-session cookies.
+All requests need to provide authentication information, either as a basic auth header or by passing a set of valid session cookies.
 
 If your Nextcloud installation uses an external auth provider (such as an OIDC server) or enforces policies like 2FA,
 you may need to create an
@@ -135,10 +133,8 @@ Requesting properties
 By default, a :code:`PROPFIND` request will only return a small number of properties for each file: last modified date,
 file size, whether it's a folder, etag and mime type.
 
-You can request additional properties by sending a request body with the :code:`PROPFIND` request that lists all
-requested properties.
-If a property is not supported for a resource, the server will report it as not found in the multi-status response for
-that property.
+You can request additional properties by sending a request body with the :code:`PROPFIND` request that lists all requested properties.
+If a property is not supported for a resource, the server will report it as not found in the multi-status response for that property.
 
 .. code-block:: xml
 
@@ -173,13 +169,9 @@ Here is the list of available namespace:
 
 =========================================  ======
                    URI                     Prefix
-=========================================  ======
-DAV:                                       d
-http://owncloud.org/ns                     oc
-http://nextcloud.org/ns                    nc
-http://open-collaboration-services.org/ns  ocs
-http://open-cloud-mesh.org/ns              ocm
-=========================================  ======
+=========================================  ====== DAV:                                       d
+http://owncloud.org/ns                     oc http://nextcloud.org/ns                    nc
+http://open-collaboration-services.org/ns  ocs http://open-cloud-mesh.org/ns              ocm =========================================  ======
 
 And here is how it should look in your DAV request:
 
@@ -435,8 +427,7 @@ The contents of a folder can be listed by sending a :code:`PROPFIND` request to 
 Getting properties for just the folder
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can request properties of a folder without also getting the folder contents by adding a :code:`Depth: 0` header to
-the request.
+You can request properties of a folder without also getting the folder contents by adding a :code:`Depth: 0` header to the request.
 
 Downloading files
 -----------------
@@ -458,16 +449,14 @@ Downloading folders
 .. note:: For shared folders this only works if the download permission was not denied by the sharer.
 
 A folder can be downloaded as an archive by sending a :code:`GET` request to the WebDAV URL of the folder.
-The :code:`Accept` header must be set and contain the MIME type for ZIP archives (:code:`application/zip`) or tarballs
-(:code:`application/x-tar`).
+The :code:`Accept` header must be set and contain the MIME type for ZIP archives (:code:`application/zip`) or tarballs (:code:`application/x-tar`).
 
 .. code-block:: text
 
 	GET remote.php/dav/files/user/path/to/folder
 	Accept: application/zip
 
-Optionally it is possible to only include some files from the folder in the archive by providing the files using the
-custom :code:`X-NC-Files` header:
+Optionally it is possible to only include some files from the folder in the archive by providing the files using the custom :code:`X-NC-Files` header:
 
 .. code-block:: text
 
@@ -486,14 +475,12 @@ The optional files list can be provided as a JSON encoded array through the :cod
 
 	GET remote.php/dav/files/user/path/to/folder?accept=zip&files=["image.png","document.txt"]
 
-When using query parameters, ensure values are URL-encoded. In particular, :code:`files` must be a URL-encoded JSON
-array.
+When using query parameters, ensure values are URL-encoded. In particular, :code:`files` must be a URL-encoded JSON array.
 
 Uploading files
 ---------------
 
-A file can be uploaded by sending a :code:`PUT` request to the file and sending the raw file contents as the request
-body.
+A file can be uploaded by sending a :code:`PUT` request to the file and sending the raw file contents as the request body.
 
 .. code-block:: text
 
@@ -572,8 +559,7 @@ Setting the :code:`oc:favorite` property to ``1`` marks a file as favorite, sett
 Listing favorites
 -----------------
 
-Favorites for a user can be retrieved by sending a :code:`REPORT` request and specifying :code:`oc:favorite` as a
-filter.
+Favorites for a user can be retrieved by sending a :code:`REPORT` request and specifying :code:`oc:favorite` as a filter.
 
 .. code-block:: xml
 

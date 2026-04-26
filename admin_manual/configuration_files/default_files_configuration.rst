@@ -13,8 +13,7 @@ empty to not copy any skeleton files.
 These files will be copied only to new users after their initial login, and
 existing users will not see files that are added to this directory after their
 first login. The files in the  ``skeleton`` directory are copied into the
-users data directories, so they may change and delete the files without
-affecting the originals.
+users data directories, so they may change and delete the files without affecting the originals.
 
 This screenshot shows a set of photos in the ``skeleton`` directory.
 

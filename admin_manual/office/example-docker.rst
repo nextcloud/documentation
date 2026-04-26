@@ -19,8 +19,7 @@ Install the Collabora Online server
 **************************************
 
 The following steps will download the Collabora Online docker. Make sure to replace "cloud.example.com" with the host
-that your own Nextcloud runs on. If you want to use the docker container with more than one Nextcloud, you can add
-another `-e aliasgroup2=https://cloud2.example.com:443`.
+that your own Nextcloud runs on. If you want to use the docker container with more than one Nextcloud, you can add another `-e aliasgroup2=https://cloud2.example.com:443`.
 
 .. code-block:: bash
 

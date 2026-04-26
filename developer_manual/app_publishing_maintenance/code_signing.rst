@@ -21,8 +21,7 @@ Why did Nextcloud add code signing?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By supporting Code Signing we add another layer of security by ensuring that
-nobody other than authorized persons can push updates for applications, and
-ensuring proper upgrades.
+nobody other than authorized persons can push updates for applications, and ensuring proper upgrades.
 
 Do we lock down Nextcloud?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -30,8 +29,7 @@ Do we lock down Nextcloud?
 The Nextcloud project is open source and always will be. We do not want to make
 it more difficult for our users to run Nextcloud. Any code signing errors on
 upgrades will not prevent Nextcloud from running, but will display a warning on
-the Admin page. For applications that are not tagged "Featured" the code signing
-process is optional.
+the Admin page. For applications that are not tagged "Featured" the code signing process is optional.
 
 Not open source anymore?
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -55,16 +53,14 @@ Technical details
 Nextcloud uses a X.509 based approach to handle authentication of code. Each
 Nextcloud release contains the certificate of a shipped Nextcloud Code Signing
 Root Authority. The private key of this certificate is only accessible to the
-project leader, who may grant trusted project members with a copy of this
-private key.
+project leader, who may grant trusted project members with a copy of this private key.
 
 This Root Authority is only used for signing certificate signing requests (CSRs)
 for additional certificates. Certificates issued by the Root Authority must
 always be limited to a specific scope, usually the application identifier.
 This enforcement is done using the ``CN`` attribute of the certificate.
 
-Code signing is then done by creating a  ``signature.json`` file with the
-following content:
+Code signing is then done by creating a  ``signature.json`` file with the following content:
 
 .. code-block:: json
 
@@ -115,8 +111,7 @@ How to get your app signed
 
 The following commands require that you have OpenSSL installed on your machine.
 Ensure that you keep all generated files to sign your application. The following
-examples will assume that you are trying to sign an application named
-"contacts".
+examples will assume that you are trying to sign an application named "contacts".
 
 1. Generate a private key and CSR: ``openssl req -nodes -newkey rsa:4096 -keyout contacts.key -out contacts.csr -subj
    "/CN=contacts"``. Replace "contacts" with your application identifier.
@@ -137,8 +132,7 @@ has been signed requires another signing. So if you do not want to have some
 files shipped remove them before running the signing command.
 
 In case you lose your certificate please submit a new CSR as described above and
-mention that you have lost the previous one. Nextcloud will revoke the old
-certificate.
+mention that you have lost the previous one. Nextcloud will revoke the old certificate.
 
 If you maintain an app together with multiple people it is recommended to
 designate a release manager responsible for the signing process as well
@@ -151,8 +145,7 @@ Errors
 
 The following errors can be encountered when trying to verify a code signature.
 For information about how to get access to those results please refer to the
-Issues section of the Nextcloud Server Administration
-manual.
+Issues section of the Nextcloud Server Administration manual.
 
 - ``INVALID_HASH``
 

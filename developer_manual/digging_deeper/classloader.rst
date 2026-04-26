@@ -29,8 +29,7 @@ App autoloading
 
 Nextcloud uses a  :ref:`PSR-4 autoloader<psr4>`. The namespace **\\OCA\\MyApp**
 is mapped to :file:`/apps/myapp/lib/`. Afterwards normal PSR-4 rules apply, so
-a folder is a namespace section in the same casing and the class name matches
-the file name.
+a folder is a namespace section in the same casing and the class name matches the file name.
 
 If your appid can not be turned into the namespace by uppercasing the first
 character, you can specify it in your **appinfo/info.xml** by providing a field
@@ -62,8 +61,7 @@ First of all, familiarize yourself with the `Composer autoloader optimization op
 
 Once Composer is set up and class maps have been dumped, you can replace the generic Nextcloud class loader with the
 Composer class loader. This is done by placing a file at `composer/autoload.php`. If Nextcloud finds this file for an
-app, no generic class loader will be registered. The following contents will wire the file to Composer's generated
-``autoloader.php`` file:
+app, no generic class loader will be registered. The following contents will wire the file to Composer's generated ``autoloader.php`` file:
 
 .. code-block:: php
   :caption: composer/autoload.php

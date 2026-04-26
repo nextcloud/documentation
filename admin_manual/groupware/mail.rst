@@ -34,8 +34,7 @@ To enable anti-abuse alerts, you'll have to set a few configuration options :doc
 Attachment size limit
 ^^^^^^^^^^^^^^^^^^^^^
 
-Admins can prevent users from attaching large attachments to their emails. Users will be asked to use link shares
-instead.
+Admins can prevent users from attaching large attachments to their emails. Users will be asked to use link shares instead.
 
 ::
 
@@ -65,8 +64,7 @@ with email servers that have a self-signed certificate.
 Google OAuth
 ^^^^^^^^^^^^
 
-This app can allow users to connect their Google accounts with OAuth. This makes it possible to use accounts without 2FA
-or app password.
+This app can allow users to connect their Google accounts with OAuth. This makes it possible to use accounts without 2FA or app password.
 
 1. `Create authorization credentials <https://developers.google.com/identity/protocols/oauth2/web-server#prerequisites>`_. You will receive a client ID and a client secret.
 2. Open the Nextcloud settings page. Navigate to *Groupware* and scroll down to *Gmail integration*. Enter and save the
@@ -75,8 +73,7 @@ or app password.
 Local IMAP and SMTP servers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default, Nextcloud does not allow local hostnames and IP addresses as remote servers. This includes IMAP, SMTP and
-Sieve servers
+By default, Nextcloud does not allow local hostnames and IP addresses as remote servers. This includes IMAP, SMTP and Sieve servers
 like ``localhost``, ``mx.local`` and ``10.0.0.3``. This check can be disabled with via ``config/config.php``.
 
 ::
@@ -258,8 +255,7 @@ Follow-up reminders
 
 .. versionadded:: 4.0
 
-The Mail app will automatically remind users when their outgoing emails remain unanswered for
-multiple days.
+The Mail app will automatically remind users when their outgoing emails remain unanswered for multiple days.
 Each sent email will be analyzed by an AI to check whether a reply is expected.
 
 The feature can be enabled through the global :ref:`mail_llm_processing` setting.
@@ -269,5 +265,4 @@ Translation
 
 .. versionadded:: 4.2
 
-The mail app can optionally provide translations for messages if the :ref:`translation API <machine_translation>` is
-enabled.
+The mail app can optionally provide translations for messages if the :ref:`translation API <machine_translation>` is enabled.

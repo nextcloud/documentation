@@ -3,8 +3,7 @@
 ExApp overview
 ==============
 
-The basic concept of the AppAPI is to provide a way to develop/write an app for Nextcloud in any language, especially
-the backend part.
+The basic concept of the AppAPI is to provide a way to develop/write an app for Nextcloud in any language, especially the backend part.
 The frontend part is usually kept the same. You can think of the ExApp as a microservice.
 
 
@@ -54,21 +53,18 @@ Backend
 -------
 
 The ExApp backend part can be implemented in any language and framework you want.
-The only requirement here is to follow the microservice architecture and ExApp <-> Nextcloud :ref:`communication flow
-<ex_app_lifecycle_methods>`.
+The only requirement here is to follow the microservice architecture and ExApp <-> Nextcloud :ref:`communication flow <ex_app_lifecycle_methods>`.
 
 .. note::
 
 	There is a limitation of AppAPI ExApp proxy - the websocket connections are not supported.
 
-Each ExApp container has environment variables set by AppAPI; you can find out more about them :ref:`here
-<ex_app_env_vars>`.
+Each ExApp container has environment variables set by AppAPI; you can find out more about them :ref:`here <ex_app_env_vars>`.
 
 Persistent storage
 ******************
 
-For each ExApp, AppAPI creates a Docker volume (``nc_app_<app_id>_data``) that is attached to the ExApp container as
-persistent storage.
+For each ExApp, AppAPI creates a Docker volume (``nc_app_<app_id>_data``) that is attached to the ExApp container as persistent storage.
 It is available inside the container under the ``/nc_app_<app_id>_data`` path or via the ``APP_PERSISTENT_STORAGE``
 environment variable passed by AppAPI.
 

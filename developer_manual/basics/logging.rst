@@ -12,8 +12,7 @@ Basic usage
 
 Inject ``Psr\Log\LoggerInterface`` into your class. When the logger is resolved
 from an app container, Nextcloud automatically wraps it so that every log
-message is attributed to your app -- you do **not** need to pass an app name
-yourself:
+message is attributed to your app -- you do **not** need to pass an app name yourself:
 
 .. code-block:: php
 
@@ -39,8 +38,7 @@ yourself:
    You do not need to set this manually.
 
 In cases where you can not :ref:`inject <dependency-injection>` a logger into a class, you can use
-the ``\OCP\Log\logger`` function to acquire a logger instance. As a first argument you need to pass
-the app ID.
+the ``\OCP\Log\logger`` function to acquire a logger instance. As a first argument you need to pass the app ID.
 
 .. code-block:: php
 
@@ -104,8 +102,7 @@ Message interpolation
 ---------------------
 
 Nextcloud supports PSR-3 message interpolation. Context values whose keys
-appear as ``{placeholder}`` tokens in the message string are substituted
-automatically:
+appear as ``{placeholder}`` tokens in the message string are substituted automatically:
 
 .. code-block:: php
 
@@ -114,8 +111,7 @@ automatically:
     ]);
 
 This produces a log message like ``User jane failed to log in``. The ``user``
-key is consumed by the interpolation and will not appear separately in the
-stored log entry.
+key is consumed by the interpolation and will not appear separately in the stored log entry.
 
 
 Context array
@@ -150,8 +146,7 @@ recognises several special keys:
 
         $this->logger->info('Cross-app note', ['app' => 'other_app']);
 
-Any other keys you add to the context array are included in the log entry as
-additional data:
+Any other keys you add to the context array are included in the log entry as additional data:
 
 .. code-block:: php
 
@@ -180,16 +175,14 @@ chain of previous exceptions.
         ]);
     }
 
-You can combine message interpolation with exception logging -- Nextcloud
-handles both.
+You can combine message interpolation with exception logging -- Nextcloud handles both.
 
 
 Custom log file
 ---------------
 
 If your app needs to write to a **separate log file** (for example, to keep
-verbose debug output out of the main log), you can use
-``OCP\Log\ILogFactory::getCustomPsrLogger()``:
+verbose debug output out of the main log), you can use ``OCP\Log\ILogFactory::getCustomPsrLogger()``:
 
 .. code-block:: php
 
@@ -234,8 +227,7 @@ Structured data logging
 -----------------------
 
 For advanced use cases, the logger also implements ``OCP\Log\IDataLogger``
-(since Nextcloud 18.0.1), which provides a ``logData()`` method for logging
-arbitrary structured data:
+(since Nextcloud 18.0.1), which provides a ``logData()`` method for logging arbitrary structured data:
 
 .. code-block:: php
 

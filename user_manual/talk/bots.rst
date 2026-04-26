@@ -26,8 +26,7 @@ Nextcloud allows users to execute actions using commands. A command typically lo
 
     ``/wiki airplanes``
 
-Administrators can configure, enable and disable commands. Users can use the ``help`` command to find out what commands
-are available.
+Administrators can configure, enable and disable commands. Users can use the ``help`` command to find out what commands are available.
 
     ``/help``
 

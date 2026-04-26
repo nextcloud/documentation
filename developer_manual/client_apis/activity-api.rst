@@ -9,8 +9,7 @@ events, display them in the activity stream, and let users control
 their notification preferences. It also exposes a REST API for
 clients to consume the activity stream.
 
-The extension API consists of four interfaces, all in the ``OCP``
-namespace:
+The extension API consists of four interfaces, all in the ``OCP`` namespace:
 
 * **IEvent** — The activity event object
 * **IProvider** — Parses and translates activities for display
@@ -100,15 +99,13 @@ Implementing a provider
 -----------------------
 
 Providers implement ``OCP\Activity\IProvider`` to parse, translate,
-and beautify activities for display. The interface has a single
-``parse()`` method.
+and beautify activities for display. The interface has a single ``parse()`` method.
 
 Check responsibility
 ^^^^^^^^^^^^^^^^^^^^
 
 First, check whether the event belongs to your app. If not, throw
-``UnknownActivityException`` so the activity app passes it to the
-next provider:
+``UnknownActivityException`` so the activity app passes it to the next provider:
 
 .. code-block:: php
 
@@ -127,8 +124,7 @@ next provider:
 Set the parsed subject
 ^^^^^^^^^^^^^^^^^^^^^^
 
-At minimum, you must call ``setParsedSubject()`` with a translated,
-plain-text string:
+At minimum, you must call ``setParsedSubject()`` with a translated, plain-text string:
 
 .. code-block:: php
 
@@ -174,8 +170,7 @@ Short vs. long translations
 File-related activities support a short form (e.g. "Added to
 favorites") for the sidebar and a long form (e.g. "You added
 hello.jpg to your favorites") for the stream. Check
-``IManager::isFormattingFilteredObject()`` to decide which form to
-use.
+``IManager::isFormattingFilteredObject()`` to decide which form to use.
 
 Merging activities
 ^^^^^^^^^^^^^^^^^^
@@ -198,8 +193,7 @@ Implementing a setting
 ----------------------
 
 Settings define activity types and appear on the personal
-notification preferences page. They implement
-``OCP\Activity\ISetting``.
+notification preferences page. They implement ``OCP\Activity\ISetting``.
 
 .. list-table::
    :header-rows: 1
@@ -273,8 +267,7 @@ Example filtering to only show calendar todo activities:
 REST API (v2)
 -------------
 
-The Activity app exposes a REST API for clients to consume the
-activity stream.
+The Activity app exposes a REST API for clients to consume the activity stream.
 
 Capabilities
 ^^^^^^^^^^^^
@@ -473,8 +466,7 @@ Example response
 Further reading
 ---------------
 
-The Activity app repository contains additional documentation with
-more detailed examples:
+The Activity app repository contains additional documentation with more detailed examples:
 
 * `Creating events <https://github.com/nextcloud/activity/blob/master/docs/create.md>`__
 * `Implementing a provider <https://github.com/nextcloud/activity/blob/master/docs/provider.md>`__

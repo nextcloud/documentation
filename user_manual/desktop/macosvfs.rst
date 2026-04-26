@@ -93,8 +93,7 @@ needing to worry about connectivity. macOS will **not** free up local disk
 space by evicting items which are marked to be kept downloaded, even if they
 have not been accessed for a long time.
 
-This can be undone by selecting "Allow automatic freeing up space" on the same
-items.
+This can be undone by selecting "Allow automatic freeing up space" on the same items.
 
 To always keep everything in an account available locally, you can select
 "Always keep downloaded" on the location root in the Finder sidebar.
@@ -123,8 +122,7 @@ File actions
 
 If the server has apps installed which provide file actions for the selected
 file types, these actions will also be available in the context menu in Finder.
-This allows you to use server-side features of your Nextcloud instance directly
-from the Finder.
+This allows you to use server-side features of your Nextcloud instance directly from the Finder.
 
 Known issues
 ------------
@@ -136,8 +134,7 @@ Due to technical limitations in macOS which are imposed by Apple,
 it is not possible to have the Finder integration for classic sync folders
 running in parallel to an enabled virtual files integration.
 This means that item decorations and context menu options will be
-unavailable for classic sync folders while the file provider extension is
-enabled.
+unavailable for classic sync folders while the file provider extension is enabled.
 
 Alias files
 ^^^^^^^^^^^

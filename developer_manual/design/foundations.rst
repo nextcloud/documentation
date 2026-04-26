@@ -3,8 +3,7 @@ Foundations
 ===========
 
 There are several design elements that are common to all Nextcloud apps. If you are developing for a platform that has
-its own design specifications, for example Android, it would be a good idea to keep those in mind while designing your
-app.
+its own design specifications, for example Android, it would be a good idea to keep those in mind while designing your app.
 
 For web apps, there is the `Vue library <https://nextcloud-vue-components.netlify.app/>`_ and the `Penpot design kit <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=db3839da-807b-8052-8002-576401e9a376&section=interactions&index=0&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_.
 
@@ -124,8 +123,7 @@ Status and indicators
 
            Warning: #ECA700
 
-Interface elements associated with a status like info, success, error, or warning may also be colored to communicate the
-action better.
+Interface elements associated with a status like info, success, error, or warning may also be colored to communicate the action better.
 
 While interface elements like buttons are colored differently depending on their action, the color of the text in that
 element is almost always either of the main text colors, that is light or dark.
@@ -193,8 +191,7 @@ Naming
 To be immediately understandable, we choose app names which are generic and easily translatable. Additionally, they are
 short and easily fit in the top navigation without being cut off.
 
-Files, Contacts, Calendar, and Mail do not need further explanation, which is why we recommend to choose a
-self-explanatory app name.
+Files, Contacts, Calendar, and Mail do not need further explanation, which is why we recommend to choose a self-explanatory app name.
 
 Further good examples of this: Notes, Bookmarks, Maps, Forms, Tasks, Music.
 

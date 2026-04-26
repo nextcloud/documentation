@@ -2,8 +2,7 @@
 OCS Sharee API
 ==============
 
-The OCS Sharee API allows you to access the sharing API from outside over
-pre-defined OCS calls.
+The OCS Sharee API allows you to access the sharing API from outside over pre-defined OCS calls.
 
 The base URL for all calls to the Sharee API is: ``<nextcloud_base_url>/ocs/v1.php/apps/files_sharing/api/v1``
 

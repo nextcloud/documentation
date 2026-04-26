@@ -73,8 +73,7 @@ does not decrypt any files::
  sudo -E -u www-data php occ encryption:disable
    Encryption disabled
 
-To also decrypt all existing files, run
-``encryption:decrypt-all`` afterwards.
+To also decrypt all existing files, run ``encryption:decrypt-all`` afterwards.
 
 
 Encrypt and decrypt all data
@@ -317,8 +316,7 @@ encryption\:recover-user
 
 Recover a user's files after a password loss. Only available in **per-user
 key** mode (not applicable when master key is enabled). The user must have
-enabled the recovery key in their personal settings before the password was
-lost.
+enabled the recovery key in their personal settings before the password was lost.
 
 The command prompts for the recovery key password and the new login password::
 
