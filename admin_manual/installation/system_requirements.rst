@@ -45,7 +45,7 @@ To ensure the full functionality of your Nextcloud, please make sure that the se
 
 CPU Architecture and OS
 ^^^^^^^^^^^^^^^^^^^^^^^
-A 64-bit CPU, OS and PHP is required for Nextcloud to run well.
+A 64-bit CPU, OS and PHP is strongly recommended for Nextcloud.
 
 32-bit systems are supported, with the following known limitations:
 
