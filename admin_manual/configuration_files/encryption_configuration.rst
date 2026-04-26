@@ -219,7 +219,7 @@ Here is a reference table for common occ commands:
    * - occ encryption:enable-master-key
      - Enable master key mode
    * - occ encryption:disable-master-key
-     - Enable user key mode
+     - Disable master key mode
    * - occ encryption:fix-encrypted-version
      - Fix bad signature errors
    * - occ encryption:fix-key-location [user]
