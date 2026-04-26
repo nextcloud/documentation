@@ -7,7 +7,7 @@ be installed separately from our App Store.
 
 The Nextcloud Contacts app is similar to other mobile contact applications, but
 with more functionality.
-Let's run through basic features that will help you maintain your address book
+This section covers the basic features that will help you maintain your address book
 in the application.
 
 Below, you will learn how to add contacts, edit or remove contacts, upload a
