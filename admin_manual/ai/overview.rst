@@ -4,7 +4,7 @@ Overview
 
 
 We strive to bring Artificial Intelligence features to Nextcloud. This section highlights these features, how they work and where to find them.
-All of these features are completely optional. If you want to have them on your server, you need install them via separate Nextcloud Apps.
+All of these features are completely optional. If you want to have them on your server, you need to install them via separate Nextcloud Apps.
 
 Overview of AI features
 -----------------------
@@ -296,7 +296,7 @@ Provider apps
 
 Live transcription
 ^^^^^^^^^^^^^^^^^^
-Since Hub 25 Autumn you can let Nextcloud automatically generate produce subtitles for video and audio calls in Nextcloud Talk.
+Since Hub 25 Autumn you can let Nextcloud automatically generate subtitles for video and audio calls in Nextcloud Talk.
 
 Frontend apps
 ~~~~~~~~~~~~~
