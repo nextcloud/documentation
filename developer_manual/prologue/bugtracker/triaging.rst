@@ -24,7 +24,7 @@ The process of checking, reproducing and closing invalid issues is called ‘bug
 2. Incomplete or duplicate bug reports or feature requests
 3. Irrelevant or wrong bug reports or feature requests
 
-The job of a bug triager is to identify the One’s for developers to look at, help remove, merge or improve any Two to a One and dismiss Three’s in a friendly and emphatic way.
+The job of a bug triager is to identify Category 1 issues for developers to look at, help remove, merge or improve any Category 2 issue to a Category 1, and dismiss Category 3 issues in a friendly and emphatic way.
 
 Triaging follows these steps:
 
