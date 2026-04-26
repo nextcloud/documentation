@@ -2,7 +2,7 @@
 Windmill Workflows
 ==================
 
-Nextcloud integrates the `Windmill workflow engine <https://www.windmill.dev/>` to allow advanced custom workflows interacting with your Nextcloud instance.
+Nextcloud integrates the `Windmill workflow engine <https://www.windmill.dev/>`_ to allow advanced custom workflows interacting with your Nextcloud instance.
 
 Installation
 ------------
@@ -126,7 +126,7 @@ The :code:`data` variable receives the response of the HTTP request, so any data
 Authentication
 ~~~~~~~~~~~~~~
 
-All the scripts we provide one input parameter in common: *nextcloud* needs to be an object of the type "Nextcloud" and contain what is necessary to authenticate against Nextcloud:
+All the scripts we provide have one input parameter in common: *nextcloud* needs to be an object of the type "Nextcloud" and contain what is necessary to authenticate against Nextcloud:
 
 * baseUrl: the URL your instance is reachable at, e.g. :code:`https://example.cloud`
 * userId: the user id of the user the script should authenticate with
