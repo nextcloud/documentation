@@ -129,9 +129,6 @@ structures. These files are never encrypted:
 - The search index from the full text search app.
 - Third-party app data
 
-Only those files that are shared with third-party storage providers can
-be encrypted, the rest of the files may not be encrypted.
-
 Change private key password
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
