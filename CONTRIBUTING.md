@@ -12,10 +12,11 @@ developer manuals.
 2. [Setting up a local build environment](#setting-up-a-local-build-environment)
 3. [Making changes](#making-changes)
 4. [Opening a pull request](#opening-a-pull-request)
-5. [DCO sign-off](#dco-sign-off)
-6. [Review process](#review-process)
-7. [Style guide](#style-guide)
-8. [Issue templates](#issue-templates)
+5. [Commit message format](#commit-message-format)
+6. [DCO sign-off](#dco-sign-off)
+7. [Review process](#review-process)
+8. [Style guide](#style-guide)
+9. [Issue templates](#issue-templates)
 
 ---
 
@@ -108,6 +109,49 @@ versions, etc.).
    `nextcloud/documentation`.
 6. Fill in the pull request template — include a screenshot of changed pages
    where relevant.
+
+---
+
+## Commit message format
+
+This project follows the [Conventional Commits](https://www.conventionalcommits.org/)
+specification. Every commit message must have the form:
+
+```
+type(optional scope): short description
+
+Optional longer body.
+
+Signed-off-by: Your Name <your.email@example.com>
+```
+
+**Accepted types:**
+
+| Type       | When to use                                                  |
+| ---------- | ------------------------------------------------------------ |
+| `docs`     | Content changes — new or updated documentation text         |
+| `fix`      | Correcting errors (broken links, wrong commands, typos, …)  |
+| `feat`     | Adding a new page or section                                 |
+| `refactor` | Restructuring without changing the meaning of the content   |
+| `chore`    | Build, tooling, or dependency updates                        |
+| `ci`       | Changes to GitHub Actions workflows                          |
+
+**Examples:**
+
+```
+docs: add two-factor authentication setup guide
+fix: correct occ command in backup section
+feat: add new Files app keyboard shortcuts page
+chore: bump sphinx to 7.3
+ci: add link-checker workflow
+```
+
+The **scope** is optional and should name the affected manual or area
+(e.g. `user`, `admin`, `developer`, `ci`):
+
+```
+fix(admin): correct database tuning example for PostgreSQL
+```
 
 ---
 
