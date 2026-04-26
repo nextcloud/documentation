@@ -118,7 +118,7 @@ Docker Socket Proxy vs HaRP
 | `FRP <https://github.com/fatedier/frp>`_ is used to create a tunnel between the ExApp and the HaRP container so there is no need for the ExApp containers to expose any ports to the host or to be reachable from the Nextcloud server.
 | The Nextcloud server can reach the ExApp containers through the HaRP container.
 
-HaRP has an additional benefit of being able to proxy requests coming from the Web interface or an API to the ExApp container without being proxies through the Nextcloud server, saving resources, improving performance and supporting additional protocols like WebSockets.
+HaRP has an additional benefit of being able to proxy requests coming from the Web interface or an API to the ExApp container without being proxied through the Nextcloud server, saving resources, improving performance and supporting additional protocols like WebSockets.
 
 HaRP is the recommended way to run ExApps, but if you are not able to use it, Docker Socket Proxy is still supported.
 

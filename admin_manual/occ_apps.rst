@@ -165,7 +165,7 @@ You can list all configuration values with one command::
 
 By default, passwords and other sensitive data are omitted from the report, so
 the output can be posted publicly (e.g. as part of a bug report). In order to
-generate a full backport of all configuration values the ``--private`` flag
+generate a full export of all configuration values the ``--private`` flag
 needs to be set::
 
  sudo -E -u www-data php occ config:list --private
@@ -316,7 +316,6 @@ before. If you want to be notified in that case, set the
 
   sudo -E -u www-data php occ config:system:delete doesnotexist
   --error-if-not-exists
-  Config provisioning_api of app appname could not be deleted because it did not
-  exist
+  System config value doesnotexist could not be deleted because it did not exist
 
 
