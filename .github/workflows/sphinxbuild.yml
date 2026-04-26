@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  packages: write
 
 concurrency:
   group: build-documentation-${{ github.head_ref || github.ref }}
@@ -77,19 +78,83 @@ jobs:
           path: ${{ matrix.manual.directory }}/${{ matrix.manual.build_path }}
 
   # ============================================================================
+  # PREPARE PDF IMAGE
+  # ============================================================================
+  # Detects whether .devcontainer/Dockerfile changed in this run.
+  # - If it changed: builds a fresh image, pushes it to GHCR with a SHA tag,
+  #   and outputs that tag so build-pdf uses the new image immediately.
+  # - If it did not change: outputs the stable ghcr.io/.../sphinx-latex:latest
+  #   tag so build-pdf uses the already-published image.
+  # ============================================================================
+  prepare-pdf-image:
+    name: Prepare PDF build image
+    runs-on: ubuntu-latest
+
+    outputs:
+      image: ${{ steps.result.outputs.image }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 2
+
+      - name: Check whether Dockerfile changed
+        id: changed
+        run: |
+          if git diff --name-only HEAD^ HEAD -- .devcontainer/Dockerfile 2>/dev/null | grep -q .; then
+            echo "dockerfile_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "dockerfile_changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Set up Docker Buildx
+        if: steps.changed.outputs.dockerfile_changed == 'true'
+        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4.0.0
+
+      - name: Login to GitHub Container Registry
+        if: steps.changed.outputs.dockerfile_changed == 'true'
+        uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4.1.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image with SHA tag
+        if: steps.changed.outputs.dockerfile_changed == 'true'
+        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7.1.0
+        with:
+          context: .devcontainer
+          push: true
+          tags: ghcr.io/${{ github.repository }}/sphinx-latex:sha-${{ github.sha }}
+          cache-from: type=registry,ref=ghcr.io/${{ github.repository }}/sphinx-latex:latest
+          cache-to: type=inline
+
+      - name: Output image reference
+        id: result
+        run: |
+          if [ "${{ steps.changed.outputs.dockerfile_changed }}" = "true" ]; then
+            echo "image=ghcr.io/${{ github.repository }}/sphinx-latex:sha-${{ github.sha }}" >> $GITHUB_OUTPUT
+          else
+            echo "image=ghcr.io/${{ github.repository }}/sphinx-latex:latest" >> $GITHUB_OUTPUT
+          fi
+
+  # ============================================================================
   # BUILD PDF
   # ============================================================================
   # Builds the PDF documentation using the pre-built sphinx-latex Docker image.
   # The image already contains all LaTeX packages, so no apt install is needed.
-  # Starts immediately without waiting for any setup job.
+  # Uses the image prepared by the prepare-pdf-image job: either the stable
+  # ghcr.io/.../sphinx-latex:latest image or a freshly built SHA-tagged image
+  # if .devcontainer/Dockerfile changed in this run.
   # ============================================================================
   build-pdf:
     name: Building ${{ matrix.manual.name }} PDF
     runs-on: ubuntu-latest
-    # Use the pre-built sphinx-latex image which has all LaTeX packages pre-installed.
-    # The image is built from .docker/sphinx-latex/Dockerfile by the docker-build.yml workflow
-    # and published to GHCR. Using latest ensures we always use the current image for this repo.
-    container: ghcr.io/nextcloud/documentation/sphinx-latex:latest
+    needs: prepare-pdf-image
+    # Use the image prepared by prepare-pdf-image: either the stable ghcr image
+    # or a freshly built SHA-tagged image if .devcontainer/Dockerfile changed.
+    container: ${{ needs.prepare-pdf-image.outputs.image }}
 
     strategy:
       fail-fast: false

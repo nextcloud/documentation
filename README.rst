@@ -123,9 +123,8 @@ Nightly Automated Build Steps
    2.  ``cd documentation``
    3.  ``git checkout <branch name>``
 2.  **Install**
-   1.  ``npm install svgexport -g --unsafe-perm=true``
-   2.  ``pip3 install -r requirements.txt``
-   3.  ``make all``
+   1.  ``pip3 install -r requirements.txt``
+   2.  ``make all``
 
 
 Building HTML
@@ -214,16 +213,6 @@ Just open the container an use one of the commands from above to build the proje
 documentation, ``make html`` to build the HTML documentation or ``make pdf`` to build the PDF documentation. You can also use
 ``make SPHINXBUILD=sphinx-autobuild html`` in combination with `port forwarding <https://code.visualstudio.com/docs/devcontainers/containers#_forwarding-or-publishing-a-port>`_
 to  watch file changes and automatically reload the html preview.
-
-Icons
------
-
-To compile and update the icons list in the designer manual, you will also need
-
-1. inkscape
-2. sass
-3. unzip
-4. wget
 
 .. _CC BY 3.0: https://creativecommons.org/licenses/by/3.0/deed.en_US
 .. _`Xcode command line tools`: https://stackoverflow.com/questions/9329243/xcode-install-command-line-tools
