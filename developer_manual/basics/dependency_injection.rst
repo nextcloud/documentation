@@ -187,7 +187,7 @@ The container works in the following way:
 
 * **AuthorMapper** is queried::
 
-    $container->registerService(AuthorMappers::class, function(ContainerInterface $c): AuthorMapper {
+    $container->registerService(AuthorMapper::class, function(ContainerInterface $c): AuthorMapper {
       return new AuthorService(
         $c->get(IDBConnection::class)
       );
