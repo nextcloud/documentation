@@ -51,7 +51,7 @@ Here are some things to consider:
 
 - Any major release that has not reached end-of-life status usually receives these backported fixes.
 - Backporting even the simplest changes has some level of risk.
-- Differences among stable branches - including of shipped and third-pary apps - means there are additional variables outside of the main branch (or even versus the latest stable).
+- Differences among stable branches - including of shipped and third-party apps - means there are additional variables outside of the main branch (or even versus the latest stable).
 - Fixes often do not have a lot of time in the field (< 4 weeks and it's possible no one has directly interacted with the new code outside of the original developer).
 
 Showstoppers (never backport things that cause these):
