@@ -927,7 +927,7 @@ Trashbin
   trashbin:size     configure or show the target trashbin size
 
 trashbin\:cleanup
-^^^^^^^^^^^^^^^^^^
+"""""""""""""""""
 
 Remove all deleted files for all users, or for specific users::
 
@@ -935,7 +935,7 @@ Remove all deleted files for all users, or for specific users::
  sudo -E -u www-data php occ trashbin:cleanup layla fred
 
 trashbin\:expire
-^^^^^^^^^^^^^^^^^
+"""""""""""""""""
 
 Apply the configured trashbin retention policy and remove files that have
 exceeded the maximum retention age. Runs for all users by default, or for
@@ -945,7 +945,7 @@ specific users::
  sudo -E -u www-data php occ trashbin:expire layla
 
 trashbin\:restore
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""
 
 Restore deleted files according to the given filters. Restore all deleted files
 for all users::
@@ -977,7 +977,7 @@ Use ``--dry-run`` to simulate the restore without making any changes::
   some files may be skipped.
 
 trashbin\:size
-^^^^^^^^^^^^^^
+""""""""""""""
 
 Show or configure the target trashbin size. When called without arguments,
 shows the current configured size::
@@ -1009,7 +1009,7 @@ Versions
   versions:expire   expire file versions according to the configured retention policy
 
 versions\:cleanup
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""
 
 Delete all file versions for all users, or for specific users. Use ``--path``
 to limit deletion to a specific path::
@@ -1019,7 +1019,7 @@ to limit deletion to a specific path::
  sudo -E -u www-data php occ versions:cleanup layla --path="/files/Documents"
 
 versions\:expire
-^^^^^^^^^^^^^^^^^
+"""""""""""""""""
 
 Apply the configured version retention policy and remove versions that have
 exceeded the maximum retention age. Runs for all users by default, or for
