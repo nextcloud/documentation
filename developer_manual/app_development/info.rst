@@ -32,7 +32,7 @@ A minimum valid **info.xml** would look like this:
         </dependencies>
     </info>
 
-A full blown example would look like this (needs to be utf-8 encoded):
+A comprehensive example would look like this (needs to be utf-8 encoded):
 
 .. code-block:: xml
     :caption: appinfo/info.xml

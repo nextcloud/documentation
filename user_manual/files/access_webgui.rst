@@ -98,7 +98,7 @@ Navigating inside your Nextcloud
 
 Navigating through folders in Nextcloud is as simple as clicking on a folder to
 open it and using the back button on your browser to move to a previous level.
-Nextcloud also provides a navigation bar at the top of the Files field for quick
+Nextcloud also provides a navigation bar at the top of the Files page for quick
 navigation.
 
 Sharing status icons
