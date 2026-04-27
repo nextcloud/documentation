@@ -14,8 +14,9 @@ For best performance, stability and functionality we have documented some recomm
 +------------------+-----------------------------------------------------------------------+
 | Platform         | Options                                                               |
 +==================+=======================================================================+
-| Operating System | - **Ubuntu 24.04 LTS** (recommended)                                  |
-| (64-bit)         | - Ubuntu 22.04 LTS                                                    |
+| Operating System | - **Ubuntu 26.04 LTS** (recommended)                                  |
+| (64-bit)         | - Ubuntu 24.04 LTS                                                    |
+|                  | - Ubuntu 22.04 LTS                                                    |
 |                  | - **Red Hat Enterprise Linux 10** (recommended)                       |
 |                  | - Red Hat Enterprise Linux 9                                          |
 |                  | - Debian 13 (Trixie)                                                  |
@@ -38,8 +39,8 @@ For best performance, stability and functionality we have documented some recomm
 +------------------+-----------------------------------------------------------------------+
 | PHP Runtime      | - 8.2 (*deprecated*)                                                  |
 |                  | - 8.3                                                                 |
-|                  | - **8.4** (*recommended*)                                             |
-|                  | - 8.5                                                                 |
+|                  | - 8.4                                                                 |
+|                  | - **8.5** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
