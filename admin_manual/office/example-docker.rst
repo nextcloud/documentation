@@ -40,7 +40,7 @@ On a recent Ubuntu or Debian this should be possible using:
     apt-get install apache2
     a2enmod proxy proxy_wstunnel proxy_http ssl
 
-Afterward, configure one VirtualHost properly to proxy the traffic. For security reason we recommend to use a subdomain such as office.example.com instead of running on the same domain. An example config can be found below::
+Afterward, configure one VirtualHost properly to proxy the traffic. For security reasons, we recommend using a subdomain such as office.example.com instead of running on the same domain. An example config can be found below::
 
     ########################################
     # Reverse proxy for Collabora Online
