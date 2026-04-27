@@ -134,7 +134,7 @@ or to prune all merged branches, you would execute this::
 
   find . -maxdepth 3 -type d -name .git -exec sh -c 'cd "{}"/../ && pwd && git remote prune origin' \;
 
-It is even easier if you create alias from these commands in case you want to avoid retyping those each time you need them.
+It is even easier if you create aliases for these commands in case you want to avoid retyping those each time you need them.
 
 
 .. _GitHub: https://github.com/nextcloud
