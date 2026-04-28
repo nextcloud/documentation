@@ -174,9 +174,15 @@ redirects = {
     "core/static-analysis": "../server/static-analysis.html",
     "core/unit-testing": "../server/unit-testing.html",
     # Removed 2024-09
-    "digging_deeper/changelog": "../app_publishing_maintenance/app_upgrade_guide/index.html",
+    "digging_deeper/changelog": "../release_notes/index.html",
     # Removed 2025-04
     "basics/front-end/l10n": "../translations.html",
     # Moved 2026-04 - Upgrade to 34 moved to release notes
     "app_publishing_maintenance/app_upgrade_guide/upgrade_to_34": "../../release_notes/critical_changes.html",
+    # Moved 2026-04 - Previous versions moved to release notes
+    "app_publishing_maintenance/app_upgrade_guide/index": "../../release_notes/index.html",
+    "app_publishing_maintenance/app_upgrade_guide/upgrade_to_33": "../../release_notes/previous/upgrade_to_33.html",
+    "app_publishing_maintenance/app_upgrade_guide/upgrade_to_32": "../../release_notes/previous/upgrade_to_32.html",
+    "app_publishing_maintenance/app_upgrade_guide/upgrade_to_31": "../../release_notes/previous/upgrade_to_31.html",
+    "app_publishing_maintenance/app_upgrade_guide/upgrade_to_30": "../../release_notes/previous/upgrade_to_30.html",
 }

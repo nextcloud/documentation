@@ -20,7 +20,7 @@ There are three procedures in place to facilitate communication to app developer
 
   This means the development of your pull request cannot be considered done if you introduced changes (additions, removals or modifications) that affect app developers that you did not document.
 
-2. A change necessary for app developers to execute for app compatibility in a new version, has to be reported and documented by the author of the pull request in the :ref:`App Upgrade guide <app-upgrade-guide>` section.
+2. A change necessary for app developers to execute for app compatibility in a new version, has to be reported and documented by the author of the pull request in the :ref:`Release Notes <critical-changes>` section.
 
   The requirements for this documentation are:
 
