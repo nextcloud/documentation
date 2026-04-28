@@ -180,7 +180,9 @@ The API related to these tables are now using a string instead of a int. See Cha
 Added Events
 ^^^^^^^^^^^^
 
-- TBD
+- New ``OCP\OCM\Events\LocalOCMDiscoveryEvent`` event emitted before the API returns a local OCM provider.
+- New ``OCP\OCM\Events\OCMEndpointRequestEvent`` event emitted on incoming OCM endpoint requests.
+
 
 Added APIs
 ^^^^^^^^^^
@@ -204,6 +206,9 @@ Added APIs
 - ``ImageToTextOpticalCharacterRecognition`` TaskProcessing task type was added
 
 - ``ISynchronousWatermarkingProvider`` TaskProcessing provider interface was added to allow synchronous processing providers to react to the boolean includeWatermark flag
+
+- New ``OCP\OCM\Events\LocalOCMDiscoveryEvent`` event. Catch this to register additional resources and/or capabilities at the local OCM provider before the provider is returned by the API.
+- New ``OCP\OCM\Events\OCMEndpointRequestEvent`` event. Catch this event in order to manage the OCM request/capability.
 
 Changed APIs
 ^^^^^^^^^^^^
