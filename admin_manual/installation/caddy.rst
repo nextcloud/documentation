@@ -8,7 +8,7 @@ Caddy configuration
 .. note::
     This page covers example Caddy configuration to run a Nextcloud server.
     These configuration examples were originally provided by
-    `@ntninja <https://ninetailed.ninja>`_ based on the :doc:`nginx` sample and
+    `@ntninja <https://github.com/ntninja>`_ based on the :doc:`nginx` sample and
     are exclusively community-maintained. (Thank you contributors!)
 
 -  This guide assumes you are using Caddy 2.6 or later and the presented sample
@@ -53,7 +53,7 @@ while Nextcloud relies on ``REQUEST_URI``.
 
 The recommended approach is:
 
-1. Set ``OVERWRITEWEBROOT=/nextcloud`` in your Nextcloud or PHP-FPM configuration.
+1. Set ``'overwritewebroot' => '/nextcloud'`` in your Nextcloud ``config/config.php``.
 2. Wrap the main Caddyfile configuration in a ``handle_path /nextcloud/* { … }`` block,
    or use ``uri strip_prefix /nextcloud``.
 3. Capture the rewritten URI before the PHP handler and pass it as ``REQUEST_URI``:
