@@ -1,4 +1,4 @@
-FROM python:3.13
+FROM ubuntu:24.04
 
 LABEL org.opencontainers.image.source="https://github.com/nextcloud/documentation"
 LABEL org.opencontainers.image.description="Sphinx build environment for Nextcloud documentation"
@@ -12,6 +12,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends \
         ca-certificates curl gnupg2 git lsb-release nano make \
         unzip wget \
+        python3 python3-pip python3-venv \
         latexmk texlive-fonts-extra texlive-fonts-extra-links texlive-fonts-recommended \
         texlive-latex-extra texlive-latex-recommended tex-gyre texlive-xetex xindy \
     && mktexlsr \
