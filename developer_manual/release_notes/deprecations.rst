@@ -26,6 +26,6 @@ Older deprecations
 You find all current deprecations in this section.
 
 ..
-    This is where we will move the deprecations after the branch off. Enties will stay until actual removal.
+    This is where we will move the deprecations after the branch off. Entries will stay until actual removal.
 
-Also see the older :ref:`app-upgrade-guide` for deprecations.
+Also see the older :ref:`Release Notes <previous-versions>` for deprecations.
