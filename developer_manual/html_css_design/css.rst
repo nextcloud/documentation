@@ -278,10 +278,10 @@ Dos and Don'ts
      - Description
    * - Use physical properties ``margin-left``
      - Use logical properties ``margin-inline-start``
-     - Using logical propreties automatically adapts to LTR/RTL
+     - Using logical properties automatically adapts to LTR/RTL
    * - Use ``left`` or ``right`` 
      - Use inset-inline-start/end
-     - Keep positiong directon aware 
+     - Keep positioning direction-aware 
    * - Use text-align: left/right
      - Use text-align: start/end
      - Text aligns correctly in both modes
