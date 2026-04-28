@@ -87,6 +87,10 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#css-classes">CSS classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rtl-guidelines">RTL guidelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dos-and-don-ts">Dos and Don’ts</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="icons.html">Icons</a></li>
@@ -592,6 +596,46 @@ Doing so also allows users to enforce dark or light theme, high contrast or othe
 </tbody>
 </table>
 </section>
+<section id="rtl-guidelines">
+<h2>RTL guidelines<a class="headerlink" href="#rtl-guidelines" title="Link to this heading"></a></h2>
+<section id="dos-and-don-ts">
+<h3>Dos and Don’ts<a class="headerlink" href="#dos-and-don-ts" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Bad</p></th>
+<th class="head"><p>Good</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Use physical properties <code class="docutils literal notranslate"><span class="pre">margin-left</span></code></p></td>
+<td><p>Use logical properties <code class="docutils literal notranslate"><span class="pre">margin-inline-start</span></code></p></td>
+<td><p>Using logical properties automatically adapts to LTR/RTL</p></td>
+</tr>
+<tr class="row-odd"><td><p>Use <code class="docutils literal notranslate"><span class="pre">left</span></code> or <code class="docutils literal notranslate"><span class="pre">right</span></code></p></td>
+<td><p>Use inset-inline-start/end</p></td>
+<td><p>Keep positioning direction-aware</p></td>
+</tr>
+<tr class="row-even"><td><p>Use text-align: left/right</p></td>
+<td><p>Use text-align: start/end</p></td>
+<td><p>Text aligns correctly in both modes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Use border-left/right</p></td>
+<td><p>Use border-inline-start/end</p></td>
+<td><p>Borders flip correctly</p></td>
+</tr>
+<tr class="row-even"><td><p>Use float: left/right</p></td>
+<td><p>Use float: inline-start/end</p></td>
+<td><p>Float respects direction</p></td>
+</tr>
+<tr class="row-odd"><td><p>Assume RTL “just works”</p></td>
+<td><p>Test your app with RTL languages</p></td>
+<td><p>Using the correct css value is not always enough to avoid bugs</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 </section>
 
 
@@ -606,7 +650,7 @@ Doing so also allows users to enforce dark or light theme, high contrast or othe
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Apr 26, 2026.
+      <span class="lastupdated">Last updated on Apr 28, 2026.
       </span></p>
   </div>
 
