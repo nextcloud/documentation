@@ -21,3 +21,16 @@ This query builder has the benefit of accurately returning the selected columns 
 .. todo:: This linked page does not have coverage for the new API.
 
 See :ref:`database` for details.
+
+Expensive post migration repair steps
+-------------------------------------
+
+``\OCP\Migration\IRepairStepExpensive`` was added and can be used to mark post-migration repair steps as expensive.
+
+Expensive repair steps are non-critical repair steps that might take a long time to execute.
+Non-critical means that they are not required to directly be executed during migration to have a working instance,
+but they might be required to have a fully working instance later on.
+
+Expensive repair steps are only executed when explicitly requested by the administrator.
+
+See :ref:`migration-repair-steps` for details.
