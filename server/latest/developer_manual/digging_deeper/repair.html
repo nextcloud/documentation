@@ -82,6 +82,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#creating-a-repair-step">Creating a repair step</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#register-a-repair-step">Register a repair-step</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#repair-step-types">Repair-step types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#expensive-repair-steps">Expensive repair steps</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
@@ -128,7 +129,7 @@
            <div itemprop="articleBody">
              
   <section id="repair-steps">
-<h1>Repair steps<a class="headerlink" href="#repair-steps" title="Link to this heading"></a></h1>
+<span id="migration-repair-steps"></span><h1>Repair steps<a class="headerlink" href="#repair-steps" title="Link to this heading"></a></h1>
 <p>Repair steps are methods which are executed by Nextcloud on certain
 events which directly affect the app. You can use these repair steps to run
 code when your app is installed, uninstalled, upgraded etc. It’s called repair
@@ -141,7 +142,7 @@ steps because they are frequently used to fix things automatically.</p>
 <h2>Creating a repair step<a class="headerlink" href="#creating-a-repair-step" title="Link to this heading"></a></h2>
 <p>A repair step is an implementation of the  <code class="docutils literal notranslate"><span class="pre">OCP\Migration\IRepairStep</span></code> interface.
 By convention these classes are placed in the <strong>lib/Migration</strong> directory.
-The following repairstep will log a message when executed.</p>
+The following repair step will log a message when executed.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">namespace</span> <span class="nx">OCA\MyApp\Migration</span><span class="p">;</span>
 
@@ -232,6 +233,24 @@ of the app:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">post-migration</span></code> This repair step will be executed just after the database is migrated during an update of the app.  This repair step will also be executed when running the <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">maintenance:repair</span></code> command</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">live-migration</span></code> This repair step will be scheduled to be run in the background (e.g. using cron), therefore it is unpredictable when it will run. If the job isn’t required right after the update of the app and the job would take a long time this is the best choice.</p></li>
 </ul>
+</section>
+<section id="expensive-repair-steps">
+<h2>Expensive repair steps<a class="headerlink" href="#expensive-repair-steps" title="Link to this heading"></a></h2>
+<p>Expensive repair steps are non-critical repair steps that might take a long time to execute.
+Non-critical means that they are not required to directly be executed during migration to have a working instance,
+but they might be required to have a fully working instance later on.</p>
+<p>Expensive repair steps are only executed when explicitly requested by the administrator
+when using the <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">maintenance:repair</span></code> command, by passing the <code class="docutils literal notranslate"><span class="pre">--include-expensive</span></code> flag.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Expensive repair steps can only be used for <code class="docutils literal notranslate"><span class="pre">post-migration</span></code> repair steps, as the other types are executed during (un-)installation of the app and therefore should not take a long time.</p>
+</div>
+<section id="creating-an-expensive-repair-step">
+<h3>Creating an expensive repair step<a class="headerlink" href="#creating-an-expensive-repair-step" title="Link to this heading"></a></h3>
+<p>Expensive repair steps are created the same way as normal repair steps as seen in the example above.
+But they have to implement the <code class="docutils literal notranslate"><span class="pre">\OCP\Migration\IRepairStepExpensive</span></code> interface
+instead of the <code class="docutils literal notranslate"><span class="pre">\OCP\Migration\IRepairStep</span></code> interface.</p>
+</section>
 </section>
 </section>
 
