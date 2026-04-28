@@ -268,7 +268,7 @@ RTL guidelines
 ==============
 
 Dos and Don'ts
-^^^^^^^^^^^^^^
+--------------
 
 .. list-table::
    :header-rows: 1
