@@ -173,4 +173,3 @@ the mounted external storage.
 
 If you are running Nextcloud AIO, the equivalent command 
 in that environment is ``sudo docker exec --user www-data -it nextcloud-aio-nextcloud php occ files:scan --all``. 
-If you are running a different version under Docker, just substitute the container name of your installed version for "nextcloud-aio-nextcloud".
