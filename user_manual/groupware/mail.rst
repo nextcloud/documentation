@@ -270,7 +270,7 @@ You can also set the date and time for the send operation to a point in the futu
 
 The outbox is only visible when there is a message waiting to be handled by the outbox.
 
-You can re- open the composer for a message in the outbox any time before the "send"- operation is triggered.
+You can reopen the composer for a message in the outbox any time before the send operation is triggered.
 
 .. note::
    When an error occurs during sending, three error messages are possible:
@@ -278,7 +278,7 @@ You can re- open the composer for a message in the outbox any time before the "s
    Could not copy to "Sent" mailbox
       The mail was sent but couldn't be copied to the "Sent" mailbox. This error will be handled by the outbox and the copy operation will be tried again.
    Mail server error
-      Sending was unsuccessful with a state than can be retried (ex: the SMTP server couldn't be reached). The outbox will retry sending the message.
+      Sending was unsuccessful with a state that can be retried (ex: the SMTP server couldn't be reached). The outbox will retry sending the message.
    Message could not be sent
       Sending might or might not have failed. The mail server can't tell us the state of the message. Since the Mail app has no way to determine the state of the message (sent or unsent) the message will stay in the outbox and the account user has to decide how to proceed.
 
@@ -313,7 +313,7 @@ Create an event for a certain message/thread directly via mail app
 2. Click *More actions*
 3. Click *Create event*
 
-.. note:: Event title and an agenda is created for you if the administrator has enabled it.
+.. note:: An event title and agenda are created for you if the administrator has enabled it.
 
 Create a task
 ~~~~~~~~~~~~~

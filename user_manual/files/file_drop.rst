@@ -17,7 +17,7 @@ made to:
 
 .. image:: ../images/anonym_click_sharing.png
 
-Check Share Link, Allow editing, Hide file listing:
+Enable **Share Link**, **Allow editing**, and **Hide file listing**:
 
 .. image:: ../images/anonym_hide_file_listing.png
 
