@@ -330,15 +330,8 @@ Locking and How to Prevent It <https://ma.ttias.be/php-session-locking-prevent-s
     or process (for example, a second browser tab, AJAX request, or background job), resulting in delays or 
     deadlocks.
 
-**Available ISession Methods:**
-
-The entire ``OCP\\ISession`` API:
-
-- ``set(key, value)``, ``get(key)``, ``exists(key)``, ``remove(key)``, ``clear()``
-- ``reopen()``, ``close()``
-- ``getId()``, ``regenerateId()``
-
-See https://github.com/nextcloud/server/blob/master/lib/public/ISession.php for specifics.
+For the full ``OCP\\ISession`` API, see
+`ISession.php <https://github.com/nextcloud/server/blob/master/lib/public/ISession.php>`_.
 
 Setting cookies
 ^^^^^^^^^^^^^^^
