@@ -179,7 +179,7 @@ A setup with the HaRP container itself on the remote is not supported.
 .. _ai-app_api_ddd-dsp:
 
 
-Docker / Reverse Proxy / Nextcloud on 3 independant hosts - with HaRP container
+Docker / Reverse Proxy / Nextcloud on 3 independent hosts - with HaRP container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is the related infrastructure
@@ -276,7 +276,7 @@ Add the following lines (before the existing configuration)
 
 Add the following configuration :
 
-* Daemon Configuraiton template : ``HaRP Proxy (HOST)``
+* Daemon configuration template : ``HaRP Proxy (HOST)``
 * Surname : ``appapi-harp``
 * Display name : ``appapi-harp``
 * Deployment method : ``docker-install``
