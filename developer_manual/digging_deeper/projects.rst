@@ -58,7 +58,7 @@ In order to add your own resource type, we need to create a class implementing t
                 'id' => $resource->getId(),
                 'name' => $item->getTitle(),
                 'link' => $resourceUrl,
-                'iconUrl' => $favicon,
+                'iconUrl' => $icon,
             ];
         }
 

@@ -2175,7 +2175,8 @@ Activities in Team Folders and External Storages.
 By default, activities in team folders or external storages are only generated
 for the current user. This is due to a limitations in current implementations.
 This config flag makes activities in group folders and external storages work
-like in normal shares (when set to ``true``).
+like in normal shares (when set to ``true``). Setting this flag does not allow
+past activities to be displayed (no retroactivity).
 
 
 
@@ -3653,7 +3654,7 @@ minimum.supported.desktop.version
 
 ::
 
-	'minimum.supported.desktop.version' => '3.1.81',
+	'minimum.supported.desktop.version' => '3.2.50',
 
 Specify the minimum Nextcloud desktop client version allowed to sync with this
 server. Connections from earlier clients will be denied. Defaults to the
@@ -3662,7 +3663,7 @@ minimum officially supported version at the time of this server release.
 Changing this may cause older, unsupported clients to malfunction, potentially
 leading to data loss or unexpected behavior.
 
-Defaults to ``3.1.81``
+Defaults to ``3.2.50``
 
 maximum.supported.desktop.version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4332,9 +4333,23 @@ profile.enabled
 
 	'profile.enabled' => true,
 
-Enable profiling globally.
+Toggle availability of user profiles.
 
-Defaults to ``true``
+User profile pages contain information that can be shared with other users,
+such as full name, phone number, organization, role, and similar fields.
+
+Profiles are enabled by default, and profile data may be used by other
+features (for example, the system address book).
+
+Profile visibility is layered: what is shared depends on a combination of
+system-wide and account-level privacy controls, and each field's visibility
+can be configured.
+
+When set to false, profile functionality is disabled instance-wide.
+
+Note: This affects user account profiles, not the developer performance profiler.
+
+Defaults to `true`
 
 account_manager.default_property_scope
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

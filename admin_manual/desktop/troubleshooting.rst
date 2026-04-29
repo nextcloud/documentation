@@ -184,7 +184,7 @@ The Save Log File window opens.
 .. figure:: images/save_log_file.png
    :alt: Save logfile
 
-4. Migrate to a location on your system where you want to save your log file.
+4. Navigate to a location on your system where you want to save your log file.
 
 5. Name the log file and click the 'Save' button.
 
@@ -201,7 +201,7 @@ mentioned above to save the log to a file.
   .. note:: You can also open a log window for an already running session, by
      restarting the client using the following command:
 
-     * Windows: ``C:\Program Files (x86)\Nextcloud\nextcloud.exe --logwindow``
+     * Windows: ``C:\Program Files\Nextcloud\nextcloud.exe --logwindow``
      * macOS: ``/Applications/nextcloud.app/Contents/MacOS/nextcloud --logwindow``
      * Linux: ``nextcloud --logwindow``
 
@@ -278,11 +278,8 @@ you set it to a verbose level like ``Debug`` or ``Info``.
 You can view the server log file using the web interface or you can open it
 directly from the file system in the Nextcloud server data directory.
 
-.. todo:: Need more information on this.  How is the log file accessed?
-   Need to explore procedural steps in access and in saving this file ... similar
-   to how the log file is managed for the client.  Perhaps it is detailed in the
-   Admin Guide and a link should be provided from here.  I will look into that
-   when I begin heavily editing the Admin Guide.
+See :doc:`/configuration_server/logging_configuration` in the admin manual for
+details on configuring log levels and log file locations.
 
 Webserver Log Files
 ~~~~~~~~~~~~~~~~~~~

@@ -78,10 +78,9 @@ prevents any manual overrides.
 
 To prevent automatic updates, but allow manual overrides:
 
-1. Edit these Registry keys:
+1. Edit this Registry key:
 
-    a. (32-bit-Windows) ``HKEY_LOCAL_MACHINE\Software\Nextcloud\Nextcloud``
-    b. (64-bit-Windows) ``HKEY_LOCAL_MACHINE\Software\Wow6432Node\Nextcloud\Nextcloud``
+    ``HKEY_LOCAL_MACHINE\Software\Nextcloud GmbH\Nextcloud``
 
 2. Add the key ``skipUpdateCheck`` (of type DWORD).
 
@@ -102,7 +101,9 @@ To prevent automatic updates and disallow manual overrides:
 
 3. Specify a value of ``1`` to the machine.
 
-.. note:: branded clients have different key names
+.. note:: Branded clients use a different key in place of
+   ``Nextcloud GmbH\Nextcloud`` that matches the branded application vendor and
+   name.
 
 
 Preventing Automatic Updates in Linux Environments

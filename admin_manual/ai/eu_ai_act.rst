@@ -36,7 +36,7 @@ This section describes the measures that ensure the software is interoperable.
 
 - We provide our AI features via an open API with publicly accessible `OpenAPI specs <https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/>`_ which allows developers to build on top of our features.
 - As our software is fully open-source, anyone can adjust the software to meet their needs. For example, anyone can adjust the core code, adjust the code of existing applications, or develop a custom application for Nextcloud.
-- We implement integrations for the major model hosting providers and their protocols upon request of customers. We are interoperable with OpenAI and IBMwatsonX. As Nextcloud is an open app ecosystem, anyone can develop an integration with a model hosting provider on their own.
+- We implement integrations for the major model hosting providers and their protocols upon request of customers. We are interoperable with OpenAI and IBM watsonx. As Nextcloud is an open app ecosystem, anyone can develop an integration with a model hosting provider on their own.
 - We implement the agent interoperability protocol MCP both as a client and as a server to allow users to connect the AI Agent software to existing services and connect existing AI Agents to our software.
 - We implement a local model hosting mechanism that can be used to host GGUF models (most open weight models can be converted using an Open Source tool called llama.cpp).
 

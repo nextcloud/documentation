@@ -165,7 +165,7 @@ Deck tools
 
 * Add a label to a card
 
-  * Example prompt: *"Can you add the label 'Urget' to the 'repair kitchen sink' card in my personal deck board?"*
+  * Example prompt: *"Can you add the label 'Urgent' to the 'repair kitchen sink' card in my personal deck board?"*
 
 * Assign a card to a user
 
@@ -441,7 +441,7 @@ Nextcloud customers should file bugs directly with our Support system.
 Known Limitations
 -----------------
 * Make sure to test the language model you are using in concert with this app for whether they meet the use-case's quality requirements
-* Most models have difficulties with languages other than English. Some sometimes answer in another language than used by the user. 
+* Most models have difficulties with languages other than English. Some models sometimes answer in a different language than the one used by the user.
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. 
   Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI). We still try to optimize this as far as possible, so if you encounter any false or problematic output, you can report it `in a dedicated Github issue <https://github.com/nextcloud/context_agent/issues/51>`_ to help us improve this app. 
 * When multiple MCP services are configured that have tools with the same name undefined behavior will occur.

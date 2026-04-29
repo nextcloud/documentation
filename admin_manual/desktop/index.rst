@@ -14,12 +14,7 @@ Your files are always automatically synchronized between your Nextcloud server, 
 .. toctree::
    :maxdepth: 1
 
-   options
    massdeployment
-   configfile
-   envvars
-   commandline
-   accountcommand
    troubleshooting
   
 You can find additional information here:

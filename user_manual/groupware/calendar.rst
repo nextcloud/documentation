@@ -62,13 +62,12 @@ instance, importing is the best way to do so.
 Import an Event/Add .ics Event
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In many places, you can download event details as an .ics file, or via a button saying "ical", "Apple Calendar" or "Outlook".
-
+Individual events are often distributed as ``.ics`` files (sometimes via a button labelled "iCal", "Apple Calendar" or "Outlook"). You can import them into Nextcloud Calendar using the same import flow as a full calendar.
 
 1. Click on the settings-icon labeled with ``Calendar settings`` at the bottom-left.
 
-2. After clicking on ``Import calendar`` you can select one or more calendar files
-   from your local device to upload.
+2. After clicking on ``Import calendar`` you can select one or more ``.ics`` files
+   from your local device to upload. Single-event files are added to the calendar you select.
 
 3. Select a ``Calendar to import into``.
 
@@ -85,7 +84,7 @@ Sometimes you may want to change the color or the entire name of a previous
 imported or created calendar. You may also want to export it to your local
 hard drive or delete it forever.
 
-.. note:: Please keep in mind that deleting a calendar is a irreversible action.
+.. note:: Please keep in mind that deleting a calendar is an irreversible action.
           After deletion, there is no way of restoring the calendar unless you
           have a local backup.
 

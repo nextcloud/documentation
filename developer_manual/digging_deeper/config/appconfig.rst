@@ -22,9 +22,7 @@ In addition to simple read/write operations, ``IAppConfig`` supports:
 .. _appconfig_concepts:
 
 .. note::
-   See `Lexicon Concepts`_ to learn more about **Lexicon**, a way to define configuration keys and avoid conflicts in your code.
-
-.. _Lexicon Concepts: https://docs.nextcloud.com/server/latest/developer_manual/digging_deeper/config/lexicon.html#concept-overview
+   See :ref:`Lexicon Concepts <concept-overview>` to learn more about **Lexicon**, a way to define configuration keys and avoid conflicts in your code.
 
 
 AppFramework

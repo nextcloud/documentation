@@ -101,7 +101,7 @@ The following combinations of attributes might be relevant for various scenarios
 #. OCS route with CORS enabled: ``OCSController`` class and ``#[CORS]`` attribute on the method
 
 .. warning::
-  Adding the ``#[NoCRSFRequired]`` attribute imposes a security risk.
+  Adding the ``#[NoCSRFRequired]`` attribute imposes a security risk.
   You should not add this to your controller methods unless you understand the implications and be sure that you absolutely need the attribute.
   Typically, you can use the ``OCS-APIRequest`` header for data requests instead, in order to satisfy the CSRF checks in your API requests.
 

@@ -115,8 +115,6 @@ This is a feature that needs to be enabled for each admin setting class.
 To do so, the setting class needs to implement `IDelegatedSettings` instead of `ISettings`
 and implement two additional methods.
 
-.. TODO ON RELEASE: Update version number above on release
-
 .. code-block:: php
 
     <?php
@@ -171,8 +169,7 @@ setting with attribute.
     }
 
 
-If you have several ``IDelegatedSettings`` classes that are needed for a function, simply add the annotation multiple times.
-them in the key "settings" and they must separate with semi-colons.
+If you have several ``IDelegatedSettings`` classes that are needed for a function, add multiple attributes and separate them with semicolons.
 
 .. note::
 
