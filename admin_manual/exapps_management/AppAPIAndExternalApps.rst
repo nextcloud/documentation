@@ -10,6 +10,9 @@ an ecosystem for **ExApps** (short for "External Apps") was introduced, allowing
 
 Most of our :doc:`Artificial Intelligence <../ai/index>` (AI) apps are developed as ExApps and thus may require some preparation of your Nextcloud instance before you can install them.
 
+.. tip::
+	AppAPI and ExApps are optional functionality. If you do not use any non-PHP applications then you may safely disable AppAPI by navigating to the Apps management page in your Nextcloud instance, going to "Your Apps" and clicking the "Disable" button next to AppAPI.
+
 Installing AppAPI
 -----------------
 
