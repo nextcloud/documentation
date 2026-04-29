@@ -807,14 +807,14 @@ A setup with the HaRP container itself on the remote is not supported.</p>
         }
 
         state Host2 {
-                [*] --&gt; DockerSocketProxy : by port
+                [*] --&gt; HaRP : by port
                 Daemon --&gt; Containers
 
                 state Containers {
-                        [*] --&gt; DockerSocketProxy : /var/run/docker.sock
-                        DockerSocketProxy --&gt; ExApp1
-                        DockerSocketProxy --&gt; ExApp2
-                        DockerSocketProxy --&gt; ExApp3
+                        [*] --&gt; HaRP : /var/run/docker.sock
+                        HaRP --&gt; ExApp1
+                        HaRP --&gt; ExApp2
+                        HaRP --&gt; ExApp3
                 }
         }
 
@@ -835,7 +835,7 @@ Please customize for your distribution.</p>
 </ol>
 <p>1.1. Creation of Cert folder (if necessary)</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>/some/path/<span class="o">{</span>certs,<span class="o">}</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>/some/path/certs
 </pre></div>
 </div>
 </div></blockquote>
@@ -852,7 +852,7 @@ firewall-cmd<span class="w"> </span>--reload
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_SHARED_KEY</span><span class="o">=</span><span class="s2">&quot;some_very_secure_password&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">NC_INSTANCE_URL</span><span class="o">=</span><span class="s2">&quot;https://cloud.acme.com&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_TRUSTED_PROXY_IPS</span><span class="o">=</span><span class="s2">&quot;192.168.0.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_TRUSTED_PROXY_IPS</span><span class="o">=</span><span class="s2">&quot;192.168.0.0/24&quot;</span><span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># Replace with your actual trusted proxy subnet (Host3&#39;s IP or subnet)</span>
 <span class="w">  </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span>/some/path/certs:/certs<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-p<span class="w"> </span><span class="m">8780</span>:8780<span class="w"> </span><span class="se">\</span>
@@ -894,8 +894,14 @@ Add the following lines (before the existing configuration)</p>
 <ol class="arabic simple" start="4">
 <li><p>Additional tests from the network of your hosts</p></li>
 </ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsS<span class="w"> </span><span class="se">\</span>
+<div><p>The <code class="docutils literal notranslate"><span class="pre">docker-engine-port</span></code> header tells HaRP which internal virtual port to route to the Docker engine.
+When HaRP has the Docker socket mounted directly (as in this setup), it uses <code class="docutils literal notranslate"><span class="pre">24000</span></code> as the default
+virtual port for that local socket. This value does not require any additional firewall or port configuration.</p>
+</div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsS<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;harp-shared-key: some_very_secure_password&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;docker-engine-port: 24000&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>http://&lt;IP_host2_docker&gt;:8780/exapps/app_api/v1.41/_ping
@@ -907,7 +913,7 @@ Add the following lines (before the existing configuration)</p>
 <span class="w">  </span>https://cloud.acme.com/exapps/app_api/v1.41/_ping
 </pre></div>
 </div>
-</div></blockquote>
+</div>
 </section>
 </section>
 <section id="docker-deploy-daemon-docker-socket-proxy">
