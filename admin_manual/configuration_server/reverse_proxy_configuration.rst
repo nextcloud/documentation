@@ -162,11 +162,11 @@ Pomerium
 
 Thanks to `@JeffMatson <https://github.com/JeffMatson>`_ for Pomerium example.
 
-Example
--------
+Examples
+--------
 
 Nextcloud behind a reverse proxy (subdirectory)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If your Nextcloud is served at a subdirectory, for example
 **https://example.com/nextcloud**, behind a reverse proxy with IP address
@@ -187,3 +187,33 @@ If your Nextcloud is served at a subdirectory, for example
   the hostname from the ``Host`` header forwarded by the proxy. Only set it if
   you need to force a specific hostname regardless of the incoming request.
   Leave any parameter unset or empty to keep the automatic detection.
+
+Nextcloud accessible via multiple domains / conditional overwrite
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If Nextcloud is reachable both directly (HTTP) and through a reverse proxy
+(HTTPS), or through multiple proxies serving different public domains, use
+``overwritecondaddr`` to apply the overwrite parameters only when requests
+arrive from a specific proxy IP address. Requests that do not originate from
+that proxy will use automatic detection.
+
+In the example below, the overwrite parameters are applied only when requests
+come from the proxy at **10.0.0.1**, which serves Nextcloud as
+**https://public.example.com**:
+
+::
+
+  <?php
+  $CONFIG = array (
+    'trusted_proxies'   => ['10.0.0.1'],
+    'overwritehost'     => 'public.example.com',
+    'overwriteprotocol' => 'https',
+    'overwritecondaddr' => '^10\.0\.0\.1$',
+    'overwrite.cli.url' => 'https://public.example.com',
+  );
+
+.. note:: ``overwritecondaddr`` takes a regular expression matching the remote
+  address of the proxy. When set, the overwrite parameters are only applied if
+  the remote address matches. This is useful when the same Nextcloud instance is
+  accessible both with and without a reverse proxy, or when different proxies
+  serve the instance under different hostnames.
