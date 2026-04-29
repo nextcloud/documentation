@@ -36,6 +36,9 @@ Calendars
 #. Type your **Username** and **Location** (Server URL), then click on **Find Calendars**.
 #. Choose which calendars you want to add and click **Subscribe**
 
+
+.. note:: The Server URL does not require a scheme (`https://`) but might need a path like `/remote.php/dav`
+
 Same thing here, if you later want to add more calendars, just redo the procedure.
 
 
