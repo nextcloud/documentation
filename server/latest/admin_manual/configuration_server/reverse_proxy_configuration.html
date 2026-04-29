@@ -106,8 +106,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#pomerium">Pomerium</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#example">Example</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#multiple-domains-reverse-ssl-proxy">Multiple domains reverse SSL proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-behind-a-reverse-proxy-subdirectory">Nextcloud behind a reverse proxy (subdirectory)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-accessible-via-multiple-domains-conditional-overwrite">Nextcloud accessible via multiple domains / conditional overwrite</a></li>
 </ul>
 </li>
 </ul>
@@ -338,30 +339,58 @@ of the proxy host under <em>“Custom Nginx Configuration”</em>, otherwise mob
 <p>Thanks to <a class="reference external" href="https://github.com/JeffMatson">&#64;JeffMatson</a> for Pomerium example.</p>
 </section>
 </section>
-<section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
-<section id="multiple-domains-reverse-ssl-proxy">
-<h3>Multiple domains reverse SSL proxy<a class="headerlink" href="#multiple-domains-reverse-ssl-proxy" title="Link to this heading"></a></h3>
-<p>If you want to access your Nextcloud installation <strong>http://domain.tld/nextcloud</strong>
-via a multiple domains reverse SSL proxy
-<strong>https://ssl-proxy.tld/domain.tld/nextcloud</strong> with the IP address <strong>10.0.0.1</strong>
-you can set the following parameters inside the <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code>.</p>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<section id="nextcloud-behind-a-reverse-proxy-subdirectory">
+<h3>Nextcloud behind a reverse proxy (subdirectory)<a class="headerlink" href="#nextcloud-behind-a-reverse-proxy-subdirectory" title="Link to this heading"></a></h3>
+<p>If your Nextcloud is served at a subdirectory, for example
+<strong>https://example.com/nextcloud</strong>, behind a reverse proxy with IP address
+<strong>10.0.0.1</strong> that terminates TLS, set the following parameters inside
+<code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
 $CONFIG = array (
   &#39;trusted_proxies&#39;   =&gt; [&#39;10.0.0.1&#39;],
-  &#39;overwritehost&#39;     =&gt; &#39;ssl-proxy.tld&#39;,
   &#39;overwriteprotocol&#39; =&gt; &#39;https&#39;,
-  &#39;overwritewebroot&#39;  =&gt; &#39;/domain.tld/nextcloud&#39;,
-  &#39;overwritecondaddr&#39; =&gt; &#39;^10\.0\.0\.1$&#39;,
-  &#39;overwrite.cli.url&#39; =&gt; &#39;https://domain.tld/&#39;,
+  &#39;overwritewebroot&#39;  =&gt; &#39;/nextcloud&#39;,
+  &#39;overwrite.cli.url&#39; =&gt; &#39;https://example.com/nextcloud&#39;,
 );
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you want to use the SSL proxy during installation you have to
-create the <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code> otherwise you have to extend the existing
-<strong>$CONFIG</strong> array.</p>
+<p><code class="docutils literal notranslate"><span class="pre">overwritehost</span></code> is not needed in most setups — Nextcloud will read
+the hostname from the <code class="docutils literal notranslate"><span class="pre">Host</span></code> header forwarded by the proxy. Only set it if
+you need to force a specific hostname regardless of the incoming request.
+Leave any parameter unset or empty to keep the automatic detection.</p>
+</div>
+</section>
+<section id="nextcloud-accessible-via-multiple-domains-conditional-overwrite">
+<h3>Nextcloud accessible via multiple domains / conditional overwrite<a class="headerlink" href="#nextcloud-accessible-via-multiple-domains-conditional-overwrite" title="Link to this heading"></a></h3>
+<p>If Nextcloud is reachable both directly (HTTP) and through a reverse proxy
+(HTTPS), or through multiple proxies serving different public domains, use
+<code class="docutils literal notranslate"><span class="pre">overwritecondaddr</span></code> to apply the overwrite parameters only when requests
+arrive from a specific proxy IP address. Requests that do not originate from
+that proxy will use automatic detection.</p>
+<p>In the example below, the overwrite parameters are applied only when requests
+come from the proxy at <strong>10.0.0.1</strong>, which serves Nextcloud as
+<strong>https://public.example.com</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+$CONFIG = array (
+  &#39;trusted_proxies&#39;   =&gt; [&#39;10.0.0.1&#39;],
+  &#39;overwritehost&#39;     =&gt; &#39;public.example.com&#39;,
+  &#39;overwriteprotocol&#39; =&gt; &#39;https&#39;,
+  &#39;overwritecondaddr&#39; =&gt; &#39;^10\.0\.0\.1$&#39;,
+  &#39;overwrite.cli.url&#39; =&gt; &#39;https://public.example.com&#39;,
+);
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">overwritecondaddr</span></code> takes a regular expression matching the remote
+address of the proxy. When set, the overwrite parameters are only applied if
+the remote address matches. This is useful when the same Nextcloud instance is
+accessible both with and without a reverse proxy, or when different proxies
+serve the instance under different hostnames.</p>
 </div>
 </section>
 </section>

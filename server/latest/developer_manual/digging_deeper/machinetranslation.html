@@ -133,7 +133,7 @@
 <p>Nextcloud offers a <strong>Translation</strong> API. The overall idea is that there is a central OCP API that apps can use to request machine translations of text. To be technology agnostic any app can provide this Translation functionality by registering a Translation provider.</p>
 <section id="consuming-the-translation-api">
 <h2>Consuming the Translation API<a class="headerlink" href="#consuming-the-translation-api" title="Link to this heading"></a></h2>
-<p>To consume the Translation API, you will need to <a class="reference internal" href="../basics/dependency_injection.html#id2"><span class="std std-ref">inject</span></a> <code class="docutils literal notranslate"><span class="pre">\OCP\Translation\ITranslationManager</span></code>. This manager offers the following methods:</p>
+<p>To consume the Translation API, you will need to <a class="reference internal" href="../basics/dependency_injection.html#dependency-injection"><span class="std std-ref">inject</span></a> <code class="docutils literal notranslate"><span class="pre">\OCP\Translation\ITranslationManager</span></code>. This manager offers the following methods:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">hasProviders()</span></code> This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the Translation feature.</p></li>
@@ -181,7 +181,7 @@
 </div>
 <p>The method <code class="docutils literal notranslate"><span class="pre">getName</span></code> returns a string to identify the registered provider in the user interface.</p>
 <p>The method <code class="docutils literal notranslate"><span class="pre">translate</span></code> translates the passed string and returns the translation. The two language parameters will be language codes that were returned by <code class="docutils literal notranslate"><span class="pre">getAvailableLanguages</span></code> of your provider. In case translation fails, you should throw a <code class="docutils literal notranslate"><span class="pre">RuntimeException</span></code> with an explanatory error message.</p>
-<p>The class would typically be saved into a file in <code class="docutils literal notranslate"><span class="pre">lib/Translation</span></code> of your app but you are free to put it elsewhere as long as it’s loadable by Nextcloud’s <a class="reference internal" href="../basics/dependency_injection.html#id2"><span class="std std-ref">dependency injection container</span></a>.</p>
+<p>The class would typically be saved into a file in <code class="docutils literal notranslate"><span class="pre">lib/Translation</span></code> of your app but you are free to put it elsewhere as long as it’s loadable by Nextcloud’s <a class="reference internal" href="../basics/dependency_injection.html#dependency-injection"><span class="std std-ref">dependency injection container</span></a>.</p>
 <section id="provider-with-user-context">
 <h3>Provider with user context<a class="headerlink" href="#provider-with-user-context" title="Link to this heading"></a></h3>
 <div class="versionadded">

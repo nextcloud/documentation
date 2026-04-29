@@ -133,7 +133,7 @@
 <p>Nextcloud offers a <strong>Text Processing</strong> API. The overall idea is that there is a central OCP API that apps can use to prompt tasks to Large Language Models and similar text processing tools. To be technology agnostic any app can provide this functionality by registering Text Processing providers.</p>
 <section id="consuming-the-text-processing-api">
 <h2>Consuming the Text Processing API<a class="headerlink" href="#consuming-the-text-processing-api" title="Link to this heading"></a></h2>
-<p>To consume the  Language Model API, you will need to <a class="reference internal" href="../basics/dependency_injection.html#id2"><span class="std std-ref">inject</span></a> <code class="docutils literal notranslate"><span class="pre">\OCP\TextProcessing\IManager</span></code>. This manager offers the following methods:</p>
+<p>To consume the  Language Model API, you will need to <a class="reference internal" href="../basics/dependency_injection.html#dependency-injection"><span class="std std-ref">inject</span></a> <code class="docutils literal notranslate"><span class="pre">\OCP\TextProcessing\IManager</span></code>. This manager offers the following methods:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">hasProviders()</span></code> This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the TextProcessing feature.</p></li>
@@ -330,7 +330,7 @@
 </div>
 <p>The method <code class="docutils literal notranslate"><span class="pre">getName</span></code> returns a string to identify the registered provider in the user interface.</p>
 <p>The method <code class="docutils literal notranslate"><span class="pre">process</span></code> implements the text processing step, e.g. it passes the prompt to a language model. In case execution fails for some reason, you should throw a <code class="docutils literal notranslate"><span class="pre">RuntimeException</span></code> with an explanatory error message.</p>
-<p>The class would typically be saved into a file in <code class="docutils literal notranslate"><span class="pre">lib/TextProcessing</span></code> of your app but you are free to put it elsewhere as long as it’s loadable by Nextcloud’s <a class="reference internal" href="../basics/dependency_injection.html#id2"><span class="std std-ref">dependency injection container</span></a>.</p>
+<p>The class would typically be saved into a file in <code class="docutils literal notranslate"><span class="pre">lib/TextProcessing</span></code> of your app but you are free to put it elsewhere as long as it’s loadable by Nextcloud’s <a class="reference internal" href="../basics/dependency_injection.html#dependency-injection"><span class="std std-ref">dependency injection container</span></a>.</p>
 <section id="processing-tasks-in-the-context-of-a-user">
 <h3>Processing tasks in the context of a user<a class="headerlink" href="#processing-tasks-in-the-context-of-a-user" title="Link to this heading"></a></h3>
 <div class="versionadded">
