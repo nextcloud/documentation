@@ -19,7 +19,7 @@ by a special helper called a container. This means your classes don’t need to 
 to create their collaborators; they just need to know how to use them.
 
 The App Framework in Nextcloud assembles applications using a container based on this
-design pattern. This approach leads to more modular, testable, and maintainable code. 
+design pattern. This approach leads to more modular, testable, and maintainable code.
 
 Using dependency injection is about more than just elegant code. When all apps follow
 this pattern:
@@ -75,7 +75,7 @@ For example, consider the following pattern:
     }
   }
 
-With dependency injection, you would instead pass the dependency into the constructor:
+With dependency injection, you would instead request the dependency as part of the constructor parameters:
 
 .. code-block:: php
   :emphasize-lines: 10, 13, 15
@@ -98,7 +98,8 @@ With dependency injection, you would instead pass the dependency into the constr
     }
   }
 
-Or, more succinctly, by using constructor property promotion (since PHP 7.4):
+Or, more succinctly, by using constructor property promotion (available in current PHP versions).
+The following is exactly equivalent:
 
 .. code-block:: php
   :emphasize-lines: 18
@@ -112,8 +113,8 @@ Or, more succinctly, by using constructor property promotion (since PHP 7.4):
   class AuthorMapper {
 
     /**
-     * Constructor property promotion with DI reduces boilerplate code by 
-     * handling everything within the constructor parameters. The example below 
+     * Constructor property promotion with DI reduces boilerplate code by
+     * handling everything within the constructor parameters. The example below
      * does exactly the same thing as the prior example, but in less code:
      *
      * - The dependency is passed in from outside (by the container)
@@ -268,7 +269,7 @@ The container works in the following way:
 
 * The **appName** is queried and returned from the base class
 * The **Request** is queried and returned from the server container
-* **AuthorService** is queried::
+* **AuthorService** is queried. This triggers the registered Callable::
 
     $container->registerService(AuthorService::class, function(ContainerInterface $c): AuthorService {
       return new AuthorService(
@@ -285,8 +286,8 @@ The container works in the following way:
     });
 
 * The **database connection** is returned from the server container
-* Now **AuthorMapper** has all of its dependencies and the object is returned
-* **AuthorService** gets the **AuthorMapper** and returns the object
+* Now **AuthorMapper** has all of its dependencies and can be constructed by the DI code. The object is returned.
+* **AuthorService** gets the **AuthorMapper**, is constructed, and returns the object
 * **AuthorController** gets the **AuthorService** and finally the controller can be instantiated and the object is returned
 
 So basically the container is used as a giant factory to build all the classes that are needed for the application. Because it centralizes all the creation of objects (the **new Class()** lines), it is very easy to add new constructor parameters without breaking existing code: only the **__construct** method and the container line where the **new** is being called need to be changed.
