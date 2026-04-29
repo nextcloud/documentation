@@ -37,7 +37,7 @@ For example: you can perform a :code:`GET` request to get information about a us
 
     curl -u username:password -X GET 'https://cloud.example.com/ocs/v1.php/...' -H "OCS-APIRequest: true"
 
-You can change the response type of your request by adding an Accept header. For example, if you prefer JSON respones:
+You can change the response type of your request by adding an Accept header. For example, if you prefer JSON responses:
 
 .. code-block:: bash
 
