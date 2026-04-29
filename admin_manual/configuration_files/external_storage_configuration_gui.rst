@@ -171,6 +171,6 @@ You might need to setup a cron job that runs ``sudo -E -u www-data php occ files
 to trigger a rescan of the user's files periodically (for example every 15 minutes), which includes
 the mounted external storage.
 
-If you are running NextCloud in a Docker container under "All-In-One"(AIO), the equivalent command 
+If you are running Nextcloud in a Docker container under "All-In-One"(AIO), the equivalent command 
 in that environment is ``sudo docker exec --user www-data -it nextcloud-aio-nextcloud php occ files:scan --all``. 
 If you are running a different version under Docker, just substitute the container name of your installed version for "nextcloud-aio-nextcloud".
