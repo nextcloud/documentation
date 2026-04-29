@@ -52,13 +52,13 @@ re-check your configuration and network availability.
 If there is an error on the storage, it will be marked as unavailable for ten 
 minutes. To re-check it, click the colored icon or reload your Admin page.
 
-Folder Name
+Folder name
 -----------
-The ``Folder Name`` is the name the folder will have within NextCloud - the 
+The ``Folder name`` is the name the folder will have within Nextcloud - the 
 name that will be visible to NextCloud users.
 
 Note that the folder name cannot include a path or subdirectory - do not 
-include slashes in your ``Folder Name.``
+include slashes in your ``Folder name.``
 
 Usage of variables for mount paths
 ----------------------------------
