@@ -65,7 +65,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic concepts</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="request_lifecycle.html">Request lifecycle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="routing.html">Routing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dependency_injection.html">Dependency injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_injection.html">Containers / Dependency Injection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="middlewares.html">Middlewares</a></li>
 <li class="toctree-l2"><a class="reference internal" href="events.html">Events</a></li>
@@ -131,7 +131,7 @@
   <section id="logging">
 <h1>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h1>
 <p>Nextcloud uses a <a class="reference internal" href="../digging_deeper/psr.html#psr3"><span class="std std-ref">PSR-3</span></a> logger (<code class="docutils literal notranslate"><span class="pre">Psr\Log\LoggerInterface</span></code>).
-The recommended way to use it is via <a class="reference internal" href="dependency_injection.html#id2"><span class="std std-ref">dependency injection</span></a>.</p>
+The recommended way to use it is via <a class="reference internal" href="dependency_injection.html#dependency-injection"><span class="std std-ref">dependency injection</span></a>.</p>
 <section id="basic-usage">
 <h2>Basic usage<a class="headerlink" href="#basic-usage" title="Link to this heading"></a></h2>
 <p>Inject <code class="docutils literal notranslate"><span class="pre">Psr\Log\LoggerInterface</span></code> into your class. When the logger is resolved
@@ -161,7 +161,7 @@ yourself:</p>
 that prepends <code class="docutils literal notranslate"><span class="pre">['app'</span> <span class="pre">=&gt;</span> <span class="pre">'&lt;your-app-id&gt;']</span></code> to the context of every call.
 You do not need to set this manually.</p>
 </div>
-<p>In cases where you can not <a class="reference internal" href="dependency_injection.html#id2"><span class="std std-ref">inject</span></a> a logger into a class, you can use
+<p>In cases where you can not <a class="reference internal" href="dependency_injection.html#dependency-injection"><span class="std std-ref">inject</span></a> a logger into a class, you can use
 the <code class="docutils literal notranslate"><span class="pre">\OCP\Log\logger</span></code> function to acquire a logger instance. As a first argument you need to pass
 the app ID.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>

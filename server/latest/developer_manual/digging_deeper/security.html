@@ -132,7 +132,7 @@
 <section id="rate-limiting">
 <span id="programmatic-rate-limiting"></span><h2>Rate Limiting<a class="headerlink" href="#rate-limiting" title="Link to this heading"></a></h2>
 <p>Rate limiting can be used to restrict how often someone can execute an operation in a defined time frame. For app framework controllers it is recommended to use rate limiting attributes.</p>
-<p>Outside controllers, e.g. in DAV code, it’s also possible to guard operations by <a class="reference internal" href="../basics/dependency_injection.html#id2"><span class="std std-ref">injecting</span></a> <code class="docutils literal notranslate"><span class="pre">\OCP\Security\RateLimiting\ILimiter</span></code> and registering requests <em>before</em> the operation:</p>
+<p>Outside controllers, e.g. in DAV code, it’s also possible to guard operations by <a class="reference internal" href="../basics/dependency_injection.html#dependency-injection"><span class="std std-ref">injecting</span></a> <code class="docutils literal notranslate"><span class="pre">\OCP\Security\RateLimiting\ILimiter</span></code> and registering requests <em>before</em> the operation:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">use</span> <span class="nx">OCP\Security\RateLimiting\ILimiter</span><span class="p">;</span>
@@ -178,7 +178,7 @@
 </section>
 <section id="remote-host-validation">
 <h2>Remote Host Validation<a class="headerlink" href="#remote-host-validation" title="Link to this heading"></a></h2>
-<p>Nextcloud can help validating a remote host so that no internal infrastructure is contacted by user-provided host names or IPs. The validator <code class="docutils literal notranslate"><span class="pre">\OCP\Security\IRemoteHostValidator</span></code> can be <a class="reference internal" href="../basics/dependency_injection.html#id2"><span class="std std-ref">injected</span></a> into any app class:</p>
+<p>Nextcloud can help validating a remote host so that no internal infrastructure is contacted by user-provided host names or IPs. The validator <code class="docutils literal notranslate"><span class="pre">\OCP\Security\IRemoteHostValidator</span></code> can be <a class="reference internal" href="../basics/dependency_injection.html#dependency-injection"><span class="std std-ref">injected</span></a> into any app class:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">use</span> <span class="nx">OCP\Security\IRemoteHostValidator</span><span class="p">;</span>

@@ -110,7 +110,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#allow-users-to-mount-external-storage">Allow users to mount external Storage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#adding-files-to-external-storages">Adding files to external storages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-files-to-external-storage">Adding files to external storage</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="external_storage/auth_mechanisms.html">External Storage authentication mechanisms</a></li>
@@ -326,8 +326,8 @@ on your network!</p>
 <img alt="Checkboxes to allow users to mount external storage services." src="../_images/user_mounts.png" />
 </figure>
 </section>
-<section id="adding-files-to-external-storages">
-<h2>Adding files to external storages<a class="headerlink" href="#adding-files-to-external-storages" title="Link to this heading"></a></h2>
+<section id="adding-files-to-external-storage">
+<h2>Adding files to external storage<a class="headerlink" href="#adding-files-to-external-storage" title="Link to this heading"></a></h2>
 <p>We recommend configuring the background job <strong>Webcron</strong> or
 <strong>Cron</strong> (see <a class="reference internal" href="../configuration_server/background_jobs_configuration.html"><span class="doc">Background jobs</span></a>)
 to enable Nextcloud to automatically detect files added to your external
@@ -339,6 +339,8 @@ when it’s very deep in the folder hierarchy of the external storage.</p>
 (or replace <code class="docutils literal notranslate"><span class="pre">--all</span></code> with the user name, see also <a class="reference internal" href="../occ_command.html"><span class="doc">Using the occ command</span></a>)
 to trigger a rescan of the user’s files periodically (for example every 15 minutes), which includes
 the mounted external storage.</p>
+<p>If you are running Nextcloud AIO, the equivalent command
+in that environment is <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">--user</span> <span class="pre">www-data</span> <span class="pre">-it</span> <span class="pre">nextcloud-aio-nextcloud</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">files:scan</span> <span class="pre">--all</span></code>.</p>
 </section>
 </section>
 

@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dependency injection &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  <title>Containers / Dependency Injection &mdash; Nextcloud latest Developer Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -65,9 +65,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic concepts</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="request_lifecycle.html">Request lifecycle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="routing.html">Routing</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Dependency injection</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Dependency injection</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#controller-injection">Controller injection</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Containers / Dependency Injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-pattern-of-dependency-injection">Basic Pattern of Dependency Injection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advantages">Advantages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controller-injection">Controller Injection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#using-a-container">Using a container</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-the-container-works">How the container works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#use-automatic-dependency-assembly-recommended">Use automatic dependency assembly (recommended)</a><ul>
@@ -124,7 +126,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Basic concepts</a></li>
-      <li class="breadcrumb-item active">Dependency injection</li>
+      <li class="breadcrumb-item active">Containers / Dependency Injection</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/basics/dependency_injection.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -134,58 +136,144 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="dependency-injection">
-<h1>Dependency injection<a class="headerlink" href="#dependency-injection" title="Link to this heading"></a></h1>
-<p>The App Framework assembles the application by using a container based on the
-software pattern <a class="reference external" href="https://en.wikipedia.org/wiki/Dependency_injection">Dependency Injection</a>.
-This makes the code easier to test and thus easier to maintain.</p>
-<p>If you are unfamiliar with this pattern, watch the following video:</p>
+  <section id="containers-dependency-injection">
+<h1>Containers / Dependency Injection<a class="headerlink" href="#containers-dependency-injection" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>Modern software applications are composed of various components that need to interact
+with one another. Traditionally, objects create their own dependencies internally,
+which leads to tight coupling and makes code harder to test, maintain, and extend.
+<a class="reference external" href="https://en.wikipedia.org/wiki/Dependency_injection">Dependency injection (DI)</a> is
+a software design pattern that helps solve this problem by having dependencies provided
+from the outside, rather than being constructed inside the object itself.</p>
+<p>Dependency injection may sound like a big concept, but it’s really just about making
+your code easier to work with and more flexible. Instead of each part of your app
+creating the things it needs by itself, those “dependencies” are handed to it – usually
+by a special helper called a container. This means your classes don’t need to know how
+to create their collaborators; they just need to know how to use them.</p>
+<p>The App Framework in Nextcloud assembles applications using a container based on this
+design pattern. This approach leads to more modular, testable, and maintainable code.</p>
+<p>Using dependency injection is about more than just elegant code. When all apps follow
+this pattern:</p>
+<ul class="simple">
+<li><p>It’s easier to test and upgrade both apps and the server, since dependencies can be
+swapped out or mocked.</p></li>
+<li><p>Apps stay decoupled from internal server details, making it safer for Nextcloud to
+evolve without breaking your app.</p></li>
+<li><p>Core features like autowiring, service discovery, and new APIs become available to all
+apps without extra boilerplate.</p></li>
+<li><p>Memory and resource usage can be reduced.</p></li>
+<li><p>New services or APIs become easier to adopt as Nextcloud evolves.</p></li>
+</ul>
+<p>By sharing a consistent approach to building and wiring up dependencies, everyone –
+core and app developers alike – benefits from a more robust, secure, and future-proof
+platform.</p>
+<p>If you are unfamiliar with the DI design pattern, don’t worry – it’s widely used in
+modern frameworks, and you’ll soon become comfortable with it. You can also watch the
+following video introduction:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=RlfLCWKxHJ0">Google Clean Code Talks</a></p></li>
 </ul>
-<section id="id2">
-<span id="id3"></span><h2>Dependency injection<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
-<p>Dependency Injection sounds pretty complicated but it just means: Don’t put
-new dependencies in your constructor or methods but pass them in. So this:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">OCP\IDBConnection</span><span class="p">;</span>
+</section>
+<section id="basic-pattern-of-dependency-injection">
+<span id="dependency-injection"></span><h2>Basic Pattern of Dependency Injection<a class="headerlink" href="#basic-pattern-of-dependency-injection" title="Link to this heading"></a></h2>
+<p>The essence of dependency injection is: <strong>don’t instantiate dependencies directly inside
+your classes or methods, but instead pass them in as parameters</strong>. This allows swapping
+out dependencies (such as with mocks in unit tests), makes dependencies explicit, and
+centralizes object creation logic.</p>
+<p>For example, consider the following pattern:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * Without dependency injection:</span>
+<span class="sd"> */</span>
 
-<span class="c1">// without dependency injection</span>
+<span class="k">use</span> <span class="nx">OCP\IDBConnection</span><span class="p">;</span>
+
 <span class="k">class</span> <span class="nc">AuthorMapper</span> <span class="p">{</span>
-  <span class="k">private</span> <span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">;</span>
 
+  <span class="c1">// Define a property to store the dependency</span>
+<span class="hll">  <span class="k">private</span> <span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">;</span>
+</span>
   <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Db</span><span class="p">();</span>
-  <span class="p">}</span>
+    <span class="c1">// The dependency is instantiated within the class</span>
+<span class="hll">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Db</span><span class="p">();</span>
+</span>  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>would turn into this by using Dependency Injection:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">OCP\IDBConnection</span><span class="p">;</span>
+<p>With dependency injection, you would instead request the dependency as part of the constructor parameters:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * Using dependency injection:</span>
+<span class="sd"> */</span>
 
-<span class="c1">// with dependency injection</span>
+<span class="k">use</span> <span class="nx">OCP\IDBConnection</span><span class="p">;</span>
+
 <span class="k">class</span> <span class="nc">AuthorMapper</span> <span class="p">{</span>
-  <span class="k">private</span> <span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">;</span>
 
-  <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span> <span class="o">=</span> <span class="nv">$db</span><span class="p">;</span>
-  <span class="p">}</span>
+  <span class="c1">// Define a property to store the dependency</span>
+<span class="hll">  <span class="k">private</span> <span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">;</span>
+</span>
+  <span class="c1">// The dependency is passed in from outside (typically by the container)</span>
+<span class="hll">  <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">)</span> <span class="p">{</span>
+</span>    <span class="c1">// Assigned to the property</span>
+<span class="hll">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span> <span class="o">=</span> <span class="nv">$db</span><span class="p">;</span>
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Or, more succinctly, by using constructor property promotion (available in current PHP versions).
+The following is exactly equivalent:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * Using dependency injection with constructor property promotion:</span>
+<span class="sd"> */</span>
+
+<span class="k">use</span> <span class="nx">OCP\IDBConnection</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthorMapper</span> <span class="p">{</span>
+
+  <span class="sd">/**</span>
+<span class="sd">   * Constructor property promotion with DI reduces boilerplate code by</span>
+<span class="sd">   * handling everything within the constructor parameters. The example below</span>
+<span class="sd">   * does exactly the same thing as the prior example, but in less code:</span>
+<span class="sd">   *</span>
+<span class="sd">   * - The dependency is passed in from outside (by the container)</span>
+<span class="sd">   * - The private property is established to store the dependency</span>
+<span class="sd">   * - The dependency is assigned directly to that property</span>
+<span class="sd">   */</span>
+<span class="hll">  <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">)</span> <span class="p">{</span>
+</span>  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </section>
+<section id="advantages">
+<h2>Advantages<a class="headerlink" href="#advantages" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Testability:</strong> You can inject mock objects for unit testing.</p></li>
+<li><p><strong>Maintainability:</strong> Changing how a dependency is constructed (in the container)
+updates it wherever it is injected in the application.</p></li>
+<li><p><strong>Explicitness:</strong> Dependencies are clearly listed in constructors or method signatures,
+improving readability and maintainability.</p></li>
+</ul>
+</section>
 <section id="controller-injection">
-<h2>Controller injection<a class="headerlink" href="#controller-injection" title="Link to this heading"></a></h2>
-<p>For controllers it’s possible to also have dependencies injected into methods.</p>
-<div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text">lib/Controller/ApiController.php</span><a class="headerlink" href="#id4" title="Link to this code"></a></div>
+<h2>Controller Injection<a class="headerlink" href="#controller-injection" title="Link to this heading"></a></h2>
+<p>For controllers, Nextcloud allows dependencies to also be injected directly into
+individual methods, not just constructors. This is referred to as <em>method injection</em> and
+enables you to specify dependencies only where needed, potentially reducing resource
+usage for rarely required services.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">lib/Controller/ApiController.php</span><a class="headerlink" href="#id1" title="Link to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
 
+<span class="k">use</span> <span class="nx">OCA\MyApp\Service\BarService</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCA\MyApp\Service\FooService</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
 
-<span class="k">class</span> <span class="nc">ApiController</span> <span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$appName</span><span class="p">,</span> <span class="nx">IRequest</span> <span class="nv">$request</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">class</span> <span class="nc">ApiController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$appName</span><span class="p">,</span> <span class="nx">IRequest</span> <span class="nv">$request</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$appName</span><span class="p">,</span> <span class="nv">$request</span><span class="p">);</span>
     <span class="p">}</span>
 
@@ -229,7 +317,7 @@ use the <strong>IRegistrationContext::registerService</strong> method:</p>
 <span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootContext</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IRegistrationContext</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCP\IDBConnection</span><span class="p">;</span>
-
+<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCA\MyApp\Controller\AuthorController</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCA\MyApp\Service\AuthorService</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCA\MyApp\Db\AuthorMapper</span><span class="p">;</span>
@@ -255,7 +343,7 @@ use the <strong>IRegistrationContext::registerService</strong> method:</p>
     <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="nx">AuthorController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nx">ContainerInterface</span> <span class="nv">$c</span><span class="p">)</span><span class="o">:</span> <span class="nx">AuthorController</span> <span class="p">{</span>
       <span class="k">return</span> <span class="k">new</span> <span class="nx">AuthorController</span><span class="p">(</span>
         <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;appName&#39;</span><span class="p">),</span>
-        <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">Request</span><span class="o">::</span><span class="na">class</span><span class="p">),</span>
+        <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">IRequest</span><span class="o">::</span><span class="na">class</span><span class="p">),</span>
         <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">AuthorService</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
       <span class="p">);</span>
     <span class="p">});</span>
@@ -290,7 +378,7 @@ use the <strong>IRegistrationContext::registerService</strong> method:</p>
 <li><p>The matched route queries <strong>AuthorController</strong> service from the container:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>return new AuthorController(
   $c-&gt;get(&#39;appName&#39;),
-  $c-&gt;get(Request::class),
+  $c-&gt;get(IRequest::class),
   $c-&gt;get(AuthorService::class)
 );
 </pre></div>
@@ -298,7 +386,7 @@ use the <strong>IRegistrationContext::registerService</strong> method:</p>
 </li>
 <li><p>The <strong>appName</strong> is queried and returned from the base class</p></li>
 <li><p>The <strong>Request</strong> is queried and returned from the server container</p></li>
-<li><p><strong>AuthorService</strong> is queried:</p>
+<li><p><strong>AuthorService</strong> is queried. This triggers the registered Callable:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$container-&gt;registerService(AuthorService::class, function(ContainerInterface $c): AuthorService {
   return new AuthorService(
     $c-&gt;get(AuthorMapper::class)
@@ -309,7 +397,7 @@ use the <strong>IRegistrationContext::registerService</strong> method:</p>
 </li>
 <li><p><strong>AuthorMapper</strong> is queried:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$container-&gt;registerService(AuthorMapper::class, function(ContainerInterface $c): AuthorMapper {
-  return new AuthorService(
+  return new AuthorMapper(
     $c-&gt;get(IDBConnection::class)
   );
 });
@@ -317,8 +405,8 @@ use the <strong>IRegistrationContext::registerService</strong> method:</p>
 </div>
 </li>
 <li><p>The <strong>database connection</strong> is returned from the server container</p></li>
-<li><p>Now <strong>AuthorMapper</strong> has all of its dependencies and the object is returned</p></li>
-<li><p><strong>AuthorService</strong> gets the <strong>AuthorMapper</strong> and returns the object</p></li>
+<li><p>Now <strong>AuthorMapper</strong> has all of its dependencies and can be constructed by the DI code. The object is returned.</p></li>
+<li><p><strong>AuthorService</strong> gets the <strong>AuthorMapper</strong>, is constructed, and returns the object</p></li>
 <li><p><strong>AuthorController</strong> gets the <strong>AuthorService</strong> and finally the controller can be instantiated and the object is returned</p></li>
 </ul>
 <p>So basically the container is used as a giant factory to build all the classes that are needed for the application. Because it centralizes all the creation of objects (the <strong>new Class()</strong> lines), it is very easy to add new constructor parameters without breaking existing code: only the <strong>__construct</strong> method and the container line where the <strong>new</strong> is being called need to be changed.</p>
