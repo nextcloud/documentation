@@ -202,14 +202,14 @@ This is the related infrastructure
 		}
 
 		state Host2 {
-			[*] --> DockerSocketProxy : by port
+			[*] --> HaRP : by port
 			Daemon --> Containers
 
 			state Containers {
-				[*] --> DockerSocketProxy : /var/run/docker.sock
-				DockerSocketProxy --> ExApp1
-				DockerSocketProxy --> ExApp2
-				DockerSocketProxy --> ExApp3
+				[*] --> HaRP : /var/run/docker.sock
+				HaRP --> ExApp1
+				HaRP --> ExApp2
+				HaRP --> ExApp3
 			}
 		}
 
@@ -233,7 +233,7 @@ Please customize for your distribution.
 
   .. code-block:: bash
 
-	mkdir -p /some/path/{certs,}
+	mkdir -p /some/path/certs
 
 1.2. Open ports
 
@@ -250,7 +250,7 @@ Please customize for your distribution.
 	docker run \
 	  -e HP_SHARED_KEY="some_very_secure_password" \
 	  -e NC_INSTANCE_URL="https://cloud.acme.com" \
-	  -e HP_TRUSTED_PROXY_IPS="192.168.0.0/24" \
+	  -e HP_TRUSTED_PROXY_IPS="192.168.0.0/24" \  # Replace with your actual trusted proxy subnet (Host3's IP or subnet)
 	  -v /var/run/docker.sock:/var/run/docker.sock \
 	  -v /some/path/certs:/certs \
 	  -p 8780:8780 \
@@ -289,6 +289,12 @@ Add the following configuration :
 Finally, test the whole setup with “Test deploy” in the 3-dots menu of the deploy daemon.
 
 4. Additional tests from the network of your hosts
+
+.. note::
+
+    The ``docker-engine-port`` header tells HaRP which internal virtual port to route to the Docker engine.
+    When HaRP has the Docker socket mounted directly (as in this setup), it uses ``24000`` as the default
+    virtual port for that local socket. This value does not require any additional firewall or port configuration.
 
   .. code-block:: bash
 
