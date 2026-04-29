@@ -11,7 +11,7 @@ Calendar
 #. Select Calendar Accounts.
 #. Select Add Account.
 #. Select Other as account type.
-#. Select Add CalDAV account.
+#. Select Add **CalDAV** account.
 #. For server, type the domain name of your server i.e. ``example.com``.
 #. Enter your user name and password.
 #. Select Next.
@@ -30,6 +30,8 @@ Your calendar will now be visible in the Calendar application.
 .. note:: Beginning with iOS 12 an SSL encryption is necessary. Therefore do **not** disable **SSL**
   (For this reason a certificate is required at your domain, https://letsencrypt.org/ will do).
 
+.. note:: If you select **CardDAV** only contact syncing will be made available.
+
 
 Contacts
 --------
@@ -40,7 +42,7 @@ Contacts
 #. Select Contacts Accounts.
 #. Select Add Account.
 #. Select Other as account type.
-#. Select Add CardDAV account.
+#. Select Add **CardDAV** account.
 #. For server, type the domain name of your server and path, i.e., ``example.com/remote.php/dav/principals/users/username/`` (replace **example.com** and **username**).
 #. Enter your user name and password.
 #. Select Next.
@@ -49,6 +51,8 @@ You should now find your contacts in the address book of your iPhone.
 
 .. note:: Beginning with iOS 12 an SSL encryption is necessary. Therefore do **not** disable **SSL**
   (For this reason a certificate is required at your domain, https://letsencrypt.org/ will do).
+
+.. note:: If you select **CalDAV** only calendar syncing will be made available.
 
 
 If it's still not working, have a look at `Troubleshooting Contacts & Calendar`_ or `Troubleshooting Service Discovery`_.
