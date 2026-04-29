@@ -908,7 +908,8 @@ or the controller class. There is also a deprecated <code class="docutils litera
 </section>
 <section id="expose-capabilities">
 <h2>Expose capabilities<a class="headerlink" href="#expose-capabilities" title="Link to this heading"></a></h2>
-<p>Imagine we take the same Todo app of the previous example and want to expose some capabilities to let clients know what they can expect.</p>
+<p>Imagine we take the same Todo app of the previous example and want to expose some capabilities to let clients know what they can expect.
+First, you should create your <cite>Capabilities</cite> in the <cite>lib</cite> folder :</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Capabilities</span> <span class="k">implements</span> <span class="nx">ICapability</span> <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getCapabilities</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">[</span>
@@ -938,6 +939,30 @@ or the controller class. There is also a deprecated <code class="docutils litera
 </pre></div>
 </div>
 <p>The capabilities will automatically appear in the generated specification.</p>
+<p>You must register your <cite>Capabilities</cite> in the <cite>lib/AppInfo/Application.php</cite> file and you need to implement <cite>IBootstrap</cite> :</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">OCA\Todo\AppInfo</span><span class="p">;</span>
+
+<span class="hll"><span class="k">use</span> <span class="nx">OCA\Todo\Capabilities</span><span class="p">;</span>
+</span><span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootstrap</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">APP_ID</span> <span class="o">=</span> <span class="s1">&#39;todo&#39;</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="c1">// code</span>
+
+        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerCapability</span><span class="p">(</span><span class="nx">Capabilities</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </section>
 <section id="generate-the-specification">
 <h2>Generate the specification<a class="headerlink" href="#generate-the-specification" title="Link to this heading"></a></h2>
