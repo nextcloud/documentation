@@ -187,7 +187,7 @@ The container works in the following way:
 
 * **AuthorMapper** is queried::
 
-    $container->registerService(AuthorMappers::class, function(ContainerInterface $c): AuthorMapper {
+    $container->registerService(AuthorMapper::class, function(ContainerInterface $c): AuthorMapper {
       return new AuthorService(
         $c->get(IDBConnection::class)
       );
@@ -381,7 +381,6 @@ Types:
 * ``\OCP\Files\IRootFolder``
 * ``\OCP\IGroupManager``
 * ``\OCP\IL10N``
-* ``\OCP\ILogger``
 * ``\OCP\BackgroundJob\IJobList``
 * ``\OCP\INavigationManager``
 * ``\OCP\IPreview``
@@ -398,6 +397,7 @@ Types:
 * ``\OCP\IUserManager``
 * ``\OCP\IUserSession``
 * ``\Psr\Container\ContainerInterface``
+* ``\Psr\Log\LoggerInterface``
 
 How to enable it
 ^^^^^^^^^^^^^^^^

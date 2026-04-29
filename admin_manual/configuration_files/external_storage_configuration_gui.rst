@@ -52,6 +52,14 @@ re-check your configuration and network availability.
 If there is an error on the storage, it will be marked as unavailable for ten 
 minutes. To re-check it, click the colored icon or reload your Admin page.
 
+Folder name
+-----------
+The ``Folder name`` is the name the folder will have within Nextcloud - the 
+name that will be visible to NextCloud users.
+
+Note that the folder name cannot include a path or subdirectory - do not 
+include slashes in your ``Folder name.``
+
 Usage of variables for mount paths
 ----------------------------------
 
@@ -158,7 +166,7 @@ Nextcloud may not always be able to find out what has been
 changed remotely (files changed without going through Nextcloud), especially
 when it's very deep in the folder hierarchy of the external storage.
 
-You might need to setup a cron job that runs ``sudo -u www-data php occ files:scan --all``
-(or replace ``--all`` with the user name, see also :doc:`../configuration_server/occ_command`)
+You might need to setup a cron job that runs ``sudo -E -u www-data php occ files:scan --all``
+(or replace ``--all`` with the user name, see also :doc:`../occ_command`)
 to trigger a rescan of the user's files periodically (for example every 15 minutes), which includes
 the mounted external storage.

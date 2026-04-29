@@ -1,8 +1,8 @@
 .. _webdavindex:
 
-==========
-Basic APIs
-==========
+==============================
+Basic File & Folder Operations
+==============================
 
 This document provides a quick overview of the WebDAV operations supported in Nextcloud, to keep things readable it won't go into many details
 for each operation, further information for each operation can be found in the corresponding RFC where applicable.
@@ -10,11 +10,30 @@ for each operation, further information for each operation can be found in the c
 WebDAV basics
 -------------
 
-The base url for all WebDAV operations for a Nextcloud instance is :code:`/remote.php/dav`.
+The base url for all (authenticated) WebDAV operations for a Nextcloud instance is :code:`/remote.php/dav`. For file operations, this usually
+means paths below :code:`/remote.php/dav/files/{user}/...`.
 
 All requests need to provide authentication information, either as a basic auth header or by passing a set of valid session cookies.
 
-If your Nextcloud installation uses an external auth provider (such as an OIDC server) you may have to create an app password. To do that, go to your personal security settings and create one. It will provide a username and password which you can use within the Basic Auth header.
+If your Nextcloud installation uses an external auth provider (such as an OIDC server) or enforces policies like 2FA, you may need to create an
+app password for WebDAV clients and scripts.
+To do that, go to your personal security settings and create one. It will provide a username and password which you can use within the Basic Auth header.
+
+Public shares
+^^^^^^^^^^^^^
+
+The :code:`/remote.php/dav` endpoint only allows authenticated access to WebDAV resources,
+for files shared using public link shares a different endpoint is provided which does not require authentication.
+
+The base URL for public link shares is :code:`/public.php/dav`, particularly for files: :code:`/public.php/dav/files/{share_token}`.
+If a password is set for the share then a basic auth header must be sent with ``anonymous`` as the username and the share password as the password.
+
+.. note:: This endpoint for public shares is available since Nextcloud 29.
+
+.. warning::
+   For non-GET requests (e.g. PROPFIND, PUT) to ``/public.php/dav``, the request must include the header
+   ``X-Requested-With: XMLHttpRequest``, unless outgoing server-to-server sharing is enabled on the instance.
+   Without this header, the server will reject the request with a ``401 Not Authenticated`` response.
 
 Testing requests
 ----------------
@@ -70,12 +89,45 @@ Here is a JavaScript code sample to get you started:
 			</d:propfind>`,
 	})
 
+Quick method/header cheat sheet
+-------------------------------
+
+The table below summarizes common WebDAV methods used by Nextcloud and the most relevant headers.
+
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
+| Method     | Typical endpoint                          | Important request headers                    | Notes                                                       |
++============+===========================================+==============================================+=============================================================+
+| PROPFIND   | ``/remote.php/dav/files/{user}/path``     | ``Depth: 0`` (properties of node only)       | Without ``Depth: 0``, folder listings include child entries.|
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
+| REPORT     | ``/remote.php/dav/files/{user}/path``     | (none required)                              | Used for filtered queries such as favorites.                |
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
+| GET (file) | ``/remote.php/dav/files/{user}/file``     | (none required)                              | Downloads file content.                                     |
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
+| GET (dir)  | ``/remote.php/dav/files/{user}/folder``   | ``Accept: application/zip`` or               | Nextcloud extension for folder archive download.            |
+|            |                                           | ``Accept: application/x-tar``                |                                                             |
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
+| PUT        | ``/remote.php/dav/files/{user}/file``     | Optional: ``X-OC-MTime``, ``X-OC-CTime``,    | Uploads/overwrites file content.                            |
+|            |                                           | ``OC-Checksum``, ``OC-Total-Length``,        |                                                             |
+|            |                                           | ``X-NC-WebDAV-AutoMkcol``                    |                                                             |
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
+| MKCOL      | ``/remote.php/dav/files/{user}/folder``   | (none required)                              | Creates a folder.                                           |
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
+| DELETE     | ``/remote.php/dav/files/{user}/path``     | (none required)                              | Folder deletes are recursive.                               |
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
+| MOVE       | ``/remote.php/dav/files/{user}/path``     | ``Destination: <full URL>``                  | Optional: ``Overwrite: T`` (default) or ``Overwrite: F``.   |
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
+| COPY       | ``/remote.php/dav/files/{user}/path``     | ``Destination: <full URL>``                  | Optional: ``Overwrite: T`` (default) or ``Overwrite: F``.   |
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
+| PROPPATCH  | ``/remote.php/dav/files/{user}/path``     | (none required)                              | Sets properties such as ``oc:favorite``.                    |
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
+
 Requesting properties
 ---------------------
 
 By default, a :code:`PROPFIND` request will only return a small number of properties for each file: last modified date, file size, whether it's a folder, etag and mime type.
 
 You can request additional properties by sending a request body with the :code:`PROPFIND` request that lists all requested properties.
+If a property is not supported for a resource, the server will report it as not found in the multi-status response for that property.
 
 .. code-block:: xml
 
@@ -123,16 +175,21 @@ And here is how it should look in your DAV request:
 .. code-block:: xml
 
 	<?xml version="1.0"?>
-		<d:propfind
-			xmlns:d="DAV:"
-			xmlns:oc="http://owncloud.org/ns"
-			xmlns:nc="http://nextcloud.org/ns"
-			xmlns:ocs="http://open-collaboration-services.org/ns">
-			xmlns:ocm="http://open-cloud-mesh.org/ns">
+	<d:propfind
+		xmlns:d="DAV:"
+		xmlns:oc="http://owncloud.org/ns"
+		xmlns:nc="http://nextcloud.org/ns"
+		xmlns:ocs="http://open-collaboration-services.org/ns"
+		xmlns:ocm="http://open-cloud-mesh.org/ns">
 		...
+	</d:propfind>
 
 Supported properties
 ^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+   Properties in the ``d:`` namespace are standard WebDAV properties (RFC 4918).
+   Most properties in ``oc:``, ``nc:``, ``ocs:``, and ``ocm:`` are Nextcloud-specific extensions.
 
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 |           Property            |                   Description                   |                                 Example                                              |
@@ -164,14 +221,19 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <d:quota-used-bytes />        | Amount of bytes used in the folder.             | ``3950773``                                                                          |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <d:supportedlock />           | | Dummy endpoint for class 2 WebDAV support.    | | ``<d:lockentry>``                                                                  |
-|                               | | Always provide the same lock capabilities.    | |     ``<d:lockscope><d:exclusive /></d:lockscope>``                                 |
-|                               | |                                               | |     ``<d:locktype><d:write /></d:locktype></d:lockentry>``                         |
-|                               | |                                               | | ``</d:lockentry>``                                                                 |
-|                               | |                                               | | ``<d:lockentry>``                                                                  |
-|                               | |                                               | |     ``<d:lockscope><d:shared /></d:lockscope>``                                    |
-|                               | |                                               | |     ``<d:locktype><d:write /></d:locktype>``                                       |
-|                               | |                                               | | ``</d:lockentry>``                                                                 |
+| <d:supportedlock />           | | Dummy endpoint for class 2 WebDAV support.    | .. code-block:: XML                                                                  |
+|                               | | Always provide the same lock capabilities.    |                                                                                      |
+|                               |                                                 |   <d:lockentry>                                                                      |
+|                               |                                                 |     <d:lockscope><d:exclusive /></d:lockscope>                                       |
+|                               |                                                 |     <d:locktype><d:write /></d:locktype></d:lockentry>                               |
+|                               |                                                 |   </d:lockentry>                                                                     |
+|                               |                                                 |                                                                                      |
+|                               |                                                 | .. code-block:: XML                                                                  |
+|                               |                                                 |                                                                                      |
+|                               |                                                 |   <d:lockentry>                                                                      |
+|                               |                                                 |     <d:lockscope><d:shared /></d:lockscope>                                          |
+|                               |                                                 |     <d:locktype><d:write /></d:locktype></d:lockentry>                               |
+|                               |                                                 |   </d:lockentry>                                                                     |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <oc:id />                     | | The fileid namespaced by the instance id.     | ``00000007oc9l3j5ur4db``                                                             |
 |                               | | Globally unique.                              |                                                                                      |
@@ -182,13 +244,15 @@ Supported properties
 |                               | | storage. No storage implements that yet.      |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <oc:permissions />            | | The permissions that the user has over the    | | ``S``: Shared                                                                      |
-|                               | | file. The value is a string containing        | | ``R``: Shareable                                                                   |
-|                               | | letters for all available permissions.        | | ``M``: Mounted                                                                     |
-|                               |                                                 | | ``G``: Readable                                                                    |
-|                               |                                                 | | ``D``: Deletable                                                                   |
-|                               |                                                 | | ``NV``: Updateable, Renameable, Moveable                                           |
-|                               |                                                 | | ``W``: Updateable (file)                                                           |
-|                               |                                                 | | ``CK``: Creatable                                                                  |
+|                               | | file or folder. The value is a string         | | ``R``: Shareable                                                                   |
+|                               | | containing letters for all available          | | ``M``: Mounted                                                                     |
+|                               | | permissions. On public shares, ``S`` and      | | ``G``: Readable                                                                    |
+|                               | | ``M`` are stripped from the returned value.   | | ``D``: Deletable                                                                   |
+|                               |                                                 | | ``N``: Renameable                                                                  |
+|                               |                                                 | | ``V``: Moveable                                                                    |
+|                               |                                                 | | ``W``: Writable (file)                                                             |
+|                               |                                                 | | ``C``: Creatable (creating a new file inside the folder)                           |
+|                               |                                                 | | ``K``: Creatable (creating a new folder inside the folder)                         |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:creation_time />          | Same as ``creationdate``, but as a timestamp.   | ``1675789581``                                                                       |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
@@ -198,10 +262,13 @@ Supported properties
 |                               |                                                 | | ``'external'`` = external storage                                                  |
 |                               |                                                 | | ``'external-session'`` = external storage                                          |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
+| <nc:hide-download />          | | For shares, indicate if any download          | ``true`` or ``false``                                                                |
+|                               | | action should be hidden or not.               |                                                                                      |
++-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:is-encrypted />           | Whether the folder is end-to-end encrypted.     | | ``0`` for ``false``                                                                |
 |                               |                                                 | | ``1`` for ``true``                                                                 |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:is-mount-root>            | | This is a special property which is used to   | ``true`` or ``false``                                                                |
+| <nc:is-mount-root />          | | This is a special property which is used to   | ``true`` or ``false``                                                                |
 |                               | | determine if a node is a mount root or not,   |                                                                                      |
 |                               | | e.g. a shared folder. If so, then the node    |                                                                                      |
 |                               | | can only be unshared and not deleted.         |                                                                                      |
@@ -244,19 +311,24 @@ Supported properties
 | <ocm:share-permissions />     | | The permissions that the user has             | ``["share", "read", "write"]``                                                       |
 |                               | | over the share as a JSON array.               |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:share-attributes />       | User set attributes as a JSON array.            | ``[{ "scope" => <string>, "key" => <string>, "enabled" => <bool> }]``                |
+| <nc:share-attributes />       | User set attributes as a JSON array.            | ``[{ "scope" => <string>, "key" => <string>, "value" => <bool> }]``                  |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:sharees />                | The list of share recipient.                    | | ``<nc:sharee>``                                                                    |
-|                               |                                                 | |     ``<nc:id>alice</nc:id>``                                                       |
-|                               |                                                 | |     ``<nc:display-name>Alice</nc:display-name>``                                   |
-|                               |                                                 | |     ``<nc:type>0</nc:type>``                                                       |
-|                               |                                                 | | ``</nc:sharee>``                                                                   |
+| <nc:sharees />                | The list of share recipient.                    | .. code-block:: XML                                                                  |
+|                               |                                                 |                                                                                      |
+|                               |                                                 |   <nc:sharee>                                                                        |
+|                               |                                                 |     <nc:id>alice</nc:id>                                                             |
+|                               |                                                 |     <nc:display-name>Alice</nc:display-name>                                         |
+|                               |                                                 |     <nc:type>0</nc:type>                                                             |
+|                               |                                                 |   </nc:sharee>                                                                       |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <oc:checksums />              | An array of checksums.                          | ``<oc:checksum>md5:04c36b75222cd9fd47f2607333029106</oc:checksum>``                  |
+| <oc:checksums />              | | An array of checksums stored in the DB by     | ``<oc:checksum>md5:04c36b75222cd9fd47f2607333029106</oc:checksum>``                  |
+|                               | | other clients. Currently used algorithms are: |                                                                                      |
+|                               | | ``MD5``, ``SHA1``, ``SHA256``, ``SHA3-256``,  |                                                                                      |
+|                               | | and ``Adler32``.                              |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:has-preview />            | Whether a preview of the file is available.     | ``true`` or ``false``                                                                |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:hidden>                   | | Defines if a file should be hidden            | ``true`` or ``false``                                                                |
+| <nc:hidden />                 | | Defines if a file should be hidden            | ``true`` or ``false``                                                                |
 |                               | | Currently only used for live photos           |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <oc:size />                   | | Unlike ``getcontentlength``, this property    | ``127815235``                                                                        |
@@ -284,13 +356,15 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:acl-can-manage>           | Whether the current user can manager ACL.       | ``1`` or ``0``                                                                       |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:acl-list>                 | Array of ACL rules.                             | | ``<nc:acl>``                                                                       |
-|                               |                                                 | |   ``<nc:acl-mapping-type>group</nc:acl-mapping-type>``                             |
-|                               |                                                 | |   ``<nc:acl-mapping-id>admin</nc:acl-mapping-id>``                                 |
-|                               |                                                 | |   ``<nc:acl-mapping-display-name>admin</nc:acl-mapping-display-name>``             |
-|                               |                                                 | |   ``<nc:acl-mask>20</nc:acl-mask>``                                                |
-|                               |                                                 | |   ``<nc:acl-permissions>15</nc:acl-permissions>``                                  |
-|                               |                                                 | | ``</nc:acl>``                                                                      |
+| <nc:acl-list>                 | Array of ACL rules.                             | .. code-block:: XML                                                                  |
+|                               |                                                 |                                                                                      |
+|                               |                                                 |   <nc:acl>                                                                           |
+|                               |                                                 |     <nc:acl-mapping-type>group</nc:acl-mapping-type>                                 |
+|                               |                                                 |     <nc:acl-mapping-id>admin</nc:acl-mapping-id>                                     |
+|                               |                                                 |     <nc:acl-mapping-display-name>admin</nc:acl-mapping-display-name>                 |
+|                               |                                                 |     <nc:acl-mask>20</nc:acl-mask>                                                    |
+|                               |                                                 |     <nc:acl-permissions>15</nc:acl-permissions>                                      |
+|                               |                                                 |   </nc:acl>                                                                          |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:inherited-acl-list>       | Array of ACL rules from the parents folders     | See <nc:acl-list>                                                                    |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
@@ -298,9 +372,9 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:lock>                     | Whether the file is locked.                     | ``1`` or ``0``                                                                       |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:lock-owner-type>          | Type of the owner of the lock.                  | ``0`` = User                                                                         |
-|                               |                                                 | ``1`` = Office or Text                                                               |
-|                               |                                                 | ``2`` = WebDAV                                                                       |
+| <nc:lock-owner-type>          | Type of the owner of the lock.                  | | ``0`` = User                                                                       |
+|                               |                                                 | | ``1`` = Office or Text                                                             |
+|                               |                                                 | | ``2`` = WebDAV                                                                     |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:lock-owner>               | User id of the owner of the lock.               | ``alice``                                                                            |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
@@ -308,10 +382,11 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:lock-owner-editor>        | App id of an app owned lock.                    |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:lock-time>                | Date when the lock was created as a timestamp.  | ``1675789581``                                                                       |
+| <nc:lock-time>                | | Date when the lock was created                | ``1675789581``                                                                       |
+|                               | | as a timestamp.                               |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:lock-timeout>             | TTL of the lock in seconds staring from the     | ``0`` = No timeout                                                                   |
-|                               | creation time.                                  |                                                                                      |
+| <nc:lock-timeout>             | | TTL of the lock in seconds starting           | ``0`` = No timeout                                                                   |
+|                               | | from the creation time.                       |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:lock-token>               | The token of the lock.                          | ``files_lock/0e53dfb6-61b4-46f0-b38e-d9a428292998``                                  |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
@@ -322,6 +397,20 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:version-author />         | The author's id of a specified file version.    | ``admin``, ``jane``, ``thisAuthorsID``                                               |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
+| <nc:is-federated />           | | Whether the node originates from a            | ``true`` or ``false``                                                                |
+|                               | | federated (server-to-server) share.           |                                                                                      |
++-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
+| <nc:metadata_etag />          | | An etag covering the file's metadata. Changes |                                                                                      |
+|                               | | when metadata (not content), is updated.      |                                                                                      |
++-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
+| <nc:download-url-expiration />| | Expiration date/time of a direct download     |                                                                                      |
+|                               | | URL (if one has been generated).              |                                                                                      |
++-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
+
+.. note::
+   Properties prefixed with ``nc:metadata-`` (e.g. ``nc:metadata-blurhash``) are dynamic, app-registered
+   metadata properties. They are not listed individually here as they depend on which apps are enabled.
+   You can request them via PROPFIND like any other property.
 
 Listing folders (rfc4918_)
 --------------------------
@@ -340,11 +429,49 @@ You can request properties of a folder without also getting the folder contents 
 Downloading files
 -----------------
 
+.. note:: For shared files this only works if the download permission was not denied by the sharer.
+
 A file can be downloaded by sending a :code:`GET` request to the WebDAV url of the file.
 
 .. code::
 
 	GET remote.php/dav/files/user/path/to/file
+
+.. _webdav-download-folders:
+
+Downloading folders
+-------------------
+
+.. note:: The :code:`GET` method is not defined by the WebDAV standard, this is a Nextcloud specific WebDAV extension.
+.. note:: For shared folders this only works if the download permission was not denied by the sharer.
+
+A folder can be downloaded as an archive by sending a :code:`GET` request to the WebDAV URL of the folder.
+The :code:`Accept` header must be set and contain the MIME type for ZIP archives (:code:`application/zip`) or tarballs (:code:`application/x-tar`).
+
+.. code::
+
+	GET remote.php/dav/files/user/path/to/folder
+	Accept: application/zip
+
+Optionally it is possible to only include some files from the folder in the archive by providing the files using the custom :code:`X-NC-Files` header:
+
+.. code::
+
+	GET remote.php/dav/files/user/path/to/folder
+	Accept: application/zip
+	X-NC-Files: document.txt
+	X-NC-Files: image.png
+
+As setting headers is not possible with HTML links it is also possible to provide this both options as query parameters.
+In this case the :code:`Accept` header value must be passed as the :code:`accept` query parameter.
+Both full MIME types (:code:`application/zip`, :code:`application/x-tar`) and shorthand values (:code:`zip`, :code:`tar`) are accepted.
+The optional files list can be provided as a JSON encoded array through the :code:`files` query parameter.
+
+.. code::
+
+	GET remote.php/dav/files/user/path/to/folder?accept=zip&files=["image.png","document.txt"]
+
+When using query parameters, ensure values are URL-encoded. In particular, :code:`files` must be a URL-encoded JSON array.
 
 Uploading files
 ---------------
@@ -387,7 +514,7 @@ A file or folder can be moved by sending a :code:`MOVE` request to the file or f
 	MOVE remote.php/dav/files/user/path/to/file
 	Destination: https://cloud.example/remote.php/dav/files/user/new/location
 
-The overwrite behavior of the move can be controlled by setting the :code:`Overwrite` head to :code:`T` or :code:`F` to enable or disable overwriting respectively.
+The overwrite behavior of the move can be controlled by setting the :code:`Overwrite` header to :code:`T` or :code:`F` to enable or disable overwriting respectively.
 
 Copying files and folders (rfc4918_)
 ------------------------------------
@@ -399,12 +526,12 @@ A file or folder can be copied by sending a :code:`COPY` request to the file or 
 	COPY remote.php/dav/files/user/path/to/file
 	Destination: https://cloud.example/remote.php/dav/files/user/new/location
 
-The overwrite behavior of the copy can be controlled by setting the :code:`Overwrite` head to :code:`T` or :code:`F` to enable or disable overwriting respectively.
+The overwrite behavior of the copy can be controlled by setting the :code:`Overwrite` header to :code:`T` or :code:`F` to enable or disable overwriting respectively.
 
 Settings favorites
 ------------------
 
-A file or folder can be marked as favorite by sending a :code:`PROPPATCH` request to the file or folder and setting the :code:`oc-favorite` property
+A file or folder can be marked as favorite by sending a :code:`PROPPATCH` request to the file or folder and setting the :code:`oc:favorite` property.
 
 .. code-block:: xml
 
@@ -423,7 +550,7 @@ Setting the :code:`oc:favorite` property to ``1`` marks a file as favorite, sett
 Listing favorites
 -----------------
 
-Favorites for a user can be retrieved by sending a :code:`REPORT` request and specifying :code:`oc:favorite` as a filter
+Favorites for a user can be retrieved by sending a :code:`REPORT` request and specifying :code:`oc:favorite` as a filter.
 
 .. code-block:: xml
 
@@ -450,43 +577,60 @@ Request Headers
 
 You can set some special headers that Nextcloud will interpret.
 
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-|     Header      |                           Description                           |                 Example                  |
-+=================+=================================================================+==========================================+
-| X-OC-MTime      | | Allow to specify a modification time.                         | ``1675789581``                           |
-|                 | | The response will contain the header ``X-OC-MTime: accepted`` |                                          |
-|                 | | if the mtime was accepted.                                    |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-| X-OC-CTime      | | Allow to specify a creation time.                             | ``1675789581``                           |
-|                 | | The response will contain the header ``X-OC-CTime: accepted`` |                                          |
-|                 | | if the mtime was accepted.                                    |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-| OC-Checksum     | | A checksum that will be stored in the DB.                     | ``md5:04c36b75222cd9fd47f2607333029106`` |
-|                 | | The server will not do any sort of  validation.               |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-| X-Hash          | | Allow to request the file's hash from the server.             | ``md5``, ``sha1``, or ``sha256``         |
-|                 | | The server will return the hash in a header named either:     |                                          |
-|                 | | ``X-Hash-MD5``, ``X-Hash-SHA1``, or ``X-Hash-SHA256``.        |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-| OC-Total-Length | | Contains the total size of the file during a chunk upload.    | ``4052412``                              |
-|                 | | This allow the server to abort faster if the remaining        |                                          |
-|                 | | user's quota is not enough.                                   |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-| OC-Chunked      | | Used for legacy chunk upload to differentiate a regular       | Deprecated ⚠️                            |
-|                 | | upload from a chunked upload. It allowed checking for quota   |                                          |
-| (deprecated)    | | and various other things. Nowadays, you need to provide the   | You do not have to provide this anymore  |
-|                 | | ``OC-Total-Length`` header on the ``PUT`` requests instead.   |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
++-----------------------+-----------------------------------------------------------------+--------------------------------------------+
+|        Header         |                           Description                           |                 Example                    |
++=======================+=================================================================+============================================+
+| X-OC-MTime            | | Allow to specify a modification time.                         | ``1675789581``                             |
+|                       | | The response will contain the header ``X-OC-MTime: accepted`` |                                            |
+|                       | | if the mtime was accepted.                                    |                                            |
++-----------------------+-----------------------------------------------------------------+--------------------------------------------+
+| X-OC-CTime            | | Allow to specify a creation time.                             | ``1675789581``                             |
+|                       | | The response will contain the header ``X-OC-CTime: accepted`` |                                            |
+|                       | | if the mtime was accepted.                                    |                                            |
++-----------------------+-----------------------------------------------------------------+--------------------------------------------+
+| OC-Checksum           | | A checksum that will be stored in the DB.                     | ``md5:04c36b75222cd9fd47f2607333029106``   |
+|                       | | For regular ``PUT`` uploads, the server stores the value      |                                            |
+|                       | | without validation. During bulk uploads, the checksum         |                                            |
+|                       | | **is** validated against the uploaded content.                |                                            |
+|                       | | Currently used algorithms are ``MD5``, ``SHA1``, ``SHA256``,  |                                            |
+|                       | | ``SHA3-256``, ``Adler32``.                                    |                                            |
++-----------------------+-----------------------------------------------------------------+--------------------------------------------+
+| X-Hash                | | On ``PUT`` requests, instructs the server to compute a hash   | ``md5``, ``sha1``, ``sha256``,             |
+|                       | | of the uploaded file content during the write. The server     | or ``all``                                 |
+|                       | | returns the hash(es) in response headers named                |                                            |
+|                       | | ``X-Hash-MD5``, ``X-Hash-SHA1``, and/or ``X-Hash-SHA256``.    |                                            |
+|                       | | Setting the value to ``all`` computes all three hashes.       |                                            |
+|                       | | Beware of performance implications!                           |                                            |
++-----------------------+-----------------------------------------------------------------+--------------------------------------------+
+| OC-Total-Length       | | Contains the total size of the file during a chunk upload.    | ``4052412``                                |
+|                       | | This allow the server to abort faster if the remaining        |                                            |
+|                       | | user's quota is not enough.                                   |                                            |
++-----------------------+-----------------------------------------------------------------+--------------------------------------------+
+| X-NC-WebDAV-AutoMkcol | | When set to ``1``, instructs the server to automatically      |                                            |
+|                       | | create any missing parent directories when uploading a file.  |                                            |
+|                       | | Available since Nextcloud 32.                                 |                                            |
++-----------------------+-----------------------------------------------------------------+--------------------------------------------+
+| OC-Chunked            | | Used for legacy chunk upload to differentiate a regular       | Deprecated                                 |
+|                       | | upload from a chunked upload. It allowed checking for quota   |                                            |
+| (deprecated)          | | and various other things. Nowadays, you need to provide the   | You do not have to provide                 |
+|                       | | ``OC-Total-Length`` header on the ``PUT`` requests instead.   | this anymore                               |
++-----------------------+-----------------------------------------------------------------+--------------------------------------------+
 
 Response Headers
 ----------------
 
-+-----------+------------------------------------------------+-----------------------------------------+
-|  Header   |                  Description                   |                 Example                 |
-+===========+================================================+=========================================+
-| OC-Etag   | | On creation, move and copy,                  | ``"50ef2eba7b74aa84feff013efee2a5ef"``  |
-|           | | the response contain the etag of the file.   |                                         |
-+-----------+------------------------------------------------+-----------------------------------------+
-| OC-FileId | | On creation, move and copy,                  | | Format: ``<padded-id><instance-id>``. |
-|           | | the response contain the fileid of the file. | | Example: ``00000259oczn5x60nrdu``     |
-+-----------+------------------------------------------------+-----------------------------------------+
++-------------------+-----------------------------------------------+-----------------------------------------+
+| Header            | Description                                   | Example                                 |
++===================+===============================================+=========================================+
+|| OC-Etag          || On creation, move and copy,                  || ``"50ef2eba7b74aa84feff013efee2a5ef"`` |
+||                  || the response contain the etag of the file.   ||                                        |
++-------------------+-----------------------------------------------+-----------------------------------------+
+|| OC-FileId        || On creation, move and copy,                  || Format: ``<padded-id><instance-id>``.  |
+||                  || the response contain the fileid of the file. || Example: ``00000259oczn5x60nrdu``      |
++-------------------+-----------------------------------------------+-----------------------------------------+
+|| X-NC-OwnerId     || On creation, the response contains the owner || Example: ``admin``                     |
+||                  || ID.                                          ||                                        |
++-------------------+-----------------------------------------------+-----------------------------------------+
+|| X-NC-Permissions || On creation, the response contains the       || Example: ``RGDNVW``                    |
+||                  || permissions string.                          ||                                        |
++-------------------+-----------------------------------------------+-----------------------------------------+

@@ -1,4 +1,9 @@
+# Nextcloud nginx configuration — root installation
+# Version 2026-03-26
+
+# PHP-FPM backend.
 upstream php-handler {
+    # Use one of the options below, not both:
     server 127.0.0.1:9000;
     #server unix:/run/php/php8.2-fpm.sock;
 }
@@ -22,8 +27,12 @@ server {
 }
 
 server {
-    listen 443      ssl http2;
+    listen 443 ssl http2;
     listen [::]:443 ssl http2;
+    # With NGinx >= 1.25.1 you should use this instead:
+    # listen 443      ssl;
+    # listen [::]:443 ssl;
+    # http2 on;
     server_name cloud.example.com;
 
     # Path to the root of your installation
@@ -43,12 +52,19 @@ server {
     # will add the domain to a hardcoded list that is shipped
     # in all major browsers and getting removed from this list
     # could take several months.
-    #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload" always;
+    #add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
 
     # set max upload size and increase upload timeout:
     client_max_body_size 512M;
     client_body_timeout 300s;
     fastcgi_buffers 64 4K;
+
+    # Proxy and client response timeouts
+    # Uncomment an increase these if facing timeout errors during large file uploads
+    #proxy_connect_timeout 60s;
+    #proxy_send_timeout 60s;
+    #proxy_read_timeout 60s;
+    #send_timeout 60s;
 
     # Enable gzip but do not remove ETag headers
     gzip on;
@@ -73,7 +89,6 @@ server {
     add_header X-Frame-Options                   "SAMEORIGIN"        always;
     add_header X-Permitted-Cross-Domain-Policies "none"              always;
     add_header X-Robots-Tag                      "noindex, nofollow" always;
-    add_header X-XSS-Protection                  "1; mode=block"     always;
 
     # Remove X-Powered-By, which is an information leak
     fastcgi_hide_header X-Powered-By;
@@ -136,36 +151,74 @@ server {
     location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/)  { return 404; }
     location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console)                { return 404; }
 
-    # Ensure this block, which passes PHP files to the PHP process, is above the blocks
-    # which handle static assets (as seen below). If this block is not declared first,
-    # then Nginx will encounter an infinite rewriting loop when it prepends `/index.php`
-    # to the URI, resulting in a HTTP 500 error response.
+    # Pass PHP requests to PHP-FPM.
+    #
+    # Important: this block must appear above the static asset locations
+    # below. Those locations fall back to `/index.php$request_uri`; if
+    # they appear first, nginx can repeatedly rewrite to `/index.php`,
+    # causing an internal redirection loop.
     location ~ \.php(?:$|/) {
-        # Required for legacy support
-        rewrite ^/(?!index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+|.+\/richdocumentscode(_arm64)?\/proxy) /index.php$request_uri;
+        # Rewrite most PHP requests to Nextcloud's front controller (`/index.php`).
+        #
+        # (Mirrors the rewrite exceptions in Nextcloud's Apache .htaccess.)
+        #
+        # Exceptions (not rewritten; must remain directly reachable):
+        #   index.php, remote.php, public.php, cron.php, status.php
+        #   ocs/v1.php, ocs/v2.php, ocs-provider/*
+        #   core/ajax/update.php, updater/*
+        #   */richdocumentscode(_arm64)?/proxy
+        #
+        # Other exceptions (e.g. /.well-known) are handled by dedicated
+        # location blocks elsewhere in this config.
+        #
+        # Caution: small edits to this regex can break routing or introduce
+        # rewrite loops.
+        rewrite ^/(?!index|remote|public|cron|status|ocs\/v[12]|ocs-provider\/.+|core\/ajax\/update|updater\/.+|.+\/richdocumentscode(_arm64)?\/proxy) /index.php$request_uri;
 
+        # Split `/file.php/path/info` into:
+        # - $fastcgi_script_name: `/file.php`
+        # - $fastcgi_path_info:   `/path/info`
+        #
+        # This is required for entry-points such as `remote.php` and `public.php`,
+        # which route requests based on PATH_INFO.
         fastcgi_split_path_info ^(.+?\.php)(/.*)$;
-        set $path_info $fastcgi_path_info;
+        set $path_info $fastcgi_path_info;    # Save before try_files resets it
 
+        # Return 404 for nonexistent PHP scripts (avoids passing arbitrary
+        # paths to PHP-FPM, which is a known security risk).
         try_files $fastcgi_script_name =404;
 
         include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param PATH_INFO $path_info;
-        fastcgi_param HTTPS on;
-
-        fastcgi_param modHeadersAvailable true;         # Avoid sending the security headers twice
-        fastcgi_param front_controller_active true;     # Enable pretty urls
         fastcgi_pass php-handler;
 
-        fastcgi_intercept_errors on;
-        fastcgi_request_buffering off;
+        fastcgi_param SCRIPT_FILENAME            $document_root$fastcgi_script_name;
+        fastcgi_param PATH_INFO                  $path_info;
+        fastcgi_param HTTPS                      on;       # Assumes TLS terminates here
+        fastcgi_param modHeadersAvailable        true;     # Avoid duplicate security headers
+        fastcgi_param front_controller_active    true;     # Enable pretty URLs
 
+        # Let nginx handle HTTP error responses from PHP-FPM (e.g. custom
+        # error pages). Disable for debugging if PHP errors are being hidden.
+        fastcgi_intercept_errors on;
+
+        # Required for uploads: PHP-FPM does not support chunked
+        # transfer encoding and needs a Content-Length header.
+        fastcgi_request_buffering on;
+
+        # Optional PHP-FPM timeout tuning (e.g. for 504 response timeouts).
+        # Increase these only if uploads or long-running PHP requests are
+        # timing out in your environment.
+        #fastcgi_read_timeout 60s;
+        #fastcgi_send_timeout 60s;
+        #fastcgi_connect_timeout 60s;
+
+        # Disable on-disk buffering of FastCGI responses (reduces disk I/O at
+        # the cost of holding responses in memory).
         fastcgi_max_temp_file_size 0;
     }
 
     # Serve static files
-    location ~ \.(?:css|js|mjs|svg|gif|ico|jpg|png|webp|wasm|tflite|map|ogg|flac)$ {
+    location ~ \.(?:css|js|mjs|svg|gif|ico|jpg|png|webp|wasm|tflite|map|ogg|flac|mp4|webm)$ {
         try_files $uri /index.php$request_uri;
         # HTTP response headers borrowed from Nextcloud `.htaccess`
         add_header Cache-Control                     "public, max-age=15778463$asset_immutable";
@@ -174,11 +227,10 @@ server {
         add_header X-Frame-Options                   "SAMEORIGIN"        always;
         add_header X-Permitted-Cross-Domain-Policies "none"              always;
         add_header X-Robots-Tag                      "noindex, nofollow" always;
-        add_header X-XSS-Protection                  "1; mode=block"     always;
         access_log off;     # Optional: Don't log access to assets
     }
 
-    location ~ \.woff2?$ {
+    location ~ \.(otf|woff2?)$ {
         try_files $uri /index.php$request_uri;
         expires 7d;         # Cache-Control policy borrowed from `.htaccess`
         access_log off;     # Optional: Don't log access to assets

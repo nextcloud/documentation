@@ -463,7 +463,7 @@ Email Field:
 
 User Home Folder Naming Rule:
   By default, the Nextcloud server creates the user directory in your Nextcloud
-  data directory and gives it the Nextcloud username, .e.g ``/var/www/nextcloud/data/alice``. You may want to override this setting and name it after an LDAP
+  data directory and gives it the Nextcloud username, e.g. ``/var/www/nextcloud/data/alice``. You may want to override this setting and name it after an LDAP
   attribute value. The attribute can also return an absolute path, e.g.
   ``/mnt/storage43/alice``. Leave it empty for default behavior.
 
@@ -473,7 +473,7 @@ In new Nextcloud installations the home folder rule is enforced. This means that
 
 In migrated Nextcloud installations the old behavior still applies, which is using the Nextcloud username as the home folder when an LDAP attribute is not set. You may change this enforcing the home folder rule with the ``occ`` command in Nextcloud, like this example on Ubuntu::
 
-  sudo -u www-data php occ config:app:set user_ldap enforce_home_folder_naming_rule --value=1
+  sudo -E -u www-data php occ config:app:set user_ldap enforce_home_folder_naming_rule --value=1
 
 .. _LDAP_User_Profile_Attributes:
 
@@ -483,7 +483,7 @@ User Profile attributes
 .. figure:: ../images/ldap-advanced-4-attributes.png
    :alt: User Profile Attributes.
 
-After configuring those attributes, the User Profile data will be overwritten with the according data from LDAP.  The checksum of data from LDAP will be stored in user settings ``user_ldap``, ``lastProfileChecksum`` and profile update is skipped as long as data from LDAP doesn't change.  If ``memcache.distributed`` is enabled in ``config.php`` the checksum will be cached and the checking will be skipped, as long as the cached value exists (expires after ``ldapCacheTTL`` seconds).
+After configuring those attributes, the User Profile data will be overwritten with the corresponding data from LDAP.  The checksum of data from LDAP will be stored in user settings ``user_ldap``, ``lastProfileChecksum`` and profile update is skipped as long as data from LDAP doesn't change.  If ``memcache.distributed`` is enabled in ``config.php`` the checksum will be cached and the checking will be skipped, as long as the cached value exists (expires after ``ldapCacheTTL`` seconds).
 
 Please be aware:
   - The user can change the data in profile, but it will get overwritten if changed in LDAP
@@ -494,7 +494,7 @@ Please be aware:
   - Having misformatted data in LDAP will most probably leave you with empty user profile fields
   - Setting the global ``profile.enabled => false`` on ``config.php`` skips the code
 
-By calling ``php occ ldap:check-user --update <uid>`` the users data from LDAP will be displayed and the profile gets updated. To get the correct ``<uid>`` value for any user you can use ``php occ user:list``.
+By calling ``sudo -E -u www-data php occ ldap:check-user --update <uid>`` the users data from LDAP will be displayed and the profile gets updated. To get the correct ``<uid>`` value for any user you can use ``php occ user:list``.
 
 .. note:: After unsetting an attribute name here, the data won't be deleted from user profile. Setting an nonexisting attribute will empty the corresponding profile field.
 
@@ -545,7 +545,7 @@ Headline Field:
   The LDAP attribute holding the users headline.
 
 Biography Field:
-  The LDAP attribute holding the users about i.e. short biography.
+  The LDAP attribute holding the user's biography (short description).
   Multi line value with unix LF line ending.
   Windows CRLF and Macintosh CR line endings will be replaced with unix LF line ending.
 
@@ -570,7 +570,7 @@ Internal Username:
   The internal username is the identifier in Nextcloud for LDAP users. By default
   it will be created from the UUID attribute. The UUID attribute ensures that
   the username is unique, and that characters do not need to be converted. Only
-  these characters are allowed: [\a-\zA-\Z0-\9_.@-]. Other characters are
+  these characters are allowed: ``[a-zA-Z0-9_.@-]``. Other characters are
   replaced with their ASCII equivalents, or are simply omitted.
 
   The LDAP backend ensures that there are no duplicate internal usernames in
@@ -662,7 +662,7 @@ It is not a per-configuration option.
 
 The value can be modified by::
 
-  sudo -u www-data php occ config:app:set user_ldap updateAttributesInterval --value=86400
+  sudo -E -u www-data php occ config:app:set user_ldap updateAttributesInterval --value=86400
 
 A value of 0 will update it on every of the named occasions.
 
@@ -678,7 +678,7 @@ search against. When a search is executed an exact match is required.
 
 Example usage::
 
-  $ php occ ldap:promote-group --help
+  $ sudo -E -u www-data php occ ldap:promote-group --help
   Description:
     declares the specified group as admin group (only one is possible per LDAP configuration)
 
@@ -693,15 +693,15 @@ Example usage::
   …
 
   # Example
-  $ php occ ldap:promote-group  "Nextcloud Admins"
+  $ sudo -E -u www-data php occ ldap:promote-group  "Nextcloud Admins"
   Promote Nextcloud Admins to the admin group (y|N)? y
   Group Nextcloud Admins was promoted
 
-  $ php occ ldap:promote-group  "Paramount Court"
+  $ sudo -E -u www-data php occ ldap:promote-group  "Paramount Court"
   Promote Nextcloud Admins to the admin group and demote Nextcloud Admins (Group ID: nextcloud_admins) (y|N)? y
   Group Paramount Court was promoted
 
-  $ php occ ldap:promote-group  "Paramount Court"
+  $ sudo -E -u www-data php occ ldap:promote-group  "Paramount Court"
   The specified group is already promoted
 
 .. note:: Note the group ID will only be displayed when it differs from the
@@ -776,6 +776,13 @@ The "s01" refers to the configuration ID as can be retrieved per
 
 Troubleshooting, tips and tricks
 --------------------------------
+
+Logging
+^^^^^^^
+
+Nextcloud's LDAP implementation is capable of logging lots of additional details about
+its activities. When diagnosing problems, it can be useful to temporarily adjust your 
+``loglevel`` to INFO (``1``) or DEBUG (``0``).
 
 SSL certificate verification (LDAPS, TLS)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

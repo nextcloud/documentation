@@ -24,14 +24,13 @@ Those apps are supported and developed by Nextcloud GmbH directly and
 have an **Featured**-tag.
 
 .. note:: Your Nextcloud server needs to be able to communicate with
-          ``https://apps.nextcloud.com`` to list and download apps. Please make sure to whitelist this target in your firewall or proxy if necessary.
+          ``https://apps.nextcloud.com``, ``https://ltd[1-3].nextcloud.com``, ``https://garm[1-5].nextcloud.com`` to list and download apps. Please make sure to whitelist this target in your firewall or proxy if necessary.
 
 .. note:: To get access to work-arounds, long-term-support, priority bug fixing
           and custom consulting for supported apps, contact our `sales team <https://nextcloud.com/enterprise/>`_.
 
 .. note:: If you would like to develop your own Nextcloud app, you can find out
           more information in our `developer manual <https://docs.nextcloud.com/server/latest/go.php?to=developer-manual>`_.
-.. TODO ON RELEASE: Update version number above on release
 
 All apps must be licensed under AGPLv3+ or any compatible license.
 
@@ -80,6 +79,38 @@ By default guest users, when using the guests app, are not notified, to enable n
 ::
 
   occ config:app:set --type boolean --value="true" updatenotification app_updated.notify_guests
+
+Enabling apps via occ command
+-----------------------------
+
+In addition to managing apps via the web interface, administrators can also enable or disable apps using the `occ` command.
+
+To enable an app, use the following command:
+
+::
+
+  occ app:enable <app-id>
+
+For example, to enable the "files" app, run:
+
+::
+
+  occ app:enable files
+
+To enable the app for specific groups, use the `--groups` option:
+
+::
+  
+  occ app:enable files --groups=admin
+
+
+This command enables the "files" app only for the "admin" group.
+
+To disable an app, use:
+
+::
+
+  occ app:disable <app-id>
 
 Using private API
 -----------------

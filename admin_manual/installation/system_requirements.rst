@@ -14,39 +14,48 @@ For best performance, stability and functionality we have documented some recomm
 +------------------+-----------------------------------------------------------------------+
 | Platform         | Options                                                               |
 +==================+=======================================================================+
-| Operating System | - Ubuntu 24.04 LTS                                                    |
-| (64-bit)         | - **Ubuntu 22.04 LTS** (recommended)                                  |
-|                  | - **Red Hat Enterprise Linux 9** (recommended)                        |
-|                  | - Red Hat Enterprise Linux 8                                          |
+| Operating System | - **Ubuntu 26.04 LTS** (recommended)                                  |
+| (64-bit)         | - Ubuntu 24.04 LTS                                                    |
+|                  | - Ubuntu 22.04 LTS                                                    |
+|                  | - **Red Hat Enterprise Linux 10** (recommended)                       |
+|                  | - Red Hat Enterprise Linux 9                                          |
+|                  | - Debian 13 (Trixie)                                                  |
 |                  | - Debian 12 (Bookworm)                                                |
-|                  | - SUSE Linux Enterprise Server 15                                     |
-|                  | - openSUSE Leap 15.5                                                  |
+|                  | - SUSE Linux Enterprise Server 16                                     |
+|                  | - SUSE Linux Enterprise Server 15 SP6 (or later)                      |
+|                  | - openSUSE Leap 16                                                    |
 |                  | - CentOS Stream                                                       |
+|                  | - Alpine Linux                                                        |
 +------------------+-----------------------------------------------------------------------+
-| Database         | - MySQL 8.0 / **8.4** or MariaDB 10.6/ **10.11** (recommended) / 11.4 |
-|                  | - Oracle Database 11g, 18, 21, 23                                     |
+| Database         | - MySQL 8.0 / 8.4                                                     |
+|                  | - MariaDB 10.6 / 10.11 / 11.4 / **11.8** (recommended)                |
+|                  | - Oracle Database 19c, 21c, 23ai                                      |
 |                  |   (*only as part of an enterprise subscription*)                      |
-|                  | - PostgreSQL 12/13/14/15/16                                           |
-|                  | - SQLite (*only recommended for testing and minimal-instances*)       |
+|                  | - PostgreSQL 14 / 15 / 16 / 17 / **18** (recommended)                 |
+|                  | - SQLite 3.24+ (*only recommended for testing and minimal-instances*) |
 +------------------+-----------------------------------------------------------------------+
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
-| PHP Runtime      | - 8.1 (*deprecated*)                                                  |
-|                  | - 8.2                                                                 |
-|                  | - **8.3** (*recommended*)                                             |
+| PHP Runtime      | - 8.2 (*deprecated*)                                                  |
+|                  | - 8.3                                                                 |
+|                  | - 8.4                                                                 |
+|                  | - **8.5** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
 
+To ensure the full functionality of your Nextcloud, please make sure that the server can reach the :ref:`required remote systems<connections_to_remote_servers>`. 
+
 CPU Architecture and OS
 ^^^^^^^^^^^^^^^^^^^^^^^
-A 64-bit CPU, OS and PHP is required for Nextcloud to run well.
+A 64-bit CPU, OS and PHP is strongly recommended for Nextcloud.
 
 32-bit systems are supported, with the following known limitations:
 
 - Dates before Unix Epoch (1970-01-01) are not supported
 - Dates after 2038 are not supported
+- Some external apps may not work with 32-bit systems
 
 Memory
 ^^^^^^
@@ -103,7 +112,8 @@ We strongly recommend using the latest version of your operating system to get t
 of our clients.
 
 * **Windows** 10+
-* **macOS** Lion (10.14)+ (64-bits only)
+* **macOS** Monterey (12.0)+ (64-bits only)
+  * Please note that your server may need to be Apple App Transport Security compliant in order for the desktop client to connect successfully. This may involve using a digital certificate that is adequately signed to the standards established by Apple. More information is provided by Apple in their developer documentation: https://developer.apple.com/documentation/security/preventing-insecure-network-connections
 * **Linux** (64-bits only) Should run on any distribution newer than Ubuntu 18.04 with our official AppImage package
 
 Mobile apps
@@ -115,18 +125,16 @@ of our mobile apps.
 Files App
 ^^^^^^^^^
 
-- **iOS** 15.0+
-- **Android** 7.0+
+- **iOS** 17.0+
+- **Android** 9.0+
 
 Talk App
 ^^^^^^^^
 
-- **iOS** 15.0+
-- **Android** 7.0+
-- **Nextcloud Server** 14.0+
-- **Nextcloud Talk** 4.0+
-
-.. note:: When using Nextcloud Talk 12.0+ please update the Android Talk App to the newest version (or at least to v12.1).
+- **iOS** 16.0+
+- **Android** 8.0+
+- **Nextcloud Server** 22.0+
+- **Nextcloud Talk** 12.0+
 
 Web browser
 -----------
@@ -139,6 +147,5 @@ of a browser from this list, or one based on those:
 - Google **Chrome**/Chromium
 - Apple **Safari**
 
-.. note:: If you want to use Nextcloud Talk you should use Mozilla **Firefox** 52+ or Google **Chrome**/Chromium 49+ to have
-          the full experience with video calls and screensharing. Google Chrome/Chromium requires an additional plugin for
-          screensharing.
+.. note:: If you want to use Nextcloud Talk you should use the latest version of Mozilla **Firefox** or 
+          Google **Chrome**/Chromium to have the full experience with video calls and screensharing.

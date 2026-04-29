@@ -43,16 +43,36 @@ Import a Calendar
 If you want to transfer your calendar and their respective events to your Nextcloud
 instance, importing is the best way to do so.
 
-.. figure:: images/calendar_settings.png
-            :scale: 80%
+.. figure:: images/calendar_importing.png
+            :scale: 50%
 
-1. Click on the settings-icon labeled with ``Settings & Import`` at the left-bottom.
+1. Click on the settings-icon labeled with ``Calendar settings`` at the bottom-left.
 
-2. After clicking on ``+ Import Calendar`` you can select one or more calendar files
+2. After clicking on ``Import Calendar``, found in the ``General`` section, you can select one or more calendar files
    from your local device to upload.
 
-3. The upload can take some time and depends on how big the calendar you import
-   is.
+3. Select a ``Calendar to import into``.
+
+4. The upload can take some time and depends on how big the calendar you import
+   is. A blue progress bar will appear below "Calendar Settings".
+
+.. note:: The Nextcloud Calendar application only supports iCalendar-compatible
+          ``.ics``-files, defined in RFC 5545.
+
+Import an Event/Add .ics Event
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Individual events are often distributed as ``.ics`` files (sometimes via a button labelled "iCal", "Apple Calendar" or "Outlook"). You can import them into Nextcloud Calendar using the same import flow as a full calendar.
+
+1. Click on the settings-icon labeled with ``Calendar settings`` at the bottom-left.
+
+2. After clicking on ``Import calendar`` you can select one or more ``.ics`` files
+   from your local device to upload. Single-event files are added to the calendar you select.
+
+3. Select a ``Calendar to import into``.
+
+4. The upload can take some time and depends on how big the calendar/event you import
+   is. A blue progress bar will appear below "Calendar Settings".
 
 .. note:: The Nextcloud Calendar application only supports iCalendar-compatible
           ``.ics``-files, defined in RFC 5545.
@@ -64,24 +84,51 @@ Sometimes you may want to change the color or the entire name of a previous
 imported or created calendar. You may also want to export it to your local
 hard drive or delete it forever.
 
-.. note:: Please keep in mind that deleting a calendar is a irreversible action.
+.. note:: Please keep in mind that deleting a calendar is an irreversible action.
           After deletion, there is no way of restoring the calendar unless you
           have a local backup.
 
 .. figure:: images/calendar_dropdown.png
 
-1. Click on the three-dot-menu of the respective calendar.
+Click on the "pen" icon of the respective calendar. You will see a new popup that will allow you to change
+the calendar name and color, and buttons to delete or export the calendar.
 
-.. figure:: images/calendar_editing.png
+.. figure:: images/calendar_settings.png
 
-2. Click on *Edit name*, *Edit color*, *Export* or *Delete*.
+Calendar Transparency
+~~~~~~~~~~~~~~~~~~~~~
+
+You can toggle the checkbox "Never show me as busy (set calendar to transparent)" to influence if this calendars' events
+are taken into account in Free/Busy calculations. If checked, no events in this calendar will be taken into account, your schedule will
+always be free, regardless of an events' settings.
+
+.. figure:: images/calendar_transparency.png
 
 Sharing calendars
 ~~~~~~~~~~~~~~~~~
 
-You may share your calendar with other users or groups. Calendars may be shared with write access or read-only. When sharing a calendar with write access, users with whom the calendar is shared will be able to create new events into the calendar as well as edit and delete existing ones.
+You may share your calendar with local users, groups or with remote users on federated servers.
+
+.. figure:: images/calendar_sharing_1.png
+
+Calendars may be shared with write access or read-only. When sharing a calendar with write access, users with whom the calendar is shared will be able to create new events into the calendar as well as edit and delete existing ones.
+
+.. figure:: images/calendar_sharing_2.png
 
 .. note:: Calendar shares currently cannot be accepted or rejected. If you want to stop having a calendar that someone shared with you, you can click on the 3-dot menu next to the calendar in the calendar list and click on "Unshare from me". To restore a share, the calendar can be reshared again, either for the whole group, resetting all unshares, or for a single user.
+
+Federated calendar sharing
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 32.0.0
+.. versionchanged:: 33.0.0 Federated calendar shares support read/write access.
+
+Sharing a calendar with a user on another Nextcloud instance works just like sharing with a local user.
+The difference is that you need to use the federated user identifier as the recipient, which has the format
+``<username>@<instance>`` (e.g. ``alice@cloud.example.com``).
+
+Starting with Nextcloud 33, federated shares support full read/write access, allowing remote users to
+create, edit, and delete events in the shared calendar. In Nextcloud 32, federated shares were read-only.
 
 Publishing a calendar
 ~~~~~~~~~~~~~~~~~~~~~
@@ -94,7 +141,7 @@ Multiple calendars can be shared together by adding their unique tokens to the e
 ``https://cloud.example.com/index.php/apps/calendar/embed/<token1>-<token2>-<token3>``
 
 To change the default view or date of an embedded calendar, you need to provide a URL that looks like ``https://cloud.example.com/index.php/apps/calendar/embed/<token>/<view>/<date>``.
-In this url you need to replace the following variables:
+In this URL you need to replace the following variables:
 
 - ``<token>`` with the calendar's token,
 - ``<view>`` with one of ``dayGridMonth``, ``timeGridWeek``, ``timeGridDay``, ``listMonth``, ``listWeek``, ``listDay``. The default view is ``dayGridMonth`` and the normally used list is ``listMonth``,
@@ -105,8 +152,8 @@ On the public page, users are able to get the subscription link for the calendar
 Calendar Widget
 ~~~~~~~~~~~~~~~
 
-You can embed your calendars into supported apps like ``Talk``, ``Notes``, etc... 
-by either sharing the public link to make the embed viewable (read-only) to all users 
+You can embed your calendars into supported apps like ``Talk``, ``Notes``, etc...
+by either sharing the public link to make the embed viewable (read-only) to all users
 or by using the internal link to make it private.
 
 Subscribe to a Calendar
@@ -146,24 +193,31 @@ Events can be created by clicking in the area when the event is scheduled.
 In the day- and week-view of the calendar you just click, pull and release your
 cursor over the area when the event is taking place.
 
+Clicking on the globe button brings up the timezone selector. You are able to choose different timezones for the start and end of your event. This is useful when travelling.
+
 .. figure:: images/calendar_new-event_week.png
 
 The month-view only requires a single click into the area of the target day.
 
 .. figure:: images/calendar_new-event_month.png
 
-After that, you can type in the event's name (e.g. **Meeting with Lukas**), choose
-the calendar in which you want to save the event to (e.g. **Personal**, **Work**),
+After that, you can type in the event's name (e.g. **Meeting with Linus**), choose
+the calendar in which you want to save the event to (e.g. **Personal**, **Community Events**),
 check and concretize the time span or set the event as an all-day event. Optionally
 you can specify a location and a description.
 
 If you want to edit advanced details such as the **Attendees** or **Reminders**, or if you
-want to set the event as a repeating-event, click on the ``More`` button to open the advanced
-sidebar editor.
+want to set the event as a repeating event, click on the ``More`` button to open the advanced editor.
 
-.. note:: If you always want to open the advanced sidebar editor instead of the
-          simple event editor popup, you can set a ``Skip simple event
-          editor`` checkmark in the ``Settings & Import`` section of the app.
+Add Talk conversation
+~~~~~~~~~~~~~~~~~~~~~
+You can include an existing Talk conversation in your event by clicking "Add Talk conversation". To view the list of existing Talk conversations, ensure the Talk app is enabled. If you'd like to create a new Talk conversation, you can do so directly from the same modal.
+
+.. figure:: images/add-talk-room.png
+
+.. note:: If you always want to open the advanced editor instead of the
+          simple event editor popup, you uncheck the option
+          ``Enable simplified editor`` in the ``Settings`` section of the app.
 
 Clicking on the blue ``Create`` button will finally create the event.
 
@@ -173,11 +227,11 @@ Edit, duplicate or delete an event
 If you want to edit, duplicate or delete a specific event, you first need to click on the event.
 
 After that you will be able to re-set all event details and open the
-advanced sidebar-editor by clicking on ``More``.
+advanced editor by clicking on ``More``.
 
-Clicking on the ``Update`` button will update the event. To cancel your changes, click on the close icon on top right of the popup or sidebar editor.
+Clicking on the ``Update`` button will update the event. To cancel your changes, click on the close icon on top right of the popup or advanced editor.
 
-If you open the sidebar view and click the three dot menu next to the event name, you have an option to export the event as an ``.ics`` file or remove the event from your calendar.
+If you open the advanced view and click the three dot menu next to the event name, you have an option to export the event as an ``.ics`` file or remove the event from your calendar.
 
 .. figure:: images/calendar_event_menu.png
 
@@ -203,9 +257,16 @@ Attendees may be other users on your Nextcloud instances, contacts in your addre
 
 .. tip:: When adding other Nextcloud users as attendees to an event, you may access their free-busy information if available, helping you determine when the best time slot for your event is. Set your :ref:`working hours<calendar-working-hours>` to let others know when you are available. Free-busy information is only available for other users on the same Nextcloud instance.
 
-.. attention:: Only the calendar owner can send out invitations. The sharees are not able to do that, whether they have write access to the event's calendar or not.
-
 .. attention:: The server administration needs to setup the e-mail server in the ``Basic settings`` tab, as this mail will be used to send invitations.
+
+Invitation status legend (as an attendee):
+
+- **Filled in event**: You accepted
+- **Strikethrough**: You declined
+- **Stripes**: Tentative
+- **Empty event**: You haven't responded yet
+
+If you are the organizer and all your attendees declined, the event will be empty with a warning symbol.
 
 Checking attendees' busy times
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -213,9 +274,11 @@ Checking attendees' busy times
 After adding attendees to an event you can click on ``Find a time`` to bring up the "Free / Busy" modal. It allows you to see when each attendee has other events, and can help you decide on a time when everyone is free.
 
 .. figure:: images/calendar_free_busy_modal.png
-   :scale: 70%
+   :scale: 60%
 
-By pressing the ``?`` icon you can see the legend for the colors in the timeline, and by clicking and dragging you can modify the start and end times of your event. By pressing ``Suggest automatic slot`` you can also get suggestions on slots when everyone invited is free and available.
+Your own busy blocks will be shown in the same color as your personal calendar, your out of office times will be shown in gray, and other attendees' busy times will have the same color as their avatar shown in the advanced editor.
+
+You can select a time slot for the event directly on the calendar.
 
 Assign rooms and resources to an event
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -226,7 +289,7 @@ Similar to attendees you can add rooms and resources to your events. The system 
 
 Room availability
 ~~~~~~~~~~~~~~~~~
-.. versionadded:: 4.8
+.. versionadded:: 5.0
 
 If the "Calendar Rooms and Resources" app is installed on your instance, you can now find ``Room availability``  the ``Resources`` section. It lists all the existing rooms. You can check the availability of each room in a manner similar to checking the free/busy status of event attendees.
 
@@ -237,7 +300,7 @@ Add attachments to events
 You can import attachments to your events either by uploading them or adding them from files
 
 .. figure:: images/calendar_adding_attachments.png
-   :scale: 40%
+   :scale: 80%
 
 .. note:: Attachments can be added while creating new events or editing existent ones.
    Newly uploaded files will be saved in files by default in the calendar folder in the root directory.
@@ -305,9 +368,9 @@ You can directly respond to invitations inside the app. Click on the event and s
 .. figure:: images/calendar_accept_simple_editor.png
    :scale: 80%
 
-You can respond to an invitation from the sidebar too.
+You can respond to an invitation from the advanced editor too.
 
-.. figure:: images/calendar_accept_sidebar_editor.png
+.. figure:: images/calendar_accept_advanced_editor.png
    :scale: 80%
 
 Availability (Working Hours)
@@ -382,10 +445,12 @@ For a selected day there will be a list with all the possible time slots. On day
 too many conflicts or a reached daily maximum limit of already booked appointments, the list might be empty.
 
 .. figure:: images/appointment_booking_1.png
+      :scale: 80%
 
 For the booking, attendees have to enter a name and an email address. Optionally they can also add a comment.
 
 .. figure:: images/appointment_booking_2.png
+      :scale: 80%
 
 When the booking was successful, a confirmation dialogue will be shown to the attendee.
 
@@ -426,3 +491,75 @@ Create Talk room for booked appointments
 
 You can create a Talk room directly from the calendar app for a booked appointment. The option can be found on the 'Create appointment' modal. A unique link will be generated for every booked appointment and sent via the confirmation email when you check this option.
 
+Proposals
+---------
+
+.. versionadded:: 6.0.0
+
+Finding a meeting time for a group of participants can be challenging. As of Calendar v6, a new feature was introduced that allows users to create proposals for meeting times.
+This means that instead of just booking a time, or searching for a available time in the free busy view, participants can vote on a set of proposed times for a meeting.
+The organizer can then review the participants' preferences and choose the most suitable time for the meeting.
+
+Managing proposals
+~~~~~~~~~~~~~~~~~~
+
+.. figure:: images/calendar_proposal_list.png
+
+The proposal list in the left sidebar shows all the proposals that the user has created. The list shows the title of the proposal, the number of responded participants and a status of whether all participants have responded.
+
+The user can click on the three dot menu next to a proposal item to edit, delete or view an existing proposal.
+
+
+Creating a proposal
+~~~~~~~~~~~~~~~~~~~
+
+To create a new proposal a user can click on the plus icon next to the "Meeting Proposals" header at the top of the proposal list. This will open a modal where the user can enter all the relevant details for the proposed meeting.
+
+.. figure:: images/calendar_proposal_create.png
+
+The proposal editor has some basic fields that are similar to the event editor, such as title, description, location, duration and participants selection, that the user can fill out. These details are then used to inform the participants about the proposed meeting and times.
+
+The key difference is the "Proposed times" selection, where the user can select multiple time slots for a meeting. The user can add as many time slots as they want, and each time slot can be edited or removed as needed.
+
+Once the user has filled out all the required details, title, duration, participants and selected the proposed times, they can click the "Create" button to create the proposal. This will save the proposal and send notifications to all the selected participants.
+
+Editing a proposal
+~~~~~~~~~~~~~~~~~~
+
+A user can edit an existing proposal by clicking on the three dot menu next to a proposal item in the proposal list and selecting "Edit". This will open the same modal as when creating a new proposal, but with all the existing details filled out.
+
+After making any necessary changes, the user can click the "Update" button to save the changes. This will also send notifications to all the participants about the updated proposal.
+
+Viewing a proposal progress
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Users can view the progress of a proposal by clicking on the proposal item in the proposal list or clicking "View" in the three dot menu. This will open a detailed view of the proposal, with all details and a times and participants matrix, showing all the proposed times and participants' responses.
+
+.. figure:: images/calendar_proposal_view.png
+
+In this view, the user can see which participants have responded to the proposal and their preferences for each proposed time. The user can also see the total number of votes for each proposed time, which can help them decide on the best time for the meeting.
+
+Once the user has reviewed the participants' responses, they can select the most popular time for the meeting by clicking on the "Create" button at the end of the date/participant matrix. This will create a new event in the user's calendar and send notifications to all participants about the confirmed meeting time.
+
+Notifications for a proposed meeting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Users will receive email notifications for various events related to a proposed meeting, including:
+
+- When a new proposal is created
+- When a proposal is updated
+- When a proposal is deleted
+- When the final meeting time is confirmed
+
+These notifications help all participants stay informed and engaged throughout the proposal process.
+
+The notification emails contain the basic details for the proposed meeting, like title, description, location, duration, and proposed times. They also include a link to the response page, where participants can see all the details and respond to the proposed times.
+
+Responding to a proposed meeting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Participants can respond to a proposed meeting by clicking on the link in the notification email. This will open the detailed view of the proposed meeting, where they can see all the proposed times, other participants' and their responses, and select their availability/preferences for each proposed time.
+
+.. figure:: images/calendar_proposal_respond.png
+
+Participants can select their availability for each proposed time by selecting their preference on the corresponding line in the times and participants matrix. They can choose from three options: "Yes", "No", or "Maybe". Once they have made their selections, they can click the "Submit" button to save their responses.

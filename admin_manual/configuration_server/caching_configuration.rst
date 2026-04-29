@@ -22,13 +22,21 @@ every time they are called. PHP bundles the Zend OPcache in core since version
 caching backends, so you can choose the type of memcache that best fits your
 needs. The supported caching backends are:
 
-* `APCu <https://pecl.php.net/package/APCu>`_, APCu 4.0.6 and up required.
-   A local cache for systems.
-* `Redis <http://redis.io/>`_, server 4.0.0 and up required.
-   For local and distributed caching, as well as transactional file locking.
+* `APCu <https://pecl.php.net/package/APCu>`_ (APCu 4.0.6 and up required).
+
+  A local cache for systems.
+
+* `Redis <https://redis.io/open-source/>`_ (4.0.0 and up required);
+  `Valkey <https://valkey.io/>`_ and `KeyDB <https://docs.keydb.dev/>`_ are expected to work as Redis-compatible backends.
+
+  .. note:: Automated/formal testing currently only occurs against Redis Open Source.
+
+  For local and distributed caching, as well as transactional file locking.
+
 * `Memcached <https://www.memcached.org/>`_
-   For distributed caching.
-   
+
+  For distributed caching.
+
 Data caches, or memcaches, must be explicitly configured in Nextcloud by installing
 and enabling your desired cache, and then adding the appropriate entry to 
 ``config.php`` (See :doc:`config_sample_php_parameters` for an overview of
@@ -99,8 +107,9 @@ Use APCu for local cache and either Redis cluster ...::
 Additional notes for Redis vs. APCu on memory caching
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-APCu is faster at local caching than Redis. If you have enough memory, use APCu for Memory Caching
-and Redis for File Locking. If you are low on memory, use Redis for both.
+APCu is faster for local caching than Redis. If you have enough memory, use
+APCu for Memory Caching and Redis for File Locking. If you are low on memory,
+use Redis for both.
 
 
 APCu
@@ -116,10 +125,23 @@ After restarting your Web server, add this line to your ``config.php`` file::
  
 Refresh your Nextcloud admin page, and the cache warning should disappear.  
 
-.. warning:: APCu is disabled by default on CLI which could cause issues with nextcloud's
-   cron jobs. Please make sure you set the ``apc.enable_cli`` to ``1`` on your ``php.ini``
-   config file or append ``--define apc.enable_cli=1`` to the cron job call.
+Depending on your installation size and the number of users and interactions
+with the system you may want to adapt the ``apc.shm_size`` setting in your
+``php.ini``. The default value is 32M which is usually too low for Nextcloud. A
+good starting point is 128M. If you have a lot of users and/or a lot of apps
+installed you may want to increase this value further. Keep in mind that this
+memory needs to be available in your system's memory and kept in mind when
+sizing the amount of workers on your server.
 
+A frequently resetting cache can lead to unexpected slow downs when the cache is
+being cleared and refilled.
+
+There is an admin check trying to detect too low memory sizing, but make sure to
+monitor the APCu cache status to see if the cache is full and if you need to
+increase the size. `APCu provides a script
+<https://github.com/krakjoe/apcu/blob/master/apc.php>`_ that can help with this,
+otherwise the `serverinfo app <https://github.com/nextcloud/serverinfo>`_ in
+Nextcloud can also show the APCu cache status.
 
 Redis
 -----
@@ -129,17 +151,21 @@ as a key-value store for :doc:`Transactional File Locking
 <../configuration_files/files_locking_transactional>` because it guarantees 
 that cached objects are available for as long as they are needed.
 
-The Redis PHP module must be version 2.2.6+. If you are running a Linux
-distribution that does not package the supported versions of this module, or 
-does not package Redis at all, see :ref:`install_redis_label`.
+Nextcloud uses the PhpRedis PHP extension. This extension provides an API for
+communicating with Redis-compatible key-value stores. Redis Open Source is the
+formally tested backend; Valkey and KeyDB are expected to work as compatible
+backends as well.
 
-On Debian/Ubuntu/Mint, install ``redis-server`` and ``php-redis``. The installer
-will automatically launch ``redis-server`` and configure it to launch at 
-startup.
+The Redis PHP module must be version 2.2.6+. If you are running a Linux 
+distribution that does not package the supported versions of this module,
+or does not package Redis at all, see :ref:`install_redis_label`.
 
-On CentOS and Fedora, install ``redis`` and ``php-pecl-redis``. It will not 
-start automatically, so you must use your service manager to start 
-``redis``, and to launch it at boot as a daemon.
+On Debian/Ubuntu/Mint, install ``redis-server`` (or equivalent) and 
+``php-redis``. Package names vary by distribution and backend.
+
+On CentOS and Fedora, install ``redis`` (or equivalent) and ``php-pecl-redis``.
+It will not start automatically, so you must use your service manager to start 
+the ``redis`` server, and to launch it at boot as a daemon.
  
 You can verify that the Redis daemon is running with ``ps ax``::
  
@@ -160,20 +186,24 @@ Additionally, you should use Redis for the distributed server cache::
 
   'memcache.distributed' => '\OC\Memcache\Redis',
 
-Furthermore, you could use Redis for the local cache like so, but it's not recommended (see warning below):: 
+Furthermore, you could use Redis for the local cache like so, but it's not recommended (see
+warning below):: 
 
   'memcache.local' => '\OC\Memcache\Redis',
 
-.. warning:: Using Redis for local cache on a multi-server setup can cause issues. Also, even on a single-server setup, APCu (see section above) should be faster.
+.. warning:: Using Redis for local cache on a multi-server setup can cause issues. Also,
+   even on a single-server setup, APCu (see section above) should be faster.
 
 When using Redis for any of the above cache settings, you also need to
 specify either the ``redis`` or ``redis.cluster`` configuration in ``config.php``.
 
-The following options are available to configure when using a single redis server (all but ``host`` and ``port`` are optional. For the latter two, see the next sections)::
+The following options are available to configure when using a single redis server 
+(all but ``host`` and ``port`` are optional. For the latter two, see the next sections)::
 
    'memcache.locking' => '\OC\Memcache\Redis',
    'memcache.distributed' => '\OC\Memcache\Redis',
    'memcache.local' =>'\OC\Memcache\Redis' ,
+   'memcache_customprefix' => 'mynextcloudprefix',
    'redis' => [
       // 'host'      => see connection parameters below
       // 'port'      => see connection parameters below
@@ -184,11 +214,13 @@ The following options are available to configure when using a single redis serve
      'read_timeout'  => 1.5,
    ],
 
-The following options are available to configure when using a redis cluster (all but ``seeds`` are optional)::
+The following options are available to configure when using a redis cluster (all but ``seeds``
+are optional)::
 
    'memcache.locking' => '\OC\Memcache\Redis',
    'memcache.distributed' => '\OC\Memcache\Redis',
    'memcache.local' =>'\OC\Memcache\Redis' ,
+   'memcache_customprefix' => 'mynextcloudprefix',
    'redis.cluster' => [
       'seeds' => [ // provide some/all of the cluster servers to bootstrap discovery, port required
          'cache-cluster:7000',
@@ -206,7 +238,10 @@ The following options are available to configure when using a redis cluster (all
       'dbindex'         => 0,
    ],
       
-.. note:: The port is required as part of the server URL. However, it is not necessary to list all servers: for example, if all servers are load balanced via the same DNS name, only that server name is required.
+.. note:: 
+   The port is required as part of the server URL. However, it is not necessary to list all
+   servers: for example, if all servers are load balanced via the same DNS name, only that
+   server name is required.
 
 Connecting to single Redis server over TCP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -264,7 +299,8 @@ recommended if Redis is running on the same system as Nextcloud) use this exampl
 
 Only "host" and "port" variables are required, the other ones are optional.
 
-Update the redis configuration in ``/etc/redis/redis.conf`` accordingly: uncomment Unix socket options and ensure the "socket" and "port" settings match your Nextcloud configuration.
+Update the redis configuration in ``/etc/redis/redis.conf`` accordingly: uncomment Unix socket
+options and ensure the "socket" and "port" settings match your Nextcloud configuration.
 
 Be sure to set the right permissions on redis.sock so that your webserver can
 read and write to it. For this you typically have to add the webserver user
@@ -361,3 +397,17 @@ Cache Directory location
 The cache directory defaults to ``data/$user/cache`` where ``$user`` is the 
 current user. You may use the ``'cache_path'`` directive in ``config.php``
 (See :doc:`config_sample_php_parameters`) to select a different location.
+
+Cache Key Prefix for Redis or Memcached
+---------------------------------------
+
+By default, Nextcloud generates a semi-unique prefix for cache keys using information like instance ID, version etc. to mitigate the problem of
+collisions when using the same cache for multiple Nextcloud instances.
+If you want to make sure to prevent collisions altogether, you can use the following
+setting to define your custom prefix::
+
+  'memcache_customprefix' => 'mynextcloudprefix',
+
+This also allows you to create ACLs in Redis and limit the keys specific users can access
+(e.g. if you want to isolate specific Nextcloud instances when using the same cache).
+This may be security-relevant for you.

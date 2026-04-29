@@ -28,9 +28,7 @@ In Kalendar:
 
 In KOrganizer and Kalendar:
 
-3. Enter your username. As password, you need to generate an app-password/token (`Learn more <https://docs.nextcloud.com/server/latest/user_manual/en/session_management.html#managing-devices>`_):
-
-.. TODO ON RELEASE: Update version number above on release
+3. Enter your username. As password, you need to generate an app-password/token (:ref:`Learn more <managing_devices>`):
 
 .. image:: ../images/korganizer_credentials.png
 

@@ -8,6 +8,7 @@ System requirements
 * PHP 8.1 is now deprecated but still supported.
 * PHP 8.0 is no longer supported.
 * PostgreSQL 9.4 is no longer supported.
+* MariaDB 10.3 and 10.5 are no longer supported.
 
 Web server configuration
 ------------------------
@@ -30,3 +31,22 @@ Previews for PDF files with Imaginary
 
 The preview provider ``OC\Preview\Imaginary`` is no longer generating previews for PDF files.
 Add the new preview provider ``OC\Preview\ImaginaryPDF`` to ``enabledPreviewProviders`` to enable preview generation with Imaginary for PDF files.
+
+Automated clean-up of app password
+----------------------------------
+
+Nextcloud 30 will :ref:`clean-up unused app passwords<authentication-app-password-clean-up>`.
+
+Monitoring: Counting of active users
+------------------------------------
+
+Starting with Nextcloud 30.0.12 the monitoring app was adjusted to count the active users in the same way as occ user:report and the support app.
+
+AppAPI (app_api) is now a default app
+-------------------------------------
+
+Starting with Nextcloud 30.0.1, the AppAPI app is included and enabled by default. See :doc:`../exapps_management/index` for details.
+
+You can disable this app in the standard manner via the *Apps* menu if you do not expect to use AppAPI integrations in the near future.
+
+If AppAPI is disabled, other apps that depend on it will not be visible in the app store. AppAPI-related setup checks will also be deactivated.

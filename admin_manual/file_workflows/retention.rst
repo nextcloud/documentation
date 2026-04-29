@@ -19,6 +19,15 @@ The rule from the example will delete all files tagged with ``Temporary file`` 1
 You can also use the "Notify owner a day before a file is automatically deleted" option to
 make sure the file owner will get a notification before a file will be deleted.
 
+File age
+--------
+
+There are 2 options available that can be used to decide when to delete a file:
+
+- **Creation:** Time the file was created on the Nextcloud Server or uploaded to it.
+- **Last modification:** Time when the file was last modified. Uploading also counts as a modification,
+  so files that have not been modified since a long time before uploading are not deleted shortly after the upload.
+
 Common misconfigurations
 ------------------------
 
@@ -28,12 +37,3 @@ Public collaborative tag
 Similar to :doc:`access_control` retention should use ``restricted`` or ``invisible``
 tags. Otherwise any user can remove the tag and the file is not removed after the given
 period. Use :doc:`automated_tagging` to assign such tags to newly uploaded files.
-
-File age
-^^^^^^^^
-
-Currently retention is based on the creation date of the file. The sync client sends
-the **original** creation date to the server, while uploading through the web interface
-will create a new file with a **new** creation date.
-We hope to be able to add a ``upload date`` to the filesystem soon, which would make more
-sense. Until then this potentially unexpected behavior has to be taken into account.

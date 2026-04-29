@@ -14,13 +14,14 @@ Consuming the Task Processing API
 To consume the  Task Processing API, you will need to :ref:`inject<dependency-injection>` ``\OCP\TaskProcessing\IManager``. This manager offers the following methods:
 
  * ``hasProviders()`` This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the TextProcessing feature.
- * ``getAvailableTaskTypes()`` This method returns an array of task types indexed by their ID with their names and additional metadata.
+ * ``getAvailableTaskTypes(bool $showDisabled = false)`` This method returns an array of enabled task types indexed by their ID with their names and additional metadata. If you set ``$showdisabled`` to ``true`` (available since NC31), it will include disabled task types. Since NC33 this will also include the ``isInternal`` field that signifies whether the task type is user-facing or intended for internal use only.
+ * ``getAvailableTaskTypeIds()`` This method (available since NC32) returns a list of available task type IDs. It uses the same logic as ``getAvailableTaskTypes()`` but is faster because it does not compute the task types metadata (which can be slow when getting default field values or multiselect value lists). If you just want to check if a feature is available, prefer using this method rather than ``getAvailableTaskTypes()``.
  * ``scheduleTask(Task $task)`` This method provides the actual scheduling functionality. The task is defined using the Task class. This method runs the task asynchronously in a background job.
  * ``getTask(int $id)`` This method fetches a task specified by its id.
  * ``deleteTask(Task $task)`` This method deletes a task
  * ``cancelTask(int $id)`` This method cancels a task specified by its id.
 
-If you would like to use the text processing functionality in a client, there are also OCS endpoints available for this: :ref:`OCS Text Processing API<ocs-taskprocessing-api>`
+If you would like to use the task processing functionality in a client, there are also OCS endpoints available for this: :ref:`OCS Task Processing API<ocs-taskprocessing-api>`
 
 Tasks types
 ^^^^^^^^^^^
@@ -38,6 +39,25 @@ The following built-in task types are available:
        * ``history``: ``ListOfTexts``
     * Output shape:
        * ``output``: ``Text``
+ * ``'core:text2text:chatwithtools'``: This task allows chatting with the language model with tools calling support. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextChatWithTools``
+    * Input shape:
+       * ``system_prompt``: ``Text``
+       * ``input``: ``Text``
+       * ``tool_message``: ``Text`` A string containing a JSON array of ``{"name": string, "content": string, "tool_call_id": string}``
+       * ``history``: ``ListOfTexts`` Each list item is a JSON string with ``{"role": "human", "content": string}`` or ``{"role": "assistant", "content": string, (optional: "tool_calls": array<{"name": string, "type": "tool_call", "id": string, "args": object}>)}`` or ``{"role": "tool", "content": string, "name": string, "tool_call_id": string}``
+       * ``tools``: ``Text`` The tools parameter should be a JSON array formatted according to the OpenAI API specifications: https://platform.openai.com/docs/api-reference/chat/create#chat-create-tools
+    * Output shape:
+       * ``output``: ``Text``
+       * ``tool_calls``: ``Text`` A string containing a JSON array with ``{"name": string, "type": "tool_call", "id": string, "args": object}``
+ * ``'core:contextagent:interaction'``: This task allows chatting with an agent. It is implemented by ``\OCP\TaskProcessing\TaskTypes\ContextAgentInteraction``
+    * Input shape:
+       * ``input``: ``Text``
+       * ``confirmation``: ``Number`` Boolean integer indicating whether to confirm previously requested actions: 0 to reject or 1 to confirm.
+       * ``conversation_token``: ``Text`` Token representing the conversation
+    * Output shape:
+       * ``output``: ``Text``
+       * ``conversation_token``: ``Text``
+       * ``actions``: ``Text``
  * ``'core:text2text:formalization'``: This task will reformulate the passed input text to be more formal in tone. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextFormalization``
      * Input shape:
         * ``input``: ``Text``
@@ -86,6 +106,52 @@ The following built-in task types are available:
          * ``numberOfImages``: ``Number``
       * Output shape:
          * ``output``: ``ListOfImages``
+ * ``'core:text2text:changetone'``: This task type is for reformulating a text, changing its tone. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextChangeTone``
+      * Input shape:
+         * ``input``: ``Text``
+         * ``tone``: ``Enum``
+      * Output shape:
+         * ``output``: ``Text``
+ * ``'core:text2text:proofread'``: This task type is for proofreading a text, checking it for grammar and spelling mistakes. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextProofread``
+      * Input shape:
+         * ``input``: ``Text``
+      * Output shape:
+         * ``output``: ``Text``
+ * ``'core:text2speech'``: This task type is for generating speech from text prompts. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToSpeech``
+      * Input shape:
+         * ``input``: ``Text``
+      * Output shape:
+         * ``speech``: ``Audio``
+ * ``'core:analyze-images'``: This task type is for analyzing images. It is implemented by ``\OCP\TaskProcessing\TaskTypes\AnalyzeImages``
+      * Input shape:
+         * ``input``: ``Text``
+         * ``images``: ``ListOfImages``
+      * Output shape:
+         * ``output``: ``Text``
+ * ``'core:image2text:ocr'``: This task type is for extracting text from files using OCR. It is implemented by ``\OCP\TaskProcessing\TaskTypes\ImageToTextOpticalCharacterRecognition``
+      * Input shape:
+         * ``input``: ``ListOfFiles``
+      * Output shape:
+         * ``output``: ``ListOfTexts``
+
+
+
+Task types can be disabled in the AI admin settings so they are not available for the Assistant or other apps even if they are implemented. All implemented Task types are enabled by default.
+
+LLM Prompts and multilingual I/O
+################################
+
+When writing prompts for the TextToText task type in your apps, we recommend testing it with at least
+
+* OpenAI GPT-3.5
+* Llama 3.1
+
+Also, make sure that you instruct the model to use the correct language in its output. By default most models will answer in English if the main prompt is in English, even though the source data is in another language.
+A tweak to make sure of this is to instruct the model as follows:
+
+.. code-block:: php
+
+   "Detect the language used in the text and make sure to answer in the same language without mentioning the language explicitly."
 
 Input and output shapes
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -150,7 +216,10 @@ To create a task we use the ``\OCP\TaskProcessing\Task`` class. Its constructor 
 
 .. code-block:: php
 
-    if (isset($textprocessingManager->getAvailableTaskTypes()[TextToTextSummary::ID]) {
+    // getAvailableTaskTypeIds is faster than getAvailableTaskTypes
+    // if (isset($textprocessingManager->getAvailableTaskTypes()[TextToTextSummary::ID]) {
+    // if you don't need the task type metadata, prefer this:
+    if (in_array(TextToTextSummary::ID, $textprocessingManager->getAvailableTaskTypeIds(), true) {
         $summaryTask = new Task(TextToTextSummary::ID, $emailText, "my_app", $userId, (string) $emailId);
     } else {
         // cannot use summarization
@@ -177,6 +246,11 @@ The task class objects have the following methods available:
  * ``setWebhookMethod()`` This sets the HTTP method that will be used for the webhook when the task execution has ended
  * ``getWebhookUri()`` This returns the webhook URI that will be notified when the task execution has ended
  * ``getWebhookMethod()`` This returns the HTTP method that will be used for the webhook when the task execution has ended
+
+
+.. versionadded:: 33.0.0
+
+ * ``getUserFacingErrorMessage()`` This returns any error message that is meant to be displayed to the user, even if a task has failed, this is not guaranteed to be set.
 
 You could now schedule the task as follows:
 
@@ -336,7 +410,10 @@ A **Task processing provider** will usually be a class that implements the inter
 
 The method ``getName`` returns a string to identify the registered provider in the user interface.
 
-The method ``process`` implements the text processing step. In case execution fails for some reason, you should throw a ``\OCP\TaskProcessing\Exception\ProcessingException`` with an explanatory error message. Important to note here is that ``Image``, ``Audio``, ``Video`` and ``File`` slots in the input array will be filled with ``\OCP\Files\File`` objects for your convenience. When outputting one of these you should simply return a string, the API will turn the data into a proper file for convenience. The ``$reportProgress`` parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (``true``) or if it was cancelled (``false``) and processing should be terminated.
+The method ``process`` implements the task processing step. In case execution fails for some reason, you should throw a ``\OCP\TaskProcessing\Exception\ProcessingException`` with an explanatory error message.
+Since v33.0.0 you can now also throw an ``OCP\TaskProcessing\Exception\UserFacingProcessingException`` which includes a string parameter to set for error messages that will be propagated to the end-user, make sure to always translate these into the language of the user that requested the task. The rule of thumb of when to use a user-facing error message, is as follows: When the error happened due to a mistake from the user or the user can do something to fix the error, throw a user facing error. However, do make sure to not include implementation or server details in the user facing error message, that's what the normal error message is for; it will only be visible to administrators.
+
+Important to note here is that ``Image``, ``Audio``, ``Video`` and ``File`` slots in the input array will be filled with ``\OCP\Files\File`` objects for your convenience. When outputting one of these you should simply return a string, the API will turn the data into a proper file for convenience. The ``$reportProgress`` parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (``true``) or if it was cancelled (``false``) and processing should be terminated.
 
 This class would typically be saved into a file in ``lib/TaskProcessing`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
 
@@ -465,6 +542,28 @@ If you would like to implement providers that handle additional task types, you 
     		];
     	}
     }
+
+Internal task types
+###################
+
+.. versionadded:: 33.0.0
+
+Other apps and clients will assume that task types are user-facing and will display them on the frontend. If your custom
+task types are not intended to be shown to users, you should implement the ``IInternalTaskType`` interface instead. This will
+make sure that other apps and clients know not to show your custom task type to end users.
+
+
+Triggerable providers
+^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 33.0.0
+
+Synchronous providers are executed automatically by a background job that will usually be targeted by a worker to make sure
+that it runs almost instantly. ExApps on the other hand used to have to poll the server for new tasks. Since the introduction of triggerable
+providers ExApps are now notified immediately of new tasks when they are scheduled. This is implemented via the ``ITriggerableProvider`` interface,
+which adds an additional ``trigger(): void`` method to the provider interface which is called when a new task is scheduled for this provider and
+there are no running tasks for it at the moment. Usually if you implement a provider in PHP you will not have to deal with this interface but it is documented
+here for completeness.
 
 Provider and task type registration
 -----------------------------------

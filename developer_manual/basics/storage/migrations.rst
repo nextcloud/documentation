@@ -100,12 +100,9 @@ instance into your migration class like this:
 .. code-block:: php
 
    class Version2404Date20220903071748 extends SimpleMigrationStep {
-
-      /** @var IDBConnection */
-      private $db;
-
-      public function __construct(IDBConnection $db) {
-         $this->db = $db;
+      public function __construct(
+         private IDBConnection $db
+      ) {
       }
 
       public function postSchemaChange(IOutput $output, \Closure $schemaClosure, array $options) {
@@ -114,33 +111,113 @@ instance into your migration class like this:
       }
    }
 
+Migrations and Metadata
+-----------------------
+
+Since 30, details about migrations are available to administrator as metadata can be attached to your migration class by adding specific PHP Attributes:
+
+.. code-block:: php
+    :emphasize-lines: 5-10
+
+    use OCP\Migration\Attributes\CreateTable;
+    use OCP\Migration\Attributes\ColumnType;
+    use OCP\Migration\Attributes\ModifyColumn;
+
+    #[CreateTable(
+        table: 'new_table',
+        description: 'Table is used to store things, but also to get more things',
+        notes: ['this is a notice', 'and another one, if really needed']
+    )]
+    #[ModifyColumn(table: 'other_table', name: 'this_field', type: ColumnType::BIGINT)]
+    class Version30000Date20240729185117 extends SimpleMigrationStep {
+        public function changeSchema(IOutput $output, Closure $schemaClosure, array $options) {
+	[...]
+        }
+    }
+
+
+List of available Migration Attributes:
+
+* ``\OCP\Migration\Attributes\AddColumn`` if your migration implies the creation of a new column
+* ``\OCP\Migration\Attributes\AddIndex`` if your migration adds a new index
+* ``\OCP\Migration\Attributes\CreateTable`` if your migration creates a new table
+* ``\OCP\Migration\Attributes\DropColumn`` if your migration drops a column
+* ``\OCP\Migration\Attributes\DropIndex`` if your migration drops an index
+* ``\OCP\Migration\Attributes\DropTable`` if your migration drops a table
+* ``\OCP\Migration\Attributes\ModifyColumn`` if your migration modifies a column
+
 .. _migration_console_command:
 
 Console commands
 ----------------
 
-There are some console commands, which should help developers to create or deal
-with migrations, which are only available if you are running your
-Nextcloud **in debug mode**:
+The following ``occ`` commands help you create and manage migrations::
 
-* `migrations:execute`: Executes a single migration version manually.
-  The version argument is the class name of the migration, without the
-  "Version" prefix. For example if your migration was named
-  `Version2404Date20220903071748` the version would be `2404Date20220903071748`.
-* `migrations:generate`:
-  This is needed to create a new migration file. This takes 2 arguments,
-  first one is the `appid`, the second one should be the `version`of your
-  app as an integer. We recommend to use the major and minor digits of your apps
-  version for that. This allows you to introduce a new migration in your branch
-  for a Nextcloud version if there is already a migration path for a newer one
-  in another branch. Since you can’t change this retroactive, we recommend to
-  leave enough space in between and therefore map the numbers to 3 digits:
-  `1.0.x => 1000`, `2.34.x => 2034`, etc.
-* `migrations:migrate`: Execute a migration to a specified or the latest available version.
-* `migrations:status`: View the status of a set of migrations.
+ migrations
+  migrations:execute  execute a single migration version manually
+  migrations:generate generate a new migration file for an app
+  migrations:migrate  execute migrations to a specified or the latest version
+  migrations:preview  preview available DB migrations before an upgrade
+  migrations:status   view the status of migrations for an app
 
-.. note:: After generating a migration, you might need to run `composer dump-autoload`
-   to be able to execute it.
+migrations\:execute
+^^^^^^^^^^^^^^^^^^^^
+
+Execute a single migration version manually. The ``version`` argument is the
+migration class name without the ``Version`` prefix — for example, if your
+migration is named ``Version2404Date20220903071748``, the version is
+``2404Date20220903071748``::
+
+ sudo -E -u www-data php occ migrations:execute myapp 2404Date20220903071748
+
+.. note::
+
+   Without debug mode enabled, ``migrations:execute`` will refuse to run a
+   version that has already been executed or that would roll back a previous
+   migration. Enable debug mode (``’debug’ => true`` in ``config.php``) to
+   override this restriction during development.
+
+migrations\:generate
+^^^^^^^^^^^^^^^^^^^^^
+
+Generate a new migration file for an app. The ``version`` argument is the
+major version of your app as an integer. Use the major and minor digits of
+your app version, mapped to 3 digits (``1.0.x => 1000``, ``2.34.x => 2034``),
+to leave room for parallel branch migrations::
+
+ sudo -E -u www-data php occ migrations:generate myapp 1000
+
+The generated file is placed in ``apps/myapp/lib/Migration/``.
+
+.. note::
+
+   After generating a migration you may need to run ``composer dump-autoload``
+   before it can be executed.
+
+migrations\:migrate
+^^^^^^^^^^^^^^^^^^^^
+
+Execute all pending migrations for an app, or migrate to a specific version.
+Accepts a version number (``YYYYMMDDHHMMSS``) or an alias (``first``,
+``prev``, ``next``, ``latest``)::
+
+ sudo -E -u www-data php occ migrations:migrate myapp
+ sudo -E -u www-data php occ migrations:migrate myapp prev
+
+migrations\:preview
+^^^^^^^^^^^^^^^^^^^^
+
+Preview the DB migrations that would be applied during an upgrade to a given
+version, without executing them::
+
+ sudo -E -u www-data php occ migrations:preview 30.0.0
+
+migrations\:status
+^^^^^^^^^^^^^^^^^^^
+
+Show which migrations have been executed and which are pending for an app::
+
+ sudo -E -u www-data php occ migrations:status myapp
 
 Adding indices
 --------------
@@ -165,6 +242,8 @@ Replacing indices
 .. versionadded:: 29.0.0
 
 Similar to adding an index to an existing table, it could be necessary to replace one or more indices with a new one. To avoid a gap between dropping the old indices in a migration and adding the new one through ``AddMissingIndicesEvent``, it is possible to do both at once in ``AddMissingIndicesEvent``.
+
+If none of the previous indices are found, e.g. because they were optional and not created yet, the replacement index will be treated as *missing index*.
 
 .. note:: Make sure to not use the same index name for the new index as for old indices.
 

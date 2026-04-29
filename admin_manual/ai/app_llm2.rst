@@ -6,20 +6,40 @@ App: Local large language model (llm2)
 
 The *llm2* app is one of the apps that provide text processing functionality using Large language models in Nextcloud and act as a text processing backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`, the *mail* app and :ref:`other apps making use of the core Text Processing API<tp-consumer-apps>`. The *llm2* app specifically runs only open source models and does so entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
-This app uses `ctransformers <https://github.com/marella/ctransformers>`_ under the hood and is thus compatible with any model in *gguf* format. Output quality will differ depending on which model you use, we recommend the following models:
+This app uses `llama.cpp <https://github.com/abetlen/llama-cpp-python>`_ under the hood and is thus compatible with any model in *gguf* format.
 
-* `Llama3 8b Instruct <https://huggingface.co/QuantFactory/Meta-Llama-3-8B-Instruct-GGUF>`_ (reasonable quality; fast; good acclaim; multilingual output may not be optimal)
-* `Llama3 70B Instruct <https://huggingface.co/QuantFactory/Meta-Llama-3-70B-Instruct-GGUF>`_ (good quality; good acclaim; good multilingual output)
+However, we only test with Llama 3.1. Output quality will differ depending on which model you use and downstream tasks like summarization or Context Chat may not work on other models.
+We thus recommend the following models:
+
+* `Llama3.1 8b Instruct <https://huggingface.co/QuantFactory/Meta-Llama-3.1-8B-Instruct-GGUF>`_ (reasonable quality; fast; good acclaim; comes shipped with the app)
+* `Llama3.1 70B Instruct <https://huggingface.co/bartowski/Meta-Llama-3.1-70B-Instruct-GGUF>`_ (good quality; good acclaim)
+
+Multilinguality
+---------------
 
 This app supports input and output in languages other than English if the underlying model supports the language.
+
+Llama 3.1 `supports the following languages: <https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct#multilingual-benchmarks>`_
+
+* English
+* Portuguese
+* Spanish
+* Italian
+* German
+* French
+* Hindi
+* Thai
+
+Note, that other languages may work as well, but only the above languages are guaranteed to work.
 
 Requirements
 ------------
 
-* This app is built as an External App and thus depends on AppAPI v2.3.0 or higher
+* This app is built as an External App and thus depends on AppAPI v3.1.0 or higher
 * Nextcloud AIO is supported
 * We currently support NVIDIA GPUs and x86_64 CPUs
-* CUDA >= v12.2 on your host system
+* CPU that supports AVX and AVX2 instruction
+* CUDA >= v12.4 on your host system
 * GPU Sizing
 
    * A NVIDIA GPU with at least 8GB VRAM
@@ -36,7 +56,7 @@ Installation
 
 0. Make sure the :ref:`Nextcloud Assistant app<ai-app-assistant>` is installed
 1. :ref:`Install AppAPI and setup a Deploy Demon<ai-app_api>`
-2. Install the "Local large language model" ExApp via the "External Apps" page in the Nextcloud web admin user interface
+2. Install the "Local large language model" ExApp via the "Apps" page in the Nextcloud web admin user interface
 
 Supplying alternate models
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -64,10 +84,10 @@ Here is an example config file for Llama 2:
 
    {
      "prompt": "<|im_start|> system\n{system_prompt}\n<|im_end|>\n<|im_start|> user\n{user_prompt}\n<|im_end|>\n<|im_start|> assistant\n",
-     "gpt4all_config": {
-       "max_tokens": 4096,
-       "n_predict": 2048,
-       "stop": ["<|im_end|>"]
+     "loader_config": {
+        "n_ctx": 4096,
+        "max_tokens": 2048,
+        "stop": ["<|im_end|>"]
      }
    }
 
@@ -76,11 +96,12 @@ Here is an example configuration for Llama 3:
 .. code-block:: json
 
    {
-     "prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{user_prompt}<|eot_id|>\n\”<|start_header_id|>assistant<|end_header_id|>\n\n",
-     "gpt4all_config": {
-       "max_tokens": 8000,
-       "n_predict": 4000,
-       "stop": ["<|eot_id|>"]
+     "prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n{system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>\n{user_prompt}<|eot_id|>\n<|start_header_id|>assistant<|end_header_id|>\n",
+     "loader_config": {
+         "n_ctx": 8000,
+         "max_tokens": 4000,
+         "stop": ["<|eot_id|>"],
+         "temperature": 0.3
      }
    }
 
@@ -88,6 +109,7 @@ Scaling
 -------
 
 It is currently not possible to scale this app, we are working on this. Based on our calculations an instance has a rough capacity of 1000 user requests per hour. However, this number is based on theory and we do appreciate real-world feedback on this.
+If you would like to scale up your language model usage, we recommend using an :ref:`AI as a Service provider<ai-ai_as_a_service>` or hosting a service compatible with the OpenAI API yourself that can be scaled up and connecting nextcloud to it via the `integration_openai app <https://apps.nextcloud.com/apps/integration_openai>`_.
 
 App store
 ---------
@@ -106,8 +128,31 @@ Known Limitations
 
 * We currently only support languages that the underlying model supports; correctness of language use in languages other than English may be poor depending on the language's coverage in the model's training data (We recommended model Llama 3 or other models explicitly trained on multiple languages)
 * Language models can be bad at reasoning tasks
+* Language models can be bad at math
 * Language models are likely to generate false information and should thus only be used in situations that are not critical. It's recommended to only use AI at the beginning of a creation process and not at the end, so that outputs of AI serve as a draft for example and not as final product. Always check the output of language models before using it.
 * Make sure to test the language model you are using it for whether it meets the use-case's quality requirements
 * Language models notoriously have a high energy consumption, if you want to reduce load on your server you can choose smaller models or quantized models in exchange for lower accuracy
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)
-* Due to technical limitations that we are in the process of mitigating, each task currently incurs a time cost of between 0 and 5 minutes in addition to the actual processing time
+
+Addendum: Running with a fully open model
+-----------------------------------------
+
+If you would like to use a fully open model that scores a green score on our Ethical AI rating, we recommend the following model:
+
+* Olmo 3 (either in 7B or 32B): `<https://huggingface.co/allenai/Olmo-3-7B-Instruct>`_
+
+What makes OLMo a fully open model?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* The code for training, fine-tuning and inference of the model is publicly available and fully open source
+* The training data with which the model is pretrained is publicly available
+* The model itself is publicly available and fully open source
+* The instruction tuning data is publicly available
+* The Reinforcement learning model is publicly available and fully open source
+
+Limitations
+~~~~~~~~~~~
+
+* OLMo currently only works well with English language input
+* In our tests it sometimes produced hallucinated or garbled output; make sure to thoroughly test the model for your use case
+* It cannot use tools, so cannot be used in conjunction with :ref:`Context Agent <ai-app-context_agent>`

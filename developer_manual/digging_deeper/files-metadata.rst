@@ -198,6 +198,25 @@ This will return a result like
         $metadataManager->initMetadata('myapp-test', IMetadataValueWrapper::TYPE_INT, true, IMetadataValueWrapper::EDIT_REQ_OWNERSHIP);
     }
 
+Delete metadata using PROPPATCH
+-------------------------------
+
+Using WebDAV request, a client can delete metadata about a file:
+
+.. code-block:: console
+
+    curl 'https://cloud.example.net/remote.php/dav/files/test/document.txt' \
+        --user test:test \
+        --request PROPPATCH \
+        --data '<?xml version="1.0" encoding="UTF-8"?>
+            <d:propertyupdate xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns">
+                <d:remove>
+                    <d:prop>
+                        <nc:metadata-myapp-test></nc:metadata-myapp-test>
+                    </d:prop>
+                </d:remove>
+            </d:propertyupdate>'
+
 
 Retrieve metadata using PROPFIND
 --------------------------------

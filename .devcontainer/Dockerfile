@@ -1,4 +1,8 @@
-FROM python:3.9 as final
+FROM ubuntu:24.04
+
+LABEL org.opencontainers.image.source="https://github.com/nextcloud/documentation"
+LABEL org.opencontainers.image.description="Sphinx build environment for Nextcloud documentation"
+LABEL org.opencontainers.image.licenses="AGPL-3.0"
 
 USER root
 
@@ -6,10 +10,14 @@ USER root
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
     && apt-get -y install --no-install-recommends \
-        curl gnupg2 git nano make graphviz imagemagick inkscape sass unzip wget php-cli npm latexmk texlive-latex-extra tex-gyre \
-    && wget https://getcomposer.org/installer -qO /tmp/composer-setup.php \
-    && php /tmp/composer-setup.php \
-    && mv composer.phar /usr/local/bin/composer \
-    && npm install svgexport -g \
-    && rm -f /tmp/composer-setup.php \
+        ca-certificates curl gnupg2 git lsb-release nano make \
+        unzip wget \
+        python3 python3-pip python3-venv \
+        latexmk texlive-fonts-extra texlive-fonts-extra-links texlive-fonts-recommended \
+        texlive-latex-extra texlive-latex-recommended tex-gyre texlive-xetex xindy \
+    && mktexlsr \
     && rm -rf /var/lib/apt/lists/*
+
+# Allow pip to install packages system-wide inside the container when running
+# as root (avoids PEP 668 "externally managed environment" error)
+RUN printf '[global]\nbreak-system-packages = true\n' > /etc/pip.conf

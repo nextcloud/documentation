@@ -17,7 +17,7 @@ are on Ubuntu Linux::
 
 Important: If you use consecutive commands, make sure, you are user ``www-data``::
 
- sudo -u www-data bash
+ sudo -E -u www-data bash
  cd /path/to/localdir
  mkdir data
 

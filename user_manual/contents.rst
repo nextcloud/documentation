@@ -8,13 +8,13 @@ Table of contents
     :maxdepth: 2
 
     index
-    whats_new
     webinterface
+    activity
     files/index
     groupware/index
     talk/index 
+    desktop/index
     userpreferences
     universal_access
     user_2fa
     session_management
-    external_storage/index

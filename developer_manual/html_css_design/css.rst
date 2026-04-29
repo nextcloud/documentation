@@ -129,39 +129,55 @@ State colors variables
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
 | Variable                                     | Example         | Usage                                                                                     |
 +==============================================+=================+===========================================================================================+
+| ``--color-text-error``                       | ``#c90000``     | For text on **normal** background that should have an error state                         |
++----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
+| ``--color-text-success``                     | ``#099f05``     | For text on **normal** background that should have an success state                       |
++----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
+| ``--color-element-error``                    | ``#c90000``     | Color with proper contrast for elements which have an error state for example icons       |
++----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
+| ``--color-element-info``                     | ``#0077C7``     | Color with proper contrast for elements which have an info state for example icons        |
++----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
+| ``--color-element-success``                  | ``#099f05``     | Color with proper contrast for elements which have an success state for example icons     |
++----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
+| ``--color-element-warning``                  | ``#BF7900``     | Color with proper contrast for elements which have an warning state for example icons     |
++----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
+| ``--color-border-error``                     | ``#c90000``     | Border color for elements which have an error state like inputs with failing validity     |
++----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
+| ``--color-border-success``                   | ``#099f05``     | Border color for elements which have a success state like inputs which have been saved    |
++----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
 | ``--color-favorite``                         | ``#a37200``     | Color to mark favorites, can be used to color e.g. a star icon for favorites              |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-error``                            | ``#db0606``     | Element color to show error state, this should not be used for text                       |
+| ``--color-error``                            | ``#FFE7E7``     | Color to show error state, this should not be used for text but for element backgrounds   |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-error-rgb``                        | ``219,6,6``     | RGB variant of ``--color-error``                                                          |
+| ``--color-error-hover``                      | ``#ffc3c3``     | Background color for hover effects of ``--color-error``                                   |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-error-hover``                      | ``#df2525``     | Element color for hover effects of ``--color-error``                                      |
+| ``--color-error-text``                       | ``#8A0000``     | Text color on elements using ``--color-error`` as background                              |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-error-text``                       | ``#c20505``     | Text color to show error state                                                            |
+| ``--color-warning``                          | ``#FFEEC5``     | Color to show warning state, this should not be used for text but for element backgrounds |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-warning``                          | ``#a37200``     | Element color to show warning state, this should not be used for text                     |
+| ``--color-warning-hover``                    | ``#ffe4a1``     | Background color for hover effects of ``--color-warning``                                 |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-warning-rgb``                      | ``163,114,0``   | RGB variant of ``--color-warning``                                                        |
+| ``--color-warning-text``                     | ``#664700``     | Text color on elements using ``--color-warning`` as background                            |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-warning-hover``                    | ``#8a6000``     | Element color for hover effects of ``--color-warning``                                    |
+| ``--color-success``                          | ``#D8F3DA``     | Color to show success state, this should not be used for text but for element backgrounds |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-warning-text``                     | ``#7f5900``     | Text color to show warning state                                                          |
+| ``--color-success-hover``                    | ``#bdebc0``     | Background color for hover effects of ``--color-success``                                 |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-success``                          | ``#2d7b41``     | Element color to show success state, this should not be used for text                     |
+| ``--color-success-text``                     | ``#005416``     | Text color on elements using ``--color-success`` as background                            |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-success-rgb``                      | ``45,123,65``   | RGB variant of ``--color-success``                                                        |
+| ``--color-info``                             | ``#D5F1FA``     | Color to show info state, this should not be used for text but for element backgrounds    |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-success-hover``                    | ``#428854``     | Element color for hover effects of ``--color-success``                                    |
+| ``--color-info-hover``                       | ``#b5e6f6``     | Background color for hover effects of ``--color-info``                                    |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-success-text``                     | ``#286c39``     | Text color to show success state                                                          |
+| ``--color-info-text``                        | ``#0066AC``     | Text color on elements using ``--color-info`` as background                               |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-info``                             | ``#0071ad``     | Element color to show info state, this should not be used for text                        |
+| ``--color-error-rgb``                        | ``219,6,6``     | (⚠️ deprecated since 32.0.0) RGB variant of ``--color-error``                             |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-info-rgb``                         | ``0,113,173``   | RGB variant of ``--color-info``                                                           |
+| ``--color-info-rgb``                         | ``0,113,173``   | (⚠️ deprecated since 32.0.0) RGB variant of ``--color-info``                              |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-info-hover``                       | ``#197fb5``     | Element color for hover effects of ``--color-info``                                       |
+| ``--color-success-rgb``                      | ``45,123,65``   | (⚠️ deprecated since 32.0.0) RGB variant of ``--color-success``                           |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-info-text``                        | ``#006499``     | Text color to show info state                                                             |
+| ``--color-warning-rgb``                      | ``163,114,0``   | (⚠️ deprecated since 32.0.0) RGB variant of ``--color-warning``                           |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
 
 Element structure variables
@@ -182,23 +198,21 @@ Element structure variables
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
 | ``--default-font-size``                      | ``15px``                                       | Font size for normal text                                                                                 |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
-| ``--default-line-height``                    | ``24px``                                       | Line height for normal text, for accessibility this should always be ``calc(1.5 * var(--font-size))``     |
+| ``--default-line-height``                    | ``1.5``                                        | Line height for normal text                                                                               |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
 | ``--default-grid-baseline``                  | ``4px``                                        | Foundation of all spacing sizes used on Nextcloud which are multiples of the baseline size                |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
-| ``--border-width-element``                   | ``1px``                                        | Border width for interactive elements such as text fields and selects                                     |
+| ``--border-width-input``                     | ``1px``                                        | Border width for interactive elements such as text fields and selects                                     |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
-| ``--border-width-element-focused``           | ``2px``                                        | Border width for interactive elements when focussed (adjusted for accessibility)                          |
+| ``--border-width-input-focused``             | ``2px``                                        | Border width for interactive elements when focussed (adjusted for accessibility)                          |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
-| ``--border-radius``                          | ``3px``                                        | Default border radius                                                                                     |
-+----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
-| ``--border-radius-large``                    | ``10px``                                       | Larger border radius                                                                                      |
-+----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
-| ``--border-radius-rounded``                  | ``28px``                                       | Even larger border radius for elements which should be look rounded                                       |
-+----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
-| ``--border-radius-pill``                     | ``calc(var(--default-clickable-area) / 2)``    | Border radius for pill-style elements                                                                     |
+| ``--border-radius-small``                    | ``4px``                                        | Border radius used for smaller elements                                                                   |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
 | ``--border-radius-element``                  | ``8px``                                        | Border radius of interactive elements such as buttons, input, navigation and list items.                  |
++----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+| ``--border-radius-container``                | ``12px``                                       | For smaller containers like action menus.                                                                 |
++----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+| ``--border-radius-container-large``          | ``16px``                                       | For larger containers like body or modals.                                                                |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
 | ``--default-clickable-area``                 | ``34px``                                       | Default size (width and height) for interactive elements like buttons                                     |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
@@ -214,7 +228,7 @@ Element structure variables
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
 | ``--navigation-width``                       | ``300px``                                      | Width of the in-app navigation sidebar                                                                    |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
-| ``--sidebar-min-width``                      | ``200px``                                      | Minimum width of the app sidebar on small screens                                                         |
+| ``--sidebar-min-width``                      | ``300px``                                      | Minimum width of the app sidebar on small screens                                                         |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
 | ``--sidebar-max-width``                      | ``500px``                                      | Maximum width of the app sidebar on wide screens                                                          |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
@@ -249,3 +263,46 @@ There are some predefined classes for public use to ease developing an applicati
 +----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``.inlineblock``                             | Make an element an inline block                                                                                                                |
 +----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+
+RTL guidelines
+==============
+
+Dos and Don'ts
+--------------
+
+.. list-table::
+   :header-rows: 1
+
+   * - Bad
+     - Good
+     - Description
+   * - Use physical properties ``margin-left``
+     - Use logical properties ``margin-inline-start``
+     - Using logical properties automatically adapts to LTR/RTL
+   * - Use ``left`` or ``right`` 
+     - Use inset-inline-start/end
+     - Keep positioning direction-aware 
+   * - Use text-align: left/right
+     - Use text-align: start/end
+     - Text aligns correctly in both modes
+   * - Use border-left/right
+     - Use border-inline-start/end
+     - Borders flip correctly
+   * - Use float: left/right
+     - Use float: inline-start/end
+     - Float respects direction
+   * - Assume RTL “just works”
+     - Test your app with RTL languages 
+     - Using the correct css value is not always enough to avoid bugs
+
+
+
+
+
+
+
+
+
+
+
+    

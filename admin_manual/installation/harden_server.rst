@@ -4,7 +4,7 @@ Hardening and security guidance
 
 Nextcloud aims to ship with secure defaults that do not need to get modified by 
 administrators. However, in some cases some additional security hardening can be 
-applied in scenarios were the administrator has complete control over 
+applied in scenarios where the administrator has complete control over 
 the Nextcloud instance. This page assumes that you run Nextcloud Server on Apache2 
 in a Linux environment.
 
@@ -188,7 +188,7 @@ This can be achieved with this kind of setting, usually using private IP ranges:
     '127.0.0.1/8',
     '192.168.0.0/16',
     'fd00::/8',
-  ]
+  ],
 
 All requests originating from IP addresses outside of these ranges will not be able to execute admin actions.
 
@@ -221,8 +221,6 @@ These include:
 
 - ``X-Content-Type-Options: nosniff``
 	- Instructs some browsers to not sniff the mimetype of files. This is used for example to prevent browsers from interpreting text files as JavaScript.
-- ``X-XSS-Protection: 1; mode=block``
-	- Instructs browsers to enable their browser side Cross-Site-Scripting filter.
 - ``X-Robots-Tag: noindex, nofollow``
 	- Instructs search machines to not index these pages and not follow any links there.
 - ``X-Frame-Options: SAMEORIGIN``
@@ -250,14 +248,16 @@ security headers are shipped.
 .. _Web TLS Profiler: https://tlsprofiler.danielfett.de/
 .. _RFC 4086 ("Randomness Requirements for Security"): https://tools.ietf.org/html/rfc4086#section-5.2
 
+.. _connections_to_remote_servers:
+
 Connections to remote servers
 -----------------------------
 
 Some functionalities require the Nextcloud server to be able to connect remote systems via https/443.
-This pragraph also includes the data which is being transmitted to the Nextcloud GmbH.
+This paragraph also includes the data which is being transmitted to the Nextcloud GmbH.
 Depending on your server setup, these are the possible connections:
 
-- nextcloud.com, startpage.com, eff.org, edri.org
+- connectivity.nextcloud.com, www.eff.org, edri.org
 	- `optional (config)`_
 	- for checking the internet connection
 - cloud.nextcloud.com
@@ -266,11 +266,13 @@ Depending on your server setup, these are the possible connections:
 - updates.nextcloud.com
 	- to check for available Nextcloud server updates
 	- submitted data: server version, subscription key, install time, instance id, instance size
-- apps.nextcloud.com
-	- to check for available apps and their updates 
+- apps.nextcloud.com, ltd[1-3].nextcloud.com, garm[1-5].nextcloud.com
+	- to check for available apps and their updates
+	- source is apps.nextcloud.com the ltd and garm servers are just mirroring the apps.json file
 	- submitted data: subscription key
-- github.com, objects.githubusercontent.com
+- github.com, objects.githubusercontent.com, release-assets.githubusercontent.com
 	- to download Nextcloud standard apps
+	- to download Nextcloud server releases
 - push-notifications.nextcloud.com
 	- sending push notifications to mobile clients
 	- submitted data: unique device identifier, public key, push token
@@ -285,10 +287,23 @@ Depending on your server setup, these are the possible connections:
 	- optional
 	- if the admin has agreed to share anonymized server data
 	- submitted data: statistical data. see here for the `detailed field list`_
+- nominatim.openstreetmap.org
+	- optional
+	- if the weather status app is enabled and used
+	- submitted data: address manually entered by the user to resolve to longitude and latitude
+- api.opentopodata.org
+	- optional
+	- if the weather status app is enabled and used
+	- submitted data: address manually entered by the user to resolve the altitude of the location
+- api.met.no
+	- optional
+	- if the weather status app is enabled and used
+	- submitted data: longitude and latitude configured in the weather status app by the individual user
 - Any remote Nextcloud server that is connected with federated sharing
+- When downloading apps from the App store other domains might be accessed, based on the choice of the app developers where they host the releases. For all official Nextcloud apps this is not the case though, because they are hosted on Github.
 
 .. _optional (config): https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#has-internet-connection
-.. _detailed field list : https://github.com/nextcloud/survey_client
+.. _detailed field list: https://github.com/nextcloud/survey_client
 
 
 Setup fail2ban
@@ -296,6 +311,26 @@ Setup fail2ban
 
 Exposing your server to the internet will inevitably lead to the exposure of the 
 services running on the internet-exposed ports to brute force login attempts.
+
+This guide will enable blocking of the originating IP addresses at an operating
+system level, so the webserver, PHP and the database do not need to handle this
+unnecessary traffic at all.
+
+Nextcloud prerequisites
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Nextcloud logs failed login attempts in ``nextcloud.log`` with log level ``2``,
+so you need to define a ``loglevel`` of ``2`` or less in ``config.php``.
+
+Make sure your ``nextcloud.log`` is writeable by your webserver user, possibly by
+defining a correct ``logfilemode`` in ``config.php``.
+
+Perform a bad login attempt and check whether it does get logged to ``nextcloud.log``.
+
+Note that ``audit.log`` (if enabled) currently only logs successful logins and cannot be used.
+
+Fail2ban introduction
+^^^^^^^^^^^^^^^^^^^^^
 
 Fail2ban is a service that uses iptables to automatically drop connections for a
 pre-defined amount of time from IPs that continuously failed to authenticate to 
@@ -351,5 +386,14 @@ Restart the fail2ban service. You can check the status of your Nextcloud jail by
 running::
 
   fail2ban-client status nextcloud
+
+If you need to unban certain IP addresses (``1.2.3.4`` in this example),
+you may do so by issuing::
+
+  fail2ban-client unban 1.2.3.4
+
+There may be scenarios where you want to more permanently ban certain IP
+addresses that repeatedly generate bad login attempts (or other attacks) by
+using fail2ban's ``recidive`` feature.
 
 .. _fail2ban download page: https://www.fail2ban.org/wiki/index.php/Downloads

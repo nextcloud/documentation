@@ -121,7 +121,7 @@ A local cache instance can be acquired through the ``\OCP\ICacheFactory`` servic
 
         public function getPicture(string $url): void {
             $cache = $this->cacheFactory->createLocal('my-app-pictures');
-            $cachedPicture = $this->cache->get($url);
+            $cachedPicture = $cache->get($url);
             if ($cachedPicture !== null) {
                 return $cachedPicture;
             }
@@ -157,7 +157,7 @@ A distributed cache instance can be acquired through the ``\OCP\ICacheFactory`` 
 
         public function getPicture(string $url): void {
             $cache = $this->cacheFactory->createDistributed('my-app-pictures');
-            $cachedPicture = $this->cache->get($url);
+            $cachedPicture = $cache->get($url);
             if ($cachedPicture !== null) {
                 return $cachedPicture;
             }
