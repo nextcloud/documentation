@@ -1,0 +1,75 @@
+name: "Build documentation index"
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    name: Build index.html
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Cache git metadata
+      uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+      with:
+        path: .git
+        key: git-metadata-${{ github.sha }}
+        restore-keys: |
+          git-metadata-${{ github.sha }}
+          git-metadata
+
+    - name: Checkout Github Pages branch
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      with:
+        fetch-depth: 0
+        token: ${{ github.event_name == 'push' && secrets.COMMAND_BOT_PAT || github.token }}
+
+    - name: Get stable branches
+      id: branch
+      run: |
+        branches=$(git ls-remote --heads origin "heads/stable[0-9][0-9]" | awk '{gsub(/^refs\/heads\/stable/, "", $2); print $2}' | sort -n -r | tr '\n' ' ')
+        echo "branches=$branches" >> $GITHUB_OUTPUT
+
+    - name: Setup php
+      uses: shivammathur/setup-php@accd6127cb78bee3e8082180cb391013d204ef9f # v2.37.0
+
+    - name: Generate index.html
+      run: |
+        php build/build-index.php ${{ steps.branch.outputs.branches }}
+        mv build/index.html /tmp/index.html
+        mv build/static/ /tmp/static/
+
+    - name: Verify index.html structure and links
+      run: |
+        # Temporarily put index.html in build folder for verification
+        cp /tmp/index.html build/index.html
+        php build/verify-index.php
+
+    - name: Switch to gh-pages branch
+      if: github.event_name == 'push'
+      run: |
+        git fetch origin gh-pages
+        git checkout gh-pages
+        git config --local user.email "nextcloud-command@users.noreply.github.com"
+        git config --local user.name "nextcloud-command"
+    
+    - name: Commit and push changes
+      if: github.event_name == 'push'
+      run: |
+        # Move the generated index.html and static files to the root of the gh-pages branch
+        rm -rf index.html static/
+        mv /tmp/index.html index.html
+        mv /tmp/static/ static/
+        git add index.html static/
+        git commit -m "chore: update index.html for documentation" || echo "No changes to commit"
+        git push origin gh-pages || echo "Nothing to push (expected if no changes)"
+      env:
+        GH_TOKEN: ${{ secrets.COMMAND_BOT_PAT }}

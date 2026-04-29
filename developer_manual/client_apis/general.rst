@@ -7,7 +7,7 @@ Nextcloud's APIs are mainly available through :ref:`rest-apis`, :ref:`OCS <ocsap
 Generic Errors
 --------------
 
-Additional to specific errors of an API, there are a few generic errors Nextcloud might throw on web APIs.
+In addition to specific errors of an API, there are a few generic errors Nextcloud might throw on web APIs.
 
 Maintenance Mode
 ****************

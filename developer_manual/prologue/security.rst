@@ -98,7 +98,7 @@ An even better way to make your app safer is to use the jQuery built-in function
 
   messageTd.text(username);
 
-It may also be wise to choose a proper JavaScript framework like AngularJS which automatically  handles the JavaScript escaping for you.
+It may also be wise to choose a proper JavaScript framework like Vue.js which automatically handles the JavaScript escaping for you.
 
 Clickjacking
 ------------

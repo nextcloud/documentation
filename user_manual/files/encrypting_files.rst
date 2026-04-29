@@ -1,8 +1,8 @@
-=============================================
-Encrypting your Nextcloud files on the server
-=============================================
+============================
+Using server-side encryption
+============================
 
-Nextcloud includes a server side Encryption app, and when it is enabled by
+Nextcloud includes a server-side encryption app, and when it is enabled by
 your Nextcloud administrator all of your Nextcloud data files are automatically
 encrypted on the server.
 Encryption is server-wide, so when it is enabled you cannot choose to keep your
@@ -37,16 +37,12 @@ The only way to disable encryption is to run the `"decrypt all"
 <https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label>`_
 script, which decrypts all files and disables encryption.
 
-.. TODO ON RELEASE: Update version number above on release
-
 Is it possible to disable encryption with the recovery key?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Yes, *if* every user uses the `file recovery key
 <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_, `"decrypt all"
 <https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label>`_ will use it to decrypt all files.
-
-.. TODO ON RELEASE: Update version number above on release
 
 Can encryption be disabled without the user's password?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -55,8 +51,6 @@ If you don't have the users password or `file recovery key
 <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_,
 then there is no way to decrypt all files. What's more, running it on login
 would be dangerous, because you would most likely run into timeouts.
-
-.. TODO ON RELEASE: Update version number above on release
 
 Is it planned to move this to the next user login or a background job?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -134,9 +128,6 @@ structures. These files are never encrypted:
 - Previews from the Files app.
 - The search index from the full text search app.
 - Third-party app data
-
-Only those files that are shared with third-party storage providers can
-be encrypted, the rest of the files may not be encrypted.
 
 Change private key password
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

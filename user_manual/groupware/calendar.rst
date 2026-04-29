@@ -43,12 +43,12 @@ Import a Calendar
 If you want to transfer your calendar and their respective events to your Nextcloud
 instance, importing is the best way to do so.
 
-.. figure:: images/calendar_settings_sidebar.png
-            :scale: 80%
+.. figure:: images/calendar_importing.png
+            :scale: 50%
 
 1. Click on the settings-icon labeled with ``Calendar settings`` at the bottom-left.
 
-2. After clicking on ``Import Calendar`` you can select one or more calendar files
+2. After clicking on ``Import Calendar``, found in the ``General`` section, you can select one or more calendar files
    from your local device to upload.
 
 3. Select a ``Calendar to import into``.
@@ -62,13 +62,12 @@ instance, importing is the best way to do so.
 Import an Event/Add .ics Event
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In many places, you can download event details as an .ics file, or via a button saying "ical", "Apple Calendar" or "Outlook".
-
+Individual events are often distributed as ``.ics`` files (sometimes via a button labelled "iCal", "Apple Calendar" or "Outlook"). You can import them into Nextcloud Calendar using the same import flow as a full calendar.
 
 1. Click on the settings-icon labeled with ``Calendar settings`` at the bottom-left.
 
-2. After clicking on ``Import calendar`` you can select one or more calendar files
-   from your local device to upload.
+2. After clicking on ``Import calendar`` you can select one or more ``.ics`` files
+   from your local device to upload. Single-event files are added to the calendar you select.
 
 3. Select a ``Calendar to import into``.
 
@@ -85,7 +84,7 @@ Sometimes you may want to change the color or the entire name of a previous
 imported or created calendar. You may also want to export it to your local
 hard drive or delete it forever.
 
-.. note:: Please keep in mind that deleting a calendar is a irreversible action.
+.. note:: Please keep in mind that deleting a calendar is an irreversible action.
           After deletion, there is no way of restoring the calendar unless you
           have a local backup.
 
@@ -108,8 +107,7 @@ always be free, regardless of an events' settings.
 Sharing calendars
 ~~~~~~~~~~~~~~~~~
 
-You may share your calendar with local users, groups or read-only with remote users on federated
-servers.
+You may share your calendar with local users, groups or with remote users on federated servers.
 
 .. figure:: images/calendar_sharing_1.png
 
@@ -118,6 +116,19 @@ Calendars may be shared with write access or read-only. When sharing a calendar 
 .. figure:: images/calendar_sharing_2.png
 
 .. note:: Calendar shares currently cannot be accepted or rejected. If you want to stop having a calendar that someone shared with you, you can click on the 3-dot menu next to the calendar in the calendar list and click on "Unshare from me". To restore a share, the calendar can be reshared again, either for the whole group, resetting all unshares, or for a single user.
+
+Federated calendar sharing
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 32.0.0
+.. versionchanged:: 33.0.0 Federated calendar shares support read/write access.
+
+Sharing a calendar with a user on another Nextcloud instance works just like sharing with a local user.
+The difference is that you need to use the federated user identifier as the recipient, which has the format
+``<username>@<instance>`` (e.g. ``alice@cloud.example.com``).
+
+Starting with Nextcloud 33, federated shares support full read/write access, allowing remote users to
+create, edit, and delete events in the shared calendar. In Nextcloud 32, federated shares were read-only.
 
 Publishing a calendar
 ~~~~~~~~~~~~~~~~~~~~~

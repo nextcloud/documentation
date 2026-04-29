@@ -33,8 +33,6 @@ configuration report with the :ref:`occ config command
 .. _FAQ page: https://help.nextcloud.com/t/how-to-faq-wiki
 .. _bugtracker: https://docs.nextcloud.com/server/latest/developer_manual/prologue/bugtracker/index.html
 
-.. TODO ON RELEASE: Update version number above on release
-
 General troubleshooting
 -----------------------
 
@@ -327,7 +325,7 @@ There are also several techniques to remedy this, which are described extensivel
 the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
 
 Troubleshooting sharing
------------------------------------
+-----------------------
 
 Users' Federated Cloud IDs not updated after a domain name change
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -377,32 +375,63 @@ Troubleshooting contacts & calendar
 Troubleshooting data-directory
 ------------------------------
 
-If you have a fresh install, consider reinstalling with your preferred directory location.
+Moving the data directory / changing the ``datadirectory`` path
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Unofficially moving the data directory can be done as follows:
+For local storage, Nextcloud identifies storage by its absolute path on disk.
+Ideally, the location of the data directory should not change after deployment. If
+this is a new installation, consider reinstalling with your preferred directory
+location before moving into production.
 
-1. Make sure no cron jobs are running
-2. Stop apache
-3. Move /data to the new location
-4. Change the config.php entry
-5. Edit the database: In oc_storages change the path on the local::/old-data-dir/ entry
-6. Ensure permissions are still correct
-7. Restart apache
+.. danger::
+   If you must change the ``datadirectory`` path -- unless the transition is handled
+   carefully -- Nextcloud will treat its content as "new storage." This can trigger
+   duplicate or orphaned files, lost file metadata, and the loss of previously shared
+   links.
+
+For safely moving the data directory, the recommended actions are:
+
+1. Make sure no cron jobs are running and, if using system cron, that the Nextcloud crontab entry is disabled.
+
+2. Stop web/app server(s).
+
+3. Move ``/data`` to the new location (ensure you also move hidden/dot files such as ``.ncdata``).
+
+4. Create a symlink from the original location to the new location.
+
+5. Ensure permissions are still correct (including for any parent folders).
+
+6. Restart web/app server(s).
+
+7. Re-enable Nextcloud's system crontab entry (if applicable).
+
+.. note::
+   You may need to configure your web server to support symlinks.
+
+It is also possible to move the data directory without using symlinks, but
+this requires manually modifying the internal ``oc_storages`` database table:
+
+1. Make sure no cron jobs are running and, if using system cron, that the Nextcloud crontab entry is disabled.
+
+2. Stop web/app server(s).
+
+3. Move ``/data`` to the new location (ensure you also move hidden/dot files such as ``.ncdata``).
+
+4. Update the value of ``datadirectory`` in your ``config.php``.
+
+5. Edit the database: In the ``oc_storages`` table, update the path portion of the ``id`` field of the entry
+   beginning with ``local::/old-data-dir/`` (e.g., change ``local::/old-data-dir/`` to ``local::/new-data-dir/``).
+
+6. Ensure permissions are still correct (including for any parent folders).
+
+7. Restart web/app server(s).
+
+8. Re-enable Nextcloud's system crontab entry (if applicable).
 
 .. warning::
-   However this is not supported and you risk breaking your database.
-
-For a safe moving of data directory, supported by Nextcloud, recommended actions are:
-
-1. Make sure no cron jobs are running
-2. Stop apache
-3. Move /data to the new location
-4. Create a symlink from the original location to the new location
-5. Ensure permissions are still correct
-6. Restart apache
-
-.. warning::
-   Note, you may need to configure your webserver to support symlinks.
+   This method is not supported and you risk breaking your database. Always make sure you
+   have up-to-date backups -- including your database -- and a working (tested) restore
+   process **before** attempting this.
 
 Troubleshooting quota or size issues
 ------------------------------------
@@ -414,8 +443,6 @@ does not match the actual data stored in the user's ``data/$userId/files`` direc
 
    Metadata, versions, trashbin and encryption keys are not counted in the used space above.
    Please refer to the `quota documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/quota.html>`_ for details.
-
-.. TODO ON RELEASE: Update version number above on release
 
 Running the following command can help fix the sizes and quota for a given user::
 
@@ -429,59 +456,11 @@ You can run the following SQL query to reset those after **backing up the databa
 
  UPDATE oc_filecache SET unencrypted_size=0 WHERE encrypted=0; 
 
-Troubleshooting downloading or decrypting files
------------------------------------------------
+Troubleshooting encrypted files
+-------------------------------
 
-Bad signature error
-^^^^^^^^^^^^^^^^^^^
-
-In some rare cases it can happen that encrypted files cannot be downloaded
-and return a "500 Internal Server Error". If the Nextcloud log contains an error about
-"Bad Signature", then the following command can be used to repair affected files::
-
- occ encryption:fix-encrypted-version userId --path=/path/to/broken/file.txt
-
-Replace "userId" and the path accordingly.
-The command will do a test decryption for all files and automatically repair the ones with a signature error.
-
-.. _troubleshooting_encryption_key_not_found:
-
-Encryption key cannot be found
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If the logs contain an error stating that the encryption key cannot be found, you can manually search the data directory for a folder that has the same name as the file name.
-For example if a file "example.md" cannot be decrypted, run::
-
-    find path/to/datadir -name example.md -type d
-
-Then check the results located in the ``files_encryption`` folder.
-If the key folder is in the wrong location, you can move it to the correct folder and try again.
-
-The ``data/files_encryption`` folder contains encryption keys for group folders and system-wide external storages
-while ``data/$userid/files_encryption`` contains the keys for specific user storage files.
-
-.. note::
-
-   This can happen if encryption was disabled at some point but the :ref:`occ command for decrypt-all<occ_disable_encryption_label>` was not run, and
-   then someone moved the files to another location. Since encryption was disabled, the keys did not get moved.
-
-Encryption key cannot be found with external storage or group folders
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To resolve this issue, please run the following command::
-
-    sudo -E -u www-data php occ encryption:fix-key-location <user-id>
-
-This will attempt to recover keys that were not moved properly.
-
-If this doesn't resolve the problem, please refer to the section :ref:`Encryption key cannot be found<troubleshooting_encryption_key_not_found>` for a manual procedure.
-
-.. note::
-
-   There were two known issues where:
-
-   - moving files between an encrypted and non-encrypted storage like external storage or group folder `would not move the keys with the files <https://github.com/nextcloud/groupfolders/issues/1896>`_.
-   - putting files on system-wide external storage would store the keys in the `wrong location <https://github.com/nextcloud/server/pull/32690>`_.
+.. tip::
+  Please also refer to the troubleshooting section in the encryption chapter: :doc:`../configuration_files/encryption_configuration`.
 
 Fair Use Policy
 ---------------

@@ -14,7 +14,7 @@ Consuming the Task Processing API
 To consume the  Task Processing API, you will need to :ref:`inject<dependency-injection>` ``\OCP\TaskProcessing\IManager``. This manager offers the following methods:
 
  * ``hasProviders()`` This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the TextProcessing feature.
- * ``getAvailableTaskTypes(bool $showDisabled = false)`` This method returns an array of enabled task types indexed by their ID with their names and additional metadata. If you set ``$showdisabled`` to ``true`` (available since NC31), it will include disabled task types.
+ * ``getAvailableTaskTypes(bool $showDisabled = false)`` This method returns an array of enabled task types indexed by their ID with their names and additional metadata. If you set ``$showdisabled`` to ``true`` (available since NC31), it will include disabled task types. Since NC33 this will also include the ``isInternal`` field that signifies whether the task type is user-facing or intended for internal use only.
  * ``getAvailableTaskTypeIds()`` This method (available since NC32) returns a list of available task type IDs. It uses the same logic as ``getAvailableTaskTypes()`` but is faster because it does not compute the task types metadata (which can be slow when getting default field values or multiselect value lists). If you just want to check if a feature is available, prefer using this method rather than ``getAvailableTaskTypes()``.
  * ``scheduleTask(Task $task)`` This method provides the actual scheduling functionality. The task is defined using the Task class. This method runs the task asynchronously in a background job.
  * ``getTask(int $id)`` This method fetches a task specified by its id.
@@ -128,6 +128,11 @@ The following built-in task types are available:
          * ``images``: ``ListOfImages``
       * Output shape:
          * ``output``: ``Text``
+ * ``'core:image2text:ocr'``: This task type is for extracting text from files using OCR. It is implemented by ``\OCP\TaskProcessing\TaskTypes\ImageToTextOpticalCharacterRecognition``
+      * Input shape:
+         * ``input``: ``ListOfFiles``
+      * Output shape:
+         * ``output``: ``ListOfTexts``
 
 
 
@@ -241,6 +246,11 @@ The task class objects have the following methods available:
  * ``setWebhookMethod()`` This sets the HTTP method that will be used for the webhook when the task execution has ended
  * ``getWebhookUri()`` This returns the webhook URI that will be notified when the task execution has ended
  * ``getWebhookMethod()`` This returns the HTTP method that will be used for the webhook when the task execution has ended
+
+
+.. versionadded:: 33.0.0
+
+ * ``getUserFacingErrorMessage()`` This returns any error message that is meant to be displayed to the user, even if a task has failed, this is not guaranteed to be set.
 
 You could now schedule the task as follows:
 
@@ -400,7 +410,10 @@ A **Task processing provider** will usually be a class that implements the inter
 
 The method ``getName`` returns a string to identify the registered provider in the user interface.
 
-The method ``process`` implements the task processing step. In case execution fails for some reason, you should throw a ``\OCP\TaskProcessing\Exception\ProcessingException`` with an explanatory error message. Important to note here is that ``Image``, ``Audio``, ``Video`` and ``File`` slots in the input array will be filled with ``\OCP\Files\File`` objects for your convenience. When outputting one of these you should simply return a string, the API will turn the data into a proper file for convenience. The ``$reportProgress`` parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (``true``) or if it was cancelled (``false``) and processing should be terminated.
+The method ``process`` implements the task processing step. In case execution fails for some reason, you should throw a ``\OCP\TaskProcessing\Exception\ProcessingException`` with an explanatory error message.
+Since v33.0.0 you can now also throw an ``OCP\TaskProcessing\Exception\UserFacingProcessingException`` which includes a string parameter to set for error messages that will be propagated to the end-user, make sure to always translate these into the language of the user that requested the task. The rule of thumb of when to use a user-facing error message, is as follows: When the error happened due to a mistake from the user or the user can do something to fix the error, throw a user facing error. However, do make sure to not include implementation or server details in the user facing error message, that's what the normal error message is for; it will only be visible to administrators.
+
+Important to note here is that ``Image``, ``Audio``, ``Video`` and ``File`` slots in the input array will be filled with ``\OCP\Files\File`` objects for your convenience. When outputting one of these you should simply return a string, the API will turn the data into a proper file for convenience. The ``$reportProgress`` parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (``true``) or if it was cancelled (``false``) and processing should be terminated.
 
 This class would typically be saved into a file in ``lib/TaskProcessing`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
 
@@ -529,6 +542,28 @@ If you would like to implement providers that handle additional task types, you 
     		];
     	}
     }
+
+Internal task types
+###################
+
+.. versionadded:: 33.0.0
+
+Other apps and clients will assume that task types are user-facing and will display them on the frontend. If your custom
+task types are not intended to be shown to users, you should implement the ``IInternalTaskType`` interface instead. This will
+make sure that other apps and clients know not to show your custom task type to end users.
+
+
+Triggerable providers
+^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 33.0.0
+
+Synchronous providers are executed automatically by a background job that will usually be targeted by a worker to make sure
+that it runs almost instantly. ExApps on the other hand used to have to poll the server for new tasks. Since the introduction of triggerable
+providers ExApps are now notified immediately of new tasks when they are scheduled. This is implemented via the ``ITriggerableProvider`` interface,
+which adds an additional ``trigger(): void`` method to the provider interface which is called when a new task is scheduled for this provider and
+there are no running tasks for it at the moment. Usually if you implement a provider in PHP you will not have to deal with this interface but it is documented
+here for completeness.
 
 Provider and task type registration
 -----------------------------------

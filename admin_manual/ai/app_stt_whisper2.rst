@@ -4,13 +4,13 @@ App: Local Whisper Speech-To-Text (stt_whisper2)
 
 .. _ai-app-stt_whisper2:
 
-The *stt_whisper2* app is one of the apps that provide Speech-To-Text functionality in Nextcloud and act as a media transcription backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`, the *talk* app and :ref:`other apps making use of the core Translation API<stt-consumer-apps>`. The *stt_whisper2* app specifically runs only open source models and does so entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
+The *stt_whisper2* app is one of the apps that provide Speech-To-Text functionality in Nextcloud and act as a media transcription backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`, the *talk* app and :ref:`other apps making use of the core Speech-To-Text API<stt-consumer-apps>`. The *stt_whisper2* app specifically runs only open source models and does so entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
 This app supports input and output in languages other than English if the underlying model supports the language.
 
 This app uses `faster-whisper <https://github.com/SYSTRAN/faster-whisper>`_ under the hood. Output quality will differ depending on which model you use, we recommend the following models:
 
- * OpenAI Whisper large-v2 or v3 (multilingual)
+ * OpenAI Whisper large v3 turbo (multilingual)
  * OpenAI Whisper medium.en (English only)
 
 Whisper large v3 supports about ~100 languages and shows outstanding performance in ~10 of them. For more details see the `OpenAI Whisper paper <https://cdn.openai.com/papers/whisper.pdf>`_

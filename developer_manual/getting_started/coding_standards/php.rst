@@ -41,7 +41,7 @@ Use *UpperCamelCase* for Objects, *lowerCamelCase* for functions and variables. 
 a default function/method parameter, do not use spaces. Do not prepend private
 class members with underscores.
 
-.. code-block:: javascript
+.. code-block:: php
 
   class MyClass {
 

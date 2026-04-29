@@ -4,7 +4,7 @@ Hardening and security guidance
 
 Nextcloud aims to ship with secure defaults that do not need to get modified by 
 administrators. However, in some cases some additional security hardening can be 
-applied in scenarios were the administrator has complete control over 
+applied in scenarios where the administrator has complete control over 
 the Nextcloud instance. This page assumes that you run Nextcloud Server on Apache2 
 in a Linux environment.
 
@@ -287,13 +287,23 @@ Depending on your server setup, these are the possible connections:
 	- optional
 	- if the admin has agreed to share anonymized server data
 	- submitted data: statistical data. see here for the `detailed field list`_
+- nominatim.openstreetmap.org
+	- optional
+	- if the weather status app is enabled and used
+	- submitted data: address manually entered by the user to resolve to longitude and latitude
+- api.opentopodata.org
+	- optional
+	- if the weather status app is enabled and used
+	- submitted data: address manually entered by the user to resolve the altitude of the location
+- api.met.no
+	- optional
+	- if the weather status app is enabled and used
+	- submitted data: longitude and latitude configured in the weather status app by the individual user
 - Any remote Nextcloud server that is connected with federated sharing
 - When downloading apps from the App store other domains might be accessed, based on the choice of the app developers where they host the releases. For all official Nextcloud apps this is not the case though, because they are hosted on Github.
 
 .. _optional (config): https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#has-internet-connection
-.. _detailed field list : https://github.com/nextcloud/survey_client
-
-.. TODO ON RELEASE: Update version number above on release
+.. _detailed field list: https://github.com/nextcloud/survey_client
 
 
 Setup fail2ban
@@ -382,7 +392,7 @@ you may do so by issuing::
 
   fail2ban-client unban 1.2.3.4
 
-There may be scenarios where you want to more permantently ban certain IP
+There may be scenarios where you want to more permanently ban certain IP
 addresses that repeatedly generate bad login attempts (or other attacks) by
 using fail2ban's ``recidive`` feature.
 

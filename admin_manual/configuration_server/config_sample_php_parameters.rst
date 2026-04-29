@@ -904,6 +904,35 @@ Whether the rate limit protection shipped with Nextcloud should be enabled or no
 
 Defaults to ``true``
 
+ratelimit_overwrite
+^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'ratelimit_overwrite' => [
+			'profile.profilepage.index' => [
+				'user' => ['limit' => 300, 'period' => 3600],
+				'anon' => ['limit' => 1, 'period' => 300],
+			]
+		],
+
+Overwrite the individual rate limit for a specific route
+
+From time to time it can be necessary to extend the rate limit of a specific route,
+depending on your usage pattern or when you script some actions.
+Instead of completely disabling the rate limit or excluding an IP address from the
+rate limit, the following config allows to overwrite the rate limit duration and period.
+
+The first level key is the name of the route. You can find the route name from a URL
+using the ``occ router:list`` command of your server.
+
+You can also specify different limits for logged-in users with the ``user`` key
+and not-logged-in users with the ``anon`` key. However, if there is no specific ``user`` limit,
+the ``anon`` limit is also applied for logged-in users.
+
+Defaults to empty array ``[]``
+
 security.ipv6_normalized_subnet_size
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1412,6 +1441,22 @@ allow_local_remote_servers
 	'allow_local_remote_servers' => true,
 
 Allow remote servers with local addresses, e.g., in federated shares, webcal services, and more
+
+Defaults to ``false``
+
+http_client_add_user_agent_url
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'http_client_add_user_agent_url' => false,
+
+Add the URL of the Nextcloud server in User-Agent headers HTTP calls.
+
+This helps service providers identifying calls from your server,
+which can be helpful for them, but can be a privacy issue on small
+Nextcloud servers.
 
 Defaults to ``false``
 
@@ -2130,7 +2175,8 @@ Activities in Team Folders and External Storages.
 By default, activities in team folders or external storages are only generated
 for the current user. This is due to a limitations in current implementations.
 This config flag makes activities in group folders and external storages work
-like in normal shares (when set to ``true``).
+like in normal shares (when set to ``true``). Setting this flag does not allow
+past activities to be displayed (no retroactivity).
 
 
 
@@ -2425,15 +2471,16 @@ enabledPreviewProviders
 ::
 
 	'enabledPreviewProviders' => [
-			'OC\Preview\BMP',
-			'OC\Preview\GIF',
-			'OC\Preview\JPEG',
-			'OC\Preview\Krita',
-			'OC\Preview\MarkDown',
-			'OC\Preview\OpenDocument',
 			'OC\Preview\PNG',
-			'OC\Preview\TXT',
+			'OC\Preview\JPEG',
+			'OC\Preview\GIF',
+			'OC\Preview\BMP',
 			'OC\Preview\XBitmap',
+			'OC\Preview\Krita',
+			'OC\Preview\WebP',
+			'OC\Preview\MarkDown',
+			'OC\Preview\TXT',
+			'OC\Preview\OpenDocument',
 		],
 
 Only register providers that have been explicitly enabled
@@ -2445,29 +2492,36 @@ concerns:
  - ``OC\Preview\Font``
  - ``OC\Preview\HEIC``
  - ``OC\Preview\Illustrator``
+ - ``OC\Preview\Movie``
  - ``OC\Preview\MP3``
  - ``OC\Preview\MSOffice2003``
  - ``OC\Preview\MSOffice2007``
  - ``OC\Preview\MSOfficeDoc``
- - ``OC\Preview\Movie``
  - ``OC\Preview\PDF``
  - ``OC\Preview\Photoshop``
  - ``OC\Preview\Postscript``
- - ``OC\Preview\SVG``
+ - ``OC\Preview\SGI``
  - ``OC\Preview\StarOffice``
+ - ``OC\Preview\SVG``
+ - ``OC\Preview\TGA``
  - ``OC\Preview\TIFF``
+
+The following providers are disabled by default, because they provide an alternative to the built-in providers:
+  - ``OC\Preview\Imaginary``
+  - ``OC\Preview\ImaginaryPDF``
 
 Defaults to the following providers:
 
- - ``OC\Preview\BMP``
- - ``OC\Preview\GIF``
- - ``OC\Preview\JPEG``
- - ``OC\Preview\Krita``
- - ``OC\Preview\MarkDown``
- - ``OC\Preview\OpenDocument``
  - ``OC\Preview\PNG``
- - ``OC\Preview\TXT``
+ - ``OC\Preview\JPEG``
+ - ``OC\Preview\GIF``
+ - ``OC\Preview\BMP``
  - ``OC\Preview\XBitmap``
+ - ``OC\Preview\Krita``
+ - ``OC\Preview\WebP``
+ - ``OC\Preview\MarkDown``
+ - ``OC\Preview\TXT``
+ - ``OC\Preview\OpenDocument``
 
 metadata_max_filesize
 ^^^^^^^^^^^^^^^^^^^^^
@@ -2694,6 +2748,21 @@ Memory caching backend for distributed data
 * If unset, defaults to the value of memcache.local
 
 Defaults to ``none``
+
+memcache_customprefix
+^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'memcache_customprefix' => 'mycustomprefix',
+
+Cache Key Prefix for Redis or Memcached
+
+* Used for avoiding collisions in the cache system
+* May be used for ACL restrictions in Redis
+
+Defaults to ``''`` (empty string)
 
 redis
 ^^^^^
@@ -2962,6 +3031,36 @@ objectstore
 		],
 
 To use Swift V3
+
+objectstore
+^^^^^^^^^^^
+
+
+::
+
+	'objectstore' => [
+			'class' => 'OC\\Files\\ObjectStore\\S3',
+			'arguments' => [
+				'bucket' => 'nextcloud',
+				'key' => 'your-access-key',
+				'secret' => 'your-secret-key',
+				'hostname' => 's3.example.com',
+				'port' => 443,
+				'use_ssl' => true,
+				'region' => 'us-east-1',
+				// optional: Maximum number of retry attempts for failed S3 requests
+				// Default: 5
+				'retriesMaxAttempts' => 5,
+				// Data Integrity Protections for Amazon S3 (https://docs.aws.amazon.com/sdkref/latest/guide/feature-dataintegrity.html)
+				// Valid values are "when_required" (default) and "when_supported".
+				// To ensure compatibility with 3rd party S3 implementations, Nextcloud disables it by default. However, if you are
+				// using Amazon S3 (or any other implementation that supports it) we recommend enabling it by using "when_supported".
+				'request_checksum_calculation' => 'when_required',
+				'response_checksum_validation' => 'when_required',
+			],
+		],
+
+To use S3 object storage
 
 objectstore.multibucket.preview-distribution
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3555,7 +3654,7 @@ minimum.supported.desktop.version
 
 ::
 
-	'minimum.supported.desktop.version' => '3.1.0',
+	'minimum.supported.desktop.version' => '3.2.50',
 
 Specify the minimum Nextcloud desktop client version allowed to sync with this
 server. Connections from earlier clients will be denied. Defaults to the
@@ -3564,7 +3663,7 @@ minimum officially supported version at the time of this server release.
 Changing this may cause older, unsupported clients to malfunction, potentially
 leading to data loss or unexpected behavior.
 
-Defaults to ``3.1.0``
+Defaults to ``3.2.50``
 
 maximum.supported.desktop.version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3694,24 +3793,24 @@ part_file_in_storage
 
 	'part_file_in_storage' => true,
 
-Store part files created during upload in the same storage as the upload
-target. Setting this to false stores part files in the root of the user's
-folder, which may be necessary for external storage with limited rename
-capabilities.
+Control where temporary ".part" files are written during direct (non-chunked)
+uploads.
 
-Defaults to ``true``
+While an upload is in progress, Nextcloud writes data to a temporary ".part"
+file and renames it to the final filename when the upload completes.
 
-mount_file
-^^^^^^^^^^
+- true: create the temporary ".part" file in the destination storage/path.
+  This typically avoids cross-storage moves and can improve reliability and
+  performance on backends where rename within the same storage is cheap/atomic.
+- false: create the temporary ".part" file in the user's root folder first.
+  This may help with some external storages that have limited rename/move
+  behavior, but can add extra copy/move overhead.
 
+Note: This setting applies to direct (non-chunked) uploads only. Chunked/
+resumable uploads use a separate uploads staging mechanism and are not
+controlled by this option.
 
-::
-
-	'mount_file' => '/var/www/nextcloud/data/mount.json',
-
-Specify the location of the ``mount.json`` file.
-
-Defaults to ``data/mount.json`` in the Nextcloud directory.
+Defaults to ``true``.
 
 filesystem_cache_readonly
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3721,10 +3820,31 @@ filesystem_cache_readonly
 
 	'filesystem_cache_readonly' => false,
 
-Prevent Nextcloud from updating the cache due to filesystem changes for all
-storage.
+Read-only mode for scan/detection reconciliation writes to filecache.
 
-Defaults to ``false``
+When true, Nextcloud does not store filecache metadata changes that are
+identified through scanner/change-detection reconciliation paths (global:
+all storages).
+
+Scope note:
+
+- Nextcloud-originated operations (UI/WebDAV/clients) are generally
+  handled through normal application write paths and thus will still
+  update filecache even when this is set to true.
+- Reconciliation/refresh paths are prevented from writing back discovered
+  metadata deltas while this is enabled.
+
+Practical effect:
+
+- Changes made directly on storage outside Nextcloud are generally not
+  reflected while enabled.
+- Some metadata-dependent behavior can appear stale until this parameter
+  is disabled (permitting reconciliation writes again).
+
+Warning: This is an expert/global setting for specialized environments and
+is intentionally not default-safe for general deployments.
+
+Defaults to ``false``.
 
 trusted_proxies
 ^^^^^^^^^^^^^^^
@@ -3918,6 +4038,18 @@ Changing or deleting this value may cause connected clients to stall until
 conflicts are resolved.
 
 Defaults to ``''`` (empty string)
+
+configfilemode
+^^^^^^^^^^^^^^
+
+
+::
+
+	'configfilemode' => 0640,
+
+config.php file mode in octal notation.
+
+Defaults to ``0640`` (writable by user, readable by group).
 
 copied_sample_config
 ^^^^^^^^^^^^^^^^^^^^
@@ -4201,9 +4333,23 @@ profile.enabled
 
 	'profile.enabled' => true,
 
-Enable profiling globally.
+Toggle availability of user profiles.
 
-Defaults to ``true``
+User profile pages contain information that can be shared with other users,
+such as full name, phone number, organization, role, and similar fields.
+
+Profiles are enabled by default, and profile data may be used by other
+features (for example, the system address book).
+
+Profile visibility is layered: what is shared depends on a combination of
+system-wide and account-level privacy controls, and each field's visibility
+can be configured.
+
+When set to false, profile functionality is disabled instance-wide.
+
+Note: This affects user account profiles, not the developer performance profiler.
+
+Defaults to `true`
 
 account_manager.default_property_scope
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4333,7 +4479,7 @@ files.chunked_upload.max_parallel_count
 
 Maximum number of chunks uploaded in parallel during chunked uploads. Higher
 counts increase throughput but consume more server resources, with diminishing
-returns.
+returns. Value must be a positive integer.
 
 Defaults to ``5``
 
@@ -4362,6 +4508,69 @@ Enable PHP 8.4 lazy objects for Dependency Injection to improve performance by
 avoiding instantiation of unused objects.
 
 Defaults to ``true``
+
+default_certificates_bundle_path
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'default_certificates_bundle_path' => \OC::$SERVERROOT . '/resources/config/ca-bundle.crt',
+
+Change the default certificates bundle used for trusting certificates.
+
+Nextcloud ships its own up-to-date certificates bundle, but in certain cases admins may wish to specify a different bundle, for example the one shipped by their distro.
+
+Defaults to `\\OC::$SERVERROOT . '/resources/config/ca-bundle.crt'`.
+
+openmetrics_skipped_classes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'openmetrics_skipped_classes' => [
+			'OC\OpenMetrics\Exporters\FilesByType',
+			'OCA\Files_Sharing\OpenMetrics\SharesCount',
+		],
+
+OpenMetrics skipped exporters
+Allows to skip some exporters in the OpenMetrics endpoint ``/metrics``.
+
+Default to ``[]`` (empty array)
+
+openmetrics_allowed_clients
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'openmetrics_allowed_clients' => [
+			'192.168.0.0/16',
+			'fe80::/10',
+			'10.0.0.1',
+		],
+
+OpenMetrics allowed client IP addresses
+Restricts the IP addresses able to make requests on the ``/metrics`` endpoint.
+
+Keep this list as restrictive as possible as metrics can consume a lot of resources.
+
+Default to ``[127.0.0.0/16', '::1/128]`` (allow loopback interface only)
+
+preview_expiration_days
+^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'preview_expiration_days' => 0,
+
+Delete previews older than a certain number of days to reduce storage usage.
+
+Less than one day is not allowed, so set it to 0 to disable the deletion.
+
+Defaults to ``0``.
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.

@@ -76,7 +76,12 @@ If Nextcloud is installed in a subdirectory called "nextcloud"::
    URL of your Nextcloud server (omit the directory part if the installation is
    in the root of your domain), and **USERNAME** with the username of the connecting user.
 
-   See the WebDAV URL (bottom left in settings) on your Nextcloud.
+   See the WebDAV URL, to be found in Files Settings -> WebDAV in the Files on your Nextcloud account.
+
+   .. image:: ../images/webdav_link.png
+    :alt: Screenshot of the Files settings showing the personal WebDAV link
+
+
 
 
 Accessing files using Linux
@@ -87,8 +92,7 @@ You can access files in Linux operating systems using the following methods.
 Nautilus file manager
 ^^^^^^^^^^^^^^^^^^^^^
 
-**When you configure your Nextcloud account in the** `GNOME Control Center
-<../groupware/sync_gnome.html>`_, **your files will automatically be mounted
+**When you configure your Nextcloud account in the** :doc:`GNOME Control Center <../groupware/sync_gnome>`, **your files will automatically be mounted
 by Nautilus as a WebDAV share, unless you deselect file access**.
 
 You can also mount your Nextcloud files manually. Use the ``davs://``
@@ -141,6 +145,9 @@ automatically every time you log in to your Linux computer.
 #. Add yourself to the ``davfs2`` group::
 
     usermod -aG davfs2 <username>
+
+.. note::
+	If the davfs2 group doesn't exist after installing the package, you may need to create it yourself and, possibly, adjust the davfs config file to use the group after you've created it.
 
 #. Then create a ``nextcloud`` directory in your home directory for the
    mount point, and ``.davfs2/`` for your personal configuration file::
@@ -217,9 +224,7 @@ path of your certificate as in this example::
 Accessing files using macOS
 ---------------------------
 
-.. note:: The macOS Finder suffers from a `series of implementation problems <http://sabre.io/dav/clients/finder/>`_ and should only be used if the Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like `Cyberduck <https://cyberduck.io/>`_ (see instructions `here <https://docs.nextcloud.com/server/latest/user_manual/files/access_webdav.html#accessing-files-using-cyberduck>`_) and `Filezilla <https://filezilla-project.org>`_. Commercial clients include `Mountain Duck <https://mountainduck.io/>`_, `Forklift <https://binarynights.com/>`_, `Transmit <https://panic.com/>`_, and `Commander One <https://mac.eltima.com/>`_.
-
-.. TODO ON RELEASE: Update version number above on release
+.. note:: The macOS Finder suffers from a `series of implementation problems <http://sabre.io/dav/clients/finder/>`_ and should only be used if the Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like `Cyberduck <https://cyberduck.io/>`_ (see instructions `here <#accessing-files-using-cyberduck>`_) and `Filezilla <https://filezilla-project.org>`_. Commercial clients include `Mountain Duck <https://mountainduck.io/>`_, `Forklift <https://binarynights.com/>`_, `Transmit <https://panic.com/>`_, and `Commander One <https://mac.eltima.com/>`_.
 
 To access files through the macOS Finder:
 
