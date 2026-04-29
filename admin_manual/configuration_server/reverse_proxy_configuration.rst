@@ -165,26 +165,25 @@ Thanks to `@JeffMatson <https://github.com/JeffMatson>`_ for Pomerium example.
 Example
 -------
 
-Multiple domains reverse SSL proxy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Nextcloud behind a reverse proxy (subdirectory)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you want to access your Nextcloud installation **http://domain.tld/nextcloud**
-via a multiple domains reverse SSL proxy
-**https://ssl-proxy.tld/domain.tld/nextcloud** with the IP address **10.0.0.1**
-you can set the following parameters inside the :file:`config/config.php`.
+If your Nextcloud is served at a subdirectory, for example
+**https://example.com/nextcloud**, behind a reverse proxy with IP address
+**10.0.0.1** that terminates TLS, set the following parameters inside
+:file:`config/config.php`:
 
 ::
 
   <?php
   $CONFIG = array (
     'trusted_proxies'   => ['10.0.0.1'],
-    'overwritehost'     => 'ssl-proxy.tld',
     'overwriteprotocol' => 'https',
-    'overwritewebroot'  => '/domain.tld/nextcloud',
-    'overwritecondaddr' => '^10\.0\.0\.1$',
-    'overwrite.cli.url' => 'https://domain.tld/',
+    'overwritewebroot'  => '/nextcloud',
+    'overwrite.cli.url' => 'https://example.com/nextcloud',
   );
 
-.. note:: If you want to use the SSL proxy during installation you have to
-  create the :file:`config/config.php` otherwise you have to extend the existing
-  **$CONFIG** array.
+.. note:: ``overwritehost`` is not needed in most setups — Nextcloud will read
+  the hostname from the ``Host`` header forwarded by the proxy. Only set it if
+  you need to force a specific hostname regardless of the incoming request.
+  Leave any parameter unset or empty to keep the automatic detection.
