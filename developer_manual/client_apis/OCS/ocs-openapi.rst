@@ -698,7 +698,7 @@ How to expose Capabilities
 --------------------------
 
 Imagine we take the same Todo app of the previous example and want to expose some capabilities to let clients know what they can expect.
-First, you should create your `Capabilities` in the `lib/AppInfo` folder :
+First, you should create your `Capabilities` in the `lib` folder :
 
 .. code-block:: php
 
