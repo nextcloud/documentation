@@ -319,10 +319,6 @@ By enabling the **admin_audit** app, additional information about various
 events can be logged. The audit log supports all of the logging backends
 described above (file, syslog, systemd, errorlog).
 
-.. note::
-	Detailed documentation on auditable events for enterprises can be found in the Nextcloud GmbH
-	`customer portal <https://portal.nextcloud.com/article/using-the-audit-log-44.html>`_.
-
 Default audit log location
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
