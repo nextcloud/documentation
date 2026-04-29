@@ -741,6 +741,7 @@ You must register your `Capabilities` in the `lib/AppInfo/Application.php` file 
 
     namespace OCA\Todo\AppInfo;
 
+    use OCA\Todo\Capabilities;
     use OCP\AppFramework\Bootstrap\IBootstrap;
 
     class Application extends App implements IBootstrap {
