@@ -161,6 +161,11 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:password<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/ocs/v1.php/...&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span>
 </pre></div>
 </div>
+<p>You can change the response type of your request by adding an Accept header. For example, if you prefer JSON responses:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:password<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/ocs/v1.php/...&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span>
+</pre></div>
+</div>
+<p>Adding the Accept header also ensures consistency of your responses, since some legacy OCS requests return XML as their default response, while newer requests return JSON.</p>
 </section>
 <section id="user-metadata">
 <h2>User metadata<a class="headerlink" href="#user-metadata" title="Link to this heading"></a></h2>
@@ -365,7 +370,7 @@ results to users that are actually in the current chat conversation.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Apr 28, 2026.
+      <span class="lastupdated">Last updated on Apr 29, 2026.
       </span></p>
   </div>
 

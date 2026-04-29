@@ -72,7 +72,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#casting-parameters">Casting parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#json-parameters">JSON parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#reading-headers-files-cookies-and-environment-variables">Reading headers, files, cookies and environment variables</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reading-and-writing-session-variables">Reading and writing session variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sessions-and-session-variables">Sessions and session variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#setting-cookies">Setting cookies</a></li>
 </ul>
 </li>
@@ -348,76 +348,116 @@ will resolve your controller and its dependencies automatically.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Why should those values be accessed from the request object and not from the global array like $_FILES? Simple: <a class="reference external" href="http://c2.com/cgi/wiki?GlobalVariablesAreBad">because it’s bad practice</a> and will make testing harder.</p>
+<p>Why should those values be accessed from the request object and not from the global array like $_FILES? Simple:
+<a class="reference external" href="http://c2.com/cgi/wiki?GlobalVariablesAreBad">because it’s bad practice</a> and will make testing harder.</p>
 </section>
-<section id="reading-and-writing-session-variables">
-<span id="controller-use-session"></span><h3>Reading and writing session variables<a class="headerlink" href="#reading-and-writing-session-variables" title="Link to this heading"></a></h3>
-<p>To set, get or modify session variables, the ISession object has to be injected into the controller.</p>
-<p>Nextcloud will read existing session data at the beginning of the request lifecycle and close the session afterwards. This means that in order to write to the session, the session has to be opened first. This is done implicitly when calling the set method, but would close immediately afterwards. To prevent this, the session has to be explicitly opened by calling the reopen method.</p>
-<p>Alternatively, you can use the <code class="docutils literal notranslate"><span class="pre">#[UseSession]</span></code> attribute to automatically open and close the session for you.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
-<span class="hll"><span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\UseSession</span><span class="p">;</span>
-</span><span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Response</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
-
-<span class="hll">    <span class="p">#[</span><span class="nd">UseSession</span><span class="p">]</span>
-</span>    <span class="k">public</span> <span class="k">function</span> <span class="nf">writeASessionVariable</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
-        <span class="c1">// ...</span>
-    <span class="p">}</span>
-
-<span class="p">}</span>
-</pre></div>
+<section id="sessions-and-session-variables">
+<span id="controller-use-session"></span><h3>Sessions and session variables<a class="headerlink" href="#sessions-and-session-variables" title="Link to this heading"></a></h3>
+<section id="introduction">
+<h4>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h4>
+<p>Sessions allow your application to store data specific to a particular user across multiple HTTP
+requests. Variables are saved server-side and tied to a unique session identifier managed via a
+browser cookie.</p>
+<p>Nextcloud uses PHP’s native session handling but adds several performance optimizations and a
+transparent encryption layer via the <code class="docutils literal notranslate"><span class="pre">CryptoSessionData</span></code> class. Data written through the
+<code class="docutils literal notranslate"><span class="pre">OCP\ISession</span></code> API benefits from these optimizations and is automatically encrypted at rest.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Never use the PHP superglobal <code class="docutils literal notranslate"><span class="pre">$_SESSION</span></code>. The superglobal bypasses Nextcloud’s encryption and
+lifecycle management, leading to race conditions or lost data.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">#[UseSession]</span></code> was added in Nextcloud 26 and requires PHP 8.0 or later. If your app targets older releases and PHP 7.x then use the deprecated <code class="docutils literal notranslate"><span class="pre">&#64;UseSession</span></code> annotation.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
-<span class="hll"><span class="sd"> * @UseSession</span>
-</span><span class="sd"> */</span>
-<span class="k">public</span> <span class="k">function</span> <span class="nf">writeASessionVariable</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
-    <span class="c1">// ....</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<p>In case the session may be read and written by concurrent requests of your application, keeping the session open during your controller method execution may be required to ensure that the session is locked and no other request can write to the session at the same time. When reopening the session, the session data will also get updated with the latest changes from other requests. Using the annotation will keep the session lock for the whole duration of the controller method execution.</p>
-<p>For additional information on how session locking works in PHP see the article about <a class="reference external" href="https://ma.ttias.be/php-session-locking-prevent-sessions-blocking-in-requests/">PHP Session Locking: How To Prevent Sessions Blocking in PHP requests</a>.</p>
-<p>Then session variables can be accessed like this:</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The session is closed automatically for writing, unless you add the <code class="docutils literal notranslate"><span class="pre">#[UseSession]</span></code> attribute!</p>
-</div>
+</section>
+<section id="basic-usage">
+<h4>Basic usage<a class="headerlink" href="#basic-usage" title="Link to this heading"></a></h4>
+<p>Inject the <code class="xref py py-class docutils literal notranslate"><span class="pre">OCP\ISession</span></code> object via your controller’s constructor.</p>
+<p>A more complete example:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
 
-<span class="k">use</span> <span class="nx">OCP\ISession</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\UseSession</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Response</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\ISession</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
-
-    <span class="k">private</span> <span class="nx">ISession</span> <span class="nv">$session</span><span class="p">;</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$appName</span><span class="p">,</span> <span class="nx">IRequest</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">ISession</span> <span class="nv">$session</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="nv">$appName</span><span class="p">,</span>
+        <span class="nx">IRequest</span> <span class="nv">$request</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">ISession</span> <span class="nv">$session</span> <span class="c1">// PHP 8 property promotion</span>
+    <span class="p">)</span> <span class="p">{</span>
         <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$appName</span><span class="p">,</span> <span class="nv">$request</span><span class="p">);</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span> <span class="o">=</span> <span class="nv">$session</span><span class="p">;</span>
     <span class="p">}</span>
 
+    <span class="c1">// Simple (existing) variable retrieval</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">simpleReads</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;last_visit&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Default: Implicit locking per write. Good for single operations.</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">simpleWrite</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;last_visit&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">());</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Optimization: Keeps session open for the entire method.</span>
     <span class="p">#[</span><span class="nd">UseSession</span><span class="p">]</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">writeASessionVariable</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
-        <span class="c1">// read a session variable</span>
-        <span class="nv">$value</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">];</span>
-
-        <span class="c1">// write a session variable</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;new value&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">batchUpdate</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;theme&#39;</span><span class="p">,</span> <span class="s1">&#39;dark&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;font_size&#39;</span><span class="p">,</span> <span class="s1">&#39;14px&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">(</span><span class="s1">&#39;fallback_theme&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">();</span>
     <span class="p">}</span>
-
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
+<section id="when-to-use-usesession">
+<h4>When to use <code class="docutils literal notranslate"><span class="pre">#[UseSession]</span></code><a class="headerlink" href="#when-to-use-usesession" title="Link to this heading"></a></h4>
+<p>By default, Nextcloud uses an <strong>on-demand locking strategy</strong>: it closes the session immediately after the
+request starts to allow high concurrency, then briefly re-opens and closes it only during a <code class="docutils literal notranslate"><span class="pre">set()</span></code> or
+<code class="docutils literal notranslate"><span class="pre">remove()</span></code> call. This default “close-early” behavior works for infrequent and standalone writing events
+and prevents one request from blocking another. Developers do not need to do anything special to enable
+this behavior.</p>
+<p>However, in more advanced scenarios (e.g., calling <code class="docutils literal notranslate"><span class="pre">set()</span></code> five times in immediate succession) Nextcloud’s
+default behavior means the session will open and close five times. This introduces significant I/O
+overhead (even if it does minimize locking). For these cases, Nextcloud supports an optional method-level
+attribute: <code class="docutils literal notranslate"><span class="pre">#[UseSession]</span></code>. This attribute ensures the session is opened once at the start of your method and
+closed at the end, providing efficiency and correct locking in complex workflows.</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">#[UseSession]</span></code> attribute when:</p>
+<ul class="simple">
+<li><p><strong>Multiple Writes</strong>: You are calling <code class="docutils literal notranslate"><span class="pre">set()</span></code> or <code class="docutils literal notranslate"><span class="pre">remove()</span></code> multiple times in one method (prevents
+I/O overhead from repeated open/close cycles).</p></li>
+<li><p><strong>Reference Manipulation</strong>: You need the session to remain open for complex logic or to ensure data
+consistency throughout the method.</p></li>
+<li><p><strong>Regenerating session ids</strong>: You are elevating a user’s privileges (e.g. a valid share password is
+entered and the “access granted” status is stored in the session) or the user performs a sensitive
+alteration (e.g. password change).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">#[UseSession]</span></code> attribute was introduced in Nextcloud 26. Previously, this feature used the
+<code class="docutils literal notranslate"><span class="pre">&#64;UseSession</span></code> annotation, which is now deprecated but otherwise equivalent.</p>
+</div>
+</section>
+<section id="performance-and-concurrency">
+<h4>Performance and concurrency<a class="headerlink" href="#performance-and-concurrency" title="Link to this heading"></a></h4>
+<p>PHP natively locks the session file while it is open for writing. If a controller keeps a session open
+unnecessarily, it may block other requests from the same user (e.g., parallel browser tabs or AJAX calls),
+resulting in delays or timeouts.</p>
+<p>By keeping sessions closed except during the brief window of an actual write, Nextcloud ensures a
+responsive, multi-tab, and highly concurrent experience. For more technical background, see <a class="reference external" href="https://ma.ttias.be/php-session-locking-prevent-sessions-blocking-php-requests/">PHP Session
+Locking and How to Prevent It</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If your controller method aggressively keeps sessions open, it may block other requests from the same user
+or process (for example, a second browser tab, AJAX request, or background job), resulting in delays or
+deadlocks.</p>
+</div>
+<p>For the full <code class="docutils literal notranslate"><span class="pre">OCP\\ISession</span></code> API, see
+<a class="reference external" href="https://github.com/nextcloud/server/blob/master/lib/public/ISession.php">ISession.php</a>.</p>
+</section>
 </section>
 <section id="setting-cookies">
 <h3>Setting cookies<a class="headerlink" href="#setting-cookies" title="Link to this heading"></a></h3>
@@ -1190,7 +1230,7 @@ Until NC 30, classical controller methods did not respect the header.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Apr 28, 2026.
+      <span class="lastupdated">Last updated on Apr 29, 2026.
       </span></p>
   </div>
 
