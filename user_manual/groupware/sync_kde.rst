@@ -40,6 +40,12 @@ In KOrganizer and Kalendar:
 
 .. image:: ../images/KOrganizer_server_address.png
 
+The CalDAV URL for all your calendars should be ``https://example.com/remote.php/dav/calendars/USERNAME/`` and for a specific calendar ``https://example.com/remote.php/dav/calendars/USERNAME/CALENDAR-NAME/``
+
+The CardDAV URL for all your address books should be ``https://example.com/remote.php/dav/addressbooks/users/USERNAME/`` and for a specific address book ``https://example.com/remote.php/dav/addressbooks/users/USERNAME/ADDRESS-BOOK-NAME/``
+
+Replace ``example.com`` with your Nextcloud server URL and ``USERNAME`` with your Nextcloud username. You can find the URL for a specific calendar in the Nextcloud Calendar web UI by clicking the pencil icon next to a calendar and copying the **Internal link**.
+
 6. You can now test the connection, which can take some time for the initial connection. If it does not work, you can go back and try to fix it with other settings:
 
 .. image:: ../images/KOrganizer_test1.png
