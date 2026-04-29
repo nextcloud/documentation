@@ -68,7 +68,7 @@ User accounts have the following properties:
 
 *Quota*
   The maximum disk space assigned to each user. Any user that exceeds the quota
-  cannot upload or sync data. You have the the option to include external
+  cannot upload or sync data. You have the option to include external
   storage in user quotas.
 
 *Manager*
@@ -99,8 +99,8 @@ Nextcloud will automatically send them a notification with their new login
 information. You may edit this email using the email template editor on your
 Admin page (see :doc:`../configuration_server/email_configuration`).
 
-Set the **Send email to new user**-checkbox allows you to leave the **Password**
-field empty. The user will get an activation-email to set their own password.
+If you check the **Send email to new user** checkbox, you can leave the **Password**
+field empty. The user will receive an activation email to set their own password.
 
 Reset a user's password
 -----------------------
@@ -211,7 +211,7 @@ settings and files. The user can be activated any time again, without data-loss.
 Hover your cursor over their name on the **Users** page until the "..."-menu icon
 appears at the far right. After clicking on it, you will see the **Disable** option.
 
-The user will not longer be able to access their Nextcloud until you enable them again.
+The user will no longer be able to access their Nextcloud until you enable them again.
 Also all external shares, via public link or email, will not be accessible.
 Internal shares will still be working, so that other users on Nextcloud can continue working.
 

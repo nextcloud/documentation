@@ -19,7 +19,7 @@ If you prefer an automated installation, you have the option to:
 In case you prefer installing from the source tarball, you can setup Nextcloud
 from scratch using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP).
 This document provides a complete walk-through for installing Nextcloud on
-Ubuntu 18.04 LTS Server with Apache and MariaDB, using `the Nextcloud .tar
+Ubuntu 24.04 LTS Server with Apache and MariaDB, using `the Nextcloud .tar
 archive <https://nextcloud.com/install/>`_. This method is recommended to install Nextcloud.
 
 This installation guide is giving a general overview of required dependencies and their configuration. For a distribution specific setup guide have a look at the :doc:`./example_ubuntu` and :doc:`./example_centos`.
@@ -122,7 +122,7 @@ Additional Apache configurations
 
     a2enmod setenvif
 
-  and apply the following modifications the configuration::
+  and apply the following modifications to the configuration::
 
     ProxyFCGIBackendType FPM
     
@@ -270,7 +270,7 @@ problems, unexplained errors, and performance problems. It is a common cause
 of *Gateway Timeouts*. Having too high of a value in relation to available
 resources (such as memory), however, will also lead to problems. The default
 value is often ``5``. This greatly limits simultaneously connections to your
-Nextcloud instance and, unless you are severely resource constraints, will 
+Nextcloud instance and, unless you are under severe resource constraints, will 
 underutilize your hardware. Check the :doc:`../installation/server_tuning` 
 chapter for some guidance and resources for coming up with appropriate values,
 as well as other related parameters.

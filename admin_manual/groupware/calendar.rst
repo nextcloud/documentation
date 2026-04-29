@@ -40,6 +40,12 @@ See :doc:`../configuration_server/email_configuration`.
 
 You must also make sure the "Send invitations to attendees" setting is activated in the admin setting groupware section for the emails to be sent.
 
+Administrators can disable the sending of invitations to external participants with the following command::
+
+ sudo -E -u www-data php occ config:app:set dav caldav_external_attendees_disabled --value yes
+
+This prevents invitations from being sent to attendees outside the instance and hides external contacts from the invitee search.
+
 Birthday calendar
 -----------------
 Contacts that have a birthday date filled are automatically added as events to a special Birthday calendar.
@@ -138,11 +144,12 @@ Federated calendar shares
 -------------------------
 
 .. versionadded:: 32.0.0
+.. versionchanged:: 33.0.0 Federated calendar shares are now read/write.
 
-Nextcloud supports creating read-only federated calendar shares.
+Nextcloud supports creating federated calendar shares.
 A user is able to share a calendar with a remote user on a federated instance.
-For now, the shares are read-only and remote users are not able to change the events inside the
-shared calendar.
+Starting with Nextcloud 33, remote users are able to create, edit, and delete events inside the
+shared calendar. In Nextcloud 32, shares were read-only.
 
 The feature can be optionally disabled through an app config.
 Run the following command to disable creating new federated calendar shares for all users::

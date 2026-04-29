@@ -130,7 +130,7 @@ You'll find previous Nextcloud releases in the `Nextcloud Server Changelog
 Troubleshooting
 ---------------
 
-Occasionally, *files do not show up after a upgrade*. A rescan of the files can 
+Occasionally, *files do not show up after an upgrade*. A rescan of the files can 
 help::
 
  sudo -E -u www-data php console.php files:scan --all

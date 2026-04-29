@@ -128,6 +128,11 @@ The following built-in task types are available:
          * ``images``: ``ListOfImages``
       * Output shape:
          * ``output``: ``Text``
+ * ``'core:image2text:ocr'``: This task type is for extracting text from files using OCR. It is implemented by ``\OCP\TaskProcessing\TaskTypes\ImageToTextOpticalCharacterRecognition``
+      * Input shape:
+         * ``input``: ``ListOfFiles``
+      * Output shape:
+         * ``output``: ``ListOfTexts``
 
 
 

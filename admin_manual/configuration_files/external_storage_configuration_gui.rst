@@ -52,6 +52,14 @@ re-check your configuration and network availability.
 If there is an error on the storage, it will be marked as unavailable for ten 
 minutes. To re-check it, click the colored icon or reload your Admin page.
 
+Folder name
+-----------
+The ``Folder name`` is the name the folder will have within Nextcloud - the 
+name that will be visible to NextCloud users.
+
+Note that the folder name cannot include a path or subdirectory - do not 
+include slashes in your ``Folder name.``
+
 Usage of variables for mount paths
 ----------------------------------
 
@@ -146,8 +154,8 @@ on your network!
 .. figure:: external_storage/images/user_mounts.png
    :alt: Checkboxes to allow users to mount external storage services.
 
-Adding files to external storages
----------------------------------
+Adding files to external storage
+--------------------------------
 
 We recommend configuring the background job **Webcron** or
 **Cron** (see :doc:`../configuration_server/background_jobs_configuration`)
@@ -162,3 +170,6 @@ You might need to setup a cron job that runs ``sudo -E -u www-data php occ files
 (or replace ``--all`` with the user name, see also :doc:`../occ_command`)
 to trigger a rescan of the user's files periodically (for example every 15 minutes), which includes
 the mounted external storage.
+
+If you are running Nextcloud AIO, the equivalent command 
+in that environment is ``sudo docker exec --user www-data -it nextcloud-aio-nextcloud php occ files:scan --all``. 

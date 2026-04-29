@@ -11,6 +11,7 @@ Table of contents
     index
     release_schedule
     gdpr/index
+    declarations/index
 
 .. toctree::
     :caption: Release notes
@@ -65,6 +66,7 @@ Table of contents
 .. toctree::
     :caption: Maintenance
 
+    configuration_monitoring/index
     maintenance/index
     issues/index
 

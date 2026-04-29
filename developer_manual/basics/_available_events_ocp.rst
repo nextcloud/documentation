@@ -527,6 +527,11 @@ Event fired after the filesystem has been torn down
 
 .. versionadded:: 28
 
+``OCP\Files\ObjectStore\Events\BucketCreatedEvent``
+***************************************************
+
+.. versionadded:: 33
+
 
 ``OCP\Files\Template\BeforeGetTemplatesEvent``
 **********************************************

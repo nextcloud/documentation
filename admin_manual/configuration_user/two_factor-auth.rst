@@ -5,7 +5,7 @@ Two-factor authentication
 =========================
 
 Two-factor authentication adds an additional layer of security to user accounts. In order to log
-in on an account when two-factor authentication (2FA) enabled, you must provide both the
+in on an account when two-factor authentication (2FA) is enabled, you must provide both the
 login password and another factor. 
 
 To use 2FA two things must happen:
@@ -36,21 +36,17 @@ types of factors. Three providers are automatically installed (but may need to b
 
 **Two-Factor Backup Codes**
 
-- A special 2FA factor provider enables users to generate backup codes provider.
-- Facilitates recovery of access if a a 2FA device is unavailable (i.e. gets stolen or is not working).
-- Generates ten backup codes (which can, of course, only be use once).
+- A special 2FA factor provider enables users to generate backup codes.
+- Facilitates recovery of access if a 2FA device is unavailable (i.e. gets stolen or is not working).
+- Generates ten backup codes (which can, of course, only be used once).
 - Always enabled.
 
 Other 2FA providers may be found in the App Store. 
-
-.. TODO ON RELEASE: Update version number above on release
 
 .. figure:: ../images/2fa-app-install.png
 
 Developers can also `implement new two-factor provider 
 apps <https://docs.nextcloud.com/server/latest/developer_manual/digging_deeper/two-factor-provider.html>`_.
-
-.. TODO ON RELEASE: Update version number above on release
 
 Enforcing two-factor authentication
 -----------------------------------

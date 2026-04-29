@@ -11,7 +11,7 @@ Customize the appearance of Nextcloud
 
 You can change the following aspects of your instance's appearance:
 
-.. figure:: ../configuration_server/images/theming1.png
+.. figure:: images/theming1.png
 
 * **Name** (e.g., ACME Inc. Cloud).
 * **Web link** (e.g., https://acme.inc/).
@@ -21,7 +21,7 @@ You can change the following aspects of your instance's appearance:
 * **Logo**: Appears in the header and on the login page (default size: 62x34 px).
 * **Background and login image**: Sets the page background.
 
-.. figure:: ../configuration_server/images/theming2.png
+.. figure:: images/theming2.png
 
 * **Additional legal links**: Legal notice and privacy policy.
 * **Custom header logo and favicon**: Optionally override the auto-generated favicon based on your logo.
@@ -34,7 +34,7 @@ You can also configure theming using the ``occ theming:config`` command.
 
 Available settings include:
 
-- `name`, `url`, `imprintUrl`, `privacyUrl`, `slogan`, `color`, `primary_color`.
+- `name`, `url`, `imprintUrl`, `privacyUrl`, `slogan`, `background_color`, `primary_color`.
   Example: ``occ theming:config name "My Example Cloud"``
 - `background`, `logo`, `favicon`, `logoheader`.
   Example: ``occ theming:config logo /tmp/mylogo.png``
@@ -47,7 +47,7 @@ To use a color (instead of an image) for the background:
 
 ::
 
-   occ theming:config color "#0082c9"
+   occ theming:config background_color "#0082c9"
    occ theming:config background backgroundColor
 
 Icon theming
@@ -64,8 +64,6 @@ This requires:
 
 Branded clients
 ---------------
-
-.. TODO: Consider dropping this section (other than the note) since this isn't even available/applicable for non-enterprise users (who presumably will use docs at https://portal.nextcloud.com).
 
 .. note:: Nextcloud GmbH - the company that employs Nextcloud's core maintainers - offers branding services, providing sync clients (mobile and desktop) that use your corporate identity and are pre-configured for your users. For more information on advanced branding and enterprise support offerings, `contact Nextcloud GmbH <https://nextcloud.com/enterprise/>`_.
 

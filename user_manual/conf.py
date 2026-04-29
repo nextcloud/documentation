@@ -87,11 +87,9 @@ epub_author = u'The Nextcloud developers'
 epub_publisher = u'The Nextcloud developers'
 epub_copyright = u'2012-2025, The Nextcloud developers'
 
-# -- Options for LaTeX output ------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-latex-output
+# -- Options for LaTeX output --------------------------------------------------
 
-latex_elements = {
-}
+latex_elements = {}
 latex_documents = [
     (
         'contents',
