@@ -70,7 +70,8 @@
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">Ag baint úsáide as an gCliant Sioncrónaithe</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Using the Command-Line Client</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#install-nextcloudcmd">Install <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install">Install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#credential-handling">Credential Handling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exclude-list">Exclude List</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
@@ -126,30 +127,38 @@ client and server directories and propagates the files to bring both
 repositories to the same state. Contrary to the GUI-based client,
 <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> does not repeat synchronizations on its own. It also does not
 monitor for file system changes.</p>
-<section id="install-nextcloudcmd">
-<h2>Install <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code><a class="headerlink" href="#install-nextcloudcmd" title="Link to this heading"></a></h2>
-<p>CentOS</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo yum -y install epel-release
-$ sudo yum -y install nextcloud-client
-</pre></div>
-</div>
-<p>Ubuntu</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo add-apt-repository ppa:nextcloud-devs/client
-$ sudo apt update
-$ sudo apt install nextcloud-client
-</pre></div>
-</div>
-<p>Debian</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install nextcloud-desktop-cmd
-</pre></div>
-</div>
-<p>Refer to the link</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://nextcloud.com/install/#install-clients">https://nextcloud.com/install/#install-clients</a></p></li>
-<li><p><a class="reference external" href="https://launchpad.net/~nextcloud-devs/+archive/ubuntu/client">https://launchpad.net/~nextcloud-devs/+archive/ubuntu/client</a></p></li>
-<li><p><a class="reference external" href="https://pkgs.alpinelinux.org/packages?name=nextcloud-client">https://pkgs.alpinelinux.org/packages?name=nextcloud-client</a></p></li>
-<li><p><a class="reference external" href="https://help.nextcloud.com/t/linux-packages-status/10216">https://help.nextcloud.com/t/linux-packages-status/10216</a></p></li>
-</ul>
+<section id="install">
+<h2>Install<a class="headerlink" href="#install" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>OS</p></th>
+<th class="head"><p>Package</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Alpine</p></td>
+<td><p><a class="reference external" href="https://pkgs.alpinelinux.org/package/edge/community/x86_64/nextcloud-client">https://pkgs.alpinelinux.org/package/edge/community/x86_64/nextcloud-client</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Debian</p></td>
+<td><p><a class="reference external" href="https://packages.debian.org/search?suite=all&amp;arch=any&amp;searchon=names&amp;keywords=nextcloud-desktop-cmd">https://packages.debian.org/search?suite=all&amp;arch=any&amp;searchon=names&amp;keywords=nextcloud-desktop-cmd</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Fedora</p></td>
+<td><p><a class="reference external" href="https://packages.fedoraproject.org/pkgs/nextcloud-client/nextcloud-client/">https://packages.fedoraproject.org/pkgs/nextcloud-client/nextcloud-client/</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ubuntu</p></td>
+<td><p><a class="reference external" href="https://packages.ubuntu.com/search?keywords=nextcloud-desktop-cmd">https://packages.ubuntu.com/search?keywords=nextcloud-desktop-cmd</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Ubuntu (PPA)</p></td>
+<td><p><a class="reference external" href="https://launchpad.net/~nextcloud-devs/+archive/ubuntu/client">https://launchpad.net/~nextcloud-devs/+archive/ubuntu/client</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Windows</p></td>
+<td><p><a class="reference external" href="https://nextcloud.com/install/#install-clients">https://nextcloud.com/install/#install-clients</a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
 <p>To invoke <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code>, you must provide the local and the remote repository
 URL using the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nextcloudcmd</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="o">...</span><span class="p">]</span> <span class="n">sourcedir</span> <span class="n">nextcloudurl</span>
