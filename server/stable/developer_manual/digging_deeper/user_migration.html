@@ -155,7 +155,12 @@
 <p>The <a class="reference external" href="https://apps.nextcloud.com/apps/user_migration">User migration app</a> may
 be installed to allow migration of user data.</p>
 <p>App developers can integrate into User migration and provide ways to export
-and import the app data of a user.</p>
+and import the app data of a user. Please note that this should not be used
+as a backup and restore utility, as app developers should avoid deletion of
+existing user data during migration. For further information, check out
+<a class="reference external" href="https://github.com/nextcloud/user_migration/discussions/1090">this discussion</a>
+as well as
+<a class="reference external" href="https://github.com/nextcloud/user_migration/issues/1096">this issue</a>.</p>
 <section id="register-a-migrator">
 <h2>Register a migrator<a class="headerlink" href="#register-a-migrator" title="Link to this heading"></a></h2>
 <p>A migrator is represented by a class implementing the
@@ -324,7 +329,7 @@ whenever a user export or import begins.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Apr 29, 2026.
+      <span class="lastupdated">Last updated on Apr 30, 2026.
       </span></p>
   </div>
 
