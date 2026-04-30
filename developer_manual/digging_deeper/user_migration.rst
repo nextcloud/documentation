@@ -6,7 +6,12 @@ The `User migration app <https://apps.nextcloud.com/apps/user_migration>`_ may
 be installed to allow migration of user data.
 
 App developers can integrate into User migration and provide ways to export
-and import the app data of a user.
+and import the app data of a user. Please note that this should not be used
+as a backup and restore utility, as app developers should avoid deletion of
+existing user data during migration. For further information, check out 
+`this discussion <https://github.com/nextcloud/user_migration/discussions/1090>`_
+as well as 
+`this issue <https://github.com/nextcloud/user_migration/issues/1096>`_.
 
 Register a migrator
 -------------------
