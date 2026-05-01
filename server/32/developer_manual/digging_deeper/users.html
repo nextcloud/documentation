@@ -156,7 +156,7 @@
              
   <section id="user-management">
 <h1>User management<a class="headerlink" href="#user-management" title="Link to this heading"></a></h1>
-<p>Users can be managed using the IUserManager service that can be <a class="reference internal" href="../basics/dependency_injection.html#id2"><span class="std std-ref">injected</span></a>.</p>
+<p>Users can be managed using the IUserManager service that can be <a class="reference internal" href="../basics/dependency_injection.html#dependency-injection"><span class="std std-ref">injected</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">lib/Service/UserService.php</span><a class="headerlink" href="#id1" title="Link to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
@@ -245,7 +245,7 @@
 </section>
 <section id="user-session-information">
 <h2>User session information<a class="headerlink" href="#user-session-information" title="Link to this heading"></a></h2>
-<p>To login, logout or getting the currently logged in user, the IUserSession service that can be <a class="reference internal" href="../basics/dependency_injection.html#id2"><span class="std std-ref">injected</span></a>.</p>
+<p>To login, logout or getting the currently logged in user, the IUserSession service that can be <a class="reference internal" href="../basics/dependency_injection.html#dependency-injection"><span class="std std-ref">injected</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">lib/Service/UserService.php</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
@@ -358,10 +358,10 @@
         <span class="nv">$managers</span> <span class="o">=</span> <span class="nb">array_map</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$uid</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userManager</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$uid</span><span class="p">);</span>
         <span class="p">},</span> <span class="nv">$managerUids</span><span class="p">));</span>
-        <span class="c1">// Remove and managers that no longer exist as user</span>
+        <span class="c1">// Remove any managers that no longer exist as users</span>
         <span class="nv">$existingManagers</span> <span class="o">=</span> <span class="nb">array_filter</span><span class="p">(</span><span class="nv">$managers</span><span class="p">);</span>
 <span class="hll">        <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">setManagerUids</span><span class="p">(</span><span class="nb">array_map</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="nx">IUser</span> <span class="nv">$admin</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="hll">            <span class="k">return</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getUID</span><span class="p">();</span>
+</span><span class="hll">            <span class="k">return</span> <span class="nv">$admin</span><span class="o">-&gt;</span><span class="na">getUID</span><span class="p">();</span>
 </span><span class="hll">        <span class="p">},</span> <span class="nv">$existingManagers</span><span class="p">));</span>
 </span>    <span class="p">}</span>
 <span class="p">}</span>
@@ -384,7 +384,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Apr 30, 2026.
+      <span class="lastupdated">Last updated on May 01, 2026.
       </span></p>
   </div>
 
