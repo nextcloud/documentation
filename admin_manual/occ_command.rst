@@ -385,7 +385,7 @@ You can list all configuration values with one command::
 
 By default, passwords and other sensitive data are omitted from the report, so
 the output can be posted publicly (e.g. as part of a bug report). In order to
-generate a full backport of all configuration values the ``--private`` flag
+generate a full export of all configuration values the ``--private`` flag
 needs to be set::
 
  sudo -E -u www-data php occ config:list --private
@@ -536,8 +536,7 @@ before. If you want to be notified in that case, set the
 
   sudo -E -u www-data php occ config:system:delete doesnotexist
   --error-if-not-exists
-  Config provisioning_api of app appname could not be deleted because it did not
-  exist
+  System config value doesnotexist could not be deleted because it did not exist
 
 .. _dav_label:
 
@@ -1721,9 +1720,8 @@ process list, and will only be visible in the history of the user (root)
 running the command. This also permits creating scripts for adding multiple new
 users.
 
-To use ``password-from-env`` you must run as "real" root, rather than ``sudo``,
-because ``sudo`` strips environment variables. This example adds new user Fred
-Jones::
+Note that ``sudo`` strips environment variables by default; the ``-E`` flag preserves
+them, as shown in the example below::
 
  export OC_PASS=newpassword
  sudo -E -u www-data php occ user:add --password-from-env --display-name="Fred Jones" --group="users" fred
