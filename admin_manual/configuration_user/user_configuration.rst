@@ -68,7 +68,7 @@ User accounts have the following properties:
 
 *Quota*
   The maximum disk space assigned to each user. Any user that exceeds the quota
-  cannot upload or sync data. You have the the option to include external
+  cannot upload or sync data. You have the option to include external
   storage in user quotas.
 
 *Manager*
@@ -211,7 +211,7 @@ settings and files. The user can be activated any time again, without data-loss.
 Hover your cursor over their name on the **Users** page until the "..."-menu icon
 appears at the far right. After clicking on it, you will see the **Disable** option.
 
-The user will not longer be able to access their Nextcloud until you enable them again.
+The user will no longer be able to access their Nextcloud until you enable them again.
 Also all external shares, via public link or email, will not be accessible.
 Internal shares will still be working, so that other users on Nextcloud can continue working.
 

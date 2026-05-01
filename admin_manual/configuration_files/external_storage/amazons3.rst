@@ -39,7 +39,7 @@ Setting :code:`Enable Path Style` to true configures the S3 client to make reque
 enable it if your in-house object store or service provider requires it over the default (v4) authentication.
 
 In the **Available for** field enter the users or groups who you want to give
-access your S3 mount.
+give access to your S3 mount.
 
 The ``Enable SSL`` checkbox enables HTTPS connections and generally preferred. It is the default unless 
 you disable it here.

@@ -463,7 +463,7 @@ Email Field:
 
 User Home Folder Naming Rule:
   By default, the Nextcloud server creates the user directory in your Nextcloud
-  data directory and gives it the Nextcloud username, .e.g ``/var/www/nextcloud/data/alice``. You may want to override this setting and name it after an LDAP
+  data directory and gives it the Nextcloud username, e.g. ``/var/www/nextcloud/data/alice``. You may want to override this setting and name it after an LDAP
   attribute value. The attribute can also return an absolute path, e.g.
   ``/mnt/storage43/alice``. Leave it empty for default behavior.
 
@@ -483,7 +483,7 @@ User Profile attributes
 .. figure:: ../images/ldap-advanced-4-attributes.png
    :alt: User Profile Attributes.
 
-After configuring those attributes, the User Profile data will be overwritten with the according data from LDAP.  The checksum of data from LDAP will be stored in user settings ``user_ldap``, ``lastProfileChecksum`` and profile update is skipped as long as data from LDAP doesn't change.  If ``memcache.distributed`` is enabled in ``config.php`` the checksum will be cached and the checking will be skipped, as long as the cached value exists (expires after ``ldapCacheTTL`` seconds).
+After configuring those attributes, the User Profile data will be overwritten with the corresponding data from LDAP.  The checksum of data from LDAP will be stored in user settings ``user_ldap``, ``lastProfileChecksum`` and profile update is skipped as long as data from LDAP doesn't change.  If ``memcache.distributed`` is enabled in ``config.php`` the checksum will be cached and the checking will be skipped, as long as the cached value exists (expires after ``ldapCacheTTL`` seconds).
 
 Please be aware:
   - The user can change the data in profile, but it will get overwritten if changed in LDAP
@@ -570,7 +570,7 @@ Internal Username:
   The internal username is the identifier in Nextcloud for LDAP users. By default
   it will be created from the UUID attribute. The UUID attribute ensures that
   the username is unique, and that characters do not need to be converted. Only
-  these characters are allowed: [\a-\zA-\Z0-\9_.@-]. Other characters are
+  these characters are allowed: ``[a-zA-Z0-9_.@-]``. Other characters are
   replaced with their ASCII equivalents, or are simply omitted.
 
   The LDAP backend ensures that there are no duplicate internal usernames in
