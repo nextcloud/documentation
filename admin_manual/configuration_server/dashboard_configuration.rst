@@ -10,8 +10,8 @@ Enabling the dashboard app
 The Dashboard App is shipped and enabled by default. If it is not enabled
 simply go to your Nextcloud Apps page to enable it.
 
-Configuring your Nextcloud for the activity app
------------------------------------------------
+Configuring your Nextcloud for the dashboard app
+-------------------------------------------------
 
 The dashboard widgets are provided by apps and have a unique identifier. This can be used to customize the default layout of the dashboard as an administrator. The layout is stored as a comma-separated list of widget identifiers.
 

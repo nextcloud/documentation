@@ -545,7 +545,7 @@ Headline Field:
   The LDAP attribute holding the users headline.
 
 Biography Field:
-  The LDAP attribute holding the users about i.e. short biography.
+  The LDAP attribute holding the user's biography (short description).
   Multi line value with unix LF line ending.
   Windows CRLF and Macintosh CR line endings will be replaced with unix LF line ending.
 
