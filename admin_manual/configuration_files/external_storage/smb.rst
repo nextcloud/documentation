@@ -6,9 +6,14 @@ Nextcloud can connect to Windows file servers or other SMB-compatible servers
 with the SMB/CIFS backend.
 
 .. note:: The SMB/CIFS backend requires ``smbclient`` or
-   the PHP smbclient module to be installed on the Nextcloud server. The PHP
-   smbclient module is preferred, but either will work. These
-   should be included in any Linux distribution. (See `PECL smbclient
+   the PHP smbclient module (``php-smbclient`` / ``libsmbclient-php``) to be
+   installed on the Nextcloud server. The PHP smbclient module is **strongly
+   preferred** — without it, the backend falls back to spawning the
+   ``smbclient`` binary, which has known limitations (notably, downloads of
+   files larger than ~512 MB from external SMB shares can fail; see
+   `nextcloud/server#31308
+   <https://github.com/nextcloud/server/issues/31308>`_). These should be
+   included in any Linux distribution. (See `PECL smbclient
    <https://pecl.php.net/package/smbclient>`_ if your distro does not include
    them.)
 

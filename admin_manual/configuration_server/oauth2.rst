@@ -6,7 +6,7 @@ Nextcloud allows connecting external services (for example Moodle) to your Nextc
 This is done via ``OAuth2``. See `RFC6749 <https://tools.ietf.org/html/rfc6749>`_ for the
 OAuth2 specification.
 
-.. note:: Nextcloud does only support confidential clients.
+.. note:: Nextcloud supports only confidential clients.
 
 Add an OAuth2 Application
 -------------------------

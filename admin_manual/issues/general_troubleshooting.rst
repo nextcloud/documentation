@@ -325,7 +325,7 @@ There are also several techniques to remedy this, which are described extensivel
 the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
 
 Troubleshooting sharing
------------------------------------
+-----------------------
 
 Users' Federated Cloud IDs not updated after a domain name change
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -375,32 +375,63 @@ Troubleshooting contacts & calendar
 Troubleshooting data-directory
 ------------------------------
 
-If you have a fresh install, consider reinstalling with your preferred directory location.
+Moving the data directory / changing the ``datadirectory`` path
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Unofficially moving the data directory can be done as follows:
+For local storage, Nextcloud identifies storage by its absolute path on disk.
+Ideally, the location of the data directory should not change after deployment. If
+this is a new installation, consider reinstalling with your preferred directory
+location before moving into production.
 
-1. Make sure no cron jobs are running
-2. Stop apache
-3. Move /data to the new location
-4. Change the config.php entry
-5. Edit the database: In oc_storages change the path on the local::/old-data-dir/ entry
-6. Ensure permissions are still correct
-7. Restart apache
+.. danger::
+   If you must change the ``datadirectory`` path -- unless the transition is handled
+   carefully -- Nextcloud will treat its content as "new storage." This can trigger
+   duplicate or orphaned files, lost file metadata, and the loss of previously shared
+   links.
+
+For safely moving the data directory, the recommended actions are:
+
+1. Make sure no cron jobs are running and, if using system cron, that the Nextcloud crontab entry is disabled.
+
+2. Stop web/app server(s).
+
+3. Move ``/data`` to the new location (ensure you also move hidden/dot files such as ``.ncdata``).
+
+4. Create a symlink from the original location to the new location.
+
+5. Ensure permissions are still correct (including for any parent folders).
+
+6. Restart web/app server(s).
+
+7. Re-enable Nextcloud's system crontab entry (if applicable).
+
+.. note::
+   You may need to configure your web server to support symlinks.
+
+It is also possible to move the data directory without using symlinks, but
+this requires manually modifying the internal ``oc_storages`` database table:
+
+1. Make sure no cron jobs are running and, if using system cron, that the Nextcloud crontab entry is disabled.
+
+2. Stop web/app server(s).
+
+3. Move ``/data`` to the new location (ensure you also move hidden/dot files such as ``.ncdata``).
+
+4. Update the value of ``datadirectory`` in your ``config.php``.
+
+5. Edit the database: In the ``oc_storages`` table, update the path portion of the ``id`` field of the entry
+   beginning with ``local::/old-data-dir/`` (e.g., change ``local::/old-data-dir/`` to ``local::/new-data-dir/``).
+
+6. Ensure permissions are still correct (including for any parent folders).
+
+7. Restart web/app server(s).
+
+8. Re-enable Nextcloud's system crontab entry (if applicable).
 
 .. warning::
-   However this is not supported and you risk breaking your database.
-
-For a safe moving of data directory, supported by Nextcloud, recommended actions are:
-
-1. Make sure no cron jobs are running
-2. Stop apache
-3. Move /data to the new location
-4. Create a symlink from the original location to the new location
-5. Ensure permissions are still correct
-6. Restart apache
-
-.. warning::
-   Note, you may need to configure your webserver to support symlinks.
+   This method is not supported and you risk breaking your database. Always make sure you
+   have up-to-date backups -- including your database -- and a working (tested) restore
+   process **before** attempting this.
 
 Troubleshooting quota or size issues
 ------------------------------------

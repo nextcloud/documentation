@@ -4,289 +4,496 @@ DAV & database commands
 
 .. _dav_label:
 
-Dav commands
+DAV commands
 ------------
 
-Manage addressbooks and calendars::
+The ``dav`` commands manage addressbooks, calendars, calendar subscriptions,
+absences, and related data::
 
  dav
-  dav:create-addressbook          Create a dav addressbook
-  dav:create-calendar             Create a dav calendar
-  dav:create-subscription         Create a dav subscription
-  dav:delete-calendar             Delete a dav calendar
-  dav:delete-subscription         Delete a calendar subscription for a user
-  dav:fix-missing-caldav-changes  Insert missing calendarchanges rows for existing events
-  dav:list-addressbooks           List all addressbooks of a user
-  dav:list-calendars              List all calendars of a user
-  dav:list-subscriptions          List all calendar subscriptions for a user
-  dav:move-calendar               Move a calendar from an user to another
-  dav:remove-invalid-shares       Remove invalid dav shares
-  dav:retention:clean-up
-  dav:send-event-reminders        Sends event reminders
-  dav:sync-birthday-calendar      Synchronizes the birthday calendar
-  dav:sync-system-addressbook     Synchronizes users to the system addressbook
+  dav:absence:get                 get the out-of-office absence settings for a user
+  dav:absence:set                 set the out-of-office absence settings for a user
+  dav:clear-calendar-unshares     clear calendar unshares for a user
+  dav:clear-contacts-photo-cache  clear cached contact photos
+  dav:create-addressbook          create a dav addressbook
+  dav:create-calendar             create a dav calendar
+  dav:create-subscription         create a dav subscription
+  dav:delete-calendar             delete a dav calendar
+  dav:delete-subscription         delete a calendar subscription for a user
+  dav:fix-missing-caldav-changes  insert missing calendarchanges rows for existing events
+  dav:list-addressbooks           list all addressbooks of a user
+  dav:list-calendar-shares        list all calendar shares for a user
+  dav:list-calendars              list all calendars of a user
+  dav:list-subscriptions          list all calendar subscriptions for a user
+  dav:move-calendar               move a calendar from one user to another
+  dav:remove-invalid-shares       remove invalid dav shares
+  dav:retention:clean-up          delete CalDAV trash elements that are due for removal
+  dav:send-event-reminders        send event reminder notifications
+  dav:sync-birthday-calendar      synchronize the birthday calendar
+  dav:sync-system-addressbook     synchronize users to the system addressbook
  calendar
-  calendar:export                 Export a calendar of a user
-  calendar:import                 Import a calendar to a user
+  calendar:export                 export a calendar of a user
+  calendar:import                 import a calendar to a user
 
 
 Manage addressbooks
 ^^^^^^^^^^^^^^^^^^^
 
-List all addressbooks of a user
-"""""""""""""""""""""""""""""""
+dav\:list-addressbooks
+""""""""""""""""""""""
 
-``dav:list-addressbooks <uid>``
+List all addressbooks for a user::
 
-This example will list all addressbooks for user annie: ::
+ sudo -E -u www-data php occ dav:list-addressbooks layla
+ +-------------+----------+-----------------------------+-------------------+----------+
+ | Database ID | URI      | Owner principal             | Owner displayname | Writable |
+ +-------------+----------+-----------------------------+-------------------+----------+
+ | contacts    | Contacts | principals/users/layla      | Layla Smith       |  ✓       |
+ +-------------+----------+-----------------------------+-------------------+----------+
 
- sudo -E -u www-data php occ dav:list-addressbooks annie
+dav\:create-addressbook
+"""""""""""""""""""""""
 
-Create a addressbook for a user
-"""""""""""""""""""""""""""""""
+Create an addressbook for a user::
 
-``dav:create-addressbook <user> <name>``
-
-This example creates the addressbook ``mollybook`` for the user molly: ::
-
- sudo -E -u www-data php occ dav:create-addressbook molly mollybook
+ sudo -E -u www-data php occ dav:create-addressbook layla work
 
 
 Manage calendars
 ^^^^^^^^^^^^^^^^
 
-List all calendars of a user
-""""""""""""""""""""""""""""
+dav\:list-calendars
+"""""""""""""""""""
 
-``dav:list-calendars <uid>``
+List all calendars for a user::
 
-This example will list all calendars for user annie: ::
+ sudo -E -u www-data php occ dav:list-calendars layla
+ +----------+-------------+-----------------------------+-------------------+----------+
+ | URI      | Displayname | Owner principal             | Owner displayname | Writable |
+ +----------+-------------+-----------------------------+-------------------+----------+
+ | personal | Personal    | principals/users/layla      | Layla Smith       |  ✓       |
+ +----------+-------------+-----------------------------+-------------------+----------+
 
- sudo -E -u www-data php occ dav:list-calendars annie
-
-Create a calendar for a user
-""""""""""""""""""""""""""""
-
-``dav:create-calendar <user> <name>``
-
-
-This example creates the calendar ``mollycal`` for the user molly: ::
-
- sudo -E -u www-data php occ dav:create-calendar molly mollycal
-
-Delete a calendar for a user
-""""""""""""""""""""""""""""
-
-``dav:delete-calendar [--birthday] [-f|--force] [--] <uid> [<name>]`` deletes the
-calendar named ``name`` (or the birthday calendar if ``--birthday`` is
-specified) of the user ``uid``. You can use the force option ``-f`` or
-``--force`` to delete the calendar instead of moving it to the trashbin.
-
-This example will delete the calendar mollycal of user molly::
-
- sudo -E -u www-data php occ dav:delete-calendar molly mollycal
-
-This example will delete the birthday calendar of user molly::
-
- sudo -E -u www-data php occ dav:delete-calendar --birthday molly
-
-
-Move a calendar of a user
+dav\:list-calendar-shares
 """""""""""""""""""""""""
 
-.. note:: Note that this will change existing share URLs.
+List all calendar shares for a user::
 
-``dav:move-calendar [-f|--force] [--] <name> <sourceuid> <destinationuid>`` allows the admin to move a calendar named ``name`` from a user ``sourceuid`` to the user ``destinationuid``. You can use the force option `-f` to enforce the move if there are conflicts with existing shares. The system will also generate a new unique calendar name in case there is a conflict over the destination user.
+ sudo -E -u www-data php occ dav:list-calendar-shares layla
+   User layla has no calendar shares
 
+Use ``--calendar-id`` to filter results to a specific calendar.
 
-This example will move calendar named personal from user dennis to user sabine: ::
+dav\:create-calendar
+""""""""""""""""""""
 
- sudo -E -u www-data php occ dav:move-calendar personal dennis sabine
+Create a calendar for a user::
 
+ sudo -E -u www-data php occ dav:create-calendar layla holidays
 
-Export a calendar of a user
-"""""""""""""""""""""""""""
+dav\:delete-calendar
+""""""""""""""""""""
 
-``calendar:export [--format FORMAT] [--location LOCATION] [--] <uid> <uri>`` exports the calendar entries from a calendar with the given ``uri`` of user ``uid``.
+Delete a named calendar for a user::
 
-**Arguments:**
+ sudo -E -u www-data php occ dav:delete-calendar layla holidays
 
-* ``uid`` (mandatory): User ID whose calendar will be exported.
-* ``cid`` (mandatory): Calendar URI to export.
-* ``--format FORMAT`` (optional, defaults to ``ical``): Output format. One of ``ical``, ``xcal``, or ``jcal``.
-* ``--location <file path>`` (optional, defaults to stdout): Path to the file to export to. If omitted, output is written to standard output.
+Use ``--birthday`` to delete the birthday calendar instead of specifying
+a name. Use ``-f`` / ``--force`` to delete immediately instead of moving
+to the trashbin::
 
-The output format can be specified with the ``--format`` option. Valid formats are ``ical`` standard format (RFC 5545), ``xcal`` XML iCalendar (RFC 6321), and ``jcal`` JSON iCalendar (RFC 7265).
+ sudo -E -u www-data php occ dav:delete-calendar --force layla holidays
+ sudo -E -u www-data php occ dav:delete-calendar --birthday layla
 
-This example will export the calendar named personal of user dennis to a file named personal.ics in standard format: ::
+dav\:move-calendar
+""""""""""""""""""
 
- sudo -E -u www-data php occ calendar:export dennis personal --location /tmp/personal.ics
+.. note::
 
-This example will export the calendar in XML iCalendar format: ::
+   Moving a calendar changes its existing share URLs.
 
- sudo -E -u www-data php occ calendar:export dennis personal --format xcal --location /tmp/personal.xcal
+Move a calendar from one user to another::
 
-This example will export the calendar in JSON iCalendar format to standard output: ::
+ sudo -E -u www-data php occ dav:move-calendar personal layla fred
 
- sudo -E -u www-data php occ calendar:export dennis personal --format jcal
+Without ``--force``, the command fails if the destination user already
+has a calendar with the same name, or if the calendar is shared with a
+group the destination user is not a member of.
 
+Use ``-f`` / ``--force`` to proceed anyway: conflicting group shares are
+dropped, and if the calendar name is already taken at the destination a
+new name is tried automatically (``personal-1``, ``personal-2``, up to
+ten attempts). The command fails if no free name is found within those
+attempts.
 
-Import a calendar to a user
-"""""""""""""""""""""""""""
+dav\:clear-calendar-unshares
+""""""""""""""""""""""""""""
 
-``calendar:import [--format FORMAT] [--errors ERRORS] [--validation VALIDATION] [--supersede] [--show-created] [--show-updated] [--show-skipped] [--show-errors] [--] <uid> <uri> [<location>]`` imports a calendar entries to the calendar with the given ``uri`` of user ``uid``.
+Clear stale calendar unshare records for a user. Useful when a user's
+calendar sharing state has become inconsistent::
 
-**Arguments:**
-
-* ``uid`` (mandatory): User ID to import the calendar for.
-* ``uri`` (mandatory): Calendar URI to import into.
-* ``location`` (optional, defaults to stdin): Path to the file to import. If omitted, reads from standard input.
-* ``--format FORMAT`` (optional, defaults to ``ical``): Input format. One of ``ical``, ``xcal``, or ``jcal``.
-* ``--supersede`` (optional): Force override of existing objects with the same UID.
-* ``--show-created`` (optional): Show UID of created objects after import.
-* ``--show-updated`` (optional): Show UID of updated objects after import.
-* ``--show-skipped`` (optional): Show UID of skipped objects (e.g., duplicates or invalid entries).
-* ``--show-errors`` (optional): Show UID of objects with errors during import.
-* ``--errors ERRORS`` (optional): How to handle errors. ``0`` = continue on error, ``1`` = fail on error.
-* ``--validation VALIDATION`` (optional): How to handle object validation. ``0`` = no validation, ``1`` = validate and skip on issue, ``2`` = validate and fail on issue.
-
-The input format can be specified with the ``--format`` option, valid formats are ``ical`` standard format (RFC 5545), ``xcal`` XML iCalendar (RFC 6321) and ``jcal`` JSON iCalendar (RFC 7265), the default is ``ical``.
-
-This example will import from a file named personal.ics in standard format to the calendar named personal of user dennis: ::
-
-  sudo -E -u www-data php occ calendar:import dennis personal /tmp/personal.ics
-
-This example will import from a file named personal.xcal in XML iCalendar format to the calendar named personal of user dennis: ::
-
-  sudo -E -u www-data php occ calendar:import --format xcal dennis personal /tmp/personal.xcal
-
-This example will import from a file named personal.jcal in JSON iCalendar format to the calendar named personal of user dennis: ::
-  
-  sudo -E -u www-data php occ calendar:import --format jcal dennis personal /tmp/personal.jcal
-
-This example will import from standard input to the calendar named personal of user dennis: ::
-  
-  cat /tmp/personal.ics | sudo -E -u www-data php occ calendar:import dennis personal
-
-Misc
-""""
-
-``dav:fix-missing-caldav-changes [<user>]`` attempts to restore calendar sync changes when data in the calendarchanges table has been lost. If the user ID is omitted, the command runs for all users, which may take some time to complete.
-
-``dav:retention:clean-up`` deletes elements from the CalDAV trash that are due for removal.
-
-``dav:remove-invalid-shares`` removes invalid shares that were created due to a bug in the calendar app.
-
-``dav:send-event-reminders`` is a command that should be called regularly through a dedicated
-cron job to send event reminder notifications. See :doc:`../groupware/calendar` for more information on how to use this command.
+ sudo -E -u www-data php occ dav:clear-calendar-unshares layla
+   User layla has no calendar unshares
 
 
 Manage calendar subscriptions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-List all calendar subscriptions of a user
-"""""""""""""""""""""""""""""""""""""""""
+dav\:list-subscriptions
+"""""""""""""""""""""""
 
-``dav:list-subscriptions <uid>``
+List all calendar subscriptions for a user::
 
-This example will list all calendar subscriptions for user annie: ::
+ sudo -E -u www-data php occ dav:list-subscriptions layla
+   User layla has no subscriptions
 
- sudo -E -u www-data php occ dav:list-subscriptions annie
+dav\:create-subscription
+""""""""""""""""""""""""
+
+Create a subscription calendar for a user::
+
+ sudo -E -u www-data php occ dav:create-subscription layla "Astronomy Calendar" \
+   webcal://cantonbecker.com/astronomy-calendar/astrocal.ics
+
+Optionally pass a HEX color code for the calendar::
+
+ sudo -E -u www-data php occ dav:create-subscription layla "Astronomy Calendar" \
+   webcal://cantonbecker.com/astronomy-calendar/astrocal.ics "#ff5733"
+
+If not set, the theming default color is used.
+
+dav\:delete-subscription
+""""""""""""""""""""""""
+
+Delete a calendar subscription for a user::
+
+ sudo -E -u www-data php occ dav:delete-subscription layla "Astronomy Calendar"
 
 
-Create a calendar subscription for a user
-"""""""""""""""""""""""""""""""""""""""""
+Manage absences (out-of-office)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``dav:create-subscription <user> <name> <url> [<color>]``
+dav\:absence:set
+""""""""""""""""
 
-This example creates the subscription for the lunar calendar ``Lunar Calendar`` for the user molly: ::
+Set the out-of-office absence for a user. ``first-day`` and ``last-day``
+are inclusive and formatted as ``YYYY-MM-DD``.
 
- sudo -E -u www-data php occ dav:create-subscription molly "Lunar Calendar" webcal://cantonbecker.com/astronomy-calendar/astrocal.ics
+* **short-message** — a brief one-liner displayed as the user's status
+  next to their name across the UI while they are absent (e.g. in
+  contacts, chat, and user lists).
+* **message** — the full out-of-office text shown to users who try to
+  reach the absent user.
+* **replacement-user-id** — optional; a colleague to contact instead.
+  Their display name is stored alongside the absence and shown to others.
 
-Optionally, a color for the new subscription calendar can be passed as a HEX color code::
+::
 
- sudo -E -u www-data php occ dav:create-subscription molly "Lunar Calendar" calendar webcal://cantonbecker.com/astronomy-calendar/astrocal.ics "#ff5733"
+ sudo -E -u www-data php occ dav:absence:set layla 2026-05-01 2026-05-15 \
+   "On leave" \
+   "I am on leave until May 15. For urgent matters please contact my colleague."
 
-If not set, the theming default color will be used.
+To set an absence with a replacement user::
+
+ sudo -E -u www-data php occ dav:absence:set layla 2026-05-01 2026-05-15 \
+   "On leave" \
+   "I am on leave. Please contact fred for urgent matters." \
+   fred
+
+dav\:absence:get
+""""""""""""""""
+
+Show the current absence settings for a user::
+
+ sudo -E -u www-data php occ dav:absence:get layla
+   Start day: 2026-05-01
+   End day: 2026-05-15
+   Short message: On leave
+   Message: I am on leave until May 15. For urgent matters please contact my colleague.
+   Replacement user: none
+   Replacement display name: none
 
 
-Delete a calendar subscription for a user
-"""""""""""""""""""""""""""""""""""""""""
+Sync
+^^^^
 
-``dav:delete-subscription <uid> <uri>``
-
-This example deletes the subscription for the lunar calendar ``Lunar Calendar`` for the user molly: ::
-
- sudo -E -u www-data php occ dav:delete-subscription molly "Lunar Calendar"
-
+dav\:sync-system-addressbook
+""""""""""""""""""""""""""""
 
 .. _dav-sync-system-address-book:
 
-Sync system address book
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-``dav:sync-system-addressbook`` synchronizes all users to the :ref:`system
-address book<system-address-book>`::
+Synchronize all users to the :ref:`system address book<system-address-book>`::
 
  sudo -E -u www-data php occ dav:sync-system-addressbook
+   Syncing users ...
 
-Sync birthday calendar
-^^^^^^^^^^^^^^^^^^^^^^
+dav\:sync-birthday-calendar
+"""""""""""""""""""""""""""
 
-``dav:sync-birthday-calendar [<user>]`` adds all birthdays to your calendar from
-addressbooks shared with you. This example syncs to your calendar from user bernie: ::
+Add birthdays from shared addressbooks to a user's calendar::
 
- sudo -E -u www-data php occ dav:sync-birthday-calendar bernie
+ sudo -E -u www-data php occ dav:sync-birthday-calendar layla
+   Start birthday calendar sync for layla
+
+
+Maintenance
+^^^^^^^^^^^
+
+dav\:fix-missing-caldav-changes
+"""""""""""""""""""""""""""""""
+
+Restore missing calendar sync change records. If the ``calendarchanges``
+table has lost data, clients may not sync correctly. Run for a single
+user, or omit the user ID to fix all users (may take some time on large
+instances)::
+
+ sudo -E -u www-data php occ dav:fix-missing-caldav-changes layla
+ sudo -E -u www-data php occ dav:fix-missing-caldav-changes
+
+dav\:remove-invalid-shares
+""""""""""""""""""""""""""
+
+Remove invalid DAV shares created by a bug in a previous version::
+
+ sudo -E -u www-data php occ dav:remove-invalid-shares
+
+dav\:retention:clean-up
+"""""""""""""""""""""""
+
+Delete elements from the CalDAV trash that are past their retention
+period::
+
+ sudo -E -u www-data php occ dav:retention:clean-up
+
+dav\:send-event-reminders
+"""""""""""""""""""""""""
+
+Send pending calendar event reminder notifications. By default,
+Nextcloud sends reminders via the background job. To use this command
+instead, switch the mode first::
+
+ sudo -E -u www-data php occ config:app:set dav sendEventRemindersMode --value occ
+
+Then call the command regularly via a dedicated cron job to ensure
+reminders are sent on time::
+
+ sudo -E -u www-data php occ dav:send-event-reminders
+
+See :doc:`../groupware/calendar` for the recommended cron schedule.
+
+dav\:clear-contacts-photo-cache
+"""""""""""""""""""""""""""""""
+
+Clear all cached contact photos. Useful after a migration or if contact
+avatars are not displaying correctly::
+
+ sudo -E -u www-data php occ dav:clear-contacts-photo-cache
+   No cached contact photos found.
+
+
+Export and import calendars
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+calendar:export
+"""""""""""""""
+
+Export a calendar to a file or standard output::
+
+ sudo -E -u www-data php occ calendar:export layla personal --location /tmp/personal.ics
+
+``--format`` selects the output format (default: ``ical``):
+
+* ``ical`` — iCalendar (RFC 5545)
+* ``xcal`` — XML iCalendar (RFC 6321)
+* ``jcal`` — JSON iCalendar (RFC 7265)
+
+``--location`` sets the output file path. If omitted, output is written
+to standard output::
+
+ sudo -E -u www-data php occ calendar:export layla personal --format xcal \
+   --location /tmp/personal.xcal
+ sudo -E -u www-data php occ calendar:export layla personal --format jcal
+
+calendar:import
+"""""""""""""""
+
+Import calendar entries into a user's calendar::
+
+ sudo -E -u www-data php occ calendar:import layla personal /tmp/personal.ics
+
+``--format`` selects the input format (default: ``ical``). Same values
+as ``calendar:export``. If ``location`` is omitted, reads from standard
+input::
+
+ sudo -E -u www-data php occ calendar:import --format xcal layla personal \
+   /tmp/personal.xcal
+ cat /tmp/personal.ics | sudo -E -u www-data php occ calendar:import layla personal
+
+``--supersede`` forces override of existing objects with the same UID.
+
+Validation behaviour is controlled with ``--validation``:
+
+* ``0`` — no validation
+* ``1`` — validate, skip invalid entries
+* ``2`` — validate, fail on invalid entries
+
+Error handling is controlled with ``--errors``:
+
+* ``0`` — continue on error (default)
+* ``1`` — fail on first error
+
+Use ``--show-created``, ``--show-updated``, ``--show-skipped``, or
+``--show-errors`` to see the UIDs of affected objects after import.
+
 
 Disable creation of example events
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This will disable the automatic creation of example events in calendar: ::
+Disable the automatic creation of example events for new calendar
+users::
 
- sudo -E -u www-data php occ config:app:set dav create_example_event --value=false --type=boolean
+ sudo -E -u www-data php occ config:app:set dav create_example_event \
+   --value=false --type=boolean
 
 
 .. _database_conversion_label:
 
-Database conversion
--------------------
+Database commands
+-----------------
 
-The SQLite database is good for testing, and for Nextcloud servers with small
-single-user workloads that do not use sync clients, but production servers with
-multiple users should use MariaDB, MySQL, or PostgreSQL. You can use ``occ`` to
-convert from SQLite to one of these other databases.
-
-::
+The ``db`` commands manage database schema, indices, and data conversions::
 
  db
-  db:convert-type           Convert the Nextcloud database to the newly
-                            configured one
+  db:add-missing-columns          add missing optional columns to the database tables
+  db:add-missing-indices          add missing indices to the database tables
+  db:add-missing-primary-keys     add missing primary keys to the database tables
+  db:convert-filecache-bigint     convert the ID columns of the filecache to BigInt
+  db:convert-mysql-charset        convert charset of MySQL/MariaDB to utf8mb4
+  db:convert-type                 convert the Nextcloud database to a different type
+  db:schema:expected              export the expected database schema for a fresh installation
+  db:schema:export                export the current database schema
 
-You need:
 
-* Your desired database and its PHP connector installed.
-* The login and password of a database admin user.
-* The database port number, if it is a non-standard port.
+Schema maintenance
+^^^^^^^^^^^^^^^^^^
 
-This is example converts SQLite to MySQL/MariaDB::
+db:add-missing-indices
+""""""""""""""""""""""
 
- sudo -E -u www-data php occ db:convert-type mysql oc_dbuser 127.0.0.1
- oc_database
+Add any indices to the database that are defined in the schema but
+missing from the current installation. Run this after upgrades if
+performance has degraded or if prompted by the admin overview::
 
-For a more detailed explanation see
-:doc:`../configuration_database/db_conversion`
+ sudo -E -u www-data php occ db:add-missing-indices
+   Done.
+
+Use ``--dry-run`` to preview the SQL statements without executing them::
+
+ sudo -E -u www-data php occ db:add-missing-indices --dry-run
+
+db:add-missing-columns
+""""""""""""""""""""""
+
+Add optional columns that are defined in the schema but missing from the
+current installation::
+
+ sudo -E -u www-data php occ db:add-missing-columns
+   Done.
+
+Use ``--dry-run`` to preview the SQL statements without executing them.
+
+db:add-missing-primary-keys
+""""""""""""""""""""""""""""
+
+Add primary keys that are defined in the schema but missing from the
+current installation::
+
+ sudo -E -u www-data php occ db:add-missing-primary-keys
+   Done.
+
+Use ``--dry-run`` to preview the SQL statements without executing them.
+
+
+Schema inspection
+^^^^^^^^^^^^^^^^^^
+
+db:schema:export
+""""""""""""""""
+
+Export the current database schema. Useful for debugging or comparing
+against the expected schema::
+
+ sudo -E -u www-data php occ db:schema:export
+   - oc_filecache:
+     - columns:
+       - checksum:
+         - name: checksum
+         - type: string
+                       
+
+Limit output to a single table::
+
+ sudo -E -u www-data php occ db:schema:export oc_filecache
+
+Use ``--sql`` to output SQL ``CREATE TABLE`` statements instead of the
+default structured format. Use ``--output=json_pretty`` for
+machine-readable output.
+
+db:schema:expected
+""""""""""""""""""
+
+Export the expected schema for a fresh installation of the current
+version. Compare this against ``db:schema:export`` to identify
+divergences caused by incomplete upgrades or manual changes::
+
+ sudo -E -u www-data php occ db:schema:expected
+ sudo -E -u www-data php occ db:schema:expected oc_filecache
+
+Supports the same ``--sql`` and ``--output`` options as
+``db:schema:export``.
+
+
+Data conversions
+^^^^^^^^^^^^^^^^
+
+db:convert-filecache-bigint
+""""""""""""""""""""""""""""
+
+Convert the ``filecache`` table's ID columns from integer to BigInt.
+Required on large installations where file IDs have exceeded the integer
+limit. This command is non-destructive but may take time on large
+databases::
+
+ sudo -E -u www-data php occ db:convert-filecache-bigint
+
+db:convert-mysql-charset
+"""""""""""""""""""""""""
+
+Convert all MySQL or MariaDB tables to use ``utf8mb4`` (full Unicode,
+including emoji). Required for proper Unicode support. Run this once
+after switching to or upgrading MySQL/MariaDB::
+
+ sudo -E -u www-data php occ db:convert-mysql-charset
+
+db:convert-type
+"""""""""""""""
 
 .. _database_add_indices_label:
 
-Add missing indices
--------------------
+Convert the Nextcloud database from SQLite to MySQL, MariaDB, or
+PostgreSQL. SQLite is suitable for testing and single-user setups, but
+production servers with multiple users should use one of the other
+supported databases.
 
-It might happen that we add from time to time new indices to already existing database tables,
-for example to improve performance. In order to check your database for missing indices run
-following command::
+Requirements:
 
- sudo -E -u www-data php occ db:add-missing-indices
+* The target database and its PHP connector must be installed.
+* Login credentials for a database admin user.
+* The database port number, if non-standard.
 
-Use option ``--dry-run`` to output the SQL queries without running them.
+This example converts from SQLite to MySQL/MariaDB::
 
+ sudo -E -u www-data php occ db:convert-type mysql oc_dbuser 127.0.0.1 oc_database
 
+For a detailed walkthrough see
+:doc:`../configuration_database/db_conversion`.

@@ -23,9 +23,9 @@ jobs:
           RST_FILE="$(find ./ -name '*.rst')"
           mapfile -t RST_FILE <<< "$RST_FILE"
           for file in "${RST_FILE[@]}"; do
-            if [ "$(grep "php occ" "$file" | grep -v "sudo -E -u www-data php occ" | wc -l)" -gt 0 ]; then
+            if [ "$(grep "php occ" "$file" | grep -v "sudo -E -u www-data php occ" | grep -v "docker" | wc -l)" -gt 0 ]; then
               printf "%b%s%b\n" "\e[0;31m" "$file does not use the 'sudo -E -u www-data php occ' syntax in some places which is required." "\e[0m"
-              echo "See $(grep "php occ" "$file" | grep -v "sudo -E -u www-data php occ")"
+              echo "See $(grep "php occ" "$file" | grep -v "sudo -E -u www-data php occ" | grep -v "docker")"
               FAIL=1
             fi
           done

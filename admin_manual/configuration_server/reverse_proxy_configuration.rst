@@ -146,31 +146,74 @@ Caddy
 
         reverse_proxy {$NEXTCLOUD_HOST:localhost}
     }
+   
+Pomerium
+^^^^^^^^
+::
 
+    - from: https://subdomain.example.com
+      path: /.well-known/carddav
+      redirect:
+        path_redirect: /remote.php/dav/
+    - from: https://subdomain.example.com
+      path: /.well-known/caldav
+      redirect:
+        path_redirect: /remote.php/dav/
 
-Example
--------
+Thanks to `@JeffMatson <https://github.com/JeffMatson>`_ for Pomerium example.
 
-Multiple domains reverse SSL proxy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Examples
+--------
 
-If you want to access your Nextcloud installation **http://domain.tld/nextcloud**
-via a multiple domains reverse SSL proxy
-**https://ssl-proxy.tld/domain.tld/nextcloud** with the IP address **10.0.0.1**
-you can set the following parameters inside the :file:`config/config.php`.
+Nextcloud behind a reverse proxy (subdirectory)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If your Nextcloud is served at a subdirectory, for example
+**https://example.com/nextcloud**, behind a reverse proxy with IP address
+**10.0.0.1** that terminates TLS, set the following parameters inside
+:file:`config/config.php`:
 
 ::
 
   <?php
   $CONFIG = array (
     'trusted_proxies'   => ['10.0.0.1'],
-    'overwritehost'     => 'ssl-proxy.tld',
     'overwriteprotocol' => 'https',
-    'overwritewebroot'  => '/domain.tld/nextcloud',
-    'overwritecondaddr' => '^10\.0\.0\.1$',
-    'overwrite.cli.url' => 'https://domain.tld/',
+    'overwritewebroot'  => '/nextcloud',
+    'overwrite.cli.url' => 'https://example.com/nextcloud',
   );
 
-.. note:: If you want to use the SSL proxy during installation you have to
-  create the :file:`config/config.php` otherwise you have to extend the existing
-  **$CONFIG** array.
+.. note:: ``overwritehost`` is not needed in most setups — Nextcloud will read
+  the hostname from the ``Host`` header forwarded by the proxy. Only set it if
+  you need to force a specific hostname regardless of the incoming request.
+  Leave any parameter unset or empty to keep the automatic detection.
+
+Nextcloud accessible via multiple domains / conditional overwrite
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If Nextcloud is reachable both directly (HTTP) and through a reverse proxy
+(HTTPS), or through multiple proxies serving different public domains, use
+``overwritecondaddr`` to apply the overwrite parameters only when requests
+arrive from a specific proxy IP address. Requests that do not originate from
+that proxy will use automatic detection.
+
+In the example below, the overwrite parameters are applied only when requests
+come from the proxy at **10.0.0.1**, which serves Nextcloud as
+**https://public.example.com**:
+
+::
+
+  <?php
+  $CONFIG = array (
+    'trusted_proxies'   => ['10.0.0.1'],
+    'overwritehost'     => 'public.example.com',
+    'overwriteprotocol' => 'https',
+    'overwritecondaddr' => '^10\.0\.0\.1$',
+    'overwrite.cli.url' => 'https://public.example.com',
+  );
+
+.. note:: ``overwritecondaddr`` takes a regular expression matching the remote
+  address of the proxy. When set, the overwrite parameters are only applied if
+  the remote address matches. This is useful when the same Nextcloud instance is
+  accessible both with and without a reverse proxy, or when different proxies
+  serve the instance under different hostnames.

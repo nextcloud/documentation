@@ -21,7 +21,7 @@ of running the graphical Installation Wizard::
  $ cd /var/www/nextcloud/
  $ sudo -E -u www-data php occ  maintenance:install \
  --database 'mysql' --database-name 'nextcloud' \
- --database-user 'root' --database-pass 'password' \
+ --database-user 'nextcloud' --database-pass 'password' \
  --admin-user 'admin' --admin-pass 'password'
  
 Note that you must change to the root Nextcloud directory, as in the example 

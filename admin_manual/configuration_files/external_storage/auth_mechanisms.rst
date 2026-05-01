@@ -83,8 +83,7 @@ Considerations for shared storage
 ---------------------------------
 
 Every external storage, which is using user specific authentication, is connected individually.
-Even if several users connect to the same folder, the files are regarded as separate files per user.
-Nextcloud can not recognize if two users access the very same file if they follow individual connections. 
+Nextcloud cannot recognise shared file locks across individual connections, even when accessing the same file.
 
 This has an influence on e.g. file locking as a locked individual file is not shown as locked to other users or users cannot collaboratively edit documents.
 

@@ -55,16 +55,16 @@ jobs:
         # Extract version from branch name (e.g., stable32 -> 32)
         VERSION=$(echo "${{ matrix.target_branch }}" | sed 's/stable//')
         
-        # For branches stable19-stable31, use Python 3.10 instead of 3.12
+        # For branches stable19-stable31, use Python 3.10 instead of 3.13
         if [ "$VERSION" -le 31 ]; then
-          if grep -q "3.12" "${{ inputs.file_path }}"; then
-            sed -i 's/3\.12/3.10/g' "${{ inputs.file_path }}"
+          if grep -q "3.13" "${{ inputs.file_path }}"; then
+            sed -i 's/3\.13/3.10/g' "${{ inputs.file_path }}"
             echo "Updated Python version to 3.10 for stable$VERSION"
           fi
         fi
     
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
+      uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
       with:
         token: ${{ secrets.COMMAND_BOT_WORKFLOWS }}
         commit-message: 'chore: update ${{ inputs.file_path }} from master branch'

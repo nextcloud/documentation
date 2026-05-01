@@ -13,7 +13,7 @@ You can create an open conversation that any registered user on this server can 
 View all open conversations
 ---------------------------
 
-You can view all the conversations that you can join by clicking the button next to the search field and filters button and then on ``Join open conversations.``
+You can view all the conversations that you can join by clicking the button next to the search field, then clicking ``Join open conversations``.
 
 .. image:: images/join-open-conversations.png
     :width: 400px

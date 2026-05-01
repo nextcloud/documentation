@@ -62,13 +62,12 @@ instance, importing is the best way to do so.
 Import an Event/Add .ics Event
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In many places, you can download event details as an .ics file, or via a button saying "ical", "Apple Calendar" or "Outlook".
-
+Individual events are often distributed as ``.ics`` files (sometimes via a button labelled "iCal", "Apple Calendar" or "Outlook"). You can import them into Nextcloud Calendar using the same import flow as a full calendar.
 
 1. Click on the settings-icon labeled with ``Calendar settings`` at the bottom-left.
 
-2. After clicking on ``Import calendar`` you can select one or more calendar files
-   from your local device to upload.
+2. After clicking on ``Import calendar`` you can select one or more ``.ics`` files
+   from your local device to upload. Single-event files are added to the calendar you select.
 
 3. Select a ``Calendar to import into``.
 
@@ -319,7 +318,7 @@ You can set up reminders to be notified before an event occurs. Currently suppor
 * Email notifications
 * Nextcloud notifications
 
-You may set reminders at a time relative to the event or at a specific date.
+You may set reminders at a time relative to the event or at a specific date. If you would like all the events in a calendar to have a default reminder, you can configure that in the settings of that calendar.
 
 .. figure:: images/calendar_event_reminders.png
               :scale: 80%

@@ -16,7 +16,7 @@ and ``\OCP\BackgroundJob\TimedJob``.
 
 The ``QueuedJob`` is for one time jobs. This can for example be triggered by inserting
 a job because an event happened. The ``TimedJob`` has a method ``setInterval`` where
-you can set the time minimum time in seconds between the jobs (from the constructor).
+you can set the minimum time in seconds between the jobs (from the constructor).
 This is useful in case you want to have a job that is run at most once a day for example.
 
 Of course you can customize this all to your liking by just extending ``\OCP\BackgroundJob\Job``
@@ -143,7 +143,7 @@ For example you could add or remove a certain job based on some controller:
 
     class SomeController extends Controller {
 
-        private IJobList $jobList
+        private IJobList $jobList;
 
         public function __construct(string $appName, IRequest $request, IJobList $jobList) {
             parent::__construct($appName, $request);

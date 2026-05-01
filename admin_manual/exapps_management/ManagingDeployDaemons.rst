@@ -51,7 +51,7 @@ Usage Examples
 
 		occ app_api:daemon:register harp_proxy_docker "Harp Proxy (Docker)" "docker-install" "http" "appapi-harp:8780" "http://nextcloud.local" --net nextcloud --harp --harp_frp_address "appapi-harp:8782" --harp_shared_key "some_very_secure_password" --set-default --compute_device=cuda
 
-* Register a HaRP deploy daemon with the ``localhost`` as the host and the ``localhost:8782`` as the FRP server address. This can be paired with a HaRP container running in the host network mode or has exposed the ports ``8780`` and ``8782`` to the host.
+* Register a HaRP deploy daemon with the ``localhost`` as the host and the ``localhost:8782`` as the FRP server address. This can be paired with a HaRP container running in the host network mode or that has exposed the ports ``8780`` and ``8782`` to the host.
 
 	.. code-block:: bash
 

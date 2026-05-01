@@ -73,9 +73,22 @@ To generate a new ID, call ``nextId`` function on the generator:
 Decode a Snowflake ID
 ---------------------
 
-IDs can be decoded with ``occ snowflake:decode <id>`` command.
+Use the ``occ snowflake:decode`` command to inspect a Snowflake ID from the
+command line::
 
-It’s also possible to decode IDs in your code, for example to get creation time of your object:
+ sudo -E -u www-data php occ snowflake:decode 6768789079123765868
+ +--------------------+-------------------------+
+ | Snowflake ID       | 6768789079123765868     |
+ | Seconds            | 1575981518              |
+ | Milliseconds       | 50                      |
+ | Created from CLI   | no                      |
+ | Server ID          | 441                     |
+ | Sequence ID        | 12                      |
+ | Creation timestamp | 1575981518.050          |
+ | Creation date      | 2019-12-10 13:38:38.050 |
+ +--------------------+-------------------------+
+
+It’s also possible to decode IDs in your code, for example to get the creation time of your object:
 
 
 .. code-block:: php
@@ -85,7 +98,7 @@ It’s also possible to decode IDs in your code, for example to get creation tim
 
     namespace OCA\MyApp;
 
-    use DateTimeImmutable
+    use DateTimeImmutable;
     use OCP\Snowflake\IDecoder;
 
     class MyObject {

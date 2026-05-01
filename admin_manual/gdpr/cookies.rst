@@ -1,32 +1,100 @@
+.. _cookies:
+
 =======
 Cookies
 =======
 
-.. sectionauthor:: Björn Schießle <bjoern@nextcloud.com>
-.. _cookies:
+Nextcloud only stores cookies that are necessary for it to function. All
+cookies are set by your Nextcloud server directly — no third-party cookies
+are involved.
 
-Nextcloud only stores cookies needed for Nextcloud to work properly. All cookies comes from your Nextcloud server directly, no 3rd-party cookies will be sent to your system. Regarding GDPR, `only data which contain personal data are relevant`_.
+Under GDPR, only cookies that store or transmit personal data require a legal
+basis or consent. Of the cookies listed below, only the remember-me cookies
+contain personal data (the username). All other cookies contain randomly
+generated tokens with no inherent personal information.
 
-.. _`only data which contain personal data are relevant`: https://gdpr-info.eu/recitals/no-26/
-
+.. note::
+   The ``__Host-`` prefix is applied to the same-site cookies only when
+   Nextcloud is accessed over HTTPS. On plain HTTP the prefix is omitted and
+   the cookies are named ``nc_sameSiteCookiestrict`` and
+   ``nc_sameSiteCookielax``.
 
 Cookies stored by Nextcloud
 ===========================
 
-=====================  ======================================  ==============================  =================================  =============================  =======================================
- Type                   Name                                    Value                           Purpose                            Creation                      Lifetime
-=====================  ======================================  ==============================  =================================  =============================  =======================================
- Session cookie         ``<instance_id>``                       A random PHP session ID.        | Used to identify the user        At first load.                 At the end of the browser's session.
-                                                                                                | on the server.
- Session cookie         ``oc_sessionPassphrase``                A random token.                 | Used to decrypt the session's    At first load.                 At the end of the browser's session.
-                                                                                                | data on the server.
- Same-site cookies      ``__Host-nc_sameSiteCookiestrict``      ``true``                        See note below for the purpose.    At first load.                 Forever.
- Same-site cookies      ``__Host-nc_sameSiteCookielax``         ``true``                        See note below for the purpose.    At first load.                 Forever.
- Remember-me cookies    - ``nc_username``                       - The user id                                                      | At login if the              | Defaults to 15 days.
-                        - ``nc_token``                          - A random remember me token                                       | user selected the            | Can be configured by setting:
-                        - ``nc_session_id``                     - The original session id                                          | Remember-me checkbox.        | ``remember_login_cookie_lifetime``.
- Download helper        ``ocDownloadStarted``                   A random token.                 Help to manage file download.      When a download is started.    20 seconds.
-=====================  ======================================  ==============================  =================================  =============================  =======================================
+.. list-table::
+   :header-rows: 1
+   :widths: 20 25 35 10 10
 
-The same-site cookies are used to determine how a request reaches the Nextcloud server. We use them to prevent CSRF attacks. No identifiable information is stored in those.
-The rest of the cookies are strictly used to identify the user to the system.
+   * - Type
+     - Name
+     - Purpose
+     - Personal data
+     - Lifetime
+   * - Session cookie
+     - ``<instance_id>``
+     - Carries a random PHP session ID used to identify the user's session
+       on the server.
+     - No
+     - Until browser is closed.
+   * - Session cookie
+     - ``oc_sessionPassphrase``
+     - Carries a random token used to decrypt the session data stored on the
+       server.
+     - No
+     - Until browser is closed.
+   * - Same-site cookie
+     - ``__Host-nc_sameSiteCookiestrict``
+     - Used to detect whether a request originates from the same site
+       (``SameSite=Strict``). Helps prevent CSRF attacks. Contains no user
+       information.
+     - No
+     - Expires 2100-12-31 (effectively permanent).
+   * - Same-site cookie
+     - ``__Host-nc_sameSiteCookielax``
+     - Used to detect cross-site navigation requests
+       (``SameSite=Lax``). Helps prevent CSRF attacks. Contains no user
+       information.
+     - No
+     - Expires 2100-12-31 (effectively permanent).
+   * - Remember-me cookie
+     - ``nc_username``
+     - Stores the user's login name to enable persistent login across browser
+       sessions.
+     - **Yes** — contains the username.
+     - Defaults to 15 days. Configurable via ``remember_login_cookie_lifetime``.
+   * - Remember-me cookie
+     - ``nc_token``
+     - A random token paired with ``nc_username`` to authenticate the
+       persistent login without storing the password.
+     - No
+     - Same as ``nc_username``.
+   * - Remember-me cookie
+     - ``nc_session_id``
+     - The original session ID, retained to allow session continuity when the
+       remember-me token is used.
+     - No
+     - Same as ``nc_username``.
+   * - Download helper
+     - ``ocDownloadStarted``
+     - A short-lived random token set when a file download begins, used to
+       signal the browser that the download has started (e.g. to hide a
+       loading indicator).
+     - No
+     - 20 seconds.
+
+Remember-me cookies
+===================
+
+The remember-me cookies (``nc_username``, ``nc_token``, ``nc_session_id``) are
+only set when the user explicitly selects **Remember me** at login. They are
+cleared immediately when the user logs out.
+
+Because ``nc_username`` contains the user's login name, it is personal data
+under GDPR. The legal basis for storing it is typically **legitimate interest**
+or **contract performance** (enabling the service the user has requested),
+provided the user has been informed of this in your privacy policy.
+
+The lifetime defaults to 15 days and can be shortened in ``config/config.php``::
+
+  'remember_login_cookie_lifetime' => 60 * 60 * 24 * 15,

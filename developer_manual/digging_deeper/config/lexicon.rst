@@ -7,6 +7,8 @@ Lexicon
 Since v32, Nextcloud provides a way to centralize the definition of your app's configuration keys and values in a single place.
 
 
+.. _concept-overview:
+
 Concept overview
 ----------------
 
