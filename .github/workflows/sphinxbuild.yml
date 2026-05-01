@@ -574,7 +574,8 @@ jobs:
       - name: Generate index.html for preview
         if: github.event_name == 'pull_request'
         run: |
-          # Build a root index listing all top-level version folders
+          branch="${{ needs.stage-and-check.outputs.branch_name }}"
+          # Build a root index listing only the manuals built for this PR
           cat > server/index.html <<'INDEXEOF'
           <!DOCTYPE html>
           <html lang="en">
@@ -588,10 +589,10 @@ jobs:
             <ul>
           INDEXEOF
 
-          for version_dir in server/*/; do
-            [ -d "$version_dir" ] || continue
-            version="$(basename "$version_dir")"
-            echo "    <li><a href=\"${version}/\">${version}</a></li>" >> server/index.html
+          for manual_dir in "server/${branch}"/*/; do
+            [ -d "$manual_dir" ] || continue
+            manual="$(basename "$manual_dir")"
+            echo "    <li><a href=\"${branch}/${manual}/\">${manual}</a></li>" >> server/index.html
           done
 
           cat >> server/index.html <<'INDEXEOF'
