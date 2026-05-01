@@ -165,7 +165,7 @@ Deck tools
 
 * Add a label to a card
 
-  * Example prompt: *"Can you add the label 'Urget' to the 'repair kitchen sink' card in my personal deck board?"*
+  * Example prompt: *"Can you add the label 'Urgent' to the 'repair kitchen sink' card in my personal deck board?"*
 
 * Assign a card to a user
 
