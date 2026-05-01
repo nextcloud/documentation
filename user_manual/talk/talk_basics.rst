@@ -108,7 +108,7 @@ After confirmation you will be redirected to the new conversation and can start 
 View all open conversations
 ---------------------------
 
-You can view all the conversations that you can join by clicking the button next to the search field and filters button and then on ``Join open conversations.``
+You can view all the conversations that you can join by clicking the button next to the search field, then clicking ``Join open conversations``.
 
 .. image:: images/join-open-conversations.png
     :width: 400px
