@@ -77,8 +77,9 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Синхронизација са Windows 10</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#calendar">Календар</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contacts">Контакти</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Решавање проблема</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Контакти</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-2fa">Troubleshooting: 2FA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-tlsv1-2">Troubleshooting: TLSv1.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#credits">Credits</a></li>
 </ul>
 </li>
 </ul>
@@ -120,7 +121,7 @@
   <section id="synchronizing-with-windows-10">
 <h1>Синхронизација са Windows 10<a class="headerlink" href="#synchronizing-with-windows-10" title="Link to this heading"></a></h1>
 <section id="calendar">
-<h2>Календар<a class="headerlink" href="#calendar" title="Link to this heading"></a></h2>
+<span id="calendar-section"></span><h2>Календар<a class="headerlink" href="#calendar" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>In your browser, navigate to the Nextcloud Calendar app. Under „Calendar settings”, copy the address using „Copy iOS/macOS CalDAV address” into your clipboard.</p></li>
 <li><p>Покрените Windows 10 апликацију Календар. Затим, кликните на икону подешавања (икона зупчаника) и изаберите „Управљање налозима”.</p></li>
@@ -135,37 +136,30 @@
 <section id="contacts">
 <h2>Контакти<a class="headerlink" href="#contacts" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
-<li><p>У доњем левом углу погледа на контакте (у Nextcloud Контакти) потражите мали симбол везе (ланац) који изгледа овако:</p></li>
-</ol>
-<img alt="../../_images/contacts_link.png" src="../../_images/contacts_link.png" />
-<p>који ће да прикаже URL који изгледа овако некако: <a class="reference external" href="https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/">https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/</a></p>
-<ol class="arabic simple" start="2">
-<li><p>Покрените Windows 10 апликацију Календар. Затим, кликните на икону подешавања (икона зупчаника) и изаберите „Управљање налозима”.</p></li>
-<li><p>Кликните на „Додај налог” и изаберите „iCloud”.</p></li>
-<li><p>Унесите и-мејл, кориничко име и лозинку. Није потребно да ниједна од ових информација буде исправна — све ће се променити у наредним корацима.</p></li>
-<li><p>Кликните на „Пријави се” па затим на „Готово”. Требало би да се појави порука која означава да су подешавања успешно сачувана.</p></li>
-<li><p>У менију „Управљање налозима” кликните на iCloud налог који се креирали у претходним корацима, па изаберите „Измени подешавања”. Затим кликните на „Измени подешавања синхронизације поштанског сандучета”.</p></li>
-<li><p>Скролујте на дно дијалога, па изаберите „Напредна подешавања сандучета”. Још једном скролујте на дно дијалога и налепите свој CardDAV URL у поље под називом „Сервер контаката (CardDAV)”.</p></li>
-<li><p>Кликните на „Готово”. Унесите своје Nextcloud корисничко име и лозинку у одговарајућа поља, па промените назив налога на оно што вам одговара (нпр. „Nextcloud Контакти”). Кликните на „Сачувај”.</p></li>
-</ol>
-</section>
-<section id="troubleshooting">
-<h2>Решавање проблема<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
-<p>Када испратите све ове кораке, ваш Nextcloud календар би требало да се синхронизује. Ако то није случај, проверите своје корисничко име и лозинку. У супротном, поновите ове кораке.</p>
-<p><strong>НАПОМЕНА: нећете моћи да синхронизујете свој календар ако вам је укључена двофакторска аутентификација. Пратите кораке испод да креирате лозинку апликације која може да се користи са Календар клијентском апликацијом:</strong></p>
-<ol class="arabic simple">
-<li><p>Пријавите се у Nextcloud. Кликните на своју корисничку икону, па затим изаберите „Подешавања”.</p></li>
-<li><p>Кликните на „Безбедност”, па затим пронађите дугме обележено са „Креирај нову лозинку апликације”. Поред тог дугмета унесите „Windows 10 Календар апликација”. Затим кликните на дугме, копирајте и налепите лозинку. У кораку 8 користите ову лозинку уместо ваше Nextcloud лозинке.</p></li>
-</ol>
-</section>
-<section id="id1">
-<h2>Контакти<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
-<ol class="arabic simple">
-<li><p>Поновите кораке 1–7 из упутства за Календар. Ако сте већ подесили синхронизацију Календара, за ово можете да користите исти налог.</p></li>
-<li><p>У „Напредним подешавањима сандучета” налепите свој CalDAV URL  у поље обележено са „Сервер контаката (CardDAV)”.</p></li>
+<li><p>Repeat steps 1–7 from the <a class="reference internal" href="#calendar-section"><span class="std std-ref">Calendar instructions</span></a>. If you already have set up the Calendar synchronization, you can use the same account for this.</p></li>
+<li><p>From the „Advanced mailbox settings” screen, scroll to the bottom of the dialog box and paste your CardDAV URL in the field labelled „Contacts server (CardDAV)”.</p></li>
 <li><p>Замените у URL путању „principals” са „addressbooks.</p></li>
 <li><p>Кликните на „Готово”. Унесите своје Nextcloud корисничко име и лозинку у одговарајућа поља, па промените назив налога на оно што вам одговара (нпр. „Nextcloud”). Кликните на „Сачувај”.</p></li>
 </ol>
+</section>
+<section id="troubleshooting-2fa">
+<h2>Troubleshooting: 2FA<a class="headerlink" href="#troubleshooting-2fa" title="Link to this heading"></a></h2>
+<p><strong>НАПОМЕНА: нећете моћи да синхронизујете свој календар ако вам је укључена двофакторска аутентификација. Пратите кораке испод да креирате лозинку апликације која може да се користи са Календар клијентском апликацијом:</strong></p>
+<ol class="arabic simple">
+<li><p>Пријавите се у Nextcloud. Кликните на своју корисничку икону, па затим изаберите „Подешавања”.</p></li>
+<li><p>Click on „Security”, then locate a button labeled „Create new app password”. Next to this button, enter „Windows 10 Calendar app”. Then, click the button, copy and paste the password. Use this password instead of your Nextcloud password when prompted for credentials during setup, for example in Calendar step 8 or Contacts step 4.</p></li>
+</ol>
+</section>
+<section id="troubleshooting-tlsv1-2">
+<h2>Troubleshooting: TLSv1.2<a class="headerlink" href="#troubleshooting-tlsv1-2" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>For Windows 10 your Nextcloud https server <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/secauthn/protocols-in-tls-ssl--schannel-ssp-">must support TLSv1.2</a>.  This is apparent if no connection attempts are seen on the server, and the Windows client Event Viewer will display Schannel TLS errors under „Windows Logs -&gt; System”.</p></li>
+</ul>
+</section>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading"></a></h2>
+<p>Special thanks to this Reddit user for their post:
+<a class="reference external" href="https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar_application_with/">https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar_application_with/</a></p>
 </section>
 </section>
 
