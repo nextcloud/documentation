@@ -6,7 +6,7 @@ Performance considerations
 
 This document introduces some common considerations and tips on improving performance of Nextcloud. Speed of Nextcloud is important - nobody likes to wait and often, what is *just slow* for a small amount of data will become *unusable* with a large amount of data. Please keep these tips in mind when developing for Nextcloud and consider reviewing your app to make it faster.
 
-.. note::**Tips welcome**: More tips and ideas on performance are very welcome!
+.. note:: Tips welcome: More tips and ideas on performance are very welcome!
 
 PHP Performance
 ---------------
