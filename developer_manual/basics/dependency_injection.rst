@@ -280,7 +280,7 @@ The container works in the following way:
 * **AuthorMapper** is queried::
 
     $container->registerService(AuthorMapper::class, function(ContainerInterface $c): AuthorMapper {
-      return new AuthorService(
+      return new AuthorMapper(
         $c->get(IDBConnection::class)
       );
     });
