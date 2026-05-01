@@ -337,16 +337,6 @@ jobs:
             fi
           done
 
-          # Move PDF files to the root of the branch folder for cleaner structure
-          echo "Looking for PDF files to move..."
-          find "stage/${branch}/" -maxdepth 2 -name "*.pdf" -type f
-          for pdf in "stage/${branch}"/*/*.pdf; do
-            if [ -f "$pdf" ]; then
-              echo "Moving PDF: $pdf"
-              mv "$pdf" "stage/${branch}/"
-            fi
-          done
-
           # Clean up empty directories
           find stage -type d -empty -delete
 
@@ -470,16 +460,6 @@ jobs:
               manual_name="$(basename "$artifact")"
               rm -rf "server/${branch}/${manual_name}"
               cp -r "$artifact" "server/${branch}/${manual_name}"
-            fi
-          done
-
-          # Move pdf files to the root of the branch folder
-          echo "Looking for PDF files to copy..."
-          find stage/${branch}/ -name "*.pdf" -type f
-          for pdf in stage/${branch}/*.pdf; do
-            if [ -f "$pdf" ]; then
-              echo "Copying PDF: $pdf"
-              cp "$pdf" server/${branch}/
             fi
           done
 
