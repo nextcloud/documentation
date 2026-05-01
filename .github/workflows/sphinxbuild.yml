@@ -58,21 +58,34 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
+      - name: Check if manual source changed
+        uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
+        id: filter
+        with:
+          filters: |
+            changed:
+              - '${{ matrix.manual.directory }}/**'
+              - 'requirements.txt'
+              - '.github/workflows/sphinxbuild.yml'
+
       - name: Set up Python
+        if: steps.filter.outputs.changed == 'true'
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: "3.13"
           cache: "pip"
 
       - name: Install pip dependencies
+        if: steps.filter.outputs.changed == 'true'
         run: python -m pip install -r requirements.txt
 
       - name: Build html documentation
+        if: steps.filter.outputs.changed == 'true'
         run: cd ${{ matrix.manual.directory }} && make ${{ matrix.manual.make_target }}
 
       - name: Upload static documentation
+        if: ${{ matrix.manual.publish && steps.filter.outputs.changed == 'true' }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        if: ${{ matrix.manual.publish }}
         with:
           name: ${{ matrix.manual.name }}
           path: ${{ matrix.manual.directory }}/${{ matrix.manual.build_path }}
@@ -172,7 +185,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
+      - name: Check if manual source changed
+        uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
+        id: filter
+        with:
+          filters: |
+            changed:
+              - '${{ matrix.manual.directory }}/**'
+              - 'requirements.txt'
+              - '.devcontainer/Dockerfile'
+              - '.github/workflows/sphinxbuild.yml'
+
       - name: Set up Python
+        if: steps.filter.outputs.changed == 'true'
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: "3.13"
@@ -180,9 +205,11 @@ jobs:
           # cache: "pip"
 
       - name: Install pip dependencies
+        if: steps.filter.outputs.changed == 'true'
         run: python -m pip install -r requirements.txt
 
       - name: Compute PDF release version
+        if: steps.filter.outputs.changed == 'true'
         id: pdf_version
         run: |
           branch="${GITHUB_REF#refs/heads/}"
@@ -193,6 +220,7 @@ jobs:
           fi
 
       - name: Build pdf documentation
+        if: steps.filter.outputs.changed == 'true'
         env:
           DOCS_RELEASE: ${{ steps.pdf_version.outputs.release }}
         run: |
@@ -202,6 +230,7 @@ jobs:
           ls -la ${{ matrix.manual.build_pdf_path }}
 
       - name: Upload PDF documentation
+        if: steps.filter.outputs.changed == 'true'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: ${{ matrix.manual.name }}-pdf
@@ -390,6 +419,16 @@ jobs:
           done
           ls -la stage/*
 
+      - name: Build lychee path list
+        run: |
+          branch="${{ needs.stage-and-check.outputs.branch_name }}"
+          : > /tmp/lychee-paths.txt
+          [ -d "stage/${branch}/user_manual" ] && find "stage/${branch}/user_manual/en" -name '*.html' >> /tmp/lychee-paths.txt || true
+          [ -d "stage/${branch}/admin_manual" ] && find "stage/${branch}/admin_manual" -name '*.html' >> /tmp/lychee-paths.txt || true
+          [ -d "stage/${branch}/developer_manual" ] && find "stage/${branch}/developer_manual" -name '*.html' >> /tmp/lychee-paths.txt || true
+          echo "Files to check:"
+          cat /tmp/lychee-paths.txt | head -20
+
       # We need to exclude certain links from the check:
       # - go.php: This is a special redirect page
       # - mailto: links: These are not valid URLs and will always fail
@@ -408,9 +447,7 @@ jobs:
             --exclude 'go\.php' --exclude 'mailto:' --exclude-path '.*/404\.html' --exclude-path '.*/_static/.*'
             --exclude "/user_manual/" --include "/user_manual/en/"
             --exclude '^file://.*/stage/(latest|stable|[0-9]+)/(developer_manual|admin_manual|user_manual)/?$'
-            'stage/${{ needs.stage-and-check.outputs.branch_name }}/user_manual/en/**/*.html'
-            'stage/${{ needs.stage-and-check.outputs.branch_name }}/admin_manual/**/*.html'
-            'stage/${{ needs.stage-and-check.outputs.branch_name }}/developer_manual/**/*.html'
+            @/tmp/lychee-paths.txt
 
   # ============================================================================
   # DEPLOY
