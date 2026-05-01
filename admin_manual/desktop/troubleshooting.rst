@@ -278,11 +278,8 @@ you set it to a verbose level like ``Debug`` or ``Info``.
 You can view the server log file using the web interface or you can open it
 directly from the file system in the Nextcloud server data directory.
 
-.. todo:: Need more information on this.  How is the log file accessed?
-   Need to explore procedural steps in access and in saving this file ... similar
-   to how the log file is managed for the client.  Perhaps it is detailed in the
-   Admin Guide and a link should be provided from here.  I will look into that
-   when I begin heavily editing the Admin Guide.
+See :doc:`/configuration_server/logging_configuration` in the admin manual for
+details on configuring log levels and log file locations.
 
 Webserver Log Files
 ~~~~~~~~~~~~~~~~~~~
