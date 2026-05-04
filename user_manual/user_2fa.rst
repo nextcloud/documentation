@@ -4,21 +4,20 @@ Using two-factor authentication
 
 Two-factor authentication (2FA) is a way to protect your Nextcloud account
 against unauthorized access. It works by requiring two different 'proofs' of
-your identity. For example, *something you know* (like a password) and 
+your identity. For example, *something you know* (like a password) and
 *something you have* like a physical key. Typically, the first factor is a
 password like you already have and the second can be a text message you
 receive or a code you generate on your phone or another device
 (*something you have*). Nextcloud supports a variety of 2nd factors and
 more can be added.
 
-Once a two-factor authentication app has been enabled by your administrator
-you can enable and configure it in :doc:`userpreferences`. Below you can
-see how.
+Once a two-factor authentication app has been enabled by your administrator,
+you can enable and configure it in :doc:`userpreferences`.
 
 Configuring two-factor authentication
 -------------------------------------
 
-In your Personal Settings look up the Second-factor Auth setting. In this
+In your personal settings, look up the **Second-factor Auth** setting. In this
 example this is TOTP, a Google Authenticator compatible time-based code:
 
 .. figure:: images/totp_enable.png
@@ -29,35 +28,34 @@ on your phone (or another device). Depending on the app or tool, type in the
 code or scan the QR and your device will show a login code which changes
 every 30 seconds.
 
-Recovery codes in case you lost your 2nd factor
------------------------------------------------
+Recovery codes if you lose your second factor
+---------------------------------------------
 
-You should always generate backup codes for 2FA. If your 2nd factor device
-gets stolen or is not working, you will be able to use one of these codes to
-unlock your account. It effectively functions as a backup 2nd factor. To
-get the backup codes, go to your Personal Settings and look under Second-factor
-Auth settings. Choose *Generate backup codes*:
+You should always generate backup codes for 2FA. If your second factor device
+gets stolen or stops working, you can use one of these codes to unlock your
+account. It effectively functions as a backup second factor. To get the backup
+codes, go to your personal settings and look under **Second-factor Auth**
+settings. Choose *Generate backup codes*:
 
 .. figure:: images/2fa_backupcode_1.png
      :alt: 2FA backup code generator
 
-You will then be presented with a list of one-time-use backup codes:
-     
+You will then see a list of one-time-use backup codes:
+
 .. figure:: images/2fa_backupcode_2.png
      :alt: 2FA backup codes
 
-You should put these codes in a safe spot, somewhere you can find them. Don't
-put them together with your 2nd factor like your mobile phone but make sure that
-if you lose one, you still have the other. Keeping them at home is probably
-the best thing to do.
+Store these codes somewhere safe where you can find them. Do not keep them
+with your second factor (such as your mobile phone), but store them separately
+so that losing one does not mean losing the other.
 
 Logging in with two-factor authentication
 -----------------------------------------
 
-After you have logged out and need to log in again, you will see a request to
-enter the TOTP code in your browser. If you enable not only the TOTP factor
-but another one, you will see a selection screen on which you can choose
-two-factor method for this login. Select TOTP:
+After you log out and log in again, you will see a prompt to enter the
+TOTP code in your browser. If you have enabled more than one second factor,
+you will see a selection screen where you can choose which method to use for
+this login. Select TOTP:
 
 .. figure:: images/totp_login_1.png
      :alt: Choosing a two-factor authentication method.
@@ -69,24 +67,25 @@ Now, just enter your code:
 
 If the code was correct you will be redirected to your Nextcloud account.
 
-.. note:: Since the code is time-based, it’s important that your server’s and
-  your smartphone’s clock are almost in sync. A time drift of a few seconds
-  won’t be a problem.
+.. note::
+   Since the code is time-based, it is important that your server's and
+   your smartphone's clock are almost in sync. A time drift of a few seconds
+   won't be a problem.
 
 Using two-factor authentication with hardware tokens
 ----------------------------------------------------
 
 You can use two-factor authentication based on hardware tokens. The following devices are known to work:
 
-*    TOTP based:
+* TOTP based:
 
-     *    `Nitrokey Pro <https://shop.nitrokey.com/shop/product/nitrokey-pro-2-3>`_
-     *    `Nitrokey Storage <https://shop.nitrokey.com/shop>`_
+  * `Nitrokey Pro <https://shop.nitrokey.com/shop/product/nitrokey-pro-2-3>`_
+  * `Nitrokey Storage <https://shop.nitrokey.com/shop>`_
 
-*    FIDO2 based:
+* FIDO2 based:
 
-     *    `Nitrokey FIDO2 <https://shop.nitrokey.com/shop/product/nkfi2-nitrokey-fido2-55>`_
-     *    `Nitrokey FIDO U2F <https://shop.nitrokey.com/shop/product/nitrokey-fido-u2f-20>`_
+  * `Nitrokey FIDO2 <https://shop.nitrokey.com/shop/product/nkfi2-nitrokey-fido2-55>`_
+  * `Nitrokey FIDO U2F <https://shop.nitrokey.com/shop/product/nitrokey-fido-u2f-20>`_
 
 Using client applications with two-factor authentication
 --------------------------------------------------------
