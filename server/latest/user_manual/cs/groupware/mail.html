@@ -462,14 +462,14 @@ use the mailbox search feature in the app.</p>
 <p>Pokud byla zpráva napsána a kliknuto na tlačítko „Odeslat“, bude zpráva přidána do složky Odeslané, která se nachází v levém dolním rohu postranního panelu vlevo.</p>
 <p>Je také možné nastavit datum a čas pro operaci odeslání na okamžik v budoucnosti (viz <a class="reference internal" href="#mail-scheduled-messages"><span class="std std-ref">Naplánované zprávy</span></a>) – zpráva bude ponechána v  poště k odeslání až do okamžiku vámi zvoleného data a času, poté bude automaticky odeslána.</p>
 <p>Složka „K odeslání“ se zobrazí je tehdy, pokud existuje nějaká zpráva, jejíž odeslání ještě nebylo dokončeno.</p>
-<p>Dokud není spuštěna operace „odeslat“, je možné kdykoli znovu otevřít editor zprávy ve složce „K odeslání“.</p>
+<p>You can reopen the composer for a message in the outbox any time before the send operation is triggered.</p>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
 <p>Pokud se při odesílání vyskytne chyba, objeví se jedno ze tří možných chybových hlášení:</p>
 <dl class="simple">
 <dt>Nebylo možné zkopírovat do schránky „Odeslané“</dt><dd><p>E-mail byl odeslán ale nebylo možné ho zkopírovat do složky „Odeslané“. Tato chyba bude obsloužena složkou pro odchozí poštu a bude proveden opětovný pokus o zkopírování.</p>
 </dd>
-<dt>Chyba e-mailového serveru</dt><dd><p>Odesílání nebylo úspěšné, přičemž skončilo ve stavu, kdy není možný opakovat pokus (např. SMTP server není dosažitelný). Složka odchozí pošty se pokusí zprávu znovu odeslat později.</p>
+<dt>Chyba e-mailového serveru</dt><dd><p>Sending was unsuccessful with a state that can be retried (ex: the SMTP server couldn’t be reached). The outbox will retry sending the message.</p>
 </dd>
 <dt>Zprávu nebylo možné odeslat</dt><dd><p>Odesílání se mohlo (ale také nemuselo) nezdařit. E-mailový server nesdělil stav zprávy. Protože aplikace E-mail nemá žádný způsob, jak zjistit stav zprávy (odeslané nebo neodeslané), zpráva zůstane ve složce k odeslání a uživatel účtu rozhodne, jak pokračovat.</p>
 </dd>
@@ -512,7 +512,7 @@ use the mailbox search feature in the app.</p>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
-<p>Pokud tuto funkci správce zapnul, bude vytvořen název události a její program.</p>
+<p>An event title and agenda are created for you if the administrator has enabled it.</p>
 </div>
 </section>
 <section id="create-a-task">

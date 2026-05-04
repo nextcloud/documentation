@@ -304,10 +304,6 @@ for example
 </section>
 <section id="accessing-files-using-macos">
 <h2>MacOS yordamida fayllarga kirish<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>MacOS Finder orqali fayllarga kirish uchun:</p>
 <ol class="arabic">
 <li><p>Finderning yuqori menyu panelidan <strong>O'tish &gt; Serverga ulanish…</strong>-ni tanlang:</p>
@@ -440,8 +436,8 @@ for example
 </section>
 <section id="known-problems">
 <h2>Ma'lum muammolar<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
-<section id="id4">
-<h3>Muammo<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>Muammo<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>Windows HTTPS orqali ulanmaydi.</p>
 </section>
 <section id="solution-1">
@@ -452,37 +448,37 @@ for example
 <h3>Yechim 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>Windows WebDAV mijozi TLSv1.1 va TLSv1.2 ulanishlarini qo'llab-quvvatlamasligi mumkin. Agar siz server konfiguratsiyasini faqat TLSv1.1 va undan yuqorisini ta'minlash uchun cheklagan bo'lsangiz, serveringizga ulanish muvaffaqiyatsiz bo'lishi mumkin. Qo'shimcha ma'lumot uchun <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> hujjatlariga qarang.</p>
 </section>
-<section id="id5">
-<h3>Muammo<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>Muammo<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>Siz quyidagi xato xabarini olasiz: <strong>Xato 0x800700DF: Fayl hajmi ruxsat etilgan chegaradan oshib ketdi va uni saqlab boʻlmaydi.</strong></p>
 </section>
-<section id="id6">
-<h3>Yechim<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>Yechim<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Windows WebDAV ulushidan yoki unga uzatiladigan faylning maksimal hajmini cheklaydi. <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> da <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> qiymatini <strong>Modify</strong>-ni bosish orqali oshirishingiz mumkin.</p>
 <p>Cheklovni maksimal 4 GB qiymatiga oshirish uchun <strong>O'nlik</strong> ni tanlang, <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> qiymatini kiriting va Windows-ni qayta yoqing yoki <strong>WebClient</strong> xizmatini qayta yoqing.</p>
 </section>
-<section id="id7">
-<h3>Muammo<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Muammo<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Yuqorida tavsiflangan qadamlar orqali Windows-ga WebDAV drayverini qo'shish Nextcloud-da mavjud bo'sh joyning to'g'ri hajmini ko'rsatmaydi va uning o'rniga C: diskining o'lchamini uning mavjud maydoni bilan ko'rsatadi.</p>
 </section>
 <section id="answer">
 <h3>Javob<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
 <p>Afsuski, bu WebDAV-ning o'zini cheklaydi, chunki u mijozga serverdan mavjud bo'sh joyni olish yo'lini ta'minlamaydi. Windows avtomatik ravishda C: diskining o'lchamini uning o'rniga bo'sh joy bilan ko'rsatish uchun orqaga tushadi. Shuning uchun, afsuski, bu muammoning haqiqiy echimi yo'q.</p>
 </section>
-<section id="id8">
-<h3>Muammo<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Muammo<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>WebDAV orqali Microsoft Office-dan fayllaringizga kirish muvaffaqiyatsiz tugadi.</p>
 </section>
-<section id="id9">
-<h3>Yechim<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Yechim<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Ma'lum muammolar va ularning echimlari <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> maqolasida hujjatlashtirilgan.</p>
 </section>
-<section id="id10">
-<h3>Muammo<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>Muammo<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>Oʻz-oʻzidan imzolangan sertifikat yordamida Nextcloud’ni Windows’da WebDAV drayveri sifatida koʻrsatib boʻlmaydi.</p>
 </section>
-<section id="id11">
-<h3>Yechim<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>Yechim<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Sevimli veb-brauzeringiz orqali Nextcloud misolingizga kiring.</p></li>
 <li><p>Brauzer holati qatorida sertifikat xatosi paydo bo'lguncha bosing.</p></li>

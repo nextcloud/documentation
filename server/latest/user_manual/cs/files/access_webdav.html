@@ -305,10 +305,6 @@ for example
 </section>
 <section id="accessing-files-using-macos">
 <h2>Přístup k souborům ze systému macOS<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Poznámka</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>Pro přístup k souborům z macOS Finder:</p>
 <ol class="arabic">
 <li><p>Z nabídky v horním liště aplikace Finder zvolte <strong>Přejít na &gt; Připojit k serveru…</strong>:</p>
@@ -441,8 +437,8 @@ for example
 </section>
 <section id="known-problems">
 <h2>Známé problémy<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
-<section id="id4">
-<h3>Problém<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>Problém<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>Windows se při použití HTTPS nepřipojují.</p>
 </section>
 <section id="solution-1">
@@ -453,37 +449,37 @@ for example
 <h3>Jiné řešení<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>Může být, že WebDAV klient ve Windows nepodporuje TSLv1.1 a TSLv1.2 spojení. Pokud je v nastavení vámi využívaného serveru omezeno poskytování pouze na TLSv1.1 a novější, spojení se serverem se může nezdařit. Další informace naleznete v dokumentaci k <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a>.</p>
 </section>
-<section id="id5">
-<h3>Problém<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>Problém<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>Obdržíte následující chybové hlášení: <strong>Chyba 0x800700DF: Velikost souboru překračuje umožněný limit a není proto možné ho uložit.</strong></p>
 </section>
-<section id="id6">
-<h3>Řešení<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>Řešení<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Systém Windows omezuje maximální velikost, jakou může mít soubor přenášený z nebo na WebDAV sdílení.  Tuto hodnotu je možné zvýšit a to úpravou v registrech, konkrétně klíče <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> v <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code>, kliknutím na <strong>Změnit</strong>.</p>
 <p>Pro zvýšení limitu na maximální hodnotu 4GB, vyberte <strong>Desítková</strong>, zadejte hodnotu <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> a restartujte počítač nebo jen systémovou službu <strong>WebClient</strong>.</p>
 </section>
-<section id="id7">
-<h3>Problém<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Problém<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Přidání WebDAV disku do Windows prostřednictvím výše popsaných kroků nezobrazí správnou velikost prostoru, dostupného na Nextcloud a namísto toho zobrazí velikost disku C: a prostor dostupný na něm.</p>
 </section>
 <section id="answer">
 <h3>Odpověď<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
 <p>Žel toto je omezení WebDAV samotného, protože neposkytuje klientovi způsob, jak získat údaj o volném místě na serveru. Windows automaticky náhradně zobrazuje velikost disku C: a prostor dostupný na něm. Takže žel tento problém nemá skutečné řešení.</p>
 </section>
-<section id="id8">
-<h3>Problém<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Problém<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>Přístup k vašim souborům z Microsoft Office prostřednictvím WebDAV se nedaří.</p>
 </section>
-<section id="id9">
-<h3>Řešení<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Řešení<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Známé problémy a jejich řešení jsou popsány ve článku <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> .</p>
 </section>
-<section id="id10">
-<h3>Problém<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>Problém<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>V systému Windows není možné namapovat jako WebDAV disk Nextcloud, na kterém je používán sám sebou podepsaný certifikát.</p>
 </section>
-<section id="id11">
-<h3>Řešení<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>Řešení<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Přistupte do vámi využívané instance Nextcloud ze svého oblíbeného webového prohlížeče.</p></li>
 <li><p>Proklikejte se až obdržíte chybu certifikátu ve stavovém řádku prohlížeče.</p></li>

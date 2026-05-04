@@ -462,14 +462,14 @@ use the mailbox search feature in the app.</p>
 <p>Una volta composto un messaggio e cliccato sul pulsante «Invia», il messaggio viene aggiunto alla posta in uscita, che si trova nell’angolo in basso a sinistra della barra laterale sinistra.</p>
 <p>È anche possibile impostare la data e l’ora per l’operazione di invio in un punto futuro (vedere <a class="reference internal" href="#mail-scheduled-messages"><span class="std std-ref">Messaggi pianificati</span></a>)- il messaggio verrà conservato nella posta in uscita fino alla data e all’ora da te scelte, dopodiché verrà inviato automaticamente.</p>
 <p>La posta in uscita è visibile solo quando c’è un messaggio in attesa di essere gestito dalla posta in uscita.</p>
-<p>È possibile riaprire il compositore per un messaggio nella posta in uscita in qualsiasi momento prima che venga attivata l’operazione di «invio».</p>
+<p>You can reopen the composer for a message in the outbox any time before the send operation is triggered.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Quando si verifica un errore durante l’invio, sono possibili tre messaggi di errore:</p>
 <dl class="simple">
 <dt>Impossibile copiare nella casella di posta «Inviati»</dt><dd><p>Il messaggio è stato inviato ma non è stato possibile copiarlo nella casella di posta «Inviati». Questo errore verrà gestito dalla posta in uscita e l’operazione di copia verrà ripetuta.</p>
 </dd>
-<dt>Errore del server di posta</dt><dd><p>L’invio non è riuscito e lo stato non consente di ripetere l’operazione (ad esempio: il server SMTP non è raggiungibile). La posta in uscita riproverà a inviare il messaggio.</p>
+<dt>Errore del server di posta</dt><dd><p>Sending was unsuccessful with a state that can be retried (ex: the SMTP server couldn’t be reached). The outbox will retry sending the message.</p>
 </dd>
 <dt>Il messaggio non può essere inviato</dt><dd><p>L’invio potrebbe non essere riuscito. Il server di posta non può comunicarci lo stato del messaggio. Poiché l’app Mail non ha modo di determinarne lo stato (inviato o non inviato), il messaggio rimarrà nella posta in uscita e l’utente dell’account dovrà decidere come procedere.</p>
 </dd>
@@ -512,7 +512,7 @@ use the mailbox search feature in the app.</p>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Se l’amministratore ha abilitato questa funzione, vengono creati per te il titolo dell’evento e un’agenda.</p>
+<p>An event title and agenda are created for you if the administrator has enabled it.</p>
 </div>
 </section>
 <section id="create-a-task">

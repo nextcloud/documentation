@@ -350,10 +350,6 @@ path of your certificate as in this example:</p>
 </section>
 <section id="accessing-files-using-macos">
 <h2>Accessing files using macOS<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Catatan</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>To access files through the macOS Finder:</p>
 <ol class="arabic">
 <li><p>From the Finder's top menu bar, choose <strong>Go &gt; Connect to Server…</strong>:</p>
@@ -504,8 +500,8 @@ This option also allows WebDAV access to public shares and needs to be enabled t
 </section>
 <section id="known-problems">
 <h2>Known problems<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
-<section id="id4">
-<h3>Problem<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>Problem<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>Windows does not connect using HTTPS.</p>
 </section>
 <section id="solution-1">
@@ -522,13 +518,13 @@ you have restricted your server config to only provide TLSv1.1 and above the
 connection to your server might fail. Please refer to the <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> documentation
 for further information.</p>
 </section>
-<section id="id5">
-<h3>Problem<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>Problem<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>You receive the following error message: <strong>Error 0x800700DF: The file size
 exceeds the limit allowed and cannot be saved.</strong></p>
 </section>
-<section id="id6">
-<h3>Solution<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>Solution<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Windows limits the maximum size a file transferred from or to a WebDAV share
 may have. You can increase the value <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> in
 <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code>
@@ -537,8 +533,8 @@ by clicking on <strong>Modify</strong>.</p>
 value of <code class="docutils literal notranslate"><span class="pre">4294967295</span></code>, and reboot Windows or restart the <strong>WebClient</strong>
 service.</p>
 </section>
-<section id="id7">
-<h3>Problem<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Problem<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Adding a WebDAV drive on Windows via the above described steps does not display the correct size
 of in Nextcloud available space and instead shows the size of the C: drive with its available space.</p>
 </section>
@@ -548,20 +544,20 @@ of in Nextcloud available space and instead shows the size of the C: drive with 
 to get the available free space from the server. Windows automatically falls back to show the size of
 the C: drive with its available space instead. So unfortunately there is no real solution to this problem.</p>
 </section>
-<section id="id8">
-<h3>Problem<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Problem<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>Accessing your files from Microsoft Office via WebDAV fails.</p>
 </section>
-<section id="id9">
-<h3>Solution<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Solution<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Known problems and their solutions are documented in the <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> article.</p>
 </section>
-<section id="id10">
-<h3>Problem<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>Problem<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>Cannot map Nextcloud as a WebDAV drive in Windows using a self-signed certificate.</p>
 </section>
-<section id="id11">
-<h3>Solution<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>Solution<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Access to your Nextcloud instance via your favorite Web browser.</p></li>
 <li><p>Click through until you get to the certificate error in the browser status

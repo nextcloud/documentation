@@ -306,10 +306,6 @@ for example
 </section>
 <section id="accessing-files-using-macos">
 <h2>Toegang tot bestanden met behulp van macOS<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Notitie</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>Om toegang te krijgen tot bestanden via de macOS Finder:</p>
 <ol class="arabic">
 <li><p>Kies in de menubalk bovenaan de Finder <strong>Ga &gt; Verbinding maken met server…</strong>:</p>
@@ -442,8 +438,8 @@ for example
 </section>
 <section id="known-problems">
 <h2>Bekende problemen<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
-<section id="id4">
-<h3>Probleem<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>Probleem<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>Windows maakt geen verbinding met HTTPS.</p>
 </section>
 <section id="solution-1">
@@ -454,37 +450,37 @@ for example
 <h3>Oplossing 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>De Windows WebDAV-client ondersteunt mogelijk geen TLSv1.1- en TLSv1.2-verbindingen. Als de configuratie van je server is beperkt tot het aanbieden van TLSv1.1 en hoger, kan de verbinding met je server mislukken. Raadpleeg de <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> documentatie voor meer informatie.</p>
 </section>
-<section id="id5">
-<h3>Probleem<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>Probleem<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>Je ontvangt de volgende foutmelding: <strong>Fout 0x800700DF: De bestandsgrootte overschrijdt de toegestane limiet en kan niet worden opgeslagen.</strong></p>
 </section>
-<section id="id6">
-<h3>Oplossing<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>Oplossing<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Windows beperkt de maximale grootte van een bestand dat wordt overgedragen van of naar een WebDAV-share. Je kunt de waarde <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> in <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> verhogen door op <strong>Wijzigen</strong> te klikken.</p>
 <p>Om de limiet te verhogen tot de maximale waarde van 4 GB, selecteer je <strong>Decimaal</strong>, voer de waarde <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> in en start Windows opnieuw op of start de <strong>WebClient</strong>-service opnieuw.</p>
 </section>
-<section id="id7">
-<h3>Probleem<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Probleem<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Als je via de hierboven beschreven stappen een WebDAV-schijf toevoegt in Windows, wordt de beschikbare ruimte in Nextcloud niet correct weergegeven. In plaats daarvan wordt de grootte van de C:-schijf met de beschikbare ruimte weergegeven.</p>
 </section>
 <section id="answer">
 <h3>Antwoord<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
 <p>Helaas is dit een beperking van WebDAV zelf, omdat het de ‘client’ geen manier biedt om de beschikbare vrije ruimte van de server op te vragen. Windows valt automatisch terug op het weergeven van de grootte van de C:-schijf met de beschikbare ruimte. Er is dus helaas geen echte oplossing voor dit probleem.</p>
 </section>
-<section id="id8">
-<h3>Probleem<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Probleem<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>Toegang tot je bestanden vanuit Microsoft Office via WebDAV mislukt.</p>
 </section>
-<section id="id9">
-<h3>Oplossing<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Oplossing<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Bekende problemen en hun oplossingen zijn gedocumenteerd in het <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> artikel.</p>
 </section>
-<section id="id10">
-<h3>Probleem<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>Probleem<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>Nextcloud kan niet als WebDAV-station in Windows worden toegewezen met een zelfondertekend certificaat.</p>
 </section>
-<section id="id11">
-<h3>Oplossing<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>Oplossing<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Toegang tot de Nextcloud-instantie via jouw favoriete webbrowser.</p></li>
 <li><p>Klik door tot je bij de certificaatfout in de statusregel van de browser komt.</p></li>

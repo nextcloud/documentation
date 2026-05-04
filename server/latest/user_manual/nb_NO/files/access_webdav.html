@@ -314,10 +314,6 @@ for example
 </section>
 <section id="accessing-files-using-macos">
 <h2>Tilgang til filer ved hjelp av macOS<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Merknad</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>Slik får du tilgang til filer via macOS Finder:</p>
 <ol class="arabic">
 <li><p>Fra Finders øverste menylinje velger du <strong>Gå &gt; Koble til tjener…</strong>:</p>
@@ -453,8 +449,8 @@ that the <code class="docutils literal notranslate"><span class="pre">WebClient<
 </section>
 <section id="known-problems">
 <h2>Kjente problemer<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
-<section id="id4">
-<h3>Problem<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>Problem<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>Windows kobler seg ikke til ved hjelp av HTTPS.</p>
 </section>
 <section id="solution-1">
@@ -465,12 +461,12 @@ that the <code class="docutils literal notranslate"><span class="pre">WebClient<
 <h3>Løsning 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>Windows WebDAV-klienten støtter kanskje ikke TLSv1.1- og TLSv1.2-tilkoblinger. Hvis du har begrenset serverkonfigurasjonen til bare å levere TLSv1.1 og nyere, kan tilkoblingen til serveren mislykkes. Se dokumentasjonen for <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> for ytterligere informasjon.</p>
 </section>
-<section id="id5">
-<h3>Problem<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>Problem<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>Du får følgende feilmelding: <strong>Feil 0x800700DF: Filstørrelsen overskrider den tillatte grensen og kan ikke lagres.</strong></p>
 </section>
-<section id="id6">
-<h3>Løsning<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>Løsning<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Windows limits the maximum size a file transferred from or to a WebDAV share
 may have. You can increase the value <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> in
 <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code>
@@ -479,28 +475,28 @@ by clicking on <strong>Modify</strong>.</p>
 value of <code class="docutils literal notranslate"><span class="pre">4294967295</span></code>, and reboot Windows or restart the <strong>WebClient</strong>
 service.</p>
 </section>
-<section id="id7">
-<h3>Problem<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Problem<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Hvis du legger til en WebDAV-stasjon på Windows via trinnene ovenfor, vises ikke riktig størrelse på tilgjengelig plass i Nextcloud, og viser i stedet størrelsen på C:-stasjonen med ledig plass.</p>
 </section>
 <section id="answer">
 <h3>Svar<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
 <p>Dessverre er dette en begrensning av WebDAV selv, fordi det ikke gir en måte for klienten å få informasjon om ledig ledig plass fra serveren. Windows faller automatisk tilbake for å vise størrelsen på C:-stasjonen med dens ledig plass i stedet. Så dessverre er det ingen reell løsning på dette problemet.</p>
 </section>
-<section id="id8">
-<h3>Problem<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Problem<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>Tilgang til filene dine fra Microsoft Office via WebDAV mislykkes.</p>
 </section>
-<section id="id9">
-<h3>Løsning<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Løsning<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Kjente problemer og deres løsninger er dokumentert i <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> artikkelen.</p>
 </section>
-<section id="id10">
-<h3>Problem<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>Problem<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>Kan ikke tilordne Nextcloud som en WebDAV-stasjon i Windows ved hjelp av et selvsignert sertifikat.</p>
 </section>
-<section id="id11">
-<h3>Løsning<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>Løsning<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Tilgang til Nextcloud-forekomsten din via favorittnettleseren din.</p></li>
 <li><p>Klikk deg gjennom til du kommer til sertifikatfeilen i nettleserens statuslinje.</p></li>

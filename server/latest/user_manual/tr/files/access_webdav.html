@@ -305,10 +305,6 @@ for example
 </section>
 <section id="accessing-files-using-macos">
 <h2>macOS kullanarak dosyalara erişmek<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Not</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>Dosyalara macOS Finder üzerinden erişmek:</p>
 <ol class="arabic">
 <li><p>Finder üst menü çubuğundan <strong>Git &gt; Sunucuya Bağlan…</strong>’ komutunu seçin:</p>
@@ -441,8 +437,8 @@ for example
 </section>
 <section id="known-problems">
 <h2>Bilinen sorunlar<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
-<section id="id4">
-<h3>Sorun<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>Sorun<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>Windows, HTTPS kullanarak bağlantı kuramıyor.</p>
 </section>
 <section id="solution-1">
@@ -453,37 +449,37 @@ for example
 <h3>2. çözüm<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>Windows WebDAV İstemcisi, TLSv1.1 ve TLSv1.2 bağlantılarını desteklemeyebilir. Sunucu yapılandırmanızı yalnızca TLSv1.1 ve üzerini sunacak şekilde kısıtladıysanız, sunucunuzla bağlantı kurulamayabilir. Ayrıntılı bilgi almak için <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> belgelerine bakabilirsiniz.</p>
 </section>
-<section id="id5">
-<h3>Sorun<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>Sorun<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>Şu hata iletisini görüyorsunuz: <strong>Hata 0x800700DF: Dosya boyutu izin verilen sınırı aşıyor ve kaydedilemiyor.</strong></p>
 </section>
-<section id="id6">
-<h3>Çözüm<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>Çözüm<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Windows, WebDAV paylaşımı ile alınabilecek ya da gönderilebilecek bir dosyanın en büyük boyutunu sınırlar. <strong>Değiştir</strong> üzerine tıklayarak <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> altındaki <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> değerini artırabilirsiniz.</p>
 <p>Sınırı olabilecek en büyük 4 GB değerine çıkarmak için <strong>Ondalık</strong> olarak seçin, <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> değerini yazın ve Windows ya da <strong>WebClient</strong> hizmetini yeniden başlatın.</p>
 </section>
-<section id="id7">
-<h3>Sorun<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Sorun<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Yukarıda açıklanan adımlarla Windows üzerinde bir WebDAV sürücüsü eklemek, Nextcloud kullanılabilir alanının doğru boyutunu göstermez. Kullanılabilecek alan olarak C: sürücüsünün boyutunu görüntüler.</p>
 </section>
 <section id="answer">
 <h3>Yanıt<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
 <p>Ne yazık ki bu, WebDAV tarafından kaynaklanan bir sınırlamadır, çünkü istemcinin sunucudan kullanılabilir boş alanı almasının bir yolu yoktur. Windows, bunun yerine otomatik olarak C: sürücüsünün boyutunu kullanılabilir alanla birlikte görüntüler. Yani ne yazık ki bu sorunun gerçek bir çözümü yok.</p>
 </section>
-<section id="id8">
-<h3>Sorun<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Sorun<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>Dosyalarınıza WebDAV aracılığıyla Microsoft Office üzerinden erişilemiyor.</p>
 </section>
-<section id="id9">
-<h3>Çözüm<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Çözüm<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Bilinen sorunlara ve çözümlerine <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> makalesinde değinilmiştir.</p>
 </section>
-<section id="id10">
-<h3>Sorun<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>Sorun<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>Nextcloud bir kendinden imzalı sertifika kullanıyorken Windows üzerinde bir WebDAV sürücüsü olarak eşlenemiyor.</p>
 </section>
-<section id="id11">
-<h3>Çözüm<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>Çözüm<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Alışık olduğunuz tarayıcı ile Nextcloud kopyanıza erişin.</p></li>
 <li><p>Tarayıcı durum satırında sertifika hatasına ulaşana kadar tıklayın.</p></li>

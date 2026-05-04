@@ -305,10 +305,6 @@ for example
 </section>
 <section id="accessing-files-using-macos">
 <h2>macOS를 사용하여 파일 액세스<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">참고</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>macOS Finder를 통해 파일에 접근하려면,</p>
 <ol class="arabic">
 <li><p>Finder의 상단 메뉴 막대에서 <a href="#id1"><span class="problematic" id="id2">**</span></a>이동&gt;서버에 연결…**을 선택합니다.</p>
@@ -441,8 +437,8 @@ for example
 </section>
 <section id="known-problems">
 <h2>알려진 문제<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
-<section id="id4">
-<h3>문제<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>문제<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>Windows는 HTTPS를 사용하여 연결하지 않습니다.</p>
 </section>
 <section id="solution-1">
@@ -453,37 +449,37 @@ for example
 <h3>해결 방법 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>Windows WebDAV 클라이언트는 TLSv1.1 및 TLSv1.2 연결을 지원하지 않을 수 있습니다. TLSv1.1 이상만 제공하도록 서버 구성을 제한한 경우 서버에 대한 연결이 실패할 수 있습니다. 자세한 내용은 <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> 설명서를 참조하십시오.</p>
 </section>
-<section id="id5">
-<h3>문제<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>문제<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p><strong>오류 0x800700DF: 파일 크기가 허용된 제한을 초과하여 저장할 수 없습니다.</strong> 오류 메시지가 표시됩니다.</p>
 </section>
-<section id="id6">
-<h3>솔루션<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>솔루션<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Windows는 WebDAV 공유에서 또는 WebDAV 공유로 전송된 파일의 최대 크기를 제한합니다. <a href="#id1"><span class="problematic" id="id2">**</span></a>수정**을 클릭하여 ‘’HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters’’에서 ‘’FileSizeLimitInBytes’’ 값을 늘릴 수 있습니다.</p>
 <p>제한을 최대값인 4GB로 늘리려면 <strong>10진수**를 선택하고 ‘’4294967295’’ 값을 입력한 다음 Windows를 다시 부팅하거나 **WebClient</strong> 서비스를 다시 시작합니다.</p>
 </section>
-<section id="id7">
-<h3>문제<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>문제<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>위에서 설명한 단계를 통해 Windows에 WebDAV 드라이브를 추가해도 Nextcloud 사용 가능한 공간의 올바른 크기가 표시되지 않고 대신 사용 가능한 공간과 함께 C: 드라이브의 크기가 표시됩니다.</p>
 </section>
 <section id="answer">
 <h3>응답<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
 <p>불행히도 이것은 클라이언트가 서버에서 사용 가능한 여유 공간을 얻을 수 있는 방법을 제공하지 않기 때문에 WebDAV 자체의 제한입니다. Windows는 자동으로 폴백하여 사용 가능한 공간과 함께 C: 드라이브의 크기를 표시합니다. 따라서 불행히도 이 문제에 대한 진정한 해결책은 없습니다.</p>
 </section>
-<section id="id8">
-<h3>문제<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>문제<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>WebDAV를 통해 Microsoft Office에서 파일에 액세스하지 못합니다.</p>
 </section>
-<section id="id9">
-<h3>솔루션<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>솔루션<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>알려진 문제점과 해결 방법은 <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> 문서에 설명되어 있습니다.</p>
 </section>
-<section id="id10">
-<h3>문제<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>문제<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>자체 서명된 인증서를 사용하여 Windows에서 Nextcloud를 WebDAV 드라이브로 매핑할 수 없습니다.</p>
 </section>
-<section id="id11">
-<h3>솔루션<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>솔루션<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>즐겨 사용하는 웹 브라우저를 통해 Nextcloud 인스턴스에 액세스합니다.</p></li>
 <li><p>브라우저 상태 줄에 인증서 오류가 나타날 때까지 클릭합니다.</p></li>

@@ -458,14 +458,14 @@
 <p>當消息已撰寫並且點擊了「發送」按鈕後，該消息會被添加到發件箱中，您可以在左側邊欄的左下角找到它。</p>
 <p>您還可以將發送操作的日期和時間設置為未來的某個時間點（請參見 <a class="reference internal" href="#mail-scheduled-messages"><span class="std std-ref">排定的消息</span></a>）—該消息將保留在發件箱中，直到選定的日期和時間到達，然後自動發送。</p>
 <p>當發件箱中有待處理的消息時，發件箱才會顯示。</p>
-<p>在發送操作被觸發之前，您可以隨時重新打開發件箱中的消息撰寫器。</p>
+<p>You can reopen the composer for a message in the outbox any time before the send operation is triggered.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>當發送過程中發生錯誤時，可能會出現三條錯誤消息：</p>
 <dl class="simple">
 <dt>無法複製到「已發送」郵箱</dt><dd><p>郵件已發送，但無法複製到「已發送」郵箱。此錯誤將由發件箱處理，並將再次嘗試複製操作。</p>
 </dd>
-<dt>郵件伺服器錯誤</dt><dd><p>發送未成功，但狀態可以重試（例如：無法訪問 SMTP 伺服器）。發件箱將重試發送該消息。</p>
+<dt>郵件伺服器錯誤</dt><dd><p>Sending was unsuccessful with a state that can be retried (ex: the SMTP server couldn't be reached). The outbox will retry sending the message.</p>
 </dd>
 <dt>消息無法發送</dt><dd><p>發送可能成功也可能失敗。郵件伺服器無法告訴我們消息的狀態。由於郵件應用無法確定消息的狀態（已發送或未發送），該消息將保留在發件箱中，帳戶用戶必須決定如何繼續。</p>
 </dd>
@@ -508,7 +508,7 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>如果管理員已啟用，將為您創建事件標題和議程。</p>
+<p>An event title and agenda are created for you if the administrator has enabled it.</p>
 </div>
 </section>
 <section id="create-a-task">
