@@ -2,19 +2,20 @@
 Version control
 ===============
 
-Nextcloud supports simple version control system for files. Versioning creates
+Nextcloud supports a simple version control system for files. Versioning creates
 backups of files which are accessible via the Versions tab on the Details
 sidebar. This tab contains the history of the file where you can roll back a
 file to any previous version. A new version is saved only if at least two minutes
-have passed since the last version was created. Versions are stored in **data/[user]/files_versions**.
+have passed since the last version was created. Versions are stored in ``data/[user]/files_versions``.
 
 .. figure:: ../images/files_versioning.png
+   :alt: File version history in the Details sidebar
 
 To restore a specific version of a file, click the circular arrow to the right.
 Click on the timestamp to download it.
 
 The versioning app expires old versions automatically to make sure that
-the user doesn't run out of space. This pattern is used to delete
+you don't run out of space. This pattern is used to delete
 old versions:
 
 * For the first second we keep one version
@@ -39,7 +40,10 @@ Naming a version
 You can give a name to a version.
 
 .. figure:: ../images/files_versions_actions.png
+   :alt: Version actions menu
+
 .. figure:: ../images/files_versions_naming.png
+   :alt: Naming a file version
 
 When a version has a name, it will be excluded from the automatic expiration process.
 
