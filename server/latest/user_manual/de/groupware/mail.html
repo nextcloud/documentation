@@ -458,14 +458,14 @@
 <p>Wenn eine Nachricht verfasst und auf die Schaltfläche „Senden“ geklickt wurde, wird die Nachricht zum Postausgang hinzugefügt, der sich in der unteren linken Ecke der linken Seitenleiste befindet.</p>
 <p>Sie können Datum und Uhrzeit des Sendevorgangs auch auf einen Zeitpunkt in der Zukunft festlegen (siehe <a class="reference internal" href="#mail-scheduled-messages"><span class="std std-ref">Geplante Nachrichten</span></a>) - die Nachricht bleibt im Postausgang, bis das von Ihnen gewählte Datum und die gewählte Uhrzeit erreicht sind, und wird dann automatisch gesendet.</p>
 <p>Der Postausgang ist nur sichtbar, wenn eine Nachricht darauf wartet, im Postausgang bearbeitet zu werden.</p>
-<p>Sie können den Editor für eine Nachricht im Postausgang jederzeit erneut öffnen, bevor der „Senden“-Vorgang ausgelöst wird.</p>
+<p>You can reopen the composer for a message in the outbox any time before the send operation is triggered.</p>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
 <p>Tritt beim Senden ein Fehler auf, sind drei Fehlermeldungen möglich:</p>
 <dl class="simple">
 <dt>Konnte nicht in das Postfach „Gesendet“ kopiert werden</dt><dd><p>Die Mail wurde versendet, konnte aber nicht in das Postfach „Gesendet“ kopiert werden. Dieser Fehler wird vom Postausgang behandelt und der Kopiervorgang wird erneut versucht.</p>
 </dd>
-<dt>E-Mail-Serverfehler</dt><dd><p>Das Senden war nicht erfolgreich und kann in einem Status wiederholt werden (z. B.: Der SMTP-Server konnte nicht erreicht werden). Der Postausgang versucht erneut, die Nachricht zu senden.</p>
+<dt>E-Mail-Serverfehler</dt><dd><p>Sending was unsuccessful with a state that can be retried (ex: the SMTP server couldn’t be reached). The outbox will retry sending the message.</p>
 </dd>
 <dt>Nachricht konnte nicht gesendet werden</dt><dd><p>Das Senden kann fehlgeschlagen sein, muss aber nicht. Der Mailserver kann uns den Status der Nachricht nicht mitteilen. Da die Mail-App den Status der Nachricht (gesendet oder nicht gesendet) nicht bestimmen kann, bleibt die Nachricht im Postausgang und der Kontobenutzer muss entscheiden, wie er weiter vorgeht.</p>
 </dd>
@@ -508,7 +508,7 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
-<p>Der Veranstaltungstitel und eine Tagesordnung werden für Sie erstellt, wenn die Administration dies aktiviert hat.</p>
+<p>An event title and agenda are created for you if the administrator has enabled it.</p>
 </div>
 </section>
 <section id="create-a-task">

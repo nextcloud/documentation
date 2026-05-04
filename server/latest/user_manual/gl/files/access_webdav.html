@@ -305,10 +305,6 @@ for example
 </section>
 <section id="accessing-files-using-macos">
 <h2>Acceder a ficheiros mediante macOS<a class="headerlink" href="#accessing-files-using-macos" title="Ligazón a este título"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>Para acceder a ficheiros a través do Finder do macOS:</p>
 <ol class="arabic">
 <li><p>Na barra de menú superior do Finder, escolla <strong>Ir → Conectar co servidor…</strong>.</p>
@@ -441,8 +437,8 @@ for example
 </section>
 <section id="known-problems">
 <h2>Problemas coñecidos<a class="headerlink" href="#known-problems" title="Ligazón a este título"></a></h2>
-<section id="id4">
-<h3>Problema<a class="headerlink" href="#id4" title="Ligazón a este título"></a></h3>
+<section id="id3">
+<h3>Problema<a class="headerlink" href="#id3" title="Ligazón a este título"></a></h3>
 <p>Windows non se conecta usando HTTPS.</p>
 </section>
 <section id="solution-1">
@@ -453,37 +449,37 @@ for example
 <h3>Solución 2<a class="headerlink" href="#solution-2" title="Ligazón a este título"></a></h3>
 <p>O cliente WebDAV de Windows podería non admitir conexións TLSv1.1 e TLSv1.2. Se restrinxiu a configuración do servidor para que só forneza TLSv1.1 e superior a conexión ao servidor pode fallar. Para obter máis información, consulte a documentación <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a>.</p>
 </section>
-<section id="id5">
-<h3>Problema<a class="headerlink" href="#id5" title="Ligazón a este título"></a></h3>
+<section id="id4">
+<h3>Problema<a class="headerlink" href="#id4" title="Ligazón a este título"></a></h3>
 <p>Recibe a seguinte mensaxe de erro: <strong>Erro 0x800700DF: o tamaño do ficheiro supera o límite permitido e non é posíbel gardalo.</strong></p>
 </section>
-<section id="id6">
-<h3>Solución<a class="headerlink" href="#id6" title="Ligazón a este título"></a></h3>
+<section id="id5">
+<h3>Solución<a class="headerlink" href="#id5" title="Ligazón a este título"></a></h3>
 <p>Windows limita o tamaño máximo que pode ter un ficheiro transferido de ou a unha compartición de WebDAV. Pode aumentar o valor <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> en <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> premendo en <strong>Modificar</strong>.</p>
 <p>Para aumentar o límite ao valor máximo de 4GB, seleccione <strong>Decimal</strong>, introduza un valor de <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> e reinicie Windows ou reinicie o servizo <strong>WebClient</strong>.</p>
 </section>
-<section id="id7">
-<h3>Problema<a class="headerlink" href="#id7" title="Ligazón a este título"></a></h3>
+<section id="id6">
+<h3>Problema<a class="headerlink" href="#id6" title="Ligazón a este título"></a></h3>
 <p>Engadir unha unidade WebDAV en Windows a través dos pasos descritos anteriormente non amosa o tamaño correcto do espazo dispoñíbel en Nextcloud e, no seu lugar, amosa o tamaño da unidade C: co seu espazo dispoñíbel</p>
 </section>
 <section id="answer">
 <h3>Resposta<a class="headerlink" href="#answer" title="Ligazón a este título"></a></h3>
 <p>Desafortunadamente, esta é unha limitación do propio WebDAV, porque non fornece un xeito para que o cliente obteña o espazo libre dispoñíbel do servidor. Windows retrocede automaticamente para amosar o tamaño da unidade C: co seu espazo dispoñíbel. Desafortunadamente, non hai unha solución real a este problema.</p>
 </section>
-<section id="id8">
-<h3>Problema<a class="headerlink" href="#id8" title="Ligazón a este título"></a></h3>
+<section id="id7">
+<h3>Problema<a class="headerlink" href="#id7" title="Ligazón a este título"></a></h3>
 <p>O acceso aos seus ficheiros desde o Office de Microsoft a través de WebDAV falla.</p>
 </section>
-<section id="id9">
-<h3>Solución<a class="headerlink" href="#id9" title="Ligazón a este título"></a></h3>
+<section id="id8">
+<h3>Solución<a class="headerlink" href="#id8" title="Ligazón a este título"></a></h3>
 <p>Os problemas coñecidos e as súas solucións están documentados no artigo <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
 </section>
-<section id="id10">
-<h3>Problema<a class="headerlink" href="#id10" title="Ligazón a este título"></a></h3>
+<section id="id9">
+<h3>Problema<a class="headerlink" href="#id9" title="Ligazón a este título"></a></h3>
 <p>Non é posíbel asignar o Nextcloud como unidade WebDAV en Windows mediante certificado autoasinado.</p>
 </section>
-<section id="id11">
-<h3>Solución<a class="headerlink" href="#id11" title="Ligazón a este título"></a></h3>
+<section id="id10">
+<h3>Solución<a class="headerlink" href="#id10" title="Ligazón a este título"></a></h3>
 <ol class="arabic simple">
 <li><p>Acceda á súa instancia de Nextcloud a través do seu navegador web favorito.</p></li>
 <li><p>Prema ata chegar ao erro do certificado na liña de estado do navegador.</p></li>

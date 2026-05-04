@@ -314,10 +314,6 @@ for example
 </section>
 <section id="accessing-files-using-macos">
 <h2>الوصول للملفات باستخدام macOS<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">ملاحظة</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>للوصول إلى الملفات من خلال macOS Finder:</p>
 <ol class="arabic">
 <li><p>من شريط القائمة العلوي لـ Finder ، اختر <strong>Go &gt; Connect to Server…</strong>:</p>
@@ -453,8 +449,8 @@ that the <code class="docutils literal notranslate"><span class="pre">WebClient<
 </section>
 <section id="known-problems">
 <h2>إشكاليّات معروفة<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
-<section id="id4">
-<h3>مشكلة<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>مشكلة<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>وندوز لا تستطيع الربط باستعمال HTTPS.</p>
 </section>
 <section id="solution-1">
@@ -465,12 +461,12 @@ that the <code class="docutils literal notranslate"><span class="pre">WebClient<
 <h3>الحل 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>قد لا يدعم عميل WebDAV في وندوز اتصالات TLSv1.1 و TLSv1.2. إذا قمت بتقييد تكوين خادومك لتوفير TLSv1.1 فقط و ما فوقها، فقد يفشل الاتصال بالخادوم. يُرجى الرجوع إلى وثائق <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> للحصول على مزيد من المعلومات.</p>
 </section>
-<section id="id5">
-<h3>مشكلة<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>مشكلة<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>أنت تتلقى رسالة الخطأ التالية: <strong>خطأ 0x800700DF: حجم الملف يتجاوز الحد المسموح به ولا يمكن حفظه.</strong></p>
 </section>
-<section id="id6">
-<h3>الحل<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>الحل<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Windows limits the maximum size a file transferred from or to a WebDAV share
 may have. You can increase the value <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> in
 <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code>
@@ -479,28 +475,28 @@ by clicking on <strong>Modify</strong>.</p>
 value of <code class="docutils literal notranslate"><span class="pre">4294967295</span></code>, and reboot Windows or restart the <strong>WebClient</strong>
 service.</p>
 </section>
-<section id="id7">
-<h3>مشكلة<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>مشكلة<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>لا تؤدي إضافة محرك WebDAV على نظام التشغيل وندوز عبر الخطوات الموضحة أعلاه إلى عرض الحجم الصحيح للمساحة المتوفرة في نكست كلاود، و بدلاً من ذلك تُظهِر حجم محرك الأقراص :C مع المساحة المتوفرة به.</p>
 </section>
 <section id="answer">
 <h3>الجواب<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
 <p>لسوء الحظ، يعد هذا تقييدًا لـ WebDAV نفسه، لأنه لا يوفر طريقةً للعميل للحصول على المساحة الخالية المتوفرة له على الخادوم. يعود وندوز تلقائيّاً لإظهار حجم محرك الأقراص :C بمساحته المتوفرة بدلاً من ذلك. لذلك للأسف لا يوجد حل حقيقي لهذه المشكلة.</p>
 </section>
-<section id="id8">
-<h3>مشكلة<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>مشكلة<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>فشل الوصول إلى ملفاتك من مايكروسوف أوفيس MS Office عبر WebDAV.</p>
 </section>
-<section id="id9">
-<h3>الحل<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>الحل<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>إشكاليات معروفة و حلولها موثقة في المقال <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
 </section>
-<section id="id10">
-<h3>مشكلة<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>مشكلة<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>يتعذّر تعيين map نكست كلاود كمحرك اقراص WebDAV في وندوز باستعمال شهادة ذاتية التوقيع.</p>
 </section>
-<section id="id11">
-<h3>الحل<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>الحل<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>الوصول إلى خادوم نكست كلاود عبر متصفح الوب المفضل عندك.</p></li>
 <li><p>أنقُر حتى تصل إلى خطأ الشهادة certificate error في سطر حالة المتصفح browser status line.</p></li>

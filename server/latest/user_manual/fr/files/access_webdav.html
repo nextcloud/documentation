@@ -133,8 +133,8 @@
 <p>Avant de configurer WebDAV, regardons la méthode recommandée de connecter des appareils client à Nextcloud.</p>
 <section id="official-nextcloud-desktop-and-mobile-clients">
 <h2>Clients officiels Nextcloud pour ordinateurs et mobiles<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Lien vers cette rubrique"></a></h2>
-<p>La méthode recommandée de synchroniser un ordinateur avec un serveur Nextcloud est d’utiliser le <a href="#id12"><span class="problematic" id="id13">`client de synchronisation officiel Nextcloud&lt;https://nextcloud.com/install/#install-clients&gt;`_</span></a>. Vous pouvez configurer le client pour sauvegarder des fichiers dans n’importe quel répertoire local et vous pouvez choisir avec quels répertoires du serveur se synchroniser. Le client affiche l’état actuel de la connexion et enregistre toutes les activités, vous pouvez donc toujours savoir quel fichier distant a été téléchargé sur votre ordinateur et vous pouvez vérifier que les fichiers créés et mis à jour sur votre ordinateur local sont bien été synchronisés.</p>
-<p>La méthode recommandée pour synchroniser les périphériques Android et Apple iOS est d’utiliser les <a href="#id14"><span class="problematic" id="id15">`applications mobiles officielles Nextcloud&lt;https://nextcloud.com/install/&gt;`_</span></a>.</p>
+<p>La méthode recommandée de synchroniser un ordinateur avec un serveur Nextcloud est d’utiliser le <a href="#id11"><span class="problematic" id="id12">`client de synchronisation officiel Nextcloud&lt;https://nextcloud.com/install/#install-clients&gt;`_</span></a>. Vous pouvez configurer le client pour sauvegarder des fichiers dans n’importe quel répertoire local et vous pouvez choisir avec quels répertoires du serveur se synchroniser. Le client affiche l’état actuel de la connexion et enregistre toutes les activités, vous pouvez donc toujours savoir quel fichier distant a été téléchargé sur votre ordinateur et vous pouvez vérifier que les fichiers créés et mis à jour sur votre ordinateur local sont bien été synchronisés.</p>
+<p>La méthode recommandée pour synchroniser les périphériques Android et Apple iOS est d’utiliser les <a href="#id13"><span class="problematic" id="id14">`applications mobiles officielles Nextcloud&lt;https://nextcloud.com/install/&gt;`_</span></a>.</p>
 <p>Pour connecter les applications Nextcloud officielles à un serveur Nextcloud, utilisez la même URL que celle que vous utilisez pour accéder à Nextcloud depuis votre navigateur web - par ex.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
@@ -305,10 +305,6 @@ for example
 </section>
 <section id="accessing-files-using-macos">
 <h2>Accéder aux fichiers sous macOS<a class="headerlink" href="#accessing-files-using-macos" title="Lien vers cette rubrique"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>Pour accéder aux fichiers avec le Finder de macOS :</p>
 <ol class="arabic">
 <li><p>Depuis la barre de menu supérieure du Finder, choisissez <strong>Aller &gt; Se connecter au serveur…</strong>:</p>
@@ -441,8 +437,8 @@ for example
 </section>
 <section id="known-problems">
 <h2>Problèmes connus<a class="headerlink" href="#known-problems" title="Lien vers cette rubrique"></a></h2>
-<section id="id4">
-<h3>Problème<a class="headerlink" href="#id4" title="Lien vers cette rubrique"></a></h3>
+<section id="id3">
+<h3>Problème<a class="headerlink" href="#id3" title="Lien vers cette rubrique"></a></h3>
 <p>Windows ne se connecte pas avec HTTPS.</p>
 </section>
 <section id="solution-1">
@@ -453,37 +449,37 @@ for example
 <h3>Solution 2<a class="headerlink" href="#solution-2" title="Lien vers cette rubrique"></a></h3>
 <p>Le client Windows WebDAV pourrait ne pas supporter les connections TLSv1.1 / TLSv1.2. Si vous avez restreint la configuration de votre serveur dans le but de fournir uniquement des connections TLSv1.1 et plus, la connexion à votre serveur pourrait échouer. Référez vous à la documentation <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> pour plus d’informations.</p>
 </section>
-<section id="id5">
-<h3>Problème<a class="headerlink" href="#id5" title="Lien vers cette rubrique"></a></h3>
+<section id="id4">
+<h3>Problème<a class="headerlink" href="#id4" title="Lien vers cette rubrique"></a></h3>
 <p>Vous avez obtenu le message d’erreur suivant : <strong>Erreur 0x800700DF : La taille du fichier dépasse la limite autorisée ; il ne peut être enregistré.</strong></p>
 </section>
-<section id="id6">
-<h3>Solution<a class="headerlink" href="#id6" title="Lien vers cette rubrique"></a></h3>
+<section id="id5">
+<h3>Solution<a class="headerlink" href="#id5" title="Lien vers cette rubrique"></a></h3>
 <p>Windows limite la taille maximum des fichiers transférés via un partage WebDAV.  Vous pouvez augmenter la valeur <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> dans <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> en cliquant sur <strong>Modifier</strong>.</p>
 <p>Pour augmenter la limite à la valeur maximal de 4GB, sélectionnez <strong>Décimal</strong>, entrez la valeur <code class="docutils literal notranslate"><span class="pre">4294967295</span></code>, et relancez Windows ou redémarrez le service <strong>WebClient</strong>.</p>
 </section>
-<section id="id7">
-<h3>Problème<a class="headerlink" href="#id7" title="Lien vers cette rubrique"></a></h3>
+<section id="id6">
+<h3>Problème<a class="headerlink" href="#id6" title="Lien vers cette rubrique"></a></h3>
 <p>L’ajout d’un lecteur WebDAV sous Windows via les étapes décrites ci-dessus n’affiche pas la taille correcte de l’espace disponible dans Nextcloud et affiche à la place la taille du lecteur C: avec son espace disponible.</p>
 </section>
 <section id="answer">
 <h3>Réponse<a class="headerlink" href="#answer" title="Lien vers cette rubrique"></a></h3>
 <p>Malheureusement, il s’agit d’une limite de WebDAV lui-même, car il n’offre pas la possibilité pour le client de connaître l’espace libre disponible depuis le serveur. Windows revient automatiquement à l’affichage de la taille du lecteur C: avec son espace disponible. Il n’y a donc malheureusement pas de véritable solution à ce problème.</p>
 </section>
-<section id="id8">
-<h3>Problème<a class="headerlink" href="#id8" title="Lien vers cette rubrique"></a></h3>
+<section id="id7">
+<h3>Problème<a class="headerlink" href="#id7" title="Lien vers cette rubrique"></a></h3>
 <p>Problème d’accès à vos fichiers avec Microsoft Office via WebDAV</p>
 </section>
-<section id="id9">
-<h3>Solution<a class="headerlink" href="#id9" title="Lien vers cette rubrique"></a></h3>
+<section id="id8">
+<h3>Solution<a class="headerlink" href="#id8" title="Lien vers cette rubrique"></a></h3>
 <p>Les problèmes connus et leurs solutions sont documentés dans l’article <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
 </section>
-<section id="id10">
-<h3>Problème<a class="headerlink" href="#id10" title="Lien vers cette rubrique"></a></h3>
+<section id="id9">
+<h3>Problème<a class="headerlink" href="#id9" title="Lien vers cette rubrique"></a></h3>
 <p>Impossible de mapper Nextcloud en tant que lecteur WebDAV sous Windows à l’aide d’un certificat auto-signé.</p>
 </section>
-<section id="id11">
-<h3>Solution<a class="headerlink" href="#id11" title="Lien vers cette rubrique"></a></h3>
+<section id="id10">
+<h3>Solution<a class="headerlink" href="#id10" title="Lien vers cette rubrique"></a></h3>
 <ol class="arabic simple">
 <li><p>Accédez à votre instance Nextcloud via votre navigateur Web préféré.</p></li>
 <li><p>Cliquez jusqu’à ce que vous arriviez à l’erreur de certificat dans la ligne d’état du navigateur.</p></li>

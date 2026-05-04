@@ -305,10 +305,6 @@ for example
 </section>
 <section id="accessing-files-using-macos">
 <h2>使用 macOS 存取檔案<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>通過 macOS Finder 存取檔案：</p>
 <ol class="arabic">
 <li><p>在 Finder 的頂部選項單欄中，選擇 <strong>前往 &gt; 連接到伺服器…</strong>：</p>
@@ -441,8 +437,8 @@ for example
 </section>
 <section id="known-problems">
 <h2>已知問題<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
-<section id="id4">
-<h3>問題<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>問題<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>Windows 無法使用 HTTPS 連接。</p>
 </section>
 <section id="solution-1">
@@ -453,37 +449,37 @@ for example
 <h3>解決方案 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>Windows WebDAV 客戶端可能不支持 TLSv1.1 和 TLSv1.2 連接。如果您已限制伺服器配置僅提供 TLSv1.1 及以上，則與伺服器的連接可能會失敗。請參考 <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> 文檔以獲取更多信息。</p>
 </section>
-<section id="id5">
-<h3>問題<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>問題<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>您收到以下錯誤消息：<strong>錯誤 0x800700DF：檔案大小超過了允許的限制，無法保存。</strong></p>
 </section>
-<section id="id6">
-<h3>解決方案<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>解決方案<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Windows 限制從 WebDAV 共享傳輸的檔案的最大大小。您可以通過單擊 <strong>修改</strong> 來增加 <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> 值。</p>
 <p>要將限制提高到最大值 4GB，選擇 <strong>十進制</strong>，輸入值 &quot;4294967295&quot;，然後重啟 Windows 或重新啟動 <strong>WebClient</strong> 服務。</p>
 </section>
-<section id="id7">
-<h3>問題<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>問題<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>根據上述步驟在 Windows 上添加 WebDAV 驅動器不會顯示 Nextcloud 可用空間的正確大小，而是顯示 C: 驅動器的大小及其可用空間。</p>
 </section>
 <section id="answer">
 <h3>回答<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
 <p>不幸的是，這是 WebDAV 本身的限制，因為它不提供客戶端從伺服器獲取可用空間的方法。Windows 自動回退到顯示 C: 驅動器的大小及其可用空間。因此不幸的是，對於這個問題沒有真正的解決方案。</p>
 </section>
-<section id="id8">
-<h3>問題<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>問題<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>通過 WebDAV 存取 Microsoft Office 中的檔案失敗。</p>
 </section>
-<section id="id9">
-<h3>解決方案<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>解決方案<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>已知問題及其解決方案記載在 <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> 文章中。</p>
 </section>
-<section id="id10">
-<h3>問題<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>問題<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>無法使用自簽名證書在 Windows 中將 Nextcloud 映射為 WebDAV 驅動器。</p>
 </section>
-<section id="id11">
-<h3>解決方案<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>解決方案<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>通過您喜愛的 Web 瀏覽器存取您的 Nextcloud 實例。</p></li>
 <li><p>點擊直到您在瀏覽器狀態行中遇到證書錯誤。</p></li>

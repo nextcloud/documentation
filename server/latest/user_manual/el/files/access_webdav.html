@@ -305,10 +305,6 @@ for example
 </section>
 <section id="accessing-files-using-macos">
 <h2>Πρόσβαση σε αρχεία χρησιμοποιώντας macOS<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Σημείωση</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>Για πρόσβαση σε αρχεία μέσω του macOS Finder:</p>
 <ol class="arabic">
 <li><p>Από τη μενού γραμμή του Finder, επιλέξτε <strong>Μετάβαση &gt; Σύνδεση με Διακομιστή…</strong>:</p>
@@ -441,8 +437,8 @@ for example
 </section>
 <section id="known-problems">
 <h2>Γνωστά προβλήματα<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
-<section id="id4">
-<h3>Πρόβλημα<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>Πρόβλημα<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>Τα Windows δεν συνδέονται χρησιμοποιώντας HTTPS.</p>
 </section>
 <section id="solution-1">
@@ -453,37 +449,37 @@ for example
 <h3>Λύση 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>Ο Πελάτης WebDAV των Windows ενδέχεται να μην υποστηρίζει συνδέσεις TLSv1.1 και TLSv1.2. Εάν έχετε περιορίσει τη διαμόρφωση του διακομιστή σας να παρέχει μόνο TLSv1.1 και άνω, η σύνδεση με τον διακομιστή σας ενδέχεται να αποτύχει. Παρακαλώ ανατρέξτε στην τεκμηρίωση <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> για περισσότερες πληροφορίες.</p>
 </section>
-<section id="id5">
-<h3>Πρόβλημα<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>Πρόβλημα<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>Λαμβάνετε το ακόλουθο μήνυμα σφάλματος: <strong>Σφάλμα 0x800700DF: Το μέγεθος του αρχείου υπερβαίνει το επιτρεπόμενο όριο και δεν μπορεί να αποθηκευτεί.</strong></p>
 </section>
-<section id="id6">
-<h3>Λύση<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>Λύση<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Τα Windows περιορίζουν το μέγιστο μέγεθος που μπορεί να έχει ένα αρχείο που μεταφέρεται από ή προς μια κοινή χρήση WebDAV. Μπορείτε να αυξήσετε την τιμή <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> στο <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> κάνοντας κλικ στο <strong>Τροποποίηση</strong>.</p>
 <p>Για να αυξήσετε το όριο στη μέγιστη τιμή των 4GB, επιλέξτε <strong>Δεκαδικό</strong>, εισάγετε μια τιμή <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> και επανεκκινήστε τα Windows ή επανεκκινήστε την υπηρεσία <strong>WebClient</strong>.</p>
 </section>
-<section id="id7">
-<h3>Πρόβλημα<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Πρόβλημα<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Η προσθήκη μιας μονάδας δίσκου WebDAV στα Windows μέσω των παραπάνω βημάτων δεν εμφανίζει το σωστό μέγεθος του διαθέσιμου χώρου στο Nextcloud και αντίθετα εμφανίζει το μέγεθος της μονάδας δίσκου C: με τον διαθέσιμο χώρο της.</p>
 </section>
 <section id="answer">
 <h3>Απάντηση<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
 <p>Δυστυχώς αυτός είναι ένας περιορισμός του ίδιου του WebDAV, επειδή δεν παρέχει τρόπο για τον πελάτη να λάβει τον διαθέσιμο ελεύθερο χώρο από τον διακομιστή. Τα Windows αυτόματα επιστρέφουν στην εμφάνιση του μεγέθους της μονάδας δίσκου C: με τον διαθέσιμο χώρο της. Δυστυχώς λοιπόν δεν υπάρχει πραγματική λύση σε αυτό το πρόβλημα.</p>
 </section>
-<section id="id8">
-<h3>Πρόβλημα<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Πρόβλημα<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>Αποτυγχάνει η πρόσβαση στα αρχεία σας από το Microsoft Office μέσω WebDAV.</p>
 </section>
-<section id="id9">
-<h3>Λύση<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Λύση<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Τα γνωστά προβλήματα και οι λύσεις τους τεκμηριώνονται στο άρθρο <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
 </section>
-<section id="id10">
-<h3>Πρόβλημα<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>Πρόβλημα<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>Δεν είναι δυνατή η αντιστοίχιση του Nextcloud ως μονάδας δίσκου WebDAV στα Windows χρησιμοποιώντας αυτο-υπογεγραμμένο πιστοποιητικό.</p>
 </section>
-<section id="id11">
-<h3>Λύση<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>Λύση<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Πρόσβαση στην παρουσία Nextcloud σας μέσω του αγαπημένου σας προγράμματος περιήγησης Web.</p></li>
 <li><p>Κάντε κλικ μέχρι να φτάσετε στο σφάλμα πιστοποιητικού στη γραμμή κατάστασης του προγράμματος περιήγησης.</p></li>

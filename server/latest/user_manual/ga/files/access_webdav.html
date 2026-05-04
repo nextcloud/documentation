@@ -151,7 +151,7 @@
 <p>I measc na gcliant móibíleacha a thuairiscigh baill pobail Nextcloud a úsáideann:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://foldersync.io/">FolderSync (Android)</a></p></li>
-<li><p><a href="#id12"><span class="problematic" id="id13">`WebDAV Navigator (iPhone) &lt; https://apps.apple.com/us/app/webdav-navigator/id382551345&gt;`_</span></a></p></li>
+<li><p><a href="#id11"><span class="problematic" id="id12">`WebDAV Navigator (iPhone) &lt; https://apps.apple.com/us/app/webdav-navigator/id382551345&gt;`_</span></a></p></li>
 </ul>
 <p>Tá an URL le húsáid agus aipeanna tríú páirtí á chumrú chun nascadh le Nextcloud beagán níos faide ná an URL do chliaint oifigiúla:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
@@ -304,10 +304,6 @@ for example
 </section>
 <section id="accessing-files-using-macos">
 <h2>Comhaid a rochtain ag baint úsáide as macOS<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>Chun comhaid a rochtain tríd an Aimsitheoir macOS:</p>
 <ol class="arabic">
 <li><p>Ó bharrbharra roghchláir an Aimsitheoir, roghnaigh <strong>Téigh &gt; Ceangail le Freastalaí…</strong>:</p>
@@ -440,8 +436,8 @@ for example
 </section>
 <section id="known-problems">
 <h2>Fadhbanna aitheanta<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
-<section id="id4">
-<h3>Fadhb<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>Fadhb<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>Ní nascann Windows le HTTPS.</p>
 </section>
 <section id="solution-1">
@@ -452,37 +448,37 @@ for example
 <h3>Réiteach 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>Seans nach dtacaíonn Cliant Windows WebDAV le naisc TLSv1.1 agus TLSv1.2. Má tá srian curtha agat le cumraíocht do fhreastalaí chun TLSv1.1 agus os a chionn amháin a sholáthar, seans go dteipfidh ar an gceangal le do fhreastalaí. Féach le do thoil ar dhoiciméadú <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> le haghaidh tuilleadh eolais.</p>
 </section>
-<section id="id5">
-<h3>Fadhb<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>Fadhb<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>Faigheann tú an teachtaireacht earráide seo a leanas: <strong>Earráid 0x800700DF: Sáraíonn méid an chomhaid an teorainn atá ceadaithe agus ní féidir é a shábháil.</strong></p>
 </section>
-<section id="id6">
-<h3>Réiteach<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>Réiteach<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Cuireann Windows teorainn leis an uasmhéid a fhéadfaidh comhad a aistriú ó nó chuig sciar WebDAV. Is féidir leat an luach <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> a mhéadú i <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> trí chliceáil ar <a href="#id1"><span class="problematic" id="id2">**</span></a>Athraigh <a href="#id3"><span class="problematic" id="id4">**</span></a>.</p>
 <p>Chun an teorainn go dtí an t-uasluach 4GB a mhéadú, roghnaigh <strong>Deachúil</strong>, cuir isteach luach <code class="docutils literal notranslate"><span class="pre">4294967295</span></code>, agus atosaigh Windows nó atosaigh an tseirbhís <strong>WebClient</strong>.</p>
 </section>
-<section id="id7">
-<h3>Fadhb<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Fadhb<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Má chuirtear tiomántán WebDAV ar Windows leis na céimeanna thuasluaite, ní thaispeánfar an méid ceart spáis atá ar fáil sa Nextcloud agus ina ionad sin taispeánann sé méid an tiomántáin C: leis an spás atá ar fáil dó.</p>
 </section>
 <section id="answer">
 <h3>Freagra<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
 <p>Ar an drochuair, is teorannú é seo ar WebDAV féin, toisc nach dtugann sé bealach don chliant an spás saor in aisce atá ar fáil a fháil ón bhfreastalaí. Titeann Windows ar ais go huathoibríoch chun méid an tiomántáin C: a thaispeáint leis an spás atá ar fáil ina ionad. Mar sin, ar an drochuair, níl aon réiteach fíor ar an bhfadhb seo.</p>
 </section>
-<section id="id8">
-<h3>Fadhb<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Fadhb<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>Theip ar rochtain a fháil ar do chuid comhad ó Microsoft Office trí WebDAV.</p>
 </section>
-<section id="id9">
-<h3>Réiteach<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Réiteach<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Déantar fadhbanna aitheanta agus a réitigh a dhoiciméadú san alt <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
 </section>
-<section id="id10">
-<h3>Fadhb<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>Fadhb<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>Ní féidir Nextcloud a mhapáil mar thiomáint WebDAV i Windows ag baint úsáide as teastas féin-shínithe.</p>
 </section>
-<section id="id11">
-<h3>Réiteach<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>Réiteach<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Rochtain ar do shampla Nextcloud tríd an mbrabhsálaí Gréasáin is fearr leat.</p></li>
 <li><p>Cliceáil ar aghaidh go dtí go bhfaighidh tú an earráid deimhnithe i líne stádais an bhrabhsálaí.</p></li>
