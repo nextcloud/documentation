@@ -66,18 +66,19 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Файли та синхронізація</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="accessing.html">Accessing your files</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Accessing your files using the Nextcloud web interface</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tagging-files">Тегування файлів</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#comments">Коментарі</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#video-player">Відеоплеєр</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#navigating-your-files">Navigating your files</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-controls">Керування файлами</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#previewing-files">Попередній перегляд файлів</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#navigating-inside-your-nextcloud">Навігація всередині Nextcloud</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sharing-status-icons">Спільний доступ до значків стану</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creating-or-uploading-files-and-directories">Створення або завантаження файлів і каталогів</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#details-sidebar">Details sidebar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#activity-and-comments">Activity and comments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#searching-and-filtering">Searching and filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grid-view">Grid view</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uploading-and-creating-files">Uploading and creating files</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#selecting-files-or-folders">Вибір файлів або папок</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#filtering-the-files-view">Фільтрація перегляду файлів</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-status-icons">Спільний доступ до значків стану</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#moving-files">Переміщення файлів</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creating-or-connecting-to-a-federation-share-link">Створення або підключення до посилання Federation Share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#previewing-files">Попередній перегляд файлів</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video-player">Відеоплеєр</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connecting-to-a-federation-share">Connecting to a Federation Share</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="access_webdav.html">Доступ до файлів Nextcloud за допомогою WebDAV</a></li>
@@ -130,133 +131,164 @@
 <h1>Accessing your files using the Nextcloud web interface<a class="headerlink" href="#accessing-your-files-using-the-nextcloud-web-interface" title="Link to this heading"></a></h1>
 <p>Ви можете отримати доступ до своїх файлів у Nextcloud за допомогою веб-інтерфейсу Nextcloud, а також створювати, переглядати, редагувати, видаляти, надавати спільний доступ і повторно поширювати файли. Ваш адміністратор Nextcloud має можливість вимкнути ці функції, тому якщо якісь із них відсутні у вашій системі, зверніться до адміністратора вашого сервера.</p>
 <figure class="align-default">
-<img alt="Екран перегляду файлів." src="../../_images/users-files.png" />
+<img alt="The Files app showing a list of files and folders." src="../../_images/users-files.png" />
 </figure>
-<section id="tagging-files">
-<h2>Тегування файлів<a class="headerlink" href="#tagging-files" title="Link to this heading"></a></h2>
-<p>Ви можете призначати файлам мітки. Щоб створити мітки, відкрийте файл у поданні Деталі. Потім введіть мітки. Щоб ввести кілька тегів, натискайте клавішу повернення після створення кожного тегу. Всі теги є системними і доступні всім користувачам на вашому сервері Nextcloud.</p>
+<section id="navigating-your-files">
+<h2>Navigating your files<a class="headerlink" href="#navigating-your-files" title="Link to this heading"></a></h2>
+<p>The left sidebar lets you switch between different views of your files. Click a
+folder name in the file list to open it, and use your browser’s back button or
+the breadcrumb bar at the top of the file list to return to a previous level.</p>
 <figure class="align-default">
-<img alt="Створення тегів файлів." src="../../_images/files_page-7.png" />
+<img alt="The Files app left navigation panel." src="../../_images/files_page-5.png" />
 </figure>
-<p>Потім скористайтеся фільтром «Теги» на лівій бічній панелі, щоб відфільтрувати файли за тегами:</p>
+<p>The sidebar contains the following entries:</p>
+<dl class="simple">
+<dt>Всі файли</dt><dd><p>The default view, showing every file and folder you have access to.</p>
+</dd>
+<dt>Recent</dt><dd><p>Files you have viewed or modified recently.</p>
+</dd>
+<dt>Вибране</dt><dd><p>Files and folders you have starred.</p>
+</dd>
+<dt>Shares</dt><dd><p>Files shared with you, by you, or via a public link — all in one view.</p>
+</dd>
+<dt>Tags</dt><dd><p>Browse files by system tag.</p>
+</dd>
+<dt>Deleted files</dt><dd><p>Files you have deleted that are still recoverable from the trash bin.</p>
+</dd>
+</dl>
+<p>When you navigate into a folder, a breadcrumb trail appears at the top of the
+file list so you can jump back to any parent folder with a single click:</p>
 <figure class="align-default">
-<img alt="Перегляд тегів файлів." src="../../_images/files_page-8.png" />
-</figure>
-</section>
-<section id="comments">
-<h2>Коментарі<a class="headerlink" href="#comments" title="Link to this heading"></a></h2>
-<p>Використовуйте подання Деталі, щоб додавати і читати коментарі до будь-якого файлу або теки. Коментарі видно всім, хто має доступ до файлу:</p>
-<figure class="align-default">
-<img alt="Створення та перегляд коментарів." src="../../_images/file_menu_comments_2.png" />
-</figure>
-</section>
-<section id="video-player">
-<h2>Відеоплеєр<a class="headerlink" href="#video-player" title="Link to this heading"></a></h2>
-<p>You can play videos in Nextcloud with the Video Player app by simply clicking on
-the file. Video streaming by the native Nextcloud video player depends on your web browser
-and the video format. If your Nextcloud administrator has enabled video
-streaming and it does not work in your web browser, it may be a browser issue. See
-<code class="docutils literal notranslate"><span class="pre">https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility</span></code>
-for supported multimedia formats in web browsers.</p>
-<figure class="align-default">
-<img alt="Дивимося кіно." src="../../_images/video_player_2.png" />
+<img alt="Breadcrumb navigation inside a subfolder." src="../../_images/files_page-6.png" />
 </figure>
 </section>
 <section id="file-controls">
 <h2>Керування файлами<a class="headerlink" href="#file-controls" title="Link to this heading"></a></h2>
-<p>Nextcloud can display thumbnail previews for various file types, such as images, audio files, and text files.
-The specific types supported are up to the server administrator.
-Hover your cursor over a file or folder to expose the controls for the following operations:</p>
-<dl>
-<dt>Вибране</dt><dd><p>Натисніть зірочку зліва від іконки файлу, щоб позначити його як обраний:</p>
+<p>Nextcloud displays thumbnail previews for images, text files, and other
+supported types — the exact list depends on your server configuration.</p>
+<p>Each file and folder row has a three-dot action menu button. Click it to
+rename, move, copy, download, delete, or mark the item as a favorite.
+Files that have been marked as a favorite display a star icon:</p>
 <figure class="align-default">
-<img alt="Marking favorite files." src="../../_images/files_page-1.png" />
+<img alt="A file row with the actions menu open." src="../../_images/files_page-3.png" />
 </figure>
-<p>Ви також можете швидко знайти всі свої улюблені матеріали за допомогою фільтра «Вибране» на лівій бічній панелі.</p>
-</dd>
-<dt>Overflow menu</dt><dd><p>Меню «Переповнення» (три крапки) відображає інформацію про файл і дозволяє перейменовувати, завантажувати або видаляти файли:</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>You can quickly find all your favorites using the <strong>Favorites</strong>
+entry in the left sidebar.</p>
+</div>
+</section>
+<section id="details-sidebar">
+<h2>Details sidebar<a class="headerlink" href="#details-sidebar" title="Link to this heading"></a></h2>
+<p>Select <strong>Details</strong> from the three-dot action menu to open the details sidebar. The sidebar
+shows information about the selected file and provides tabbed access to its
+activity history, sharing options, and version history:</p>
 <figure class="align-default">
-<img alt="Переповнене меню." src="../../_images/files_page-3.png" />
-</figure>
-<p>У поданні Деталі відображається інформація про дії, спільний доступ і версії:</p>
-</dd>
-</dl>
-<figure class="align-default">
-<img alt="Екран деталей." src="../../_images/files_page-4.png" />
-</figure>
-<p>Піктограма <strong>Налаштування</strong> внизу ліворуч дозволяє вам показувати або приховувати приховані файли у вашому веб-інтерфейсі Nextcloud. Вони також називаються крапковими файлами, тому що до їхнього імені додається крапка, наприклад, <code class="docutils literal notranslate"><span class="pre">.mailfile</span></code>. Крапка вказує вашій операційній системі приховувати ці файли у ваших файлових браузерах, якщо ви не вирішите їх відображати. Зазвичай це конфігураційні файли, тому можливість їх приховування зменшує безлад.</p>
-<figure class="align-default">
-<img alt="Приховування або відображення прихованих файлів." src="../../_images/hidden_files.png" />
+<img alt="The details sidebar showing file information and tabs." src="../../_images/files_page-4.png" />
 </figure>
 </section>
-<section id="previewing-files">
-<h2>Попередній перегляд файлів<a class="headerlink" href="#previewing-files" title="Link to this heading"></a></h2>
-<p>Ви можете переглядати нестиснуті текстові файли, файли OpenDocument, відео та графічні файли у вбудованих засобах перегляду Nextcloud, натиснувши на назву файлу. Можуть бути й інші типи файлів, які ви можете попередньо переглянути, якщо ваш адміністратор Nextcloud увімкнув їх. Якщо Nextcloud не може відобразити файл, він почне процес завантаження і завантажить його на ваш комп’ютер.</p>
-</section>
-<section id="navigating-inside-your-nextcloud">
-<h2>Навігація всередині Nextcloud<a class="headerlink" href="#navigating-inside-your-nextcloud" title="Link to this heading"></a></h2>
-<p>Navigating through folders in Nextcloud is as simple as clicking on a folder to
-open it and using the back button on your browser to move to a previous level.
-Nextcloud also provides a navigation bar at the top of the Files page for quick
-navigation.</p>
-</section>
-<section id="sharing-status-icons">
-<h2>Спільний доступ до значків стану<a class="headerlink" href="#sharing-status-icons" title="Link to this heading"></a></h2>
-<p>Будь-яка тека, до якої надано спільний доступ, позначена значком «Спільний доступ». Теки, до яких надано спільний доступ, позначено ланцюжком. Теки, до яких немає спільного доступу, не позначено:</p>
+<section id="activity-and-comments">
+<h2>Activity and comments<a class="headerlink" href="#activity-and-comments" title="Link to this heading"></a></h2>
+<p>The <strong>Activity</strong> tab in the details sidebar shows a chronological log of
+changes to the file — uploads, edits, shares, and comments. You can leave
+a comment directly in this tab; comments are visible to everyone who has
+access to the file:</p>
 <figure class="align-default">
-<img alt="Діліться значками стану." src="../../_images/files_page-5.png" />
+<img alt="The Activity tab showing file history and a comment field." src="../../_images/file_menu_comments_2.png" />
 </figure>
 </section>
-<section id="creating-or-uploading-files-and-directories">
-<h2>Створення або завантаження файлів і каталогів<a class="headerlink" href="#creating-or-uploading-files-and-directories" title="Link to this heading"></a></h2>
-<p>Завантажуйте або створюйте нові файли чи папки безпосередньо в папці Nextcloud, натиснувши кнопку <em>Новий</em> у програмі Файли:</p>
+<section id="searching-and-filtering">
+<h2>Searching and filtering<a class="headerlink" href="#searching-and-filtering" title="Link to this heading"></a></h2>
+<p>Use the search bar at the top of the page to find files by name across all your
+files, or type in the search field inside the left sidebar to filter the current
+view:</p>
 <figure class="align-default">
-<img alt="Меню Новий файл/папка/завантажити." src="../../_images/files_page-6.png" />
+<img alt="The search field with a search term entered." src="../../_images/files_page-7.png" />
 </figure>
-<p>Кнопка <em>Новий</em> надає наступні можливості:</p>
+</section>
+<section id="grid-view">
+<h2>Grid view<a class="headerlink" href="#grid-view" title="Link to this heading"></a></h2>
+<p>The Files app defaults to a list view. Click the grid toggle button at the
+top-right of the file list to switch to a thumbnail grid, which is useful for
+browsing image folders:</p>
+<figure class="align-default">
+<img alt="Files displayed in thumbnail grid view." src="../../_images/files_page-8.png" />
+</figure>
+<p>Click the button again to return to the list view.</p>
+</section>
+<section id="uploading-and-creating-files">
+<h2>Uploading and creating files<a class="headerlink" href="#uploading-and-creating-files" title="Link to this heading"></a></h2>
+<p>Click the <strong>+</strong> button near the top of the file list to upload files from your
+computer or create new items in the current folder:</p>
+<figure class="align-default">
+<img alt="The New file and upload menu." src="../../_images/files_page-1.png" />
+</figure>
+<p>The menu offers the following options:</p>
 <dl class="simple">
-<dt>Стрілка вгору.</dt><dd><p>Завантажте файли з вашого комп’ютера в Nextcloud. Ви також можете завантажити файли, перетягнувши їх з файлового менеджера.</p>
+<dt>Upload file</dt><dd><p>Opens a file picker to upload one or more files from your computer. You can
+also drag and drop files directly from your file manager onto the file list.</p>
 </dd>
-<dt>Текстовий файл</dt><dd><p>Створює новий текстовий файл і додає його до вашої поточної теки.</p>
+<dt>Upload folder</dt><dd><p>Uploads an entire folder, preserving its structure.</p>
 </dd>
-<dt>Папка</dt><dd><p>Створює нову теку у поточній теці.</p>
+<dt>New folder</dt><dd><p>Creates a new empty folder in the current location.</p>
+</dd>
+<dt>New document / New spreadsheet / New presentation</dt><dd><p>Creates a new file using the built-in Nextcloud Text or Office editor,
+if enabled by your administrator.</p>
 </dd>
 </dl>
 </section>
 <section id="selecting-files-or-folders">
 <h2>Вибір файлів або папок<a class="headerlink" href="#selecting-files-or-folders" title="Link to this heading"></a></h2>
-<p>Ви можете вибрати один або декілька файлів або папок, натиснувши на їхні прапорці. Щоб вибрати всі файли в поточному каталозі, натисніть на прапорець у верхній частині списку файлів.</p>
-<p>Вибравши кілька файлів, ви можете видалити їх усі або завантажити як ZIP-файл за допомогою кнопок «Видалити» або «Завантажити», які з’являються вгорі.</p>
+<p>Click the checkbox to the left of a file or folder to select it. To select all
+items in the current folder, click the checkbox in the column header.</p>
+<p>With one or more items selected, action buttons appear at the top of the list.
+You can delete or download all selected items at once. Downloading multiple items
+produces a ZIP archive.</p>
+<figure class="align-default">
+<img alt="Multiple files selected with the bulk action bar visible." src="../../_images/files_page-9.png" />
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Примітка</p>
-<p>Якщо кнопка <code class="docutils literal notranslate"><span class="pre">Завантажити</span></code> не відображається, адміністратор вимкнув цю функцію.</p>
+<p>If the <strong>Download</strong> button is not visible, your administrator has
+disabled this feature.</p>
 </div>
 </section>
-<section id="filtering-the-files-view">
-<h2>Фільтрація перегляду файлів<a class="headerlink" href="#filtering-the-files-view" title="Link to this heading"></a></h2>
-<p>Ліва бічна панель на сторінці Файли містить кілька фільтрів для швидкого сортування та керування файлами.</p>
-<dl class="simple">
-<dt>Всі файли</dt><dd><p>Подання за замовчуванням; відображає всі файли, до яких ви маєте доступ.</p>
-</dd>
-<dt>Вибране</dt><dd><p>Файли або папки, позначені жовтою зірочкою.</p>
-</dd>
-<dt>Ділимося з вами</dt><dd><p>Відображає всі файли, до яких вам надано доступ іншим користувачем або групою.</p>
-</dd>
-<dt>Поділіться з іншими</dt><dd><p>Відображає всі файли, до яких ви надали спільний доступ іншим користувачам або групам.</p>
-</dd>
-<dt>Поділіться посиланням</dt><dd><p>Відображає всі файли, до яких ви надали спільний доступ за допомогою публічного посилання.</p>
-</dd>
-<dt>Зовнішній накопичувач (необов’язково)</dt><dd><p>Файли, до яких ви маєте доступ на зовнішніх пристроях зберігання даних і сервісах, таких як Amazon S3, SMB/CIFS, FTP…</p>
-</dd>
-</dl>
+<section id="sharing-status-icons">
+<h2>Спільний доступ до значків стану<a class="headerlink" href="#sharing-status-icons" title="Link to this heading"></a></h2>
+<p>Folders and files that have been shared display a <strong>Shared</strong> badge on their
+thumbnail or icon. Items shared via a public link also show a chain-link icon.
+Items that are not shared have no additional indicator.</p>
+<figure class="align-default">
+<img alt="File list showing a shared folder, a public-link-shared file, and unshared items." src="../../_images/files_sharing_status.png" />
+</figure>
+<p>See <a class="reference internal" href="sharing.html"><span class="doc">File sharing</span></a> for instructions on creating and managing shares.</p>
 </section>
 <section id="moving-files">
 <h2>Переміщення файлів<a class="headerlink" href="#moving-files" title="Link to this heading"></a></h2>
-<p>Ви можете переміщати файли і папки, перетягуючи їх у будь-яку директорію.</p>
+<p>Drag any file or folder and drop it onto a destination folder to move it.
+You can also use <strong>Move or copy</strong> from the three-dot action menu to move or copy
+items to a folder you choose from a picker dialog.</p>
 </section>
-<section id="creating-or-connecting-to-a-federation-share-link">
-<h2>Створення або підключення до посилання Federation Share<a class="headerlink" href="#creating-or-connecting-to-a-federation-share-link" title="Link to this heading"></a></h2>
-<p>Federated Cloud Sharing дозволяє монтувати файлові ресурси з віддалених серверів Nextcloud і керувати ними так само, як локальними ресурсами. Дивіться <a class="reference internal" href="federated_cloud_sharing.html"><span class="doc">Using federation shares</span></a>, щоб дізнатися, як створювати та підключатися до нових спільних ресурсів Federated Cloud.</p>
+<section id="previewing-files">
+<h2>Попередній перегляд файлів<a class="headerlink" href="#previewing-files" title="Link to this heading"></a></h2>
+<p>Click a file name to open a preview directly in Nextcloud. Supported formats
+include images, plain text, PDF, and — depending on your server — office
+documents and audio files. If Nextcloud cannot preview a file format, it
+downloads the file to your computer instead.</p>
+</section>
+<section id="video-player">
+<h2>Відеоплеєр<a class="headerlink" href="#video-player" title="Link to this heading"></a></h2>
+<p>You can play videos directly in Nextcloud by clicking the file. Playback
+depends on your browser and the video codec. See
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility">MDN: Supported media formats</a>
+for a compatibility reference.</p>
+</section>
+<section id="connecting-to-a-federation-share">
+<h2>Connecting to a Federation Share<a class="headerlink" href="#connecting-to-a-federation-share" title="Link to this heading"></a></h2>
+<p>Federated Cloud Sharing lets you mount file shares from remote Nextcloud
+servers and manage them just like local shares. See
+<a class="reference internal" href="federated_cloud_sharing.html"><span class="doc">Using federation shares</span></a> to learn how to create and connect to
+Federated Cloud shares.</p>
 </section>
 </section>
 
