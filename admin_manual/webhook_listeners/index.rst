@@ -114,6 +114,8 @@ still has an ID (i.e. is not a ``NonExistingFile``/``NonExistingFolder``).
 Use ``{ "event.class": "OCP\\Files\\Events\\Node\\NodeCreatedEvent" }`` to match only
 ``NodeCreatedEvent`` events (backslashes must be escaped in JSON strings).
 
+.. _webhook_dispatch:
+
 Speeding up webhook dispatch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

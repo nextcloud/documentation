@@ -8,6 +8,7 @@ Installation
 ------------
 
 * Set up a Windmill instance
+
    * This should be a stand-alone instance. The External App "Flow" (see :ref:`External Apps<ai-app_api>`) made it possible to have a packaged instance installed in Nextcloud, but this is deprecated since Nextcloud 33. For more information, please check out the admin manual for Nextcloud 32.
 
 * Enable the ``webhook_listeners`` app that comes with Nextcloud
@@ -19,6 +20,8 @@ Installation
 * Install the `Windmill integration <https://apps.nextcloud.com/apps/integration_windmill>`_
 
 * Enable :ref:`pretty_urls_label` in your Nextcloud instance
+
+* *Recommended but optional:* start :ref:`background job workers for the webhook listeners<webhook_dispatch>`
 
 Setting up the workspace connection
 -----------------------------------
