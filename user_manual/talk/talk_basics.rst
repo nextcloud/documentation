@@ -165,7 +165,7 @@ You can add more files until you are done and decide to share the files. You can
 .. image:: images/talk-upload-files.png
    :width: 500px
 
-All users will be able to click the files to view, edit or download them, irrespective of them having a user account. Users with an account will have the file automatically shared with them while external guest users will get them shared as a public link.
+All users will be able to click the files to view, edit or download them, regardless of whether they have a Nextcloud account. Users with an account will have the file automatically shared with them while external guest users will get them shared as a public link.
 
 .. image:: images/editing-document-in-chat-room.png
    :width: 600px
@@ -426,7 +426,7 @@ If somebody else has started a call already, the button will change in a green `
 .. image:: images/join-call.png
     :width: 600px
 
-During a call, you can mute your microphone and disable your video with the buttons on the right side of the top bar, or using the shortcuts ``M`` to mute audio and ``V`` to disable video. You can also use the space bar to toggle mute. When you are muted, pressing space will unmute you so you can speak until you let go of the space bar. If you are unmuted, pressing space will mute you until you let go.
+During a call, you can mute your microphone and disable your video with the buttons on the right side of the top bar, or using the shortcuts ``M`` to mute audio and ``V`` to disable video. You can also use the space bar for push-to-talk: holding space temporarily unmutes you while muted, or temporarily mutes you while unmuted.
 
 You can hide your video (useful during a screen share) with the little arrow just above the video stream. Bring it back with the little arrow again.
 
