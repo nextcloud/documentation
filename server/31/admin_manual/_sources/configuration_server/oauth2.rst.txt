@@ -41,3 +41,11 @@ Security considerations
 Nextcloud ``OAuth2`` implementation currently does not support scoped access. This means that every token has full access to the complete account including read and write permission to the stored files. It is essential to store the ``OAuth2`` tokens in a safe way! 
 
 Without scopes and restrictable access it is not recommended to use a Nextcloud instance as a user authentication service.
+
+Skipping pre-login warning
+--------------------------
+
+In Nextcloud default ``OAuth2`` flow, a confirmation step is shown before login if the user is not yet logged-in, and a second one is shown after login.
+To skip the pre-login one for a trusted application, the configuration option ``skipAuthPickerApplications`` can be set through occ::
+
+ sudo -E -u www-data php occ config:app:set oauth2 skipAuthPickerApplications --type array --value '["myapplication"]'

@@ -82,6 +82,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#add-an-oauth2-application">Add an OAuth2 Application</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-access-token">The access token</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#security-considerations">Security considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#skipping-pre-login-warning">Skipping pre-login warning</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="reverse_proxy_configuration.html">Reverse proxy</a></li>
@@ -169,6 +170,14 @@ Nextcloud server you will have to send the proper authorization header.</p>
 <h2>Security considerations<a class="headerlink" href="#security-considerations" title="Link to this heading"></a></h2>
 <p>Nextcloud <code class="docutils literal notranslate"><span class="pre">OAuth2</span></code> implementation currently does not support scoped access. This means that every token has full access to the complete account including read and write permission to the stored files. It is essential to store the <code class="docutils literal notranslate"><span class="pre">OAuth2</span></code> tokens in a safe way!</p>
 <p>Without scopes and restrictable access it is not recommended to use a Nextcloud instance as a user authentication service.</p>
+</section>
+<section id="skipping-pre-login-warning">
+<h2>Skipping pre-login warning<a class="headerlink" href="#skipping-pre-login-warning" title="Link to this heading"></a></h2>
+<p>In Nextcloud default <code class="docutils literal notranslate"><span class="pre">OAuth2</span></code> flow, a confirmation step is shown before login if the user is not yet logged-in, and a second one is shown after login.
+To skip the pre-login one for a trusted application, the configuration option <code class="docutils literal notranslate"><span class="pre">skipAuthPickerApplications</span></code> can be set through occ:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">oauth2</span> <span class="n">skipAuthPickerApplications</span> <span class="o">--</span><span class="nb">type</span> <span class="n">array</span> <span class="o">--</span><span class="n">value</span> <span class="s1">&#39;[&quot;myapplication&quot;]&#39;</span>
+</pre></div>
+</div>
 </section>
 </section>
 

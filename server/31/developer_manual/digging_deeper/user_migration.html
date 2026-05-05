@@ -153,7 +153,12 @@ and import the app data of a user.</p>
 <h2>Register a migrator<a class="headerlink" href="#register-a-migrator" title="Link to this heading"></a></h2>
 <p>A migrator is represented by a class implementing the
 <code class="docutils literal notranslate"><span class="pre">OCP\\UserMigration\\IMigrator</span></code> interface. This class is instantiated
-whenever a user export or import begins.</p>
+whenever a user export or import begins.
+It should also implement <code class="docutils literal notranslate"><span class="pre">OCP\UserMigration\ISizeEstimationMigrator</span></code> if possible,
+and return a size estimation in method <code class="docutils literal notranslate"><span class="pre">getEstimatedExportSize</span></code>.
+You can use the trait <code class="docutils literal notranslate"><span class="pre">OCP\UserMigration\TMigratorBasicVersionHandling</span></code> for basic version handling,
+in this case the version is stored in $this-&gt;version (defaults to 1), and importing from a newer version is forbidden.
+If you prefer you can implement <code class="docutils literal notranslate"><span class="pre">getVersion</span></code> and <code class="docutils literal notranslate"><span class="pre">canImport</span></code> instead.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
@@ -176,20 +181,14 @@ whenever a user export or import begins.</p>
 <span class="k">class</span> <span class="nc">MyAppMigrator</span> <span class="k">implements</span> <span class="nx">IMigrator</span><span class="p">,</span> <span class="nx">ISizeEstimationMigrator</span> <span class="p">{</span>
   <span class="k">use</span> <span class="nx">TMigratorBasicVersionHandling</span><span class="p">;</span>
 
-  <span class="k">private</span> <span class="nx">IMyAppManager</span> <span class="nv">$myAppManager</span><span class="p">;</span>
-
-  <span class="k">private</span> <span class="nx">IL10N</span> <span class="nv">$l10n</span><span class="p">;</span>
-
   <span class="k">private</span> <span class="k">const</span> <span class="no">PATH_ROOT</span> <span class="o">=</span> <span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span> <span class="o">.</span> <span class="s1">&#39;/&#39;</span><span class="p">;</span>
 
   <span class="k">private</span> <span class="k">const</span> <span class="no">PATH_MYAPP_FILE</span> <span class="o">=</span> <span class="nx">MyAppMigrator</span><span class="o">::</span><span class="na">PATH_ROOT</span> <span class="o">.</span> <span class="s1">&#39;myapp.json&#39;</span><span class="p">;</span>
 
   <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-    <span class="nx">IMyAppManager</span> <span class="nv">$myAppManager</span><span class="p">,</span>
-    <span class="nx">IL10N</span> <span class="nv">$l10n</span>
+    <span class="k">private</span> <span class="nx">IMyAppManager</span> <span class="nv">$myAppManager</span><span class="p">,</span>
+    <span class="k">private</span> <span class="nx">IL10N</span> <span class="nv">$l10n</span><span class="p">,</span>
   <span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">myAppManager</span> <span class="o">=</span> <span class="nv">$myAppManager</span><span class="p">;</span>
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span> <span class="o">=</span> <span class="nv">$l10n</span><span class="p">;</span>
   <span class="p">}</span>
 
   <span class="sd">/**</span>
@@ -235,9 +234,8 @@ whenever a user export or import begins.</p>
 
     <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">writeln</span><span class="p">(</span><span class="s1">&#39;Importing myapp information from &#39;</span> <span class="o">.</span> <span class="nx">MyAppMigrator</span><span class="o">::</span><span class="na">PATH_MYAPP_FILE</span> <span class="o">.</span> <span class="s1">&#39;…&#39;</span><span class="p">);</span>
 
-    <span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$importSource</span><span class="o">-&gt;</span><span class="na">getFileContents</span><span class="p">(</span><span class="nx">MyAppMigrator</span><span class="o">::</span><span class="na">PATH_MYAPP_FILE</span><span class="p">),</span> <span class="k">true</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="nx">JSON_THROW_ON_ERROR</span><span class="p">);</span>
-
     <span class="k">try</span> <span class="p">{</span>
+      <span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$importSource</span><span class="o">-&gt;</span><span class="na">getFileContents</span><span class="p">(</span><span class="nx">MyAppMigrator</span><span class="o">::</span><span class="na">PATH_MYAPP_FILE</span><span class="p">),</span> <span class="k">true</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="nx">JSON_THROW_ON_ERROR</span><span class="p">);</span>
       <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">myAppManager</span><span class="o">-&gt;</span><span class="na">setUserData</span><span class="p">(</span><span class="nv">$user</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Throwable</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">throw</span> <span class="k">new</span> <span class="nx">UserMigrationException</span><span class="p">(</span><span class="s1">&#39;Could not import myapp information&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">$e</span><span class="p">);</span>
