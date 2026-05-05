@@ -114,6 +114,8 @@ Added APIs
   - New method ``OCP\TaskProcessing\Manager::getAvailableTaskTypeIds`` to list only task type IDs without meta-data (faster than ``OCP\TaskProcessing\Manager::getAvailableTaskTypes``)
 
 - New ``OCP\Mail\IEmailValidator`` to validate an email address.
+- New method ``OCP\App\IAppManager::getAppInstalledVersions`` to get installed versions of all applications
+- New method ``OCP\IAppConfig::getAppInstalledVersions`` to do the same thing
 
 Changed APIs
 ^^^^^^^^^^^^
@@ -135,6 +137,9 @@ Deprecated APIs
 - ``\OC_Helper::isReadOnlyConfigEnabled`` is deprecated, please use the ``config_is_read_only`` system config directly.
 - ``\OCP\OCM\IOCMProvider`` is deprecated, please use ``\OCP\OCM\ICapabilityAwareOCMProvider`` available since 32.0.0
 - ``\OCP\Mail\IMailer::validateMailAddress`` is deprecated, please use ``\OCP\Mail\IEmailValidator`` available since 32.0.0
+- ``\OC_App::getSupportedApps`` is deprecated, please use ``\OCP\Support\Subscription\IRegistry::delegateGetSupportedApps`` instead
+- ``\OC_App::getAppVersions`` is deprecated, please use ``OCP\App\IAppManager::getAppInstalledVersions`` instead
+- ``\OCP\Route\IRoute::actionInclude`` and ``\OCP\Route\IRoute::action`` are deprecated, please use a proper controller instead.
 
 Removed APIs
 ^^^^^^^^^^^^
