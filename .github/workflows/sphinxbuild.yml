@@ -395,8 +395,10 @@ jobs:
       # - mailto: links: These are not valid URLs and will always fail
       # - 404.html: This is not necessary
       # - latest/stable/xx links from the version selector
-      # - /builds and /projects: ReadTheDocs theme navigation links (not real file paths)
-      # - openapi.html: Swagger UI pages use JavaScript-rendered anchors that lychee cannot verify
+      # - /builds and /projects: These absolute paths come from the sphinx_rtd_theme when
+      #   READTHEDOCS=True is set. They appear in the generated HTML as navigation links
+      #   to ReadTheDocs build/project pages, but don't correspond to actual staged files.
+      # - openapi.html: Swagger UI pages with JavaScript-rendered anchors that lychee cannot verify
       - name: Check for broken links with lychee
         uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411 # v2.8.0
         with:
