@@ -270,6 +270,8 @@ accessible at <code class="docutils literal notranslate"><span class="pre">/ocs/
 </ul>
 </li>
 <li><p>New <code class="docutils literal notranslate"><span class="pre">OCP\Mail\IEmailValidator</span></code> to validate an email address.</p></li>
+<li><p>New method <code class="docutils literal notranslate"><span class="pre">OCP\App\IAppManager::getAppInstalledVersions</span></code> to get installed versions of all applications</p></li>
+<li><p>New method <code class="docutils literal notranslate"><span class="pre">OCP\IAppConfig::getAppInstalledVersions</span></code> to do the same thing</p></li>
 </ul>
 </section>
 <section id="id2">
@@ -293,6 +295,9 @@ Instead use the preview endpoint provided by Nextcloud core (<code class="docuti
 <li><p><code class="docutils literal notranslate"><span class="pre">\OC_Helper::isReadOnlyConfigEnabled</span></code> is deprecated, please use the <code class="docutils literal notranslate"><span class="pre">config_is_read_only</span></code> system config directly.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">\OCP\OCM\IOCMProvider</span></code> is deprecated, please use <code class="docutils literal notranslate"><span class="pre">\OCP\OCM\ICapabilityAwareOCMProvider</span></code> available since 32.0.0</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Mail\IMailer::validateMailAddress</span></code> is deprecated, please use <code class="docutils literal notranslate"><span class="pre">\OCP\Mail\IEmailValidator</span></code> available since 32.0.0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OC_App::getSupportedApps</span></code> is deprecated, please use <code class="docutils literal notranslate"><span class="pre">\OCP\Support\Subscription\IRegistry::delegateGetSupportedApps</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OC_App::getAppVersions</span></code> is deprecated, please use <code class="docutils literal notranslate"><span class="pre">OCP\App\IAppManager::getAppInstalledVersions</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Route\IRoute::actionInclude</span></code> and <code class="docutils literal notranslate"><span class="pre">\OCP\Route\IRoute::action</span></code> are deprecated, please use a proper controller instead.</p></li>
 </ul>
 </section>
 <section id="id4">
@@ -363,6 +368,7 @@ Instead only the v2 visibility constants can be used.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">IServerContainer::getTagManager()</span></code></p></li>
 </ul>
 </li>
+<li><p>The legacy autoloader <code class="docutils literal notranslate"><span class="pre">\OC::$loader</span></code> was removed. It should not impact your application. It may impact your tests if they were using it. Please consider including <code class="docutils literal notranslate"><span class="pre">tests/autoload.php</span></code> from server instead.</p></li>
 </ul>
 </section>
 </section>
