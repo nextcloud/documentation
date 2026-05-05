@@ -65,18 +65,19 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Filer &amp; synkronisasjon</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="accessing.html">Accessing your files</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Accessing your files using the Nextcloud web interface</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tagging-files">Tagging av filer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#comments">Kommentarer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#video-player">Videospelar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#navigating-your-files">Navigating your files</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-controls">Filkontroller</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#previewing-files">Framvisning av filer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#navigating-inside-your-nextcloud">Navigering inni din Nextcloud.</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sharing-status-icons">Deling av status ikoner.</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creating-or-uploading-files-and-directories">Oppretting eller opplasting av filer og kataloger.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#details-sidebar">Details sidebar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#activity-and-comments">Activity and comments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#searching-and-filtering">Searching and filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grid-view">Grid view</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uploading-and-creating-files">Uploading and creating files</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#selecting-files-or-folders">Valg av filer og mapper</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#filtering-the-files-view">Filtering av filvisningen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-status-icons">Deling av status ikoner.</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#moving-files">Flytting av filer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creating-or-connecting-to-a-federation-share-link">Skaping eller tilkopling til ein Føderal Delings link</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#previewing-files">Framvisning av filer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video-player">Videospelar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connecting-to-a-federation-share">Connecting to a Federation Share</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="access_webdav.html">Accessing Nextcloud files using WebDAV</a></li>
@@ -129,133 +130,164 @@
 <h1>Accessing your files using the Nextcloud web interface<a class="headerlink" href="#accessing-your-files-using-the-nextcloud-web-interface" title="Link to this heading"></a></h1>
 <p>Du kan aksessere dine Nextcloud filer med Nextcloud Web grensesnittet og skape, forhåndsvise, redigere, slette, dele og dele filene på nytt. Din Nextcloud administrator har moglegheiten til å deaktivere desse funksjonene, så om nokon av dei manglar i systemet ditt må du spørre administratoren til din tenar.</p>
 <figure class="align-default">
-<img alt="The Files view screen." src="../../_images/users-files.png" />
+<img alt="The Files app showing a list of files and folders." src="../../_images/users-files.png" />
 </figure>
-<section id="tagging-files">
-<h2>Tagging av filer<a class="headerlink" href="#tagging-files" title="Link to this heading"></a></h2>
-<p>Du kan tildele tagger til filer. For å opprette tagger, må du opne ei fil til Detaljevisningen. Deretter skriv inn dine tagger. For å legge til meir enn ein tagg trykker du på retur knappen etter at du har skapt kvar tagg. Alle tagger er system tagger, og vert delt av alle brukarar på din Nextcloud tenar.</p>
+<section id="navigating-your-files">
+<h2>Navigating your files<a class="headerlink" href="#navigating-your-files" title="Link to this heading"></a></h2>
+<p>The left sidebar lets you switch between different views of your files. Click a
+folder name in the file list to open it, and use your browser’s back button or
+the breadcrumb bar at the top of the file list to return to a previous level.</p>
 <figure class="align-default">
-<img alt="Creating file tags." src="../../_images/files_page-7.png" />
+<img alt="The Files app left navigation panel." src="../../_images/files_page-5.png" />
 </figure>
-<p>Bruk deretter Tagger filteret på venstre sidefelt for å filtrere filer etter tagger:</p>
+<p>The sidebar contains the following entries:</p>
+<dl class="simple">
+<dt>Alle filer</dt><dd><p>The default view, showing every file and folder you have access to.</p>
+</dd>
+<dt>Recent</dt><dd><p>Files you have viewed or modified recently.</p>
+</dd>
+<dt>Favoritter</dt><dd><p>Files and folders you have starred.</p>
+</dd>
+<dt>Shares</dt><dd><p>Files shared with you, by you, or via a public link — all in one view.</p>
+</dd>
+<dt>Tags</dt><dd><p>Browse files by system tag.</p>
+</dd>
+<dt>Deleted files</dt><dd><p>Files you have deleted that are still recoverable from the trash bin.</p>
+</dd>
+</dl>
+<p>When you navigate into a folder, a breadcrumb trail appears at the top of the
+file list so you can jump back to any parent folder with a single click:</p>
 <figure class="align-default">
-<img alt="Viewing file tags." src="../../_images/files_page-8.png" />
-</figure>
-</section>
-<section id="comments">
-<h2>Kommentarer<a class="headerlink" href="#comments" title="Link to this heading"></a></h2>
-<p>Bruk Detalje vindauget for å legge til og lese kommentarar om kva som helst fil eller mappe. Kommentarar er synlege for alle som har tilgang til filen:</p>
-<figure class="align-default">
-<img alt="Creating and viewing comments." src="../../_images/file_menu_comments_2.png" />
-</figure>
-</section>
-<section id="video-player">
-<h2>Videospelar<a class="headerlink" href="#video-player" title="Link to this heading"></a></h2>
-<p>You can play videos in Nextcloud with the Video Player app by simply clicking on
-the file. Video streaming by the native Nextcloud video player depends on your web browser
-and the video format. If your Nextcloud administrator has enabled video
-streaming and it does not work in your web browser, it may be a browser issue. See
-<code class="docutils literal notranslate"><span class="pre">https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility</span></code>
-for supported multimedia formats in web browsers.</p>
-<figure class="align-default">
-<img alt="Watching a movie." src="../../_images/video_player_2.png" />
+<img alt="Breadcrumb navigation inside a subfolder." src="../../_images/files_page-6.png" />
 </figure>
 </section>
 <section id="file-controls">
 <h2>Filkontroller<a class="headerlink" href="#file-controls" title="Link to this heading"></a></h2>
-<p>Nextcloud can display thumbnail previews for various file types, such as images, audio files, and text files.
-The specific types supported are up to the server administrator.
-Hover your cursor over a file or folder to expose the controls for the following operations:</p>
-<dl>
-<dt>Favoritter</dt><dd><p>Trykk på stjerna til venstre for fil ikonet for å markere det som ein favoritt:</p>
+<p>Nextcloud displays thumbnail previews for images, text files, and other
+supported types — the exact list depends on your server configuration.</p>
+<p>Each file and folder row has a three-dot action menu button. Click it to
+rename, move, copy, download, delete, or mark the item as a favorite.
+Files that have been marked as a favorite display a star icon:</p>
 <figure class="align-default">
-<img alt="Marking favorite files." src="../../_images/files_page-1.png" />
+<img alt="A file row with the actions menu open." src="../../_images/files_page-3.png" />
 </figure>
-<p>Du kan raskt finne alle favorittene dine med Favoritt filteret på venstre sidefelt.</p>
-</dd>
-<dt>Overflow menu</dt><dd><p>Overløpsmenyen (tre prikker) visar fildetaljar, og tillater deg å endre namn, nedlaste, eller slette filar:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can quickly find all your favorites using the <strong>Favorites</strong>
+entry in the left sidebar.</p>
+</div>
+</section>
+<section id="details-sidebar">
+<h2>Details sidebar<a class="headerlink" href="#details-sidebar" title="Link to this heading"></a></h2>
+<p>Select <strong>Details</strong> from the three-dot action menu to open the details sidebar. The sidebar
+shows information about the selected file and provides tabbed access to its
+activity history, sharing options, and version history:</p>
 <figure class="align-default">
-<img alt="Overflow menu." src="../../_images/files_page-3.png" />
-</figure>
-<p>Detaljer-visninga visar Aktiviteter, Deling, og Versjonar informasjon:</p>
-</dd>
-</dl>
-<figure class="align-default">
-<img alt="Details screen." src="../../_images/files_page-4.png" />
-</figure>
-<p><strong>Instillingar</strong> tannhjulikonet nederst i venstre hjørne tillater deg å visa eller gøyme skjulte filer i ditt Nextcloud Nettgrensesnitt. Dei vert også kalla punktumfiler, fordi dei er førehandsfiksa med eit punktum, e.g. <code class="docutils literal notranslate"><span class="pre">.mailfil</span></code>. Punktumet fortel operatørsystemet ditt å skjule desse filene i dine fil nettlesarar, med mindre du veljar å framvise dei.</p>
-<figure class="align-default">
-<img alt="Hiding or displaying hidden files." src="../../_images/hidden_files.png" />
+<img alt="The details sidebar showing file information and tabs." src="../../_images/files_page-4.png" />
 </figure>
 </section>
-<section id="previewing-files">
-<h2>Framvisning av filer<a class="headerlink" href="#previewing-files" title="Link to this heading"></a></h2>
-<p>Du kan vise ukomprimerte tekst filer, OpneDokument filer, videoar, og bilete filer i Nextcloud sine innebygde sjåarar gjennom å klikke på filnamnet. Der kan være andre fil typer som du kan framvise på førehand om din Nextcloud administrator har aktivert dei. Om Nextcloud ikkje kan vise ei fil, byrjar den på ein nedlastingsprosess og nedlaster filene til din datamaskin.</p>
-</section>
-<section id="navigating-inside-your-nextcloud">
-<h2>Navigering inni din Nextcloud.<a class="headerlink" href="#navigating-inside-your-nextcloud" title="Link to this heading"></a></h2>
-<p>Navigating through folders in Nextcloud is as simple as clicking on a folder to
-open it and using the back button on your browser to move to a previous level.
-Nextcloud also provides a navigation bar at the top of the Files page for quick
-navigation.</p>
-</section>
-<section id="sharing-status-icons">
-<h2>Deling av status ikoner.<a class="headerlink" href="#sharing-status-icons" title="Link to this heading"></a></h2>
-<p>Kva som helst mappe som har blitt delt er markert med eit <code class="docutils literal notranslate"><span class="pre">Delt</span></code> overleggsikon. Offentlege link delingar er markert med eit kjedeledd. Udelte mapper er ikkje markert:</p>
+<section id="activity-and-comments">
+<h2>Activity and comments<a class="headerlink" href="#activity-and-comments" title="Link to this heading"></a></h2>
+<p>The <strong>Activity</strong> tab in the details sidebar shows a chronological log of
+changes to the file — uploads, edits, shares, and comments. You can leave
+a comment directly in this tab; comments are visible to everyone who has
+access to the file:</p>
 <figure class="align-default">
-<img alt="Share status icons." src="../../_images/files_page-5.png" />
+<img alt="The Activity tab showing file history and a comment field." src="../../_images/file_menu_comments_2.png" />
 </figure>
 </section>
-<section id="creating-or-uploading-files-and-directories">
-<h2>Oppretting eller opplasting av filer og kataloger.<a class="headerlink" href="#creating-or-uploading-files-and-directories" title="Link to this heading"></a></h2>
-<p>Last opp eller skap nye filer, eller mapper direkte i ein Nextcloud mappe gjennom å trykke på <em>Ny</em> knappen i filer applikasjonen:</p>
+<section id="searching-and-filtering">
+<h2>Searching and filtering<a class="headerlink" href="#searching-and-filtering" title="Link to this heading"></a></h2>
+<p>Use the search bar at the top of the page to find files by name across all your
+files, or type in the search field inside the left sidebar to filter the current
+view:</p>
 <figure class="align-default">
-<img alt="The New file/folder/upload menu." src="../../_images/files_page-6.png" />
+<img alt="The search field with a search term entered." src="../../_images/files_page-7.png" />
 </figure>
-<p><em>Ny</em> knappen gir følgande alternativer:</p>
+</section>
+<section id="grid-view">
+<h2>Grid view<a class="headerlink" href="#grid-view" title="Link to this heading"></a></h2>
+<p>The Files app defaults to a list view. Click the grid toggle button at the
+top-right of the file list to switch to a thumbnail grid, which is useful for
+browsing image folders:</p>
+<figure class="align-default">
+<img alt="Files displayed in thumbnail grid view." src="../../_images/files_page-8.png" />
+</figure>
+<p>Click the button again to return to the list view.</p>
+</section>
+<section id="uploading-and-creating-files">
+<h2>Uploading and creating files<a class="headerlink" href="#uploading-and-creating-files" title="Link to this heading"></a></h2>
+<p>Click the <strong>+</strong> button near the top of the file list to upload files from your
+computer or create new items in the current folder:</p>
+<figure class="align-default">
+<img alt="The New file and upload menu." src="../../_images/files_page-1.png" />
+</figure>
+<p>The menu offers the following options:</p>
 <dl class="simple">
-<dt>Opp pil</dt><dd><p>Last opp filer frå din datamaskin til Nextcloud. Du kan også laste opp filer ved å dra og droppe dei frå din filbehandler.</p>
+<dt>Upload file</dt><dd><p>Opens a file picker to upload one or more files from your computer. You can
+also drag and drop files directly from your file manager onto the file list.</p>
 </dd>
-<dt>Tekst fil</dt><dd><p>Skaper ei ny tekst fil og legger til filen til din noverande mappe.</p>
+<dt>Upload folder</dt><dd><p>Uploads an entire folder, preserving its structure.</p>
 </dd>
-<dt>Mappe</dt><dd><p>Skaper ei ny mappe i den noverande mappa.</p>
+<dt>New folder</dt><dd><p>Creates a new empty folder in the current location.</p>
+</dd>
+<dt>New document / New spreadsheet / New presentation</dt><dd><p>Creates a new file using the built-in Nextcloud Text or Office editor,
+if enabled by your administrator.</p>
 </dd>
 </dl>
 </section>
 <section id="selecting-files-or-folders">
 <h2>Valg av filer og mapper<a class="headerlink" href="#selecting-files-or-folders" title="Link to this heading"></a></h2>
-<p>Du kan velge ein eller fleire mapper ved å trykke på deira avmerkingsbokser. For å velge alle filene i den noverande katalogen, klikk på avmerkingsboksen lokalisert øverst i fillisten.</p>
-<p>Når du velger fleire filer, kan du slette alle, eller laste dei ned som ein ZIP fil ved å nytte <code class="docutils literal notranslate"><span class="pre">Slett</span></code> eller <code class="docutils literal notranslate"><span class="pre">Last</span> <span class="pre">ned</span></code> knappene som vises på toppen.</p>
+<p>Click the checkbox to the left of a file or folder to select it. To select all
+items in the current folder, click the checkbox in the column header.</p>
+<p>With one or more items selected, action buttons appear at the top of the list.
+You can delete or download all selected items at once. Downloading multiple items
+produces a ZIP archive.</p>
+<figure class="align-default">
+<img alt="Multiple files selected with the bulk action bar visible." src="../../_images/files_page-9.png" />
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Om <code class="docutils literal notranslate"><span class="pre">Last</span> <span class="pre">ned</span></code> knappen ikkje er synleg, har administratoren deaktivert denne funksjonen.</p>
+<p>If the <strong>Download</strong> button is not visible, your administrator has
+disabled this feature.</p>
 </div>
 </section>
-<section id="filtering-the-files-view">
-<h2>Filtering av filvisningen<a class="headerlink" href="#filtering-the-files-view" title="Link to this heading"></a></h2>
-<p>Det venstre sidefeltet på Fil siden innehalder fleire filter for rask sortering og handtering av dine filer.</p>
-<dl class="simple">
-<dt>Alle filer</dt><dd><p>Standardvisningen; viser alle filer som du har tilgang til.</p>
-</dd>
-<dt>Favoritter</dt><dd><p>Filer og mapper markert med den gule stjerna.</p>
-</dd>
-<dt>Delt med deg</dt><dd><p>Viser alle filer delt med deg av ein annan brukarar eller gruppe.</p>
-</dd>
-<dt>Delt med andre</dt><dd><p>Viser alle filer som du har delt med andre brukarar eller grupper.</p>
-</dd>
-<dt>Delt gjennom link</dt><dd><p>Viser alle filer som er delt av deg gjennom offentleg link.</p>
-</dd>
-<dt>Ekstern Lagring (valfritt)</dt><dd><p>Filer som du har tilgang til på eksterne lagrings einingar og tenarar som blant anna Amazon S3, SMB/CIFS, FTP…</p>
-</dd>
-</dl>
+<section id="sharing-status-icons">
+<h2>Deling av status ikoner.<a class="headerlink" href="#sharing-status-icons" title="Link to this heading"></a></h2>
+<p>Folders and files that have been shared display a <strong>Shared</strong> badge on their
+thumbnail or icon. Items shared via a public link also show a chain-link icon.
+Items that are not shared have no additional indicator.</p>
+<figure class="align-default">
+<img alt="File list showing a shared folder, a public-link-shared file, and unshared items." src="../../_images/files_sharing_status.png" />
+</figure>
+<p>See <a class="reference internal" href="sharing.html"><span class="doc">File sharing</span></a> for instructions on creating and managing shares.</p>
 </section>
 <section id="moving-files">
 <h2>Flytting av filer<a class="headerlink" href="#moving-files" title="Link to this heading"></a></h2>
-<p>Du kan flytta filer og mapper ved å dra og sleppe dei inn i kva som helst katalog.</p>
+<p>Drag any file or folder and drop it onto a destination folder to move it.
+You can also use <strong>Move or copy</strong> from the three-dot action menu to move or copy
+items to a folder you choose from a picker dialog.</p>
 </section>
-<section id="creating-or-connecting-to-a-federation-share-link">
-<h2>Skaping eller tilkopling til ein Føderal Delings link<a class="headerlink" href="#creating-or-connecting-to-a-federation-share-link" title="Link to this heading"></a></h2>
-<p>Føderal Sky Deling gir deg tillating til å montere fil delingar frå eksterne Nextcloud tenarar, og administrere dei akkurat som ein lokal deling. Sjå <a class="reference internal" href="federated_cloud_sharing.html"><span class="doc">Using federation shares</span></a> for å lære korleis ein skaper og kopler til nye Føderale Sky delingar.</p>
+<section id="previewing-files">
+<h2>Framvisning av filer<a class="headerlink" href="#previewing-files" title="Link to this heading"></a></h2>
+<p>Click a file name to open a preview directly in Nextcloud. Supported formats
+include images, plain text, PDF, and — depending on your server — office
+documents and audio files. If Nextcloud cannot preview a file format, it
+downloads the file to your computer instead.</p>
+</section>
+<section id="video-player">
+<h2>Videospelar<a class="headerlink" href="#video-player" title="Link to this heading"></a></h2>
+<p>You can play videos directly in Nextcloud by clicking the file. Playback
+depends on your browser and the video codec. See
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility">MDN: Supported media formats</a>
+for a compatibility reference.</p>
+</section>
+<section id="connecting-to-a-federation-share">
+<h2>Connecting to a Federation Share<a class="headerlink" href="#connecting-to-a-federation-share" title="Link to this heading"></a></h2>
+<p>Federated Cloud Sharing lets you mount file shares from remote Nextcloud
+servers and manage them just like local shares. See
+<a class="reference internal" href="federated_cloud_sharing.html"><span class="doc">Using federation shares</span></a> to learn how to create and connect to
+Federated Cloud shares.</p>
 </section>
 </section>
 
