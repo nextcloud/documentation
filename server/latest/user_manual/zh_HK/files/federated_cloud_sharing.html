@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>使用聯邦共享 &mdash; Nextcloud latest User Manual latest documentation</title>
+  <title>Using federation shares &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="轉移擁有權" href="transfer_ownership.html" />
+    <link rel="next" title="Transfer ownership" href="transfer_ownership.html" />
     <link rel="prev" title="進行匿名上傳" href="file_drop.html" /> 
 </head>
 
@@ -67,15 +67,15 @@
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">存取您的檔案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">管理您的檔案</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">分享與協作</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="sharing.html">檔案共享</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sharing.html#federated-shares">聯邦共享</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sharing.html">File sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sharing.html#federated-shares">Federated shares</a></li>
 <li class="toctree-l3"><a class="reference internal" href="file_drop.html">進行匿名上傳</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">使用聯邦共享</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">創建新的聯邦共享</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federated-cloud-share-via-email">通過電子郵件創建新的聯邦雲共享</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using federation shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federated-cloud-share-via-email">Creating a new federated cloud share via email</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">轉移擁有權</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfer ownership</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">安全措施 &amp; 加密</a></li>
@@ -106,7 +106,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">檔案與同步</a></li>
           <li class="breadcrumb-item"><a href="collaboration.html">分享與協作</a></li>
-      <li class="breadcrumb-item active">使用聯邦共享</li>
+      <li class="breadcrumb-item active">Using federation shares</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/federated_cloud_sharing.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -117,31 +117,35 @@
            <div itemprop="articleBody">
              
   <section id="using-federation-shares">
-<h1>使用聯邦共享<a class="headerlink" href="#using-federation-shares" title="Link to this heading"></a></h1>
+<h1>Using federation shares<a class="headerlink" href="#using-federation-shares" title="Link to this heading"></a></h1>
 <p>聯邦共享允許您從遠程 Nextcloud 伺服器掛載檔案共享，實際上創建您自己的 Nextcloud 雲。您可以與其他 Nextcloud 伺服器上的用戶創建直接共享連結。</p>
 <section id="creating-a-new-federation-share">
-<h2>創建新的聯邦共享<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
 <p>默認情況下，新安裝或升級的 Nextcloud 安裝啟用聯邦共享。請按照以下步驟與其他 Nextcloud 或 ownCloud 9+ 伺服器創建新的共享：</p>
 <ol class="arabic">
 <li><p>前往您的 <code class="docutils literal notranslate"><span class="pre">檔案</span></code> 頁面，並在您想要共享的檔案或目錄上點擊 <strong>共享</strong> 圖標。在側邊欄中，以此格式輸入遠程用戶的用戶名和 URL：<code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;oc-server-url&gt;</span></code>。該表單會自動確認您輸入的地址並標記為「遠程」。點擊該標籤。</p>
-<blockquote>
-<div><figure class="align-default">
+<figure class="align-default">
 <img alt="../../_images/direct-share-1.png" src="../../_images/direct-share-1.png" />
 </figure>
-</div></blockquote>
 </li>
-<li><p>當您的本地 Nextcloud 伺服器成功連接到遠程 Nextcloud 伺服器時，您將看到確認。您唯一的共享選項是 <strong>可以編輯</strong>。</p></li>
+<li><p>When your local Nextcloud server makes a successful connection with the remote
+Nextcloud server you will see a confirmation. Your only share option is <strong>Can edit</strong>.</p></li>
 </ol>
-<p>隨時點擊共享按鈕以查看您與誰共享了檔案。隨時通過點擊垃圾桶圖標來移除您的連結共享。這僅僅是取消連結共享，並不會刪除任何檔案。</p>
+<p>Click the <strong>Share</strong> button anytime to see who you have shared your file with. Remove
+your linked share anytime by clicking the trash can icon. This only unlinks the
+share, and does not delete any files.</p>
 </section>
 <section id="creating-a-new-federated-cloud-share-via-email">
-<h2>通過電子郵件創建新的聯邦雲共享<a class="headerlink" href="#creating-a-new-federated-cloud-share-via-email" title="Link to this heading"></a></h2>
+<h2>Creating a new federated cloud share via email<a class="headerlink" href="#creating-a-new-federated-cloud-share-via-email" title="Link to this heading"></a></h2>
 <p>當您與使用 ownCloud 8.x 及更早版本的用戶共享時，請使用此方法。</p>
-<p>如果您不知道用戶名或 URL 該怎麼辦？那麼您可以讓 Nextcloud 為您創建連結並通過電子郵件發送給您的接收者。</p>
+<p>If you do not know the username or URL, you can have Nextcloud create
+the link for you and email it to your recipient.</p>
 <figure class="align-default">
 <img alt="../../_images/create_public_share-6.png" src="../../_images/create_public_share-6.png" />
 </figure>
-<p>當您的接收者收到您的電子郵件時，他們需要執行幾個步驟來完成共享連結。首先，他們必須在網頁瀏覽器中打開您發送的連結，然後點擊 <strong>添加到您的 Nextcloud</strong> 按鈕。</p>
+<p>When your recipient receives your email they will have to take a number of
+steps to complete the share link. First they must open the link you sent them in
+a web browser, and then click the <strong>Add to your Nextcloud</strong> button.</p>
 <figure class="align-default">
 <img alt="../../_images/create_public_share-8.png" src="../../_images/create_public_share-8.png" />
 </figure>
@@ -159,7 +163,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="file_drop.html" class="btn btn-neutral float-left" title="進行匿名上傳" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="transfer_ownership.html" class="btn btn-neutral float-right" title="轉移擁有權" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="transfer_ownership.html" class="btn btn-neutral float-right" title="Transfer ownership" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

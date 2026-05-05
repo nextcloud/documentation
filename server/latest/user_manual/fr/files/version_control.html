@@ -116,16 +116,18 @@
              
   <section id="version-control">
 <h1>Contrôle de version<a class="headerlink" href="#version-control" title="Lien vers cette rubrique"></a></h1>
-<p>Nextcloud supports simple version control system for files. Versioning creates
+<p>Nextcloud supports a simple version control system for files. Versioning creates
 backups of files which are accessible via the Versions tab on the Details
 sidebar. This tab contains the history of the file where you can roll back a
 file to any previous version. A new version is saved only if at least two minutes
-have passed since the last version was created. Versions are stored in <strong>data/[user]/files_versions</strong>.</p>
+have passed since the last version was created. Versions are stored in <code class="docutils literal notranslate"><span class="pre">data/[user]/files_versions</span></code>.</p>
 <figure class="align-default">
-<img alt="../../_images/files_versioning.png" src="../../_images/files_versioning.png" />
+<img alt="File version history in the Details sidebar" src="../../_images/files_versioning.png" />
 </figure>
 <p>Pour restaurer une version spécifique d’un fichier, cliquez sur la flèche circulaire vers la droite. Cliquez sur l’horodatage pour le télécharger.</p>
-<p>Les versions plus anciennes se suppriment automatiquement</p>
+<p>The versioning app expires old versions automatically to make sure that
+you don’t run out of space. This pattern is used to delete
+old versions:</p>
 <ul class="simple">
 <li><p>La première seconde, Nextcloud enregistre une version ;</p></li>
 <li><p>Pour les 10 premières secondes, Nextcloud garde une version toutes les 2 secondes ;</p></li>
@@ -141,10 +143,10 @@ have passed since the last version was created. Versions are stored in <strong>d
 <h2>Nomer une version<a class="headerlink" href="#naming-a-version" title="Lien vers cette rubrique"></a></h2>
 <p>Vous pouvez donner un nom à une version.</p>
 <figure class="align-default">
-<img alt="../../_images/files_versions_actions.png" src="../../_images/files_versions_actions.png" />
+<img alt="Version actions menu" src="../../_images/files_versions_actions.png" />
 </figure>
 <figure class="align-default">
-<img alt="../../_images/files_versions_naming.png" src="../../_images/files_versions_naming.png" />
+<img alt="Naming a file version" src="../../_images/files_versions_naming.png" />
 </figure>
 <p>Lorsqu’une version est nommée, elle est exclue du processus d’expiration automatique.</p>
 </section>

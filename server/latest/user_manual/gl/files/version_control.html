@@ -116,16 +116,18 @@
              
   <section id="version-control">
 <h1>Control de versións<a class="headerlink" href="#version-control" title="Ligazón a este título"></a></h1>
-<p>Nextcloud supports simple version control system for files. Versioning creates
+<p>Nextcloud supports a simple version control system for files. Versioning creates
 backups of files which are accessible via the Versions tab on the Details
 sidebar. This tab contains the history of the file where you can roll back a
 file to any previous version. A new version is saved only if at least two minutes
-have passed since the last version was created. Versions are stored in <strong>data/[user]/files_versions</strong>.</p>
+have passed since the last version was created. Versions are stored in <code class="docutils literal notranslate"><span class="pre">data/[user]/files_versions</span></code>.</p>
 <figure class="align-default">
-<img alt="../../_images/files_versioning.png" src="../../_images/files_versioning.png" />
+<img alt="File version history in the Details sidebar" src="../../_images/files_versioning.png" />
 </figure>
 <p>Para restaurar unha versión específica dun ficheiro, prema na frecha circular á dereita. Prema na marca de tempo para descargalo.</p>
-<p>A aplicación de versións declara caducas as versións antigas automaticamente para asegurarse de que o usuario non queda sen espazo. Para eliminar as versións antigas úsase este patrón:</p>
+<p>The versioning app expires old versions automatically to make sure that
+you don’t run out of space. This pattern is used to delete
+old versions:</p>
 <ul class="simple">
 <li><p>No primeiro segundo gardamos unha versión</p></li>
 <li><p>Durante os primeiros 10 segundos Nextcloud mantén unha versión cada 2 segundos</p></li>
@@ -141,10 +143,10 @@ have passed since the last version was created. Versions are stored in <strong>d
 <h2>Nomear unha versión<a class="headerlink" href="#naming-a-version" title="Ligazón a este título"></a></h2>
 <p>Pode darlle un nome a unha versión.</p>
 <figure class="align-default">
-<img alt="../../_images/files_versions_actions.png" src="../../_images/files_versions_actions.png" />
+<img alt="Version actions menu" src="../../_images/files_versions_actions.png" />
 </figure>
 <figure class="align-default">
-<img alt="../../_images/files_versions_naming.png" src="../../_images/files_versions_naming.png" />
+<img alt="Naming a file version" src="../../_images/files_versions_naming.png" />
 </figure>
 <p>Cando unha versión teña un nome, excluirase do proceso de caducidade automática.</p>
 </section>

@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Дељење фајлова &mdash; документација Nextcloud latest User Manual latest</title>
+  <title>File sharing &mdash; документација Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -67,20 +67,20 @@
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Дељење фајлова</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">File sharing</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#public-link-shares">Дељења путем јавног линка</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#internal-shares-with-users-and-groups">Интерна дељења са корисницима и групама</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#others-with-access">Остали са приступом</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#federated-shares">Заједничка дељења</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Креирање новог заједничког дељења</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#federated-shares">Federated shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Додавање јавног дељења на ваш Nextcloud</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="file_drop.html">Вршење анонимних отпремања</a></li>
-<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Употреба заједничких дељења</a></li>
-<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Пренос власништва</a></li>
+<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Using federation shares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfer ownership</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
@@ -111,7 +111,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Фајлови и синхронизација</a></li>
           <li class="breadcrumb-item"><a href="collaboration.html">Sharing &amp; collaboration</a></li>
-      <li class="breadcrumb-item active">Дељење фајлова</li>
+      <li class="breadcrumb-item active">File sharing</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -122,7 +122,7 @@
            <div itemprop="articleBody">
              
   <section id="file-sharing">
-<h1>Дељење фајлова<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
+<h1>File sharing<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
 <p>Nextcloud корисници могу да деле фајлове и фолдере. Могући су следећи циљеви:</p>
 <ul class="simple">
 <li><p>јавни линкови</p></li>
@@ -142,7 +142,7 @@
 <p>Креираће се насумични жетон дужине 15 знакова. Линк ће изгледати овако некако <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/s/yxcFKRWBJqYYzp4</span></code>.</p>
 <p>Већи број опција је доступан за јавна дељења <em>фолдера</em>:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_folder.png" src="../../_images/sharing_public_folder.png" />
+<img alt="Public folder share options." src="../../_images/sharing_public_folder.png" />
 </figure>
 <ul class="simple">
 <li><p><strong>Само за читање</strong> да се дозволи преглед и преузимање</p></li>
@@ -157,41 +157,44 @@
 </ul>
 <p>У случају јавних дељења <em>фајла</em>, можете да дозволите уређивање фајла једним од Nextcloud решења за заједничко уређивање:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_file.png" src="../../_images/sharing_public_file.png" />
+<img alt="Public file share options." src="../../_images/sharing_public_file.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Белешка</p>
-<p>Заштита лозинком као и датум истека фајла се такође пропагирају употребом Заједничког дељења фајлова почевши од Nextcloud верзије 22.</p>
+<p>Password protection and file expiration are also propagated using Federated File Sharing
+since Nextcloud 22.</p>
 </div>
 </section>
 <section id="internal-shares-with-users-and-groups">
 <h2>Интерна дељења са корисницима и групама<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Link to this heading"></a></h2>
 <p>Када се дели са корисницима, групама, круговима или члановима Talk разговора, права над фајловима или садржајима фолдера могу да се подесе:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal.png" src="../../_images/sharing_internal.png" />
+<img alt="Internal share options." src="../../_images/sharing_internal.png" />
 </figure>
 <p>Као особа којој је подељено, можете да подесите да ли аутоматски желите да се прихвати свако долазно дељење и да се додају у ваш почетни фолдер, или да ли желите да вам се сваки пут постави питање о прихватању или одбијању дељења.</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal_acceptNotification.png" src="../../_images/sharing_internal_acceptNotification.png" />
+<img alt="Share acceptance notification." src="../../_images/sharing_internal_acceptNotification.png" />
 </figure>
 <p>Да бисте подесили поставку прихватања, идите на <strong>Подешавања</strong> &gt; <strong>Лично</strong> &gt; <strong>Дељење</strong>:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_autoAcceptSetting.png" src="../../_images/sharing_autoAcceptSetting.png" />
+<img alt="Auto-accept sharing setting." src="../../_images/sharing_autoAcceptSetting.png" />
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Упозорење</p>
-<p>If the owner renames a shared file or folder, the new name will not be reflected on the recipient’s side. This is needed to prevent overwriting existing files or folders on the recipient’s end.</p>
+<p>If the owner renames a shared file or folder, the new name will not be reflected on the
+recipient’s side. This is needed to prevent overwriting existing files or folders on the
+recipient’s end.</p>
 </div>
 </section>
 <section id="others-with-access">
 <h2>Остали са приступом<a class="headerlink" href="#others-with-access" title="Link to this heading"></a></h2>
 <p>Да би сте сазнали да остали путем дељења фолдера који се налази више у хијерархији могу да приступе фајлу или фолдеру, кликните на <strong>Остали са приступом</strong> у картици дељења:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__collapsed.png" src="../../_images/sharing_others-with-access__collapsed.png" />
+<img alt="Others with access panel, collapsed." src="../../_images/sharing_others-with-access__collapsed.png" />
 </figure>
 <p>Листа приказује кориснике, групе, четове итд. који могу да приступе текућем објекту кроз дељење фолдера који се налази изнад у хијерархији:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__details.png" src="../../_images/sharing_others-with-access__details.png" />
+<img alt="Others with access panel, expanded with user details." src="../../_images/sharing_others-with-access__details.png" />
 </figure>
 <p>Кликните на три тачке да:</p>
 <ul class="simple">
@@ -206,25 +209,27 @@
 </section>
 </section>
 <section id="federated-shares">
-<h1>Заједничка дељења<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
+<h1>Federated shares<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
 <p>Заједничка дељења вам омогућавају да монтирате дељења фајла са удаљених Nextcloud сервера, практично креирајући сопствени облак Nextcloud облака. Можете да креирате линкове за директно дељење са корисницима на осталим Nextcloud серверима.</p>
 <section id="creating-a-new-federation-share">
-<h2>Креирање новог заједничког дељења<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
 <p>Заједничко дељење је подразумевано укључено. Следите наредне кораке да креирате ново дељење са другим Nextcloud или ownCloud серверима:</p>
 <p>Идите на своју страницу <code class="docutils literal notranslate"><span class="pre">Фајлови</span></code> и клините на икону Дели фајла или директоријума који желите да поделите. У бочној траци унесите коирничко име и URL удаљеног корисника у следећем облику: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code>. У овом примеру, то је <code class="docutils literal notranslate"><span class="pre">bob&#64;cloud.example.com</span></code>:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-1.png" src="../../_images/share-federation-1.png" />
+<img alt="Entering a federated share address." src="../../_images/share-federation-1.png" />
 </figure>
 <p>Особа са којом се дели прима обавештење у свом Nextcloud и може или да прихвати или да одбије долазно дељење:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-2-notification.png" src="../../_images/share-federation-2-notification.png" />
+<img alt="Federated share acceptance notification." src="../../_images/share-federation-2-notification.png" />
 </figure>
 </section>
 <section id="adding-a-public-share-to-your-nextcloud">
 <h2>Додавање јавног дељења на ваш Nextcloud<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Link to this heading"></a></h2>
-<p>Nextcloud странице дељења јавним линком нуде опцију да се фајл или фолдер додају у вашу Nextcloud инстанцу као заједничко дељење. Једноставно унесите свој <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> као што је приказано за одлазна дељења изнад:</p>
+<p>Nextcloud public link share pages offer an option to add that file or folder as a federated share
+into your own Nextcloud instance.
+Enter your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> as shown for outbound shares above:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-3-public.png" src="../../_images/share-federation-3-public.png" />
+<img alt="Adding a public share to your Nextcloud." src="../../_images/share-federation-3-public.png" />
 </figure>
 </section>
 </section>

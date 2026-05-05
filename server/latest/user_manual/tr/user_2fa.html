@@ -71,7 +71,7 @@
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Evrensel erişim</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">İki adımlı doğrulamayı kullanmak</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">İki adımlı doğrulamayı yapılandırmak</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">İkinci adımı kullanamadığınız durumlar için kurtarma kodları</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Recovery codes if you lose your second factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">İki adımlı doğrulama ile oturum açmak</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Donanım anahtarlarıyla iki adımlı doğrulamayı kullanmak</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">İstemci uygulamalarını iki adımlı doğrulama ile kullanmak</a></li>
@@ -108,30 +108,41 @@
   <section id="using-two-factor-authentication">
 <h1>İki adımlı doğrulamayı kullanmak<a class="headerlink" href="#using-two-factor-authentication" title="Link to this heading"></a></h1>
 <p>İki adımlı doğrulama (2FA), Nextcloud hesabınıza izinsiz erişilmesini engellemenin bir yoludur. Kimliğinizin doğrulamak için iki farklı ‘kanıt’ ister. Örneğin, <em>bildiğiniz bir şey</em> (bir parola gibi) ve <em>sahip olduğunuz</em> bir fiziksel anahtar gibi. Genellikle, ilk adımda, zaten bildiğiniz bir parolayı yazarsınız. İkinci adım ise bir kısa mesaj kodu veya telefonunuzda veya başka bir aygıtta oluşturduğunuz bir kod (<em>sahip olduğunuz bir şey</em>) olabilir. Nextcloud çeşitli iki adımlı doğrulama yöntemlerini destekler ve daha fazlası da eklenebilir.</p>
-<p>BT yöneticiniz tarafından herhangi bir iki adımla doğrulama uygulaması kullanıma alındığında, onu <a class="reference internal" href="userpreferences.html"><span class="doc">Kullanıcı ayarları</span></a> içinden kullanıma alabilir ve yapılandırabilirsiniz. Aşağıda ayrıntılarını görebilirsiniz.</p>
+<p>Once a two-factor authentication app has been enabled by your administrator,
+you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Kullanıcı ayarları</span></a>.</p>
 <section id="configuring-two-factor-authentication">
 <h2>İki adımlı doğrulamayı yapılandırmak<a class="headerlink" href="#configuring-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>Kişisel ayarlarınızda iki adımlı doğrulama ayarına bakın. Bu örnekte, Google Authenticator uyumlu zamana dayalı bir kod olan tek kullanımlık parola kullanacağız:</p>
+<p>In your personal settings, look up the <strong>Second-factor Auth</strong> setting. In this
+example this is TOTP, a Google Authenticator compatible time-based code:</p>
 <figure class="align-default">
 <img alt="Tek kullanımlık parola yapılandırması." src="../_images/totp_enable.png" />
 </figure>
 <p>Telefonunuzda (veya başka bir cihazda) tek kullanımlık parola uygulaması tarafından taranabilecek parolanızı ve bir QR kodunu göreceksiniz. Uygulamaya veya araca bağlı olarak, kodu yazın veya QR kodu tarayın. Aygıtınız her 30 saniyede bir değişen bir oturum açma kodu görüntüler.</p>
 </section>
-<section id="recovery-codes-in-case-you-lost-your-2nd-factor">
-<h2>İkinci adımı kullanamadığınız durumlar için kurtarma kodları<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Link to this heading"></a></h2>
-<p>İki adımlı doğrulama için her zaman yedek kodlar oluşturmalısınız. İkinci adımı doğrulayacağınız aygıt çalınırsa ya da çalışmıyorsa, hesabınızın kilidini açmak için bu kodlardan birini kullanabilirsiniz. Bu kodlar ikinci adım olarak kullanılır. Yedek kodları almak için kişisel ayarlar bölümüne gidin ve iki adımlı doğrulama ayarları altındaki <em>Yedek kodlar oluştur</em> seçeneğini kullanın:</p>
+<section id="recovery-codes-if-you-lose-your-second-factor">
+<h2>Recovery codes if you lose your second factor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Link to this heading"></a></h2>
+<p>You should always generate backup codes for 2FA. If your second factor device
+gets stolen or stops working, you can use one of these codes to unlock your
+account. It effectively functions as a backup second factor. To get the backup
+codes, go to your personal settings and look under <strong>Second-factor Auth</strong>
+settings. Choose <em>Generate backup codes</em>:</p>
 <figure class="align-default">
 <img alt="İki adımlı doğrulama yedek kod üreteci." src="../_images/2fa_backupcode_1.png" />
 </figure>
-<p>Ardından size tek kullanımlık yedek kodların listesi görüntülenir:</p>
+<p>You will then see a list of one-time-use backup codes:</p>
 <figure class="align-default">
 <img alt="İki adımlı doğrulama yedek kodları" src="../_images/2fa_backupcode_2.png" />
 </figure>
-<p>Bu kodları bulabileceğiniz güvenli bir yere koymalısınız. ikinci adım için kullandığınız cep telefonunuz gibi şeylerle bir araya koymayın. Birini kaybederseniz diğerinin sizde olduğundan emin olun. Bu kodları evde tutmak en iyisi olabilir.</p>
+<p>Store these codes somewhere safe where you can find them. Do not keep them
+with your second factor (such as your mobile phone), but store them separately
+so that losing one does not mean losing the other.</p>
 </section>
 <section id="logging-in-with-two-factor-authentication">
 <h2>İki adımlı doğrulama ile oturum açmak<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>Oturumunuzu kapattıktan sonra yeniden oturum açmanız gerektiğinde, tarayıcınız tek kullanımlık parola kodunu yazmanızı isteyecek. Yalnızca tek kullanımlık parola adımını değil diğerini de kullanıma alırsanız, bu oturum açma için iki adımlı doğrulamayı seçebileceğiniz bir seçim ekranı göreceksiniz. Tek kullanımlık parola olarak seçin:</p>
+<p>After you log out and log in again, you will see a prompt to enter the
+TOTP code in your browser. If you have enabled more than one second factor,
+you will see a selection screen where you can choose which method to use for
+this login. Select TOTP:</p>
 <figure class="align-default">
 <img alt="İki adımlı doğrulama yöntemi seçmek." src="../_images/totp_login_1.png" />
 </figure>
@@ -142,7 +153,9 @@
 <p>Kod doğruysa Nextcloud hesabınıza yönlendirileceksiniz.</p>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
-<p>Kod zamanla ilişkili olduğundan, sunucunuzun ve akıllı telefonunuzun saatinin neredeyse aynı olması önemlidir. Birkaç saniyelik bir zaman farkı sorun olmaz.</p>
+<p>Since the code is time-based, it is important that your server’s and
+your smartphone’s clock are almost in sync. A time drift of a few seconds
+won’t be a problem.</p>
 </div>
 </section>
 <section id="using-two-factor-authentication-with-hardware-tokens">

@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Використання акцій федерації &mdash; Nextcloud latest User Manual latest documentation</title>
+  <title>Using federation shares &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Індекс" href="../genindex.html" />
     <link rel="search" title="Пошук" href="../search.html" />
-    <link rel="next" title="Передати право власності" href="transfer_ownership.html" />
+    <link rel="next" title="Transfer ownership" href="transfer_ownership.html" />
     <link rel="prev" title="Зробити анонімні завантаження" href="file_drop.html" /> 
 </head>
 
@@ -67,15 +67,15 @@
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="sharing.html">Обмін файлами</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sharing.html#federated-shares">Федеративні акції</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sharing.html">File sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sharing.html#federated-shares">Federated shares</a></li>
 <li class="toctree-l3"><a class="reference internal" href="file_drop.html">Зробити анонімні завантаження</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Використання акцій федерації</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Створення нової частки федерації</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federated-cloud-share-via-email">Створення нового об’єднаного хмарного ресурсу за допомогою електронної пошти</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using federation shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federated-cloud-share-via-email">Creating a new federated cloud share via email</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Передати право власності</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfer ownership</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
@@ -106,7 +106,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Файли та синхронізація</a></li>
           <li class="breadcrumb-item"><a href="collaboration.html">Sharing &amp; collaboration</a></li>
-      <li class="breadcrumb-item active">Використання акцій федерації</li>
+      <li class="breadcrumb-item active">Using federation shares</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/federated_cloud_sharing.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -117,31 +117,35 @@
            <div itemprop="articleBody">
              
   <section id="using-federation-shares">
-<h1>Використання акцій федерації<a class="headerlink" href="#using-federation-shares" title="Link to this heading"></a></h1>
+<h1>Using federation shares<a class="headerlink" href="#using-federation-shares" title="Link to this heading"></a></h1>
 <p>Федеративний обмін дозволяє монтувати файлові ресурси з віддалених серверів Nextcloud, фактично створюючи власну хмару з Nextclouds. Ви можете створювати прямі посилання для спільного доступу з користувачами на інших серверах Nextcloud.</p>
 <section id="creating-a-new-federation-share">
-<h2>Створення нової частки федерації<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
 <p>Спільний доступ до федерації в нових або оновлених інсталяціях Nextcloud увімкнено за замовчуванням. Виконайте ці кроки, щоб створити новий спільний доступ до інших серверів Nextcloud або ownCloud 9+:</p>
 <ol class="arabic">
 <li><p>Перейдіть на сторінку <code class="docutils literal notranslate"><span class="pre">Файли</span></code> і натисніть іконку <strong>Подати доступ</strong> на файлі або каталозі, до якого ви хочете надати спільний доступ. У бічній панелі введіть ім’я користувача та URL-адресу віддаленого користувача у такій формі: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;oc-server-url&gt;</span></code>. Форма автоматично підтвердить введену вами адресу і позначить її як «віддалену». Натисніть на мітку.</p>
-<blockquote>
-<div><figure class="align-default">
+<figure class="align-default">
 <img alt="../../_images/direct-share-1.png" src="../../_images/direct-share-1.png" />
 </figure>
-</div></blockquote>
 </li>
-<li><p>Коли ваш локальний сервер Nextcloud успішно встановить з’єднання з віддаленим сервером Nextcloud, ви побачите підтвердження. Єдиний варіант доступу - <strong>Можна редагувати</strong>.</p></li>
+<li><p>When your local Nextcloud server makes a successful connection with the remote
+Nextcloud server you will see a confirmation. Your only share option is <strong>Can edit</strong>.</p></li>
 </ol>
-<p>Натисніть кнопку Поділитися в будь-який час, щоб побачити, з ким ви поділилися своїм файлом. Ви можете будь-коли видалити прив’язаний спільний доступ, натиснувши піктограму кошика. При цьому ви лише від’єднаєте посилання на спільний доступ, але не видалите жодних файлів.</p>
+<p>Click the <strong>Share</strong> button anytime to see who you have shared your file with. Remove
+your linked share anytime by clicking the trash can icon. This only unlinks the
+share, and does not delete any files.</p>
 </section>
 <section id="creating-a-new-federated-cloud-share-via-email">
-<h2>Створення нового об’єднаного хмарного ресурсу за допомогою електронної пошти<a class="headerlink" href="#creating-a-new-federated-cloud-share-via-email" title="Link to this heading"></a></h2>
+<h2>Creating a new federated cloud share via email<a class="headerlink" href="#creating-a-new-federated-cloud-share-via-email" title="Link to this heading"></a></h2>
 <p>Використовуйте цей метод, коли ділитеся з користувачами ownCloud 8.x і новіших версій.</p>
-<p>Що робити, якщо ви не знаєте ім’я користувача або URL-адресу? Тоді ви можете попросити Nextcloud створити посилання для вас і надіслати його електронною поштою вашому одержувачу.</p>
+<p>If you do not know the username or URL, you can have Nextcloud create
+the link for you and email it to your recipient.</p>
 <figure class="align-default">
 <img alt="../../_images/create_public_share-6.png" src="../../_images/create_public_share-6.png" />
 </figure>
-<p>Коли одержувач отримає ваш імейл, йому доведеться виконати кілька кроків, щоб перейти за посиланням для спільного доступу. Спочатку він повинен відкрити посилання, яке ви йому надіслали, у веб-браузері, а потім натиснути кнопку <strong>Додати до хмари Nextcloud</strong>.</p>
+<p>When your recipient receives your email they will have to take a number of
+steps to complete the share link. First they must open the link you sent them in
+a web browser, and then click the <strong>Add to your Nextcloud</strong> button.</p>
 <figure class="align-default">
 <img alt="../../_images/create_public_share-8.png" src="../../_images/create_public_share-8.png" />
 </figure>
@@ -159,7 +163,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="file_drop.html" class="btn btn-neutral float-left" title="Зробити анонімні завантаження" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="transfer_ownership.html" class="btn btn-neutral float-right" title="Передати право власності" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="transfer_ownership.html" class="btn btn-neutral float-right" title="Transfer ownership" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Delen van bestanden &mdash; Nextcloud latest User Manual latest documentatie</title>
+  <title>File sharing &mdash; Nextcloud latest User Manual latest documentatie</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -67,20 +67,20 @@
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Delen van bestanden</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">File sharing</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#public-link-shares">Publieke links voor delen</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#internal-shares-with-users-and-groups">Interne shares met gebruikers en groepen</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#others-with-access">Anderen met toegang</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#federated-shares">Federated Shares</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Het aanmaken van een nieuw Federation Share</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#federated-shares">Federated shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Een publiek share toevoegen aan jouw Nextcloud</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="file_drop.html">Anonieme uploads maken</a></li>
-<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Gebruik van Federation Shares</a></li>
-<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Overdracht van eigenaarschap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Using federation shares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfer ownership</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
@@ -111,7 +111,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Bestanden &amp; synchronisatie</a></li>
           <li class="breadcrumb-item"><a href="collaboration.html">Sharing &amp; collaboration</a></li>
-      <li class="breadcrumb-item active">Delen van bestanden</li>
+      <li class="breadcrumb-item active">File sharing</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> Bewerk op GitHub</a>
       </li>
@@ -122,7 +122,7 @@
            <div itemprop="articleBody">
              
   <section id="file-sharing">
-<h1>Delen van bestanden<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
+<h1>File sharing<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
 <p>Nextcloud gebruikers kunnen bestanden en mappen delen. Mogelijke doelen zijn:</p>
 <ul class="simple">
 <li><p>publieke links</p></li>
@@ -142,7 +142,7 @@
 <p>Er wordt een willekeurig 15-cijferig token aangemaakt. De link zal eruit zien als <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/s/yxcFKRWBJqYYzp4</span></code>.</p>
 <p>Er zijn een aantal opties beschikbaar voor delen van publieke <em>mappen</em>:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_folder.png" src="../../_images/sharing_public_folder.png" />
+<img alt="Public folder share options." src="../../_images/sharing_public_folder.png" />
 </figure>
 <ul class="simple">
 <li><p><strong>Alleen lezen</strong> om het bekijken en downloaden mogelijk te maken</p></li>
@@ -157,26 +157,27 @@
 </ul>
 <p>Voor publieke <em>bestand</em> shares kan je het bestand laten bewerken met een van Nextcloud’s collaboratieve bewerkingsoplossingen:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_file.png" src="../../_images/sharing_public_file.png" />
+<img alt="Public file share options." src="../../_images/sharing_public_file.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Notitie</p>
-<p>Wachtwoordbeveiliging evenals verloop van bestandsdeling zijn sinds Nextcloud 22 ook beschikbaar via Gefedereerde Bestandsdeling.</p>
+<p>Password protection and file expiration are also propagated using Federated File Sharing
+since Nextcloud 22.</p>
 </div>
 </section>
 <section id="internal-shares-with-users-and-groups">
 <h2>Interne shares met gebruikers en groepen<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Link to this heading"></a></h2>
 <p>Bij het delen met gebruikers, groepen, cirkels of leden van een Talkgesprek zijn de rechten voor de bestanden of de inhoud van de map aanpasbaar:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal.png" src="../../_images/sharing_internal.png" />
+<img alt="Internal share options." src="../../_images/sharing_internal.png" />
 </figure>
 <p>Als gebruiker die toegang wordt verleend aan een share kan je instellen of je alle inkomende shares automatisch wil accepteren en aan uw hoofdmap wil laten toevoegen, of dat je telkens gevraagd wil worden of je de share wil accepteren of weigeren.</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal_acceptNotification.png" src="../../_images/sharing_internal_acceptNotification.png" />
+<img alt="Share acceptance notification." src="../../_images/sharing_internal_acceptNotification.png" />
 </figure>
 <p>Voor het aanpassen van de acceptatie instelling ga je naar <strong>Instellingen</strong> &gt; <strong>Persoonlijk</strong> &gt; <strong>Delen</strong>:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_autoAcceptSetting.png" src="../../_images/sharing_autoAcceptSetting.png" />
+<img alt="Auto-accept sharing setting." src="../../_images/sharing_autoAcceptSetting.png" />
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Waarschuwing</p>
@@ -187,11 +188,11 @@
 <h2>Anderen met toegang<a class="headerlink" href="#others-with-access" title="Link to this heading"></a></h2>
 <p>Om te weten te komen of een bestand of map toegankelijk is voor anderen door het delen van een map hoger in hiërarchie, klik je op <strong>Anderen met toegang</strong> in het tabblad delen:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__collapsed.png" src="../../_images/sharing_others-with-access__collapsed.png" />
+<img alt="Others with access panel, collapsed." src="../../_images/sharing_others-with-access__collapsed.png" />
 </figure>
 <p>De lijst toont alle gebruikers, groepen, chats etc. die toegang hebben gekregen tot het huidige object door het delen van een map, hoger in de hiërarchie:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__details.png" src="../../_images/sharing_others-with-access__details.png" />
+<img alt="Others with access panel, expanded with user details." src="../../_images/sharing_others-with-access__details.png" />
 </figure>
 <p>Klik op de drie stippen om:</p>
 <ul class="simple">
@@ -206,25 +207,27 @@
 </section>
 </section>
 <section id="federated-shares">
-<h1>Federated Shares<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
+<h1>Federated shares<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
 <p>Federation Sharing stelt je in staat om bestand shares te mounten vanaf externe Nextcloud-servers, waardoor je in feite je eigen cloud van Nextclouds kunt creëren. Je kan directe share links maken met gebruikers op andere Nextcloud-servers.</p>
 <section id="creating-a-new-federation-share">
-<h2>Het aanmaken van een nieuw Federation Share<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
 <p>Federation sharing is standaard ingeschakeld. Volg deze stappen om een nieuwe share aan te maken met andere Nextcloud of ownCloud servers:</p>
 <p>Ga naar uw <code class="docutils literal notranslate"><span class="pre">Bestanden</span></code> pagina en klik op het Delen icoontje op het bestand of de map die je wil delen. Voer in de zijbalk de gebruikersnaam en URL van de gebruiker op afstand in dit formulier in: <cite>&lt;username&gt;`&#64;&lt;nc-server-url&gt;`</cite>. In dit voorbeeld is dat <code class="docutils literal notranslate"><span class="pre">bob&#64;cloud.example.com</span></code>:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-1.png" src="../../_images/share-federation-1.png" />
+<img alt="Entering a federated share address." src="../../_images/share-federation-1.png" />
 </figure>
 <p>Degenen waarmee het bestand wordt gedeeld ontvangen een melding in hun Nextcloud, waardoor ze de inkomende share kunnen accepteren of weigeren:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-2-notification.png" src="../../_images/share-federation-2-notification.png" />
+<img alt="Federated share acceptance notification." src="../../_images/share-federation-2-notification.png" />
 </figure>
 </section>
 <section id="adding-a-public-share-to-your-nextcloud">
 <h2>Een publiek share toevoegen aan jouw Nextcloud<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Link to this heading"></a></h2>
-<p>Nextcloud publieke link share pagina’s bieden een optie om dat bestand of die map als federated share toe te voegen aan jouw eigen Nextcloud instantie. Voer gewoon jouw <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> in, net zoals hierboven getoond voor uitgaande aandelen:</p>
+<p>Nextcloud public link share pages offer an option to add that file or folder as a federated share
+into your own Nextcloud instance.
+Enter your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> as shown for outbound shares above:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-3-public.png" src="../../_images/share-federation-3-public.png" />
+<img alt="Adding a public share to your Nextcloud." src="../../_images/share-federation-3-public.png" />
 </figure>
 </section>
 </section>

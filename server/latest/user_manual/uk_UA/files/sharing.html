@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Обмін файлами &mdash; Nextcloud latest User Manual latest documentation</title>
+  <title>File sharing &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -67,20 +67,20 @@
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Обмін файлами</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">File sharing</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#public-link-shares">Загальнодоступні посилання</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#internal-shares-with-users-and-groups">Внутрішній обмін з користувачами та групами</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#others-with-access">Інші з доступом</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#federated-shares">Федеративні акції</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Створення нової частки федерації</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#federated-shares">Federated shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Додавання публічного ресурсу до вашого Nextcloud</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="file_drop.html">Зробити анонімні завантаження</a></li>
-<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Використання акцій федерації</a></li>
-<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Передати право власності</a></li>
+<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Using federation shares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfer ownership</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
@@ -111,7 +111,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Файли та синхронізація</a></li>
           <li class="breadcrumb-item"><a href="collaboration.html">Sharing &amp; collaboration</a></li>
-      <li class="breadcrumb-item active">Обмін файлами</li>
+      <li class="breadcrumb-item active">File sharing</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -122,7 +122,7 @@
            <div itemprop="articleBody">
              
   <section id="file-sharing">
-<h1>Обмін файлами<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
+<h1>File sharing<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
 <p>Користувачі Nextcloud можуть ділитися файлами та папками. Можливими цілями є</p>
 <ul class="simple">
 <li><p>публічні посилання</p></li>
@@ -142,7 +142,7 @@
 <p>Буде створено випадковий 15-значний токен. Посилання буде виглядати як <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/s/yxcFKRWBJqYYzp4</span></code>.</p>
 <p>Для публічних акцій <em>папки</em> доступно кілька варіантів:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_folder.png" src="../../_images/sharing_public_folder.png" />
+<img alt="Public folder share options." src="../../_images/sharing_public_folder.png" />
 </figure>
 <ul class="simple">
 <li><p><strong>Тільки для читання</strong>, щоб дозволити перегляд і завантаження</p></li>
@@ -157,26 +157,27 @@
 </ul>
 <p>Для загальнодоступних <em>файлів</em> ви можете дозволити редагування файлу за допомогою одного з рішень Nextcloud для спільного редагування:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_file.png" src="../../_images/sharing_public_file.png" />
+<img alt="Public file share options." src="../../_images/sharing_public_file.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Примітка</p>
-<p>Починаючи з Nextcloud 22, захист паролем, а також закінчення терміну дії файлів також поширюється за допомогою Federated File Sharing.</p>
+<p>Password protection and file expiration are also propagated using Federated File Sharing
+since Nextcloud 22.</p>
 </div>
 </section>
 <section id="internal-shares-with-users-and-groups">
 <h2>Внутрішній обмін з користувачами та групами<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Link to this heading"></a></h2>
 <p>Під час надання спільного доступу користувачам, групам, колам або учасникам бесіди Talk права на файли або вміст папок можна налаштувати:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal.png" src="../../_images/sharing_internal.png" />
+<img alt="Internal share options." src="../../_images/sharing_internal.png" />
 </figure>
 <p>Як користувач, ви можете налаштувати, чи хочете ви автоматично приймати всі вхідні ресурси і додавати їх до вашої кореневої теки, чи хочете, щоб вас кожного разу запитували, чи хочете ви прийняти або відхилити ресурс.</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal_acceptNotification.png" src="../../_images/sharing_internal_acceptNotification.png" />
+<img alt="Share acceptance notification." src="../../_images/sharing_internal_acceptNotification.png" />
 </figure>
 <p>Щоб змінити налаштування прийняття, перейдіть до <strong>Налаштування</strong> &amp;gt; <strong>Особисті</strong> &amp;gt; <strong>Поширення</strong>:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_autoAcceptSetting.png" src="../../_images/sharing_autoAcceptSetting.png" />
+<img alt="Auto-accept sharing setting." src="../../_images/sharing_autoAcceptSetting.png" />
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Попередження</p>
@@ -187,11 +188,11 @@
 <h2>Інші з доступом<a class="headerlink" href="#others-with-access" title="Link to this heading"></a></h2>
 <p>Щоб дізнатися, чи доступний файл або папка іншим користувачам через спільний доступ до папки вищого рівня ієрархії, клацніть на <strong>Інші користувачі мають доступ</strong> на вкладці спільного доступу:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__collapsed.png" src="../../_images/sharing_others-with-access__collapsed.png" />
+<img alt="Others with access panel, collapsed." src="../../_images/sharing_others-with-access__collapsed.png" />
 </figure>
 <p>Список показує всіх користувачів, групи, чати тощо, до яких поточний об’єкт отримав доступ через спільний доступ до папки вищого рівня в ієрархії:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__details.png" src="../../_images/sharing_others-with-access__details.png" />
+<img alt="Others with access panel, expanded with user details." src="../../_images/sharing_others-with-access__details.png" />
 </figure>
 <p>Натисніть на три крапки, щоб:</p>
 <ul class="simple">
@@ -206,25 +207,27 @@
 </section>
 </section>
 <section id="federated-shares">
-<h1>Федеративні акції<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
+<h1>Federated shares<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
 <p>Федеративний обмін дозволяє монтувати файлові ресурси з віддалених серверів Nextcloud, фактично створюючи власну хмару з Nextclouds. Ви можете створювати прямі посилання для спільного доступу з користувачами на інших серверах Nextcloud.</p>
 <section id="creating-a-new-federation-share">
-<h2>Створення нової частки федерації<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
 <p>За замовчуванням спільний доступ до федерації увімкнено. Виконайте ці кроки, щоб створити новий спільний доступ до інших серверів Nextcloud або ownCloud:</p>
 <p>Перейдіть на сторінку <code class="docutils literal notranslate"><span class="pre">Файли</span></code> і натисніть іконку Поділитися на файлі або каталозі, до якого ви хочете надати спільний доступ. У бічній панелі введіть ім’я користувача та URL-адресу віддаленого користувача в такій формі: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code>. У цьому прикладі це <code class="docutils literal notranslate"><span class="pre">bob&#64;cloud.example.com</span></code>:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-1.png" src="../../_images/share-federation-1.png" />
+<img alt="Entering a federated share address." src="../../_images/share-federation-1.png" />
 </figure>
 <p>Учасник отримує сповіщення у своєму Nextcloud, що дозволяє йому прийняти або відхилити вхідну частку:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-2-notification.png" src="../../_images/share-federation-2-notification.png" />
+<img alt="Federated share acceptance notification." src="../../_images/share-federation-2-notification.png" />
 </figure>
 </section>
 <section id="adding-a-public-share-to-your-nextcloud">
 <h2>Додавання публічного ресурсу до вашого Nextcloud<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Link to this heading"></a></h2>
-<p>На сторінках спільного доступу до публічних посилань Nextcloud ви можете додати цей файл або папку як об’єднаний ресурс до вашого власного екземпляра Nextcloud. Просто введіть <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> так само, як показано для вихідних ресурсів вище:</p>
+<p>Nextcloud public link share pages offer an option to add that file or folder as a federated share
+into your own Nextcloud instance.
+Enter your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> as shown for outbound shares above:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-3-public.png" src="../../_images/share-federation-3-public.png" />
+<img alt="Adding a public share to your Nextcloud." src="../../_images/share-federation-3-public.png" />
 </figure>
 </section>
 </section>

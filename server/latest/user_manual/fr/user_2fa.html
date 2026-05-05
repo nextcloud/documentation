@@ -71,7 +71,7 @@
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Accès universel</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Utilisation de l’authentification à deux facteurs</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Configuration de l’authentification à deux facteurs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">Codes de récupération en cas de perte de votre deuxième facteur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Recovery codes if you lose your second factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Se connecter avec une authentification à deux facteurs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Utilisation de la double authentification avec des jetons physiques</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Utilisation d’applications client avec une authentification à deux facteurs</a></li>
@@ -108,30 +108,41 @@
   <section id="using-two-factor-authentication">
 <h1>Utilisation de l’authentification à deux facteurs<a class="headerlink" href="#using-two-factor-authentication" title="Lien vers cette rubrique"></a></h1>
 <p>L’authentification à deux facteurs (2FA) est un moyen de protéger votre compte Nextcloud contre les accès non autorisés. Cela fonctionne en exigeant deux « preuves » différentes de votre identité. Par exemple, un mot de passe et une clé physique. Généralement, le premier facteur est un mot de passe comme vous connaissez déjà et le second peut être un message texte que vous recevrez ou un code que vous générerez sur votre téléphone ou un autre appareil. Nextcloud prend en charge divers facteurs d’authentification et vous pouvez en ajouter davantage.</p>
-<p>Une fois que votre administrateur a activé l’application d’authentification à deux facteurs, vous pouvez l’activer et la configurer dans <a class="reference internal" href="userpreferences.html"><span class="doc">Définir vos préférences</span></a>. Vous pouvez voir comment ci-dessous.</p>
+<p>Once a two-factor authentication app has been enabled by your administrator,
+you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Définir vos préférences</span></a>.</p>
 <section id="configuring-two-factor-authentication">
 <h2>Configuration de l’authentification à deux facteurs<a class="headerlink" href="#configuring-two-factor-authentication" title="Lien vers cette rubrique"></a></h2>
-<p>Dans vos paramètres personnels, recherchez le paramètre d’authentification à deux facteurs. Dans cet exemple, il s’agit de TOTP, un code temporel compatible avec Google Authenticator.</p>
+<p>In your personal settings, look up the <strong>Second-factor Auth</strong> setting. In this
+example this is TOTP, a Google Authenticator compatible time-based code:</p>
 <figure class="align-default">
 <img alt="Configuration TOTP" src="../_images/totp_enable.png" />
 </figure>
 <p>Vous verrez votre code TOTP secret et un code QR qui peut être scanné par l’application TOTP sur votre téléphone (ou un autre appareil). En fonction de l’application ou de l’outil, tapez le code ou scannez le QR et votre appareil affichera un code de connexion qui changera toutes les 30 secondes.</p>
 </section>
-<section id="recovery-codes-in-case-you-lost-your-2nd-factor">
-<h2>Codes de récupération en cas de perte de votre deuxième facteur<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Lien vers cette rubrique"></a></h2>
-<p>Vous devriez toujours générer des codes de secours pour l’A2F. Si votre appareil est volé ou ne fonctionne pas, vous pourrez utiliser l’un de ces codes pour déverrouiller votre compte. Il fonctionne efficacement comme un deuxième facteur de secours. Pour récupérer les codes de secours, allez dans vos paramètres personnels et regardez sous Paramètres d’authentification à deux facteurs. Choisissez <em>Générer des codes de secours</em>.</p>
+<section id="recovery-codes-if-you-lose-your-second-factor">
+<h2>Recovery codes if you lose your second factor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Lien vers cette rubrique"></a></h2>
+<p>You should always generate backup codes for 2FA. If your second factor device
+gets stolen or stops working, you can use one of these codes to unlock your
+account. It effectively functions as a backup second factor. To get the backup
+codes, go to your personal settings and look under <strong>Second-factor Auth</strong>
+settings. Choose <em>Generate backup codes</em>:</p>
 <figure class="align-default">
 <img alt="Générateur de code de secours A2F" src="../_images/2fa_backupcode_1.png" />
 </figure>
-<p>On vous présentera ensuite une liste de codes de secours à usage unique.</p>
+<p>You will then see a list of one-time-use backup codes:</p>
 <figure class="align-default">
 <img alt="Codes de secours A2F" src="../_images/2fa_backupcode_2.png" />
 </figure>
-<p>Vous devrez mettre ces codes dans un endroit sûr, quelque part où vous pouvez les retrouver. Ne pas les mettre ensemble avec votre deuxième facteur comme votre téléphone portable, mais assurez-vous que si vous en perdez un, vous avez toujours l’autre. Les garder à la maison est probablement la meilleure chose à faire.</p>
+<p>Store these codes somewhere safe where you can find them. Do not keep them
+with your second factor (such as your mobile phone), but store them separately
+so that losing one does not mean losing the other.</p>
 </section>
 <section id="logging-in-with-two-factor-authentication">
 <h2>Se connecter avec une authentification à deux facteurs<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Lien vers cette rubrique"></a></h2>
-<p>Une fois que vous vous êtes déconnecté et que vous devez vous reconnecter, vous verrez apparaître une demande de code TOTP dans votre navigateur. Si vous activez le facteur TOTP et un autre, vous verrez un écran de sélection sur lequel vous pourrez choisir quelle méthode à deux facteurs sera utilisée pour cette connexion. Sélectionnez TOTP.</p>
+<p>After you log out and log in again, you will see a prompt to enter the
+TOTP code in your browser. If you have enabled more than one second factor,
+you will see a selection screen where you can choose which method to use for
+this login. Select TOTP:</p>
 <figure class="align-default">
 <img alt="Choisir une méthode d'authentification à deux facteurs." src="../_images/totp_login_1.png" />
 </figure>
@@ -142,7 +153,9 @@
 <p>Si le code est correct, vous serez redirigé vers votre compte Nextcloud.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Comme le code dépends du temps, il est important que l’horloge de votre serveur et celle de votre smartphone soient presque à la même heure. Une différence de quelques secondes ne pose pas de soucis.</p>
+<p>Since the code is time-based, it is important that your server’s and
+your smartphone’s clock are almost in sync. A time drift of a few seconds
+won’t be a problem.</p>
 </div>
 </section>
 <section id="using-two-factor-authentication-with-hardware-tokens">

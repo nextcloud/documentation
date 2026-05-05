@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Пренос власништва &mdash; документација Nextcloud latest User Manual latest</title>
+  <title>Transfer ownership &mdash; документација Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -32,7 +32,7 @@
     <link rel="index" title="Индекс" href="../genindex.html" />
     <link rel="search" title="Претрага" href="../search.html" />
     <link rel="next" title="Security &amp; encryption" href="security.html" />
-    <link rel="prev" title="Употреба заједничких дељења" href="federated_cloud_sharing.html" /> 
+    <link rel="prev" title="Using federation shares" href="federated_cloud_sharing.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -67,11 +67,11 @@
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="sharing.html">Дељење фајлова</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sharing.html#federated-shares">Заједничка дељења</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sharing.html">File sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sharing.html#federated-shares">Federated shares</a></li>
 <li class="toctree-l3"><a class="reference internal" href="file_drop.html">Вршење анонимних отпремања</a></li>
-<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Употреба заједничких дељења</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Пренос власништва</a></li>
+<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Using federation shares</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Transfer ownership</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
@@ -102,7 +102,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Фајлови и синхронизација</a></li>
           <li class="breadcrumb-item"><a href="collaboration.html">Sharing &amp; collaboration</a></li>
-      <li class="breadcrumb-item active">Пренос власништва</li>
+      <li class="breadcrumb-item active">Transfer ownership</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/transfer_ownership.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -113,9 +113,10 @@
            <div itemprop="articleBody">
              
   <section id="transfer-ownership">
-<h1>Пренос власништва<a class="headerlink" href="#transfer-ownership" title="Link to this heading"></a></h1>
-<p>Users can transfer the ownership of files and folders to other users. Sharing settings and permissions for transferred files and folders will also
-be transferred to the new owner.</p>
+<h1>Transfer ownership<a class="headerlink" href="#transfer-ownership" title="Link to this heading"></a></h1>
+<p>Users can transfer the ownership of files and folders to other users. Sharing
+settings and permissions for transferred files and folders will also be transferred
+to the new owner.</p>
 <ol class="arabic">
 <li><p>Идите на <em>Подешавања</em> (горњи десни мени) &gt; <em>Дељење</em></p></li>
 <li><p>У одељку <em>Фајлови</em>, кликните на <em>Изаберите фајл или фолдер за пренос</em>. Отвара се бирач фајлова који приказује све фајлове и фолдере у корисниковом налогу.</p></li>
@@ -123,19 +124,15 @@ be transferred to the new owner.</p>
 <li><p>Ако је потребно, кликните на <em>Промени</em> да промените избор.</p></li>
 <li><p>Изаберите новог власника куцајући његово име у поље за претрагу поред <em>Нови власник</em>.</p></li>
 <li><p>Кликните на <em>Пренеси</em></p>
-<blockquote>
-<div><div class="admonition note">
+<div class="admonition note">
 <p class="admonition-title">Белешка</p>
 <p>Аутоматско довршавање корисничког имена или листинг може да биде ограничен услед административног подешавања видљивости. Погледајте <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html">администраторску документацију</a> за више детаља о овоме.</p>
 </div>
-</div></blockquote>
 </li>
 <li><p>Циљни корисник добија обавештење у којем се пита да ли прихвата или одбија долазни пренос власништва.</p>
-<blockquote>
-<div><figure class="align-default">
-<img alt="../../_images/transfer_ownership-accept.png" src="../../_images/transfer_ownership-accept.png" />
+<figure class="align-default">
+<img alt="File transfer acceptance notification" src="../../_images/transfer_ownership-accept.png" />
 </figure>
-</div></blockquote>
 </li>
 <li><p>Ако прихвати, циљни корисник проналази пренесене фајлове и фолдере у фолдеру <em>Пренесено власништво од [user] дана  [timestamp]</em> који се налази у његовом кореном фолдеру.</p></li>
 <li><p>Изворишни корисник се обавештењем обавештава о прихватању или одбијању преноса.</p></li>
@@ -146,7 +143,7 @@ be transferred to the new owner.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="federated_cloud_sharing.html" class="btn btn-neutral float-left" title="Употреба заједничких дељења" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="federated_cloud_sharing.html" class="btn btn-neutral float-left" title="Using federation shares" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="security.html" class="btn btn-neutral float-right" title="Security &amp; encryption" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

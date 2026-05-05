@@ -71,7 +71,7 @@
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Καθολική Πρόσβαση</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Χρήση ελέγχου ταυτότητας δύο παραγόντων</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Διαμόρφωση ελέγχου ταυτότητας δύο παραγόντων</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">Κωδικοί ανάκτησης σε περίπτωση που χάσετε τον δεύτερο παράγοντα</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Recovery codes if you lose your second factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Σύνδεση με έλεγχο ταυτότητας δύο παραγόντων</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Χρήση ελέγχου ταυτότητας δύο παραγόντων με διακριτικά υλικού</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Χρήση εφαρμογών πελάτη με έλεγχο ταυτότητας δύο παραγόντων</a></li>
@@ -108,30 +108,41 @@
   <section id="using-two-factor-authentication">
 <h1>Χρήση ελέγχου ταυτότητας δύο παραγόντων<a class="headerlink" href="#using-two-factor-authentication" title="Link to this heading"></a></h1>
 <p>Ο έλεγχος ταυτότητας δύο παραγόντων (2FA) είναι ένας τρόπος προστασίας του λογαριασμού σας στο Nextcloud από μη εξουσιοδοτημένη πρόσβαση. Λειτουργεί απαιτώντας δύο διαφορετικά «αποδεικτικά στοιχεία» της ταυτότητάς σας. Για παράδειγμα, <em>κάτι που γνωρίζετε</em> (όπως κωδικός πρόσβασης) και <em>κάτι που έχετε</em> σαν φυσικό κλειδί. Συνήθως, ο πρώτος παράγοντας είναι ένας κωδικός πρόσβασης όπως έχετε ήδη και ο δεύτερος μπορεί να είναι ένα μήνυμα κειμένου που λαμβάνετε ή ένας κωδικός που δημιουργείτε στο τηλέφωνό σας ή σε άλλη συσκευή (<em>κάτι που έχετε</em>). Το Nextcloud υποστηρίζει μια ποικιλία δεύτερων παραγόντων και μπορούν να προστεθούν περισσότεροι.</p>
-<p>Μόλις ενεργοποιηθεί μια εφαρμογή ελέγχου ταυτότητας δύο παραγόντων από τον διαχειριστή σας, μπορείτε να την ενεργοποιήσετε και να τη διαμορφώσετε στις <a class="reference internal" href="userpreferences.html"><span class="doc">προσωπικές προτιμήσεις</span></a>. Παρακάτω μπορείτε να δείτε πώς.</p>
+<p>Once a two-factor authentication app has been enabled by your administrator,
+you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Ορισμός των προτιμήσεών σας</span></a>.</p>
 <section id="configuring-two-factor-authentication">
 <h2>Διαμόρφωση ελέγχου ταυτότητας δύο παραγόντων<a class="headerlink" href="#configuring-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>Στις Προσωπικές σας Ρυθμίσεις, αναζητήστε τη ρύθμιση Ελέγχου Ταυτότητας Δεύτερου Παράγοντα. Σε αυτό το παράδειγμα, αυτή είναι η TOTP, ένας χρονικά βασισμένος κωδικός συμβατός με το Google Authenticator:</p>
+<p>In your personal settings, look up the <strong>Second-factor Auth</strong> setting. In this
+example this is TOTP, a Google Authenticator compatible time-based code:</p>
 <figure class="align-default">
 <img alt="Διαμόρφωση TOTP." src="../_images/totp_enable.png" />
 </figure>
 <p>Θα δείτε το μυστικό σας και έναν κωδικό QR που μπορεί να σαρωθεί από την εφαρμογή TOTP στο τηλέφωνό σας (ή σε άλλη συσκευή). Ανάλογα με την εφαρμογή ή το εργαλείο, πληκτρολογήστε τον κωδικό ή σαρώστε το QR και η συσκευή σας θα εμφανίσει έναν κωδικό σύνδεσης που αλλάζει κάθε 30 δευτερόλεπτα.</p>
 </section>
-<section id="recovery-codes-in-case-you-lost-your-2nd-factor">
-<h2>Κωδικοί ανάκτησης σε περίπτωση που χάσετε τον δεύτερο παράγοντα<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Link to this heading"></a></h2>
-<p>Θα πρέπει πάντα να δημιουργείτε εφεδρικούς κωδικούς για το 2FA. Εάν η συσκευή του δεύτερου παράγοντα σας κλαπεί ή δεν λειτουργεί, θα μπορείτε να χρησιμοποιήσετε έναν από αυτούς τους κωδικούς για να ξεκλειδώσετε το λογαριασμό σας. Λειτουργεί ουσιαστικά ως εφεδρικός δεύτερος παράγοντας. Για να λάβετε τους εφεδρικούς κωδικούς, μεταβείτε στις Προσωπικές σας Ρυθμίσεις και κοιτάξτε κάτω από τις ρυθμίσεις Ελέγχου Ταυτότητας Δεύτερου Παράγοντα. Επιλέξτε <em>Δημιουργία εφεδρικών κωδικών</em>:</p>
+<section id="recovery-codes-if-you-lose-your-second-factor">
+<h2>Recovery codes if you lose your second factor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Link to this heading"></a></h2>
+<p>You should always generate backup codes for 2FA. If your second factor device
+gets stolen or stops working, you can use one of these codes to unlock your
+account. It effectively functions as a backup second factor. To get the backup
+codes, go to your personal settings and look under <strong>Second-factor Auth</strong>
+settings. Choose <em>Generate backup codes</em>:</p>
 <figure class="align-default">
 <img alt="Γεννήτρια εφεδρικών κωδικών 2FA" src="../_images/2fa_backupcode_1.png" />
 </figure>
-<p>Στη συνέχεια, θα σας παρουσιαστεί μια λίστα εφεδρικών κωδικών για μία χρήση:</p>
+<p>You will then see a list of one-time-use backup codes:</p>
 <figure class="align-default">
 <img alt="Εφεδρικοί κωδικοί 2FA" src="../_images/2fa_backupcode_2.png" />
 </figure>
-<p>Θα πρέπει να τοποθετήσετε αυτούς τους κωδικούς σε ένα ασφαλές σημείο, κάπου όπου μπορείτε να τους βρείτε. Μην τους τοποθετείτε μαζί με τον δεύτερο παράγοντά σας, όπως το κινητό σας τηλέφωνο, αλλά βεβαιωθείτε ότι εάν χάσετε το ένα, έχετε ακόμα το άλλο. Η διατήρησή τους στο σπίτι είναι πιθανώς το καλύτερο πράγμα.</p>
+<p>Store these codes somewhere safe where you can find them. Do not keep them
+with your second factor (such as your mobile phone), but store them separately
+so that losing one does not mean losing the other.</p>
 </section>
 <section id="logging-in-with-two-factor-authentication">
 <h2>Σύνδεση με έλεγχο ταυτότητας δύο παραγόντων<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>Αφού αποσυνδεθείτε και χρειαστεί να συνδεθείτε ξανά, θα δείτε ένα αίτημα εισαγωγής του κωδικού TOTP στο πρόγραμμα περιήγησής σας. Εάν ενεργοποιήσετε όχι μόνο τον παράγοντα TOTP αλλά και έναν άλλο, θα δείτε μια οθόνη επιλογής όπου μπορείτε να επιλέξετε τη μέθοδο δύο παραγόντων για αυτήν τη σύνδεση. Επιλέξτε TOTP:</p>
+<p>After you log out and log in again, you will see a prompt to enter the
+TOTP code in your browser. If you have enabled more than one second factor,
+you will see a selection screen where you can choose which method to use for
+this login. Select TOTP:</p>
 <figure class="align-default">
 <img alt="Επιλογή μεθόδου ελέγχου ταυτότητας δύο παραγόντων." src="../_images/totp_login_1.png" />
 </figure>
@@ -142,7 +153,9 @@
 <p>Εάν ο κωδικός ήταν σωστός, θα ανακατευθυνθείτε στον λογαριασμό σας στο Nextcloud.</p>
 <div class="admonition note">
 <p class="admonition-title">Σημείωση</p>
-<p>Δεδομένου ότι ο κώδικας βασίζεται στο χρόνο, είναι σημαντικό το ρολόι του διακομιστή και του smartphone σας να είναι σχεδόν συγχρονισμένο. Η μετατόπιση χρόνου λίγων δευτερολέπτων δεν θα είναι πρόβλημα.</p>
+<p>Since the code is time-based, it is important that your server’s and
+your smartphone’s clock are almost in sync. A time drift of a few seconds
+won’t be a problem.</p>
 </div>
 </section>
 <section id="using-two-factor-authentication-with-hardware-tokens">
