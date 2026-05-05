@@ -217,7 +217,7 @@ Deprecated APIs
 - The ``\OCP\DB\IResult::fetch`` and ``\OCP\DB\IResult::fetchAll`` are soft-deprecated. Instead you can use
   ``\OCP\DB\IResult::fetchAssociative``, ``\OCP\DB\IResult::fetchNumeric`` and ``\OCP\DB\IResult::fetchOne``
   as replacement for ``\OCP\DB\IResult::fetch``; and ``\OCP\DB\IResult::fetchAllAssociative``,
-  ``\OCP\DB\IResult::fetchAllNumeric`` and ``\OCP\DB\IResult::fetchFirstColumn`` as replacement for 
+  ``\OCP\DB\IResult::fetchAllNumeric`` and ``\OCP\DB\IResult::fetchFirstColumn`` as replacement for
   ``\OCP\DB\IResult::fetchAll``. If you use rector, you can use the Nextcloud33 set, to automatically port
   most of your code to the new methods.
 
@@ -265,3 +265,5 @@ Should be replaced by the following code:
 
 - The ``WhatsNew`` feature was removed as such the ``OC\Updater\ChangesCheck`` class and related APIs.
   This also includes the ``whats_new`` database table and the ``WhatsNewController`` class which was serving the now removed ``/core/whatsnew`` endpoint.
+
+- The legacy class ``\OC_Response`` was removed.
