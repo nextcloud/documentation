@@ -446,14 +446,14 @@ use the mailbox search feature in the app.</p>
 <p>Bir ileti oluşturulduğunda ve “Gönder” düğmesine tıklandığında, ileti sol kenar çubuğunun sol alt köşesinde bulunan giden kutusuna eklenir.</p>
 <p>Ayrıca, gönderme işleminin tarihini ve saatini gelecekte bir zamana ayarlayabilirsiniz (ayrıntılı bilgi almak için <a class="reference internal" href="#mail-scheduled-messages"><span class="std std-ref">Zamanlanmış iletiler</span></a>). İleti belirlediğiniz tarih ve saat gelene kadar giden kutusunda tutulur, ve zamanı geldiğinde otomatik olarak gönderilir.</p>
 <p>Giden kutusu yalnızca giden kutusunda işlenmeyi bekleyen bir ileti bulunduğunda görüntülenir.</p>
-<p>“Gönder” işlemi tetiklenmeden önce istediğiniz bir zamanda giden kutusundaki bir ileti için oluşturucuyu yeniden açabilirsiniz.</p>
+<p>You can reopen the composer for a message in the outbox any time before the send operation is triggered.</p>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
 <p>Gönderim sırasında bir sorun oluştuğunda üç hata iletisinden biri görüntülenir:</p>
 <dl class="simple">
 <dt>“Gönderilmiş” kutusuna kopyalanamadı</dt><dd><p>E-posta gönderilmiştir ancak “Gönderilmiş” kutusuna kopyalanamamıştır. Bu hata giden kutusu tarafından işlenir ve kopyalama işlemi yeniden denenir.</p>
 </dd>
-<dt>E-posta sunucusu sorunu</dt><dd><p>Gönderim yapılamamıştır ama yeniden denenebilir (SMTP sunucusuna ulaşılamamıştır gibi). Giden kutusu iletiyi yeniden göndermeyi dener.</p>
+<dt>E-posta sunucusu sorunu</dt><dd><p>Sending was unsuccessful with a state that can be retried (ex: the SMTP server couldn’t be reached). The outbox will retry sending the message.</p>
 </dd>
 <dt>İleti gönderilemedi</dt><dd><p>İleti gönderilmiş ya da gönderilememiş olabilir. E-posta sunucusu bize iletinin durumunu söyleyemez. E-posta uygulamasının iletinin durumunu (gönderilmiş veya gönderilmemiş) durumunu belirlemenin bir yolu olmadığından, ileti giden kutusunda kalır ve hesap kullanıcısının nasıl ilerleyeceğine karar vermesi gerekir.</p>
 </dd>
@@ -496,7 +496,7 @@ use the mailbox search feature in the app.</p>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
-<p>Yönetici etkinleştirdiyse, sizin için etkinlik başlığı ve gündem oluşturulur.</p>
+<p>An event title and agenda are created for you if the administrator has enabled it.</p>
 </div>
 </section>
 <section id="create-a-task">
