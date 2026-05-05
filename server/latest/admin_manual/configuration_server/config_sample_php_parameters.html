@@ -3440,8 +3440,22 @@ this limitation by removing files before overwriting.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;quota_include_external_storage&#39;</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
 </pre></div>
 </div>
-<p>EXPERIMENTAL: Include external storage in quota calculations.</p>
-<p>Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code></p>
+<p>Include external storage mounts in quota calculations.</p>
+<p>When enabled, user storage quotas will also include files stored on
+external storage mounts (such as SMB, SFTP, S3, etc.) that are
+configured for the user (either as personal or global/system mounts).</p>
+<p>Only files visible to the user at these mount points are counted towards
+their quota. Files only visible to other users (on their own mounts) are
+not counted.</p>
+<p>By default, system/global external storage mounts are shared: every user
+given access sees the same files and folders from the external storage. To
+have per-user isolation, configure the mount with user-specific path or
+credentials, or utilize a personal mount.</p>
+<p>Enabling this option may impact performance if external storages are slow
+or unreliable.</p>
+<p>Warning: This setting is considered EXPERIMENTAL and may not work with all
+external storage backends.</p>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 </section>
 <section id="external-storage-auth-availability-delay">
 <h3>external_storage.auth_availability_delay<a class="headerlink" href="#external-storage-auth-availability-delay" title="Link to this heading"></a></h3>
