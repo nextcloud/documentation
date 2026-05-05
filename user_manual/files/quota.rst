@@ -3,9 +3,10 @@ Storage quota
 =============
 
 Your Nextcloud administrator has the option to set a storage quota on users. Look at
-your the Personal page to see what your quota is, and how much you have used.
+your Personal page to see what your quota is, and how much you have used.
 
 .. figure:: ../images/quota1.png
+   :alt: Storage quota indicator on the Personal page
 
 It may be helpful to understand how your quota is calculated.
 
