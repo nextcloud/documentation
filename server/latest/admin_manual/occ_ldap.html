@@ -221,14 +221,18 @@ example, <code class="docutils literal notranslate"><span class="pre">jeroboam</
 <code class="docutils literal notranslate"><span class="pre">givenName</span></code> and <code class="docutils literal notranslate"><span class="pre">sn</span></code> you can find users by first name + last name very
 quickly. For example, you’ll find Terri Hanson by searching for <code class="docutils literal notranslate"><span class="pre">te</span> <span class="pre">ha</span></code>.
 Trailing whitespaces are ignored.</p>
+</section>
+<section id="ldap-check-user">
+<h3>ldap:check-user<a class="headerlink" href="#ldap-check-user" title="Link to this heading"></a></h3>
 <p>Check if an LDAP user exists. This works only if the Nextcloud server is
 connected to an LDAP server:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">ldap</span><span class="p">:</span><span class="n">check</span><span class="o">-</span><span class="n">user</span> <span class="n">robert</span>
 </pre></div>
 </div>
-</section>
-<section id="ldap-check-user">
-<h3>ldap:check-user<a class="headerlink" href="#ldap-check-user" title="Link to this heading"></a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--update</span></code> to update the account fields from LDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">ldap</span><span class="p">:</span><span class="n">check</span><span class="o">-</span><span class="n">user</span> <span class="o">--</span><span class="n">update</span> <span class="n">robert</span>
+</pre></div>
+</div>
 <p>Will not run a check when it finds a disabled LDAP
 connection. This prevents users that exist on disabled LDAP connections from
 being marked as deleted. If you know for certain that the user you are searching for
@@ -237,6 +241,8 @@ use the <code class="docutils literal notranslate"><span class="pre">--force</sp
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">ldap</span><span class="p">:</span><span class="n">check</span><span class="o">-</span><span class="n">user</span> <span class="o">--</span><span class="n">force</span> <span class="n">robert</span>
 </pre></div>
 </div>
+<p>You can also use <code class="docutils literal notranslate"><span class="pre">--all-seen-users</span></code> to run the check on all users that logged into Nextcloud at least once.
+You may use <code class="docutils literal notranslate"><span class="pre">--limit</span></code> and <code class="docutils literal notranslate"><span class="pre">--offset</span></code> to do so by batch. You can combine this with <code class="docutils literal notranslate"><span class="pre">--update</span></code> to update the information of seen users.</p>
 </section>
 <section id="ldap-check-group">
 <h3>ldap:check-group<a class="headerlink" href="#ldap-check-group" title="Link to this heading"></a></h3>
