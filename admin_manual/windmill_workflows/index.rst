@@ -67,17 +67,10 @@ This is a skeleton for a script written in TypeScript (Bun). To use it, you have
 
 .. code-block:: javascript
 
-   import * as wmill from "windmill-client";
    import createClient, { type Middleware } from "openapi-fetch";
 
-   type Nextcloud = {
-      baseUrl: string,
-      password: string,
-      username: string
-   };
-
    export async function main(
-      nextcloud: Nextcloud,
+      nextcloud: RT.Nextcloud,
       $PARAMETER: $TYPE,
       // add any input parameters you need here
    ) {
@@ -89,7 +82,7 @@ This is a skeleton for a script written in TypeScript (Bun). To use it, you have
          async onRequest({ request, options }) {
             // fetch token, if it doesn’t exist
             // add Authorization header to every request
-            request.headers.set("Authorization", `Basic ${btoa(nextcloud.username + ':' + nextcloud.password)}`);
+            request.headers.set("Authorization", `Basic ${btoa(nextcloud.userId + ':' + nextcloud.token)}`);
             return request;
          },
       };
