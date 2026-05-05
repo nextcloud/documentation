@@ -12,7 +12,8 @@ Table of contents
     activity
     files/index
     groupware/index
-    talk/index 
+    talk/index
+    collectives/index
     desktop/index
     userpreferences
     universal_access
