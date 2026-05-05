@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ag baint úsáide as Scaireanna Cónaidhme &mdash; Nextcloud latest User Manual latest documentation</title>
+  <title>Using federation shares &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -30,7 +30,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Úinéireacht Aistrithe" href="transfer_ownership.html" />
+    <link rel="next" title="Transfer ownership" href="transfer_ownership.html" />
     <link rel="prev" title="Uaslódálacha gan ainm a dhéanamh" href="file_drop.html" /> 
 </head>
 
@@ -66,15 +66,15 @@
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="sharing.html">Comhroinnt</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sharing.html#federated-shares">Scaireanna Cónaidhme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sharing.html">File sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sharing.html#federated-shares">Federated shares</a></li>
 <li class="toctree-l3"><a class="reference internal" href="file_drop.html">Uaslódálacha gan ainm a dhéanamh</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Ag baint úsáide as Scaireanna Cónaidhme</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Scair Cónaidhm nua a chruthú</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federated-cloud-share-via-email">Comhroinn scamall nua Cónaidhme a chruthú trí ríomhphost</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using federation shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federated-cloud-share-via-email">Creating a new federated cloud share via email</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Úinéireacht Aistrithe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfer ownership</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
@@ -105,7 +105,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Comhaid &amp; sioncronú</a></li>
           <li class="breadcrumb-item"><a href="collaboration.html">Sharing &amp; collaboration</a></li>
-      <li class="breadcrumb-item active">Ag baint úsáide as Scaireanna Cónaidhme</li>
+      <li class="breadcrumb-item active">Using federation shares</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/federated_cloud_sharing.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -116,31 +116,35 @@
            <div itemprop="articleBody">
              
   <section id="using-federation-shares">
-<h1>Ag baint úsáide as Scaireanna Cónaidhme<a class="headerlink" href="#using-federation-shares" title="Link to this heading"></a></h1>
+<h1>Using federation shares<a class="headerlink" href="#using-federation-shares" title="Link to this heading"></a></h1>
 <p>Ligeann Comhroinnt Cónaidhm duit scaireanna comhaid a shuiteáil ó fhreastalaithe iargúlta Nextcloud, rud a chruthaíonn do scamall Nextclouds féin. Is féidir leat naisc dhíreacha scaireanna a chruthú le húsáideoirí ar fhreastalaithe Nextcloud eile.</p>
 <section id="creating-a-new-federation-share">
-<h2>Scair Cónaidhm nua a chruthú<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
 <p>Cumasaítear comhroinnt chónaidhm ar shuiteálacha nua nó uasghrádaithe Nextcloud de réir réamhshocraithe. Lean na céimeanna seo chun sciar nua a chruthú le freastalaithe eile Nextcloud nó ownCloud 9+:</p>
 <ol class="arabic">
 <li><p>Téigh go dtí do leathanach <code class="docutils literal notranslate"><span class="pre">Comhaid</span></code> agus cliceáil ar an deilbhín <strong>Share</strong> ar an gcomhad nó ar an eolaire is mian leat a roinnt. Sa bharra taoibh cuir isteach ainm úsáideora agus URL an chianúsáideora san fhoirm seo: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;oc-server-url&gt;</span></code>. Deimhníonn an fhoirm go huathoibríoch an seoladh a scríobhann tú agus lipéadaítear é mar “iargúlta”. Cliceáil ar an lipéad.</p>
-<blockquote>
-<div><figure class="align-default">
+<figure class="align-default">
 <img alt="../../_images/direct-share-1.png" src="../../_images/direct-share-1.png" />
 </figure>
-</div></blockquote>
 </li>
-<li><p>Nuair a dhéanann do fhreastalaí Nextcloud áitiúil nasc rathúil leis an bhfreastalaí cianda Nextcloud feicfidh tú deimhniú. Is é an t-aon scair-rogha atá agat ná <strong>Is féidir eagarthóireacht a dhéanamh</strong>.</p></li>
+<li><p>When your local Nextcloud server makes a successful connection with the remote
+Nextcloud server you will see a confirmation. Your only share option is <strong>Can edit</strong>.</p></li>
 </ol>
-<p>Cliceáil an cnaipe Roinn am ar bith chun a fheiceáil cé leis a bhfuil do chomhad roinnte agat. Bain do sciar nasctha am ar bith trí chliceáil ar dheilbhín an bhruscair. Ní dhéanann sé seo ach an sciar a dhínascadh, agus ní scriosann sé aon chomhad.</p>
+<p>Click the <strong>Share</strong> button anytime to see who you have shared your file with. Remove
+your linked share anytime by clicking the trash can icon. This only unlinks the
+share, and does not delete any files.</p>
 </section>
 <section id="creating-a-new-federated-cloud-share-via-email">
-<h2>Comhroinn scamall nua Cónaidhme a chruthú trí ríomhphost<a class="headerlink" href="#creating-a-new-federated-cloud-share-via-email" title="Link to this heading"></a></h2>
+<h2>Creating a new federated cloud share via email<a class="headerlink" href="#creating-a-new-federated-cloud-share-via-email" title="Link to this heading"></a></h2>
 <p>Bain úsáid as an modh seo agus tú ag roinnt le húsáideoirí ar ownCloud 8.x agus níos sine.</p>
-<p>Cad a tharlóidh mura bhfuil an t-ainm úsáideora nó an URL ar eolas agat? Ansin is féidir leat Nextcloud an nasc a chruthú duitse agus é a sheoladh ar ríomhphost chuig d’fhaighteoir.</p>
+<p>If you do not know the username or URL, you can have Nextcloud create
+the link for you and email it to your recipient.</p>
 <figure class="align-default">
 <img alt="../../_images/create_public_share-6.png" src="../../_images/create_public_share-6.png" />
 </figure>
-<p>Nuair a fhaigheann d’fhaighteoir do ríomhphost beidh orthu roinnt céimeanna a ghlacadh chun an nasc comhroinnte a chomhlánú. Ar dtús caithfidh siad an nasc a sheol tú isteach i mbrabhsálaí Gréasáin a oscailt, agus ansin cliceáil ar an gcnaipe <strong>Cuir le do Nextcloud</strong>.</p>
+<p>When your recipient receives your email they will have to take a number of
+steps to complete the share link. First they must open the link you sent them in
+a web browser, and then click the <strong>Add to your Nextcloud</strong> button.</p>
 <figure class="align-default">
 <img alt="../../_images/create_public_share-8.png" src="../../_images/create_public_share-8.png" />
 </figure>
@@ -158,7 +162,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="file_drop.html" class="btn btn-neutral float-left" title="Uaslódálacha gan ainm a dhéanamh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="transfer_ownership.html" class="btn btn-neutral float-right" title="Úinéireacht Aistrithe" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="transfer_ownership.html" class="btn btn-neutral float-right" title="Transfer ownership" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

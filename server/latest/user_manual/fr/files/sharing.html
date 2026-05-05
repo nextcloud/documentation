@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Partage de fichiers &mdash; Documentation Nextcloud latest User Manual latest</title>
+  <title>File sharing &mdash; Documentation Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -67,20 +67,20 @@
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accéder à vos fichiers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Gérer vos fichiers</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">Partage &amp; Collaboration</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Partage de fichiers</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">File sharing</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#public-link-shares">Partage de liens publics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#internal-shares-with-users-and-groups">Partage interne entre utilisateurs et groupes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#others-with-access">Autres avec accès</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#federated-shares">Partages Fédérés</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Création d’un nouveau partage fédéré</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#federated-shares">Federated shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Ajout d’un partage public à votre Nextcloud</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="file_drop.html">Faire des téléversements anonymes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Utilisation du partage entre instances</a></li>
-<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfert de propriété</a></li>
+<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Using federation shares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfer ownership</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Sécurité &amp; chiffrement</a></li>
@@ -111,7 +111,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Fichiers &amp; synchronisation</a></li>
           <li class="breadcrumb-item"><a href="collaboration.html">Partage &amp; Collaboration</a></li>
-      <li class="breadcrumb-item active">Partage de fichiers</li>
+      <li class="breadcrumb-item active">File sharing</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> Éditer sur GitHub</a>
       </li>
@@ -122,7 +122,7 @@
            <div itemprop="articleBody">
              
   <section id="file-sharing">
-<h1>Partage de fichiers<a class="headerlink" href="#file-sharing" title="Lien vers cette rubrique"></a></h1>
+<h1>File sharing<a class="headerlink" href="#file-sharing" title="Lien vers cette rubrique"></a></h1>
 <p>Les utilisateurs et utilisatrices peuvent partager des fichiers et des dossiers. Les cibles possibles sont:</p>
 <ul class="simple">
 <li><p>liens publiques</p></li>
@@ -142,7 +142,7 @@
 <p>Un jeton aléatoire de 15 chiffres va être créé. Le lien ressemblera à ceci <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/s/yxcFKRWBJqYYzp4</span></code>.</p>
 <p>Un certain nombre d’options sont disponibles pour les <em>dossiers</em> publics partagés:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_folder.png" src="../../_images/sharing_public_folder.png" />
+<img alt="Public folder share options." src="../../_images/sharing_public_folder.png" />
 </figure>
 <ul class="simple">
 <li><p><strong>Read only</strong> pour autoriser seulement à voir et à télécharger</p></li>
@@ -157,26 +157,27 @@
 </ul>
 <p>Pour les partages de fichiers publiques, vous pouvez autoriser l’édition du fichier avec une des solutions de collaboration de Nextcloud:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_file.png" src="../../_images/sharing_public_file.png" />
+<img alt="Public file share options." src="../../_images/sharing_public_file.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>La protection par mot de passe ainsi que l’expiration des fichiers sont aussi propagés avec le Partage de Fichiers Fédéré depuis Nextcloud 22.</p>
+<p>Password protection and file expiration are also propagated using Federated File Sharing
+since Nextcloud 22.</p>
 </div>
 </section>
 <section id="internal-shares-with-users-and-groups">
 <h2>Partage interne entre utilisateurs et groupes<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Lien vers cette rubrique"></a></h2>
 <p>Lorsque vous partagez des fichiers avec d’autre utilisateurs, groupes, cercles ou membres d’une conversation Talk, les droits d’accès des fichiers et dossiers sont modulables :</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal.png" src="../../_images/sharing_internal.png" />
+<img alt="Internal share options." src="../../_images/sharing_internal.png" />
 </figure>
 <p>En tant qu’utilisateur partageant des fichiers, vous pouvez configurer si vous voulez automatiquement accepter tous les partages entrants et les faire ajouter à votre dossier racine, ou si vous voulez qu’on vous demande à chaque fois si vous voulez accepter ou refuser le partage.</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal_acceptNotification.png" src="../../_images/sharing_internal_acceptNotification.png" />
+<img alt="Share acceptance notification." src="../../_images/sharing_internal_acceptNotification.png" />
 </figure>
 <p>Pour régler les paramètres, allez à <strong>Settings</strong> &gt; <strong>Personal</strong> &gt; <strong>Sharing</strong>:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_autoAcceptSetting.png" src="../../_images/sharing_autoAcceptSetting.png" />
+<img alt="Auto-accept sharing setting." src="../../_images/sharing_autoAcceptSetting.png" />
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
@@ -187,11 +188,11 @@
 <h2>Autres avec accès<a class="headerlink" href="#others-with-access" title="Lien vers cette rubrique"></a></h2>
 <p>Dans le but de savoir si un fichier ou un dossier est accessible à d’autres à travers le partage d’un dossier parent, cliquez sur <strong>Others with access</strong> dans l’onglet de partage.</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__collapsed.png" src="../../_images/sharing_others-with-access__collapsed.png" />
+<img alt="Others with access panel, collapsed." src="../../_images/sharing_others-with-access__collapsed.png" />
 </figure>
 <p>La liste comprends tous les utilisateurs et utilisatrices, groupes, chats, etc, que l’objet a été partagé, à travers un dossier parent:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__details.png" src="../../_images/sharing_others-with-access__details.png" />
+<img alt="Others with access panel, expanded with user details." src="../../_images/sharing_others-with-access__details.png" />
 </figure>
 <p>Cliquez sur les 3 points pour:</p>
 <ul class="simple">
@@ -206,25 +207,27 @@
 </section>
 </section>
 <section id="federated-shares">
-<h1>Partages Fédérés<a class="headerlink" href="#federated-shares" title="Lien vers cette rubrique"></a></h1>
+<h1>Federated shares<a class="headerlink" href="#federated-shares" title="Lien vers cette rubrique"></a></h1>
 <p>Le Partage Fédéré vous permet de monter des partages de fichiers depuis des serveurs Nextcloud distants, créant ainsi votre propre réseau Nextcloud. Vous pouvez aussi créer des liens de partage directs avec d’autres utilisateurs sur d’autres serveurs Nextcloud.</p>
 <section id="creating-a-new-federation-share">
-<h2>Création d’un nouveau partage fédéré<a class="headerlink" href="#creating-a-new-federation-share" title="Lien vers cette rubrique"></a></h2>
+<h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Lien vers cette rubrique"></a></h2>
 <p>Le partage fédéré est activé par défaut sur les nouvelles installations Nextcloud ainsi que sur celles qui ont été mises à jour. Pour créer un nouveau partage avec un autre serveur Nextcloud ou ownCLoud, suivez ces étapes :</p>
 <p>Allez à votre page <code class="docutils literal notranslate"><span class="pre">Fichiers</span></code> et cliquer sur l’icon Partager sur le fichier ou le dossier que vous voulez partager. Dans le menu latéral, entrez le nom d’utilisateur ou d’utilisatrice, et l’URL de l’utilisateur distant de cette form:<code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code>. Dans cet exemple, ce sera <code class="docutils literal notranslate"><span class="pre">bob&#64;cloud.example.com</span></code>:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-1.png" src="../../_images/share-federation-1.png" />
+<img alt="Entering a federated share address." src="../../_images/share-federation-1.png" />
 </figure>
 <p>La personne autorisée reçoit une notification dans son Nextcloud, leur donnant la possibilité d’accepter ou refuser ce partage entrant:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-2-notification.png" src="../../_images/share-federation-2-notification.png" />
+<img alt="Federated share acceptance notification." src="../../_images/share-federation-2-notification.png" />
 </figure>
 </section>
 <section id="adding-a-public-share-to-your-nextcloud">
 <h2>Ajout d’un partage public à votre Nextcloud<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Lien vers cette rubrique"></a></h2>
-<p>Les pages de partage de liens publics Nextcloud offrent la possibilité d’ajouter ce fichier ou dossier en tant que partage fédéré dans votre propre instance Nextcloud. Il suffit d’entrer votre <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> comme indiqué ci-dessus pour les partages sortants :</p>
+<p>Nextcloud public link share pages offer an option to add that file or folder as a federated share
+into your own Nextcloud instance.
+Enter your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> as shown for outbound shares above:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-3-public.png" src="../../_images/share-federation-3-public.png" />
+<img alt="Adding a public share to your Nextcloud." src="../../_images/share-federation-3-public.png" />
 </figure>
 </section>
 </section>

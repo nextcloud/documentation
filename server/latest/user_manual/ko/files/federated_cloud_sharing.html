@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>연합 공유 사용하기 &mdash; Nextcloud latest User Manual latest 문서</title>
+  <title>Using federation shares &mdash; Nextcloud latest User Manual latest 문서</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="색인" href="../genindex.html" />
     <link rel="search" title="검색" href="../search.html" />
-    <link rel="next" title="소유권 넘기기" href="transfer_ownership.html" />
+    <link rel="next" title="Transfer ownership" href="transfer_ownership.html" />
     <link rel="prev" title="Making anonymous uploads" href="file_drop.html" /> 
 </head>
 
@@ -67,15 +67,15 @@
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="sharing.html">File Sharing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sharing.html#federated-shares">Federated Shares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sharing.html">File sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sharing.html#federated-shares">Federated shares</a></li>
 <li class="toctree-l3"><a class="reference internal" href="file_drop.html">Making anonymous uploads</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">연합 공유 사용하기</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">새 연합 공유 생성하기</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federated-cloud-share-via-email">이메일을 통해 연합 클라우드 공유를 생성하기</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using federation shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federated-cloud-share-via-email">Creating a new federated cloud share via email</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">소유권 넘기기</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfer ownership</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
@@ -106,7 +106,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">파일 및 동기화</a></li>
           <li class="breadcrumb-item"><a href="collaboration.html">Sharing &amp; collaboration</a></li>
-      <li class="breadcrumb-item active">연합 공유 사용하기</li>
+      <li class="breadcrumb-item active">Using federation shares</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/federated_cloud_sharing.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -117,31 +117,35 @@
            <div itemprop="articleBody">
              
   <section id="using-federation-shares">
-<h1>연합 공유 사용하기<a class="headerlink" href="#using-federation-shares" title="Link to this heading"></a></h1>
+<h1>Using federation shares<a class="headerlink" href="#using-federation-shares" title="Link to this heading"></a></h1>
 <p>연합 공유를 통해 원격지에 있는 다른 Nextcloud 서버로부터 소유하고 있는 Nextcloud에 파일을 공유받을 수 있습니다. 또한 다른 Nextcloud 서버의 사용자와 파일을 직접 공유할 수 있습니다.</p>
 <section id="creating-a-new-federation-share">
-<h2>새 연합 공유 생성하기<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
 <p>연합 공유는 Nextcloud 설치, 업그레이드시 기본으로 활성화되어 있습니다. 다음의 과정을 통해 다른 Nextcloud 혹은 버전 9 이상의 ownCloud 서버와 공유를 생성하십시오:</p>
 <ol class="arabic">
 <li><p>귀하의 “파일” 페이지로 이동한 후 공유하길 원하는 파일 또는 디렉터리의 “공유” 버튼을 누르십시오. 사이드바에 원격 사용자의 사용자 이름과 URL을 다음 형식으로 입력하세요: “&lt;username&gt;&#64;&lt;oc-server-url&gt;”. 입력한 텍스트는 자동으로 확인되고 ‘원격’ 라벨이 붙게 됩니다. 그 라벨을 클릭하세요.</p>
-<blockquote>
-<div><figure class="align-default">
+<figure class="align-default">
 <img alt="../../_images/direct-share-1.png" src="../../_images/direct-share-1.png" />
 </figure>
-</div></blockquote>
 </li>
-<li><p>귀하의 Local Nextcloud 서버와 원격 Nextcloud 서버가 성공적으로 연결되면, 확인 메시지가 표시됩니다. 귀하의 유일한 공유 옵션은 <a href="#id1"><span class="problematic" id="id2">**</span></a>편집 가능**입니다.</p></li>
+<li><p>When your local Nextcloud server makes a successful connection with the remote
+Nextcloud server you will see a confirmation. Your only share option is <strong>Can edit</strong>.</p></li>
 </ol>
-<p>공유 버튼을 누르면 해당 파일을 공유하고 있는 사용자를 확인할 수 있습니다. 휴지통 아이콘을 누르면 링크 공유를 삭제할 수 있습니다. 이는 공유를 중단하는 동작이며, 파일을 삭제하지는 않습니다.</p>
+<p>Click the <strong>Share</strong> button anytime to see who you have shared your file with. Remove
+your linked share anytime by clicking the trash can icon. This only unlinks the
+share, and does not delete any files.</p>
 </section>
 <section id="creating-a-new-federated-cloud-share-via-email">
-<h2>이메일을 통해 연합 클라우드 공유를 생성하기<a class="headerlink" href="#creating-a-new-federated-cloud-share-via-email" title="Link to this heading"></a></h2>
+<h2>Creating a new federated cloud share via email<a class="headerlink" href="#creating-a-new-federated-cloud-share-via-email" title="Link to this heading"></a></h2>
 <p>ownCloud 8.x 및 그 이전 버전의 사용자와 공유할 경우 이 방법을 사용하십시오.</p>
-<p>사용자 이름과 URL을 알 수 없습니까? Nextcloud에서 공유를 위한 링크를 만들고 이를 이메일로 발송하십시오.</p>
+<p>If you do not know the username or URL, you can have Nextcloud create
+the link for you and email it to your recipient.</p>
 <figure class="align-default">
 <img alt="../../_images/create_public_share-6.png" src="../../_images/create_public_share-6.png" />
 </figure>
-<p>수신자가 이메일을 받으면, 공유 연결 과정을 마무리하기 위해 여러 단계를 거쳐야 합니다. 우선, 발신한 공유 링크를 웹 브라우저에서 열고, <strong>내 Nextcloud에 추가</strong> 버튼을 누릅니다.</p>
+<p>When your recipient receives your email they will have to take a number of
+steps to complete the share link. First they must open the link you sent them in
+a web browser, and then click the <strong>Add to your Nextcloud</strong> button.</p>
 <figure class="align-default">
 <img alt="../../_images/create_public_share-8.png" src="../../_images/create_public_share-8.png" />
 </figure>
@@ -159,7 +163,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="file_drop.html" class="btn btn-neutral float-left" title="Making anonymous uploads" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="transfer_ownership.html" class="btn btn-neutral float-right" title="소유권 넘기기" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="transfer_ownership.html" class="btn btn-neutral float-right" title="Transfer ownership" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

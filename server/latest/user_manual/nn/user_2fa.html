@@ -70,7 +70,7 @@
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Universal aksess</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Bruk av to-stegs autentifisering</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Konfigurering av to-faktor autentifisering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">Gjenoppretting koder i tilfelle du mister din 2 faktor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Recovery codes if you lose your second factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Innlogging med to-faktor autentifisering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Bruk av to-faktor autentifisering med maskinvare-tokens</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Bruk av klient applikasjoner med to-faktor autentisering</a></li>
@@ -107,30 +107,41 @@
   <section id="using-two-factor-authentication">
 <h1>Bruk av to-stegs autentifisering<a class="headerlink" href="#using-two-factor-authentication" title="Link to this heading"></a></h1>
 <p>To-steg autentifisering (2SA) er ein måte å beskytte din Nextcloud konto mot uautorisert tilgong. Det fungerer ved å krevje to forskjellige «bevis» på identiteten din. For eksempel <em>noko du veit</em> (som eit passord) og <em>noko du har</em> som ein fysisk nøkkel. Typisk, så er den fyrste faktoren eit passord som du allerede har og den andre kan være ein tekst melding du mottar eller ein kode du genererer på din mobil eller ein annan eining. (<em>noko du har</em>). Nextcloud støttar ei rekkje av 2 faktorar og meir kan bli lagt til.</p>
-<p>Når ein to-stegs autentifisering app har blitt aktivert av din administrator kan du aktivere og konfigurere det i <span class="xref std std-doc">brukarpreferanser</span>. Nedanfor kan du sjå korleis.</p>
+<p>Once a two-factor authentication app has been enabled by your administrator,
+you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Setting your preferences</span></a>.</p>
 <section id="configuring-two-factor-authentication">
 <h2>Konfigurering av to-faktor autentifisering<a class="headerlink" href="#configuring-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>Søk opp den andre-faktor Autentifisering innstillingen I dine Personlege Innstillingar</p>
+<p>In your personal settings, look up the <strong>Second-factor Auth</strong> setting. In this
+example this is TOTP, a Google Authenticator compatible time-based code:</p>
 <figure class="align-default">
 <img alt="TOTP configuration." src="../_images/totp_enable.png" />
 </figure>
 <p>Du vil sjå din hemmelighet og ein QR kode som kan bli skannet av TOTP appen på din mobil (eller ein annan eining). Avhengig av appen eller verktøyet, skriv inn koden eller scan QR en og din eining vil vise ein innlogging kode som endrer seg kvart 30 sekund.</p>
 </section>
-<section id="recovery-codes-in-case-you-lost-your-2nd-factor">
-<h2>Gjenoppretting koder i tilfelle du mister din 2 faktor<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Link to this heading"></a></h2>
-<p>Du bør alltid generere reservekoder til 2FA. Om din 2 faktor eining vert stelt eller ikkje fungerer, vil du kunne bruke ein av desse kodene til å låse opp din konto. Det fungerer effektivt som ein reserve 2 faktor. For å få reservekoder, gå til dine Personlige Innstillinger og sjå under Andre-faktor Autentifiserings innstillinger. Velg <em>Generere reservekoder</em>:</p>
+<section id="recovery-codes-if-you-lose-your-second-factor">
+<h2>Recovery codes if you lose your second factor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Link to this heading"></a></h2>
+<p>You should always generate backup codes for 2FA. If your second factor device
+gets stolen or stops working, you can use one of these codes to unlock your
+account. It effectively functions as a backup second factor. To get the backup
+codes, go to your personal settings and look under <strong>Second-factor Auth</strong>
+settings. Choose <em>Generate backup codes</em>:</p>
 <figure class="align-default">
 <img alt="2FA backup code generator" src="../_images/2fa_backupcode_1.png" />
 </figure>
-<p>Du vil så bli presentert med ei liste av eingongs-bruk reserve koder:</p>
+<p>You will then see a list of one-time-use backup codes:</p>
 <figure class="align-default">
 <img alt="2FA backup codes" src="../_images/2fa_backupcode_2.png" />
 </figure>
-<p>Du bør putte disse kodene ein trygg plass, ein plass der du kan finna dei. Ikkje putt dei saman med din 2 faktor som din mobil telefon, men vær sikker på at om du mister ein, vil du fortsatt ha den andre. Å halde dei heime er nok den beste løysinga.</p>
+<p>Store these codes somewhere safe where you can find them. Do not keep them
+with your second factor (such as your mobile phone), but store them separately
+so that losing one does not mean losing the other.</p>
 </section>
 <section id="logging-in-with-two-factor-authentication">
 <h2>Innlogging med to-faktor autentifisering<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>Etter du har logget ut og må logge inn igjen, vil du sjå ein førespurnad om å legge inn TOTP koden i din nettleser. Om du aktiverer ikkje berre TOTP faktoren, men også ein annan, vil du sjå ein valgskjerm der du kan velge to-faktor metoden til denne innloggingen. Velg TOTP:</p>
+<p>After you log out and log in again, you will see a prompt to enter the
+TOTP code in your browser. If you have enabled more than one second factor,
+you will see a selection screen where you can choose which method to use for
+this login. Select TOTP:</p>
 <figure class="align-default">
 <img alt="Choosing a two-factor authentication method." src="../_images/totp_login_1.png" />
 </figure>
@@ -141,7 +152,9 @@
 <p>Om koden var riktig vil du bli omdirigert til din Nextcloud konto.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Sidan koden er tids-basert, er det viktig at din tenar og smartmobil si klokke er omtrent synkroniserte. Ein tidsforskjell på eit par sekunder vil ikkje være eit problem.</p>
+<p>Since the code is time-based, it is important that your server’s and
+your smartphone’s clock are almost in sync. A time drift of a few seconds
+won’t be a problem.</p>
 </div>
 </section>
 <section id="using-two-factor-authentication-with-hardware-tokens">

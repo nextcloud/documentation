@@ -71,7 +71,7 @@
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">&quot;الوصول للجميع&quot; universal access</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">استخدام التحقُّق المُثنَّى من الهُوِيَّة  two-factor authentication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">إعداد التحقُّق المُثنَّى من الهُوِيَّة two-factor authentication 2FA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">رموز الاسترداد في حالة فقدان العامل الثاني 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Recovery codes if you lose your second factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">الدخول عن طريق التحقُّق المُثنّى</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">استخدام التحقُّق المُثنّى من الهُوِيَّة مع أَمَارَات مخزنة على أجهزة hardware token.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">إستعمال تطبيقات عميلة client apps بالتحقُّق المُثَنَّى من الهُوِيَّة</a></li>
@@ -108,30 +108,41 @@
   <section id="using-two-factor-authentication">
 <h1>استخدام التحقُّق المُثنَّى من الهُوِيَّة  two-factor authentication<a class="headerlink" href="#using-two-factor-authentication" title="Link to this heading"></a></h1>
 <p>التحقُّق المُثنَّى من الهُوِيَّة two-factor authentication  (2FA) هي طريقة لحماية حسابك على نكست كلاود من الوصول غير المصرح به. إنه يعمل عن طريق طلب &quot;إثباتين&quot; مختلفين لهويتك. على سبيل المثال، * شيء تعرفه * (مثل كلمة المرور) و * شيء لديك * مثل مفتاح مادي على فلاش مثلاً. عادةً ما يكون العامل الأول هو كلمة المرور التي لديك بالفعل ويمكن أن يكون العامل الثاني رسالة نصية تتلقاها أو رمزاً تُنشِئُه على هاتفك أو جهاز آخر (* شيء لديك*). تدعم نكست كلاود مجموعة متنوعة من العوامل الثانية؛ كما يمكن إضافة المزيد.</p>
-<p>بمجرد تمكين تطبيق التحقُّق المُثنَّى من الهُوِيَّة two-factor authentication 2FAمن قِبَل مشرفك، يمكنك تمكينه و تهيئته في  <a class="reference internal" href="userpreferences.html"><span class="doc">تعيين تفضيلاتك</span></a>.  ستجد أدناه كيفية ذلك.</p>
+<p>Once a two-factor authentication app has been enabled by your administrator,
+you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">تعيين تفضيلاتك</span></a>.</p>
 <section id="configuring-two-factor-authentication">
 <h2>إعداد التحقُّق المُثنَّى من الهُوِيَّة two-factor authentication 2FA<a class="headerlink" href="#configuring-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>في إعداداتك الشخصية، إبحث عن إعداد عامل التحقُّق الثاني Second-factor Auth. و في هذا المثال هو TOTP، وهو رمز زمني متوافق مع Google Authenticator:</p>
+<p>In your personal settings, look up the <strong>Second-factor Auth</strong> setting. In this
+example this is TOTP, a Google Authenticator compatible time-based code:</p>
 <figure class="align-default">
 <img alt="إعداد &quot;كلمة سر لمرة واحدة مقيدة زمنياً&quot; TOTP." src="../_images/totp_enable.png" />
 </figure>
 <p>سترى سرك و رمز الاستجابة السريعة QR الذي يمكنم مسحه ضوئيًا بواسطة تطبيق TOTP على هاتفك (أو أي جهاز آخر). اعتماداً على التطبيق أو الأداة، اكتب الرمز أو امسح رمز الاستجابة السريعة ضوئيًا وسيعرض جهازك رمز تسجيل الدخول الذي يتغير كل 30 ثانية.</p>
 </section>
-<section id="recovery-codes-in-case-you-lost-your-2nd-factor">
-<h2>رموز الاسترداد في حالة فقدان العامل الثاني 2<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Link to this heading"></a></h2>
-<p>يجب عليك دائمًا إنشاء رموز احتياطية لـ 2FA. إذا سُرق جهازك الذي يحوي العامل الثاني أو تعطل عن العمل، فستتمكن من استخدام أحد هذه الرموز لإلغاء قفل حسابك. هذا الإجراء يعمل كاحتياط للعامل الثاني. للحصول على الرموز الاحتياطية، انتقل إلى الإعدادات الشخصية الخاصة بك وانظر أسفل إعدادات العامل الثاني Second-factor Auth، و اختر <em>إنشاء رموز احتياطية</em> Generate backup codes:</p>
+<section id="recovery-codes-if-you-lose-your-second-factor">
+<h2>Recovery codes if you lose your second factor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Link to this heading"></a></h2>
+<p>You should always generate backup codes for 2FA. If your second factor device
+gets stolen or stops working, you can use one of these codes to unlock your
+account. It effectively functions as a backup second factor. To get the backup
+codes, go to your personal settings and look under <strong>Second-factor Auth</strong>
+settings. Choose <em>Generate backup codes</em>:</p>
 <figure class="align-default">
 <img alt="مُولِّد الكود الاحتياطي للعامل الثاني 2FA" src="../_images/2fa_backupcode_1.png" />
 </figure>
-<p>ستظهر لك بعد ذلك قائمة بالرموز الاحتياطية التي تُستخدم لمرة واحدة:</p>
+<p>You will then see a list of one-time-use backup codes:</p>
 <figure class="align-default">
 <img alt="الأكواد الاحتياطية للعامل الثاني 2FA" src="../_images/2fa_backupcode_2.png" />
 </figure>
-<p>يجب حفظ هذه الرموز في مكان آمن. لا تجمعهم مع العامل رقم 2 في نفس المكان؛ على هاتفك المحمول مثلاً. بحيث تضمن أنك إذا فقدت أحدهما، فلا يزال لديك الآخر. ربما يكون إبقائهم في المنزل هو أفضل شيء يمكن عمله.</p>
+<p>Store these codes somewhere safe where you can find them. Do not keep them
+with your second factor (such as your mobile phone), but store them separately
+so that losing one does not mean losing the other.</p>
 </section>
 <section id="logging-in-with-two-factor-authentication">
 <h2>الدخول عن طريق التحقُّق المُثنّى<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>بعد خروجك، إذا أردت تسجيل الدخول مرة أخرى، سترى طلبًا لإدخال رمز TOTP في متصفحك. إذا كنت قد قمت بتمكين عامل آخر إلى جانب عامل TOTP، فسترى شاشة اختيار يمكنك من خلالها اختيار طريقة ثنائية لتسجيل دخولك. إختَر TOTP:</p>
+<p>After you log out and log in again, you will see a prompt to enter the
+TOTP code in your browser. If you have enabled more than one second factor,
+you will see a selection screen where you can choose which method to use for
+this login. Select TOTP:</p>
 <figure class="align-default">
 <img alt="إختيار طريقة التحقُّق المُثَنَّى من الهُوِيَّة two-factor authentication." src="../_images/totp_login_1.png" />
 </figure>
@@ -142,7 +153,9 @@
 <p>إذا كان الرمز صحيحًا، فسيتم توجيهك إلى حسابك على نكست كلاود.</p>
 <div class="admonition note">
 <p class="admonition-title">ملاحظة</p>
-<p>نظرًا لأن الشفرة تستند إلى الوقت، فمن المهم أن تتمّ مُزامنة خادومك و ساعة هاتفك الذكي. فارق بضع ثوان في الزمن لن يُشكّل مشكلة.</p>
+<p>Since the code is time-based, it is important that your server's and
+your smartphone's clock are almost in sync. A time drift of a few seconds
+won't be a problem.</p>
 </div>
 </section>
 <section id="using-two-factor-authentication-with-hardware-tokens">

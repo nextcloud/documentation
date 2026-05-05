@@ -71,7 +71,7 @@
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Универзални приступ</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Употреба двофактоске аутентификације</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Конфигурисање двофактоске аутентификације</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">Кодови за опоравак у случају да изгубите свој други фактор</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Recovery codes if you lose your second factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Пријављивање са двофакторском аутентификацијом</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Употреба двофакторске аутентификације са хардверским жетонима</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Употреба клијенских апликација са двофакторском аутентификацијом</a></li>
@@ -108,30 +108,41 @@
   <section id="using-two-factor-authentication">
 <h1>Употреба двофактоске аутентификације<a class="headerlink" href="#using-two-factor-authentication" title="Link to this heading"></a></h1>
 <p>Двофакторска аутентификација (2FA) је начин да се ваш Nextcloud налог заштити од нежељеног приступа. Функционише тако што захтева два различита ’доказа’ вашег индентитета. На пример, <em>нешто што ви познајете</em> (као што је лозинка) и <em>нешто што ви поседујете</em> као што је физички кључ. У већини случајева, први фактор је лозинка коју већ имате, а други може бити текст порука коју примите или кôд који генеришете на свом телефону или на неком другом уређају (<em>нешто што ви поседујете</em>). Nextcloud подржава разне друге факторе, а могу да се додају и други.</p>
-<p>Једном када ваш администратор укључи апликацију двофакторске аутентификације, можете да је укључите за ваш налог и да је конфигуришете у <a class="reference internal" href="userpreferences.html"><span class="doc">Постављање ваших подешавања</span></a>. Испод можете видети како да то урадите.</p>
+<p>Once a two-factor authentication app has been enabled by your administrator,
+you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Постављање ваших подешавања</span></a>.</p>
 <section id="configuring-two-factor-authentication">
 <h2>Конфигурисање двофактоске аутентификације<a class="headerlink" href="#configuring-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>У вашим Личним подрешавањима, потражите подешавање Други фактор аутентификације. У овом примеру то је TOTP, кôд заснован на времену који је компатибилан са Google Authenticator апликацијом:</p>
+<p>In your personal settings, look up the <strong>Second-factor Auth</strong> setting. In this
+example this is TOTP, a Google Authenticator compatible time-based code:</p>
 <figure class="align-default">
 <img alt="TOTP конфигурација." src="../_images/totp_enable.png" />
 </figure>
 <p>Видећете вашу тајну и QR кôд који може да се скенира TOTP апликацијом на вашем телефону (или неком другом уређају). У зависности од апликације или алата, унесите кôд или скенирајте QR и ваш уређај ће приказати кôд за пријаву који се мења сваких 30 секунди.</p>
 </section>
-<section id="recovery-codes-in-case-you-lost-your-2nd-factor">
-<h2>Кодови за опоравак у случају да изгубите свој други фактор<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Link to this heading"></a></h2>
-<p>Требало би да увек генеришете резервне кодове за 2FA. У случају да се ваш уређај другог фактора украде или престане да ради, моћи ћете да употребите један од тих кодова да откључате свој налог. То у суштини функционише као резервни други фактор. Ако желите да генеришете резервне кодове, идите на своја Лична подешавања и погледајте подешавања за Други фактор аутентификације. Изаберите <em>Генериши резервне кодове</em>:</p>
+<section id="recovery-codes-if-you-lose-your-second-factor">
+<h2>Recovery codes if you lose your second factor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Link to this heading"></a></h2>
+<p>You should always generate backup codes for 2FA. If your second factor device
+gets stolen or stops working, you can use one of these codes to unlock your
+account. It effectively functions as a backup second factor. To get the backup
+codes, go to your personal settings and look under <strong>Second-factor Auth</strong>
+settings. Choose <em>Generate backup codes</em>:</p>
 <figure class="align-default">
 <img alt="Генератор резервног 2FA кода" src="../_images/2fa_backupcode_1.png" />
 </figure>
-<p>Приказаће вам се листа једнократних резервних кодова:</p>
+<p>You will then see a list of one-time-use backup codes:</p>
 <figure class="align-default">
 <img alt="2FA резервни кодови" src="../_images/2fa_backupcode_2.png" />
 </figure>
-<p>Ове кодове ви требало да сместите на неко безбедно место, негде где можете да их пронађете. Немојте да их поставите на заједно са вашим другим фактором, као што је ваш мобилни телефон, већ обезбедите да ако га изгубите, још увек можете да дођете до резервних кодова. Вероватно је најбоље да их чувате у кући.</p>
+<p>Store these codes somewhere safe where you can find them. Do not keep them
+with your second factor (such as your mobile phone), but store them separately
+so that losing one does not mean losing the other.</p>
 </section>
 <section id="logging-in-with-two-factor-authentication">
 <h2>Пријављивање са двофакторском аутентификацијом<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>Када се одјавите, па је потребно да се поново пријавите, добићете захтев да унесете TOTP кôд у свој прегледач. Ако поред TOTP укључите још један фактор, видећете екран за избор у којем можете да изаберете методу другог фактора коју желите да користите за ово пријављивање. Изаберите TOTP:</p>
+<p>After you log out and log in again, you will see a prompt to enter the
+TOTP code in your browser. If you have enabled more than one second factor,
+you will see a selection screen where you can choose which method to use for
+this login. Select TOTP:</p>
 <figure class="align-default">
 <img alt="Избор методе за двофакторску аутентификацију." src="../_images/totp_login_1.png" />
 </figure>
@@ -142,7 +153,9 @@
 <p>Ако је кôд био исправан, бићете преудмерени на свој Nextcloud налог.</p>
 <div class="admonition note">
 <p class="admonition-title">Белешка</p>
-<p>Пошто је кôд заснован на времену, важно је да су сатови вашег сервера и паметног телефона скоро  употпуости синхронизовани. Разлика у времену од неколико секунди неће правити проблем.</p>
+<p>Since the code is time-based, it is important that your server’s and
+your smartphone’s clock are almost in sync. A time drift of a few seconds
+won’t be a problem.</p>
 </div>
 </section>
 <section id="using-two-factor-authentication-with-hardware-tokens">

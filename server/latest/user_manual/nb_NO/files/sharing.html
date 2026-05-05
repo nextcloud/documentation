@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fildeling &mdash; Nextcloud latest User Manual latest documentation</title>
+  <title>File sharing &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -67,20 +67,20 @@
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Fildeling</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">File sharing</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#public-link-shares">Offentlige koblinger til delte ressurser</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#internal-shares-with-users-and-groups">Interne delinger med brukere og grupper</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#others-with-access">Andre med tilgang</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#federated-shares">Forente delinger</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Opprettelse av en ny sammenknyttet deling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#federated-shares">Federated shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Legge til en offentlig deling i Nextcloud</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="file_drop.html">Foreta anonyme opplastinger</a></li>
-<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Bruk av sammenknyttede deleressurser</a></li>
-<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Overføre eierskap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Using federation shares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfer ownership</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
@@ -111,7 +111,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Filer og synkronisering</a></li>
           <li class="breadcrumb-item"><a href="collaboration.html">Sharing &amp; collaboration</a></li>
-      <li class="breadcrumb-item active">Fildeling</li>
+      <li class="breadcrumb-item active">File sharing</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -122,7 +122,7 @@
            <div itemprop="articleBody">
              
   <section id="file-sharing">
-<h1>Fildeling<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
+<h1>File sharing<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
 <p>Nextcloud-brukere kan dele filer og mapper. Mulige mål er:</p>
 <ul class="simple">
 <li><p>offentlige koblinger</p></li>
@@ -142,7 +142,7 @@
 <p>Et tilfeldig 15-sifret token vil bli opprettet. Koblingen vil se slik ut: «<a class="reference external" href="https://cloud.example.com/s/yxcFKRWBJqYYzp4">https://cloud.example.com/s/yxcFKRWBJqYYzp4</a>».</p>
 <p>En rekke alternativer er tilgjengelige for offentlige <em>mappe</em>-delinger:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_folder.png" src="../../_images/sharing_public_folder.png" />
+<img alt="Public folder share options." src="../../_images/sharing_public_folder.png" />
 </figure>
 <ul class="simple">
 <li><p><strong>Skrivebeskyttet</strong> for å tillate visning og nedlasting</p></li>
@@ -157,41 +157,44 @@
 </ul>
 <p>For offentlige <em>fil</em>-delinger kan du tillate redigering av filen med en av Nextclouds samarbeidsredigeringsløsninger:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_file.png" src="../../_images/sharing_public_file.png" />
+<img alt="Public file share options." src="../../_images/sharing_public_file.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Merknad</p>
-<p>Passordbeskyttelse samt filutløp forplantes også ved hjelp av Forent fildeling siden Nextcloud 22.</p>
+<p>Password protection and file expiration are also propagated using Federated File Sharing
+since Nextcloud 22.</p>
 </div>
 </section>
 <section id="internal-shares-with-users-and-groups">
 <h2>Interne delinger med brukere og grupper<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Link to this heading"></a></h2>
 <p>Når du deler med brukere, grupper, kretser eller medlemmer av en Talk-samtale, kan rettighetene til filene eller mappeinnholdet justeres:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal.png" src="../../_images/sharing_internal.png" />
+<img alt="Internal share options." src="../../_images/sharing_internal.png" />
 </figure>
 <p>Som deleholder kan du konfigurere om du automatisk vil godta alle innkommende delte ressurser og legge dem til i rotmappen, eller om du vil bli spurt hver gang om du vil godta eller avslå den delte ressursen.</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal_acceptNotification.png" src="../../_images/sharing_internal_acceptNotification.png" />
+<img alt="Share acceptance notification." src="../../_images/sharing_internal_acceptNotification.png" />
 </figure>
 <p>For å justere godkjenningsinnstillingen, gå til <strong>Innstillinger</strong> &gt; <strong>Personlig</strong> &gt; <strong>Deling</strong>:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_autoAcceptSetting.png" src="../../_images/sharing_autoAcceptSetting.png" />
+<img alt="Auto-accept sharing setting." src="../../_images/sharing_autoAcceptSetting.png" />
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Advarsel</p>
-<p>If the owner renames a shared file or folder, the new name will not be reflected on the recipient’s side. This is needed to prevent overwriting existing files or folders on the recipient’s end.</p>
+<p>If the owner renames a shared file or folder, the new name will not be reflected on the
+recipient’s side. This is needed to prevent overwriting existing files or folders on the
+recipient’s end.</p>
 </div>
 </section>
 <section id="others-with-access">
 <h2>Andre med tilgang<a class="headerlink" href="#others-with-access" title="Link to this heading"></a></h2>
 <p>For å finne ut om en fil eller mappe er tilgjengelig for andre gjennom deling av et overordnet mappehierarkinivå, klikk på <strong>Andre med tilgang</strong> i delingsfanen:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__collapsed.png" src="../../_images/sharing_others-with-access__collapsed.png" />
+<img alt="Others with access panel, collapsed." src="../../_images/sharing_others-with-access__collapsed.png" />
 </figure>
 <p>Listen viser alle brukere, grupper, chatter og så videre som det aktuelle objektet har fått tilgang til gjennom deling av en overordnet mappe i hierarkiet:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__details.png" src="../../_images/sharing_others-with-access__details.png" />
+<img alt="Others with access panel, expanded with user details." src="../../_images/sharing_others-with-access__details.png" />
 </figure>
 <p>Klikk på de tre prikkene for å:</p>
 <ul class="simple">
@@ -206,25 +209,27 @@
 </section>
 </section>
 <section id="federated-shares">
-<h1>Forente delinger<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
+<h1>Federated shares<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
 <p>Forent eller sammenknyttet deling lar deg montere fildelinger fra eksterne Nextcloud-servere, og skaper faktisk din egen sky av Nextclouds. Du kan opprette direkte delingslenker med brukere på andre Nextcloud-servere.</p>
 <section id="creating-a-new-federation-share">
-<h2>Opprettelse av en ny sammenknyttet deling<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
 <p>Sammenknyttet deling er aktivert som standard. Følg disse trinnene for å opprette en ny delt ressurs med andre Nextcloud- eller ownCloud-servere:</p>
 <p>Gå til «Filer»-siden og klikk på <strong>Del</strong>-ikonet på filen eller katalogen du vil dele. I sidefeltet skriver du inn brukernavnet og URL-en til den eksterne brukeren i dette skjemaet: ’’&lt;username&gt;&#64;&lt;nc-server-url&gt;’’. I dette eksempelet, det er «<a class="reference external" href="mailto:bob&#37;&#52;&#48;cloud&#46;example&#46;com">bob<span>&#64;</span>cloud<span>&#46;</span>example<span>&#46;</span>com</a>»:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-1.png" src="../../_images/share-federation-1.png" />
+<img alt="Entering a federated share address." src="../../_images/share-federation-1.png" />
 </figure>
 <p>Delingsparten mottar et varsel i Nextcloud, slik at de enten kan godta eller avslå den innkommende delingen:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-2-notification.png" src="../../_images/share-federation-2-notification.png" />
+<img alt="Federated share acceptance notification." src="../../_images/share-federation-2-notification.png" />
 </figure>
 </section>
 <section id="adding-a-public-share-to-your-nextcloud">
 <h2>Legge til en offentlig deling i Nextcloud<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Link to this heading"></a></h2>
-<p>Nextcloud offentlige lenkedelingssider tilbyr et alternativ for å legge til den filen eller mappen som en sammenknyttet deling i din egen Nextcloud-forekomst. Bare skriv inn din <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> akkurat som vist for utgående delinger ovenfor:</p>
+<p>Nextcloud public link share pages offer an option to add that file or folder as a federated share
+into your own Nextcloud instance.
+Enter your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> as shown for outbound shares above:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-3-public.png" src="../../_images/share-federation-3-public.png" />
+<img alt="Adding a public share to your Nextcloud." src="../../_images/share-federation-3-public.png" />
 </figure>
 </section>
 </section>

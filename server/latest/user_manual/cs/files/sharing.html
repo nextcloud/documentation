@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sdílení souborů &mdash; Dokumentace pro Nextcloud latest User Manual latest</title>
+  <title>File sharing &mdash; Dokumentace pro Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -67,20 +67,20 @@
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Sdílení souborů</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">File sharing</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#public-link-shares">Sdílení veřejným odkazem</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#internal-shares-with-users-and-groups">Interní sdílení s uživateli a skupinami</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#others-with-access">Ostatní s přístupem</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#federated-shares">Federovaná sdílení</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Vytvoření nového federovaného sdílení</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#federated-shares">Federated shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Přidání veřejného sdílení do Nextcloud</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="file_drop.html">Provádění anonymních nahrání</a></li>
-<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Používání federovaných sdílení</a></li>
-<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Přenesení vlastnictví</a></li>
+<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Using federation shares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfer ownership</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
@@ -111,7 +111,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Soubory a synchronizace</a></li>
           <li class="breadcrumb-item"><a href="collaboration.html">Sharing &amp; collaboration</a></li>
-      <li class="breadcrumb-item active">Sdílení souborů</li>
+      <li class="breadcrumb-item active">File sharing</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -122,7 +122,7 @@
            <div itemprop="articleBody">
              
   <section id="file-sharing">
-<h1>Sdílení souborů<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
+<h1>File sharing<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
 <p>Uživatelé Nextcloud mohou soubory a složky sdílet. Možné cíle jsou:</p>
 <ul class="simple">
 <li><p>veřejné odkazy</p></li>
@@ -142,7 +142,7 @@
 <p>Bude vytvořen náhodný 15 znakový token. Odkaz bude vypadat jako <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/s/yxcFKRWBJqYYzp4</span></code>.</p>
 <p>Pro veřejná sdílení <em>složek</em> je k dispozici množství voleb:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_folder.png" src="../../_images/sharing_public_folder.png" />
+<img alt="Public folder share options." src="../../_images/sharing_public_folder.png" />
 </figure>
 <ul class="simple">
 <li><p><strong>Pouze pro čtení</strong> je umožněno zobrazování a stahování si</p></li>
@@ -157,26 +157,27 @@
 </ul>
 <p>V případě veřejných sdílení <em>souborů</em> lze umožnit upravování pomocí jednoho z řešení pro úpravy ve spolupráci, poskytovanými v rámci Nextcloud:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_file.png" src="../../_images/sharing_public_file.png" />
+<img alt="Public file share options." src="../../_images/sharing_public_file.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
-<p>Od Nextcloud 22 jsou ochrana heslem a stejně tak dočasná platnost souboru propagovány také při použití Federovaného sdílení souborů.</p>
+<p>Password protection and file expiration are also propagated using Federated File Sharing
+since Nextcloud 22.</p>
 </div>
 </section>
 <section id="internal-shares-with-users-and-groups">
 <h2>Interní sdílení s uživateli a skupinami<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Link to this heading"></a></h2>
 <p>Při sdílení s uživateli, skupinami, okruhy nebo členy konverzace v Talk, oprávnění na obsah souborů a složek jsou upravitelná:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal.png" src="../../_images/sharing_internal.png" />
+<img alt="Internal share options." src="../../_images/sharing_internal.png" />
 </figure>
 <p>Jako příjemce sdílení můžete nastavit, zda chcete automaticky přijímat veškerá příchozí sdílení a přidávat je do své kořenové složky, nebo zda chcete být pokaždé dotázáni, zda chcete sdílení přijmout nebo odmítnout.</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal_acceptNotification.png" src="../../_images/sharing_internal_acceptNotification.png" />
+<img alt="Share acceptance notification." src="../../_images/sharing_internal_acceptNotification.png" />
 </figure>
 <p>Nastavení přijímání upravíte v <strong>Nastavení</strong> &gt; <strong>Osobní</strong> &gt; <strong>Sdílení</strong>:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_autoAcceptSetting.png" src="../../_images/sharing_autoAcceptSetting.png" />
+<img alt="Auto-accept sharing setting." src="../../_images/sharing_autoAcceptSetting.png" />
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Varování</p>
@@ -187,11 +188,11 @@
 <h2>Ostatní s přístupem<a class="headerlink" href="#others-with-access" title="Link to this heading"></a></h2>
 <p>Zda je soubor či složka přístupná ostatním skrze sdílení nadřazené složky ve stromu, naleznete kliknutím na <strong>Ostatní s přístupem</strong> na kartě sdílení:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__collapsed.png" src="../../_images/sharing_others-with-access__collapsed.png" />
+<img alt="Others with access panel, collapsed." src="../../_images/sharing_others-with-access__collapsed.png" />
 </figure>
 <p>Seznam zobrazuje všechny uživatele, skupiny, chaty atd., kterým byl udělen přístup ke stávajícímu objektu prostřednictvím sdílení nadřazené složky ve stromu:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__details.png" src="../../_images/sharing_others-with-access__details.png" />
+<img alt="Others with access panel, expanded with user details." src="../../_images/sharing_others-with-access__details.png" />
 </figure>
 <p>Kliknutím na tři tečky:</p>
 <ul class="simple">
@@ -206,25 +207,27 @@
 </section>
 </section>
 <section id="federated-shares">
-<h1>Federovaná sdílení<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
+<h1>Federated shares<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
 <p>Federované sdílení vám umožňuje připojit sdílení souborů ze vzdálených Nextcloud serverů a ve výsledku tak vytvořit svůj vlastní cloud z Nextcloud instancí. Je možné vytvářet přímé odkazy na sdílení s uživateli z ostatních Nextcloud serverů.</p>
 <section id="creating-a-new-federation-share">
-<h2>Vytvoření nového federovaného sdílení<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
 <p>Federované sdílení je zapnuté ve výchozím stavu. Následujte tyto kroky pro vytvoření nového sdílení s ostatními Nextcloud nebo OwnCloud servery:</p>
 <p>Jděte na stránku <code class="docutils literal notranslate"><span class="pre">Soubory</span></code> a klikněte na ikonu Sdílení na souboru nebo složce, kterou chcete nasdílet. V postranním panelu zadejte uživatelské jméno a URL adresu vzdáleného uživatele v podobě: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code>. V tomto příkladu, je to <code class="docutils literal notranslate"><span class="pre">bob&#64;cloud.example.com</span></code>:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-1.png" src="../../_images/share-federation-1.png" />
+<img alt="Entering a federated share address." src="../../_images/share-federation-1.png" />
 </figure>
 <p>Příjemci sdílení obdrží upozornění ve svých Nextcloud, které jim umožní příchozí sdílení buď přijmout nebo odmítnout:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-2-notification.png" src="../../_images/share-federation-2-notification.png" />
+<img alt="Federated share acceptance notification." src="../../_images/share-federation-2-notification.png" />
 </figure>
 </section>
 <section id="adding-a-public-share-to-your-nextcloud">
 <h2>Přidání veřejného sdílení do Nextcloud<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Link to this heading"></a></h2>
-<p>Nextcloud stránky pro sdílení veřejným odkazem nabízejí volbu pro přidání takového souboru či složky jako federovaného sdílení na vaší vlastní instanci Nextcloud. Stačí jen zadat své <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> právě tak, jako je vyobrazeno pro odchozí sdílení výše:</p>
+<p>Nextcloud public link share pages offer an option to add that file or folder as a federated share
+into your own Nextcloud instance.
+Enter your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> as shown for outbound shares above:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-3-public.png" src="../../_images/share-federation-3-public.png" />
+<img alt="Adding a public share to your Nextcloud." src="../../_images/share-federation-3-public.png" />
 </figure>
 </section>
 </section>

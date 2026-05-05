@@ -70,7 +70,7 @@
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Rochtain uilíoch</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Ag baint úsáide as fíordheimhniú dhá-fhachtóir</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Fíordheimhniú dhá fhachtóir á chumrú</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">Cóid aisghabhála ar eagla go gcaillfidh tú do 2ú fachtóir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Recovery codes if you lose your second factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Logáil isteach le fíordheimhniú dhá fhachtóir</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Fíordheimhniú dhá fhachtóir a úsáid le comharthaí crua-earraí</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Feidhmchláir chliaint a úsáid le fíordheimhniú dhá fhachtóir</a></li>
@@ -107,30 +107,41 @@
   <section id="using-two-factor-authentication">
 <h1>Ag baint úsáide as fíordheimhniú dhá-fhachtóir<a class="headerlink" href="#using-two-factor-authentication" title="Link to this heading"></a></h1>
 <p>Is bealach é fíordheimhniú dhá fhachtóir (2FA) chun do chuntas Nextcloud a chosaint ar rochtain neamhúdaraithe. Oibríonn sé trí dhá ‘chruthúnas’ éagsúla ar d’aitheantas a éileamh. Mar shampla, <em>rud éigin atá ar eolas agat</em> (cosúil le pasfhocal) agus <em>rud éigin atá agat</em> mar eochair fhisiciúil. De ghnáth, is é an chéad fhachtóir pasfhocal mar atá agat cheana féin agus is féidir leis an dara fachtóir a bheith ina teachtaireacht téacs a fhaigheann tú nó cód a ghineann tú ar do ghuthán nó gléas eile (<em>rud atá agat</em>). Tacaíonn Nextcloud le raon fachtóirí 2nd agus is féidir níos mó a chur leis.</p>
-<p>Nuair a bheidh aip fíordheimhnithe dhá fhachtóir cumasaithe ag do riarthóir is féidir leat é a chumasú agus a chumrú i :doc: <cite>userpreferences</cite>. Anseo thíos is féidir leat a fheiceáil conas.</p>
+<p>Once a two-factor authentication app has been enabled by your administrator,
+you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Ag socrú do shainroghanna</span></a>.</p>
 <section id="configuring-two-factor-authentication">
 <h2>Fíordheimhniú dhá fhachtóir á chumrú<a class="headerlink" href="#configuring-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>I do Shocruithe Pearsanta féach ar an socrú Second-factor Auth. Sa sampla seo é seo TOTP, cód ama-bhunaithe atá comhoiriúnach le Google Authenticator:</p>
+<p>In your personal settings, look up the <strong>Second-factor Auth</strong> setting. In this
+example this is TOTP, a Google Authenticator compatible time-based code:</p>
 <figure class="align-default">
 <img alt="cumraíocht TOTP." src="../_images/totp_enable.png" />
 </figure>
 <p>Feicfidh tú do rún agus cód QR ar féidir leis an aip TOTP a scanadh ar do ghuthán (nó gléas eile). Ag brath ar an aip nó ar an uirlis, clóscríobh an cód nó scanadh an QR agus taispeánfaidh do ghléas cód logáil isteach a athraíonn gach 30 soicind.</p>
 </section>
-<section id="recovery-codes-in-case-you-lost-your-2nd-factor">
-<h2>Cóid aisghabhála ar eagla go gcaillfidh tú do 2ú fachtóir<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Link to this heading"></a></h2>
-<p>Ba cheart duit cóid chúltaca a ghiniúint do 2FA i gcónaí. Má ghoidtear do ghléas 2ú fachtóir nó mura bhfuil sé ag obair, beidh tú in ann ceann de na cóid seo a úsáid chun do chuntas a dhíghlasáil. Feidhmíonn sé go héifeachtach mar 2ú fachtóir cúltaca. Chun na cóid chúltaca a fháil, téigh chuig do Shocruithe Pearsanta agus féach faoi shocruithe Second-factor Auth. Roghnaigh <em>Gin cóid chúltaca</em>:</p>
+<section id="recovery-codes-if-you-lose-your-second-factor">
+<h2>Recovery codes if you lose your second factor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Link to this heading"></a></h2>
+<p>You should always generate backup codes for 2FA. If your second factor device
+gets stolen or stops working, you can use one of these codes to unlock your
+account. It effectively functions as a backup second factor. To get the backup
+codes, go to your personal settings and look under <strong>Second-factor Auth</strong>
+settings. Choose <em>Generate backup codes</em>:</p>
 <figure class="align-default">
 <img alt="Gineadóir cód cúltaca 2FA" src="../_images/2fa_backupcode_1.png" />
 </figure>
-<p>Ansin tabharfar liosta de chóid chúltaca úsáide aonuaire duit:</p>
+<p>You will then see a list of one-time-use backup codes:</p>
 <figure class="align-default">
 <img alt="Cóid chúltaca 2FA" src="../_images/2fa_backupcode_2.png" />
 </figure>
-<p>Ba cheart duit na cóid seo a chur in áit shábháilte, áit ar féidir leat iad a aimsiú. Ná cuir le chéile iad le do 2ú fachtóir cosúil le do ghuthán póca ach déan cinnte má chailleann tú ceann, go bhfuil fós an ceann eile agat. Is dócha gurb é an rud is fearr le déanamh iad a choinneáil sa bhaile.</p>
+<p>Store these codes somewhere safe where you can find them. Do not keep them
+with your second factor (such as your mobile phone), but store them separately
+so that losing one does not mean losing the other.</p>
 </section>
 <section id="logging-in-with-two-factor-authentication">
 <h2>Logáil isteach le fíordheimhniú dhá fhachtóir<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>Tar éis duit logáil amach agus logáil isteach arís, feicfidh tú iarratas chun an cód TOTP a chur isteach i do bhrabhsálaí. Má chumasaíonn tú ní amháin an fachtóir TOTP ach ceann eile, feicfidh tú scáileán roghnaithe ar a bhféadfaidh tú modh dhá fhachtóir a roghnú don logáil isteach seo. Roghnaigh TOTP:</p>
+<p>After you log out and log in again, you will see a prompt to enter the
+TOTP code in your browser. If you have enabled more than one second factor,
+you will see a selection screen where you can choose which method to use for
+this login. Select TOTP:</p>
 <figure class="align-default">
 <img alt="Modh fíordheimhnithe dhá fhachtóir a roghnú." src="../_images/totp_login_1.png" />
 </figure>
@@ -141,7 +152,9 @@
 <p>Má bhí an cód ceart atreorófar thú chuig do chuntas Nextcloud.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Ós rud é go bhfuil an cód bunaithe ar am, tá sé tábhachtach go mbeadh clog do fhreastalaí agus do ghuthán cliste beagnach sioncronaithe. Ní bheidh sé ina fhadhb le sruth ama cúpla soicind.</p>
+<p>Since the code is time-based, it is important that your server's and
+your smartphone's clock are almost in sync. A time drift of a few seconds
+won't be a problem.</p>
 </div>
 </section>
 <section id="using-two-factor-authentication-with-hardware-tokens">

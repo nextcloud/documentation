@@ -71,7 +71,7 @@
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Universele toegang</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Gebruik maken van twee-factor authenticatie</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Configureren van twee-factor authenticatie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">Herstelcodes voor het geval je je 2e factor kwijt bent.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Recovery codes if you lose your second factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Inloggen met tweefactor authenticatie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Het gebruik van twee-factor authenticatie met hardware tokens</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Gebruik van client toepassingen met twee-factor authenticatie</a></li>
@@ -108,30 +108,41 @@
   <section id="using-two-factor-authentication">
 <h1>Gebruik maken van twee-factor authenticatie<a class="headerlink" href="#using-two-factor-authentication" title="Link to this heading"></a></h1>
 <p>Twee-factor authenticatie (2FA) is een manier om je Nextcloud-account te beschermen tegen ongeautoriseerde toegang. Het werkt door twee verschillende ‘bewijzen’ van je identiteit te eisen. Bijvoorbeeld <em>iets wat je kent</em> (zoals een wachtwoord) en <em>iets dat je hebt</em> zoals een fysieke sleutel. Meestal is de eerste factor een wachtwoord zoals je al een hebt en de tweede kan een sms zijn die je ontvangt of een code die je genereert op je telefoon of een ander apparaat (<em>iets dat je hebt</em>). Nextcloud ondersteunt een aantal verschillende tweede factoren en er kunnen er meer worden toegevoegd.</p>
-<p>Zodra een app voor twee-factor authenticatie is ingeschakeld door je beheerder, kun je dit inschakelen en configureren in <a class="reference internal" href="userpreferences.html"><span class="doc">Het instellen van jouw voorkeuren</span></a>. Hieronder kan je zien hoe.</p>
+<p>Once a two-factor authentication app has been enabled by your administrator,
+you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Het instellen van jouw voorkeuren</span></a>.</p>
 <section id="configuring-two-factor-authentication">
 <h2>Configureren van twee-factor authenticatie<a class="headerlink" href="#configuring-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>Zoek in jouw persoonlijke instellingen de instelling voor de twee-factor Auth op. In dit voorbeeld is dit TOTP, een Google Authenticator-compatibele tijdgebaseerde code:</p>
+<p>In your personal settings, look up the <strong>Second-factor Auth</strong> setting. In this
+example this is TOTP, a Google Authenticator compatible time-based code:</p>
 <figure class="align-default">
 <img alt="TOTP-configuratie." src="../_images/totp_enable.png" />
 </figure>
 <p>Je ziet je geheime code en een QR-code die kan worden gescand door de TOTP-app op je telefoon (of een ander toestel). Typ, afhankelijk van de app of tool, de code in of scan de QR-code en je apparaat toont een inlogcode die elke 30 seconden verandert.</p>
 </section>
-<section id="recovery-codes-in-case-you-lost-your-2nd-factor">
-<h2>Herstelcodes voor het geval je je 2e factor kwijt bent.<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Link to this heading"></a></h2>
-<p>Je moet altijd back-up codes genereren voor 2FA. Als je twee-factor apparaat gestolen wordt of niet werkt, kan je een van deze codes gebruiken om je account te ontgrendelen. Het werkt effectief als een back-up tweede factor. Om de back-upcodes te krijgen, ga je naar je persoonlijke instellingen en kijk je onder de instellingen van de twee-factor authenticatie. Kies <em>Genereer back-upcodes</em>:</p>
+<section id="recovery-codes-if-you-lose-your-second-factor">
+<h2>Recovery codes if you lose your second factor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Link to this heading"></a></h2>
+<p>You should always generate backup codes for 2FA. If your second factor device
+gets stolen or stops working, you can use one of these codes to unlock your
+account. It effectively functions as a backup second factor. To get the backup
+codes, go to your personal settings and look under <strong>Second-factor Auth</strong>
+settings. Choose <em>Generate backup codes</em>:</p>
 <figure class="align-default">
 <img alt="2FA back-upcodegenerator" src="../_images/2fa_backupcode_1.png" />
 </figure>
-<p>Je krijgt dan een lijst met back-upcodes voor eenmalig gebruik:</p>
+<p>You will then see a list of one-time-use backup codes:</p>
 <figure class="align-default">
 <img alt="2FA back-upcodes" src="../_images/2fa_backupcode_2.png" />
 </figure>
-<p>We adviseren om deze codes op een veilige plek te bewaren, ergens waar je ze kunt vinden. Bewaar ze niet samen met je 2e factor zoals je mobiele telefoon, maar zorg ervoor dat als je er een verliest, je nog steeds de andere hebt. Ze thuis houden is waarschijnlijk het beste wat je kunt doen.</p>
+<p>Store these codes somewhere safe where you can find them. Do not keep them
+with your second factor (such as your mobile phone), but store them separately
+so that losing one does not mean losing the other.</p>
 </section>
 <section id="logging-in-with-two-factor-authentication">
 <h2>Inloggen met tweefactor authenticatie<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>Nadat je bent uitgelogd en weer moet inloggen, zie je een verzoek om de TOTP-code in je browser in te voeren. Als je niet alleen de TOTP-factor inschakelt, maar ook een andere, krijg je een selectiescherm te zien waarop je de twee-factor methode voor deze login kunt kiezen. Selecteer TOTP:</p>
+<p>After you log out and log in again, you will see a prompt to enter the
+TOTP code in your browser. If you have enabled more than one second factor,
+you will see a selection screen where you can choose which method to use for
+this login. Select TOTP:</p>
 <figure class="align-default">
 <img alt="Een methode voor tweefactorauthenticatie kiezen." src="../_images/totp_login_1.png" />
 </figure>
@@ -142,7 +153,9 @@
 <p>Als de code klopt, word je doorgestuurd naar je Nextcloud-account.</p>
 <div class="admonition note">
 <p class="admonition-title">Notitie</p>
-<p>Aangezien de code op de tijd is gebaseerd, is het belangrijk dat de klok van je server en je smartphone ongeveer synchroon loopt. Een tijdsschil van een paar seconden is geen probleem.</p>
+<p>Since the code is time-based, it is important that your server’s and
+your smartphone’s clock are almost in sync. A time drift of a few seconds
+won’t be a problem.</p>
 </div>
 </section>
 <section id="using-two-factor-authentication-with-hardware-tokens">

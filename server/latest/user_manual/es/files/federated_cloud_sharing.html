@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Usar la compartición de archivos en federación &mdash; documentación de Nextcloud latest User Manual - latest</title>
+  <title>Using federation shares &mdash; documentación de Nextcloud latest User Manual - latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="Transferir la propiedad" href="transfer_ownership.html" />
+    <link rel="next" title="Transfer ownership" href="transfer_ownership.html" />
     <link rel="prev" title="Hacer subidas anónimas" href="file_drop.html" /> 
 </head>
 
@@ -67,15 +67,15 @@
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="sharing.html">Compartir archivos</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sharing.html#federated-shares">Compartir archivos mediante federación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sharing.html">File sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sharing.html#federated-shares">Federated shares</a></li>
 <li class="toctree-l3"><a class="reference internal" href="file_drop.html">Hacer subidas anónimas</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Usar la compartición de archivos en federación</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Crear una compartición de archivos en federación nueva</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federated-cloud-share-via-email">Crear una compartición de archivos con federación vía correo electrónico</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using federation shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federated-cloud-share-via-email">Creating a new federated cloud share via email</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transferir la propiedad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfer ownership</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
@@ -106,7 +106,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Archivos y sincronización</a></li>
           <li class="breadcrumb-item"><a href="collaboration.html">Sharing &amp; collaboration</a></li>
-      <li class="breadcrumb-item active">Usar la compartición de archivos en federación</li>
+      <li class="breadcrumb-item active">Using federation shares</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/federated_cloud_sharing.rst" class="fa fa-github"> Editar en GitHub</a>
       </li>
@@ -117,35 +117,38 @@
            <div itemprop="articleBody">
              
   <section id="using-federation-shares">
-<h1>Usar la compartición de archivos en federación<a class="headerlink" href="#using-federation-shares" title="Link to this heading"></a></h1>
+<h1>Using federation shares<a class="headerlink" href="#using-federation-shares" title="Link to this heading"></a></h1>
 <p>La compartición de archivos en federación le permite montar archivos compartidos de otros servidores Nextcloud remotos, en efecto creando su propia nube de Nextclouds. Usted puede crear compartir archivos con usuarios en otros servidores Nextcloud.</p>
 <section id="creating-a-new-federation-share">
-<h2>Crear una compartición de archivos en federación nueva<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
 <p>La compartición de archivos en federación está activada en las instalaciones de Nextcloud por defecto, ya sean nuevas o actualizadas. Siga los siguientes pasos para crear una nueva compartición con otros servidores Nextcloud u ownCloud 9+:</p>
 <ol class="arabic">
 <li><p>Go to your <code class="docutils literal notranslate"><span class="pre">Files</span></code> page and click the <strong>Share</strong> icon on the file or directory
 you want to share. In the sidebar enter the username and URL of the remote user
 in this form: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;oc-server-url&gt;</span></code>. The form automatically confirms the address
 that you type and labels it as «remote». Click on the label.</p>
-<blockquote>
-<div><figure class="align-default">
+<figure class="align-default">
 <img alt="../../_images/direct-share-1.png" src="../../_images/direct-share-1.png" />
 </figure>
-</div></blockquote>
 </li>
 <li><p>When your local Nextcloud server makes a successful connection with the remote
-Nextcloud server you’ll see a confirmation. Your only share option is <strong>Can edit</strong>.</p></li>
+Nextcloud server you will see a confirmation. Your only share option is <strong>Can edit</strong>.</p></li>
 </ol>
-<p>Haga clic en el botón Compartir para ver los usuarios con los que ha compartido el fichero. Deje de compartir con enlace utilizando el icono de la papelera. Eso simplemente elimina el enlace, pero no borra ningún archivo.</p>
+<p>Click the <strong>Share</strong> button anytime to see who you have shared your file with. Remove
+your linked share anytime by clicking the trash can icon. This only unlinks the
+share, and does not delete any files.</p>
 </section>
 <section id="creating-a-new-federated-cloud-share-via-email">
-<h2>Crear una compartición de archivos con federación vía correo electrónico<a class="headerlink" href="#creating-a-new-federated-cloud-share-via-email" title="Link to this heading"></a></h2>
+<h2>Creating a new federated cloud share via email<a class="headerlink" href="#creating-a-new-federated-cloud-share-via-email" title="Link to this heading"></a></h2>
 <p>Utilice este método cuando está compartiendo con usuarios en ownCloud versión 8.x o anterior.</p>
-<p>¿Qué sucede si no conoce el usuario o la URL? Entonces, puede crear un enlace para compartir y enviarlo al receptor.</p>
+<p>If you do not know the username or URL, you can have Nextcloud create
+the link for you and email it to your recipient.</p>
 <figure class="align-default">
 <img alt="../../_images/create_public_share-6.png" src="../../_images/create_public_share-6.png" />
 </figure>
-<p>Cuando su receptor reciba su correo, tendrá que lleva a cabo una serie de pasos para completar la compartición. Primero, el receptor debe abrir el enlace que usted le envió en un navegador web y hacer clic en el botón <strong>Añadir a tu Nextcloud</strong>.</p>
+<p>When your recipient receives your email they will have to take a number of
+steps to complete the share link. First they must open the link you sent them in
+a web browser, and then click the <strong>Add to your Nextcloud</strong> button.</p>
 <figure class="align-default">
 <img alt="../../_images/create_public_share-8.png" src="../../_images/create_public_share-8.png" />
 </figure>
@@ -163,7 +166,7 @@ Nextcloud server you’ll see a confirmation. Your only share option is <strong>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
         <a href="file_drop.html" class="btn btn-neutral float-left" title="Hacer subidas anónimas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
-        <a href="transfer_ownership.html" class="btn btn-neutral float-right" title="Transferir la propiedad" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="transfer_ownership.html" class="btn btn-neutral float-right" title="Transfer ownership" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

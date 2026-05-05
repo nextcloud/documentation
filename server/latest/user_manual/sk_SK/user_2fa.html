@@ -70,7 +70,7 @@
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Universal access</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Použitie dvojfaktorovej autentifikácie</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Konfigurácia dvojfaktorovej autentifikácie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">Obnovovacie kódy v prípade straty 2. faktora</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Recovery codes if you lose your second factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Prihlasovanie s dvojfaktorovou autentikáciou</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Použitie dvojfaktorovej autentifikácie s hardvérovými tokenmi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Používanie klientských aplikácií s dvojfaktorovým overením</a></li>
@@ -107,30 +107,41 @@
   <section id="using-two-factor-authentication">
 <h1>Použitie dvojfaktorovej autentifikácie<a class="headerlink" href="#using-two-factor-authentication" title="Link to this heading"></a></h1>
 <p>Dvojfaktorová autentifikácia (2FA) je spôsob, ako chrániť váš účet Nextcloud pred neoprávneným prístupom. Funguje to tak, že vyžaduje dva rôzne „dôkazy“ vašej totožnosti. Napríklad <em>niečo, čo poznáte</em> (ako heslo) a <em>niečo, čo máte</em> ako fyzický kľúč. Prvým faktorom je zvyčajne heslo, aké už máte, a druhým môže byť textová správa, ktorú dostanete, alebo kód, ktorý si vygenerujete na svojom telefóne alebo inom zariadení (<em>niečo, čo máte</em>). Nextcloud podporuje celý rad 2. faktorov a možno pridať ďalšie.</p>
-<p>Keď váš administrátor povolí aplikáciu dvojfaktorovej autentifikácie, môžete ju povoliť a nakonfigurovať v <a class="reference internal" href="userpreferences.html"><span class="doc">Setting your preferences</span></a>. Nižšie vidíte ako.</p>
+<p>Once a two-factor authentication app has been enabled by your administrator,
+you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Setting your preferences</span></a>.</p>
 <section id="configuring-two-factor-authentication">
 <h2>Konfigurácia dvojfaktorovej autentifikácie<a class="headerlink" href="#configuring-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>V Osobných nastaveniach vyhľadajte nastavenie druhý-faktor overenia. V tomto príklade ide o TOTP, časový kód kompatibilný s aplikáciou Google Authenticator:</p>
+<p>In your personal settings, look up the <strong>Second-factor Auth</strong> setting. In this
+example this is TOTP, a Google Authenticator compatible time-based code:</p>
 <figure class="align-default">
 <img alt="Nastavenie TOTP." src="../_images/totp_enable.png" />
 </figure>
 <p>Uvidíte svoje tajomstvo a QR kód, ktorý je možné naskenovať aplikáciou TOTP na vašom telefóne (alebo inom zariadení). V závislosti od aplikácie alebo nástroja zadajte kód alebo naskenujte QR a vaše zariadenie zobrazí prihlasovací kód, ktorý sa mení každých 30 sekúnd.</p>
 </section>
-<section id="recovery-codes-in-case-you-lost-your-2nd-factor">
-<h2>Obnovovacie kódy v prípade straty 2. faktora<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Link to this heading"></a></h2>
-<p>Vždy by ste mali vygenerovať záložné kódy pre 2FA. Ak vaše zariadenie druhého faktora ukradnú alebo nefunguje, budete môcť svoj účet odomknúť pomocou jedného z týchto kódov. Účinne funguje ako záložný 2. faktor. Ak chcete získať záložné kódy, prejdite do osobných nastavení a pozrite sa do časti Nastavenia druhého faktora autorizácie. Vyberte <em>Generovať záložné kódy</em>:</p>
+<section id="recovery-codes-if-you-lose-your-second-factor">
+<h2>Recovery codes if you lose your second factor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Link to this heading"></a></h2>
+<p>You should always generate backup codes for 2FA. If your second factor device
+gets stolen or stops working, you can use one of these codes to unlock your
+account. It effectively functions as a backup second factor. To get the backup
+codes, go to your personal settings and look under <strong>Second-factor Auth</strong>
+settings. Choose <em>Generate backup codes</em>:</p>
 <figure class="align-default">
 <img alt="2FA generátor záložných kódov" src="../_images/2fa_backupcode_1.png" />
 </figure>
-<p>Potom sa vám zobrazí zoznam jednorazových záložných kódov:</p>
+<p>You will then see a list of one-time-use backup codes:</p>
 <figure class="align-default">
 <img alt="2FA záložné kódy" src="../_images/2fa_backupcode_2.png" />
 </figure>
-<p>Tieto kódy by ste mali uložiť na bezpečné miesto, niekde, kde ich nájdete. Nenechávajte si ich spolu s dvojfaktorovým overením ako váš mobilný telefón, ale uistite sa, že ak jeden stratíte, druhý vám zostane. Mať ich doma je asi to najlepšie, čo môžete urobiť.</p>
+<p>Store these codes somewhere safe where you can find them. Do not keep them
+with your second factor (such as your mobile phone), but store them separately
+so that losing one does not mean losing the other.</p>
 </section>
 <section id="logging-in-with-two-factor-authentication">
 <h2>Prihlasovanie s dvojfaktorovou autentikáciou<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>Po odhlásení a potrebe opätovného prihlásenia sa vám vo vašom prehliadači zobrazí výzva na zadanie kódu TOTP. Ak povolíte nielen faktor TOTP, ale aj iný, zobrazí sa obrazovka výberu, na ktorej si môžete vybrať dvojfaktorovú metódu tohto prihlásenia. Vyberte TOTP:</p>
+<p>After you log out and log in again, you will see a prompt to enter the
+TOTP code in your browser. If you have enabled more than one second factor,
+you will see a selection screen where you can choose which method to use for
+this login. Select TOTP:</p>
 <figure class="align-default">
 <img alt="Výber metódy dvojfaktorového overenia." src="../_images/totp_login_1.png" />
 </figure>
@@ -141,7 +152,9 @@
 <p>Ak bol kód správny, budete presmerovaní na váš účet Nextcloud.</p>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
-<p>Keďže kód je založený na čase, je dôležité, aby boli hodiny vášho servera a vášho smartfónu takmer synchronizované. Časový posun o niekoľko sekúnd nebude problém.</p>
+<p>Since the code is time-based, it is important that your server’s and
+your smartphone’s clock are almost in sync. A time drift of a few seconds
+won’t be a problem.</p>
 </div>
 </section>
 <section id="using-two-factor-authentication-with-hardware-tokens">
