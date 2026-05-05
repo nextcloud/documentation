@@ -58,7 +58,7 @@ Is it planned to move this to the next user login or a background job?
 If we did that, then we would need to store your login password in the database.
 This could be seen as a security issue, so nothing like that is planned.
 
-Is group Sharing possible with the recovery key?
+Is group sharing possible with the recovery key?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you mean adding users to groups and make it magically work? No. This only
