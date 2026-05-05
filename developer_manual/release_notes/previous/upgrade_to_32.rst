@@ -207,3 +207,5 @@ Removed APIs
   - ``IServerContainer::getSystemTagManager()``
   - ``IServerContainer::getSystemTagObjectMapper()``
   - ``IServerContainer::getTagManager()``
+
+- The legacy autoloader ``\OC::$loader`` was removed. It should not impact your application. It may impact your tests if they were using it. Please consider including ``tests/autoload.php`` from server instead.
