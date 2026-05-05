@@ -53,13 +53,17 @@ User search attributes are set with ``ldap:set-config``
 quickly. For example, you'll find Terri Hanson by searching for ``te ha``.
 Trailing whitespaces are ignored.
 
+ldap\:check-user
+^^^^^^^^^^^^^^^^
+
 Check if an LDAP user exists. This works only if the Nextcloud server is
 connected to an LDAP server::
 
  sudo -E -u www-data php occ ldap:check-user robert
 
-ldap\:check-user
-^^^^^^^^^^^^^^^^
+Use ``--update`` to update the account fields from LDAP::
+
+ sudo -E -u www-data php occ ldap:check-user --update robert
 
 Will not run a check when it finds a disabled LDAP
 connection. This prevents users that exist on disabled LDAP connections from
@@ -68,6 +72,9 @@ is not in one of the disabled connections, and exists on an active connection,
 use the ``--force`` option to force it to check all active LDAP connections::
 
  sudo -E -u www-data php occ ldap:check-user --force robert
+
+You can also use ``--all-seen-users`` to run the check on all users that logged into Nextcloud at least once.
+You may use ``--limit`` and ``--offset`` to do so by batch. You can combine this with ``--update`` to update the information of seen users.
 
 ldap\:check-group
 ^^^^^^^^^^^^^^^^^
@@ -168,5 +175,3 @@ ldap\:show-remnants
 
 Used to clean up the LDAP mappings table, and is
 documented in :doc:`../configuration_user/user_auth_ldap_cleanup`.
-
-
