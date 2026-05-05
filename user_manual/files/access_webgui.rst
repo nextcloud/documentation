@@ -8,178 +8,183 @@ has the option to disable these features, so if any of them are missing on your
 system ask your server administrator.
 
 .. figure:: ../images/users-files.png
-   :alt: The Files view screen.
+   :alt: The Files app showing a list of files and folders.
 
-Tagging files
--------------
+Navigating your files
+---------------------
 
-You can assign tags to files. To create tags, open a file to the Details view.
-Then type your tags. To enter more than one tag press the return key after
-creating each tag. All tags are system tags, and are shared by all users on your
-Nextcloud server.
+The left sidebar lets you switch between different views of your files. Click a
+folder name in the file list to open it, and use your browser's back button or
+the breadcrumb bar at the top of the file list to return to a previous level.
 
-.. figure:: ../images/files_page-7.png
-   :alt: Creating file tags.
+.. figure:: ../images/files_page-5.png
+   :alt: The Files app left navigation panel.
 
-Then use the Tags filter on the left sidebar to filter files by tags:
+The sidebar contains the following entries:
 
-.. figure:: ../images/files_page-8.png
-   :alt: Viewing file tags.
+All files
+  The default view, showing every file and folder you have access to.
 
-Comments
---------
+Recent
+  Files you have viewed or modified recently.
 
-Use the Details view to add and read comments on any file or folder. Comments
-are visible to everyone who has access to the file:
+Favorites
+  Files and folders you have starred.
 
-.. figure:: ../images/file_menu_comments_2.png
-   :alt: Creating and viewing comments.
+Shares
+  Files shared with you, by you, or via a public link — all in one view.
 
-Video player
-------------
+Tags
+  Browse files by system tag.
 
-You can play videos in Nextcloud with the Video Player app by simply clicking on
-the file. Video streaming by the native Nextcloud video player depends on your web browser
-and the video format. If your Nextcloud administrator has enabled video
-streaming and it does not work in your web browser, it may be a browser issue. See
-``https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility``
-for supported multimedia formats in web browsers.
+Deleted files
+  Files you have deleted that are still recoverable from the trash bin.
 
-.. figure:: ../images/video_player_2.png
-   :alt: Watching a movie.
+When you navigate into a folder, a breadcrumb trail appears at the top of the
+file list so you can jump back to any parent folder with a single click:
+
+.. figure:: ../images/files_page-6.png
+   :alt: Breadcrumb navigation inside a subfolder.
 
 File controls
 -------------
 
-Nextcloud can display thumbnail previews for various file types, such as images, audio files, and text files.
-The specific types supported are up to the server administrator.
-Hover your cursor over a file or folder to expose the controls for the following operations:
+Nextcloud displays thumbnail previews for images, text files, and other
+supported types — the exact list depends on your server configuration.
 
-Favorites
-  Click the star to the left of the file icon to mark it as a favorite:
+Each file and folder row has a three-dot action menu button. Click it to
+rename, move, copy, download, delete, or mark the item as a favorite.
+Files that have been marked as a favorite display a star icon:
 
-  .. figure:: ../images/files_page-1.png
-   :alt: Marking favorite files.
+.. figure:: ../images/files_page-3.png
+   :alt: A file row with the actions menu open.
 
-  You can also quickly find all of your favorites with the Favorites filter on the left
-  sidebar.
+.. note:: You can quickly find all your favorites using the **Favorites**
+   entry in the left sidebar.
 
-Overflow menu
-  The Overflow menu (three dots) displays file details, and allows you to
-  rename, download, or delete files:
+Details sidebar
+---------------
 
-  .. figure:: ../images/files_page-3.png
-   :alt: Overflow menu.
-
-  The Details view shows Activities, Sharing, and Versions information:
+Select **Details** from the three-dot action menu to open the details sidebar. The sidebar
+shows information about the selected file and provides tabbed access to its
+activity history, sharing options, and version history:
 
 .. figure:: ../images/files_page-4.png
-   :alt: Details screen.
+   :alt: The details sidebar showing file information and tabs.
 
-The **Settings** gear icon at the lower left allows you to show or hide hidden
-files in your Nextcloud Web interface. These are also called dotfiles, because
-they are prefixed with a dot, e.g. ``.mailfile``. The dot tells your operating
-system to hide these files in your file browsers, unless you choose to display
-them. Usually these are configuration files, so having the option to hide them
-reduces clutter.
+Activity and comments
+---------------------
 
-.. figure:: ../images/hidden_files.png
-   :alt: Hiding or displaying hidden files.
+The **Activity** tab in the details sidebar shows a chronological log of
+changes to the file — uploads, edits, shares, and comments. You can leave
+a comment directly in this tab; comments are visible to everyone who has
+access to the file:
 
-Previewing files
-----------------
+.. figure:: ../images/file_menu_comments_2.png
+   :alt: The Activity tab showing file history and a comment field.
 
-You can display uncompressed text files, OpenDocument files, videos, and image
-files in the Nextcloud embedded viewers by clicking on the file name. There may
-be other file types you can preview if your Nextcloud administrator has enabled
-them. If Nextcloud cannot display a file, it starts a download process and
-downloads the file to your computer.
+Searching and filtering
+-----------------------
 
-Navigating inside your Nextcloud
---------------------------------
+Use the search bar at the top of the page to find files by name across all your
+files, or type in the search field inside the left sidebar to filter the current
+view:
 
-Navigating through folders in Nextcloud is as simple as clicking on a folder to
-open it and using the back button on your browser to move to a previous level.
-Nextcloud also provides a navigation bar at the top of the Files page for quick
-navigation.
+.. figure:: ../images/files_page-7.png
+   :alt: The search field with a search term entered.
 
-Sharing status icons
---------------------
+Grid view
+---------
 
-Any folder that has been shared is marked with the ``Shared`` overlay icon.
-Public link shares are marked with a chain link. Unshared folders are not marked:
+The Files app defaults to a list view. Click the grid toggle button at the
+top-right of the file list to switch to a thumbnail grid, which is useful for
+browsing image folders:
 
-.. figure:: ../images/files_page-5.png
-   :alt: Share status icons.
+.. figure:: ../images/files_page-8.png
+   :alt: Files displayed in thumbnail grid view.
 
-Creating or uploading files and directories
--------------------------------------------
+Click the button again to return to the list view.
 
-Upload or create new files or folders directly in a Nextcloud folder by clicking
-on the *New* button in the Files app:
+Uploading and creating files
+----------------------------
 
-.. figure:: ../images/files_page-6.png
-   :alt: The New file/folder/upload menu.
+Click the **+** button near the top of the file list to upload files from your
+computer or create new items in the current folder:
 
-The *New* button provides the following options:
+.. figure:: ../images/files_page-1.png
+   :alt: The New file and upload menu.
 
-Up arrow
-  Upload files from your computer into Nextcloud. You can also upload files by
-  dragging and dropping them from your file manager.
+The menu offers the following options:
 
-Text file
-  Creates a new text file and adds the file to your current folder.
+Upload file
+  Opens a file picker to upload one or more files from your computer. You can
+  also drag and drop files directly from your file manager onto the file list.
 
-Folder
-  Creates a new folder in the current folder.
+Upload folder
+  Uploads an entire folder, preserving its structure.
+
+New folder
+  Creates a new empty folder in the current location.
+
+New document / New spreadsheet / New presentation
+  Creates a new file using the built-in Nextcloud Text or Office editor,
+  if enabled by your administrator.
 
 Selecting files or folders
 --------------------------
 
-You can select one or more files or folders by clicking on their checkboxes. To
-select all files in the current directory, click on the checkbox located at the
-top of the files listing.
+Click the checkbox to the left of a file or folder to select it. To select all
+items in the current folder, click the checkbox in the column header.
 
-When you select multiple files, you can delete all of them, or download them as
-a ZIP file by using the ``Delete`` or ``Download`` buttons that appear at the
-top.
+With one or more items selected, action buttons appear at the top of the list.
+You can delete or download all selected items at once. Downloading multiple items
+produces a ZIP archive.
 
-.. note:: If the ``Download`` button is not visible, the administrator has
+.. figure:: ../images/files_page-9.png
+   :alt: Multiple files selected with the bulk action bar visible.
+
+.. note:: If the **Download** button is not visible, your administrator has
    disabled this feature.
 
-Filtering the files view
-------------------------
+Sharing status icons
+--------------------
 
-The left sidebar on the Files page contains several filters for quickly sorting
-and managing your files.
+Folders and files that have been shared display a **Shared** badge on their
+thumbnail or icon. Items shared via a public link also show a chain-link icon.
+Items that are not shared have no additional indicator.
 
-All files
-  The default view; displays all files that you have access to.
+.. figure:: ../images/files_sharing_status.png
+   :alt: File list showing a shared folder, a public-link-shared file, and unshared items.
 
-Favorites
-  Files or folders marked with the yellow star.
-
-Shared with you
-  Displays all files shared with you by another user or group.
-
-Shared with others
-  Displays all files that you have shared with other users or groups.
-
-Shared by link
-  Displays all files that are shared by you via public link.
-
-External Storage (optional)
-  Files that you have access to on external storage devices and services such
-  as Amazon S3, SMB/CIFS, FTP…
+See :doc:`sharing` for instructions on creating and managing shares.
 
 Moving files
 ------------
 
-You can move files and folders by dragging and dropping them into any directory.
+Drag any file or folder and drop it onto a destination folder to move it.
+You can also use **Move or copy** from the three-dot action menu to move or copy
+items to a folder you choose from a picker dialog.
 
-Creating or connecting to a Federation Share link
--------------------------------------------------
+Previewing files
+----------------
 
-Federated Cloud Sharing allows you to mount file shares from remote Nextcloud
-servers, and manage them just like a local share. See :doc:`federated_cloud_sharing`
-to learn to how to create and connect to new Federated Cloud shares.
+Click a file name to open a preview directly in Nextcloud. Supported formats
+include images, plain text, PDF, and — depending on your server — office
+documents and audio files. If Nextcloud cannot preview a file format, it
+downloads the file to your computer instead.
+
+Video player
+------------
+
+You can play videos directly in Nextcloud by clicking the file. Playback
+depends on your browser and the video codec. See
+`MDN: Supported media formats <https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility>`_
+for a compatibility reference.
+
+Connecting to a Federation Share
+---------------------------------
+
+Federated Cloud Sharing lets you mount file shares from remote Nextcloud
+servers and manage them just like local shares. See
+:doc:`federated_cloud_sharing` to learn how to create and connect to
+Federated Cloud shares.
