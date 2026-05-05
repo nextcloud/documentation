@@ -446,14 +446,14 @@ use the mailbox search feature in the app.</p>
 <p>Quando uma mensagem é composta e o botão “Enviar” é clicado, a mensagem é adicionada à caixa de saída, que pode ser encontrada no canto inferior esquerdo da barra lateral esquerda.</p>
 <p>Você também pode definir a data e a hora da operação de envio para um momento futuro (consulte <a class="reference internal" href="#mail-scheduled-messages"><span class="std std-ref">Mensagens agendadas</span></a>) - a mensagem será mantida na caixa de saída até a data e a hora escolhidas e, em seguida, será enviada automaticamente.</p>
 <p>A caixa de saída só fica visível quando há uma mensagem esperando para ser tratada pela caixa de saída.</p>
-<p>Você pode abrir novamente o compositor para uma mensagem na caixa de saída a qualquer momento antes de a operação “enviar” ser acionada.</p>
+<p>You can reopen the composer for a message in the outbox any time before the send operation is triggered.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Quando ocorre um erro durante o envio, são possíveis três mensagens de erro:</p>
 <dl class="simple">
 <dt>Não foi possível copiar para a caixa de correio “Enviadas”</dt><dd><p>O e-mail foi enviado, mas não pôde ser copiado para a caixa de correio “Enviadas”. Este erro será tratado pela caixa de saída e a operação de cópia será tentada novamente.</p>
 </dd>
-<dt>Erro no servidor de e-mail</dt><dd><p>O envio não foi bem-sucedido com um estado que pode ser tentado novamente (p. ex., não foi possível acessar o servidor SMTP). A caixa de saída tentará enviar a mensagem novamente.</p>
+<dt>Erro no servidor de e-mail</dt><dd><p>Sending was unsuccessful with a state that can be retried (ex: the SMTP server couldn’t be reached). The outbox will retry sending the message.</p>
 </dd>
 <dt>A mensagem não pôde ser enviada</dt><dd><p>O envio pode ou não ter falhado. O servidor de e-mail não pode nos informar o estado da mensagem. Como o aplicativo E-mail não tem como determinar o estado da mensagem (enviada ou não enviada), a mensagem permanecerá na caixa de saída e o usuário da conta terá que decidir como proceder.</p>
 </dd>
@@ -496,7 +496,7 @@ use the mailbox search feature in the app.</p>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>O título do evento e uma agenda são criados para você se o administrador tiver ativado essa opção.</p>
+<p>An event title and agenda are created for you if the administrator has enabled it.</p>
 </div>
 </section>
 <section id="create-a-task">

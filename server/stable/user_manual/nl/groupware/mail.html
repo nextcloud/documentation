@@ -448,14 +448,14 @@ Text blocks can be shared with users and user groups.</p>
 <p>Als een bericht is geschreven en de <em>Verzenden</em>-knop is geklikt, dan wordt het bericht verplaatst naar de map Te Verzenden, die linksonder op de linkerzijbalk kan worden gevonden.</p>
 <p>Datum en tijd voor het verzenden kan ingesteld worden voor verzending in de toekomst (zie :ref: <cite>Geplande berichten &lt;mail-scheduled-messages&gt;</cite>)- het bericht wordt in de Te Verzenden map vastgehouden tot het gekozen tijdstip wordt bereikt. Dan wordt het bericht meteen verstuurd.</p>
 <p>De map Te Verzenden is alleen zichtbaar als er een bericht in staat om te worden verzonden.</p>
-<p>Het berichtenvenster kan altijd heropend worden voor een bericht in de Te Verzenden-map voordat de verzendtijd is verstreken.</p>
+<p>You can reopen the composer for a message in the outbox any time before the send operation is triggered.</p>
 <div class="admonition note">
 <p class="admonition-title">Notitie</p>
 <p>Als een fout optreedt bij het verzenden, dan zijn drie foutmeldingen mogelijk:</p>
 <dl class="simple">
 <dt>Kon niet naar “Verzonden” map kopiëren</dt><dd><p>De email was verzonden maar kon niet naar de map “Verzonden” worden verplaatst. De fout zal worden afgehandeld door de Te Verzenden-map en het verplaatsen wordt opnieuw geprobeerd.</p>
 </dd>
-<dt>Mailserver-fout</dt><dd><p>Het versturen is niet gelukt, met een status die opnieuw kan worden geprobeerd (b.v. de SMTP server kon niet worden bereikt). De Te Verzenden-map zal het versturen opnieuw proberen.</p>
+<dt>Mailserver-fout</dt><dd><p>Sending was unsuccessful with a state that can be retried (ex: the SMTP server couldn’t be reached). The outbox will retry sending the message.</p>
 </dd>
 <dt>Bericht kon niet worden verstuurd</dt><dd><p>Versturen is al dan niet fout gegaan. De mailserver kan niet laten weten wat de status van het bericht is. Omdat de Mail app niet kan bepalen wat er gebeurd is (bericht wel of niet verstuurd), zal het bericht in de Te Verzenden-map blijven en de gebruiker moet bepalen hoe verder te gaan.</p>
 </dd>
@@ -498,7 +498,7 @@ Text blocks can be shared with users and user groups.</p>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Notitie</p>
-<p>Gebeurtenistitel en een agenda worden aangemaakt als de beheerder dit heeft ingeschakeld.</p>
+<p>An event title and agenda are created for you if the administrator has enabled it.</p>
 </div>
 </section>
 <section id="create-a-task">
