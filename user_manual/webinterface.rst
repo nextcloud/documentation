@@ -12,21 +12,24 @@ Web browser requirements
 ------------------------
 
 For the best experience with the Nextcloud web interface, we recommend that
-you use the latest and supported version of a browser from this list:
+you use the latest supported version of a browser from this list:
 
 * Google **Chrome**/Chromium (Desktop and Android)
 * Mozilla **Firefox** (Desktop and Android)
 * Apple **Safari** (Desktop and iOS)
 * Microsoft **Edge**
 
-.. note:: Not all versions are supported. Nextcloud is tested and built to work with
+.. note::
+   Not all versions are supported. Nextcloud is tested and built to work with
    `these browser versions <https://browserslist.dev/?q=PjAuMjUlLCBub3Qgb3BfbWluaSBhbGwsIG5vdCBkZWFkLCBGaXJlZm94IEVTUg==>`_ only.
 
-.. note:: If you want to use Nextcloud Talk you need to run Mozilla **Firefox** 52+
+.. note::
+   If you want to use Nextcloud Talk, you need to run Mozilla **Firefox** 52+
    or Google **Chrome**/Chromium 49+ to have the full experience with video calls and
    screensharing.
 
-.. warning:: Microsoft **Internet Explorer** is **NOT** supported.
+.. warning::
+   Microsoft **Internet Explorer** is **NOT** supported.
 
 Navigating the main user interface
 ----------------------------------
@@ -43,8 +46,8 @@ can change access privileges.
 The Nextcloud user interface contains the following fields and functions:
 
 * **Apps Selection Menu** (1): Located in the upper left corner, you'll find all
-  your apps which are available on your instance of Nextcloud. Clicking on an
-  app icon will redirect you to the app.
+  your apps which are available on your instance of Nextcloud. Click an app
+  icon to open it.
 
 * **Apps Information** field (2): Located in the left sidebar, this provides
   filters and tasks associated with your selected app. For example, when you
@@ -69,14 +72,14 @@ The Nextcloud user interface contains the following fields and functions:
   to perform a :ref:`unified search <unified-search>` across your Nextcloud
   or search for entries within the current app.
 
-* **Contacts Menu** (7): Gives you an overview about your contacts and users on
-  your server. Dependent on the given details and available apps, you can
+* **Contacts Menu** (7): Gives you an overview of your contacts and users on
+  your server. Depending on the available details and installed apps, you can
   directly start a video call with them or send emails.
 
 * **Grid view** button (8): This looks like four little squares, which toggles
   the grid view for folders and files.
 
-* **Settings** menu (9): Click on your profile picture,
+* **Settings** menu (9): Click your profile picture,
   located to the right of the Search field, to open your Settings
   dropdown menu. Your Settings page provides the following settings and features:
 
@@ -93,12 +96,12 @@ The Nextcloud user interface contains the following fields and functions:
   * Your Two-factor Settings
   * Nextcloud Version information
 
-See :doc:`userpreferences` section to learn more about these settings.
+See the :doc:`userpreferences` section to learn more about these settings.
+
+.. _unified-search:
 
 Unified search
 --------------
-
-.. _unified-search:
 
 Nextcloud's unified search combines results from all your installed apps
 (Files, Mail, Contacts, Calendar, etc.) into a single view. Click the search
