@@ -11,6 +11,7 @@ more, giving you a chronological overview of what happened and when.
 The Activity app is enabled by default.
 
 .. figure:: images/activity-stream-all.png
+   :alt: The Activity stream showing all recent activities.
 
    *The Activity stream showing all recent activities.*
 
@@ -43,10 +44,12 @@ on your Nextcloud instance (e.g. **Favorites**, **Calendar**,
 **Contacts**).
 
 .. figure:: images/activity-stream-self.png
+   :alt: Activity stream filtered to show only activities you triggered.
 
    *The activity stream filtered to show only your own activities.*
 
 .. figure:: images/activity-stream-file-changes.png
+   :alt: Activity stream filtered to show file changes only.
 
    *The activity stream filtered to file changes only.*
 
@@ -61,6 +64,7 @@ particular file, such as when it was created, modified, shared, or
 tagged.
 
 .. figure:: images/activity-sidebar.png
+   :alt: The Activity tab in the Files sidebar showing per-file events.
 
    *The Activity tab in the Files sidebar showing per-file events.*
 
@@ -78,9 +82,9 @@ To enable the RSS feed:
 3. Enable the **Enable RSS feed** toggle.
 4. Copy the RSS feed link that appears.
 
-.. note:: The RSS feed link contains a secret token. Do not share it
-   with others, as it provides unauthenticated access to your activity
-   stream.
+.. note::
+   The RSS feed link contains a secret token. Do not share it with others,
+   as it provides unauthenticated access to your activity stream.
 
 
 Notification settings
@@ -91,6 +95,7 @@ activities. Go to **Settings** > **Personal** > **Notifications** to
 configure your preferences.
 
 .. figure:: images/activity-settings-personal.png
+   :alt: Personal notification settings for the Activity app.
 
    *Personal notification settings for the Activity app.*
 

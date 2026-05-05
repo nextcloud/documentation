@@ -2,6 +2,15 @@
 Nextcloud Documentation
 =======================
 
+|build| |netlify|
+
+.. |build| image:: https://img.shields.io/github/actions/workflow/status/nextcloud/documentation/sphinxbuild.yml?branch=master&style=flat-square
+   :alt: Build Status
+
+.. |netlify| image:: https://img.shields.io/badge/Netlify-powered-00C7B7?style=flat-square&logo=netlify
+   :target: https://www.netlify.com
+   :alt: Netlify
+
 Documentation is published on `<https://docs.nextcloud.com>`_.
 To edit it yourself, you need to tinker a bit with Git and Sphinx.
 See the `Style Guide <https://github.com/nextcloud/documentation/blob/master/style_guide.rst>`_ for formatting and style conventions.

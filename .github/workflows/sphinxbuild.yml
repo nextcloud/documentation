@@ -404,6 +404,7 @@ jobs:
           args: |
             --root-dir "$(pwd)/stage"
             --offline --no-progress
+            --remap "https://docs.nextcloud.com/server/latest/ file://$(pwd)/stage/${{ needs.stage-and-check.outputs.branch_name }}/"
             --remap "https://docs.nextcloud.com/server/ file://$(pwd)/stage/"
             --exclude 'go\.php' --exclude 'mailto:' --exclude-path '.*/404\.html' --exclude-path '.*/_static/.*'
             --exclude "/user_manual/" --include "/user_manual/en/"
@@ -554,8 +555,195 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.COMMAND_BOT_PAT }}
 
+  # ============================================================================
+  # NETLIFY PREVIEW
+  # ============================================================================
+  # Runs only on pull requests, in parallel with link-check.
+  # Downloads the staged-docs artifact (already produced by stage-and-check)
+  # and deploys a preview to Netlify under a stable per-PR alias.
+  #
+  # Required repository secrets:
+  #   NETLIFY_AUTH_TOKEN – personal-access token for the Netlify account
+  #   NETLIFY_SITE_ID    – the target Netlify site ID
+  #
+  # Failure is non-fatal: the step uses continue-on-error so a missing secret
+  # or a Netlify outage does not block the pull request.
+  # ============================================================================
+  netlify-preview:
+    name: Deploy Netlify preview
+    needs: stage-and-check
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Download staged artifacts
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: staged-docs
+          path: stage/
+
+      - name: Assemble Netlify deploy directory
+        run: |
+          branch="${{ needs.stage-and-check.outputs.branch_name }}"
+          mkdir -p netlify-deploy
+
+          # Copy each manual directory into the deploy directory
+          for manual in admin_manual developer_manual user_manual; do
+            if [ -d "stage/${branch}/${manual}" ]; then
+              cp -r "stage/${branch}/${manual}" "netlify-deploy/${manual}"
+            fi
+          done
+
+          # PDF files (kept at root of deploy dir)
+          find "stage/${branch}" -maxdepth 1 -name "*.pdf" -exec cp {} netlify-deploy/ \;
+
+          # Minimal root index linking to the deployed content
+          cat > netlify-deploy/index.html <<'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Nextcloud Documentation Preview</title>
+            <style>body{font-family:sans-serif;max-width:600px;margin:2rem auto}ul{line-height:2}</style>
+          </head>
+          <body>
+            <h1>Nextcloud Documentation Preview</h1>
+            <ul>
+              <li><a href="admin_manual/">Administration Manual</a></li>
+              <li><a href="developer_manual/">Developer Manual</a></li>
+              <li><a href="user_manual/en/">User Manual (English)</a></li>
+              <li><a href="Nextcloud_User_Manual.pdf">User Manual PDF</a></li>
+              <li><a href="Nextcloud_Server_Administration_Manual.pdf">Administration Manual PDF</a></li>
+            </ul>
+          </body>
+          </html>
+          EOF
+
+      - name: List deploy directory tree
+        run: find netlify-deploy -print | sort
+
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+
+      - name: Deploy to Netlify
+        id: netlify
+        continue-on-error: true
+        run: |
+          set +e
+          output=$(netlify deploy \
+            --dir=netlify-deploy \
+            --site="${{ secrets.NETLIFY_SITE_ID }}" \
+            --auth="${{ secrets.NETLIFY_AUTH_TOKEN }}" \
+            --alias="pr-${{ github.event.pull_request.number }}" \
+            --message="Preview for PR #${{ github.event.pull_request.number }}" 2>&1)
+          exit_code=$?
+          echo "$output"
+          # Strip ANSI codes, then extract the URL from "Draft URL: <https://...>"
+          preview_url=$(printf '%s\n' "$output" \
+            | sed 's/\x1b\[[0-9;]*[mGKHFJABCDsuKl]//g' \
+            | grep -oP '(?:Draft URL|Website Draft URL|Website URL):\s+<?\Khttps://[^>\s]+' \
+            | head -1)
+          echo "url=${preview_url}" >> "$GITHUB_OUTPUT"
+          exit $exit_code
+
+      - name: Post PR preview comment
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          PREVIEW_URL: ${{ steps.netlify.outputs.url }}
+        with:
+          script: |
+            const previewUrl = process.env.PREVIEW_URL || '';
+            const prNumber = context.payload.pull_request.number;
+            const MAX_LINKS = 20;
+            const COMMENT_MARKER = '<!-- netlify-preview-comment -->';
+            const updatedAt = new Date().toUTCString();
+
+            // Fetch all changed files in the PR (auto-paginated)
+            const allFiles = await github.paginate(github.rest.pulls.listFiles, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+              per_page: 100,
+            });
+
+            // Keep only RST files that live inside a built manual
+            const manuals = ['admin_manual/', 'developer_manual/', 'user_manual/'];
+            const rstFiles = allFiles
+              .map(f => f.filename)
+              .filter(f => manuals.some(m => f.startsWith(m)) && f.endsWith('.rst'));
+
+            // Build the changed-pages section
+            let changedSection = '';
+            if (previewUrl && rstFiles.length > 0) {
+              const links = rstFiles.map(f => {
+                // user_manual HTML is deployed under user_manual/en/; other manuals deploy as-is
+                const htmlPath = f.startsWith('user_manual/')
+                  ? f.replace(/^user_manual\//, 'user_manual/en/').replace(/\.rst$/, '.html')
+                  : f.replace(/\.rst$/, '.html');
+                return `- [${f}](${previewUrl}/${htmlPath})`;
+              });
+              const shown = links.slice(0, MAX_LINKS);
+              const extra = links.length - shown.length;
+              const extraLine = extra > 0
+                ? `\n_…and ${extra} more. [View all changed files](https://github.com/${context.repo.owner}/${context.repo.repo}/pull/${prNumber}/files)_`
+                : '';
+              changedSection = [
+                '',
+                `<details>`,
+                `<summary>📄 ${rstFiles.length} changed documentation ${rstFiles.length === 1 ? 'page' : 'pages'}</summary>`,
+                '',
+                shown.join('\n') + extraLine,
+                '</details>',
+              ].join('\n');
+            } else if (rstFiles.length === 0) {
+              changedSection = '\n_No RST documentation pages changed in this PR._';
+            }
+
+            // Compose the full comment body
+            const previewLine = previewUrl
+              ? `🔍 **[Open preview →](${previewUrl})**`
+              : '⚠️ Preview deployment failed or was skipped.';
+            const body = [
+              COMMENT_MARKER,
+              '## 📖 Documentation Preview',
+              '',
+              previewLine,
+              changedSection,
+              '',
+              `_Last updated: ${updatedAt}_`,
+            ].join('\n');
+
+            // Update existing bot comment or create a new one
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              per_page: 100,
+            });
+            const existing = comments.find(c => c.body && c.body.includes(COMMENT_MARKER));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body,
+              });
+            }
+
   summary:
-    needs: [stage-and-check, link-check, deploy]
+    needs: [stage-and-check, link-check, deploy, netlify-preview]
     runs-on: ubuntu-latest-low
     if: always()
 
@@ -569,9 +757,9 @@ jobs:
         run: |
           if ${{ github.event_name == 'pull_request' }}
           then
-            echo "This workflow ran for a pull request. We need stage-and-check and link-check to succeed, but deploy will be skipped"
-            if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'skipped' }}; then exit 1; fi
+            echo "This workflow ran for a pull request. We need stage-and-check, link-check, and netlify-preview to succeed, and deploy must be skipped"
+            if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'skipped' || needs.netlify-preview.result != 'success' }}; then exit 1; fi
           else
-            echo "This workflow ran for a push. We need all jobs to succeed, including deploy"
-            if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'success' }}; then exit 1; fi
+            echo "This workflow ran for a push. We need stage-and-check, link-check, and deploy to succeed; netlify-preview must be skipped"
+            if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'success' || needs.netlify-preview.result != 'skipped' }}; then exit 1; fi
           fi

@@ -153,7 +153,7 @@ Bottom bar of the call view offers media controls, layout settings and other fea
 
 Use the microphone and camera icons to mute/unmute your microphone and enable/disable your camera.
 You can also use the keyboard shortcuts ``M`` to mute/unmute your microphone and ``V`` to enable/disable your camera.
-Use the space bar to push-to-talk: when you are muted, pressing space will unmute you until you let go; when you are unmuted, pressing space will mute you until you let go.
+Use the space bar for push-to-talk: holding space temporarily unmutes you while muted, or temporarily mutes you while unmuted.
 
 Reactions
 ~~~~~~~~~

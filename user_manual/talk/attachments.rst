@@ -25,7 +25,7 @@ You can add more files until you are done and decide to share the files. You can
 .. image:: images/talk-upload-files.png
    :width: 500px
 
-All users will be able to click the files to view, edit or download them, irrespective of them having a user account. Users with an account will have the file automatically shared with them while external guest users will get them shared as a public link.
+All users will be able to click the files to view, edit or download them, regardless of whether they have a Nextcloud account. Users with an account will have the file automatically shared with them while external guest users will get them shared as a public link.
 
 .. image:: images/editing-document-in-chat-room.png
    :width: 600px

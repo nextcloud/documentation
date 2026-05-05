@@ -1,8 +1,8 @@
 .. _external_storage_user_label:
 
-============================
-Using External Storage
-============================
+======================
+Using external storage
+======================
 
 The External Storage application lets your Nextcloud server connect to remote file
 systems — such as Amazon S3, SFTP servers, SMB/CIFS shares, or WebDAV servers — and

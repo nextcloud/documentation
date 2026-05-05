@@ -1,5 +1,5 @@
 ======================================================
-Accessing your files using the Nextcloud Web interface
+Accessing your files using the Nextcloud web interface
 ======================================================
 
 You can access your Nextcloud files with the Nextcloud Web interface and create,
@@ -39,9 +39,11 @@ Video player
 ------------
 
 You can play videos in Nextcloud with the Video Player app by simply clicking on
-the file. Video streaming by the native Nextcloud video player depends on your Web browser
+the file. Video streaming by the native Nextcloud video player depends on your web browser
 and the video format. If your Nextcloud administrator has enabled video
-streaming, and it doesn't work in your Web browser, it may be a browser issue. See https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility for supported multimedia formats in Web browsers.
+streaming and it does not work in your web browser, it may be a browser issue. See
+``https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility``
+for supported multimedia formats in web browsers.
 
 .. figure:: ../images/video_player_2.png
    :alt: Watching a movie.
@@ -57,12 +59,12 @@ Favorites
   Click the star to the left of the file icon to mark it as a favorite:
 
   .. figure:: ../images/files_page-1.png
-   :alt: Marking Favorite files.
+   :alt: Marking favorite files.
 
   You can also quickly find all of your favorites with the Favorites filter on the left
   sidebar.
 
-Overflow Menu
+Overflow menu
   The Overflow menu (three dots) displays file details, and allows you to
   rename, download, or delete files:
 
