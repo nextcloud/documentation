@@ -1,3 +1,5 @@
+.. _windmill_workflows:
+
 ==================
 Windmill Workflows
 ==================
@@ -175,6 +177,12 @@ Of course, you may also use any of the other scripts for sending messages availa
 Windmill has a default approval user interface at a specific URL, but it looks very technical.
 We recommend using the `approve_links <https://apps.nextcloud.com/apps/approve_links>`_ app
 which allows creating a beautiful temporary approval page with a custom message and approve and disapprove buttons.
+
+Example workflows
+~~~~~~~~~~~~~~~~~
+
+We provide some example workflows at https://hub.windmill.dev/integrations/nextcloud/flows showcasing the possibilities of combining Windmill workflows with Nextcloud AI.
+
 
 FAQ
 ---
