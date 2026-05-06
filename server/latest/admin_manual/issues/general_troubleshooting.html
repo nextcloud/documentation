@@ -442,21 +442,34 @@ URLs:</p>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">https://example.com/.well-known/carddav</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">https://example.com/.well-known/caldav</span></code></div>
-<div class="line"><br /></div>
 </div>
 <p>Those need to be redirecting your clients to the correct endpoints. If Nextcloud
-is running at the document root of your Web server the correct URL is
+is running at the <code class="docutils literal notranslate"><span class="pre">DocumentRoot</span></code> of your Web server the correct URL is
 <code class="docutils literal notranslate"><span class="pre">https://example.com/remote.php/dav</span></code> for CardDAV and CalDAV and if running in a
-subfolder like <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code>, then <code class="docutils literal notranslate"><span class="pre">https://example.com/nextcloud/remote.php/dav</span></code>.</p>
-<p>For the first case the <code class="file docutils literal notranslate"><span class="pre">.htaccess</span></code> file shipped with Nextcloud should do
+subfolder like <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code>, then the correct URL is
+<code class="docutils literal notranslate"><span class="pre">https://example.com/nextcloud/remote.php/dav</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Debian/Ubuntu systems, the Apache <code class="docutils literal notranslate"><span class="pre">DocumentRoot</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">/var/www/html</span></code>.
+On other distributions, this path may differ. Adjust paths in the examples below accordingly.</p>
+</div>
+<p>For the first case, the <code class="file docutils literal notranslate"><span class="pre">.htaccess</span></code> file shipped with Nextcloud should do
 this work for you when you’re running Apache. You need to make sure that your
 Web server is using this file. Additionally, you need the mod_rewrite Apache
 module installed and <code class="docutils literal notranslate"><span class="pre">AllowOverride</span> <span class="pre">All</span></code> set in your <code class="file docutils literal notranslate"><span class="pre">apache2.conf</span></code>
 or vHost-file to process these redirects. When running Nginx please refer to
 <a class="reference internal" href="../installation/nginx.html"><span class="doc">NGINX configuration</span></a>.</p>
-<p>If your Nextcloud instance is installed in a subfolder called <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> and
-you’re running Apache, create or edit the <code class="file docutils literal notranslate"><span class="pre">.htaccess</span></code> file within the
-document root of your Web server and add the following lines:</p>
+<p>For the second case, you need to add the following to <code class="file docutils literal notranslate"><span class="pre">/etc/apache2/apache2.conf</span></code>,
+replacing <code class="docutils literal notranslate"><span class="pre">/var/www/html</span></code> with your actual <code class="docutils literal notranslate"><span class="pre">DocumentRoot</span></code> if it differs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Directory</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">&gt;</span>
+    <span class="n">AllowOverride</span> <span class="n">FileInfo</span>
+<span class="o">&lt;/</span><span class="n">Directory</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">AllowOverride</span> <span class="pre">FileInfo</span></code> is sufficient for the rewrite directives used by service
+discovery. If you already have <code class="docutils literal notranslate"><span class="pre">AllowOverride</span> <span class="pre">All</span></code> set for this directory, no change
+is needed. Next, create or edit the <code class="file docutils literal notranslate"><span class="pre">.htaccess</span></code> file within the <code class="docutils literal notranslate"><span class="pre">DocumentRoot</span></code>
+of your Web server and add the following lines:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">IfModule</span> <span class="n">mod_rewrite</span><span class="o">.</span><span class="n">c</span><span class="o">&gt;</span>
   <span class="n">RewriteEngine</span> <span class="n">on</span>
   <span class="n">RewriteRule</span> <span class="o">^</span>\<span class="o">.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span><span class="n">carddav</span> <span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span> <span class="p">[</span><span class="n">R</span><span class="o">=</span><span class="mi">301</span><span class="p">,</span><span class="n">L</span><span class="p">]</span>
