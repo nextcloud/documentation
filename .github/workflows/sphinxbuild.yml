@@ -757,8 +757,8 @@ jobs:
         run: |
           if ${{ github.event_name == 'pull_request' }}
           then
-            echo "This workflow ran for a pull request. We need stage-and-check, link-check, and netlify-preview to succeed, and deploy must be skipped"
-            if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'skipped' || needs.netlify-preview.result != 'success' }}; then exit 1; fi
+            echo "This workflow ran for a pull request. We need stage-and-check and link-check to succeed, deploy must be skipped, and netlify-preview must succeed or fail (non-fatal on forks)"
+            if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'skipped' || (needs.netlify-preview.result != 'success' && needs.netlify-preview.result != 'failure') }}; then exit 1; fi
           else
             echo "This workflow ran for a push. We need stage-and-check, link-check, and deploy to succeed; netlify-preview must be skipped"
             if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'success' || needs.netlify-preview.result != 'skipped' }}; then exit 1; fi
