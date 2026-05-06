@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Configuring External Storage (GUI) &mdash; Nextcloud latest Administration Manual latest documentation</title>
+  <title>External Storage &mdash; Nextcloud latest Administration Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -90,15 +90,15 @@
 <li class="toctree-l2"><a class="reference internal" href="big_file_upload_configuration.html">Uploading big files &gt; 512MB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="default_files_configuration.html">Providing default files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="primary_storage.html">Configuring Object Storage as Primary Storage</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuring External Storage (GUI)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#enabling-external-storage-support">Enabling External Storage Support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#storage-configuration">Storage configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">External Storage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enabling">Enabling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring">Configuring</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#folder-name">Folder name</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#usage-of-variables-for-mount-paths">Usage of variables for mount paths</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#user-and-group-permissions">User and group permissions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mount-options">Mount options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-self-signed-certificates">Using self-signed certificates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#available-storage-backends">Available storage backends</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#user-and-group-permissions">User and Group Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mount-options">Mount Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-self-signed-certificates">Using Self-Signed Certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#available-storage-backends">Available Storage Backends</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="external_storage/amazons3.html">Amazon S3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="external_storage/ftp.html">FTP/FTPS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="external_storage/local.html">Local</a></li>
@@ -109,8 +109,9 @@
 <li class="toctree-l4"><a class="reference internal" href="external_storage/webdav.html">WebDAV</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#allow-users-to-mount-external-storage">Allow users to mount external Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#allow-users-to-mount-external-storage">Allow Users to Mount External Storage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#adding-files-to-external-storage">Adding files to external storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-file-name-encoding">Troubleshooting File Name Encoding</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="external_storage/auth_mechanisms.html">External Storage authentication mechanisms</a></li>
@@ -187,7 +188,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">File sharing and management</a></li>
-      <li class="breadcrumb-item active">Configuring External Storage (GUI)</li>
+      <li class="breadcrumb-item active">External Storage</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_files/external_storage_configuration_gui.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -197,38 +198,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="configuring-external-storage-gui">
-<h1>Configuring External Storage (GUI)<a class="headerlink" href="#configuring-external-storage-gui" title="Link to this heading"></a></h1>
+  <section id="external-storage">
+<h1>External Storage<a class="headerlink" href="#external-storage" title="Link to this heading"></a></h1>
 <p>The External Storage Support application enables you to mount external storage
 services and devices as secondary Nextcloud storage devices. You may also allow
 users to mount their own external storage services.</p>
-<p>For configuration of external storages via occ command, see <a class="reference internal" href="../occ_files.html#files-external-label"><span class="std std-ref">occ documentation</span></a>.</p>
-<section id="enabling-external-storage-support">
-<h2>Enabling External Storage Support<a class="headerlink" href="#enabling-external-storage-support" title="Link to this heading"></a></h2>
-<p>The External storage support application is enabled on your Apps page.</p>
+<section id="enabling">
+<h2>Enabling<a class="headerlink" href="#enabling" title="Link to this heading"></a></h2>
+<p>External Storage Support is provided by a bundled (automatically installed) app. It is
+disabled by default, so to use this feature you simply need to enable it under
+<strong>Apps</strong>.</p>
 <figure class="align-default">
 <img alt="Enable external storage on your Apps page." src="../_images/enable-app.png" />
 </figure>
 </section>
-<section id="storage-configuration">
-<h2>Storage configuration<a class="headerlink" href="#storage-configuration" title="Link to this heading"></a></h2>
-<p>To access the settings for configuring external storage mounts, click on your Profile icon
-in the top right and select settings from the dropdown.  On the left side under Administration
-select External Storage.</p>
+<section id="configuring">
+<h2>Configuring<a class="headerlink" href="#configuring" title="Link to this heading"></a></h2>
+<p>To access the settings for configuring external storage mounts, click your Profile icon
+in the top right and select <strong>Settings</strong> from the dropdown. On the left side, under
+<strong>Administration</strong>, select <strong>External Storage</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>External storage can also be configured via the occ command. See <a class="reference internal" href="../occ_files.html#files-external-label"><span class="std std-ref">occ
+documentation</span></a>.</p>
+</div>
 <p>To create a new external storage mount, select an available backend from the
-dropdown <strong>Add storage</strong>. Each backend has different required options, which
+<strong>Add storage</strong> dropdown. Each backend has different required options, which
 are configured in the configuration fields.</p>
 <figure class="align-default">
 <img alt="../_images/add_storage.png" src="../_images/add_storage.png" />
 </figure>
 <p>Each backend may also accept multiple authentication methods. These are selected
 with the dropdown under <strong>Authentication</strong>. Different backends support different
-authentication mechanisms; some specific to the backend, others are more
+authentication mechanisms; some are specific to the backend, while others are more
 generic. See <a class="reference internal" href="external_storage/auth_mechanisms.html"><span class="doc">External Storage authentication mechanisms</span></a> for more detailed
 information.</p>
 <p>When you select an authentication mechanism, the configuration fields change as
-appropriate for the mechanism. The SFTP backend, for one example, supports
-<strong>username and password</strong>, <strong>Log-in credentials, save in session</strong>, and <strong>RSA
+appropriate for the chosen mechanism. For example, the SFTP backend supports
+<strong>Username and password</strong>, <strong>Log-in credentials, save in session</strong>, and <strong>RSA
 public key</strong>.</p>
 <figure class="align-default">
 <img alt="An SFTP configuration example." src="../_images/auth_mechanism.png" />
@@ -251,29 +258,29 @@ include slashes in your <code class="docutils literal notranslate"><span class="
 <section id="usage-of-variables-for-mount-paths">
 <h2>Usage of variables for mount paths<a class="headerlink" href="#usage-of-variables-for-mount-paths" title="Link to this heading"></a></h2>
 <p>The external storage mounting mechanism accepts variables in the mount path.</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">$user</span></code> for automatic substitution with the logged in user’s username.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">$user</span></code> for automatic substitution with the logged-in user’s username.</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">$home</span></code> for automatic substitution with a configurable home directory variable
-(requires LDAP, see <a class="reference internal" href="../configuration_user/user_auth_ldap.html#ldap-special-attributes"><span class="std std-ref">Special attributes</span></a> in the LDAP configuration documentation for details)</p>
-<p>In the following example, the mount point for a logged in user “alice” would substitute
+(requires LDAP; see <a class="reference internal" href="../configuration_user/user_auth_ldap.html#ldap-special-attributes"><span class="std std-ref">Special attributes</span></a> in the LDAP configuration documentation for details).</p>
+<p>In the following example, the mount point for a logged-in user “alice” would resolve
 to <code class="docutils literal notranslate"><span class="pre">/opt/userDirectories/alice/myPictures</span></code>.</p>
 <figure class="align-default">
 <img alt="External storage user variable substitution" src="../_images/externalStorages_variables.png" />
 </figure>
 </section>
 <section id="user-and-group-permissions">
-<h2>User and group permissions<a class="headerlink" href="#user-and-group-permissions" title="Link to this heading"></a></h2>
-<p>A storage configured in a user’s Personal settings is available only to the user
-that created it. A storage configured in the Admin settings is available to
-all users by default, and it can be restricted to specific users and groups in
+<h2>User and Group Permissions<a class="headerlink" href="#user-and-group-permissions" title="Link to this heading"></a></h2>
+<p>A storage configured in a user’s personal settings is available only to the user
+who created it. A storage configured in the Admin settings is available to
+all users by default, but it can be restricted to specific users and groups in
 the <strong>Available for</strong> field.</p>
 <figure class="align-default">
 <img alt="User and groups selector" src="../_images/applicable.png" />
 </figure>
 </section>
 <section id="mount-options">
-<span id="external-storage-mount-options-label"></span><h2>Mount options<a class="headerlink" href="#mount-options" title="Link to this heading"></a></h2>
-<p>The Overflow menu (three dots) exposes the settings and trashcan. Click the trashcan to delete the
-mountpoint. The settings button allows you to configure each storage mount
+<span id="external-storage-mount-options-label"></span><h2>Mount Options<a class="headerlink" href="#mount-options" title="Link to this heading"></a></h2>
+<p>The overflow menu (three dots) exposes the settings and trashcan icons. Click the trashcan to delete the
+mount point. The settings button allows you to configure each storage mount
 individually with the following options:</p>
 <ul class="simple">
 <li><p>Encryption</p></li>
@@ -285,22 +292,22 @@ individually with the following options:</p>
 </ul>
 <p>The <strong>Encryption</strong> checkbox is visible only when the Encryption app is enabled. Note that server-side
 encryption is not available for other Nextcloud servers used as external storage.</p>
-<p><strong>Enable Sharing</strong> allows the Nextcloud admin to enable or disable sharing on individual mountpoints.
-When sharing is disabled the shares are retained internally, so that you can re-enable sharing
+<p><strong>Enable Sharing</strong> allows the Nextcloud admin to enable or disable sharing on individual mount points.
+When sharing is disabled, the shares are retained internally so that you can re-enable sharing
 and the previous shares become available again. Sharing is disabled by default.</p>
 <figure class="align-default">
 <img alt="Additional mount options exposed on mouseover." src="../_images/mount_options.png" />
 </figure>
 </section>
 <section id="using-self-signed-certificates">
-<h2>Using self-signed certificates<a class="headerlink" href="#using-self-signed-certificates" title="Link to this heading"></a></h2>
-<p>When using self-signed certificates for external storage mounts the certificate
+<h2>Using Self-Signed Certificates<a class="headerlink" href="#using-self-signed-certificates" title="Link to this heading"></a></h2>
+<p>When using self-signed certificates for external storage mounts, the certificate
 must be imported into the personal settings of the user. Please refer to
 <a class="reference external" href="https://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html">Nextcloud HTTPS External Mount</a>
 for more information.</p>
 </section>
 <section id="available-storage-backends">
-<h2>Available storage backends<a class="headerlink" href="#available-storage-backends" title="Link to this heading"></a></h2>
+<h2>Available Storage Backends<a class="headerlink" href="#available-storage-backends" title="Link to this heading"></a></h2>
 <p>The following backends are provided by the external storages app.</p>
 <div class="toctree-wrapper compound">
 <ul>
@@ -317,11 +324,11 @@ for more information.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>A non-blocking or correctly configured SELinux setup is needed
-for these backends to work. Please refer to the <a class="reference internal" href="../installation/selinux_configuration.html#selinux-config-label"><span class="std std-ref">SELinux configuration</span></a>.</p>
+for these backends to work. Please refer to <a class="reference internal" href="../installation/selinux_configuration.html#selinux-config-label"><span class="std std-ref">SELinux configuration</span></a>.</p>
 </div>
 </section>
 <section id="allow-users-to-mount-external-storage">
-<h2>Allow users to mount external Storage<a class="headerlink" href="#allow-users-to-mount-external-storage" title="Link to this heading"></a></h2>
+<h2>Allow Users to Mount External Storage<a class="headerlink" href="#allow-users-to-mount-external-storage" title="Link to this heading"></a></h2>
 <p>Check <strong>Enable User External Storage</strong> to allow your users to mount their own
 external storage services, and check the backends you want to allow. Beware, as
 this allows a user to make potentially arbitrary connections to other services
@@ -336,15 +343,36 @@ on your network!</p>
 <strong>Cron</strong> (see <a class="reference internal" href="../configuration_server/background_jobs_configuration.html"><span class="doc">Background jobs</span></a>)
 to enable Nextcloud to automatically detect files added to your external
 storages.</p>
-<p>Nextcloud may not always be able to find out what has been
-changed remotely (files changed without going through Nextcloud), especially
-when it’s very deep in the folder hierarchy of the external storage.</p>
-<p>You might need to setup a cron job that runs <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-E</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">files:scan</span> <span class="pre">--all</span></code>
-(or replace <code class="docutils literal notranslate"><span class="pre">--all</span></code> with the user name, see also <a class="reference internal" href="../occ_command.html"><span class="doc">Using the occ command</span></a>)
-to trigger a rescan of the user’s files periodically (for example every 15 minutes), which includes
+<p>Nextcloud may not always be able to detect changes made remotely (files changed without going through Nextcloud), especially
+when files are located deep in the folder hierarchy of the external storage.</p>
+<p>You might need to set up a cron job that runs <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-E</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">files:scan</span> <span class="pre">--all</span></code>
+(or replace <code class="docutils literal notranslate"><span class="pre">--all</span></code> with the username; see also <a class="reference internal" href="../occ_command.html"><span class="doc">Using the occ command</span></a>)
+to trigger a rescan of the user’s files periodically (for example, every 15 minutes), which includes
 the mounted external storage.</p>
 <p>If you are running Nextcloud AIO, the equivalent command
 in that environment is <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">--user</span> <span class="pre">www-data</span> <span class="pre">-it</span> <span class="pre">nextcloud-aio-nextcloud</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">files:scan</span> <span class="pre">--all</span></code>.</p>
+</section>
+<section id="troubleshooting-file-name-encoding">
+<span id="trouble-file-encoding-ext-storages"></span><h2>Troubleshooting File Name Encoding<a class="headerlink" href="#troubleshooting-file-name-encoding" title="Link to this heading"></a></h2>
+<p>When using external storage, it can happen that some files with special characters will not
+appear in the file listing, or they will appear but not be accessible.</p>
+<p>When this happens, please run the <a class="reference internal" href="../occ_files.html#occ-files-scan-label"><span class="std std-ref">files scanner</span></a>, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span> <span class="o">--</span><span class="nb">all</span>
+</pre></div>
+</div>
+<p>If the scanner reports an encoding issue on the affected file, please enable Mac encoding
+compatibility in the <a class="reference internal" href="#external-storage-mount-options-label"><span class="std std-ref">mount options</span></a>
+and then <a class="reference internal" href="../occ_files.html#occ-files-scan-label"><span class="std std-ref">rescan the external storage</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This mode comes with a performance impact because Nextcloud will always try both encodings when detecting files
+on external storages.</p>
+<p>Mac computers use the NFD Unicode normalization for file names, which is different from NFC, the one used
+by other operating systems. Mac users might upload files directly to the external storage using NFD-normalized
+file names. When uploading through Nextcloud, file names will always be normalized to the NFC standard for consistency.</p>
+<p>It is recommended to let Nextcloud use external storages exclusively to avoid such issues.</p>
+<p>See also the <a class="reference external" href="https://www.win.tue.nl/~aeb/linux/uc/nfc_vs_nfd.html">technical explanation about NFC vs NFD normalizations</a>.</p>
+</div>
 </section>
 </section>
 
