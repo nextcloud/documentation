@@ -796,41 +796,41 @@ A setup with the HaRP container itself on the remote is not supported.</p>
 <p>This is the related infrastructure</p>
 <pre  class="mermaid">
         stateDiagram-v2
-        classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
-        classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
-        classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
+    classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+    classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
+    classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
 
-        Direction LR
+    Direction LR
 
-                Host1 --&gt; Host2 : by port
-                Host3 --&gt; Host1 : by port
-                Host3 --&gt; Host2 : by port
+        Host1 --&gt; Host2 : by port
+        Host3 --&gt; Host1 : by port
+        Host3 --&gt; Host2 : by port
 
-        state Host1 {
-                Nextcloud
+    state Host1 {
+        Nextcloud
+    }
+
+    state Host2 {
+        [*] --&gt; HaRP : by port
+        Daemon --&gt; Containers
+
+        state Containers {
+            [*] --&gt; HaRP : /var/run/docker.sock
+            HaRP --&gt; ExApp1
+            HaRP --&gt; ExApp2
+            HaRP --&gt; ExApp3
         }
+    }
 
-        state Host2 {
-                [*] --&gt; HaRP : by port
-                Daemon --&gt; Containers
+    state Host3 {
+        Apache Reverse Proxy
+    }
 
-                state Containers {
-                        [*] --&gt; HaRP : /var/run/docker.sock
-                        HaRP --&gt; ExApp1
-                        HaRP --&gt; ExApp2
-                        HaRP --&gt; ExApp3
-                }
-        }
-
-        state Host3 {
-                Apache Reverse Proxy
-        }
-
-        class Nextcloud nextcloud
-        class Daemon docker
-        class ExApp1 python
-        class ExApp2 python
-        class ExApp3 python
+    class Nextcloud nextcloud
+    class Daemon docker
+    class ExApp1 python
+    class ExApp2 python
+    class ExApp3 python
     </pre><p>Please see below the steps I follow
 All of the following steps are based on a Almalinux Distro.
 Please customize for your distribution.</p>
@@ -927,30 +927,30 @@ virtual port for that local socket. This value does not require any additional f
 <p>The simplest configuration is when Nextcloud is installed on the host and Docker is on the same host and applications are deployed to it.</p>
 <pre  class="mermaid">
         stateDiagram-v2
-        classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
-        classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
-        classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
+    classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+    classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
+    classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
 
-        Host
+    Host
 
-        state Host {
-                Nextcloud --&gt; Daemon : /var/run/docker.sock
-                Daemon --&gt; Containers
+    state Host {
+        Nextcloud --&gt; Daemon : /var/run/docker.sock
+        Daemon --&gt; Containers
 
-                state Containers {
-                        ExApp1
-                        --
-                        ExApp2
-                        --
-                        ExApp3
-                }
+        state Containers {
+            ExApp1
+            --
+            ExApp2
+            --
+            ExApp3
         }
+    }
 
-        class Nextcloud nextcloud
-        class Daemon docker
-        class ExApp1 python
-        class ExApp2 python
-        class ExApp3 python
+    class Nextcloud nextcloud
+    class Daemon docker
+    class ExApp1 python
+    class ExApp2 python
+    class ExApp3 python
     </pre><dl class="simple">
 <dt>Suggested config values(template <em>Custom default</em>):</dt><dd><ol class="arabic simple">
 <li><p>Daemon host: <code class="docutils literal notranslate"><span class="pre">/var/run/docker.sock</span></code></p></li>
@@ -964,29 +964,29 @@ virtual port for that local socket. This value does not require any additional f
 <p>Suggested way to communicate with Docker via <a class="reference external" href="https://github.com/nextcloud/docker-socket-proxy">Docker Socket Proxy container</a>.</p>
 <pre  class="mermaid">
         stateDiagram-v2
-        classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
-        classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
-        classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
+    classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+    classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
+    classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
 
-        Host
+    Host
 
-        state Host {
-                Nextcloud --&gt; DockerSocketProxy: by port
-                Docker --&gt; Containers
-                Docker --&gt; DockerSocketProxy : /var/run/docker.sock
+    state Host {
+        Nextcloud --&gt; DockerSocketProxy: by port
+        Docker --&gt; Containers
+        Docker --&gt; DockerSocketProxy : /var/run/docker.sock
 
-                state Containers {
-                        DockerSocketProxy --&gt; ExApp1
-                        DockerSocketProxy --&gt; ExApp2
-                        DockerSocketProxy --&gt; ExApp3
-                }
+        state Containers {
+            DockerSocketProxy --&gt; ExApp1
+            DockerSocketProxy --&gt; ExApp2
+            DockerSocketProxy --&gt; ExApp3
         }
+    }
 
-        class Nextcloud nextcloud
-        class Docker docker
-        class ExApp1 python
-        class ExApp2 python
-        class ExApp3 python
+    class Nextcloud nextcloud
+    class Docker docker
+    class ExApp1 python
+    class ExApp2 python
+    class ExApp3 python
     </pre><dl class="simple">
 <dt>Suggested config values(template <em>Docker Socket Proxy</em>):</dt><dd><ol class="arabic simple">
 <li><dl class="simple">
@@ -1019,35 +1019,35 @@ Check opened ports after finishing configuration.</p>
 <p>In this case, the AppAPI uses a Docker Socket Proxy deployed on remote host to access docker socket and ExApps.</p>
 <pre  class="mermaid">
         stateDiagram-v2
-        classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
-        classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
-        classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
+    classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+    classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
+    classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
 
-        Direction LR
+    Direction LR
 
-                Host1 --&gt; Host2 : by port
+        Host1 --&gt; Host2 : by port
 
-        state Host1 {
-                Nextcloud
+    state Host1 {
+        Nextcloud
+    }
+
+    state Host2 {
+        [*] --&gt; DockerSocketProxy : by port
+        Daemon --&gt; Containers
+
+        state Containers {
+            [*] --&gt; DockerSocketProxy : /var/run/docker.sock
+            DockerSocketProxy --&gt; ExApp1
+            DockerSocketProxy --&gt; ExApp2
+            DockerSocketProxy --&gt; ExApp3
         }
+    }
 
-        state Host2 {
-                [*] --&gt; DockerSocketProxy : by port
-                Daemon --&gt; Containers
-
-                state Containers {
-                        [*] --&gt; DockerSocketProxy : /var/run/docker.sock
-                        DockerSocketProxy --&gt; ExApp1
-                        DockerSocketProxy --&gt; ExApp2
-                        DockerSocketProxy --&gt; ExApp3
-                }
-        }
-
-        class Nextcloud nextcloud
-        class Daemon docker
-        class ExApp1 python
-        class ExApp2 python
-        class ExApp3 python
+    class Nextcloud nextcloud
+    class Daemon docker
+    class ExApp1 python
+    class ExApp2 python
+    class ExApp3 python
     </pre><dl class="simple">
 <dt>Suggested config values(template <em>Docker Socket Proxy</em>):</dt><dd><ol class="arabic simple">
 <li><p>Daemon host: ADDRESS_OF_REMOTE_MACHINE (e.g. <strong>server_name.com:2375</strong>)</p></li>
@@ -1064,29 +1064,29 @@ Check opened ports after finishing configuration.</p>
 <p>Suggested way to communicate with Docker: via <code class="docutils literal notranslate"><span class="pre">docker-socket-proxy</span></code>.</p>
 <pre  class="mermaid">
         stateDiagram-v2
-        classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
-        classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
-        classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
+    classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+    classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
+    classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
 
-        Host
+    Host
 
-        state Host {
-                Daemon --&gt; Containers
+    state Host {
+        Daemon --&gt; Containers
 
-                state Containers {
-                        [*] --&gt; DockerSocketProxy : /var/run/docker.sock
-                        Nextcloud --&gt; DockerSocketProxy: by port
-                        --
-                        DockerSocketProxy --&gt; ExApp1
-                        DockerSocketProxy --&gt; ExApp2
-                }
+        state Containers {
+            [*] --&gt; DockerSocketProxy : /var/run/docker.sock
+            Nextcloud --&gt; DockerSocketProxy: by port
+            --
+            DockerSocketProxy --&gt; ExApp1
+            DockerSocketProxy --&gt; ExApp2
         }
+    }
 
-        class Nextcloud nextcloud
-        class Daemon docker
-        class ExApp1 python
-        class ExApp2 python
-        class ExApp3 python
+    class Nextcloud nextcloud
+    class Daemon docker
+    class ExApp1 python
+    class ExApp2 python
+    class ExApp3 python
     </pre><dl class="simple">
 <dt>Suggested config values(template <em>Docker Socket Proxy</em>):</dt><dd><ol class="arabic simple">
 <li><p>Daemon host: nextcloud-appapi-dsp:2375</p></li>
@@ -1111,34 +1111,34 @@ Check opened ports after finishing configuration.</p>
 </div>
 <pre  class="mermaid">
         stateDiagram-v2
-        classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
-        classDef docker2 fill: #1f97ee, color: white, font-size: 20px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
-        classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
-        classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
+    classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+    classDef docker2 fill: #1f97ee, color: white, font-size: 20px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+    classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
+    classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
 
-        Host
+    Host
 
-        state Host {
-                Daemon --&gt; Containers
+    state Host {
+        Daemon --&gt; Containers
 
-                state Containers {
-                        [*] --&gt; NextcloudAIOMasterContainer : /var/run/docker.sock
-                        [*] --&gt; DockerSocketProxy : /var/run/docker.sock
-                        NextcloudAIOMasterContainer --&gt; Nextcloud
-                        AppAPI --&gt; Nextcloud : installed in
-                        Nextcloud --&gt; DockerSocketProxy
-                        DockerSocketProxy --&gt; ExApp1
-                        DockerSocketProxy --&gt; ExApp2
-                        DockerSocketProxy --&gt; ExApp3
-                }
+        state Containers {
+            [*] --&gt; NextcloudAIOMasterContainer : /var/run/docker.sock
+            [*] --&gt; DockerSocketProxy : /var/run/docker.sock
+            NextcloudAIOMasterContainer --&gt; Nextcloud
+            AppAPI --&gt; Nextcloud : installed in
+            Nextcloud --&gt; DockerSocketProxy
+            DockerSocketProxy --&gt; ExApp1
+            DockerSocketProxy --&gt; ExApp2
+            DockerSocketProxy --&gt; ExApp3
         }
+    }
 
-        class Nextcloud nextcloud
-        class Daemon docker
-        class Daemon2 docker2
-        class ExApp1 python
-        class ExApp2 python
-        class ExApp3 python
+    class Nextcloud nextcloud
+    class Daemon docker
+    class Daemon2 docker2
+    class ExApp1 python
+    class ExApp2 python
+    class ExApp3 python
     </pre><p>AppAPI will automatically create the default DaemonConfig for AIO Docker Socket Proxy in order to use it as an orchestrator to create ExApp containers.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1173,7 +1173,7 @@ For HaRP, the communication goes through the main Nextcloud proxy and the HaRP c
 <p>Each type of DeployDaemon necessarily implements the <code class="docutils literal notranslate"><span class="pre">resolveExAppUrl</span></code> function.</p>
 <p>It has the prototype:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">public function resolveExAppUrl(</span>
-<span class="x">        string $appId, string $protocol, string $host, array $deployConfig, int $port, array &amp;$auth</span>
+<span class="x">    string $appId, string $protocol, string $host, array $deployConfig, int $port, array &amp;$auth</span>
 <span class="x">) {}</span>
 </pre></div>
 </div>
@@ -1197,26 +1197,26 @@ AppAPI will try to send request s directly to this address assuming that ExApp i
 </div>
 <p>The simplest implementation is in the <strong>Manual-Install</strong> deploy type:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">public function resolveExAppUrl(</span>
-<span class="x">        string $appId, string $protocol, string $host, array $deployConfig, int $port, array &amp;$auth</span>
+<span class="x">    string $appId, string $protocol, string $host, array $deployConfig, int $port, array &amp;$auth</span>
 <span class="x">): string {</span>
-<span class="x">        if (boolval($deployConfig[&#39;harp&#39;] ?? false)) {</span>
-<span class="x">                $url = rtrim($deployConfig[&#39;nextcloud_url&#39;], &#39;/&#39;);</span>
-<span class="x">                if (str_ends_with($url, &#39;/index.php&#39;)) {</span>
-<span class="x">                        $url = substr($url, 0, -10);</span>
-<span class="x">                }</span>
-<span class="x">                return sprintf(&#39;%s/exapps/%s&#39;, $url, $appId);</span>
+<span class="x">    if (boolval($deployConfig[&#39;harp&#39;] ?? false)) {</span>
+<span class="x">        $url = rtrim($deployConfig[&#39;nextcloud_url&#39;], &#39;/&#39;);</span>
+<span class="x">        if (str_ends_with($url, &#39;/index.php&#39;)) {</span>
+<span class="x">            $url = substr($url, 0, -10);</span>
 <span class="x">        }</span>
+<span class="x">        return sprintf(&#39;%s/exapps/%s&#39;, $url, $appId);</span>
+<span class="x">    }</span>
 
-<span class="x">        $auth = [];</span>
-<span class="x">        if (isset($deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;]) &amp;&amp;</span>
-<span class="x">                $deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;] !== &#39;&#39;</span>
-<span class="x">        ) {</span>
-<span class="x">                $wideNetworkAddresses = [&#39;0.0.0.0&#39;, &#39;127.0.0.1&#39;, &#39;::&#39;, &#39;::1&#39;];</span>
-<span class="x">                if (!in_array($deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;], $wideNetworkAddresses)) {</span>
-<span class="x">                        $host = $deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;];</span>
-<span class="x">                }</span>
+<span class="x">    $auth = [];</span>
+<span class="x">    if (isset($deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;]) &amp;&amp;</span>
+<span class="x">        $deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;] !== &#39;&#39;</span>
+<span class="x">    ) {</span>
+<span class="x">        $wideNetworkAddresses = [&#39;0.0.0.0&#39;, &#39;127.0.0.1&#39;, &#39;::&#39;, &#39;::1&#39;];</span>
+<span class="x">        if (!in_array($deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;], $wideNetworkAddresses)) {</span>
+<span class="x">            $host = $deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;];</span>
 <span class="x">        }</span>
-<span class="x">        return sprintf(&#39;%s://%s:%s&#39;, $protocol, $host, $port);</span>
+<span class="x">    }</span>
+<span class="x">    return sprintf(&#39;%s://%s:%s&#39;, $protocol, $host, $port);</span>
 <span class="x">}</span>
 </pre></div>
 </div>
@@ -1226,41 +1226,41 @@ AppAPI will try to send request s directly to this address assuming that ExApp i
 </div>
 <p>Now, let’s take a look at the Docker Daemon implementation of <code class="docutils literal notranslate"><span class="pre">resolveExAppUrl</span></code>:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">public function resolveExAppUrl(</span>
-<span class="x">        string $appId, string $protocol, string $host, array $deployConfig, int $port, array &amp;$auth</span>
+<span class="x">    string $appId, string $protocol, string $host, array $deployConfig, int $port, array &amp;$auth</span>
 <span class="x">): string {</span>
-<span class="x">        if (boolval($deployConfig[&#39;harp&#39;] ?? false)) {</span>
-<span class="x">                $url = rtrim($deployConfig[&#39;nextcloud_url&#39;], &#39;/&#39;);</span>
-<span class="x">                if (str_ends_with($url, &#39;/index.php&#39;)) {</span>
-<span class="x">                        $url = substr($url, 0, -10);</span>
-<span class="x">                }</span>
-<span class="x">                return sprintf(&#39;%s/exapps/%s&#39;, $url, $appId);</span>
+<span class="x">    if (boolval($deployConfig[&#39;harp&#39;] ?? false)) {</span>
+<span class="x">        $url = rtrim($deployConfig[&#39;nextcloud_url&#39;], &#39;/&#39;);</span>
+<span class="x">        if (str_ends_with($url, &#39;/index.php&#39;)) {</span>
+<span class="x">            $url = substr($url, 0, -10);</span>
 <span class="x">        }</span>
+<span class="x">        return sprintf(&#39;%s/exapps/%s&#39;, $url, $appId);</span>
+<span class="x">    }</span>
 
-<span class="x">        $auth = [];</span>
-<span class="x">        if (isset($deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;]) &amp;&amp;</span>
-<span class="x">                $deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;] !== &#39;&#39;</span>
-<span class="x">        ) {</span>
-<span class="x">                $wideNetworkAddresses = [&#39;0.0.0.0&#39;, &#39;127.0.0.1&#39;, &#39;::&#39;, &#39;::1&#39;];</span>
-<span class="x">                if (!in_array($deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;], $wideNetworkAddresses)) {</span>
-<span class="x">                        return sprintf(</span>
-<span class="x">                                &#39;%s://%s:%s&#39;, $protocol, $deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;], $port</span>
-<span class="x">                        );</span>
-<span class="x">                }</span>
+<span class="x">    $auth = [];</span>
+<span class="x">    if (isset($deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;]) &amp;&amp;</span>
+<span class="x">        $deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;] !== &#39;&#39;</span>
+<span class="x">    ) {</span>
+<span class="x">        $wideNetworkAddresses = [&#39;0.0.0.0&#39;, &#39;127.0.0.1&#39;, &#39;::&#39;, &#39;::1&#39;];</span>
+<span class="x">        if (!in_array($deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;], $wideNetworkAddresses)) {</span>
+<span class="x">            return sprintf(</span>
+<span class="x">                &#39;%s://%s:%s&#39;, $protocol, $deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;], $port</span>
+<span class="x">            );</span>
 <span class="x">        }</span>
-<span class="x">        $host = explode(&#39;:&#39;, $host)[0];</span>
-<span class="x">        if ($protocol == &#39;https&#39;) {</span>
-<span class="x">                $exAppHost = $host;</span>
-<span class="x">        } elseif (isset($deployConfig[&#39;net&#39;]) &amp;&amp; $deployConfig[&#39;net&#39;] === &#39;host&#39;) {</span>
-<span class="x">                $exAppHost = &#39;localhost&#39;;</span>
-<span class="x">        } else {</span>
-<span class="x">                $exAppHost = $appId;</span>
-<span class="x">        }</span>
-<span class="x">        if ($protocol == &#39;https&#39; &amp;&amp; isset($deployConfig[&#39;haproxy_password&#39;]) &amp;&amp; $deployConfig[&#39;haproxy_password&#39;] !== &#39;&#39;) {</span>
-<span class="x">                // we only set haproxy auth for remote installations, when all requests come through HaProxy.</span>
-<span class="x">                $haproxyPass = $this-&gt;crypto-&gt;decrypt($deployConfig[&#39;haproxy_password&#39;]);</span>
-<span class="x">                $auth = [self::APP_API_HAPROXY_USER, $haproxyPass];</span>
-<span class="x">        }</span>
-<span class="x">        return sprintf(&#39;%s://%s:%s&#39;, $protocol, $exAppHost, $port);</span>
+<span class="x">    }</span>
+<span class="x">    $host = explode(&#39;:&#39;, $host)[0];</span>
+<span class="x">    if ($protocol == &#39;https&#39;) {</span>
+<span class="x">        $exAppHost = $host;</span>
+<span class="x">    } elseif (isset($deployConfig[&#39;net&#39;]) &amp;&amp; $deployConfig[&#39;net&#39;] === &#39;host&#39;) {</span>
+<span class="x">        $exAppHost = &#39;localhost&#39;;</span>
+<span class="x">    } else {</span>
+<span class="x">        $exAppHost = $appId;</span>
+<span class="x">    }</span>
+<span class="x">    if ($protocol == &#39;https&#39; &amp;&amp; isset($deployConfig[&#39;haproxy_password&#39;]) &amp;&amp; $deployConfig[&#39;haproxy_password&#39;] !== &#39;&#39;) {</span>
+<span class="x">        // we only set haproxy auth for remote installations, when all requests come through HaProxy.</span>
+<span class="x">        $haproxyPass = $this-&gt;crypto-&gt;decrypt($deployConfig[&#39;haproxy_password&#39;]);</span>
+<span class="x">        $auth = [self::APP_API_HAPROXY_USER, $haproxyPass];</span>
+<span class="x">    }</span>
+<span class="x">    return sprintf(&#39;%s://%s:%s&#39;, $protocol, $exAppHost, $port);</span>
 <span class="x">}</span>
 </pre></div>
 </div>
