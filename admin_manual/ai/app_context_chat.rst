@@ -130,6 +130,10 @@ If ``context_chat_backend`` is already deployed, you can change these environmen
 4. Reinstall the app
 
 
+Kubernetes
+~~~~~~~~~~
+Starting with version 5.4.0 of the app, Kubernetes is supported for deployment of the backend to scale ContextChat to large instances. Nextcloud customers can find details about Kubernetes deployment in the customer documentation or by contacting support.
+
 App store
 ---------
 
@@ -179,6 +183,8 @@ Logs
 
 Logs for both the ``context_chat`` PHP app and the ``context_chat_backend`` ExApp can be found in the admin settings of your Nextcloud GUI as well as in the Context Chat log file, which is usually located in the Nextcloud data directory. The log file is named ``context_chat.log``.
 
+When running in Kubernetes, the logs for the backend will be in the respective pod's logs, which can be accessed using ``kubectl logs <pod_name>`` command.
+
 Troubleshooting
 ---------------
 
@@ -203,5 +209,5 @@ Known Limitations
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI).
 * Files larger than 100MB are not supported
 * Password protected PDFs or any other files are not supported. There will be error logs mentioning cryptography and AES in the docker container when such files are encountered but it is nothing to worry about, they will be simply ignored and the system will continue to function normally.
-* Podman and Kubernetes are currently not supported for the Context Chat Backend ExApp.
+* Podman is currently not supported for the Context Chat Backend ExApp.
 * External storages (through ``files_external``) may not work as well as the local storage.
