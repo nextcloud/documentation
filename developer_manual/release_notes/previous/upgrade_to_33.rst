@@ -238,7 +238,7 @@ Removed APIs
   method when executing a ``UPDATE``, ``INSERT`` and ``DELETE`` statement, available since Nextcloud 20.
 
   Instead of catching a exceptions from the Doctrine DBAL package, you now need to catch ``OCP\DB\Exception``
-  and check the `getReason``. For example, the following old code:
+  and check the ``getReason``. For example, the following old code:
 
 .. code-block:: php
 

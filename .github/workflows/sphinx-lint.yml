@@ -1,0 +1,42 @@
+name: 'Sphinx Lint'
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - stable*
+
+permissions:
+  contents: read
+
+jobs:
+  sphinx-lint:
+    name: Lint RST files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: "3.13"
+          cache: "pip"
+
+        # The workflow pins sphinx-lint directly (not via requirements.txt) to keep
+        # this job lightweight — requirements.txt pulls in the full Sphinx build
+        # stack (Pillow, rst2pdf, reportlab, …) which is not needed for linting.
+        # sphinx-lint is also listed in requirements.txt so local dev environments
+        # get the same version when running `pip install -r requirements.txt`.
+      - name: Install sphinx-lint
+        run: pip install sphinx-lint==1.0.2
+
+      - name: Register sphinx-lint problem matcher
+        run: echo "::add-matcher::.github/problem-matchers/sphinx-lint.json"
+
+      - name: Run sphinx-lint
+        run: sphinx-lint --disable trailing-whitespace --disable horizontal-tab admin_manual developer_manual user_manual
