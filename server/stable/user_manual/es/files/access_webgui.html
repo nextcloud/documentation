@@ -64,18 +64,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">La interfaz web de Nextcloud</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Archivos y sincronización</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Acceder a sus archivos utilizando la interfaz web de Nextcloud</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#tagging-files">Etiquetar archivos</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#comments">Comentarios</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#video-player">Reproductor de vídeo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigating-your-files">Navigating your files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#file-controls">Control sobre archivos</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#previewing-files">Previsualizar archivos</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#navigating-inside-your-nextcloud">Navegar dentro de su Nextcloud</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sharing-status-icons">Iconos del estado de compartición</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-or-uploading-files-and-directories">Crear o subir archivos y carpetas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#details-sidebar">Details sidebar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#activity-and-comments">Activity and comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#searching-and-filtering">Searching and filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#grid-view">Grid view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uploading-and-creating-files">Uploading and creating files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#selecting-files-or-folders">Seleccionar archivos o carpetas</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#filtering-the-files-view">Filtrar la vista de archivos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-status-icons">Iconos del estado de compartición</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#moving-files">Mover archivos</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-or-connecting-to-a-federation-share-link">Crear o conectarse con un enlace compartido de federación.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#previewing-files">Previsualizar archivos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#video-player">Reproductor de vídeo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connecting-to-a-federation-share">Connecting to a Federation Share</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Acceder a los archivos de Nextcloud a través de WebDAV</a></li>
@@ -133,128 +134,164 @@
 <h1>Acceder a sus archivos utilizando la interfaz web de Nextcloud<a class="headerlink" href="#accessing-your-files-using-the-nextcloud-web-interface" title="Link to this heading"></a></h1>
 <p>Puede acceder a sus archivos en Nextcloud con la interfaz web de Nextcloud, y crear, previsualizar, editar, borrar, compartir y volver a compartir archivos. Su administrador de Nextcloud tiene la opción de deshabilitar estas características, así que consulte con su administrador de sistemas si echa en falta alguna de ellas.</p>
 <figure class="align-default">
-<img alt="La pantalla de vista de Archivos" src="../../_images/users-files.png" />
+<img alt="The Files app showing a list of files and folders." src="../../_images/users-files.png" />
 </figure>
-<section id="tagging-files">
-<h2>Etiquetar archivos<a class="headerlink" href="#tagging-files" title="Link to this heading"></a></h2>
-<p>Usted puede asignar etiquetas a cada archivo. Para crear etiquetas, abra la vista Detalles de un archivo. A continuación escriba las etiquetas. Para introducir más de una etiqueta, pulse la tecla de retorno tras crear cada etiqueta. Todas las etiquetas son etiquetas del sistema, y son compartidas por todos los usuarios en tu servidor Nextcloud.</p>
+<section id="navigating-your-files">
+<h2>Navigating your files<a class="headerlink" href="#navigating-your-files" title="Link to this heading"></a></h2>
+<p>The left sidebar lets you switch between different views of your files. Click a
+folder name in the file list to open it, and use your browser’s back button or
+the breadcrumb bar at the top of the file list to return to a previous level.</p>
 <figure class="align-default">
-<img alt="Creando etiquetas de archivo." src="../../_images/files_page-7.png" />
+<img alt="The Files app left navigation panel." src="../../_images/files_page-5.png" />
 </figure>
-<p>A continuación, utilice el filtro Etiquetas en la barra lateral izquierda para filtrar sus archivos por etiquetas:</p>
+<p>The sidebar contains the following entries:</p>
+<dl class="simple">
+<dt>Todos los archivos</dt><dd><p>The default view, showing every file and folder you have access to.</p>
+</dd>
+<dt>Recent</dt><dd><p>Files you have viewed or modified recently.</p>
+</dd>
+<dt>Favoritos</dt><dd><p>Files and folders you have starred.</p>
+</dd>
+<dt>Shares</dt><dd><p>Files shared with you, by you, or via a public link — all in one view.</p>
+</dd>
+<dt>Tags</dt><dd><p>Browse files by system tag.</p>
+</dd>
+<dt>Deleted files</dt><dd><p>Files you have deleted that are still recoverable from the trash bin.</p>
+</dd>
+</dl>
+<p>When you navigate into a folder, a breadcrumb trail appears at the top of the
+file list so you can jump back to any parent folder with a single click:</p>
 <figure class="align-default">
-<img alt="Viendo etiquetas de archivo." src="../../_images/files_page-8.png" />
-</figure>
-</section>
-<section id="comments">
-<h2>Comentarios<a class="headerlink" href="#comments" title="Link to this heading"></a></h2>
-<p>Utilice la vista Detalles para añadir y leer comentarios de cualquier carpeta o archivo. Los comentarios son visibles a todos los que tengan acceso al archivo:</p>
-<figure class="align-default">
-<img alt="Creando y viendo etiquetas de archivo." src="../../_images/file_menu_comments_2.png" />
-</figure>
-</section>
-<section id="video-player">
-<h2>Reproductor de vídeo<a class="headerlink" href="#video-player" title="Link to this heading"></a></h2>
-<p>Puede reproducir vídeos en Nextcloud con la aplicación Reproductor de Vídeo al hacer clic en el archivo. La retransmisión del vídeo en el reproductor de vídeo nativo de Nextcloud depende de su navegador web y el formato del vídeo. Si su administrador de Nextcloud ha habilitado la retransmisión de vídeo, y no funciona en su navegador web, es posible que sea un problema de éste último. Véase en <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility">https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility</a> la compatibilidad de cada navegador web con cada formato multimedia.</p>
-<figure class="align-default">
-<img alt="Viendo una película." src="../../_images/video_player_2.png" />
+<img alt="Breadcrumb navigation inside a subfolder." src="../../_images/files_page-6.png" />
 </figure>
 </section>
 <section id="file-controls">
 <h2>Control sobre archivos<a class="headerlink" href="#file-controls" title="Link to this heading"></a></h2>
-<p>Nextcloud can display thumbnail previews for various file types, such as images, audio files, and text files.
-The specific types supported are up to the server administrator.
-Hover your cursor over a file or folder to expose the controls for the following operations:</p>
-<dl>
-<dt>Favoritos</dt><dd><p>Haga clic en la estrella a la derecha del icono del archivo para marcarlo como favorito:</p>
+<p>Nextcloud displays thumbnail previews for images, text files, and other
+supported types — the exact list depends on your server configuration.</p>
+<p>Each file and folder row has a three-dot action menu button. Click it to
+rename, move, copy, download, delete, or mark the item as a favorite.
+Files that have been marked as a favorite display a star icon:</p>
 <figure class="align-default">
-<img alt="Marcando archivos favoritos." src="../../_images/files_page-1.png" />
+<img alt="A file row with the actions menu open." src="../../_images/files_page-3.png" />
 </figure>
-<p>También puede encontrar todos sus favoritos en el filtro Favoritos de la barra lateral izquierda.</p>
-</dd>
-<dt>Menú de desborde</dt><dd><p>El menú de desborde (tres puntos) muestra detalles de los archivos y le permite renombrar, descargar y borrar archivos.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>You can quickly find all your favorites using the <strong>Favorites</strong>
+entry in the left sidebar.</p>
+</div>
+</section>
+<section id="details-sidebar">
+<h2>Details sidebar<a class="headerlink" href="#details-sidebar" title="Link to this heading"></a></h2>
+<p>Select <strong>Details</strong> from the three-dot action menu to open the details sidebar. The sidebar
+shows information about the selected file and provides tabbed access to its
+activity history, sharing options, and version history:</p>
 <figure class="align-default">
-<img alt="Menú de desborde." src="../../_images/files_page-3.png" />
-</figure>
-<p>La vista Detalles muestra información sobre Actividad, Compartir y Versión.</p>
-</dd>
-</dl>
-<figure class="align-default">
-<img alt="Pantalla de detalles." src="../../_images/files_page-4.png" />
-</figure>
-<p>El icono del engranaje <strong>Ajustes</strong> en la esquina inferior derecha le permite mostrar u ocultar archivos ocultos en tu interfaz web de Nextcloud. Estos también se llaman archivos-punto, porque su nombre empieza por un punto, por ejemplo <code class="docutils literal notranslate"><span class="pre">.mailfile</span></code>. El punto indica a tu sistema operativo que deben ser ocultados en exploradores de archivos, salvo que elijas mostrarlos. Normalmente son archivos de configuración, así que la opción de ocultarlos reduce el desorden.</p>
-<figure class="align-default">
-<img alt="Mostrando u ocultando archivos ocultos." src="../../_images/hidden_files.png" />
+<img alt="The details sidebar showing file information and tabs." src="../../_images/files_page-4.png" />
 </figure>
 </section>
-<section id="previewing-files">
-<h2>Previsualizar archivos<a class="headerlink" href="#previewing-files" title="Link to this heading"></a></h2>
-<p>Usted puede visualizar archivos de texto sin comprimir, archivos OpenDocument, vídeos e imágenes en los visores incrustados de Nextcloud al hacer clic en el nombre de archivo. Es posible que haya otros tipos de archivo que pueda visualizar si su administrador de Nextcloud los ha habilitado. Si Nextcloud no puede mostrar un archivo, empezará el proceso de descargar el archivo a su ordenador.</p>
-</section>
-<section id="navigating-inside-your-nextcloud">
-<h2>Navegar dentro de su Nextcloud<a class="headerlink" href="#navigating-inside-your-nextcloud" title="Link to this heading"></a></h2>
-<p>Navigating through folders in Nextcloud is as simple as clicking on a folder to
-open it and using the back button on your browser to move to a previous level.
-Nextcloud also provides a navigation bar at the top of the Files page for quick
-navigation.</p>
-</section>
-<section id="sharing-status-icons">
-<h2>Iconos del estado de compartición<a class="headerlink" href="#sharing-status-icons" title="Link to this heading"></a></h2>
-<p>Toda carpeta que se haya compartido queda marcada con el icono <code class="docutils literal notranslate"><span class="pre">Compartido</span></code>. Los enlaces públicos quedan marcados con un par de eslabones de una cadena. Las carpetas no compartidas quedan sin marcar:</p>
+<section id="activity-and-comments">
+<h2>Activity and comments<a class="headerlink" href="#activity-and-comments" title="Link to this heading"></a></h2>
+<p>The <strong>Activity</strong> tab in the details sidebar shows a chronological log of
+changes to the file — uploads, edits, shares, and comments. You can leave
+a comment directly in this tab; comments are visible to everyone who has
+access to the file:</p>
 <figure class="align-default">
-<img alt="Compartir íconos de estado." src="../../_images/files_page-5.png" />
+<img alt="The Activity tab showing file history and a comment field." src="../../_images/file_menu_comments_2.png" />
 </figure>
 </section>
-<section id="creating-or-uploading-files-and-directories">
-<h2>Crear o subir archivos y carpetas<a class="headerlink" href="#creating-or-uploading-files-and-directories" title="Link to this heading"></a></h2>
-<p>Suba o cree nuevos archivos o carpetas directamente en una carpeta de Nextcloud haciendo clic en el botón <em>Nuevo</em> de la aplicación Archivos:</p>
+<section id="searching-and-filtering">
+<h2>Searching and filtering<a class="headerlink" href="#searching-and-filtering" title="Link to this heading"></a></h2>
+<p>Use the search bar at the top of the page to find files by name across all your
+files, or type in the search field inside the left sidebar to filter the current
+view:</p>
 <figure class="align-default">
-<img alt="El nuevo menú de archivo/carpeta/subida." src="../../_images/files_page-6.png" />
+<img alt="The search field with a search term entered." src="../../_images/files_page-7.png" />
 </figure>
-<p>El botón <em>Nuevo</em> ofrece las siguientes opciones:</p>
+</section>
+<section id="grid-view">
+<h2>Grid view<a class="headerlink" href="#grid-view" title="Link to this heading"></a></h2>
+<p>The Files app defaults to a list view. Click the grid toggle button at the
+top-right of the file list to switch to a thumbnail grid, which is useful for
+browsing image folders:</p>
+<figure class="align-default">
+<img alt="Files displayed in thumbnail grid view." src="../../_images/files_page-8.png" />
+</figure>
+<p>Click the button again to return to the list view.</p>
+</section>
+<section id="uploading-and-creating-files">
+<h2>Uploading and creating files<a class="headerlink" href="#uploading-and-creating-files" title="Link to this heading"></a></h2>
+<p>Click the <strong>+</strong> button near the top of the file list to upload files from your
+computer or create new items in the current folder:</p>
+<figure class="align-default">
+<img alt="The New file and upload menu." src="../../_images/files_page-1.png" />
+</figure>
+<p>The menu offers the following options:</p>
 <dl class="simple">
-<dt>Flecha hacia arriba</dt><dd><p>Suba archivos de su ordenador a Nextcloud. También puede subir archivos arrastrándolos desde su explorador de archivos.</p>
+<dt>Upload file</dt><dd><p>Opens a file picker to upload one or more files from your computer. You can
+also drag and drop files directly from your file manager onto the file list.</p>
 </dd>
-<dt>Nuevo documento de texto</dt><dd><p>Crea un nuevo documento de texto y lo añade a la carpeta actual.</p>
+<dt>Upload folder</dt><dd><p>Uploads an entire folder, preserving its structure.</p>
 </dd>
-<dt>Carpeta</dt><dd><p>Crea una nueva carpeta en la carpeta actual.</p>
+<dt>New folder</dt><dd><p>Creates a new empty folder in the current location.</p>
+</dd>
+<dt>New document / New spreadsheet / New presentation</dt><dd><p>Creates a new file using the built-in Nextcloud Text or Office editor,
+if enabled by your administrator.</p>
 </dd>
 </dl>
 </section>
 <section id="selecting-files-or-folders">
 <h2>Seleccionar archivos o carpetas<a class="headerlink" href="#selecting-files-or-folders" title="Link to this heading"></a></h2>
-<p>Puede seleccionar uno o más archivos o carpetas mediante sus casillas. Para seleccionar todos los archivos de la carpeta actual, seleccione la casilla situada encima de la lista de archivos.</p>
-<p>Cuando seleccione múltiples archivos, puede borrarlos o descargarlos como un archivo ZIP empleando los botones <code class="docutils literal notranslate"><span class="pre">Borrar</span></code> o <code class="docutils literal notranslate"><span class="pre">Descargar</span></code> que aparecen en la parte superior.</p>
+<p>Click the checkbox to the left of a file or folder to select it. To select all
+items in the current folder, click the checkbox in the column header.</p>
+<p>With one or more items selected, action buttons appear at the top of the list.
+You can delete or download all selected items at once. Downloading multiple items
+produces a ZIP archive.</p>
+<figure class="align-default">
+<img alt="Multiple files selected with the bulk action bar visible." src="../../_images/files_page-9.png" />
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Si el botón <code class="docutils literal notranslate"><span class="pre">Descargar</span></code> no aparece, el administrador ha deshabilitado esta característica.</p>
+<p>If the <strong>Download</strong> button is not visible, your administrator has
+disabled this feature.</p>
 </div>
 </section>
-<section id="filtering-the-files-view">
-<h2>Filtrar la vista de archivos<a class="headerlink" href="#filtering-the-files-view" title="Link to this heading"></a></h2>
-<p>La columna lateral izquierda de la página Archivos contiene varios filtros para ordenar y administrar sus archivos rápidamente.</p>
-<dl class="simple">
-<dt>Todos los archivos</dt><dd><p>La vista por defecto; muestra todos los archivos a los que tiene acceso.</p>
-</dd>
-<dt>Favoritos</dt><dd><p>Archivos o carpetas marcados con la estrella amarilla.</p>
-</dd>
-<dt>Compartido conmigo</dt><dd><p>Muestra todos los archivos compartidos con usted por otro usuario o grupo.</p>
-</dd>
-<dt>Compartido con otros</dt><dd><p>Muestra todos los archivos que ha compartido con otros usuarios o grupos.</p>
-</dd>
-<dt>Compartido por enlace</dt><dd><p>Muestra todos los archivos que usted ha compartido vía enlace público.</p>
-</dd>
-<dt>Almacenamiento externo (opcional)</dt><dd><p>Archivos a los que tiene acceso en dispositivos de almacenamiento externo y servicios como Amazon S3, SMB/CIFS, FTP…</p>
-</dd>
-</dl>
+<section id="sharing-status-icons">
+<h2>Iconos del estado de compartición<a class="headerlink" href="#sharing-status-icons" title="Link to this heading"></a></h2>
+<p>Folders and files that have been shared display a <strong>Shared</strong> badge on their
+thumbnail or icon. Items shared via a public link also show a chain-link icon.
+Items that are not shared have no additional indicator.</p>
+<figure class="align-default">
+<img alt="File list showing a shared folder, a public-link-shared file, and unshared items." src="../../_images/files_sharing_status.png" />
+</figure>
+<p>See <a class="reference internal" href="sharing.html"><span class="doc">Compartir archivos</span></a> for instructions on creating and managing shares.</p>
 </section>
 <section id="moving-files">
 <h2>Mover archivos<a class="headerlink" href="#moving-files" title="Link to this heading"></a></h2>
-<p>Usted puede mover archivos y carpetas al arrastrarlos y dejarlos caer en cualquier directorio.</p>
+<p>Drag any file or folder and drop it onto a destination folder to move it.
+You can also use <strong>Move or copy</strong> from the three-dot action menu to move or copy
+items to a folder you choose from a picker dialog.</p>
 </section>
-<section id="creating-or-connecting-to-a-federation-share-link">
-<h2>Crear o conectarse con un enlace compartido de federación.<a class="headerlink" href="#creating-or-connecting-to-a-federation-share-link" title="Link to this heading"></a></h2>
-<p>La compartición de nube federada le permite montar archivos compartidos por otros servidores de Nextcloud, y administrarlos como un archivo compartido local. Véase <a class="reference internal" href="federated_cloud_sharing.html"><span class="doc">Usar la compartición de archivos en federación</span></a> para aprender cómo crear y conectarse a nuevos archivos compartidos federados.</p>
+<section id="previewing-files">
+<h2>Previsualizar archivos<a class="headerlink" href="#previewing-files" title="Link to this heading"></a></h2>
+<p>Click a file name to open a preview directly in Nextcloud. Supported formats
+include images, plain text, PDF, and — depending on your server — office
+documents and audio files. If Nextcloud cannot preview a file format, it
+downloads the file to your computer instead.</p>
+</section>
+<section id="video-player">
+<h2>Reproductor de vídeo<a class="headerlink" href="#video-player" title="Link to this heading"></a></h2>
+<p>You can play videos directly in Nextcloud by clicking the file. Playback
+depends on your browser and the video codec. See
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility">MDN: Supported media formats</a>
+for a compatibility reference.</p>
+</section>
+<section id="connecting-to-a-federation-share">
+<h2>Connecting to a Federation Share<a class="headerlink" href="#connecting-to-a-federation-share" title="Link to this heading"></a></h2>
+<p>Federated Cloud Sharing lets you mount file shares from remote Nextcloud
+servers and manage them just like local shares. See
+<a class="reference internal" href="federated_cloud_sharing.html"><span class="doc">Usar la compartición de archivos en federación</span></a> to learn how to create and connect to
+Federated Cloud shares.</p>
 </section>
 </section>
 

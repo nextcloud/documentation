@@ -64,18 +64,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud的Web界面</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">文件及同步</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">使用Nextcloud的Web界面访问您的文件</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#tagging-files">添加标签</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#comments">评论</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#video-player">视频播放器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigating-your-files">Navigating your files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#file-controls">文件控制。</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#previewing-files">预览文件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#navigating-inside-your-nextcloud">您在Nextcloud中的导航</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sharing-status-icons">共享状态图标</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-or-uploading-files-and-directories">创建或上传文件和目录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#details-sidebar">Details sidebar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#activity-and-comments">Activity and comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#searching-and-filtering">Searching and filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#grid-view">Grid view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uploading-and-creating-files">Uploading and creating files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#selecting-files-or-folders">选择文件或文件夹</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#filtering-the-files-view">筛选文件视图</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-status-icons">共享状态图标</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#moving-files">移动文件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-or-connecting-to-a-federation-share-link">创建或连接到联邦共享链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#previewing-files">预览文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#video-player">视频播放器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connecting-to-a-federation-share">Connecting to a Federation Share</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Accessing Nextcloud files using WebDAV</a></li>
@@ -133,128 +134,164 @@
 <h1>使用Nextcloud的Web界面访问您的文件<a class="headerlink" href="#accessing-your-files-using-the-nextcloud-web-interface" title="Link to this heading"></a></h1>
 <p>您可以通过Nextcloud的Web界面访问您在Nextcloud上的文件，并且可以创建、预览、编辑、删除、分享或以其他方式分享文件。您的Nextcloud管理员可以选择禁用其中的某些功能，因此如果您的Nextcloud上缺少其中的一些功能，请询问您的服务器管理员。</p>
 <figure class="align-default">
-<img alt="文件查看界面。" src="../../_images/users-files.png" />
+<img alt="The Files app showing a list of files and folders." src="../../_images/users-files.png" />
 </figure>
-<section id="tagging-files">
-<h2>添加标签<a class="headerlink" href="#tagging-files" title="Link to this heading"></a></h2>
-<p>您可以为文件分配标签。要创建标签，请打开文件到详细视图。然后输入您的标签。要输入多个标签，在创建每个标签后按回车键。所有标签都是系统标签，并且被您的Nextcloud服务器上的所有用户共享。</p>
+<section id="navigating-your-files">
+<h2>Navigating your files<a class="headerlink" href="#navigating-your-files" title="Link to this heading"></a></h2>
+<p>The left sidebar lets you switch between different views of your files. Click a
+folder name in the file list to open it, and use your browser's back button or
+the breadcrumb bar at the top of the file list to return to a previous level.</p>
 <figure class="align-default">
-<img alt="创建文件标签" src="../../_images/files_page-7.png" />
+<img alt="The Files app left navigation panel." src="../../_images/files_page-5.png" />
 </figure>
-<p>您可以为文件分配标签。要创建标签，请将文件打开到“详情”视图。然后输入您的标签。如果要输入多个标签，创建每个标签后按回车键。所有标签都是系统标签，并且在您的Nextcloud服务器上由所有用户共享。</p>
+<p>The sidebar contains the following entries:</p>
+<dl class="simple">
+<dt>所有文件</dt><dd><p>The default view, showing every file and folder you have access to.</p>
+</dd>
+<dt>Recent</dt><dd><p>Files you have viewed or modified recently.</p>
+</dd>
+<dt>喜爱</dt><dd><p>Files and folders you have starred.</p>
+</dd>
+<dt>Shares</dt><dd><p>Files shared with you, by you, or via a public link — all in one view.</p>
+</dd>
+<dt>Tags</dt><dd><p>Browse files by system tag.</p>
+</dd>
+<dt>Deleted files</dt><dd><p>Files you have deleted that are still recoverable from the trash bin.</p>
+</dd>
+</dl>
+<p>When you navigate into a folder, a breadcrumb trail appears at the top of the
+file list so you can jump back to any parent folder with a single click:</p>
 <figure class="align-default">
-<img alt="查看文件标签。" src="../../_images/files_page-8.png" />
-</figure>
-</section>
-<section id="comments">
-<h2>评论<a class="headerlink" href="#comments" title="Link to this heading"></a></h2>
-<p>在详情页面中，您可以在任何文件或文件夹下评论和阅读评论，这些评论对所有访问过该文件的人均是可见的。</p>
-<figure class="align-default">
-<img alt="创建和查看评论。" src="../../_images/file_menu_comments_2.png" />
-</figure>
-</section>
-<section id="video-player">
-<h2>视频播放器<a class="headerlink" href="#video-player" title="Link to this heading"></a></h2>
-<p>您可以通过简单地点击文件在Nextcloud中使用“视频播放器”应用程序播放视频。Nextcloud原生视频播放器的视频流功能取决于您的Web浏览器和视频格式。如果您的Nextcloud管理员已启用视频流功能，但它在您的Web浏览器中无法工作，可能是浏览器的问题。请访问 <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility">https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility</a> 查看Web浏览器支持的多媒体格式。</p>
-<figure class="align-default">
-<img alt="观看视频。" src="../../_images/video_player_2.png" />
+<img alt="Breadcrumb navigation inside a subfolder." src="../../_images/files_page-6.png" />
 </figure>
 </section>
 <section id="file-controls">
 <h2>文件控制。<a class="headerlink" href="#file-controls" title="Link to this heading"></a></h2>
-<p>Nextcloud can display thumbnail previews for various file types, such as images, audio files, and text files.
-The specific types supported are up to the server administrator.
-Hover your cursor over a file or folder to expose the controls for the following operations:</p>
-<dl>
-<dt>喜爱</dt><dd><p>点击文件图标左侧的星形标记，将其标记为收藏：</p>
+<p>Nextcloud displays thumbnail previews for images, text files, and other
+supported types — the exact list depends on your server configuration.</p>
+<p>Each file and folder row has a three-dot action menu button. Click it to
+rename, move, copy, download, delete, or mark the item as a favorite.
+Files that have been marked as a favorite display a star icon:</p>
 <figure class="align-default">
-<img alt="标记喜爱的文件" src="../../_images/files_page-1.png" />
+<img alt="A file row with the actions menu open." src="../../_images/files_page-3.png" />
 </figure>
-<p>您还可以使用左侧边栏上的“收藏”过滤器快速找到所有的收藏项。</p>
-</dd>
-<dt>溢出菜单</dt><dd><p>“更多选项”菜单（三个点）显示文件详情，并允许您重命名、下载或删除文件：</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>You can quickly find all your favorites using the <strong>Favorites</strong>
+entry in the left sidebar.</p>
+</div>
+</section>
+<section id="details-sidebar">
+<h2>Details sidebar<a class="headerlink" href="#details-sidebar" title="Link to this heading"></a></h2>
+<p>Select <strong>Details</strong> from the three-dot action menu to open the details sidebar. The sidebar
+shows information about the selected file and provides tabbed access to its
+activity history, sharing options, and version history:</p>
 <figure class="align-default">
-<img alt="溢出菜单" src="../../_images/files_page-3.png" />
-</figure>
-<p>“详情”视图显示“活动”、“共享”和“版本”信息：</p>
-</dd>
-</dl>
-<figure class="align-default">
-<img alt="详情界面。" src="../../_images/files_page-4.png" />
-</figure>
-<p>位于左下角的**设置**齿轮图标允许您在Nextcloud Web界面中显示或隐藏隐藏的文件。这些也被称为点文件，因为它们以点为前缀，例如``.mailfile``。这个点告诉您的操作系统在文件浏览器中隐藏这些文件，除非您选择显示它们。通常这些都是配置文件，所以隐藏它们可以减少混乱。</p>
-<figure class="align-default">
-<img alt="隐藏文件/显示隐藏的文件" src="../../_images/hidden_files.png" />
+<img alt="The details sidebar showing file information and tabs." src="../../_images/files_page-4.png" />
 </figure>
 </section>
-<section id="previewing-files">
-<h2>预览文件<a class="headerlink" href="#previewing-files" title="Link to this heading"></a></h2>
-<p>您可以通过点击文件名在Nextcloud嵌入的查看器中显示未压缩的文本文件、OpenDocument文件、视频和图像文件。如果您的Nextcloud管理员启用了其他文件类型，您可能还可以预览它们。如果Nextcloud无法显示某个文件，它将启动下载过程并将文件下载到您的计算机。</p>
-</section>
-<section id="navigating-inside-your-nextcloud">
-<h2>您在Nextcloud中的导航<a class="headerlink" href="#navigating-inside-your-nextcloud" title="Link to this heading"></a></h2>
-<p>Navigating through folders in Nextcloud is as simple as clicking on a folder to
-open it and using the back button on your browser to move to a previous level.
-Nextcloud also provides a navigation bar at the top of the Files page for quick
-navigation.</p>
-</section>
-<section id="sharing-status-icons">
-<h2>共享状态图标<a class="headerlink" href="#sharing-status-icons" title="Link to this heading"></a></h2>
-<p>任何已共享的文件夹都会被标记为``共享``的覆盖图标。公开链接共享会被标记为链条图标。未共享的文件夹不会被标记：</p>
+<section id="activity-and-comments">
+<h2>Activity and comments<a class="headerlink" href="#activity-and-comments" title="Link to this heading"></a></h2>
+<p>The <strong>Activity</strong> tab in the details sidebar shows a chronological log of
+changes to the file — uploads, edits, shares, and comments. You can leave
+a comment directly in this tab; comments are visible to everyone who has
+access to the file:</p>
 <figure class="align-default">
-<img alt="共享状态图标。" src="../../_images/files_page-5.png" />
+<img alt="The Activity tab showing file history and a comment field." src="../../_images/file_menu_comments_2.png" />
 </figure>
 </section>
-<section id="creating-or-uploading-files-and-directories">
-<h2>创建或上传文件和目录<a class="headerlink" href="#creating-or-uploading-files-and-directories" title="Link to this heading"></a></h2>
-<p>在Nextcloud文件夹中直接点击“文件”应用的*新建*按钮，可以上传或创建新的文件或文件夹：</p>
+<section id="searching-and-filtering">
+<h2>Searching and filtering<a class="headerlink" href="#searching-and-filtering" title="Link to this heading"></a></h2>
+<p>Use the search bar at the top of the page to find files by name across all your
+files, or type in the search field inside the left sidebar to filter the current
+view:</p>
 <figure class="align-default">
-<img alt="新建文件/文件夹/上传菜单。" src="../../_images/files_page-6.png" />
+<img alt="The search field with a search term entered." src="../../_images/files_page-7.png" />
 </figure>
-<p><a href="#id1"><span class="problematic" id="id2">*</span></a>新建*按钮提供以下选项：</p>
+</section>
+<section id="grid-view">
+<h2>Grid view<a class="headerlink" href="#grid-view" title="Link to this heading"></a></h2>
+<p>The Files app defaults to a list view. Click the grid toggle button at the
+top-right of the file list to switch to a thumbnail grid, which is useful for
+browsing image folders:</p>
+<figure class="align-default">
+<img alt="Files displayed in thumbnail grid view." src="../../_images/files_page-8.png" />
+</figure>
+<p>Click the button again to return to the list view.</p>
+</section>
+<section id="uploading-and-creating-files">
+<h2>Uploading and creating files<a class="headerlink" href="#uploading-and-creating-files" title="Link to this heading"></a></h2>
+<p>Click the <strong>+</strong> button near the top of the file list to upload files from your
+computer or create new items in the current folder:</p>
+<figure class="align-default">
+<img alt="The New file and upload menu." src="../../_images/files_page-1.png" />
+</figure>
+<p>The menu offers the following options:</p>
 <dl class="simple">
-<dt>向上箭头</dt><dd><p>从您的计算机上传文件到Nextcloud。您还可以通过从文件管理器中拖放文件来上传文件。</p>
+<dt>Upload file</dt><dd><p>Opens a file picker to upload one or more files from your computer. You can
+also drag and drop files directly from your file manager onto the file list.</p>
 </dd>
-<dt>文本文件</dt><dd><p>创建一个新的文本文件并将文件添加到您当前的文件夹中。</p>
+<dt>Upload folder</dt><dd><p>Uploads an entire folder, preserving its structure.</p>
 </dd>
-<dt>文件夹</dt><dd><p>在当前文件夹中创建一个新文件夹。</p>
+<dt>New folder</dt><dd><p>Creates a new empty folder in the current location.</p>
+</dd>
+<dt>New document / New spreadsheet / New presentation</dt><dd><p>Creates a new file using the built-in Nextcloud Text or Office editor,
+if enabled by your administrator.</p>
 </dd>
 </dl>
 </section>
 <section id="selecting-files-or-folders">
 <h2>选择文件或文件夹<a class="headerlink" href="#selecting-files-or-folders" title="Link to this heading"></a></h2>
-<p>您可以通过单击其复选框来选择一个或多个文件或文件夹。要选择当前目录中的所有文件，请单击位于文件列表顶部的复选框。</p>
-<p>当您选择多个文件时，您可以使用出现在顶部的``删除``或``下载``按钮来删除它们或将它们下载为ZIP文件。</p>
+<p>Click the checkbox to the left of a file or folder to select it. To select all
+items in the current folder, click the checkbox in the column header.</p>
+<p>With one or more items selected, action buttons appear at the top of the list.
+You can delete or download all selected items at once. Downloading multiple items
+produces a ZIP archive.</p>
+<figure class="align-default">
+<img alt="Multiple files selected with the bulk action bar visible." src="../../_images/files_page-9.png" />
+</figure>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>如果``下载``按钮不可见，则是管理员已经禁用了这个功能。</p>
+<p>If the <strong>Download</strong> button is not visible, your administrator has
+disabled this feature.</p>
 </div>
 </section>
-<section id="filtering-the-files-view">
-<h2>筛选文件视图<a class="headerlink" href="#filtering-the-files-view" title="Link to this heading"></a></h2>
-<p>在文件页面的左侧边栏中包含了多个筛选器，可以快速对文件进行排序和管理。</p>
-<dl class="simple">
-<dt>所有文件</dt><dd><p>默认视图；显示您可以访问的所有文件。</p>
-</dd>
-<dt>喜爱</dt><dd><p>带有黄色星星标记的文件或文件夹。</p>
-</dd>
-<dt>与您共享的内容。</dt><dd><p>显示其他用户或组与您共享的所有文件。</p>
-</dd>
-<dt>与他人共享的文件或文件夹。</dt><dd><p>显示您与其他用户或组共享的所有文件。</p>
-</dd>
-<dt>通过链接共享的文件。</dt><dd><p>显示您通过公共链接共享的所有文件。</p>
-</dd>
-<dt>外部存储（可选）</dt><dd><p>您可以访问的外部存储设备和服务上的文件，例如Amazon S3、SMB/CIFS、FTP等。</p>
-</dd>
-</dl>
+<section id="sharing-status-icons">
+<h2>共享状态图标<a class="headerlink" href="#sharing-status-icons" title="Link to this heading"></a></h2>
+<p>Folders and files that have been shared display a <strong>Shared</strong> badge on their
+thumbnail or icon. Items shared via a public link also show a chain-link icon.
+Items that are not shared have no additional indicator.</p>
+<figure class="align-default">
+<img alt="File list showing a shared folder, a public-link-shared file, and unshared items." src="../../_images/files_sharing_status.png" />
+</figure>
+<p>See <a class="reference internal" href="sharing.html"><span class="doc">文件共享</span></a> for instructions on creating and managing shares.</p>
 </section>
 <section id="moving-files">
 <h2>移动文件<a class="headerlink" href="#moving-files" title="Link to this heading"></a></h2>
-<p>您可以通过将文件和文件夹拖放到任何目录中来移动它们。</p>
+<p>Drag any file or folder and drop it onto a destination folder to move it.
+You can also use <strong>Move or copy</strong> from the three-dot action menu to move or copy
+items to a folder you choose from a picker dialog.</p>
 </section>
-<section id="creating-or-connecting-to-a-federation-share-link">
-<h2>创建或连接到联邦共享链接<a class="headerlink" href="#creating-or-connecting-to-a-federation-share-link" title="Link to this heading"></a></h2>
-<p>联邦云共享允许您挂载来自远程Nextcloud服务器的文件共享，并像本地共享一样管理它们。请参阅 <a class="reference internal" href="federated_cloud_sharing.html"><span class="doc">Using Federation Shares</span></a> 以了解如何创建和连接到新的联邦云共享。</p>
+<section id="previewing-files">
+<h2>预览文件<a class="headerlink" href="#previewing-files" title="Link to this heading"></a></h2>
+<p>Click a file name to open a preview directly in Nextcloud. Supported formats
+include images, plain text, PDF, and — depending on your server — office
+documents and audio files. If Nextcloud cannot preview a file format, it
+downloads the file to your computer instead.</p>
+</section>
+<section id="video-player">
+<h2>视频播放器<a class="headerlink" href="#video-player" title="Link to this heading"></a></h2>
+<p>You can play videos directly in Nextcloud by clicking the file. Playback
+depends on your browser and the video codec. See
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility">MDN: Supported media formats</a>
+for a compatibility reference.</p>
+</section>
+<section id="connecting-to-a-federation-share">
+<h2>Connecting to a Federation Share<a class="headerlink" href="#connecting-to-a-federation-share" title="Link to this heading"></a></h2>
+<p>Federated Cloud Sharing lets you mount file shares from remote Nextcloud
+servers and manage them just like local shares. See
+<a class="reference internal" href="federated_cloud_sharing.html"><span class="doc">Using Federation Shares</span></a> to learn how to create and connect to
+Federated Cloud shares.</p>
 </section>
 </section>
 
