@@ -20,6 +20,9 @@ New deprecations
 
 .. todo:: This page needs a section for every new deprecation.
 
+- The old `OCA\\Files_External::loadAdditionalBackends` generic events was deprecated and is replaced
+  with a typed event ``OCA\Files_External\Event\LoadAdditionalBackendEvent``.
+
 Older deprecations
 ------------------
 

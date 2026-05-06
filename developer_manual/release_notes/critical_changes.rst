@@ -47,6 +47,14 @@ Removed front-end APIs and libraries
   - ``OC.Files.Client`` as it was extending the ``Backbone``.
   - ``Handlebars`` was deprecated and scheduled for removal since Nextcloud 19.
 
+Behavior change in the back-end APIs
+------------------------------------
+
+- The hook system (``OC_Hooks::connect`` and ``\OCP\Utils::connectHook``) is
+  now only accepting a limited amount of signals actually emitted by the server.
+  As a further steep toward full removal of the hook system.
+  If you use custom signals in your apps, create custom ``\OCP\EventDispatcher\Event`` instead.
+
 
 Removed back-end APIs
 ---------------------
@@ -64,6 +72,7 @@ Removed back-end APIs
   - ``\OCP\AppFramework\Http\StrictContentSecurityPolicy``
   - ``\OCP\AppFramework\Http\StrictEvalContentSecurityPolicy``
   - ``\OCP\AppFramework\Http\StrictInlineContentSecurityPolicy``
+- Various hooks which were deprecated since Nextcloud 21 were removed. This includes ``preCreateUser``, ``postCreateUser``, ``preDelete``, ``postDelete``, ``preSetPassword``, ``postSetPassword``, ``preLogin``, ``postLogin``, ``preRememberedLogin``, ``postRememberedLogin``, ``logout``, ``changeUser`` from ``\OC\User``; ``pre_createUser``, ``post_createUser``, ``pre_deleteUser``, ``post_deleteUser``, ``pre_setPassword``, ``post_setPassword``, ``pre_login``, ``logout``, ``postLogout``, ``changeUser`` from ``OC_User``; ``postDelete`` from ``\OC\Group``. These were replaced by proper events.
 
 
 Unified sharing
