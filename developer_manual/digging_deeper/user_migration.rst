@@ -6,7 +6,12 @@ The `User migration app <https://apps.nextcloud.com/apps/user_migration>`_ may
 be installed to allow migration of user data.
 
 App developers can integrate into User migration and provide ways to export
-and import the app data of a user.
+and import the app data of a user. Please note that this should not be used
+as a backup and restore utility, as app developers should avoid deletion of
+existing user data during migration. For further information, check out
+`this discussion <https://github.com/nextcloud/user_migration/discussions/1090>`_
+as well as
+`this issue <https://github.com/nextcloud/user_migration/issues/1096>`_.
 
 Register a migrator
 -------------------
@@ -14,6 +19,11 @@ Register a migrator
 A migrator is represented by a class implementing the
 ``OCP\\UserMigration\\IMigrator`` interface. This class is instantiated
 whenever a user export or import begins.
+It should also implement ``OCP\UserMigration\ISizeEstimationMigrator`` if possible,
+and return a size estimation in method ``getEstimatedExportSize``.
+You can use the trait ``OCP\UserMigration\TMigratorBasicVersionHandling`` for basic version handling,
+in this case the version is stored in $this->version (defaults to 1), and importing from a newer version is forbidden.
+If you prefer you can implement ``getVersion`` and ``canImport`` instead.
 
 .. code-block:: php
 
@@ -39,20 +49,14 @@ whenever a user export or import begins.
   class MyAppMigrator implements IMigrator, ISizeEstimationMigrator {
     use TMigratorBasicVersionHandling;
 
-    private IMyAppManager $myAppManager;
-
-    private IL10N $l10n;
-
     private const PATH_ROOT = Application::APP_ID . '/';
 
     private const PATH_MYAPP_FILE = MyAppMigrator::PATH_ROOT . 'myapp.json';
 
     public function __construct(
-      IMyAppManager $myAppManager,
-      IL10N $l10n
+      private IMyAppManager $myAppManager,
+      private IL10N $l10n,
     ) {
-      $this->myAppManager = $myAppManager;
-      $this->l10n = $l10n;
     }
 
     /**
@@ -98,9 +102,8 @@ whenever a user export or import begins.
 
       $output->writeln('Importing myapp information from ' . MyAppMigrator::PATH_MYAPP_FILE . '…');
 
-      $data = json_decode($importSource->getFileContents(MyAppMigrator::PATH_MYAPP_FILE), true, 512, JSON_THROW_ON_ERROR);
-
       try {
+        $data = json_decode($importSource->getFileContents(MyAppMigrator::PATH_MYAPP_FILE), true, 512, JSON_THROW_ON_ERROR);
         $this->myAppManager->setUserData($user, $data);
       } catch (Throwable $e) {
         throw new UserMigrationException('Could not import myapp information', 0, $e);

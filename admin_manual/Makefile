@@ -119,7 +119,11 @@ latexpdf:
 	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
 
 pdf:
-	$(SPHINXBUILD) -b pdf $(ALLSPHINXOPTS) $(BUILDDIR)/pdf
+	$(SPHINXBUILD) -b pdf $(ALLSPHINXOPTS) $(BUILDDIR)/pdf || exit 1
+	@if [ ! -s $(BUILDDIR)/pdf/*.pdf ]; then \
+		echo "Error: PDF files are empty or missing"; \
+		exit 1; \
+	fi
 	@echo
 	@echo "build finished. the text files are in $(BUILDDIR)/pdf."
 

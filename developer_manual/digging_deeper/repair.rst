@@ -1,3 +1,5 @@
+.. _migration-repair-steps:
+
 ============
 Repair steps
 ============
@@ -15,7 +17,7 @@ Creating a repair step
 
 A repair step is an implementation of the  ``OCP\Migration\IRepairStep`` interface.
 By convention these classes are placed in the **lib/Migration** directory.
-The following repairstep will log a message when executed.
+The following repair step will log a message when executed.
 
 .. code-block:: php
 
@@ -113,3 +115,22 @@ The following repair steps are available:
 * ``pre-migration`` This repair step will be executed just before the database is migrated during an update of the app.
 * ``post-migration`` This repair step will be executed just after the database is migrated during an update of the app.  This repair step will also be executed when running the ``occ maintenance:repair`` command
 * ``live-migration`` This repair step will be scheduled to be run in the background (e.g. using cron), therefore it is unpredictable when it will run. If the job isn't required right after the update of the app and the job would take a long time this is the best choice.
+
+Expensive repair steps
+----------------------
+
+Expensive repair steps are non-critical repair steps that might take a long time to execute.
+Non-critical means that they are not required to directly be executed during migration to have a working instance,
+but they might be required to have a fully working instance later on.
+
+Expensive repair steps are only executed when explicitly requested by the administrator
+when using the ``occ maintenance:repair`` command, by passing the ``--include-expensive`` flag.
+
+.. note:: Expensive repair steps can only be used for ``post-migration`` repair steps, as the other types are executed during (un-)installation of the app and therefore should not take a long time.
+
+Creating an expensive repair step
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Expensive repair steps are created the same way as normal repair steps as seen in the example above.
+But they have to implement the ``\OCP\Migration\IRepairStepExpensive`` interface
+instead of the ``\OCP\Migration\IRepairStep`` interface.

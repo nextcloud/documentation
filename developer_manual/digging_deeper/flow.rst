@@ -51,6 +51,6 @@ For the configuration component, We create a new JavaScript bundle ::
         color: '#dc5047'
     })
 
-In the ``RegisterOperationsEvent`` listener we need to registere the above JS bundle.
+In the ``RegisterOperationsEvent`` listener we need to register the above JS bundle.
 
 The ``OCA.WorkflowEngine.registerOperator`` function tells Nextcloud about your operation, along with the color, and the component that contains configuration specific to your flow.

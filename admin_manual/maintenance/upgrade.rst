@@ -8,7 +8,7 @@ Overview
 The approach used to upgrade your Nextcloud Server depends on your installation type. This
 manual mainly focuses on the methods that apply to an Archive based installation. If you installed
 using Snap, Docker, a pre-built VM, or a package management tool then refer to the installation
-and update instructions for that installation method for the most accurate upgrading inststructions
+and update instructions for that installation method for the most accurate upgrading instructions
 (generally located at the distribution point for the install method you chose).
 
 There are two ways to upgrade an Archive based Nextcloud Server deployment:

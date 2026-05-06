@@ -49,8 +49,8 @@ Known link preview providers
 * `Zammad integration <https://github.com/nextcloud/integration_zammad>`_: Links to Zammad tickets
 * `Reddit integration <https://github.com/nextcloud/integration_reddit>`_: Links to subreddits, publications and comments
 * `Mastodon integration <https://github.com/nextcloud/integration_mastodon>`_: Links to members and toots
-* `The Movie Database integration <https://github.com/julien-nc/integration_tmdb>`_: Links to people, movies and series
-* `OpenStreetMap integration <https://github.com/julien-nc/integration_openstreetmap>`_: Location links from OpenStreetMap, Google maps, Bing maps, Here maps and Duckduckgo maps
-* `Giphy integration <https://github.com/julien-nc/integration_giphy>`_: Links to GIFs
+* `The Movie Database integration <https://github.com/nextcloud/integration_tmdb>`_: Links to people, movies and series
+* `OpenStreetMap integration <https://github.com/nextcloud/integration_openstreetmap>`_: Location links from OpenStreetMap, Google maps, Bing maps, Here maps and Duckduckgo maps
+* `Giphy integration <https://github.com/nextcloud/integration_giphy>`_: Links to GIFs
 * `Notion integration <https://github.com/nextcloud/integration_notion>`_: Links to Notion documents
-* `Peertube integration <https://github.com/julien-nc/integration_peertube>`_: Links to videos
+* `Peertube integration <https://github.com/nextcloud/integration_peertube>`_: Links to videos

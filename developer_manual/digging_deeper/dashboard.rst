@@ -338,6 +338,7 @@ render the widget. Its constructor is:
   following example from the Talk app:
 
 .. figure:: ../images/talk-widget-half-empty-content.png
+   :alt: Talk dashboard widget showing half empty content state with a message displayed above a short item list
    :width: 40%
 
 Here is a full example of a widget that implements the `OCP\\Dashboard\\IAPIWidgetV2` interface:

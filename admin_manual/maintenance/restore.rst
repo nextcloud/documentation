@@ -10,8 +10,8 @@ restore:
 #. The database
 #. The theme directory
 
-.. note:: You must have both the database and data directory. You cannot
-   complete restoration unless you have both of these.
+.. note:: You must have the database, data directory, and configuration files.
+   You cannot complete restoration without all three.
 
 Restore folders
 ---------------

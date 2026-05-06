@@ -24,7 +24,7 @@ The process of checking, reproducing and closing invalid issues is called ‘bug
 2. Incomplete or duplicate bug reports or feature requests
 3. Irrelevant or wrong bug reports or feature requests
 
-The job of a bug triager is to identify the One’s for developers to look at, help remove, merge or improve any Two to a One and dismiss Three’s in a friendly and emphatic way.
+The job of a bug triager is to identify Category 1 issues for developers to look at, help remove, merge or improve any Category 2 issue to a Category 1, and dismiss Category 3 issues in a friendly and emphatic way.
 
 Triaging follows these steps:
 
@@ -68,6 +68,7 @@ Much content from https://community.kde.org/Guidelines_and_HOWTOs/Bug_triaging
 The goal of triaging is to have only useful bug reports for the developers. And you don't have to know much to be able to judge at least some bug reports to be less than useful. There are duplications, incomplete reports and so on. Here is the work flow for each bug:
 
 .. figure:: ../../images/triageworkflow.png
+   :alt: Bug triage workflow diagram showing steps to evaluate and categorize issue reports
    :scale: 50
 
 Let's go over each step.
