@@ -37,10 +37,8 @@ Shares
 Tags
   Browse files by system tag.
 
-You can play videos in Nextcloud with the Video Player app by simply clicking on
-the file. Video streaming by the native Nextcloud video player depends on your Web browser
-and the video format. If your Nextcloud administrator has enabled video
-streaming, and it doesn't work in your Web browser, it may be a browser issue. See https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility for supported multimedia formats in Web browsers.
+Deleted files
+  Files you have deleted that are still recoverable from the trash bin.
 
 When you navigate into a folder, a breadcrumb trail appears at the top of the
 file list so you can jump back to any parent folder with a single click:
@@ -58,15 +56,14 @@ Each file and folder row has a three-dot action menu button. Click it to
 rename, move, copy, download, delete, or mark the item as a favorite.
 Files that have been marked as a favorite display a star icon:
 
-  .. figure:: ../images/files_page-1.png
-   :alt: Marking Favorite files.
+.. figure:: ../images/files_page-3.png
+   :alt: A file row with the actions menu open.
 
 .. note:: You can quickly find all your favorites using the **Favorites**
    entry in the left sidebar.
 
-Overflow Menu
-  The Overflow menu (three dots) displays file details, and allows you to
-  rename, download, or delete files:
+Details sidebar
+---------------
 
 Select **Details** from the three-dot action menu to open the details sidebar. The sidebar
 shows information about the selected file and provides tabbed access to its
