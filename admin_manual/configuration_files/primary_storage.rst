@@ -172,7 +172,7 @@ Minimum required parameters are:
 
 .. note:: You will *probably* need to specify additional parameters beyond these, unless the default
           values (see below) exactly match your situation. In particular, your :code:`region` (if Amazon
-      hosted) or :code:`hostname` (if non-Amazon hosted).
+          hosted) or :code:`hostname` (if non-Amazon hosted).
 
 Optional parameters most commonly needing adjustment (and their defaults values if left
 unconfigured):
