@@ -52,7 +52,7 @@ environments except during isolated troubleshooting.
 Caching
 -------
 
-Caching improves performance by storing data, code, and other objects in memory. Memory caching is not enabled by default because it requires optional extensions (such as APCu) and/or system components (e.g., Redis). Although these add-ons are generally not challenging to install and activate—at least in single-server deployments—you must install them before enabling their use in Nextcloud. See :doc:../configuration_server/caching_configuration for guidance.
+Caching improves performance by storing data, code, and other objects in memory. Memory caching is not enabled by default because it requires optional extensions (such as APCu) and/or system components (e.g., Redis). Although these add-ons are generally not challenging to install and activate—at least in single-server deployments—you must install them before enabling their use in Nextcloud. See :doc:`../configuration_server/caching_configuration` for guidance.
 
 Compression
 -----------
