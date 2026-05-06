@@ -2,20 +2,23 @@
 LDAP user cleanup
 =================
 
-LDAP User Cleanup is a new feature in the ``LDAP user and group backend`` 
-application. LDAP User Cleanup is a background process that automatically 
-searches the Nextcloud LDAP mappings table, and verifies if the LDAP users are 
-still available. Any users that are not available are marked as ``deleted`` in 
-the ``oc_preferences`` database table. Then you can run a command to display 
-this table, displaying only the users marked as ``deleted``, and then you have 
-the option of removing their data from your Nextcloud data directory.
+Overview
+--------
 
-These items are removed upon cleanup:
+LDAP User Cleanup is a feature in the Nextcloud LDAP application. LDAP User Cleanup periodically and automatically runs in the background, checking the Nextcloud LDAP user mappings and verifying if mapped users are still available in your LDAP directory. Any accounts that are no longer found in LDAP are **marked for deletion** within Nextcloud—this prevents login for those users but does not immediately remove their data.
 
-* Local Nextcloud group assignments
-* User preferences (DB table ``oc_preferences``)
-* User's Nextcloud home folder
-* User's corresponding entry in ``oc_storages``
+.. note::
+
+   LDAP User Cleanup does *not* immediately delete user accounts or data. When users are no longer found in LDAP, their accounts are **marked for deletion** within Nextcloud. At this stage, all account data—including files, folders, preferences, and group memberships—remains in place. The user is simply prevented from logging in.
+
+   Actual removal of user data occurs only when you manually delete the account (with ``occ user:delete [username]``). 
+
+   Marking for deletion provides a safe review step for administrators prior to any irreversible action.
+
+How LDAP User Cleanup Works
+---------------------------
+
+When a user mapped in Nextcloud can no longer be found in the LDAP directory, their account is automatically marked for deletion by the cleanup job. This disables their login, but all files and account data remain present.
 
 There are two prerequisites for LDAP User Cleanup to operate:
 
@@ -28,31 +31,28 @@ There are two prerequisites for LDAP User Cleanup to operate:
    server is not marked as ``deleted``.
    
 The background process examines 50 users at a time, and runs at the interval you 
-configured with ``ldapUserCleanupInterval``. For example, if you have 200 LDAP 
+configure with ``ldapUserCleanupInterval``. 
+
+For example, if you have 200 LDAP 
 users and your ``ldapUserCleanupInterval`` is 20 minutes, the process will 
 examine the first 50 users, then 20 minutes later the next 50 users, and 20 
 minutes later the next 50, and so on.
 
-The amount of users to check can be set to a custom value via occ command. The
+The amount of users to check can be set to a custom value via OCC. The
 following example sets it to 300:
 
-``sudo -E -u www-data php occ config:app:set --value=300 user_ldap cleanUpJobChunkSize``
+``occ config:app:set --value=300 user_ldap cleanUpJobChunkSize``
 
-There are two ``occ`` commands to use for examining a table of users marked as
-deleted, and then manually deleting them.  The ``occ`` command is in your 
-Nextcloud directory, for example ``/var/www/nextcloud/occ``, and it must be run as 
-your HTTP user. To learn more about ``occ``, see 
-:doc:`../occ_command`.
+Reviewing Accounts Marked for Deletion
+--------------------------------------
 
-These examples are for Ubuntu Linux:
+To review which accounts have been marked for deletion, you can use the following OCC command:
 
-1. ``sudo -E -u www-data php occ ldap:show-remnants`` displays a table with all 
-   users that have been marked as deleted, and their LDAP data.
+``occ ldap:show-remnants``
 
-2. ``sudo -E -u www-data php occ user:delete [user]`` removes the user's data from the 
-   Nextcloud data directory.
+This command will display a list of user accounts that have been flagged by LDAP User Cleanup. You can check this list before proceeding with account removal.
 
-This example shows what the table of users marked as ``deleted`` looks like::
+This example shows what a table of users marked for deletion looks like::
 
  $ sudo -E -u www-data php occ ldap:show-remnants
  +-----------------+-----------------+------------------+--------------------------------------+
@@ -67,14 +67,26 @@ This example shows what the table of users marked as ``deleted`` looks like::
 Following flags can be specified additionally:
 
 * ``--short-date``: formats the dates for ``Last login`` and ``Detected on`` in a short Y-m-d format (e.g. 2019-01-14)
-* ``--json``: instead of a table, the output is json-encoded. This makes it easy to process the data programmatically.
+* ``--json``: instead of a table, the output is json-encoded. **This makes it easy to process the data programmatically if desired**.
 
+Manually Deleting User Accounts
+-------------------------------
 
-Then you can run ``sudo -E -u www-data php occ user:delete aaliyah_brown`` to delete 
-user aaliyah_brown. You must use the user's Nextcloud name.
+After reviewing the users that have been marked for deletion, you can manually remove an account and all its data using:
 
-Deleting local Nextcloud users
-------------------------------
+``occ user:delete [username]``
 
-You may also use ``occ user:delete [user]`` to remove a local Nextcloud user; 
-this removes their user account and their data.
+This command will permanently delete the specified user’s data from Nextcloud. Be sure to only run this on users you intend to fully remove.
+
+For example, given the earlier example remnants output you might choose to run ``occ user:delete aaliyah_brown`` to delete user ``aaliyah_brown``. You must use the user's Nextcloud name.
+
+What Gets Deleted
+-----------------
+
+The following items are removed **only when you manually delete** a user account that has been marked for deletion by the LDAP User Cleanup process:
+
+* Local Nextcloud group assignments
+* User preferences (DB table ``oc_preferences``)
+* User's Nextcloud home folder
+* User's corresponding entry in ``oc_storages``
+* Other app specific data (app implementation dependent)
