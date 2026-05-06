@@ -333,7 +333,7 @@ This event is triggered when a user deletes a calendar-subscription.
 
 .. versionadded:: 20
 
-This event is triggered when a user deletes a calendar-subscription.
+This event is triggered when a user updates a calendar subscription.
 
 ``\OCA\FederatedFileSharing\Events\FederatedShareAddedEvent``
 *************************************************************

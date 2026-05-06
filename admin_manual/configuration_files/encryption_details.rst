@@ -2,7 +2,7 @@
 Server-side encryption details
 ==============================
 
-This document - provided by `SysEleven <https://syseleven.de>`_ - describes the server-side encryption scheme implemented by Nextcloud's default encryption module. This includes:
+This document describes the server-side encryption scheme implemented by Nextcloud's default encryption module. This includes:
 
 - the encryption and signature of files with a master key.
 - the encryption and signature of files with a public sharing key.
@@ -346,7 +346,7 @@ Sources
 -------
 
 - `encryption-recovery-tools repository on GitHub <https://github.com/nextcloud/encryption-recovery-tools>`_
-- `Nextcloud Encryption Configuration documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html>`_
+- :doc:`Nextcloud Encryption Configuration documentation <encryption_configuration>`
 - `Nextcloud Help response concerning the usage of version information <https://help.nextcloud.com/t/allow-file-decryption-with-only-the-files-keys-and-passwords/436/12>`_
 - `Sourcecode: Creation of the Message Authentication Code <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L504>`_
 - `Sourcecode: Derivation of the Encryption Key <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L346>`_
@@ -356,5 +356,3 @@ Sources
 - `Sourcecode: Generation of the File Key <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L645>`_
 - `Sourcecode: Generation of the Initialization Vector <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L634>`_
 - `Sourcecode: Generation of a Key Pair <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L153>`_
-
-.. TODO ON RELEASE: Update version number above on release

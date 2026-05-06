@@ -658,7 +658,7 @@ in a custom fashion:
         <div v-if="richObject">
             <div>
                 <label>
-                    {{ t('myapp', 'Title' }}
+                    {{ t('myapp', 'Title') }}
                 </label>
                 <span>
                     {{ richObject.title }}
@@ -666,7 +666,7 @@ in a custom fashion:
             <div>
             <div>
                 <label>
-                    {{ t('myapp', 'Extra info' }}
+                    {{ t('myapp', 'Extra info') }}
                 </label>
                 <span>
                     {{ richObject.extra_info }}

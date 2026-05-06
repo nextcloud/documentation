@@ -56,7 +56,7 @@ A specific maintenance release is indicated by the last part of the version numb
 Release schedule
 ----------------
 
-New **major** releases of Nextcloud Server are published approximiately every sixteen weeks.
+New **major** releases of Nextcloud Server are published approximately every sixteen weeks.
 
 New **maintenance** releases are published approximately every four weeks.
 

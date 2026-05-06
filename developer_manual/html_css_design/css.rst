@@ -228,7 +228,7 @@ Element structure variables
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
 | ``--navigation-width``                       | ``300px``                                      | Width of the in-app navigation sidebar                                                                    |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
-| ``--sidebar-min-width``                      | ``200px``                                      | Minimum width of the app sidebar on small screens                                                         |
+| ``--sidebar-min-width``                      | ``300px``                                      | Minimum width of the app sidebar on small screens                                                         |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
 | ``--sidebar-max-width``                      | ``500px``                                      | Maximum width of the app sidebar on wide screens                                                          |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
@@ -263,3 +263,46 @@ There are some predefined classes for public use to ease developing an applicati
 +----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``.inlineblock``                             | Make an element an inline block                                                                                                                |
 +----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+
+RTL guidelines
+==============
+
+Dos and Don'ts
+--------------
+
+.. list-table::
+   :header-rows: 1
+
+   * - Bad
+     - Good
+     - Description
+   * - Use physical properties ``margin-left``
+     - Use logical properties ``margin-inline-start``
+     - Using logical properties automatically adapts to LTR/RTL
+   * - Use ``left`` or ``right`` 
+     - Use inset-inline-start/end
+     - Keep positioning direction-aware 
+   * - Use text-align: left/right
+     - Use text-align: start/end
+     - Text aligns correctly in both modes
+   * - Use border-left/right
+     - Use border-inline-start/end
+     - Borders flip correctly
+   * - Use float: left/right
+     - Use float: inline-start/end
+     - Float respects direction
+   * - Assume RTL “just works”
+     - Test your app with RTL languages 
+     - Using the correct css value is not always enough to avoid bugs
+
+
+
+
+
+
+
+
+
+
+
+    

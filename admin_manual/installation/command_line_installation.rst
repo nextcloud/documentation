@@ -21,7 +21,7 @@ of running the graphical Installation Wizard::
  $ cd /var/www/nextcloud/
  $ sudo -E -u www-data php occ  maintenance:install \
  --database 'mysql' --database-name 'nextcloud' \
- --database-user 'root' --database-pass 'password' \
+ --database-user 'nextcloud' --database-pass 'password' \
  --admin-user 'admin' --admin-pass 'password'
  
 Note that you must change to the root Nextcloud directory, as in the example 
@@ -33,7 +33,7 @@ Supported databases are::
  - sqlite (SQLite3 - Nextcloud Community edition only)
  - mysql (MySQL/MariaDB)
  - pgsql (PostgreSQL)
- - oci (Oracle 11g currently only possible if you contact us at https://nextcloud.com/enterprise as part of a subscription)
+ - oci (Oracle currently only possible if you contact us at https://nextcloud.com/enterprise as part of a subscription)
  
 See :ref:`command_line_installation_label` for more information.
 

@@ -37,6 +37,13 @@ For example: you can perform a :code:`GET` request to get information about a us
 
     curl -u username:password -X GET 'https://cloud.example.com/ocs/v1.php/...' -H "OCS-APIRequest: true"
 
+You can change the response type of your request by adding an Accept header. For example, if you prefer JSON responses:
+
+.. code-block:: bash
+
+    curl -u username:password -X GET 'https://cloud.example.com/ocs/v1.php/...' -H "Accept: application/json" -H "OCS-APIRequest: true"
+
+Adding the Accept header also ensures consistency of your responses, since some legacy OCS requests return XML as their default response, while newer requests return JSON.
 
 User metadata
 -------------
@@ -66,7 +73,7 @@ This request returns the available metadata of a user. Admin users can see the i
 			<storageLocation>/path/to/storage/location/userid</storageLocation>
 			<id>userid</id>
 			<lastLogin>1578283711000</lastLogin>
-			<backend>Database</database>
+			<backend>Database</backend>
 			<subadmin/>
 			<quota>
 				<free>20632824998</free>

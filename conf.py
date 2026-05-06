@@ -28,7 +28,19 @@ copyright = '2016-' + str(now.year) + ' Nextcloud GmbH and Nextcloud contributor
 # The short X.Y version.
 version = 'latest'
 # The full version, including alpha/beta/rc tags.
-release = version
+# Can be overridden via DOCS_RELEASE env var (used for PDF builds to show the actual version number)
+release = os.environ.get('DOCS_RELEASE', version)
+
+# Ensure release is either "latest", or a digit (for stable versions)
+if not (release == 'latest' or release.isdigit()):
+	raise ValueError("Invalid release version: %s. Must be 'latest' or a digit." % release)
+
+# Print the version being built in a clear way in the logs
+width = 60
+msg = " Building documentation for version: %s " % release
+print("\n\n" + "#" * width)
+print("#" + msg.center(width - 2, "#") + "#")
+print("#" * width + "\n\n")
 
 # RTD theme options
 html_theme_options = {
@@ -45,13 +57,24 @@ html_logo = "../_shared_assets/static/logo-white.png"
 html_copy_source = False
 
 # substitutions go here
-rst_epilog =  '.. |version| replace:: %s' % version
+rst_epilog = """
+.. |version| replace:: %s
+""" % (release)
+
+# Replace hardcoded /latest/ URLs in all .rst source files with the actual release
+def replace_latest(app, docname, source):
+    if release != 'latest':
+        source[0] = source[0].replace('/server/latest/', '/server/%s/' % release)
+ 
+def setup(app):
+    app.connect('source-read', replace_latest)
+
 
 # building the versions list
-version_start = 29		# THIS IS THE OLDEST SUPPORTED VERSION NUMBER
+version_start = 32		# THIS IS THE OLDEST SUPPORTED VERSION NUMBER
 
 						# THIS IS THE VERSION THAT IS MAPPED TO https://docs.nextcloud.com/server/stable/
-version_stable = 31		# CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
+version_stable = 33		# CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
 
 # Also search for "TODO ON RELEASE" in the rst files
 

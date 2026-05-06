@@ -238,3 +238,40 @@ If you use a CamelCase name as *myCamelCaseApp*,
 
     <?php
     $route = 'myCamelCaseApp.author_api.do_something';
+
+
+Console commands
+----------------
+
+Two ``occ`` commands help inspect and debug the routing table::
+
+ router
+  router:list   list routes, optionally filtered by app
+  router:match  match a URL path to a route
+
+router\:list
+^^^^^^^^^^^^^
+
+List all registered routes. Optionally filter to one or more apps::
+
+ sudo -E -u www-data php occ router:list
+ sudo -E -u www-data php occ router:list myapp
+
+Use ``--ocs`` to show only OCS API routes, or ``--index`` to show only
+``index.php`` routes::
+
+ sudo -E -u www-data php occ router:list --ocs
+ sudo -E -u www-data php occ router:list myapp --index
+
+router\:match
+^^^^^^^^^^^^^^
+
+Match a URL path against the routing table and show which route and controller
+it resolves to. Useful for debugging why a request is landing in the wrong
+place::
+
+ sudo -E -u www-data php occ router:match /apps/myapp/authors/3
+
+Use ``--method`` to match against a specific HTTP verb (default: ``GET``)::
+
+ sudo -E -u www-data php occ router:match /apps/myapp/authors/3 --method=POST

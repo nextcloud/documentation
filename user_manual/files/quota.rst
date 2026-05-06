@@ -3,9 +3,10 @@ Storage quota
 =============
 
 Your Nextcloud administrator has the option to set a storage quota on users. Look at
-your the Personal page to see what your quota is, and how much you have used.
+your Personal page to see what your quota is, and how much you have used.
 
 .. figure:: ../images/quota1.png
+   :alt: Storage quota indicator on the Personal page
 
 It may be helpful to understand how your quota is calculated.
 
@@ -30,8 +31,6 @@ total is below 50%.
 
 .. note:: Your administrator may have configured the trash bin retention period
    to override the storage space management. See `administrator documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#deleted-items-trash-bin>`_ for more details.
-
-.. TODO ON RELEASE: Update version number above on release
 
 When version control is enabled, the older file versions are not counted against
 quotas.

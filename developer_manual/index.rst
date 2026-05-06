@@ -15,6 +15,7 @@ Table of contents
     :maxdepth: 2
 
     prologue/index
+    release_notes/index
     getting_started/index
     basics/index
     app_development/index

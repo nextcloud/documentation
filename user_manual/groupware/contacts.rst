@@ -7,7 +7,7 @@ be installed separately from our App Store.
 
 The Nextcloud Contacts app is similar to other mobile contact applications, but
 with more functionality.
-Let's run through basic features that will help you maintain your address book
+This section covers the basic features that will help you maintain your address book
 in the application.
 
 Below, you will learn how to add contacts, edit or remove contacts, upload a
@@ -239,6 +239,10 @@ Team options
 ~~~~~~~~~~~~
 
 Various self-explanatory options are available to configure a team, to manage invites and membership, visibility of the team, allowance of other team membership and password protection.
+
+**Prevent teams from being a member of another team**
+
+When this option is enabled, the team can no longer be directly added as a member of another team. However, this restriction only applies to new direct additions. Existing memberships are kept, and inherited memberships are still possible if this team belongs to a parent team that gets added elsewhere.
 
 Shared items
 ~~~~~~~~~~~~

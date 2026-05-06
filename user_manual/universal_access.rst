@@ -2,9 +2,9 @@
 Universal access
 ================
 
-Universal access is very important to us. We follow web standards and check to
-make everything usable also with keyboard and assistive software such as
-screen readers. We aim to be compliant with the `Web Content Accessibility
+Universal access is very important to us. We follow web standards and ensure
+everything is usable with a keyboard and assistive software such as screen
+readers. We aim to be compliant with the `Web Content Accessibility
 Guidelines 2.1 <https://www.w3.org/WAI/standards-guidelines/wcag/>`_
 on AA level, with the high contrast theme even on AAA level.
 We also follow the German BITV 2.0 guidelines.
@@ -25,7 +25,7 @@ The navigation and sidebar can be expanded or collapsed.
 Navigating via keyboard
 -----------------------
 
-You can navigate the web interface with keyboard only just like you can with the mouse:
+You can navigate the web interface with a keyboard, just as you would with a mouse:
 
 * ``Tab`` and ``Shift + Tab`` to move between elements
 * ``Enter`` or ``Space`` to activate or open the element (depending on the type of element)
@@ -34,7 +34,7 @@ You can navigate the web interface with keyboard only just like you can with the
 * ``Ctrl + F`` to focus the search field
 * ``Ctrl + S`` to save changes in editors like Nextcloud Text
 
-For quicker navigation, we offer 2 "skip links" at the beginning of the document which allow you to:
+For quicker navigation, we offer two "skip links" at the beginning of the document which allow you to:
 
 * Skip to main content
 * Skip to navigation of app
@@ -67,9 +67,12 @@ Included themes
 
 We offer several themes you can activate to aid accessibility:
 
-* **High contrast theme:** A high contrast mode to ease your navigation. Visual quality will be reduced but clarity will be increased.
-* **Dark theme:** A dark theme to ease your eyes by reducing the overall luminosity and brightness. It is still under development, so please report any issues you may find.
-* **Dyslexia font:** OpenDyslexic is a free typeface/font designed to mitigate some of the common reading errors caused by dyslexia.
+* **High contrast theme:** A high contrast mode to ease your navigation.
+  Visual quality will be reduced but clarity will be increased.
+* **Dark theme:** A dark theme to ease your eyes by reducing the overall luminosity and brightness.
+  It is still under development, so please report any issues you may find.
+* **Dyslexia font:** OpenDyslexic is a free typeface/font designed to mitigate some of the common
+  reading errors caused by dyslexia.
 
 To reach the accessibility settings:
 
@@ -77,7 +80,8 @@ To reach the accessibility settings:
 2. Pick **Settings**
 3. In the navigation, pick **Accessibility**
 
-.. note:: Contrast of elements can vary based on custom theming. For example, the
+.. note::
+   Contrast of elements can vary based on custom theming. For example, the
    primary theming color is used as background color by the header, log in page,
    and primary buttons.
    If this causes contrast issues, please contact your administrator for help.
