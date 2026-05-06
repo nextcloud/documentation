@@ -1444,6 +1444,22 @@ Allow remote servers with local addresses, e.g., in federated shares, webcal ser
 
 Defaults to ``false``
 
+http_client_add_user_agent_url
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'http_client_add_user_agent_url' => false,
+
+Add the URL of the Nextcloud server in User-Agent headers HTTP calls.
+
+This helps service providers identifying calls from your server,
+which can be helpful for them, but can be a privacy issue on small
+Nextcloud servers.
+
+Defaults to ``false``
+
 Deleted Items (trash bin)
 -------------------------
 
@@ -2159,7 +2175,8 @@ Activities in Team Folders and External Storages.
 By default, activities in team folders or external storages are only generated
 for the current user. This is due to a limitations in current implementations.
 This config flag makes activities in group folders and external storages work
-like in normal shares (when set to ``true``).
+like in normal shares (when set to ``true``). Setting this flag does not allow
+past activities to be displayed (no retroactivity).
 
 
 
@@ -3637,7 +3654,7 @@ minimum.supported.desktop.version
 
 ::
 
-	'minimum.supported.desktop.version' => '3.1.50',
+	'minimum.supported.desktop.version' => '3.2.50',
 
 Specify the minimum Nextcloud desktop client version allowed to sync with this
 server. Connections from earlier clients will be denied. Defaults to the
@@ -3646,7 +3663,7 @@ minimum officially supported version at the time of this server release.
 Changing this may cause older, unsupported clients to malfunction, potentially
 leading to data loss or unexpected behavior.
 
-Defaults to ``3.1.50``
+Defaults to ``3.2.50``
 
 maximum.supported.desktop.version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3717,9 +3734,28 @@ quota_include_external_storage
 
 	'quota_include_external_storage' => false,
 
-EXPERIMENTAL: Include external storage in quota calculations.
+Include external storage mounts in quota calculations.
 
-Defaults to ``false``
+When enabled, user storage quotas will also include files stored on
+external storage mounts (such as SMB, SFTP, S3, etc.) that are
+configured for the user (either as personal or global/system mounts).
+
+Only files visible to the user at these mount points are counted towards
+their quota. Files only visible to other users (on their own mounts) are
+not counted.
+
+By default, system/global external storage mounts are shared: every user
+given access sees the same files and folders from the external storage. To
+have per-user isolation, configure the mount with user-specific path or
+credentials, or utilize a personal mount.
+
+Enabling this option may impact performance if external storages are slow
+or unreliable.
+
+Warning: This setting is considered EXPERIMENTAL and may not work with all
+external storage backends.
+
+Defaults to ``false``.
 
 external_storage.auth_availability_delay
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3776,24 +3812,24 @@ part_file_in_storage
 
 	'part_file_in_storage' => true,
 
-Store part files created during upload in the same storage as the upload
-target. Setting this to false stores part files in the root of the user's
-folder, which may be necessary for external storage with limited rename
-capabilities.
+Control where temporary ".part" files are written during direct (non-chunked)
+uploads.
 
-Defaults to ``true``
+While an upload is in progress, Nextcloud writes data to a temporary ".part"
+file and renames it to the final filename when the upload completes.
 
-mount_file
-^^^^^^^^^^
+- true: create the temporary ".part" file in the destination storage/path.
+  This typically avoids cross-storage moves and can improve reliability and
+  performance on backends where rename within the same storage is cheap/atomic.
+- false: create the temporary ".part" file in the user's root folder first.
+  This may help with some external storages that have limited rename/move
+  behavior, but can add extra copy/move overhead.
 
+Note: This setting applies to direct (non-chunked) uploads only. Chunked/
+resumable uploads use a separate uploads staging mechanism and are not
+controlled by this option.
 
-::
-
-	'mount_file' => '/var/www/nextcloud/data/mount.json',
-
-Specify the location of the ``mount.json`` file.
-
-Defaults to ``data/mount.json`` in the Nextcloud directory.
+Defaults to ``true``.
 
 filesystem_cache_readonly
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3803,10 +3839,31 @@ filesystem_cache_readonly
 
 	'filesystem_cache_readonly' => false,
 
-Prevent Nextcloud from updating the cache due to filesystem changes for all
-storage.
+Read-only mode for scan/detection reconciliation writes to filecache.
 
-Defaults to ``false``
+When true, Nextcloud does not store filecache metadata changes that are
+identified through scanner/change-detection reconciliation paths (global:
+all storages).
+
+Scope note:
+
+- Nextcloud-originated operations (UI/WebDAV/clients) are generally
+  handled through normal application write paths and thus will still
+  update filecache even when this is set to true.
+- Reconciliation/refresh paths are prevented from writing back discovered
+  metadata deltas while this is enabled.
+
+Practical effect:
+
+- Changes made directly on storage outside Nextcloud are generally not
+  reflected while enabled.
+- Some metadata-dependent behavior can appear stale until this parameter
+  is disabled (permitting reconciliation writes again).
+
+Warning: This is an expert/global setting for specialized environments and
+is intentionally not default-safe for general deployments.
+
+Defaults to ``false``.
 
 trusted_proxies
 ^^^^^^^^^^^^^^^
@@ -4000,6 +4057,18 @@ Changing or deleting this value may cause connected clients to stall until
 conflicts are resolved.
 
 Defaults to ``''`` (empty string)
+
+configfilemode
+^^^^^^^^^^^^^^
+
+
+::
+
+	'configfilemode' => 0640,
+
+config.php file mode in octal notation.
+
+Defaults to ``0640`` (writable by user, readable by group).
 
 copied_sample_config
 ^^^^^^^^^^^^^^^^^^^^
@@ -4283,9 +4352,23 @@ profile.enabled
 
 	'profile.enabled' => true,
 
-Enable profiling globally.
+Toggle availability of user profiles.
 
-Defaults to ``true``
+User profile pages contain information that can be shared with other users,
+such as full name, phone number, organization, role, and similar fields.
+
+Profiles are enabled by default, and profile data may be used by other
+features (for example, the system address book).
+
+Profile visibility is layered: what is shared depends on a combination of
+system-wide and account-level privacy controls, and each field's visibility
+can be configured.
+
+When set to false, profile functionality is disabled instance-wide.
+
+Note: This affects user account profiles, not the developer performance profiler.
+
+Defaults to `true`
 
 account_manager.default_property_scope
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4494,23 +4577,20 @@ Keep this list as restrictive as possible as metrics can consume a lot of resour
 
 Default to ``[127.0.0.0/16', '::1/128]`` (allow loopback interface only)
 
+preview_expiration_days
+^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'preview_expiration_days' => 0,
+
+Delete previews older than a certain number of days to reduce storage usage.
+
+Less than one day is not allowed, so set it to 0 to disable the deletion.
+
+Defaults to ``0``.
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
-App config options
-------------------
-
-Settings app
-^^^^^^^^^^^^
-
-If an email address of a user is changed by an admin, then it triggers an email
-to the user that states "Your email address on URL was changed by an
-administrator.". In some cases this should not be triggered, because it was a
-normal maintenance change. To disable this specific email the appconfig option
-``disable_email.email_address_changed_by_admin`` can be set to ``yes``::
-
-	occ config:app:set settings disable_activity.email_address_changed_by_admin --value yes
-
-To disable this behaviour change it to any other value or delete the app config::
-
-	occ config:app:delete settings disable_activity.email_address_changed_by_admin

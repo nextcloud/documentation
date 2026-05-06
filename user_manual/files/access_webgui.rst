@@ -1,5 +1,5 @@
 ======================================================
-Accessing your files using the Nextcloud Web interface
+Accessing your files using the Nextcloud web interface
 ======================================================
 
 You can access your Nextcloud files with the Nextcloud Web interface and create,

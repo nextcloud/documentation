@@ -318,7 +318,7 @@ You can set up reminders to be notified before an event occurs. Currently suppor
 * Email notifications
 * Nextcloud notifications
 
-You may set reminders at a time relative to the event or at a specific date.
+You may set reminders at a time relative to the event or at a specific date. If you would like all the events in a calendar to have a default reminder, you can configure that in the settings of that calendar.
 
 .. figure:: images/calendar_event_reminders.png
               :scale: 80%

@@ -2,83 +2,76 @@
 Installation
 ============
 
-You can download the latest version of the Nextcloud Desktop Synchronization
-Client from the `Nextcloud download page`_.
-There are clients for Linux, macOS, and Microsoft Windows.
+Download
+--------
 
-The currently supported server releases are the latest three stable versions
-at time of publication. It means that the |version| release series is supporting
-stable server major versions.
-See https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule for
-supported major versions.
-  
-Installation on macOS and Windows is the same as for any software
-application: download the program and then double-click it to launch the
-installation, and then follow the installation wizard. After it is installed and
-configured the sync client will automatically keep itself updated; see
-:doc:`autoupdate` for more information.
-
-Linux users must follow the instructions on the download page to add the
-appropriate repository for their Linux distribution, install the signing key,
-and then use their package managers to install the desktop sync client. Linux
-users will also update their sync clients via package manager, and the client
-will display a notification when an update is available.
-
-Linux users must also have a password manager enabled, such as GNOME Keyring or
-KWallet, so that the sync client can login automatically.
+You can download the latest version of the Nextcloud Desktop Synchronization Client
+from the `Nextcloud download page`_. Clients are available for Linux, macOS, and
+Microsoft Windows.
 
 You will also find links to source code archives and older versions on the
 download page.
 
+Supported server versions
+-------------------------
+
+Each desktop client release supports the latest three stable Nextcloud server
+major versions at the time of release. See the `Nextcloud Server release schedule`_
+for supported major versions.
+
 System Requirements
-----------------------------------
+-------------------
 
 - Windows 10+ (64-bits only)
 - macOS 12.0+ (64-bits only)
-- Linux (Ubuntu 22.04 or openSUSE 15.5 or Alma 8 or ...) (64-bits only)
+- Linux (Ubuntu 24.04 or openSUSE 15.5 or Alma 8 or ...) (64-bits only)
+
+  For Linux distributions, we support, if technically feasible, the current
+  LTS releases. For BSD, we support them if technically feasible, but we do not
+  test them.
 
 .. note::
-   For Linux distributions, we support, if technically feasible, the current LTS releases.
-   For BSD, we support them if technically feasible but we do not test
+   We do not support Citrix.
 
-Customizing the Windows Installation
-------------------------------------
+   - We will do our best to advise Citrix users from the desktop client point of view.
+   - We will fix issues that are also reproducible on the standard supported systems.
+   - Everything else is outside of our scope.
 
-If you just want to install Nextcloud Desktop Synchronization Client on your local
-system, you can simply launch the `.msi` file and configure it in the wizard
-that pops up.
+Install on macOS and Windows
+----------------------------
 
-Features
-^^^^^^^^
+Installation on macOS and Windows is the same as for any other software
+application: download the program and then double-click it to launch the
+installation, and then follow the installation wizard. After it is installed and
+configured the desktop client will automatically keep itself updated; see
+:doc:`autoupdate` for more information.
 
-The MSI installer provides several features that can be installed or removed
-individually, which you can also control via command-line, if you are automating
-the installation, then run the following command::
+For administrator-focused deployment options such as advanced Windows MSI
+configuration, non-interactive account provisioning, and command-line wizard
+preconfiguration, see the Admin Manual chapter on desktop client deployment and
+setup.
 
-   msiexec /passive /i Nextcloud-x.y.z-x64.msi
+Install on Linux
+----------------
 
-The command will install the Nextcloud Desktop Synchronization Client into the default location
-with the default features enabled.
-If you want to disable, e.g., desktop shortcut icons you can simply change the above command to the following::
+For Linux, Nextcloud officially provides the desktop client as an AppImage on
+the `Nextcloud download page`_.
 
-   msiexec /passive /i Nextcloud-x.y.z-x64.msi REMOVE=DesktopShortcut
+Some Linux distributions also provide the Nextcloud desktop client through their
+package managers. These packages are maintained by the distribution or community,
+not by Nextcloud. If you prefer a package-managed installation, refer to your
+distribution's documentation.
 
-See the following table for a list of available features:
+Linux users must also have a password manager enabled, such as GNOME Keyring or
+KWallet, so that the desktop client can log in automatically.
 
-+--------------------+--------------------+-----------------------------------+---------------------------+
-| Feature            | Enabled by default | Description                       |Property to disable        |
-+====================+====================+===================================+===========================+
-| Client             | Yes, required      | The actual client                 |                           |
-+--------------------+--------------------+-----------------------------------+---------------------------+
-| DesktopShortcut    | Yes                | Adds a shortcut to the desktop    |``NO_DESKTOP_SHORTCUT``    |
-+--------------------+--------------------+-----------------------------------+---------------------------+
-| StartMenuShortcuts | Yes                | Adds a shortcut to the start menu |``NO_START_MENU_SHORTCUTS``|
-+--------------------+--------------------+-----------------------------------+---------------------------+
-| ShellExtensions    | Yes                | Adds Explorer integration         |``NO_SHELL_EXTENSIONS``    |
-+--------------------+--------------------+-----------------------------------+---------------------------+
+Initial Setup
+-------------
 
-Installation
-^^^^^^^^^^^^
+After installation, the initial setup wizard is triggered. In the setup wizard,
+you can log in to your server, create an account with a provider, and configure
+which folders to sync. The wizard will guide you step-by-step through the
+essential configuration options and basic account setup.
 
 You can also choose to only install the client itself by using the following command::
 
@@ -176,13 +169,15 @@ account setup. First, you need to enter the URL of your Nextcloud server.
 .. image:: images/wizard_welcome.png
    :alt: form for choosing between login and registering
 
-If you already have an account on a Nextcloud instance, you want to
-press the button ``Login to your Nextcloud``. If you don't have a
-Nextcloud instance and an account there, you might want to register an
-account with a provider. Press ``Create account with Provider`` in
-that case. Please keep in mind that the desktop client might have
-built without provider support. In that case, you won't see this
-page. Instead, you will be prompted with the next page.
+If you already have an account on a Nextcloud instance, click ``Login to your
+Nextcloud``. If you do not yet have a Nextcloud instance or an account, you may
+need to create one first. Alternatively, you might want to register an account
+with a provider. Press ``Create account with Provider`` in that case.
+
+.. note::
+   The desktop client build you are using may have been built without provider
+   support. In that case, you won't see this page and will immediately see the
+   next page.
 
 .. image:: images/wizard_setup.png
    :alt: form for entering Nextcloud server URL
@@ -194,11 +189,14 @@ instance.
 .. image:: images/wizard_flow2.png
    :alt: form waiting for authorization
 
-Now your web browser should open and prompt you to login into your
+Now your web browser should open and prompt you to log in to your
 Nextcloud instance. Enter your username and password in your web
-browser and grant access. After you did that, go back to the
-wizard. Please keep in mind that you might not need to enter your
-username and password if you are already logged in to your browser.
+browser and click *Grant access* when prompted. After you do that,
+go back to the wizard.
+
+.. note::
+   You might not need to enter your username and password if you are
+   already logged in to your web browser.
 
 .. image:: images/wizard_advanced.png
    :alt: Select which remote folders to sync, and which local folder to store
@@ -209,12 +207,14 @@ the Nextcloud server, or select individual folders. The default local
 sync folder is ``Nextcloud``, in your home directory. You may change
 this as well.
 
-When you have completed selecting your sync folders, click the Connect
+When you have completed selecting your sync folders, click the *Connect*
 button at the bottom right. The client will attempt to connect to your
-Nextcloud server, and when it is successful, the wizard closes
-itself. You can now observe the sync activity if you open the main
-dialogue by clicking on the tray icon.
+Nextcloud server. If it is successful, the wizard will close itself. You
+can then observe the sync activity and open the main dialog by clicking
+on the tray icon.
 
 .. Links
 
 .. _Nextcloud download page: https://nextcloud.com/download/#install-clients
+
+.. _Nextcloud Server release schedule: https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule

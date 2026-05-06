@@ -1,8 +1,8 @@
-=============================================
-Encrypting your Nextcloud files on the server
-=============================================
+============================
+Using server-side encryption
+============================
 
-Nextcloud includes a server side Encryption app, and when it is enabled by
+Nextcloud includes a server-side encryption app, and when it is enabled by
 your Nextcloud administrator all of your Nextcloud data files are automatically
 encrypted on the server.
 Encryption is server-wide, so when it is enabled you cannot choose to keep your
@@ -58,7 +58,7 @@ Is it planned to move this to the next user login or a background job?
 If we did that, then we would need to store your login password in the database.
 This could be seen as a security issue, so nothing like that is planned.
 
-Is group Sharing possible with the recovery key?
+Is group sharing possible with the recovery key?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you mean adding users to groups and make it magically work? No. This only

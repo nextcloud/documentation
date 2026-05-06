@@ -166,12 +166,12 @@ The options for each command can be found like this, using scan as example: ``co
 Configuration Options
 ---------------------
 
-* ``auto_indexing`` boolean (default: true)
-   To allow/disallow the IndexerJob from running in the background
+* ``auto_indexing`` string (default: 'true')
+   To allow/disallow the IndexerJob from running in the background. Not required to be configured normally.
 
 .. code-block::
 
-   occ config:app:set context_chat auto_indexing --value=true --type=boolean
+   occ config:app:set context_chat auto_indexing --value='true' --type=string
 
 
 Logs
@@ -189,9 +189,9 @@ Troubleshooting
 File access control rules not supported
 ---------------------------------------
 
-In Nextcloud you can set up file access control rules using the [files_accesscontrol](https://apps.nextcloud.com/apps/files_accesscontrol) app to restrict access to certain files.
+In Nextcloud you can set up file access control rules using the `files_accesscontrol <https://apps.nextcloud.com/apps/files_accesscontrol>`_ app to restrict access to certain files.
 
-| Context Chat does **not** follow these rules
+| Context Chat does **not** follow these rules.
 
 It is thus possible for users who have been denied access to a document via the files_accesscontrol app to still gain access via Context Chat
 if the document is visible in the files app for the user in question.

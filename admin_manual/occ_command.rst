@@ -14,42 +14,6 @@ setting, and more.
 run it as your HTTP user** to ensure that the correct permissions are maintained
 on your Nextcloud files and directories.
 
-occ command Directory
----------------------
-
-* :ref:`http_user_label`
-* :ref:`run_commands_in_maintenance_mode`
-* :ref:`apps_commands_label`
-* :ref:`background_jobs_selector_label`
-* :ref:`config_commands_label`
-* :ref:`dav_label`
-* :ref:`database_conversion_label`
-* :ref:`database_add_indices_label`
-* :ref:`encryption_label`
-* :ref:`federation_sync_label`
-* :ref:`file_operations_label`
-* :ref:`files_external_label`
-* :ref:`integrity_check_label`
-* :ref:`create_javascript_translation_files_label`
-* :ref:`ldap_commands_label`
-* :ref:`logging_commands_label`
-* :ref:`maintenance_commands_label`
-* :ref:`security_commands_label`
-* :ref:`trashbin_label`
-* :ref:`user_commands_label`
-* :ref:`group_commands_label`
-* :ref:`versions_label`
-* :ref:`command_line_installation_label`
-* :ref:`command_line_upgrade_label`
-* :ref:`two_factor_auth_label`
-* :ref:`disable_user_label`
-* :ref:`system_tags_commands_label`
-* :ref:`antivirus_commands_label`
-* :ref:`setupchecks_commands_label`
-* :ref:`snowflakes_commands_label`
-* :ref:`share_operations_label`
-* `Debugging`_
-
 .. _http_user_label:
 
 Running occ
@@ -64,6 +28,17 @@ The HTTP user is different on the various Linux distributions:
 * The HTTP user and group in Fedora/CentOS is apache.
 * The HTTP user and group in Arch Linux is http.
 * The HTTP user in openSUSE is wwwrun, and the HTTP group is www.
+
+.. note::
+
+   APCu is disabled by default for the command-line mode of PHP, which can cause issues with Nextcloud's ``occ`` command. Please make sure you set the ``apc.enable_cli`` parameter to ``1`` in your PHP CLI's ``php.ini`` configuration file or append ``--define apc.enable_cli=1`` each time you invoke ``occ`` - e.g.::
+
+     sudo -u www-data php --define apc.enable_cli=1 occ config:list system
+
+   If you fail to do this, you will receive output such as the following::
+
+     An unhandled exception has been thrown:
+     OCP\HintException: [0]: Memcache \OC\Memcache\APCu not available for local cache (Is the matching PHP module installed and enabled?)
 
 If your HTTP server is configured to use a different PHP version than the
 default (/usr/bin/php), ``occ`` should be run with the same version. For
@@ -2317,6 +2292,33 @@ sharee, shared file and more.
 Debugging
 ---------
 
-In certain situations it's necessary to generate debugging information, e.g. before submitting a bug report. You can run ``occ`` with debug logging::
+Every ``occ`` command accepts the standard Symfony Console verbosity flags:
 
- NC_loglevel=0 sudo -E -u www-data php occ -h
+* ``-v`` — normal output (errors, warnings, and key messages)
+* ``-vv`` — verbose output (additional progress detail)
+* ``-vvv`` — debug output (full trace, useful for diagnosing command failures)
+
+Example::
+
+ sudo -E -u www-data php occ files:scan --all -vv
+
+To also enable debug-level log output from Nextcloud itself, set the
+``NC_loglevel`` environment variable::
+
+ NC_loglevel=0 sudo -E -u www-data php occ status
+
+See :doc:`configuration_server/logging_configuration` for more on log levels.
+
+Command reference
+-----------------
+
+.. toctree::
+   :maxdepth: 2
+
+   occ_apps
+   occ_database
+   occ_encryption
+   occ_files
+   occ_ldap
+   occ_users
+   occ_system

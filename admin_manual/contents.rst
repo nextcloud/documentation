@@ -64,6 +64,11 @@ Table of contents
     office/index
 
 .. toctree::
+    :caption: Collectives
+
+    collectives/index
+
+.. toctree::
     :caption: Maintenance
 
     configuration_monitoring/index

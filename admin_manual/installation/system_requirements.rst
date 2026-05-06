@@ -38,8 +38,8 @@ For best performance, stability and functionality we have documented some recomm
 +------------------+-----------------------------------------------------------------------+
 | PHP Runtime      | - 8.2 (*deprecated*)                                                  |
 |                  | - 8.3                                                                 |
-|                  | - **8.4** (*recommended*)                                             |
-|                  | - 8.5                                                                 |
+|                  | - 8.4                                                                 |
+|                  | - **8.5** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
@@ -125,15 +125,15 @@ Files App
 ^^^^^^^^^
 
 - **iOS** 17.0+
-- **Android** 8.1+
+- **Android** 9.0+
 
 Talk App
 ^^^^^^^^
 
 - **iOS** 16.0+
 - **Android** 8.0+
-- **Nextcloud Server** 19.0+
-- **Nextcloud Talk** 9.0+
+- **Nextcloud Server** 22.0+
+- **Nextcloud Talk** 12.0+
 
 Web browser
 -----------
@@ -146,6 +146,5 @@ of a browser from this list, or one based on those:
 - Google **Chrome**/Chromium
 - Apple **Safari**
 
-.. note:: If you want to use Nextcloud Talk you should use Mozilla **Firefox** 52+ or Google **Chrome**/Chromium 49+ to have
-          the full experience with video calls and screensharing. Google Chrome/Chromium requires an additional plugin for
-          screensharing.
+.. note:: If you want to use Nextcloud Talk you should use the latest version of Mozilla **Firefox** or 
+          Google **Chrome**/Chromium to have the full experience with video calls and screensharing.
