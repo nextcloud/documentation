@@ -16,7 +16,7 @@ General
   You describe what you want to do, ask feedback on the direction you take it and take it from there.
 * When you are finished, use the merge request function on GitHub to create a pull request.
   The other developers will look at it and give you feedback. You can signify that your PR is ready for review by adding the label "3. to review" to it.
-  See `the code review page for more information <../prologue/bugtracker/codereviews.html>`_
+  See :doc:`the code review page for more information <../../prologue/bugtracker/codereviews>`
 * It is key to keep changes separate and small. The bigger and more hairy a PR grows, the harder it is to get it in.
   So split things up where you can in smaller changes - if you need a small improvement like a API addition for a big feature addition, get it in first rather than adding it to the big piece of work!
 * Decisions are made by consensus. We strive for making the best technical decisions and as nobody can know everything, we collaborate.

@@ -213,6 +213,8 @@ Sensitive data exposure
 
 Always store user data or configuration files in safe locations, e.g. **nextcloud/data/** and not in the webroot where they can be accessed by anyone using a web browser.
 
+.. _csrf_introduction:
+
 Cross site request forgery
 --------------------------
 
