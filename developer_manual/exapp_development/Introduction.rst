@@ -9,11 +9,11 @@ Overview
 
 The main tasks of the AppAPI ecosystem are:
 
-	* Providing a reliable and fast method for authenticating applications
-	* Supporting various application deployment options
-	* Offering a clear and straightforward application administration interface
-	* Ensuring a reliable implementation of all the necessary missing APIs for applications
-	* Supplying clear, understandable documentation and support on how to implement libraries in other programming languages for writing next-gen applications for Nextcloud
+    * Providing a reliable and fast method for authenticating applications
+    * Supporting various application deployment options
+    * Offering a clear and straightforward application administration interface
+    * Ensuring a reliable implementation of all the necessary missing APIs for applications
+    * Supplying clear, understandable documentation and support on how to implement libraries in other programming languages for writing next-gen applications for Nextcloud
 
 The system should support the expansion and integration of new deployment methods, avoiding any tight coupling with a specific deployment type.
 Applications should be capable of indicating the deployment methods they can accommodate.

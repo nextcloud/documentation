@@ -131,9 +131,9 @@ conditions only when really needed.
 
 .. code-block:: php
 
-	public function isEnabled(): bool {
-		return false;
-	}
+    public function isEnabled(): bool {
+        return false;
+    }
 
 
 Provide a user interface
@@ -210,25 +210,25 @@ There are 3 types of buttons:
 
 .. code-block:: php
 
-	public function getWidgetButtons(string $userId): array {
-		return [
-			new WidgetButton(
-				WidgetButton::TYPE_NEW,
-				'https://somewhere.org',
-				$this->l10n->t('Create new element')
-			),
-			new WidgetButton(
-				WidgetButton::TYPE_MORE,
-				'https://my.nextcloud.org/apps/your-app/',
-				$this->l10n->t('More notifications')
-			),
-			new WidgetButton(
-				WidgetButton::TYPE_SETUP,
-				'https://my.nextcloud.org/apps/settings/user',
-				$this->l10n->t('Configure')
-			),
-		];
-	}
+    public function getWidgetButtons(string $userId): array {
+        return [
+            new WidgetButton(
+                WidgetButton::TYPE_NEW,
+                'https://somewhere.org',
+                $this->l10n->t('Create new element')
+            ),
+            new WidgetButton(
+                WidgetButton::TYPE_MORE,
+                'https://my.nextcloud.org/apps/your-app/',
+                $this->l10n->t('More notifications')
+            ),
+            new WidgetButton(
+                WidgetButton::TYPE_SETUP,
+                'https://my.nextcloud.org/apps/settings/user',
+                $this->l10n->t('Configure')
+            ),
+        ];
+    }
 
 The IIconWidget interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -238,11 +238,11 @@ it returns the URL to the img/app.svg file in your app.
 
 .. code-block:: php
 
-	public function getIconUrl(): string {
-		return $this->urlGenerator->getAbsoluteURL(
-			$this->urlGenerator->imagePath(Application::APP_ID, 'app.svg')
-		);
-	}
+    public function getIconUrl(): string {
+        return $this->urlGenerator->getAbsoluteURL(
+            $this->urlGenerator->imagePath(Application::APP_ID, 'app.svg')
+        );
+    }
 
 The IOptionWidget interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -253,9 +253,9 @@ the widget item icons should be rounded or kept as squares.
 
 .. code-block:: php
 
-	public function getWidgetOptions(): WidgetOptions {
-		return new WidgetOptions(true);
-	}
+    public function getWidgetOptions(): WidgetOptions {
+        return new WidgetOptions(true);
+    }
 
 The IAPIWidget interface
 ^^^^^^^^^^^^^^^^^^^^^^^^

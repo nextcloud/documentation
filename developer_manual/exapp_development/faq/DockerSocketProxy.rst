@@ -16,7 +16,7 @@ There are two parts of reverse proxy configuration:
 
 .. note::
 
-	For remote Docker Socket Proxy setup, it should expose the ports on the host.
+    For remote Docker Socket Proxy setup, it should expose the ports on the host.
 
 
 .. _faq_nextcloud-aio-docker-socket-proxy:
@@ -32,8 +32,8 @@ See `Nextcloud in Docker AIO (all-in-one) <https://docs.nextcloud.com/server/33/
 
 .. note::
 
-	Nextcloud AIO is not limited to its default Deploy daemon.
-	You can setup any other Deploy daemon (local or remote) for use in AppAPI.
+    Nextcloud AIO is not limited to its default Deploy daemon.
+    You can setup any other Deploy daemon (local or remote) for use in AppAPI.
 
 
 Other implementations
@@ -49,8 +49,8 @@ In this case, you will have to enable these APIs via the environment variables:
 
 .. note::
 
-	For local Deploy daemon setup, other implementations of Docker Socket Proxy may be enough.
-	But for remote Deploy daemon setup, we recommend using our DSP,
-	as `we allow <https://github.com/nextcloud/docker-socket-proxy/blob/main/haproxy.cfg.template>`_ only the Docker Engine APIs we actually use in AppAPI,
-	and it is additionally secured with haproxy authentication.
+    For local Deploy daemon setup, other implementations of Docker Socket Proxy may be enough.
+    But for remote Deploy daemon setup, we recommend using our DSP,
+    as `we allow <https://github.com/nextcloud/docker-socket-proxy/blob/main/haproxy.cfg.template>`_ only the Docker Engine APIs we actually use in AppAPI,
+    and it is additionally secured with haproxy authentication.
 

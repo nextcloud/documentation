@@ -29,11 +29,11 @@ Next is to setup the ExApp skeleton.
 There are several ExApp examples available so you can have a look at them and start from.
 The ExApp template and examples:
 
-	- ``[Python]`` `App Skeleton <https://github.com/nextcloud/app-skeleton-python>`_
-	- ``[Python]`` `UI Example Skeleton <https://github.com/nextcloud/ui_example>`_
-	- ``[Python]`` `More complex ExApp UI example with 3rd-party service <https://github.com/cloud-py-api/visionatrix>`_
-	- ``[GoLang]`` `Go Lang ExApp example <https://github.com/nextcloud/file_to_text_example>`_
-	- etc.
+    - ``[Python]`` `App Skeleton <https://github.com/nextcloud/app-skeleton-python>`_
+    - ``[Python]`` `UI Example Skeleton <https://github.com/nextcloud/ui_example>`_
+    - ``[Python]`` `More complex ExApp UI example with 3rd-party service <https://github.com/cloud-py-api/visionatrix>`_
+    - ``[GoLang]`` `Go Lang ExApp example <https://github.com/nextcloud/file_to_text_example>`_
+    - etc.
 
 They contain the basic structure of the ExApp, including:
 
@@ -52,9 +52,9 @@ More details are available in the :ref:`ExAppOverview` section.
 The basic development process consists of the following steps:
 
 - Implement the ExApp <-> Nextcloud :ref:`lifecycle methods <ex_app_lifecycle_methods>`:
-	#. ``/heartbeat``: ExApp heartbeat method
-	#. ``/init``: ExApp initialization method
-	#. ``/enabled``: ExApp enable/disable method
+    #. ``/heartbeat``: ExApp heartbeat method
+    #. ``/init``: ExApp initialization method
+    #. ``/enabled``: ExApp enable/disable method
 - Implement the ExApp backend API and logic
 - Implement the ExApp frontend (Nextcloud Vue.js app) [optional]
 
@@ -79,9 +79,9 @@ Currently, there are 3 main compute devices to target with custom Docker images:
 
 .. note::
 
-	If the Deploy daemon configured with the GPU compute device,
-	AppAPI will try to pull the Docker image with the GPU support first (``<image_name>:<version>-<cuda|rocm>``, `ref PR <https://github.com/nextcloud/app_api/pull/340>`_).
-	If the image is not found, AppAPI will try to pull the base (CPU) image (``<image_name>:<version>``).
+    If the Deploy daemon configured with the GPU compute device,
+    AppAPI will try to pull the Docker image with the GPU support first (``<image_name>:<version>-<cuda|rocm>``, `ref PR <https://github.com/nextcloud/app_api/pull/340>`_).
+    If the image is not found, AppAPI will try to pull the base (CPU) image (``<image_name>:<version>``).
 
 
 Dockerfile

@@ -15,10 +15,10 @@ The typical ExApp folder structure is the following:
 - **appinfo/**: contains the ExApp metadata, which is based on the regular :doc:`Nextcloud PHP appinfo <../../app_development/info>`,
   but with additional new fields under the ``external-app`` key.
 - **ex_app/**: the ExApp specific folder, which contains the ExApp frontend and backend parts.
-	- **lib/**: contains the ExApp backend part, which can be written in any language.
-	- **src/**: contains the ExApp frontend part, which is a regular Nextcloud Vue.js application, with small adjustments to the script loading paths (see :ref:`ExApp specific frontend changes <ex_app_specific_frontend_changes>`).
-	- **img/**: contains the ExApp images.
-	- **css/**: contains the ExApp CSS files.
+    - **lib/**: contains the ExApp backend part, which can be written in any language.
+    - **src/**: contains the ExApp frontend part, which is a regular Nextcloud Vue.js application, with small adjustments to the script loading paths (see :ref:`ExApp specific frontend changes <ex_app_specific_frontend_changes>`).
+    - **img/**: contains the ExApp images.
+    - **css/**: contains the ExApp CSS files.
 - **l10n**: contains the :ref:`ExApp translations <ex_app_translations>`.
 - **translationfiles**: contains the source translation (``.po``, ``.mo``) files for the ExApp.
 - **other folders or files**: depends on your case, e.g. screenshots, scripts, etc.
@@ -34,18 +34,18 @@ It should contain the following fields:
 
 .. code-block::
 
-	<external-app>
-		<docker-install>
-			<registry>ghcr.io</registry>
-			<image>nextcloud/skeleton</image>
-			<image-tag>latest</image-tag>
-		</docker-install>
-	</external-app>
+    <external-app>
+        <docker-install>
+            <registry>ghcr.io</registry>
+            <image>nextcloud/skeleton</image>
+            <image-tag>latest</image-tag>
+        </docker-install>
+    </external-app>
 
 - **docker-install**: contains the Docker image information for the ExApp.
-	- **registry**: the Docker registry where the image is stored.
-	- **image**: the Docker image name.
-	- **image-tag**: the Docker image tag (version tag).
+    - **registry**: the Docker registry where the image is stored.
+    - **image**: the Docker image name.
+    - **image-tag**: the Docker image tag (version tag).
 
 
 Backend
@@ -56,7 +56,7 @@ The only requirement here is to follow the microservice architecture and ExApp <
 
 .. note::
 
-	There is a limitation of AppAPI ExApp proxy - the websocket connections are not supported.
+    There is a limitation of AppAPI ExApp proxy - the websocket connections are not supported.
 
 Each ExApp container has environment variables set by AppAPI; you can find out more about them :ref:`here <ex_app_env_vars>`.
 
@@ -112,20 +112,20 @@ For example, the **vuex** router has the following base URL configuration:
 
 .. code-block::
 
-	...
-	const router = new VueRouter({
-		mode: 'history',
-		base: generateUrl(`${APP_API_ROUTER_BASE}/${EX_APP_ID}/${EX_APP_MENU_ENTRY_NAME}`, ''), // setting base to AppAPI embedded URL
-		linkActiveClass: 'active',
-	...
+    ...
+    const router = new VueRouter({
+        mode: 'history',
+        base: generateUrl(`${APP_API_ROUTER_BASE}/${EX_APP_ID}/${EX_APP_MENU_ENTRY_NAME}`, ''), // setting base to AppAPI embedded URL
+        linkActiveClass: 'active',
+    ...
 
 The same applies to the frontend API requests to the ExApp backend API:
 
 .. code-block::
 
-	...
-	axios.get(generateUrl(`${APP_API_PROXY_URL_PREFIX}/${EX_APP_ID}/some_api_endpoint`))
-	...
+    ...
+    axios.get(generateUrl(`${APP_API_PROXY_URL_PREFIX}/${EX_APP_ID}/some_api_endpoint`))
+    ...
 
 
 .. _ex_app_translations:
@@ -147,32 +147,32 @@ Here is an example using translationtool adjusted for Python:
     --- a/translations/translationtool/src/translationtool.php
     +++ b/translations/translationtool/src/translationtool.php
     @@ -67,7 +67,7 @@ public function createPotFile() {
-     		$this->createFakeFileForVueFiles();
-     		$this->createFakeFileForLocale();
-     		$translatableFiles = $this->findTranslatableFiles(
-    -			['.php', '.js', '.jsx', '.mjs', '.html', '.ts', '.tsx'],
-    +			['.php', '.js', '.jsx', '.mjs', '.html', '.ts', '.tsx', '.py'],
-     			['.min.js']
-     		);
+            $this->createFakeFileForVueFiles();
+            $this->createFakeFileForLocale();
+            $translatableFiles = $this->findTranslatableFiles(
+    -           ['.php', '.js', '.jsx', '.mjs', '.html', '.ts', '.tsx'],
+    +           ['.php', '.js', '.jsx', '.mjs', '.html', '.ts', '.tsx', '.py'],
+                ['.min.js']
+            );
 
     @@ -79,6 +79,8 @@ public function createPotFile() {
-     			$keywords = '';
-     			if (substr($entry, -4) === '.php') {
-     				$keywords = '--keyword=t --keyword=n:1,2';
-    +			} elseif (substr($entry, -3) === '.py') {
-    +				$keywords = '--keyword=_ --keyword=_n:1,2';
-     			} else {
-     				$keywords = '--keyword=t:2 --keyword=n:2,3';
-     			}
+                $keywords = '';
+                if (substr($entry, -4) === '.php') {
+                    $keywords = '--keyword=t --keyword=n:1,2';
+    +           } elseif (substr($entry, -3) === '.py') {
+    +               $keywords = '--keyword=_ --keyword=_n:1,2';
+                } else {
+                    $keywords = '--keyword=t:2 --keyword=n:2,3';
+                }
     @@ -86,6 +88,8 @@ public function createPotFile() {
-     			$language = '--language=';
-     			if (substr($entry, -4) === '.php') {
-     				$language .= 'PHP';
-    +			} elseif (substr($entry, -3) === '.py') {
-    +				$language .= 'Python';
-     			} else {
-     				$language .= 'Javascript';
-     			}
+                $language = '--language=';
+                if (substr($entry, -4) === '.php') {
+                    $language .= 'PHP';
+    +           } elseif (substr($entry, -3) === '.py') {
+    +               $language .= 'Python';
+                } else {
+                    $language .= 'Javascript';
+                }
 
 where we declare the methods used in source code for translating strings.
 
@@ -194,7 +194,7 @@ And this can be done with simple bash scripts, as `in our example for Python <ht
 - `scripts/copy_translations.sh <https://github.com/nextcloud/ui_example/tree/main/scripts/copy_translations.sh>`_: for Python example ExApp transforms ``translationfiles/<lang>/*.(po|mo)`` into the locale folder structure: ``<locale_dir>/<lang>/LC_MESSAGES/*.(po|mo)``. This can be adjusted to your needs, depending on the language you are using.
 
 .. note::
-	Your translations conversion should be also included in `Dockerfile <https://github.com/nextcloud/ui_example/blob/main/Dockerfile>`_ build process, so that the ExApp translations are available in the Docker image.
+    Your translations conversion should be also included in `Dockerfile <https://github.com/nextcloud/ui_example/blob/main/Dockerfile>`_ build process, so that the ExApp translations are available in the Docker image.
 
 
 Makefile
@@ -214,7 +214,7 @@ It is recommended to use the following default set of commands:
 - ``copy_translations``: copies translations to needed location depending on your ExApp backend programming language.
 
 .. note::
-	These Makefiles are typically written to work in the `nextcloud-docker-dev <https://github.com/juliusknorr/nextcloud-docker-dev>`_ development environment.
+    These Makefiles are typically written to work in the `nextcloud-docker-dev <https://github.com/juliusknorr/nextcloud-docker-dev>`_ development environment.
 
 For a complete example, you can take a look at our `Makefile for the 3rd-party service example <https://github.com/cloud-py-api/visionatrix/blob/main/Makefile>`_.
 This example also requires the ``xmlstarlet`` program to be installed so that the Makefile can automatically detect the ExApp version from the info.xml file.

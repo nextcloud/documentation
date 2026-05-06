@@ -14,39 +14,39 @@ and update instructions for that installation method for the most accurate upgra
 There are two ways to upgrade an Archive based Nextcloud Server deployment:
 
 * With the :doc:`Built-in Updater <update>` (via the web or command-line interfaces).
-* :doc:`Manually upgrading <manual_upgrade>` (using a downloaded Archive file) 
+* :doc:`Manually upgrading <manual_upgrade>` (using a downloaded Archive file)
 
-The Built-in Updater, in either Web or command-line mode, is the easiest choice for most environments. 
+The Built-in Updater, in either Web or command-line mode, is the easiest choice for most environments.
 However some environments require the manual approach. Both approaches are covered fully here.
 
 .. important::
-   Before upgrading, especially between major versions (e.g. v27.y.z -> v28.y.z) please review 
+   Before upgrading, especially between major versions (e.g. v27.y.z -> v28.y.z) please review
    :ref:`critical changes<critical-changes>` first. These are highlights of changes that may be required
    in your environment to accommodate changes in Nextcloud Server. These notes are periodically revised as
-   needed so it is also a good idea to revisit them periodically, such as when proceeding with maintenance 
+   needed so it is also a good idea to revisit them periodically, such as when proceeding with maintenance
    upgrades.
 
 When an update is available for your Nextcloud server, by default you will receive
-a notification. You can also check for available updates by visiting the Update section under 
+a notification. You can also check for available updates by visiting the Update section under
 **Administration settings->Overview** in the Web UI.
 
-.. note:: 
-   It is best to keep your Nextcloud server upgraded regularly. This means installing all maintenance/point releases 
+.. note::
+   It is best to keep your Nextcloud server upgraded regularly. This means installing all maintenance/point releases
    and upgrading to new major releases before your current one reaches :doc:`end-of-life</release_schedule>` status.
-   Examples of major releases are 27, 28, or 29. Maintenance releases are intermediate releases for each 
-   major release that address critical functionality or security bugs. For example 28.0.4 and 29.0.2 are maintenance 
-   releases. 
+   Examples of major releases are 27, 28, or 29. Maintenance releases are intermediate releases for each
+   major release that address critical functionality or security bugs. For example 28.0.4 and 29.0.2 are maintenance
+   releases.
 
 Approaching Upgrades
 --------------------
 
-Nextcloud must be upgraded step by step: 
+Nextcloud must be upgraded step by step:
   * Before you can upgrade to the next major release, you need to upgrade to the latest point release of your current major version.
   * Then run the upgrade again to upgrade to the next major release's latest point release.
   * **You cannot skip major releases.** Please re-run the upgrade until you have reached the highest available (or applicable) release.
   * Example: 18.0.5 -> 18.0.11 -> 19.0.5 -> 20.0.2
 
-**Wait for background migrations to finish after major upgrades**. After upgrading to a new major version, some migrations are scheduled to run 
+**Wait for background migrations to finish after major upgrades**. After upgrading to a new major version, some migrations are scheduled to run
 as a background job. If you plan to upgrade directly to another major version (e.g. 24 -> 25 -> 26) you need to make sure these
 migrations were executed before starting the next upgrade. To do so you should run the ``cron.php`` file 2-3 times, for example::
 

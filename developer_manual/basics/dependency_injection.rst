@@ -58,7 +58,7 @@ For example, consider the following pattern:
 .. code-block:: php
   :emphasize-lines: 10, 14
 
-  /** 
+  /**
    * Without dependency injection:
    */
 

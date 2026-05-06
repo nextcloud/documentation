@@ -16,11 +16,11 @@ Request data
 
 .. code-block:: json
 
-	{
-		"name": "Talk bot display name",
-		"route": "/talk_bot_webhook_route_on_ex_app",
-		"description": "Talk bot description",
-	}
+    {
+        "name": "Talk bot display name",
+        "route": "/talk_bot_webhook_route_on_ex_app",
+        "description": "Talk bot description",
+    }
 
 
 Unregister ExApp Talk bot (OCS)
@@ -35,7 +35,7 @@ Request data
 
 .. code-block:: json
 
-	{
-		"route": "/route_of_talk_bot"
-	}
+    {
+        "route": "/route_of_talk_bot"
+    }
 

@@ -219,7 +219,7 @@ Get all png and jpg files over 10MB.
             <d:orderby/>
         </d:basicsearch>
     </d:searchrequest>
-    
+
 Search for all common files (no directories) and limit the result of the last 5 files with ordering, last modified
 
 .. code-block:: xml

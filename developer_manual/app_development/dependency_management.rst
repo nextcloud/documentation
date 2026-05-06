@@ -38,79 +38,79 @@ Alternatively you can use [composer-bin-plugin](https://github.com/bamarni/compo
 
 1. Install composer-bin-plugin according to their docs.
 
-	.. code-block:: shell
+    .. code-block:: shell
 
-		composer require --dev bamarni/composer-bin-plugin
+        composer require --dev bamarni/composer-bin-plugin
 
 2. Install the tools you need in the vendor-bin directory.
 
-	.. code-block:: shell
+    .. code-block:: shell
 
-		composer bin psalm require --dev psalm/phar
-		composer bin psalm require --dev nextcloud/ocp:dev-master
+        composer bin psalm require --dev psalm/phar
+        composer bin psalm require --dev nextcloud/ocp:dev-master
 
 3. Adjust some config (see below)
-	- Add in `composer.json`:
+    - Add in `composer.json`:
 
-	.. code-block:: json
-		:caption: composer.json
+    .. code-block:: json
+        :caption: composer.json
 
-		{
-			"extra": {
-				"bamarni-bin": {
-					"bin-links": true,
-					"forward-command": true
-				}
-			}
-		}
+        {
+            "extra": {
+                "bamarni-bin": {
+                    "bin-links": true,
+                    "forward-command": true
+                }
+            }
+        }
 
-	- Add in `composer.json`:
+    - Add in `composer.json`:
 
-	.. code-block:: json
-		:caption: composer.json
+    .. code-block:: json
+        :caption: composer.json
 
-		{
-			"scripts": {
-				"post-install-cmd": [
-					"[ $COMPOSER_DEV_MODE -eq 0 ] || composer bin all install --ansi"
-				],
-				"post-update-cmd": [
-					"[ $COMPOSER_DEV_MODE -eq 0 ] || composer bin all update --ansi"
-				]
-			}
-		}
+        {
+            "scripts": {
+                "post-install-cmd": [
+                    "[ $COMPOSER_DEV_MODE -eq 0 ] || composer bin all install --ansi"
+                ],
+                "post-update-cmd": [
+                    "[ $COMPOSER_DEV_MODE -eq 0 ] || composer bin all update --ansi"
+                ]
+            }
+        }
 
-	- Adjust `psalm.xml`:
-		- Ensure the schemaLocation is correct:
+    - Adjust `psalm.xml`:
+        - Ensure the schemaLocation is correct:
 
-		.. code-block:: xml
-			:caption: psalm.xml
+        .. code-block:: xml
+            :caption: psalm.xml
 
-			xsi:schemaLocation="https://getpsalm.org/schema/config vendor-bin/psalm/vendor/vimeo/psalm/config.xsd"
+            xsi:schemaLocation="https://getpsalm.org/schema/config vendor-bin/psalm/vendor/vimeo/psalm/config.xsd"
 
-		- Ensure it has something like this:
+        - Ensure it has something like this:
 
-		.. code-block:: xml
-			:caption: psalm.xml
+        .. code-block:: xml
+            :caption: psalm.xml
 
-			<projectFiles>
-				<directory name="lib" />
-				<ignoreFiles>
-					<directory name="vendor" />
-					<directory name="vendor-bin" />
-				</ignoreFiles>
-			</projectFiles>
-			<extraFiles>
-				<directory name="vendor" />
-				<directory name="vendor-bin/psalm/vendor" />
-			</extraFiles>
+            <projectFiles>
+                <directory name="lib" />
+                <ignoreFiles>
+                    <directory name="vendor" />
+                    <directory name="vendor-bin" />
+                </ignoreFiles>
+            </projectFiles>
+            <extraFiles>
+                <directory name="vendor" />
+                <directory name="vendor-bin/psalm/vendor" />
+            </extraFiles>
 
-	- Adjust `.php-cs-fixer.dist.php`
+    - Adjust `.php-cs-fixer.dist.php`
 
-	.. code-block:: PHP
-		:caption: .php-cs-fixer.dist.php
+    .. code-block:: PHP
+        :caption: .php-cs-fixer.dist.php
 
-		require_once __DIR__ . '/vendor-bin/cs-fixer/vendor/autoload.php';
+        require_once __DIR__ . '/vendor-bin/cs-fixer/vendor/autoload.php';
 
 Conflict example
 ****************

@@ -147,32 +147,32 @@ as plain JavaScript:
         import Vue from 'vue'
         import ItemPickerDialog from './components/ItemPickerDialog'
 
-    	OCP.Collaboration.registerType('myapp', {
-		action: () => {
-			return new Promise((resolve, reject) => {
-				const container = document.createElement('div')
-				container.id = 'myapp-item-select'
-				const body = document.getElementById('body-user')
-				body.appendChild(container)
-				const ComponentVM = new Vue({
-					render: h => h(ItemPickerDialog),
-				})
-				ComponentVM.$mount(container)
-				ComponentVM.$root.$on('close', () => {
-					ComponentVM.$el.remove()
-					ComponentVM.$destroy()
-					reject(new Error('User cancelled resource selection'))
-				})
-				ComponentVM.$root.$on('select', (id) => {
-					resolve(id)
-					ComponentVM.$el.remove()
-					ComponentVM.$destroy()
-				})
-			})
-		},
-		typeString: t('myapp', 'Link to an item'),
-		typeIconClass: 'icon-file',
-	})
+        OCP.Collaboration.registerType('myapp', {
+        action: () => {
+            return new Promise((resolve, reject) => {
+                const container = document.createElement('div')
+                container.id = 'myapp-item-select'
+                const body = document.getElementById('body-user')
+                body.appendChild(container)
+                const ComponentVM = new Vue({
+                    render: h => h(ItemPickerDialog),
+                })
+                ComponentVM.$mount(container)
+                ComponentVM.$root.$on('close', () => {
+                    ComponentVM.$el.remove()
+                    ComponentVM.$destroy()
+                    reject(new Error('User cancelled resource selection'))
+                })
+                ComponentVM.$root.$on('select', (id) => {
+                    resolve(id)
+                    ComponentVM.$el.remove()
+                    ComponentVM.$destroy()
+                })
+            })
+        },
+        typeString: t('myapp', 'Link to an item'),
+        typeIconClass: 'icon-file',
+    })
 
 This will allow other apps to link to your items. We also want to link to other apps' items.
 Since all apps with projects support are listening on the above LoadAdditionalScriptsEvent,
@@ -181,21 +181,21 @@ we can simply dispatch it when we render our main page template.
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	class MyController extends Controller {
-		private IEventDispatcher $eventDispatcher;
+    class MyController extends Controller {
+        private IEventDispatcher $eventDispatcher;
 
-		public function __construct(string $appName, IRequest $request, IEventDispatcher $eventDispatcher) {
-			parent::__construct($appName, $request);
-			$this->eventDispatcher = $eventDispatcher;
-		}
+        public function __construct(string $appName, IRequest $request, IEventDispatcher $eventDispatcher) {
+            parent::__construct($appName, $request);
+            $this->eventDispatcher = $eventDispatcher;
+        }
 
-		public function index() {
-			$this->eventDispatcher->dispatchTyped(new \OCP\Collaboration\Resources\LoadAdditionalScriptsEvent());
-			return new TemplateResponse('my_app', 'main');
-		}
-	}
+        public function index() {
+            $this->eventDispatcher->dispatchTyped(new \OCP\Collaboration\Resources\LoadAdditionalScriptsEvent());
+            return new TemplateResponse('my_app', 'main');
+        }
+    }
 
 
 In our Vue app, we can then render the pre-built projects picker available in the npm package ``nextcloud-vue-collections``.

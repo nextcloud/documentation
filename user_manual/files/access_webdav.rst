@@ -108,7 +108,7 @@ share::
    :alt: Screenshot of configuring Nautilus file manager to use WebDAV
 
 .. note:: The same method works for other file managers that use GVFS,
-	  such as MATE's Caja and Cinnamon's Nemo.
+      such as MATE's Caja and Cinnamon's Nemo.
 
 Accessing files with KDE and Dolphin file manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -488,26 +488,26 @@ To create a folder with the current date as name:
 
 .. code-block:: bash
 
-	$ curl -u user:pass -X MKCOL "https://example.com/nextcloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')"
+    $ curl -u user:pass -X MKCOL "https://example.com/nextcloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')"
 
 To upload a file ``error.log`` into that directory:
 
 .. code-block:: bash
 
-	$ curl -u user:pass -T error.log "https://example.com/nextcloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')/error.log"
+    $ curl -u user:pass -T error.log "https://example.com/nextcloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')/error.log"
 
 To move a file:
 
 .. code-block:: bash
 
-	$ curl -u user:pass -X MOVE --header 'Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg' https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
+    $ curl -u user:pass -X MOVE --header 'Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg' https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
 
 To get the properties of files in the root folder:
 
 .. code-block:: bash
 
-	$ curl -X PROPFIND -H "Depth: 1" -u user:pass https://example.com/nextcloud/remote.php/dav/files/USERNAME/ | xml_pp
-	<?xml version="1.0" encoding="utf-8"?>
+    $ curl -X PROPFIND -H "Depth: 1" -u user:pass https://example.com/nextcloud/remote.php/dav/files/USERNAME/ | xml_pp
+    <?xml version="1.0" encoding="utf-8"?>
     <d:multistatus xmlns:d="DAV:" xmlns:oc="http://nextcloud.org/ns" xmlns:s="http://sabredav.org/ns">
       <d:response>
         <d:href>/nextcloud/remote.php/dav/files/USERNAME/</d:href>

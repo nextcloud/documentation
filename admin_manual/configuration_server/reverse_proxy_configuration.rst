@@ -18,7 +18,7 @@ configured in :file:`config/config.php`
 
 Set the :file:`trusted_proxies` parameter as an array of:
 
-* IPv4 addresses 
+* IPv4 addresses
 * IPv4 ranges in CIDR notation
 * IPv6 addresses
 * IPv6 ranges in CIDR notation
@@ -42,7 +42,7 @@ Overwrite parameters
 
 The automatic hostname, protocol or webroot detection of Nextcloud can fail in
 certain reverse proxy situations. This configuration allows the automatic detection
-to be manually overridden. If Nextcloud fails to automatically detect the hostname, protocol 
+to be manually overridden. If Nextcloud fails to automatically detect the hostname, protocol
 or webroot you can use the **overwrite** parameters inside the :file:`config/config.php`.
 
 * :file:`overwritehost` set the hostname of the proxy. You can also specify a port.
@@ -124,13 +124,13 @@ If using nginx as Nextcloud's webserver from behind another nginx reverse proxy,
     location /.well-known/carddav {
         return 301 $scheme://$host/remote.php/dav;
     }
-    
+
     location /.well-known/caldav {
         return 301 $scheme://$host/remote.php/dav;
     }
-    
+
     location ^~ /.well-known {
-        return 301 $scheme://$host/index.php$uri;  
+        return 301 $scheme://$host/index.php$uri;
     }
 
 When using NGINX Proxy Manager, the entry ``proxy_hide_header Upgrade;`` must be added in the *"Advanced Settings"*

@@ -10,8 +10,8 @@ sites** app, as this screenshot shows.
    *Click to enlarge*
 
 This is useful for quick access to important pages such as the
-Nextcloud manuals and informational pages for your company, and for presenting 
-external pages inside your custom Nextcloud branding, if you use your own custom 
+Nextcloud manuals and informational pages for your company, and for presenting
+external pages inside your custom Nextcloud branding, if you use your own custom
 themes.
 
 The External sites app can be easily installed from the app store. Go to **Settings > Apps >
@@ -40,21 +40,21 @@ reloading the page.
 Configurations preventing embedding
 -----------------------------------
 
-Your links may or may not work correctly due to the various ways that Web 
-browsers and Web sites handle HTTP and HTTPS URLs, and because the External 
-Sites app embeds external links in IFrames. Modern Web browsers try very hard 
-to protect Web surfers from dangerous links, and safety apps like 
-`Privacy Badger <https://www.eff.org/privacybadger>`_ and ad-blockers may block 
-embedded pages. It is strongly recommended to enforce HTTPS on your Nextcloud 
-server; do not weaken this, or any of your security tools, just to make 
-embedded Web pages work. After all, you can freely access them outside of 
+Your links may or may not work correctly due to the various ways that Web
+browsers and Web sites handle HTTP and HTTPS URLs, and because the External
+Sites app embeds external links in IFrames. Modern Web browsers try very hard
+to protect Web surfers from dangerous links, and safety apps like
+`Privacy Badger <https://www.eff.org/privacybadger>`_ and ad-blockers may block
+embedded pages. It is strongly recommended to enforce HTTPS on your Nextcloud
+server; do not weaken this, or any of your security tools, just to make
+embedded Web pages work. After all, you can freely access them outside of
 Nextcloud.
 
-Most Web sites that offer login functionalities use the ``X-Frame-Options`` or 
-``Content-Security-Policy`` HTTP header which instructs browsers to not 
-allow their pages to be embedded for security reasons (e.g. "Clickjacking"). You 
-can usually verify the reason why embedding the website is not possible by using 
-your browser's console tool. For example, this page has an invalid SSL 
+Most Web sites that offer login functionalities use the ``X-Frame-Options`` or
+``Content-Security-Policy`` HTTP header which instructs browsers to not
+allow their pages to be embedded for security reasons (e.g. "Clickjacking"). You
+can usually verify the reason why embedding the website is not possible by using
+your browser's console tool. For example, this page has an invalid SSL
 certificate.
 
 .. figure:: ../images/external-sites-4.png

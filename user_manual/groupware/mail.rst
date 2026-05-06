@@ -65,7 +65,7 @@ This setting allows you to show messages set as favorite in a separate section o
 
 1. Visit mail settings
 2. Go to *Appearance*
-3. Enable sorting favorites up 
+3. Enable sorting favorites up
 
 .. _mail-scheduled-messages:
 

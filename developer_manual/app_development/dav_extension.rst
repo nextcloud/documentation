@@ -15,7 +15,7 @@ Registering a DAV plugin
 To register a server plugin in your app, register an event listener for
 ``OCA\DAV\Events\SabrePluginAddEvent`` (introduced in Nextcloud 28). In the
 listener's handler, add your DAV plugin to the server.
- 
+
 For example:
 
 .. code-block:: php

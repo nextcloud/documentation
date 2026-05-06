@@ -1,7 +1,7 @@
 Layout
 ======
 
-These layout guidelines mainly focus on our web interface. On Android and iOS we closely follow the platform guidelines, namely `Material Design <https://material.io/design>`_\ , and `Apple Human Interface Guidelines <https://developer.apple.com/design/human-interface-guidelines/>`_. 
+These layout guidelines mainly focus on our web interface. On Android and iOS we closely follow the platform guidelines, namely `Material Design <https://material.io/design>`_\ , and `Apple Human Interface Guidelines <https://developer.apple.com/design/human-interface-guidelines/>`_.
 
 While deciding how you want your app to look, there are a number of factors to consider:
 
@@ -42,7 +42,7 @@ Special case: no sidebar
 .. image:: ../images/activity-layout.png
    :alt: Activity layout
 
-	 
+
 Typically, a sidebar is used to show more information about an item. Sometimes this is not necessary as in the case of Activities. Then, the layout will have only a navigation and the main content.
 
 Special case: list in navigation

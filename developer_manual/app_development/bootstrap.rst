@@ -19,8 +19,8 @@ The `Application` class is the main entry point of an app. This class is optiona
 to register any services or run some code for every request.
 
 
-Nextcloud will try to autoload the class from the namespace ``\OCA\<App namespace>\AppInfo\Application``, like 
-``\OCA\MyApp\AppInfo\Application``, where *MyApp* would be the name of your app. The file will therefore have the location ``myapp/lib/AppInfo/Application.php``. 
+Nextcloud will try to autoload the class from the namespace ``\OCA\<App namespace>\AppInfo\Application``, like
+``\OCA\MyApp\AppInfo\Application``, where *MyApp* would be the name of your app. The file will therefore have the location ``myapp/lib/AppInfo/Application.php``.
 
 .. code-block:: php
 
@@ -88,7 +88,7 @@ The class **must** extend ``OCP\AppFramework\App`` and may optionally implement 
         }
 
     }
-    
+
 Note that the context objects of the methods ``register`` and ``boot`` have different interfaces and thus have different capabilities appropriate for their stage.
 
 Bootstrapping process
