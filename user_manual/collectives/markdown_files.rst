@@ -1,6 +1,6 @@
-==============
-Markdown files
-==============
+=====================
+Access Markdown files
+=====================
 
 The pages of your collectives are stored in Markdown files. You can access them via the Files app.
 Per default, the folder is hidden as it's called ``.Collectives`` (or a translated version of it).
