@@ -11,11 +11,9 @@ installation needs to be tweaked a bit.
 
 .. warning::
 
-    This manual only covers MySQL 8 or newer and MariaDB 10.2 or newer.
-    If you use MariaDB 10.2, please check
-    `this older version <https://docs.nextcloud.com/server/20/admin_manual/configuration_database/mysql_4byte_support.html#mariadb-10-2-or-earlier>`_
-    of the documentation. If you use an older version of MySQL or MariaDB, please note that they are no longer supported
-    by the current Nextcloud version.
+    This guide applies only to MySQL 8 or newer and MariaDB 10.6 or newer.
+    For a list of supported MySQL and MariaDB versions, see our
+    :doc:`system requirements documentation <../installation/system_requirements>`.
 
 1. Make sure the following InnoDB settings are set on your MySQL server::
 
@@ -43,7 +41,7 @@ The result should look like this::
 3. Open a shell, change dir (adjust ``/var/www/nextcloud`` to your nextcloud location if needed), and put your nextcloud instance in maintenance mode, if it isn't already::
 
    $ cd /var/www/nextcloud
-   $ sudo -u www-data php occ maintenance:mode --on
+   $ sudo -E -u www-data php occ maintenance:mode --on
 
 4. Change your databases character set and collation:
 
@@ -53,11 +51,11 @@ The result should look like this::
 
 5. Set the ``mysql.utf8mb4`` config to true in your config.php::
 
-    $ sudo -u www-data php occ config:system:set mysql.utf8mb4 --type boolean --value="true"
+    $ sudo -E -u www-data php occ config:system:set mysql.utf8mb4 --type boolean --value="true"
 
 6. Convert all existing tables to the new collation by running the repair step::
 
-    $ sudo -u www-data php occ maintenance:repair
+    $ sudo -E -u www-data php occ maintenance:repair
 
 .. note::
 
@@ -65,7 +63,7 @@ The result should look like this::
 
 7. Disable maintenance mode::
 
-   $ sudo -u www-data php occ maintenance:mode --off
+   $ sudo -E -u www-data php occ maintenance:mode --off
 
 Now you should be able to use Emojis in your file names, calendar events, comments and many more.
 

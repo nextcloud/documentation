@@ -6,9 +6,8 @@ When you delete a file in Nextcloud, it is not immediately deleted permanently,
 only moved into the trash bin. It is not permanently deleted until you manually
 delete it, or when the Deleted Files app deletes it to make room for new files.
 
-Find your deleted files by clicking on the **Deleted files**
-button on the Files page of the Nextcloud Web interface. You'll have options to
-either restore or permanently delete files.
+Find your deleted files by clicking the **Deleted files** button on the Files
+page of the Nextcloud web interface. You can restore or permanently delete files from there.
 
 Quotas
 ------
@@ -57,5 +56,3 @@ until the space limit is met again.
 
 .. note:: Your administrator may have configured the trash bin retention period
    to override the storage space management. See `admin documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#deleted-items-trash-bin>`_ for more details.
-
-.. TODO ON RELEASE: Update version number above on release

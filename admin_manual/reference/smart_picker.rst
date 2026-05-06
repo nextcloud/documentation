@@ -23,17 +23,17 @@ Known Smart Picker providers
     * `Deck <https://github.com/nextcloud/deck>`_: To get links to boards and comments
     * `Talk <https://github.com/nextcloud/spreed>`_: To get links to conversations
     * `Files <https://github.com/nextcloud/server>`_: To get internal links to files (not share links yet)
-    * `Text templates <https://github.com/julien-nc/text_templates>`_: To get personal and global text templates
+    * `Text templates <https://github.com/nextcloud/text_templates>`_: To get personal and global text templates
 * Relying on 3rd party services
     * `GitHub integration <https://github.com/nextcloud/integration_github>`_: To get links to GitHub issues, pull requests, and repositories
     * `GitLab integration <https://github.com/nextcloud/integration_gitlab>`_: To get links to Gitlab issues, merge requests, and repositories
     * `Zammad integration <https://github.com/nextcloud/integration_zammad>`_: To get links to Zammad tickets
     * `Reddit integration <https://github.com/nextcloud/integration_reddit>`_: To get links to subreddits and publications
     * `Mastodon integration <https://github.com/nextcloud/integration_mastodon>`_: To get links to members, toots and hashtags
-    * `The Movie Database integration <https://github.com/julien-nc/integration_tmdb>`_: To get links to people, movies and series
-    * `OpenStreetMap integration <https://github.com/julien-nc/integration_openstreetmap>`_: To get location links from OpenStreetMap
-    * `Giphy integration <https://github.com/julien-nc/integration_giphy>`_: To get links to GIFs
+    * `The Movie Database integration <https://github.com/nextcloud/integration_tmdb>`_: To get links to people, movies and series
+    * `OpenStreetMap integration <https://github.com/nextcloud/integration_openstreetmap>`_: To get location links from OpenStreetMap
+    * `Giphy integration <https://github.com/nextcloud/integration_giphy>`_: To get links to GIFs
     * `Notion integration <https://github.com/nextcloud/integration_notion>`_: To get links to Notion documents
-    * `Peertube integration <https://github.com/julien-nc/integration_peertube>`_: To get links to videos
-    * `OpenAI integration <https://github.com/julien-nc/integration_openai>`_: To generate images with Dall-e, text with GPT and transcribe/translate with Whisper (speech-to-text)
-    * `Replicate integration <https://github.com/julien-nc/integration_replicate>`_: To generate images with stable diffusion, and transcribe/translate with Whisper (speech-to-text)
+    * `Peertube integration <https://github.com/nextcloud/integration_peertube>`_: To get links to videos
+    * `OpenAI integration <https://github.com/nextcloud/integration_openai>`_: To generate images with Dall-e, text with GPT and transcribe/translate with Whisper (speech-to-text)
+    * `Replicate integration <https://github.com/nextcloud/integration_replicate>`_: To generate images with stable diffusion, and transcribe/translate with Whisper (speech-to-text)

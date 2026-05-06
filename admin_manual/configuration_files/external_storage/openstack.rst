@@ -18,7 +18,7 @@ protocol. Your Nextcloud configuration needs:
 * **Identity Endpoint URL**, the URL to log in to your OpenStack account.
 
 .. figure:: images/openstack.png
-   :alt: Openstack configuration.
+   :alt: OpenStack configuration.
 
 The Rackspace authentication mechanism requires: 
 
@@ -29,7 +29,7 @@ The Rackspace authentication mechanism requires:
 You must also enter the term **cloudFiles** in the **Service name** field.
 
 .. figure:: images/rackspace.png
-   :alt: Openstack configuration.
+   :alt: OpenStack configuration.
 
 It may be necessary to specify a **Region**. Your region should be named in 
 your account information, and you can read about Rackspace regions at 

@@ -73,6 +73,22 @@ System values are saved in the :file:`config/config.php` and allow the app to mo
 
 .. note:: It's also possible to use ``getSystemValueBool``, ``getSystemValueString``, ``getSystemValueInt`` to get type hinted return values.
 
+Naming conventions
+~~~~~~~~~~~~~~~~~~
+
+For consistency there are conventions for config keys:
+
+* System config keys should only contain lower case letters, numbers and ``_``. This ensures that they can be used as environment variables.
+* Keys can be scoped to subsystems like ``<subsystem>_<key>``. This makes it easier to group related configuration.
+
+Here are some examples:
+
+1. ``files_external_allow_create_new_local``
+2. ``filesystem_cache_readonly``
+3. ``log_rotate_size``
+4. ``mail_smtpname``
+5. ``session_lifetime``
+
 App values
 ----------
 

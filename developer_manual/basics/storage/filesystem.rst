@@ -7,7 +7,7 @@ Nextcloud filesystem API
 
 High level guide to using the Nextcloud filesystem API.
 
-Because users can choose their storage backend, the filesystem should be accessed by using the appropriate filesystem classes. For a simplified filesystem for app specific data see `IAppData <appdata.html>`_
+Because users can choose their storage backend, the filesystem should be accessed by using the appropriate filesystem classes. For a simplified filesystem for app specific data see :doc:`IAppData <appdata>`
 
 Node API
 ^^^^^^^^
@@ -32,7 +32,7 @@ From the root folder you can either access a user's home folder or access a file
         private IUserSession $userSession;
         private IRootFolder $rootFolder;
 
-        public function __constructor(IUserSession $userSession, IRootFolder $rootFolder) {
+        public function __construct(IUserSession $userSession, IRootFolder $rootFolder) {
             $this->userSession = $userSession;
             $this->rootFolder = $rootFolder;
         }
@@ -81,13 +81,12 @@ All methods return a Folder object on which files and folders can be accessed, o
             try {
                 try {
                     $file = $userFolder->get('myfile.txt');
-                } catch(\OCP\Files\NotFoundException $e) {
-                    $userFolder->touch('myfile.txt');
-                    $file = $userFolder->get('myfile.txt');
-                }
 
-                // the id can be accessed by $file->getId();
-                $file->putContent($content);
+                    // the id can be accessed by $file->getId();
+                    $file->putContent($content);
+                } catch(\OCP\Files\NotFoundException $e) {
+                    $userFolder->newFile('myfile.txt', $content);
+                }
 
             } catch(\OCP\Files\NotPermittedException $e) {
                 // you have to create this exception by yourself ;)

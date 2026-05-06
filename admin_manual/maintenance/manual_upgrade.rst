@@ -2,10 +2,26 @@
 Upgrade manually
 ================
 
-.. seealso::
+Overview
+--------
 
-   If you upgrade from a previous major version please see :ref:`critical changes<critical-changes>`
-   first.
+In some environments using the Built-in Updater in Web mode is not reliable (such as due to web server
+timeouts) and running it in command-line mode is not an option (such as in some shared hosting environments).
+In these cases a manual upgrade may be the best approach.
+
+A manual upgrade consists of downloading and unpacking the Nextcloud Archive file either to your PC or host. Then
+deleting your existing Nextcloud Server installation files and folders, **except** ``data/`` and ``config/``, on 
+your host. Then moving the new Nextcloud Server installation files into the appropriate place on your host, 
+again preserving your existing ``data/`` and ``config/`` files. And doing a few other housekeeping items, such as
+making sure your installed apps are transferred into the new installation and adjusting permissions. That may sound
+like a lot, but detailed instructions are below.
+
+.. important::
+   Before upgrading, especially between major versions (e.g. v27.y.z -> v28.y.z) please review
+   :ref:`critical changes<critical-changes>` first. These are highlights of changes that may be required
+   in your environment to accommodate changes in Nextcloud Server. These notes are periodically revised as
+   needed so it is a good idea to revisit them even when proceeding with minor and maintenance upgrades just
+   in case.
 
 .. warning::
 
@@ -13,6 +29,10 @@ Upgrade manually
    :doc:`../installation/system_requirements` of the new version as well as that you are 
    following the standard :doc:`upgrade requirements <./upgrade>` (such as upgrading to 
    the latest maintenance release *before* upgrading to a new major release).
+
+
+Step-by-Step Manual Upgrade
+---------------------------
 
 .. important:: Always start by making a fresh backup and disabling all 3rd party apps.
 
@@ -82,7 +102,7 @@ Upgrade manually
 15. Now launch the upgrade from the command line using ``occ``, like this 
     example on Ubuntu Linux::
     
-     sudo -u www-data php occ upgrade
+     sudo -E -u www-data php occ upgrade
      
     (!) this MUST be executed from within your nextcloud installation directory
      
@@ -110,10 +130,10 @@ You'll find previous Nextcloud releases in the `Nextcloud Server Changelog
 Troubleshooting
 ---------------
 
-Occasionally, *files do not show up after a upgrade*. A rescan of the files can 
+Occasionally, *files do not show up after an upgrade*. A rescan of the files can 
 help::
 
- sudo -u www-data php console.php files:scan --all
+ sudo -E -u www-data php console.php files:scan --all
 
 See `the nextcloud.com support page <https://nextcloud.com/support/>`_ for further
 resources.
@@ -122,15 +142,15 @@ Sometimes, Nextcloud can get *stuck in a upgrade* if the web based upgrade
 process is used. This is usually due to the process taking too long and
 encountering a PHP time-out. Stop the upgrade process this way::
 
- sudo -u www-data php occ maintenance:mode --off
+ sudo -E -u www-data php occ maintenance:mode --off
   
 Then start the manual process::
   
- sudo -u www-data php occ upgrade
+ sudo -E -u www-data php occ upgrade
 
 If this does not work properly, try the repair function::
 
- sudo -u www-data php occ maintenance:repair
+ sudo -E -u www-data php occ maintenance:repair
 
 
 .. _nextcloud.com/install/:

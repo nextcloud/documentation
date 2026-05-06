@@ -449,3 +449,38 @@ Select and Multi-select
 		'placeholder' => 'Select some multiple options', // input placeholder
 		'default' => ['foo', 'bar'],
 	],
+
+
+Sensitive field type
+--------------------
+
+Since Nextcloud 32 there is a new field attribute ``sensitive: true/false`` available for ``DeclarativeSettingsTypes::TEXT``, ``DeclarativeSettingsTypes::PASSWORD`` types.
+The values of such fields are stored in an encrypted form in the database and are not exposed to the UI.
+
+
+.. code-block:: php
+
+	[
+		'id' => 'test_sensitive_field',
+		'title' => 'Sensitive text field',
+		'description' => 'Set some secure value setting that is stored encrypted',
+		'type' => DeclarativeSettingsTypes::TEXT,
+		'label' => 'Sensitive field',
+		'placeholder' => 'Set secure value',
+		'default' => '',
+		'sensitive' => true, // only for TEXT, PASSWORD types
+	],
+	[
+		'id' => 'test_sensitive_field_2',
+		'title' => 'Sensitive password field',
+		'description' => 'Set some password setting that is stored encrypted',
+		'type' => DeclarativeSettingsTypes::PASSWORD,
+		'label' => 'Sensitive field',
+		'placeholder' => 'Set secure value',
+		'default' => '',
+		'sensitive' => true, // only for TEXT, PASSWORD types
+	],
+
+.. figure:: ../images/declarative_settings_sensitive.png
+	:alt: sensitive fields
+

@@ -7,10 +7,22 @@ Classloader
 
 The classloader is provided by Nextcloud and loads all your classes automatically. See :ref:`the composer section<app-composer>` if you want to include and autoload 3rd party libraries.
 
+Server autoloading
+------------------
+
+Classes of the Nextcloud server use an authoritative class map, and the class map is committed to git.
+
+When you add, move or delete a class file you have to update the autoloaders for the class to be found. The process is slightly different for classes that belong to the server itself, and apps that are included in the server repository:
+
+1. Use ``composer dump-autoload`` to update the server class map.
+2. Use ``composer -d apps/dav/composer dump-autoload`` to update the class map of the dav app. The same applies for all other apps that are part of the server repository.
+
+.. tip:: Use git's `patch option <https://git-scm.com/docs/git-add#Documentation/git-add.txt---patch>`_ when adding autoloader files. It allows you to pick only the lines relevant to the classes you added, moved or deleted. E.g. ``git add -p apps/dav/composer``.
+
 .. _app-psr4-autoloader:
 
-PSR-4 autoloading
------------------
+App autoloading
+---------------
 
 Nextcloud uses a  :ref:`PSR-4 autoloader<psr4>`. The namespace **\\OCA\\MyApp**
 is mapped to :file:`/apps/myapp/lib/`. Afterwards normal PSR-4 rules apply, so
@@ -38,7 +50,7 @@ thereby mapped to :file:`/apps/myapp/tests/`.
 .. _app-custom-classloader:
 
 Replacing Nextcloud's autoloader
---------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Nextcloud's autoloader for apps is flexible and robust but not always the fastest. You can improve the loading speed of your app by shipping and optimizing a Composer class loader with the app.
 

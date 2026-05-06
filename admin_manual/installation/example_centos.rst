@@ -2,6 +2,13 @@
 
 Example installation on CentOS 8
 ================================
+
+.. warning::
+   CentOS 8 reached end-of-life on December 31, 2021 and no longer receives
+   security updates. This guide is preserved for reference only and may be
+   outdated. For production deployments, use a currently supported Linux
+   distribution.
+
 In this install tutorial we will be deploying CentOS 8, PHP 7.4, MariaDB, Redis as memcache and Nextcloud running on Apache.
 
 Start off by installing a CentOS 8 minimal install. This should provide a sufficient platform to run a successful Nextcloud instance.
@@ -91,7 +98,7 @@ You have to enable the module stream for 8.2:
 Installing PHP and the required modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Next, install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list in the source installation documentation, :doc:`../installation/source_installation`::
+Next, install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the necessary modules, not all of them. If you are making a more complete install, please refer to PHP module list in the source installation documentation, :doc:`../installation/source_installation`::
 
     dnf install -y php php-cli php-gd php-mbstring php-intl php-pecl-apcu\
          php-mysqlnd php-opcache php-json php-zip
@@ -136,7 +143,8 @@ Redis
     systemctl start redis.service
 
 
-**Installing Nextcloud**
+Installing Nextcloud
+--------------------
 
 Nearly there, so keep at it, you are doing great!
 
@@ -189,7 +197,8 @@ Create a firewall rule for access to apache::
     firewall-cmd --zone=public --add-service=http --permanent
     firewall-cmd --reload
 
-**SELinux**
+SELinux
+-------
 
 Again, there is an extensive write-up done on SELinux which can be found at :doc:`../installation/selinux_configuration`, so if you are using SELinux in Enforcing mode, please run the commands suggested on that page.
 The following commands only refers to this tutorial::
@@ -218,6 +227,7 @@ Example config::
     'memcache.distributed' => '\OC\Memcache\Redis',
     'memcache.locking' => '\OC\Memcache\Redis',
     'memcache.local' => '\OC\Memcache\APCu',
+    'memcache_customprefix' => 'nextcloud_centos',
     'redis' => array(
       'host' => 'localhost',
       'port' => 6379,

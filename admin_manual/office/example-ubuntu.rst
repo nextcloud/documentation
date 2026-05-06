@@ -1,5 +1,5 @@
 ====================================
-Installation example on Ubuntu 20.04
+Installation example on Ubuntu 24.04
 ====================================
 
 Import signing keys:
@@ -14,7 +14,7 @@ Add repository:
 
 .. code-block:: bash
 
-    sudo echo "deb https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-ubuntu2004 ./" > /etc/apt/sources.list.d/collaboraonline.sources
+    sudo echo -e "Types: deb\nURIs: https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb\nSuites: ./\nSigned-By: /usr/share/keyrings/collaboraonline-release-keyring.gpg" > /etc/apt/sources.list.d/collaboraonline.sources
 
 Install packages
 ****************

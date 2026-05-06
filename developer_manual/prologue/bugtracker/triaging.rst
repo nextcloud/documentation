@@ -24,7 +24,7 @@ The process of checking, reproducing and closing invalid issues is called ‘bug
 2. Incomplete or duplicate bug reports or feature requests
 3. Irrelevant or wrong bug reports or feature requests
 
-The job of a bug triager is to identify the One’s for developers to look at, help remove, merge or improve any Two to a One and dismiss Three’s in a friendly and emphatic way.
+The job of a bug triager is to identify Category 1 issues for developers to look at, help remove, merge or improve any Category 2 issue to a Category 1, and dismiss Category 3 issues in a friendly and emphatic way.
 
 Triaging follows these steps:
 
@@ -68,6 +68,7 @@ Much content from https://community.kde.org/Guidelines_and_HOWTOs/Bug_triaging
 The goal of triaging is to have only useful bug reports for the developers. And you don't have to know much to be able to judge at least some bug reports to be less than useful. There are duplications, incomplete reports and so on. Here is the work flow for each bug:
 
 .. figure:: ../../images/triageworkflow.png
+   :alt: Bug triage workflow diagram showing steps to evaluate and categorize issue reports
    :scale: 50
 
 Let's go over each step.
@@ -75,11 +76,18 @@ Let's go over each step.
 Finding duplicates
 ^^^^^^^^^^^^^^^^^^
 
-To find duplicates, the search tool in GitHub is your first stop. In `this screen <https://github.com/nextcloud/server/issues>`_ you can easily search for a few keywords from the bug report. If you find other bugs with the same content, decide what the best bug report is (often the oldest or the one where one or more developers have already started to engage and discuss the problem). That is the 'master' bug report, you can now close the other one (or comment that it can be closed as duplicate).
+To find duplicates, the search tool in GitHub is your first stop.
+In `this screen <https://github.com/nextcloud/server/issues>`_ you can easily search for a few keywords from the bug report.
+If you find other bugs with the same content, decide what the best bug report is (often the oldest or the one where one or more developers have already started to engage and discuss the problem).
+That is the 'prime' bug report, you can now close the other one (or comment that it can be closed as duplicate).
 
-If the bug report you were reviewing contains additional information, you can add that information to the 'master' bug report in a comment. Mention this bug report (using #<bug report number>) so a developer can look up the original, closed, report and perhaps ask the initial reporter there for additional information.
+If the bug report you were reviewing contains additional information, you can add that information to the 'prime' bug report in a comment.
+Mention this bug report (using #<bug report number>) so a developer can look up the original, closed, report and perhaps ask the initial reporter there for additional information.
 
-If you can't find anything, look in closed bug reports. The problem might be solved already and be listed there! Of course, these other bug reports might be closed as duplicates of the one you are looking at now - if you can't find one that is solved nor can find any duplicates, you can move on to the next step. If you are unsure, just add a comment: "might be a duplicate of #<bug nr here>" will usually suffice.
+If you can't find anything, look in closed bug reports.
+The problem might be solved already and be listed there!
+Of course, these other bug reports might be closed as duplicates of the one you are looking at now - if you can't find one that is solved nor can find any duplicates, you can move on to the next step.
+If you are unsure, just add a comment: "might be a duplicate of #<bug nr here>" will usually suffice.
 
 When the issue is a feature request, you can be helpful in the same way: merge related requests by adding information of one to the other and closing the first.
 

@@ -62,7 +62,7 @@ Retrying deadlocks
 ^^^^^^^^^^^^^^^^^^
 
 In other cases it might be feasible to just retry the specific database
-transactions. In this case the exception needs to be catched and the
+transactions. In this case the exception needs to be caught and the
 transaction needs to be re-issued. It is recommended to limit the amount
 if retries in case the deadlock occurring regularly. In this case you
 may follow the next section.

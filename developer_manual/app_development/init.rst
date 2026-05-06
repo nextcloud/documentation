@@ -31,4 +31,4 @@ purpose there are several events emitted that an app can act upon.
 * ``OCP\AppFramework\Http\TemplateResponse::EVENT_LOAD_ADDITIONAL_SCRIPTS`` (constant): loaded when a template response is finished
 * ``OCP\AppFramework\Http\TemplateResponse::EVENT_LOAD_ADDITIONAL_SCRIPTS_LOGGEDIN`` (constant): loaded when a template response is finished for a logged in user
 
-You can subscribe listeners to these events in the :ref:`bootstrapping code<Bootstrapping>` of the app. See the :ref:`events documentation<Events>` for more details on the event dispatcher and available events.
+You can register listeners for these events in the :ref:`bootstrapping code<Bootstrapping>` of the app. See the :ref:`events documentation<Events>` for more details on the event dispatcher and available events.

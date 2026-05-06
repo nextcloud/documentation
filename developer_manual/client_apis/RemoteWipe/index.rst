@@ -13,7 +13,7 @@ Note that wiping only works when clients use the login flow so that a dedicated 
 Obtaining wipe status
 ---------------------
 
-Once a client recieves a 401 or 403 status response it will do a fetch to :code:`<server>/index.php/core/wipe/check` and set the
+Once a client receives a 401 or 403 status response it will do a fetch to :code:`<server>/index.php/core/wipe/check` and set the
 token parameter to the apptoken.
 
 .. code-block:: bash

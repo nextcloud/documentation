@@ -11,7 +11,7 @@ Installation and server configuration
    source_installation
    installation_wizard
    command_line_installation
-   apps_supported
+   automatic_configuration
    selinux_configuration
    nginx
    harden_server
@@ -20,3 +20,5 @@ Installation and server configuration
    example_ubuntu
    example_centos
    example_openbsd
+
+   uninstallation

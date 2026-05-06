@@ -13,7 +13,7 @@ restricted and invisible tags to files they upload.
 
 This is especially useful for retention and :doc:`access_control`, so people
 that got the files shared can not remove the tag to stop the retention or
-allow access against the owners will.
+allow access against the owner's will.
 
 Example
 -------
@@ -27,10 +27,10 @@ navigate to the configuration and locate the Workflow settings.
 In the example you can see a simple rule with only one condition.
 It will tag all files with the restricted tag ``Protected file`` that are
 uploaded into a folder that is tagged with ``Protect content``. No user can
-remove the tag ``Protected file`` and therefor access control and retention
+remove the tag ``Protected file`` and therefore access control and retention
 both work fine without users being able to work around them.
 
-In this case folder will be also tagged with tag ``Protected file``, to avoid
+In this case the folder will also be tagged with tag ``Protected file``, to avoid
 this, simply modify the rule to exclude Directory ``httpd/unix-directory`` from it.
 
     .. figure:: images/automated_tagging_sample_rule_exclude_folder.png

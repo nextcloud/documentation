@@ -31,7 +31,7 @@ These are the app guidelines an app has to comply with to have a chance to be ap
 Legal and security
 ^^^^^^^^^^^^^^^^^^
 
-* Apps must be licensed under AGPLv3+ or any compatible license.
+* Apps must be licensed under AGPL-3.0-or-later or any compatible license.
 * Apps must not use 'Nextcloud' in their name.
 * Irregular and unannounced security audits of all apps can and will take place.
 * If any indication of malicious intent or bad faith is found the developer(s) in question can count on a minimum 2 year ban from any Nextcloud infrastructure.
@@ -52,7 +52,7 @@ Be technically sound
 Respect the users
 ^^^^^^^^^^^^^^^^^
 
-* Apps have to follow design and `HTML/CSS layout guidelines <../app/css.html>`_.
+* Apps have to follow design and :doc:`HTML/CSS layout guidelines <../html_css_design/css>`.
 * Apps correctly clean up after themselves on uninstall and correctly handle up- and downgrades.
 * Apps clearly communicate their intended purpose and active features, including features introduced through updates.
 * Apps respect the users' choices and do not make unexpected changes, or limit users' ability to revert them. For example, they do not remove other apps or disable settings.
@@ -82,7 +82,7 @@ To deliver on the promises above, we have two simple rules.
 
 We want to make sure that when you find other things in life which are more urgent or otherwise are unable to help your project anymore, it does not become 'dead code' as long as there are people who want to keep it alive. This is not fair to users, who would be forced to remove the app and install another.
 
-Please note that the role of a maintainer is not to be the most active or prolific contributor to a project! Being friendly, welcoming and responsive are what it takes to be a successful maintainer. Not being the most brilliant developer ever, or spending nights and weekends coding!
+Please note that the role of a maintainer is not to be the most active or prolific contributor to a project! Being friendly, welcoming and responsive are what it takes to be a successful maintainer. Not being the most brilliant developer ever, or spending nights and weekends coding.
 
 The goal of these rules is simple: help your project be more successful. We also suggest you watch this talk by `Jan about building a great community. <https://www.youtube.com/watch?v=UtAoRIKVpW4>`_
 

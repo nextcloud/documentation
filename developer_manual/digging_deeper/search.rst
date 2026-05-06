@@ -228,6 +228,13 @@ This interface allows to supports other filtering types.
 
 ``getCustomFilters`` allows to declare specific filters. In current state, the specific filters will only be available in the API.
 
+External search provider
+------------------------
+
+Since Nextcloud 32, to improve privacy, you can extend your provider with the ``\OCP\Search\IExternalProvider`` interface and implement the ``isExternalProvider()`` method to indicate that the search is performed on external (3rd-party) resources.
+In the Unified Search UI, searching through these providers is disabled by default (via toggle switch).
+
+
 Provider registration
 ---------------------
 
@@ -423,7 +430,7 @@ For **offset-based pagination** you return ``$query->getLimit()`` results and sp
 
 So the first call will get a cursor of ``null`` and a limit of, say, 20. So the first 20 rows are fetched. The next call will have a cursor of 20, so the 20st to 39th rows are fetched.
 
-The downside of a offset-based pagination is that when the underlying data changes (new entries are inserted into or deleted from the database, files change), the offset might be out of sync from on request to its successor. Therefor, if possible, a true cursor-based pagination is preferable.
+The downside of a offset-based pagination is that when the underlying data changes (new entries are inserted into or deleted from the database, files change), the offset might be out of sync from on request to its successor. Therefore, if possible, a true cursor-based pagination is preferable.
 
 For a **cursor-based pagination** a app-specific property is used to know a reference to the last element of the previous search request. The presumption of this algorithm is that the result set is sorted by an attribute and this attribute is an ``int`` or ``string``. The attribute value of the last element in the result page determines the cursor for the next search request. Again, a small example shall demonstrate how this works.
 

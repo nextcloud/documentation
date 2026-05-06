@@ -4,21 +4,18 @@
 NGINX configuration
 ===================
 
-.. warning::
-    Please note that webservers other than Apache 2.x are not officially supported.
+This page covers how to run a Nextcloud server using NGINX backed by PHP-FPM, which is also an officially supported setup.
 
-.. note::
-    This page covers example NGINX configurations to run a Nextcloud server.
-    These configurations examples were originally provided by `@josh4trunks <https://github.com/josh4trunks>`_
-    and are exclusively community-maintained. (Thank you contributors!)
-
-- You need to insert the following code into **your Nginx configuration file**. Choose the appropriate example based on whether you are deploying :ref:`nginx_webroot_example` (i.e. :code:`https://cloud.example.com/`) or :ref:`nginx_subdir_example` (i.e. :code:`https://cloud.example.com/nextcloud`).
+- You need to insert the following code into **your Nginx configuration file**.
+  Choose the appropriate example based on whether you are deploying :ref:`nginx_webroot_example` (i.e. :code:`https://cloud.example.com/`) or :ref:`nginx_subdir_example` (i.e. :code:`https://cloud.example.com/nextcloud`).
 - Adjust the server directive under :code:`upstream php-handler` to match your PHP installation's configured FPM listener (a misconfiguration here will result in a :code:`502 Bad Gateway` - see :ref:`nginx_php_handler_tips` for details)
 - Adjust the existing :code:`server_name` directives found under *both* :code:`server` sections to your real hostname
 - Adjust :code:`root` to the webroot of your Nextcloud installation 
 - Adjust the :code:`ssl_certificate` and :code:`ssl_certificate_key` directives to the real paths for your signed 
   certificate and private key. Make sure your SSL certificates are readable by the nginx server process (see `nginx HTTPS SSL 
   Module documentation <https://wiki.nginx.org/HttpSslModule>`_).
+- If using Let's Encrypt as TLS certificate and nginx as webserver, set `ssl_stapling` and `ssl_stapling_verify` to `off`
+  in main nginx config (see [Let's Encrypt blog post](https://letsencrypt.org/2024/12/05/ending-ocsp)).
 - Be careful about line breaks if you copy the examples, as long lines may be
   broken for page display and result in an invalid configuration files.
 - Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their
@@ -138,6 +135,8 @@ to the following to re-allow file uploads:
     location ~ /\.(?!file).* {
 
 See `issue #8802 on nextcloud/server <https://github.com/nextcloud/server/issues/8802>`_ for more information.
+
+Other parameters besides the above are relevant to uploading large files (see :ref:`uploading_big_files`).
 
 Login loop without any clue in access.log, error.log, nor nextcloud.log
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

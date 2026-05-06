@@ -9,7 +9,7 @@ Nextcloud Office is built on Collabora Online which requires a dedicated service
 For manual installations there are multiple options to get Nextcloud Office deployed:
 
 - **Installation through distribution packages**
-    There are packages for all major Linux distributions available which allow deploying a Collabora Online server through installing it through the regular package management. For an example installation guide on Ubuntu, see see: :doc:`example-ubuntu`
+    There are packages for all major Linux distributions available which allow deploying a Collabora Online server through installing it through the regular package management. For an example installation guide on Ubuntu, see: :doc:`example-ubuntu`
 
     .. seealso::
         https://www.collaboraoffice.com/code/linux-packages/ 

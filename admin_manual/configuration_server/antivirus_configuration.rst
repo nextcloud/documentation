@@ -189,7 +189,7 @@ Get info about files in the scan queue
 
 ::
 
-    sudo -u www php occ files_antivirus:status [-v]
+    sudo -E -u www-data php occ files_antivirus:status [-v]
 
 
 Manually trigger the background scan
@@ -197,21 +197,21 @@ Manually trigger the background scan
 
 ::
 
-    sudo -u www php occ files_antivirus:background-scan [-v] [-m MAX]
+    sudo -E -u www-data php occ files_antivirus:background-scan [-v] [-m MAX]
 
 Manually scan a single file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
-    sudo -u www php occ files_antivirus:scan <path>
+    sudo -E -u www-data php occ files_antivirus:scan <path>
 
 Mark a file as scanned or unscanned
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
-    sudo -u www php occ files_antivirus:mark <path> <scanned|unscanned>
+    sudo -E -u www-data php occ files_antivirus:mark <path> <scanned|unscanned>
   
 Files marked as scanned will not be scanned for the next four weeks.
 
@@ -230,4 +230,4 @@ Disabling background scan task
 
 You can disable background scan with occ to only scan files during upload::
 
-    sudo -u www php occ config:app:set files_antivirus av_background_scan --value="off"
+    sudo -E -u www-data php occ config:app:set files_antivirus av_background_scan --value="off"

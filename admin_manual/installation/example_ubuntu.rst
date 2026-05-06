@@ -1,7 +1,7 @@
 .. _ubuntu_installation_label:
 
 ========================================
-Example installation on Ubuntu 22.04 LTS
+Example installation on Ubuntu 24.04 LTS
 ========================================
 
 You can use .deb packages to install the required and recommended modules for a
@@ -10,13 +10,11 @@ following commands in a terminal::
 
     sudo apt update && sudo apt upgrade
     sudo apt install apache2 mariadb-server libapache2-mod-php php-gd php-mysql \
-    php-curl php-mbstring php-intl php-gmp php-bcmath php-xml php-imagick php-zip
+    php-curl php-mbstring php-intl php-gmp php-xml php-imagick php-zip
 
 * This installs the packages for the Nextcloud core system. 
   If you are planning on running additional apps, keep in mind that they might
-  require additional packages.  See `Prerequisites for manual installation <https://docs.nextcloud.com/server/latest/admin_manual/installation/source_installation.html#prerequisites-for-manual-installation>`_ for details.
-
-.. TODO ON RELEASE: Update version number above on release
+  require additional packages.  See :ref:`Prerequisites for manual installation <prerequisites_label>` for details.
 
 Now you need to create a database user and the database itself by using the
 MySQL command line interface. The database tables will be created by Nextcloud
