@@ -1,84 +1,95 @@
 ===========================
-The Nextcloud web interface
+The Nextcloud Web interface
 ===========================
 
-Open your Nextcloud server's URL in any web browser and log in with your account name (or email address) and password:
+You can connect to your Nextcloud server using any Web browser. Just point it to
+your Nextcloud server URL (e.g. cloud.example.com) and enter your username and password:
 
 .. figure:: images/login_page.png
-   :alt: Nextcloud login screen.
-
-You can also log in using a passkey or hardware security key by clicking **Log in with a device**.
+     :alt: Nextcloud login screen.
 
 Web browser requirements
 ------------------------
 
-For the best experience, use the latest version of one of these browsers:
+For the best experience with the Nextcloud web interface, we recommend that
+you use the latest and supported version of a browser from this list:
 
-* Google **Chrome** / Chromium
-* Mozilla **Firefox**
-* Apple **Safari**
+* Google **Chrome**/Chromium (Desktop and Android)
+* Mozilla **Firefox** (Desktop and Android)
+* Apple **Safari** (Desktop and iOS)
 * Microsoft **Edge**
 
-.. note:: Not all versions are supported. Nextcloud targets `browsers meeting the minimum usage threshold <https://browserslist.dev/?q=PjAuMjUlLCBub3Qgb3BfbWluaSBhbGwsIG5vdCBkZWFkLCBGaXJlZm94IEVTUg==>`_.
+.. note:: Not all versions are supported. Nextcloud is tested and built to work with `these versions only.
+   <https://browserslist.dev/?q=PjAuMjUlLCBub3Qgb3BfbWluaSBhbGwsIG5vdCBkZWFkLCBGaXJlZm94IEVTUg==>`_
 
-The Dashboard
--------------
+.. note:: If you want to use Nextcloud Talk you need to run Mozilla **Firefox** 52+
+   or Google **Chrome**/Chromium 49+ to have the full experience with video calls and
+   screensharing.
 
-After logging in, Nextcloud opens the **Dashboard** — a customisable overview of your most important activity: upcoming calendar events, unread messages, recent files, and more.
+.. warning:: Microsoft **Internet Explorer** is **NOT** supported.
 
-.. figure:: images/webinterface_dashboard.png
-   :alt: The Nextcloud Dashboard showing a personalised greeting and widgets.
+Navigating the main user interface
+----------------------------------
 
-Use the **Customise** button at the bottom of the page to add, remove, or rearrange widgets to suit your workflow.
+By default, the Nextcloud Web interface opens to your Dashboard or Files page:
 
-Navigating the interface
-------------------------
+.. figure:: images/files_page.png
+     :scale: 75%
+     :alt: The main Files view.
 
-The navigation bar at the top of every page is your main access point:
+In Files you can add, remove, and share files, and the server administrator
+can change access privileges.
 
-.. figure:: images/webinterface_nav.png
-   :alt: The Nextcloud navigation bar with the logo, app shortcuts, and action icons.
+The Nextcloud user interface contains the following fields and functions:
 
-* The **Nextcloud logo** (top left) takes you back to the Dashboard.
-* **App shortcuts** are shown next to the logo — click any icon to switch to that app (Files, Calendar, Talk, and so on).
-* The **search icon** on the right opens :ref:`unified search <unified-search>`, which searches across all your apps at once.
-* The **bell icon** shows your notifications.
-* The **contacts icon** lets you quickly look up and contact other users on your server.
-* Your **profile picture** (far right) opens the settings menu.
+* **Apps Selection Menu** (1): Located in the upper left corner, you'll find all
+  your apps which are available on your instance of Nextcloud. Clicking on an
+  app icon will redirect you to the app.
 
-Each app also has its own **left sidebar** with filters and actions specific to that app.
+* **Apps Information** field (2): Located in the left sidebar, this provides
+  filters and tasks associated with your selected app. For example, when you
+  are using the Files app you have a special set of filters for quickly
+  finding your files, such as files that have been shared with you, and files
+  that you have shared with others. You'll see different items for other apps.
 
-Settings and profile
---------------------
+* **Application View** (3): The main central field in the Nextcloud user interface.
+  This field displays the contents or user features of your selected app.
 
-Click your profile picture in the top-right corner to access your account options:
+* **Navigation Bar** (4): Located over the main viewing window (the Application
+  View), this bar provides a type of breadcrumbs navigation that enables you to
+  migrate to higher levels of the folder hierarchy up to the root level (home).
 
-.. figure:: images/webinterface_profile_menu.png
-   :alt: The profile menu showing options for settings, status, appearance, and logging out.
+* **New** button (5): Located in the Navigation Bar, the ``New`` button
+  enables you to create new files, new folders, or upload files.
 
-From this menu you can:
+.. note:: You can also drag and drop files from your file manager into the
+   Files Application View to upload them to your instance.
 
-* View and edit your profile
-* Set your online status
-* Change appearance and accessibility settings
-* Open your personal :doc:`Settings <userpreferences>` page
-* Access help and privacy information
-* Log out
+* **Search** field (6): Click on the Magnifier in the upper right corner
+  to search for files and entries of the current app.
 
-Unified search
---------------
+* **Contacts Menu** (7): Gives you an overview about your contacts and users on
+  your server. Dependent on the given details and available apps, you can
+  directly start a video call with them or send emails.
 
-.. _unified-search:
+* **Grid view** button (8): This looks like four little squares, which toggles
+  the grid view for folders and files.
 
-Click the search icon in the navigation bar (or press :kbd:`Ctrl+F`) to open the unified search modal:
+* **Settings** menu (9): Click on your profile picture,
+  located to the right of the Search field, to open your Settings
+  dropdown menu. Your Settings page provides the following settings and features:
 
-.. figure:: images/webinterface_search.png
-   :alt: The unified search modal with Places, Date, and People filters.
+  * Links to download desktop and mobile apps
+  * Server usage and space availability
+  * Password management
+  * Name, email, and profile picture settings
+  * Manage connected browsers and devices
+  * Group memberships
+  * Interface language settings
+  * Manage notifications
+  * Federated Cloud ID and social media-sharing buttons
+  * SSL/TLS certificate manager for external storages
+  * Your Two-factor Settings
+  * Nextcloud Version information
 
-Unified search looks across all your installed apps — files, calendar events, messages, contacts, and more — at once. Results are grouped by app so you can quickly see where a match was found.
-
-Use the filter chips to narrow results:
-
-* **Places** — limit the search to a specific app, such as Files or Calendar.
-* **Date** — filter by time period (today, last 7 days, last 30 days, this year, or a custom range).
-* **People** — show only results related to a specific person.
+See :doc:`userpreferences` section to learn more about these settings.

@@ -14,7 +14,12 @@ Your files are always automatically synchronized between your Nextcloud server, 
 .. toctree::
    :maxdepth: 1
 
+   options
    massdeployment
+   configfile
+   envvars
+   commandline
+   accountcommand
    troubleshooting
   
 You can find additional information here:
@@ -22,5 +27,7 @@ You can find additional information here:
 * `User manual`_
 * `Developer manual`_
 
-.. _`User manual`: https://docs.nextcloud.com/server/latest/user_manual/en/desktop/index.html
-.. _`Developer manual`: https://docs.nextcloud.com/server/latest/developer_manual/desktop/index.html
+.. _`User manual`: https://docs.nextcloud.com/server/32/user_manual/en/desktop/index.html
+.. _`Developer manual`: https://docs.nextcloud.com/server/32/developer_manual/desktop/index.html
+
+.. TODO ON RELEASE: Update version number above on release

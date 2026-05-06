@@ -19,13 +19,15 @@ synchronization is current and you are connected to your Nextcloud server.
 The blue icon with the white semi-circles means synchronization is in progress.
 
 .. figure:: images/icon-paused.png
-   :alt: Status icon, grey circle and vertical parallel lines
+   :alt: Status icon, grey circle and vertical parallel
+    lines
 
 The grey icon with the parallel lines tells you your synchronization
 has been paused. (Most likely by you.)
 
 .. figure:: images/icon-offline.png
-   :alt: Status icon, gray circle and three horizontal white dots
+   :alt: Status icon, gray circle and three horizontal
+    white dots
 
 The gray icon with three white dots means your sync client has lost its
 connection with your Nextcloud server.
@@ -279,13 +281,3 @@ this list:
 - Files are removed that cause individual errors three times during a
   synchronization. However, the client provides the option of retrying a
   synchronization three additional times on files that produce errors.
-
-Virtual Files on macOS
-----------------------
-
-For information about using virtual files integration on macOS, see:
-
-.. toctree::
-   :maxdepth: 1
-
-   macosvfs

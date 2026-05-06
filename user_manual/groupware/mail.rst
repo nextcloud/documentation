@@ -20,18 +20,6 @@ Switch layout
 
 .. figure:: images/mail_layout.png
 
-Use Compact Mode
-~~~~~~~~~~~~~~~~
-.. versionadded:: 5.7.0
-
-Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.
-
-1. Visit the mail settings
-2. Go to **Appearance**
-3. Toggle the Compact Mode
-
-.. figure:: images/use-compact-mode.png
-
 Message Display / Operation Mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -68,17 +56,6 @@ Change sort order
 
 .. note:: This change will apply across all your accounts and mailboxes
 
-Sort favorites up
-~~~~~~~~~~~~~~~~~
-
-.. versionadded:: 5.7 Nextcloud 31 or newer
-
-This setting allows you to show messages set as favorite in a separate section on top of the message list.
-
-1. Visit mail settings
-2. Go to *Appearance*
-3. Enable sorting favorites up 
-
 .. _mail-scheduled-messages:
 
 Scheduled messages
@@ -93,9 +70,6 @@ Priority inbox
 ~~~~~~~~~~~~~~
 Priority inbox has 2 section *Important* and *Others*.
 Messages will automatically be marked as important based on which messages you interacted with or marked as important. In the beginning you might have to manually change the importance to teach the system, but it will improve over time.
-
-The automatic classification is optional. You can opt-out when setting up an account. The classification can also be turned on and off in the account settings at any time.
-
 
 .. figure:: images/priority-inbox.png
 
@@ -132,22 +106,6 @@ Mail can move a message to a different folder when it is marked as junk.
 5) Click Move messages to Junk folder
 
 .. figure:: images/mail_move-message-to-junk-folder.png
-
-Refresh mailbox
-~~~~~~~~~~~~~~~~
-
-You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
-Starting from ``version 5.7`` triggering the sync will also refresh the list of folders for the selected account.
-
-Unified search
-~~~~~~~~~~~~~~
-
-The Mail app integrates with Nextcloud's :ref:`unified search <unified-search>`
-feature (see :doc:`../webinterface` for details). You can search for emails across
-all your accounts using the search bar in the Nextcloud header.
-
-Mail searches email subjects and sender/recipient fields. To search email bodies,
-use the mailbox search feature in the app.
 
 Search in mailbox
 ~~~~~~~~~~~~~~~~~
@@ -270,7 +228,7 @@ You can also set the date and time for the send operation to a point in the futu
 
 The outbox is only visible when there is a message waiting to be handled by the outbox.
 
-You can reopen the composer for a message in the outbox any time before the send operation is triggered.
+You can re- open the composer for a message in the outbox any time before the "send"- operation is triggered.
 
 .. note::
    When an error occurs during sending, three error messages are possible:
@@ -278,7 +236,7 @@ You can reopen the composer for a message in the outbox any time before the send
    Could not copy to "Sent" mailbox
       The mail was sent but couldn't be copied to the "Sent" mailbox. This error will be handled by the outbox and the copy operation will be tried again.
    Mail server error
-      Sending was unsuccessful with a state that can be retried (ex: the SMTP server couldn't be reached). The outbox will retry sending the message.
+      Sending was unsuccessful with a state than can be retried (ex: the SMTP server couldn't be reached). The outbox will retry sending the message.
    Message could not be sent
       Sending might or might not have failed. The mail server can't tell us the state of the message. Since the Mail app has no way to determine the state of the message (sent or unsent) the message will stay in the outbox and the account user has to decide how to proceed.
 
@@ -313,7 +271,7 @@ Create an event for a certain message/thread directly via mail app
 2. Click *More actions*
 3. Click *Create event*
 
-.. note:: An event title and agenda are created for you if the administrator has enabled it.
+.. note:: Event title and an agenda is created for you if the administrator has enabled it.
 
 Create a task
 ~~~~~~~~~~~~~

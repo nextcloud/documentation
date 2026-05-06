@@ -1,8 +1,8 @@
-============================
-Using server-side encryption
-============================
+=============================================
+Encrypting your Nextcloud files on the server
+=============================================
 
-Nextcloud includes a server-side encryption app, and when it is enabled by
+Nextcloud includes a server side Encryption app, and when it is enabled by
 your Nextcloud administrator all of your Nextcloud data files are automatically
 encrypted on the server.
 Encryption is server-wide, so when it is enabled you cannot choose to keep your
@@ -22,7 +22,7 @@ to outside service providers.
 If your Nextcloud server is not connected to any remote storage services, then
 it is better to use some other form of encryption such as file-level or whole
 disk encryption. Because the keys are kept on your Nextcloud server, it is
-possible for your Nextcloud administrator to access your unencrypted files, and if the server is
+possible for your Nextcloud administrator to snoop in your files, and if the server is
 compromised the intruder may get access to your files. (Read
 `Encryption in Nextcloud <https://nextcloud.com/blog/encryption-in-nextcloud/>`_
 to learn more.)
@@ -34,21 +34,21 @@ How can encryption be disabled?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The only way to disable encryption is to run the `"decrypt all"
-<https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label>`_
+<https://docs.nextcloud.com/server/32/admin_manual/occ_command.html#encryption-label>`_
 script, which decrypts all files and disables encryption.
 
 Is it possible to disable encryption with the recovery key?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Yes, *if* every user uses the `file recovery key
-<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_, `"decrypt all"
-<https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label>`_ will use it to decrypt all files.
+<https://docs.nextcloud.com/server/32/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_, `"decrypt all"
+<https://docs.nextcloud.com/server/32/admin_manual/occ_command.html#encryption-label>`_ will use it to decrypt all files.
 
 Can encryption be disabled without the user's password?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you don't have the users password or `file recovery key
-<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_,
+<https://docs.nextcloud.com/server/32/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_,
 then there is no way to decrypt all files. What's more, running it on login
 would be dangerous, because you would most likely run into timeouts.
 
@@ -58,7 +58,7 @@ Is it planned to move this to the next user login or a background job?
 If we did that, then we would need to store your login password in the database.
 This could be seen as a security issue, so nothing like that is planned.
 
-Is group sharing possible with the recovery key?
+Is group Sharing possible with the recovery key?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you mean adding users to groups and make it magically work? No. This only

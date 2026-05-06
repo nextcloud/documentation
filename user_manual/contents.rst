@@ -9,13 +9,12 @@ Table of contents
 
     index
     webinterface
-    activity
     files/index
     groupware/index
-    talk/index
-    collectives/index
+    talk/index 
     desktop/index
     userpreferences
     universal_access
     user_2fa
     session_management
+    external_storage/index

@@ -1,5 +1,5 @@
 ============
-File sharing
+File Sharing
 ============
 
 Nextcloud users can share files and folders. Possible targets are:
@@ -12,7 +12,7 @@ Nextcloud users can share files and folders. Possible targets are:
 * users or groups on federated Nextcloud servers
 
 .. note:: Some options may not be available due to administrative configuration.
-   See `administrator documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html>`__ for details.
+   See `administrator documentation <https://docs.nextcloud.com/server/32/admin_manual/configuration_files/file_sharing_configuration.html>`__ for details.
 
 
 Public link shares
@@ -25,7 +25,6 @@ A random 15-digit token will be created. The link will look like ``https://cloud
 A number of options are available for public *folder* shares:
 
 .. figure:: ../images/sharing_public_folder.png
-   :alt: Public folder share options.
 
 * **Read only** to allow viewing and downloading
 * **Allow upload and editing**
@@ -40,40 +39,27 @@ A number of options are available for public *folder* shares:
 For public *file* shares, you may allow editing the file with one of Nextcloud's collaborative editing solutions:
 
 .. figure:: ../images/sharing_public_file.png
-   :alt: Public file share options.
 
-.. note::
-
-   Password protection and file expiration are also propagated using Federated File Sharing
-   since Nextcloud 22.
+.. note:: Password protection as well as file expiration are also propagated using Federated File Sharing since Nextcloud 22.
 
 Internal shares with users and groups
 -------------------------------------
 
-When sharing with users, groups, circles or members of a Talk conversation, rights for the files
-or folder contents are adjustable:
+When sharing with users, groups, circles or members of a Talk conversation, rights for the files or folder contents are adjustable:
 
 .. figure:: ../images/sharing_internal.png
-   :alt: Internal share options.
 
-As a sharee, you can configure if you automatically want to accept all incoming shares and have
-them added to your root folder, or if you want to be asked each time if you want to accept or
-decline the share.
+As a sharee, you can configure if you automatically want to accept all incoming shares and have them added to your root folder, or if you
+want to be asked each time if you want to accept or decline the share.
 
 .. figure:: ../images/sharing_internal_acceptNotification.png
-   :alt: Share acceptance notification.
 
 For adjusting the acceptance setting, go to **Settings** > **Personal** > **Sharing**:
 
 .. figure:: ../images/sharing_autoAcceptSetting.png
-   :alt: Auto-accept sharing setting.
 
 
-.. warning::
-
-   If the owner renames a shared file or folder, the new name will not be reflected on the
-   recipient's side. This is needed to prevent overwriting existing files or folders on the
-   recipient's end.
+.. warning:: If the owner renames a shared file or folder, the new name will not be reflected on the recipient's side. This is needed to prevent overwriting existing files or folders on the recipient's end.
 
 Others with access
 ------------------
@@ -82,13 +68,11 @@ In order to find out if a file or folder is accessible to others through sharing
 hierarchy level, click on **Others with access** in the sharing tab:
 
 .. figure:: ../images/sharing_others-with-access__collapsed.png
-   :alt: Others with access panel, collapsed.
 
 The list shows all users, groups, chats etc. that the current object has been given access to through
 sharing of a superior folder in the hierarchy:
 
 .. figure:: ../images/sharing_others-with-access__details.png
-   :alt: Others with access panel, expanded with user details.
 
 Click on the three dots to:
 
@@ -101,14 +85,14 @@ Click on the three dots to:
 
 
 ================
-Federated shares
+Federated Shares
 ================
 
 Federation Sharing allows you to mount file shares from remote Nextcloud servers, in effect
 creating your own cloud of Nextclouds. You can create direct share links with
 users on other Nextcloud servers.
 
-Creating a new federation share
+Creating a new Federation Share
 -------------------------------
 
 Federation sharing is enabled by default. Follow these steps to create a new share with other Nextcloud or ownCloud servers:
@@ -119,20 +103,16 @@ in this form: ``<username>@<nc-server-url>``. In this example, that is
 ``bob@cloud.example.com``:
 
 .. figure:: ../images/share-federation-1.png
-   :alt: Entering a federated share address.
 
 The sharee is receiving a notification in their Nextcloud, allowing them to either accept or decline the incoming share:
 
 .. figure:: ../images/share-federation-2-notification.png
-   :alt: Federated share acceptance notification.
 
 
 Adding a public share to your Nextcloud
 ---------------------------------------
 
-Nextcloud public link share pages offer an option to add that file or folder as a federated share
-into your own Nextcloud instance.
-Enter your ``<username>@<nc-server-url>`` as shown for outbound shares above:
+Nextcloud public link share pages offer an option to add that file or folder as a federated share into your own Nextcloud instance.
+Just enter your ``<username>@<nc-server-url>`` just like shown for outbound shares above:
 
 .. figure:: ../images/share-federation-3-public.png
-   :alt: Adding a public share to your Nextcloud.

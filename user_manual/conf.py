@@ -38,6 +38,7 @@ templates_path = [
     '_templates',
 ]
 
+
 exclude_patterns = [
     '_build',
 ]
@@ -73,6 +74,9 @@ html_show_sphinx = False
 # but this is likely good enough and the most conservative for now.
 html_baseurl = "https://docs.nextcloud.com/server/stable/user_manual/"
 
+# disable including the reST sources in the HTML build as _sources/name (default is True)
+html_copy_source = False 
+
 # -- Options for HTML help output --------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-help-output
 
@@ -87,9 +91,12 @@ epub_author = u'The Nextcloud developers'
 epub_publisher = u'The Nextcloud developers'
 epub_copyright = u'2012-2025, The Nextcloud developers'
 
-# -- Options for LaTeX output --------------------------------------------------
+# -- Options for LaTeX output ------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-latex-output
 
-latex_elements = {}
+
+latex_elements = {
+}
 latex_documents = [
     (
         'contents',
@@ -150,19 +157,6 @@ pdf_documents = [
 current_docs = 'user_manual'
 html_context['versions'] = generateVersionsDocs(current_docs)
 html_context['theme_vcs_pageview_mode'] += current_docs
-
-# Automatically detect available languages and pass to template
-
-locale_path = os.path.join(os.path.dirname(__file__), 'locale')
-available_languages = []
-
-if os.path.isdir(locale_path):
-    available_languages = [
-        lang for lang in os.listdir(locale_path)
-        if os.path.isdir(os.path.join(locale_path, lang)) and lang != 'source'
+html_context['available_languages'] = [
     ]
-    if 'en' not in available_languages:
-        available_languages.append('en')
-    available_languages.sort()
 
-html_context['available_languages'] = available_languages

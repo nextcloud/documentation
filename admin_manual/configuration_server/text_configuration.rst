@@ -40,3 +40,15 @@ Text can automatically detect encodings of files and will convert them to UTF-8 
 ::
 
  mbstring.detect_order = ASCII,JIS,UTF-8,SJIS,EUC-JP
+
+
+Websocket support with notify_push
+----------------------------------
+
+Text can use the notify_push app to get real-time updates when a file is changed by another user. To enable this, make sure that the notify_push app is installed and enabled.
+
+You can then enable the integration with the following command:
+
+::
+
+ occ config:app:set text notify_push --type=boolean --value=true

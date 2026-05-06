@@ -16,7 +16,7 @@ Calendar
 #. Enter your user name and password.
 #. Select Next.
 #. Open Advanced Settings
-#. For server, type the domain name of your server and path, i.e., ``example.com/remote.php/dav/principals/users/username/`` (replace **example.com** and **username**).
+#. For server, type the domain name of your server and username, i.e., ``example.com/remote.php/dav/principals/users/username/``.
 #. Close Advanced Settings
 
 Your calendar will now be visible in the Calendar application.
@@ -41,7 +41,7 @@ Contacts
 #. Select Add Account.
 #. Select Other as account type.
 #. Select Add CardDAV account.
-#. For server, type the domain name of your server and path, i.e., ``example.com/remote.php/dav/principals/users/username/`` (replace **example.com** and **username**).
+#. For server, type the domain name of your server i.e. ``example.com``.
 #. Enter your user name and password.
 #. Select Next.
 
@@ -53,5 +53,5 @@ You should now find your contacts in the address book of your iPhone.
 
 If it's still not working, have a look at `Troubleshooting Contacts & Calendar`_ or `Troubleshooting Service Discovery`_.
 
-.. _Troubleshooting Contacts & Calendar: https://docs.nextcloud.com/server/latest/admin_manual/issues/general_troubleshooting.html#troubleshooting-contacts-calendar
-.. _Troubleshooting Service Discovery: https://docs.nextcloud.com/server/latest/admin_manual/issues/general_troubleshooting.html#service-discovery
+.. _Troubleshooting Contacts & Calendar: https://docs.nextcloud.com/server/32/admin_manual/issues/general_troubleshooting.html#troubleshooting-contacts-calendar
+.. _Troubleshooting Service Discovery: https://docs.nextcloud.com/server/32/admin_manual/issues/general_troubleshooting.html#service-discovery

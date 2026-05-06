@@ -1,16 +1,16 @@
 .. _webdavapiindex:
 
 ======
-WebDAV
+Webdav
 ======
 
 .. toctree::
     :maxdepth: 2
 
     basic
-    chunking
-    bulkupload
+    search
     trashbin
     versions
-    search
+    chunking
+    bulkupload
     comments

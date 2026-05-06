@@ -107,13 +107,6 @@ If you have placed your datadir on a CIFS/SMB share use the following setting::
 
  setsebool -P httpd_use_cifs on
 
-Allow access to NFS
-------------------------
-
-If you have placed your datadir on an NFS share use the following setting::
-
- setsebool -P httpd_use_nfs on
-
 Allow access to FuseFS
 ----------------------
 

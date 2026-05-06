@@ -15,5 +15,4 @@ Clients and Client APIs
     OCS/index
     RemoteWipe/index
     WebDAV/index
-    ClientIntegration/index
 

@@ -43,12 +43,12 @@ Import a Calendar
 If you want to transfer your calendar and their respective events to your Nextcloud
 instance, importing is the best way to do so.
 
-.. figure:: images/calendar_importing.png
-            :scale: 50%
+.. figure:: images/calendar_settings_sidebar.png
+            :scale: 80%
 
 1. Click on the settings-icon labeled with ``Calendar settings`` at the bottom-left.
 
-2. After clicking on ``Import Calendar``, found in the ``General`` section, you can select one or more calendar files
+2. After clicking on ``Import Calendar`` you can select one or more calendar files
    from your local device to upload.
 
 3. Select a ``Calendar to import into``.
@@ -107,7 +107,8 @@ always be free, regardless of an events' settings.
 Sharing calendars
 ~~~~~~~~~~~~~~~~~
 
-You may share your calendar with local users, groups or with remote users on federated servers.
+You may share your calendar with local users, groups or read-only with remote users on federated
+servers.
 
 .. figure:: images/calendar_sharing_1.png
 
@@ -116,19 +117,6 @@ Calendars may be shared with write access or read-only. When sharing a calendar 
 .. figure:: images/calendar_sharing_2.png
 
 .. note:: Calendar shares currently cannot be accepted or rejected. If you want to stop having a calendar that someone shared with you, you can click on the 3-dot menu next to the calendar in the calendar list and click on "Unshare from me". To restore a share, the calendar can be reshared again, either for the whole group, resetting all unshares, or for a single user.
-
-Federated calendar sharing
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. versionadded:: 32.0.0
-.. versionchanged:: 33.0.0 Federated calendar shares support read/write access.
-
-Sharing a calendar with a user on another Nextcloud instance works just like sharing with a local user.
-The difference is that you need to use the federated user identifier as the recipient, which has the format
-``<username>@<instance>`` (e.g. ``alice@cloud.example.com``).
-
-Starting with Nextcloud 33, federated shares support full read/write access, allowing remote users to
-create, edit, and delete events in the shared calendar. In Nextcloud 32, federated shares were read-only.
 
 Publishing a calendar
 ~~~~~~~~~~~~~~~~~~~~~
@@ -318,7 +306,7 @@ You can set up reminders to be notified before an event occurs. Currently suppor
 * Email notifications
 * Nextcloud notifications
 
-You may set reminders at a time relative to the event or at a specific date. If you would like all the events in a calendar to have a default reminder, you can configure that in the settings of that calendar.
+You may set reminders at a time relative to the event or at a specific date.
 
 .. figure:: images/calendar_event_reminders.png
               :scale: 80%

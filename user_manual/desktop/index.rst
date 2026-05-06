@@ -1,29 +1,31 @@
-==============
-Desktop Client
-==============
+===============
+Desktop Clients
+===============
 
-The Nextcloud desktop client for Windows, macOS, and Linux keeps files
-synchronized between your computer and your Nextcloud server.
+Available for Windows, macOS, and various Linux distributions, the Nextcloud
+Desktop Sync client enables you to:
+
+- Specify one or more directories on your computer that you want to synchronize
+  to the Nextcloud server.
+- Always have the latest files synchronized, wherever they are located.
+
+Your files are always automatically synchronized between your Nextcloud server, computer and mobile device.
 
 .. toctree::
    :maxdepth: 1
 
    installation
-   uninstallation
    usage
-   commandline
-   options
-   configfile
-   envvars
+   macosvfs
    autoupdate
    updatechannel
    conflicts
    faq
 
-For additional information, see:
+You can find additional information here:
 
 * `Admin manual`_
 * `Developer manual`_
 
-.. _`Admin manual`: https://docs.nextcloud.com/server/latest/admin_manual/desktop/index.html
-.. _`Developer manual`: https://docs.nextcloud.com/server/latest/developer_manual/desktop/index.html
+.. _`Admin manual`: https://docs.nextcloud.com/server/32/admin_manual/desktop/index.html
+.. _`Developer manual`: https://docs.nextcloud.com/server/32/developer_manual/desktop/index.html

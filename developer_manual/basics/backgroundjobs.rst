@@ -183,7 +183,7 @@ Beware that the reliability of the execution time is limited. Systems that do no
 
     class ShareService {
 
-        private IJobList $jobList
+        private IJobList $jobList;
 
         public function __construct(IJobList $jobList) {
             $this->jobList = $jobList;

@@ -46,7 +46,7 @@ Reverting a patch
 -----------------
 
 1. Navigate to the directory where you applied the patch.
-2. Revert the patch with the ``-R`` option::
+2. Now revert the patch with the ``-R`` option::
 
     patch -R -p 1 < ./26396.diff
 
@@ -57,6 +57,14 @@ Reverting a patch
 Notes and troubleshooting
 -------------------------
 
-.. note::
+If you found a related pull request on GitHub that solves your issue, or you want to help developers and verify a fix works, you can get a patch for the pull request.
 
-   You may see errors about files not being found, especially when applying patches from GitHub. Patches can include development or test files (for example, files under ``build/`` or ``tests/``) that are not present on your installation. These messages are expected and can be ignored if they refer only to such files.
+1. Using https://github.com/nextcloud/server/pull/26396 as an example.
+2. Append ``.patch`` to the URL: https://github.com/nextcloud/server/pull/26396.patch
+3. Download the patch to your server and follow the `Applying a patch`_ steps.
+4. In case you are on an older version, you might first need to go the the correct version of the patch.
+
+.. image:: images/getting-a-patch-from-github.png
+   :alt: backportbot-nextcloud linking to the pull request for an older version.
+
+5. You can find it by looking for a link by the ``backportbot-nextcloud`` or a developer will leave a manual comment about the backport to an older Nextcloud version. For the example above you the pull request for Nextcloud 21 is at https://github.com/nextcloud/server/pull/26406 and the patch at https://github.com/nextcloud/server/pull/26406.patch

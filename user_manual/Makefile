@@ -1,4 +1,5 @@
 # Makefile for Sphinx documentation
+#
 
 # You can set these variables from the command line.
 SPHINXOPTS    +=
@@ -7,14 +8,12 @@ PAPER         =
 BUILDDIR      = _build
 
 # Internal variables.
-PAPEROPT_a4        = -D latex_paper_size=a4
-PAPEROPT_letter    = -D latex_paper_size=letter
-ALLSPHINXOPTS      = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
+PAPEROPT_a4     = -D latex_paper_size=a4
+PAPEROPT_letter = -D latex_paper_size=letter
+ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 # the i18n builder cannot share the environment and doctrees with the others
-I18NSPHINXOPTS     = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
-
-# Dynamically build the list of language codes (including 'en')
-LANGS = $(shell touch locale/en && ls locale | grep -v source && rm locale/en)
+I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
+LANGS = $(shell touch locale/en && ls locale | grep -v source && rm locale/en) # this trick to add en in the list of langs
 
 .PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext
 
@@ -49,7 +48,12 @@ clean:
 
 html:
 	../build/change_file_extension.sh
-	make html-all merge-folders
+	make versions-template-all html-all merge-folders
+
+versions-template-all: $(foreach lang, $(LANGS), add-lang-to-versions-template-$(lang))
+
+add-lang-to-versions-template-%:
+	sed -i '/Here go the languages/i {% set available_languages = available_languages + ["$*"] %}' ./_templates/versions.html
 
 html-all: $(foreach lang, $(LANGS), html-allow-warnings-lang-$(lang))
 
@@ -100,7 +104,7 @@ htmlhelp:
 qthelp:
 	$(SPHINXBUILD) -b qthelp $(ALLSPHINXOPTS) $(BUILDDIR)/qthelp
 	@echo
-	@echo "Build finished; now you can run \"qcollectiongenerator\" with the" \
+	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
 	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/OwncloudDocumentation.qhcp"
 	@echo "To view the help file:"
@@ -140,20 +144,12 @@ latexpdf-lang-%:
 	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
 
 pdf:
-	$(SPHINXBUILD) -b pdf $(ALLSPHINXOPTS) $(BUILDDIR)/pdf || exit 1
-	@if [ ! -s $(BUILDDIR)/pdf/*.pdf ]; then \
-		echo "Error: PDF files are empty or missing"; \
-		exit 1; \
-	fi
+	$(SPHINXBUILD) -b pdf $(ALLSPHINXOPTS) $(BUILDDIR)/pdf
 	@echo
 	@echo "build finished. the text files are in $(BUILDDIR)/pdf."
 
 pdf-lang-%:
-	$(SPHINXBUILD) -b pdf -D language=$* $(ALLSPHINXOPTS) $(BUILDDIR)/pdf || exit 1
-	@if [ ! -s $(BUILDDIR)/pdf/*.pdf ]; then \
-		echo "Error: PDF files are empty or missing"; \
-		exit 1; \
-	fi
+	$(SPHINXBUILD) -b pdf -D language=$* $(ALLSPHINXOPTS) $(BUILDDIR)/pdf
 	@echo
 	@echo "build finished. the text files are in $(BUILDDIR)/pdf."
 

@@ -4,7 +4,7 @@ App: Context Agent (context_agent)
 
 .. _ai-app-context_agent:
 
-The *context_agent* app is the app that provides AI agent functionality in Nextcloud's "Chat with AI" feature and acts as a backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
+The *context_agent* app is the app that provides AI agent functionality in Nextcloud and acts as a backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
 When the Context Agent app is installed the AI Chat in Nextcloud Assistant will be able to interact with your Nextcloud apps via virtual integrations that are called "tools". They allow the Assistant to perform actions in your Nextcloud upon sending instructions in a chat message.
 Tool groups are only available if their requirements are met. They can be en- and disabled in the AI admin settings.
@@ -238,40 +238,6 @@ Forms tools
 
   * Example prompt: *"Delete the Retreat signup form."*
 
-Bookmarks tools
-~~~~~~~~~~~~~~~
-
-* List all bookmarks
-
-  * Example prompt: *"List all my bookmarks."*
-
-* Add a bookmark
-
-  * Example prompt: *"Add a bookmark for https://nextcloud.com with title 'Nextcloud homepage'."*
-
-* Delete a bookmark
-
-  * Example prompt: *"Delete the bookmark for https://nextcloud.com."*
-
-* Update a bookmark
-
-  * Example prompt: *"Change the title of the bookmark for https://nextcloud.com to 'Nextcloud official homepage'."*
-  * Example prompt: *"Add the tag 'cloud' to the bookmark for https://nextcloud.com."*
-  * Example prompt: *"Remove the tag 'cloud' from the bookmark for https://nextcloud.com."*
-  * Example prompt: *"Put the bookmark for https://nextcloud.com into the 'work' folder."*
-
-* List bookmark folders
-
-  * Example prompt: *"Which bookmark folders do I have?"*
-
-* Create a bookmark folder
-
-  * Example prompt: *"Create a bookmark folder called 'work'."*
-
-* List bookmark tags
-
-  * Example prompt: *"Which bookmark tags do I have?"*
-
 Search tools
 ~~~~~~~~~~~~
 All search providers in Nextcloud are also automatically available as tools.
@@ -476,8 +442,8 @@ Known Limitations
 -----------------
 * Make sure to test the language model you are using in concert with this app for whether they meet the use-case's quality requirements
 * Most models have difficulties with languages other than English. Some models sometimes answer in a different language than the one used by the user.
-* Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model.
-  Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI). We still try to optimize this as far as possible, so if you encounter any false or problematic output, you can report it `in a dedicated Github issue <https://github.com/nextcloud/context_agent/issues/51>`_ to help us improve this app.
+* Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. 
+  Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI). We still try to optimize this as far as possible, so if you encounter any false or problematic output, you can report it `in a dedicated Github issue <https://github.com/nextcloud/context_agent/issues/51>`_ to help us improve this app. 
 * When multiple MCP services are configured that have tools with the same name undefined behavior will occur.
 * Only remote MCP services are supported (streamable_http transport).
 * MCP services that require different access tokens for each user are not currently supported.
