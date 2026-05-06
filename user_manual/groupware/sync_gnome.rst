@@ -15,7 +15,7 @@ This can be done by following these steps:
 #. Enter your server URL, username, and password.
    If you have enabled two-factor authentication (2FA), you need to generate an application password/token, because GNOME Online Accounts
    `doesn't support Nextcloud's WebFlow login yet <https://gitlab.gnome.org/GNOME/gnome-online-accounts/issues/81>`_
-   (`Learn more <https://docs.nextcloud.com/server/33/user_manual/en/session_management.html#managing-devices>`_):
+   (:ref:`Learn more <managing_devices>`):
 
    .. image:: ../images/goa-add-nextcloud-account.png
 

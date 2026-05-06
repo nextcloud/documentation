@@ -135,6 +135,8 @@ Log field breakdown
 
 Empty value are written as two dashes: ``--``.
 
+.. _admin-audit-log:
+
 Admin audit log (Optional)
 --------------------------
 
