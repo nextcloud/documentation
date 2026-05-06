@@ -19,6 +19,5 @@ or provide a brief answer.
 	DockerContainerRegistry
 	DockerSocketProxy
 	GpuSupport
-	Scaling
 	BehindCompanyProxy
 	Troubleshooting
