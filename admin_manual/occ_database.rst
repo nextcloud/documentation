@@ -429,7 +429,7 @@ against the expected schema::
        - checksum:
          - name: checksum
          - type: string
-                       
+
 
 Limit output to a single table::
 

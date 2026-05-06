@@ -295,7 +295,7 @@ Where:
 Example of a deleted node webhook payload:
 
 .. code-block:: json
- 
+
    {
      "event": {
        "class": "OCP\\Files\\Events\\Node\\NodeDeletedEvent",

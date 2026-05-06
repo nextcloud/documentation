@@ -45,7 +45,7 @@ For best performance, stability and functionality we have documented some recomm
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
 
-To ensure the full functionality of your Nextcloud, please make sure that the server can reach the :ref:`required remote systems<connections_to_remote_servers>`. 
+To ensure the full functionality of your Nextcloud, please make sure that the server can reach the :ref:`required remote systems<connections_to_remote_servers>`.
 
 CPU Architecture and OS
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -65,7 +65,7 @@ depending on the numbers of users, apps, files and volume of server activity.
 
 Nextcloud needs a minimum of **128MB** RAM per process, and we recommend a minimum of **512MB** RAM per process.
 
-In low memory environments, some features or apps may require adjustments to their default 
+In low memory environments, some features or apps may require adjustments to their default
 settings in order to function (or, in some cases, may need to be disabled outright).
 
 .. warning:: To use the built-in Updater, at least 256MB is required.
@@ -147,5 +147,5 @@ of a browser from this list, or one based on those:
 - Google **Chrome**/Chromium
 - Apple **Safari**
 
-.. note:: If you want to use Nextcloud Talk you should use the latest version of Mozilla **Firefox** or 
+.. note:: If you want to use Nextcloud Talk you should use the latest version of Mozilla **Firefox** or
           Google **Chrome**/Chromium to have the full experience with video calls and screensharing.

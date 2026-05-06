@@ -138,9 +138,9 @@ SAML setup with onelogin
         - Audience: https://localhost/apps/user_saml/saml/metadata
         - Recipient: https://localhost/apps/user_saml/saml/acs
         - ACS (Consumer) URL Validator: https://localhost/apps/user_saml/saml/acs
-    
+
     - go to "Parameters"
-    
+
         - Add "User.email" -> email (and add to assertion)
         - Add "User.FirstName" -> first name (and add to assertion)
         - Add "User.LastName" -> last name (and add to assertion)
@@ -260,12 +260,12 @@ WebAuthn without SSL
     --- a/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
     +++ b/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
     @@ -150,7 +150,7 @@ class AuthenticatorAttestationResponseValidator
-     
+
                  if (!in_array($facetId, $securedRelyingPartyId, true)) {
                      $scheme = $parsedRelyingPartyId['scheme'] ?? '';
     -                Assertion::eq('https', $scheme, 'Invalid scheme. HTTPS required.');
     +                #Assertion::eq('https', $scheme, 'Invalid scheme. HTTPS required.');
                  }
-     
+
                  /* @see 7.1.6 */
 

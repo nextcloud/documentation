@@ -28,7 +28,7 @@ Apache
 ::
 
     dnf install -y httpd
-    
+
 Create a virtualhost in ``/etc/httpd/conf.d/nextcloud.conf`` and add the following content to it:
 
 ::
@@ -48,8 +48,8 @@ Create a virtualhost in ``/etc/httpd/conf.d/nextcloud.conf`` and add the followi
 
     </Directory>
   </VirtualHost>
-  
-  
+
+
 See :ref:`apache_configuration_label` for further details.
 
 Make sure the apache web service is enabled and started::
@@ -60,9 +60,9 @@ Make sure the apache web service is enabled and started::
 PHP
 ---
 
-.. note:: CentOS 8 doesn't come with packages for the redis and imagick php extensions. 
-    Those can either be installed using pecl. Apart from the official PHP packages there are 3rdparty 
-    repositories available at ``https://rpms.remirepo.net``. Using remirepo you can also install the 
+.. note:: CentOS 8 doesn't come with packages for the redis and imagick php extensions.
+    Those can either be installed using pecl. Apart from the official PHP packages there are 3rdparty
+    repositories available at ``https://rpms.remirepo.net``. Using remirepo you can also install the
     latest PHP version instead of the standard shipped one.
 
 
@@ -110,7 +110,7 @@ Installing optional modules redis/imagick
 ::
 
     dnf install -y php-redis php-imagick
-    
+
 
 Database
 --------
@@ -128,7 +128,7 @@ Improve MariaDB security.::
 
     mysql_secure_installation
 
-After you have done this, make sure you create a database with a username and password so that 
+After you have done this, make sure you create a database with a username and password so that
 Nextcloud will have access to it. For further details on database setup and configuration,
 see the :doc:`../configuration_database/linux_database_configuration` documentation.
 

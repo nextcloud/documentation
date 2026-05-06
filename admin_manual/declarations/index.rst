@@ -1,6 +1,6 @@
 ============
 Declarations
-============ 
+============
 
 .. toctree::
     :maxdepth: 2

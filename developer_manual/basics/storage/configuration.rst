@@ -122,7 +122,7 @@ App values are saved in the database per app and are useful for setting global a
 User values
 -----------
 
-User values are saved in the database per user and app and are good for saving user specific app settings: 
+User values are saved in the database per user and app and are good for saving user specific app settings:
 
 .. code-block:: php
 

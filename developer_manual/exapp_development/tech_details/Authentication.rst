@@ -16,16 +16,16 @@ Authentication flow
 
 .. mermaid::
 
-	sequenceDiagram
-    	participant ExApp
-    	box Nextcloud
-			participant Nextcloud
-			participant AppAPI
-		end
-    	ExApp->>+Nextcloud: Request to API
-    	Nextcloud->>+AppAPI: Validate request
-    	AppAPI-->>-Nextcloud: Request accepted/rejected
-    	Nextcloud-->>-ExApp: Response (200/401)
+    sequenceDiagram
+        participant ExApp
+        box Nextcloud
+            participant Nextcloud
+            participant AppAPI
+        end
+        ExApp->>+Nextcloud: Request to API
+        Nextcloud->>+AppAPI: Validate request
+        AppAPI-->>-Nextcloud: Request accepted/rejected
+        Nextcloud-->>-ExApp: Response (200/401)
 
 
 .. _auth-headers:
@@ -44,29 +44,29 @@ Authentication flow in details
 ******************************
 
 .. mermaid::
-	:zoom:
+    :zoom:
 
-	sequenceDiagram
-		autonumber
-		participant ExApp
-		box Nextcloud
-			participant Nextcloud
-			participant AppAPI
-		end
-		ExApp->>+Nextcloud: Request to API
-		Nextcloud->>Nextcloud: Check if AUTHORIZATION-APP-API header exists
-		Nextcloud-->>ExApp: Reject if AUTHORIZATION-APP-API header not exists
-		Nextcloud->>Nextcloud: Check if AppAPI app is enabled
-		Nextcloud-->>ExApp: Reject if AppAPI is not exists or disabled
-		Nextcloud->>+AppAPI: Validate request
-		AppAPI-->>AppAPI: Check if ExApp exists and enabled
-		AppAPI-->>Nextcloud: Reject if ExApp not exists or disabled
-		AppAPI-->>AppAPI: Validate shared secret from AUTHORIZATION-APP-API
-		AppAPI-->>Nextcloud: Reject if secret does not match
-		AppAPI-->>AppAPI: Check if user is not empty and active
-		AppAPI-->>Nextcloud: Set active user
-		AppAPI->>-Nextcloud: Request accepted/rejected
-		Nextcloud->>-ExApp: Response (200/401)
+    sequenceDiagram
+        autonumber
+        participant ExApp
+        box Nextcloud
+            participant Nextcloud
+            participant AppAPI
+        end
+        ExApp->>+Nextcloud: Request to API
+        Nextcloud->>Nextcloud: Check if AUTHORIZATION-APP-API header exists
+        Nextcloud-->>ExApp: Reject if AUTHORIZATION-APP-API header not exists
+        Nextcloud->>Nextcloud: Check if AppAPI app is enabled
+        Nextcloud-->>ExApp: Reject if AppAPI is not exists or disabled
+        Nextcloud->>+AppAPI: Validate request
+        AppAPI-->>AppAPI: Check if ExApp exists and enabled
+        AppAPI-->>Nextcloud: Reject if ExApp not exists or disabled
+        AppAPI-->>AppAPI: Validate shared secret from AUTHORIZATION-APP-API
+        AppAPI-->>Nextcloud: Reject if secret does not match
+        AppAPI-->>AppAPI: Check if user is not empty and active
+        AppAPI-->>Nextcloud: Set active user
+        AppAPI->>-Nextcloud: Request accepted/rejected
+        Nextcloud->>-ExApp: Response (200/401)
 
 
 AppAPIAuth
@@ -82,9 +82,9 @@ After successful authentication, AppAPI sets the `app_api` session key to ``true
 
 .. code-block:: php
 
-	$this->session->set('app_api', true);
+    $this->session->set('app_api', true);
 
 .. note::
 
-	The Nextcloud server verifies this session key and allows **CORS protection** and **Two-Factor authentication** to be bypassed for requests coming from ExApps.
-	Also, the rate limit is not applied to requests coming from ExApps.
+    The Nextcloud server verifies this session key and allows **CORS protection** and **Two-Factor authentication** to be bypassed for requests coming from ExApps.
+    Also, the rate limit is not applied to requests coming from ExApps.

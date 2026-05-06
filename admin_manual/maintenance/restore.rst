@@ -90,7 +90,7 @@ If the recovered backup is outdated
 the state of the clients may be more up to date than the state of the server.
 In this case also make sure to run the
 :ref:`maintenance:data-fingerprint <maintenance_commands_label>` command
-afterwards. 
+afterwards.
 It changes the logic of the synchronisation algorithm
 to try an recover as much data as possible.
 Files missing on the server are therefore recovered from the clients

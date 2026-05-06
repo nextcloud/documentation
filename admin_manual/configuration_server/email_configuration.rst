@@ -51,7 +51,7 @@ You need the following information from your mail server administrator to
 connect Nextcloud to a remote SMTP server:
 
 .. warning:: There were changes to the 3rd party mailer library in Nextcloud 26:
-    
+
     * STARTTLS cannot be enforced; it is used automatically if the mail server supports it. Set the encryption type to **None/STARTTLS** to allow this automatic upgrade. See :ref:`here<TLSPeerVerification>` for an example on how to configure self-signed certificates.
     * NTLM authentication for Microsoft Exchange is not supported by the new mailer library. Try using `basic authentication <https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/authentication-and-ews-in-exchange#basic-authentication>`_ instead.
     * Outlook and Microsoft Exchange have discontinued support for Basic authentication. It is no longer possible to use their services as your default email handler.
@@ -282,7 +282,7 @@ messages by enabling the ``mail_smtpdebug`` parameter and temporarily setting yo
     "mail_smtpdebug" => true,
     "loglevel" => 0,
 
-Be cautious setting your ``loglevel`` to DEBUG (``0``) since it'll apply to everything occurring on your NC instance, not just email. 
+Be cautious setting your ``loglevel`` to DEBUG (``0``) since it'll apply to everything occurring on your NC instance, not just email.
 And don't forget to set it back to a more reasonable level when you're done troubleshooting:
 
 ::

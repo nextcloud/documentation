@@ -69,25 +69,25 @@ Here is a JavaScript code sample to get you started:
 
 .. code-block:: javascript
 
-	import { createClient } from 'webdav'
-	import { generateRemoteUrl } from '@nextcloud/router'
-	import { getCurrentUser } from '@nextcloud/auth'
+    import { createClient } from 'webdav'
+    import { generateRemoteUrl } from '@nextcloud/router'
+    import { getCurrentUser } from '@nextcloud/auth'
 
-	const client = createClient(generateRemoteUrl('dav'))
-	const response = await client.getDirectoryContents(`/files/${getCurrentUser()?.uid}/folder`, {
-		details: true,
-		data: `<?xml version="1.0" encoding="UTF-8"?>
-			<d:propfind xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns">
-				<d:prop>
-					<d:getlastmodified/>
-					<d:getcontentlength/>
-					<d:getcontenttype/>
-					<oc:permissions/>
-					<d:resourcetype/>
-					<d:getetag/>
-				</d:prop>
-			</d:propfind>`,
-	})
+    const client = createClient(generateRemoteUrl('dav'))
+    const response = await client.getDirectoryContents(`/files/${getCurrentUser()?.uid}/folder`, {
+        details: true,
+        data: `<?xml version="1.0" encoding="UTF-8"?>
+            <d:propfind xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns">
+                <d:prop>
+                    <d:getlastmodified/>
+                    <d:getcontentlength/>
+                    <d:getcontenttype/>
+                    <oc:permissions/>
+                    <d:resourcetype/>
+                    <d:getetag/>
+                </d:prop>
+            </d:propfind>`,
+    })
 
 Quick method/header cheat sheet
 -------------------------------
@@ -131,26 +131,26 @@ If a property is not supported for a resource, the server will report it as not 
 
 .. code-block:: xml
 
-	<?xml version="1.0"?>
-	<d:propfind xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns">
-	  <d:prop>
-		<d:getlastmodified />
-		<d:getetag />
-		<d:getcontenttype />
-		<d:resourcetype />
-		<oc:fileid />
-		<oc:permissions />
-		<oc:size />
-		<d:getcontentlength />
-		<nc:has-preview />
-		<oc:favorite />
-		<oc:comments-unread />
-		<oc:owner-display-name />
-		<oc:share-types />
-		<nc:contained-folder-count />
-		<nc:contained-file-count />
-	  </d:prop>
-	</d:propfind>
+    <?xml version="1.0"?>
+    <d:propfind xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns">
+      <d:prop>
+        <d:getlastmodified />
+        <d:getetag />
+        <d:getcontenttype />
+        <d:resourcetype />
+        <oc:fileid />
+        <oc:permissions />
+        <oc:size />
+        <d:getcontentlength />
+        <nc:has-preview />
+        <oc:favorite />
+        <oc:comments-unread />
+        <oc:owner-display-name />
+        <oc:share-types />
+        <nc:contained-folder-count />
+        <nc:contained-file-count />
+      </d:prop>
+    </d:propfind>
 
 A note about namespaces URI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -174,15 +174,15 @@ And here is how it should look in your DAV request:
 
 .. code-block:: xml
 
-	<?xml version="1.0"?>
-	<d:propfind
-		xmlns:d="DAV:"
-		xmlns:oc="http://owncloud.org/ns"
-		xmlns:nc="http://nextcloud.org/ns"
-		xmlns:ocs="http://open-collaboration-services.org/ns"
-		xmlns:ocm="http://open-cloud-mesh.org/ns">
-		...
-	</d:propfind>
+    <?xml version="1.0"?>
+    <d:propfind
+        xmlns:d="DAV:"
+        xmlns:oc="http://owncloud.org/ns"
+        xmlns:nc="http://nextcloud.org/ns"
+        xmlns:ocs="http://open-collaboration-services.org/ns"
+        xmlns:ocm="http://open-cloud-mesh.org/ns">
+        ...
+    </d:propfind>
 
 Supported properties
 ^^^^^^^^^^^^^^^^^^^^
@@ -419,7 +419,7 @@ The contents of a folder can be listed by sending a :code:`PROPFIND` request to 
 
 .. code::
 
-	PROPFIND remote.php/dav/files/user/path/to/folder
+    PROPFIND remote.php/dav/files/user/path/to/folder
 
 Getting properties for just the folder
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -435,7 +435,7 @@ A file can be downloaded by sending a :code:`GET` request to the WebDAV url of t
 
 .. code::
 
-	GET remote.php/dav/files/user/path/to/file
+    GET remote.php/dav/files/user/path/to/file
 
 .. _webdav-download-folders:
 
@@ -450,17 +450,17 @@ The :code:`Accept` header must be set and contain the MIME type for ZIP archives
 
 .. code::
 
-	GET remote.php/dav/files/user/path/to/folder
-	Accept: application/zip
+    GET remote.php/dav/files/user/path/to/folder
+    Accept: application/zip
 
 Optionally it is possible to only include some files from the folder in the archive by providing the files using the custom :code:`X-NC-Files` header:
 
 .. code::
 
-	GET remote.php/dav/files/user/path/to/folder
-	Accept: application/zip
-	X-NC-Files: document.txt
-	X-NC-Files: image.png
+    GET remote.php/dav/files/user/path/to/folder
+    Accept: application/zip
+    X-NC-Files: document.txt
+    X-NC-Files: image.png
 
 As setting headers is not possible with HTML links it is also possible to provide this both options as query parameters.
 In this case the :code:`Accept` header value must be passed as the :code:`accept` query parameter.
@@ -469,7 +469,7 @@ The optional files list can be provided as a JSON encoded array through the :cod
 
 .. code::
 
-	GET remote.php/dav/files/user/path/to/folder?accept=zip&files=["image.png","document.txt"]
+    GET remote.php/dav/files/user/path/to/folder?accept=zip&files=["image.png","document.txt"]
 
 When using query parameters, ensure values are URL-encoded. In particular, :code:`files` must be a URL-encoded JSON array.
 
@@ -480,7 +480,7 @@ A file can be uploaded by sending a :code:`PUT` request to the file and sending 
 
 .. code::
 
-	PUT remote.php/dav/files/user/path/to/file
+    PUT remote.php/dav/files/user/path/to/file
 
 Any existing file will be overwritten by the request.
 
@@ -491,7 +491,7 @@ A folder can be created by sending a :code:`MKCOL` request to the folder.
 
 .. code::
 
-	MKCOL remote.php/dav/files/user/path/to/new/folder
+    MKCOL remote.php/dav/files/user/path/to/new/folder
 
 Deleting files and folders (rfc4918_)
 -------------------------------------
@@ -500,7 +500,7 @@ A file or folder can be deleted by sending a :code:`DELETE` request to the file 
 
 .. code::
 
-	DELETE remote.php/dav/files/user/path/to/file
+    DELETE remote.php/dav/files/user/path/to/file
 
 When deleting a folder, its contents will be deleted recursively.
 
@@ -511,8 +511,8 @@ A file or folder can be moved by sending a :code:`MOVE` request to the file or f
 
 .. code::
 
-	MOVE remote.php/dav/files/user/path/to/file
-	Destination: https://cloud.example/remote.php/dav/files/user/new/location
+    MOVE remote.php/dav/files/user/path/to/file
+    Destination: https://cloud.example/remote.php/dav/files/user/new/location
 
 The overwrite behavior of the move can be controlled by setting the :code:`Overwrite` header to :code:`T` or :code:`F` to enable or disable overwriting respectively.
 
@@ -523,8 +523,8 @@ A file or folder can be copied by sending a :code:`COPY` request to the file or 
 
 .. code::
 
-	COPY remote.php/dav/files/user/path/to/file
-	Destination: https://cloud.example/remote.php/dav/files/user/new/location
+    COPY remote.php/dav/files/user/path/to/file
+    Destination: https://cloud.example/remote.php/dav/files/user/new/location
 
 The overwrite behavior of the copy can be controlled by setting the :code:`Overwrite` header to :code:`T` or :code:`F` to enable or disable overwriting respectively.
 
@@ -535,15 +535,15 @@ A file or folder can be marked as favorite by sending a :code:`PROPPATCH` reques
 
 .. code-block:: xml
 
-	PROPPATCH remote.php/dav/files/user/path/to/file
-	<?xml version="1.0"?>
-	<d:propertyupdate xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns">
-	  <d:set>
-		<d:prop>
-		  <oc:favorite>1</oc:favorite>
-		</d:prop>
-	  </d:set>
-	</d:propertyupdate>
+    PROPPATCH remote.php/dav/files/user/path/to/file
+    <?xml version="1.0"?>
+    <d:propertyupdate xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns">
+      <d:set>
+        <d:prop>
+          <oc:favorite>1</oc:favorite>
+        </d:prop>
+      </d:set>
+    </d:propertyupdate>
 
 Setting the :code:`oc:favorite` property to ``1`` marks a file as favorite, setting it to ``0`` un-marks it as favorite.
 
@@ -554,13 +554,13 @@ Favorites for a user can be retrieved by sending a :code:`REPORT` request and sp
 
 .. code-block:: xml
 
-	REPORT remote.php/dav/files/user/path/to/folder
-	<?xml version="1.0"?>
-	<oc:filter-files  xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns">
-		 <oc:filter-rules>
-			 <oc:favorite>1</oc:favorite>
-		 </oc:filter-rules>
-	 </oc:filter-files>
+    REPORT remote.php/dav/files/user/path/to/folder
+    <?xml version="1.0"?>
+    <oc:filter-files  xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns">
+         <oc:filter-rules>
+             <oc:favorite>1</oc:favorite>
+         </oc:filter-rules>
+     </oc:filter-files>
 
 File properties can be requested by adding a :code:`<d:prop/>` element to the request listing the requested properties in the same way as it would be done for a :code:`PROPFIND` request.
 

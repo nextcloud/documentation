@@ -81,17 +81,17 @@ To get started, see the Installation section.
   The development of the Nextcloud platform is a cooperative
   endeavor overseen by the core maintainers -- primarily
   employed by Nextcloud GmbH -- along with thousands of
-  partners, providers, collaborators, project members, and 
+  partners, providers, collaborators, project members, and
   community participants.
 
-  The Nextcloud community includes everyone -- from individual 
+  The Nextcloud community includes everyone -- from individual
   users and independent developers to large organizations.
 
-  Community members share and discuss their experiences with 
-  the platform every day. They suggest improvements, 
-  collaborate on design, write code, create documentation, 
-  test for bugs, triage bug reports and enhancement ideas, 
-  support others, improve translations, and help fund and 
-  organize the logistics of a project this size. Most 
-  importantly, they use Nextcloud in their daily lives and 
+  Community members share and discuss their experiences with
+  the platform every day. They suggest improvements,
+  collaborate on design, write code, create documentation,
+  test for bugs, triage bug reports and enhancement ideas,
+  support others, improve translations, and help fund and
+  organize the logistics of a project this size. Most
+  importantly, they use Nextcloud in their daily lives and
   work.

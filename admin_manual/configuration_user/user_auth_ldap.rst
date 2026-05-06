@@ -585,10 +585,10 @@ Internal Username:
 
   You can override all of this with the Internal Username setting. Leave it
   empty for default behavior. Changes will affect only newly mapped LDAP users.
-  
-  When configuring this, be aware that the username in Nextcloud is considered 
+
+  When configuring this, be aware that the username in Nextcloud is considered
   immutable and cannot be changed afterwards. This can cause issues when using
-  an attribute that might change, e.g. the email address of a user that will 
+  an attribute that might change, e.g. the email address of a user that will
   get changed during name change.
 
   * Example: *uid*
@@ -781,7 +781,7 @@ Logging
 ^^^^^^^
 
 Nextcloud's LDAP implementation is capable of logging lots of additional details about
-its activities. When diagnosing problems, it can be useful to temporarily adjust your 
+its activities. When diagnosing problems, it can be useful to temporarily adjust your
 ``loglevel`` to INFO (``1``) or DEBUG (``0``).
 
 SSL certificate verification (LDAPS, TLS)
@@ -872,7 +872,7 @@ The attributes of users are fetched on demand (i.e. for sharing autocompletion
 or in the user management) and then stored inside the Nextcloud database to
 allow a better performance on our side. They are typically checked twice a day
 in batches from all users again. Beside that they are also refreshed during a
-login for this user or can be fetched manually via the occ command 
+login for this user or can be fetched manually via the occ command
 ``occ ldap:check-user --update USERID`` where ``USERID`` is Nextcloud's user id.
 
 For groups, a cache of memberships is stored in the database to be able to trigger

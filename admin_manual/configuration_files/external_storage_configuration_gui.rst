@@ -2,14 +2,14 @@
 External Storage
 ================
 
-The External Storage Support application enables you to mount external storage 
-services and devices as secondary Nextcloud storage devices. You may also allow 
+The External Storage Support application enables you to mount external storage
+services and devices as secondary Nextcloud storage devices. You may also allow
 users to mount their own external storage services.
 
 Enabling
 --------
 
-External Storage Support is provided by a bundled (automatically installed) app. It is 
+External Storage Support is provided by a bundled (automatically installed) app. It is
 disabled by default, so to use this feature you simply need to enable it under
 **Apps**.
 
@@ -24,44 +24,44 @@ in the top right and select **Settings** from the dropdown. On the left side, un
 **Administration**, select **External Storage**.
 
 .. note::
-   External storage can also be configured via the occ command. See :ref:`occ 
+   External storage can also be configured via the occ command. See :ref:`occ
    documentation <files_external_label>`.
 
 To create a new external storage mount, select an available backend from the
-**Add storage** dropdown. Each backend has different required options, which 
+**Add storage** dropdown. Each backend has different required options, which
 are configured in the configuration fields.
 
 .. figure:: external_storage/images/add_storage.png
 
-Each backend may also accept multiple authentication methods. These are selected 
-with the dropdown under **Authentication**. Different backends support different 
-authentication mechanisms; some are specific to the backend, while others are more 
-generic. See :doc:`external_storage/auth_mechanisms` for more detailed 
+Each backend may also accept multiple authentication methods. These are selected
+with the dropdown under **Authentication**. Different backends support different
+authentication mechanisms; some are specific to the backend, while others are more
+generic. See :doc:`external_storage/auth_mechanisms` for more detailed
 information.
 
-When you select an authentication mechanism, the configuration fields change as 
-appropriate for the chosen mechanism. For example, the SFTP backend supports 
-**Username and password**, **Log-in credentials, save in session**, and **RSA 
+When you select an authentication mechanism, the configuration fields change as
+appropriate for the chosen mechanism. For example, the SFTP backend supports
+**Username and password**, **Log-in credentials, save in session**, and **RSA
 public key**.
 
 .. figure:: external_storage/images/auth_mechanism.png
    :alt: An SFTP configuration example.
 
-Required fields are marked with a red border. When all required fields are 
-filled, the storage is automatically saved. A green dot next to the storage row 
-indicates the storage is ready for use. A red or yellow icon indicates 
-that Nextcloud could not connect to the external storage, so you need to 
+Required fields are marked with a red border. When all required fields are
+filled, the storage is automatically saved. A green dot next to the storage row
+indicates the storage is ready for use. A red or yellow icon indicates
+that Nextcloud could not connect to the external storage, so you need to
 re-check your configuration and network availability.
 
-If there is an error on the storage, it will be marked as unavailable for ten 
+If there is an error on the storage, it will be marked as unavailable for ten
 minutes. To re-check it, click the colored icon or reload your Admin page.
 
 Folder name
 -----------
-The ``Folder name`` is the name the folder will have within Nextcloud - the 
+The ``Folder name`` is the name the folder will have within Nextcloud - the
 name that will be visible to NextCloud users.
 
-Note that the folder name cannot include a path or subdirectory - do not 
+Note that the folder name cannot include a path or subdirectory - do not
 include slashes in your ``Folder name.``
 
 Usage of variables for mount paths
@@ -74,7 +74,7 @@ Use ``$user`` for automatic substitution with the logged-in user's username.
 Use ``$home`` for automatic substitution with a configurable home directory variable
 (requires LDAP; see :ref:`LDAP_Special_Attributes` in the LDAP configuration documentation for details).
 
-In the following example, the mount point for a logged-in user "alice" would resolve 
+In the following example, the mount point for a logged-in user "alice" would resolve
 to ``/opt/userDirectories/alice/myPictures``.
 
 .. figure:: external_storage/images/externalStorages_variables.png
@@ -83,9 +83,9 @@ to ``/opt/userDirectories/alice/myPictures``.
 User and Group Permissions
 --------------------------
 
-A storage configured in a user's personal settings is available only to the user 
-who created it. A storage configured in the Admin settings is available to 
-all users by default, but it can be restricted to specific users and groups in 
+A storage configured in a user's personal settings is available only to the user
+who created it. A storage configured in the Admin settings is available to
+all users by default, but it can be restricted to specific users and groups in
 the **Available for** field.
 
 .. figure:: external_storage/images/applicable.png
@@ -121,8 +121,8 @@ Using Self-Signed Certificates
 ------------------------------
 
 When using self-signed certificates for external storage mounts, the certificate
-must be imported into the personal settings of the user. Please refer to 
-`Nextcloud HTTPS External Mount 
+must be imported into the personal settings of the user. Please refer to
+`Nextcloud HTTPS External Mount
 <https://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_
 for more information.
 
@@ -149,9 +149,9 @@ The following backends are provided by the external storages app.
 Allow Users to Mount External Storage
 -------------------------------------
 
-Check **Enable User External Storage** to allow your users to mount their own 
-external storage services, and check the backends you want to allow. Beware, as 
-this allows a user to make potentially arbitrary connections to other services 
+Check **Enable User External Storage** to allow your users to mount their own
+external storage services, and check the backends you want to allow. Beware, as
+this allows a user to make potentially arbitrary connections to other services
 on your network!
 
 .. figure:: external_storage/images/user_mounts.png
@@ -173,7 +173,7 @@ You might need to set up a cron job that runs ``sudo -E -u www-data php occ file
 to trigger a rescan of the user's files periodically (for example, every 15 minutes), which includes
 the mounted external storage.
 
-If you are running Nextcloud AIO, the equivalent command 
+If you are running Nextcloud AIO, the equivalent command
 in that environment is ``sudo docker exec --user www-data -it nextcloud-aio-nextcloud php occ files:scan --all``.
 
 .. _trouble-file-encoding-ext-storages:

@@ -88,7 +88,7 @@ After cloning this app *manually* (cloned via git to your apps directory) you wi
 .. code-block::
 
    sudo -E -u www-data php occ app_api:app:unregister summary_bot
-   
+
 
 5. Register the Summary Bot so that your Nextcloud instance is aware of it
 

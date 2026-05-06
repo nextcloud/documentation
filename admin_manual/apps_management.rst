@@ -100,7 +100,7 @@ For example, to enable the "files" app, run:
 To enable the app for specific groups, use the `--groups` option:
 
 ::
-  
+
   occ app:enable files --groups=admin
 
 

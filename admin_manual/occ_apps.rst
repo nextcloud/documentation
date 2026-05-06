@@ -155,7 +155,7 @@ While setting a configuration value, multiple options are available:
      - ``--update-only`` only updates if a value is already stored
 
 .. note::
-	See `Appconfig Concepts`_ to learn more about `typed value`, `lazy` and `sensitive` flag.
+    See `Appconfig Concepts`_ to learn more about `typed value`, `lazy` and `sensitive` flag.
 
 .. _Appconfig Concepts: https://docs.nextcloud.com/server/latest/developer_manual/digging_deeper/config/appconfig.html#concept-overview
 

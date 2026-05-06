@@ -75,9 +75,9 @@ This component will take care of resolving the links itself.
 .. code-block:: html
 
     <NcRichText :text="message"
-		:arguments="richParameters"
-		:autolink="true"
-		:reference-limit="0" />
+        :arguments="richParameters"
+        :autolink="true"
+        :reference-limit="0" />
 
 NcRichText can be imported like this:
 
@@ -349,38 +349,38 @@ and an example response:
 
     {
       "ocs": {
-    	"meta": {
-    	  "status": "ok",
-    	  "statuscode": 200,
-    	  "message": "OK"
-    	},
-    	"data": [
-    	  {
-    	    "id": "github-issue-pr",
-    	    "title": "GitHub issues, pull requests and comments",
-    	    "icon_url": "https://my.nextcloud.org/apps/integration_github/img/app-dark.svg",
-    	    "order": 10,
-    	    "search_providers_ids": [
-    	      "github-search-issues",
-    	      "github-search-repos"
-    	    ]
-    	  },
-    	  {
-    	    "id": "openstreetmap-point",
-    	    "title": "Map location (by OpenStreetMap)",
-    	    "icon_url": "https://my.nextcloud.org/apps/integration_openstreetmap/img/app-dark.svg",
-    	    "order": 10,
-    	    "search_providers_ids": [
-    	      "openstreetmap-search-location"
-    	    ]
-    	  },
-    	  {
-    	    "id": "files",
-    	    "title": "Files",
-    	    "icon_url": "https://my.nextcloud.org/apps/files/img/folder.svg",
-    	    "order": 0
-    	  }
-    	]
+        "meta": {
+          "status": "ok",
+          "statuscode": 200,
+          "message": "OK"
+        },
+        "data": [
+          {
+            "id": "github-issue-pr",
+            "title": "GitHub issues, pull requests and comments",
+            "icon_url": "https://my.nextcloud.org/apps/integration_github/img/app-dark.svg",
+            "order": 10,
+            "search_providers_ids": [
+              "github-search-issues",
+              "github-search-repos"
+            ]
+          },
+          {
+            "id": "openstreetmap-point",
+            "title": "Map location (by OpenStreetMap)",
+            "icon_url": "https://my.nextcloud.org/apps/integration_openstreetmap/img/app-dark.svg",
+            "order": 10,
+            "search_providers_ids": [
+              "openstreetmap-search-location"
+            ]
+          },
+          {
+            "id": "files",
+            "title": "Files",
+            "icon_url": "https://my.nextcloud.org/apps/files/img/folder.svg",
+            "order": 0
+          }
+        ]
       }
     }
 

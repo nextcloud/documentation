@@ -240,7 +240,7 @@ file, or use a sync client to copy them to your local computer. See
 :doc:`../configuration_files/file_sharing_configuration` to learn how to create
 persistent file shares that survive user deletions.
 
-Disabling the "Your email address [...] was changed" email 
+Disabling the "Your email address [...] was changed" email
 ----------------------------------------------------------
 
 If an email address of a user is changed by an admin, then it triggers an email
@@ -249,9 +249,9 @@ administrator.". In some cases this should not be triggered, because it was a
 normal maintenance change. To disable this specific email the appconfig option
 ``disable_email.email_address_changed_by_admin`` can be set to ``yes``::
 
-	occ config:app:set settings disable_activity.email_address_changed_by_admin --value yes
+    occ config:app:set settings disable_activity.email_address_changed_by_admin --value yes
 
 To disable this behaviour change it to any other value or delete the app config::
 
-	occ config:app:delete settings disable_activity.email_address_changed_by_admin
+    occ config:app:delete settings disable_activity.email_address_changed_by_admin
 

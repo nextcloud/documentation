@@ -25,7 +25,7 @@ Your calendar will now be visible in the Calendar application.
    either specify both the protocol (``https://``) and the port (usually ``443``) in the ``Server`` field,
    i.e., ``https://example.com:443/remote.php/dav/principals/users/username/``,
    or none, like in the step-by-step guide above. Either way, the application automatically tries to use SSL,
-   which you can confirm in  “Advanced Settings” of the account after saving.   
+   which you can confirm in  “Advanced Settings” of the account after saving.
 
 .. note:: Beginning with iOS 12 an SSL encryption is necessary. Therefore do **not** disable **SSL**
   (For this reason a certificate is required at your domain, https://letsencrypt.org/ will do).

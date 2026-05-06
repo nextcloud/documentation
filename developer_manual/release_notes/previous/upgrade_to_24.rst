@@ -14,9 +14,9 @@ Make sure your ``appinfo/info.xml`` allows for Nextcloud 24.
 
 .. code-block:: xml
 
-	<dependencies>
-	  <nextcloud min-version="21" max-version="24" />
-	</dependencies>
+    <dependencies>
+      <nextcloud min-version="21" max-version="24" />
+    </dependencies>
 
 Back-end changes
 ----------------

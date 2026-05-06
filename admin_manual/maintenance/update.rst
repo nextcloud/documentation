@@ -25,10 +25,10 @@ What does the updater do?
 
 .. note::
    The built-in updater itself only replaces the existing files with the ones from the
-   version it updates to. The migration phase, which upgrades your database and apps, 
+   version it updates to. The migration phase, which upgrades your database and apps,
    needs to be executed afterwards. In command line mode, the updater offers to trigger this
-   for you right after the code was successfully replaced by running ``occ upgrade`` for you. 
-   In web mode, the updater finishes and then offers to send you back to your instance's main 
+   for you right after the code was successfully replaced by running ``occ upgrade`` for you.
+   In web mode, the updater finishes and then offers to send you back to your instance's main
    URL to trigger the migration phase's web UI.
 
 The built-in updater performs these operations:
@@ -231,25 +231,25 @@ To execute this, run the command with the ``--no-interaction`` option. (i.e.
 Troubleshooting
 ---------------
 
-* The built-in updater logs all of its actions to a dedicated log file called 
-  ``updater.log`` located in your configured ``datadirectory`` 
+* The built-in updater logs all of its actions to a dedicated log file called
+  ``updater.log`` located in your configured ``datadirectory``
   (e.g. ``/var/www/html/data/updater.log``). This file can be helpful in isolating
   where things are failing. It will also be needed if you reach out for assistance
   on the community help forum (https://help.nextcloud.com).
 
 * If you are having problems using the Updater in web-mode, you should try using
-  command-line mode (if it's an option in your environment). Command-line avoids 
-  issues with web server timeouts, which can be problematic since sometimes the 
+  command-line mode (if it's an option in your environment). Command-line avoids
+  issues with web server timeouts, which can be problematic since sometimes the
   Updater can take a long time to complete certain steps.
 
 * If the problem seems to be during the backup step, you can try disabling the
-  backups the updater automatically creates of the installation files. Keep in 
+  backups the updater automatically creates of the installation files. Keep in
   mind these backups do **not** include your data (which you are already hopefully
   doing). The backup step can only be disabled while in command-line mode. Append
-  the option ``--no-backup`` to the ``updater.phar`` command. 
+  the option ``--no-backup`` to the ``updater.phar`` command.
 
 * If you accidentally say no when the command-line mode of the updater asks if you'd
-  like to run ``occ upgrade``, you can safely execute ``occ upgrade`` manually or 
+  like to run ``occ upgrade``, you can safely execute ``occ upgrade`` manually or
   simply visit the URL of your instance to complete the database migrations and app
   upgrade phase.
 

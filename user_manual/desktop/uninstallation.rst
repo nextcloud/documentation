@@ -13,7 +13,7 @@ In each operating system:
 2. *Uninstall* the desktop client.
 
 3. You may also need to take into consideration that uninstalling the desktop client will not remove the :doc:`user's configuration <configfile>` file and synced data.
-    
+
     For data removal (sync folders), consider using the server feature `remote wipe <https://nextcloud.com/de/blog/nextcloud-desktop-client-2-6-1-brings-remote-wipe-dark-mode-support-to-mac-os-x-and-more/>`_. This feature is available across all clients.
 
 Below are platform specific instructions.
@@ -42,15 +42,15 @@ Beyond deleting the desktop client from the *Applications* folder, you may also 
 
 .. code-block:: bash
 
-   rm -rf "$HOME/Library/Application Scripts/com.nextcloud.desktopclient"*  
-   rm -f  "$HOME/Library/Application Support/CrashReporter/Nextcloud_"*  
-   rm -rf "$HOME/Library/Application Support/Nextcloud"  
-   rm -rf "$HOME/Library/Caches/Nextcloud"  
-   rm -rf "$HOME/Library/Containers/com.nextcloud.desktopclient"*  
-   rm -rf "$HOME/Library/Group Containers/NKUJUXUJ3B.com.nextcloud.desktopclient"  
-   rm -rf "$HOME/Library/Group Containers/com.nextcloud.desktopclient"  
-   rm -f  "$HOME/Library/LaunchAgents/com.nextcloud.desktopclient.plist"  
-   rm -rf "$HOME/Library/Preferences/Nextcloud"  
+   rm -rf "$HOME/Library/Application Scripts/com.nextcloud.desktopclient"*
+   rm -f  "$HOME/Library/Application Support/CrashReporter/Nextcloud_"*
+   rm -rf "$HOME/Library/Application Support/Nextcloud"
+   rm -rf "$HOME/Library/Caches/Nextcloud"
+   rm -rf "$HOME/Library/Containers/com.nextcloud.desktopclient"*
+   rm -rf "$HOME/Library/Group Containers/NKUJUXUJ3B.com.nextcloud.desktopclient"
+   rm -rf "$HOME/Library/Group Containers/com.nextcloud.desktopclient"
+   rm -f  "$HOME/Library/LaunchAgents/com.nextcloud.desktopclient.plist"
+   rm -rf "$HOME/Library/Preferences/Nextcloud"
    rm -f  "$HOME/Library/Preferences/com.nextcloud.desktopclient.plist"
 
 3. From version 33.0.0 the :doc:`user's configuration <configfile>` is located at ``$HOME/Library/Containers/com.nextcloud.desktopclient/Data/Library/Preferences/Nextcloud/nextcloud.cfg``.

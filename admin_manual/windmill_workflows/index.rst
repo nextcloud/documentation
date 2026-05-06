@@ -23,10 +23,10 @@ Installation
 Setting up the workspace connection
 -----------------------------------
 
-In Windmill, you have separate workspaces available. To enable Windmill to react to events happening on your Nextcloud instance, you need to connect a workspace to your Nextcloud connection. This is only possible for workspace admins. 
+In Windmill, you have separate workspaces available. To enable Windmill to react to events happening on your Nextcloud instance, you need to connect a workspace to your Nextcloud connection. This is only possible for workspace admins.
 
 * In Windmill, open the workspace settings of the workspace you want to connect to Nextcloud via Settings -> Workspace
-* Go to the Native Triggers tab and choose Nextcloud -> Configure OAuth 
+* Go to the Native Triggers tab and choose Nextcloud -> Configure OAuth
 * Follow the instructions to set up the OAuth connection
 * Click on "Connect" and accept the OAuth connection **with a Nextcloud admin account** or an account that has webhook admin privileges
 * If it shows "Connected", the workspace connection is successfully set up.
@@ -42,14 +42,14 @@ To make a workflow react to a Nextcloud Webhook Event, you need to add a trigger
 .. image:: images/windmill_add_trigger.png
    :alt: Screenshot of adding a Nextcloud trigger in a workflow
 
-Now you can choose an event out of a drop-down list  of events that your flow should react to. You can additionally fill in some parameters: 
+Now you can choose an event out of a drop-down list  of events that your flow should react to. You can additionally fill in some parameters:
 
 * *Event filters* allows more fine grained filtering for which events should be used. The filter condition as well as the available events with their payloads is documented in the :ref:`webhook_listeners documentation<webhook_listeners>`.
 * The *User ID filter* allows to define the user that can trigger a flow with their actions in Nextcloud. The webhook will only be called by requests from this user. Empty or null means no filtering.
-* The *Headers* field allows to define an array of headers to be sent in a webhook call, which will mostly not be needed. 
+* The *Headers* field allows to define an array of headers to be sent in a webhook call, which will mostly not be needed.
 
 
-You can add more than one trigger to a flow. 
+You can add more than one trigger to a flow.
 
 Nextcloud Scripts
 -----------------
@@ -132,7 +132,7 @@ All the scripts we provide have one input parameter in common: *nextcloud* needs
 * userId: the user id of the user the script should authenticate with
 * token: a password or token for that user
 
-We advise to either add these credentials as a resource of the Nextcloud type to your workspace and refer to the resource in your script, or use the authentication credentials that are provided in the webhook callback. 
+We advise to either add these credentials as a resource of the Nextcloud type to your workspace and refer to the resource in your script, or use the authentication credentials that are provided in the webhook callback.
 For every flow that is triggered by a Nextcloud event, there are 2 sets of temporary credentials included:
 
 * the credentials for the user account that is saved in the initial OAuth connection, available as :code:`flow_input.authentication.owner`

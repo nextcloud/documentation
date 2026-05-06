@@ -24,13 +24,13 @@ The response data is a JSON array of ExApp objects with the following attributes
 
 .. code-block:: json
 
-	{
-		"id": "appid of the ExApp",
-		"name": "name of the ExApp",
-		"version": "version of the ExApp",
-		"enabled": "true/false flag",
-		"last_check_time": "timestamp of last successful Nextcloud->ExApp connection check",
-	}
+    {
+        "id": "appid of the ExApp",
+        "name": "name of the ExApp",
+        "version": "version of the ExApp",
+        "enabled": "true/false flag",
+        "last_check_time": "timestamp of last successful Nextcloud->ExApp connection check",
+    }
 
 Set ExApp init progress
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -39,7 +39,7 @@ Used during ExApp :ref:`initialization step <ex_app_lifecycle_init>`.
 
 .. note::
 
-	AppAPIAuth required.
+    AppAPIAuth required.
 
 OCS endpoint: ``PUT /apps/app_api/ex-app/status``
 
@@ -48,10 +48,10 @@ Request data
 
 .. code-block:: json
 
-	{
-		"progress": "progress value",
-		"error": "optional, error string message"
-	}
+    {
+        "progress": "progress value",
+        "error": "optional, error string message"
+    }
 
 Response data
 *************
@@ -72,9 +72,9 @@ Returns the base URL of the Nextcloud instance:
 
 .. code-block:: json
 
-	{
-		"base_url": "http(s)://nextcloud.example.com"
-	}
+    {
+        "base_url": "http(s)://nextcloud.example.com"
+    }
 
 
 Make Requests to ExApps
@@ -129,8 +129,8 @@ OCS endpoint: ``GET /apps/app_api/api/v1/ex-app/state``
 
 .. note::
 
-	This endpoint can be called by ExApp even if it is disabled on the Nextcloud side,
-	and requires :doc:`AppAPIAuth <../Authentication>`.
+    This endpoint can be called by ExApp even if it is disabled on the Nextcloud side,
+    and requires :doc:`AppAPIAuth <../Authentication>`.
 
 Response data
 *************

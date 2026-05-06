@@ -67,7 +67,7 @@ Requirements:
 - ``icon`` field should always provide an SVG.
 - ``method`` supports POST/GET.
 
-.. code-block:: javascript 
+.. code-block:: javascript
 
   [
       'name' => 'translated title',
@@ -85,11 +85,11 @@ The app in question can then handle the request and can send two different respo
 
 Declarative UI response
 ^^^^^^^^^^^^^^^^^^^^^^^
-The declarative UI response allows the app to send back a new UI to be rendered by the client: 
+The declarative UI response allows the app to send back a new UI to be rendered by the client:
 - version: Indicates which version it is. Clients will be backwards compatible. If server sends a newer version than the client can understand the response will be ignored.
 - tooltip: Translated text, which will be shown as tooltip / snackbar.
 
-.. code-block:: javascript 
+.. code-block:: javascript
 
   {
     "ocs": {
@@ -144,13 +144,13 @@ The tooltip response is a regular DataResponse type, with payload:
 
 Example
 ---------
-Here is an example of using the Assistant app. 
+Here is an example of using the Assistant app.
 
 **Capabilities:**
 
 `ocs/v1.php/cloud/capabilities` returns the following capability:
 
-.. code-block:: javascript 
+.. code-block:: javascript
 
   "client_integration": {
     "assistant": {
@@ -194,7 +194,7 @@ The Assistant integration has a few endpoints for the client to show and execute
 Looking at the "Summarize using AI" action, it will only show for files with mimetypes starting with "text/" or the specified document and PDF mimetypes, as described in `mimetype_filters`.
 When clicking on the action, the client will send a POST request to the specified URL, replacing {fileId} with the actual file id. The app can then handle the request and for example send a tooltip response back to the client. The client will show the tooltip to the user:
 
-.. code-block:: javascript 
+.. code-block:: javascript
 
   {
       "ocs": {

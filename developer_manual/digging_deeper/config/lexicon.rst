@@ -34,38 +34,38 @@ The Lexicon is set in a local class that implements `\OCP\Config\Lexicon\ILexico
 
 .. code-block:: php
 
-	public function register(IRegistrationContext $context): void {
-		$context->registerConfigLexicon(\OCA\MyApp\ConfigLexicon::class);
-	}
+    public function register(IRegistrationContext $context): void {
+        $context->registerConfigLexicon(\OCA\MyApp\ConfigLexicon::class);
+    }
 
 Example of the registered ``ConfigLexicon.php``:
 
 .. code-block:: php
 
-	use OCP\Config\Lexicon\Entry;
-	use OCP\Config\Lexicon\ILexicon;
-	use OCP\Config\Lexicon\Strictness;
-	use OCP\Config\ValueType;
+    use OCP\Config\Lexicon\Entry;
+    use OCP\Config\Lexicon\ILexicon;
+    use OCP\Config\Lexicon\Strictness;
+    use OCP\Config\ValueType;
 
-	class Lexicon implements ILexicon {
-		public function getStrictness(): Strictness {
-			return Strictness::WARNING;
-		}
+    class Lexicon implements ILexicon {
+        public function getStrictness(): Strictness {
+            return Strictness::WARNING;
+        }
 
-		public function getAppConfigs(): array {
-			return [
-				new Entry('key1', ValueType::STRING, 'abcde', 'test key', true, IAppConfig::FLAG_SENSITIVE),
-				new Entry('key2', ValueType::INT, 12345, 'test key', false)
-			];
-		}
+        public function getAppConfigs(): array {
+            return [
+                new Entry('key1', ValueType::STRING, 'abcde', 'test key', true, IAppConfig::FLAG_SENSITIVE),
+                new Entry('key2', ValueType::INT, 12345, 'test key', false)
+            ];
+        }
 
-		public function getUserConfigs(): array {
-			return [
-				new Entry('key1', ValueType::STRING, 'abcde', 'test key', true, IUserConfig::FLAG_SENSITIVE),
-				new Entry('key2', ValueType::INT, 12345, 'test key', false)
-			];
-		}
-	}
+        public function getUserConfigs(): array {
+            return [
+                new Entry('key1', ValueType::STRING, 'abcde', 'test key', true, IUserConfig::FLAG_SENSITIVE),
+                new Entry('key2', ValueType::INT, 12345, 'test key', false)
+            ];
+        }
+    }
 
 
 Each method ``getUserConfigs()`` and ``getAppConfigs()`` returns a list of ``\OCP\Config\Lexicon\Entry``.
@@ -87,15 +87,15 @@ Each config key is defined in a object through those arguments:
 
 .. code-block:: php
 
-	new Entry(
-		key: 'my_config_key',        // config key
-		type: ValueType::STRING,     // expected value type when the code set/get value
-		defaultRaw: 'default value', // value to returns if a config value is not available in the database
-		definition: 'this is a description of the use for this config key',
-		lazy: true,                  // config value is stored as lazy
-		flags: FLAG_SENSITIVE,       // value is sensitive and/or indexable, using IAppConfig::FLAG_*, IUserConfig::FLAG_*
-		deprecated: false,           // if set to ``true`` will generate a notice entry in the nextcloud logs when called
-	);
+    new Entry(
+        key: 'my_config_key',        // config key
+        type: ValueType::STRING,     // expected value type when the code set/get value
+        defaultRaw: 'default value', // value to returns if a config value is not available in the database
+        definition: 'this is a description of the use for this config key',
+        lazy: true,                  // config value is stored as lazy
+        flags: FLAG_SENSITIVE,       // value is sensitive and/or indexable, using IAppConfig::FLAG_*, IUserConfig::FLAG_*
+        deprecated: false,           // if set to ``true`` will generate a notice entry in the nextcloud logs when called
+    );
 
 .. note:: Unless if set to ``null``, the default value set in the config lexicon overwrite the default value used as argument when calling ``getValueString('my_config_key', 'another default value');``
 
@@ -107,21 +107,21 @@ The selection of a preset is optional and can be done right after the setup of N
 
 .. code-block:: bash
 
-	$ ./occ config:preset
-	current preset: NONE
-	$ ./occ config:preset PRIVATE
-	current preset: PRIVATE
+    $ ./occ config:preset
+    current preset: NONE
+    $ ./occ config:preset PRIVATE
+    current preset: PRIVATE
 
 If you want your app to have a different default value based on the selected Preset, you need to generate a Closure as ``$defaultRaw`` when generating the Lexicon Entry.
 The first parameter of the Closure is an Enum ``'\OCP\Config\Lexicon\Preset'`` that define the current Preset:
 
 .. code-block:: php
 
-	new Entry('key3', ValueType::STRING, fn (Preset $p): string => match ($p) {
-				Preset::FAMILY => 'family',
-				Preset::CLUB, Preset::MEDIUM => 'club+medium',
-				default => 'none',
-			}),
+    new Entry('key3', ValueType::STRING, fn (Preset $p): string => match ($p) {
+                Preset::FAMILY => 'family',
+                Preset::CLUB, Preset::MEDIUM => 'club+medium',
+                default => 'none',
+            }),
 
 Available values:
  * ``::LARGE`` - Large size organisation (> 50k accounts)
@@ -142,12 +142,12 @@ Details from the Lexicon can be extracted using the ``occ`` command
 
 .. code-block:: bash
 
-	$ ./occ config:app:get myapp my_config_key --details
-	  - app: myapp
-	  - key: my_config_key
-	  - value: 'a_value'
-	  - type: string
-	  - lazy: true
+    $ ./occ config:app:get myapp my_config_key --details
+      - app: myapp
+      - key: my_config_key
+      - value: 'a_value'
+      - type: string
+      - lazy: true
       - description:
-	  - sensitive: false
+      - sensitive: false
 

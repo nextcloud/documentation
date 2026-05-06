@@ -11,7 +11,7 @@ an ecosystem for **ExApps** (short for "External Apps") was introduced, allowing
 Most of our :doc:`Artificial Intelligence <../ai/index>` (AI) apps are developed as ExApps and thus may require some preparation of your Nextcloud instance before you can install them.
 
 .. tip::
-	AppAPI and ExApps are optional functionality. If you do not use any non-PHP applications then you may safely disable AppAPI by navigating to the Apps management page in your Nextcloud instance, going to "Your Apps" and clicking the "Disable" button next to AppAPI.
+    AppAPI and ExApps are optional functionality. If you do not use any non-PHP applications then you may safely disable AppAPI by navigating to the Apps management page in your Nextcloud instance, going to "Your Apps" and clicking the "Disable" button next to AppAPI.
 
 Installing AppAPI
 -----------------
@@ -26,8 +26,8 @@ Setup deploy daemon
 A Deploy Daemon is the way for Nextcloud to install, communicate with, and control ExApps.
 
 .. note::
-	If you are using Nextcloud AIO with the "HaRP" or "Docker Socket Proxy" container enabled, a Deploy Daemon will be automatically created and configured to work out-of-the-box.
-	Otherwise, follow the steps below to set up a Deploy Daemon from the AppAPI admin settings.
+    If you are using Nextcloud AIO with the "HaRP" or "Docker Socket Proxy" container enabled, a Deploy Daemon will be automatically created and configured to work out-of-the-box.
+    Otherwise, follow the steps below to set up a Deploy Daemon from the AppAPI admin settings.
 
 .. tip::
     After registering a Deploy Daemon, use the **Test Deploy** action to verify it is reachable and working.
@@ -59,7 +59,7 @@ The ExApps in this configuration or the ExApp server need not expose any ExApp r
 For different/remote setups, see deployment configuration examples :doc:`here <./DeployConfigurations>`.
 
 .. note::
-	The existing ExApps can be migrated to use the new HaRP proxy following `this guide <https://github.com/nextcloud/harp?tab=readme-ov-file#nextcloud-32-migrating-existing-exapps-from-dsp-to-harp>`_.
+    The existing ExApps can be migrated to use the new HaRP proxy following `this guide <https://github.com/nextcloud/harp?tab=readme-ov-file#nextcloud-32-migrating-existing-exapps-from-dsp-to-harp>`_.
 
 .. _ai-app_api_dsp:
 
@@ -70,23 +70,23 @@ Docker Socket Proxy
 2. Go to the AppAPI admin settings.
 3. Click on the "Register Daemon" button.
 4. Fill in the required fields:
-	- ``Name``: unique name of the Deploy daemon
-	- ``Display name``: the name that will be displayed in the UI
-	- ``Deployment method``: by default, you will need to choose ``docker_install`` (``manual_install`` is for development or custom use case of manual ExApp installation)
-	- ``Daemon Host``: hostname/IP address + port of the Deploy daemon
-	- ``Nextcloud URL``: autofilled with current domain, you might need to change the protocol to http/https depending on your setup
-	- ``Set as default daemon``: check if you want set new Deploy daemon as default
-	- ``Enable https``: check if your Deploy daemon (Docker Socket Proxy) is configured with TLS
-	- Deploy Config:
-		- ``Network``: Docker network name, depends on your networking setup, enforces to "host" if "Enable https" is checked
-		- ``HaProxy password``: password for Docker Socket Proxy, if it is configured with TLS
-		- ``Compute Device``: CPU, CUDA or ROCm, depending on your hardware config on Deploy daemon host machine
-		- ``Add additional option`` (see :ref:`additional_options_list`): setup additional KEY + VALUE deploy config options
+    - ``Name``: unique name of the Deploy daemon
+    - ``Display name``: the name that will be displayed in the UI
+    - ``Deployment method``: by default, you will need to choose ``docker_install`` (``manual_install`` is for development or custom use case of manual ExApp installation)
+    - ``Daemon Host``: hostname/IP address + port of the Deploy daemon
+    - ``Nextcloud URL``: autofilled with current domain, you might need to change the protocol to http/https depending on your setup
+    - ``Set as default daemon``: check if you want set new Deploy daemon as default
+    - ``Enable https``: check if your Deploy daemon (Docker Socket Proxy) is configured with TLS
+    - Deploy Config:
+        - ``Network``: Docker network name, depends on your networking setup, enforces to "host" if "Enable https" is checked
+        - ``HaProxy password``: password for Docker Socket Proxy, if it is configured with TLS
+        - ``Compute Device``: CPU, CUDA or ROCm, depending on your hardware config on Deploy daemon host machine
+        - ``Add additional option`` (see :ref:`additional_options_list`): setup additional KEY + VALUE deploy config options
 5. Click "Check connection" to verify that the configuration is correct.
 6. Click "Register" to save the Deploy Daemon configuration.
 
 .. note::
-	For remote DSP setup, it should expose the ports on the host.
+    For remote DSP setup, it should expose the ports on the host.
 
 .. image:: ./img/app_api_3.png
 
@@ -129,42 +129,42 @@ Frontend requests in case of Docker Socket Proxy:
 
 .. mermaid::
 
-	graph LR;
-		subgraph Browser
-			A[Frontend]
-		end
+    graph LR;
+        subgraph Browser
+            A[Frontend]
+        end
 
-		B[Proxy]
+        B[Proxy]
 
-		subgraph Services behind the proxy
-			C[Docker Socket Proxy]
-			D[ExApp]
-			E[Nextcloud Server / AppAPI]
-		end
+        subgraph Services behind the proxy
+            C[Docker Socket Proxy]
+            D[ExApp]
+            E[Nextcloud Server / AppAPI]
+        end
 
-		A --> B
-		B -->|Request to an ExApp| E --Converted to ExApp auth--> D
-		B -->|All other usual requests| E
+        A --> B
+        B -->|Request to an ExApp| E --Converted to ExApp auth--> D
+        B -->|All other usual requests| E
 
 
 Frontend requests in case of HaRP:
 
 .. mermaid::
 
-	graph LR;
-		subgraph Browser
-			A[Frontend]
-		end
+    graph LR;
+        subgraph Browser
+            A[Frontend]
+        end
 
-		B[Proxy]
+        B[Proxy]
 
-		subgraph Services behind the proxy
-			C[HaRP]
-			D[ExApp]
-			E[Nextcloud Server / AppAPI]
-		end
+        subgraph Services behind the proxy
+            C[HaRP]
+            D[ExApp]
+            E[Nextcloud Server / AppAPI]
+        end
 
-		B --All other usual requests--> E
-		A --> B
-		B --Direct request to an ExApp--> C --Converted to ExApp auth--> D
-		C --User auth validation--> E
+        B --All other usual requests--> E
+        A --> B
+        B --Direct request to an ExApp--> C --Converted to ExApp auth--> D
+        C --User auth validation--> E

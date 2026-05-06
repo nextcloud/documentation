@@ -111,7 +111,7 @@ on the survey_client solution.
             /**
              * The section ID, e.g. 'sharing'
              *
-             * @return string 
+             * @return string
              */
             public function getSection() {
                     return 'survey_client';
@@ -263,8 +263,8 @@ An example implementation of the IIconSection interface:
              * Whether the form should be rather on the top or bottom of
              * the settings navigation. The sections are arranged in ascending order of
              * the priority values. It is required to return a value between 0 and 99.
-             * 
-             * @return int 
+             *
+             * @return int
              */
             public function getPriority() {
                     return 80;
@@ -272,8 +272,8 @@ An example implementation of the IIconSection interface:
 
             /**
              * The relative path to an icon describing the section
-             * 
-             * @return string 
+             *
+             * @return string
              */
             public function getIcon() {
                     return $this->urlGenerator->imagePath('yourapp', 'icon.svg');

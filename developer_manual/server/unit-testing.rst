@@ -108,8 +108,8 @@ Every database to test needs to accessible either
   - Database: oc_autotest
   - User: oc_autotest
   - Password: owncloud
-  
-- or via docker by setting the USEDOCKER environment variable. 
+
+- or via docker by setting the USEDOCKER environment variable.
 
 Notes on how to setup databases for this test can be found in https://github.com/nextcloud/server/blob/master/autotest.sh.
 
