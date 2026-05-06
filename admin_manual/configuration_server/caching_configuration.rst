@@ -2,9 +2,9 @@
 Memory caching
 ==============
 
-You can significantly improve your Nextcloud server performance with memory 
-caching, where frequently-requested objects are stored in memory for faster 
-retrieval. There are two types of caches to use: a PHP opcode cache, which is 
+You can significantly improve your Nextcloud server performance with memory
+caching, where frequently-requested objects are stored in memory for faster
+retrieval. There are two types of caches to use: a PHP opcode cache, which is
 commonly called *opcache*, and data cache for your web server, commonly called
 "memcache".
 
@@ -14,8 +14,8 @@ commonly called *opcache*, and data cache for your web server, commonly called
    distributed cache (``memcache.distributed``) in your ``config.php`` and not
    a local cache (``memcache.local``) you will still see the cache warning.
 
-A **PHP opcache** stores compiled PHP scripts, so they don't need to be re-compiled 
-every time they are called. PHP bundles the Zend OPcache in core since version 
+A **PHP opcache** stores compiled PHP scripts, so they don't need to be re-compiled
+every time they are called. PHP bundles the Zend OPcache in core since version
 5.5, so you don't need to install an opcache manually.
 
 **Data caching** is supplied by the user. Nextcloud supports multiple memory
@@ -38,7 +38,7 @@ needs. The supported caching backends are:
   For distributed caching.
 
 Data caches, or memcaches, must be explicitly configured in Nextcloud by installing
-and enabling your desired cache, and then adding the appropriate entry to 
+and enabling your desired cache, and then adding the appropriate entry to
 ``config.php`` (See :doc:`config_sample_php_parameters` for an overview of
 all possible config parameters).
 
@@ -46,7 +46,7 @@ all possible config parameters).
 Recommendations based on type of deployment
 -------------------------------------------
 
-You may use both a local and a distributed cache. Recommended caches are APCu 
+You may use both a local and a distributed cache. Recommended caches are APCu
 and Redis. After installing and enabling your chosen memcache (data cache),
 verify that it is active by running :ref:`label-phpinfo`.
 
@@ -122,8 +122,8 @@ Linux distributions. On Red Hat/CentOS/Fedora systems install
 After restarting your Web server, add this line to your ``config.php`` file::
 
  'memcache.local' => '\OC\Memcache\APCu',
- 
-Refresh your Nextcloud admin page, and the cache warning should disappear.  
+
+Refresh your Nextcloud admin page, and the cache warning should disappear.
 
 Depending on your installation size and the number of users and interactions
 with the system you may want to adapt the ``apc.shm_size`` setting in your
@@ -148,7 +148,7 @@ Redis
 
 Redis is an excellent modern memcache to use for distributed caching, and
 as a key-value store for :doc:`Transactional File Locking
-<../configuration_files/files_locking_transactional>` because it guarantees 
+<../configuration_files/files_locking_transactional>` because it guarantees
 that cached objects are available for as long as they are needed.
 
 Nextcloud uses the PhpRedis PHP extension. This extension provides an API for
@@ -156,23 +156,23 @@ communicating with Redis-compatible key-value stores. Redis Open Source is the
 formally tested backend; Valkey and KeyDB are expected to work as compatible
 backends as well.
 
-The Redis PHP module must be version 2.2.6+. If you are running a Linux 
+The Redis PHP module must be version 2.2.6+. If you are running a Linux
 distribution that does not package the supported versions of this module,
 or does not package Redis at all, see :ref:`install_redis_label`.
 
-On Debian/Ubuntu/Mint, install ``redis-server`` (or equivalent) and 
+On Debian/Ubuntu/Mint, install ``redis-server`` (or equivalent) and
 ``php-redis``. Package names vary by distribution and backend.
 
 On CentOS and Fedora, install ``redis`` (or equivalent) and ``php-pecl-redis``.
-It will not start automatically, so you must use your service manager to start 
+It will not start automatically, so you must use your service manager to start
 the ``redis`` server, and to launch it at boot as a daemon.
- 
-You can verify that the Redis daemon is running with ``ps ax``::
- 
- ps ax | grep redis
- 22203 ? Ssl    0:00 /usr/bin/redis-server 127.0.0.1:6379 
 
-Restart your Web server, add the appropriate entries to your ``config.php``, and 
+You can verify that the Redis daemon is running with ``ps ax``::
+
+ ps ax | grep redis
+ 22203 ? Ssl    0:00 /usr/bin/redis-server 127.0.0.1:6379
+
+Restart your Web server, add the appropriate entries to your ``config.php``, and
 refresh your Nextcloud admin page.
 
 Redis configuration in Nextcloud (config.php)
@@ -182,12 +182,12 @@ For best performance, use Redis for file locking by adding this::
 
   'memcache.locking' => '\OC\Memcache\Redis',
 
-Additionally, you should use Redis for the distributed server cache:: 
+Additionally, you should use Redis for the distributed server cache::
 
   'memcache.distributed' => '\OC\Memcache\Redis',
 
 Furthermore, you could use Redis for the local cache like so, but it's not recommended (see
-warning below):: 
+warning below)::
 
   'memcache.local' => '\OC\Memcache\Redis',
 
@@ -197,7 +197,7 @@ warning below)::
 When using Redis for any of the above cache settings, you also need to
 specify either the ``redis`` or ``redis.cluster`` configuration in ``config.php``.
 
-The following options are available to configure when using a single redis server 
+The following options are available to configure when using a single redis server
 (all but ``host`` and ``port`` are optional. For the latter two, see the next sections)::
 
    'memcache.locking' => '\OC\Memcache\Redis',
@@ -237,8 +237,8 @@ are optional)::
       'password'        => 'password',
       'dbindex'         => 0,
    ],
-      
-.. note:: 
+
+.. note::
    The port is required as part of the server URL. However, it is not necessary to list all
    servers: for example, if all servers are load balanced via the same DNS name, only that
    server name is required.
@@ -317,7 +317,7 @@ You might need to restart apache and redis for the changes to take effect::
  systemctl restart apache2
  systemctl restart redis-server
 
-Redis is very configurable; consult `the Redis documentation 
+Redis is very configurable; consult `the Redis documentation
 <http://redis.io/documentation>`_ to learn more.
 
 Using the Redis session handler
@@ -394,7 +394,7 @@ and lists all the servers in the shared cache pool with their port numbers::
 Cache Directory location
 ------------------------
 
-The cache directory defaults to ``data/$user/cache`` where ``$user`` is the 
+The cache directory defaults to ``data/$user/cache`` where ``$user`` is the
 current user. You may use the ``'cache_path'`` directive in ``config.php``
 (See :doc:`config_sample_php_parameters`) to select a different location.
 

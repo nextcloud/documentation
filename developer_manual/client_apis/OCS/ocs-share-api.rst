@@ -154,7 +154,7 @@ Share attributes are used for more advanced flags like permissions.
     ]
 
 .. warning:: Since Nextcloud 30, the ``enabled`` key have bee renamed to ``value`` and supports more than boolean.
- 
+
 Download permission
 """""""""""""""""""
 

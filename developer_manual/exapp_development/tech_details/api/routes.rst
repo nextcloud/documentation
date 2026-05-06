@@ -18,19 +18,19 @@ Example
 
 .. code-block::
 
-	...
-	<external-app>
-		<routes>
-			<route>
-				<url>.*</url>
-				<verb>GET,POST,PUT,DELETE</verb>
-				<access_level>USER</access_level>
-				<headers_to_exclude>[]</headers_to_exclude>
-				<bruteforce_protection>[401, 500]</bruteforce_protection>
-			</route>
-		</routes>
-	</external-app>
-	...
+    ...
+    <external-app>
+        <routes>
+            <route>
+                <url>.*</url>
+                <verb>GET,POST,PUT,DELETE</verb>
+                <access_level>USER</access_level>
+                <headers_to_exclude>[]</headers_to_exclude>
+                <bruteforce_protection>[401, 500]</bruteforce_protection>
+            </route>
+        </routes>
+    </external-app>
+    ...
 
 where the fields are:
 

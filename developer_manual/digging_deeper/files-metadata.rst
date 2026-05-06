@@ -66,14 +66,14 @@ on a background job by requesting a re-run by calling the method ``MetadataLiveE
     class Application extends App implements IBootstrap {
         public function __construct(array $params = []) {
             parent::__construct('my_app', $params);
-    	}
+        }
 
         public function register(IRegistrationContext $context): void {
             $context->registerEventListener(MetadataLiveEvent::class, UpdateFilesMetadata::class);
             $context->registerEventListener(MetadataBackgroundEvent::class, UpdateFilesMetadata::class);
         }
 
-    	public function boot(IBootContext $context): void {
+        public function boot(IBootContext $context): void {
         }
     }
 

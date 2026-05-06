@@ -21,44 +21,44 @@ A content provider for Context Chat needs to implement the ``\OCP\ContextChat\IC
 
 .. code-block:: php
 
-	/**
-	 * This interface defines methods to implement a content provider
-	 * @since 32.0.0
-	 */
-	interface IContentProvider {
-		/**
-		 * The ID of the provider
-		 *
-		 * @return string
-		 * @since 32.0.0
-		 */
-		public function getId(): string;
+    /**
+     * This interface defines methods to implement a content provider
+     * @since 32.0.0
+     */
+    interface IContentProvider {
+        /**
+         * The ID of the provider
+         *
+         * @return string
+         * @since 32.0.0
+         */
+        public function getId(): string;
 
-		/**
-		 * The ID of the app making the provider available
-		 *
-		 * @return string
-		 * @since 32.0.0
-		 */
-		public function getAppId(): string;
+        /**
+         * The ID of the app making the provider available
+         *
+         * @return string
+         * @since 32.0.0
+         */
+        public function getAppId(): string;
 
-		/**
-		 * The absolute URL to the content item
-		 *
-		 * @param string $id
-		 * @return string
-		 * @since 32.0.0
-		 */
-		public function getItemUrl(string $id): string;
+        /**
+         * The absolute URL to the content item
+         *
+         * @param string $id
+         * @return string
+         * @since 32.0.0
+         */
+        public function getItemUrl(string $id): string;
 
-		/**
-		 * Starts the initial import of content items into context chat
-		 *
-		 * @return void
-		 * @since 32.0.0
-		 */
-		public function triggerInitialImport(): void;
-	}
+        /**
+         * Starts the initial import of content items into context chat
+         *
+         * @return void
+         * @since 32.0.0
+         */
+        public function triggerInitialImport(): void;
+    }
 
 The ``triggerInitialImport`` method is called when Context Chat is first set up
 and allows your app to import all existing content into Context Chat in one bulk.
@@ -91,21 +91,21 @@ Some partial implementations of ``Application.php`` and a ``ContentProvider`` fo
 
 .. code-block:: php
 
-	use OCA\MyApp\ContextChat\ContentProvider;
-	use OCP\ContextChat\Events\ContentProviderRegisterEvent;
-	// ...
-	$context->registerEventListener(ContentProviderRegisterEvent::class, ContentProvider::class);
+    use OCA\MyApp\ContextChat\ContentProvider;
+    use OCP\ContextChat\Events\ContentProviderRegisterEvent;
+    // ...
+    $context->registerEventListener(ContentProviderRegisterEvent::class, ContentProvider::class);
 
 .. code-block:: php
 
-	class ContentProvider implements IContentProvider {
-	// ...
-	public function handle(Event $event): void {
-		if (!$event instanceof ContentProviderRegisterEvent) {
-			return;
-		}
-		$event->registerContentProvider('***appId***', '***providerId***', ContentProvider::class);
-	}
+    class ContentProvider implements IContentProvider {
+    // ...
+    public function handle(Event $event): void {
+        if (!$event instanceof ContentProviderRegisterEvent) {
+            return;
+        }
+        $event->registerContentProvider('***appId***', '***providerId***', ContentProvider::class);
+    }
 
 Any interaction with the content manager using the ContentManager's methods
 or listing the providers in the Assistant should automatically register the provider.
@@ -123,17 +123,17 @@ Then, to submit content, wrap it in a list of ``\OCP\ContextChat\ContentItem`` o
 
 .. code-block:: php
 
-	new ContentItem(
-			string $itemId,
-			string $providerId,
-			string $title,
-			string $content,
-			string $documentType,
-			\DateTime $lastModified,
-			array $users,
-		)
+    new ContentItem(
+            string $itemId,
+            string $providerId,
+            string $title,
+            string $content,
+            string $documentType,
+            \DateTime $lastModified,
+            array $users,
+        )
 
 .. note::
-	1. Ensure that item IDs are unique across all users for a given provider.
-	2. The app ID and provider ID both cannot contain double underscores, spaces, or colons.
-	3. The ``documentType`` is a natural language term for your document type in English, e.g. ``E-Mail`` or ``Bookmark``.
+    1. Ensure that item IDs are unique across all users for a given provider.
+    2. The app ID and provider ID both cannot contain double underscores, spaces, or colons.
+    3. The ``documentType`` is a natural language term for your document type in English, e.g. ``E-Mail`` or ``Bookmark``.

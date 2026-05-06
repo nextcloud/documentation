@@ -30,8 +30,8 @@ In Nextcloud migrations it looks like:
         if (!$schema->hasTable('my_table')) {
             $table = $schema->createTable('my_table');
             $table->addColumn(
-                'id', 
-                Types::BIGINT, 
+                'id',
+                Types::BIGINT,
                 ['notnull' => true, 'unsigned' => true]
             );
             $table->setPrimaryKey(['id']);
@@ -43,7 +43,7 @@ In Nextcloud migrations it looks like:
 Generate a Snowflake ID
 -----------------------
 
-To generate a new ID, call ``nextId`` function on the generator: 
+To generate a new ID, call ``nextId`` function on the generator:
 
 .. code-block:: php
 
@@ -56,7 +56,7 @@ To generate a new ID, call ``nextId`` function on the generator:
 
     class MyObjectFactory {
         public function __construct(
-         		private readonly IGenerator $generator,
+                private readonly IGenerator $generator,
         ) {
           // TODO Add your implementation
         }
@@ -102,10 +102,10 @@ It’s also possible to decode IDs in your code, for example to get the creation
     use OCP\Snowflake\IDecoder;
 
     class MyObject {
-        private string $id; 
+        private string $id;
 
         public function __construct(
-         		private readonly IDecoder $decoder,
+                private readonly IDecoder $decoder,
         ) {
           // TODO Add your implementation
         }

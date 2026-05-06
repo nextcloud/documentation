@@ -15,7 +15,7 @@ For the front-end part, AppAPI will inject the current user's locale ``l10n/<lan
 
 .. note::
 
-	ExApp l10n files are included only on the ExApp UI pages (:ref:`Top Menu <top_menu_section>`), Files (for :ref:`FileAction <file_actions_menu_section>`) and Settings (for :ref:`DeclarativeSettings <exapp_declarative_settings_section>`).
+    ExApp l10n files are included only on the ExApp UI pages (:ref:`Top Menu <top_menu_section>`), Files (for :ref:`FileAction <file_actions_menu_section>`) and Settings (for :ref:`DeclarativeSettings <exapp_declarative_settings_section>`).
 
 
 Back-end
@@ -49,7 +49,7 @@ This will allow the server to access the ExApp's strings with translations.
 
 .. note::
 
-	Only the ``l10n`` folder must be present on the server side; ``appinfo/info.xml`` could lead to misdetection by the server as a PHP app folder.
+    Only the ``l10n`` folder must be present on the server side; ``appinfo/info.xml`` could lead to misdetection by the server as a PHP app folder.
 
 
 

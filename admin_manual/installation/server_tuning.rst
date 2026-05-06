@@ -21,10 +21,10 @@ side effects. To reduce load, you should first identify the source of the proble
 Tools such as htop, iotop, `netdata <https://my-netdata.io>`_, or
 `glances <https://nicolargo.github.io/glances/>`_
 can help you identify the process or drive that slows down your system.
-First, make sure that you have installed and assigned enough RAM. Minimize swap 
+First, make sure that you have installed and assigned enough RAM. Minimize swap
 usage as much as possible, as excessive swapping can severely degrade performance.
 If you run your database inside a VM, use a dedicated block device for database storage
-rather than storing it inside the VM's disk image file, to reduce latency caused by 
+rather than storing it inside the VM's disk image file, to reduce latency caused by
 multiple abstraction layers.
 
 .. _caching:
@@ -32,21 +32,21 @@ multiple abstraction layers.
 Log Levels
 ----------
 
-Verify the ``loglevel`` in your ``config.php`` file. The default log level is 
-set to ``2`` (WARN) in new installations. Sometimes this parameter is inadvertently 
-left at the DEBUG level (``0``) after troubleshooting. In some older installations, this 
-parameter may also be something other than the default. Use ``0`` (DEBUG) 
-when you have a problem to diagnose, and then reset your log level to a 
-less-verbose level. DEBUG outputs a lot of information, and can affect your 
+Verify the ``loglevel`` in your ``config.php`` file. The default log level is
+set to ``2`` (WARN) in new installations. Sometimes this parameter is inadvertently
+left at the DEBUG level (``0``) after troubleshooting. In some older installations, this
+parameter may also be something other than the default. Use ``0`` (DEBUG)
+when you have a problem to diagnose, and then reset your log level to a
+less-verbose level. DEBUG outputs a lot of information, and can affect your
 server performance.
 
 Debug Mode
 ----------
 
-Verify that ``debug`` is set to ``false`` in your ``config.php`` file. The default is ``false`` in new 
+Verify that ``debug`` is set to ``false`` in your ``config.php`` file. The default is ``false`` in new
 installations (or when not specified). While similar to the DEBUG logging level, this option
-also disables various optimizations (to facilitate easier debugging) and generates additional 
-debug output both at the browser level and server-side. It should not be enabled in production 
+also disables various optimizations (to facilitate easier debugging) and generates additional
+debug output both at the browser level and server-side. It should not be enabled in production
 environments except during isolated troubleshooting.
 
 Caching
@@ -57,24 +57,24 @@ Caching improves performance by storing data, code, and other objects in memory.
 Compression
 -----------
 
-Enabling compression in your web server for JavaScript, CSS, and SVG files improves performance 
+Enabling compression in your web server for JavaScript, CSS, and SVG files improves performance
 because less data is transferred to clients.
 
 Replacing SQLite
 ----------------
 
-SQLite is a suitable database for some use cases, but using MariaDB, MySQL, or PostgreSQL can be 
+SQLite is a suitable database for some use cases, but using MariaDB, MySQL, or PostgreSQL can be
 more beneficial with Nextcloud.
 
-If you do not select a database at installation time, SQLite is used by default because it does not require 
+If you do not select a database at installation time, SQLite is used by default because it does not require
 any external components.
 
-However, MySQL/MariaDB or PostgreSQL are generally recommended for Nextcloud because of the 
+However, MySQL/MariaDB or PostgreSQL are generally recommended for Nextcloud because of the
 `performance limitations of SQLite with highly concurrent applications
 <https://www.sqlite.org/whentouse.html>`_, like Nextcloud.
 
 If your installation is already running on
-SQLite, you can convert to MySQL or MariaDB using the steps provided in 
+SQLite, you can convert to MySQL or MariaDB using the steps provided in
 :doc:`../configuration_database/db_conversion`.
 
 See the section :doc:`../configuration_database/linux_database_configuration` for instructions
@@ -83,7 +83,7 @@ on configuring Nextcloud for MySQL or MariaDB.
 Tuning your database
 --------------------
 
-Databases are not plug-and-play. They benefit not only from basic configuration for compatibility 
+Databases are not plug-and-play. They benefit not only from basic configuration for compatibility
 with Nextcloud, but also from tuning within the environment in which they are deployed. This
 tuning should be based on your hardware, storage, usage patterns, underlying operating system,
 priorities, and other factors.
@@ -142,7 +142,7 @@ Tune PHP-FPM
 The default configuration of PHP-FPM is extremely conservative. You might notice
 excessive load times on the web interface or even sync issues. Each simultaneous
 request is handled by a separate PHP-FPM process, so even on a small installation you
-should allow more processes to run in parallel to handle requests. 
+should allow more processes to run in parallel to handle requests.
 
 `This link <https://spot13.com/pmcalculator/>`_ can help you calculate the optimal values for your system.
 
@@ -156,8 +156,8 @@ Revalidation
 
 OPcache revalidation in PHP handles changes made to PHP application code stored on disk. Code changes occur whenever:
 
-- Nextcloud or a Nextcloud app is upgraded 
-- a configuration change is made (e.g. when ``config.php`` is modified) 
+- Nextcloud or a Nextcloud app is upgraded
+- a configuration change is made (e.g. when ``config.php`` is modified)
 
 Nextcloud, as much as possible, handles cache revalidation internally when required. However, this is not foolproof. In a default PHP environment, revalidation is enabled, and cached scripts are checked for changes on disk every ``2`` seconds. In many environments, these default values are reasonable and may never need to be changed.
 
@@ -178,7 +178,7 @@ To change the default from ``2`` and check for changes on disk at most every ``6
 Any Server/app upgrades or changes to ``config.php`` will then require restarting PHP (or otherwise manually clearing the cache or invalidating this particular script).
 
 .. warning::
-   Please do not report bugs or odd behavior after upgrading Nextcloud or Nextcloud apps until after you've 
+   Please do not report bugs or odd behavior after upgrading Nextcloud or Nextcloud apps until after you've
    restarted mod_php/fpm (to confirm the issue is not caused by local revalidation configuration).
 
 Sizing
@@ -211,9 +211,9 @@ PHP ships with a JIT compiler that can be enabled on x86 platforms to benefit an
 
 .. note::
 
-    Most Nextcloud instances use less than 2 MiB of the configured JIT buffer size, so 8 MiB is generally sufficient. 
+    Most Nextcloud instances use less than 2 MiB of the configured JIT buffer size, so 8 MiB is generally sufficient.
     The overall OPcache usage, however, increases by a larger margin. The PHP parameter ``opcache.memory_consumption``
-    might need to be raised in some cases. JIT buffer usage can be monitored with 
+    might need to be raised in some cases. JIT buffer usage can be monitored with
     `opcache-gui <https://github.com/amnuts/opcache-gui>`_ as well.
 
 Previews
@@ -224,11 +224,11 @@ external microservice: `Imaginary <https://github.com/h2non/imaginary>`_.
 
 .. warning::
 
-   Imaginary is currently incompatible with server-side encryption. 
+   Imaginary is currently incompatible with server-side encryption.
    See https://github.com/nextcloud/server/issues/34262
 
 We strongly recommend running our custom Docker image, which is more up to date than the official image.
-You can find the image at `<https://ghcr.io/nextcloud-releases/aio-imaginary>`_. When running it, map a port by adding `-p <port>:9000` to the `docker run` command (or Compose equivalent), e.g. 
+You can find the image at `<https://ghcr.io/nextcloud-releases/aio-imaginary>`_. When running it, map a port by adding `-p <port>:9000` to the `docker run` command (or Compose equivalent), e.g.
 
 .. code::
 
@@ -250,7 +250,7 @@ Nextcloud to use Imaginary by editing your ``config.php`` file:
 
 .. warning::
 
-   Make sure to start Imaginary with the ``-return-size`` command line parameter. Otherwise, there will be a 
+   Make sure to start Imaginary with the ``-return-size`` command line parameter. Otherwise, there will be a
    minor performance impact. The flag requires a recent version of Imaginary (newer than v1.2.4).
    Also, ensure to add the capability ``SYS_NICE`` via ``--cap-add=sys_nice`` or (for Compose)
    ``cap_add: - SYS_NICE``, as it is required by Imaginary to generate HEIC previews.

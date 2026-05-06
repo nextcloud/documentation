@@ -96,7 +96,7 @@ A key’s type is defined by the setter you use when the key is first created
       #. Write it back using the appropriate typed setter (for example ``setValueInt()``,
          ``setValueString()``, ``setValueBool()``, ...).
       #. Afterwards, always use the matching typed getter.
-   
+
 
 Sensitive values
 ^^^^^^^^^^^^^^^^

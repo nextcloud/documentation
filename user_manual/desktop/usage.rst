@@ -184,10 +184,10 @@ Sharing From Your Desktop
 -------------------------
 
 The Nextcloud desktop sync client integrates with your file manager. Finder on
-macOS and Explorer on Windows. Linux users must install an additional package 
-depending on the used file manager. Available are e.g. ``nautilus-nextcloud`` 
-(Ubuntu/Debian), ``dolphin-nextcloud`` (Kubuntu), ``nemo-nextcloud`` and 
-``caja-nextcloud``. You can create  share links, and share with internal 
+macOS and Explorer on Windows. Linux users must install an additional package
+depending on the used file manager. Available are e.g. ``nautilus-nextcloud``
+(Ubuntu/Debian), ``dolphin-nextcloud`` (Kubuntu), ``nemo-nextcloud`` and
+``caja-nextcloud``. You can create  share links, and share with internal
 Nextcloud users the same way as in your Nextcloud Web interface.
 
 In your file explorer, click on a file and in the context menu go to

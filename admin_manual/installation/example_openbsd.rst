@@ -12,10 +12,10 @@ In this install tutorial we will be deploying Nextcloud on a minimal OpenBSD wit
 From a base installed OpenBSD system you can just do::
 
     # pkg_add nextcloud
-    
+
 The extra packages::
 
-    # pkg_add postgresql-server redis pecl82-redis php-pdo_pgsql 
+    # pkg_add postgresql-server redis pecl82-redis php-pdo_pgsql
 
 
 This will take care of your dependencies and give you the options to choose which PHP version do you want.
@@ -28,62 +28,62 @@ Create a virtualhost in ``/etc/httpd.conf`` and add the following content to it:
     server "domain.tld" {
         listen on egress tls port 443
         hsts {
-	  max-age 15768000
-	  preload
-	  subdomains
-	}
+      max-age 15768000
+      preload
+      subdomains
+    }
 
-	  tls {
-		    certificate "/etc/ssl/domain.tld_fullchain.pem"
-		    key "/etc/ssl/private/domain.tld_private.pem"
-	  }
+      tls {
+            certificate "/etc/ssl/domain.tld_fullchain.pem"
+            key "/etc/ssl/private/domain.tld_private.pem"
+      }
 
-	  # Set max upload size to 513M (in bytes)
-	  connection max request body 537919488
-	  connection max requests 1000
-	  connection request timeout 3600
-	  connection timeout 3600
+      # Set max upload size to 513M (in bytes)
+      connection max request body 537919488
+      connection max requests 1000
+      connection request timeout 3600
+      connection timeout 3600
 
-	  root "/nextcloud"
-	  directory index "index.php"
+      root "/nextcloud"
+      directory index "index.php"
 
-	  # Ensure that no '*.php*' files can be fetched from these directories
-	  location "/config/*" {
-		  block drop
-	  }
+      # Ensure that no '*.php*' files can be fetched from these directories
+      location "/config/*" {
+          block drop
+      }
 
-	  location "/data/*" {
-		  block drop
-	  }
+      location "/data/*" {
+          block drop
+      }
 
-	  # Note that this matches "*.php*" anywhere in the request path.
-	  location "/nextcloud/*.php*" {
-		  fastcgi socket "/run/php-fpm.sock"
-	  }
+      # Note that this matches "*.php*" anywhere in the request path.
+      location "/nextcloud/*.php*" {
+          fastcgi socket "/run/php-fpm.sock"
+      }
 
-	  location "/apps/*" {
-		  pass
-	  }
+      location "/apps/*" {
+          pass
+      }
 
-	  location "/core/*" {
-		  pass
-	  }
+      location "/core/*" {
+          pass
+      }
 
-	  location "/.well-known/carddav" {
-		  block return 301 "https://$SERVER_NAME/remote.php/dav"
-	  }
+      location "/.well-known/carddav" {
+          block return 301 "https://$SERVER_NAME/remote.php/dav"
+      }
 
-	  location "/.well-known/caldav" {
-		  block return 301 "https://$SERVER_NAME/remote.php/dav"
-	  }
+      location "/.well-known/caldav" {
+          block return 301 "https://$SERVER_NAME/remote.php/dav"
+      }
 
-	  location "/.well-known/webfinger" {
-		  block return 301 "https://$SERVER_NAME/public.php?service=webfinger"
-	  }
+      location "/.well-known/webfinger" {
+          block return 301 "https://$SERVER_NAME/public.php?service=webfinger"
+      }
 
-	  location match "/ocs-provider/*" {
-		  pass
-	  }
+      location match "/ocs-provider/*" {
+          pass
+      }
   }
 
 
@@ -108,19 +108,19 @@ It is recommended to add opcache to it::
   opcache.max_accelerated_files=10000
   opcache.revalidate_freq=1
   opcache.save_comments=1
-  
+
 
 And increase some limits::
 
   post_max_size = 513M
   upload_max_filesize = 513M
-  
-   
+
+
 We can enable the PHP modules with::
 
     # cd /etc/php-8.2.sample
     # for i in *; do ln -sf ../php-8.2.sample/$i ../php-8.2/; done
-    
+
 And then we just enable and start PHP::
 
     # rcctl enable php82_fpm
@@ -131,7 +131,7 @@ Database
 --------
 
 As mentioned, we will be using PostgreSQL as our database, and we already installed it, now we need to initialised::
-    
+
     $ su - _postgresql
     $ mkdir /var/postgresql/data
     $ initdb -D /var/postgresql/data -U postgres -A md5 -E UTF8 -W
@@ -153,7 +153,7 @@ We need to check, enable and start postgres::
     # rcctl check postgresql
     # rcctl enable postgresql
     # rcctl start postgresql
-    
+
 You can follow the README on ``/usr/local/share/doc/pkg-readmes/postgresql-server`` to create users and permission.
 
 
@@ -173,7 +173,7 @@ We installed redis before, we need to enable it and start it and also add it to 
       'timeout' => 0.0,
     ),
     ...
-    
+
 
 Cron job
 --------
@@ -181,7 +181,7 @@ Cron job
 We need to add the Nextcloud cron job to get some tasks done by adding this entry on your cronjob::
 
   */5 * * * * /usr/bin/ftp -Vo - https://domain.tld/cron.php >/dev/null
-  
+
 Chroot
 ------
 
@@ -191,7 +191,7 @@ Since in OpenBSD httpd(8) works with a chroot(8) by default, we need to be sure 
   # install -m 444 -o root -g bin /etc/ssl/cert.pem /etc/ssl/openssl.cnf \
           /var/www/etc/ssl/
   # cp /etc/resolv.conf /var/www/etc
-  
+
 
 Nextcloud final steps
 ---------------------
@@ -205,13 +205,13 @@ To activate this wizard, create a file named CAN_INSTALL inside the installation
 Use your browser to navigate to the installation's URL:
 
   https://domain.tld
-  
+
 Now you just need to follow the steps and put in place your DB name, usr and passwords.
 
 Keep in mind that the upgrades for Nextcloud you can do it by running on -current::
 
   # pkg_add -u -Dsnap
-  
+
 And on -stable::
 
   # pkg_add -u
@@ -226,5 +226,5 @@ NOTE
 Remember always to read all the READMES from the OpenBSD packages on::
 
   /usr/local/share/doc/pkg-readmes/
-  
+
 All this information and more is available for you there.

@@ -5,7 +5,7 @@
 Mail Provider Interface
 ========================================
 
-Nextcloud apps can use, and register the mail provider interface, to provide or consume mail service functionality to and from other apps. 
+Nextcloud apps can use, and register the mail provider interface, to provide or consume mail service functionality to and from other apps.
 
 Access to mail services from another app is provided by the Mail Manager class. Using this class your app can find available mail providers and services. Please see the appropriate section below for more details.
 
@@ -38,18 +38,18 @@ To use mail as a service provided by another app, your app needs to instantiate 
 
     class MyTestService {
 
-        // Instance the mail manager using dependency injection 
+        // Instance the mail manager using dependency injection
         public function __construct(IMailManager $mailManager) {
             private IMailManager $mailManager;
         }
 
         public function acquireMailProvider(): void {
-            
+
             // determine if any providers are available
             if (!$this->mailManager->has()) {
                 return;
             }
-            
+
             // retrieve types of providers available (array of id's and labels)
             $types = $this->mailManager->types();
 
@@ -62,12 +62,12 @@ To use mail as a service provided by another app, your app needs to instantiate 
         }
 
         public function acquireMailService(): void {
-            
+
             // determine if any providers are available
             if (!$this->mailManager->has()) {
                 return;
             }
-            
+
             // retrieve services available for a user (array of service objects)
             $services = $this->mailManager->services('user1');
 
@@ -77,12 +77,12 @@ To use mail as a service provided by another app, your app needs to instantiate 
         }
 
         public function sendMessage(): void {
-            
+
             // determine if any providers are available
             if (!$this->mailManager->has()) {
                 return;
             }
-            
+
             // retrieve a single service with a specific mail address (service objects)
             $service = $this->mailManager->findServiceByAddress('user@testing.com');
 
@@ -160,10 +160,10 @@ Step 2: Create a Mail Service Class
 
 The mail service class is the main class that other apps use to access mail functionality in your app. This class is also returned by the mail provider class.
 
-This class needs to implement the `IService` interface and have all the required methods defined. Because functionality varies between protocols this class also needs to be extended with the appropriate supported function interfaces like 'IMessageSend' which provides mail sending capabilities.  
+This class needs to implement the `IService` interface and have all the required methods defined. Because functionality varies between protocols this class also needs to be extended with the appropriate supported function interfaces like 'IMessageSend' which provides mail sending capabilities.
 
 .. code-block:: php
-    
+
     namespace OCA\BigHostingApp\Provider;
 
     use OCP\Mail\Provider\Address;
@@ -217,13 +217,13 @@ Step 3: Register the Mail Provider
 The registration is performed at the initial stages of your app being loaded by the Nextcloud system, inside the 'AppInfo/Application.php' file
 
 .. code-block:: php
-    
+
     namespace OCA\BigHostingApp\AppInfo;
 
     use OCA\BigHostingApp\Provider\MailProvider;
     use OCP\AppFramework\App;
     use OCP\AppFramework\Bootstrap\IRegistrationContext;
-    
+
     class Application extends App {
 
         public const APP_ID = 'BigHostingApp';

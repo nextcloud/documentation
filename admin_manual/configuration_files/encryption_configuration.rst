@@ -30,9 +30,9 @@ Definitions
 - **User Keys:** Each user has their own key, protected by their password, to encrypt
   their files.
 - **Recovery Key:** An admin-defined key to recover files if users lose their passwords.
-- **Disk/Block Device Encryption:** A method of securing all data stored on a physical 
-  storage device by encrypting it at the hardware or filesystem level - typically using 
-  tools such as LUKS on Linux - so that data is only accessible after the device is 
+- **Disk/Block Device Encryption:** A method of securing all data stored on a physical
+  storage device by encrypting it at the hardware or filesystem level - typically using
+  tools such as LUKS on Linux - so that data is only accessible after the device is
   unlocked with the correct key or password.
 
 Encryption Method Comparison
@@ -136,7 +136,7 @@ Key Management Modes
 - If you need to prevent admins from accessing files, use E2EE.
 - User key mode offers some protection against malicious server administrators, but has limitations.
 
-**To select user key mode:**  
+**To select user key mode:**
 
 Run:
 

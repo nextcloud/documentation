@@ -227,12 +227,12 @@ Sessions allow your application to store data specific to a particular user acro
 requests. Variables are saved server-side and tied to a unique session identifier managed via a
 browser cookie.
 
-Nextcloud uses PHP’s native session handling but adds several performance optimizations and a 
-transparent encryption layer via the ``CryptoSessionData`` class. Data written through the 
+Nextcloud uses PHP’s native session handling but adds several performance optimizations and a
+transparent encryption layer via the ``CryptoSessionData`` class. Data written through the
 ``OCP\ISession`` API benefits from these optimizations and is automatically encrypted at rest.
 
 .. danger::
-    Never use the PHP superglobal ``$_SESSION``. The superglobal bypasses Nextcloud's encryption and 
+    Never use the PHP superglobal ``$_SESSION``. The superglobal bypasses Nextcloud's encryption and
     lifecycle management, leading to race conditions or lost data.
 
 Basic usage
@@ -290,27 +290,27 @@ When to use ``#[UseSession]``
 By default, Nextcloud uses an **on-demand locking strategy**: it closes the session immediately after the
 request starts to allow high concurrency, then briefly re-opens and closes it only during a ``set()`` or
 ``remove()`` call. This default "close-early" behavior works for infrequent and standalone writing events
-and prevents one request from blocking another. Developers do not need to do anything special to enable 
+and prevents one request from blocking another. Developers do not need to do anything special to enable
 this behavior.
 
-However, in more advanced scenarios (e.g., calling ``set()`` five times in immediate succession) Nextcloud's 
-default behavior means the session will open and close five times. This introduces significant I/O 
-overhead (even if it does minimize locking). For these cases, Nextcloud supports an optional method-level 
-attribute: ``#[UseSession]``. This attribute ensures the session is opened once at the start of your method and 
+However, in more advanced scenarios (e.g., calling ``set()`` five times in immediate succession) Nextcloud's
+default behavior means the session will open and close five times. This introduces significant I/O
+overhead (even if it does minimize locking). For these cases, Nextcloud supports an optional method-level
+attribute: ``#[UseSession]``. This attribute ensures the session is opened once at the start of your method and
 closed at the end, providing efficiency and correct locking in complex workflows.
 
 Use the ``#[UseSession]`` attribute when:
 
-* **Multiple Writes**: You are calling ``set()`` or ``remove()`` multiple times in one method (prevents 
+* **Multiple Writes**: You are calling ``set()`` or ``remove()`` multiple times in one method (prevents
   I/O overhead from repeated open/close cycles).
-* **Reference Manipulation**: You need the session to remain open for complex logic or to ensure data 
+* **Reference Manipulation**: You need the session to remain open for complex logic or to ensure data
   consistency throughout the method.
 * **Regenerating session ids**: You are elevating a user's privileges (e.g. a valid share password is
-  entered and the "access granted" status is stored in the session) or the user performs a sensitive 
+  entered and the "access granted" status is stored in the session) or the user performs a sensitive
   alteration (e.g. password change).
 
 .. note::
-    The ``#[UseSession]`` attribute was introduced in Nextcloud 26. Previously, this feature used the 
+    The ``#[UseSession]`` attribute was introduced in Nextcloud 26. Previously, this feature used the
     ``@UseSession`` annotation, which is now deprecated but otherwise equivalent.
 
 Performance and concurrency
@@ -320,14 +320,14 @@ PHP natively locks the session file while it is open for writing. If a controlle
 unnecessarily, it may block other requests from the same user (e.g., parallel browser tabs or AJAX calls),
 resulting in delays or timeouts.
 
-By keeping sessions closed except during the brief window of an actual write, Nextcloud ensures a 
+By keeping sessions closed except during the brief window of an actual write, Nextcloud ensures a
 responsive, multi-tab, and highly concurrent experience. For more technical background, see `PHP Session
 Locking and How to Prevent It <https://ma.ttias.be/php-session-locking-prevent-sessions-blocking-php-requests/>`_.
 
 .. warning::
 
-    If your controller method aggressively keeps sessions open, it may block other requests from the same user 
-    or process (for example, a second browser tab, AJAX request, or background job), resulting in delays or 
+    If your controller method aggressively keeps sessions open, it may block other requests from the same user
+    or process (for example, a second browser tab, AJAX request, or background job), resulting in delays or
     deadlocks.
 
 For the full ``OCP\\ISession`` API, see

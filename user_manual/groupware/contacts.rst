@@ -41,13 +41,13 @@ To Import Contacts Using a VCF/vCard File:
 1. On top left of the screen you have "Import contacts" button that is shown only when you don't have any contacts yet.
 2. Find "Settings" at the bottom of the left sidebar, next to the gear button:
 
-	.. figure:: ../images/contact_bottombar.png
-		:alt: Contact settings gear button
+    .. figure:: ../images/contact_bottombar.png
+        :alt: Contact settings gear button
 
 3. Click the gear button. The Contacts app "Import" button will appear:
 
-	.. figure:: ../images/contact_uploadbutton.png
-		:alt: Contacts Upload Field
+    .. figure:: ../images/contact_uploadbutton.png
+        :alt: Contacts Upload Field
 
 .. note:: The Contacts app only supports import of vCards version 3.0 and 4.0.
 
@@ -98,12 +98,12 @@ Contact Picture
 To add a picture for your new contacts, click on the upload button:
 
 .. figure:: ../images/contact_picture.png
-	:alt: Contact picture (upload button)
+    :alt: Contact picture (upload button)
 
 After you have set a contact picture, it will look like this:
 
 .. figure:: ../images/contact_picture_set.png
-	:alt: Contact picture (set)
+    :alt: Contact picture (set)
 
 If you want to upload a new one, remove it, view it in full size or download it,
 click on the contacts picture for the following options to appear:
@@ -173,7 +173,7 @@ available address books, certain options for each address book, and enables you
 to create new address books, simply by specifying an address books name:
 
 .. figure:: ../images/contact_manageaddressbook.png
-	:alt: Add address book in the contacts settings
+    :alt: Add address book in the contacts settings
 
 The Contacts settings is also where you can share, export and delete addressbooks. You will find the CardDAV URLs there.
 
@@ -191,7 +191,7 @@ Informal collaboration takes place within organizations: an event to organize fo
 For all these reasons, Nextcloud supports Teams, a feature embedded in the Contacts app, where every user is able to create its own team, a user-defined aggregate of accounts. Teams can be used later on to share files and folders, added to Talk conversations, like a regular group.
 
 .. figure:: ./images/circle.png
-	:alt: Teams in the Contacts app left menu
+    :alt: Teams in the Contacts app left menu
 
 Create a team
 ~~~~~~~~~~~~~

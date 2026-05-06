@@ -85,7 +85,7 @@ the context menu in Finder.
 Keep Downloaded
 ^^^^^^^^^^^^^^^
 
-Files and folders can be marked to be kept downloaded and available offline 
+Files and folders can be marked to be kept downloaded and available offline
 permanently. If this is chosen on folders, it will also apply to all their
 contents. This is especially useful for users with limited or no network
 access, as it ensures that they can always access their important files without
@@ -142,13 +142,13 @@ enabled.
 Alias files
 ^^^^^^^^^^^
 
-When opening a macOS alias file stored on Nextcloud for the first time on a 
-device where it has not yet been downloaded, the file may open as a binary 
-document in a text editor instead of jumping to its target. This happens 
-because macOS decides how to open a file before downloading it, and alias files 
-carry no recognisable file extension or type information on the server — the 
-only way to identify them is by reading their content. Once the file has been 
-opened or downloaded once, Nextcloud Desktop learns that it is an alias and 
-stores that information locally, so all subsequent opens will work correctly. 
-To avoid the issue entirely, right-click the alias file in Finder and choose 
+When opening a macOS alias file stored on Nextcloud for the first time on a
+device where it has not yet been downloaded, the file may open as a binary
+document in a text editor instead of jumping to its target. This happens
+because macOS decides how to open a file before downloading it, and alias files
+carry no recognisable file extension or type information on the server — the
+only way to identify them is by reading their content. Once the file has been
+opened or downloaded once, Nextcloud Desktop learns that it is an alias and
+stores that information locally, so all subsequent opens will work correctly.
+To avoid the issue entirely, right-click the alias file in Finder and choose
 **Keep Downloaded** before opening it for the first time.

@@ -193,7 +193,7 @@ Adjust the paths to the pem files for your environment.
 PostgreSQL database
 ^^^^^^^^^^^^^^^^^^^
 
-In order to run Nextcloud securely on PostgreSQL, it is assumed that only 
+In order to run Nextcloud securely on PostgreSQL, it is assumed that only
 Nextcloud uses this database and thus only one user accesses the database.
 For further services and users, we recommend to create a separate
 database or PostgreSQL instance.

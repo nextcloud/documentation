@@ -76,7 +76,7 @@ of the new folder.
 
 Code example
 ^^^^^^^^^^^^
-   
+
 .. code-block:: java
 
   private void startFolderCreation(String newFolderPath) {
@@ -265,7 +265,7 @@ used by a different file or folder. This one will be replaced by the former.
 
 Code example
 ^^^^^^^^^^^^
-   
+
 .. code-block:: java
 
   private void startFileMove(String filePath, String newFilePath, boolean overwrite) {
@@ -278,7 +278,7 @@ Code example
     if (operation instanceof MoveRemoteFileOperation) {
       if (result.isSuccess()) {
         // do your stuff here
-	  }
+      }
     }
     // …
   }

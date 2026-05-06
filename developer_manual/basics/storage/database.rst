@@ -259,7 +259,7 @@ The following types (as part of ``OCP\DB\Types``) can be added for a field:
   * ``Types::TIME_IMMUTABLE`` - only the time is stored (without timezone)
   * ``Types::DATETIME_IMMUTABLE`` - date and time are stored, but without timezone
   * ``Types::DATETIME_TZ_IMMUTABLE`` - date and time are stored with timezone information
-  
+
 * ``Types::DATE``, ``Types::TIME``, ``Types::DATETIME``, ``Types::DATETIME_TZ`` - similar as the immutable variants, but these will be provided as ``\DateTime`` objects.
   It is recommended to use the immutable variants as the internal state tracking of the ``Entity`` class only work with re-assignments,
   so any changes on this mutable types will not be tracked and the update method will not write back the changes to the database.

@@ -165,7 +165,7 @@ The class would typically be saved into a file in ``lib/Search`` of your app but
 
 
 Advanced search provider
------------------------- 
+------------------------
 
 Since Nextcloud 28.0, it is possible to use advanced search providers by implementing ``\OCP\Search\IFilteringProvider``.
 This interface allows to supports other filtering types.
@@ -187,7 +187,7 @@ This interface allows to supports other filtering types.
 
         // TODO Implement functions from simple search provider
 
-	public function getSupportedFilters(): array {
+    public function getSupportedFilters(): array {
             return [
                 'term',
                 'since',
@@ -199,11 +199,11 @@ This interface allows to supports other filtering types.
             ];
         }
 
-	public function getAlternateIds(): array {
+    public function getAlternateIds(): array {
             return [];
         }
 
-	public function getCustomFilters(): array {
+    public function getCustomFilters(): array {
             return [
                 new FilterDefinition('custom_int', FilterDefinition::TYPE_INT),
                 new FilterDefinition('custom_user', FilterDefinition::TYPE_USER),
@@ -215,11 +215,11 @@ This interface allows to supports other filtering types.
             // Retrieve filters
             /** @var $since ?DateTimeImmutable */
             $since = $query->getFilter('since')?->get();
-            /** @var $user ?IUser */       
+            /** @var $user ?IUser */
             $user = $query->getFilter('custom_user')?->get();
 
-            // TODO Do actual search 
-            
+            // TODO Do actual search
+
             return new SearchResult(/* … */);
         }
     }
@@ -517,7 +517,7 @@ The unified search is available via OCS, which means client application like the
 
 .. note:: This method was added in Nextcloud 21. If your app also targets Nextcloud 20 you should either not use it or add a version check to invoke the method only conditionally.
 
-Declare in-app search 
+Declare in-app search
 ---------------------
 
 If your application also have in-app search (like ``mail`` or ``talk``), your provider can also implements interface ``\OCP\Search\IInAppSearch``.

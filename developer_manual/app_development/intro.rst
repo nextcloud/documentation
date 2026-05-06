@@ -19,7 +19,7 @@ Edit an existing app
 Alternatively, if you would like to contribute to an existing app instead of creating a new one, first :doc:`set up the development environment <../getting_started/devenv>`, then create an `apps-extra` folder in the Nextcloud root directory::
 
     cd /var/www/nextcloud/apps-extra
-    
+
 You can then configure Nextcloud to run apps from this directory, by changing your `app_paths` system config in your `config.php`
 
 .. code-block:: php
@@ -36,10 +36,10 @@ You can then configure Nextcloud to run apps from this directory, by changing yo
             'writable' => false,
         ),
     ),
-    
+
 Finally, clone the app to which you would like to contribute inside the `apps-extra` folder. For example:
 
-    git clone https://github.com/nextcloud/cookbook.git 
+    git clone https://github.com/nextcloud/cookbook.git
 
 Enable the app
 --------------

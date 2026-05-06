@@ -32,7 +32,7 @@ There are three procedures in place to facilitate communication to app developer
 3. New APIs are advertised at :ref:`new-apis` but need a dedicated documentation section.
 
 4. Deprecations are collected at :ref:`deprecated-apis`.
-  
+
 Other documentation requirements
 --------------------------------
 A change that affects administrators who upgrade their Nextcloud should be documented in the release notes section of the admin documentation of that release.

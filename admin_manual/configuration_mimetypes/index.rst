@@ -5,26 +5,26 @@ Mimetypes management
 Mimetype aliases
 ----------------
 
-Nextcloud allows you to create aliases for mimetypes, so that you can display 
-custom icons for files. For example, you might want a nice audio icon for audio 
+Nextcloud allows you to create aliases for mimetypes, so that you can display
+custom icons for files. For example, you might want a nice audio icon for audio
 files instead of the default file icon.
 
-By default Nextcloud is distributed with 
+By default Nextcloud is distributed with
 ``nextcloud/resources/config/mimetypealiases.dist.json``.
-Do not modify this file, as it will be replaced when Nextcloud is updated. 
-Instead, create your own ``nextcloud/config/mimetypealiases.json`` 
-file with your custom aliases. Use the same syntax as in 
+Do not modify this file, as it will be replaced when Nextcloud is updated.
+Instead, create your own ``nextcloud/config/mimetypealiases.json``
+file with your custom aliases. Use the same syntax as in
 ``nextcloud/resources/config/mimetypealiases.dist.json``.
 
-Once you have made changes to your ``mimetypealiases.json``, use the ``occ`` 
-command to propagate the changes through the system. This example is for 
+Once you have made changes to your ``mimetypealiases.json``, use the ``occ``
+command to propagate the changes through the system. This example is for
 Ubuntu Linux::
 
   $ sudo -E -u www-data php occ maintenance:mimetype:update-js
 
   # you may also need to update the mimetype for existing files, see nextcloud/server#30566
   $ sudo -E -u www-data php occ maintenance:mimetype:update-db --repair-filecache
-  
+
 See :doc:`../occ_command` to learn more about ``occ``.
 
 Some common mimetypes that may be useful in creating aliases are:
@@ -57,14 +57,14 @@ Mimetype mapping
 ----------------
 
 Nextcloud allows administrators to specify the mapping of a file extension to a
-mimetype. For example files ending in ``mp3`` map to ``audio/mpeg``. Which 
+mimetype. For example files ending in ``mp3`` map to ``audio/mpeg``. Which
 then in turn allows Nextcloud to show the audio icon.
 
 By default Nextcloud comes with ``mimetypemapping.dist.json``. This is a
 simple json array.
 Administrators should not update this file as it will get replaced on upgrades
 of Nextcloud. Instead the file ``mimetypemapping.json`` should be created and
-modified, this file has precedence over the shipped file. 
+modified, this file has precedence over the shipped file.
 
 Icon retrieval
 --------------

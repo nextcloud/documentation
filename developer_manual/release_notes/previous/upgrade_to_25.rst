@@ -14,9 +14,9 @@ Make sure your ``appinfo/info.xml`` allows for Nextcloud 25.
 
 .. code-block:: xml
 
-	<dependencies>
-	  <nextcloud min-version="22" max-version="25" />
-	</dependencies>
+    <dependencies>
+      <nextcloud min-version="22" max-version="25" />
+    </dependencies>
 
 SCSS support removal
 ^^^^^^^^^^^^^^^^^^^^

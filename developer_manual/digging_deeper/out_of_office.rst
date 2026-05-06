@@ -18,31 +18,31 @@ interface. It provides the following methods:
 
 .. code-block:: php
 
-	/**
-	 * Check if the feature is enabled on this instance
-	 */
-	public function isEnabled(): bool;
+    /**
+     * Check if the feature is enabled on this instance
+     */
+    public function isEnabled(): bool;
 
 .. code-block:: php
 
-	/**
-	 * Get the user's ongoing out-of-office data, if any
-	 */
-	public function getCurrentOutOfOfficeData(IUser $user): ?IOutOfOfficeData;
+    /**
+     * Get the user's ongoing out-of-office data, if any
+     */
+    public function getCurrentOutOfOfficeData(IUser $user): ?IOutOfOfficeData;
 
 .. code-block:: php
 
-	/**
-	 * Reset the absence cache to null
-	 */
-	public function clearCache(string $userId): void;
+    /**
+     * Reset the absence cache to null
+     */
+    public function clearCache(string $userId): void;
 
 .. code-block:: php
 
-	/**
-	 * Is the absence in effect at this moment
-	 */
-	public function isInEffect(IOutOfOfficeData $data): bool;
+    /**
+     * Is the absence in effect at this moment
+     */
+    public function isInEffect(IOutOfOfficeData $data): bool;
 
 Listening to events
 -------------------
@@ -51,7 +51,7 @@ All events have one common method to retrieve data about the  affected out-of-of
 
 .. code-block:: php
 
-	public function getData(): IOutOfOfficeData;
+    public function getData(): IOutOfOfficeData;
 
 
 The following events are emitted by the out-of-office feature:

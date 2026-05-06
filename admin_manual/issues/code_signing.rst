@@ -78,15 +78,15 @@ content of the file will look similar to the following example:
   Results
   =======
   - core
-  	- INVALID_HASH
-  		- /index.php
-  		- /version.php
-  	- EXTRA_FILE
-  		- /test.php
+    - INVALID_HASH
+        - /index.php
+        - /version.php
+    - EXTRA_FILE
+        - /test.php
   - calendar
-  	- EXCEPTION
-  		- OC\IntegrityCheck\Exceptions\InvalidSignatureException
-  		- Signature data not found.
+    - EXCEPTION
+        - OC\IntegrityCheck\Exceptions\InvalidSignatureException
+        - Signature data not found.
 
   Raw output
   ==========

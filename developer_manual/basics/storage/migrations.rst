@@ -39,18 +39,18 @@ With this step the new column gets created:
 .. code-block:: php
 
    public function changeSchema(IOutput $output, \Closure $schemaClosure, array $options) {
-		      /** @var ISchemaWrapper $schema */
-		      $schema = $schemaClosure();
+              /** @var ISchemaWrapper $schema */
+              $schema = $schemaClosure();
 
-		      $table = $schema->getTable('twofactor_backupcodes');
+              $table = $schema->getTable('twofactor_backupcodes');
 
-		      $table->addColumn('user_id', \OCP\DB\Types::STRING, [
-		              'notnull' => true,
-		              'length' => 64,
-		      ]);
+              $table->addColumn('user_id', \OCP\DB\Types::STRING, [
+                      'notnull' => true,
+                      'length' => 64,
+              ]);
 
-		      return $schema;
-	 }
+              return $schema;
+     }
 
 
 2. Migration 1: Post schema change
@@ -131,7 +131,7 @@ Since 30, details about migrations are available to administrator as metadata ca
     #[ModifyColumn(table: 'other_table', name: 'this_field', type: ColumnType::BIGINT)]
     class Version30000Date20240729185117 extends SimpleMigrationStep {
         public function changeSchema(IOutput $output, Closure $schemaClosure, array $options) {
-	[...]
+    [...]
         }
     }
 

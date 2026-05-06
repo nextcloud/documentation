@@ -12,7 +12,7 @@ following commands in a terminal::
     sudo apt install apache2 mariadb-server libapache2-mod-php php-gd php-mysql \
     php-curl php-mbstring php-intl php-gmp php-xml php-imagick php-zip
 
-* This installs the packages for the Nextcloud core system. 
+* This installs the packages for the Nextcloud core system.
   If you are planning on running additional apps, keep in mind that they might
   require additional packages.  See :ref:`Prerequisites for manual installation <prerequisites_label>` for details.
 

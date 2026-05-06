@@ -52,13 +52,13 @@ to disable an app from command line.
 Internal Server Errors
 ^^^^^^^^^^^^^^^^^^^^^^
 
-An Internal Server Error, sometimes called a "500 error", indicates that the web server 
+An Internal Server Error, sometimes called a "500 error", indicates that the web server
 encountered an unexpected condition that prevented it from fulfilling the request.
 
 This error response is a generic "catch-all" response. To find out the source of the
-error you will need to check your Nextcloud log (located in `data/nextcloud.log` by 
+error you will need to check your Nextcloud log (located in `data/nextcloud.log` by
 default) and possibly your web server's error log (depending on where the failure is
-occurring). 
+occurring).
 
 .. tip:: Whenever possible, Nextcloud will include the "Request id" in the error. This
     request ID can be searched for in your Nextcloud log file to find entries associated
@@ -73,12 +73,12 @@ via *Administration settings->Logging*.
 
 .. tip:: When asking for help, the entire raw log entry is generally required.
 
-.. note:  In a standard Nextcloud installation the log level is set to ``2``. This is 
-    known as the ``WARN`` level. It is sufficient for catching for day-to-day problems 
+.. note:  In a standard Nextcloud installation the log level is set to ``2``. This is
+    known as the ``WARN`` level. It is sufficient for catching for day-to-day problems
     (warnings, errors, and fatal errors).
 
 For some situations you may need to adjust the log level in your ``config.php``
-file. Please see :doc:`../configuration_server/logging_configuration` for more 
+file. Please see :doc:`../configuration_server/logging_configuration` for more
 information on these log levels.
 
 Some logging - for example JavaScript console logging - needs debugging
@@ -94,21 +94,21 @@ usually access them by pressing F12.
 PHP version and information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You will need to know the PHP version and configuration that is in-use on your 
-Nextcloud server. This will not necessarily be the same version and configuration as 
-can be reached from the command-line. The simplest way to gather this information is 
+You will need to know the PHP version and configuration that is in-use on your
+Nextcloud server. This will not necessarily be the same version and configuration as
+can be reached from the command-line. The simplest way to gather this information is
 by using what's commonly referenced as ``phpinfo()``.
 
-The most accurate - and easiest - way to access ``phpinfo`` is by checking it from 
-within Nextcloud itself. Of course, this requires that Nextcloud is functioning 
-enough that you can log in as an administrator and access the 
-**Administration settings -> System** menu. If so, you can enable the exposure of 
+The most accurate - and easiest - way to access ``phpinfo`` is by checking it from
+within Nextcloud itself. Of course, this requires that Nextcloud is functioning
+enough that you can log in as an administrator and access the
+**Administration settings -> System** menu. If so, you can enable the exposure of
 ``phpinfo`` data by toggling it on via ``occ``:
 
 ``./occ config:app:set --value=yes serverinfo phpinfo``
 
-From then on a new button labeled **Show phpinfo** will be visible in the web 
-interface under **Administration settings -> System**. Clicking it will expose 
+From then on a new button labeled **Show phpinfo** will be visible in the web
+interface under **Administration settings -> System**. Clicking it will expose
 just about everything you may want to know about your PHP environment.
 
 If accessing the Nextcloud web interface is not an option, you may create a
@@ -427,7 +427,7 @@ You can run the following SQL query to reset those after **backing up the databa
 
 .. code-block:: sql
 
- UPDATE oc_filecache SET unencrypted_size=0 WHERE encrypted=0; 
+ UPDATE oc_filecache SET unencrypted_size=0 WHERE encrypted=0;
 
 Troubleshooting encrypted files
 -------------------------------

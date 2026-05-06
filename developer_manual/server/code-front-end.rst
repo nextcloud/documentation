@@ -91,13 +91,13 @@ We still use Handlebars templates in some places in Files and Settings. We will 
 If you don’t have Handlebars installed yet, you can do it with this terminal command:
 
 .. code-block:: console
-    
+
    sudo npm install -g handlebars
 
 Then inside the root folder of your local Nextcloud development installation, run this command in the terminal every time you changed a ``.handlebars`` file to compile it:
 
 .. code-block:: console
-    
+
    ./build/compile-handlebars-templates.sh
 
 Before checking in JS changes, make sure to also build for production:
