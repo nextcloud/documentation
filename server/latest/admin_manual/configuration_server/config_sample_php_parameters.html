@@ -412,10 +412,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#preview-expiration-days">preview_expiration_days</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#app-config-options">App config options</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#settings-app">Settings app</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="activity_configuration.html">Activity app</a></li>
@@ -4059,24 +4055,6 @@ Restricts the IP addresses able to make requests on the <code class="docutils li
 <p>Delete previews older than a certain number of days to reduce storage usage.</p>
 <p>Less than one day is not allowed, so set it to 0 to disable the deletion.</p>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
-</section>
-</section>
-<section id="app-config-options">
-<h2>App config options<a class="headerlink" href="#app-config-options" title="Link to this heading"></a></h2>
-<section id="settings-app">
-<h3>Settings app<a class="headerlink" href="#settings-app" title="Link to this heading"></a></h3>
-<p>If an email address of a user is changed by an admin, then it triggers an email
-to the user that states “Your email address on URL was changed by an
-administrator.”. In some cases this should not be triggered, because it was a
-normal maintenance change. To disable this specific email the appconfig option
-<code class="docutils literal notranslate"><span class="pre">disable_email.email_address_changed_by_admin</span></code> can be set to <code class="docutils literal notranslate"><span class="pre">yes</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">settings</span> <span class="n">disable_activity</span><span class="o">.</span><span class="n">email_address_changed_by_admin</span> <span class="o">--</span><span class="n">value</span> <span class="n">yes</span>
-</pre></div>
-</div>
-<p>To disable this behaviour change it to any other value or delete the app config:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="n">delete</span> <span class="n">settings</span> <span class="n">disable_activity</span><span class="o">.</span><span class="n">email_address_changed_by_admin</span>
-</pre></div>
-</div>
 </section>
 </section>
 </section>
