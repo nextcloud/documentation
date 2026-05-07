@@ -47,6 +47,15 @@ As an administrator, you can:
   Existing users keep their personal settings. The defaults apply
   to accounts created after the change.
 
+.. note::
+
+   The **Enable notification emails** toggle prevents **new** emails from
+   being queued. It does not retroactively remove emails that are already
+   waiting in the queue. Emails queued before the toggle was disabled will
+   still be sent by the background job on its next run. To stop those
+   emails immediately, truncate or clear the ``oc_activity_mq`` database
+   table.
+
 
 Configuration reference
 -----------------------
@@ -193,3 +202,19 @@ database growth. To manage this:
   expiration job executes.
 * To assess current database usage, check the size of the
   ``oc_activity`` and ``oc_activity_mq`` tables directly.
+
+Emails are still being sent after disabling notification emails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The **Enable notification emails** toggle is checked when *queuing* new
+emails. The background job that actually delivers emails
+(``MailQueueHandler``) does not re-read the toggle before sending, so
+emails that were already in the queue when the toggle was turned off will
+still be delivered.
+
+To stop those emails immediately, clear the ``oc_activity_mq`` table::
+
+  DELETE FROM oc_activity_mq;
+
+After clearing the table, no further queued activity emails will be sent
+until new ones are queued (which requires the toggle to be re-enabled).
