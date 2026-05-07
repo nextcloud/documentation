@@ -106,12 +106,20 @@ command to enable the configuration::
 Additional Apache configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+**Required modules:**
+
 * For Nextcloud to work correctly, we need the module ``mod_rewrite``. Enable
   it by running::
 
     a2enmod rewrite
 
-  Additional recommended modules are ``mod_headers``, ``mod_env``, ``mod_dir`` and ``mod_mime``::
+* If you're using ``mod_fcgi`` or ``php-fpm`` (PHP FastCGI Process Manager),
+  you must enable the proxy modules::
+
+    a2enmod proxy
+    a2enmod proxy_fcgi
+
+**Recommended modules** are ``mod_headers``, ``mod_env``, ``mod_dir`` and ``mod_mime``::
 
     a2enmod headers
     a2enmod env
@@ -129,6 +137,17 @@ Additional Apache configurations
     <FilesMatch remote.php>
       SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
     </FilesMatch>
+
+**Verifying modules are enabled:**
+
+  To verify that required modules are enabled, use the ``apache2ctl`` command::
+
+    apache2ctl -M | grep -E "rewrite|proxy|proxy_fcgi"
+
+  If you see matching output for the modules you've enabled, they are active.
+  If any required module is missing, troubleshoot your OS package manager to
+  ensure the Apache modules are installed (package names may vary by distribution;
+  for example, on Debian/Ubuntu look for ``libapache2-mod-fcgid`` or similar).
 
 * You must disable any server-configured authentication for Nextcloud, as it
   uses Basic authentication internally for DAV services. If you have turned on
