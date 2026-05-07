@@ -205,6 +205,8 @@ Added APIs
 
 - ``ISynchronousWatermarkingProvider`` TaskProcessing provider interface was added to allow synchronous processing providers to react to the boolean includeWatermark flag
 
+- Support for delegation-only section and settings have been added to the info.xml schema for applications. Only useful if your application needs to enable delegation of rights which are not related to a setting page. Known examples of that is user management and webhook registration. See :ref:`app metadata<app metadata>` for details.
+
 Changed APIs
 ^^^^^^^^^^^^
 
