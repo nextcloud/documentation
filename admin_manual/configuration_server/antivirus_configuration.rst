@@ -178,6 +178,19 @@ https://www.eicar.org/download-anti-malware-testfile/
 Uploading the file will trigger an error:
    "Virus Win.Test.EICAR_HDB-1 is detected in the file. Upload cannot be completed."
 
+Encrypted File Detection Limitations with ClamAV
+------------------------------------------------
+
+By default, ClamAV may still return "OK" for password-protected archives and encrypted files.
+This known ClamAV behavior bypasses "Block unscannable files" option of Antivirus app.
+You may configure additional alert options in ``clamd.conf``, that should catch it:
+
+* ``AlertEncryptedArchive`` - Alert on encrypted archives with heuristic signature (encrypted .zip, .7zip, .rar).
+* ``AlertEncryptedDoc`` - Alert on encrypted archives with heuristic signature (encrypted .pdf).
+* ``AlertEncrypted`` - Alert on both encrypted archives and documents with heuristic signature.
+
+For reliable detection and blocking of encrypted files, consult available antivirus backends documentation.
+
 Manage the background scanner
 -----------------------------
 
