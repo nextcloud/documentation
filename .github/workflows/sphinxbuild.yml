@@ -387,7 +387,6 @@ jobs:
         run: |
           find "stage/${{ needs.stage-and-check.outputs.branch_name }}" -name '*.html' -print0 | while IFS= read -r -d '' f; do
             perl -0pi -e 's{^\s*<link rel="canonical" href="https://docs\.nextcloud\.com/server/[^"]*" />\n}{}m' "$f"
-            perl -pi -e 's{<meta name="robots" content="noindex, follow" />\n?}{}g' "$f"
           done
           ls -la stage/*
 
