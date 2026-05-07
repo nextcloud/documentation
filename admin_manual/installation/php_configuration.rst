@@ -55,6 +55,17 @@ The following PHP modules **must** be installed and enabled for Nextcloud Server
 The `ctype`, `fileinfo`, and `OpenSSL` modules are generally included and enabled in PHP by default. Often
 some of the other required modules are automatically installed by OS distribution package managers.
 
+.. note::
+   **PHP Version-Specific Information:**
+
+   - **PHP 8.3 and 8.4:** Several modules are now bundled with PHP by default, such as `curl`, `zlib`, and others.
+     When upgrading to these versions, some modules that were previously optional may already be enabled. If you
+     encounter "module not found" errors when running standard package installation commands, the module may
+     already be bundled and enabled — verify this by using the module check command below.
+   - **Debian/Ubuntu packages:** Module availability varies by distribution version. If a listed module cannot be
+     found in your package manager, check the PHP documentation or your distribution's PHP module list to
+     confirm if the feature is bundled with your PHP version.
+
 **How to check if a module is enabled:**
 
 - Run ``php -m | grep -i <module_name>``. If you see output, the module is active.
@@ -80,6 +91,7 @@ These modules are not required, but are highly recommended to improve functional
 
 - `intl`: Fixes sorting of non-ASCII characters and improves language translation performance.
 - `sodium`: Provides Argon2 password hashing (needed if using PHP < 8.4 and PHP was built without `libargon2`).
+  Starting with PHP 8.0, `sodium` is usually enabled by default. In PHP 8.4, `sodium` is typically bundled.
 
     bcrypt will be used if Argon2 is unavailable, but if passwords were previously hashed with Argon2
     (such as when migrating an existing Nextcloud Server installation to a new server environment) and this
