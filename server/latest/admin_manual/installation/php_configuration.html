@@ -251,6 +251,19 @@ are available to PHP.</p>
 </div>
 <p>The <cite>ctype</cite>, <cite>fileinfo</cite>, and <cite>OpenSSL</cite> modules are generally included and enabled in PHP by default. Often
 some of the other required modules are automatically installed by OS distribution package managers.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>PHP Version-Specific Information:</strong></p>
+<ul class="simple">
+<li><p><strong>PHP 8.3 and 8.4:</strong> Several modules are now bundled with PHP by default, such as <cite>curl</cite>, <cite>zlib</cite>, and others.
+When upgrading to these versions, some modules that were previously optional may already be enabled. If you
+encounter “module not found” errors when running standard package installation commands, the module may
+already be bundled and enabled — verify this by using the module check command below.</p></li>
+<li><p><strong>Debian/Ubuntu packages:</strong> Module availability varies by distribution version. If a listed module cannot be
+found in your package manager, check the PHP documentation or your distribution’s PHP module list to
+confirm if the feature is bundled with your PHP version.</p></li>
+</ul>
+</div>
 <p><strong>How to check if a module is enabled:</strong></p>
 <ul class="simple">
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">php</span> <span class="pre">-m</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-i</span> <span class="pre">&lt;module_name&gt;</span></code>. If you see output, the module is active.</p></li>
@@ -274,7 +287,8 @@ some of the other required modules are automatically installed by OS distributio
 <p>These modules are not required, but are highly recommended to improve functionality or security:</p>
 <ul>
 <li><p><cite>intl</cite>: Fixes sorting of non-ASCII characters and improves language translation performance.</p></li>
-<li><p><cite>sodium</cite>: Provides Argon2 password hashing (needed if using PHP &lt; 8.4 and PHP was built without <cite>libargon2</cite>).</p>
+<li><p><cite>sodium</cite>: Provides Argon2 password hashing (needed if using PHP &lt; 8.4 and PHP was built without <cite>libargon2</cite>).
+Starting with PHP 8.0, <cite>sodium</cite> is usually enabled by default. In PHP 8.4, <cite>sodium</cite> is typically bundled.</p>
 <blockquote>
 <div><p>bcrypt will be used if Argon2 is unavailable, but if passwords were previously hashed with Argon2
 (such as when migrating an existing Nextcloud Server installation to a new server environment) and this

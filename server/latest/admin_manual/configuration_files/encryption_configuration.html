@@ -109,6 +109,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#user-keys-sharing-recovery">User Keys: Sharing &amp; Recovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ldap-and-external-user-backends">LDAP and External User Backends</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#why-don-t-i-see-the-recovery-key-option-in-the-encryption-settings">Why don’t I see the recovery key option in the Encryption settings?</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#invalid-private-key-for-encryption-app">Invalid private key for encryption app</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bad-signature-error">Bad signature error</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#encryption-key-cannot-be-found">Encryption key cannot be found</a></li>
@@ -334,19 +335,20 @@ external changes.</p>
 </ol>
 </section>
 <section id="key-management-modes">
-<h2>Key Management Modes<a class="headerlink" href="#key-management-modes" title="Link to this heading"></a></h2>
+<span id="encryption-configuration-key-management-modes"></span><h2>Key Management Modes<a class="headerlink" href="#key-management-modes" title="Link to this heading"></a></h2>
 <p><strong>Master Key (default):</strong></p>
 <ul class="simple">
 <li><p>All files are encrypted with a central server-controlled key.</p></li>
 <li><p>Admins can decrypt any user’s files.</p></li>
-<li><p>Offers better performance and compatibility with more login/authentication modes.</p></li>
-<li><p>Best for organizations that need to recover files if users forget their passwords.</p></li>
+<li><p><strong>Recovery keys are not available in master key mode.</strong> Files remain accessible if a user forgets their password, as they are encrypted by the master key, not the user password.</p></li>
+<li><p>Recommended for most deployments.</p></li>
 </ul>
 <p><strong>User Keys:</strong></p>
 <ul class="simple">
 <li><p>Each user’s files are encrypted with a password-protected key.</p></li>
 <li><p>Admins cannot (readily) decrypt files without the user’s password, unless a recovery key is defined.</p></li>
 <li><p>If a user forgets their password and no recovery key exists, their files are lost.</p></li>
+<li><p>This mode does not work with all authentication methods (e.g., app passwords, single sign-on) and is only recommended for compatibility with older setups.</p></li>
 </ul>
 <p><strong>How to choose:</strong></p>
 <ul class="simple">
@@ -555,13 +557,19 @@ To encrypt all files for all users run:</p>
 <img alt="../_images/encryption9.png" src="../_images/encryption9.png" />
 </figure>
 <p><strong>Enabling file recovery keys:</strong></p>
+<p>Recovery keys are only available in per-user key mode (not the default master key mode).</p>
 <ul class="simple">
 <li><p>If you lose your Nextcloud password, you lose access to your encrypted files.</p></li>
-<li><p>If a user loses their password, their files are unrecoverable unless a recovery key is enabled.</p></li>
-<li><p>To enable recovery, go to Encryption in Admin page and set a recovery key password.</p></li>
+<li><p>If a user loses their password, their files are unrecoverable unless a recovery key is enabled (per-user key mode only).</p></li>
+<li><p>To enable recovery (in per-user key mode), go to Encryption in Admin page and set a recovery key password.</p></li>
 <li><p>Users must enable password recovery in their Personal settings for the Recovery Key to work.</p></li>
 <li><p>For users who have enabled password recovery, admins can reset passwords and recover files using the Recovery Key.</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The recovery process can be slow and resource-intensive, especially for instances with large amounts of encrypted data.
+Test recovery procedures before relying on them in production.</p>
+</div>
 <figure class="align-default">
 <img alt="../_images/encryption10.png" src="../_images/encryption10.png" />
 </figure>
@@ -584,6 +592,18 @@ To encrypt all files for all users run:</p>
 </section>
 <section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="why-don-t-i-see-the-recovery-key-option-in-the-encryption-settings">
+<h3>Why don’t I see the recovery key option in the Encryption settings?<a class="headerlink" href="#why-don-t-i-see-the-recovery-key-option-in-the-encryption-settings" title="Link to this heading"></a></h3>
+<p>Recovery keys are only available in per-user key mode. Since Nextcloud 13, the default
+encryption mode uses master keys (system-wide encryption). Master key mode does not expose
+recovery key options in the Admin settings because recovery keys are not needed—admins can
+reset user passwords and files remain accessible.</p>
+<p>If you are using master key mode (the default and recommended mode), you do not need recovery
+keys. Recovery keys are only relevant for per-user key setups, which are maintained for
+compatibility with older deployments.</p>
+<p>See <a class="reference internal" href="#encryption-configuration-key-management-modes"><span class="std std-ref">Key Management Modes</span></a> for guidance
+on the differences between master key and per-user key modes, and <a class="reference external" href="https://github.com/nextcloud/server/issues/8283">GitHub Issue #8283</a> for technical context on this design decision.</p>
+</section>
 <section id="invalid-private-key-for-encryption-app">
 <h3>Invalid private key for encryption app<a class="headerlink" href="#invalid-private-key-for-encryption-app" title="Link to this heading"></a></h3>
 <p>See <a class="reference external" href="https://github.com/nextcloud/server/issues/8546">GitHub Issue #8546</a> and
