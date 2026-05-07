@@ -338,7 +338,7 @@ Troubleshooting
 ---------------
 
 Why don't I see the recovery key option in the Encryption settings?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Recovery keys are only available in per-user key mode. Since Nextcloud 13, the default
 encryption mode uses master keys (system-wide encryption). Master key mode does not expose
