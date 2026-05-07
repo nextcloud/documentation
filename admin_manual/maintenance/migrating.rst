@@ -37,6 +37,20 @@ the new location. It is also assumed that the authentication method
     your original machine was installed recently just copying that base
     configuration is a safe best practice.
 
+    .. important:: Before beginning the migration, **check the ``config/config.php`` file
+       on your ORIGINAL system** to identify any optional services that are configured,
+       such as:
+
+       * Redis or Memcached (for caching/sessions)
+       * External object storage (S3, etc.)
+       * LDAP
+       * Mail server settings
+       * Full-text search backends (Elasticsearch, etc.)
+
+       **You must also install and configure these same services on the NEW machine
+       before copying the Nextcloud files.** Failure to do so may cause errors such
+       as "Redis server went away" or connection failures during Nextcloud startup.
+
 
 #.  On the original machine then stop Nextcloud. First activate the
     maintenance mode. After waiting for 6-7 minutes for all sync clients to
