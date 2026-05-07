@@ -494,8 +494,8 @@ default_language
 This sets the default language on your Nextcloud server, using ISO_639-1
 language codes such as ``en`` for English, ``de`` for German, and ``fr`` for
 French. The default_language parameter is only used when the browser does
-not send any language, and the user hasn’t configured their own language
-preferences.
+not send any language preferences, and the user hasn’t configured their own
+either.
 
 Nextcloud has two distinguished language codes for German, ``de`` and ``de_DE``.
 ``de`` is used for informal German and ``de_DE`` for formal German. By setting
