@@ -16,18 +16,18 @@ There are generally different types of buttons for different purposes:
 .. image:: ../images/button-primary-secondary.png
    :alt: Primary button "Move" and secondary button "Copy" in Files
 
-* Primary buttons are used to indicate the main action ("Start call" button in Talk, "Move" in Files). The primary buttons are stylized in Nextcloud blue by default or the theming color when themed. These should only be used sparingly and ideally only for 1 visible action at a time.
+* Primary buttons are used to indicate the main action ("Start call" button in Talk, "Move" in Files). The primary buttons are stylized in Nextcloud blue by default or the theming color when themed.
 * Secondary buttons are used for actions that have lesser weight than the primary action ("Today" button in Calendar, "Copy" in Files)
 
 .. image:: ../images/button-tertiary.png
    :alt: Tertiary button "Mark as read" in desktop tray menu
 
-* Tertiary buttons, which are the buttons without a background, can be used for other actions in your app which are important, but not the main focus. These buttons are usually combined with a primary or secondary button. For example, "Mark as read" is a tertiary button used alongside a secondary button
+* Tertiary buttons, which are the buttons without a background, can be used for other actions in your app which are important, but not the main focus. These buttons are usually combined with a primary and/or secondary button.
 
 .. image:: ../images/button-icon-only.png
    :alt: Mute, video, screenshare and 3-dot buttons in Talk video call
 
-* The icon-only buttons can be used if the action is frequently used and the icon is easily recognizable, and therefore does not require any text to support it (mute/video/screenshare actions in Talk, and the 3-dot menu icon)
+* The icon-only buttons can be used if the action is frequently used and the icon is easily recognizable, and therefore does not require any text to support it (mute/video/screenshare actions in Talk video call).
 
 .. image:: ../images/button-success.png
    :alt: Success button "Join call" in Talk
@@ -37,7 +37,7 @@ There are generally different types of buttons for different purposes:
 .. image:: ../images/button-danger.png
    :alt: Danger button "Remove email" in Mail
 
-* Danger buttons are used to signify a potentially dangerous or negative action ("Remove account" button in the confirmation dialog when you want to remove an account in Mail, or "Delete conversation" in Talk conversation settings)
+* Danger buttons are used to signify a potentially dangerous or negative action ("Remove account" button in the confirmation dialog when you want to remove an account in Mail, or "Delete conversation" in Talk).
 
 .. _Action menu:
 
@@ -80,7 +80,7 @@ It is important to keep the action menu simple and its length at a minimum. Too 
 .. image:: ../images/action-menu-icon.png
    :alt: Action menu with a paperclip icon for attachments in Talk
 
-In most cases the action menu is accessed through a 3-dot menu. In certain cases, it is better to use a specific icon instead of the generic 3-dot icon. For example in Talk a paperclip icon is used for accessing the action menu for attaching an item, and a heading icon is used in Text formatting bar for heading level selection.
+In most cases the action menu is accessed through a 3-dot menu. In certain cases, it is better to use a specific icon instead of the generic 3-dot icon. For example in Talk a paperclip icon is used for attachments.
 
 For Android and iOS, the action menu is generally opened as a bottom sheet.
 
@@ -116,11 +116,11 @@ Dropdowns
 .. image:: ../images/dropdown-find-as-you-type.gif
    :alt: Dropdown menu in Files sharing
 
-Dropdowns allow the user to select one or more items from a list. Dropdowns can have predefined options from which the user can select one or more items, as seen in Contacts for selecting the type of a phone number. If there are not too many entries, you may also think about using a set of :ref:`checkboxes and radio buttons` instead.
+Dropdowns allow the user to select one or more items from a list. Dropdowns can have predefined options from which the user can select one or more items, as seen in Contacts for selecting the type of phone number.
 
-Although not always necessary, it is generally a good idea to have a default item already selected, especially when a dropdown menu is a key element which will be used a lot. This can be decided by a number of factors such as most selected item for that user, most recently selected item, etc. For example, when you add a new phone number in Contacts, the type "Home" is automatically set in the dropdown.
+Although not always necessary, it is generally a good idea to have a default item already selected, especially when a dropdown menu is a key element which will be used a lot. This can be decided based on the context.
 
-Another variation of the dropdown allows the user to find their preferred option by typing it in, like in Mail where the "To" field in the composer allows you to type an email address, and as you type it shows a dropdown with the results matching the input. This kind of dropdown is useful for when there are many options and the user would already know what they are looking for. It can also be a good idea to allow new inputs if there are no matches.
+Another variation of the dropdown allows the user to find their preferred option by typing it in, like in Mail where the "To" field in the composer allows you to type an email address, and as you type it suggests contacts.
 
 .. _Checkboxes and radio buttons:
 
@@ -155,7 +155,7 @@ Datetime picker
    :alt: Files date picker
 
 
-A user can quickly select dates, times and date ranges using the datetime picker. Use good default dates relevant to the task at hand. For example, in the case of setting an expiration date, unless the server has something enforced as default, 1 week is a good default.
+A user can quickly select dates, times and date ranges using the datetime picker. Use good default dates relevant to the task at hand. For example, in the case of setting an expiration date, unless there is a reason otherwise, it is best to default to a date in the future.
 
 .. _Color picker:
 
@@ -168,9 +168,9 @@ Color picker
    :alt: Deck color picker
 
 
-For certain elements of your UI you might want to allow people to set colors. This can easily be achieved using a color picker with some predefined colors. Be cautious about using different colors in the UI. In most Nextcloud apps like Deck and Calendar, user defined colors for UI elements are used sparingly and shown as a circle next to the element they refer to.
+For certain elements of your UI you might want to allow people to set colors. This can easily be achieved using a color picker with some predefined colors. Be cautious about using different colors so the UI stays coherent.
 
-In addition to these 2 pickers, there is also the `emoji picker <https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=ncemojipicker>`_ and the `timezone picker <https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=nctimezonepicker>`_ which can be also be used in your app.
+In addition to these 2 pickers, there is also the `emoji picker <https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=ncemojipicker>`_ and the `timezone picker <https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=nctimezonepicker>`_.
 
 .. _Tags:
 
@@ -227,6 +227,16 @@ When using an avatar it is usually accompanied by the name of the user as well, 
 
 When multiple people are working on or are assigned to the same element, like in Text, Office, a Deck card, or in the Files list for sharing, they are shown as overlapped.
 
+.. note::
+
+   Starting with Nextcloud 25, generated avatars support dedicated dark-theme
+   variants. If your app requests avatar URLs directly, prefer dark-theme aware
+   avatar URLs in dark UI contexts.
+
+   Deprecated avatar sizes are also normalized to supported sizes. Requests up
+   to ``64`` return a ``64x64`` avatar, while requests above ``64`` return a
+   ``512x512`` avatar.
+
 .. _Progress bars and meters:
 
 Progress bars and meters
@@ -251,50 +261,3 @@ User bubbles
 ------------
 
 `User bubble Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcUserBubble>`_.
-`Penpot user bubbles <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=6&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
-
-.. image:: ../images/talk-user-bubble.png
-   :alt: Talk user bubble
-
-
-When referring to a user inline in your app, a user bubble element can be used. In Talk and Comments, user bubbles are used in the content when someone mentions a user. In Mail, it is used in the header for the recipients of the message.
-
-.. _Counter bubbles:
-
-Counter bubbles
----------------
-
-`Counter bubble Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcCounterBubble>`_.
-`Penpot counter bubbles <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=7&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
-
-.. image:: ../images/talk-counter-bubble.png
-   :alt: Talk counter bubble
-
-In Talk, it is used for showing which chats are unread and if you or your group is mentioned.
-
-.. _Empty content:
-
-Empty content
--------------
-
-`Empty content component <https://nextcloud-vue-components.netlify.app/#/Components/NcEmptyContent>`_.
-`Penpot empty content <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=10&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
-
-.. image:: ../images/empty-content.png
-   :alt: Bookmarks empty content
-
-
-The empty content state provides feedback that a view is empty, e.g. a new folder. This is to differentiate it from the state of loading, or having loaded and showing data.
-
-Make sure that empty content views only show when the view is really empty, and not while it is loading – otherwise people will be shocked as to where their data is gone. The wording on the empty content view should be friendly and helping people out of the situation, for example in the Bookmarks app.
-
-.. _Skeleton screens:
-
-Skeleton screens
-----------------
-
-.. image:: ../images/skeleton-screen-talk.png
-   :alt: Talk skeleton screen
-     :scale: 50%
-
-While the app is loading, it is best to show a skeleton view of the apps probable contents as loading feedback. A good example for this is Talk on web as well as Files and Talk on Android.

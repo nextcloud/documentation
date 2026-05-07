@@ -49,6 +49,28 @@ The `christophwurst/nextcloud <https://packagist.org/packages/christophwurst/nex
 with a now Nextcloud owned `nextcloud/ocp <https://packagist.org/packages/nextcloud/ocp>`_ package. The content is the
 same and all older versions were generated, so you can transition right away no matter which versions you support.
 
+Avatar generation and avatar URL changes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Nextcloud 25 changed the behavior of generated avatars.
+
+If your app or integration requests avatar images directly, note the following:
+
+* Deprecated avatar sizes are normalized to supported sizes:
+
+  * requests for sizes up to ``64`` return a ``64x64`` avatar
+  * requests for sizes above ``64`` return a ``512x512`` avatar
+
+* Dark theme variants of generated avatars are available through dedicated endpoints:
+
+  * ``/avatar/{userId}/{size}/dark``
+  * ``/avatar/guest/{guestName}/{size}/dark``
+
+* Generated avatars may have a different appearance in dark mode than in light mode.
+
+Apps should not assume that arbitrary requested avatar sizes are returned unchanged.
+If you need dark-mode aware generated avatars, use the ``/dark`` endpoints.
+
 Removed APIs
 ^^^^^^^^^^^^
 
