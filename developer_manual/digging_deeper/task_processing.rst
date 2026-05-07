@@ -330,7 +330,7 @@ The corresponding ``MyPromptResultListener`` class can look like:
 Implementing a TaskProcessing provider
 --------------------------------------
 
-A **Task processing provider** will usually be a class that implements the interface ``OCP\TaskProcessing\ISynchrounousProvider``.
+A **Task processing provider** will usually be a class that implements the interface ``OCP\TaskProcessing\ISynchronousProvider``.
 
 .. code-block:: php
 
