@@ -332,6 +332,27 @@ Talk tools
 
   * Example prompt: *"Can you create a new public talk conversation titled 'Press conference'?"*
 
+
+Mail tools (require `Mail <https://apps.nextcloud.com/apps/mail>`_)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Send an email via Nextcloud Mail
+
+  * Example prompt: *"Send a test email from my carry@company.com account to Andrew@company.com"*
+
+* List all connected mail accounts
+
+  * Example prompt: *"List my mail accounts"*
+
+* List all mail folders of an email account
+
+  * Example prompt: *"List the folders of my carry@company.com account"*
+
+* List the mails in a mail folder
+
+  * Example prompt: *"List the last 5 mails in the inbox of my carry@company.com account"*
+
+
 Miscellaneous tools
 ~~~~~~~~~~~~~~~~~~~
 
@@ -354,10 +375,6 @@ Miscellaneous tools
 * Search Duckduckgo
 
   * Example prompt: *"Show me search results for quick pasta recipes, please."*
-
-* Send an email via Nextcloud Mail (requires `Mail <https://apps.nextcloud.com/apps/mail>`_)
-
-  * Example prompt: *"Send a test email from my carry@company.com account to Andrew@company.com"*
 
 * Determine public transport routes (requires a `HERE <https://www.here.com/>`_ API key configured in the admin settings)
 
