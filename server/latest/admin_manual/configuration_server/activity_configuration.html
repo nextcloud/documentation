@@ -93,6 +93,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#users-are-not-receiving-notification-emails">Users are not receiving notification emails</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#activities-are-missing-for-shared-files-or-team-folders">Activities are missing for shared files or team folders</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#database-growing-large-due-to-activity-data">Database growing large due to activity data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#emails-are-still-being-sent-after-disabling-notification-emails">Emails are still being sent after disabling notification emails</a></li>
 </ul>
 </li>
 </ul>
@@ -237,6 +238,15 @@ The <code class="docutils literal notranslate"><span class="pre">Ajax</span></co
 Existing users keep their personal settings. The defaults apply
 to accounts created after the change.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <strong>Enable notification emails</strong> toggle prevents <strong>new</strong> emails from
+being queued. It does not retroactively remove emails that are already
+waiting in the queue. Emails queued before the toggle was disabled will
+still be sent by the background job on its next run. To stop those
+emails immediately, truncate or clear the <code class="docutils literal notranslate"><span class="pre">oc_activity_mq</span></code> database
+table.</p>
+</div>
 </section>
 </section>
 <section id="configuration-reference">
@@ -379,6 +389,20 @@ expiration job executes.</p></li>
 <li><p>To assess current database usage, check the size of the
 <code class="docutils literal notranslate"><span class="pre">oc_activity</span></code> and <code class="docutils literal notranslate"><span class="pre">oc_activity_mq</span></code> tables directly.</p></li>
 </ul>
+</section>
+<section id="emails-are-still-being-sent-after-disabling-notification-emails">
+<h3>Emails are still being sent after disabling notification emails<a class="headerlink" href="#emails-are-still-being-sent-after-disabling-notification-emails" title="Link to this heading"></a></h3>
+<p>The <strong>Enable notification emails</strong> toggle is checked when <em>queuing</em> new
+emails. The background job that actually delivers emails
+(<code class="docutils literal notranslate"><span class="pre">MailQueueHandler</span></code>) does not re-read the toggle before sending, so
+emails that were already in the queue when the toggle was turned off will
+still be delivered.</p>
+<p>To stop those emails immediately, clear the <code class="docutils literal notranslate"><span class="pre">oc_activity_mq</span></code> table:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="n">FROM</span> <span class="n">oc_activity_mq</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>After clearing the table, no further queued activity emails will be sent
+until new ones are queued (which requires the toggle to be re-enabled).</p>
 </section>
 </section>
 </section>
