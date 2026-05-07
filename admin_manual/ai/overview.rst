@@ -326,6 +326,12 @@ Backend apps
 
 .. _ai-overview_improve-ai-task-pickup-speed:
 
+Windmill workflows
+^^^^^^^^^^^^^^^^^^
+
+You can use the AI endpoints in your :ref:`Windmill workflows<windmill_workflows>`. Some example workflows showcasing the possibilities of combining Windmill workflows with Nextcloud AI are available on the  `Windmill Hub <https://hub.windmill.dev/integrations/nextcloud/flows>`_
+
+
 Improve AI task pickup speed
 ----------------------------
 

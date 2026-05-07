@@ -1,3 +1,5 @@
+.. _windmill_workflows:
+
 ==================
 Windmill Workflows
 ==================
@@ -8,6 +10,7 @@ Installation
 ------------
 
 * Set up a Windmill instance
+
    * This should be a stand-alone instance. The External App "Flow" (see :ref:`External Apps<ai-app_api>`) made it possible to have a packaged instance installed in Nextcloud, but this is deprecated since Nextcloud 33. For more information, please check out the admin manual for Nextcloud 32.
 
 * Enable the ``webhook_listeners`` app that comes with Nextcloud
@@ -19,6 +22,8 @@ Installation
 * Install the `Windmill integration <https://apps.nextcloud.com/apps/integration_windmill>`_
 
 * Enable :ref:`pretty_urls_label` in your Nextcloud instance
+
+* *Recommended but optional:* start :ref:`background job workers for the webhook listeners<webhook_dispatch>`
 
 Setting up the workspace connection
 -----------------------------------
@@ -64,17 +69,10 @@ This is a skeleton for a script written in TypeScript (Bun). To use it, you have
 
 .. code-block:: javascript
 
-   import * as wmill from "windmill-client";
    import createClient, { type Middleware } from "openapi-fetch";
 
-   type Nextcloud = {
-      baseUrl: string,
-      password: string,
-      username: string
-   };
-
    export async function main(
-      nextcloud: Nextcloud,
+      nextcloud: RT.Nextcloud,
       $PARAMETER: $TYPE,
       // add any input parameters you need here
    ) {
@@ -86,7 +84,7 @@ This is a skeleton for a script written in TypeScript (Bun). To use it, you have
          async onRequest({ request, options }) {
             // fetch token, if it doesn’t exist
             // add Authorization header to every request
-            request.headers.set("Authorization", `Basic ${btoa(nextcloud.username + ':' + nextcloud.password)}`);
+            request.headers.set("Authorization", `Basic ${btoa(nextcloud.userId + ':' + nextcloud.token)}`);
             return request;
          },
       };
@@ -179,6 +177,12 @@ Of course, you may also use any of the other scripts for sending messages availa
 Windmill has a default approval user interface at a specific URL, but it looks very technical.
 We recommend using the `approve_links <https://apps.nextcloud.com/apps/approve_links>`_ app
 which allows creating a beautiful temporary approval page with a custom message and approve and disapprove buttons.
+
+Example workflows
+~~~~~~~~~~~~~~~~~
+
+We provide some example workflows at https://hub.windmill.dev/integrations/nextcloud/flows showcasing the possibilities of combining Windmill workflows with Nextcloud AI.
+
 
 FAQ
 ---
