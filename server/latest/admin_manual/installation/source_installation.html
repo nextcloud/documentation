@@ -303,32 +303,53 @@ command to enable the configuration:</p>
 </div>
 <section id="additional-apache-configurations">
 <h3>Additional Apache configurations<a class="headerlink" href="#additional-apache-configurations" title="Link to this heading"></a></h3>
+<p><strong>Required modules:</strong></p>
 <ul>
 <li><p>For Nextcloud to work correctly, we need the module <code class="docutils literal notranslate"><span class="pre">mod_rewrite</span></code>. Enable
 it by running:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a2enmod</span> <span class="n">rewrite</span>
 </pre></div>
 </div>
-<p>Additional recommended modules are <code class="docutils literal notranslate"><span class="pre">mod_headers</span></code>, <code class="docutils literal notranslate"><span class="pre">mod_env</span></code>, <code class="docutils literal notranslate"><span class="pre">mod_dir</span></code> and <code class="docutils literal notranslate"><span class="pre">mod_mime</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a2enmod</span> <span class="n">headers</span>
-<span class="n">a2enmod</span> <span class="n">env</span>
-<span class="n">a2enmod</span> <span class="nb">dir</span>
-<span class="n">a2enmod</span> <span class="n">mime</span>
-</pre></div>
-</div>
-<p>If you’re running <code class="docutils literal notranslate"><span class="pre">mod_fcgi</span></code> instead of the standard <code class="docutils literal notranslate"><span class="pre">mod_php</span></code> also enable:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a2enmod</span> <span class="n">setenvif</span>
-</pre></div>
-</div>
-<p>and apply the following modifications to the configuration:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ProxyFCGIBackendType FPM
-
-&lt;FilesMatch remote.php&gt;
-  SetEnvIf Authorization &quot;(.*)&quot; HTTP_AUTHORIZATION=$1
-&lt;/FilesMatch&gt;
+</li>
+<li><p>If you’re using <code class="docutils literal notranslate"><span class="pre">mod_fcgi</span></code> or <code class="docutils literal notranslate"><span class="pre">php-fpm</span></code> (PHP FastCGI Process Manager),
+you must enable the proxy modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a2enmod</span> <span class="n">proxy</span>
+<span class="n">a2enmod</span> <span class="n">proxy_fcgi</span>
 </pre></div>
 </div>
 </li>
+</ul>
+<p><strong>Recommended modules</strong> are <code class="docutils literal notranslate"><span class="pre">mod_headers</span></code>, <code class="docutils literal notranslate"><span class="pre">mod_env</span></code>, <code class="docutils literal notranslate"><span class="pre">mod_dir</span></code> and <code class="docutils literal notranslate"><span class="pre">mod_mime</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  a2enmod headers
+  a2enmod env
+  a2enmod dir
+  a2enmod mime
+
+If you&#39;re running ``mod_fcgi`` instead of the standard ``mod_php`` also enable::
+
+  a2enmod setenvif
+
+and apply the following modifications to the configuration::
+
+  ProxyFCGIBackendType FPM
+
+  &lt;FilesMatch remote.php&gt;
+    SetEnvIf Authorization &quot;(.*)&quot; HTTP_AUTHORIZATION=$1
+  &lt;/FilesMatch&gt;
+</pre></div>
+</div>
+<p><strong>Verifying modules are enabled:</strong></p>
+<blockquote>
+<div><p>To verify that required modules are enabled, use the <code class="docutils literal notranslate"><span class="pre">apache2ctl</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apache2ctl</span> <span class="o">-</span><span class="n">M</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">E</span> <span class="s2">&quot;rewrite|proxy|proxy_fcgi&quot;</span>
+</pre></div>
+</div>
+<p>If you see matching output for the modules you’ve enabled, they are active.
+If any required module is missing, troubleshoot your OS package manager to
+ensure the Apache modules are installed (package names may vary by distribution;
+for example, on Debian/Ubuntu look for <code class="docutils literal notranslate"><span class="pre">libapache2-mod-fcgid</span></code> or similar).</p>
+</div></blockquote>
+<ul>
 <li><p>You must disable any server-configured authentication for Nextcloud, as it
 uses Basic authentication internally for DAV services. If you have turned on
 authentication on a parent folder (via e.g. an <code class="docutils literal notranslate"><span class="pre">AuthType</span> <span class="pre">Basic</span></code>
