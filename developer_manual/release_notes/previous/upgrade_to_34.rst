@@ -10,6 +10,7 @@ Deprecations
 - ``\OCP\Util::linkToRemove`` is now deprecated and you need to use ``\OCP\IUrlGenerator::linkToRemote`` instead.
 - ``\OCP\Util::isPublicLinkPasswordRequired`` is now deprecated and you need to use ``\OCP\Share\IManager::shareApiLinkEnforcePassword`` instead.
 - ``\OCP\Util::isDefaultExpireDateEnforced`` is now deprecated and you need to use ``\OCP\Share\IManager::shareApiLinkDefaultExpireDateEnforced`` instead.
+- ``\OCP\AppFramework\App::buildAppNamespace`` is deprecated in favor of non-static method ``\OCP\App\IAppManager::getAppNamespace``
 
 Removed front-end APIs and libraries
 ------------------------------------
@@ -100,3 +101,12 @@ Settings title left-alignment
     This is work in progress and needs an update when the changes have been finalized.
 
 The title alignment of settings pages will be changed to left-aligned. See `nextcloud-libraries/nextcloud-vue#7641 <https://github.com/nextcloud-libraries/nextcloud-vue/issues/7641>`_ for details.
+
+Application namespace management
+--------------------------------
+
+``\OCP\App\IAppManager`` was extended with two new methods related to application namespaces:
+- ``getAppNamespace(string $appId): string`` returns the namespace for an application from its appid
+- ``getAppFromNamespace(string $className): ?string`` does the opposite. Less common but it is used in guests application.
+
+This replaces a static method in ``\OCP\AppFramework\App`` which is now deprecated.
