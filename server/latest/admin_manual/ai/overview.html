@@ -107,6 +107,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#context-agent">Context Agent</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#document-generation">Document generation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#live-transcription">Live transcription</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windmill-workflows">Windmill workflows</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#improve-ai-task-pickup-speed">Improve AI task pickup speed</a><ul>
@@ -900,9 +901,13 @@ This functionality is available in the assistant app and made possible by the Ne
 </ul>
 </section>
 </section>
+<section id="windmill-workflows">
+<span id="ai-overview-improve-ai-task-pickup-speed"></span><h3>Windmill workflows<a class="headerlink" href="#windmill-workflows" title="Link to this heading"></a></h3>
+<p>You can use the AI endpoints in your <a class="reference internal" href="../windmill_workflows/index.html#windmill-workflows"><span class="std std-ref">Windmill workflows</span></a>. Some example workflows showcasing the possibilities of combining Windmill workflows with Nextcloud AI are available on the  <a class="reference external" href="https://hub.windmill.dev/integrations/nextcloud/flows">Windmill Hub</a></p>
+</section>
 </section>
 <section id="improve-ai-task-pickup-speed">
-<span id="ai-overview-improve-ai-task-pickup-speed"></span><h2>Improve AI task pickup speed<a class="headerlink" href="#improve-ai-task-pickup-speed" title="Link to this heading"></a></h2>
+<h2>Improve AI task pickup speed<a class="headerlink" href="#improve-ai-task-pickup-speed" title="Link to this heading"></a></h2>
 <p>Most AI tasks will be run as part of the background job system in Nextcloud which only runs jobs every 5 minutes by default.
 To pick up scheduled jobs faster you can set up background job workers inside your Nextcloud main server/container that process AI tasks as soon as they are scheduled.
 If the PHP code or the Nextcloud settings values are changed while a worker is running, those changes won’t be effective inside the runner. For that reason, the worker needs to be restarted regularly. It is done with a timeout of N seconds which means any changes to the settings or the code will be picked up after N seconds (worst case scenario). This timeout does not, in any way, affect the processing or the timeout of the AI tasks.</p>
