@@ -123,17 +123,15 @@ Key Management Modes
 
 - All files are encrypted with a central server-controlled key.
 - Admins can decrypt any user’s files.
-- Offers better performance and compatibility with more login/authentication modes.
-- **Recovery keys are not available in master key mode.** If a user forgets their password, admins can reset it and files remain accessible (protected by the master key, not the user password).
-- Recommended for most deployments due to improved performance and compatibility.
+- **Recovery keys are not available in master key mode.** Files remain accessible if a user forgets their password, as they are encrypted by the master key, not the user password.
+- Recommended for most deployments.
 
 **User Keys:**
 
 - Each user’s files are encrypted with a password-protected key.
 - Admins cannot (readily) decrypt files without the user's password, unless a recovery key is defined.
-- **Recovery keys are available in user key mode** as an optional safeguard: if a user forgets their password, admins can use the recovery key to reset access.
 - If a user forgets their password and no recovery key exists, their files are lost.
-- This mode requires more resources and does not work with all authentication methods (e.g., app passwords, single sign-on).
+- This mode does not work with all authentication methods (e.g., app passwords, single sign-on) and is only recommended for compatibility with older setups.
 
 **How to choose:**
 
@@ -313,18 +311,17 @@ User Keys: Sharing & Recovery
 
 **Enabling file recovery keys:**
 
-.. caution::
-   Recovery keys are **only available in per-user key mode**, not in the default master key mode.
-   If you do not see recovery key options in your Admin Encryption settings, your instance is using
-   master key mode (the default and recommended mode). To use recovery keys, you must first switch
-   to per-user key mode by running ``occ encryption:disable-master-key`` on a fresh installation
-   (before any files are encrypted).
+Recovery keys are only available in per-user key mode (not the default master key mode).
 
 - If you lose your Nextcloud password, you lose access to your encrypted files.
 - If a user loses their password, their files are unrecoverable unless a recovery key is enabled (per-user key mode only).
 - To enable recovery (in per-user key mode), go to Encryption in Admin page and set a recovery key password.
 - Users must enable password recovery in their Personal settings for the Recovery Key to work.
 - For users who have enabled password recovery, admins can reset passwords and recover files using the Recovery Key.
+
+.. warning::
+   The recovery process can be slow and resource-intensive, especially for instances with large amounts of encrypted data.
+   Test recovery procedures before relying on them in production.
 
 .. figure:: images/encryption10.png
 .. figure:: images/encryption7.png
@@ -343,24 +340,18 @@ Troubleshooting
 Why don't I see the recovery key option in the Encryption settings?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Recovery keys are **only available in per-user key mode**. Since Nextcloud 13, the default
-encryption mode uses **master keys** (system-wide encryption), which offer better performance
-and compatibility. Master key mode does not expose recovery key options in the Admin settings
-because recovery keys are not needed—admins can reset user passwords and files remain accessible.
+Recovery keys are only available in per-user key mode. Since Nextcloud 13, the default
+encryption mode uses master keys (system-wide encryption). Master key mode does not expose
+recovery key options in the Admin settings because recovery keys are not needed—admins can
+reset user passwords and files remain accessible.
 
-If you need recovery key functionality, you must switch to per-user key mode before encrypting
-any files::
+If you are using master key mode (the default and recommended mode), you do not need recovery
+keys. Recovery keys are only relevant for per-user key setups, which are maintained for
+compatibility with older deployments.
 
-   occ encryption:disable-master-key
-
-This command only works on fresh installations without existing encrypted data.
-
-For most use cases, **master key mode is recommended**. Recovery keys add complexity and are only
-needed in edge cases where per-user key encryption is required. See :ref:`Key Management Modes
-<encryption_configuration_key_management_modes>` for guidance on choosing the right mode.
-
-See also `GitHub Issue #8283 <https://github.com/nextcloud/server/issues/8283>`_ for technical
-context on this design decision.
+See :ref:`Key Management Modes <encryption_configuration_key_management_modes>` for guidance
+on the differences between master key and per-user key modes, and `GitHub Issue #8283
+<https://github.com/nextcloud/server/issues/8283>`_ for technical context on this design decision.
 
 Invalid private key for encryption app
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
