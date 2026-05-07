@@ -76,11 +76,11 @@ The secure view settings enables Nextcloud to embed watermarks on your office fi
 .. warning::
     To enforce the confidentiality of your files it is crucial to restrict the ability to download the documents.
 
-    This includes ensuring that your `WOPI configuration <#wopi-settings>`_ is configured to only serve documents between Nextcloud and Collabora.
+    This includes ensuring that your `WOPI configuration <#wopi-configuration>`_ is configured to only serve documents between Nextcloud and Collabora.
 
 
-Wopi settings
-*************
+Wopi configuration
+******************
 
 It is highly recommended to restrict WOPI requests to the IP addresses of the Collabora servers that are expected to request files from the Nextcloud installation. This can be done by setting the ``Allow list for WOPI requests`` option from the Office admin settings.
 
