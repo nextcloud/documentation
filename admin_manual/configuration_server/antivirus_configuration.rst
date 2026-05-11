@@ -184,6 +184,39 @@ Manage the background scanner
 The background scanner does not require any manual intervention.
 However at times you might want to inspect it or perform tasks on it.
 
+How the background scanner works
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Each time the background scanner runs, it processes files in three passes (in priority order),
+up to the configured batch size per run:
+
+1. **Unscanned files** — files that have never been scanned, including files that were
+   uploaded or existed before the Antivirus app was installed. All such files will
+   eventually be scanned as the background job runs repeatedly.
+
+2. **Modified files** — files whose modification time is newer than their last scan time,
+   i.e. files that have been updated since they were last scanned.
+
+3. **Outdated files** — files that were last scanned more than 28 days ago (configurable
+   via ``av_rescan_days``), to account for updated virus definitions.
+
+The scanner runs at most once every 15 minutes by default. The effective
+frequency is also bounded by how often Nextcloud's background job mechanism
+(cron, webcron, or ajax) runs.
+
+To change the minimum interval between runs (in seconds)::
+
+    sudo -E -u www-data php occ config:app:set files_antivirus av_scan_interval --value="900"
+
+To change the number of days before already-scanned files are rescanned::
+
+    sudo -E -u www-data php occ config:app:set files_antivirus av_rescan_days --value="28"
+
+**External storage:** files on external storage are included in passes 1 and 2
+(initial scan and rescan on modification). However, the periodic 28-day rescan
+(pass 3) applies only to files under ``files/`` (i.e. home storage), not external storage.
+
+
 Get info about files in the scan queue
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
