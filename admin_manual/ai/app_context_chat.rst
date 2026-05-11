@@ -184,6 +184,9 @@ Logs
 
 Logs for both the ``context_chat`` PHP app and the ``context_chat_backend`` ExApp can be found in the admin settings of your Nextcloud GUI as well as in the Context Chat log file, which is usually located in the Nextcloud data directory. The log file is named ``context_chat.log``.
 
+| The internal PostgreSQL Vector DB logs (in case of non-Kubernetes setups) can be found inside the docker container at ``/nc_app_context_chat_backend_data/vector_db_data/pgsql/logfile``. It can be copied to host using ``docker cp nc_app_context_chat_backend:/nc_app_context_chat_backend_data/vector_db_data/pgsql/logfile /tmp/vectordb-logfile``.
+| This might be needed when the automated setting up of the vector db fails with something like: "pg_ctl: could not start server".
+
 When running in Kubernetes, the logs for the backend will be in the respective pod's logs, which can be accessed using ``kubectl logs <pod_name>`` command.
 
 Troubleshooting
