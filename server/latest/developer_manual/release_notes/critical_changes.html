@@ -172,6 +172,11 @@ share backend was replaced in Nextcloud 9 with a new backend system based on <co
 - <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\StrictContentSecurityPolicy</span></code>
 - <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\StrictEvalContentSecurityPolicy</span></code>
 - <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\StrictInlineContentSecurityPolicy</span></code></p></li>
+<li><p>Various methods from the legacy <code class="docutils literal notranslate"><span class="pre">OC_Util</span></code> static class were removed.
+- Instead of <code class="docutils literal notranslate"><span class="pre">\OC_Util::encodePath</span></code> use <code class="docutils literal notranslate"><span class="pre">\OCP\Util::encodePath</span></code>.
+- Instead of <code class="docutils literal notranslate"><span class="pre">\OC_Util::sanitizeHTML</span></code> use <code class="docutils literal notranslate"><span class="pre">\OCP\Util::sanitizeHTML</span></code>
+- Instead of <code class="docutils literal notranslate"><span class="pre">\OC_Util::redirectToDefaultPage</span></code> and  <code class="docutils literal notranslate"><span class="pre">\OC_Util::getDefaultPageUrl</span></code> use <code class="docutils literal notranslate"><span class="pre">\OCP\IUrlGenerator::linkToDefaultPageUrl</span></code>
+- Instead of <code class="docutils literal notranslate"><span class="pre">\OC_Util::checkAdminUser</span></code> use <code class="docutils literal notranslate"><span class="pre">IGroupManager::class::isAdmin</span></code></p></li>
 </ul>
 </section>
 <section id="unified-sharing">
