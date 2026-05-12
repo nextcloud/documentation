@@ -32,13 +32,6 @@ jobs:
           token: ${{ secrets.COMMAND_BOT_PAT }}
           ref: ${{ matrix.branch }}
 
-      - name: Checkout nextcloud-config-converter
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          repository: nextcloud/nextcloud-config-converter
-          path: nextcloud-config-converter
-          persist-credentials: false
-
       - name: Set up PHP
         uses: shivammathur/setup-php@ec406be512d7077f68eed36e63f4d91bc006edc4 # v2.35.4
         with:
@@ -48,14 +41,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install converter dependencies
-        working-directory: nextcloud-config-converter
+        working-directory: build
         run: composer install --no-dev --prefer-dist
 
       - name: Download config.sample.php
         run: curl -sSf -o /tmp/config.sample.php https://raw.githubusercontent.com/nextcloud/server/${{ matrix.branch }}/config/config.sample.php
 
       - name: Generate documentation
-        working-directory: nextcloud-config-converter
+        working-directory: build
         run: php convert.php --input-file=/tmp/config.sample.php --output-file=${{ github.workspace }}/admin_manual/configuration_server/config_sample_php_parameters.rst
 
       - name: Create Pull Request
