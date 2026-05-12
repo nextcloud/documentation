@@ -21,7 +21,7 @@ Your files are always automatically synchronized between your Nextcloud server, 
    commandline
    accountcommand
    troubleshooting
-  
+
 You can find additional information here:
 
 * `User manual`_

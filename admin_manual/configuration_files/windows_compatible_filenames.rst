@@ -22,8 +22,8 @@ or filenames like ``AUX.txt`` (on Windows ``AUX`` is a reserved name and cannot 
 
 .. note::
 
-	Enabling this setting will not enforce case-insensitivity
-	as modern Windows systems support case-sensitive filenames.
+    Enabling this setting will not enforce case-insensitivity
+    as modern Windows systems support case-sensitive filenames.
 
 Enabling Windows compatible filenames
 -------------------------------------
@@ -33,9 +33,9 @@ or by using an ``occ`` command.
 
 .. note::
 
-	This feature works by setting a predefined set of system configuration settings.
-	So after enabling this the ``config.php`` will be adjusted, which also means enabling
-	this feature requires a writable configuration.
+    This feature works by setting a predefined set of system configuration settings.
+    So after enabling this the ``config.php`` will be adjusted, which also means enabling
+    this feature requires a writable configuration.
 
 Using the web interface
 ^^^^^^^^^^^^^^^^^^^^^^^

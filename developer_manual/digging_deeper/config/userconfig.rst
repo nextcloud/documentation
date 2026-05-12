@@ -22,8 +22,8 @@ To ensure better stability of your code, config values are typed enforced.
 Type is set only once, at creation in database, and cannot be changed.
 
 .. note::
-	- Value stored before Nextcloud 31 are automatically typed as `mixed`. However, it is not possible to manually set a value as `mixed`.
-	- Value not set as `mixed` must be retrieved using the corresponding method.
+    - Value stored before Nextcloud 31 are automatically typed as `mixed`. However, it is not possible to manually set a value as `mixed`.
+    - Value not set as `mixed` must be retrieved using the corresponding method.
 
 Values Sensitivity
 ^^^^^^^^^^^^^^^^^^
@@ -33,16 +33,16 @@ Configuration values set as `sensitive` are hidden from system reports and store
 
 .. code-block:: php
 
-	setValueString(
+    setValueString(
         'user',
-		'myapp',
-		'mykey',
-		'myvalue',
-		flags: IUserConfig::FLAG_SENSITIVE
-	);
+        'myapp',
+        'mykey',
+        'myvalue',
+        flags: IUserConfig::FLAG_SENSITIVE
+    );
 
 .. note::
-	Once set as `sensitive`, it can only be reverted using ``updateSensitive()``/``updateGlobalSensitive()``
+    Once set as `sensitive`, it can only be reverted using ``updateSensitive()``/``updateGlobalSensitive()``
 
 Indexed values
 ^^^^^^^^^^^^^^
@@ -51,13 +51,13 @@ If a search on config value is expected, it can be set as `indexed`.
 
 .. code-block:: php
 
-	setValueString(
+    setValueString(
         'user',
-		'myapp',
-		'mykey',
-		'myvalue',
-		flags: IUserConfig::FLAG_INDEXED
-	);
+        'myapp',
+        'mykey',
+        'myvalue',
+        flags: IUserConfig::FLAG_INDEXED
+    );
 
 .. note::
     Configuration values set as `indexed` are stored in an indexed field in the database with a limited length of 64 characters.
@@ -71,31 +71,31 @@ All `lazy` configuration values are loaded from the database once one is read.
 
 .. code-block:: php
 
-	setValueString(
-		'user',
-		'myapp',
-		'mykey',
-		'myvalue',
-		lazy: true
-	);
+    setValueString(
+        'user',
+        'myapp',
+        'mykey',
+        'myvalue',
+        lazy: true
+    );
 
 .. note::
-	- Flag as `lazy` as much 'large block of text' entries (json, key pairs, ...) as possible,
-	- flag as `lazy` entries that are needed on quiet endpoints,
-	- do **not** flag as `lazy` part of code that might be called during the global loading of all pages.
+    - Flag as `lazy` as much 'large block of text' entries (json, key pairs, ...) as possible,
+    - flag as `lazy` entries that are needed on quiet endpoints,
+    - do **not** flag as `lazy` part of code that might be called during the global loading of all pages.
 
 
 Retrieving the configuration value will require to specify the fact that it is stored as `lazy`.
 
 .. code-block:: php
 
-	getValueString(
-		'user',
-		'myapp',
-		'mykey',
-		'default',
-		lazy: true
-	);
+    getValueString(
+        'user',
+        'myapp',
+        'mykey',
+        'default',
+        lazy: true
+    );
 
 Consuming the UserConfig API
 ----------------------------
@@ -162,7 +162,7 @@ Managing config keys
  * ``deleteApp(string $app)`` delete all config keys from an app for all users
 
 .. note::
-	Some method allows ``$lazy`` to be ``null``, meaning that the search will be extended to all configuration values, `lazy` or not.
+    Some method allows ``$lazy`` to be ``null``, meaning that the search will be extended to all configuration values, `lazy` or not.
 
 Miscellaneous
 ^^^^^^^^^^^^^

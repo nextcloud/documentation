@@ -71,10 +71,10 @@ Calendars that only return `ICalendar` are implicitly read-only. If your app's c
 
     }
 
-Handling iMIP data 
+Handling iMIP data
 ~~~~~~~~~~~~~~~~~~
 
-You may implement the ``IHandleIMipMessage`` interface to process iMIP data you receive in a client and want to pass on for processing to the backend. 
+You may implement the ``IHandleIMipMessage`` interface to process iMIP data you receive in a client and want to pass on for processing to the backend.
 
 Please be aware that there are some security considerations to take into account. You can find more information on these and the conditions that have to be fulfilled for iMIP data to be processed in the `RFC <https://www.rfc-editor.org/rfc/rfc6047>`_
 
@@ -162,7 +162,7 @@ There are some basic methods that need to be implemented on each calendar object
 Removal of entries
 !!!!!!!!!!!!!!!!!!
 
-Removal of calendar events is not allowed in this example. Otherwise, the backend needs to be updated.    
+Removal of calendar events is not allowed in this example. Otherwise, the backend needs to be updated.
 
 .. code-block:: php
 
@@ -424,7 +424,7 @@ Removal of calendars
 The calendar should not be removed by means of the CalDAV interface. Thus, nothing is done here.
 
 .. code-block:: php
-    
+
     <?php
 
     function delete() {
@@ -441,7 +441,7 @@ A fallback is to provide the value ``null`` as return value. This tells that the
 .. code-block:: php
 
     <?php
-    
+
     function getLastModified() {
         return time();
     }
@@ -462,7 +462,7 @@ The method ``createFile`` is used to store new events to the calendar. One could
 .. code-block:: php
 
     <?php
-    
+
     function createFile($name, $data = null) {
         return null;
         // return "\"$etag\"";
@@ -476,7 +476,7 @@ The ``childExists`` method checks if a certain element is present in the calenda
 .. code-block:: php
 
     <?php
-    
+
     function childExists($name) {
         // Check if the value of $name represents a valid calendar entry name.
         // You can check your backend(s) for the child
@@ -493,7 +493,7 @@ The method allows to request a specific entry and extract it from the calendar.
 .. code-block:: php
 
     <?php
-    
+
     function getChild($name) {
         if ($this->childExists($name)) {
             return new CalendarObject($this, $name);
@@ -510,14 +510,14 @@ Finally, there is the method ``getChildren`` to fetch all events of a calendar.
 .. code-block:: php
 
     <?php
-    
+
     function getChildren() {
         // Get the list of calendar entries
         $children = ['test.ics'];
 
         // Obtain the calendar objects for each of them
         $children = array_map(function ($childName) using ($this) { return $this->getChild($childName); });
-        
+
         return $children;
     }
 
@@ -532,7 +532,7 @@ Its sole method will return a list of entries. In contrast to the ``getChildren(
 .. code-block:: php
 
     <?php
-    
+
     function calendarQuery(array $filters) {
         // In a real implementation this should actually filter
         return ['test.ics'];
@@ -552,7 +552,7 @@ The ``getOwner`` method gets the principal's uri. Here the stored value provided
 .. code-block:: php
 
     <?php
-    
+
     function getOwner() {
         return $this->principalUri;
     }
@@ -565,7 +565,7 @@ Return all groups uris of the user, there is the ``getGroups`` method. Here, no 
 .. code-block:: php
 
     <?php
-    
+
     function getGroup() {
         return [];
     }
@@ -586,7 +586,7 @@ entry          values                            description
 .. code-block:: php
 
     <?php
-    
+
     function getACL() {
         return [
             [
@@ -615,7 +615,7 @@ In this example, no updates of the ACL rules are allowed. Thus, an exception is 
 .. code-block:: php
 
     <?php
-    
+
     function setACL(array $acl) {
         throw new \Sabre\DAV\Exception\Forbidden('Setting ACL is not supported on this node');
     }
@@ -628,7 +628,7 @@ The supported privileges can be overwritten by implementing the method ``getSupp
 .. code-block:: php
 
     <?php
-    
+
     function getSupportedPrivilegeSet() {
         return null;
     }
@@ -649,7 +649,7 @@ Here a basic stub of calendar properties are provided. It is a basic name, a col
 .. code-block:: php
 
     <?php
-    
+
     function getProperties($properties) {
         // A backend should provide at least minimum properties
         return [
@@ -668,7 +668,7 @@ This method needs implementation to satisfy PHP but can be left empty as the cor
 .. code-block:: php
 
     <?php
-    
+
     function propPatch(PropPatch $propPatch) {
         // We can just return here and let oc_properties handle everything
     }

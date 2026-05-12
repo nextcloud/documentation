@@ -6,7 +6,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 #
 ## Note that additional configuration elements shared by all Nextcloud docs
-## are loaded from `../conf.py`. 
+## are loaded from `../conf.py`.
 
 # -- Path setup --------------------------------------------------------------
 
@@ -119,7 +119,7 @@ texinfo_documents = [
         'Nextcloud',
         'The Nextcloud Server Administration Manual.',
         'Miscellaneous',
-    ), 
+    ),
 ]
 
 # -- Options for todo extension ----------------------------------------------

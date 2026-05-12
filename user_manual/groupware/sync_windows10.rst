@@ -46,12 +46,10 @@ Troubleshooting: 2FA
 Troubleshooting: TLSv1.2
 ------------------------
 
-- For Windows 10 your Nextcloud https server `must support TLSv1.2`_.  This is apparent if no connection attempts are seen on the server, and the Windows client Event Viewer will display Schannel TLS errors under "Windows Logs -> System".
+- For Windows 10 your Nextcloud https server `must support TLSv1.2 <https://docs.microsoft.com/en-us/windows/win32/secauthn/protocols-in-tls-ssl--schannel-ssp->`_.  This is apparent if no connection attempts are seen on the server, and the Windows client Event Viewer will display Schannel TLS errors under "Windows Logs -> System".
 
 Credits
 -------
 
 Special thanks to this Reddit user for their post:
 https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar_application_with/
-
-.. _must support TLSv1.2: https://docs.microsoft.com/en-us/windows/win32/secauthn/protocols-in-tls-ssl--schannel-ssp-

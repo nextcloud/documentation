@@ -35,7 +35,7 @@ Wiping the actual device
 ------------------------
 
 The client must remove all user data linked to the account. This includes:
-  * caches 
+  * caches
   * offline files
   * the actual account itself
 

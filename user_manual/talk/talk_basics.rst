@@ -287,7 +287,7 @@ Closing poll is possible from the poll dialog.
 .. image:: images/close-poll.png
    :width: 400px
 
-As a moderator, you can create the poll directly or you can save it as a draft to edit it later. 
+As a moderator, you can create the poll directly or you can save it as a draft to edit it later.
 
 .. image:: images/save-poll-draft.png
    :width: 400px
@@ -438,7 +438,7 @@ You can zoom in and out of the shared screen with mouse wheel, double click or t
 Changing view in a call
 -----------------------
 
-You can switch the view in a call in the bottom bar between promoted view and grid view. 
+You can switch the view in a call in the bottom bar between promoted view and grid view.
 
 .. image:: images/call-view-toggle-button.png
     :width: 300px
@@ -472,7 +472,7 @@ The table in the CSV file contains the following columns:
 Compact view of conversations list
 ----------------------------------
 
-Compact view allows to hide last message preview in the conversation list, providing a more focused interface. 
+Compact view allows to hide last message preview in the conversation list, providing a more focused interface.
 You can enable it from the ``Talk settings`` dialog  in ``Appearance`` section.
 
 .. image:: images/talk-compact-view.png

@@ -4,7 +4,7 @@ Using two-factor authentication
 
 Two-factor authentication (2FA) is a way to protect your Nextcloud account
 against unauthorized access. It works by requiring two different 'proofs' of
-your identity. For example, *something you know* (like a password) and 
+your identity. For example, *something you know* (like a password) and
 *something you have* like a physical key. Typically, the first factor is a
 password like you already have and the second can be a text message you
 receive or a code you generate on your phone or another device
@@ -42,7 +42,7 @@ Auth settings. Choose *Generate backup codes*:
      :alt: 2FA backup code generator
 
 You will then be presented with a list of one-time-use backup codes:
-     
+
 .. figure:: images/2fa_backupcode_2.png
      :alt: 2FA backup codes
 
@@ -92,7 +92,7 @@ Using client applications with two-factor authentication
 
 Once you have enabled 2FA, your clients will no longer be able to connect with
 just your password unless they also have support for two-factor authentication.
-To solve this, you should generate device specific passwords for them. See 
+To solve this, you should generate device specific passwords for them. See
 :doc:`session_management` for more information on how to do this.
 
 

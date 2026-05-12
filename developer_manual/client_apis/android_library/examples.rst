@@ -278,7 +278,7 @@ Code example
     if (operation instanceof MoveRemoteFileOperation) {
       if (result.isSuccess()) {
         // do your stuff here
-	  }
+      }
     }
     // …
   }

@@ -61,8 +61,8 @@ Options
 *******
 
     * ``--rm-data`` *[optional]* - remove ExApp persistent storage (data volume)
-	* ``--force`` *[optional]* - continue removal even if some error occurs
-	* ``--silent`` *[optional]* - print a minimum of information, display only some errors, if any
+    * ``--force`` *[optional]* - continue removal even if some error occurs
+    * ``--silent`` *[optional]* - print a minimum of information, display only some errors, if any
 
 Update
 ------

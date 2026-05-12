@@ -47,55 +47,55 @@ This request returns the available metadata of a user. Admin users can see the i
 
 .. code::
 
-	GET /ocs/v1.php/cloud/users/USERID
+    GET /ocs/v1.php/cloud/users/USERID
 
 
 .. code:: xml
 
-	<?xml version="1.0"?>
-	<ocs>
-		<meta>
-			<status>ok</status>
-			<statuscode>100</statuscode>
-			<message>OK</message>
-			<totalitems></totalitems>
-			<itemsperpage></itemsperpage>
-		</meta>
-		<data>
-			<enabled>1</enabled>
-			<storageLocation>/path/to/storage/location/userid</storageLocation>
-			<id>userid</id>
-			<lastLogin>1578283711000</lastLogin>
-			<backend>Database</backend>
-			<subadmin/>
-			<quota>
-				<free>20632824998</free>
-				<used>842011482</used>
-				<total>21474836480</total>
-				<relative>3.92</relative>
-				<quota>21474836480</quota>
-			</quota>
-			<email>user@foo.de</email>
-			<displayname>John Doe</displayname>
-			<display-name>John Doe</display-name>
-			<phone></phone>
-			<address></address>
-			<website>https://example.com</website>
-			<twitter></twitter>
-			<groups>
-				<element>1st group</element>
-				<element>2nd group</element>
-				<element>3rd group</element>
-				<element>... group</element>
-			</groups>
-			<language>de</language>
-			<locale>de_DE</locale>
-			<backendCapabilities>
-				<setDisplayName>1</setDisplayName>
-				<setPassword>1</setPassword>
-			</backendCapabilities>
-		</data>
-	</ocs>
+    <?xml version="1.0"?>
+    <ocs>
+        <meta>
+            <status>ok</status>
+            <statuscode>100</statuscode>
+            <message>OK</message>
+            <totalitems></totalitems>
+            <itemsperpage></itemsperpage>
+        </meta>
+        <data>
+            <enabled>1</enabled>
+            <storageLocation>/path/to/storage/location/userid</storageLocation>
+            <id>userid</id>
+            <lastLogin>1578283711000</lastLogin>
+            <backend>Database</backend>
+            <subadmin/>
+            <quota>
+                <free>20632824998</free>
+                <used>842011482</used>
+                <total>21474836480</total>
+                <relative>3.92</relative>
+                <quota>21474836480</quota>
+            </quota>
+            <email>user@foo.de</email>
+            <displayname>John Doe</displayname>
+            <display-name>John Doe</display-name>
+            <phone></phone>
+            <address></address>
+            <website>https://example.com</website>
+            <twitter></twitter>
+            <groups>
+                <element>1st group</element>
+                <element>2nd group</element>
+                <element>3rd group</element>
+                <element>... group</element>
+            </groups>
+            <language>de</language>
+            <locale>de_DE</locale>
+            <backendCapabilities>
+                <setDisplayName>1</setDisplayName>
+                <setPassword>1</setPassword>
+            </backendCapabilities>
+        </data>
+    </ocs>
 
 
 User metadata - List user IDs
@@ -105,29 +105,29 @@ This request returns a list containing all user IDs. Only admin users can query 
 
 .. code::
 
-	GET /ocs/v1.php/cloud/users
+    GET /ocs/v1.php/cloud/users
 
 
 .. code:: xml
 
-	<?xml version="1.0"?>
-	<ocs>
-		<meta>
-			<status>ok</status>
-			<statuscode>100</statuscode>
-			<message>OK</message>
-			<totalitems></totalitems>
-			<itemsperpage></itemsperpage>
-		</meta>
-		<data>
-			<users>
-				<element>1st_user</element>
-				<element>2nd_user</element>
-				<element>3rd_user</element>
-				<element>..._user</element>
-			</users>
-		</data>
-	</ocs>
+    <?xml version="1.0"?>
+    <ocs>
+        <meta>
+            <status>ok</status>
+            <statuscode>100</statuscode>
+            <message>OK</message>
+            <totalitems></totalitems>
+            <itemsperpage></itemsperpage>
+        </meta>
+        <data>
+            <users>
+                <element>1st_user</element>
+                <element>2nd_user</element>
+                <element>3rd_user</element>
+                <element>..._user</element>
+            </users>
+        </data>
+    </ocs>
 
 
 
@@ -138,38 +138,38 @@ Clients can obtain capabilities provided by the Nextcloud server and its apps vi
 
 .. code::
 
-	GET /ocs/v1.php/cloud/capabilities
+    GET /ocs/v1.php/cloud/capabilities
 
 
 
 .. code:: xml
 
-	<?xml version="1.0"?>
-	<ocs>
-		<meta>
-			<status>ok</status>
-			<statuscode>100</statuscode>
-			<message>OK</message>
-			<totalitems></totalitems>
-			<itemsperpage></itemsperpage>
-		</meta>
-		<data>
-			<version>
-				<major>17</major>
-				<minor>0</minor>
-				<micro>2</micro>
-				<string>17.0.2</string>
-				<edition></edition>
-				<extendedSupport></extendedSupport>
-			</version>
-			<capabilities>
-				<core>
-					<pollinterval>60</pollinterval>
-					<webdav-root>remote.php/webdav</webdav-root>
-				</core>
-			</capabilities>
-		</data>
-	</ocs>
+    <?xml version="1.0"?>
+    <ocs>
+        <meta>
+            <status>ok</status>
+            <statuscode>100</statuscode>
+            <message>OK</message>
+            <totalitems></totalitems>
+            <itemsperpage></itemsperpage>
+        </meta>
+        <data>
+            <version>
+                <major>17</major>
+                <minor>0</minor>
+                <micro>2</micro>
+                <string>17.0.2</string>
+                <edition></edition>
+                <extendedSupport></extendedSupport>
+            </version>
+            <capabilities>
+                <core>
+                    <pollinterval>60</pollinterval>
+                    <webdav-root>remote.php/webdav</webdav-root>
+                </core>
+            </capabilities>
+        </data>
+    </ocs>
 
 
 Theming capabilities
@@ -179,20 +179,20 @@ Values of the theming app are exposed through the capabilities API, allowing cli
 
 .. code:: xml
 
-	<theming>
-		<name>Nextcloud</name>
-		<url>https://nextcloud.com</url>
-		<slogan>A safe home for all your data</slogan>
-		<color>#0082c9</color>
-		<color-text>#ffffff</color-text>
-		<color-element>#0082c9</color-element>
-		<color-element-bright>#aaaaaa</color-element-bright>
-		<color-element-dark>#555555</color-element-dark>
-		<logo>http://cloud.example.com/index.php/apps/theming/logo?v=1</logo>
-		<background>http://cloud.example.com/index.php/apps/theming/logo?v=1</background>
-		<background-plain></background-plain>
-		<background-default></background-default>
-	</theming>
+    <theming>
+        <name>Nextcloud</name>
+        <url>https://nextcloud.com</url>
+        <slogan>A safe home for all your data</slogan>
+        <color>#0082c9</color>
+        <color-text>#ffffff</color-text>
+        <color-element>#0082c9</color-element>
+        <color-element-bright>#aaaaaa</color-element-bright>
+        <color-element-dark>#555555</color-element-dark>
+        <logo>http://cloud.example.com/index.php/apps/theming/logo?v=1</logo>
+        <background>http://cloud.example.com/index.php/apps/theming/logo?v=1</background>
+        <background-plain></background-plain>
+        <background-default></background-default>
+    </theming>
 
 For elements like radio buttons, input borders and more, instead of the primary ``color`` value, the ``color-element-bright`` should be used on bright background and ``color-element-dark`` on dark background.
 This when the primary color is e.g. set to ``#000000`` the ``color-elemenet-dark`` will be set to ``#555555`` so items are still visible. In the Nextcloud web UI only the top header uses ``color``, everything else uses ``color-element-*``.
@@ -215,7 +215,7 @@ To obtain a direct link:
 
 .. code::
 
-	POST /ocs/v2.php/apps/dav/api/v1/direct
+    POST /ocs/v2.php/apps/dav/api/v1/direct
 
 With the :code:`fileId` in the body (so :code:`fileId=42` for example).
 This will then return you the link to use to obtain the file.

@@ -88,11 +88,11 @@ Coding standards
 The most part of Nextcloud is written in PHP, Typescript / JavaScript, so we have some more fine grained coding standards for those languages:
 
 .. toctree::
-	:maxdepth: 1
+    :maxdepth: 1
 
-	php
-	javascript
-	html_css
+    php
+    javascript
+    html_css
 
 License headers
 ---------------
@@ -108,7 +108,7 @@ If you create a new file please use this header:
    * SPDX-FileCopyrightText: [year] [your name] [<your email address>]
    * SPDX-License-Identifier: AGPL-3.0-or-later
    */
-   
+
 The year should then be the creation time and the email address is optional.
 
 If you edit an existing file please, please keep the existing license header as it is and just add your copyright notice, if you consider your changes substantial enough to claim copyright.
@@ -130,7 +130,7 @@ file is preferred please see the example below
 
 The Nextcloud GmbH part only applies to employees of the company not to contributors.
 
-For more, general information on SPDX headers and their usage for reuse-compliance, please see 
+For more, general information on SPDX headers and their usage for reuse-compliance, please see
 
 * `REUSE <https://reuse.software/>`_
 * `SPDX <https://spdx.dev/>`_

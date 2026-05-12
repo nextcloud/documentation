@@ -279,9 +279,9 @@ Dos and Don'ts
    * - Use physical properties ``margin-left``
      - Use logical properties ``margin-inline-start``
      - Using logical properties automatically adapts to LTR/RTL
-   * - Use ``left`` or ``right`` 
+   * - Use ``left`` or ``right``
      - Use inset-inline-start/end
-     - Keep positioning direction-aware 
+     - Keep positioning direction-aware
    * - Use text-align: left/right
      - Use text-align: start/end
      - Text aligns correctly in both modes
@@ -292,7 +292,7 @@ Dos and Don'ts
      - Use float: inline-start/end
      - Float respects direction
    * - Assume RTL “just works”
-     - Test your app with RTL languages 
+     - Test your app with RTL languages
      - Using the correct css value is not always enough to avoid bugs
 
 
@@ -305,4 +305,4 @@ Dos and Don'ts
 
 
 
-    
+

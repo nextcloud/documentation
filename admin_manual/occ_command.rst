@@ -375,7 +375,7 @@ While setting a configuration value, multiple options are available:
      - ``--update-only`` only updates if a value is already stored
 
 .. note::
-	See `Appconfig Concepts`_ to learn more about `typed value`, `lazy` and `sensitive` flag.
+    See `Appconfig Concepts`_ to learn more about `typed value`, `lazy` and `sensitive` flag.
 
 .. _Appconfig Concepts: https://docs.nextcloud.com/server/32/developer_manual/digging_deeper/config/appconfig.html#concept-overview
 
@@ -697,11 +697,11 @@ This example will import from a file named personal.xcal in XML iCalendar format
   sudo -E -u www-data php occ calendar:import --format xcal dennis personal /tmp/personal.xcal
 
 This example will import from a file named personal.jcal in JSON iCalendar format to the calendar named personal of user dennis: ::
-  
+
   sudo -E -u www-data php occ calendar:import --format jcal dennis personal /tmp/personal.jcal
 
 This example will import from standard input to the calendar named personal of user dennis: ::
-  
+
   cat /tmp/personal.ics | sudo -E -u www-data php occ calendar:import dennis personal
 
 Misc

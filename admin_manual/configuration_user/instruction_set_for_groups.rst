@@ -1,11 +1,11 @@
 ==========================
 Instruction set for groups
-==========================  
+==========================
 
 Search/get groups
 -----------------
 
-Retrieves a list of groups from the Nextcloud server. Authentication is done by 
+Retrieves a list of groups from the Nextcloud server. Authentication is done by
 sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/groups**
@@ -88,7 +88,7 @@ XML output
 Get members of a group
 ----------------------
 
-Retrieves a list of group members. Authentication is done by sending a Basic 
+Retrieves a list of group members. Authentication is done by sending a Basic
 HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/groups/{groupid}**
@@ -124,7 +124,7 @@ XML output
       </users>
     </data>
   </ocs>
-  
+
 Get subadmins of a group
 ------------------------
 
@@ -132,7 +132,7 @@ Returns subadmins of the group. Authentication is done by
 sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/groups/{groupid}/subadmins**
-      
+
 * HTTP method: GET
 
 Status codes:
@@ -164,7 +164,7 @@ XML output
     <data>
       <element>Tom</element>
     </data>
-  </ocs>  
+  </ocs>
 
 Edit data of a single group
 ---------------------------

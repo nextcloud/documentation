@@ -109,7 +109,7 @@ Method 2: Set System-Wide Environment Variables
 
    .. code-block:: bash
 
-	  sudo nano /etc/environment
+      sudo nano /etc/environment
 
 2. **Add Proxy Environment Variables**
 
@@ -117,12 +117,12 @@ Method 2: Set System-Wide Environment Variables
 
    .. code-block:: bash
 
-	  http_proxy="http://proxy.example.com:8080"
-	  https_proxy="http://proxy.example.com:8080"
+      http_proxy="http://proxy.example.com:8080"
+      https_proxy="http://proxy.example.com:8080"
 
-	  # If your proxy requires authentication:
-	  http_proxy="http://username:password@proxy.example.com:8080"
-	  https_proxy="http://username:password@proxy.example.com:8080"
+      # If your proxy requires authentication:
+      http_proxy="http://username:password@proxy.example.com:8080"
+      https_proxy="http://username:password@proxy.example.com:8080"
 
    Replace the placeholders with your actual proxy details.
 
@@ -136,7 +136,7 @@ Method 2: Set System-Wide Environment Variables
 
    .. code-block:: bash
 
-	  sudo -E -u www-data php occ app_api:app:register test-deploy docker_socket_proxy --info-xml https://raw.githubusercontent.com/nextcloud/test-deploy/main/appinfo/info.xml --test-deploy-mode --no-ansi --no-warnings
+      sudo -E -u www-data php occ app_api:app:register test-deploy docker_socket_proxy --info-xml https://raw.githubusercontent.com/nextcloud/test-deploy/main/appinfo/info.xml --test-deploy-mode --no-ansi --no-warnings
 
    It should now work without connectivity issues.
 

@@ -15,9 +15,9 @@ and the necessary Docker runtime toolkits installed on the Deploy daemon host:
 
 .. note::
 
-	If you encounter any issues with GPU support, it is highly dependent on the specific GPU device,
-	software libraries and therefore ExApps support of different hardware, or other factors.
-	Please, feel free to ask for help by creating an issue.
+    If you encounter any issues with GPU support, it is highly dependent on the specific GPU device,
+    software libraries and therefore ExApps support of different hardware, or other factors.
+    Please, feel free to ask for help by creating an issue.
 
 
 How to limit the number of GPUs per ExApp?

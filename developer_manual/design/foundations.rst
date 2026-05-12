@@ -22,7 +22,7 @@ Primary color
 While this is the primary color associated with Nextcloud and can be used to draw attention to an element, it is best to limit the usage of this to primary actions and other important elements.
 
 .. note::
-	 The primary color can be customized by admins through theming, but the default experience will be Nextcloud blue. If the primary color is themed to something very light like a shade of yellow, the text or header icons will be inverted to dark automatically.
+     The primary color can be customized by admins through theming, but the default experience will be Nextcloud blue. If the primary color is themed to something very light like a shade of yellow, the text or header icons will be inverted to dark automatically.
 
 * On web: ``var(--color-primary-element)``
 * Android: uses default Material Design colors
@@ -31,7 +31,7 @@ While this is the primary color associated with Nextcloud and can be used to dra
 
 Background color
 ^^^^^^^^^^^^^^^^
-		
+
 .. list-table::
 
     * - .. figure:: ../images/colour-main-background.svg

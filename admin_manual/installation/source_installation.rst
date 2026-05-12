@@ -125,7 +125,7 @@ Additional Apache configurations
   and apply the following modifications to the configuration::
 
     ProxyFCGIBackendType FPM
-    
+
     <FilesMatch remote.php>
       SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
     </FilesMatch>
@@ -248,14 +248,14 @@ SELinux-enabled distributions such as Fedora and CentOS.
 
 .. _php_fpm_tips_label:
 
-PHP-FPM configuration 
+PHP-FPM configuration
 ---------------------
 
 Overview
 ^^^^^^^^
 
-`PHP-FPM <https://www.php.net/manual/en/install.fpm.php>`_ is a FastCGI based 
-implementation of PHP containing features useful for busy web sites and large web 
+`PHP-FPM <https://www.php.net/manual/en/install.fpm.php>`_ is a FastCGI based
+implementation of PHP containing features useful for busy web sites and large web
 applications. Using it with Nextcloud is an advanced topic and requires getting
 familiar with how PHP-FPM functions. In most cases the defaults are not ideal for
 use with Nextcloud. Here we'll highlight a few of the most important areas that
@@ -265,13 +265,13 @@ Process manager
 ^^^^^^^^^^^^^^^
 
 The default value for ``pm.max_children`` in many PHP-FPM installations is
-lower than appropriate. Having a low value may cause client connectivity 
+lower than appropriate. Having a low value may cause client connectivity
 problems, unexplained errors, and performance problems. It is a common cause
 of *Gateway Timeouts*. Having too high of a value in relation to available
 resources (such as memory), however, will also lead to problems. The default
 value is often ``5``. This greatly limits simultaneously connections to your
-Nextcloud instance and, unless you are under severe resource constraints, will 
-underutilize your hardware. Check the :doc:`../installation/server_tuning` 
+Nextcloud instance and, unless you are under severe resource constraints, will
+underutilize your hardware. Check the :doc:`../installation/server_tuning`
 chapter for some guidance and resources for coming up with appropriate values,
 as well as other related parameters.
 
@@ -400,18 +400,18 @@ For complete instructions and downloads see:
 Installing via Snap packages
 ----------------------------
 
-Nextcloud snap is a community driven installation method and is designed 
+Nextcloud snap is a community driven installation method and is designed
 to be easy to install and simple to maintain. The ideal Nextcloud snap is
 an "install and forget" Nextcloud instance that works on most architectures
-and updates itself without needing administrative skills. 
-Combining Nextcloud with snapd makes it a perfect fit for IoT or 
-scalable environments. `Snapd <https://snapcraft.io/docs>`_ is a secure 
+and updates itself without needing administrative skills.
+Combining Nextcloud with snapd makes it a perfect fit for IoT or
+scalable environments. `Snapd <https://snapcraft.io/docs>`_ is a secure
 and robust technology which the Nextcloud snap team has embraced.
 
-Most importantly snaps are designed to be secure, sandboxed, containerized 
+Most importantly snaps are designed to be secure, sandboxed, containerized
 applications isolated from the underlying system and from other applications.
 
-However, the snap is opinionated and there are `requirements <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Installation-requirements>`_ to be met. 
+However, the snap is opinionated and there are `requirements <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Installation-requirements>`_ to be met.
 
 - Nextcloud snap uses recommended Apache.
 - Nextcloud snap uses recommended MySQL.
@@ -428,27 +428,27 @@ Installation
 **All other distros**
 `be warned <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Why-Ubuntu-is-the-only-supported-distro/>`_
 
-By default the latest stable Nextcloud snap release will be installed and it will automatically update to 
-subsequent stable releases, but there are `other releases available as well <https://github.com/nextcloud/nextcloud-snap/wiki/Release-strategy>`_ 
+By default the latest stable Nextcloud snap release will be installed and it will automatically update to
+subsequent stable releases, but there are `other releases available as well <https://github.com/nextcloud/nextcloud-snap/wiki/Release-strategy>`_
 and you have full control of `automatic updates <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-automatic-updates>`_.
 
-After installation, Nextcloud will start automatically.  
-Assuming you and the device on which it was installed are on the same network, you will reach the Nextcloud 
-installation by visiting ``<hostname>.local`` or the IP address of the instance in your browser. 
-If your hostname is ``localhost``  or ``localhost.localdomain``, like on an Ubuntu Core device, 
-``nextcloud.local`` will be used instead. 
+After installation, Nextcloud will start automatically.
+Assuming you and the device on which it was installed are on the same network, you will reach the Nextcloud
+installation by visiting ``<hostname>.local`` or the IP address of the instance in your browser.
+If your hostname is ``localhost``  or ``localhost.localdomain``, like on an Ubuntu Core device,
+``nextcloud.local`` will be used instead.
 
 1st login
 ^^^^^^^^^
 
-Upon visiting the Nextcloud installation for the first time, you will be prompted to enter an admin username 
+Upon visiting the Nextcloud installation for the first time, you will be prompted to enter an admin username
 and password before Nextcloud is initialised. This may take a while depending on resources and the device.
 After you provide that information you will be logged in and able to install apps, create users, and upload files.
 
 HTTPS encryption
 ^^^^^^^^^^^^^^^^
 
-Nextcloud snap includes a service for automated HTTPS encryption and automated renewal using Lets Encrypt, 
+Nextcloud snap includes a service for automated HTTPS encryption and automated renewal using Lets Encrypt,
 or self-signed certificates. Run ``nextcloud.enable-https -h`` for more information. `Managing encryption <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-HTTP-encryption-(HTTPS)>`_.
 
 Configuration
@@ -460,19 +460,19 @@ editing configuration files manually or using the management console. `Configuri
 External media
 ^^^^^^^^^^^^^^
 
-`Snap confinement <https://snapcraft.io/docs/snap-confinement>`_ is a security feature and determines the amount of access an application has to system resources, 
-such as files, the network, peripherals and services. Thus your Nextcloud snap is securely confined from the host 
-system. Unless you specifically allow the Nextcloud snap to access the ``/media`` or ``/mnt`` directories on the 
+`Snap confinement <https://snapcraft.io/docs/snap-confinement>`_ is a security feature and determines the amount of access an application has to system resources,
+such as files, the network, peripherals and services. Thus your Nextcloud snap is securely confined from the host
+system. Unless you specifically allow the Nextcloud snap to access the ``/media`` or ``/mnt`` directories on the
 host system, you will not be able to access any other directory outside of the confinement.
 
-Removable media or external storage must be mounted to either ``/media`` or ``/mnt`` as root with root permissions 
+Removable media or external storage must be mounted to either ``/media`` or ``/mnt`` as root with root permissions
 and connected to Snap! `Managing external media and storage <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-external-media,-shares-and-storage>`_
 
-The interface providing the ability to access removable media is not automatically connected upon install, to use 
-external storage (or otherwise use a device in ``/media`` or ``/mnt`` for data), you need to give the snap permission 
+The interface providing the ability to access removable media is not automatically connected upon install, to use
+external storage (or otherwise use a device in ``/media`` or ``/mnt`` for data), you need to give the snap permission
 to access removable media by connecting that interface:
 
-``sudo snap connect nextcloud:removable-media`` 
+``sudo snap connect nextcloud:removable-media``
 
 Further documentation, an extensive `Wiki <https://github.com/nextcloud-snap/nextcloud-snap/wiki>`_ and `FAQ's <https://github.com/nextcloud-snap/nextcloud-snap/wiki/FAQ's>`_  can be found on the `developers GitHub <https://github.com/nextcloud-snap/nextcloud-snap>`_.
 

@@ -10,9 +10,9 @@ This page covers how to run a Nextcloud server using NGINX backed by PHP-FPM, wh
   Choose the appropriate example based on whether you are deploying :ref:`nginx_webroot_example` (i.e. :code:`https://cloud.example.com/`) or :ref:`nginx_subdir_example` (i.e. :code:`https://cloud.example.com/nextcloud`).
 - Adjust the server directive under :code:`upstream php-handler` to match your PHP installation's configured FPM listener (a misconfiguration here will result in a :code:`502 Bad Gateway` - see :ref:`nginx_php_handler_tips` for details)
 - Adjust the existing :code:`server_name` directives found under *both* :code:`server` sections to your real hostname
-- Adjust :code:`root` to the webroot of your Nextcloud installation 
-- Adjust the :code:`ssl_certificate` and :code:`ssl_certificate_key` directives to the real paths for your signed 
-  certificate and private key. Make sure your SSL certificates are readable by the nginx server process (see `nginx HTTPS SSL 
+- Adjust :code:`root` to the webroot of your Nextcloud installation
+- Adjust the :code:`ssl_certificate` and :code:`ssl_certificate_key` directives to the real paths for your signed
+  certificate and private key. Make sure your SSL certificates are readable by the nginx server process (see `nginx HTTPS SSL
   Module documentation <https://wiki.nginx.org/HttpSslModule>`_).
 - If using Let's Encrypt as TLS certificate and nginx as webserver, set `ssl_stapling` and `ssl_stapling_verify` to `off`
   in main nginx config (see [Let's Encrypt blog post](https://letsencrypt.org/2024/12/05/ending-ocsp)).
@@ -65,15 +65,15 @@ The :code:`server` line within the :code:`upstream php-handler` above needs to b
 
 Many Linux distributions define a listener for a default PHP-FPM pool called :code:`www` in a file called :code:`www.conf` located somewhere like :code:`/etc/php/8.1/pool.d`.
 
-Look for the line that is set to something like: 
- 
+Look for the line that is set to something like:
+
 :code:`listen = /var/run/php/php-fpm.sock`
 or
 :code:`listen = 127.0.0.1:9000`
- 
+
 If PHP FPM will be running on the same host as NGINX (it's probably a safe assumption it will be if you're unsure), it is recommended you use the UNIX socket (i.e. :code:`/var/run/php/php-fpm.sock`) rather than TCP (:code:`127.0.0.1:9000`) for maximum performance (though either will work as long as your NGINX and PHP FPM configurations match).
 
-After deciding how you'd prefer to connect NGINX with PHP FPM (and, if necessary, updating your local PHP FPM configuration and restarting FPM), set your NGINX configuration's :code:`upstream php-handler` :code:`server` to match your preference (Note: If using UNIX sockets, prepend :code:`unix:` in the NGINX configuration, but *not* in your PHP FPM :code:`www.conf`). 
+After deciding how you'd prefer to connect NGINX with PHP FPM (and, if necessary, updating your local PHP FPM configuration and restarting FPM), set your NGINX configuration's :code:`upstream php-handler` :code:`server` to match your preference (Note: If using UNIX sockets, prepend :code:`unix:` in the NGINX configuration, but *not* in your PHP FPM :code:`www.conf`).
 
 Suppressing log messages
 ^^^^^^^^^^^^^^^^^^^^^^^^

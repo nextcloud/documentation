@@ -5,8 +5,8 @@ With AppAPI authentication, it is possible for ExApps to use any other OCS APIs 
 
 .. note::
 
-	To access these APIs, they have to be supported by AppAPI,
-	and the ExApp must grant access to them (in ``info.xml``) accordingly.
+    To access these APIs, they have to be supported by AppAPI,
+    and the ExApp must grant access to them (in ``info.xml``) accordingly.
 
 1. Calendar
 2. Contacts
