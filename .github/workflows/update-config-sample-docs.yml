@@ -1,0 +1,91 @@
+name: Generate config.sample.php parameters documentation
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: update-config-sample
+  cancel-in-progress: false
+
+jobs:
+  update:
+    name: Update ${{ matrix.branch }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        branch:
+          - stable32
+          - stable33
+          - master
+
+    steps:
+      - name: Checkout documentation
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          token: ${{ secrets.COMMAND_BOT_PAT }}
+          ref: ${{ matrix.branch }}
+
+      - name: Checkout nextcloud-config-converter
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          repository: nextcloud/nextcloud-config-converter
+          path: nextcloud-config-converter
+          persist-credentials: false
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@ec406be512d7077f68eed36e63f4d91bc006edc4 # v2.35.4
+        with:
+          php-version: '8.3'
+          coverage: none
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install converter dependencies
+        working-directory: nextcloud-config-converter
+        run: composer install --no-dev --prefer-dist
+
+      - name: Download config.sample.php
+        run: curl -sSf -o /tmp/config.sample.php https://raw.githubusercontent.com/nextcloud/server/${{ matrix.branch }}/config/config.sample.php
+
+      - name: Generate documentation
+        working-directory: nextcloud-config-converter
+        run: php convert.php --input-file=/tmp/config.sample.php --output-file=${{ github.workspace }}/admin_manual/configuration_server/config_sample_php_parameters.rst
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        id: cpr
+        with:
+          token: ${{ secrets.COMMAND_BOT_PAT }}
+          commit-message: 'chore(administration): Generate system config documentation from config.sample.php'
+          committer: GitHub <noreply@github.com>
+          author: nextcloud-command <nextcloud-command@users.noreply.github.com>
+          signoff: true
+          branch: automated/noid/update-config-sample-${{ matrix.branch }}
+          base: ${{ matrix.branch }}
+          title: '[${{ matrix.branch }}] chore: update config.sample.php parameters documentation'
+          body: 'Automated update of `admin_manual/configuration_server/config_sample_php_parameters.rst` generated from [`config.sample.php`](https://github.com/nextcloud/server/blob/${{ matrix.branch }}/config/config.sample.php)'
+          labels: 3. to review
+
+      - name: Auto approve
+        uses: hmarr/auto-approve-action@f0939ea97e9205ef24d872e76833fa908a770363 # v4.0.0
+        if: steps.cpr.outputs.pull-request-operation == 'created'
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+
+      - name: Auto merge
+        uses: pascalgn/automerge-action@7961b8b5eec56cc088c140b56d864285eabd3f67 # v0.16.4
+        if: steps.cpr.outputs.pull-request-operation == 'created'
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABELS: ""
+          MERGE_RETRIES: 10
+          MERGE_RETRY_SLEEP: 60000
+          PULL_REQUEST: ${{ steps.cpr.outputs.pull-request-number }}
