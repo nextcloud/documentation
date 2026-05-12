@@ -1,0 +1,30 @@
+{%- if 'singlehtml' not in builder %}
+{#
+  Custom searchbox override.
+
+  RTD's default searchbox has an aria-label but no visible label and no
+  search symbol, which fails WCAG 3.3.2 / BITV 9.3.3.2 (inputs must
+  have a visible label or identifying symbol).
+
+  Changes from the upstream template:
+  - add an explicit <label> element (visually hidden via .sr-only, still
+    announced by screen readers as an accessible name)
+  - add a FontAwesome magnifying-glass icon that gives sighted users a
+    visual cue that this is a search field
+#}
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="{{ pathto('search') }}" method="get">
+    <label for="rtd-search-input" class="sr-only">{{ _('Search docs') }}</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="{{ _('Search docs') }}"
+             aria-label="{{ _('Search docs') }}" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+{%- endif %}
