@@ -27,12 +27,12 @@ Navigating via keyboard
 
 You can navigate the web interface with a keyboard, just as you would with a mouse:
 
-* ``Tab`` and ``Shift + Tab`` to move between elements
-* ``Enter`` or ``Space`` to activate or open the element (depending on the type of element)
-* ``Escape`` to be used to close modals, popover menus, and file viewers
-* ``Left arrow`` and ``Right arrow`` to navigate between photos in the viewer
-* ``Ctrl + F`` to focus the search field
-* ``Ctrl + S`` to save changes in editors like Nextcloud Text
+* :kbd:`Tab` and :kbd:`Shift+Tab` to move between elements
+* :kbd:`Enter` or :kbd:`Space` to activate or open the element (depending on the type of element)
+* :kbd:`Escape` to be used to close modals, popover menus, and file viewers
+* :kbd:`Left arrow` and :kbd:`Right arrow` to navigate between photos in the viewer
+* :kbd:`Ctrl+F` to focus the search field
+* :kbd:`Ctrl+S` to save changes in editors like Nextcloud Text
 
 For quicker navigation, we offer two "skip links" at the beginning of the document which allow you to:
 
@@ -41,25 +41,25 @@ For quicker navigation, we offer two "skip links" at the beginning of the docume
 
 Nextcloud Talk has shortcuts which are also documented inside the settings of the app itself:
 
-* ``C`` to focus the message input field
-* ``Escape`` to unfocus the message input field to be able to use shortcuts
-* ``F`` to fullscreen the chat or call
+* :kbd:`C` to focus the message input field
+* :kbd:`Escape` to unfocus the message input field to be able to use shortcuts
+* :kbd:`F` to fullscreen the chat or call
 * While in a call:
-   * ``M`` to toggle the microphone on and off
-   * ``V`` to toggle video on and off
-   * ``Space`` for push to talk or push to mute
-   * ``R`` to raise or lower hand
+   * :kbd:`M` to toggle the microphone on and off
+   * :kbd:`V` to toggle video on and off
+   * :kbd:`Space` for push to talk or push to mute
+   * :kbd:`R` to raise or lower hand
 
 Nextcloud Mail has shortcuts as well, also documented inside the settings of the app itself:
 
-* ``C`` to compose a new message
-* ``Left arrow`` to switch to a newer message
-* ``Right arrow`` to switch to an older message
-* ``S`` to toggle a message as favorite
-* ``U`` to toggle a message unread
-* ``Del`` to delete a message
-* ``Ctrl + Enter`` to send
-* ``R`` to refresh and load new mails
+* :kbd:`C` to compose a new message
+* :kbd:`Left arrow` to switch to a newer message
+* :kbd:`Right arrow` to switch to an older message
+* :kbd:`S` to toggle a message as favorite
+* :kbd:`U` to toggle a message unread
+* :kbd:`Del` to delete a message
+* :kbd:`Ctrl+Enter` to send
+* :kbd:`R` to refresh and load new mails
 
 
 Included themes

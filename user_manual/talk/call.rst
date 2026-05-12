@@ -152,8 +152,8 @@ Bottom bar of the call view offers media controls, layout settings and other fea
     :width: 400px
 
 Use the microphone and camera icons to mute/unmute your microphone and enable/disable your camera.
-You can also use the keyboard shortcuts ``M`` to mute/unmute your microphone and ``V`` to enable/disable your camera.
-Use the space bar for push-to-talk: holding space temporarily unmutes you while muted, or temporarily mutes you while unmuted.
+You can also use the keyboard shortcuts :kbd:`M` to mute/unmute your microphone and :kbd:`V` to enable/disable your camera.
+Use :kbd:`Space` for push-to-talk: holding space temporarily unmutes you while muted, or temporarily mutes you while unmuted.
 
 Reactions
 ~~~~~~~~~
@@ -168,10 +168,10 @@ Every participant will see the emoji rising from the bottom of their call screen
 Raise hand
 ^^^^^^^^^^
 
-Clicking ``Raise hand`` will notify moderators and show an icon next to your name. This is also available via the keyboard shortcut ``R``.
+Clicking ``Raise hand`` will notify moderators and show an icon next to your name. This is also available via the keyboard shortcut :kbd:`R`.
 
 Full screen
 ^^^^^^^^^^^
 
 Resizes your browser window or the Talk Desktop client to full-screen mode.
-Also available via the keyboard shortcut ``F``. Press ``ESC`` to return to the regular view.
+Also available via the keyboard shortcut :kbd:`F`. Press :kbd:`Esc` to return to the regular view.

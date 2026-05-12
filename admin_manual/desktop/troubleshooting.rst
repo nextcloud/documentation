@@ -170,7 +170,7 @@ Another way to obtain the client log file:
 
 1. Open the Nextcloud Desktop Client.
 
-2. Press F12 or Ctrl-L on your keyboard.
+2. Press :kbd:`F12` or :kbd:`Ctrl+L` on your keyboard.
 
 The Log Output window opens.
 
