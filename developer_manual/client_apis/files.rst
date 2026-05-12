@@ -55,7 +55,7 @@ better understand the methods.
 
   /**
    * Trigger a route change on the files app
-   * 
+   *
    * @param path the url path, eg: '/trashbin?dir=/Deleted'
    * @param replace replace the current history
    * @see https://router.vuejs.org/guide/essentials/navigation.html#navigate-to-a-different-location
@@ -72,10 +72,10 @@ better understand the methods.
    * @see https://router.vuejs.org/guide/essentials/navigation.html#navigate-to-a-different-location
    */
   goToRoute(
-  	name?: string,
-  	params?: Dictionary<string>,
-  	query?: Dictionary<string | (string | null)[] | null | undefined>,
-  	replace?: boolean,
+    name?: string,
+    params?: Dictionary<string>,
+    query?: Dictionary<string | (string | null)[] | null | undefined>,
+    replace?: boolean,
   ): Promise<Route>
 
 

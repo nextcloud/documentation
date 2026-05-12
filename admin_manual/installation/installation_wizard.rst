@@ -106,8 +106,8 @@ attempts to create a dedicated database user with privileges limited to the
 Nextcloud database. This avoids storing your administrative database credentials
 in ``config.php``.
 
-If privileges are sufficient, the install creates a user named ``oc_admin``. 
-If that user already exists, a numeric suffix is appended (``oc_admin1``, 
+If privileges are sufficient, the install creates a user named ``oc_admin``.
+If that user already exists, a numeric suffix is appended (``oc_admin1``,
 ``oc_admin2``, etc.) until an available username is found.
 
 A random password is generated for the new user. The resulting credentials are
@@ -116,7 +116,7 @@ written into ``config.php``::
   'dbuser' => 'oc_admin',
   'dbpassword' => 'pX65Ty5DrHQkYPE5HRsDvyFHlZZHcm',
 
-If the provided user lacks the privileges to create new database users, the 
+If the provided user lacks the privileges to create new database users, the
 installer falls back to using the provided credentials directly.
 
 .. tip::

@@ -78,32 +78,32 @@ The endpoint to get this list is:
 
 .. code-block:: console
 
-	$ curl -X GET "https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/index?format=json&length=50" -H "OCS-APIRequest: true" -u "admin:password"
-	{
-		"ocs": {
-			"meta": {
-				"status": "ok",
-				"statuscode": 200,
-				"message": "OK"
-			},
-			"data": [
-				{
-					"url": "https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/document/files/597996",
-					"status": 28
-				}
-			]
-		}
-	}
+    $ curl -X GET "https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/index?format=json&length=50" -H "OCS-APIRequest: true" -u "admin:password"
+    {
+        "ocs": {
+            "meta": {
+                "status": "ok",
+                "statuscode": 200,
+                "message": "OK"
+            },
+            "data": [
+                {
+                    "url": "https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/document/files/597996",
+                    "status": 28
+                }
+            ]
+        }
+    }
 
 Details about the response:
 
 - ``url`` is the link to the document,
 - ``status`` is a bitflag based on this list:
-	* `1` => document has already been marked as indexed before,
-	* `4` => meta have been modified,
-	* `8` => content have been modified,
-	* `16` => parts have been modified
-	* `32` => document have been removed
+    * `1` => document has already been marked as indexed before,
+    * `4` => meta have been modified,
+    * `8` => content have been modified,
+    * `16` => parts have been modified
+    * `32` => document have been removed
 
 
 
@@ -117,56 +117,56 @@ The endpoint to get data about a document is:
 
 .. code-block:: console
 
-	$ curl -X GET "https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/document/files/597996?format=json" -H "OCS-APIRequest: true" -u "admin:password"
-	{
-		"ocs": {
-			"meta": {
-				"status": "ok",
-				"statuscode": 200,
-				"message": "OK"
-			},
-			"data": {
-				"id": "597996",
-				"providerId": "files",
-				"access": {
-					"ownerId": "user1",
-					"users": ['user2', 'user3'],
-					"groups": ['group1'],
-					"circles": [],
-					"links": []
-				},
-				"index": {
-					"ownerId": "user1",
-					"providerId": "files",
-					"collection": "test",
-					"source": "files_local",
-					"documentId": "597996",
-					"lastIndex": 0,
-					"errors": [],
-					"errorCount": 0,
-					"status": 28,
-					"options": []
-				},
-				"title": "640-240-max.png",
-				"link": "https://cloud.example.net/index.php/f/597996",
-				"parts": {
-					"comments": "<user3> This is a comment !"
-				},
-				"content": "VGhlIHF1aWNrIGJyb3duIGZveApqdW1wcyBvdmVyCnRoZSBsYXp5IGRvZy4=",
-				"isContentEncoded": 1
-			}
-		}
-	}
+    $ curl -X GET "https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/document/files/597996?format=json" -H "OCS-APIRequest: true" -u "admin:password"
+    {
+        "ocs": {
+            "meta": {
+                "status": "ok",
+                "statuscode": 200,
+                "message": "OK"
+            },
+            "data": {
+                "id": "597996",
+                "providerId": "files",
+                "access": {
+                    "ownerId": "user1",
+                    "users": ['user2', 'user3'],
+                    "groups": ['group1'],
+                    "circles": [],
+                    "links": []
+                },
+                "index": {
+                    "ownerId": "user1",
+                    "providerId": "files",
+                    "collection": "test",
+                    "source": "files_local",
+                    "documentId": "597996",
+                    "lastIndex": 0,
+                    "errors": [],
+                    "errorCount": 0,
+                    "status": 28,
+                    "options": []
+                },
+                "title": "640-240-max.png",
+                "link": "https://cloud.example.net/index.php/f/597996",
+                "parts": {
+                    "comments": "<user3> This is a comment !"
+                },
+                "content": "VGhlIHF1aWNrIGJyb3duIGZveApqdW1wcyBvdmVyCnRoZSBsYXp5IGRvZy4=",
+                "isContentEncoded": 1
+            }
+        }
+    }
 
 
 .. note:: If `isContentEncoded` is set to 1, content needs to be decoded
 
 .. code-block:: console
 
-	$ php -r "echo base64_decode('VGhlIHF1aWNrIGJyb3duIGZveApqdW1wcyBvdmVyCnRoZSBsYXp5IGRvZy4=');"
-	The quick brown fox
-	jumps over
-	the lazy dog.
+    $ php -r "echo base64_decode('VGhlIHF1aWNrIGJyb3duIGZveApqdW1wcyBvdmVyCnRoZSBsYXp5IGRvZy4=');"
+    The quick brown fox
+    jumps over
+    the lazy dog.
 
 
 
@@ -181,17 +181,17 @@ Once a document has been indexed in your external search engine, you have to not
 
 .. code-block:: console
 
-	$ curl -X POST "https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/document/files/597996/done" -H "OCS-APIRequest: true" -u "admin:password"
-	{
- 	 	"ocs": {
-    		"meta": {
-		    	"status": "ok",
-    	  		"statuscode": 200,
-	      		"message": "OK"
-	    	},
-    		"data": []
-	  	}
-	}
+    $ curl -X POST "https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/document/files/597996/done" -H "OCS-APIRequest: true" -u "admin:password"
+    {
+        "ocs": {
+            "meta": {
+                "status": "ok",
+                "statuscode": 200,
+                "message": "OK"
+            },
+            "data": []
+        }
+    }
 
 Once set as indexed, the document will only returns to the list of document to be (re-)indexed if they get modified.
 
@@ -205,4 +205,4 @@ If needed, an endpoint is available to reset the whole index:
 
 .. code-block:: console
 
-	$ curl -X DELETE -u "user1:password" "https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/index" -H "OCS-APIRequest: true" -k
+    $ curl -X DELETE -u "user1:password" "https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/index" -H "OCS-APIRequest: true" -k

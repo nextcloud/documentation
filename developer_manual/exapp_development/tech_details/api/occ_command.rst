@@ -103,6 +103,6 @@ To unregister an OCC CLI command, you just need to provide a command `name`:
 
 .. code-block:: json
 
-	{
-		"name": "occ_command_name"
-	}
+    {
+        "name": "occ_command_name"
+    }

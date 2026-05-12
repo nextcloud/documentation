@@ -20,29 +20,29 @@ in which case uninstall the release version of AppAPI and perform the following 
 
 Clone the latest main branch:
 
-	.. code-block:: bash
+    .. code-block:: bash
 
-		git clone https://github.com/nextcloud/app_api.git && cd app_api
+        git clone https://github.com/nextcloud/app_api.git && cd app_api
 
 or clone a specific version by specifying the version tag:
 
-	.. code-block:: bash
+    .. code-block:: bash
 
-		git clone https://github.com/nextcloud/app_api.git --branch <version-tag> && cd app_api
+        git clone https://github.com/nextcloud/app_api.git --branch <version-tag> && cd app_api
 
 where ``<version-tag>`` is the version you want to install.
 
 Then, build frontend assets in development mode:
 
-	.. code-block:: bash
+    .. code-block:: bash
 
-		npm ci && npm run dev
+        npm ci && npm run dev
 
 Enable AppAPI from the directory where the ``occ`` command resides:
 
-	.. code-block:: bash
+    .. code-block:: bash
 
-		./occ app:enable --force app_api
+        ./occ app:enable --force app_api
 
 Deploy daemons types
 ********************
@@ -89,8 +89,8 @@ and actually forwarded to the container:
 
 .. code-block::
 
-	...
-	volumes:
-		...
-		- /var/run/docker.sock:/var/run/docker.sock
-		...
+    ...
+    volumes:
+        ...
+        - /var/run/docker.sock:/var/run/docker.sock
+        ...

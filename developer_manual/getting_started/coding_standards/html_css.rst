@@ -14,16 +14,16 @@ HTML
 
 .. code-block:: html
 
-	<button>
-		<span class="icon icon-close"></span>
-		Close
-	</button>
+    <button>
+        <span class="icon icon-close"></span>
+        Close
+    </button>
 
 **DON'T**
 
 .. code-block:: html
 
-	<button><span class="icon icon-close"></span>Close</button>
+    <button><span class="icon icon-close"></span>Close</button>
 
 CSS
 ---

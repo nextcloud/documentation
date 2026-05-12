@@ -6,7 +6,7 @@ The ExApp preferences API is similar to the standard preferences API.
 It is a user specific setting.
 
 .. note::
-	Since Nextcloud 32, sensitive config values are encrypted in the database.
+    Since Nextcloud 32, sensitive config values are encrypted in the database.
 
 
 Set user config value
@@ -21,11 +21,11 @@ Request data
 
 .. code-block:: json
 
-	{
-		"configKey": "key",
-		"configValue": "value",
-		"sensitive": "store value encrypted in the database (0/1, default: 0)"
-	}
+    {
+        "configKey": "key",
+        "configValue": "value",
+        "sensitive": "store value encrypted in the database (0/1, default: 0)"
+    }
 
 
 Response data
@@ -36,27 +36,27 @@ On error, OCS Bad Request is returned.
 
 .. code-block:: json
 
-	{
-		"ocs":
-		{
-			"meta":
-			{
-				"status":"ok",
-				"statuscode":100,
-				"message":"OK",
-				"totalitems":"",
-				"itemsperpage":""
-			},
-			"data":
-			{
-				"id":983,
-				"appid":"app_id",
-				"configkey":"test key",
-				"configvalue":"123",
-				"sensitive":0
-			}
-		}
-	}
+    {
+        "ocs":
+        {
+            "meta":
+            {
+                "status":"ok",
+                "statuscode":100,
+                "message":"OK",
+                "totalitems":"",
+                "itemsperpage":""
+            },
+            "data":
+            {
+                "id":983,
+                "appid":"app_id",
+                "configkey":"test key",
+                "configvalue":"123",
+                "sensitive":0
+            }
+        }
+    }
 
 Get user config values
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -70,9 +70,9 @@ Request data
 
 .. code-block:: json
 
-	{
-		"configKeys": ["key1", "key2", "key3"]
-	}
+    {
+        "configKeys": ["key1", "key2", "key3"]
+    }
 
 Response data
 *************
@@ -81,29 +81,29 @@ List of ExApp preferences values are returned.
 
 .. code-block:: json
 
-	{
-		"ocs":
-		{
-			"meta":
-			{
-				"status":"ok",
-				"statuscode":100,
-				"message":"OK",
-				"totalitems":"",
-				"itemsperpage":""
-			},
-			"data":[
-				{
-				"configkey":"test key",
-				"configvalue":"123"
-				},
-				{
-				"configkey":"test key2",
-				"configvalue":"321"
-				}
-			]
-		}
-	}
+    {
+        "ocs":
+        {
+            "meta":
+            {
+                "status":"ok",
+                "statuscode":100,
+                "message":"OK",
+                "totalitems":"",
+                "itemsperpage":""
+            },
+            "data":[
+                {
+                "configkey":"test key",
+                "configvalue":"123"
+                },
+                {
+                "configkey":"test key2",
+                "configvalue":"321"
+                }
+            ]
+        }
+    }
 
 
 Delete user config values
@@ -118,26 +118,26 @@ Request data
 
 .. code-block:: json
 
-	{
-		"configKeys": ["key1", "key2", "key3"]
-	}
+    {
+        "configKeys": ["key1", "key2", "key3"]
+    }
 
 Response
 ********
 
 .. code-block:: json
 
-	{
-		"ocs":
-		{
-			"meta":
-			{
-				"status":"ok",
-				"statuscode":100,
-				"message":"OK",
-				"totalitems":"",
-				"itemsperpage":""
-			},
-			"data":2
-		}
-	}
+    {
+        "ocs":
+        {
+            "meta":
+            {
+                "status":"ok",
+                "statuscode":100,
+                "message":"OK",
+                "totalitems":"",
+                "itemsperpage":""
+            },
+            "data":2
+        }
+    }

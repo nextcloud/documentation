@@ -92,7 +92,7 @@ If you are unsure, just add a comment: "might be a duplicate of #<bug nr here>" 
 When the issue is a feature request, you can be helpful in the same way: merge related requests by adding information of one to the other and closing the first.
 
 .. note:: Be polite: when you need to request information or feedback be clear and polite, and you will get more information in less time. Think about how you'd like to be treated, were you to report a bug!
-.. note:: You can answer more quickly and friendly using one of `these templates <https://gist.github.com/jancborchardt/6155185#clean-up-inactive-issues>`_. 
+.. note:: You can answer more quickly and friendly using one of `these templates <https://gist.github.com/jancborchardt/6155185#clean-up-inactive-issues>`_.
 .. note:: Often our GitHub issue tracker is a place for discussions about solutions. Be friendly, inclusive and respect other people's position.
 
 Determining relevance of issue

@@ -5,7 +5,7 @@ AppConfig
 The ExApp AppConfig API is similar to the standard Nextcloud **appconfig** API.
 
 .. note::
-	Since Nextcloud 32, sensitive config values are encrypted in the database.
+    Since Nextcloud 32, sensitive config values are encrypted in the database.
 
 
 Set app config value
@@ -22,11 +22,11 @@ Request data
 
 .. code-block:: json
 
-	{
-		"configKey": "key",
-		"configValue": "value"
-		"sensitive": "store value encrypted in the database (0/1, default: 0)"
-	}
+    {
+        "configKey": "key",
+        "configValue": "value"
+        "sensitive": "store value encrypted in the database (0/1, default: 0)"
+    }
 
 
 Response data
@@ -37,27 +37,27 @@ On error, OCS Bad Request is returned.
 
 .. code-block:: json
 
-	{
-		"ocs":
-		{
-			"meta":
-			{
-				"status":"ok",
-				"statuscode":100,
-				"message":"OK",
-				"totalitems":"",
-				"itemsperpage":""
-			},
-			"data":
-			{
-				"id":1084,
-				"appid":"app_id",
-				"configkey":"key",
-				"configvalue":"value",
-				"sensitive":1
-			}
-		}
-	}
+    {
+        "ocs":
+        {
+            "meta":
+            {
+                "status":"ok",
+                "statuscode":100,
+                "message":"OK",
+                "totalitems":"",
+                "itemsperpage":""
+            },
+            "data":
+            {
+                "id":1084,
+                "appid":"app_id",
+                "configkey":"key",
+                "configvalue":"value",
+                "sensitive":1
+            }
+        }
+    }
 
 Get app config values
 ^^^^^^^^^^^^^^^^^^^^^
@@ -71,9 +71,9 @@ Request data
 
 .. code-block:: json
 
-	{
-		"configKeys": ["key1", "key2", "key3"]
-	}
+    {
+        "configKeys": ["key1", "key2", "key3"]
+    }
 
 Response data
 *************
@@ -82,25 +82,25 @@ List of ExApp config values are returned.
 
 .. code-block:: json
 
-	{
-		"ocs":
-		{
-			"meta":
-			{
-				"status":"ok",
-				"statuscode":100,
-				"message":"OK",
-				"totalitems":"",
-				"itemsperpage":""
-			},
-			"data":[
-				{
-				"configkey":"test_key",
-				"configvalue":"123"
-				}
-			]
-		}
-	}
+    {
+        "ocs":
+        {
+            "meta":
+            {
+                "status":"ok",
+                "statuscode":100,
+                "message":"OK",
+                "totalitems":"",
+                "itemsperpage":""
+            },
+            "data":[
+                {
+                "configkey":"test_key",
+                "configvalue":"123"
+                }
+            ]
+        }
+    }
 
 Delete app config values
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -114,9 +114,9 @@ Request data
 
 .. code-block:: json
 
-	{
-		"configKeys": ["key1", "key2", "key3"]
-	}
+    {
+        "configKeys": ["key1", "key2", "key3"]
+    }
 
 Response
 ********
@@ -125,17 +125,17 @@ Returns the number of configuration values removed.
 
 .. code-block:: json
 
-	{
-		"ocs":
-		{
-			"meta":
-			{
-				"status":"ok",
-				"statuscode":100,
-				"message":"OK",
-				"totalitems":"",
-				"itemsperpage":""
-			},
-		"data":1
-		}
-	}
+    {
+        "ocs":
+        {
+            "meta":
+            {
+                "status":"ok",
+                "statuscode":100,
+                "message":"OK",
+                "totalitems":"",
+                "itemsperpage":""
+            },
+        "data":1
+        }
+    }

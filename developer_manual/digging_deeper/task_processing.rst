@@ -193,19 +193,19 @@ Input and output shape keys can have one of a pre-defined set of types, which ar
 .. code-block:: php
 
     enum EShapeType: int {
-    	case Number = 0;
-    	case Text = 1;
-    	case Image = 2;
-    	case Audio = 3;
-    	case Video = 4;
-    	case File = 5;
-    	case Enum = 6;
-    	case ListOfNumbers = 10;
-    	case ListOfTexts = 11;
-    	case ListOfImages = 12;
-    	case ListOfAudio = 13;
-    	case ListOfVideo = 14;
-    	case ListOfFiles = 15;
+        case Number = 0;
+        case Text = 1;
+        case Image = 2;
+        case Audio = 3;
+        case Video = 4;
+        case File = 5;
+        case Enum = 6;
+        case ListOfNumbers = 10;
+        case ListOfTexts = 11;
+        case ListOfImages = 12;
+        case ListOfAudio = 13;
+        case ListOfVideo = 14;
+        case ListOfFiles = 15;
     }
 
 When consuming the task processing API, ``Image``, ``Audio``, ``Video`` and ``File`` slots are filled with Nextcloud file IDs, so instead of supplying the image data directly as a string to the task you create a file for it and pass the id. Similarly, if the task outputs an image, you will receive a file ID in that slot.
@@ -516,31 +516,31 @@ If you would like to implement providers that handle additional task types, you 
     use OCP\IL10N;
 
     class AudioToImage implements ITaskType {
-    	public const ID = 'myapp:audiotoimage';
+        public const ID = 'myapp:audiotoimage';
 
-    	public function getId(): string {
-    		return self::ID;
-    	}
+        public function getId(): string {
+            return self::ID;
+        }
 
-    	public function getName(): string {
-    		return 'Get Spectrogram';
-    	}
+        public function getName(): string {
+            return 'Get Spectrogram';
+        }
 
-    	public function getDescription(): string {
-    		return 'Turns audio into an image';
-    	}
+        public function getDescription(): string {
+            return 'Turns audio into an image';
+        }
 
-    	public function getInputShape(): array {
-    		return [
-    			'audio' => new ShapeDescriptor('Audio', 'The audio', EShapeType::Audio),
-    		];
-    	}
+        public function getInputShape(): array {
+            return [
+                'audio' => new ShapeDescriptor('Audio', 'The audio', EShapeType::Audio),
+            ];
+        }
 
-    	public function getOutputShape(): array {
-    		return [
-    			'spectrogram' => new ShapeDescriptor('Spectrogram', 'The audio spectrogram', EShapeType::Image),
-    		];
-    	}
+        public function getOutputShape(): array {
+            return [
+                'spectrogram' => new ShapeDescriptor('Spectrogram', 'The audio spectrogram', EShapeType::Image),
+            ];
+        }
     }
 
 Internal task types

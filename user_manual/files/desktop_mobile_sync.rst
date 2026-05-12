@@ -24,7 +24,7 @@ Mobile clients
 
 Visit your Personal page in your Nextcloud Web interface to find download links
 for Android and iOS mobile sync clients. Or, visit the `Nextcloud download page
-<https://nextcloud.com/install/>`_.  
+<https://nextcloud.com/install/>`_.
 
 Bidirectional sync (2-way-sync) has not yet been fully implemented in the Android
 client. See `this issue on GitHub <https://github.com/nextcloud/android/issues/19>`_

@@ -26,13 +26,13 @@ your ``routes.php`` could look like:
 
 .. code-block:: php
 
-	<?php
-	return [
-		'routes' => [
-			[ 'name' => 'PublicAPI#get', 'url' => '/api/{token}', 'verb' => 'GET' ],
-			[ 'name' => 'PublicDisplay#get', 'url' => '/display/{token}', 'verb' => 'GET' ],
-		]
-	];
+    <?php
+    return [
+        'routes' => [
+            [ 'name' => 'PublicAPI#get', 'url' => '/api/{token}', 'verb' => 'GET' ],
+            [ 'name' => 'PublicDisplay#get', 'url' => '/display/{token}', 'verb' => 'GET' ],
+        ]
+    ];
 
 Implementing an API called from a public share page
 ---------------------------------------------------
@@ -42,46 +42,46 @@ As said the PublicShareController is a very basic controller. You need to implem
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	namespace OCA\Share_Test\Controller;
+    namespace OCA\Share_Test\Controller;
 
-	use OCP\AppFramework\Http\Attribute\PublicPage;
-	use OCP\AppFramework\PublicShareController;
+    use OCP\AppFramework\Http\Attribute\PublicPage;
+    use OCP\AppFramework\PublicShareController;
 
-	class PublicAPIController extends PublicShareController {
-		/**
-		 * Return the hash of the password for this share.
-		 * This function is of course only called when isPasswordProtected is true
-		 */
-		protected function getPasswordHash(): string {
-			return md5('secretpassword');
-		}
+    class PublicAPIController extends PublicShareController {
+        /**
+         * Return the hash of the password for this share.
+         * This function is of course only called when isPasswordProtected is true
+         */
+        protected function getPasswordHash(): string {
+            return md5('secretpassword');
+        }
 
-		/**
-		* Validate the token of this share. If the token is invalid this controller
-		* will return a 404.
-		*/
-		public function isValidToken(): bool {
-			return $this->getToken() === 'secretToken';
-		}
+        /**
+        * Validate the token of this share. If the token is invalid this controller
+        * will return a 404.
+        */
+        public function isValidToken(): bool {
+            return $this->getToken() === 'secretToken';
+        }
 
-		/**
-		 * Allows you to specify if this share is password protected
-		 */
-		protected function isPasswordProtected(): bool {
-			return true;
-		}
+        /**
+         * Allows you to specify if this share is password protected
+         */
+        protected function isPasswordProtected(): bool {
+            return true;
+        }
 
-		/**
-		 * Your normal controller function. The following annotation will allow guests
-		 * to open the page as well
-		 */
-		#[PublicPage]
-		public function get() {
-			// Work your magic
-		}
-	}
+        /**
+         * Your normal controller function. The following annotation will allow guests
+         * to open the page as well
+         */
+        #[PublicPage]
+        public function get() {
+            // Work your magic
+        }
+    }
 
 
 You can also chose to overwrite the ``shareNotFound`` function. That is called when the
@@ -100,57 +100,57 @@ you also implement the ``verifyPassword`` and ``showShare`` functions.
 
 .. code-block: php
 
-	<?php
+    <?php
 
-	namespace OCA\Share_Test\Controller;
+    namespace OCA\Share_Test\Controller;
 
-	use OCP\AppFramework\AuthPublicShareController;
-	use OCP\AppFramework\Http\Attribute\PublicPage;
+    use OCP\AppFramework\AuthPublicShareController;
+    use OCP\AppFramework\Http\Attribute\PublicPage;
 
-	class PublicDisplayController extends AuthPublicShareController {
-		/**
-		 * Return the hash of the password for this share.
-		 * This function is of course only called when isPasswordProtected is true
-		 */
-		protected function getPasswordHash(): string {
-			return md5('secretpassword');
-		}
+    class PublicDisplayController extends AuthPublicShareController {
+        /**
+         * Return the hash of the password for this share.
+         * This function is of course only called when isPasswordProtected is true
+         */
+        protected function getPasswordHash(): string {
+            return md5('secretpassword');
+        }
 
-		/**
-		* Validate the token of this share. If the token is invalid this controller
-		* will return a 404.
-		*/
-		public function isValidToken(): bool {
-			return $this->getToken() === 'secretToken';
-		}
+        /**
+        * Validate the token of this share. If the token is invalid this controller
+        * will return a 404.
+        */
+        public function isValidToken(): bool {
+            return $this->getToken() === 'secretToken';
+        }
 
-		/**
-		 * Allows you to specify if this share is password protected
-		 */
-		protected function isPasswordProtected(): bool {
-			return true;
-		}
+        /**
+         * Allows you to specify if this share is password protected
+         */
+        protected function isPasswordProtected(): bool {
+            return true;
+        }
 
-		/**
-		 * Verify the entered password by the user
-		 */
-		protected function verifyPassword(string $password): bool {
-			return $password === 'secretpassword';
-		}
+        /**
+         * Verify the entered password by the user
+         */
+        protected function verifyPassword(string $password): bool {
+            return $password === 'secretpassword';
+        }
 
-		public function showShare(): TemplateResponse {
-			return new TemplateResponse('yourapp', 'yourtemplate');
-		}
+        public function showShare(): TemplateResponse {
+            return new TemplateResponse('yourapp', 'yourtemplate');
+        }
 
-		/**
-		 * Your normal controller function. The following annotation will allow guests
-		 * to open the page as well
-		 */
-		#[PublicPage]
-		public function get() {
-			// Work your magic
-		}
-	}
+        /**
+         * Your normal controller function. The following annotation will allow guests
+         * to open the page as well
+         */
+        #[PublicPage]
+        public function get() {
+            // Work your magic
+        }
+    }
 
 
 Additionally you can overwrite the ``showAuthenticate`` and ``showAuthFailed`` functions

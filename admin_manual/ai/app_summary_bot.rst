@@ -88,7 +88,7 @@ After cloning this app *manually* (cloned via git to your apps directory) you wi
 .. code-block::
 
    sudo -E -u www-data php occ app_api:app:unregister summary_bot
-   
+
 
 5. Register the Summary Bot so that your Nextcloud instance is aware of it
 
@@ -125,7 +125,7 @@ Ethical AI Rating
 
 The ethical rating of the *Summary Bot*, which utilizes a model for text processing through the Nextcloud Assistant app, is significantly influenced by the choice and implementation of the underlying model.
 
-Learn more about the Nextcloud Ethical AI Rating `in our blog<https://nextcloud.com/blog/nextcloud-ethical-ai-rating/>`.
+Learn more about the Nextcloud Ethical AI Rating `in our blog <https://nextcloud.com/blog/nextcloud-ethical-ai-rating/>`_.
 
 Known Limitations
 -----------------

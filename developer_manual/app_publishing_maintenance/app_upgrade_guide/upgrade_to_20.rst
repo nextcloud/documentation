@@ -25,7 +25,7 @@ The :ref:`unified search<unified-search>` replaces the traditional search input,
 Removed globals
 ^^^^^^^^^^^^^^^
 
-* ``escape-html``: use `the escape-html package <https://www.npmjs.com/package/escape-html>` or similar
+* ``escape-html``: use `the escape-html package <https://www.npmjs.com/package/escape-html>`_ or similar
 
 Deprecated global variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

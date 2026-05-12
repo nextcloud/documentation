@@ -14,7 +14,7 @@ Buttons are used to initiate actions in your app. This may be a primary action, 
 There are generally different types of buttons for different purposes:
 
 .. image:: ../images/button-primary-secondary.png
-   :alt: Primary button "Move" and secondary button "Copy" in Files 
+   :alt: Primary button "Move" and secondary button "Copy" in Files
 
 * Primary buttons are used to indicate the main action ("Start call" button in Talk, "Move" in Files). The primary buttons are stylized in Nextcloud blue by default or the theming color when themed. These should only be used sparingly and ideally only for 1 visible action at a time.
 * Secondary buttons are used for actions that have lesser weight than the primary action ("Today" button in Calendar, "Copy" in Files)
@@ -108,7 +108,7 @@ Text inputs are usually used for free-form inputs. Make sure that the label for 
 .. _Dropdowns:
 
 Dropdowns
-^^^^^^^^^ 
+^^^^^^^^^
 
 `Dropdown Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcSelect>`_.
 `Penpot dropdowns <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=1&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
@@ -139,7 +139,7 @@ Checkboxes and radio buttons
 
 Checkboxes and radio buttons are very common input methods. They are most commonly used in the :ref:`action menu`, :ref:`sidebar` and :ref:`settings`.
 
-They should have a concise label, especially if they are inside an action menu. If more explanation is needed, you can also add a subline. 
+They should have a concise label, especially if they are inside an action menu. If more explanation is needed, you can also add a subline.
 
 Pickers
 -------
@@ -155,7 +155,7 @@ Datetime picker
    :alt: Files date picker
 
 
-A user can quickly select dates, times and date ranges using the datetime picker. Use good default dates relevant to the task at hand. For example, in the case of setting an expiration date, unless the server has something enforced as default, 1 week is a good default. 
+A user can quickly select dates, times and date ranges using the datetime picker. Use good default dates relevant to the task at hand. For example, in the case of setting an expiration date, unless the server has something enforced as default, 1 week is a good default.
 
 .. _Color picker:
 
@@ -168,9 +168,9 @@ Color picker
    :alt: Deck color picker
 
 
-For certain elements of your UI you might want to allow people to set colors. This can easily be achieved using a color picker with some predefined colors. Be cautious about using different colors in the UI. In most Nextcloud apps like Deck and Calendar, user defined colors for UI elements are used sparingly and shown as a circle next to the element they refer to. 
+For certain elements of your UI you might want to allow people to set colors. This can easily be achieved using a color picker with some predefined colors. Be cautious about using different colors in the UI. In most Nextcloud apps like Deck and Calendar, user defined colors for UI elements are used sparingly and shown as a circle next to the element they refer to.
 
-In addition to these 2 pickers, there is also the `emoji picker <https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=ncemojipicker>`_ and the `timezone picker <https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=nctimezonepicker>`_ which can be also be used in your app. 
+In addition to these 2 pickers, there is also the `emoji picker <https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=ncemojipicker>`_ and the `timezone picker <https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=nctimezonepicker>`_ which can be also be used in your app.
 
 .. _Tags:
 
@@ -188,7 +188,7 @@ Tags are used by users to manage their items. They can be colored for easy ident
 Modal
 -----
 
-`Modal Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcModal>`_. 
+`Modal Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcModal>`_.
 `Penpot modals <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=12&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/deck-card-modal.png
@@ -257,7 +257,7 @@ User bubbles
    :alt: Talk user bubble
 
 
-When referring to a user inline in your app, a user bubble element can be used. In Talk and Comments, user bubbles are used in the content when someone mentions a user. In Mail, it is used in the header for the recipients of the message. 
+When referring to a user inline in your app, a user bubble element can be used. In Talk and Comments, user bubbles are used in the content when someone mentions a user. In Mail, it is used in the header for the recipients of the message.
 
 .. _Counter bubbles:
 
@@ -270,7 +270,7 @@ Counter bubbles
 .. image:: ../images/talk-counter-bubble.png
    :alt: Talk counter bubble
 
-In Talk, it is used for showing which chats are unread and if you or your group is mentioned. 
+In Talk, it is used for showing which chats are unread and if you or your group is mentioned.
 
 .. _Empty content:
 
@@ -295,6 +295,6 @@ Skeleton screens
 
 .. image:: ../images/skeleton-screen-talk.png
    :alt: Talk skeleton screen
-	 :scale: 50%
+     :scale: 50%
 
 While the app is loading, it is best to show a skeleton view of the apps probable contents as loading feedback. A good example for this is Talk on web as well as Files and Talk on Android.

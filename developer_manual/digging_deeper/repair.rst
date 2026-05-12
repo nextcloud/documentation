@@ -28,26 +28,26 @@ The following repairstep will log a message when executed.
 
   class MyRepairStep implements IRepairStep {
 
-  	/** @var LoggerInterface */
-  	protected $logger;
+    /** @var LoggerInterface */
+    protected $logger;
 
-  	public function __construct(LoggerInterface $logger) {
-  		$this->logger = $logger;
-  	}
+    public function __construct(LoggerInterface $logger) {
+        $this->logger = $logger;
+    }
 
-  	/**
-  	 * Returns the step's name
-  	 */
-  	public function getName() {
-  		return 'A demonstration repair step!';
-  	}
+    /**
+     * Returns the step's name
+     */
+    public function getName() {
+        return 'A demonstration repair step!';
+    }
 
-  	/**
-  	 * @param IOutput $output
-  	 */
-  	public function run(IOutput $output) {
-  		$this->logger->warning("Hello world from MyRepairStep!", ["app" => "MyApp"]);
-  	}
+    /**
+     * @param IOutput $output
+     */
+    public function run(IOutput $output) {
+        $this->logger->warning("Hello world from MyRepairStep!", ["app" => "MyApp"]);
+    }
   }
 
 Outputting information
@@ -70,13 +70,13 @@ The following function will sleep for 10 seconds and show the progress:
    * @param IOutput $output
    */
   public function run(IOutput $output) {
-  	$output->info("This step will take 10 seconds.");
-  	$output->startProgress(10);
-  	for ($i = 0; $i < 10; $i++) {
-  		sleep(1);
-  		$output->advance(1);
-  	}
-  	$output->finishProgress();
+    $output->info("This step will take 10 seconds.");
+    $output->startProgress(10);
+    for ($i = 0; $i < 10; $i++) {
+        sleep(1);
+        $output->advance(1);
+    }
+    $output->finishProgress();
   }
 
 Register a repair-step
@@ -90,16 +90,16 @@ of the app:
 
   <?xml version="1.0"?>
   <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
-  	xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
-  	<id>myapp</id>
-  	<name>My App</name>
-  	<summary>A test app</summary>
-  	...
-  	<repair-steps>
-  		<install>
-  			<step>OCA\MyApp\Migration\MyRepairStep</step>
-  		</install>
-  	</repair-steps>
+    xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+    <id>myapp</id>
+    <name>My App</name>
+    <summary>A test app</summary>
+    ...
+    <repair-steps>
+        <install>
+            <step>OCA\MyApp\Migration\MyRepairStep</step>
+        </install>
+    </repair-steps>
   </info>
 
 

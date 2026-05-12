@@ -5,15 +5,15 @@ Configuration Parameters
 Introduction
 ------------
 
-Nextcloud uses ``config/config.php`` as its main configuration file. This file controls 
-various fundamental aspects of server operations. It is typically modified as part of initial 
+Nextcloud uses ``config/config.php`` as its main configuration file. This file controls
+various fundamental aspects of server operations. It is typically modified as part of initial
 deployment, when troubleshooting, and when making adjustments to surrounding infrastructure.
 
-This is a required file for all Nextcloud deployments and thus it is critical for Nextcloud 
+This is a required file for all Nextcloud deployments and thus it is critical for Nextcloud
 administrators to be familiar with managing it.
 
-This section of the *Administration Manual* documents how to adjust this essential file, 
-certain special characteristics of the ``config/`` directory, and all of the supported 
+This section of the *Administration Manual* documents how to adjust this essential file,
+certain special characteristics of the ``config/`` directory, and all of the supported
 parameters that can be specified in a ``config/config.php`` file.
 
 .. note:: While ``config/config.php`` is a required file, many Nextcloud or Nextcloud app
@@ -23,39 +23,39 @@ parameters that can be specified in a ``config/config.php`` file.
 Loading
 -------
 
-Configuration files located in ``config/`` are parsed automatically when Nextcloud 
-starts up. They are also checked for changes periodically (approximately every two seconds 
-in a standard PHP environment running with default *OPcache* settings; approximately every 
+Configuration files located in ``config/`` are parsed automatically when Nextcloud
+starts up. They are also checked for changes periodically (approximately every two seconds
+in a standard PHP environment running with default *OPcache* settings; approximately every
 sixty seconds in many pre-packaged Nextcloud installation methods).
 
-The ``config/config.php`` file may be supplemented by additional ``*.config.php`` files 
+The ``config/config.php`` file may be supplemented by additional ``*.config.php`` files
 placed in the ``config/`` directory (if appropriately named and formatted).
 
-.. danger:: Be cautious when naming or creating backup copies of your active 
+.. danger:: Be cautious when naming or creating backup copies of your active
    ``config/config.php``. If a backup is located within ``config/`` and is named
    ``(ANYTHING).config.php``, it will be loaded as part of your live configuration
    and override your ``config/config.php`` values!
 
-.. tip:: If your configuration changes don't seem to be taking effect, check: (a) your PHP opcache 
+.. tip:: If your configuration changes don't seem to be taking effect, check: (a) your PHP opcache
    configuration; (b) for additional ``*.config.php`` files located in ``config/``; (c) the documentation
    for your Nextcloud installation method/package; (d) the output of ``occ config:list system``.
 
 Format
 ------
 
-The short answer is that ``config/`` files are plain text files with some special formatting 
+The short answer is that ``config/`` files are plain text files with some special formatting
 requirements for different types of parameters and values. This makes it extensible and easy for
-Nextcloud to interact with. It also makes it easy for administrators to view with any text viewer 
+Nextcloud to interact with. It also makes it easy for administrators to view with any text viewer
 and from the command-line.
 
-Technically these configuration files are PHP files containing a special (to Nextcloud) PHP array 
-called ``$CONFIG``. This array consists of various Nextcloud specific "key-value" pairs (in some cases 
+Technically these configuration files are PHP files containing a special (to Nextcloud) PHP array
+called ``$CONFIG``. This array consists of various Nextcloud specific "key-value" pairs (in some cases
 arrays themselves). Each pair has the form ``key => value`` and is comma-separated.
 
 Types of Values
 ^^^^^^^^^^^^^^^
 
-Strings: 
+Strings:
 
 * ``"thisIsAnImportantValue"``
 * Note: These must be either single or double quoted - i.e. ``"string"`` or ``'string'``.
@@ -65,7 +65,7 @@ Strings:
    - ``'versions_retention_obligation' => 'auto, D',``
    - ``'logtimezone' => 'Europe/Berlin',``
 
-Boolean: 
+Boolean:
 
 * ``true`` or ``false``
 * Note: These should **not** be surrounded by quote marks within the configuration file itself.
@@ -91,19 +91,19 @@ Arrays of any of the above types:
    - ``'connectivity_check_domains' => [ 'www.nextcloud.com', 'www.eff.org', ],``
    - ``'enabledPreviewProviders' => [ 'OC\Preview\BMP', 'OC\Preview\GIF', 'OC\Preview\JPEG', ],``
 
-.. tip:: Nextcloud attempts to remedy some value type/formatting mistakes, but this is not foolproof. 
-   Use the correct formatting (for the type of value in question) to avoid unexpected results arising 
+.. tip:: Nextcloud attempts to remedy some value type/formatting mistakes, but this is not foolproof.
+   Use the correct formatting (for the type of value in question) to avoid unexpected results arising
    from values being cast in unexpected ways.
 
 Modifying
 ---------
 
-Parameters may be modified in a standard text editor (i.e. via the command-line or externally 
+Parameters may be modified in a standard text editor (i.e. via the command-line or externally
 then re-uploaded). They may also, in most cases, be modified using the commands in
 the ``occ config:system:*`` namespace.
 
 .. tip:: Incorrectly formatted ``key => value`` entries (or incorrectly specified values) may
-   not generate immediate errors or problems (such as parsing / syntax errors), but may still 
+   not generate immediate errors or problems (such as parsing / syntax errors), but may still
    lead to unexpected and undesirable results. Review your fully parsed (by PHP) configuration
    by using the command ``occ config:list system`` and/or ``occ config:list system --private``
    to identify anything unexpected.
@@ -111,42 +111,42 @@ the ``occ config:system:*`` namespace.
 Defaults
 --------
 
-Nextcloud creates a base ``config/config.php`` file at installation time containing the most 
+Nextcloud creates a base ``config/config.php`` file at installation time containing the most
 essential parameters for operations. These values are a mixture of auto-generated and drawn from
 information provided by the administrator at installation time.
 
-The file ``config/config.sample.php`` lists all the parameters within Nextcloud that can be 
-specified in ``config/`` files, along with example and default values for each. The content of 
-that sample configuration file is included :ref:`below<config-php-sample>` for ease of reference 
+The file ``config/config.sample.php`` lists all the parameters within Nextcloud that can be
+specified in ``config/`` files, along with example and default values for each. The content of
+that sample configuration file is included :ref:`below<config-php-sample>` for ease of reference
 and alongside additional context.
 
-.. tip:: Only add parameters to ``config/config.php`` that you wish to modify. 
+.. tip:: Only add parameters to ``config/config.php`` that you wish to modify.
 
-.. danger:: Do not copy everything from ``config/config.sample.php`` into your own 
+.. danger:: Do not copy everything from ``config/config.sample.php`` into your own
    ``config/config.php``! Besides being unnecessary, it will break things and possibly even
    require re-installation.
 
 Multiple/Merged Configuration Files
 -----------------------------------
 
-Nextcloud supports loading configuration parameters from multiple files. You can add arbitrary 
-files ending with ``.config.php*`` (i.e. ``*.config.php``) in the ``config/`` directory. The values 
-in these files take precedence over ``config/config.php``. This allows you to easily create and 
-manage custom configurations, or to divide a large complex configuration file into a set of smaller files. 
+Nextcloud supports loading configuration parameters from multiple files. You can add arbitrary
+files ending with ``.config.php*`` (i.e. ``*.config.php``) in the ``config/`` directory. The values
+in these files take precedence over ``config/config.php``. This allows you to easily create and
+manage custom configurations, or to divide a large complex configuration file into a set of smaller files.
 These custom files are not overwritten by Nextcloud.
 
-For example, you could place your email server configuration in ``config/email.config.php`` and 
+For example, you could place your email server configuration in ``config/email.config.php`` and
 whatever parameters you specify in it will be merged with your ``config/config.php``.
 
-.. note:: The values in these additional configuration files **always** take precedence over 
+.. note:: The values in these additional configuration files **always** take precedence over
    ``config/config.php``.
 
-.. tip:: To view your fully merged configuration (i.e. incorporating all config files), use 
+.. tip:: To view your fully merged configuration (i.e. incorporating all config files), use
    ``occ config:list system`` and/or ``occ config:list system --private``.
 
-.. danger:: Be cautious when naming or creating backup copies of your active 
-   ``config/config.php``. If a backup config file is located within ``config/`` and happens to be 
-   named ``(ANYTHING).config.php``, it will be loaded as part of your live configuration and override 
+.. danger:: Be cautious when naming or creating backup copies of your active
+   ``config/config.php``. If a backup config file is located within ``config/`` and happens to be
+   named ``(ANYTHING).config.php``, it will be loaded as part of your live configuration and override
    your ``config/config.php`` values!
 
 Examples
@@ -174,8 +174,8 @@ this after installation. The SQLite database is stored in your Nextcloud
     'installed' => true,
   );
 
-.. note:: SQLite is a simple, lightweight embedded database that is fine for testing 
-   and simple installations, but production environments you should use MySQL/MariaDB, 
+.. note:: SQLite is a simple, lightweight embedded database that is fine for testing
+   and simple installations, but production environments you should use MySQL/MariaDB,
    Oracle, or PosgreSQL.
 
 This example is from a new Nextcloud installation using MariaDB::
@@ -281,11 +281,11 @@ trusted_domains
 ::
 
     'trusted_domains' => [
-    		'demo.example.org',
-    		'otherdomain.example.org',
-    		'10.111.112.113',
-    		'[2001:db8::1]'
-    	],
+            'demo.example.org',
+            'otherdomain.example.org',
+            '10.111.112.113',
+            '[2001:db8::1]'
+        ],
 
 Your list of trusted domains that users can log into. Specifying trusted
 domains prevents host header poisoning. Do not remove this, as it performs
@@ -435,9 +435,9 @@ dbreplica
 ::
 
     'dbreplica' => [
-    		['user' => 'nextcloud', 'password' => 'password1', 'host' => 'replica1', 'dbname' => ''],
-    		['user' => 'nextcloud', 'password' => 'password2', 'host' => 'replica2', 'dbname' => ''],
-    	],
+            ['user' => 'nextcloud', 'password' => 'password1', 'host' => 'replica1', 'dbname' => ''],
+            ['user' => 'nextcloud', 'password' => 'password2', 'host' => 'replica2', 'dbname' => ''],
+        ],
 
 Specify read-only replicas to be used by Nextcloud when querying the database
 
@@ -911,11 +911,11 @@ ratelimit_overwrite
 ::
 
     'ratelimit_overwrite' => [
-    		'profile.profilepage.index' => [
-    			'user' => ['limit' => 300, 'period' => 3600],
-    			'anon' => ['limit' => 1, 'period' => 300],
-    		]
-    	],
+            'profile.profilepage.index' => [
+                'user' => ['limit' => 300, 'period' => 3600],
+                'anon' => ['limit' => 1, 'period' => 300],
+            ]
+        ],
 
 Overwrite the individual rate limit for a specific route
 
@@ -1637,11 +1637,11 @@ connectivity_check_domains
 ::
 
     'connectivity_check_domains' => [
-    		'https://www.nextcloud.com',
-    		'https://www.startpage.com',
-    		'https://www.eff.org',
-    		'https://www.edri.org'
-    	],
+            'https://www.nextcloud.com',
+            'https://www.startpage.com',
+            'https://www.eff.org',
+            'https://www.edri.org'
+        ],
 
 Which domains to request to determine the availability of an Internet
 connection. If none of these hosts are reachable, the administration panel
@@ -1881,19 +1881,19 @@ log.condition
 ::
 
     'log.condition' => [
-    		'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
-    		'users' => ['sample-user'],
-    		'apps' => ['files'],
-    		'matches' => [
-    			[
-    				'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
-    				'users' => ['sample-user'],
-    				'apps' => ['files'],
-    				'loglevel' => 1,
-    				'message' => 'contains substring'
-    			],
-    		],
-    	],
+            'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+            'users' => ['sample-user'],
+            'apps' => ['files'],
+            'matches' => [
+                [
+                    'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+                    'users' => ['sample-user'],
+                    'apps' => ['files'],
+                    'loglevel' => 1,
+                    'message' => 'contains substring'
+                ],
+            ],
+        ],
 
 Log condition for log level increase based on conditions. Once one of these
 conditions is met, the required log level is set to debug. This allows
@@ -2104,15 +2104,15 @@ customclient_desktop
 ::
 
     'customclient_desktop'
-    		=> 'https://nextcloud.com/install/#install-clients',
-    	'customclient_android'
-    		=> 'https://play.google.com/store/apps/details?id=com.nextcloud.client',
-    	'customclient_ios'
-    		=> 'https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8',
-    	'customclient_ios_appid'
-    		=> '1125420102',
-    	'customclient_fdroid'
-    		=> 'https://f-droid.org/packages/com.nextcloud.client/',
+            => 'https://nextcloud.com/install/#install-clients',
+        'customclient_android'
+            => 'https://play.google.com/store/apps/details?id=com.nextcloud.client',
+        'customclient_ios'
+            => 'https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8',
+        'customclient_ios_appid'
+            => '1125420102',
+        'customclient_fdroid'
+            => 'https://f-droid.org/packages/com.nextcloud.client/',
 
 This section is for configuring the download links for Nextcloud clients, as
 seen in the first-run wizard and on Personal pages.
@@ -2166,7 +2166,7 @@ like in normal shares (when set to ``true``).
 .. warning::
 
   Enabling this comes with some CRITICAL trade-offs:
-  
+
   - If team folder "Advanced Permissions" (ACLs) are used, activities do not
     respect the permissions and therefore all users see all activities, even
     for files and directories they do not have access to.
@@ -2247,12 +2247,12 @@ apps_paths
 ::
 
     'apps_paths' => [
-    		[
-    			'path' => '/var/www/nextcloud/apps',
-    			'url' => '/apps',
-    			'writable' => true,
-    		],
-    	],
+            [
+                'path' => '/var/www/nextcloud/apps',
+                'url' => '/apps',
+                'writable' => true,
+            ],
+        ],
 
 Use the ``apps_paths`` parameter to set the location of the Apps directory,
 which should be scanned for available apps, and where user-specific apps
@@ -2454,17 +2454,17 @@ enabledPreviewProviders
 ::
 
     'enabledPreviewProviders' => [
-    		'OC\Preview\PNG',
-    		'OC\Preview\JPEG',
-    		'OC\Preview\GIF',
-    		'OC\Preview\BMP',
-    		'OC\Preview\XBitmap',
-    		'OC\Preview\Krita',
-    		'OC\Preview\WebP',
-    		'OC\Preview\MarkDown',
-    		'OC\Preview\TXT',
-    		'OC\Preview\OpenDocument',
-    	],
+            'OC\Preview\PNG',
+            'OC\Preview\JPEG',
+            'OC\Preview\GIF',
+            'OC\Preview\BMP',
+            'OC\Preview\XBitmap',
+            'OC\Preview\Krita',
+            'OC\Preview\WebP',
+            'OC\Preview\MarkDown',
+            'OC\Preview\TXT',
+            'OC\Preview\OpenDocument',
+        ],
 
 Only register providers that have been explicitly enabled
 
@@ -2678,8 +2678,8 @@ openssl
 ::
 
     'openssl' => [
-    		'config' => '/absolute/location/of/openssl.cnf',
-    	],
+            'config' => '/absolute/location/of/openssl.cnf',
+        ],
 
 Extra SSL options to be used for configuration.
 
@@ -2754,21 +2754,21 @@ redis
 ::
 
     'redis' => [
-    		'host' => 'localhost', // can also be a Unix domain socket: '/tmp/redis.sock'
-    		'port' => 6379,
-    		'timeout' => 0.0,
-    		'read_timeout' => 0.0,
-    		'user' => '', // Optional: if not defined, no password will be used.
-    		'password' => '', // Optional: if not defined, no password will be used.
-    		'dbindex' => 0, // Optional: if undefined, SELECT will not run and will use Redis Server's default DB Index.
-    		// If Redis in-transit encryption is enabled, provide certificates
-    		// SSL context https://www.php.net/manual/en/context.ssl.php
-    		'ssl_context' => [
-    			'local_cert' => '/certs/redis.crt',
-    			'local_pk' => '/certs/redis.key',
-    			'cafile' => '/certs/ca.crt'
-    		]
-    	],
+            'host' => 'localhost', // can also be a Unix domain socket: '/tmp/redis.sock'
+            'port' => 6379,
+            'timeout' => 0.0,
+            'read_timeout' => 0.0,
+            'user' => '', // Optional: if not defined, no password will be used.
+            'password' => '', // Optional: if not defined, no password will be used.
+            'dbindex' => 0, // Optional: if undefined, SELECT will not run and will use Redis Server's default DB Index.
+            // If Redis in-transit encryption is enabled, provide certificates
+            // SSL context https://www.php.net/manual/en/context.ssl.php
+            'ssl_context' => [
+                'local_cert' => '/certs/redis.crt',
+                'local_pk' => '/certs/redis.key',
+                'cafile' => '/certs/ca.crt'
+            ]
+        ],
 
 Connection details for Redis to use for memory caching in a single server configuration.
 
@@ -2786,23 +2786,23 @@ redis.cluster
 ::
 
     'redis.cluster' => [
-    		'seeds' => [ // provide some or all of the cluster servers to bootstrap discovery, port required
-    			'localhost:7000',
-    			'localhost:7001',
-    		],
-    		'timeout' => 0.0,
-    		'read_timeout' => 0.0,
-    		'failover_mode' => \RedisCluster::FAILOVER_ERROR,
-    		'user' => '', // Optional: if not defined, no password will be used.
-    		'password' => '', // Optional: if not defined, no password will be used.
-    		// If Redis in-transit encryption is enabled, provide certificates
-    		// SSL context https://www.php.net/manual/en/context.ssl.php
-    		'ssl_context' => [
-    			'local_cert' => '/certs/redis.crt',
-    			'local_pk' => '/certs/redis.key',
-    			'cafile' => '/certs/ca.crt'
-    		]
-    	],
+            'seeds' => [ // provide some or all of the cluster servers to bootstrap discovery, port required
+                'localhost:7000',
+                'localhost:7001',
+            ],
+            'timeout' => 0.0,
+            'read_timeout' => 0.0,
+            'failover_mode' => \RedisCluster::FAILOVER_ERROR,
+            'user' => '', // Optional: if not defined, no password will be used.
+            'password' => '', // Optional: if not defined, no password will be used.
+            // If Redis in-transit encryption is enabled, provide certificates
+            // SSL context https://www.php.net/manual/en/context.ssl.php
+            'ssl_context' => [
+                'local_cert' => '/certs/redis.crt',
+                'local_pk' => '/certs/redis.key',
+                'cafile' => '/certs/ca.crt'
+            ]
+        ],
 
 Connection details for a Redis Cluster.
 
@@ -2836,13 +2836,13 @@ memcached_servers
 ::
 
     'memcached_servers' => [
-    		// hostname, port and optional weight
-    		// or path and port 0 for Unix socket. Also see:
-    		// https://www.php.net/manual/en/memcached.addservers.php
-    		// https://www.php.net/manual/en/memcached.addserver.php
-    		['localhost', 11211],
-    		//array('other.host.local', 11211),
-    	],
+            // hostname, port and optional weight
+            // or path and port 0 for Unix socket. Also see:
+            // https://www.php.net/manual/en/memcached.addservers.php
+            // https://www.php.net/manual/en/memcached.addserver.php
+            ['localhost', 11211],
+            //array('other.host.local', 11211),
+        ],
 
 Server details for one or more Memcached servers to use for memory caching.
 
@@ -2853,25 +2853,25 @@ memcached_options
 ::
 
     'memcached_options' => [
-    		// Set timeouts to 50ms
-    		\Memcached::OPT_CONNECT_TIMEOUT => 50,
-    		\Memcached::OPT_RETRY_TIMEOUT => 50,
-    		\Memcached::OPT_SEND_TIMEOUT => 50,
-    		\Memcached::OPT_RECV_TIMEOUT => 50,
-    		\Memcached::OPT_POLL_TIMEOUT => 50,
-    
-    		// Enable compression
-    		\Memcached::OPT_COMPRESSION => true,
-    
-    		// Turn on consistent hashing
-    		\Memcached::OPT_LIBKETAMA_COMPATIBLE => true,
-    
-    		// Enable Binary Protocol
-    		\Memcached::OPT_BINARY_PROTOCOL => true,
-    
-    		// Binary serializer will be enabled if the igbinary PECL module is available
-    		//\Memcached::OPT_SERIALIZER => \Memcached::SERIALIZER_IGBINARY,
-    	],
+            // Set timeouts to 50ms
+            \Memcached::OPT_CONNECT_TIMEOUT => 50,
+            \Memcached::OPT_RETRY_TIMEOUT => 50,
+            \Memcached::OPT_SEND_TIMEOUT => 50,
+            \Memcached::OPT_RECV_TIMEOUT => 50,
+            \Memcached::OPT_POLL_TIMEOUT => 50,
+
+            // Enable compression
+            \Memcached::OPT_COMPRESSION => true,
+
+            // Turn on consistent hashing
+            \Memcached::OPT_LIBKETAMA_COMPATIBLE => true,
+
+            // Enable Binary Protocol
+            \Memcached::OPT_BINARY_PROTOCOL => true,
+
+            // Binary serializer will be enabled if the igbinary PECL module is available
+            //\Memcached::OPT_SERIALIZER => \Memcached::SERIALIZER_IGBINARY,
+        ],
 
 Connection options for Memcached
 
@@ -2931,36 +2931,36 @@ objectstore
 ::
 
     'objectstore' => [
-    		'class' => 'OC\\Files\\ObjectStore\\Swift',
-    		'arguments' => [
-    			// trystack will use your Facebook ID as the username
-    			'username' => 'facebook100000123456789',
-    			// in the trystack dashboard, go to user -> settings -> API Password to
-    			// generate a password
-    			'password' => 'Secr3tPaSSWoRdt7',
-    			// must already exist in the objectstore, name can be different
-    			'container' => 'nextcloud',
-    			// prefix to prepend to the fileid, default is 'oid:urn:'
-    			'objectPrefix' => 'oid:urn:',
-    			// create the container if it does not exist. default is false
-    			'autocreate' => true,
-    			// required, dev-/trystack defaults to 'RegionOne'
-    			'region' => 'RegionOne',
-    			// The Identity / Keystone endpoint
-    			'url' => 'http://8.21.28.222:5000/v2.0',
-    			// uploadPartSize: size of the uploaded chunks, defaults to 524288000
-    			'uploadPartSize' => 524288000,
-    			// required on dev-/trystack
-    			'tenantName' => 'facebook100000123456789',
-    			// dev-/trystack uses swift by default, the lib defaults to 'cloudFiles'
-    			// if omitted
-    			'serviceName' => 'swift',
-    			// The Interface / URL Type, optional
-    			'urlType' => 'internal',
-    			// Maximum amount of data that can be uploaded
-    			'totalSizeLimit' => 1024 * 1024 * 1024,
-    		],
-    	],
+            'class' => 'OC\\Files\\ObjectStore\\Swift',
+            'arguments' => [
+                // trystack will use your Facebook ID as the username
+                'username' => 'facebook100000123456789',
+                // in the trystack dashboard, go to user -> settings -> API Password to
+                // generate a password
+                'password' => 'Secr3tPaSSWoRdt7',
+                // must already exist in the objectstore, name can be different
+                'container' => 'nextcloud',
+                // prefix to prepend to the fileid, default is 'oid:urn:'
+                'objectPrefix' => 'oid:urn:',
+                // create the container if it does not exist. default is false
+                'autocreate' => true,
+                // required, dev-/trystack defaults to 'RegionOne'
+                'region' => 'RegionOne',
+                // The Identity / Keystone endpoint
+                'url' => 'http://8.21.28.222:5000/v2.0',
+                // uploadPartSize: size of the uploaded chunks, defaults to 524288000
+                'uploadPartSize' => 524288000,
+                // required on dev-/trystack
+                'tenantName' => 'facebook100000123456789',
+                // dev-/trystack uses swift by default, the lib defaults to 'cloudFiles'
+                // if omitted
+                'serviceName' => 'swift',
+                // The Interface / URL Type, optional
+                'urlType' => 'internal',
+                // Maximum amount of data that can be uploaded
+                'totalSizeLimit' => 1024 * 1024 * 1024,
+            ],
+        ],
 
 This example shows how to configure Nextcloud to store all files in a
 Swift object storage.
@@ -2987,31 +2987,31 @@ objectstore
 ::
 
     'objectstore' => [
-    		'class' => 'OC\\Files\\ObjectStore\\Swift',
-    		'arguments' => [
-    			'autocreate' => true,
-    			'user' => [
-    				'name' => 'swift',
-    				'password' => 'swift',
-    				'domain' => [
-    					'name' => 'default',
-    				],
-    			],
-    			'scope' => [
-    				'project' => [
-    					'name' => 'service',
-    					'domain' => [
-    						'name' => 'default',
-    					],
-    				],
-    			],
-    			'tenantName' => 'service',
-    			'serviceName' => 'swift',
-    			'region' => 'regionOne',
-    			'url' => 'http://yourswifthost:5000/v3',
-    			'bucket' => 'nextcloud',
-    		],
-    	],
+            'class' => 'OC\\Files\\ObjectStore\\Swift',
+            'arguments' => [
+                'autocreate' => true,
+                'user' => [
+                    'name' => 'swift',
+                    'password' => 'swift',
+                    'domain' => [
+                        'name' => 'default',
+                    ],
+                ],
+                'scope' => [
+                    'project' => [
+                        'name' => 'service',
+                        'domain' => [
+                            'name' => 'default',
+                        ],
+                    ],
+                ],
+                'tenantName' => 'service',
+                'serviceName' => 'swift',
+                'region' => 'regionOne',
+                'url' => 'http://yourswifthost:5000/v3',
+                'bucket' => 'nextcloud',
+            ],
+        ],
 
 To use Swift V3
 
@@ -3022,26 +3022,26 @@ objectstore
 ::
 
     'objectstore' => [
-    		'class' => 'OC\\Files\\ObjectStore\\S3',
-    		'arguments' => [
-    			'bucket' => 'nextcloud',
-    			'key' => 'your-access-key',
-    			'secret' => 'your-secret-key',
-    			'hostname' => 's3.example.com',
-    			'port' => 443,
-    			'use_ssl' => true,
-    			'region' => 'us-east-1',
-    			// optional: Maximum number of retry attempts for failed S3 requests
-    			// Default: 5
-    			'retriesMaxAttempts' => 5,
-    			// Data Integrity Protections for Amazon S3 (https://docs.aws.amazon.com/sdkref/latest/guide/feature-dataintegrity.html)
-    			// Valid values are "when_required" (default) and "when_supported".
-    			// To ensure compatibility with 3rd party S3 implementations, Nextcloud disables it by default. However, if you are
-    			// using Amazon S3 (or any other implementation that supports it) we recommend enabling it by using "when_supported".
-    			'request_checksum_calculation' => 'when_required',
-    			'response_checksum_validation' => 'when_required',
-    		],
-    	],
+            'class' => 'OC\\Files\\ObjectStore\\S3',
+            'arguments' => [
+                'bucket' => 'nextcloud',
+                'key' => 'your-access-key',
+                'secret' => 'your-secret-key',
+                'hostname' => 's3.example.com',
+                'port' => 443,
+                'use_ssl' => true,
+                'region' => 'us-east-1',
+                // optional: Maximum number of retry attempts for failed S3 requests
+                // Default: 5
+                'retriesMaxAttempts' => 5,
+                // Data Integrity Protections for Amazon S3 (https://docs.aws.amazon.com/sdkref/latest/guide/feature-dataintegrity.html)
+                // Valid values are "when_required" (default) and "when_supported".
+                // To ensure compatibility with 3rd party S3 implementations, Nextcloud disables it by default. However, if you are
+                // using Amazon S3 (or any other implementation that supports it) we recommend enabling it by using "when_supported".
+                'request_checksum_calculation' => 'when_required',
+                'response_checksum_validation' => 'when_required',
+            ],
+        ],
 
 To use S3 object storage
 
@@ -3316,12 +3316,12 @@ dbdriveroptions
 ::
 
     'dbdriveroptions' => [
-    		PDO::MYSQL_ATTR_SSL_CA => '/file/path/to/ca_cert.pem',
-    		PDO::MYSQL_ATTR_SSL_KEY => '/file/path/to/mysql-client-key.pem',
-    		PDO::MYSQL_ATTR_SSL_CERT => '/file/path/to/mysql-client-cert.pem',
-    		PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
-    		PDO::MYSQL_ATTR_INIT_COMMAND => 'SET wait_timeout = 28800'
-    	],
+            PDO::MYSQL_ATTR_SSL_CA => '/file/path/to/ca_cert.pem',
+            PDO::MYSQL_ATTR_SSL_KEY => '/file/path/to/mysql-client-key.pem',
+            PDO::MYSQL_ATTR_SSL_CERT => '/file/path/to/mysql-client-cert.pem',
+            PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET wait_timeout = 28800'
+        ],
 
 Additional driver options for the database connection, e.g., to enable SSL
 encryption in MySQL or specify a custom wait timeout on a cheap hoster.
@@ -3411,12 +3411,12 @@ pgsql_ssl
 ::
 
     'pgsql_ssl' => [
-    		'mode' => '',
-    		'cert' => '',
-    		'rootcert' => '',
-    		'key' => '',
-    		'crl' => '',
-    	],
+            'mode' => '',
+            'cert' => '',
+            'rootcert' => '',
+            'key' => '',
+            'crl' => '',
+        ],
 
 PostgreSQL SSL connection
 
@@ -3427,11 +3427,11 @@ supportedDatabases
 ::
 
     'supportedDatabases' => [
-    		'sqlite',
-    		'mysql',
-    		'pgsql',
-    		'oci',
-    	],
+            'sqlite',
+            'mysql',
+            'pgsql',
+            'oci',
+        ],
 
 Database types supported for installation.
 
@@ -4059,9 +4059,9 @@ csrf.optout
 ::
 
     'csrf.optout' => [
-    		'/^WebDAVFS/', // OS X Finder
-    		'/^Microsoft-WebDAV-MiniRedir/', // Windows WebDAV drive
-    	],
+            '/^WebDAVFS/', // OS X Finder
+            '/^Microsoft-WebDAV-MiniRedir/', // Windows WebDAV drive
+        ],
 
 List of user agents exempt from SameSite cookie protection due to non-standard
 HTTP behavior.
@@ -4370,14 +4370,14 @@ binary_search_paths
 ::
 
     'binary_search_paths' => [
-    		'/usr/local/sbin',
-    		'/usr/local/bin',
-    		'/usr/sbin',
-    		'/usr/bin',
-    		'/sbin',
-    		'/bin',
-    		'/opt/bin',
-    	],
+            '/usr/local/sbin',
+            '/usr/local/bin',
+            '/usr/sbin',
+            '/usr/bin',
+            '/sbin',
+            '/bin',
+            '/opt/bin',
+        ],
 
 Directories where Nextcloud searches for external binaries (e.g., LibreOffice,
 sendmail, ffmpeg).
@@ -4466,9 +4466,9 @@ openmetrics_skipped_classes
 ::
 
     'openmetrics_skipped_classes' => [
-    		'OC\OpenMetrics\Exporters\FilesByType',
-    		'OCA\Files_Sharing\OpenMetrics\SharesCount',
-    	],
+            'OC\OpenMetrics\Exporters\FilesByType',
+            'OCA\Files_Sharing\OpenMetrics\SharesCount',
+        ],
 
 OpenMetrics skipped exporters
 Allows to skip some exporters in the OpenMetrics endpoint ``/metrics``.
@@ -4482,10 +4482,10 @@ openmetrics_allowed_clients
 ::
 
     'openmetrics_allowed_clients' => [
-    		'192.168.0.0/16',
-    		'fe80::/10',
-    		'10.0.0.1',
-    	],
+            '192.168.0.0/16',
+            'fe80::/10',
+            '10.0.0.1',
+        ],
 
 OpenMetrics allowed client IP addresses
 Restricts the IP addresses able to make requests on the ``/metrics`` endpoint.
@@ -4509,8 +4509,8 @@ administrator.". In some cases this should not be triggered, because it was a
 normal maintenance change. To disable this specific email the appconfig option
 ``disable_email.email_address_changed_by_admin`` can be set to ``yes``::
 
-	occ config:app:set settings disable_activity.email_address_changed_by_admin --value yes
+    occ config:app:set settings disable_activity.email_address_changed_by_admin --value yes
 
 To disable this behaviour change it to any other value or delete the app config::
 
-	occ config:app:delete settings disable_activity.email_address_changed_by_admin
+    occ config:app:delete settings disable_activity.email_address_changed_by_admin

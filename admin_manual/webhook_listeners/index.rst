@@ -7,7 +7,7 @@ Webhook Listeners
 Introduction
 ------------
 
-Nextcloud supports sending notifications to external services whenever something 
+Nextcloud supports sending notifications to external services whenever something
 important happens, such as when files are changed or updated.
 
 Overview
@@ -46,7 +46,7 @@ Enable the ``webhook_listeners`` app that comes bundled with Nextcloud - e.g.
 Listening to events
 -------------------
 
-You can use the OCS API to add webhooks for specific events. See: 
+You can use the OCS API to add webhooks for specific events. See:
 `Register a new webhook <https://docs.nextcloud.com/server/33/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index>`_.
 
 Note: When authenticating with the OCS API to register webhooks, the account you
@@ -77,7 +77,7 @@ because you are inside a regular expression.
 You can also use additional comparison operators (``$e``, ``$ne``, ``$gt``, ``$gte``,
 ``$lt``, ``$lte``, ``$in``, ``$nin``) as well as logical operators (``$and``, ``$or``,
 ``$not``, ``$nor``). For example, use ``{ "time": { "$lt": 1711971024 } }`` to accept
-only events prior to April 1st, 2024, and ``{ "time": { "$not": { "$lt": 1711971024 } }}`` 
+only events prior to April 1st, 2024, and ``{ "time": { "$not": { "$lt": 1711971024 } }}``
 to accept events after April 1st, 2024.
 
 Speeding up webhook dispatch
@@ -92,9 +92,9 @@ The following command will launch a worker for the webhook call background job:
 Screen or tmux session
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Run the following ``occ`` command inside a screen or tmux session, preferably four 
+Run the following ``occ`` command inside a screen or tmux session, preferably four
 or more times, to enable parallel processing of multiple requests by different users
-or the same user. It is best to run one command per screen session or tmux window/pane 
+or the same user. It is best to run one command per screen session or tmux window/pane
 to keep logs visible and make each worker easy to restart.
 
 .. code-block::
@@ -184,26 +184,26 @@ This is an exhaustive list of available events. It features the event ID and the
         "form": array{
          "id": int,
          "hash": string,
-	 "title": string,
-	 "description": string,
-	 "ownerId": string,
-	 "fileId": string|null,
-	 "fileFormat": string|null,
-	 "created": int,
-	 "access": int,
-	 "expires": int,
-	 "isAnonymous": bool,
-	 "submitMultiple": bool,
-	 "showExpiration": bool,
-	 "lastUpdated": int,
-	 "submissionMessage": string|null,
-	 "state": int,
+     "title": string,
+     "description": string,
+     "ownerId": string,
+     "fileId": string|null,
+     "fileFormat": string|null,
+     "created": int,
+     "access": int,
+     "expires": int,
+     "isAnonymous": bool,
+     "submitMultiple": bool,
+     "showExpiration": bool,
+     "lastUpdated": int,
+     "submissionMessage": string|null,
+     "state": int,
         },
         "submission": array{
           "id": int,
-	  "formId": int,
-	  "userId": string,
-	  "timestamp": int,
+      "formId": int,
+      "userId": string,
+      "timestamp": int,
         },
       }
     }

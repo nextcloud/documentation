@@ -6,7 +6,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 #
 ## Note that additional configuration elements shared by all Nextcloud docs
-## are loaded from `../conf.py`. 
+## are loaded from `../conf.py`.
 
 # -- Path setup --------------------------------------------------------------
 
@@ -31,7 +31,7 @@ extensions += [
     'sphinx.ext.todo',
     'rst2pdf.pdfbuilder',
     'sphinx.ext.intersphinx',
-]    
+]
 
 templates_path = [
     '../_shared_assets/templates',

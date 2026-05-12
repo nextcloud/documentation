@@ -13,11 +13,11 @@ Adapting ExApps to HaRP
 Summary
 -------
 
-HaRP is a reverse proxy system designed to simplify the deployment workflow 
+HaRP is a reverse proxy system designed to simplify the deployment workflow
 for Nextcloud 32’s AppAPI.
 
-It enables direct communication between clients and ExApps, bypassing 
-the Nextcloud instance to improve performance and reduce the complexity 
+It enables direct communication between clients and ExApps, bypassing
+the Nextcloud instance to improve performance and reduce the complexity
 traditionally associated with `DockerSocketProxy` setups.
 
 HaRP provides an `FRP-based <https://github.com/fatedier/frp>`_
@@ -28,11 +28,11 @@ The script installs or starts the FRP client and executes your app process.
 
 .. warning::
 
-   We strongly recommend starting support for HaRP in ExApps from the start 
-   of Nextcloud 32, as the old `DSP <https://github.com/nextcloud/docker-socket-proxy>`_ 
+   We strongly recommend starting support for HaRP in ExApps from the start
+   of Nextcloud 32, as the old `DSP <https://github.com/nextcloud/docker-socket-proxy>`_
    way will be deprecated and marked for removal in Nextcloud 35.
-  
-   Adding HaRP support is fully compatible with the existing DSP system, 
+
+   Adding HaRP support is fully compatible with the existing DSP system,
    so you won’t need to maintain two separate release types of your ExApp.
 
 Key integration considerations
@@ -57,7 +57,7 @@ Steps needed to adapt an ExApp
 --------------------------------------
 
 1. Copy the `start.sh <https://github.com/nextcloud/HaRP/blob/main/exapps_dev/start.sh>`_
-script from the exapps_dev folder of the HaRP repository into your Docker image 
+script from the exapps_dev folder of the HaRP repository into your Docker image
 (e.g., using a `COPY` instruction).
 
 2. In your ExApp's Dockerfile, set the `ENTRYPOINT` to execute `start.sh` followed by
@@ -68,11 +68,11 @@ run the command you provide as arguments.
 3. Ensure the `curl` command-line utility is installed in your ExApp's Docker image,
 as it's needed by the following script to download the FRP client.
 
-4. Add the following lines to your Dockerfile to automatically include the FRP 
+4. Add the following lines to your Dockerfile to automatically include the FRP
 client binaries in your Docker image:
 
   .. code-block:: dockerfile
-    
+
     # Download and install FRP client
     RUN set -ex; \
         ARCH=$(uname -m); \
@@ -90,7 +90,7 @@ client binaries in your Docker image:
         rm -rf /tmp/frp /tmp/frp.tar.gz
 
   .. note::
-    
+
       For Alpine 3.21 Linux you can just install FRP from repo using apk add frp command.
 
 Running your ExApp with a non-root user
@@ -105,7 +105,7 @@ Running your ExApp with a non-root user
 To run the main process as a non-root user while remaining compatible with HaRP and AppAPI,
 ensure the following:
 
-1. Keep image default user as `root`, drop to less privileged service user at runtime. 
+1. Keep image default user as `root`, drop to less privileged service user at runtime.
 
    - Make it easy for AppAPI to perform privileged operations (copying files,
      setting permissions, running `update-ca-certificates`) by leaving the
@@ -163,15 +163,15 @@ ensure the following:
    - **Create `/frpc.toml`** or the directory that will contain it at image build
      time and set ownership to the service user so at runtime `start.sh` can
      write to it without requiring root.
-   - **Create directory `/certs/frp`** and make it readable by the service user. 
+   - **Create directory `/certs/frp`** and make it readable by the service user.
      AppAPI will copy cert files into that folder by using a `docker cp ...` command
-     with the default container user (which is still `root`). By setting the directory 
+     with the default container user (which is still `root`). By setting the directory
      owner to the service user, we will ensure the service user can read the certs at runtime.
 
   Use some similar commands in your Dockerfile:
 
     .. code-block:: dockerfile
-  
+
         RUN touch /frpc.toml && \
           mkdir -p /certs/frp && \
           chown $USER:$USER /frpc.toml && \
@@ -190,7 +190,7 @@ ensure the following:
       ENV HOME=/home/$USER
       ENV GOSU_VERSION=1.19
 
-      # Install dependencies and create service user. You might want to 
+      # Install dependencies and create service user. You might want to
       # add additional packages depending on your app requirements.
       # Make sure curl and FRP are installed.
       RUN apk update && \

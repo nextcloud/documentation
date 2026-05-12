@@ -23,18 +23,18 @@ Nextcloud has two types of releases in the default release channel:
 1. Major releases
 2. Maintenance releases
 
-**Major** releases of Nextcloud Server (e.g. ``28.X.X``) introduce new features and functionality. 
+**Major** releases of Nextcloud Server (e.g. ``28.X.X``) introduce new features and functionality.
 
 Every major release is, in turn, supported for *one year* via periodic **maintenance** releases (e.g. ``X.X.4``), which correct critical bugs and security vulnerabilities.
 
 Major releases
 ~~~~~~~~~~~~~~
 
-Major releases usually introduce new features and often also include changes "under the hood". These changes may be extensive. 
+Major releases usually introduce new features and often also include changes "under the hood". These changes may be extensive.
 
 A specific major release is indicated by the first part of the version string. For example, Nextcloud Server ``28.0.4`` is major release ``28``. And ``27.1.7`` is major release ``27``.
 
-.. tip:: The highest numbered major release offers the latest features. While the lowest numbered major release offers the most time in the field. 
+.. tip:: The highest numbered major release offers the latest features. While the lowest numbered major release offers the most time in the field.
 
 .. note:: You may need to meet new system requirements before the Updater will offer you a new major version. Even if offered, there may be other changes required that the Updater cannot check for fully. We try to highlight these, in each new edition of the Admin Manual, in the Critical changes section of the *Release notes* chapter.
 
@@ -43,13 +43,13 @@ A specific major release is indicated by the first part of the version string. F
 Maintenance releases
 ~~~~~~~~~~~~~~~~~~~~
 
-Maintenance releases deliberately **do not** introduce new features or breaking changes. This is meant to reduce the risks and impact associated with deploying updates so that critical bugs or security vulnerabilities can be rapidly and routinely addressed. 
+Maintenance releases deliberately **do not** introduce new features or breaking changes. This is meant to reduce the risks and impact associated with deploying updates so that critical bugs or security vulnerabilities can be rapidly and routinely addressed.
 
 Maintenance releases are published (generally simultaneously) for all stable major releases that have not reached end-of-life status.
 
 These releases should not have app compatibility concerns or introduce changes requiring retraining end users.
 
-A specific maintenance release is indicated by the last part of the version number. For example, ``28.0.4`` is the *fourth* maintenance release for major version ``28`` of Nextcloud Server. It offers fixes for any critical bugs and security vulnerabilities addressed since the last maintenance release (``28.0.3`` in this example). 
+A specific maintenance release is indicated by the last part of the version number. For example, ``28.0.4`` is the *fourth* maintenance release for major version ``28`` of Nextcloud Server. It offers fixes for any critical bugs and security vulnerabilities addressed since the last maintenance release (``28.0.3`` in this example).
 
 .. note:: All critical bug fixes, including security related ones, are `backported <https://en.wikipedia.org/wiki/Backporting>`_ to **all** maintained major releases.
 
@@ -69,7 +69,7 @@ This overlapping schedule and predictable cadence permits rapid development whil
 
 .. note:: Since every major release is supported for one year from initial release, the minimum you need to do to stay up-to-date is to install maintenance releases as they're published and upgrade to the next higher up major release when the one you're currently on reaches end-of-life status. Since maintenance releases only patch your Server with the latest bug and security vulnerability fixes - and do **not** introduce other significant changes - the risk of upgrading to a new maintenance release is far less than upgrading to a new major release.
 
-End-of-life 
+End-of-life
 ~~~~~~~~~~~
 
 End-of-life status means that support/maintenance ends. Maintenance releases cease for a major version on the one year anniversary of initial release. The major version then moves into end-of-life status and will not receive any further bug fixes or corrections for security vulnerabilities.
@@ -90,9 +90,9 @@ Since multiple major releases are published throughout the year and each is supp
 Release channels
 ----------------
 
-By default all Nextcloud installations utilize the ``stable`` release channel. This channel delivers the latest features that are ready for most users at minimal risk. 
+By default all Nextcloud installations utilize the ``stable`` release channel. This channel delivers the latest features that are ready for most users at minimal risk.
 
-.. note:: Nextcloud does staged roll-outs of new releases to further reduce the risk of widespread updates. New releases, particularly major releases, are usually only made available to a small percentage of systems initially. After a week (or more) has passed with no reported widespread critical bugs, more systems will be offered the update. Sometimes major versions are limited to <100% of systems until after the first maintenance (bug fix) release has been published. 
+.. note:: Nextcloud does staged roll-outs of new releases to further reduce the risk of widespread updates. New releases, particularly major releases, are usually only made available to a small percentage of systems initially. After a week (or more) has passed with no reported widespread critical bugs, more systems will be offered the update. Sometimes major versions are limited to <100% of systems until after the first maintenance (bug fix) release has been published.
 
 .. warning:: When using the ``stable`` channel it is possible you'll be *offered* a newer major version to upgrade to *even if* your existing major version has **not** reached end-of-life. It is up to you to decide whether to upgrade then or wait until a better time for deploying a major new release. On the other hand, new **maintenance** releases (within the major version you're already running) should be deployed as soon as possible to keep up-to-date with security and other critical bug fixes.
 
@@ -110,7 +110,7 @@ Before upgrading from one one major release to another, we strongly recommend re
 Beta releases and Release candidates
 ------------------------------------
 
-Before a new final major release is published, typically at least four beta releases are published followed by two release candidates, with an interval of one week between each. 
+Before a new final major release is published, typically at least four beta releases are published followed by two release candidates, with an interval of one week between each.
 
 Before a new final maintenance release is published, one release candidate is published approximately one week beforehand.
 
@@ -118,9 +118,9 @@ Anticipated dates for each release can be found on `detailed schedule <https://g
 
 .. tip:: To update sooner to a new major version or beta version, you may at your discretion adjust your instance to use the ``beta`` channel. Around big releases the ``beta`` channel also delivers the newest major version earlier regardless of staging parameters.
 
-Everyone in the community benefits considerably from the generous testing and feedback of those that choose to evaluate beta releases or release candidates in either their test environments or, for the bold, under real-world conditions. 
+Everyone in the community benefits considerably from the generous testing and feedback of those that choose to evaluate beta releases or release candidates in either their test environments or, for the bold, under real-world conditions.
 
-If you are in a position to evaluate a pre-final release, the developers and the entire community thank you! 
+If you are in a position to evaluate a pre-final release, the developers and the entire community thank you!
 
 .. tip:: We suggest focusing your testing efforts on verifying the functionality and features you rely on every day (to make sure these operate as expected). Then, if you are so inclined, to consider evaluating any new functionality that interests you. Please discuss problems that arise at the `Help Forum <https://help.nextcloud.com>`_ and report suspected bugs to `the GitHub repository <https://github.com/nextcloud/server/issues>`_.
 

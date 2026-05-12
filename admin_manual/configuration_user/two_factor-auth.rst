@@ -6,7 +6,7 @@ Two-factor authentication
 
 Two-factor authentication adds an additional layer of security to user accounts. In order to log
 in on an account when two-factor authentication (2FA) is enabled, you must provide both the
-login password and another factor. 
+login password and another factor.
 
 To use 2FA two things must happen:
 
@@ -18,7 +18,7 @@ Both steps are described below.
 Enabling two-factor authentication
 ----------------------------------
 
-2FA in Nextcloud is pluggable, meaning that various 2FA providers can be used to support different 
+2FA in Nextcloud is pluggable, meaning that various 2FA providers can be used to support different
 types of factors. Three providers are automatically installed (but may need to be enabled):
 
 **Two-Factor TOTP Provider**
@@ -31,7 +31,7 @@ types of factors. Three providers are automatically installed (but may need to b
 **Two-Factor Authentication via Nextcloud notifications**
 
 - A 2FA factor provider that enables the use of a logged in device as the secondary factor.
-- Disabled by default. Go to *Apps->Disabled apps* and find *Two-Factor Authentication via Nextcloud 
+- Disabled by default. Go to *Apps->Disabled apps* and find *Two-Factor Authentication via Nextcloud
   notification* to enable this factor.
 
 **Two-Factor Backup Codes**
@@ -41,11 +41,11 @@ types of factors. Three providers are automatically installed (but may need to b
 - Generates ten backup codes (which can, of course, only be used once).
 - Always enabled.
 
-Other 2FA providers may be found in the App Store. 
+Other 2FA providers may be found in the App Store.
 
 .. figure:: ../images/2fa-app-install.png
 
-Developers can also `implement new two-factor provider 
+Developers can also `implement new two-factor provider
 apps <https://docs.nextcloud.com/server/33/developer_manual/digging_deeper/two-factor-provider.html>`_.
 
 Enforcing two-factor authentication
@@ -56,7 +56,7 @@ it for their account `under their personal settings <https://docs.nextcloud.com/
 Admins may, however, enforce the use of 2FA.
 
 Enforcement is possible system-wide (all users) or for selected groups only. Select groups
-can also be excluded from 2FA requirements. 
+can also be excluded from 2FA requirements.
 
 These settings can be found under *Administration Settings->Security*.
 

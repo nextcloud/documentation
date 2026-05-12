@@ -4,7 +4,7 @@ Introduction
 
 **Welcome to the Nextcloud Server Administration Guide.**
 
-This guide explains how to perform administrative tasks in Nextcloud, a highly versatile and scalable open-source platform for file synchronization and content collaboration. 
+This guide explains how to perform administrative tasks in Nextcloud, a highly versatile and scalable open-source platform for file synchronization and content collaboration.
 
 With over 400,000 deployments, Nextcloud can run on a simple two-user Raspberry Pi or scale to support global, distributed installations serving tens of millions of users. It can be deployed on-premises, in private or public clouds, or in hybrid environments. Supported by a large and growing community, Nextcloud is available in more than 60 languages.
 
@@ -77,17 +77,17 @@ To get started, see the Installation section.
   The development of the Nextcloud platform is a cooperative
   endeavor overseen by the core maintainers -- primarily
   employed by Nextcloud GmbH -- along with thousands of
-  partners, providers, collaborators, project members, and 
+  partners, providers, collaborators, project members, and
   community participants.
 
-  The Nextcloud community includes everyone -- from individual 
+  The Nextcloud community includes everyone -- from individual
   users and independent developers to large organizations.
 
-  Community members share and discuss their experiences with 
-  the platform every day. They suggest improvements, 
-  collaborate on design, write code, create documentation, 
-  test for bugs, triage bug reports and enhancement ideas, 
-  support others, improve translations, and help fund and 
-  organize the logistics of a project this size. Most 
-  importantly, they use Nextcloud in their daily lives and 
+  Community members share and discuss their experiences with
+  the platform every day. They suggest improvements,
+  collaborate on design, write code, create documentation,
+  test for bugs, triage bug reports and enhancement ideas,
+  support others, improve translations, and help fund and
+  organize the logistics of a project this size. Most
+  importantly, they use Nextcloud in their daily lives and
   work.

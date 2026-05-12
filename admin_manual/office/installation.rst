@@ -12,7 +12,7 @@ For manual installations there are multiple options to get Nextcloud Office depl
     There are packages for all major Linux distributions available which allow deploying a Collabora Online server through installing it through the regular package management. For an example installation guide on Ubuntu, see: :doc:`example-ubuntu`
 
     .. seealso::
-        https://www.collaboraoffice.com/code/linux-packages/ 
+        https://www.collaboraoffice.com/code/linux-packages/
         https://sdk.collaboraonline.com/docs/installation/index.html
 
 
@@ -23,7 +23,7 @@ For manual installations there are multiple options to get Nextcloud Office depl
         https://sdk.collaboraonline.com/docs/installation/CODE_Docker_image.html
 
 
-- **Built-in CODE server** 
+- **Built-in CODE server**
     This app provides a built-in server with all of the document editing features of Collabora Online. Easy to install, for personal use or for small teams. A bit slower than a standalone server and without the advanced scalability features. Installation can be performed by enabling the according Nextcloud app. Further details can be found in the `app documentation <https://github.com/CollaboraOnline/richdocumentscode>`_.
 
     .. note::
@@ -33,10 +33,10 @@ For manual installations there are multiple options to get Nextcloud Office depl
 .. note::
     In most scenarios running a dedicated Collabora Online server will require some sort of reverse proxy to be setup in front of it. For more details see :doc:`proxy`.
 
-    
+
 .. toctree::
     :hidden:
-    
+
     example-ubuntu
     example-docker
     proxy
