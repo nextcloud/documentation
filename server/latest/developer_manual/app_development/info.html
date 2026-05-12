@@ -517,12 +517,32 @@
 </dd>
 <dt>settings/admin</dt><dd><ul class="simple">
 <li><p>optional</p></li>
-<li><p>must contain a php class which implements OCPSettingsISettings and returns the form to render for the global settings area</p></li>
+<li><p>must contain a php class which implements OCPSettingsISettings and returns the form to render for the admin settings area</p></li>
 </ul>
 </dd>
 <dt>settings/admin-section</dt><dd><ul class="simple">
 <li><p>optional</p></li>
-<li><p>must contain a php class which implements OCPSettingsISection and returns data to render navigation entries in the global settings area</p></li>
+<li><p>must contain a php class which implements OCPSettingsISection and returns data to render navigation entries in the admin settings area</p></li>
+</ul>
+</dd>
+<dt>settings/personal</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which implements OCPSettingsISettings and returns the form to render for the personal settings area</p></li>
+</ul>
+</dd>
+<dt>settings/personal-section</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which implements OCPSettingsISection and returns data to render navigation entries in the personal settings area</p></li>
+</ul>
+</dd>
+<dt>settings/admin-delegation</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which implements OCPSettingsISettings and has no UI (in settings) because it is only intended to be used for admin delegation</p></li>
+</ul>
+</dd>
+<dt>settings/admin-delegation-section</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which implements OCPSettingsISection which contains delegation-only settings classes as defined above</p></li>
 </ul>
 </dd>
 <dt>navigations</dt><dd><ul class="simple">
@@ -627,7 +647,7 @@ The app will notify users about after the app update if either a <code class="do
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on May 08, 2026.
+      <span class="lastupdated">Last updated on May 11, 2026.
       </span></p>
   </div>
 
