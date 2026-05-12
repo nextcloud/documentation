@@ -64,6 +64,11 @@ Removed back-end APIs
   - ``\OCP\AppFramework\Http\StrictContentSecurityPolicy``
   - ``\OCP\AppFramework\Http\StrictEvalContentSecurityPolicy``
   - ``\OCP\AppFramework\Http\StrictInlineContentSecurityPolicy``
+- Various methods from the legacy ``OC_Util`` static class were removed.
+  - Instead of ``\OC_Util::encodePath`` use ``\OCP\Util::encodePath``.
+  - Instead of ``\OC_Util::sanitizeHTML`` use ``\OCP\Util::sanitizeHTML``
+  - Instead of ``\OC_Util::redirectToDefaultPage`` and  ``\OC_Util::getDefaultPageUrl`` use ``\OCP\IUrlGenerator::linkToDefaultPageUrl``
+  - Instead of ``\OC_Util::checkAdminUser`` use ``IGroupManager::class::isAdmin``
 
 
 Unified sharing
