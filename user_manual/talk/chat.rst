@@ -76,6 +76,7 @@ Inserting emoji
 You can add emoji using the picker on the left of the text input field.
 
 .. image:: images/emoji-picker.png
+   :alt: Talk chat emoji picker panel
    :width: 400px
 
 Smart Picker
@@ -86,6 +87,7 @@ Just choose the type of content you want to insert (files, Talk conversations, D
 You can also type `/` in the chat input to open the selector.
 
 .. image:: images/smart-picker.png
+   :alt: Talk smart picker opened with slash command for inserting objects
    :width: 400px
 
 Several integration apps can extend the Smart Picker with additional content types, such as GitHub and GitLab issues, Giphy GIFs, and more. Ask your administrator which integrations are available on your instance.
@@ -96,11 +98,13 @@ Replying to messages and more
 You can reply to a message using the arrow that appears when you hover a message.
 
 .. image:: images/reply.png
+   :alt: Talk chat message with the reply arrow highlighted on hover
    :width: 600px
 
 In the ``...`` menu you can also choose to reply privately. This will open a one-to-one conversation.
 
 .. image:: images/chat-message-menu.png
+   :alt: Talk chat message context menu with reply and other options
    :width: 600px
 
 Here you can also create a direct link to the message or mark it unread so you will scroll back there next time you enter the chat. When it is a file, you can view the file in Files.
@@ -112,6 +116,7 @@ If you don't want to disturb anyone in the middle of the night, there is a silen
 While it is enabled, other participants will not receive notifications from your messages.
 
 .. image:: images/message-silent.png
+   :alt: Talk chat input with silent message option enabled
    :width: 600px
 
 Scheduling messages
@@ -120,11 +125,13 @@ Scheduling messages
 If you want to send a message not right now, but at a specific time, you can schedule it. Just select the desired date and time in the quick actions next to the input field.
 
 .. image:: images/message-schedule-action.png
+   :alt: Talk message compose area with schedule send option
    :width: 600px
 
 You can find all your scheduled messages by clicking on the clock icon next to the input field. There you can edit, reschedule or delete currently prepared messages.
 
 .. image:: images/message-schedule-toggle.png
+   :alt: Talk navigation bar with clock icon to view scheduled messages
    :width: 400px
 
 Chat summary
@@ -134,7 +141,9 @@ When AI assistant is enabled, a summary can be generated for a conversation if t
 You can generate it by pressing the button that is visible in chat above the first unread messages.
 
 .. image:: images/chat-summary-button.png
+   :alt: Talk chat view with the AI summary generation button visible
    :width: 500px
 
 .. image:: images/chat-summary-text.png
+   :alt: Talk AI-generated chat summary displayed in the conversation
    :width: 500px

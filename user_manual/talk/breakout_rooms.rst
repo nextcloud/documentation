@@ -13,6 +13,7 @@ Configure breakout rooms
 To create breakout rooms, you need to be a moderator in a group conversation. Click on the top-bar menu and click on ``Setup breakout rooms``.
 
 .. image:: images/talk-breakout-rooms-setup.png
+    :alt: Talk Breakout rooms setup button in conversation controls
     :width: 400px
 
 A dialog will open where you can specify the number of rooms you want to create and the participants assignment method.
@@ -23,6 +24,7 @@ You have three options:
 - **Allow participants to choose**: Participants will be able to join breakout rooms themselves.
 
 .. image:: images/talk-breakout-rooms-setup-dialog.png
+    :alt: Talk breakout rooms configuration dialog showing participant assignment options
     :width: 500px
 
 Manage breakout rooms
@@ -31,6 +33,7 @@ Manage breakout rooms
 Once the breakout rooms are created, you will be able to see them in the sidebar.
 
 .. image:: images/talk-breakout-rooms-sidebar.png
+    :alt: Talk sidebar showing created breakout rooms
     :width: 500px
 
 From the sidebar header, you can:
@@ -40,12 +43,14 @@ From the sidebar header, you can:
 - **Make changes to the assigned participants**: this will open the participants editor where you can change which participants are assigned to which breakout room. From this dialog it's also possible to delete the breakout rooms.
 
 .. image:: images/talk-breakout-rooms-sidebar-header.png
+    :alt: Talk breakout rooms sidebar header with start and manage options
     :width: 400px
 
 From the breakout room element in the sidebar, you can also join a particular breakout room or send a message to a
 specific room.
 
 .. image:: images/talk-breakout-rooms-sidebar-item.png
+    :alt: Talk individual breakout room entry in the sidebar with join option
     :width: 400px
 
 .. FIXME Ask for assistance, demo "free selection for a user"
