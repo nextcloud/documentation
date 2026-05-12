@@ -694,40 +694,40 @@ If successful, the ExApp will be displayed under the “Your apps” list.</p>
 <p>Frontend requests in case of Docker Socket Proxy:</p>
 <pre  class="mermaid">
         graph LR;
-        subgraph Browser
-                A[Frontend]
-        end
+    subgraph Browser
+        A[Frontend]
+    end
 
-        B[Proxy]
+    B[Proxy]
 
-        subgraph Services behind the proxy
-                C[Docker Socket Proxy]
-                D[ExApp]
-                E[Nextcloud Server / AppAPI]
-        end
+    subgraph Services behind the proxy
+        C[Docker Socket Proxy]
+        D[ExApp]
+        E[Nextcloud Server / AppAPI]
+    end
 
-        A --&gt; B
-        B --&gt;|Request to an ExApp| E --Converted to ExApp auth--&gt; D
-        B --&gt;|All other usual requests| E
+    A --&gt; B
+    B --&gt;|Request to an ExApp| E --Converted to ExApp auth--&gt; D
+    B --&gt;|All other usual requests| E
     </pre><p>Frontend requests in case of HaRP:</p>
 <pre  class="mermaid">
         graph LR;
-        subgraph Browser
-                A[Frontend]
-        end
+    subgraph Browser
+        A[Frontend]
+    end
 
-        B[Proxy]
+    B[Proxy]
 
-        subgraph Services behind the proxy
-                C[HaRP]
-                D[ExApp]
-                E[Nextcloud Server / AppAPI]
-        end
+    subgraph Services behind the proxy
+        C[HaRP]
+        D[ExApp]
+        E[Nextcloud Server / AppAPI]
+    end
 
-        B --All other usual requests--&gt; E
-        A --&gt; B
-        B --Direct request to an ExApp--&gt; C --Converted to ExApp auth--&gt; D
-        C --User auth validation--&gt; E
+    B --All other usual requests--&gt; E
+    A --&gt; B
+    B --Direct request to an ExApp--&gt; C --Converted to ExApp auth--&gt; D
+    C --User auth validation--&gt; E
     </pre></section>
 </section>
 
