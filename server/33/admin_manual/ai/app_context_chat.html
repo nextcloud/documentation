@@ -394,6 +394,10 @@ It is a CPU-bound task so having a powerful CPU will help speed up the parsing p
 <section id="logs">
 <h2>Logs<a class="headerlink" href="#logs" title="Link to this heading"></a></h2>
 <p>Logs for both the <code class="docutils literal notranslate"><span class="pre">context_chat</span></code> PHP app and the <code class="docutils literal notranslate"><span class="pre">context_chat_backend</span></code> ExApp can be found in the admin settings of your Nextcloud GUI as well as in the Context Chat log file, which is usually located in the Nextcloud data directory. The log file is named <code class="docutils literal notranslate"><span class="pre">context_chat.log</span></code>.</p>
+<div class="line-block">
+<div class="line">The internal PostgreSQL Vector DB logs (in case of non-Kubernetes setups) can be found inside the docker container at <code class="docutils literal notranslate"><span class="pre">/nc_app_context_chat_backend_data/vector_db_data/pgsql/logfile</span></code>. It can be copied to host using <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">cp</span> <span class="pre">nc_app_context_chat_backend:/nc_app_context_chat_backend_data/vector_db_data/pgsql/logfile</span> <span class="pre">/tmp/vectordb-logfile</span></code>.</div>
+<div class="line">This might be needed when the automated setting up of the vector db fails with something like: “pg_ctl: could not start server”.</div>
+</div>
 </section>
 <section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
