@@ -90,6 +90,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#enabling-the-antivirus-app-for-files">Enabling the antivirus app for files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuring-clamav-on-nextcloud">Configuring ClamAV on Nextcloud</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#confirm-everything-is-working">Confirm everything is working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#encrypted-file-detection-limitations-with-clamav">Encrypted File Detection Limitations with ClamAV</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#manage-the-background-scanner">Manage the background scanner</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#get-info-about-files-in-the-scan-queue">Get info about files in the scan queue</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#manually-trigger-the-background-scan">Manually trigger the background scan</a></li>
@@ -367,6 +368,18 @@ back and change all of your logging to less verbose levels.</p>
 <dt>Uploading the file will trigger an error:</dt><dd><p>“Virus Win.Test.EICAR_HDB-1 is detected in the file. Upload cannot be completed.”</p>
 </dd>
 </dl>
+</section>
+<section id="encrypted-file-detection-limitations-with-clamav">
+<h2>Encrypted File Detection Limitations with ClamAV<a class="headerlink" href="#encrypted-file-detection-limitations-with-clamav" title="Link to this heading"></a></h2>
+<p>By default, ClamAV may still return “OK” for password-protected archives and encrypted files.
+This known ClamAV behavior bypasses “Block unscannable files” option of Antivirus app.
+You may configure additional alert options in <code class="docutils literal notranslate"><span class="pre">clamd.conf</span></code>, that should catch it:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AlertEncryptedArchive</span></code> - Alert on encrypted archives with heuristic signature (encrypted .zip, .7zip, .rar).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AlertEncryptedDoc</span></code> - Alert on encrypted archives with heuristic signature (encrypted .pdf).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AlertEncrypted</span></code> - Alert on both encrypted archives and documents with heuristic signature.</p></li>
+</ul>
+<p>For reliable detection and blocking of encrypted files, consult available antivirus backends documentation.</p>
 </section>
 <section id="manage-the-background-scanner">
 <h2>Manage the background scanner<a class="headerlink" href="#manage-the-background-scanner" title="Link to this heading"></a></h2>
