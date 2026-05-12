@@ -281,11 +281,11 @@ trusted_domains
 ::
 
     'trusted_domains' => [
-    		'demo.example.org',
-    		'otherdomain.example.org',
-    		'10.111.112.113',
-    		'[2001:db8::1]'
-    	],
+            'demo.example.org',
+            'otherdomain.example.org',
+            '10.111.112.113',
+            '[2001:db8::1]'
+        ],
 
 Your list of trusted domains that users can log into. Specifying trusted
 domains prevents host header poisoning. Do not remove this, as it performs
@@ -435,9 +435,9 @@ dbreplica
 ::
 
     'dbreplica' => [
-    		['user' => 'nextcloud', 'password' => 'password1', 'host' => 'replica1', 'dbname' => ''],
-    		['user' => 'nextcloud', 'password' => 'password2', 'host' => 'replica2', 'dbname' => ''],
-    	],
+            ['user' => 'nextcloud', 'password' => 'password1', 'host' => 'replica1', 'dbname' => ''],
+            ['user' => 'nextcloud', 'password' => 'password2', 'host' => 'replica2', 'dbname' => ''],
+        ],
 
 Specify read-only replicas to be used by Nextcloud when querying the database
 
@@ -911,11 +911,11 @@ ratelimit_overwrite
 ::
 
     'ratelimit_overwrite' => [
-    		'profile.profilepage.index' => [
-    			'user' => ['limit' => 300, 'period' => 3600],
-    			'anon' => ['limit' => 1, 'period' => 300],
-    		]
-    	],
+            'profile.profilepage.index' => [
+                'user' => ['limit' => 300, 'period' => 3600],
+                'anon' => ['limit' => 1, 'period' => 300],
+            ]
+        ],
 
 Overwrite the individual rate limit for a specific route
 
@@ -1664,11 +1664,11 @@ connectivity_check_domains
 ::
 
     'connectivity_check_domains' => [
-    		'https://www.nextcloud.com',
-    		'https://www.startpage.com',
-    		'https://www.eff.org',
-    		'https://www.edri.org'
-    	],
+            'https://www.nextcloud.com',
+            'https://www.startpage.com',
+            'https://www.eff.org',
+            'https://www.edri.org'
+        ],
 
 Which domains to request to determine the availability of an Internet
 connection. If none of these hosts are reachable, the administration panel
@@ -1908,19 +1908,19 @@ log.condition
 ::
 
     'log.condition' => [
-    		'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
-    		'users' => ['sample-user'],
-    		'apps' => ['files'],
-    		'matches' => [
-    			[
-    				'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
-    				'users' => ['sample-user'],
-    				'apps' => ['files'],
-    				'loglevel' => 1,
-    				'message' => 'contains substring'
-    			],
-    		],
-    	],
+            'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+            'users' => ['sample-user'],
+            'apps' => ['files'],
+            'matches' => [
+                [
+                    'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+                    'users' => ['sample-user'],
+                    'apps' => ['files'],
+                    'loglevel' => 1,
+                    'message' => 'contains substring'
+                ],
+            ],
+        ],
 
 Log condition for log level increase based on conditions. Once one of these
 conditions is met, the required log level is set to debug. This allows
@@ -2131,15 +2131,15 @@ customclient_desktop
 ::
 
     'customclient_desktop'
-    		=> 'https://nextcloud.com/install/#install-clients',
-    	'customclient_android'
-    		=> 'https://play.google.com/store/apps/details?id=com.nextcloud.client',
-    	'customclient_ios'
-    		=> 'https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8',
-    	'customclient_ios_appid'
-    		=> '1125420102',
-    	'customclient_fdroid'
-    		=> 'https://f-droid.org/packages/com.nextcloud.client/',
+            => 'https://nextcloud.com/install/#install-clients',
+        'customclient_android'
+            => 'https://play.google.com/store/apps/details?id=com.nextcloud.client',
+        'customclient_ios'
+            => 'https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8',
+        'customclient_ios_appid'
+            => '1125420102',
+        'customclient_fdroid'
+            => 'https://f-droid.org/packages/com.nextcloud.client/',
 
 This section is for configuring the download links for Nextcloud clients, as
 seen in the first-run wizard and on Personal pages.
@@ -2194,7 +2194,7 @@ past activities to be displayed (no retroactivity).
 .. warning::
 
   Enabling this comes with some CRITICAL trade-offs:
-  
+
   - If team folder "Advanced Permissions" (ACLs) are used, activities do not
     respect the permissions and therefore all users see all activities, even
     for files and directories they do not have access to.
@@ -2275,12 +2275,12 @@ apps_paths
 ::
 
     'apps_paths' => [
-    		[
-    			'path' => '/var/www/nextcloud/apps',
-    			'url' => '/apps',
-    			'writable' => true,
-    		],
-    	],
+            [
+                'path' => '/var/www/nextcloud/apps',
+                'url' => '/apps',
+                'writable' => true,
+            ],
+        ],
 
 Use the ``apps_paths`` parameter to set the location of the Apps directory,
 which should be scanned for available apps, and where user-specific apps
@@ -2482,17 +2482,17 @@ enabledPreviewProviders
 ::
 
     'enabledPreviewProviders' => [
-    		'OC\Preview\PNG',
-    		'OC\Preview\JPEG',
-    		'OC\Preview\GIF',
-    		'OC\Preview\BMP',
-    		'OC\Preview\XBitmap',
-    		'OC\Preview\Krita',
-    		'OC\Preview\WebP',
-    		'OC\Preview\MarkDown',
-    		'OC\Preview\TXT',
-    		'OC\Preview\OpenDocument',
-    	],
+            'OC\Preview\PNG',
+            'OC\Preview\JPEG',
+            'OC\Preview\GIF',
+            'OC\Preview\BMP',
+            'OC\Preview\XBitmap',
+            'OC\Preview\Krita',
+            'OC\Preview\WebP',
+            'OC\Preview\MarkDown',
+            'OC\Preview\TXT',
+            'OC\Preview\OpenDocument',
+        ],
 
 Only register providers that have been explicitly enabled
 
@@ -2706,8 +2706,8 @@ openssl
 ::
 
     'openssl' => [
-    		'config' => '/absolute/location/of/openssl.cnf',
-    	],
+            'config' => '/absolute/location/of/openssl.cnf',
+        ],
 
 Extra SSL options to be used for configuration.
 
@@ -2782,21 +2782,21 @@ redis
 ::
 
     'redis' => [
-    		'host' => 'localhost', // can also be a Unix domain socket: '/tmp/redis.sock'
-    		'port' => 6379,
-    		'timeout' => 0.0,
-    		'read_timeout' => 0.0,
-    		'user' => '', // Optional: if not defined, no password will be used.
-    		'password' => '', // Optional: if not defined, no password will be used.
-    		'dbindex' => 0, // Optional: if undefined, SELECT will not run and will use Redis Server's default DB Index.
-    		// If Redis in-transit encryption is enabled, provide certificates
-    		// SSL context https://www.php.net/manual/en/context.ssl.php
-    		'ssl_context' => [
-    			'local_cert' => '/certs/redis.crt',
-    			'local_pk' => '/certs/redis.key',
-    			'cafile' => '/certs/ca.crt'
-    		]
-    	],
+            'host' => 'localhost', // can also be a Unix domain socket: '/tmp/redis.sock'
+            'port' => 6379,
+            'timeout' => 0.0,
+            'read_timeout' => 0.0,
+            'user' => '', // Optional: if not defined, no password will be used.
+            'password' => '', // Optional: if not defined, no password will be used.
+            'dbindex' => 0, // Optional: if undefined, SELECT will not run and will use Redis Server's default DB Index.
+            // If Redis in-transit encryption is enabled, provide certificates
+            // SSL context https://www.php.net/manual/en/context.ssl.php
+            'ssl_context' => [
+                'local_cert' => '/certs/redis.crt',
+                'local_pk' => '/certs/redis.key',
+                'cafile' => '/certs/ca.crt'
+            ]
+        ],
 
 Connection details for Redis to use for memory caching in a single server configuration.
 
@@ -2814,23 +2814,23 @@ redis.cluster
 ::
 
     'redis.cluster' => [
-    		'seeds' => [ // provide some or all of the cluster servers to bootstrap discovery, port required
-    			'localhost:7000',
-    			'localhost:7001',
-    		],
-    		'timeout' => 0.0,
-    		'read_timeout' => 0.0,
-    		'failover_mode' => \RedisCluster::FAILOVER_ERROR,
-    		'user' => '', // Optional: if not defined, no password will be used.
-    		'password' => '', // Optional: if not defined, no password will be used.
-    		// If Redis in-transit encryption is enabled, provide certificates
-    		// SSL context https://www.php.net/manual/en/context.ssl.php
-    		'ssl_context' => [
-    			'local_cert' => '/certs/redis.crt',
-    			'local_pk' => '/certs/redis.key',
-    			'cafile' => '/certs/ca.crt'
-    		]
-    	],
+            'seeds' => [ // provide some or all of the cluster servers to bootstrap discovery, port required
+                'localhost:7000',
+                'localhost:7001',
+            ],
+            'timeout' => 0.0,
+            'read_timeout' => 0.0,
+            'failover_mode' => \RedisCluster::FAILOVER_ERROR,
+            'user' => '', // Optional: if not defined, no password will be used.
+            'password' => '', // Optional: if not defined, no password will be used.
+            // If Redis in-transit encryption is enabled, provide certificates
+            // SSL context https://www.php.net/manual/en/context.ssl.php
+            'ssl_context' => [
+                'local_cert' => '/certs/redis.crt',
+                'local_pk' => '/certs/redis.key',
+                'cafile' => '/certs/ca.crt'
+            ]
+        ],
 
 Connection details for a Redis Cluster.
 
@@ -2864,13 +2864,13 @@ memcached_servers
 ::
 
     'memcached_servers' => [
-    		// hostname, port and optional weight
-    		// or path and port 0 for Unix socket. Also see:
-    		// https://www.php.net/manual/en/memcached.addservers.php
-    		// https://www.php.net/manual/en/memcached.addserver.php
-    		['localhost', 11211],
-    		//array('other.host.local', 11211),
-    	],
+            // hostname, port and optional weight
+            // or path and port 0 for Unix socket. Also see:
+            // https://www.php.net/manual/en/memcached.addservers.php
+            // https://www.php.net/manual/en/memcached.addserver.php
+            ['localhost', 11211],
+            //array('other.host.local', 11211),
+        ],
 
 Server details for one or more Memcached servers to use for memory caching.
 
@@ -2881,25 +2881,25 @@ memcached_options
 ::
 
     'memcached_options' => [
-    		// Set timeouts to 50ms
-    		\Memcached::OPT_CONNECT_TIMEOUT => 50,
-    		\Memcached::OPT_RETRY_TIMEOUT => 50,
-    		\Memcached::OPT_SEND_TIMEOUT => 50,
-    		\Memcached::OPT_RECV_TIMEOUT => 50,
-    		\Memcached::OPT_POLL_TIMEOUT => 50,
-    
-    		// Enable compression
-    		\Memcached::OPT_COMPRESSION => true,
-    
-    		// Turn on consistent hashing
-    		\Memcached::OPT_LIBKETAMA_COMPATIBLE => true,
-    
-    		// Enable Binary Protocol
-    		\Memcached::OPT_BINARY_PROTOCOL => true,
-    
-    		// Binary serializer will be enabled if the igbinary PECL module is available
-    		//\Memcached::OPT_SERIALIZER => \Memcached::SERIALIZER_IGBINARY,
-    	],
+            // Set timeouts to 50ms
+            \Memcached::OPT_CONNECT_TIMEOUT => 50,
+            \Memcached::OPT_RETRY_TIMEOUT => 50,
+            \Memcached::OPT_SEND_TIMEOUT => 50,
+            \Memcached::OPT_RECV_TIMEOUT => 50,
+            \Memcached::OPT_POLL_TIMEOUT => 50,
+
+            // Enable compression
+            \Memcached::OPT_COMPRESSION => true,
+
+            // Turn on consistent hashing
+            \Memcached::OPT_LIBKETAMA_COMPATIBLE => true,
+
+            // Enable Binary Protocol
+            \Memcached::OPT_BINARY_PROTOCOL => true,
+
+            // Binary serializer will be enabled if the igbinary PECL module is available
+            //\Memcached::OPT_SERIALIZER => \Memcached::SERIALIZER_IGBINARY,
+        ],
 
 Connection options for Memcached
 
@@ -2959,36 +2959,36 @@ objectstore
 ::
 
     'objectstore' => [
-    		'class' => 'OC\\Files\\ObjectStore\\Swift',
-    		'arguments' => [
-    			// trystack will use your Facebook ID as the username
-    			'username' => 'facebook100000123456789',
-    			// in the trystack dashboard, go to user -> settings -> API Password to
-    			// generate a password
-    			'password' => 'Secr3tPaSSWoRdt7',
-    			// must already exist in the objectstore, name can be different
-    			'container' => 'nextcloud',
-    			// prefix to prepend to the fileid, default is 'oid:urn:'
-    			'objectPrefix' => 'oid:urn:',
-    			// create the container if it does not exist. default is false
-    			'autocreate' => true,
-    			// required, dev-/trystack defaults to 'RegionOne'
-    			'region' => 'RegionOne',
-    			// The Identity / Keystone endpoint
-    			'url' => 'http://8.21.28.222:5000/v2.0',
-    			// uploadPartSize: size of the uploaded chunks, defaults to 524288000
-    			'uploadPartSize' => 524288000,
-    			// required on dev-/trystack
-    			'tenantName' => 'facebook100000123456789',
-    			// dev-/trystack uses swift by default, the lib defaults to 'cloudFiles'
-    			// if omitted
-    			'serviceName' => 'swift',
-    			// The Interface / URL Type, optional
-    			'urlType' => 'internal',
-    			// Maximum amount of data that can be uploaded
-    			'totalSizeLimit' => 1024 * 1024 * 1024,
-    		],
-    	],
+            'class' => 'OC\\Files\\ObjectStore\\Swift',
+            'arguments' => [
+                // trystack will use your Facebook ID as the username
+                'username' => 'facebook100000123456789',
+                // in the trystack dashboard, go to user -> settings -> API Password to
+                // generate a password
+                'password' => 'Secr3tPaSSWoRdt7',
+                // must already exist in the objectstore, name can be different
+                'container' => 'nextcloud',
+                // prefix to prepend to the fileid, default is 'oid:urn:'
+                'objectPrefix' => 'oid:urn:',
+                // create the container if it does not exist. default is false
+                'autocreate' => true,
+                // required, dev-/trystack defaults to 'RegionOne'
+                'region' => 'RegionOne',
+                // The Identity / Keystone endpoint
+                'url' => 'http://8.21.28.222:5000/v2.0',
+                // uploadPartSize: size of the uploaded chunks, defaults to 524288000
+                'uploadPartSize' => 524288000,
+                // required on dev-/trystack
+                'tenantName' => 'facebook100000123456789',
+                // dev-/trystack uses swift by default, the lib defaults to 'cloudFiles'
+                // if omitted
+                'serviceName' => 'swift',
+                // The Interface / URL Type, optional
+                'urlType' => 'internal',
+                // Maximum amount of data that can be uploaded
+                'totalSizeLimit' => 1024 * 1024 * 1024,
+            ],
+        ],
 
 This example shows how to configure Nextcloud to store all files in a
 Swift object storage.
@@ -3015,31 +3015,31 @@ objectstore
 ::
 
     'objectstore' => [
-    		'class' => 'OC\\Files\\ObjectStore\\Swift',
-    		'arguments' => [
-    			'autocreate' => true,
-    			'user' => [
-    				'name' => 'swift',
-    				'password' => 'swift',
-    				'domain' => [
-    					'name' => 'default',
-    				],
-    			],
-    			'scope' => [
-    				'project' => [
-    					'name' => 'service',
-    					'domain' => [
-    						'name' => 'default',
-    					],
-    				],
-    			],
-    			'tenantName' => 'service',
-    			'serviceName' => 'swift',
-    			'region' => 'regionOne',
-    			'url' => 'http://yourswifthost:5000/v3',
-    			'bucket' => 'nextcloud',
-    		],
-    	],
+            'class' => 'OC\\Files\\ObjectStore\\Swift',
+            'arguments' => [
+                'autocreate' => true,
+                'user' => [
+                    'name' => 'swift',
+                    'password' => 'swift',
+                    'domain' => [
+                        'name' => 'default',
+                    ],
+                ],
+                'scope' => [
+                    'project' => [
+                        'name' => 'service',
+                        'domain' => [
+                            'name' => 'default',
+                        ],
+                    ],
+                ],
+                'tenantName' => 'service',
+                'serviceName' => 'swift',
+                'region' => 'regionOne',
+                'url' => 'http://yourswifthost:5000/v3',
+                'bucket' => 'nextcloud',
+            ],
+        ],
 
 To use Swift V3
 
@@ -3050,26 +3050,26 @@ objectstore
 ::
 
     'objectstore' => [
-    		'class' => 'OC\\Files\\ObjectStore\\S3',
-    		'arguments' => [
-    			'bucket' => 'nextcloud',
-    			'key' => 'your-access-key',
-    			'secret' => 'your-secret-key',
-    			'hostname' => 's3.example.com',
-    			'port' => 443,
-    			'use_ssl' => true,
-    			'region' => 'us-east-1',
-    			// optional: Maximum number of retry attempts for failed S3 requests
-    			// Default: 5
-    			'retriesMaxAttempts' => 5,
-    			// Data Integrity Protections for Amazon S3 (https://docs.aws.amazon.com/sdkref/latest/guide/feature-dataintegrity.html)
-    			// Valid values are "when_required" (default) and "when_supported".
-    			// To ensure compatibility with 3rd party S3 implementations, Nextcloud disables it by default. However, if you are
-    			// using Amazon S3 (or any other implementation that supports it) we recommend enabling it by using "when_supported".
-    			'request_checksum_calculation' => 'when_required',
-    			'response_checksum_validation' => 'when_required',
-    		],
-    	],
+            'class' => 'OC\\Files\\ObjectStore\\S3',
+            'arguments' => [
+                'bucket' => 'nextcloud',
+                'key' => 'your-access-key',
+                'secret' => 'your-secret-key',
+                'hostname' => 's3.example.com',
+                'port' => 443,
+                'use_ssl' => true,
+                'region' => 'us-east-1',
+                // optional: Maximum number of retry attempts for failed S3 requests
+                // Default: 5
+                'retriesMaxAttempts' => 5,
+                // Data Integrity Protections for Amazon S3 (https://docs.aws.amazon.com/sdkref/latest/guide/feature-dataintegrity.html)
+                // Valid values are "when_required" (default) and "when_supported".
+                // To ensure compatibility with 3rd party S3 implementations, Nextcloud disables it by default. However, if you are
+                // using Amazon S3 (or any other implementation that supports it) we recommend enabling it by using "when_supported".
+                'request_checksum_calculation' => 'when_required',
+                'response_checksum_validation' => 'when_required',
+            ],
+        ],
 
 To use S3 object storage
 
@@ -3344,12 +3344,12 @@ dbdriveroptions
 ::
 
     'dbdriveroptions' => [
-    		PDO::MYSQL_ATTR_SSL_CA => '/file/path/to/ca_cert.pem',
-    		PDO::MYSQL_ATTR_SSL_KEY => '/file/path/to/mysql-client-key.pem',
-    		PDO::MYSQL_ATTR_SSL_CERT => '/file/path/to/mysql-client-cert.pem',
-    		PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
-    		PDO::MYSQL_ATTR_INIT_COMMAND => 'SET wait_timeout = 28800'
-    	],
+            PDO::MYSQL_ATTR_SSL_CA => '/file/path/to/ca_cert.pem',
+            PDO::MYSQL_ATTR_SSL_KEY => '/file/path/to/mysql-client-key.pem',
+            PDO::MYSQL_ATTR_SSL_CERT => '/file/path/to/mysql-client-cert.pem',
+            PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET wait_timeout = 28800'
+        ],
 
 Additional driver options for the database connection, e.g., to enable SSL
 encryption in MySQL or specify a custom wait timeout on a cheap hoster.
@@ -3439,12 +3439,12 @@ pgsql_ssl
 ::
 
     'pgsql_ssl' => [
-    		'mode' => '',
-    		'cert' => '',
-    		'rootcert' => '',
-    		'key' => '',
-    		'crl' => '',
-    	],
+            'mode' => '',
+            'cert' => '',
+            'rootcert' => '',
+            'key' => '',
+            'crl' => '',
+        ],
 
 PostgreSQL SSL connection
 
@@ -3455,11 +3455,11 @@ supportedDatabases
 ::
 
     'supportedDatabases' => [
-    		'sqlite',
-    		'mysql',
-    		'pgsql',
-    		'oci',
-    	],
+            'sqlite',
+            'mysql',
+            'pgsql',
+            'oci',
+        ],
 
 Database types supported for installation.
 
@@ -4139,9 +4139,9 @@ csrf.optout
 ::
 
     'csrf.optout' => [
-    		'/^WebDAVFS/', // OS X Finder
-    		'/^Microsoft-WebDAV-MiniRedir/', // Windows WebDAV drive
-    	],
+            '/^WebDAVFS/', // OS X Finder
+            '/^Microsoft-WebDAV-MiniRedir/', // Windows WebDAV drive
+        ],
 
 List of user agents exempt from SameSite cookie protection due to non-standard
 HTTP behavior.
@@ -4464,14 +4464,14 @@ binary_search_paths
 ::
 
     'binary_search_paths' => [
-    		'/usr/local/sbin',
-    		'/usr/local/bin',
-    		'/usr/sbin',
-    		'/usr/bin',
-    		'/sbin',
-    		'/bin',
-    		'/opt/bin',
-    	],
+            '/usr/local/sbin',
+            '/usr/local/bin',
+            '/usr/sbin',
+            '/usr/bin',
+            '/sbin',
+            '/bin',
+            '/opt/bin',
+        ],
 
 Directories where Nextcloud searches for external binaries (e.g., LibreOffice,
 sendmail, ffmpeg).
@@ -4560,9 +4560,9 @@ openmetrics_skipped_classes
 ::
 
     'openmetrics_skipped_classes' => [
-    		'OC\OpenMetrics\Exporters\FilesByType',
-    		'OCA\Files_Sharing\OpenMetrics\SharesCount',
-    	],
+            'OC\OpenMetrics\Exporters\FilesByType',
+            'OCA\Files_Sharing\OpenMetrics\SharesCount',
+        ],
 
 OpenMetrics skipped exporters
 Allows to skip some exporters in the OpenMetrics endpoint ``/metrics``.
@@ -4576,10 +4576,10 @@ openmetrics_allowed_clients
 ::
 
     'openmetrics_allowed_clients' => [
-    		'192.168.0.0/16',
-    		'fe80::/10',
-    		'10.0.0.1',
-    	],
+            '192.168.0.0/16',
+            'fe80::/10',
+            '10.0.0.1',
+        ],
 
 OpenMetrics allowed client IP addresses
 Restricts the IP addresses able to make requests on the ``/metrics`` endpoint.
