@@ -335,7 +335,7 @@ date format in the example below, the date/time format will be written in the fo
 <h3>Log level interaction<a class="headerlink" href="#log-level-interaction" title="Link to this heading"></a></h3>
 <p>If system <code class="docutils literal notranslate"><span class="pre">loglevel</span></code> in <code class="docutils literal notranslate"><span class="pre">config.php</span></code> is set to <code class="docutils literal notranslate"><span class="pre">2</span></code> or higher, audit logging needs to be triggered explicitly by adding the following setting to <code class="docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;log.condition&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s2">&quot;apps&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;admin_audit&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;apps&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;admin_audit&quot;</span><span class="p">],</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -346,7 +346,7 @@ date format in the example below, the date/time format will be written in the fo
 <p>The built-in NC <code class="docutils literal notranslate"><span class="pre">logreader</span></code> app (which is what provides the <em>Administration settings-&gt;Logging</em> interface) only accesses the file-based <code class="docutils literal notranslate"><span class="pre">nextcloud.log</span></code>. The <strong>admin_audit</strong> app log output, however, can be integrated into the web interface by configuring it to <em>also</em> log to the <code class="docutils literal notranslate"><span class="pre">nextcloud.log</span></code>.</p>
 <p>Add the following to your <code class="docutils literal notranslate"><span class="pre">config.php</span></code> (adjusting the path to your own <code class="docutils literal notranslate"><span class="pre">nextcloud.log</span></code> path):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;log.condition&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;apps&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s1">&#39;admin_audit&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;apps&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s1">&#39;admin_audit&#39;</span><span class="p">],</span>
 <span class="p">],</span>
 <span class="s1">&#39;logfile_audit&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/var/www/html/data/nextcloud.log&#39;</span><span class="p">,</span>
 </pre></div>
