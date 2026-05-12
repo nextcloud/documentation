@@ -82,9 +82,9 @@ Docker, Docker-compose
 You can mount ClamAV Socket from the Docker Container to the host System as volume. In this case you do not need to expose any port outside of container.
 
 For a Docker run this command::
-  
+
   docker run --name clamav -d -v /var/run/clamav/:/var/run/clamav/ -v /var/docker/clamav/virus_db/:/var/lib/clamav/ clamav/clamav:stable_base
-    
+
 For a Docker-compose use following settings::
 
   version: "3.6"
@@ -212,7 +212,7 @@ Mark a file as scanned or unscanned
 ::
 
     sudo -E -u www-data php occ files_antivirus:mark <path> <scanned|unscanned>
-  
+
 Files marked as scanned will not be scanned for the next four weeks.
 
 Configuring ICAP on Nextcloud

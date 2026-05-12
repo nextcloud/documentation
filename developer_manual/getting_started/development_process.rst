@@ -40,7 +40,7 @@ Bugfixes
 
 If a contribution fixes a bug that also affects older Nextcloud or app releases, it may qualify for a *backport*. Backporting a fix means applying the change on an older version of the code. Git calls this operation *cherry picking*.
 
-Whenever a critical bug (i.e. security vulnerability) is fixed, it is backported to all applicable major releases and - once merged - published in the next set of maintenance releases for all still supported majors (e.g. 28.0.3 -> 28.0.4). 
+Whenever a critical bug (i.e. security vulnerability) is fixed, it is backported to all applicable major releases and - once merged - published in the next set of maintenance releases for all still supported majors (e.g. 28.0.3 -> 28.0.4).
 
 Backporting Considerations
 **************************
@@ -76,7 +76,7 @@ When assessing whether a bug is critical enough to backport, here are some possi
 - Does the main tracking Issue have a lot of upvotes/subscribers/comments?
 - Is it possible to take a "wait and see" attitude about backporting (i.e. continue to test the fix in main/master branch and wait one maintenance cycle to re-evaluate and only backport if further data from the field suggests its important enough and/or low-risk enough to do so)?
 
-Use your best judgement. 
+Use your best judgement.
 
 If appropriate, mention any major concerns in the backport PR so other code reviewers can consider them.
 

@@ -22,7 +22,7 @@ At the time of writing this guide, macOS is at version 26.3.1.
 
 .. figure:: ./images/macos_3.png
 
-4. Click on **add Other Account...** 
+4. Click on **add Other Account...**
 
 .. figure:: ./images/macos_4.png
 

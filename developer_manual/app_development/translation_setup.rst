@@ -132,7 +132,7 @@ The translation tool requires ``gettext``, installable via::
 The above tool generates a template that can be used to translate all strings
 of an app. This template is located in the folder :file:`translationfiles/template/` with the
 name :file:`myapp.pot`. It can be used by your favored translation tool such
-as `Poedit <https://poedit.net>`_. It then creates a :file:`.po` file. 
+as `Poedit <https://poedit.net>`_. It then creates a :file:`.po` file.
 The :file:`.po` file needs to be placed in a folder named like the language code
 with the app name as filename - for example :file:`translationfiles/es/myapp.po`.
 After this step the tool needs to be invoked to transfer the po file into our

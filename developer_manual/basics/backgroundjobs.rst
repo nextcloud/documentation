@@ -193,7 +193,7 @@ Beware that the reliability of the execution time is limited. Systems that do no
             // create an expiring share
 
             $this->jobList->scheduleAfter(
-                RevokeShare::class, 
+                RevokeShare::class,
                 ['id' => $shareId],
                 $expiration,
             );

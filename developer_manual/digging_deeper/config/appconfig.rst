@@ -14,7 +14,7 @@ AppFramework
 The AppConfig API is also available in the AppFramework, allowing you to use it in your app.
 All of the methods are available in the ``OCP\AppFramework\Services\IAppConfig`` interface.
 Any of the methods below will automatically be scoped to your app, meaning you can omit the app id.
-    
+
 .. code-block:: php
 
     <?php

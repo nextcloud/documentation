@@ -5,7 +5,7 @@ Templates
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
 Nextcloud provides its own templating system which is basically plain PHP with some additional functions and preset variables. All the parameters which have been passed from the :doc:`controller <../controllers>` are available in an array called **$_[]**, e.g.::
-    
+
     array('key' => 'something')
 
 can be accessed through::
@@ -29,7 +29,7 @@ Printing values is done by using the :php:func:`p()` function, printing HTML is 
 Including templates
 -------------------
 
-Templates can also include other templates by using the **$this->inc('templateName')** method. 
+Templates can also include other templates by using the **$this->inc('templateName')** method.
 
 .. code-block:: php
 
@@ -43,7 +43,7 @@ The parent variables will also be available in the included templates, but shoul
 
   <div>I am included, but I can still access the parents variables!</div>
   <?php p($_['name']); ?>
-  
+
   <?php print_unescaped($this->inc('other_template', array('variable' => 'value'))); ?>
 
 Including CSS and JavaScript
@@ -67,6 +67,6 @@ Including images
 To generate links to images use the **image_path** function:
 
 .. code-block:: php
-  
+
   <img src="<?php print_unescaped(image_path('myapp', 'app.png')); ?>" />
 

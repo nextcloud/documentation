@@ -6,7 +6,7 @@
 Development environment
 =======================
 
-We have a tutorial available on setting up your development environment using docker. You can find the tutorial `here <https://cloud.nextcloud.com/s/iyNGp8ryWxc7Efa?path=%2F>`_. We recommend you to follow that tutorial. 
+We have a tutorial available on setting up your development environment using docker. You can find the tutorial `here <https://cloud.nextcloud.com/s/iyNGp8ryWxc7Efa?path=%2F>`_. We recommend you to follow that tutorial.
 
 This page describes how to set up your development environment without docker.
 

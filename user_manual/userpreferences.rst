@@ -49,7 +49,7 @@ include the following:
 Sharing your data in the global address book
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Some administrators decide to share their global address book with other Nextcloud instances (so called *Trusted Servers*) or even with the wider world. 
+Some administrators decide to share their global address book with other Nextcloud instances (so called *Trusted Servers*) or even with the wider world.
 This is helpful when two instances want to work closely together, or when people want to use Nextcloud as a virtual telephone book for others to browse.
 It also allows searching for contacts, creating shares and much more.
 
@@ -66,7 +66,7 @@ If you set your data to **Local**, all logged in users within your Nextcloud ins
 
 If you set your data to **Federated**, the trusted server(s) which are added by your administrator will be able to see this data, in addition to all logged in users.
 
-If you set your data to **Published**, anyone can see your data. For some use cases this is wanted. 
+If you set your data to **Published**, anyone can see your data. For some use cases this is wanted.
 Someone with a public facing role such as marketing or sales might want to share their contact with a wide variety of connections which might not be using Nextcloud.
 
 

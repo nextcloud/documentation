@@ -11,7 +11,7 @@ Table of contents
     webinterface
     files/index
     groupware/index
-    talk/index 
+    talk/index
     desktop/index
     userpreferences
     universal_access

@@ -9,7 +9,7 @@ AppAPI takes responsibility to register FileActionsMenu; ExApps only need to reg
 
 .. note::
 
-	The FileActionsMenu is rendered only for enabled ExApps.
+    The FileActionsMenu is rendered only for enabled ExApps.
 
 Register
 ^^^^^^^^
@@ -23,25 +23,25 @@ Complete list of params (including optional):
 
 .. code-block:: json
 
-	{
-		"name": "unique_name_of_file_actions_menu",
-		"displayName": "Display name (for UI listing)",
-		"actionHandler": "/action_handler_route"
-		"mime": "mime of files where to display action menu",
-		"icon": "img/icon.svg",
-		"permissions": "permissions",
-		"order": "order_in_file_actions_menu",
-	}
+    {
+        "name": "unique_name_of_file_actions_menu",
+        "displayName": "Display name (for UI listing)",
+        "actionHandler": "/action_handler_route"
+        "mime": "mime of files where to display action menu",
+        "icon": "img/icon.svg",
+        "permissions": "permissions",
+        "order": "order_in_file_actions_menu",
+    }
 
 .. note:: Urls ``icon`` and ``actionHandler`` are relative to the ExApp root, starting slash is not required.
 
 Optional params
 ***************
 
-	* `permissions` - File permissions required to display action menu, default: **31** (all permissions)
-	* `order` - Order in file actions menu, default: **0**
-	* `icon` - Url to icon, default: **null**
-	* `mime` - One mime or mimes separated by commas, default: **file**
+    * `permissions` - File permissions required to display action menu, default: **31** (all permissions)
+    * `order` - Order in file actions menu, default: **0**
+    * `icon` - Url to icon, default: **null**
+    * `mime` - One mime or mimes separated by commas, default: **file**
 
 Unregister
 ^^^^^^^^^^
@@ -55,9 +55,9 @@ To unregister FileActionsMenu, you just need to provide the name of the register
 
 .. code-block:: json
 
-	{
-		"name": "unique_name_of_file_action_menu"
-	}
+    {
+        "name": "unique_name_of_file_action_menu"
+    }
 
 .. _node_info:
 
@@ -69,25 +69,25 @@ The following data is sent to the ExApp FileActionsMenu handler from the context
 
 .. code-block:: json
 
-	{
-		"fileId": "123",
-		"name": "filename",
-		"directory": "relative/to/user/path/to/directory",
-		"etag": "file_etag",
-		"mime": "file_full_mime",
-		"fileType": "dir/file",
-		"mtime": "last modify time(integer)",
-		"size": "integer",
-		"favorite": "nc_favorite_flag",
-		"permissions": "file_permissions_for_owner",
-		"shareOwner": "optional, str",
-		"shareOwnerId": "optional, str",
-		"shareTypes": "optional, int",
-		"shareAttributes": "optional, int",
-		"sharePermissions": "optional, int",
-		"userId": "string",
-		"instanceId": "string",
-	}
+    {
+        "fileId": "123",
+        "name": "filename",
+        "directory": "relative/to/user/path/to/directory",
+        "etag": "file_etag",
+        "mime": "file_full_mime",
+        "fileType": "dir/file",
+        "mtime": "last modify time(integer)",
+        "size": "integer",
+        "favorite": "nc_favorite_flag",
+        "permissions": "file_permissions_for_owner",
+        "shareOwner": "optional, str",
+        "shareOwnerId": "optional, str",
+        "shareTypes": "optional, int",
+        "shareAttributes": "optional, int",
+        "sharePermissions": "optional, int",
+        "userId": "string",
+        "instanceId": "string",
+    }
 
 Redirect to ExApp UI page (top menu)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -119,12 +119,12 @@ User action
 
 .. mermaid::
 
-	sequenceDiagram
-		User->>FileActionMenu: Press on registered ExApp action
-		FileActionMenu->>AppAPI: send action context payload
-		AppAPI->>ExApp: forward request to handler
-		ExApp->>AppAPI: handler accepted action status
-		AppAPI->>User: Alert (action sent or error)
+    sequenceDiagram
+        User->>FileActionMenu: Press on registered ExApp action
+        FileActionMenu->>AppAPI: send action context payload
+        AppAPI->>ExApp: forward request to handler
+        ExApp->>AppAPI: handler accepted action status
+        AppAPI->>User: Alert (action sent or error)
 
 
 Action results
@@ -135,9 +135,9 @@ e.g. on a location configured in ExApp settings (``appconfig_ex``) or ExApp user
 
 .. mermaid::
 
-	sequenceDiagram
-		ExApp->>Nextcloud: Upload result file
-		ExApp->>AppAPI: Send notification about action results
+    sequenceDiagram
+        ExApp->>Nextcloud: Upload result file
+        ExApp->>AppAPI: Send notification about action results
 
 Examples
 ^^^^^^^^

@@ -76,9 +76,9 @@ If you want to manually send out all activity emails which are queued, you can r
 Excluding users from the activity expiration
 --------------------------------------------
 
-For certain users, it might make sense to never expire their activity data, for example 
+For certain users, it might make sense to never expire their activity data, for example
 administrators.
-You can set the config value `activity_expire_exclude_users` in your Nextcloud config to 
+You can set the config value `activity_expire_exclude_users` in your Nextcloud config to
 exclude these users from expiration::
 
   'activity_expire_exclude_users' => [

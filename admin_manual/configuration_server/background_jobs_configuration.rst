@@ -35,7 +35,7 @@ A value of 1 e.g. will only run these background jobs between 01:00am UTC and 05
 
   'maintenance_window_start' => 1,
 
-If you don't care when these jobs run, you can set the value to ``100``, but beware that 
+If you don't care when these jobs run, you can set the value to ``100``, but beware that
 resource intensive jobs may then run unnecessarily during high usage periods. This may lead to
 slower performance and a lower quality user experience.
 

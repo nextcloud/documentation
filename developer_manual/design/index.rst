@@ -2,11 +2,11 @@
 Interface & interaction design
 ==============================
 
-.. toctree:: 
-	:maxdepth: 2
+.. toctree::
+    :maxdepth: 2
 
-	introduction
-	foundations
-	layout
-	layoutcomponents
-	atomiccomponents
+    introduction
+    foundations
+    layout
+    layoutcomponents
+    atomiccomponents

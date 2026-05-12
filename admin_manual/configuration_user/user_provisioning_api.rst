@@ -2,13 +2,13 @@
 User provisioning API
 =====================
 
-The Provisioning API application enables a set of APIs that external systems can use to create, 
-edit, delete and query user attributes, query, set and remove groups, set quota 
-and query total storage used in Nextcloud. Group admin users can also query 
-Nextcloud and perform the same functions as an admin for groups they manage. The 
-API also enables an admin to query for active Nextcloud applications, application 
-info, and to enable or disable an app remotely. HTTP 
-requests can be used via a Basic Auth header to perform any of the functions 
+The Provisioning API application enables a set of APIs that external systems can use to create,
+edit, delete and query user attributes, query, set and remove groups, set quota
+and query total storage used in Nextcloud. Group admin users can also query
+Nextcloud and perform the same functions as an admin for groups they manage. The
+API also enables an admin to query for active Nextcloud applications, application
+info, and to enable or disable an app remotely. HTTP
+requests can be used via a Basic Auth header to perform any of the functions
 listed above. The Provisioning API app is enabled by default.
 
 The base URL for all calls to the Provisioning API is ``https://cloud.example.com/ocs/v1.php/cloud``.

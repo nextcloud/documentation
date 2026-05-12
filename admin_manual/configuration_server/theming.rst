@@ -29,7 +29,7 @@ You can change the following parameters of the look and feel on your instance:
 * Additional legal links (Legal notice and Privacy policy link)
 * Custom header logo and favicon as an alternative to auto-generation based on logo
 * Disable user theming: Although you can select and customize your instance, users can change their backgrounds and colors. If you want to enforce your customization, you can toggle this on.
-		
+
 
 Configure theming through CLI
 -----------------------------
@@ -40,7 +40,7 @@ The following values are available to be set through this:
 
 - name, url, imprintUrl, privacyUrl, slogan, color, primary_color ``occ theming:config name "My Example Cloud"``
 - background, logo, favicon, logoheader ``occ theming:config logo /tmp/mylogo.png``
-- disable-user-theming (yes/no) ``occ theming:config disable-user-theming yes`` 
+- disable-user-theming (yes/no) ``occ theming:config disable-user-theming yes``
 
 .. note:: Images require to be read from a local file on the Nextcloud server
 

@@ -2,16 +2,16 @@
 Preparing PHP
 =============
 
-Before installing Nextcloud Server, ensure your PHP environment is properly configured. This includes installing 
-the correct PHP version, enabling required PHP modules, and adjusting important `php.ini` settings. This guide 
-explains which PHP modules are necessary, which are recommended for optimal performance and compatibility, and 
+Before installing Nextcloud Server, ensure your PHP environment is properly configured. This includes installing
+the correct PHP version, enabling required PHP modules, and adjusting important `php.ini` settings. This guide
+explains which PHP modules are necessary, which are recommended for optimal performance and compatibility, and
 how to configure your PHP environment for both web server and command-line usage.
 
 .. note::
    You can safely ignore this chapter if you plan to use a turnkey Nextcloud Server installation method (such as
-   AIO, Snap, NCP, or Community Docker). Those installation methods provide PHP environments that are already 
+   AIO, Snap, NCP, or Community Docker). Those installation methods provide PHP environments that are already
    pre-configured for use with Nextcloud Server. For guidance regarding customizing PHP in those environments,
-   refer to the documentation provided specifically for or by those install methods. 
+   refer to the documentation provided specifically for or by those install methods.
 
 .. contents::
    :local:
@@ -22,9 +22,9 @@ PHP Installation
 ----------------
 
 Refer to your OS distribution's documentation for instructions for establishing a base PHP installation. It may
-be possible to choose among several versions of PHP. Refer to :doc:`./system_requirements` to see which versions 
-of PHP are supported by this release of Nextcloud Server. After completing a base PHP installation, 
-follow the below guidance to configure your new PHP installation for your new Nextcloud Server deployment. 
+be possible to choose among several versions of PHP. Refer to :doc:`./system_requirements` to see which versions
+of PHP are supported by this release of Nextcloud Server. After completing a base PHP installation,
+follow the below guidance to configure your new PHP installation for your new Nextcloud Server deployment.
 
 --------------------
 Required PHP Modules
@@ -52,15 +52,15 @@ The following PHP modules **must** be installed and enabled for Nextcloud Server
    corresponding `php-xml` (or distribution-specific) package is installed so that SimpleXML, XMLReader and XMLWriter
    are available to PHP.
 
-The `ctype`, `fileinfo`, and `OpenSSL` modules are generally included and enabled in PHP by default. Often 
-some of the other required modules are automatically installed by OS distribution package managers. 
+The `ctype`, `fileinfo`, and `OpenSSL` modules are generally included and enabled in PHP by default. Often
+some of the other required modules are automatically installed by OS distribution package managers.
 
-**How to check if a module is enabled:**  
+**How to check if a module is enabled:**
 
 - Run ``php -m | grep -i <module_name>``. If you see output, the module is active.
 
 .. note::
-    The `filter` module is required only on Mageia and FreeBSD.  
+    The `filter` module is required only on Mageia and FreeBSD.
 
 --------------------------------
 Required PHP Database Connectors
@@ -79,10 +79,10 @@ Recommended General PHP Modules
 These modules are not required, but are highly recommended to improve functionality or security:
 
 - `intl`: Fixes sorting of non-ASCII characters and improves language translation performance.
-- `sodium`: Provides Argon2 password hashing (needed if using PHP < 8.4 and PHP was built without `libargon2`). 
+- `sodium`: Provides Argon2 password hashing (needed if using PHP < 8.4 and PHP was built without `libargon2`).
 
-    bcrypt will be used if Argon2 is unavailable, but if passwords were previously hashed with Argon2 
-    (such as when migrating an existing Nextcloud Server installation to a new server environment) and this 
+    bcrypt will be used if Argon2 is unavailable, but if passwords were previously hashed with Argon2
+    (such as when migrating an existing Nextcloud Server installation to a new server environment) and this
     module is missing, accounts will not be able to log-in).
 - `sysvsem`: Enables System V semaphores used by Nextcloud to coordinate preview generation across PHP processes. Recommended; if missing, previews still work but may be less reliable under heavy load.
 
@@ -90,15 +90,15 @@ These modules are not required, but are highly recommended to improve functional
 Recommended PHP Caching Modules
 -------------------------------
 
-Memory caching is not required so these modules are not required, but are highly recommended for optimal 
+Memory caching is not required so these modules are not required, but are highly recommended for optimal
 performance and reliability. Choose and install your preferred combination of memory caching modules:
 
 - `APCu` (>= 4.0.6)
 - `redis` / `phpredis` (>= 2.2.6, required for Transactional File Locking)
 - `memcached` (an older alternative to `redis` that is not recommended for new installations)
 
-.. note:: 
-   Memory caching is highly recommended for optimal performance. In most cases, a combination of `APCu` and 
+.. note::
+   Memory caching is highly recommended for optimal performance. In most cases, a combination of `APCu` and
    `redis` are the best choice for new installations.
 
 See :doc:`../configuration_server/caching_configuration` for configuration details.
@@ -109,9 +109,9 @@ Recommended PHP CLI Modules
 
 **For command-line processing** (optional):
 
-- `pcntl`: Allows command interruption (e.g., via ``ctrl-c``).  
+- `pcntl`: Allows command interruption (e.g., via ``ctrl-c``).
 
-    Ensure ``pcntl_signal`` and ``pcntl_signal_dispatch`` are *not* disabled in your `php.ini` by the 
+    Ensure ``pcntl_signal`` and ``pcntl_signal_dispatch`` are *not* disabled in your `php.ini` by the
     ``disable_functions`` option.
 
 **For command-line updater** (optional):
@@ -178,7 +178,7 @@ Notes on PHP `ini` Configuration
         - Web server:
             `/etc/php/<version>/apache2/php.ini` or `/etc/php/<version>/fpm/php.ini`
 
-        - CLI (used by Nextcloud CRON jobs):  
+        - CLI (used by Nextcloud CRON jobs):
             `/etc/php/<version>/cli/php.ini`
 
 - **Find which php.ini is active for each SAPI:**
@@ -242,7 +242,7 @@ PHP Module Quick Reference Table
 Further Resources
 -----------------
 
-- For more details on each module, consult the 
+- For more details on each module, consult the
   `official PHP documentation <https://php.net/manual/en/extensions.php>`_.
 - Refer to your OS distribution's documentation for the specifics of installing PHP modules in your environment.
 - The words *extension* and *module* are interchangeable within PHP. We use the word *modules* in our documentation.

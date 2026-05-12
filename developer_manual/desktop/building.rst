@@ -42,7 +42,7 @@ the repository is different for a fork than for the main official version.
 When cloning a GitHub repository, you have two options for authenticating your
 GitHub account, SSH or HTTPS. SSH requires additional setup but is more secure
 and simplifies things later on. For an explanation of the differences between
-HTTPS and SSH, as well as instructions to set up SSH, see this `GitHub 
+HTTPS and SSH, as well as instructions to set up SSH, see this `GitHub
 help article`_ on the subject.
 
 .. _`GitHub help article`: https://help.github.com/en/articles/which-remote-url-should-i-use
@@ -136,7 +136,7 @@ Then, in Terminal:
 
       % echo 'export QT_PATH=$(brew --prefix qt6)/bin' >> ~/.nextcloud_build_variables
       % echo 'export CMAKE_PREFIX_PATH=$(brew --prefix qt6);$(brew --prefix karchive)' >> ~/.nextcloud_build_variables
-   
+
    .. note:: The name ``~/.nextcloud_build_variables`` is just a suggestion for
       convenience. You can use a different file or create an entire shell
       script, but this way of doing things is the simplest to explain.
@@ -178,15 +178,15 @@ Then, in Terminal:
       By default Nextcloud Desktop will build in a protected directory on macOS,
       so you need to specify a build location. You can do this every time you build,
       or you can add it to your save build variables, like so:
-      
+
    .. code-block:: bash
 
       % echo 'export CMAKE_INSTALL_PREFIX=~/Builds' >> ~/.nextcloud_build_variables
       # If you want to build a macOS app bundle for distribution
       % echo 'export BUILD_OWNCLOUD_OSX_BUNDLE=ON' >> ~/.nextcloud_build_variables
-      
+
    Replace ``~/Builds`` with a different directory if you'd like the build to end up elsewhere.
-   
+
 ..
 
    .. code-block:: bash
@@ -209,7 +209,7 @@ System requirements
 
 
 - Windows 10 or Windows 11
-- `The desktop client code <https://github.com/nextcloud/desktop>`_  
+- `The desktop client code <https://github.com/nextcloud/desktop>`_
 - Python 3
 - PowerShell
 - Microsoft Visual Studio 2022 and tools to compile C++
@@ -228,7 +228,7 @@ Setting up Microsoft Visual Studio
   .. image:: images/desktop-development-with-cpp.png
     :alt: Desktop development with C++
 
-Handling the dependencies 
+Handling the dependencies
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We handle the dependencies using `KDE Craft <https://community.kde.org/Craft>`_ because it is easy to set it up and it makes the maintenance much more reliable in all platforms.
@@ -267,7 +267,7 @@ Compiling
 4. To use the tools installed with Visual Studio, you need the following in your %PATH%:
 
   .. image:: images/path.png
-    :alt: Windows environment variables    
+    :alt: Windows environment variables
 
 5. Alternatively you can use the tools installed with KDE Craft by adding them to %PATH%:
 
@@ -287,7 +287,7 @@ Compiling
   cd build
   cmake .. -G Ninja -DCMAKE_INSTALL_PREFIX=. -DCMAKE_PREFIX_PATH=C:\CraftRoot -DCMAKE_BUILD_TYPE=RelWithDebInfo
   cmake --build . --target install
-  
+
 7. Now you can use `Qt Creator <https://doc.qt.io/qtcreator>`_ to import the build folder with its configurations to be able to work with the code.
 
 Windows Installer (i.e. Deployment) Build (Cross-Compile)
@@ -366,14 +366,14 @@ To build the most up-to-date version of the client:
 2. Create the build directory
 
    .. code-block:: bash
-   
+
       $ mkdir client-build
       $ cd client-build
 
 3. Configure the client build
 
    .. code-block:: bash
-   
+
       $ cmake -DCMAKE_BUILD_TYPE="Debug" ..
 
    .. note:: You must use absolute paths for the ``include`` and ``library``

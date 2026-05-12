@@ -6,7 +6,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 #
 ## Note that additional configuration elements shared by all Nextcloud docs
-## are loaded from `../conf.py`. 
+## are loaded from `../conf.py`.
 
 # -- Path setup --------------------------------------------------------------
 
@@ -31,7 +31,7 @@ extensions += [
     'sphinx.ext.todo',
     'rst2pdf.pdfbuilder',
     'sphinx.ext.intersphinx',
-]    
+]
 
 templates_path = [
     '../_shared_assets/templates',
@@ -75,7 +75,7 @@ html_show_sphinx = False
 html_baseurl = "https://docs.nextcloud.com/server/stable/user_manual/"
 
 # disable including the reST sources in the HTML build as _sources/name (default is True)
-html_copy_source = False 
+html_copy_source = False
 
 # -- Options for HTML help output --------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-help-output

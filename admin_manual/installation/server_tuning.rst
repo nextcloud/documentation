@@ -26,21 +26,21 @@ reduce latency due to multiple abstraction layers.
 Log Levels
 ----------
 
-Verify the ``loglevel`` in your ``config.php``. The default the log level is 
-set to ``2`` (WARN) in new installations. Sometimes this parameter is inadvertently 
-left at the DEBUG level (``0``) after a troubleshooting event. In some older installations this 
-parameter may also be something other than the default. Use ``0`` (DEBUG) 
-when you have a problem to diagnose, and then reset your log level to a 
-less-verbose level. DEBUG outputs a lot of information, and can affect your 
+Verify the ``loglevel`` in your ``config.php``. The default the log level is
+set to ``2`` (WARN) in new installations. Sometimes this parameter is inadvertently
+left at the DEBUG level (``0``) after a troubleshooting event. In some older installations this
+parameter may also be something other than the default. Use ``0`` (DEBUG)
+when you have a problem to diagnose, and then reset your log level to a
+less-verbose level. DEBUG outputs a lot of information, and can affect your
 server performance.
 
 Debug Mode
 ----------
 
-Verify that ``debug`` is ``false`` in your ``config.php``. The default is ``false`` in new 
+Verify that ``debug`` is ``false`` in your ``config.php``. The default is ``false`` in new
 installations (or when not specified). While similar to the DEBUG logging level, this option
-also disables various optimizations (to facilitate easier debugging) and generates additional 
-debug output both at the browser level and server-side. It should not be enabled in production 
+also disables various optimizations (to facilitate easier debugging) and generates additional
+debug output both at the browser level and server-side. It should not be enabled in production
 environments outside of isolated troubleshooting situations.
 
 Caching
@@ -53,7 +53,7 @@ See :doc:`../configuration_server/caching_configuration`.
 Compression
 -----------
 
-Enabling compression in your web server for JavaScript, CSS, and SVG files improves the 
+Enabling compression in your web server for JavaScript, CSS, and SVG files improves the
 performance because fewer bytes need to be transferred to the clients.
 
 Using MariaDB/MySQL instead of SQLite
@@ -135,21 +135,21 @@ Revalidation
 
 OPcache revalidation in PHP handles changes made to PHP application code stored on disk. Code changes occur whenever:
 
-- Nextcloud or a Nextcloud app is upgraded 
-- a configuration change is made (e.g. ``config.php`` is modified) 
+- Nextcloud or a Nextcloud app is upgraded
+- a configuration change is made (e.g. ``config.php`` is modified)
 
-Nextcloud, as much as possible, handles cache revalidation internally when required. However this is not foolproof. In a default PHP environment, revalidation is 
-enabled and cached scripts are revalidated to ensure that changes (on disk) take effect every ``2`` seconds. In many environments, these default 
-values are reasonable (and may never need to be changed). 
+Nextcloud, as much as possible, handles cache revalidation internally when required. However this is not foolproof. In a default PHP environment, revalidation is
+enabled and cached scripts are revalidated to ensure that changes (on disk) take effect every ``2`` seconds. In many environments, these default
+values are reasonable (and may never need to be changed).
 
 However, the revalidation frequency can be adjusted and may *potentially* enhance performance. We make no recommendations here about appropriate values for revalidation (other than the PHP defaults).
 
 .. danger::
     Lengthening the time between revalidation (or disabling it completely) means that manual changes to scripts, including ``config.php``, will take longer before they become active (or will never do so, if
     revalidation is disabled completely). Lengthening also increases the likelihood of transient server and application upgrade problems. It also prevents the proper toggling of maintenance mode.
-    
+
 .. warning::
-    If you adjust these parameters, you are more likely to need to restart/reload your web server (mod_php) or fpm after making configuration changes or performing upgrades. If you forget to do so, you 
+    If you adjust these parameters, you are more likely to need to restart/reload your web server (mod_php) or fpm after making configuration changes or performing upgrades. If you forget to do so, you
     will likely experience unusual behavior due to a mismatch between what is on disk and is in memory. These may appear to be bugs, but will go away as soon as you restart/reload mod_php/fpm.
 
 To change the default from ``2`` and check for changes on disk at most every ``60`` seconds, use the following setting:
@@ -161,7 +161,7 @@ To change the default from ``2`` and check for changes on disk at most every ``6
 Any Server/app upgrades or changes to ``config.php`` will then require restarting PHP (or otherwise manually clearing the cache or invalidating this particular script).
 
 .. warning::
-   To avoid false reports, if your environment isn't using the PHP default revalidation values, please do not report bugs/odd behavior after upgrading Nextcloud or Nextcloud apps until after you've 
+   To avoid false reports, if your environment isn't using the PHP default revalidation values, please do not report bugs/odd behavior after upgrading Nextcloud or Nextcloud apps until after you've
    restarted mod_php/fpm (to confirm they are not simply caused by local revalidation configuration).
 
 Sizing
@@ -203,7 +203,7 @@ external microservice: `Imaginary <https://github.com/h2non/imaginary>`_.
 
 .. warning::
 
-   Imaginary is currently incompatible with server-side-encryption. 
+   Imaginary is currently incompatible with server-side-encryption.
    See https://github.com/nextcloud/server/issues/34262
 
 We strongly recommend running our custom docker image that is more up to date than the official image.
@@ -231,12 +231,12 @@ Nextcloud to use Imaginary by editing your `config.php`:
 
 .. note::
 
-    For large instance, you should follow `Imaginary's scalability recommendation <https://github.com/h2non/imaginary#scalability>`.
+    For large instance, you should follow `Imaginary's scalability recommendation <https://github.com/h2non/imaginary#scalability>`_.
 
 Settings
 ^^^^^^^^
 
-If you want set the preview format for imaginary.  
+If you want set the preview format for imaginary.
 You can change between jpeg and webp, the default is jpeg:
 
 ::
