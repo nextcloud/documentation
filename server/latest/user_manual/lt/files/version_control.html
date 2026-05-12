@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Version control &mdash; Nextcloud latest User Manual latest documentation</title>
+  <title>Versijų valdymas &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -32,7 +32,10 @@
     <link rel="index" title="Indeksas" href="../genindex.html" />
     <link rel="search" title="Paieška" href="../search.html" />
     <link rel="next" title="Saugojimo kvota" href="quota.html" />
-    <link rel="prev" title="Ištrintų failų tvarkymas" href="deleted_file_management.html" /> 
+    <link rel="prev" title="Ištrintų failų tvarkymas" href="deleted_file_management.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -67,9 +70,9 @@
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="managing.html">Managing your files</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="deleted_file_management.html">Ištrintų failų tvarkymas</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Version control</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#naming-a-version">Naming a version</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#deleting-a-version">Deleting a version</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Versijų valdymas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#naming-a-version">Versijos įvardijimas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deleting-a-version">Versijos ištrynimas</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="quota.html">Saugojimo kvota</a></li>
@@ -105,7 +108,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Files &amp; synchronization</a></li>
           <li class="breadcrumb-item"><a href="managing.html">Managing your files</a></li>
-      <li class="breadcrumb-item active">Version control</li>
+      <li class="breadcrumb-item active">Versijų valdymas</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/version_control.rst" class="fa fa-github"> Keisti GitHub'e</a>
       </li>
@@ -116,7 +119,7 @@
            <div itemprop="articleBody">
              
   <section id="version-control">
-<h1>Version control<a class="headerlink" href="#version-control" title="Link to this heading"></a></h1>
+<h1>Versijų valdymas<a class="headerlink" href="#version-control" title="Link to this heading"></a></h1>
 <p>Nextcloud supports a simple version control system for files. Versioning creates
 backups of files which are accessible via the Versions tab on the Details
 sidebar. This tab contains the history of the file where you can roll back a
@@ -125,39 +128,35 @@ have passed since the last version was created. Versions are stored in <code cla
 <figure class="align-default">
 <img alt="File version history in the Details sidebar" src="../../_images/files_versioning.png" />
 </figure>
-<p>To restore a specific version of a file, click the circular arrow to the right.
-Click on the timestamp to download it.</p>
+<p>Norėdami atkurti konkrečią failo versiją, spustelėkite dešinėje esančią apskritimo formos rodyklę. Spustelėkite laiko žymą, kad ją atsisiųstumėte.</p>
 <p>The versioning app expires old versions automatically to make sure that
 you don’t run out of space. This pattern is used to delete
 old versions:</p>
 <ul class="simple">
-<li><p>For the first second we keep one version</p></li>
-<li><p>For the first 10 seconds Nextcloud keeps one version every 2 seconds</p></li>
-<li><p>For the first minute Nextcloud keeps one version every 10 seconds</p></li>
-<li><p>For the first hour Nextcloud keeps one version every minute</p></li>
-<li><p>For the first 24 hours Nextcloud keeps one version every hour</p></li>
-<li><p>For the first 30 days Nextcloud keeps one version every day</p></li>
-<li><p>After the first 30 days Nextcloud keeps one version every week</p></li>
+<li><p>Pirmąją sekundę laikome vieną versiją</p></li>
+<li><p>Pirmąsias 10 sekundžių „Nextcloud“ saugo po vieną versiją kas 2 sekundes</p></li>
+<li><p>Pirmą minutę „Nextcloud“ saugo po vieną versiją kas 10 sekundžių</p></li>
+<li><p>Pirmą valandą „Nextcloud“ saugo po vieną versiją kas minutę</p></li>
+<li><p>Pirmąsias 24 valandas „Nextcloud“ saugo po vieną versiją kas valandą</p></li>
+<li><p>Pirmąsias 30 dienų „Nextcloud“ kasdien saugo po vieną versiją</p></li>
+<li><p>Po pirmųjų 30 dienų „Nextcloud“ saugo po vieną versiją kiekvieną savaitę</p></li>
 </ul>
-<p>The versions are adjusted along this pattern every time a new version gets
-created.</p>
-<p>The version app never uses more than 50% of the user’s currently available free
-space. If the stored versions exceed this limit, Nextcloud deletes the oldest
-versions until it meets the disk space limit again.</p>
+<p>Versijos koreguojamos pagal šį modelį kiekvieną kartą, kai sukuriama nauja versija.</p>
+<p>Versijos programėlė niekada nenaudoja daugiau nei 50 % šiuo metu vartotojo turimos laisvos vietos. Jei saugomų versijų skaičius viršija šią ribą, „Nextcloud“ ištrina seniausias versijas, kol vėl pasiekia disko vietos ribą.</p>
 <section id="naming-a-version">
-<h2>Naming a version<a class="headerlink" href="#naming-a-version" title="Link to this heading"></a></h2>
-<p>You can give a name to a version.</p>
+<h2>Versijos įvardijimas<a class="headerlink" href="#naming-a-version" title="Link to this heading"></a></h2>
+<p>Galite suteikti versijai pavadinimą.</p>
 <figure class="align-default">
 <img alt="Version actions menu" src="../../_images/files_versions_actions.png" />
 </figure>
 <figure class="align-default">
 <img alt="Naming a file version" src="../../_images/files_versions_naming.png" />
 </figure>
-<p>When a version has a name, it will be excluded from the automatic expiration process.</p>
+<p>Kai versija turi pavadinimą, ji nebus įtraukta į automatinį galiojimo pabaigos procesą.</p>
 </section>
 <section id="deleting-a-version">
-<h2>Deleting a version<a class="headerlink" href="#deleting-a-version" title="Link to this heading"></a></h2>
-<p>You can also manually delete a version without waiting for the automatic expiration process.</p>
+<h2>Versijos ištrynimas<a class="headerlink" href="#deleting-a-version" title="Link to this heading"></a></h2>
+<p>Taip pat galite rankiniu būdu ištrinti versiją, nelaukdami automatinio galiojimo pabaigos proceso.</p>
 </section>
 </section>
 
