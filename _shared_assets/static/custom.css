@@ -130,6 +130,22 @@ div#list-of-available-icons > blockquote > div > div > p {
 	max-width: 900px;
 }
 
+/* At 200% browser zoom a 1 280 px display has an effective viewport of
+   ~640 px, which is below the RTD mobile breakpoint (768 px). The
+   clamp() above keeps a hard 800 px minimum that then overflows the
+   viewport horizontally, making the documentation content unreachable
+   without horizontal scrolling (WCAG 1.4.4 / BITV 9.1.4.4).
+   Override to 100% so the content fills the available space. */
+@media screen and (max-width: 768px) {
+	.wy-nav-content {
+		max-width: 100% !important;
+	}
+
+	.wy-nav-content section {
+		max-width: 100%;
+	}
+}
+
 table.docutils {
 	min-width: 50%;
 }
