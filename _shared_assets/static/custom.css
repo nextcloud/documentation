@@ -65,6 +65,16 @@ h6 {
 	background: rgba(0, 130, 201, 0.1)
 }
 
+/* kbd elements pick up the red code text color (#e74c3c) which gives
+   ~3.82:1 on white — below the 4.5:1 required by WCAG AA / BITV 9.1.4.3.
+   Override to a darker red (~5.4:1) and darken the border so the
+   key outline meets the 3:1 non-text contrast requirement. */
+.rst-content kbd,
+kbd {
+	color: #c0392b;
+	border-color: #767676;
+}
+
 /* Fix code within tables - remove too big margins */
 .rst-content td {
 	div[class^="highlight"]:last-of-type,
