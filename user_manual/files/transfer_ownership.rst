@@ -12,13 +12,13 @@ be transferred to the new owner.
 #. Pick a new owner by typing their name into the search field next to *New owner*.
 #. Click on *Transfer*.
 
-	.. note:: The username autocompletion or listing may be limited due to administrative visibility configuration.
-	   See `administrator documentation <https://docs.nextcloud.com/server/33/admin_manual/configuration_files/file_sharing_configuration.html>`_ for details.
+    .. note:: The username autocompletion or listing may be limited due to administrative visibility configuration.
+       See `administrator documentation <https://docs.nextcloud.com/server/33/admin_manual/configuration_files/file_sharing_configuration.html>`_ for details.
 
 #. The target user receives a notification where they are being asked whether to
    accept or reject the incoming transfer.
 
-	.. figure:: ../images/transfer_ownership-accept.png
+    .. figure:: ../images/transfer_ownership-accept.png
 
 #. If accepted, the target user finds the transferred files and folders in their
    root under a folder *Transferred from [user] on [timestamp]*.

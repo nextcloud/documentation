@@ -11,7 +11,7 @@ at time of publication. It means that the |version| release series is supporting
 stable server major versions.
 See https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule for
 supported major versions.
-  
+
 Installation on macOS and Windows is the same as for any software
 application: download the program and then double-click it to launch the
 installation, and then follow the installation wizard. After it is installed and

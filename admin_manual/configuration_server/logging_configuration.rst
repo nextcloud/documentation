@@ -146,9 +146,9 @@ If you wish to override this and log to syslog instead the following would be on
 
 ::
 
-	"log_type_audit" => "syslog",
-	"syslog_tag_audit" => "Nextcloud",
-	"logfile_audit" => "",
+    "log_type_audit" => "syslog",
+    "syslog_tag_audit" => "Nextcloud",
+    "logfile_audit" => "",
 
 Log level interaction
 ~~~~~~~~~~~~~~~~~~~~~
@@ -157,9 +157,9 @@ If system ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit loggin
 
 ::
 
-	"log.condition" => [
-		"apps" => ["admin_audit"],
-	],
+    "log.condition" => [
+        "apps" => ["admin_audit"],
+    ],
 
 Find detailed documentation on auditable events for enterprises in our `customer portal <https://portal.nextcloud.com/article/using-the-audit-log-44.html>`_.
 
@@ -172,10 +172,10 @@ Add the following to your ``config.php`` (adjusting the path to your own ``nextc
 
 ::
 
-	'log.condition' => [
-		'apps' => [ 'admin_audit'],
-	],
-	'logfile_audit' => '/var/www/html/data/nextcloud.log',
+    'log.condition' => [
+        'apps' => [ 'admin_audit'],
+    ],
+    'logfile_audit' => '/var/www/html/data/nextcloud.log',
 
 Configuring through admin_audit app settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -184,7 +184,7 @@ Previously the audit logfile was defined in the app config. This config is still
 
 ::
 
-	occ config:app:set admin_audit logfile --value=/var/log/nextcloud/audit.log
+    occ config:app:set admin_audit logfile --value=/var/log/nextcloud/audit.log
 
 .. _PHP date function: http://www.php.net/manual/en/function.date.php
 
@@ -197,7 +197,7 @@ The path of the workflow log can be set as follows:
 
 ::
 
-	occ config:app:set workflowengine logfile --value=/var/log/nextcloud/flow.log
+    occ config:app:set workflowengine logfile --value=/var/log/nextcloud/flow.log
 
 Set the value to `/dev/null` to avoid storing the log.
 

@@ -442,8 +442,8 @@ Known Limitations
 -----------------
 * Make sure to test the language model you are using in concert with this app for whether they meet the use-case's quality requirements
 * Most models have difficulties with languages other than English. Some models sometimes answer in a different language than the one used by the user.
-* Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. 
-  Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI). We still try to optimize this as far as possible, so if you encounter any false or problematic output, you can report it `in a dedicated Github issue <https://github.com/nextcloud/context_agent/issues/51>`_ to help us improve this app. 
+* Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model.
+  Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI). We still try to optimize this as far as possible, so if you encounter any false or problematic output, you can report it `in a dedicated Github issue <https://github.com/nextcloud/context_agent/issues/51>`_ to help us improve this app.
 * When multiple MCP services are configured that have tools with the same name undefined behavior will occur.
 * Only remote MCP services are supported (streamable_http transport).
 * MCP services that require different access tokens for each user are not currently supported.
