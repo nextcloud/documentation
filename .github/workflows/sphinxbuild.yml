@@ -504,6 +504,23 @@ jobs:
             echo "has_changes=true" >> $GITHUB_OUTPUT
           fi
 
+      - name: Strip noindex from stable docs
+        run: |
+          # Strip noindex from stable docs – these are the canonical pages we want indexed
+          if [ -d server/stable ]; then
+            find server/stable -name '*.html' -print0 | \
+              xargs -0 perl -pi -e 's{<meta name="robots" content="noindex, follow" />\n?}{}g'
+          fi
+
+      - name: Write robots.txt
+        run: |
+          cat > robots.txt << 'EOF'
+          User-agent: *
+          # Only the stable version should be indexed
+          Allow: /server/stable/
+          Disallow: /server/
+          EOF
+
         # Remove the stage/ directory BEFORE creating the PR so it doesn't get committed
       - name: Clean up staging cache before commit
         run: rm -rf stage/
