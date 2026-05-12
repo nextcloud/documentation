@@ -122,6 +122,17 @@ div#list-of-available-icons > blockquote > div > div > p {
 	text-align: center;
 }
 
+/* Focus ring — the sidebar nav container clips outline to one edge
+   (only bottom line visible). Use a negative outline-offset to draw
+   the ring inside the element so it is never clipped (BITV 9.2.4.7). */
+.wy-menu-vertical a:focus-visible,
+.wy-menu-vertical button:focus-visible,
+.wy-side-nav-search a:focus-visible,
+.rst-versions .rst-current-version:focus-visible {
+	outline: 2px solid #0082c9;
+	outline-offset: -2px;
+}
+
 .wy-nav-content {
 	max-width: clamp(800px, calc(100vw - 600px), 1200px) !important;
 }
