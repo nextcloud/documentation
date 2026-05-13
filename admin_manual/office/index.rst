@@ -3,6 +3,7 @@ Office
 ===============
 
 .. image:: ../images/office.png
+   :alt: Nextcloud Office document editing interface with collaborative editing
 
 Nextcloud Office supports editing your documents in real time with multiple other editors, showing high fidelity, WYSIWYG rendering and preserving the layout and formatting of your documents.
 

@@ -11,6 +11,7 @@ This can be done by following these steps:
 #. Under "Add an account" pick ``Nextcloud``:
 
    .. image:: ../images/gnome-online-accounts.png
+      :alt: GNOME Settings Online Accounts page with Nextcloud listed under available providers
 
 #. Enter your server URL, username, and password.
    If you have enabled two-factor authentication (2FA), you need to generate an application password/token, because GNOME Online Accounts
@@ -18,11 +19,13 @@ This can be done by following these steps:
    (:ref:`Learn more <managing_devices>`):
 
    .. image:: ../images/goa-add-nextcloud-account.png
+      :alt: GNOME Online Accounts dialog to add a Nextcloud account with server URL and credentials fields
 
 #. In the next window, select which resources GNOME should access and
    press the **Close** button to close the dialog:
 
    .. image:: ../images/goa-nextcloud-select.png
+      :alt: GNOME Online Accounts dialog to select which Nextcloud resources to synchronize
 
 Nextcloud tasks, calendars, and contacts should now be visible in the Evolution PIM, as well as the Task, Contacts, and Calendars apps.
 
