@@ -177,13 +177,19 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Pastaba</p>
-<p>Naudodami trečiosios šalies WebDAV klientą (įskaitant operacinės sistemos įdiegtą klientą), prisijungimui turėtumėte naudoti programos slaptažodį, o ne įprastą slaptažodį. Be didesnio saugumo, tai <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">žymiai padidina našumą</a>. Norėdami nustatyti programos slaptažodį, prisijunkite prie „Nextcloud“ žiniatinklio sąsajos, spustelėkite avatarą dešinėje viršuje ir pasirinkite <em>Asmeniniai nustatymai</em>. Tada kairėje šoninėje juostoje pasirinkite <em>Saugumas</em> ir nusileiskite iki pat apačios. Ten galite sukurti programos slaptažodį (kurį ateityje taip pat galima panaikinti nekeičiant pagrindinio vartotojo slaptažodžio).</p>
+<p>When using a third-party WebDAV client (including your operating system’s
+built-in client), you should use an application password for login rather than your
+regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log into the Nextcloud Web interface, click on your avatar
+and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
+sidebar and scroll to the very bottom. There you can create an app password (which can
+also be revoked in the future without changing your main user password).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Pastaba</p>
 <p>Toliau pateiktuose pavyzdžiuose <strong>example.com/nextcloud</strong> turėtumėte pakeisti savo „Nextcloud“ serverio URL adresu (jei įdiegta domeno šakninėje kataloge, katalogo dalį praleiskite), o <strong>USERNAME</strong> (vartotojo vardas) – prisijungiančio vartotojo vardu.</p>
 <p>WebDAV URL adresą rasite savo „Nextcloud“ paskyros skyriuje „Failai“ &gt; „Nustatymai“ &gt; „WebDAV“.</p>
-<img alt="„Failų“ nustatymų ekrano kopija, kurioje matoma asmeninė „WebDAV“ nuoroda" src="../../_images/webdav_link.png" />
+<img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
 </div>
 </section>
 <section id="accessing-files-using-linux">
@@ -201,7 +207,7 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p class="admonition-title">Pastaba</p>
 <p>Jei jūsų ryšys su serveriu nėra apsaugotas HTTPS protokolu, vietoj „davs://“ naudokite „dav://“:</p>
 </div>
-<img alt="Ekrano kopija, kurioje matoma, kaip konfigūruoti failų tvarkyklę „Nautilus“ naudoti WebDAV" src="../../_images/webdav_gnome3_nautilus.png" />
+<img alt="GNOME Nautilus file manager Connect to Server dialog with a Nextcloud WebDAV address entered" src="../../_images/webdav_gnome3_nautilus.png" />
 <div class="admonition note">
 <p class="admonition-title">Pastaba</p>
 <p>Tas pats metodas veikia ir su kitomis failų tvarkyklėmis, kurios naudoja GVFS, pvz., MATE „Caja“ ir Cinnamon „Nemo“.</p>
@@ -321,13 +327,13 @@ for example
 <p>Pasiekti failus per „macOS Finder“:</p>
 <ol class="arabic">
 <li><p>Viršutinėje „Finder“ meniu juostoje pasirinkite <strong>Go &gt; Connect to Server…</strong>:</p>
-<img alt="Ekrano kopija, kurioje parodytas „Nextcloud“ serverio adreso įvedimas „macOS“ sistemoje" src="../../_images/osx_webdav1.png" />
+<img alt="macOS Go menu with Connect to Server option highlighted" src="../../_images/osx_webdav1.png" />
 </li>
 <li><p>Kai atsidarys langas <strong>Connect to Server…</strong>, lauke <strong>Server Address:</strong> įveskite savo „Nextcloud“ serverio „WebDAV“ adresą, pvz.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
 </pre></div>
 </div>
-<img alt="Ekrano kopija: Įveskite „Nextcloud“ serverio adresą dialogo lange „Connect to Server…“" src="../../_images/osx_webdav2.png" />
+<img alt="macOS Connect to Server dialog with a Nextcloud WebDAV URL in the Server Address field" src="../../_images/osx_webdav2.png" />
 </li>
 <li><p>Spustelėkite <strong>Connect</strong>. Jūsų WebDAV serveris turėtų būti rodomas darbalaukyje kaip bendras diskas.</p></li>
 </ol>
@@ -396,7 +402,7 @@ for example
 <p>Jei naudojate SSL apsaugotus serverius, pažymėkite parinktį <strong>„Prisijungti iš naujo prisijungus“</strong>, kad prisijungimo duomenys būtų išsaugoti ir po vėlesnių sistemos perkrovimų. Jei norite prisijungti prie „Nextcloud“ serverio kitu vartotoju, pažymėkite parinktį <strong>„Prisijungti naudojant kitus prisijungimo duomenis“</strong>.</p>
 </div>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="„Windows Explorer“ ekrano kopija, kurioje matomas WebDAV priskyrimas" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Windows Explorer Map Network Drive wizard with a Nextcloud WebDAV URL entered" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
 </a>
 </figure>
 </li>

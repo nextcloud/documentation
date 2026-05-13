@@ -177,13 +177,19 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Примітка</p>
-<p>При використанні стороннього WebDAV-клієнта (у тому числі вбудованого у вашу операційну систему) для входу слід використовувати пароль програми, а не ваш звичайний пароль. Окрім покращення безпеки, це <a href="#id19"><span class="problematic" id="id20">`значно підвищує продуктивність &amp;lt;https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151&amp;gt;`_</span></a>. Щоб налаштувати пароль програми, увійдіть у веб-інтерфейс Nextcloud, натисніть на аватарку вгорі праворуч і виберіть <em>Особисті налаштування</em>. Потім виберіть <em>Безпека</em> на лівій бічній панелі і прокрутіть до самого низу. Там ви можете створити пароль додатку (який також можна відкликати в майбутньому, не змінюючи ваш основний пароль користувача).</p>
+<p>When using a third-party WebDAV client (including your operating system’s
+built-in client), you should use an application password for login rather than your
+regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log into the Nextcloud Web interface, click on your avatar
+and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
+sidebar and scroll to the very bottom. There you can create an app password (which can
+also be revoked in the future without changing your main user password).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Примітка</p>
 <p>У наступних прикладах вам слід замінити <strong>example.com/nextcloud</strong> на URL-адресу вашого сервера Nextcloud (опустити частину каталогу, якщо інсталяція знаходиться в корені вашого домену), а <strong>USERNAME</strong> - на ім’я користувача, що підключається.</p>
 <p>See the WebDAV URL, to be found in Files Settings -&gt; WebDAV in the Files on your Nextcloud account.</p>
-<img alt="Screenshot of the Files settings showing the personal WebDAV link" src="../../_images/webdav_link.png" />
+<img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
 </div>
 </section>
 <section id="accessing-files-using-linux">
@@ -201,7 +207,7 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p class="admonition-title">Примітка</p>
 <p>Якщо з’єднання з вашим сервером не захищено HTTPS, використовуйте <code class="docutils literal notranslate"><span class="pre">dav://</span></code> замість <code class="docutils literal notranslate"><span class="pre">davs://</span></code>:</p>
 </div>
-<img alt="Скріншот налаштування файлового менеджера Nautilus на використання WebDAV" src="../../_images/webdav_gnome3_nautilus.png" />
+<img alt="GNOME Nautilus file manager Connect to Server dialog with a Nextcloud WebDAV address entered" src="../../_images/webdav_gnome3_nautilus.png" />
 <div class="admonition note">
 <p class="admonition-title">Примітка</p>
 <p>Цей же метод працює і для інших файлових менеджерів, що використовують GVFS, таких як Caja від MATE і Nemo від Cinnamon.</p>
@@ -321,13 +327,13 @@ for example
 <p>Щоб отримати доступ до файлів через Finder в macOS:</p>
 <ol class="arabic">
 <li><p>У верхньому рядку меню Finder виберіть <strong>Go &amp;gt; Connect to Server…</strong>:</p>
-<img alt="Скріншот введення адреси сервера Nextcloud на macOS" src="../../_images/osx_webdav1.png" />
+<img alt="macOS Go menu with Connect to Server option highlighted" src="../../_images/osx_webdav1.png" />
 </li>
 <li><p>Коли відкриється вікно <strong>Підключитися до сервера…</strong>, введіть WebDAV-адресу вашого сервера Nextcloud у полі <strong>Адреса сервера:</strong>, а саме:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
 </pre></div>
 </div>
-<img alt="Скріншот: Введіть адресу сервера Nextcloud у діалоговому вікні &quot;Підключення до сервера...&quot;" src="../../_images/osx_webdav2.png" />
+<img alt="macOS Connect to Server dialog with a Nextcloud WebDAV URL in the Server Address field" src="../../_images/osx_webdav2.png" />
 </li>
 <li><p>Натисніть <strong>Підключитися</strong>. Ваш WebDAV-сервер має з’явитися на робочому столі як диск зі спільним доступом.</p></li>
 </ol>
@@ -396,7 +402,7 @@ for example
 <p>Для серверів, захищених SSL, встановіть прапорець <strong>Підключатися при вході</strong>, щоб переконатися, що зіставлення зберігається при наступних перезавантаженнях. Якщо ви хочете підключитися до сервера Nextcloud як інший користувач, встановіть прапорець <strong>Підключатися з використанням інших облікових даних</strong>.</p>
 </div>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Скріншот відображення WebDAV у провіднику Windows" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Windows Explorer Map Network Drive wizard with a Nextcloud WebDAV URL entered" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
 </a>
 </figure>
 </li>
@@ -409,7 +415,7 @@ for example
 </section>
 <section id="accessing-files-using-cyberduck">
 <h2>Доступ до файлів за допомогою Cyberduck<a class="headerlink" href="#accessing-files-using-cyberduck" title="Link to this heading"></a></h2>
-<p><a href="#id21"><span class="problematic" id="id22">`Cyberduck &amp;lt;https://cyberduck.io/&amp;gt;`_</span></a> - браузер з відкритим вихідним кодом FTP, SFTP, WebDAV, OpenStack Swift і Amazon S3, призначений для передачі файлів на macOS і Windows.</p>
+<p><a href="#id19"><span class="problematic" id="id20">`Cyberduck &amp;lt;https://cyberduck.io/&amp;gt;`_</span></a> - браузер з відкритим вихідним кодом FTP, SFTP, WebDAV, OpenStack Swift і Amazon S3, призначений для передачі файлів на macOS і Windows.</p>
 <div class="admonition note">
 <p class="admonition-title">Примітка</p>
 <p>У цьому прикладі використовується Cyberduck версії 4.2.1.</p>
@@ -582,8 +588,8 @@ for example
 </section>
 <section id="accessing-files-using-winscp">
 <h2>Доступ до файлів за допомогою WinSCP<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
-<p><a href="#id23"><span class="problematic" id="id24">`WinSCP &amp;lt;https://winscp.net/eng/docs/introduction/&amp;gt;`_</span></a> - безкоштовний SFTP, FTP, WebDAV, S3 і SCP клієнт з відкритим вихідним кодом для Windows. Його основною функцією є передача файлів між локальним і віддаленим комп’ютером. Крім цього, WinSCP пропонує скриптування і базові функції керування файлами.</p>
-<p>Ви можете <a href="#id25"><span class="problematic" id="id26">`звантажити &amp;lt;https://winscp.net/eng/downloads.php/&amp;gt;`_</span></a> портативну версію WinSCP і запустити її у Linux через <a href="#id27"><span class="problematic" id="id28">`Wine &amp;lt;https://wiki.winehq.org/Main_Page/&amp;gt;`_</span></a>.</p>
+<p><a href="#id21"><span class="problematic" id="id22">`WinSCP &amp;lt;https://winscp.net/eng/docs/introduction/&amp;gt;`_</span></a> - безкоштовний SFTP, FTP, WebDAV, S3 і SCP клієнт з відкритим вихідним кодом для Windows. Його основною функцією є передача файлів між локальним і віддаленим комп’ютером. Крім цього, WinSCP пропонує скриптування і базові функції керування файлами.</p>
+<p>Ви можете <a href="#id23"><span class="problematic" id="id24">`звантажити &amp;lt;https://winscp.net/eng/downloads.php/&amp;gt;`_</span></a> портативну версію WinSCP і запустити її у Linux через <a href="#id25"><span class="problematic" id="id26">`Wine &amp;lt;https://wiki.winehq.org/Main_Page/&amp;gt;`_</span></a>.</p>
 <p>Щоб запустити WinSCP у Linux, завантажте wine через менеджер пакетів вашого дистрибутива, а потім запустіть його командою: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
 <p>Підключитися до Nextcloud:</p>
 <ul class="simple">
