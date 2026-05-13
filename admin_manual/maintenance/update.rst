@@ -265,14 +265,14 @@ Point the updater at any HTTP/HTTPS URL:
 .. code-block:: bash
 
     sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar \
-        --url https://mirror.example.com/nextcloud-30.0.0.tar.bz2
+        --url https://download.nextcloud.com/server/releases/nextcloud-33.0.0.zip
 
 For a locally staged archive, use a ``file://`` URL:
 
 .. code-block:: bash
 
     sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar \
-        --url file:///tmp/nextcloud-30.0.0.tar.bz2
+        --url file:///tmp/nextcloud-33.0.0.zip
 
 Signature verification
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -288,7 +288,7 @@ automatically. You have two options:
   .. code-block:: bash
 
       sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar \
-          --url file:///tmp/nextcloud-30.0.0.tar.bz2 \
+          --url file:///tmp/nextcloud-33.0.0.zip \
           --signature "BASE64_SIGNATURE_HERE"
 
 * **Skip verification** — pass ``--no-verify`` to disable integrity checking
@@ -298,7 +298,7 @@ automatically. You have two options:
   .. code-block:: bash
 
       sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar \
-          --url file:///tmp/nextcloud-30.0.0.tar.bz2 \
+          --url file:///tmp/nextcloud-33.0.0.zip \
           --no-verify
 
 .. warning::
@@ -312,7 +312,7 @@ runs:
 .. code-block:: bash
 
     sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar \
-        --url file:///tmp/nextcloud-30.0.0.tar.bz2 \
+        --url file:///tmp/nextcloud-33.0.0.zip \
         --signature "BASE64_SIGNATURE_HERE" \
         --no-interaction
 
