@@ -93,7 +93,7 @@ Specifically, you have to:
 .. figure:: images/setup/remove.png
    :alt: Remove an existing connection
 
-To do so, in the client UI, which you can see above, click the "**Account**" drop-down menu and then click "Remove".
+To do so, click the "**Account**" drop-down menu and then click "Remove".
 This will display a "**Confirm Account Removal**" dialog window.
 
 .. figure:: images/setup/confirm.png
@@ -106,7 +106,7 @@ Then, click the Account drop-down menu again, and this time click "**Add new**".
 .. figure:: images/setup/wizard.png
    :alt: Replacement connection wizard
 
-This opens the Nextcloud Connection Wizard, which you can see above, *but* with an extra option.
+This opens the Nextcloud Connection Wizard *but* with an extra option.
 This option provides the ability to either: keep the existing data (synced by the previous connection) or to start a clean sync (erasing the existing data).
 
 .. important::

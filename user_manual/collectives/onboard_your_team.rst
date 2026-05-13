@@ -25,7 +25,7 @@ Step 2: Create an “Introduction”-template together 👥
 3. Give your template the title ``Introduction``. Now add your fields as simple text to your document -
    don't forget to decide on them collectively! By pressing on the Tt button in the formatting toolbar,
    you can format your new text as headings!
-4. When you're finished, just press the X in the top right corner - your template will be automatically
+4. When you're finished, just press the **Close** button - your template will be automatically
    saved and you should be back in your template manager.
 5. Let’s add a fun emoji for our new template last. Click the … button next to your new template and
    click choose emoji…. Afterwards you can close the template manager.

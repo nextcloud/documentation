@@ -38,7 +38,7 @@ Importing Virtual Contacts
 
 To Import Contacts Using a VCF/vCard File:
 
-1. On top left of the screen you have "Import contacts" button that is shown only when you don't have any contacts yet.
+1. An **Import contacts** button is shown when you have no contacts yet.
 2. Find "Settings" at the bottom of the left sidebar, next to the gear button:
 
     .. figure:: ../images/contact_bottombar.png

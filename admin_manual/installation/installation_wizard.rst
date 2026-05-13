@@ -16,7 +16,7 @@ This is just three steps:
 
 .. figure:: images/install-wizard-initial.png
    :scale: 75%
-   :alt: screenshot of the installation wizard
+   :alt: Nextcloud installation wizard showing database and admin account configuration fields
 
 You're finished and can start using your new Nextcloud server.
 

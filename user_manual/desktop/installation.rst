@@ -116,8 +116,7 @@ the Nextcloud server, or select individual folders. The default local
 sync folder is ``Nextcloud``, in your home directory. You may change
 this as well.
 
-When you have completed selecting your sync folders, click the *Connect*
-button at the bottom right. The client will attempt to connect to your
+When you have completed selecting your sync folders, click the *Connect* button. The client will attempt to connect to your
 Nextcloud server. If it is successful, the wizard will close itself. You
 can then observe the sync activity and open the main dialog by clicking
 on the tray icon.

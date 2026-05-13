@@ -19,8 +19,8 @@ disabled by default, so to use this feature you simply need to enable it under
 Configuring
 -----------
 
-To access the settings for configuring external storage mounts, click your Profile icon
-in the top right and select **Settings** from the dropdown. On the left side, under
+To access the settings for configuring external storage mounts, click your **Profile** icon
+and select **Settings** from the dropdown. On the left side, under
 **Administration**, select **External Storage**.
 
 .. note::

@@ -27,7 +27,7 @@ Virtual files-related settings can be adjusted on a per-account basis
 via the Nextcloud desktop client's settings window.
 
 .. image:: images/macosvfs-settings.jpg
-   :alt: Screenshot of client settings for the file provider extension
+   :alt: Nextcloud desktop client settings showing the macOS file provider extension toggle
 
 Here the integration into Finder can be enabled or disabled.
 
@@ -77,7 +77,7 @@ Context menu actions
 --------------------
 
 .. image:: images/macosvfs-context-menu.jpg
-   :alt: Screenshot of Finder with an open context menu
+   :alt: macOS Finder context menu on a Nextcloud file showing Keep Downloaded, Lock, and Share options
 
 The file provider extension also provides special Nextcloud features through
 the context menu in Finder.
@@ -103,7 +103,7 @@ Locking
 ^^^^^^^
 
 .. image:: images/macosvfs-file-locking.jpg
-   :alt: Screenshot of Finder showing the successful locking of a file
+   :alt: macOS Finder showing a Nextcloud file with a lock indicator after locking
 
 If the server supports file locking, the client will offer manual locking and
 unlocking of files in Finder.
@@ -112,7 +112,7 @@ Sharing
 ^^^^^^^
 
 .. image:: images/macosvfs-file-sharing.jpg
-   :alt: Screenshot of Finder showing the share management
+   :alt: macOS Finder share management panel for a Nextcloud file showing existing shares
 
 When the server supports sharing and the item is allowed to be shared,
 then you can create new shares or manage existing shares for an item directly

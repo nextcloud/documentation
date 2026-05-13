@@ -83,7 +83,7 @@ This setting allows you to show messages set as favorite in a separate section o
 
 Scheduled messages
 ~~~~~~~~~~~~~~~~~~~
-1. Click new message button on top left of your screen
+1. Click the **New message** button
 2. Click the (...) action menu on the modal composer
 3. Click *send later*
 
@@ -213,7 +213,7 @@ Disable trash retention by leaving the field empty or setting it to 0.
 Compose messages
 ----------------
 
-1. Click new message on the top left of your screen
+1. Click the **New message** button
 2. Start writing your message
 
 Minimize the composer modal
@@ -221,15 +221,15 @@ Minimize the composer modal
 
 .. versionadded:: 3.2
 
-The composer modal can be minimized while writing a new message, editing an existing draft or a message from the outbox. Simply click the minimize button on the top right of the modal or click anywhere outside the modal.
+The composer modal can be minimized while writing a new message, editing an existing draft or a message from the outbox. Simply click the **Minimize** button on the modal or click anywhere outside the modal.
 
 .. figure:: images/mail-minimize-composer.png
 
-You can resume your minimized message by clicking anywhere on the indicator on the bottom right of your screen.
+You can resume your minimized message by clicking anywhere on the minimized composer indicator.
 
 .. figure:: images/mail-composer-indicator.png
 
-Press close button on the modal or the indicator in the bottom right corner to stop editing a message. A draft will be saved automatically into your draft mailbox.
+Press the **Close** button on the modal or on the minimized composer indicator to stop editing a message. A draft will be saved automatically into your draft mailbox.
 
 
 Recipient info on composer
@@ -239,8 +239,8 @@ Recipient info on composer
 
 When you add your first recipient or contact in the "To" field, a right pane will appear displaying the saved profile details of that contact.
 Adding a second contact will collapse the list, allowing you to select and expand any contact you added to view their details.
-If you prefer to focus solely on writing in the composer, you can hide the right pane by clicking the expand icon in the top-right corner.
-To show the right pane again, simply click the minimize icon in the same location.
+If you prefer to focus solely on writing in the composer, you can hide the right pane by clicking the **Expand** icon in the composer toolbar.
+To show the right pane again, simply click the **Minimize** icon in the same toolbar.
 
 Mention contacts
 ----------------
@@ -264,7 +264,7 @@ Text blocks can be shared with users and user groups.
 Outbox
 ------
 
-When a message has been composed and the "Send" button was clicked, the message is added to the outbox which can be found in the bottom left corner of the left sidebar.
+When a message has been composed and the "Send" button was clicked, the message is added to the **Outbox**, which appears at the bottom of the left sidebar.
 
 You can also set the date and time for the send operation to a point in the future (see :ref:`Scheduled messages <mail-scheduled-messages>`)- the message will be kept in the outbox until your chosen date and time arrives, then it will be sent automatically.
 

@@ -51,7 +51,7 @@ Each app also has its own **left sidebar** with filters and actions specific to 
 Settings and profile
 --------------------
 
-Click your profile picture in the top-right corner to access your account options:
+Click your profile picture to access your account options:
 
 .. figure:: images/webinterface_profile_menu.png
    :alt: The profile menu showing options for settings, status, appearance, and logging out.
