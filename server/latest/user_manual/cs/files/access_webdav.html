@@ -177,13 +177,19 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
-<p>Při používání WebDAV klienta třetí strany (včetně toho vestavěného ve vámi využívaném operačním systému), byste pro přihlašování měli používat heslo pro danou aplikaci, namísto hesla přímo k vašemu uživatelskému účtu v Nextcloud, toto <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">výrazně zvýší výkon</a>. Heslo pro danou aplikaci nastavíte tak, že se přihlásíte do webového rozhraní Nextcloud, kliknete na svůj zástupný obrázek v pravém horním rohu a vyberete <em>Osobní nastavení</em>. Pak v postranním panelu vlevo vyberte <em>Zabezpečení</em> a posunete až úplně dolů. Zde je možné vytvořit heslo pro danou aplikaci (platnost kterého je také možné v budoucnu odvolat aniž by bylo třeba měnit hlavní heslo uživatele.</p>
+<p>When using a third-party WebDAV client (including your operating system’s
+built-in client), you should use an application password for login rather than your
+regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log into the Nextcloud Web interface, click on your avatar
+and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
+sidebar and scroll to the very bottom. There you can create an app password (which can
+also be revoked in the future without changing your main user password).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
 <p>V následujících příkladech, je třeba nahradit <strong>example.com/nextcloud</strong> URL adresou vámi využívaného Nextcloud serveru (vynechte část se složkou, pokud je jeho instalace v kořeni domény). A <strong>UZIVATELSKEJMENO</strong> nahraďte identifikátorem připojujícího se uživatele.</p>
 <p>See the WebDAV URL, to be found in Files Settings -&gt; WebDAV in the Files on your Nextcloud account.</p>
-<img alt="Screenshot of the Files settings showing the personal WebDAV link" src="../../_images/webdav_link.png" />
+<img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
 </div>
 </section>
 <section id="accessing-files-using-linux">
@@ -201,7 +207,7 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p class="admonition-title">Poznámka</p>
 <p>Pokud připojení k vámi využívanému serveru není zabezpečené pomocí HTTPS, použitje <code class="docutils literal notranslate"><span class="pre">dav://</span></code> namísto <code class="docutils literal notranslate"><span class="pre">davs://</span></code>.</p>
 </div>
-<img alt="Snímek obrazovky s nastavováním správce souborů Nautilus pro použití WebDAV" src="../../_images/webdav_gnome3_nautilus.png" />
+<img alt="GNOME Nautilus file manager Connect to Server dialog with a Nextcloud WebDAV address entered" src="../../_images/webdav_gnome3_nautilus.png" />
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
 <p>Stejná metoda funguje i pro ostatní správce souborů, kteří používají GVFS, jako například Caja z prostředí MATE a Nemo z Cinnamon.</p>
@@ -321,13 +327,13 @@ for example
 <p>Pro přístup k souborům z macOS Finder:</p>
 <ol class="arabic">
 <li><p>Z nabídky v horním liště aplikace Finder zvolte <strong>Přejít na &gt; Připojit k serveru…</strong>:</p>
-<img alt="Snímek obrazovky se zadáváním adresy vámi využívaného Nextcloud serveru na macOS" src="../../_images/osx_webdav1.png" />
+<img alt="macOS Go menu with Connect to Server option highlighted" src="../../_images/osx_webdav1.png" />
 </li>
 <li><p>Když se otevře okno <strong>Připojit k serveru…</strong>, zadejte WebDAV adresu vámi využívaného Nextcloud serveru do kolonky <strong>Adresa serveru</strong>, tj.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
 </pre></div>
 </div>
-<img alt="Snímek obrazovky: Zadání adresy Nextcloud serveru v dialogu „Připojit k serveru…“" src="../../_images/osx_webdav2.png" />
+<img alt="macOS Connect to Server dialog with a Nextcloud WebDAV URL in the Server Address field" src="../../_images/osx_webdav2.png" />
 </li>
 <li><p>Klikněte na <strong>Připojit</strong>. Vámi používaný WebDAV server by se měl objevit na Ploše jako sdílená jednotka.</p></li>
 </ol>
@@ -396,7 +402,7 @@ for example
 <p>Pro servery, chráněné pomocí SSL, zaškrtněte <strong>Znovu připojit při přihlášení se</strong>, abyste zajistili, že mapování zůstane zachováno po následných restartech počítače. Pokud se chcete k Nexcloud serveru připojit jako jiný uživatel (než kterým jste právě přihlášeni do systému), zaškrtněte <strong>Připojit se pomocí jiných přihlašovacích údajů</strong>.</p>
 </div>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Snímek obrazovky s mapováním WebDAV ve Windows Průzkumníkovi" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Windows Explorer Map Network Drive wizard with a Nextcloud WebDAV URL entered" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
 </a>
 </figure>
 </li>

@@ -177,13 +177,19 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">참고</p>
-<p>타사 WebDAV 클라이언트(운영체제에 내장된 클라이언트 포함)를 사용할 때는 일반 비밀번호 대신 애플리케이션 비밀번호를 사용하여 로그인하는 것이 좋습니다. 이렇게 하면 보안이 강화될 뿐만 아니라 성능도 크게 향상됩니다(&lt;<a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151</a>&gt;). 애플리케이션 비밀번호를 설정하려면 Nextcloud 웹 인터페이스에 로그인하고 오른쪽 상단의 아바타를 클릭한 다음 <a href="#id1"><span class="problematic" id="id2">*</span></a>개인 설정*을 선택하세요. 그런 다음 왼쪽 사이드바에서 <a href="#id3"><span class="problematic" id="id4">*</span></a>보안*을 선택하고 맨 아래로 스크롤하면 앱 비밀번호를 생성할 수 있습니다. (이 앱 비밀번호는 나중에 기본 사용자 비밀번호를 변경하지 않고도 취소할 수 있습니다.)</p>
+<p>When using a third-party WebDAV client (including your operating system’s
+built-in client), you should use an application password for login rather than your
+regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log into the Nextcloud Web interface, click on your avatar
+and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
+sidebar and scroll to the very bottom. There you can create an app password (which can
+also be revoked in the future without changing your main user password).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">참고</p>
 <p>이하 예시에서, <strong>example.com/nextcloud</strong> 주소를 해당 Nextcloud 서버 주소로 변경해야 합니다. (이때 Nextcloud가 도메인의 루트와 연결될 경우 해당 부분은 생략하십시오). <strong>USERNAME</strong> 또한 사용자의 아이디(사용자 이름)로 변경하십시오.</p>
 <p>See the WebDAV URL, to be found in Files Settings -&gt; WebDAV in the Files on your Nextcloud account.</p>
-<img alt="Screenshot of the Files settings showing the personal WebDAV link" src="../../_images/webdav_link.png" />
+<img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
 </div>
 </section>
 <section id="accessing-files-using-linux">
@@ -201,7 +207,7 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p class="admonition-title">참고</p>
 <p>서버가 HTTPS로 보안되지 않았다면, <code class="docutils literal notranslate"><span class="pre">davs://</span></code> 대신 <a href="#id1"><span class="problematic" id="id2">``</span></a><a class="reference external" href="dav://">dav://</a><a href="#id3"><span class="problematic" id="id4">``</span></a>를 사용하십시오:</p>
 </div>
-<img alt="Nautilus 파일 관리자에서 WebDAV를 설정하는 스크린샷" src="../../_images/webdav_gnome3_nautilus.png" />
+<img alt="GNOME Nautilus file manager Connect to Server dialog with a Nextcloud WebDAV address entered" src="../../_images/webdav_gnome3_nautilus.png" />
 <div class="admonition note">
 <p class="admonition-title">참고</p>
 <p>MATE의 Caja 및 Cinnamon의 Nemo 등 GVFS를 사용하는 다른 파일 관리자에서도 동일한 방법으로 사용할 수 있습니다.</p>
@@ -321,13 +327,13 @@ for example
 <p>macOS Finder를 통해 파일에 접근하려면,</p>
 <ol class="arabic">
 <li><p>Finder의 상단 메뉴 막대에서 <a href="#id1"><span class="problematic" id="id2">**</span></a>이동&gt;서버에 연결…**을 선택합니다.</p>
-<img alt="macOS에서 Nextcloud 서버 주소를 입력하는 스크린샷" src="../../_images/osx_webdav1.png" />
+<img alt="macOS Go menu with Connect to Server option highlighted" src="../../_images/osx_webdav1.png" />
 </li>
 <li><p><strong>서버에 연결…</strong> 창이 열리면 <strong>서버 주소:</strong> 필드에 Nextcloud 서버의 WebDAV 주소를 입력합니다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
 </pre></div>
 </div>
-<img alt="스크린샷: &quot;서버에 연결...&quot;에 Nextcloud 서버 주소 입력 대화 상자" src="../../_images/osx_webdav2.png" />
+<img alt="macOS Connect to Server dialog with a Nextcloud WebDAV URL in the Server Address field" src="../../_images/osx_webdav2.png" />
 </li>
 <li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>연결**을 클릭합니다. WebDAV 서버가 데스크탑에 공유 디스크 드라이브로 표시되어야 합니다.</p></li>
 </ol>
@@ -396,7 +402,7 @@ for example
 <p>SSL로 보호된 서버의 경우 <a href="#id1"><span class="problematic" id="id2">**</span></a>로그인 시 다시 연결**을 선택하여 후속 재부팅 시 매핑이 지속되는지 확인합니다. Nextcloud 서버에 다른 사용자로 연결하려면 <a href="#id3"><span class="problematic" id="id4">**</span></a>다른 자격 증명을 사용하여 연결**을 선택합니다.</p>
 </div>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Windows 탐색기에서 WebDAV 매핑 스크린샷" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Windows Explorer Map Network Drive wizard with a Nextcloud WebDAV URL entered" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
 </a>
 </figure>
 </li>
