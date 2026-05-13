@@ -254,7 +254,7 @@ Common use cases:
 .. warning::
    The normal update rules still apply when using ``--url``:
 
-   * **Downgrading is not supported** and risks data corruption.
+   * **Downgrading is not supported**.
    * **Skipping major versions is not supported.** You must update one major
      version at a time (e.g. 28 → 29 → 30, not 28 → 30).
 
@@ -266,6 +266,9 @@ Point the updater at any HTTP/HTTPS URL:
 
     sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar \
         --url https://download.nextcloud.com/server/releases/nextcloud-33.0.0.zip
+
+
+.. versionadded:: 34
 
 For a locally staged archive, use a ``file://`` URL:
 
