@@ -318,11 +318,11 @@ based upgrade” shows how the screens then look like.</p></li>
 </ol>
 <p><strong>Web based upgrade</strong></p>
 <p>This is how the web based update would continue:</p>
-<img alt="../_images/updater-7-disable-maintenance.png" src="../_images/updater-7-disable-maintenance.png" />
-<img alt="../_images/updater-9-upgrade-page.png" src="../_images/updater-9-upgrade-page.png" />
+<img alt="Nextcloud web updater showing option to disable maintenance mode after upgrade" src="../_images/updater-7-disable-maintenance.png" />
+<img alt="Nextcloud upgrade page displayed after the web updater completes" src="../_images/updater-9-upgrade-page.png" />
 <p><strong>Command line based upgrade</strong></p>
 <p>This is how the command line based update would continue:</p>
-<img alt="../_images/updater-8-keep-maintenance.png" src="../_images/updater-8-keep-maintenance.png" />
+<img alt="Nextcloud command line updater asking whether to keep maintenance mode active" src="../_images/updater-8-keep-maintenance.png" />
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -E -u www-data php ./occ upgrade
 Nextcloud or one of the apps require upgrade - only a limited number of commands are available
 You may use your browser or the occ upgrade command to do the upgrade
@@ -359,26 +359,26 @@ section “Version”. This section has a button to open the updater. This
 section as well as the update notification is only available if the update
 notification app is enabled in the apps management.</p></li>
 </ol>
-<img alt="../_images/updater-1-update-available.png" src="../_images/updater-1-update-available.png" />
+<img alt="Nextcloud admin settings Version section showing an update available notification" src="../_images/updater-1-update-available.png" />
 <ol class="arabic simple" start="2">
 <li><p>Instead of clicking that button you can now invoke the command line based
 updater by going into the <cite>updater/</cite> directory in the Nextcloud directory
 and executing the <cite>updater.phar</cite> as the web server user. (i.e.
 <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-E</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">/var/www/nextcloud/updater/updater.phar</span></code>)</p></li>
 </ol>
-<img alt="../_images/updater-cli-2-start-updater.png" class="terminal-image" src="../_images/updater-cli-2-start-updater.png" />
+<img alt="Terminal showing Nextcloud command line updater starting and displaying update information" class="terminal-image" src="../_images/updater-cli-2-start-updater.png" />
 <ol class="arabic simple" start="3">
 <li><p>Verify the information that is shown and enter “Y” to start the update.</p></li>
 </ol>
-<img alt="../_images/updater-cli-3-running-step.png" class="terminal-image" src="../_images/updater-cli-3-running-step.png" />
-<img alt="../_images/updater-cli-4-failed-step.png" class="terminal-image" src="../_images/updater-cli-4-failed-step.png" />
+<img alt="Terminal showing Nextcloud command line updater executing update steps" class="terminal-image" src="../_images/updater-cli-3-running-step.png" />
+<img alt="Terminal showing Nextcloud command line updater with a failed step and error feedback" class="terminal-image" src="../_images/updater-cli-4-failed-step.png" />
 <ol class="arabic simple" start="4">
 <li><p>In case an error happens or the check failed the updater stops processing
 and gives feedback. You can now try to solve the problem and re-run the
 updater command. This will continue the update and re-run the failed step.
 It will not re-run the previous succeeded steps.</p></li>
 </ol>
-<img alt="../_images/updater-cli-5-continue-update.png" class="terminal-image" src="../_images/updater-cli-5-continue-update.png" />
+<img alt="Terminal showing Nextcloud command line updater ready to continue after resolving an error" class="terminal-image" src="../_images/updater-cli-5-continue-update.png" />
 <ol class="arabic simple" start="6">
 <li><p>Once all steps are executed the updater will ask you a final question:
 “Should the “occ upgrade” command be executed?”. This allows you to directly
@@ -386,12 +386,12 @@ execute the command line based upgrade procedure (<code class="docutils literal 
 select “No” then it will finish with
 <cite>Please now execute “./occ upgrade” to finish the upgrade.</cite>.</p></li>
 </ol>
-<img alt="../_images/updater-cli-6-run-command.png" class="terminal-image" src="../_images/updater-cli-6-run-command.png" />
+<img alt="Terminal showing Nextcloud command line updater asking whether to run the occ upgrade command" class="terminal-image" src="../_images/updater-cli-6-run-command.png" />
 <ol class="arabic simple" start="7">
 <li><p>Once the <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code> is done you get asked if the maintenance mode
 should be kept active.</p></li>
 </ol>
-<img alt="../_images/updater-cli-7-maintenance.png" class="terminal-image" src="../_images/updater-cli-7-maintenance.png" />
+<img alt="Terminal showing Nextcloud command line updater asking whether to keep maintenance mode active" class="terminal-image" src="../_images/updater-cli-7-maintenance.png" />
 </section>
 <section id="batch-mode-for-command-line-based-updater">
 <h2>Batch mode for command line based updater<a class="headerlink" href="#batch-mode-for-command-line-based-updater" title="Link to this heading"></a></h2>
@@ -403,7 +403,7 @@ except an error occurred during the <code class="docutils literal notranslate"><
 code.</p>
 <p>To execute this, run the command with the <code class="docutils literal notranslate"><span class="pre">--no-interaction</span></code> option. (i.e.
 <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-E</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">/var/www/nextcloud/updater/updater.phar</span> <span class="pre">--no-interaction</span></code>)</p>
-<img alt="../_images/updater-cli-8-no-interaction.png" class="terminal-image" src="../_images/updater-cli-8-no-interaction.png" />
+<img alt="Terminal showing Nextcloud command line updater running in non-interactive batch mode" class="terminal-image" src="../_images/updater-cli-8-no-interaction.png" />
 </section>
 <section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
