@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e7c79d26" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -54,9 +54,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Dokumentation durchsuchen" aria-label="Dokumentation durchsuchen" />
+    <label for="rtd-search-input" class="sr-only">Dokumentation durchsuchen</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Dokumentation durchsuchen"
+             aria-label="Dokumentation durchsuchen" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -126,13 +135,13 @@
 <section id="call-live-transcription">
 <h2>Anruf-Live-Transkription<a class="headerlink" href="#call-live-transcription" title="Link to this heading"></a></h2>
 <p>Die Live-Transkription von Anrufen transkribiert Sprache in Echtzeit. Sie wird von der Systemadministration eingerichtet (leistungsfähiges Backend und die <a class="reference external" href="https://apps.nextcloud.com/apps/live_transcription">Live Transcription App</a> sind erforderlich). Moderatoren müssen die Transkriptionssprache in den Gesprächseinstellungen festlegen. Alle Teilnehmer können die Transkription anschließend in der unteren Leiste des Anrufs aktivieren oder deaktivieren. Ist sie aktiviert, erscheint die Transkription am unteren Bildschirmrand und wird in Echtzeit aktualisiert.</p>
-<a class="reference internal image-reference" href="../../_images/call-transcription.png"><img alt="../../_images/call-transcription.png" src="../../_images/call-transcription.png" style="width: 500px;" />
+<a class="reference internal image-reference" href="../../_images/call-transcription.png"><img alt="Talk call with live transcription text displayed at the bottom of the screen" src="../../_images/call-transcription.png" style="width: 500px;" />
 </a>
 </section>
 <section id="live-translation">
 <h2>Live-Übersetzung<a class="headerlink" href="#live-translation" title="Link to this heading"></a></h2>
 <p>Mit der aktivierten Provider-App <cite>live_transcription</cite> können Sie auch Live-Übersetzung nutzen. Anstatt die Transkription in der Originalsprache zu erhalten, wird sie in die Sprache Ihrer Wahl übersetzt.</p>
-<a class="reference internal image-reference" href="../../_images/call-translation-actions.png"><img alt="../../_images/call-translation-actions.png" src="../../_images/call-translation-actions.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/call-translation-actions.png"><img alt="Talk call transcription toolbar with translation and other actions" src="../../_images/call-translation-actions.png" style="width: 400px;" />
 </a>
 </section>
 </section>
@@ -253,13 +262,18 @@
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 German
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Sprachen</dt>
         
@@ -636,6 +650,17 @@
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

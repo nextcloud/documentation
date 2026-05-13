@@ -12,9 +12,53 @@ h6 {
 	font-family: system-ui, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Cantarell, Ubuntu, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+/* Visually hidden utility — element stays in the accessibility tree
+   but is not visible on screen. Satisfies WCAG 3.3.2 / BITV 9.3.3.2
+   for the search form label. */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* Search input wrapper — positions the magnifying-glass icon inside
+   the input so sighted users can identify the field without a label. */
+.wy-form-search {
+	position: relative;
+}
+
+.wy-form-search-icon {
+	position: absolute;
+	top: 50%;
+	left: 10px;
+	transform: translateY(-50%);
+	color: #555;
+	pointer-events: none;
+}
+
+.wy-form-search input[type="text"] {
+	padding-left: 30px;
+}
+
 /* NC blue */
 .wy-side-nav-search {
 	background-color: #0082c9;
+}
+
+/* Content links — RTD default #2980b9 gives ~4.3:1 against white,
+   below the 4.5:1 required by WCAG AA / BITV 9.1.4.1 and 9.1.4.3.
+   #2474a4 yields ~5.1:1 while keeping the same blue visual style.
+   Keep underlines so links are not distinguished by color only. */
+.rst-content a,
+.rst-content a:visited {
+	color: #2474a4;
+	text-decoration: underline;
 }
 
 /* Reduce size of logo in top left */
@@ -46,6 +90,18 @@ h6 {
 .rst-versions .rst-current-version .fa-book {
 	display: none;
 }
+
+/* The version toggle is now a <button> element. Reset default button
+   styling so it looks identical to the old <span>. */
+button.rst-current-version {
+	background: none;
+	border: none;
+	padding: 12px;
+	font-family: inherit;
+	font-size: 90%;
+	width: 100%;
+	cursor: pointer;
+}
 .rst-versions .rst-current-version:before {
 	content: 'Nextcloud';
 	margin-right: auto;
@@ -53,16 +109,30 @@ h6 {
 .rst-versions .rst-current-version {
 	display: flex;
 	align-items: center;
-	color: #0082c9;
+	/* Use white instead of #0082c9 — the NC blue at 3.7:1 on the dark
+	   #272525 sidebar background fails WCAG AA (4.5:1 required). */
+	color: #fff;
 }
 .rst-versions .rst-current-version .fa-caret-down {
 	margin-left: 5px;
+}
+
+.rst-versions .rst-current-version .fa-caret-down:not(:last-of-type) {
+	margin-right: 10px;
 }
 
 /* Code blocks */
 .highlight {
 	/* nc blue */
 	background: rgba(0, 130, 201, 0.1)
+}
+
+/* Inline code — RTD uses #e74c3c on white which gives ~3.82:1, below
+   the 4.5:1 required by WCAG AA / BITV 9.1.4.3. Use a darker shade. */
+.rst-content code,
+.rst-content tt,
+code {
+	color: #c0392b !important;
 }
 
 /* Fix code within tables - remove too big margins */
@@ -120,6 +190,17 @@ div#list-of-available-icons > blockquote > div > div > p {
 	font-size: 90%;
 	font-style: normal;
 	text-align: center;
+}
+
+/* Focus ring — the sidebar nav container clips outline to one edge
+   (only bottom line visible). Use a negative outline-offset to draw
+   the ring inside the element so it is never clipped (BITV 9.2.4.7). */
+.wy-menu-vertical a:focus-visible,
+.wy-menu-vertical button:focus-visible,
+.wy-side-nav-search a:focus-visible,
+.rst-versions .rst-current-version:focus-visible {
+	outline: 2px solid #0082c9;
+	outline-offset: -2px;
 }
 
 .wy-nav-content {
