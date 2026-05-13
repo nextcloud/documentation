@@ -109,10 +109,6 @@ html_static_path = ['_static']
 html_css_files = [
 	'custom.css'
 ]
-# Extra JS relative to html_static_path
-html_js_files = [
-	('fix-nav-a11y.js', {'defer': 'defer'}),
-]
 
 edit_on_github_project = 'nextcloud/documentation'
 edit_on_github_branch = 'master'
