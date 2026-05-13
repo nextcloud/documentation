@@ -239,6 +239,68 @@ To execute this, run the command with the ``--no-interaction`` option. (i.e.
    :alt: Terminal showing Nextcloud command line updater running in non-interactive batch mode
    :class: terminal-image
 
+Using a custom download URL (offline / air-gapped installs)
+------------------------------------------------------------
+
+By default the updater fetches the Nextcloud release archive from the official
+download servers. In environments without internet access — or when you want to
+serve the archive from an internal mirror — you can point the updater at any
+HTTP/HTTPS URL with the ``--url`` option:
+
+.. code-block:: bash
+
+    sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar \
+        --url https://mirror.example.com/nextcloud-30.0.0.tar.bz2
+
+For local file access you can use a ``file://`` URL:
+
+.. code-block:: bash
+
+    sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar \
+        --url file:///tmp/nextcloud-30.0.0.tar.bz2
+
+Signature verification
+~~~~~~~~~~~~~~~~~~~~~~
+
+When ``--url`` is used the updater cannot look up the official signature
+automatically. You have two options:
+
+* **Provide the signature** — pass the base64-encoded signature with
+  ``--signature``. You can get the signature from
+  https://nextcloud.com/changelog/ or from the same mirror that hosts the
+  archive:
+
+  .. code-block:: bash
+
+      sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar \
+          --url file:///tmp/nextcloud-30.0.0.tar.bz2 \
+          --signature "BASE64_SIGNATURE_HERE"
+
+* **Skip verification** — pass ``--no-verify`` to disable integrity checking
+  entirely. Only do this if you fully trust the source of the archive and the
+  transfer channel:
+
+  .. code-block:: bash
+
+      sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar \
+          --url file:///tmp/nextcloud-30.0.0.tar.bz2 \
+          --no-verify
+
+.. warning::
+   Skipping signature verification (``--no-verify``) removes the integrity
+   check that protects against corrupted or tampered archives. Only use it
+   when the archive comes from a fully trusted, controlled source.
+
+These options can be combined with ``--no-interaction`` for fully automated
+offline update runs:
+
+.. code-block:: bash
+
+    sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar \
+        --url file:///tmp/nextcloud-30.0.0.tar.bz2 \
+        --signature "BASE64_SIGNATURE_HERE" \
+        --no-interaction
+
 Troubleshooting
 ---------------
 
