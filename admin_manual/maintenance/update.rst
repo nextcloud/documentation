@@ -239,20 +239,35 @@ To execute this, run the command with the ``--no-interaction`` option. (i.e.
    :alt: Terminal showing Nextcloud command line updater running in non-interactive batch mode
    :class: terminal-image
 
-Using a custom download URL (offline / air-gapped installs)
-------------------------------------------------------------
+Using a custom download URL
+---------------------------
 
-By default the updater fetches the Nextcloud release archive from the official
-download servers. In environments without internet access — or when you want to
-serve the archive from an internal mirror — you can point the updater at any
-HTTP/HTTPS URL with the ``--url`` option:
+The ``--url`` option lets you override the archive the updater downloads.
+Common use cases:
+
+* **Pinning a specific version** — install an exact patch release rather than
+  whatever the update check resolves to.
+* **Internal mirrors** — serve the archive from a company mirror or proxy.
+* **Offline / air-gapped environments** — stage the archive locally and
+  supply it via a ``file://`` URL.
+
+.. warning::
+   The normal update rules still apply when using ``--url``:
+
+   * **Downgrading is not supported** and risks data corruption.
+   * **Skipping major versions is not supported.** You must update one major
+     version at a time (e.g. 28 → 29 → 30, not 28 → 30).
+
+   Passing ``--url`` does not bypass these constraints.
+
+Point the updater at any HTTP/HTTPS URL:
 
 .. code-block:: bash
 
     sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar \
         --url https://mirror.example.com/nextcloud-30.0.0.tar.bz2
 
-For local file access you can use a ``file://`` URL:
+For a locally staged archive, use a ``file://`` URL:
 
 .. code-block:: bash
 
@@ -292,7 +307,7 @@ automatically. You have two options:
    when the archive comes from a fully trusted, controlled source.
 
 These options can be combined with ``--no-interaction`` for fully automated
-offline update runs:
+runs:
 
 .. code-block:: bash
 
