@@ -20,7 +20,7 @@ This can be done by following these steps:
    .. image:: ../images/goa-add-nextcloud-account.png
 
 #. In the next window, select which resources GNOME should access and
-   press the cross in the top right to close:
+   press the **Close** button to close the dialog:
 
    .. image:: ../images/goa-nextcloud-select.png
 

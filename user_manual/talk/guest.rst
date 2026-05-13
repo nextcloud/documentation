@@ -14,7 +14,7 @@ If you received a link to a chat conversation, you can open it in your browser t
 .. image:: images/guest-view.png
     :width: 400px
 
-You can also change your name later by clicking the ``Edit`` button, located top-right.
+You can also change your name later by clicking the ``Edit`` button in the top bar.
 
 .. image:: images/change-name.png
     :width: 400px
@@ -42,7 +42,7 @@ During a call, you can find the Camera and Microphone settings in the ``...`` me
 .. image:: images/guest-call-menu.png
     :width: 300px
 
-During a call, you can mute your microphone and disable your video with the buttons in the top-right, or using the shortcuts ``M`` to mute audio and ``V`` to disable video. You can also use the ``space bar`` to toggle mute. When you are muted, pressing space will unmute you so you can speak until you let go of the space bar. If you are unmuted, pressing space will mute you until you let go.
+During a call, you can mute your microphone and disable your video with the mute and camera toggle buttons in the call toolbar, or using the shortcuts ``M`` to mute audio and ``V`` to disable video. You can also use the ``space bar`` to toggle mute. When you are muted, pressing space will unmute you so you can speak until you let go of the space bar. If you are unmuted, pressing space will mute you until you let go.
 
 You can hide your video (useful during a screen share) with the little arrow just above the video stream. Bring it back with the little arrow again.
 

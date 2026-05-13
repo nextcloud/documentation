@@ -6,15 +6,15 @@ As a user, you can manage your personal settings.
 
 To access your personal settings:
 
-1. Click your profile picture in the top right corner of your Nextcloud instance to open the menu.
+1. Click your profile picture to open the menu.
 
    .. figure:: images/oc_personal_settings_dropdown.png
-      :alt: screenshot of user menu at top-right of Nextcloud Web GUI
+      :alt: Nextcloud account menu showing Settings, Help, and Log out options
 
 2. Click **Settings** in the dropdown menu to open your personal settings.
 
    .. figure:: images/personal_settings.png
-      :alt: screenshot of users Personal settings page
+      :alt: Nextcloud personal settings page listing profile, security, and notification options
 
 .. note::
    If you are an administrator, you can also manage users and administer
@@ -61,7 +61,7 @@ You can change what personal data is shared by setting the scope of your data.
 Click the lock icon to open the following dropdown next to each entry:
 
    .. figure:: images/userdata-scope.png
-      :alt: screenshot of scope dropdown on personal information form field
+      :alt: Visibility scope dropdown on a personal information field with Private, Local, Federated, and Published options
 
 
 If you set your data to **Private**, nobody but you will be able to see it.
@@ -92,10 +92,10 @@ In your personal settings, find the profile visibility button:
 
    .. figure:: images/userdata-visibility-toggle.png
       :figwidth: 50 %
-      :alt: screenshot of the profile visibility button in personal settings
+      :alt: Profile visibility toggle button in personal settings
 
 
 This allows you to configure the visibility for each profile attribute:
 
    .. figure:: images/userdata-visibility.png
-      :alt: screenshot of scope dropdown on personal information form field
+      :alt: Visibility scope dropdown on a personal information field with Private, Local, Federated, and Published options

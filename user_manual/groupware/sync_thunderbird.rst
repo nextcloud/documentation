@@ -59,6 +59,6 @@ Alternative: Using the CardBook add-on (Contacts only)
 
    .. image:: ../images/addressbook_name.png
 
-#. When you are finished, CardBook synchronizes your address books. You can always trigger a synchronization manually by clicking "Synchronize" in the top left corner of CardBook:
+#. When you are finished, CardBook synchronizes your address books. You can always trigger a synchronization manually by clicking the **Synchronize** button in CardBook:
 
    .. image:: ../images/synchronize_cardbook.png

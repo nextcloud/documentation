@@ -8,7 +8,7 @@ This can be done by following these steps depending on if you use KOrganizer or 
 
 In KOrganizer:
 
-1. Open KOrganizer and in the calendar list (bottom left) right-click and choose ``Add Calendar``:
+1. Open KOrganizer and in the **Calendar** list on the left right-click and choose ``Add Calendar``:
 
 .. image:: ../images/KOrganizer_add_calendar.png
 

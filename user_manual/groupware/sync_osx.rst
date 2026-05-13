@@ -9,7 +9,7 @@ In the following steps you will add **CalDAV** (Calendar)
 and **CardDAV** (Contacts) to your macOS integrated Calendar and Contacts applications.
 At the time of writing this guide, macOS is at version 26.3.1.
 
-1. Click on the Apple logo in the top left corner of your screen and select
+1. Click on the **Apple** menu and select
    **System Settings...** from the dropdown menu.
 
 .. figure:: ./images/macos_1.png

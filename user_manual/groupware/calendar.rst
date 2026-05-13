@@ -46,7 +46,7 @@ instance, importing is the best way to do so.
 .. figure:: images/calendar_importing.png
             :scale: 50%
 
-1. Click on the settings-icon labeled with ``Calendar settings`` at the bottom-left.
+1. Click on the **Calendar settings** icon.
 
 2. After clicking on ``Import Calendar``, found in the ``General`` section, you can select one or more calendar files
    from your local device to upload.
@@ -64,7 +64,7 @@ Import an Event/Add .ics Event
 
 Individual events are often distributed as ``.ics`` files (sometimes via a button labelled "iCal", "Apple Calendar" or "Outlook"). You can import them into Nextcloud Calendar using the same import flow as a full calendar.
 
-1. Click on the settings-icon labeled with ``Calendar settings`` at the bottom-left.
+1. Click on the **Calendar settings** icon.
 
 2. After clicking on ``Import calendar`` you can select one or more ``.ics`` files
    from your local device to upload. Single-event files are added to the calendar you select.
@@ -229,7 +229,7 @@ If you want to edit, duplicate or delete a specific event, you first need to cli
 After that you will be able to re-set all event details and open the
 advanced editor by clicking on ``More``.
 
-Clicking on the ``Update`` button will update the event. To cancel your changes, click on the close icon on top right of the popup or advanced editor.
+Clicking on the ``Update`` button will update the event. To cancel your changes, click the **Close** button of the popup or advanced editor.
 
 If you open the advanced view and click the three dot menu next to the event name, you have an option to export the event as an ``.ics`` file or remove the event from your calendar.
 
@@ -305,7 +305,7 @@ You can import attachments to your events either by uploading them or adding the
 .. note:: Attachments can be added while creating new events or editing existent ones.
    Newly uploaded files will be saved in files by default in the calendar folder in the root directory.
 
-You can change the attachment folder by going to ``Calendar settings`` in the bottom left corner and changing ``default attachments location``.
+You can change the attachment folder by going to **Calendar settings** and changing ``default attachments location``.
 
 .. figure:: images/calendar_attachments_location.png
    :scale: 60%

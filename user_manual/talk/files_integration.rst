@@ -19,7 +19,7 @@ You can then chat or have a call with other participants, even when you start ed
 .. image:: images/text-and-talk.png
     :width: 700px
 
-In Talk, a conversation will be created for the file. You can chat from there, or go back to the file using the ``...`` menu in the top-right.
+In Talk, a conversation will be created for the file. You can chat from there, or go back to the file using the ``...`` menu at the top of the conversation.
 
 .. image:: images/file-room.png
     :width: 400px
