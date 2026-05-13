@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e7c79d26" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -54,9 +54,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -127,14 +136,14 @@
 <section id="compact-view-of-conversations-list">
 <h2>對話清單的精簡檢視<a class="headerlink" href="#compact-view-of-conversations-list" title="Link to this heading"></a></h2>
 <p>精簡檢視會隱藏對話列表中的最後一則訊息預覽，提供更專注的介面。</p>
-<a class="reference internal image-reference" href="../../_images/talk-compact-view.png"><img alt="../../_images/talk-compact-view.png" src="../../_images/talk-compact-view.png" style="width: 200px;" />
+<a class="reference internal image-reference" href="../../_images/talk-compact-view.png"><img alt="Talk conversation list in compact view without message previews" src="../../_images/talk-compact-view.png" style="width: 200px;" />
 </a>
 </section>
 <section id="chat-messages">
 <h2>聊天訊息<a class="headerlink" href="#chat-messages" title="Link to this heading"></a></h2>
 <p>聊天外觀設定讓你自訂對話的顯示方式。你可選擇傳統列表或訊息氣泡樣式，並將自己的訊息顯示於一側。</p>
 <p>你可在 <code class="docutils literal notranslate"><span class="pre">Talk</span> <span class="pre">設定</span></code> 對話視窗的 <code class="docutils literal notranslate"><span class="pre">Appearance</span></code> 部分中更改這兩項設定。</p>
-<a class="reference internal image-reference" href="../../_images/talk-appearance-settings.png"><img alt="../../_images/talk-appearance-settings.png" src="../../_images/talk-appearance-settings.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="../../_images/talk-appearance-settings.png"><img alt="Talk settings dialog showing compact view and other appearance options" src="../../_images/talk-appearance-settings.png" style="width: 600px;" />
 </a>
 </section>
 </section>
@@ -255,13 +264,18 @@
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 zh-HK
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 語言</dt>
         
@@ -636,6 +650,17 @@
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e7c79d26" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -54,9 +54,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <label for="rtd-search-input" class="sr-only">Pesquisar documentos</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Pesquisar documentos"
+             aria-label="Pesquisar documentos" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -125,7 +134,7 @@
 <p>Se você ainda não concedeu permissão ao navegador ou ao cliente Talk Desktop para compartilhar sua tela, poderá ser solicitado a fazê-lo ao clicar em <code class="docutils literal notranslate"><span class="pre">Compartilhar</span> <span class="pre">tela</span></code>. Clique em <code class="docutils literal notranslate"><span class="pre">Permitir</span></code> para conceder ao navegador ou ao cliente Talk Desktop acesso à sua tela.</p>
 </div>
 <p>Dependendo do seu navegador ou do cliente Talk Desktop, você terá a opção de compartilhar a tela, a janela de um aplicativo ou uma única aba do navegador. Se o vídeo da sua câmera também estiver disponível, os outros participantes o verão em uma pequena janela de apresentação ao lado do compartilhamento de tela.</p>
-<a class="reference internal image-reference" href="../../_images/share-screen-with-camera.png"><img alt="../../_images/share-screen-with-camera.png" src="../../_images/share-screen-with-camera.png" style="width: 700px;" />
+<a class="reference internal image-reference" href="../../_images/share-screen-with-camera.png"><img alt="Talk call with both screen share and camera video visible" src="../../_images/share-screen-with-camera.png" style="width: 700px;" />
 </a>
 <p>Para interromper o compartilhamento da tela, clique novamente no botão <code class="docutils literal notranslate"><span class="pre">Compartilhar</span> <span class="pre">tela</span></code> e selecione <code class="docutils literal notranslate"><span class="pre">Encerrar</span> <span class="pre">compartilhamento</span> <span class="pre">da</span> <span class="pre">tela</span></code>.</p>
 <p>Você pode ampliar e reduzir a tela compartilhada usando a roda do mouse, clicando duas vezes ou com gestos no touchpad.</p>
@@ -247,13 +256,18 @@
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 pt-BR
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Idiomas</dt>
         
@@ -628,6 +642,17 @@
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

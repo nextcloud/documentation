@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e7c79d26" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -54,9 +54,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <label for="rtd-search-input" class="sr-only">Pesquisar documentos</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Pesquisar documentos"
+             aria-label="Pesquisar documentos" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -124,18 +133,18 @@
   <section id="call-layout">
 <h1>Visualização de chamadas<a class="headerlink" href="#call-layout" title="Link para este cabeçalho"></a></h1>
 <p>Você pode alternar entre a visualização em grade e a visualização do orador usando o ícone de alternância no menu de três pontos ou na barra inferior.</p>
-<a class="reference internal image-reference" href="../../_images/call-view-toggle-button.png"><img alt="../../_images/call-view-toggle-button.png" src="../../_images/call-view-toggle-button.png" style="width: 300px;" />
+<a class="reference internal image-reference" href="../../_images/call-view-toggle-button.png"><img alt="Talk call view toggle button to switch between grid and speaker view" src="../../_images/call-view-toggle-button.png" style="width: 300px;" />
 </a>
 <section id="grid-view">
 <h2>Visualização em grade<a class="headerlink" href="#grid-view" title="Link para este cabeçalho"></a></h2>
 <p>A visualização em grade exibe todos os participantes como blocos. Use os botões de navegação à esquerda e à direita para percorrer a lista de participantes quando eles não couberem todos na tela.</p>
-<a class="reference internal image-reference" href="../../_images/talk-grid-view.png"><img alt="../../_images/talk-grid-view.png" src="../../_images/talk-grid-view.png" style="width: 700px;" />
+<a class="reference internal image-reference" href="../../_images/talk-grid-view.png"><img alt="Talk call in grid view showing multiple participants" src="../../_images/talk-grid-view.png" style="width: 700px;" />
 </a>
 </section>
 <section id="speaker-view">
 <h2>Visualização do orador<a class="headerlink" href="#speaker-view" title="Link para este cabeçalho"></a></h2>
 <p>A visualização do orador (também chamada de visualização destacada) centraliza o orador ativo em um bloco grande e coloca os demais participantes em uma linha abaixo. Use os botões de navegação à esquerda e à direita para percorrer os participantes quando a linha não couber na tela.</p>
-<a class="reference internal image-reference" href="../../_images/talk-promoted-view.png"><img alt="../../_images/talk-promoted-view.png" src="../../_images/talk-promoted-view.png" style="width: 700px;" />
+<a class="reference internal image-reference" href="../../_images/talk-promoted-view.png"><img alt="Talk call in promoted (speaker) view with the active speaker highlighted" src="../../_images/talk-promoted-view.png" style="width: 700px;" />
 </a>
 </section>
 </section>
@@ -256,13 +265,18 @@
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 pt-BR
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Idiomas</dt>
         
@@ -637,6 +651,17 @@
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

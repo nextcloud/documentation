@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e7c79d26" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -126,13 +135,13 @@
 <section id="creating-an-open-conversation">
 <h2>ການສ້າງການສົນທະນາແບບເປີດ<a class="headerlink" href="#creating-an-open-conversation" title="Link to this heading"></a></h2>
 <p>ທ່ານສາມາດສ້າງການສົນທະນາແບບເປີດ ທີ່ຜູ້ໃຊ້ທຸກຄົນທີ່ລົງທະບຽນໃນເຊີເວີນີ້ສາມາດຄົ້ນຫາ ແລະ ເຂົ້າຮ່ວມໄດ້.</p>
-<a class="reference internal image-reference" href="../../_images/creating-open-conversation.png"><img alt="../../_images/creating-open-conversation.png" src="../../_images/creating-open-conversation.png" style="width: 500px;" />
+<a class="reference internal image-reference" href="../../_images/creating-open-conversation.png"><img alt="Talk new conversation setup dialog for name, description, and access type" src="../../_images/creating-open-conversation.png" style="width: 500px;" />
 </a>
 </section>
 <section id="view-all-open-conversations">
 <h2>ເບິ່ງການສົນທະນາແບບເປີດທັງໝົດ<a class="headerlink" href="#view-all-open-conversations" title="Link to this heading"></a></h2>
 <p>You can view all the conversations that you can join by clicking the button next to the search field, then clicking <code class="docutils literal notranslate"><span class="pre">Join</span> <span class="pre">open</span> <span class="pre">conversations</span></code>.</p>
-<a class="reference internal image-reference" href="../../_images/join-open-conversations.png"><img alt="../../_images/join-open-conversations.png" src="../../_images/join-open-conversations.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/join-open-conversations.png"><img alt="Talk open conversations browser showing public conversations to join" src="../../_images/join-open-conversations.png" style="width: 400px;" />
 </a>
 </section>
 </section>
@@ -253,13 +262,18 @@
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 lo
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 ພາສາ</dt>
         
@@ -636,6 +650,17 @@
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

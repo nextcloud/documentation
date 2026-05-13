@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e7c79d26" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -54,9 +54,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Dokumentation durchsuchen" aria-label="Dokumentation durchsuchen" />
+    <label for="rtd-search-input" class="sr-only">Dokumentation durchsuchen</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Dokumentation durchsuchen"
+             aria-label="Dokumentation durchsuchen" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -126,18 +135,18 @@
 <section id="meetings-and-events">
 <h2>Meetings und Veranstaltungen<a class="headerlink" href="#meetings-and-events" title="Link to this heading"></a></h2>
 <p>Wenn für Kalenderereignisse eine Talk-Konversation als Ereignisort festgelegt ist, werden Ihnen Informationen zu anstehenden Ereignissen innerhalb dieser Konversation angezeigt. So bleiben Sie direkt im Chat über geplante Besprechungen oder Aktivitäten informiert. Wenn die Kalender-App aktiviert ist, können Sie auf ein Ereignis klicken, um die Details anzuzeigen.</p>
-<a class="reference internal image-reference" href="../../_images/events-upcoming.png"><img alt="../../_images/events-upcoming.png" src="../../_images/events-upcoming.png" style="width: 500px;" />
+<a class="reference internal image-reference" href="../../_images/events-upcoming.png"><img alt="Talk conversation showing upcoming calendar events" src="../../_images/events-upcoming.png" style="width: 500px;" />
 </a>
 <p>Sie können direkt aus einer Konversation heraus ein Meeting planen. Im Dialog können Sie Meeting-Details wie Titel, Datum, Uhrzeit und Beschreibung festlegen. Sie können außerdem alle Teilnehmer, einschließlich der per E-Mail benachrichtigten Gäste, einladen oder bestimmte Personen auswählen.</p>
-<a class="reference internal image-reference" href="../../_images/talk-schedule-meeting.png"><img alt="../../_images/talk-schedule-meeting.png" src="../../_images/talk-schedule-meeting.png" style="width: 500px;" />
+<a class="reference internal image-reference" href="../../_images/talk-schedule-meeting.png"><img alt="Talk conversation with schedule meeting option to invite participants" src="../../_images/talk-schedule-meeting.png" style="width: 500px;" />
 </a>
 <section id="schedule-from-calendar">
 <h3>Termin aus dem Kalender<a class="headerlink" href="#schedule-from-calendar" title="Link to this heading"></a></h3>
 <p>Beim Erstellen eines neuen Ereignisses im Kalender können Sie eine Talk-Konversation als Ereignisort festlegen. Dadurch wird eine neue Konversation erstellt, falls noch keine existiert.</p>
-<a class="reference internal image-reference" href="../../_images/calendar-create-event.png"><img alt="../../_images/calendar-create-event.png" src="../../_images/calendar-create-event.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="../../_images/calendar-create-event.png"><img alt="Nextcloud Calendar new event dialog with Talk conversation link option" src="../../_images/calendar-create-event.png" style="width: 600px;" />
 </a>
 <p>Sobald der Termin erstellt ist, wird in den Termindetails ein Link zur Unterhaltung angezeigt. Die Unterhaltung erscheint außerdem in der Liste der Unterhaltungen (auffindbar über den Filter <code class="docutils literal notranslate"><span class="pre">Termine</span></code>).</p>
-<a class="reference internal image-reference" href="../../_images/event-conversation-list.png"><img alt="../../_images/event-conversation-list.png" src="../../_images/event-conversation-list.png" style="width: 300px;" />
+<a class="reference internal image-reference" href="../../_images/event-conversation-list.png"><img alt="Nextcloud Calendar event view showing a linked Talk conversation" src="../../_images/event-conversation-list.png" style="width: 300px;" />
 </a>
 <p>Wie bei Sofortbesprechungen werden auch Ereigniskonversationen nach Ablauf einer festgelegten Inaktivitätsperiode (standardmäßig 28 Tage) automatisch gelöscht.</p>
 </section>
@@ -260,13 +269,18 @@
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 German
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Sprachen</dt>
         
@@ -643,6 +657,17 @@
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
