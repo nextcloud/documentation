@@ -12,16 +12,19 @@ Joining a chat
 If you received a link to a chat conversation, you can open it in your browser to join the chat. Here, you will be prompted to enter your name before joining.
 
 .. image:: images/guest-view.png
+    :alt: Talk guest view showing a public conversation without signing in
     :width: 400px
 
 You can also change your name later by clicking the ``Edit`` button, located top-right.
 
 .. image:: images/change-name.png
+    :alt: Talk guest name edit dialog to change display name
     :width: 400px
 
 Your camera and microphone settings can be found in the ``Settings`` menu. There you can also find a list of shortcuts you can use.
 
 .. image:: images/guest-settings.png
+    :alt: Talk guest settings panel with camera and microphone options
     :width: 600px
 
 Joining a call
@@ -30,16 +33,19 @@ Joining a call
 You can start a call any time with the ``Start call`` button. Other participants will get notified and can join the call. If somebody else has started a call already, the button will change in a green ``Join call`` button.
 
 .. image:: images/join-call.png
+    :alt: Talk conversation with a green Join call button
     :width: 600px
 
 Before joining, you will see a device check where you can select your camera and microphone, enable background blur, or join without any devices.
 
 .. image:: images/device-settings-before-call.png
+    :alt: Talk device check dialog for guests before joining a call
     :width: 600px
 
 During a call, you can find the Camera and Microphone settings in the ``...`` menu in the top bar.
 
 .. image:: images/guest-call-menu.png
+    :alt: Talk guest in-call menu showing camera and microphone settings
     :width: 300px
 
 During a call, you can mute your microphone and disable your video with the buttons in the top-right, or using the shortcuts ``M`` to mute audio and ``V`` to disable video. You can also use the ``space bar`` to toggle mute. When you are muted, pressing space will unmute you so you can speak until you let go of the space bar. If you are unmuted, pressing space will mute you until you let go.
@@ -57,6 +63,7 @@ Full-screen and other settings
 In the conversation menu you can choose to go full-screen. You can also do this by using the ``F`` key on your keyboard. In the conversation settings, you can find notification options and the full conversation description.
 
 .. image:: images/guest-room-menu.png
+    :alt: Talk guest conversation menu with full-screen and other options
     :width: 500px
 
 Joining as an email guest
@@ -66,15 +73,18 @@ A guest can be invited to a conversation via email. The email contains a link to
 If the guest clicks the link, they will be redirected to the conversation with an individual access token.
 
 .. image:: images/guest-invitation-email.png
+    :alt: Email invitation received by a guest with a link to join a Talk conversation
     :width: 500px
 
 An invitation can be done via inserting the email address in ``Participants`` tab search field.
 
 .. image:: images/guest-email-invitation.png
+    :alt: Talk participant panel showing email address field for inviting guests
     :width: 500px
 
 You can bulk invite email participants by uploading a CSV file. The option is available in the conversation settings under ``Meeting`` section.
 
 .. image:: images/guest-invitation-bulk.png
+    :alt: Talk bulk email invite option using a CSV file upload
     :width: 500px
 

@@ -12,6 +12,7 @@ Depending on your browser or the Talk Desktop client, you will get the option to
 If video from your camera is also available, other participants will see it in a small presenter view next to the screen share.
 
 .. image:: images/share-screen-with-camera.png
+    :alt: Talk call with both screen share and camera video visible
     :width: 700px
 
 To stop sharing your screen, click the ``Share screen`` button again and choose ``Stop screensharing``.

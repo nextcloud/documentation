@@ -13,6 +13,7 @@ To receive an invitation, the other party needs your CloudID — your federated 
 The moderator of the conversation can send an invite to a participant on a different server:
 
 .. image:: images/federation-invite-send.png
+   :alt: Talk participant panel with option to invite a user from another server
    :width: 400px
 
 Accepting an invitation
@@ -21,16 +22,19 @@ Accepting an invitation
 When receiving a notification, the user will see a counter of pending invites above the conversations list.
 
 .. image:: images/federation-invite-pending.png
+   :alt: Talk notification counter showing pending federation invites
    :width: 400px
 
 Upon clicking it, more information will be provided about the inviting party, and the user can either accept or decline the invitation.
 
 .. image:: images/federation-invite-dialog.png
+   :alt: Talk federation invite dialog showing the inviting server details
    :width: 500px
 
 By accepting the invite, the conversation will appear in the list as any other one.
 
 .. image:: images/federation-conversations-list.png
+   :alt: Talk conversation list showing a federated conversation from another server
    :width: 400px
 
 You can use it to chat with participants from other federated servers, join calls, and use other available Talk features.

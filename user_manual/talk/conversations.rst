@@ -11,17 +11,20 @@ This is where you have a private chat or call with another Talk user.
 In the content sidebar, you can find additional information about the person you are chatting with, such as their email address, phone number, or other details they have shared in their profile.
 
 .. image:: images/one-to-one-right-sidebar.png
+    :alt: Talk right sidebar showing contact information for a one-to-one conversation
     :width: 300px
 
 Nobody except you and the other person can see this conversation or join a call in it.
 You can extend an ongoing call to a new group conversation by adding more people. Call will be continued there without interruption.
 
 .. image:: images/one-to-one-extend.png
+    :alt: Talk dialog to extend a one-to-one call by adding more participants to a group conversation
     :width: 300px
 
 If a user becomes unavailable and has set an **out-of-office** status in ``Personal settings > Availability``, you will find additional information in this conversation, such as provided description, absence date, or their replacement person.
 
 .. image:: images/one-to-one-out-of-office.png
+    :alt: Talk showing an out-of-office status message for a user in a one-to-one conversation
     :width: 500px
 
 2. Group conversations
@@ -33,6 +36,7 @@ A group conversation can be shared with a public link, so guests can join a chat
 It can also be opened to registered users (or users from 'Guests' app), so they can discover and join this conversation.
 
 .. image:: images/group-public-settings.png
+    :alt: Talk conversation settings dialog for group and public access options
     :width: 400px
 
 
@@ -45,6 +49,7 @@ This is a special conversation with yourself. Messages here do not have a limit 
 - **Forward messages from other chat**: use the message menu to forward important messages from other conversations to your Note to self.
 
 .. image:: images/note-to-self.png
+    :alt: Talk note-to-self personal conversation for saving messages
     :width: 500px
 
 4. Disposable conversations
@@ -57,6 +62,7 @@ These conversations cover some special cases and exist for a limited period of t
 - **Video verification**: these are created, when someone tries to access a public link, protected by password with video verification (deleted instantly after call ends).
 
 .. image:: images/instant-meeting-dispose.png
+    :alt: Talk instant meeting with option to dispose after use
     :width: 500px
 
 Talk Dashboard
@@ -70,6 +76,7 @@ The Talk Dashboard is your central hub for managing and accessing your conversat
 - Shortcut actions to create new conversations, join open ones, or quickly check your media devices.
 
 .. image:: images/talk-dashboard.png
+    :alt: Talk dashboard showing recent conversations and shortcut actions
     :width: 600px
 
 Creating a conversation
@@ -78,26 +85,31 @@ Creating a conversation
 You can create a private (one-to-one) chat by searching for the name of a user, a group or a team and clicking it. For a single user, a conversation is immediately created and you can start your chat. For a group or circle you get to pick a name and settings before you create the conversation and add the participants.
 
 .. image:: images/chat-with-one-user.png
+    :alt: Talk search dialog to start a private chat with a user
     :width: 400px
 
 If you want to create a custom group conversation, click the button next to the search field and filters button and then on ``Create a new conversation``.
 
 .. image:: images/create-new-conversation.png
+    :alt: Talk button to create a new group conversation
     :width: 400px
 
 You can then pick a name for the conversation, put a description, and set up an avatar for it (with uploaded photo or emoji), and select if the conversation should be open to external users and if other users on the server can see and join the conversation.
 
 .. image:: images/creating-open-conversation.png
+    :alt: Talk new conversation setup dialog for name, description, and access type
     :width: 500px
 
 In the second step, you get to add participants and finalize the creation of the conversation.
 
 .. image:: images/add-participants.png
+    :alt: Talk participant selection step when creating a new conversation
     :width: 500px
 
 After confirmation you will be redirected to the new conversation and can start communicating right away.
 
 .. image:: images/new-room.png
+    :alt: Talk empty new conversation ready for chatting
     :width: 700px
 
 Filter your conversations
@@ -109,11 +121,13 @@ You can filter your conversations using the filter button next to the search fie
 3. **Event conversations**: view all conversations, created for upcoming or past events.
 
 .. image:: images/filters-menu.png
+    :alt: Talk conversation list filter menu
     :width: 400px
 
 You can then clear the filter from the filters menu.
 
 .. image:: images/clear-filter.png
+    :alt: Talk conversation list with active filter and clear filter option
     :width: 400px
 
 Archive conversations
@@ -122,11 +136,13 @@ You can archive conversations that you no longer need to see in your main conver
 An archived conversation will not appear in your main conversation list, but it will still align with notification level set in its settings.
 
 .. image:: images/archived-conversations-list.png
+    :alt: Talk list of archived conversations
     :width: 400px
 
 The list is accessible from the button at the bottom of the navigation bar.
 
 .. image:: images/archived-conversations-button.png
+    :alt: Talk navigation bar showing the archived conversations button
     :width: 400px
 
 Managing a conversation
@@ -137,16 +153,19 @@ You are always moderator in your new conversation. In the participant list you c
 Changing permissions of a user that joined a public conversation will also permanently add them to the conversation.
 
 .. image:: images/participant-menu.png
+    :alt: Talk participant menu showing permission and moderation options
     :width: 400px
 
 Moderators can configure the conversation. Select ``Conversation settings`` from the ``...`` menu of the conversation on the top to access the settings.
 
 .. image:: images/open-settings.png
+    :alt: Talk conversation menu with Conversation settings option
     :width: 500px
 
 Here you can configure the description, guest access, if the conversation is visible to others on the server and more.
 
 .. image:: images/conversation-settings-dialog.png
+   :alt: Talk conversation settings dialog showing description and access configuration
    :width: 600px
 
 Ban participants
@@ -158,17 +177,20 @@ This applies to internal users and guests alike; for guests, their IP address wi
 In the participants list, select the user or guest, and click ``Remove participant``.
 
 .. image:: images/ban-participant.png
+    :alt: Talk participant menu with Remove participant option
     :width: 300px
 
 There, toggle checkbox ``Also ban from this conversation`` and provide a reason for the ban. The banned user will be removed and prevented from rejoining.
 
 .. image:: images/ban-participant-dialog.png
+    :alt: Talk dialog to ban a participant with a reason field
     :width: 400px
 
 You can later find the list of banned users in the ``Moderation`` section of conversation settings.
 Here, you can see the reason for the ban and revert it if needed.
 
 .. image:: images/ban-participant-list.png
+    :alt: Talk list of banned participants with reasons and revert options
     :width: 400px
 
 Messages expiration
@@ -178,6 +200,7 @@ A moderator can configure message expiration under the ``Conversation settings``
 The available expiration durations are 1 hour, 8 hours, 1 day, 1 week, 4 weeks, or never (which is the default setting).
 
 .. image:: images/messages-expiration.png
+   :alt: Talk conversation settings showing message expiration duration options
    :width: 500px
 
 
@@ -197,9 +220,11 @@ You can change this behavior in the conversation settings. Additionally, you can
 - **Sensitive conversations**: content of messages will not be shown in the conversation list and obscured from notifications.
 
 .. image:: images/conversation-notifications.png
+    :alt: Talk conversation notification settings panel
     :width: 300px
 
 To have more control over your privacy, you can also configure the visibility of your typing and read indicators in ``Talk settings``:
 
 .. image:: images/privacy-settings.png
+    :alt: Talk privacy settings for controlling conversation visibility
     :width: 600px

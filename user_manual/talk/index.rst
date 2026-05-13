@@ -9,6 +9,7 @@ You can find out more about Nextcloud Talk `on our website <https://nextcloud.co
 Download the desktop and mobile clients from `nextcloud.com/install <https://nextcloud.com/install/>`_.
 
 .. image:: images/talk-grid-view.png
+   :alt: Talk call in grid view showing multiple participants
 
 .. toctree::
    :maxdepth: 2
