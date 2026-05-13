@@ -123,14 +123,17 @@ steps:
 This is how the web based update would continue:
 
 .. image:: images/updater-7-disable-maintenance.png
+   :alt: Nextcloud web updater showing option to disable maintenance mode after upgrade
 
 .. image:: images/updater-9-upgrade-page.png
+   :alt: Nextcloud upgrade page displayed after the web updater completes
 
 **Command line based upgrade**
 
 This is how the command line based update would continue:
 
 .. image:: images/updater-8-keep-maintenance.png
+   :alt: Nextcloud command line updater asking whether to keep maintenance mode active
 
 
 .. code::
@@ -172,6 +175,7 @@ The steps are basically the same as for the web based updater:
     notification app is enabled in the apps management.
 
 .. image:: images/updater-1-update-available.png
+   :alt: Nextcloud admin settings Version section showing an update available notification
 
 2. Instead of clicking that button you can now invoke the command line based
    updater by going into the `updater/` directory in the Nextcloud directory
@@ -179,14 +183,17 @@ The steps are basically the same as for the web based updater:
    ``sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar``)
 
 .. image:: images/updater-cli-2-start-updater.png
+   :alt: Terminal showing Nextcloud command line updater starting and displaying update information
    :class: terminal-image
 
 3.  Verify the information that is shown and enter "Y" to start the update.
 
 .. image:: images/updater-cli-3-running-step.png
+   :alt: Terminal showing Nextcloud command line updater executing update steps
    :class: terminal-image
 
 .. image:: images/updater-cli-4-failed-step.png
+   :alt: Terminal showing Nextcloud command line updater with a failed step and error feedback
    :class: terminal-image
 
 4.  In case an error happens or the check failed the updater stops processing
@@ -195,6 +202,7 @@ The steps are basically the same as for the web based updater:
     It will not re-run the previous succeeded steps.
 
 .. image:: images/updater-cli-5-continue-update.png
+   :alt: Terminal showing Nextcloud command line updater ready to continue after resolving an error
    :class: terminal-image
 
 6. Once all steps are executed the updater will ask you a final question:
@@ -204,12 +212,14 @@ The steps are basically the same as for the web based updater:
    `Please now execute "./occ upgrade" to finish the upgrade.`.
 
 .. image:: images/updater-cli-6-run-command.png
+   :alt: Terminal showing Nextcloud command line updater asking whether to run the occ upgrade command
    :class: terminal-image
 
 7. Once the ``occ upgrade`` is done you get asked if the maintenance mode
    should be kept active.
 
 .. image:: images/updater-cli-7-maintenance.png
+   :alt: Terminal showing Nextcloud command line updater asking whether to keep maintenance mode active
    :class: terminal-image
 
 Batch mode for command line based updater
@@ -226,6 +236,7 @@ To execute this, run the command with the ``--no-interaction`` option. (i.e.
 ``sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar --no-interaction``)
 
 .. image:: images/updater-cli-8-no-interaction.png
+   :alt: Terminal showing Nextcloud command line updater running in non-interactive batch mode
    :class: terminal-image
 
 Troubleshooting

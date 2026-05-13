@@ -9,6 +9,7 @@ AppAPI allows optionally to configure environment variables and mounts for the E
 It is available via "Deploy options" modal next to "Deploy and Enable" button in the sidebar of the ExApp page on the Apps management page:
 
 .. image:: ./img/advanced_deploy_options_1.png
+   :alt: AppAPI apps page showing the Deploy options button next to Deploy and Enable in the ExApp sidebar
 
 Or via CLI (:ref:`advanced_deploy_options_cli`).
 
@@ -23,6 +24,7 @@ only these variables will be available for configuration.
 By default there are only mounts available for configuration.
 
 .. image:: ./img/advanced_deploy_options_2.png
+   :alt: AppAPI Deploy options modal showing environment variables configuration
 
 When ExApp installed the list of set environment variables will be displayed.
 
@@ -35,3 +37,4 @@ For example, it will be useful for some apps to provide a folder with SSL certs 
 so the app can handle HTTPS correctly without any additional re-installation of the ExApp.
 
 .. image:: ./img/advanced_deploy_options_3.png
+   :alt: AppAPI Deploy options modal showing mounts configuration
