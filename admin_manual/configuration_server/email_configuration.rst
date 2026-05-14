@@ -118,7 +118,7 @@ This is the interface of the class that needs to be implemented: https://github.
 
 That is the implementation that could be extended and used to see how it works: https://github.com/nextcloud/server/blob/master/lib/private/Mail/EMailTemplate.php
 
-An example from `a GitHub issue <https://portal.nextcloud.com/article/customized-email-templates-29.html>`_:
+An example from `a Nextcloud portal article <https://portal.nextcloud.com/article/customized-email-templates-29.html>`_:
 
 1. Look at the source code of extended class `OC\\Mail\\EMailTemplate::class <https://github.com/nextcloud/server/blob/master/lib/private/Mail/EMailTemplate.php>`_
 
