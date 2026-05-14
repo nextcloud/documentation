@@ -893,6 +893,21 @@ Command line upgrade
 These commands are available after downloading an upgraded package or tarball,
 and before completing the upgrade.
 
+.. important::
+   ``occ upgrade`` only runs the **migration phase**: database schema updates and
+   app upgrades. It does **not** download or replace Nextcloud's code files.
+
+   Before running ``occ upgrade`` you must first replace the code using one of:
+
+   * The built-in updater: ``sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar``
+   * A manually extracted tarball (see :doc:`../maintenance/manual_upgrade`)
+
+   If ``occ upgrade`` reports *"Nextcloud is up to date"* when you expect an upgrade
+   to run, the code files have not been replaced yet — run the updater or extract
+   the new tarball first.
+
+   See :doc:`../maintenance/upgrade` for the full upgrade process.
+
 When performing an upgrade, use ``occ upgrade`` instead of the web-based
 upgrader to avoid PHP timeout limits (the web interface enforces a 3600-second
 limit). On large installations this may not be sufficient, leaving the system
