@@ -89,7 +89,7 @@ Your :file:`/etc/mysql/my.cnf` could look like this:
 
   [mysqld]
   character_set_server = utf8mb4
-  collation_server = utf8mb4_general_ci
+  collation_server = utf8mb4_bin
   transaction_isolation = READ-COMMITTED
   binlog_format = ROW
   innodb_large_prefix=on
@@ -142,7 +142,7 @@ Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the follo
 ::
 
   CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-  CREATE DATABASE IF NOT EXISTS nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+  CREATE DATABASE IF NOT EXISTS nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
   GRANT ALL PRIVILEGES on nextcloud.* to 'username'@'localhost';
 
 You can quit the prompt by entering::
