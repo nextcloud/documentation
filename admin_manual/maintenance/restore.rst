@@ -32,23 +32,10 @@ Restore database
 The easiest way to do this is to drop and recreate the database.
 SQLite does this automatically.
 
-MySQL
-^^^^^
-
-MySQL is the recommended database engine. To restore MySQL::
-
-   mysql -h [server] -u [username] -p[password] -e "DROP DATABASE nextcloud"
-   mysql -h [server] -u [username] -p[password] -e "CREATE DATABASE nextcloud"
-
-If you use UTF8 with multibyte support (e.g. for emojis in filenames), use::
-
-   mysql -h [server] -u [username] -p[password] -e "DROP DATABASE nextcloud"
-   mysql -h [server] -u [username] -p[password] -e "CREATE DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci"
-
 MariaDB
 ^^^^^^^
 
-To restore MariaDB using the `mariadb <https://mariadb.com/docs/server/clients-and-utilities/mariadb-client/mariadb-command-line-client>`_ client::
+MariaDB is the recommended database engine. To restore MariaDB using the `mariadb <https://mariadb.com/docs/server/clients-and-utilities/mariadb-client/mariadb-command-line-client>`_ client::
 
    mariadb -h [server] -u [username] -p[password] -e "DROP DATABASE nextcloud"
    mariadb -h [server] -u [username] -p[password] -e "CREATE DATABASE nextcloud"
@@ -57,6 +44,19 @@ If you use UTF8 with multibyte support (e.g. for emojis in filenames), use::
 
    mariadb -h [server] -u [username] -p[password] -e "DROP DATABASE nextcloud"
    mariadb -h [server] -u [username] -p[password] -e "CREATE DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci"
+
+MySQL
+^^^^^
+
+To restore MySQL::
+
+   mysql -h [server] -u [username] -p[password] -e "DROP DATABASE nextcloud"
+   mysql -h [server] -u [username] -p[password] -e "CREATE DATABASE nextcloud"
+
+If you use UTF8 with multibyte support (e.g. for emojis in filenames), use::
+
+   mysql -h [server] -u [username] -p[password] -e "DROP DATABASE nextcloud"
+   mysql -h [server] -u [username] -p[password] -e "CREATE DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci"
 
 
 PostgreSQL
@@ -72,19 +72,19 @@ Restoring
 .. note:: This guide assumes that your previous backup is called
    "nextcloud-sqlbkp.bak"
 
-MySQL
-^^^^^
-
-MySQL is the recommended database engine. To restore MySQL::
-
-    mysql -h [server] -u [username] -p[password] [db_name] < nextcloud-sqlbkp.bak
-
 MariaDB
 ^^^^^^^
 
-To restore MariaDB using the `mariadb <https://mariadb.com/docs/server/clients-and-utilities/mariadb-client/mariadb-command-line-client>`_ client::
+MariaDB is the recommended database engine. To restore MariaDB using the `mariadb <https://mariadb.com/docs/server/clients-and-utilities/mariadb-client/mariadb-command-line-client>`_ client::
 
     mariadb -h [server] -u [username] -p[password] [db_name] < nextcloud-sqlbkp.bak
+
+MySQL
+^^^^^
+
+To restore MySQL::
+
+    mysql -h [server] -u [username] -p[password] [db_name] < nextcloud-sqlbkp.bak
 
 SQLite
 ^^^^^^
