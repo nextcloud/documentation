@@ -48,7 +48,7 @@ If you use UTF8 with multibyte support (e.g. for emojis in filenames), use::
 MariaDB
 ^^^^^^^
 
-To restore MariaDB using the `mariadb <https://mariadb.com/kb/en/mariadb-command-line-client/>`_ client::
+To restore MariaDB using the `mariadb <https://mariadb.com/docs/server/clients-and-utilities/mariadb-client/mariadb-command-line-client>`_ client::
 
    mariadb -h [server] -u [username] -p[password] -e "DROP DATABASE nextcloud"
    mariadb -h [server] -u [username] -p[password] -e "CREATE DATABASE nextcloud"
@@ -82,7 +82,7 @@ MySQL is the recommended database engine. To restore MySQL::
 MariaDB
 ^^^^^^^
 
-To restore MariaDB using the `mariadb <https://mariadb.com/kb/en/mariadb-command-line-client/>`_ client::
+To restore MariaDB using the `mariadb <https://mariadb.com/docs/server/clients-and-utilities/mariadb-client/mariadb-command-line-client>`_ client::
 
     mariadb -h [server] -u [username] -p[password] [db_name] < nextcloud-sqlbkp.bak
 
