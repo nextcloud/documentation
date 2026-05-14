@@ -79,6 +79,45 @@ the new location. It is also assumed that the authentication method
       Changing the location of the data directory might cause a corruption of relations
       in the database and is not supported.
 
+    .. important::
+      After copying ``config/config.php`` to the new machine, **review and update every
+      server-specific value** before starting Nextcloud. At minimum check:
+
+      * ``datadirectory`` — keep this path identical to the original server wherever
+        possible. Changing the data directory path requires a database update and
+        is strongly discouraged; see :ref:`troubleshooting_data_directory`
+        if you have no choice.
+      * ``dbhost``, ``dbname``, ``dbuser``, ``dbpassword`` — update if the new server
+        uses a different database host or credentials.
+      * ``trusted_domains`` — add or replace the new server's hostname or IP address.
+      * ``overwrite.cli.url``, ``overwritehost``, ``overwriteprotocol``,
+        ``overwritewebroot`` — update to reflect the new server's URL and any
+        reverse-proxy setup.
+      * ``memcache.local``, ``memcache.distributed``, ``memcache.locking`` and the
+        associated connection parameters — update if the cache/session backend address
+        changed on the new machine. Depending on the backend in use, check ``redis``
+        or ``redis.cluster`` (for Redis / Redis Cluster) or ``memcached_servers``
+        (for Memcached).
+      * ``objectstore`` — if external object storage (S3, Swift, etc.) is configured,
+        verify that the endpoint, bucket, and credentials are still valid and reachable
+        from the new server.
+      * ``mail_smtphost``, ``mail_smtpport`` — update if the SMTP relay differs on
+        the new server.
+      * ``logfile`` — update if the log path differs on the new server.
+      * ``tempdirectory`` — if set to a custom path, make sure that path exists and
+        is writable on the new server.
+      * ``serverid`` — if set, keep the same value. It identifies the server in
+        multi-PHP-server setups and must not change. If you override it per server via
+        the ``NC_serverid`` environment variable, configure the same override on the new
+        server.
+
+      The ``secret`` and ``instanceid`` values are generated once at install time and
+      tied to all encrypted data and user sessions. **Do not change or regenerate them.**
+      They must be copied verbatim from the original ``config.php``.
+
+      Leaving stale values (especially database credentials or ``datadirectory``)
+      will cause startup errors or data corruption.
+
 
 #.  Check the config.php file of the **ORIGINAL** system to see if it has
     the ``data-fingerprint`` set to a non-empty value. If this is the case, make
