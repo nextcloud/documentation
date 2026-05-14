@@ -1,6 +1,6 @@
-========================
-Instruction set for apps
-========================
+===================
+Apps management API
+===================
 
 Get list of apps
 ----------------
@@ -173,4 +173,3 @@ XML output
       <status>ok</status>
     </meta>
   </ocs>
-
