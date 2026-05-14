@@ -23,6 +23,14 @@ By default, Nextcloud can generate previews for the following filetypes:
    disabled by default) can be found under the ``enabledPreviewProviders``
    :doc:`configuration parameter </configuration_server/config_sample_php_parameters>`.
 
+
+Some preview providers depend on external binaries on the server. Video
+previews such as ``OC\Preview\Movie`` and ``OC\Preview\MKV`` require
+``ffmpeg``. Office document previews such as ``OC\Preview\OpenDocument``
+and ``OC\Preview\MSOfficeDoc`` require LibreOffice. Image formats handled
+through ImageMagick, such as ``OC\Preview\Illustrator``, ``OC\Preview\SVG``
+and ``OC\Preview\TIFF``, require the corresponding ImageMagick support.
+
 Parameters
 ----------
 
