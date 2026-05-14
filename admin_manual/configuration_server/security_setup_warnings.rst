@@ -133,3 +133,31 @@ Your database does not run with "READ COMMITTED" transaction isolation level
 This can cause problems when multiple actions are executed in parallel."
 
 Please refer to :ref:`db-transaction-label` how to configure your database for this requirement.
+
+The "__Host-" prefix is not used for the cookie name
+-----------------------------------------------------
+
+"The ``__Host-`` prefix is not used for the cookie name. It is recommended to
+enable this in your configuration."
+
+Nextcloud applies the ``__Host-`` prefix to its same-site CSRF cookies
+(``__Host-nc_sameSiteCookiestrict`` and ``__Host-nc_sameSiteCookielax``) when
+it detects that the connection is served over HTTPS. The prefix instructs
+browsers to only accept those cookies over a secure connection and from the
+exact host that set them, which strengthens CSRF protection.
+
+This warning appears when Nextcloud cannot confirm it is running over HTTPS.
+The most common cause is a **reverse proxy** that terminates TLS and forwards
+requests to Nextcloud over plain HTTP. In that case Nextcloud sees HTTP
+internally and omits the prefix.
+
+To fix this, tell Nextcloud to treat the connection as HTTPS by adding
+``overwriteprotocol`` to ``config/config.php``::
+
+  'overwriteprotocol' => 'https',
+
+If you are not behind a reverse proxy, ensure your web server is configured to
+serve Nextcloud exclusively over HTTPS. See the
+:ref:`use_https_label` documentation.
+
+For background on the cookies themselves, see :ref:`cookies`.
