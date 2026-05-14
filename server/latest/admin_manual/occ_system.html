@@ -1052,6 +1052,20 @@ directories.</p>
 <span id="command-line-upgrade-label"></span><h2><a class="toc-backref" href="#id18" role="doc-backlink">Command line upgrade</a><a class="headerlink" href="#command-line-upgrade" title="Link to this heading"></a></h2>
 <p>These commands are available after downloading an upgraded package or tarball,
 and before completing the upgrade.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code> only runs the <strong>migration phase</strong>: database schema updates and
+app upgrades. It does <strong>not</strong> download or replace Nextcloud’s code files.</p>
+<p>Before running <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code> you must first replace the code using one of:</p>
+<ul class="simple">
+<li><p>The built-in updater: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-E</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">/var/www/nextcloud/updater/updater.phar</span></code></p></li>
+<li><p>A manually extracted tarball (see <a class="reference internal" href="maintenance/manual_upgrade.html"><span class="doc">Upgrade manually</span></a>)</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code> reports <em>“Nextcloud is up to date”</em> when you expect an upgrade
+to run, the code files have not been replaced yet — run the updater or extract
+the new tarball first.</p>
+<p>See <a class="reference internal" href="maintenance/upgrade.html"><span class="doc">How to upgrade</span></a> for the full upgrade process.</p>
+</div>
 <p>When performing an upgrade, use <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code> instead of the web-based
 upgrader to avoid PHP timeout limits (the web interface enforces a 3600-second
 limit). On large installations this may not be sufficient, leaving the system
