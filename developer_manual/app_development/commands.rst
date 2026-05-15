@@ -4,7 +4,7 @@
 occ commands
 ============
 
-Nextcloud apps can register custom :ref:`occ <occ>` commands that administrators can run from the command line. Commands extend ``OC\Core\Command\Base``, which wraps
+Nextcloud apps can register custom `occ <https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html>`_ commands that administrators can run from the command line. Commands extend ``OC\Core\Command\Base``, which wraps
 `Symfony Console <https://symfony.com/doc/current/console.html>`_ and adds bash completion support, so the full Symfony
 Console API is available.
 

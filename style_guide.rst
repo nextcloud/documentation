@@ -291,13 +291,12 @@ page moves.
      See :doc:`../configuration_server/config_sample_php_parameters` for all
      available options.
 
-**Different manual — use a** ``docs.nextcloud.com/latest/`` **URL**
+**Different manual — use a** ``docs.nextcloud.com/server/latest/`` **URL**
    When linking from one manual to a page in a different manual (e.g. from the
    User Manual to the Administration Manual), use an absolute URL with
-   ``/latest/`` as the version segment. The build system automatically replaces
-   ``/latest/`` with the correct version number for stable branches::
+   ``/server/latest/`` as the version segment::
 
-     See `Backup configuration <https://docs.nextcloud.com/latest/admin_manual/maintenance/backup.html>`_
+     See `Backup configuration <https://docs.nextcloud.com/server/latest/admin_manual/maintenance/backup.html>`_
      for details.
 
 ``:doc:``
