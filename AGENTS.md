@@ -137,20 +137,36 @@ grep -r "feature_name" user_manual/ admin_manual/ developer_manual/ --include="*
 
 ## Labels
 
-### PR state labels (apply to the PR)
+### State labels — exactly one at all times
+State labels are mutually exclusive. Always remove the old one when applying a new one.
+
 | Label | When |
 |-------|------|
+| `0. Needs triage` | Newly opened, not yet assessed |
+| `1. to develop` | Confirmed, not yet started |
 | `2. developing` | PR is a draft / in progress |
 | `3. to review` | PR is ready for review |
 
-### Issue hygiene when opening a PR
-When a PR fixes or relates to an issue:
-1. Update the issue's state label to `3. to review` — remove `0. Needs triage`, `1. to develop`, `2. developing` if present
-2. Assign yourself to the issue
+### Feature / topic labels
+Use feature labels (e.g. `talk`, `groupware`, `files`, `installation`) to tag PRs and issues by area.
+When opening a PR that fixes an issue, check what labels the issue has and copy relevant feature labels to the PR.
 
 ```bash
-# set issue label and assignee via gh
-gh issue edit NNNN --add-label "3. to review" --remove-label "2. developing" --add-assignee "@me"
+# inspect labels on the linked issue
+gh issue view NNNN --json labels
+```
+
+### Issue hygiene when opening a PR
+When a PR fixes or relates to an issue:
+1. Set the issue state label to `3. to review` — remove all other state labels (`0.`, `1.`, `2.`)
+2. Copy any relevant feature labels from the issue to the PR
+3. Assign yourself to the issue
+
+```bash
+gh issue edit NNNN \
+  --add-label "3. to review" \
+  --remove-label "0. Needs triage" --remove-label "1. to develop" --remove-label "2. developing" \
+  --add-assignee "@me"
 ```
 
 Use `fixes #NNNN` in the PR body to auto-close on merge; use `relates to #NNNN` if the PR only partially addresses the issue.
