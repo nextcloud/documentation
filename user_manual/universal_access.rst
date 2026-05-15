@@ -27,12 +27,12 @@ Navigating via keyboard
 
 You can navigate the web interface with a keyboard, just as you would with a mouse:
 
-* :kbd:`Tab` and :kbd:`Shift+Tab` to move between elements
+* :kbd:`Tab` and :kbd:`Shift`+:kbd:`Tab` to move between elements
 * :kbd:`Enter` or :kbd:`Space` to activate or open the element (depending on the type of element)
 * :kbd:`Escape` to be used to close modals, popover menus, and file viewers
 * :kbd:`Left arrow` and :kbd:`Right arrow` to navigate between photos in the viewer
-* :kbd:`Ctrl+F` to focus the search field
-* :kbd:`Ctrl+S` to save changes in editors like Nextcloud Text
+* :kbd:`Ctrl`+:kbd:`F` to focus the search field
+* :kbd:`Ctrl`+:kbd:`S` to save changes in editors like Nextcloud Text
 
 For quicker navigation, we offer two "skip links" at the beginning of the document which allow you to:
 
@@ -58,7 +58,7 @@ Nextcloud Mail has shortcuts as well, also documented inside the settings of the
 * :kbd:`S` to toggle a message as favorite
 * :kbd:`U` to toggle a message unread
 * :kbd:`Del` to delete a message
-* :kbd:`Ctrl+Enter` to send
+* :kbd:`Ctrl`+:kbd:`Enter` to send
 * :kbd:`R` to refresh and load new mails
 
 

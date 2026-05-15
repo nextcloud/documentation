@@ -326,9 +326,10 @@ page moves.
      Click :guilabel:`Save` to confirm.
 
 ``:kbd:``
-   Use for keyboard shortcuts::
+   Use for keyboard shortcuts. Each key gets its own ``:kbd:`` role, with the
+   separator character outside::
 
-     Press :kbd:`Ctrl+S` to save.
+     Press :kbd:`Ctrl`+:kbd:`S` to save.
 
 ``:file:``
    Use for file paths to ensure consistent rendering::
