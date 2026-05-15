@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Accès aux fichiers Nextcloud avec WebDAV &mdash; Documentation Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,8 +31,8 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
-    <link rel="next" title="Gérer les fichiers supprimés" href="deleted_file_management.html" />
-    <link rel="prev" title="Accéder à vos fichiers en utilisant l’interface Web" href="access_webgui.html" />
+    <link rel="next" title="Synchronisation sur bureau et sur mobile" href="desktop_mobile_sync.html" />
+    <link rel="prev" title="Accessing your files using the Nextcloud web interface" href="access_webgui.html" />
    
   
 </head>
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <label for="rtd-search-input" class="sr-only">Rechercher docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Rechercher docs"
+             aria-label="Rechercher docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,74 +72,44 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Manuel utilisateur de Nextcloud latest : Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">L’interface web de Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Fichiers &amp; synchronisation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Accéder à vos fichiers en utilisant l’interface Web</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Accès aux fichiers Nextcloud avec WebDAV</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Clients officiels Nextcloud pour ordinateurs et mobiles</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">Clients WebDAV tiers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Accéder aux fichiers sous Linux</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Gestionnaire de fichiers Nautilus</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">Accès aux fichiers avec KDE et le gestionnaire de fichiers Dolphin</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="accessing.html">Accéder à vos fichiers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="access_webgui.html">Accessing your files using the Nextcloud web interface</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Accès aux fichiers Nextcloud avec WebDAV</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Clients officiels Nextcloud pour ordinateurs et mobiles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#third-party-webdav-clients">Clients WebDAV tiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-linux">Accéder aux fichiers sous Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Créer un point de montage WebDAV en ligne de commande Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-issues">Anomalies connues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-macos">Accéder aux fichiers sous macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Accéder aux fichiers sous Microsoft Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-cyberduck">Accéder aux fichiers avec Cyberduck</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-public-shares-over-webdav">Accéder aux partages publics avec WebDAV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-problems">Problèmes connus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-curl">Accéder aux fichiers en utilisant cURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-winscp">Accéder aux fichiers avec WinSCP</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Créer un point de montage WebDAV en ligne de commande Linux</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-issues">Anomalies connues</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#problem">Problème</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution">Solution</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Problème</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">Solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="desktop_mobile_sync.html">Synchronisation sur bureau et sur mobile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="large_file_upload.html">Téléversement de gros fichiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="external_storage.html">Using external storage</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">Accéder aux fichiers sous macOS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Accéder aux fichiers sous Microsoft Windows</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">Connecter un lecteur réseau en ligne de commande</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">Connecter des lecteurs réseaux avec Windows Explorer</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">Accéder aux fichiers avec Cyberduck</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">Accéder aux partages publics avec WebDAV</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-problems">Problèmes connus</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id4">Problème</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution-1">Solution 1</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution-2">Solution 2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">Problème</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">Solution</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">Problème</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#answer">Réponse</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">Problème</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">Solution</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">Problème</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">Solution</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">Accéder aux fichiers en utilisant cURL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-winscp">Accéder aux fichiers avec WinSCP</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Gérer les fichiers supprimés</a></li>
-<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synchronisation sur bureau et sur mobile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Chiffrer vos fichiers Nextcloud sur le serveur</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html">Partage de fichiers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Partages Fédérés</a></li>
-<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Faire des téléversements anonymes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Téléversement de gros fichiers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quota.html">Quota de stockage utilisable</a></li>
-<li class="toctree-l2"><a class="reference internal" href="version_control.html">Contrôle de version</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projects.html">Projets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Transfert de propriété</a></li>
-<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Utilisation du partage entre instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Gérer vos fichiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Partage &amp; Collaboration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Sécurité &amp; chiffrement</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Clients de bureau</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Définir vos préférences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Accès universel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Utilisation de l’authentification à deux facteurs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestion des navigateurs et des appareils liés</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Stockage externe</a></li>
 </ul>
 
         </div>
@@ -148,6 +127,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Fichiers &amp; synchronisation</a></li>
+          <li class="breadcrumb-item"><a href="accessing.html">Accéder à vos fichiers</a></li>
       <li class="breadcrumb-item active">Accès aux fichiers Nextcloud avec WebDAV</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Éditer sur GitHub</a>
@@ -165,8 +145,8 @@
 <p>Avant de configurer WebDAV, regardons la méthode recommandée de connecter des appareils client à Nextcloud.</p>
 <section id="official-nextcloud-desktop-and-mobile-clients">
 <h2>Clients officiels Nextcloud pour ordinateurs et mobiles<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Lien vers cette rubrique"></a></h2>
-<p>La méthode recommandée de synchroniser un ordinateur avec un serveur Nextcloud est d’utiliser le <a href="#id12"><span class="problematic" id="id13">`client de synchronisation officiel Nextcloud&lt;https://nextcloud.com/install/#install-clients&gt;`_</span></a>. Vous pouvez configurer le client pour sauvegarder des fichiers dans n’importe quel répertoire local et vous pouvez choisir avec quels répertoires du serveur se synchroniser. Le client affiche l’état actuel de la connexion et enregistre toutes les activités, vous pouvez donc toujours savoir quel fichier distant a été téléchargé sur votre ordinateur et vous pouvez vérifier que les fichiers créés et mis à jour sur votre ordinateur local sont bien été synchronisés.</p>
-<p>La méthode recommandée pour synchroniser les périphériques Android et Apple iOS est d’utiliser les <a href="#id14"><span class="problematic" id="id15">`applications mobiles officielles Nextcloud&lt;https://nextcloud.com/install/&gt;`_</span></a>.</p>
+<p>La méthode recommandée de synchroniser un ordinateur avec un serveur Nextcloud est d’utiliser le <a href="#id11"><span class="problematic" id="id12">`client de synchronisation officiel Nextcloud&lt;https://nextcloud.com/install/#install-clients&gt;`_</span></a>. Vous pouvez configurer le client pour sauvegarder des fichiers dans n’importe quel répertoire local et vous pouvez choisir avec quels répertoires du serveur se synchroniser. Le client affiche l’état actuel de la connexion et enregistre toutes les activités, vous pouvez donc toujours savoir quel fichier distant a été téléchargé sur votre ordinateur et vous pouvez vérifier que les fichiers créés et mis à jour sur votre ordinateur local sont bien été synchronisés.</p>
+<p>La méthode recommandée pour synchroniser les périphériques Android et Apple iOS est d’utiliser les <a href="#id13"><span class="problematic" id="id14">`applications mobiles officielles Nextcloud&lt;https://nextcloud.com/install/&gt;`_</span></a>.</p>
 <p>Pour connecter les applications Nextcloud officielles à un serveur Nextcloud, utilisez la même URL que celle que vous utilisez pour accéder à Nextcloud depuis votre navigateur web - par ex.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
@@ -196,13 +176,19 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Lorsque vous utilisez un client WebDAV tiers (y compris le client intégré de votre système d’exploitation), vous devriez utiliser un mot de passe d’application pour vous connecter plutôt que votre mot de passe habituel. En plus d’améliorer la sécurité, cela « augmente considérablement les performances &lt;<a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151</a>&gt; »_. Pour configurer un mot de passe d’application, connectez-vous à l’interface Web Nextcloud, cliquez sur l’avatar en haut à droite et choisissez <em>Paramètres personnels</em>. Choisissez ensuite <em>Sécurité</em> dans la barre latérale gauche et faites défiler jusqu’en bas. Vous pouvez y créer un mot de passe d’application (qui peut également être révoqué à l’avenir sans modifier votre mot de passe d’utilisateur principal).</p>
+<p>When using a third-party WebDAV client (including your operating system’s
+built-in client), you should use an application password for login rather than your
+regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log into the Nextcloud Web interface, click on your avatar
+and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
+sidebar and scroll to the very bottom. There you can create an app password (which can
+also be revoked in the future without changing your main user password).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Dans les exemples suivants, vous devez remplacer <strong>example.com/</strong> par l’URL de votre serveur Nextcloud (sans le nom de dossier si l’installation est à la racine de votre domaine) et <strong>USERNAME</strong> par l’identifiant de la personne qui se connecte.</p>
 <p>See the WebDAV URL, to be found in Files Settings -&gt; WebDAV in the Files on your Nextcloud account.</p>
-<img alt="Screenshot of the Files settings showing the personal WebDAV link" src="../../_images/webdav_link.png" />
+<img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
 </div>
 </section>
 <section id="accessing-files-using-linux">
@@ -220,7 +206,7 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p class="admonition-title">Note</p>
 <p>Si votre connexion serveur n’est pas sécurisée en HTTPS, utilisez <code class="docutils literal notranslate"><span class="pre">dav://</span></code> à la place de <code class="docutils literal notranslate"><span class="pre">davs://</span></code> :</p>
 </div>
-<img alt="Captures d'écran de la configuration du gestionnaire de fichiers Nautilus pour utiliser WebDAV" src="../../_images/webdav_gnome3_nautilus.png" />
+<img alt="GNOME Nautilus file manager Connect to Server dialog with a Nextcloud WebDAV address entered" src="../../_images/webdav_gnome3_nautilus.png" />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Cette méthode fonctionne également pour les autres gestionnaires de fichiers qui utilisent GVFS, comme Caja de MATE ou Nemo de Cinnamon.</p>
@@ -260,6 +246,12 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 </pre></div>
 </div>
 </li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the davfs2 group doesn’t exist after installing the package, you may need to create it yourself and, possibly, adjust the davfs config file to use the group after you’ve created it.</p>
+</div>
+<ol class="arabic">
 <li><p>Puis créer un répertoire <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> dans le répertoire racine pour votre point de montage, et <code class="docutils literal notranslate"><span class="pre">.davfs2/</span></code> pour votre fichier de configuration personnel</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">nextcloud</span>
 <span class="n">mkdir</span> <span class="o">~/.</span><span class="n">davfs2</span>
@@ -331,20 +323,16 @@ for example
 </section>
 <section id="accessing-files-using-macos">
 <h2>Accéder aux fichiers sous macOS<a class="headerlink" href="#accessing-files-using-macos" title="Lien vers cette rubrique"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>Pour accéder aux fichiers avec le Finder de macOS :</p>
 <ol class="arabic">
 <li><p>Depuis la barre de menu supérieure du Finder, choisissez <strong>Aller &gt; Se connecter au serveur…</strong>:</p>
-<img alt="Capture d'écran de la saisie de l'adresse du serveur Nextcloud sur macOS" src="../../_images/osx_webdav1.png" />
+<img alt="macOS Go menu with Connect to Server option highlighted" src="../../_images/osx_webdav1.png" />
 </li>
 <li><p>Lorsque la fenêtre <strong>Connexion au serveur</strong> apparaît, saisissez l’adresse WebDAV de votre server Nextcloud dans le champ <strong>Adresse du serveur :</strong>, par exemple :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
 </pre></div>
 </div>
-<img alt="Capture d'écran : Indiquez l'adresse du serveur Nextcloud dans la boîte de dialogue « Connexion au serveur… »" src="../../_images/osx_webdav2.png" />
+<img alt="macOS Connect to Server dialog with a Nextcloud WebDAV URL in the Server Address field" src="../../_images/osx_webdav2.png" />
 </li>
 <li><p>Cliquez sur <strong>Se connecter</strong>. Votre serveur WebDAV doit apparaître sur le bureau comme un disque partagé.</p></li>
 </ol>
@@ -413,7 +401,7 @@ for example
 <p>Pour les serveurs protégés par SSL, cochez <strong>Se reconnecter lors de la connexion</strong> pour s’assurer que le mappage est persistent lors des redémarrages suivants. Si vous voulez vous connecter au serveur Nextcloud avec un autre utilisateur, cochez <strong>Se connecter à l’aide d’informations d’identification différentes</strong>.</p>
 </div>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Capture d'écran de la configuration de WebDAV dans l'explorateur Windows" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Windows Explorer Map Network Drive wizard with a Nextcloud WebDAV URL entered" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
 </a>
 </figure>
 </li>
@@ -467,8 +455,8 @@ for example
 </section>
 <section id="known-problems">
 <h2>Problèmes connus<a class="headerlink" href="#known-problems" title="Lien vers cette rubrique"></a></h2>
-<section id="id4">
-<h3>Problème<a class="headerlink" href="#id4" title="Lien vers cette rubrique"></a></h3>
+<section id="id3">
+<h3>Problème<a class="headerlink" href="#id3" title="Lien vers cette rubrique"></a></h3>
 <p>Windows ne se connecte pas avec HTTPS.</p>
 </section>
 <section id="solution-1">
@@ -479,37 +467,37 @@ for example
 <h3>Solution 2<a class="headerlink" href="#solution-2" title="Lien vers cette rubrique"></a></h3>
 <p>Le client Windows WebDAV pourrait ne pas supporter les connections TLSv1.1 / TLSv1.2. Si vous avez restreint la configuration de votre serveur dans le but de fournir uniquement des connections TLSv1.1 et plus, la connexion à votre serveur pourrait échouer. Référez vous à la documentation <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> pour plus d’informations.</p>
 </section>
-<section id="id5">
-<h3>Problème<a class="headerlink" href="#id5" title="Lien vers cette rubrique"></a></h3>
+<section id="id4">
+<h3>Problème<a class="headerlink" href="#id4" title="Lien vers cette rubrique"></a></h3>
 <p>Vous avez obtenu le message d’erreur suivant : <strong>Erreur 0x800700DF : La taille du fichier dépasse la limite autorisée ; il ne peut être enregistré.</strong></p>
 </section>
-<section id="id6">
-<h3>Solution<a class="headerlink" href="#id6" title="Lien vers cette rubrique"></a></h3>
+<section id="id5">
+<h3>Solution<a class="headerlink" href="#id5" title="Lien vers cette rubrique"></a></h3>
 <p>Windows limite la taille maximum des fichiers transférés via un partage WebDAV.  Vous pouvez augmenter la valeur <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> dans <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> en cliquant sur <strong>Modifier</strong>.</p>
 <p>Pour augmenter la limite à la valeur maximal de 4GB, sélectionnez <strong>Décimal</strong>, entrez la valeur <code class="docutils literal notranslate"><span class="pre">4294967295</span></code>, et relancez Windows ou redémarrez le service <strong>WebClient</strong>.</p>
 </section>
-<section id="id7">
-<h3>Problème<a class="headerlink" href="#id7" title="Lien vers cette rubrique"></a></h3>
+<section id="id6">
+<h3>Problème<a class="headerlink" href="#id6" title="Lien vers cette rubrique"></a></h3>
 <p>L’ajout d’un lecteur WebDAV sous Windows via les étapes décrites ci-dessus n’affiche pas la taille correcte de l’espace disponible dans Nextcloud et affiche à la place la taille du lecteur C: avec son espace disponible.</p>
 </section>
 <section id="answer">
 <h3>Réponse<a class="headerlink" href="#answer" title="Lien vers cette rubrique"></a></h3>
 <p>Malheureusement, il s’agit d’une limite de WebDAV lui-même, car il n’offre pas la possibilité pour le client de connaître l’espace libre disponible depuis le serveur. Windows revient automatiquement à l’affichage de la taille du lecteur C: avec son espace disponible. Il n’y a donc malheureusement pas de véritable solution à ce problème.</p>
 </section>
-<section id="id8">
-<h3>Problème<a class="headerlink" href="#id8" title="Lien vers cette rubrique"></a></h3>
+<section id="id7">
+<h3>Problème<a class="headerlink" href="#id7" title="Lien vers cette rubrique"></a></h3>
 <p>Problème d’accès à vos fichiers avec Microsoft Office via WebDAV</p>
 </section>
-<section id="id9">
-<h3>Solution<a class="headerlink" href="#id9" title="Lien vers cette rubrique"></a></h3>
+<section id="id8">
+<h3>Solution<a class="headerlink" href="#id8" title="Lien vers cette rubrique"></a></h3>
 <p>Les problèmes connus et leurs solutions sont documentés dans l’article <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
 </section>
-<section id="id10">
-<h3>Problème<a class="headerlink" href="#id10" title="Lien vers cette rubrique"></a></h3>
+<section id="id9">
+<h3>Problème<a class="headerlink" href="#id9" title="Lien vers cette rubrique"></a></h3>
 <p>Impossible de mapper Nextcloud en tant que lecteur WebDAV sous Windows à l’aide d’un certificat auto-signé.</p>
 </section>
-<section id="id11">
-<h3>Solution<a class="headerlink" href="#id11" title="Lien vers cette rubrique"></a></h3>
+<section id="id10">
+<h3>Solution<a class="headerlink" href="#id10" title="Lien vers cette rubrique"></a></h3>
 <ol class="arabic simple">
 <li><p>Accédez à votre instance Nextcloud via votre navigateur Web préféré.</p></li>
 <li><p>Cliquez jusqu’à ce que vous arriviez à l’erreur de certificat dans la ligne d’état du navigateur.</p></li>
@@ -631,8 +619,8 @@ for example
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
-        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Accéder à vos fichiers en utilisant l’interface Web" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
-        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="Gérer les fichiers supprimés" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Accessing your files using the Nextcloud web interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-right" title="Synchronisation sur bureau et sur mobile" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -736,16 +724,25 @@ for example
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 French
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Langues</dt>
         
@@ -920,6 +917,22 @@ for example
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -1088,6 +1101,14 @@ for example
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -1095,31 +1116,20 @@ for example
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Téléchargements</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>Au sujet de la lecture de Docs</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Projet Racine</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Versions</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

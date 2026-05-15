@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Acceso universal &mdash; Documentación Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,11 +72,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Introdución ao manual de usuario de Nextcloud «latest»</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webinterface.html">A interface web de Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="activity.html">Using the Activity app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files/index.html">Ficheiros e sincronización</a></li>
 <li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Software de traballo en grupo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="talk/index.html">Parladoiro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Clientes de escritorio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Axustar as súas preferencias</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Acceso universal</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#zoom-and-responsiveness">Zoom e capacidade de resposta</a></li>
@@ -77,7 +88,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="user_2fa.html">Usar o segundo factor de autenticación</a></li>
 <li class="toctree-l1"><a class="reference internal" href="session_management.html">Xestionar os navegadores conectados e os dispositivos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">Almacenamento externo</a></li>
 </ul>
 
         </div>
@@ -106,7 +116,12 @@
              
   <section id="universal-access">
 <h1>Acceso universal<a class="headerlink" href="#universal-access" title="Ligazón a este título"></a></h1>
-<p>O acceso universal é moi importante para nós. Seguimos os estándares web e comprobamos que todo sexa utilizábel tamén con teclado e software de asistencia como os lectores de pantalla. Pretendemos cumprir as <a class="reference external" href="https://www.w3.org/WAI/standards-guidelines/wcag/">Directrices de accesibilidade ao contido web 2.1</a> no nivel AA, co tema de alto contraste incluso no nivel AAA. Tamén seguimos as directrices alemás BITV 2.0.</p>
+<p>Universal access is very important to us. We follow web standards and ensure
+everything is usable with a keyboard and assistive software such as screen
+readers. We aim to be compliant with the <a class="reference external" href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility
+Guidelines 2.1</a>
+on AA level, with the high contrast theme even on AAA level.
+We also follow the German BITV 2.0 guidelines.</p>
 <p>Se atopa algún problema, non dubide en comunicarnolo no <a class="reference external" href="https://github.com/nextcloud/server/issues/">noso rastrexador de problemas</a>. E se quere participar, <a class="reference external" href="https://nextcloud.com/design">únase ao noso equipo de deseño</a>!</p>
 <section id="zoom-and-responsiveness">
 <h2>Zoom e capacidade de resposta<a class="headerlink" href="#zoom-and-responsiveness" title="Ligazón a este título"></a></h2>
@@ -114,7 +129,7 @@
 </section>
 <section id="navigating-via-keyboard">
 <h2>Desprazarse mediante o teclado<a class="headerlink" href="#navigating-via-keyboard" title="Ligazón a este título"></a></h2>
-<p>Pode desprazarse pola interface web só co teclado igual que o fai co rato:</p>
+<p>You can navigate the web interface with a keyboard, just as you would with a mouse:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Tab</span></code> e <code class="docutils literal notranslate"><span class="pre">Maiús</span> <span class="pre">+</span> <span class="pre">Tab</span></code> moverse entre os elementos</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Intro</span></code> ou <code class="docutils literal notranslate"><span class="pre">Espazo</span></code> para activar ou abrir o elemento (dependendo do tipo de elemento)</p></li>
@@ -123,7 +138,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">F</span></code> para centrar o campo de busca</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">S</span></code> para gardar cambios nos editores como Nextcloud Texto</p></li>
 </ul>
-<p>Para unha navegación máis rápida, ofrecemos 2 «ligazóns de salto» ao comezo do documento que lle permiten:</p>
+<p>For quicker navigation, we offer two «skip links» at the beginning of the document which allow you to:</p>
 <ul class="simple">
 <li><p>Ir ao contido principal</p></li>
 <li><p>Saltar á navegación da aplicación</p></li>
@@ -286,16 +301,25 @@
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 Galician
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Idiomas</dt>
         
@@ -470,6 +494,22 @@
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -638,6 +678,14 @@
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -645,31 +693,20 @@
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Descargas</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>En «Lea os documentos»</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Inicio do proxecto</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Compilacións</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

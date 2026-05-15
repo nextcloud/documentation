@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Verwenden der Kontakte-App &mdash; Nextcloud latest User Manual latest Dokumentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Dokumentation durchsuchen" aria-label="Dokumentation durchsuchen" />
+    <label for="rtd-search-input" class="sr-only">Dokumentation durchsuchen</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Dokumentation durchsuchen"
+             aria-label="Dokumentation durchsuchen" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,7 +72,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest - Einführung zur Benutzeranleitung</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Die Weboberfläche von Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Verwendung der Aktivitäts-App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Dateien &amp; Synchronisation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Verwenden der Kontakte-App</a><ul>
@@ -103,12 +113,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop-Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Einstellungen vornehmen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universeller Zugriff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Verwendung der Zwei-Faktor-Authentifizierung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Verwaltung verbundener Browser und Geräte</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externer Speicher</a></li>
 </ul>
 
         </div>
@@ -163,7 +173,7 @@ in the application.</p>
 <h3>Virtuelle Kontakte importieren<a class="headerlink" href="#importing-virtual-contacts" title="Link to this heading"></a></h3>
 <p>So importieren Sie Kontakte mithilfe einer VCF / vCard-Datei:</p>
 <ol class="arabic">
-<li><p>Oben links auf dem Bildschirm befindet sich die Schaltfläche „Kontakte importieren“, die nur angezeigt wird, wenn Sie noch keine Kontakte haben.</p></li>
+<li><p>An <strong>Import contacts</strong> button is shown when you have no contacts yet.</p></li>
 <li><p>Am unteren Rand der linken Seitenleiste finden Sie die Schaltfläche „Einstellungen“, neben dem Zahnradsymbol:</p>
 <blockquote>
 <div><figure class="align-default">
@@ -238,11 +248,7 @@ in the application.</p>
 <figure class="align-default">
 <img alt="../../_images/contact_picture_options.png" src="../../_images/contact_picture_options.png" />
 </figure>
-<p>If the administrator allows updates from social media in the admin groupware settings,
-users can also retrieve contact pictures directly from social networks.
-In that case the contact needs to have stored a user name in the social media section.
-Each entry of a supported social network adds a download entry for the respective
-network. Currently, the following social networks are supported:</p>
+<p>Wenn die Administration in den Groupware-Einstellungen Aktualisierungen aus sozialen Medien zulässt, können Benutzer Kontaktbilder auch direkt aus sozialen Netzwerken abrufen. In diesem Fall muss der Kontakt einen Benutzernamen im Bereich Soziale Medien hinterlegt haben. Jeder Eintrag eines unterstützten sozialen Netzwerks fügt einen Download-Eintrag für das jeweilige Netzwerk hinzu. Aktuell werden folgende soziale Netzwerke unterstützt:</p>
 <ul class="simple">
 <li><p>Instagram</p></li>
 <li><p>Mastodon</p></li>
@@ -252,11 +258,7 @@ network. Currently, the following social networks are supported:</p>
 <li><p>Telegram</p></li>
 <li><p>Gravatar</p></li>
 </ul>
-<p>Social avatars are only retrieved if publicly available without login to the
-respective social network. In the contact user settings on the contacts page,
-you can activate auto-updates from social media. This will update avatars
-with social profile data on a weekly basis. Social networks are checked in the
-order listed above.</p>
+<p>Social-Media-Avatare werden nur dann abgerufen, wenn sie öffentlich verfügbar sind und keine Anmeldung im jeweiligen sozialen Netzwerk erforderlich ist. In den Kontakteinstellungen auf der Kontaktseite können Sie automatische Aktualisierungen aus sozialen Medien aktivieren. Dadurch werden die Avatare wöchentlich mit den Daten der jeweiligen Social-Media-Profile aktualisiert. Die sozialen Netzwerke werden in der oben genannten Reihenfolge überprüft.</p>
 </section>
 </section>
 <section id="managing-multiple-contacts-at-a-time">
@@ -344,8 +346,8 @@ order listed above.</p>
 <section id="team-options">
 <h3>Teamoptionen<a class="headerlink" href="#team-options" title="Link to this heading"></a></h3>
 <p>Zur Konfiguration eines Teams, zur Verwaltung von Einladungen und Mitgliedschaften, der Sichtbarkeit des Teams, der Zulassung weiterer Teammitgliedschaften und des Passwortschutzes stehen Ihnen verschiedene, selbsterklärende Optionen zur Verfügung.</p>
-<p><strong>Prevent teams from being a member of another team</strong></p>
-<p>When this option is enabled, the team can no longer be directly added as a member of another team. However, this restriction only applies to new direct additions. Existing memberships are kept, and inherited memberships are still possible if this team belongs to a parent team that gets added elsewhere.</p>
+<p><strong>Verhindern, dass Teams Mitglieder eines anderen Teams sind</strong></p>
+<p>Wenn diese Option aktiviert ist, kann das Team nicht mehr direkt als Mitglied eines anderen Teams hinzugefügt werden. Diese Einschränkung gilt jedoch nur für neue direkte Hinzufügungen. Bestehende Mitgliedschaften bleiben erhalten, und vererbte Mitgliedschaften sind weiterhin möglich, wenn dieses Team zu einem übergeordneten Team gehört, das an anderer Stelle hinzugefügt wird.</p>
 </section>
 <section id="shared-items">
 <h3>Geteilte Elemente<a class="headerlink" href="#shared-items" title="Link to this heading"></a></h3>
@@ -469,16 +471,25 @@ order listed above.</p>
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 German
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Sprachen</dt>
         
@@ -653,6 +664,22 @@ order listed above.</p>
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -821,6 +848,14 @@ order listed above.</p>
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -828,31 +863,20 @@ order listed above.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Downloads</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>Auf "Read the docs"</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Projekt Startseite</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Builds</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

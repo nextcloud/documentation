@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Обмен файлами &mdash; документация Nextcloud latest User Manual latest</title>
+  <title>File sharing &mdash; документация Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -32,7 +32,7 @@
     <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
     <link rel="search" title="Поиск" href="../search.html" />
     <link rel="next" title="Создание анонимных загрузок" href="file_drop.html" />
-    <link rel="prev" title="Using end-to-end encryption" href="using_e2ee.html" />
+    <link rel="prev" title="Совместное использование и сотрудничество" href="collaboration.html" />
    
   
 </head>
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <label for="rtd-search-input" class="sr-only">Поиск в документации</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Поиск в документации"
+             aria-label="Поиск в документации" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,42 +72,39 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest руководство пользователя. Введение</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Веб-интерфейс Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Использование приложения «Активность»</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Файлы и синхронизация</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Доступ к вашим файлам с помощью веб-интерфейса Nextcloud</a></li>
-<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Доступ к файлам Nextcloud с помощью WebDAV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Управление удаленными файлами</a></li>
-<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Синхронизация рабочего стола и мобильного телефона</a></li>
-<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Шифрование ваших файлов Nextcloud на сервере</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Обмен файлами</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#public-link-shares">Опубликованные публичные ссылки</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#internal-shares-with-users-and-groups">Внутренние общие ресурсы для пользователей и групп</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#others-with-access">У кого еще есть доступ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accessing.html">Доступ к вашим файлам</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Управление вашими файлами</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">Совместное использование и сотрудничество</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">File sharing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#public-link-shares">Опубликованные публичные ссылки</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#internal-shares-with-users-and-groups">Внутренние общие ресурсы для пользователей и групп</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#others-with-access">У кого еще есть доступ?</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#federated-shares">Федеративный общий ресурс</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-federation-share">Создание новой федерации</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Добавление публичного общего ресурса в ваш Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#federated-shares">Federated shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Добавление публичного общего ресурса в ваш Nextcloud</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Создание анонимных загрузок</a></li>
-<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Загрузка больших файлов</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quota.html">Квота хранилища</a></li>
-<li class="toctree-l2"><a class="reference internal" href="version_control.html">Контроль версий</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projects.html">Проекты</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Передача прав</a></li>
-<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Использование федеративного доступа</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file_drop.html">Создание анонимных загрузок</a></li>
+<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Using federation shares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfer ownership</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Безопасность и шифрование</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Программное обеспечение для совместной работы</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Персональные настройки</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Специальные возможности</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Использование двухфакторной аутентификации</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управление подключенными браузерами и устройствами</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Внешнее хранилище</a></li>
 </ul>
 
         </div>
@@ -116,7 +122,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Файлы и синхронизация</a></li>
-      <li class="breadcrumb-item active">Обмен файлами</li>
+          <li class="breadcrumb-item"><a href="collaboration.html">Совместное использование и сотрудничество</a></li>
+      <li class="breadcrumb-item active">File sharing</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> Редактировать на GitHub</a>
       </li>
@@ -127,7 +134,7 @@
            <div itemprop="articleBody">
              
   <section id="file-sharing">
-<h1>Обмен файлами<a class="headerlink" href="#file-sharing" title="Ссылка на этот заголовок"></a></h1>
+<h1>File sharing<a class="headerlink" href="#file-sharing" title="Ссылка на этот заголовок"></a></h1>
 <p>Пользователи Nextcloud могут делиться файлами и папками.</p>
 <ul class="simple">
 <li><p>публичные ссылки</p></li>
@@ -139,8 +146,7 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Примечание</p>
-<p>Some options may not be available due to administrative configuration.
-See <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/configuration_files/file_sharing_configuration.html">administrator documentation</a> for details.</p>
+<p>Некоторые параметры могут быть недоступны из-за административной конфигурации. Подробнее см. в <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html">administrator documentation</a> .</p>
 </div>
 <section id="public-link-shares">
 <h2>Опубликованные публичные ссылки<a class="headerlink" href="#public-link-shares" title="Ссылка на этот заголовок"></a></h2>
@@ -148,7 +154,7 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
 <p>Будет создан случайный 15-значный токен. Ссылка будет выглядеть как <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/s/yxcFKRWBJqYYzp4</span></code>.</p>
 <p>Для общих папок доступны несколько параметров:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_folder.png" src="../../_images/sharing_public_folder.png" />
+<img alt="Public folder share options." src="../../_images/sharing_public_folder.png" />
 </figure>
 <ul class="simple">
 <li><p><strong>Только для чтения</strong>, чтобы разрешить просмотр и скачивание</p></li>
@@ -163,26 +169,27 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
 </ul>
 <p>Для публичных <em>файловых</em> ссылок можно разрешить редактирование файла с помощью одного из совместных редакторов Nextcloud:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_file.png" src="../../_images/sharing_public_file.png" />
+<img alt="Public file share options." src="../../_images/sharing_public_file.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Примечание</p>
-<p>Защита паролем и сроки хранения не распространяются на федеративный общий доступ к файлам. Это будет исправлено в Nextcloud 22.</p>
+<p>Password protection and file expiration are also propagated using Federated File Sharing
+since Nextcloud 22.</p>
 </div>
 </section>
 <section id="internal-shares-with-users-and-groups">
 <h2>Внутренние общие ресурсы для пользователей и групп<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Ссылка на этот заголовок"></a></h2>
 <p>При совместном использовании с пользователями, группами, кругами или участниками Конференции права на файлы и содержимое папок регулируются:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal.png" src="../../_images/sharing_internal.png" />
+<img alt="Internal share options." src="../../_images/sharing_internal.png" />
 </figure>
 <p>В качестве общего ресурса вы можете настроить, хотите ли вы автоматически принимать все входящие общие ресурсы и добавлять их в корневую папку, или если вы хотите, чтобы каждый раз вас спрашивали, хотите ли вы принять или отклонить общий ресурс.</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal_acceptNotification.png" src="../../_images/sharing_internal_acceptNotification.png" />
+<img alt="Share acceptance notification." src="../../_images/sharing_internal_acceptNotification.png" />
 </figure>
 <p>Для настройки параметров приема перейдите к <strong>Настройки</strong> &gt; <strong>Личные</strong> &gt; <strong>Обмен</strong></p>
 <figure class="align-default">
-<img alt="../../_images/sharing_autoAcceptSetting.png" src="../../_images/sharing_autoAcceptSetting.png" />
+<img alt="Auto-accept sharing setting." src="../../_images/sharing_autoAcceptSetting.png" />
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Предупреждение</p>
@@ -193,11 +200,11 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
 <h2>У кого еще есть доступ?<a class="headerlink" href="#others-with-access" title="Ссылка на этот заголовок"></a></h2>
 <p>Чтобы узнать, кто еще имеет доступ через ссылку или папку более высокого уровня, нажмите на <strong>Другие пользователи, имеющие доступ</strong> на вкладке <strong>Общий доступ</strong>:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__collapsed.png" src="../../_images/sharing_others-with-access__collapsed.png" />
+<img alt="Others with access panel, collapsed." src="../../_images/sharing_others-with-access__collapsed.png" />
 </figure>
 <p>В списке перечислены все пользователи, группы, чаты и т.д., которые имеют доступ к текущему объекту через ссылку или папку более высокого уровня:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__details.png" src="../../_images/sharing_others-with-access__details.png" />
+<img alt="Others with access panel, expanded with user details." src="../../_images/sharing_others-with-access__details.png" />
 </figure>
 <p>Нажмите на три точки, чтобы:</p>
 <ul class="simple">
@@ -212,25 +219,27 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
 </section>
 </section>
 <section id="federated-shares">
-<h1>Федеративный общий ресурс<a class="headerlink" href="#federated-shares" title="Ссылка на этот заголовок"></a></h1>
+<h1>Federated shares<a class="headerlink" href="#federated-shares" title="Ссылка на этот заголовок"></a></h1>
 <p>Федерация общего доступа позволяет вам монтировать общие папки с удаленных серверов Nextcloud, создавая собственное облако Nextcloud. Вы можете создавать прямые ссылки для пользователей на других серверах Nextcloud.</p>
 <section id="creating-a-new-federation-share">
-<h2>Создание новой федерации<a class="headerlink" href="#creating-a-new-federation-share" title="Ссылка на этот заголовок"></a></h2>
+<h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Ссылка на этот заголовок"></a></h2>
 <p>Общий доступ к федерации включен по умолчанию. Выполните следующие действия, чтобы создать новый общий ресурс с другими серверами Nextcloud или ownCloud:</p>
 <p>Перейдите на страницу <code class="docutils literal notranslate"><span class="pre">Файлы</span></code> и щёлкните по значку «Поделиться» в файле или каталоге, которым вы хотите поделиться. На боковой панели введите имя пользователя и URL-адрес удалённого пользователя в этой форме: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code>. В этом примере это <code class="docutils literal notranslate"><span class="pre">bob&#64;cloud.example.com</span></code>.</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-1.png" src="../../_images/share-federation-1.png" />
+<img alt="Entering a federated share address." src="../../_images/share-federation-1.png" />
 </figure>
 <p>Получатель общего доступа увидит уведомление в своем Nextcloud, что позволит ему принять или отклонить входящий общий ресурс.</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-2-notification.png" src="../../_images/share-federation-2-notification.png" />
+<img alt="Federated share acceptance notification." src="../../_images/share-federation-2-notification.png" />
 </figure>
 </section>
 <section id="adding-a-public-share-to-your-nextcloud">
 <h2>Добавление публичного общего ресурса в ваш Nextcloud<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Ссылка на этот заголовок"></a></h2>
-<p>Страницы общего доступа Nextcloud предлагают возможность добавить этот файл или папку в качестве федеративного общего ресурса в свой собственный экземпляр Nextcloud. Просто введите ваш <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code>, как показано выше для исходящих акций:</p>
+<p>Nextcloud public link share pages offer an option to add that file or folder as a federated share
+into your own Nextcloud instance.
+Enter your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> as shown for outbound shares above:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-3-public.png" src="../../_images/share-federation-3-public.png" />
+<img alt="Adding a public share to your Nextcloud." src="../../_images/share-federation-3-public.png" />
 </figure>
 </section>
 </section>
@@ -239,7 +248,7 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
-        <a href="using_e2ee.html" class="btn btn-neutral float-left" title="Using end-to-end encryption" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="collaboration.html" class="btn btn-neutral float-left" title="Совместное использование и сотрудничество" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
         <a href="file_drop.html" class="btn btn-neutral float-right" title="Создание анонимных загрузок" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -344,18 +353,27 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 Russian
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
-        <dt>🌐 Languages</dt>
+        <dt>🌐  Языки</dt>
         
           <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/ar/"
@@ -522,6 +540,22 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
             </a>
           </dd>
         
@@ -696,6 +730,14 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -703,31 +745,20 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Загрузки</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>Читать на Read the Docs</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">В начало</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Сборка</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

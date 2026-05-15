@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NGINX configuration &mdash; Nextcloud latest Administration Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -52,9 +52,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -64,7 +73,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR compliance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
@@ -80,6 +89,7 @@
 <li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">NGINX configuration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#nextcloud-in-the-webroot-of-nginx">Nextcloud in the webroot of NGINX</a></li>
@@ -96,7 +106,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example_ubuntu.html">Example installation on Ubuntu 22.04 LTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_ubuntu.html">Example installation on Ubuntu 24.04 LTS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example_centos.html">Example installation on CentOS 8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example_openbsd.html">Example installation on OpenBSD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
@@ -136,6 +146,10 @@
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
 <ul>
@@ -207,9 +221,12 @@ broken for page display and result in an invalid configuration files.</p></li>
 <p>The following configuration should be used when Nextcloud is placed in the
 webroot of your nginx installation. In this example it is
 <code class="docutils literal notranslate"><span class="pre">/var/www/nextcloud</span></code> and it is accessed via <code class="docutils literal notranslate"><span class="pre">http(s)://cloud.example.com/</span></code></p>
-<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="c1"># Version 2025-07-23</span>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nextcloud nginx configuration — root installation</span>
+<span class="c1"># Version 2026-03-26</span>
 
+<span class="c1"># PHP-FPM backend.</span>
 <span class="k">upstream</span><span class="w"> </span><span class="s">php-handler</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># Use one of the options below, not both:</span>
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">#server unix:/run/php/php8.2-fpm.sock;</span>
 <span class="p">}</span>
@@ -357,37 +374,69 @@ webroot of your nginx installation. In this example it is
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/)</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/(?:\.|autotest|occ|issue|indie|db_|console)</span><span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1"># Ensure this block, which passes PHP files to the PHP process, is above the blocks</span>
-<span class="w">    </span><span class="c1"># which handle static assets (as seen below). If this block is not declared first,</span>
-<span class="w">    </span><span class="c1"># then Nginx will encounter an infinite rewriting loop when it prepends `/index.php`</span>
-<span class="w">    </span><span class="c1"># to the URI, resulting in a HTTP 500 error response.</span>
+<span class="w">    </span><span class="c1"># Pass PHP requests to PHP-FPM.</span>
+<span class="w">    </span><span class="c1">#</span>
+<span class="w">    </span><span class="c1"># Important: this block must appear above the static asset locations</span>
+<span class="w">    </span><span class="c1"># below. Those locations fall back to `/index.php$request_uri`; if</span>
+<span class="w">    </span><span class="c1"># they appear first, nginx can repeatedly rewrite to `/index.php`,</span>
+<span class="w">    </span><span class="c1"># causing an internal redirection loop.</span>
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.php(?:$|/)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1"># Required for legacy support</span>
-<span class="w">        </span><span class="kn">rewrite</span><span class="w"> </span><span class="s">^/(?!index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+|.+\/richdocumentscode(_arm64)?\/proxy)</span><span class="w"> </span><span class="s">/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
+<span class="w">        </span><span class="c1"># Rewrite most PHP requests to Nextcloud&#39;s front controller (`/index.php`).</span>
+<span class="w">        </span><span class="c1">#</span>
+<span class="w">        </span><span class="c1"># (Mirrors the rewrite exceptions in Nextcloud&#39;s Apache .htaccess.)</span>
+<span class="w">        </span><span class="c1">#</span>
+<span class="w">        </span><span class="c1"># Exceptions (not rewritten; must remain directly reachable):</span>
+<span class="w">        </span><span class="c1">#   index.php, remote.php, public.php, cron.php, status.php</span>
+<span class="w">        </span><span class="c1">#   ocs/v1.php, ocs/v2.php, ocs-provider/*</span>
+<span class="w">        </span><span class="c1">#   core/ajax/update.php, updater/*</span>
+<span class="w">        </span><span class="c1">#   */richdocumentscode(_arm64)?/proxy</span>
+<span class="w">        </span><span class="c1">#</span>
+<span class="w">        </span><span class="c1"># Other exceptions (e.g. /.well-known) are handled by dedicated</span>
+<span class="w">        </span><span class="c1"># location blocks elsewhere in this config.</span>
+<span class="w">        </span><span class="c1">#</span>
+<span class="w">        </span><span class="c1"># Caution: small edits to this regex can break routing or introduce</span>
+<span class="w">        </span><span class="c1"># rewrite loops.</span>
+<span class="w">        </span><span class="kn">rewrite</span><span class="w"> </span><span class="s">^/(?!index|remote|public|cron|status|ocs\/v[12]|ocs-provider\/.+|core\/ajax\/update|updater\/.+|.+\/richdocumentscode(_arm64)?\/proxy)</span><span class="w"> </span><span class="s">/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
 
+<span class="w">        </span><span class="c1"># Split `/file.php/path/info` into:</span>
+<span class="w">        </span><span class="c1"># - $fastcgi_script_name: `/file.php`</span>
+<span class="w">        </span><span class="c1"># - $fastcgi_path_info:   `/path/info`</span>
+<span class="w">        </span><span class="c1">#</span>
+<span class="w">        </span><span class="c1"># This is required for entry-points such as `remote.php` and `public.php`,</span>
+<span class="w">        </span><span class="c1"># which route requests based on PATH_INFO.</span>
 <span class="w">        </span><span class="kn">fastcgi_split_path_info</span><span class="w"> </span><span class="s">^(.+?\.php)(/.*)</span>$<span class="p">;</span>
-<span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$path_info</span><span class="w"> </span><span class="nv">$fastcgi_path_info</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$path_info</span><span class="w"> </span><span class="nv">$fastcgi_path_info</span><span class="p">;</span><span class="w">    </span><span class="c1"># Save before try_files resets it</span>
 
+<span class="w">        </span><span class="c1"># Return 404 for nonexistent PHP scripts (avoids passing arbitrary</span>
+<span class="w">        </span><span class="c1"># paths to PHP-FPM, which is a known security risk).</span>
 <span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$fastcgi_script_name</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
 
 <span class="w">        </span><span class="kn">include</span><span class="w"> </span><span class="s">fastcgi_params</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">SCRIPT_FILENAME</span><span class="w"> </span><span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">PATH_INFO</span><span class="w"> </span><span class="nv">$path_info</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">HTTPS</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
-
-<span class="w">        </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">modHeadersAvailable</span><span class="w"> </span><span class="s">true</span><span class="p">;</span><span class="w">         </span><span class="c1"># Avoid sending the security headers twice</span>
-<span class="w">        </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">front_controller_active</span><span class="w"> </span><span class="s">true</span><span class="p">;</span><span class="w">     </span><span class="c1"># Enable pretty urls</span>
 <span class="w">        </span><span class="kn">fastcgi_pass</span><span class="w"> </span><span class="s">php-handler</span><span class="p">;</span>
 
-<span class="w">        </span><span class="kn">fastcgi_intercept_errors</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">fastcgi_request_buffering</span><span class="w"> </span><span class="no">on</span><span class="p">;</span><span class="w">                   </span><span class="c1"># Required as PHP-FPM does not support chunked transfer encoding and requires a valid ContentLength header.</span>
+<span class="w">        </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">SCRIPT_FILENAME</span><span class="w">            </span><span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">PATH_INFO</span><span class="w">                  </span><span class="nv">$path_info</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">HTTPS</span><span class="w">                      </span><span class="no">on</span><span class="p">;</span><span class="w">       </span><span class="c1"># Assumes TLS terminates here</span>
+<span class="w">        </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">modHeadersAvailable</span><span class="w">        </span><span class="s">true</span><span class="p">;</span><span class="w">     </span><span class="c1"># Avoid duplicate security headers</span>
+<span class="w">        </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">front_controller_active</span><span class="w">    </span><span class="s">true</span><span class="p">;</span><span class="w">     </span><span class="c1"># Enable pretty URLs</span>
 
-<span class="w">        </span><span class="c1"># PHP-FPM 504 response timeouts</span>
-<span class="w">        </span><span class="c1"># Uncomment and increase these if facing timeout errors during large file uploads</span>
+<span class="w">        </span><span class="c1"># Let nginx handle HTTP error responses from PHP-FPM (e.g. custom</span>
+<span class="w">        </span><span class="c1"># error pages). Disable for debugging if PHP errors are being hidden.</span>
+<span class="w">        </span><span class="kn">fastcgi_intercept_errors</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1"># Required for uploads: PHP-FPM does not support chunked</span>
+<span class="w">        </span><span class="c1"># transfer encoding and needs a Content-Length header.</span>
+<span class="w">        </span><span class="kn">fastcgi_request_buffering</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1"># Optional PHP-FPM timeout tuning (e.g. for 504 response timeouts).</span>
+<span class="w">        </span><span class="c1"># Increase these only if uploads or long-running PHP requests are</span>
+<span class="w">        </span><span class="c1"># timing out in your environment.</span>
 <span class="w">        </span><span class="c1">#fastcgi_read_timeout 60s;</span>
 <span class="w">        </span><span class="c1">#fastcgi_send_timeout 60s;</span>
 <span class="w">        </span><span class="c1">#fastcgi_connect_timeout 60s;</span>
 
+<span class="w">        </span><span class="c1"># Disable on-disk buffering of FastCGI responses (reduces disk I/O at</span>
+<span class="w">        </span><span class="c1"># the cost of holding responses in memory).</span>
 <span class="w">        </span><span class="kn">fastcgi_max_temp_file_size</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -436,9 +485,12 @@ The configuration differs from the “Nextcloud in webroot” configuration abov
 <li><p>The blocks that handle requests for paths outside of <code class="docutils literal notranslate"><span class="pre">/nextcloud</span></code> (i.e. <code class="docutils literal notranslate"><span class="pre">/robots.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">/.well-known</span></code>) are pulled out of the <code class="docutils literal notranslate"><span class="pre">location</span> <span class="pre">^~</span> <span class="pre">/nextcloud</span></code> block.</p></li>
 <li><p>The block which handles <cite>/.well-known</cite> doesn’t need a regex exception, since the rule which prevents users from accessing hidden folders at the root of the Nextcloud installation no longer matches that path.</p></li>
 </ul>
-<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="c1"># Version 2025-07-23</span>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nextcloud nginx configuration — subdirectory installation (/nextcloud)</span>
+<span class="c1"># Version 2026-03-26</span>
 
+<span class="c1"># PHP-FPM backend.</span>
 <span class="k">upstream</span><span class="w"> </span><span class="s">php-handler</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># Use one of the options below, not both:</span>
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">#server unix:/run/php/php8.2-fpm.sock;</span>
 <span class="p">}</span>
@@ -490,7 +542,8 @@ The configuration differs from the “Nextcloud in webroot” configuration abov
 <span class="w">    </span><span class="kn">include</span><span class="w"> </span><span class="s">mime.types</span><span class="p">;</span>
 <span class="w">    </span><span class="kn">types</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kn">text/javascript</span><span class="w"> </span><span class="s">mjs</span><span class="p">;</span>
-<span class="w">	</span><span class="kn">application/wasm</span><span class="w"> </span><span class="s">wasm</span><span class="p">;</span>
+<span class="w">        </span><span class="c1"># uncomment below for Nginx &lt;= 1.21.0 </span>
+<span class="w">        </span><span class="c1"># application/wasm wasm;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">/robots.txt</span><span class="w"> </span><span class="p">{</span>
@@ -585,37 +638,70 @@ The configuration differs from the “Nextcloud in webroot” configuration abov
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/)</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/nextcloud/(?:\.|autotest|occ|issue|indie|db_|console)</span><span class="w">                  </span><span class="p">{</span><span class="w"> </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">        </span><span class="c1"># Ensure this block, which passes PHP files to the PHP process, is above the blocks</span>
-<span class="w">        </span><span class="c1"># which handle static assets (as seen below). If this block is not declared first,</span>
-<span class="w">        </span><span class="c1"># then Nginx will encounter an infinite rewriting loop when it prepends</span>
-<span class="w">        </span><span class="c1"># `/nextcloud/index.php` to the URI, resulting in a HTTP 500 error response.</span>
+<span class="w">        </span><span class="c1"># Pass PHP requests to PHP-FPM.</span>
+<span class="w">        </span><span class="c1">#</span>
+<span class="w">        </span><span class="c1"># Important: this block must appear above the static asset locations</span>
+<span class="w">        </span><span class="c1"># below. Those locations fall back to `/nextcloud/index.php$request_uri`;</span>
+<span class="w">        </span><span class="c1"># if they appear first, nginx can repeatedly rewrite to</span>
+<span class="w">        </span><span class="c1"># `/nextcloud/index.php`, causing an internal redirection loop.</span>
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.php(?:$|/)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1"># Required for legacy support</span>
-<span class="w">            </span><span class="kn">rewrite</span><span class="w"> </span><span class="s">^/nextcloud/(?!index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+|.+\/richdocumentscode(_arm64)?\/proxy)</span><span class="w"> </span><span class="s">/nextcloud/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
+<span class="w">            </span><span class="c1"># Rewrite most PHP requests to Nextcloud&#39;s front controller</span>
+<span class="w">            </span><span class="c1"># (`/nextcloud/index.php`).</span>
+<span class="w">            </span><span class="c1">#</span>
+<span class="w">            </span><span class="c1"># (Mirrors the rewrite exceptions in Nextcloud&#39;s Apache .htaccess.)</span>
+<span class="w">            </span><span class="c1">#</span>
+<span class="w">            </span><span class="c1"># Exceptions (not rewritten; must remain directly reachable):</span>
+<span class="w">            </span><span class="c1">#   index.php, remote.php, public.php, cron.php, status.php</span>
+<span class="w">            </span><span class="c1">#   ocs/v1.php, ocs/v2.php, ocs-provider/*</span>
+<span class="w">            </span><span class="c1">#   core/ajax/update.php, updater/*</span>
+<span class="w">            </span><span class="c1">#   */richdocumentscode(_arm64)?/proxy</span>
+<span class="w">            </span><span class="c1">#</span>
+<span class="w">            </span><span class="c1"># Other exceptions (e.g. /.well-known) are handled by dedicated</span>
+<span class="w">            </span><span class="c1"># location blocks elsewhere in this config.</span>
+<span class="w">            </span><span class="c1">#</span>
+<span class="w">            </span><span class="c1"># Caution: small edits to this regex can break routing or introduce</span>
+<span class="w">            </span><span class="c1"># rewrite loops.</span>
+<span class="w">            </span><span class="kn">rewrite</span><span class="w"> </span><span class="s">^/nextcloud/(?!index|remote|public|cron|status|ocs\/v[12]|ocs-provider\/.+|core\/ajax\/update|updater\/.+|.+\/richdocumentscode(_arm64)?\/proxy)</span><span class="w"> </span><span class="s">/nextcloud/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
 
+<span class="w">            </span><span class="c1"># Split `/file.php/path/info` into:</span>
+<span class="w">            </span><span class="c1"># - $fastcgi_script_name: `/file.php`</span>
+<span class="w">            </span><span class="c1"># - $fastcgi_path_info:   `/path/info`</span>
+<span class="w">            </span><span class="c1">#</span>
+<span class="w">            </span><span class="c1"># This is required for entry-points such as `remote.php` and `public.php`,</span>
+<span class="w">            </span><span class="c1"># which route requests based on PATH_INFO.</span>
 <span class="w">            </span><span class="kn">fastcgi_split_path_info</span><span class="w"> </span><span class="s">^(.+?\.php)(/.*)</span>$<span class="p">;</span>
-<span class="w">            </span><span class="kn">set</span><span class="w"> </span><span class="nv">$path_info</span><span class="w"> </span><span class="nv">$fastcgi_path_info</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">set</span><span class="w"> </span><span class="nv">$path_info</span><span class="w"> </span><span class="nv">$fastcgi_path_info</span><span class="p">;</span><span class="w">    </span><span class="c1"># Save before try_files resets it</span>
 
+<span class="w">            </span><span class="c1"># Return 404 for nonexistent PHP scripts (avoids passing arbitrary</span>
+<span class="w">            </span><span class="c1"># paths to PHP-FPM, which is a known security risk).</span>
 <span class="w">            </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$fastcgi_script_name</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
 
 <span class="w">            </span><span class="kn">include</span><span class="w"> </span><span class="s">fastcgi_params</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">SCRIPT_FILENAME</span><span class="w"> </span><span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">PATH_INFO</span><span class="w"> </span><span class="nv">$path_info</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">HTTPS</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
-
-<span class="w">            </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">modHeadersAvailable</span><span class="w"> </span><span class="s">true</span><span class="p">;</span><span class="w">         </span><span class="c1"># Avoid sending the security headers twice</span>
-<span class="w">            </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">front_controller_active</span><span class="w"> </span><span class="s">true</span><span class="p">;</span><span class="w">     </span><span class="c1"># Enable pretty urls</span>
 <span class="w">            </span><span class="kn">fastcgi_pass</span><span class="w"> </span><span class="s">php-handler</span><span class="p">;</span>
 
-<span class="w">            </span><span class="kn">fastcgi_intercept_errors</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">fastcgi_request_buffering</span><span class="w"> </span><span class="no">on</span><span class="p">;</span><span class="w">                   </span><span class="c1"># Required as PHP-FPM does not support chunked transfer encoding and requires a valid ContentLength header.</span>
+<span class="w">            </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">SCRIPT_FILENAME</span><span class="w">            </span><span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">PATH_INFO</span><span class="w">                  </span><span class="nv">$path_info</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">HTTPS</span><span class="w">                      </span><span class="no">on</span><span class="p">;</span><span class="w">       </span><span class="c1"># Assumes TLS terminates here</span>
+<span class="w">            </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">modHeadersAvailable</span><span class="w">        </span><span class="s">true</span><span class="p">;</span><span class="w">     </span><span class="c1"># Avoid duplicate security headers</span>
+<span class="w">            </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">front_controller_active</span><span class="w">    </span><span class="s">true</span><span class="p">;</span><span class="w">     </span><span class="c1"># Enable pretty URLs</span>
 
-<span class="w">            </span><span class="c1"># PHP-FPM 504 response timeouts</span>
-<span class="w">            </span><span class="c1"># Uncomment and increase these if facing timeout errors during large file uploads</span>
+<span class="w">            </span><span class="c1"># Let nginx handle HTTP error responses from PHP-FPM (e.g. custom</span>
+<span class="w">            </span><span class="c1"># error pages). Disable for debugging if PHP errors are being hidden.</span>
+<span class="w">            </span><span class="kn">fastcgi_intercept_errors</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+
+<span class="w">            </span><span class="c1"># Required for uploads: PHP-FPM does not support chunked</span>
+<span class="w">            </span><span class="c1"># transfer encoding and needs a Content-Length header.</span>
+<span class="w">            </span><span class="kn">fastcgi_request_buffering</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+
+<span class="w">            </span><span class="c1"># Optional PHP-FPM timeout tuning (e.g. for 504 response timeouts).</span>
+<span class="w">            </span><span class="c1"># Increase these only if uploads or long-running PHP requests are</span>
+<span class="w">            </span><span class="c1"># timing out in your environment.</span>
 <span class="w">            </span><span class="c1">#fastcgi_read_timeout 60s;</span>
 <span class="w">            </span><span class="c1">#fastcgi_send_timeout 60s;</span>
 <span class="w">            </span><span class="c1">#fastcgi_connect_timeout 60s;</span>
 
+<span class="w">            </span><span class="c1"># Disable on-disk buffering of FastCGI responses (reduces disk I/O at</span>
+<span class="w">            </span><span class="c1"># the cost of holding responses in memory).</span>
 <span class="w">            </span><span class="kn">fastcgi_max_temp_file_size</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 
@@ -753,11 +839,16 @@ chown<span class="w"> </span>root:nginx<span class="w"> </span>/var/lib/php/opca
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-admin">
       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-admin" class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -780,6 +871,14 @@ chown<span class="w"> </span>root:nginx<span class="w"> </span>/var/lib/php/opca
         </dd>
         
         <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/admin_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
@@ -787,17 +886,20 @@ chown<span class="w"> </span>root:nginx<span class="w"> </span>/var/lib/php/opca
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/31/admin_manual"
-             
-          >
-            31
-          </a>
-        </dd>
-        
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

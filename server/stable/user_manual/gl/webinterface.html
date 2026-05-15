@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A interface web de Nextcloud &mdash; Documentación Nextcloud latest User Manual latest</title>
+  <title>The Nextcloud web interface &mdash; Documentación Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,7 +31,7 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Busca" href="search.html" />
-    <link rel="next" title="Ficheiros e sincronización" href="files/index.html" />
+    <link rel="next" title="Using the Activity app" href="activity.html" />
     <link rel="prev" title="Introdución ao manual de usuario de Nextcloud «latest»" href="index.html" />
    
   
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,21 +72,24 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Introdución ao manual de usuario de Nextcloud «latest»</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">A interface web de Nextcloud</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Nextcloud web interface</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#web-browser-requirements">Requisitos do navegador web</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#navigating-the-main-user-interface">Navegar pola interface principal do usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-dashboard">The Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#navigating-the-interface">Navigating the interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#settings-and-profile">Settings and profile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#unified-search">Unified search</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="activity.html">Using the Activity app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files/index.html">Ficheiros e sincronización</a></li>
 <li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Software de traballo en grupo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="talk/index.html">Parladoiro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Clientes de escritorio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Axustar as súas preferencias</a></li>
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Acceso universal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_2fa.html">Usar o segundo factor de autenticación</a></li>
 <li class="toctree-l1"><a class="reference internal" href="session_management.html">Xestionar os navegadores conectados e os dispositivos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">Almacenamento externo</a></li>
 </ul>
 
         </div>
@@ -94,7 +106,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="contents.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">A interface web de Nextcloud</li>
+      <li class="breadcrumb-item active">The Nextcloud web interface</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/webinterface.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -105,84 +117,79 @@
            <div itemprop="articleBody">
              
   <section id="the-nextcloud-web-interface">
-<h1>A interface web de Nextcloud<a class="headerlink" href="#the-nextcloud-web-interface" title="Ligazón a este título"></a></h1>
-<p>Pode conectarse ao seu servidor de Nextcloud mediante calquera navegador web. Abonda con apuntar ao URL do servidor de Nextcloud (p. ex. cloud.example.com) e introducir o seu nome de usuario e contrasinal:</p>
+<h1>The Nextcloud web interface<a class="headerlink" href="#the-nextcloud-web-interface" title="Ligazón a este título"></a></h1>
+<p>Open your Nextcloud server’s URL in any web browser and log in with your account name (or email address) and password:</p>
 <figure class="align-default">
 <img alt="Pantalla de acceso de Nextcloud." src="../_images/login_page.png" />
 </figure>
+<p>You can also log in using a passkey or hardware security key by clicking <strong>Log in with a device</strong>.</p>
 <section id="web-browser-requirements">
 <h2>Requisitos do navegador web<a class="headerlink" href="#web-browser-requirements" title="Ligazón a este título"></a></h2>
-<p>Para obter a mellor experiencia coa interface web de Nextcloud, recomendamoslle que use a versión máis recente e compatíbel dun navegador desta lista:</p>
+<p>For the best experience, use the latest version of one of these browsers:</p>
 <ul class="simple">
-<li><p>Google <strong>Chrome</strong>/Chromium (Escritorio e Android)</p></li>
-<li><p>Mozilla <strong>Firefox</strong> (Escritorio e Android)</p></li>
-<li><p>Apple <strong>Safari</strong> (Escritorio e iOS)</p></li>
+<li><p>Google <strong>Chrome</strong> / Chromium</p></li>
+<li><p>Mozilla <strong>Firefox</strong></p></li>
+<li><p>Apple <strong>Safari</strong></p></li>
 <li><p>Microsoft <strong>Edge</strong></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Non todas as versións son compatíbeis. Nextcloud está probado e construído para funcionar <a class="reference external" href="https://browserslist.dev/?q=PjAuMjUlLCBub3Qgb3BfbWluaSBhbGwsIG5vdCBkZWFkLCBGaXJlZm94IEVTUg==">só con estas versións.</a></p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Se quere utilizar o Parladoiro de Nextcloud, ten que executar Mozilla <strong>Firefox</strong> 52+ ou Google <strong>Chrome</strong>/Chromium 49+ para ter unha experiencia satisfactoria coas videochamadas e as pantallas compartidas.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Advertencia</p>
-<p><strong>Internet Explorer</strong> de Microsoft <strong>NON</strong> é compatíbel.</p>
+<p>Not all versions are supported. Nextcloud targets <a class="reference external" href="https://browserslist.dev/?q=PjAuMjUlLCBub3Qgb3BfbWluaSBhbGwsIG5vdCBkZWFkLCBGaXJlZm94IEVTUg==">browsers meeting the minimum usage threshold</a>.</p>
 </div>
 </section>
-<section id="navigating-the-main-user-interface">
-<h2>Navegar pola interface principal do usuario<a class="headerlink" href="#navigating-the-main-user-interface" title="Ligazón a este título"></a></h2>
-<p>De xeito predeterminado, a interface web de Nextcloud ábrese no seu Taboleiro ou na páxina Ficheiros:</p>
+<section id="the-dashboard">
+<h2>The Dashboard<a class="headerlink" href="#the-dashboard" title="Ligazón a este título"></a></h2>
+<p>After logging in, Nextcloud opens the <strong>Dashboard</strong> — a customisable overview of your most important activity: upcoming calendar events, unread messages, recent files, and more.</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../_images/files_page.png"><img alt="A vista principal de Ficheiros." src="../_images/files_page.png" style="width: 750.0px; height: 365.25px;" />
-</a>
+<img alt="The Nextcloud Dashboard showing a personalised greeting and widgets." src="../_images/webinterface_dashboard.png" />
 </figure>
-<p>En Ficheiros pode engadir, retirar e compartir ficheiros, a administración do servidor pode cambiar os privilexios de acceso.</p>
-<p>A interface de usuario de Nextcloud contén os seguintes campos e funcións:</p>
+<p>Use the <strong>Customise</strong> button at the bottom of the page to add, remove, or rearrange widgets to suit your workflow.</p>
+</section>
+<section id="navigating-the-interface">
+<h2>Navigating the interface<a class="headerlink" href="#navigating-the-interface" title="Ligazón a este título"></a></h2>
+<p>The navigation bar at the top of every page is your main access point:</p>
+<figure class="align-default">
+<img alt="The Nextcloud navigation bar with the logo, app shortcuts, and action icons." src="../_images/webinterface_nav.png" />
+</figure>
 <ul class="simple">
-<li><p><strong>Menú de selección de aplicacións</strong> (1): situado no canto superior esquerdo, atopará todas as aplicacións que están dispoñíbeis na súa instancia de Nextcloud. Se preme nunha icona de aplicación redirixirao á aplicación.</p></li>
-<li><p>O campo <strong>Información sobre as aplicacións</strong> (2): situado na barra lateral esquerda, fornece filtros e tarefas asociadas á aplicación seleccionada. Por exemplo, cando está a usar a aplicación Ficheiros ten un conxunto especial de filtros para atopar rapidamente os seus ficheiros, como os ficheiros que se compartiron con vostede e os ficheiros que compartiu vostede con outros. Verá diferentes elementos para outras aplicacións.</p></li>
-<li><p><strong>Vista da aplicación</strong> (3): o campo central principal da interface de usuario de Nextcloud. Este campo amosa o contido ou as características de usuario da aplicación seleccionada.</p></li>
-<li><p><strong>Barra de navegación</strong> (4): situada na xanela de vista principal (a vista da aplicación), esta barra fornece un tipo de navegación de ronsel que permite migrar a niveis máis altos da xerarquía de cartafoles ata o nivel raíz (home).</p></li>
-<li><p>Botón <strong>Novo</strong> (5): situado na barra de navegación, o botón <code class="docutils literal notranslate"><span class="pre">Novo</span></code> permite crear novos ficheiros, novos cartafoles ou enviar ficheiros.</p></li>
+<li><p>The <strong>Nextcloud logo</strong> (top left) takes you back to the Dashboard.</p></li>
+<li><p><strong>App shortcuts</strong> are shown next to the logo — click any icon to switch to that app (Files, Calendar, Talk, and so on).</p></li>
+<li><p>The <strong>search icon</strong> on the right opens <a class="reference internal" href="#id1"><span class="std std-ref">unified search</span></a>, which searches across all your apps at once.</p></li>
+<li><p>The <strong>bell icon</strong> shows your notifications.</p></li>
+<li><p>The <strong>contacts icon</strong> lets you quickly look up and contact other users on your server.</p></li>
+<li><p>Your <strong>profile picture</strong> (far right) opens the settings menu.</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Tamén pode arrastrar e soltar ficheiros desde o xestor de ficheiros na vista da aplicación de Ficheiros para envialos á súa instancia.</p>
-</div>
+<p>Each app also has its own <strong>left sidebar</strong> with filters and actions specific to that app.</p>
+</section>
+<section id="settings-and-profile">
+<h2>Settings and profile<a class="headerlink" href="#settings-and-profile" title="Ligazón a este título"></a></h2>
+<p>Click your profile picture to access your account options:</p>
+<figure class="align-default">
+<img alt="The profile menu showing options for settings, status, appearance, and logging out." src="../_images/webinterface_profile_menu.png" />
+</figure>
+<p>From this menu you can:</p>
 <ul class="simple">
-<li><p><strong>Search</strong> field (6): Click on the Magnifier in the upper right corner
-to perform a <a class="reference internal" href="#id1"><span class="std std-ref">unified search</span></a> across your Nextcloud
-or search for entries within the current app.</p></li>
-<li><p><strong>Menú de Contactos</strong> (7): ofrécelle unha vista xeral dos seus contactos e usuarios no seu servidor. Dependendo dos detalles e das aplicacións dispoñíbeis, pode iniciar directamente unha videochamada con eles ou enviar correos electrónicos.</p></li>
-<li><p>O botón <strong>Ver como grella</strong> (8): Semella catro pequenos cadrados que alternan a vista de grade para cartafoles e ficheiros.</p></li>
-<li><p><strong>Menú de Axustes</strong> (9): prema na súa imaxe de perfil, situada á dereita do campo Buscar, no menú despregábel abra os Axustes. A súa páxina de Axustes fornece as seguintes configuracións e características:</p>
-<ul>
-<li><p>Ligazóns para descargar aplicacións de escritorio e móbil</p></li>
-<li><p>Uso do servidor e dispoñibilidade de espazo</p></li>
-<li><p>Xestión de contrasinais</p></li>
-<li><p>Axustes do nome, correo e imaxe de perfil</p></li>
-<li><p>Xestionar os navegadores conectados e os dispositivos</p></li>
-<li><p>Pertenza a grupo</p></li>
-<li><p>Axustes do idioma da interface</p></li>
-<li><p>Xestionar notificacións</p></li>
-<li><p>ID de nube federada e botóns para compartir redes sociais</p></li>
-<li><p>Xestor de certificados SSL/TLS para almacenamentos externos</p></li>
-<li><p>Os seus axustes de dous factores</p></li>
-<li><p>Información da versión de Nextcloud</p></li>
+<li><p>View and edit your profile</p></li>
+<li><p>Set your online status</p></li>
+<li><p>Change appearance and accessibility settings</p></li>
+<li><p>Open your personal <a class="reference internal" href="userpreferences.html"><span class="doc">Settings</span></a> page</p></li>
+<li><p>Access help and privacy information</p></li>
+<li><p>Log out</p></li>
 </ul>
-</li>
-</ul>
-<p>Consulte a sección <a class="reference internal" href="userpreferences.html"><span class="doc">Axustar as súas preferencias</span></a> para obter máis información sobre estes axustes.</p>
 </section>
 <section id="unified-search">
 <h2>Unified search<a class="headerlink" href="#unified-search" title="Ligazón a este título"></a></h2>
-<p id="id1">Nextcloud’s unified search combines results from all your installed apps
-(Files, Mail, Contacts, Calendar, etc.) into a single view. Click the search
-magnifier in the header, type your search term, and results appear grouped
-by app.</p>
+<p id="id1">Click the search icon in the navigation bar (or press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">F</kbd></kbd>) to open the unified search modal:</p>
+<figure class="align-default">
+<img alt="The unified search modal with Places, Date, and People filters." src="../_images/webinterface_search.png" />
+</figure>
+<p>Unified search looks across all your installed apps — files, calendar events, messages, contacts, and more — at once. Results are grouped by app so you can quickly see where a match was found.</p>
+<p>Use the filter chips to narrow results:</p>
+<ul class="simple">
+<li><p><strong>Places</strong> — limit the search to a specific app, such as Files or Calendar.</p></li>
+<li><p><strong>Date</strong> — filter by time period (today, last 7 days, last 30 days, this year, or a custom range).</p></li>
+<li><p><strong>People</strong> — show only results related to a specific person.</p></li>
+</ul>
 </section>
 </section>
 
@@ -191,7 +198,7 @@ by app.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Introdución ao manual de usuario de Nextcloud «latest»" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="files/index.html" class="btn btn-neutral float-right" title="Ficheiros e sincronización" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="activity.html" class="btn btn-neutral float-right" title="Using the Activity app" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -295,16 +302,25 @@ by app.</p>
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 Galician
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Idiomas</dt>
         
@@ -479,6 +495,22 @@ by app.</p>
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -647,6 +679,14 @@ by app.</p>
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -654,31 +694,20 @@ by app.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Descargas</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>En «Lea os documentos»</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Inicio do proxecto</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Compilacións</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

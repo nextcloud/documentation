@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>تشفير ملفاتك على خادوم نكست كلاود &mdash; Nextcloud latest User Manual latest documentation</title>
+  <title>Using server-side encryption &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -32,7 +32,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="بحث" href="../search.html" />
     <link rel="next" title="Using end-to-end encryption" href="using_e2ee.html" />
-    <link rel="prev" title="المُزامَنة مع سطح المكتب و الهواتف" href="desktop_mobile_sync.html" />
+    <link rel="prev" title="Security &amp; encryption" href="security.html" />
    
   
 </head>
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,52 +72,33 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">نكست كلاود nextcloud الإصدار latest دليل المستخدم - المُقدِّمة</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">واجهة وب نكست كلاود The Nextcloud Web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">الملفات &amp; التزامن</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">الوصول إلى ملفاتك باستخدام واجهة ويب نكست كلاود</a></li>
-<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">الوصول إلى ملفات نكست كلاود باستعمال WebDAV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">إدارة الملفات المحذوفة</a></li>
-<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">المُزامَنة مع سطح المكتب و الهواتف</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">تشفير ملفاتك على خادوم نكست كلاود</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#encryption-faq">الأسئلة الشائعة حول التشفير</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#how-can-encryption-be-disabled">كيف يمكن تعطيل التشفير؟</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#is-it-possible-to-disable-encryption-with-the-recovery-key">هل من الممكن تعطيل التشفير باستخدام مفتاح الاسترداد  recovery key؟</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#can-encryption-be-disabled-without-the-user-s-password">هل يمكن تعطيل التشفير بدون كلمة مرور المستخدم؟</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">هل من المخطط نقل هذا إلى تسجيل دخول المستخدم التالي أو وظيفة الخلفية؟</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#is-group-sharing-possible-with-the-recovery-key">هل مشاركة المجموعة ممكنة باستخدام مفتاح الاسترداد؟</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="security.html">Security &amp; encryption</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using server-side encryption</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#encryption-faq">الأسئلة الشائعة حول التشفير</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-encryption">استعمال التشفير</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-encrypted-files">مشاركة الملفات المشفرة</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#files-not-encrypted">الملفات غير مشفر</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#using-encryption">استعمال التشفير</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sharing-encrypted-files">مشاركة الملفات المشفرة</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#recovery-key-password">كلمة مرور مفاتيح الاسترداد</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#files-not-encrypted">الملفات غير مشفر</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#change-private-key-password">قم بتغيير كلمة مرور المفتاح الخاص private key password</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html">مشاركة الملفات</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">مشاركات اتحادية</a></li>
-<li class="toctree-l2"><a class="reference internal" href="file_drop.html">تمكين عمليات رفع مجهولة</a></li>
-<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">رفع ملفات كبيرة</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quota.html">الحصة التخزينية Storage quota</a></li>
-<li class="toctree-l2"><a class="reference internal" href="version_control.html">إدارة النُّسَخ Version Control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projects.html">المشاريع Projects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">نقل المِلْكِيَّة</a></li>
-<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">إستعمال المشاركات الاتحادية Federated Shares</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">أدوات العمل التعاوني Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">&quot;المحادثة&quot; Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">تعيين تفضيلاتك</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">&quot;الوصول للجميع&quot; universal access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">استخدام التحقُّق المُثنَّى من الهُوِيَّة  two-factor authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">إدارة المتصفحات والأجهزة المتصلة</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">التخزين الخارجي</a></li>
 </ul>
 
         </div>
@@ -126,7 +116,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">الملفات &amp; التزامن</a></li>
-      <li class="breadcrumb-item active">تشفير ملفاتك على خادوم نكست كلاود</li>
+          <li class="breadcrumb-item"><a href="security.html">Security &amp; encryption</a></li>
+      <li class="breadcrumb-item active">Using server-side encryption</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -136,9 +127,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="encrypting-your-nextcloud-files-on-the-server">
-<h1>تشفير ملفاتك على خادوم نكست كلاود<a class="headerlink" href="#encrypting-your-nextcloud-files-on-the-server" title="Link to this heading"></a></h1>
-<p>يتضمن نكست كلاود تطبيق التشفير من جانب الخادوم server side Encryption app. و عندما يتم تمكينه بواسطة مشرف النظام عندك، يتم تشفير جميع ملفات بيانات نكست كلاود تلقائيًا على الخادوم. يتم التشفير على مستوى الخادوم. لذلك عند تمكينه لا يمكنك اختيار الاحتفاظ بملفاتك غير مُشفّرة. ليس عليك القيام بأي شيء خاص؛ لأن النظام يستخدم كلمة مرورك للدخول إلى نكست كلاود ككلمة مرور لمفتاح التشفير الخاص الفريد الخاص بك. ما عليك سوى تسجيل الخروج و الدخول و إدارة ملفاتك و مشاركتها كما تفعل عادةً. و سيظل بإمكانك تغيير كلمة مرورك وقتما تشاء.</p>
+  <section id="using-server-side-encryption">
+<h1>Using server-side encryption<a class="headerlink" href="#using-server-side-encryption" title="Link to this heading"></a></h1>
+<p>Nextcloud includes a server-side encryption app, and when it is enabled by
+your Nextcloud administrator all of your Nextcloud data files are automatically
+encrypted on the server.
+Encryption is server-wide, so when it is enabled you cannot choose to keep your
+files unencrypted. You don't have to do anything special, as it uses your
+Nextcloud login as the password for your unique private encryption key. Just log
+out and in and manage and share your files as you normally do, and you can
+still change your password whenever you want.</p>
 <p>الغرض الرئيسي منه هو تشفير الملفات على وحدات التخزين القصيّة remote المتصلة بخادوم نكست كلاود خاصتك. يمكنك مشاركة ملفاتك القصيّة من خلال نكست كلاود بالطريقة المعتادة؛ ولكن لا يمكنك مشاركة ملفاتك المشفرة مباشرة من الخدمة القصيّة التي تستخدمها؛ لأن مفاتيح التشفير مخزنة على خادوم نكست كلاود خاصّتك و لا يتم إظهارها أبدًا لمقدمي الخدمة الخارجيين.</p>
 <p>If your Nextcloud server is not connected to any remote storage services, then
 it is better to use some other form of encryption such as file-level or whole
@@ -151,25 +149,22 @@ to learn more.)</p>
 <h2>الأسئلة الشائعة حول التشفير<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
 <section id="how-can-encryption-be-disabled">
 <h3>كيف يمكن تعطيل التشفير؟<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
-<p>The only way to disable encryption is to run the <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/occ_command.html#encryption-label">&quot;decrypt all&quot;</a>
-script, which decrypts all files and disables encryption.</p>
+<p>الطريقة الوحيدة لتعطيل التشفير هي تشغيل الأمر السطري: &quot;decrypt all&quot; &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label</a>&gt;`_، والذي يقوم بفك تشفير جميع الملفات وتعطيل التشفير.</p>
 </section>
 <section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
 <h3>هل من الممكن تعطيل التشفير باستخدام مفتاح الاسترداد  recovery key؟<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
-<p>Yes, <em>if</em> every user uses the <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">file recovery key</a>, <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/occ_command.html#encryption-label">&quot;decrypt all&quot;</a> will use it to decrypt all files.</p>
+<p>نعم، <em>إذا</em> استخدم كل مستخدم مفتاح استرداد الملف file recovery keyـ  &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys</a>&gt;`_،  &quot;decrypt all&quot; &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label</a>&gt;`_ فسوف يستخدمه لفك تشفير جميع الملفات.</p>
 </section>
 <section id="can-encryption-be-disabled-without-the-user-s-password">
 <h3>هل يمكن تعطيل التشفير بدون كلمة مرور المستخدم؟<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
-<p>If you don't have the users password or <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">file recovery key</a>,
-then there is no way to decrypt all files. What's more, running it on login
-would be dangerous, because you would most likely run into timeouts.</p>
+<p>إذا لم يكن لديك كلمة مرور المستخدمين أو <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">مفتاح استرداد الملف file recovery key ـ</a>، فلا توجد طريقة لفك تشفير جميع الملفات. علاوة على ذلك، فإن تشغيله عند تسجيل الدخول سيكون أمراً خطيراً، لأنه من المرجح استنفاد المهل الزمنية.</p>
 </section>
 <section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
 <h3>هل من المخطط نقل هذا إلى تسجيل دخول المستخدم التالي أو وظيفة الخلفية؟<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
 <p>إذا فعلنا ذلك، فسنحتاج إلى تخزين كلمة المرور لتسجيل دخولك في قاعدة البيانات. قد يُنظر إلى هذا على أنه مشكلة أمنية؛ لذلك لم يتم التخطيط لأي شيء من هذا القبيل.</p>
 </section>
 <section id="is-group-sharing-possible-with-the-recovery-key">
-<h3>هل مشاركة المجموعة ممكنة باستخدام مفتاح الاسترداد؟<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
+<h3>Is group sharing possible with the recovery key?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
 <p>إذا كنت تقصد إضافة مستخدمين إلى مجموعات وجعلها تعمل بطريقة سحرية؟ لا ، هذا يعمل فقط مع المفتاح الرئيسي.</p>
 </section>
 </section>
@@ -222,7 +217,7 @@ would be dangerous, because you would most likely run into timeouts.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-left" title="المُزامَنة مع سطح المكتب و الهواتف" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="security.html" class="btn btn-neutral float-left" title="Security &amp; encryption" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="using_e2ee.html" class="btn btn-neutral float-right" title="Using end-to-end encryption" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -327,16 +322,25 @@ would be dangerous, because you would most likely run into timeouts.</p>
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 Arabic
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Languages</dt>
         
@@ -511,6 +515,22 @@ would be dangerous, because you would most likely run into timeouts.</p>
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -679,6 +699,14 @@ would be dangerous, because you would most likely run into timeouts.</p>
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -686,31 +714,20 @@ would be dangerous, because you would most likely run into timeouts.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>التحميل</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>قراءة دليل الارشادات</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">الصفحة الرئيسية للمشروع</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">الملفات التنفيذية المبنية builds</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

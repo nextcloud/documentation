@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV &mdash; Dokumentace pro Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,8 +31,8 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Rejstřík" href="../genindex.html" />
     <link rel="search" title="Vyhledávání" href="../search.html" />
-    <link rel="next" title="Správa smazaných souborů" href="deleted_file_management.html" />
-    <link rel="prev" title="Přístup k souborům prostřednictvím webového rozhraní Nextcloud" href="access_webgui.html" />
+    <link rel="next" title="Synchronizace s desktopovými a mobilními platformami" href="desktop_mobile_sync.html" />
+    <link rel="prev" title="Accessing your files using the Nextcloud web interface" href="access_webgui.html" />
    
   
 </head>
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,74 +72,44 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Úvod do uživatelské příručky k Nextcloud verze latest</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Webové rozhraní Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Soubory a synchronizace</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Přístup k souborům prostřednictvím webového rozhraní Nextcloud</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Oficiální Nextcloud klienti pro desktopové a mobilní platformy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">WebDAV klienti třetích stran</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Přístup k souborům ze systému Linux</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Správce souborů Nautilus</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">Přístup k souborům z desktopového prostředí KDE (prostřednictvím správce souborů Dolphin)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="accessing.html">Accessing your files</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="access_webgui.html">Accessing your files using the Nextcloud web interface</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Oficiální Nextcloud klienti pro desktopové a mobilní platformy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#third-party-webdav-clients">WebDAV klienti třetích stran</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-linux">Přístup k souborům ze systému Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Vytváření WebDAV připojení z linuxového příkazového řádku</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-issues">Známé problémy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-macos">Přístup k souborům ze systému macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Přistupování k souborům ze systému Microsoft Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-cyberduck">Přístup k souborům pomocí nástroje Cyberduck</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-public-shares-over-webdav">Přístup k veřejným sdílením prostřednictvím WebDAV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-problems">Známé problémy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-curl">Přistupování k souborů pomocí cURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-winscp">Přístup souborům pomocí WinSCP</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Vytváření WebDAV připojení z linuxového příkazového řádku</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-issues">Známé problémy</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#problem">Problém</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution">Řešení</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Problém</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">Řešení</a></li>
+<li class="toctree-l3"><a class="reference internal" href="desktop_mobile_sync.html">Synchronizace s desktopovými a mobilními platformami</a></li>
+<li class="toctree-l3"><a class="reference internal" href="large_file_upload.html">Nahrávání velkých souborů</a></li>
+<li class="toctree-l3"><a class="reference internal" href="external_storage.html">Using external storage</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">Přístup k souborům ze systému macOS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Přistupování k souborům ze systému Microsoft Windows</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">Mapování jednotek z příkazového řádku</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">Mapování disků pomocí Průzkumníka Windows</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">Přístup k souborům pomocí nástroje Cyberduck</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">Přístup k veřejným sdílením prostřednictvím WebDAV</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-problems">Známé problémy</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id4">Problém</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution-1">Řešení</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution-2">Jiné řešení</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">Problém</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">Řešení</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">Problém</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#answer">Odpověď</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">Problém</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">Řešení</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">Problém</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">Řešení</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">Přistupování k souborů pomocí cURL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-winscp">Přístup souborům pomocí WinSCP</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Správa smazaných souborů</a></li>
-<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synchronizace s desktopovými a mobilními platformami</a></li>
-<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Šifrování souborů v Nextcloud na straně serveru</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html">Sdílení souborů</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Federovaná sdílení</a></li>
-<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Provádění anonymních nahrání</a></li>
-<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Nahrávání velkých souborů</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quota.html">Kvóta úložiště</a></li>
-<li class="toctree-l2"><a class="reference internal" href="version_control.html">Správa verzí</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projects.html">Projekty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Přenesení vlastnictví</a></li>
-<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Používání federovaných sdílení</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Software pro podporu spolupráce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Klienti pro desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Nastavení vašich předvoleb</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Zpřístupnění pro všechny</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Používání dvoufázového ověřování se</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Správa připojených prohlížečů a zařízení</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externí úložiště</a></li>
 </ul>
 
         </div>
@@ -148,6 +127,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Soubory a synchronizace</a></li>
+          <li class="breadcrumb-item"><a href="accessing.html">Accessing your files</a></li>
       <li class="breadcrumb-item active">Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -196,13 +176,19 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
-<p>Při používání WebDAV klienta třetí strany (včetně toho vestavěného ve vámi využívaném operačním systému), byste pro přihlašování měli používat heslo pro danou aplikaci, namísto hesla přímo k vašemu uživatelskému účtu v Nextcloud, toto <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">výrazně zvýší výkon</a>. Heslo pro danou aplikaci nastavíte tak, že se přihlásíte do webového rozhraní Nextcloud, kliknete na svůj zástupný obrázek v pravém horním rohu a vyberete <em>Osobní nastavení</em>. Pak v postranním panelu vlevo vyberte <em>Zabezpečení</em> a posunete až úplně dolů. Zde je možné vytvořit heslo pro danou aplikaci (platnost kterého je také možné v budoucnu odvolat aniž by bylo třeba měnit hlavní heslo uživatele.</p>
+<p>When using a third-party WebDAV client (including your operating system’s
+built-in client), you should use an application password for login rather than your
+regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log into the Nextcloud Web interface, click on your avatar
+and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
+sidebar and scroll to the very bottom. There you can create an app password (which can
+also be revoked in the future without changing your main user password).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
 <p>V následujících příkladech, je třeba nahradit <strong>example.com/nextcloud</strong> URL adresou vámi využívaného Nextcloud serveru (vynechte část se složkou, pokud je jeho instalace v kořeni domény). A <strong>UZIVATELSKEJMENO</strong> nahraďte identifikátorem připojujícího se uživatele.</p>
 <p>See the WebDAV URL, to be found in Files Settings -&gt; WebDAV in the Files on your Nextcloud account.</p>
-<img alt="Screenshot of the Files settings showing the personal WebDAV link" src="../../_images/webdav_link.png" />
+<img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
 </div>
 </section>
 <section id="accessing-files-using-linux">
@@ -220,7 +206,7 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p class="admonition-title">Poznámka</p>
 <p>Pokud připojení k vámi využívanému serveru není zabezpečené pomocí HTTPS, použitje <code class="docutils literal notranslate"><span class="pre">dav://</span></code> namísto <code class="docutils literal notranslate"><span class="pre">davs://</span></code>.</p>
 </div>
-<img alt="Snímek obrazovky s nastavováním správce souborů Nautilus pro použití WebDAV" src="../../_images/webdav_gnome3_nautilus.png" />
+<img alt="GNOME Nautilus file manager Connect to Server dialog with a Nextcloud WebDAV address entered" src="../../_images/webdav_gnome3_nautilus.png" />
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
 <p>Stejná metoda funguje i pro ostatní správce souborů, kteří používají GVFS, jako například Caja z prostředí MATE a Nemo z Cinnamon.</p>
@@ -260,6 +246,12 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 </pre></div>
 </div>
 </li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>If the davfs2 group doesn’t exist after installing the package, you may need to create it yourself and, possibly, adjust the davfs config file to use the group after you’ve created it.</p>
+</div>
+<ol class="arabic">
 <li><p>Poté ve svém domovském adresáři vytvořte adresáře <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> (bude sloužit jako přípojný bod), a <code class="docutils literal notranslate"><span class="pre">.davfs2/</span></code> (pro soubor s osobním nastavením):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">nextcloud</span>
 <span class="n">mkdir</span> <span class="o">~/.</span><span class="n">davfs2</span>
@@ -331,20 +323,16 @@ for example
 </section>
 <section id="accessing-files-using-macos">
 <h2>Přístup k souborům ze systému macOS<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Poznámka</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>Pro přístup k souborům z macOS Finder:</p>
 <ol class="arabic">
 <li><p>Z nabídky v horním liště aplikace Finder zvolte <strong>Přejít na &gt; Připojit k serveru…</strong>:</p>
-<img alt="Snímek obrazovky se zadáváním adresy vámi využívaného Nextcloud serveru na macOS" src="../../_images/osx_webdav1.png" />
+<img alt="macOS Go menu with Connect to Server option highlighted" src="../../_images/osx_webdav1.png" />
 </li>
 <li><p>Když se otevře okno <strong>Připojit k serveru…</strong>, zadejte WebDAV adresu vámi využívaného Nextcloud serveru do kolonky <strong>Adresa serveru</strong>, tj.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
 </pre></div>
 </div>
-<img alt="Snímek obrazovky: Zadání adresy Nextcloud serveru v dialogu „Připojit k serveru…“" src="../../_images/osx_webdav2.png" />
+<img alt="macOS Connect to Server dialog with a Nextcloud WebDAV URL in the Server Address field" src="../../_images/osx_webdav2.png" />
 </li>
 <li><p>Klikněte na <strong>Připojit</strong>. Vámi používaný WebDAV server by se měl objevit na Ploše jako sdílená jednotka.</p></li>
 </ol>
@@ -413,7 +401,7 @@ for example
 <p>Pro servery, chráněné pomocí SSL, zaškrtněte <strong>Znovu připojit při přihlášení se</strong>, abyste zajistili, že mapování zůstane zachováno po následných restartech počítače. Pokud se chcete k Nexcloud serveru připojit jako jiný uživatel (než kterým jste právě přihlášeni do systému), zaškrtněte <strong>Připojit se pomocí jiných přihlašovacích údajů</strong>.</p>
 </div>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Snímek obrazovky s mapováním WebDAV ve Windows Průzkumníkovi" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Windows Explorer Map Network Drive wizard with a Nextcloud WebDAV URL entered" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
 </a>
 </figure>
 </li>
@@ -467,8 +455,8 @@ for example
 </section>
 <section id="known-problems">
 <h2>Známé problémy<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
-<section id="id4">
-<h3>Problém<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>Problém<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>Windows se při použití HTTPS nepřipojují.</p>
 </section>
 <section id="solution-1">
@@ -479,37 +467,37 @@ for example
 <h3>Jiné řešení<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>Může být, že WebDAV klient ve Windows nepodporuje TSLv1.1 a TSLv1.2 spojení. Pokud je v nastavení vámi využívaného serveru omezeno poskytování pouze na TLSv1.1 a novější, spojení se serverem se může nezdařit. Další informace naleznete v dokumentaci k <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a>.</p>
 </section>
-<section id="id5">
-<h3>Problém<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>Problém<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>Obdržíte následující chybové hlášení: <strong>Chyba 0x800700DF: Velikost souboru překračuje umožněný limit a není proto možné ho uložit.</strong></p>
 </section>
-<section id="id6">
-<h3>Řešení<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>Řešení<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Systém Windows omezuje maximální velikost, jakou může mít soubor přenášený z nebo na WebDAV sdílení.  Tuto hodnotu je možné zvýšit a to úpravou v registrech, konkrétně klíče <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> v <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code>, kliknutím na <strong>Změnit</strong>.</p>
 <p>Pro zvýšení limitu na maximální hodnotu 4GB, vyberte <strong>Desítková</strong>, zadejte hodnotu <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> a restartujte počítač nebo jen systémovou službu <strong>WebClient</strong>.</p>
 </section>
-<section id="id7">
-<h3>Problém<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Problém<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Přidání WebDAV disku do Windows prostřednictvím výše popsaných kroků nezobrazí správnou velikost prostoru, dostupného na Nextcloud a namísto toho zobrazí velikost disku C: a prostor dostupný na něm.</p>
 </section>
 <section id="answer">
 <h3>Odpověď<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
 <p>Žel toto je omezení WebDAV samotného, protože neposkytuje klientovi způsob, jak získat údaj o volném místě na serveru. Windows automaticky náhradně zobrazuje velikost disku C: a prostor dostupný na něm. Takže žel tento problém nemá skutečné řešení.</p>
 </section>
-<section id="id8">
-<h3>Problém<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Problém<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>Přístup k vašim souborům z Microsoft Office prostřednictvím WebDAV se nedaří.</p>
 </section>
-<section id="id9">
-<h3>Řešení<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Řešení<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Známé problémy a jejich řešení jsou popsány ve článku <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> .</p>
 </section>
-<section id="id10">
-<h3>Problém<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>Problém<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>V systému Windows není možné namapovat jako WebDAV disk Nextcloud, na kterém je používán sám sebou podepsaný certifikát.</p>
 </section>
-<section id="id11">
-<h3>Řešení<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>Řešení<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Přistupte do vámi využívané instance Nextcloud ze svého oblíbeného webového prohlížeče.</p></li>
 <li><p>Proklikejte se až obdržíte chybu certifikátu ve stavovém řádku prohlížeče.</p></li>
@@ -631,8 +619,8 @@ for example
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Přístup k souborům prostřednictvím webového rozhraní Nextcloud" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="Správa smazaných souborů" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Accessing your files using the Nextcloud web interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-right" title="Synchronizace s desktopovými a mobilními platformami" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -736,16 +724,25 @@ for example
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 Czech
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Jazyky</dt>
         
@@ -920,6 +917,22 @@ for example
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -1088,6 +1101,14 @@ for example
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -1095,31 +1116,20 @@ for example
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Stahování</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>Na službě Read the Docs</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Domovská stránka projektu</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Sestavení</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
