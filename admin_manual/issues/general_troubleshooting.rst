@@ -355,6 +355,8 @@ Troubleshooting contacts & calendar
 .. tip::
   Please also refer to the troubleshooting article in the groupware section: :ref:`troubleshooting_groupware`.
 
+.. _troubleshooting_data_directory:
+
 Troubleshooting data-directory
 ------------------------------
 
