@@ -70,6 +70,21 @@ redirects = {
 Never edit files under `locale/`. Managed by Transifex, synced via CI.
 Source strings live in `.rst` files only.
 
+## Working on existing issues
+
+Before editing any page:
+1. **Read the full page first** — never patch blind; understand existing context, structure, and tone
+2. **Search for related content** — same topic may appear in multiple manuals or sections; check all of them for consistency
+3. **Check cross-references** — search for `:doc:` and `:ref:` links pointing to the page; related pages may need updating too
+4. **Grep for the affected term/feature** across the repo — docs often repeat concepts in different contexts
+
+```bash
+grep -r "feature_name" user_manual/ admin_manual/ developer_manual/ --include="*.rst" -l
+```
+
+5. **Verify the fix builds** — run `sphinx-lint` on edited files and `make html` on the affected manual before marking done
+6. **One issue, one PR** — don't fix unrelated problems noticed along the way; open separate issues instead
+
 ## Branch strategy
 
 - `master` = latest (currently NC34)
