@@ -142,7 +142,7 @@ State labels are mutually exclusive. Always remove the old one when applying a n
 
 | Label | When |
 |-------|------|
-| `0. Needs triage` | Newly opened, not yet assessed |
+| `0. needs triage` | Newly opened, not yet assessed |
 | `1. to develop` | Confirmed, not yet started |
 | `2. developing` | PR is a draft / in progress |
 | `3. to review` | PR is ready for review |
