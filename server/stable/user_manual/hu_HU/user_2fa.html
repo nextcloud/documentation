@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Using two-factor authentication &mdash; Nextcloud latest User Manual latest dokumentáció</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -52,9 +52,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -62,16 +71,18 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud latest user manual introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud Web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="activity.html">Using the Activity app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files/index.html">Files &amp; synchronization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Setting your preferences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Universal access</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Using two-factor authentication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Configuring two-factor authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">Recovery codes in case you lost your 2nd factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Recovery codes if you lose your second factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Logging in with two-factor authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Using two-factor authentication with hardware tokens</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Using client applications with two-factor authentication</a></li>
@@ -79,7 +90,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="session_management.html">Manage connected browsers and devices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">Külső tároló</a></li>
 </ul>
 
         </div>
@@ -116,12 +126,11 @@ password like you already have and the second can be a text message you
 receive or a code you generate on your phone or another device
 (<em>something you have</em>). Nextcloud supports a variety of 2nd factors and
 more can be added.</p>
-<p>Once a two-factor authentication app has been enabled by your administrator
-you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Setting your preferences</span></a>. Below you can
-see how.</p>
+<p>Once a two-factor authentication app has been enabled by your administrator,
+you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Setting your preferences</span></a>.</p>
 <section id="configuring-two-factor-authentication">
 <h2>Configuring two-factor authentication<a class="headerlink" href="#configuring-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>In your Personal Settings look up the Second-factor Auth setting. In this
+<p>In your personal settings, look up the <strong>Second-factor Auth</strong> setting. In this
 example this is TOTP, a Google Authenticator compatible time-based code:</p>
 <figure class="align-default">
 <img alt="TOTP configuration." src="../_images/totp_enable.png" />
@@ -131,31 +140,30 @@ on your phone (or another device). Depending on the app or tool, type in the
 code or scan the QR and your device will show a login code which changes
 every 30 seconds.</p>
 </section>
-<section id="recovery-codes-in-case-you-lost-your-2nd-factor">
-<h2>Recovery codes in case you lost your 2nd factor<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Link to this heading"></a></h2>
-<p>You should always generate backup codes for 2FA. If your 2nd factor device
-gets stolen or is not working, you will be able to use one of these codes to
-unlock your account. It effectively functions as a backup 2nd factor. To
-get the backup codes, go to your Personal Settings and look under Second-factor
-Auth settings. Choose <em>Generate backup codes</em>:</p>
+<section id="recovery-codes-if-you-lose-your-second-factor">
+<h2>Recovery codes if you lose your second factor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Link to this heading"></a></h2>
+<p>You should always generate backup codes for 2FA. If your second factor device
+gets stolen or stops working, you can use one of these codes to unlock your
+account. It effectively functions as a backup second factor. To get the backup
+codes, go to your personal settings and look under <strong>Second-factor Auth</strong>
+settings. Choose <em>Generate backup codes</em>:</p>
 <figure class="align-default">
 <img alt="2FA backup code generator" src="../_images/2fa_backupcode_1.png" />
 </figure>
-<p>You will then be presented with a list of one-time-use backup codes:</p>
+<p>You will then see a list of one-time-use backup codes:</p>
 <figure class="align-default">
 <img alt="2FA backup codes" src="../_images/2fa_backupcode_2.png" />
 </figure>
-<p>You should put these codes in a safe spot, somewhere you can find them. Don’t
-put them together with your 2nd factor like your mobile phone but make sure that
-if you lose one, you still have the other. Keeping them at home is probably
-the best thing to do.</p>
+<p>Store these codes somewhere safe where you can find them. Do not keep them
+with your second factor (such as your mobile phone), but store them separately
+so that losing one does not mean losing the other.</p>
 </section>
 <section id="logging-in-with-two-factor-authentication">
 <h2>Logging in with two-factor authentication<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>After you have logged out and need to log in again, you will see a request to
-enter the TOTP code in your browser. If you enable not only the TOTP factor
-but another one, you will see a selection screen on which you can choose
-two-factor method for this login. Select TOTP:</p>
+<p>After you log out and log in again, you will see a prompt to enter the
+TOTP code in your browser. If you have enabled more than one second factor,
+you will see a selection screen where you can choose which method to use for
+this login. Select TOTP:</p>
 <figure class="align-default">
 <img alt="Choosing a two-factor authentication method." src="../_images/totp_login_1.png" />
 </figure>
@@ -166,7 +174,7 @@ two-factor method for this login. Select TOTP:</p>
 <p>If the code was correct you will be redirected to your Nextcloud account.</p>
 <div class="admonition note">
 <p class="admonition-title">Megjegyzés</p>
-<p>Since the code is time-based, it’s important that your server’s and
+<p>Since the code is time-based, it is important that your server’s and
 your smartphone’s clock are almost in sync. A time drift of a few seconds
 won’t be a problem.</p>
 </div>
@@ -193,12 +201,12 @@ won’t be a problem.</p>
 <h2>Using client applications with two-factor authentication<a class="headerlink" href="#using-client-applications-with-two-factor-authentication" title="Link to this heading"></a></h2>
 <p>Once you have enabled 2FA, your clients will no longer be able to connect with
 just your password unless they also have support for two-factor authentication.
-To solve this, you should generate device specific passwords for them. See
+To solve this, you should generate device-specific passwords for them. See
 <a class="reference internal" href="session_management.html"><span class="doc">Manage connected browsers and devices</span></a> for more information on how to do this.</p>
 </section>
 <section id="considerations">
 <h2>Considerations<a class="headerlink" href="#considerations" title="Link to this heading"></a></h2>
-<p>If you use WebAuthn to login to your Nextcloud be sure to not use the same token for 2FA. As this
+<p>If you use WebAuthn to log in to your Nextcloud, be sure to not use the same token for 2FA, as this
 would mean you are again only using a single factor.</p>
 </section>
 </section>
@@ -312,16 +320,25 @@ would mean you are again only using a single factor.</p>
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 hu-HU
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Languages</dt>
         
@@ -494,6 +511,22 @@ would mean you are again only using a single factor.</p>
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -662,6 +695,14 @@ would mean you are again only using a single factor.</p>
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -669,31 +710,20 @@ would mean you are again only using a single factor.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Downloads</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>On Read the Docs</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Project Home</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Builds</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

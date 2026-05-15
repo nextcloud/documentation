@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OpenStack Object Storage &mdash; Nextcloud latest Administration Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -52,9 +52,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -64,7 +73,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../release_schedule.html">Maintenance and release schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gdpr/index.html">GDPR compliance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../declarations/index.html">Declarations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
@@ -92,14 +101,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../big_file_upload_configuration.html">Uploading big files &gt; 512MB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../default_files_configuration.html">Providing default files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../primary_storage.html">Configuring Object Storage as Primary Storage</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../external_storage_configuration_gui.html">Configuring External Storage (GUI)</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#enabling-external-storage-support">Enabling External Storage Support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#storage-configuration">Storage configuration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../external_storage_configuration_gui.html">External Storage</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#enabling">Enabling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#configuring">Configuring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#folder-name">Folder name</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#usage-of-variables-for-mount-paths">Usage of variables for mount paths</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#user-and-group-permissions">User and group permissions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#mount-options">Mount options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#using-self-signed-certificates">Using self-signed certificates</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../external_storage_configuration_gui.html#available-storage-backends">Available storage backends</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#user-and-group-permissions">User and Group Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#mount-options">Mount Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#using-self-signed-certificates">Using Self-Signed Certificates</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../external_storage_configuration_gui.html#available-storage-backends">Available Storage Backends</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="amazons3.html">Amazon S3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ftp.html">FTP/FTPS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="local.html">Local</a></li>
@@ -110,8 +120,9 @@
 <li class="toctree-l4"><a class="reference internal" href="webdav.html">WebDAV</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#allow-users-to-mount-external-storage">Allow users to mount external Storage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#adding-files-to-external-storages">Adding files to external storages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#allow-users-to-mount-external-storage">Allow Users to Mount External Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#adding-files-to-external-storage">Adding files to external storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#troubleshooting-file-name-encoding">Troubleshooting File Name Encoding</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="auth_mechanisms.html">External Storage authentication mechanisms</a></li>
@@ -147,6 +158,10 @@
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../collectives/index.html">Collectives</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
 <ul>
@@ -184,7 +199,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">File sharing and management</a></li>
-          <li class="breadcrumb-item"><a href="../external_storage_configuration_gui.html">Configuring External Storage (GUI)</a></li>
+          <li class="breadcrumb-item"><a href="../external_storage_configuration_gui.html">External Storage</a></li>
       <li class="breadcrumb-item active">OpenStack Object Storage</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_files/external_storage/openstack.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -229,7 +244,7 @@ your account information, and you can read about Rackspace regions at
 <a class="reference external" href="https://support.rackspace.com/how-to/about-regions/">About Regions</a>.</p>
 <p>The timeout of HTTP requests is set in the <strong>Request timeout</strong> field, in
 seconds.</p>
-<p>See <a class="reference internal" href="../external_storage_configuration_gui.html"><span class="doc">Configuring External Storage (GUI)</span></a> for additional mount
+<p>See <a class="reference internal" href="../external_storage_configuration_gui.html"><span class="doc">External Storage</span></a> for additional mount
 options and information.</p>
 <p>See <a class="reference internal" href="auth_mechanisms.html"><span class="doc">External Storage authentication mechanisms</span></a> for more information on authentication schemes.</p>
 </section>
@@ -258,11 +273,16 @@ options and information.</p>
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-admin">
       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-admin" class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -285,6 +305,14 @@ options and information.</p>
         </dd>
         
         <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/admin_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
@@ -292,17 +320,20 @@ options and information.</p>
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/31/admin_manual"
-             
-          >
-            31
-          </a>
-        </dd>
-        
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

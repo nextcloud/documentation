@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>macOS 가상 파일 클라이언트 &mdash; Nextcloud latest User Manual latest 문서</title>
+  <title>macOS Virtual Files Client &mdash; Nextcloud latest User Manual latest 문서</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="색인" href="../genindex.html" />
     <link rel="search" title="검색" href="../search.html" />
-    <link rel="next" title="자동 업데이터" href="autoupdate.html" />
+    <link rel="next" title="Using the Command-Line Client" href="commandline.html" />
     <link rel="prev" title="동기화 클라이언트 사용하기" href="usage.html" />
    
   
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,22 +72,35 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest 사용자 매뉴얼 머리말</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud 웹 인터페이스</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">파일 및 동기화</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">데스크톱 클라이언트</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">설치</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html">동기화 클라이언트 사용하기</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">macOS 가상 파일 클라이언트</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#supported-features">지원되는 기능</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installation-and-initial-setup">설치와 초기 설정</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#finder-integration">Finder 통합</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sync-status-indicators">동기화 상태 표시기</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#context-menu-actions">컨텍스트 메뉴 동작</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration">설정</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usage.html">동기화 클라이언트 사용하기</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="usage.html#systray-icon">시스템 트레이 아이콘</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#configuring-nextcloud-account-settings">Nextcloud 계정 설정 구성</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#adding-new-accounts">새 계정 추가하기</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#file-manager-overlay-icons">파일 관리자 오버레이 아이콘</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#set-the-user-status">사용자 상태 설정</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#sharing-from-your-desktop">데스크탑에서 공유</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#general-window">일반 창</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#using-the-network-window">네트워크 창 사용</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#using-the-ignored-files-editor">무시된 파일 편집기 사용</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="usage.html#virtual-files-on-macos">Virtual Files on macOS</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">macOS Virtual Files Client</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">자동 업데이터</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">업데이트 채널</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">충돌</a></li>
@@ -89,7 +111,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">외부 저장소</a></li>
 </ul>
 
         </div>
@@ -106,8 +127,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">데스크톱 클라이언트</a></li>
-      <li class="breadcrumb-item active">macOS 가상 파일 클라이언트</li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
+          <li class="breadcrumb-item"><a href="usage.html">동기화 클라이언트 사용하기</a></li>
+      <li class="breadcrumb-item active">macOS Virtual Files Client</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/macosvfs.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -118,77 +140,135 @@
            <div itemprop="articleBody">
              
   <section id="macos-virtual-files-client">
-<h1>macOS 가상 파일 클라이언트<a class="headerlink" href="#macos-virtual-files-client" title="Link to this heading"></a></h1>
-<p>Nextcloud 데스크톱 사용자를 위한 가상 파일 기반 동기화를 이제 macOS에서 사용할 수 있습니다.</p>
-<p>Windows와 달리 macOS에서는 가상 파일 지원이 별도의 클라이언트 버전으로 제공됩니다. 이를 통해 기존 동기화 방식을 계속 사용하려는 사용자를 위해 동기화 상태 통합 및 컨텍스트 메뉴 작업 등 기존 동기화 방식에 최적화된 환경을 유지할 수 있습니다. 기존 동기화 클라이언트와 마찬가지로 macOS 가상 파일 클라이언트는 Windows 및 Linux용 데스크톱 클라이언트와 함께 출시되며, 사용자 경험을 개선하는 정기적인 버그 수정 및 기능 업데이트를 제공할 예정입니다.</p>
+<h1>macOS Virtual Files Client<a class="headerlink" href="#macos-virtual-files-client" title="Link to this heading"></a></h1>
+<p>On macOS, our client can also seamlessly integrate Nextcloud files into macOS
+as a file provider extension. Any newly configured Nextcloud account will have
+the integration enabled by default.</p>
 <section id="supported-features">
 <h2>지원되는 기능<a class="headerlink" href="#supported-features" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>파일 별 로컬 보존과 제거</p></li>
-<li><p>지능적인 로컬 복사 제거</p></li>
-<li><p>Spotlight와 통합</p></li>
-<li><p>가상 파일에 대하여 Finder 안에서 파일 미리보기</p></li>
-<li><p>앱 번들과 iWork (Pages, Numbers, Keynote) 번들과 같은 애플 특화 형식 지원</p></li>
-<li><p>원격 파일 잠금 호환성</p></li>
+<li><p>Keeping files or whole folders available offline</p></li>
+<li><p>Freeing up local disk space by evicting local copies without deleting items</p></li>
+<li><p>Intelligent and automatic local data eviction</p></li>
+<li><p>File previews within Finder for files which are not downloaded yet</p></li>
+<li><p>Support for Apple-specific formats, for example Pages, Numbers or Keynote bundles</p></li>
+<li><p>Support for server-side file locking (if supported by the connected server)</p></li>
 <li><p>“로컬에서 편집” 지원</p></li>
-<li><p>다른 사용자와 파일 공유</p></li>
-<li><p>원격 변경에 대한 자동 동기화</p></li>
-<li><p>이외 더 많은 기능!</p></li>
+<li><p>Sharing with other users</p></li>
+<li><p>Server-side actions integrated directly in Finder’s context menu</p></li>
+<li><p>Automatic discovery of server-side changes</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">참고</p>
-<p>원격 변경 감지 기능을 향상시키려면 Nextcloud 서버에서 <cite>notify_push</cite> 앱을 활성화하는 것이 좋습니다. 이 앱은 서버에서 변경 사항이 발생하는 즉시 데스크톱 클라이언트에 알림을 보내 클라이언트가 변경 사항을 감지하는 데 걸리는 시간을 단축합니다. 또한 데스크톱 클라이언트가 변경 사항을 확인하기 위해 서버를 지속적으로 폴링할 필요가 없어집니다.</p>
-</div>
 </section>
-<section id="installation-and-initial-setup">
-<h2>설치와 초기 설정<a class="headerlink" href="#installation-and-initial-setup" title="Link to this heading"></a></h2>
-<p>가상 파일 클라이언트는 macOS 클래식 동기화 클라이언트와 유사하게 인스톨러 패키지로 배포됩니다. 데스크톱 클라이언트는 인스톨러에 제공되는 다음 단계를 걸쳐 설치될 수 있습니다.</p>
-<p>가상 파일 데스크톱 클라이언트는 기존 동기화 데스크톱 클라이언트와 호환됩니다. 즉, 기존 계정과 설정은 이 클라이언트로 그대로 이전되며, 기존 동기화 클라이언트로 다시 돌아가더라도 마찬가지입니다. 가상 파일 클라이언트도 기존 동기화를 지원하므로 기존의 표준 동기화 폴더도 그대로 유지됩니다.</p>
-<div class="admonition note">
-<p class="admonition-title">참고</p>
-<p>macOS의 기술적 제한으로 인하여 Finder 상에서 통합을 클래식 동기화 폴더와 가상 파일 동기화 폴더를 동시에 제공할 수 없습니다. 가상 파일 클라이언트의 클래식 동기화 폴더는 그래서 동기화 상태 아이콘이나 컨텍스트 메뉴 동작과 같은 Finder 통합을 지원하지 않습니다.</p>
-</div>
-<p>기존 혹은 새로 구성된 계정은 가상 파일이 자동적으로 활성화됩니다. macOS 상에서 각 계정의 가상 파일은 각자 도메인하래에 위치하고 기존 클래식 동기화 폴더와 구분됩니다. 이런 도메인은 Finder 사이드바의 “위치” 그룹에서 찾을 수 있습니다.</p>
-<img alt="Finder 사이드바는 가상 파일 도메인을 표시합니다." src="../../_images/macosvfs-finder-sidebar.png" />
-<p>이런 도메인 중 하나를 처음 접근할 때, 데스크톱 클라이언트는 서버로 부터 가상 파일의 정보를 요청하게 됩니다. 이 첫 동기화는 서버에 호스트되는 파일의 수에 따라서 시간이 걸릴 수 있습니다.</p>
+<section id="configuration">
+<h2>설정<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>Virtual files-related settings can be adjusted on a per-account basis
+via the Nextcloud desktop client’s settings window.</p>
+<img alt="Nextcloud desktop client settings showing the macOS file provider extension toggle" src="../../_images/macosvfs-settings.jpg" />
+<p>Here the integration into Finder can be enabled or disabled.</p>
+<p>When disabling the file provider extension while still having unsynchronized
+changes, macOS will save the unsynchronized items in a folder that is
+automatically revealed after the integration is disabled.</p>
 </section>
 <section id="finder-integration">
 <h2>Finder 통합<a class="headerlink" href="#finder-integration" title="Link to this heading"></a></h2>
-<p>가상 파일 클라이언트는 클래식 동기화 클라이언트보다 macOS 파일 브라우저와 더 깊고 자연스럽게 통합되는 차별화된 Finder 통합을 가집니다.</p>
+<p>On macOS, remote storage like a Nextcloud files account appears like a
+dedicated location in the Finder sidebar. The actual location of the
+content on disk is defined by macOS.</p>
+<img alt="Finder sidebar showing a Nextcloud file provider domain" src="../../_images/macosvfs-finder-sidebar.jpg" />
+<div class="admonition note">
+<p class="admonition-title">참고</p>
+<p>To accelerate server-side change detection, we recommend enabling the
+<code class="docutils literal notranslate"><span class="pre">notify_push</span></code> app on your Nextcloud server. This app will notify
+the desktop client of changes on the server as soon as they happen,
+reducing the time it takes for changes to appear in Finder.
+Otherwise the client needs to poll the server which will result in an
+increased delay between a change on the server and its local visibility.</p>
+</div>
 </section>
 <section id="sync-status-indicators">
 <h2>동기화 상태 표시기<a class="headerlink" href="#sync-status-indicators" title="Link to this heading"></a></h2>
-<p>클래식 동기화 클라이언트와 유사하게 가상 파일 클라이언트는 가상 파일 옆에 상태를 표시하는 아이콘을 표시합니다.</p>
-<img alt="macOS 가상 파일에 대한 동기화 상태 아이콘" src="../../_images/macosvfs-sync-status-icons.png" />
+<p>Similar to classic synchronization folders, Finder displays status
+indicators next to items. Unlike the custom indicators in classic
+synchronization folders, these standardized indicators are provided by macOS to
+ensure a consistent appearance across all cloud storage apps which a user may
+use on their system.</p>
 <ul class="simple">
-<li><p><em>클라우드에 화살표 표시</em>: 항목 혹은 하위 항목이 가상이고 로컬 보관 가능합니다</p></li>
-<li><p><em>클라우드 outline</em>: 항목이 일부 로컬에서 사용가능합니다</p></li>
-<li><p><em>아이콘 없음</em>: 항목이 오프라인에서 사용가능합니다</p></li>
+<li><p><em>Cloud with downward arrow</em>: The item and its descendants are not downloaded
+yet. They can be downloaded, assuming a network connection is available.</p></li>
+<li><p><em>Outlined cloud</em>: The item is not fully uploaded yet in its current local
+state.</p></li>
+<li><p><em>Strikethrough cloud</em>: The item is excluded from synchronization.</p></li>
+<li><p><em>Pie chart</em>: The item is currently being uploaded or downloaded, and the progress
+is visualized.</p></li>
+<li><p><em>Filled circle with a pin</em>: The item is available offline and will
+be kept locally.</p></li>
+<li><p><em>No icon</em>: The item is available offline and up to date.</p></li>
 </ul>
 </section>
 <section id="context-menu-actions">
 <h2>컨텍스트 메뉴 동작<a class="headerlink" href="#context-menu-actions" title="Link to this heading"></a></h2>
-<p>Finder 항목에서 Control-클릭, 두 손가락 클릭, 혹은 오른쪽 클릭은 가상 파일 클라이언트에서 제공하는 여러 항목을 찾을 수 있는 컨텍스트 메뉴를 제공하고, 이것은 Nextcloud 기능의 일부를 사용할 수 있게 합니다. 다음 기능을 포함합니다:</p>
-<ul class="simple">
-<li><p>파일 잠그기 (서버에서 제공되는 경우)</p></li>
-</ul>
-<img alt="macOS 가상 파일에 대한 파일 잠그기 UI" src="../../_images/macosvfs-file-locking.png" />
-<ul class="simple">
-<li><p>파일 공유 (서버에서 제공되는 경우)</p></li>
-</ul>
-<img alt="macOS 가상 파일에 대한 파일 공유 UI" src="../../_images/macosvfs-file-sharing.png" />
+<img alt="macOS Finder context menu on a Nextcloud file showing Keep Downloaded, Lock, and Share options" src="../../_images/macosvfs-context-menu.jpg" />
+<p>The file provider extension also provides special Nextcloud features through
+the context menu in Finder.</p>
+<section id="keep-downloaded">
+<h3>Keep Downloaded<a class="headerlink" href="#keep-downloaded" title="Link to this heading"></a></h3>
+<p>Files and folders can be marked to be kept downloaded and available offline
+permanently. If this is chosen on folders, it will also apply to all their
+contents. This is especially useful for users with limited or no network
+access, as it ensures that they can always access their important files without
+needing to worry about connectivity. macOS will <strong>not</strong> free up local disk
+space by evicting items which are marked to be kept downloaded, even if they
+have not been accessed for a long time.</p>
+<p>This can be undone by selecting “Allow automatic freeing up space” on the same
+items.</p>
+<p>To always keep everything in an account available locally, you can select
+“Always keep downloaded” on the location root in the Finder sidebar.</p>
 </section>
-<section id="configuration">
-<h2>설정<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
-<p>가상 파일 관련 설정은 Nextcloud 데스크톱 클라이언트 설정 창을 통하여 계정 별로 조정할 수 있습니다.</p>
-<img alt="macOS 가상 파일 설정" src="../../_images/macosvfs-settings.png" />
-<p>가상 파일 섹션은 가상 파일 상호작용과 관련된 여러 옵션을 제공합니다:</p>
-<ul class="simple">
-<li><p>대상 계정에 대한 가상 파일 활성화/비활성화</p></li>
-<li><p>빠른 동기화 활성화/비활성화</p></li>
-<li><p>로컬 저장소 사용량 관리와 로컬 사본 제거</p></li>
-<li><p>가상 파일 도메인에 대하여 강제 업데이트 검사</p></li>
-</ul>
+<section id="locking">
+<h3>Locking<a class="headerlink" href="#locking" title="Link to this heading"></a></h3>
+<img alt="macOS Finder showing a Nextcloud file with a lock indicator after locking" src="../../_images/macosvfs-file-locking.jpg" />
+<p>If the server supports file locking, the client will offer manual locking and
+unlocking of files in Finder.</p>
+</section>
+<section id="sharing">
+<h3>Sharing<a class="headerlink" href="#sharing" title="Link to this heading"></a></h3>
+<img alt="macOS Finder share management panel for a Nextcloud file showing existing shares" src="../../_images/macosvfs-file-sharing.jpg" />
+<p>When the server supports sharing and the item is allowed to be shared,
+then you can create new shares or manage existing shares for an item directly
+from the context menu in Finder, as in the Nextcloud web interface.</p>
+</section>
+<section id="file-actions">
+<h3>File actions<a class="headerlink" href="#file-actions" title="Link to this heading"></a></h3>
+<p>If the server has apps installed which provide file actions for the selected
+file types, these actions will also be available in the context menu in Finder.
+This allows you to use server-side features of your Nextcloud instance directly
+from the Finder.</p>
+</section>
+</section>
+<section id="known-issues">
+<h2>Known issues<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<section id="macos-extensions-conflict">
+<h3>macOS Extensions conflict<a class="headerlink" href="#macos-extensions-conflict" title="Link to this heading"></a></h3>
+<p>Due to technical limitations in macOS which are imposed by Apple,
+it is not possible to have the Finder integration for classic sync folders
+running in parallel to an enabled virtual files integration.
+This means that item decorations and context menu options will be
+unavailable for classic sync folders while the file provider extension is
+enabled.</p>
+</section>
+<section id="alias-files">
+<h3>Alias files<a class="headerlink" href="#alias-files" title="Link to this heading"></a></h3>
+<p>When opening a macOS alias file stored on Nextcloud for the first time on a
+device where it has not yet been downloaded, the file may open as a binary
+document in a text editor instead of jumping to its target. This happens
+because macOS decides how to open a file before downloading it, and alias files
+carry no recognisable file extension or type information on the server — the
+only way to identify them is by reading their content. Once the file has been
+opened or downloaded once, Nextcloud Desktop learns that it is an alias and
+stores that information locally, so all subsequent opens will work correctly.
+To avoid the issue entirely, right-click the alias file in Finder and choose
+<strong>Keep Downloaded</strong> before opening it for the first time.</p>
+</section>
 </section>
 </section>
 
@@ -197,7 +277,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="usage.html" class="btn btn-neutral float-left" title="동기화 클라이언트 사용하기" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="autoupdate.html" class="btn btn-neutral float-right" title="자동 업데이터" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="commandline.html" class="btn btn-neutral float-right" title="Using the Command-Line Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -301,18 +381,27 @@
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 Korean
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
-        <dt>🌐 Languages</dt>
+        <dt>🌐 언어</dt>
         
           <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/ar/"
@@ -485,6 +574,22 @@
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -632,7 +737,7 @@
     </div>
     <div class="rst-other-versions">
       <dl>
-        <dt>☁️ Versions</dt>
+        <dt>☁️ 버전</dt>
         
           <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/latest/user_manual"
@@ -653,6 +758,14 @@
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -660,31 +773,20 @@
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Downloads</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>On Read the Docs</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Project Home</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Builds</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

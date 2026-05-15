@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Server-side Encryption &mdash; Nextcloud latest Administration Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -52,9 +52,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -64,7 +73,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR compliance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
@@ -92,7 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="big_file_upload_configuration.html">Uploading big files &gt; 512MB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="default_files_configuration.html">Providing default files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="primary_storage.html">Configuring Object Storage as Primary Storage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="external_storage_configuration_gui.html">Configuring External Storage (GUI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage_configuration_gui.html">External Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="external_storage/auth_mechanisms.html">External Storage authentication mechanisms</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Server-side Encryption</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
@@ -111,6 +120,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#user-keys-sharing-recovery">User Keys: Sharing &amp; Recovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ldap-and-external-user-backends">LDAP and External User Backends</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#why-don-t-i-see-the-recovery-key-option-in-the-encryption-settings">Why don’t I see the recovery key option in the Encryption settings?</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#invalid-private-key-for-encryption-app">Invalid private key for encryption app</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bad-signature-error">Bad signature error</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#encryption-key-cannot-be-found">Encryption key cannot be found</a></li>
@@ -151,6 +161,10 @@
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
 <ul>
@@ -332,19 +346,20 @@ external changes.</p>
 </ol>
 </section>
 <section id="key-management-modes">
-<h2>Key Management Modes<a class="headerlink" href="#key-management-modes" title="Link to this heading"></a></h2>
+<span id="encryption-configuration-key-management-modes"></span><h2>Key Management Modes<a class="headerlink" href="#key-management-modes" title="Link to this heading"></a></h2>
 <p><strong>Master Key (default):</strong></p>
 <ul class="simple">
 <li><p>All files are encrypted with a central server-controlled key.</p></li>
 <li><p>Admins can decrypt any user’s files.</p></li>
-<li><p>Offers better performance and compatibility with more login/authentication modes.</p></li>
-<li><p>Best for organizations that need to recover files if users forget their passwords.</p></li>
+<li><p><strong>Recovery keys are not available in master key mode.</strong> Files remain accessible if a user forgets their password, as they are encrypted by the master key, not the user password.</p></li>
+<li><p>Recommended for most deployments.</p></li>
 </ul>
 <p><strong>User Keys:</strong></p>
 <ul class="simple">
 <li><p>Each user’s files are encrypted with a password-protected key.</p></li>
 <li><p>Admins cannot (readily) decrypt files without the user’s password, unless a recovery key is defined.</p></li>
 <li><p>If a user forgets their password and no recovery key exists, their files are lost.</p></li>
+<li><p>This mode does not work with all authentication methods (e.g., app passwords, single sign-on) and is only recommended for compatibility with older setups.</p></li>
 </ul>
 <p><strong>How to choose:</strong></p>
 <ul class="simple">
@@ -395,7 +410,7 @@ Go to your Apps page and enable the Nextcloud Default Encryption Module.</p></li
 <blockquote>
 <div><ul class="simple">
 <li><p>Set encryption options in the mount configuration for each external storage.</p></li>
-<li><p>See <a class="reference internal" href="external_storage_configuration_gui.html#external-storage-mount-options-label"><span class="std std-ref">Mount options</span></a> in <a class="reference internal" href="external_storage_configuration_gui.html"><span class="doc">Configuring External Storage (GUI)</span></a>.</p></li>
+<li><p>See <a class="reference internal" href="external_storage_configuration_gui.html#external-storage-mount-options-label"><span class="std std-ref">Mount Options</span></a> in <a class="reference internal" href="external_storage_configuration_gui.html"><span class="doc">External Storage</span></a>.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -463,7 +478,7 @@ Go to your Apps page and enable the Nextcloud Default Encryption Module.</p></li
 </table>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>See the <a class="reference internal" href="../occ_command.html#encryption-label"><span class="std std-ref">Encryption</span></a> section of the <code class="docutils literal notranslate"><span class="pre">occ</span></code> reference guide for further <code class="docutils literal notranslate"><span class="pre">encryption</span></code> command examples and details.</p>
+<p>See the <a class="reference internal" href="../occ_encryption.html#encryption-label"><span class="std std-ref">Encryption commands</span></a> section of the <code class="docutils literal notranslate"><span class="pre">occ</span></code> reference guide for further <code class="docutils literal notranslate"><span class="pre">encryption</span></code> command examples and details.</p>
 </div>
 <p><strong>Example: Move keys to a new directory (Ubuntu Linux):</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/your/nextcloud/data
@@ -552,14 +567,20 @@ To encrypt all files for all users run:</p>
 <figure class="align-default">
 <img alt="../_images/encryption9.png" src="../_images/encryption9.png" />
 </figure>
-<p id="enabling-users-file-recovery-keys"><strong>Enabling file recovery keys:</strong></p>
+<p><strong>Enabling file recovery keys:</strong></p>
+<p>Recovery keys are only available in per-user key mode (not the default master key mode).</p>
 <ul class="simple">
 <li><p>If you lose your Nextcloud password, you lose access to your encrypted files.</p></li>
-<li><p>If a user loses their password, their files are unrecoverable unless a recovery key is enabled.</p></li>
-<li><p>To enable recovery, go to Encryption in Admin page and set a recovery key password.</p></li>
+<li><p>If a user loses their password, their files are unrecoverable unless a recovery key is enabled (per-user key mode only).</p></li>
+<li><p>To enable recovery (in per-user key mode), go to Encryption in Admin page and set a recovery key password.</p></li>
 <li><p>Users must enable password recovery in their Personal settings for the Recovery Key to work.</p></li>
 <li><p>For users who have enabled password recovery, admins can reset passwords and recover files using the Recovery Key.</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The recovery process can be slow and resource-intensive, especially for instances with large amounts of encrypted data.
+Test recovery procedures before relying on them in production.</p>
+</div>
 <figure class="align-default">
 <img alt="../_images/encryption10.png" src="../_images/encryption10.png" />
 </figure>
@@ -582,6 +603,18 @@ To encrypt all files for all users run:</p>
 </section>
 <section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="why-don-t-i-see-the-recovery-key-option-in-the-encryption-settings">
+<h3>Why don’t I see the recovery key option in the Encryption settings?<a class="headerlink" href="#why-don-t-i-see-the-recovery-key-option-in-the-encryption-settings" title="Link to this heading"></a></h3>
+<p>Recovery keys are only available in per-user key mode. Since Nextcloud 13, the default
+encryption mode uses master keys (system-wide encryption). Master key mode does not expose
+recovery key options in the Admin settings because recovery keys are not needed—admins can
+reset user passwords and files remain accessible.</p>
+<p>If you are using master key mode (the default and recommended mode), you do not need recovery
+keys. Recovery keys are only relevant for per-user key setups, which are maintained for
+compatibility with older deployments.</p>
+<p>See <a class="reference internal" href="#encryption-configuration-key-management-modes"><span class="std std-ref">Key Management Modes</span></a> for guidance
+on the differences between master key and per-user key modes, and <a class="reference external" href="https://github.com/nextcloud/server/issues/8283">GitHub Issue #8283</a> for technical context on this design decision.</p>
+</section>
 <section id="invalid-private-key-for-encryption-app">
 <h3>Invalid private key for encryption app<a class="headerlink" href="#invalid-private-key-for-encryption-app" title="Link to this heading"></a></h3>
 <p>See <a class="reference external" href="https://github.com/nextcloud/server/issues/8546">GitHub Issue #8546</a> and
@@ -634,7 +667,7 @@ If someone then moved the files to another location, the keys did not get moved.
 <section id="further-reading">
 <h2>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="../occ_command.html#encryption-label"><span class="std std-ref">occ Command Reference: Encryption</span></a></p></li>
+<li><p><a class="reference internal" href="../occ_encryption.html#encryption-label"><span class="std std-ref">occ Command Reference: Encryption</span></a></p></li>
 <li><p><a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">How Nextcloud uses encryption to protect your data</a></p></li>
 <li><p><a class="reference external" href="https://hackerone.com/reports/108082">Technical impact of Authenticated Encryption</a></p></li>
 <li><p><a class="reference internal" href="encryption_details.html"><span class="doc">Nextcloud SSE Implementation Details</span></a></p></li>
@@ -668,11 +701,16 @@ If someone then moved the files to another location, the keys did not get moved.
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-admin">
       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-admin" class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -695,6 +733,14 @@ If someone then moved the files to another location, the keys did not get moved.
         </dd>
         
         <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/admin_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
@@ -702,17 +748,20 @@ If someone then moved the files to another location, the keys did not get moved.
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/31/admin_manual"
-             
-          >
-            31
-          </a>
-        </dd>
-        
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

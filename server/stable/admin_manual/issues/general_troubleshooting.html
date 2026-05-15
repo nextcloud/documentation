@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>General troubleshooting &mdash; Nextcloud latest Administration Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -52,9 +52,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -64,7 +73,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR compliance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
@@ -109,6 +118,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../configuration_monitoring/index.html">Monitoring</a></li>
@@ -136,7 +149,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#users-federated-cloud-ids-not-updated-after-a-domain-name-change">Users’ Federated Cloud IDs not updated after a domain name change</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-file-encoding-on-external-storages">Troubleshooting file encoding on external storages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#troubleshooting-contacts-calendar">Troubleshooting contacts &amp; calendar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#troubleshooting-data-directory">Troubleshooting data-directory</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#moving-the-data-directory-changing-the-datadirectory-path">Moving the data directory / changing the <code class="docutils literal notranslate"><span class="pre">datadirectory</span></code> path</a></li>
@@ -218,8 +230,8 @@ note that Nextcloud GmbH offers commercial support options.</p>
 <li><p>Search for a solution (see the options above)</p></li>
 <li><p>Double-check your configuration</p></li>
 </ul>
-<p>If you can’t find a solution, please use our <a class="reference external" href="https://docs.nextcloud.com/server/33/developer_manual/prologue/bugtracker/index.html">bugtracker</a>. You can generate a
-configuration report with the <a class="reference internal" href="../occ_command.html#config-commands-label"><span class="std std-ref">occ config command</span></a>, with passwords automatically obscured.</p>
+<p>If you can’t find a solution, please use our <a class="reference external" href="https://docs.nextcloud.com/server/latest/developer_manual/prologue/bugtracker/index.html">bugtracker</a>. You can generate a
+configuration report with the <a class="reference internal" href="../occ_apps.html#config-commands-label"><span class="std std-ref">occ config command</span></a>, with passwords automatically obscured.</p>
 </section>
 <section id="id1">
 <h2>General troubleshooting<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
@@ -230,7 +242,7 @@ supported browser versions.</p>
 <h3>Disable 3rdparty / non-shipped apps<a class="headerlink" href="#disable-3rdparty-non-shipped-apps" title="Link to this heading"></a></h3>
 <p>It might be possible that 3rd party / non-shipped apps are causing various
 different issues. Always disable 3rd party apps before upgrades, and for
-troubleshooting. Please refer to the <a class="reference internal" href="../occ_command.html#apps-commands-label"><span class="std std-ref">Apps commands</span></a> on how
+troubleshooting. Please refer to the <a class="reference internal" href="../occ_apps.html#apps-commands-label"><span class="std std-ref">Apps commands</span></a> on how
 to disable an app from command line.</p>
 </section>
 <section id="internal-server-errors">
@@ -441,21 +453,34 @@ URLs:</p>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">https://example.com/.well-known/carddav</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">https://example.com/.well-known/caldav</span></code></div>
-<div class="line"><br /></div>
 </div>
 <p>Those need to be redirecting your clients to the correct endpoints. If Nextcloud
-is running at the document root of your Web server the correct URL is
+is running at the <code class="docutils literal notranslate"><span class="pre">DocumentRoot</span></code> of your Web server the correct URL is
 <code class="docutils literal notranslate"><span class="pre">https://example.com/remote.php/dav</span></code> for CardDAV and CalDAV and if running in a
-subfolder like <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code>, then <code class="docutils literal notranslate"><span class="pre">https://example.com/nextcloud/remote.php/dav</span></code>.</p>
-<p>For the first case the <code class="file docutils literal notranslate"><span class="pre">.htaccess</span></code> file shipped with Nextcloud should do
+subfolder like <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code>, then the correct URL is
+<code class="docutils literal notranslate"><span class="pre">https://example.com/nextcloud/remote.php/dav</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Debian/Ubuntu systems, the Apache <code class="docutils literal notranslate"><span class="pre">DocumentRoot</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">/var/www/html</span></code>.
+On other distributions, this path may differ. Adjust paths in the examples below accordingly.</p>
+</div>
+<p>For the first case, the <code class="file docutils literal notranslate"><span class="pre">.htaccess</span></code> file shipped with Nextcloud should do
 this work for you when you’re running Apache. You need to make sure that your
 Web server is using this file. Additionally, you need the mod_rewrite Apache
 module installed and <code class="docutils literal notranslate"><span class="pre">AllowOverride</span> <span class="pre">All</span></code> set in your <code class="file docutils literal notranslate"><span class="pre">apache2.conf</span></code>
 or vHost-file to process these redirects. When running Nginx please refer to
 <a class="reference internal" href="../installation/nginx.html"><span class="doc">NGINX configuration</span></a>.</p>
-<p>If your Nextcloud instance is installed in a subfolder called <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> and
-you’re running Apache, create or edit the <code class="file docutils literal notranslate"><span class="pre">.htaccess</span></code> file within the
-document root of your Web server and add the following lines:</p>
+<p>For the second case, you need to add the following to <code class="file docutils literal notranslate"><span class="pre">/etc/apache2/apache2.conf</span></code>,
+replacing <code class="docutils literal notranslate"><span class="pre">/var/www/html</span></code> with your actual <code class="docutils literal notranslate"><span class="pre">DocumentRoot</span></code> if it differs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Directory</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">&gt;</span>
+    <span class="n">AllowOverride</span> <span class="n">FileInfo</span>
+<span class="o">&lt;/</span><span class="n">Directory</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">AllowOverride</span> <span class="pre">FileInfo</span></code> is sufficient for the rewrite directives used by service
+discovery. If you already have <code class="docutils literal notranslate"><span class="pre">AllowOverride</span> <span class="pre">All</span></code> set for this directory, no change
+is needed. Next, create or edit the <code class="file docutils literal notranslate"><span class="pre">.htaccess</span></code> file within the <code class="docutils literal notranslate"><span class="pre">DocumentRoot</span></code>
+of your Web server and add the following lines:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">IfModule</span> <span class="n">mod_rewrite</span><span class="o">.</span><span class="n">c</span><span class="o">&gt;</span>
   <span class="n">RewriteEngine</span> <span class="n">on</span>
   <span class="n">RewriteRule</span> <span class="o">^</span>\<span class="o">.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span><span class="n">carddav</span> <span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span> <span class="p">[</span><span class="n">R</span><span class="o">=</span><span class="mi">301</span><span class="p">,</span><span class="n">L</span><span class="p">]</span>
@@ -503,27 +528,6 @@ the <a class="reference external" href="http://sabre.io/dav/service-discovery/">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">federation:sync-addressbooks</span></code></div>
 </div>
 </section>
-</section>
-<section id="troubleshooting-file-encoding-on-external-storages">
-<span id="trouble-file-encoding-ext-storages"></span><h2>Troubleshooting file encoding on external storages<a class="headerlink" href="#troubleshooting-file-encoding-on-external-storages" title="Link to this heading"></a></h2>
-<p>When using external storage, it can happen that some files with special characters will not
-appear in the file listing, or they will appear and not be accessible.</p>
-<p>When this happens, please run the <a class="reference internal" href="../occ_command.html#occ-files-scan-label"><span class="std std-ref">files scanner</span></a>, for example with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span> <span class="o">--</span><span class="nb">all</span>
-</pre></div>
-</div>
-<p>If the scanner tells about an encoding issue on the affected file, please enable Mac encoding compatibility in the <a class="reference internal" href="../configuration_files/external_storage_configuration_gui.html#external-storage-mount-options-label"><span class="std std-ref">mount options</span></a>
-and then <a class="reference internal" href="../occ_command.html#occ-files-scan-label"><span class="std std-ref">rescan the external storage</span></a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This mode comes with a performance impact because Nextcloud will always try both encodings when detecting files
-on external storages.</p>
-<p>Mac computers are using the NFD Unicode Normalization for file names which is different than NFC, the one used
-by other operating systems. Mac users might upload files directly to the external storage using NFD normalized
-file names. When uploading through Nextcloud, file names will always be normalized to the NFC standard for consistency.</p>
-<p>It is recommended to let Nextcloud use external storages exclusively to avoid such issues.</p>
-<p>See also <a class="reference external" href="https://www.win.tue.nl/~aeb/linux/uc/nfc_vs_nfd.html">technical explanation about NFC vs NFD normalizations</a>.</p>
-</div>
 </section>
 <section id="troubleshooting-contacts-calendar">
 <h2>Troubleshooting contacts &amp; calendar<a class="headerlink" href="#troubleshooting-contacts-calendar" title="Link to this heading"></a></h2>
@@ -589,7 +593,7 @@ does not match the actual data stored in the user’s <code class="docutils lite
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Metadata, versions, trashbin and encryption keys are not counted in the used space above.
-Please refer to the <a class="reference external" href="https://docs.nextcloud.com/server/33/user_manual/en/files/quota.html">quota documentation</a> for details.</p>
+Please refer to the <a class="reference external" href="https://docs.nextcloud.com/server/latest/user_manual/en/files/quota.html">quota documentation</a> for details.</p>
 </div>
 <p>Running the following command can help fix the sizes and quota for a given user:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span> <span class="o">-</span><span class="n">vvv</span> <span class="o">&lt;</span><span class="n">user</span><span class="o">-</span><span class="nb">id</span><span class="o">&gt;</span>
@@ -651,11 +655,16 @@ first.</p>
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-admin">
       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-admin" class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -678,6 +687,14 @@ first.</p>
         </dd>
         
         <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/admin_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
@@ -685,17 +702,20 @@ first.</p>
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/31/admin_manual"
-             
-          >
-            31
-          </a>
-        </dd>
-        
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

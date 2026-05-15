@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Talk &mdash; Documentação Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Buscar" href="../search.html" />
-    <link rel="next" title="Noções Básicas de Nextcloud Talk" href="talk_basics.html" />
+    <link rel="next" title="Bate-papo" href="chat_index.html" />
     <link rel="prev" title="Sincronização com Windows 10" href="../groupware/sync_windows10.html" />
    
   
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <label for="rtd-search-input" class="sr-only">Pesquisar documentos</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Pesquisar documentos"
+             aria-label="Pesquisar documentos" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,21 +72,25 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introdução ao manual do usuário do Nextcloud latest</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">A interface web do Nextcloud</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Arquivos &amp; sincronização</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Usar o aplicativo Atividade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Arquivos e sincronização</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Talk</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="talk_basics.html">Noções Básicas de Nextcloud Talk</a></li>
-<li class="toctree-l2"><a class="reference internal" href="advanced_features.html">Funcionalidades avançadas do Talk</a></li>
-<li class="toctree-l2"><a class="reference internal" href="join_a_call_or_chat_as_guest.html">Entrar em uma chamada ou bate-papo como convidado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chat_index.html">Bate-papo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conversation_index.html">Conversas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="call_index.html">Chamadas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federation_index.html">Federação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moderator_index.html">Para moderadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html">Entrar em uma chamada ou em um bate-papo como convidado</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Clientes de Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Configuração de suas preferências</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Acesso universal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Uso da autenticação de dois fatores</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gerenciar navegadores e dispositivos conectados</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Armazenamento externo</a></li>
 </ul>
 
         </div>
@@ -106,14 +119,54 @@
              
   <section id="talk">
 <h1>Talk<a class="headerlink" href="#talk" title="Link para este cabeçalho"></a></h1>
-<p>O Nextcloud Talk oferece bate-papos de áudio/vídeo e texto integrados em Nextcloud. Ele oferece uma interface web e também aplicativos móveis.</p>
-<p>Você pode descobrir mais sobre o Nextcloud Talk <a class="reference external" href="https://nextcloud.com/talk/">em nosso site</a>.</p>
-<img alt="../../_images/talk-grid-view.png" src="../../_images/talk-grid-view.png" />
+<p>O Nextcloud Talk oferece bate-papo de áudio/vídeo e de texto integrado ao Nextcloud. Está disponível como interface web, cliente para desktop e aplicativos móveis para Android e iOS.</p>
+<p>Você pode saber mais sobre o Nextcloud Talk <a class="reference external" href="https://nextcloud.com/talk/">em nosso site</a>. Baixe os clientes para desktop e dispositivos móveis em <a class="reference external" href="https://nextcloud.com/install/">nextcloud.com/install</a>.</p>
+<img alt="Talk call in grid view showing multiple participants" src="../../_images/talk-grid-view.png" />
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="talk_basics.html">Noções Básicas de Nextcloud Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advanced_features.html">Funcionalidades avançadas do Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="join_a_call_or_chat_as_guest.html">Entrar em uma chamada ou bate-papo como convidado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chat_index.html">Bate-papo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chat.html">Enviar mensagens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="messages.html">Interação com mensagens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="message_integrations.html">Aplicativos que se integram às mensagens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attachments.html">Anexos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conversation_index.html">Conversas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="conversations.html">Conversas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_conversations.html">Conversas abertas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appearance.html">Aparência</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files_integration.html">Integração do Arquivos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar_integration.html">Integração do calendário com o Talk</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="call_index.html">Chamadas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="call.html">Entrar em uma chamada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="call_screenshare.html">Compartilhamento de tela</a></li>
+<li class="toctree-l2"><a class="reference internal" href="call_views.html">Visualização de chamadas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="call_transcription.html">Transcrição e tradução</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="federation_index.html">Federação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="federation_index.html#sending-an-invitation">Enviar um convite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federation_index.html#accepting-an-invitation">Aceitar um convite</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="moderator_index.html">Para moderadores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="webinar.html">Webinário e sala de espera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="call_recording.html">Gravação de chamadas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="breakout_rooms.html">Salas temáticas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bots.html">Robôs e comandos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matterbridge.html">Matterbridge</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guest.html">Entrar em uma chamada ou em um bate-papo como convidado</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guest.html#joining-a-chat">Entrar em um bate-papo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html#joining-a-call">Entrar em uma chamada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html#starting-a-screen-share">Iniciar o compartilhamento de tela</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html#full-screen-and-other-settings">Tela cheia e outras configurações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html#joining-as-an-email-guest">Entrar como um convidado por e-mail</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -123,7 +176,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
         <a href="../groupware/sync_windows10.html" class="btn btn-neutral float-left" title="Sincronização com Windows 10" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
-        <a href="talk_basics.html" class="btn btn-neutral float-right" title="Noções Básicas de Nextcloud Talk" accesskey="n" rel="next">Próximo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="chat_index.html" class="btn btn-neutral float-right" title="Bate-papo" accesskey="n" rel="next">Próximo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -227,16 +280,25 @@
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 pt-BR
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Idiomas</dt>
         
@@ -409,6 +471,22 @@
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -577,6 +655,14 @@
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -584,31 +670,20 @@
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Downloads</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>Em Read the Docs</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Página Inicial do Projeto</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Builds</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

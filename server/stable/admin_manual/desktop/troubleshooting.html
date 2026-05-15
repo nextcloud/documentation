@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Troubleshooting &mdash; Nextcloud latest Administration Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Groupware" href="../groupware/index.html" />
-    <link rel="prev" title="Command-line Account Setup" href="accountcommand.html" />
+    <link rel="prev" title="Desktop Client Deployment and Setup" href="massdeployment.html" />
    
   
 </head>
@@ -52,9 +52,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -64,7 +73,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR compliance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
@@ -100,12 +109,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Clients</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="options.html">Options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="massdeployment.html">Mass Deployment And Account Creation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="commandline.html">Command Line Client</a></li>
-<li class="toctree-l2"><a class="reference internal" href="accountcommand.html">Command-line Account Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="massdeployment.html">Desktop Client Deployment and Setup</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#identifying-basic-functionality-problems">Identifying Basic Functionality Problems</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#csync-unknown-error">“CSync unknown error”</a></li>
@@ -123,6 +127,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#core-dumps">Core Dumps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#citrix-workspace-known-issues">Citrix Workspace known issues</a></li>
 </ul>
 </li>
 </ul>
@@ -135,6 +140,10 @@
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
 <ul>
@@ -500,13 +509,27 @@ Also, due to their size, we strongly recommend that you properly compress any
 core dump files prior to sending them to Nextcloud Customer Support.</p>
 </div>
 </section>
+<section id="citrix-workspace-known-issues">
+<h2>Citrix Workspace known issues<a class="headerlink" href="#citrix-workspace-known-issues" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>These are known issues when running the desktop client in a Citrix workspace:</dt><dd><ul class="simple">
+<li><p>The Windows user’s Roaming profile needs to be persisted between sessions.
+The failure on doing so will result in result in users having to set up their account again in every new session.</p></li>
+<li><p>The user’s synchronization folder also needs to be persisted between sessions.
+The client will throw errors because it can not find the sync folder once the users logs in a new session.</p></li>
+<li><p>Every time the user logs in a Citrix environment, it creates a session with the desktop client and in that session the client will sync the user’s files,
+that can quickly lead to the storage running out of space.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="accountcommand.html" class="btn btn-neutral float-left" title="Command-line Account Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="massdeployment.html" class="btn btn-neutral float-left" title="Desktop Client Deployment and Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../groupware/index.html" class="btn btn-neutral float-right" title="Groupware" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -526,11 +549,16 @@ core dump files prior to sending them to Nextcloud Customer Support.</p>
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-admin">
       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-admin" class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -553,6 +581,14 @@ core dump files prior to sending them to Nextcloud Customer Support.</p>
         </dd>
         
         <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/admin_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
@@ -560,17 +596,20 @@ core dump files prior to sending them to Nextcloud Customer Support.</p>
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/31/admin_manual"
-             
-          >
-            31
-          </a>
-        </dd>
-        
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

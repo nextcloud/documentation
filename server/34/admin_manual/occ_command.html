@@ -1,0 +1,572 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using the occ command &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/occ_command.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Apps, background jobs &amp; config commands" href="occ_apps.html" />
+    <link rel="prev" title="Theming" href="configuration_server/theming.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="contents.html">
+            
+              <img src="_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdpr/index.html">GDPR compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using the occ command</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#running-occ">Running occ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#environment-variables">Environment variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#enabling-autocompletion">Enabling autocompletion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#limitations-in-maintenance-mode">Limitations in maintenance mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#command-reference">Command reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="occ_apps.html">Apps, background jobs &amp; config commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_database.html">DAV &amp; database commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_encryption.html">Encryption commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_files.html">Files commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_ldap.html">LDAP commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_users.html">User &amp; group commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_system.html">System &amp; maintenance commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="contents.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Using the occ command</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/occ_command.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-occ-command">
+<span id="occ"></span><h1>Using the occ command<a class="headerlink" href="#using-the-occ-command" title="Link to this heading"></a></h1>
+<p>Nextcloud’s <code class="docutils literal notranslate"><span class="pre">occ</span></code> command (origins from “ownCloud Console”) is Nextcloud’s command-line
+interface. You can perform many common server operations with <code class="docutils literal notranslate"><span class="pre">occ</span></code>, such as
+installing and upgrading Nextcloud, manage users, encryption, passwords, LDAP
+setting, and more.</p>
+<p><code class="docutils literal notranslate"><span class="pre">occ</span></code> is in the <code class="file docutils literal notranslate"><span class="pre">nextcloud/</span></code> directory; for example
+<code class="file docutils literal notranslate"><span class="pre">/var/www/nextcloud</span></code> on Ubuntu Linux. <code class="docutils literal notranslate"><span class="pre">occ</span></code> is a PHP script. <strong>You must
+run it as your HTTP user</strong> to ensure that the correct permissions are maintained
+on your Nextcloud files and directories.</p>
+<section id="running-occ">
+<span id="http-user-label"></span><h2>Running occ<a class="headerlink" href="#running-occ" title="Link to this heading"></a></h2>
+<p>You must run <code class="docutils literal notranslate"><span class="pre">occ</span></code> as your HTTP user so that the file ownership and permissions
+on your Nextcloud data directory stay consistent with the web server.</p>
+<p>The HTTP user is different on the various Linux distributions:</p>
+<ul class="simple">
+<li><p>The HTTP user and group in Debian/Ubuntu is www-data.</p></li>
+<li><p>The HTTP user and group in Fedora/CentOS is apache.</p></li>
+<li><p>The HTTP user and group in Arch Linux is http.</p></li>
+<li><p>The HTTP user in openSUSE is wwwrun, and the HTTP group is www.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>APCu is disabled by default for the command-line mode of PHP, which can cause issues with Nextcloud’s <code class="docutils literal notranslate"><span class="pre">occ</span></code> command. Please make sure you set the <code class="docutils literal notranslate"><span class="pre">apc.enable_cli</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">1</span></code> in your PHP CLI’s <code class="docutils literal notranslate"><span class="pre">php.ini</span></code> configuration file or append <code class="docutils literal notranslate"><span class="pre">--define</span> <span class="pre">apc.enable_cli=1</span></code> each time you invoke <code class="docutils literal notranslate"><span class="pre">occ</span></code> - e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="o">--</span><span class="n">define</span> <span class="n">apc</span><span class="o">.</span><span class="n">enable_cli</span><span class="o">=</span><span class="mi">1</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="nb">list</span> <span class="n">system</span>
+</pre></div>
+</div>
+<p>If you fail to do this, you will receive output such as the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>An unhandled exception has been thrown:
+OCP\HintException: [0]: Memcache \OC\Memcache\APCu not available for local cache (Is the matching PHP module installed and enabled?)
+</pre></div>
+</div>
+</div>
+<p>If your HTTP server is configured to use a different PHP version than the
+default (/usr/bin/php), <code class="docutils literal notranslate"><span class="pre">occ</span></code> should be run with the same version. For
+example, in CentOS 6.5 with SCL-PHP70 installed, the command looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">apache</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rh</span><span class="o">/</span><span class="n">php70</span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">php</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">occ</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the following examples make use of the <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">...</span> <span class="pre">/path/to/php</span> <span class="pre">/path/to/occ</span></code> method, your environment may require use of a different wrapper utility than <code class="docutils literal notranslate"><span class="pre">sudo</span></code> to execute the command as the appropriate user. Other common wrappers:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">su</span> <span class="pre">--command</span> <span class="pre">'/path/to/php</span> <span class="pre">...'</span> <span class="pre">username</span></code> – Note here that the target user specification comes at the end, and the command to execute is specified first.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runuser</span> <span class="pre">--user</span> <span class="pre">username</span> <span class="pre">--</span> <span class="pre">/path/to/php</span> <span class="pre">...</span></code> – This wrapper might be used in container contexts (ex: Docker / <code class="docutils literal notranslate"><span class="pre">arm32v7/nextcloud</span></code>) where both <code class="docutils literal notranslate"><span class="pre">sudo</span></code> and <code class="docutils literal notranslate"><span class="pre">su</span></code> wrapper utilities cannot be used.</p></li>
+</ul>
+</div>
+<p>Running <code class="docutils literal notranslate"><span class="pre">occ</span></code> with no options lists all commands and options, like this
+example on Ubuntu:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span>
+<span class="n">Nextcloud</span> <span class="n">version</span> <span class="mf">19.0.0</span>
+
+<span class="n">Usage</span><span class="p">:</span>
+ <span class="n">command</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="p">[</span><span class="n">arguments</span><span class="p">]</span>
+
+<span class="n">Options</span><span class="p">:</span>
+ <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">Display</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span>
+ <span class="o">-</span><span class="n">q</span><span class="p">,</span> <span class="o">--</span><span class="n">quiet</span>           <span class="n">Do</span> <span class="ow">not</span> <span class="n">output</span> <span class="nb">any</span> <span class="n">message</span>
+ <span class="o">-</span><span class="n">V</span><span class="p">,</span> <span class="o">--</span><span class="n">version</span>         <span class="n">Display</span> <span class="n">this</span> <span class="n">application</span> <span class="n">version</span>
+     <span class="o">--</span><span class="n">ansi</span>            <span class="n">Force</span> <span class="n">ANSI</span> <span class="n">output</span>
+     <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ansi</span>         <span class="n">Disable</span> <span class="n">ANSI</span> <span class="n">output</span>
+ <span class="o">-</span><span class="n">n</span><span class="p">,</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">interaction</span>  <span class="n">Do</span> <span class="ow">not</span> <span class="n">ask</span> <span class="nb">any</span> <span class="n">interactive</span> <span class="n">question</span>
+     <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">warnings</span>     <span class="n">Skip</span> <span class="k">global</span> <span class="n">warnings</span><span class="p">,</span> <span class="n">show</span> <span class="n">command</span> <span class="n">output</span> <span class="n">only</span>
+ <span class="o">-</span><span class="n">v</span><span class="o">|</span><span class="n">vv</span><span class="o">|</span><span class="n">vvv</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>  <span class="n">Increase</span> <span class="n">the</span> <span class="n">verbosity</span> <span class="n">of</span> <span class="n">messages</span><span class="p">:</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">normal</span> <span class="n">output</span><span class="p">,</span>
+                       <span class="mi">2</span> <span class="k">for</span> <span class="n">more</span> <span class="n">verbose</span> <span class="n">output</span> <span class="ow">and</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">debug</span>
+
+<span class="n">Available</span> <span class="n">commands</span><span class="p">:</span>
+ <span class="n">check</span>                 <span class="n">check</span> <span class="n">dependencies</span> <span class="n">of</span> <span class="n">the</span> <span class="n">server</span>
+                       <span class="n">environment</span>
+ <span class="n">help</span>                  <span class="n">Displays</span> <span class="n">help</span> <span class="k">for</span> <span class="n">a</span> <span class="n">command</span>
+ <span class="nb">list</span>                  <span class="n">Lists</span> <span class="n">commands</span>
+ <span class="n">status</span>                <span class="n">show</span> <span class="n">some</span> <span class="n">status</span> <span class="n">information</span>
+ <span class="n">upgrade</span>               <span class="n">run</span> <span class="n">upgrade</span> <span class="n">routines</span> <span class="n">after</span> <span class="n">installation</span> <span class="n">of</span>
+                       <span class="n">a</span> <span class="n">new</span> <span class="n">release</span><span class="o">.</span> <span class="n">The</span> <span class="n">release</span> <span class="n">has</span> <span class="n">to</span> <span class="n">be</span>
+                       <span class="n">installed</span> <span class="n">before</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>This is the same as <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-E</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">list</span></code>.</p>
+<p>Run it with the <code class="docutils literal notranslate"><span class="pre">-h</span></code> option for syntax help:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="o">-</span><span class="n">h</span>
+</pre></div>
+</div>
+<p>Display your Nextcloud version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="o">-</span><span class="n">V</span>
+  <span class="n">Nextcloud</span> <span class="n">version</span> <span class="mf">19.0.0</span>
+</pre></div>
+</div>
+<p>Query your Nextcloud server status:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">status</span>
+  <span class="o">-</span> <span class="n">installed</span><span class="p">:</span> <span class="n">true</span>
+  <span class="o">-</span> <span class="n">version</span><span class="p">:</span> <span class="mf">19.0.0.12</span>
+  <span class="o">-</span> <span class="n">versionstring</span><span class="p">:</span> <span class="mf">19.0.0</span>
+  <span class="o">-</span> <span class="n">edition</span><span class="p">:</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">occ</span></code> has options, commands, and arguments. Options and arguments are
+optional, while commands are required. The syntax is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">command</span> <span class="p">[</span><span class="n">arguments</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Get detailed information on individual commands with the <code class="docutils literal notranslate"><span class="pre">help</span></code> command, like
+this example for the <code class="docutils literal notranslate"><span class="pre">maintenance:mode</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">help</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">mode</span>
+<span class="n">Usage</span><span class="p">:</span>
+ <span class="n">maintenance</span><span class="p">:</span><span class="n">mode</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span>
+
+<span class="n">Options</span><span class="p">:</span>
+     <span class="o">--</span><span class="n">on</span>              <span class="n">enable</span> <span class="n">maintenance</span> <span class="n">mode</span>
+     <span class="o">--</span><span class="n">off</span>             <span class="n">disable</span> <span class="n">maintenance</span> <span class="n">mode</span>
+ <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">Display</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span>
+ <span class="o">-</span><span class="n">q</span><span class="p">,</span> <span class="o">--</span><span class="n">quiet</span>           <span class="n">Do</span> <span class="ow">not</span> <span class="n">output</span> <span class="nb">any</span> <span class="n">message</span>
+ <span class="o">-</span><span class="n">V</span><span class="p">,</span> <span class="o">--</span><span class="n">version</span>         <span class="n">Display</span> <span class="n">this</span> <span class="n">application</span> <span class="n">version</span>
+     <span class="o">--</span><span class="n">ansi</span>            <span class="n">Force</span> <span class="n">ANSI</span> <span class="n">output</span>
+     <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ansi</span>         <span class="n">Disable</span> <span class="n">ANSI</span> <span class="n">output</span>
+ <span class="o">-</span><span class="n">n</span><span class="p">,</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">interaction</span>  <span class="n">Do</span> <span class="ow">not</span> <span class="n">ask</span> <span class="nb">any</span> <span class="n">interactive</span> <span class="n">question</span>
+     <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">warnings</span>     <span class="n">Skip</span> <span class="k">global</span> <span class="n">warnings</span><span class="p">,</span> <span class="n">show</span> <span class="n">command</span> <span class="n">output</span> <span class="n">only</span>
+ <span class="o">-</span><span class="n">v</span><span class="o">|</span><span class="n">vv</span><span class="o">|</span><span class="n">vvv</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>  <span class="n">Increase</span> <span class="n">the</span> <span class="n">verbosity</span> <span class="n">of</span> <span class="n">messages</span><span class="p">:</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">normal</span> <span class="n">output</span><span class="p">,</span>
+                       <span class="mi">2</span> <span class="k">for</span> <span class="n">more</span> <span class="n">verbose</span> <span class="n">output</span> <span class="ow">and</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">debug</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">status</span></code> command from above has an option to define the output format.
+The default is plain text, but it can also be <code class="docutils literal notranslate"><span class="pre">json</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">status</span> <span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">json</span>
+<span class="p">{</span><span class="s2">&quot;installed&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;19.0.0.9&quot;</span><span class="p">,</span><span class="s2">&quot;versionstring&quot;</span><span class="p">:</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">,</span><span class="s2">&quot;edition&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>or <code class="docutils literal notranslate"><span class="pre">json_pretty</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">status</span> <span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">json_pretty</span>
+<span class="p">{</span>
+   <span class="s2">&quot;installed&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+   <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;19.0.0.12&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;versionstring&quot;</span><span class="p">:</span> <span class="s2">&quot;19.0.0&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;edition&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This output option is available on all list and list-like commands:
+<code class="docutils literal notranslate"><span class="pre">status</span></code>, <code class="docutils literal notranslate"><span class="pre">check</span></code>, <code class="docutils literal notranslate"><span class="pre">app:list</span></code>, <code class="docutils literal notranslate"><span class="pre">config:list</span></code>, <code class="docutils literal notranslate"><span class="pre">encryption:status</span></code>
+and <code class="docutils literal notranslate"><span class="pre">encryption:list-modules</span></code></p>
+<section id="environment-variables">
+<h3>Environment variables<a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span></code> does not forward environment variables by default. You can prepend the
+variable and use the <code class="docutils literal notranslate"><span class="pre">-E</span></code> switch to pass it through:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NC_debug</span><span class="o">=</span><span class="n">true</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">status</span>
+</pre></div>
+</div>
+<p>Alternatively, <code class="docutils literal notranslate"><span class="pre">export</span></code> the variable first:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">NC_debug</span><span class="o">=</span><span class="n">true</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">status</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="enabling-autocompletion">
+<h2>Enabling autocompletion<a class="headerlink" href="#enabling-autocompletion" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Command autocompletion currently only works if the user you use to execute the occ commands has a profile.
+<code class="docutils literal notranslate"><span class="pre">www-data</span></code> in most cases is <code class="docutils literal notranslate"><span class="pre">nologon</span></code> and therefore <strong>cannot</strong> use this feature.</p>
+</div>
+<p>Autocompletion is available for bash (and bash based consoles).
+To enable it, you have to run <strong>one</strong> of the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># BASH ~4.x, ZSH
+source &lt;(/var/www/html/nextcloud/occ _completion --generate-hook)
+
+# BASH ~3.x, ZSH
+/var/www/html/nextcloud/occ _completion --generate-hook | source /dev/stdin
+
+# BASH (any version)
+eval $(/var/www/html/nextcloud/occ _completion --generate-hook)
+</pre></div>
+</div>
+<p>This will allow you to use autocompletion with the full path <code class="docutils literal notranslate"><span class="pre">/var/www/html/nextcloud/occ</span> <span class="pre">&lt;tab&gt;</span></code>.</p>
+<p>If you also want to use autocompletion on occ from within the directory without using the full path,
+you need to specify <code class="docutils literal notranslate"><span class="pre">--program</span> <span class="pre">occ</span></code> after the <code class="docutils literal notranslate"><span class="pre">--generate-hook</span></code>.</p>
+<p>If you want the completion to apply automatically for all new shell sessions, add the command to your
+shell’s profile (eg. <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code> or <code class="docutils literal notranslate"><span class="pre">~/.zshrc</span></code>).</p>
+</section>
+<section id="limitations-in-maintenance-mode">
+<span id="run-commands-in-maintenance-mode"></span><h2>Limitations in maintenance mode<a class="headerlink" href="#limitations-in-maintenance-mode" title="Link to this heading"></a></h2>
+<p>In maintenance mode, apps are not loaded <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, so commands from apps are unavailable. Commands integrated into Nextcloud server are available in maintenance mode.</p>
+<p>We discourage the use of maintenance mode unless the command explicitly prompts you to do so or unless the commands’ documentation explicitly states that maintenance mode should be used.</p>
+<p>A command may use events to communicate with other apps. An app can only react to an event when loaded. Example: The command user:delete deletes a user account. UserDeletedEvent is emitted. Calendar app implements an event listener to delete user data <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. In maintenance mode, the Calendar app is not loaded, and hence the user data not deleted.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Exception: <a class="reference external" href="https://github.com/nextcloud/server/blob/75f17b60945e15effc3eea41393eef2b13937226/lib/base.php#L780">The settings app is loaded</a></p>
+</aside>
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://github.com/nextcloud/calendar/blob/87e8586971a8676dc15a90f0cd969274678b7009/lib/Listener/UserDeletedListener.php">Calendar app event listener for UserDeletedEvent</a></p>
+</aside>
+</aside>
+</section>
+<section id="debugging">
+<span id="occ-debugging"></span><h2>Debugging<a class="headerlink" href="#debugging" title="Link to this heading"></a></h2>
+<p>Every <code class="docutils literal notranslate"><span class="pre">occ</span></code> command accepts the standard Symfony Console verbosity flags:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-v</span></code> — normal output (errors, warnings, and key messages)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-vv</span></code> — verbose output (additional progress detail)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-vvv</span></code> — debug output (full trace, useful for diagnosing command failures)</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span> <span class="o">--</span><span class="nb">all</span> <span class="o">-</span><span class="n">vv</span>
+</pre></div>
+</div>
+<p>To also enable debug-level log output from Nextcloud itself, set the
+<code class="docutils literal notranslate"><span class="pre">NC_loglevel</span></code> environment variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NC_loglevel</span><span class="o">=</span><span class="mi">0</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">status</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="configuration_server/logging_configuration.html"><span class="doc">Logging</span></a> for more on log levels.</p>
+</section>
+<section id="command-reference">
+<h2>Command reference<a class="headerlink" href="#command-reference" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="occ_apps.html">Apps, background jobs &amp; config commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="occ_apps.html#apps-commands">Apps commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_apps.html#background-jobs-selector">Background jobs selector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_apps.html#config-commands">Config commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="occ_database.html">DAV &amp; database commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="occ_database.html#dav-commands">DAV commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_database.html#database-commands">Database commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="occ_encryption.html">Encryption commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="occ_encryption.html#status-and-control">Status and control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_encryption.html#encrypt-and-decrypt-all-data">Encrypt and decrypt all data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_encryption.html#encryption-modules">Encryption modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_encryption.html#key-storage">Key storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_encryption.html#master-key">Master key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_encryption.html#maintenance-and-repair">Maintenance and repair</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_encryption.html#legacy-migration">Legacy migration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="occ_files.html">Files commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#file-operations">File operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#object-store">Object store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#preview">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#trash-bin">Trash bin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#file-versions">File versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#file-sharing">File sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#federation-sync">Federation sync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#files-external">Files external</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#trashbin">Trashbin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#versions">Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_files.html#integrity-check">Integrity check</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="occ_ldap.html">LDAP commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="occ_ldap.html#ldap-commands-label">LDAP commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="occ_users.html">User &amp; group commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="occ_users.html#user-commands">User commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_users.html#group-commands">Group commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_users.html#two-factor-authentication">Two-factor authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_users.html#system-tags">System Tags</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="occ_system.html">System &amp; maintenance commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#admin-delegation">Admin delegation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#background-jobs">Background jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#broadcast">Broadcast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#info">Info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#logging-commands">Logging commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#maintenance-commands">Maintenance commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#oauth2">OAuth2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#security">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#setup-checks">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#share-operations">Share operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#snowflake-ids">Snowflake IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#status">Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#task-processing">Task processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#theming">Theming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#webhook-listeners">Webhook listeners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#workflows">Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#command-line-installation">Command line installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#command-line-upgrade">Command line upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_system.html#antivirus">Antivirus</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="configuration_server/theming.html" class="btn btn-neutral float-left" title="Theming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="occ_apps.html" class="btn btn-neutral float-right" title="Apps, background jobs &amp; config commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-admin">
+      ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-admin" class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/admin_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

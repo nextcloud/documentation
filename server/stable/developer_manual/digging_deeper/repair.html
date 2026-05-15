@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Repair steps &mdash; Nextcloud latest Developer Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -30,8 +30,8 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="REST APIs" href="rest_apis.html" />
-    <link rel="prev" title="Reference providers" href="reference.html" />
+    <link rel="next" title="Deadlocks" href="deadlock.html" />
+    <link rel="prev" title="Setup checks" href="setup_checks.html" />
    
   
 </head>
@@ -52,9 +52,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -62,67 +71,39 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="context_chat.html">Context Chat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
-<li class="toctree-l2"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
-<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
-<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="translation.html">Machine Translation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (Oidc)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="openmetrics.html">Open Metrics exporter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
-<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference providers</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Repair steps</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#creating-a-repair-step">Creating a repair step</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#outputting-information">Outputting information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai.html">AI &amp; Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apis.html">APIs &amp; Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth.html">Users &amp; Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware_workflows.html">Groupware &amp; Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="discovery.html">Search &amp; Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devtools.html">Development Tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="internals.html">Server Internals</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="setup_checks.html">Setup checks</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Repair steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-repair-step">Creating a repair step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register-a-repair-step">Register a repair-step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#repair-step-types">Repair-step types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#expensive-repair-steps">Expensive repair steps</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#register-a-repair-step">Register a repair-step</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#repair-step-types">Repair-step types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="snowflake_ids.html">Snowflake IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time.html">Working with time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="openmetrics.html">Open Metrics exporter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="webdav_collection_preload.html">WebDAV collection preload events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
-<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup_checks.html">Setup checks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snowflake_ids.html">Snowflake IDs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
-<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_processing.html">Task Processing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="text2image.html">Text-To-Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
-<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html">WebDAV collection preload events</a></li>
-<li class="toctree-l2"><a class="reference internal" href="time.html">Working with time</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
@@ -147,6 +128,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+          <li class="breadcrumb-item"><a href="internals.html">Server Internals</a></li>
       <li class="breadcrumb-item active">Repair steps</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/repair.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -158,7 +140,7 @@
            <div itemprop="articleBody">
              
   <section id="repair-steps">
-<h1>Repair steps<a class="headerlink" href="#repair-steps" title="Link to this heading"></a></h1>
+<span id="migration-repair-steps"></span><h1>Repair steps<a class="headerlink" href="#repair-steps" title="Link to this heading"></a></h1>
 <p>Repair steps are methods which are executed by Nextcloud on certain
 events which directly affect the app. You can use these repair steps to run
 code when your app is installed, uninstalled, upgraded etc. It’s called repair
@@ -171,7 +153,7 @@ steps because they are frequently used to fix things automatically.</p>
 <h2>Creating a repair step<a class="headerlink" href="#creating-a-repair-step" title="Link to this heading"></a></h2>
 <p>A repair step is an implementation of the  <code class="docutils literal notranslate"><span class="pre">OCP\Migration\IRepairStep</span></code> interface.
 By convention these classes are placed in the <strong>lib/Migration</strong> directory.
-The following repairstep will log a message when executed.</p>
+The following repair step will log a message when executed.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">namespace</span> <span class="nx">OCA\MyApp\Migration</span><span class="p">;</span>
 
@@ -263,21 +245,39 @@ of the app:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">live-migration</span></code> This repair step will be scheduled to be run in the background (e.g. using cron), therefore it is unpredictable when it will run. If the job isn’t required right after the update of the app and the job would take a long time this is the best choice.</p></li>
 </ul>
 </section>
+<section id="expensive-repair-steps">
+<h2>Expensive repair steps<a class="headerlink" href="#expensive-repair-steps" title="Link to this heading"></a></h2>
+<p>Expensive repair steps are non-critical repair steps that might take a long time to execute.
+Non-critical means that they are not required to directly be executed during migration to have a working instance,
+but they might be required to have a fully working instance later on.</p>
+<p>Expensive repair steps are only executed when explicitly requested by the administrator
+when using the <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">maintenance:repair</span></code> command, by passing the <code class="docutils literal notranslate"><span class="pre">--include-expensive</span></code> flag.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Expensive repair steps can only be used for <code class="docutils literal notranslate"><span class="pre">post-migration</span></code> repair steps, as the other types are executed during (un-)installation of the app and therefore should not take a long time.</p>
+</div>
+<section id="creating-an-expensive-repair-step">
+<h3>Creating an expensive repair step<a class="headerlink" href="#creating-an-expensive-repair-step" title="Link to this heading"></a></h3>
+<p>Expensive repair steps are created the same way as normal repair steps as seen in the example above.
+But they have to implement the <code class="docutils literal notranslate"><span class="pre">\OCP\Migration\IRepairStepExpensive</span></code> interface
+instead of the <code class="docutils literal notranslate"><span class="pre">\OCP\Migration\IRepairStep</span></code> interface.</p>
+</section>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="reference.html" class="btn btn-neutral float-left" title="Reference providers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="rest_apis.html" class="btn btn-neutral float-right" title="REST APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="setup_checks.html" class="btn btn-neutral float-left" title="Setup checks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deadlock.html" class="btn btn-neutral float-right" title="Deadlocks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on May 14, 2026.
+      <span class="lastupdated">Last updated on May 15, 2026.
       </span></p>
   </div>
 
@@ -291,11 +291,16 @@ of the app:</p>
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-dev">
       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-dev" class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -318,6 +323,14 @@ of the app:</p>
         </dd>
         
         <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/developer_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/developer_manual"
              
           >
@@ -325,17 +338,20 @@ of the app:</p>
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/31/developer_manual"
-             
-          >
-            31
-          </a>
-        </dd>
-        
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

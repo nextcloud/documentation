@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>macOS Virtual Files-Client &mdash; Nextcloud latest User Manual latest Dokumentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
     <link rel="search" title="Suche" href="../search.html" />
-    <link rel="next" title="Der automatische Updater" href="autoupdate.html" />
+    <link rel="next" title="Using the Command-Line Client" href="commandline.html" />
     <link rel="prev" title="Verwenden des Synchronisierungsclients" href="usage.html" />
    
   
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Dokumentation durchsuchen" aria-label="Dokumentation durchsuchen" />
+    <label for="rtd-search-input" class="sr-only">Dokumentation durchsuchen</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Dokumentation durchsuchen"
+             aria-label="Dokumentation durchsuchen" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,22 +72,35 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest - Einführung zur Benutzeranleitung</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Die Weboberfläche von Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Verwendung der Aktivitäts-App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Dateien &amp; Synchronisation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop-Clients</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html">Verwenden des Synchronisierungsclients</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">macOS Virtual Files-Client</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#supported-features">Unterstützte Funktionen</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installation-and-initial-setup">Installation und Ersteinrichtung</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#finder-integration">Finder-Integration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sync-status-indicators">Sync-Statusanzeigen</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#context-menu-actions">Kontextmenüaktionen</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration">Konfiguration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Deinstallation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usage.html">Verwenden des Synchronisierungsclients</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="usage.html#systray-icon">Taskleistensymbol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#configuring-nextcloud-account-settings">Konfigurieren der Nextcloud-Kontoeinstellungen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#adding-new-accounts">Neue Konten hinzufügen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#file-manager-overlay-icons">Dateimanager-Overlay-Symbole</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#set-the-user-status">Benutzerstatus festlegen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#sharing-from-your-desktop">Von Ihrem Desktop aus teilen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#general-window">Hauptfenster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#using-the-network-window">Verwenden des Netzwerkfensters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#using-the-ignored-files-editor">Verwenden des Editors für ignorierte Dateien</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="usage.html#virtual-files-on-macos">Virtual Files on macOS</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">macOS Virtual Files-Client</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Der automatische Updater</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update-Kanäle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Konflikte</a></li>
@@ -89,7 +111,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universeller Zugriff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Verwendung der Zwei-Faktor-Authentifizierung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Verwaltung verbundener Browser und Geräte</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externer Speicher</a></li>
 </ul>
 
         </div>
@@ -106,7 +127,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Desktop-Clients</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
+          <li class="breadcrumb-item"><a href="usage.html">Verwenden des Synchronisierungsclients</a></li>
       <li class="breadcrumb-item active">macOS Virtual Files-Client</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/macosvfs.rst" class="fa fa-github"> Auf GitHub bearbeiten</a>
@@ -119,76 +141,94 @@
              
   <section id="macos-virtual-files-client">
 <h1>macOS Virtual Files-Client<a class="headerlink" href="#macos-virtual-files-client" title="Link to this heading"></a></h1>
-<p>Die virtuelle dateibasierte Synchronisierung für Nextcloud-Desktopbenutzer ist jetzt auf macOS verfügbar.</p>
-<p>Anders als unter Windows wird die Unterstützung virtueller Dateien unter macOS durch eine separate Client-Version bereitgestellt. Dadurch können wir das bestmögliche Erlebnis für klassisch synchronisierte Dateien aufrechterhalten, einschließlich Synchronisierungsstatusintegration und Kontextmenüaktionen, für Benutzer, die diese Synchronisierungsmethode weiterhin verwenden möchten. Genau wie unser klassischer Synchronisierungsclient wird der virtuelle Dateiclient für macOS zusammen mit dem Desktopclient für Windows und Linux veröffentlicht und profitiert von regelmäßigen Fehlerbehebungen und Funktionsupdates, die das Benutzererlebnis verbessern.</p>
+<p>Unter macOS kann unser Kunde Nextcloud-Dateien nahtlos als Dateianbietererweiterung in macOS integrieren. Bei jedem neu konfigurierten Nextcloud-Konto ist diese Integration standardmäßig aktiviert.</p>
 <section id="supported-features">
 <h2>Unterstützte Funktionen<a class="headerlink" href="#supported-features" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Lokale Aufbewahrung und Räumung pro Datei</p></li>
-<li><p>Intelligente lokale Kopierentfernung</p></li>
-<li><p>Integration mit Spotlight</p></li>
-<li><p>Dateivorschau im Finder für virtuelle Dateien</p></li>
-<li><p>Unterstützung für Apple-spezifische Formate wie App-Bundles und iWork-(Pages, Numbers, Keynote)</p></li>
-<li><p>Kompatibilität mit Remote-Dateisperren</p></li>
+<li><p>Dateien oder ganze Ordner offline verfügbar halten</p></li>
+<li><p>Lokalen Speicherplatz freigeben, indem lokale Kopien entfernt werden, ohne Elemente zu löschen.</p></li>
+<li><p>Intelligente und automatische lokale Datenlöschung</p></li>
+<li><p>Dateivorschau im Finder für noch nicht heruntergeladene Dateien</p></li>
+<li><p>Unterstützung für Apple-spezifische Formate, zum Beispiel Pages-, Numbers- oder Keynote-Pakete</p></li>
+<li><p>Unterstützung für serverseitige Dateisperrung (sofern vom verbundenen Server unterstützt)</p></li>
 <li><p>Unterstützung für „Lokal bearbeiten“</p></li>
-<li><p>Dateifreigabe mit anderen Benutzern</p></li>
-<li><p>Automatische Synchronisierung von Remote-Änderungen</p></li>
-<li><p>Mehr!</p></li>
+<li><p>Mit anderen Benutzern teilen</p></li>
+<li><p>Serverseitige Aktionen, die direkt in das Kontextmenü des Finders integriert sind</p></li>
+<li><p>Automatisches Erkennen von serverseitigen Änderungen</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Bemerkung</p>
-<p>Um die Remote-Änderungserkennung zu verbessern, empfehlen wir, die App <code class="docutils literal notranslate"><span class="pre">notify_push</span></code> auf Ihrem Nextcloud-Server zu aktivieren. Diese App benachrichtigt den Desktop-Client über Änderungen auf dem Server, sobald diese auftreten, und verkürzt so die Zeit, die der Client benötigt, um Änderungen zu erkennen. Dadurch entfällt auch die Notwendigkeit, dass der Desktop-Client den Server kontinuierlich nach Änderungen abfragt.</p>
-</div>
-</section>
-<section id="installation-and-initial-setup">
-<h2>Installation und Ersteinrichtung<a class="headerlink" href="#installation-and-initial-setup" title="Link to this heading"></a></h2>
-<p>Der virtuelle Dateiclient wird als Installationspaket verteilt, das dem klassischen Synchronisierungsclient von macOS ähnelt. Der Desktopclient kann installiert werden, indem Sie die vom Installationsprogramm angegebenen Schritte befolgen.</p>
-<p>Der virtuelle Datei-Desktop-Client ist mit dem klassischen Synchronisierungs-Desktop-Client austauschbar. Das bedeutet, dass Ihre bestehenden Konten und Einstellungen auf diesen Client übertragen werden und umgekehrt, falls Sie sich jemals entscheiden, zum klassischen Synchronisierungs-Client zurückzukehren. Dies schließt alle bereits vorhandenen Standard-Synchronisierungsordner ein, da der virtuelle Datei-Client auch die klassische Synchronisierung unterstützt.</p>
-<div class="admonition note">
-<p class="admonition-title">Bemerkung</p>
-<p>Aufgrund technischer Einschränkungen in macOS können wir keine Integration in Finder für klassische Synchronisierungsordner und virtuelle Dateisynchronisierungsordner bereitstellen. Klassische Synchronisierungsordner im virtuellen Dateiclient verfügen daher nicht über Finder-Integrationen wie Synchronisierungsstatussymbole oder Kontextmenüaktionen.</p>
-</div>
-<p>Bei allen bestehenden oder neu konfigurierten Konten werden virtuelle Dateien automatisch aktiviert. Unter macOS befinden sich die virtuellen Dateien jedes Kontos in einer eigenen Domäne, getrennt von allen bereits vorhandenen klassischen Synchronisierungsordnern. Diese Domänen sind in der Finder-Seitenleiste unter der Gruppe “Orte“ aufgeführt.</p>
-<img alt="Finder-Seitenleiste mit virtuellen Dateidomänen" src="../../_images/macosvfs-finder-sidebar.png" />
-<p>Beim ersten Zugriff auf eine dieser Domänen fordert der Desktop-Client Informationen zu Remotedateien vom Server an. Diese erste Synchronisierung kann je nach der Anzahl der auf dem Server gehosteten Dateien einige Zeit in Anspruch nehmen.</p>
-</section>
-<section id="finder-integration">
-<h2>Finder-Integration<a class="headerlink" href="#finder-integration" title="Link to this heading"></a></h2>
-<p>Der Client für virtuelle Dateien verfügt über verschiedene Finder-Integrationen, die eine tiefere und nativere Integration in den Dateibrowser von macOS ermöglichen als der klassische Synchronisierungsclient.</p>
-</section>
-<section id="sync-status-indicators">
-<h2>Sync-Statusanzeigen<a class="headerlink" href="#sync-status-indicators" title="Link to this heading"></a></h2>
-<p>Ähnlich wie der klassische Synchronisierungsclient zeigt der Client für virtuelle Dateien neben virtuellen Dateien Symbole an, die ihren Status angeben.</p>
-<img alt="Sync-Statussymbole für macOS virtuelle Dateien" src="../../_images/macosvfs-sync-status-icons.png" />
-<ul class="simple">
-<li><p><em>Wolke mit Pfeil</em>: Element oder seine untergeordneten Elemente sind virtuell und stehen zur lokalen Aufbewahrung zur Verfügung</p></li>
-<li><p><em>Wolke mit Umriss</em>: Artikel ist lokal teilweise verfügbar</p></li>
-<li><p><em>Kein Symbol</em>: Artikel ist offline verfügbar</p></li>
-</ul>
-</section>
-<section id="context-menu-actions">
-<h2>Kontextmenüaktionen<a class="headerlink" href="#context-menu-actions" title="Link to this heading"></a></h2>
-<p>Wenn Sie bei gedrückter STRG-Taste, mit zwei Fingern oder mit der rechten Maustaste auf ein Finder-Element klicken, wird das Kontextmenü geöffnet. Darin finden Sie mehrere Einträge des virtuellen Dateiclients, mit denen Sie einige der von Nextcloud unterstützten Funktionen nutzen können. Dazu gehören:</p>
-<ul class="simple">
-<li><p>Dateisperre (sofern vom Server unterstützt)</p></li>
-</ul>
-<img alt="Benutzeroberfläche zum Sperren von macOS virtuelle Dateien" src="../../_images/macosvfs-file-locking.png" />
-<ul class="simple">
-<li><p>Dateifreigabe (sofern vom Server unterstützt)</p></li>
-</ul>
-<img alt="Benutzeroberfläche zur Dateifreigabe für macOS virtuelle Dateien" src="../../_images/macosvfs-file-sharing.png" />
 </section>
 <section id="configuration">
 <h2>Konfiguration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
 <p>Einstellungen für virtuelle Dateien können für jedes Konto einzeln über das Einstellungsfenster des Nextcloud-Desktop-Clients angepasst werden.</p>
-<img alt="Einstellungen für virtuelle Dateien unter macOS" src="../../_images/macosvfs-settings.png" />
-<p>Der Abschnitt virtuelle Dateien bietet eine Reihe von Optionen, die für die Interaktion mit virtuellen Dateien relevant sind:</p>
+<img alt="Nextcloud desktop client settings showing the macOS file provider extension toggle" src="../../_images/macosvfs-settings.jpg" />
+<p>Hier kann die Integration in den Finder aktiviert oder deaktiviert werden.</p>
+<p>Wenn die Dateianbietererweiterung deaktiviert wird, während noch nicht synchronisierte Änderungen vorhanden sind, speichert macOS die nicht synchronisierten Elemente in einem Ordner, der automatisch angezeigt wird, nachdem die Integration deaktiviert wurde.</p>
+</section>
+<section id="finder-integration">
+<h2>Finder-Integration<a class="headerlink" href="#finder-integration" title="Link to this heading"></a></h2>
+<p>Unter macOS wird ein externer Speicher wie ein Nextcloud-Dateikonto in der Finder-Seitenleiste als eigener Speicherort angezeigt. Der tatsächliche Speicherort der Inhalte auf der Festplatte wird von macOS festgelegt.</p>
+<img alt="Finder-Seitenleiste mit Anzeige einer Nextcloud-Dateianbieterdomäne" src="../../_images/macosvfs-finder-sidebar.jpg" />
+<div class="admonition note">
+<p class="admonition-title">Bemerkung</p>
+<p>Um die serverseitige Änderungserkennung zu beschleunigen, empfehlen wir, die App <code class="docutils literal notranslate"><span class="pre">notify_push</span></code> auf Ihrem Nextcloud-Server zu aktivieren. Diese App benachrichtigt den Desktop-Client umgehend über Änderungen auf dem Server und verkürzt so die Zeit, bis diese im Finder angezeigt werden. Andernfalls muss der Client den Server abfragen, was die Verzögerung zwischen einer Änderung auf dem Server und ihrer lokalen Sichtbarkeit erhöht.</p>
+</div>
+</section>
+<section id="sync-status-indicators">
+<h2>Sync-Statusanzeigen<a class="headerlink" href="#sync-status-indicators" title="Link to this heading"></a></h2>
+<p>Ähnlich wie bei klassischen Synchronisierungsordnern zeigt der Finder Statusanzeigen neben den Objekten an. Im Gegensatz zu den benutzerdefinierten Anzeigen in klassischen Synchronisierungsordnern werden diese standardisierten Anzeigen von macOS bereitgestellt, um ein einheitliches Erscheinungsbild in allen Cloud-Speicher-Apps zu gewährleisten, die ein Benutzer auf seinem System verwendet.</p>
 <ul class="simple">
-<li><p>Aktivieren/Deaktivieren virtueller Dateien für das Zielkonto</p></li>
-<li><p>Schnelle Synchronisierung aktivieren/deaktivieren</p></li>
-<li><p>Verwalten Sie die lokale Speichernutzung und entfernen Sie lokale Kopien</p></li>
-<li><p>Erzwingen, dass die virtuelle Dateidomäne nach Updates sucht</p></li>
+<li><p><em>Wolke mit Pfeil nach unten</em>: Das Element und seine Unterelemente wurden noch nicht heruntergeladen. Sie können heruntergeladen werden, sofern eine Netzwerkverbindung besteht.</p></li>
+<li><p><em>Umrandete Wolke</em>: Das Element ist in seinem aktuellen lokalen Zustand noch nicht vollständig hochgeladen.</p></li>
+<li><p><em>Durchgestrichene Wolke</em>: Das Element ist von der Synchronisierung ausgeschlossen.</p></li>
+<li><p><em>Kreisdiagramm</em>: Das Element wird gerade hoch- oder heruntergeladen, und der Fortschritt wird visualisiert.</p></li>
+<li><p><em>Filled circle with a pin</em>: The item is available offline and will
+be kept locally.</p></li>
+<li><p><em>Kein Symbol</em>: Element ist offline verfügbar und aktuell.</p></li>
 </ul>
+</section>
+<section id="context-menu-actions">
+<h2>Kontextmenüaktionen<a class="headerlink" href="#context-menu-actions" title="Link to this heading"></a></h2>
+<img alt="macOS Finder context menu on a Nextcloud file showing Keep Downloaded, Lock, and Share options" src="../../_images/macosvfs-context-menu.jpg" />
+<p>Die Dateianbietererweiterung bietet außerdem spezielle Nextcloud-Funktionen über das Kontextmenü im Finder.</p>
+<section id="keep-downloaded">
+<h3>Heruntergeladene Dateien behalten<a class="headerlink" href="#keep-downloaded" title="Link to this heading"></a></h3>
+<p>Files and folders can be marked to be kept downloaded and available offline
+permanently. If this is chosen on folders, it will also apply to all their
+contents. This is especially useful for users with limited or no network
+access, as it ensures that they can always access their important files without
+needing to worry about connectivity. macOS will <strong>not</strong> free up local disk
+space by evicting items which are marked to be kept downloaded, even if they
+have not been accessed for a long time.</p>
+<p>This can be undone by selecting „Allow automatic freeing up space“ on the same
+items.</p>
+<p>To always keep everything in an account available locally, you can select
+„Always keep downloaded“ on the location root in the Finder sidebar.</p>
+</section>
+<section id="locking">
+<h3>Sperren<a class="headerlink" href="#locking" title="Link to this heading"></a></h3>
+<img alt="macOS Finder showing a Nextcloud file with a lock indicator after locking" src="../../_images/macosvfs-file-locking.jpg" />
+<p>Wenn der Server das Sperren von Dateien unterstützt, bietet der Client die Möglichkeit, Dateien im Finder manuell zu sperren und zu entsperren.</p>
+</section>
+<section id="sharing">
+<h3>Teilen<a class="headerlink" href="#sharing" title="Link to this heading"></a></h3>
+<img alt="macOS Finder share management panel for a Nextcloud file showing existing shares" src="../../_images/macosvfs-file-sharing.jpg" />
+<p>Wenn der Server das Teilen unterstützt und das Element zum Teilen freigegeben werden darf, können Sie neue Freigaben erstellen oder bestehende Freigaben für ein Element direkt über das Kontextmenü im Finder verwalten, genau wie in der Nextcloud-Weboberfläche.</p>
+</section>
+<section id="file-actions">
+<h3>Dateiaktionen<a class="headerlink" href="#file-actions" title="Link to this heading"></a></h3>
+<p>Sind auf dem Server Apps installiert, die Aktionen für die ausgewählten Dateitypen bereitstellen, stehen diese Aktionen auch im Kontextmenü des Finders zur Verfügung. Dadurch können Sie serverseitige Funktionen Ihrer Nextcloud-Instanz direkt im Finder nutzen.</p>
+</section>
+</section>
+<section id="known-issues">
+<h2>Bekannte Probleme<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<section id="macos-extensions-conflict">
+<h3>Konflikt mit macOS-Erweiterungen<a class="headerlink" href="#macos-extensions-conflict" title="Link to this heading"></a></h3>
+<p>Aufgrund technischer Einschränkungen in macOS, die von Apple vorgegeben werden, ist es nicht möglich, die Finder-Integration für klassische Synchronisierungsordner parallel zu einer aktivierten Integration virtueller Dateien zu nutzen. Dies bedeutet, dass Objektdekorationen und Kontextmenüoptionen für klassische Synchronisierungsordner nicht verfügbar sind, solange die Dateianbietererweiterung aktiviert ist.</p>
+</section>
+<section id="alias-files">
+<h3>Alias-Dateien<a class="headerlink" href="#alias-files" title="Link to this heading"></a></h3>
+<p>Wenn Sie eine in Nextcloud gespeicherte macOS-Aliasdatei zum ersten Mal auf einem Gerät öffnen, auf dem sie noch nicht heruntergeladen wurde, kann es vorkommen, dass die Datei in einem Texteditor als Binärdokument geöffnet wird, anstatt direkt zum Zielverzeichnis zu springen. Dies liegt daran, dass macOS die Art des Öffnens einer Datei bereits vor dem Herunterladen festlegt und Aliasdateien auf dem Server keine erkennbare Dateierweiterung oder Typinformationen enthalten – sie lassen sich nur anhand ihres Inhalts identifizieren. Sobald die Datei einmal geöffnet oder heruntergeladen wurde, erkennt Nextcloud Desktop sie als Alias ​​und speichert diese Information lokal, sodass alle nachfolgenden Öffnungen korrekt funktionieren. Um dieses Problem vollständig zu vermeiden, klicken Sie vor dem ersten Öffnen mit der rechten Maustaste auf die Aliasdatei im Finder und wählen Sie <strong>Heruntergeladene Dateien behalten</strong>.</p>
+</section>
 </section>
 </section>
 
@@ -197,7 +237,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="usage.html" class="btn btn-neutral float-left" title="Verwenden des Synchronisierungsclients" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Zurück</a>
-        <a href="autoupdate.html" class="btn btn-neutral float-right" title="Der automatische Updater" accesskey="n" rel="next">Weiter <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="commandline.html" class="btn btn-neutral float-right" title="Using the Command-Line Client" accesskey="n" rel="next">Weiter <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -301,16 +341,25 @@
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 German
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Sprachen</dt>
         
@@ -485,6 +534,22 @@
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -653,6 +718,14 @@
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -660,31 +733,20 @@
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Downloads</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>Auf "Read the docs"</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Projekt Startseite</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Builds</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

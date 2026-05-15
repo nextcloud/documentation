@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using end-to-end encryption &mdash; Nextcloud latest User Manual latest Dokumentation</title>
+  <title>Ende-zu-Ende-Verschlüsselung verwenden &mdash; Nextcloud latest User Manual latest Dokumentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,8 +31,8 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
     <link rel="search" title="Suche" href="../search.html" />
-    <link rel="next" title="Dateifreigabe" href="sharing.html" />
-    <link rel="prev" title="Verschlüsseln Ihrer Nextcloud-Dateien auf dem Server" href="encrypting_files.html" />
+    <link rel="next" title="Groupware" href="../groupware/index.html" />
+    <link rel="prev" title="Verwendung serverseitiger Verschlüsselung" href="encrypting_files.html" />
    
   
 </head>
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Dokumentation durchsuchen" aria-label="Dokumentation durchsuchen" />
+    <label for="rtd-search-input" class="sr-only">Dokumentation durchsuchen</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Dokumentation durchsuchen"
+             aria-label="Dokumentation durchsuchen" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,39 +72,33 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest - Einführung zur Benutzeranleitung</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Die Weboberfläche von Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Verwendung der Aktivitäts-App</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Dateien &amp; Synchronisation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Zugriff auf Ihre Dateien über die Nextcloud-Weboberfläche</a></li>
-<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Zugriff auf Nextcloud-Dateien über WebDAV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Gelöschte Dateien verwalten</a></li>
-<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synchronisierung für Mobilgeräte und Desktops</a></li>
-<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Verschlüsseln Ihrer Nextcloud-Dateien auf dem Server</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using end-to-end encryption</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#enabling-e2ee">Enabling E2EE</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#encrypting-a-folder">Encrypting a folder</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#adding-an-e2ee-device">Adding an E2EE device</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#displaying-the-mnemonic">Displaying the mnemonic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accessing.html">Zugriff auf Ihre Dateien</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Verwalten Sie Ihre Dateien</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Teilen &amp; Zusammenarbeit</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="security.html">Sicherheit &amp; Verschlüsselung</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="encrypting_files.html">Verwendung serverseitiger Verschlüsselung</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Ende-zu-Ende-Verschlüsselung verwenden</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-e2ee">E2EE aktivieren</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#encrypting-a-folder">Einen Ordner verschlüsseln</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-an-e2ee-device">Ein E2EE-Gerät hinzufügen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#displaying-the-mnemonic">Das Mnemonic anzeigen</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html">Dateifreigabe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Federated-Freigaben</a></li>
-<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Anonyme Uploads durchführen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Große Dateien hochladen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quota.html">Speicherkontingent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="version_control.html">Versionskontrolle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projects.html">Projekte</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Eigentum übertragen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Federated-Freigaben verwenden</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop-Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Einstellungen vornehmen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universeller Zugriff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Verwendung der Zwei-Faktor-Authentifizierung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Verwaltung verbundener Browser und Geräte</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externer Speicher</a></li>
 </ul>
 
         </div>
@@ -113,7 +116,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Dateien &amp; Synchronisation</a></li>
-      <li class="breadcrumb-item active">Using end-to-end encryption</li>
+          <li class="breadcrumb-item"><a href="security.html">Sicherheit &amp; Verschlüsselung</a></li>
+      <li class="breadcrumb-item active">Ende-zu-Ende-Verschlüsselung verwenden</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/using_e2ee.rst" class="fa fa-github"> Auf GitHub bearbeiten</a>
       </li>
@@ -124,95 +128,92 @@
            <div itemprop="articleBody">
              
   <section id="using-end-to-end-encryption">
-<h1>Using end-to-end encryption<a class="headerlink" href="#using-end-to-end-encryption" title="Link to this heading"></a></h1>
-<p>If enabled server side, Nextcloud provides the possibility to encrypt your files on your devices.
-This is called end-to-end encryption, or E2EE, because the files are encrypted on your device and only decrypted on your device.
-The server never sees the unencrypted files, further protecting user privacy and data security.</p>
+<h1>Ende-zu-Ende-Verschlüsselung verwenden<a class="headerlink" href="#using-end-to-end-encryption" title="Link to this heading"></a></h1>
+<p>Wenn die serverseitige Verschlüsselung aktiviert ist, bietet Nextcloud die Möglichkeit, Ihre Dateien auf Ihren Geräten zu verschlüsseln. Dies wird als Ende-zu-Ende-Verschlüsselung (E2EE) bezeichnet, da die Dateien auf Ihrem Gerät verschlüsselt und nur dort entschlüsselt werden. Der Server erhält niemals Zugriff auf die unverschlüsselten Dateien, wodurch die Privatsphäre der Nutzer und die Datensicherheit zusätzlich geschützt werden.</p>
 <section id="enabling-e2ee">
-<h2>Enabling E2EE<a class="headerlink" href="#enabling-e2ee" title="Link to this heading"></a></h2>
-<p>If your administrator enabled the [End-to-End Encryption app](<a class="reference external" href="https://apps.nextcloud.com/apps/end_to_end_encryption">https://apps.nextcloud.com/apps/end_to_end_encryption</a>), you can start using it from one of your devices.
-Open the settings of the Nextcloud client and look for the EE2E encryption settings.</p>
+<h2>E2EE aktivieren<a class="headerlink" href="#enabling-e2ee" title="Link to this heading"></a></h2>
+<p>If your administrator has enabled the <a class="reference external" href="https://apps.nextcloud.com/apps/end_to_end_encryption">End-to-End Encryption app</a>, you can start using it from one of your devices.
+Open the settings of the Nextcloud client and look for the E2EE encryption settings.</p>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-setup.png"><img alt="Setup E2EE on the desktop client" src="../../_images/e2ee-desktop-setup.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-setup.png"><img alt="E2EE im Desktop-Client einrichten" src="../../_images/e2ee-desktop-setup.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-setup.png"><img alt="Setup E2EE on Android" src="../../_images/e2ee-android-setup.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-setup.png"><img alt="E2EE unter Android einrichten" src="../../_images/e2ee-android-setup.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-1.png"><img alt="Setup E2EE on iOS step 1" src="../../_images/e2ee-ios-setup-1.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-1.png"><img alt="E2EE unter iOS einrichten Schritt 1" src="../../_images/e2ee-ios-setup-1.png" style="width: 400px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-2.png"><img alt="Setup E2EE on iOS step 2" src="../../_images/e2ee-ios-setup-2.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-2.png"><img alt="E2EE unter iOS einrichten Schritt 2" src="../../_images/e2ee-ios-setup-2.png" style="width: 400px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-3.png"><img alt="Setup E2EE on iOS step 3" src="../../_images/e2ee-ios-setup-3.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-3.png"><img alt="E2EE unter iOS einrichten Schritt 3" src="../../_images/e2ee-ios-setup-3.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Warnung</p>
-<p>It is not possible to enable encryption on a folder in the browser. This must be done on a client app, either a desktop or mobile client.</p>
+<p>Die Verschlüsselung eines Ordners kann nicht im Browser aktiviert werden. Dies muss über eine Client-Anwendung erfolgen, entweder auf einem Desktop- oder einem Mobilgerät.</p>
 </div>
 </details><br /></section>
 <section id="encrypting-a-folder">
-<h2>Encrypting a folder<a class="headerlink" href="#encrypting-a-folder" title="Link to this heading"></a></h2>
+<h2>Einen Ordner verschlüsseln<a class="headerlink" href="#encrypting-a-folder" title="Link to this heading"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warnung</p>
-<p>You can only enable encryption on empty folders.</p>
+<p>Die Verschlüsselung kann nur für leere Ordner aktiviert werden.</p>
 </div>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-1.png"><img alt="Encrypting a folder on the desktop client step 1" src="../../_images/e2ee-desktop-encrypt-1.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-1.png"><img alt="Einen Ordner mit dem Desktop-Client verschlüsseln Schritt 1" src="../../_images/e2ee-desktop-encrypt-1.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-2.png"><img alt="Encrypting a folder on the desktop client step 2" src="../../_images/e2ee-desktop-encrypt-2.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-2.png"><img alt="Einen Ordner mit dem Desktop-Client verschlüsseln Schritt 2" src="../../_images/e2ee-desktop-encrypt-2.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-3.png"><img alt="Encrypting a folder on the desktop client step 3" src="../../_images/e2ee-desktop-encrypt-3.png" style="width: 750px;" />
-</a>
-</details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-encrypt.png"><img alt="Encrypting a folder on an Android device" src="../../_images/e2ee-android-encrypt.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-3.png"><img alt="Einen Ordner mit dem Desktop-Client verschlüsseln Schritt 3" src="../../_images/e2ee-desktop-encrypt-3.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-encrypt.png"><img alt="Encrypting a folder on an iOS device" src="../../_images/e2ee-ios-encrypt.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-encrypt.png"><img alt="Einen Ordner auf einem Android-Gerät verschlüsseln" src="../../_images/e2ee-android-encrypt.png" style="width: 400px;" />
+</a>
+</details><details>
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-encrypt.png"><img alt="Einen Ordner auf einem iOS-Gerät verschlüsseln" src="../../_images/e2ee-ios-encrypt.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Warnung</p>
-<p>It is not possible to enable encryption on a folder in the browser. This must be done on a client app, either a desktop or mobile client.</p>
+<p>Die Verschlüsselung eines Ordners kann nicht im Browser aktiviert werden. Dies muss über eine Client-Anwendung erfolgen, entweder auf einem Desktop- oder einem Mobilgerät.</p>
 </div>
 </details><br /></section>
 <section id="adding-an-e2ee-device">
-<h2>Adding an E2EE device<a class="headerlink" href="#adding-an-e2ee-device" title="Link to this heading"></a></h2>
+<h2>Ein E2EE-Gerät hinzufügen<a class="headerlink" href="#adding-an-e2ee-device" title="Link to this heading"></a></h2>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-add.png"><img alt="Setup a new desktop client" src="../../_images/e2ee-desktop-add.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-add.png"><img alt="Einen neuen Desktop-Client einrichten" src="../../_images/e2ee-desktop-add.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-add.png"><img alt="Setup a new Android device" src="../../_images/e2ee-android-add.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-add.png"><img alt="Ein neues Android-Gerät einrichten" src="../../_images/e2ee-android-add.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-add.png"><img alt="Setup a new iOS device" src="../../_images/e2ee-ios-add.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-add.png"><img alt="Ein neues iOS-Gerät einrichten" src="../../_images/e2ee-ios-add.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>Web</summary><p>In the browser, first enable E2EE in the personal settings. This is needed, as E2EE is less secure in the browser, requiring you to fully trust the administrator to not alter the source code the browser will execute.
-E2EE folders are currently read-only. Therefore, it is not possible to add, remove, edit, or share an E2EE file from the browser.</p>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-1.png"><img alt="Setup a new browser session step 1" src="../../_images/e2ee-web-add-1.png" style="width: 750px;" />
+<summary>Web</summary><p>Aktivieren Sie zunächst die Ende-zu-Ende-Verschlüsselung (E2EE) in den persönlichen Einstellungen Ihres Browsers. Dies ist erforderlich, da E2EE im Browser weniger sicher ist und Sie dem Administrator uneingeschränkt vertrauen müssen, dass er den vom Browser ausgeführten Quellcode nicht verändert. E2EE-Ordner sind derzeit schreibgeschützt. Daher ist es nicht möglich, E2EE-Dateien über den Browser hinzuzufügen, zu entfernen, zu bearbeiten oder freizugeben.</p>
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-1.png"><img alt="Eine neue Browsersitzung einrichten, Schritt 1" src="../../_images/e2ee-web-add-1.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-2.png"><img alt="Setup a new browser session step 2" src="../../_images/e2ee-web-add-2.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-2.png"><img alt="Eine neue Browsersitzung einrichten, Schritt 2" src="../../_images/e2ee-web-add-2.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-3.png"><img alt="Setup a new browser session step 3" src="../../_images/e2ee-web-add-3.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-3.png"><img alt="Eine neue Browsersitzung einrichten, Schritt 3" src="../../_images/e2ee-web-add-3.png" style="width: 750px;" />
 </a>
 </details><br /></section>
 <section id="displaying-the-mnemonic">
-<h2>Displaying the mnemonic<a class="headerlink" href="#displaying-the-mnemonic" title="Link to this heading"></a></h2>
-<p>The mnemonic is a list of words that is used to encrypt and decrypt your files. It is important to keep this mnemonic safe, as it is the only way to access your files if you lose access to your device. If you lose access to your mnemonic, you will lose access to your files.</p>
+<h2>Das Mnemonic anzeigen<a class="headerlink" href="#displaying-the-mnemonic" title="Link to this heading"></a></h2>
+<p>Die Mnemonik ist eine Liste von Wörtern, die zum Ver- und Entschlüsseln Ihrer Dateien verwendet wird. Es ist wichtig, diese Mnemonik sicher aufzubewahren, da sie die einzige Möglichkeit darstellt, auf Ihre Dateien zuzugreifen, falls Sie den Zugriff auf Ihr Gerät verlieren. Wenn Sie den Zugriff auf Ihre Mnemonik verlieren, verlieren Sie auch den Zugriff auf Ihre Dateien.</p>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-mnemonic.png"><img alt="Displaying the mnemonic on the desktop client" src="../../_images/e2ee-desktop-mnemonic.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-mnemonic.png"><img alt="Das Mnemonic im Desktop-Client anzeigen" src="../../_images/e2ee-desktop-mnemonic.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-mnemonic.png"><img alt="Displaying the mnemonic on an Android device" src="../../_images/e2ee-android-mnemonic.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-mnemonic.png"><img alt="Das Mnemonic auf einem Android-Gerät anzeigen" src="../../_images/e2ee-android-mnemonic.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-mnemonic.png"><img alt="Displaying the mnemonic on an iOS device" src="../../_images/e2ee-ios-mnemonic.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-mnemonic.png"><img alt="Das Mnemonic auf einem iOS-Gerät anzeigen" src="../../_images/e2ee-ios-mnemonic.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Warnung</p>
-<p>It is not possible to display the mnemonic in the browser.</p>
+<p>Die Merkhilfe kann im Browser nicht angezeigt werden.</p>
 </div>
 </details><br /></section>
 </section>
@@ -221,8 +222,8 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="encrypting_files.html" class="btn btn-neutral float-left" title="Verschlüsseln Ihrer Nextcloud-Dateien auf dem Server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Zurück</a>
-        <a href="sharing.html" class="btn btn-neutral float-right" title="Dateifreigabe" accesskey="n" rel="next">Weiter <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="encrypting_files.html" class="btn btn-neutral float-left" title="Verwendung serverseitiger Verschlüsselung" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Zurück</a>
+        <a href="../groupware/index.html" class="btn btn-neutral float-right" title="Groupware" accesskey="n" rel="next">Weiter <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -326,16 +327,25 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 German
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Sprachen</dt>
         
@@ -510,6 +520,22 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -678,6 +704,14 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -685,31 +719,20 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Downloads</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>Auf "Read the docs"</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Projekt Startseite</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Builds</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

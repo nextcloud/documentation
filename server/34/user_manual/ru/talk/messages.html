@@ -1,0 +1,717 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Взаимодействие с сообщениями &mdash; документация Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/talk/messages.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=ca9b7fb8"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=5b699b7f"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Приложения, интегрирующиеся с сообщениями" href="message_integrations.html" />
+    <link rel="prev" title="Отправка сообщений" href="chat.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Логотип"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Поиск в документации</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Поиск в документации"
+             aria-label="Поиск в документации" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest руководство пользователя. Введение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Использование приложения «Активность»</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Файлы и синхронизация</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Программное обеспечение для совместной работы</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Talk</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="chat_index.html">Чат</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="chat.html">Отправка сообщений</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Взаимодействие с сообщениями</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#editing-messages">Редактирование сообщений</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pinning-messages">Закрепление сообщений</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-reminder-on-messages">Установка напоминаний о сообщениях</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#messages-search-in-a-conversation">Поиск сообщений в разговоре</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#threaded-messages">Нити (темы) сообщений</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="message_integrations.html">Приложения, интегрирующиеся с сообщениями</a></li>
+<li class="toctree-l3"><a class="reference internal" href="attachments.html">Вложения</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="conversation_index.html">Разговоры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="call_index.html">Звонки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federation_index.html">Федерация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moderator_index.html">Для модераторов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html">Присоединитесь к звонку или чату в качестве гостя</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Персональные настройки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Специальные возможности</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Использование двухфакторной аутентификации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управление подключенными браузерами и устройствами</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Talk</a></li>
+          <li class="breadcrumb-item"><a href="chat_index.html">Чат</a></li>
+      <li class="breadcrumb-item active">Взаимодействие с сообщениями</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/messages.rst" class="fa fa-github"> Редактировать на GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="interacting-with-messages">
+<h1>Взаимодействие с сообщениями<a class="headerlink" href="#interacting-with-messages" title="Ссылка на этот заголовок"></a></h1>
+<section id="editing-messages">
+<h2>Редактирование сообщений<a class="headerlink" href="#editing-messages" title="Ссылка на этот заголовок"></a></h2>
+<p>Редактировать сообщения и подписи к общим файлам можно в течение 6 часов после отправки.</p>
+<a class="reference internal image-reference" href="../../_images/message-editing.png"><img alt="Talk chat view showing the edit option on a message" src="../../_images/message-editing.png" style="width: 600px;" />
+</a>
+</section>
+<section id="pinning-messages">
+<h2>Закрепление сообщений<a class="headerlink" href="#pinning-messages" title="Ссылка на этот заголовок"></a></h2>
+<p>Модератор может закреплять важные сообщения в разговоре на определённый период времени или до тех пор, пока они не перестанут быть актуальными.</p>
+<a class="reference internal image-reference" href="../../_images/message-pin-action.png"><img alt="Talk message context menu with pin message option" src="../../_images/message-pin-action.png" style="width: 400px;" />
+</a>
+<p>Закреплённые сообщения подсвечиваются и доступны над чатом или на вкладке <code class="docutils literal notranslate"><span class="pre">Общие</span> <span class="pre">элементы</span></code> боковой панели контента. Если вам больше не нужно закреплённое сообщение, вы можете открепить его для всех или только для себя с помощью быстрых действий.</p>
+<a class="reference internal image-reference" href="../../_images/message-pin-in-chat.png"><img alt="Talk chat view with a pinned message highlighted above the conversation" src="../../_images/message-pin-in-chat.png" style="width: 700px;" />
+</a>
+</section>
+<section id="setting-reminder-on-messages">
+<h2>Установка напоминаний о сообщениях<a class="headerlink" href="#setting-reminder-on-messages" title="Ссылка на этот заголовок"></a></h2>
+<p>Вы можете устанавливать напоминания для конкретных сообщений. Если есть важное сообщение, о котором вы хотите получить уведомление позже, просто наведите на него курсор и щёлкните значок напоминания.</p>
+<a class="reference internal image-reference" href="../../_images/set-message-reminder.png"><img alt="Talk message context menu showing the set reminder option" src="../../_images/set-message-reminder.png" style="width: 400px;" />
+</a>
+<p>В подменю вы можете выбрать подходящее время, чтобы получить уведомление позже.</p>
+<a class="reference internal image-reference" href="../../_images/configure-message-reminder.png"><img alt="Talk reminder time selection submenu for a message" src="../../_images/configure-message-reminder.png" style="width: 400px;" />
+</a>
+<p>Вы также можете переслать сообщение в другой разговор, используя меню <code class="docutils literal notranslate"><span class="pre">...</span></code>, или отправить его в свой разговор <strong>Примечание для себя</strong> для личного использования.</p>
+</section>
+<section id="messages-search-in-a-conversation">
+<h2>Поиск сообщений в разговоре<a class="headerlink" href="#messages-search-in-a-conversation" title="Ссылка на этот заголовок"></a></h2>
+<p>Помимо глобального унифицированного поиска, вы можете искать сообщения внутри конкретной беседы. На боковой панели содержимого разговора щёлкните значок поиска, чтобы открыть вкладку поиска.</p>
+<a class="reference internal image-reference" href="../../_images/chat-search-messages.png"><img alt="Talk in-conversation message search field" src="../../_images/chat-search-messages.png" style="width: 500px;" />
+</a>
+<p>Вы можете сузить поиск, используя такие фильтры, как диапазон дат и отправитель.</p>
+<a class="reference internal image-reference" href="../../_images/chat-search-messages-tab.png"><img alt="Talk message search with date range and sender filter options" src="../../_images/chat-search-messages-tab.png" style="width: 500px;" />
+</a>
+</section>
+<section id="threaded-messages">
+<h2>Нити (темы) сообщений<a class="headerlink" href="#threaded-messages" title="Ссылка на этот заголовок"></a></h2>
+<p>Вы можете создавать нити (темы) в разговорах, чтобы поддерживать порядок в обсуждениях. Возможность создания нити (темы) доступна в дополнительных действиях при создании нового сообщения.</p>
+<a class="reference internal image-reference" href="../../_images/thread-create-action.png"><img alt="Talk message context menu showing the create thread option" src="../../_images/thread-create-action.png" style="width: 400px;" />
+</a>
+<p>Затем вы можете добавить заголовок и описание нити (темы) и начать обсуждение.</p>
+<a class="reference internal image-reference" href="../../_images/thread-example.png"><img alt="Talk thread creation dialog with title and description fields" src="../../_images/thread-example.png" style="width: 600px;" />
+</a>
+<p>Вы можете просмотреть все ответы в нити (теме) либо с помощью кнопки ответов в сообщении, либо на вкладке <code class="docutils literal notranslate"><span class="pre">Общие</span> <span class="pre">элементы</span></code> на боковой панели содержимого.</p>
+<a class="reference internal image-reference" href="../../_images/threads-list-shared-items.png"><img alt="Talk shared items sidebar panel listing conversation threads" src="../../_images/threads-list-shared-items.png" style="width: 500px;" />
+</a>
+<p>Вы можете подписаться на нить (тему), чтобы получать уведомления о новых ответах. Подписаться можно как из самой нити (темы), так и с боковой панели.</p>
+<a class="reference internal image-reference" href="../../_images/thread-notifications.png"><img alt="Talk thread with notification subscription toggle" src="../../_images/thread-notifications.png" style="width: 500px;" />
+</a>
+<p>Подписанные нити (темы) легко доступны из панели навигации в разделе <code class="docutils literal notranslate"><span class="pre">Нити</span></code> (<code class="docutils literal notranslate"><span class="pre">Темы</span></code>).</p>
+<a class="reference internal image-reference" href="../../_images/threads-followed.png"><img alt="Talk navigation bar Threads section showing followed threads" src="../../_images/threads-followed.png" style="width: 500px;" />
+</a>
+<p>Вы можете редактировать название нити (темы) как в самой нити (теме), так и на боковой панели.</p>
+<a class="reference internal image-reference" href="../../_images/thread-edit-title.png"><img alt="Talk thread title edit option in the thread header" src="../../_images/thread-edit-title.png" style="width: 500px;" />
+</a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="chat.html" class="btn btn-neutral float-left" title="Отправка сообщений" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="message_integrations.html" class="btn btn-neutral float-right" title="Приложения, интегрирующиеся с сообщениями" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2016-2026 Nextcloud GmbH and Nextcloud contributors. </p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 Russian
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl>
+        <dt>🌐  Языки</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Версии</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

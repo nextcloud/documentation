@@ -1,0 +1,777 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Containers / Dependency Injection &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/basics/dependency_injection.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Controllers" href="controllers.html" />
+    <link rel="prev" title="Routing" href="routing.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic concepts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="request_lifecycle.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing.html">Routing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Containers / Dependency Injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-pattern-of-dependency-injection">Basic Pattern of Dependency Injection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advantages">Advantages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controller-injection">Controller Injection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-a-container">Using a container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-the-container-works">How the container works</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-automatic-dependency-assembly-recommended">Use automatic dependency assembly (recommended)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-does-auto-wiring-work">How does auto-wiring work</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-does-it-affect-the-request-lifecycle">How does it affect the request lifecycle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-does-this-affect-controllers">How does this affect controllers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-deal-with-interface-and-primitive-type-parameters">How to deal with interface and primitive type parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#predefined-core-services">Predefined core services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-enable-it">How to enable it</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#which-classes-should-be-added">Which classes should be added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-services">Optional services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-the-container-from-anywhere">Accessing the container from anywhere</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="middlewares.html">Middlewares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="front-end/index.html">Front-end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setting.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="public_share_template.html">Public share template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Basic concepts</a></li>
+      <li class="breadcrumb-item active">Containers / Dependency Injection</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/basics/dependency_injection.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="containers-dependency-injection">
+<h1>Containers / Dependency Injection<a class="headerlink" href="#containers-dependency-injection" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>Modern software applications are composed of various components that need to interact
+with one another. Traditionally, objects create their own dependencies internally,
+which leads to tight coupling and makes code harder to test, maintain, and extend.
+<a class="reference external" href="https://en.wikipedia.org/wiki/Dependency_injection">Dependency injection (DI)</a> is
+a software design pattern that helps solve this problem by having dependencies provided
+from the outside, rather than being constructed inside the object itself.</p>
+<p>Dependency injection may sound like a big concept, but it’s really just about making
+your code easier to work with and more flexible. Instead of each part of your app
+creating the things it needs by itself, those “dependencies” are handed to it – usually
+by a special helper called a container. This means your classes don’t need to know how
+to create their collaborators; they just need to know how to use them.</p>
+<p>The App Framework in Nextcloud assembles applications using a container based on this
+design pattern. This approach leads to more modular, testable, and maintainable code.</p>
+<p>Using dependency injection is about more than just elegant code. When all apps follow
+this pattern:</p>
+<ul class="simple">
+<li><p>It’s easier to test and upgrade both apps and the server, since dependencies can be
+swapped out or mocked.</p></li>
+<li><p>Apps stay decoupled from internal server details, making it safer for Nextcloud to
+evolve without breaking your app.</p></li>
+<li><p>Core features like autowiring, service discovery, and new APIs become available to all
+apps without extra boilerplate.</p></li>
+<li><p>Memory and resource usage can be reduced.</p></li>
+<li><p>New services or APIs become easier to adopt as Nextcloud evolves.</p></li>
+</ul>
+<p>By sharing a consistent approach to building and wiring up dependencies, everyone –
+core and app developers alike – benefits from a more robust, secure, and future-proof
+platform.</p>
+<p>If you are unfamiliar with the DI design pattern, don’t worry – it’s widely used in
+modern frameworks, and you’ll soon become comfortable with it. You can also watch the
+following video introduction:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=RlfLCWKxHJ0">Google Clean Code Talks</a></p></li>
+</ul>
+</section>
+<section id="basic-pattern-of-dependency-injection">
+<span id="dependency-injection"></span><h2>Basic Pattern of Dependency Injection<a class="headerlink" href="#basic-pattern-of-dependency-injection" title="Link to this heading"></a></h2>
+<p>The essence of dependency injection is: <strong>don’t instantiate dependencies directly inside
+your classes or methods, but instead pass them in as parameters</strong>. This allows swapping
+out dependencies (such as with mocks in unit tests), makes dependencies explicit, and
+centralizes object creation logic.</p>
+<p>For example, consider the following pattern:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * Without dependency injection:</span>
+<span class="sd"> */</span>
+
+<span class="k">use</span> <span class="nx">OCP\IDBConnection</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthorMapper</span> <span class="p">{</span>
+
+  <span class="c1">// Define a property to store the dependency</span>
+<span class="hll">  <span class="k">private</span> <span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">;</span>
+</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// The dependency is instantiated within the class</span>
+<span class="hll">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Db</span><span class="p">();</span>
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>With dependency injection, you would instead request the dependency as part of the constructor parameters:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * Using dependency injection:</span>
+<span class="sd"> */</span>
+
+<span class="k">use</span> <span class="nx">OCP\IDBConnection</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthorMapper</span> <span class="p">{</span>
+
+  <span class="c1">// Define a property to store the dependency</span>
+<span class="hll">  <span class="k">private</span> <span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">;</span>
+</span>
+  <span class="c1">// The dependency is passed in from outside (typically by the container)</span>
+<span class="hll">  <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">)</span> <span class="p">{</span>
+</span>    <span class="c1">// Assigned to the property</span>
+<span class="hll">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span> <span class="o">=</span> <span class="nv">$db</span><span class="p">;</span>
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Or, more succinctly, by using constructor property promotion (available in current PHP versions).
+The following is exactly equivalent:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * Using dependency injection with constructor property promotion:</span>
+<span class="sd"> */</span>
+
+<span class="k">use</span> <span class="nx">OCP\IDBConnection</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthorMapper</span> <span class="p">{</span>
+
+  <span class="sd">/**</span>
+<span class="sd">   * Constructor property promotion with DI reduces boilerplate code by</span>
+<span class="sd">   * handling everything within the constructor parameters. The example below</span>
+<span class="sd">   * does exactly the same thing as the prior example, but in less code:</span>
+<span class="sd">   *</span>
+<span class="sd">   * - The dependency is passed in from outside (by the container)</span>
+<span class="sd">   * - The private property is established to store the dependency</span>
+<span class="sd">   * - The dependency is assigned directly to that property</span>
+<span class="sd">   */</span>
+<span class="hll">  <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">)</span> <span class="p">{</span>
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="advantages">
+<h2>Advantages<a class="headerlink" href="#advantages" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Testability:</strong> You can inject mock objects for unit testing.</p></li>
+<li><p><strong>Maintainability:</strong> Changing how a dependency is constructed (in the container)
+updates it wherever it is injected in the application.</p></li>
+<li><p><strong>Explicitness:</strong> Dependencies are clearly listed in constructors or method signatures,
+improving readability and maintainability.</p></li>
+</ul>
+</section>
+<section id="controller-injection">
+<h2>Controller Injection<a class="headerlink" href="#controller-injection" title="Link to this heading"></a></h2>
+<p>For controllers, Nextcloud allows dependencies to also be injected directly into
+individual methods, not just constructors. This is referred to as <em>method injection</em> and
+enables you to specify dependencies only where needed, potentially reducing resource
+usage for rarely required services.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">lib/Controller/ApiController.php</span><a class="headerlink" href="#id1" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\Service\BarService</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCA\MyApp\Service\FooService</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ApiController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$appName</span><span class="p">,</span> <span class="nx">IRequest</span> <span class="nv">$request</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$appName</span><span class="p">,</span> <span class="nv">$request</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="hll">    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nx">FooService</span> <span class="nv">$service</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nv">$service</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">();</span>
+</span>    <span class="p">}</span>
+
+<span class="hll">    <span class="k">public</span> <span class="k">function</span> <span class="nf">bar</span><span class="p">(</span><span class="nx">BarService</span> <span class="nv">$service</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nv">$service</span><span class="o">-&gt;</span><span class="na">bar</span><span class="p">();</span>
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="using-a-container">
+<h2>Using a container<a class="headerlink" href="#using-a-container" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please do use automatic dependency injection (see below). For most
+apps there is no need to register services manually.</p>
+</div>
+<p>Passing dependencies into the constructor rather than instantiating them in the
+constructor has the following drawback: Every line in the source code where
+<strong>new AuthorMapper</strong> is being used has to be changed, once a new constructor
+argument is being added to it.</p>
+<p>The solution for this particular problem is to limit the <strong>new AuthorMapper</strong> to
+one file, the container. The container contains all the factories for creating
+these objects and is configured in <code class="file docutils literal notranslate"><span class="pre">lib/AppInfo/Application.php</span></code>.</p>
+<p>Nextcloud 20 and later uses the <a class="reference internal" href="../digging_deeper/psr.html#psr11"><span class="std std-ref">PSR-11 standard</span></a> for the container interface, so working
+with the container might feel familiar if you’ve worked with other php applications
+before that also adhere to the convention.</p>
+<p>To add the app’s classes simply open the <code class="file docutils literal notranslate"><span class="pre">lib/AppInfo/Application.php</span></code> and
+use the <strong>IRegistrationContext::registerService</strong> method:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootstrap</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootContext</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IRegistrationContext</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IDBConnection</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCA\MyApp\Controller\AuthorController</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCA\MyApp\Service\AuthorService</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCA\MyApp\Db\AuthorMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Psr\Container\ContainerInterface</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+
+  <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[]){</span>
+    <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="nx">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+  <span class="p">}</span>
+
+  <span class="sd">/**</span>
+<span class="sd">   * Define your dependencies in here</span>
+<span class="sd">   */</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Controllers</span>
+<span class="sd">     */</span>
+    <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="nx">AuthorController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nx">ContainerInterface</span> <span class="nv">$c</span><span class="p">)</span><span class="o">:</span> <span class="nx">AuthorController</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">new</span> <span class="nx">AuthorController</span><span class="p">(</span>
+        <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;appName&#39;</span><span class="p">),</span>
+        <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">IRequest</span><span class="o">::</span><span class="na">class</span><span class="p">),</span>
+        <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">AuthorService</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+      <span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Services</span>
+<span class="sd">     */</span>
+    <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="nx">AuthorService</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nx">ContainerInterface</span> <span class="nv">$c</span><span class="p">)</span><span class="o">:</span> <span class="nx">AuthorService</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">new</span> <span class="nx">AuthorService</span><span class="p">(</span>
+        <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">AuthorMapper</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+      <span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Mappers</span>
+<span class="sd">     */</span>
+    <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="nx">AuthorMapper</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nx">ContainerInterface</span> <span class="nv">$c</span><span class="p">)</span><span class="o">:</span> <span class="nx">AuthorMapper</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">new</span> <span class="nx">AuthorMapper</span><span class="p">(</span>
+        <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">IDBConnection</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+      <span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="how-the-container-works">
+<h2>How the container works<a class="headerlink" href="#how-the-container-works" title="Link to this heading"></a></h2>
+<p>The container works in the following way:</p>
+<ul>
+<li><p><a class="reference internal" href="routing.html"><span class="doc">A request comes in and is matched against a route</span></a> (for the AuthorController in this case)</p></li>
+<li><p>The matched route queries <strong>AuthorController</strong> service from the container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>return new AuthorController(
+  $c-&gt;get(&#39;appName&#39;),
+  $c-&gt;get(IRequest::class),
+  $c-&gt;get(AuthorService::class)
+);
+</pre></div>
+</div>
+</li>
+<li><p>The <strong>appName</strong> is queried and returned from the base class</p></li>
+<li><p>The <strong>Request</strong> is queried and returned from the server container</p></li>
+<li><p><strong>AuthorService</strong> is queried. This triggers the registered Callable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$container-&gt;registerService(AuthorService::class, function(ContainerInterface $c): AuthorService {
+  return new AuthorService(
+    $c-&gt;get(AuthorMapper::class)
+  );
+});
+</pre></div>
+</div>
+</li>
+<li><p><strong>AuthorMapper</strong> is queried:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$container-&gt;registerService(AuthorMapper::class, function(ContainerInterface $c): AuthorMapper {
+  return new AuthorMapper(
+    $c-&gt;get(IDBConnection::class)
+  );
+});
+</pre></div>
+</div>
+</li>
+<li><p>The <strong>database connection</strong> is returned from the server container</p></li>
+<li><p>Now <strong>AuthorMapper</strong> has all of its dependencies and can be constructed by the DI code. The object is returned.</p></li>
+<li><p><strong>AuthorService</strong> gets the <strong>AuthorMapper</strong>, is constructed, and returns the object</p></li>
+<li><p><strong>AuthorController</strong> gets the <strong>AuthorService</strong> and finally the controller can be instantiated and the object is returned</p></li>
+</ul>
+<p>So basically the container is used as a giant factory to build all the classes that are needed for the application. Because it centralizes all the creation of objects (the <strong>new Class()</strong> lines), it is very easy to add new constructor parameters without breaking existing code: only the <strong>__construct</strong> method and the container line where the <strong>new</strong> is being called need to be changed.</p>
+</section>
+<section id="use-automatic-dependency-assembly-recommended">
+<h2>Use automatic dependency assembly (recommended)<a class="headerlink" href="#use-automatic-dependency-assembly-recommended" title="Link to this heading"></a></h2>
+<p>In Nextcloud it is possible to build classes and their dependencies without having to explicitly register them on the container, as long as the container can <a class="reference external" href="https://www.php.net/manual/en/book.reflection.php">reflect</a> the constructor and look up the parameters by their type. This concept is widely known as <em>auto-wiring</em>.</p>
+<section id="how-does-auto-wiring-work">
+<h3>How does auto-wiring work<a class="headerlink" href="#how-does-auto-wiring-work" title="Link to this heading"></a></h3>
+<p>Automatic assembly creates new instances of classes just by looking at the class name and its constructor parameters. For each constructor parameter the type or the argument name is used to query the container, e.g.:</p>
+<ul class="simple">
+<li><p><strong>SomeType $type</strong> will use <strong>$container-&gt;get(SomeType::class)</strong></p></li>
+<li><p><strong>$variable</strong> will use <strong>$container-&gt;get(‘variable’)</strong></p></li>
+</ul>
+<p>If all constructor parameters are resolved, the class will be created, saved as a service and returned.</p>
+<p>So basically the following is now possible:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyTestClass</span> <span class="p">{}</span>
+
+<span class="k">class</span> <span class="nc">MyTestClass2</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="nx">MyTestClass</span> <span class="nv">$class</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">string</span> <span class="nv">$appName</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">MyTestClass</span> <span class="nv">$class</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$appName</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">class</span> <span class="o">=</span> <span class="nv">$class</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appName</span> <span class="o">=</span> <span class="nv">$appName</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\OCP\AppFramework\App</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+
+<span class="nv">$class2</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">MyTestClass2</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+<span class="nv">$class2</span> <span class="nx">instanceof</span> <span class="nx">MyTestClass2</span><span class="p">;</span>  <span class="c1">// true</span>
+<span class="nv">$class2</span><span class="o">-&gt;</span><span class="na">class</span> <span class="nx">instanceof</span> <span class="nx">MyTestClass</span><span class="p">;</span>  <span class="c1">// true</span>
+<span class="nv">$class2</span><span class="o">-&gt;</span><span class="na">appName</span> <span class="o">===</span> <span class="s1">&#39;myname&#39;</span><span class="p">;</span>  <span class="c1">// true</span>
+<span class="nv">$class2</span> <span class="o">===</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">MyTestClass2</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>  <span class="c1">// true</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>$appName is resolved because the container registered a parameter under the key ‘appName’ which will return the app id.</p>
+</div>
+</section>
+<section id="how-does-it-affect-the-request-lifecycle">
+<h3>How does it affect the request lifecycle<a class="headerlink" href="#how-does-it-affect-the-request-lifecycle" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>A request comes in</p></li>
+<li><p>All apps’ <strong>routes.php</strong> files are loaded</p>
+<ul>
+<li><p>If a <strong>routes.php</strong> file returns an array, and an <strong>appname/lib/AppInfo/Application.php</strong> exists, include it, create a new instance of <strong>\OCA\AppName\AppInfo\Application.php</strong> and register the routes on it. That way a container can be used while still benefitting from the new routes behavior</p></li>
+<li><p>If a <strong>routes.php</strong> file returns an array, but there is no <strong>appname/lib/AppInfo/Application.php</strong>, create a new \OCP\AppFramework\App instance with the app id and register the routes on it</p></li>
+</ul>
+</li>
+<li><p>A request is matched for the route, e.g. with the name <strong>page#index</strong></p></li>
+<li><p>The appropriate container is being queried for the entry PageController (to keep backwards compatibility)</p></li>
+<li><p>If the entry does not exist, the container is queried for OCA\AppName\Controller\PageController and if no entry exists, the container tries to create the class by using <a class="reference external" href="https://www.php.net/manual/en/book.reflection.php">reflection</a> on its constructor parameters</p></li>
+</ul>
+</section>
+<section id="how-does-this-affect-controllers">
+<h3>How does this affect controllers<a class="headerlink" href="#how-does-this-affect-controllers" title="Link to this heading"></a></h3>
+<p>The only thing that needs to be done to add a route and a controller method is now:</p>
+<p><strong>myapp/appinfo/routes.php</strong></p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">return</span> <span class="p">[</span><span class="s1">&#39;routes&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;page#index&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">],</span>
+<span class="p">]];</span>
+</pre></div>
+</div>
+<p><strong>myapp/appinfo/lib/Controller/PageController.php</strong></p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$appName</span><span class="p">,</span> <span class="nx">IRequest</span> <span class="nv">$request</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$appName</span><span class="p">,</span> <span class="nv">$request</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// your code here</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>There is no need to wire up anything in <strong>lib/AppInfo/Application.php</strong>. Everything will be done automatically.</p>
+</section>
+<section id="how-to-deal-with-interface-and-primitive-type-parameters">
+<h3>How to deal with interface and primitive type parameters<a class="headerlink" href="#how-to-deal-with-interface-and-primitive-type-parameters" title="Link to this heading"></a></h3>
+<p>Interfaces and primitive types can not be instantiated, so the container can not automatically assemble them. The actual implementation needs to be wired up in the container:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\Db\AuthorMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCA\MyApp\Db\IAuthorMapper</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootstrap</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootContext</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IRegistrationContext</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Psr\Container\ContainerInterface</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[]){</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nx">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Define your dependencies in here</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="c1">// AuthorMapper requires a location as string called $TableName</span>
+        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerParameter</span><span class="p">(</span><span class="s1">&#39;TableName&#39;</span><span class="p">,</span> <span class="s1">&#39;my_app_table&#39;</span><span class="p">);</span>
+
+        <span class="c1">// the interface is called IAuthorMapper and AuthorMapper implements it</span>
+        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="nx">IAuthorMapper</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">ContainerInterface</span> <span class="nv">$c</span><span class="p">)</span><span class="o">:</span> <span class="nx">AuthorMapper</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">AuthorMapper</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="c1">// Less verbose alternative</span>
+        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerServiceAlias</span><span class="p">(</span><span class="nx">IAuthorMapper</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">AuthorMapper</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="predefined-core-services">
+<h3>Predefined core services<a class="headerlink" href="#predefined-core-services" title="Link to this heading"></a></h3>
+<p>The following parameter names and type hints can be used to inject core services instead of using <strong>$container-&gt;getServer()-&gt;getServiceX()</strong></p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><strong>appName</strong>: The app id</p></li>
+<li><p><strong>userId</strong>: The id of the current user</p></li>
+<li><p><strong>webRoot</strong>: The path to the Nextcloud installation</p></li>
+</ul>
+<p>Aliases:</p>
+<ul class="simple">
+<li><p><strong>AppName</strong>: resolves to <code class="docutils literal notranslate"><span class="pre">appName</span></code> (deprecated)</p></li>
+<li><p><strong>Request</strong>: resolves to <code class="docutils literal notranslate"><span class="pre">\OCP\IRequest</span></code></p></li>
+<li><p><strong>ServerContainer</strong>: resolves to <code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer</span></code> (deprecated)</p></li>
+<li><p><strong>UserId</strong>: resolves to <code class="docutils literal notranslate"><span class="pre">userId</span></code> (deprecated)</p></li>
+<li><p><strong>WebRoot</strong>: resolves to <code class="docutils literal notranslate"><span class="pre">webRoot</span></code> (deprecated)</p></li>
+</ul>
+<p>Types:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IAppConfig</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IAppManager</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IAvatarManager</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Activity\IManager</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\ICache</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\ICacheFactory</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IConfig</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Utility\IControllerMethodReflector</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Contacts\IManager</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IDateTimeZone</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IDBConnection</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Diagnostics\IEventLogger</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Diagnostics\IQueryLogger</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Files\Config\IMountProviderCollection</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Files\IRootFolder</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IGroupManager</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IL10N</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\BackgroundJob\IJobList</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\INavigationManager</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IPreview</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IRequest</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Utility\ITimeFactory</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\ITagManager</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\ITempManager</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Route\IRouter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\ISearch</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Security\ICrypto</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Security\IHasher</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Security\ISecureRandom</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IURLGenerator</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IUserManager</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IUserSession</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\Psr\Container\ContainerInterface</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\Psr\Log\LoggerInterface</span></code></p></li>
+</ul>
+</section>
+<section id="how-to-enable-it">
+<h3>How to enable it<a class="headerlink" href="#how-to-enable-it" title="Link to this heading"></a></h3>
+<p>To make use of this new feature, the following things have to be done:</p>
+<ul>
+<li><p><strong>appinfo/info.xml</strong> requires to provide another field called <strong>namespace</strong> where the namespace of the app is defined. The required namespace is the one which comes after the top level namespace <strong>OCA\</strong>, e.g.: for <strong>OCA\MyBeautifulApp\Some\OtherClass</strong> the needed namespace would be <strong>MyBeautifulApp</strong> and would be added to the info.xml in the following way:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;info&gt;</span>
+<span class="w">   </span><span class="nt">&lt;namespace&gt;</span>MyBeautifulApp<span class="nt">&lt;/namespace&gt;</span>
+<span class="w">   </span><span class="cm">&lt;!-- other options here ... --&gt;</span>
+<span class="nt">&lt;/info&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>appinfo/routes.php</strong>: Instead of creating a new Application class instance, simply return the routes array like:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">return</span> <span class="p">[</span><span class="s1">&#39;routes&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;page#index&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">],</span>
+<span class="p">]];</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A namespace tag is required because you can not deduce the namespace from the app id</p>
+</div>
+</section>
+</section>
+<section id="which-classes-should-be-added">
+<h2>Which classes should be added<a class="headerlink" href="#which-classes-should-be-added" title="Link to this heading"></a></h2>
+<p>In general all of the app’s controllers need to be registered inside the container. Then the following question is: What goes into the constructor of the controller? Pass everything into the controller constructor that matches one of the following criteria:</p>
+<ul class="simple">
+<li><p>It does I/O (database, write/read to files)</p></li>
+<li><p>It is a global (e.g. $_POST, etc. This is in the request class by the way)</p></li>
+<li><p>The output does not depend on the input variables (also called <a class="reference external" href="https://en.wikipedia.org/wiki/Pure_function">impure function</a>), e.g. time, random number generator</p></li>
+<li><p>It is a service, basically it would make sense to swap it out for a different object</p></li>
+</ul>
+<p>What not to inject:</p>
+<ul class="simple">
+<li><p>It is pure data and has methods that only act upon it (arrays, data objects)</p></li>
+<li><p>It is a <a class="reference external" href="https://en.wikipedia.org/wiki/Pure_function">pure function</a></p></li>
+</ul>
+</section>
+<section id="optional-services">
+<h2>Optional services<a class="headerlink" href="#optional-services" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>If an injected dependency can’t be found or build, an exception is thrown. This can be avoided by using the a nullable type notation for a dependency:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">OCA\MyApp\MyService</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Some\Service</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyService</span> <span class="p">{</span>
+<span class="hll">  <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="o">?</span><span class="nx">Service</span> <span class="nv">$service</span><span class="p">)</span> <span class="p">{</span>
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">\Some\Service</span></code> exists and can be built, it will be injected. Else <code class="docutils literal notranslate"><span class="pre">MyService</span></code> will receive <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+</section>
+<section id="accessing-the-container-from-anywhere">
+<h2>Accessing the container from anywhere<a class="headerlink" href="#accessing-the-container-from-anywhere" title="Link to this heading"></a></h2>
+<p>Sometimes it can be hard to inject some service inside legacy code, in these cases
+you can use <code class="code docutils literal notranslate"><span class="pre">OCPServer::get(MyService::class)</span></code>. This should only be used as
+the last resort, as this makes your code more complicated to unit test and is
+considered an anti-pattern.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="routing.html" class="btn btn-neutral float-left" title="Routing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="controllers.html" class="btn btn-neutral float-right" title="Controllers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on May 15, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-dev">
+      ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-dev" class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/developer_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

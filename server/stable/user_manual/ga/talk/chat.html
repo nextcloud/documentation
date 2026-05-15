@@ -1,0 +1,763 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ga" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teachtaireachtaí a sheoladh &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/talk/chat.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=d9c2735f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Idirghníomhú le teachtaireachtaí" href="messages.html" />
+    <link rel="prev" title="Comhrá" href="chat_index.html" />
+   
+  
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest réamhrá lámhleabhar úsáideora</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Comhaid &amp; sioncronú</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Earraí grúpa</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Caint</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="chat_index.html">Comhrá</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Teachtaireachtaí a sheoladh</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-markdown">Ag Úsáid Markdown</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inserting-emoji">Emoji á chur isteach</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#smart-picker">Roghnóir Cliste</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#replying-to-messages-and-more">Freagairt a thabhairt ar theachtaireachtaí agus tuilleadh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#silent-messages">Teachtaireachtaí ciúine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scheduling-messages">Teachtaireachtaí a sceidealú</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chat-summary">Achoimre ar an gcomhrá</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="messages.html">Idirghníomhú le teachtaireachtaí</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message_integrations.html">Aipeanna a chomhtháthú le teachtaireachtaí</a></li>
+<li class="toctree-l3"><a class="reference internal" href="attachments.html">Ceangaltáin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="conversation_index.html">Comhráite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="call_index.html">Glaonna</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federation_index.html">Cónaidhm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moderator_index.html">Do mhodhnóirí</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html">Glac páirt i nglao nó i gcomhrá mar aoi</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ag socrú do shainroghanna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Rochtain uilíoch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Ag baint úsáide as fíordheimhniú dhá-fhachtóir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bainistigh brabhsálaithe agus gléasanna nasctha</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Caint</a></li>
+          <li class="breadcrumb-item"><a href="chat_index.html">Comhrá</a></li>
+      <li class="breadcrumb-item active">Teachtaireachtaí a sheoladh</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/chat.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sending-messages">
+<h1>Teachtaireachtaí a sheoladh<a class="headerlink" href="#sending-messages" title="Link to this heading"></a></h1>
+<section id="using-markdown">
+<h2>Ag Úsáid Markdown<a class="headerlink" href="#using-markdown" title="Link to this heading"></a></h2>
+<p>Is féidir leat do theachtaireachtaí a fheabhsú trí chomhréir Markdown a úsáid. Eilimintí tacaithe:</p>
+<p><strong>Ceannteidil agus roinnteoirí</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+
+Heading
+===
+Normal text
+***
+Normal text
+</pre></div>
+</div>
+<p><strong>Maisiúcháin inlíne</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>**bold text** __bold text__
+*italicized text* _italicized text_
+`inline code` ``inline code``
+```
+.code-block {
+  display: pre;
+}
+```
+</pre></div>
+</div>
+<p><strong>Liostaí</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Ordered list
+2. Ordered list
+
+* Unordered list
+- Unordered list
++ Unordered list
+</pre></div>
+</div>
+<p><strong>Sleachta</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; blockquote
+second line of blockquote
+</pre></div>
+</div>
+<p><strong>Liostaí tascanna</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- [ ] task to be done
+- [x] completed task
+</pre></div>
+</div>
+<p><strong>Táblaí</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column A | Column B
+-- | --
+Data A | Data B
+</pre></div>
+</div>
+</section>
+<section id="inserting-emoji">
+<h2>Emoji á chur isteach<a class="headerlink" href="#inserting-emoji" title="Link to this heading"></a></h2>
+<p>Is féidir leat emoji a chur leis trí úsáid a bhaint as an roghnóir ar chlé an réimse ionchuir téacs.</p>
+<a class="reference internal image-reference" href="../../_images/emoji-picker.png"><img alt="Talk chat emoji picker panel" src="../../_images/emoji-picker.png" style="width: 400px;" />
+</a>
+</section>
+<section id="smart-picker">
+<h2>Roghnóir Cliste<a class="headerlink" href="#smart-picker" title="Link to this heading"></a></h2>
+<p>Leis an roghnóir cliste, is fusa naisc, comhaid, nó ábhar eile a chur isteach i do chomhráite. Níl le déanamh ach an cineál ábhair is mian leat a roghnú (comhaid, comhráite Talk, cártaí Deic, GIFanna, srl.). Is féidir leat <cite>/</cite> a chlóscríobh san ionchur comhrá freisin chun an roghnóir a oscailt.</p>
+<a class="reference internal image-reference" href="../../_images/smart-picker.png"><img alt="Talk smart picker opened with slash command for inserting objects" src="../../_images/smart-picker.png" style="width: 400px;" />
+</a>
+<p>Several integration apps can extend the Smart Picker with additional content types, such as GitHub and GitLab issues, Giphy GIFs, and more. Ask your administrator which integrations are available on your instance.</p>
+</section>
+<section id="replying-to-messages-and-more">
+<h2>Freagairt a thabhairt ar theachtaireachtaí agus tuilleadh<a class="headerlink" href="#replying-to-messages-and-more" title="Link to this heading"></a></h2>
+<p>Is féidir leat freagra a thabhairt ar theachtaireacht trí úsáid a bhaint as an tsaighead a thaispeántar nuair a luíonn tú an luch thar theachtaireacht.</p>
+<a class="reference internal image-reference" href="../../_images/reply.png"><img alt="Talk chat message with the reply arrow highlighted on hover" src="../../_images/reply.png" style="width: 600px;" />
+</a>
+<p>Sa roghchlár <code class="docutils literal notranslate"><span class="pre">...</span></code> is féidir leat rogha a dhéanamh freagra a thabhairt go príobháideach freisin. Osclóidh sé seo comhrá duine le duine.</p>
+<a class="reference internal image-reference" href="../../_images/chat-message-menu.png"><img alt="Talk chat message context menu with reply and other options" src="../../_images/chat-message-menu.png" style="width: 600px;" />
+</a>
+<p>Anseo is féidir leat nasc díreach a chruthú chuig an teachtaireacht nó é a mharcáil mar neamhléite ionas go mbeidh tú in ann scrollú ar ais ann an chéad uair eile a théann tú isteach sa chomhrá. Nuair atá sé ina chomhad, is féidir leat an comhad a fheiceáil i gComhaid.</p>
+</section>
+<section id="silent-messages">
+<h2>Teachtaireachtaí ciúine<a class="headerlink" href="#silent-messages" title="Link to this heading"></a></h2>
+<p>Mura mian leat cur isteach ar aon duine i lár na hoíche, tá mód ciúin ann le haghaidh comhrá. Cé go bhfuil sé cumasaithe, ní bhfaighidh rannpháirtithe eile fógraí ó do theachtaireachtaí.</p>
+<a class="reference internal image-reference" href="../../_images/message-silent.png"><img alt="Talk chat input with silent message option enabled" src="../../_images/message-silent.png" style="width: 600px;" />
+</a>
+</section>
+<section id="scheduling-messages">
+<h2>Teachtaireachtaí a sceidealú<a class="headerlink" href="#scheduling-messages" title="Link to this heading"></a></h2>
+<p>Más mian leat teachtaireacht a sheoladh ag am ar leith, ní láithreach, is féidir leat í a sceidealú. Níl le déanamh ach an dáta agus an t-am atá uait a roghnú sna gníomhartha tapa in aice leis an réimse ionchuir.</p>
+<a class="reference internal image-reference" href="../../_images/message-schedule-action.png"><img alt="Talk message compose area with schedule send option" src="../../_images/message-schedule-action.png" style="width: 600px;" />
+</a>
+<p>Is féidir leat do theachtaireachtaí sceidealaithe go léir a fháil trí chliceáil ar dheilbhín an chloig in aice leis an réimse ionchuir. Ansin is féidir leat teachtaireachtaí atá ullmhaithe faoi láthair a chur in eagar, a athsceidealú nó a scriosadh.</p>
+<a class="reference internal image-reference" href="../../_images/message-schedule-toggle.png"><img alt="Talk navigation bar with clock icon to view scheduled messages" src="../../_images/message-schedule-toggle.png" style="width: 400px;" />
+</a>
+</section>
+<section id="chat-summary">
+<h2>Achoimre ar an gcomhrá<a class="headerlink" href="#chat-summary" title="Link to this heading"></a></h2>
+<p>Nuair a bhíonn cúntóir AI cumasaithe, is féidir achoimre a ghiniúint do chomhrá má tá níos mó ná 100 teachtaireacht neamhléite ann. Is féidir leat é a ghiniúint tríd an gcnaipe atá le feiceáil sa chomhrá os cionn na chéad teachtaireachtaí neamhléite a bhrú.</p>
+<a class="reference internal image-reference" href="../../_images/chat-summary-button.png"><img alt="Talk chat view with the AI summary generation button visible" src="../../_images/chat-summary-button.png" style="width: 500px;" />
+</a>
+<a class="reference internal image-reference" href="../../_images/chat-summary-text.png"><img alt="Talk AI-generated chat summary displayed in the conversation" src="../../_images/chat-summary-text.png" style="width: 500px;" />
+</a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chat_index.html" class="btn btn-neutral float-left" title="Comhrá" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="messages.html" class="btn btn-neutral float-right" title="Idirghníomhú le teachtaireachtaí" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 Irish
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl>
+        <dt>🌐 Teangacha</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Leaganacha</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

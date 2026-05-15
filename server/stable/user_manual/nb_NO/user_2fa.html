@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bruker tofaktorautentisering &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,16 +72,18 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud latest brukerhåndbok introduksjon</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webinterface.html">Nextcloud-nettgrensesnittet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="activity.html">Using the Activity app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files/index.html">Filer og synkronisering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Angir preferansene dine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Universell tilgang</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Bruker tofaktorautentisering</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Konfigurer tofaktorautentisering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">Gjenopprettingskoder i tilfelle du mistet din 2. faktor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Recovery codes if you lose your second factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Logget inn med tofaktorautentisering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Bruke tofaktorautentisering med maskinvaretokener</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Bruke klientapplikasjoner med tofaktorautentisering</a></li>
@@ -80,7 +91,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="session_management.html">Administrer tilkoblede nettlesere og enheter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">Ekstern Lagring</a></li>
 </ul>
 
         </div>
@@ -110,30 +120,41 @@
   <section id="using-two-factor-authentication">
 <h1>Bruker tofaktorautentisering<a class="headerlink" href="#using-two-factor-authentication" title="Link to this heading"></a></h1>
 <p>Tofaktorautentisering (2FA) er en måte å beskytte Nextcloud-kontoen din mot uautorisert tilgang. Det fungerer ved å kreve to forskjellige «bevis» på identiteten din. For eksempel, <em>noe du vet</em> (som et passord) og <em>noe du har</em> som en fysisk nøkkel. Vanligvis er den første faktoren et passord som du allerede har, og den andre kan være en tekstmelding du mottar eller en kode du genererer på telefonen eller en annen enhet (<em>noe du har</em>). Nextcloud støtter en rekke andre faktorer, og flere kan legges til.</p>
-<p>Når en tofaktorautentiseringsapp er aktivert av administratoren din, kan du aktivere og konfigurere den i :d oc:’userpreferences’. Nedenfor kan du se hvordan.</p>
+<p>Once a two-factor authentication app has been enabled by your administrator,
+you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Angir preferansene dine</span></a>.</p>
 <section id="configuring-two-factor-authentication">
 <h2>Konfigurer tofaktorautentisering<a class="headerlink" href="#configuring-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>I dine personlige innstillinger slår du opp innstillingen for tofaktorautentisering. I dette eksemplet er dette TOTP, en Google Authenticator-kompatibel tidsbasert kode:</p>
+<p>In your personal settings, look up the <strong>Second-factor Auth</strong> setting. In this
+example this is TOTP, a Google Authenticator compatible time-based code:</p>
 <figure class="align-default">
 <img alt="TOTP-konfigurasjon." src="../_images/totp_enable.png" />
 </figure>
 <p>Du vil se hemmeligheten din og en QR-kode som kan skannes av TOTP-appen på telefonen din (eller en annen enhet). Avhengig av appen eller verktøyet, skriv inn koden eller skann QR-en, og enheten din vil vise en påloggingskode som endres hvert 30. sekund.</p>
 </section>
-<section id="recovery-codes-in-case-you-lost-your-2nd-factor">
-<h2>Gjenopprettingskoder i tilfelle du mistet din 2. faktor<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Link to this heading"></a></h2>
-<p>Du bør alltid generere sikkerhetskopikoder for 2FA. Hvis 2. faktor-enheten din blir stjålet eller ikke fungerer, vil du kunne bruke en av disse kodene for å låse opp kontoen din. Den fungerer effektivt som en sikkerhetskopi 2. faktor. For å få sikkerhetskopikodene, gå til dine personlige innstillinger og se under Andre-faktor Auth-innstillinger. Velg <em>Generer reservekoder</em>:</p>
+<section id="recovery-codes-if-you-lose-your-second-factor">
+<h2>Recovery codes if you lose your second factor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Link to this heading"></a></h2>
+<p>You should always generate backup codes for 2FA. If your second factor device
+gets stolen or stops working, you can use one of these codes to unlock your
+account. It effectively functions as a backup second factor. To get the backup
+codes, go to your personal settings and look under <strong>Second-factor Auth</strong>
+settings. Choose <em>Generate backup codes</em>:</p>
 <figure class="align-default">
 <img alt="2FA reserve kode generator" src="../_images/2fa_backupcode_1.png" />
 </figure>
-<p>Du vil da bli presentert med en liste over engangs-reservekoder:</p>
+<p>You will then see a list of one-time-use backup codes:</p>
 <figure class="align-default">
 <img alt="2FA-reservekoder" src="../_images/2fa_backupcode_2.png" />
 </figure>
-<p>Du bør legge disse kodene på et trygt sted, et sted du kan finne dem. Ikke sett dem sammen med din 2. faktor som mobiltelefonen din, men sørg for at hvis du mister den ene, har du fortsatt den andre. Å holde dem hjemme er sannsynligvis den beste tingen å gjøre.</p>
+<p>Store these codes somewhere safe where you can find them. Do not keep them
+with your second factor (such as your mobile phone), but store them separately
+so that losing one does not mean losing the other.</p>
 </section>
 <section id="logging-in-with-two-factor-authentication">
 <h2>Logget inn med tofaktorautentisering<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>Etter at du har logget ut og må logge på igjen, vil du se en forespørsel om å oppgi TOTP-koden i nettleseren din. Hvis du ikke bare aktiverer TOTP-faktoren, men en annen, vil du se et valgskjermbilde der du kan velge tofaktormetode for denne påloggingen. Velg TOTP:</p>
+<p>After you log out and log in again, you will see a prompt to enter the
+TOTP code in your browser. If you have enabled more than one second factor,
+you will see a selection screen where you can choose which method to use for
+this login. Select TOTP:</p>
 <figure class="align-default">
 <img alt="Velge en tofaktorautentiseringsmetode." src="../_images/totp_login_1.png" />
 </figure>
@@ -144,7 +165,9 @@
 <p>Hvis koden var riktig, blir du omdirigert til Nextcloud-kontoen din.</p>
 <div class="admonition note">
 <p class="admonition-title">Merknad</p>
-<p>Siden koden er tidsbasert, er det viktig at serverens og smarttelefonens klokke er nesten synkronisert. En tidsdrift på noen sekunder vil ikke være noe problem.</p>
+<p>Since the code is time-based, it is important that your server’s and
+your smartphone’s clock are almost in sync. A time drift of a few seconds
+won’t be a problem.</p>
 </div>
 </section>
 <section id="using-two-factor-authentication-with-hardware-tokens">
@@ -167,11 +190,15 @@
 </section>
 <section id="using-client-applications-with-two-factor-authentication">
 <h2>Bruke klientapplikasjoner med tofaktorautentisering<a class="headerlink" href="#using-client-applications-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>Når du har aktivert 2FA, vil ikke klientene dine lenger kunne koble til med bare passordet ditt med mindre de også har støtte for tofaktorautentisering. For å løse dette bør du generere enhetsspesifikke passord for dem. Se <a class="reference internal" href="session_management.html"><span class="doc">Administrer tilkoblede nettlesere og enheter</span></a> for mer informasjon om hvordan du gjør dette.</p>
+<p>Once you have enabled 2FA, your clients will no longer be able to connect with
+just your password unless they also have support for two-factor authentication.
+To solve this, you should generate device-specific passwords for them. See
+<a class="reference internal" href="session_management.html"><span class="doc">Administrer tilkoblede nettlesere og enheter</span></a> for more information on how to do this.</p>
 </section>
 <section id="considerations">
 <h2>Hensyn<a class="headerlink" href="#considerations" title="Link to this heading"></a></h2>
-<p>Hvis du bruker WebAuthn til å logge på Nextcloud, pass på at du ikke bruker samme token for 2FA. Da dette ville bety at du igjen bare bruker en enkelt faktor.</p>
+<p>If you use WebAuthn to log in to your Nextcloud, be sure to not use the same token for 2FA, as this
+would mean you are again only using a single factor.</p>
 </section>
 </section>
 
@@ -284,16 +311,25 @@
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 nb-NO
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Languages</dt>
         
@@ -466,6 +502,22 @@
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -634,6 +686,14 @@
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -641,31 +701,20 @@
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Nedlastinger</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>På Les dokumentene</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Prosjekt Hjem</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Bygg</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

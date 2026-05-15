@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>文件共享 &mdash; Nextcloud latest User Manual latest 文档</title>
+  <title>File sharing &mdash; Nextcloud latest User Manual latest 文档</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -32,7 +32,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="匿名上传" href="file_drop.html" />
-    <link rel="prev" title="Using end-to-end encryption" href="using_e2ee.html" />
+    <link rel="prev" title="分享与协作" href="collaboration.html" />
    
   
 </head>
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <label for="rtd-search-input" class="sr-only">搜索文档</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="搜索文档"
+             aria-label="搜索文档" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,42 +72,39 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest 用户手册介绍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud的Web界面</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">文件及同步</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">使用Nextcloud的Web界面访问您的文件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Accessing Nextcloud files using WebDAV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">管理已删除的文件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">桌面及移动设备同步</a></li>
-<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Encrypting your Nextcloud files on the server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">文件共享</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#public-link-shares">公开分享链接</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#internal-shares-with-users-and-groups">内部与用户和群组共享</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#others-with-access">有权访问的其他人</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">分享与协作</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">File sharing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#public-link-shares">公开分享链接</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#internal-shares-with-users-and-groups">内部与用户和群组共享</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#others-with-access">有权访问的其他人</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#federated-shares">联合云共享</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-federation-share">创建新的联合云共享</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">添加一个公开共享到您的Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#federated-shares">Federated shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">添加一个公开共享到您的Nextcloud</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="file_drop.html">匿名上传</a></li>
-<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">大文件上传</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quota.html">存储配额</a></li>
-<li class="toctree-l2"><a class="reference internal" href="version_control.html">版本控制</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projects.html">计划</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Transfer Ownership</a></li>
-<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Using Federation Shares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file_drop.html">匿名上传</a></li>
+<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Using federation shares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfer ownership</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">通话应用</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">桌面客户端</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">管理已连接的浏览器和设备</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">外部存储</a></li>
 </ul>
 
         </div>
@@ -116,7 +122,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">文件及同步</a></li>
-      <li class="breadcrumb-item active">文件共享</li>
+          <li class="breadcrumb-item"><a href="collaboration.html">分享与协作</a></li>
+      <li class="breadcrumb-item active">File sharing</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
       </li>
@@ -127,7 +134,7 @@
            <div itemprop="articleBody">
              
   <section id="file-sharing">
-<h1>文件共享<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
+<h1>File sharing<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
 <p>Nextcloud用户可以分享文件和目录，可能的方式是：</p>
 <ul class="simple">
 <li><p>公开链接</p></li>
@@ -139,8 +146,7 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>Some options may not be available due to administrative configuration.
-See <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/configuration_files/file_sharing_configuration.html">administrator documentation</a> for details.</p>
+<p>由于管理配置，有些选项可能不可用。详细信息请参见管理员文档&lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html">https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html</a>&gt;</p>
 </div>
 <section id="public-link-shares">
 <h2>公开分享链接<a class="headerlink" href="#public-link-shares" title="Link to this heading"></a></h2>
@@ -148,7 +154,7 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
 <p>一组长度为15个字符的随机令牌将被生成，链接将会类似于`https://cloud.example.com/s/yxcFKRWBJqYYzp4`.</p>
 <p>公开分享的目录有许多可用选项：</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_folder.png" src="../../_images/sharing_public_folder.png" />
+<img alt="Public folder share options." src="../../_images/sharing_public_folder.png" />
 </figure>
 <ul class="simple">
 <li><p>“只读”模式允许用户预览和下载</p></li>
@@ -163,41 +169,44 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
 </ul>
 <p>对于公共*File*共享，您可以允许使用Nextcloud的协同编辑解决方案之一来编辑文件:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_file.png" src="../../_images/sharing_public_file.png" />
+<img alt="Public file share options." src="../../_images/sharing_public_file.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>自 Nextcloud 22 起，密码保护和文件过期也通过联合文件共享进行传播。</p>
+<p>Password protection and file expiration are also propagated using Federated File Sharing
+since Nextcloud 22.</p>
 </div>
 </section>
 <section id="internal-shares-with-users-and-groups">
 <h2>内部与用户和群组共享<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Link to this heading"></a></h2>
 <p>当与用户、圈子或“Talk”应用中的成员共享时，文件或目录的权限是可以修改的：</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal.png" src="../../_images/sharing_internal.png" />
+<img alt="Internal share options." src="../../_images/sharing_internal.png" />
 </figure>
 <p>作为被共享者，您可以配置是否要自动接受所有传入的共享并将它们添加到您的Nextcloud根目录中，或者是否希望每次都被询问是否要接受或拒绝共享。</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal_acceptNotification.png" src="../../_images/sharing_internal_acceptNotification.png" />
+<img alt="Share acceptance notification." src="../../_images/sharing_internal_acceptNotification.png" />
 </figure>
 <p>可以在“设置”&gt;“个人”&gt;“共享”中调整接收设置。</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_autoAcceptSetting.png" src="../../_images/sharing_autoAcceptSetting.png" />
+<img alt="Auto-accept sharing setting." src="../../_images/sharing_autoAcceptSetting.png" />
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
-<p>If the owner renames a shared file or folder, the new name will not be reflected on the recipient's side. This is needed to prevent overwriting existing files or folders on the recipient's end.</p>
+<p>If the owner renames a shared file or folder, the new name will not be reflected on the
+recipient's side. This is needed to prevent overwriting existing files or folders on the
+recipient's end.</p>
 </div>
 </section>
 <section id="others-with-access">
 <h2>有权访问的其他人<a class="headerlink" href="#others-with-access" title="Link to this heading"></a></h2>
 <p>为了了解一个文件或文件夹是否可以通过上级文件夹级别的共享被其他人访问，请在共享选项卡中单击**具有**访问权限的其他人:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__collapsed.png" src="../../_images/sharing_others-with-access__collapsed.png" />
+<img alt="Others with access panel, collapsed." src="../../_images/sharing_others-with-access__collapsed.png" />
 </figure>
 <p>列表显示当前对象通过共享等级体系中的上级文件夹而被授予访问的所有用户、组、聊天记录等:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__details.png" src="../../_images/sharing_others-with-access__details.png" />
+<img alt="Others with access panel, expanded with user details." src="../../_images/sharing_others-with-access__details.png" />
 </figure>
 <p>点击三点按钮以：</p>
 <ul class="simple">
@@ -212,25 +221,27 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
 </section>
 </section>
 <section id="federated-shares">
-<h1>联合云共享<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
+<h1>Federated shares<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
 <p>联合云共享允许您通过远程Nextcloud服务器挂载共享，实际上创建了您自己的Nextcloud。您可以在其他Nextcloud服务器上与用户创建直接共享链接。</p>
 <section id="creating-a-new-federation-share">
-<h2>创建新的联合云共享<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
 <p>联合云共享是默认启用的。通过下列步骤与其他Nextcloud 或 ownCloud 服务器之间创建新的共享。</p>
 <p>访问您的“文件”页面，然后点击位于您希望分享的文件或目录上的分享图标。在侧边栏按照如下格式键入远程用户的用户名和URL链接“&lt;username&gt;&#64;&lt;nc-server-url&gt;”。在这个示例中，也就是输入“<a class="reference external" href="mailto:bob&#37;&#52;&#48;cloud&#46;example&#46;com">bob<span>&#64;</span>cloud<span>&#46;</span>example<span>&#46;</span>com</a>” 。</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-1.png" src="../../_images/share-federation-1.png" />
+<img alt="Entering a federated share address." src="../../_images/share-federation-1.png" />
 </figure>
 <p>被共享者将会在他们的Nextcloud中收到一则通知，允许他们接受或拒绝该分享。</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-2-notification.png" src="../../_images/share-federation-2-notification.png" />
+<img alt="Federated share acceptance notification." src="../../_images/share-federation-2-notification.png" />
 </figure>
 </section>
 <section id="adding-a-public-share-to-your-nextcloud">
 <h2>添加一个公开共享到您的Nextcloud<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Link to this heading"></a></h2>
-<p>Nextcloud公开分享链接的页面中会提供一个选项，这个选项可以帮您将该文件或目录作为联合云共享添加至您自己的Nextcloud实例中。仅需键入您的“&lt;username&gt;&#64;&lt;nc-server-url&gt;”就像上面展示的对外分享一样。</p>
+<p>Nextcloud public link share pages offer an option to add that file or folder as a federated share
+into your own Nextcloud instance.
+Enter your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> as shown for outbound shares above:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-3-public.png" src="../../_images/share-federation-3-public.png" />
+<img alt="Adding a public share to your Nextcloud." src="../../_images/share-federation-3-public.png" />
 </figure>
 </section>
 </section>
@@ -239,7 +250,7 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
-        <a href="using_e2ee.html" class="btn btn-neutral float-left" title="Using end-to-end encryption" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="collaboration.html" class="btn btn-neutral float-left" title="分享与协作" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="file_drop.html" class="btn btn-neutral float-right" title="匿名上传" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -344,16 +355,25 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 zh-CN
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Languages</dt>
         
@@ -526,6 +546,22 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -694,6 +730,14 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -701,31 +745,20 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>下载</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>托管于 Read the Docs</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">项目主页</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">构建</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

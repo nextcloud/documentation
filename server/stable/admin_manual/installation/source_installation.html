@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Installation on Linux &mdash; Nextcloud latest Administration Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -52,9 +52,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -64,7 +73,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR compliance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
@@ -113,11 +122,12 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nginx.html">NGINX configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example_ubuntu.html">Example installation on Ubuntu 22.04 LTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_ubuntu.html">Example installation on Ubuntu 24.04 LTS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example_centos.html">Example installation on CentOS 8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example_openbsd.html">Example installation on OpenBSD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
@@ -157,6 +167,10 @@
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
 <ul>
@@ -228,7 +242,7 @@ from scratch using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP).
 This document provides a complete walk-through for installing Nextcloud on
 Ubuntu 24.04 LTS Server with Apache and MariaDB, using <a class="reference external" href="https://nextcloud.com/install/">the Nextcloud .tar
 archive</a>. This method is recommended to install Nextcloud.</p>
-<p>This installation guide is giving a general overview of required dependencies and their configuration. For a distribution specific setup guide have a look at the <a class="reference internal" href="example_ubuntu.html"><span class="doc">Example installation on Ubuntu 22.04 LTS</span></a> and <a class="reference internal" href="example_centos.html"><span class="doc">Example installation on CentOS 8</span></a>.</p>
+<p>This installation guide is giving a general overview of required dependencies and their configuration. For a distribution specific setup guide have a look at the <a class="reference internal" href="example_ubuntu.html"><span class="doc">Example installation on Ubuntu 24.04 LTS</span></a> and <a class="reference internal" href="example_centos.html"><span class="doc">Example installation on CentOS 8</span></a>.</p>
 <div class="admonition note" id="prerequisites-label">
 <p class="admonition-title">Note</p>
 <p>Admins of SELinux-enabled distributions such as CentOS, Fedora, and
@@ -300,32 +314,53 @@ command to enable the configuration:</p>
 </div>
 <section id="additional-apache-configurations">
 <h3>Additional Apache configurations<a class="headerlink" href="#additional-apache-configurations" title="Link to this heading"></a></h3>
+<p><strong>Required modules:</strong></p>
 <ul>
 <li><p>For Nextcloud to work correctly, we need the module <code class="docutils literal notranslate"><span class="pre">mod_rewrite</span></code>. Enable
 it by running:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a2enmod</span> <span class="n">rewrite</span>
 </pre></div>
 </div>
-<p>Additional recommended modules are <code class="docutils literal notranslate"><span class="pre">mod_headers</span></code>, <code class="docutils literal notranslate"><span class="pre">mod_env</span></code>, <code class="docutils literal notranslate"><span class="pre">mod_dir</span></code> and <code class="docutils literal notranslate"><span class="pre">mod_mime</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a2enmod</span> <span class="n">headers</span>
-<span class="n">a2enmod</span> <span class="n">env</span>
-<span class="n">a2enmod</span> <span class="nb">dir</span>
-<span class="n">a2enmod</span> <span class="n">mime</span>
-</pre></div>
-</div>
-<p>If you’re running <code class="docutils literal notranslate"><span class="pre">mod_fcgi</span></code> instead of the standard <code class="docutils literal notranslate"><span class="pre">mod_php</span></code> also enable:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a2enmod</span> <span class="n">setenvif</span>
-</pre></div>
-</div>
-<p>and apply the following modifications to the configuration:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ProxyFCGIBackendType FPM
-
-&lt;FilesMatch remote.php&gt;
-  SetEnvIf Authorization &quot;(.*)&quot; HTTP_AUTHORIZATION=$1
-&lt;/FilesMatch&gt;
+</li>
+<li><p>If you’re using <code class="docutils literal notranslate"><span class="pre">mod_fcgi</span></code> or <code class="docutils literal notranslate"><span class="pre">php-fpm</span></code> (PHP FastCGI Process Manager),
+you must enable the proxy modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a2enmod</span> <span class="n">proxy</span>
+<span class="n">a2enmod</span> <span class="n">proxy_fcgi</span>
 </pre></div>
 </div>
 </li>
+</ul>
+<p><strong>Recommended modules</strong> are <code class="docutils literal notranslate"><span class="pre">mod_headers</span></code>, <code class="docutils literal notranslate"><span class="pre">mod_env</span></code>, <code class="docutils literal notranslate"><span class="pre">mod_dir</span></code> and <code class="docutils literal notranslate"><span class="pre">mod_mime</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  a2enmod headers
+  a2enmod env
+  a2enmod dir
+  a2enmod mime
+
+If you&#39;re running ``mod_fcgi`` instead of the standard ``mod_php`` also enable::
+
+  a2enmod setenvif
+
+and apply the following modifications to the configuration::
+
+  ProxyFCGIBackendType FPM
+
+  &lt;FilesMatch remote.php&gt;
+    SetEnvIf Authorization &quot;(.*)&quot; HTTP_AUTHORIZATION=$1
+  &lt;/FilesMatch&gt;
+</pre></div>
+</div>
+<p><strong>Verifying modules are enabled:</strong></p>
+<blockquote>
+<div><p>To verify that required modules are enabled, use the <code class="docutils literal notranslate"><span class="pre">apache2ctl</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apache2ctl</span> <span class="o">-</span><span class="n">M</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">E</span> <span class="s2">&quot;rewrite|proxy|proxy_fcgi&quot;</span>
+</pre></div>
+</div>
+<p>If you see matching output for the modules you’ve enabled, they are active.
+If any required module is missing, troubleshoot your OS package manager to
+ensure the Apache modules are installed (package names may vary by distribution;
+for example, on Debian/Ubuntu look for <code class="docutils literal notranslate"><span class="pre">libapache2-mod-fcgid</span></code> or similar).</p>
+</div></blockquote>
+<ul>
 <li><p>You must disable any server-configured authentication for Nextcloud, as it
 uses Basic authentication internally for DAV services. If you have turned on
 authentication on a parent folder (via e.g. an <code class="docutils literal notranslate"><span class="pre">AuthType</span> <span class="pre">Basic</span></code>
@@ -719,11 +754,16 @@ spread the deployment of new major releases out over time.</p>
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-admin">
       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-admin" class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -746,6 +786,14 @@ spread the deployment of new major releases out over time.</p>
         </dd>
         
         <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/admin_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
@@ -753,17 +801,20 @@ spread the deployment of new major releases out over time.</p>
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/31/admin_manual"
-             
-          >
-            31
-          </a>
-        </dd>
-        
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

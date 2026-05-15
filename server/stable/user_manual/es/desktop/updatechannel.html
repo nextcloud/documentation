@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Update channels &mdash; documentación de Nextcloud latest User Manual - latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <label for="rtd-search-input" class="sr-only">Buscar documentos</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Buscar documentos"
+             aria-label="Buscar documentos" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,14 +72,20 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introducción al manual de usuario de Nextcloud latest</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">La interfaz web de Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Archivos y sincronización</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Software de trabajo en grupo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Clients</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">Using the Synchronization Client</a></li>
-<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">macOS Virtual Files client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">The Automatic Updater</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Update channels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Conflicts</a></li>
@@ -81,7 +96,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Acceso universal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Usar la verificación en dos pasos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestionar las conexiones entre navegadores y dispositivos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Almacenamiento Externo</a></li>
 </ul>
 
         </div>
@@ -98,7 +112,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Desktop Clients</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
       <li class="breadcrumb-item active">Update channels</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/updatechannel.rst" class="fa fa-github"> Editar en GitHub</a>
@@ -251,16 +265,25 @@
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 Spanish
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Languages</dt>
         
@@ -429,6 +452,22 @@
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
             </a>
           </dd>
         
@@ -603,6 +642,14 @@
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -610,31 +657,20 @@
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Descargas</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>En Read the Docs</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Página principal del proyecto</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Versiones compiladas</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
