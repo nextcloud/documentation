@@ -135,6 +135,26 @@ grep -r "feature_name" user_manual/ admin_manual/ developer_manual/ --include="*
 - One concern per PR; separate PRs per target version
 - No force-push after review has started
 
+## Labels
+
+### PR state labels (apply to the PR)
+| Label | When |
+|-------|------|
+| `2. developing` | PR is a draft / in progress |
+| `3. to review` | PR is ready for review |
+
+### Issue hygiene when opening a PR
+When a PR fixes or relates to an issue:
+1. Update the issue's state label to `3. to review` — remove `0. Needs triage`, `1. to develop`, `2. developing` if present
+2. Assign yourself to the issue
+
+```bash
+# set issue label and assignee via gh
+gh issue edit NNNN --add-label "3. to review" --remove-label "2. developing" --add-assignee "@me"
+```
+
+Use `fixes #NNNN` in the PR body to auto-close on merge; use `relates to #NNNN` if the PR only partially addresses the issue.
+
 ## CI checks (must all pass)
 
 | Check | What it catches |
