@@ -32,6 +32,7 @@ Calendars
 #. Choose **On the network**:
 
    .. image:: ../images/new_calendar.png
+      :alt: Thunderbird new calendar dialog with "On the network" option selected
 
 #. Type your **Username** and **Location** (Server URL), then click on **Find Calendars**.
 #. Choose which calendars you want to add and click **Subscribe**
@@ -47,6 +48,7 @@ Alternative: Using the CardBook add-on (Contacts only)
 #. Click the CardBook icon in the upper right corner of Thunderbird:
 
    .. image:: ../images/cardbook_icon.png
+      :alt: CardBook icon in Thunderbird toolbar
 
 #. In CardBook:
 
@@ -54,11 +56,14 @@ Alternative: Using the CardBook add-on (Contacts only)
    -  Select **CardDAV**, fill in the address of your Nextcloud server, your user name and password
 
    .. image:: ../images/new_addressbook.png
+      :alt: CardBook new address book dialog with CardDAV option selected
 
 #. Click on "Validate", click Next, then choose the name of the address book and click Next again:
 
    .. image:: ../images/addressbook_name.png
+      :alt: CardBook dialog to enter a name for the new address book
 
-#. When you are finished, CardBook synchronizes your address books. You can always trigger a synchronization manually by clicking "Synchronize" in the top left corner of CardBook:
+#. When you are finished, CardBook synchronizes your address books. You can always trigger a synchronization manually by clicking the **Synchronize** button in CardBook:
 
    .. image:: ../images/synchronize_cardbook.png
+      :alt: CardBook address book view with Synchronize button

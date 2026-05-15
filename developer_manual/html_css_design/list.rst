@@ -15,7 +15,7 @@ Basic layout
 =============
 
 .. figure:: ../images/list.png
-   :alt: Content list screenshot
+   :alt: Content list component showing rows of entries with titles, metadata, and action buttons
 
 .. code-block:: html
 

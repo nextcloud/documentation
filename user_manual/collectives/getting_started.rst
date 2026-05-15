@@ -8,6 +8,7 @@ knowledge. You can even embed task boards, whiteboards and calendars. Collective
 emphasizes horizontal and non-hierarchical workflows.
 
 .. image:: images/screenshot.png
+   :alt: Nextcloud Collectives app showing a list of pages and collaborative editing interface
 
 Why use Collectives?
 --------------------
@@ -27,6 +28,7 @@ expects that you open Collectives in a desktop browser (i.e. not on mobile).
 1. Select the Collectives app in the app menu on the top:
 
    .. image:: images/open_app.png
+      :alt: Nextcloud app menu showing the Collectives app icon
       :width: 100px
 2. Click on “New collective”.
 3. Enter the name ``My first collective`` and choose an emoji (or keep the preselected one).

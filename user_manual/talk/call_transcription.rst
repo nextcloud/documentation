@@ -10,6 +10,7 @@ Moderators need to set the transcription language in the conversation settings. 
 When enabled, the transcription appears at the bottom of the screen and is updated in real-time.
 
 .. image:: images/call-transcription.png
+   :alt: Talk call with live transcription text displayed at the bottom of the screen
    :width: 500px
 
 Live translation
@@ -18,4 +19,5 @@ Live translation
 With the `live_transcription` provider app enabled, you can also use live translation. Instead of receiving the transcription in the original language, it will be translated to the language of your choice.
 
 .. image:: images/call-translation-actions.png
+   :alt: Talk call transcription toolbar with translation and other actions
    :width: 400px

@@ -67,8 +67,8 @@ If Nextcloud is installed in a subdirectory called "nextcloud"::
    built-in client), you should use an application password for login rather than your
    regular password. In addition improved security, this `increases performance significantly
    <https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151>`_. To
-   configure an application password, log into the Nextcloud Web interface, click on the avatar
-   in the top right and choose *Personal settings*. Then choose *Security* in the left
+   configure an application password, log into the Nextcloud Web interface, click on your avatar
+   and choose *Personal settings*. Then choose *Security* in the left
    sidebar and scroll to the very bottom. There you can create an app password (which can
    also be revoked in the future without changing your main user password).
 
@@ -79,7 +79,7 @@ If Nextcloud is installed in a subdirectory called "nextcloud"::
    See the WebDAV URL, to be found in Files Settings -> WebDAV in the Files on your Nextcloud account.
 
    .. image:: ../images/webdav_link.png
-    :alt: Screenshot of the Files settings showing the personal WebDAV link
+    :alt: Nextcloud Files settings panel showing the personal WebDAV URL
 
 
 
@@ -105,7 +105,7 @@ share::
    of ``davs://``:
 
 .. image:: ../images/webdav_gnome3_nautilus.png
-   :alt: Screenshot of configuring Nautilus file manager to use WebDAV
+   :alt: GNOME Nautilus file manager Connect to Server dialog with a Nextcloud WebDAV address entered
 
 .. note:: The same method works for other file managers that use GVFS,
       such as MATE's Caja and Cinnamon's Nemo.
@@ -229,14 +229,14 @@ To access files through the macOS Finder:
 #. From the Finder's top menu bar, choose **Go > Connect to Server…**:
 
    .. image:: ../images/osx_webdav1.png
-     :alt: Screenshot of entering your Nextcloud server address on macOS
+     :alt: macOS Go menu with Connect to Server option highlighted
 
 #. When the **Connect to Server…** window opens, enter your Nextcloud server's WebDAV address in the **Server Address:** field, i.e.::
 
     https://cloud.YOURDOMAIN.com/remote.php/dav/files/USERNAME/
 
    .. image:: ../images/osx_webdav2.png
-     :alt: Screenshot: Enter Nextcloud server address in "Connect to Server…" dialog box
+     :alt: macOS Connect to Server dialog with a Nextcloud WebDAV URL in the Server Address field
 
 #. Click **Connect**. Your WebDAV server should appear on the Desktop as a shared disk drive.
 
@@ -317,7 +317,7 @@ To map a drive using Microsoft Windows Explorer:
 
    .. figure:: ../images/explorer_webdav.png
      :scale: 80%
-     :alt: Screenshot of mapping WebDAV on Windows Explorer
+     :alt: Windows Explorer Map Network Drive wizard with a Nextcloud WebDAV URL entered
 
 5. Click the ``Finish`` button.
 

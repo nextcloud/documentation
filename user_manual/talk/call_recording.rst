@@ -20,26 +20,31 @@ The moderator of the conversation can start a recording together with a call sta
 - **During the call**: click on the top-bar menu, then click "Start recording".
 
 .. image:: images/start-recording-before-call.png
+    :alt: Talk media settings showing start recording option before joining a call
     :width: 400px
 
 |
 
 .. image:: images/start-recording-in-call.png
+    :alt: Talk in-call top bar menu showing Start recording option
     :width: 300px
 
 The recording will start shortly, and you will see a red indicator next to the call time. You can stop the recording at any time while the call is still ongoing by clicking on that indicator and selecting "Stop recording", or by using the same action in the top-bar menu. If you do not manually stop the recording, it will end automatically when the call ends.
 
 .. image:: images/stop-recording.png
+    :alt: Talk active call with red recording indicator and stop recording option
     :width: 500px
 
 After stopping a recording, the server will take a few seconds to prepare and save the recorded file. The moderator, who started the recording, receives a notification when the file is uploaded. From there, it can be shared in the chat.
 
 .. image:: images/share-recording-notification.png
+    :alt: Talk notification that a call recording is ready to share
     :width: 300px
 
 |
 
 .. image:: images/shared-recordings.png
+    :alt: Talk chat showing a shared call recording file
     :width: 400px
 
 Recording consent
@@ -52,6 +57,7 @@ For compliance with privacy regulations, it is possible to ask participants for 
 - Allow moderators to configure this option on a conversation level. In such cases, moderators can access the conversation settings to configure this option accordingly:
 
 .. image:: images/enable-recording-consent.png
+    :alt: Talk admin settings for enabling recording consent requirement
     :width: 500px
 
 .. FIXME make screenshots below from user perspective not moderator
@@ -60,6 +66,7 @@ If recording consent is enabled, every participant, including moderators, will s
 This section informs participants that the call may be recorded. To give explicit consent for recording, participants must check the box. If they do not give consent, they will not be allowed to join the call.
 
 .. image:: images/give-recording-consent-checked.png
+    :alt: Talk recording consent dialog with checkbox to accept recording
     :width: 500px
 
 After a call ends, the recording is processed and saved to the chat as a shared file. Participants can play it back directly from the chat or download it from the conversation's shared items.

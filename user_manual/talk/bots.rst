@@ -29,4 +29,5 @@ Administrators can configure, enable and disable commands. Users can use the ``h
     ``/help``
 
 .. image:: images/command-help.png
+    :alt: Talk chat showing the /help command output listing available bot commands
     :width: 600px

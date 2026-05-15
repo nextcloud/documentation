@@ -8,6 +8,7 @@ Compact view of conversations list
 Compact view hides last message preview in the conversation list, providing a more focused interface.
 
 .. image:: images/talk-compact-view.png
+   :alt: Talk conversation list in compact view without message previews
    :width: 200px
 
 Chat messages
@@ -19,4 +20,5 @@ You can choose between classic list or message bubbles, with your own messages o
 You can change both settings from the ``Talk settings`` dialog in the ``Appearance`` section.
 
 .. image:: images/talk-appearance-settings.png
+   :alt: Talk settings dialog showing compact view and other appearance options
    :width: 600px

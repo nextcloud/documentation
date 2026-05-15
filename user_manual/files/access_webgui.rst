@@ -96,8 +96,8 @@ view:
 Grid view
 ---------
 
-The Files app defaults to a list view. Click the grid toggle button at the
-top-right of the file list to switch to a thumbnail grid, which is useful for
+The Files app defaults to a list view. Click the grid toggle button above the
+file list to switch to a thumbnail grid, which is useful for
 browsing image folders:
 
 .. figure:: ../images/files_page-8.png

@@ -53,7 +53,7 @@ your own storage services under **Personal Settings → External Storage**.
 
 To add a new mount:
 
-1. Click your profile icon in the top right and select **Personal Settings**.
+1. Click your profile icon and select **Personal Settings**.
 2. Select **External Storage** from the left sidebar.
 3. Choose a backend from the **Add storage** dropdown.
 4. Fill in the required fields for the backend (server address, path, credentials, etc.).

@@ -45,7 +45,7 @@ Building a workflow
 To make a workflow react to a Nextcloud Webhook Event, you need to add a trigger. To do this, click on the Plus in the Triggers box of the Flow and select "Nextcloud"
 
 .. image:: images/windmill_add_trigger.png
-   :alt: Screenshot of adding a Nextcloud trigger in a workflow
+   :alt: Windmill workflow editor showing the Add Trigger panel with Nextcloud selected
 
 Now you can choose an event out of a drop-down list  of events that your flow should react to. You can additionally fill in some parameters:
 
@@ -148,7 +148,7 @@ In order to reference the workflow input (details about the event that triggered
 For example, ``flow_input.event.form.hash`` will reference the hash of a form from a nextcloud Forms event. As it is a JavaScript expression and not a static value, you have to switch the parameter input with the button next to it.
 
 .. image:: images/windmill_js_expression.png
-   :alt: Screenshot of adding a Nextcloud trigger in a workflow
+   :alt: Windmill workflow editor showing the Add Trigger panel with Nextcloud selected
 
 The fields available for each event are listed in the :ref:`webhook_listeners documentation<webhook_listeners>`.
 
@@ -165,10 +165,10 @@ The most prominent use case for this are approval workflows where you get automa
 Once the human approves or disapproves by triggering the webhook URL the workflow will resume.
 
 In order to turn a newly added step into an approval step, the workflow edit screen,
-select the script and in the bottom right pan, go in the "Advanced" tab, "Suspend" sub tab and check "Suspend/Approval/Prompt".
+select the script and in the step panel, go in the "Advanced" tab, "Suspend" sub tab and check "Suspend/Approval/Prompt".
 
 .. image:: images/windmill_approval_step_config.png
-   :alt: Screenshot of the workspace edit screen to turn a normal step into an Approval step
+   :alt: Windmill workflow step editor with the Advanced tab open showing the Suspend/Approval option
 
 Using the scripts provided for Nextcloud, you can send approval links to the humans in charge of approving
 via Nextcloud Talk or a simple notification in Nextcloud.

@@ -154,7 +154,7 @@ Assistant configuration
 
    occ config:app:set assistant assistant_enabled --value=1 --type=string
 
-To enable/disable the assistant button from the top-right corner for all the users.
+To enable/disable the assistant button in the navigation bar for all users.
 
 2. AI text generation smart picker
 

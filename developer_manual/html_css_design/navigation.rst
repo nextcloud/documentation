@@ -79,7 +79,7 @@ Basic layout
 ------------
 
 .. figure:: ../images/navigation.png
-   :alt: Navigation screenshot
+   :alt: App navigation sidebar showing a list of navigation entries with icons
    :figclass: figure-with-code
 
 .. code-block:: html

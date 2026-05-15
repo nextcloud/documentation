@@ -12,6 +12,7 @@ When you are part of a conversation and have permission to do so, you can start 
 When a call is already in progress, join it by clicking the green ``Join call`` button in the chat area or the top bar.
 
 .. image:: images/join-call.png
+    :alt: Talk conversation with a green Join call button
     :width: 600px
 
 .. note:: If you have not yet given permission to the browser or the Talk Desktop client to use your microphone and camera,
@@ -21,6 +22,7 @@ When a call is already in progress, join it by clicking the green ``Join call`` 
 You will see ``Media settings``, where you can customise your call experience:
 
 .. image:: images/calls/media-settings-initial.png
+    :alt: Talk media settings dialog before joining a call
     :width: 600px
 
 Controlling audio and video
@@ -35,6 +37,7 @@ Use the microphone and camera icons at the bottom of the video preview to mute o
 Device settings allow you to choose which microphone and camera you want to use. This is useful if you have more than one microphone or camera available:
 
 .. image:: images/calls/media-settings-devices.png
+    :alt: Talk media settings showing microphone and camera device selection
     :width: 400px
 
 Backgrounds
@@ -45,6 +48,7 @@ You can also upload your own image or choose one already in Nextcloud Files.
 Alternatively, choose the ``blur`` option to blur your live video background.
 
 .. image:: images/calls/media-settings-backgrounds.png
+    :alt: Talk media settings showing virtual background and blur options for video
     :width: 400px
 
 Immediately join a call
@@ -70,9 +74,11 @@ If you do not want to notify the other participants, start a silent call by open
 and choosing ``Call without notification``.
 
 .. image:: images/calls/media-settings-silent-call.png
+    :alt: Talk Call without notification option in media settings
     :width: 400px
 
 .. image:: images/calls/media-settings-silent-call-2.png
+    :alt: Talk confirmation step for calling without sending a notification
     :width: 400px
 
 .. note:: Other participants can modify notifications on a per-conversation level, including whether they want to receive call notifications.
@@ -103,6 +109,7 @@ During a call
 After you join a call, you will see the call view. It shows the video feeds of all participants currently in the call, with additional information and controls.
 
 .. image:: images/calls/during-a-call-details.png
+    :alt: Talk active call view showing participant video feeds
     :width: 400px
 
 The leftmost element shows the elapsed call time.
@@ -114,11 +121,13 @@ Participants that have joined the call will be listed first.
 You will also see each participant's talking time if they have spoken during the call:
 
 .. image:: images/calls/participant-talk-time.png
+    :alt: Talk active call showing talking time indicator for each participant
     :width: 400px
 
 You can access additional call options and settings from the three-dot menu in the top bar.
 
 .. image:: images/media-settings.png
+    :alt: Talk in-call three-dot menu for additional settings and options
     :width: 300px
 
 Set up breakout rooms
@@ -134,6 +143,7 @@ Download call participants list
 You can download the list of participants in a call from the three-dot menu in the top bar. This downloads a CSV file with the names and email addresses of all participants.
 
 .. image:: images/download-participants-list.png
+   :alt: Talk in-call menu showing download participants list option
    :width: 400px
 
 The CSV file contains the following columns:
@@ -149,6 +159,7 @@ Controlling audio and video
 Bottom bar of the call view offers media controls, layout settings and other features you can use during a call.
 
 .. image:: images/calls/during-a-call-controls.png
+    :alt: Talk active call bottom bar showing media controls and layout settings
     :width: 400px
 
 Use the microphone and camera icons to mute/unmute your microphone and enable/disable your camera.
@@ -161,6 +172,7 @@ Reactions
 The reactions button lets you send an emoji reaction to all participants in the call.
 
 .. image:: images/calls/call-reactions.png
+    :alt: Talk active call reactions panel with emoji options
     :width: 400px
 
 Every participant will see the emoji rising from the bottom of their call screen. The emoji disappears after two seconds.
