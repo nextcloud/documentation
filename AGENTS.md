@@ -70,6 +70,33 @@ redirects = {
 Never edit files under `locale/`. Managed by Transifex, synced via CI.
 Source strings live in `.rst` files only.
 
+## Before starting any PR — required reading
+
+Read `style_guide.rst` at the repo root before making any changes. It is the authoritative style reference for all three manuals and takes precedence over generic RST conventions.
+
+```bash
+# quick reference during work
+cat style_guide.rst
+```
+
+## Resources
+
+### Sphinx / RST
+- [reStructuredText Primer](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html) — core RST syntax
+- [Sphinx directives reference](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html) — `.. note::`, `.. code-block::`, `.. toctree::`, etc.
+- [Sphinx cross-referencing](https://www.sphinx-doc.org/en/master/usage/referencing.html) — `:doc:`, `:ref:`, `:guilabel:`, `:kbd:`
+- [sphinx-rtd-theme](https://sphinx-rtd-theme.readthedocs.io/) — the theme used; check it for layout behaviour
+
+### This repo
+- `style_guide.rst` — **read this first**, always
+- `CONTRIBUTING.md` — full contributor workflow
+- `.github/pull_request_template.md` — PR checklist
+
+### Tools
+- [sphinx-lint](https://github.com/sphinx-contrib/sphinx-lint) — RST linter used in CI
+- [codespell](https://github.com/codespell-project/codespell) — spell checker used in CI
+- [sphinx_reredirects](https://pypi.org/project/sphinx-reredirects/) — redirect extension used for page moves
+
 ## Working on existing issues
 
 Before editing any page:
