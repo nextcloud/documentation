@@ -253,6 +253,45 @@ in the Nextcloud config.php file.</p>
 <p>Changing the location of the data directory might cause a corruption of relations
 in the database and is not supported.</p>
 </div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>After copying <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code> to the new machine, <strong>review and update every
+server-specific value</strong> before starting Nextcloud. At minimum check:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">datadirectory</span></code> — keep this path identical to the original server wherever
+possible. Changing the data directory path requires a database update and
+is strongly discouraged; see <a class="reference internal" href="../issues/general_troubleshooting.html#troubleshooting-data-directory"><span class="std std-ref">Troubleshooting data-directory</span></a>
+if you have no choice.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dbhost</span></code>, <code class="docutils literal notranslate"><span class="pre">dbname</span></code>, <code class="docutils literal notranslate"><span class="pre">dbuser</span></code>, <code class="docutils literal notranslate"><span class="pre">dbpassword</span></code> — update if the new server
+uses a different database host or credentials.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trusted_domains</span></code> — add or replace the new server’s hostname or IP address.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">overwrite.cli.url</span></code>, <code class="docutils literal notranslate"><span class="pre">overwritehost</span></code>, <code class="docutils literal notranslate"><span class="pre">overwriteprotocol</span></code>,
+<code class="docutils literal notranslate"><span class="pre">overwritewebroot</span></code> — update to reflect the new server’s URL and any
+reverse-proxy setup.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">memcache.local</span></code>, <code class="docutils literal notranslate"><span class="pre">memcache.distributed</span></code>, <code class="docutils literal notranslate"><span class="pre">memcache.locking</span></code> and the
+associated connection parameters — update if the cache/session backend address
+changed on the new machine. Depending on the backend in use, check <code class="docutils literal notranslate"><span class="pre">redis</span></code>
+or <code class="docutils literal notranslate"><span class="pre">redis.cluster</span></code> (for Redis / Redis Cluster) or <code class="docutils literal notranslate"><span class="pre">memcached_servers</span></code>
+(for Memcached).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">objectstore</span></code> — if external object storage (S3, Swift, etc.) is configured,
+verify that the endpoint, bucket, and credentials are still valid and reachable
+from the new server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mail_smtphost</span></code>, <code class="docutils literal notranslate"><span class="pre">mail_smtpport</span></code> — update if the SMTP relay differs on
+the new server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">logfile</span></code> — update if the log path differs on the new server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tempdirectory</span></code> — if set to a custom path, make sure that path exists and
+is writable on the new server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">serverid</span></code> — if set, keep the same value. It identifies the server in
+multi-PHP-server setups and must not change. If you override it per server via
+the <code class="docutils literal notranslate"><span class="pre">NC_serverid</span></code> environment variable, configure the same override on the new
+server.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">secret</span></code> and <code class="docutils literal notranslate"><span class="pre">instanceid</span></code> values are generated once at install time and
+tied to all encrypted data and user sessions. <strong>Do not change or regenerate them.</strong>
+They must be copied verbatim from the original <code class="docutils literal notranslate"><span class="pre">config.php</span></code>.</p>
+<p>Leaving stale values (especially database credentials or <code class="docutils literal notranslate"><span class="pre">datadirectory</span></code>)
+will cause startup errors or data corruption.</p>
+</div>
 </li>
 <li><p>Check the config.php file of the <strong>ORIGINAL</strong> system to see if it has
 the <code class="docutils literal notranslate"><span class="pre">data-fingerprint</span></code> set to a non-empty value. If this is the case, make
