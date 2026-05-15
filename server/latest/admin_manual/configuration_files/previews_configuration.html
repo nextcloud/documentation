@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=9a87ad92" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -220,6 +220,12 @@ The full list of the preview providers that are enabled by default (as well as t
 disabled by default) can be found under the <code class="docutils literal notranslate"><span class="pre">enabledPreviewProviders</span></code>
 <a class="reference internal" href="../configuration_server/config_sample_php_parameters.html"><span class="doc">configuration parameter</span></a>.</p>
 </div>
+<p>Some preview providers depend on external binaries on the server. Video
+previews such as <code class="docutils literal notranslate"><span class="pre">OC\Preview\Movie</span></code> and <code class="docutils literal notranslate"><span class="pre">OC\Preview\MKV</span></code> require
+<code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code>. Office document previews such as <code class="docutils literal notranslate"><span class="pre">OC\Preview\OpenDocument</span></code>
+and <code class="docutils literal notranslate"><span class="pre">OC\Preview\MSOfficeDoc</span></code> require LibreOffice. Image formats handled
+through ImageMagick, such as <code class="docutils literal notranslate"><span class="pre">OC\Preview\Illustrator</span></code>, <code class="docutils literal notranslate"><span class="pre">OC\Preview\SVG</span></code>
+and <code class="docutils literal notranslate"><span class="pre">OC\Preview\TIFF</span></code>, require the corresponding ImageMagick support.</p>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
 <p>Please notice that the Nextcloud preview system comes already with sensible

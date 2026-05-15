@@ -127,6 +127,17 @@ button.rst-current-version {
 	background: rgba(0, 130, 201, 0.1)
 }
 
+/* kbd elements pick up the red code text color (#e74c3c) which gives
+   ~3.82:1 on white — below the 4.5:1 required by WCAG AA / BITV 9.1.4.3.
+   Override to a darker red (~5.4:1) and darken the border so the
+   key outline meets the 3:1 non-text contrast requirement. */
+.rst-content kbd,
+kbd {
+	color: #c0392b !important;
+	border-color: #767676 !important;
+	margin-block: 1px;
+}
+
 /* Inline code — RTD uses #e74c3c on white which gives ~3.82:1, below
    the 4.5:1 required by WCAG AA / BITV 9.1.4.3. Use a darker shade. */
 .rst-content code,
