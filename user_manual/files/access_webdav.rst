@@ -543,7 +543,7 @@ To get the properties of files in the root folder:
 
 
 Accessing files using WinSCP
-----------------------------
+------------------------------
 
 `WinSCP <https://winscp.net/eng/docs/introduction/>`_ is a free, open-source SFTP,
 FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer
