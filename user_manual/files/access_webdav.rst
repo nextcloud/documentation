@@ -67,7 +67,7 @@ If Nextcloud is installed in a subdirectory called "nextcloud"::
    built-in client), you should use an application password for login rather than your
    regular password. In addition to improved security, this `increases performance significantly
    <https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151>`_. To
-   configure an application password, log in to the Nextcloud web interface, click your avatar,
+   configure an application password, log in to the Nextcloud Web interface, click your avatar,
    and choose *Personal settings*. Then choose *Security* in the left
    sidebar and scroll to the very bottom. There you can create an app password (which can
    also be revoked in the future without changing your main user password).
@@ -441,7 +441,7 @@ Cannot map Nextcloud as a WebDAV drive in Windows using a self-signed certificat
 Solution
 ^^^^^^^^
 
-#. Access your Nextcloud instance in your preferred web browser.
+#. Access your Nextcloud instance in your preferred Web browser.
 #. Click through until you get to the certificate error in the browser status
    line.
 #. View the certificate, then from the Details tab, select 'Copy to File'.
