@@ -440,7 +440,7 @@ Cannot map Nextcloud as a WebDAV drive in Windows using a self-signed certificat
 Solution
 ^^^^^^^^
 
-#. Access your Nextcloud instance in your preferred web browser.
+#. Access your Nextcloud instance in your preferred Web browser.
 #. Click through until you get to the certificate error in the browser status
    line.
 #. View the certificate, then from the Details tab, select 'Copy to File'.
