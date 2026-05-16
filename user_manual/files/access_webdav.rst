@@ -2,17 +2,17 @@
 Accessing Nextcloud files using WebDAV
 ======================================
 
-Nextcloud fully supports the WebDAV protocol, and you can connect and synchronize
-with Nextcloud Files over WebDAV. In this chapter, you will learn how to
-connect Linux, macOS, Windows, and mobile devices to your Nextcloud server.
+Nextcloud fully supports the WebDAV protocol, and you can connect to and synchronize
+with Nextcloud Files over WebDAV. This chapter explains how to connect Linux, macOS,
+Windows, and mobile devices to your Nextcloud server.
 
 WebDAV stands for Distributed Authoring and Versioning. It is an HTTP extension
 that makes it easy to create, read, and edit files hosted on remote Web servers. With
 a WebDAV client, you can access your Nextcloud Files (including shares) on Linux,
 macOS and Windows in a similar way as any remote network share, and stay synchronized.
 
-Before we get into configuring WebDAV, let's take a quick look at the
-recommended way of connecting client devices to Nextcloud.
+Before you configure WebDAV, review the recommended way to connect client devices to
+Nextcloud.
 
 Official Nextcloud desktop and mobile clients
 ---------------------------------------------
@@ -65,9 +65,9 @@ If Nextcloud is installed in a subdirectory called "nextcloud"::
 
 .. note:: When using a third-party WebDAV client (including your operating system's
    built-in client), you should use an application password for login rather than your
-   regular password. In addition improved security, this `increases performance significantly
+   regular password. In addition to improved security, this `increases performance significantly
    <https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151>`_. To
-   configure an application password, log into the Nextcloud Web interface, click on your avatar
+   configure an application password, log in to the Nextcloud web interface, click your avatar,
    and choose *Personal settings*. Then choose *Security* in the left
    sidebar and scroll to the very bottom. There you can create an app password (which can
    also be revoked in the future without changing your main user password).
@@ -76,7 +76,7 @@ If Nextcloud is installed in a subdirectory called "nextcloud"::
    URL of your Nextcloud server (omit the directory part if the installation is
    in the root of your domain), and **USERNAME** with the username of the connecting user.
 
-   See the WebDAV URL, to be found in Files Settings -> WebDAV in the Files on your Nextcloud account.
+   You can find the WebDAV URL in **Files settings** under **WebDAV** in your Nextcloud account.
 
    .. image:: ../images/webdav_link.png
     :alt: Nextcloud Files settings panel showing the personal WebDAV URL
@@ -110,8 +110,8 @@ share::
 .. note:: The same method works for other file managers that use GVFS,
       such as MATE's Caja and Cinnamon's Nemo.
 
-Accessing files with KDE and Dolphin file manager
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Accessing files with KDE and Dolphin
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Navigate to System Settings -> Networking -> Online Accounts
 #. Click "Add Account..."
@@ -120,8 +120,8 @@ Accessing files with KDE and Dolphin file manager
 #. Follow the on-screen instructions to log in
 #. After logging in, ensure you enable "Storage" in the "Use This Account For" section
 #. You can now access your files in Dolphin under "Network" in the sidebar
-#. (Optional) To add this as a shortcut in the sidebar, right click "Nextcloud Storage" then "Add to Places"
-#. (Optional) To customise the shortcut, right click the shortcut in the sidebar then "Edit..." and customise the icon and label as you please
+#. (Optional) To add this location as a shortcut in the sidebar, right-click "Nextcloud Storage", then click "Add to Places"
+#. (Optional) To customize the shortcut, right-click it in the sidebar, then click "Edit..." and customize the icon and label
 
 
 Creating WebDAV mounts on the Linux command line
@@ -252,7 +252,7 @@ Using this feature requires network connectivity. If you want to store your
 files offline, use the Desktop Client to sync all files on your
 Nextcloud to one or more directories of your local hard drive.
 
-.. note:: Windows 10 now defaults to allow Basic Authentication if HTTPS is enabled before mapping your drive.
+.. note:: In Windows 10, Basic Authentication is allowed by default when HTTPS is enabled before mapping your drive.
 
     On older versions of Windows, you must permit the use of Basic Authentication in the Windows Registry:
 
@@ -319,7 +319,7 @@ To map a drive using Microsoft Windows Explorer:
      :scale: 80%
      :alt: Windows Explorer Map Network Drive wizard with a Nextcloud WebDAV URL entered
 
-5. Click the ``Finish`` button.
+#. Click the ``Finish`` button.
 
 Windows Explorer maps the network drive, making your Nextcloud instance available.
 
@@ -413,15 +413,16 @@ service.
 Problem
 ^^^^^^^
 
-Adding a WebDAV drive on Windows via the above described steps does not display the correct size
-of in Nextcloud available space and instead shows the size of the C: drive with its available space.
+Adding a WebDAV drive on Windows with the steps above does not display the correct
+available Nextcloud space and instead shows the size and free space of the C: drive.
 
 Answer
 ^^^^^^
 
-Unfortunately is this a limitation of WebDAV itself, because it does not provide a way for the client
-to get the available free space from the server. Windows automatically falls back to show the size of
-the C: drive with its available space instead. So unfortunately there is no real solution to this problem.
+Unfortunately, this is a limitation of WebDAV itself, because it does not provide a
+way for the client to retrieve available free space from the server. Windows automatically
+falls back to the size and free space of the C: drive. There is no direct solution
+for this limitation.
 
 Problem
 ^^^^^^^
@@ -440,7 +441,7 @@ Cannot map Nextcloud as a WebDAV drive in Windows using a self-signed certificat
 Solution
 ^^^^^^^^
 
-#. Access to your Nextcloud instance via your favorite Web browser.
+#. Access your Nextcloud instance in your preferred web browser.
 #. Click through until you get to the certificate error in the browser status
    line.
 #. View the certificate, then from the Details tab, select 'Copy to File'.
@@ -542,13 +543,17 @@ To get the properties of files in the root folder:
 
 
 Accessing files using WinSCP
--------------------------------
+----------------------------
 
-`WinSCP <https://winscp.net/eng/docs/introduction/>`_  is an open source free SFTP, FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer between a local and a remote computer. Beyond this, WinSCP offers scripting and basic file management functionality.
+`WinSCP <https://winscp.net/eng/docs/introduction/>`_ is a free, open-source SFTP,
+FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer
+between a local and a remote computer. WinSCP also offers scripting and basic file
+management functionality.
 
 You can `download <https://winscp.net/eng/downloads.php/>`_ the portable version of WinSCP and run it on Linux through `Wine <https://wiki.winehq.org/Main_Page/>`_.
 
-To run WinSCP on Linux, download wine through your distribution's package manager, then run it with the command: ``wine WinSCP.exe``.
+To run WinSCP on Linux, install Wine through your distribution's package manager,
+then run: ``wine WinSCP.exe``.
 
 To connect to Nextcloud:
 
@@ -568,7 +573,8 @@ To connect to Nextcloud:
 * Select the desired options and press the 'OK' button
 * Press the 'Login' button to connect to Nextcloud
 
-.. note:: It is recommended to use an app password for the password if you use TOTP as WinSCP does not understand TOTP with Nextcloud at the time of writing (2022-11-07).
+.. note:: If you use TOTP, use an app password. At the time of writing (2022-11-07),
+   WinSCP does not support TOTP with Nextcloud.
 
 
 .. _KB2668751: https://web.archive.org/web/20211008025539/https://support.microsoft.com/en-us/topic/you-cannot-download-more-than-50-mb-or-upload-large-files-when-the-upload-takes-longer-than-30-minutes-using-web-client-in-windows-7-8709ae9d-e808-c5a0-95d0-9a7143c50b11
