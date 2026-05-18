@@ -9,4 +9,5 @@ To access the hidden folder, enable "Show hidden files" in the Files app setting
 You can also change the name of the folder in the Collectives app settings. The setting is located in
 the Collectives app at the bottom of the collectives list. If you want the folder to be visible
 permanently without showing other hidden files, set the folder setting to a name without leading dot
-(e.g. ``Collectives``).
+(e.g. ``Collectives``). Please note that this is a per-user setting, it only affects the Collectives
+user folder for the current user.
