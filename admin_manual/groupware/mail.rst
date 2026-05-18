@@ -252,3 +252,30 @@ Translation
 .. versionadded:: 4.2
 
 The mail app can optionally provide translations for messages if the :ref:`translation API <machine_translation>` is enabled.
+
+User migration
+--------------
+
+.. versionadded:: 5.9
+
+.. important::
+   The `User Migration App <https://apps.nextcloud.com/apps/user_migration>`_ must be installed and enabled on both
+   instances.
+
+To migrate user data from one Nextcloud instance to another, use the User Migration App via the
+``occ user:export`` or ``occ user:import`` command line tool.
+
+The Mail app can migrate the following data:
+
+- Manually added mail accounts and their respective account settings (e.g., display name, signature, quick actions, ...)
+- Configured internal addresses
+- Configured trusted senders
+- S/MIME certificates and private keys
+- General app settings like the order of mail accounts
+
+.. note:: Provisioned mail accounts are not migrated, as they are expected to be re-provisioned on the new instance.
+
+.. note:: The User Migration App is **not** a backup solution, as existing data is not being removed before the import process.
+
+See the `User Migration App <https://apps.nextcloud.com/apps/user_migration>`_ on the Nextcloud App Store for more
+information.
