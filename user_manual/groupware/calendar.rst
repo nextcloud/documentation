@@ -175,7 +175,7 @@ Finished. Your calendar subscriptions will be updated regularly.
 Subscribe to a Holiday Calendar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 4.4
+.. versionadded:: 4.4 Nextcloud 25 or newer
 
 You can subscribe to a read-only holiday calendar provided by `Thunderbird <https://www.thunderbird.net/calendar/holidays/>`_.
 
@@ -252,7 +252,7 @@ Attendees may be other users on your Nextcloud instances, contacts in your addre
 .. figure:: images/calendar_event_invitation_level.png
    :scale: 80%
 
-.. versionchanged:: 25
+.. versionchanged:: 25.0.0
    Attendee email response links no longer offer inputs to add a comment or invite additional guests to the event.
 
 .. tip:: When adding other Nextcloud users as attendees to an event, you may access their free-busy information if available, helping you determine when the best time slot for your event is. Set your :ref:`working hours<calendar-working-hours>` to let others know when you are available. Free-busy information is only available for other users on the same Nextcloud instance.
@@ -289,7 +289,7 @@ Similar to attendees you can add rooms and resources to your events. The system 
 
 Room availability
 ~~~~~~~~~~~~~~~~~
-.. versionadded:: 5.0
+.. versionadded:: 5.0 Nextcloud 30 or newer
 
 If the "Calendar Rooms and Resources" app is installed on your instance, you can now find ``Room availability``  the ``Resources`` section. It lists all the existing rooms. You can check the availability of each room in a manner similar to checking the free/busy status of event attendees.
 
@@ -494,7 +494,7 @@ You can create a Talk room directly from the calendar app for a booked appointme
 Proposals
 ---------
 
-.. versionadded:: 6.0.0
+.. versionadded:: 6.0 Nextcloud 32 or newer
 
 Finding a meeting time for a group of participants can be challenging. As of Calendar v6, a new feature was introduced that allows users to create proposals for meeting times.
 This means that instead of just booking a time, or searching for a available time in the free busy view, participants can vote on a set of proposed times for a meeting.
