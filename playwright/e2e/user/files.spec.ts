@@ -16,6 +16,7 @@ import {
 import * as path from 'path'
 import * as fs from 'fs'
 import * as os from 'os'
+import { execSync } from 'child_process'
 
 test.describe.configure({ mode: 'serial' })
 
@@ -32,6 +33,13 @@ function tmpFile(name: string, content: string): string {
 	const p = path.join(os.tmpdir(), name)
 	fs.writeFileSync(p, content, 'utf8')
 	return p
+}
+
+/** Create a .docx via LibreOffice headless conversion from a plain-text source. */
+function createDocx(baseName: string, content: string): string {
+	const txt = tmpFile(`${baseName}.txt`, content)
+	execSync(`libreoffice --headless --convert-to docx --outdir "${os.tmpdir()}" "${txt}"`, { timeout: 60000 })
+	return path.join(os.tmpdir(), `${baseName}.docx`)
 }
 
 function d(isoDate: string): number {
@@ -109,6 +117,48 @@ test.beforeAll(async ({ browser }) => {
 			'Total,10800,10320,480',
 		].join('\n')),
 		'Documents/Event Budget.csv', 'christine', 'christine', d('2026-05-10'),
+	)
+
+	// Word documents — created via LibreOffice for proper .docx format
+	await uploadFile(
+		createDocx('nc-seed-proposal', [
+			'Project Proposal: Autumn Gala 2026',
+			'',
+			'Prepared by: Christine',
+			'Date: 1 May 2026',
+			'',
+			'Executive Summary',
+			'This proposal outlines the plan for the autumn fundraising gala, targeting',
+			'a net raise of £40,000 for the community arts centre restoration fund.',
+			'',
+			'Objectives',
+			'1. Secure a minimum of 8 sponsors at Supporting level or above',
+			'2. Sell 180 of 200 available seats',
+			'3. Run a silent auction with a minimum of 20 lots',
+			'',
+			'Timeline',
+			'2 June    Venue confirmed',
+			'15 June   Sponsor packs distributed',
+			'1 July    Ticket sales open',
+			'1 September  Event date',
+		].join('\n')),
+		'Documents/Gala Proposal 2026.docx', 'christine', 'christine', d('2026-05-01'),
+	)
+	await uploadFile(
+		createDocx('nc-seed-agreement', [
+			'Volunteer Agreement',
+			'',
+			'Organisation: Community Arts Centre',
+			'Event: Autumn Gala, 1 September 2026',
+			'',
+			'By signing this agreement the volunteer confirms they are available on the',
+			'event date and agree to follow all health and safety guidelines.',
+			'',
+			'Roles available: Registration desk, Auction assistant, Front-of-house',
+			'',
+			'Contact: Christine (events@example.org)',
+		].join('\n')),
+		'Volunteer Agreement.docx', 'christine', 'christine', d('2026-05-18'),
 	)
 
 	// Second upload of Q2 Proposal creates a version entry (needed for Versions tab screenshot)

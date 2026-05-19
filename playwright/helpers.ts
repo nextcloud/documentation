@@ -148,6 +148,16 @@ export async function ocsRequest(
 	return fetch(`${OCS_BASE}${path}`, init)
 }
 
+export async function reactToMessage(
+	token: string,
+	messageId: number,
+	emoji: string,
+	user: string,
+	password: string,
+): Promise<void> {
+	await ocsRequest('POST', `/ocs/v2.php/apps/spreed/api/v1/reaction/${token}/${messageId}`, user, password, { reaction: emoji })
+}
+
 export async function seedChatMessages(
 	token: string,
 	messages: Array<{ text: string; user: string; password: string }>,

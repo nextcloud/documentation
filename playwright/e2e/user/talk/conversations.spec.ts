@@ -12,6 +12,7 @@ import {
 	uploadFile,
 	ocsRequest,
 	seedChatMessages,
+	reactToMessage,
 } from '../../../helpers'
 import { Page } from '@playwright/test'
 import * as path from 'path'
@@ -167,21 +168,36 @@ test.beforeAll(async ({ browser }) => {
 		shareType: '10', path: '/Team Meeting Notes.pdf', shareWith: dmToken,
 	})
 
-	// Seed chat messages (only if conversation is empty)
+	// Seed 1:1 DM messages (only if conversation is empty)
 	const chatRes = await talkApi('GET', `/v1/chat/${dmToken}?lookIntoFuture=0&limit=1`, christine)
 	const chatData = await chatRes.json()
 	const msgs: unknown[] = chatData?.ocs?.data ?? []
 	if (msgs.length === 0) {
 		await seedChatMessages(dmToken, [
-			{ text: 'Do you have minute?', user: 'amara_w', password: 'amara_w' },
+			{ text: 'Do you have a minute?', user: 'amara_w', password: 'amara_w' },
 			{ text: "Absolutely, what's up?", user: 'christine', password: 'christine' },
-			{ text: "The client got back to me and they're considering to join the fundraising next Thursday if we can secure a round table for them. Can you help me secure it?", user: 'amara_w', password: 'amara_w' },
-			{ text: 'Those are some great news! Have you already gotten in touch with Marlene from the venue to see if they can add a round table to the event?', user: 'christine', password: 'christine' },
-			{ text: "Marlene from the venue just got back to me and she said it'd be tricky to get that table so close to the event's date. She said she'll try but maybe an escalation is needed.", user: 'amara_w', password: 'amara_w' },
-			{ text: "OK, makes sense to me. I will contact them immediately to ensure that we can accommodate the client's wishes. Thank you for looping me in!", user: 'christine', password: 'christine' },
-			{ text: 'Wonderful, thank you!', user: 'amara_w', password: 'amara_w' },
-			{ text: 'Happy to help!', user: 'christine', password: 'christine' },
+			{ text: "The client got back to me — they're considering joining the fundraising next Thursday if we can secure a round table. Can you help?", user: 'amara_w', password: 'amara_w' },
+			{ text: "Great news! Have you already spoken to Marlene at the venue about adding a round table?", user: 'christine', password: 'christine' },
+			{ text: "Marlene said it'd be tricky this close to the date but she'll try. Might need an escalation.", user: 'amara_w', password: 'amara_w' },
+			{ text: "I'll contact them straight away to make sure we can accommodate the client. Thanks for looping me in!", user: 'christine', password: 'christine' },
+			{ text: "Wonderful, thank you so much! 🙌", user: 'amara_w', password: 'amara_w' },
+			{ text: "Happy to help! Let me know how it goes.", user: 'christine', password: 'christine' },
+			{ text: "Will do. Also — I've shared the Q2 proposal and meeting notes in this chat for your reference.", user: 'amara_w', password: 'amara_w' },
+			{ text: "Perfect, I'll review them before our call.", user: 'christine', password: 'christine' },
 		])
+		// Add emoji reactions to a few DM messages
+		const allMsgsRes = await talkApi('GET', `/v1/chat/${dmToken}?lookIntoFuture=0&limit=20`, christine)
+		const allMsgsData = await allMsgsRes.json()
+		const allMsgs: Array<{ id: number; message: string }> = allMsgsData?.ocs?.data ?? []
+		for (const msg of allMsgs) {
+			if (msg.message.includes('Great news')) {
+				await reactToMessage(dmToken, msg.id, '👍', 'amara_w', 'amara_w').catch(() => {})
+				await reactToMessage(dmToken, msg.id, '❤️', 'lila_h', 'lila_h').catch(() => {})
+			}
+			if (msg.message.includes("Happy to help")) {
+				await reactToMessage(dmToken, msg.id, '🙏', 'amara_w', 'amara_w').catch(() => {})
+			}
+		}
 	}
 
 	// Seed note-to-self with a task list so the screenshot shows the task counter
@@ -201,7 +217,72 @@ test.beforeAll(async ({ browser }) => {
 
 	// Pre-create the "Event planning" group so participant membership is synced
 	// before the tests start — avoids a race on the participants tab.
-	await findOrCreateGroup()
+	const eventToken = await findOrCreateGroup()
+
+	// Set an emoji icon on "Event planning"
+	await talkApi('POST', `/v1/conversation/${eventToken}/avatar/emoji`, christine, { emoji: '🎪', color: '0082c9' }).catch(() => {})
+
+	// Seed messages in the group (only if empty beyond the initial 3)
+	const grpChatRes = await talkApi('GET', `/v1/chat/${eventToken}?lookIntoFuture=0&limit=20`, christine)
+	const grpChatData = await grpChatRes.json()
+	const grpMsgs: Array<{ id: number; message: string }> = grpChatData?.ocs?.data ?? []
+	if (grpMsgs.filter(m => m.message && !m.message.startsWith('{')).length <= 3) {
+		await seedChatMessages(eventToken, [
+			{ text: "Quick update: Riverside Pavilion confirmed for 1 September! 🎉", user: 'christine', password: 'christine' },
+			{ text: "Amazing! I've already started the sponsor outreach — three leads so far.", user: 'amara_w', password: 'amara_w' },
+			{ text: "That's great progress. Malik, can you handle the AV quote this week?", user: 'christine', password: 'christine' },
+			{ text: "On it — I'll have something to you by Thursday.", user: 'malik_s', password: 'malik_s' },
+			{ text: "Thanks everyone. Reminder: catering walkthrough is Friday at 10am.", user: 'christine', password: 'christine' },
+			{ text: "I'll be there!", user: 'amara_w', password: 'amara_w' },
+			{ text: "Me too 👍", user: 'malik_s', password: 'malik_s' },
+		])
+		// React to the venue confirmation message
+		const freshGrpRes = await talkApi('GET', `/v1/chat/${eventToken}?lookIntoFuture=0&limit=20`, christine)
+		const freshGrpData = await freshGrpRes.json()
+		const freshGrpMsgs: Array<{ id: number; message: string }> = freshGrpData?.ocs?.data ?? []
+		for (const msg of freshGrpMsgs) {
+			if (msg.message.includes('Riverside Pavilion confirmed')) {
+				await reactToMessage(eventToken, msg.id, '🎉', 'amara_w', 'amara_w').catch(() => {})
+				await reactToMessage(eventToken, msg.id, '🎉', 'malik_s', 'malik_s').catch(() => {})
+				await reactToMessage(eventToken, msg.id, '👏', 'lila_h', 'lila_h').catch(() => {})
+			}
+		}
+	}
+
+	// Additional rooms for a realistic conversation list
+	const allRoomsRes = await talkApi('GET', '/v4/room', christine)
+	const allRoomsData = await allRoomsRes.json()
+	const existingNames: string[] = (allRoomsData?.ocs?.data ?? []).map((r: { displayName: string }) => r.displayName)
+
+	if (!existingNames.includes('Design Team')) {
+		const designToken = await createGroup('Design Team', christine)
+		await talkApi('POST', `/v1/conversation/${designToken}/avatar/emoji`, christine, { emoji: '🎨', color: 'a3174b' }).catch(() => {})
+		await addParticipant(designToken, 'lila_h', christine)
+		await addParticipant(designToken, 'kieran_p', christine)
+		await seedChatMessages(designToken, [
+			{ text: "Hey team! Sharing the updated brand kit for the gala — new colour palette and logo lockups.", user: 'christine', password: 'christine' },
+			{ text: "Love the new palette! The deep teal works really well for the event signage.", user: 'lila_h', password: 'lila_h' },
+			{ text: "Agreed. Kieran, can you update the social templates once you have a moment?", user: 'christine', password: 'christine' },
+			{ text: "Sure, I'll have the Instagram and LinkedIn versions ready by end of day.", user: 'kieran_p', password: 'kieran_p' },
+		])
+	}
+
+	if (!existingNames.includes('Project Updates')) {
+		const updatesToken = await createGroup('Project Updates', christine)
+		// Open conversation (roomType 3) would require a different create path; keep as group but add more members
+		await talkApi('POST', `/v1/conversation/${updatesToken}/avatar/emoji`, christine, { emoji: '📢', color: 'e9a227' }).catch(() => {})
+		await addParticipant(updatesToken, 'amara_w', christine)
+		await addParticipant(updatesToken, 'malik_s', christine)
+		await addParticipant(updatesToken, 'lila_h', christine)
+		await addParticipant(updatesToken, 'seraphina_d', christine)
+		await seedChatMessages(updatesToken, [
+			{ text: "📅 Gala planning is on track. Key milestone: venue confirmed for 1 Sep.", user: 'christine', password: 'christine' },
+			{ text: "Ticket sales open 1 July — please share the link with your networks!", user: 'christine', password: 'christine' },
+			{ text: "Will do! Already have a few colleagues who are interested.", user: 'seraphina_d', password: 'seraphina_d' },
+			{ text: "Sponsor pack v2 is out — thanks Amara for the quick turnaround.", user: 'christine', password: 'christine' },
+			{ text: "Happy to help. Three warm leads already replied!", user: 'amara_w', password: 'amara_w' },
+		])
+	}
 
 	const ctx = await browser.newContext()
 	const pg = await ctx.newPage()
