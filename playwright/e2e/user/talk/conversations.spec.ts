@@ -15,6 +15,7 @@ import {
 } from '../../../helpers'
 import { Page } from '@playwright/test'
 import * as path from 'path'
+import * as os from 'os'
 
 test.describe.configure({ mode: 'serial' })
 
@@ -181,6 +182,21 @@ test.beforeAll(async ({ browser }) => {
 			{ text: 'Wonderful, thank you!', user: 'amara_w', password: 'amara_w' },
 			{ text: 'Happy to help!', user: 'christine', password: 'christine' },
 		])
+	}
+
+	// Seed note-to-self with a task list so the screenshot shows the task counter
+	const noteRes = await talkApi('GET', '/v1/note-to-self', christine)
+	const noteData = await noteRes.json()
+	const noteToken = noteData.ocs.data.token as string
+	const noteChatRes = await talkApi('GET', `/v1/chat/${noteToken}?lookIntoFuture=0&limit=1`, christine)
+	const noteChatData = await noteChatRes.json()
+	const noteMsgs: unknown[] = noteChatData?.ocs?.data ?? []
+	if (noteMsgs.length === 0) {
+		await seedChatMessages(noteToken, [{
+			text: '- [x] Define Project Scope and Objectives\n- [x] Develop a Project Plan\n- [ ] Coordinate Team Activities\n- [ ] Review and finalize budget\n- [ ] Schedule kickoff meeting',
+			user: 'christine',
+			password: 'christine',
+		}])
 	}
 
 	// Pre-create the "Event planning" group so participant membership is synced
@@ -368,9 +384,12 @@ test('Message expiration setting', async ({ page }) => {
 	await page.locator('#conversation-settings-container').waitFor({ state: 'visible', timeout: 10000 })
 	await page.locator('.navigation-list__link', { hasText: /moderation/i }).click()
 	await page.locator('#settings-section_conversation-settings').waitFor({ state: 'visible', timeout: 10000 })
-	await page.locator('#settings-section_conversation-settings').scrollIntoViewIfNeeded()
+	const expirationSection = page.locator('.settings-section').filter({ hasText: /message expiration/i }).first()
+	await expirationSection.waitFor({ state: 'visible', timeout: 10000 })
+	await expirationSection.scrollIntoViewIfNeeded()
 	await page.waitForTimeout(500)
-	await docElementScreenshot(page, '#conversation-settings-container', 'user/talk/messages-expiration')
+	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'messages-expiration.png')
+	await expirationSection.screenshot({ path: dest })
 })
 
 test('Ban participant', async ({ page }) => {
