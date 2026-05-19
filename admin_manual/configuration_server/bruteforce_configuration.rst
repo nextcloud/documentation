@@ -172,11 +172,12 @@ Nextcloud's built-in brute force protection and fail2ban are complementary tools
 operate at different layers of the stack. Using both together is recommended for
 production servers.
 
-**Nextcloud brute force protection** (the ``bruteforcesettings`` app) works at the
-**application layer**. It detects suspicious login patterns and adds progressively
-longer delays to requests from the offending IP address. It has full context about
-Nextcloud-specific endpoints and credentials, and it activates automatically without
-any operating system configuration.
+**Nextcloud brute force protection** is built into Nextcloud Server itself (the
+``bruteforcesettings`` app provides the admin UI and exclusion settings, but the
+protection runs regardless). It works at the **application layer**: it detects
+suspicious login patterns and adds progressively longer delays to requests from the
+offending IP address. It has full context about Nextcloud-specific endpoints and
+credentials, and it activates automatically without any operating system configuration.
 
 **fail2ban** works at the **OS/network layer**. It watches log files for failed login
 entries and instructs the system firewall (e.g. ``iptables`` or ``nftables``) to
