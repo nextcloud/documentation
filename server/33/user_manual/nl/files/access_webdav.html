@@ -72,7 +72,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">Derde-partij WebDAV clienten</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Toegang tot bestanden met behulp van Linux</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Nautilus bestandsbeheerder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">Toegang tot bestanden met KDE en Dolphin bestandbeheerder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin">Accessing files with KDE and Dolphin</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Het maken van WebDAV mounts op de Linux commandoregel</a></li>
@@ -161,9 +161,12 @@
              
   <section id="accessing-nextcloud-files-using-webdav">
 <h1>Toegang tot Nextcloud bestanden met behulp van WebDAV<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
-<p>Nextcloud ondersteunt het WebDAV-protocol volledig en je kunt verbinding maken en synchroniseren met Nextcloud Files via WebDAV. In dit hoofdstuk leer je hoe je Linux, macOS, Windows en mobiele apparaten kunt verbinden met jouw Nextcloud-server.</p>
+<p>Nextcloud fully supports the WebDAV protocol, and you can connect to and synchronize
+with Nextcloud Files over WebDAV. This chapter explains how to connect Linux, macOS,
+Windows, and mobile devices to your Nextcloud server.</p>
 <p>WebDAV staat voor Distributed Authoring and Versioning. Het is een HTTP-uitbreiding waarmee je eenvoudig bestanden kunt maken, lezen en bewerken die op externe webservers worden gehost. Met een WebDAV-client kan je jouw Nextcloud-bestanden (inclusief shares) op Linux, macOS en Windows op dezelfde manier openen als elke andere externe netwerkshare, en blijven ze gesynchroniseerd.</p>
-<p>Voordat we beginnen met het configureren van WebDAV, kijken we eerst even naar de aanbevolen manier om clientapparaten met Nextcloud te verbinden.</p>
+<p>Before you configure WebDAV, review the recommended way to connect client devices to
+Nextcloud.</p>
 <section id="official-nextcloud-desktop-and-mobile-clients">
 <h2>Officiële Nextcloud-desktop- en mobiele clients<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
 <p>De aanbevolen manier om een computer met een Nextcloud-server te synchroniseren, is door gebruik te maken van de <a class="reference external" href="https://nextcloud.com/install/#install-clients">officiële Nextcloud synchronisatieclients</a>. Je kunt de client zo configureren dat bestanden in elke lokale map worden opgeslagen en je kunt kiezen met welke mappen op de Nextcloud-server je wilt synchroniseren. De client geeft de huidige verbindingsstatus weer en registreert alle activiteiten, zodat je altijd weet welke externe bestanden naar jouw pc zijn gedownload en je kunt controleren of bestanden die op jouw lokale pc zijn gemaakt en bijgewerkt, correct met de server zijn gesynchroniseerd.</p>
@@ -197,13 +200,19 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Notitie</p>
-<p>Wanneer je een WebDAV-client van een derde partij gebruikt (inclusief de ingebouwde client van uw besturingssysteem), moet je een applicatiewachtwoord gebruiken om in te loggen in plaats van jouw normale wachtwoord. Naast verbeterde beveiliging, <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">vergroot dit aanzienlijk de prestaties</a>. Om een applicatiewachtwoord te configureren, log je in op de Nextcloud-webinterface, klik op de avatar rechtsboven en kies <em>Persoonlijke instellingen</em>. Kies vervolgens <em>Beveiliging</em> in de linkerzijbalk en scrol naar beneden. Daar kan je een app-wachtwoord aanmaken (dat je later ook kunt intrekken zonder jouw hoofdgebruikerswachtwoord te wijzigen).</p>
+<p>When using a third-party WebDAV client (including your operating system’s
+built-in client), you should use an application password for login rather than your
+regular password. In addition to improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log in to the Nextcloud Web interface, click your avatar,
+and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
+sidebar and scroll to the very bottom. There you can create an app password (which can
+also be revoked in the future without changing your main user password).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Notitie</p>
 <p>In de volgende voorbeelden moet je <strong>example.com/nextcloud</strong> vervangen door de URL van je Nextcloud-server (laat het directorygedeelte weg als de installatie zich in de root van het domein bevindt) en <strong>USERNAME</strong> door de gebruikersnaam van de gebruiker die verbinding maakt.</p>
-<p>See the WebDAV URL, to be found in Files Settings -&gt; WebDAV in the Files on your Nextcloud account.</p>
-<img alt="Screenshot of the Files settings showing the personal WebDAV link" src="../../_images/webdav_link.png" />
+<p>You can find the WebDAV URL in <strong>Files settings</strong> under <strong>WebDAV</strong> in your Nextcloud account.</p>
+<img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
 </div>
 </section>
 <section id="accessing-files-using-linux">
@@ -227,8 +236,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p>Dezelfde methode werkt ook voor andere bestandsbeheerders die GVFS gebruiken, zoals Caja van MATE en Nemo van Cinnamon.</p>
 </div>
 </section>
-<section id="accessing-files-with-kde-and-dolphin-file-manager">
-<h3>Toegang tot bestanden met KDE en Dolphin bestandbeheerder<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<section id="accessing-files-with-kde-and-dolphin">
+<h3>Accessing files with KDE and Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Ga naar Systeeminstellingen -&gt; Netwerk -&gt; Online accounts</p></li>
 <li><p>Klik “Gebruiker toevoegen…”</p></li>
@@ -237,8 +246,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <li><p>Volg de instructies op het scherm om in te loggen</p></li>
 <li><p>Nadat je bent ingelogd, moet je ‘Opslag’ inschakelen in het gedeelte ‘Dit account gebruiken voor’.</p></li>
 <li><p>Je kunt nu jouw bestanden in Dolphin openen onder “Netwerk” in de zijbalk.</p></li>
-<li><p>(Optioneel) Om dit als snelkoppeling aan de zijbalk toe te voegen, klik je met de rechtermuisknop op “Nextcloud Opslag” en vervolgens op “Toevoegen aan plaatsen”.</p></li>
-<li><p>(Optioneel) Om de snelkoppeling aan te passen, klik je met de rechtermuisknop op de snelkoppeling in de zijbalk en vervolgens op “Bewerken…” en pas je het pictogram en het label naar wens aan.</p></li>
+<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click “Nextcloud Storage”, then click “Add to Places”</p></li>
+<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then click “Edit…” and customize the icon and label</p></li>
 </ol>
 </section>
 </section>
@@ -357,7 +366,7 @@ for example
 <p>Voor het gebruik van deze functie is een netwerkverbinding nodig. Als je jouw bestanden offline wilt opslaan, gebruik je de Desktop Client om alle bestanden op jouw Nextcloud te synchroniseren met een of meer mappen van jouw lokale harde schijf.</p>
 <div class="admonition note">
 <p class="admonition-title">Notitie</p>
-<p>Windows 10 staat nu standaard basisverificatie toe als HTTPS is ingeschakeld voordat de schijf wordt toegewezen.</p>
+<p>In Windows 10, Basic Authentication is allowed by default when HTTPS is enabled before mapping your drive.</p>
 <p>Op oudere versies van Windows moet je het gebruik van basisverificatie toestaan in het Windows-register:</p>
 <ul class="simple">
 <li><p>start <code class="docutils literal notranslate"><span class="pre">regedit</span></code> en navigeer naar <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code>.</p></li>
@@ -415,12 +424,10 @@ for example
 <p>Voor SSL-beveiligde servers vink je <strong>Opnieuw verbinden bij aanmelden</strong> aan om ervoor te zorgen dat de koppeling bij volgende herstarts behouden blijft. Als je als een andere gebruiker verbinding wilt maken met de Nextcloud-server, vink dan <strong>Verbinden met andere inloggegevens</strong> aan.</p>
 </div>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Schermafdruk van het toewijzen van WebDAV in Windows Verkenner" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Windows Explorer Map Network Drive wizard with a Nextcloud WebDAV URL entered" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
 </a>
 </figure>
 </li>
-</ol>
-<ol class="arabic simple" start="5">
 <li><p>Klik op de knop <code class="docutils literal notranslate"><span class="pre">Beëindigen</span></code>.</p></li>
 </ol>
 <p>Windows Verkenner wijst het netwerkstation toet, waardoor jouw Nextcloud instantie beschikbaar wordt.</p>
@@ -492,11 +499,15 @@ for example
 </section>
 <section id="id7">
 <h3>Probleem<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
-<p>Als je via de hierboven beschreven stappen een WebDAV-schijf toevoegt in Windows, wordt de beschikbare ruimte in Nextcloud niet correct weergegeven. In plaats daarvan wordt de grootte van de C:-schijf met de beschikbare ruimte weergegeven.</p>
+<p>Adding a WebDAV drive on Windows with the steps above does not display the correct
+available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
 <section id="answer">
 <h3>Antwoord<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
-<p>Helaas is dit een beperking van WebDAV zelf, omdat het de ‘client’ geen manier biedt om de beschikbare vrije ruimte van de server op te vragen. Windows valt automatisch terug op het weergeven van de grootte van de C:-schijf met de beschikbare ruimte. Er is dus helaas geen echte oplossing voor dit probleem.</p>
+<p>Unfortunately, this is a limitation of WebDAV itself, because it does not provide a
+way for the client to retrieve available free space from the server. Windows automatically
+falls back to the size and free space of the C: drive. There is no direct solution
+for this limitation.</p>
 </section>
 <section id="id8">
 <h3>Probleem<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
@@ -513,7 +524,7 @@ for example
 <section id="id11">
 <h3>Oplossing<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Toegang tot de Nextcloud-instantie via jouw favoriete webbrowser.</p></li>
+<li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>Klik door tot je bij de certificaatfout in de statusregel van de browser komt.</p></li>
 <li><p>Bekijk het certificaat en selecteer vervolgens op het tabblad Details de optie ‘Kopiëren naar bestand’.</p></li>
 <li><p>Sla het bestand op het bureaublad op onder een willekeurige naam, bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">myNextcloud.pem</span></code>.</p></li>
@@ -601,9 +612,13 @@ for example
 </section>
 <section id="accessing-files-using-winscp">
 <h2>Toegang tot bestanden met WinSCP<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
-<p><a class="reference external" href="https://winscp.net/">WinSCP</a> is een open source gratis SFTP-, FTP-, WebDAV-, S3- en SCP-client voor Windows. De belangrijkste functie is het overzetten van bestanden tussen een lokale en een externe computer. Daarnaast biedt WinSCP scripting en basisfuncties voor bestandsbeheer.</p>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> is a free, open-source SFTP,
+FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer
+between a local and a remote computer. WinSCP also offers scripting and basic file
+management functionality.</p>
 <p>Je kunt de portable versie van WinSCP <a class="reference external" href="https://winscp.net/eng/downloads.php/">downloaden</a> en deze op Linux uitvoeren via <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a>.</p>
-<p>Om WinSCP op Linux te draaien, download je Wine via de pakketbeheerder van je distributie en voer het vervolgens uit met het commando: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
+<p>To run WinSCP on Linux, install Wine through your distribution’s package manager,
+then run: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
 <p>Om met Nextcloud te verbinden:</p>
 <ul class="simple">
 <li><p>Starten WINSCP</p></li>
@@ -624,7 +639,8 @@ for example
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Notitie</p>
-<p>Het wordt aanbevolen om een app-wachtwoord te gebruiken voor het wachtwoord als je TOTP gebruikt, aangezien WinSCP op het moment van schrijven (07-11-2022) TOTP met Nextcloud niet ondersteunt.</p>
+<p>If you use TOTP, use an app password. At the time of writing (2022-11-07),
+WinSCP does not support TOTP with Nextcloud.</p>
 </div>
 </section>
 </section>
