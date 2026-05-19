@@ -4,7 +4,7 @@
 import { defineConfig } from '@playwright/test'
 
 export const SCREENSHOT_PORT = 8093
-export const BASE_URL = `http://localhost:${SCREENSHOT_PORT}/index.php`
+export const BASE_URL = `http://localhost:${SCREENSHOT_PORT}`
 
 // NC 33 requires Chrome 142+. Headless Chromium ships a lower version string
 // by default, which triggers the browser-compatibility warning. Override it here

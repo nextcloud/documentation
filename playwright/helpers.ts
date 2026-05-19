@@ -54,10 +54,24 @@ export async function docElementScreenshot(page: Page, selector: string, name: s
 
 // ── OCC wrapper ───────────────────────────────────────────────────────────────
 
+/** Split an occ command string respecting double-quoted tokens (e.g. --display-name="Amara W"). */
+function splitOcc(cmd: string): string[] {
+	const args: string[] = []
+	let cur = ''
+	let inDouble = false
+	for (const ch of cmd) {
+		if (ch === '"') { inDouble = !inDouble }
+		else if (ch === ' ' && !inDouble) { if (cur) { args.push(cur); cur = '' } }
+		else { cur += ch }
+	}
+	if (cur) args.push(cur)
+	return args
+}
+
 /** Run an occ command. Throws on non-zero exit. */
 export async function occ(cmd: string, env: Record<string, string> = {}): Promise<string> {
 	const envArray = Object.entries(env).map(([k, v]) => `${k}=${v}`)
-	return runOcc(cmd.split(' '), { env: envArray })
+	return runOcc(splitOcc(cmd), { env: envArray })
 }
 
 /** Like occ() but swallows errors (e.g. "user already exists"). */
