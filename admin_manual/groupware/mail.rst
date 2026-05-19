@@ -197,7 +197,7 @@ Users can share mailboxes with each other. So far, there is no UI for users to c
 User Interface Preference Defaults
 ----------------------------------
 
-.. versionadded:: 5.2
+.. versionadded:: 5.2 Nextcloud 30 or newer
 
 The Mail app allows administrators to set default user interface preferences for all users, these preferences can be changed by the user afterwards. This can be useful to ensure a consistent experience across the application.
 
@@ -224,7 +224,7 @@ Administration settings > Groupware > Mail app > Enable text processing through 
 Thread Summary
 --------------
 
-.. versionchanged:: 3.6.0
+.. versionchanged:: 3.6.0 Nextcloud 26 or newer
     This configuration option was merged into :ref:`mail_llm_processing`
 
 The mail app supports summarizing message threads that contain 3 or more messages.
@@ -238,7 +238,7 @@ Administration settings > Groupware > Mail app > Enable thread summary
 Follow-up reminders
 -------------------
 
-.. versionadded:: 4.0
+.. versionadded:: 4.0 Nextcloud 30 or newer
 
 The Mail app will automatically remind users when their outgoing emails remain unanswered for
 multiple days.
@@ -249,14 +249,14 @@ The feature can be enabled through the global :ref:`mail_llm_processing` setting
 Translation
 -----------
 
-.. versionadded:: 4.2
+.. versionadded:: 4.2 Nextcloud 30 or newer
 
 The mail app can optionally provide translations for messages if the :ref:`translation API <machine_translation>` is enabled.
 
 User migration
 --------------
 
-.. versionadded:: 5.9
+.. versionadded:: 5.9 Nextcloud 30 or newer
 
 .. important::
    The `User Migration App <https://apps.nextcloud.com/apps/user_migration>`_ must be installed and enabled on both
