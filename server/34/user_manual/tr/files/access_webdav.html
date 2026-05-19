@@ -141,9 +141,12 @@
              
   <section id="accessing-nextcloud-files-using-webdav">
 <h1>WebDAV kullanarak Nextcloud dosyalarına erişmek<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
-<p>Nextcloud, WebDAV iletişim kuralını tam olarak destekler ve Nextcloud Dosyalar uygulamasına WebDAV üzerinden bağlanıp eşitlemenizi sağlar. Bu bölümde Linux, macOS, Windows ve mobil aygıtları WebDAV aracılığıyla Nextcloud sunucunuza nasıl bağlayacağınızı öğreneceksiniz.</p>
+<p>Nextcloud fully supports the WebDAV protocol, and you can connect to and synchronize
+with Nextcloud Files over WebDAV. This chapter explains how to connect Linux, macOS,
+Windows, and mobile devices to your Nextcloud server.</p>
 <p>WebDAV, dağıtılmış yazma ve sürüm oluşturma anlamına gelir. Uzak internet sunucularında barındırılan dosyaları oluşturmayı, okumayı ve düzenlemeyi kolaylaştıran bir HTTP eklentisidir. Bir WebDAV istemcisi ile Linux, macOS ve Windows üzerinden Nextcloud dosyalarınıza (paylaşımlar ile birlikte) herhangi bir uzak ağ paylaşımına benzer şekilde erişebilir ve eşitleyebilirsiniz.</p>
-<p>WebDAV yapılandırmasına başlamadan önce, istemci aygıtları Nextcloud sunucularınıza bağlamanın önerilen yoluna hızlı bir göz atalım.</p>
+<p>Before you configure WebDAV, review the recommended way to connect client devices to
+Nextcloud.</p>
 <section id="official-nextcloud-desktop-and-mobile-clients">
 <h2>Resmi Nextcloud bilgisayar ve mobil istemcileri<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
 <p>Bir bilgisayarı bir Nextcloud sunucusuyla eşitlemenin önerilen yolu, <a class="reference external" href="https://nextcloud.com/install/#install-clients">Resmi Nextcloud eşitleme istemcilerini</a> kullanmaktır. İstemciyi dosyaları herhangi bir yerel klasöre kaydedecek şekilde yapılandırabilir ve Nextcloud sunucusunda hangi klasörlerle eşitleneceğini seçebilirsiniz. İstemci var olan bağlantı durumunu görüntüler ve yapılan tüm işlemleri günlüğe kaydeder. Böylece her zaman bilgisayarınıza hangi uzak dosyaların indirildiğini bilirsiniz ve yerel bilgisayarınızda oluşturulan ve güncellenen dosyaların sunucu ile düzgün bir şekilde eşitlendiğini doğrulayabilirsiniz.</p>
@@ -179,8 +182,8 @@
 <p class="admonition-title">Not</p>
 <p>When using a third-party WebDAV client (including your operating system’s
 built-in client), you should use an application password for login rather than your
-regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
-configure an application password, log into the Nextcloud Web interface, click on your avatar
+regular password. In addition to improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log in to the Nextcloud Web interface, click your avatar,
 and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
 sidebar and scroll to the very bottom. There you can create an app password (which can
 also be revoked in the future without changing your main user password).</p>
@@ -188,7 +191,7 @@ also be revoked in the future without changing your main user password).</p>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
 <p>Aşağıdaki örneklerde, <strong>ornek.com/nextcloud</strong> yerine Nextcloud sunucunuzun adresini (kurulumunuz etki alanınızın kök klasöründeyse klasör bölümünü atlayın) ve <strong>KULLANICI ADI</strong> yerine bağlantı kuran kullanıcının kullanıcı adını yazmalısınız.</p>
-<p>See the WebDAV URL, to be found in Files Settings -&gt; WebDAV in the Files on your Nextcloud account.</p>
+<p>You can find the WebDAV URL in <strong>Files settings</strong> under <strong>WebDAV</strong> in your Nextcloud account.</p>
 <img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
 </div>
 </section>
@@ -213,8 +216,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p>Aynı yöntem, MATE Caja ve Cinnamon Nepo gibi GVFS kullanan diğer dosya yöneticileri için de geçerlidir.</p>
 </div>
 </section>
-<section id="accessing-files-with-kde-and-dolphin-file-manager">
-<h3>KDE ve Dolphin dosya yöneticisi ile dosyalara erişmek<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<section id="accessing-files-with-kde-and-dolphin">
+<h3>Accessing files with KDE and Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Sistem ayarları -&gt; Ağ -&gt; Çevrim içi hesaplar bölümüne gidin</p></li>
 <li><p>“Hesap ekle…” üzerine tıklayın</p></li>
@@ -223,8 +226,10 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <li><p>Oturum açmak için ekrandaki yönergeleri izleyin</p></li>
 <li><p>Oturum açtıktan sonra, “Bu hesabı şunun için kullanılsın” bölümünde “Depolama” seçeneğini seçtiğinizden emin olun</p></li>
 <li><p>Artık Dolphin dosyalarınıza kenar çubuğundaki “Ağ” altından erişebilirsiniz</p></li>
-<li><p>(İsteğe bağlı) Bunu kenar çubuğuna kısayol olarak eklemek için “Nextcloud Depolama” üzerine sağ tıklayın ve ardından “Konumlara ekle” üzerine tıklayın.</p></li>
-<li><p>(İsteğe bağlı) Kısayolu özelleştirmek için kenar çubuğundaki kısayola sağ tıklayın. Ardından “Düzenle…” üzerine tıklayın ve simge ile etiketi istediğiniz gibi özelleştirin</p></li>
+<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click
+“Nextcloud Storage”, then click “Add to Places”</p></li>
+<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then
+click “Edit…” and customize the icon and label</p></li>
 </ol>
 </section>
 </section>
@@ -344,7 +349,7 @@ for example
 <p>Bu özelliğin kullanılması için ağ bağlantısı gereklidir. Dosyalarınızı çevrim dışı olarak depolamak istiyorsanız, Nextcloud hesabınızdaki tüm dosyaları yerel sabit sürücünüzdeki bir ya da birkaç klasörle eşitlemek için bilgisayar istemcisini kullanın.</p>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
-<p>Sürücünüz eşleştirilmeden önce HTTPS kullanıma alındıysa, Windows 10 varsayılan olarak temel kimlik doğrulama kullanmaya izin verecek şekilde ayarlanmıştır.</p>
+<p>In Windows 10, Basic Authentication is allowed by default when HTTPS is enabled before mapping your drive.</p>
 <p>Daha eski Windows sürümlerinde, Windows kayıt defterini açarak temel kimlik doğrulamasının kullanılmasına izin vermelisiniz:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">regedit</span></code> uygulamasını açarak <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code> anahtarını bulun.</p></li>
@@ -406,8 +411,6 @@ for example
 </a>
 </figure>
 </li>
-</ol>
-<ol class="arabic simple" start="5">
 <li><p><code class="docutils literal notranslate"><span class="pre">Son</span></code> düğmesine tıklayın.</p></li>
 </ol>
 <p>Dosya Gezgini, ağ sürücüsünü eşleyerek Nextcloud kopyanızı kullanmanızı sağlar.</p>
@@ -479,11 +482,15 @@ for example
 </section>
 <section id="id6">
 <h3>Sorun<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
-<p>Yukarıda açıklanan adımlarla Windows üzerinde bir WebDAV sürücüsü eklemek, Nextcloud kullanılabilir alanının doğru boyutunu göstermez. Kullanılabilecek alan olarak C: sürücüsünün boyutunu görüntüler.</p>
+<p>Adding a WebDAV drive on Windows with the steps above does not display the correct
+available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
 <section id="answer">
 <h3>Yanıt<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
-<p>Ne yazık ki bu, WebDAV tarafından kaynaklanan bir sınırlamadır, çünkü istemcinin sunucudan kullanılabilir boş alanı almasının bir yolu yoktur. Windows, bunun yerine otomatik olarak C: sürücüsünün boyutunu kullanılabilir alanla birlikte görüntüler. Yani ne yazık ki bu sorunun gerçek bir çözümü yok.</p>
+<p>Unfortunately, this is a limitation of WebDAV itself, because it does not provide a
+way for the client to retrieve available free space from the server. Windows automatically
+falls back to the size and free space of the C: drive. There is no direct solution
+for this limitation.</p>
 </section>
 <section id="id7">
 <h3>Sorun<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
@@ -500,7 +507,7 @@ for example
 <section id="id10">
 <h3>Çözüm<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Alışık olduğunuz tarayıcı ile Nextcloud kopyanıza erişin.</p></li>
+<li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>Tarayıcı durum satırında sertifika hatasına ulaşana kadar tıklayın.</p></li>
 <li><p>Sertifikayı görüntüleyin, Ayrıntılar sekmesinden ‘Dosyaya kopyala’ üzerine tıklayın.</p></li>
 <li><p>Masaüstüne <code class="docutils literal notranslate"><span class="pre">NextcloudSertifikam.pem</span></code> gibi rastgele bir adla kaydedin.</p></li>
@@ -588,9 +595,13 @@ for example
 </section>
 <section id="accessing-files-using-winscp">
 <h2>WinSCP kullanarak dosyalara erişmek<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
-<p><cite>WinSCP &lt;https://winscp.net/eng/docs/introduction/&gt;</cite>, Windows için açık kaynaklı, ücretsiz bir SFTP, FTP, WebDAV, S3 ve SCP istemcisidir. Ana işlevi, yerel ve uzak bilgisayar arasında dosya aktarımı yapmaktır. Bunun ötesinde WinSCP, betik çalıştırma ve temel dosya yönetimi işlevleri sunar.</p>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> is a free, open-source SFTP,
+FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer
+between a local and a remote computer. WinSCP also offers scripting and basic file
+management functionality.</p>
 <p>Portable WinSCP sürümünü &lt;<a class="reference external" href="https://winscp.net/eng/downloads.php/">https://winscp.net/eng/downloads.php/</a>&gt;’ indirebilir ve <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a> ile Linux üzerinde çalıştırabilirsiniz.</p>
-<p>WinSCP uygulamasını Linux üzerinde çalıştırmak için, dağıtımınızın paket yöneticisinden wine uygulamasını indirin. Ardından şu komutla çalıştırın: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
+<p>To run WinSCP on Linux, install Wine through your distribution’s package manager,
+then run: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
 <p>Nextcloud bağlantısı kurmak için:</p>
 <ul class="simple">
 <li><p>WinSCP uygulamasını başlatın</p></li>
@@ -611,7 +622,8 @@ for example
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
-<p>Tek kullanımlık parola kullanıyorsanız, parola olarak bir uygulama parolası kullanmanız önerilir, çünkü WinSCP, bu yazıyı yazarken (2022-11-07) Nextcloud üzerindeki tek kullanımlık parola uygulamasını anlamıyor.</p>
+<p>If you use TOTP, use an app password. At the time of writing (2022-11-07),
+WinSCP does not support TOTP with Nextcloud.</p>
 </div>
 </section>
 </section>

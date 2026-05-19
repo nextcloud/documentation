@@ -141,9 +141,12 @@
              
   <section id="accessing-nextcloud-files-using-webdav">
 <h1>Πρόσβαση σε αρχεία Nextcloud χρησιμοποιώντας το WebDAV<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
-<p>Το Nextcloud υποστηρίζει πλήρως το πρωτόκολο WebDAV, και μπορείτε να συνδέσετε και να συγχρονίσετε τα αρχεία του Nextcloud με το WebDAV. Στο κεφάλαιο αυτό θα μάθετε πως να συνδέετε Linux, macOS, Windows και κινητά τηλέγωνα με τον σέρβερ του Nextcloud.</p>
+<p>Nextcloud fully supports the WebDAV protocol, and you can connect to and synchronize
+with Nextcloud Files over WebDAV. This chapter explains how to connect Linux, macOS,
+Windows, and mobile devices to your Nextcloud server.</p>
 <p>Το WebDAV σημαίνει Κατανεμημένη Συγγραφή και Διαχείριση Εκδόσεων. Είναι μια επέκταση HTTP που καθιστά εύκολη τη δημιουργία, ανάγνωση και επεξεργασία αρχείων που φιλοξενούνται σε απομακρυσμένους διακομιστές Web. Με έναν πελάτη WebDAV, μπορείτε να αποκτήσετε πρόσβαση στα αρχεία Nextcloud (συμπεριλαμβανομένων των κοινόχρηστων) σε Linux, macOS και Windows με παρόμοιο τρόπο όπως οποιαδήποτε απομακρυσμένη κοινή χρήση δικτύου και να παραμείνετε συγχρονισμένοι.</p>
-<p>Πριν προχωρήσουμε στη διαμόρφωση του WebDAV, ας ρίξουμε μια γρήγορη ματιά στον προτεινόμενο τρόπο σύνδεσης συσκευών πελατών στο Nextcloud.</p>
+<p>Before you configure WebDAV, review the recommended way to connect client devices to
+Nextcloud.</p>
 <section id="official-nextcloud-desktop-and-mobile-clients">
 <h2>Επίσημοι πελάτες του Nextcloud υπολογιστών και κινητών συσκευών<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
 <p>Ο προτεινόμενος τρόπος συγχρονισμού ενός υπολογιστή με έναν διακομιστή Nextcloud είναι με τη χρήση των <a class="reference external" href="https://nextcloud.com/install/#install-clients">επίσημων πελατών συγχρονισμού Nextcloud</a>. Μπορείτε να διαμορφώσετε τον πελάτη να αποθηκεύει αρχεία σε οποιονδήποτε τοπικό κατάλογο και να επιλέξετε ποιους καταλόγους στον διακομιστή Nextcloud να συγχρονίσετε. Ο πελάτης εμφανίζει την τρέχουσα κατάσταση σύνδεσης και καταγράφει όλη τη δραστηριότητα, ώστε να γνωρίζετε πάντα ποια απομακρυσμένα αρχεία έχουν ληφθεί στον υπολογιστή σας και μπορείτε να επαληθεύσετε ότι τα αρχεία που δημιουργούνται και ενημερώνονται στον τοπικό σας υπολογιστή συγχρονίζονται σωστά με τον διακομιστή.</p>
@@ -179,8 +182,8 @@
 <p class="admonition-title">Σημείωση</p>
 <p>When using a third-party WebDAV client (including your operating system’s
 built-in client), you should use an application password for login rather than your
-regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
-configure an application password, log into the Nextcloud Web interface, click on your avatar
+regular password. In addition to improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log in to the Nextcloud Web interface, click your avatar,
 and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
 sidebar and scroll to the very bottom. There you can create an app password (which can
 also be revoked in the future without changing your main user password).</p>
@@ -188,7 +191,7 @@ also be revoked in the future without changing your main user password).</p>
 <div class="admonition note">
 <p class="admonition-title">Σημείωση</p>
 <p>Στα ακόλουθα παραδείγματα, θα πρέπει να αντικαταστήσετε το <strong>example.com/nextcloud</strong> με τη διεύθυνση URL του διακομιστή Nextcloud σας (παραλείψτε το τμήμα καταλόγου εάν η εγκατάσταση είναι στη ρίζα του domain σας) και το <strong>USERNAME</strong> με το όνομα χρήστη του συνδεδεμένου χρήστη.</p>
-<p>See the WebDAV URL, to be found in Files Settings -&gt; WebDAV in the Files on your Nextcloud account.</p>
+<p>You can find the WebDAV URL in <strong>Files settings</strong> under <strong>WebDAV</strong> in your Nextcloud account.</p>
 <img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
 </div>
 </section>
@@ -213,8 +216,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p>Η ίδια μέθοδος λειτουργεί για άλλους διαχειριστές αρχείων που χρησιμοποιούν GVFS, όπως το Caja του MATE και το Nemo του Cinnamon.</p>
 </div>
 </section>
-<section id="accessing-files-with-kde-and-dolphin-file-manager">
-<h3>Πρόσβαση σε αρχεία με τον διαχειριστή αρχείων KDE και Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<section id="accessing-files-with-kde-and-dolphin">
+<h3>Accessing files with KDE and Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Πλοηγηθείτε στις Ρυθμίσεις Συστήματος -&gt; Δικτύωση -&gt; Διαδικτυακοί Λογαριασμοί</p></li>
 <li><p>Κάντε κλικ στο «Προσθήκη Λογαριασμού…»</p></li>
@@ -223,8 +226,10 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <li><p>Ακολουθήστε τις οδηγίες στην οθόνη για να συνδεθείτε</p></li>
 <li><p>Μετά τη σύνδεση, βεβαιωθείτε ότι ενεργοποιείτε το «Αποθήκευση» στην ενότητα «Χρήση αυτού του λογαριασμού για»</p></li>
 <li><p>Μπορείτε τώρα να αποκτήσετε πρόσβαση στα αρχεία σας στο Dolphin κάτω από «Δίκτυο» στην πλαϊνή γραμμή</p></li>
-<li><p>(Προαιρετικό) Για να το προσθέσετε ως συντόμευση στην πλαϊνή γραμμή, κάντε δεξί κλικ στο «Αποθήκευση Nextcloud» και μετά «Προσθήκη στους Τόπους»</p></li>
-<li><p>(Προαιρετικό) Για να προσαρμόσετε τη συντόμευση, κάντε δεξί κλικ στη συντόμευση στην πλαϊνή γραμμή και μετά «Επεξεργασία…» και προσαρμόστε το εικονίδιο και την ετικέτα όπως θέλετε</p></li>
+<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click
+«Nextcloud Storage», then click «Add to Places»</p></li>
+<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then
+click «Edit…» and customize the icon and label</p></li>
 </ol>
 </section>
 </section>
@@ -344,7 +349,7 @@ for example
 <p>Η χρήση αυτής της δυνατότητας απαιτεί συνδεσιμότητα δικτύου. Εάν θέλετε να αποθηκεύσετε τα αρχεία σας εκτός σύνδεσης, χρησιμοποιήστε τον Πελάτη Επιφάνειας Εργασίας για να συγχρονίσετε όλα τα αρχεία στο Nextcloud σας σε έναν ή περισσότερους καταλόγους του τοπικού σκληρού δίσκου σας.</p>
 <div class="admonition note">
 <p class="admonition-title">Σημείωση</p>
-<p>Τα Windows 10 πλέον επιτρέπουν από προεπιλογή Βασική Πιστοποίηση εάν το HTTPS είναι ενεργοποιημένο πριν από την αντιστοίχιση της μονάδας δίσκου σας.</p>
+<p>In Windows 10, Basic Authentication is allowed by default when HTTPS is enabled before mapping your drive.</p>
 <p>Σε παλαιότερες εκδόσεις των Windows, πρέπει να επιτρέψετε τη χρήση Βασικής Πιστοποίησης στο Μητρώο των Windows:</p>
 <ul class="simple">
 <li><p>εκκινήστε το <code class="docutils literal notranslate"><span class="pre">regedit</span></code> και πλοηγηθείτε στο <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code>.</p></li>
@@ -406,8 +411,6 @@ for example
 </a>
 </figure>
 </li>
-</ol>
-<ol class="arabic simple" start="5">
 <li><p>Κάντε κλικ στο κουμπί <code class="docutils literal notranslate"><span class="pre">Τέλος</span></code>.</p></li>
 </ol>
 <p>Η Εξερεύνηση των Windows αντιστοιχίζει τη μονάδα δικτύου, καθιστώντας διαθέσιμη την παρουσία Nextcloud σας.</p>
@@ -479,11 +482,15 @@ for example
 </section>
 <section id="id6">
 <h3>Πρόβλημα<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
-<p>Η προσθήκη μιας μονάδας δίσκου WebDAV στα Windows μέσω των παραπάνω βημάτων δεν εμφανίζει το σωστό μέγεθος του διαθέσιμου χώρου στο Nextcloud και αντίθετα εμφανίζει το μέγεθος της μονάδας δίσκου C: με τον διαθέσιμο χώρο της.</p>
+<p>Adding a WebDAV drive on Windows with the steps above does not display the correct
+available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
 <section id="answer">
 <h3>Απάντηση<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
-<p>Δυστυχώς αυτός είναι ένας περιορισμός του ίδιου του WebDAV, επειδή δεν παρέχει τρόπο για τον πελάτη να λάβει τον διαθέσιμο ελεύθερο χώρο από τον διακομιστή. Τα Windows αυτόματα επιστρέφουν στην εμφάνιση του μεγέθους της μονάδας δίσκου C: με τον διαθέσιμο χώρο της. Δυστυχώς λοιπόν δεν υπάρχει πραγματική λύση σε αυτό το πρόβλημα.</p>
+<p>Unfortunately, this is a limitation of WebDAV itself, because it does not provide a
+way for the client to retrieve available free space from the server. Windows automatically
+falls back to the size and free space of the C: drive. There is no direct solution
+for this limitation.</p>
 </section>
 <section id="id7">
 <h3>Πρόβλημα<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
@@ -500,7 +507,7 @@ for example
 <section id="id10">
 <h3>Λύση<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Πρόσβαση στην παρουσία Nextcloud σας μέσω του αγαπημένου σας προγράμματος περιήγησης Web.</p></li>
+<li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>Κάντε κλικ μέχρι να φτάσετε στο σφάλμα πιστοποιητικού στη γραμμή κατάστασης του προγράμματος περιήγησης.</p></li>
 <li><p>Προβάλετε το πιστοποιητικό, στη συνέχεια από την καρτέλα Λεπτομέρειες, επιλέξτε “Αντιγραφή σε Αρχείο”.</p></li>
 <li><p>Αποθηκεύστε το αρχείο στην επιφάνεια εργασίας σας με ένα αυθαίρετο όνομα, για παράδειγμα <code class="docutils literal notranslate"><span class="pre">myNextcloud.pem</span></code>.</p></li>
@@ -588,9 +595,13 @@ for example
 </section>
 <section id="accessing-files-using-winscp">
 <h2>Πρόσβαση σε αρχεία χρησιμοποιώντας το WinSCP<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
-<p>Το <a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> είναι ένας πελάτης ανοιχτού κώδικα δωρεάν για SFTP, FTP, WebDAV, S3 και SCP για Windows. Η κύρια λειτουργία του είναι η μεταφορά αρχείων μεταξύ ενός τοπικού και ενός απομακρυσμένου υπολογιστή. Εκτός από αυτό, το WinSCP προσφέρει δέσμες ενεργειών και βασική λειτουργικότητα διαχείρισης αρχείων.</p>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> is a free, open-source SFTP,
+FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer
+between a local and a remote computer. WinSCP also offers scripting and basic file
+management functionality.</p>
 <p>Μπορείτε να <a class="reference external" href="https://winscp.net/eng/downloads.php/">κατεβάσετε</a> την φορητή έκδοση του WinSCP και να την εκτελέσετε σε Linux μέσω του <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a>.</p>
-<p>Για να εκτελέσετε το WinSCP σε Linux, κατεβάστε το wine μέσω του διαχειριστή πακέτων της διανομής σας, στη συνέχεια εκτελέστε το με την εντολή: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
+<p>To run WinSCP on Linux, install Wine through your distribution’s package manager,
+then run: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
 <p>Για σύνδεση στο Nextcloud:</p>
 <ul class="simple">
 <li><p>Εκκινήστε το WinSCP</p></li>
@@ -611,7 +622,8 @@ for example
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Σημείωση</p>
-<p>Συνιστάται η χρήση συνθηματικού εφαρμογής για το συνθηματικοό εάν χρησιμοποιείτε TOTP, καθώς το WinSCP δεν κατανοεί το TOTP με το Nextcloud κατά το χρόνο συγγραφής (2022-11-07).</p>
+<p>If you use TOTP, use an app password. At the time of writing (2022-11-07),
+WinSCP does not support TOTP with Nextcloud.</p>
 </div>
 </section>
 </section>
