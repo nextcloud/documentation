@@ -422,9 +422,16 @@ test('Group public settings', async ({ page }) => {
 	await openConversationActions(page)
 	await page.locator('[role="menuitem"]', { hasText: /conversation settings/i }).click()
 	await page.locator('#conversation-settings-container').waitFor({ state: 'visible', timeout: 10000 })
-	await page.locator('.navigation-list__link', { hasText: /guests/i }).click()
-	await page.locator('#settings-section_conversation-settings').waitFor({ state: 'visible', timeout: 10000 })
-	await docElementScreenshot(page, '#conversation-settings-container', 'user/talk/group-public-settings')
+	// Try General nav item first (Talk 23); fall back to staying on the default view
+	await page.locator('.navigation-list__link', { hasText: /general/i }).click().catch(() => {})
+	await page.waitForTimeout(500)
+	// Find the section containing the open/guest-access toggles by content, not by nav label
+	const accessSection = page.locator('.settings-section').filter({ hasText: /open conversation to registered/i }).first()
+	await accessSection.waitFor({ state: 'visible', timeout: 15000 })
+	await accessSection.scrollIntoViewIfNeeded()
+	await page.waitForTimeout(300)
+	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'group-public-settings.png')
+	await accessSection.screenshot({ path: dest })
 	await page.locator('#conversation-settings-container').locator('button[aria-label="Close"]').click()
 })
 
