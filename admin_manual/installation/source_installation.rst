@@ -237,6 +237,16 @@ your HTTP user::
 
     chown -R www-data:www-data /var/www/nextcloud/
 
+.. note:: ``www-data`` is the default web server user on Debian/Ubuntu systems.
+   On RHEL/CentOS/Fedora use ``apache``. The key requirement is that the web
+   server process user has **read and write access** to all Nextcloud directories
+   — ownership is not strictly necessary. In environments where changing ownership
+   is not possible (shared hosting, Docker bind-mounts, etc.), it is sufficient to
+   add the web server user to the group that owns the directories and ensure the
+   directories are group-writable, for example::
+
+       usermod -a -G vboxsf www-data
+
 .. note:: Admins of SELinux-enabled distributions may need to write new SELinux
    rules to complete their Nextcloud installation; see
    :ref:`selinux_tips_label`.
