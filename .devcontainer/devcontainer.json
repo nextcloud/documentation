@@ -12,5 +12,11 @@
 			]
 		}
 	},
-	"postCreateCommand": "python3 -m pip install -r requirements.txt && python3 -m pip install sphinx-autobuild && cd build && composer install --ignore-platform-reqs"
+	"features": {
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "3.13"
+		}
+	},
+	"postCreateCommand": "python3 -m pip install -r requirements.txt && python3 -m pip install sphinx-autobuild",
+	"waitFor": "postCreateCommand"
 }
