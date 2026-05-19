@@ -31,4 +31,7 @@ export default async function globalSetup() {
 	// Disable brute-force protection so rapid login calls in beforeAll don't get
 	// throttled. Note: the key is all-lowercase "bruteforce", not camelCase.
 	await runOcc(['config:system:set', 'auth.bruteforce.protection.enabled', '--value', 'false', '--type', 'boolean'])
+	// Talk hides the "Message expiration" setting in conversation settings unless
+	// background jobs are in cron mode. Set it so the feature appears in the UI.
+	await runOcc(['config:app:set', 'core', 'backgroundjobs_mode', '--value', 'cron'])
 }

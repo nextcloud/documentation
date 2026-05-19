@@ -423,17 +423,21 @@ test('Group public settings', async ({ page }) => {
 	await page.locator('[role="menuitem"]', { hasText: /conversation settings/i }).click()
 	const container = page.locator('#conversation-settings-container')
 	await container.waitFor({ state: 'visible', timeout: 10000 })
-	// Click General if present — scoped to the dialog to avoid matching page-level nav links
-	const generalLink = container.locator('.navigation-list__link', { hasText: /general/i })
-	if (await generalLink.isVisible()) await generalLink.click()
+	// Open/guest-access toggles live in the Moderation section
+	await container.locator('.navigation-list__link', { hasText: /moderation/i }).click()
+	// #settings-section_conversation-settings is the Moderation panel element
+	const moderationSection = page.locator('#settings-section_conversation-settings')
+	await moderationSection.waitFor({ state: 'visible', timeout: 10000 })
+	await moderationSection.scrollIntoViewIfNeeded()
 	await page.waitForTimeout(500)
-	// Find the open/guest-access section by content
-	const accessSection = container.locator('.settings-section').filter({ hasText: /open conversation to registered/i }).first()
-	await accessSection.waitFor({ state: 'visible', timeout: 15000 })
-	await accessSection.scrollIntoViewIfNeeded()
-	await page.waitForTimeout(300)
+	// Clip to just the top of the section (open/guest-access toggles)
+	const box = await moderationSection.boundingBox()
 	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'group-public-settings.png')
-	await accessSection.screenshot({ path: dest })
+	if (box) {
+		await page.screenshot({ path: dest, clip: { x: box.x, y: box.y, width: box.width, height: Math.min(box.height, 280) } })
+	} else {
+		await moderationSection.screenshot({ path: dest })
+	}
 	await container.locator('button[aria-label="Close"]').click()
 })
 
@@ -473,13 +477,24 @@ test('Message expiration setting', async ({ page }) => {
 	await page.locator('[role="menuitem"]', { hasText: /conversation settings/i }).click()
 	await page.locator('#conversation-settings-container').waitFor({ state: 'visible', timeout: 10000 })
 	await page.locator('.navigation-list__link', { hasText: /moderation/i }).click()
-	await page.locator('#settings-section_conversation-settings').waitFor({ state: 'visible', timeout: 10000 })
-	const expirationSection = page.locator('.settings-section').filter({ hasText: /message expiration/i }).first()
-	await expirationSection.waitFor({ state: 'visible', timeout: 10000 })
-	await expirationSection.scrollIntoViewIfNeeded()
+	const moderationSection = page.locator('#settings-section_conversation-settings')
+	await moderationSection.waitFor({ state: 'visible', timeout: 10000 })
+	// Message expiration only appears when backgroundjobs_mode=cron (configured in global-setup)
+	const expirationLabel = moderationSection.getByText(/message expiration/i).first()
+	await expirationLabel.waitFor({ state: 'visible', timeout: 10000 })
+	await expirationLabel.scrollIntoViewIfNeeded()
 	await page.waitForTimeout(500)
 	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'messages-expiration.png')
-	await expirationSection.screenshot({ path: dest })
+	const sectionBox = await moderationSection.boundingBox()
+	const labelBox = await expirationLabel.boundingBox()
+	if (sectionBox && labelBox) {
+		await page.screenshot({ path: dest, clip: {
+			x: sectionBox.x, y: labelBox.y - 12,
+			width: sectionBox.width, height: Math.min(160, sectionBox.y + sectionBox.height - labelBox.y),
+		} })
+	} else {
+		await moderationSection.screenshot({ path: dest })
+	}
 })
 
 test('Ban participant', async ({ page }) => {
