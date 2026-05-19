@@ -72,7 +72,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">WebDAV клијенти треће стране</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Приступ фајловима са Linux система</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Nautilus фајл менаџер</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">Приступ фајловима са KDE и Dolphin фајл менаџером</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin">Accessing files with KDE and Dolphin</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Креирање WebDAV монтирања из Linux командне линије</a></li>
@@ -161,12 +161,15 @@
              
   <section id="accessing-nextcloud-files-using-webdav">
 <h1>Приступ Nextcloud фајловима преко WebDAV<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
-<p>Nextcloud у потпуности подржава WebDAV протокол, тако да можете да се повежете на своју Nextcloud Фајлови апликацију и синхронизујете своје фајлове преко WebDAV. У овом поглављу ћете научити како да повежете Linux, macOS, Windows, и мобилне уређаје са Nextcloud сервером.</p>
+<p>Nextcloud fully supports the WebDAV protocol, and you can connect to and synchronize
+with Nextcloud Files over WebDAV. This chapter explains how to connect Linux, macOS,
+Windows, and mobile devices to your Nextcloud server.</p>
 <p>WebDAV stands for Distributed Authoring and Versioning. It is an HTTP extension
 that makes it easy to create, read, and edit files hosted on remote Web servers. With
 a WebDAV client, you can access your Nextcloud Files (including shares) on Linux,
 macOS and Windows in a similar way as any remote network share, and stay synchronized.</p>
-<p>Пре него што пређемо на конфигураисање WebDAV, хајде да на брзину погледамо препоручени начин за повезивање клијента са Nextcloud.</p>
+<p>Before you configure WebDAV, review the recommended way to connect client devices to
+Nextcloud.</p>
 <section id="official-nextcloud-desktop-and-mobile-clients">
 <h2>Званични Nextcloud десктоп и мобилни клијенти<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
 <p>Препоручени начин за синхронизацију компјутера са Nextcloud сервером је употребом <a class="reference external" href="https://nextcloud.com/install/#install-clients">званичних Nextcloud клијената за синхронизацију</a>. Клијент можете да подесите тако да чува фајлове у било који локални доректоријум и можете да изаберете који директоријуми на Nextcloud серверу ће се синхронизовати. Клијент приказује статус текуће везе и записује све активности, тако да у сваком тренутку знате који удаљени фајлови су преузети на ваш PC и можете да проверите да су фајлове креирани и ажурирани на локалном PC компјутеру исправно синхронизовани са сервером.</p>
@@ -202,17 +205,17 @@ macOS and Windows in a similar way as any remote network share, and stay synchro
 <p class="admonition-title">Белешка</p>
 <p>When using a third-party WebDAV client (including your operating system’s
 built-in client), you should use an application password for login rather than your
-regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
-configure an application password, log into the Nextcloud Web interface, click on the avatar
-in the top right and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
+regular password. In addition to improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log in to the Nextcloud Web interface, click your avatar,
+and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
 sidebar and scroll to the very bottom. There you can create an app password (which can
 also be revoked in the future without changing your main user password).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Белешка</p>
 <p>У следећим примерима би требало да замените <strong>example.com/nextcloud</strong> са URL адресом вашег Nextcloud сервера (изоставите део са директоријумом ако је инсталација у корену вашег домена), и <strong>USERNAME</strong> са корисничким именом корисника који се повезује.</p>
-<p>See the WebDAV URL, to be found in Files Settings -&gt; WebDAV in the Files on your Nextcloud account.</p>
-<img alt="Screenshot of the Files settings showing the personal WebDAV link" src="../../_images/webdav_link.png" />
+<p>You can find the WebDAV URL in <strong>Files settings</strong> under <strong>WebDAV</strong> in your Nextcloud account.</p>
+<img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
 </div>
 </section>
 <section id="accessing-files-using-linux">
@@ -236,8 +239,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p>Иста метода функционише и са осталим фајл менаџерима који користе GVFS, као што су MATE Caja и Cinnamon Nemo.</p>
 </div>
 </section>
-<section id="accessing-files-with-kde-and-dolphin-file-manager">
-<h3>Приступ фајловима са KDE и Dolphin фајл менаџером<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<section id="accessing-files-with-kde-and-dolphin">
+<h3>Accessing files with KDE and Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Navigate to System Settings -&gt; Networking -&gt; Online Accounts</p></li>
 <li><p>Click „Add Account…”</p></li>
@@ -246,8 +249,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <li><p>Follow the on-screen instructions to log in</p></li>
 <li><p>After logging in, ensure you enable „Storage” in the „Use This Account For” section</p></li>
 <li><p>You can now access your files in Dolphin under „Network” in the sidebar</p></li>
-<li><p>(Optional) To add this as a shortcut in the sidebar, right click „Nextcloud Storage” then „Add to Places”</p></li>
-<li><p>(Optional) To customise the shortcut, right click the shortcut in the sidebar then „Edit…” and customise the icon and label as you please</p></li>
+<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click „Nextcloud Storage”, then click „Add to Places”</p></li>
+<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then click „Edit…” and customize the icon and label</p></li>
 </ol>
 </section>
 </section>
@@ -365,7 +368,7 @@ for example
 <p>Употреба ове могућности захтева везу са мрежом. Ако желите да чувате фајлове ван мреже, употребите Десктоп клијент који синхронизује све фајлове са Nextcloud у један или више директоријума на вашем локалном хард драјву.</p>
 <div class="admonition note">
 <p class="admonition-title">Белешка</p>
-<p>Ако је пре мапирања драјва укључен HTTPS, Windows 10 сада подразумевано дозвољава Основну проверу идентитета (Basic Authentication).</p>
+<p>In Windows 10, Basic Authentication is allowed by default when HTTPS is enabled before mapping your drive.</p>
 <p>На старијим Windows верзијама, употребу Basic Authentication морате да дозволите у Windows Registry:</p>
 <ul class="simple">
 <li><p>покрените <code class="docutils literal notranslate"><span class="pre">regedit</span></code> и поставите се на <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code>.</p></li>
@@ -426,12 +429,10 @@ that the <code class="docutils literal notranslate"><span class="pre">WebClient<
 <p>За сервере заштићене са SSL, штиклирајте <strong>Reconnect at sign-in</strong> да бисте обезбедили да мапирање остане активно и након наредних поновних покретања система. Ако желите да се са Nextcloud сервером повежете као неки други корисник, штиклирајте <strong>Connect using different credentials</strong>.</p>
 </div>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Снимак екрана мапирања WebDAV у Windows Explorer" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Windows Explorer Map Network Drive wizard with a Nextcloud WebDAV URL entered" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
 </a>
 </figure>
 </li>
-</ol>
-<ol class="arabic simple" start="5">
 <li><p>Кликните на дугме <code class="docutils literal notranslate"><span class="pre">Finish</span></code>.</p></li>
 </ol>
 <p>Windows Explorer мапира мрежни драјв, тако да је вам је ваша Nextcloud инстанца доступна.</p>
@@ -508,11 +509,15 @@ service.</p>
 </section>
 <section id="id7">
 <h3>Проблем<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
-<p>Додавањем WebDAV драјва на Windows систему корацима описаним изнад, у Nextcloud се не приказује исправна величина доступног простора, већ се уместо тога приказује величина C: драјва са доступним простором на њему.</p>
+<p>Adding a WebDAV drive on Windows with the steps above does not display the correct
+available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
 <section id="answer">
 <h3>Одговор<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
-<p>Нажалост, ово је ограничење самог WebDAV протокола, јер не постоји начин да клијент од сервера сазна доступан слободни простор. Windows аутоматски у том случају уместо слободног простора на серверу приказује величину C: драјва и слободан простор на њему. Тако да нажалост, не постоји право решење за овај проблем.</p>
+<p>Unfortunately, this is a limitation of WebDAV itself, because it does not provide a
+way for the client to retrieve available free space from the server. Windows automatically
+falls back to the size and free space of the C: drive. There is no direct solution
+for this limitation.</p>
 </section>
 <section id="id8">
 <h3>Проблем<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
@@ -529,7 +534,7 @@ service.</p>
 <section id="id11">
 <h3>Решење<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Приступите својој Nextcloud инстанци користећи омиљени веб прегледач.</p></li>
+<li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>Кликћите док се у статусној линији прегледача не појави грешка сертификата.</p></li>
 <li><p>View the certificate, then from the Details tab, select ’Copy to File’.</p></li>
 <li><p>Сачувајте фајл на десктор под произвољним именом, на пример <code class="docutils literal notranslate"><span class="pre">myNextcloud.pem</span></code>.</p></li>
@@ -621,9 +626,13 @@ Complete the Import.</p></li>
 </section>
 <section id="accessing-files-using-winscp">
 <h2>Приступ фајловима програмом WinSCP<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
-<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a>  је бесплатан SFTP, FTP, WebDAV, S3 и SCP клијент отвореног кода за Windows. Његова главна функција је пренос фајлова између локалног и удаљеног компјутера. Уз то, WinSCP нуди скриптовање и основну функционалност фајл менаџера.</p>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> is a free, open-source SFTP,
+FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer
+between a local and a remote computer. WinSCP also offers scripting and basic file
+management functionality.</p>
 <p>Преносну верзију програма WinSCP  можете да <a class="reference external" href="https://winscp.net/eng/downloads.php/">преузмете</a> и да је помоћу <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a> извршавате на Linux систему.</p>
-<p>Да бисте WinSCP извршавали на Linux систему, преузмите wine менаџером пакета дистрибуције, па га затим покрените командом: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
+<p>To run WinSCP on Linux, install Wine through your distribution’s package manager,
+then run: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
 <p>Да се повежете са Nextcloud:</p>
 <ul class="simple">
 <li><p>Покрените WinSCP</p></li>
@@ -644,7 +653,8 @@ Complete the Import.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Белешка</p>
-<p>It is recommended to use an app password for the password if you use TOTP as WinSCP does not understand TOTP with Nextcloud at the time of writing (2022-11-07).</p>
+<p>If you use TOTP, use an app password. At the time of writing (2022-11-07),
+WinSCP does not support TOTP with Nextcloud.</p>
 </div>
 </section>
 </section>
