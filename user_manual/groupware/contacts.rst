@@ -246,7 +246,7 @@ When this option is enabled, the team can no longer be directly added as a membe
 
 Shared items
 ~~~~~~~~~~~~
-.. versionadded:: 5.5
+.. versionadded:: 5.5 Nextcloud  25 or newer
 
 .. figure:: ./images/shared-items.png
 

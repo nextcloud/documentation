@@ -9,7 +9,7 @@ Nextcloud ships a CardDAV backend for users to store and share their address boo
 System Address Book
 -------------------
 
-.. versionchanged:: 27
+.. versionchanged:: 27.0.0
     The system address book is now accessible to all Nextcloud users
 
 Nextcloud maintains a read-only address book containing contact information of all users of the instance.
@@ -57,7 +57,7 @@ The address book is updated automatically with every added, modified, disabled o
 Shared items
 ------------
 
-.. versionadded:: 5.5.0
+.. versionadded:: 5.5.0 Nextcloud 25 or newer
 
 For this feature, the shipped `related resources app <https://apps.nextcloud.com/apps/related_resources>`_ needs to be enabled.
 
