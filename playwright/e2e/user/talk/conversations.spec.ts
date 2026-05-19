@@ -421,18 +421,20 @@ test('Group public settings', async ({ page }) => {
 	await openGroupConversation(page, token)
 	await openConversationActions(page)
 	await page.locator('[role="menuitem"]', { hasText: /conversation settings/i }).click()
-	await page.locator('#conversation-settings-container').waitFor({ state: 'visible', timeout: 10000 })
-	// Try General nav item first (Talk 23); fall back to staying on the default view
-	await page.locator('.navigation-list__link', { hasText: /general/i }).click().catch(() => {})
+	const container = page.locator('#conversation-settings-container')
+	await container.waitFor({ state: 'visible', timeout: 10000 })
+	// Click General if present — scoped to the dialog to avoid matching page-level nav links
+	const generalLink = container.locator('.navigation-list__link', { hasText: /general/i })
+	if (await generalLink.isVisible()) await generalLink.click()
 	await page.waitForTimeout(500)
-	// Find the section containing the open/guest-access toggles by content, not by nav label
-	const accessSection = page.locator('.settings-section').filter({ hasText: /open conversation to registered/i }).first()
+	// Find the open/guest-access section by content
+	const accessSection = container.locator('.settings-section').filter({ hasText: /open conversation to registered/i }).first()
 	await accessSection.waitFor({ state: 'visible', timeout: 15000 })
 	await accessSection.scrollIntoViewIfNeeded()
 	await page.waitForTimeout(300)
 	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'group-public-settings.png')
 	await accessSection.screenshot({ path: dest })
-	await page.locator('#conversation-settings-container').locator('button[aria-label="Close"]').click()
+	await container.locator('button[aria-label="Close"]').click()
 })
 
 test('Participant menu (... on participant)', async ({ page }) => {
