@@ -72,7 +72,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">WebDAV klienti třetích stran</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Přístup k souborům ze systému Linux</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Správce souborů Nautilus</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">Přístup k souborům z desktopového prostředí KDE (prostřednictvím správce souborů Dolphin)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin">Accessing files with KDE and Dolphin</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Vytváření WebDAV připojení z linuxového příkazového řádku</a></li>
@@ -160,9 +160,12 @@
              
   <section id="accessing-nextcloud-files-using-webdav">
 <h1>Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
-<p>Nexcloud plně podporuje protokol WebDAV a proto ho můžete použít pro připojení se a synchronizaci s Nextcloud Soubory. V této kapitole se dozvíte jak připojit Linux, macOS, Windows a mobilní zařízení k vámi využívanému Nextcloud serveru prostřednictvím WebDAV.</p>
+<p>Nextcloud fully supports the WebDAV protocol, and you can connect to and synchronize
+with Nextcloud Files over WebDAV. This chapter explains how to connect Linux, macOS,
+Windows, and mobile devices to your Nextcloud server.</p>
 <p>WebDAV je zkratka pro „Distributed Authoring and Versioning“ (distribuované vytváření a správa verzí). Jedná se o rozšíření protokolu HTTP, které usnadňuje vytváření, čtení upravování souborů, hostovaných na vzdálených webových serverech. Pomocí WebDAV může klient přistupovat k souborům v Nextcloud (včetně sdílení) na Linuxu, macOS a Windows podobně, jako k jakémukoli jinému síťovému sdílení a být synchronní.</p>
-<p>Než se pustíme do nastavování WebDAV, krátce se podívejme na doporučený způsob připojování klientských zařízení k Nextcloud.</p>
+<p>Before you configure WebDAV, review the recommended way to connect client devices to
+Nextcloud.</p>
 <section id="official-nextcloud-desktop-and-mobile-clients">
 <h2>Oficiální Nextcloud klienti pro desktopové a mobilní platformy<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
 <p>Doporučeným způsobem synchronizace osobního počítače s Nextcloud serverem je pomocí <a class="reference external" href="https://nextcloud.com/install/#install-clients">oficiálních Nextcloud synchronizačních klientů</a>. Klienta je možné nastavit, aby ukládal soubory v libovolném adresáři v počítači a můžete zvolit, se kterými adresáři na Nextcloud serveru synchronizovat. Klient zobrazuje stav stávajícího spojení a zaznamenává veškerou aktivitu, takže vždy víte, které soubory z protějšku byly staženy na počítač a můžete si ověřit, že soubory vytvořené/aktualizované na počítači jsou správně synchronizovány na server.</p>
@@ -196,12 +199,18 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
-<p>Při používání WebDAV klienta třetí strany (včetně toho vestavěného ve vámi využívaném operačním systému), byste pro přihlašování měli používat heslo pro danou aplikaci, namísto hesla přímo k vašemu uživatelskému účtu v Nextcloud, toto <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">výrazně zvýší výkon</a>. Heslo pro danou aplikaci nastavíte tak, že se přihlásíte do webového rozhraní Nextcloud, kliknete na svůj zástupný obrázek v pravém horním rohu a vyberete <em>Osobní nastavení</em>. Pak v postranním panelu vlevo vyberte <em>Zabezpečení</em> a posunete až úplně dolů. Zde je možné vytvořit heslo pro danou aplikaci (platnost kterého je také možné v budoucnu odvolat aniž by bylo třeba měnit hlavní heslo uživatele.</p>
+<p>When using a third-party WebDAV client (including your operating system’s
+built-in client), you should use an application password for login rather than your
+regular password. In addition to improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log in to the Nextcloud Web interface, click your avatar,
+and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
+sidebar and scroll to the very bottom. There you can create an app password (which can
+also be revoked in the future without changing your main user password).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
 <p>V následujících příkladech, je třeba nahradit <strong>example.com/nextcloud</strong> URL adresou vámi využívaného Nextcloud serveru (vynechte část se složkou, pokud je jeho instalace v kořeni domény). A <strong>UZIVATELSKEJMENO</strong> nahraďte identifikátorem připojujícího se uživatele.</p>
-<p>See the WebDAV URL, to be found in Files Settings -&gt; WebDAV in the Files on your Nextcloud account.</p>
+<p>You can find the WebDAV URL in <strong>Files settings</strong> under <strong>WebDAV</strong> in your Nextcloud account.</p>
 <img alt="Screenshot of the Files settings showing the personal WebDAV link" src="../../_images/webdav_link.png" />
 </div>
 </section>
@@ -226,8 +235,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p>Stejná metoda funguje i pro ostatní správce souborů, kteří používají GVFS, jako například Caja z prostředí MATE a Nemo z Cinnamon.</p>
 </div>
 </section>
-<section id="accessing-files-with-kde-and-dolphin-file-manager">
-<h3>Přístup k souborům z desktopového prostředí KDE (prostřednictvím správce souborů Dolphin)<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<section id="accessing-files-with-kde-and-dolphin">
+<h3>Accessing files with KDE and Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Jděte do Nastavení systému -&gt; Síťování -&gt; Účty online</p></li>
 <li><p>Klikněte na „Přidat účet…“</p></li>
@@ -236,8 +245,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <li><p>Následujte pokyny na obrazovce ohledně přihlášení se</p></li>
 <li><p>Po přihlášení se ověřte, že jste zaškrtli „Úložiště“ v sekci „Použít tento účet pro“</p></li>
 <li><p>Nyní můžete přistupovat ke svým souborů v Dolpin pod „Síť“ v postranním panelu</p></li>
-<li><p>(Volitelné) pro přidání tohoto jako zástupce v postranním panelu, klikněte pravým tlačítkem na „Úložiště Nextcloud“ a pak na „Přidat do Míst“</p></li>
-<li><p>(Volitelné) pokud si budete zástupce chtít přizpůsobit, klikněte na něj pravým tlačítkem v postranním panelu a pak na „Upravit…“ a přizpůsobte si ikonu a popisek dle libosti.</p></li>
+<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click „Nextcloud Storage“, then click „Add to Places“</p></li>
+<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then click „Edit…“ and customize the icon and label</p></li>
 </ol>
 </section>
 </section>
@@ -355,7 +364,7 @@ for example
 <p>Použití této funkce vyžaduje připojení k síti. Pokud chcete ukládat své soubory offline, použijte desktopového klienta pro synchronizování všech souborů na vámi využívané instanci Nexcloud na úložiště ve vašem počítači.</p>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
-<p>Před namapováním disku, pokud je zapnuté HTTPS, Windows 10 nyní ve výchozím stavu umožňuje Basic Authentication.</p>
+<p>In Windows 10, Basic Authentication is allowed by default when HTTPS is enabled before mapping your drive.</p>
 <p>Ve starších verzích Windows je třeba povolit používání Basic Authentication v registrech Windows:</p>
 <ul class="simple">
 <li><p>spusťte <code class="docutils literal notranslate"><span class="pre">regedit</span></code> a jděte do <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code>.</p></li>
@@ -417,8 +426,6 @@ for example
 </a>
 </figure>
 </li>
-</ol>
-<ol class="arabic simple" start="5">
 <li><p>Klikněte na <code class="docutils literal notranslate"><span class="pre">Dokončit</span></code>.</p></li>
 </ol>
 <p>Průzkumník Windows namapuje síťovou jednotku, čímž zpřístupní vámi využívanou instanci Nexcloud.</p>
@@ -490,11 +497,15 @@ for example
 </section>
 <section id="id7">
 <h3>Problém<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
-<p>Přidání WebDAV disku do Windows prostřednictvím výše popsaných kroků nezobrazí správnou velikost prostoru, dostupného na Nextcloud a namísto toho zobrazí velikost disku C: a prostor dostupný na něm.</p>
+<p>Adding a WebDAV drive on Windows with the steps above does not display the correct
+available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
 <section id="answer">
 <h3>Odpověď<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
-<p>Žel toto je omezení WebDAV samotného, protože neposkytuje klientovi způsob, jak získat údaj o volném místě na serveru. Windows automaticky náhradně zobrazuje velikost disku C: a prostor dostupný na něm. Takže žel tento problém nemá skutečné řešení.</p>
+<p>Unfortunately, this is a limitation of WebDAV itself, because it does not provide a
+way for the client to retrieve available free space from the server. Windows automatically
+falls back to the size and free space of the C: drive. There is no direct solution
+for this limitation.</p>
 </section>
 <section id="id8">
 <h3>Problém<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
@@ -511,7 +522,7 @@ for example
 <section id="id11">
 <h3>Řešení<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Přistupte do vámi využívané instance Nextcloud ze svého oblíbeného webového prohlížeče.</p></li>
+<li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>Proklikejte se až obdržíte chybu certifikátu ve stavovém řádku prohlížeče.</p></li>
 <li><p>Zobrazte certifikát a pak na panelu Podrobnosti vyberte „Zkopírovat do souboru“.</p></li>
 <li><p>Uložte na plochu pod libovolným názvem, například <code class="docutils literal notranslate"><span class="pre">mujNextcloud.pem</span></code>.</p></li>
@@ -599,9 +610,13 @@ for example
 </section>
 <section id="accessing-files-using-winscp">
 <h2>Přístup souborům pomocí WinSCP<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
-<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a>  je open source klient pro SFTP, FTP, WebDAV, S3 and SCP protokoly pro Windows. Jeho hlavní funkcí je přenos souborů mezi lokálním a vzdáleným počítačem. Krom toho, WinSCP nabízí skriptování a základní funkce pro správu souborů.</p>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> is a free, open-source SFTP,
+FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer
+between a local and a remote computer. WinSCP also offers scripting and basic file
+management functionality.</p>
 <p>Je možné si <a class="reference external" href="https://winscp.net/eng/downloads.php/">stáhnout</a> přímo spouštitelnou verzi WinSCP a a spouštět ji na Linuxu prostřednictvím <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a>.</p>
-<p>Pokud chcete WinSCP spustit na Linuxu, nainstalujte si wine prostřednictvím správce balíčků vámi používané distribuce a pak spusťte pomocí příkazu: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
+<p>To run WinSCP on Linux, install Wine through your distribution’s package manager,
+then run: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
 <p>Pro připojení se k Nextcloud:</p>
 <ul class="simple">
 <li><p>Spusťte WinSCP</p></li>
@@ -622,7 +637,8 @@ for example
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
-<p>Pokud používáte TOTP, je doporučeno použít coby heslo to určené pro konkrétní aplikaci, protože WinSCP doposud (2022-11-07) ještě nepodporuje TOTP ve spojení s Nextcloud.</p>
+<p>If you use TOTP, use an app password. At the time of writing (2022-11-07),
+WinSCP does not support TOTP with Nextcloud.</p>
 </div>
 </section>
 </section>
