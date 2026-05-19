@@ -39,7 +39,8 @@ Application namespace management
 --------------------------------
 
 ``\OCP\App\IAppManager`` was extended with two new methods related to application namespaces:
-- ``getAppNamespace(string $appId): string`` returns the namespace for an application from its appid
-- ``getAppFromNamespace(string $className): ?string`` does the opposite. Less common but it is used in guests application.
 
-This replaces a static method in ``\OCP\AppFramework\App`` which is now deprecated.
+- ``getAppNamespace(string $appId): string`` returns the namespace for an application from its appid. See `Documentation <https://nextcloud-server.netlify.app/classes/ocp-app-iappmanager#method_getAppNamespace>`_.
+- ``getAppFromNamespace(string $className): ?string`` does the opposite. Less common but it is used in guests application. See `Documentation <https://nextcloud-server.netlify.app/classes/ocp-app-iappmanager#method_getAppFromNamespace>`_.
+
+This replaces static method ``\OCP\AppFramework\App::buildAppNamespace`` which is now deprecated.
