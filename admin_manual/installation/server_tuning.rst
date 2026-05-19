@@ -251,8 +251,10 @@ Nextcloud to use Imaginary by editing your ``config.php`` file:
 
    Make sure to start Imaginary with the ``-return-size`` command line parameter. Otherwise, there will be a
    minor performance impact. The flag requires a recent version of Imaginary (newer than v1.2.4).
-   Also, ensure to add the capability ``SYS_NICE`` via ``--cap-add=sys_nice`` or (for Compose)
-   ``cap_add: - SYS_NICE``, as it is required by Imaginary to generate HEIC previews.
+   Also, if running Imaginary in Docker, ensure to add the Docker container capability ``SYS_NICE``
+   via ``--cap-add=sys_nice`` (Docker CLI) or ``cap_add: - SYS_NICE`` (Docker Compose), as it is
+   required by Imaginary to generate HEIC previews. This is not applicable when running Imaginary
+   outside of Docker.
 
 .. note::
 
