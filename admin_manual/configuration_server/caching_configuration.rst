@@ -22,18 +22,18 @@ every time they are called. PHP bundles the Zend OPcache in core since version
 caching backends, so you can choose the type of memcache that best fits your
 needs. The supported caching backends are:
 
-* `APCu <https://pecl.php.net/package/APCu>`_ (APCu 4.0.6 and up required).
+* `APCu <https://pecl.php.net/package/APCu>`__ (APCu 4.0.6 and up required).
 
   A local cache for systems.
 
-* `Redis <https://redis.io/open-source/>`_ (4.0.0 and up required);
-  `Valkey <https://valkey.io/>`_ and `KeyDB <https://docs.keydb.dev/>`_ are expected to work as Redis-compatible backends.
+* `Redis <https://redis.io/open-source/>`__ (4.0.0 and up required);
+  `Valkey <https://valkey.io/>`__ and `KeyDB <https://docs.keydb.dev/>`__ are expected to work as Redis-compatible backends.
 
   .. note:: Automated/formal testing currently only occurs against Redis Open Source.
 
   For local and distributed caching, as well as transactional file locking.
 
-* `Memcached <https://www.memcached.org/>`_
+* `Memcached <https://www.memcached.org/>`__
 
   For distributed caching.
 
@@ -110,7 +110,6 @@ Additional notes for Redis vs. APCu on memory caching
 APCu is faster for local caching than Redis. If you have enough memory, use
 APCu for Memory Caching and Redis for File Locking. If you are low on memory,
 use Redis for both.
-
 
 APCu
 ----
@@ -341,8 +340,7 @@ prevent session corruption when using Redis as your session handler: ::
 More information on configuration of phpredis session handler can be found on the
 `PhpRedis GitHub page <https://github.com/phpredis/phpredis>`_
 
-..  _install_redis_label:
-
+.. _install_redis_label:
 
 Memcached
 ---------
