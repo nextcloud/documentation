@@ -17,6 +17,7 @@ import {
 import { Page } from '@playwright/test'
 import * as path from 'path'
 import * as os from 'os'
+import * as fs from 'fs/promises'
 
 test.describe.configure({ mode: 'serial' })
 
@@ -156,6 +157,18 @@ test.beforeAll(async ({ browser }) => {
 	await tryOcc('user:add --password-from-env --display-name="Seraphina Delgado" seraphina_d', { OC_PASS: 'seraphina_d' })
 	await uploadAvatar(`${AVATAR_DIR}/Seraphina_Delgado/avatar.png`, 'seraphina_d', 'seraphina_d')
 
+	await tryOcc('user:add --password-from-env --display-name="Adrian Lelievre" adrian_l', { OC_PASS: 'adrian_l' })
+	await uploadAvatar(`${AVATAR_DIR}/Adrian_Lelievre/avatar.png`, 'adrian_l', 'adrian_l')
+
+	await tryOcc('user:add --password-from-env --display-name="Charlotte McGraw" charlotte_m', { OC_PASS: 'charlotte_m' })
+	await uploadAvatar(`${AVATAR_DIR}/CharlotteMcGraw/avatar.png`, 'charlotte_m', 'charlotte_m')
+
+	await tryOcc('user:add --password-from-env --display-name="Orion Gallagher" orion_g', { OC_PASS: 'orion_g' })
+	await uploadAvatar(`${AVATAR_DIR}/Orion_Gallagher/avatar.png`, 'orion_g', 'orion_g')
+
+	await tryOcc('user:add --password-from-env --display-name="Analise Laviss" analise_l', { OC_PASS: 'analise_l' })
+	await uploadAvatar(`${AVATAR_DIR}/Analise_Laviss/avatar.png`, 'analise_l', 'analise_l')
+
 	// Create 1:1 DM and seed messages
 	const dmToken = await createTalkDm(christine, 'amara_w')
 
@@ -200,14 +213,51 @@ test.beforeAll(async ({ browser }) => {
 		}
 	}
 
+	// Seed charlotte_m ↔ christine DM (only if empty)
+	const charlotteDmToken = await createTalkDm(christine, 'charlotte_m')
+	const charlotteChatRes = await talkApi('GET', `/v1/chat/${charlotteDmToken}?lookIntoFuture=0&limit=1`, christine)
+	const charlotteChatData = await charlotteChatRes.json()
+	const charlotteMsgs: unknown[] = charlotteChatData?.ocs?.data ?? []
+	if (charlotteMsgs.length === 0) {
+		await seedChatMessages(charlotteDmToken, [
+			{ text: "Hi Christine — the venue is asking for the £2,500 deposit by end of week. Shall I go ahead and authorise it?", user: 'charlotte_m', password: 'charlotte_m' },
+			{ text: "Yes, please go ahead — I've already confirmed it with finance.", user: 'christine', password: 'christine' },
+			{ text: "Perfect. I'll send the invoice to accounts once it's done.", user: 'charlotte_m', password: 'charlotte_m' },
+		])
+	}
+
+	// Seed orion_g ↔ christine DM (only if empty)
+	const orionDmToken = await createTalkDm(christine, 'orion_g')
+	const orionChatRes = await talkApi('GET', `/v1/chat/${orionDmToken}?lookIntoFuture=0&limit=1`, christine)
+	const orionChatData = await orionChatRes.json()
+	const orionMsgs: unknown[] = orionChatData?.ocs?.data ?? []
+	if (orionMsgs.length === 0) {
+		await seedChatMessages(orionDmToken, [
+			{ text: "Just saw your post about the gala — looks amazing! 🎉", user: 'orion_g', password: 'orion_g' },
+			{ text: "Thanks Orion! It's shaping up really well. Tickets go on sale next month.", user: 'christine', password: 'christine' },
+			{ text: "@christine are you free Thursday for a quick call on ticketing?", user: 'orion_g', password: 'orion_g' },
+		])
+	}
+
+	// Seed adrian_l ↔ christine DM (only if empty)
+	const adrianDmToken = await createTalkDm(christine, 'adrian_l')
+	const adrianChatRes = await talkApi('GET', `/v1/chat/${adrianDmToken}?lookIntoFuture=0&limit=1`, christine)
+	const adrianChatData = await adrianChatRes.json()
+	const adrianMsgs: unknown[] = adrianChatData?.ocs?.data ?? []
+	if (adrianMsgs.length === 0) {
+		await seedChatMessages(adrianDmToken, [
+			{ text: "Christine, just confirming — are the decorators booked for the 1st?", user: 'adrian_l', password: 'adrian_l' },
+		])
+	}
+
 	// Seed note-to-self with a task list so the screenshot shows the task counter
 	const noteRes = await talkApi('GET', '/v1/note-to-self', christine)
 	const noteData = await noteRes.json()
 	const noteToken = noteData.ocs.data.token as string
-	const noteChatRes = await talkApi('GET', `/v1/chat/${noteToken}?lookIntoFuture=0&limit=1`, christine)
+	const noteChatRes = await talkApi('GET', `/v1/chat/${noteToken}?lookIntoFuture=0&limit=50`, christine)
 	const noteChatData = await noteChatRes.json()
-	const noteMsgs: unknown[] = noteChatData?.ocs?.data ?? []
-	if (noteMsgs.length === 0) {
+	const noteMsgsList: unknown[] = noteChatData?.ocs?.data ?? []
+	if (!noteMsgsList.some(m => (m as { message: string }).message?.includes('Define Project Scope'))) {
 		await seedChatMessages(noteToken, [{
 			text: '- [x] Define Project Scope and Objectives\n- [x] Develop a Project Plan\n- [ ] Coordinate Team Activities\n- [ ] Review and finalize budget\n- [ ] Schedule kickoff meeting',
 			user: 'christine',
@@ -284,6 +334,30 @@ test.beforeAll(async ({ browser }) => {
 		])
 	}
 
+	if (!existingNames.includes('Board Updates')) {
+		const boardToken = await createGroup('Board Updates', christine)
+		await talkApi('POST', `/v1/conversation/${boardToken}/avatar/emoji`, christine, { emoji: '📋', color: '003b6f' }).catch(() => {})
+		await addParticipant(boardToken, 'analise_l', christine)
+		await addParticipant(boardToken, 'orion_g', christine)
+		await addParticipant(boardToken, 'charlotte_m', christine)
+		await seedChatMessages(boardToken, [
+			{ text: "Minutes from the last board meeting have been uploaded to the shared folder.", user: 'christine', password: 'christine' },
+			{ text: "Charlotte, can you confirm the financials are signed off before the next session?", user: 'charlotte_m', password: 'charlotte_m' },
+			{ text: "Reviewed and signed off ✅", user: 'analise_l', password: 'analise_l' },
+		])
+	}
+
+	if (!existingNames.includes('Volunteer Coordination')) {
+		const volunteerToken = await createGroup('Volunteer Coordination', christine)
+		await talkApi('POST', `/v1/conversation/${volunteerToken}/avatar/emoji`, christine, { emoji: '🤝', color: '00a75c' }).catch(() => {})
+		await addParticipant(volunteerToken, 'analise_l', christine)
+		await addParticipant(volunteerToken, 'seraphina_d', christine)
+		await seedChatMessages(volunteerToken, [
+			{ text: "34 volunteers confirmed for the event day — great response!", user: 'seraphina_d', password: 'seraphina_d' },
+			{ text: "@christine we still need 6 more for the morning setup shift.", user: 'analise_l', password: 'analise_l' },
+		])
+	}
+
 	const ctx = await browser.newContext()
 	const pg = await ctx.newPage()
 	await login(pg.request, christine)
@@ -312,6 +386,8 @@ test('Note to self', async ({ page }) => {
 	await page.locator('.conversation .text', { hasText: 'Note to self' }).waitFor({ state: 'visible', timeout: 15000 })
 	await page.locator('.conversation .text', { hasText: 'Note to self' }).click()
 	await page.locator('.chatView').waitFor({ state: 'visible', timeout: 10000 })
+	await page.locator('.chatView').getByText(/Define Project Scope/i).waitFor({ state: 'visible', timeout: 15000 }).catch(() => {})
+	await page.waitForTimeout(500)
 	// Close sidebar if open
 	const sidebar = page.locator('.app-sidebar')
 	if (await sidebar.isVisible()) {
@@ -327,7 +403,15 @@ test('1:1 conversation with right sidebar', async ({ page }) => {
 	await openConversation(page, 'Amara Winterbourne')
 	await openSidebar(page)
 	await page.locator('.app-sidebar', { hasText: 'Event Coordinator' }).waitFor({ state: 'visible', timeout: 8000 })
-	await docElementScreenshot(page, '.app-sidebar', 'user/talk/one-to-one-right-sidebar')
+	const sidebarEl = page.locator('.app-sidebar')
+	const sidebarBox = await sidebarEl.boundingBox()
+	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'one-to-one-right-sidebar.png')
+	await fs.mkdir(path.dirname(dest), { recursive: true })
+	if (sidebarBox) {
+		await page.screenshot({ path: dest, clip: { x: sidebarBox.x, y: sidebarBox.y, width: sidebarBox.width, height: Math.min(380, sidebarBox.height) } })
+	} else {
+		await sidebarEl.screenshot({ path: dest })
+	}
 })
 
 test('1:1 extend to group', async ({ page }) => {
@@ -388,6 +472,18 @@ test('New room (freshly created conversation)', async ({ page }) => {
 	await page.locator('[data-nav-id="users_amara_w"]').click()
 	await page.locator('button', { hasText: /create conversation/i }).click()
 	await page.locator('.chatView').waitFor({ state: 'visible', timeout: 15000 })
+	// Extract token from URL and seed messages
+	const newRoomUrl = page.url()
+	const newRoomToken = newRoomUrl.match(/\/call\/([a-z0-9]+)/i)?.[1]
+	if (newRoomToken) {
+		await seedChatMessages(newRoomToken, [
+			{ text: "Hey team! Welcome to the Product Team chat 👋", user: 'christine', password: 'christine' },
+			{ text: "Thanks for setting this up!", user: 'amara_w', password: 'amara_w' },
+		])
+		await page.reload()
+		await page.locator('.chatView').waitFor({ state: 'visible', timeout: 15000 })
+		await page.locator('.chatView').getByText(/Hey team! Welcome to the Product Team chat/i).waitFor({ state: 'visible', timeout: 10000 }).catch(() => {})
+	}
 	// Avoid waiting generically for .icon-loading — shared-items-tab spinner may persist
 	await page.locator('.icon-loading:not(.shared-items-tab__loading)').waitFor({ state: 'hidden', timeout: 10000 }).catch(() => {})
 	await docScreenshot(page, 'user/talk/new-room')
@@ -430,11 +526,12 @@ test('Group public settings', async ({ page }) => {
 	await moderationSection.waitFor({ state: 'visible', timeout: 10000 })
 	await moderationSection.scrollIntoViewIfNeeded()
 	await page.waitForTimeout(500)
-	// Clip to just the top of the section (open/guest-access toggles)
+	// Clip to just the top of the section (open/guest-access toggles) with 20px padding
 	const box = await moderationSection.boundingBox()
 	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'group-public-settings.png')
+	await fs.mkdir(path.dirname(dest), { recursive: true })
 	if (box) {
-		await page.screenshot({ path: dest, clip: { x: box.x, y: box.y, width: box.width, height: Math.min(box.height, 280) } })
+		await page.screenshot({ path: dest, clip: { x: box.x - 20, y: box.y - 20, width: box.width + 40, height: Math.min(box.height, 280) + 40 } })
 	} else {
 		await moderationSection.screenshot({ path: dest })
 	}
@@ -451,14 +548,30 @@ test('Participant menu (... on participant)', async ({ page }) => {
 	await page.locator('.participant', { hasText: 'Amara Winterbourne' }).waitFor({ state: 'visible', timeout: 10000 })
 	await page.locator('.participant', { hasText: 'Amara Winterbourne' }).locator('button[aria-label*="Settings for participant"]').first().click()
 	await page.locator('[role="menu"]').waitFor({ state: 'visible', timeout: 5000 })
-	await docScreenshot(page, 'user/talk/participant-menu')
+	const menuEl = page.locator('[role="menu"]').first()
+	const menuBox = await menuEl.boundingBox()
+	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'participant-menu.png')
+	await fs.mkdir(path.dirname(dest), { recursive: true })
+	if (menuBox) {
+		await page.screenshot({ path: dest, clip: { x: menuBox.x - 16, y: menuBox.y - 16, width: menuBox.width + 32, height: menuBox.height + 32 } })
+	} else {
+		await menuEl.screenshot({ path: dest })
+	}
 })
 
 test('Open conversation settings menu', async ({ page }) => {
 	const token = await getOrCreateGroupToken()
 	await openGroupConversation(page, token)
 	await openConversationActions(page)
-	await docScreenshot(page, 'user/talk/open-settings')
+	const menuEl = page.locator('[role="menu"]').first()
+	const menuBox = await menuEl.boundingBox()
+	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'open-settings.png')
+	await fs.mkdir(path.dirname(dest), { recursive: true })
+	if (menuBox) {
+		await page.screenshot({ path: dest, clip: { x: menuBox.x - 16, y: menuBox.y - 16, width: menuBox.width + 32, height: menuBox.height + 32 } })
+	} else {
+		await menuEl.screenshot({ path: dest })
+	}
 })
 
 test('Conversation settings dialog', async ({ page }) => {
@@ -485,12 +598,13 @@ test('Message expiration setting', async ({ page }) => {
 	await expirationLabel.scrollIntoViewIfNeeded()
 	await page.waitForTimeout(500)
 	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'messages-expiration.png')
+	await fs.mkdir(path.dirname(dest), { recursive: true })
 	const sectionBox = await moderationSection.boundingBox()
 	const labelBox = await expirationLabel.boundingBox()
 	if (sectionBox && labelBox) {
 		await page.screenshot({ path: dest, clip: {
-			x: sectionBox.x, y: labelBox.y - 12,
-			width: sectionBox.width, height: Math.min(160, sectionBox.y + sectionBox.height - labelBox.y),
+			x: sectionBox.x - 20, y: labelBox.y - 32,
+			width: sectionBox.width + 40, height: Math.min(160, sectionBox.y + sectionBox.height - labelBox.y) + 40,
 		} })
 	} else {
 		await moderationSection.screenshot({ path: dest })
@@ -506,7 +620,15 @@ test('Ban participant', async ({ page }) => {
 	await page.locator('.participant', { hasText: 'Amara Winterbourne' }).waitFor({ state: 'visible', timeout: 10000 })
 	await page.locator('.participant', { hasText: 'Amara Winterbourne' }).locator('button[aria-label*="Settings for participant"]').first().click()
 	await page.locator('[role="menuitem"]', { hasText: /remove participant/i }).waitFor({ state: 'visible', timeout: 5000 })
-	await docScreenshot(page, 'user/talk/ban-participant')
+	const menuEl = page.locator('[role="menu"]').first()
+	const menuBox = await menuEl.boundingBox()
+	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'ban-participant.png')
+	await fs.mkdir(path.dirname(dest), { recursive: true })
+	if (menuBox) {
+		await page.screenshot({ path: dest, clip: { x: menuBox.x - 16, y: menuBox.y - 16, width: menuBox.width + 32, height: menuBox.height + 32 } })
+	} else {
+		await menuEl.screenshot({ path: dest })
+	}
 })
 
 test('Ban participant dialog', async ({ page }) => {
@@ -540,6 +662,11 @@ test('Ban participant dialog', async ({ page }) => {
 
 test('Ban participant list', async ({ page }) => {
 	const token = await getOrCreateGroupToken()
+
+	// Pre-ban lila_h and malik_s to populate the ban list
+	await talkApi('POST', `/v1/ban/${token}`, christine, { actorType: 'users', actorId: 'lila_h', internalNote: 'Documentation screenshot' }).catch(() => {})
+	await talkApi('POST', `/v1/ban/${token}`, christine, { actorType: 'users', actorId: 'malik_s', internalNote: 'Documentation screenshot' }).catch(() => {})
+
 	await openGroupConversation(page, token)
 	await openConversationActions(page)
 	await page.locator('[role="menuitem"]', { hasText: /conversation settings/i }).click()
@@ -547,19 +674,29 @@ test('Ban participant list', async ({ page }) => {
 	await page.locator('.navigation-list__link', { hasText: /moderation/i }).click()
 	await page.locator('#settings-section_conversation-settings').waitFor({ state: 'visible', timeout: 5000 })
 	await page.locator('#settings-section_conversation-settings').scrollIntoViewIfNeeded()
-	await page.locator('#settings-section_conversation-settings', { hasText: /banned/i }).waitFor({ state: 'visible', timeout: 10000 })
-	await docElementScreenshot(page, '#conversation-settings-container', 'user/talk/ban-participant-list')
-	await page.locator('#conversation-settings-container').locator('button[aria-label="Close"]').click()
+	await page.locator('button:has-text("Manage bans")').waitFor({ state: 'visible', timeout: 10000 })
+	await page.locator('button:has-text("Manage bans")').click()
+	// "Manage bans" opens a nested dialog inside the settings container
+	const banDialog = page.getByRole('dialog', { name: /banned users/i })
+	await banDialog.waitFor({ state: 'visible', timeout: 10000 })
+	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'ban-participant-list.png')
+	await fs.mkdir(path.dirname(dest), { recursive: true })
+	await banDialog.screenshot({ path: dest })
+	// Close the ban dialog first, then the conversation settings
+	await banDialog.getByRole('button', { name: 'Close' }).click()
+	await banDialog.waitFor({ state: 'hidden', timeout: 5000 }).catch(() => {})
+	await page.locator('#conversation-settings-container').locator('button[aria-label="Close"]').first().click()
 
-	// Unban Amara and re-add as participant
+	// Clean up: fetch all bans, delete all, re-add amara_w + lila_h + malik_s
 	const banRes2 = await talkApi('GET', `/v1/ban/${token}`, christine)
 	const banData2 = await banRes2.json()
 	const bans2: Array<{ id: number; actorId: string }> = banData2?.ocs?.data ?? []
-	const amaraBan2 = bans2.find((b) => b.actorId === 'amara_w')
-	if (amaraBan2) {
-		await talkApi('DELETE', `/v1/ban/${token}/${amaraBan2.id}`, christine)
-		await addParticipant(token, 'amara_w', christine)
+	for (const ban of bans2) {
+		await talkApi('DELETE', `/v1/ban/${token}/${ban.id}`, christine).catch(() => {})
 	}
+	await addParticipant(token, 'amara_w', christine).catch(() => {})
+	await addParticipant(token, 'lila_h', christine).catch(() => {})
+	await addParticipant(token, 'malik_s', christine).catch(() => {})
 })
 
 test('Conversation notifications setting', async ({ page }) => {
@@ -574,7 +711,15 @@ test('Conversation notifications setting', async ({ page }) => {
 	await page.locator('[role="menu"]').waitFor({ state: 'visible', timeout: 5000 })
 	await page.locator('[role="menuitem"]', { hasText: /notification/i }).click()
 	await page.locator('[role="menu"]').waitFor({ state: 'visible', timeout: 5000 })
-	await docScreenshot(page, 'user/talk/conversation-notifications')
+	const subMenuEl = page.locator('[role="menu"]').last()
+	const subMenuBox = await subMenuEl.boundingBox()
+	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'conversation-notifications.png')
+	await fs.mkdir(path.dirname(dest), { recursive: true })
+	if (subMenuBox) {
+		await page.screenshot({ path: dest, clip: { x: subMenuBox.x - 16, y: subMenuBox.y - 16, width: subMenuBox.width + 32, height: subMenuBox.height + 32 } })
+	} else {
+		await subMenuEl.screenshot({ path: dest })
+	}
 })
 
 test('Privacy settings (Talk personal settings)', async ({ page }) => {
@@ -596,11 +741,24 @@ test('Archived conversations button', async ({ page }) => {
 	await page.goto('/apps/spreed')
 	await page.locator('[aria-label="Conversation list"]').waitFor({ state: 'visible', timeout: 15000 })
 	const token = await getOrCreateGroupToken()
+	// Seed a message before archiving so the preview is meaningful
+	await seedChatMessages(token, [
+		{ text: "@all Don't forget the catering walkthrough is Friday at 10am!", user: 'amara_w', password: 'amara_w' },
+	])
 	await talkApi('POST', `/v4/room/${token}/archive`, christine)
 	await page.reload()
 	await page.locator('[aria-label="Conversation list"]').waitFor({ state: 'visible', timeout: 15000 })
 	await page.locator('button', { hasText: 'Archived conversations' }).waitFor({ state: 'visible', timeout: 10000 })
-	await docElementScreenshot(page, '[aria-label="Conversation list"]', 'user/talk/archived-conversations-button')
+	// Clip to the bottom 160px of the conversation list bounding box
+	const listEl = page.locator('[aria-label="Conversation list"]')
+	const listBox = await listEl.boundingBox()
+	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'archived-conversations-button.png')
+	await fs.mkdir(path.dirname(dest), { recursive: true })
+	if (listBox) {
+		await page.screenshot({ path: dest, clip: { x: listBox.x, y: listBox.y + listBox.height - 160, width: listBox.width, height: 160 } })
+	} else {
+		await listEl.screenshot({ path: dest })
+	}
 })
 
 test('Archived conversations list', async ({ page }) => {
@@ -610,7 +768,7 @@ test('Archived conversations list', async ({ page }) => {
 	await page.locator('[aria-label="Conversation list"]').waitFor({ state: 'visible', timeout: 15000 })
 	await page.locator('button', { hasText: 'Archived conversations' }).waitFor({ state: 'visible', timeout: 10000 })
 	await page.locator('button', { hasText: 'Archived conversations' }).click()
-	await page.locator('.conversation .text', { hasText: 'Event planning' }).waitFor({ state: 'visible', timeout: 10000 })
+	await page.locator('.conversation[title="Event planning"]').first().waitFor({ state: 'visible', timeout: 10000 })
 	await docElementScreenshot(page, '[aria-label="Conversation list"]', 'user/talk/archived-conversations-list')
 	// Unarchive for clean subsequent runs
 	if (groupToken) {
