@@ -91,8 +91,11 @@ addresses and ranges to exempt from brute force protection.
 Additional enhancements may be made in the future, within this app and/or in combination with Nextcloud Server for
 additional monitoring or behavior adjustments related to brute force protection.
 
-.. warning:: Disabling the ``bruteforcesettings`` app does **not** disable brute force protection
-   - it merely removes your ability to adjust brute force related settings from the Web interface.
+.. warning::
+
+   Disabling the ``bruteforcesettings`` app does **not** disable brute force protection.
+   The protection is built into Nextcloud Server core and is always active. Disabling the app
+   only removes the ability to manage brute force settings from the Web interface.
 
 .. danger::
 
@@ -164,3 +167,31 @@ It's possible to exclude IP addresses from the brute force protection.
 
    Any excluded IP address can perform authentication attempts without any throttling.
    It's best to exclude as few IP addresses as you can, or even none at all.
+
+Brute force protection vs fail2ban
+-----------------------------------
+
+Nextcloud's built-in brute force protection and fail2ban are complementary tools that
+operate at different layers of the stack. Using both together is recommended for
+production servers.
+
+**Nextcloud brute force protection** is built into Nextcloud Server itself (the
+``bruteforcesettings`` app provides the admin UI and exclusion settings, but the
+protection runs regardless). It works at the **application layer**: it detects
+suspicious login patterns and adds progressively longer delays to requests from the
+offending IP address. It has full context about Nextcloud-specific endpoints and
+credentials, and it activates automatically without any operating system configuration.
+
+**fail2ban** works at the **OS/network layer**. It watches log files for failed login
+entries and instructs the system firewall (e.g. ``iptables`` or ``nftables``) to
+block the offending IP outright. Blocked requests are dropped before they reach the
+web server, PHP, or the database, saving server resources entirely.
+
+The two approaches are not mutually exclusive:
+
+- Nextcloud brute force protection handles application-level throttling transparently,
+  including for API clients and mobile apps, with no system configuration required.
+- fail2ban reduces server load by blocking repeat offenders at the network level
+  before their requests consume any application resources.
+
+For setup instructions for fail2ban with Nextcloud, see :ref:`setup_fail2ban`.
