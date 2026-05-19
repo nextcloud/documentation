@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Server tuning &mdash; Nextcloud latest Administration Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -30,7 +30,7 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Example installation on Ubuntu 24.04 LTS" href="example_ubuntu.html" />
+    <link rel="next" title="Example installation on Ubuntu 22.04 LTS" href="example_ubuntu.html" />
     <link rel="prev" title="Hardening and security guidance" href="harden_server.html" />
    
   
@@ -52,18 +52,9 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
-
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Search docs</label>
-    <div class="wy-form-search">
-      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
-      <input id="rtd-search-input"
-             type="text"
-             name="q"
-             placeholder="Search docs"
-             aria-label="Search docs" />
-    </div>
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -73,7 +64,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
@@ -89,7 +80,6 @@
 <li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nginx.html">NGINX configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
@@ -119,7 +109,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="example_ubuntu.html">Example installation on Ubuntu 24.04 LTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_ubuntu.html">Example installation on Ubuntu 22.04 LTS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example_centos.html">Example installation on CentOS 8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example_openbsd.html">Example installation on OpenBSD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
@@ -159,10 +149,6 @@
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
 <ul>
@@ -212,10 +198,6 @@
              
   <section id="server-tuning">
 <h1>Server tuning<a class="headerlink" href="#server-tuning" title="Link to this heading"></a></h1>
-<p>This page collects configuration changes that can improve the performance of
-your Nextcloud server. Most items only require editing a configuration file or
-installing a package, while a few involve additional services. Start with the
-ones that match your setup and revisit the rest as your instance grows.</p>
 <section id="using-cron-to-perform-background-jobs">
 <h2>Using cron to perform background jobs<a class="headerlink" href="#using-cron-to-perform-background-jobs" title="Link to this heading"></a></h2>
 <p>See <a class="reference internal" href="../configuration_server/background_jobs_configuration.html"><span class="doc">Background jobs</span></a> for a description and the
@@ -331,7 +313,7 @@ should allow more processes to run in parallel to handle requests.</p>
 </section>
 <section id="enable-php-opcache">
 <h2>Enable PHP OPcache<a class="headerlink" href="#enable-php-opcache" title="Link to this heading"></a></h2>
-<p>The <a class="reference external" href="https://php.net/manual/en/intro.opcache.php">OPcache</a> improves the performance of PHP applications by caching precompiled bytecode.</p>
+<p>The <a class="reference external" href="https://www.php.net/manual/en/book.opcache.php">OPcache</a> improves the performance of PHP applications by caching precompiled bytecode.</p>
 <section id="revalidation">
 <h3>Revalidation<a class="headerlink" href="#revalidation" title="Link to this heading"></a></h3>
 <p>OPcache revalidation in PHP handles changes made to PHP application code stored on disk. Code changes occur whenever:</p>
@@ -448,7 +430,7 @@ Also, ensure to add the capability <code class="docutils literal notranslate"><s
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="harden_server.html" class="btn btn-neutral float-left" title="Hardening and security guidance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="example_ubuntu.html" class="btn btn-neutral float-right" title="Example installation on Ubuntu 24.04 LTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="example_ubuntu.html" class="btn btn-neutral float-right" title="Example installation on Ubuntu 22.04 LTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -467,16 +449,11 @@ Also, ensure to add the capability <code class="docutils literal notranslate"><s
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    
-    <button type="button"
-            class="rst-current-version"
-            data-toggle="rst-current-version"
-            aria-expanded="false"
-            aria-controls="rst-other-versions-admin">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       ☁️ latest
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-    </button>
-    <div id="rst-other-versions-admin" class="rst-other-versions">
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -499,14 +476,6 @@ Also, ensure to add the capability <code class="docutils literal notranslate"><s
         </dd>
         
         <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/33/admin_manual"
-             
-          >
-            33
-          </a>
-        </dd>
-        
-        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
@@ -514,20 +483,17 @@ Also, ensure to add the capability <code class="docutils literal notranslate"><s
           </a>
         </dd>
         
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
       </dl>
     </div>
   </div>
-  <script>
-    /* Keep aria-expanded in sync with the RTD theme toggle class. */
-    (function () {
-      var btn = document.querySelector('.rst-current-version[aria-expanded]');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      });
-    }());
-  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

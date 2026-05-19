@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Использование сквозного шифрования &mdash; документация Nextcloud latest User Manual latest</title>
+  <title>Using end-to-end encryption &mdash; документация Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,8 +31,8 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
     <link rel="search" title="Поиск" href="../search.html" />
-    <link rel="next" title="Программное обеспечение для совместной работы" href="../groupware/index.html" />
-    <link rel="prev" title="Использование шифрования на стороне сервера" href="encrypting_files.html" />
+    <link rel="next" title="Обмен файлами" href="sharing.html" />
+    <link rel="prev" title="Шифрование ваших файлов Nextcloud на сервере" href="encrypting_files.html" />
    
   
 </head>
@@ -53,18 +53,9 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
-
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Поиск в документации</label>
-    <div class="wy-form-search">
-      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
-      <input id="rtd-search-input"
-             type="text"
-             name="q"
-             placeholder="Поиск в документации"
-             aria-label="Поиск в документации" />
-    </div>
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,33 +63,39 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest руководство пользователя. Введение</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../activity.html">Использование приложения «Активность»</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Веб-интерфейс Nextcloud</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Файлы и синхронизация</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="accessing.html">Доступ к вашим файлам</a></li>
-<li class="toctree-l2"><a class="reference internal" href="managing.html">Управление вашими файлами</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Совместное использование и сотрудничество</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="security.html">Безопасность и шифрование</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="encrypting_files.html">Использование шифрования на стороне сервера</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Использование сквозного шифрования</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#enabling-e2ee">Включение E2EE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#encrypting-a-folder">Шифрование папки</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adding-an-e2ee-device">Добавление устройства E2EE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#displaying-the-mnemonic">Отображение мнемоники</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Доступ к вашим файлам с помощью веб-интерфейса Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Доступ к файлам Nextcloud с помощью WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Управление удаленными файлами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Синхронизация рабочего стола и мобильного телефона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Шифрование ваших файлов Nextcloud на сервере</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using end-to-end encryption</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-e2ee">Enabling E2EE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#encrypting-a-folder">Encrypting a folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-an-e2ee-device">Adding an E2EE device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#displaying-the-mnemonic">Displaying the mnemonic</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Обмен файлами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Федеративный общий ресурс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Создание анонимных загрузок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Загрузка больших файлов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Квота хранилища</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Контроль версий</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Проекты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Передача прав</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Использование федеративного доступа</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Программное обеспечение для совместной работы</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Персональные настройки</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Специальные возможности</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Использование двухфакторной аутентификации</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управление подключенными браузерами и устройствами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Внешнее хранилище</a></li>
 </ul>
 
         </div>
@@ -116,8 +113,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Файлы и синхронизация</a></li>
-          <li class="breadcrumb-item"><a href="security.html">Безопасность и шифрование</a></li>
-      <li class="breadcrumb-item active">Использование сквозного шифрования</li>
+      <li class="breadcrumb-item active">Using end-to-end encryption</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/using_e2ee.rst" class="fa fa-github"> Редактировать на GitHub</a>
       </li>
@@ -128,92 +124,95 @@
            <div itemprop="articleBody">
              
   <section id="using-end-to-end-encryption">
-<h1>Использование сквозного шифрования<a class="headerlink" href="#using-end-to-end-encryption" title="Ссылка на этот заголовок"></a></h1>
-<p>Если включена серверная часть, Nextcloud предоставляет возможность шифровать ваши файлы на ваших устройствах. Это называется сквозным шифрованием, или E2EE, поскольку файлы шифруются на вашем устройстве и расшифровываются только на вашем устройстве. Сервер никогда не видит незашифрованные файлы, что обеспечивает дополнительную защиту конфиденциальности пользователей и безопасности данных.</p>
+<h1>Using end-to-end encryption<a class="headerlink" href="#using-end-to-end-encryption" title="Ссылка на этот заголовок"></a></h1>
+<p>If enabled server side, Nextcloud provides the possibility to encrypt your files on your devices.
+This is called end-to-end encryption, or E2EE, because the files are encrypted on your device and only decrypted on your device.
+The server never sees the unencrypted files, further protecting user privacy and data security.</p>
 <section id="enabling-e2ee">
-<h2>Включение E2EE<a class="headerlink" href="#enabling-e2ee" title="Ссылка на этот заголовок"></a></h2>
-<p>If your administrator has enabled the <a class="reference external" href="https://apps.nextcloud.com/apps/end_to_end_encryption">End-to-End Encryption app</a>, you can start using it from one of your devices.
-Open the settings of the Nextcloud client and look for the E2EE encryption settings.</p>
+<h2>Enabling E2EE<a class="headerlink" href="#enabling-e2ee" title="Ссылка на этот заголовок"></a></h2>
+<p>If your administrator enabled the [End-to-End Encryption app](<a class="reference external" href="https://apps.nextcloud.com/apps/end_to_end_encryption">https://apps.nextcloud.com/apps/end_to_end_encryption</a>), you can start using it from one of your devices.
+Open the settings of the Nextcloud client and look for the EE2E encryption settings.</p>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-setup.png"><img alt="Настройка E2EE в настольном клиенте" src="../../_images/e2ee-desktop-setup.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-setup.png"><img alt="Setup E2EE on the desktop client" src="../../_images/e2ee-desktop-setup.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-setup.png"><img alt="Настройка E2EE в Android" src="../../_images/e2ee-android-setup.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-setup.png"><img alt="Setup E2EE on Android" src="../../_images/e2ee-android-setup.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-1.png"><img alt="Настройка E2EE в iOS шаг 1" src="../../_images/e2ee-ios-setup-1.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-1.png"><img alt="Setup E2EE on iOS step 1" src="../../_images/e2ee-ios-setup-1.png" style="width: 400px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-2.png"><img alt="Настройка E2EE в iOS шаг 2" src="../../_images/e2ee-ios-setup-2.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-2.png"><img alt="Setup E2EE on iOS step 2" src="../../_images/e2ee-ios-setup-2.png" style="width: 400px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-3.png"><img alt="Настройка E2EE в iOS шаг 3" src="../../_images/e2ee-ios-setup-3.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-3.png"><img alt="Setup E2EE on iOS step 3" src="../../_images/e2ee-ios-setup-3.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Предупреждение</p>
-<p>Невозможно включить шифрование папки в браузере. Это необходимо сделать в клиентском приложении, настольном или мобильном клиенте.</p>
+<p>It is not possible to enable encryption on a folder in the browser. This must be done on a client app, either a desktop or mobile client.</p>
 </div>
 </details><br /></section>
 <section id="encrypting-a-folder">
-<h2>Шифрование папки<a class="headerlink" href="#encrypting-a-folder" title="Ссылка на этот заголовок"></a></h2>
+<h2>Encrypting a folder<a class="headerlink" href="#encrypting-a-folder" title="Ссылка на этот заголовок"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Предупреждение</p>
-<p>Вы можете включить шифрование только для пустых папок.</p>
+<p>You can only enable encryption on empty folders.</p>
 </div>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-1.png"><img alt="Шифрование папки в настольном клиенте, шаг 1" src="../../_images/e2ee-desktop-encrypt-1.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-1.png"><img alt="Encrypting a folder on the desktop client step 1" src="../../_images/e2ee-desktop-encrypt-1.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-2.png"><img alt="Шифрование папки в настольном клиенте, шаг 2" src="../../_images/e2ee-desktop-encrypt-2.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-2.png"><img alt="Encrypting a folder on the desktop client step 2" src="../../_images/e2ee-desktop-encrypt-2.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-3.png"><img alt="Шифрование папки в настольном клиенте, шаг 3" src="../../_images/e2ee-desktop-encrypt-3.png" style="width: 750px;" />
-</a>
-</details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-encrypt.png"><img alt="Шифрование папки в Android устройстве" src="../../_images/e2ee-android-encrypt.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-3.png"><img alt="Encrypting a folder on the desktop client step 3" src="../../_images/e2ee-desktop-encrypt-3.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-encrypt.png"><img alt="Шифрование папки в iOS устройстве" src="../../_images/e2ee-ios-encrypt.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-encrypt.png"><img alt="Encrypting a folder on an Android device" src="../../_images/e2ee-android-encrypt.png" style="width: 400px;" />
+</a>
+</details><details>
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-encrypt.png"><img alt="Encrypting a folder on an iOS device" src="../../_images/e2ee-ios-encrypt.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Предупреждение</p>
-<p>Невозможно включить шифрование папки в браузере. Это необходимо сделать в клиентском приложении, настольном или мобильном клиенте.</p>
+<p>It is not possible to enable encryption on a folder in the browser. This must be done on a client app, either a desktop or mobile client.</p>
 </div>
 </details><br /></section>
 <section id="adding-an-e2ee-device">
-<h2>Добавление устройства E2EE<a class="headerlink" href="#adding-an-e2ee-device" title="Ссылка на этот заголовок"></a></h2>
+<h2>Adding an E2EE device<a class="headerlink" href="#adding-an-e2ee-device" title="Ссылка на этот заголовок"></a></h2>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-add.png"><img alt="Настроить новый настольный клиент" src="../../_images/e2ee-desktop-add.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-add.png"><img alt="Setup a new desktop client" src="../../_images/e2ee-desktop-add.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-add.png"><img alt="Настроить новое устройство Android" src="../../_images/e2ee-android-add.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-add.png"><img alt="Setup a new Android device" src="../../_images/e2ee-android-add.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-add.png"><img alt="Настроить новое устройство iOS" src="../../_images/e2ee-ios-add.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-add.png"><img alt="Setup a new iOS device" src="../../_images/e2ee-ios-add.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>Web</summary><p>В браузере сначала включите E2EE в личных настройках. Это необходимо, поскольку E2EE менее безопасен в браузере и требует от вас полного доверия администратору, который не изменит исходный код, который будет выполняться браузером. Папки E2EE в настоящее время доступны только для чтения. Поэтому невозможно добавлять, удалять, редактировать или делиться файлом E2EE из браузера.</p>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-1.png"><img alt="Настройка нового сеанса браузера, шаг 1" src="../../_images/e2ee-web-add-1.png" style="width: 750px;" />
+<summary>Web</summary><p>In the browser, first enable E2EE in the personal settings. This is needed, as E2EE is less secure in the browser, requiring you to fully trust the administrator to not alter the source code the browser will execute.
+E2EE folders are currently read-only. Therefore, it is not possible to add, remove, edit, or share an E2EE file from the browser.</p>
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-1.png"><img alt="Setup a new browser session step 1" src="../../_images/e2ee-web-add-1.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-2.png"><img alt="Настройка нового сеанса браузера, шаг 2" src="../../_images/e2ee-web-add-2.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-2.png"><img alt="Setup a new browser session step 2" src="../../_images/e2ee-web-add-2.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-3.png"><img alt="Настройка нового сеанса браузера, шаг 3" src="../../_images/e2ee-web-add-3.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-3.png"><img alt="Setup a new browser session step 3" src="../../_images/e2ee-web-add-3.png" style="width: 750px;" />
 </a>
 </details><br /></section>
 <section id="displaying-the-mnemonic">
-<h2>Отображение мнемоники<a class="headerlink" href="#displaying-the-mnemonic" title="Ссылка на этот заголовок"></a></h2>
-<p>Мнемоника — это список слов, который используется для шифрования и расшифровки файлов. Важно сохранить эту мнемонику в безопасности, поскольку это единственный способ получить доступ к вашим файлам, если вы потеряете доступ к своему устройству. Если вы потеряете доступ к своей мнемонике, вы потеряете доступ к своим файлам.</p>
+<h2>Displaying the mnemonic<a class="headerlink" href="#displaying-the-mnemonic" title="Ссылка на этот заголовок"></a></h2>
+<p>The mnemonic is a list of words that is used to encrypt and decrypt your files. It is important to keep this mnemonic safe, as it is the only way to access your files if you lose access to your device. If you lose access to your mnemonic, you will lose access to your files.</p>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-mnemonic.png"><img alt="Отображение мнемоники в настольном клиенте" src="../../_images/e2ee-desktop-mnemonic.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-mnemonic.png"><img alt="Displaying the mnemonic on the desktop client" src="../../_images/e2ee-desktop-mnemonic.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-mnemonic.png"><img alt="Отображение мнемоники в Android устройстве" src="../../_images/e2ee-android-mnemonic.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-mnemonic.png"><img alt="Displaying the mnemonic on an Android device" src="../../_images/e2ee-android-mnemonic.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-mnemonic.png"><img alt="Отображение мнемоники в iOS устройстве" src="../../_images/e2ee-ios-mnemonic.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-mnemonic.png"><img alt="Displaying the mnemonic on an iOS device" src="../../_images/e2ee-ios-mnemonic.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Предупреждение</p>
-<p>Невозможно отобразить мнемонику в браузере.</p>
+<p>It is not possible to display the mnemonic in the browser.</p>
 </div>
 </details><br /></section>
 </section>
@@ -222,8 +221,8 @@ Open the settings of the Nextcloud client and look for the E2EE encryption setti
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
-        <a href="encrypting_files.html" class="btn btn-neutral float-left" title="Использование шифрования на стороне сервера" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
-        <a href="../groupware/index.html" class="btn btn-neutral float-right" title="Программное обеспечение для совместной работы" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="encrypting_files.html" class="btn btn-neutral float-left" title="Шифрование ваших файлов Nextcloud на сервере" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="sharing.html" class="btn btn-neutral float-right" title="Обмен файлами" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -327,27 +326,18 @@ Open the settings of the Nextcloud client and look for the E2EE encryption setti
   
     
   
-    
-  
-    
-  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    
-    <button type="button"
-            class="rst-current-version"
-            data-toggle="rst-current-version"
-            aria-expanded="false"
-            aria-controls="rst-other-versions-user">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       🌐 Russian
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-    </button>
-    <div id="rst-other-versions-user" class="rst-other-versions">
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
       <dl>
-        <dt>🌐  Языки</dt>
+        <dt>🌐 Languages</dt>
         
           <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/ar/"
@@ -514,22 +504,6 @@ Open the settings of the Nextcloud client and look for the E2EE encryption setti
                
             >
               Korean
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lo/"
-               
-            >
-              lo
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lt/"
-               
-            >
-              lt
             </a>
           </dd>
         
@@ -704,14 +678,6 @@ Open the settings of the Nextcloud client and look for the E2EE encryption setti
           </dd>
         
           <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/33/user_manual"
-               
-            >
-              33
-            </a>
-          </dd>
-        
-          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -719,20 +685,31 @@ Open the settings of the Nextcloud client and look for the E2EE encryption setti
             </a>
           </dd>
         
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Загрузки</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Читать на Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">В начало</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Сборка</a>
+        </dd>
       </dl>
     </div>
   </div>
-  <script>
-    /* Keep aria-expanded in sync with the RTD theme toggle class. */
-    (function () {
-      var btn = document.querySelector('.rst-current-version[aria-expanded]');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      });
-    }());
-  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

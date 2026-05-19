@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using server-side encryption &mdash; Nextcloud latest User Manual latest - dokumentacja</title>
+  <title>Szyfrowanie plików Nextcloud na serwerze &mdash; Nextcloud latest User Manual latest - dokumentacja</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -32,7 +32,7 @@
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Szukaj" href="../search.html" />
     <link rel="next" title="Using end-to-end encryption" href="using_e2ee.html" />
-    <link rel="prev" title="Zabezpieczenia i szyfrowanie" href="security.html" />
+    <link rel="prev" title="Synchronizacja stacjonarna i mobilna" href="desktop_mobile_sync.html" />
    
   
 </head>
@@ -53,18 +53,9 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
-
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Szukaj</label>
-    <div class="wy-form-search">
-      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
-      <input id="rtd-search-input"
-             type="text"
-             name="q"
-             placeholder="Szukaj"
-             aria-label="Szukaj" />
-    </div>
+    <input type="text" name="q" placeholder="Szukaj" aria-label="Szukaj" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,33 +63,52 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest wprowadzenie do instrukcji obsługi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Interfejs sieciowy Nextcloud</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Pliki i synchronizacja</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="accessing.html">Dostęp do Twoich plików</a></li>
-<li class="toctree-l2"><a class="reference internal" href="managing.html">Zarządzanie Twoimi plikami</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Współdzielenie i współpraca</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="security.html">Zabezpieczenia i szyfrowanie</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Using server-side encryption</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#encryption-faq">Często zadawane pytania dotyczące szyfrowania</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#using-encryption">Korzystanie z szyfrowania</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sharing-encrypted-files">Udostępnianie zaszyfrowanych plików</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#files-not-encrypted">Pliki niezaszyfrowane</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Dostęp do plików za pomocą interfejsu internetowego Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Accessing Nextcloud files using WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Zarządzanie usuniętymi plikami</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synchronizacja stacjonarna i mobilna</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Szyfrowanie plików Nextcloud na serwerze</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-faq">Często zadawane pytania dotyczące szyfrowania</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-encryption-be-disabled">Jak można wyłączyć szyfrowanie?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-possible-to-disable-encryption-with-the-recovery-key">Czy można wyłączyć szyfrowanie za pomocą klucza odzyskiwania?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#can-encryption-be-disabled-without-the-user-s-password">Czy szyfrowanie można wyłączyć bez hasła użytkownika?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">Czy planowane jest przeniesienie tego do następnego loginu użytkownika lub do zadania w tle?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-group-sharing-possible-with-the-recovery-key">Czy udostępnianie grupowe jest możliwe przy użyciu klucza odzyskiwania?</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-encryption">Korzystanie z szyfrowania</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-encrypted-files">Udostępnianie zaszyfrowanych plików</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#recovery-key-password">Hasło klucza odzyskiwania</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#files-not-encrypted">Pliki niezaszyfrowane</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-private-key-password">Zmień hasło klucza prywatnego</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Udostępnianie plików</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Udostępnienia sfederowane</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Anonimowe przesyłanie plików</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Przesyłanie dużych plików</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Limit miejsca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Kontrola wersji</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projektowanie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Przeniesienie własności</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Korzystanie z udostępnień federacyjnych</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Oprogramowanie do pracy grupowej</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Uniwersalny dostęp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Korzystanie z uwierzytelniania dwuskładnikowego</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Zarządzaj połączonymi przeglądarkami i urządzeniami</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Pamięć zewnętrzna</a></li>
 </ul>
 
         </div>
@@ -116,8 +126,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Pliki i synchronizacja</a></li>
-          <li class="breadcrumb-item"><a href="security.html">Zabezpieczenia i szyfrowanie</a></li>
-      <li class="breadcrumb-item active">Using server-side encryption</li>
+      <li class="breadcrumb-item active">Szyfrowanie plików Nextcloud na serwerze</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Edytuj na GitHub</a>
       </li>
@@ -127,9 +136,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="using-server-side-encryption">
-<h1>Using server-side encryption<a class="headerlink" href="#using-server-side-encryption" title="Link to this heading"></a></h1>
-<p>Nextcloud includes a server-side encryption app, and when it is enabled by
+  <section id="encrypting-your-nextcloud-files-on-the-server">
+<h1>Szyfrowanie plików Nextcloud na serwerze<a class="headerlink" href="#encrypting-your-nextcloud-files-on-the-server" title="Link to this heading"></a></h1>
+<p>Nextcloud includes a server side Encryption app, and when it is enabled by
 your Nextcloud administrator all of your Nextcloud data files are automatically
 encrypted on the server.
 Encryption is server-wide, so when it is enabled you cannot choose to keep your
@@ -149,23 +158,25 @@ to learn more.)</p>
 <h2>Często zadawane pytania dotyczące szyfrowania<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
 <section id="how-can-encryption-be-disabled">
 <h3>Jak można wyłączyć szyfrowanie?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
-<p>The only way to disable encryption is to run the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">„decrypt all”</a>
+<p>The only way to disable encryption is to run the <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/occ_command.html#encryption-label">„decrypt all”</a>
 script, which decrypts all files and disables encryption.</p>
 </section>
 <section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
 <h3>Czy można wyłączyć szyfrowanie za pomocą klucza odzyskiwania?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
-<p>Yes, <em>if</em> every user uses the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">file recovery key</a>, <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">„decrypt all”</a> will use it to decrypt all files.</p>
+<p>Yes, <em>if</em> every user uses the <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">file recovery key</a>, <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/occ_command.html#encryption-label">„decrypt all”</a> will use it to decrypt all files.</p>
 </section>
 <section id="can-encryption-be-disabled-without-the-user-s-password">
 <h3>Czy szyfrowanie można wyłączyć bez hasła użytkownika?<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
-<p>Jeśli nie masz hasła użytkownika lub <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">klucza odzyskiwania pliku</a>, wtedy nie ma możliwości odszyfrowania wszystkich plików. Co więcej, uruchomienie go przy logowaniu byłoby niebezpieczne, ponieważ najprawdopodobniej napotkasz przekroczenie limitu czasu.</p>
+<p>If you don’t have the users password or <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">file recovery key</a>,
+then there is no way to decrypt all files. What’s more, running it on login
+would be dangerous, because you would most likely run into timeouts.</p>
 </section>
 <section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
 <h3>Czy planowane jest przeniesienie tego do następnego loginu użytkownika lub do zadania w tle?<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
 <p>Gdybyśmy to zrobili, musielibyśmy przechowywać Twoje hasło logowania w bazie danych. Może to być postrzegane jako kwestia bezpieczeństwa, więc nic takiego nie jest planowane.</p>
 </section>
 <section id="is-group-sharing-possible-with-the-recovery-key">
-<h3>Is group sharing possible with the recovery key?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
+<h3>Czy udostępnianie grupowe jest możliwe przy użyciu klucza odzyskiwania?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
 <p>Czy masz na myśli dodawanie użytkowników do grup i sprawienie, by działało magicznie? Nie. Działa to tylko z kluczem głównym.</p>
 </section>
 </section>
@@ -218,7 +229,7 @@ script, which decrypts all files and disables encryption.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="security.html" class="btn btn-neutral float-left" title="Zabezpieczenia i szyfrowanie" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Poprzedni</a>
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-left" title="Synchronizacja stacjonarna i mobilna" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Poprzedni</a>
         <a href="using_e2ee.html" class="btn btn-neutral float-right" title="Using end-to-end encryption" accesskey="n" rel="next">Następny <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -323,25 +334,16 @@ script, which decrypts all files and disables encryption.</p>
   
     
   
-    
-  
-    
-  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    
-    <button type="button"
-            class="rst-current-version"
-            data-toggle="rst-current-version"
-            aria-expanded="false"
-            aria-controls="rst-other-versions-user">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       🌐 Polish
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-    </button>
-    <div id="rst-other-versions-user" class="rst-other-versions">
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
       <dl>
         <dt>🌐 Languages</dt>
         
@@ -510,22 +512,6 @@ script, which decrypts all files and disables encryption.</p>
                
             >
               Korean
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lo/"
-               
-            >
-              lo
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lt/"
-               
-            >
-              lt
             </a>
           </dd>
         
@@ -700,14 +686,6 @@ script, which decrypts all files and disables encryption.</p>
           </dd>
         
           <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/33/user_manual"
-               
-            >
-              33
-            </a>
-          </dd>
-        
-          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -715,20 +693,31 @@ script, which decrypts all files and disables encryption.</p>
             </a>
           </dd>
         
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Pliki do pobrania</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Przeczytaj dokumentację</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Strona główna projektu</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Wydania</a>
+        </dd>
       </dl>
     </div>
   </div>
-  <script>
-    /* Keep aria-expanded in sync with the RTD theme toggle class. */
-    (function () {
-      var btn = document.querySelector('.rst-current-version[aria-expanded]');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      });
-    }());
-  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

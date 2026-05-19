@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>User management &mdash; Nextcloud latest Administration Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -52,18 +52,9 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
-
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Search docs</label>
-    <div class="wy-form-search">
-      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
-      <input id="rtd-search-input"
-             type="text"
-             name="q"
-             placeholder="Search docs"
-             aria-label="Search docs" />
-    </div>
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -73,7 +64,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
@@ -114,10 +105,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#renaming-a-user">Renaming a user</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#granting-administrator-privileges-to-a-user">Granting administrator privileges to a user</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#managing-groups">Managing groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setting-storage-quotas">Setting storage quotas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-storage-quotas">Setting Storage quotas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#disable-and-enable-users">Disable and enable users</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#deleting-users">Deleting users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#disabling-the-your-email-address-was-changed-email">Disabling the “Your email address […] was changed” email</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="reset_admin_password.html">Resetting a lost admin password</a></li>
@@ -129,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_cleanup.html">LDAP user cleanup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_api.html">The LDAP configuration API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_provisioning_api.html">User provisioning API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="profile_configuration.html">Profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile_configuration.html">Profile configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_auth_oidc.html">User authentication with OpenID Connect</a></li>
 </ul>
 </li>
@@ -142,10 +132,6 @@
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
 <ul>
@@ -206,23 +192,18 @@
 <li><p>View and set quotas</p></li>
 <li><p>Create and edit their email addresses</p></li>
 <li><p>Send an automatic email notification to new users</p></li>
-<li><p>Disable and enable users</p></li>
+<li><p>Disable and Enable users</p></li>
 <li><p>Delete them with a single click</p></li>
 </ul>
 <p>The default view displays basic information about your users.</p>
 <figure class="align-default">
 <img alt="../_images/user-config.png" src="../_images/user-config.png" />
 </figure>
-<p>The group filters on the left sidebar let you quickly filter users by their
-group memberships and create new groups.</p>
+<p>The Group filters on the left sidebar lets you quickly filter users by their
+group memberships, and create new groups.</p>
 <figure class="align-default">
 <img alt="../_images/user-config-groups.png" src="../_images/user-config-groups.png" />
 </figure>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>User counts for certain groups, such as “All accounts,” may not be
-visible when using certain backends such as LDAP/AD/SAML.</p>
-</div>
 <p>Click the gear icon on the lower left sidebar to set a default storage quota,
 and to display additional fields: <strong>Show storage location, Show last log in,
 Show user backend, Send email to new users,</strong> and <strong>Show email address</strong>.</p>
@@ -232,29 +213,29 @@ Show user backend, Send email to new users,</strong> and <strong>Show email addr
 </figure>
 <p>User accounts have the following properties:</p>
 <dl class="simple">
-<dt><em>Login Name (Username)</em></dt><dd><p>The unique ID of a Nextcloud user, which cannot be changed.</p>
+<dt><em>Login Name (Username)</em></dt><dd><p>The unique ID of a Nextcloud user, and it cannot be changed.</p>
 </dd>
 <dt><em>Full Name</em></dt><dd><p>The user’s display name that appears on file shares, the Nextcloud Web
-interface, and emails. Admins and users may change the Full Name at any time. If
-the Full Name is not set, it defaults to the login name.</p>
+interface, and emails. Admins and users may change the Full Name anytime. If
+the Full Name is not set it defaults to the login name.</p>
 </dd>
-<dt><em>Password</em></dt><dd><p>The admin sets the new user’s initial password. Both the user and the admin can
-change the user’s password at any time.</p>
+<dt><em>Password</em></dt><dd><p>The admin sets the new user’s first password. Both the user and the admin can
+change the user’s password at anytime.</p>
 </dd>
 <dt><em>Email address</em></dt><dd><p>You can set an email address for a user.
-This address can be used when you first set up an account
-so the user receives an email asking them to create a password if none is provided.
-This address can also be used for password reset requests.</p>
+This address can be used when you first set-up an account
+so the user receive a mail asking them to create a password if none is provided.
+This address can be used for password reset request.</p>
 </dd>
-<dt><em>Groups</em></dt><dd><p>You may create groups and assign group memberships to users. By default, new
+<dt><em>Groups</em></dt><dd><p>You may create groups, and assign group memberships to users. By default new
 users are not assigned to any groups.</p>
 </dd>
-<dt><em>Group Admin</em></dt><dd><p>Group admins are granted administrative privileges for specific groups and
+<dt><em>Group Admin</em></dt><dd><p>Group admins are granted administrative privileges on specific groups, and
 can create and remove users from their groups. This means they can modify the
-username, password, email, quota, etc., of members of the group. Group admins
+username, password, email, quota, etc. of members of the group. Group admins
 are not allowed to add existing users to their groups.</p>
 </dd>
-<dt><em>Quota</em></dt><dd><p>The maximum disk space assigned to each user. Any user who exceeds the quota
+<dt><em>Quota</em></dt><dd><p>The maximum disk space assigned to each user. Any user that exceeds the quota
 cannot upload or sync data. You have the option to include external
 storage in user quotas.</p>
 </dd>
@@ -276,8 +257,8 @@ authorization level of the user or their manager.</p>
 <img alt="../_images/user-config-new-user.png" src="../_images/user-config-new-user.png" />
 </figure>
 <p>Login names may contain letters (a-z, A-Z), numbers (0-9), dashes (-),
-underscores (_), periods (.), spaces ( ), and at signs (&#64;). After creating the user, you
-may fill in their <strong>Full Name</strong> if it is different from the login name, or
+underscores (_), periods (.), spaces ( ) and at signs (&#64;). After creating the user, you
+may fill in their <strong>Full Name</strong> if it is different than the login name, or
 leave it for the user to complete.</p>
 <p>If you have checked <strong>Send email to new user</strong> in the control panel on the
 lower left sidebar, you may also enter the new user’s email address, and
@@ -308,42 +289,42 @@ the display name of a user, but you cannot change the login name of any user.</p
 <p>To set or change a user’s display name:</p>
 <ul class="simple">
 <li><p>Hover your cursor over the user’s <strong>Full Name</strong> field</p></li>
-<li><p>Click on the <strong>pencil icon</strong></p></li>
+<li><p>Click on the <strong>Pencil icon</strong></p></li>
 <li><p>Enter the user’s new display name</p></li>
 </ul>
 </section>
 <section id="granting-administrator-privileges-to-a-user">
 <h2>Granting administrator privileges to a user<a class="headerlink" href="#granting-administrator-privileges-to-a-user" title="Link to this heading"></a></h2>
 <p>Nextcloud has two types of administrators: <strong>Super Administrators</strong> and <strong>Group
-Administrators</strong>. Group administrators have the rights to create, edit, and
+Administrators</strong>. Group administrators have the rights to create, edit and
 delete users in their assigned groups. Group administrators cannot access
-system settings or add or modify users in groups for which they are not <strong>Group
-Administrators</strong>. Use the dropdown menus in the <strong>Group Admin</strong> column to
+system settings, or add or modify users in the groups that they are not <strong>Group
+Administrators</strong> for. Use the dropdown menus in the <strong>Group Admin</strong> column to
 assign group admin privileges.</p>
 <figure class="align-default">
 <img alt="../_images/user-config-group-admin.png" src="../_images/user-config-group-admin.png" />
 </figure>
-<p><strong>Super Administrators</strong> have full rights on your Nextcloud server and can
+<p><strong>Super Administrators</strong> have full rights on your Nextcloud server, and can
 access and modify all settings. To assign the <strong>Super Administrators</strong> role to
 a user, simply add them to the <code class="docutils literal notranslate"><span class="pre">admin</span></code> group.</p>
 </section>
 <section id="managing-groups">
 <h2>Managing groups<a class="headerlink" href="#managing-groups" title="Link to this heading"></a></h2>
-<p>You can assign new users to groups when you create them and create new groups
+<p>You can assign new users to groups when you create them, and create new groups
 when you create new users. You may also use the <strong>Add Group</strong> button at the top
 of the left pane to create new groups. New group members will immediately
 have access to file shares that belong to their new groups.</p>
 </section>
 <section id="setting-storage-quotas">
-<h2>Setting storage quotas<a class="headerlink" href="#setting-storage-quotas" title="Link to this heading"></a></h2>
-<p>Click the gear icon on the lower left pane to set a default storage quota. This is
+<h2>Setting Storage quotas<a class="headerlink" href="#setting-storage-quotas" title="Link to this heading"></a></h2>
+<p>Click the gear on the lower left pane to set a default storage quota. This is
 automatically applied to new users. You may assign a different quota to any user
 by selecting from the <strong>Quota</strong> dropdown, selecting either a preset value or
-entering a custom value. When you create custom quotas, use the standard
-abbreviations for your storage values, such as 500 MB, 5 GB, 5 TB, and so on.</p>
+entering a custom value. When you create custom quotas, use the normal
+abbreviations for your storage values such as 500 MB, 5 GB, 5 TB, and so on.</p>
 <p>You now have a configurable option in <code class="docutils literal notranslate"><span class="pre">config.php</span></code> that controls whether
-external storage is counted against users’ quotas. This is still
-experimental and may not work as expected. The default is to not count
+external storage is counted against user’s quotas. This is still
+experimental, and may not work as expected. The default is to not count
 external storage as part of user storage quotas. If you prefer to include it,
 then change the default <code class="docutils literal notranslate"><span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;quota_include_external_storage&#39;</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
@@ -355,7 +336,7 @@ then change the default <code class="docutils literal notranslate"><span class="
 be calculable and will be <strong>ignored</strong>.</p>
 </div>
 <p>Metadata (such as thumbnails, temporary files, and encryption keys) takes up
-about 10% of disk space but is not counted against user quotas. Users can check
+about 10% of disk space, but is not counted against user quotas. Users can check
 their used and available space on their Personal pages. Only files that
 originate with users count against their quotas, and not files shared with them
 that originate from other users. For example, if you upload files to a
@@ -366,11 +347,11 @@ quota, but the originating user’s.</p>
 is calculated against the user’s quota.</p>
 <p>Deleted files that are still in the trash bin do not count against quotas. The
 trash bin is set at 50% of quota. Deleted file aging is set at 30 days. When
-deleted files exceed 50% of quota, the oldest files are removed until the
+deleted files exceed 50% of quota then the oldest files are removed until the
 total is below 50%.</p>
-<p>When version control is enabled, older file versions are not counted
+<p>When version control is enabled, the older file versions are not counted
 against quotas.</p>
-<p>When a user creates a public share via URL and allows uploads, any uploaded
+<p>When a user creates a public share via URL, and allows uploads, any uploaded
 files count against that user’s quota.</p>
 </section>
 <section id="disable-and-enable-users">
@@ -379,19 +360,19 @@ files count against that user’s quota.</p>
 <img alt="../_images/user-config-actions.png" src="../_images/user-config-actions.png" />
 </figure>
 <p>Sometimes you may want to disable a user without permanently deleting their
-settings and files. The user can be activated again at any time, without data loss.</p>
-<p>Hover your cursor over their name on the <strong>Users</strong> page until the “…” menu icon
+settings and files. The user can be activated any time again, without data-loss.</p>
+<p>Hover your cursor over their name on the <strong>Users</strong> page until the “…”-menu icon
 appears at the far right. After clicking on it, you will see the <strong>Disable</strong> option.</p>
 <p>The user will no longer be able to access their Nextcloud until you enable them again.
-Also, all external shares, via public link or email, will not be accessible.
-Internal shares will still be working, so other users on Nextcloud can continue working.</p>
+Also all external shares, via public link or email, will not be accessible.
+Internal shares will still be working, so that other users on Nextcloud can continue working.</p>
 <p>If you wish for internal shares to be disabled as well when a user is disabled,
 activate the configuration option files_sharing:hide_disabled_user_shares:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_sharing</span> <span class="n">hide_disabled_user_shares</span> <span class="o">--</span><span class="n">value</span> <span class="n">yes</span>
 </pre></div>
 </div>
-<p>You will find all disabled users in the <strong>disabled</strong> section on the left pane.
-Enabling users is as easy as disabling them. Just click on the “…” menu, and
+<p>You will find all disabled users in the <strong>disabled</strong>-section on the left pane.
+Enabling users is as easy as disabling them. Just click on the “…”-menu, and
 select <strong>Enable</strong>.</p>
 </section>
 <section id="deleting-users">
@@ -400,31 +381,16 @@ select <strong>Enable</strong>.</p>
 <img alt="../_images/user-config-actions.png" src="../_images/user-config-actions.png" />
 </figure>
 <p>Deleting a user is easy: hover your cursor over their name on the <strong>Users</strong> page
-until the “…” menu icon appears at the far right. After clicking on it, you will
-see the <strong>Delete</strong> option. Clicking on it deletes a user with all their data immediately.</p>
-<p>You’ll see an undo button at the top of the page, which remains for a few seconds.
-When the undo button is gone, you cannot recover the deleted user.</p>
+until the “…”-menu icon appears at the far right. After clicking on it, you will
+see the <strong>Delete</strong> option. Clicking on it, deletes a user with all their data immediately.</p>
+<p>You’ll see an undo button at the top of the page, which remains for some seconds.
+When the undo button is gone you cannot recover the deleted user.</p>
 <p>All of the files owned by the user are deleted as well, including all files they
 have shared. If you need to preserve the user’s files and shares, you must first
 download them from your Nextcloud Files page, which compresses them into a zip
 file, or use a sync client to copy them to your local computer. See
 <a class="reference internal" href="../configuration_files/file_sharing_configuration.html"><span class="doc">File Sharing</span></a> to learn how to create
 persistent file shares that survive user deletions.</p>
-</section>
-<section id="disabling-the-your-email-address-was-changed-email">
-<h2>Disabling the “Your email address […] was changed” email<a class="headerlink" href="#disabling-the-your-email-address-was-changed-email" title="Link to this heading"></a></h2>
-<p>If an email address of a user is changed by an admin, then it triggers an email
-to the user that states “Your email address on [URL] was changed by an
-administrator.”. In some cases this should not be triggered, because it was a
-normal maintenance change. To disable this specific email the appconfig option
-<code class="docutils literal notranslate"><span class="pre">disable_email.email_address_changed_by_admin</span></code> can be set to <code class="docutils literal notranslate"><span class="pre">yes</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">settings</span> <span class="n">disable_activity</span><span class="o">.</span><span class="n">email_address_changed_by_admin</span> <span class="o">--</span><span class="n">value</span> <span class="n">yes</span>
-</pre></div>
-</div>
-<p>To disable this behaviour change it to any other value or delete the app config:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="n">delete</span> <span class="n">settings</span> <span class="n">disable_activity</span><span class="o">.</span><span class="n">email_address_changed_by_admin</span>
-</pre></div>
-</div>
 </section>
 </section>
 
@@ -452,16 +418,11 @@ normal maintenance change. To disable this specific email the appconfig option
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    
-    <button type="button"
-            class="rst-current-version"
-            data-toggle="rst-current-version"
-            aria-expanded="false"
-            aria-controls="rst-other-versions-admin">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       ☁️ latest
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-    </button>
-    <div id="rst-other-versions-admin" class="rst-other-versions">
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -484,14 +445,6 @@ normal maintenance change. To disable this specific email the appconfig option
         </dd>
         
         <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/33/admin_manual"
-             
-          >
-            33
-          </a>
-        </dd>
-        
-        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
@@ -499,20 +452,17 @@ normal maintenance change. To disable this specific email the appconfig option
           </a>
         </dd>
         
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
       </dl>
     </div>
   </div>
-  <script>
-    /* Keep aria-expanded in sync with the RTD theme toggle class. */
-    (function () {
-      var btn = document.querySelector('.rst-current-version[aria-expanded]');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      });
-    }());
-  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

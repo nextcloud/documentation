@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>File sharing &mdash; Nextcloud latest User Manual latest Dokumentation</title>
+  <title>Dateifreigabe &mdash; Nextcloud latest User Manual latest Dokumentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -32,7 +32,7 @@
     <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
     <link rel="search" title="Suche" href="../search.html" />
     <link rel="next" title="Anonyme Uploads durchführen" href="file_drop.html" />
-    <link rel="prev" title="Teilen &amp; Zusammenarbeit" href="collaboration.html" />
+    <link rel="prev" title="Using end-to-end encryption" href="using_e2ee.html" />
    
   
 </head>
@@ -53,18 +53,9 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
-
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Dokumentation durchsuchen</label>
-    <div class="wy-form-search">
-      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
-      <input id="rtd-search-input"
-             type="text"
-             name="q"
-             placeholder="Dokumentation durchsuchen"
-             aria-label="Dokumentation durchsuchen" />
-    </div>
+    <input type="text" name="q" placeholder="Dokumentation durchsuchen" aria-label="Dokumentation durchsuchen" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,39 +63,42 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest - Einführung zur Benutzeranleitung</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../activity.html">Verwendung der Aktivitäts-App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Die Weboberfläche von Nextcloud</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Dateien &amp; Synchronisation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="accessing.html">Zugriff auf Ihre Dateien</a></li>
-<li class="toctree-l2"><a class="reference internal" href="managing.html">Verwalten Sie Ihre Dateien</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">Teilen &amp; Zusammenarbeit</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">File sharing</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#public-link-shares">Öffentliche Link-Freigaben</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#internal-shares-with-users-and-groups">Interne Freigaben mit Benutzern und Gruppen</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#others-with-access">Andere mit Zugriff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Zugriff auf Ihre Dateien über die Nextcloud-Weboberfläche</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Zugriff auf Nextcloud-Dateien über WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Gelöschte Dateien verwalten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synchronisierung für Mobilgeräte und Desktops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Verschlüsseln Ihrer Nextcloud-Dateien auf dem Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dateifreigabe</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#public-link-shares">Öffentliche Link-Freigaben</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#internal-shares-with-users-and-groups">Interne Freigaben mit Benutzern und Gruppen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#others-with-access">Andere mit Zugriff</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#federated-shares">Federated shares</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Eine öffentliche Freigabe Ihrer Nextcloud hinzufügen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#federated-shares">Federated-Freigaben</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-federation-share">Eine neue Federated-Freigabe erstellen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Eine öffentliche Freigabe Ihrer Nextcloud hinzufügen</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="file_drop.html">Anonyme Uploads durchführen</a></li>
-<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Using federation shares</a></li>
-<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfer ownership</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="security.html">Sicherheit &amp; Verschlüsselung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Anonyme Uploads durchführen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Große Dateien hochladen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Speicherkontingent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Versionskontrolle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projekte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Eigentum übertragen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Federated-Freigaben verwenden</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop-Clients</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Einstellungen vornehmen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universeller Zugriff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Verwendung der Zwei-Faktor-Authentifizierung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Verwaltung verbundener Browser und Geräte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externer Speicher</a></li>
 </ul>
 
         </div>
@@ -122,8 +116,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Dateien &amp; Synchronisation</a></li>
-          <li class="breadcrumb-item"><a href="collaboration.html">Teilen &amp; Zusammenarbeit</a></li>
-      <li class="breadcrumb-item active">File sharing</li>
+      <li class="breadcrumb-item active">Dateifreigabe</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> Auf GitHub bearbeiten</a>
       </li>
@@ -134,7 +127,7 @@
            <div itemprop="articleBody">
              
   <section id="file-sharing">
-<h1>File sharing<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
+<h1>Dateifreigabe<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
 <p>Nextcloud-Benutzer können Dateien und Ordner freigeben. Mögliche Ziele sind:</p>
 <ul class="simple">
 <li><p>Öffentliche Links</p></li>
@@ -146,15 +139,16 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
-<p>Einige Optionen sind aufgrund der administrativen Konfiguration möglicherweise nicht verfügbar. Siehe <cite>Administrationsdokumentation &lt;https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html&gt;</cite> _ für Details.</p>
+<p>Some options may not be available due to administrative configuration.
+See <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/configuration_files/file_sharing_configuration.html">administrator documentation</a> for details.</p>
 </div>
 <section id="public-link-shares">
 <h2>Öffentliche Link-Freigaben<a class="headerlink" href="#public-link-shares" title="Link to this heading"></a></h2>
 <p>Sie können Dateien und Ordner über öffentliche Links freigeben.</p>
-<p>Ein zufälliger 15-stelliger Token wird erstellt. Der Link sieht dann folgendermaßen aus: <code class="docutils literal notranslate"><span class="pre">https:</span> <span class="pre">//cloud.example.com/s/yxcFKRWBJqYYzp4</span></code>.</p>
+<p>Ein zufälliger 15-stelliger Token wird erstellt. Der Link sieht dann folgendermaßen aus: „https: //cloud.example.com/s/yxcFKRWBJqYYzp4“.</p>
 <p>Für öffentliche <em>Ordner</em>-Freigaben stehen eine Reihe von Optionen zur Verfügung:</p>
 <figure class="align-default">
-<img alt="Public folder share options." src="../../_images/sharing_public_folder.png" />
+<img alt="../../_images/sharing_public_folder.png" src="../../_images/sharing_public_folder.png" />
 </figure>
 <ul class="simple">
 <li><p><strong>Schreibgeschützt</strong> um das Anzeigen und Herunterladen zu ermöglichen</p></li>
@@ -169,27 +163,26 @@
 </ul>
 <p>Für öffentliche <em>Datei</em>-Freigaben können Sie die Bearbeitung der Datei mit einer der Nextcloud-Lösungen für kollaborative Bearbeitung erlauben:</p>
 <figure class="align-default">
-<img alt="Public file share options." src="../../_images/sharing_public_file.png" />
+<img alt="../../_images/sharing_public_file.png" src="../../_images/sharing_public_file.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
-<p>Password protection and file expiration are also propagated using Federated File Sharing
-since Nextcloud 22.</p>
+<p>Passwortschutz und Ablaufdaten für Dateiberechtigungen werden seit Nextcloud 22 auch mittels Federated-Dateifreigabe (Federated File Sharing) weitergegeben.</p>
 </div>
 </section>
 <section id="internal-shares-with-users-and-groups">
 <h2>Interne Freigaben mit Benutzern und Gruppen<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Link to this heading"></a></h2>
 <p>Bei der Freigabe für Benutzer, Gruppen, Kreise oder Mitglieder einer Talk-Unterhaltung sind die Rechte für die Dateien oder Ordnerinhalte einstellbar:</p>
 <figure class="align-default">
-<img alt="Internal share options." src="../../_images/sharing_internal.png" />
+<img alt="../../_images/sharing_internal.png" src="../../_images/sharing_internal.png" />
 </figure>
 <p>Als Empfänger einer Freigabe können Sie konfigurieren, ob Sie alle eingehenden Freigaben automatisch annehmen und zu Ihrem Stammordner hinzufügen lassen wollen, oder ob Sie jedes Mal gefragt werden wollen, ob Sie die Freigabe annehmen oder ablehnen wollen.</p>
 <figure class="align-default">
-<img alt="Share acceptance notification." src="../../_images/sharing_internal_acceptNotification.png" />
+<img alt="../../_images/sharing_internal_acceptNotification.png" src="../../_images/sharing_internal_acceptNotification.png" />
 </figure>
 <p>Um die Akzeptanzeinstellung anzupassen, gehen Sie zu <strong>Einstellungen</strong> &gt; <strong>Persönlich</strong> &gt; <strong>Freigabe</strong>:</p>
 <figure class="align-default">
-<img alt="Auto-accept sharing setting." src="../../_images/sharing_autoAcceptSetting.png" />
+<img alt="../../_images/sharing_autoAcceptSetting.png" src="../../_images/sharing_autoAcceptSetting.png" />
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Warnung</p>
@@ -200,11 +193,11 @@ since Nextcloud 22.</p>
 <h2>Andere mit Zugriff<a class="headerlink" href="#others-with-access" title="Link to this heading"></a></h2>
 <p>Um herauszufinden, ob eine Datei oder ein Ordner durch Freigabe einer übergeordneten Ordnerhierarchieebene für andere zugänglich ist, klicken Sie auf <strong>Andere mit Zugriff</strong> in der Registerkarte „Teilen“:</p>
 <figure class="align-default">
-<img alt="Others with access panel, collapsed." src="../../_images/sharing_others-with-access__collapsed.png" />
+<img alt="../../_images/sharing_others-with-access__collapsed.png" src="../../_images/sharing_others-with-access__collapsed.png" />
 </figure>
 <p>Die Liste zeigt alle Benutzer, Gruppen, Chats usw., auf die das aktuelle Objekt durch Freigabe eines übergeordneten Ordners in der Hierarchie Zugriff erhalten hat:</p>
 <figure class="align-default">
-<img alt="Others with access panel, expanded with user details." src="../../_images/sharing_others-with-access__details.png" />
+<img alt="../../_images/sharing_others-with-access__details.png" src="../../_images/sharing_others-with-access__details.png" />
 </figure>
 <p>Klicken Sie auf die drei Punkte um:</p>
 <ul class="simple">
@@ -219,27 +212,25 @@ since Nextcloud 22.</p>
 </section>
 </section>
 <section id="federated-shares">
-<h1>Federated shares<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
+<h1>Federated-Freigaben<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
 <p>Federated-Freigaben ermöglichen es Ihnen, auf Dateifreigaben von entfernten Nextcloud-Servern zuzugreifen und somit ihre eigene Cloud aus unterschiedlichen Nextcloud-Servern zu erstellen. Sie können direkte Freigabelinks für Benutzer auf anderen Nextcloud-Servern erstellen.</p>
 <section id="creating-a-new-federation-share">
-<h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<h2>Eine neue Federated-Freigabe erstellen<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
 <p>Federated-Teilen ist standardmäßig aktiviert. Befolgen Sie diese Schritte, um eine neue Freigabe mit anderen Nextcloud- oder ownCloud-Servern zu erstellen:</p>
 <p>Gehen Sie auf die Seite <code class="docutils literal notranslate"><span class="pre">Dateien</span></code> und klicken Sie auf das Teilen-Symbol bei der Datei oder dem Ordner, den Sie freigeben möchten. Geben Sie in der Seitenleiste den Benutzernamen und die URL des entfernten Benutzers in dieser Form ein: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code>. In diesem Beispiel ist das <code class="docutils literal notranslate"><span class="pre">bob&#64;cloud.example.com</span></code>:</p>
 <figure class="align-default">
-<img alt="Entering a federated share address." src="../../_images/share-federation-1.png" />
+<img alt="../../_images/share-federation-1.png" src="../../_images/share-federation-1.png" />
 </figure>
 <p>Der Empfänger der Freigabe erhält in seiner Nextcloud eine Benachrichtigung, mit der er die eingehende Freigabe entweder annehmen oder ablehnen kann:</p>
 <figure class="align-default">
-<img alt="Federated share acceptance notification." src="../../_images/share-federation-2-notification.png" />
+<img alt="../../_images/share-federation-2-notification.png" src="../../_images/share-federation-2-notification.png" />
 </figure>
 </section>
 <section id="adding-a-public-share-to-your-nextcloud">
 <h2>Eine öffentliche Freigabe Ihrer Nextcloud hinzufügen<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Link to this heading"></a></h2>
-<p>Nextcloud public link share pages offer an option to add that file or folder as a federated share
-into your own Nextcloud instance.
-Enter your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> as shown for outbound shares above:</p>
+<p>Die Nextcloud-Seiten für Öffentliche Freigaben bieten eine Option, um die Datei oder den Ordner als Federated-Freigabe in Ihrer eigenen Nextcloud-Instanz hinzuzufügen. Geben Sie einfach <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> ein, wie oben für eigene Freigaben gezeigt:</p>
 <figure class="align-default">
-<img alt="Adding a public share to your Nextcloud." src="../../_images/share-federation-3-public.png" />
+<img alt="../../_images/share-federation-3-public.png" src="../../_images/share-federation-3-public.png" />
 </figure>
 </section>
 </section>
@@ -248,7 +239,7 @@ Enter your <code class="docutils literal notranslate"><span class="pre">&lt;user
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="collaboration.html" class="btn btn-neutral float-left" title="Teilen &amp; Zusammenarbeit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Zurück</a>
+        <a href="using_e2ee.html" class="btn btn-neutral float-left" title="Using end-to-end encryption" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Zurück</a>
         <a href="file_drop.html" class="btn btn-neutral float-right" title="Anonyme Uploads durchführen" accesskey="n" rel="next">Weiter <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -353,25 +344,16 @@ Enter your <code class="docutils literal notranslate"><span class="pre">&lt;user
   
     
   
-    
-  
-    
-  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    
-    <button type="button"
-            class="rst-current-version"
-            data-toggle="rst-current-version"
-            aria-expanded="false"
-            aria-controls="rst-other-versions-user">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       🌐 German
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-    </button>
-    <div id="rst-other-versions-user" class="rst-other-versions">
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
       <dl>
         <dt>🌐 Sprachen</dt>
         
@@ -546,22 +528,6 @@ Enter your <code class="docutils literal notranslate"><span class="pre">&lt;user
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lo/"
-               
-            >
-              lo
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lt/"
-               
-            >
-              lt
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -730,14 +696,6 @@ Enter your <code class="docutils literal notranslate"><span class="pre">&lt;user
           </dd>
         
           <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/33/user_manual"
-               
-            >
-              33
-            </a>
-          </dd>
-        
-          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -745,20 +703,31 @@ Enter your <code class="docutils literal notranslate"><span class="pre">&lt;user
             </a>
           </dd>
         
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Auf "Read the docs"</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Projekt Startseite</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Builds</a>
+        </dd>
       </dl>
     </div>
   </div>
-  <script>
-    /* Keep aria-expanded in sync with the RTD theme toggle class. */
-    (function () {
-      var btn = document.querySelector('.rst-current-version[aria-expanded]');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      });
-    }());
-  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

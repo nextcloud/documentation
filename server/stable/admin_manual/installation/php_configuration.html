@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Preparing PHP &mdash; Nextcloud latest Administration Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -52,18 +52,9 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
-
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Search docs</label>
-    <div class="wy-form-search">
-      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
-      <input id="rtd-search-input"
-             type="text"
-             name="q"
-             placeholder="Search docs"
-             aria-label="Search docs" />
-    </div>
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -73,7 +64,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
@@ -103,12 +94,11 @@
 <li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nginx.html">NGINX configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example_ubuntu.html">Example installation on Ubuntu 24.04 LTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_ubuntu.html">Example installation on Ubuntu 22.04 LTS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example_centos.html">Example installation on CentOS 8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example_openbsd.html">Example installation on OpenBSD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
@@ -148,10 +138,6 @@
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
 <ul>
@@ -262,19 +248,6 @@ are available to PHP.</p>
 </div>
 <p>The <cite>ctype</cite>, <cite>fileinfo</cite>, and <cite>OpenSSL</cite> modules are generally included and enabled in PHP by default. Often
 some of the other required modules are automatically installed by OS distribution package managers.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>PHP Version-Specific Information:</strong></p>
-<ul class="simple">
-<li><p><strong>PHP 8.3 and 8.4:</strong> Several modules are now bundled with PHP by default, such as <cite>curl</cite>, <cite>zlib</cite>, and others.
-When upgrading to these versions, some modules that were previously optional may already be enabled. If you
-encounter “module not found” errors when running standard package installation commands, the module may
-already be bundled and enabled — verify this by using the module check command below.</p></li>
-<li><p><strong>Debian/Ubuntu packages:</strong> Module availability varies by distribution version. If a listed module cannot be
-found in your package manager, check the PHP documentation or your distribution’s PHP module list to
-confirm if the feature is bundled with your PHP version.</p></li>
-</ul>
-</div>
 <p><strong>How to check if a module is enabled:</strong></p>
 <ul class="simple">
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">php</span> <span class="pre">-m</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-i</span> <span class="pre">&lt;module_name&gt;</span></code>. If you see output, the module is active.</p></li>
@@ -298,8 +271,7 @@ confirm if the feature is bundled with your PHP version.</p></li>
 <p>These modules are not required, but are highly recommended to improve functionality or security:</p>
 <ul>
 <li><p><cite>intl</cite>: Fixes sorting of non-ASCII characters and improves language translation performance.</p></li>
-<li><p><cite>sodium</cite>: Provides Argon2 password hashing (needed if using PHP &lt; 8.4 and PHP was built without <cite>libargon2</cite>).
-Starting with PHP 8.0, <cite>sodium</cite> is usually enabled by default. In PHP 8.4, <cite>sodium</cite> is typically bundled.</p>
+<li><p><cite>sodium</cite>: Provides Argon2 password hashing (needed if using PHP &lt; 8.4 and PHP was built without <cite>libargon2</cite>).</p>
 <blockquote>
 <div><p>bcrypt will be used if Argon2 is unavailable, but if passwords were previously hashed with Argon2
 (such as when migrating an existing Nextcloud Server installation to a new server environment) and this
@@ -666,16 +638,11 @@ preview generation across PHP processes.</p></td>
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    
-    <button type="button"
-            class="rst-current-version"
-            data-toggle="rst-current-version"
-            aria-expanded="false"
-            aria-controls="rst-other-versions-admin">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       ☁️ latest
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-    </button>
-    <div id="rst-other-versions-admin" class="rst-other-versions">
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -698,14 +665,6 @@ preview generation across PHP processes.</p></td>
         </dd>
         
         <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/33/admin_manual"
-             
-          >
-            33
-          </a>
-        </dd>
-        
-        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
@@ -713,20 +672,17 @@ preview generation across PHP processes.</p></td>
           </a>
         </dd>
         
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
       </dl>
     </div>
   </div>
-  <script>
-    /* Keep aria-expanded in sync with the RTD theme toggle class. */
-    (function () {
-      var btn = document.querySelector('.rst-current-version[aria-expanded]');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      });
-    }());
-  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

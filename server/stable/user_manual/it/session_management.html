@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gestisci browser e dispositivi connessi &mdash; Documentazione Nextcloud latest User Manual latest </title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,6 +31,7 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
+    <link rel="next" title="Archiviazione esterna" href="external_storage/index.html" />
     <link rel="prev" title="Usare l’autenticazione a due fattori" href="user_2fa.html" />
    
   
@@ -52,18 +53,9 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
-
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Cerca documenti</label>
-    <div class="wy-form-search">
-      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
-      <input id="rtd-search-input"
-             type="text"
-             name="q"
-             placeholder="Cerca documenti"
-             aria-label="Cerca documenti" />
-    </div>
+    <input type="text" name="q" placeholder="Cerca documenti" aria-label="Cerca documenti" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -71,13 +63,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu di navigazione">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Introduzione al manuale d’uso di Nextcloud latest</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">L’interfaccia web di Nextcloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files/index.html">File e sincronizzazione</a></li>
 <li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Clients</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Impostare le proprie preferenze</a></li>
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Accesso universale</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_2fa.html">Usare l’autenticazione a due fattori</a></li>
@@ -87,6 +77,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#device-specific-passwords-and-password-changes">Password di dispositivi specifici e modifiche delle password</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">Archiviazione esterna</a></li>
 </ul>
 
         </div>
@@ -115,12 +106,10 @@
              
   <section id="manage-connected-browsers-and-devices">
 <h1>Gestisci browser e dispositivi connessi<a class="headerlink" href="#manage-connected-browsers-and-devices" title="Link to this heading"></a></h1>
-<p>The personal settings page gives you an overview of the connected
-browsers and devices.</p>
+<p>La pagina delle impostazioni personali ti permette di avere una panoramica sui browser e i dispositivi connessi.</p>
 <section id="managing-connected-browsers">
 <h2>Gestire i browser connessi<a class="headerlink" href="#managing-connected-browsers" title="Link to this heading"></a></h2>
-<p>The list of connected browsers shows which browsers have connected to your
-account recently:</p>
+<p>Nell’elenco dei browser connessi puoi vedere quali browser sono stati connessi al tuo account recentemente:</p>
 <figure class="align-default">
 <img alt="Elenco delle sessioni del browser." src="../_images/settings_sessions.png" />
 </figure>
@@ -128,38 +117,29 @@ account recently:</p>
 </section>
 <section id="managing-devices">
 <span id="id1"></span><h2>Gestire i dispositivi<a class="headerlink" href="#managing-devices" title="Link to this heading"></a></h2>
-<p>The list of connected devices shows all the devices and clients you
-generated a device password for and their last activity:</p>
+<p>Nell’elenco dei dispositivi connessi puoi vedere tutti i dispositivi e i client per i quali hai generato una password dispositivo e la loro ultima attività.</p>
 <figure class="align-default">
 <img alt="Elenco dei dispositivi connessi." src="../_images/settings_devices.png" />
 </figure>
 <p>Puoi usare l’icona del cestino per disconnettere qualunque dispositivo nell’elenco.</p>
-<p>At the bottom of the list, you can create a new device-specific
-password. You can choose a name to identify the token later. The generated
-password is used for configuring the new client. Ideally, generate individual
-tokens for every device you connect to your account, so you can disconnect
-those individually if necessary:</p>
+<p>In fondo all’elenco, trovi il pulsante per creare una nuova password per un dispositivo specifico. Puoi scegliere un nome per identificare il token più tardi. La password generata è usata per configurare il nuovo client. Idealmente, si consiglia di generare token individuali per ogni dispositivo che vuoi connettere al tuo account, in modo che tu possa disconnetterli individualmente se necessario:</p>
 <figure class="align-default">
 <img alt="Aggiunta di un nuovo dispositivo." src="../_images/settings_devices_add.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>You only have access to the device password when creating it.
-Nextcloud does not save the plain password, so enter the password on
-the new client immediately.</p>
+<p>Puoi avere accesso alla password del dispositivo solo quando lo si crea, Nextcloud non salverà la password in chiaro, quindi si consiglia di immettere la password nel nuovo client immediatamente.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>If you use <a class="reference internal" href="user_2fa.html"><span class="doc">Usare l’autenticazione a due fattori</span></a> for your account, device-specific passwords
-are the only way to configure clients. The server will then deny
-connections from clients using your login password.</p>
+<p>If you use <a class="reference internal" href="user_2fa.html"><span class="doc">Usare l’autenticazione a due fattori</span></a> for your account,
+device-specific passwords are the only way to configure clients. The
+server will deny connections of clients using your login password then.</p>
 </div>
 </section>
 <section id="device-specific-passwords-and-password-changes">
 <h2>Password di dispositivi specifici e modifiche delle password<a class="headerlink" href="#device-specific-passwords-and-password-changes" title="Link to this heading"></a></h2>
-<p>When a password changes in an external user backend, all device-specific
-passwords are marked as invalid. Once you log in with the main password,
-all device-specific passwords are updated and work again.</p>
+<p>Per modificare le password nei gestori delle autenticazioni esterne, le password per i dispositivi specifici sono segnate come invalide e una volta che avviene l’accesso dell’account utente con la password principale tutte le password per i dispositivi specifici sono aggiornate e funzionano di nuovo.</p>
 </section>
 </section>
 
@@ -168,6 +148,7 @@ all device-specific passwords are updated and work again.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Piè di pagina">
         <a href="user_2fa.html" class="btn btn-neutral float-left" title="Usare l’autenticazione a due fattori" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Precedente</a>
+        <a href="external_storage/index.html" class="btn btn-neutral float-right" title="Archiviazione esterna" accesskey="n" rel="next">Prossimo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -271,25 +252,16 @@ all device-specific passwords are updated and work again.</p>
   
     
   
-    
-  
-    
-  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    
-    <button type="button"
-            class="rst-current-version"
-            data-toggle="rst-current-version"
-            aria-expanded="false"
-            aria-controls="rst-other-versions-user">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       🌐 Italian
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-    </button>
-    <div id="rst-other-versions-user" class="rst-other-versions">
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
       <dl>
         <dt>🌐 Lingue</dt>
         
@@ -464,22 +436,6 @@ all device-specific passwords are updated and work again.</p>
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lo/"
-               
-            >
-              lo
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lt/"
-               
-            >
-              lt
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -648,14 +604,6 @@ all device-specific passwords are updated and work again.</p>
           </dd>
         
           <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/33/user_manual"
-               
-            >
-              33
-            </a>
-          </dd>
-        
-          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -663,20 +611,31 @@ all device-specific passwords are updated and work again.</p>
             </a>
           </dd>
         
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Scaricamenti</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Su Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Pagina del progetto</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Rilasci</a>
+        </dd>
       </dl>
     </div>
   </div>
-  <script>
-    /* Keep aria-expanded in sync with the RTD theme toggle class. */
-    (function () {
-      var btn = document.querySelector('.rst-current-version[aria-expanded]');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      });
-    }());
-  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

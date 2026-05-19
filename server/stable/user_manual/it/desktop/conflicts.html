@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Conflitti &mdash; Documentazione Nextcloud latest User Manual latest </title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -53,18 +53,9 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
-
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Cerca documenti</label>
-    <div class="wy-form-search">
-      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
-      <input id="rtd-search-input"
-             type="text"
-             name="q"
-             placeholder="Cerca documenti"
-             aria-label="Cerca documenti" />
-    </div>
+    <input type="text" name="q" placeholder="Cerca documenti" aria-label="Cerca documenti" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,20 +63,14 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu di navigazione">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduzione al manuale d’uso di Nextcloud latest</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">L’interfaccia web di Nextcloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">File e sincronizzazione</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Clients</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installazione</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">Utilizzo del client di sincronizzazione</a></li>
-<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
-<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">Client di file virtuali macOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">L’aggiornamento automatico</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Aggiorna i canali</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Conflitti</a><ul>
@@ -101,6 +86,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Accesso universale</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Usare l’autenticazione a due fattori</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestisci browser e dispositivi connessi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Archiviazione esterna</a></li>
 </ul>
 
         </div>
@@ -117,7 +103,7 @@
           <div role="navigation" aria-label="Naviga tra le pagine">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Clients</a></li>
       <li class="breadcrumb-item active">Conflitti</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/conflicts.rst" class="fa fa-github"> Modifica su GitHub</a>
@@ -266,25 +252,16 @@ the file on the server gets updated to contain «remote contents» by someone el
   
     
   
-    
-  
-    
-  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    
-    <button type="button"
-            class="rst-current-version"
-            data-toggle="rst-current-version"
-            aria-expanded="false"
-            aria-controls="rst-other-versions-user">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       🌐 Italian
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-    </button>
-    <div id="rst-other-versions-user" class="rst-other-versions">
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
       <dl>
         <dt>🌐 Lingue</dt>
         
@@ -459,22 +436,6 @@ the file on the server gets updated to contain «remote contents» by someone el
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lo/"
-               
-            >
-              lo
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lt/"
-               
-            >
-              lt
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -643,14 +604,6 @@ the file on the server gets updated to contain «remote contents» by someone el
           </dd>
         
           <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/33/user_manual"
-               
-            >
-              33
-            </a>
-          </dd>
-        
-          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -658,20 +611,31 @@ the file on the server gets updated to contain «remote contents» by someone el
             </a>
           </dd>
         
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Scaricamenti</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Su Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Pagina del progetto</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Rilasci</a>
+        </dd>
       </dl>
     </div>
   </div>
-  <script>
-    /* Keep aria-expanded in sync with the RTD theme toggle class. */
-    (function () {
-      var btn = document.querySelector('.rst-current-version[aria-expanded]');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      });
-    }());
-  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Administrer tilkoblede nettlesere og enheter &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,6 +31,7 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Søk" href="search.html" />
+    <link rel="next" title="Ekstern Lagring" href="external_storage/index.html" />
     <link rel="prev" title="Bruker tofaktorautentisering" href="user_2fa.html" />
    
   
@@ -52,18 +53,9 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
-
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Search docs</label>
-    <div class="wy-form-search">
-      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
-      <input id="rtd-search-input"
-             type="text"
-             name="q"
-             placeholder="Search docs"
-             aria-label="Search docs" />
-    </div>
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -71,13 +63,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud latest brukerhåndbok introduksjon</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">Nextcloud-nettgrensesnittet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files/index.html">Filer og synkronisering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Clients</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Angir preferansene dine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Universell tilgang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_2fa.html">Bruker tofaktorautentisering</a></li>
@@ -87,6 +77,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#device-specific-passwords-and-password-changes">Enhets-spesifikke passord og passordendringer</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">Ekstern Lagring</a></li>
 </ul>
 
         </div>
@@ -115,12 +106,10 @@
              
   <section id="manage-connected-browsers-and-devices">
 <h1>Administrer tilkoblede nettlesere og enheter<a class="headerlink" href="#manage-connected-browsers-and-devices" title="Link to this heading"></a></h1>
-<p>The personal settings page gives you an overview of the connected
-browsers and devices.</p>
+<p>Siden med personlige innstillinger lar deg ha oversikt over de tilkoblede nettleserne og enhetene.</p>
 <section id="managing-connected-browsers">
 <h2>Administrerer tilkoblede nettlesere<a class="headerlink" href="#managing-connected-browsers" title="Link to this heading"></a></h2>
-<p>The list of connected browsers shows which browsers have connected to your
-account recently:</p>
+<p>I listen over tilkoblede nettlesere ser du hvilke nettlesere som nylig er koblet til kontoen din:</p>
 <figure class="align-default">
 <img alt="Liste over nettleserøkter." src="../_images/settings_sessions.png" />
 </figure>
@@ -128,38 +117,29 @@ account recently:</p>
 </section>
 <section id="managing-devices">
 <span id="id1"></span><h2>Administrerer enheter<a class="headerlink" href="#managing-devices" title="Link to this heading"></a></h2>
-<p>The list of connected devices shows all the devices and clients you
-generated a device password for and their last activity:</p>
+<p>I listen over tilkoblede enheter ser du alle enhetene og klientene du genererte et enhetspassord for og deres siste aktivitet:</p>
 <figure class="align-default">
 <img alt="Liste over tilkoblede enheter." src="../_images/settings_devices.png" />
 </figure>
 <p>Du kan bruke søppelikonet til å koble fra hvilken som helst av enhetene i listen.</p>
-<p>At the bottom of the list, you can create a new device-specific
-password. You can choose a name to identify the token later. The generated
-password is used for configuring the new client. Ideally, generate individual
-tokens for every device you connect to your account, so you can disconnect
-those individually if necessary:</p>
+<p>Nederst på listen finner du en knapp for å opprette et nytt enhetsspesifikt passord. Du kan velge et navn for å identifisere tokenet senere. Det genererte passordet brukes til å konfigurere den nye klienten. Generer ideelt sett individuelle tokener for hver enhet du kobler til kontoen din, slik at du kan koble fra disse individuelt om nødvendig:</p>
 <figure class="align-default">
 <img alt="Legger til en ny enhet." src="../_images/settings_devices_add.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Merknad</p>
-<p>You only have access to the device password when creating it.
-Nextcloud does not save the plain password, so enter the password on
-the new client immediately.</p>
+<p>Du har bare tilgang til enhetspassordet når du oppretter det, Nextcloud vil ikke lagre det vanlige passordet, derfor anbefales det å skrive inn passordet på den nye klienten umiddelbart.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Merknad</p>
-<p>If you use <a class="reference internal" href="user_2fa.html"><span class="doc">Bruker tofaktorautentisering</span></a> for your account, device-specific passwords
-are the only way to configure clients. The server will then deny
-connections from clients using your login password.</p>
+<p>If you use <a class="reference internal" href="user_2fa.html"><span class="doc">Bruker tofaktorautentisering</span></a> for your account,
+device-specific passwords are the only way to configure clients. The
+server will deny connections of clients using your login password then.</p>
 </div>
 </section>
 <section id="device-specific-passwords-and-password-changes">
 <h2>Enhets-spesifikke passord og passordendringer<a class="headerlink" href="#device-specific-passwords-and-password-changes" title="Link to this heading"></a></h2>
-<p>When a password changes in an external user backend, all device-specific
-passwords are marked as invalid. Once you log in with the main password,
-all device-specific passwords are updated and work again.</p>
+<p>For passordendringer i eksterne brukere er de enhetsspesifikke passordene merket som ugyldige, og når en pålogging av brukerkontoen med hovedpassordet skjer, oppdateres alle enhetsspesifikke passord og fungerer igjen.</p>
 </section>
 </section>
 
@@ -168,6 +148,7 @@ all device-specific passwords are updated and work again.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="user_2fa.html" class="btn btn-neutral float-left" title="Bruker tofaktorautentisering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="external_storage/index.html" class="btn btn-neutral float-right" title="Ekstern Lagring" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -271,25 +252,16 @@ all device-specific passwords are updated and work again.</p>
   
     
   
-    
-  
-    
-  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    
-    <button type="button"
-            class="rst-current-version"
-            data-toggle="rst-current-version"
-            aria-expanded="false"
-            aria-controls="rst-other-versions-user">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       🌐 nb-NO
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-    </button>
-    <div id="rst-other-versions-user" class="rst-other-versions">
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
       <dl>
         <dt>🌐 Languages</dt>
         
@@ -462,22 +434,6 @@ all device-specific passwords are updated and work again.</p>
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lo/"
-               
-            >
-              lo
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lt/"
-               
-            >
-              lt
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -646,14 +602,6 @@ all device-specific passwords are updated and work again.</p>
           </dd>
         
           <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/33/user_manual"
-               
-            >
-              33
-            </a>
-          </dd>
-        
-          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -661,20 +609,31 @@ all device-specific passwords are updated and work again.</p>
             </a>
           </dd>
         
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Nedlastinger</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>På Les dokumentene</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Prosjekt Hjem</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Bygg</a>
+        </dd>
       </dl>
     </div>
   </div>
-  <script>
-    /* Keep aria-expanded in sync with the RTD theme toggle class. */
-    (function () {
-      var btn = document.querySelector('.rst-current-version[aria-expanded]');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      });
-    }());
-  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
