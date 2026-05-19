@@ -108,6 +108,47 @@ Also set it for CLI work (``occ``, cron):
 .. seealso:: :doc:`../configuration_server/config_sample_php_parameters` for full details on
    ``NEXTCLOUD_CONFIG_DIR`` and other configuration loading behaviour.
 
+Set strong file permissions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Strong file system permissions reduce the attack surface if an attacker gains
+access to the web server process. The recommended baseline restricts world
+access to the Nextcloud installation directory:
+
+.. code-block:: bash
+
+   # Set ownership to the web server user and group
+   sudo chown -R www-data:www-data /var/www/nextcloud/
+
+   # Files: owner read/write, group read-only, no world access
+   sudo find /var/www/nextcloud/ -type f -print0 | sudo xargs -0 chmod 0640
+
+   # Directories: owner full, group read+execute, no world access
+   sudo find /var/www/nextcloud/ -type d -print0 | sudo xargs -0 chmod 0750
+
+The **data directory** must remain writable by the web server user:
+
+.. code-block:: bash
+
+   sudo chown -R www-data:www-data /path/to/nextcloud-data/
+
+If you install or update apps via the Nextcloud **app store**, the ``apps/``
+directory also needs to be writable by the web server:
+
+.. code-block:: bash
+
+   sudo chown -R www-data:www-data /var/www/nextcloud/apps/
+
+.. note::
+
+   The built-in **web updater** requires write access to the entire Nextcloud
+   installation directory. If you apply stricter permissions that prevent
+   web server writes, the web updater will fail. Disable it first by adding the following to
+   ``config/config.php``, then use the command-line updater or package
+   manager instead::
+
+      'upgrade.disable-web' => true,
+
 Disable preview image generation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
