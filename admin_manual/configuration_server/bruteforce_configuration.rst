@@ -91,8 +91,11 @@ addresses and ranges to exempt from brute force protection.
 Additional enhancements may be made in the future, within this app and/or in combination with Nextcloud Server for
 additional monitoring or behavior adjustments related to brute force protection.
 
-.. warning:: Disabling the ``bruteforcesettings`` app does **not** disable brute force protection
-   - it merely removes your ability to adjust brute force related settings from the Web interface.
+.. warning::
+
+   Disabling the ``bruteforcesettings`` app does **not** disable brute force protection.
+   The protection is built into Nextcloud Server core and is always active. Disabling the app
+   only removes the ability to manage brute force settings from the Web interface.
 
 .. danger::
 
