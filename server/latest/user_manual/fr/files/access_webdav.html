@@ -149,8 +149,8 @@ Windows, and mobile devices to your Nextcloud server.</p>
 Nextcloud.</p>
 <section id="official-nextcloud-desktop-and-mobile-clients">
 <h2>Clients officiels Nextcloud pour ordinateurs et mobiles<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Lien vers cette rubrique"></a></h2>
-<p>La méthode recommandée de synchroniser un ordinateur avec un serveur Nextcloud est d’utiliser le <a href="#id11"><span class="problematic" id="id12">`client de synchronisation officiel Nextcloud&lt;https://nextcloud.com/install/#install-clients&gt;`_</span></a>. Vous pouvez configurer le client pour sauvegarder des fichiers dans n’importe quel répertoire local et vous pouvez choisir avec quels répertoires du serveur se synchroniser. Le client affiche l’état actuel de la connexion et enregistre toutes les activités, vous pouvez donc toujours savoir quel fichier distant a été téléchargé sur votre ordinateur et vous pouvez vérifier que les fichiers créés et mis à jour sur votre ordinateur local sont bien été synchronisés.</p>
-<p>La méthode recommandée pour synchroniser les périphériques Android et Apple iOS est d’utiliser les <a href="#id13"><span class="problematic" id="id14">`applications mobiles officielles Nextcloud&lt;https://nextcloud.com/install/&gt;`_</span></a>.</p>
+<p>La méthode recommandée de synchroniser un ordinateur avec un serveur Nextcloud est d’utiliser le <a href="#id13"><span class="problematic" id="id14">`client de synchronisation officiel Nextcloud&lt;https://nextcloud.com/install/#install-clients&gt;`_</span></a>. Vous pouvez configurer le client pour sauvegarder des fichiers dans n’importe quel répertoire local et vous pouvez choisir avec quels répertoires du serveur se synchroniser. Le client affiche l’état actuel de la connexion et enregistre toutes les activités, vous pouvez donc toujours savoir quel fichier distant a été téléchargé sur votre ordinateur et vous pouvez vérifier que les fichiers créés et mis à jour sur votre ordinateur local sont bien été synchronisés.</p>
+<p>La méthode recommandée pour synchroniser les périphériques Android et Apple iOS est d’utiliser les <a href="#id15"><span class="problematic" id="id16">`applications mobiles officielles Nextcloud&lt;https://nextcloud.com/install/&gt;`_</span></a>.</p>
 <p>Pour connecter les applications Nextcloud officielles à un serveur Nextcloud, utilisez la même URL que celle que vous utilisez pour accéder à Nextcloud depuis votre navigateur web - par ex.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
@@ -459,6 +459,23 @@ for example
 <h2>Problèmes connus<a class="headerlink" href="#known-problems" title="Lien vers cette rubrique"></a></h2>
 <section id="id3">
 <h3>Problème<a class="headerlink" href="#id3" title="Lien vers cette rubrique"></a></h3>
+<p>WebDAV access is very slow or times out.</p>
+</section>
+<section id="id4">
+<h3>Solution<a class="headerlink" href="#id4" title="Lien vers cette rubrique"></a></h3>
+<p>When using a third-party WebDAV client (including your operating system’s built-in
+client), you should authenticate with an <strong>application password</strong> rather than your
+regular account password. Using a regular password carries a significant performance
+penalty because Nextcloud must perform additional work to verify it on every request.
+Using an application password removes this overhead and can improve transfer speeds
+substantially.</p>
+<p>To create an application password, log in to the Nextcloud web interface, click your
+avatar, choose <strong>Personal settings</strong>, then open the <strong>Security</strong> section in the left
+sidebar and scroll to the bottom. Create an app password there and use it in your
+WebDAV client instead of your main password.</p>
+</section>
+<section id="id5">
+<h3>Problème<a class="headerlink" href="#id5" title="Lien vers cette rubrique"></a></h3>
 <p>Windows ne se connecte pas avec HTTPS.</p>
 </section>
 <section id="solution-1">
@@ -469,17 +486,17 @@ for example
 <h3>Solution 2<a class="headerlink" href="#solution-2" title="Lien vers cette rubrique"></a></h3>
 <p>Le client Windows WebDAV pourrait ne pas supporter les connections TLSv1.1 / TLSv1.2. Si vous avez restreint la configuration de votre serveur dans le but de fournir uniquement des connections TLSv1.1 et plus, la connexion à votre serveur pourrait échouer. Référez vous à la documentation <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> pour plus d’informations.</p>
 </section>
-<section id="id4">
-<h3>Problème<a class="headerlink" href="#id4" title="Lien vers cette rubrique"></a></h3>
+<section id="id6">
+<h3>Problème<a class="headerlink" href="#id6" title="Lien vers cette rubrique"></a></h3>
 <p>Vous avez obtenu le message d’erreur suivant : <strong>Erreur 0x800700DF : La taille du fichier dépasse la limite autorisée ; il ne peut être enregistré.</strong></p>
 </section>
-<section id="id5">
-<h3>Solution<a class="headerlink" href="#id5" title="Lien vers cette rubrique"></a></h3>
+<section id="id7">
+<h3>Solution<a class="headerlink" href="#id7" title="Lien vers cette rubrique"></a></h3>
 <p>Windows limite la taille maximum des fichiers transférés via un partage WebDAV.  Vous pouvez augmenter la valeur <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> dans <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> en cliquant sur <strong>Modifier</strong>.</p>
 <p>Pour augmenter la limite à la valeur maximal de 4GB, sélectionnez <strong>Décimal</strong>, entrez la valeur <code class="docutils literal notranslate"><span class="pre">4294967295</span></code>, et relancez Windows ou redémarrez le service <strong>WebClient</strong>.</p>
 </section>
-<section id="id6">
-<h3>Problème<a class="headerlink" href="#id6" title="Lien vers cette rubrique"></a></h3>
+<section id="id8">
+<h3>Problème<a class="headerlink" href="#id8" title="Lien vers cette rubrique"></a></h3>
 <p>Adding a WebDAV drive on Windows with the steps above does not display the correct
 available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
@@ -490,20 +507,20 @@ way for the client to retrieve available free space from the server. Windows aut
 falls back to the size and free space of the C: drive. There is no direct solution
 for this limitation.</p>
 </section>
-<section id="id7">
-<h3>Problème<a class="headerlink" href="#id7" title="Lien vers cette rubrique"></a></h3>
-<p>Problème d’accès à vos fichiers avec Microsoft Office via WebDAV</p>
-</section>
-<section id="id8">
-<h3>Solution<a class="headerlink" href="#id8" title="Lien vers cette rubrique"></a></h3>
-<p>Les problèmes connus et leurs solutions sont documentés dans l’article <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
-</section>
 <section id="id9">
 <h3>Problème<a class="headerlink" href="#id9" title="Lien vers cette rubrique"></a></h3>
-<p>Impossible de mapper Nextcloud en tant que lecteur WebDAV sous Windows à l’aide d’un certificat auto-signé.</p>
+<p>Problème d’accès à vos fichiers avec Microsoft Office via WebDAV</p>
 </section>
 <section id="id10">
 <h3>Solution<a class="headerlink" href="#id10" title="Lien vers cette rubrique"></a></h3>
+<p>Les problèmes connus et leurs solutions sont documentés dans l’article <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
+</section>
+<section id="id11">
+<h3>Problème<a class="headerlink" href="#id11" title="Lien vers cette rubrique"></a></h3>
+<p>Impossible de mapper Nextcloud en tant que lecteur WebDAV sous Windows à l’aide d’un certificat auto-signé.</p>
+</section>
+<section id="id12">
+<h3>Solution<a class="headerlink" href="#id12" title="Lien vers cette rubrique"></a></h3>
 <ol class="arabic simple">
 <li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>Cliquez jusqu’à ce que vous arriviez à l’erreur de certificat dans la ligne d’état du navigateur.</p></li>

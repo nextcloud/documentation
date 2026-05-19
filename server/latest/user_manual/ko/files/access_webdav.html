@@ -459,6 +459,23 @@ for example
 <h2>알려진 문제<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
 <section id="id3">
 <h3>문제<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>WebDAV access is very slow or times out.</p>
+</section>
+<section id="id4">
+<h3>솔루션<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>When using a third-party WebDAV client (including your operating system’s built-in
+client), you should authenticate with an <strong>application password</strong> rather than your
+regular account password. Using a regular password carries a significant performance
+penalty because Nextcloud must perform additional work to verify it on every request.
+Using an application password removes this overhead and can improve transfer speeds
+substantially.</p>
+<p>To create an application password, log in to the Nextcloud web interface, click your
+avatar, choose <strong>Personal settings</strong>, then open the <strong>Security</strong> section in the left
+sidebar and scroll to the bottom. Create an app password there and use it in your
+WebDAV client instead of your main password.</p>
+</section>
+<section id="id5">
+<h3>문제<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Windows는 HTTPS를 사용하여 연결하지 않습니다.</p>
 </section>
 <section id="solution-1">
@@ -469,17 +486,17 @@ for example
 <h3>해결 방법 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>Windows WebDAV 클라이언트는 TLSv1.1 및 TLSv1.2 연결을 지원하지 않을 수 있습니다. TLSv1.1 이상만 제공하도록 서버 구성을 제한한 경우 서버에 대한 연결이 실패할 수 있습니다. 자세한 내용은 <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> 설명서를 참조하십시오.</p>
 </section>
-<section id="id4">
-<h3>문제<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>문제<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p><strong>오류 0x800700DF: 파일 크기가 허용된 제한을 초과하여 저장할 수 없습니다.</strong> 오류 메시지가 표시됩니다.</p>
 </section>
-<section id="id5">
-<h3>솔루션<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>솔루션<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>Windows는 WebDAV 공유에서 또는 WebDAV 공유로 전송된 파일의 최대 크기를 제한합니다. <a href="#id1"><span class="problematic" id="id2">**</span></a>수정**을 클릭하여 ‘’HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters’’에서 ‘’FileSizeLimitInBytes’’ 값을 늘릴 수 있습니다.</p>
 <p>제한을 최대값인 4GB로 늘리려면 <strong>10진수**를 선택하고 ‘’4294967295’’ 값을 입력한 다음 Windows를 다시 부팅하거나 **WebClient</strong> 서비스를 다시 시작합니다.</p>
 </section>
-<section id="id6">
-<h3>문제<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>문제<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Adding a WebDAV drive on Windows with the steps above does not display the correct
 available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
@@ -490,20 +507,20 @@ way for the client to retrieve available free space from the server. Windows aut
 falls back to the size and free space of the C: drive. There is no direct solution
 for this limitation.</p>
 </section>
-<section id="id7">
-<h3>문제<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
-<p>WebDAV를 통해 Microsoft Office에서 파일에 액세스하지 못합니다.</p>
-</section>
-<section id="id8">
-<h3>솔루션<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
-<p>알려진 문제점과 해결 방법은 <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> 문서에 설명되어 있습니다.</p>
-</section>
 <section id="id9">
 <h3>문제<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
-<p>자체 서명된 인증서를 사용하여 Windows에서 Nextcloud를 WebDAV 드라이브로 매핑할 수 없습니다.</p>
+<p>WebDAV를 통해 Microsoft Office에서 파일에 액세스하지 못합니다.</p>
 </section>
 <section id="id10">
 <h3>솔루션<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>알려진 문제점과 해결 방법은 <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> 문서에 설명되어 있습니다.</p>
+</section>
+<section id="id11">
+<h3>문제<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<p>자체 서명된 인증서를 사용하여 Windows에서 Nextcloud를 WebDAV 드라이브로 매핑할 수 없습니다.</p>
+</section>
+<section id="id12">
+<h3>솔루션<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>브라우저 상태 줄에 인증서 오류가 나타날 때까지 클릭합니다.</p></li>
