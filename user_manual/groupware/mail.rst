@@ -134,7 +134,7 @@ Mail can move a message to a different folder when it is marked as junk.
 .. figure:: images/mail_move-message-to-junk-folder.png
 
 Refresh folder
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 You can manually trigger a sync of your folder by clicking the refresh button located at the top of the folder list.
 Starting from ``version 5.7`` triggering the sync will also refresh the list of folders for the selected account.
@@ -150,7 +150,7 @@ Mail searches email subjects and sender/recipient fields. To search email bodies
 use the folder search feature in the app.
 
 Search in folder
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 .. versionadded:: 2.1
 
@@ -158,7 +158,7 @@ At the top of the envelope list in any mail layout, there is a search field shor
 
 
 Advanced search in folder
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. versionadded:: 3.4
 
@@ -284,20 +284,20 @@ You can reopen the composer for a message in the outbox any time before the send
 
 
 Folder actions
----------------
+--------------
 
 Add a folder
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~
 1. Open the action menu of an account
 2. Click add folder
 
 Add a subfolder
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 1. Open the action menu of a folder
 2. Click add subfolder
 
 Shared folder
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 If a folder was shared with you with some specific rights, that folder will show as a new folder with a shared icon as below:
 
 .. figure:: images/shared-mailbox-icon.png
