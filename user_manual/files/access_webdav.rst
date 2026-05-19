@@ -120,8 +120,10 @@ Accessing files with KDE and Dolphin
 #. Follow the on-screen instructions to log in
 #. After logging in, ensure you enable "Storage" in the "Use This Account For" section
 #. You can now access your files in Dolphin under "Network" in the sidebar
-#. (Optional) To add this location as a shortcut in the sidebar, right-click "Nextcloud Storage", then click "Add to Places"
-#. (Optional) To customize the shortcut, right-click it in the sidebar, then click "Edit..." and customize the icon and label
+#. (Optional) To add this location as a shortcut in the sidebar, right-click
+   "Nextcloud Storage", then click "Add to Places"
+#. (Optional) To customize the shortcut, right-click it in the sidebar, then
+   click "Edit..." and customize the icon and label
 
 
 Creating WebDAV mounts on the Linux command line
