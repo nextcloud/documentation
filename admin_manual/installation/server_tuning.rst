@@ -139,12 +139,139 @@ HTTP/2 has `huge speed improvements <https://www.troyhunt.com/i-wanna-go-fast-ht
 Tune PHP-FPM
 ------------
 
-The default configuration of PHP-FPM is extremely conservative. You might notice
-excessive load times on the web interface or even sync issues. Each simultaneous
-request is handled by a separate PHP-FPM process, so even on a small installation you
-should allow more processes to run in parallel to handle requests.
+PHP-FPM is required for Nginx setups and is widely used with Apache as well. Its default
+configuration is extremely conservative: the default pool has ``pm.max_children = 5``, which
+limits Nextcloud to five simultaneous PHP requests and is a common cause of gateway timeouts,
+slow page loads, and sync client errors under any real load.
 
-`This link <https://spot13.com/pmcalculator/>`_ can help you calculate the optimal values for your system.
+Process manager modes
+^^^^^^^^^^^^^^^^^^^^^
+
+The ``pm`` directive controls how PHP-FPM manages its worker processes:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 15 85
+
+   * - Mode
+     - Behaviour
+   * - ``dynamic``
+     - Keeps between ``pm.min_spare_servers`` and ``pm.max_spare_servers`` idle workers alive,
+       up to a ceiling of ``pm.max_children``. Good default for most Nextcloud installations:
+       balances RAM efficiency with burst capacity. Set ``pm.min_spare_servers`` high enough
+       that sync-client poll bursts do not stall waiting for new processes to spawn.
+   * - ``static``
+     - Always keeps exactly ``pm.max_children`` processes running. Highest memory use,
+       lowest latency. Use on dedicated servers with predictable load. Always set
+       ``pm.max_requests`` to recycle workers and prevent memory leaks.
+   * - ``ondemand``
+     - Spawns a worker only when a request arrives; kills idle workers after
+       ``pm.process_idle_timeout`` (default ``10s``). Lowest memory use but adds
+       cold-start latency on every burst. Not recommended for Nextcloud: desktop and
+       mobile clients poll every 30 seconds, repeatedly triggering cold starts.
+
+Key parameters
+^^^^^^^^^^^^^^
+
+``pm.max_children``
+  Maximum (or fixed, under ``static``) number of simultaneous worker processes.
+  This is the most important value to tune. If all workers are busy, new requests
+  queue up; a full queue produces 502/504 errors.
+
+  Estimate it from available RAM::
+
+    pm.max_children = floor(available_RAM_for_PHP / average_worker_RSS)
+
+  Measure the average RSS of a running pool::
+
+    ps --no-headers -o rss -C php-fpm8.3 | awk '{sum+=$1} END {print sum/NR/1024 " MB"}'
+
+  A typical Nextcloud worker uses **50–100 MB** (more if Imagick or LDAP is loaded).
+  Leave headroom for the OS, web server, database, and cache. Setting ``pm.max_children``
+  too high causes swapping, which is worse than queuing.
+
+``pm.start_servers`` *(dynamic only)*
+  Workers started at FPM boot. Defaults to
+  ``(pm.min_spare_servers + pm.max_spare_servers) / 2`` if not set.
+
+``pm.min_spare_servers`` / ``pm.max_spare_servers`` *(dynamic only)*
+  Range of idle workers kept warm. For Nextcloud, keep ``pm.min_spare_servers``
+  high enough to absorb a sync-client burst without spawning new processes::
+
+    pm.min_spare_servers = 4    # adjust upward for many connected clients
+    pm.max_spare_servers = 16
+
+``pm.max_requests``
+  Recycle a worker after this many requests. ``0`` means never recycle.
+  Setting a value of ``500``–``1000`` guards against slow memory growth from
+  leaky extensions (Imagick, LDAP, SAML XML parsers). Essential under ``static``
+  mode.
+
+``pm.process_idle_timeout`` *(ondemand only)*
+  How long an idle worker lives before being killed. Default: ``10s``.
+
+Example configuration
+^^^^^^^^^^^^^^^^^^^^^
+
+A starting point for ``dynamic`` mode on a server with 2 GB of RAM dedicated to PHP
+(adjust ``pm.max_children`` based on your measured worker RSS):
+
+.. code-block:: ini
+
+   pm = dynamic
+   pm.max_children = 30
+   pm.start_servers = 8
+   pm.min_spare_servers = 4
+   pm.max_spare_servers = 16
+   pm.max_requests = 500
+
+Use the `PHP-FPM process calculator <https://spot13.com/pmcalculator/>`_ as a
+cross-check for your values.
+
+Slow log
+^^^^^^^^
+
+Enable the slow log to identify PHP scripts that are taking too long:
+
+.. code-block:: ini
+
+   slowlog = /var/log/php-fpm-slow.log
+   request_slowlog_timeout = 5s
+
+Each entry records the full PHP backtrace of the slow request. This is the
+fastest way to find the root cause of gateway timeouts and sluggish pages.
+
+Troubleshooting
+^^^^^^^^^^^^^^^
+
+**502 Bad Gateway**
+  All ``pm.max_children`` workers are busy. Increase ``pm.max_children`` if RAM
+  allows. Enable the slow log to check whether a slow query is tying up workers.
+  Also check that a ``request_terminate_timeout`` is not killing workers mid-request.
+
+**504 Gateway Timeout**
+  A worker is running but not responding within the web server's upstream timeout
+  (nginx ``fastcgi_read_timeout``, Apache ``ProxyTimeout``). Common Nextcloud causes:
+  large file operations, slow database queries during sync, or PROPFIND over large
+  directory trees. Use the slow log to identify the bottleneck.
+
+**Memory grows over time**
+  Workers are leaking memory (Imagick and XML parsers are common sources).
+  Set ``pm.max_requests = 500`` to recycle them before they grow too large.
+
+**Slow first request after idle**
+  ``pm = ondemand`` or ``pm.min_spare_servers`` too low. Switch to ``pm = dynamic``
+  and raise ``pm.min_spare_servers``.
+
+After any configuration change, reload PHP-FPM — changes do not take effect until you do:
+
+.. code-block:: bash
+
+   sudo systemctl reload php8.3-fpm   # Debian/Ubuntu — adjust version as needed
+   sudo systemctl reload php-fpm      # RHEL/Fedora
+
+For pool configuration details (environment variables, upload sizes, Unix socket vs TCP),
+see :ref:`php_fpm_tips_label` in the installation guide.
 
 Enable PHP OPcache
 ------------------
