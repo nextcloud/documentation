@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Caint &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -30,8 +30,8 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Comhrá" href="chat_index.html" />
-    <link rel="prev" title="Ag sioncrónú le Windows 10" href="../groupware/sync_windows10.html" />
+    <link rel="next" title="Bunúsacha Nextcloud Talk" href="talk_basics.html" />
+    <link rel="prev" title="Migrate data between instances" href="../groupware/user_migration.html" />
    
   
 </head>
@@ -52,18 +52,9 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
-
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Search docs</label>
-    <div class="wy-form-search">
-      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
-      <input id="rtd-search-input"
-             type="text"
-             name="q"
-             placeholder="Search docs"
-             aria-label="Search docs" />
-    </div>
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -71,25 +62,21 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest réamhrá lámhleabhar úsáideora</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Comhéadan Gréasáin Nextcloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Comhaid &amp; sioncronú</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Earraí grúpa</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Caint</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="chat_index.html">Comhrá</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conversation_index.html">Comhráite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="call_index.html">Glaonna</a></li>
-<li class="toctree-l2"><a class="reference internal" href="federation_index.html">Cónaidhm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="moderator_index.html">Do mhodhnóirí</a></li>
-<li class="toctree-l2"><a class="reference internal" href="guest.html">Glac páirt i nglao nó i gcomhrá mar aoi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk_basics.html">Bunúsacha Nextcloud Talk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_features.html">Gnéithe Casta Plé</a></li>
+<li class="toctree-l2"><a class="reference internal" href="join_a_call_or_chat_as_guest.html">Glac páirt i nglao nó comhrá mar aoi</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Cliaint Deisce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ag socrú do shainroghanna</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Rochtain uilíoch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Ag baint úsáide as fíordheimhniú dhá-fhachtóir</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bainistigh brabhsálaithe agus gléasanna nasctha</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Stóráil Sheachtrach</a></li>
 </ul>
 
         </div>
@@ -118,54 +105,14 @@
              
   <section id="talk">
 <h1>Caint<a class="headerlink" href="#talk" title="Link to this heading"></a></h1>
-<p>Cuireann Nextcloud Talk comhrá fuaime/físe agus téacs ar fáil atá comhtháite i Nextcloud. Tá sé ar fáil mar chomhéadan gréasáin, cliant deisce, agus aipeanna soghluaiste do Android agus iOS.</p>
-<p>Is féidir leat tuilleadh eolais a fháil faoi Nextcloud Talk ar ár suíomh gréasáin &lt;<a class="reference external" href="https://nextcloud.com/talk/">https://nextcloud.com/talk/</a>&gt;`_. Íoslódáil na cliaint deisce agus soghluaiste ó <a class="reference external" href="https://nextcloud.com/install/">nextcloud.com/install</a>.</p>
-<img alt="Talk call in grid view showing multiple participants" src="../../_images/talk-grid-view.png" />
+<p>Cuireann Nextcloud Talk comhrá fuaime/físe agus téacs ar fáil atá comhtháite in Nextcloud. Tairgeann sé comhéadan gréasáin chomh maith le haipeanna soghluaiste</p>
+<p>Is féidir leat tuilleadh eolais a fháil faoi Nextcloud Talk <a class="reference external" href="https://nextcloud.com/talk/">ar ár suíomh Gréasáin</a>.</p>
+<img alt="../../_images/talk-grid-view.png" src="../../_images/talk-grid-view.png" />
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="chat_index.html">Comhrá</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="chat.html">Teachtaireachtaí a sheoladh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="messages.html">Idirghníomhú le teachtaireachtaí</a></li>
-<li class="toctree-l2"><a class="reference internal" href="message_integrations.html">Aipeanna a chomhtháthú le teachtaireachtaí</a></li>
-<li class="toctree-l2"><a class="reference internal" href="attachments.html">Ceangaltáin</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="conversation_index.html">Comhráite</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="conversations.html">Comhráite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="open_conversations.html">Comhráite oscailte</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appearance.html">Dealramh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="files_integration.html">Comhtháthú comhad</a></li>
-<li class="toctree-l2"><a class="reference internal" href="calendar_integration.html">Comhtháthú féilire le Talk</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="call_index.html">Glaonna</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="call.html">Ag dul isteach i nglao</a></li>
-<li class="toctree-l2"><a class="reference internal" href="call_screenshare.html">Comhroinnt scáileáin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="call_views.html">Leagan amach glaonna</a></li>
-<li class="toctree-l2"><a class="reference internal" href="call_transcription.html">Trascríobh agus aistriúchán</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="federation_index.html">Cónaidhm</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="federation_index.html#sending-an-invitation">Cuireadh á sheoladh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="federation_index.html#accepting-an-invitation">Glacadh le cuireadh</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="moderator_index.html">Do mhodhnóirí</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="webinar.html">Seimineár Gréasáin agus stocaireacht</a></li>
-<li class="toctree-l2"><a class="reference internal" href="call_recording.html">Taifeadadh glaonna</a></li>
-<li class="toctree-l2"><a class="reference internal" href="breakout_rooms.html">Seomraí scoite amach</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bots.html">Botanna agus orduithe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="matterbridge.html">Droichead an Mháthair</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="guest.html">Glac páirt i nglao nó i gcomhrá mar aoi</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="guest.html#joining-a-chat">Ag dul isteach i gcomhrá</a></li>
-<li class="toctree-l2"><a class="reference internal" href="guest.html#joining-a-call">Ag dul isteach i nglao</a></li>
-<li class="toctree-l2"><a class="reference internal" href="guest.html#starting-a-screen-share">Ag tosú comhroinnt scáileáin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="guest.html#full-screen-and-other-settings">Lánscáileán agus socruithe eile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="guest.html#joining-as-an-email-guest">Ag páirt a ghlacadh mar aoi ríomhphoist</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="talk_basics.html">Bunúsacha Nextcloud Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced_features.html">Gnéithe Casta Plé</a></li>
+<li class="toctree-l1"><a class="reference internal" href="join_a_call_or_chat_as_guest.html">Glac páirt i nglao nó comhrá mar aoi</a></li>
 </ul>
 </div>
 </section>
@@ -174,8 +121,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../groupware/sync_windows10.html" class="btn btn-neutral float-left" title="Ag sioncrónú le Windows 10" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="chat_index.html" class="btn btn-neutral float-right" title="Comhrá" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../groupware/user_migration.html" class="btn btn-neutral float-left" title="Migrate data between instances" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="talk_basics.html" class="btn btn-neutral float-right" title="Bunúsacha Nextcloud Talk" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -279,25 +226,16 @@
   
     
   
-    
-  
-    
-  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    
-    <button type="button"
-            class="rst-current-version"
-            data-toggle="rst-current-version"
-            aria-expanded="false"
-            aria-controls="rst-other-versions-user">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       🌐 Irish
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-    </button>
-    <div id="rst-other-versions-user" class="rst-other-versions">
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
       <dl>
         <dt>🌐 Teangacha</dt>
         
@@ -472,22 +410,6 @@
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lo/"
-               
-            >
-              lo
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lt/"
-               
-            >
-              lt
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -656,14 +578,6 @@
           </dd>
         
           <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/33/user_manual"
-               
-            >
-              33
-            </a>
-          </dd>
-        
-          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -671,20 +585,31 @@
             </a>
           </dd>
         
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Íoslódálacha</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Ar Léigh na Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Tionscadal Baile</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Tógann</a>
+        </dd>
       </dl>
     </div>
   </div>
-  <script>
-    /* Keep aria-expanded in sync with the RTD theme toggle class. */
-    (function () {
-      var btn = document.querySelector('.rst-current-version[aria-expanded]');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      });
-    }());
-  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

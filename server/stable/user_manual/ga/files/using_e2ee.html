@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ag baint úsáide as criptiú foirceann go foirceann &mdash; Nextcloud latest User Manual latest documentation</title>
+  <title>Using end-to-end encryption &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -30,8 +30,8 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Earraí grúpa" href="../groupware/index.html" />
-    <link rel="prev" title="Ag baint úsáide as criptiú taobh an fhreastalaí" href="encrypting_files.html" />
+    <link rel="next" title="Comhroinnt" href="sharing.html" />
+    <link rel="prev" title="Ag criptiú do chuid comhad Nextcloud ar an bhfreastalaí" href="encrypting_files.html" />
    
   
 </head>
@@ -52,18 +52,9 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
-
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Search docs</label>
-    <div class="wy-form-search">
-      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
-      <input id="rtd-search-input"
-             type="text"
-             name="q"
-             placeholder="Search docs"
-             aria-label="Search docs" />
-    </div>
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -71,33 +62,39 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest réamhrá lámhleabhar úsáideora</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Comhéadan Gréasáin Nextcloud</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Comhaid &amp; sioncronú</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="security.html">Security &amp; encryption</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="encrypting_files.html">Ag baint úsáide as criptiú taobh an fhreastalaí</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Ag baint úsáide as criptiú foirceann go foirceann</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#enabling-e2ee">Ag cumasú E2EE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#encrypting-a-folder">Fillteán a chriptiú</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adding-an-e2ee-device">Gléas E2EE á chur leis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#displaying-the-mnemonic">Ag taispeáint an mnemonic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Teacht ar do chuid comhad ag baint úsáide as comhéadan Gréasáin Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Rochtain ar chomhaid Nextcloud a fháil ag baint úsáide as WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Comhaid scriosta a bhainistiú</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Sioncronú deisce agus soghluaiste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Ag criptiú do chuid comhad Nextcloud ar an bhfreastalaí</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using end-to-end encryption</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-e2ee">Enabling E2EE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#encrypting-a-folder">Encrypting a folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-an-e2ee-device">Adding an E2EE device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#displaying-the-mnemonic">Displaying the mnemonic</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Comhroinnt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Scaireanna Cónaidhme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Uaslódálacha gan ainm a dhéanamh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Uaslódálacha comhaid mhóra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Cuóta stórála</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Rialú leagan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Tionscadail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Úinéireacht Aistrithe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Ag baint úsáide as Scaireanna Cónaidhme</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Earraí grúpa</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Caint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Cliaint Deisce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ag socrú do shainroghanna</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Rochtain uilíoch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Ag baint úsáide as fíordheimhniú dhá-fhachtóir</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bainistigh brabhsálaithe agus gléasanna nasctha</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Stóráil Sheachtrach</a></li>
 </ul>
 
         </div>
@@ -115,8 +112,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Comhaid &amp; sioncronú</a></li>
-          <li class="breadcrumb-item"><a href="security.html">Security &amp; encryption</a></li>
-      <li class="breadcrumb-item active">Ag baint úsáide as criptiú foirceann go foirceann</li>
+      <li class="breadcrumb-item active">Using end-to-end encryption</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/using_e2ee.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -127,92 +123,95 @@
            <div itemprop="articleBody">
              
   <section id="using-end-to-end-encryption">
-<h1>Ag baint úsáide as criptiú foirceann go foirceann<a class="headerlink" href="#using-end-to-end-encryption" title="Link to this heading"></a></h1>
-<p>Má tá sé cumasaithe ar thaobh an fhreastalaí, cuireann Nextcloud an fhéidearthacht ar fáil do chuid comhad a chriptiú ar do ghléasanna. Tugtar criptiú ó cheann ceann go ceann, nó E2EE, air seo, toisc go bhfuil na comhaid criptithe ar do ghléas agus nach ndéantar iad a dhíchriptiú ach ar do ghléas. Ní fheiceann an freastalaí na comhaid neamhchriptithe riamh, rud a chosnaíonn príobháideacht an úsáideora agus slándáil sonraí a thuilleadh.</p>
+<h1>Using end-to-end encryption<a class="headerlink" href="#using-end-to-end-encryption" title="Link to this heading"></a></h1>
+<p>If enabled server side, Nextcloud provides the possibility to encrypt your files on your devices.
+This is called end-to-end encryption, or E2EE, because the files are encrypted on your device and only decrypted on your device.
+The server never sees the unencrypted files, further protecting user privacy and data security.</p>
 <section id="enabling-e2ee">
-<h2>Ag cumasú E2EE<a class="headerlink" href="#enabling-e2ee" title="Link to this heading"></a></h2>
-<p>If your administrator has enabled the <a class="reference external" href="https://apps.nextcloud.com/apps/end_to_end_encryption">End-to-End Encryption app</a>, you can start using it from one of your devices.
-Open the settings of the Nextcloud client and look for the E2EE encryption settings.</p>
+<h2>Enabling E2EE<a class="headerlink" href="#enabling-e2ee" title="Link to this heading"></a></h2>
+<p>If your administrator enabled the [End-to-End Encryption app](<a class="reference external" href="https://apps.nextcloud.com/apps/end_to_end_encryption">https://apps.nextcloud.com/apps/end_to_end_encryption</a>), you can start using it from one of your devices.
+Open the settings of the Nextcloud client and look for the EE2E encryption settings.</p>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-setup.png"><img alt="Socraigh E2EE ar an gcliant deisce" src="../../_images/e2ee-desktop-setup.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-setup.png"><img alt="Setup E2EE on the desktop client" src="../../_images/e2ee-desktop-setup.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-setup.png"><img alt="Socraigh E2EE ar Android" src="../../_images/e2ee-android-setup.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-setup.png"><img alt="Setup E2EE on Android" src="../../_images/e2ee-android-setup.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-1.png"><img alt="Socraigh E2EE ar iOS céim 1" src="../../_images/e2ee-ios-setup-1.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-1.png"><img alt="Setup E2EE on iOS step 1" src="../../_images/e2ee-ios-setup-1.png" style="width: 400px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-2.png"><img alt="Socraigh E2EE ar iOS céim 2" src="../../_images/e2ee-ios-setup-2.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-2.png"><img alt="Setup E2EE on iOS step 2" src="../../_images/e2ee-ios-setup-2.png" style="width: 400px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-3.png"><img alt="Socraigh E2EE ar iOS céim 3" src="../../_images/e2ee-ios-setup-3.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-3.png"><img alt="Setup E2EE on iOS step 3" src="../../_images/e2ee-ios-setup-3.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Ní féidir criptiú a chumasú ar fhillteán sa bhrabhsálaí. Ní mór é seo a dhéanamh ar aip chliaint, bíodh sé ina chliant deisce nó soghluaiste.</p>
+<p>It is not possible to enable encryption on a folder in the browser. This must be done on a client app, either a desktop or mobile client.</p>
 </div>
 </details><br /></section>
 <section id="encrypting-a-folder">
-<h2>Fillteán a chriptiú<a class="headerlink" href="#encrypting-a-folder" title="Link to this heading"></a></h2>
+<h2>Encrypting a folder<a class="headerlink" href="#encrypting-a-folder" title="Link to this heading"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Ní féidir leat criptiú a chumasú ach ar fhillteáin fholmha.</p>
+<p>You can only enable encryption on empty folders.</p>
 </div>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-1.png"><img alt="Ag criptiú fillteáin ar an gcliant deisce céim 1" src="../../_images/e2ee-desktop-encrypt-1.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-1.png"><img alt="Encrypting a folder on the desktop client step 1" src="../../_images/e2ee-desktop-encrypt-1.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-2.png"><img alt="Fillteán a chriptiú ar an gcliant deisce céim 2" src="../../_images/e2ee-desktop-encrypt-2.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-2.png"><img alt="Encrypting a folder on the desktop client step 2" src="../../_images/e2ee-desktop-encrypt-2.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-3.png"><img alt="Ag criptiú fillteáin ar an gcliant deisce céim 3" src="../../_images/e2ee-desktop-encrypt-3.png" style="width: 750px;" />
-</a>
-</details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-encrypt.png"><img alt="Fillteán a chriptiú ar ghléas Android" src="../../_images/e2ee-android-encrypt.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-3.png"><img alt="Encrypting a folder on the desktop client step 3" src="../../_images/e2ee-desktop-encrypt-3.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-encrypt.png"><img alt="Fillteán a chriptiú ar ghléas iOS" src="../../_images/e2ee-ios-encrypt.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-encrypt.png"><img alt="Encrypting a folder on an Android device" src="../../_images/e2ee-android-encrypt.png" style="width: 400px;" />
+</a>
+</details><details>
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-encrypt.png"><img alt="Encrypting a folder on an iOS device" src="../../_images/e2ee-ios-encrypt.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Ní féidir criptiú a chumasú ar fhillteán sa bhrabhsálaí. Ní mór é seo a dhéanamh ar aip chliaint, bíodh sé ina chliant deisce nó soghluaiste.</p>
+<p>It is not possible to enable encryption on a folder in the browser. This must be done on a client app, either a desktop or mobile client.</p>
 </div>
 </details><br /></section>
 <section id="adding-an-e2ee-device">
-<h2>Gléas E2EE á chur leis<a class="headerlink" href="#adding-an-e2ee-device" title="Link to this heading"></a></h2>
+<h2>Adding an E2EE device<a class="headerlink" href="#adding-an-e2ee-device" title="Link to this heading"></a></h2>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-add.png"><img alt="Socraigh cliant deisce nua" src="../../_images/e2ee-desktop-add.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-add.png"><img alt="Setup a new desktop client" src="../../_images/e2ee-desktop-add.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-add.png"><img alt="Socraigh gléas Android nua" src="../../_images/e2ee-android-add.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-add.png"><img alt="Setup a new Android device" src="../../_images/e2ee-android-add.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-add.png"><img alt="Socraigh gléas iOS nua" src="../../_images/e2ee-ios-add.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-add.png"><img alt="Setup a new iOS device" src="../../_images/e2ee-ios-add.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>Web</summary><p>Sa bhrabhsálaí, cumasaigh E2EE ar dtús sna socruithe pearsanta. Tá gá leis seo, toisc nach bhfuil E2EE chomh slán sa bhrabhsálaí, rud a éilíonn ort muinín iomlán a bheith agat as an riarthóir nach n-athróidh sé an cód foinse a fhorghníomhóidh an brabhsálaí. Tá fillteáin E2EE inléite amháin faoi láthair. Dá bhrí sin, ní féidir comhad E2EE a chur leis, a bhaint, a chur in eagar ná a roinnt ón mbrabhsálaí.</p>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-1.png"><img alt="Socraigh seisiún brabhsálaí nua céim 1" src="../../_images/e2ee-web-add-1.png" style="width: 750px;" />
+<summary>Web</summary><p>In the browser, first enable E2EE in the personal settings. This is needed, as E2EE is less secure in the browser, requiring you to fully trust the administrator to not alter the source code the browser will execute.
+E2EE folders are currently read-only. Therefore, it is not possible to add, remove, edit, or share an E2EE file from the browser.</p>
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-1.png"><img alt="Setup a new browser session step 1" src="../../_images/e2ee-web-add-1.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-2.png"><img alt="Socraigh seisiún brabhsálaí nua céim 2" src="../../_images/e2ee-web-add-2.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-2.png"><img alt="Setup a new browser session step 2" src="../../_images/e2ee-web-add-2.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-3.png"><img alt="Socraigh seisiún brabhsálaí nua céim 3" src="../../_images/e2ee-web-add-3.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-3.png"><img alt="Setup a new browser session step 3" src="../../_images/e2ee-web-add-3.png" style="width: 750px;" />
 </a>
 </details><br /></section>
 <section id="displaying-the-mnemonic">
-<h2>Ag taispeáint an mnemonic<a class="headerlink" href="#displaying-the-mnemonic" title="Link to this heading"></a></h2>
-<p>Is liosta focal é an mnemonic a úsáidtear chun do chuid comhad a chriptiú agus a dhíchriptiú. Tá sé tábhachtach an mnemonic seo a choinneáil slán, mar is é an t-aon bhealach é chun rochtain a fháil ar do chuid comhad má chailleann tú rochtain ar do ghléas. Má chailleann tú rochtain ar do mnemonic, caillfidh tú rochtain ar do chuid comhad.</p>
+<h2>Displaying the mnemonic<a class="headerlink" href="#displaying-the-mnemonic" title="Link to this heading"></a></h2>
+<p>The mnemonic is a list of words that is used to encrypt and decrypt your files. It is important to keep this mnemonic safe, as it is the only way to access your files if you lose access to your device. If you lose access to your mnemonic, you will lose access to your files.</p>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-mnemonic.png"><img alt="Ag taispeáint an mnemonic ar an gcliant deisce" src="../../_images/e2ee-desktop-mnemonic.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-mnemonic.png"><img alt="Displaying the mnemonic on the desktop client" src="../../_images/e2ee-desktop-mnemonic.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-mnemonic.png"><img alt="Ag taispeáint an mnemonic ar ghléas Android" src="../../_images/e2ee-android-mnemonic.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-mnemonic.png"><img alt="Displaying the mnemonic on an Android device" src="../../_images/e2ee-android-mnemonic.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-mnemonic.png"><img alt="Ag taispeáint an mnemonic ar ghléas iOS" src="../../_images/e2ee-ios-mnemonic.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-mnemonic.png"><img alt="Displaying the mnemonic on an iOS device" src="../../_images/e2ee-ios-mnemonic.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Ní féidir an mnemonic a thaispeáint sa bhrabhsálaí.</p>
+<p>It is not possible to display the mnemonic in the browser.</p>
 </div>
 </details><br /></section>
 </section>
@@ -221,8 +220,8 @@ Open the settings of the Nextcloud client and look for the E2EE encryption setti
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="encrypting_files.html" class="btn btn-neutral float-left" title="Ag baint úsáide as criptiú taobh an fhreastalaí" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../groupware/index.html" class="btn btn-neutral float-right" title="Earraí grúpa" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="encrypting_files.html" class="btn btn-neutral float-left" title="Ag criptiú do chuid comhad Nextcloud ar an bhfreastalaí" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sharing.html" class="btn btn-neutral float-right" title="Comhroinnt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -326,25 +325,16 @@ Open the settings of the Nextcloud client and look for the E2EE encryption setti
   
     
   
-    
-  
-    
-  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    
-    <button type="button"
-            class="rst-current-version"
-            data-toggle="rst-current-version"
-            aria-expanded="false"
-            aria-controls="rst-other-versions-user">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       🌐 Irish
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-    </button>
-    <div id="rst-other-versions-user" class="rst-other-versions">
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
       <dl>
         <dt>🌐 Teangacha</dt>
         
@@ -519,22 +509,6 @@ Open the settings of the Nextcloud client and look for the E2EE encryption setti
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lo/"
-               
-            >
-              lo
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lt/"
-               
-            >
-              lt
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -703,14 +677,6 @@ Open the settings of the Nextcloud client and look for the E2EE encryption setti
           </dd>
         
           <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/33/user_manual"
-               
-            >
-              33
-            </a>
-          </dd>
-        
-          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -718,20 +684,31 @@ Open the settings of the Nextcloud client and look for the E2EE encryption setti
             </a>
           </dd>
         
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Íoslódálacha</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Ar Léigh na Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Tionscadal Baile</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Tógann</a>
+        </dd>
       </dl>
     </div>
   </div>
-  <script>
-    /* Keep aria-expanded in sync with the RTD theme toggle class. */
-    (function () {
-      var btn = document.querySelector('.rst-current-version[aria-expanded]');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      });
-    }());
-  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

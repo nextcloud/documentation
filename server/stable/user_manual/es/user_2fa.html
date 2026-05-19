@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Usar la verificación en dos pasos &mdash; documentación de Nextcloud latest User Manual - latest</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -53,18 +53,9 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
-
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Buscar documentos</label>
-    <div class="wy-form-search">
-      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
-      <input id="rtd-search-input"
-             type="text"
-             name="q"
-             placeholder="Buscar documentos"
-             aria-label="Buscar documentos" />
-    </div>
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,18 +63,16 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Introducción al manual de usuario de Nextcloud latest</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">La interfaz web de Nextcloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files/index.html">Archivos y sincronización</a></li>
 <li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Software de trabajo en grupo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Clients</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Gestionar sus preferencias</a></li>
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Acceso universal</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usar la verificación en dos pasos</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Configurar la verificación en dos pasos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Recovery codes if you lose your second factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">Los códigos de recuperación en caso de que pierda su factor de autentificación en 2 pasos.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Iniciar sesión con la verificación en dos pasos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Usar la verificación en dos pasos con llaves físicas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Usar aplicaciones clientes con la verificación en dos pasos</a></li>
@@ -91,6 +80,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="session_management.html">Gestionar las conexiones entre navegadores y dispositivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">Almacenamiento Externo</a></li>
 </ul>
 
         </div>
@@ -120,41 +110,30 @@
   <section id="using-two-factor-authentication">
 <h1>Usar la verificación en dos pasos<a class="headerlink" href="#using-two-factor-authentication" title="Link to this heading"></a></h1>
 <p>La verificación en dos pasos es una manera de proteger su cuenta de Nextcloud contra el acceso no autorizado. Su funcionamiento requiere dos “pruebas” de su identidad. Por ejemplo, <em>algo que usted conoce</em> (como una contraseña) y <em>algo que usted tiene</em> (como una llave física). Normalmente, el primer paso es una contraseña como la que ya tiene y el segundo paso puede ser un mensaje de texto recibido o un código generado en un teléfono u otro dispositivo (<em>algo que tienes</em>). Nextcloud soporta varios segundos pasos, y se pueden agregar más.</p>
-<p>Once a two-factor authentication app has been enabled by your administrator,
-you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Gestionar sus preferencias</span></a>.</p>
+<p>Cuando su administrador active una aplicación de verificación en dos pasos, usted puede configurarla en sus <a class="reference internal" href="userpreferences.html"><span class="doc">Gestionar sus preferencias</span></a>. A continuación puede verse cómo:</p>
 <section id="configuring-two-factor-authentication">
 <h2>Configurar la verificación en dos pasos<a class="headerlink" href="#configuring-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>In your personal settings, look up the <strong>Second-factor Auth</strong> setting. In this
-example this is TOTP, a Google Authenticator compatible time-based code:</p>
+<p>En su configuración personal, busque el ajuste de Verificación en dos pasos. En este ejemplo usaremos TOTP, un código basado en el tiempo compatible con Google Authenticator:</p>
 <figure class="align-default">
 <img alt="Configuración TOTP" src="../_images/totp_enable.png" />
 </figure>
 <p>A continuación verá su código secreto y un código QR que puede ser escaneado por la aplicación TOTP en su teléfono (u otro dispositivo). En función de la aplicación o herramienta, tendrá que copiar el código o escanear el QR, y su dispositivo le mostrará un código de inicio de sesión que cambia cada 30 segundos.</p>
 </section>
-<section id="recovery-codes-if-you-lose-your-second-factor">
-<h2>Recovery codes if you lose your second factor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Link to this heading"></a></h2>
-<p>You should always generate backup codes for 2FA. If your second factor device
-gets stolen or stops working, you can use one of these codes to unlock your
-account. It effectively functions as a backup second factor. To get the backup
-codes, go to your personal settings and look under <strong>Second-factor Auth</strong>
-settings. Choose <em>Generate backup codes</em>:</p>
+<section id="recovery-codes-in-case-you-lost-your-2nd-factor">
+<h2>Los códigos de recuperación en caso de que pierda su factor de autentificación en 2 pasos.<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Link to this heading"></a></h2>
+<p>Siempre debe generar códigos de respaldo para la verificación en dos pasos. Si su dispositivo de segundo paso es robado o deja de funcionar, usted podrá utilizar uno de estos códigos para desbloquear su cuenta. Funciona como copia de seguridad del segundo paso. Para obtener los códigos de respaldo, vaya a su Configuración personal y busque en los ajustes de Verificación en dos pasos. Seleccione <em>Generar códigos de respaldo</em>:</p>
 <figure class="align-default">
 <img alt="Generador de códigos de respaldo 2FA" src="../_images/2fa_backupcode_1.png" />
 </figure>
-<p>You will then see a list of one-time-use backup codes:</p>
+<p>A continuación, le mostrarán una lista de códigos de respaldo de un solo uso:</p>
 <figure class="align-default">
 <img alt="Códigos de respaldo 2FA" src="../_images/2fa_backupcode_2.png" />
 </figure>
-<p>Store these codes somewhere safe where you can find them. Do not keep them
-with your second factor (such as your mobile phone), but store them separately
-so that losing one does not mean losing the other.</p>
+<p>Debería guardar estos códigos en un lugar seguro, donde los pueda encontrar más adelante. No los guarde en el mismo sitio que su segundo paso, como su teléfono móvil, sino que lo ponga en un lugar en el cual, si pierde uno, siga teniendo acceso al otro. Guardarlos en casa es probablemente la mejor opción.</p>
 </section>
 <section id="logging-in-with-two-factor-authentication">
 <h2>Iniciar sesión con la verificación en dos pasos<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>After you log out and log in again, you will see a prompt to enter the
-TOTP code in your browser. If you have enabled more than one second factor,
-you will see a selection screen where you can choose which method to use for
-this login. Select TOTP:</p>
+<p>Tras cerrar sesión y al necesitar iniciarla de nuevo, Nextcloud le solicitará que introduzca el código TOTP en su navegador. Si ha configurado otro segundo paso además de TOTP, verá una pantalla de selección donde puede elegir el método del segundo paso para este inicio de sesión. Seleccione TOTP:</p>
 <figure class="align-default">
 <img alt="Seleccionando un método de autenticación de dos factores." src="../_images/totp_login_1.png" />
 </figure>
@@ -165,9 +144,7 @@ this login. Select TOTP:</p>
 <p>Si el código es correcto, será redirigido a su cuenta de Nextcloud.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Since the code is time-based, it is important that your server’s and
-your smartphone’s clock are almost in sync. A time drift of a few seconds
-won’t be a problem.</p>
+<p>Dado que el código está basado en la hora actual, es importante que la hora de su servidor y su teléfono estén sincronizadas. Mientras la desviación temporal sea de unos pocos segundos no habrá problema.</p>
 </div>
 </section>
 <section id="using-two-factor-authentication-with-hardware-tokens">
@@ -190,15 +167,11 @@ won’t be a problem.</p>
 </section>
 <section id="using-client-applications-with-two-factor-authentication">
 <h2>Usar aplicaciones clientes con la verificación en dos pasos<a class="headerlink" href="#using-client-applications-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>Once you have enabled 2FA, your clients will no longer be able to connect with
-just your password unless they also have support for two-factor authentication.
-To solve this, you should generate device-specific passwords for them. See
-<a class="reference internal" href="session_management.html"><span class="doc">Gestionar las conexiones entre navegadores y dispositivos</span></a> for more information on how to do this.</p>
+<p>Cuando se ha habilitado la verificación en dos pasos, sus clientes dejarán de poder conectarse con su contraseña de inicio de sesión, a no ser que soporten la verificación en dos pasos. Para solventar este problema, debe generar contraseñas de dispositivo para ellos. Véase más información sobre el proceso en la sección <a class="reference internal" href="session_management.html"><span class="doc">Gestionar las conexiones entre navegadores y dispositivos</span></a>.</p>
 </section>
 <section id="considerations">
 <h2>Consideraciones<a class="headerlink" href="#considerations" title="Link to this heading"></a></h2>
-<p>If you use WebAuthn to log in to your Nextcloud, be sure to not use the same token for 2FA, as this
-would mean you are again only using a single factor.</p>
+<p>Si usa WebAuthn para iniciar sesión en su Nextcloud, asegúrese de no usar el mismo token para 2FA ya que esto significaría que está usando un solo factor.</p>
 </section>
 </section>
 
@@ -311,25 +284,16 @@ would mean you are again only using a single factor.</p>
   
     
   
-    
-  
-    
-  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    
-    <button type="button"
-            class="rst-current-version"
-            data-toggle="rst-current-version"
-            aria-expanded="false"
-            aria-controls="rst-other-versions-user">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       🌐 Spanish
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-    </button>
-    <div id="rst-other-versions-user" class="rst-other-versions">
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
       <dl>
         <dt>🌐 Languages</dt>
         
@@ -498,22 +462,6 @@ would mean you are again only using a single factor.</p>
                
             >
               Korean
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lo/"
-               
-            >
-              lo
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lt/"
-               
-            >
-              lt
             </a>
           </dd>
         
@@ -688,14 +636,6 @@ would mean you are again only using a single factor.</p>
           </dd>
         
           <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/33/user_manual"
-               
-            >
-              33
-            </a>
-          </dd>
-        
-          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -703,20 +643,31 @@ would mean you are again only using a single factor.</p>
             </a>
           </dd>
         
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Descargas</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>En Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Página principal del proyecto</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Versiones compiladas</a>
+        </dd>
       </dl>
     </div>
   </div>
-  <script>
-    /* Keep aria-expanded in sync with the RTD theme toggle class. */
-    (function () {
-      var btn = document.querySelector('.rst-current-version[aria-expanded]');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      });
-    }());
-  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

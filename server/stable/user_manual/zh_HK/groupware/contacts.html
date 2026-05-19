@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>使用聯絡人應用程式 &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -53,18 +53,9 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
-
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Search docs</label>
-    <div class="wy-form-search">
-      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
-      <input id="rtd-search-input"
-             type="text"
-             name="q"
-             placeholder="Search docs"
-             aria-label="Search docs" />
-    </div>
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,8 +63,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest 用戶手冊介紹</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../activity.html">使用「動態」應用程式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud Web 介面</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">檔案與同步</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">使用聯絡人應用程式</a><ul>
@@ -110,15 +100,16 @@
 <li class="toctree-l2"><a class="reference internal" href="sync_kde.html">與 KDE Kontact 同步</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">與 GNOME 桌面同步</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">與 Windows 10 同步</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">Migrate data between instances</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">桌面客戶端</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">設置您的偏好</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">普遍存取</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">使用雙重身份驗證</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">管理已連接的瀏覽器和裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">外置儲存</a></li>
 </ul>
 
         </div>
@@ -173,7 +164,7 @@ in the application.</p>
 <h3>導入虛擬聯絡人<a class="headerlink" href="#importing-virtual-contacts" title="Link to this heading"></a></h3>
 <p>使用 VCF/vCard 檔案導入聯絡人：</p>
 <ol class="arabic">
-<li><p>An <strong>Import contacts</strong> button is shown when you have no contacts yet.</p></li>
+<li><p>在屏幕的左上角，您會看到&quot;導入聯絡人&quot;按鈕，該按鈕僅在您尚未添加任何聯絡人時顯示。</p></li>
 <li><p>在左側邊欄底部找到&quot;設置&quot;，在齒輪按鈕旁邊：</p>
 <blockquote>
 <div><figure class="align-default">
@@ -248,7 +239,11 @@ in the application.</p>
 <figure class="align-default">
 <img alt="../../_images/contact_picture_options.png" src="../../_images/contact_picture_options.png" />
 </figure>
-<p>如系統管理員於群組協作設定中允許從社交媒體更新，用戶亦可直接從社交網絡擷取聯絡人圖片。在此情況下，聯絡人需於社交媒體部分儲存用戶名稱。每個受支援的社交網絡項目均會為相應平台新增下載項目。目前支援以下社交網絡：</p>
+<p>If the administrator allows updates from social media in the admin groupware settings,
+users can also retrieve contact pictures directly from social networks.
+In that case the contact needs to have stored a user name in the social media section.
+Each entry of a supported social network adds a download entry for the respective
+network. Currently, the following social networks are supported:</p>
 <ul class="simple">
 <li><p>Instagram</p></li>
 <li><p>Mastodon</p></li>
@@ -258,7 +253,11 @@ in the application.</p>
 <li><p>Telegram</p></li>
 <li><p>Gravatar</p></li>
 </ul>
-<p>只有在無需登入相關社交網絡且為公開可用的情況下，才會擷取社交頭像。你可於聯絡人頁面的用戶設定中啟用從社交媒體自動更新。系統會每週根據社交資料更新頭像，並依照上述順序檢查各社交網絡。</p>
+<p>Social avatars are only retrieved if publicly available without login to the
+respective social network. In the contact user settings on the contacts page,
+you can activate auto-updates from social media. This will update avatars
+with social profile data on a weekly basis. Social networks are checked in the
+order listed above.</p>
 </section>
 </section>
 <section id="managing-multiple-contacts-at-a-time">
@@ -346,8 +345,8 @@ in the application.</p>
 <section id="team-options">
 <h3>團隊選項<a class="headerlink" href="#team-options" title="Link to this heading"></a></h3>
 <p>有多種自解釋的選項可用於配置團隊，以管理邀請和成員資格、團隊的可見性、允許其他團隊成員及密碼保護。</p>
-<p><strong>防止團隊成為另一團隊的成員</strong></p>
-<p>啟用此選項後，該團隊將不能再被直接加入為另一團隊的成員。然而，此限制僅適用於新的直接加入。現有成員關係會被保留，如該團隊屬於某個父團隊，而該父團隊被加入至其他地方，則仍可透過繼承方式成為成員。</p>
+<p><strong>Prevent teams from being a member of another team</strong></p>
+<p>When this option is enabled, the team can no longer be directly added as a member of another team. However, this restriction only applies to new direct additions. Existing memberships are kept, and inherited memberships are still possible if this team belongs to a parent team that gets added elsewhere.</p>
 </section>
 <section id="shared-items">
 <h3>分享項目<a class="headerlink" href="#shared-items" title="Link to this heading"></a></h3>
@@ -471,25 +470,16 @@ in the application.</p>
   
     
   
-    
-  
-    
-  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    
-    <button type="button"
-            class="rst-current-version"
-            data-toggle="rst-current-version"
-            aria-expanded="false"
-            aria-controls="rst-other-versions-user">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       🌐 zh-HK
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-    </button>
-    <div id="rst-other-versions-user" class="rst-other-versions">
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
       <dl>
         <dt>🌐 語言</dt>
         
@@ -662,22 +652,6 @@ in the application.</p>
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lo/"
-               
-            >
-              lo
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lt/"
-               
-            >
-              lt
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -846,14 +820,6 @@ in the application.</p>
           </dd>
         
           <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/33/user_manual"
-               
-            >
-              33
-            </a>
-          </dd>
-        
-          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -861,20 +827,31 @@ in the application.</p>
             </a>
           </dd>
         
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>下載</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>於 Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">項目主頁</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Builds</a>
+        </dd>
       </dl>
     </div>
   </div>
-  <script>
-    /* Keep aria-expanded in sync with the RTD theme toggle class. */
-    (function () {
-      var btn = document.querySelector('.rst-current-version[aria-expanded]');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      });
-    }());
-  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

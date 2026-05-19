@@ -8,9 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zoeken &mdash; Nextcloud latest User Manual latest documentatie</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -25,16 +25,14 @@
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../_static/copybutton.js?v=f281be69"></script>
       <script src="../_static/translations.js?v=e4d38c6a"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.0/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.0/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
       <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
       <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
 
-
-
-
-
-const initStyles = () => {
-    const defaultStyle = document.createElement('style');
-    defaultStyle.textContent = `pre.mermaid {
+const defaultStyle = document.createElement('style');
+defaultStyle.textContent = `pre.mermaid {
     /* Same as .mermaid-container > pre */
     display: block;
     width: 100%;
@@ -45,11 +43,12 @@ pre.mermaid > svg {
     height: 500px;
     width: 100%;
     max-width: 100% !important;
-}`;
-    document.head.appendChild(defaultStyle);
+}
+`;
+document.head.appendChild(defaultStyle);
 
-    const fullscreenStyle = document.createElement('style');
-    fullscreenStyle.textContent = `.mermaid-container {
+const fullscreenStyle = document.createElement('style');
+fullscreenStyle.textContent = `.mermaid-container {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -201,32 +200,10 @@ pre.mermaid > svg {
 .mermaid-fullscreen-modal .mermaid-fullscreen-btn {
     display: none !important;
 }`;
-    document.head.appendChild(fullscreenStyle);
-}
+document.head.appendChild(fullscreenStyle);
 
 // Detect if page has dark background
 const isDarkTheme = () => {
-    // We use a set of heuristics:
-    // 1. Check for common dark mode classes or attributes
-    // 2. Check computed background color brightness
-    if (document.documentElement.classList.contains('dark') ||
-        document.documentElement.getAttribute('data-theme') === 'dark' ||
-        document.body.classList.contains('dark') ||
-        document.body.getAttribute('data-theme') === 'dark') {
-        // console.log("Dark theme detected via class/attribute");
-        return true;
-    }
-    if (document.documentElement.classList.contains('light') ||
-        document.documentElement.getAttribute('data-theme') === 'light' ||
-        document.body.classList.contains('light') ||
-        document.body.getAttribute('data-theme') === 'light') {
-        // console.log("Light theme detected via class/attribute");
-        return false;
-    }
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        // console.log("Dark theme detected via prefers-color-scheme");
-        return true;
-    }
     const bgColor = window.getComputedStyle(document.body).backgroundColor;
     const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
     if (match) {
@@ -234,45 +211,15 @@ const isDarkTheme = () => {
         const g = parseInt(match[2]);
         const b = parseInt(match[3]);
         const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-        // console.log("Background color brightness:", brightness);
         return brightness < 128;
     }
-    // console.log("No dark or light theme detected, defaulting to light theme");
     return false;
 };
 
-let darkTheme = isDarkTheme();
-let modal = null;
-let modalContent = null;
-let previousScrollOffset = [window.scrollX, window.scrollY];
+const load = async () => {
+    await mermaid.run();
 
-const runMermaid = async (rerun) => {
-    console.log("Running mermaid diagrams, rerun =", rerun);
-    // clear all existing mermaid charts
-    let all_mermaids = document.querySelectorAll(".mermaid");
-
-    if (rerun) {
-        all_mermaids.forEach((el) => {
-            if(!el.hasAttribute("data-original-code")) {
-                // store original code
-                // console.log(`Storing original code for first run: `, el.innerHTML);
-                el.setAttribute('data-original-code', el.innerHTML);
-            }
-            if(el.getAttribute("data-processed") === "true") {
-                // remove and restore original
-                el.removeAttribute("data-processed");
-                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
-                el.innerHTML = el.getAttribute('data-original-code');
-            } else {
-                // store original code
-                // console.log(`Storing original code for re-run: `, el.innerHTML);
-                el.setAttribute('data-original-code', el.innerHTML);
-            }
-        });
-        await mermaid.run();
-    }
-
-    all_mermaids = document.querySelectorAll(".mermaid");
+    const all_mermaids = document.querySelectorAll(".mermaid");
     const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
 
     if ("False" === "True") {
@@ -280,10 +227,10 @@ const runMermaid = async (rerun) => {
         if(mermaids_to_add_zoom > 0) {
             var svgs = d3.selectAll("");
             if(all_mermaids.length !== mermaids_processed.length) {
-                setTimeout(() => runMermaid(false), 200);
+                setTimeout(load, 200);
                 return;
             } else if(svgs.size() !== mermaids_to_add_zoom) {
-                setTimeout(() => runMermaid(false), 200);
+                setTimeout(load, 200);
                 return;
             } else {
                 svgs.each(function() {
@@ -299,21 +246,16 @@ const runMermaid = async (rerun) => {
         }
     } else if(all_mermaids.length !== mermaids_processed.length) {
         // Wait for mermaid to process all diagrams
-        setTimeout(() => runMermaid(false), 200);
+        setTimeout(load, 200);
         return;
     }
+
+    const darkTheme = isDarkTheme();
 
     // Stop here if not adding fullscreen capability
     if ("True" !== "True") return;
 
-    if (modal !== null ) {
-        // Destroy existing modal
-        modal.remove();
-        modal = null;
-        modalContent = null;
-    }
-
-    modal = document.createElement('div');
+    const modal = document.createElement('div');
     modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
     modal.setAttribute('role', 'dialog');
     modal.setAttribute('aria-modal', 'true');
@@ -324,8 +266,10 @@ const runMermaid = async (rerun) => {
     `;
     document.body.appendChild(modal);
 
-    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const modalContent = modal.querySelector('.mermaid-container-fullscreen');
     const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    let previousScrollOffset = [window.scrollX, window.scrollY];
 
     const closeModal = () => {
         modal.classList.remove('active');
@@ -344,14 +288,11 @@ const runMermaid = async (rerun) => {
         }
     });
 
+    const allButtons = [];
+
     document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
         if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
             mermaidDiv.closest('.mermaid-fullscreen-modal')) {
-            // Already processed, adjust button class if needed
-            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
-            if (existingBtn) {
-                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
-            }
             return;
         }
 
@@ -409,58 +350,46 @@ const runMermaid = async (rerun) => {
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
+
         container.appendChild(fullscreenBtn);
+        allButtons.push(fullscreenBtn);
     });
-};
 
-const load = async () => {
-    initStyles();
-
-    await runMermaid(true);
-
-    const reRunIfThemeChanges = async () => {
-        const newDarkTheme = isDarkTheme();
-        if (newDarkTheme !== darkTheme) {
-            darkTheme = newDarkTheme;
-            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
-            await mermaid.initialize(
-                {...JSON.parse(
-                    `{"startOnLoad": false}`
-                ),
-                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
-                }
-            );
-            await runMermaid(true);
+    // Update theme classes when theme changes
+    const updateTheme = () => {
+        const dark = isDarkTheme();
+        allButtons.forEach(btn => {
+            if (dark) {
+                btn.classList.add('dark-theme');
+            } else {
+                btn.classList.remove('dark-theme');
+            }
+        });
+        if (dark) {
+            modal.classList.add('dark-theme');
+            modalContent.classList.add('dark-theme');
+            closeBtn.classList.add('dark-theme');
+        } else {
+            modal.classList.remove('dark-theme');
+            modalContent.classList.remove('dark-theme');
+            closeBtn.classList.remove('dark-theme');
         }
     };
 
-    // Update theme classes when theme changes
-    const themeObserver = new MutationObserver(reRunIfThemeChanges);
-    themeObserver.observe(document.documentElement, {
+    // Watch for theme changes
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
         attributes: true,
         attributeFilter: ['class', 'style', 'data-theme']
     });
-    themeObserver.observe(document.body, {
+    observer.observe(document.body, {
         attributes: true,
-        attributeFilter: ['class', 'style', 'data-theme']
+        attributeFilter: ['class', 'style']
     });
 };
 
-
-
-
-
-console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
-mermaid.initialize(
-    {...JSON.parse(
-        `{"startOnLoad": false}`
-    ),
-    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
-    }
-);
-
 window.addEventListener("load", load);
-window.runMermaid = runMermaid;</script>
+</script>
       <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
       <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
     <script src="../_static/js/theme.js"></script>
@@ -489,18 +418,9 @@ window.runMermaid = runMermaid;</script>
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
-
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="#" method="get">
-    <label for="rtd-search-input" class="sr-only">Zoek in documentatie</label>
-    <div class="wy-form-search">
-      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
-      <input id="rtd-search-input"
-             type="text"
-             name="q"
-             placeholder="Zoek in documentatie"
-             aria-label="Zoek in documentatie" />
-    </div>
+    <input type="text" name="q" placeholder="Zoek in documentatie" aria-label="Zoek in documentatie" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -508,17 +428,16 @@ window.runMermaid = runMermaid;</script>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigatiemenu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud latest gebruikershandleiding introductie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">De Nextcloud Web interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files/index.html">Bestanden &amp; synchronisatie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Clients</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Het instellen van jouw voorkeuren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Universele toegang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_2fa.html">Gebruik maken van twee-factor authenticatie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="session_management.html">Beheren van gekoppelde browsers en apparaten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">Externe opslag</a></li>
 </ul>
 
         </div>
@@ -662,27 +581,18 @@ window.runMermaid = runMermaid;</script>
   
     
   
-    
-  
-    
-  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    
-    <button type="button"
-            class="rst-current-version"
-            data-toggle="rst-current-version"
-            aria-expanded="false"
-            aria-controls="rst-other-versions-user">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       🌐 Dutch
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-    </button>
-    <div id="rst-other-versions-user" class="rst-other-versions">
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
       <dl>
-        <dt>🌐 Talen</dt>
+        <dt>🌐 Languages</dt>
         
           <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/ar/"
@@ -855,22 +765,6 @@ window.runMermaid = runMermaid;</script>
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lo/"
-               
-            >
-              lo
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lt/"
-               
-            >
-              lt
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -1039,14 +933,6 @@ window.runMermaid = runMermaid;</script>
           </dd>
         
           <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/33/user_manual"
-               
-            >
-              33
-            </a>
-          </dd>
-        
-          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -1054,20 +940,31 @@ window.runMermaid = runMermaid;</script>
             </a>
           </dd>
         
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Op Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Project Homepagina</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Builds</a>
+        </dd>
       </dl>
     </div>
   </div>
-  <script>
-    /* Keep aria-expanded in sync with the RTD theme toggle class. */
-    (function () {
-      var btn = document.querySelector('.rst-current-version[aria-expanded]');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      });
-    }());
-  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

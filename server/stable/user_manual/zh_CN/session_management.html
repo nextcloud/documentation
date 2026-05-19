@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>管理已连接的浏览器和设备 &mdash; Nextcloud latest User Manual latest 文档</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,6 +31,7 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="外部存储" href="external_storage/index.html" />
     <link rel="prev" title="Using two-factor authentication" href="user_2fa.html" />
    
   
@@ -52,18 +53,9 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
-
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">搜索文档</label>
-    <div class="wy-form-search">
-      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
-      <input id="rtd-search-input"
-             type="text"
-             name="q"
-             placeholder="搜索文档"
-             aria-label="搜索文档" />
-    </div>
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -71,13 +63,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud latest 用户手册介绍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">Nextcloud的Web界面</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files/index.html">文件及同步</a></li>
 <li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="talk/index.html">通话应用</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">桌面客户端</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Setting your preferences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Universal access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_2fa.html">Using two-factor authentication</a></li>
@@ -87,6 +77,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#device-specific-passwords-and-password-changes">更改设备专属密码和密码</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">外部存储</a></li>
 </ul>
 
         </div>
@@ -115,12 +106,10 @@
              
   <section id="manage-connected-browsers-and-devices">
 <h1>管理已连接的浏览器和设备<a class="headerlink" href="#manage-connected-browsers-and-devices" title="Link to this heading"></a></h1>
-<p>The personal settings page gives you an overview of the connected
-browsers and devices.</p>
+<p>个人设置页，可查看连接的访问者和设备。</p>
 <section id="managing-connected-browsers">
 <h2>管理已连接的浏览器<a class="headerlink" href="#managing-connected-browsers" title="Link to this heading"></a></h2>
-<p>The list of connected browsers shows which browsers have connected to your
-account recently:</p>
+<p>在“已连接的浏览器列表”中，您可以查看最近有哪些浏览器连接到您的帐户：</p>
 <figure class="align-default">
 <img alt="浏览器Sessions列表" src="../_images/settings_sessions.png" />
 </figure>
@@ -128,38 +117,29 @@ account recently:</p>
 </section>
 <section id="managing-devices">
 <span id="id1"></span><h2>管理使用的设备<a class="headerlink" href="#managing-devices" title="Link to this heading"></a></h2>
-<p>The list of connected devices shows all the devices and clients you
-generated a device password for and their last activity:</p>
+<p>在已连接设备列表中，您可以看到所有为其生成设备密码的设备和客户端以及它们的最后活动。</p>
 <figure class="align-default">
 <img alt="已连接设备列表" src="../_images/settings_devices.png" />
 </figure>
 <p>您可以点击那个回收站的图标来断开任何列表中的设备的连接</p>
-<p>At the bottom of the list, you can create a new device-specific
-password. You can choose a name to identify the token later. The generated
-password is used for configuring the new client. Ideally, generate individual
-tokens for every device you connect to your account, so you can disconnect
-those individually if necessary:</p>
+<p>底部按钮可以创建新的特定设备密码。您可以稍后选择一个名称来标识令牌。生成的密码用于配置新客户端。理想情况下，为连接到帐户的每个设备生成单独的令牌，以便在必要时可以单独断开这些令牌：</p>
 <figure class="align-default">
 <img alt="添加一个新设备" src="../_images/settings_devices_add.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>You only have access to the device password when creating it.
-Nextcloud does not save the plain password, so enter the password on
-the new client immediately.</p>
+<p>推荐您在创建密码后立刻在新客户端上输入他们，因为用户只有创建密码的时候才能看到他们，Nextcloud不会保存任何明文密码。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>If you use <a class="reference internal" href="user_2fa.html"><span class="doc">Using two-factor authentication</span></a> for your account, device-specific passwords
-are the only way to configure clients. The server will then deny
-connections from clients using your login password.</p>
+<p>If you use <a class="reference internal" href="user_2fa.html"><span class="doc">Using two-factor authentication</span></a> for your account,
+device-specific passwords are the only way to configure clients. The
+server will deny connections of clients using your login password then.</p>
 </div>
 </section>
 <section id="device-specific-passwords-and-password-changes">
 <h2>更改设备专属密码和密码<a class="headerlink" href="#device-specific-passwords-and-password-changes" title="Link to this heading"></a></h2>
-<p>When a password changes in an external user backend, all device-specific
-passwords are marked as invalid. Once you log in with the main password,
-all device-specific passwords are updated and work again.</p>
+<p>对于外部用户后端的密码更改，特定设备的密码会被标记为无效。当使用主密码进行用户帐户登录后，所有特定设备的密码都会更新并再次生效。</p>
 </section>
 </section>
 
@@ -168,6 +148,7 @@ all device-specific passwords are updated and work again.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
         <a href="user_2fa.html" class="btn btn-neutral float-left" title="Using two-factor authentication" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="external_storage/index.html" class="btn btn-neutral float-right" title="外部存储" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -271,25 +252,16 @@ all device-specific passwords are updated and work again.</p>
   
     
   
-    
-  
-    
-  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    
-    <button type="button"
-            class="rst-current-version"
-            data-toggle="rst-current-version"
-            aria-expanded="false"
-            aria-controls="rst-other-versions-user">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       🌐 zh-CN
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-    </button>
-    <div id="rst-other-versions-user" class="rst-other-versions">
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
       <dl>
         <dt>🌐 Languages</dt>
         
@@ -462,22 +434,6 @@ all device-specific passwords are updated and work again.</p>
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lo/"
-               
-            >
-              lo
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lt/"
-               
-            >
-              lt
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -646,14 +602,6 @@ all device-specific passwords are updated and work again.</p>
           </dd>
         
           <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/33/user_manual"
-               
-            >
-              33
-            </a>
-          </dd>
-        
-          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -661,20 +609,31 @@ all device-specific passwords are updated and work again.</p>
             </a>
           </dd>
         
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>下载</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>托管于 Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">项目主页</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">构建</a>
+        </dd>
       </dl>
     </div>
   </div>
-  <script>
-    /* Keep aria-expanded in sync with the RTD theme toggle class. */
-    (function () {
-      var btn = document.querySelector('.rst-current-version[aria-expanded]');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      });
-    }());
-  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

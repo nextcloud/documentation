@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>使用端對端加密 &mdash; Nextcloud latest User Manual latest documentation</title>
+  <title>Using end-to-end encryption &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,8 +31,8 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Groupware" href="../groupware/index.html" />
-    <link rel="prev" title="使用伺服器端加密" href="encrypting_files.html" />
+    <link rel="next" title="檔案共享" href="sharing.html" />
+    <link rel="prev" title="加密你存放在伺服器上的 Nextcloud 檔案" href="encrypting_files.html" />
    
   
 </head>
@@ -53,18 +53,9 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
-
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Search docs</label>
-    <div class="wy-form-search">
-      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
-      <input id="rtd-search-input"
-             type="text"
-             name="q"
-             placeholder="Search docs"
-             aria-label="Search docs" />
-    </div>
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,33 +63,39 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest 用戶手冊介紹</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../activity.html">使用「動態」應用程式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud Web 介面</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">檔案與同步</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="accessing.html">存取您的檔案</a></li>
-<li class="toctree-l2"><a class="reference internal" href="managing.html">管理您的檔案</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collaboration.html">分享與協作</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="security.html">安全措施 &amp; 加密</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="encrypting_files.html">使用伺服器端加密</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">使用端對端加密</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#enabling-e2ee">啟用 E2EE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#encrypting-a-folder">加密資料夾</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adding-an-e2ee-device">新增 E2EE 裝置</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#displaying-the-mnemonic">顯示助記詞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">使用 Nextcloud 網頁介面存取您的檔案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">透過 WebDAV 協定存取 Nextcloud 上的檔案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">管理已删除的檔案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">桌面電腦和移動設備同步</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">加密你存放在伺服器上的 Nextcloud 檔案</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using end-to-end encryption</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-e2ee">Enabling E2EE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#encrypting-a-folder">Encrypting a folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-an-e2ee-device">Adding an E2EE device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#displaying-the-mnemonic">Displaying the mnemonic</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">檔案共享</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">聯邦共享</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">進行匿名上傳</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">大型檔案上傳</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">存儲配額</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">版本控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">項目</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">轉移擁有權</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">使用聯邦共享</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">桌面客戶端</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">設置您的偏好</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">普遍存取</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">使用雙重身份驗證</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">管理已連接的瀏覽器和裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">外置儲存</a></li>
 </ul>
 
         </div>
@@ -116,8 +113,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">檔案與同步</a></li>
-          <li class="breadcrumb-item"><a href="security.html">安全措施 &amp; 加密</a></li>
-      <li class="breadcrumb-item active">使用端對端加密</li>
+      <li class="breadcrumb-item active">Using end-to-end encryption</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/using_e2ee.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -128,92 +124,95 @@
            <div itemprop="articleBody">
              
   <section id="using-end-to-end-encryption">
-<h1>使用端對端加密<a class="headerlink" href="#using-end-to-end-encryption" title="Link to this heading"></a></h1>
-<p>如伺服器端已啟用，Nextcloud 可讓你在裝置上對檔案進行加密。此功能稱為端對端加密（E2EE），因為檔案只會在你的裝置上加密及解密。伺服器不會接觸未加密的檔案，進一步保障用戶私隱及資料安全。</p>
+<h1>Using end-to-end encryption<a class="headerlink" href="#using-end-to-end-encryption" title="Link to this heading"></a></h1>
+<p>If enabled server side, Nextcloud provides the possibility to encrypt your files on your devices.
+This is called end-to-end encryption, or E2EE, because the files are encrypted on your device and only decrypted on your device.
+The server never sees the unencrypted files, further protecting user privacy and data security.</p>
 <section id="enabling-e2ee">
-<h2>啟用 E2EE<a class="headerlink" href="#enabling-e2ee" title="Link to this heading"></a></h2>
-<p>If your administrator has enabled the <a class="reference external" href="https://apps.nextcloud.com/apps/end_to_end_encryption">End-to-End Encryption app</a>, you can start using it from one of your devices.
-Open the settings of the Nextcloud client and look for the E2EE encryption settings.</p>
+<h2>Enabling E2EE<a class="headerlink" href="#enabling-e2ee" title="Link to this heading"></a></h2>
+<p>If your administrator enabled the [End-to-End Encryption app](<a class="reference external" href="https://apps.nextcloud.com/apps/end_to_end_encryption">https://apps.nextcloud.com/apps/end_to_end_encryption</a>), you can start using it from one of your devices.
+Open the settings of the Nextcloud client and look for the EE2E encryption settings.</p>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-setup.png"><img alt="在桌面客戶端設定 E2EE" src="../../_images/e2ee-desktop-setup.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-setup.png"><img alt="Setup E2EE on the desktop client" src="../../_images/e2ee-desktop-setup.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-setup.png"><img alt="在 Android 裝置設定 E2EE" src="../../_images/e2ee-android-setup.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-setup.png"><img alt="Setup E2EE on Android" src="../../_images/e2ee-android-setup.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-1.png"><img alt="在 iOS 裝置設定 E2EE（步驟 1）" src="../../_images/e2ee-ios-setup-1.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-1.png"><img alt="Setup E2EE on iOS step 1" src="../../_images/e2ee-ios-setup-1.png" style="width: 400px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-2.png"><img alt="在 iOS 裝置設定 E2EE（步驟 2）" src="../../_images/e2ee-ios-setup-2.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-2.png"><img alt="Setup E2EE on iOS step 2" src="../../_images/e2ee-ios-setup-2.png" style="width: 400px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-3.png"><img alt="在 iOS 裝置設定 E2EE（步驟 3）" src="../../_images/e2ee-ios-setup-3.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-3.png"><img alt="Setup E2EE on iOS step 3" src="../../_images/e2ee-ios-setup-3.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>無法在瀏覽器中為資料夾啟用加密。此操作必須透過客戶端應用程式完成，包括桌面或流動客戶端。</p>
+<p>It is not possible to enable encryption on a folder in the browser. This must be done on a client app, either a desktop or mobile client.</p>
 </div>
 </details><br /></section>
 <section id="encrypting-a-folder">
-<h2>加密資料夾<a class="headerlink" href="#encrypting-a-folder" title="Link to this heading"></a></h2>
+<h2>Encrypting a folder<a class="headerlink" href="#encrypting-a-folder" title="Link to this heading"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>只可在空的資料夾上啟用加密。</p>
+<p>You can only enable encryption on empty folders.</p>
 </div>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-1.png"><img alt="在桌面客戶端加密資料夾（步驟 1）" src="../../_images/e2ee-desktop-encrypt-1.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-1.png"><img alt="Encrypting a folder on the desktop client step 1" src="../../_images/e2ee-desktop-encrypt-1.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-2.png"><img alt="在桌面客戶端加密資料夾（步驟 2）" src="../../_images/e2ee-desktop-encrypt-2.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-2.png"><img alt="Encrypting a folder on the desktop client step 2" src="../../_images/e2ee-desktop-encrypt-2.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-3.png"><img alt="在桌面客戶端加密資料夾（步驟 3）" src="../../_images/e2ee-desktop-encrypt-3.png" style="width: 750px;" />
-</a>
-</details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-encrypt.png"><img alt="在 Android 裝置加密資料夾" src="../../_images/e2ee-android-encrypt.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-3.png"><img alt="Encrypting a folder on the desktop client step 3" src="../../_images/e2ee-desktop-encrypt-3.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-encrypt.png"><img alt="在 iOS 裝置加密資料夾" src="../../_images/e2ee-ios-encrypt.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-encrypt.png"><img alt="Encrypting a folder on an Android device" src="../../_images/e2ee-android-encrypt.png" style="width: 400px;" />
+</a>
+</details><details>
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-encrypt.png"><img alt="Encrypting a folder on an iOS device" src="../../_images/e2ee-ios-encrypt.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>無法在瀏覽器中為資料夾啟用加密。此操作必須透過客戶端應用程式完成，包括桌面或流動客戶端。</p>
+<p>It is not possible to enable encryption on a folder in the browser. This must be done on a client app, either a desktop or mobile client.</p>
 </div>
 </details><br /></section>
 <section id="adding-an-e2ee-device">
-<h2>新增 E2EE 裝置<a class="headerlink" href="#adding-an-e2ee-device" title="Link to this heading"></a></h2>
+<h2>Adding an E2EE device<a class="headerlink" href="#adding-an-e2ee-device" title="Link to this heading"></a></h2>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-add.png"><img alt="設定新的桌面客戶端" src="../../_images/e2ee-desktop-add.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-add.png"><img alt="Setup a new desktop client" src="../../_images/e2ee-desktop-add.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-add.png"><img alt="設定新的 Android 裝置" src="../../_images/e2ee-android-add.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-add.png"><img alt="Setup a new Android device" src="../../_images/e2ee-android-add.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-add.png"><img alt="設定新的 iOS 裝置" src="../../_images/e2ee-ios-add.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-add.png"><img alt="Setup a new iOS device" src="../../_images/e2ee-ios-add.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>Web</summary><p>在瀏覽器中，需先於個人設定啟用 E2EE。這是因為 E2EE 在瀏覽器環境中的安全性較低，需完全信任系統管理員不會修改瀏覽器所執行的原始碼。目前 E2EE 資料夾僅支援唯讀，因此無法在瀏覽器中新增、刪除、編輯或分享 E2EE 檔案。</p>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-1.png"><img alt="設定新的瀏覽器工作階段（步驟 1）" src="../../_images/e2ee-web-add-1.png" style="width: 750px;" />
+<summary>Web</summary><p>In the browser, first enable E2EE in the personal settings. This is needed, as E2EE is less secure in the browser, requiring you to fully trust the administrator to not alter the source code the browser will execute.
+E2EE folders are currently read-only. Therefore, it is not possible to add, remove, edit, or share an E2EE file from the browser.</p>
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-1.png"><img alt="Setup a new browser session step 1" src="../../_images/e2ee-web-add-1.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-2.png"><img alt="設定新的瀏覽器工作階段（步驟 2）" src="../../_images/e2ee-web-add-2.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-2.png"><img alt="Setup a new browser session step 2" src="../../_images/e2ee-web-add-2.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-3.png"><img alt="設定新的瀏覽器工作階段（步驟 3）" src="../../_images/e2ee-web-add-3.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-3.png"><img alt="Setup a new browser session step 3" src="../../_images/e2ee-web-add-3.png" style="width: 750px;" />
 </a>
 </details><br /></section>
 <section id="displaying-the-mnemonic">
-<h2>顯示助記詞<a class="headerlink" href="#displaying-the-mnemonic" title="Link to this heading"></a></h2>
-<p>助記詞是一組用於加密及解密檔案的單詞列表。請務必妥善保管此助記詞，因為若你失去裝置存取權，它將是唯一可用來存取檔案的方法。如遺失助記詞，將無法再存取你的檔案。</p>
+<h2>Displaying the mnemonic<a class="headerlink" href="#displaying-the-mnemonic" title="Link to this heading"></a></h2>
+<p>The mnemonic is a list of words that is used to encrypt and decrypt your files. It is important to keep this mnemonic safe, as it is the only way to access your files if you lose access to your device. If you lose access to your mnemonic, you will lose access to your files.</p>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-mnemonic.png"><img alt="在桌面客戶端顯示助記詞" src="../../_images/e2ee-desktop-mnemonic.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-mnemonic.png"><img alt="Displaying the mnemonic on the desktop client" src="../../_images/e2ee-desktop-mnemonic.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-mnemonic.png"><img alt="在 Android 裝置顯示助記詞" src="../../_images/e2ee-android-mnemonic.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-mnemonic.png"><img alt="Displaying the mnemonic on an Android device" src="../../_images/e2ee-android-mnemonic.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-mnemonic.png"><img alt="在 iOS 裝置顯示助記詞" src="../../_images/e2ee-ios-mnemonic.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-mnemonic.png"><img alt="Displaying the mnemonic on an iOS device" src="../../_images/e2ee-ios-mnemonic.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>無法在瀏覽器中顯示助記詞。</p>
+<p>It is not possible to display the mnemonic in the browser.</p>
 </div>
 </details><br /></section>
 </section>
@@ -222,8 +221,8 @@ Open the settings of the Nextcloud client and look for the E2EE encryption setti
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="encrypting_files.html" class="btn btn-neutral float-left" title="使用伺服器端加密" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../groupware/index.html" class="btn btn-neutral float-right" title="Groupware" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="encrypting_files.html" class="btn btn-neutral float-left" title="加密你存放在伺服器上的 Nextcloud 檔案" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sharing.html" class="btn btn-neutral float-right" title="檔案共享" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -327,25 +326,16 @@ Open the settings of the Nextcloud client and look for the E2EE encryption setti
   
     
   
-    
-  
-    
-  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    
-    <button type="button"
-            class="rst-current-version"
-            data-toggle="rst-current-version"
-            aria-expanded="false"
-            aria-controls="rst-other-versions-user">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       🌐 zh-HK
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down" aria-hidden="true"></span>
-    </button>
-    <div id="rst-other-versions-user" class="rst-other-versions">
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
       <dl>
         <dt>🌐 語言</dt>
         
@@ -518,22 +508,6 @@ Open the settings of the Nextcloud client and look for the E2EE encryption setti
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lo/"
-               
-            >
-              lo
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
-            <a href="/server/latest/user_manual/lt/"
-               
-            >
-              lt
-            </a>
-          </dd>
-        
-          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -702,14 +676,6 @@ Open the settings of the Nextcloud client and look for the E2EE encryption setti
           </dd>
         
           <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/33/user_manual"
-               
-            >
-              33
-            </a>
-          </dd>
-        
-          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -717,20 +683,31 @@ Open the settings of the Nextcloud client and look for the E2EE encryption setti
             </a>
           </dd>
         
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>下載</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>於 Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">項目主頁</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Builds</a>
+        </dd>
       </dl>
     </div>
   </div>
-  <script>
-    /* Keep aria-expanded in sync with the RTD theme toggle class. */
-    (function () {
-      var btn = document.querySelector('.rst-current-version[aria-expanded]');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      });
-    }());
-  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
