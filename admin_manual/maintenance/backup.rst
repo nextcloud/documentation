@@ -40,19 +40,27 @@ Backup database
 
 .. warning:: Before restoring a backup see :doc:`restore`
 
-MySQL/MariaDB
-^^^^^^^^^^^^^
+MariaDB
+^^^^^^^
 
-MySQL or MariaDB, which is a drop-in MySQL replacement, is the recommended
-database engine. To backup **MySQL**::
+MariaDB is the recommended database engine. To backup MariaDB using `mariadb-dump <https://mariadb.com/docs/server/clients-and-utilities/backup-restore-and-import-clients/mariadb-dump>`_::
+
+    mariadb-dump --single-transaction -h [server] -u [username] -p[password] [db_name] > nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
+
+If you have enabled MariaDB 4-byte support (:doc:`../configuration_database/mysql_4byte_support`, needed for emoji), add ``--default-character-set=utf8mb4``::
+
+    mariadb-dump --single-transaction --default-character-set=utf8mb4 -h [server] -u [username] -p[password] [db_name] > nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
+
+MySQL
+^^^^^
+
+To backup MySQL::
 
     mysqldump --single-transaction -h [server] -u [username] -p[password] [db_name] > nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
 
-If you use enabled MySQL/MariaDB 4-byte support (:doc:`../configuration_database/mysql_4byte_support`, needed for emoji), you will need to add ``--default-character-set=utf8mb4`` like this::
+If you have enabled MySQL 4-byte support (:doc:`../configuration_database/mysql_4byte_support`, needed for emoji), add ``--default-character-set=utf8mb4``::
 
     mysqldump --single-transaction --default-character-set=utf8mb4 -h [server] -u [username] -p[password] [db_name] > nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
-
-To backup **MariaDB**, replace `mysqldump` with `mariadb-dump` in the above commands.
 
 SQLite
 ^^^^^^
