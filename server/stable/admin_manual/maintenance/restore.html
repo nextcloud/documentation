@@ -130,14 +130,16 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Restoring backup</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#restore-folders">Restore folders</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#restore-database">Restore database</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mariadb">MariaDB</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mysql">MySQL</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#postgresql">PostgreSQL</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#restoring">Restoring</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">MySQL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">MariaDB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">MySQL</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sqlite">SQLite</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">PostgreSQL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">PostgreSQL</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#synchronising-with-clients-after-data-recovery">Synchronising with clients after data recovery</a></li>
@@ -229,9 +231,22 @@ install and data folder) to your Nextcloud environment. You could use this comma
 </div>
 <p>The easiest way to do this is to drop and recreate the database.
 SQLite does this automatically.</p>
+<section id="mariadb">
+<h3>MariaDB<a class="headerlink" href="#mariadb" title="Link to this heading"></a></h3>
+<p>MariaDB is the recommended database engine. To restore MariaDB using the <a class="reference external" href="https://mariadb.com/docs/server/clients-and-utilities/mariadb-client/mariadb-command-line-client">mariadb</a> client:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mariadb</span> <span class="o">-</span><span class="n">h</span> <span class="p">[</span><span class="n">server</span><span class="p">]</span> <span class="o">-</span><span class="n">u</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="n">password</span><span class="p">]</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;DROP DATABASE nextcloud&quot;</span>
+<span class="n">mariadb</span> <span class="o">-</span><span class="n">h</span> <span class="p">[</span><span class="n">server</span><span class="p">]</span> <span class="o">-</span><span class="n">u</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="n">password</span><span class="p">]</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;CREATE DATABASE nextcloud&quot;</span>
+</pre></div>
+</div>
+<p>If you use UTF8 with multibyte support (e.g. for emojis in filenames), use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mariadb</span> <span class="o">-</span><span class="n">h</span> <span class="p">[</span><span class="n">server</span><span class="p">]</span> <span class="o">-</span><span class="n">u</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="n">password</span><span class="p">]</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;DROP DATABASE nextcloud&quot;</span>
+<span class="n">mariadb</span> <span class="o">-</span><span class="n">h</span> <span class="p">[</span><span class="n">server</span><span class="p">]</span> <span class="o">-</span><span class="n">u</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="n">password</span><span class="p">]</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;CREATE DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci&quot;</span>
+</pre></div>
+</div>
+</section>
 <section id="mysql">
 <h3>MySQL<a class="headerlink" href="#mysql" title="Link to this heading"></a></h3>
-<p>MySQL is the recommended database engine. To restore MySQL:</p>
+<p>To restore MySQL:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">h</span> <span class="p">[</span><span class="n">server</span><span class="p">]</span> <span class="o">-</span><span class="n">u</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="n">password</span><span class="p">]</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;DROP DATABASE nextcloud&quot;</span>
 <span class="n">mysql</span> <span class="o">-</span><span class="n">h</span> <span class="p">[</span><span class="n">server</span><span class="p">]</span> <span class="o">-</span><span class="n">u</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="n">password</span><span class="p">]</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;CREATE DATABASE nextcloud&quot;</span>
 </pre></div>
@@ -257,9 +272,16 @@ SQLite does this automatically.</p>
 <p>This guide assumes that your previous backup is called
 “nextcloud-sqlbkp.bak”</p>
 </div>
-<section id="id1">
-<h3>MySQL<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-<p>MySQL is the recommended database engine. To restore MySQL:</p>
+<section id="id2">
+<h3>MariaDB<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>MariaDB is the recommended database engine. To restore MariaDB using the <a class="reference external" href="https://mariadb.com/docs/server/clients-and-utilities/mariadb-client/mariadb-command-line-client">mariadb</a> client:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mariadb</span> <span class="o">-</span><span class="n">h</span> <span class="p">[</span><span class="n">server</span><span class="p">]</span> <span class="o">-</span><span class="n">u</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="n">password</span><span class="p">]</span> <span class="p">[</span><span class="n">db_name</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">sqlbkp</span><span class="o">.</span><span class="n">bak</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>MySQL<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>To restore MySQL:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">h</span> <span class="p">[</span><span class="n">server</span><span class="p">]</span> <span class="o">-</span><span class="n">u</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="n">password</span><span class="p">]</span> <span class="p">[</span><span class="n">db_name</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">sqlbkp</span><span class="o">.</span><span class="n">bak</span>
 </pre></div>
 </div>
@@ -271,8 +293,8 @@ SQLite does this automatically.</p>
 </pre></div>
 </div>
 </section>
-<section id="id2">
-<h3>PostgreSQL<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>PostgreSQL<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PGPASSWORD</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="n">psql</span> <span class="o">-</span><span class="n">h</span> <span class="p">[</span><span class="n">server</span><span class="p">]</span> <span class="o">-</span><span class="n">U</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">-</span><span class="n">d</span> <span class="n">nextcloud</span> <span class="o">-</span><span class="n">f</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">sqlbkp</span><span class="o">.</span><span class="n">bak</span>
 </pre></div>
 </div>
