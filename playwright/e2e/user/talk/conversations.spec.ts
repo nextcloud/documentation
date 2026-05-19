@@ -171,15 +171,6 @@ test.beforeAll(async ({ browser }) => {
 	// Create 1:1 DM and seed messages
 	const dmToken = await createTalkDm(christine, 'amara_w')
 
-	await uploadFile(`${FIXTURES_DIR}/pdfs/Q2 Project Proposal.pdf`, 'Q2 Project Proposal.pdf', 'amara_w', 'amara_w')
-	await ocsRequest('POST', '/ocs/v2.php/apps/files_sharing/api/v1/shares', 'amara_w', 'amara_w', {
-		shareType: '10', path: '/Q2 Project Proposal.pdf', shareWith: dmToken,
-	})
-	await uploadFile(`${FIXTURES_DIR}/pdfs/Team Meeting Notes.pdf`, 'Team Meeting Notes.pdf', 'amara_w', 'amara_w')
-	await ocsRequest('POST', '/ocs/v2.php/apps/files_sharing/api/v1/shares', 'amara_w', 'amara_w', {
-		shareType: '10', path: '/Team Meeting Notes.pdf', shareWith: dmToken,
-	})
-
 	// Seed 1:1 DM messages — filter out system messages (Talk always adds "You created the conversation")
 	const chatRes = await talkApi('GET', `/v1/chat/${dmToken}?lookIntoFuture=0&limit=20`, christine)
 	const chatData = await chatRes.json()
@@ -195,10 +186,22 @@ test.beforeAll(async ({ browser }) => {
 			{ text: "Wonderful, thank you so much! 🙌", user: 'amara_w', password: 'amara_w' },
 			{ text: "Happy to help! Let me know how it goes.", user: 'christine', password: 'christine' },
 			{ text: "Will do. Also — I've shared the Q2 proposal and meeting notes in this chat for your reference.", user: 'amara_w', password: 'amara_w' },
+		])
+		// Share the files inline so they appear right after the "Will do" message
+		await uploadFile(`${FIXTURES_DIR}/pdfs/Q2 Project Proposal.pdf`, 'Q2 Project Proposal.pdf', 'amara_w', 'amara_w')
+		await ocsRequest('POST', '/ocs/v2.php/apps/files_sharing/api/v1/shares', 'amara_w', 'amara_w', {
+			shareType: '10', path: '/Q2 Project Proposal.pdf', shareWith: dmToken,
+		})
+		await uploadFile(`${FIXTURES_DIR}/pdfs/Team Meeting Notes.pdf`, 'Team Meeting Notes.pdf', 'amara_w', 'amara_w')
+		await ocsRequest('POST', '/ocs/v2.php/apps/files_sharing/api/v1/shares', 'amara_w', 'amara_w', {
+			shareType: '10', path: '/Team Meeting Notes.pdf', shareWith: dmToken,
+		})
+		// Christine's reply after seeing the shared files
+		await seedChatMessages(dmToken, [
 			{ text: "Perfect, I'll review them before our call.", user: 'christine', password: 'christine' },
 		])
 		// Add emoji reactions to a few DM messages
-		const allMsgsRes = await talkApi('GET', `/v1/chat/${dmToken}?lookIntoFuture=0&limit=20`, christine)
+		const allMsgsRes = await talkApi('GET', `/v1/chat/${dmToken}?lookIntoFuture=0&limit=30`, christine)
 		const allMsgsData = await allMsgsRes.json()
 		const allMsgs: Array<{ id: number; message: string }> = allMsgsData?.ocs?.data ?? []
 		for (const msg of allMsgs) {
