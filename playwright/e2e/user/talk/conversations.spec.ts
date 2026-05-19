@@ -729,13 +729,16 @@ test('Ban participant list', async ({ page }) => {
 	await page.locator('#settings-section_conversation-settings').scrollIntoViewIfNeeded()
 	await page.locator('button:has-text("Manage bans")').waitFor({ state: 'visible', timeout: 10000 })
 	await page.locator('button:has-text("Manage bans")').click()
-	// "Manage bans" opens a nested dialog inside the settings container
+	// "Manage bans" navigates within the settings container to the banned-users view.
+	// Wait for the Moderation section to animate out before screenshotting.
 	const banDialog = page.getByRole('dialog', { name: /banned users/i })
 	await banDialog.waitFor({ state: 'visible', timeout: 10000 })
+	await page.locator('#settings-section_conversation-settings').waitFor({ state: 'hidden', timeout: 5000 }).catch(() => {})
+	await page.waitForTimeout(400)
 	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'ban-participant-list.png')
 	await fs.mkdir(path.dirname(dest), { recursive: true })
 	await banDialog.screenshot({ path: dest })
-	// Close the ban dialog first, then the conversation settings
+	// Close the ban dialog, then the settings
 	await banDialog.getByRole('button', { name: 'Close' }).click()
 	await banDialog.waitFor({ state: 'hidden', timeout: 5000 }).catch(() => {})
 	await page.locator('#conversation-settings-container').locator('button[aria-label="Close"]').first().click()
@@ -801,16 +804,21 @@ test('Archived conversations button', async ({ page }) => {
 	await talkApi('POST', `/v4/room/${token}/archive`, christine)
 	await page.reload()
 	await page.locator('[aria-label="Conversation list"]').waitFor({ state: 'visible', timeout: 15000 })
-	await page.locator('button', { hasText: 'Archived conversations' }).waitFor({ state: 'visible', timeout: 10000 })
-	// Clip to the bottom 160px of the conversation list bounding box
+	const archivedBtn = page.locator('button', { hasText: 'Archived conversations' })
+	await archivedBtn.waitFor({ state: 'visible', timeout: 10000 })
+	// Clip from 2 conversations above the button down to include the button itself.
+	// Avoids capturing the "Unread mentions" tooltip that appears above the button
+	// when @mention messages are unread.
 	const listEl = page.locator('[aria-label="Conversation list"]')
 	const listBox = await listEl.boundingBox()
+	const btnBox = await archivedBtn.boundingBox()
 	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'archived-conversations-button.png')
 	await fs.mkdir(path.dirname(dest), { recursive: true })
-	if (listBox) {
-		await page.screenshot({ path: dest, clip: { x: listBox.x, y: listBox.y + listBox.height - 160, width: listBox.width, height: 160 } })
+	if (listBox && btnBox) {
+		const clipTop = btnBox.y - 80
+		await page.screenshot({ path: dest, clip: { x: listBox.x, y: clipTop, width: listBox.width, height: btnBox.y + btnBox.height - clipTop + 8 } })
 	} else {
-		await listEl.screenshot({ path: dest })
+		await archivedBtn.screenshot({ path: dest })
 	}
 })
 
