@@ -149,7 +149,7 @@ should allow more processes to run in parallel to handle requests.
 Enable PHP OPcache
 ------------------
 
-The `OPcache <https://php.net/manual/en/intro.opcache.php>`_ improves the performance of PHP applications by caching precompiled bytecode.
+The `OPcache <https://www.php.net/manual/en/book.opcache.php>`_ improves the performance of PHP applications by caching precompiled bytecode.
 
 Revalidation
 ^^^^^^^^^^^^
