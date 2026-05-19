@@ -9,7 +9,7 @@
             data-toggle="rst-current-version"
             aria-expanded="false"
             aria-controls="rst-other-versions-admin">
-      ☁️ {{ current_version }}
+      ☁️ {% if current_version == 'stable' %}{{ version_stable }} (stable){% elif current_version == 'latest' %}{{ version_stable|int + 1 }} (latest){% else %}{{ current_version }}{% endif %}
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-admin" class="rst-other-versions">
@@ -22,7 +22,7 @@
              style="color: var(--dark-link-color);"
              {% endif %}
           >
-            {{ slug if slug != 'stable' else 'stable (' ~ version_stable ~ ')' }}
+            {% if slug == 'stable' %}{{ version_stable }} (stable){% elif slug == 'latest' %}{{ version_stable|int + 1 }} (latest){% else %}{{ slug }}{% endif %}
           </a>
         </dd>
         {% endfor %}
