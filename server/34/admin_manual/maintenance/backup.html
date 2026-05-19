@@ -131,7 +131,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#maintenance-mode">Maintenance mode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backup-folders">Backup folders</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backup-database">Backup database</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#mysql-mariadb">MySQL/MariaDB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mariadb">MariaDB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mysql">MySQL</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sqlite">SQLite</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#postgresql">PostgreSQL</a></li>
 </ul>
@@ -227,18 +228,27 @@ Change <code class="docutils literal notranslate"><span class="pre">&quot;mainte
 <p class="admonition-title">Warning</p>
 <p>Before restoring a backup see <a class="reference internal" href="restore.html"><span class="doc">Restoring backup</span></a></p>
 </div>
-<section id="mysql-mariadb">
-<h3>MySQL/MariaDB<a class="headerlink" href="#mysql-mariadb" title="Link to this heading"></a></h3>
-<p>MySQL or MariaDB, which is a drop-in MySQL replacement, is the recommended
-database engine. To backup <strong>MySQL</strong>:</p>
+<section id="mariadb">
+<h3>MariaDB<a class="headerlink" href="#mariadb" title="Link to this heading"></a></h3>
+<p>MariaDB is the recommended database engine. To backup MariaDB using <a class="reference external" href="https://mariadb.com/docs/server/clients-and-utilities/backup-restore-and-import-clients/mariadb-dump">mariadb-dump</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mariadb-dump --single-transaction -h [server] -u [username] -p[password] [db_name] &gt; nextcloud-sqlbkp_`date +&quot;%Y%m%d&quot;`.bak
+</pre></div>
+</div>
+<p>If you have enabled MariaDB 4-byte support (<a class="reference internal" href="../configuration_database/mysql_4byte_support.html"><span class="doc">Enabling MySQL 4-byte support</span></a>, needed for emoji), add <code class="docutils literal notranslate"><span class="pre">--default-character-set=utf8mb4</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mariadb-dump --single-transaction --default-character-set=utf8mb4 -h [server] -u [username] -p[password] [db_name] &gt; nextcloud-sqlbkp_`date +&quot;%Y%m%d&quot;`.bak
+</pre></div>
+</div>
+</section>
+<section id="mysql">
+<h3>MySQL<a class="headerlink" href="#mysql" title="Link to this heading"></a></h3>
+<p>To backup MySQL:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mysqldump --single-transaction -h [server] -u [username] -p[password] [db_name] &gt; nextcloud-sqlbkp_`date +&quot;%Y%m%d&quot;`.bak
 </pre></div>
 </div>
-<p>If you use enabled MySQL/MariaDB 4-byte support (<a class="reference internal" href="../configuration_database/mysql_4byte_support.html"><span class="doc">Enabling MySQL 4-byte support</span></a>, needed for emoji), you will need to add <code class="docutils literal notranslate"><span class="pre">--default-character-set=utf8mb4</span></code> like this:</p>
+<p>If you have enabled MySQL 4-byte support (<a class="reference internal" href="../configuration_database/mysql_4byte_support.html"><span class="doc">Enabling MySQL 4-byte support</span></a>, needed for emoji), add <code class="docutils literal notranslate"><span class="pre">--default-character-set=utf8mb4</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mysqldump --single-transaction --default-character-set=utf8mb4 -h [server] -u [username] -p[password] [db_name] &gt; nextcloud-sqlbkp_`date +&quot;%Y%m%d&quot;`.bak
 </pre></div>
 </div>
-<p>To backup <strong>MariaDB</strong>, replace <cite>mysqldump</cite> with <cite>mariadb-dump</cite> in the above commands.</p>
 </section>
 <section id="sqlite">
 <h3>SQLite<a class="headerlink" href="#sqlite" title="Link to this heading"></a></h3>
