@@ -25,3 +25,4 @@ You can find out more about Nextcloud Groupware `on our website <https://nextclo
    sync_kde
    sync_gnome
    sync_windows10
+   user_migration
