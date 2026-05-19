@@ -270,6 +270,8 @@ jobs:
       # ========================================================================
       - name: Determine deployment targets (branch_name and version_name)
         id: branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Determine which branch we're building from
           current_branch=${GITHUB_REF#refs/heads/}
@@ -277,13 +279,37 @@ jobs:
             current_branch=${GITHUB_BASE_REF}
           fi
 
-          # Find the highest numbered stable branch from the remote
-          # e.g., "stable30", "stable31", "stable32" → extract "32"
-          highest_stable=$(git ls-remote --heads origin | sed -n 's?.*refs/heads/stable\([0-9]\{2\}\)$?\1?p' | sort -n | tail -1)
+          # Find the highest numbered stable branch that has a v{N}.0.0 release.
+          # Mirrors the is_version_released() check in build/build-index.php:
+          # a branch whose first release doesn't exist yet (e.g. RC-only) is skipped.
+          highest_stable=""
+          for n in $(git ls-remote --heads origin | sed -n 's?.*refs/heads/stable\([0-9]\{2\}\)$?\1?p' | sort -n -r); do
+            # Nextcloud moved to nextcloud-releases/server starting with v32
+            if [ "$n" -ge 32 ]; then
+              repo="nextcloud-releases/server"
+            else
+              repo="nextcloud/server"
+            fi
+            http_status=$(curl -s -o /dev/null -w "%{http_code}" \
+              -H "Authorization: token ${GITHUB_TOKEN}" \
+              "https://api.github.com/repos/${repo}/releases/tags/v${n}.0.0")
+            if [ "$http_status" = "200" ]; then
+              highest_stable="$n"
+              echo "stable${n}: v${n}.0.0 released — using as highest stable"
+              break
+            else
+              echo "stable${n}: v${n}.0.0 not released yet (HTTP ${http_status}) — skipping"
+            fi
+          done
+
+          if [ -z "$highest_stable" ]; then
+            echo "ERROR: No released stable branch found"
+            exit 1
+          fi
           highest_stable_branch="stable${highest_stable}"
 
           echo "Current branch: $current_branch"
-          echo "Highest stable branch found: $highest_stable_branch"
+          echo "Highest released stable branch: $highest_stable_branch"
 
           # Map branch to deployment folder names
           case "$current_branch" in
