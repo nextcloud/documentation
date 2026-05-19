@@ -465,6 +465,23 @@ that the <code class="docutils literal notranslate"><span class="pre">WebClient<
 <h2>Problemas conocidos<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
 <section id="id3">
 <h3>Problema<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>WebDAV access is very slow or times out.</p>
+</section>
+<section id="id4">
+<h3>Solución<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>When using a third-party WebDAV client (including your operating system’s built-in
+client), you should authenticate with an <strong>application password</strong> rather than your
+regular account password. Using a regular password carries a significant performance
+penalty because Nextcloud must perform additional work to verify it on every request.
+Using an application password removes this overhead and can improve transfer speeds
+substantially.</p>
+<p>To create an application password, log in to the Nextcloud web interface, click your
+avatar, choose <strong>Personal settings</strong>, then open the <strong>Security</strong> section in the left
+sidebar and scroll to the bottom. Create an app password there and use it in your
+WebDAV client instead of your main password.</p>
+</section>
+<section id="id5">
+<h3>Problema<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Windows no se conecta usando HTTPS.</p>
 </section>
 <section id="solution-1">
@@ -475,12 +492,12 @@ that the <code class="docutils literal notranslate"><span class="pre">WebClient<
 <h3>Solución 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>Puede que el cliente de WebDAV de Windows no soporte conexiones TLSv1.1 y TLSv1.2. Si la configuración de su servidor está restringida a las versiones TLSv1.1 y superior, la conexión a su servidor puede fallar. Por favor, consulte la documentación de <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> para obtener más información.</p>
 </section>
-<section id="id4">
-<h3>Problema<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Problema<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Recibe el siguiente mensaje: <strong>Error 0x800700DF: El tamaño del archivo excede el límite permitido y no puede ser guardado.</strong></p>
 </section>
-<section id="id5">
-<h3>Solución<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Solución<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>Windows limits the maximum size a file transferred from or to a WebDAV share
 may have. You can increase the value <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> in
 <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code>
@@ -489,8 +506,8 @@ by clicking on <strong>Modify</strong>.</p>
 value of <code class="docutils literal notranslate"><span class="pre">4294967295</span></code>, and reboot Windows or restart the <strong>WebClient</strong>
 service.</p>
 </section>
-<section id="id6">
-<h3>Problema<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Problema<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Adding a WebDAV drive on Windows with the steps above does not display the correct
 available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
@@ -501,20 +518,20 @@ way for the client to retrieve available free space from the server. Windows aut
 falls back to the size and free space of the C: drive. There is no direct solution
 for this limitation.</p>
 </section>
-<section id="id7">
-<h3>Problema<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
-<p>El acceso a sus archivos desde Microsoft Office a través de WebDAV falla.</p>
-</section>
-<section id="id8">
-<h3>Solución<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
-<p>Los problemas conocidos y sus soluciones están documentados en el artículo <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
-</section>
 <section id="id9">
 <h3>Problema<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
-<p>No se puede asignar Nextcloud a una unidad WebDAV en Windows utilizando un certificado auto-firmado.</p>
+<p>El acceso a sus archivos desde Microsoft Office a través de WebDAV falla.</p>
 </section>
 <section id="id10">
 <h3>Solución<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>Los problemas conocidos y sus soluciones están documentados en el artículo <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
+</section>
+<section id="id11">
+<h3>Problema<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<p>No se puede asignar Nextcloud a una unidad WebDAV en Windows utilizando un certificado auto-firmado.</p>
+</section>
+<section id="id12">
+<h3>Solución<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>Entre hasta el error de certificado en la barra de estado del navegador.</p></li>

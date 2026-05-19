@@ -459,6 +459,23 @@ for example
 <h2>Žinomos problemos<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
 <section id="id3">
 <h3>Problema<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>WebDAV access is very slow or times out.</p>
+</section>
+<section id="id4">
+<h3>Sprendimas<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>When using a third-party WebDAV client (including your operating system’s built-in
+client), you should authenticate with an <strong>application password</strong> rather than your
+regular account password. Using a regular password carries a significant performance
+penalty because Nextcloud must perform additional work to verify it on every request.
+Using an application password removes this overhead and can improve transfer speeds
+substantially.</p>
+<p>To create an application password, log in to the Nextcloud web interface, click your
+avatar, choose <strong>Personal settings</strong>, then open the <strong>Security</strong> section in the left
+sidebar and scroll to the bottom. Create an app password there and use it in your
+WebDAV client instead of your main password.</p>
+</section>
+<section id="id5">
+<h3>Problema<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>„Windows“ nesijungia naudojant HTTPS.</p>
 </section>
 <section id="solution-1">
@@ -469,17 +486,17 @@ for example
 <h3>Sprendimas 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>„Windows WebDAV“ klientas gali nepalaikyti TLSv1.1 ir TLSv1.2 ryšių. Jei savo serverio konfigūracijoje nustatėte, kad būtų teikiami tik TLSv1.1 ir naujesni ryšiai, prisijungimas prie jūsų serverio gali nepavykti. Daugiau informacijos rasite „<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a>“ dokumentacijoje.</p>
 </section>
-<section id="id4">
-<h3>Problema<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Problema<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Gausite tokį klaidos pranešimą: <strong>Error 0x800700DF: The file size exceeds the limit allowed and cannot be saved.</strong></p>
 </section>
-<section id="id5">
-<h3>Sprendimas<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Sprendimas<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>„Windows“ riboja didžiausią failo, perkeliama iš arba į „WebDAV“ bendrinimo aplanką, dydį. Galite padidinti reikšmę „FileSizeLimitInBytes“, esančią „HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters“, spustelėdami mygtuką <strong>„Modify“</strong>.</p>
 <p>Norėdami padidinti ribą iki maksimalios 4 GB vertės, pasirinkite <strong>Decimal</strong>, įveskite reikšmę „4294967295“ ir perkraukite „Windows“ arba iš naujo paleiskite <strong>WebClient</strong> paslaugą.</p>
 </section>
-<section id="id6">
-<h3>Problema<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Problema<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Adding a WebDAV drive on Windows with the steps above does not display the correct
 available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
@@ -490,20 +507,20 @@ way for the client to retrieve available free space from the server. Windows aut
 falls back to the size and free space of the C: drive. There is no direct solution
 for this limitation.</p>
 </section>
-<section id="id7">
-<h3>Problema<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
-<p>Nepavyksta prisijungti prie failų iš „Microsoft Office“ per WebDAV.</p>
-</section>
-<section id="id8">
-<h3>Sprendimas<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
-<p>Žinomos problemos ir jų sprendimai aprašyti straipsnyje <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
-</section>
 <section id="id9">
 <h3>Problema<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
-<p>Naudojant savarankiškai pasirašytą sertifikatą, „Windows“ sistemoje neįmanoma priskirti „Nextcloud“ kaip WebDAV disko.</p>
+<p>Nepavyksta prisijungti prie failų iš „Microsoft Office“ per WebDAV.</p>
 </section>
 <section id="id10">
 <h3>Sprendimas<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>Žinomos problemos ir jų sprendimai aprašyti straipsnyje <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
+</section>
+<section id="id11">
+<h3>Problema<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<p>Naudojant savarankiškai pasirašytą sertifikatą, „Windows“ sistemoje neįmanoma priskirti „Nextcloud“ kaip WebDAV disko.</p>
+</section>
+<section id="id12">
+<h3>Sprendimas<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>Spauskite toliau, kol naršyklės būsenos juostoje pasirodys pranešimas apie sertifikato klaidą.</p></li>

@@ -167,7 +167,7 @@ Nextcloud.</p>
 <p>I measc na gcliant móibíleacha a thuairiscigh baill pobail Nextcloud a úsáideann:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://foldersync.io/">FolderSync (Android)</a></p></li>
-<li><p><a href="#id11"><span class="problematic" id="id12">`WebDAV Navigator (iPhone) &lt; https://apps.apple.com/us/app/webdav-navigator/id382551345&gt;`_</span></a></p></li>
+<li><p><a href="#id13"><span class="problematic" id="id14">`WebDAV Navigator (iPhone) &lt; https://apps.apple.com/us/app/webdav-navigator/id382551345&gt;`_</span></a></p></li>
 </ul>
 <p>Tá an URL le húsáid agus aipeanna tríú páirtí á chumrú chun nascadh le Nextcloud beagán níos faide ná an URL do chliaint oifigiúla:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
@@ -458,6 +458,23 @@ for example
 <h2>Fadhbanna aitheanta<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
 <section id="id3">
 <h3>Fadhb<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>WebDAV access is very slow or times out.</p>
+</section>
+<section id="id4">
+<h3>Réiteach<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>When using a third-party WebDAV client (including your operating system's built-in
+client), you should authenticate with an <strong>application password</strong> rather than your
+regular account password. Using a regular password carries a significant performance
+penalty because Nextcloud must perform additional work to verify it on every request.
+Using an application password removes this overhead and can improve transfer speeds
+substantially.</p>
+<p>To create an application password, log in to the Nextcloud web interface, click your
+avatar, choose <strong>Personal settings</strong>, then open the <strong>Security</strong> section in the left
+sidebar and scroll to the bottom. Create an app password there and use it in your
+WebDAV client instead of your main password.</p>
+</section>
+<section id="id5">
+<h3>Fadhb<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Ní nascann Windows le HTTPS.</p>
 </section>
 <section id="solution-1">
@@ -468,17 +485,17 @@ for example
 <h3>Réiteach 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>Seans nach dtacaíonn Cliant Windows WebDAV le naisc TLSv1.1 agus TLSv1.2. Má tá srian curtha agat le cumraíocht do fhreastalaí chun TLSv1.1 agus os a chionn amháin a sholáthar, seans go dteipfidh ar an gceangal le do fhreastalaí. Féach le do thoil ar dhoiciméadú <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> le haghaidh tuilleadh eolais.</p>
 </section>
-<section id="id4">
-<h3>Fadhb<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Fadhb<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Faigheann tú an teachtaireacht earráide seo a leanas: <strong>Earráid 0x800700DF: Sáraíonn méid an chomhaid an teorainn atá ceadaithe agus ní féidir é a shábháil.</strong></p>
 </section>
-<section id="id5">
-<h3>Réiteach<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Réiteach<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>Cuireann Windows teorainn leis an uasmhéid a fhéadfaidh comhad a aistriú ó nó chuig sciar WebDAV. Is féidir leat an luach <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> a mhéadú i <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> trí chliceáil ar <a href="#id1"><span class="problematic" id="id2">**</span></a>Athraigh <a href="#id3"><span class="problematic" id="id4">**</span></a>.</p>
 <p>Chun an teorainn go dtí an t-uasluach 4GB a mhéadú, roghnaigh <strong>Deachúil</strong>, cuir isteach luach <code class="docutils literal notranslate"><span class="pre">4294967295</span></code>, agus atosaigh Windows nó atosaigh an tseirbhís <strong>WebClient</strong>.</p>
 </section>
-<section id="id6">
-<h3>Fadhb<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Fadhb<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Adding a WebDAV drive on Windows with the steps above does not display the correct
 available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
@@ -489,20 +506,20 @@ way for the client to retrieve available free space from the server. Windows aut
 falls back to the size and free space of the C: drive. There is no direct solution
 for this limitation.</p>
 </section>
-<section id="id7">
-<h3>Fadhb<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
-<p>Theip ar rochtain a fháil ar do chuid comhad ó Microsoft Office trí WebDAV.</p>
-</section>
-<section id="id8">
-<h3>Réiteach<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
-<p>Déantar fadhbanna aitheanta agus a réitigh a dhoiciméadú san alt <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
-</section>
 <section id="id9">
 <h3>Fadhb<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
-<p>Ní féidir Nextcloud a mhapáil mar thiomáint WebDAV i Windows ag baint úsáide as teastas féin-shínithe.</p>
+<p>Theip ar rochtain a fháil ar do chuid comhad ó Microsoft Office trí WebDAV.</p>
 </section>
 <section id="id10">
 <h3>Réiteach<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>Déantar fadhbanna aitheanta agus a réitigh a dhoiciméadú san alt <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
+</section>
+<section id="id11">
+<h3>Fadhb<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<p>Ní féidir Nextcloud a mhapáil mar thiomáint WebDAV i Windows ag baint úsáide as teastas féin-shínithe.</p>
+</section>
+<section id="id12">
+<h3>Réiteach<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>Cliceáil ar aghaidh go dtí go bhfaighidh tú an earráid deimhnithe i líne stádais an bhrabhsálaí.</p></li>

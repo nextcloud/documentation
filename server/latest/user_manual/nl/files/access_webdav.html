@@ -460,6 +460,23 @@ for example
 <h2>Bekende problemen<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
 <section id="id3">
 <h3>Probleem<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>WebDAV access is very slow or times out.</p>
+</section>
+<section id="id4">
+<h3>Oplossing<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>When using a third-party WebDAV client (including your operating system’s built-in
+client), you should authenticate with an <strong>application password</strong> rather than your
+regular account password. Using a regular password carries a significant performance
+penalty because Nextcloud must perform additional work to verify it on every request.
+Using an application password removes this overhead and can improve transfer speeds
+substantially.</p>
+<p>To create an application password, log in to the Nextcloud web interface, click your
+avatar, choose <strong>Personal settings</strong>, then open the <strong>Security</strong> section in the left
+sidebar and scroll to the bottom. Create an app password there and use it in your
+WebDAV client instead of your main password.</p>
+</section>
+<section id="id5">
+<h3>Probleem<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Windows maakt geen verbinding met HTTPS.</p>
 </section>
 <section id="solution-1">
@@ -470,17 +487,17 @@ for example
 <h3>Oplossing 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>De Windows WebDAV-client ondersteunt mogelijk geen TLSv1.1- en TLSv1.2-verbindingen. Als de configuratie van je server is beperkt tot het aanbieden van TLSv1.1 en hoger, kan de verbinding met je server mislukken. Raadpleeg de <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> documentatie voor meer informatie.</p>
 </section>
-<section id="id4">
-<h3>Probleem<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Probleem<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Je ontvangt de volgende foutmelding: <strong>Fout 0x800700DF: De bestandsgrootte overschrijdt de toegestane limiet en kan niet worden opgeslagen.</strong></p>
 </section>
-<section id="id5">
-<h3>Oplossing<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Oplossing<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>Windows beperkt de maximale grootte van een bestand dat wordt overgedragen van of naar een WebDAV-share. Je kunt de waarde <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> in <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> verhogen door op <strong>Wijzigen</strong> te klikken.</p>
 <p>Om de limiet te verhogen tot de maximale waarde van 4 GB, selecteer je <strong>Decimaal</strong>, voer de waarde <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> in en start Windows opnieuw op of start de <strong>WebClient</strong>-service opnieuw.</p>
 </section>
-<section id="id6">
-<h3>Probleem<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Probleem<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Adding a WebDAV drive on Windows with the steps above does not display the correct
 available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
@@ -491,20 +508,20 @@ way for the client to retrieve available free space from the server. Windows aut
 falls back to the size and free space of the C: drive. There is no direct solution
 for this limitation.</p>
 </section>
-<section id="id7">
-<h3>Probleem<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
-<p>Toegang tot je bestanden vanuit Microsoft Office via WebDAV mislukt.</p>
-</section>
-<section id="id8">
-<h3>Oplossing<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
-<p>Bekende problemen en hun oplossingen zijn gedocumenteerd in het <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> artikel.</p>
-</section>
 <section id="id9">
 <h3>Probleem<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
-<p>Nextcloud kan niet als WebDAV-station in Windows worden toegewezen met een zelfondertekend certificaat.</p>
+<p>Toegang tot je bestanden vanuit Microsoft Office via WebDAV mislukt.</p>
 </section>
 <section id="id10">
 <h3>Oplossing<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>Bekende problemen en hun oplossingen zijn gedocumenteerd in het <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> artikel.</p>
+</section>
+<section id="id11">
+<h3>Probleem<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<p>Nextcloud kan niet als WebDAV-station in Windows worden toegewezen met een zelfondertekend certificaat.</p>
+</section>
+<section id="id12">
+<h3>Oplossing<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>Klik door tot je bij de certificaatfout in de statusregel van de browser komt.</p></li>

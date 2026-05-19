@@ -459,6 +459,23 @@ for example
 <h2>Bilinen sorunlar<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
 <section id="id3">
 <h3>Sorun<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>WebDAV access is very slow or times out.</p>
+</section>
+<section id="id4">
+<h3>Çözüm<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>When using a third-party WebDAV client (including your operating system’s built-in
+client), you should authenticate with an <strong>application password</strong> rather than your
+regular account password. Using a regular password carries a significant performance
+penalty because Nextcloud must perform additional work to verify it on every request.
+Using an application password removes this overhead and can improve transfer speeds
+substantially.</p>
+<p>To create an application password, log in to the Nextcloud web interface, click your
+avatar, choose <strong>Personal settings</strong>, then open the <strong>Security</strong> section in the left
+sidebar and scroll to the bottom. Create an app password there and use it in your
+WebDAV client instead of your main password.</p>
+</section>
+<section id="id5">
+<h3>Sorun<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Windows, HTTPS kullanarak bağlantı kuramıyor.</p>
 </section>
 <section id="solution-1">
@@ -469,17 +486,17 @@ for example
 <h3>2. çözüm<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>Windows WebDAV İstemcisi, TLSv1.1 ve TLSv1.2 bağlantılarını desteklemeyebilir. Sunucu yapılandırmanızı yalnızca TLSv1.1 ve üzerini sunacak şekilde kısıtladıysanız, sunucunuzla bağlantı kurulamayabilir. Ayrıntılı bilgi almak için <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> belgelerine bakabilirsiniz.</p>
 </section>
-<section id="id4">
-<h3>Sorun<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Sorun<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Şu hata iletisini görüyorsunuz: <strong>Hata 0x800700DF: Dosya boyutu izin verilen sınırı aşıyor ve kaydedilemiyor.</strong></p>
 </section>
-<section id="id5">
-<h3>Çözüm<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Çözüm<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>Windows, WebDAV paylaşımı ile alınabilecek ya da gönderilebilecek bir dosyanın en büyük boyutunu sınırlar. <strong>Değiştir</strong> üzerine tıklayarak <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> altındaki <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> değerini artırabilirsiniz.</p>
 <p>Sınırı olabilecek en büyük 4 GB değerine çıkarmak için <strong>Ondalık</strong> olarak seçin, <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> değerini yazın ve Windows ya da <strong>WebClient</strong> hizmetini yeniden başlatın.</p>
 </section>
-<section id="id6">
-<h3>Sorun<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Sorun<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Adding a WebDAV drive on Windows with the steps above does not display the correct
 available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
@@ -490,20 +507,20 @@ way for the client to retrieve available free space from the server. Windows aut
 falls back to the size and free space of the C: drive. There is no direct solution
 for this limitation.</p>
 </section>
-<section id="id7">
-<h3>Sorun<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
-<p>Dosyalarınıza WebDAV aracılığıyla Microsoft Office üzerinden erişilemiyor.</p>
-</section>
-<section id="id8">
-<h3>Çözüm<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
-<p>Bilinen sorunlara ve çözümlerine <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> makalesinde değinilmiştir.</p>
-</section>
 <section id="id9">
 <h3>Sorun<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
-<p>Nextcloud bir kendinden imzalı sertifika kullanıyorken Windows üzerinde bir WebDAV sürücüsü olarak eşlenemiyor.</p>
+<p>Dosyalarınıza WebDAV aracılığıyla Microsoft Office üzerinden erişilemiyor.</p>
 </section>
 <section id="id10">
 <h3>Çözüm<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>Bilinen sorunlara ve çözümlerine <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> makalesinde değinilmiştir.</p>
+</section>
+<section id="id11">
+<h3>Sorun<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<p>Nextcloud bir kendinden imzalı sertifika kullanıyorken Windows üzerinde bir WebDAV sürücüsü olarak eşlenemiyor.</p>
+</section>
+<section id="id12">
+<h3>Çözüm<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>Tarayıcı durum satırında sertifika hatasına ulaşana kadar tıklayın.</p></li>
