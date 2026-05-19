@@ -372,6 +372,26 @@ Known problems
 
 Problem
 ^^^^^^^
+
+WebDAV access is very slow or times out.
+
+Solution
+^^^^^^^^
+
+When using a third-party WebDAV client (including your operating system's built-in
+client), you should authenticate with an **application password** rather than your
+regular account password. Using a regular password carries a significant performance
+penalty because Nextcloud must perform additional work to verify it on every request.
+Using an application password removes this overhead and can improve transfer speeds
+substantially.
+
+To create an application password, log in to the Nextcloud web interface, click your
+avatar, choose **Personal settings**, then open the **Security** section in the left
+sidebar and scroll to the bottom. Create an app password there and use it in your
+WebDAV client instead of your main password.
+
+Problem
+^^^^^^^
 Windows does not connect using HTTPS.
 
 Solution 1
