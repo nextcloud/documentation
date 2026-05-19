@@ -67,8 +67,8 @@ If Nextcloud is installed in a subdirectory called "nextcloud"::
    built-in client), you should use an application password for login rather than your
    regular password. In addition to improved security, this `increases performance significantly
    <https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151>`_. To
-   configure an application password, log into the Nextcloud Web interface, click on the avatar
-   in the top right and choose *Personal settings*. Then choose *Security* in the left
+   configure an application password, log in to the Nextcloud Web interface, click your avatar,
+   and choose *Personal settings*. Then choose *Security* in the left
    sidebar and scroll to the very bottom. There you can create an app password (which can
    also be revoked in the future without changing your main user password).
 
