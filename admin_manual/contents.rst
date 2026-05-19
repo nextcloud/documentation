@@ -44,6 +44,7 @@ Table of contents
     :caption: Apps
 
     apps_management
+    apps_management_api
     exapps_management/index
     ai/index
 

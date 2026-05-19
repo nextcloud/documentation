@@ -153,4 +153,6 @@ redirects = {
     "desktop/accountcommand": "desktop/massdeployment",
     # Moved 2026-03
     "configuration_server/automatic_configuration": "../installation/automatic_configuration.html",
+    # Moved to Apps section 2026-05
+    "configuration_user/instruction_set_for_apps": "../apps_management_api.html",
 }
