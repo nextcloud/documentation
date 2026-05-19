@@ -128,6 +128,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#thread-summary">Thread Summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#follow-up-reminders">Follow-up reminders</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#translation">Translation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-migration">User migration</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office feature</a></li>
@@ -411,6 +412,37 @@ Each sent email will be analyzed by an AI to check whether a reply is expected.<
 <p><span class="versionmodified added">Added in version 4.2.</span></p>
 </div>
 <p>The mail app can optionally provide translations for messages if the <a class="reference internal" href="../ai/app_assistant.html#machine-translation"><span class="std std-ref">translation API</span></a> is enabled.</p>
+</section>
+<section id="user-migration">
+<h2>User migration<a class="headerlink" href="#user-migration" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.9.</span></p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <a class="reference external" href="https://apps.nextcloud.com/apps/user_migration">User Migration App</a> must be installed and enabled on both
+instances.</p>
+</div>
+<p>To migrate user data from one Nextcloud instance to another, use the User Migration App via the
+<code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">user:export</span></code> or <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">user:import</span></code> command line tool.</p>
+<p>The Mail app can migrate the following data:</p>
+<ul class="simple">
+<li><p>Manually added mail accounts and their respective account settings (e.g., display name, signature, quick actions, …)</p></li>
+<li><p>Configured internal addresses</p></li>
+<li><p>Configured trusted senders</p></li>
+<li><p>S/MIME certificates and private keys</p></li>
+<li><p>General app settings like the order of mail accounts</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Provisioned mail accounts are not migrated, as they are expected to be re-provisioned on the new instance.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The User Migration App is <strong>not</strong> a backup solution, as existing data is not being removed before the import process.</p>
+</div>
+<p>See the <a class="reference external" href="https://apps.nextcloud.com/apps/user_migration">User Migration App</a> on the Nextcloud App Store for more
+information.</p>
 </section>
 </section>
 
