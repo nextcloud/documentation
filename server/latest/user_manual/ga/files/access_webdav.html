@@ -140,9 +140,12 @@
              
   <section id="accessing-nextcloud-files-using-webdav">
 <h1>Rochtain ar chomhaid Nextcloud a fháil ag baint úsáide as WebDAV<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
-<p>Tacaíonn Nextcloud go hiomlán le prótacal WebDAV, agus is féidir leat ceangal agus sioncrónú le Comhaid Nextcloud thar WebDAV. Sa chaibidil seo, foghlaimeoidh tú conas Linux, macOS, Windows, agus gléasanna soghluaiste a nascadh le do fhreastalaí Nextcloud.</p>
+<p>Nextcloud fully supports the WebDAV protocol, and you can connect to and synchronize
+with Nextcloud Files over WebDAV. This chapter explains how to connect Linux, macOS,
+Windows, and mobile devices to your Nextcloud server.</p>
 <p>Seasann WebDAV d’Údarú Dáilte agus Leaganacha. Is síneadh HTTP é a fhágann go bhfuil sé éasca comhaid a óstáiltear ar fhreastalaithe Gréasáin cianda a chruthú, a léamh agus a chur in eagar. Le cliant WebDAV, is féidir leat rochtain a fháil ar do chuid Comhaid Nextcloud (lena n-áirítear scaireanna) ar Linux, macOS agus Windows ar bhealach cosúil le haon sciar líonra cianda, agus fanacht sioncronaithe.</p>
-<p>Sula ndéanaimid WebDAV a chumrú, féachaimis go tapa ar an mbealach molta chun feistí cliant a nascadh le Nextcloud</p>
+<p>Before you configure WebDAV, review the recommended way to connect client devices to
+Nextcloud.</p>
 <section id="official-nextcloud-desktop-and-mobile-clients">
 <h2>Cliaint oifigiúla deisce agus soghluaiste Nextcloud<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
 <p>Is é an bealach a mholtar chun ríomhaire a shioncronú le freastalaí Nextcloud ná úsáid a bhaint as <a class="reference external" href="https://nextcloud.com/install/#install-clients">cliaint sioncronaithe Nextcloud oifigiúil</a>. Is féidir leat an cliant a chumrú chun comhaid a shábháil in aon eolaire áitiúil agus is féidir leat na heolairí a roghnú ar fhreastalaí Nextcloud chun sioncronú leo. Taispeánann an cliant an stádas ceangail reatha agus logálann sé gach gníomhaíocht, ionas go mbeidh a fhios agat i gcónaí cé na comhaid iargúlta a íoslódáladh chuig do ríomhaire agus is féidir leat a fhíorú go bhfuil comhaid cruthaithe agus nuashonraithe ar do ríomhaire áitiúil sioncronaithe i gceart leis an bhfreastalaí.</p>
@@ -178,8 +181,8 @@
 <p class="admonition-title">Note</p>
 <p>When using a third-party WebDAV client (including your operating system's
 built-in client), you should use an application password for login rather than your
-regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
-configure an application password, log into the Nextcloud Web interface, click on your avatar
+regular password. In addition to improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log in to the Nextcloud Web interface, click your avatar,
 and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
 sidebar and scroll to the very bottom. There you can create an app password (which can
 also be revoked in the future without changing your main user password).</p>
@@ -187,7 +190,7 @@ also be revoked in the future without changing your main user password).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Sna samplaí seo a leanas, ba cheart duit URL do fhreastalaí Nextcloud a chur in ionad <strong>example.com/nextcloud</strong> (fág amach an chuid eolaire má tá an tsuiteáil i bhfréamh d'fhearainn), agus <strong>USERNAME</strong> leis an ainm úsáideora an úsáideora nasctha.</p>
-<p>Féach URL WebDAV, atá le fáil i Socruithe Comhad -&gt; WebDAV sna Comhaid ar do chuntas Nextcloud.</p>
+<p>You can find the WebDAV URL in <strong>Files settings</strong> under <strong>WebDAV</strong> in your Nextcloud account.</p>
 <img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
 </div>
 </section>
@@ -212,8 +215,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p>Oibríonn an modh céanna do bhainisteoirí comhad eile a úsáideann GVFS, mar shampla MATE's Caja agus Cinnamon's Nemo.</p>
 </div>
 </section>
-<section id="accessing-files-with-kde-and-dolphin-file-manager">
-<h3>Comhaid a rochtain le bainisteoir comhad KDE agus Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<section id="accessing-files-with-kde-and-dolphin">
+<h3>Accessing files with KDE and Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Téigh chuig Socruithe Córais -&gt; Líonrú -&gt; Cuntais Ar Líne</p></li>
 <li><p>Cliceáil &quot;Cuir Cuntas Leis...&quot;</p></li>
@@ -222,8 +225,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <li><p>Lean na treoracha ar an scáileán chun logáil isteach</p></li>
 <li><p>Tar éis logáil isteach, déan cinnte go gcumasaíonn tú &quot;Stóráil&quot; sa rannán &quot;Úsáid an Cuntas seo Le haghaidh&quot;.</p></li>
 <li><p>Is féidir leat rochtain a fháil ar do chuid comhad i nDolphin anois faoi &quot;Líonra&quot; sa bharra taoibh</p></li>
-<li><p>(Roghnach) Chun seo a chur leis mar aicearra sa bharra taoibh, cliceáil ar dheis ar &quot;Nextcloud Storage&quot; agus ansin &quot;Cuir le hÁiteanna&quot;</p></li>
-<li><p>(Roghnach) Chun an aicearra a shaincheapadh, cliceáil ar dheis ar an aicearra sa bharra taoibh ansin &quot;Cuir in Eagar...&quot; agus saincheap an deilbhín agus an lipéad mar is mian leat.</p></li>
+<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click &quot;Nextcloud Storage&quot;, then click &quot;Add to Places&quot;</p></li>
+<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then click &quot;Edit...&quot; and customize the icon and label</p></li>
 </ol>
 </section>
 </section>
@@ -343,7 +346,7 @@ for example
 <p>Teastaíonn nascacht líonra chun an ghné seo a úsáid. Más mian leat do chuid comhad a stóráil as líne, bain úsáid as an gCliant Deisce chun gach comhad ar do Nextcloud a shioncronú le heolaire amháin nó níos mó de do thiomáint crua áitiúil.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Windows 10 réamhshocraithe anois chun Fíordheimhniú Bunúsach a cheadú má tá HTTPS cumasaithe roimh do thiomáint a mhapáil.</p>
+<p>In Windows 10, Basic Authentication is allowed by default when HTTPS is enabled before mapping your drive.</p>
 <p>Ar leaganacha níos sine de Windows, ní mór duit cead a thabhairt do Bhunfhíordheimhniú a úsáid i gClárlann Windows:</p>
 <ul class="simple">
 <li><p>seol `` regedit`` agus déan nascleanúint chuig `` HKEY_LOCAL_MACHINE SYSTEM CurrentControlSet Services WebClient Parameters``.</p></li>
@@ -405,8 +408,6 @@ for example
 </a>
 </figure>
 </li>
-</ol>
-<ol class="arabic simple" start="5">
 <li><p>Cliceáil ar an gcnaipe <code class="docutils literal notranslate"><span class="pre">Críochnaigh</span></code>.</p></li>
 </ol>
 <p>Léarscáileanna Windows Explorer an tiomántán líonra, ag cur do shampla Nextcloud ar fáil.</p>
@@ -478,11 +479,15 @@ for example
 </section>
 <section id="id6">
 <h3>Fadhb<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
-<p>Má chuirtear tiomántán WebDAV ar Windows leis na céimeanna thuasluaite, ní thaispeánfar an méid ceart spáis atá ar fáil sa Nextcloud agus ina ionad sin taispeánann sé méid an tiomántáin C: leis an spás atá ar fáil dó.</p>
+<p>Adding a WebDAV drive on Windows with the steps above does not display the correct
+available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
 <section id="answer">
 <h3>Freagra<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
-<p>Ar an drochuair, is teorannú é seo ar WebDAV féin, toisc nach dtugann sé bealach don chliant an spás saor in aisce atá ar fáil a fháil ón bhfreastalaí. Titeann Windows ar ais go huathoibríoch chun méid an tiomántáin C: a thaispeáint leis an spás atá ar fáil ina ionad. Mar sin, ar an drochuair, níl aon réiteach fíor ar an bhfadhb seo.</p>
+<p>Unfortunately, this is a limitation of WebDAV itself, because it does not provide a
+way for the client to retrieve available free space from the server. Windows automatically
+falls back to the size and free space of the C: drive. There is no direct solution
+for this limitation.</p>
 </section>
 <section id="id7">
 <h3>Fadhb<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
@@ -499,7 +504,7 @@ for example
 <section id="id10">
 <h3>Réiteach<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Rochtain ar do shampla Nextcloud tríd an mbrabhsálaí Gréasáin is fearr leat.</p></li>
+<li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>Cliceáil ar aghaidh go dtí go bhfaighidh tú an earráid deimhnithe i líne stádais an bhrabhsálaí.</p></li>
 <li><p>Féach ar an deimhniú, ansin ón gcluaisín Sonraí, roghnaigh 'Cóipeáil go Comhad'.</p></li>
 <li><p>Sábháil an comhad ar do dheasc le hainm treallach, mar shampla <code class="docutils literal notranslate"><span class="pre">myNextcloud.pem</span></code>.</p></li>
@@ -587,9 +592,13 @@ for example
 </section>
 <section id="accessing-files-using-winscp">
 <h2>Comhaid a rochtain ag baint úsáide as WinSCP<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
-<p>Is cliant foinse oscailte saor in aisce SFTP, FTP, WebDAV, S3 agus SCP do Windows é <a href="#id1"><span class="problematic" id="id2">`</span></a>WinSCP &lt;<a class="reference external" href="https://winscp.net/eng/docs/introduction/">https://winscp.net/eng/docs/introduction/</a>&gt;. Is í an phríomhfheidhm atá aige ná comhad a aistriú idir ríomhaire áitiúil agus ríomhaire iargúlta. Thairis sin, cuireann WinSCP feidhmiúlacht scriptithe agus bainistíochta comhad bunúsach ar fáil.</p>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> is a free, open-source SFTP,
+FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer
+between a local and a remote computer. WinSCP also offers scripting and basic file
+management functionality.</p>
 <p>Is féidir <a class="reference external" href="https://winscp.net/eng/downloads.php/">a íoslódáil</a> an leagan iniompartha de WinSCP agus é a rith ar Linux tríd <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a>.</p>
-<p>Chun WinSCP a rith ar Linux, íoslódáil fíon trí bhainisteoir pacáiste do dháileadh, ansin é a rith leis an ordú: `` fíon WinSCP.exe``.</p>
+<p>To run WinSCP on Linux, install Wine through your distribution's package manager,
+then run: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
 <p>Chun nascadh le Nextcloud:</p>
 <ul class="simple">
 <li><p>Tosaigh WinSCP</p></li>
@@ -610,7 +619,8 @@ for example
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Moltar pasfhocal aipe a úsáid don phasfhocal má úsáideann tú TOTP mar ní thuigeann WinSCP TOTP le Nextcloud tráth scríofa seo (2022-11-07).</p>
+<p>If you use TOTP, use an app password. At the time of writing (2022-11-07),
+WinSCP does not support TOTP with Nextcloud.</p>
 </div>
 </section>
 </section>

@@ -141,9 +141,12 @@
              
   <section id="accessing-nextcloud-files-using-webdav">
 <h1>Prieiga prie „Nextcloud“ failų naudojant „WebDAV“<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
-<p>„Nextcloud“ visiškai palaiko „WebDAV“ protokolą, todėl galite prisijungti ir sinchronizuoti „Nextcloud Files“ per „WebDAV“. Šiame skyriuje sužinosite, kaip prijungti „Linux“, „macOS“, „Windows“ ir mobiliuosius įrenginius prie „Nextcloud“ serverio.</p>
+<p>Nextcloud fully supports the WebDAV protocol, and you can connect to and synchronize
+with Nextcloud Files over WebDAV. This chapter explains how to connect Linux, macOS,
+Windows, and mobile devices to your Nextcloud server.</p>
 <p>WebDAV reiškia „Distributed Authoring and Versioning“ (paskirstytas turinio kūrimas ir versijų valdymas). Tai HTTP išplėtimas, leidžiantis lengvai kurti, skaityti ir redaguoti nuotoliniuose žiniatinklio serveriuose esančius failus. Naudodami WebDAV klientą, galite pasiekti savo „Nextcloud“ failus (įskaitant bendrinamus aplankus) „Linux“, „macOS“ ir „Windows“ sistemose taip pat, kaip ir bet kurį nuotolinį tinklo bendrinimą, ir užtikrinti sinchronizaciją.</p>
-<p>Prieš pradėdami konfigūruoti WebDAV, trumpai apžvelkime, kaip rekomenduojama prijungti kliento įrenginius prie „Nextcloud“.</p>
+<p>Before you configure WebDAV, review the recommended way to connect client devices to
+Nextcloud.</p>
 <section id="official-nextcloud-desktop-and-mobile-clients">
 <h2>Oficialios „Nextcloud“ programos kompiuteriams ir mobiliesiems įrenginiams<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
 <p>Rekomenduojamas būdas sinchronizuoti kompiuterį su „Nextcloud“ serveriu – naudoti oficialius „Nextcloud“ sinchronizavimo klientus &lt;<a class="reference external" href="https://nextcloud.com/install/#install-clients">https://nextcloud.com/install/#install-clients</a>&gt;_. Klientą galima sukonfigūruoti taip, kad failai būtų išsaugomi bet kuriame vietiniame kataloge, taip pat galima pasirinkti, su kuriais „Nextcloud“ serverio katalogais sinchronizuoti. Klientas rodo esamą prisijungimo būseną ir registruoja visą veiklą, todėl visada žinosite, kurie nuotoliniai failai buvo atsisiųsti į jūsų kompiuterį, ir galėsite patikrinti, ar vietiniame kompiuteryje sukurti ir atnaujinti failai yra tinkamai sinchronizuoti su serveriu.</p>
@@ -179,8 +182,8 @@
 <p class="admonition-title">Pastaba</p>
 <p>When using a third-party WebDAV client (including your operating system’s
 built-in client), you should use an application password for login rather than your
-regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
-configure an application password, log into the Nextcloud Web interface, click on your avatar
+regular password. In addition to improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log in to the Nextcloud Web interface, click your avatar,
 and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
 sidebar and scroll to the very bottom. There you can create an app password (which can
 also be revoked in the future without changing your main user password).</p>
@@ -188,7 +191,7 @@ also be revoked in the future without changing your main user password).</p>
 <div class="admonition note">
 <p class="admonition-title">Pastaba</p>
 <p>Toliau pateiktuose pavyzdžiuose <strong>example.com/nextcloud</strong> turėtumėte pakeisti savo „Nextcloud“ serverio URL adresu (jei įdiegta domeno šakninėje kataloge, katalogo dalį praleiskite), o <strong>USERNAME</strong> (vartotojo vardas) – prisijungiančio vartotojo vardu.</p>
-<p>WebDAV URL adresą rasite savo „Nextcloud“ paskyros skyriuje „Failai“ &gt; „Nustatymai“ &gt; „WebDAV“.</p>
+<p>You can find the WebDAV URL in <strong>Files settings</strong> under <strong>WebDAV</strong> in your Nextcloud account.</p>
 <img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
 </div>
 </section>
@@ -213,8 +216,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p>Tas pats metodas veikia ir su kitomis failų tvarkyklėmis, kurios naudoja GVFS, pvz., MATE „Caja“ ir Cinnamon „Nemo“.</p>
 </div>
 </section>
-<section id="accessing-files-with-kde-and-dolphin-file-manager">
-<h3>Prieiga prie failų naudojant KDE ir „Dolphin“ failų tvarkyklę<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<section id="accessing-files-with-kde-and-dolphin">
+<h3>Accessing files with KDE and Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Eikite į Sistemos nustatymai -&gt; Tinklai -&gt; Internetinės paskyros</p></li>
 <li><p>Spustelėkite „Pridėti paskyrą…“</p></li>
@@ -223,8 +226,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <li><p>Norėdami prisijungti, vykdykite ekrane pateikiamus nurodymus</p></li>
 <li><p>Prisijungę įsitikinkite, kad skiltyje „Naudoti šią paskyrą“ įjungėte „Saugykla“.</p></li>
 <li><p>Dabar galite pasiekti savo failus „Dolphin“ programoje šoninėje juostoje, skiltyje „Tinklas“.</p></li>
-<li><p>(Nebūtina) Norėdami pridėti tai kaip nuorodą šoninėje juostoje, dešiniuoju pelės mygtuku spustelėkite „Nextcloud Saugykla“, tada „Pridėti prie vietų“.</p></li>
-<li><p>(Pasirinktinai) Norėdami pritaikyti nuorodą, dešiniuoju pelės mygtuku spustelėkite nuorodą šoninėje juostoje, tada pasirinkite „Redaguoti…“ ir pagal savo pageidavimus pakeiskite piktogramą bei pavadinimą</p></li>
+<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click „Nextcloud Storage“, then click „Add to Places“</p></li>
+<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then click „Edit…“ and customize the icon and label</p></li>
 </ol>
 </section>
 </section>
@@ -344,7 +347,7 @@ for example
 <p>Norint naudoti šią funkciją, reikalingas tinklo ryšys. Jei norite saugoti failus neprisijungę prie interneto, naudokite darbalaukio klientą, kad sinchronizuotumėte visus „Nextcloud“ failus su vienu ar keliais vietinio standžiojo disko katalogais.</p>
 <div class="admonition note">
 <p class="admonition-title">Pastaba</p>
-<p>Dabar „Windows 10“ numatyta leisti naudoti paprastąjį autentifikavimą, jei prieš prijungiant diską yra įjungtas HTTPS.</p>
+<p>In Windows 10, Basic Authentication is allowed by default when HTTPS is enabled before mapping your drive.</p>
 <p>Senesnėse „Windows“ versijose „Windows Registry“ registre reikia įjungti „Basic Authentication“:</p>
 <ul class="simple">
 <li><p>Paleiskite „regedit“ ir pereikite į „HKEY_LOCAL_MACHINESYSTEMCurrentControlSetServicesWebClientParameters“.</p></li>
@@ -406,8 +409,6 @@ for example
 </a>
 </figure>
 </li>
-</ol>
-<ol class="arabic simple" start="5">
 <li><p>Spustelėkite mygtuką „Finish“.</p></li>
 </ol>
 <p>„Windows Explorer“ prijungia tinklo diską, todėl jūsų „Nextcloud“ elementas tampa prieinamu.</p>
@@ -479,11 +480,15 @@ for example
 </section>
 <section id="id6">
 <h3>Problema<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
-<p>Pridėjus „WebDAV“ diską „Windows“ sistemoje, atlikus aukščiau aprašytus veiksmus, „Nextcloud“ nerodomas tikslus laisvos vietos dydis, o vietoj to rodomas C: disko dydis su jo laisva vieta.</p>
+<p>Adding a WebDAV drive on Windows with the steps above does not display the correct
+available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
 <section id="answer">
 <h3>Atsakymas<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
-<p>Deja, tai yra pats WebDAV protokolo trūkumas, nes jis nesuteikia klientui galimybės gauti informacijos apie laisvą vietą serveryje. „Windows“ automatiškai rodo C: disko dydį ir jame esančią laisvą vietą. Taigi, deja, tikro sprendimo šiai problemai nėra.</p>
+<p>Unfortunately, this is a limitation of WebDAV itself, because it does not provide a
+way for the client to retrieve available free space from the server. Windows automatically
+falls back to the size and free space of the C: drive. There is no direct solution
+for this limitation.</p>
 </section>
 <section id="id7">
 <h3>Problema<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
@@ -500,7 +505,7 @@ for example
 <section id="id10">
 <h3>Sprendimas<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Prieiga prie jūsų „Nextcloud“ instancijos per mėgstamą žiniatinklio naršyklę.</p></li>
+<li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>Spauskite toliau, kol naršyklės būsenos juostoje pasirodys pranešimas apie sertifikato klaidą.</p></li>
 <li><p>Peržiūrėkite sertifikatą, tada skirtuke „Details“ pasirinkite „Copy to File“.</p></li>
 <li><p>Išsaugokite failą darbalaukyje, suteikdami jam bet kokį pavadinimą, pavyzdžiui, „manoNextcloud.pem“.</p></li>
@@ -588,9 +593,13 @@ for example
 </section>
 <section id="accessing-files-using-winscp">
 <h2>Prieiga prie failų naudojant „WinSCP“<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
-<p>„WinSCP &lt;<a class="reference external" href="https://winscp.net/eng/docs/introduction/">https://winscp.net/eng/docs/introduction/</a>&gt;`_ yra atvirojo kodo nemokamas SFTP, FTP, WebDAV, S3 ir SCP klientas, skirtas „Windows“. Pagrindinė jo funkcija yra failų perdavimas tarp vietinio ir nuotolinio kompiuterio. Be to, „WinSCP“ siūlo skriptų rašymo ir pagrindines failų tvarkymo funkcijas.</p>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> is a free, open-source SFTP,
+FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer
+between a local and a remote computer. WinSCP also offers scripting and basic file
+management functionality.</p>
 <p>Galite atsisiųsti &lt;<a class="reference external" href="https://winscp.net/eng/downloads.php/">https://winscp.net/eng/downloads.php/</a>&gt; nešiojamąją „WinSCP“ versiją ir paleisti ją „Linux“ sistemoje naudodami „Wine“ &lt;<a class="reference external" href="https://wiki.winehq.org/Main_Page/">https://wiki.winehq.org/Main_Page/</a>&gt;.</p>
-<p>Norėdami paleisti „WinSCP“ sistemoje „Linux“, atsisiųskite „wine“ per savo distribucijos paketų tvarkyklę ir paleiskite ją naudodami komandą: „wine WinSCP.exe“.</p>
+<p>To run WinSCP on Linux, install Wine through your distribution’s package manager,
+then run: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
 <p>Norėdami prisijungti prie „Nextcloud“:</p>
 <ul class="simple">
 <li><p>Paleisti WinSCP</p></li>
@@ -611,7 +620,8 @@ for example
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Pastaba</p>
-<p>Rekomenduojama naudoti programėlės slaptažodį, jei naudojate TOTP, nes rašymo metu (2022-11-07) „WinSCP“ nesupranta TOTP su „Nextcloud“.</p>
+<p>If you use TOTP, use an app password. At the time of writing (2022-11-07),
+WinSCP does not support TOTP with Nextcloud.</p>
 </div>
 </section>
 </section>

@@ -141,9 +141,12 @@
              
   <section id="accessing-nextcloud-files-using-webdav">
 <h1>WebDAV를 통해 Nextcloud 파일에 접근하기<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
-<p>Nextcloud는 WebDAV 프로토콜을 완전히 지원합니다. WebDAV를 통해 Nextcloud Files 앱에 연결하고 동기화하십시오. 이 챕터에서는 Linux, macOS, Windows 및 모바일 기기에서 Nextcloud 서버와 연결하는 방법을 다룹니다.</p>
+<p>Nextcloud fully supports the WebDAV protocol, and you can connect to and synchronize
+with Nextcloud Files over WebDAV. This chapter explains how to connect Linux, macOS,
+Windows, and mobile devices to your Nextcloud server.</p>
 <p>WebDAV는 분산 저작 및 버전 관리의 약자입니다. 이는 원격 웹 서버에 호스팅된 파일을 쉽게 생성, 읽기 및 편집할 수 있도록 해주는 HTTP 확장 기능입니다. WebDAV 클라이언트를 사용하면 Linux, macOS 및 Windows에서 Nextcloud 파일(공유 폴더 포함)에 원격 네트워크 공유처럼 접근하고 동기화 상태를 유지할 수 있습니다.</p>
-<p>WebDAV 설정에 앞서, 먼저 가장 권장되는 Nextcloud 연결 방법에 대해 살펴보겠습니다.</p>
+<p>Before you configure WebDAV, review the recommended way to connect client devices to
+Nextcloud.</p>
 <section id="official-nextcloud-desktop-and-mobile-clients">
 <h2>Nextcloud 공식 데스크탑 및 모바일 클라이언트<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
 <p>Nextcloud 서버와 컴퓨터를 동기화하는 가장 좋은 방법은 공식 Nextcloud 동기화 클라이언트(&lt;<a class="reference external" href="https://nextcloud.com/install/#install-clients">https://nextcloud.com/install/#install-clients</a>&gt;)를 사용하는 것입니다. 클라이언트를 구성하여 로컬 디렉터리에 파일을 저장할 수 있으며, Nextcloud 서버에서 동기화할 디렉터리를 선택할 수도 있습니다. 클라이언트는 현재 연결 상태를 표시하고 모든 활동을 기록하므로, 어떤 원격 파일이 PC로 다운로드되었는지 항상 확인할 수 있으며, 로컬 PC에서 생성 및 업데이트된 파일이 서버와 제대로 동기화되었는지 검증할 수 있습니다.</p>
@@ -179,8 +182,8 @@
 <p class="admonition-title">참고</p>
 <p>When using a third-party WebDAV client (including your operating system’s
 built-in client), you should use an application password for login rather than your
-regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
-configure an application password, log into the Nextcloud Web interface, click on your avatar
+regular password. In addition to improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log in to the Nextcloud Web interface, click your avatar,
 and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
 sidebar and scroll to the very bottom. There you can create an app password (which can
 also be revoked in the future without changing your main user password).</p>
@@ -188,7 +191,7 @@ also be revoked in the future without changing your main user password).</p>
 <div class="admonition note">
 <p class="admonition-title">참고</p>
 <p>이하 예시에서, <strong>example.com/nextcloud</strong> 주소를 해당 Nextcloud 서버 주소로 변경해야 합니다. (이때 Nextcloud가 도메인의 루트와 연결될 경우 해당 부분은 생략하십시오). <strong>USERNAME</strong> 또한 사용자의 아이디(사용자 이름)로 변경하십시오.</p>
-<p>See the WebDAV URL, to be found in Files Settings -&gt; WebDAV in the Files on your Nextcloud account.</p>
+<p>You can find the WebDAV URL in <strong>Files settings</strong> under <strong>WebDAV</strong> in your Nextcloud account.</p>
 <img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
 </div>
 </section>
@@ -213,8 +216,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p>MATE의 Caja 및 Cinnamon의 Nemo 등 GVFS를 사용하는 다른 파일 관리자에서도 동일한 방법으로 사용할 수 있습니다.</p>
 </div>
 </section>
-<section id="accessing-files-with-kde-and-dolphin-file-manager">
-<h3>KDE 및 Dolphin 파일 관리자로 접근하기<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<section id="accessing-files-with-kde-and-dolphin">
+<h3>Accessing files with KDE and Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>시스템 설정 -&gt; 네트워킹 -&gt; 온라인 계정으로 이동합니다.</p></li>
 <li><p>“계정 추가…”를 클릭합니다.</p></li>
@@ -223,8 +226,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <li><p>화면의 지시에 따라 로그인합니다.</p></li>
 <li><p>로그인 후 “이 계정 사용” 섹션에서 “저장소”를 활성화했는지 확인하세요</p></li>
 <li><p>이제 사이드바의 “네트워크”에서 Dolphin의 파일에 액세스할 수 있습니다.</p></li>
-<li><p>(선택 사항) 사이드바에 바로가기로 추가하려면 “Nextcloud Storage”를 마우스 오른쪽 버튼으로 클릭한 다음 “장소에 추가”를 클릭합니다.</p></li>
-<li><p>(선택 사항) 바로가기를 사용자 지정하려면, 사이드바에서 바로가기를 마우스 오른쪽 버튼으로 클릭한 다음 “편집…”을 클릭하고 원하는 대로 아이콘과 레이블을 사용자 정의하십시오.</p></li>
+<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click “Nextcloud Storage”, then click “Add to Places”</p></li>
+<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then click “Edit…” and customize the icon and label</p></li>
 </ol>
 </section>
 </section>
@@ -344,7 +347,7 @@ for example
 <p>이 기능을 사용하려면 네트워크 연결이 필요합니다. 파일을 오프라인으로 저장하려면 데스크톱 클라이언트를 사용하여 Nextcloud의 모든 파일을 로컬 하드 드라이브의 하나 이상의 디렉토리에 동기화하십시오.</p>
 <div class="admonition note">
 <p class="admonition-title">참고</p>
-<p>이제 Windows 10은 드라이브를 매핑하기 전에 HTTPS가 활성화된 경우 기본 인증을 허용하도록 기본적으로 허용합니다.</p>
+<p>In Windows 10, Basic Authentication is allowed by default when HTTPS is enabled before mapping your drive.</p>
 <p>이전 버전의 Windows에서는 Windows 레지스트리에서 기본 인증 사용을 허용해야 합니다.</p>
 <ul class="simple">
 <li><p>‘’regedit’’를 실행하고 ‘’HKEY_LOCAL_MACHINESYSTEMCurrentControlSetServicesWebClientParameters’’로 이동합니다.</p></li>
@@ -406,8 +409,6 @@ for example
 </a>
 </figure>
 </li>
-</ol>
-<ol class="arabic simple" start="5">
 <li><p>‘마침’ 버튼을 클릭합니다.</p></li>
 </ol>
 <p>Windows 탐색기는 네트워크 드라이브를 매핑하여 Nextcloud 인스턴스를 사용할 수 있도록 합니다.</p>
@@ -479,11 +480,15 @@ for example
 </section>
 <section id="id6">
 <h3>문제<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
-<p>위에서 설명한 단계를 통해 Windows에 WebDAV 드라이브를 추가해도 Nextcloud 사용 가능한 공간의 올바른 크기가 표시되지 않고 대신 사용 가능한 공간과 함께 C: 드라이브의 크기가 표시됩니다.</p>
+<p>Adding a WebDAV drive on Windows with the steps above does not display the correct
+available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
 <section id="answer">
 <h3>응답<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
-<p>불행히도 이것은 클라이언트가 서버에서 사용 가능한 여유 공간을 얻을 수 있는 방법을 제공하지 않기 때문에 WebDAV 자체의 제한입니다. Windows는 자동으로 폴백하여 사용 가능한 공간과 함께 C: 드라이브의 크기를 표시합니다. 따라서 불행히도 이 문제에 대한 진정한 해결책은 없습니다.</p>
+<p>Unfortunately, this is a limitation of WebDAV itself, because it does not provide a
+way for the client to retrieve available free space from the server. Windows automatically
+falls back to the size and free space of the C: drive. There is no direct solution
+for this limitation.</p>
 </section>
 <section id="id7">
 <h3>문제<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
@@ -500,7 +505,7 @@ for example
 <section id="id10">
 <h3>솔루션<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>즐겨 사용하는 웹 브라우저를 통해 Nextcloud 인스턴스에 액세스합니다.</p></li>
+<li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>브라우저 상태 줄에 인증서 오류가 나타날 때까지 클릭합니다.</p></li>
 <li><p>인증서를 본 다음 세부 정보 탭에서 ‘파일에 복사’를 선택합니다.</p></li>
 <li><p>임의의 이름(예: ‘’myNextcloud.pem’’)으로 파일을 데스크탑에 저장합니다.</p></li>
@@ -588,9 +593,13 @@ for example
 </section>
 <section id="accessing-files-using-winscp">
 <h2>WinSCP를 사용하여 파일 액세스<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
-<p>‘WinSCP &lt;<a class="reference external" href="https://winscp.net/eng/docs/introduction/">https://winscp.net/eng/docs/introduction/</a>&gt;’_는 Windows용 오픈 소스 무료 SFTP, FTP, WebDAV, S3 및 SCP 클라이언트입니다. 주요 기능은 로컬 컴퓨터와 원격 컴퓨터 간의 파일 전송입니다. 이 외에도 WinSCP는 스크립팅 및 기본 파일 관리 기능을 제공합니다.</p>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> is a free, open-source SFTP,
+FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer
+between a local and a remote computer. WinSCP also offers scripting and basic file
+management functionality.</p>
 <p>WinSCP의 휴대용 버전을 ‘다운로드’&lt;<a class="reference external" href="https://winscp.net/eng/downloads.php/">https://winscp.net/eng/downloads.php/</a>&gt; ‘하고 Wine &lt;<a class="reference external" href="https://wiki.winehq.org/Main_Page/">https://wiki.winehq.org/Main_Page/</a>&gt;’_을 통해 Linux에서 실행할 수 있습니다.</p>
-<p>Linux에서 WinSCP를 실행하려면 배포판의 패키지 관리자를 통해 wine을 다운로드한 다음 ‘’wine WinSCP.exe’’ 명령으로 실행하십시오.</p>
+<p>To run WinSCP on Linux, install Wine through your distribution’s package manager,
+then run: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
 <p>Nextcloud에 연결하려면:</p>
 <ul class="simple">
 <li><p>WinSCP 시작</p></li>
@@ -611,7 +620,8 @@ for example
 </ul>
 <div class="admonition note">
 <p class="admonition-title">참고</p>
-<p>작성 당시 WinSCP가 Nextcloud와 함께 TOTP를 이해하지 못하므로 TOTP를 사용하는 경우 비밀번호에 앱 비밀번호를 사용하는 것이 좋습니다(2022-11-07).</p>
+<p>If you use TOTP, use an app password. At the time of writing (2022-11-07),
+WinSCP does not support TOTP with Nextcloud.</p>
 </div>
 </section>
 </section>
