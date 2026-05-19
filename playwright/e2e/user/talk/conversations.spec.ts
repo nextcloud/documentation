@@ -322,11 +322,13 @@ test('Clear filter', async ({ page }) => {
 test('Group public settings', async ({ page }) => {
 	const token = await getOrCreateGroupToken()
 	await openGroupConversation(page, token)
-	await openSidebar(page)
-	await page.locator('#tab-button-participants').waitFor({ state: 'visible', timeout: 10000 })
-	await page.locator('#tab-button-participants').click()
-	await page.locator('#tab-participants').waitFor({ state: 'visible', timeout: 5000 })
-	await docElementScreenshot(page, '.app-sidebar', 'user/talk/group-public-settings')
+	await openConversationActions(page)
+	await page.locator('[role="menuitem"]', { hasText: /conversation settings/i }).click()
+	await page.locator('#conversation-settings-container').waitFor({ state: 'visible', timeout: 10000 })
+	await page.locator('.navigation-list__link', { hasText: /guests/i }).click()
+	await page.locator('#settings-section_conversation-settings').waitFor({ state: 'visible', timeout: 10000 })
+	await docElementScreenshot(page, '#conversation-settings-container', 'user/talk/group-public-settings')
+	await page.locator('#conversation-settings-container').locator('button[aria-label="Close"]').click()
 })
 
 test('Participant menu (... on participant)', async ({ page }) => {
