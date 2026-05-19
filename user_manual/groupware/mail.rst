@@ -39,9 +39,9 @@ Message Display / Operation Mode
 
 Mail has the ability to switch between two different message view and operation modes: *Threaded* and *Singleton*.
 
-In *Threaded* mode, messages are grouped by conversation. In the mailbox message list, related messages are stacked so only the most recent message is shown, and all relates messages are shown in message display panel after the stacked message is selected. This is useful for following discussions and understanding the context of replies. In this mode, message operation like move and delete apply to the entire thread, meaning that when you move or delete a thread, all messages within that thread are affected.
+In *Threaded* mode, messages are grouped by conversation. In the folder message list, related messages are stacked so only the most recent message is shown, and all relates messages are shown in message display panel after the stacked message is selected. This is useful for following discussions and understanding the context of replies. In this mode, message operation like move and delete apply to the entire thread, meaning that when you move or delete a thread, all messages within that thread are affected.
 
-In *Singleton* mode, messages are displayed individually, in both the mailbox message list and message display panel and operation like move and delete apply to only the selected message. This mode is useful when you want to manage messages separately without affecting the entire conversation.
+In *Singleton* mode, messages are displayed individually, in both the folder message list and message display panel and operation like move and delete apply to only the selected message. This mode is useful when you want to manage messages separately without affecting the entire conversation.
 
 1. Visit mail settings
 2. Choose between *Threaded*, *Singleton*
@@ -66,7 +66,7 @@ Change sort order
 2. Go to *Sorting*
 3. You can choose *Oldest* or *Newest* mail first
 
-.. note:: This change will apply across all your accounts and mailboxes
+.. note:: This change will apply across all your accounts and folders
 
 Sort favorites up
 ~~~~~~~~~~~~~~~~~
@@ -133,10 +133,10 @@ Mail can move a message to a different folder when it is marked as junk.
 
 .. figure:: images/mail_move-message-to-junk-folder.png
 
-Refresh mailbox
-~~~~~~~~~~~~~~~~
+Refresh folder
+~~~~~~~~~~~~~~
 
-You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
+You can manually trigger a sync of your folder by clicking the refresh button located at the top of the folder list.
 Starting from ``version 5.7`` triggering the sync will also refresh the list of folders for the selected account.
 
 Unified search
@@ -147,18 +147,18 @@ feature (see :doc:`../webinterface` for details). You can search for emails acro
 all your accounts using the search bar in the Nextcloud header.
 
 Mail searches email subjects and sender/recipient fields. To search email bodies,
-use the mailbox search feature in the app.
+use the folder search feature in the app.
 
-Search in mailbox
-~~~~~~~~~~~~~~~~~
+Search in folder
+~~~~~~~~~~~~~~~~
 
 .. versionadded:: 2.1
 
 At the top of the envelope list in any mail layout, there is a search field shortcut for searching email subjects. Starting from ``version 3.7``, this shortcut allows you to search by subject, recipient (to), or sender (from) by default.
 
 
-Advanced search in mailbox
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Advanced search in folder
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. versionadded:: 3.4
 
@@ -174,10 +174,10 @@ Mail bodies can now be searched, this feature is opt-in because of potential per
 To enable it:
 
 1) Visit Account settings
-2) Go to Mailbox search
+2) Go to Folder search
 3) Enable mail body search
 
-.. warning:: If you want to also enable it for unified mailboxes you have to do so in Mail settings
+.. warning:: If you want to also enable it for unified folders you have to do so in Mail settings
 
 By enabling it the main search box will now search in both subjects and mail bodies, and a separate *Body* option
 will appear in advanced search.
@@ -191,7 +191,7 @@ The app allows account delegation so that one user can send emails from the addr
 2) Add the other email address as an alias for your own email account
 3) When sending an email, select the alias as sender
 
-.. warning:: The sent email might not be visible to the original account if it's stored in your personal *Sent* mailbox.
+.. warning:: The sent email might not be visible to the original account if it's stored in your personal *Sent* folder.
 
 Automatic trash deletion
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -229,7 +229,7 @@ You can resume your minimized message by clicking anywhere on the minimized comp
 
 .. figure:: images/mail-composer-indicator.png
 
-Press the **Close** button on the modal or on the minimized composer indicator to stop editing a message. A draft will be saved automatically into your draft mailbox.
+Press the **Close** button on the modal or on the minimized composer indicator to stop editing a message. A draft will be saved automatically into your draft folder.
 
 
 Recipient info on composer
@@ -275,30 +275,30 @@ You can reopen the composer for a message in the outbox any time before the send
 .. note::
    When an error occurs during sending, three error messages are possible:
 
-   Could not copy to "Sent" mailbox
-      The mail was sent but couldn't be copied to the "Sent" mailbox. This error will be handled by the outbox and the copy operation will be tried again.
+   Could not copy to "Sent" folder
+      The mail was sent but couldn't be copied to the "Sent" folder. This error will be handled by the outbox and the copy operation will be tried again.
    Mail server error
       Sending was unsuccessful with a state that can be retried (ex: the SMTP server couldn't be reached). The outbox will retry sending the message.
    Message could not be sent
       Sending might or might not have failed. The mail server can't tell us the state of the message. Since the Mail app has no way to determine the state of the message (sent or unsent) the message will stay in the outbox and the account user has to decide how to proceed.
 
 
-Mailbox actions
----------------
+Folder actions
+--------------
 
-Add a mailbox
-~~~~~~~~~~~~~~
+Add a folder
+~~~~~~~~~~~~
 1. Open the action menu of an account
-2. Click add mailbox
+2. Click add folder
 
-Add a submailbox
-~~~~~~~~~~~~~~~~~
-1. Open the action menu of a mailbox
-2. Click add submailbox
-
-Shared mailbox
+Add a subfolder
 ~~~~~~~~~~~~~~~
-If a mailbox was shared with you with some specific rights, that mailbox will show as a new mailbox with a shared icon as below:
+1. Open the action menu of a folder
+2. Click add subfolder
+
+Shared folder
+~~~~~~~~~~~~~
+If a folder was shared with you with some specific rights, that folder will show as a new folder with a shared icon as below:
 
 .. figure:: images/shared-mailbox-icon.png
 
@@ -363,7 +363,7 @@ AI summary
 
 .. versionadded:: 4.2
 
-When looking through your mailbox you will see a short AI generated summary of your emails as a preview.
+When looking through your folder you will see a short AI generated summary of your emails as a preview.
 
 .. note:: Please note that the feature has to be enabled by the administrator
 
@@ -393,7 +393,7 @@ Snooze
 
 .. versionadded:: 3.4
 
-Snoozing a message or thread moves it into a dedicated mailbox until the selected snooze date is reached and the message or thread is moved back to the original mailbox.
+Snoozing a message or thread moves it into a dedicated folder until the selected snooze date is reached and the message or thread is moved back to the original folder.
 
 1. Open action menu of an envelope or thread
 2. Click *Snooze*
