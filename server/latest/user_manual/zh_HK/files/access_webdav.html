@@ -141,9 +141,12 @@
              
   <section id="accessing-nextcloud-files-using-webdav">
 <h1>透過 WebDAV 協定存取 Nextcloud 上的檔案<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
-<p>Nextcloud 完全支援 WebDAV 協定，您可以通過 WebDAV 連接和同步 Nextcloud 檔案。在本章中，您將學習如何將 Linux、macOS、Windows 和流動裝置連接到您的 Nextcloud 伺服器。</p>
+<p>Nextcloud fully supports the WebDAV protocol, and you can connect to and synchronize
+with Nextcloud Files over WebDAV. This chapter explains how to connect Linux, macOS,
+Windows, and mobile devices to your Nextcloud server.</p>
 <p>WebDAV 代表分散式創作及版本控制。它是一種 HTTP 擴展，便於創建、閱讀和編輯托管在遠端 Web 伺服器上的檔案。使用 WebDAV 客戶端您可以像存取任何遠端網絡共享一樣，在 Linux、macOS 和 Windows 上存取您的 Nextcloud 檔案（包括共享），並保持同步。</p>
-<p>在我們開始配置 WebDAV 之前，讓我們快速看一下將客戶端設備連接到 Nextcloud 的推薦方式。</p>
+<p>Before you configure WebDAV, review the recommended way to connect client devices to
+Nextcloud.</p>
 <section id="official-nextcloud-desktop-and-mobile-clients">
 <h2>官方 Nextcloud 桌面和流動客戶端<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
 <p>推薦將電腦與 Nextcloud 伺服器同步的方式是使用 <a class="reference external" href="https://nextcloud.com/install/#install-clients">官方 Nextcloud 同步客戶端</a>。您可以配置客戶端將檔案保存在任何本地目錄中，並選擇要與之同步的 Nextcloud 伺服器上的目錄。客戶端顯示當前的連接狀態並記錄所有活動，因此您始終知道哪些遠端檔案已下載到您的 PC，並可以驗證在近端 PC 上創建和更新的檔案是否與伺服器正確同步。</p>
@@ -179,8 +182,8 @@
 <p class="admonition-title">Note</p>
 <p>When using a third-party WebDAV client (including your operating system's
 built-in client), you should use an application password for login rather than your
-regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
-configure an application password, log into the Nextcloud Web interface, click on your avatar
+regular password. In addition to improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log in to the Nextcloud Web interface, click your avatar,
 and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
 sidebar and scroll to the very bottom. There you can create an app password (which can
 also be revoked in the future without changing your main user password).</p>
@@ -188,7 +191,7 @@ also be revoked in the future without changing your main user password).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>在以下示例中，您應將 <strong>example.com/nextcloud</strong> 替換為您的 Nextcloud 伺服器的 URL（如果安裝在您的域根目錄中，請省略目錄部分），並將 <strong>USERNAME</strong> 替換為連接用戶的用戶名。</p>
-<p>請參閱 WebDAV URL，你可在 Nextcloud 帳戶中的 Files → Settings → WebDAV 找到。</p>
+<p>You can find the WebDAV URL in <strong>Files settings</strong> under <strong>WebDAV</strong> in your Nextcloud account.</p>
 <img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
 </div>
 </section>
@@ -213,8 +216,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p>相同的方法適用於使用 GVFS 的其他檔案管理器，如 MATE 的 Caja 和 Cinnamon 的 Nemo。</p>
 </div>
 </section>
-<section id="accessing-files-with-kde-and-dolphin-file-manager">
-<h3>使用 KDE 和 Dolphin 檔案管理器存取檔案<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<section id="accessing-files-with-kde-and-dolphin">
+<h3>Accessing files with KDE and Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>前往系統設定 -&gt; 網絡 -&gt; 在線帳戶</p></li>
 <li><p>點擊 &quot;添加帳戶...&quot;</p></li>
@@ -223,8 +226,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <li><p>按照螢幕上的指示登錄</p></li>
 <li><p>登錄後，確保在「用此帳戶做什麼」部分啟用「儲存」</p></li>
 <li><p>現在您可以在 Dolphin 的側邊欄的「網絡」中存取您的檔案</p></li>
-<li><p>(非強制的) 要將其作為側邊欄的快捷方式，右鍵單擊「Nextcloud 存儲」，然後選擇「添加到位置」</p></li>
-<li><p>(非強制的) 要自定義快捷方式，右鍵單擊側邊欄中的快捷方式，然後選擇「編輯...」，隨意自定義圖標和標籤</p></li>
+<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click &quot;Nextcloud Storage&quot;, then click &quot;Add to Places&quot;</p></li>
+<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then click &quot;Edit...&quot; and customize the icon and label</p></li>
 </ol>
 </section>
 </section>
@@ -344,7 +347,7 @@ for example
 <p>使用此功能需要網絡連接。如果您希望離線存儲檔案，請使用桌面客戶端將 Nextcloud 上的所有檔案同步到本地硬碟的某一或多個目錄中。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Windows 10 現在映射您的硬碟之前，如果啟用了 HTTPS，則 Windows 10 現在默認允許基本身份驗證。</p>
+<p>In Windows 10, Basic Authentication is allowed by default when HTTPS is enabled before mapping your drive.</p>
 <p>在舊版本的 Windows 上，您必須在 Windows 註冊表中允許使用基本身份驗證：</p>
 <ul class="simple">
 <li><p>啟動 <code class="docutils literal notranslate"><span class="pre">regedit</span></code> 並導航到 <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code>。</p></li>
@@ -406,8 +409,6 @@ for example
 </a>
 </figure>
 </li>
-</ol>
-<ol class="arabic simple" start="5">
 <li><p>點擊 <code class="docutils literal notranslate"><span class="pre">完成</span></code> 按鈕。</p></li>
 </ol>
 <p>Windows 檔案總管映射網絡驅動器，使您的 Nextcloud 實例可用。</p>
@@ -479,11 +480,15 @@ for example
 </section>
 <section id="id6">
 <h3>問題<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
-<p>根據上述步驟在 Windows 上添加 WebDAV 驅動器不會顯示 Nextcloud 可用空間的正確大小，而是顯示 C: 驅動器的大小及其可用空間。</p>
+<p>Adding a WebDAV drive on Windows with the steps above does not display the correct
+available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
 <section id="answer">
 <h3>回答<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
-<p>不幸的是，這是 WebDAV 本身的限制，因為它不提供客戶端從伺服器獲取可用空間的方法。Windows 自動回退到顯示 C: 驅動器的大小及其可用空間。因此不幸的是，對於這個問題沒有真正的解決方案。</p>
+<p>Unfortunately, this is a limitation of WebDAV itself, because it does not provide a
+way for the client to retrieve available free space from the server. Windows automatically
+falls back to the size and free space of the C: drive. There is no direct solution
+for this limitation.</p>
 </section>
 <section id="id7">
 <h3>問題<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
@@ -500,7 +505,7 @@ for example
 <section id="id10">
 <h3>解決方案<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>通過您喜愛的 Web 瀏覽器存取您的 Nextcloud 實例。</p></li>
+<li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>點擊直到您在瀏覽器狀態行中遇到證書錯誤。</p></li>
 <li><p>檢視證書，然後在「詳細資料」標籤中選擇「複製到檔案」。</p></li>
 <li><p>將檔案保存到桌面，隨意命名，例如 <code class="docutils literal notranslate"><span class="pre">myNextcloud.pem</span></code>。</p></li>
@@ -588,9 +593,13 @@ for example
 </section>
 <section id="accessing-files-using-winscp">
 <h2>使用 WinSCP 存取檔案<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
-<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> 是一款開源的免費 SFTP、FTP、WebDAV、S3 和 SCP 客戶端，適用於 Windows。它的主要功能是進行本地電腦和遠程電腦之間的檔案傳輸。此外，WinSCP 還提供腳本和基本的檔案管理功能。</p>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> is a free, open-source SFTP,
+FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer
+between a local and a remote computer. WinSCP also offers scripting and basic file
+management functionality.</p>
 <p>您可以 <a class="reference external" href="https://winscp.net/eng/downloads.php/">下載</a> WinSCP 的可攜版本，並通過 <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a> 在 Linux 上運行。</p>
-<p>要在 Linux 上運行 WinSCP，請通過您的發行版的包管理器下載 wine，然後使用命令 <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code> 運行它。</p>
+<p>To run WinSCP on Linux, install Wine through your distribution's package manager,
+then run: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
 <p>要連接到 Nextcloud：</p>
 <ul class="simple">
 <li><p>啟動 WinSCP</p></li>
@@ -611,7 +620,8 @@ for example
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>如果您使用 TOTP，建議使用應用程式密碼作為密碼，因為 WinSCP 在撰寫本文時不理解與 Nextcloud 的 TOTP（2022-11-07）。</p>
+<p>If you use TOTP, use an app password. At the time of writing (2022-11-07),
+WinSCP does not support TOTP with Nextcloud.</p>
 </div>
 </section>
 </section>

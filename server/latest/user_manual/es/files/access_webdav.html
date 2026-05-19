@@ -141,12 +141,15 @@
              
   <section id="accessing-nextcloud-files-using-webdav">
 <h1>Acceder a los archivos de Nextcloud a través de WebDAV<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
-<p>Nextcloud soporta completamente el protocolo WebDAV, y usted puede conectar y sincronizar con Archivos de Nextcloud a través de WebDAV. En este capítulo, aprenderá cómo conectar dispositivos Linux, macOS, Windows y móviles a su servidor Nextcloud.</p>
+<p>Nextcloud fully supports the WebDAV protocol, and you can connect to and synchronize
+with Nextcloud Files over WebDAV. This chapter explains how to connect Linux, macOS,
+Windows, and mobile devices to your Nextcloud server.</p>
 <p>WebDAV stands for Distributed Authoring and Versioning. It is an HTTP extension
 that makes it easy to create, read, and edit files hosted on remote Web servers. With
 a WebDAV client, you can access your Nextcloud Files (including shares) on Linux,
 macOS and Windows in a similar way as any remote network share, and stay synchronized.</p>
-<p>Antes de configurar WebDAV, démosle una mirada rápida a la forma recomendada de conectar dispositivos cliente a Nextcloud.</p>
+<p>Before you configure WebDAV, review the recommended way to connect client devices to
+Nextcloud.</p>
 <section id="official-nextcloud-desktop-and-mobile-clients">
 <h2>Clientes oficiales Nextcloud para escritorio y móviles<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
 <p>El modo recomendado de sincronizar un PC de escritorio con un servidor Nextcloud es usando <a class="reference external" href="https://nextcloud.com/install/#install-clients">clientes oficiales de sincronización de Nextcloud</a>. Puede configurar los clientes para guardar archivos en cualquier directorio local y puede elegir qué directorios sincronizar del servidor Nextcloud. El cliente muestra el estado de la conexión actual y registra toda la actividad, de modo que usted siempre pueda verificar que los archivos creados y actualizados en su ordenador estén adecuadamente sincronizados con el servidor.</p>
@@ -182,8 +185,8 @@ macOS and Windows in a similar way as any remote network share, and stay synchro
 <p class="admonition-title">Nota</p>
 <p>When using a third-party WebDAV client (including your operating system’s
 built-in client), you should use an application password for login rather than your
-regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
-configure an application password, log into the Nextcloud Web interface, click on your avatar
+regular password. In addition to improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log in to the Nextcloud Web interface, click your avatar,
 and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
 sidebar and scroll to the very bottom. There you can create an app password (which can
 also be revoked in the future without changing your main user password).</p>
@@ -191,7 +194,7 @@ also be revoked in the future without changing your main user password).</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>En los siguientes ejemplos, debe reemplazar <strong>example.com/nextcloud</strong> con la URL de su servidor Nextcloud (omita el directorio si su instalación está en la raíz de su dominio), y <strong>USUARIO</strong> con el nombre de usuario con el que se va a conectar.</p>
-<p>See the WebDAV URL, to be found in Files Settings -&gt; WebDAV in the Files on your Nextcloud account.</p>
+<p>You can find the WebDAV URL in <strong>Files settings</strong> under <strong>WebDAV</strong> in your Nextcloud account.</p>
 <img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
 </div>
 </section>
@@ -216,8 +219,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p>El mismo método funciona para otros gestores de archivos que utilizan GVFS, como por ejemplo Caja en el entorno MATE y Nemo en Cinnamon.</p>
 </div>
 </section>
-<section id="accessing-files-with-kde-and-dolphin-file-manager">
-<h3>Acceder a archivos con KDE y el gestor de archivos Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<section id="accessing-files-with-kde-and-dolphin">
+<h3>Accessing files with KDE and Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Navigate to System Settings -&gt; Networking -&gt; Online Accounts</p></li>
 <li><p>Click «Add Account…»</p></li>
@@ -226,8 +229,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <li><p>Follow the on-screen instructions to log in</p></li>
 <li><p>After logging in, ensure you enable «Storage» in the «Use This Account For» section</p></li>
 <li><p>You can now access your files in Dolphin under «Network» in the sidebar</p></li>
-<li><p>(Optional) To add this as a shortcut in the sidebar, right click «Nextcloud Storage» then «Add to Places»</p></li>
-<li><p>(Optional) To customise the shortcut, right click the shortcut in the sidebar then «Edit…» and customise the icon and label as you please</p></li>
+<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click «Nextcloud Storage», then click «Add to Places»</p></li>
+<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then click «Edit…» and customize the icon and label</p></li>
 </ol>
 </section>
 </section>
@@ -347,7 +350,7 @@ for example
 <p>Esta herramienta requiere conectividad a la red. Si quiere acceder a sus archivos sin conexión, utilice el Cliente de Escritorio para sincronizar todos sus archivos de Nextcloud en uno o más carpetas de su disco duro local.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Windows 10 permitirá la Autenticación Básica por defecto si se habilita HTTPS antes de asignar su unidad.</p>
+<p>In Windows 10, Basic Authentication is allowed by default when HTTPS is enabled before mapping your drive.</p>
 <p>En versiones más antiguas de Windows, debe permitir el uso de la Autenticación Básica en el registro de Windows:</p>
 <ul class="simple">
 <li><p>Lance <code class="docutils literal notranslate"><span class="pre">regedit</span></code> y navegue a <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code>.</p></li>
@@ -412,8 +415,6 @@ that the <code class="docutils literal notranslate"><span class="pre">WebClient<
 </a>
 </figure>
 </li>
-</ol>
-<ol class="arabic simple" start="5">
 <li><p>Haga clic en el botón <code class="docutils literal notranslate"><span class="pre">Finalizar</span></code>.</p></li>
 </ol>
 <p>El Explorador de archivos de Windows asigna la unidad de red, dándole acceso a su instancia de Nextcloud.</p>
@@ -490,11 +491,15 @@ service.</p>
 </section>
 <section id="id6">
 <h3>Problema<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
-<p>Añadir una unidad WebDAV en Windows usando los pasos descritos anteriormente no mostrará el tamaño disponible correcto en Nextcloud y en vez de eso, mostrará el tamaño de la unidad C: con su espacio disponible.</p>
+<p>Adding a WebDAV drive on Windows with the steps above does not display the correct
+available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
 <section id="answer">
 <h3>Respuesta<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
-<p>Desafortunadamente, esta es una limitación del mismo WebDAV, ya que no provee formas en las que el cliente obtenga el espacio disponible desde el servidor. Windows, en cambio, se revierte automáticamente a mostrar el tamaño de la unidad C: con su espacio disponible. Así que, desafortunadamente, no hay solución real a este problema.</p>
+<p>Unfortunately, this is a limitation of WebDAV itself, because it does not provide a
+way for the client to retrieve available free space from the server. Windows automatically
+falls back to the size and free space of the C: drive. There is no direct solution
+for this limitation.</p>
 </section>
 <section id="id7">
 <h3>Problema<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
@@ -511,7 +516,7 @@ service.</p>
 <section id="id10">
 <h3>Solución<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Acceda a su instancia de Nextcloud a través de su navegador web favorito.</p></li>
+<li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>Entre hasta el error de certificado en la barra de estado del navegador.</p></li>
 <li><p>View the certificate, then from the Details tab, select “Copy to File”.</p></li>
 <li><p>Guárdelo al escritorio con un nombre arbitrario, por ejemplo <code class="docutils literal notranslate"><span class="pre">myNextcloud.pem</span></code>.</p></li>
@@ -603,9 +608,13 @@ Complete the Import.</p></li>
 </section>
 <section id="accessing-files-using-winscp">
 <h2>Acceder a archivos utilizando WinSCP<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
-<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a>  es un cliente SFTP, FTP, WebDAV, S3 y SCP de código abierto para Windows. Su función principal es transferir archivos entre un computador local y uno remoto. Más allá de esto, WinSCP ofrece características de scripting y características básicas para administración de archivos.</p>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> is a free, open-source SFTP,
+FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer
+between a local and a remote computer. WinSCP also offers scripting and basic file
+management functionality.</p>
 <p>Puede <a class="reference external" href="https://winscp.net/eng/downloads.php/">descargar</a> la versión portatil de WinSCP y ejecutarla en Linux usando <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a>.</p>
-<p>Para ejecutar WinSCP en Linux, descargue wine a través de la herramienta de gestión de paquetes de su distribución y entonces ejecútela usando el comando: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
+<p>To run WinSCP on Linux, install Wine through your distribution’s package manager,
+then run: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
 <p>Para conectarse a Nextcloud:</p>
 <ul class="simple">
 <li><p>Iniciar WinSCP</p></li>
@@ -626,7 +635,8 @@ Complete the Import.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>It is recommended to use an app password for the password if you use TOTP as WinSCP does not understand TOTP with Nextcloud at the time of writing (2022-11-07).</p>
+<p>If you use TOTP, use an app password. At the time of writing (2022-11-07),
+WinSCP does not support TOTP with Nextcloud.</p>
 </div>
 </section>
 </section>
