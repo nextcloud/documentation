@@ -22,7 +22,6 @@ import * as fs from 'fs/promises'
 test.describe.configure({ mode: 'serial' })
 
 const christine = new User('christine', 'christine')
-const amara = new User('amara_w', 'amara_w')
 
 const AVATAR_DIR = '/home/anna/Downloads/tp/avatar'
 const FIXTURES_DIR = path.join(process.cwd(), 'cypress/fixtures')
@@ -181,11 +180,11 @@ test.beforeAll(async ({ browser }) => {
 		shareType: '10', path: '/Team Meeting Notes.pdf', shareWith: dmToken,
 	})
 
-	// Seed 1:1 DM messages (only if conversation is empty)
-	const chatRes = await talkApi('GET', `/v1/chat/${dmToken}?lookIntoFuture=0&limit=1`, christine)
+	// Seed 1:1 DM messages — filter out system messages (Talk always adds "You created the conversation")
+	const chatRes = await talkApi('GET', `/v1/chat/${dmToken}?lookIntoFuture=0&limit=20`, christine)
 	const chatData = await chatRes.json()
-	const msgs: unknown[] = chatData?.ocs?.data ?? []
-	if (msgs.length === 0) {
+	const msgs: Array<{ systemMessage?: string }> = chatData?.ocs?.data ?? []
+	if (msgs.filter(m => !m.systemMessage).length === 0) {
 		await seedChatMessages(dmToken, [
 			{ text: 'Do you have a minute?', user: 'amara_w', password: 'amara_w' },
 			{ text: "Absolutely, what's up?", user: 'christine', password: 'christine' },
@@ -215,10 +214,10 @@ test.beforeAll(async ({ browser }) => {
 
 	// Seed charlotte_m ↔ christine DM (only if empty)
 	const charlotteDmToken = await createTalkDm(christine, 'charlotte_m')
-	const charlotteChatRes = await talkApi('GET', `/v1/chat/${charlotteDmToken}?lookIntoFuture=0&limit=1`, christine)
+	const charlotteChatRes = await talkApi('GET', `/v1/chat/${charlotteDmToken}?lookIntoFuture=0&limit=20`, christine)
 	const charlotteChatData = await charlotteChatRes.json()
-	const charlotteMsgs: unknown[] = charlotteChatData?.ocs?.data ?? []
-	if (charlotteMsgs.length === 0) {
+	const charlotteMsgs: Array<{ systemMessage?: string }> = charlotteChatData?.ocs?.data ?? []
+	if (charlotteMsgs.filter(m => !m.systemMessage).length === 0) {
 		await seedChatMessages(charlotteDmToken, [
 			{ text: "Hi Christine — the venue is asking for the £2,500 deposit by end of week. Shall I go ahead and authorise it?", user: 'charlotte_m', password: 'charlotte_m' },
 			{ text: "Yes, please go ahead — I've already confirmed it with finance.", user: 'christine', password: 'christine' },
@@ -228,10 +227,10 @@ test.beforeAll(async ({ browser }) => {
 
 	// Seed orion_g ↔ christine DM (only if empty)
 	const orionDmToken = await createTalkDm(christine, 'orion_g')
-	const orionChatRes = await talkApi('GET', `/v1/chat/${orionDmToken}?lookIntoFuture=0&limit=1`, christine)
+	const orionChatRes = await talkApi('GET', `/v1/chat/${orionDmToken}?lookIntoFuture=0&limit=20`, christine)
 	const orionChatData = await orionChatRes.json()
-	const orionMsgs: unknown[] = orionChatData?.ocs?.data ?? []
-	if (orionMsgs.length === 0) {
+	const orionMsgs: Array<{ systemMessage?: string }> = orionChatData?.ocs?.data ?? []
+	if (orionMsgs.filter(m => !m.systemMessage).length === 0) {
 		await seedChatMessages(orionDmToken, [
 			{ text: "Just saw your post about the gala — looks amazing! 🎉", user: 'orion_g', password: 'orion_g' },
 			{ text: "Thanks Orion! It's shaping up really well. Tickets go on sale next month.", user: 'christine', password: 'christine' },
@@ -241,28 +240,13 @@ test.beforeAll(async ({ browser }) => {
 
 	// Seed adrian_l ↔ christine DM (only if empty)
 	const adrianDmToken = await createTalkDm(christine, 'adrian_l')
-	const adrianChatRes = await talkApi('GET', `/v1/chat/${adrianDmToken}?lookIntoFuture=0&limit=1`, christine)
+	const adrianChatRes = await talkApi('GET', `/v1/chat/${adrianDmToken}?lookIntoFuture=0&limit=20`, christine)
 	const adrianChatData = await adrianChatRes.json()
-	const adrianMsgs: unknown[] = adrianChatData?.ocs?.data ?? []
-	if (adrianMsgs.length === 0) {
+	const adrianMsgs: Array<{ systemMessage?: string }> = adrianChatData?.ocs?.data ?? []
+	if (adrianMsgs.filter(m => !m.systemMessage).length === 0) {
 		await seedChatMessages(adrianDmToken, [
 			{ text: "Christine, just confirming — are the decorators booked for the 1st?", user: 'adrian_l', password: 'adrian_l' },
 		])
-	}
-
-	// Seed note-to-self with a task list so the screenshot shows the task counter
-	const noteRes = await talkApi('GET', '/v1/note-to-self', christine)
-	const noteData = await noteRes.json()
-	const noteToken = noteData.ocs.data.token as string
-	const noteChatRes = await talkApi('GET', `/v1/chat/${noteToken}?lookIntoFuture=0&limit=50`, christine)
-	const noteChatData = await noteChatRes.json()
-	const noteMsgsList: unknown[] = noteChatData?.ocs?.data ?? []
-	if (!noteMsgsList.some(m => (m as { message: string }).message?.includes('Define Project Scope'))) {
-		await seedChatMessages(noteToken, [{
-			text: '- [x] Define Project Scope and Objectives\n- [x] Develop a Project Plan\n- [ ] Coordinate Team Activities\n- [ ] Review and finalize budget\n- [ ] Schedule kickoff meeting',
-			user: 'christine',
-			password: 'christine',
-		}])
 	}
 
 	// Pre-create the "Event planning" group so participant membership is synced
@@ -362,6 +346,52 @@ test.beforeAll(async ({ browser }) => {
 	const pg = await ctx.newPage()
 	await login(pg.request, christine)
 	authCookies = await ctx.cookies()
+
+	// Navigate to Talk so the full client initialises — this is required for the
+	// note-to-self room to accept API chat posts (API-only seeding silently fails
+	// until the browser has visited /apps/spreed at least once).
+	await pg.goto('/apps/spreed')
+	await pg.locator('[aria-label="Conversation list"]').waitFor({ state: 'visible', timeout: 20000 }).catch(() => {})
+
+	// Seed note-to-self task list (must be after browser nav — Talk requires it)
+	const noteRes = await talkApi('GET', '/v1/note-to-self', christine)
+	const noteData = await noteRes.json()
+	const noteToken = noteData?.ocs?.data?.token as string | undefined
+	if (noteToken) {
+		const noteChatRes = await talkApi('GET', `/v1/chat/${noteToken}?lookIntoFuture=0&limit=50`, christine)
+		const noteChatData = await noteChatRes.json()
+		const noteMsgsList: Array<{ message?: string; systemMessage?: string }> = noteChatData?.ocs?.data ?? []
+		if (!noteMsgsList.some(m => m.message?.includes('Define Project Scope'))) {
+			await seedChatMessages(noteToken, [{
+				text: '- [x] Define Project Scope and Objectives\n- [x] Develop a Project Plan\n- [ ] Coordinate Team Activities\n- [ ] Review and finalize budget\n- [ ] Schedule kickoff meeting',
+				user: 'christine',
+				password: 'christine',
+			}])
+		}
+	}
+
+	// Seed reminders for the Talk dashboard panel — one on the Amara DM and one on the group
+	const reminderDmToken = await createTalkDm(christine, 'amara_w')
+	const reminderDmRes = await talkApi('GET', `/v1/chat/${reminderDmToken}?lookIntoFuture=0&limit=20`, christine)
+	const reminderDmData = await reminderDmRes.json()
+	const reminderDmMsgs: Array<{ id: number; message?: string; systemMessage?: string }> = reminderDmData?.ocs?.data ?? []
+	const reminderDmMsg = reminderDmMsgs.find(m => !m.systemMessage && m.message?.includes('Q2 proposal'))
+	if (reminderDmMsg) {
+		const inTwoDays = Math.floor(Date.now() / 1000) + 2 * 24 * 3600
+		await talkApi('POST', `/v1/chat/${reminderDmToken}/${reminderDmMsg.id}/reminder`, christine, { timestamp: String(inTwoDays) }).catch(() => {})
+	}
+	if (groupToken) {
+		const reminderGrpRes = await talkApi('GET', `/v1/chat/${groupToken}?lookIntoFuture=0&limit=20`, christine)
+		const reminderGrpData = await reminderGrpRes.json()
+		const reminderGrpMsgs: Array<{ id: number; message?: string; systemMessage?: string }> = reminderGrpData?.ocs?.data ?? []
+		const reminderGrpMsg = reminderGrpMsgs.find(m => !m.systemMessage && m.message?.includes('catering walkthrough'))
+		if (reminderGrpMsg) {
+			const tomorrow = Math.floor(Date.now() / 1000) + 24 * 3600
+			await talkApi('POST', `/v1/chat/${groupToken}/${reminderGrpMsg.id}/reminder`, christine, { timestamp: String(tomorrow) }).catch(() => {})
+		}
+	}
+
+	await pg.close()
 	await ctx.close()
 })
 
@@ -371,12 +401,15 @@ test.beforeEach(async ({ page }) => {
 
 // ── Screenshots ───────────────────────────────────────────────────────────────
 
-test('Talk dashboard (conversation list)', async ({ page }) => {
+test('Talk dashboard', async ({ page }) => {
 	await clearTalkFilter(page)
 	await page.goto('/apps/spreed')
-	await page.locator('[aria-label="Conversation list"]').waitFor({ state: 'visible', timeout: 15000 })
-	await page.waitForFunction(() => document.querySelectorAll('.conversation').length >= 1, undefined, { timeout: 10000 })
+	await Promise.race([
+		page.locator('.dashboard__title, h2:has-text("Hello"), .talk-dashboard').waitFor({ state: 'visible', timeout: 10000 }),
+		page.locator('[aria-label="Conversation list"]').waitFor({ state: 'visible', timeout: 10000 }),
+	]).catch(() => {})
 	await page.locator('.icon-loading').waitFor({ state: 'hidden', timeout: 10000 }).catch(() => {})
+	await page.waitForTimeout(1500)
 	await docScreenshot(page, 'user/talk/talk-dashboard')
 })
 
@@ -386,7 +419,27 @@ test('Note to self', async ({ page }) => {
 	await page.locator('.conversation .text', { hasText: 'Note to self' }).waitFor({ state: 'visible', timeout: 15000 })
 	await page.locator('.conversation .text', { hasText: 'Note to self' }).click()
 	await page.locator('.chatView').waitFor({ state: 'visible', timeout: 10000 })
-	await page.locator('.chatView').getByText(/Define Project Scope/i).waitFor({ state: 'visible', timeout: 15000 }).catch(() => {})
+
+	const hasTaskList = await page.locator('.chatView').getByText(/Define Project Scope/i).isVisible().catch(() => false)
+	if (!hasTaskList) {
+		// Fallback: seed via UI if API seeding didn't land. Locator discovered via page snapshot.
+		const inputArea = page.getByRole('region', { name: 'Post message' }).getByRole('textbox')
+		await inputArea.waitFor({ state: 'visible', timeout: 5000 })
+		await inputArea.click()
+		const lines = [
+			'- [x] Define Project Scope and Objectives',
+			'- [x] Develop a Project Plan',
+			'- [ ] Coordinate Team Activities',
+			'- [ ] Review and finalize budget',
+			'- [ ] Schedule kickoff meeting',
+		]
+		for (let i = 0; i < lines.length; i++) {
+			await page.keyboard.type(lines[i])
+			if (i < lines.length - 1) await page.keyboard.press('Shift+Enter')
+		}
+		await page.keyboard.press('Enter')
+		await page.locator('.chatView').getByText(/Define Project Scope/i).waitFor({ state: 'visible', timeout: 10000 })
+	}
 	await page.waitForTimeout(500)
 	// Close sidebar if open
 	const sidebar = page.locator('.app-sidebar')
@@ -421,8 +474,8 @@ test('1:1 extend to group', async ({ page }) => {
 	await page.locator('button[aria-label="Start a group conversation"]').waitFor({ state: 'visible', timeout: 5000 })
 	await page.locator('button[aria-label="Start a group conversation"]').click()
 	await page.locator('.start-group__content, [role="dialog"]').waitFor({ state: 'visible', timeout: 5000 })
-	await page.locator('.start-group__content input, [role="dialog"] input[type="text"]').first().fill('l')
-	await page.locator('[data-nav-id="users_lila_h"]').waitFor({ state: 'visible', timeout: 5000 })
+	await page.locator('.start-group__content input, [role="dialog"] input[type="text"]').first().fill('Lila')
+	await page.locator('[data-nav-id="users_lila_h"]').waitFor({ state: 'visible', timeout: 5000 }).catch(() => {})
 	await docScreenshot(page, 'user/talk/one-to-one-extend')
 })
 

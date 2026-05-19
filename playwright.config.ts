@@ -34,7 +34,13 @@ export default defineConfig({
 	projects: [
 		{
 			name: 'chromium',
-			use: { channel: 'chromium' },
+			use: {
+				channel: 'chromium',
+				permissions: ['camera', 'microphone'],
+				launchOptions: {
+					args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream'],
+				},
+			},
 		},
 	],
 
