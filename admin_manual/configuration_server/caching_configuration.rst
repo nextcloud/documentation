@@ -102,7 +102,6 @@ Additional notes for Redis vs. APCu on memory caching
 APCu is faster at local caching than Redis. If you have enough memory, use APCu for Memory Caching
 and Redis for File Locking. If you are low on memory, use Redis for both.
 
-
 APCu
 ----
 
@@ -318,8 +317,7 @@ prevent session corruption when using Redis as your session handler: ::
 More information on configuration of phpredis session handler can be found on the
 `PhpRedis GitHub page <https://github.com/phpredis/phpredis>`_
 
-..  _install_redis_label:
-
+.. _install_redis_label:
 
 Memcached
 ---------
