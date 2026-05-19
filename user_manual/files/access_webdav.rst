@@ -67,8 +67,8 @@ If Nextcloud is installed in a subdirectory called "nextcloud"::
    built-in client), you should use an application password for login rather than your
    regular password. In addition to improved security, this `increases performance significantly
    <https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151>`_. To
-   configure an application password, log into the Nextcloud Web interface, click on the avatar
-   in the top right and choose *Personal settings*. Then choose *Security* in the left
+   configure an application password, log in to the Nextcloud Web interface, click your avatar,
+   and choose *Personal settings*. Then choose *Security* in the left
    sidebar and scroll to the very bottom. There you can create an app password (which can
    also be revoked in the future without changing your main user password).
 
@@ -79,7 +79,7 @@ If Nextcloud is installed in a subdirectory called "nextcloud"::
    You can find the WebDAV URL in **Files settings** under **WebDAV** in your Nextcloud account.
 
    .. image:: ../images/webdav_link.png
-    :alt: Screenshot of the Files settings showing the personal WebDAV link
+    :alt: Nextcloud Files settings panel showing the personal WebDAV URL
 
 
 
@@ -316,7 +316,7 @@ To map a drive using Microsoft Windows Explorer:
 
    .. figure:: ../images/explorer_webdav.png
      :scale: 80%
-     :alt: Screenshot of mapping WebDAV on Windows Explorer
+     :alt: Windows Explorer Map Network Drive wizard with a Nextcloud WebDAV URL entered
 
 #. Click the ``Finish`` button.
 
