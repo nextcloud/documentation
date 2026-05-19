@@ -97,7 +97,7 @@
                style="color: var(--dark-link-color);"
                {% endif %}
             >
-              {{ slug }}
+              {{ slug if slug != 'stable' else 'stable (' ~ version_stable ~ ')' }}
             </a>
           </dd>
         {% endfor %}

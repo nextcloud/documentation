@@ -82,7 +82,7 @@ def generateVersionsDocs(current_docs):
 	versions_doc = []
 	for v in range(version_start, version_stable + 1):
 		url = 'https://docs.nextcloud.com/server/%s/%s' % (str(v), current_docs)
-		versions_doc.append(tuple((v, url)))
+		versions_doc.append(tuple((str(v), url)))
 	versions_doc.append(tuple(('stable', 'https://docs.nextcloud.com/server/%s/%s' % ('stable', current_docs))))
 	versions_doc.append(tuple(('latest', 'https://docs.nextcloud.com/server/%s/%s' % ('latest', current_docs))))
 	return versions_doc
@@ -93,7 +93,8 @@ else:
 	github_branch = 'master'
 
 html_context = {
-	'current_version': version,
+	'current_version': release,
+	'version_stable': str(version_stable),
 	'READTHEDOCS': True,
 
 	# force github plugin
