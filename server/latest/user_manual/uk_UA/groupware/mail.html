@@ -92,10 +92,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#all-inboxes">Всі вхідні</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#account-settings">Налаштування облікового запису</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#move-messages-to-junk-folder">Перемістити повідомлення до папки «Спам</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#refresh-mailbox">Refresh mailbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refresh-folder">Refresh folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#unified-search">Unified search</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#search-in-mailbox">Пошук у поштовій скриньці</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#advanced-search-in-mailbox">Розширений пошук у поштовій скриньці</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-in-folder">Search in folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-search-in-folder">Advanced search in folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#enable-mail-body-search">Увімкнути пошук по тілу листа</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#account-delegation">Делегування рахунку</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#automatic-trash-deletion">Автоматичне видалення сміття</a></li>
@@ -109,10 +109,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#mention-contacts">Вказати контакти</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#text-blocks">Текстові блоки</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#outbox">Вихідні</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mailbox-actions">Дії в поштовій скриньці</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#add-a-mailbox">Додати поштову скриньку</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#add-a-submailbox">Додати підпоштову скриньку</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#shared-mailbox">Спільна поштова скринька</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#folder-actions">Folder actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-folder">Add a folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-subfolder">Add a subfolder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-folder">Shared folder</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#envelope-actions">Конвертні дії</a><ul>
@@ -213,7 +213,7 @@
 <section id="switch-layout">
 <h3>Розташування вимикачів<a class="headerlink" href="#switch-layout" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.6.</span></p>
+<p><span class="versionmodified added">Added in version 3.6: </span>Nextcloud 26 or newer</p>
 </div>
 <ol class="arabic simple">
 <li><p>Відвідайте налаштування пошти</p></li>
@@ -226,7 +226,7 @@
 <section id="use-compact-mode">
 <h3>Use Compact Mode<a class="headerlink" href="#use-compact-mode" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.7.0.</span></p>
+<p><span class="versionmodified added">Added in version 5.7: </span>Nextcloud 32 or newer</p>
 </div>
 <p>Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.</p>
 <ol class="arabic simple">
@@ -241,11 +241,11 @@
 <section id="message-display-operation-mode">
 <h3>Відображення повідомлень / Режим роботи<a class="headerlink" href="#message-display-operation-mode" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.2.</span></p>
+<p><span class="versionmodified added">Added in version 5.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Пошта має можливість перемикатися між двома різними режимами перегляду та роботи з повідомленнями: <em>потоковий</em> та <em>одиночний</em>.</p>
-<p>У режимі <em>Потокові</em> повідомлення групуються за темою розмови. У списку повідомлень поштової скриньки пов’язані повідомлення об’єднуються у стос, тож відображається лише останнє повідомлення, а всі пов’язані повідомлення показуються на панелі повідомлень після того, як вибрано повідомлення, що об’єднано у стос. Це корисно для відстеження дискусій і розуміння контексту відповідей. У цьому режимі операції над повідомленнями, такі як переміщення і видалення, застосовуються до всієї теми, тобто, коли ви переміщуєте або видаляєте тему, це впливає на всі повідомлення в цій темі.</p>
-<p>У режимі <em>Одиночка</em> повідомлення відображаються окремо, як у списку повідомлень поштової скриньки, так і на панелі відображення повідомлень, а такі операції, як переміщення і видалення, застосовуються лише до вибраного повідомлення. Цей режим корисний, коли ви хочете керувати повідомленнями окремо, не впливаючи на всю розмову.</p>
+<p>In <em>Threaded</em> mode, messages are grouped by conversation. In the folder message list, related messages are stacked so only the most recent message is shown, and all relates messages are shown in message display panel after the stacked message is selected. This is useful for following discussions and understanding the context of replies. In this mode, message operation like move and delete apply to the entire thread, meaning that when you move or delete a thread, all messages within that thread are affected.</p>
+<p>In <em>Singleton</em> mode, messages are displayed individually, in both the folder message list and message display panel and operation like move and delete apply to only the selected message. This mode is useful when you want to manage messages separately without affecting the entire conversation.</p>
 <ol class="arabic simple">
 <li><p>Відвідайте налаштування пошти</p></li>
 <li><p>Вибирайте між <em>Різьблені</em>, <em>Одинарні</em></p></li>
@@ -268,7 +268,7 @@
 <section id="change-sort-order">
 <h3>Змінити порядок сортування<a class="headerlink" href="#change-sort-order" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.5.</span></p>
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
 </div>
 <ol class="arabic simple">
 <li><p>Відвідайте налаштування пошти</p></li>
@@ -277,7 +277,7 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Примітка</p>
-<p>Ця зміна буде застосована до всіх ваших акаунтів і поштових скриньок</p>
+<p>This change will apply across all your accounts and folders</p>
 </div>
 </section>
 <section id="sort-favorites-up">
@@ -331,7 +331,7 @@
 <section id="move-messages-to-junk-folder">
 <h3>Перемістити повідомлення до папки «Спам<a class="headerlink" href="#move-messages-to-junk-folder" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Пошта може перемістити повідомлення до іншої папки, якщо його позначено як спам.</p>
 <ol class="arabic simple">
@@ -345,9 +345,9 @@
 <img alt="../../_images/mail_move-message-to-junk-folder.png" src="../../_images/mail_move-message-to-junk-folder.png" />
 </figure>
 </section>
-<section id="refresh-mailbox">
-<h3>Refresh mailbox<a class="headerlink" href="#refresh-mailbox" title="Link to this heading"></a></h3>
-<p>You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
+<section id="refresh-folder">
+<h3>Refresh folder<a class="headerlink" href="#refresh-folder" title="Link to this heading"></a></h3>
+<p>You can manually trigger a sync of your folder by clicking the refresh button located at the top of the folder list.
 Starting from <code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">5.7</span></code> triggering the sync will also refresh the list of folders for the selected account.</p>
 </section>
 <section id="unified-search">
@@ -356,37 +356,37 @@ Starting from <code class="docutils literal notranslate"><span class="pre">versi
 feature (see <a class="reference internal" href="../webinterface.html"><span class="doc">The Nextcloud web interface</span></a> for details). You can search for emails across
 all your accounts using the search bar in the Nextcloud header.</p>
 <p>Mail searches email subjects and sender/recipient fields. To search email bodies,
-use the mailbox search feature in the app.</p>
+use the folder search feature in the app.</p>
 </section>
-<section id="search-in-mailbox">
-<h3>Пошук у поштовій скриньці<a class="headerlink" href="#search-in-mailbox" title="Link to this heading"></a></h3>
+<section id="search-in-folder">
+<h3>Search in folder<a class="headerlink" href="#search-in-folder" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.1.</span></p>
+<p><span class="versionmodified added">Added in version 2.1: </span>Nextcloud 25 or newer</p>
 </div>
 <p>У верхній частині списку конвертів у будь-якому макеті листа є ярлик поля пошуку для пошуку теми листа. Починаючи з <code class="docutils literal notranslate"><span class="pre">версії</span> <span class="pre">3.7</span></code>, цей ярлик за замовчуванням дозволяє шукати за темою, одержувачем (кому) або відправником (від).</p>
 </section>
-<section id="advanced-search-in-mailbox">
-<h3>Розширений пошук у поштовій скриньці<a class="headerlink" href="#advanced-search-in-mailbox" title="Link to this heading"></a></h3>
+<section id="advanced-search-in-folder">
+<h3>Advanced search in folder<a class="headerlink" href="#advanced-search-in-folder" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Ви можете отримати доступ до нашого розширеного пошуку за допомогою модального вікна, розташованого в кінці ярлика пошуку.</p>
 </section>
 <section id="enable-mail-body-search">
 <h3>Увімкнути пошук по тілу листа<a class="headerlink" href="#enable-mail-body-search" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.5.</span></p>
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Тепер можна шукати в тілі листа, ця функція доступна за бажанням через потенційні проблеми з продуктивністю.</p>
 <p>Щоб увімкнути його:</p>
 <ol class="arabic simple">
 <li><p>Відвідайте налаштування облікового запису</p></li>
-<li><p>Перейти до пошуку поштових скриньок</p></li>
+<li><p>Go to Folder search</p></li>
 <li><p>Увімкнути пошук по тілу листа</p></li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Попередження</p>
-<p>Якщо ви хочете увімкнути цю функцію для об’єднаних поштових скриньок, вам потрібно зробити це в налаштуваннях пошти</p>
+<p>If you want to also enable it for unified folders you have to do so in Mail settings</p>
 </div>
 <p>Увімкнувши цю опцію, основне вікно пошуку тепер буде шукати як в темах, так і в тілах листів, а в розширеному пошуку з’явиться окрема опція <em>Тіло</em>.</p>
 </section>
@@ -400,13 +400,13 @@ use the mailbox search feature in the app.</p>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Попередження</p>
-<p>Надісланий імейл може бути невидимим для оригінального акаунта, якщо він зберігається у вашій особистій поштовій скриньці <em>Відправлені</em>.</p>
+<p>The sent email might not be visible to the original account if it’s stored in your personal <em>Sent</em> folder.</p>
 </div>
 </section>
 <section id="automatic-trash-deletion">
 <h3>Автоматичне видалення сміття<a class="headerlink" href="#automatic-trash-deletion" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Програма «Пошта» може автоматично видаляти повідомлення в папці «Смітник» через певну кількість днів.</p>
 <ol class="arabic simple">
@@ -433,7 +433,7 @@ use the mailbox search feature in the app.</p>
 <section id="minimize-the-composer-modal">
 <h3>Мінімізація модальності композитора<a class="headerlink" href="#minimize-the-composer-modal" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.2.</span></p>
+<p><span class="versionmodified added">Added in version 3.2: </span>Nextcloud 26 or newer</p>
 </div>
 <p>The composer modal can be minimized while writing a new message, editing an existing draft or a message from the outbox. Simply click the <strong>Minimize</strong> button on the modal or click anywhere outside the modal.</p>
 <figure class="align-default">
@@ -443,13 +443,13 @@ use the mailbox search feature in the app.</p>
 <figure class="align-default">
 <img alt="../../_images/mail-composer-indicator.png" src="../../_images/mail-composer-indicator.png" />
 </figure>
-<p>Press the <strong>Close</strong> button on the modal or on the minimized composer indicator to stop editing a message. A draft will be saved automatically into your draft mailbox.</p>
+<p>Press the <strong>Close</strong> button on the modal or on the minimized composer indicator to stop editing a message. A draft will be saved automatically into your draft folder.</p>
 </section>
 </section>
 <section id="recipient-info-on-composer">
 <h2>Інформація про одержувача про композитора<a class="headerlink" href="#recipient-info-on-composer" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.2.</span></p>
+<p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>When you add your first recipient or contact in the «To» field, a right pane will appear displaying the saved profile details of that contact.
 Adding a second contact will collapse the list, allowing you to select and expand any contact you added to view their details.
@@ -459,7 +459,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="mention-contacts">
 <h2>Вказати контакти<a class="headerlink" href="#mention-contacts" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.2.</span></p>
+<p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Ви можете вказати контакти у своєму повідомленні, набравши <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> і вибравши контакт зі списку. При цьому контакт буде автоматично додано до списку одержувачів.</p>
 <div class="admonition note">
@@ -470,7 +470,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="text-blocks">
 <h2>Текстові блоки<a class="headerlink" href="#text-blocks" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.2.</span></p>
+<p><span class="versionmodified added">Added in version 5.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Текстові блоки — це заздалегідь визначені фрагменти тексту, які можна вставляти в електронні листи. Їх можна створювати та керувати ними в налаштуваннях пошти. Їх можна вставляти в редактор, набравши «!» і вибравши блок зі списку або з дій редактора. Текстові блоки можна ділитися з користувачами та групами користувачів.</p>
 </section>
@@ -484,7 +484,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <p class="admonition-title">Примітка</p>
 <p>Якщо під час надсилання виникає помилка, можливі три повідомлення про помилку:</p>
 <dl class="simple">
-<dt>Не вдалося скопіювати до поштової скриньки «Відправлені»</dt><dd><p>Лист було надіслано, але його не вдалося скопіювати до скриньки «Надіслані». Ця помилка буде оброблена вихідною скринькою, і операцію копіювання буде повторено.</p>
+<dt>Could not copy to «Sent» folder</dt><dd><p>The mail was sent but couldn’t be copied to the «Sent» folder. This error will be handled by the outbox and the copy operation will be tried again.</p>
 </dd>
 <dt>Помилка поштового сервера</dt><dd><p>Sending was unsuccessful with a state that can be retried (ex: the SMTP server couldn’t be reached). The outbox will retry sending the message.</p>
 </dd>
@@ -493,25 +493,25 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 </dl>
 </div>
 </section>
-<section id="mailbox-actions">
-<h2>Дії в поштовій скриньці<a class="headerlink" href="#mailbox-actions" title="Link to this heading"></a></h2>
-<section id="add-a-mailbox">
-<h3>Додати поштову скриньку<a class="headerlink" href="#add-a-mailbox" title="Link to this heading"></a></h3>
+<section id="folder-actions">
+<h2>Folder actions<a class="headerlink" href="#folder-actions" title="Link to this heading"></a></h2>
+<section id="add-a-folder">
+<h3>Add a folder<a class="headerlink" href="#add-a-folder" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Відкрийте меню дій облікового запису</p></li>
-<li><p>Натисніть додати поштову скриньку</p></li>
+<li><p>Click add folder</p></li>
 </ol>
 </section>
-<section id="add-a-submailbox">
-<h3>Додати підпоштову скриньку<a class="headerlink" href="#add-a-submailbox" title="Link to this heading"></a></h3>
+<section id="add-a-subfolder">
+<h3>Add a subfolder<a class="headerlink" href="#add-a-subfolder" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Відкрийте меню дій поштової скриньки</p></li>
-<li><p>Натисніть додати підскриньку</p></li>
+<li><p>Open the action menu of a folder</p></li>
+<li><p>Click add subfolder</p></li>
 </ol>
 </section>
-<section id="shared-mailbox">
-<h3>Спільна поштова скринька<a class="headerlink" href="#shared-mailbox" title="Link to this heading"></a></h3>
-<p>Якщо до поштової скриньки було надано спільний доступ з певними правами, ця скринька відображатиметься як нова скринька зі значком спільного доступу, як показано нижче:</p>
+<section id="shared-folder">
+<h3>Shared folder<a class="headerlink" href="#shared-folder" title="Link to this heading"></a></h3>
+<p>If a folder was shared with you with some specific rights, that folder will show as a new folder with a shared icon as below:</p>
 <figure class="align-default">
 <img alt="../../_images/shared-mailbox-icon.png" src="../../_images/shared-mailbox-icon.png" />
 </figure>
@@ -535,7 +535,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="create-a-task">
 <h3>Створіть завдання<a class="headerlink" href="#create-a-task" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.2.</span></p>
+<p><span class="versionmodified added">Added in version 3.2: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Створіть завдання для певного повідомлення/теми безпосередньо через поштову програму</p>
 <ol class="arabic simple">
@@ -559,7 +559,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="change-color-for-tags">
 <h3>Змінити колір для тегів<a class="headerlink" href="#change-color-for-tags" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.5.</span></p>
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
 </div>
 <figure class="align-default">
 <img alt="../../_images/change-tag-color.png" src="../../_images/change-tag-color.png" />
@@ -569,7 +569,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="delete-tags">
 <h3>Видалення тегів<a class="headerlink" href="#delete-tags" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.5.</span></p>
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
 </div>
 <figure class="align-default">
 <img alt="../../_images/delete-tag.png" src="../../_images/delete-tag.png" />
@@ -588,9 +588,9 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="ai-summary">
 <h3>Резюме ШІ<a class="headerlink" href="#ai-summary" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.2.</span></p>
+<p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
 </div>
-<p>Переглядаючи свою поштову скриньку, ви побачите короткий підсумок ваших листів, згенерований штучним інтелектом, у вигляді попереднього перегляду.</p>
+<p>When looking through your folder you will see a short AI generated summary of your emails as a preview.</p>
 <div class="admonition note">
 <p class="admonition-title">Примітка</p>
 <p>Зверніть увагу, що ця функція має бути ввімкнена адміністратором</p>
@@ -600,7 +600,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="quick-actions">
 <h2>Quick actions<a class="headerlink" href="#quick-actions" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.5: </span>(Nextcloud 30)</p>
+<p><span class="versionmodified added">Added in version 5.5: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read … into quick actions that can be executed with a single click.
 Quick actions are scoped to one mail account and can be created and managed in the mail settings under «Quick actions» or directly from the envelope action menu.</p>
@@ -618,16 +618,16 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="unsubscribe-from-a-mailing-list">
 <h3>Відмовитися від розсилки<a class="headerlink" href="#unsubscribe-from-a-mailing-list" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.1.</span></p>
+<p><span class="versionmodified added">Added in version 3.1: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Деякі списки розсилки та інформаційні бюлетені дозволяють легко відписатися від них. Якщо програма «Пошта» виявить повідомлення від такого відправника, вона покаже кнопку <em>Відписатися</em> поруч з інформацією про відправника. Натисніть і підтвердіть, щоб відписатися від списку.</p>
 </section>
 <section id="snooze">
 <h3>Засинай.<a class="headerlink" href="#snooze" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
-<p>Відкладення повідомлення або теми переміщує їх до спеціальної поштової скриньки, доки не настане вибрана дата відкладення, після чого повідомлення або тему буде повернуто до початкової поштової скриньки.</p>
+<p>Snoozing a message or thread moves it into a dedicated folder until the selected snooze date is reached and the message or thread is moved back to the original folder.</p>
 <ol class="arabic simple">
 <li><p>Відкрити меню дій конверта або нитки</p></li>
 <li><p>Натисніть <em>Спящий режим</em>.</p></li>
@@ -637,7 +637,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="smart-replies">
 <h3>Розумні відповіді<a class="headerlink" href="#smart-replies" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.6.</span></p>
+<p><span class="versionmodified added">Added in version 3.6: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Коли ви відкриваєте повідомлення у програмі «Пошта», вона пропонує відповіді, згенеровані штучним інтелектом. Якщо просто натиснути на запропоновану відповідь, відкриється композитор з попередньо заповненою відповіддю.</p>
 <div class="admonition note">
@@ -652,7 +652,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="mail-translation">
 <h3>Переклад пошти<a class="headerlink" href="#mail-translation" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.2.</span></p>
+<p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Ви можете перекладати повідомлення на налаштовані вами мови так само, як і в програмі Talk.</p>
 <div class="admonition note">
@@ -669,7 +669,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <h2>Короткий зміст теми<a class="headerlink" href="#thread-summary" title="Link to this heading"></a></h2>
 <p>Поштова програма підтримує підсумовування потоків повідомлень, які містять 3 або більше повідомлень.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Примітка</p>
@@ -686,14 +686,14 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="autoresponders">
 <h3>Автовідповідачі<a class="headerlink" href="#autoresponders" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.5: </span>Автовідповідач може слідувати налаштуванням системи.</p>
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Автовідповідач за замовчуванням вимкнено. Його можна ввімкнути вручну або слідувати системним налаштуванням. Дотримання системних налаштувань означає, що повідомлення про тривалу відсутність, введене на сторінці <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">Налаштування відсутності</span></a>, буде застосовуватися автоматично.</p>
 </section>
 <section id="filter">
 <h3>Фільтри<a class="headerlink" href="#filter" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.1.</span></p>
+<p><span class="versionmodified added">Added in version 4.1: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Mail 4.1 містить простий редактор для налаштування правил фільтрації.</p>
 <div class="admonition note">
@@ -740,7 +740,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="create-a-filter-from-a-message">
 <h3>Створіть фільтр з повідомлення<a class="headerlink" href="#create-a-filter-from-a-message" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.2.</span></p>
+<p><span class="versionmodified added">Added in version 5.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Щоб створити фільтр з певного повідомлення, відкрийте це повідомлення, а потім відкрийте меню, натиснувши на три крапки. Далі натисніть «Інші дії», а потім «Створити поштовий фільтр».</p>
 <p>У діалоговому вікні, будь ласка, виберіть умови, яким мають відповідати вхідні повідомлення, і продовжте, натиснувши «Створити поштовий фільтр».</p>
@@ -752,7 +752,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="follow-up-reminders">
 <h2>Нагадування про подальші дії<a class="headerlink" href="#follow-up-reminders" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.0.</span></p>
+<p><span class="versionmodified added">Added in version 4.0: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Додаток «Пошта» автоматично нагадає вам, якщо вихідний лист не отримав відповіді. Кожен надісланий лист буде проаналізовано штучним інтелектом, щоб перевірити, чи очікується відповідь. Через чотири дні всі відповідні листи з’являться у вашій пріоритетній поштовій скриньці.</p>
 <p>При натисканні на такий імейл буде показана кнопка для швидкого переходу до всіх одержувачів. Також є можливість відключити нагадування для відправленого листа.</p>
@@ -766,7 +766,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="phishing-detection">
 <h3>Виявлення фішингу<a class="headerlink" href="#phishing-detection" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.0.</span></p>
+<p><span class="versionmodified added">Added in version 4.0: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Додаток «Пошта» перевірятиме потенційні спроби фішингу і показуватиме користувачеві попередження.</p>
 <p>Перевірка відбувається наступним чином:</p>
@@ -785,7 +785,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="internal-addresses">
 <h3>Внутрішні адреси<a class="headerlink" href="#internal-addresses" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.0.</span></p>
+<p><span class="versionmodified added">Added in version 4.0: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Додаток «Пошта» дозволяє додавати внутрішні адреси та домени, а також попереджає користувача, якщо адреса відсутня у списку, під час надсилання та отримання повідомлення.</p>
 <p>Щоб додати внутрішню адресу:</p>
@@ -801,7 +801,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="dashboard-integration">
 <h2>Інтеграція з панеллю інструментів<a class="headerlink" href="#dashboard-integration" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.8.</span></p>
+<p><span class="versionmodified added">Added in version 1.8: </span>Nextcloud 20 or newer</p>
 </div>
 <p>Поштова програма пропонує два віджети, призначені для інтеграції з панеллю управління Nextcloud:</p>
 <ul class="simple">
@@ -835,7 +835,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <h3>Meeting invitation automation<a class="headerlink" href="#meeting-invitation-automation" title="Link to this heading"></a></h3>
 <p>When a meeting organizer sends updates to an existing event (such as time changes or location updates), the Mail app processes these automatically and updates the corresponding event in your calendar.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.7: </span>(Nextcloud 32 or newer)</p>
+<p><span class="versionmodified added">Added in version 5.7: </span>Nextcloud 32 or newer</p>
 </div>
 <p>You can also configure Mail to automatically add all new meeting invitations to your calendar without requiring manual acceptance. The invitations will be added to the calendar as tentative.</p>
 <p>To enable this feature:</p>

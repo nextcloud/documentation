@@ -92,10 +92,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#all-inboxes">Tutte le caselle di posta</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#account-settings">Impostazioni dell’account</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#move-messages-to-junk-folder">Sposta i messaggi nella cartella Posta indesiderata</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#refresh-mailbox">Refresh mailbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refresh-folder">Refresh folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#unified-search">Unified search</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#search-in-mailbox">Cerca nella casella di posta</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#advanced-search-in-mailbox">Ricerca avanzata nella casella di posta</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-in-folder">Search in folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-search-in-folder">Advanced search in folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#enable-mail-body-search">Abilita la ricerca nel corpo della posta</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#account-delegation">Delega dell’account</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#automatic-trash-deletion">Cancellazione automatica del cestino</a></li>
@@ -109,10 +109,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#mention-contacts">Menzionare i contatti</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#text-blocks">Blocchi di testo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#outbox">Posta in uscita</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mailbox-actions">Azioni della casella di posta</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#add-a-mailbox">Aggiungi una casella di posta</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#add-a-submailbox">Aggiungere una sottocasella di posta</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#shared-mailbox">Casella di posta condivisa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#folder-actions">Folder actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-folder">Add a folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-subfolder">Add a subfolder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-folder">Shared folder</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#envelope-actions">Azioni di posta</a><ul>
@@ -213,7 +213,7 @@
 <section id="switch-layout">
 <h3>Cambiare layout<a class="headerlink" href="#switch-layout" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.6.</span></p>
+<p><span class="versionmodified added">Added in version 3.6: </span>Nextcloud 26 or newer</p>
 </div>
 <ol class="arabic simple">
 <li><p>Visita le impostazioni di posta</p></li>
@@ -226,7 +226,7 @@
 <section id="use-compact-mode">
 <h3>Use Compact Mode<a class="headerlink" href="#use-compact-mode" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.7.0.</span></p>
+<p><span class="versionmodified added">Added in version 5.7: </span>Nextcloud 32 or newer</p>
 </div>
 <p>Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.</p>
 <ol class="arabic simple">
@@ -241,11 +241,11 @@
 <section id="message-display-operation-mode">
 <h3>Visualizzazione dei messaggi / Modalità operativa<a class="headerlink" href="#message-display-operation-mode" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.2.</span></p>
+<p><span class="versionmodified added">Added in version 5.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Mail consente di passare da una modalità di visualizzazione dei messaggi all’altra: <em>Threaded</em> e <em>Singleton</em>.</p>
-<p>In modalità <em>Threaded</em>, i messaggi sono raggruppati per conversazione. Nell’elenco dei messaggi della casella di posta, i messaggi correlati vengono raggruppati in modo da visualizzare solo il messaggio più recente, mentre tutti i messaggi correlati vengono visualizzati nel pannello di visualizzazione dei messaggi dopo aver selezionato il messaggio raggruppato. Questa funzionalità è utile per seguire le discussioni e comprendere il contesto delle risposte. In questa modalità, le operazioni sui messaggi come lo spostamento e l’eliminazione si applicano all’intero thread, il che significa che quando si sposta o si elimina un thread, tutti i messaggi al suo interno vengono modificati.</p>
-<p>In modalità <em>Singleton</em>, i messaggi vengono visualizzati singolarmente, sia nell’elenco dei messaggi della casella di posta che nel pannello di visualizzazione dei messaggi, e operazioni come sposta ed elimina si applicano solo al messaggio selezionato. Questa modalità è utile quando si desidera gestire i messaggi separatamente senza influire sull’intera conversazione.</p>
+<p>In <em>Threaded</em> mode, messages are grouped by conversation. In the folder message list, related messages are stacked so only the most recent message is shown, and all relates messages are shown in message display panel after the stacked message is selected. This is useful for following discussions and understanding the context of replies. In this mode, message operation like move and delete apply to the entire thread, meaning that when you move or delete a thread, all messages within that thread are affected.</p>
+<p>In <em>Singleton</em> mode, messages are displayed individually, in both the folder message list and message display panel and operation like move and delete apply to only the selected message. This mode is useful when you want to manage messages separately without affecting the entire conversation.</p>
 <ol class="arabic simple">
 <li><p>Visita le impostazioni di posta</p></li>
 <li><p>Scegli tra <em>Threaded</em>, <em>Singleton</em></p></li>
@@ -268,7 +268,7 @@
 <section id="change-sort-order">
 <h3>Cambia l’ordine di ordinamento<a class="headerlink" href="#change-sort-order" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.5.</span></p>
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
 </div>
 <ol class="arabic simple">
 <li><p>Visita le impostazioni di posta</p></li>
@@ -277,7 +277,7 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Questa modifica verrà applicata a tutti i tuoi account e caselle di posta</p>
+<p>This change will apply across all your accounts and folders</p>
 </div>
 </section>
 <section id="sort-favorites-up">
@@ -331,7 +331,7 @@
 <section id="move-messages-to-junk-folder">
 <h3>Sposta i messaggi nella cartella Posta indesiderata<a class="headerlink" href="#move-messages-to-junk-folder" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Mail può spostare un messaggio in una cartella diversa quando è contrassegnato come posta indesiderata.</p>
 <ol class="arabic simple">
@@ -345,9 +345,9 @@
 <img alt="../../_images/mail_move-message-to-junk-folder.png" src="../../_images/mail_move-message-to-junk-folder.png" />
 </figure>
 </section>
-<section id="refresh-mailbox">
-<h3>Refresh mailbox<a class="headerlink" href="#refresh-mailbox" title="Link to this heading"></a></h3>
-<p>You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
+<section id="refresh-folder">
+<h3>Refresh folder<a class="headerlink" href="#refresh-folder" title="Link to this heading"></a></h3>
+<p>You can manually trigger a sync of your folder by clicking the refresh button located at the top of the folder list.
 Starting from <code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">5.7</span></code> triggering the sync will also refresh the list of folders for the selected account.</p>
 </section>
 <section id="unified-search">
@@ -356,37 +356,37 @@ Starting from <code class="docutils literal notranslate"><span class="pre">versi
 feature (see <a class="reference internal" href="../webinterface.html"><span class="doc">The Nextcloud web interface</span></a> for details). You can search for emails across
 all your accounts using the search bar in the Nextcloud header.</p>
 <p>Mail searches email subjects and sender/recipient fields. To search email bodies,
-use the mailbox search feature in the app.</p>
+use the folder search feature in the app.</p>
 </section>
-<section id="search-in-mailbox">
-<h3>Cerca nella casella di posta<a class="headerlink" href="#search-in-mailbox" title="Link to this heading"></a></h3>
+<section id="search-in-folder">
+<h3>Search in folder<a class="headerlink" href="#search-in-folder" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.1.</span></p>
+<p><span class="versionmodified added">Added in version 2.1: </span>Nextcloud 25 or newer</p>
 </div>
 <p>In cima all’elenco delle buste in qualsiasi layout di posta, è presente un collegamento al campo di ricerca per cercare gli oggetti delle email. A partire dalla <code class="docutils literal notranslate"><span class="pre">versione</span> <span class="pre">3.7</span></code>, questo collegamento consente di cercare per oggetto, destinatario (a) o mittente (da) per impostazione predefinita.</p>
 </section>
-<section id="advanced-search-in-mailbox">
-<h3>Ricerca avanzata nella casella di posta<a class="headerlink" href="#advanced-search-in-mailbox" title="Link to this heading"></a></h3>
+<section id="advanced-search-in-folder">
+<h3>Advanced search in folder<a class="headerlink" href="#advanced-search-in-folder" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Puoi accedere alla nostra funzione di ricerca avanzata tramite una finestra modale situata alla fine del collegamento di ricerca.</p>
 </section>
 <section id="enable-mail-body-search">
 <h3>Abilita la ricerca nel corpo della posta<a class="headerlink" href="#enable-mail-body-search" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.5.</span></p>
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Ora è possibile effettuare ricerche nei corpi dei messaggi di posta elettronica; questa funzionalità è opzionale a causa di potenziali problemi di prestazioni.</p>
 <p>Per abilitarlo:</p>
 <ol class="arabic simple">
 <li><p>Visita Impostazioni account</p></li>
-<li><p>Vai alla ricerca nella casella di posta</p></li>
+<li><p>Go to Folder search</p></li>
 <li><p>Abilita la ricerca nel corpo della posta</p></li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Avvertimento</p>
-<p>Se vuoi abilitarlo anche per le caselle di posta unificate devi farlo nelle impostazioni di posta</p>
+<p>If you want to also enable it for unified folders you have to do so in Mail settings</p>
 </div>
 <p>Abilitandola, la casella di ricerca principale cercherà sia nell’oggetto che nel corpo del messaggio e nella ricerca avanzata apparirà un’opzione separata <em>Corpo</em>.</p>
 </section>
@@ -400,13 +400,13 @@ use the mailbox search feature in the app.</p>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Avvertimento</p>
-<p>L’email inviata potrebbe non essere visibile all’account originale se è archiviata nella casella di posta personale <em>Inviata</em>.</p>
+<p>The sent email might not be visible to the original account if it’s stored in your personal <em>Sent</em> folder.</p>
 </div>
 </section>
 <section id="automatic-trash-deletion">
 <h3>Cancellazione automatica del cestino<a class="headerlink" href="#automatic-trash-deletion" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
 <p>L’app Mail può eliminare automaticamente i messaggi nella cartella Cestino dopo un certo numero di giorni.</p>
 <ol class="arabic simple">
@@ -433,7 +433,7 @@ use the mailbox search feature in the app.</p>
 <section id="minimize-the-composer-modal">
 <h3>Minimizzare la modale del compositore<a class="headerlink" href="#minimize-the-composer-modal" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.2.</span></p>
+<p><span class="versionmodified added">Added in version 3.2: </span>Nextcloud 26 or newer</p>
 </div>
 <p>The composer modal can be minimized while writing a new message, editing an existing draft or a message from the outbox. Simply click the <strong>Minimize</strong> button on the modal or click anywhere outside the modal.</p>
 <figure class="align-default">
@@ -443,13 +443,13 @@ use the mailbox search feature in the app.</p>
 <figure class="align-default">
 <img alt="../../_images/mail-composer-indicator.png" src="../../_images/mail-composer-indicator.png" />
 </figure>
-<p>Press the <strong>Close</strong> button on the modal or on the minimized composer indicator to stop editing a message. A draft will be saved automatically into your draft mailbox.</p>
+<p>Press the <strong>Close</strong> button on the modal or on the minimized composer indicator to stop editing a message. A draft will be saved automatically into your draft folder.</p>
 </section>
 </section>
 <section id="recipient-info-on-composer">
 <h2>Informazioni sul compositore del destinatario<a class="headerlink" href="#recipient-info-on-composer" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.2.</span></p>
+<p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>When you add your first recipient or contact in the «To» field, a right pane will appear displaying the saved profile details of that contact.
 Adding a second contact will collapse the list, allowing you to select and expand any contact you added to view their details.
@@ -459,7 +459,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="mention-contacts">
 <h2>Menzionare i contatti<a class="headerlink" href="#mention-contacts" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.2.</span></p>
+<p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Puoi menzionare i contatti nel tuo messaggio digitando <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> e selezionando il contatto dall’elenco. In questo modo, il contatto verrà automaticamente aggiunto come destinatario.</p>
 <div class="admonition note">
@@ -470,7 +470,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="text-blocks">
 <h2>Blocchi di testo<a class="headerlink" href="#text-blocks" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.2.</span></p>
+<p><span class="versionmodified added">Added in version 5.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>I blocchi di testo sono frammenti di testo predefiniti che possono essere inseriti nelle tue email. Possono essere creati e gestiti nelle impostazioni di posta. Possono essere inseriti nel compositore digitando <code class="docutils literal notranslate"><span class="pre">!</span></code> e selezionando il blocco dall’elenco o dalle azioni del compositore. I blocchi di testo possono essere condivisi con utenti e gruppi di utenti.</p>
 </section>
@@ -484,7 +484,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <p class="admonition-title">Nota</p>
 <p>Quando si verifica un errore durante l’invio, sono possibili tre messaggi di errore:</p>
 <dl class="simple">
-<dt>Impossibile copiare nella casella di posta «Inviati»</dt><dd><p>Il messaggio è stato inviato ma non è stato possibile copiarlo nella casella di posta «Inviati». Questo errore verrà gestito dalla posta in uscita e l’operazione di copia verrà ripetuta.</p>
+<dt>Could not copy to «Sent» folder</dt><dd><p>The mail was sent but couldn’t be copied to the «Sent» folder. This error will be handled by the outbox and the copy operation will be tried again.</p>
 </dd>
 <dt>Errore del server di posta</dt><dd><p>Sending was unsuccessful with a state that can be retried (ex: the SMTP server couldn’t be reached). The outbox will retry sending the message.</p>
 </dd>
@@ -493,25 +493,25 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 </dl>
 </div>
 </section>
-<section id="mailbox-actions">
-<h2>Azioni della casella di posta<a class="headerlink" href="#mailbox-actions" title="Link to this heading"></a></h2>
-<section id="add-a-mailbox">
-<h3>Aggiungi una casella di posta<a class="headerlink" href="#add-a-mailbox" title="Link to this heading"></a></h3>
+<section id="folder-actions">
+<h2>Folder actions<a class="headerlink" href="#folder-actions" title="Link to this heading"></a></h2>
+<section id="add-a-folder">
+<h3>Add a folder<a class="headerlink" href="#add-a-folder" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Aprire il menu azioni di un account</p></li>
-<li><p>Fare clic su aggiungi casella di posta</p></li>
+<li><p>Click add folder</p></li>
 </ol>
 </section>
-<section id="add-a-submailbox">
-<h3>Aggiungere una sottocasella di posta<a class="headerlink" href="#add-a-submailbox" title="Link to this heading"></a></h3>
+<section id="add-a-subfolder">
+<h3>Add a subfolder<a class="headerlink" href="#add-a-subfolder" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Aprire il menu azioni di una casella di posta</p></li>
-<li><p>Fare clic su aggiungi sottocasella di posta</p></li>
+<li><p>Open the action menu of a folder</p></li>
+<li><p>Click add subfolder</p></li>
 </ol>
 </section>
-<section id="shared-mailbox">
-<h3>Casella di posta condivisa<a class="headerlink" href="#shared-mailbox" title="Link to this heading"></a></h3>
-<p>Se una casella di posta è stata condivisa con te con alcuni diritti specifici, quella casella di posta verrà visualizzata come una nuova casella di posta con un’icona condivisa come di seguito:</p>
+<section id="shared-folder">
+<h3>Shared folder<a class="headerlink" href="#shared-folder" title="Link to this heading"></a></h3>
+<p>If a folder was shared with you with some specific rights, that folder will show as a new folder with a shared icon as below:</p>
 <figure class="align-default">
 <img alt="../../_images/shared-mailbox-icon.png" src="../../_images/shared-mailbox-icon.png" />
 </figure>
@@ -535,7 +535,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="create-a-task">
 <h3>Creare un attività<a class="headerlink" href="#create-a-task" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.2.</span></p>
+<p><span class="versionmodified added">Added in version 3.2: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Crea un’attività per un determinato messaggio/thread direttamente tramite l’app di posta</p>
 <ol class="arabic simple">
@@ -559,7 +559,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="change-color-for-tags">
 <h3>Cambiare colore per i tag<a class="headerlink" href="#change-color-for-tags" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.5.</span></p>
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
 </div>
 <figure class="align-default">
 <img alt="../../_images/change-tag-color.png" src="../../_images/change-tag-color.png" />
@@ -569,7 +569,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="delete-tags">
 <h3>Eliminare i tag<a class="headerlink" href="#delete-tags" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.5.</span></p>
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
 </div>
 <figure class="align-default">
 <img alt="../../_images/delete-tag.png" src="../../_images/delete-tag.png" />
@@ -588,9 +588,9 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="ai-summary">
 <h3>Riepilogo dell’IA<a class="headerlink" href="#ai-summary" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.2.</span></p>
+<p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
 </div>
-<p>Quando controlli la tua casella di posta, vedrai un breve riepilogo delle tue email generato dall’intelligenza artificiale come anteprima.</p>
+<p>When looking through your folder you will see a short AI generated summary of your emails as a preview.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Si prega di notare che la funzione deve essere abilitata dall’amministratore</p>
@@ -600,7 +600,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="quick-actions">
 <h2>Quick actions<a class="headerlink" href="#quick-actions" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.5: </span>(Nextcloud 30)</p>
+<p><span class="versionmodified added">Added in version 5.5: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read … into quick actions that can be executed with a single click.
 Quick actions are scoped to one mail account and can be created and managed in the mail settings under «Quick actions» or directly from the envelope action menu.</p>
@@ -618,16 +618,16 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="unsubscribe-from-a-mailing-list">
 <h3>Annullare l’iscrizione a una mailing list<a class="headerlink" href="#unsubscribe-from-a-mailing-list" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.1.</span></p>
+<p><span class="versionmodified added">Added in version 3.1: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Alcune mailing list e newsletter consentono di annullare facilmente l’iscrizione. Se l’app Mail rileva messaggi da un mittente del genere, mostrerà un pulsante <em>Annulla iscrizione</em> accanto alle informazioni del mittente. Fai clic e conferma per annullare l’iscrizione alla lista.</p>
 </section>
 <section id="snooze">
 <h3>Posticipare<a class="headerlink" href="#snooze" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
-<p>Quando si posticipa un messaggio o una discussione, questa viene spostata in una casella di posta dedicata finché non viene raggiunta la data di posticipo selezionata, dopodiché il messaggio o la discussione viene spostata nuovamente nella casella di posta originale.</p>
+<p>Snoozing a message or thread moves it into a dedicated folder until the selected snooze date is reached and the message or thread is moved back to the original folder.</p>
 <ol class="arabic simple">
 <li><p>Apri il menu delle azioni di una posta o di un thread</p></li>
 <li><p>Fai clic su <em>Posponi</em></p></li>
@@ -637,7 +637,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="smart-replies">
 <h3>Risposte intelligenti<a class="headerlink" href="#smart-replies" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.6.</span></p>
+<p><span class="versionmodified added">Added in version 3.6: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Quando apri un messaggio nell’app Mail, vengono proposte risposte generate dall’intelligenza artificiale. Basta cliccare su una risposta suggerita e il compositore apre il messaggio con la risposta precompilata.</p>
 <div class="admonition note">
@@ -652,7 +652,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="mail-translation">
 <h3>Traduzione della posta<a class="headerlink" href="#mail-translation" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.2.</span></p>
+<p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Puoi tradurre i messaggi nelle lingue da te configurate in modo simile a Talk.</p>
 <div class="admonition note">
@@ -669,7 +669,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <h2>Riepilogo del thread<a class="headerlink" href="#thread-summary" title="Link to this heading"></a></h2>
 <p>L’app di posta supporta il riepilogo di thread di messaggi contenenti 3 o più messaggi.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -686,14 +686,14 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="autoresponders">
 <h3>Risponditori automatici<a class="headerlink" href="#autoresponders" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.5: </span>Il risponditore automatico può seguire le impostazioni di sistema.</p>
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Il risponditore automatico è disattivato per impostazione predefinita. Può essere impostato manualmente o seguendo le impostazioni di sistema. Seguire le impostazioni di sistema significa che il messaggio di assenza prolungata inserito nella sezione :ref:<a href="#id1"><span class="problematic" id="id2">`</span></a>Impostazioni assenza &lt;groupware-absence&gt;`viene applicato automaticamente.</p>
 </section>
 <section id="filter">
 <h3>FIltro<a class="headerlink" href="#filter" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.1.</span></p>
+<p><span class="versionmodified added">Added in version 4.1: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Mail 4.1 include un semplice editor per configurare le regole di filtro.</p>
 <div class="admonition note">
@@ -740,7 +740,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="create-a-filter-from-a-message">
 <h3>Crea un filtro da un messaggio<a class="headerlink" href="#create-a-filter-from-a-message" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.2.</span></p>
+<p><span class="versionmodified added">Added in version 5.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Per creare un filtro da un determinato messaggio, apri il messaggio e apri il menu cliccando sui tre puntini. Quindi, clicca su «Altre azioni» e poi su «Crea filtro email».</p>
 <p>Nella finestra di dialogo, seleziona le condizioni per far corrispondere i messaggi in arrivo e continua cliccando su «Crea filtro posta».</p>
@@ -752,7 +752,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="follow-up-reminders">
 <h2>Promemoria di follow-up<a class="headerlink" href="#follow-up-reminders" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.0.</span></p>
+<p><span class="versionmodified added">Added in version 4.0: </span>Nextcloud 30 or newer</p>
 </div>
 <p>L’app Mail ti ricorderà automaticamente quando un’email in uscita non ha ricevuto risposta. Ogni email inviata verrà analizzata da un’intelligenza artificiale per verificare se è prevista una risposta. Dopo quattro giorni, tutte le email pertinenti verranno visualizzate nella tua casella di posta prioritaria.</p>
 <p>Cliccando su un’email di questo tipo, verrà visualizzato un pulsante per contattare rapidamente tutti i destinatari. È anche possibile disattivare i promemoria di follow-up per un’email inviata.</p>
@@ -766,7 +766,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="phishing-detection">
 <h3>Rilevamento del phishing<a class="headerlink" href="#phishing-detection" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.0.</span></p>
+<p><span class="versionmodified added">Added in version 4.0: </span>Nextcloud 30 or newer</p>
 </div>
 <p>L’app Mail verificherà la presenza di potenziali tentativi di phishing e visualizzerà un avviso all’utente.</p>
 <p>I controlli sono i seguenti:</p>
@@ -785,7 +785,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="internal-addresses">
 <h3>Indirizzi interni<a class="headerlink" href="#internal-addresses" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.0.</span></p>
+<p><span class="versionmodified added">Added in version 4.0: </span>Nextcloud 30 or newer</p>
 </div>
 <p>L’app Mail consente di aggiungere indirizzi e domini interni e avvisa l’utente se l’indirizzo non è presente nell’elenco, al momento dell’invio e della ricezione di un messaggio.</p>
 <p>Per aggiungere un indirizzo interno:</p>
@@ -801,7 +801,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="dashboard-integration">
 <h2>Integrazione della dashboard<a class="headerlink" href="#dashboard-integration" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.8.</span></p>
+<p><span class="versionmodified added">Added in version 1.8: </span>Nextcloud 20 or newer</p>
 </div>
 <p>L’app di posta offre due widget progettati per l’integrazione con la dashboard di Nextcloud:</p>
 <ul class="simple">
@@ -835,7 +835,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <h3>Meeting invitation automation<a class="headerlink" href="#meeting-invitation-automation" title="Link to this heading"></a></h3>
 <p>When a meeting organizer sends updates to an existing event (such as time changes or location updates), the Mail app processes these automatically and updates the corresponding event in your calendar.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.7: </span>(Nextcloud 32 or newer)</p>
+<p><span class="versionmodified added">Added in version 5.7: </span>Nextcloud 32 or newer</p>
 </div>
 <p>You can also configure Mail to automatically add all new meeting invitations to your calendar without requiring manual acceptance. The invitations will be added to the calendar as tentative.</p>
 <p>To enable this feature:</p>
