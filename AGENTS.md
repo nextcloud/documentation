@@ -171,6 +171,71 @@ gh issue edit NNNN \
 
 Use `fixes #NNNN` in the PR body to auto-close on merge; use `relates to #NNNN` if the PR only partially addresses the issue.
 
+## Screenshot composition
+
+Rules for Playwright screenshot specs. Refine this section as new patterns emerge.
+
+### Clip to element bounding box, not container offsets
+
+Always anchor clips to the target element's own `boundingBox()`, never to hardcoded pixel offsets
+from a parent container. Fixed offsets break silently when adjacent UI (badges, notification buttons,
+extra rows) shifts position.
+
+```typescript
+const btn = page.locator('button', { hasText: 'Archived conversations' })
+const listEl = page.locator('[aria-label="Conversation list"]')
+const listBox = await listEl.boundingBox()
+const btnBox = await btn.boundingBox()
+if (listBox && btnBox) {
+    await page.screenshot({
+        path: dest,
+        clip: {
+            x: listBox.x,
+            y: btnBox.y - 80,            // ~80px above to show context
+            width: listBox.width,
+            height: btnBox.height + 88,  // button height + ~8px below
+        },
+    })
+}
+```
+
+### Show menu/list items in context
+
+When screenshotting a button or item inside a list or panel, include enough surrounding rows to show
+where it lives. ~80px above the target is a reasonable default; adjust if nearby rows are unusually
+tall. A crop so tight the element appears orphaned gives users no spatial reference.
+
+### Wait for animation before screenshotting nested panels
+
+If clicking a button navigates *within* a container (not a separate modal), the replaced section may
+still be animating out. Wait for it to reach `state: 'hidden'`, then add a short `waitForTimeout(400)`
+to let the incoming panel settle:
+
+```typescript
+await page.locator('button:has-text("Manage bans")').click()
+const banDialog = page.getByRole('dialog', { name: /banned users/i })
+await banDialog.waitFor({ state: 'visible', timeout: 10000 })
+await page.locator('#settings-section_conversation-settings')
+    .waitFor({ state: 'hidden', timeout: 5000 }).catch(() => {})
+await page.waitForTimeout(400)
+await banDialog.screenshot({ path: dest })
+```
+
+### Seed rich content inline between messages
+
+File shares, reactions, and other message cards must be seeded *between* the surrounding messages
+they should appear near. Seeding them before the conversation is populated places them at the top of
+chat history, scrolled out of the visible viewport by the time the screenshot is taken.
+
+```typescript
+await seedChatMessages(token, [ /* messages before the share */ ])
+await uploadFile(path, name, user, password)
+await ocsRequest('POST', '/ocs/v2.php/apps/files_sharing/api/v1/shares', user, password, {
+    shareType: '10', path: `/${name}`, shareWith: token,
+})
+await seedChatMessages(token, [ /* messages after the share */ ])
+```
+
 ## CI checks (must all pass)
 
 | Check | What it catches |
