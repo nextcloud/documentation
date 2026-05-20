@@ -6,6 +6,7 @@ Interface & interaction design
     :maxdepth: 2
 
     introduction
+    writing
     foundations
     layout
     layoutcomponents
