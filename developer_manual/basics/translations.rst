@@ -220,6 +220,8 @@ JS Example:
     /* BEST: Simple string with undefined plural not using any number in the string */
     t('myapp', 'Import calendars')
 
+.. _improving-translations:
+
 Improving your translations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -284,37 +286,49 @@ The added hints will be shown in the Transifex web-interface:
 PHP
 """
 
+Place the comment on the line before the ``->t()`` or ``->n()`` call:
+
 .. code-block:: php
 
-    <ul id="translations">
-        <li id="add-new">
-            <?php
-                // TRANSLATORS Will be shown inside a popup and asks the user to add a new file
-                p($l->t('Add new file'));
-            ?>
-        </li>
-    </ul>
+    // TRANSLATORS Will be shown inside a popup and asks the user to add a new file
+    p($l->t('Add new file'));
+
+    // TRANSLATORS The placeholder refers to the software product name, e.g. "Add to your Nextcloud"
+    $l->t('Add to your %s', [$productName]);
+
+For multi-line context or example output, use consecutive comment lines:
+
+.. code-block:: php
+
+    // TRANSLATORS
+    // Indicates when a calendar event will happen, shown on invitation emails.
+    // Output example: "In 1 hour on July 1, 2024 for the entire day"
+    $l->t('In %1$s on %2$s for the entire day', [$relativeTime, $date]);
 
 JavaScript / TypeScript
 """""""""""""""""""""""
 
+Place the comment on the line before the ``t()`` or ``n()`` call:
+
 .. code-block:: javascript
 
-    // TRANSLATORS name that is appended to copied files with the same name, will be put in parenthesis and appended with a number if it is the second+ copy
+    // TRANSLATORS: name that is appended to copied files, will be put in parenthesis with a number for the second+ copy
     var copyNameLocalized = t('files', 'copy');
+
+    // TRANSLATORS: {relativeDueDate} will be replaced with a relative time, e.g. "2 hours ago" or "in 3 days"
+    t('files_reminders', 'We will remind you of this file {relativeDueDate}', { relativeDueDate })
 
 Vue
 """
 
-This covers vue html templates in vue sfc components.
-For vue js code, see the javascript section.
+In the ``<template>`` block, use an HTML comment on the line above the element:
 
 .. code-block:: html
 
-    <NcActionCheckbox :checked="isRequired">
-        <!-- TRANSLATORS Making this question necessary to be answered when submitting to a form -->
-        {{ t('forms', 'Required') }}
-    </NcActionCheckbox>
+    <!-- TRANSLATORS: Making this question necessary to be answered when submitting to a form -->
+    <span>{{ t('forms', 'Required') }}</span>
+
+In the ``<script>`` block, use the same ``//`` style as JavaScript.
 
 C++ (Qt) / Desktop client
 """""""""""""""""""""""""
