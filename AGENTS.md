@@ -236,6 +236,23 @@ await page.locator('.frequently-used-label').waitFor({ state: 'hidden', timeout:
 await page.locator('.search-result').first().click({ timeout: 3000 }).catch(() => {})
 ```
 
+### Guard conditional `boundingBox()` calls with `isVisible()`
+
+`locator.boundingBox()` waits for the element using the full action timeout (default 30–60 s) when the
+element is absent from the DOM. An unguarded `.catch(() => null)` does not help — the 60 s timeout fires
+before the catch runs. Always check `isVisible()` first (instant, no wait) before calling `boundingBox()`:
+
+```typescript
+// Wrong — times out for 60s if element is absent:
+const box = await locator.boundingBox().catch(() => null)
+
+// Correct — instant check, then fetch box only when present:
+const box = (await locator.isVisible()) ? await locator.boundingBox() : null
+```
+
+This is especially important inside screenshot tests that compute clip regions from optional UI
+(e.g. a badge button that only appears under certain conditions).
+
 ### Seed rich content inline between messages
 
 File shares, reactions, and other message cards must be seeded *between* the surrounding messages

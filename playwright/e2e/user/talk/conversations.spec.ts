@@ -257,13 +257,15 @@ test.beforeAll(async ({ browser }) => {
 	const eventToken = await findOrCreateGroup()
 
 	// Set an emoji icon on "Event planning"
-	await talkApi('POST', `/v1/conversation/${eventToken}/avatar/emoji`, christine, { emoji: '🎪', color: '0082c9' }).catch(() => {})
+	await talkApi('POST', `/v1/room/${eventToken}/avatar/emoji`, christine, { emoji: '🎪', color: '0082c9' }).catch(() => {})
 
-	// Seed messages in the group (only if empty beyond the initial 3)
+	// Seed messages in the group (only if empty beyond the initial 3).
+	// Exclude system messages (e.g. "You set the conversation picture") from the count —
+	// they are not user messages and must not prevent seeding on a fresh container.
 	const grpChatRes = await talkApi('GET', `/v1/chat/${eventToken}?lookIntoFuture=0&limit=20`, christine)
 	const grpChatData = await grpChatRes.json()
-	const grpMsgs: Array<{ id: number; message: string }> = grpChatData?.ocs?.data ?? []
-	if (grpMsgs.filter(m => m.message && !m.message.startsWith('{')).length <= 3) {
+	const grpMsgs: Array<{ id: number; message: string; systemMessage?: string }> = grpChatData?.ocs?.data ?? []
+	if (grpMsgs.filter(m => !m.systemMessage && m.message && !m.message.startsWith('{')).length <= 3) {
 		await seedChatMessages(eventToken, [
 			{ text: "Quick update: Riverside Pavilion confirmed for 1 September! 🎉", user: 'christine', password: 'christine' },
 			{ text: "Amazing! I've already started the sponsor outreach — three leads so far.", user: 'amara_w', password: 'amara_w' },
@@ -293,7 +295,7 @@ test.beforeAll(async ({ browser }) => {
 
 	if (!existingNames.includes('Design Team')) {
 		const designToken = await createGroup('Design Team', christine)
-		await talkApi('POST', `/v1/conversation/${designToken}/avatar/emoji`, christine, { emoji: '🎨', color: 'a3174b' }).catch(() => {})
+		await talkApi('POST', `/v1/room/${designToken}/avatar/emoji`, christine, { emoji: '🎨', color: 'a3174b' }).catch(() => {})
 		await addParticipant(designToken, 'lila_h', christine)
 		await addParticipant(designToken, 'kieran_p', christine)
 		await seedChatMessages(designToken, [
@@ -307,7 +309,7 @@ test.beforeAll(async ({ browser }) => {
 	if (!existingNames.includes('Project Updates')) {
 		const updatesToken = await createGroup('Project Updates', christine)
 		// Open conversation (roomType 3) would require a different create path; keep as group but add more members
-		await talkApi('POST', `/v1/conversation/${updatesToken}/avatar/emoji`, christine, { emoji: '📢', color: 'e9a227' }).catch(() => {})
+		await talkApi('POST', `/v1/room/${updatesToken}/avatar/emoji`, christine, { emoji: '📢', color: 'e9a227' }).catch(() => {})
 		await addParticipant(updatesToken, 'amara_w', christine)
 		await addParticipant(updatesToken, 'malik_s', christine)
 		await addParticipant(updatesToken, 'lila_h', christine)
@@ -323,7 +325,7 @@ test.beforeAll(async ({ browser }) => {
 
 	if (!existingNames.includes('Board Updates')) {
 		const boardToken = await createGroup('Board Updates', christine)
-		await talkApi('POST', `/v1/conversation/${boardToken}/avatar/emoji`, christine, { emoji: '📋', color: '003b6f' }).catch(() => {})
+		await talkApi('POST', `/v1/room/${boardToken}/avatar/emoji`, christine, { emoji: '📋', color: '003b6f' }).catch(() => {})
 		await addParticipant(boardToken, 'analise_l', christine)
 		await addParticipant(boardToken, 'orion_g', christine)
 		await addParticipant(boardToken, 'charlotte_m', christine)
@@ -336,7 +338,7 @@ test.beforeAll(async ({ browser }) => {
 
 	if (!existingNames.includes('Volunteer Coordination')) {
 		const volunteerToken = await createGroup('Volunteer Coordination', christine)
-		await talkApi('POST', `/v1/conversation/${volunteerToken}/avatar/emoji`, christine, { emoji: '🤝', color: '00a75c' }).catch(() => {})
+		await talkApi('POST', `/v1/room/${volunteerToken}/avatar/emoji`, christine, { emoji: '🤝', color: '00a75c' }).catch(() => {})
 		await addParticipant(volunteerToken, 'analise_l', christine)
 		await addParticipant(volunteerToken, 'seraphina_d', christine)
 		await seedChatMessages(volunteerToken, [
@@ -566,6 +568,8 @@ test('New room (freshly created conversation)', async ({ page }) => {
 	const newRoomUrl = page.url()
 	const newRoomToken = newRoomUrl.match(/\/call\/([a-z0-9]+)/i)?.[1]
 	if (newRoomToken) {
+		// Set the laptop emoji to match what the creating-open-conversation screenshot shows
+		await talkApi('POST', `/v1/room/${newRoomToken}/avatar/emoji`, christine, { emoji: '💻', color: '0082c9' }).catch(() => {})
 		await seedChatMessages(newRoomToken, [
 			{ text: "Hey team! Welcome to the Product Team chat 👋", user: 'christine', password: 'christine' },
 			{ text: "Thanks for setting this up!", user: 'amara_w', password: 'amara_w' },
@@ -838,27 +842,33 @@ test('Archived conversations button', async ({ page }) => {
 	await page.goto('/apps/spreed')
 	await page.locator('[aria-label="Conversation list"]').waitFor({ state: 'visible', timeout: 15000 })
 	const token = await getOrCreateGroupToken()
-	// Seed a plain (non-mention) message so the preview is meaningful.
-	// Using @all here creates an unread-mention badge that causes an "Unread mentions"
-	// navigation button to appear above "Archived conversations" in the list footer.
+	// Use @all so the archived conversation shows an unread-mention badge on the
+	// "Archived conversations" button. If the "Unread mentions" navigation button
+	// appears above it, clip the screenshot to start just below that button so it
+	// is excluded. The dot on the archive button is preserved.
 	await seedChatMessages(token, [
-		{ text: "Reminder: catering walkthrough confirmed for Friday at 10am.", user: 'amara_w', password: 'amara_w' },
+		{ text: "@all Don't forget the catering walkthrough is Friday at 10am!", user: 'amara_w', password: 'amara_w' },
 	])
 	await talkApi('POST', `/v4/room/${token}/archive`, christine)
 	await page.reload()
 	await page.locator('[aria-label="Conversation list"]').waitFor({ state: 'visible', timeout: 15000 })
 	const archivedBtn = page.locator('button', { hasText: 'Archived conversations' })
 	await archivedBtn.waitFor({ state: 'visible', timeout: 10000 })
-	// Clip from 2 conversations above the button down to include the button itself.
-	// Avoids capturing the "Unread mentions" tooltip that appears above the button
-	// when @mention messages are unread.
 	const listEl = page.locator('[aria-label="Conversation list"]')
 	const listBox = await listEl.boundingBox()
 	const btnBox = await archivedBtn.boundingBox()
 	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'archived-conversations-button.png')
 	await fs.mkdir(path.dirname(dest), { recursive: true })
 	if (listBox && btnBox) {
-		const clipTop = btnBox.y - 80
+		// If the "Unread mentions" navigation button is present, start the clip just
+		// below it to exclude it. Otherwise fall back to ~80px above the archive button.
+		// Use isVisible() (instant, no timeout) before boundingBox() — boundingBox()
+		// waits for the element with the full action timeout if it doesn't exist.
+		const mentionsBtn = page.locator('button', { hasText: /unread mentions/i })
+		const mentionsBox = (await mentionsBtn.isVisible()) ? await mentionsBtn.boundingBox() : null
+		const clipTop = mentionsBox
+			? mentionsBox.y + mentionsBox.height + 4
+			: btnBox.y - 80
 		await page.screenshot({ path: dest, clip: { x: listBox.x, y: clipTop, width: listBox.width, height: btnBox.y + btnBox.height - clipTop + 8 } })
 	} else {
 		await archivedBtn.screenshot({ path: dest })
