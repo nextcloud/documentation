@@ -115,6 +115,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#excluding-ip-addresses-from-brute-force-protection">Excluding IP addresses from brute force protection</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#brute-force-protection-vs-fail2ban">Brute force protection vs fail2ban</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="caching_configuration.html">Memory caching</a></li>
@@ -288,8 +289,9 @@ addresses and ranges to exempt from brute force protection.</p>
 additional monitoring or behavior adjustments related to brute force protection.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Disabling the <code class="docutils literal notranslate"><span class="pre">bruteforcesettings</span></code> app does <strong>not</strong> disable brute force protection
-- it merely removes your ability to adjust brute force related settings from the Web interface.</p>
+<p>Disabling the <code class="docutils literal notranslate"><span class="pre">bruteforcesettings</span></code> app does <strong>not</strong> disable brute force protection.
+The protection is built into Nextcloud Server core and is always active. Disabling the app
+only removes the ability to manage brute force settings from the Web interface.</p>
 </div>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
@@ -360,6 +362,30 @@ leaving brute force protection enabled). This can be useful for testing purposes
 It’s best to exclude as few IP addresses as you can, or even none at all.</p>
 </div>
 </section>
+</section>
+<section id="brute-force-protection-vs-fail2ban">
+<h2>Brute force protection vs fail2ban<a class="headerlink" href="#brute-force-protection-vs-fail2ban" title="Link to this heading"></a></h2>
+<p>Nextcloud’s built-in brute force protection and fail2ban are complementary tools that
+operate at different layers of the stack. Using both together is recommended for
+production servers.</p>
+<p><strong>Nextcloud brute force protection</strong> is built into Nextcloud Server itself (the
+<code class="docutils literal notranslate"><span class="pre">bruteforcesettings</span></code> app provides the admin UI and exclusion settings, but the
+protection runs regardless). It works at the <strong>application layer</strong>: it detects
+suspicious login patterns and adds progressively longer delays to requests from the
+offending IP address. It has full context about Nextcloud-specific endpoints and
+credentials, and it activates automatically without any operating system configuration.</p>
+<p><strong>fail2ban</strong> works at the <strong>OS/network layer</strong>. It watches log files for failed login
+entries and instructs the system firewall (e.g. <code class="docutils literal notranslate"><span class="pre">iptables</span></code> or <code class="docutils literal notranslate"><span class="pre">nftables</span></code>) to
+block the offending IP outright. Blocked requests are dropped before they reach the
+web server, PHP, or the database, saving server resources entirely.</p>
+<p>The two approaches are not mutually exclusive:</p>
+<ul class="simple">
+<li><p>Nextcloud brute force protection handles application-level throttling transparently,
+including for API clients and mobile apps, with no system configuration required.</p></li>
+<li><p>fail2ban reduces server load by blocking repeat offenders at the network level
+before their requests consume any application resources.</p></li>
+</ul>
+<p>For setup instructions for fail2ban with Nextcloud, see <a class="reference internal" href="../installation/harden_server.html#setup-fail2ban"><span class="std std-ref">Setup fail2ban</span></a>.</p>
 </section>
 </section>
 
