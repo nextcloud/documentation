@@ -103,7 +103,7 @@ Use ``\OCP\IAppConfig`` when you need to read or write configuration for an
 arbitrary app ID (e.g. from a different app's config).
 
 For a full reference — typed values, lazy loading, sensitive values, key management —
-see :doc:`/developer_manual/digging_deeper/config/appconfig`.
+see :doc:`/digging_deeper/config/appconfig`.
 
 
 User values
@@ -141,4 +141,4 @@ Inject ``\OCP\Config\IUserConfig`` and use the typed getter/setter methods:
     }
 
 For a full reference — typed values, lazy loading, sensitive and indexed values,
-key management — see :doc:`/developer_manual/digging_deeper/config/userconfig`.
+key management — see :doc:`/digging_deeper/config/userconfig`.
