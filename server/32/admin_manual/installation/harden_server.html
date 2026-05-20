@@ -96,6 +96,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#deployment">Deployment</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#place-data-directory-outside-of-the-web-root">Place data directory outside of the web root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#place-config-directory-outside-of-the-web-root">Place config directory outside of the web root</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#disable-preview-image-generation">Disable preview image generation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#disable-debug-mode">Disable Debug Mode</a></li>
 </ul>
@@ -270,6 +271,36 @@ SELinux.</p>
 <p>It is highly recommended to place your data directory outside of the Web root
 (i.e. outside of <code class="docutils literal notranslate"><span class="pre">/var/www</span></code>). It is easiest to do this on a new
 installation.</p>
+</section>
+<section id="place-config-directory-outside-of-the-web-root">
+<span id="harden-config-dir"></span><h3>Place config directory outside of the web root<a class="headerlink" href="#place-config-directory-outside-of-the-web-root" title="Link to this heading"></a></h3>
+<p>You can move the <code class="docutils literal notranslate"><span class="pre">config/</span></code> directory outside the web root using the <code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_CONFIG_DIR</span></code>
+environment variable. This ensures <code class="docutils literal notranslate"><span class="pre">config.php</span></code> — which contains database credentials,
+secret keys, and other sensitive values — is not accessible via HTTP even in the event of a
+web server misconfiguration.</p>
+<p>Set the variable in your web server virtual host configuration:</p>
+<div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="c"># Apache</span>
+<span class="nb">SetEnv</span><span class="w"> </span>NEXTCLOUD_CONFIG_DIR<span class="w"> </span><span class="sx">/etc/nextcloud</span>
+</pre></div>
+</div>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="c1"># nginx — set via fastcgi_param or the PHP-FPM pool&#39;s env[] setting</span>
+<span class="k">fastcgi_param</span><span class="w"> </span><span class="s">NEXTCLOUD_CONFIG_DIR</span><span class="w"> </span><span class="s">/etc/nextcloud</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Also set it for CLI work (<code class="docutils literal notranslate"><span class="pre">occ</span></code>, cron):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">NEXTCLOUD_CONFIG_DIR</span><span class="o">=</span>/etc/nextcloud
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The variable must be set for <strong>both</strong> the web server process and CLI invocations.
+Verify with <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">config:list</span> <span class="pre">system</span></code> after changing it.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../configuration_server/config_sample_php_parameters.html"><span class="doc">Configuration Parameters</span></a> for full details on
+<code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_CONFIG_DIR</span></code> and other configuration loading behaviour.</p>
+</div>
 </section>
 <section id="disable-preview-image-generation">
 <h3>Disable preview image generation<a class="headerlink" href="#disable-preview-image-generation" title="Link to this heading"></a></h3>

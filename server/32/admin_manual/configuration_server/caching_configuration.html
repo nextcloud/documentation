@@ -97,8 +97,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#additional-notes-for-redis-vs-apcu-on-memory-caching">Additional notes for Redis vs. APCu on memory caching</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">APCu</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Redis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#apcu">APCu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#redis">Redis</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#redis-configuration-in-nextcloud-config-php">Redis configuration in Nextcloud (config.php)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#connecting-to-single-redis-server-over-tcp">Connecting to single Redis server over TCP</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#connecting-to-single-redis-server-over-tls">Connecting to single Redis server over TLS</a></li>
@@ -107,7 +107,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#using-the-redis-session-handler">Using the Redis session handler</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#install-redis-label">Memcached</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#memcached">Memcached</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#memcached-configuration-in-nextcloud-config-php">Memcached configuration in Nextcloud (config.php)</a></li>
 </ul>
 </li>
@@ -224,12 +224,12 @@ caching backends, so you can choose the type of memcache that best fits your
 needs. The supported caching backends are:</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt><a class="reference external" href="https://pecl.php.net/package/APCu">APCu</a>, APCu 4.0.6 and up required.</dt><dd><p>A local cache for systems.</p>
+<dt><a class="reference external" href="https://pecl.php.net/package/APCu">APCu</a> (APCu 4.0.6 and up required).</dt><dd><p>A local cache for systems.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt><a class="reference external" href="http://redis.io/">Redis</a>, server 4.0.0 and up required.</dt><dd><p>For local and distributed caching, as well as transactional file locking.</p>
+<dt><a class="reference external" href="http://redis.io/">Redis</a> (4.0.0 and up required).</dt><dd><p>For local and distributed caching, as well as transactional file locking.</p>
 </dd>
 </dl>
 </li>
@@ -311,8 +311,8 @@ very same memcache server/cluster and not to <code class="docutils literal notra
 and Redis for File Locking. If you are low on memory, use Redis for both.</p>
 </section>
 </section>
-<section id="id1">
-<h2>APCu<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<section id="apcu">
+<h2>APCu<a class="headerlink" href="#apcu" title="Link to this heading"></a></h2>
 <p>APCu is a data cache, and it is available in most
 Linux distributions. On Red Hat/CentOS/Fedora systems install
 <code class="docutils literal notranslate"><span class="pre">php-pecl-apcu</span></code>. On Debian/Ubuntu/Mint systems install <code class="docutils literal notranslate"><span class="pre">php-apcu</span></code>.</p>
@@ -336,8 +336,8 @@ increase the size. <a class="reference external" href="https://github.com/krakjo
 otherwise the <a class="reference external" href="https://github.com/nextcloud/serverinfo">serverinfo app</a> in
 Nextcloud can also show the APCu cache status.</p>
 </section>
-<section id="id2">
-<h2>Redis<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="redis">
+<h2>Redis<a class="headerlink" href="#redis" title="Link to this heading"></a></h2>
 <p>Redis is an excellent modern memcache to use for distributed caching, and
 as a key-value store for <a class="reference internal" href="../configuration_files/files_locking_transactional.html"><span class="doc">Transactional File Locking</span></a> because it guarantees
 that cached objects are available for as long as they are needed.</p>
@@ -514,8 +514,8 @@ prevent session corruption when using Redis as your session handler:</p>
 <a class="reference external" href="https://github.com/phpredis/phpredis">PhpRedis GitHub page</a></p>
 </section>
 </section>
-<section id="install-redis-label">
-<span id="id3"></span><h2>Memcached<a class="headerlink" href="#install-redis-label" title="Link to this heading"></a></h2>
+<section id="memcached">
+<span id="install-redis-label"></span><h2>Memcached<a class="headerlink" href="#memcached" title="Link to this heading"></a></h2>
 <p>Memcached is a reliable oldtimer for shared caching on distributed servers,
 and performs well with Nextcloud with one exception: it is not suitable to use
 with <a class="reference internal" href="../configuration_files/files_locking_transactional.html"><span class="doc">Transactional File Locking</span></a>
