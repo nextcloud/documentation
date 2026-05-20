@@ -343,7 +343,7 @@
 <section id="per-mail-account">
 <h4>Per mail account<a class="headerlink" href="#per-mail-account" title="Link to this heading"></a></h4>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.1.0.</span></p>
+<p><span class="versionmodified added">Added in version 5.1.0: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Starting with version 5.1.0 of the mail app, you can enable logging of outgoing IMAP/SMTP/Sieve connections limited to a specific mail account. As that saves a lot of resources on your system, this is the preferred method for debugging issues regarding IMAP/SMTP/Sieve connections.</p>
 <p>First, you need to get the accountId for the mail account you like to enable debug logging on. Please see <a class="reference internal" href="#mail-get-account-ids-groupware"><span class="std std-ref">Get account IDs</span></a> for more.</p>
@@ -361,7 +361,7 @@
 <h4>Globally<a class="headerlink" href="#globally" title="Link to this heading"></a></h4>
 <p>This enables logging of the IMAP/SMTP/Sieve connections for <strong>all</strong> mail accounts configured on the server. This should be used with caution as it can put a lot of strain on large environments.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.1.0.</span></p>
+<p><span class="versionmodified added">Added in version 5.1.0: </span>Nextcloud 30 or newer</p>
 </div>
 <p>To enable the global debug logging on versions 5.1.0 and above, just run the following command on the server:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">app</span><span class="o">.</span><span class="n">mail</span><span class="o">.</span><span class="n">debug</span> <span class="o">--</span><span class="n">value</span> <span class="n">true</span> <span class="o">--</span><span class="nb">type</span> <span class="nb">bool</span>
@@ -377,7 +377,7 @@
 <p>The following steps only apply to version 1.6.2 up to 5.0.8. Restrict logging of outgoing connections to a specific mail account is not available there.</p>
 </div>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.6.2.</span></p>
+<p><span class="versionmodified added">Added in version 1.6.2: </span>Nextcloud 20 or newer</p>
 </div>
 <p>To enable the global debug logging, it’s necessary to enable both the debug mode as well as debug logging for the whole nextcloud instance by running the following commands on the server:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">debug</span> <span class="o">--</span><span class="n">value</span> <span class="n">true</span> <span class="o">--</span><span class="nb">type</span> <span class="nb">bool</span>
