@@ -138,7 +138,7 @@ This is how the command line based update would continue:
 
 .. code::
 
-    $ sudo -E -u www-data php ./occ upgrade
+    $ sudo -u www-data php ./occ upgrade
     Nextcloud or one of the apps require upgrade - only a limited number of commands are available
     You may use your browser or the occ upgrade command to do the upgrade
     Set log level to debug
@@ -180,7 +180,7 @@ The steps are basically the same as for the web based updater:
 2. Instead of clicking that button you can now invoke the command line based
    updater by going into the `updater/` directory in the Nextcloud directory
    and executing the `updater.phar` as the web server user. (i.e.
-   ``sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar``)
+   ``sudo -u www-data php /var/www/nextcloud/updater/updater.phar``)
 
 .. image:: images/updater-cli-2-start-updater.png
    :alt: Terminal showing Nextcloud command line updater starting and displaying update information
@@ -233,11 +233,98 @@ except an error occurred during the ``occ upgrade`` or the replacement of the
 code.
 
 To execute this, run the command with the ``--no-interaction`` option. (i.e.
-``sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar --no-interaction``)
+``sudo -u www-data php /var/www/nextcloud/updater/updater.phar --no-interaction``)
 
 .. image:: images/updater-cli-8-no-interaction.png
    :alt: Terminal showing Nextcloud command line updater running in non-interactive batch mode
    :class: terminal-image
+
+Using a custom download URL
+---------------------------
+
+The ``--url`` option lets you override the archive the updater downloads.
+Common use cases:
+
+* **Pinning a specific version** — install an exact patch release rather than
+  whatever the update check resolves to.
+* **Internal mirrors** — serve the archive from a company mirror or proxy.
+* **Offline / air-gapped environments** — stage the archive locally and
+  supply it via a ``file://`` URL.
+
+.. warning::
+   The normal update rules still apply when using ``--url``:
+
+   * **Downgrading is not supported**.
+   * **Skipping major versions is not supported.** You must update one major
+     version at a time (e.g. 28 → 29 → 30, not 28 → 30).
+
+   Passing ``--url`` does not bypass these constraints.
+
+Point the updater at any HTTP/HTTPS URL:
+
+.. code-block:: bash
+
+    sudo -u www-data php /var/www/nextcloud/updater/updater.phar \
+        --url https://download.nextcloud.com/server/releases/nextcloud-33.0.0.zip
+
+
+.. versionadded:: 34
+
+For a locally staged archive, use a ``file://`` URL:
+
+.. code-block:: bash
+
+    sudo -u www-data php /var/www/nextcloud/updater/updater.phar \
+        --url file:///tmp/nextcloud-33.0.0.zip
+
+Signature verification
+~~~~~~~~~~~~~~~~~~~~~~
+
+When ``--url`` is used the updater cannot look up the official signature
+automatically. You have two options:
+
+* **Provide the signature** — pass the base64-encoded signature with
+  ``--signature``. You can get the signature from
+  https://nextcloud.com/changelog/ or from the same mirror that hosts the
+  archive:
+
+  .. code-block:: bash
+
+      sudo -u www-data php /var/www/nextcloud/updater/updater.phar \
+          --url file:///tmp/nextcloud-33.0.0.zip \
+          --signature "BASE64_SIGNATURE_HERE"
+
+* **Skip verification** — pass ``--no-verify`` to disable integrity checking
+  entirely. Only do this if you fully trust the source and transfer channel,
+  or if you have already verified the archive yourself (e.g. by checking the
+  SHA-512 checksum):
+
+  .. code-block:: bash
+
+      sha512sum -c nextcloud-33.0.0.zip.sha512
+
+  Then run the updater without signature checking:
+
+  .. code-block:: bash
+
+      sudo -u www-data php /var/www/nextcloud/updater/updater.phar \
+          --url file:///tmp/nextcloud-33.0.0.zip \
+          --no-verify
+
+  .. warning::
+     ``--no-verify`` removes the integrity check that protects against
+     corrupted or tampered archives. Always verify the archive through an
+     independent channel before using this option.
+
+These options can be combined with ``--no-interaction`` for fully automated
+runs:
+
+.. code-block:: bash
+
+    sudo -u www-data php /var/www/nextcloud/updater/updater.phar \
+        --url file:///tmp/nextcloud-33.0.0.zip \
+        --signature "BASE64_SIGNATURE_HERE" \
+        --no-interaction
 
 Troubleshooting
 ---------------
