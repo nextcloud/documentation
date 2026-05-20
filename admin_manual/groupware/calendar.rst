@@ -12,7 +12,7 @@ calendar, and sending email notifications about upcoming events.
 .. figure:: images/settings_calendar-server.png
   :scale: 60%
 
-.. versionadded:: 30 The section will be hidden if no app makes use of the CalDAV backend.
+.. versionadded:: 30.0.0 The section will be hidden if no app makes use of the CalDAV backend.
 
 Starting from Nextcloud 30, the calendar server settings section will be hidden if no app uses the
 CalDAV backend.

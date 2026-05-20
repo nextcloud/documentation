@@ -13,7 +13,7 @@ Managing your mail account
 Switch layout
 ~~~~~~~~~~~~~
 
-.. versionadded:: 3.6
+.. versionadded:: 3.6 Nextcloud 26 or newer
 
 1. Visit mail settings
 2. Choose between *List*, *Vertical split* and *Horizontal split*
@@ -23,7 +23,7 @@ Switch layout
 Message Display / Operation Mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 5.2
+.. versionadded:: 5.2 Nextcloud 30 or newer
 
 Mail has the ability to switch between two different message view and operation modes: *Threaded* and *Singleton*.
 
@@ -48,7 +48,7 @@ Add a new mail account
 Change sort order
 ~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 3.5
+.. versionadded:: 3.5 Nextcloud 26 or newer
 
 1. Visit mail settings
 2. Go to *Sorting*
@@ -109,7 +109,7 @@ Can be found in the action menu of a mail account. There you can edit, add or re
 Move messages to Junk folder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 3.4
+.. versionadded:: 3.4 Nextcloud 26 or newer
 
 Mail can move a message to a different folder when it is marked as junk.
 
@@ -140,7 +140,7 @@ use the mailbox search feature in the app.
 Search in mailbox
 ~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 2.1
+.. versionadded:: 2.1 Nextcloud 25 or newer
 
 At the top of the envelope list in any mail layout, there is a search field shortcut for searching email subjects. Starting from ``version 3.7``, this shortcut allows you to search by subject, recipient (to), or sender (from) by default.
 
@@ -148,14 +148,14 @@ At the top of the envelope list in any mail layout, there is a search field shor
 Advanced search in mailbox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 3.4
+.. versionadded:: 3.4 Nextcloud 26 or newer
 
 You can access our advanced search feature through a modal located at the end of the search shortcut.
 
 Enable mail body search
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 3.5
+.. versionadded:: 3.5 Nextcloud 26 or newer
 
 Mail bodies can now be searched, this feature is opt-in because of potential performance issues.
 
@@ -184,7 +184,7 @@ The app allows account delegation so that one user can send emails from the addr
 Automatic trash deletion
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 3.4
+.. versionadded:: 3.4 Nextcloud 26 or newer
 
 The Mail app can automatically delete messages in the trash folder after a certain number of days.
 
@@ -207,7 +207,7 @@ Compose messages
 Minimize the composer modal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 3.2
+.. versionadded:: 3.2 Nextcloud 26 or newer
 
 The composer modal can be minimized while writing a new message, editing an existing draft or a message from the outbox. Simply click the minimize button on the top right of the modal or click anywhere outside the modal.
 
@@ -223,7 +223,7 @@ Press close button on the modal or the indicator in the bottom right corner to s
 Recipient info on composer
 --------------------------
 
-.. versionadded:: 4.2
+.. versionadded:: 4.2 Nextcloud 30 or newer
 
 When you add your first recipient or contact in the "To" field, a right pane will appear displaying the saved profile details of that contact.
 Adding a second contact will collapse the list, allowing you to select and expand any contact you added to view their details.
@@ -233,7 +233,7 @@ To show the right pane again, simply click the minimize icon in the same locatio
 Mention contacts
 ----------------
 
-.. versionadded:: 4.2
+.. versionadded:: 4.2 Nextcloud 30 or newer
 
 You can mention contacts in your message by typing ``@`` and then selecting the contact from the list.
 By doing so the contact will be automatically added as a recipient.
@@ -243,7 +243,7 @@ By doing so the contact will be automatically added as a recipient.
 Text blocks
 -----------
 
-.. versionadded:: 5.2
+.. versionadded:: 5.2 Nextcloud 30 or newer
 
 Text blocks are predefined snippets of text that can be inserted into your email. They can be created and managed in the mail settings.
 They can be inserted into the composer by typing ``!`` and then selecting the block from the list or from the composer actions.
@@ -306,7 +306,7 @@ Create an event for a certain message/thread directly via mail app
 Create a task
 ~~~~~~~~~~~~~
 
-.. versionadded:: 3.2
+.. versionadded:: 3.2 Nextcloud 26 or newer
 
 Create an task for a certain message/thread directly via mail app
 
@@ -325,7 +325,7 @@ Edit tags
 Change color for tags
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 3.5
+.. versionadded:: 3.5 Nextcloud 26 or newer
 
 .. figure:: images/change-tag-color.png
 
@@ -334,7 +334,7 @@ Upon creating a tag, a randomly assigned color is automatically chosen. Once the
 Delete tags
 ~~~~~~~~~~~
 
-.. versionadded:: 3.5
+.. versionadded:: 3.5 Nextcloud 26 or newer
 
 .. figure:: images/delete-tag.png
 
@@ -349,7 +349,7 @@ You now have the ability to delete tags that you have previously created. To acc
 AI summary
 ~~~~~~~~~~
 
-.. versionadded:: 4.2
+.. versionadded:: 4.2 Nextcloud 30 or newer
 
 When looking through your mailbox you will see a short AI generated summary of your emails as a preview.
 
@@ -357,7 +357,7 @@ When looking through your mailbox you will see a short AI generated summary of y
 
 Quick actions
 -------------
-.. versionadded:: 5.5 (Nextcloud 30)
+.. versionadded:: 5.5 Nextcloud 30 or newer
 
 Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read ... into quick actions that can be executed with a single click.
 Quick actions are scoped to one mail account and can be created and managed in the mail settings under "Quick actions" or directly from the envelope action menu.
@@ -372,14 +372,14 @@ Message actions
 Unsubscribe from a mailing list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 3.1
+.. versionadded:: 3.1 Nextcloud 26 or newer
 
 Some mailing lists and newsletters allow to be unsubscribed easily. If the Mail app detects messages from such a sender, it will show an *Unsubscribe* button next to the sender information. Click and confirm to unsubscribe from the list.
 
 Snooze
 ~~~~~~
 
-.. versionadded:: 3.4
+.. versionadded:: 3.4 Nextcloud 26 or newer
 
 Snoozing a message or thread moves it into a dedicated mailbox until the selected snooze date is reached and the message or thread is moved back to the original mailbox.
 
@@ -390,7 +390,7 @@ Snoozing a message or thread moves it into a dedicated mailbox until the selecte
 Smart replies
 ~~~~~~~~~~~~~
 
-.. versionadded:: 3.6
+.. versionadded:: 3.6 Nextcloud 26 or newer
 
 When you open a message in the Mail app, it proposes AI-generated replies. By simply clicking on a suggested reply, the composer opens with the response pre-filled.
 
@@ -401,7 +401,7 @@ When you open a message in the Mail app, it proposes AI-generated replies. By si
 Mail translation
 ~~~~~~~~~~~~~~~~
 
-.. versionadded:: 4.2
+.. versionadded:: 4.2 Nextcloud 30 or newer
 
 You are able to translate messages to your configured languages similarly to Talk.
 
@@ -414,7 +414,7 @@ Thread summary
 
 The mail app supports summarizing message threads that contain 3 or more messages.
 
-.. versionadded:: 3.4
+.. versionadded:: 3.4 Nextcloud 26 or newer
 
 .. note:: Please note that the feature has to be enabled by the administrator
 
@@ -428,14 +428,14 @@ The Mail app has a editor for Sieve scripts, an interface to configure autorespo
 Autoresponders
 ~~~~~~~~~~~~~~
 
-.. versionadded:: 3.5 Autoresponder can follow system settings.
+.. versionadded:: 3.5 Nextcloud 26 or newer
 
 The autoresponder is off by default. It can be set manually, or follow the system settings. Following system settings means that the long absence message entered on the :ref:`Absence settings section <groupware-absence>` is applied automatically.
 
 Filter
 ~~~~~~
 
-.. versionadded:: 4.1
+.. versionadded:: 4.1 Nextcloud 30 or newer
 
 Mail 4.1 includes a simple editor to configure filter rules.
 
@@ -480,7 +480,7 @@ Actions are triggered when the specified tests are true. The following actions a
 Create a filter from a message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 5.2
+.. versionadded:: 5.2 Nextcloud 30 or newer
 
 To create a filter from a given message, open the message and then open the menu by clicking on the three dots. Next, click on "More actions" followed by "Create mail filter."
 
@@ -492,7 +492,7 @@ In the dialog, please select the conditions to match incoming messages and conti
 Follow-up reminders
 -------------------
 
-.. versionadded:: 4.0
+.. versionadded:: 4.0 Nextcloud 30 or newer
 
 The Mail app will automatically remind you when an outgoing email did not receive a response.
 Each sent email will be analyzed by an AI to check whether a reply is expected.
@@ -509,7 +509,7 @@ Security
 Phishing detection
 ~~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 4.0
+.. versionadded:: 4.0 Nextcloud 30 or newer
 
 The Mail app will check for potential phishing attempts and will display a warning to the user.
 
@@ -526,7 +526,7 @@ The checks are the following:
 Internal addresses
 ~~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 4.0
+.. versionadded:: 4.0 Nextcloud 30 or newer
 
 The Mail app allows adding internal addresses and domains, and will warn the user if the address is not in the list, when sending and upon receiving a message.
 
@@ -541,7 +541,7 @@ To add an internal address:
 Dashboard integration
 ---------------------
 
-.. versionadded:: 1.8
+.. versionadded:: 1.8 Nextcloud 20 or newer
 
 The mail app offers two widgets designed for integration with Nextcloud's dashboard:
 
@@ -580,7 +580,7 @@ Meeting invitation automation
 
 When a meeting organizer sends updates to an existing event (such as time changes or location updates), the Mail app processes these automatically and updates the corresponding event in your calendar.
 
-.. versionadded:: 5.7 (Nextcloud 32 or newer)
+.. versionadded:: 5.7 Nextcloud 32 or newer
 
 You can also configure Mail to automatically add all new meeting invitations to your calendar without requiring manual acceptance. The invitations will be added to the calendar as tentative.
 
