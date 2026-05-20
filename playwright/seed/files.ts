@@ -5,6 +5,7 @@ import { mkdavCol, uploadFile, ocsRequest, SCREENSHOT_PORT } from '../helpers'
 import * as path from 'path'
 
 const FIXTURES_DIR = path.join(__dirname, '..', 'fixtures')
+const daysAgo = (n: number) => Math.floor(Date.now() / 1000 - n * 86400)
 
 async function share(filePath: string, user: string, password: string, shareType: string, opts: Record<string, string> = {}): Promise<void> {
 	await ocsRequest('POST', '/ocs/v2.php/apps/files_sharing/api/v1/shares', user, password, {
@@ -25,9 +26,9 @@ async function davExists(davPath: string, user: string, password: string): Promi
 	return res.status === 207
 }
 
-async function uploadIfMissing(src: string, dest: string, user: string, password: string): Promise<void> {
+async function uploadIfMissing(src: string, dest: string, user: string, password: string, mtime?: number): Promise<void> {
 	if (!await davExists(dest, user, password)) {
-		await uploadFile(src, dest, user, password)
+		await uploadFile(src, dest, user, password, mtime)
 	}
 }
 
@@ -44,26 +45,31 @@ export async function seedFiles(): Promise<void> {
 		`${FIXTURES_DIR}/documents/Event Brief.md`,
 		'Documents/Event Brief.md',
 		'christine', 'christine',
+		daysAgo(7),
 	)
 	await uploadIfMissing(
 		`${FIXTURES_DIR}/documents/Budget Overview.csv`,
 		'Documents/Budget Overview.csv',
 		'christine', 'christine',
+		daysAgo(12),
 	)
 	await uploadIfMissing(
 		`${FIXTURES_DIR}/documents/Volunteer List.csv`,
 		'Documents/Volunteer List.csv',
 		'christine', 'christine',
+		daysAgo(5),
 	)
 	await uploadIfMissing(
 		`${FIXTURES_DIR}/contacts/team-contacts.vcf`,
 		'Documents/team-contacts.vcf',
 		'christine', 'christine',
+		daysAgo(20),
 	)
 	await uploadIfMissing(
 		`${FIXTURES_DIR}/calendar/q3-gala.ics`,
 		'Documents/q3-gala.ics',
 		'christine', 'christine',
+		daysAgo(18),
 	)
 
 	// Photos — landscape JPEGs for gallery / image preview screenshots
@@ -71,21 +77,25 @@ export async function seedFiles(): Promise<void> {
 		`${FIXTURES_DIR}/images/forest-green.jpg`,
 		'Photos/forest-green.jpg',
 		'christine', 'christine',
+		daysAgo(14),
 	)
 	await uploadIfMissing(
 		`${FIXTURES_DIR}/images/ocean-golden.jpg`,
 		'Photos/ocean-golden.jpg',
 		'christine', 'christine',
+		daysAgo(11),
 	)
 	await uploadIfMissing(
 		`${FIXTURES_DIR}/images/city-night-purple.jpg`,
 		'Photos/city-night-purple.jpg',
 		'christine', 'christine',
+		daysAgo(9),
 	)
 	await uploadIfMissing(
 		`${FIXTURES_DIR}/images/milky-way.jpg`,
 		'Photos/milky-way.jpg',
 		'christine', 'christine',
+		daysAgo(9),
 	)
 
 	// Projects — PDFs
@@ -93,11 +103,13 @@ export async function seedFiles(): Promise<void> {
 		`${FIXTURES_DIR}/pdfs/Q2 Project Proposal.pdf`,
 		'Projects/Q3 Gala/Q2 Project Proposal.pdf',
 		'christine', 'christine',
+		daysAgo(21),
 	)
 	await uploadIfMissing(
 		`${FIXTURES_DIR}/pdfs/Team Meeting Notes.pdf`,
 		'Projects/Q3 Gala/Team Meeting Notes.pdf',
 		'christine', 'christine',
+		daysAgo(3),
 	)
 
 	// ── Shares from christine ─────────────────────────────────────────────────
@@ -132,11 +144,13 @@ export async function seedFiles(): Promise<void> {
 		`${FIXTURES_DIR}/pdfs/Q2 Project Proposal.pdf`,
 		'Q2 Project Proposal.pdf',
 		'amara_w', 'amara_w',
+		daysAgo(21),
 	)
 	await uploadIfMissing(
 		`${FIXTURES_DIR}/documents/Budget Overview.csv`,
 		'Budget Overview.csv',
 		'amara_w', 'amara_w',
+		daysAgo(12),
 	)
 
 	// Share Q2 Project Proposal.pdf from amara_w back to christine (read-only)

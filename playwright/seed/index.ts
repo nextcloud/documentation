@@ -2,11 +2,11 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 export { seedUsers } from './users'
-export { seedTalk, seedNoteToSelf } from './talk'
+export { seedTalk, seedNoteToSelf, adjustTalkTimestamps } from './talk'
 export { seedFiles } from './files'
 
 import { seedUsers } from './users'
-import { seedTalk } from './talk'
+import { seedTalk, adjustTalkTimestamps } from './talk'
 import { seedFiles } from './files'
 
 /**
@@ -15,7 +15,8 @@ import { seedFiles } from './files'
  */
 export async function seed(): Promise<string> {
 	await seedUsers()
-	const eventToken = await seedTalk()
+	const tokens = await seedTalk()
 	await seedFiles()
-	return eventToken
+	await adjustTalkTimestamps(tokens)
+	return tokens.event
 }
