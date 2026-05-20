@@ -161,7 +161,7 @@ The Nextcloud Mail app offers an extensive logging system to make it easier iden
 
 Per mail account
 ~~~~~~~~~~~~~~~~
-.. versionadded:: 5.1.0
+.. versionadded:: 5.1.0 Nextcloud 30 or newer
 
 Starting with version 5.1.0 of the mail app, you can enable logging of outgoing IMAP/SMTP/Sieve connections limited to a specific mail account. As that saves a lot of resources on your system, this is the preferred method for debugging issues regarding IMAP/SMTP/Sieve connections.
 
@@ -185,7 +185,7 @@ Globally
 ~~~~~~~~
 This enables logging of the IMAP/SMTP/Sieve connections for **all** mail accounts configured on the server. This should be used with caution as it can put a lot of strain on large environments.
 
-.. versionadded:: 5.1.0
+.. versionadded:: 5.1.0 Nextcloud 30 or newer
 
 To enable the global debug logging on versions 5.1.0 and above, just run the following command on the server:
 
@@ -202,7 +202,7 @@ The global debug logging can be disabled once you've collected the necessary dat
     sudo -E -u www-data php occ config:system:set app.mail.debug --value false --type bool
 
 .. note:: The following steps only apply to version 1.6.2 up to 5.0.8. Restrict logging of outgoing connections to a specific mail account is not available there.
-.. versionadded:: 1.6.2
+.. versionadded:: 1.6.2 Nextcloud 20 or newer
 
 To enable the global debug logging, it's necessary to enable both the debug mode as well as debug logging for the whole nextcloud instance by running the following commands on the server:
 
