@@ -136,6 +136,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#using-the-web-based-updater">Using the web based updater</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#using-the-command-line-based-updater">Using the command line based updater</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#batch-mode-for-command-line-based-updater">Batch mode for command line based updater</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-a-custom-download-url">Using a custom download URL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#signature-verification">Signature verification</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
@@ -324,7 +328,7 @@ based upgrade” shows how the screens then look like.</p></li>
 <p><strong>Command line based upgrade</strong></p>
 <p>This is how the command line based update would continue:</p>
 <img alt="Nextcloud command line updater asking whether to keep maintenance mode active" src="../_images/updater-8-keep-maintenance.png" />
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -E -u www-data php ./occ upgrade
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -u www-data php ./occ upgrade
 Nextcloud or one of the apps require upgrade - only a limited number of commands are available
 You may use your browser or the occ upgrade command to do the upgrade
 Set log level to debug
@@ -365,7 +369,7 @@ notification app is enabled in the apps management.</p></li>
 <li><p>Instead of clicking that button you can now invoke the command line based
 updater by going into the <cite>updater/</cite> directory in the Nextcloud directory
 and executing the <cite>updater.phar</cite> as the web server user. (i.e.
-<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-E</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">/var/www/nextcloud/updater/updater.phar</span></code>)</p></li>
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">/var/www/nextcloud/updater/updater.phar</span></code>)</p></li>
 </ol>
 <img alt="Terminal showing Nextcloud command line updater starting and displaying update information" class="terminal-image" src="../_images/updater-cli-2-start-updater.png" />
 <ol class="arabic simple" start="3">
@@ -403,8 +407,88 @@ is executed as well. After finishing the maintenance mode will be turned off
 except an error occurred during the <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code> or the replacement of the
 code.</p>
 <p>To execute this, run the command with the <code class="docutils literal notranslate"><span class="pre">--no-interaction</span></code> option. (i.e.
-<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-E</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">/var/www/nextcloud/updater/updater.phar</span> <span class="pre">--no-interaction</span></code>)</p>
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">/var/www/nextcloud/updater/updater.phar</span> <span class="pre">--no-interaction</span></code>)</p>
 <img alt="Terminal showing Nextcloud command line updater running in non-interactive batch mode" class="terminal-image" src="../_images/updater-cli-8-no-interaction.png" />
+</section>
+<section id="using-a-custom-download-url">
+<h2>Using a custom download URL<a class="headerlink" href="#using-a-custom-download-url" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">--url</span></code> option lets you override the archive the updater downloads.
+Common use cases:</p>
+<ul class="simple">
+<li><p><strong>Pinning a specific version</strong> — install an exact patch release rather than
+whatever the update check resolves to.</p></li>
+<li><p><strong>Internal mirrors</strong> — serve the archive from a company mirror or proxy.</p></li>
+<li><p><strong>Offline / air-gapped environments</strong> — stage the archive locally and
+supply it via a <code class="docutils literal notranslate"><span class="pre">file://</span></code> URL.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The normal update rules still apply when using <code class="docutils literal notranslate"><span class="pre">--url</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Downgrading is not supported</strong>.</p></li>
+<li><p><strong>Skipping major versions is not supported.</strong> You must update one major
+version at a time (e.g. 28 → 29 → 30, not 28 → 30).</p></li>
+</ul>
+<p>Passing <code class="docutils literal notranslate"><span class="pre">--url</span></code> does not bypass these constraints.</p>
+</div>
+<p>Point the updater at any HTTP/HTTPS URL:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>/var/www/nextcloud/updater/updater.phar<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--url<span class="w"> </span>https://download.nextcloud.com/server/releases/nextcloud-33.0.0.zip
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 34.</span></p>
+</div>
+<p>For a locally staged archive, use a <code class="docutils literal notranslate"><span class="pre">file://</span></code> URL:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>/var/www/nextcloud/updater/updater.phar<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--url<span class="w"> </span>file:///tmp/nextcloud-33.0.0.zip
+</pre></div>
+</div>
+<section id="signature-verification">
+<h3>Signature verification<a class="headerlink" href="#signature-verification" title="Link to this heading"></a></h3>
+<p>When <code class="docutils literal notranslate"><span class="pre">--url</span></code> is used the updater cannot look up the official signature
+automatically. You have two options:</p>
+<ul>
+<li><p><strong>Provide the signature</strong> — pass the base64-encoded signature with
+<code class="docutils literal notranslate"><span class="pre">--signature</span></code>. You can get the signature from
+<a class="reference external" href="https://nextcloud.com/changelog/">https://nextcloud.com/changelog/</a> or from the same mirror that hosts the
+archive:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>/var/www/nextcloud/updater/updater.phar<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--url<span class="w"> </span>file:///tmp/nextcloud-33.0.0.zip<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--signature<span class="w"> </span><span class="s2">&quot;BASE64_SIGNATURE_HERE&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Skip verification</strong> — pass <code class="docutils literal notranslate"><span class="pre">--no-verify</span></code> to disable integrity checking
+entirely. Only do this if you fully trust the source and transfer channel,
+or if you have already verified the archive yourself (e.g. by checking the
+SHA-512 checksum):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sha512sum<span class="w"> </span>-c<span class="w"> </span>nextcloud-33.0.0.zip.sha512
+</pre></div>
+</div>
+<p>Then run the updater without signature checking:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>/var/www/nextcloud/updater/updater.phar<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--url<span class="w"> </span>file:///tmp/nextcloud-33.0.0.zip<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--no-verify
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">--no-verify</span></code> removes the integrity check that protects against
+corrupted or tampered archives. Always verify the archive through an
+independent channel before using this option.</p>
+</div>
+</li>
+</ul>
+<p>These options can be combined with <code class="docutils literal notranslate"><span class="pre">--no-interaction</span></code> for fully automated
+runs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>/var/www/nextcloud/updater/updater.phar<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--url<span class="w"> </span>file:///tmp/nextcloud-33.0.0.zip<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--signature<span class="w"> </span><span class="s2">&quot;BASE64_SIGNATURE_HERE&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--no-interaction
+</pre></div>
+</div>
+</section>
 </section>
 <section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>

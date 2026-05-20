@@ -100,6 +100,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#modifying">Modifying</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#defaults">Defaults</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#multiple-merged-configuration-files">Multiple/Merged Configuration Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#default-parameters">Default Parameters</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#instanceid">instanceid</a></li>
@@ -701,6 +702,32 @@ whatever parameters you specify in it will be merged with your <code class="docu
 <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code>. If a backup config file is located within <code class="docutils literal notranslate"><span class="pre">config/</span></code> and happens to be
 named <code class="docutils literal notranslate"><span class="pre">(ANYTHING).config.php</span></code>, it will be loaded as part of your live configuration and override
 your <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code> values!</p>
+</div>
+</section>
+<section id="environment-variables">
+<h2>Environment Variables<a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_CONFIG_DIR</span></code> environment variable overrides the default config directory path.
+When set, Nextcloud loads <code class="docutils literal notranslate"><span class="pre">config.php</span></code> (and any <code class="docutils literal notranslate"><span class="pre">*.config.php</span></code> files) from that path instead
+of the <code class="docutils literal notranslate"><span class="pre">config/</span></code> directory inside the webroot.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">NEXTCLOUD_CONFIG_DIR</span><span class="o">=</span>/etc/nextcloud<span class="w"> </span>php<span class="w"> </span>/var/www/nextcloud/cron.php
+</pre></div>
+</div>
+<p>This is useful for:</p>
+<ul class="simple">
+<li><p>Moving <code class="docutils literal notranslate"><span class="pre">config.php</span></code> outside the webroot as a hardening measure — credentials are not
+accessible via HTTP even if directory listing is enabled or misconfigured.</p></li>
+<li><p>Running multiple Nextcloud instances that share a single codebase but require separate
+config directories.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_CONFIG_DIR</span></code> must be set for <strong>both</strong> the web server process and any CLI
+invocations (<code class="docutils literal notranslate"><span class="pre">occ</span></code>, cron jobs). Set it in your web server virtual host configuration and
+in the shell environment used for CLI work.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../installation/harden_server.html#harden-config-dir"><span class="std std-ref">Place config directory outside of the web root</span></a> in the hardening guide for a deployment recommendation.</p>
 </div>
 </section>
 <section id="examples">
