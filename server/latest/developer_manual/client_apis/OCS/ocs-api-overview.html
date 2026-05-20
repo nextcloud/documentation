@@ -352,7 +352,38 @@ It can be an option for filtering on a later stage but you can also leave them o
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="n">master</span> <span class="o">-</span><span class="n">X</span> <span class="n">GET</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;OCS-APIRequest: true&quot;</span> <span class="s1">&#39;https://my.nextcloud/ocs/v2.php/core/autocomplete/get?search=JOANNE</span><span class="si">%40E</span><span class="s1">MAIL.ISP&amp;shareTypes[]=8&amp;limit=2&#39;</span>
 </pre></div>
 </div>
-<p>The shareType defaults to regular users if you left it out), the limit defaults to 10.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">shareTypes</span></code> parameter filters results by share type. If omitted, it defaults to regular
+users (<code class="docutils literal notranslate"><span class="pre">0</span></code>). The limit defaults to <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Share type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Users (default)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>Groups</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
+<td><p>Email</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">6</span></code></p></td>
+<td><p>Federated cloud shares</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">7</span></code></p></td>
+<td><p>Circles</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">8</span></code></p></td>
+<td><p>Guest accounts</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
+<td><p>Talk conversations</p></td>
+</tr>
+</tbody>
+</table>
 <section id="filtering-the-auto-complete-results">
 <h3>Filtering the auto-complete results<a class="headerlink" href="#filtering-the-auto-complete-results" title="Link to this heading"></a></h3>
 <p>In case needed, you can also further filter the auto-complete results on the PHP side using the
