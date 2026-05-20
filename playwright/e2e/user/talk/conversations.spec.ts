@@ -1,18 +1,13 @@
 // SPDX-FileCopyrightText: 2026 Nextcloud GmbH and Nextcloud contributors
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import { test, Cookie } from '@playwright/test'
+import { test } from '@playwright/test'
 import { User } from '@nextcloud/e2e-test-server'
-import { login } from '@nextcloud/e2e-test-server/playwright'
 import {
 	docScreenshot,
 	docElementScreenshot,
-	tryOcc,
-	uploadAvatar,
-	uploadFile,
 	ocsRequest,
 	seedChatMessages,
-	reactToMessage,
 } from '../../../helpers'
 import { Page } from '@playwright/test'
 import * as path from 'path'
@@ -23,12 +18,9 @@ test.describe.configure({ mode: 'serial' })
 
 const christine = new User('christine', 'christine')
 
-const AVATAR_DIR = '/home/anna/Downloads/tp/avatar'
-const FIXTURES_DIR = path.join(process.cwd(), 'cypress/fixtures')
 
-// Token for the "Event planning" group conversation — lazily populated
+// Token for the "Event planning" group conversation — populated in beforeAll
 let groupToken = ''
-let authCookies: Cookie[] = []
 
 // ── Talk OCS helpers ──────────────────────────────────────────────────────────
 
@@ -46,17 +38,6 @@ async function addParticipant(token: string, uid: string, as: User): Promise<voi
 	await talkApi('POST', `/v4/room/${token}/participants`, as, { newParticipant: uid, source: 'users' })
 }
 
-/** Create a 1:1 DM via the Talk OCS API. */
-async function createTalkDm(actor: User, target: string): Promise<string> {
-	const res = await talkApi('POST', '/v4/room', actor, { roomType: '1', invite: target })
-	const data = await res.json()
-	return data.ocs.data.token as string
-}
-
-/** Set a profile field via the OCS provisioning API. */
-async function setProfileField(userId: string, key: string, value: string): Promise<void> {
-	await ocsRequest('PUT', `/ocs/v2.php/cloud/users/${userId}`, userId, userId, { key, value })
-}
 
 async function findOrCreateGroup(): Promise<string> {
 	const res = await talkApi('GET', '/v4/room', christine)
@@ -135,305 +116,10 @@ async function clearTalkFilter(page: Page): Promise<void> {
 
 // ── Provisioning ──────────────────────────────────────────────────────────────
 
-test.beforeAll(async ({ browser }) => {
-	await tryOcc('user:add --password-from-env --display-name="Christine" christine', { OC_PASS: 'christine' })
-	await uploadAvatar(`${AVATAR_DIR}/christine/avatar.png`, 'christine', 'christine')
-
-	await tryOcc('user:add --password-from-env --display-name="Amara Winterbourne" amara_w', { OC_PASS: 'amara_w' })
-	await uploadAvatar(`${AVATAR_DIR}/amara_w/avatar.png`, 'amara_w', 'amara_w')
-	await setProfileField('amara_w', 'organisation', 'Development Committee')
-	await setProfileField('amara_w', 'role', 'Event Coordinator')
-
-	await tryOcc('user:add --password-from-env --display-name="Lila Hawthorne" lila_h', { OC_PASS: 'lila_h' })
-	await uploadAvatar(`${AVATAR_DIR}/Lila_Hawthorne/avatar.png`, 'lila_h', 'lila_h')
-
-	await tryOcc('user:add --password-from-env --display-name="Malik Santiago" malik_s', { OC_PASS: 'malik_s' })
-	await uploadAvatar(`${AVATAR_DIR}/Malik_Santiago/avatar.png`, 'malik_s', 'malik_s')
-
-	await tryOcc('user:add --password-from-env --display-name="Kieran Patel" kieran_p', { OC_PASS: 'kieran_p' })
-	await uploadAvatar(`${AVATAR_DIR}/Kieran_Patel/avatar.png`, 'kieran_p', 'kieran_p')
-
-	await tryOcc('user:add --password-from-env --display-name="Seraphina Delgado" seraphina_d', { OC_PASS: 'seraphina_d' })
-	await uploadAvatar(`${AVATAR_DIR}/Seraphina_Delgado/avatar.png`, 'seraphina_d', 'seraphina_d')
-
-	await tryOcc('user:add --password-from-env --display-name="Adrian Lelievre" adrian_l', { OC_PASS: 'adrian_l' })
-	await uploadAvatar(`${AVATAR_DIR}/Adrian_Lelievre/avatar.png`, 'adrian_l', 'adrian_l')
-
-	await tryOcc('user:add --password-from-env --display-name="Charlotte McGraw" charlotte_m', { OC_PASS: 'charlotte_m' })
-	await uploadAvatar(`${AVATAR_DIR}/CharlotteMcGraw/avatar.png`, 'charlotte_m', 'charlotte_m')
-
-	await tryOcc('user:add --password-from-env --display-name="Orion Gallagher" orion_g', { OC_PASS: 'orion_g' })
-	await uploadAvatar(`${AVATAR_DIR}/Orion_Gallagher/avatar.png`, 'orion_g', 'orion_g')
-
-	await tryOcc('user:add --password-from-env --display-name="Analise Laviss" analise_l', { OC_PASS: 'analise_l' })
-	await uploadAvatar(`${AVATAR_DIR}/Analise_Laviss/avatar.png`, 'analise_l', 'analise_l')
-
-	// Create 1:1 DM and seed messages
-	const dmToken = await createTalkDm(christine, 'amara_w')
-
-	// Seed 1:1 DM messages — filter out system messages (Talk always adds "You created the conversation")
-	const chatRes = await talkApi('GET', `/v1/chat/${dmToken}?lookIntoFuture=0&limit=20`, christine)
-	const chatData = await chatRes.json()
-	const msgs: Array<{ systemMessage?: string }> = chatData?.ocs?.data ?? []
-	if (msgs.filter(m => !m.systemMessage).length === 0) {
-		await seedChatMessages(dmToken, [
-			{ text: 'Do you have a minute?', user: 'amara_w', password: 'amara_w' },
-			{ text: "Absolutely, what's up?", user: 'christine', password: 'christine' },
-			{ text: "The client got back to me — they're considering joining the fundraising next Thursday if we can secure a round table. Can you help?", user: 'amara_w', password: 'amara_w' },
-			{ text: "Great news! Have you already spoken to Marlene at the venue about adding a round table?", user: 'christine', password: 'christine' },
-			{ text: "Marlene said it'd be tricky this close to the date but she'll try. Might need an escalation.", user: 'amara_w', password: 'amara_w' },
-			{ text: "I'll contact them straight away to make sure we can accommodate the client. Thanks for looping me in!", user: 'christine', password: 'christine' },
-			{ text: "Wonderful, thank you so much! 🙌", user: 'amara_w', password: 'amara_w' },
-			{ text: "Happy to help! Let me know how it goes.", user: 'christine', password: 'christine' },
-			{ text: "Will do. Also — I've shared the Q2 proposal and meeting notes in this chat for your reference.", user: 'amara_w', password: 'amara_w' },
-		])
-		// Share the files inline so they appear right after the "Will do" message
-		await uploadFile(`${FIXTURES_DIR}/pdfs/Q2 Project Proposal.pdf`, 'Q2 Project Proposal.pdf', 'amara_w', 'amara_w')
-		await ocsRequest('POST', '/ocs/v2.php/apps/files_sharing/api/v1/shares', 'amara_w', 'amara_w', {
-			shareType: '10', path: '/Q2 Project Proposal.pdf', shareWith: dmToken,
-		})
-		await uploadFile(`${FIXTURES_DIR}/pdfs/Team Meeting Notes.pdf`, 'Team Meeting Notes.pdf', 'amara_w', 'amara_w')
-		await ocsRequest('POST', '/ocs/v2.php/apps/files_sharing/api/v1/shares', 'amara_w', 'amara_w', {
-			shareType: '10', path: '/Team Meeting Notes.pdf', shareWith: dmToken,
-		})
-		// Christine's reply after seeing the shared files
-		await seedChatMessages(dmToken, [
-			{ text: "Perfect, I'll review them before our call.", user: 'christine', password: 'christine' },
-		])
-		// Add emoji reactions to a few DM messages
-		const allMsgsRes = await talkApi('GET', `/v1/chat/${dmToken}?lookIntoFuture=0&limit=30`, christine)
-		const allMsgsData = await allMsgsRes.json()
-		const allMsgs: Array<{ id: number; message: string }> = allMsgsData?.ocs?.data ?? []
-		for (const msg of allMsgs) {
-			if (msg.message.includes('Great news')) {
-				await reactToMessage(dmToken, msg.id, '👍', 'amara_w', 'amara_w').catch(() => {})
-				await reactToMessage(dmToken, msg.id, '❤️', 'lila_h', 'lila_h').catch(() => {})
-			}
-			if (msg.message.includes("Happy to help")) {
-				await reactToMessage(dmToken, msg.id, '🙏', 'amara_w', 'amara_w').catch(() => {})
-			}
-		}
-	}
-
-	// Seed charlotte_m ↔ christine DM (only if empty)
-	const charlotteDmToken = await createTalkDm(christine, 'charlotte_m')
-	const charlotteChatRes = await talkApi('GET', `/v1/chat/${charlotteDmToken}?lookIntoFuture=0&limit=20`, christine)
-	const charlotteChatData = await charlotteChatRes.json()
-	const charlotteMsgs: Array<{ systemMessage?: string }> = charlotteChatData?.ocs?.data ?? []
-	if (charlotteMsgs.filter(m => !m.systemMessage).length === 0) {
-		await seedChatMessages(charlotteDmToken, [
-			{ text: "Hi Christine — the venue is asking for the £2,500 deposit by end of week. Shall I go ahead and authorise it?", user: 'charlotte_m', password: 'charlotte_m' },
-			{ text: "Yes, please go ahead — I've already confirmed it with finance.", user: 'christine', password: 'christine' },
-			{ text: "Perfect. I'll send the invoice to accounts once it's done.", user: 'charlotte_m', password: 'charlotte_m' },
-		])
-	}
-
-	// Seed orion_g ↔ christine DM (only if empty)
-	const orionDmToken = await createTalkDm(christine, 'orion_g')
-	const orionChatRes = await talkApi('GET', `/v1/chat/${orionDmToken}?lookIntoFuture=0&limit=20`, christine)
-	const orionChatData = await orionChatRes.json()
-	const orionMsgs: Array<{ systemMessage?: string }> = orionChatData?.ocs?.data ?? []
-	if (orionMsgs.filter(m => !m.systemMessage).length === 0) {
-		await seedChatMessages(orionDmToken, [
-			{ text: "Just saw your post about the gala — looks amazing! 🎉", user: 'orion_g', password: 'orion_g' },
-			{ text: "Thanks Orion! It's shaping up really well. Tickets go on sale next month.", user: 'christine', password: 'christine' },
-			{ text: "@christine are you free Thursday for a quick call on ticketing?", user: 'orion_g', password: 'orion_g' },
-		])
-	}
-
-	// Seed adrian_l ↔ christine DM (only if empty)
-	const adrianDmToken = await createTalkDm(christine, 'adrian_l')
-	const adrianChatRes = await talkApi('GET', `/v1/chat/${adrianDmToken}?lookIntoFuture=0&limit=20`, christine)
-	const adrianChatData = await adrianChatRes.json()
-	const adrianMsgs: Array<{ systemMessage?: string }> = adrianChatData?.ocs?.data ?? []
-	if (adrianMsgs.filter(m => !m.systemMessage).length === 0) {
-		await seedChatMessages(adrianDmToken, [
-			{ text: "Christine, just confirming — are the decorators booked for the 1st?", user: 'adrian_l', password: 'adrian_l' },
-		])
-	}
-
-	// Pre-create the "Event planning" group so participant membership is synced
-	// before the tests start — avoids a race on the participants tab.
-	const eventToken = await findOrCreateGroup()
-
-	// Set an emoji icon on "Event planning"
-	await talkApi('POST', `/v1/room/${eventToken}/avatar/emoji`, christine, { emoji: '🎪', color: '0082c9' }).catch(() => {})
-
-	// Seed messages in the group (only if empty beyond the initial 3).
-	// Exclude system messages (e.g. "You set the conversation picture") from the count —
-	// they are not user messages and must not prevent seeding on a fresh container.
-	const grpChatRes = await talkApi('GET', `/v1/chat/${eventToken}?lookIntoFuture=0&limit=20`, christine)
-	const grpChatData = await grpChatRes.json()
-	const grpMsgs: Array<{ id: number; message: string; systemMessage?: string }> = grpChatData?.ocs?.data ?? []
-	if (grpMsgs.filter(m => !m.systemMessage && m.message && !m.message.startsWith('{')).length <= 3) {
-		await seedChatMessages(eventToken, [
-			{ text: "Quick update: Riverside Pavilion confirmed for 1 September! 🎉", user: 'christine', password: 'christine' },
-			{ text: "Amazing! I've already started the sponsor outreach — three leads so far.", user: 'amara_w', password: 'amara_w' },
-			{ text: "That's great progress. Malik, can you handle the AV quote this week?", user: 'christine', password: 'christine' },
-			{ text: "On it — I'll have something to you by Thursday.", user: 'malik_s', password: 'malik_s' },
-			{ text: "Thanks everyone. Reminder: catering walkthrough is Friday at 10am.", user: 'christine', password: 'christine' },
-			{ text: "I'll be there!", user: 'amara_w', password: 'amara_w' },
-			{ text: "Me too 👍", user: 'malik_s', password: 'malik_s' },
-		])
-		// React to the venue confirmation message
-		const freshGrpRes = await talkApi('GET', `/v1/chat/${eventToken}?lookIntoFuture=0&limit=20`, christine)
-		const freshGrpData = await freshGrpRes.json()
-		const freshGrpMsgs: Array<{ id: number; message: string }> = freshGrpData?.ocs?.data ?? []
-		for (const msg of freshGrpMsgs) {
-			if (msg.message.includes('Riverside Pavilion confirmed')) {
-				await reactToMessage(eventToken, msg.id, '🎉', 'amara_w', 'amara_w').catch(() => {})
-				await reactToMessage(eventToken, msg.id, '🎉', 'malik_s', 'malik_s').catch(() => {})
-				await reactToMessage(eventToken, msg.id, '👏', 'lila_h', 'lila_h').catch(() => {})
-			}
-		}
-	}
-
-	// Additional rooms for a realistic conversation list
-	const allRoomsRes = await talkApi('GET', '/v4/room', christine)
-	const allRoomsData = await allRoomsRes.json()
-	const existingNames: string[] = (allRoomsData?.ocs?.data ?? []).map((r: { displayName: string }) => r.displayName)
-
-	if (!existingNames.includes('Design Team')) {
-		const designToken = await createGroup('Design Team', christine)
-		await talkApi('POST', `/v1/room/${designToken}/avatar/emoji`, christine, { emoji: '🎨', color: 'a3174b' }).catch(() => {})
-		await addParticipant(designToken, 'lila_h', christine)
-		await addParticipant(designToken, 'kieran_p', christine)
-		await seedChatMessages(designToken, [
-			{ text: "Hey team! Sharing the updated brand kit for the gala — new colour palette and logo lockups.", user: 'christine', password: 'christine' },
-			{ text: "Love the new palette! The deep teal works really well for the event signage.", user: 'lila_h', password: 'lila_h' },
-			{ text: "Agreed. Kieran, can you update the social templates once you have a moment?", user: 'christine', password: 'christine' },
-			{ text: "Sure, I'll have the Instagram and LinkedIn versions ready by end of day.", user: 'kieran_p', password: 'kieran_p' },
-		])
-	}
-
-	if (!existingNames.includes('Project Updates')) {
-		const updatesToken = await createGroup('Project Updates', christine)
-		// Open conversation (roomType 3) would require a different create path; keep as group but add more members
-		await talkApi('POST', `/v1/room/${updatesToken}/avatar/emoji`, christine, { emoji: '📢', color: 'e9a227' }).catch(() => {})
-		await addParticipant(updatesToken, 'amara_w', christine)
-		await addParticipant(updatesToken, 'malik_s', christine)
-		await addParticipant(updatesToken, 'lila_h', christine)
-		await addParticipant(updatesToken, 'seraphina_d', christine)
-		await seedChatMessages(updatesToken, [
-			{ text: "📅 Gala planning is on track. Key milestone: venue confirmed for 1 Sep.", user: 'christine', password: 'christine' },
-			{ text: "Ticket sales open 1 July — please share the link with your networks!", user: 'christine', password: 'christine' },
-			{ text: "Will do! Already have a few colleagues who are interested.", user: 'seraphina_d', password: 'seraphina_d' },
-			{ text: "Sponsor pack v2 is out — thanks Amara for the quick turnaround.", user: 'christine', password: 'christine' },
-			{ text: "Happy to help. Three warm leads already replied!", user: 'amara_w', password: 'amara_w' },
-		])
-	}
-
-	if (!existingNames.includes('Board Updates')) {
-		const boardToken = await createGroup('Board Updates', christine)
-		await talkApi('POST', `/v1/room/${boardToken}/avatar/emoji`, christine, { emoji: '📋', color: '003b6f' }).catch(() => {})
-		await addParticipant(boardToken, 'analise_l', christine)
-		await addParticipant(boardToken, 'orion_g', christine)
-		await addParticipant(boardToken, 'charlotte_m', christine)
-		await seedChatMessages(boardToken, [
-			{ text: "Minutes from the last board meeting have been uploaded to the shared folder.", user: 'christine', password: 'christine' },
-			{ text: "Charlotte, can you confirm the financials are signed off before the next session?", user: 'charlotte_m', password: 'charlotte_m' },
-			{ text: "Reviewed and signed off ✅", user: 'analise_l', password: 'analise_l' },
-		])
-	}
-
-	if (!existingNames.includes('Volunteer Coordination')) {
-		const volunteerToken = await createGroup('Volunteer Coordination', christine)
-		await talkApi('POST', `/v1/room/${volunteerToken}/avatar/emoji`, christine, { emoji: '🤝', color: '00a75c' }).catch(() => {})
-		await addParticipant(volunteerToken, 'analise_l', christine)
-		await addParticipant(volunteerToken, 'seraphina_d', christine)
-		await seedChatMessages(volunteerToken, [
-			{ text: "34 volunteers confirmed for the event day — great response!", user: 'seraphina_d', password: 'seraphina_d' },
-			{ text: "@christine we still need 6 more for the morning setup shift.", user: 'analise_l', password: 'analise_l' },
-		])
-	}
-
-	const ctx = await browser.newContext()
-	const pg = await ctx.newPage()
-	await login(pg.request, christine)
-	authCookies = await ctx.cookies()
-
-	// Navigate to Talk so the full client initialises — this is required for the
-	// note-to-self room to accept API chat posts (API-only seeding silently fails
-	// until the browser has visited /apps/spreed at least once).
-	await pg.goto('/apps/spreed')
-	await pg.locator('[aria-label="Conversation list"]').waitFor({ state: 'visible', timeout: 20000 }).catch(() => {})
-
-	// Seed note-to-self task list (must be after browser nav — Talk requires it)
-	const noteRes = await talkApi('GET', '/v1/note-to-self', christine)
-	const noteData = await noteRes.json()
-	const noteToken = noteData?.ocs?.data?.token as string | undefined
-	if (noteToken) {
-		const noteChatRes = await talkApi('GET', `/v1/chat/${noteToken}?lookIntoFuture=0&limit=50`, christine)
-		const noteChatData = await noteChatRes.json()
-		const noteMsgsList: Array<{ message?: string; systemMessage?: string }> = noteChatData?.ocs?.data ?? []
-		if (!noteMsgsList.some(m => m.message?.includes('Define Project Scope'))) {
-			await seedChatMessages(noteToken, [{
-				text: '- [x] Define Project Scope and Objectives\n- [x] Develop a Project Plan\n- [ ] Coordinate Team Activities\n- [ ] Review and finalize budget\n- [ ] Schedule kickoff meeting',
-				user: 'christine',
-				password: 'christine',
-			}])
-		}
-	}
-
-	// Seed reminders for the Talk dashboard panel — one on the Amara DM and one on the group
-	const reminderDmToken = await createTalkDm(christine, 'amara_w')
-	const reminderDmRes = await talkApi('GET', `/v1/chat/${reminderDmToken}?lookIntoFuture=0&limit=20`, christine)
-	const reminderDmData = await reminderDmRes.json()
-	const reminderDmMsgs: Array<{ id: number; message?: string; systemMessage?: string }> = reminderDmData?.ocs?.data ?? []
-	const reminderDmMsg = reminderDmMsgs.find(m => !m.systemMessage && m.message?.includes('Q2 proposal'))
-	if (reminderDmMsg) {
-		const inTwoDays = Math.floor(Date.now() / 1000) + 2 * 24 * 3600
-		await talkApi('POST', `/v1/chat/${reminderDmToken}/${reminderDmMsg.id}/reminder`, christine, { timestamp: String(inTwoDays) }).catch(() => {})
-	}
-	if (groupToken) {
-		const reminderGrpRes = await talkApi('GET', `/v1/chat/${groupToken}?lookIntoFuture=0&limit=20`, christine)
-		const reminderGrpData = await reminderGrpRes.json()
-		const reminderGrpMsgs: Array<{ id: number; message?: string; systemMessage?: string }> = reminderGrpData?.ocs?.data ?? []
-		const reminderGrpMsg = reminderGrpMsgs.find(m => !m.systemMessage && m.message?.includes('catering walkthrough'))
-		if (reminderGrpMsg) {
-			const tomorrow = Math.floor(Date.now() / 1000) + 24 * 3600
-			await talkApi('POST', `/v1/chat/${groupToken}/${reminderGrpMsg.id}/reminder`, christine, { timestamp: String(tomorrow) }).catch(() => {})
-		}
-	}
-
-	// Seed an upcoming calendar event linked to the Event planning Talk room so the
-	// Talk dashboard "Upcoming meetings" panel has content. Fixed UID means reruns
-	// overwrite rather than duplicate.
-	const fmtDt = (d: Date) =>
-		d.getUTCFullYear().toString() +
-		String(d.getUTCMonth() + 1).padStart(2, '0') +
-		String(d.getUTCDate()).padStart(2, '0') + 'T' +
-		String(d.getUTCHours()).padStart(2, '0') +
-		String(d.getUTCMinutes()).padStart(2, '0') +
-		String(d.getUTCSeconds()).padStart(2, '0') + 'Z'
-	const meetStart = new Date(Date.now() + 24 * 3600 * 1000)
-	meetStart.setUTCHours(10, 0, 0, 0)
-	const meetEnd = new Date(meetStart.getTime() + 3600000)
-	const ics = [
-		'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//NC Docs//Seed//EN',
-		'BEGIN:VEVENT',
-		'UID:event-planning-catchup-docs-seed',
-		`DTSTART:${fmtDt(meetStart)}`,
-		`DTEND:${fmtDt(meetEnd)}`,
-		'SUMMARY:Event planning catchup',
-		`LOCATION:http://localhost:8093/call/${eventToken}`,
-		'END:VEVENT', 'END:VCALENDAR',
-	].join('\r\n')
-	await fetch('http://localhost:8093/remote.php/dav/calendars/christine/personal/event-planning-catchup-docs-seed.ics', {
-		method: 'PUT',
-		headers: {
-			Authorization: 'Basic ' + Buffer.from('christine:christine').toString('base64'),
-			'Content-Type': 'text/calendar; charset=utf-8',
-		},
-		body: ics,
-	}).catch(() => {})
-
-	await pg.close()
-	await ctx.close()
-})
-
-test.beforeEach(async ({ page }) => {
-	await page.context().addCookies(authCookies)
+test.beforeAll(async () => {
+	// All seeding is done in global-setup. Fetch the group token so per-test
+	// helpers that need it (e.g. openGroupConversation) have it available.
+	await findOrCreateGroup()
 })
 
 // ── Screenshots ───────────────────────────────────────────────────────────────

@@ -27,6 +27,7 @@ export default defineConfig({
 		baseURL: BASE_URL,
 		viewport: { width: 1440, height: 900 },
 		userAgent: USER_AGENT,
+		storageState: './playwright/.auth/state.json',
 		video: 'off',
 		screenshot: 'off',
 	},
