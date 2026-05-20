@@ -8,3 +8,4 @@ Managing your files
    deleted_file_management
    version_control
    quota
+   tagging
