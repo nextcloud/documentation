@@ -1927,30 +1927,30 @@ You can create a new group with the ``group:add`` command. The syntax is::
 
 The ``gid`` corresponds to the group name you entering after clicking
 "Add group" on the Users page in your Nextcloud Web UI. This example adds new
-group "beer"::
+group "milliways"::
 
- sudo -E -u www-data php occ group:add beer
+ sudo -E -u www-data php occ group:add milliways
 
-Add an existing user to the specified group with the ``group:adduser``
+Add one or more existing users to the specified group with the ``group:adduser``
 command. The syntax is::
 
- group:adduser [gid] [uid]
+ sudo -E -u www-data php occ group:adduser <gid> <uid1> [uid2 ... uidN]
 
-This example adds the user "denis" to the existing group "beer"::
+This example adds the users "denis", "dora" and "daisy" to the existing group "milliways"::
 
- sudo -E -u www-data php occ group:adduser beer denis
+ sudo -E -u www-data php occ group:adduser milliways denis dora daisy
 
-You can remove user from the group with the ``group:removeuser`` command.
-This example removes the existing user "denis" from the existing
-group "beer"::
+You can remove one or more users from the group with the ``group:removeuser`` command.
+This example removes the existing users "denis", "dora" and "daisy" from the existing
+group "milliways"::
 
- sudo -E -u www-data php occ group:removeuser beer denis
+ sudo -E -u www-data php occ group:removeuser milliways denis dora daisy
 
 Remove a group with the ``group:delete`` command. Removing a group doesn't
 remove users in a group. You cannot remove the "admin" group. This example
-removes the existing group "beer"::
+removes the existing group "milliways"::
 
- sudo -E -u www-data php occ group:delete beer
+ sudo -E -u www-data php occ group:delete milliways
 
 List configured groups via the ``group:list`` command. The syntax is::
 
