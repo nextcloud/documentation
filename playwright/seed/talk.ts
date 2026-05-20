@@ -34,31 +34,37 @@ async function createDm(target: string): Promise<string> {
 }
 
 /**
- * Spread the creation_timestamp of all user messages in a room across a time
- * range. Uses PHP PDO to write directly to the SQLite database, which is the
- * only reliable way to backdate Talk messages (the API offers no timestamp param).
- * SQL is base64-encoded to avoid any shell-escaping issues.
+ * Backdate a room's last_activity in oc_talk_rooms to endTs so the conversation
+ * list shows a realistic relative timestamp (e.g. "3 days ago").
+ *
+ * The Talk API has no parameter for this, so we write directly to SQLite via
+ * PHP PDO. SQL is base64-encoded to avoid shell-escaping issues.
+ *
+ * Two caveats handled here:
+ * 1. oc_talk_rooms.last_activity is a DATETIME column ("YYYY-MM-DD HH:MM:SS").
+ *    Writing a raw Unix integer causes Talk's PHP ORM to throw when parsing it,
+ *    returning HTTP 500 for the rooms list. Use SQLite datetime() to format correctly.
+ * 2. Talk's getRooms API filters rooms by modifiedSince (last poll timestamp).
+ *    Backdating last_activity makes rooms fail this filter. Setting Christine's
+ *    last_attendee_activity to 2 h in the future ensures the attendee-activity
+ *    fallback check always passes: room included when EITHER last_activity OR
+ *    lastAttendeeActivity >= modifiedSince.
  */
-async function spreadTimestamps(token: string, startTs: number, endTs: number): Promise<void> {
-	const res = await talkCall('GET', `/v1/chat/${token}?lookIntoFuture=0&limit=200`, 'christine', 'christine')
-	const data = await res.json()
-	const messages: Array<{ id: number; systemMessage?: string }> = data?.ocs?.data ?? []
-	const userMsgs = messages
-		.filter(m => !m.systemMessage)
-		.sort((a, b) => a.id - b.id)
-
-	if (userMsgs.length === 0) return
-
-	const interval = userMsgs.length > 1
-		? Math.floor((endTs - startTs) / (userMsgs.length - 1))
-		: 0
-	const cases = userMsgs.map((m, i) => `WHEN ${m.id} THEN ${startTs + i * interval}`).join(' ')
-	const ids = userMsgs.map(m => m.id).join(',')
-	const sql = `UPDATE oc_talk_chat_messages SET creation_timestamp = CASE id ${cases} END WHERE id IN (${ids})`
-
-	const b64 = Buffer.from(sql).toString('base64')
-	const php = `$db=new PDO('sqlite:/var/www/html/data/owncloud.db');$db->exec(base64_decode('${b64}'));`
-	await runExec(['php', '-r', php]).catch(() => {})
+async function spreadTimestamps(token: string, _startTs: number, endTs: number): Promise<void> {
+	// Seed time is before tests run; add 2 h so last_attendee_activity stays >
+	// modifiedSince for any test execution within 2 hours of seeding.
+	const futureTs = Math.floor(Date.now() / 1000) + 7200
+	// Backdate room timestamp for conversation-list display.
+	// oc_talk_rooms.last_activity is a DATETIME column (stored as "YYYY-MM-DD HH:MM:SS").
+	// SQLite datetime() converts the Unix timestamp to the correct string format.
+	const sql1 = `UPDATE oc_talk_rooms SET last_activity = datetime(${endTs}, 'unixepoch') WHERE token = '${token}'`
+	// Keep Christine's attendee record fresh so modifiedSince polling still returns this room
+	const sql2 = `UPDATE oc_talk_attendees SET last_attendee_activity = ${futureTs} WHERE room_id = (SELECT id FROM oc_talk_rooms WHERE token = '${token}') AND actor_id = 'christine'`
+	const b64_1 = Buffer.from(sql1).toString('base64')
+	const b64_2 = Buffer.from(sql2).toString('base64')
+	const php = `try{$db=new PDO('sqlite:/var/www/html/data/owncloud.db');$db->exec(base64_decode('${b64_1}'));$db->exec(base64_decode('${b64_2}'));echo"ok";}catch(Exception $e){echo"PDO_ERR:".$e->getMessage();}`
+	const out = await runExec(['php', '-r', php]).catch((e: Error) => `EXEC_ERR:${e.message}`)
+	if (!String(out).startsWith('ok')) console.warn(`[spreadTimestamps] ${token}: ${String(out)}`)
 }
 
 // ── Seed functions ────────────────────────────────────────────────────────────
