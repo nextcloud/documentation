@@ -74,6 +74,40 @@ installation.
 .. You may also move your data directory on an existing
 .. installation; see :doc:``
 
+.. _harden_config_dir:
+
+Place config directory outside of the web root
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can move the ``config/`` directory outside the web root using the ``NEXTCLOUD_CONFIG_DIR``
+environment variable. This ensures ``config.php`` — which contains database credentials,
+secret keys, and other sensitive values — is not accessible via HTTP even in the event of a
+web server misconfiguration.
+
+Set the variable in your web server virtual host configuration:
+
+.. code-block:: apache
+
+   # Apache
+   SetEnv NEXTCLOUD_CONFIG_DIR /etc/nextcloud
+
+.. code-block:: nginx
+
+   # nginx — set via fastcgi_param or the PHP-FPM pool's env[] setting
+   fastcgi_param NEXTCLOUD_CONFIG_DIR /etc/nextcloud;
+
+Also set it for CLI work (``occ``, cron):
+
+.. code-block:: bash
+
+   export NEXTCLOUD_CONFIG_DIR=/etc/nextcloud
+
+.. note:: The variable must be set for **both** the web server process and CLI invocations.
+   Verify with ``occ config:list system`` after changing it.
+
+.. seealso:: :doc:`../configuration_server/config_sample_php_parameters` for full details on
+   ``NEXTCLOUD_CONFIG_DIR`` and other configuration loading behaviour.
+
 Disable preview image generation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
