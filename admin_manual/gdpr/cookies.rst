@@ -1,9 +1,10 @@
+.. _cookies:
+
 =======
 Cookies
 =======
 
 .. sectionauthor:: Björn Schießle <bjoern@nextcloud.com>
-.. _cookies:
 
 Nextcloud only stores cookies needed for Nextcloud to work properly. All cookies comes from your Nextcloud server directly, no 3rd-party cookies will be sent to your system. Regarding GDPR, `only data which contain personal data are relevant`_.
 
