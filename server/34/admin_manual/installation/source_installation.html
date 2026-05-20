@@ -403,8 +403,17 @@ must be writable by the HTTP user. To enable <code class="docutils literal notra
 <span class="s1">&#39;htaccess.RewriteBase&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
-<p>if it isn’t installed in a subfolder. Finally run this occ-command to update
-your .htaccess file:</p>
+<p>if it isn’t installed in a subfolder.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">htaccess.RewriteBase</span></code> must match the path relative to Apache’s DocumentRoot
+where Nextcloud is served on the backend, not the public URL prefix. In a direct
+Apache setup these are identical. Behind a reverse proxy that strips the URL
+prefix — for example <code class="docutils literal notranslate"><span class="pre">https://domain.com/nextcloud/</span></code> forwarded to
+<code class="docutils literal notranslate"><span class="pre">http://localhost:8080/</span></code> — the correct value is <code class="docutils literal notranslate"><span class="pre">/</span></code> even though the public
+URL contains <code class="docutils literal notranslate"><span class="pre">/nextcloud</span></code>.</p>
+</div>
+<p>Finally run this occ-command to update your <code class="docutils literal notranslate"><span class="pre">.htaccess</span></code> file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">update</span><span class="p">:</span><span class="n">htaccess</span>
 </pre></div>
 </div>
