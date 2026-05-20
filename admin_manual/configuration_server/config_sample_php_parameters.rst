@@ -149,6 +149,30 @@ whatever parameters you specify in it will be merged with your ``config/config.p
    named ``(ANYTHING).config.php``, it will be loaded as part of your live configuration and override
    your ``config/config.php`` values!
 
+Environment Variables
+---------------------
+
+The ``NEXTCLOUD_CONFIG_DIR`` environment variable overrides the default config directory path.
+When set, Nextcloud loads ``config.php`` (and any ``*.config.php`` files) from that path instead
+of the ``config/`` directory inside the webroot.
+
+.. code-block:: bash
+
+   NEXTCLOUD_CONFIG_DIR=/etc/nextcloud php /var/www/nextcloud/cron.php
+
+This is useful for:
+
+- Moving ``config.php`` outside the webroot as a hardening measure — credentials are not
+  accessible via HTTP even if directory listing is enabled or misconfigured.
+- Running multiple Nextcloud instances that share a single codebase but require separate
+  config directories.
+
+.. note:: ``NEXTCLOUD_CONFIG_DIR`` must be set for **both** the web server process and any CLI
+   invocations (``occ``, cron jobs). Set it in your web server virtual host configuration and
+   in the shell environment used for CLI work.
+
+.. seealso:: :ref:`harden_config_dir` in the hardening guide for a deployment recommendation.
+
 Examples
 --------
 
