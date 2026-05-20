@@ -417,6 +417,19 @@ your HTTP user:</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">www-data</span></code> is the default web server user on Debian/Ubuntu systems.
+On RHEL/CentOS/Fedora use <code class="docutils literal notranslate"><span class="pre">apache</span></code>. The key requirement is that the web
+server process user has <strong>read and write access</strong> to all Nextcloud directories
+— ownership is not strictly necessary. In environments where changing ownership
+is not possible (shared hosting, Docker bind-mounts, etc.), it is sufficient to
+add the web server user to the group that owns the directories and ensure the
+directories are group-writable, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">G</span> <span class="n">vboxsf</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Admins of SELinux-enabled distributions may need to write new SELinux
 rules to complete their Nextcloud installation; see
 <a class="reference internal" href="#selinux-tips-label"><span class="std std-ref">SELinux configuration tips</span></a>.</p>
