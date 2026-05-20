@@ -222,6 +222,12 @@ test.beforeAll(async ({ browser }) => {
 		path: '/Venue Scouting Notes.md', shareType: '0', shareWith: 'christine',
 	})
 
+	// Remove NC's auto-generated welcome file so it doesn't clutter the screenshots
+	await fetch(`http://localhost:8093/remote.php/dav/files/christine/welcome.txt`, {
+		method: 'DELETE',
+		headers: { Authorization: 'Basic ' + Buffer.from('christine:christine').toString('base64') },
+	})
+
 	// Set Christine's user status so profile screenshots show it
 	await ocsRequest('PUT', '/ocs/v2.php/apps/user_status/api/v1/user_status/status', 'christine', 'christine', {
 		statusType: 'online',
