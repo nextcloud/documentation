@@ -35,7 +35,8 @@ Shares
   Files shared with you, by you, or via a public link — all in one view.
 
 Tags
-  Browse files by system tag.
+  Browse files by system tag. See :doc:`tagging` for details on assigning
+  tags and filtering your files.
 
 Deleted files
   Files you have deleted that are still recoverable from the trash bin.
