@@ -149,26 +149,22 @@ Process manager modes
 
 The ``pm`` directive controls how PHP-FPM manages its worker processes:
 
-.. list-table::
-   :header-rows: 1
-   :widths: 15 85
+``dynamic``
+  Keeps between ``pm.min_spare_servers`` and ``pm.max_spare_servers`` idle workers alive,
+  up to a ceiling of ``pm.max_children``. Good default for most Nextcloud installations:
+  balances RAM efficiency with burst capacity. Set ``pm.min_spare_servers`` high enough
+  that sync-client poll bursts do not stall waiting for new processes to spawn.
 
-   * - Mode
-     - Behaviour
-   * - ``dynamic``
-     - Keeps between ``pm.min_spare_servers`` and ``pm.max_spare_servers`` idle workers alive,
-       up to a ceiling of ``pm.max_children``. Good default for most Nextcloud installations:
-       balances RAM efficiency with burst capacity. Set ``pm.min_spare_servers`` high enough
-       that sync-client poll bursts do not stall waiting for new processes to spawn.
-   * - ``static``
-     - Always keeps exactly ``pm.max_children`` processes running. Highest memory use,
-       lowest latency. Use on dedicated servers with predictable load. Always set
-       ``pm.max_requests`` to recycle workers and prevent memory leaks.
-   * - ``ondemand``
-     - Spawns a worker only when a request arrives; kills idle workers after
-       ``pm.process_idle_timeout`` (default ``10s``). Lowest memory use but adds
-       cold-start latency on every burst. Not recommended for Nextcloud: desktop and
-       mobile clients poll every 30 seconds, repeatedly triggering cold starts.
+``static``
+  Always keeps exactly ``pm.max_children`` processes running. Highest memory use,
+  lowest latency. Use on dedicated servers with predictable load. Always set
+  ``pm.max_requests`` to recycle workers and prevent memory leaks.
+
+``ondemand``
+  Spawns a worker only when a request arrives; kills idle workers after
+  ``pm.process_idle_timeout`` (default ``10s``). Lowest memory use but adds
+  cold-start latency on every burst. Not recommended for Nextcloud: desktop and
+  mobile clients poll every 30 seconds, repeatedly triggering cold starts.
 
 Key parameters
 ^^^^^^^^^^^^^^
