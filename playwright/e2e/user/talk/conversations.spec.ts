@@ -396,6 +396,38 @@ test.beforeAll(async ({ browser }) => {
 		}
 	}
 
+	// Seed an upcoming calendar event linked to the Event planning Talk room so the
+	// Talk dashboard "Upcoming meetings" panel has content. Fixed UID means reruns
+	// overwrite rather than duplicate.
+	const fmtDt = (d: Date) =>
+		d.getUTCFullYear().toString() +
+		String(d.getUTCMonth() + 1).padStart(2, '0') +
+		String(d.getUTCDate()).padStart(2, '0') + 'T' +
+		String(d.getUTCHours()).padStart(2, '0') +
+		String(d.getUTCMinutes()).padStart(2, '0') +
+		String(d.getUTCSeconds()).padStart(2, '0') + 'Z'
+	const meetStart = new Date(Date.now() + 24 * 3600 * 1000)
+	meetStart.setUTCHours(10, 0, 0, 0)
+	const meetEnd = new Date(meetStart.getTime() + 3600000)
+	const ics = [
+		'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//NC Docs//Seed//EN',
+		'BEGIN:VEVENT',
+		'UID:event-planning-catchup-docs-seed',
+		`DTSTART:${fmtDt(meetStart)}`,
+		`DTEND:${fmtDt(meetEnd)}`,
+		'SUMMARY:Event planning catchup',
+		`LOCATION:http://localhost:8093/call/${eventToken}`,
+		'END:VEVENT', 'END:VCALENDAR',
+	].join('\r\n')
+	await fetch('http://localhost:8093/remote.php/dav/calendars/christine/personal/event-planning-catchup-docs-seed.ics', {
+		method: 'PUT',
+		headers: {
+			Authorization: 'Basic ' + Buffer.from('christine:christine').toString('base64'),
+			'Content-Type': 'text/calendar; charset=utf-8',
+		},
+		body: ics,
+	}).catch(() => {})
+
 	await pg.close()
 	await ctx.close()
 })
@@ -405,6 +437,65 @@ test.beforeEach(async ({ page }) => {
 })
 
 // ── Screenshots ───────────────────────────────────────────────────────────────
+
+test('Schedule a meeting', async ({ page }) => {
+	// Open the Event planning conversation first to establish the chat context.
+	const token = await getOrCreateGroupToken()
+	await page.goto('/apps/spreed')
+	await page.locator('[aria-label="Conversation list"]').waitFor({ state: 'visible', timeout: 15000 })
+	await openConversation(page, 'Event planning')
+
+	// Navigate to the Calendar app to create the meeting event.
+	await page.goto('/apps/calendar')
+	await page.locator('.fc.fc-media-screen').waitFor({ state: 'visible', timeout: 15000 })
+	await page.waitForTimeout(500)
+
+	// Click the "New event" button to open the event editor.
+	const newEventBtn = page.locator('button[aria-label="Create new event"], button[aria-label="New event"], button:has-text("Create new event"), button:has-text("New event")').first()
+	await newEventBtn.waitFor({ state: 'visible', timeout: 8000 })
+	await newEventBtn.click()
+
+	// Wait for the event creation dialog to open — Calendar uses a custom popover
+	// whose backdrop is a <dialog> element while the form lives in a sibling element.
+	// Anchor on the title input which is reliably present when the form is ready.
+	const titleInput = page.getByPlaceholder('Title')
+	await titleInput.waitFor({ state: 'visible', timeout: 8000 })
+	await page.waitForTimeout(300)
+
+	// Fill in the event title.
+	await titleInput.click()
+	await titleInput.fill('Event planning catchup')
+
+	// Add a Talk call via the calendar integration.
+	// Clicking "Add Talk conversation" opens a "Select a Talk Room" room picker.
+	const talkBtn = page.getByRole('button', { name: 'Add Talk conversation' })
+	if (await talkBtn.isVisible({ timeout: 3000 }).catch(() => false)) {
+		await talkBtn.click()
+		const roomPicker = page.getByRole('dialog', { name: 'Select a Talk Room' })
+		await roomPicker.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {})
+		// Screenshot shows the room picker with Talk conversations listed.
+		await docScreenshot(page, 'user/talk/schedule-meeting')
+		// Dismiss the picker. Escape propagates to the parent event editor and
+		// triggers a "Discard changes?" dialog — click Cancel to keep the form.
+		await page.keyboard.press('Escape')
+		const discardDialog = page.getByRole('dialog', { name: 'Discard changes?' })
+		if (await discardDialog.isVisible({ timeout: 2000 }).catch(() => false)) {
+			await discardDialog.getByRole('button', { name: 'Cancel' }).click()
+			await discardDialog.waitFor({ state: 'hidden', timeout: 3000 }).catch(() => {})
+		}
+		await roomPicker.waitFor({ state: 'hidden', timeout: 3000 }).catch(() => {})
+		await page.waitForTimeout(300)
+	} else {
+		await docScreenshot(page, 'user/talk/schedule-meeting')
+	}
+
+	// Save the event.
+	const saveBtn = page.getByRole('button', { name: 'Save' })
+	if (await saveBtn.isVisible({ timeout: 3000 }).catch(() => false)) {
+		await saveBtn.click()
+		await page.waitForTimeout(1000)
+	}
+})
 
 test('Talk dashboard', async ({ page }) => {
 	await clearTalkFilter(page)
