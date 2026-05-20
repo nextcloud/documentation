@@ -102,63 +102,26 @@ Placeholders and variables
 
 When a string contains a variable (file name, user name, count), keep the surrounding text short and natural.
 Make sure the string still makes sense in all languages — word order differs across languages, so avoid splitting a sentence across two separate strings.
+For implementation details and code examples, see :ref:`improving-translations` in the translations reference.
 
-.. code-block:: php
-
-   // Good — full sentence in one string, variable embedded
-   $l->t('Shared with %s', [$userName]);
-
-   // Avoid — concatenation breaks translation
-   $l->t('Shared with ') . $userName;
+.. _translator-comments:
 
 Translator comments
 -------------------
 
-When a string is ambiguous or contains placeholders, add a ``TRANSLATORS`` comment on the line immediately before the translatable string.
+When a string is ambiguous or contains placeholders, add a ``TRANSLATORS`` comment immediately before the translatable call.
 The comment is extracted by the translation tooling and shown to translators in Transifex.
 
-**When to add one:**
+Add one when:
 
 - The string is ambiguous out of context (e.g. a single word with multiple meanings).
-- The string contains a placeholder — explain what the placeholder will be replaced with and give an example value where helpful.
+- The string contains a placeholder — explain what it will be replaced with and give an example value.
 - The string describes a UI element or workflow that is not obvious from the text alone.
 
-**PHP** — place the comment on the line before the ``->t()`` call:
+Keep comments factual and brief. State what the placeholder contains and where the string appears.
+Do not repeat the string itself.
 
-.. code-block:: php
-
-   // TRANSLATORS The placeholder refers to the software product name, e.g. "Add to your Nextcloud"
-   $l->t('Add to your %s', [$productName]);
-
-**JavaScript / TypeScript** — same rule, line before the ``t()`` call:
-
-.. code-block:: javascript
-
-   // TRANSLATORS: This is the number of hidden files or folders
-   const hiddenSummary = n('files', '%n hidden', '%n hidden', hidden)
-
-   // TRANSLATORS: {relativeDueDate} will be replaced with a relative time, e.g. "2 hours ago" or "in 3 days"
-   t('files_reminders', 'We will remind you of this file {relativeDueDate}', { relativeDueDate })
-
-**Vue template** — use an HTML comment on the line above the element:
-
-.. code-block:: html
-
-   <!-- TRANSLATORS: Background using a single color -->
-   <span>{{ t('theming', 'Plain background') }}</span>
-
-In the ``<script>`` block of a Vue file, use the same ``//`` style as JavaScript.
-
-**Multi-line** — use when the context needs more than one sentence or lists example output:
-
-.. code-block:: php
-
-   // TRANSLATORS
-   // Indicates when a calendar event will happen, shown on invitation emails.
-   // Output example: "In 1 hour on July 1, 2024 for the entire day"
-   $l->t('In %1$s on %2$s for the entire day', [$relativeTime, $date]);
-
-Keep comments factual and brief. State what the placeholder contains and where the string appears. Do not repeat the string itself.
+For syntax examples in PHP, JavaScript, Vue, and other platforms, see :ref:`Hints`.
 
 Translatable strings
 --------------------
