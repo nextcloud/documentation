@@ -420,8 +420,10 @@ Nextcloud to use Imaginary by editing your <code class="docutils literal notrans
 <p class="admonition-title">Warning</p>
 <p>Make sure to start Imaginary with the <code class="docutils literal notranslate"><span class="pre">-return-size</span></code> command line parameter. Otherwise, there will be a
 minor performance impact. The flag requires a recent version of Imaginary (newer than v1.2.4).
-Also, ensure to add the capability <code class="docutils literal notranslate"><span class="pre">SYS_NICE</span></code> via <code class="docutils literal notranslate"><span class="pre">--cap-add=sys_nice</span></code> or (for Compose)
-<code class="docutils literal notranslate"><span class="pre">cap_add:</span> <span class="pre">-</span> <span class="pre">SYS_NICE</span></code>, as it is required by Imaginary to generate HEIC previews.</p>
+Also, if running Imaginary in Docker, ensure to add the Docker container capability <code class="docutils literal notranslate"><span class="pre">SYS_NICE</span></code>
+via <code class="docutils literal notranslate"><span class="pre">--cap-add=sys_nice</span></code> (Docker CLI) or <code class="docutils literal notranslate"><span class="pre">cap_add:</span> <span class="pre">-</span> <span class="pre">SYS_NICE</span></code> (Docker Compose), as it is
+required by Imaginary to generate HEIC previews. This is not applicable when running Imaginary
+outside of Docker.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

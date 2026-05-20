@@ -92,10 +92,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#all-inboxes">Všechny schránky</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#account-settings">Nastavení účtu</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#move-messages-to-junk-folder">Přesunutí zpráv do složky Nevyžádané</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#refresh-mailbox">Refresh mailbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refresh-folder">Refresh folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#unified-search">Unified search</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#search-in-mailbox">Hledat ve e-mailové schránce</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#advanced-search-in-mailbox">Pokročilé vyhledávání ve schránce</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-in-folder">Search in folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-search-in-folder">Advanced search in folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#enable-mail-body-search">Zapněte hledání v těle e-mailu</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#account-delegation">Delegování účtu</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#automatic-trash-deletion">Automatické mazání koše</a></li>
@@ -109,10 +109,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#mention-contacts">Zmínění kontaktů</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#text-blocks">Textové bloky</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#outbox">Odchozí pošta</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mailbox-actions">Akce ohledně e-mailové schránky</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#add-a-mailbox">Přidání schránky</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#add-a-submailbox">Přidání dílčí schránky</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#shared-mailbox">Sdílená schránka</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#folder-actions">Folder actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-folder">Add a folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-subfolder">Add a subfolder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-folder">Shared folder</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#envelope-actions">Akce ohledně obálky</a><ul>
@@ -213,7 +213,7 @@
 <section id="switch-layout">
 <h3>Přepnout rozvržení<a class="headerlink" href="#switch-layout" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.6.</span></p>
+<p><span class="versionmodified added">Added in version 3.6: </span>Nextcloud 26 or newer</p>
 </div>
 <ol class="arabic simple">
 <li><p>Přejděte do nastavení e-mailu</p></li>
@@ -226,7 +226,7 @@
 <section id="use-compact-mode">
 <h3>Use Compact Mode<a class="headerlink" href="#use-compact-mode" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.7.0.</span></p>
+<p><span class="versionmodified added">Added in version 5.7: </span>Nextcloud 32 or newer</p>
 </div>
 <p>Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.</p>
 <ol class="arabic simple">
@@ -241,11 +241,11 @@
 <section id="message-display-operation-mode">
 <h3>Režim zobrazení / operací se zprávami<a class="headerlink" href="#message-display-operation-mode" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.2.</span></p>
+<p><span class="versionmodified added">Added in version 5.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Aplikace E-mail má schopnost přepínat mezi dvěma různými režimy zobrazování a operací se zprávami: <em>Ve vláknech</em> a <em>Samostatně</em>.</p>
-<p>V režimu <em>Ve vláknech</em> jsou zprávy seskupovány podle konverzací. V seznamu zpráv ve schránce jsou související zprávy naskládány na sebe tak, že jsou zobrazeny pouze ty nejnovější a veškeré související zprávy jsou zobrazovány v panelu zobrazení zprávy (po vybrání naskládané zprávy). To se hodí pro následování diskuzí a porozumění kontextu odpovědí. V tomto režimu jsou operace se zprávou (jako je přesunutí a smazání) uplatňovány na celé vlákno, což znamená, že když přesunete nebo smažete vlákno, bude se to týkat všech zpráv v rámci vlákna.</p>
-<p>V režimu <em>Samostatně</em> jsou zprávy zobrazovány jednotlivě, jak v seznamu zpráv ve schránce a panelu zobrazení zprávy a operace jako přesunutí či smazání se budou týkat pouze označené zprávy. Tento režim je užitečný pokud chcete spravovat zprávy odděleně bez toho, aby to postihlo celou konverzaci.</p>
+<p>In <em>Threaded</em> mode, messages are grouped by conversation. In the folder message list, related messages are stacked so only the most recent message is shown, and all relates messages are shown in message display panel after the stacked message is selected. This is useful for following discussions and understanding the context of replies. In this mode, message operation like move and delete apply to the entire thread, meaning that when you move or delete a thread, all messages within that thread are affected.</p>
+<p>In <em>Singleton</em> mode, messages are displayed individually, in both the folder message list and message display panel and operation like move and delete apply to only the selected message. This mode is useful when you want to manage messages separately without affecting the entire conversation.</p>
 <ol class="arabic simple">
 <li><p>Přejděte do nastavení e-mailu</p></li>
 <li><p>Zvolte mezi <em>Ve vláknech</em> a <em>Samostatné</em></p></li>
@@ -268,7 +268,7 @@
 <section id="change-sort-order">
 <h3>Změna pořadí řazení<a class="headerlink" href="#change-sort-order" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.5.</span></p>
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
 </div>
 <ol class="arabic simple">
 <li><p>Přejděte do nastavení e-mailu</p></li>
@@ -277,7 +277,7 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
-<p>Tato změna bude uplatněna napříč vašimi účty a schránkami</p>
+<p>This change will apply across all your accounts and folders</p>
 </div>
 </section>
 <section id="sort-favorites-up">
@@ -331,7 +331,7 @@
 <section id="move-messages-to-junk-folder">
 <h3>Přesunutí zpráv do složky Nevyžádané<a class="headerlink" href="#move-messages-to-junk-folder" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Když je označená jako nevyžádaná, aplikace E-mail jí umí přesunout do jiné složky.</p>
 <ol class="arabic simple">
@@ -345,9 +345,9 @@
 <img alt="../../_images/mail_move-message-to-junk-folder.png" src="../../_images/mail_move-message-to-junk-folder.png" />
 </figure>
 </section>
-<section id="refresh-mailbox">
-<h3>Refresh mailbox<a class="headerlink" href="#refresh-mailbox" title="Link to this heading"></a></h3>
-<p>You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
+<section id="refresh-folder">
+<h3>Refresh folder<a class="headerlink" href="#refresh-folder" title="Link to this heading"></a></h3>
+<p>You can manually trigger a sync of your folder by clicking the refresh button located at the top of the folder list.
 Starting from <code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">5.7</span></code> triggering the sync will also refresh the list of folders for the selected account.</p>
 </section>
 <section id="unified-search">
@@ -356,37 +356,37 @@ Starting from <code class="docutils literal notranslate"><span class="pre">versi
 feature (see <a class="reference internal" href="../webinterface.html"><span class="doc">The Nextcloud web interface</span></a> for details). You can search for emails across
 all your accounts using the search bar in the Nextcloud header.</p>
 <p>Mail searches email subjects and sender/recipient fields. To search email bodies,
-use the mailbox search feature in the app.</p>
+use the folder search feature in the app.</p>
 </section>
-<section id="search-in-mailbox">
-<h3>Hledat ve e-mailové schránce<a class="headerlink" href="#search-in-mailbox" title="Link to this heading"></a></h3>
+<section id="search-in-folder">
+<h3>Search in folder<a class="headerlink" href="#search-in-folder" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.1.</span></p>
+<p><span class="versionmodified added">Added in version 2.1: </span>Nextcloud 25 or newer</p>
 </div>
 <p>Na začátku seznamu obálek v libovolném rozvržení e-mailu, se zkratka na kolonku pro vyhledávání v předmětech e-mailů. Od <code class="docutils literal notranslate"><span class="pre">verze</span> <span class="pre">3.7</span></code> tento zástupce umožňuje vyhledávat v předmětu, příjemci či odesilateli a to ve výchozím stavu.</p>
 </section>
-<section id="advanced-search-in-mailbox">
-<h3>Pokročilé vyhledávání ve schránce<a class="headerlink" href="#advanced-search-in-mailbox" title="Link to this heading"></a></h3>
+<section id="advanced-search-in-folder">
+<h3>Advanced search in folder<a class="headerlink" href="#advanced-search-in-folder" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
 <p>K funkci pokročilého vyhledávání se dostanete prostřednictvím dialogu nacházejícího se na konci zástupce pro vyhledávání.</p>
 </section>
 <section id="enable-mail-body-search">
 <h3>Zapněte hledání v těle e-mailu<a class="headerlink" href="#enable-mail-body-search" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.5.</span></p>
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Nyní je možné vyhledávat i v tělech e-mailů, ale tuto funkci je třeba si výslovně zapnout, protože může způsobovat problémy s výkonem.</p>
 <p>Pro zapnutí:</p>
 <ol class="arabic simple">
 <li><p>Navštivte nastavení účtu</p></li>
-<li><p>Přejděte do hledání ve schránce</p></li>
+<li><p>Go to Folder search</p></li>
 <li><p>Zapněte hledání v těle e-mailu</p></li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Varování</p>
-<p>Pokud to chcete zapnout také pro sjednocené schránky, je třeba tak učinit v nastaveních E-mailu</p>
+<p>If you want to also enable it for unified folders you have to do so in Mail settings</p>
 </div>
 <p>Zapnutím bude hlavní vyhledávací kolonka nyní hledat jak v předmětech, tak v tělech e-mailů a v pokročilém vyhledávání se zobrazí zvlášť volba <strong>Tělo</strong>.</p>
 </section>
@@ -400,13 +400,13 @@ use the mailbox search feature in the app.</p>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Varování</p>
-<p>Pokud je uložen ve ve složce <em>Odeslané</em> vaší osobní schránky, může se stát, že odeslaný e-mail nebude vidět v původním účtu.</p>
+<p>The sent email might not be visible to the original account if it’s stored in your personal <em>Sent</em> folder.</p>
 </div>
 </section>
 <section id="automatic-trash-deletion">
 <h3>Automatické mazání koše<a class="headerlink" href="#automatic-trash-deletion" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Aplikace E-mail může automaticky mazat zprávy ve složce Koš po uplynutí určitého počtu dnů.</p>
 <ol class="arabic simple">
@@ -433,7 +433,7 @@ use the mailbox search feature in the app.</p>
 <section id="minimize-the-composer-modal">
 <h3>Minimalizace dialogu editoru zprávy<a class="headerlink" href="#minimize-the-composer-modal" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.2.</span></p>
+<p><span class="versionmodified added">Added in version 3.2: </span>Nextcloud 26 or newer</p>
 </div>
 <p>The composer modal can be minimized while writing a new message, editing an existing draft or a message from the outbox. Simply click the <strong>Minimize</strong> button on the modal or click anywhere outside the modal.</p>
 <figure class="align-default">
@@ -443,13 +443,13 @@ use the mailbox search feature in the app.</p>
 <figure class="align-default">
 <img alt="../../_images/mail-composer-indicator.png" src="../../_images/mail-composer-indicator.png" />
 </figure>
-<p>Press the <strong>Close</strong> button on the modal or on the minimized composer indicator to stop editing a message. A draft will be saved automatically into your draft mailbox.</p>
+<p>Press the <strong>Close</strong> button on the modal or on the minimized composer indicator to stop editing a message. A draft will be saved automatically into your draft folder.</p>
 </section>
 </section>
 <section id="recipient-info-on-composer">
 <h2>Informace o příjemci na editoru<a class="headerlink" href="#recipient-info-on-composer" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.2.</span></p>
+<p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>When you add your first recipient or contact in the „To“ field, a right pane will appear displaying the saved profile details of that contact.
 Adding a second contact will collapse the list, allowing you to select and expand any contact you added to view their details.
@@ -459,7 +459,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="mention-contacts">
 <h2>Zmínění kontaktů<a class="headerlink" href="#mention-contacts" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.2.</span></p>
+<p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Ve zprávě je možné zmiňovat kontakty a to zadáním <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> (zavináč) a poté výběrem kontaktu ze seznamu. Tím bude kontakt automaticky přidán coby příjemce.</p>
 <div class="admonition note">
@@ -470,7 +470,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="text-blocks">
 <h2>Textové bloky<a class="headerlink" href="#text-blocks" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.2.</span></p>
+<p><span class="versionmodified added">Added in version 5.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Textové bloky jsou předpřipravené úryvky textu, které můžete vložit do svého e-mailu. Je možné je vytvářet a spravovat v nastavení e-mailů. Do editoru je možné je vkládat napsáním <code class="docutils literal notranslate"><span class="pre">!</span></code> a poté vybráním bloku ze seznamu nebo z akcí editoru. Textové bloky je možné sdílet s uživateli a skupinami uživatelů.</p>
 </section>
@@ -484,7 +484,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <p class="admonition-title">Poznámka</p>
 <p>Pokud se při odesílání vyskytne chyba, objeví se jedno ze tří možných chybových hlášení:</p>
 <dl class="simple">
-<dt>Nebylo možné zkopírovat do schránky „Odeslané“</dt><dd><p>E-mail byl odeslán ale nebylo možné ho zkopírovat do složky „Odeslané“. Tato chyba bude obsloužena složkou pro odchozí poštu a bude proveden opětovný pokus o zkopírování.</p>
+<dt>Could not copy to „Sent“ folder</dt><dd><p>The mail was sent but couldn’t be copied to the „Sent“ folder. This error will be handled by the outbox and the copy operation will be tried again.</p>
 </dd>
 <dt>Chyba e-mailového serveru</dt><dd><p>Sending was unsuccessful with a state that can be retried (ex: the SMTP server couldn’t be reached). The outbox will retry sending the message.</p>
 </dd>
@@ -493,25 +493,25 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 </dl>
 </div>
 </section>
-<section id="mailbox-actions">
-<h2>Akce ohledně e-mailové schránky<a class="headerlink" href="#mailbox-actions" title="Link to this heading"></a></h2>
-<section id="add-a-mailbox">
-<h3>Přidání schránky<a class="headerlink" href="#add-a-mailbox" title="Link to this heading"></a></h3>
+<section id="folder-actions">
+<h2>Folder actions<a class="headerlink" href="#folder-actions" title="Link to this heading"></a></h2>
+<section id="add-a-folder">
+<h3>Add a folder<a class="headerlink" href="#add-a-folder" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Otevřete nabídku akcí ohledně účtu</p></li>
-<li><p>Klikněte na přidání schránky</p></li>
+<li><p>Click add folder</p></li>
 </ol>
 </section>
-<section id="add-a-submailbox">
-<h3>Přidání dílčí schránky<a class="headerlink" href="#add-a-submailbox" title="Link to this heading"></a></h3>
+<section id="add-a-subfolder">
+<h3>Add a subfolder<a class="headerlink" href="#add-a-subfolder" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Otevřete nabídku akcí ohledně schránky</p></li>
-<li><p>Klikněte na dílčí schránku</p></li>
+<li><p>Open the action menu of a folder</p></li>
+<li><p>Click add subfolder</p></li>
 </ol>
 </section>
-<section id="shared-mailbox">
-<h3>Sdílená schránka<a class="headerlink" href="#shared-mailbox" title="Link to this heading"></a></h3>
-<p>Pokud vám schránka byla nasdílena s nějakými specifickými oprávněními, tato schránka se zobrazí jako nová s ikonou sdílení, jako níže:</p>
+<section id="shared-folder">
+<h3>Shared folder<a class="headerlink" href="#shared-folder" title="Link to this heading"></a></h3>
+<p>If a folder was shared with you with some specific rights, that folder will show as a new folder with a shared icon as below:</p>
 <figure class="align-default">
 <img alt="../../_images/shared-mailbox-icon.png" src="../../_images/shared-mailbox-icon.png" />
 </figure>
@@ -535,7 +535,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="create-a-task">
 <h3>Vytvoření úkolu<a class="headerlink" href="#create-a-task" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.2.</span></p>
+<p><span class="versionmodified added">Added in version 3.2: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Vytvořte úkol pro určitou zprávu/vlákno přímo prostřednictvím aplikace E-mail</p>
 <ol class="arabic simple">
@@ -559,7 +559,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="change-color-for-tags">
 <h3>Změna barvy štítků<a class="headerlink" href="#change-color-for-tags" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.5.</span></p>
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
 </div>
 <figure class="align-default">
 <img alt="../../_images/change-tag-color.png" src="../../_images/change-tag-color.png" />
@@ -569,7 +569,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="delete-tags">
 <h3>Mazání štítků<a class="headerlink" href="#delete-tags" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.5.</span></p>
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
 </div>
 <figure class="align-default">
 <img alt="../../_images/delete-tag.png" src="../../_images/delete-tag.png" />
@@ -588,9 +588,9 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="ai-summary">
 <h3>AI shrnutí<a class="headerlink" href="#ai-summary" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.2.</span></p>
+<p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
 </div>
-<p>Při prohlížení své schránky uvidíte coby náhled krátké shrnutí (vytvoření AI) svých e-mailů.</p>
+<p>When looking through your folder you will see a short AI generated summary of your emails as a preview.</p>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
 <p>Mějte na paměti, že je třeba, aby funkci zapnul správce</p>
@@ -600,7 +600,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <section id="quick-actions">
 <h2>Quick actions<a class="headerlink" href="#quick-actions" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.5: </span>(Nextcloud 30)</p>
+<p><span class="versionmodified added">Added in version 5.5: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read … into quick actions that can be executed with a single click.
 Quick actions are scoped to one mail account and can be created and managed in the mail settings under „Quick actions“ or directly from the envelope action menu.</p>
@@ -618,16 +618,16 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="unsubscribe-from-a-mailing-list">
 <h3>Odhlášení se z odběru e-mailové konference<a class="headerlink" href="#unsubscribe-from-a-mailing-list" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.1.</span></p>
+<p><span class="versionmodified added">Added in version 3.1: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Některé e-mailové konference a zpravodaje umožňují snadné zrušení odběru. Pokud aplikace E-mail zjistí zprávy od takového odesilatele, zobrazí tlačítko <em>Zrušit odebírání</em> vedle údaje o odesilateli. Pokud chcete přestat odebírat, klikněte a potvrďte.</p>
 </section>
 <section id="snooze">
 <h3>Odložit<a class="headerlink" href="#snooze" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
-<p>Odkládání zprávy či vlákna ho přesune do k tomu určené složky po dobu délky odkladu a zpráva nebo vlákno pak po jejím uplynutí bude přesunuta do původní složky.</p>
+<p>Snoozing a message or thread moves it into a dedicated folder until the selected snooze date is reached and the message or thread is moved back to the original folder.</p>
 <ol class="arabic simple">
 <li><p>Otevřete nabídku akcí obálky nebo vlákna</p></li>
 <li><p>Klikněte na <em>Odložit</em></p></li>
@@ -637,7 +637,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="smart-replies">
 <h3>Chytré odpovědi<a class="headerlink" href="#smart-replies" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.6.</span></p>
+<p><span class="versionmodified added">Added in version 3.6: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Při otevření zprávy v aplikaci E-mail, tato navrhuje odpovědi, vytvořené AI. Stačí kliknout na navrhovanou odpověď a otevře se editor, ve které je předvyplněná.</p>
 <div class="admonition note">
@@ -652,7 +652,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="mail-translation">
 <h3>Překládání e-mailů<a class="headerlink" href="#mail-translation" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.2.</span></p>
+<p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Máte možnost nechat si překládat zprávy do vámi nastaveného jazyka podobně, jako v Talk.</p>
 <div class="admonition note">
@@ -669,7 +669,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <h2>Shrnutí vlákna<a class="headerlink" href="#thread-summary" title="Link to this heading"></a></h2>
 <p>Aplikace E-mail podporuje vytváření shrnutí vláken zpráv, které obsahují tři a více zpráv.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
@@ -686,14 +686,14 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="autoresponders">
 <h3>Automatické odpovědi<a class="headerlink" href="#autoresponders" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.5: </span>Automatické odpovědi se mohou řídit nastaveními systému.</p>
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
 </div>
 <p>Ve výchozím stavu je automatické odpovídání vypnuté. Je možné ho ručně zapnout, nebo se řídit nastaveními systému. Následující nastavení systému znamenají, že zpráva o dlouhodobé nepřítomnosti zadaná do <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">Sekce nastavení nepřítomnosti</span></a> je uplatněna automaticky.</p>
 </section>
 <section id="filter">
 <h3>Filtr<a class="headerlink" href="#filter" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.1.</span></p>
+<p><span class="versionmodified added">Added in version 4.1: </span>Nextcloud 30 or newer</p>
 </div>
 <p>E-mail 4.1 obsahuje jednoduchý editor pro nastavování pravidel filtru.</p>
 <div class="admonition note">
@@ -740,7 +740,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="create-a-filter-from-a-message">
 <h3>Vytvoření filtru ze zprávy<a class="headerlink" href="#create-a-filter-from-a-message" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.2.</span></p>
+<p><span class="versionmodified added">Added in version 5.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Pokud chcete z dané zprávy vytvořit filtr, otevřete ji a poté otevřete nabídku kliknutím na tři tečky. Dále klikněte na „Další akce“ a poté „Vytvořit filtr e-mailů“.</p>
 <p>V dialogu vyberte podmínky pro hledání shody s příchozími zprávami a pokračujte kliknutím na „Vytvořit filtr e-mailů“.</p>
@@ -752,7 +752,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="follow-up-reminders">
 <h2>Připomínky následných kroků<a class="headerlink" href="#follow-up-reminders" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.0.</span></p>
+<p><span class="versionmodified added">Added in version 4.0: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Aplikace E-mail vám automaticky připomene, když na odchozí e-mail nepřijde žádná odpověď. Každý odeslaný e-mail bude zanalyzován AI a zjištěno tak tak zda je očekávána odpověď. Po čtyřech dnech se všechny relevantní e-maily zobrazí v prioritní schránce.</p>
 <p>Při kliknutí na takový e-mail se zobrazí tlačítko pro rychlé návazné kroky se všemi příjemci. Je také možné vypnout připomínky návazných kroků pro odeslaný e-mail.</p>
@@ -766,7 +766,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="phishing-detection">
 <h3>Detekce rhybaření<a class="headerlink" href="#phishing-detection" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.0.</span></p>
+<p><span class="versionmodified added">Added in version 4.0: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Aplikace E-mail zkontroluje případné pokusy oklamat vás podvodnými e-maily a zobrazí uživateli varování.</p>
 <p>Kontroly jsou následující:</p>
@@ -785,7 +785,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="internal-addresses">
 <h3>Interní adresy<a class="headerlink" href="#internal-addresses" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.0.</span></p>
+<p><span class="versionmodified added">Added in version 4.0: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Aplikace E-mail umožňuje přidávat interní adresy a domény a při odesílání a příjmu zprávy varuje uživatele, pokud se adresa nenachází na seznamu.</p>
 <p>Pro přidání interní adresy:</p>
@@ -801,7 +801,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <section id="dashboard-integration">
 <h2>Napojení na nástěnku<a class="headerlink" href="#dashboard-integration" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.8.</span></p>
+<p><span class="versionmodified added">Added in version 1.8: </span>Nextcloud 20 or newer</p>
 </div>
 <p>Aplikace e-mail nabízí dva ovládací prvky navržené pro napojení na Nextcloud nástěnku:</p>
 <ul class="simple">
@@ -835,7 +835,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <h3>Meeting invitation automation<a class="headerlink" href="#meeting-invitation-automation" title="Link to this heading"></a></h3>
 <p>When a meeting organizer sends updates to an existing event (such as time changes or location updates), the Mail app processes these automatically and updates the corresponding event in your calendar.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.7: </span>(Nextcloud 32 or newer)</p>
+<p><span class="versionmodified added">Added in version 5.7: </span>Nextcloud 32 or newer</p>
 </div>
 <p>You can also configure Mail to automatically add all new meeting invitations to your calendar without requiring manual acceptance. The invitations will be added to the calendar as tentative.</p>
 <p>To enable this feature:</p>
