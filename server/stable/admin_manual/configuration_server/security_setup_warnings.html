@@ -91,6 +91,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#your-web-server-is-not-set-up-properly-to-resolve-well-known-caldav-or-well-known-carddav">Your Web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#some-files-have-not-passed-the-integrity-check">Some files have not passed the integrity check</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#your-database-does-not-run-with-read-committed-transaction-isolation-level">Your database does not run with “READ COMMITTED” transaction isolation level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-host-prefix-is-not-used-for-the-cookie-name">The “__Host-” prefix is not used for the cookie name</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html">Configuration Parameters</a></li>
@@ -298,6 +299,29 @@ refer to <a class="reference internal" href="../issues/general_troubleshooting.h
 <p>“Your database does not run with “READ COMMITTED” transaction isolation level.
 This can cause problems when multiple actions are executed in parallel.”</p>
 <p>Please refer to <a class="reference internal" href="../configuration_database/linux_database_configuration.html#db-transaction-label"><span class="std std-ref">Database “READ COMMITTED” transaction isolation level</span></a> how to configure your database for this requirement.</p>
+</section>
+<section id="the-host-prefix-is-not-used-for-the-cookie-name">
+<h2>The “__Host-” prefix is not used for the cookie name<a class="headerlink" href="#the-host-prefix-is-not-used-for-the-cookie-name" title="Link to this heading"></a></h2>
+<p>“The <code class="docutils literal notranslate"><span class="pre">__Host-</span></code> prefix is not used for the cookie name. It is recommended to
+enable this in your configuration.”</p>
+<p>Nextcloud applies the <code class="docutils literal notranslate"><span class="pre">__Host-</span></code> prefix to its same-site CSRF cookies
+(<code class="docutils literal notranslate"><span class="pre">__Host-nc_sameSiteCookiestrict</span></code> and <code class="docutils literal notranslate"><span class="pre">__Host-nc_sameSiteCookielax</span></code>) when
+it detects that the connection is served over HTTPS. The prefix instructs
+browsers to only accept those cookies over a secure connection and from the
+exact host that set them, which strengthens CSRF protection.</p>
+<p>This warning appears when Nextcloud cannot confirm it is running over HTTPS.
+The most common cause is a <strong>reverse proxy</strong> that terminates TLS and forwards
+requests to Nextcloud over plain HTTP. In that case Nextcloud sees HTTP
+internally and omits the prefix.</p>
+<p>To fix this, tell Nextcloud to treat the connection as HTTPS by adding
+<code class="docutils literal notranslate"><span class="pre">overwriteprotocol</span></code> to <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;overwriteprotocol&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;https&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>If you are not behind a reverse proxy, ensure your web server is configured to
+serve Nextcloud exclusively over HTTPS. See the
+<a class="reference internal" href="../installation/harden_server.html#use-https-label"><span class="std std-ref">Use HTTPS</span></a> documentation.</p>
+<p>For background on the cookies themselves, see <a class="reference internal" href="../gdpr/cookies.html#cookies"><span class="std std-ref">Cookies</span></a>.</p>
 </section>
 </section>
 
