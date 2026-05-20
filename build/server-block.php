@@ -26,16 +26,26 @@ function generate_section(string $version, ?int $index = null): string {
 		$userManualUrl .= 'en/';
 	}
 
+	$hasEpub = $version >= 32;
+	$userManualDownloads = '<a class="reference external" href="server/' . $label . '/Nextcloud_User_Manual.pdf">PDF</a>';
+	$adminManualDownloads = '<a class="reference external" href="server/' . $label . '/Nextcloud_Server_Administration_Manual.pdf">PDF</a>';
+	$developerManualDownloads = '';
+	if ($hasEpub) {
+		$userManualDownloads .= ', <a class="reference external" href="server/' . $label . '/Nextcloud_User_Manual.epub">ePub</a>';
+		$adminManualDownloads .= ', <a class="reference external" href="server/' . $label . '/Nextcloud_Server_Administration_Manual.epub">ePub</a>';
+		$developerManualDownloads = ' (<a class="reference external" href="server/' . $label . '/Nextcloud_Developer_Manual.epub">ePub</a>)';
+	}
+
 	return <<<HTML
 		<div class="section" id="nextcloud-$label">
 			<h2>Nextcloud $version<a class="headerlink" href="#nextcloud-$label" title="Permalink to this headline">¶</a></h2>
 			$note
 			<ul class="simple">
 				<li><a class="reference external" href="$userManualUrl">User Manual</a>
-					(<a class="reference external" href="server/$label/Nextcloud_User_Manual.pdf">Download PDF</a>)</li>
+					($userManualDownloads)</li>
 				<li><a class="reference external" href="server/$label/admin_manual/">Administration Manual</a>
-					(<a class="reference external" href="server/$label/Nextcloud_Server_Administration_Manual.pdf">Download PDF</a>)</li>
-				<li><a class="reference external" href="server/$label/developer_manual/">Developer Manual</a></li>
+					($adminManualDownloads)</li>
+				<li><a class="reference external" href="server/$label/developer_manual/">Developer Manual</a>$developerManualDownloads</li>
 			</ul>
 		</div>
 HTML;
