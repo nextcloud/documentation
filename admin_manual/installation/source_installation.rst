@@ -172,8 +172,18 @@ if your setup is available on ``https://example.org/nextcloud`` or::
     'overwrite.cli.url' => 'https://example.org/',
     'htaccess.RewriteBase' => '/',
 
-if it isn't installed in a subfolder. Finally run this occ-command to update
-your .htaccess file::
+if it isn't installed in a subfolder.
+
+.. note::
+
+   ``htaccess.RewriteBase`` must match the path relative to Apache's DocumentRoot
+   where Nextcloud is served on the backend, not the public URL prefix. In a direct
+   Apache setup these are identical. Behind a reverse proxy that strips the URL
+   prefix — for example ``https://domain.com/nextcloud/`` forwarded to
+   ``http://localhost:8080/`` — the correct value is ``/`` even though the public
+   URL contains ``/nextcloud``.
+
+Finally run this occ-command to update your ``.htaccess`` file::
 
     sudo -E -u www-data php /var/www/nextcloud/occ maintenance:update:htaccess
 
