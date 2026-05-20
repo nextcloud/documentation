@@ -43,7 +43,7 @@ webroot of your Caddy installation. In this example it is
 ``/var/www/nextcloud`` and it is accessed via ``http(s)://cloud.example.com/``
 
 .. literalinclude:: Caddyfile.sample
-   :language: nginx
+   :language: none
 
 Nextcloud in a subdir of the Caddy webroot
 ------------------------------------------
@@ -60,7 +60,7 @@ The recommended approach is:
    or use ``uri strip_prefix /nextcloud``.
 3. Capture the rewritten URI before the PHP handler and pass it as ``REQUEST_URI``:
 
-.. code-block:: nginx
+.. code-block:: none
 
     handle_path /nextcloud/* {
         # … (place the route block contents here) …
@@ -90,7 +90,7 @@ If you're seeing meaningless messages in your logfile, for example ``client
 denied by server configuration: /var/www/data/htaccesstest.txt``, add this
 section to your Caddy configuration to suppress them:
 
-.. code-block:: nginx
+.. code-block:: none
 
         route {
           # …
