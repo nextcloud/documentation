@@ -221,6 +221,21 @@ await page.waitForTimeout(400)
 await banDialog.screenshot({ path: dest })
 ```
 
+### Use `pressSequentially` for Vue reactive search inputs
+
+`fill()` sets an input's value in one shot and can bypass Vue's reactive watchers, leaving the UI
+in its previous state (e.g. a search field appears empty, results never update). Use
+`pressSequentially` with a small inter-key delay so each keystroke fires its own input event:
+
+```typescript
+// fill() bypasses Vue reactivity — use pressSequentially instead
+await searchInput.click()
+await searchInput.pressSequentially('laptop', { delay: 80 })
+// Confirm reactivity fired: wait for a DOM change only possible after the search updates
+await page.locator('.frequently-used-label').waitFor({ state: 'hidden', timeout: 3000 }).catch(() => {})
+await page.locator('.search-result').first().click({ timeout: 3000 }).catch(() => {})
+```
+
 ### Seed rich content inline between messages
 
 File shares, reactions, and other message cards must be seeded *between* the surrounding messages
