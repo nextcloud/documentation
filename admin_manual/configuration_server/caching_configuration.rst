@@ -22,11 +22,11 @@ every time they are called. PHP bundles the Zend OPcache in core since version
 caching backends, so you can choose the type of memcache that best fits your
 needs. The supported caching backends are:
 
-* `APCu <https://pecl.php.net/package/APCu>`_, APCu 4.0.6 and up required.
+* `APCu <https://pecl.php.net/package/APCu>`__, APCu 4.0.6 and up required.
    A local cache for systems.
-* `Redis <http://redis.io/>`_, server 4.0.0 and up required.
+* `Redis <http://redis.io/>`__, server 4.0.0 and up required.
    For local and distributed caching, as well as transactional file locking.
-* `Memcached <https://www.memcached.org/>`_
+* `Memcached <https://www.memcached.org/>`__
    For distributed caching.
 
 Data caches, or memcaches, must be explicitly configured in Nextcloud by installing
