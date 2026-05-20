@@ -83,6 +83,7 @@ htmlhelp_basename = 'NextcloudUserManual'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-epub-output
 
 epub_title = u'Nextcloud User Manual'
+epub_basename = u'Nextcloud_User_Manual'
 epub_author = u'The Nextcloud developers'
 epub_publisher = u'The Nextcloud developers'
 epub_copyright = u'2012-2025, The Nextcloud developers'

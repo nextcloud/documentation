@@ -1,7 +1,8 @@
-all: html pdf
+all: html pdf epub
 
 html: admin-manual-html user-manual-html developer-manual-html
 pdf: admin-manual-pdf user-manual-pdf
+epub: admin-manual-epub user-manual-epub developer-manual-epub
 
 admin-manual-html:
 	rm -rf admin_manual/_build/html/com
@@ -25,6 +26,18 @@ admin-manual-pdf:
 user-manual-pdf:
 	cd user_manual && make latexpdf
 	@echo "User manual build finished; PDF is updated"
+
+admin-manual-epub:
+	cd admin_manual && make epub
+	@echo "Admin manual build finished; epub is updated"
+
+user-manual-epub:
+	cd user_manual && make epub
+	@echo "User manual build finished; epub is updated"
+
+developer-manual-epub: openapi-spec
+	cd developer_manual && make epub
+	@echo "Developer manual build finished; epub is updated"
 
 get-server-sources:
 	cd build && sh get-server-sources.sh $(DRONE_BRANCH)
