@@ -268,6 +268,64 @@ await ocsRequest('POST', '/ocs/v2.php/apps/files_sharing/api/v1/shares', user, p
 await seedChatMessages(token, [ /* messages after the share */ ])
 ```
 
+### Backdating folder mtimes in the Files app
+
+NC's `oc_filecache.mtime` is what the Files app displays, but you must update **both** the DB and
+the real filesystem — NC's lazy scanner re-reads the filesystem on every PROPFIND and will overwrite
+a DB-only change. Use `files/FolderName` as the path (the home storage prepends `files/`):
+
+```typescript
+// Update oc_filecache
+const sql = `UPDATE oc_filecache SET mtime=${ts}, storage_mtime=${ts}
+             WHERE path='files/Documents'
+             AND storage=(SELECT numeric_id FROM oc_storages WHERE id='home::christine')`
+// Also touch the real directory
+await runExec(['touch', '-m', '-d', `@${ts}`, '/var/www/html/data/christine/files/Documents'])
+```
+
+Run backdates **after** the first login — apps like Talk initialise their storage folder on first
+login and would overwrite an earlier backdate.
+
+NC's in-process Sabre/DAV cache (per Apache worker, not APCu) holds the mtime from first access
+and ignores external writes for the lifetime of that worker. For screenshots that must show a
+specific folder date, intercept the PROPFIND response and patch `getlastmodified` directly:
+
+```typescript
+// In beforeEach — intercepts the root directory listing for all tests
+await page.route('**/remote.php/dav/files/christine/', async (route, request) => {
+    if (request.method() !== 'PROPFIND') { await route.continue(); return }
+    try {
+        const response = await route.fetch()
+        const body = await response.text()
+        const patched = body.replace(
+            /(<d:href>[^<]*\/Talk\/<\/d:href>[\s\S]*?<d:getlastmodified>)(.*?)(<\/d:getlastmodified>)/,
+            '$1Thu, 15 May 2026 00:00:00 GMT$3',
+        )
+        await route.fulfill({ response, body: patched, contentType: response.headers()['content-type'] || 'application/xml' })
+    } catch (_) {
+        await route.continue().catch(() => {})
+    }
+})
+```
+
+### `oc_talk_rooms.last_activity` is a DATETIME column, not a Unix integer
+
+Writing a raw integer to this column causes PHP's `new DateTime()` to throw (HTTP 500). Use
+SQLite's `datetime()` conversion:
+
+```sql
+UPDATE oc_talk_rooms SET last_activity = datetime(1748822400, 'unixepoch') WHERE token = 'abc'
+```
+
+Talk's `getRooms` API also filters rooms by `modifiedSince`. Backdating `last_activity` makes rooms
+disappear after the first poll. Fix by setting `last_attendee_activity` 2 h in the future — Talk
+passes the room if either timestamp is recent enough:
+
+```sql
+UPDATE oc_talk_attendees SET last_attendee_activity = <now + 7200>
+WHERE room_id = (SELECT id FROM oc_talk_rooms WHERE token = 'abc') AND actor_id = 'christine'
+```
+
 ## CI checks (must all pass)
 
 | Check | What it catches |
