@@ -26,7 +26,7 @@ let authCookies: Cookie[] = []
 
 const AVATAR_DIR = '/home/anna/Downloads/tp/avatar'
 const WALLPAPERS = '/home/anna/Downloads/wallpapers'
-const FIXTURES_PDFS = path.join(process.cwd(), 'cypress/fixtures/pdfs')
+const FIXTURES_PDFS = path.join(__dirname, '../../fixtures/pdfs')
 
 /** Write a temp file and return its path. */
 function tmpFile(name: string, content: string): string {

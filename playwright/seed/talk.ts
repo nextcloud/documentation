@@ -4,7 +4,7 @@
 import { ocsRequest, seedChatMessages, reactToMessage, uploadFile, SCREENSHOT_PORT } from '../helpers'
 import * as path from 'path'
 
-const FIXTURES_DIR = path.join(process.cwd(), 'cypress/fixtures')
+const FIXTURES_DIR = path.join(__dirname, '..', 'fixtures')
 
 // ── Low-level helpers ─────────────────────────────────────────────────────────
 

@@ -4,7 +4,7 @@
 import { mkdavCol, uploadFile, ocsRequest, SCREENSHOT_PORT } from '../helpers'
 import * as path from 'path'
 
-const FIXTURES_DIR = path.join(process.cwd(), 'cypress/fixtures')
+const FIXTURES_DIR = path.join(__dirname, '..', 'fixtures')
 
 async function share(filePath: string, user: string, password: string, shareType: string, opts: Record<string, string> = {}): Promise<void> {
 	await ocsRequest('POST', '/ocs/v2.php/apps/files_sharing/api/v1/shares', user, password, {
