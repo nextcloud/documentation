@@ -498,6 +498,32 @@ test('Creating open conversation (step 1: name + settings)', async ({ page }) =>
 	await page.locator('[role="menuitem"]', { hasText: 'Create a new conversation' }).click()
 	await page.locator('.new-group-conversation').waitFor({ state: 'visible', timeout: 5000 })
 	await page.locator('.new-group-conversation input[type="text"]').first().fill('Product team')
+
+	// Set emoji on the conversation avatar if the picker is available in this Talk version.
+	// All clicks use short explicit timeouts — without them, Playwright inherits the full
+	// test timeout (60 s) and blocks the whole test when an element isn't present.
+	const emojiBtn = page.locator('.new-group-conversation button[aria-label*="moji"], .new-group-conversation .emoji-picker-trigger').first()
+	if (await emojiBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
+		await emojiBtn.click({ timeout: 3000 }).catch(() => {})
+		const emojiInput = page.locator('.emoji-mart-search input, input[placeholder*="Search emoji"]').first()
+		if (await emojiInput.isVisible({ timeout: 2000 }).catch(() => false)) {
+			// Use pressSequentially so Vue reactivity fires on each keystroke.
+			// fill() sets the value in one shot and can bypass reactive watchers.
+			await emojiInput.click({ timeout: 2000 }).catch(() => {})
+			await emojiInput.pressSequentially('laptop', { delay: 80 })
+			// "Frequently used" disappearing means search results have replaced it
+			await page.locator('.emoji-mart-category-label').filter({ hasText: /frequently used/i })
+				.waitFor({ state: 'hidden', timeout: 3000 }).catch(() => {})
+			await page.locator('.emoji-mart-emoji').first().click({ timeout: 3000 }).catch(() => {})
+		}
+	}
+
+	// Fill in description if the field is present
+	const descriptionField = page.locator('.new-group-conversation textarea, .new-group-conversation input[placeholder*="escription"]').first()
+	if (await descriptionField.isVisible({ timeout: 2000 }).catch(() => false)) {
+		await descriptionField.fill('Discuss product priorities, roadmap, and cross-team updates.')
+	}
+
 	await docScreenshot(page, 'user/talk/creating-open-conversation')
 })
 
@@ -524,8 +550,16 @@ test('New room (freshly created conversation)', async ({ page }) => {
 	await page.locator('.new-group-conversation').waitFor({ state: 'visible', timeout: 5000 })
 	await page.locator('.new-group-conversation input[type="text"]').first().fill('Product team')
 	await page.locator('button', { hasText: /add participants/i }).click()
+	const participantsInput = page.locator('.new-group-conversation input[type="text"]').last()
+	await participantsInput.waitFor({ state: 'visible', timeout: 5000 })
 	await page.locator('[data-nav-id="users_amara_w"]').waitFor({ state: 'visible', timeout: 5000 })
 	await page.locator('[data-nav-id="users_amara_w"]').click()
+	await participantsInput.fill('lila')
+	await page.locator('[data-nav-id="users_lila_h"]').waitFor({ state: 'visible', timeout: 5000 })
+	await page.locator('[data-nav-id="users_lila_h"]').click()
+	await participantsInput.fill('malik')
+	await page.locator('[data-nav-id="users_malik_s"]').waitFor({ state: 'visible', timeout: 5000 })
+	await page.locator('[data-nav-id="users_malik_s"]').click()
 	await page.locator('button', { hasText: /create conversation/i }).click()
 	await page.locator('.chatView').waitFor({ state: 'visible', timeout: 15000 })
 	// Extract token from URL and seed messages
@@ -535,6 +569,10 @@ test('New room (freshly created conversation)', async ({ page }) => {
 		await seedChatMessages(newRoomToken, [
 			{ text: "Hey team! Welcome to the Product Team chat 👋", user: 'christine', password: 'christine' },
 			{ text: "Thanks for setting this up!", user: 'amara_w', password: 'amara_w' },
+			{ text: "Excited to collaborate here — what's our first agenda item?", user: 'lila_h', password: 'lila_h' },
+			{ text: "Let's start with the Q3 roadmap review. I'll share the doc shortly.", user: 'christine', password: 'christine' },
+			{ text: "I have a few feature requests from the last sprint to add to that.", user: 'malik_s', password: 'malik_s' },
+			{ text: "Great, let's go through them all in tomorrow's sync.", user: 'amara_w', password: 'amara_w' },
 		])
 		await page.reload()
 		await page.locator('.chatView').waitFor({ state: 'visible', timeout: 15000 })
@@ -800,9 +838,11 @@ test('Archived conversations button', async ({ page }) => {
 	await page.goto('/apps/spreed')
 	await page.locator('[aria-label="Conversation list"]').waitFor({ state: 'visible', timeout: 15000 })
 	const token = await getOrCreateGroupToken()
-	// Seed a message before archiving so the preview is meaningful
+	// Seed a plain (non-mention) message so the preview is meaningful.
+	// Using @all here creates an unread-mention badge that causes an "Unread mentions"
+	// navigation button to appear above "Archived conversations" in the list footer.
 	await seedChatMessages(token, [
-		{ text: "@all Don't forget the catering walkthrough is Friday at 10am!", user: 'amara_w', password: 'amara_w' },
+		{ text: "Reminder: catering walkthrough confirmed for Friday at 10am.", user: 'amara_w', password: 'amara_w' },
 	])
 	await talkApi('POST', `/v4/room/${token}/archive`, christine)
 	await page.reload()
@@ -826,16 +866,40 @@ test('Archived conversations button', async ({ page }) => {
 })
 
 test('Archived conversations list', async ({ page }) => {
-	// Relies on "Archived conversations button" test having archived "Event planning"
+	// Relies on "Archived conversations button" test having archived "Event planning".
+	// Archive two more rooms so the list looks populated, then unarchive all at the end.
 	await clearTalkFilter(page)
 	await page.goto('/apps/spreed')
+	await page.locator('[aria-label="Conversation list"]').waitFor({ state: 'visible', timeout: 15000 })
+
+	const allRoomsRes = await talkApi('GET', '/v4/room', christine)
+	const allRoomsData = await allRoomsRes.json()
+	const rooms: Array<{ token: string; displayName: string }> = allRoomsData?.ocs?.data ?? []
+	const designRoom = rooms.find(r => r.displayName === 'Design Team')
+	const volunteerRoom = rooms.find(r => r.displayName === 'Volunteer Coordination')
+	if (designRoom) await talkApi('POST', `/v4/room/${designRoom.token}/archive`, christine)
+	if (volunteerRoom) await talkApi('POST', `/v4/room/${volunteerRoom.token}/archive`, christine)
+
+	await page.reload()
 	await page.locator('[aria-label="Conversation list"]').waitFor({ state: 'visible', timeout: 15000 })
 	await page.locator('button', { hasText: 'Archived conversations' }).waitFor({ state: 'visible', timeout: 10000 })
 	await page.locator('button', { hasText: 'Archived conversations' }).click()
 	await page.locator('.conversation[title="Event planning"]').first().waitFor({ state: 'visible', timeout: 10000 })
-	await docElementScreenshot(page, '[aria-label="Conversation list"]', 'user/talk/archived-conversations-list')
-	// Unarchive for clean subsequent runs
-	if (groupToken) {
-		await talkApi('DELETE', `/v4/room/${groupToken}/archive`, christine)
+
+	// Crop to the upper half of the conversation list — the list is long and the
+	// bottom half is empty space; three rows give enough context.
+	const listEl = page.locator('[aria-label="Conversation list"]')
+	const listBox = await listEl.boundingBox()
+	const dest = path.join(os.homedir(), 'Pictures', 'Screenshots', 'nextcloud-docs', 'user', 'talk', 'archived-conversations-list.png')
+	await fs.mkdir(path.dirname(dest), { recursive: true })
+	if (listBox) {
+		await page.screenshot({ path: dest, clip: { x: listBox.x, y: listBox.y, width: listBox.width, height: Math.round(listBox.height / 2) } })
+	} else {
+		await docElementScreenshot(page, '[aria-label="Conversation list"]', 'user/talk/archived-conversations-list')
 	}
+
+	// Unarchive all for clean subsequent runs
+	if (groupToken) await talkApi('DELETE', `/v4/room/${groupToken}/archive`, christine)
+	if (designRoom) await talkApi('DELETE', `/v4/room/${designRoom.token}/archive`, christine)
+	if (volunteerRoom) await talkApi('DELETE', `/v4/room/${volunteerRoom.token}/archive`, christine)
 })
