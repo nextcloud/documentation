@@ -306,6 +306,8 @@ Depending on your server setup, these are the possible connections:
 .. _detailed field list: https://github.com/nextcloud/survey_client
 
 
+.. _setup_fail2ban:
+
 Setup fail2ban
 --------------
 
