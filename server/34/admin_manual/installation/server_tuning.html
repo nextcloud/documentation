@@ -106,7 +106,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#using-redis-based-transactional-file-locking">Using Redis-based transactional file locking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tls-encryption-app">TLS / encryption app</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#enable-http-2-for-faster-loading">Enable HTTP/2 for faster loading</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tune-php-fpm">Tune PHP-FPM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tune-php-fpm">Tune PHP-FPM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#process-manager-modes">Process manager modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#key-parameters">Key parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-configuration">Example configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#slow-log">Slow log</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#enable-php-opcache">Enable PHP OPcache</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#revalidation">Revalidation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sizing">Sizing</a></li>
@@ -324,11 +331,119 @@ support.</p></li>
 </section>
 <section id="tune-php-fpm">
 <h2>Tune PHP-FPM<a class="headerlink" href="#tune-php-fpm" title="Link to this heading"></a></h2>
-<p>The default configuration of PHP-FPM is extremely conservative. You might notice
-excessive load times on the web interface or even sync issues. Each simultaneous
-request is handled by a separate PHP-FPM process, so even on a small installation you
-should allow more processes to run in parallel to handle requests.</p>
-<p><a class="reference external" href="https://spot13.com/pmcalculator/">This link</a> can help you calculate the optimal values for your system.</p>
+<p>PHP-FPM is required for Nginx setups and is widely used with Apache as well. Its default
+configuration is extremely conservative: the default pool has <code class="docutils literal notranslate"><span class="pre">pm.max_children</span> <span class="pre">=</span> <span class="pre">5</span></code>, which
+limits Nextcloud to five simultaneous PHP requests and is a common cause of gateway timeouts,
+slow page loads, and sync client errors under any real load.</p>
+<section id="process-manager-modes">
+<h3>Process manager modes<a class="headerlink" href="#process-manager-modes" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">pm</span></code> directive controls how PHP-FPM manages its worker processes:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">dynamic</span></code></dt><dd><p>Keeps between <code class="docutils literal notranslate"><span class="pre">pm.min_spare_servers</span></code> and <code class="docutils literal notranslate"><span class="pre">pm.max_spare_servers</span></code> idle workers alive,
+up to a ceiling of <code class="docutils literal notranslate"><span class="pre">pm.max_children</span></code>. Good default for most Nextcloud installations:
+balances RAM efficiency with burst capacity. Set <code class="docutils literal notranslate"><span class="pre">pm.min_spare_servers</span></code> high enough
+that sync-client poll bursts do not stall waiting for new processes to spawn.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">static</span></code></dt><dd><p>Always keeps exactly <code class="docutils literal notranslate"><span class="pre">pm.max_children</span></code> processes running. Highest memory use,
+lowest latency. Use on dedicated servers with predictable load. Always set
+<code class="docutils literal notranslate"><span class="pre">pm.max_requests</span></code> to recycle workers and prevent memory leaks.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ondemand</span></code></dt><dd><p>Spawns a worker only when a request arrives; kills idle workers after
+<code class="docutils literal notranslate"><span class="pre">pm.process_idle_timeout</span></code> (default <code class="docutils literal notranslate"><span class="pre">10s</span></code>). Lowest memory use but adds
+cold-start latency on every burst. Not recommended for Nextcloud: desktop and
+mobile clients poll every 30 seconds, repeatedly triggering cold starts.</p>
+</dd>
+</dl>
+</section>
+<section id="key-parameters">
+<h3>Key parameters<a class="headerlink" href="#key-parameters" title="Link to this heading"></a></h3>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">pm.max_children</span></code></dt><dd><p>Maximum (or fixed, under <code class="docutils literal notranslate"><span class="pre">static</span></code>) number of simultaneous worker processes.
+This is the most important value to tune. If all workers are busy, new requests
+queue up; a full queue produces 502/504 errors.</p>
+<p>Estimate it from available RAM:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm</span><span class="o">.</span><span class="n">max_children</span> <span class="o">=</span> <span class="n">floor</span><span class="p">(</span><span class="n">available_RAM_for_PHP</span> <span class="o">/</span> <span class="n">average_worker_RSS</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Measure the average RSS of a running pool:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">headers</span> <span class="o">-</span><span class="n">o</span> <span class="n">rss</span> <span class="o">-</span><span class="n">C</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm</span> <span class="o">|</span> <span class="n">awk</span> <span class="s1">&#39;{sum+=$1; count++} END {if (count&gt;0) print sum/count/1024 &quot; MB&quot;; else print &quot;No php-fpm processes found&quot;}&#39;</span>
+</pre></div>
+</div>
+<p>A typical Nextcloud worker uses <strong>50–100 MB</strong> (more if Imagick or LDAP is loaded).
+Leave headroom for the OS, web server, database, and cache. Setting <code class="docutils literal notranslate"><span class="pre">pm.max_children</span></code>
+too high causes swapping, which is worse than queuing.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pm.start_servers</span></code> <em>(dynamic only)</em></dt><dd><p>Workers started at FPM boot. Defaults to
+<code class="docutils literal notranslate"><span class="pre">(pm.min_spare_servers</span> <span class="pre">+</span> <span class="pre">pm.max_spare_servers)</span> <span class="pre">/</span> <span class="pre">2</span></code> if not set.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pm.min_spare_servers</span></code> / <code class="docutils literal notranslate"><span class="pre">pm.max_spare_servers</span></code> <em>(dynamic only)</em></dt><dd><p>Range of idle workers kept warm. For Nextcloud, keep <code class="docutils literal notranslate"><span class="pre">pm.min_spare_servers</span></code>
+high enough to absorb a sync-client burst without spawning new processes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm</span><span class="o">.</span><span class="n">min_spare_servers</span> <span class="o">=</span> <span class="mi">4</span>    <span class="c1"># adjust upward for many connected clients</span>
+<span class="n">pm</span><span class="o">.</span><span class="n">max_spare_servers</span> <span class="o">=</span> <span class="mi">16</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pm.max_requests</span></code></dt><dd><p>Recycle a worker after this many requests. <code class="docutils literal notranslate"><span class="pre">0</span></code> means never recycle.
+Setting a value of <code class="docutils literal notranslate"><span class="pre">500</span></code>–<code class="docutils literal notranslate"><span class="pre">1000</span></code> guards against slow memory growth from
+leaky extensions (Imagick, LDAP, SAML XML parsers). Essential under <code class="docutils literal notranslate"><span class="pre">static</span></code>
+mode.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pm.process_idle_timeout</span></code> <em>(ondemand only)</em></dt><dd><p>How long an idle worker lives before being killed. Default: <code class="docutils literal notranslate"><span class="pre">10s</span></code>.</p>
+</dd>
+</dl>
+</section>
+<section id="example-configuration">
+<h3>Example configuration<a class="headerlink" href="#example-configuration" title="Link to this heading"></a></h3>
+<p>A starting point for <code class="docutils literal notranslate"><span class="pre">dynamic</span></code> mode on a server with 2 GB of RAM dedicated to PHP
+(adjust <code class="docutils literal notranslate"><span class="pre">pm.max_children</span></code> based on your measured worker RSS):</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">pm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">dynamic</span>
+<span class="na">pm.max_children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">30</span>
+<span class="na">pm.start_servers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">8</span>
+<span class="na">pm.min_spare_servers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4</span>
+<span class="na">pm.max_spare_servers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">16</span>
+<span class="na">pm.max_requests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">500</span>
+</pre></div>
+</div>
+<p>Use the <a class="reference external" href="https://spot13.com/pmcalculator/">PHP-FPM process calculator</a> as a
+cross-check for your values.</p>
+</section>
+<section id="slow-log">
+<h3>Slow log<a class="headerlink" href="#slow-log" title="Link to this heading"></a></h3>
+<p>Enable the slow log to identify PHP scripts that are taking too long:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">slowlog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/var/log/php-fpm-slow.log</span>
+<span class="na">request_slowlog_timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5s</span>
+</pre></div>
+</div>
+<p>Each entry records the full PHP backtrace of the slow request. This is the
+fastest way to find the root cause of gateway timeouts and sluggish pages.</p>
+</section>
+<section id="troubleshooting">
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt><strong>502 Bad Gateway</strong></dt><dd><p>All <code class="docutils literal notranslate"><span class="pre">pm.max_children</span></code> workers are busy. Increase <code class="docutils literal notranslate"><span class="pre">pm.max_children</span></code> if RAM
+allows. Enable the slow log to check whether a slow query is tying up workers.
+Also check that a <code class="docutils literal notranslate"><span class="pre">request_terminate_timeout</span></code> is not killing workers mid-request.</p>
+</dd>
+<dt><strong>504 Gateway Timeout</strong></dt><dd><p>A worker is running but not responding within the web server’s upstream timeout
+(nginx <code class="docutils literal notranslate"><span class="pre">fastcgi_read_timeout</span></code>, Apache <code class="docutils literal notranslate"><span class="pre">ProxyTimeout</span></code>). Common Nextcloud causes:
+large file operations, slow database queries during sync, or PROPFIND over large
+directory trees. Use the slow log to identify the bottleneck.</p>
+</dd>
+<dt><strong>Memory grows over time</strong></dt><dd><p>Memory leaks can occur in worker processes. Common culprits include libraries that manage external resources (like Imagick for image processing). Use the slow log and RSS monitoring to identify which requests cause growth.
+Set <code class="docutils literal notranslate"><span class="pre">pm.max_requests</span> <span class="pre">=</span> <span class="pre">500</span></code> to recycle them before they grow too large.</p>
+</dd>
+<dt><strong>Slow first request after idle</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">pm</span> <span class="pre">=</span> <span class="pre">ondemand</span></code> or <code class="docutils literal notranslate"><span class="pre">pm.min_spare_servers</span></code> too low. Switch to <code class="docutils literal notranslate"><span class="pre">pm</span> <span class="pre">=</span> <span class="pre">dynamic</span></code>
+and raise <code class="docutils literal notranslate"><span class="pre">pm.min_spare_servers</span></code>.</p>
+</dd>
+</dl>
+<p>After any configuration change, reload PHP-FPM — changes do not take effect until you do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>php8.3-fpm<span class="w">   </span><span class="c1"># Debian/Ubuntu — adjust version as needed</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>php-fpm<span class="w">      </span><span class="c1"># RHEL/Fedora</span>
+</pre></div>
+</div>
+<p>For pool configuration details (environment variables, upload sizes, Unix socket vs TCP),
+see <a class="reference internal" href="source_installation.html#php-fpm-tips-label"><span class="std std-ref">PHP-FPM configuration</span></a> in the installation guide.</p>
+</section>
 </section>
 <section id="enable-php-opcache">
 <h2>Enable PHP OPcache<a class="headerlink" href="#enable-php-opcache" title="Link to this heading"></a></h2>
