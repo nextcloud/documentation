@@ -180,7 +180,7 @@ Key parameters
 
   Measure the average RSS of a running pool::
 
-    ps --no-headers -o rss -C php-fpm8.3 | awk '{sum+=$1} END {print sum/NR/1024 " MB"}'
+    ps --no-headers -o rss -C php-fpm | awk '{sum+=$1; count++} END {if (count>0) print sum/count/1024 " MB"; else print "No php-fpm processes found"}'
 
   A typical Nextcloud worker uses **50–100 MB** (more if Imagick or LDAP is loaded).
   Leave headroom for the OS, web server, database, and cache. Setting ``pm.max_children``
@@ -252,7 +252,7 @@ Troubleshooting
   directory trees. Use the slow log to identify the bottleneck.
 
 **Memory grows over time**
-  Workers are leaking memory (Imagick and XML parsers are common sources).
+  Memory leaks can occur in worker processes. Common culprits include libraries that manage external resources (like Imagick for image processing). Use the slow log and RSS monitoring to identify which requests cause growth.
   Set ``pm.max_requests = 500`` to recycle them before they grow too large.
 
 **Slow first request after idle**
