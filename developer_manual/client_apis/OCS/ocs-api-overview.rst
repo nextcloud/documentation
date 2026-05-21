@@ -253,7 +253,28 @@ It can be an option for filtering on a later stage but you can also leave them o
 
      curl -i -u master -X GET -H "OCS-APIRequest: true" 'https://my.nextcloud/ocs/v2.php/core/autocomplete/get?search=JOANNE%40EMAIL.ISP&shareTypes[]=8&limit=2'
 
-The shareType defaults to regular users if you left it out), the limit defaults to 10.
+The ``shareTypes`` parameter filters results by share type. If omitted, it defaults to regular
+users (``0``). The limit defaults to ``10``.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Value
+     - Share type
+   * - ``0``
+     - Users (default)
+   * - ``1``
+     - Groups
+   * - ``4``
+     - Email
+   * - ``6``
+     - Federated cloud shares
+   * - ``7``
+     - Circles
+   * - ``8``
+     - Guest accounts
+   * - ``10``
+     - Talk conversations
 
 Filtering the auto-complete results
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

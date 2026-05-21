@@ -6,6 +6,8 @@ on:
     branches:
       - master
       - stable*
+  schedule:
+    - cron: '0 2 * * *'  # 02:00 UTC daily — full build + deploy
 
 permissions:
   contents: read
@@ -76,6 +78,58 @@ jobs:
         with:
           name: ${{ matrix.manual.name }}
           path: ${{ matrix.manual.directory }}/${{ matrix.manual.build_path }}
+
+  # ============================================================================
+  # BUILD EPUB
+  # ============================================================================
+  # Builds epub documentation for all three manuals. No LaTeX required —
+  # runs in the same plain Python environment as build-html.
+  # ============================================================================
+  build-epub:
+    name: Building ${{ matrix.manual.name }} ePub
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        manual:
+          - name: "user_manual"
+            directory: "user_manual"
+            build_epub_path: "_build/epub/Nextcloud_User_Manual.epub"
+
+          - name: "admin_manual"
+            directory: "admin_manual"
+            build_epub_path: "_build/epub/Nextcloud_Server_Administration_Manual.epub"
+
+          - name: "developer_manual"
+            directory: "developer_manual"
+            build_epub_path: "_build/epub/Nextcloud_Developer_Manual.epub"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: "3.13"
+          cache: "pip"
+
+      - name: Install pip dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Build epub documentation
+        run: |
+          set -e
+          cd ${{ matrix.manual.directory }}
+          make epub
+          ls -la ${{ matrix.manual.build_epub_path }}
+
+      - name: Upload ePub documentation
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: ${{ matrix.manual.name }}-epub
+          path: ${{ matrix.manual.directory }}/${{ matrix.manual.build_epub_path }}
 
   # ============================================================================
   # PREPARE PDF IMAGE
@@ -222,7 +276,7 @@ jobs:
   # ============================================================================
   stage-and-check:
     name: Stage and check documentation
-    needs: [build-html, build-pdf]
+    needs: [build-html, build-pdf, build-epub]
     runs-on: ubuntu-latest
 
     outputs:
@@ -363,13 +417,13 @@ jobs:
             fi
           done
 
-          # Move PDF files to the root of the branch folder for cleaner structure
-          echo "Looking for PDF files to move..."
-          find "stage/${branch}/" -maxdepth 2 -name "*.pdf" -type f
-          for pdf in "stage/${branch}"/*/*.pdf; do
-            if [ -f "$pdf" ]; then
-              echo "Moving PDF: $pdf"
-              mv "$pdf" "stage/${branch}/"
+          # Move PDF and ePub files to the root of the branch folder for cleaner structure
+          echo "Looking for PDF and ePub files to move..."
+          find "stage/${branch}/" -maxdepth 2 \( -name "*.pdf" -o -name "*.epub" \) -type f
+          for f in "stage/${branch}"/*/*.pdf "stage/${branch}"/*/*.epub; do
+            if [ -f "$f" ]; then
+              echo "Moving: $f"
+              mv "$f" "stage/${branch}/"
             fi
           done
 
@@ -453,7 +507,7 @@ jobs:
   deploy:
     name: Deploy documentation for gh-pages
     needs: stage-and-check
-    if: github.event_name == 'push'
+    if: github.event_name == 'schedule'
     runs-on: ubuntu-latest
 
     permissions:
@@ -498,13 +552,13 @@ jobs:
             fi
           done
 
-          # Move pdf files to the root of the branch folder
-          echo "Looking for PDF files to copy..."
-          find stage/${branch}/ -name "*.pdf" -type f
-          for pdf in stage/${branch}/*.pdf; do
-            if [ -f "$pdf" ]; then
-              echo "Copying PDF: $pdf"
-              cp "$pdf" server/${branch}/
+          # Copy PDF and ePub files to the root of the branch folder
+          echo "Looking for PDF and ePub files to copy..."
+          find stage/${branch}/ -maxdepth 1 \( -name "*.pdf" -o -name "*.epub" \) -type f
+          for f in stage/${branch}/*.pdf stage/${branch}/*.epub; do
+            if [ -f "$f" ]; then
+              echo "Copying: $f"
+              cp "$f" server/${branch}/
             fi
           done
 
@@ -641,8 +695,8 @@ jobs:
             fi
           done
 
-          # PDF files (kept at root of deploy dir)
-          find "stage/${branch}" -maxdepth 1 -name "*.pdf" -exec cp {} netlify-deploy/ \;
+          # PDF and ePub files (kept at root of deploy dir)
+          find "stage/${branch}" -maxdepth 1 \( -name "*.pdf" -o -name "*.epub" \) -exec cp {} netlify-deploy/ \;
 
           # Minimal root index linking to the deployed content
           cat > netlify-deploy/index.html <<'EOF'
@@ -660,8 +714,9 @@ jobs:
               <li><a href="admin_manual/">Administration Manual</a></li>
               <li><a href="developer_manual/">Developer Manual</a></li>
               <li><a href="user_manual/en/">User Manual (English)</a></li>
-              <li><a href="Nextcloud_User_Manual.pdf">User Manual PDF</a></li>
-              <li><a href="Nextcloud_Server_Administration_Manual.pdf">Administration Manual PDF</a></li>
+              <li><a href="Nextcloud_User_Manual.pdf">User Manual PDF</a> / <a href="Nextcloud_User_Manual.epub">ePub</a></li>
+              <li><a href="Nextcloud_Server_Administration_Manual.pdf">Administration Manual PDF</a> / <a href="Nextcloud_Server_Administration_Manual.epub">ePub</a></li>
+              <li><a href="Nextcloud_Developer_Manual.epub">Developer Manual ePub</a></li>
             </ul>
           </body>
           </html>
@@ -802,7 +857,11 @@ jobs:
           then
             echo "This workflow ran for a pull request. We need stage-and-check and link-check to succeed, deploy must be skipped, and netlify-preview must succeed or fail (non-fatal on forks)"
             if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'skipped' || (needs.netlify-preview.result != 'success' && needs.netlify-preview.result != 'failure') }}; then exit 1; fi
+          elif ${{ github.event_name == 'push' }}
+          then
+            echo "This workflow ran for a push. We need stage-and-check and link-check to succeed; deploy and netlify-preview must be skipped"
+            if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'skipped' || needs.netlify-preview.result != 'skipped' }}; then exit 1; fi
           else
-            echo "This workflow ran for a push. We need stage-and-check, link-check, and deploy to succeed; netlify-preview must be skipped"
+            echo "This workflow ran on schedule. We need stage-and-check, link-check, and deploy to succeed; netlify-preview must be skipped"
             if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'success' || needs.netlify-preview.result != 'skipped' }}; then exit 1; fi
           fi
