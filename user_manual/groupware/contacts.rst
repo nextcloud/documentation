@@ -7,7 +7,7 @@ be installed separately from our App Store.
 
 The Nextcloud Contacts app is similar to other mobile contact applications, but
 with more functionality.
-This section covers the basic features that will help you maintain your address book
+Let's run through basic features that will help you maintain your address book
 in the application.
 
 Below, you will learn how to add contacts, edit or remove contacts, upload a
@@ -41,13 +41,13 @@ To Import Contacts Using a VCF/vCard File:
 1. An **Import contacts** button is shown when you have no contacts yet.
 2. Find "Settings" at the bottom of the left sidebar, next to the gear button:
 
-    .. figure:: ../images/contact_bottombar.png
-        :alt: Contact settings gear button
+	.. figure:: ../images/contact_bottombar.png
+		:alt: Contact settings gear button
 
 3. Click the gear button. The Contacts app "Import" button will appear:
 
-    .. figure:: ../images/contact_uploadbutton.png
-        :alt: Contacts Upload Field
+	.. figure:: ../images/contact_uploadbutton.png
+		:alt: Contacts Upload Field
 
 .. note:: The Contacts app only supports import of vCards version 3.0 and 4.0.
 
@@ -98,12 +98,12 @@ Contact Picture
 To add a picture for your new contacts, click on the upload button:
 
 .. figure:: ../images/contact_picture.png
-    :alt: Contact picture (upload button)
+	:alt: Contact picture (upload button)
 
 After you have set a contact picture, it will look like this:
 
 .. figure:: ../images/contact_picture_set.png
-    :alt: Contact picture (set)
+	:alt: Contact picture (set)
 
 If you want to upload a new one, remove it, view it in full size or download it,
 click on the contacts picture for the following options to appear:
@@ -154,6 +154,17 @@ Any properties with a Radio (circular) button can only have one value, so one of
 If either of the contacts are part of a group(s), by default the merged contact will be part of all groups that the two contacts were part of. You can uncheck any groups while merging if you don't want the merged contact to be part of them.
 
 .. note:: Currently you are only able to merge two contacts at a time, and you are naturally only able to merge contacts that can be modified by you. If the merging action is disabled, check that you selected contacts that match those conditions.
+
+Mark contacts as favorite
+-------------------------
+.. versionadded:: 8.4
+Now you can mark contacts as favorites to always find them at the top of your contacts list, without needing to search or filter.
+How to use
+To mark a contacts as favorite, hover over a contact, a star will show on the right. Click the start and a yellow star will appear on the contact's avatar to confirm it's been marked as a favorite.
+
+To remove it form the favorite list - Hover over a favorited contact, hover over the contact and click the start on the right. The star will disappear and the contact will return to its alphabetical position in the list.
+
+.. figure:: ../images/mark_favorite.png
 
 Organize your Contacts with Contact Groups
 ------------------------------------------
@@ -239,10 +250,6 @@ Team options
 ~~~~~~~~~~~~
 
 Various self-explanatory options are available to configure a team, to manage invites and membership, visibility of the team, allowance of other team membership and password protection.
-
-**Prevent teams from being a member of another team**
-
-When this option is enabled, the team can no longer be directly added as a member of another team. However, this restriction only applies to new direct additions. Existing memberships are kept, and inherited memberships are still possible if this team belongs to a parent team that gets added elsewhere.
 
 Shared items
 ~~~~~~~~~~~~
