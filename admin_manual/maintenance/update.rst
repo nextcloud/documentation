@@ -69,104 +69,8 @@ The built-in updater performs these operations:
   linked page or to the command line to finish the upgrade by executing the
   migration steps.
 
-Using the web based updater
----------------------------
-
-Using the built-in updater to update your Nextcloud installation is just a few
-steps:
-
-1.  You should see a notification at the top of any Nextcloud page when there is
-    a new update available. Go to the admin settings page and scroll to the
-    section "Version". This section has a button to open the updater. This
-    section as well as the update notification is only available if the update
-    notification app is enabled in the apps management.
-
-.. figure:: images/updater-1-update-available.png
-
-2.  Click the button "Open updater".
-
-.. figure:: images/updater-2-open-updater.png
-
-3.  Verify the information that is shown and click the button "Start update"
-    to start the update.
-
-.. figure:: images/updater-3-running-step.png
-
-4.  In case an error happens or the check failed the updater stops processing
-    and gives feedback. You can now try to solve the problem and click the
-    "Retry update" button. This will continue the update and re-run the failed
-    step. It will not re-run the previous succeeded steps.
-
-.. figure:: images/updater-4-failed-step.png
-
-5. In case you close the updater, before it finished you can just open the
-   updater page again and proceed at the last succeeded step. Closing the web
-   page will still execute the running step but will not continue with the next
-   one, because this is triggered by the open updater page.
-
-.. figure:: images/updater-5-continue-update.png
-
-6. Once all steps are executed the updater will ask you a final question:
-   "Keep maintenance mode active?". This allows you to use either the web based
-   upgrade page or the command line based upgrade procedure (``occ upgrade``).
-   Command line access is required if the maintenance mode is kept active.
-
-.. figure:: images/updater-6-maintenance-mode.png
-
-7. Done. You now can continue either to the web based upgrade page or run
-   ``occ upgrade``. The two examples "Web based upgrade" and "Command line
-   based upgrade" shows how the screens then look like.
-
-
-**Web based upgrade**
-
-This is how the web based update would continue:
-
-.. image:: images/updater-7-disable-maintenance.png
-   :alt: Nextcloud web updater showing option to disable maintenance mode after upgrade
-
-.. image:: images/updater-9-upgrade-page.png
-   :alt: Nextcloud upgrade page displayed after the web updater completes
-
-**Command line based upgrade**
-
-This is how the command line based update would continue:
-
-.. image:: images/updater-8-keep-maintenance.png
-   :alt: Nextcloud command line updater asking whether to keep maintenance mode active
-
-
-.. code::
-
-    $ sudo -u www-data php ./occ upgrade
-    Nextcloud or one of the apps require upgrade - only a limited number of commands are available
-    You may use your browser or the occ upgrade command to do the upgrade
-    Set log level to debug
-    Updating database schema
-    Updated database
-    Updating <files_pdfviewer> ...
-    Updated <files_pdfviewer> to 1.1.1
-    Updating <gallery> ...
-    Updated <gallery> to 17.0.0
-    Updating <activity> ...
-    Updated <activity> to 2.5.2
-    Updating <comments> ...
-    Updated <comments> to 1.2.0
-    Updating <theming> ...
-    Updated <theming> to 1.3.0
-    Starting code integrity check...
-    Finished code integrity check
-    Update successful
-    Maintenance mode is kept active
-    Reset log level
-
 Using the command line based updater
 ------------------------------------
-
-The command line based updater works in the exact same way the web based
-updater works. The steps and checks are the very same.
-
-The steps are basically the same as for the web based updater:
 
 1.  You should see a notification at the top of any Nextcloud page when there is
     a new update available. Go to the admin settings page and scroll to the
@@ -180,7 +84,7 @@ The steps are basically the same as for the web based updater:
 2. Instead of clicking that button you can now invoke the command line based
    updater by going into the `updater/` directory in the Nextcloud directory
    and executing the `updater.phar` as the web server user. (i.e.
-   ``sudo -u www-data php /var/www/nextcloud/updater/updater.phar``)
+   ``sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar``)
 
 .. image:: images/updater-cli-2-start-updater.png
    :alt: Terminal showing Nextcloud command line updater starting and displaying update information
@@ -233,7 +137,7 @@ except an error occurred during the ``occ upgrade`` or the replacement of the
 code.
 
 To execute this, run the command with the ``--no-interaction`` option. (i.e.
-``sudo -u www-data php /var/www/nextcloud/updater/updater.phar --no-interaction``)
+``sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar --no-interaction``)
 
 .. image:: images/updater-cli-8-no-interaction.png
    :alt: Terminal showing Nextcloud command line updater running in non-interactive batch mode
@@ -325,6 +229,100 @@ runs:
         --url file:///tmp/nextcloud-33.0.0.zip \
         --signature "BASE64_SIGNATURE_HERE" \
         --no-interaction
+
+Using the web based updater
+---------------------------
+
+The web based updater performs the same steps and checks as the command line
+based updater.
+
+Using the built-in updater to update your Nextcloud installation is just a few
+steps:
+
+1.  You should see a notification at the top of any Nextcloud page when there is
+    a new update available. Go to the admin settings page and scroll to the
+    section "Version". This section has a button to open the updater. This
+    section as well as the update notification is only available if the update
+    notification app is enabled in the apps management.
+
+.. figure:: images/updater-1-update-available.png
+
+2.  Click the button "Open updater".
+
+.. figure:: images/updater-2-open-updater.png
+
+3.  Verify the information that is shown and click the button "Start update"
+    to start the update.
+
+.. figure:: images/updater-3-running-step.png
+
+4.  In case an error happens or the check failed the updater stops processing
+    and gives feedback. You can now try to solve the problem and click the
+    "Retry update" button. This will continue the update and re-run the failed
+    step. It will not re-run the previous succeeded steps.
+
+.. figure:: images/updater-4-failed-step.png
+
+5. In case you close the updater, before it finished you can just open the
+   updater page again and proceed at the last succeeded step. Closing the web
+   page will still execute the running step but will not continue with the next
+   one, because this is triggered by the open updater page.
+
+.. figure:: images/updater-5-continue-update.png
+
+6. Once all steps are executed the updater will ask you a final question:
+   "Keep maintenance mode active?". This allows you to use either the web based
+   upgrade page or the command line based upgrade procedure (``occ upgrade``).
+   Command line access is required if the maintenance mode is kept active.
+
+.. figure:: images/updater-6-maintenance-mode.png
+
+7. Done. You now can continue either to the web based upgrade page or run
+   ``occ upgrade``. The two examples "Web based upgrade" and "Command line
+   based upgrade" shows how the screens then look like.
+
+
+**Web based upgrade**
+
+This is how the web based update would continue:
+
+.. image:: images/updater-7-disable-maintenance.png
+   :alt: Nextcloud web updater showing option to disable maintenance mode after upgrade
+
+.. image:: images/updater-9-upgrade-page.png
+   :alt: Nextcloud upgrade page displayed after the web updater completes
+
+**Command line based upgrade**
+
+This is how the command line based update would continue:
+
+.. image:: images/updater-8-keep-maintenance.png
+   :alt: Nextcloud command line updater asking whether to keep maintenance mode active
+
+
+.. code::
+
+    $ sudo -u www-data php ./occ upgrade
+    Nextcloud or one of the apps require upgrade - only a limited number of commands are available
+    You may use your browser or the occ upgrade command to do the upgrade
+    Set log level to debug
+    Updating database schema
+    Updated database
+    Updating <files_pdfviewer> ...
+    Updated <files_pdfviewer> to 1.1.1
+    Updating <gallery> ...
+    Updated <gallery> to 17.0.0
+    Updating <activity> ...
+    Updated <activity> to 2.5.2
+    Updating <comments> ...
+    Updated <comments> to 1.2.0
+    Updating <theming> ...
+    Updated <theming> to 1.3.0
+    Starting code integrity check...
+    Finished code integrity check
+    Update successful
+    Maintenance mode is kept active
+    Reset log level
 
 Troubleshooting
 ---------------
