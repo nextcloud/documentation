@@ -12,7 +12,11 @@ General rules
 
 **Keep messages short.** One idea per sentence. Cut every word that does not add meaning.
 
+**Write Nextcloud correctly.** Always spell it ``Nextcloud`` — capital N, lowercase c.
+Do not write ``NextCloud``, ``nextcloud``, or abbreviate it as ``Nc``.
+
 **Use sentence case.** Capitalize only the first word and proper nouns.
+Never use all uppercase for headings, labels, or tags.
 
 .. list-table::
    :header-rows: 1
@@ -26,6 +30,10 @@ General rules
      - Could not load the file
    * - Your changes have been successfully applied to the system
      - Changes saved
+   * - SHARE
+     - Share
+   * - NextCloud
+     - Nextcloud
 
 **Drop "successfully".** If an action completed, the result speaks for itself.
 State what happened, not that it happened without error.
@@ -77,10 +85,36 @@ Tone
    * - Oops! Something went wrong!
      - Could not complete the request
 
+Names, pronouns, and gender
+---------------------------
+
+**Use full names** when addressing users. A full name is less ambiguous and more respectful than a first name alone.
+
+**Avoid possessive pronouns** where possible. Replace ``my`` and ``your`` with a more descriptive word.
+Where a pronoun cannot be avoided, prefer ``your`` over ``my``.
+
+**Use gender-neutral language.** Refer to people with ``they``/``them`` rather than ``he``/``she``
+when gender is unknown. For additional guidance and language-specific examples, see the
+`International guide to gender-inclusive writing <https://uxcontent.com/the-international-guide-to-gender-inclusive-writing/>`_.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 50 50
+
+   * - Avoid
+     - Prefer
+   * - Hello, Christine
+     - Hello, Christine Schott
+   * - My files
+     - Personal files
+   * - Alex raised his hand
+     - Alex raised their hand
+
 Button and action labels
 ------------------------
 
 Use **verb + noun** for buttons that trigger an action. The noun can be omitted when context makes it obvious.
+For destructive actions use the specific verb so users know exactly what will happen: **Delete**, **Remove**, **Revoke** — not **Confirm** or **OK**.
 
 .. list-table::
    :header-rows: 1
@@ -94,8 +128,8 @@ Use **verb + noun** for buttons that trigger an action. The noun can be omitted 
      - Create account
    * - Yes
      - Delete file
-
-For destructive actions use the specific verb so users know exactly what will happen: **Delete**, **Remove**, **Revoke** — not **Confirm** or **OK**.
+   * - Confirm
+     - Delete file
 
 Placeholders and variables
 --------------------------
