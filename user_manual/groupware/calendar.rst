@@ -156,6 +156,17 @@ You can embed your calendars into supported apps like ``Talk``, ``Notes``, etc..
 by either sharing the public link to make the embed viewable (read-only) to all users
 or by using the internal link to make it private.
 
+Connecting external clients via CalDAV
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can access your Nextcloud calendars from external clients using the CalDAV protocol.
+
+To subscribe to all your calendars, use ``https://example.com/remote.php/dav/calendars/USERNAME/``
+
+To subscribe to a specific calendar, use ``https://example.com/remote.php/dav/calendars/USERNAME/CALENDAR-NAME/``
+
+.. tip:: You can find the URL for a specific calendar by clicking the pencil icon next to a calendar name in the left sidebar and copying the **Internal link**. This link can be used directly in external CalDAV clients.
+
 Subscribe to a Calendar
 ~~~~~~~~~~~~~~~~~~~~~~~
 
