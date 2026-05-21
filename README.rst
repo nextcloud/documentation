@@ -2,226 +2,187 @@
 Nextcloud Documentation
 =======================
 
-|build| |netlify|
+|build| |netlify| |license|
 
 .. |build| image:: https://img.shields.io/github/actions/workflow/status/nextcloud/documentation/sphinxbuild.yml?branch=master&style=flat-square
-   :alt: Build Status
+   :target: https://github.com/nextcloud/documentation/actions/workflows/sphinxbuild.yml
+   :alt: Build status
 
 .. |netlify| image:: https://img.shields.io/badge/Netlify-powered-00C7B7?style=flat-square&logo=netlify
    :target: https://www.netlify.com
    :alt: Netlify
 
-Documentation is published on `<https://docs.nextcloud.com>`_.
-To edit it yourself, you need to tinker a bit with Git and Sphinx.
-See the `Style Guide <https://github.com/nextcloud/documentation/blob/master/style_guide.rst>`_ for formatting and style conventions.
+.. |license| image:: https://img.shields.io/badge/license-CC%20BY%203.0-lightgrey?style=flat-square
+   :target: https://creativecommons.org/licenses/by/3.0/deed.en_US
+   :alt: License: CC BY 3.0
+
+Documentation for Nextcloud, published at `docs.nextcloud.com <https://docs.nextcloud.com>`_.
+Written in reStructuredText and built with `Sphinx <https://www.sphinx-doc.org/>`_.
+
+New here? See `Contributing`_ below — we welcome all improvements, big or small.
 
 Manuals
 -------
 
 This repository hosts three manuals:
 
-* **Users' Manual**
-* **Administration Manual**
-* **Developers Manual**
+* **User manual** — end-user features and workflows
+* **Administration manual** — server installation, configuration, and operations
+* **Developer manual** — app development, APIs, and architecture
 
-Please work in the appropriate branch: ``stable``-branches are for the respective release (e.g. 14.0 or 15.0), ``master`` is the latest version.
+Use the correct branch for the version you are targeting: ``master`` tracks the latest
+release; ``stable<N>`` branches (e.g. ``stable32``) cover specific releases.
 
-Wrap prose lines at **120 characters** where practical. Long URLs, code
-examples, and table cells may exceed this limit. See the
-`Style Guide <https://github.com/nextcloud/documentation/blob/master/style_guide.rst>`_
-for full guidance.
+.. note::
+   ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from
+   `config.sample.php in nextcloud/server <https://github.com/nextcloud/server/tree/master/config>`_.
+   Do not edit it here — changes must be made upstream in the server repository.
 
-.. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
-   config.sample.php file; changes to this file must be made in core `<https://github.com/nextcloud/server/tree/master/config>`_
-
-Spelling and Capitalization Conventions
----------------------------------------
-
-As this grows it may be moved to its own page.
-
-* Nextcloud App Store
-* synchronize
-* Web (Web page, Web site)
-
-License
--------
-
-All documentation in this repository is licensed under the Creative Commons
-Attribution 3.0 Unported license (`CC BY 3.0`_).
-
-.. _CC BY 3.0: https://creativecommons.org/licenses/by/3.0/deed.en_US
-
-Style
------
-
-Source files are written using the `Sphinx Documentation Generator
-<https://www.sphinx-doc.org/en/master/>`_. The syntax follows the `reStructuredText
-<http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
-from GitHub.
-
-Structure
----------
-
-Of course, think about structure. Keep in mind that we try NOT to move or rename
-pages once they are created! Lots of external sources link to our documentation,
-including the indexing by search engines of course. So once you create a page with a certain
-name, it has to stay in that location and with that name. Think of it as API stability
-- we have to ensure things stay as they are as much as possible. Renaming or moving
-is only allowed in exceptional circumstances and only when a redirect is put in place.
-
-Editing
--------
-
-Contributing to the documentation requires a GitHub account. Make sure you are
-working in the correct branch for your version of Nextcloud or client apps.
-If your edits pertain to multiple manual versions, be prepared to backport as
-needed.
-
-To edit a document, you can edit the .rst files on your local system, or work
-directly on GitHub. The latter is only suitable for small fixes and improvements
-because substantial editing efforts can better be controlled on your local PC.
-
-.. tip::
-   If you're getting to know our documentation syntax, `give Documatt Snippets
-   <https://snippets.documatt.com/>`_ a try. This online editor is a great way 
-   to practice with reStructuredText and Sphinx, and it provides a more accurate
-   preview of your work than GitHub does.
-
-The best way is to install a complete Sphinx build environment and work on your
-local PC. You will be able to make your own local builds, which is the fastest
-and best way to preview for errors. Sphinx will report syntax errors, missing
-images, and formatting errors. The GitHub preview is not complete and misses
-many mistakes. Create a new branch against the master or stable branch you are
-editing, make your edits, then push your new branch to GitHub and open a new PR.
-
-To edit on GitHub, fork the repository (see top-right of the screen, under
-your username). You will then be able to make changes easily. Once done,
-you can create a pull request and get the changes reviewed and back into
-the official repository.
-
-When editing either on your own local PC or on GitHub, be sure to sign of
-commits, to certify adherence to the Developer Certificate of Origin,
-see https://github.com/probot/dco . Your commit messages need to have,
-the name and email address of the contributor.
-
-  Signed-off-by: Awesome Contributor <awesome.contributor@reach.me>
-
-If using the command line and your name and email are configured, you can use
-
-  git commit -s -m 'Commit message'
-
-In both settings be sure that your email address matches that in your GitHub profile,
-which if you have privacy enabled will be github.username@users.noreply.github.com
-
-
-Translations
+Contributing
 ------------
 
-`Help translate the documentation <https://explore.transifex.com/nextcloud/nextcloud-user-documentation/>`_.
+Contributions of any size are welcome — fixing a typo is just as valuable as writing a
+new page. See `CONTRIBUTING.md <CONTRIBUTING.md>`_ for the full workflow: local setup,
+branch strategy, commit format, DCO sign-off, and review process.
 
-For developers that want to ease the translation process, please read `this documentation <https://docs.transifex.com/integrations/sphinx-doc>`_.
+Quick entry points:
+
+* **Report a problem** — `open an issue
+  <https://github.com/nextcloud/documentation/issues/new/choose>`_
+* **Edit on GitHub** — fork the repo and open a pull request for small fixes
+* **Write locally** — set up a build environment (see `Building`_) for larger changes
+* **Translate** — `help on Transifex
+  <https://explore.transifex.com/nextcloud/nextcloud-user-documentation/>`_
+
+Before writing, read the `style guide <style_guide.rst>`_.
+
+Code of Conduct
+---------------
+
+All contributors are expected to follow the `Nextcloud Code of Conduct
+<https://nextcloud.com/contribute/code-of-conduct/>`_.
+
+Getting help
+------------
+
+* `Nextcloud community forums <https://help.nextcloud.com>`_ — general Nextcloud questions
+* `Documentation Talk room <https://cloud.nextcloud.com/call/uuz59j6z>`_ — real-time chat
+  with documentation contributors
+* `GitHub Issues <https://github.com/nextcloud/documentation/issues>`_ — bug reports and
+  documentation gaps
+
+Structure policy
+^^^^^^^^^^^^^^^^
+
+Once a page is created, **do not rename or move it** without adding a redirect in that
+manual's ``conf.py``. External links and search-engine indexes depend on stable URLs —
+treat page paths like a public API.
+
+Spelling conventions
+^^^^^^^^^^^^^^^^^^^^
+
+* Nextcloud App Store
+* synchronize (not "sync" in prose)
+* Web, Web page, Web site (capitalised)
 
 Building
 --------
 
-Nightly Automated Build Steps
-=============================
+Quick start
+^^^^^^^^^^^
 
-1.  **Fetch sources**
-   1.  ``git clone https://github.com/nextcloud/documentation.git``
-   2.  ``cd documentation``
-   3.  ``git checkout <branch name>``
-2.  **Install**
-   1.  ``pip3 install -r requirements.txt``
-   2.  ``make all``
+.. code-block:: bash
 
+   git clone https://github.com/nextcloud/documentation.git
+   cd documentation
+   uv venv && source .venv/bin/activate    # recommended
+   uv pip install -r requirements.txt
+   make html                               # all manuals
 
-Building HTML
-=============
+Using plain Python instead::
 
-Using pipenv
-^^^^^^^^^^^^
+   python3 -m venv venv && source venv/bin/activate
+   pip install -r requirements.txt
+   make html
 
-1. Install ``pipenv`` - https://pipenv.readthedocs.io/en/latest/
-2. Change into the environment: ``pipenv shell``
-3. Install the dependencies ``pip install -r requirements.txt``
-4. Now you can use ``make ...`` to build all the stuff - for example ``make html`` to build the HTML flavor of all manuals
-   The build assets will be put into the individual documentation subdirectories like ``developer_manual/_build/html/com``
+Output lands in ``<manual>/_build/html/``. Build a single manual::
 
-To change into this environment you need to run ``pipenv shell`` to launch the shell and to exit you can use either ``exit`` or ``Ctrl`` + ``D``.
-
-Using venv
-^^^^^^^^^^
-
-1. Install ``python3-venv``
-2. Only once: Create a venv (typically inside this repository): ``python -m venv venv``
-3. Activate the environment (inside this repository): ``source venv/bin/activate``
-4. Install the dependencies ``pip install -r requirements.txt``
-5. Now you can use ``make ...`` to build all the stuff - for example ``make html`` to build the HTML flavor of all manuals
-   The build assets will be put into the individual documentation subdirectories like ``developer_manual/_build/html/com``
-
-Building translated versions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Only available in user_manual:
-
-1. Build the english version as described above before
-2. Create translation files: ``../build/change_file_extension.sh``
-3. Create German (``de``) version: ``make html-lang-de``
-4. Find the HTML files in ``_build/html/de/index.html``
-5. Before building another language you have to delete the complete ``_build`` directory
+   cd user_manual && make html
 
 Autobuilding
 ^^^^^^^^^^^^
 
-When editing the documentation installing ``sphinx-autobuild`` though pip can be helpful. This will watch file changes and automatically reload the html preview:
+For a live-reloading preview while editing:
 
-1. Install ``pip install sphinx-autobuild``
-2. When building the developer documentation make sure to execute ``make openapi-spec`` in the repository root
-3. Enter the documentation section ``cd user_manual``
-4. Watch for file changes ``make SPHINXBUILD=sphinx-autobuild html``
-5. Open http://127.0.0.1:8000 in the browser and start editing
+.. code-block:: bash
 
-Building PDF
-============
+   uv pip install sphinx-autobuild
+   cd user_manual
+   make SPHINXBUILD=sphinx-autobuild html
 
-Building inside docker
-^^^^^^^^^^^^^^^^^^^^^^
+Then open http://127.0.0.1:8000.
 
-1. Create a docker:: ``docker run --platform linux/amd64 --volume .:/docs --interactive --tty --name nextcloud-docs ghcr.io/nextcloud/continuous-integration-documentation:documentation-15 bash``
-2. Change into the documentation directory: ``cd /docs``
-3. Only once: Create a venv: ``python -m venv venv``
-4. Activate the environment: ``source venv/bin/activate``
-5. Install the dependencies ``pip install -r requirements.txt``
-6. Change into the documentation of choice (admin, developer, user): ``cd /docs/user_manual``
-7. To build the English version: ``make latexpdf``
-8. To build the translated version (only available in user_manual):
-   1. Create translation files: ``../build/change_file_extension.sh``
-   2. Create German (``de``) version: ``make latexpdf-lang-de``
-   3. Find the file in ``_build/latex/Nextcloud_User_Manual.pdf``
-   4. Before building another language you have to delete the complete ``_build`` directory
+Translated versions (user manual only)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Building locally
-^^^^^^^^^^^^^^^^
+1. Build the English version first (see above).
+2. Generate translation stubs::
 
-.. note:: Because of the many dependencies LaTeX and the other tools bring in, it is not recommended to install the tools locally.
+      ../build/change_file_extension.sh
 
-1. Follow instructions for "Building HTML" above
-2. Install ``latexmk`` and ``texlive-latex-extra`` - https://pipenv.readthedocs.io/en/latest/
-3. Create a Python environment (typically inside this repository): ``pipenv --python 3.9``
-4. Change into the environment: ``pipenv shell``
-5. Install the dependencies ``pip install -r requirements.txt``
-6. Now you can use ``make ...`` to build all the stuff - for example ``make pdf`` to build the PDF flavor of all manuals
+3. Build a specific language, e.g. German::
 
-Using the VSCode DevContainer
-=============================
+      make html-lang-de
 
-This repository contains a full-featured `VSCode DevContainer <https://code.visualstudio.com/docs/devcontainers/containers>`_.
-You can use it in your local development environment or via `GitHub Codespaces <https://github.com/features/codespaces>`_.
-Just open the container an use one of the commands from above to build the project. For example ``make`` to build the full
-documentation, ``make html`` to build the HTML documentation or ``make pdf`` to build the PDF documentation. You can also use
-``make SPHINXBUILD=sphinx-autobuild html`` in combination with `port forwarding <https://code.visualstudio.com/docs/devcontainers/containers#_forwarding-or-publishing-a-port>`_
-to  watch file changes and automatically reload the html preview.
+   Output: ``_build/html/de/index.html``
 
-.. _CC BY 3.0: https://creativecommons.org/licenses/by/3.0/deed.en_US
-.. _`Xcode command line tools`: https://stackoverflow.com/questions/9329243/xcode-install-command-line-tools
+.. note:: Delete ``_build/`` before switching to a different language.
+
+PDF
+^^^
+
+The easiest path is the `VSCode DevContainer
+<https://code.visualstudio.com/docs/devcontainers/containers>`_ or GitHub Codespaces —
+all LaTeX dependencies are pre-installed. Open the repository in the container and run::
+
+   cd user_manual && make latexpdf
+
+Alternatively, use Docker directly:
+
+.. code-block:: bash
+
+   docker run --platform linux/amd64 \
+     --volume .:/docs --interactive --tty \
+     ghcr.io/nextcloud/documentation/sphinx-latex:latest bash
+
+   # Inside the container:
+   cd /docs && python3 -m venv venv && source venv/bin/activate
+   pip install -r requirements.txt
+   cd user_manual && make latexpdf
+   # Output: _build/latex/Nextcloud_User_Manual.pdf
+
+For translated PDFs (user manual only), generate translation stubs first
+(``../build/change_file_extension.sh``), then run ``make latexpdf-lang-de``.
+
+.. note::
+   Installing LaTeX locally is not recommended due to the large number of system
+   dependencies. Use the DevContainer or Docker approach instead.
+
+Translations
+------------
+
+`Help translate the documentation on Transifex
+<https://explore.transifex.com/nextcloud/nextcloud-user-documentation/>`_.
+
+Translation files under ``locale/`` are managed by Transifex and synced via CI.
+Edit source strings in ``.rst`` files only — never edit ``locale/`` directly.
+
+For the Transifex Sphinx integration, see the
+`Transifex documentation <https://docs.transifex.com/integrations/sphinx-doc>`_.
+
+License
+-------
+
+All documentation in this repository is licensed under the `Creative Commons
+Attribution 3.0 Unported license (CC BY 3.0)
+<https://creativecommons.org/licenses/by/3.0/deed.en_US>`_.
