@@ -630,6 +630,11 @@ Username-LDAP User Mapping
 Testing the configuration
 -------------------------
 
+.. warning:: Before testing, make sure the **Configuration Active** checkbox is
+   enabled. It is disabled by default and will cause authentication to fail with
+   a "wrong password" error even if all other settings are correct. Nextcloud
+   only enables it automatically after a successful test connection.
+
 The **Test Configuration** button checks the values as currently given in the
 input fields. You do not need to save before testing. By clicking on the
 button, Nextcloud will try to bind to the Nextcloud server using the
