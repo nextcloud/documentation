@@ -2,210 +2,191 @@
 Foundations
 ===========
 
-There are several design elements that are common to all Nextcloud apps. If you are developing for a platform that has its own design specifications, for example Android, it would be a good idea to keep those in mind while designing your app.
+.. _Colors:
 
-For web apps, there is the `Vue library <https://nextcloud-vue-components.netlify.app/>`_ and the `Penpot design kit <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=db3839da-807b-8052-8002-576401e9a376&section=interactions&index=0&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_.
+Colors
+------
 
-Color
------
+Primary colors
+^^^^^^^^^^^^^^
 
-`Penpot colors <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab128f3ffe2&section=interactions&index=3&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
+-  ``--color-primary-element``: Primary colors are to be used for positive action buttons and active states. Otherwise use the primary color sparingly in the UI. Do not use the primary color for body
+   text.
+-  ``--color-primary-element-light``: Use the secondary color for less important buttons and highlighting elements in the UI. Do not use the secondary color for body text.
 
-Primary color
+.. list-table::
+   :header-rows: 1
+
+   * - Light theme
+     - Dark theme
+   * - .. image:: ../images/color-primary-light.png
+          :alt: Color swatch: --color-primary (Light)
+     - .. image:: ../images/color-primary-dark.png
+          :alt: Color swatch: --color-primary (Dark)
+   * - .. image:: ../images/color-primary-element-light-light.png
+          :alt: Color swatch: --color-primary-element-light (Light)
+     - .. image:: ../images/color-primary-element-light-dark.png
+          :alt: Color swatch: --color-primary-element-light (Dark)
+
+Text colors
+^^^^^^^^^^^
+
+-  ``--color-main-text``: Most text that is not inside a component is the main text color.
+-  ``--color-text-maxcontrast``: Use this color for sublines, captions and any other kind of supporting text.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Light theme
+     - Dark theme
+   * - .. image:: ../images/color-main-text-light.png
+          :alt: Color swatch: --color-main-text (Light)
+     - .. image:: ../images/color-main-text-dark.png
+          :alt: Color swatch: --color-main-text (Dark)
+   * - .. image:: ../images/color-text-maxcontrast-light.png
+          :alt: Color swatch: --color-text-maxcontrast (Light)
+     - .. image:: ../images/color-text-maxcontrast-dark.png
+          :alt: Color swatch: --color-text-maxcontrast (Dark)
+
+Background colors
+^^^^^^^^^^^^^^^^^
+
+-  ``--color-main-background``: The background of the main content should be this color.
+-  ``--color-background-darker``: This can be used as a background color for containers inside the main content when visual contrast would be useful. Use sparingly to not overwhelm the UI.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Light theme
+     - Dark theme
+   * - .. image:: ../images/color-main-background-light.png
+          :alt: Color swatch: --color-main-background (Light)
+     - .. image:: ../images/color-main-background-dark.png
+          :alt: Color swatch: --color-main-background (Dark)
+   * - .. image:: ../images/color-background-dark-light.png
+          :alt: Color swatch: --color-background-dark (Light)
+     - .. image:: ../images/color-background-dark-dark.png
+          :alt: Color swatch: --color-background-dark (Dark)
+
+Border colors
 ^^^^^^^^^^^^^
 
-.. figure:: ../images/colour-primary.svg
-   :alt: Nextcloud primary color swatch showing blue #0082C9
+-  ``--color-border``: Use this color for borders of elements like cards, and for separator lines.
+-  ``--color-border-maxcontrast``: Use this color when there is a stronger contrast needed.
 
-   #0082C9
+.. list-table::
+   :header-rows: 1
 
-While this is the primary color associated with Nextcloud and can be used to draw attention to an element, it is best to limit the usage of this to primary actions and other important elements.
+   * - Light theme
+     - Dark theme
+   * - .. image:: ../images/color-border-light.png
+          :alt: Color swatch: --color-border (Light)
+     - .. image:: ../images/color-border-dark.png
+          :alt: Color swatch: --color-border (Dark)
+   * - .. image:: ../images/color-border-maxcontrast-light.png
+          :alt: Color swatch: --color-border-maxcontrast (Light)
+     - .. image:: ../images/color-border-maxcontrast-dark.png
+          :alt: Color swatch: --color-border-maxcontrast (Dark)
 
-.. note::
-     The primary color can be customized by admins through theming, but the default experience will be Nextcloud blue. If the primary color is themed to something very light like a shade of yellow, the text or header icons will be inverted to dark automatically.
+Status colors
+^^^^^^^^^^^^^
 
-* On web: ``var(--color-primary-element)``
-* Android: uses default Material Design colors
-* iOS: `systemFill <https://developer.apple.com/documentation/uikit/uicolor/3255070-systemfill>`_
-* Desktop: `default Qt guidelines <https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum>`_
+-  ``--color-info``: This color is used for denoting informational elements like info cards.
+-  ``--color-success``: Used for positive actions like a "Join call" button, and for indicating an action is successful.
+-  ``--color-error``: This color is used to indicate a destructive action like "Delete conversation" and when an action has failed.
+-  ``--color-warning``: This is used to warn the user about an action that may be dangerous.
 
-Background color
+.. list-table::
+   :header-rows: 1
+
+   * - Light theme
+     - Dark theme
+   * - .. image:: ../images/color-info-light.png
+          :alt: Color swatch: --color-info (Light)
+     - .. image:: ../images/color-info-dark.png
+          :alt: Color swatch: --color-info (Dark)
+   * - .. image:: ../images/color-success-light.png
+          :alt: Color swatch: --color-success (Light)
+     - .. image:: ../images/color-success-dark.png
+          :alt: Color swatch: --color-success (Dark)
+   * - .. image:: ../images/color-warning-light.png
+          :alt: Color swatch: --color-warning (Light)
+     - .. image:: ../images/color-warning-dark.png
+          :alt: Color swatch: --color-warning (Dark)
+   * - .. image:: ../images/color-error-light.png
+          :alt: Color swatch: --color-error (Light)
+     - .. image:: ../images/color-error-dark.png
+          :alt: Color swatch: --color-error (Dark)
+
+Assistant colors
 ^^^^^^^^^^^^^^^^
 
+-  ``--color-element-assistant``: A special color used for elements using AI. Using this color informs the user that the info they are seeing may be AI-generated or that they are interacting with an
+   AI.
+
 .. list-table::
+   :header-rows: 1
 
-    * - .. figure:: ../images/colour-main-background.svg
-           :alt: Light theme background color swatch showing white #FFFFFF
+   * - Light theme
+     - Dark theme
+   * - .. image:: ../images/color-element-assistant-light.png
+          :alt: Color swatch: --color-element-assistant (Light)
+     - .. image:: ../images/color-element-assistant-dark.png
+          :alt: Color swatch: --color-element-assistant (Dark)
 
-           Background for light theme: #FFFFFF
+.. _Typography:
 
-      - .. figure:: ../images/colour-dark-theme-main-backgroud.svg
-           :alt: Dark theme background color swatch showing dark grey #181818
+Typography and wording
+----------------------
 
-           Background for dark theme: #181818
+Fonts
+^^^^^
 
-Nextcloud apps have a light and a dark theme, with appropriately chosen colors for all elements.
+-  To ensure compatibility with different platforms, Nextcloud apps always use the native system font.
+-  Use bold font weight for emphasis and unread items
+-  Do not use italics or upper case as they are less legible.
 
-
-* On web: ``var(--color-main-background)``
-* Android: uses default Material Design colors
-* iOS: `systemBackground <https://developer.apple.com/documentation/uikit/uicolor/3173140-systembackground>`_
-* Desktop: `default Qt guidelines <https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum>`_
-
-Text color
+Font sizes
 ^^^^^^^^^^
 
-.. list-table::
+-  ``--defalut-font-size``\ (15px): For body text
+-  ``--font-size-small`` (13px): For nonessential information
+-  Other than those 2 font sizes, 20px is also often used for headings, and 24px for titles.
 
-    * - .. figure:: ../images/colour-main-text.svg
-           :alt: Light theme text color swatch showing near-black #222222
+Wording
+^^^^^^^
 
-           Text in light theme: #222222
+- Wording guidelines have been moved to :doc:`the writing section <writing>`.
 
-      - .. figure:: ../images/colour-dark-theme-main-text.svg
-           :alt: Dark theme text color swatch showing light grey #D8D8D8
+.. _Borders:
 
-           Text in dark theme: #D8D8D8
+Borders
+-------
 
-This is the main color for the text in light theme, and in dark theme.
+Border radii
+^^^^^^^^^^^^
 
+-  ``--border-radius-small`` (4px): Used for small elements like tags and cards.
+-  ``--border-radius-element`` (8px): Standard border radius used for buttons. navigation items and more.
+-  ``--border-radius-container`` (12px): Used for larger elements such as dialogs.
+-  ``--border-radius-pill`` (100px): Used to convert any small element into a pill-shape.
 
-* On web: ``var(--color-main-text)``
-* Android: uses default Material Design color "high emphasis"
-* iOS: `label <https://developer.apple.com/documentation/uikit/uicolor/3173131-label>`_ (in UITextView, leave the default textColor)
-* Desktop: `default Qt guidelines <https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum>`_
+.. _Element sizes and spacing:
 
-.. list-table::
+Element sizes and spacing
+-------------------------
 
-    * - .. figure:: ../images/colour-text-maxcontrast.svg
-           :alt: Light theme secondary text color swatch showing grey #767676
+-  ``--default-grid-baseline``\ (4px): This is the base multiplier for all spacing. Use whole number multiples of this variable for all spacing, never raw numbers.
+-  ``--default-clickable-area``\ (34px): This should be the minimum width and height of most clickable elements like buttons, inputs, cards, etc.
+-  ``--clickable-area-small``\ (24px): This can be used for smaller elements like chips, or when there is limited space.
 
-           Secondary text in light theme: #767676
-
-      - .. figure:: ../images/colour-dark-theme-text-maxcontrast.svg
-           :alt: Dark theme secondary text color swatch showing medium grey #8C8C8C
-
-           Secondary text in dark theme: #8C8C8C
-
-
-In addition, a softer color is used for secondary text like sublines, timestamps, and similar.
-
-
-* On web:``var(--color-text-maxcontrast)``
-* Android: uses default Material Design color "medium emphasis"
-* iOS: `secondaryLabel <https://developer.apple.com/documentation/uikit/uicolor/3173136-secondarylabel>`_
-* Desktop: `default Qt guidelines <https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum>`_
-
-Status and indicators
-^^^^^^^^^^^^^^^^^^^^^
-
-.. list-table::
-
-    * - .. figure:: ../images/color-info.svg
-           :alt: Info status color swatch showing blue #006AA3
-
-           Info: #006AA3
-
-      - .. figure:: ../images/color-success.svg
-           :alt: Success status color swatch showing green #46BA61
-
-           Success: #46BA61
-
-      - .. figure:: ../images/color-error.svg
-           :alt: Error status color swatch showing red #E9322D
-
-           Error: #E9322D
-
-      - .. figure:: ../images/color-warning.svg
-           :alt: Warning status color swatch showing amber #ECA700
-
-           Warning: #ECA700
-
-Interface elements associated with a status like info, success, error, or warning may also be colored to communicate the action better.
-
-While interface elements like buttons are colored differently depending on their action, the color of the text in that element is almost always either of the main text colors, that is light or dark.
-
-
-* On web:
-
-  * Info color: ``var(--color-info)``
-  * Success color: ``var(--color-success)``
-  * Warning color: ``var(--color-warning)``
-  * Error color: ``var(--color-error)``
-
-* Android: Material Design guidelines
-* iOS: `Apple HIG colors <https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/>`_
-
-  * success: systemGreen
-  * error: systemRed
-
-* Desktop: `default Qt guidelines <https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum>`_
-
-Typography
-----------
-
-`Penpot typography <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab128f3ffe2&section=interactions&index=1&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
-
-To ensure compatibility with different platforms, Nextcloud apps always use the native system font.
-
-For legibility, make sure that the text in your content uses:
-
-* **Bold** for emphasis
-* A line height between 130% and 150%
-* The default tracking of the font
-* No *italics* or UPPER CASE as these text styles are less legible
-
-The text sizes for the different platforms are:
-
-
-* Web: 16px for main text and sublines, **20px bold** for headings
-* Android: 14sp for main text, 16sp for headings
-* iOS: values from `Dynamic Type Sizes, for size Large (Default) <https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/typography#dynamic-type-sizes>`_
-* Desktop: `default Qt guidelines <https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum>`_
+.. _Icons:
 
 Icons
 -----
 
-`Penpot icons <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab128f3ffe2&section=interactions&index=0&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
+Icons can be used to communicate the intent of an action, or to provide visual interest to an element. On the browser always use Material Symbols (outlined, 20px).
 
-.. image:: ../images/material-icons.png
-   :alt: Material icons
-
-Icons can be used to communicate the intent of an action, or to provide visual interest to the screen. We use monochrome icons on all platforms: `Material Symbols (not Material Icons, and 20 px default outlined) <https://fonts.google.com/icons?icon.set=Material+Symbols&selected=Material+Symbols+Outlined:search:FILL@0;wght@400;GRAD@0;opsz@20&icon.size=20>`_ for web, Android, Windows and Linux, and `SF Symbols (default weight, scale and variant) <https://developer.apple.com/sf-symbols/>`_ for iOS and macOS.
-
-This is except for the icon of the app itself, which can be a custom icon. Most use an app icon from Material Symbols as well though to keep consistency.
-
-Make sure to:
-
-* Not overuse icons
-* When possible, use text together with icons so it’s clear what they refer to
-* For special cases like warnings, combine the icon with color to enhance its visibility
-
-Naming
-------
-
-To be immediately understandable, we choose app names which are generic and easily translatable. Additionally, they are short and easily fit in the top navigation without being cut off.
-
-Files, Contacts, Calendar, and Mail do not need further explanation, which is why we recommend to choose a self-explanatory app name.
-
-Further good examples of this: Notes, Bookmarks, Maps, Forms, Tasks, Music.
-
-Wording
--------
-
-The wording and language in your app sets the tone and approachability of your app.
-
-
-* Nextcloud should always be written out, and only with a capital N. Not "NextCloud" or "Nc".
-* Be friendly and approachable, not condescending.
-* Use understandable language, not technical jargon. For example, "link" is much better than "URL", and explaining errors is better than showing error codes.
-* Don’t write in ALL CAPS, as it is not as readable and comes off as shouting and aggressive. Also use Sentence case and not Capital Case, with the exception of product names like Nextcloud Talk, Nextcloud Hub, etc.
-* We are a community, so better write "We are happy to announce" instead of "I am happy to announce".
-* If your app content is empty, it can be helpful to add an engaging message. "Add or import your first bookmark!" is much nicer than "No bookmarks yet".
-* Try to avoid using "my" or "your" like in "My files" or "Your files", instead using "All files". For longer sentences where it cannot be avoided, use "your", never "my".
-* Use gender neutral language. This `international guide to gender-inclusive writing <https://uxcontent.com/the-international-guide-to-gender-inclusive-writing/>`_ contains info and examples on gender neutral wording for different languages.
-* Use full names instead of only first names while addressing the person using your app.
-* For any "Delete" action, give context to what it will delete, like "Delete conversation" or "Delete user" so that it is clear specifically for this destructive action.
-* Keep language short and concise, and keep in mind that it should be easily translatable.
-* Make sure to spellcheck anything you write.
-
+-  Never use a custom icon except for the icon of the app itself. Still, most apps use an app icon from Material Symbols to keep consistency.
+-  When possible, use text together with icons so it’s clear what they refer to
+-  Elements that use AI should hav
