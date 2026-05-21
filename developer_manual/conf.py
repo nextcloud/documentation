@@ -92,6 +92,7 @@ StandaloneHTMLBuilder.supported_image_types = [
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-epub-output
 
 epub_title = "Nextcloud Developer Manual"
+epub_basename = "Nextcloud_Developer_Manual"
 epub_author = "The Nextcloud developers"
 epub_publisher = "The Nextcloud developers"
 epub_copyright = "2012-2024, The Nextcloud developers"
