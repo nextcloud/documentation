@@ -366,7 +366,7 @@ and therefore improving the experience for non-english users.</p>
 </div>
 </section>
 <section id="improving-your-translations">
-<h3>Improving your translations<a class="headerlink" href="#improving-your-translations" title="Link to this heading"></a></h3>
+<span id="improving-translations"></span><h3>Improving your translations<a class="headerlink" href="#improving-your-translations" title="Link to this heading"></a></h3>
 <p>Starting with the following example, improving it step by step:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Select file from&#39;</span><span class="p">))</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;a href=&#39;#&#39; id=&quot;browselink&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;local filesystem&#39;</span><span class="p">));</span><span class="cp">?&gt;</span><span class="x">&lt;/a&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39; or &#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;a href=&#39;#&#39; id=&quot;cloudlink&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;cloud&#39;</span><span class="p">));</span><span class="cp">?&gt;</span><span class="x">&lt;/a&gt;</span>
 </pre></div>
@@ -412,34 +412,41 @@ The most famous example in the Nextcloud code base is <code class="docutils lite
 The added hints will be shown in the Transifex web-interface:</p>
 <section id="php">
 <h4>PHP<a class="headerlink" href="#php" title="Link to this heading"></a></h4>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;translations&quot;</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;add-new&quot;</span><span class="o">&gt;</span>
-        <span class="o">&lt;?</span><span class="nx">php</span>
-            <span class="c1">// TRANSLATORS Will be shown inside a popup and asks the user to add a new file</span>
-            <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Add new file&#39;</span><span class="p">));</span>
-        <span class="cp">?&gt;</span>
-<span class="x">    &lt;/li&gt;</span>
-<span class="x">&lt;/ul&gt;</span>
+<p>Place the comment on the line before the <code class="docutils literal notranslate"><span class="pre">-&gt;t()</span></code> or <code class="docutils literal notranslate"><span class="pre">-&gt;n()</span></code> call:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// TRANSLATORS Will be shown inside a popup and asks the user to add a new file</span>
+<span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Add new file&#39;</span><span class="p">));</span>
+
+<span class="c1">// TRANSLATORS The placeholder refers to the software product name, e.g. &quot;Add to your Nextcloud&quot;</span>
+<span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Add to your %s&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$productName</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>For multi-line context or example output, use consecutive comment lines:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// TRANSLATORS</span>
+<span class="c1">// Indicates when a calendar event will happen, shown on invitation emails.</span>
+<span class="c1">// Output example: &quot;In 1 hour on July 1, 2024 for the entire day&quot;</span>
+<span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;In %1$s on %2$s for the entire day&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$relativeTime</span><span class="p">,</span> <span class="nv">$date</span><span class="p">]);</span>
 </pre></div>
 </div>
 </section>
 <section id="javascript-typescript">
 <h4>JavaScript / TypeScript<a class="headerlink" href="#javascript-typescript" title="Link to this heading"></a></h4>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// TRANSLATORS name that is appended to copied files with the same name, will be put in parenthesis and appended with a number if it is the second+ copy</span>
+<p>Place the comment on the line before the <code class="docutils literal notranslate"><span class="pre">t()</span></code> or <code class="docutils literal notranslate"><span class="pre">n()</span></code> call:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// TRANSLATORS: name that is appended to copied files, will be put in parenthesis with a number for the second+ copy</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">copyNameLocalized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">t</span><span class="p">(</span><span class="s1">&#39;files&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;copy&#39;</span><span class="p">);</span>
+
+<span class="c1">// TRANSLATORS: {relativeDueDate} will be replaced with a relative time, e.g. &quot;2 hours ago&quot; or &quot;in 3 days&quot;</span>
+<span class="nx">t</span><span class="p">(</span><span class="s1">&#39;files_reminders&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;We will remind you of this file {relativeDueDate}&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">relativeDueDate</span><span class="w"> </span><span class="p">})</span>
 </pre></div>
 </div>
 </section>
 <section id="vue">
 <h4>Vue<a class="headerlink" href="#vue" title="Link to this heading"></a></h4>
-<p>This covers vue html templates in vue sfc components.
-For vue js code, see the javascript section.</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">NcActionCheckbox</span> <span class="na">:checked</span><span class="o">=</span><span class="s">&quot;isRequired&quot;</span><span class="p">&gt;</span>
-    <span class="cm">&lt;!-- TRANSLATORS Making this question necessary to be answered when submitting to a form --&gt;</span>
-    {{ t(&#39;forms&#39;, &#39;Required&#39;) }}
-<span class="p">&lt;/</span><span class="nt">NcActionCheckbox</span><span class="p">&gt;</span>
+<p>In the <code class="docutils literal notranslate"><span class="pre">&lt;template&gt;</span></code> block, use an HTML comment on the line above the element:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- TRANSLATORS: Making this question necessary to be answered when submitting to a form --&gt;</span>
+<span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>{{ t(&#39;forms&#39;, &#39;Required&#39;) }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </pre></div>
 </div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> block, use the same <code class="docutils literal notranslate"><span class="pre">//</span></code> style as JavaScript.</p>
 </section>
 <section id="c-qt-desktop-client">
 <h4>C++ (Qt) / Desktop client<a class="headerlink" href="#c-qt-desktop-client" title="Link to this heading"></a></h4>
