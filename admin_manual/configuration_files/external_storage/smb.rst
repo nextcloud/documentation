@@ -79,6 +79,11 @@ confusing behavior:
 SMB update notifications
 ------------------------
 
+.. seealso::
+   :ref:`external_storage_change_detection_label` explains why external changes
+   to a mounted storage are not detected automatically and how update
+   notifications fit into that picture.
+
 Nextcloud can use smb update notifications to
 listen for changes made to a configured SMB/CIFS storage and detect external
 changes made to the storage in near real-time.
