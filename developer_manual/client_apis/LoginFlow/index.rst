@@ -161,6 +161,43 @@ This will return a 404 until authentication is done. Once a 200 is returned it i
 Use the server and the provided credentials to connect.
 Note that the 200 will only be returned once.
 
+.. mermaid::
+
+        sequenceDiagram
+                participant Browser
+                actor User
+                participant Application
+                participant Server
+
+                User->>Application: Click "Log in"
+
+                Application->>Server: POST /login/v2
+                activate Server
+                Server->>Application: 200 JSON {login URL, poll token, poll endpoint}
+                deactivate Server
+
+                Application->>Browser: Open login URL in default browser
+                activate Browser
+
+                loop Every second (until success or 20 minutes timeout)
+                        Application-->>Server: POST /login/v2/poll with the poll token
+                        activate Server
+                        Server->>Application: 404 Not Found (not authorized yet)
+                        deactivate Server
+                end
+
+                User->>Browser: Enter credentials (and 2FA if required)
+                Browser->>Server: Submit login and grant client access
+
+                Note right of Server: Create an ephemeral session <br/>which lives for 5 minutes
+
+                deactivate Browser
+                Application-->>Server: POST /login/v2/poll with the poll token
+                activate Server
+                Server->>Application: 200 JSON {server, loginName, appPassword}
+                deactivate Server
+
+                Application->>Application: Store credentials securely and finish setup
 
 Troubleshooting
 ---------------
