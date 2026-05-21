@@ -54,6 +54,7 @@ Removed back-end APIs
 - ``\OCP\Share_Backend``, ``\OCP\Share_Backend_Collection``, ``\OCP\Share_Backend_File_Dependent`` were removed. This old
   share backend was replaced in Nextcloud 9 with a new backend system based on ``IShareProvider``.
 - All these methods were deprecated since before Nextcloud 20 and were removed:
+
   - ``\OCP\AppFramework\Http\EmptyContentSecurityPolicy::allowEvalScript``
   - ``\OCP\AppFramework\Http\EmptyContentSecurityPolicy::addAllowedChildSrcDomain``
   - ``\OCP\AppFramework\Http\EmptyContentSecurityPolicy::disallowChildSrcDomain``
@@ -61,10 +62,12 @@ Removed back-end APIs
   - ``\OCP\Notification\IManager::registerNotifier``
   - ``\OCP\Util::recursiveArraySearch``
 - All these classes were deprecated since before Nextcloud 20 and were removed:
+
   - ``\OCP\AppFramework\Http\StrictContentSecurityPolicy``
   - ``\OCP\AppFramework\Http\StrictEvalContentSecurityPolicy``
   - ``\OCP\AppFramework\Http\StrictInlineContentSecurityPolicy``
-- Various methods from the legacy ``OC_Util`` static class were removed.
+- Various methods from the legacy ``OC_Util`` static class were removed:
+
   - Instead of ``\OC_Util::encodePath`` use ``\OCP\Util::encodePath``.
   - Instead of ``\OC_Util::sanitizeHTML`` use ``\OCP\Util::sanitizeHTML``
   - Instead of ``\OC_Util::redirectToDefaultPage`` and  ``\OC_Util::getDefaultPageUrl`` use ``\OCP\IUrlGenerator::linkToDefaultPageUrl``
