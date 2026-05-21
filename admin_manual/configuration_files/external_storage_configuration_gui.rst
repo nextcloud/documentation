@@ -105,7 +105,7 @@ individually with the following options:
 * Enable Sharing
 * **Filesystem check frequency** — controls how the server rescans an external
   storage path when a WebDAV ``PROPFIND`` request arrives for it.
-  **Once per direct access** rescans on each ``PROPFIND`` request;
+  **Once per direct access** makes a shallow rescans on each ``PROPFIND`` request;
   **Never** skips the rescan entirely. This setting does *not* cause Nextcloud
   or desktop clients to poll automatically. See
   :ref:`external_storage_change_detection_label` for details.
