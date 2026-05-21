@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing guide &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/design/writing.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Foundations" href="foundations.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Interface &amp; interaction design</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Writing guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-rules">General rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tone">Tone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#names-pronouns-and-gender">Names, pronouns, and gender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#button-and-action-labels">Button and action labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#placeholders-and-variables">Placeholders and variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#translator-comments">Translator comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#translatable-strings">Translatable strings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="foundations.html">Foundations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layout.html">Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layoutcomponents.html">Layout components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atomiccomponents.html">Atomic components</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Interface &amp; interaction design</a></li>
+      <li class="breadcrumb-item active">Writing guide</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/design/writing.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="writing-guide">
+<span id="ux-writing"></span><h1>Writing guide<a class="headerlink" href="#writing-guide" title="Link to this heading"></a></h1>
+<p>Consistent, concise wording makes Nextcloud easier to use and easier to translate.
+Follow these rules when writing any user-facing string: notifications, dialog messages, button labels, error text, tooltips.</p>
+<section id="general-rules">
+<h2>General rules<a class="headerlink" href="#general-rules" title="Link to this heading"></a></h2>
+<p><strong>Keep messages short.</strong> One idea per sentence. Cut every word that does not add meaning.</p>
+<p><strong>Write Nextcloud correctly.</strong> Always spell it <code class="docutils literal notranslate"><span class="pre">Nextcloud</span></code> — capital N, lowercase c.
+Do not write <code class="docutils literal notranslate"><span class="pre">NextCloud</span></code>, <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code>, or abbreviate it as <code class="docutils literal notranslate"><span class="pre">Nc</span></code>.</p>
+<p><strong>Use sentence case.</strong> Capitalize only the first word and proper nouns.
+Never use all uppercase for headings, labels, or tags.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Avoid</p></th>
+<th class="head"><p>Prefer</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Settings Saved Successfully</p></td>
+<td><p>Settings saved</p></td>
+</tr>
+<tr class="row-odd"><td><p>An Error Has Occurred While Loading The File</p></td>
+<td><p>Could not load the file</p></td>
+</tr>
+<tr class="row-even"><td><p>Your changes have been successfully applied to the system</p></td>
+<td><p>Changes saved</p></td>
+</tr>
+<tr class="row-odd"><td><p>SHARE</p></td>
+<td><p>Share</p></td>
+</tr>
+<tr class="row-even"><td><p>NextCloud</p></td>
+<td><p>Nextcloud</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Drop “successfully”.</strong> If an action completed, the result speaks for itself.
+State what happened, not that it happened without error.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Avoid</p></th>
+<th class="head"><p>Prefer</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Settings saved successfully</p></td>
+<td><p>Settings saved</p></td>
+</tr>
+<tr class="row-odd"><td><p>User created successfully</p></td>
+<td><p>User created</p></td>
+</tr>
+<tr class="row-even"><td><p>File uploaded successfully</p></td>
+<td><p>File uploaded</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Be specific in error messages.</strong> Tell users what went wrong and, where possible, what to do next.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Avoid</p></th>
+<th class="head"><p>Prefer</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>An error occurred</p></td>
+<td><p>Could not save settings. Check your connection and try again.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Invalid input</p></td>
+<td><p>Password must be at least 8 characters</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Avoid technical jargon</strong> unless the audience is explicitly technical (e.g. a developer-facing admin panel).
+Use plain language for anything end users see.</p>
+</section>
+<section id="tone">
+<h2>Tone<a class="headerlink" href="#tone" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Friendly, not chatty.</strong> Write like a knowledgeable colleague, not a marketing brochure.</p></li>
+<li><p><strong>Direct, not bossy.</strong> Prefer statements over commands in status messages.</p></li>
+<li><p><strong>Neutral, not emotional.</strong> Avoid exclamation marks in status or error text.</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Avoid</p></th>
+<th class="head"><p>Prefer</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Great! Your profile has been updated!</p></td>
+<td><p>Profile updated</p></td>
+</tr>
+<tr class="row-odd"><td><p>Oops! Something went wrong!</p></td>
+<td><p>Could not complete the request</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="names-pronouns-and-gender">
+<h2>Names, pronouns, and gender<a class="headerlink" href="#names-pronouns-and-gender" title="Link to this heading"></a></h2>
+<p><strong>Use full names</strong> when addressing users. A full name is less ambiguous and more respectful than a first name alone.</p>
+<p><strong>Avoid possessive pronouns</strong> where possible. Replace <code class="docutils literal notranslate"><span class="pre">my</span></code> and <code class="docutils literal notranslate"><span class="pre">your</span></code> with a more descriptive word.
+Where a pronoun cannot be avoided, prefer <code class="docutils literal notranslate"><span class="pre">your</span></code> over <code class="docutils literal notranslate"><span class="pre">my</span></code>.</p>
+<p><strong>Use gender-neutral language.</strong> Refer to people with <code class="docutils literal notranslate"><span class="pre">they</span></code>/<code class="docutils literal notranslate"><span class="pre">them</span></code> rather than <code class="docutils literal notranslate"><span class="pre">he</span></code>/<code class="docutils literal notranslate"><span class="pre">she</span></code>
+when gender is unknown. For additional guidance and language-specific examples, see the
+<a class="reference external" href="https://uxcontent.com/the-international-guide-to-gender-inclusive-writing/">International guide to gender-inclusive writing</a>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Avoid</p></th>
+<th class="head"><p>Prefer</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Hello, Christine</p></td>
+<td><p>Hello, Christine Schott</p></td>
+</tr>
+<tr class="row-odd"><td><p>My files</p></td>
+<td><p>Personal files</p></td>
+</tr>
+<tr class="row-even"><td><p>Alex raised his hand</p></td>
+<td><p>Alex raised their hand</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="button-and-action-labels">
+<h2>Button and action labels<a class="headerlink" href="#button-and-action-labels" title="Link to this heading"></a></h2>
+<p>Use <strong>verb + noun</strong> for buttons that trigger an action. The noun can be omitted when context makes it obvious.
+For destructive actions use the specific verb so users know exactly what will happen: <strong>Delete</strong>, <strong>Remove</strong>, <strong>Revoke</strong> — not <strong>Confirm</strong> or <strong>OK</strong>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Avoid</p></th>
+<th class="head"><p>Prefer</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>OK</p></td>
+<td><p>Save settings</p></td>
+</tr>
+<tr class="row-odd"><td><p>Submit</p></td>
+<td><p>Create account</p></td>
+</tr>
+<tr class="row-even"><td><p>Yes</p></td>
+<td><p>Delete file</p></td>
+</tr>
+<tr class="row-odd"><td><p>Confirm</p></td>
+<td><p>Delete file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="placeholders-and-variables">
+<h2>Placeholders and variables<a class="headerlink" href="#placeholders-and-variables" title="Link to this heading"></a></h2>
+<p>When a string contains a variable (file name, user name, count), keep the surrounding text short and natural.
+Make sure the string still makes sense in all languages — word order differs across languages, so avoid splitting a sentence across two separate strings.
+For implementation details and code examples, see <a class="reference internal" href="../basics/translations.html#improving-translations"><span class="std std-ref">Improving your translations</span></a> in the translations reference.</p>
+</section>
+<section id="translator-comments">
+<span id="id1"></span><h2>Translator comments<a class="headerlink" href="#translator-comments" title="Link to this heading"></a></h2>
+<p>When a string is ambiguous or contains placeholders, add a <code class="docutils literal notranslate"><span class="pre">TRANSLATORS</span></code> comment immediately before the translatable call.
+The comment is extracted by the translation tooling and shown to translators in Transifex.</p>
+<p>Add one when:</p>
+<ul class="simple">
+<li><p>The string is ambiguous out of context (e.g. a single word with multiple meanings).</p></li>
+<li><p>The string contains a placeholder — explain what it will be replaced with and give an example value.</p></li>
+<li><p>The string describes a UI element or workflow that is not obvious from the text alone.</p></li>
+</ul>
+<p>Keep comments factual and brief. State what the placeholder contains and where the string appears.
+Do not repeat the string itself.</p>
+<p>For syntax examples in PHP, JavaScript, Vue, and other platforms, see <a class="reference internal" href="../basics/translations.html#hints"><span class="std std-ref">Provide context hints for translators</span></a>.</p>
+</section>
+<section id="translatable-strings">
+<h2>Translatable strings<a class="headerlink" href="#translatable-strings" title="Link to this heading"></a></h2>
+<p>For implementation details on marking strings as translatable in PHP, JavaScript, and Vue, see <a class="reference internal" href="../basics/translations.html"><span class="doc">Translations</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="foundations.html" class="btn btn-neutral float-right" title="Foundations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on May 21, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
