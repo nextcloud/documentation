@@ -46,13 +46,17 @@ build lets you preview changes accurately before opening a PR.
 
 [uv](https://docs.astral.sh/uv/) is the fastest way to get started:
 
+The Python version below matches `master`. If you are building an older `stable<N>` branch,
+check that branch's CI configuration for the required Python version and adjust
+the `--python` flag accordingly.
+
 ```bash
 # 1. Clone the repository
 git clone https://github.com/nextcloud/documentation.git
 cd documentation
 
 # 2. Create and activate a virtual environment
-uv venv && source .venv/bin/activate   # on Windows: .venv\Scripts\activate
+uv venv --python 3.13 && source .venv/bin/activate   # on Windows: .venv\Scripts\activate
 
 # 3. Install dependencies
 uv pip install -r requirements.txt
@@ -64,7 +68,7 @@ make html
 ### Using a plain Python virtual environment
 
 ```bash
-python3 -m venv venv
+python3.13 -m venv venv
 source venv/bin/activate               # on Windows: venv\Scripts\activate
 pip install -r requirements.txt
 make html
@@ -123,7 +127,7 @@ versions, etc.).
    ```
 5. Open a pull request against the appropriate branch of
    `nextcloud/documentation`.
-6. Fill in the pull request template — include a screenshot of changed pages
+6. Fill in the pull request template; include a screenshot of changed pages
    where relevant.
 
 ---
@@ -145,7 +149,7 @@ Signed-off-by: Your Name <your.email@example.com>
 
 | Type       | When to use                                                  |
 | ---------- | ------------------------------------------------------------ |
-| `docs`     | Content changes — new or updated documentation text         |
+| `docs`     | Content changes: new or updated documentation text          |
 | `fix`      | Correcting errors (broken links, wrong commands, typos, …)  |
 | `feat`     | Adding a new page or section                                 |
 | `refactor` | Restructuring without changing the meaning of the content   |
@@ -201,7 +205,7 @@ GitHub's privacy setting enabled, it will be
 2. Automated checks (spelling, link validation) run on every PR. Fix any
    reported issues before requesting a re-review.
 3. The reviewer may request changes. Address feedback and push new commits to
-   the same branch — do **not** force-push after a review has started.
+   the same branch; do **not** force-push after a review has started.
 4. Once approved, a maintainer will merge the PR.
 
 ---
