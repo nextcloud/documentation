@@ -72,9 +72,6 @@ The built-in updater performs these operations:
 Using the command line based updater
 ------------------------------------
 
-The command line based updater performs the same steps and checks as the
-web based updater.
-
 1.  You should see a notification at the top of any Nextcloud page when there is
     a new update available. Go to the admin settings page and scroll to the
     section "Version". This section has a button to open the updater. This
@@ -235,6 +232,9 @@ runs:
 
 Using the web based updater
 ---------------------------
+
+The web based updater performs the same steps and checks as the command line
+based updater.
 
 Using the built-in updater to update your Nextcloud installation is just a few
 steps:
