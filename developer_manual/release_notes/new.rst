@@ -34,3 +34,13 @@ but they might be required to have a fully working instance later on.
 Expensive repair steps are only executed when explicitly requested by the administrator.
 
 See :ref:`migration-repair-steps` for details.
+
+Application namespace management
+--------------------------------
+
+``\OCP\App\IAppManager`` was extended with two new methods related to application namespaces:
+
+- ``getAppNamespace(string $appId): string`` returns the namespace for an application from its appid. See `Documentation <https://nextcloud-server.netlify.app/classes/ocp-app-iappmanager#method_getAppNamespace>`_.
+- ``getAppFromNamespace(string $className): ?string`` does the opposite. Less common but it is used in guests application. See `Documentation <https://nextcloud-server.netlify.app/classes/ocp-app-iappmanager#method_getAppFromNamespace>`_.
+
+This replaces static method ``\OCP\AppFramework\App::buildAppNamespace`` which is now deprecated.
