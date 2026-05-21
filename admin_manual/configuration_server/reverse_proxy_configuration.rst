@@ -217,3 +217,34 @@ come from the proxy at **10.0.0.1**, which serves Nextcloud as
   the remote address matches. This is useful when the same Nextcloud instance is
   accessible both with and without a reverse proxy, or when different proxies
   serve the instance under different hostnames.
+
+Multiple trusted domains and share link URLs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When multiple entries are listed in ``trusted_domains``, Nextcloud accepts
+requests on all of them but generates URLs based on the hostname of each
+incoming request. This means share links, download URLs, and notification
+links will reflect whichever hostname was used at the time they were created.
+
+A share link created while accessing Nextcloud via an internal hostname
+(e.g. ``cloud.local``) will contain that hostname and will not be reachable
+by users on a different network who only have access to the public hostname
+(e.g. ``cloud.example.com``).
+
+To ensure all generated URLs always use a single canonical hostname, set
+``overwritehost`` and ``overwrite.cli.url`` unconditionally:
+
+::
+
+  <?php
+  $CONFIG = array (
+    'trusted_domains'   => ['cloud.local', 'cloud.example.com'],
+    'overwritehost'     => 'cloud.example.com',
+    'overwriteprotocol' => 'https',
+    'overwrite.cli.url' => 'https://cloud.example.com',
+  );
+
+.. note:: Unlike the ``overwritecondaddr`` pattern above, this applies the
+  overwrite to every request regardless of origin. Use this when you want
+  one authoritative public URL for all generated links, even when the instance
+  is also reachable internally under a different hostname.
