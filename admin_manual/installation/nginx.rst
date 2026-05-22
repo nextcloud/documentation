@@ -156,3 +156,46 @@ If you just see some correct requests in access log, but no login happens, you c
     chown nginx:nginx /var/lib/php/session/
     chown root:nginx /var/lib/php/wsdlcache/
     chown root:nginx /var/lib/php/opcache/
+
+Trusted proxy not detected when using a Unix domain socket
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When an upstream proxy (another nginx instance, Caddy, HAProxy, etc.) passes
+requests to Nextcloud's nginx via a Unix domain socket, nginx sets
+``REMOTE_ADDR`` to the literal string ``unix:`` instead of an IP address.
+Nextcloud cannot parse this as a trusted proxy, causing trusted proxy detection
+to fail and resulting in errors such as::
+
+    Unsupported operand types: bool & string in IpAddress.php
+
+To fix this, add the following directives to the nginx ``server`` block that
+listens on the Unix socket:
+
+.. code-block:: nginx
+
+    set_real_ip_from  unix:;
+    real_ip_header    X-Forwarded-For;
+
+This tells nginx to treat the Unix socket peer as a trusted source and extract
+the real client IP from the ``X-Forwarded-For`` header passed by the upstream
+proxy. You must also ensure the upstream proxy sets that header correctly,
+for example with ``proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;``.
+
+"Access through untrusted domain" error with HTTP/3
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When HTTP/3 (QUIC) is enabled in nginx, the ``HTTP_HOST`` FastCGI parameter
+may not be forwarded correctly to PHP-FPM, causing Nextcloud to show the
+*"Access through untrusted domain"* error page even though the domain is listed
+in ``trusted_domains``.
+
+Add the following line to the ``fastcgi_param`` block in your nginx
+configuration to explicitly pass the host:
+
+.. code-block:: nginx
+
+    fastcgi_param  HTTP_HOST  $host;
+
+Place it alongside the other ``fastcgi_param`` directives (after
+``include fastcgi_params;``). This overrides whatever value (or lack thereof)
+nginx would otherwise derive from the HTTP/3 request headers.
