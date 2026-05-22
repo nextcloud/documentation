@@ -247,25 +247,22 @@ file type, picking one or several items, and choosing folders.
 .. image:: ../images/file-picker.png
    :alt: File picker for copying a file
 
-.. _Checkboxes, radio buttons, and toggles:
+.. _Checkboxes and toggles:
 
-Checkboxes, radio buttons, and toggles
+Checkboxes and toggles
 --------------------------------------
 
-Checkboxes, radio buttons, and toggles `(NcCheckboxRadioSwitch) <https://nextcloud-vue-components.netlify.app/#/Components/NcCheckboxRadioSwitch>`__ are three different controls that share a
-single component used for various kinds of selecting and toggling actions.
+Checkboxes and toggles `(NcCheckboxRadioSwitch) <https://nextcloud-vue-components.netlify.app/#/Components/NcCheckboxRadioSwitch>`__ are selection controls that share a
+single component.
 
 -  Checkboxes allow users to select multiple options from a list. for example, per-folder share permissions.
--  Radio buttons allow users to select exactly one option from a defined group.
-
-   -  For long lists, use a dropdown instead.
-
 -  Toggles (switches) are used for enabling and disabling a single setting.
 
 
 
 .. image:: ../images/checkboxes.png
    :alt: Checkboxes in Files sharing
+
 
 .. image:: ../images/toggles.png
    :alt: Toggles while creating a Talk conversation
@@ -274,11 +271,10 @@ single component used for various kinds of selecting and toggling actions.
 Radio groups
 ^^^^^^^^^^^^
 
-A radio group `(NcRadioGroup) <https://nextcloud-vue-components.netlify.app/#/Components/NcRadioGroup>`__ wraps a set of radios into a single component with a shared label, for example, view
-switchers like list or grid, or vertical or horizontal.
+Radio buttons allow users to select exactly one option from a defined radio group `(NcRadioGroup) <https://nextcloud-vue-components.netlify.app/#/Components/NcRadioGroup>`__ . It also has a button variant which displays the options as buttons. When there are many options, use a dropdown instead.
 
 .. image:: ../images/radio-group.png
-   :alt: Radio group in Files sharing
+   :alt: Radio group Mail settings
 
 
 .. _Action menus:

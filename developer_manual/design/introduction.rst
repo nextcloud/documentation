@@ -25,8 +25,7 @@ Each Nextcloud app is unique and different, but all Nextcloud apps are built kee
 -  Regularly reset your installation to see what the first-run experience is like, and improve it.
 -  Ideally do `usability testing <http://jancborchardt.net/usability-in-free-software>`__ to know how people use the software. Testing with 5 users is enough to identify most of your problems.
 
-For further UX principles, read `Alex Faaborg from Mozilla <http://uxmag.com/articles/quantifying-usability>`__, and the `GNOME Human Interface
-Guidelines <https://developer.gnome.org/hig/stable/design-principles.html.en>`__
+For further UX principles, read `Alex Faaborg from Mozilla <http://uxmag.com/articles/quantifying-usability>`__, and the `GNOME Human Interface Guidelines <https://developer.gnome.org/hig/principles.html>`__
 
 This guide mainly serves as guidelines for designing for Nextcloud on the browser. For Android, closely follow the latest `Material Design guidelines <https://m3.material.io/>`__ and for iOS, the
 `Apple Human Interface Guidelines <https://developer.apple.com/design/human-interface-guidelines>`__.
