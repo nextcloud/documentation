@@ -170,22 +170,31 @@ and use the <code class="docutils literal notranslate"><span class="pre">NcAppNa
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Share_Backend</span></code>, <code class="docutils literal notranslate"><span class="pre">\OCP\Share_Backend_Collection</span></code>, <code class="docutils literal notranslate"><span class="pre">\OCP\Share_Backend_File_Dependent</span></code> were removed. This old
 share backend was replaced in Nextcloud 9 with a new backend system based on <code class="docutils literal notranslate"><span class="pre">IShareProvider</span></code>.</p></li>
-<li><p>All these methods were deprecated since before Nextcloud 20 and were removed:
-- <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\EmptyContentSecurityPolicy::allowEvalScript</span></code>
-- <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\EmptyContentSecurityPolicy::addAllowedChildSrcDomain</span></code>
-- <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\EmptyContentSecurityPolicy::disallowChildSrcDomain</span></code>
-- <code class="docutils literal notranslate"><span class="pre">\OCP\Collaboration\Resources\IManager::registerResourceProvider</span></code>
-- <code class="docutils literal notranslate"><span class="pre">\OCP\Notification\IManager::registerNotifier</span></code>
-- <code class="docutils literal notranslate"><span class="pre">\OCP\Util::recursiveArraySearch</span></code></p></li>
-<li><p>All these classes were deprecated since before Nextcloud 20 and were removed:
-- <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\StrictContentSecurityPolicy</span></code>
-- <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\StrictEvalContentSecurityPolicy</span></code>
-- <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\StrictInlineContentSecurityPolicy</span></code></p></li>
-<li><p>Various methods from the legacy <code class="docutils literal notranslate"><span class="pre">OC_Util</span></code> static class were removed.
-- Instead of <code class="docutils literal notranslate"><span class="pre">\OC_Util::encodePath</span></code> use <code class="docutils literal notranslate"><span class="pre">\OCP\Util::encodePath</span></code>.
-- Instead of <code class="docutils literal notranslate"><span class="pre">\OC_Util::sanitizeHTML</span></code> use <code class="docutils literal notranslate"><span class="pre">\OCP\Util::sanitizeHTML</span></code>
-- Instead of <code class="docutils literal notranslate"><span class="pre">\OC_Util::redirectToDefaultPage</span></code> and  <code class="docutils literal notranslate"><span class="pre">\OC_Util::getDefaultPageUrl</span></code> use <code class="docutils literal notranslate"><span class="pre">\OCP\IUrlGenerator::linkToDefaultPageUrl</span></code>
-- Instead of <code class="docutils literal notranslate"><span class="pre">\OC_Util::checkAdminUser</span></code> use <code class="docutils literal notranslate"><span class="pre">IGroupManager::class::isAdmin</span></code></p></li>
+<li><p>All these methods were deprecated since before Nextcloud 20 and were removed:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\EmptyContentSecurityPolicy::allowEvalScript</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\EmptyContentSecurityPolicy::addAllowedChildSrcDomain</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\EmptyContentSecurityPolicy::disallowChildSrcDomain</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Collaboration\Resources\IManager::registerResourceProvider</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Notification\IManager::registerNotifier</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::recursiveArraySearch</span></code></p></li>
+</ul>
+</li>
+<li><p>All these classes were deprecated since before Nextcloud 20 and were removed:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\StrictContentSecurityPolicy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\StrictEvalContentSecurityPolicy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\StrictInlineContentSecurityPolicy</span></code></p></li>
+</ul>
+</li>
+<li><p>Various methods from the legacy <code class="docutils literal notranslate"><span class="pre">OC_Util</span></code> static class were removed:</p>
+<ul>
+<li><p>Instead of <code class="docutils literal notranslate"><span class="pre">\OC_Util::encodePath</span></code> use <code class="docutils literal notranslate"><span class="pre">\OCP\Util::encodePath</span></code>.</p></li>
+<li><p>Instead of <code class="docutils literal notranslate"><span class="pre">\OC_Util::sanitizeHTML</span></code> use <code class="docutils literal notranslate"><span class="pre">\OCP\Util::sanitizeHTML</span></code></p></li>
+<li><p>Instead of <code class="docutils literal notranslate"><span class="pre">\OC_Util::redirectToDefaultPage</span></code> and  <code class="docutils literal notranslate"><span class="pre">\OC_Util::getDefaultPageUrl</span></code> use <code class="docutils literal notranslate"><span class="pre">\OCP\IUrlGenerator::linkToDefaultPageUrl</span></code></p></li>
+<li><p>Instead of <code class="docutils literal notranslate"><span class="pre">\OC_Util::checkAdminUser</span></code> use <code class="docutils literal notranslate"><span class="pre">IGroupManager::class::isAdmin</span></code></p></li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="unified-sharing">
@@ -234,7 +243,7 @@ share backend was replaced in Nextcloud 9 with a new backend system based on <co
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on May 20, 2026.
+      <span class="lastupdated">Last updated on May 22, 2026.
       </span></p>
   </div>
 

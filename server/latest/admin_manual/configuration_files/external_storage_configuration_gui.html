@@ -122,7 +122,13 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#allow-users-to-mount-external-storage">Allow Users to Mount External Storage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#adding-files-to-external-storage">Adding files to external storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detecting-changes-made-outside-nextcloud">Detecting changes made outside Nextcloud</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-the-filesystem-check-frequency-option-works">How the “Filesystem check frequency” option works</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#why-desktop-clients-miss-deep-changes">Why desktop clients miss deep changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-make-external-changes-reliably-detectable">How to make external changes reliably detectable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#limitation-renames-are-not-detected-reliably">Limitation: renames are not detected reliably</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#troubleshooting-file-name-encoding">Troubleshooting File Name Encoding</a></li>
 </ul>
 </li>
@@ -299,7 +305,12 @@ individually with the following options:</p>
 <li><p>Encryption</p></li>
 <li><p>Previews</p></li>
 <li><p>Enable Sharing</p></li>
-<li><p>Filesystem check frequency (Never, Once per direct access)</p></li>
+<li><p><strong>Filesystem check frequency</strong> — controls how the server rescans an external
+storage path when a WebDAV <code class="docutils literal notranslate"><span class="pre">PROPFIND</span></code> request arrives for it.
+<strong>Once per direct access</strong> makes a shallow rescans on each <code class="docutils literal notranslate"><span class="pre">PROPFIND</span></code> request;
+<strong>Never</strong> skips the rescan entirely. This setting does <em>not</em> cause Nextcloud
+or desktop clients to poll automatically. See
+<a class="reference internal" href="#external-storage-change-detection-label"><span class="std std-ref">Detecting changes made outside Nextcloud</span></a> for details.</p></li>
 <li><p>Mac NFD Compatibility</p></li>
 <li><p>Read Only</p></li>
 </ul>
@@ -350,20 +361,89 @@ on your network!</p>
 <img alt="Checkboxes to allow users to mount external storage services." src="../_images/user_mounts.png" />
 </figure>
 </section>
-<section id="adding-files-to-external-storage">
-<h2>Adding files to external storage<a class="headerlink" href="#adding-files-to-external-storage" title="Link to this heading"></a></h2>
-<p>We recommend configuring the background job <strong>Webcron</strong> or
-<strong>Cron</strong> (see <a class="reference internal" href="../configuration_server/background_jobs_configuration.html"><span class="doc">Background jobs</span></a>)
-to enable Nextcloud to automatically detect files added to your external
-storages.</p>
-<p>Nextcloud may not always be able to detect changes made remotely (files changed without going through Nextcloud), especially
-when files are located deep in the folder hierarchy of the external storage.</p>
-<p>You might need to set up a cron job that runs <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-E</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">files:scan</span> <span class="pre">--all</span></code>
-(or replace <code class="docutils literal notranslate"><span class="pre">--all</span></code> with the username; see also <a class="reference internal" href="../occ_command.html"><span class="doc">Using the occ command</span></a>)
-to trigger a rescan of the user’s files periodically (for example, every 15 minutes), which includes
-the mounted external storage.</p>
-<p>If you are running Nextcloud AIO, the equivalent command
-in that environment is <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">--user</span> <span class="pre">www-data</span> <span class="pre">-it</span> <span class="pre">nextcloud-aio-nextcloud</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">files:scan</span> <span class="pre">--all</span></code>.</p>
+<section id="detecting-changes-made-outside-nextcloud">
+<span id="external-storage-change-detection-label"></span><h2>Detecting changes made outside Nextcloud<a class="headerlink" href="#detecting-changes-made-outside-nextcloud" title="Link to this heading"></a></h2>
+<p>When files are added, modified, or deleted on an external storage <strong>directly</strong>
+(without going through Nextcloud), Nextcloud will not know about those changes
+immediately. Nextcloud maintains an internal index (the <em>filecache</em>) that is only
+updated when Nextcloud itself performs a scan. Until that scan happens, the
+filecache is stale and the changes are invisible to Nextcloud, desktop clients,
+and mobile apps.</p>
+<section id="how-the-filesystem-check-frequency-option-works">
+<h3>How the “Filesystem check frequency” option works<a class="headerlink" href="#how-the-filesystem-check-frequency-option-works" title="Link to this heading"></a></h3>
+<p>The <strong>Filesystem check frequency</strong> mount option (see
+<a class="reference internal" href="#external-storage-mount-options-label"><span class="std std-ref">Mount Options</span></a>) controls what happens when a WebDAV
+<code class="docutils literal notranslate"><span class="pre">PROPFIND</span></code> request reaches the Nextcloud server for a path inside the external
+storage:</p>
+<ul class="simple">
+<li><p><strong>Once per direct access</strong> — during <code class="docutils literal notranslate"><span class="pre">PROPFIND</span></code> requests made to a given directory,
+Nextcloud rescans that directory level then updates the filecache with what it finds there.</p></li>
+<li><p><strong>Never</strong> — the server never rescans the external storage during <code class="docutils literal notranslate"><span class="pre">PROPFIND</span></code> requests
+and always returns the content stored in its internal index.</p></li>
+</ul>
+<p>This option is <em>only</em> about the server’s behavior during a <code class="docutils literal notranslate"><span class="pre">PROPFIND</span></code>. It does
+not trigger any background polling and does not change how desktop clients or
+mobile apps behave.</p>
+<p>Because this rescan is driven by user actions (opening a folder in the web UI,
+browsing in the mobile app, or a client issuing a <code class="docutils literal notranslate"><span class="pre">PROPFIND</span></code>), change detection
+remains random and unreliable for deep folder hierarchies.</p>
+</section>
+<section id="why-desktop-clients-miss-deep-changes">
+<h3>Why desktop clients miss deep changes<a class="headerlink" href="#why-desktop-clients-miss-deep-changes" title="Link to this heading"></a></h3>
+<p>The desktop sync client only issues a <code class="docutils literal notranslate"><span class="pre">PROPFIND</span></code> on the root of the sync folder
+on every sync cycle because scanning the entire tree would be too expensive. It
+relies on <strong>etag propagation</strong>: when a file changes, the etag of every parent
+folder up to the root must also change, giving the client a trail to follow down
+to the changed file.</p>
+<p>When a change is made outside Nextcloud, no etag is updated. The client sees no
+trail from the root and never follows it down to the changed file.</p>
+</section>
+<section id="how-to-make-external-changes-reliably-detectable">
+<h3>How to make external changes reliably detectable<a class="headerlink" href="#how-to-make-external-changes-reliably-detectable" title="Link to this heading"></a></h3>
+<p>There are two approaches, depending on the storage type:</p>
+<p><strong>A) SMB/CIFS storages — use update notifications</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">files_external:notify</span></code> command listens for change events sent by the SMB
+server itself. When a change event arrives, Nextcloud rescans the affected path
+and propagates the etag changes up to the root, so desktop clients pick up the
+change on their next sync cycle.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">occ files_external:notify &lt;mount_id&gt;</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="external_storage/smb.html"><span class="doc">SMB/CIFS</span></a> for setup details, including authentication
+requirements and how to reduce sync delay.</p>
+<p><strong>B) All other storages — periodic rescan via cron</strong></p>
+<p>For storage types that do not support push notifications, set up a cron job that
+rescans the external storage periodically using its mount ID:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -E -u www-data php occ files_external:scan &lt;mount_id&gt;</span>
+</pre></div>
+</div>
+<p>You can find the mount ID with <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">files_external:list</span></code>. See
+<a class="reference internal" href="../occ_command.html"><span class="doc">Using the occ command</span></a> for the full <code class="docutils literal notranslate"><span class="pre">files_external:scan</span></code> reference. A typical
+interval is every 15 minutes; adjust to balance freshness against server load.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are running Nextcloud AIO, the equivalent command is:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo docker exec --user www-data -i nextcloud-aio-nextcloud php occ files_external:scan &lt;mount_id&gt;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="limitation-renames-are-not-detected-reliably">
+<h3>Limitation: renames are not detected reliably<a class="headerlink" href="#limitation-renames-are-not-detected-reliably" title="Link to this heading"></a></h3>
+<p>Whenever Nextcloud rescans an external storage — whether via periodic cron
+(option B) or via the <strong>Once per direct access</strong> filesystem check frequency setting —
+the scanner cannot reliably detect that an entry was <strong>renamed</strong>. It sees the old
+name as deleted and the new name as a newly created entry. This causes
+<strong>metadata loss</strong>: all shares, tags, comments, and activity history associated
+with the old entry are permanently deleted from Nextcloud’s database.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If users rename files or folders directly on the external storage (outside
+Nextcloud), that metadata loss is unavoidable. To preserve metadata, all renames
+should be done through Nextcloud itself, or — for SMB — use update notifications
+(option A) which handles renames via the SMB change event stream.</p>
+</div>
+</section>
 </section>
 <section id="troubleshooting-file-name-encoding">
 <span id="trouble-file-encoding-ext-storages"></span><h2>Troubleshooting File Name Encoding<a class="headerlink" href="#troubleshooting-file-name-encoding" title="Link to this heading"></a></h2>
