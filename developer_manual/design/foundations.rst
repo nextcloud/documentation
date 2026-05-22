@@ -188,5 +188,5 @@ Icons
 Icons can be used to communicate the intent of an action, or to provide visual interest to an element. On the browser always use Material Symbols (outlined, 20px).
 
 -  Never use a custom icon except for the icon of the app itself. Still, most apps use an app icon from Material Symbols to keep consistency.
--  When possible, use text together with icons so it’s clear what they refer to
--  Elements that use AI should hav
+-  When possible, use text together with icons so it’s clear what they refer to.
+-  Elements that contain AI-generated content should have a clear indication that they are AI-generated in the form of a written disclaimer or by the use of the Assistant icon ('creation' in Material Symbols) in the Assistant color.
