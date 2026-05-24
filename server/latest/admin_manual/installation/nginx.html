@@ -101,6 +101,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#javascript-js-or-css-css-files-not-served-properly">JavaScript (.js) or CSS (.css) files not served properly</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#upload-of-files-greater-than-10-mib-fails">Upload of files greater than 10 MiB fails</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#login-loop-without-any-clue-in-access-log-error-log-nor-nextcloud-log">Login loop without any clue in access.log, error.log, nor nextcloud.log</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trusted-proxy-not-detected-when-using-a-unix-domain-socket">Trusted proxy not detected when using a Unix domain socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#access-through-untrusted-domain-error-with-http-3">“Access through untrusted domain” error with HTTP/3</a></li>
 </ul>
 </li>
 </ul>
@@ -815,6 +817,42 @@ chown<span class="w"> </span>root:nginx<span class="w"> </span>/var/lib/php/wsdl
 chown<span class="w"> </span>root:nginx<span class="w"> </span>/var/lib/php/opcache/
 </pre></div>
 </div>
+</section>
+<section id="trusted-proxy-not-detected-when-using-a-unix-domain-socket">
+<h3>Trusted proxy not detected when using a Unix domain socket<a class="headerlink" href="#trusted-proxy-not-detected-when-using-a-unix-domain-socket" title="Link to this heading"></a></h3>
+<p>When an upstream proxy (another nginx instance, Caddy, HAProxy, etc.) passes
+requests to Nextcloud’s nginx via a Unix domain socket, nginx sets
+<code class="docutils literal notranslate"><span class="pre">REMOTE_ADDR</span></code> to the literal string <code class="docutils literal notranslate"><span class="pre">unix:</span></code> instead of an IP address.
+Nextcloud cannot parse this as a trusted proxy, causing trusted proxy detection
+to fail and resulting in errors such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Unsupported</span> <span class="n">operand</span> <span class="n">types</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">&amp;</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">IpAddress</span><span class="o">.</span><span class="n">php</span>
+</pre></div>
+</div>
+<p>To fix this, add the following directives to the nginx <code class="docutils literal notranslate"><span class="pre">server</span></code> block that
+listens on the Unix socket:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">set_real_ip_from</span><span class="w">  </span><span class="s">unix:</span><span class="p">;</span>
+<span class="k">real_ip_header</span><span class="w">    </span><span class="s">X-Forwarded-For</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This tells nginx to treat the Unix socket peer as a trusted source and extract
+the real client IP from the <code class="docutils literal notranslate"><span class="pre">X-Forwarded-For</span></code> header passed by the upstream
+proxy. You must also ensure the upstream proxy sets that header correctly,
+for example with <code class="docutils literal notranslate"><span class="pre">proxy_set_header</span> <span class="pre">X-Forwarded-For</span> <span class="pre">$proxy_add_x_forwarded_for;</span></code>.</p>
+</section>
+<section id="access-through-untrusted-domain-error-with-http-3">
+<h3>“Access through untrusted domain” error with HTTP/3<a class="headerlink" href="#access-through-untrusted-domain-error-with-http-3" title="Link to this heading"></a></h3>
+<p>When HTTP/3 (QUIC) is enabled in nginx, the <code class="docutils literal notranslate"><span class="pre">HTTP_HOST</span></code> FastCGI parameter
+may not be forwarded correctly to PHP-FPM, causing Nextcloud to show the
+<em>“Access through untrusted domain”</em> error page even though the domain is listed
+in <code class="docutils literal notranslate"><span class="pre">trusted_domains</span></code>.</p>
+<p>Add the following line to the <code class="docutils literal notranslate"><span class="pre">fastcgi_param</span></code> block in your nginx
+configuration to explicitly pass the host:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">fastcgi_param</span><span class="w">  </span><span class="s">HTTP_HOST</span><span class="w">  </span><span class="nv">$host</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Place it alongside the other <code class="docutils literal notranslate"><span class="pre">fastcgi_param</span></code> directives (after
+<code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">fastcgi_params;</span></code>). This overrides whatever value (or lack thereof)
+nginx would otherwise derive from the HTTP/3 request headers.</p>
 </section>
 </section>
 </section>
