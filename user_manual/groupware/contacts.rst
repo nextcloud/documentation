@@ -41,13 +41,13 @@ To Import Contacts Using a VCF/vCard File:
 1. An **Import contacts** button is shown when you have no contacts yet.
 2. Find "Settings" at the bottom of the left sidebar, next to the gear button:
 
-	.. figure:: ../images/contact_bottombar.png
-		:alt: Contact settings gear button
+    .. figure:: ../images/contact_bottombar.png
+        :alt: Contact settings gear button
 
 3. Click the gear button. The Contacts app "Import" button will appear:
 
-	.. figure:: ../images/contact_uploadbutton.png
-		:alt: Contacts Upload Field
+    .. figure:: ../images/contact_uploadbutton.png
+        :alt: Contacts Upload Field
 
 .. note:: The Contacts app only supports import of vCards version 3.0 and 4.0.
 
@@ -98,12 +98,12 @@ Contact Picture
 To add a picture for your new contacts, click on the upload button:
 
 .. figure:: ../images/contact_picture.png
-	:alt: Contact picture (upload button)
+    :alt: Contact picture (upload button)
 
 After you have set a contact picture, it will look like this:
 
 .. figure:: ../images/contact_picture_set.png
-	:alt: Contact picture (set)
+    :alt: Contact picture (set)
 
 If you want to upload a new one, remove it, view it in full size or download it,
 click on the contacts picture for the following options to appear:
