@@ -157,12 +157,14 @@ If either of the contacts are part of a group(s), by default the merged contact 
 
 Mark contacts as favorite
 -------------------------
-.. versionadded:: 8.4
-Now you can mark contacts as favorites to always find them at the top of your contacts list, without needing to search or filter.
-How to use
-To mark a contacts as favorite, hover over a contact, a star will show on the right. Click the start and a yellow star will appear on the contact's avatar to confirm it's been marked as a favorite.
 
-To remove it form the favorite list - Hover over a favorited contact, hover over the contact and click the start on the right. The star will disappear and the contact will return to its alphabetical position in the list.
+.. versionadded:: 8.4
+
+Now you can mark contacts as favorites to always find them at the top of your contacts list, without needing to search or filter.
+
+To mark a contacts as favorite, hover over a contact, a star will show on the right. Click the star and a yellow star will appear on the contact's avatar to confirm it's been marked as a favorite.
+
+To remove it form the favorite list - Hover over a favorited contact, and click the star on the right. The star will disappear and the contact will return to its alphabetical position in the list.
 
 .. figure:: ../images/mark_favorite.png
 
