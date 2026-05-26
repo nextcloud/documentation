@@ -187,11 +187,14 @@ Note that the 200 will only be returned once.
                 end
 
                 User->>Browser: Enter credentials (and 2FA if required)
-                Browser->>Server: Submit login and grant client access
+                Browser->>Server: Submit credentials
+                Server->>Browser: Redirect to /login/v2/grant
+                User->>Browser: Click on "Grant access"
+                Browser->>Server: Submit grant access
+                deactivate Browser
 
                 Note right of Server: Create an ephemeral session <br/>which lives for 5 minutes
 
-                deactivate Browser
                 Application-->>Server: POST /login/v2/poll with the poll token
                 activate Server
                 Server->>Application: 200 JSON {server, loginName, appPassword}
