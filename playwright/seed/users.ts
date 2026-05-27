@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2026 Nextcloud GmbH and Nextcloud contributors
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import { tryOcc, uploadAvatar, ocsRequest } from '../helpers'
+import { tryOcc, uploadAvatar, ocsRequest, SCREENSHOT_PORT } from '../helpers'
 
 const AVATAR_DIR = '/home/anna/Downloads/tp/avatar'
 
@@ -77,4 +77,35 @@ export async function seedUsers(): Promise<void> {
 	await setEmail('analise_l', 'analise@example.org')
 	await setProfileField('analise_l', 'organisation', 'Charity Events Foundation')
 	await setProfileField('analise_l', 'role', 'Board Secretary')
+
+	// Christine's user status — shown in profile screenshots and dashboard
+	await ocsRequest('PUT', '/ocs/v2.php/apps/user_status/api/v1/user_status/status', 'christine', 'christine', { statusType: 'online' })
+	await ocsRequest('PUT', '/ocs/v2.php/apps/user_status/api/v1/user_status/message/custom', 'christine', 'christine', {
+		message: 'Working on Q3 event planning',
+		statusIcon: '',
+	})
+
+	// Christine's dashboard layout — matches the Notes seeding done for webinterface screenshots
+	await tryOcc('user:setting christine dashboard layout files-favorites,calendar,deck,notes')
+	await tryOcc('user:setting christine dashboard firstRun 0')
+
+	// Seed Notes content for Christine's dashboard widget
+	const auth = 'Basic ' + Buffer.from('christine:christine').toString('base64')
+	const base = `http://localhost:${SCREENSHOT_PORT}`
+	const existingNotes = await fetch(`${base}/apps/notes/api/v1/notes`, {
+		headers: { Authorization: auth, Accept: 'application/json' },
+	}).then(r => r.json()).catch(() => [])
+	if (!Array.isArray(existingNotes) || existingNotes.length === 0) {
+		for (const [title, content] of [
+			['Autumn Gala ideas', '- Jazz quartet for the reception\n- Photobooth with charity frame\n- Silent auction: local artwork\n- Ask Riverside if they can do late bar'],
+			['Sponsor call — follow-up', 'Spoke to Hartley & Co. on 12 May.\nThey can commit £5k at Supporting level.\nSend contract by end of week.'],
+			['Q3 action items', '1. Confirm venue by 2 June\n2. Send sponsor packs by 15 June\n3. Book catering walkthrough\n4. Brief comms team on social plan'],
+		] as [string, string][]) {
+			await fetch(`${base}/apps/notes/api/v1/notes`, {
+				method: 'POST',
+				headers: { Authorization: auth, 'Content-Type': 'application/json' },
+				body: JSON.stringify({ title, content }),
+			}).catch(() => {})
+		}
+	}
 }

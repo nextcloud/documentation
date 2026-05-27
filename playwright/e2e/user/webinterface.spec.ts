@@ -4,39 +4,13 @@
 import { test, Cookie } from '@playwright/test'
 import { User } from '@nextcloud/e2e-test-server'
 import { login } from '@nextcloud/e2e-test-server/playwright'
-import { docScreenshot, docElementScreenshot, occ, tryOcc, uploadAvatar, ocsRequest } from '../../helpers'
+import { docScreenshot, docElementScreenshot } from '../../helpers'
 
 const user = new User('christine', 'christine')
-const AVATAR_DIR = '/home/anna/Downloads/tp/avatar'
 
 let authCookies: Cookie[] = []
 
 test.beforeAll(async ({ browser }) => {
-	await tryOcc('user:add --password-from-env --display-name="Christine" christine', { OC_PASS: 'christine' })
-	await uploadAvatar(`${AVATAR_DIR}/christine/avatar.png`, 'christine', 'christine')
-	await tryOcc('user:setting christine dashboard layout files-favorites,calendar,deck,notes')
-	await tryOcc('user:setting christine dashboard firstRun 0')
-
-	// Seed Notes so the Notes dashboard widget shows content
-	const notesBase = 'http://localhost:8093'
-	const auth = 'Basic ' + Buffer.from('christine:christine').toString('base64')
-	const existingNotes = await fetch(`${notesBase}/apps/notes/api/v1/notes`, {
-		headers: { Authorization: auth, Accept: 'application/json' },
-	}).then(r => r.json()).catch(() => [])
-	if (!Array.isArray(existingNotes) || existingNotes.length === 0) {
-		for (const [title, content] of [
-			['Autumn Gala ideas', '- Jazz quartet for the reception\n- Photobooth with charity frame\n- Silent auction: local artwork\n- Ask Riverside if they can do late bar'],
-			['Sponsor call — follow-up', 'Spoke to Hartley & Co. on 12 May.\nThey can commit £5k at Supporting level.\nSend contract by end of week.'],
-			['Q3 action items', '1. Confirm venue by 2 June\n2. Send sponsor packs by 15 June\n3. Book catering walkthrough\n4. Brief comms team on social plan'],
-		]) {
-			await fetch(`${notesBase}/apps/notes/api/v1/notes`, {
-				method: 'POST',
-				headers: { Authorization: auth, 'Content-Type': 'application/json' },
-				body: JSON.stringify({ title, content }),
-			}).catch(() => {})
-		}
-	}
-
 	const ctx = await browser.newContext()
 	const pg = await ctx.newPage()
 	await login(pg.request, user)

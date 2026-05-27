@@ -4,7 +4,7 @@
 import { mkdavCol, uploadFile, ocsRequest, SCREENSHOT_PORT } from '../helpers'
 import * as path from 'path'
 
-const FIXTURES_DIR = path.join(__dirname, '..', 'fixtures')
+const F = path.join(__dirname, '..', 'fixtures')
 const daysAgo = (n: number) => Math.floor(Date.now() / 1000 - n * 86400)
 
 async function share(filePath: string, user: string, password: string, shareType: string, opts: Record<string, string> = {}): Promise<void> {
@@ -40,130 +40,63 @@ export async function seedFiles(): Promise<void> {
 	await mkdavCol('Projects', 'christine', 'christine')
 	await mkdavCol('Projects/Q3 Gala', 'christine', 'christine')
 
-	// Documents — text, spreadsheet, contacts, calendar
-	await uploadIfMissing(
-		`${FIXTURES_DIR}/documents/Event Brief.md`,
-		'Documents/Event Brief.md',
-		'christine', 'christine',
-		daysAgo(7),
-	)
-	await uploadIfMissing(
-		`${FIXTURES_DIR}/documents/Budget Overview.csv`,
-		'Documents/Budget Overview.csv',
-		'christine', 'christine',
-		daysAgo(12),
-	)
-	await uploadIfMissing(
-		`${FIXTURES_DIR}/documents/Volunteer List.csv`,
-		'Documents/Volunteer List.csv',
-		'christine', 'christine',
-		daysAgo(5),
-	)
-	await uploadIfMissing(
-		`${FIXTURES_DIR}/contacts/team-contacts.vcf`,
-		'Documents/team-contacts.vcf',
-		'christine', 'christine',
-		daysAgo(20),
-	)
-	await uploadIfMissing(
-		`${FIXTURES_DIR}/calendar/q3-gala.ics`,
-		'Documents/q3-gala.ics',
-		'christine', 'christine',
-		daysAgo(18),
-	)
+	// Root-level files — mix of types for a realistic file list
+	await uploadIfMissing(`${F}/images/ocean-golden.jpg`,           'Ocean sunset.jpg',           'christine', 'christine', daysAgo(47))
+	await uploadIfMissing(`${F}/documents/Fundraising Pitch.md`,    'Fundraising Pitch.md',        'christine', 'christine', daysAgo(25))
+	await uploadIfMissing(`${F}/documents/Volunteer Agreement.docx`, 'Volunteer Agreement.docx',   'christine', 'christine', daysAgo(9))
+	// Double-upload creates a version history entry (needed for the Versions sidebar tab)
+	if (!await davExists('Q2 Project Proposal.pdf', 'christine', 'christine')) {
+		await uploadFile(`${F}/pdfs/Q2 Project Proposal.pdf`, 'Q2 Project Proposal.pdf', 'christine', 'christine', daysAgo(43))
+		await uploadFile(`${F}/pdfs/Q2 Project Proposal.pdf`, 'Q2 Project Proposal.pdf', 'christine', 'christine', daysAgo(14))
+	}
 
-	// Photos — landscape JPEGs for gallery / image preview screenshots
-	await uploadIfMissing(
-		`${FIXTURES_DIR}/images/forest-green.jpg`,
-		'Photos/forest-green.jpg',
-		'christine', 'christine',
-		daysAgo(14),
-	)
-	await uploadIfMissing(
-		`${FIXTURES_DIR}/images/ocean-golden.jpg`,
-		'Photos/ocean-golden.jpg',
-		'christine', 'christine',
-		daysAgo(11),
-	)
-	await uploadIfMissing(
-		`${FIXTURES_DIR}/images/city-night-purple.jpg`,
-		'Photos/city-night-purple.jpg',
-		'christine', 'christine',
-		daysAgo(9),
-	)
-	await uploadIfMissing(
-		`${FIXTURES_DIR}/images/milky-way.jpg`,
-		'Photos/milky-way.jpg',
-		'christine', 'christine',
-		daysAgo(9),
-	)
+	// Photos — four landscape JPEGs with human-readable names
+	await uploadIfMissing(`${F}/images/forest-green.jpg`,      'Photos/Forest.jpg',              'christine', 'christine', daysAgo(73))
+	await uploadIfMissing(`${F}/images/ocean-golden.jpg`,      'Photos/Ocean at golden hour.jpg', 'christine', 'christine', daysAgo(60))
+	await uploadIfMissing(`${F}/images/city-night-purple.jpg`, 'Photos/City at night.jpg',        'christine', 'christine', daysAgo(55))
+	await uploadIfMissing(`${F}/images/milky-way.jpg`,         'Photos/Milky Way.jpg',            'christine', 'christine', daysAgo(108))
 
-	// Projects — PDFs
-	await uploadIfMissing(
-		`${FIXTURES_DIR}/pdfs/Q2 Project Proposal.pdf`,
-		'Projects/Q3 Gala/Q2 Project Proposal.pdf',
-		'christine', 'christine',
-		daysAgo(21),
-	)
-	await uploadIfMissing(
-		`${FIXTURES_DIR}/pdfs/Team Meeting Notes.pdf`,
-		'Projects/Q3 Gala/Team Meeting Notes.pdf',
-		'christine', 'christine',
-		daysAgo(3),
-	)
+	// Documents — proposal, budget, agenda, PDF, contacts, calendar
+	await uploadIfMissing(`${F}/documents/Gala Proposal 2026.docx`, 'Documents/Gala Proposal 2026.docx', 'christine', 'christine', daysAgo(26))
+	await uploadIfMissing(`${F}/documents/Event Budget.csv`,         'Documents/Event Budget.csv',        'christine', 'christine', daysAgo(17))
+	await uploadIfMissing(`${F}/documents/Q3 Meeting Agenda.md`,     'Documents/Q3 Meeting Agenda.md',    'christine', 'christine', daysAgo(13))
+	await uploadIfMissing(`${F}/pdfs/Team Meeting Notes.pdf`,        'Documents/Team Meeting Notes.pdf',  'christine', 'christine', daysAgo(29))
+	await uploadIfMissing(`${F}/contacts/team-contacts.vcf`,         'Documents/team-contacts.vcf',       'christine', 'christine', daysAgo(50))
+	await uploadIfMissing(`${F}/calendar/q3-gala.ics`,               'Documents/q3-gala.ics',             'christine', 'christine', daysAgo(48))
 
-	// ── Shares from christine ─────────────────────────────────────────────────
+	// Projects/Q3 Gala
+	await uploadIfMissing(`${F}/pdfs/Q2 Project Proposal.pdf`, 'Projects/Q3 Gala/Q2 Project Proposal.pdf', 'christine', 'christine', daysAgo(43))
+	await uploadIfMissing(`${F}/pdfs/Team Meeting Notes.pdf`,   'Projects/Q3 Gala/Team Meeting Notes.pdf',  'christine', 'christine', daysAgo(29))
 
-	// Share Projects/Q3 Gala/ folder with amara_w (editor: read + create + update)
-	await share('/Projects/Q3 Gala', 'christine', 'christine', '0', {
-		shareWith: 'amara_w',
-		permissions: '17',
-	})
+	// Remove NC's auto-generated welcome file
+	await fetch(`http://localhost:${SCREENSHOT_PORT}/remote.php/dav/files/christine/welcome.txt`, {
+		method: 'DELETE',
+		headers: { Authorization: 'Basic ' + Buffer.from('christine:christine').toString('base64') },
+	}).catch(() => {})
 
-	// Share Documents/ folder with malik_s (read-only)
-	await share('/Documents', 'christine', 'christine', '0', {
-		shareWith: 'malik_s',
-		permissions: '1',
-	})
+	// ── Shares from Christine ─────────────────────────────────────────────────
 
-	// Share Team Meeting Notes.pdf with lila_h (read-only)
-	await share('/Projects/Q3 Gala/Team Meeting Notes.pdf', 'christine', 'christine', '0', {
-		shareWith: 'lila_h',
-		permissions: '1',
-	})
-
-	// Public link share on Q2 Project Proposal.pdf (read-only)
-	await share('/Projects/Q3 Gala/Q2 Project Proposal.pdf', 'christine', 'christine', '3', {
-		permissions: '1',
-	})
+	// Documents/ — amara_w (editor) + malik_s (read-only): populates sharing panel
+	await share('/Documents', 'christine', 'christine', '0', { shareWith: 'amara_w', permissions: '17' })
+	await share('/Documents', 'christine', 'christine', '0', { shareWith: 'malik_s', permissions: '1' })
+	// Q2 Project Proposal.pdf — shared with malik_s + public link: badge + link share screenshots
+	await share('/Q2 Project Proposal.pdf', 'christine', 'christine', '0', { shareWith: 'malik_s', permissions: '1' })
+	await share('/Q2 Project Proposal.pdf', 'christine', 'christine', '3', { permissions: '1' })
+	// Ocean sunset.jpg — public link only
+	await share('/Ocean sunset.jpg', 'christine', 'christine', '3', { permissions: '1' })
+	// Projects/Q3 Gala — amara_w (editor)
+	await share('/Projects/Q3 Gala', 'christine', 'christine', '0', { shareWith: 'amara_w', permissions: '17' })
 
 	// ── amara_w's files ───────────────────────────────────────────────────────
 
-	// amara_w may already have these from Talk DM seeding; upload if missing
-	await uploadIfMissing(
-		`${FIXTURES_DIR}/pdfs/Q2 Project Proposal.pdf`,
-		'Q2 Project Proposal.pdf',
-		'amara_w', 'amara_w',
-		daysAgo(21),
-	)
-	await uploadIfMissing(
-		`${FIXTURES_DIR}/documents/Budget Overview.csv`,
-		'Budget Overview.csv',
-		'amara_w', 'amara_w',
-		daysAgo(12),
-	)
+	// amara_w may already have Q2 Proposal from Talk DM seeding; upload if missing
+	await uploadIfMissing(`${F}/pdfs/Q2 Project Proposal.pdf`,       'Q2 Project Proposal.pdf',  'amara_w', 'amara_w', daysAgo(43))
+	await uploadIfMissing(`${F}/documents/Event Budget.csv`,          'Event Budget.csv',          'amara_w', 'amara_w', daysAgo(17))
+	await uploadIfMissing(`${F}/documents/Venue Scouting Notes.md`,   'Venue Scouting Notes.md',   'amara_w', 'amara_w', daysAgo(11))
 
-	// Share Q2 Project Proposal.pdf from amara_w back to christine (read-only)
-	// so christine's "Shared with you" view has content
-	await share('/Q2 Project Proposal.pdf', 'amara_w', 'amara_w', '0', {
-		shareWith: 'christine',
-		permissions: '1',
-	})
-
-	// amara_w also shares the budget CSV with lila_h — gives lila_h a realistic
-	// "Shared with you" list for her own account
-	await share('/Budget Overview.csv', 'amara_w', 'amara_w', '0', {
-		shareWith: 'lila_h',
-		permissions: '1',
-	})
+	// amara_w → christine: incoming shares so "Shared with you" has content
+	await share('/Q2 Project Proposal.pdf',  'amara_w', 'amara_w', '0', { shareWith: 'christine', permissions: '1' })
+	await share('/Venue Scouting Notes.md',  'amara_w', 'amara_w', '0', { shareWith: 'christine', permissions: '1' })
+	// amara_w → lila_h: gives lila_h a realistic "Shared with you" list
+	await share('/Event Budget.csv', 'amara_w', 'amara_w', '0', { shareWith: 'lila_h', permissions: '1' })
 }
