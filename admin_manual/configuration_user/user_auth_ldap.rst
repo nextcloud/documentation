@@ -650,26 +650,17 @@ Additional configuration options via occ
 
 Few configuration settings can only be set on command line via ``occ``.
 
-Attribute update interval
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Background sync interval
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-The LDAP backend will update user information that is used within Nextcloud
-with the values provided by the LDAP server. For instance these are email,
-quota or the avatar. This happens on every login, the first detection of a user
-from LDAP and regularly by a background job.
+The LDAP backend updates user attributes (email, quota, avatar, and others) on
+every login, on first detection of a new user, and periodically via a background
+job.
 
-The interval value determines the time between updates of the values and is
-used to avoid frequent overhead, including time-expensive write actions to
-the database.
-
-The interval is described in seconds and it defaults to 86400 equalling a day.
-It is not a per-configuration option.
-
-The value can be modified by::
-
-  sudo -E -u www-data php occ config:app:set user_ldap updateAttributesInterval --value=86400
-
-A value of 0 will update it on every of the named occasions.
+The background job recalculates its run interval after each cycle. The goal is
+to process every known LDAP user approximately once per day. The interval is
+derived from the total number of mapped users and the smallest configured LDAP
+paging size, then clamped to a minimum of 30 minutes and a maximum of 12 hours.
 
 Administrative Group mapping
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
