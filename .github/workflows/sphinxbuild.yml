@@ -6,6 +6,8 @@ on:
     branches:
       - master
       - stable*
+  schedule:
+    - cron: '0 2 * * *'  # 02:00 UTC daily — full build + deploy
 
 permissions:
   contents: read
@@ -473,10 +475,6 @@ jobs:
       # - mailto: links: These are not valid URLs and will always fail
       # - 404.html: This is not necessary
       # - latest/stable/xx links from the version selector
-      # - /builds and /projects: These absolute paths come from the sphinx_rtd_theme when
-      #   READTHEDOCS=True is set. They appear in the generated HTML as navigation links
-      #   to ReadTheDocs build/project pages, but don't correspond to actual staged files.
-      # - openapi.html: Swagger UI pages with JavaScript-rendered anchors that lychee cannot verify
       - name: Check for broken links with lychee
         uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411 # v2.8.0
         with:
@@ -486,11 +484,9 @@ jobs:
           args: |
             --root-dir "$(pwd)/stage"
             --offline --no-progress
-            ${{ needs.stage-and-check.outputs.additional_deployment != '' && format('--remap "https://docs.nextcloud.com/server/{0}/ file://$(pwd)/stage/{1}/"', needs.stage-and-check.outputs.additional_deployment, needs.stage-and-check.outputs.branch_name) || '' }}
             --remap "https://docs.nextcloud.com/server/latest/ file://$(pwd)/stage/${{ needs.stage-and-check.outputs.branch_name }}/"
             --remap "https://docs.nextcloud.com/server/ file://$(pwd)/stage/"
-            --exclude 'go\.php' --exclude 'mailto:' --exclude 'openapi\.html' --exclude-path '.*/404\.html' --exclude-path '.*/_static/.*'
-            --exclude '^file://.*/stage/(builds|projects)'
+            --exclude 'go\.php' --exclude 'mailto:' --exclude-path '.*/404\.html' --exclude-path '.*/_static/.*'
             --exclude "/user_manual/" --include "/user_manual/en/"
             --exclude '^file://.*/stage/(latest|stable|[0-9]+)/(developer_manual|admin_manual|user_manual)/?$'
             'stage/${{ needs.stage-and-check.outputs.branch_name }}/user_manual/en/**/*.html'
@@ -511,7 +507,7 @@ jobs:
   deploy:
     name: Deploy documentation for gh-pages
     needs: stage-and-check
-    if: github.event_name == 'push'
+    if: github.event_name == 'schedule'
     runs-on: ubuntu-latest
 
     permissions:
@@ -859,9 +855,13 @@ jobs:
         run: |
           if ${{ github.event_name == 'pull_request' }}
           then
-            echo "This workflow ran for a pull request. We need stage-and-check, link-check, and netlify-preview to succeed, and deploy must be skipped"
-            if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'skipped' || needs.netlify-preview.result != 'success' }}; then exit 1; fi
+            echo "This workflow ran for a pull request. We need stage-and-check and link-check to succeed, deploy must be skipped, and netlify-preview must succeed or fail (non-fatal on forks)"
+            if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'skipped' || (needs.netlify-preview.result != 'success' && needs.netlify-preview.result != 'failure') }}; then exit 1; fi
+          elif ${{ github.event_name == 'push' }}
+          then
+            echo "This workflow ran for a push. We need stage-and-check and link-check to succeed; deploy and netlify-preview must be skipped"
+            if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'skipped' || needs.netlify-preview.result != 'skipped' }}; then exit 1; fi
           else
-            echo "This workflow ran for a push. We need stage-and-check, link-check, and deploy to succeed; netlify-preview must be skipped"
+            echo "This workflow ran on schedule. We need stage-and-check, link-check, and deploy to succeed; netlify-preview must be skipped"
             if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'success' || needs.netlify-preview.result != 'skipped' }}; then exit 1; fi
           fi
