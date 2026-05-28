@@ -475,6 +475,10 @@ jobs:
       # - mailto: links: These are not valid URLs and will always fail
       # - 404.html: This is not necessary
       # - latest/stable/xx links from the version selector
+      # - /builds and /projects: These absolute paths come from the sphinx_rtd_theme when
+      #   READTHEDOCS=True is set. They appear in the generated HTML as navigation links
+      #   to ReadTheDocs build/project pages, but don't correspond to actual staged files.
+      # - openapi.html: Swagger UI pages with JavaScript-rendered anchors that lychee cannot verify
       - name: Check for broken links with lychee
         uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411 # v2.8.0
         with:
@@ -484,9 +488,11 @@ jobs:
           args: |
             --root-dir "$(pwd)/stage"
             --offline --no-progress
+            ${{ needs.stage-and-check.outputs.additional_deployment != '' && format('--remap "https://docs.nextcloud.com/server/{0}/ file://$(pwd)/stage/{1}/"', needs.stage-and-check.outputs.additional_deployment, needs.stage-and-check.outputs.branch_name) || '' }}
             --remap "https://docs.nextcloud.com/server/latest/ file://$(pwd)/stage/${{ needs.stage-and-check.outputs.branch_name }}/"
             --remap "https://docs.nextcloud.com/server/ file://$(pwd)/stage/"
-            --exclude 'go\.php' --exclude 'mailto:' --exclude-path '.*/404\.html' --exclude-path '.*/_static/.*'
+            --exclude 'go\.php' --exclude 'mailto:' --exclude 'openapi\.html' --exclude-path '.*/404\.html' --exclude-path '.*/_static/.*'
+            --exclude '^file://.*/stage/(builds|projects)'
             --exclude "/user_manual/" --include "/user_manual/en/"
             --exclude '^file://.*/stage/(latest|stable|[0-9]+)/(developer_manual|admin_manual|user_manual)/?$'
             'stage/${{ needs.stage-and-check.outputs.branch_name }}/user_manual/en/**/*.html'
