@@ -99,4 +99,27 @@ export async function seedFiles(): Promise<void> {
 	await share('/Venue Scouting Notes.md',  'amara_w', 'amara_w', '0', { shareWith: 'christine', permissions: '1' })
 	// amara_w → lila_h: gives lila_h a realistic "Shared with you" list
 	await share('/Event Budget.csv', 'amara_w', 'amara_w', '0', { shareWith: 'lila_h', permissions: '1' })
+
+	// ── File Drop folder ──────────────────────────────────────────────────────
+	// Upload-only public link (permissions 4 = create, no read) — for file_drop screenshots
+
+	await mkdavCol('File Drop', 'christine', 'christine')
+	// Public link with upload-only permissions (file drop) — idempotent via share catch
+	await share('/File Drop', 'christine', 'christine', '3', { permissions: '4', label: 'File Drop' })
+
+	// ── Pending transfer ownership ────────────────────────────────────────────
+	// amara_w initiates a transfer of her Venue Scouting Notes.md to christine.
+	// Christine will see the accept/reject dialog in the notification centre.
+
+	const transferRes = await ocsRequest(
+		'POST',
+		'/ocs/v2.php/apps/files/api/v1/transferownership/christine',
+		'amara_w',
+		'amara_w',
+		{ path: '/Venue Scouting Notes.md' },
+	).catch(() => null)
+	// 403 = already a pending transfer — safe to ignore
+	if (transferRes && transferRes.status !== 200 && transferRes.status !== 403) {
+		// noop — transfer creation is best-effort
+	}
 }

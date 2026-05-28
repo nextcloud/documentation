@@ -160,7 +160,7 @@ test('Schedule a meeting', async ({ page }) => {
 		const roomPicker = page.getByRole('dialog', { name: 'Select a Talk Room' })
 		await roomPicker.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {})
 		// Screenshot shows the room picker with Talk conversations listed.
-		await docScreenshot(page, 'user/talk/schedule-meeting')
+		await docScreenshot(page, 'user/talk/talk-schedule-meeting')
 		// Dismiss the picker. Escape propagates to the parent event editor and
 		// triggers a "Discard changes?" dialog — click Cancel to keep the form.
 		await page.keyboard.press('Escape')
@@ -172,7 +172,7 @@ test('Schedule a meeting', async ({ page }) => {
 		await roomPicker.waitFor({ state: 'hidden', timeout: 3000 }).catch(() => {})
 		await page.waitForTimeout(300)
 	} else {
-		await docScreenshot(page, 'user/talk/schedule-meeting')
+		await docScreenshot(page, 'user/talk/talk-schedule-meeting')
 	}
 
 	// Save the event.

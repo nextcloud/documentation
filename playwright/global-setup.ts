@@ -12,7 +12,9 @@ import { seed, seedNoteToSelf } from './seed'
 const SCREENSHOT_APPS = [
 	'activity',
 	'calendar',
+	'circles',
 	'comments',
+	'contacts',
 	'deck',
 	'files_versions',
 	'notes',
