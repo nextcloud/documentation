@@ -1,0 +1,1112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2026 Nextcloud GmbH and Nextcloud contributors
+# This file is distributed under the same license as the Nextcloud latest User Manual package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# 内拓（うちたく）, 2023
+# Uchiyama Takuya <uchiyama@j-wmc.com>, 2023
+# Makoto Komatsu, 2024
+# 貴宝, 2025
+# Katsuhiro Shimohata, 2026
+# Nami Sunami, 2026
+# devi, 2026
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud latest User Manual latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-16 17:09+0000\n"
+"PO-Revision-Date: 2019-11-07 20:29+0000\n"
+"Last-Translator: devi, 2026\n"
+"Language-Team: Japanese (Japan) (https://app.transifex.com/nextcloud/teams/64236/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../files/access_webdav.rst:3
+msgid "Accessing Nextcloud files using WebDAV"
+msgstr "WebDAV を使用して Nextcloud のファイルにアクセスする"
+
+#: ../../files/access_webdav.rst:5
+msgid ""
+"Nextcloud fully supports the WebDAV protocol, and you can connect and "
+"synchronize with Nextcloud Files over WebDAV. In this chapter, you will "
+"learn how to connect Linux, macOS, Windows, and mobile devices to your "
+"Nextcloud server."
+msgstr ""
+"NextcloudはWebDAVプロトコルを完全にサポートしており、WebDAV経由でNextcloud "
+"Filesと接続して同期することができます。この章では、Linux、macOS、Windows、モバイルデバイスをNextcloudサーバーに接続する方法について解説します。"
+
+#: ../../files/access_webdav.rst:9
+msgid ""
+"WebDAV stands for Distributed Authoring and Versioning. It is an HTTP "
+"extension that makes it easy to create, read, and edit files hosted on "
+"remote Web servers. With a WebDAV client, you can access your Nextcloud "
+"Files (including shares) on Linux, macOS and Windows in a similar way as any"
+" remote network share, and stay synchronized."
+msgstr ""
+"WebDAVは、分散著作およびバージョン管理を意味します。これは、リモートWebサーバーにホストされたファイルを簡単に作成、読み取り、編集できるようにするHTTP拡張機能です。WebDAVクライアントを使用すると、Linux、macOS、WindowsでNextcloudのファイル（共有を含む）にアクセスでき、リモートネットワーク共有と同じように扱い、同期を維持することができます。"
+
+#: ../../files/access_webdav.rst:14
+msgid ""
+"Before we get into configuring WebDAV, let's take a quick look at the "
+"recommended way of connecting client devices to Nextcloud."
+msgstr "WebDAVを設定する前に、クライアントデバイスをNextcloudに接続する推奨方法を簡単に見てみましょう。"
+
+#: ../../files/access_webdav.rst:18
+msgid "Official Nextcloud desktop and mobile clients"
+msgstr "公式のNextcloudデスクトップおよびモバイルクライアント"
+
+#: ../../files/access_webdav.rst:20
+msgid ""
+"The recommended way to synchronize a computer with a Nextcloud server is by "
+"using the `official Nextcloud sync clients "
+"<https://nextcloud.com/install/#install-clients>`_. You can configure the "
+"client to save files in any local directory and you can choose which "
+"directories on the Nextcloud server to sync with. The client displays the "
+"current connection status and logs all activity, so you always know which "
+"remote files have been downloaded to your PC and you can verify that files "
+"created and updated on your local PC are properly synchronized with the "
+"server."
+msgstr ""
+"コンピュータをNextcloudサーバーと同期する推奨方法は、公式のNextcloud同期クライアント<https://nextcloud.com/install/#install-clients>`_を使用することです。\n"
+"クライアントを設定して、ローカルディレクトリにファイルを保存することができ、Nextcloudサーバー上のどのディレクトリを同期するかを選択することができます。クライアントは現在の接続状態を表示し、すべてのアクティビティをログに記録するため、リモートファイルがPCにダウンロードされたかどうかを常に確認することができ、ローカルPCで作成および更新されたファイルがサーバーと正しく同期されているかどうかを検証することができます。"
+
+#: ../../files/access_webdav.rst:28
+msgid ""
+"The recommended way to synchronize Android and Apple iOS devices is by using"
+" the `official Nextcloud mobile apps <https://nextcloud.com/install/>`_."
+msgstr ""
+"AndroidとApple "
+"iOSデバイスを同期する推奨方法は、公式のNextcloudモバイルアプリ<https://nextcloud.com/install/>`_を使用することです。"
+
+#: ../../files/access_webdav.rst:31
+msgid ""
+"To connect the official Nextcloud apps to a Nextcloud server use the same "
+"URL you use to access Nextcloud from your web browser - e.g.::"
+msgstr ""
+"公式のNextcloudアプリをNextcloudサーバーに接続するには、ウェブブラウザからNextcloudにアクセスするために使用するURLと同じものを使用してください。例えば："
+
+#: ../../files/access_webdav.rst:36 ../../files/access_webdav.rst:62
+msgid "If Nextcloud is installed in a subdirectory called \"nextcloud\"::"
+msgstr "Nextcloud が \"nextcloud\" というサブディレクトリにインストールされている場合:"
+
+#: ../../files/access_webdav.rst:41
+msgid "Third-party WebDAV clients"
+msgstr "サードパーティのWebDAVクライアント"
+
+#: ../../files/access_webdav.rst:43
+msgid ""
+"If you prefer, you may also connect your computer to your Nextcloud server "
+"by using any third-party client that supports the WebDAV protocol (including"
+" what may be built into your operating system)."
+msgstr ""
+"もし希望するなら、（オペレーティングシステムに組み込まれている可能性がある）WebDAVプロトコルをサポートするサードパーティークライアントを使用して、コンピューターをNextcloudサーバーに接続することもできます。"
+
+#: ../../files/access_webdav.rst:47
+msgid ""
+"You can also use third-party WebDAV capable apps to connect your mobile "
+"device to Nextcloud."
+msgstr "モバイルデバイスをNextcloudに接続するために、サードパーティーのWebDAV対応アプリを使用することもできます。"
+
+#: ../../files/access_webdav.rst:50
+msgid ""
+"When using third-party clients, keep in mind that they may not be optimized "
+"for use with Nextcloud or implement capabilities you consider important to "
+"your use case."
+msgstr ""
+"サードパーティのクライアントを使用する際には、Nextcloud "
+"に最適化されていない場合や、あなたのユースケースに重要だと考える機能を実装していない場合があることに注意してください。"
+
+#: ../../files/access_webdav.rst:53
+msgid ""
+"Mobile clients that Nextcloud community members have reported using include:"
+msgstr "Nextcloudコミュニティメンバーが使用しているモバイルクライアントには、以下が含まれます："
+
+#: ../../files/access_webdav.rst:55
+msgid "`FolderSync (Android) <https://foldersync.io/>`_"
+msgstr "`FolderSync (Android) <https://foldersync.io/>`_"
+
+#: ../../files/access_webdav.rst:56
+msgid ""
+"`WebDAV Navigator (iPhone) <https://apps.apple.com/us/app/webdav-"
+"navigator/id382551345>`_"
+msgstr ""
+"`WebDAV Navigator (iPhone) <https://apps.apple.com/us/app/webdav-"
+"navigator/id382551345>`_"
+
+#: ../../files/access_webdav.rst:58
+msgid ""
+"The URL to use when configuring third-party apps to connect to Nextcloud is "
+"a bit lengthier than the one for official clients::"
+msgstr "サードパーティのアプリを接続するために構成する際に使用するURLは、公式クライアント用のものよりも少し長くなります。"
+
+#: ../../files/access_webdav.rst:66
+msgid ""
+"When using a third-party WebDAV client (including your operating system's "
+"built-in client), you should use an application password for login rather "
+"than your regular password. In addition improved security, this `increases "
+"performance significantly "
+"<https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151>`_."
+" To configure an application password, log into the Nextcloud Web interface,"
+" click on the avatar in the top right and choose *Personal settings*. Then "
+"choose *Security* in the left sidebar and scroll to the very bottom. There "
+"you can create an app password (which can also be revoked in the future "
+"without changing your main user password)."
+msgstr ""
+"サードパーティのWebDAVクライアント(オペレーティングシステムの組み込みクライアントを含む)を使用する場合、通常のパスワードではなく、ログインするためのアプリのパスワードを使用する必要があります。そうすることによりセキュリティだけではなく、パフォーマンスが大幅に向上します。<https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151>`_。アプリケーションのパスワードを設定するには、Nextcloud"
+" Web "
+"インターフェースにログインし、右上のアバターをクリックして「個人設定」を選択してください。次に、左側のサイドバーで「セキュリティ」を選択し、一番下までスクロールします。そこでアプリのパスワードを作成できます（将来的にメインのユーザーパスワードを変更せずに、アプリのパスワードだけを取り消すこともできます）。"
+
+#: ../../files/access_webdav.rst:75
+msgid ""
+"In the following examples, you should replace **example.com/nextcloud** with"
+" the URL of your Nextcloud server (omit the directory part if the "
+"installation is in the root of your domain), and **USERNAME** with the "
+"username of the connecting user."
+msgstr ""
+"以下の例では、example.com/nextcloud をあなたのNextcloudサーバーのURLに置き換えてください(インストールがドメインのルートにある場合はディレクトリ部分を省略してください)、そしてUSERNAMEを接続するユーザーのユーザー名に置き換えてください。\n"
+"あなたのNextcloudでWebDAV URL(設定の左下にあります)を確認してください。"
+
+#: ../../files/access_webdav.rst:79
+msgid ""
+"See the WebDAV URL, to be found in Files Settings -> WebDAV in the Files on "
+"your Nextcloud account."
+msgstr "Nextcloud アカウントの「ファイル」で、ファイル設定 → WebDAV にある WebDAV URL を確認してください。"
+
+#: ../../files/access_webdav.rst:81
+msgid "Screenshot of the Files settings showing the personal WebDAV link"
+msgstr "個人用 WebDAV リンクを表示した「ファイル」設定のスクリーンショット"
+
+#: ../../files/access_webdav.rst:88
+msgid "Accessing files using Linux"
+msgstr "Linuxを使用してファイルにアクセスする"
+
+#: ../../files/access_webdav.rst:90
+msgid ""
+"You can access files in Linux operating systems using the following methods."
+msgstr "以下の方法を使って、Linuxオペレーティングシステム内のファイルにアクセスできます。"
+
+#: ../../files/access_webdav.rst:93
+msgid "Nautilus file manager"
+msgstr "Nautilus ファイルマネージャー"
+
+#: ../../files/access_webdav.rst:95
+msgid ""
+"**When you configure your Nextcloud account in the** `GNOME Control Center "
+"<../groupware/sync_gnome.html>`_, **your files will automatically be mounted"
+" by Nautilus as a WebDAV share, unless you deselect file access**."
+msgstr ""
+"`GNOME コントロールセンター <../groupware/sync_gnome.html>`_, **で Nextcloud "
+"アカウントを設定すると、ファイルへのアクセスを無効にしない限り、ファイルは Nautilus によって WebDAV "
+"共有として自動的にマウントされます。**"
+
+#: ../../files/access_webdav.rst:99
+msgid ""
+"You can also mount your Nextcloud files manually. Use the ``davs://`` "
+"protocol to connect the Nautilus file manager to your Nextcloud share::"
+msgstr ""
+"Nextcloud のファイルは手動でマウントすることもできます。Nautilus ファイルマネージャーを Nextcloud "
+"のシェアに接続するには、``davs://`` プロトコルを使用します。::"
+
+#: ../../files/access_webdav.rst:105
+msgid ""
+"If your server connection is not HTTPS-secured, use ``dav://`` instead of "
+"``davs://``:"
+msgstr "もしサーバー接続がHTTPSで保護されていない場合は、davs://の代わりにdav://を使用してください。"
+
+#: ../../files/access_webdav.rst:108
+msgid "Screenshot of configuring Nautilus file manager to use WebDAV"
+msgstr "Nautilusファイルマネージャーが WebDAV を使用するよう設定しているスクリーンショット"
+
+#: ../../files/access_webdav.rst:111
+msgid ""
+"The same method works for other file managers that use GVFS, such as MATE's "
+"Caja and Cinnamon's Nemo."
+msgstr "同じ方法は、MATE の Caja や Cinnamon の Nemo など、GVFS を使う他のファイルマネージャーでも有効です。"
+
+#: ../../files/access_webdav.rst:115
+msgid "Accessing files with KDE and Dolphin file manager"
+msgstr "KDE と Dolphin ファイルマネージャーでファイルにアクセスする"
+
+#: ../../files/access_webdav.rst:117
+msgid "Navigate to System Settings -> Networking -> Online Accounts"
+msgstr "システム設定 -> ネットワーク -> オンラインアカウント に移動してください"
+
+#: ../../files/access_webdav.rst:118
+msgid "Click \"Add Account...\""
+msgstr "「アカウントを追加…」をクリック"
+
+#: ../../files/access_webdav.rst:119
+msgid "Click Nextcloud"
+msgstr "Nextcloud をクリック"
+
+#: ../../files/access_webdav.rst:120
+msgid "Enter your server address"
+msgstr "サーバーアドレスを入力する"
+
+#: ../../files/access_webdav.rst:121
+msgid "Follow the on-screen instructions to log in"
+msgstr "画面の指示に従ってログインする"
+
+#: ../../files/access_webdav.rst:122
+msgid ""
+"After logging in, ensure you enable \"Storage\" in the \"Use This Account "
+"For\" section"
+msgstr "ログイン後、「このアカウントを使用」のセクションで「ストレージ」を有効にする"
+
+#: ../../files/access_webdav.rst:123
+msgid "You can now access your files in Dolphin under \"Network\" in the sidebar"
+msgstr "サイドバーの「ネットワーク」から、Dolphin でファイルにアクセスできるようになりました"
+
+#: ../../files/access_webdav.rst:124
+msgid ""
+"(Optional) To add this as a shortcut in the sidebar, right click \"Nextcloud"
+" Storage\" then \"Add to Places\""
+msgstr ""
+"（任意）これをサイドバーにショートカットとして追加するには、「Nextcloud Storage」を右クリックして「場所に追加」を選んでください"
+
+#: ../../files/access_webdav.rst:125
+msgid ""
+"(Optional) To customise the shortcut, right click the shortcut in the "
+"sidebar then \"Edit...\" and customise the icon and label as you please"
+msgstr ""
+"（任意）ショートカットをカスタマイズするには、サイドバーのショートカットを右クリックして「編集…」を選び、アイコンとラベルをお好みでカスタマイズしてください"
+
+#: ../../files/access_webdav.rst:129
+msgid "Creating WebDAV mounts on the Linux command line"
+msgstr "Linux コマンドラインで WebDAV マウントを作成する"
+
+#: ../../files/access_webdav.rst:131
+msgid ""
+"You can create WebDAV mounts from the Linux command line. This is useful if "
+"you prefer to access Nextcloud the same way as any other remote filesystem "
+"mount. The following example shows how to create a personal mount and have "
+"it mounted automatically every time you log in to your Linux computer."
+msgstr ""
+"Linux のコマンドラインから WebDAV マウントを作成できます。これは、Nextcloud "
+"を他のリモートファイルシステムのマウントと同じ方法で扱いたい場合に便利です。次の例では、個人用のマウントを作成し、Linux "
+"コンピューターにログインするたびに自動的にマウントされるように設定する方法を示します。"
+
+#: ../../files/access_webdav.rst:136
+msgid ""
+"Install the ``davfs2`` WebDAV filesystem driver, which allows you to mount "
+"WebDAV shares just like any other remote filesystem. Use this command to "
+"install it on Debian/Ubuntu::"
+msgstr ""
+"WebDAV 共有を他のリモートファイルシステムと同様にマウントできる WebDAV ファイルシステムドライバー ``davfs2`` "
+"をインストールします。Debian/Ubuntu では次のコマンドでインストールします::"
+
+#: ../../files/access_webdav.rst:142
+msgid "Use this command to install it on CentOS, Fedora, and openSUSE::"
+msgstr "CentOS、Fedora、openSUSE では次のコマンドでインストールします::"
+
+#: ../../files/access_webdav.rst:146
+msgid "Add yourself to the ``davfs2`` group::"
+msgstr "自分を ``davfs2`` グループに追加します::"
+
+#: ../../files/access_webdav.rst:150
+msgid ""
+"Then create a ``nextcloud`` directory in your home directory for the mount "
+"point, and ``.davfs2/`` for your personal configuration file::"
+msgstr ""
+"次に、マウントポイント用としてホームディレクトリに ``nextcloud`` ディレクトリを作成し、個人設定ファイル用に ``.davfs2/`` "
+"を作成します::"
+
+#: ../../files/access_webdav.rst:156
+msgid "Copy ``/etc/davfs2/secrets`` to ``~/.davfs2``::"
+msgstr "``/etc/davfs2/secrets`` を ``~/.davfs2`` にコピーします::"
+
+#: ../../files/access_webdav.rst:160
+msgid ""
+"Set yourself as the owner and make the permissions read-write owner only::"
+msgstr "所有者を自分に設定し、権限を「所有者のみ読み書き可」にします::"
+
+#: ../../files/access_webdav.rst:165
+msgid ""
+"Add your Nextcloud login credentials to the end of the ``secrets`` file, "
+"using your Nextcloud server URL and your Nextcloud username and password::"
+msgstr ""
+"Nextcloud サーバーの URL と Nextcloud のユーザー名・パスワードを使用して、``secrets`` "
+"ファイルの末尾にログイン情報を追加します::"
+
+#: ../../files/access_webdav.rst:174
+msgid "Add the mount information to ``/etc/fstab``::"
+msgstr "マウント情報を ``/etc/fstab`` に追加します::"
+
+#: ../../files/access_webdav.rst:178
+msgid ""
+"Then test that it mounts and authenticates by running the following command."
+" If you set it up correctly you won't need root permissions::"
+msgstr "次のコマンドを実行し、マウントと認証ができることをテストします。正しく設定できていれば root 権限は不要です::"
+
+#: ../../files/access_webdav.rst:183
+msgid "You should also be able to unmount it::"
+msgstr "アンマウントもできるはずです::"
+
+#: ../../files/access_webdav.rst:187
+msgid ""
+"Now every time you login to your Linux system your Nextcloud share should "
+"automatically mount via WebDAV in your ``~/nextcloud`` directory. If you "
+"prefer to mount it manually, change ``auto`` to ``noauto`` in "
+"``/etc/fstab``."
+msgstr ""
+"これで Linux システムにログインするたびに、Nextcloud 共有が WebDAV 経由で ``~/nextcloud`` "
+"ディレクトリに自動的にマウントされるようになります。手動でマウントしたい場合は、``/etc/fstab`` の ``auto`` を "
+"``noauto`` に変更してください。"
+
+#: ../../files/access_webdav.rst:193
+msgid "Known issues"
+msgstr "既知の問題"
+
+#: ../../files/access_webdav.rst:196 ../../files/access_webdav.rst:207
+#: ../../files/access_webdav.rst:374 ../../files/access_webdav.rst:396
+#: ../../files/access_webdav.rst:414 ../../files/access_webdav.rst:427
+#: ../../files/access_webdav.rst:437
+msgid "Problem"
+msgstr "問題"
+
+#: ../../files/access_webdav.rst:197
+msgid "Resource temporarily unavailable"
+msgstr "リソースが一時的に利用できません"
+
+#: ../../files/access_webdav.rst:200 ../../files/access_webdav.rst:211
+#: ../../files/access_webdav.rst:402 ../../files/access_webdav.rst:432
+#: ../../files/access_webdav.rst:441
+msgid "Solution"
+msgstr "解決策"
+
+#: ../../files/access_webdav.rst:201
+msgid ""
+"If you experience trouble when you create a file in the directory, edit "
+"``/etc/davfs2/davfs2.conf`` and add::"
+msgstr ""
+"ディレクトリ内でファイルを作成する際に問題が発生する場合は、``/etc/davfs2/davfs2.conf`` を編集して次を追加します::"
+
+#: ../../files/access_webdav.rst:208
+msgid "Certificate warnings"
+msgstr "証明書の警告"
+
+#: ../../files/access_webdav.rst:213
+msgid ""
+"If you use a self-signed certificate, you will get a warning. To change "
+"this, you need to configure ``davfs2`` to recognize your certificate. Copy "
+"``mycertificate.pem`` to ``/etc/davfs2/certs/``. Then edit "
+"``/etc/davfs2/davfs2.conf`` and uncomment the line ``servercert``. Now add "
+"the path of your certificate as in this example::"
+msgstr ""
+"自己署名証明書を使用している場合は警告が表示されます。これを解消するには、``davfs2`` "
+"が証明書を認識できるように設定する必要があります。``mycertificate.pem`` を ``/etc/davfs2/certs/`` "
+"にコピーしてください。次に ``/etc/davfs2/davfs2.conf`` を編集し、``servercert`` "
+"の行をコメントアウト解除します。続いて、次の例のように証明書のパスを追加します::"
+
+#: ../../files/access_webdav.rst:223
+msgid "Accessing files using macOS"
+msgstr "macOS を使用してファイルにアクセスする"
+
+#: ../../files/access_webdav.rst:225
+msgid ""
+"The macOS Finder suffers from a `series of implementation problems "
+"<http://sabre.io/dav/clients/finder/>`_ and should only be used if the "
+"Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**. "
+"Alternative macOS-compatible clients capable of accessing WebDAV shares "
+"include open source apps like `Cyberduck <https://cyberduck.io/>`_ (see "
+"instructions `here "
+"<https://docs.nextcloud.com/server/latest/user_manual/files/access_webdav.html#accessing-"
+"files-using-cyberduck>`_) and `Filezilla <https://filezilla-project.org>`_. "
+"Commercial clients include `Mountain Duck <https://mountainduck.io/>`_, "
+"`Forklift <https://binarynights.com/>`_, `Transmit <https://panic.com/>`_, "
+"and `Commander One <https://mac.eltima.com/>`_."
+msgstr ""
+"macOS の Finder には `いくつかの実装上の問題 <http://sabre.io/dav/clients/finder/>`_ "
+"があり、Nextcloud サーバーが **Apache** と **mod_php**、または **Nginx 1.3.8+** "
+"上で動作している場合にのみ使用することを推奨します。WebDAV 共有にアクセスできる macOS 対応の代替クライアントとして、オープンソースの "
+"`Cyberduck <https://cyberduck.io/>`_（手順は `こちら "
+"<https://docs.nextcloud.com/server/latest/user_manual/files/access_webdav.html#accessing-"
+"files-using-cyberduck>`_）や `Filezilla <https://filezilla-project.org>`_ "
+"があります。商用クライアントには `Mountain Duck <https://mountainduck.io/>`_、`Forklift "
+"<https://binarynights.com/>`_、`Transmit <https://panic.com/>`_、`Commander "
+"One <https://mac.eltima.com/>`_ などがあります。"
+
+#: ../../files/access_webdav.rst:227
+msgid "To access files through the macOS Finder:"
+msgstr "macOS Finder からファイルにアクセスするには:"
+
+#: ../../files/access_webdav.rst:229
+msgid "From the Finder's top menu bar, choose **Go > Connect to Server…**:"
+msgstr "Finder 上部のメニューバーから **移動 > サーバへ接続…** を選択します:"
+
+#: ../../files/access_webdav.rst:231
+msgid "Screenshot of entering your Nextcloud server address on macOS"
+msgstr "macOS で Nextcloud サーバーアドレスを入力しているスクリーンショット"
+
+#: ../../files/access_webdav.rst:234
+msgid ""
+"When the **Connect to Server…** window opens, enter your Nextcloud server's "
+"WebDAV address in the **Server Address:** field, i.e.::"
+msgstr ""
+"**サーバへ接続…** ウィンドウが開いたら、**サーバアドレス:** 欄に Nextcloud サーバーの WebDAV "
+"アドレスを入力します（例）::"
+
+#: ../../files/access_webdav.rst:238
+msgid ""
+"Screenshot: Enter Nextcloud server address in \"Connect to Server…\" dialog "
+"box"
+msgstr "スクリーンショット: 「サーバへ接続…」ダイアログで Nextcloud サーバーアドレスを入力"
+
+#: ../../files/access_webdav.rst:241
+msgid ""
+"Click **Connect**. Your WebDAV server should appear on the Desktop as a "
+"shared disk drive."
+msgstr "**接続** をクリックします。WebDAV サーバーが共有ディスクドライブとしてデスクトップに表示されます。"
+
+#: ../../files/access_webdav.rst:245
+msgid "Accessing files using Microsoft Windows"
+msgstr "Microsoft Windowsを使用してファイルにアクセスする方法"
+
+#: ../../files/access_webdav.rst:247
+msgid ""
+"If you use the native Windows implementation of WebDAV, you can map "
+"Nextcloud to a new drive using Windows Explorer. Mapping to a drive enables "
+"you to browse files stored on a Nextcloud server the way you would browse "
+"files stored in a mapped network drive."
+msgstr ""
+"Windows のネイティブな WebDAV 実装を使用する場合、Windows Explorer を使用して Nextcloud "
+"を新しいドライブにマップできます。ドライブにマップすることで、ネットワークドライブに保存されているファイルをブラウズする方法と同じ方法で、Nextcloud"
+" サーバーに保存されているファイルをブラウズできます。"
+
+#: ../../files/access_webdav.rst:251
+msgid ""
+"Using this feature requires network connectivity. If you want to store your "
+"files offline, use the Desktop Client to sync all files on your Nextcloud to"
+" one or more directories of your local hard drive."
+msgstr ""
+"この機能を使用するには、ネットワーク接続が必要です。オフラインでファイルを保存する場合は、デスクトップクライアントを使用して、Nextcloud上のすべてのファイルをローカルハードドライブの1つまたは複数のディレクトリに同期してください。"
+
+#: ../../files/access_webdav.rst:255
+msgid ""
+"Windows 10 now defaults to allow Basic Authentication if HTTPS is enabled "
+"before mapping your drive."
+msgstr "Windows 10は、ドライブをマッピングする前にHTTPSが有効になっている場合、基本認証を許可するようにデフォルト設定になりました。"
+
+#: ../../files/access_webdav.rst:257
+msgid ""
+"On older versions of Windows, you must permit the use of Basic "
+"Authentication in the Windows Registry:"
+msgstr "古いバージョンのWindowsでは、WindowsレジストリでBasic認証の使用を許可する必要があります。"
+
+#: ../../files/access_webdav.rst:259
+msgid ""
+"launch ``regedit`` and navigate to "
+"``HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters``."
+msgstr ""
+"``regedit`` "
+"を起動し、``HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters``"
+" に移動します。"
+
+#: ../../files/access_webdav.rst:260
+msgid ""
+"Create or edit the ``BasicAuthLevel`` (Windows Vista, 7 and 8), or "
+"``UseBasicAuth`` (Windows XP and Windows Server 2003), ``DWORD`` value and "
+"set its value data to ``1`` for SSL connections. A value of ``0`` means that"
+" Basic Authentication is disabled, and a value of ``2`` allows both SSL and "
+"non-SSL connections (not recommended)."
+msgstr ""
+"``BasicAuthLevel``（Windows Vista/7/8）または ``UseBasicAuth``（Windows XP/Windows"
+" Server 2003）の ``DWORD`` 値を作成または編集し、SSL 接続の場合は値データを ``1`` に設定します。値 ``0`` "
+"は基本認証が無効であることを意味し、値 ``2`` は SSL と非 SSL の両方の接続を許可します（推奨しません）。"
+
+#: ../../files/access_webdav.rst:262
+msgid "Then exit Registry Editor, and restart the computer."
+msgstr "次にレジストリエディターを終了し、コンピューターを再起動します。"
+
+#: ../../files/access_webdav.rst:265
+msgid "Mapping drives with the command line"
+msgstr "コマンドラインでドライブをマッピングする"
+
+#: ../../files/access_webdav.rst:267
+msgid ""
+"The following example shows how to map a drive using the command line. To "
+"map the drive:"
+msgstr "次の例では、コマンドラインを使用してドライブをマッピングする方法を示します。ドライブをマッピングするには:"
+
+#: ../../files/access_webdav.rst:270
+msgid "Open a command prompt in Windows."
+msgstr "Windows でコマンドプロンプトを開きます。"
+
+#: ../../files/access_webdav.rst:271
+msgid ""
+"Enter the following line in the command prompt to map to the computer Z "
+"drive::"
+msgstr "コマンドプロンプトで次の行を入力し、コンピューターの Z ドライブにマップします::"
+
+#: ../../files/access_webdav.rst:276
+msgid "with <drive_path> as the URL to your Nextcloud server. For example::"
+msgstr "<drive_path> は Nextcloud サーバーの URL です。例えば::"
+
+#: ../../files/access_webdav.rst:281
+msgid ""
+"The computer maps the files of your Nextcloud account to the drive letter Z."
+msgstr "コンピューターは Nextcloud アカウントのファイルをドライブレター Z にマッピングします。"
+
+#: ../../files/access_webdav.rst:283
+msgid ""
+"If you get the following error ``System error 67 has occurred. The network "
+"name cannot be found.``, or frequent disconnections, open the **Services** "
+"app and make sure that the ``WebClient`` service is running and started "
+"automatically at startup."
+msgstr ""
+"``System error 67 has occurred. The network name cannot be found.`` "
+"というエラーが表示される、または頻繁に切断される場合は、**サービス** アプリを開き、``WebClient`` "
+"サービスが実行中であり、起動時に自動的に開始される設定になっていることを確認してください。"
+
+#: ../../files/access_webdav.rst:288
+msgid ""
+"Though not recommended, you can also mount the Nextcloud server using HTTP, "
+"leaving the connection unencrypted."
+msgstr "推奨はしませんが、接続を暗号化しない HTTP を使用して Nextcloud サーバーをマウントすることもできます。"
+
+#: ../../files/access_webdav.rst:290
+msgid ""
+"If you plan to use HTTP connections on devices while in a public place, we "
+"strongly recommend using a VPN tunnel to provide the necessary security."
+msgstr ""
+"公共の場所でデバイスから HTTP 接続を使用する予定がある場合は、必要なセキュリティを確保するために VPN トンネルの使用を強く推奨します。"
+
+#: ../../files/access_webdav.rst:292
+msgid "An alternative command syntax is::"
+msgstr "別のコマンド構文は次のとおりです::"
+
+#: ../../files/access_webdav.rst:298
+msgid "Mapping drives with Windows Explorer"
+msgstr "Windows Explorer でドライブをマッピングする"
+
+#: ../../files/access_webdav.rst:300
+msgid "To map a drive using Microsoft Windows Explorer:"
+msgstr "Microsoft Windows Explorer を使用してドライブをマッピングするには:"
+
+#: ../../files/access_webdav.rst:302
+msgid "Open Windows Explorer on your MS Windows computer."
+msgstr "MS Windows コンピューターで Windows Explorer を開きます。"
+
+#: ../../files/access_webdav.rst:303
+msgid ""
+"Right-click on **Computer** entry and select **Map network drive…** from the"
+" drop-down menu."
+msgstr "**コンピューター** を右クリックし、ドロップダウンメニューから **ネットワーク ドライブの割り当て…** を選択します。"
+
+#: ../../files/access_webdav.rst:305
+msgid "Choose a local network drive to which you want to map Nextcloud."
+msgstr "Nextcloud を割り当てたいローカルのネットワークドライブを選択します。"
+
+#: ../../files/access_webdav.rst:306
+msgid ""
+"Specify the address to your Nextcloud instance, followed by "
+"**/remote.php/dav/files/USERNAME/**."
+msgstr "Nextcloud インスタンスのアドレスに続けて、**/remote.php/dav/files/USERNAME/** を指定します。"
+
+#: ../../files/access_webdav.rst:309
+msgid "For example::"
+msgstr "例::"
+
+#: ../../files/access_webdav.rst:313
+msgid ""
+"For SSL-protected servers, check **Reconnect at sign-in** to ensure that the"
+" mapping is persistent upon subsequent reboots. If you want to connect to "
+"the Nextcloud server as a different user, check **Connect using different "
+"credentials**."
+msgstr ""
+"SSL で保護されたサーバーの場合は、再起動後もマッピングを維持するために **サインイン時に再接続する** "
+"にチェックを入れてください。別のユーザーとして Nextcloud サーバーに接続したい場合は、**別の資格情報を使用して接続する** "
+"にチェックを入れます。"
+
+#: ../../files/access_webdav.rst:318
+msgid "Screenshot of mapping WebDAV on Windows Explorer"
+msgstr "Windows Explorer で WebDAV をマッピングしているスクリーンショット"
+
+#: ../../files/access_webdav.rst:322
+msgid "Click the ``Finish`` button."
+msgstr "``Finish`` ボタンをクリックします。"
+
+#: ../../files/access_webdav.rst:324
+msgid ""
+"Windows Explorer maps the network drive, making your Nextcloud instance "
+"available."
+msgstr "Windows Explorer がネットワークドライブをマッピングし、Nextcloud インスタンスを利用できるようにします。"
+
+#: ../../files/access_webdav.rst:328
+msgid "Accessing files using Cyberduck"
+msgstr "Cyberduck を使用してファイルにアクセスする"
+
+#: ../../files/access_webdav.rst:330
+msgid ""
+"`Cyberduck <https://cyberduck.io/>`_ is an open source FTP, SFTP, WebDAV, "
+"OpenStack Swift, and Amazon S3 browser designed for file transfers on macOS "
+"and Windows."
+msgstr ""
+"`Cyberduck <https://cyberduck.io/>`_ は、macOS と Windows "
+"でのファイル転送向けに設計された、オープンソースの FTP / SFTP / WebDAV / OpenStack Swift / Amazon S3 "
+"ブラウザーです。"
+
+#: ../../files/access_webdav.rst:332
+msgid "This example uses Cyberduck version 4.2.1."
+msgstr "この例では Cyberduck バージョン 4.2.1 を使用します。"
+
+#: ../../files/access_webdav.rst:334
+msgid "To use Cyberduck:"
+msgstr "Cyberduck を使用するには:"
+
+#: ../../files/access_webdav.rst:336
+msgid "Specify a server without any leading protocol information."
+msgstr "先頭にプロトコル情報を付けずにサーバーを指定します。"
+
+#: ../../files/access_webdav.rst:338
+msgid "For example: ``example.com``"
+msgstr "例: ``example.com``"
+
+#: ../../files/access_webdav.rst:340
+msgid "Specify the appropriate port."
+msgstr "適切なポートを指定します。"
+
+#: ../../files/access_webdav.rst:342
+msgid ""
+"The port you choose depends on whether or not your Nextcloud server supports"
+" SSL. Cyberduck requires that you select a different connection type if you "
+"plan to use SSL."
+msgstr ""
+"選択するポートは、Nextcloud サーバーが SSL をサポートしているかどうかによって異なります。SSL を使用する場合、Cyberduck "
+"では別の接続種別を選択する必要があります。"
+
+#: ../../files/access_webdav.rst:344
+msgid "For example:"
+msgstr "例:"
+
+#: ../../files/access_webdav.rst:345
+msgid "``80`` for unencrypted WebDAV"
+msgstr "暗号化なし WebDAV の場合は ``80``"
+
+#: ../../files/access_webdav.rst:346
+msgid "``443`` for secure WebDAV (HTTPS/SSL)"
+msgstr "安全な WebDAV（HTTPS/SSL）の場合は ``443``"
+
+#: ../../files/access_webdav.rst:348
+msgid ""
+"Use the 'More Options' drop-down menu to add the rest of your WebDAV URL "
+"into the 'Path' field."
+msgstr "「More Options」ドロップダウンメニューを使用して、WebDAV URL の残りの部分を「Path」欄に追加します。"
+
+#: ../../files/access_webdav.rst:351
+msgid "For example: ``remote.php/dav/files/USERNAME/``"
+msgstr "例: ``remote.php/dav/files/USERNAME/``"
+
+#: ../../files/access_webdav.rst:353
+msgid "Now Cyberduck enables file access to the Nextcloud server."
+msgstr "これで Cyberduck から Nextcloud サーバー上のファイルにアクセスできるようになります。"
+
+#: ../../files/access_webdav.rst:357
+msgid "Accessing public shares over WebDAV"
+msgstr "WebDAV 経由で公開共有にアクセスする"
+
+#: ../../files/access_webdav.rst:359
+msgid ""
+"Nextcloud provides the possibility to access public shares anonymously over "
+"WebDAV."
+msgstr "Nextcloud では、WebDAV 経由で公開共有に匿名でアクセスできます。"
+
+#: ../../files/access_webdav.rst:361
+msgid "To access the public share, open::"
+msgstr "公開共有にアクセスするには、次を開きます::"
+
+#: ../../files/access_webdav.rst:365
+msgid ""
+"in a WebDAV client, use the share token as username and the (optional) share"
+" password as the password. For example, with a share link "
+"https://example.com/s/kFy9Lek5sm928xP, ``kFy9Lek5sm928xP`` will be the "
+"username."
+msgstr ""
+"WebDAV クライアントでは、共有トークンをユーザー名として使用し、（任意の）共有パスワードをパスワードとして使用します。例えば共有リンクが "
+"https://example.com/s/kFy9Lek5sm928xP の場合、ユーザー名は ``kFy9Lek5sm928xP`` になります。"
+
+#: ../../files/access_webdav.rst:367
+msgid ""
+"**Settings** → **Administration** → **Sharing** → **Allow users on this "
+"server to send shares to other servers**. This option also allows WebDAV "
+"access to public shares and needs to be enabled to make this feature work, "
+"except if cURL is being used (see below)."
+msgstr ""
+"**Settings** → **Administration** → **Sharing** → **Allow users on this "
+"server to send shares to other servers**。このオプションは公開共有への WebDAV "
+"アクセスも許可します。この機能を動作させるには有効にする必要があります（ただし cURL を使用する場合は除きます。下記参照）。"
+
+#: ../../files/access_webdav.rst:371
+msgid "Known problems"
+msgstr "既知の問題"
+
+#: ../../files/access_webdav.rst:375
+msgid "Windows does not connect using HTTPS."
+msgstr "Windows が HTTPS を使用して接続できません。"
+
+#: ../../files/access_webdav.rst:378
+msgid "Solution 1"
+msgstr "解決策 1"
+
+#: ../../files/access_webdav.rst:380
+msgid ""
+"The Windows WebDAV Client might not support Server Name Indication (SNI) on "
+"encrypted connections. If you encounter an error mounting an SSL-encrypted "
+"Nextcloud instance, contact your provider about assigning a dedicated IP "
+"address for your SSL-based server."
+msgstr ""
+"Windows の WebDAV クライアントは、暗号化接続で Server Name "
+"Indication（SNI）をサポートしていない可能性があります。SSL で暗号化された Nextcloud "
+"インスタンスをマウントする際にエラーが発生する場合は、SSL ベースのサーバーに専用 IP "
+"アドレスを割り当てられるか、プロバイダーに問い合わせてください。"
+
+#: ../../files/access_webdav.rst:386
+msgid "Solution 2"
+msgstr "解決策 2"
+
+#: ../../files/access_webdav.rst:388
+msgid ""
+"The Windows WebDAV Client might not support TLSv1.1 and TLSv1.2 connections."
+" If you have restricted your server config to only provide TLSv1.1 and above"
+" the connection to your server might fail. Please refer to the WinHTTP_ "
+"documentation for further information."
+msgstr ""
+"Windows の WebDAV クライアントは TLSv1.1 および TLSv1.2 接続をサポートしていない可能性があります。サーバー設定を "
+"TLSv1.1 以上のみ提供するように制限している場合、サーバーへの接続に失敗することがあります。詳細は WinHTTP_ "
+"のドキュメントを参照してください。"
+
+#: ../../files/access_webdav.rst:398
+msgid ""
+"You receive the following error message: **Error 0x800700DF: The file size "
+"exceeds the limit allowed and cannot be saved.**"
+msgstr ""
+"次のエラーメッセージが表示されます: **Error 0x800700DF: The file size exceeds the limit "
+"allowed and cannot be saved.**"
+
+#: ../../files/access_webdav.rst:404
+msgid ""
+"Windows limits the maximum size a file transferred from or to a WebDAV share"
+" may have. You can increase the value ``FileSizeLimitInBytes`` in "
+"``HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\WebClient\\\\Parameters``"
+" by clicking on **Modify**."
+msgstr ""
+"Windows は、WebDAV "
+"共有から/へ転送できるファイルの最大サイズを制限しています。``HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\WebClient\\\\Parameters``"
+" の ``FileSizeLimitInBytes`` を **Modify** で編集して、値を増やすことができます。"
+
+#: ../../files/access_webdav.rst:409
+msgid ""
+"To increase the limit to the maximum value of 4GB, select **Decimal**, enter"
+" a value of ``4294967295``, and reboot Windows or restart the **WebClient** "
+"service."
+msgstr ""
+"上限を最大の 4GB に増やすには、**Decimal** を選択し、``4294967295`` を入力してから Windows "
+"を再起動するか、**WebClient** サービスを再起動します。"
+
+#: ../../files/access_webdav.rst:416
+msgid ""
+"Adding a WebDAV drive on Windows via the above described steps does not "
+"display the correct size of in Nextcloud available space and instead shows "
+"the size of the C: drive with its available space."
+msgstr ""
+"上記手順で Windows に WebDAV ドライブを追加しても、Nextcloud の利用可能容量が正しく表示されず、代わりに C: "
+"ドライブの容量と空き容量が表示されます。"
+
+#: ../../files/access_webdav.rst:420
+msgid "Answer"
+msgstr "回答"
+
+#: ../../files/access_webdav.rst:422
+msgid ""
+"Unfortunately is this a limitation of WebDAV itself, because it does not "
+"provide a way for the client to get the available free space from the "
+"server. Windows automatically falls back to show the size of the C: drive "
+"with its available space instead. So unfortunately there is no real solution"
+" to this problem."
+msgstr ""
+"残念ながらこれは WebDAV 自体の制限です。WebDAV "
+"は、クライアントがサーバーから利用可能な空き容量を取得する方法を提供していません。Windows は自動的に代替として C: "
+"ドライブの容量と空き容量を表示します。そのため、この問題に対する決定的な解決策はありません。"
+
+#: ../../files/access_webdav.rst:429
+msgid "Accessing your files from Microsoft Office via WebDAV fails."
+msgstr "Microsoft Office から WebDAV 経由でファイルにアクセスできません。"
+
+#: ../../files/access_webdav.rst:434
+msgid ""
+"Known problems and their solutions are documented in the KB2123563_ article."
+msgstr "既知の問題とその解決策は、KB2123563_ の記事に記載されています。"
+
+#: ../../files/access_webdav.rst:438
+msgid ""
+"Cannot map Nextcloud as a WebDAV drive in Windows using a self-signed "
+"certificate."
+msgstr "自己署名証明書を使用している場合、Windows で Nextcloud を WebDAV ドライブとしてマッピングできません。"
+
+#: ../../files/access_webdav.rst:443
+msgid "Access to your Nextcloud instance via your favorite Web browser."
+msgstr "お好みの Web ブラウザーで Nextcloud インスタンスにアクセスします。"
+
+#: ../../files/access_webdav.rst:444
+msgid ""
+"Click through until you get to the certificate error in the browser status "
+"line."
+msgstr "ブラウザーのステータスラインに証明書エラーが表示されるところまでクリックして進めます。"
+
+#: ../../files/access_webdav.rst:446
+msgid ""
+"View the certificate, then from the Details tab, select 'Copy to File'."
+msgstr "証明書を表示し、Details タブで「Copy to File」を選択します。"
+
+#: ../../files/access_webdav.rst:447
+msgid ""
+"Save the file to your desktop with an arbitrary name, for example "
+"``myNextcloud.pem``."
+msgstr "ファイルを任意の名前（例: ``myNextcloud.pem``）でデスクトップに保存します。"
+
+#: ../../files/access_webdav.rst:449
+msgid ""
+"Go to Start menu > Run, type MMC, and click 'OK' to open Microsoft "
+"Management Console."
+msgstr ""
+"スタートメニュー > 「ファイル名を指定して実行」を開き、MMC と入力して「OK」をクリックし、Microsoft Management "
+"Console を開きます。"
+
+#: ../../files/access_webdav.rst:451
+msgid "Go to File > Add/Remove Snap-In."
+msgstr "File > Add/Remove Snap-In を開きます。"
+
+#: ../../files/access_webdav.rst:452
+msgid ""
+"Select Certificates, Click 'Add', choose 'My User Account', then 'Finish', "
+"and finally 'OK'."
+msgstr ""
+"Certificates を選択し、「Add」をクリックして「My User Account」を選び、「Finish」、最後に「OK」をクリックします。"
+
+#: ../../files/access_webdav.rst:454
+msgid "Dig down to Trust Root Certification Authorities, Certificates."
+msgstr "Trusted Root Certification Authorities > Certificates までたどります。"
+
+#: ../../files/access_webdav.rst:455
+msgid "Right-Click Certificate, Select All Tasks, and Import."
+msgstr "Certificates を右クリックし、All Tasks > Import を選択します。"
+
+#: ../../files/access_webdav.rst:456
+msgid "Select the saved certificate from the Desktop."
+msgstr "デスクトップに保存した証明書を選択します。"
+
+#: ../../files/access_webdav.rst:457
+msgid ""
+"Select Place all Certificates in the following Store, and click Browse."
+msgstr "「Place all Certificates in the following Store」を選択し、「Browse」をクリックします。"
+
+#: ../../files/access_webdav.rst:458
+msgid ""
+"Check the Box that says Show Physical Stores, expand out Trusted Root "
+"Certification Authorities, select Local Computer there, click 'OK', and "
+"Complete the Import."
+msgstr ""
+"「Show Physical Stores」にチェックを入れ、Trusted Root Certification Authorities を展開して "
+"Local Computer を選択し、「OK」をクリックしてインポートを完了します。"
+
+#: ../../files/access_webdav.rst:461
+msgid ""
+"Check the list to make sure the certificate shows up. You will probably need"
+" to Refresh before you see it."
+msgstr "一覧を確認して証明書が表示されていることを確認します。表示されない場合は Refresh が必要かもしれません。"
+
+#: ../../files/access_webdav.rst:463
+msgid "Exit MMC."
+msgstr "MMC を終了します。"
+
+#: ../../files/access_webdav.rst:465
+msgid "For Firefox users:"
+msgstr "Firefox ユーザーの場合:"
+
+#: ../../files/access_webdav.rst:467
+msgid ""
+"Launch your browser, go to Application menu > History > Clear recent "
+"history..."
+msgstr ""
+"ブラウザーを起動し、Application menu > History > Clear recent history... に移動します。"
+
+#: ../../files/access_webdav.rst:468
+msgid "Select 'Everything' in the 'Time range to clear' dropdown menu"
+msgstr "「Time range to clear」ドロップダウンで「Everything」を選択します"
+
+#: ../../files/access_webdav.rst:469
+msgid "Select the 'Active Logins' check box"
+msgstr "「Active Logins」チェックボックスを選択します"
+
+#: ../../files/access_webdav.rst:470
+msgid "Click the 'Clear now' button"
+msgstr "「Clear now」ボタンをクリックします"
+
+#: ../../files/access_webdav.rst:471 ../../files/access_webdav.rst:477
+msgid "Close the browser, then re-open and test."
+msgstr "ブラウザーを閉じてから再度開き、テストします。"
+
+#: ../../files/access_webdav.rst:473
+msgid "For Chrome-based browsers (Chrome, Chromium, Microsoft Edge) users:"
+msgstr "Chrome 系ブラウザー（Chrome、Chromium、Microsoft Edge）ユーザーの場合:"
+
+#: ../../files/access_webdav.rst:475
+msgid "Open Windows Control Panel, navigate down to Internet Options"
+msgstr "Windows のコントロールパネルを開き、Internet Options を開きます"
+
+#: ../../files/access_webdav.rst:476
+msgid "In the Content tab, click the Clear SSL State button."
+msgstr "Content タブで「Clear SSL State」ボタンをクリックします。"
+
+#: ../../files/access_webdav.rst:481
+msgid "Accessing files using cURL"
+msgstr "cURL を使用してファイルにアクセスする"
+
+#: ../../files/access_webdav.rst:483
+msgid ""
+"Since WebDAV is an extension of HTTP, cURL can be used to script file "
+"operations."
+msgstr "WebDAV は HTTP の拡張であるため、cURL を使用してファイル操作をスクリプト化できます。"
+
+#: ../../files/access_webdav.rst:485
+msgid ""
+"**Settings** → **Administration** → **Sharing** → **Allow users on this "
+"server to send shares to other servers**. If this option is disabled, the "
+"option ``--header \"X-Requested-With: XMLHttpRequest\"`` needs to be passed "
+"to cURL."
+msgstr ""
+"**Settings** → **Administration** → **Sharing** → **Allow users on this "
+"server to send shares to other servers**。このオプションが無効の場合、cURL には ``--header "
+"\"X-Requested-With: XMLHttpRequest\"`` オプションを付けて実行する必要があります。"
+
+#: ../../files/access_webdav.rst:488
+msgid "To create a folder with the current date as name:"
+msgstr "現在の日付を名前にしたフォルダーを作成するには:"
+
+#: ../../files/access_webdav.rst:494
+msgid "To upload a file ``error.log`` into that directory:"
+msgstr "そのディレクトリに ``error.log`` ファイルをアップロードするには:"
+
+#: ../../files/access_webdav.rst:500
+msgid "To move a file:"
+msgstr "ファイルを移動するには:"
+
+#: ../../files/access_webdav.rst:506
+msgid "To get the properties of files in the root folder:"
+msgstr "ルートフォルダー内のファイルのプロパティを取得するには:"
+
+#: ../../files/access_webdav.rst:545
+msgid "Accessing files using WinSCP"
+msgstr "WinSCP を使用してファイルにアクセスする"
+
+#: ../../files/access_webdav.rst:547
+msgid ""
+"`WinSCP <https://winscp.net/eng/docs/introduction/>`_  is an open source "
+"free SFTP, FTP, WebDAV, S3, and SCP client for Windows. Its main function is"
+" file transfer between a local and a remote computer. Beyond this, WinSCP "
+"offers scripting and basic file management functionality."
+msgstr ""
+"`WinSCP <https://winscp.net/eng/docs/introduction/>`_ は、Windows "
+"向けのオープンソースで無料の SFTP / FTP / WebDAV / S3 / SCP "
+"クライアントです。主な機能はローカルコンピューターとリモートコンピューター間のファイル転送です。これに加えて、WinSCP "
+"にはスクリプト機能と基本的なファイル管理機能があります。"
+
+#: ../../files/access_webdav.rst:549
+msgid ""
+"You can `download <https://winscp.net/eng/downloads.php/>`_ the portable "
+"version of WinSCP and run it on Linux through `Wine "
+"<https://wiki.winehq.org/Main_Page/>`_."
+msgstr ""
+"WinSCP のポータブル版を `ダウンロード <https://winscp.net/eng/downloads.php/>`_ し、`Wine "
+"<https://wiki.winehq.org/Main_Page/>`_ を通して Linux 上で実行することもできます。"
+
+#: ../../files/access_webdav.rst:551
+msgid ""
+"To run WinSCP on Linux, download wine through your distribution's package "
+"manager, then run it with the command: ``wine WinSCP.exe``."
+msgstr ""
+"Linux で WinSCP を実行するには、ディストリビューションのパッケージマネージャーから wine をインストールし、``wine "
+"WinSCP.exe`` コマンドで実行します。"
+
+#: ../../files/access_webdav.rst:553
+msgid "To connect to Nextcloud:"
+msgstr "Nextcloud に接続するには:"
+
+#: ../../files/access_webdav.rst:555
+msgid "Start WinSCP"
+msgstr "WinSCP を起動します"
+
+#: ../../files/access_webdav.rst:556
+msgid "Press 'Session' in the menu"
+msgstr "メニューから「Session」を選択します"
+
+#: ../../files/access_webdav.rst:557
+msgid "Press the 'New Session' menu option"
+msgstr "「New Session」メニュー項目を選択します"
+
+#: ../../files/access_webdav.rst:558
+msgid "Set the 'File protocol' dropdown to WebDAV"
+msgstr "「File protocol」ドロップダウンを WebDAV に設定します"
+
+#: ../../files/access_webdav.rst:559
+msgid "Set the 'Encryption' dropdown to TLS/SSL Implicit encryption"
+msgstr "「Encryption」ドロップダウンを「TLS/SSL Implicit encryption」に設定します"
+
+#: ../../files/access_webdav.rst:560
+msgid "Fill in the hostname field: ``example.com``"
+msgstr "hostname 欄に入力します: ``example.com``"
+
+#: ../../files/access_webdav.rst:561
+msgid "Fill in the username field: ``NEXTCLOUDUSERNAME``"
+msgstr "username 欄に入力します: ``NEXTCLOUDUSERNAME``"
+
+#: ../../files/access_webdav.rst:562
+msgid "Fill in the password field: ``NEXTCLOUDPASSWORD``"
+msgstr "password 欄に入力します: ``NEXTCLOUDPASSWORD``"
+
+#: ../../files/access_webdav.rst:563
+msgid "Press the 'Advanced...' button"
+msgstr "「Advanced...」ボタンを押します"
+
+#: ../../files/access_webdav.rst:564
+msgid "Navigate to 'Environment', 'Directories' on the left side"
+msgstr "左側で「Environment」→「Directories」に移動します"
+
+#: ../../files/access_webdav.rst:565
+msgid ""
+"Fill in the 'Remote directory' field with the following: "
+"``/nextcloud/remote.php/dav/files/NEXTCLOUDUSERNAME/``"
+msgstr ""
+"「Remote directory」欄に次を入力します: "
+"``/nextcloud/remote.php/dav/files/NEXTCLOUDUSERNAME/``"
+
+#: ../../files/access_webdav.rst:566
+msgid "Press the 'OK' button"
+msgstr "「OK」ボタンを押します"
+
+#: ../../files/access_webdav.rst:567
+msgid "Press the 'Save' button"
+msgstr "「Save」ボタンを押します"
+
+#: ../../files/access_webdav.rst:568
+msgid "Select the desired options and press the 'OK' button"
+msgstr "必要なオプションを選択し、「OK」ボタンを押します"
+
+#: ../../files/access_webdav.rst:569
+msgid "Press the 'Login' button to connect to Nextcloud"
+msgstr "「Login」ボタンを押して Nextcloud に接続します"
+
+#: ../../files/access_webdav.rst:571
+msgid ""
+"It is recommended to use an app password for the password if you use TOTP as"
+" WinSCP does not understand TOTP with Nextcloud at the time of writing "
+"(2022-11-07)."
+msgstr ""
+"TOTP を使用している場合は、パスワードにアプリ用パスワードを使用することを推奨します。執筆時点（2022-11-07）では、WinSCP は "
+"Nextcloud の TOTP を扱えません。"
