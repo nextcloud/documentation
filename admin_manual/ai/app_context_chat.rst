@@ -119,7 +119,7 @@ Listed below are the major parts of the system that can be scaled independently 
    | The embedding model performance can be scaled by using a hosted embedding service, locally or remotely hosted. It should be able to serve an OpenAI-compatible API.
    | The embedding service URL can be set using the environment variable ``CC_EM_BASE_URL`` during deployment in the "Deploy Options". Other options like the model name, api key, or username and password can be set using the environment variables ``CC_EM_MODEL_NAME``, ``CC_EM_API_KEY``, ``CC_EM_USERNAME``, and ``CC_EM_PASSWORD`` respectively.
 
-   | Note that you cannot change the embedding model after installing the app, so if you want to use a different embedding model or service you will need to uninstall and reinstall the ``context_chat_backend`` ExApp with the new environment variables and an empty vectorDB.
+   | Note that you cannot change the embedding model after installing the app, so if you want to use a different embedding model or service you will need to do a full uninstall (removing all data of the ExApp) and reinstall the ``context_chat_backend`` ExApp with the new environment variables and an empty vectorDB. If the vectorDB is external, the connected database (can be `ccb`) should be dropped before installing the ExApp again.
 
 One part of the system that cannot be scaled yet is the parsing of the documents to extract text.
 This is currently done in a single instance of the ``context_chat_backend`` ExApp.
