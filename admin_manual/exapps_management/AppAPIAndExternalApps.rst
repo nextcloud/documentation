@@ -115,6 +115,9 @@ FAQ
     * Parallel processing of AI workloads for the same app with multiple GPUs is currently not supported.
 * Can I use the CPU and GPU in parallel for AI processing?
     * No, you can only process AI workloads on either the CPU or GPU for one app. For different apps, you can decide whether to run them on CPU or GPU.
+* Can I run the same ex app container once for two different nextcloud instances at the same time?
+   * No, each ExApp container can only be used for one Nextcloud instance at a time. You would need to run separate containers and even separate docker hosts for each Nextcloud instance.
+
 
 Docker Socket Proxy vs HaRP
 ---------------------------
