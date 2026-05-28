@@ -214,4 +214,4 @@ Known Limitations
 * Files larger than 100MB are not supported
 * Password protected PDFs or any other files are not supported. There will be error logs mentioning cryptography and AES in the docker container when such files are encountered but it is nothing to worry about, they will be simply ignored and the system will continue to function normally.
 * External storages (through ``files_external``) may not work as well as the local storage.
-* Multi-tenant installation is not supported. You can only run one context chat instance connected to one Nextcloud instance (see :ref:`the AppAPI docs <ai-app_api>` ).
+* Multi-tenant installation is not supported. You can only run one context chat instance connected to one Nextcloud instance (see :ref:`the AppAPI FAQ <ai-app_api>` ).
