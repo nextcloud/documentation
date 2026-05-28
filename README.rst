@@ -31,7 +31,7 @@ examples, and table cells may exceed this limit. See the
 `Style Guide <https://github.com/nextcloud/documentation/blob/master/style_guide.rst>`_
 for full guidance.
 
-.. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
+.. notes:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
    config.sample.php file; changes to this file must be made in core `<https://github.com/nextcloud/server/tree/master/config>`_
 
 Spelling and Capitalization Conventions
