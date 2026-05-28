@@ -121,6 +121,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#nextcloud-behind-a-reverse-proxy-subdirectory">Nextcloud behind a reverse proxy (subdirectory)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#nextcloud-accessible-via-multiple-domains-conditional-overwrite">Nextcloud accessible via multiple domains / conditional overwrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multiple-trusted-domains-and-share-link-urls">Multiple trusted domains and share link URLs</a></li>
 </ul>
 </li>
 </ul>
@@ -408,6 +409,35 @@ address of the proxy. When set, the overwrite parameters are only applied if
 the remote address matches. This is useful when the same Nextcloud instance is
 accessible both with and without a reverse proxy, or when different proxies
 serve the instance under different hostnames.</p>
+</div>
+</section>
+<section id="multiple-trusted-domains-and-share-link-urls">
+<h3>Multiple trusted domains and share link URLs<a class="headerlink" href="#multiple-trusted-domains-and-share-link-urls" title="Link to this heading"></a></h3>
+<p>When multiple entries are listed in <code class="docutils literal notranslate"><span class="pre">trusted_domains</span></code>, Nextcloud accepts
+requests on all of them and generates URLs based on the hostname of each
+incoming request. This means share links, download URLs, and notification
+links will reflect whichever hostname was used at the time they were copied.</p>
+<p>A share link copied while accessing Nextcloud via an internal hostname
+(e.g. <code class="docutils literal notranslate"><span class="pre">cloud.local</span></code>) will contain that hostname and will not be reachable
+by users on a different network who only have access to the public hostname
+(e.g. <code class="docutils literal notranslate"><span class="pre">cloud.example.com</span></code>).</p>
+<p>To ensure all generated URLs always use a single canonical hostname, set
+<code class="docutils literal notranslate"><span class="pre">overwritehost</span></code> and <code class="docutils literal notranslate"><span class="pre">overwrite.cli.url</span></code> unconditionally:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+$CONFIG = array (
+  &#39;trusted_domains&#39;   =&gt; [&#39;cloud.local&#39;, &#39;cloud.example.com&#39;],
+  &#39;overwritehost&#39;     =&gt; &#39;cloud.example.com&#39;,
+  &#39;overwriteprotocol&#39; =&gt; &#39;https&#39;,
+  &#39;overwrite.cli.url&#39; =&gt; &#39;https://cloud.example.com&#39;,
+);
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike the <code class="docutils literal notranslate"><span class="pre">overwritecondaddr</span></code> pattern above, this applies the
+overwrite to every request regardless of origin. Use this when you want
+one authoritative public URL for all generated links, even when the instance
+is also reachable internally under a different hostname.</p>
 </div>
 </section>
 </section>

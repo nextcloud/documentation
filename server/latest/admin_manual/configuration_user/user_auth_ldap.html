@@ -134,7 +134,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#expert-settings">Expert settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#testing-the-configuration">Testing the configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#additional-configuration-options-via-occ">Additional configuration options via occ</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#attribute-update-interval">Attribute update interval</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#background-sync-interval">Background sync interval</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#administrative-group-mapping">Administrative Group mapping</a></li>
 </ul>
 </li>
@@ -866,22 +866,15 @@ users and groups are fetched correctly on the Users page.</p>
 <section id="additional-configuration-options-via-occ">
 <h2>Additional configuration options via occ<a class="headerlink" href="#additional-configuration-options-via-occ" title="Link to this heading"></a></h2>
 <p>Few configuration settings can only be set on command line via <code class="docutils literal notranslate"><span class="pre">occ</span></code>.</p>
-<section id="attribute-update-interval">
-<h3>Attribute update interval<a class="headerlink" href="#attribute-update-interval" title="Link to this heading"></a></h3>
-<p>The LDAP backend will update user information that is used within Nextcloud
-with the values provided by the LDAP server. For instance these are email,
-quota or the avatar. This happens on every login, the first detection of a user
-from LDAP and regularly by a background job.</p>
-<p>The interval value determines the time between updates of the values and is
-used to avoid frequent overhead, including time-expensive write actions to
-the database.</p>
-<p>The interval is described in seconds and it defaults to 86400 equalling a day.
-It is not a per-configuration option.</p>
-<p>The value can be modified by:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">user_ldap</span> <span class="n">updateAttributesInterval</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">86400</span>
-</pre></div>
-</div>
-<p>A value of 0 will update it on every of the named occasions.</p>
+<section id="background-sync-interval">
+<h3>Background sync interval<a class="headerlink" href="#background-sync-interval" title="Link to this heading"></a></h3>
+<p>The LDAP backend updates user attributes (email, quota, avatar, and others) on
+every login, on first detection of a new user, and periodically via a background
+job.</p>
+<p>The background job recalculates its run interval after each cycle. The goal is
+to process every known LDAP user approximately once per day. The interval is
+derived from the total number of mapped users and the smallest configured LDAP
+paging size, then clamped to a minimum of 30 minutes and a maximum of 12 hours.</p>
 </section>
 <section id="administrative-group-mapping">
 <h3>Administrative Group mapping<a class="headerlink" href="#administrative-group-mapping" title="Link to this heading"></a></h3>
