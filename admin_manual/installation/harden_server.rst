@@ -70,10 +70,6 @@ It is highly recommended to place your data directory outside of the Web root
 (i.e. outside of ``/var/www``). It is easiest to do this on a new
 installation.
 
-.. Doc on moving data dir coming soon
-.. You may also move your data directory on an existing
-.. installation; see :doc:``
-
 .. _harden_config_dir:
 
 Place config directory outside of the web root
