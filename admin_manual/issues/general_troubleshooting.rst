@@ -255,8 +255,8 @@ See:
   <http://sabre.io/dav/clients/finder/>`_
   (Describes problems with Finder on various Web servers)
 
-There is also a well maintained FAQ thread available at the `ownCloud Forums
-<https://central.owncloud.org/t/how-to-fix-caldav-carddav-webdav-problems/852>`_
+There is also a well maintained FAQ thread available at the `Nextcloud community forums
+<https://help.nextcloud.com/c/support/6>`_
 which contains various additional information about WebDAV problems.
 
 .. _service-discovery-label:
@@ -456,7 +456,7 @@ Nextcloud recommends Using Nextcloud Enterprise for deploying instances with mor
 
 If there is an issue with the server, 500 people can't work. A data leak would risk the data of many users. In short, the server should be considered mission-critical. We believe you and your users would have a better experience with Nextcloud Enterprise.
 
-Nextcloud Enterprise is pre-configured and optimised for the needs of professional organisations rather than home users. It comes with support, security and scaling benefits, compliance expertise, and access to our knowledge about running a successful Nextcloud, to get the best possible experience for users and admins. This also reduces the load on our home user forum http://help.nextcloud.com from issues unique to big deployments.
+Nextcloud Enterprise is pre-configured and optimised for the needs of professional organisations rather than home users. It comes with support, security and scaling benefits, compliance expertise, and access to our knowledge about running a successful Nextcloud, to get the best possible experience for users and admins. This also reduces the load on our home user forum https://help.nextcloud.com from issues unique to big deployments.
 
 Nextcloud provides some infrastructure components needed for Nextcloud servers to run reliably. This includes notification, our app store and more. To ensure these resources do not get overloaded by administrators who run Nextcloud for thousands of users without providing financial resources to Nextcloud in return, these components are limited and will not work for more than 500 users.
 

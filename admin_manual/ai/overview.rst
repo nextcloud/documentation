@@ -243,7 +243,7 @@ Apps can integrate their content with Context Chat to make it available for quer
 
 * *files*
 * `Analytics <https://apps.nextcloud.com/apps/analytics>`_
-* `Mail <https://apps.nextcloud.com/apps/mail>`_ (coming soon)
+* `Mail <https://apps.nextcloud.com/apps/mail>`_
 * `Bookmarks <https://apps.nextcloud.com/apps/bookmarks>`_
 
 Context Chat Search

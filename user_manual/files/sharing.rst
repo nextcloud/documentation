@@ -111,7 +111,7 @@ users on other Nextcloud servers.
 Creating a new federation share
 -------------------------------
 
-Federation sharing is enabled by default. Follow these steps to create a new share with other Nextcloud or ownCloud servers:
+Federation sharing is enabled by default. Follow these steps to create a new share with other Nextcloud servers:
 
 Go to your ``Files`` page and click the Share icon on the file or directory
 you want to share. In the sidebar enter the username and URL of the remote user

@@ -27,5 +27,3 @@ In Talk, a conversation will be created for the file. You can chat from there, o
 .. image:: images/file-room.png
     :alt: Talk conversation created for a specific file showing the file at the top
     :width: 400px
-
-.. FIXME Add video verification for public shares

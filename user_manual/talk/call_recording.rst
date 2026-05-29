@@ -60,8 +60,6 @@ For compliance with privacy regulations, it is possible to ask participants for 
     :alt: Talk admin settings for enabling recording consent requirement
     :width: 500px
 
-.. FIXME make screenshots below from user perspective not moderator
-
 If recording consent is enabled, every participant, including moderators, will see a highlighted section in the "Media settings" before joining a call.
 This section informs participants that the call may be recorded. To give explicit consent for recording, participants must check the box. If they do not give consent, they will not be allowed to join the call.
 

@@ -4,8 +4,6 @@ Join a call or chat as guest
 
 If you received a link to a Nextcloud Talk conversation, you can join as a guest without a Nextcloud account.
 
-.. FIXME Link to dedicated pages and keep this one as a "quick intro"
-
 Joining a chat
 --------------
 

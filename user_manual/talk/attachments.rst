@@ -72,6 +72,3 @@ You can find poll drafts in ``Shared items`` tab or next to the poll title input
 .. image:: images/poll-drafts-list.png
    :alt: Talk shared items tab showing saved poll drafts
    :width: 400px
-
-
-.. FIXME voice messages?, shared items view

@@ -52,5 +52,3 @@ specific room.
 .. image:: images/talk-breakout-rooms-sidebar-item.png
     :alt: Talk individual breakout room entry in the sidebar with join option
     :width: 400px
-
-.. FIXME Ask for assistance, demo "free selection for a user"

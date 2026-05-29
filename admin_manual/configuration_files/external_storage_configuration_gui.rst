@@ -267,8 +267,6 @@ with the old entry are permanently deleted from Nextcloud's database.
 Troubleshooting File Name Encoding
 ----------------------------------
 
-.. TODO: This should be reviewed by a knowledgeable party at a future date to determine if any changes are relevant with the HFS+ to APFS migration in macOS.
-
 When using external storage, it can happen that some files with special characters will not
 appear in the file listing, or they will appear but not be accessible.
 

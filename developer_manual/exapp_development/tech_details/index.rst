@@ -8,4 +8,4 @@ Technical details
    Deployment
    Authentication
    Translations
-   api/index.rst
+   api/index

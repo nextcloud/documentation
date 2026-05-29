@@ -84,12 +84,13 @@ Added APIs
 Changed APIs
 ^^^^^^^^^^^^
 
-- TBD
+- The snowflake ID migration changed the type of IDs in ``oc_previews``, ``oc_jobs``, and ``oc_share_external`` from
+  integer to string. APIs related to these tables now return strings instead of integers.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
 
-- TBD
+*No APIs were deprecated in this release.*
 
 Removed APIs
 ^^^^^^^^^^^^
@@ -180,7 +181,7 @@ The API related to these tables are now using a string instead of a int. See Cha
 Added Events
 ^^^^^^^^^^^^
 
-- TBD
+*No new events were added in this release.*
 
 Added APIs
 ^^^^^^^^^^
