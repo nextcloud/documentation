@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Accessing Nextcloud files using WebDAV &mdash; Nextcloud latest User Manual latest ドキュメント</title>
+  <title>WebDAV を使用して Nextcloud のファイルにアクセスする &mdash; Nextcloud latest User Manual latest ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -30,7 +30,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="Desktop and mobile synchronization" href="desktop_mobile_sync.html" />
+    <link rel="next" title="デスクトップおよびモバイルでの同期" href="desktop_mobile_sync.html" />
     <link rel="prev" title="Accessing your files using the Nextcloud web interface" href="access_webgui.html" />
    
   <meta name="robots" content="noindex, follow" />
@@ -77,27 +77,27 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ファイル（Files）と同期</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="accessing.html">ファイルへのアクセス</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="access_webgui.html">Accessing your files using the Nextcloud web interface</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Accessing Nextcloud files using WebDAV</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Official Nextcloud desktop and mobile clients</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#third-party-webdav-clients">Third-party WebDAV clients</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-linux">Accessing files using Linux</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Creating WebDAV mounts on the Linux command line</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#known-issues">Known issues</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-macos">Accessing files using macOS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Accessing files using Microsoft Windows</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-cyberduck">Accessing files using Cyberduck</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-public-shares-over-webdav">Accessing public shares over WebDAV</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#known-problems">Known problems</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-curl">Accessing files using cURL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-winscp">Accessing files using WinSCP</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">WebDAV を使用して Nextcloud のファイルにアクセスする</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">公式のNextcloudデスクトップおよびモバイルクライアント</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#third-party-webdav-clients">サードパーティのWebDAVクライアント</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-linux">Linuxを使用してファイルにアクセスする</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Linux コマンドラインで WebDAV マウントを作成する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-issues">既知の問題</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-macos">macOS を使用してファイルにアクセスする</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Microsoft Windowsを使用してファイルにアクセスする方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-cyberduck">Cyberduck を使用してファイルにアクセスする</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-public-shares-over-webdav">WebDAV 経由で公開共有にアクセスする</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-problems">既知の問題</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-curl">cURL を使用してファイルにアクセスする</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-winscp">WinSCP を使用してファイルにアクセスする</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="desktop_mobile_sync.html">Desktop and mobile synchronization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="large_file_upload.html">Large file uploads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="desktop_mobile_sync.html">デスクトップおよびモバイルでの同期</a></li>
+<li class="toctree-l3"><a class="reference internal" href="large_file_upload.html">大容量ファイルのアップロード</a></li>
 <li class="toctree-l3"><a class="reference internal" href="external_storage.html">Using external storage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">ファイルの管理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
 </ul>
@@ -128,7 +128,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">ファイル（Files）と同期</a></li>
           <li class="breadcrumb-item"><a href="accessing.html">ファイルへのアクセス</a></li>
-      <li class="breadcrumb-item active">Accessing Nextcloud files using WebDAV</li>
+      <li class="breadcrumb-item active">WebDAV を使用して Nextcloud のファイルにアクセスする</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -139,56 +139,42 @@
            <div itemprop="articleBody">
              
   <section id="accessing-nextcloud-files-using-webdav">
-<h1>Accessing Nextcloud files using WebDAV<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
+<h1>WebDAV を使用して Nextcloud のファイルにアクセスする<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
 <p>Nextcloud fully supports the WebDAV protocol, and you can connect to and synchronize
 with Nextcloud Files over WebDAV. This chapter explains how to connect Linux, macOS,
 Windows, and mobile devices to your Nextcloud server.</p>
-<p>WebDAV stands for Distributed Authoring and Versioning. It is an HTTP extension
-that makes it easy to create, read, and edit files hosted on remote Web servers. With
-a WebDAV client, you can access your Nextcloud Files (including shares) on Linux,
-macOS and Windows in a similar way as any remote network share, and stay synchronized.</p>
+<p>WebDAVは、分散著作およびバージョン管理を意味します。これは、リモートWebサーバーにホストされたファイルを簡単に作成、読み取り、編集できるようにするHTTP拡張機能です。WebDAVクライアントを使用すると、Linux、macOS、WindowsでNextcloudのファイル（共有を含む）にアクセスでき、リモートネットワーク共有と同じように扱い、同期を維持することができます。</p>
 <p>Before you configure WebDAV, review the recommended way to connect client devices to
 Nextcloud.</p>
 <section id="official-nextcloud-desktop-and-mobile-clients">
-<h2>Official Nextcloud desktop and mobile clients<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
-<p>The recommended way to synchronize a computer with a Nextcloud server is by
-using the <a class="reference external" href="https://nextcloud.com/install/#install-clients">official Nextcloud sync clients</a>.
-You can configure the client to save files in any local directory and you can choose which
-directories on the Nextcloud server to sync with. The client displays the
-current connection status and logs all activity, so you always know which
-remote files have been downloaded to your PC and you can verify that files
-created and updated on your local PC are properly synchronized with the server.</p>
-<p>The recommended way to synchronize Android and Apple iOS devices is by using
-the <a class="reference external" href="https://nextcloud.com/install/">official Nextcloud mobile apps</a>.</p>
-<p>To connect the official Nextcloud apps to a Nextcloud server use the
-same URL you use to access Nextcloud from your web browser - e.g.:</p>
+<h2>公式のNextcloudデスクトップおよびモバイルクライアント<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
+<p>コンピュータをNextcloudサーバーと同期する推奨方法は、公式のNextcloud同期クライアント&lt;<a class="reference external" href="https://nextcloud.com/install/#install-clients">https://nextcloud.com/install/#install-clients</a>&gt;`_を使用することです。
+クライアントを設定して、ローカルディレクトリにファイルを保存することができ、Nextcloudサーバー上のどのディレクトリを同期するかを選択することができます。クライアントは現在の接続状態を表示し、すべてのアクティビティをログに記録するため、リモートファイルがPCにダウンロードされたかどうかを常に確認することができ、ローカルPCで作成および更新されたファイルがサーバーと正しく同期されているかどうかを検証することができます。</p>
+<p>AndroidとApple iOSデバイスを同期する推奨方法は、公式のNextcloudモバイルアプリ&lt;<a class="reference external" href="https://nextcloud.com/install/">https://nextcloud.com/install/</a>&gt;`_を使用することです。</p>
+<p>公式のNextcloudアプリをNextcloudサーバーに接続するには、ウェブブラウザからNextcloudにアクセスするために使用するURLと同じものを使用してください。例えば：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
 </div>
-<p>If Nextcloud is installed in a subdirectory called 「nextcloud」:</p>
+<p>Nextcloud が 「nextcloud」 というサブディレクトリにインストールされている場合:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span>
 </pre></div>
 </div>
 </section>
 <section id="third-party-webdav-clients">
-<h2>Third-party WebDAV clients<a class="headerlink" href="#third-party-webdav-clients" title="Link to this heading"></a></h2>
-<p>If you prefer, you may also connect your computer to your Nextcloud server by
-using any third-party client that supports the WebDAV protocol (including what may be
-built into your operating system).</p>
-<p>You can also use third-party WebDAV capable apps to connect your mobile
-device to Nextcloud.</p>
-<p>When using third-party clients, keep in mind that they may not be optimized for use with
-Nextcloud or implement capabilities you consider important to your use case.</p>
-<p>Mobile clients that Nextcloud community members have reported using include:</p>
+<h2>サードパーティのWebDAVクライアント<a class="headerlink" href="#third-party-webdav-clients" title="Link to this heading"></a></h2>
+<p>もし希望するなら、（オペレーティングシステムに組み込まれている可能性がある）WebDAVプロトコルをサポートするサードパーティークライアントを使用して、コンピューターをNextcloudサーバーに接続することもできます。</p>
+<p>モバイルデバイスをNextcloudに接続するために、サードパーティーのWebDAV対応アプリを使用することもできます。</p>
+<p>サードパーティのクライアントを使用する際には、Nextcloud に最適化されていない場合や、あなたのユースケースに重要だと考える機能を実装していない場合があることに注意してください。</p>
+<p>Nextcloudコミュニティメンバーが使用しているモバイルクライアントには、以下が含まれます：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://foldersync.io/">FolderSync (Android)</a></p></li>
 <li><p><a class="reference external" href="https://apps.apple.com/us/app/webdav-navigator/id382551345">WebDAV Navigator (iPhone)</a></p></li>
 </ul>
-<p>The URL to use when configuring third-party apps to connect to Nextcloud is a bit lengthier than the one for official clients:</p>
+<p>サードパーティのアプリを接続するために構成する際に使用するURLは、公式クライアント用のものよりも少し長くなります。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
 </pre></div>
 </div>
-<p>If Nextcloud is installed in a subdirectory called 「nextcloud」:</p>
+<p>Nextcloud が 「nextcloud」 というサブディレクトリにインストールされている場合:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
 </pre></div>
 </div>
@@ -204,73 +190,63 @@ also be revoked in the future without changing your main user password).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>In the following examples, you should replace <strong>example.com/nextcloud</strong> with the
-URL of your Nextcloud server (omit the directory part if the installation is
-in the root of your domain), and <strong>USERNAME</strong> with the username of the connecting user.</p>
+<p>以下の例では、example.com/nextcloud をあなたのNextcloudサーバーのURLに置き換えてください(インストールがドメインのルートにある場合はディレクトリ部分を省略してください)、そしてUSERNAMEを接続するユーザーのユーザー名に置き換えてください。
+あなたのNextcloudでWebDAV URL(設定の左下にあります)を確認してください。</p>
 <p>You can find the WebDAV URL in <strong>Files settings</strong> under <strong>WebDAV</strong> in your Nextcloud account.</p>
 <img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
 </div>
 </section>
 <section id="accessing-files-using-linux">
-<h2>Accessing files using Linux<a class="headerlink" href="#accessing-files-using-linux" title="Link to this heading"></a></h2>
-<p>You can access files in Linux operating systems using the following methods.</p>
+<h2>Linuxを使用してファイルにアクセスする<a class="headerlink" href="#accessing-files-using-linux" title="Link to this heading"></a></h2>
+<p>以下の方法を使って、Linuxオペレーティングシステム内のファイルにアクセスできます。</p>
 <section id="nautilus-file-manager">
-<h3>Nautilus file manager<a class="headerlink" href="#nautilus-file-manager" title="Link to this heading"></a></h3>
+<h3>Nautilus ファイルマネージャー<a class="headerlink" href="#nautilus-file-manager" title="Link to this heading"></a></h3>
 <p><strong>When you configure your Nextcloud account in the</strong> <a class="reference internal" href="../groupware/sync_gnome.html"><span class="doc">GNOME Control Center</span></a>, <strong>your files will automatically be mounted
 by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
-<p>You can also mount your Nextcloud files manually. Use the <code class="docutils literal notranslate"><span class="pre">davs://</span></code>
-protocol to connect the Nautilus file manager to your Nextcloud
-share:</p>
+<p>Nextcloud のファイルは手動でマウントすることもできます。Nautilus ファイルマネージャーを Nextcloud のシェアに接続するには、<code class="docutils literal notranslate"><span class="pre">davs://</span></code> プロトコルを使用します。:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">davs</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>If your server connection is not HTTPS-secured, use <code class="docutils literal notranslate"><span class="pre">dav://</span></code> instead
-of <code class="docutils literal notranslate"><span class="pre">davs://</span></code>:</p>
+<p>もしサーバー接続がHTTPSで保護されていない場合は、davs://の代わりにdav://を使用してください。</p>
 </div>
 <img alt="GNOME Nautilus file manager Connect to Server dialog with a Nextcloud WebDAV address entered" src="../../_images/webdav_gnome3_nautilus.png" />
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>The same method works for other file managers that use GVFS,
-such as MATE’s Caja and Cinnamon’s Nemo.</p>
+<p>同じ方法は、MATE の Caja や Cinnamon の Nemo など、GVFS を使う他のファイルマネージャーでも有効です。</p>
 </div>
 </section>
 <section id="accessing-files-with-kde-and-dolphin">
 <h3>Accessing files with KDE and Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Navigate to System Settings -&gt; Networking -&gt; Online Accounts</p></li>
-<li><p>Click 「Add Account…」</p></li>
-<li><p>Click Nextcloud</p></li>
-<li><p>Enter your server address</p></li>
-<li><p>Follow the on-screen instructions to log in</p></li>
-<li><p>After logging in, ensure you enable 「Storage」 in the 「Use This Account For」 section</p></li>
-<li><p>You can now access your files in Dolphin under 「Network」 in the sidebar</p></li>
+<li><p>システム設定 -&gt; ネットワーク -&gt; オンラインアカウント に移動してください</p></li>
+<li><p>「アカウントを追加…」をクリック</p></li>
+<li><p>Nextcloud をクリック</p></li>
+<li><p>サーバーアドレスを入力する</p></li>
+<li><p>画面の指示に従ってログインする</p></li>
+<li><p>ログイン後、「このアカウントを使用」のセクションで「ストレージ」を有効にする</p></li>
+<li><p>サイドバーの「ネットワーク」から、Dolphin でファイルにアクセスできるようになりました</p></li>
 <li><p>(Optional) To add this location as a shortcut in the sidebar, right-click 「Nextcloud Storage」, then click 「Add to Places」</p></li>
 <li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then click 「Edit…」 and customize the icon and label</p></li>
 </ol>
 </section>
 </section>
 <section id="creating-webdav-mounts-on-the-linux-command-line">
-<h2>Creating WebDAV mounts on the Linux command line<a class="headerlink" href="#creating-webdav-mounts-on-the-linux-command-line" title="Link to this heading"></a></h2>
-<p>You can create WebDAV mounts from the Linux command line. This is useful if you
-prefer to access Nextcloud the same way as any other remote filesystem mount.
-The following example shows how to create a personal mount and have it mounted
-automatically every time you log in to your Linux computer.</p>
+<h2>Linux コマンドラインで WebDAV マウントを作成する<a class="headerlink" href="#creating-webdav-mounts-on-the-linux-command-line" title="Link to this heading"></a></h2>
+<p>Linux のコマンドラインから WebDAV マウントを作成できます。これは、Nextcloud を他のリモートファイルシステムのマウントと同じ方法で扱いたい場合に便利です。次の例では、個人用のマウントを作成し、Linux コンピューターにログインするたびに自動的にマウントされるように設定する方法を示します。</p>
 <ol class="arabic">
-<li><p>Install the <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> WebDAV filesystem driver, which allows you to mount
-WebDAV shares just like any other remote filesystem. Use this command to
-install it on Debian/Ubuntu:</p>
+<li><p>WebDAV 共有を他のリモートファイルシステムと同様にマウントできる WebDAV ファイルシステムドライバー <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> をインストールします。Debian/Ubuntu では次のコマンドでインストールします:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">davfs2</span>
 </pre></div>
 </div>
 </li>
-<li><p>Use this command to install it on CentOS, Fedora, and openSUSE:</p>
+<li><p>CentOS、Fedora、openSUSE では次のコマンドでインストールします:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">davfs2</span>
 </pre></div>
 </div>
 </li>
-<li><p>Add yourself to the <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> group:</p>
+<li><p>自分を <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> グループに追加します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">davfs2</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
 </pre></div>
 </div>
@@ -281,26 +257,24 @@ install it on Debian/Ubuntu:</p>
 <p>If the davfs2 group doesn’t exist after installing the package, you may need to create it yourself and, possibly, adjust the davfs config file to use the group after you’ve created it.</p>
 </div>
 <ol class="arabic">
-<li><p>Then create a <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> directory in your home directory for the
-mount point, and <code class="docutils literal notranslate"><span class="pre">.davfs2/</span></code> for your personal configuration file:</p>
+<li><p>次に、マウントポイント用としてホームディレクトリに <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> ディレクトリを作成し、個人設定ファイル用に <code class="docutils literal notranslate"><span class="pre">.davfs2/</span></code> を作成します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">nextcloud</span>
 <span class="n">mkdir</span> <span class="o">~/.</span><span class="n">davfs2</span>
 </pre></div>
 </div>
 </li>
-<li><p>Copy <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/secrets</span></code> to <code class="docutils literal notranslate"><span class="pre">~/.davfs2</span></code>:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">/etc/davfs2/secrets</span></code> を <code class="docutils literal notranslate"><span class="pre">~/.davfs2</span></code> にコピーします:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
 </pre></div>
 </div>
 </li>
-<li><p>Set yourself as the owner and make the permissions read-write owner only:</p>
+<li><p>所有者を自分に設定し、権限を「所有者のみ読み書き可」にします:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
 <span class="n">chmod</span> <span class="mi">600</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
 </pre></div>
 </div>
 </li>
-<li><p>Add your Nextcloud login credentials to the end of the <code class="docutils literal notranslate"><span class="pre">secrets</span></code> file,
-using your Nextcloud server URL and your Nextcloud username and password:</p>
+<li><p>Nextcloud サーバーの URL と Nextcloud のユーザー名・パスワードを使用して、<code class="docutils literal notranslate"><span class="pre">secrets</span></code> ファイルの末尾にログイン情報を追加します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/ &lt;username&gt; &lt;password&gt;
 or
 $PathToMountPoint $USERNAME $PASSWORD
@@ -309,125 +283,106 @@ for example
 </pre></div>
 </div>
 </li>
-<li><p>Add the mount information to <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code>:</p>
+<li><p>マウント情報を <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code> に追加します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">linux_username</span><span class="o">&gt;/</span><span class="n">nextcloud</span> <span class="n">davfs</span> <span class="n">user</span><span class="p">,</span><span class="n">rw</span><span class="p">,</span><span class="n">auto</span> <span class="mi">0</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </li>
-<li><p>Then test that it mounts and authenticates by running the following
-command. If you set it up correctly you won’t need root permissions:</p>
+<li><p>次のコマンドを実行し、マウントと認証ができることをテストします。正しく設定できていれば root 権限は不要です:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mount</span> <span class="o">~/</span><span class="n">nextcloud</span>
 </pre></div>
 </div>
 </li>
-<li><p>You should also be able to unmount it:</p>
+<li><p>アンマウントもできるはずです:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">umount</span> <span class="o">~/</span><span class="n">nextcloud</span>
 </pre></div>
 </div>
 </li>
 </ol>
-<p>Now every time you login to your Linux system your Nextcloud share should
-automatically mount via WebDAV in your <code class="docutils literal notranslate"><span class="pre">~/nextcloud</span></code> directory. If you prefer
-to mount it manually, change <code class="docutils literal notranslate"><span class="pre">auto</span></code> to <code class="docutils literal notranslate"><span class="pre">noauto</span></code> in <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code>.</p>
+<p>これで Linux システムにログインするたびに、Nextcloud 共有が WebDAV 経由で <code class="docutils literal notranslate"><span class="pre">~/nextcloud</span></code> ディレクトリに自動的にマウントされるようになります。手動でマウントしたい場合は、<code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code> の <code class="docutils literal notranslate"><span class="pre">auto</span></code> を <code class="docutils literal notranslate"><span class="pre">noauto</span></code> に変更してください。</p>
 </section>
 <section id="known-issues">
-<h2>Known issues<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<h2>既知の問題<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
 <section id="problem">
-<h3>Problem<a class="headerlink" href="#problem" title="Link to this heading"></a></h3>
-<p>Resource temporarily unavailable</p>
+<h3>問題<a class="headerlink" href="#problem" title="Link to this heading"></a></h3>
+<p>リソースが一時的に利用できません</p>
 </section>
 <section id="solution">
-<h3>Solution<a class="headerlink" href="#solution" title="Link to this heading"></a></h3>
-<p>If you experience trouble when you create a file in the directory,
-edit <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> and add:</p>
+<h3>解決策<a class="headerlink" href="#solution" title="Link to this heading"></a></h3>
+<p>ディレクトリ内でファイルを作成する際に問題が発生する場合は、<code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> を編集して次を追加します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use_locks</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </section>
 <section id="id1">
-<h3>Problem<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-<p>Certificate warnings</p>
+<h3>問題<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>証明書の警告</p>
 </section>
 <section id="id2">
-<h3>Solution<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
-<p>If you use a self-signed certificate, you will get a warning. To
-change this, you need to configure <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> to recognize your certificate.
-Copy <code class="docutils literal notranslate"><span class="pre">mycertificate.pem</span></code> to <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/certs/</span></code>. Then edit
-<code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> and uncomment the line <code class="docutils literal notranslate"><span class="pre">servercert</span></code>. Now add the
-path of your certificate as in this example:</p>
+<h3>解決策<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>自己署名証明書を使用している場合は警告が表示されます。これを解消するには、<code class="docutils literal notranslate"><span class="pre">davfs2</span></code> が証明書を認識できるように設定する必要があります。<code class="docutils literal notranslate"><span class="pre">mycertificate.pem</span></code> を <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/certs/</span></code> にコピーしてください。次に <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> を編集し、<code class="docutils literal notranslate"><span class="pre">servercert</span></code> の行をコメントアウト解除します。続いて、次の例のように証明書のパスを追加します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">servercert</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">mycertificate</span><span class="o">.</span><span class="n">pem</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="accessing-files-using-macos">
-<h2>Accessing files using macOS<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
-<p>To access files through the macOS Finder:</p>
+<h2>macOS を使用してファイルにアクセスする<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
+<p>macOS Finder からファイルにアクセスするには:</p>
 <ol class="arabic">
-<li><p>From the Finder’s top menu bar, choose <strong>Go &gt; Connect to Server…</strong>:</p>
+<li><p>Finder 上部のメニューバーから <strong>移動 &gt; サーバへ接続…</strong> を選択します:</p>
 <img alt="macOS Go menu with Connect to Server option highlighted" src="../../_images/osx_webdav1.png" />
 </li>
-<li><p>When the <strong>Connect to Server…</strong> window opens, enter your Nextcloud server’s WebDAV address in the <strong>Server Address:</strong> field, i.e.:</p>
+<li><p><strong>サーバへ接続…</strong> ウィンドウが開いたら、<strong>サーバアドレス:</strong> 欄に Nextcloud サーバーの WebDAV アドレスを入力します（例）:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
 </pre></div>
 </div>
 <img alt="macOS Connect to Server dialog with a Nextcloud WebDAV URL in the Server Address field" src="../../_images/osx_webdav2.png" />
 </li>
-<li><p>Click <strong>Connect</strong>. Your WebDAV server should appear on the Desktop as a shared disk drive.</p></li>
+<li><p><strong>接続</strong> をクリックします。WebDAV サーバーが共有ディスクドライブとしてデスクトップに表示されます。</p></li>
 </ol>
 </section>
 <section id="accessing-files-using-microsoft-windows">
-<h2>Accessing files using Microsoft Windows<a class="headerlink" href="#accessing-files-using-microsoft-windows" title="Link to this heading"></a></h2>
-<p>If you use the native Windows implementation of WebDAV, you can map Nextcloud to a new
-drive using Windows Explorer. Mapping to a drive enables you to browse files stored on a
-Nextcloud server the way you would browse files stored in a mapped network drive.</p>
-<p>Using this feature requires network connectivity. If you want to store your
-files offline, use the Desktop Client to sync all files on your
-Nextcloud to one or more directories of your local hard drive.</p>
+<h2>Microsoft Windowsを使用してファイルにアクセスする方法<a class="headerlink" href="#accessing-files-using-microsoft-windows" title="Link to this heading"></a></h2>
+<p>Windows のネイティブな WebDAV 実装を使用する場合、Windows Explorer を使用して Nextcloud を新しいドライブにマップできます。ドライブにマップすることで、ネットワークドライブに保存されているファイルをブラウズする方法と同じ方法で、Nextcloud サーバーに保存されているファイルをブラウズできます。</p>
+<p>この機能を使用するには、ネットワーク接続が必要です。オフラインでファイルを保存する場合は、デスクトップクライアントを使用して、Nextcloud上のすべてのファイルをローカルハードドライブの1つまたは複数のディレクトリに同期してください。</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
 <p>In Windows 10, Basic Authentication is allowed by default when HTTPS is enabled before mapping your drive.</p>
-<p>On older versions of Windows, you must permit the use of Basic Authentication in the Windows Registry:</p>
+<p>古いバージョンのWindowsでは、WindowsレジストリでBasic認証の使用を許可する必要があります。</p>
 <ul class="simple">
-<li><p>launch <code class="docutils literal notranslate"><span class="pre">regedit</span></code> and navigate to <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code>.</p></li>
-<li><p>Create or edit the <code class="docutils literal notranslate"><span class="pre">BasicAuthLevel</span></code> (Windows Vista, 7 and 8), or <code class="docutils literal notranslate"><span class="pre">UseBasicAuth</span></code> (Windows XP and Windows Server 2003), <code class="docutils literal notranslate"><span class="pre">DWORD</span></code> value and set its value data to <code class="docutils literal notranslate"><span class="pre">1</span></code> for SSL connections.
-A value of <code class="docutils literal notranslate"><span class="pre">0</span></code> means that Basic Authentication is disabled, and a value of <code class="docutils literal notranslate"><span class="pre">2</span></code> allows both SSL and non-SSL connections (not recommended).</p></li>
-<li><p>Then exit Registry Editor, and restart the computer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">regedit</span></code> を起動し、<code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code> に移動します。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BasicAuthLevel``（Windows</span> <span class="pre">Vista/7/8）または</span> <span class="pre">``UseBasicAuth``（Windows</span> <span class="pre">XP/Windows</span> <span class="pre">Server</span> <span class="pre">2003）の</span> <span class="pre">``DWORD</span></code> 値を作成または編集し、SSL 接続の場合は値データを <code class="docutils literal notranslate"><span class="pre">1</span></code> に設定します。値 <code class="docutils literal notranslate"><span class="pre">0</span></code> は基本認証が無効であることを意味し、値 <code class="docutils literal notranslate"><span class="pre">2</span></code> は SSL と非 SSL の両方の接続を許可します（推奨しません）。</p></li>
+<li><p>次にレジストリエディターを終了し、コンピューターを再起動します。</p></li>
 </ul>
 </div>
 <section id="mapping-drives-with-the-command-line">
-<h3>Mapping drives with the command line<a class="headerlink" href="#mapping-drives-with-the-command-line" title="Link to this heading"></a></h3>
-<p>The following example shows how to map a drive using the command line. To map
-the drive:</p>
+<h3>コマンドラインでドライブをマッピングする<a class="headerlink" href="#mapping-drives-with-the-command-line" title="Link to this heading"></a></h3>
+<p>次の例では、コマンドラインを使用してドライブをマッピングする方法を示します。ドライブをマッピングするには:</p>
 <ol class="arabic">
-<li><p>Open a command prompt in Windows.</p></li>
-<li><p>Enter the following line in the command prompt to map to the computer Z
-drive:</p>
+<li><p>Windows でコマンドプロンプトを開きます。</p></li>
+<li><p>コマンドプロンプトで次の行を入力し、コンピューターの Z ドライブにマップします:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">drive_path</span><span class="o">&gt;/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
 </pre></div>
 </div>
-<p>with &lt;drive_path&gt; as the URL to your Nextcloud server.
-For example:</p>
+<p>&lt;drive_path&gt; は Nextcloud サーバーの URL です。例えば:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
 </pre></div>
 </div>
-<p>The computer maps the files of your Nextcloud account to the drive letter Z.</p>
+<p>コンピューターは Nextcloud アカウントのファイルをドライブレター Z にマッピングします。</p>
 </li>
 </ol>
 <div class="admonition error">
 <p class="admonition-title">エラー</p>
-<p>If you get the following error
-<code class="docutils literal notranslate"><span class="pre">System</span> <span class="pre">error</span> <span class="pre">67</span> <span class="pre">has</span> <span class="pre">occurred.</span> <span class="pre">The</span> <span class="pre">network</span> <span class="pre">name</span> <span class="pre">cannot</span> <span class="pre">be</span> <span class="pre">found.</span></code>,
-or frequent disconnections, open the <strong>Services</strong> app and make sure
-that the <code class="docutils literal notranslate"><span class="pre">WebClient</span></code> service is running and started automatically at startup.</p>
+<p><code class="docutils literal notranslate"><span class="pre">System</span> <span class="pre">error</span> <span class="pre">67</span> <span class="pre">has</span> <span class="pre">occurred.</span> <span class="pre">The</span> <span class="pre">network</span> <span class="pre">name</span> <span class="pre">cannot</span> <span class="pre">be</span> <span class="pre">found.</span></code> というエラーが表示される、または頻繁に切断される場合は、<strong>サービス</strong> アプリを開き、<code class="docutils literal notranslate"><span class="pre">WebClient</span></code> サービスが実行中であり、起動時に自動的に開始される設定になっていることを確認してください。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>Though not recommended, you can also mount the Nextcloud server using HTTP, leaving the connection unencrypted.</p>
+<p>推奨はしませんが、接続を暗号化しない HTTP を使用して Nextcloud サーバーをマウントすることもできます。</p>
 <blockquote>
-<div><p>If you plan to use HTTP connections on devices while in a public place, we strongly recommend using a VPN tunnel to provide the necessary security.</p>
+<div><p>公共の場所でデバイスから HTTP 接続を使用する予定がある場合は、必要なセキュリティを確保するために VPN トンネルの使用を強く推奨します。</p>
 </div></blockquote>
-<p>An alternative command syntax is:</p>
+<p>別のコマンド構文は次のとおりです:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> \\<span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="nd">@ssl</span>\<span class="n">nextcloud</span>\<span class="n">remote</span><span class="o">.</span><span class="n">php</span>\<span class="n">dav</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span>
 <span class="n">yourpassword</span>
 </pre></div>
@@ -435,87 +390,80 @@ that the <code class="docutils literal notranslate"><span class="pre">WebClient<
 </div>
 </section>
 <section id="mapping-drives-with-windows-explorer">
-<h3>Mapping drives with Windows Explorer<a class="headerlink" href="#mapping-drives-with-windows-explorer" title="Link to this heading"></a></h3>
-<p>To map a drive using Microsoft Windows Explorer:</p>
+<h3>Windows Explorer でドライブをマッピングする<a class="headerlink" href="#mapping-drives-with-windows-explorer" title="Link to this heading"></a></h3>
+<p>Microsoft Windows Explorer を使用してドライブをマッピングするには:</p>
 <ol class="arabic">
-<li><p>Open Windows Explorer on your MS Windows computer.</p></li>
-<li><p>Right-click on <strong>Computer</strong> entry and select <strong>Map network drive…</strong> from
-the drop-down menu.</p></li>
-<li><p>Choose a local network drive to which you want to map Nextcloud.</p></li>
-<li><p>Specify the address to your Nextcloud instance, followed by
-<strong>/remote.php/dav/files/USERNAME/</strong>.</p>
-<p>For example:</p>
+<li><p>MS Windows コンピューターで Windows Explorer を開きます。</p></li>
+<li><p><strong>コンピューター</strong> を右クリックし、ドロップダウンメニューから <strong>ネットワーク ドライブの割り当て…</strong> を選択します。</p></li>
+<li><p>Nextcloud を割り当てたいローカルのネットワークドライブを選択します。</p></li>
+<li><p>Nextcloud インスタンスのアドレスに続けて、<strong>/remote.php/dav/files/USERNAME/</strong> を指定します。</p>
+<p>例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>For SSL-protected servers, check <strong>Reconnect at sign-in</strong> to ensure
-that the mapping is persistent upon subsequent reboots. If you want to
-connect to the Nextcloud server as a different user, check <strong>Connect using
-different credentials</strong>.</p>
+<p>SSL で保護されたサーバーの場合は、再起動後もマッピングを維持するために <strong>サインイン時に再接続する</strong> にチェックを入れてください。別のユーザーとして Nextcloud サーバーに接続したい場合は、<strong>別の資格情報を使用して接続する</strong> にチェックを入れます。</p>
 </div>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Windows Explorer Map Network Drive wizard with a Nextcloud WebDAV URL entered" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
 </a>
 </figure>
 </li>
-<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Finish</span></code> button.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Finish</span></code> ボタンをクリックします。</p></li>
 </ol>
-<p>Windows Explorer maps the network drive, making your Nextcloud instance available.</p>
+<p>Windows Explorer がネットワークドライブをマッピングし、Nextcloud インスタンスを利用できるようにします。</p>
 </section>
 </section>
 <section id="accessing-files-using-cyberduck">
-<h2>Accessing files using Cyberduck<a class="headerlink" href="#accessing-files-using-cyberduck" title="Link to this heading"></a></h2>
-<p><a class="reference external" href="https://cyberduck.io/">Cyberduck</a> is an open source FTP, SFTP, WebDAV, OpenStack Swift, and Amazon S3 browser designed for file transfers on macOS and Windows.</p>
+<h2>Cyberduck を使用してファイルにアクセスする<a class="headerlink" href="#accessing-files-using-cyberduck" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://cyberduck.io/">Cyberduck</a> は、macOS と Windows でのファイル転送向けに設計された、オープンソースの FTP / SFTP / WebDAV / OpenStack Swift / Amazon S3 ブラウザーです。</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>This example uses Cyberduck version 4.2.1.</p>
+<p>この例では Cyberduck バージョン 4.2.1 を使用します。</p>
 </div>
-<p>To use Cyberduck:</p>
+<p>Cyberduck を使用するには:</p>
 <ol class="arabic">
-<li><p>Specify a server without any leading protocol information.</p>
-<p>For example: <code class="docutils literal notranslate"><span class="pre">example.com</span></code></p>
+<li><p>先頭にプロトコル情報を付けずにサーバーを指定します。</p>
+<p>例: <code class="docutils literal notranslate"><span class="pre">example.com</span></code></p>
 </li>
-<li><p>Specify the appropriate port.</p>
-<p>The port you choose depends on whether or not your Nextcloud server supports SSL. Cyberduck requires that you select a different connection type if you plan to use SSL.</p>
+<li><p>適切なポートを指定します。</p>
+<p>選択するポートは、Nextcloud サーバーが SSL をサポートしているかどうかによって異なります。SSL を使用する場合、Cyberduck では別の接続種別を選択する必要があります。</p>
 <dl class="simple">
-<dt>For example:</dt><dd><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">80</span></code> for unencrypted WebDAV</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">443</span></code> for secure WebDAV (HTTPS/SSL)</p></li>
+<dt>例:</dt><dd><ul class="simple">
+<li><p>暗号化なし WebDAV の場合は <code class="docutils literal notranslate"><span class="pre">80</span></code></p></li>
+<li><p>安全な WebDAV（HTTPS/SSL）の場合は <code class="docutils literal notranslate"><span class="pre">443</span></code></p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>Use the 『More Options』 drop-down menu to add the rest of your WebDAV URL into
-the 『Path』 field.</p>
-<p>For example: <code class="docutils literal notranslate"><span class="pre">remote.php/dav/files/USERNAME/</span></code></p>
+<li><p>「More Options」ドロップダウンメニューを使用して、WebDAV URL の残りの部分を「Path」欄に追加します。</p>
+<p>例: <code class="docutils literal notranslate"><span class="pre">remote.php/dav/files/USERNAME/</span></code></p>
 </li>
 </ol>
-<p>Now Cyberduck enables file access to the Nextcloud server.</p>
+<p>これで Cyberduck から Nextcloud サーバー上のファイルにアクセスできるようになります。</p>
 </section>
 <section id="accessing-public-shares-over-webdav">
-<h2>Accessing public shares over WebDAV<a class="headerlink" href="#accessing-public-shares-over-webdav" title="Link to this heading"></a></h2>
-<p>Nextcloud provides the possibility to access public shares anonymously over WebDAV.</p>
-<p>To access the public share, open:</p>
+<h2>WebDAV 経由で公開共有にアクセスする<a class="headerlink" href="#accessing-public-shares-over-webdav" title="Link to this heading"></a></h2>
+<p>Nextcloud では、WebDAV 経由で公開共有に匿名でアクセスできます。</p>
+<p>公開共有にアクセスするには、次を開きます:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">public</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span>
 </pre></div>
 </div>
-<p>in a WebDAV client, use the share token as username and the (optional) share password as the password. For example, with a share link <a class="reference external" href="https://example.com/s/kFy9Lek5sm928xP">https://example.com/s/kFy9Lek5sm928xP</a>, <code class="docutils literal notranslate"><span class="pre">kFy9Lek5sm928xP</span></code> will be the username.</p>
+<p>WebDAV クライアントでは、共有トークンをユーザー名として使用し、（任意の）共有パスワードをパスワードとして使用します。例えば共有リンクが <a class="reference external" href="https://example.com/s/kFy9Lek5sm928xP">https://example.com/s/kFy9Lek5sm928xP</a> の場合、ユーザー名は <code class="docutils literal notranslate"><span class="pre">kFy9Lek5sm928xP</span></code> になります。</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p><strong>Settings</strong> → <strong>Administration</strong> → <strong>Sharing</strong> → <strong>Allow users on this server to send shares to other servers</strong>.
-This option also allows WebDAV access to public shares and needs to be enabled to make this feature work, except if cURL is being used (see below).</p>
+<p><strong>Settings</strong> → <strong>Administration</strong> → <strong>Sharing</strong> → <strong>Allow users on this server to send shares to other servers</strong>。このオプションは公開共有への WebDAV アクセスも許可します。この機能を動作させるには有効にする必要があります（ただし cURL を使用する場合は除きます。下記参照）。</p>
 </div>
 </section>
 <section id="known-problems">
-<h2>Known problems<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
+<h2>既知の問題<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
 <section id="id3">
-<h3>Problem<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<h3>問題<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>WebDAV access is very slow or times out.</p>
 </section>
 <section id="id4">
-<h3>Solution<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<h3>解決策<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>When using a third-party WebDAV client (including your operating system’s built-in
 client), you should authenticate with an <strong>application password</strong> rather than your
 regular account password. Using a regular password carries a significant performance
@@ -528,124 +476,104 @@ sidebar and scroll to the bottom. Create an app password there and use it in you
 WebDAV client instead of your main password.</p>
 </section>
 <section id="id5">
-<h3>Problem<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
-<p>Windows does not connect using HTTPS.</p>
+<h3>問題<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>Windows が HTTPS を使用して接続できません。</p>
 </section>
 <section id="solution-1">
-<h3>Solution 1<a class="headerlink" href="#solution-1" title="Link to this heading"></a></h3>
-<p>The Windows WebDAV Client might not support Server Name Indication (SNI) on
-encrypted connections. If you encounter an error mounting an SSL-encrypted
-Nextcloud instance, contact your provider about assigning a dedicated IP address
-for your SSL-based server.</p>
+<h3>解決策 1<a class="headerlink" href="#solution-1" title="Link to this heading"></a></h3>
+<p>Windows の WebDAV クライアントは、暗号化接続で Server Name Indication（SNI）をサポートしていない可能性があります。SSL で暗号化された Nextcloud インスタンスをマウントする際にエラーが発生する場合は、SSL ベースのサーバーに専用 IP アドレスを割り当てられるか、プロバイダーに問い合わせてください。</p>
 </section>
 <section id="solution-2">
-<h3>Solution 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
-<p>The Windows WebDAV Client might not support TLSv1.1 and TLSv1.2 connections. If
-you have restricted your server config to only provide TLSv1.1 and above the
-connection to your server might fail. Please refer to the <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> documentation
-for further information.</p>
+<h3>解決策 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
+<p>Windows の WebDAV クライアントは TLSv1.1 および TLSv1.2 接続をサポートしていない可能性があります。サーバー設定を TLSv1.1 以上のみ提供するように制限している場合、サーバーへの接続に失敗することがあります。詳細は <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> のドキュメントを参照してください。</p>
 </section>
 <section id="id6">
-<h3>Problem<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
-<p>You receive the following error message: <strong>Error 0x800700DF: The file size
-exceeds the limit allowed and cannot be saved.</strong></p>
+<h3>問題<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>次のエラーメッセージが表示されます: <strong>Error 0x800700DF: The file size exceeds the limit allowed and cannot be saved.</strong></p>
 </section>
 <section id="id7">
-<h3>Solution<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
-<p>Windows limits the maximum size a file transferred from or to a WebDAV share
-may have. You can increase the value <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> in
-<code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code>
-by clicking on <strong>Modify</strong>.</p>
-<p>To increase the limit to the maximum value of 4GB, select <strong>Decimal</strong>, enter a
-value of <code class="docutils literal notranslate"><span class="pre">4294967295</span></code>, and reboot Windows or restart the <strong>WebClient</strong>
-service.</p>
+<h3>解決策<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>Windows は、WebDAV 共有から/へ転送できるファイルの最大サイズを制限しています。<code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> の <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> を <strong>Modify</strong> で編集して、値を増やすことができます。</p>
+<p>上限を最大の 4GB に増やすには、<strong>Decimal</strong> を選択し、<code class="docutils literal notranslate"><span class="pre">4294967295</span></code> を入力してから Windows を再起動するか、<strong>WebClient</strong> サービスを再起動します。</p>
 </section>
 <section id="id8">
-<h3>Problem<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<h3>問題<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Adding a WebDAV drive on Windows with the steps above does not display the correct
 available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
 <section id="answer">
-<h3>Answer<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
+<h3>回答<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
 <p>Unfortunately, this is a limitation of WebDAV itself, because it does not provide a
 way for the client to retrieve available free space from the server. Windows automatically
 falls back to the size and free space of the C: drive. There is no direct solution
 for this limitation.</p>
 </section>
 <section id="id9">
-<h3>Problem<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
-<p>Accessing your files from Microsoft Office via WebDAV fails.</p>
+<h3>問題<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>Microsoft Office から WebDAV 経由でファイルにアクセスできません。</p>
 </section>
 <section id="id10">
-<h3>Solution<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
-<p>Known problems and their solutions are documented in the <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> article.</p>
+<h3>解決策<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>既知の問題とその解決策は、<a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> の記事に記載されています。</p>
 </section>
 <section id="id11">
-<h3>Problem<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
-<p>Cannot map Nextcloud as a WebDAV drive in Windows using a self-signed certificate.</p>
+<h3>問題<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<p>自己署名証明書を使用している場合、Windows で Nextcloud を WebDAV ドライブとしてマッピングできません。</p>
 </section>
 <section id="id12">
-<h3>Solution<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<h3>解決策<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
-<li><p>Click through until you get to the certificate error in the browser status
-line.</p></li>
-<li><p>View the certificate, then from the Details tab, select 『Copy to File』.</p></li>
-<li><p>Save the file to your desktop with an arbitrary name, for example
-<code class="docutils literal notranslate"><span class="pre">myNextcloud.pem</span></code>.</p></li>
-<li><p>Go to Start menu &gt; Run, type MMC, and click 『OK』 to open Microsoft Management
-Console.</p></li>
-<li><p>Go to File &gt; Add/Remove Snap-In.</p></li>
-<li><p>Select Certificates, Click 『Add』, choose 『My User Account』, then 『Finish』, and
-finally 『OK』.</p></li>
-<li><p>Dig down to Trust Root Certification Authorities, Certificates.</p></li>
-<li><p>Right-Click Certificate, Select All Tasks, and Import.</p></li>
-<li><p>Select the saved certificate from the Desktop.</p></li>
-<li><p>Select Place all Certificates in the following Store, and click Browse.</p></li>
-<li><p>Check the Box that says Show Physical Stores, expand out Trusted Root
-Certification Authorities, select Local Computer there, click 『OK』, and
-Complete the Import.</p></li>
-<li><p>Check the list to make sure the certificate shows up. You will probably
-need to Refresh before you see it.</p></li>
-<li><p>Exit MMC.</p></li>
+<li><p>ブラウザーのステータスラインに証明書エラーが表示されるところまでクリックして進めます。</p></li>
+<li><p>証明書を表示し、Details タブで「Copy to File」を選択します。</p></li>
+<li><p>ファイルを任意の名前（例: <code class="docutils literal notranslate"><span class="pre">myNextcloud.pem</span></code>）でデスクトップに保存します。</p></li>
+<li><p>スタートメニュー &gt; 「ファイル名を指定して実行」を開き、MMC と入力して「OK」をクリックし、Microsoft Management Console を開きます。</p></li>
+<li><p>File &gt; Add/Remove Snap-In を開きます。</p></li>
+<li><p>Certificates を選択し、「Add」をクリックして「My User Account」を選び、「Finish」、最後に「OK」をクリックします。</p></li>
+<li><p>Trusted Root Certification Authorities &gt; Certificates までたどります。</p></li>
+<li><p>Certificates を右クリックし、All Tasks &gt; Import を選択します。</p></li>
+<li><p>デスクトップに保存した証明書を選択します。</p></li>
+<li><p>「Place all Certificates in the following Store」を選択し、「Browse」をクリックします。</p></li>
+<li><p>「Show Physical Stores」にチェックを入れ、Trusted Root Certification Authorities を展開して Local Computer を選択し、「OK」をクリックしてインポートを完了します。</p></li>
+<li><p>一覧を確認して証明書が表示されていることを確認します。表示されない場合は Refresh が必要かもしれません。</p></li>
+<li><p>MMC を終了します。</p></li>
 </ol>
-<p>For Firefox users:</p>
+<p>Firefox ユーザーの場合:</p>
 <ol class="arabic simple">
-<li><p>Launch your browser, go to Application menu &gt; History &gt; Clear recent history…</p></li>
-<li><p>Select 『Everything』 in the 『Time range to clear』 dropdown menu</p></li>
-<li><p>Select the 『Active Logins』 check box</p></li>
-<li><p>Click the 『Clear now』 button</p></li>
-<li><p>Close the browser, then re-open and test.</p></li>
+<li><p>ブラウザーを起動し、Application menu &gt; History &gt; Clear recent history… に移動します。</p></li>
+<li><p>「Time range to clear」ドロップダウンで「Everything」を選択します</p></li>
+<li><p>「Active Logins」チェックボックスを選択します</p></li>
+<li><p>「Clear now」ボタンをクリックします</p></li>
+<li><p>ブラウザーを閉じてから再度開き、テストします。</p></li>
 </ol>
-<p>For Chrome-based browsers (Chrome, Chromium, Microsoft Edge) users:</p>
+<p>Chrome 系ブラウザー（Chrome、Chromium、Microsoft Edge）ユーザーの場合:</p>
 <ol class="arabic simple">
-<li><p>Open Windows Control Panel, navigate down to Internet Options</p></li>
-<li><p>In the Content tab, click the Clear SSL State button.</p></li>
-<li><p>Close the browser, then re-open and test.</p></li>
+<li><p>Windows のコントロールパネルを開き、Internet Options を開きます</p></li>
+<li><p>Content タブで「Clear SSL State」ボタンをクリックします。</p></li>
+<li><p>ブラウザーを閉じてから再度開き、テストします。</p></li>
 </ol>
 </section>
 </section>
 <section id="accessing-files-using-curl">
-<h2>Accessing files using cURL<a class="headerlink" href="#accessing-files-using-curl" title="Link to this heading"></a></h2>
-<p>Since WebDAV is an extension of HTTP, cURL can be used to script file operations.</p>
+<h2>cURL を使用してファイルにアクセスする<a class="headerlink" href="#accessing-files-using-curl" title="Link to this heading"></a></h2>
+<p>WebDAV は HTTP の拡張であるため、cURL を使用してファイル操作をスクリプト化できます。</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p><strong>Settings</strong> → <strong>Administration</strong> → <strong>Sharing</strong> → <strong>Allow users on this server to send shares to other servers</strong>.
-If this option is disabled, the option <code class="docutils literal notranslate"><span class="pre">--header</span> <span class="pre">&quot;X-Requested-With:</span> <span class="pre">XMLHttpRequest&quot;</span></code> needs to be passed to cURL.</p>
+<p><strong>Settings</strong> → <strong>Administration</strong> → <strong>Sharing</strong> → <strong>Allow users on this server to send shares to other servers</strong>。このオプションが無効の場合、cURL には <code class="docutils literal notranslate"><span class="pre">--header</span> <span class="pre">&quot;X-Requested-With:</span> <span class="pre">XMLHttpRequest&quot;</span></code> オプションを付けて実行する必要があります。</p>
 </div>
-<p>To create a folder with the current date as name:</p>
+<p>現在の日付を名前にしたフォルダーを作成するには:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MKCOL<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
-<p>To upload a file <code class="docutils literal notranslate"><span class="pre">error.log</span></code> into that directory:</p>
+<p>そのディレクトリに <code class="docutils literal notranslate"><span class="pre">error.log</span></code> ファイルをアップロードするには:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-T<span class="w"> </span>error.log<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">/error.log&quot;</span>
 </pre></div>
 </div>
-<p>To move a file:</p>
+<p>ファイルを移動するには:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MOVE<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg&#39;</span><span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
 </pre></div>
 </div>
-<p>To get the properties of files in the root folder:</p>
+<p>ルートフォルダー内のファイルのプロパティを取得するには:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PROPFIND<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Depth: 1&quot;</span><span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/<span class="w"> </span><span class="p">|</span><span class="w"> </span>xml_pp
 &lt;?xml<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>?&gt;
 &lt;d:multistatus<span class="w"> </span>xmlns:d<span class="o">=</span><span class="s2">&quot;DAV:&quot;</span><span class="w"> </span>xmlns:oc<span class="o">=</span><span class="s2">&quot;http://nextcloud.org/ns&quot;</span><span class="w"> </span>xmlns:s<span class="o">=</span><span class="s2">&quot;http://sabredav.org/ns&quot;</span>&gt;
@@ -682,31 +610,31 @@ If this option is disabled, the option <code class="docutils literal notranslate
 </div>
 </section>
 <section id="accessing-files-using-winscp">
-<h2>Accessing files using WinSCP<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
+<h2>WinSCP を使用してファイルにアクセスする<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> is a free, open-source SFTP,
 FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer
 between a local and a remote computer. WinSCP also offers scripting and basic file
 management functionality.</p>
-<p>You can <a class="reference external" href="https://winscp.net/eng/downloads.php/">download</a> the portable version of WinSCP and run it on Linux through <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a>.</p>
+<p>WinSCP のポータブル版を <a class="reference external" href="https://winscp.net/eng/downloads.php/">ダウンロード</a> し、<a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a> を通して Linux 上で実行することもできます。</p>
 <p>To run WinSCP on Linux, install Wine through your distribution’s package manager,
 then run: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
-<p>To connect to Nextcloud:</p>
+<p>Nextcloud に接続するには:</p>
 <ul class="simple">
-<li><p>Start WinSCP</p></li>
-<li><p>Press 『Session』 in the menu</p></li>
-<li><p>Press the 『New Session』 menu option</p></li>
-<li><p>Set the 『File protocol』 dropdown to WebDAV</p></li>
-<li><p>Set the 『Encryption』 dropdown to TLS/SSL Implicit encryption</p></li>
-<li><p>Fill in the hostname field: <code class="docutils literal notranslate"><span class="pre">example.com</span></code></p></li>
-<li><p>Fill in the username field: <code class="docutils literal notranslate"><span class="pre">NEXTCLOUDUSERNAME</span></code></p></li>
-<li><p>Fill in the password field: <code class="docutils literal notranslate"><span class="pre">NEXTCLOUDPASSWORD</span></code></p></li>
-<li><p>Press the 『Advanced…』 button</p></li>
-<li><p>Navigate to 『Environment』, 『Directories』 on the left side</p></li>
-<li><p>Fill in the 『Remote directory』 field with the following: <code class="docutils literal notranslate"><span class="pre">/nextcloud/remote.php/dav/files/NEXTCLOUDUSERNAME/</span></code></p></li>
-<li><p>Press the 『OK』 button</p></li>
-<li><p>Press the 『Save』 button</p></li>
-<li><p>Select the desired options and press the 『OK』 button</p></li>
-<li><p>Press the 『Login』 button to connect to Nextcloud</p></li>
+<li><p>WinSCP を起動します</p></li>
+<li><p>メニューから「Session」を選択します</p></li>
+<li><p>「New Session」メニュー項目を選択します</p></li>
+<li><p>「File protocol」ドロップダウンを WebDAV に設定します</p></li>
+<li><p>「Encryption」ドロップダウンを「TLS/SSL Implicit encryption」に設定します</p></li>
+<li><p>hostname 欄に入力します: <code class="docutils literal notranslate"><span class="pre">example.com</span></code></p></li>
+<li><p>username 欄に入力します: <code class="docutils literal notranslate"><span class="pre">NEXTCLOUDUSERNAME</span></code></p></li>
+<li><p>password 欄に入力します: <code class="docutils literal notranslate"><span class="pre">NEXTCLOUDPASSWORD</span></code></p></li>
+<li><p>「Advanced…」ボタンを押します</p></li>
+<li><p>左側で「Environment」→「Directories」に移動します</p></li>
+<li><p>「Remote directory」欄に次を入力します: <code class="docutils literal notranslate"><span class="pre">/nextcloud/remote.php/dav/files/NEXTCLOUDUSERNAME/</span></code></p></li>
+<li><p>「OK」ボタンを押します</p></li>
+<li><p>「Save」ボタンを押します</p></li>
+<li><p>必要なオプションを選択し、「OK」ボタンを押します</p></li>
+<li><p>「Login」ボタンを押して Nextcloud に接続します</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
@@ -721,7 +649,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="access_webgui.html" class="btn btn-neutral float-left" title="Accessing your files using the Nextcloud web interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-right" title="Desktop and mobile synchronization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-right" title="デスクトップおよびモバイルでの同期" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

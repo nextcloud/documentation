@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Managing deleted files &mdash; Nextcloud latest User Manual latest ドキュメント</title>
+  <title>削除したファイルの管理 &mdash; Nextcloud latest User Manual latest ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -31,7 +31,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Version control" href="version_control.html" />
-    <link rel="prev" title="Managing your files" href="managing.html" />
+    <link rel="prev" title="ファイルの管理" href="managing.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -76,11 +76,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">アクティビティアプリの使用</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ファイル（Files）と同期</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">ファイルへのアクセス</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="managing.html">Managing your files</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Managing deleted files</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#quotas">Quotas</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#what-happens-when-shared-files-are-deleted">What happens when shared files are deleted</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#how-the-deleted-files-app-manages-storage-space">How the deleted files app manages storage space</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="managing.html">ファイルの管理</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">削除したファイルの管理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quotas">クォータ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-happens-when-shared-files-are-deleted">共有ファイルが削除された場合の動作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-the-deleted-files-app-manages-storage-space">「削除したファイル」アプリによるストレージ容量の管理</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="version_control.html">Version control</a></li>
@@ -117,8 +117,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">ファイル（Files）と同期</a></li>
-          <li class="breadcrumb-item"><a href="managing.html">Managing your files</a></li>
-      <li class="breadcrumb-item active">Managing deleted files</li>
+          <li class="breadcrumb-item"><a href="managing.html">ファイルの管理</a></li>
+      <li class="breadcrumb-item active">削除したファイルの管理</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/deleted_file_management.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -129,55 +129,33 @@
            <div itemprop="articleBody">
              
   <section id="managing-deleted-files">
-<h1>Managing deleted files<a class="headerlink" href="#managing-deleted-files" title="Link to this heading"></a></h1>
-<p>When you delete a file in Nextcloud, it is not immediately deleted permanently,
-only moved into the trash bin. It is not permanently deleted until you manually
-delete it, or when the Deleted Files app deletes it to make room for new files.</p>
+<h1>削除したファイルの管理<a class="headerlink" href="#managing-deleted-files" title="Link to this heading"></a></h1>
+<p>Nextcloud でファイルを削除しても、すぐに完全削除されるわけではなく、ゴミ箱に移動されるだけです。手動で削除するか「削除したファイル」アプリが新しいファイルのための空きを確保する目的で削除するまでは、完全には削除されません。</p>
 <p>Find your deleted files by clicking the <strong>Deleted files</strong> button on the Files
 page of the Nextcloud web interface. You can restore or permanently delete files from there.</p>
 <section id="quotas">
-<h2>Quotas<a class="headerlink" href="#quotas" title="Link to this heading"></a></h2>
-<p>Deleted files are not counted against your storage quota. Only your personal
-files count against your quota, not files which were shared with you.
-(See <a class="reference internal" href="quota.html"><span class="doc">Storage quota</span></a> to learn more about quotas.)</p>
+<h2>クォータ<a class="headerlink" href="#quotas" title="Link to this heading"></a></h2>
+<p>削除したファイルはストレージクォータの対象になりません。クォータの対象となるのは個人用ファイルのみで、自分へ共有されたファイルは対象になりません。（クォータの詳細は <a class="reference internal" href="quota.html"><span class="doc">Storage quota</span></a> を参照してください。）</p>
 </section>
 <section id="what-happens-when-shared-files-are-deleted">
-<h2>What happens when shared files are deleted<a class="headerlink" href="#what-happens-when-shared-files-are-deleted" title="Link to this heading"></a></h2>
-<p>Deleting files gets a little complicated when they are shared files, as this
-scenario illustrates:</p>
+<h2>共有ファイルが削除された場合の動作<a class="headerlink" href="#what-happens-when-shared-files-are-deleted" title="Link to this heading"></a></h2>
+<p>共有ファイルを削除する場合は少し複雑になります。次のシナリオを例に説明します:</p>
 <ol class="arabic simple">
-<li><p>User1 shares a folder 「test」 with User2 and User3</p></li>
-<li><p>User2 (the recipient) deletes a file/folder 「sub」 inside of 「test」</p></li>
-<li><p>The folder 「sub」 will be moved to the trash bin of both User1 (owner) and
-User2 (recipient)</p></li>
-<li><p>But User3 will not have a copy of 「sub」 in their trash bin</p></li>
+<li><p>ユーザ1 がユーザ2 とユーザ3 にフォルダ「test」を共有しています</p></li>
+<li><p>ユーザ2（受信者）が「test」の中のファイル/フォルダ「sub」を削除します</p></li>
+<li><p>フォルダ「sub」は、ユーザ1（所有者）とユーザ2（受信者）の両方のゴミ箱に移動されます</p></li>
+<li><p>ただしユーザ3 のゴミ箱には「sub」のコピーは保存されません</p></li>
 </ol>
-<p>When User1 deletes 「sub」 then it is moved to User1’s trash bin. It is
-deleted from User2 and User3, but not placed in their trash bins.</p>
-<p>When you share files, other users may copy, rename, move, and share them with
-other people, just as they can for any computer files; Nextcloud does not have
-magic powers to prevent this.</p>
+<p>ユーザ1 が「sub」を削除すると、「sub」はユーザ1 のゴミ箱に移動します。ユーザ2 とユーザ3 からは削除されますが、両者のゴミ箱には入れられません。</p>
+<p>ファイルを共有すると、他のユーザは通常のコンピュータのファイルと同様に、コピー、名前変更、移動、さらに別の人への共有が可能です。Nextcloud には、これを魔法のように防ぐ力はありません。</p>
 </section>
 <section id="how-the-deleted-files-app-manages-storage-space">
-<h2>How the deleted files app manages storage space<a class="headerlink" href="#how-the-deleted-files-app-manages-storage-space" title="Link to this heading"></a></h2>
-<p>To ensure that users do not run over their storage quotas, the Deleted Files
-app allocates a maximum of 50% of their currently available free space to
-deleted files. If your deleted files exceed this limit, Nextcloud deletes the
-oldest files (files with the oldest timestamps from when they were deleted)
-until it meets the memory usage limit again.</p>
-<p>Nextcloud checks the age of deleted files every time new files are added to the
-deleted files. By default, deleted files stay in the trash bin for 30 days. The
-Nextcloud server administrator can adjust this value in the <code class="docutils literal notranslate"><span class="pre">config.php</span></code> file
-by setting the <code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code> value. Files older than the
-<code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code> value will be deleted permanently.
-Additionally, Nextcloud calculates the maximum available space every time a new
-file is added. If the deleted files exceed the new maximum allowed space
-Nextcloud will permanently delete those trashed files with the soonest expiration
-until the space limit is met again.</p>
+<h2>「削除したファイル」アプリによるストレージ容量の管理<a class="headerlink" href="#how-the-deleted-files-app-manages-storage-space" title="Link to this heading"></a></h2>
+<p>ユーザがストレージクォータを超えないように、「削除したファイル」アプリは、現在利用可能な空き容量の最大 50% を削除したファイルに割り当てます。削除したファイルがこの上限を超えた場合、Nextcloud は最も古いファイル（削除された時刻が最も古いファイル）から削除し、再び上限内に収まるまで削除を続けます。</p>
+<p>Nextcloud は、新しいファイルが「削除したファイル」に追加されるたびに、削除したファイルの経過日数を確認します。デフォルトでは、削除したファイルは 30 日間ゴミ箱に保持されます。Nextcloud サーバ管理者は、<code class="docutils literal notranslate"><span class="pre">config.php</span></code> ファイルで <code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code> の値を設定することで、この期間を調整できます。<code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code> の値より古いファイルは完全に削除されます。さらに Nextcloud は、新しいファイルが追加されるたびに最大利用可能容量を計算します。削除したファイルが新しい上限を超えた場合、期限が最も早く切れるゴミ箱内のファイルから完全に削除し、再び容量上限内に収まるまで削除を続けます。</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>Your administrator may have configured the trash bin retention period
-to override the storage space management. See <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#deleted-items-trash-bin">admin documentation</a> for more details.</p>
+<p>管理者が、ストレージ容量の管理よりも優先されるように、ゴミ箱の保持期間を設定している場合があります。詳細は <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#deleted-items-trash-bin">管理者ドキュメント</a> を参照してください。</p>
 </div>
 </section>
 </section>
@@ -186,7 +164,7 @@ to override the storage space management. See <a class="reference external" href
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="managing.html" class="btn btn-neutral float-left" title="Managing your files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="managing.html" class="btn btn-neutral float-left" title="ファイルの管理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="version_control.html" class="btn btn-neutral float-right" title="Version control" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
