@@ -232,5 +232,6 @@ Command reference
    occ_encryption
    occ_files
    occ_ldap
+   occ_ocm
    occ_users
    occ_system
