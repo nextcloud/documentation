@@ -577,11 +577,17 @@ jobs:
           # Cleanup empty directories
           find . -type d -empty -delete
 
-          # Check if there are actual changes
-          if git diff --quiet HEAD; then
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-          else
+          # Check for meaningful changes, ignoring:
+          # - lastupdated date lines in HTML (Sphinx build-time timestamps)
+          # - epub/pdf binaries (they regenerate automatically alongside HTML)
+          meaningful_html=$(git diff HEAD -- '*.html' | grep -E '^[+-]' | grep -v '^[+-]{3}' | grep -v 'lastupdated\|Last updated on' | wc -l)
+          other_changes=$(git diff --name-only HEAD | grep -cvE '\.(html|epub|pdf)$' || true)
+
+          if [ "$meaningful_html" -gt 0 ] || [ "$other_changes" -gt 0 ]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "Skipping PR: only lastupdated timestamps or epub/pdf binaries changed"
           fi
 
       - name: Strip noindex from stable docs
