@@ -568,6 +568,72 @@ Docker Socket Proxy security
 AIO Docker Socket Proxy has strictly limited access to the Docker APIs described in `HAProxy configuration <https://github.com/nextcloud/all-in-one/blob/main/Containers/docker-socket-proxy/haproxy.cfg>`_.
 
 
+.. _exapp-container-log-rotation:
+
+Container log rotation
+----------------------
+
+AppAPI deploys each ExApp as a container but does not set a logging configuration on it, so each ExApp container
+uses the logging settings of the deploy daemon that runs it. If those logs have no size limit they are never
+rotated and can grow until they fill the host disk. Configure rotation on the daemon, where it applies to every
+container the daemon runs.
+
+Docker
+^^^^^^
+
+Docker's default ``json-file`` driver sets no size limit. Add the following to the Docker daemon configuration file
+(:file:`/etc/docker/daemon.json` on most Linux hosts) and restart the daemon:
+
+.. code-block:: json
+
+    {
+        "log-driver": "json-file",
+        "log-opts": {
+            "max-size": "10m",
+            "max-file": "3"
+        }
+    }
+
+.. code-block:: bash
+
+    sudo systemctl restart docker
+
+Each container then keeps at most ``max-file`` log files of ``max-size`` each (here three files of 10 MB, so up to
+30 MB per container). Adjust the values to suit your hosts.
+
+.. note::
+
+    A container keeps the logging configuration it was created with. Re-deploy the affected ExApps (disable and enable
+    them again, or remove and install) so their containers are recreated with the new settings.
+
+.. important::
+
+    Keep the ``json-file`` or ``journald`` driver: AppAPI can only download container logs for these two drivers, so a
+    different driver disables log downloads for ExApp containers.
+
+If you deliberately use a different driver (``syslog``, ``fluentd``, and so on) to forward logs elsewhere, keep your
+existing setup: rotation is then handled by that driver and the steps above do not apply.
+
+Podman
+^^^^^^
+
+When the deploy daemon is Podman, set a global default in :file:`/etc/containers/containers.conf` (or the per-user
+file) and re-deploy the affected ExApps:
+
+.. code-block:: toml
+
+    [containers]
+    log_driver = "json-file"
+    log_size_max = 10485760
+
+Kubernetes
+^^^^^^^^^^
+
+For the Kubernetes deploy daemon, container log rotation is handled by the kubelet, not by AppAPI. Set
+``containerLogMaxSize`` and ``containerLogMaxFiles`` in the kubelet configuration on each node; see the
+`Kubernetes logging architecture <https://kubernetes.io/docs/concepts/cluster-administration/logging/>`_ documentation.
+
+
 NC to ExApp Communication
 -------------------------
 
