@@ -36,6 +36,12 @@ function is_version_released(int $version): bool {
 	]);
 	
 	$response = @file_get_contents($url, false, $context);
+
+	// FIXME: function_exists conditional can be dropped once we don't need to support <8.4.0
+	if (function_exists('http_get_last_response_headers')) {
+		/** @var array|null */
+		$http_response_header = \http_get_last_response_headers();
+	}
 	
 	if (isset($http_response_header) && is_array($http_response_header)) {
 		return strpos($http_response_header[0] ?? '', '200') !== false;
