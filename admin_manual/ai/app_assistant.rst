@@ -8,7 +8,8 @@ Nextcloud assistant is the primary graphical user interface for interacting with
 
 It offers the graphical user interface for the unified AI Task processing API offering features like summarizing text, generating headlines, asking arbitrary questions, transcription of media files, image generation and it integrates with the context_chat app to offer in-context answers about your own data stored in Nextcloud. The assistant app also offers a chat interface to interact with the chosen language model. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
-Find the user documentation here: `<https://github.com/nextcloud/assistant/tree/main/docs/user>`_
+Find the user documentation here:
+`AI assistant user documentation <https://docs.nextcloud.com/server/latest/user_manual/ai_assistant.html>`_
 
 Installation
 ------------

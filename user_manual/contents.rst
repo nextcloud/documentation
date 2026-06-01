@@ -10,6 +10,7 @@ Table of contents
     index
     webinterface
     activity
+    ai_assistant
     files/index
     groupware/index
     talk/index
