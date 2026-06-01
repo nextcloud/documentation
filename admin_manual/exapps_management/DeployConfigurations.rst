@@ -603,8 +603,9 @@ Each container then keeps at most ``max-file`` log files of ``max-size`` each (h
 
 .. note::
 
-    A container keeps the logging configuration it was created with. Re-deploy the affected ExApps (disable and enable
-    them again, or remove and install) so their containers are recreated with the new settings.
+    A container keeps the logging configuration it was created with, and disabling and enabling an ExApp only stops
+    and starts the existing container. Remove and install the affected ExApps again (or update them) so their
+    containers are recreated with the new settings.
 
 .. important::
 
@@ -630,7 +631,8 @@ Kubernetes
 ^^^^^^^^^^
 
 For the Kubernetes deploy daemon, container log rotation is handled by the kubelet, not by AppAPI. Set
-``containerLogMaxSize`` and ``containerLogMaxFiles`` in the kubelet configuration on each node; see the
+``containerLogMaxSize`` and ``containerLogMaxFiles`` in the kubelet configuration on each node and restart the kubelet
+for the change to take effect (it loads its configuration only at startup); see the
 `Kubernetes logging architecture <https://kubernetes.io/docs/concepts/cluster-administration/logging/>`_ documentation.
 
 
