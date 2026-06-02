@@ -11,5 +11,5 @@ Generally most Nextcloud apps have a navigation on the left, and a content area,
 
 -  Navigation → List → Content: This layout can be seen in Mail, Contacts and Collectives. The selected item in the navigation determines what is shown in the list, and the selected item in the list determines the main content. For example in Collectives, the navigation contains the list of collectives, the list contains the list of pages inside the selected collective, and the main content contains the contents of the selected page.
 
-   .. image:: ../images/contacts-layout.png
-      :alt: Contacts layout with navigation, list and content
+   .. image:: ../images/mail-layout.png
+      :alt: Mail layout with navigation, list and content
