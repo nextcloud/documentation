@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OCM commands &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=9a87ad92" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/occ_ocm.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="User &amp; group commands" href="occ_users.html" />
+    <link rel="prev" title="LDAP commands" href="occ_ldap.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="contents.html">
+            
+              <img src="_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdpr/index.html">GDPR compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="occ_command.html">Using the occ command</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html#running-occ">Running occ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html#enabling-autocompletion">Enabling autocompletion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html#limitations-in-maintenance-mode">Limitations in maintenance mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html#debugging">Debugging</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="occ_command.html#command-reference">Command reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="occ_apps.html">Apps, background jobs &amp; config commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_database.html">DAV &amp; database commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_encryption.html">Encryption commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_files.html">Files commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_ldap.html">LDAP commands</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OCM commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#key-slots">Key slots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#listing-keys">Listing keys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rotating-keys">Rotating keys</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="occ_users.html">User &amp; group commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_system.html">System &amp; maintenance commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apps_management_api.html">Apps management API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="occ_command.html">Using the occ command</a></li>
+      <li class="breadcrumb-item active">OCM commands</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/occ_ocm.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ocm-commands">
+<span id="ocm-label"></span><h1>OCM commands<a class="headerlink" href="#ocm-commands" title="Link to this heading"></a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">ocm</span></code> commands manage the signing keys that Nextcloud uses for Open Cloud
+Mesh (OCM) federation. Outbound OCM requests are signed with HTTP message
+signatures (<a class="reference external" href="https://www.rfc-editor.org/rfc/rfc9421">RFC 9421</a>), and the
+matching public keys are published as a <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc7517">JSON Web Key Set (JWKS)</a> so that federated peers can verify
+them.</p>
+<p>These commands are part of the server core and are always available. They are
+used to inspect and rotate the JWKS signing keys; you do not need them for
+normal operation, as a key is generated automatically on the first OCM request.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more on federation and OCM, see
+<a class="reference internal" href="configuration_files/federated_cloud_sharing_configuration.html"><span class="doc">Configuring Federation Sharing</span></a>.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ocm</span>
+ <span class="n">ocm</span><span class="p">:</span><span class="n">keys</span><span class="p">:</span><span class="nb">list</span>       <span class="nb">list</span> <span class="n">JWKS</span><span class="o">-</span><span class="n">published</span> <span class="n">signing</span> <span class="n">keys</span>
+ <span class="n">ocm</span><span class="p">:</span><span class="n">keys</span><span class="p">:</span><span class="n">stage</span>      <span class="n">generate</span> <span class="n">a</span> <span class="n">new</span> <span class="n">JWKS</span> <span class="n">key</span> <span class="ow">and</span> <span class="n">advertise</span> <span class="n">it</span> <span class="n">via</span> <span class="n">JWKS</span> <span class="n">without</span> <span class="n">using</span> <span class="n">it</span> <span class="k">for</span> <span class="n">signing</span> <span class="n">yet</span>
+ <span class="n">ocm</span><span class="p">:</span><span class="n">keys</span><span class="p">:</span><span class="n">activate</span>   <span class="n">promote</span> <span class="n">the</span> <span class="n">staged</span> <span class="n">JWKS</span> <span class="n">key</span> <span class="n">to</span> <span class="n">active</span><span class="p">;</span> <span class="n">the</span> <span class="n">previous</span> <span class="n">active</span> <span class="n">key</span> <span class="n">moves</span> <span class="n">to</span> <span class="n">retiring</span>
+ <span class="n">ocm</span><span class="p">:</span><span class="n">keys</span><span class="p">:</span><span class="n">retire</span>     <span class="n">delete</span> <span class="n">the</span> <span class="n">retiring</span> <span class="n">JWKS</span> <span class="n">key</span><span class="p">;</span> <span class="n">signatures</span> <span class="n">that</span> <span class="n">referenced</span> <span class="n">its</span> <span class="n">kid</span> <span class="n">can</span> <span class="n">no</span> <span class="n">longer</span> <span class="n">be</span> <span class="n">verified</span>
+</pre></div>
+</div>
+<section id="key-slots">
+<h2>Key slots<a class="headerlink" href="#key-slots" title="Link to this heading"></a></h2>
+<p>The signing keys live in three slots, all of which are published in the JWKS
+endpoint while they are populated:</p>
+<ul class="simple">
+<li><p><strong>active</strong> — the key currently used to sign outbound OCM requests.</p></li>
+<li><p><strong>pending</strong> — a newly staged key that is advertised in the JWKS but not yet
+used for signing. This gives federated peers time to pick it up before it
+becomes active.</p></li>
+<li><p><strong>retiring</strong> — the previous active key, kept published so that signatures
+created with it can still be verified until it is removed.</p></li>
+</ul>
+</section>
+<section id="listing-keys">
+<h2>Listing keys<a class="headerlink" href="#listing-keys" title="Link to this heading"></a></h2>
+<section id="ocm-keys-list">
+<h3>ocm:keys:list<a class="headerlink" href="#ocm-keys-list" title="Link to this heading"></a></h3>
+<p>Show the current JWKS signing keys and the slot each one occupies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">ocm</span><span class="p">:</span><span class="n">keys</span><span class="p">:</span><span class="nb">list</span>
+<span class="o">+------+----------+--------------------------------+</span>
+<span class="o">|</span> <span class="n">Pool</span> <span class="o">|</span> <span class="n">Slot</span>     <span class="o">|</span> <span class="n">Key</span> <span class="n">ID</span>                         <span class="o">|</span>
+<span class="o">+------+----------+--------------------------------+</span>
+<span class="o">|</span> <span class="mi">1</span>    <span class="o">|</span> <span class="n">active</span>   <span class="o">|</span> <span class="n">ecdsa</span><span class="o">-</span><span class="n">p256</span><span class="o">-</span><span class="n">sha256</span><span class="o">-...</span>          <span class="o">|</span>
+<span class="o">|</span> <span class="mi">2</span>    <span class="o">|</span> <span class="n">pending</span>  <span class="o">|</span> <span class="n">ecdsa</span><span class="o">-</span><span class="n">p256</span><span class="o">-</span><span class="n">sha256</span><span class="o">-...</span>          <span class="o">|</span>
+<span class="o">+------+----------+--------------------------------+</span>
+</pre></div>
+</div>
+<p>If no keys exist yet, the command reports that one will be generated on the
+first OCM request. Use <code class="docutils literal notranslate"><span class="pre">--output=json</span></code> or <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> for
+machine-readable output.</p>
+</section>
+</section>
+<section id="rotating-keys">
+<h2>Rotating keys<a class="headerlink" href="#rotating-keys" title="Link to this heading"></a></h2>
+<p>Key rotation is a three-step process: stage a new key, activate it, then
+retire the old one. Allow time between the steps so that federated peers can
+refresh their cached copy of your JWKS (the cache lifetime is one hour).</p>
+<section id="ocm-keys-stage">
+<h3>ocm:keys:stage<a class="headerlink" href="#ocm-keys-stage" title="Link to this heading"></a></h3>
+<p>Generate a new key into the <strong>pending</strong> slot. It is advertised in the JWKS but
+is not yet used for signing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">ocm</span><span class="p">:</span><span class="n">keys</span><span class="p">:</span><span class="n">stage</span>
+  <span class="n">Staged</span> <span class="n">new</span> <span class="n">JWKS</span> <span class="n">key</span><span class="p">:</span> <span class="n">ecdsa</span><span class="o">-</span><span class="n">p256</span><span class="o">-</span><span class="n">sha256</span><span class="o">-...</span>
+  <span class="n">Wait</span> <span class="k">for</span> <span class="n">federated</span> <span class="n">peers</span> <span class="n">to</span> <span class="n">refresh</span> <span class="n">their</span> <span class="n">JWKS</span> <span class="n">cache</span> <span class="n">before</span> <span class="n">activating</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>An active key is required first; if none exists, one is generated
+automatically. The command fails if a pending key already exists — activate or
+retire it before staging another.</p>
+</section>
+<section id="ocm-keys-activate">
+<h3>ocm:keys:activate<a class="headerlink" href="#ocm-keys-activate" title="Link to this heading"></a></h3>
+<p>Promote the staged (pending) key to <strong>active</strong>. The previous active key moves
+to the <strong>retiring</strong> slot, where it stays published in the JWKS so that
+in-flight signatures can still be verified:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">ocm</span><span class="p">:</span><span class="n">keys</span><span class="p">:</span><span class="n">activate</span>
+  <span class="n">Staged</span> <span class="n">key</span> <span class="n">promoted</span> <span class="n">to</span> <span class="n">active</span><span class="o">.</span>
+  <span class="n">Run</span> <span class="n">occ</span> <span class="n">ocm</span><span class="p">:</span><span class="n">keys</span><span class="p">:</span><span class="n">retire</span> <span class="n">once</span> <span class="nb">any</span> <span class="ow">in</span><span class="o">-</span><span class="n">flight</span> <span class="n">signatures</span> <span class="n">using</span> <span class="n">the</span> <span class="n">previous</span> <span class="n">key</span> <span class="n">have</span> <span class="n">been</span> <span class="n">verified</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>The command fails if there is no pending key to activate, or if the retiring
+slot is still occupied — retire the previous key first.</p>
+</section>
+<section id="ocm-keys-retire">
+<h3>ocm:keys:retire<a class="headerlink" href="#ocm-keys-retire" title="Link to this heading"></a></h3>
+<p>Delete the <strong>retiring</strong> key. Once removed, signatures that referenced its key
+ID can no longer be verified, so only run this after you are confident that no
+peer still needs it (for example, after at least one JWKS cache lifetime has
+passed since activation):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">ocm</span><span class="p">:</span><span class="n">keys</span><span class="p">:</span><span class="n">retire</span>
+  <span class="n">Retiring</span> <span class="n">key</span> <span class="n">deleted</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>The command fails if there is no retiring key to remove.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="occ_ldap.html" class="btn btn-neutral float-left" title="LDAP commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="occ_users.html" class="btn btn-neutral float-right" title="User &amp; group commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-admin">
+      ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-admin" class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/admin_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
