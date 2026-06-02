@@ -346,11 +346,9 @@ Android and iOS apps; it is not enforced by the server.
 The interface object
 ^^^^^^^^^^^^^^^^^^^^^
 
-The native client injects a named interface object into the page. The editor page
-sends messages through it. Editors based on the generic direct editing flow use
-the name ``DirectEditingMobileInterface``; ``richdocuments`` uses its own
-``RichDocumentsMobileInterface`` (it carries a richer, Collabora-specific message
-set). A page should feature-detect the object before using it.
+The native client injects a named interface object, ``DirectEditingMobileInterface``,
+into the page, and the editor page sends messages through it. A page should
+feature-detect the object before using it.
 
 Two transports are used, picked by which one the host provides:
 
@@ -363,7 +361,7 @@ exposes one method per message name. Arguments, if any, are passed as a single
     // no arguments
     window.DirectEditingMobileInterface.close()
     // with arguments
-    window.RichDocumentsMobileInterface.hyperlink(JSON.stringify(values))
+    window.DirectEditingMobileInterface.hyperlink(JSON.stringify(values))
 
 **iOS — script message handler.** All messages go through one ``postMessage``
 handler. A message with arguments is sent as an object with ``MessageName`` and
@@ -374,7 +372,7 @@ handler. A message with arguments is sent as an object with ``MessageName`` and
     // no arguments
     window.webkit.messageHandlers.DirectEditingMobileInterface.postMessage('close')
     // with arguments
-    window.webkit.messageHandlers.RichDocumentsMobileInterface.postMessage({
+    window.webkit.messageHandlers.DirectEditingMobileInterface.postMessage({
         MessageName: 'hyperlink',
         Values: values,
     })
