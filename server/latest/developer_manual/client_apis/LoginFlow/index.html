@@ -722,11 +722,14 @@ Note that the 200 will only be returned once.</p>
         end
 
         User-&gt;&gt;Browser: Enter credentials (and 2FA if required)
-        Browser-&gt;&gt;Server: Submit login and grant client access
+        Browser-&gt;&gt;Server: Submit credentials
+        Server-&gt;&gt;Browser: Redirect to /login/v2/grant
+        User-&gt;&gt;Browser: Click on &quot;Grant access&quot;
+        Browser-&gt;&gt;Server: Submit grant access
+        deactivate Browser
 
         Note right of Server: Create an ephemeral session &lt;br/&gt;which lives for 5 minutes
 
-        deactivate Browser
         Application--&gt;&gt;Server: POST /login/v2/poll with the poll token
         activate Server
         Server-&gt;&gt;Application: 200 JSON {server, loginName, appPassword}
@@ -755,7 +758,7 @@ Note that the 200 will only be returned once.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jun 02, 2026.
+      <span class="lastupdated">Last updated on Jun 03, 2026.
       </span></p>
   </div>
 
