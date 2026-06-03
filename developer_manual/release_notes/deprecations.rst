@@ -20,11 +20,7 @@ New deprecations
 
 .. todo:: This page needs a section for every new deprecation.
 
-- ``\OCP\Util::setChannel`` is now deprecated and you need to use ``\OCP\ServerVersion::setChannel`` instead.
-- ``\OCP\Util::linkToAbsolute`` is now deprecated and you need to use ``\OCP\IUrlGenerator::getAbsoluteUrl`` and ``\OCP\IUrlGenerator::linkTo`` instead.
-- ``\OCP\Util::linkToRemove`` is now deprecated and you need to use ``\OCP\IUrlGenerator::linkToRemote`` instead.
-- ``\OCP\Util::isPublicLinkPasswordRequired`` is now deprecated and you need to use ``\OCP\Share\IManager::shareApiLinkEnforcePassword`` instead.
-- ``\OCP\Util::isDefaultExpireDateEnforced`` is now deprecated and you need to use ``\OCP\Share\IManager::shareApiLinkDefaultExpireDateEnforced`` instead.
+- TBD
 
 Older deprecations
 ------------------
