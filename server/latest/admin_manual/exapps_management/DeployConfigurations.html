@@ -558,6 +558,12 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l4"><a class="reference internal" href="#nextcloud-in-docker-aio-all-in-one">Nextcloud in Docker AIO (all-in-one)</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#container-log-rotation">Container log rotation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker">Docker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#podman">Podman</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#nc-to-exapp-communication">NC to ExApp Communication</a></li>
 </ul>
 </li>
@@ -1176,6 +1182,62 @@ It has <a class="reference external" href="https://github.com/nextcloud/app_api/
 <h4>Docker Socket Proxy security<a class="headerlink" href="#docker-socket-proxy-security" title="Link to this heading"></a></h4>
 <p>AIO Docker Socket Proxy has strictly limited access to the Docker APIs described in <a class="reference external" href="https://github.com/nextcloud/all-in-one/blob/main/Containers/docker-socket-proxy/haproxy.cfg">HAProxy configuration</a>.</p>
 </section>
+</section>
+</section>
+<section id="container-log-rotation">
+<span id="exapp-container-log-rotation"></span><h2>Container log rotation<a class="headerlink" href="#container-log-rotation" title="Link to this heading"></a></h2>
+<p>AppAPI deploys each ExApp as a container but does not set a logging configuration on it, so each ExApp container
+uses the logging settings of the deploy daemon that runs it. If those logs have no size limit they are never
+rotated and can grow until they fill the host disk. Configure rotation on the daemon, where it applies to every
+container the daemon runs.</p>
+<section id="docker">
+<h3>Docker<a class="headerlink" href="#docker" title="Link to this heading"></a></h3>
+<p>Docker’s default <code class="docutils literal notranslate"><span class="pre">json-file</span></code> driver sets no size limit. Add the following to the Docker daemon configuration file
+(<code class="file docutils literal notranslate"><span class="pre">/etc/docker/daemon.json</span></code> on most Linux hosts) and restart the daemon:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;log-driver&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;json-file&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;log-opts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;max-size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10m&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;max-file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>docker
+</pre></div>
+</div>
+<p>Each container then keeps at most <code class="docutils literal notranslate"><span class="pre">max-file</span></code> log files of <code class="docutils literal notranslate"><span class="pre">max-size</span></code> each (here three files of 10 MB, so up to
+30 MB per container). Adjust the values to suit your hosts.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A container keeps the logging configuration it was created with, and disabling and enabling an ExApp only stops
+and starts the existing container. Remove and install the affected ExApps again (or update them) so their
+containers are recreated with the new settings.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Keep the <code class="docutils literal notranslate"><span class="pre">json-file</span></code> or <code class="docutils literal notranslate"><span class="pre">journald</span></code> driver: AppAPI can only download container logs for these two drivers, so a
+different driver disables log downloads for ExApp containers.</p>
+</div>
+<p>If you deliberately use a different driver (<code class="docutils literal notranslate"><span class="pre">syslog</span></code>, <code class="docutils literal notranslate"><span class="pre">fluentd</span></code>, and so on) to forward logs elsewhere, keep your
+existing setup: rotation is then handled by that driver and the steps above do not apply.</p>
+</section>
+<section id="podman">
+<h3>Podman<a class="headerlink" href="#podman" title="Link to this heading"></a></h3>
+<p>When the deploy daemon is Podman, set a global default in <code class="file docutils literal notranslate"><span class="pre">/etc/containers/containers.conf</span></code> (or the per-user
+file) and re-deploy the affected ExApps:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[containers]</span>
+<span class="n">log_driver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;json-file&quot;</span>
+<span class="n">log_size_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10485760</span>
+</pre></div>
+</div>
+</section>
+<section id="kubernetes">
+<h3>Kubernetes<a class="headerlink" href="#kubernetes" title="Link to this heading"></a></h3>
+<p>For the Kubernetes deploy daemon, container log rotation is handled by the kubelet, not by AppAPI. Set
+<code class="docutils literal notranslate"><span class="pre">containerLogMaxSize</span></code> and <code class="docutils literal notranslate"><span class="pre">containerLogMaxFiles</span></code> in the kubelet configuration on each node and restart the kubelet
+for the change to take effect (it loads its configuration only at startup); see the
+<a class="reference external" href="https://kubernetes.io/docs/concepts/cluster-administration/logging/">Kubernetes logging architecture</a> documentation.</p>
 </section>
 </section>
 <section id="nc-to-exapp-communication">
