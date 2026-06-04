@@ -10,6 +10,7 @@ Critical changes
 
     The sections are somewhat ordered so changes affecting most apps come first, and more specific ones come later.
 
+
 info.xml requirements
 ---------------------
 
@@ -28,8 +29,17 @@ Removed front-end APIs and libraries
 
 - TBD
 
-
 Removed back-end APIs
 ---------------------
 
-- TBD
+- All these interfaces were deprecated since Nextcloud 23 and were removed without replacement:
+  - ``\OCP\Remote\ICredentials``
+  - ``\OCP\Remote\IInstance``
+  - ``\OCP\Remote\IInstanceFactory``
+  - ``\OCP\Remote\IUser``
+  - ``\OCP\Remote\API\IUserApi``
+  - ``\OCP\Remote\API\ICapabilitiesApi``
+  - ``\OCP\Remote\API\IApiFactory``
+  - ``\OCP\Remote\API\IApiCollection``
+
+- All the deprecated methods of ``\OCP\Calendar\Resource\IManager`` and ``\OCP\Calendar\Room\IManager`` were deprecated since Nextcloud 24 and were removed without replacement.

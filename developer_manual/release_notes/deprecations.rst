@@ -20,7 +20,7 @@ New deprecations
 
 .. todo:: This page needs a section for every new deprecation.
 
-- TBD
+- ``\OCP\Broadcast\Events\\IBroadcastEvent`` is now deprecated as it is unused.
 
 Older deprecations
 ------------------
