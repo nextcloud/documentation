@@ -149,7 +149,7 @@ Fonts
 Font sizes
 ^^^^^^^^^^
 
--  ``--defalut-font-size``\ (15px): For body text
+-  ``--default-font-size``\ (15px): For body text
 -  ``--font-size-small`` (13px): For nonessential information
 -  Other than those 2 font sizes, 20px is also often used for headings, and 24px for titles.
 
