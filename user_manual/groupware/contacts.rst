@@ -155,6 +155,19 @@ If either of the contacts are part of a group(s), by default the merged contact 
 
 .. note:: Currently you are only able to merge two contacts at a time, and you are naturally only able to merge contacts that can be modified by you. If the merging action is disabled, check that you selected contacts that match those conditions.
 
+Mark contacts as favorite
+-------------------------
+
+.. versionadded:: 8.4
+
+Now you can mark contacts as favorites to always find them at the top of your contacts list, without needing to search or filter.
+
+To mark a contacts as favorite, hover over a contact, a star will show on the right. Click the star and a yellow star will appear on the contact's avatar to confirm it's been marked as a favorite.
+
+To remove it form the favorite list - Hover over a favorited contact, and click the star on the right. The star will disappear and the contact will return to its alphabetical position in the list.
+
+.. figure:: ../images/mark_favorite.png
+
 Organize your Contacts with Contact Groups
 ------------------------------------------
 
