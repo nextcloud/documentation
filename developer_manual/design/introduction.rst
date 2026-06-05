@@ -21,7 +21,6 @@ Each Nextcloud app is unique and different, but all Nextcloud apps are built kee
    color and iconography.
 -  The state of the application should be clear. If something loads, provide feedback. Reactions should be quick, ideally under 100ms as per `response time
    limits <https://www.nngroup.com/articles/response-times-3-important-limits/>`__.
--  The state of the application should be clear. If something loads, provide feedback.
 -  Regularly reset your installation to see what the first-run experience is like, and improve it.
 -  Ideally do `usability testing <https://jancborchardt.net/usability-in-free-software>`__ to know how people use the software. Testing with 5 users is enough to identify most of your problems.
 

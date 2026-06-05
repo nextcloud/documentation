@@ -70,7 +70,7 @@ initials otherwise, and a generic icon for non-users like external email address
 
 -  User avatars are the default and automatically show the user's profile picture and status. Use them whenever you have a real Nextcloud user.
 -  Non-user avatars represent external email addresses, guests, and integrations. For example, external recipients in Mail and guests in Talk.
--  32px as the default size for avatars, but they can be as small as 24px in dense lists, , and as large as 44-64px in headers and profile cards. Keep the size consistent within a single list or row.
+-  32px as the default size for avatars, but they can be as small as 24px in dense lists, and as large as 44-64px in headers and profile cards. Keep the size consistent within a single list or row.
 
 -  Avoid placing an avatar alone in flowing text without a name next to it. For inline mentions of a user inside a sentence, use a User bubble.
 
@@ -250,12 +250,12 @@ file type, picking one or several items, and choosing folders.
 .. _Checkboxes and toggles:
 
 Checkboxes and toggles
---------------------------------------
+----------------------
 
 Checkboxes and toggles `(NcCheckboxRadioSwitch) <https://nextcloud-vue-components.netlify.app/#/Components/NcCheckboxRadioSwitch>`__ are selection controls that share a
 single component.
 
--  Checkboxes allow users to select multiple options from a list. for example, per-folder share permissions.
+-  Checkboxes allow users to select multiple options from a list. For example, per-folder share permissions.
 -  Toggles (switches) are used for enabling and disabling a single setting.
 
 
@@ -271,7 +271,7 @@ single component.
 Radio groups
 ^^^^^^^^^^^^
 
-Radio buttons allow users to select exactly one option from a defined radio group `(NcRadioGroup) <https://nextcloud-vue-components.netlify.app/#/Components/NcRadioGroup>`__ . It also has a button variant which displays the options as buttons. When there are many options, use a dropdown instead.
+Radio buttons allow users to select exactly one option from a defined radio group `(NcRadioGroup) <https://nextcloud-vue-components.netlify.app/#/Components/NcRadioGroup>`__. It also has a button variant which displays the options as buttons. When there are many options, use a dropdown instead.
 
 .. image:: ../images/radio-group.png
    :alt: Radio group Mail settings
