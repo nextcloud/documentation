@@ -152,7 +152,6 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
   ProcSubset=pid
   ProtectClock=yes
   ProtectControlGroups=yes
-  ProtectHome=read-only
   ProtectHostname=yes
   ProtectKernelLogs=yes
   ProtectKernelModules=yes
