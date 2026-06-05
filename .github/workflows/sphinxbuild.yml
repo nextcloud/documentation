@@ -8,6 +8,7 @@ on:
       - stable*
   schedule:
     - cron: '0 2 * * *'  # 02:00 UTC daily — full build + deploy
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -507,7 +508,7 @@ jobs:
   deploy:
     name: Deploy documentation for gh-pages
     needs: stage-and-check
-    if: github.event_name == 'schedule'
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
 
     permissions:
@@ -868,6 +869,6 @@ jobs:
             echo "This workflow ran for a push. We need stage-and-check and link-check to succeed; deploy and netlify-preview must be skipped"
             if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'skipped' || needs.netlify-preview.result != 'skipped' }}; then exit 1; fi
           else
-            echo "This workflow ran on schedule. We need stage-and-check, link-check, and deploy to succeed; netlify-preview must be skipped"
+            echo "This workflow ran on schedule or workflow_dispatch. We need stage-and-check, link-check, and deploy to succeed; netlify-preview must be skipped"
             if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'success' || needs.netlify-preview.result != 'skipped' }}; then exit 1; fi
           fi
