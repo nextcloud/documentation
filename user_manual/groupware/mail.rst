@@ -185,13 +185,44 @@ will appear in advanced search.
 Account delegation
 ~~~~~~~~~~~~~~~~~~
 
-The app allows account delegation so that one user can send emails from the address of another.
+The app supports two ways of letting one user act on behalf of another's mail account.
+
+Sending as another address (server alias)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This lets you send emails from the address of another account.
 
 1) The delegation has to be configured on the mail server by an admin
 2) Add the other email address as an alias for your own email account
 3) When sending an email, select the alias as sender
 
 .. warning:: The sent email might not be visible to the original account if it's stored in your personal *Sent* folder.
+
+Native account delegation
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 5.9 Nextcloud Mail
+
+Native account delegation lets you grant other Nextcloud users access to one of your mail accounts directly from the
+app, without any server-side alias configuration. A delegate can do everything the account owner can — send, receive,
+and delete mail on your behalf — except deleting the account or updating its authentication information.
+
+To delegate one of your accounts:
+
+1) Open the account's three-dot menu and select **Delegate account**
+2) In the **Delegation** dialog, click **Add delegate**
+3) Use the **Select a user** field to choose the Nextcloud user you want to grant access to
+4) Confirm with **Delegate access**
+
+The shared account then appears in the delegate's account list, marked as delegated.
+
+To remove access:
+
+1) Open the **Delegate account** dialog again
+2) Click **Revoke** next to the delegate you want to remove
+3) Confirm with **Revoke access**
+
+.. note:: Provisioned accounts cannot be delegated.
 
 Automatic trash deletion
 ~~~~~~~~~~~~~~~~~~~~~~~~
