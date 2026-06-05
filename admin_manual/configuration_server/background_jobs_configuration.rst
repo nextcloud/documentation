@@ -139,7 +139,8 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
   ExecStart=/usr/bin/php -f /var/www/nextcloud/cron.php
   KillMode=process
 
-  # Optional security hardening
+  # Optional security hardening, all of the below entries are optional, but their existence improves the security of your system
+  # More info can be found at https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html
   CapabilityBoundingSet=
   DevicePolicy=closed
   LockPersonality=yes
