@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using server-side encryption &mdash; Nextcloud latest User Manual latest documentation</title>
+  <title>Bruke kryptering på serversiden &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -81,7 +81,7 @@
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="security.html">Security &amp; encryption</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Using server-side encryption</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Bruke kryptering på serversiden</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#encryption-faq">Kryptering - Ofte Stilte Spørsmål</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#using-encryption">Bruk av kryptering</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sharing-encrypted-files">Deling av krypterte filer</a></li>
@@ -119,7 +119,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Filer og synkronisering</a></li>
           <li class="breadcrumb-item"><a href="security.html">Security &amp; encryption</a></li>
-      <li class="breadcrumb-item active">Using server-side encryption</li>
+      <li class="breadcrumb-item active">Bruke kryptering på serversiden</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -130,15 +130,8 @@
            <div itemprop="articleBody">
              
   <section id="using-server-side-encryption">
-<h1>Using server-side encryption<a class="headerlink" href="#using-server-side-encryption" title="Link to this heading"></a></h1>
-<p>Nextcloud includes a server-side encryption app, and when it is enabled by
-your Nextcloud administrator all of your Nextcloud data files are automatically
-encrypted on the server.
-Encryption is server-wide, so when it is enabled you cannot choose to keep your
-files unencrypted. You don’t have to do anything special, as it uses your
-Nextcloud login as the password for your unique private encryption key. Just log
-out and in and manage and share your files as you normally do, and you can
-still change your password whenever you want.</p>
+<h1>Bruke kryptering på serversiden<a class="headerlink" href="#using-server-side-encryption" title="Link to this heading"></a></h1>
+<p>Nextcloud inkluderer en krypteringsapp på serversiden, og når den er aktivert av Nextcloud-administratoren din, krypteres alle Nextcloud-datafilene dine automatisk på serveren. Kryptering gjelder hele serveren, så når den er aktivert, kan du ikke velge å beholde filene dine ukrypterte. Du trenger ikke gjøre noe spesielt, ettersom den bruker Nextcloud-innloggingen din som passord for din unike private krypteringsnøkkel. Bare logg ut og inn og administrer og del filene dine som du normalt gjør, og du kan fortsatt endre passordet ditt når du vil.</p>
 <p>Hovedformålet er å kryptere filer på eksterne lagringstjenester som er koblet til Nextcloud-serveren din. Dette er en enkel og sømløs måte å beskytte filene dine på ekstern lagring. Du kan dele dine eksterne filer gjennom Nextcloud på vanlig måte, men du kan ikke dele dine krypterte filer direkte fra den eksterne tjenesten du bruker, fordi krypteringsnøklene er lagret på din Nextcloud-server, og blir aldri utsatt for eksterne tjenesteleverandører.</p>
 <p>If your Nextcloud server is not connected to any remote storage services, then
 it is better to use some other form of encryption such as file-level or whole
@@ -151,12 +144,11 @@ to learn more.)</p>
 <h2>Kryptering - Ofte Stilte Spørsmål<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
 <section id="how-can-encryption-be-disabled">
 <h3>Hvordan kan kryptering deaktiveres?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
-<p>The only way to disable encryption is to run the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">«decrypt all»</a>
-script, which decrypts all files and disables encryption.</p>
+<p>Den eneste måten å deaktivere kryptering på er å kjøre «decrypt all» &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label</a>&gt;_-skriptet, som dekrypterer alle filer og deaktiverer kryptering.</p>
 </section>
 <section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
 <h3>Er det mulig å deaktivere kryptering med gjenopprettelsesnøkkelen?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
-<p>Yes, <em>if</em> every user uses the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">file recovery key</a>, <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">«decrypt all»</a> will use it to decrypt all files.</p>
+<p>Ja, <em>hvis</em> hver bruker bruker gjenopprettingsnøkkelen for filer &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys</a>&gt;, vil «decrypt all» &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label</a>&gt; bruke den til å dekryptere alle filer.</p>
 </section>
 <section id="can-encryption-be-disabled-without-the-user-s-password">
 <h3>Kan kryptering deaktiveres uten brukerens passord?<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
@@ -345,7 +337,7 @@ script, which decrypts all files and disables encryption.</p>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
-        <dt>🌐 Languages</dt>
+        <dt>🌐 Språk</dt>
         
           <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/ar/"

@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Components &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=9a87ad92" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/design/components.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Layout" href="layout.html" />
+    <link rel="prev" title="Writing guide" href="writing.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Design</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="foundations.html">Foundations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing.html">Writing guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#buttons">Buttons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list-item">List item</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#counter-bubbles">Counter bubbles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avatars">Avatars</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chips">Chips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-bubbles">User bubbles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#note-card">Note card</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dropdown">Dropdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#input-fields">Input fields</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#formattable-text-area">Formattable text area</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pickers">Pickers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#datetime-picker">Datetime picker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#timezone-picker">Timezone picker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#color-picker">Color picker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#emoji-picker">Emoji picker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-picker">File picker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#checkboxes-and-toggles">Checkboxes and toggles</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#radio-groups">Radio groups</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#action-menus">Action menus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#empty-content">Empty content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modals">Modals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigation">Navigation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#settings">Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sidebar">Sidebar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="layout.html">Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Design</a></li>
+      <li class="breadcrumb-item active">Components</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/design/components.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="components">
+<h1>Components<a class="headerlink" href="#components" title="Link to this heading"></a></h1>
+<p>These are usage guidelines for common components used across Nextcloud. For a full list of components go to the <a class="reference external" href="https://nextcloud-vue-components.netlify.app">Nextcloud Vue component library</a>.</p>
+<section id="buttons">
+<span id="id1"></span><h2>Buttons<a class="headerlink" href="#buttons" title="Link to this heading"></a></h2>
+<p>Buttons <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcButton">(NcButton)</a> are used to initiate actions in your app. This may be a primary action, or it may be used to confirm an
+action in a dialog, or simply be used for any major action in your app.</p>
+<ul class="simple">
+<li><p>Primary buttons have a background of the primary color and are used to indicate the main action for a flow or screen. Use primary buttons for positive actions like creating and joining.</p>
+<ul>
+<li><p>Do not use primary buttons for negative actions like deleting and exiting.</p></li>
+<li><p>Ideally use only one visible primary button on a screen.</p></li>
+</ul>
+</li>
+<li><p>Tertiary buttons, which are the buttons without a background, can be used for other actions in your app which are important, but not the main focus. Use tertiary buttons when an action is
+low-priority or dismissive, like going back to a previous step.</p>
+<ul>
+<li><p>Do not use tertiary buttons for important actions like signing up or for permanent destructive actions like deleting.</p></li>
+</ul>
+</li>
+<li><p>Icon-only buttons can be used for simple actions with a widely recognized icon, and as an entry point for an action menu.</p>
+<ul>
+<li><p>Always use outlined Material Symbols for icons.</p></li>
+<li><p>Do use generally accepted icons for icon-only buttons like a star icon for favoriting.</p></li>
+</ul>
+</li>
+</ul>
+<img alt="Primary, secondary and tertiary buttons used in the Talk dashboard" src="../_images/buttons.png" />
+</section>
+<section id="list-item">
+<span id="id2"></span><h2>List item<a class="headerlink" href="#list-item" title="Link to this heading"></a></h2>
+<p>List items <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcListItems?id=nclistitem">(NcListItem)</a> are the rows of a content list such as conversations in Talk, messages in Mail,
+and boards in Deck.</p>
+<ul class="simple">
+<li><p>List items are flexible, always having a leading avatar or icon, a name, and an action menu on the right, and optionally a preview line, a timestamp or a counter bubble.</p></li>
+<li><p>Single-line list items show only the name and suit dense, navigation-like lists. Use them when the name alone is enough to identify the row.</p></li>
+<li><p>Two-line list items show a name or title on the first line and a preview or metadata on the second line. Use them for messages, conversations, and notes where extra information helps the user.</p></li>
+</ul>
+<img alt="List items used for conversations in Talk" src="../_images/list-item.png" />
+</section>
+<section id="counter-bubbles">
+<span id="id3"></span><h2>Counter bubbles<a class="headerlink" href="#counter-bubbles" title="Link to this heading"></a></h2>
+<p>Counter bubbles <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcCounterBubble">(NcCounterBubble)</a> are small badges that show a number count next to an item, often in the
+navigation. A counter bubble is not interactive.</p>
+<ul class="simple">
+<li><p>Filled primary bubbles can be used to highlight counters that may need attention like direct mentions.</p></li>
+<li><p>Outlined bubbles can be used for less important counters.</p></li>
+</ul>
+<img alt="Unread counter in Mail" src="../_images/counter-bubble.png" />
+</section>
+<section id="avatars">
+<span id="id4"></span><h2>Avatars<a class="headerlink" href="#avatars" title="Link to this heading"></a></h2>
+<p>Avatars <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcAvatar">(NcAvatar)</a> represent a user, group, or contact. They show the user’s profile picture when available, the user’s
+initials otherwise, and a generic icon for non-users like external email addresses or integrations. An avatar should almost always sit next to a display name.</p>
+<ul class="simple">
+<li><p>User avatars are the default and automatically show the user’s profile picture and status. Use them whenever you have a real Nextcloud user.</p></li>
+<li><p>Non-user avatars represent external email addresses, guests, and integrations. For example, external recipients in Mail and guests in Talk.</p></li>
+<li><p>32px as the default size for avatars, but they can be as small as 24px in dense lists, and as large as 44-64px in headers and profile cards. Keep the size consistent within a single list or row.</p></li>
+<li><p>Avoid placing an avatar alone in flowing text without a name next to it. For inline mentions of a user inside a sentence, use a User bubble.</p></li>
+</ul>
+<img alt="List of avatars in a Talk conversation" src="../_images/avatar.png" />
+</section>
+<section id="chips">
+<span id="id5"></span><h2>Chips<a class="headerlink" href="#chips" title="Link to this heading"></a></h2>
+<p>Chips <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcChip">(NcChip)</a> are small, compact labels for short pieces of metadata like tags, categories, selected values inside an input,
+or filter options above a list. Do not use chips for triggering major actions, use a button instead.</p>
+<ul class="simple">
+<li><p>Removable chips have a small close button and represent a value that can be removed. Use them inside multi-value inputs like recipient pickers, tag editors, and label fields.</p></li>
+<li><p>Filter chips toggle a filter on or off and visually indicate when they are active. Use them for small filter sets above a list, like “Unread” or “Flagged” in Mail.</p></li>
+<li><p>Colored chips work well for user-defined labels like tags and calendar categories.</p></li>
+<li><p>When there are many options or a lack of space, consider using a dropdown instead.</p></li>
+</ul>
+<img alt="Tag in Mail" src="../_images/chip.png" />
+</section>
+<section id="user-bubbles">
+<span id="id6"></span><h2>User bubbles<a class="headerlink" href="#user-bubbles" title="Link to this heading"></a></h2>
+<p>User bubbles <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcUserBubble">(NcUserBubble)</a> represent a user inside flowing content like chat messages, comments, and text documents.</p>
+<img alt="User bubbles when you at-mention in Talk" src="../_images/user-bubble.png" />
+</section>
+<section id="note-card">
+<span id="id7"></span><h2>Note card<a class="headerlink" href="#note-card" title="Link to this heading"></a></h2>
+<p>Note cards <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcNoteCard">(NcNoteCard)</a> are persistent inline message boxes that can be used to provide additional information about an
+element, communicate state, warn the user, or surface a problem. They come in four types: info, success, warning, and error.</p>
+<ul class="simple">
+<li><p>Info note cards explain context or share a tip. Use them for helpful additional information like “Your date of birth is needed for age verification”.</p></li>
+<li><p>Success note cards can show persistent positive information like “Your software is up-to-date”.</p></li>
+<li><p>Warning note cards can be used to indicate an unfavorable but non-blocking state or guide users through a risky operation. For example, Talk shows a “High-performance backend is not installed”
+warning to indicate it may result in connectivity issues for participants in a call.</p></li>
+<li><p>Error note cards mark a real problem in the current view, like “Could not connect to mail server”.</p></li>
+</ul>
+<img alt="Warning note card in Talk" src="../_images/notecard.png" />
+</section>
+<section id="dropdown">
+<span id="id8"></span><h2>Dropdown<a class="headerlink" href="#dropdown" title="Link to this heading"></a></h2>
+<p>Dropdowns <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcSelect">(NcSelect)</a> let the user pick one or more values from a list. They support search, free-text entry, and loading
+options on the fly.</p>
+<ul class="simple">
+<li><p>Single-select dropdowns let the user pick one value.</p>
+<ul>
+<li><p>If your dropdown has many options, do add an option to search. For example, it is possible to search for a time zone.</p></li>
+<li><p>Do not use them for a small number of mutually exclusive options. A radio group is clearer in that case.</p></li>
+</ul>
+</li>
+<li><p>Multi-select dropdowns allow several values and show each selection as a chip inside the input. Use them for things like selecting multiple users and tags.</p>
+<ul>
+<li><p>Do let the user type and add their own option whenever applicable, for example while adding recipient email addresses to an email.</p></li>
+</ul>
+</li>
+</ul>
+<img alt="Single-select dropdown in calendar settings" src="../_images/dropdown.png" />
+</section>
+<section id="input-fields">
+<span id="id9"></span><h2>Input fields<a class="headerlink" href="#input-fields" title="Link to this heading"></a></h2>
+<p>Input fields allow the user to enter text, numbers, passwords, and more. Input fields often have labels, helper text, and errors.</p>
+<ul class="simple">
+<li><p>Use text inputs <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcFields?id=nctextfield">(NcTextField)</a> for single-line text like names, titles, subjects, search queries, and
+URLs.</p></li>
+<li><p>Use the password input <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcFields?id=ncpasswordfield">(NcPasswordField)</a> for passwords which obscures the text being typed and has a
+reveal-password button.</p></li>
+<li><p>A text area <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcFields?id=nctextarea">(NcTextArea)</a> is for multi-line input like descriptions, notes, plain-text email bodies, and
+card details.</p></li>
+<li><p>Every input field should have a label. The default is a floating label which appears floating at the border when the input is active or filled. Use external labels when there are many inputs in a
+column.</p></li>
+<li><p>When something is wrong with the text the user has entered, for example an invalid email address format, show an error state together with a short helper message that tells the user how to fix it.</p></li>
+<li><p>Do use a leading icon when it helps identify the field (a magnifying glass for search, or an envelope for email), and a trailing button for inline actions like clearing, copying, or revealing a
+password.</p></li>
+<li><p>Do choose the right text type (email, URL, search) so mobile keyboards adapt and the browser can help.</p></li>
+</ul>
+<img alt="Text fields and text area while creating a Talk conversation" src="../_images/text-fields.png" />
+<section id="formattable-text-area">
+<h3>Formattable text area<a class="headerlink" href="#formattable-text-area" title="Link to this heading"></a></h3>
+<p>Use the rich text content <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcRichContenteditable">(NcRichContenteditable)</a> when the user may want to enter text with formatting via
+markdown syntax. This can be used for messages, comments, and long descriptions. To display the results of the text entered in this text area, use the <code class="docutils literal notranslate"><span class="pre">NcRichText</span></code> component which renders the
+formatted text.</p>
+<img alt="Message input in Talk" src="../_images/richcontent.png" />
+</section>
+</section>
+<section id="pickers">
+<span id="id10"></span><h2>Pickers<a class="headerlink" href="#pickers" title="Link to this heading"></a></h2>
+<p>Pickers are specialized inputs that open a popover or modal to choose a structured value like a date, a timezone, a color, an emoji, or a file.</p>
+<section id="datetime-picker">
+<h3>Datetime picker<a class="headerlink" href="#datetime-picker" title="Link to this heading"></a></h3>
+<p>The datetime picker can be used to enter a date and time for scheduling events, setting reminders, and selecting dates of birth.</p>
+<ul class="simple">
+<li><p>Use the native picker <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=ncdatetimepickernative">(NcDateTimePickerNative)</a> as a default. It uses the browser’s native
+date and time controls and is more accessible than a custom one.</p></li>
+<li><p>Use the custom picker <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=ncdatetimepicker">(NcDateTimePicker)</a> when the user benefits from seeing a calendar
+persistently, like for selecting a slot while booking an appointment.</p></li>
+<li><p>Do use a sensible default date and time, for example, a user setting their work hours may benefit from a default of 9:00 AM as their starting availability and 5:00 PM as ending availability.</p></li>
+</ul>
+<img alt="Date time picker for setting an event time" src="../_images/datetime-picker.png" />
+</section>
+<section id="timezone-picker">
+<h3>Timezone picker<a class="headerlink" href="#timezone-picker" title="Link to this heading"></a></h3>
+<p>The timezone picker <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=nctimezonepicker">(NcTimezonePicker)</a> is a specialized dropdown preloaded with all named timezones.</p>
+<ul class="simple">
+<li><p>Do use it only when a timezone is needed. Often the user’s default home timezone may be sufficient for the action.</p></li>
+</ul>
+<img alt="Timezone picker in Calendar" src="../_images/timezone-picker.png" />
+</section>
+<section id="color-picker">
+<h3>Color picker<a class="headerlink" href="#color-picker" title="Link to this heading"></a></h3>
+<p>The color picker <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=nccolorpicker">(NcColorPicker)</a> opens a small popover with a preset color palette. It can be used for
+setting colors for various items like Deck boards, calendars, and tags. The color picker should color a specific item, not large areas of the UI.</p>
+<ul class="simple">
+<li><p>Use the default Nextcloud palette so colors stay consistent across different Nextcloud apps.</p></li>
+<li><p>Enable the advanced fields (hex, RGB) only when fine control matters, for example, for personal theming.</p></li>
+</ul>
+<img alt="Color picker for selecting an event color in Calendar" src="../_images/color-picker.png" />
+</section>
+<section id="emoji-picker">
+<h3>Emoji picker<a class="headerlink" href="#emoji-picker" title="Link to this heading"></a></h3>
+<p>The emoji picker <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=ncemojipicker">(NcEmojiPicker)</a> opens a popover for choosing an emoji, with search, skin-tone selection,
+and a recently-used row.</p>
+<ul class="simple">
+<li><p>Do use it for user-generated content like reactions in Talk, conversation icons, and user-created pages in Collectives.</p></li>
+<li><p>Do not use it as a generic icon picker for navigation entries or system items. Those use Material Symbols.</p></li>
+</ul>
+<img alt="Emoji picker in Talk" src="../_images/emoji-picker.png" />
+</section>
+<section id="file-picker">
+<h3>File picker<a class="headerlink" href="#file-picker" title="Link to this heading"></a></h3>
+<p>The file picker <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=ncfilepicker">(NcFilePicker)</a> opens a modal of the user’s files on Nextcloud. It supports filtering by
+file type, picking one or several items, and choosing folders.</p>
+<ul class="simple">
+<li><p>Use the file picker when the user can attach a file from their Nextcloud. Also let the user upload a file from their local filesystem.</p></li>
+<li><p>The file picker can also be useful for moving or copying files.</p></li>
+<li><p>Do filter by file type when only certain formats are valid.</p></li>
+<li><p>Do label the primary button with a verb that matches the action like “Attach”, “Insert”, or “Choose”.</p></li>
+</ul>
+<img alt="File picker for copying a file" src="../_images/file-picker.png" />
+</section>
+</section>
+<section id="checkboxes-and-toggles">
+<span id="id11"></span><h2>Checkboxes and toggles<a class="headerlink" href="#checkboxes-and-toggles" title="Link to this heading"></a></h2>
+<p>Checkboxes and toggles <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcCheckboxRadioSwitch">(NcCheckboxRadioSwitch)</a> are selection controls that share a
+single component.</p>
+<ul class="simple">
+<li><p>Checkboxes allow users to select multiple options from a list. For example, per-folder share permissions.</p></li>
+<li><p>Toggles (switches) are used for enabling and disabling a single setting.</p></li>
+</ul>
+<img alt="Checkboxes in Files sharing" src="../_images/checkboxes.png" />
+<img alt="Toggles while creating a Talk conversation" src="../_images/toggles.png" />
+<section id="radio-groups">
+<h3>Radio groups<a class="headerlink" href="#radio-groups" title="Link to this heading"></a></h3>
+<p>Radio buttons allow users to select exactly one option from a defined radio group <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcRadioGroup">(NcRadioGroup)</a>. It also has a button variant which displays the options as buttons. When there are many options, use a dropdown instead.</p>
+<img alt="Radio group Mail settings" src="../_images/radio-group.png" />
+</section>
+</section>
+<section id="action-menus">
+<span id="id12"></span><h2>Action menus<a class="headerlink" href="#action-menus" title="Link to this heading"></a></h2>
+<p>Action menus <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcActions">(NcActions)</a> are command menus attached to a trigger button. The trigger opens a popover with a list of
+actions like “Rename”, “Move”, “Share”, or “Delete”.</p>
+<ul class="simple">
+<li><p>The most common trigger for an action menu is an action button with a three-dot icon. In some apps the button uses a specific icon; for example, a paperclip icon is used for Talk’s attachment menu.</p></li>
+<li><p>In lists where one or two actions are common and the rest are rare, the common actions can be shown inline, with the remaining actions in the menu.</p></li>
+<li><p>Do keep menus short. A long list of unrelated commands is hard to scan. Split it up or group it.</p></li>
+<li><p>Do put destructive actions like “Delete” or “Remove” last and separated from the rest of the menu.</p></li>
+<li><p>Do not use an action menu to pick an item from a list, use a dropdown instead.</p></li>
+</ul>
+<img alt="Action menu in Talk" src="../_images/action-menu.png" />
+</section>
+<section id="empty-content">
+<span id="id13"></span><h2>Empty content<a class="headerlink" href="#empty-content" title="Link to this heading"></a></h2>
+<p>Empty content <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcEmptyContent">(NcEmptyContent)</a> is a message used when a view has no items to show. It has an icon, a heading, a short
+description, and an optional button.</p>
+<ul class="simple">
+<li><p>Do use helpful wording. “Drop files here to upload” is better than “No items”.</p></li>
+<li><p>Do show a button with a helpful next step whenever possible like “Create event” and “Add a card”.</p></li>
+<li><p>Do not use an empty content element while content is still loading. Use a skeleton screen while loading and the empty state only once the load finishes with nothing.</p></li>
+<li><p>Do not use empty content for error states. If the loading failed, show a recoverable error message with a retry option.</p></li>
+</ul>
+<img alt="Empty content in Collectives" src="../_images/empty-content.png" />
+</section>
+<section id="modals">
+<span id="id14"></span><h2>Modals<a class="headerlink" href="#modals" title="Link to this heading"></a></h2>
+<p>Modals are overlays that demand the user’s focused attention. In the component library there are two components: a dialog
+<a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcDialog">(NcDialog)</a> used for confirmations and short forms, and a modal
+<a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcModal">(NcModal)</a> for custom content like viewers and slideshows. These components are used when there is a specific task or
+information that the user needs to focus on.</p>
+<ul class="simple">
+<li><p>The dialog component is commonly used for confirming a permanent action. Do use descriptive buttons for proceeding like “Save”, “Move file”, “Delete file”.</p></li>
+<li><p>Do not use generic words in the buttons like “OK”, especially when the action is destructive.</p></li>
+<li><p>Choose an appropriately sized dialog for your flow. if the dialog contains only small input fields, use a small dialog.</p></li>
+<li><p>Avoid opening a modal over another modal.</p></li>
+</ul>
+<img alt="Modal containing settings for a calendar" src="../_images/modal-calendar-settings.png" />
+</section>
+<section id="navigation">
+<span id="id15"></span><h2>Navigation<a class="headerlink" href="#navigation" title="Link to this heading"></a></h2>
+<p>The app navigation <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppContent?id=ncappnavigation">(NcAppNavigation)</a> is the left column of an app. It contains the
+primary structure of the app like the list of mailboxes, boards, calendars, or folders.</p>
+<ul class="simple">
+<li><p>A prominent “new” button <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppContent/NcAppNavigation?id=ncappnavigationnew">(NcAppNavigationNew)</a> is always at
+the top of the navigation and carries out the most common create action for the app. For example, “New message” in Mail, “New event” in Calendar, “New conversation” in Talk.</p></li>
+<li><p>There can also be a search field at the top
+(<a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppContent/NcAppNavigation?id=ncappnavigationsearch">NcAppNavigationSearch</a> ) which allows the user to search
+through the items of the navigation.</p></li>
+<li><p>The body of the navigation is a flat list of items
+(<a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppContent/NcAppNavigation?id=ncappnavigationitem">NcAppNavigationItem</a>). Each item can have a small action
+menu at the end for actions like “Rename” or “Mark all as read”, or a counter (for example, unread email count in Mail).</p></li>
+<li><p>Do group items under section headings
+(<a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppContent/NcAppNavigation?id=ncappnavigationcaption">NcAppNavigationCaption</a>) if there are many items or
+different categories of items like “Calendars”, “Meeting proposals”, and “Appointment schedules” in Calendar.</p></li>
+<li><p>The bottom of the navigation is reserved for the settings entry
+(<a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppContent/NcAppSettings?id=ncappsettingsdialog">NcAppSettingsDialog</a>) that opens the app’s settings dialog.</p></li>
+</ul>
+<img alt="Navigation in Files" src="../_images/navigation.png" />
+</section>
+<section id="settings">
+<span id="id16"></span><h2>Settings<a class="headerlink" href="#settings" title="Link to this heading"></a></h2>
+<p>The settings dialog (<a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppContent/NcAppSettings?id=ncappsettingsdialog">NcAppSettingsDialog</a>) holds an app’s per-user
+preferences and opens from the cog at the bottom of the app navigation.</p>
+<ul class="simple">
+<li><p>Inside the dialog, settings are organized into sections
+(<a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppContent/NcAppSettings?id=ncappsettingssection">NcAppSettingsSection</a>) on the left. Each section should cover
+one topic. If there are more than around ten sections, consider reorganizing them and removing some settings.</p></li>
+<li><p>Under each section are form boxes (<a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcFormBox">NcFormBox</a>) containing the actual settings, so that settings look and feel the same
+across every Nextcloud app.</p></li>
+<li><p>Settings can be grouped into a form group (<a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcFormGroup">NcFormGroup</a>) with an appropriate label.</p></li>
+<li><p>If the app has no per-user preferences to offer, the settings dialog can be omitted entirely.</p></li>
+</ul>
+<img alt="Settings in Talk" src="../_images/settings.png" />
+</section>
+<section id="sidebar">
+<span id="id17"></span><h2>Sidebar<a class="headerlink" href="#sidebar" title="Link to this heading"></a></h2>
+<p>The sidebar (<a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppContent?id=ncappsidebar">NcAppSidebar</a>) can be used to show supporting information and actions for
+an item. For example, Files uses a sidebar to show information about the selected file such as activity and comments.</p>
+<ul class="simple">
+<li><p>The sidebar usually contains a header (<a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppContent/NcAppSidebar?id=ncappsidebarheader">NcAppSidebarHeader</a>) with
+the title of the associated item and some metadata, and tabs
+(<a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppContent/NcAppSidebar?id=ncappsidebartab">NcAppSidebarTab</a>) for the various groups of information or actions.</p></li>
+<li><p>Do not use more than 3 tabs in the sidebar, the names of the tabs then start getting cut off.</p></li>
+</ul>
+<img alt="Sidebar for a folder in Files" src="../_images/sidebar.png" />
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="writing.html" class="btn btn-neutral float-left" title="Writing guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="layout.html" class="btn btn-neutral float-right" title="Layout" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Jun 06, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-dev">
+      ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-dev" class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/developer_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
