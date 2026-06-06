@@ -396,7 +396,10 @@ will appear in advanced search.</p>
 </section>
 <section id="account-delegation">
 <h3>Account delegation<a class="headerlink" href="#account-delegation" title="Link to this heading"></a></h3>
-<p>The app allows account delegation so that one user can send emails from the address of another.</p>
+<p>The app supports two ways of letting one user act on behalf of another’s mail account.</p>
+<section id="sending-as-another-address-server-alias">
+<h4>Sending as another address (server alias)<a class="headerlink" href="#sending-as-another-address-server-alias" title="Link to this heading"></a></h4>
+<p>This lets you send emails from the address of another account.</p>
 <ol class="arabic simple">
 <li><p>The delegation has to be configured on the mail server by an admin</p></li>
 <li><p>Add the other email address as an alias for your own email account</p></li>
@@ -406,6 +409,34 @@ will appear in advanced search.</p>
 <p class="admonition-title">Varning</p>
 <p>The sent email might not be visible to the original account if it’s stored in your personal <em>Sent</em> folder.</p>
 </div>
+</section>
+<section id="native-account-delegation">
+<h4>Native account delegation<a class="headerlink" href="#native-account-delegation" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.9: </span>Nextcloud Mail</p>
+</div>
+<p>Native account delegation lets you grant other Nextcloud users access to one of your mail accounts directly from the
+app, without any server-side alias configuration. A delegate can do everything the account owner can — send, receive,
+and delete mail on your behalf — except deleting the account or updating its authentication information.</p>
+<p>To delegate one of your accounts:</p>
+<ol class="arabic simple">
+<li><p>Open the account’s three-dot menu and select <strong>Delegate account</strong></p></li>
+<li><p>In the <strong>Delegation</strong> dialog, click <strong>Add delegate</strong></p></li>
+<li><p>Use the <strong>Select a user</strong> field to choose the Nextcloud user you want to grant access to</p></li>
+<li><p>Confirm with <strong>Delegate access</strong></p></li>
+</ol>
+<p>The shared account then appears in the delegate’s account list, marked as delegated.</p>
+<p>To remove access:</p>
+<ol class="arabic simple">
+<li><p>Open the <strong>Delegate account</strong> dialog again</p></li>
+<li><p>Click <strong>Revoke</strong> next to the delegate you want to remove</p></li>
+<li><p>Confirm with <strong>Revoke access</strong></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Provisioned accounts cannot be delegated.</p>
+</div>
+</section>
 </section>
 <section id="automatic-trash-deletion">
 <h3>Automatic trash deletion<a class="headerlink" href="#automatic-trash-deletion" title="Link to this heading"></a></h3>

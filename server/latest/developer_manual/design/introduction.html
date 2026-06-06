@@ -30,8 +30,8 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Writing guide" href="writing.html" />
-    <link rel="prev" title="Interface &amp; interaction design" href="index.html" />
+    <link rel="next" title="Foundations" href="foundations.html" />
+    <link rel="prev" title="Design" href="index.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -80,13 +80,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Interface &amp; interaction design</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Design</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="writing.html">Writing guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="foundations.html">Foundations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing.html">Writing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html">Components</a></li>
 <li class="toctree-l2"><a class="reference internal" href="layout.html">Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="layoutcomponents.html">Layout components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="atomiccomponents.html">Atomic components</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
@@ -108,7 +107,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Interface &amp; interaction design</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Design</a></li>
       <li class="breadcrumb-item active">Introduction</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/design/introduction.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -120,42 +119,46 @@
            <div itemprop="articleBody">
              
   <section id="introduction">
-<span id="navigation"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
-<p>Nextcloud design and brand standards are used to maintain the identity of Nextcloud apps.
-If you’re a developer who wants to create or contribute to a Nextcloud app, following this guide will make sure your app looks like it belongs to the Nextcloud family.</p>
-<p>Each Nextcloud app is unique and different, but there are a couple of standards that are used in everything.
-All Nextcloud apps are built keeping some basic principles in mind.</p>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
+<p>Nextcloud design and brand standards are used to maintain the identity of Nextcloud apps. If you’re a developer who wants to create or contribute to a Nextcloud app, following this guide will make
+sure your app looks like it belongs to the Nextcloud family.</p>
+<p>Each Nextcloud app is unique and different, but all Nextcloud apps are built keeping some basic principles in mind.</p>
 <ul class="simple">
 <li><p>Software should be quick and easy to use. Show only the most important elements. Secondary elements can be showed on hover or via an “Advanced” function.</p></li>
 <li><p>Nextcloud apps are built for everybody. Use a friendly tone with simple sentences. Make sure your app is responsive and runs on all browsers and devices.</p></li>
-<li><p>Accessibility: Make sure to regularly test accessibility, for example with <a class="reference external" href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a>, <a class="reference external" href="https://wave.webaim.org/">WAVE</a>, and <a class="reference external" href="https://play.google.com/store/apps/details?id=com.google.android.apps.accessibility.auditor">Google Accessibility Scanner</a>. Aim for WCAG Level AA. You can learn more about accessibility standards in the <a class="reference external" href="https://www.w3.org/WAI/standards-guidelines/wcag/glance/">W3 website</a></p></li>
-<li><p>Software should work.
-Only put features into main branch when they are complete. It is better to not have a feature instead of having one that works poorly.</p></li>
-<li><p>Software should get out of the way.
-Do things automatically instead of offering configuration options. When people ask for a setting, find out what the root of the problem is and fix that instead.
-Also read <a class="reference external" href="http://ometer.com/preferences.html">Choosing our Preferences</a>.</p></li>
-<li><p>People’s data is sacred. Provide undo for most operations and optionally a confirmation for bigger more complex operations, but be careful about confirmations <a class="reference external" href="http://www.alistapart.com/articles/neveruseawarning/">as they might be dismissed</a>.</p></li>
-<li><p>The state of the application should be clear. If something loads, provide feedback. Reactions should be quick, ideally under 100ms as per <a class="reference external" href="https://www.nngroup.com/articles/response-times-3-important-limits/">response time limits</a>.</p></li>
-<li><p>The state of the application should be clear. If something loads, provide feedback.</p></li>
+<li><p>Accessibility: Make sure to regularly test accessibility, for example with <a class="reference external" href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a>, <a class="reference external" href="https://wave.webaim.org/">WAVE</a>, and <a class="reference external" href="https://play.google.com/store/apps/details?id=com.google.android.apps.accessibility.auditor">Google
+Accessibility Scanner</a>. Aim for WCAG Level AA. You can learn more about accessibility standards in
+the <a class="reference external" href="https://www.w3.org/WAI/standards-guidelines/wcag/glance/">W3 website</a></p></li>
+<li><p>Software should work. Only put features into main branch when they are complete. It is better to not have a feature instead of having one that works poorly.</p></li>
+<li><p>Software should get out of the way. Do things automatically instead of offering configuration options. When people ask for a setting, find out what the root of the problem is and fix that instead.
+Also read <a class="reference external" href="https://ometer.com/preferences.html">Choosing our Preferences</a>.</p></li>
+<li><p>People’s data is sacred. Provide undo for most operations and optionally a confirmation for bigger more complex operations, but be careful about confirmations <a class="reference external" href="https://alistapart.com/article/neveruseawarning/">as they might be
+dismissed</a>.</p></li>
+<li><p>People deserve to know when they are interacting with AI. AI-generated items must have an indication that they were AI-generated and in many places in Nextcloud this is done through the use of the
+color and iconography.</p></li>
+<li><p>The state of the application should be clear. If something loads, provide feedback. Reactions should be quick, ideally under 100ms as per <a class="reference external" href="https://www.nngroup.com/articles/response-times-3-important-limits/">response time
+limits</a>.</p></li>
 <li><p>Regularly reset your installation to see what the first-run experience is like, and improve it.</p></li>
-<li><p>Ideally do <a class="reference external" href="http://jancborchardt.net/usability-in-free-software">usability testing</a> to know how people use the software. Testing with 5 users is enough to identify most of your problems.</p></li>
+<li><p>Ideally do <a class="reference external" href="https://jancborchardt.net/usability-in-free-software">usability testing</a> to know how people use the software. Testing with 5 users is enough to identify most of your problems.</p></li>
 </ul>
-<p>For further UX principles, read <a class="reference external" href="http://uxmag.com/articles/quantifying-usability">Alex Faaborg from Mozilla</a>, and the <a class="reference external" href="https://developer.gnome.org/hig/stable/design-principles.html.en">GNOME Human Interface Guidelines</a></p>
+<p>For further UX principles, read <a class="reference external" href="https://uxmag.com/articles/quantifying-usability">Alex Faaborg from Mozilla</a>, and the <a class="reference external" href="https://developer.gnome.org/hig/principles.html">GNOME Human Interface Guidelines</a></p>
+<p>This guide mainly serves as guidelines for designing for Nextcloud on the browser. For Android, closely follow the latest <a class="reference external" href="https://m3.material.io/">Material Design guidelines</a> and for iOS, the
+<a class="reference external" href="https://developer.apple.com/design/human-interface-guidelines">Apple Human Interface Guidelines</a>.</p>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Interface &amp; interaction design" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="writing.html" class="btn btn-neutral float-right" title="Writing guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Design" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="foundations.html" class="btn btn-neutral float-right" title="Foundations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jun 05, 2026.
+      <span class="lastupdated">Last updated on Jun 06, 2026.
       </span></p>
   </div>
 
