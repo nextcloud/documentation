@@ -158,7 +158,7 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
   ProtectKernelModules=yes
   ProtectKernelTunables=yes
   ProtectProc=invisible
-  ProtectSystem=strict
+  ProtectSystem=full
   RemoveIPC=yes
   RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
   RestrictNamespaces=yes
