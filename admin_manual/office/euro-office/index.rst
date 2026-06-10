@@ -1,6 +1,6 @@
-===============
+================
 Nextcloud Office
-===============
+================
 
 Nextcloud Office is Nextcloud's built-in office solution, powered by Euro-Office Document Server.
 It enables real-time collaborative editing of text documents, spreadsheets, and presentations
