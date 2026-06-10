@@ -117,6 +117,15 @@ Calendars may be shared with write access or read-only. When sharing a calendar 
 
 .. note:: Calendar shares currently cannot be accepted or rejected. If you want to stop having a calendar that someone shared with you, you can click on the 3-dot menu next to the calendar in the calendar list and click on "Unshare from me". To restore a share, the calendar can be reshared again, either for the whole group, resetting all unshares, or for a single user.
 
+Calendar delegation
+~~~~~~~~~~~~~~~~~~~
+
+In the app settings, you can delegate your calendars to other users so they can manage them for you.
+You can grant read access if they should only view the calendar, or write access if they should create,
+edit and delete events.
+
+Calendar delegation also works with other clients that support calendar delegation.
+
 Federated calendar sharing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
