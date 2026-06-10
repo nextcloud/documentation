@@ -12,6 +12,7 @@ The old documentation is still kept as it provides some additional documentation
 
    ocs-openapi
    ocs-api-overview
+   ocs-assistant-api
    ocs-share-api
    ocs-sharee-api
    ocs-status-api
