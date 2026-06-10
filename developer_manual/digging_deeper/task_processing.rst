@@ -100,6 +100,11 @@ The following built-in task types are available:
         * ``input``: ``Audio``
      * Output shape:
         * ``output``: ``Text``
+ * ``'core:audio2text:subtitles'``: This task type is for transcribing audio to a subtitles file. It is implemented by ``\OCP\TaskProcessing\TaskTypes\AudioToTextSubtitles``
+     * Input shape:
+        * ``input``: ``Audio``
+     * Output shape:
+        * ``output``: ``File``
  * ``'core:text2image'``: This task type is for generating images from text prompts. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToImage``
       * Input shape:
          * ``input``: ``Text``
