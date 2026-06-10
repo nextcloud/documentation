@@ -2,51 +2,39 @@
 Installation
 ============
 
-Nextcloud Office requires a running Euro-Office Document Server that Nextcloud can reach over the network.
-The Document Server is packaged separately and must be installed before connecting Nextcloud to it.
-
-Supported platforms
--------------------
+Nextcloud Office requires a running Euro-Office Document Server that Nextcloud can reach
+over the network. Choose the installation method that fits your infrastructure:
 
 .. list-table::
     :header-rows: 1
-    :widths: 30 20 20
+    :widths: 40 20 40
 
     * - Distribution
       - Architectures
       - Method
     * - Ubuntu 24.04 LTS (Noble)
       - amd64, arm64
-      - .deb package
+      - :doc:`installation_ubuntu`
     * - Debian 12 (Bookworm)
       - amd64, arm64
-      - .deb package
+      - :doc:`installation_debian`
     * - Any Linux host
       - amd64, arm64
-      - Docker
+      - :doc:`installation_docker`
 
-Installation methods
---------------------
+**Minimum system requirements:**
 
-- :doc:`installation_ubuntu`
-- :doc:`installation_debian`
-- :doc:`installation_docker`
-
-.. toctree::
-    :hidden:
-
-    installation_ubuntu
-    installation_debian
-    installation_docker
-
-System requirements
--------------------
-
-- 4 GB RAM minimum (8 GB recommended for multi-user deployments)
-- 10 GB disk space minimum
+- 4 GB RAM (8 GB recommended for multi-user deployments)
+- 10 GB disk space
 - The Document Server and Nextcloud must be able to reach each other over HTTPS in production
 
 .. note::
     The Document Server does not need to run on the same host as Nextcloud.
-    A reverse proxy (nginx or Apache) in front of the Document Server is required for production
-    deployments so that the server is reachable over HTTPS.
+    A reverse proxy (nginx or Apache) in front of the Document Server is required for
+    production deployments to expose it over HTTPS.
+
+.. toctree::
+
+    installation_ubuntu
+    installation_debian
+    installation_docker
