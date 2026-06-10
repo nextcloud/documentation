@@ -139,6 +139,38 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
   ExecStart=/usr/bin/php -f /var/www/nextcloud/cron.php
   KillMode=process
 
+  # Optional security hardening, all of the below entries are optional, but their existence improves the security of your system
+  # More info can be found at https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html
+  CapabilityBoundingSet=
+  DevicePolicy=closed
+  LockPersonality=yes
+  NoNewPrivileges=yes
+  PrivateDevices=yes
+  PrivateIPC=yes
+  PrivateMounts=yes
+  PrivateTmp=yes
+  PrivateUsers=yes
+  ProcSubset=pid
+  ProtectClock=yes
+  ProtectControlGroups=yes
+  ProtectHostname=yes
+  ProtectKernelLogs=yes
+  ProtectKernelModules=yes
+  ProtectKernelTunables=yes
+  ProtectProc=invisible
+  ProtectSystem=full
+  RemoveIPC=yes
+  RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+  RestrictNamespaces=yes
+  RestrictRealtime=yes
+  RestrictSUIDSGID=yes
+  SecureBits=noroot-locked
+  SystemCallArchitectures=native
+  SystemCallFilter=@system-service
+  SystemCallFilter=~@privileged
+  SystemCallFilter=~@resources
+  UMask=0077
+
 Replace the user ``www-data`` with the user of your http server and ``/var/www/nextcloud/cron.php`` with the location of **cron.php** in your nextcloud directory.
 
 The `ExecCondition` checks that the nextcloud instance is operating normally before running the background job, and skips it if otherwise.
