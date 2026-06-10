@@ -68,7 +68,7 @@
             aria-controls="rst-other-versions-user">
       🌐 {{ language_names.get(language, language) }}
       <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ {{ current_version }}
+       ☁️ {% if current_version == 'stable' %}{{ version_stable }} (stable){% elif current_version == 'latest' %}{{ version_stable|int + 1 }} (latest){% else %}{{ current_version }}{% endif %}
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
@@ -97,7 +97,7 @@
                style="color: var(--dark-link-color);"
                {% endif %}
             >
-              {{ slug }}
+              {% if slug == 'stable' %}{{ version_stable }} (stable){% elif slug == 'latest' %}{{ version_stable|int + 1 }} (latest){% else %}{{ slug }}{% endif %}
             </a>
           </dd>
         {% endfor %}
