@@ -43,3 +43,4 @@ Removed back-end APIs
   - ``\OCP\Remote\API\IApiCollection``
 
 - All the deprecated methods of ``\OCP\Calendar\Resource\IManager`` and ``\OCP\Calendar\Room\IManager`` were deprecated since Nextcloud 24 and were removed without replacement.
+- The ``\OCP\Collaboration\AutoComplete\AutoCompleteEvent`` event was deprecated since Nextcloud 28 and was removed with ``OCP\Collaboration\AutoComplete\AutoCompleteFilterEvent`` as replacement;
