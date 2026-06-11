@@ -514,6 +514,10 @@ Example output::
 Use ``--output=json_pretty`` for machine-readable output suitable for
 automated monitoring.
 
+Use ``--class=CLASS_NAME``" to run only the check for the setup check with the given class name.
+
+Use ``--category=CATEGORY`` to run only the checks for the given category, e.g. ``network`` or ``system``.
+
 
 .. _share_operations_label:
 
