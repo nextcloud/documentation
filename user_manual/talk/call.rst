@@ -40,6 +40,21 @@ Device settings allow you to choose which microphone and camera you want to use.
     :alt: Talk media settings showing microphone and camera device selection
     :width: 400px
 
+Noise suppression
+^^^^^^^^^^^^^^^^^
+
+Enable noise suppression to reduce background noise during calls with following steps:
+
+1. Open ``Media settings`` before or during a call
+2. Locate the ``Microphone settings`` section
+3. Enable ``Noise suppression`` at desired level
+
+Auto-gain control and echo cancellation options are also available in the same section.
+
+.. image:: images/media-settings-noise-suppression.png
+    :alt: Talk media settings showing microphone options
+    :width: 400px
+
 Backgrounds
 ^^^^^^^^^^^
 
