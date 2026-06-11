@@ -38,6 +38,9 @@ See :ref:`migration-repair-steps` for details.
 Task Processing
 ---------------
 
+Support for streaming the text output of TaskProcessing providers has been added.
+See :ref:`task_processing-options` for details about how to adjust your providers.
+
 Added APIs
 ^^^^^^^^^^
 
