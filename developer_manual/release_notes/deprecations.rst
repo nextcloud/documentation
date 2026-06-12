@@ -26,6 +26,11 @@ New deprecations
 - ``\OCP\Util::isPublicLinkPasswordRequired`` is now deprecated and you need to use ``\OCP\Share\IManager::shareApiLinkEnforcePassword`` instead.
 - ``\OCP\Util::isDefaultExpireDateEnforced`` is now deprecated and you need to use ``\OCP\Share\IManager::shareApiLinkDefaultExpireDateEnforced`` instead.
 
+Application management
+^^^^^^^^^^^^^^^^^^^^^^
+
+- ``\OCP\AppFramework\App::buildAppNamespace`` is deprecated in favor of non-static method ``\OCP\App\IAppManager::getAppNamespace``
+
 Older deprecations
 ------------------
 
