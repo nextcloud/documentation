@@ -16,7 +16,6 @@ For best performance, stability and functionality we have documented some recomm
 +==================+=======================================================================+
 | Operating System | - **Ubuntu 26.04 LTS** (recommended)                                  |
 | (64-bit)         | - Ubuntu 24.04 LTS                                                    |
-|                  | - Ubuntu 22.04 LTS                                                    |
 |                  | - **Red Hat Enterprise Linux 10** (recommended)                       |
 |                  | - Red Hat Enterprise Linux 9                                          |
 |                  | - Debian 13 (Trixie)                                                  |
