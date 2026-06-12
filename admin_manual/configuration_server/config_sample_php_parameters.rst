@@ -2648,20 +2648,6 @@ filesystem instead of the database to keep the comments.
 
 Defaults to ``\OC\Comments\ManagerFactory``
 
-systemtags.managerFactory
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-::
-
-    'systemtags.managerFactory' => '\OC\SystemTag\ManagerFactory',
-
-Replaces the default System Tags Manager Factory. This can be utilized if an
-own or 3rd-party SystemTagsManager should be used that – for instance – uses the
-filesystem instead of the database to keep the tags.
-
-Defaults to ``\OC\SystemTag\ManagerFactory``
-
 Maintenance
 -----------
 
