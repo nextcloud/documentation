@@ -19,9 +19,8 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - **Red Hat Enterprise Linux 10** (recommended)                       |
 |                  | - Red Hat Enterprise Linux 9                                          |
 |                  | - Debian 13 (Trixie)                                                  |
-|                  | - Debian 12 (Bookworm)                                                |
 |                  | - SUSE Linux Enterprise Server 16                                     |
-|                  | - SUSE Linux Enterprise Server 15 SP6 (or later)                      |
+|                  | - SUSE Linux Enterprise Server 15 SP7 (or later)                      |
 |                  | - openSUSE Leap 16                                                    |
 |                  | - CentOS Stream                                                       |
 |                  | - Alpine Linux                                                        |
