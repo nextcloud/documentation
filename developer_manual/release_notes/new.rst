@@ -34,3 +34,19 @@ but they might be required to have a fully working instance later on.
 Expensive repair steps are only executed when explicitly requested by the administrator.
 
 See :ref:`migration-repair-steps` for details.
+
+Added APIs
+^^^^^^^^^^
+
+- There is a new TaskProcessing provider interface: ``\OCP\TaskProcessing\ISynchronousOptionsAwareProvider``. It takes a ``\OCP\TaskProcessing\SynchronousProviderOptions`` option object that contains includeWatermarks, preferStreaming and the callback to report intermediate output.
+
+Changed APIs
+^^^^^^^^^^^^
+
+- The ``\OCP\TaskProcessing\Task`` class now has ``getPreferStreaming`` and ``setPreferStreaming`` methods for indicating whether the provider should report the output progressively if it supports it.
+- The TaskProcessing OCS API now also accepts the ``preferStreaming`` flag when scheduling tasks.
+
+Deprecated APIs
+^^^^^^^^^^^^^^^
+
+- ``\OCP\TaskProcessing\ISynchronousWatermarkingProvider`` is now deprecated. ``\OCP\TaskProcessing\ISynchronousOptionsAwareProvider`` should now be used instead.

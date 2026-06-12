@@ -347,7 +347,7 @@ A **Task processing provider** will usually be a class that implements the inter
     use OCP\TaskProcessing\SummaryTaskType;
     use OCP\IL10N;
 
-    class Provider implements ISynchrounousProvider {
+    class Provider implements ISynchronousProvider {
 
         public function __construct(
             private IL10N $l,
@@ -416,6 +416,43 @@ Since v33.0.0 you can now also throw an ``OCP\TaskProcessing\Exception\UserFacin
 Important to note here is that ``Image``, ``Audio``, ``Video`` and ``File`` slots in the input array will be filled with ``\OCP\Files\File`` objects for your convenience. When outputting one of these you should simply return a string, the API will turn the data into a proper file for convenience. The ``$reportProgress`` parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (``true``) or if it was cancelled (``false``) and processing should be terminated.
 
 This class would typically be saved into a file in ``lib/TaskProcessing`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
+
+Implementing an advanced TaskProcessing provider
+------------------------------------------------
+
+The ``\OCP\TaskProcessing\ISynchronousOptionsAwareProvider`` interface is available if you want your provider
+to support watermarking or streaming. If your provider implements ``\OCP\TaskProcessing\ISynchronousOptionsAwareProvider``,
+the process method should be adjusted:
+
+.. code-block:: php
+
+    public function process(
+        ?string $userId, array $input, callable $reportProgress,
+        SynchronousProviderOptions $options = new SynchronousProviderOptions(),
+    ): array {
+        $includeWatermark = $options->getIncludeWatermark();
+        $preferStreaming = $options->getPreferStreaming();
+        $reportOutput = $options->getReportIntermediateOutput();
+
+        $textOutput = '1';
+        if ($preferStreaming) {
+            $reportOutput(['output' => $textOutput]);
+        }
+        foreach (range(2, 100) as $i) {
+            $textOutput .= ' and ' . $i;
+            $reportProgress($i / 100);
+            if ($preferStreaming) {
+                $reportOutput(['output' => $textOutput]);
+            }
+        }
+
+        if ($includeWatermark) {
+            $textOutput .= "\n" . 'This was generated using artificial intelligence.';
+        }
+
+        return ['output' => $textOutput];
+    }
+
 
 Providing additional inputs and outputs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
