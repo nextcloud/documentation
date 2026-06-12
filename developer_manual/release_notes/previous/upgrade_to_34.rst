@@ -5,12 +5,7 @@ Upgrade to Nextcloud 34
 Deprecations
 ------------
 
-- ``\OCP\Util::setChannel`` is now deprecated and you need to use ``\OCP\ServerVersion::setChannel`` instead.
-- ``\OCP\Util::linkToAbsolute`` is now deprecated and you need to use ``\OCP\IUrlGenerator::getAbsoluteUrl`` and ``\OCP\IUrlGenerator::linkTo`` instead.
-- ``\OCP\Util::linkToRemove`` is now deprecated and you need to use ``\OCP\IUrlGenerator::linkToRemote`` instead.
-- ``\OCP\Util::isPublicLinkPasswordRequired`` is now deprecated and you need to use ``\OCP\Share\IManager::shareApiLinkEnforcePassword`` instead.
-- ``\OCP\Util::isDefaultExpireDateEnforced`` is now deprecated and you need to use ``\OCP\Share\IManager::shareApiLinkDefaultExpireDateEnforced`` instead.
-- ``\OCP\AppFramework\App::buildAppNamespace`` is deprecated in favor of non-static method ``\OCP\App\IAppManager::getAppNamespace``
+All deprecations that were announced in the :ref:`Deprecated APIs <deprecated-apis>` section.
 
 Removed front-end APIs and libraries
 ------------------------------------
