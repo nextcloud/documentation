@@ -417,6 +417,8 @@ Important to note here is that ``Image``, ``Audio``, ``Video`` and ``File`` slot
 
 This class would typically be saved into a file in ``lib/TaskProcessing`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
 
+.. _task_processing-options:
+
 Implementing an advanced TaskProcessing provider
 ------------------------------------------------
 
