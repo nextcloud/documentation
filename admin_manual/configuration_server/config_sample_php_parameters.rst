@@ -4612,6 +4612,20 @@ Less than one day is not allowed, so set it to 0 to disable the deletion.
 
 Defaults to ``0``.
 
+background_jobs_expiration_days
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+    'background_jobs_expiration_days' => 60,
+
+Delete job runs older than a certain number of days.
+
+Less than one day is not allowed.
+
+Defaults to ``60``.
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
