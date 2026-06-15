@@ -63,7 +63,7 @@ html_copy_source = False
 version_start = 32		# oldest documented version
 
 						# latest released stable — CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
-version_stable = 33		# mapped to https://docs.nextcloud.com/server/stable/
+version_stable = 34		# mapped to https://docs.nextcloud.com/server/stable/
 display_version = release if release != 'latest' else str(version_stable + 1)
 
 # Also search for "TODO ON RELEASE" in the rst files
