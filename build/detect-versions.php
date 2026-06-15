@@ -109,7 +109,7 @@ function detect_versions(array $branches): array {
 		if ($firstOutOfSupportTime !== null) {
 			// Older than the first out-of-support version — skip API call,
 			// store with the same timestamp (also out of support).
-			fwrite(STDOUT, "🛑 Version $branch is unsupported\n");
+			fwrite(STDERR, "🛑 Version $branch is unsupported\n");
 			$released[$branch] = $firstOutOfSupportTime;
 			continue;
 		}
@@ -122,10 +122,10 @@ function detect_versions(array $branches): array {
 
 		$released[$branch] = $info['date'];
 		if ($info['date'] < $oneYearAgo) {
-			fwrite(STDOUT, "🛑 Version $branch is unsupported (released on " . date('Y-m-d', $info['date']) . ")\n");
+			fwrite(STDERR, "🛑 Version $branch is unsupported (released on " . date('Y-m-d', $info['date']) . ")\n");
 			$firstOutOfSupportTime = $info['date'];
 		} else {
-			fwrite(STDOUT, "✅ Version $branch is supported (released on " . date('Y-m-d', $info['date']) . ")\n");
+			fwrite(STDERR, "✅ Version $branch is supported (released on " . date('Y-m-d', $info['date']) . ")\n");
 		}
 	}
 
