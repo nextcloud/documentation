@@ -38,6 +38,8 @@ jobs:
       uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # v2.37.1
 
     - name: Generate index.html
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         php build/build-index.php ${{ steps.branch.outputs.branches }}
         mv build/index.html /tmp/index.html
