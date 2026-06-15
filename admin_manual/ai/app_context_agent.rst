@@ -152,12 +152,16 @@ Cookbook tools
 
   * Example prompt: *"Which recipe categories do I have in my cookbook?"*
 
-Deck tools
-~~~~~~~~~~
+Deck tools (require `Deck <https://apps.nextcloud.com/apps/deck>`_)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * List deck boards
 
   * Example prompt: *"List the deck boards I have access to."*
+
+* List the cards on a deck board
+
+  * Example prompt: *"List the cards on my Personal deck board."*
 
 * Add a new card
 
@@ -174,6 +178,22 @@ Deck tools
 * Delete a card
 
   * Example prompt: *"Delete the 'Repair kitchen sink' card in my Personal deck board."*
+
+* List the comments on a deck card
+
+  * Example prompt: *"Show the comments on the 'Repair kitchen sink' card in my Personal deck board."*
+
+* Add a comment to a deck card
+
+  * Example prompt: *"Add a comment 'I'll handle this Friday' to 'Repair kitchen sink' in my Personal deck board."*
+
+* Edit a comment on a deck card
+
+  * Example prompt: *"Update my last comment on the 'Repair kitchen sink' card to say 'Moved to Saturday'."*
+
+* Delete a comment on a deck card
+
+  * Example prompt: *"Delete my last comment on the 'Repair kitchen sink' card in my Personal deck board."*
 
 Files tools
 ~~~~~~~~~~~
