@@ -135,11 +135,24 @@ rules, which can fix some API changes automatically.</p>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Broadcast\Events\\IBroadcastEvent</span></code> is now deprecated as it is unused.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousWatermarkingProvider</span></code> is now deprecated. <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousOptionsAwareProvider</span></code> should now be used.</p></li>
 </ul>
 </section>
 <section id="older-deprecations">
 <h2>Older deprecations<a class="headerlink" href="#older-deprecations" title="Link to this heading"></a></h2>
 <p>You find all current deprecations in this section.</p>
+<ul class="simple">
+<li><p>Deprecated since Nextcloud 34</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\App::buildAppNamespace</span></code> is deprecated in favor of non-static method <code class="docutils literal notranslate"><span class="pre">\OCP\App\IAppManager::getAppNamespace</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::setChannel</span></code> is deprecated in favor of <code class="docutils literal notranslate"><span class="pre">\OCP\ServerVersion::setChannel</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::linkToAbsolute</span></code> is deprecated in favor of <code class="docutils literal notranslate"><span class="pre">\OCP\IUrlGenerator::getAbsoluteUrl</span></code> and <code class="docutils literal notranslate"><span class="pre">\OCP\IUrlGenerator::linkTo</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::linkToRemove</span></code> is deprecated in favor of <code class="docutils literal notranslate"><span class="pre">\OCP\IUrlGenerator::linkToRemote</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::isPublicLinkPasswordRequired</span></code> is deprecated in favor of <code class="docutils literal notranslate"><span class="pre">\OCP\Share\IManager::shareApiLinkEnforcePassword</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::isDefaultExpireDateEnforced</span></code> is deprecated in favor of <code class="docutils literal notranslate"><span class="pre">\OCP\Share\IManager::shareApiLinkDefaultExpireDateEnforced</span></code>.</p></li>
+</ul>
+</li>
+</ul>
 <p>Also see the older <a class="reference internal" href="previous/index.html#previous-versions"><span class="std std-ref">Release Notes</span></a> for deprecations.</p>
 </section>
 </section>
@@ -156,7 +169,7 @@ rules, which can fix some API changes automatically.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jun 10, 2026.
+      <span class="lastupdated">Last updated on Jun 15, 2026.
       </span></p>
   </div>
 
