@@ -18,9 +18,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          set -e
-          for branch in master $(gh api "repos/${{ github.repository }}/branches" --paginate \
-            --jq '.[].name | select(startswith("stable"))'); do
+          stable_branches=$(gh api "repos/${{ github.repository }}/branches" --paginate \
+            --jq '.[].name | select(startswith("stable"))' | sort -Vr)
+          for branch in master ${stable_branches}; do
             echo "Dispatching sphinxbuild.yml on ${branch}"
-            gh workflow run sphinxbuild.yml --repo "${{ github.repository }}" --ref "${branch}"
+            gh workflow run sphinxbuild.yml --repo "${{ github.repository }}" --ref "${branch}" \
+              || echo "::warning::Failed to dispatch sphinxbuild.yml for ${branch}"
           done
