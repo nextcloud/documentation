@@ -6,12 +6,13 @@ on:
     branches:
       - master
       - stable*
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: build-documentation-${{ github.head_ref || github.run_id }}
+  group: build-documentation-${{ github.head_ref || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -331,7 +332,7 @@ jobs:
   deploy:
     name: Deploy documentation for gh-pages
     needs: stage-and-check
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
 
     permissions:
@@ -401,6 +402,23 @@ jobs:
           else
             echo "has_changes=true" >> $GITHUB_OUTPUT
           fi
+
+      - name: Strip noindex from stable docs
+        run: |
+          # Strip noindex from stable docs – these are the canonical pages we want indexed
+          if [ -d server/stable ]; then
+            find server/stable -name '*.html' -print0 | \
+              xargs -0 perl -pi -e 's{<meta name="robots" content="noindex, follow" />\n?}{}g'
+          fi
+
+      - name: Write robots.txt
+        run: |
+          cat > robots.txt << 'EOF'
+          User-agent: *
+          # Only the stable version should be indexed
+          Allow: /server/stable/
+          Disallow: /server/
+          EOF
 
         # Remove the stage/ directory BEFORE creating the PR so it doesn't get committed
       - name: Clean up staging cache before commit
@@ -477,7 +495,7 @@ jobs:
             echo "This workflow ran for a pull request. We need build-html, build-pdf and stage-and-check to succeed, but deploy will be skipped"
             if ${{ needs.build-html.result != 'success' || needs.build-pdf.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'skipped' }}; then exit 1; fi
           else
-            echo "This workflow ran for a push. We need all jobs to succeed, including deploy"
+            echo "This workflow ran for a push or workflow_dispatch. We need all jobs to succeed, including deploy"
             if ${{ needs.build-html.result != 'success' || needs.build-pdf.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'success' }}; then exit 1; fi
           fi
           
