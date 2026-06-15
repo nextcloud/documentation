@@ -286,7 +286,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#comments">Comments</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#comments-managerfactory">comments.managerFactory</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#systemtags-managerfactory">systemtags.managerFactory</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#maintenance">Maintenance</a><ul>
@@ -423,6 +422,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#openmetrics-skipped-classes">openmetrics_skipped_classes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#openmetrics-allowed-clients">openmetrics_allowed_clients</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#preview-expiration-days">preview_expiration_days</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#background-jobs-expiration-days">background_jobs_expiration_days</a></li>
 </ul>
 </li>
 </ul>
@@ -2616,16 +2616,6 @@ own or 3rd-party CommentsManager should be used that – for instance – uses t
 filesystem instead of the database to keep the comments.</p>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">\OC\Comments\ManagerFactory</span></code></p>
 </section>
-<section id="systemtags-managerfactory">
-<h3>systemtags.managerFactory<a class="headerlink" href="#systemtags-managerfactory" title="Link to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;systemtags.managerFactory&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\SystemTag\ManagerFactory&#39;</span><span class="p">,</span>
-</pre></div>
-</div>
-<p>Replaces the default System Tags Manager Factory. This can be utilized if an
-own or 3rd-party SystemTagsManager should be used that – for instance – uses the
-filesystem instead of the database to keep the tags.</p>
-<p>Defaults to <code class="docutils literal notranslate"><span class="pre">\OC\SystemTag\ManagerFactory</span></code></p>
-</section>
 </section>
 <section id="maintenance">
 <h2>Maintenance<a class="headerlink" href="#maintenance" title="Link to this heading"></a></h2>
@@ -4103,6 +4093,15 @@ Restricts the IP addresses able to make requests on the <code class="docutils li
 <p>Delete previews older than a certain number of days to reduce storage usage.</p>
 <p>Less than one day is not allowed, so set it to 0 to disable the deletion.</p>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+</section>
+<section id="background-jobs-expiration-days">
+<h3>background_jobs_expiration_days<a class="headerlink" href="#background-jobs-expiration-days" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;background_jobs_expiration_days&#39;</span> <span class="o">=&gt;</span> <span class="mi">60</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Delete job runs older than a certain number of days.</p>
+<p>Less than one day is not allowed.</p>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">60</span></code>.</p>
 </section>
 </section>
 </section>
