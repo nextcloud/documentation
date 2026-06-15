@@ -57,10 +57,13 @@ html_logo = "../_shared_assets/static/logo-white.png"
 html_copy_source = False
 
 # building the versions list
-version_start = 32		# THIS IS THE OLDEST SUPPORTED VERSION NUMBER
+# CI validates both constants against actual stableNN branches (see sphinxbuild.yml).
+# Update version_start when the lowest stableNN branch is deleted (version goes EoL).
+# Update version_stable when a new NC release ships (highest stableNN branch added).
+version_start = 32		# oldest documented version
 
-						# THIS IS THE VERSION THAT IS MAPPED TO https://docs.nextcloud.com/server/stable/
-version_stable = 33		# CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
+						# latest released stable — CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
+version_stable = 33		# mapped to https://docs.nextcloud.com/server/stable/
 display_version = release if release != 'latest' else str(version_stable + 1)
 
 # Also search for "TODO ON RELEASE" in the rst files
