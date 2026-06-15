@@ -1,4 +1,5 @@
-# Version 2025-07-23
+# Nextcloud nginx configuration — root installation
+# Version 2026-06-09
 
 upstream php-handler {
     server 127.0.0.1:9000;
@@ -148,10 +149,16 @@ server {
     location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/)  { return 404; }
     location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console)                { return 404; }
 
-    # Ensure this block, which passes PHP files to the PHP process, is above the blocks
-    # which handle static assets (as seen below). If this block is not declared first,
-    # then Nginx will encounter an infinite rewriting loop when it prepends `/index.php`
-    # to the URI, resulting in a HTTP 500 error response.
+    # Hide metadata files which would otherwise be served as plain files and
+    # leak dependency information (composer.json, package.json, core/shipped.json).
+    location ~ ^/(?:composer\.(?:json|lock)|package(?:-lock)?\.json|core/shipped\.json)$ { return 404; }
+
+    # Pass PHP requests to PHP-FPM.
+    #
+    # Important: this block must appear above the static asset locations
+    # below. Those locations fall back to `/index.php$request_uri`; if
+    # they appear first, nginx can repeatedly rewrite to `/index.php`,
+    # causing an internal redirection loop.
     location ~ \.php(?:$|/) {
         # Required for legacy support
         rewrite ^/(?!index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+|.+\/richdocumentscode(_arm64)?\/proxy) /index.php$request_uri;
