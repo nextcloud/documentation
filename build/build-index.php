@@ -21,20 +21,35 @@ function get_repo_for_version(int $version): string {
 }
 
 /**
- * Check if a version is officially released by querying the GitHub tag
+ * Parse the HTTP status code from the response headers populated by file_get_contents.
+ *
+ * @param array $headers The $http_response_header array
  */
-function is_version_released(int $version): bool {
+function parse_http_status(array $headers): int {
+	preg_match('/HTTP\/[\d.]+ (\d+)/', $headers[0] ?? '', $matches);
+	return (int)($matches[1] ?? 0);
+}
+
+/**
+ * Fetch release info for a given version from the GitHub API.
+ *
+ * Returns an array ['date' => int] if the release exists (HTTP 200).
+ * Returns null if the release does not exist (HTTP 404).
+ * Exits with code 1 on any other HTTP status (rate limit, server error, etc.)
+ * to prevent silently generating empty or incorrect index sections.
+ */
+function fetch_release_info(int $version): ?array {
 	$repo = get_repo_for_version($version);
 	$url = sprintf('https://api.github.com/repos/%s/releases/tags/v%d.0.0', $repo, $version);
-	
+
 	$context = stream_context_create([
 		'http' => [
 			'header' => get_github_headers(),
-			'timeout' => 5,
+			'timeout' => 10,
 			'ignore_errors' => true
 		]
 	]);
-	
+
 	$response = @file_get_contents($url, false, $context);
 
 	// FIXME: function_exists conditional can be dropped once we don't need to support <8.4.0
@@ -42,36 +57,25 @@ function is_version_released(int $version): bool {
 		/** @var array|null */
 		$http_response_header = \http_get_last_response_headers();
 	}
-	
-	if (isset($http_response_header) && is_array($http_response_header)) {
-		return strpos($http_response_header[0] ?? '', '200') !== false;
-	}
-	
-	return $response !== false;
-}
 
-/**
- * Fetch release date for a version from GitHub API
- */
-function get_release_date(int $version): ?int {
-	$repo = get_repo_for_version($version);
-	$url = sprintf('https://api.github.com/repos/%s/releases/tags/v%d.0.0', $repo, $version);
-	
-	$context = stream_context_create([
-		'http' => [
-			'header' => get_github_headers(),
-			'timeout' => 5
-		]
-	]);
-	
-	$response = @file_get_contents($url, false, $context);
-	if ($response === false) {
+	$status = isset($http_response_header) && is_array($http_response_header)
+		? parse_http_status($http_response_header)
+		: 0;
+
+	if ($status === 200) {
+		$data = json_decode($response, true);
+		$publishedAt = $data['published_at'] ?? $data['created_at'] ?? null;
+		return ['date' => $publishedAt ? strtotime($publishedAt) : time()];
+	}
+
+	if ($status === 404) {
 		return null;
 	}
-	
-	$data = json_decode($response, true);
-	$publishedAt = $data['published_at'] ?? $data['created_at'] ?? null;
-	return $publishedAt ? strtotime($publishedAt) : null;
+
+	// Any non-200/non-404 response (403 rate limit, 429, 5xx, network failure)
+	// must abort so we never deploy an index with empty or wrong sections.
+	fwrite(STDERR, "GitHub API error (HTTP $status) checking v$version.0.0 — aborting to avoid deploying incorrect index\n");
+	exit(1);
 }
 
 // Parse and validate command-line arguments
@@ -98,17 +102,14 @@ foreach ($branches as $branch) {
 		$releaseType = $releaseTime >= $oneYearAgo ? 'stable' : 'unsupported';
 		continue;
 	}
-	
-	if (!is_version_released($branch)) {
+
+	$info = fetch_release_info($branch);
+	if ($info === null) {
 		fwrite(STDERR, "⏳ Version $branch is not released (tag v$branch.0.0 not found)\n");
 		continue;
 	}
-	
-	$releaseTime = get_release_date($branch);
-	if ($releaseTime === null) {
-		$releaseTime = time();
-	}
-	
+
+	$releaseTime = $info['date'];
 	$released_branches[$branch] = $releaseTime;
 	if ($releaseTime < $oneYearAgo) {
 		fwrite(STDOUT, "🛑 Version $branch is unsupported (released on " . date('Y-m-d', $releaseTime) . ")\n");
