@@ -169,7 +169,10 @@ jobs:
           if [[ "$branch" == stable* ]]; then
             echo "release=${branch#stable}" >> $GITHUB_OUTPUT
           else
-            echo "release=latest" >> $GITHUB_OUTPUT
+            # For master (latest), derive the dev version from conf.py so the
+            # PDF cover shows a real version number rather than "latest".
+            version_stable=$(grep -m1 '^\s*version_stable\s*=' conf.py | grep -o '[0-9]\+')
+            echo "release=$((version_stable + 1))" >> $GITHUB_OUTPUT
           fi
 
       - name: Build pdf documentation
