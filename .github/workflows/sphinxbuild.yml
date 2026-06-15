@@ -58,6 +58,29 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
+      - name: Validate version constants in conf.py
+        run: |
+          highest_stable=$(git ls-remote --heads origin \
+            | sed -n 's?.*refs/heads/stable\([0-9]\{2\}\)$?\1?p' \
+            | sort -n | tail -1)
+          lowest_stable=$(git ls-remote --heads origin \
+            | sed -n 's?.*refs/heads/stable\([0-9]\{2\}\)$?\1?p' \
+            | sort -n | head -1)
+
+          conf_stable=$(grep -m1 '^\s*version_stable\s*=' conf.py | grep -o '[0-9]\+')
+          conf_start=$(grep -m1 '^\s*version_start\s*='  conf.py | grep -o '[0-9]\+')
+
+          err=0
+          if [ "$highest_stable" != "$conf_stable" ]; then
+            echo "::error::version_stable in conf.py ($conf_stable) != detected highest stable branch ($highest_stable). Update conf.py."
+            err=1
+          fi
+          if [ "$lowest_stable" != "$conf_start" ]; then
+            echo "::error::version_start in conf.py ($conf_start) != detected lowest stable branch ($lowest_stable). Update conf.py."
+            err=1
+          fi
+          exit $err
+
       - name: Set up Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
