@@ -1,5 +1,5 @@
 # Nextcloud nginx configuration — subdirectory installation (/nextcloud)
-# Version 2026-03-26
+# Version 2026-06-09
 
 # PHP-FPM backend.
 upstream php-handler {
@@ -150,6 +150,10 @@ server {
         # Rules borrowed from `.htaccess` to hide certain paths from clients
         location ~ ^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/)    { return 404; }
         location ~ ^/nextcloud/(?:\.|autotest|occ|issue|indie|db_|console)                  { return 404; }
+
+        # Hide metadata files which would otherwise be served as plain files and
+        # leak dependency information (composer.json, package.json, core/shipped.json).
+        location ~ ^/nextcloud/(?:composer\.(?:json|lock)|package(?:-lock)?\.json|core/shipped\.json)$ { return 404; }
 
         # Pass PHP requests to PHP-FPM.
         #
