@@ -313,6 +313,58 @@ Share tools
  * Example prompt: *"Does martin have write access to the Design/Ideas.md file I shared with him?"*
 
 
+Tables tools (require `Tables <https://apps.nextcloud.com/apps/tables>`_)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* List the user's tables
+
+  * Example prompt: *"List my tables."*
+
+* Create a new table, optionally from a template
+
+  * Example prompt: *"Create a new table 'Project tasks' in my Tables with the todo template."*
+
+* Update a table's title, emoji or archived state
+
+  * Example prompt: *"Rename my 'Project tasks' table to 'Q3 project tasks'."*
+
+* Delete a table
+
+  * Example prompt: *"Delete the 'Q3 project tasks' table."*
+
+* List the columns of a table
+
+  * Example prompt: *"List the columns of the 'Project tasks' table."*
+
+* Create a new column in a table
+
+  * Example prompt: *"Add a 'Status' column to the 'Project tasks' table."*
+
+* Update an existing column's properties
+
+  * Example prompt: *"Rename the 'Status' column in 'Project tasks' to 'State'."*
+
+* Delete a column from a table
+
+  * Example prompt: *"Delete the 'Notes' column from the 'Project tasks' table."*
+
+* List the rows of a table
+
+  * Example prompt: *"Show the rows of the 'Project tasks' table."*
+
+* Add a row to a table
+
+  * Example prompt: *"Add a row to 'Project tasks' with title 'Buy materials' and status 'Open'."*
+
+* Update a row in a table
+
+  * Example prompt: *"Mark the 'Buy materials' row in 'Project tasks' as done."*
+
+* Delete a row from a table
+
+  * Example prompt: *"Delete the 'Buy materials' row from 'Project tasks'."*
+
+
 Talk tools
 ~~~~~~~~~~
 
