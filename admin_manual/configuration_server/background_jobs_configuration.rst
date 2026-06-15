@@ -139,7 +139,7 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
   ExecStart=/usr/bin/php -f /var/www/nextcloud/cron.php
   KillMode=process
 
-  # Optional security hardening, all of the below entries are optional, but their existence improves the security of your system
+  # Optional security hardening, the below entries improve the security of your system
   # More info can be found at https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html
   CapabilityBoundingSet=
   DevicePolicy=closed
@@ -147,9 +147,7 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
   NoNewPrivileges=yes
   PrivateDevices=yes
   PrivateIPC=yes
-  PrivateMounts=yes
   PrivateTmp=yes
-  PrivateUsers=yes
   ProcSubset=pid
   ProtectClock=yes
   ProtectControlGroups=yes
@@ -169,7 +167,17 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
   SystemCallFilter=@system-service
   SystemCallFilter=~@privileged
   SystemCallFilter=~@resources
-  UMask=0077
+
+  # Further hardening, requires specifying valid paths for usage
+  #ProtectSystem=strict
+  #ReadWritePaths=/path/to/nextcloud/root /path/to/nextcloud/data
+
+  # Further hardening, if no mounts can be found within nextcloud directories
+  #PrivateMounts=yes
+
+  # Further hardening, if all files within nextcloud directories are owned by the nextcloud user (or root)
+  #PrivateUsers=yes
+  #UMask=0077
 
 Replace the user ``www-data`` with the user of your http server and ``/var/www/nextcloud/cron.php`` with the location of **cron.php** in your nextcloud directory.
 
