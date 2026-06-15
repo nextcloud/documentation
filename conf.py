@@ -83,7 +83,7 @@ def setup(app):
 
 def generateVersionsDocs(current_docs):
 	versions_doc = []
-	for v in range(version_start, version_stable + 1):
+	for v in range(version_start, version_stable):
 		url = 'https://docs.nextcloud.com/server/%s/%s' % (str(v), current_docs)
 		versions_doc.append((v, url, str(v)))
 	versions_doc.append(('stable', 'https://docs.nextcloud.com/server/stable/%s' % current_docs, '%s (stable)' % version_stable))
