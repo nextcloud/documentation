@@ -1,0 +1,776 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Присоединение к вызову &mdash; документация Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/talk/call.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=ca9b7fb8"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=5b699b7f"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Совместное использование экрана" href="call_screenshare.html" />
+    <link rel="prev" title="Звонки" href="call_index.html" />
+   
+  
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Логотип"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Поиск в документации</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Поиск в документации"
+             aria-label="Поиск в документации" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest руководство пользователя. Введение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Использование приложения «Активность»</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Файлы и синхронизация</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Программное обеспечение для совместной работы</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Talk</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="chat_index.html">Чат</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conversation_index.html">Разговоры</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="call_index.html">Звонки</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Присоединение к вызову</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#starting-or-joining-a-call">Начало вызова или присоединение к нему</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#during-a-call">Во время разговора</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="call_screenshare.html">Совместное использование экрана</a></li>
+<li class="toctree-l3"><a class="reference internal" href="call_views.html">Макет звонка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="call_transcription.html">Транскрипция и перевод</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="federation_index.html">Федерация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moderator_index.html">Для модераторов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html">Присоединитесь к звонку или чату в качестве гостя</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Персональные настройки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Специальные возможности</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Использование двухфакторной аутентификации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управление подключенными браузерами и устройствами</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Talk</a></li>
+          <li class="breadcrumb-item"><a href="call_index.html">Звонки</a></li>
+      <li class="breadcrumb-item active">Присоединение к вызову</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/call.rst" class="fa fa-github"> Редактировать на GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="joining-a-call">
+<h1>Присоединение к вызову<a class="headerlink" href="#joining-a-call" title="Ссылка на этот заголовок"></a></h1>
+<section id="starting-or-joining-a-call">
+<h2>Начало вызова или присоединение к нему<a class="headerlink" href="#starting-or-joining-a-call" title="Ссылка на этот заголовок"></a></h2>
+<section id="browser-and-talk-desktop-client">
+<h3>Браузер и клиент Talk Desktop<a class="headerlink" href="#browser-and-talk-desktop-client" title="Ссылка на этот заголовок"></a></h3>
+<p>Если вы участвуете в разговоре и имеете на это разрешение, вы можете начать вызов в любое время, нажав «Начать вызов» на верхней панели. Если звонок уже идёт, присоединитесь к нему, нажав зеленую кнопку «Присоединиться к звонку» в области чата или на верхней панели.</p>
+<a class="reference internal image-reference" href="../../_images/join-call.png"><img alt="Talk conversation with a green Join call button" src="../../_images/join-call.png" style="width: 600px;" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Если вы ещё не предоставили браузеру или клиенту Talk Desktop разрешение на использование микрофона и камеры, вам будет предложено сделать это, когда вы нажмете «Начать вызов» или «Присоединиться к вызову». Выберите микрофон и камеру, которые вы хотите использовать, и нажмите «Разрешить», чтобы предоставить доступ к вашим устройствам.</p>
+</div>
+<p>Вы увидите <code class="docutils literal notranslate"><span class="pre">Настройки</span> <span class="pre">мультимедиа</span></code>, где вы можете настроить качество звонков:</p>
+<a class="reference internal image-reference" href="../../_images/media-settings-initial.png"><img alt="Talk media settings dialog before joining a call" src="../../_images/media-settings-initial.png" style="width: 600px;" />
+</a>
+<section id="controlling-audio-and-video">
+<h4>Управление звуком и видео<a class="headerlink" href="#controlling-audio-and-video" title="Ссылка на этот заголовок"></a></h4>
+<p>Используйте значки микрофона и камеры в нижней части предварительного просмотра видео, чтобы отключить или включить микрофон, а также включить или отключить камеру перед присоединением.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Если один или оба значка выделены серым цветом, это означает, что либо у вас не установлен микрофон или камера, либо вы не предоставили браузеру или клиенту Talk Desktop разрешение на использование микрофона или камеры. Убедитесь, что вы предоставили разрешение браузеру или клиенту Talk Desktop, а также убедитесь, что ваш микрофон и камера не используются другим приложением.</p>
+</div>
+<p>Настройки устройства позволяют вам выбрать, какой микрофон и камеру вы хотите использовать. Это полезно, если у вас имеется более одного микрофона или камеры:</p>
+<a class="reference internal image-reference" href="../../_images/media-settings-devices.png"><img alt="Talk media settings showing microphone and camera device selection" src="../../_images/media-settings-devices.png" style="width: 400px;" />
+</a>
+</section>
+<section id="backgrounds">
+<h4>Фоны<a class="headerlink" href="#backgrounds" title="Ссылка на этот заголовок"></a></h4>
+<p>Фоны позволяют заменить фон видео одним из предустановленных изображений. Вы также можете загрузить свое собственное изображение или выбрать его из файлов Nextcloud. Альтернативно, выберите опцию «Размытие», чтобы размыть фон вашего живого видео.</p>
+<a class="reference internal image-reference" href="../../_images/media-settings-backgrounds.png"><img alt="Talk media settings showing virtual background and blur options for video" src="../../_images/media-settings-backgrounds.png" style="width: 400px;" />
+</a>
+</section>
+<section id="immediately-join-a-call">
+<h4>Немедленно присоединиться к вызову<a class="headerlink" href="#immediately-join-a-call" title="Ссылка на этот заголовок"></a></h4>
+<p>Если в будущем вы захотите пропустить «Настройки мультимедиа», включите переключатель «Пропускать предварительный просмотр устройства перед присоединением к вызову» в настройках приложения. К будущим звонкам в этом разговоре вы будете присоединяться напрямую, минуя диалоговое окно предварительного просмотра.</p>
+</section>
+<section id="record-a-call">
+<h4>Записать звонок<a class="headerlink" href="#record-a-call" title="Ссылка на этот заголовок"></a></h4>
+<p>Если вы начали разговор и хотите его записать, установите флажок «Начать запись сразу во время звонка». Опция записи разговора может быть вам недоступна, в зависимости от того, включили ли ваши системные администраторы эту опцию и есть ли у вас разрешение «Модератора» на разговор. Если вы присоединяетесь и звонок записывается, вам может потребоваться согласие, прежде чем вам будет разрешено присоединиться. Для получения дополнительной информации см. <a class="reference internal" href="call_recording.html#call-recording"><span class="std std-ref">Запись разговоров</span></a>.</p>
+</section>
+<section id="start-the-call">
+<h4>Начать звонок<a class="headerlink" href="#start-the-call" title="Ссылка на этот заголовок"></a></h4>
+<p>Нажмите кнопку «Начать звонок» в нижней части «Настройки мультимедиа», чтобы уведомить всех участников разговора о звонке. Если вы не хотите уведомлять других участников, начните тихий вызов, открыв трёхточечное меню слева от кнопки «Начать вызов» и выбрав «Вызов без уведомления».</p>
+<a class="reference internal image-reference" href="../../_images/media-settings-silent-call.png"><img alt="Talk Call without notification option in media settings" src="../../_images/media-settings-silent-call.png" style="width: 400px;" />
+</a>
+<a class="reference internal image-reference" href="../../_images/media-settings-silent-call-2.png"><img alt="Talk confirmation step for calling without sending a notification" src="../../_images/media-settings-silent-call-2.png" style="width: 400px;" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Другие участники могут изменять уведомления на уровне каждого разговора, в том числе хотят ли они получать уведомления о вызовах.</p>
+</div>
+<p>Ваш статус пользователя будет установлен на «На вызове», а на значке статуса пользователя будет отображаться эмоджи в виде речевого пузыря.</p>
+</section>
+</section>
+<section id="mobile-clients">
+<h3>Мобильные клиенты<a class="headerlink" href="#mobile-clients" title="Ссылка на этот заголовок"></a></h3>
+<p>Если вы участвуете в разговоре и имеете на это разрешение, вы можете начать вызов в любое время, нажав значок «Телефон» или «Видео» на верхней панели. Значок «Телефон» запускает только голосовой вызов; значок <code class="docutils literal notranslate"><span class="pre">Видео</span></code> запускает видеозвонок</p>
+<p>При голосовом вызове используются микрофон и наушник устройства, как при обычном телефонном звонке. При видеозвонке используется громкоговоритель в режиме громкой связи и по умолчанию включается фронтальная камера; вы можете отключить его в любое время.</p>
+<p>Если кто-то другой начнет вызов, вы можете получить уведомление, а ваше устройство может позвонить или вибрировать, в зависимости от настроек уведомлений. Нажмите «Телефон» или «Видео», чтобы присоединиться, или нажмите красную кнопку, чтобы отказаться. При отклонении уведомление о вызове на этом устройстве закрывается.</p>
+<p>Вы можете управлять микрофоном и камерой (при видеовызове) с помощью параметров, показанных в нижней части экрана.</p>
+<p>Ваш статус пользователя будет установлен на «На вызове», а на значке статуса пользователя будет отображаться всплывающее сообщение.</p>
+</section>
+</section>
+<section id="during-a-call">
+<h2>Во время разговора<a class="headerlink" href="#during-a-call" title="Ссылка на этот заголовок"></a></h2>
+<p>После присоединения к вызову вы увидите представление вызова. Он показывает видеотрансляции всех участников разговора, участвующих в данный момент, с дополнительной информацией и элементами управления.</p>
+<a class="reference internal image-reference" href="../../_images/during-a-call-details.png"><img alt="Talk active call view showing participant video feeds" src="../../_images/during-a-call-details.png" style="width: 400px;" />
+</a>
+<p>Самый левый элемент показывает прошедшее время звонка.</p>
+<p>Рядом с ним вы увидите количество участников, присоединившихся к текущему звонку. При нажатии на номер открывается правая боковая панель и отображается список участников. Участники, присоединившиеся к звонку, будут указаны первыми.</p>
+<p>Вы также увидите время разговора каждого участника, если он говорил во время разговора:</p>
+<a class="reference internal image-reference" href="../../_images/participant-talk-time.png"><img alt="Talk active call showing talking time indicator for each participant" src="../../_images/participant-talk-time.png" style="width: 400px;" />
+</a>
+<p>Вы можете получить доступ к дополнительным параметрам и настройкам вызова из трёхточечного меню на верхней панели.</p>
+<a class="reference internal image-reference" href="../../_images/media-settings.png"><img alt="Talk in-call three-dot menu for additional settings and options" src="../../_images/media-settings.png" style="width: 300px;" />
+</a>
+<section id="set-up-breakout-rooms">
+<h3>Настройка переговорных комнат<a class="headerlink" href="#set-up-breakout-rooms" title="Ссылка на этот заголовок"></a></h3>
+<p>Переговорные комнаты позволяют разделить звонок на более мелкие группы для более целенаправленного обсуждения. В зависимости от ваших разрешений и настроек вашего экземпляра эта опция может быть вам недоступна. Для получения дополнительной информации см. <a class="reference internal" href="breakout_rooms.html#breakout-rooms"><span class="std std-ref">Переговорные комнаты</span></a>.</p>
+</section>
+<section id="download-call-participants-list">
+<h3>Скачать список участников звонка<a class="headerlink" href="#download-call-participants-list" title="Ссылка на этот заголовок"></a></h3>
+<p>Загрузить список участников звонка можно из трёхточечного меню в верхней панели. При этом будет загружен файл CSV с именами и адресами электронной почты всех участников.</p>
+<a class="reference internal image-reference" href="../../_images/download-participants-list.png"><img alt="Talk in-call menu showing download participants list option" src="../../_images/download-participants-list.png" style="width: 400px;" />
+</a>
+<p>CSV-файл содержит следующие столбцы:</p>
+<ul class="simple">
+<li><p><strong>Имя</strong>: имя участника.</p></li>
+<li><p><strong>Электронная почта</strong>: адрес электронной почты участника.</p></li>
+<li><p><strong>Тип</strong>: указывает, является ли участник зарегистрированным пользователем или гостем.</p></li>
+<li><p><strong>Идентификатор</strong>: уникальный идентификатор участника.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Управление звуком и видео<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h3>
+<p>Нижняя панель просмотра вызова предлагает элементы управления мультимедиа, настройки макета и другие функции, которые вы можете использовать во время разговора.</p>
+<a class="reference internal image-reference" href="../../_images/during-a-call-controls.png"><img alt="Talk active call bottom bar showing media controls and layout settings" src="../../_images/during-a-call-controls.png" style="width: 400px;" />
+</a>
+<p>Use the microphone and camera icons to mute/unmute your microphone and enable/disable your camera.
+You can also use the keyboard shortcuts <code class="docutils literal notranslate"><span class="pre">M</span></code> to mute/unmute your microphone and <code class="docutils literal notranslate"><span class="pre">V</span></code> to enable/disable your camera.
+Use the space bar for push-to-talk: holding space temporarily unmutes you while muted, or temporarily mutes you while unmuted.</p>
+</section>
+<section id="reactions">
+<h3>Реакции<a class="headerlink" href="#reactions" title="Ссылка на этот заголовок"></a></h3>
+<p>Кнопка «Реакции» позволяет отправить эмодзи-реакцию всем участникам звонка.</p>
+<a class="reference internal image-reference" href="../../_images/call-reactions.png"><img alt="Talk active call reactions panel with emoji options" src="../../_images/call-reactions.png" style="width: 400px;" />
+</a>
+<p>Каждый участник увидит эмодзи, поднимающийся из нижней части экрана вызова. Эмодзи исчезнет через две секунды.</p>
+<section id="raise-hand">
+<h4>Поднять руку<a class="headerlink" href="#raise-hand" title="Ссылка на этот заголовок"></a></h4>
+<p>Нажав <code class="docutils literal notranslate"><span class="pre">Поднять</span> <span class="pre">руку</span></code>, вы уведомите модераторов и отобразите значок рядом с вашим именем. Это также доступно с помощью сочетания клавиш <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
+</section>
+<section id="full-screen">
+<h4>Полный экран<a class="headerlink" href="#full-screen" title="Ссылка на этот заголовок"></a></h4>
+<p>Переключение окна браузера или клиента Talk Desktop в полноэкранный режим. Также доступно через сочетание клавиш <code class="docutils literal notranslate"><span class="pre">F</span></code>. Нажмите <code class="docutils literal notranslate"><span class="pre">ESC</span></code>, чтобы вернуться к обычному виду.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="call_index.html" class="btn btn-neutral float-left" title="Звонки" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="call_screenshare.html" class="btn btn-neutral float-right" title="Совместное использование экрана" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2016-2026 Nextcloud GmbH and Nextcloud contributors. </p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 Russian
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl>
+        <dt>🌐  Языки</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Версии</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

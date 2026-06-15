@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Webdav &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  <title>WebDAV &mdash; Nextcloud latest Developer Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -30,7 +30,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Basic APIs" href="basic.html" />
+    <link rel="next" title="Basic File &amp; Folder Operations" href="basic.html" />
     <link rel="prev" title="Remote wipe" href="../RemoteWipe/index.html" />
    
   
@@ -52,9 +52,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -62,6 +71,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes/index.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
@@ -73,22 +83,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Clients and Client APIs</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../general.html">General</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../activity-api.html">Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../activity-api.html">Activity API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android_library/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../LoginFlow/index.html">Login Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../OCS/index.html">OCS API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../RemoteWipe/index.html">Remote wipe</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Webdav</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="basic.html">Basic APIs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="search.html">Search</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trashbin.html">Trashbin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="versions.html">Versions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">WebDAV</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basic.html">Basic File &amp; Folder Operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="chunking.html">Chunked file upload</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bulkupload.html">File bulk upload</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trashbin.html">Trashbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="versions.html">Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search.html">Search</a></li>
 <li class="toctree-l3"><a class="reference internal" href="comments.html">Comments</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../ClientIntegration/index.html">Client Integration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
@@ -109,7 +120,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Clients and Client APIs</a></li>
-      <li class="breadcrumb-item active">Webdav</li>
+      <li class="breadcrumb-item active">WebDAV</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/WebDAV/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -120,12 +131,13 @@
            <div itemprop="articleBody">
              
   <section id="webdav">
-<span id="webdavapiindex"></span><h1>Webdav<a class="headerlink" href="#webdav" title="Link to this heading"></a></h1>
+<span id="webdavapiindex"></span><h1>WebDAV<a class="headerlink" href="#webdav" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="basic.html">Basic APIs</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="basic.html">Basic File &amp; Folder Operations</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="basic.html#webdav-basics">WebDAV basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basic.html#testing-requests">Testing requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic.html#quick-method-header-cheat-sheet">Quick method/header cheat sheet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basic.html#requesting-properties">Requesting properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basic.html#listing-folders-rfc4918">Listing folders (rfc4918)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basic.html#downloading-files">Downloading files</a></li>
@@ -141,11 +153,14 @@
 <li class="toctree-l2"><a class="reference internal" href="basic.html#response-headers">Response Headers</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="search.html">Search</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="search.html#making-search-requests">Making search requests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="search.html#supported-dav-properties">Supported DAV properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="search.html#search-scope">Search scope</a></li>
-<li class="toctree-l2"><a class="reference internal" href="search.html#examples-search-bodies">Examples search bodies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chunking.html">Chunked file upload</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chunking.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chunking.html#chunked-upload-v2">Chunked upload v2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bulkupload.html">File bulk upload</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bulkupload.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bulkupload.html#usage">Usage</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="trashbin.html">Trashbin</a><ul>
@@ -160,14 +175,11 @@
 <li class="toctree-l2"><a class="reference internal" href="versions.html#restoring-a-version">Restoring a version</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="chunking.html">Chunked file upload</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="chunking.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chunking.html#chunked-upload-v2">Chunked upload v2</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="bulkupload.html">File bulk upload</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="bulkupload.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bulkupload.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search.html">Search</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="search.html#making-search-requests">Making search requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html#supported-dav-properties">Supported DAV properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html#search-scope">Search scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html#examples-search-bodies">Examples search bodies</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a><ul>
@@ -183,14 +195,14 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../RemoteWipe/index.html" class="btn btn-neutral float-left" title="Remote wipe" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="basic.html" class="btn btn-neutral float-right" title="Basic APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="basic.html" class="btn btn-neutral float-right" title="Basic File &amp; Folder Operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on May 27, 2026.
+      <span class="lastupdated">Last updated on Jun 15, 2026.
       </span></p>
   </div>
 
@@ -204,11 +216,16 @@
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-dev">
       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-dev" class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -231,6 +248,14 @@
         </dd>
         
         <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/developer_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/developer_manual"
              
           >
@@ -238,17 +263,20 @@
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/31/developer_manual"
-             
-          >
-            31
-          </a>
-        </dd>
-        
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

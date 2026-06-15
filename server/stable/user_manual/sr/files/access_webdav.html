@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Приступ Nextcloud фајловима преко WebDAV &mdash; документација Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,8 +31,8 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Индекс" href="../genindex.html" />
     <link rel="search" title="Претрага" href="../search.html" />
-    <link rel="next" title="Управљање обрисаним фајловима" href="deleted_file_management.html" />
-    <link rel="prev" title="Приступ вашим фајловима употребом Nextcloud веб интерфејса" href="access_webgui.html" />
+    <link rel="next" title="Десктоп и мобилна синхронизација" href="desktop_mobile_sync.html" />
+    <link rel="prev" title="Accessing your files using the Nextcloud web interface" href="access_webgui.html" />
    
   
 </head>
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,74 +72,45 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Увод у корисничко упутство за Nextcloud latest</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud веб интерфејс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Фајлови и синхронизација</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Приступ вашим фајловима употребом Nextcloud веб интерфејса</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Приступ Nextcloud фајловима преко WebDAV</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Званични Nextcloud десктоп и мобилни клијенти</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">WebDAV клијенти треће стране</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Приступ фајловима са Linux система</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Nautilus фајл менаџер</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin">Accessing files with KDE and Dolphin</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="accessing.html">Accessing your files</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="access_webgui.html">Accessing your files using the Nextcloud web interface</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Приступ Nextcloud фајловима преко WebDAV</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Званични Nextcloud десктоп и мобилни клијенти</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#third-party-webdav-clients">WebDAV клијенти треће стране</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-linux">Приступ фајловима са Linux система</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Креирање WebDAV монтирања из Linux командне линије</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-issues">Познати проблеми</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-macos">Приступ фајловима са macOS система</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Приступ фајловима из Microsoft Windows система</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-cyberduck">Приступ фајловима употребом Cyberduck</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-public-shares-over-webdav">Приступ јавним дељењима преко WebDAV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-problems">Познати проблеми</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-curl">Приступ фајловима програмом cURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-winscp">Приступ фајловима програмом WinSCP</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Креирање WebDAV монтирања из Linux командне линије</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-issues">Познати проблеми</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#problem">Проблем</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution">Решење</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Проблем</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">Решење</a></li>
+<li class="toctree-l3"><a class="reference internal" href="desktop_mobile_sync.html">Десктоп и мобилна синхронизација</a></li>
+<li class="toctree-l3"><a class="reference internal" href="large_file_upload.html">Отпремања великог фајла</a></li>
+<li class="toctree-l3"><a class="reference internal" href="external_storage.html">Using external storage</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">Приступ фајловима са macOS система</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Приступ фајловима из Microsoft Windows система</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">Мапирање драјвова из командне линије</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">Мапирање драјвова програмом Windows Explorer</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">Приступ фајловима употребом Cyberduck</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">Приступ јавним дељењима преко WebDAV</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-problems">Познати проблеми</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id4">Проблем</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution-1">Решење 1</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution-2">Решење 2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">Проблем</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">Решење</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">Проблем</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#answer">Одговор</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">Проблем</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">Решење</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">Проблем</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">Решење</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">Приступ фајловима програмом cURL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-winscp">Приступ фајловима програмом WinSCP</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Управљање обрисаним фајловима</a></li>
-<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Десктоп и мобилна синхронизација</a></li>
-<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Шифровање ваших фајлова на Nextcloud серверу</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html">Дељење фајлова</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Заједничка дељења</a></li>
-<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Вршење анонимних отпремања</a></li>
-<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Отпремања великог фајла</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quota.html">Квота складишта</a></li>
-<li class="toctree-l2"><a class="reference internal" href="version_control.html">Контрола верзија</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projects.html">Пројекти</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Пренос власништва</a></li>
-<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Употреба заједничких дељења</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Постављање ваших подешавања</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Универзални приступ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Употреба двофактоске аутентификације</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управљање повезаним прегледачима и уређајима</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Спољно складиште</a></li>
 </ul>
 
         </div>
@@ -148,6 +128,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Фајлови и синхронизација</a></li>
+          <li class="breadcrumb-item"><a href="accessing.html">Accessing your files</a></li>
       <li class="breadcrumb-item active">Приступ Nextcloud фајловима преко WebDAV</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -232,7 +213,7 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p class="admonition-title">Белешка</p>
 <p>Ако веза са вашим сервером није HTTPS-обезбеђена, употребите <code class="docutils literal notranslate"><span class="pre">dav://</span></code> уместо <code class="docutils literal notranslate"><span class="pre">davs://</span></code>:</p>
 </div>
-<img alt="Снимак екрана конфигурисања Nautilus фајл менаџера да користи WebDAV" src="../../_images/webdav_gnome3_nautilus.png" />
+<img alt="GNOME Nautilus file manager Connect to Server dialog with a Nextcloud WebDAV address entered" src="../../_images/webdav_gnome3_nautilus.png" />
 <div class="admonition note">
 <p class="admonition-title">Белешка</p>
 <p>Иста метода функционише и са осталим фајл менаџерима који користе GVFS, као што су MATE Caja и Cinnamon Nemo.</p>
@@ -248,8 +229,10 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <li><p>Follow the on-screen instructions to log in</p></li>
 <li><p>After logging in, ensure you enable „Storage” in the „Use This Account For” section</p></li>
 <li><p>You can now access your files in Dolphin under „Network” in the sidebar</p></li>
-<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click „Nextcloud Storage”, then click „Add to Places”</p></li>
-<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then click „Edit…” and customize the icon and label</p></li>
+<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click
+„Nextcloud Storage”, then click „Add to Places”</p></li>
+<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then
+click „Edit…” and customize the icon and label</p></li>
 </ol>
 </section>
 </section>
@@ -272,6 +255,12 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 </pre></div>
 </div>
 </li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>If the davfs2 group doesn’t exist after installing the package, you may need to create it yourself and, possibly, adjust the davfs config file to use the group after you’ve created it.</p>
+</div>
+<ol class="arabic">
 <li><p>Затим креирајте <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> директоријум у свом почетном директоријуму који ће служити као тачка монтирања, и <code class="docutils literal notranslate"><span class="pre">.davfs2/</span></code> за свој лични конфигурациони фајл:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">nextcloud</span>
 <span class="n">mkdir</span> <span class="o">~/.</span><span class="n">davfs2</span>
@@ -343,20 +332,16 @@ for example
 </section>
 <section id="accessing-files-using-macos">
 <h2>Приступ фајловима са macOS система<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Белешка</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>Да бисте приступили фајловима из апликације macOS Finder:</p>
 <ol class="arabic">
 <li><p>Из мени линије на врху програма Finder, изаберите <strong>Go &gt; Connect to Server…</strong>:</p>
-<img alt="Снимак екрана уноса адресе вашег Nextcloud сервера на macOS систему" src="../../_images/osx_webdav1.png" />
+<img alt="macOS Go menu with Connect to Server option highlighted" src="../../_images/osx_webdav1.png" />
 </li>
 <li><p>Када се отвори прозор <strong>Connect to Server…</strong>, унесите WebDAV адресу свог Nextcloud сервера у поље <strong>Server Address:</strong> нпр.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
 </pre></div>
 </div>
-<img alt="Снимак екрана: унос адресе Nextcloud сервера у „Connect to Server…” дијалог" src="../../_images/osx_webdav2.png" />
+<img alt="macOS Connect to Server dialog with a Nextcloud WebDAV URL in the Server Address field" src="../../_images/osx_webdav2.png" />
 </li>
 <li><p>Кликните на <strong>Connect</strong>. Ваш WebDAV сервер би требало да се појави на Десктопу као дељени диск драјв.</p></li>
 </ol>
@@ -480,8 +465,8 @@ that the <code class="docutils literal notranslate"><span class="pre">WebClient<
 </section>
 <section id="known-problems">
 <h2>Познати проблеми<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
-<section id="id4">
-<h3>Проблем<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>Проблем<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>Windows се не повезује преко HTTPS.</p>
 </section>
 <section id="solution-1">
@@ -492,12 +477,12 @@ that the <code class="docutils literal notranslate"><span class="pre">WebClient<
 <h3>Решење 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>Windows WebDAV Клијент можда не подржава TLSv1.1 и TLSv1.2 везе. Ако сте конфигурацијом свој сервер ограничили тако да нуди само TLSv1.1 и новије, веза са вашим сервером можда неће моћи да се успостави. Молимо вас да погледате <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> документацију за да бисте сазнали више о овоме.</p>
 </section>
-<section id="id5">
-<h3>Проблем<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>Проблем<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>Добијате следећу поруку о грешки: <strong>Error 0x800700DF: The file size exceeds the limit allowed and cannot be saved.</strong></p>
 </section>
-<section id="id6">
-<h3>Решење<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>Решење<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Windows limits the maximum size a file transferred from or to a WebDAV share
 may have. You can increase the value <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> in
 <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code>
@@ -506,8 +491,8 @@ by clicking on <strong>Modify</strong>.</p>
 value of <code class="docutils literal notranslate"><span class="pre">4294967295</span></code>, and reboot Windows or restart the <strong>WebClient</strong>
 service.</p>
 </section>
-<section id="id7">
-<h3>Проблем<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Проблем<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Adding a WebDAV drive on Windows with the steps above does not display the correct
 available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
@@ -518,20 +503,20 @@ way for the client to retrieve available free space from the server. Windows aut
 falls back to the size and free space of the C: drive. There is no direct solution
 for this limitation.</p>
 </section>
-<section id="id8">
-<h3>Проблем<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Проблем<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>Приступ вашим фајловима из Microsoft Office преко WebDAV не успева.</p>
 </section>
-<section id="id9">
-<h3>Решење<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Решење<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Познати проблеми и њихова решења су документаовани у чланку <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
 </section>
-<section id="id10">
-<h3>Проблем<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>Проблем<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>Nextcloud не може да се мапира као WebDAV драјв у Windows систему када се користи самопотписани сертификат.</p>
 </section>
-<section id="id11">
-<h3>Решење<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>Решење<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>Кликћите док се у статусној линији прегледача не појави грешка сертификата.</p></li>
@@ -662,8 +647,8 @@ WinSCP does not support TOTP with Nextcloud.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Приступ вашим фајловима употребом Nextcloud веб интерфејса" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="Управљање обрисаним фајловима" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Accessing your files using the Nextcloud web interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-right" title="Десктоп и мобилна синхронизација" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -767,16 +752,25 @@ WinSCP does not support TOTP with Nextcloud.</p>
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 Slovenian
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Languages</dt>
         
@@ -945,6 +939,22 @@ WinSCP does not support TOTP with Nextcloud.</p>
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
             </a>
           </dd>
         
@@ -1119,6 +1129,14 @@ WinSCP does not support TOTP with Nextcloud.</p>
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -1126,31 +1144,20 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Преузимања</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>На прочитај документацију</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Почетна страница пројекта</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Изградње</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

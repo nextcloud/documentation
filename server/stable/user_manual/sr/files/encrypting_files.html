@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Шифровање ваших фајлова на Nextcloud серверу &mdash; документација Nextcloud latest User Manual latest</title>
+  <title>Using server-side encryption &mdash; документација Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -32,7 +32,7 @@
     <link rel="index" title="Индекс" href="../genindex.html" />
     <link rel="search" title="Претрага" href="../search.html" />
     <link rel="next" title="Using end-to-end encryption" href="using_e2ee.html" />
-    <link rel="prev" title="Десктоп и мобилна синхронизација" href="desktop_mobile_sync.html" />
+    <link rel="prev" title="Security &amp; encryption" href="security.html" />
    
   
 </head>
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,52 +72,34 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Увод у корисничко упутство за Nextcloud latest</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud веб интерфејс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Фајлови и синхронизација</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Приступ вашим фајловима употребом Nextcloud веб интерфејса</a></li>
-<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Приступ Nextcloud фајловима преко WebDAV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Управљање обрисаним фајловима</a></li>
-<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Десктоп и мобилна синхронизација</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Шифровање ваших фајлова на Nextcloud серверу</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#encryption-faq">ЧПП у вези шифровања</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#how-can-encryption-be-disabled">Како може да се искључи шифровање?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#is-it-possible-to-disable-encryption-with-the-recovery-key">Да ли је могуће да се искључи шифровање кључем за опоравак?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#can-encryption-be-disabled-without-the-user-s-password">Да ли шифровање може да се искључи без лозинке корисника?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">Да ли се планира да се ово премести на наредну пријаву корисника или у позадински посао?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#is-group-sharing-possible-with-the-recovery-key">Да ли је могуће групно дељење кључем за опоравак?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="security.html">Security &amp; encryption</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using server-side encryption</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#encryption-faq">ЧПП у вези шифровања</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-encryption">Употреба шифровања</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-encrypted-files">Дељење шифрованих фајлова</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#files-not-encrypted">Фајлови нису шифровани</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#using-encryption">Употреба шифровања</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sharing-encrypted-files">Дељење шифрованих фајлова</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#recovery-key-password">Лозинка кључа опоравка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#files-not-encrypted">Фајлови нису шифровани</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#change-private-key-password">Промена лозинке приватног кључа</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html">Дељење фајлова</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Заједничка дељења</a></li>
-<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Вршење анонимних отпремања</a></li>
-<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Отпремања великог фајла</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quota.html">Квота складишта</a></li>
-<li class="toctree-l2"><a class="reference internal" href="version_control.html">Контрола верзија</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projects.html">Пројекти</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Пренос власништва</a></li>
-<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Употреба заједничких дељења</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Постављање ваших подешавања</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Универзални приступ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Употреба двофактоске аутентификације</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управљање повезаним прегледачима и уређајима</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Спољно складиште</a></li>
 </ul>
 
         </div>
@@ -126,7 +117,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Фајлови и синхронизација</a></li>
-      <li class="breadcrumb-item active">Шифровање ваших фајлова на Nextcloud серверу</li>
+          <li class="breadcrumb-item"><a href="security.html">Security &amp; encryption</a></li>
+      <li class="breadcrumb-item active">Using server-side encryption</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -136,9 +128,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="encrypting-your-nextcloud-files-on-the-server">
-<h1>Шифровање ваших фајлова на Nextcloud серверу<a class="headerlink" href="#encrypting-your-nextcloud-files-on-the-server" title="Link to this heading"></a></h1>
-<p>Nextcloud поседује апликацију за шифровање на серверској страни, па када је ваш Nextcloud администратор укључи, сви ваши Nextcloud подаци се аутоматски шифрују на серверу. Шифровање важи за цео сервер, тако да када се укључи немате могућност избора да ваши фајлови остану нешифровани. Није потребно да урадите било шта посебно, јер апликација користи ваше Nextcloud име за пријаву као лозинку за ваш јединствени приватни кључ за шифровање. Једноставно се одјавите и поново пријавите и управљајте фајловима и делите их као што сте то и раније чинили, и још увек можете по вољи да промените своју лозинку.</p>
+  <section id="using-server-side-encryption">
+<h1>Using server-side encryption<a class="headerlink" href="#using-server-side-encryption" title="Link to this heading"></a></h1>
+<p>Nextcloud includes a server-side encryption app, and when it is enabled by
+your Nextcloud administrator all of your Nextcloud data files are automatically
+encrypted on the server.
+Encryption is server-wide, so when it is enabled you cannot choose to keep your
+files unencrypted. You don’t have to do anything special, as it uses your
+Nextcloud login as the password for your unique private encryption key. Just log
+out and in and manage and share your files as you normally do, and you can
+still change your password whenever you want.</p>
 <p>Њена главна сврха је да шифрује фајлове на сервисима удаљених складишта које сте повезали са својим Nextcloud сервером. Ово је једноставан и беспрекоран начин за заштиту ваших фајлова на удаљеном складишту. Ваше удаљене фајлове можете да делите помоћу Nextcloud на уобичајен начин, међутим, шифроване фајлове не можете директно да делите са удаљеног сервиса који користите, јер су кључеви за шифровање смештени на вашем Nextcloud серверу и никад се не откривају спољним пружаоцима услуга.</p>
 <p>If your Nextcloud server is not connected to any remote storage services, then
 it is better to use some other form of encryption such as file-level or whole
@@ -151,25 +150,23 @@ to learn more.)</p>
 <h2>ЧПП у вези шифровања<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
 <section id="how-can-encryption-be-disabled">
 <h3>Како може да се искључи шифровање?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
-<p>The only way to disable encryption is to run the <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/occ_command.html#encryption-label">„decrypt all”</a>
+<p>The only way to disable encryption is to run the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">„decrypt all”</a>
 script, which decrypts all files and disables encryption.</p>
 </section>
 <section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
 <h3>Да ли је могуће да се искључи шифровање кључем за опоравак?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
-<p>Yes, <em>if</em> every user uses the <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">file recovery key</a>, <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/occ_command.html#encryption-label">„decrypt all”</a> will use it to decrypt all files.</p>
+<p>Yes, <em>if</em> every user uses the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">file recovery key</a>, <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">„decrypt all”</a> will use it to decrypt all files.</p>
 </section>
 <section id="can-encryption-be-disabled-without-the-user-s-password">
 <h3>Да ли шифровање може да се искључи без лозинке корисника?<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
-<p>If you don’t have the users password or <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">file recovery key</a>,
-then there is no way to decrypt all files. What’s more, running it on login
-would be dangerous, because you would most likely run into timeouts.</p>
+<p>Ако немате корисничке лозинке или <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">кључ за опоравак фајла</a>, не постоји начин да се дешифрују сви фајлови. Још горе, покретање приликом пријаве би било опасно, јер би највероватније дошло до истека времена.</p>
 </section>
 <section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
 <h3>Да ли се планира да се ово премести на наредну пријаву корисника или у позадински посао?<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
 <p>Ако би то урадили, онда би вашу лозинку морали да сместимо у базу података. То може да се сматра за безбедносни пропуст, па се тако нешто не планира.</p>
 </section>
 <section id="is-group-sharing-possible-with-the-recovery-key">
-<h3>Да ли је могуће групно дељење кључем за опоравак?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
+<h3>Is group sharing possible with the recovery key?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
 <p>Ако мислите на додавање корисника у групе, па да неком чаролијом све функционише? Не. Ово функционише само са главним кључем.</p>
 </section>
 </section>
@@ -222,7 +219,7 @@ would be dangerous, because you would most likely run into timeouts.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-left" title="Десктоп и мобилна синхронизација" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="security.html" class="btn btn-neutral float-left" title="Security &amp; encryption" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="using_e2ee.html" class="btn btn-neutral float-right" title="Using end-to-end encryption" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -327,16 +324,25 @@ would be dangerous, because you would most likely run into timeouts.</p>
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 Slovenian
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Languages</dt>
         
@@ -505,6 +511,22 @@ would be dangerous, because you would most likely run into timeouts.</p>
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
             </a>
           </dd>
         
@@ -679,6 +701,14 @@ would be dangerous, because you would most likely run into timeouts.</p>
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -686,31 +716,20 @@ would be dangerous, because you would most likely run into timeouts.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Преузимања</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>На прочитај документацију</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Почетна страница пројекта</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Изградње</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

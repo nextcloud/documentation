@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Synchroniser avec Thunderbird &mdash; Documentation Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <label for="rtd-search-input" class="sr-only">Rechercher docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Rechercher docs"
+             aria-label="Rechercher docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,7 +72,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Manuel utilisateur de Nextcloud latest : Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">L’interface web de Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Fichiers &amp; synchronisation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="contacts.html">Utilisation de l’application Contacts</a></li>
@@ -85,16 +96,15 @@
 <li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Synchronisation avec Contact de KDE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Synchronisation avec le bureau GNOME</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Synchronisation avec Windows 10</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_migration.html">Migrate data between instances</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Clients de bureau</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Définir vos préférences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Accès universel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Utilisation de l’authentification à deux facteurs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestion des navigateurs et des appareils liés</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Stockage externe</a></li>
 </ul>
 
         </div>
@@ -148,7 +158,7 @@
 <ol class="arabic">
 <li><p>Accédez à la vue du calendrier dans Thunderbird et sélectionnez le bouton <strong>Nouveau Calendrier…</strong> en bas du panneau de gauche.</p></li>
 <li><p>Choisissez <strong>Sur le réseau</strong> :</p>
-<img alt="../../_images/new_calendar.png" src="../../_images/new_calendar.png" />
+<img alt="Thunderbird new calendar dialog with &quot;On the network&quot; option selected" src="../../_images/new_calendar.png" />
 </li>
 <li><p>Tapez votre <strong>Nom d’utilisateur</strong> et l”<strong>Emplacement</strong> (l’URL du serveur), puis cliquez sur <strong>Trouver les agendas</strong>.</p></li>
 <li><p>Choisissez quels agendas vous souhaitez ajouter et cliquez sur <strong>S’abonner</strong>.</p></li>
@@ -161,20 +171,20 @@
 <p><a class="reference external" href="https://addons.thunderbird.net/fr/thunderbird/addon/cardbook/">CardBook</a> est une alternative avancée au carnet d’adresses inclus dans Thunderbird, qui prend en charge CardDAV.</p>
 <ol class="arabic">
 <li><p>Cliquer sur l’icône Cardbook dans le coin supérieur droit dans Thunderbird :</p>
-<img alt="../../_images/cardbook_icon.png" src="../../_images/cardbook_icon.png" />
+<img alt="CardBook icon in Thunderbird toolbar" src="../../_images/cardbook_icon.png" />
 </li>
 <li><p>Dans Cardbook :</p>
 <ul class="simple">
 <li><p>Allez dans Carnet d’adresses &gt; Nouveau carnet d’adresses <strong>Remote</strong> &gt; Suivant</p></li>
 <li><p>Sélectionner <strong>CardDAV</strong>, renseigner l’adresse de votre serveur Nextcloud, votre nom d’utilisateur et  mot de passe</p></li>
 </ul>
-<img alt="../../_images/new_addressbook.png" src="../../_images/new_addressbook.png" />
+<img alt="CardBook new address book dialog with CardDAV option selected" src="../../_images/new_addressbook.png" />
 </li>
 <li><p>Cliquer sur « Valider », cliquer sur Suivant, puis choisir le nom du carnet d’adresses et cliquer une nouvelle fois sur Suivant :</p>
-<img alt="../../_images/addressbook_name.png" src="../../_images/addressbook_name.png" />
+<img alt="CardBook dialog to enter a name for the new address book" src="../../_images/addressbook_name.png" />
 </li>
-<li><p>Une fois terminé, CardBook synchronise vos carnets d’adresses. Vous pouvez toujours déclencher une synchronisation manuellement en cliquant sur « Synchroniser » dans le coin supérieur gauche de CardBook :</p>
-<img alt="../../_images/synchronize_cardbook.png" src="../../_images/synchronize_cardbook.png" />
+<li><p>When you are finished, CardBook synchronizes your address books. You can always trigger a synchronization manually by clicking the <strong>Synchronize</strong> button in CardBook:</p>
+<img alt="CardBook address book view with Synchronize button" src="../../_images/synchronize_cardbook.png" />
 </li>
 </ol>
 </section>
@@ -289,16 +299,25 @@
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 French
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Langues</dt>
         
@@ -473,6 +492,22 @@
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -641,6 +676,14 @@
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -648,31 +691,20 @@
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Téléchargements</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>Au sujet de la lecture de Docs</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Projet Racine</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Versions</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

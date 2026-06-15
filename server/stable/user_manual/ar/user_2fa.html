@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>استخدام التحقُّق المُثنَّى من الهُوِيَّة two-factor authentication &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,16 +72,19 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">نكست كلاود nextcloud الإصدار latest دليل المستخدم - المُقدِّمة</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webinterface.html">واجهة وب نكست كلاود The Nextcloud Web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files/index.html">الملفات &amp; التزامن</a></li>
 <li class="toctree-l1"><a class="reference internal" href="groupware/index.html">أدوات العمل التعاوني Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="talk/index.html">&quot;المحادثة&quot; Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userpreferences.html">تعيين تفضيلاتك</a></li>
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">&quot;الوصول للجميع&quot; universal access</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">استخدام التحقُّق المُثنَّى من الهُوِيَّة  two-factor authentication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">إعداد التحقُّق المُثنَّى من الهُوِيَّة two-factor authentication 2FA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">رموز الاسترداد في حالة فقدان العامل الثاني 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Recovery codes if you lose your second factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">الدخول عن طريق التحقُّق المُثنّى</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">استخدام التحقُّق المُثنّى من الهُوِيَّة مع أَمَارَات مخزنة على أجهزة hardware token.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">إستعمال تطبيقات عميلة client apps بالتحقُّق المُثَنَّى من الهُوِيَّة</a></li>
@@ -80,7 +92,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="session_management.html">إدارة المتصفحات والأجهزة المتصلة</a></li>
-<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">التخزين الخارجي</a></li>
 </ul>
 
         </div>
@@ -110,30 +121,41 @@
   <section id="using-two-factor-authentication">
 <h1>استخدام التحقُّق المُثنَّى من الهُوِيَّة  two-factor authentication<a class="headerlink" href="#using-two-factor-authentication" title="Link to this heading"></a></h1>
 <p>التحقُّق المُثنَّى من الهُوِيَّة two-factor authentication  (2FA) هي طريقة لحماية حسابك على نكست كلاود من الوصول غير المصرح به. إنه يعمل عن طريق طلب &quot;إثباتين&quot; مختلفين لهويتك. على سبيل المثال، * شيء تعرفه * (مثل كلمة المرور) و * شيء لديك * مثل مفتاح مادي على فلاش مثلاً. عادةً ما يكون العامل الأول هو كلمة المرور التي لديك بالفعل ويمكن أن يكون العامل الثاني رسالة نصية تتلقاها أو رمزاً تُنشِئُه على هاتفك أو جهاز آخر (* شيء لديك*). تدعم نكست كلاود مجموعة متنوعة من العوامل الثانية؛ كما يمكن إضافة المزيد.</p>
-<p>بمجرد تمكين تطبيق التحقُّق المُثنَّى من الهُوِيَّة two-factor authentication 2FAمن قِبَل مشرفك، يمكنك تمكينه و تهيئته في  <a class="reference internal" href="userpreferences.html"><span class="doc">تعيين تفضيلاتك</span></a>.  ستجد أدناه كيفية ذلك.</p>
+<p>Once a two-factor authentication app has been enabled by your administrator,
+you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">تعيين تفضيلاتك</span></a>.</p>
 <section id="configuring-two-factor-authentication">
 <h2>إعداد التحقُّق المُثنَّى من الهُوِيَّة two-factor authentication 2FA<a class="headerlink" href="#configuring-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>في إعداداتك الشخصية، إبحث عن إعداد عامل التحقُّق الثاني Second-factor Auth. و في هذا المثال هو TOTP، وهو رمز زمني متوافق مع Google Authenticator:</p>
+<p>In your personal settings, look up the <strong>Second-factor Auth</strong> setting. In this
+example this is TOTP, a Google Authenticator compatible time-based code:</p>
 <figure class="align-default">
 <img alt="إعداد &quot;كلمة سر لمرة واحدة مقيدة زمنياً&quot; TOTP." src="../_images/totp_enable.png" />
 </figure>
 <p>سترى سرك و رمز الاستجابة السريعة QR الذي يمكنم مسحه ضوئيًا بواسطة تطبيق TOTP على هاتفك (أو أي جهاز آخر). اعتماداً على التطبيق أو الأداة، اكتب الرمز أو امسح رمز الاستجابة السريعة ضوئيًا وسيعرض جهازك رمز تسجيل الدخول الذي يتغير كل 30 ثانية.</p>
 </section>
-<section id="recovery-codes-in-case-you-lost-your-2nd-factor">
-<h2>رموز الاسترداد في حالة فقدان العامل الثاني 2<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Link to this heading"></a></h2>
-<p>يجب عليك دائمًا إنشاء رموز احتياطية لـ 2FA. إذا سُرق جهازك الذي يحوي العامل الثاني أو تعطل عن العمل، فستتمكن من استخدام أحد هذه الرموز لإلغاء قفل حسابك. هذا الإجراء يعمل كاحتياط للعامل الثاني. للحصول على الرموز الاحتياطية، انتقل إلى الإعدادات الشخصية الخاصة بك وانظر أسفل إعدادات العامل الثاني Second-factor Auth، و اختر <em>إنشاء رموز احتياطية</em> Generate backup codes:</p>
+<section id="recovery-codes-if-you-lose-your-second-factor">
+<h2>Recovery codes if you lose your second factor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Link to this heading"></a></h2>
+<p>You should always generate backup codes for 2FA. If your second factor device
+gets stolen or stops working, you can use one of these codes to unlock your
+account. It effectively functions as a backup second factor. To get the backup
+codes, go to your personal settings and look under <strong>Second-factor Auth</strong>
+settings. Choose <em>Generate backup codes</em>:</p>
 <figure class="align-default">
 <img alt="مُولِّد الكود الاحتياطي للعامل الثاني 2FA" src="../_images/2fa_backupcode_1.png" />
 </figure>
-<p>ستظهر لك بعد ذلك قائمة بالرموز الاحتياطية التي تُستخدم لمرة واحدة:</p>
+<p>You will then see a list of one-time-use backup codes:</p>
 <figure class="align-default">
 <img alt="الأكواد الاحتياطية للعامل الثاني 2FA" src="../_images/2fa_backupcode_2.png" />
 </figure>
-<p>يجب حفظ هذه الرموز في مكان آمن. لا تجمعهم مع العامل رقم 2 في نفس المكان؛ على هاتفك المحمول مثلاً. بحيث تضمن أنك إذا فقدت أحدهما، فلا يزال لديك الآخر. ربما يكون إبقائهم في المنزل هو أفضل شيء يمكن عمله.</p>
+<p>Store these codes somewhere safe where you can find them. Do not keep them
+with your second factor (such as your mobile phone), but store them separately
+so that losing one does not mean losing the other.</p>
 </section>
 <section id="logging-in-with-two-factor-authentication">
 <h2>الدخول عن طريق التحقُّق المُثنّى<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>بعد خروجك، إذا أردت تسجيل الدخول مرة أخرى، سترى طلبًا لإدخال رمز TOTP في متصفحك. إذا كنت قد قمت بتمكين عامل آخر إلى جانب عامل TOTP، فسترى شاشة اختيار يمكنك من خلالها اختيار طريقة ثنائية لتسجيل دخولك. إختَر TOTP:</p>
+<p>After you log out and log in again, you will see a prompt to enter the
+TOTP code in your browser. If you have enabled more than one second factor,
+you will see a selection screen where you can choose which method to use for
+this login. Select TOTP:</p>
 <figure class="align-default">
 <img alt="إختيار طريقة التحقُّق المُثَنَّى من الهُوِيَّة two-factor authentication." src="../_images/totp_login_1.png" />
 </figure>
@@ -144,7 +166,9 @@
 <p>إذا كان الرمز صحيحًا، فسيتم توجيهك إلى حسابك على نكست كلاود.</p>
 <div class="admonition note">
 <p class="admonition-title">ملاحظة</p>
-<p>نظرًا لأن الشفرة تستند إلى الوقت، فمن المهم أن تتمّ مُزامنة خادومك و ساعة هاتفك الذكي. فارق بضع ثوان في الزمن لن يُشكّل مشكلة.</p>
+<p>Since the code is time-based, it is important that your server's and
+your smartphone's clock are almost in sync. A time drift of a few seconds
+won't be a problem.</p>
 </div>
 </section>
 <section id="using-two-factor-authentication-with-hardware-tokens">
@@ -167,11 +191,15 @@
 </section>
 <section id="using-client-applications-with-two-factor-authentication">
 <h2>إستعمال تطبيقات عميلة client apps بالتحقُّق المُثَنَّى من الهُوِيَّة<a class="headerlink" href="#using-client-applications-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>بمجرد تمكين التحقق المثنى من الهوية 2FA، لن يتمكن عملاؤك بعد الآن من الدخول باستعمال كلمة المرور لوحدها. يجب أن يكون لديهم أيضًا دعم التحقق المثنى من الهوية. لحل هذه المشكلة، يجب عليك إنشاء كلمات مرور خاصة بالجهاز. راجع:  <a class="reference internal" href="session_management.html"><span class="doc">إدارة المتصفحات والأجهزة المتصلة</span></a>  لمزيد من المعلومات حول كيفية القيام بذلك.</p>
+<p>Once you have enabled 2FA, your clients will no longer be able to connect with
+just your password unless they also have support for two-factor authentication.
+To solve this, you should generate device-specific passwords for them. See
+<a class="reference internal" href="session_management.html"><span class="doc">إدارة المتصفحات والأجهزة المتصلة</span></a> for more information on how to do this.</p>
 </section>
 <section id="considerations">
 <h2>إعتبارات<a class="headerlink" href="#considerations" title="Link to this heading"></a></h2>
-<p>إذا كنت تستخدم WebAuthn لتسجيل الدخول إلى نكست كلاود، فتأكد من عدم استعمال نفس أَمَارَة الـ 2FA. لأن هذا يعني أنك عدت إلى استعمال عامل واحد فقط.</p>
+<p>If you use WebAuthn to log in to your Nextcloud, be sure to not use the same token for 2FA, as this
+would mean you are again only using a single factor.</p>
 </section>
 </section>
 
@@ -284,16 +312,25 @@
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 Arabic
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Languages</dt>
         
@@ -468,6 +505,22 @@
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -636,6 +689,14 @@
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -643,31 +704,20 @@
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>التحميل</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>قراءة دليل الارشادات</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">الصفحة الرئيسية للمشروع</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">الملفات التنفيذية المبنية builds</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

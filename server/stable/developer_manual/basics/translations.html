@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Translations &mdash; Nextcloud latest Developer Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -52,9 +52,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -62,6 +71,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic concepts</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="request_lifecycle.html">Request lifecycle</a></li>
@@ -88,6 +98,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#adding-translations">Adding translations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#testing-translations">Testing translations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#console-commands">Console commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#l10n-createjs">l10n:createjs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
@@ -473,11 +487,32 @@ The added hints will be shown in the Transifex web-interface:</p>
 </section>
 <section id="adding-translations">
 <h2>Adding translations<a class="headerlink" href="#adding-translations" title="Link to this heading"></a></h2>
-<p>The steps how to set up translations for an app have been moved to it’s own page in the “App development” chapter: <a class="reference internal" href="../app_development/translation_setup.html#translation-setup"><span class="std std-ref">Translation setup</span></a></p>
+<p>The steps how to set up translations for an app have been moved to it’s own page in the “App development” chapter: <a class="reference internal" href="../app_development/translation.html#translation"><span class="std std-ref">Translation</span></a></p>
 </section>
 <section id="testing-translations">
 <h2>Testing translations<a class="headerlink" href="#testing-translations" title="Link to this heading"></a></h2>
 <p>You can use the query parameter <code class="docutils literal notranslate"><span class="pre">forceLanguage</span></code> to force a specific language for a web request (API or frontend). See <a class="reference internal" href="../client_apis/OCS/ocs-api-overview.html#api-force-language"><span class="std std-ref">Forcing language for a given call</span></a>.</p>
+</section>
+<section id="console-commands">
+<h2>Console commands<a class="headerlink" href="#console-commands" title="Link to this heading"></a></h2>
+<section id="l10n-createjs">
+<h3>l10n:createjs<a class="headerlink" href="#l10n-createjs" title="Link to this heading"></a></h3>
+<p>Generate JavaScript translation files for an app from its <code class="docutils literal notranslate"><span class="pre">l10n/</span></code> source
+files. Pass the app ID and optionally a specific language code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">l10n</span><span class="p">:</span><span class="n">createjs</span> <span class="n">myapp</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">l10n</span><span class="p">:</span><span class="n">createjs</span> <span class="n">myapp</span> <span class="n">de</span>
+</pre></div>
+</div>
+<p>When no language is specified, JavaScript files are generated for all
+available languages. The output files are written to the app’s <code class="docutils literal notranslate"><span class="pre">l10n/</span></code>
+directory as <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;.js</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;.json</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command is intended for development and CI pipelines. In production,
+JavaScript translation files are generated automatically during app
+installation and updates.</p>
+</div>
+</section>
 </section>
 </section>
 
@@ -493,7 +528,7 @@ The added hints will be shown in the Transifex web-interface:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on May 27, 2026.
+      <span class="lastupdated">Last updated on Jun 15, 2026.
       </span></p>
   </div>
 
@@ -507,11 +542,16 @@ The added hints will be shown in the Transifex web-interface:</p>
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-dev">
       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-dev" class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -534,6 +574,14 @@ The added hints will be shown in the Transifex web-interface:</p>
         </dd>
         
         <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/developer_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/developer_manual"
              
           >
@@ -541,17 +589,20 @@ The added hints will be shown in the Transifex web-interface:</p>
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/31/developer_manual"
-             
-          >
-            31
-          </a>
-        </dd>
-        
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

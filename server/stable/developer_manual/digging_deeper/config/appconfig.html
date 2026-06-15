@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AppConfig &mdash; Nextcloud latest Developer Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -52,9 +52,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -62,68 +71,38 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes/index.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Digging deeper</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../api.html">API reference</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">Config &amp; Preferences</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">AppConfig</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#appframework">AppFramework</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#concept-overview">Concept overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#consuming-the-appconfig-api">Consuming the AppConfig API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai.html">AI &amp; Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apis.html">APIs &amp; Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth.html">Users &amp; Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../groupware_workflows.html">Groupware &amp; Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../discovery.html">Search &amp; Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../devtools.html">Development Tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../internals.html">Server Internals</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Config &amp; Preferences</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">AppConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="userconfig.html">UserConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lexicon.html">Lexicon</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="userconfig.html">UserConfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../settings.html">Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security.html">Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup_checks.html">Setup checks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../repair.html">Repair steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deadlock.html">Deadlocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../snowflake_ids.html">Snowflake IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time.html">Working with time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../openmetrics.html">Open Metrics exporter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../webdav_collection_preload.html">WebDAV collection preload events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../phonenumberutil.html">Phone number util</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../classloader.html">Classloader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../context_chat.html">Context Chat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../continuous_integration.html">Continuous Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../dashboard.html">Dashboard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../deadlock.html">Deadlocks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../debugging.html">Debugging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../email.html">Email</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../files-metadata.html">Files Metadata</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../groupware/index.html">Groupware integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../http_client.html">HTTP Client</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../javascript-apis.html">JavaScript APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../translation.html">Machine Translation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../flow.html">Nextcloud Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../npm.html">NPM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notifications.html">Notifications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../oidc.html">OpenID Connect (Oidc)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../out_of_office.html">Out-of-office periods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../openmetrics.html">Open Metrics exporter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../performance.html">Performance considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../phonenumberutil.html">Phone number util</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../psr.html">PSR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../profile.html">Profile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../profiler.html">Profiler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../projects.html">Projects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../publicpage.html">Public Pages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reference.html">Reference providers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../repair.html">Repair steps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rest_apis.html">REST APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../search.html">Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../security.html">Security</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../settings.html">Settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../setup_checks.html">Setup checks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../snowflake_ids.html">Snowflake IDs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../speech-to-text.html">Speech-To-Text</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../talk.html">Talk Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../task_processing.html">Task Processing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../text_processing.html">Text Processing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../text2image.html">Text-To-Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../two-factor-provider.html">Two-factor providers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../status.html">User Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../user_migration.html">User migration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../users.html">User management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../web_host_metadata.html">Web Host Metadata</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../webdav_collection_preload.html">WebDAV collection preload events</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../time.html">Working with time</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
@@ -148,6 +127,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Digging deeper</a></li>
+          <li class="breadcrumb-item"><a href="../internals.html">Server Internals</a></li>
           <li class="breadcrumb-item"><a href="index.html">Config &amp; Preferences</a></li>
       <li class="breadcrumb-item active">AppConfig</li>
       <li class="wy-breadcrumbs-aside">
@@ -164,12 +144,28 @@
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 29.</span></p>
 </div>
-<p>Since v29, Nextcloud includes a new API to manage your app configuration.</p>
+<p>Nextcloud includes an AppConfig API to manage app configuration values.</p>
+<section id="concept-overview">
+<h2>Concept overview<a class="headerlink" href="#concept-overview" title="Link to this heading"></a></h2>
+<p>Nextcloud provides an API to store and access app configuration values.
+In addition to simple read/write operations, <code class="docutils literal notranslate"><span class="pre">IAppConfig</span></code> supports:</p>
+<ul class="simple">
+<li><p>typed values,</p></li>
+<li><p>lazy loading,</p></li>
+<li><p>sensitive values,</p></li>
+<li><p>key and value discovery helpers.</p></li>
+</ul>
+<div class="admonition note" id="appconfig-concepts">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference internal" href="lexicon.html#concept-overview"><span class="std std-ref">Lexicon Concepts</span></a> to learn more about <strong>Lexicon</strong>, a way to define configuration keys and avoid conflicts in your code.</p>
+</div>
+</section>
 <section id="appframework">
 <h2>AppFramework<a class="headerlink" href="#appframework" title="Link to this heading"></a></h2>
-<p>The AppConfig API is also available in the AppFramework, allowing you to use it in your app.
-All of the methods are available in the <code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Services\IAppConfig</span></code> interface.
-Any of the methods below will automatically be scoped to your app, meaning you can omit the app id.</p>
+<p>The AppConfig API is also available in AppFramework through
+<code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Services\IAppConfig</span></code>.</p>
+<p>All methods from that interface are scoped to your app automatically, so you do not
+need to pass an app ID explicitly.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">namespace</span> <span class="nx">OCA\MyApp</span><span class="p">;</span>
 
@@ -180,34 +176,68 @@ Any of the methods below will automatically be scoped to your app, meaning you c
         <span class="k">private</span> <span class="nx">IAppConfig</span> <span class="nv">$appConfig</span><span class="p">,</span>
     <span class="p">)</span> <span class="p">{}</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSomeConfig</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appConfig</span><span class="o">-&gt;</span><span class="na">getAppValueString</span><span class="p">(</span><span class="s1">&#39;mykey&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">);</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">hasConfig</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appConfig</span><span class="o">-&gt;</span><span class="na">hasAppKey</span><span class="p">(</span><span class="s1">&#39;mykey&#39;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-</section>
-<section id="concept-overview">
-<h2>Concept overview<a class="headerlink" href="#concept-overview" title="Link to this heading"></a></h2>
-<p>Nextcloud includes an API to store and access your app configuration values.
-On top of storing and accessing your configuration values, <code class="docutils literal notranslate"><span class="pre">IAppConfig</span></code> comes with different concepts:</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">\OCP\IAppConfig</span></code> when you need to read or write configuration for arbitrary app IDs.
+Use <code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Services\IAppConfig</span></code> for app-scoped operations in your own app.</p>
 <section id="typed-config-values">
-<span id="appconfig-concepts"></span><h3>Typed Config Values<a class="headerlink" href="#typed-config-values" title="Link to this heading"></a></h3>
-<p>To ensure better stability of your code, config values are typed enforced.
-Type is set only once, at creation in database, and cannot be changed.</p>
+<h3>Typed config values<a class="headerlink" href="#typed-config-values" title="Link to this heading"></a></h3>
+<p>To improve safety and stability, config values are type-enforced.</p>
+<p>A type is set when the key is created in the database and cannot be changed later.</p>
+<p>A key’s type is defined by the setter you use when the key is first created
+(for example, <code class="docutils literal notranslate"><span class="pre">setValueString()</span></code> creates a string key, <code class="docutils literal notranslate"><span class="pre">setValueInt()</span></code> an int key).</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setValueInt</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="s1">&#39;retry_count&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>       <span class="c1">// key type: int</span>
+<span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setValueString</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="s1">&#39;display_name&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">);</span> <span class="c1">// key type: string</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>Value stored before Nextcloud 29 are automatically typed as <cite>mixed</cite>. However, it is not possible to manually set a value as <cite>mixed</cite>.</p></li>
-<li><p>Value not set as <cite>mixed</cite> must be retrieved using the corresponding method.</p></li>
+<li><p>Values stored before Nextcloud 29 are treated as <code class="docutils literal notranslate"><span class="pre">mixed</span></code>.</p></li>
+<li><p>It is not possible to manually create new <code class="docutils literal notranslate"><span class="pre">mixed</span></code> values.</p></li>
+<li><p>Values that are not <code class="docutils literal notranslate"><span class="pre">mixed</span></code> must be retrieved using the matching typed getter.</p></li>
 </ul>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Migration urgency differs between reads and writes:</p>
+<ul>
+<li><p>Read paths should usually be migrated early to typed getters when adopting
+<code class="docutils literal notranslate"><span class="pre">IAppConfig</span></code>, so runtime behavior is explicit and type-safe.</p></li>
+<li><p>Write-side normalization of legacy values can often be incremental and done
+when touching related code paths, especially if:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>you want stricter typing guarantees,</p></li>
+<li><p>you are already refactoring,</p></li>
+<li><p>the key is causing ambiguity/bugs</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>For new keys, always use typed setters and typed getters.</p>
+<p><strong>A safe write-side migration pattern is:</strong></p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Read the existing legacy value.</p></li>
+<li><p>Validate/convert it in your app code.</p></li>
+<li><p>Write it back using the appropriate typed setter (for example <code class="docutils literal notranslate"><span class="pre">setValueInt()</span></code>,
+<code class="docutils literal notranslate"><span class="pre">setValueString()</span></code>, <code class="docutils literal notranslate"><span class="pre">setValueBool()</span></code>, …).</p></li>
+<li><p>Afterwards, always use the matching typed getter.</p></li>
+</ol>
+</div></blockquote>
+</div>
 </section>
-<section id="values-sensitivity">
-<h3>Values Sensitivity<a class="headerlink" href="#values-sensitivity" title="Link to this heading"></a></h3>
-<p>When storing a new config value, it can be set as <cite>sensitive</cite>.
-Configuration values set as <cite>sensitive</cite> are hidden from system reports and stored encrypted in the database.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nx">setValueString</span><span class="p">(</span>
+<section id="sensitive-values">
+<h3>Sensitive values<a class="headerlink" href="#sensitive-values" title="Link to this heading"></a></h3>
+<p>When storing a new config value, you can mark it as sensitive.</p>
+<p>Sensitive values are hidden from filtered listings/reports and are handled as protected
+values in AppConfig storage.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setValueString</span><span class="p">(</span>
     <span class="s1">&#39;myapp&#39;</span><span class="p">,</span>
     <span class="s1">&#39;mykey&#39;</span><span class="p">,</span>
     <span class="s1">&#39;myvalue&#39;</span><span class="p">,</span>
@@ -217,14 +247,15 @@ Configuration values set as <cite>sensitive</cite> are hidden from system report
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Once set as <cite>sensitive</cite>, it can only be reverted using <code class="docutils literal notranslate"><span class="pre">updateSensitive()</span></code></p>
+<p>Once set as sensitive, this can be changed later using <code class="docutils literal notranslate"><span class="pre">updateSensitive()</span></code>.</p>
 </div>
 </section>
 <section id="lazy-loading">
-<h3>Lazy Loading<a class="headerlink" href="#lazy-loading" title="Link to this heading"></a></h3>
-<p>To lighten the loading of all apps configuration at load, you have the possibility to set config values as <cite>lazy</cite>.
-All <cite>lazy</cite> configuration values are loaded from the database once one is read.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nx">setValueString</span><span class="p">(</span>
+<h3>Lazy loading<a class="headerlink" href="#lazy-loading" title="Link to this heading"></a></h3>
+<p>To reduce memory and startup overhead, config values can be marked as lazy.</p>
+<p>Non-lazy values are loaded first. Lazy values are loaded only when needed. When one lazy
+value is requested, lazy values are loaded together.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setValueString</span><span class="p">(</span>
     <span class="s1">&#39;myapp&#39;</span><span class="p">,</span>
     <span class="s1">&#39;mykey&#39;</span><span class="p">,</span>
     <span class="s1">&#39;myvalue&#39;</span><span class="p">,</span>
@@ -232,16 +263,8 @@ All <cite>lazy</cite> configuration values are loaded from the database once one
 <span class="p">);</span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>Flag as <cite>lazy</cite> as much ‘large block of text’ entries (json, key pairs, …) as possible,</p></li>
-<li><p>flag as <cite>lazy</cite> entries that are needed on quiet endpoints,</p></li>
-<li><p>do <strong>not</strong> flag as <cite>lazy</cite> part of code that might be called during the global loading of the instance and its apps.</p></li>
-</ul>
-</div>
-<p>Retrieving the configuration value will require to specify the fact that it is stored as <cite>lazy</cite>.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nx">getValueString</span><span class="p">(</span>
+<p>Retrieving a lazy value requires using the lazy read mode:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">getValueString</span><span class="p">(</span>
     <span class="s1">&#39;myapp&#39;</span><span class="p">,</span>
     <span class="s1">&#39;mykey&#39;</span><span class="p">,</span>
     <span class="s1">&#39;default&#39;</span><span class="p">,</span>
@@ -249,87 +272,183 @@ All <cite>lazy</cite> configuration values are loaded from the database once one
 <span class="p">);</span>
 </pre></div>
 </div>
+<section id="reading-behavior-with-lazy-parameter">
+<h4>Reading behavior with <code class="docutils literal notranslate"><span class="pre">lazy</span></code> parameter<a class="headerlink" href="#reading-behavior-with-lazy-parameter" title="Link to this heading"></a></h4>
+<p>When reading values, the <code class="docutils literal notranslate"><span class="pre">lazy</span></code> argument controls which storage bucket is queried.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Stored key mode</p></th>
+<th class="head"><p>Read with <code class="docutils literal notranslate"><span class="pre">lazy</span></code></p></th>
+<th class="head"><p>Result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>non-lazy</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>stored value</p></td>
+</tr>
+<tr class="row-odd"><td><p>non-lazy</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>stored value</p></td>
+</tr>
+<tr class="row-even"><td><p>lazy</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>default value (lazy key is not searched)</p></td>
+</tr>
+<tr class="row-odd"><td><p>lazy</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>stored value</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If a key may be lazy, read it with <code class="docutils literal notranslate"><span class="pre">lazy:</span> <span class="pre">true</span></code> to avoid silently getting defaults.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>Requesting with <code class="docutils literal notranslate"><span class="pre">1azy:</span> <span class="pre">false</span></code> will returns the default value if configuration value is stored as <cite>lazy</cite>.</p></li>
-<li><p>Requesting with <code class="docutils literal notranslate"><span class="pre">lazy:</span> <span class="pre">true</span></code> will returns the correct value even if configuration value is stored as <cite>non-lazy (as there is a huge probability that the `non-lazy</cite> value are already loaded)</p></li>
-</ul>
+<p>Some API methods explicitly ignore lazy filtering and may load all values.
+Check each method description for warnings.</p>
 </div>
+</section>
+<section id="choosing-what-should-be-lazy">
+<h4>Choosing what should be lazy<a class="headerlink" href="#choosing-what-should-be-lazy" title="Link to this heading"></a></h4>
+<p>Good candidates for <code class="docutils literal notranslate"><span class="pre">lazy:</span> <span class="pre">true</span></code>:</p>
+<ul class="simple">
+<li><p>Large values (for example JSON blobs, long text, large key/value maps).</p></li>
+<li><p>Values used only in specific flows (admin pages, background jobs, setup/migration tools).</p></li>
+<li><p>Values read infrequently or only after explicit user actions.</p></li>
+</ul>
+<p>Usually keep as non-lazy (<code class="docutils literal notranslate"><span class="pre">lazy:</span> <span class="pre">false</span></code>):</p>
+<ul class="simple">
+<li><p>Small, frequently accessed values used on most requests.</p></li>
+<li><p>Values needed during app bootstrap, registration, capability wiring, or other early lifecycle code paths.</p></li>
+<li><p>Values used in hot paths (middleware, common service constructors, request-critical checks).</p></li>
+</ul>
+<p>Practical rule:</p>
+<ul class="simple">
+<li><p>If a value is needed on most requests, keep it non-lazy.</p></li>
+<li><p>If it is large and only needed occasionally, make it lazy.</p></li>
+</ul>
+</section>
 </section>
 </section>
 <section id="consuming-the-appconfig-api">
 <h2>Consuming the AppConfig API<a class="headerlink" href="#consuming-the-appconfig-api" title="Link to this heading"></a></h2>
-<p>To consume the API, you first need to <a class="reference internal" href="../../basics/dependency_injection.html#dependency-injection"><span class="std std-ref">inject</span></a> <code class="docutils literal notranslate"><span class="pre">\OCP\IAppConfig</span></code></p>
+<p>You can inject either interface, depending on your use case:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IAppConfig</span></code> (global API): use when you need to access configuration
+for one or more app IDs explicitly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Services\IAppConfig</span></code> (AppFramework app-scoped API):
+use inside your app when you want methods scoped automatically to your app ID.</p></li>
+</ul>
+<p>See <a class="reference internal" href="../../basics/dependency_injection.html#dependency-injection"><span class="std std-ref">Basic Pattern of Dependency Injection</span></a> for injection details.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Unless explicitly stated otherwise, examples in this page use the global
+interface <code class="docutils literal notranslate"><span class="pre">\OCP\IAppConfig</span></code> (app ID passed explicitly).</p>
+<p>If you inject <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Services\IAppConfig</span></code>, methods are app-scoped
+and you do not pass the app ID.</p>
+</div>
 <section id="storing-a-config-value">
 <h3>Storing a config value<a class="headerlink" href="#storing-a-config-value" title="Link to this heading"></a></h3>
-<p>API provide multiple methods to store a config value, based on its type.
-The global behavior for each of those methods is to call them using:</p>
+<p>The API provides typed methods to store configuration values.</p>
+<p>Common arguments are:</p>
 <ul class="simple">
-<li><p>app id (string),</p></li>
-<li><p>config key (string),</p></li>
-<li><p>config value,</p></li>
-<li><p>lazy flag (boolean),</p></li>
-<li><p>sensitivity flag (boolean)</p></li>
+<li><p>app ID (<code class="docutils literal notranslate"><span class="pre">string</span></code>),</p></li>
+<li><p>config key (<code class="docutils literal notranslate"><span class="pre">string</span></code>),</p></li>
+<li><p>config value (typed),</p></li>
+<li><p>lazy flag (<code class="docutils literal notranslate"><span class="pre">bool</span></code>),</p></li>
+<li><p>sensitive flag (<code class="docutils literal notranslate"><span class="pre">bool</span></code>, where supported).</p></li>
 </ul>
-<p>The returned boolean will be true if an update of the database were needed.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">setValueString(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">string</span> <span class="pre">$value,</span> <span class="pre">bool</span> <span class="pre">$lazy,</span> <span class="pre">bool</span> <span class="pre">$sensitive)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">setValueInt(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">int</span> <span class="pre">$value,</span> <span class="pre">bool</span> <span class="pre">$lazy,</span> <span class="pre">bool</span> <span class="pre">$sensitive)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">setValueFloat(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">float</span> <span class="pre">$value,</span> <span class="pre">bool</span> <span class="pre">$lazy,</span> <span class="pre">bool</span> <span class="pre">$sensitive)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">setValueBool(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">bool</span> <span class="pre">$value,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">setValueArray(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">array</span> <span class="pre">$value,</span> <span class="pre">bool</span> <span class="pre">$lazy,</span> <span class="pre">bool</span> <span class="pre">$sensitive)</span></code></p></li>
+<p>The return value is <code class="docutils literal notranslate"><span class="pre">true</span></code> if a database update was required.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">setValueString(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">string</span> <span class="pre">$value,</span> <span class="pre">bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false,</span> <span class="pre">bool</span> <span class="pre">$sensitive</span> <span class="pre">=</span> <span class="pre">false)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setValueInt(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">int</span> <span class="pre">$value,</span> <span class="pre">bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false,</span> <span class="pre">bool</span> <span class="pre">$sensitive</span> <span class="pre">=</span> <span class="pre">false)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setValueFloat(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">float</span> <span class="pre">$value,</span> <span class="pre">bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false,</span> <span class="pre">bool</span> <span class="pre">$sensitive</span> <span class="pre">=</span> <span class="pre">false)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setValueBool(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">bool</span> <span class="pre">$value,</span> <span class="pre">bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setValueArray(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">array</span> <span class="pre">$value,</span> <span class="pre">bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false,</span> <span class="pre">bool</span> <span class="pre">$sensitive</span> <span class="pre">=</span> <span class="pre">false)</span></code></p></li>
 </ul>
-</div></blockquote>
+<p>AppFramework equivalents (app-scoped, no <code class="docutils literal notranslate"><span class="pre">$app</span></code> argument):</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setAppValueString</span><span class="p">(</span><span class="s1">&#39;mykey&#39;</span><span class="p">,</span> <span class="s1">&#39;myvalue&#39;</span><span class="p">,</span> <span class="nx">lazy</span><span class="o">:</span> <span class="k">true</span><span class="p">);</span>
+<span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setAppValueInt</span><span class="p">(</span><span class="s1">&#39;retry_count&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setAppValueArray</span><span class="p">(</span><span class="s1">&#39;options&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">],</span> <span class="nx">sensitive</span><span class="o">:</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
 </section>
 <section id="retrieving-a-config-value">
 <h3>Retrieving a config value<a class="headerlink" href="#retrieving-a-config-value" title="Link to this heading"></a></h3>
-<p>Configuration values are to be retrieved using one of the return typed method from the list:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">getValueString(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">string</span> <span class="pre">$default,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">getValueInt(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">int</span> <span class="pre">$default,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">getValueFloat(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">float</span> <span class="pre">$default,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">getValueBool(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">bool</span> <span class="pre">$default,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">getValueArray(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">array</span> <span class="pre">$default,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code></p></li>
+<p>Configuration values can be retrieved using typed getters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getValueString(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">string</span> <span class="pre">$default</span> <span class="pre">=</span> <span class="pre">'',</span> <span class="pre">bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getValueInt(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">int</span> <span class="pre">$default</span> <span class="pre">=</span> <span class="pre">0,</span> <span class="pre">bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getValueFloat(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">float</span> <span class="pre">$default</span> <span class="pre">=</span> <span class="pre">0.0,</span> <span class="pre">bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getValueBool(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">bool</span> <span class="pre">$default</span> <span class="pre">=</span> <span class="pre">false,</span> <span class="pre">bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getValueArray(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">array</span> <span class="pre">$default</span> <span class="pre">=</span> <span class="pre">[],</span> <span class="pre">bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false)</span></code></p></li>
 </ul>
-</div></blockquote>
+<p>AppFramework equivalents (app-scoped, no <code class="docutils literal notranslate"><span class="pre">$app</span></code> argument):</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$name</span> <span class="o">=</span> <span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">getAppValueString</span><span class="p">(</span><span class="s1">&#39;display_name&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">);</span>
+<span class="nv">$count</span> <span class="o">=</span> <span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">getAppValueInt</span><span class="p">(</span><span class="s1">&#39;retry_count&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="nv">$enabled</span> <span class="o">=</span> <span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">getAppValueBool</span><span class="p">(</span><span class="s1">&#39;enabled&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="nx">lazy</span><span class="o">:</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
 </section>
 <section id="managing-config-keys">
 <h3>Managing config keys<a class="headerlink" href="#managing-config-keys" title="Link to this heading"></a></h3>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">getApps()</span></code> returns list of ids of apps with stored configuration values</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">getKeys(string</span> <span class="pre">$app)</span></code> returns list of stored configuration keys for an app by its id</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">hasKey(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">?bool</span> <span class="pre">$lazy)</span></code> returns TRUE if key can be found</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">isSensitive(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">?bool</span> <span class="pre">$lazy)</span></code> returns TRUE if value is set as <cite>sensitive</cite></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">isLazy(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key)</span></code> returns TRUE if value is set as <cite>lazy</cite></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">updateSensitive(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">bool</span> <span class="pre">$sensitive)</span></code> update <cite>sensitive</cite> status of a configuration value</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">updateLazy(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code> update <cite>lazy</cite> status of a configuration value</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">getValueType(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key)</span></code> returns bitflag defining the type of a configuration value</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">deleteKey(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key)</span></code> delete a config key and its value</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">deleteApp(string</span> <span class="pre">$app)</span></code> delete all config keys from an app (using app id)</p></li>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getApps()</span></code> returns app IDs that have stored configuration values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getKeys(string</span> <span class="pre">$app)</span></code> returns stored keys for an app.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">searchKeys(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$prefix</span> <span class="pre">=</span> <span class="pre">'',</span> <span class="pre">bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false)</span></code> returns keys for an app matching a prefix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hasKey(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">?bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false)</span></code> returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the key exists.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isSensitive(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">?bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false)</span></code> returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the value is sensitive.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isLazy(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key)</span></code> returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the value is lazy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">updateSensitive(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">bool</span> <span class="pre">$sensitive)</span></code> updates sensitive status.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">updateLazy(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code> updates lazy status.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getValueType(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key)</span></code> returns the type bitflag for a value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deleteKey(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key)</span></code> deletes one key and its value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deleteApp(string</span> <span class="pre">$app)</span></code> deletes all keys for one app.</p></li>
 </ul>
-</div></blockquote>
+<p>AppFramework equivalents include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getAppKeys()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hasAppKey(string</span> <span class="pre">$key,</span> <span class="pre">?bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isSensitive(string</span> <span class="pre">$key,</span> <span class="pre">?bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isLazy(string</span> <span class="pre">$key)</span></code></p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Some method allows <code class="docutils literal notranslate"><span class="pre">$lazy</span></code> to be <code class="docutils literal notranslate"><span class="pre">null</span></code>, meaning that the search will be extended to all configuration values, <cite>lazy</cite> or not.</p>
+<p>Methods with <code class="docutils literal notranslate"><span class="pre">?bool</span> <span class="pre">$lazy</span></code> can use <code class="docutils literal notranslate"><span class="pre">null</span></code> to search both lazy and non-lazy values.</p>
 </div>
 </section>
 <section id="miscellaneous">
 <h3>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Link to this heading"></a></h3>
-<p>API also provide extra tools for broaded uses</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">getAllValues(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$prefix,</span> <span class="pre">bool</span> <span class="pre">$filtered)</span></code> returns all stored configuration values. <code class="docutils literal notranslate"><span class="pre">$filtered</span></code> can be set to TRUE to hide _sensitive_ values in the returned array</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">searchValues(string</span> <span class="pre">$key,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code> search for apps and values that have a stored value for the specified configuration key.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">getDetails(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key)</span></code> get all details about a configuration key.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">convertTypeToInt(string</span> <span class="pre">$type)</span></code> convert human readable string to the bitflag defining the type of a value</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">convertTypeToString(int</span> <span class="pre">$type)</span></code> convert bitflag defining the type of a value to human readable string</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">clearCache(bool</span> <span class="pre">$reload)</span></code> clear internal cache</p></li>
+<p>The API also provides additional helpers:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getAllValues(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$prefix</span> <span class="pre">=</span> <span class="pre">'',</span> <span class="pre">bool</span> <span class="pre">$filtered</span> <span class="pre">=</span> <span class="pre">false)</span></code>
+returns stored values for an app. If <code class="docutils literal notranslate"><span class="pre">$filtered</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, sensitive values are hidden.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">searchValues(string</span> <span class="pre">$key,</span> <span class="pre">bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false)</span></code>
+searches apps/values containing the specified key.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getDetails(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key)</span></code>
+returns metadata/details about a key.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">convertTypeToInt(string</span> <span class="pre">$type)</span></code>
+converts a human-readable type to a type bitflag.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">convertTypeToString(int</span> <span class="pre">$type)</span></code>
+converts a type bitflag to a human-readable type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clearCache(bool</span> <span class="pre">$reload</span> <span class="pre">=</span> <span class="pre">false)</span></code>
+clears internal cache.</p></li>
 </ul>
-</div></blockquote>
+<p>AppFramework helper equivalent:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getAllAppValues(string</span> <span class="pre">$key</span> <span class="pre">=</span> <span class="pre">'',</span> <span class="pre">bool</span> <span class="pre">$filtered</span> <span class="pre">=</span> <span class="pre">false)</span></code></p></li>
+</ul>
+</section>
+<section id="constants-and-flags">
+<h3>Constants and flags<a class="headerlink" href="#constants-and-flags" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">\OCP\IAppConfig</span></code> exposes value-type constants and flags, including:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FLAG_SENSITIVE</span></code> (since 31),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FLAG_INTERNAL</span></code> (since 33; marks values as internal and eligible to be hidden from listings).</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -346,7 +465,7 @@ The global behavior for each of those methods is to call them using:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on May 27, 2026.
+      <span class="lastupdated">Last updated on Jun 15, 2026.
       </span></p>
   </div>
 
@@ -360,11 +479,16 @@ The global behavior for each of those methods is to call them using:</p>
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-dev">
       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-dev" class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -387,6 +511,14 @@ The global behavior for each of those methods is to call them using:</p>
         </dd>
         
         <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/developer_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/developer_manual"
              
           >
@@ -394,17 +526,20 @@ The global behavior for each of those methods is to call them using:</p>
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/31/developer_manual"
-             
-          >
-            31
-          </a>
-        </dd>
-        
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
