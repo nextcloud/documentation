@@ -313,24 +313,69 @@ Share tools
  * Example prompt: *"Does martin have write access to the Design/Ideas.md file I shared with him?"*
 
 
-Talk tools
-~~~~~~~~~~
+Talk tools (require `Talk <https://apps.nextcloud.com/apps/spreed>`_)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* List the user's talk conversations (requires `Talk <https://apps.nextcloud.com/apps/spreed>`_)
+* List the user's talk conversations
 
   * Example prompt: *"List my talk conversations"*
 
-* List messages in a talk conversation (requires `Talk <https://apps.nextcloud.com/apps/spreed>`_)
+* List messages in a talk conversation
 
   * Example prompt: *"List the latest messages in my conversation with Andrew"*
 
-* Send a message to a talk conversation (requires `Talk <https://apps.nextcloud.com/apps/spreed>`_)
+* Send a message to a talk conversation
 
   * Example prompt: *"Can you send a joke to Andrew in talk?"*
 
-* Create a public talk conversation (requires `Talk <https://apps.nextcloud.com/apps/spreed>`_)
+* Create a public talk conversation
 
   * Example prompt: *"Can you create a new public talk conversation titled 'Press conference'?"*
+
+* Reply to a specific message in a talk conversation
+
+  * Example prompt: *"Reply to Andrew's last message in our talk conversation with 'Got it, thanks!'"*
+
+* Add an emoji reaction to a message in a talk conversation
+
+  * Example prompt: *"React with 👍 to Andrew's last message in our talk conversation"*
+
+* Remove an emoji reaction from a message in a talk conversation
+
+  * Example prompt: *"Remove my 👍 reaction from Andrew's last message"*
+
+* List the reactions on a message in a talk conversation
+
+  * Example prompt: *"Who reacted to Andrew's last message in our talk conversation?"*
+
+* Create a poll in a talk conversation
+
+  * Example prompt: *"Create a poll in the 'Team standup' conversation asking 'Which day works for the offsite?'
+    with options Monday, Tuesday, Wednesday"*
+
+* Get the question, options, and current results of a poll in a talk conversation
+
+  * Example prompt: *"Show the current results of the offsite poll in the 'Team standup' conversation"*
+
+* Cast a vote on a poll in a talk conversation
+
+  * Example prompt: *"Vote for Tuesday on the offsite poll in the 'Team standup' conversation"*
+
+* Close a poll in a talk conversation
+
+  * Example prompt: *"Close the offsite poll in the 'Team standup' conversation"*
+
+* Share a Nextcloud Files item to a talk conversation
+
+  * Example prompt: *"Share the file 'Q3 plan.pdf' to my conversation with Andrew"*
+
+* List items of a given type (e.g. file, location, poll) that were shared in a talk conversation
+
+  * Example prompt: *"List the files shared in my conversation with Andrew"*
+
+* Get an overview of items shared in a talk conversation across all types
+
+  * Example prompt: *"Give me an overview of what's been shared in my conversation with Andrew"*
 
 
 Mail tools (require `Mail <https://apps.nextcloud.com/apps/mail>`_)
