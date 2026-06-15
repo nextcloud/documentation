@@ -59,6 +59,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Validate version constants in conf.py
+        if: github.ref == 'refs/heads/master' || github.base_ref == 'master'
         run: |
           highest_stable=$(git ls-remote --heads origin \
             | sed -n 's?.*refs/heads/stable\([0-9]\{2\}\)$?\1?p' \
