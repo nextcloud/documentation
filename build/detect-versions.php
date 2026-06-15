@@ -142,9 +142,15 @@ function detect_versions(array $branches): array {
 	// otherwise the branch exists but isn't released yet (upcoming).
 	$devVersion = isset($released[$branches[0]]) ? $branches[0] + 1 : $branches[0];
 
+	// lowest_stable: lowest version still within the support window.
+	// Using min($branches) would include ancient branches (e.g. stable10) that still
+	// exist on the remote but are long out of support.
+	$supportedVersions = array_keys(array_filter($released, fn($date) => $date >= $oneYearAgo));
+	$lowestStable = !empty($supportedVersions) ? min($supportedVersions) : $highestStable;
+
 	return [
 		'highest_stable' => $highestStable,
-		'lowest_stable'  => min($branches),
+		'lowest_stable'  => $lowestStable,
 		'dev_version'    => $devVersion,
 		'released'       => $released,
 	];
