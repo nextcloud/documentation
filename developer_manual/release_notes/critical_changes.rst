@@ -24,6 +24,11 @@ Update info.xml to add Nextcloud 35 to the support range:
 
 To allow installation on older versions too, just keep the previous min-version.
 
+Updated PHP requirements
+------------------------
+
+The support for PHP 8.2 has been dropped, the minimum supported PHP version of Nextcloud 35 is now 8.3.
+
 Removed front-end APIs and libraries
 ------------------------------------
 
