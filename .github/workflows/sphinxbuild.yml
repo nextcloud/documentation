@@ -165,11 +165,11 @@ jobs:
 
       - name: Set up Docker Buildx
         if: steps.changed.outputs.dockerfile_changed == 'true'
-        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4.0.0
+        uses: docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 # v4.1.0
 
       - name: Login to GitHub Container Registry
         if: steps.changed.outputs.dockerfile_changed == 'true'
-        uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4.1.0
+        uses: docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee # v4.2.0
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -177,7 +177,7 @@ jobs:
 
       - name: Build and push image with SHA tag
         if: steps.changed.outputs.dockerfile_changed == 'true'
-        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7.1.0
+        uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7.2.0
         with:
           context: .devcontainer
           push: true
@@ -476,10 +476,6 @@ jobs:
       # - mailto: links: These are not valid URLs and will always fail
       # - 404.html: This is not necessary
       # - latest/stable/xx links from the version selector
-      # - /builds and /projects: These absolute paths come from the sphinx_rtd_theme when
-      #   READTHEDOCS=True is set. They appear in the generated HTML as navigation links
-      #   to ReadTheDocs build/project pages, but don't correspond to actual staged files.
-      # - openapi.html: Swagger UI pages with JavaScript-rendered anchors that lychee cannot verify
       - name: Check for broken links with lychee
         uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411 # v2.8.0
         with:
@@ -489,11 +485,9 @@ jobs:
           args: |
             --root-dir "$(pwd)/stage"
             --offline --no-progress
-            ${{ needs.stage-and-check.outputs.additional_deployment != '' && format('--remap "https://docs.nextcloud.com/server/{0}/ file://$(pwd)/stage/{1}/"', needs.stage-and-check.outputs.additional_deployment, needs.stage-and-check.outputs.branch_name) || '' }}
             --remap "https://docs.nextcloud.com/server/latest/ file://$(pwd)/stage/${{ needs.stage-and-check.outputs.branch_name }}/"
             --remap "https://docs.nextcloud.com/server/ file://$(pwd)/stage/"
-            --exclude 'go\.php' --exclude 'mailto:' --exclude 'openapi\.html' --exclude-path '.*/404\.html' --exclude-path '.*/_static/.*'
-            --exclude '^file://.*/stage/(builds|projects)'
+            --exclude 'go\.php' --exclude 'mailto:' --exclude-path '.*/404\.html' --exclude-path '.*/_static/.*'
             --exclude "/user_manual/" --include "/user_manual/en/"
             --exclude '^file://.*/stage/(latest|stable|[0-9]+)/(developer_manual|admin_manual|user_manual)/?$'
             'stage/${{ needs.stage-and-check.outputs.branch_name }}/user_manual/en/**/*.html'
