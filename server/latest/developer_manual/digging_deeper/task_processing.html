@@ -84,6 +84,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Task Processing</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#consuming-the-task-processing-api">Consuming the Task Processing API</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#implementing-a-taskprocessing-provider">Implementing a TaskProcessing provider</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementing-an-advanced-taskprocessing-provider">Implementing an advanced TaskProcessing provider</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#provider-and-task-type-registration">Provider and task type registration</a></li>
 </ul>
 </li>
@@ -700,7 +701,7 @@ A tweak to make sure of this is to instruct the model as follows:</p>
 <span class="k">use</span> <span class="nx">OCP\TaskProcessing\SummaryTaskType</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
 
-<span class="k">class</span> <span class="nc">Provider</span> <span class="k">implements</span> <span class="nx">ISynchrounousProvider</span> <span class="p">{</span>
+<span class="k">class</span> <span class="nc">Provider</span> <span class="k">implements</span> <span class="nx">ISynchronousProvider</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
         <span class="k">private</span> <span class="nx">IL10N</span> <span class="nv">$l</span><span class="p">,</span>
@@ -767,6 +768,40 @@ A tweak to make sure of this is to instruct the model as follows:</p>
 Since v33.0.0 you can now also throw an <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing\Exception\UserFacingProcessingException</span></code> which includes a string parameter to set for error messages that will be propagated to the end-user, make sure to always translate these into the language of the user that requested the task. The rule of thumb of when to use a user-facing error message, is as follows: When the error happened due to a mistake from the user or the user can do something to fix the error, throw a user facing error. However, do make sure to not include implementation or server details in the user facing error message, that’s what the normal error message is for; it will only be visible to administrators.</p>
 <p>Important to note here is that <code class="docutils literal notranslate"><span class="pre">Image</span></code>, <code class="docutils literal notranslate"><span class="pre">Audio</span></code>, <code class="docutils literal notranslate"><span class="pre">Video</span></code> and <code class="docutils literal notranslate"><span class="pre">File</span></code> slots in the input array will be filled with <code class="docutils literal notranslate"><span class="pre">\OCP\Files\File</span></code> objects for your convenience. When outputting one of these you should simply return a string, the API will turn the data into a proper file for convenience. The <code class="docutils literal notranslate"><span class="pre">$reportProgress</span></code> parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (<code class="docutils literal notranslate"><span class="pre">true</span></code>) or if it was cancelled (<code class="docutils literal notranslate"><span class="pre">false</span></code>) and processing should be terminated.</p>
 <p>This class would typically be saved into a file in <code class="docutils literal notranslate"><span class="pre">lib/TaskProcessing</span></code> of your app but you are free to put it elsewhere as long as it’s loadable by Nextcloud’s <a class="reference internal" href="../basics/dependency_injection.html#dependency-injection"><span class="std std-ref">dependency injection container</span></a>.</p>
+</section>
+<section id="implementing-an-advanced-taskprocessing-provider">
+<span id="task-processing-options"></span><h2>Implementing an advanced TaskProcessing provider<a class="headerlink" href="#implementing-an-advanced-taskprocessing-provider" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousOptionsAwareProvider</span></code> interface is available if you want your provider
+to support watermarking or streaming. If your provider implements <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousOptionsAwareProvider</span></code>,
+the process method should be adjusted:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">process</span><span class="p">(</span>
+    <span class="o">?</span><span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$input</span><span class="p">,</span> <span class="nx">callable</span> <span class="nv">$reportProgress</span><span class="p">,</span>
+    <span class="nx">SynchronousProviderOptions</span> <span class="nv">$options</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SynchronousProviderOptions</span><span class="p">(),</span>
+<span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+    <span class="nv">$includeWatermark</span> <span class="o">=</span> <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">getIncludeWatermark</span><span class="p">();</span>
+    <span class="nv">$preferStreaming</span> <span class="o">=</span> <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">getPreferStreaming</span><span class="p">();</span>
+    <span class="nv">$reportOutput</span> <span class="o">=</span> <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">getReportIntermediateOutput</span><span class="p">();</span>
+
+    <span class="nv">$textOutput</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$preferStreaming</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$reportOutput</span><span class="p">([</span><span class="s1">&#39;output&#39;</span> <span class="o">=&gt;</span> <span class="nv">$textOutput</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$textOutput</span> <span class="o">.=</span> <span class="s1">&#39; and &#39;</span> <span class="o">.</span> <span class="nv">$i</span><span class="p">;</span>
+        <span class="nv">$reportProgress</span><span class="p">(</span><span class="nv">$i</span> <span class="o">/</span> <span class="mi">100</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$preferStreaming</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$reportOutput</span><span class="p">([</span><span class="s1">&#39;output&#39;</span> <span class="o">=&gt;</span> <span class="nv">$textOutput</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$includeWatermark</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$textOutput</span> <span class="o">.=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">.</span> <span class="s1">&#39;This was generated using artificial intelligence.&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;output&#39;</span> <span class="o">=&gt;</span> <span class="nv">$textOutput</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <section id="providing-additional-inputs-and-outputs">
 <h3>Providing additional inputs and outputs<a class="headerlink" href="#providing-additional-inputs-and-outputs" title="Link to this heading"></a></h3>
 <p>Built-in task types often only specify the most basic input and output slots. If you would like to offer more input options
@@ -942,7 +977,7 @@ here for completeness.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jun 10, 2026.
+      <span class="lastupdated">Last updated on Jun 15, 2026.
       </span></p>
   </div>
 

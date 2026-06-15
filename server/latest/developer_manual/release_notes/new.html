@@ -77,6 +77,11 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">New in this release</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#typed-query-builder">Typed query builder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#expensive-post-migration-repair-steps">Expensive post migration repair steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-processing">Task Processing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#added-apis">Added APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#changed-apis">Changed APIs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="deprecations.html">Deprecations</a></li>
@@ -143,6 +148,24 @@ but they might be required to have a fully working instance later on.</p>
 <p>Expensive repair steps are only executed when explicitly requested by the administrator.</p>
 <p>See <a class="reference internal" href="../digging_deeper/repair.html#migration-repair-steps"><span class="std std-ref">Repair steps</span></a> for details.</p>
 </section>
+<section id="task-processing">
+<h2>Task Processing<a class="headerlink" href="#task-processing" title="Link to this heading"></a></h2>
+<p>Support for streaming the text output of TaskProcessing providers has been added.
+See <a class="reference internal" href="../digging_deeper/task_processing.html#task-processing-options"><span class="std std-ref">Implementing an advanced TaskProcessing provider</span></a> for details about how to adjust your providers.</p>
+<section id="added-apis">
+<h3>Added APIs<a class="headerlink" href="#added-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>There is a new TaskProcessing provider interface: <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousOptionsAwareProvider</span></code>. It takes a <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\SynchronousProviderOptions</span></code> option object that contains includeWatermarks, preferStreaming and the callback to report intermediate output.</p></li>
+</ul>
+</section>
+<section id="changed-apis">
+<h3>Changed APIs<a class="headerlink" href="#changed-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\Task</span></code> class now has <code class="docutils literal notranslate"><span class="pre">getPreferStreaming</span></code> and <code class="docutils literal notranslate"><span class="pre">setPreferStreaming</span></code> methods for indicating whether the provider should report the output progressively if it supports it.</p></li>
+<li><p>The TaskProcessing OCS API now also accepts the <code class="docutils literal notranslate"><span class="pre">preferStreaming</span></code> flag when scheduling tasks.</p></li>
+</ul>
+</section>
+</section>
 </section>
 
 
@@ -157,7 +180,7 @@ but they might be required to have a fully working instance later on.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jun 10, 2026.
+      <span class="lastupdated">Last updated on Jun 15, 2026.
       </span></p>
   </div>
 

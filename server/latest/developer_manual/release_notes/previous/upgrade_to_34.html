@@ -85,6 +85,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#navigation-styling-revisions">Navigation styling revisions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sidebar-tabs-redesign">Sidebar tabs redesign</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#settings-title-left-alignment">Settings title left-alignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#application-namespace-management">Application namespace management</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="upgrade_to_33.html">Upgrade to Nextcloud 33</a></li>
@@ -154,13 +155,7 @@
 <h1>Upgrade to Nextcloud 34<a class="headerlink" href="#upgrade-to-nextcloud-34" title="Link to this heading"></a></h1>
 <section id="deprecations">
 <h2>Deprecations<a class="headerlink" href="#deprecations" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::setChannel</span></code> is now deprecated and you need to use <code class="docutils literal notranslate"><span class="pre">\OCP\ServerVersion::setChannel</span></code> instead.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::linkToAbsolute</span></code> is now deprecated and you need to use <code class="docutils literal notranslate"><span class="pre">\OCP\IUrlGenerator::getAbsoluteUrl</span></code> and <code class="docutils literal notranslate"><span class="pre">\OCP\IUrlGenerator::linkTo</span></code> instead.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::linkToRemove</span></code> is now deprecated and you need to use <code class="docutils literal notranslate"><span class="pre">\OCP\IUrlGenerator::linkToRemote</span></code> instead.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::isPublicLinkPasswordRequired</span></code> is now deprecated and you need to use <code class="docutils literal notranslate"><span class="pre">\OCP\Share\IManager::shareApiLinkEnforcePassword</span></code> instead.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::isDefaultExpireDateEnforced</span></code> is now deprecated and you need to use <code class="docutils literal notranslate"><span class="pre">\OCP\Share\IManager::shareApiLinkDefaultExpireDateEnforced</span></code> instead.</p></li>
-</ul>
+<p>All deprecations that were announced in the <a class="reference internal" href="../deprecations.html#deprecated-apis"><span class="std std-ref">Deprecated APIs</span></a> section.</p>
 </section>
 <section id="removed-front-end-apis-and-libraries">
 <h2>Removed front-end APIs and libraries<a class="headerlink" href="#removed-front-end-apis-and-libraries" title="Link to this heading"></a></h2>
@@ -253,6 +248,15 @@ share backend was replaced in Nextcloud 9 with a new backend system based on <co
 </div>
 <p>The title alignment of settings pages will be changed to left-aligned. See <a class="reference external" href="https://github.com/nextcloud-libraries/nextcloud-vue/issues/7641">nextcloud-libraries/nextcloud-vue#7641</a> for details.</p>
 </section>
+<section id="application-namespace-management">
+<h2>Application namespace management<a class="headerlink" href="#application-namespace-management" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">\OCP\App\IAppManager</span></code> was extended with two new methods related to application namespaces:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getAppNamespace(string</span> <span class="pre">$appId):</span> <span class="pre">string</span></code> returns the namespace for an application from its appid. See <a class="reference external" href="https://nextcloud-server.netlify.app/classes/ocp-app-iappmanager#method_getAppNamespace">Documentation</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getAppFromNamespace(string</span> <span class="pre">$className):</span> <span class="pre">?string</span></code> does the opposite. Less common but it is used in guests application. See <a class="reference external" href="https://nextcloud-server.netlify.app/classes/ocp-app-iappmanager#method_getAppFromNamespace">Documentation</a>.</p></li>
+</ul>
+<p>This replaces a static method in <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\App</span></code> which is now deprecated.</p>
+</section>
 </section>
 
 
@@ -267,7 +271,7 @@ share backend was replaced in Nextcloud 9 with a new backend system based on <co
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jun 10, 2026.
+      <span class="lastupdated">Last updated on Jun 15, 2026.
       </span></p>
   </div>
 
