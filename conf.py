@@ -44,13 +44,26 @@ version_stable = 29		# INCREASE THIS NUMBER TO THE LATEST STABLE VERSION NUMBER
 
 # Also search for "TODO ON RELEASE" in the rst files
 
+# substitutions go here
+rst_epilog = """
+.. |version| replace:: %s
+""" % (display_version)
+
+# Replace hardcoded /latest/ URLs in all .rst source files with the actual release
+def replace_latest(app, docname, source):
+    if release != 'latest':
+        source[0] = source[0].replace('/server/latest/', '/server/%s/' % release)
+
+def setup(app):
+    app.connect('source-read', replace_latest)
+
 def generateVersionsDocs(current_docs):
 	versions_doc = []
 	for v in range(version_start, version_stable + 1):
 		url = 'https://docs.nextcloud.com/server/%s/%s' % (str(v), current_docs)
-		versions_doc.append(tuple((v, url)))
-	versions_doc.append(tuple(('stable', 'https://docs.nextcloud.com/server/%s/%s' % ('stable', current_docs))))
-	versions_doc.append(tuple(('latest', 'https://docs.nextcloud.com/server/%s/%s' % ('latest', current_docs))))
+		versions_doc.append((v, url, str(v)))
+	versions_doc.append(('stable', 'https://docs.nextcloud.com/server/stable/%s' % current_docs, '%s (stable)' % version_stable))
+	versions_doc.append(('latest', 'https://docs.nextcloud.com/server/latest/%s' % current_docs, '%s (latest)' % display_version))
 	return versions_doc
 
 if version.isdigit():
@@ -60,6 +73,7 @@ else:
 
 html_context = {
 	'current_version': version,
+	'display_version': display_version,
 	'READTHEDOCS': True,
 	'extra_css_files': ['_static/custom.css'],
 
