@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>General &mdash; Nextcloud latest Developer Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -30,7 +30,7 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Activity" href="activity-api.html" />
+    <link rel="next" title="Activity API" href="activity-api.html" />
     <link rel="prev" title="Clients and Client APIs" href="index.html" />
    
   
@@ -52,9 +52,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -62,6 +71,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
@@ -79,13 +89,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="activity-api.html">Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity-api.html">Activity API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="android_library/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="files.html">Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LoginFlow/index.html">Login Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="OCS/index.html">OCS API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="RemoteWipe/index.html">Remote wipe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="WebDAV/index.html">Webdav</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WebDAV/index.html">WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClientIntegration/index.html">Client Integration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
@@ -118,7 +129,7 @@
              
   <section id="general">
 <h1>General<a class="headerlink" href="#general" title="Link to this heading"></a></h1>
-<p>Nextcloud’s APIs are mainly available through <a class="reference internal" href="../digging_deeper/rest_apis.html#rest-apis"><span class="std std-ref">REST APIs</span></a>, <a class="reference internal" href="OCS/index.html#ocsapiindex"><span class="std std-ref">OCS</span></a> and <a class="reference internal" href="WebDAV/index.html#webdavapiindex"><span class="std std-ref">Webdav</span></a>.</p>
+<p>Nextcloud’s APIs are mainly available through <a class="reference internal" href="../digging_deeper/rest_apis.html#rest-apis"><span class="std std-ref">REST APIs</span></a>, <a class="reference internal" href="OCS/index.html#ocsapiindex"><span class="std std-ref">OCS</span></a> and <a class="reference internal" href="WebDAV/index.html#webdavapiindex"><span class="std std-ref">WebDAV</span></a>.</p>
 <section id="generic-errors">
 <h2>Generic Errors<a class="headerlink" href="#generic-errors" title="Link to this heading"></a></h2>
 <p>In addition to specific errors of an API, there are a few generic errors Nextcloud might throw on web APIs.</p>
@@ -134,14 +145,14 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Clients and Client APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="activity-api.html" class="btn btn-neutral float-right" title="Activity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="activity-api.html" class="btn btn-neutral float-right" title="Activity API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on May 27, 2026.
+      <span class="lastupdated">Last updated on Jun 15, 2026.
       </span></p>
   </div>
 
@@ -155,11 +166,16 @@
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-dev">
       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-dev" class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -182,6 +198,14 @@
         </dd>
         
         <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/developer_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/developer_manual"
              
           >
@@ -189,17 +213,20 @@
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/31/developer_manual"
-             
-          >
-            31
-          </a>
-        </dd>
-        
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Καθολική Πρόσβαση &mdash; Τεκμηρίωση του Nextcloud latest User Manual - latest</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,11 +72,14 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Εισαγωγή εγχειριδίου χρήστη Nextcloud |έκδοση|</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webinterface.html">Η Διεπαφή Web του Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files/index.html">Αρχεία και συγχρονισμός</a></li>
 <li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Πελάτες Επιφάνειας Εργασίας</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Ορισμός των προτιμήσεών σας</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Καθολική Πρόσβαση</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#zoom-and-responsiveness">Εστίαση και ταχύτητα ανταπόκρισης.</a></li>
@@ -77,7 +89,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="user_2fa.html">Χρήση ελέγχου ταυτότητας δύο παραγόντων</a></li>
 <li class="toctree-l1"><a class="reference internal" href="session_management.html">Διαχείριση συνδεδεμένων προγραμμάτων περιήγησης και συσκευών</a></li>
-<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">Εξωτερικός χώρος αποθήκευσης</a></li>
 </ul>
 
         </div>
@@ -106,7 +117,12 @@
              
   <section id="universal-access">
 <h1>Καθολική Πρόσβαση<a class="headerlink" href="#universal-access" title="Link to this heading"></a></h1>
-<p>Η καθολική πρόσβαση είναι πολύ σημαντική σε εμάς. Ακολουθούμε πρότυπα ιστού και ελέγχουμε να είναι όλα λειτουργικά τόσο με το πληκτρολόγιο όσο και με βοηθητικό λογισμικό όπως οι αναγνώστες οθόνης. Σκοπεύουμε να συμμορφωνόμαστε με τις <a class="reference external" href="https://www.w3.org/WAI/standards-guidelines/wcag/">Οδηγίες προσβασιμότητας περιεχομένου Ιστού 2.1</a> σε επίπεδο ΑΑ, με το θέμα υψηλής αντίθεσης ακόμη και σε επίπεδο AAA.Ακολουθουμε επίσης τις γερμανικές BITV 2.0 οδηγίες.</p>
+<p>Universal access is very important to us. We follow web standards and ensure
+everything is usable with a keyboard and assistive software such as screen
+readers. We aim to be compliant with the <a class="reference external" href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility
+Guidelines 2.1</a>
+on AA level, with the high contrast theme even on AAA level.
+We also follow the German BITV 2.0 guidelines.</p>
 <p>Εάν βρείτε προβλήματα, μη διστάσετε να τα αναφέρετε στο πρόγραμμα παρακολούθηση προβλημάτων μας &lt;<a class="reference external" href="https://github.com/nextcloud/server/issues/">https://github.com/nextcloud/server/issues/</a>&gt;`_.Και αν θέλετε να εμπλακείτε, ελάτε να γίνετε μέλος της ομάδας σχεδιασμού μας&lt;<a class="reference external" href="https://nextcloud.com/design">https://nextcloud.com/design</a>&gt;`_!</p>
 <section id="zoom-and-responsiveness">
 <h2>Εστίαση και ταχύτητα ανταπόκρισης.<a class="headerlink" href="#zoom-and-responsiveness" title="Link to this heading"></a></h2>
@@ -114,7 +130,7 @@
 </section>
 <section id="navigating-via-keyboard">
 <h2>Πλοήγηση μέσω πληκτρολογίου.<a class="headerlink" href="#navigating-via-keyboard" title="Link to this heading"></a></h2>
-<p>Μπορείτε να προηγηθείτε στo περιβάλλον Ιστού με το πληκτρολόγιο μόνο όπως μπορείτε με το ποντίκι:</p>
+<p>You can navigate the web interface with a keyboard, just as you would with a mouse:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Tab</span></code> και <a href="#id1"><span class="problematic" id="id2">``</span></a>Shift + Tab``για μετακίνηση μεταξύ των στοιχείων</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Enter</span></code> ή <code class="docutils literal notranslate"><span class="pre">Space</span></code> για να ενεργοποιήσετε ή να ανοίξετε το στοιχείο (ανάλογα με τον τύπο του στοιχείου)</p></li>
@@ -123,7 +139,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">F</span></code> για να εστιάσετε το πεδίο αναζήτησης</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">S</span></code> για να αποθηκεύσετε αλλαγές σε προγράμματα επεξεργασίας όπως το Nextcloud Text</p></li>
 </ul>
-<p>Για γρηγορότερη πλοήγηση, προσφέρουμε 2 «skip links» στην αρχή του εγγράφου τα οποία σας επιτρέπουν να:</p>
+<p>For quicker navigation, we offer two «skip links» at the beginning of the document which allow you to:</p>
 <ul class="simple">
 <li><p>Μετάβαση στο κύριο περιεχόμενο</p></li>
 <li><p>Μετάβαση στην πλοήγηση της εφαρμογής</p></li>
@@ -286,16 +302,25 @@
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 Greek
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Γλώσσες</dt>
         
@@ -470,6 +495,22 @@
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -638,6 +679,14 @@
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -645,31 +694,20 @@
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Λήψεις</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>Στο Read the Docs</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Αρχική Σελίδα Έργου</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Παραλλαγές</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

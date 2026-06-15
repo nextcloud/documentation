@@ -77,6 +77,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">New in this release</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#typed-query-builder">Typed query builder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#expensive-post-migration-repair-steps">Expensive post migration repair steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#application-namespace-management">Application namespace management</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="deprecations.html">Deprecations</a></li>
@@ -143,6 +144,15 @@ but they might be required to have a fully working instance later on.</p>
 <p>Expensive repair steps are only executed when explicitly requested by the administrator.</p>
 <p>See <a class="reference internal" href="../digging_deeper/repair.html#migration-repair-steps"><span class="std std-ref">Repair steps</span></a> for details.</p>
 </section>
+<section id="application-namespace-management">
+<h2>Application namespace management<a class="headerlink" href="#application-namespace-management" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">\OCP\App\IAppManager</span></code> was extended with two new methods related to application namespaces:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getAppNamespace(string</span> <span class="pre">$appId):</span> <span class="pre">string</span></code> returns the namespace for an application from its appid. See <a class="reference external" href="https://nextcloud-server.netlify.app/classes/ocp-app-iappmanager#method_getAppNamespace">Documentation</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getAppFromNamespace(string</span> <span class="pre">$className):</span> <span class="pre">?string</span></code> does the opposite. Less common but it is used in guests application. See <a class="reference external" href="https://nextcloud-server.netlify.app/classes/ocp-app-iappmanager#method_getAppFromNamespace">Documentation</a>.</p></li>
+</ul>
+<p>This replaces static method <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\App::buildAppNamespace</span></code> which is now deprecated.</p>
+</section>
 </section>
 
 
@@ -157,7 +167,7 @@ but they might be required to have a fully working instance later on.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jun 05, 2026.
+      <span class="lastupdated">Last updated on Jun 15, 2026.
       </span></p>
   </div>
 

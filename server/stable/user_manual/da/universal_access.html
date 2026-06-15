@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Universal access &mdash; Nextcloud latest User Manual latest dokumentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Søg i dokumentation" aria-label="Søg i dokumentation" />
+    <label for="rtd-search-input" class="sr-only">Søg i dokumentation</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Søg i dokumentation"
+             aria-label="Søg i dokumentation" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,11 +72,14 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud latest brugermanual introduktion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webinterface.html">Nextclouds brugerflade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files/index.html">Filer og synkronisering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Setting your preferences</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Universal access</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#zoom-and-responsiveness">Zoom and responsiveness</a></li>
@@ -77,7 +89,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="user_2fa.html">Using two-factor authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="session_management.html">Administrer tilsluttede browsere og enheder</a></li>
-<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">Ekstern lagring</a></li>
 </ul>
 
         </div>
@@ -106,9 +117,9 @@
              
   <section id="universal-access">
 <h1>Universal access<a class="headerlink" href="#universal-access" title="Link to this heading"></a></h1>
-<p>Universal access is very important to us. We follow web standards and check to
-make everything usable also with keyboard and assistive software such as
-screen readers. We aim to be compliant with the <a class="reference external" href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility
+<p>Universal access is very important to us. We follow web standards and ensure
+everything is usable with a keyboard and assistive software such as screen
+readers. We aim to be compliant with the <a class="reference external" href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility
 Guidelines 2.1</a>
 on AA level, with the high contrast theme even on AAA level.
 We also follow the German BITV 2.0 guidelines.</p>
@@ -122,7 +133,7 @@ The navigation and sidebar can be expanded or collapsed.</p>
 </section>
 <section id="navigating-via-keyboard">
 <h2>Navigating via keyboard<a class="headerlink" href="#navigating-via-keyboard" title="Link to this heading"></a></h2>
-<p>You can navigate the web interface with keyboard only just like you can with the mouse:</p>
+<p>You can navigate the web interface with a keyboard, just as you would with a mouse:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Tab</span></code> and <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Tab</span></code> to move between elements</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Enter</span></code> or <code class="docutils literal notranslate"><span class="pre">Space</span></code> to activate or open the element (depending on the type of element)</p></li>
@@ -131,7 +142,7 @@ The navigation and sidebar can be expanded or collapsed.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">F</span></code> to focus the search field</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">S</span></code> to save changes in editors like Nextcloud Text</p></li>
 </ul>
-<p>For quicker navigation, we offer 2 »skip links« at the beginning of the document which allow you to:</p>
+<p>For quicker navigation, we offer two »skip links« at the beginning of the document which allow you to:</p>
 <ul class="simple">
 <li><p>Skip to main content</p></li>
 <li><p>Skip to navigation of app</p></li>
@@ -168,9 +179,12 @@ The navigation and sidebar can be expanded or collapsed.</p>
 <h2>Included themes<a class="headerlink" href="#included-themes" title="Link to this heading"></a></h2>
 <p>We offer several themes you can activate to aid accessibility:</p>
 <ul class="simple">
-<li><p><strong>High contrast theme:</strong> A high contrast mode to ease your navigation. Visual quality will be reduced but clarity will be increased.</p></li>
-<li><p><strong>Dark theme:</strong> A dark theme to ease your eyes by reducing the overall luminosity and brightness. It is still under development, so please report any issues you may find.</p></li>
-<li><p><strong>Dyslexia font:</strong> OpenDyslexic is a free typeface/font designed to mitigate some of the common reading errors caused by dyslexia.</p></li>
+<li><p><strong>High contrast theme:</strong> A high contrast mode to ease your navigation.
+Visual quality will be reduced but clarity will be increased.</p></li>
+<li><p><strong>Dark theme:</strong> A dark theme to ease your eyes by reducing the overall luminosity and brightness.
+It is still under development, so please report any issues you may find.</p></li>
+<li><p><strong>Dyslexia font:</strong> OpenDyslexic is a free typeface/font designed to mitigate some of the common
+reading errors caused by dyslexia.</p></li>
 </ul>
 <p>To reach the accessibility settings:</p>
 <ol class="arabic simple">
@@ -297,16 +311,25 @@ If this causes contrast issues, please contact your administrator for help.</p>
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 Danish
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Languages</dt>
         
@@ -481,6 +504,22 @@ If this causes contrast issues, please contact your administrator for help.</p>
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -649,6 +688,14 @@ If this causes contrast issues, please contact your administrator for help.</p>
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -656,31 +703,20 @@ If this causes contrast issues, please contact your administrator for help.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Downloads</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>På Read the Docs</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Projektets startside</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Builds</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

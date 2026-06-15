@@ -1,0 +1,804 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conversas &mdash; Documentação Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/talk/conversations.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5eb80f5b"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=71a39b36"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="next" title="Conversas abertas" href="open_conversations.html" />
+    <link rel="prev" title="Conversas" href="conversation_index.html" />
+   
+  
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Pesquisar documentos</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Pesquisar documentos"
+             aria-label="Pesquisar documentos" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introdução ao manual do usuário do Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Usar o aplicativo Atividade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Arquivos e sincronização</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Talk</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="chat_index.html">Bate-papo</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="conversation_index.html">Conversas</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Conversas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#private-one-to-one-conversations">1. Conversas particulares (individuais)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#group-conversations">2. Conversas em grupo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#note-to-self">3. Nota pessoal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#disposable-conversations">4. Conversas descartáveis</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="open_conversations.html">Conversas abertas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appearance.html">Aparência</a></li>
+<li class="toctree-l3"><a class="reference internal" href="files_integration.html">Integração do Arquivos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="calendar_integration.html">Integração do calendário com o Talk</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="call_index.html">Chamadas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federation_index.html">Federação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moderator_index.html">Para moderadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html">Entrar em uma chamada ou em um bate-papo como convidado</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Configuração de suas preferências</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Acesso universal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Uso da autenticação de dois fatores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gerenciar navegadores e dispositivos conectados</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Talk</a></li>
+          <li class="breadcrumb-item"><a href="conversation_index.html">Conversas</a></li>
+      <li class="breadcrumb-item active">Conversas</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/conversations.rst" class="fa fa-github"> Editar no GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="conversations">
+<h1>Conversas<a class="headerlink" href="#conversations" title="Link para este cabeçalho"></a></h1>
+<p>As mensagens de texto e as chamadas ocorrem em conversas. Você pode criar quantas conversas quiser. Existem diferentes tipos de conversas:</p>
+<section id="private-one-to-one-conversations">
+<h2>1. Conversas particulares (individuais)<a class="headerlink" href="#private-one-to-one-conversations" title="Link para este cabeçalho"></a></h2>
+<p>É aqui que você pode conversar por bate-papo ou fazer uma chamada privada com outro usuário do Talk.</p>
+<p>Na barra lateral de conteúdo, você pode encontrar informações adicionais sobre a pessoa com quem está conversando, como endereço de e-mail, número de telefone ou outros detalhes que ela tenha compartilhado em seu perfil.</p>
+<a class="reference internal image-reference" href="../../_images/one-to-one-right-sidebar.png"><img alt="Talk right sidebar showing contact information for a one-to-one conversation" src="../../_images/one-to-one-right-sidebar.png" style="width: 300px;" />
+</a>
+<p>Ninguém, exceto você e a outra pessoa, pode ver esta conversa ou participar de uma chamada nela. Você pode estender uma chamada em andamento para uma nova conversa em grupo adicionando mais pessoas. A chamada continuará lá sem interrupção.</p>
+<a class="reference internal image-reference" href="../../_images/one-to-one-extend.png"><img alt="Talk dialog to extend a one-to-one call by adding more participants to a group conversation" src="../../_images/one-to-one-extend.png" style="width: 300px;" />
+</a>
+<p>Se um usuário ficar indisponível e tiver definido o status <strong>fora do escritório</strong> em <code class="docutils literal notranslate"><span class="pre">Configurações</span> <span class="pre">pessoais</span> <span class="pre">&gt;</span> <span class="pre">Disponibilidade</span></code>, você encontrará informações adicionais nesta conversa, como a descrição fornecida, a data da ausência ou o nome da pessoa que o substituirá.</p>
+<a class="reference internal image-reference" href="../../_images/one-to-one-out-of-office.png"><img alt="Talk showing an out-of-office status message for a user in a one-to-one conversation" src="../../_images/one-to-one-out-of-office.png" style="width: 500px;" />
+</a>
+</section>
+<section id="group-conversations">
+<h2>2. Conversas em grupo<a class="headerlink" href="#group-conversations" title="Link para este cabeçalho"></a></h2>
+<p>Uma conversa em grupo pode ter qualquer número de participantes. Você pode adicionar usuários internos, convidados por e-mail, grupos ou equipes a uma conversa em grupo no momento da criação ou, se ela já existir, através da aba <code class="docutils literal notranslate"><span class="pre">Participantes</span></code>.</p>
+<p>Uma conversa em grupo pode ser compartilhada por meio de um link público, para que os convidados possam participar do bate-papo e da chamada. Ela também pode ser aberta a usuários registrados (ou usuários do aplicativo ‘Convidados’), para que possam encontrar e participar dessa conversa.</p>
+<a class="reference internal image-reference" href="../../_images/group-public-settings.png"><img alt="Talk conversation settings dialog for group and public access options" src="../../_images/group-public-settings.png" style="width: 400px;" />
+</a>
+</section>
+<section id="note-to-self">
+<h2>3. Nota pessoal<a class="headerlink" href="#note-to-self" title="Link para este cabeçalho"></a></h2>
+<p>Esta é uma conversa especial consigo mesmo. As mensagens aqui não têm limite para edição ou exclusão. Você pode usá-la para:</p>
+<ul class="simple">
+<li><p><strong>Fazer notas</strong>: anote ideias, lembretes ou informações importantes que você queira ter à mão.</p></li>
+<li><p><strong>Criar listas de tarefas</strong>: use a sintaxe Markdown para criar listas de verificação das tarefas que você precisa concluir.</p></li>
+<li><p><strong>Encaminhar mensagens de outras conversas</strong>: use o menu de mensagens para encaminhar mensagens importantes de outras conversas para a sua “Nota pessoal”.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/note-to-self.png"><img alt="Talk note-to-self personal conversation for saving messages" src="../../_images/note-to-self.png" style="width: 500px;" />
+</a>
+</section>
+<section id="disposable-conversations">
+<h2>4. Conversas descartáveis<a class="headerlink" href="#disposable-conversations" title="Link para este cabeçalho"></a></h2>
+<p>Essas conversas abrangem alguns casos específicos e permanecem armazenadas por um período limitado. O período de retenção pode ser configurado pela administração da instância:</p>
+<ul class="simple">
+<li><p><strong>Reuniões instantâneas</strong>: essas conversas podem ser criadas para reuniões rápidas e pontuais. Elas podem ser iniciadas instantaneamente a partir do painel do Talk.</p></li>
+<li><p><strong>Conversas de eventos</strong>: são criadas quando definidas como local de um evento pelo aplicativo Calendário.</p></li>
+<li><p><strong>Conversas telefônicas</strong>: destinam-se a chamadas telefônicas de entrada e saída via SIP (requer um gateway SIP).</p></li>
+<li><p><strong>Verificação por vídeo</strong>: são criadas quando alguém tenta acessar um link público protegido por senha com verificação por vídeo (excluídas imediatamente após o término da chamada).</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/instant-meeting-dispose.png"><img alt="Talk instant meeting with option to dispose after use" src="../../_images/instant-meeting-dispose.png" style="width: 500px;" />
+</a>
+<section id="talk-dashboard">
+<h3>Painel do Talk<a class="headerlink" href="#talk-dashboard" title="Link para este cabeçalho"></a></h3>
+<p>O painel do Talk é o seu centro de controle para gerenciar e acessar suas conversas. Ele oferece uma visão geral das suas:</p>
+<ul class="simple">
+<li><p>Menções e mensagens não lidas em conversas privadas;</p></li>
+<li><p>Lembretes de mensagens, a serem tratados posteriormente;</p></li>
+<li><p>Reuniões agendadas, com detalhes do evento e botões de atalho para participar;</p></li>
+<li><p>Ações de atalho para criar novas conversas, entrar em conversas abertas ou verificar rapidamente seus dispositivos de mídia.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/talk-dashboard.png"><img alt="Talk dashboard showing recent conversations and shortcut actions" src="../../_images/talk-dashboard.png" style="width: 600px;" />
+</a>
+</section>
+<section id="creating-a-conversation">
+<h3>Iniciar uma conversa<a class="headerlink" href="#creating-a-conversation" title="Link para este cabeçalho"></a></h3>
+<p>Você pode criar um bate-papo privado (individual) procurando o nome de um usuário, um grupo ou uma equipe e clicando nele. No caso de um único usuário, a conversa é criada imediatamente e você pode começar a conversar. No caso de um grupo ou círculo, você pode escolher um nome e definir as configurações antes de criar a conversa e adicionar os participantes.</p>
+<a class="reference internal image-reference" href="../../_images/chat-with-one-user.png"><img alt="Talk search dialog to start a private chat with a user" src="../../_images/chat-with-one-user.png" style="width: 400px;" />
+</a>
+<p>Se você quiser criar uma conversa em grupo personalizada, clique no botão ao lado do campo de pesquisa e dos filtros e, em seguida, em <code class="docutils literal notranslate"><span class="pre">Criar</span> <span class="pre">uma</span> <span class="pre">nova</span> <span class="pre">conversa</span></code>.</p>
+<a class="reference internal image-reference" href="../../_images/create-new-conversation.png"><img alt="Talk button to create a new group conversation" src="../../_images/create-new-conversation.png" style="width: 400px;" />
+</a>
+<p>Você pode então escolher um nome para a conversa, adicionar uma descrição e definir um avatar (com uma foto enviada ou um emoji), além de selecionar se a conversa deve ser aberta a usuários externos e se outros usuários do servidor podem ver e entrar na conversa.</p>
+<a class="reference internal image-reference" href="../../_images/creating-open-conversation.png"><img alt="Talk new conversation setup dialog for name, description, and access type" src="../../_images/creating-open-conversation.png" style="width: 500px;" />
+</a>
+<p>Na segunda etapa, você poderá adicionar participantes e concluir a criação da conversa.</p>
+<a class="reference internal image-reference" href="../../_images/add-participants.png"><img alt="Talk participant selection step when creating a new conversation" src="../../_images/add-participants.png" style="width: 500px;" />
+</a>
+<p>Após a confirmação, você será redirecionado para a nova conversa e poderá começar a se comunicar imediatamente.</p>
+<a class="reference internal image-reference" href="../../_images/new-room.png"><img alt="Talk empty new conversation ready for chatting" src="../../_images/new-room.png" style="width: 700px;" />
+</a>
+</section>
+<section id="filter-your-conversations">
+<h3>Filtrar suas conversas<a class="headerlink" href="#filter-your-conversations" title="Link para este cabeçalho"></a></h3>
+<p>Você pode filtrar suas conversas usando o botão de filtro ao lado do campo de pesquisa. Existem várias opções de filtragem: 1. <strong>Menções não lidas</strong>: visualize conversas privadas ou em grupo não lidas nas quais você foi mencionado. 2. <strong>Mensagens não lidas</strong>: visualize mensagens não lidas em todas as conversas das quais você faz parte. 3. <strong>Conversas de eventos</strong>: visualize todas as conversas criadas para eventos futuros ou passados.</p>
+<a class="reference internal image-reference" href="../../_images/filters-menu.png"><img alt="Talk conversation list filter menu" src="../../_images/filters-menu.png" style="width: 400px;" />
+</a>
+<p>Você pode, então, desativar o filtro no menu de filtros.</p>
+<a class="reference internal image-reference" href="../../_images/clear-filter.png"><img alt="Talk conversation list with active filter and clear filter option" src="../../_images/clear-filter.png" style="width: 400px;" />
+</a>
+</section>
+<section id="archive-conversations">
+<h3>Arquivar conversas<a class="headerlink" href="#archive-conversations" title="Link para este cabeçalho"></a></h3>
+<p>Você pode arquivar conversas que não precisa mais ver na sua lista principal de conversas. Quando uma conversa é arquivada, ela é movida para a seção <code class="docutils literal notranslate"><span class="pre">Conversas</span> <span class="pre">arquivadas</span></code>. Uma conversa arquivada não aparecerá na sua lista principal de conversas, mas continuará a seguir o nível de notificação definido nas suas configurações.</p>
+<a class="reference internal image-reference" href="../../_images/archived-conversations-list.png"><img alt="Talk list of archived conversations" src="../../_images/archived-conversations-list.png" style="width: 400px;" />
+</a>
+<p>É possível acessar a lista pelo botão localizado na parte inferior da barra de navegação.</p>
+<a class="reference internal image-reference" href="../../_images/archived-conversations-button.png"><img alt="Talk navigation bar showing the archived conversations button" src="../../_images/archived-conversations-button.png" style="width: 400px;" />
+</a>
+</section>
+<section id="managing-a-conversation">
+<h3>Gerenciar uma conversa<a class="headerlink" href="#managing-a-conversation" title="Link para este cabeçalho"></a></h3>
+<p>Você é sempre o moderador em sua nova conversa. Na lista de participantes, você pode promover outros participantes a moderadores usando o menu <code class="docutils literal notranslate"><span class="pre">…</span></code> à direita do nome de usuário deles, atribuir-lhes permissões personalizadas ou removê-los da conversa.</p>
+<p>Alterar as permissões de um usuário que entrou em uma conversa pública também o adicionará permanentemente à conversa.</p>
+<a class="reference internal image-reference" href="../../_images/participant-menu.png"><img alt="Talk participant menu showing permission and moderation options" src="../../_images/participant-menu.png" style="width: 400px;" />
+</a>
+<p>Os moderadores podem configurar a conversa. Selecione <code class="docutils literal notranslate"><span class="pre">Configurações</span> <span class="pre">da</span> <span class="pre">conversa</span></code> no menu <code class="docutils literal notranslate"><span class="pre">…</span></code> da conversa, localizado na parte superior, para acessar as configurações.</p>
+<a class="reference internal image-reference" href="../../_images/open-settings.png"><img alt="Talk conversation menu with Conversation settings option" src="../../_images/open-settings.png" style="width: 500px;" />
+</a>
+<p>Aqui você pode definir a descrição, o acesso de convidados, se a conversa ficará visível para outras pessoas no servidor e muito mais.</p>
+<a class="reference internal image-reference" href="../../_images/conversation-settings-dialog.png"><img alt="Talk conversation settings dialog showing description and access configuration" src="../../_images/conversation-settings-dialog.png" style="width: 600px;" />
+</a>
+</section>
+<section id="ban-participants">
+<h3>Banir participantes<a class="headerlink" href="#ban-participants" title="Link para este cabeçalho"></a></h3>
+<p>Para ajudar a manter as discussões seguras e sob controle, os moderadores podem banir participantes das conversas. Isso se aplica tanto a usuários internos quanto a convidados; no caso dos convidados, seu endereço IP também será banido.</p>
+<p>Na lista de participantes, selecione o usuário ou convidado e clique em <code class="docutils literal notranslate"><span class="pre">Remover</span> <span class="pre">participante</span></code>.</p>
+<a class="reference internal image-reference" href="../../_images/ban-participant.png"><img alt="Talk participant menu with Remove participant option" src="../../_images/ban-participant.png" style="width: 300px;" />
+</a>
+<p>Lá, marque a caixa de seleção <code class="docutils literal notranslate"><span class="pre">Também</span> <span class="pre">banir</span> <span class="pre">desta</span> <span class="pre">conversa</span></code> e indique o motivo do banimento. O usuário banido será removido e impedido de reentrar.</p>
+<a class="reference internal image-reference" href="../../_images/ban-participant-dialog.png"><img alt="Talk dialog to ban a participant with a reason field" src="../../_images/ban-participant-dialog.png" style="width: 400px;" />
+</a>
+<p>Mais tarde, você poderá encontrar a lista de usuários banidos na seção <code class="docutils literal notranslate"><span class="pre">Moderação</span></code> das configurações da conversa. Lá, você poderá ver o motivo do banimento e revertê-lo, se necessário.</p>
+<a class="reference internal image-reference" href="../../_images/ban-participant-list.png"><img alt="Talk list of banned participants with reasons and revert options" src="../../_images/ban-participant-list.png" style="width: 400px;" />
+</a>
+</section>
+<section id="messages-expiration">
+<h3>Expiração de mensagens<a class="headerlink" href="#messages-expiration" title="Link para este cabeçalho"></a></h3>
+<p>Um moderador pode configurar o prazo de validade das mensagens na seção <code class="docutils literal notranslate"><span class="pre">Configurações</span> <span class="pre">da</span> <span class="pre">conversa</span></code>, dentro da seção <code class="docutils literal notranslate"><span class="pre">Moderação</span></code>. Quando uma mensagem atinge o prazo de validade, ela é automaticamente removida da conversa. Os prazos de validade disponíveis são: 1 hora, 8 horas, 1 dia, 1 semana, 4 semanas ou nunca (que é a configuração padrão).</p>
+<a class="reference internal image-reference" href="../../_images/messages-expiration.png"><img alt="Talk conversation settings showing message expiration duration options" src="../../_images/messages-expiration.png" style="width: 500px;" />
+</a>
+</section>
+<section id="notifications-and-privacy">
+<h3>Notificações e privacidade<a class="headerlink" href="#notifications-and-privacy" title="Link para este cabeçalho"></a></h3>
+<p>Por padrão, o Nextcloud Talk irá notificá-lo sobre:</p>
+<ul class="simple">
+<li><p>Novas mensagens nas conversas privadas;</p></li>
+<li><p>Respostas às mensagens que você enviou;</p></li>
+<li><p>Mensagens que mencionam você ou o grupo/equipe do qual você faz parte;</p></li>
+<li><p>Chamadas iniciadas nas conversas das quais você participa.</p></li>
+</ul>
+<p>Você pode alterar esse comportamento nas configurações da conversa. Além disso, você pode definir:</p>
+<ul class="simple">
+<li><p><strong>Important conversations</strong>: you will be always notified about new messages, even if you are in “Do Not Disturb” mode;</p></li>
+<li><p><strong>Conversas confidenciais</strong>: o conteúdo das mensagens não será exibido na lista de conversas e ficará oculto nas notificações.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/conversation-notifications.png"><img alt="Talk conversation notification settings panel" src="../../_images/conversation-notifications.png" style="width: 300px;" />
+</a>
+<p>Para ter mais controle sobre sua privacidade, você também pode configurar a visibilidade dos indicadores de digitação e leitura em <code class="docutils literal notranslate"><span class="pre">Configurações</span> <span class="pre">do</span> <span class="pre">Talk</span></code>:</p>
+<a class="reference internal image-reference" href="../../_images/privacy-settings.png"><img alt="Talk privacy settings for controlling conversation visibility" src="../../_images/privacy-settings.png" style="width: 600px;" />
+</a>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
+        <a href="conversation_index.html" class="btn btn-neutral float-left" title="Conversas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="open_conversations.html" class="btn btn-neutral float-right" title="Conversas abertas" accesskey="n" rel="next">Próximo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Direitos autorais 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 pt-BR
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl>
+        <dt>🌐 Idiomas</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versões</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

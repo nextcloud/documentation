@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Restoring backup &mdash; Nextcloud latest Administration Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -52,9 +52,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -64,7 +73,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR compliance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
@@ -108,6 +117,10 @@
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
 <ul class="current">
@@ -295,7 +308,7 @@ clients will default to fetching the data from the server.</p>
 <p>If the recovered backup is outdated
 the state of the clients may be more up to date than the state of the server.
 In this case also make sure to run the
-<a class="reference internal" href="../occ_command.html#maintenance-commands-label"><span class="std std-ref">maintenance:data-fingerprint</span></a> command
+<a class="reference internal" href="../occ_system.html#maintenance-commands-label"><span class="std std-ref">maintenance:data-fingerprint</span></a> command
 afterwards.
 It changes the logic of the synchronisation algorithm
 to try an recover as much data as possible.
@@ -304,7 +317,7 @@ and in case of different content the users will be asked.</p>
 <p>This can also help in rare scenarios when the database is newer than the data directory.
 The server will restore the data from the clients and preserve the shares.
 Until then the files would be visible but not accessible.
-A <a class="reference internal" href="../occ_command.html#occ-files-scan-label"><span class="std std-ref">files:scan</span></a> is required afterwards to update the database.</p>
+A <a class="reference internal" href="../occ_files.html#occ-files-scan-label"><span class="std std-ref">files:scan</span></a> is required afterwards to update the database.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The usage of <cite>maintenance:data-fingerprint</cite> can cause conflict dialogues
@@ -342,11 +355,16 @@ is applied on all instances.</p>
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-admin">
       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-admin" class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -369,6 +387,14 @@ is applied on all instances.</p>
         </dd>
         
         <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/admin_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
@@ -376,17 +402,20 @@ is applied on all instances.</p>
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/31/admin_manual"
-             
-          >
-            31
-          </a>
-        </dd>
-        
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

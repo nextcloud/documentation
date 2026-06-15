@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WebDAV를 통해 Nextcloud 파일에 접근하기 &mdash; Nextcloud latest User Manual latest 문서</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,8 +31,8 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="색인" href="../genindex.html" />
     <link rel="search" title="검색" href="../search.html" />
-    <link rel="next" title="삭제된 파일 관리하기" href="deleted_file_management.html" />
-    <link rel="prev" title="Accessing your files using the Nextcloud Web interface" href="access_webgui.html" />
+    <link rel="next" title="데스크톱 및 모바일 동기화" href="desktop_mobile_sync.html" />
+    <link rel="prev" title="Accessing your files using the Nextcloud web interface" href="access_webgui.html" />
    
   
 </head>
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,74 +72,45 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest 사용자 매뉴얼 머리말</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud 웹 인터페이스</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">파일 및 동기화</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Accessing your files using the Nextcloud Web interface</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">WebDAV를 통해 Nextcloud 파일에 접근하기</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Nextcloud 공식 데스크탑 및 모바일 클라이언트</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">기타 서드파티 WebDAV 클라이언트</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Linux를 통해 파일에 접근하기</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Nautilus 파일 매니저</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin">Accessing files with KDE and Dolphin</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="accessing.html">Accessing your files</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="access_webgui.html">Accessing your files using the Nextcloud web interface</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">WebDAV를 통해 Nextcloud 파일에 접근하기</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Nextcloud 공식 데스크탑 및 모바일 클라이언트</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#third-party-webdav-clients">기타 서드파티 WebDAV 클라이언트</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-linux">Linux를 통해 파일에 접근하기</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Linux 명령줄에서 WebDAV 마운트 생성</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-issues">알려진 문제</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-macos">macOS를 사용하여 파일 액세스</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Microsoft Windows를 사용하여 파일 액세스</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-cyberduck">Cyberduck을 사용하여 파일에 액세스</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-public-shares-over-webdav">WebDAV를 통해 공용 공유에 액세스</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-problems">알려진 문제</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-curl">cURL을 사용하여 파일 액세스</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-winscp">WinSCP를 사용하여 파일 액세스</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Linux 명령줄에서 WebDAV 마운트 생성</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-issues">알려진 문제</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#problem">문제</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution">솔루션</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">문제</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">솔루션</a></li>
+<li class="toctree-l3"><a class="reference internal" href="desktop_mobile_sync.html">데스크톱 및 모바일 동기화</a></li>
+<li class="toctree-l3"><a class="reference internal" href="large_file_upload.html">대용량 파일 업로드</a></li>
+<li class="toctree-l3"><a class="reference internal" href="external_storage.html">Using external storage</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">macOS를 사용하여 파일 액세스</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Microsoft Windows를 사용하여 파일 액세스</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">명령줄을 사용하여 드라이브 매핑</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">Windows 탐색기를 사용하여 드라이브 매핑</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">Cyberduck을 사용하여 파일에 액세스</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">WebDAV를 통해 공용 공유에 액세스</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-problems">알려진 문제</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id4">문제</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution-1">해결 방법 1</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution-2">해결 방법 2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">문제</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">솔루션</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">문제</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#answer">응답</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">문제</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">솔루션</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">문제</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">솔루션</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">cURL을 사용하여 파일 액세스</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-winscp">WinSCP를 사용하여 파일 액세스</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">삭제된 파일 관리하기</a></li>
-<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">데스크톱 및 모바일 동기화</a></li>
-<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Encrypting your Nextcloud files on the server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html">File Sharing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Federated Shares</a></li>
-<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Making anonymous uploads</a></li>
-<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">대용량 파일 업로드</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quota.html">할당 용량</a></li>
-<li class="toctree-l2"><a class="reference internal" href="version_control.html">Version control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">소유권 넘기기</a></li>
-<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">연합 공유 사용하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">데스크톱 클라이언트</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">외부 저장소</a></li>
 </ul>
 
         </div>
@@ -148,6 +128,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">파일 및 동기화</a></li>
+          <li class="breadcrumb-item"><a href="accessing.html">Accessing your files</a></li>
       <li class="breadcrumb-item active">WebDAV를 통해 Nextcloud 파일에 접근하기</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -229,7 +210,7 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p class="admonition-title">참고</p>
 <p>서버가 HTTPS로 보안되지 않았다면, <code class="docutils literal notranslate"><span class="pre">davs://</span></code> 대신 <a href="#id1"><span class="problematic" id="id2">``</span></a><a class="reference external" href="dav://">dav://</a><a href="#id3"><span class="problematic" id="id4">``</span></a>를 사용하십시오:</p>
 </div>
-<img alt="Nautilus 파일 관리자에서 WebDAV를 설정하는 스크린샷" src="../../_images/webdav_gnome3_nautilus.png" />
+<img alt="GNOME Nautilus file manager Connect to Server dialog with a Nextcloud WebDAV address entered" src="../../_images/webdav_gnome3_nautilus.png" />
 <div class="admonition note">
 <p class="admonition-title">참고</p>
 <p>MATE의 Caja 및 Cinnamon의 Nemo 등 GVFS를 사용하는 다른 파일 관리자에서도 동일한 방법으로 사용할 수 있습니다.</p>
@@ -245,8 +226,10 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <li><p>화면의 지시에 따라 로그인합니다.</p></li>
 <li><p>로그인 후 “이 계정 사용” 섹션에서 “저장소”를 활성화했는지 확인하세요</p></li>
 <li><p>이제 사이드바의 “네트워크”에서 Dolphin의 파일에 액세스할 수 있습니다.</p></li>
-<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click “Nextcloud Storage”, then click “Add to Places”</p></li>
-<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then click “Edit…” and customize the icon and label</p></li>
+<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click
+“Nextcloud Storage”, then click “Add to Places”</p></li>
+<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then
+click “Edit…” and customize the icon and label</p></li>
 </ol>
 </section>
 </section>
@@ -269,6 +252,12 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 </pre></div>
 </div>
 </li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">참고</p>
+<p>If the davfs2 group doesn’t exist after installing the package, you may need to create it yourself and, possibly, adjust the davfs config file to use the group after you’ve created it.</p>
+</div>
+<ol class="arabic">
 <li><p>그런 다음, 홈 디렉터리에 마운트 지점을 위한 nextcloud 디렉터리를 만들고, 개인 설정 파일을 위한 .davfs2/ 디렉터리를 생성하십시오:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">nextcloud</span>
 <span class="n">mkdir</span> <span class="o">~/.</span><span class="n">davfs2</span>
@@ -340,20 +329,16 @@ for example
 </section>
 <section id="accessing-files-using-macos">
 <h2>macOS를 사용하여 파일 액세스<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">참고</p>
-<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
-</div>
 <p>macOS Finder를 통해 파일에 접근하려면,</p>
 <ol class="arabic">
 <li><p>Finder의 상단 메뉴 막대에서 <a href="#id1"><span class="problematic" id="id2">**</span></a>이동&gt;서버에 연결…**을 선택합니다.</p>
-<img alt="macOS에서 Nextcloud 서버 주소를 입력하는 스크린샷" src="../../_images/osx_webdav1.png" />
+<img alt="macOS Go menu with Connect to Server option highlighted" src="../../_images/osx_webdav1.png" />
 </li>
 <li><p><strong>서버에 연결…</strong> 창이 열리면 <strong>서버 주소:</strong> 필드에 Nextcloud 서버의 WebDAV 주소를 입력합니다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
 </pre></div>
 </div>
-<img alt="스크린샷: &quot;서버에 연결...&quot;에 Nextcloud 서버 주소 입력 대화 상자" src="../../_images/osx_webdav2.png" />
+<img alt="macOS Connect to Server dialog with a Nextcloud WebDAV URL in the Server Address field" src="../../_images/osx_webdav2.png" />
 </li>
 <li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>연결**을 클릭합니다. WebDAV 서버가 데스크탑에 공유 디스크 드라이브로 표시되어야 합니다.</p></li>
 </ol>
@@ -474,8 +459,8 @@ for example
 </section>
 <section id="known-problems">
 <h2>알려진 문제<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
-<section id="id4">
-<h3>문제<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>문제<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>Windows는 HTTPS를 사용하여 연결하지 않습니다.</p>
 </section>
 <section id="solution-1">
@@ -486,17 +471,17 @@ for example
 <h3>해결 방법 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>Windows WebDAV 클라이언트는 TLSv1.1 및 TLSv1.2 연결을 지원하지 않을 수 있습니다. TLSv1.1 이상만 제공하도록 서버 구성을 제한한 경우 서버에 대한 연결이 실패할 수 있습니다. 자세한 내용은 <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> 설명서를 참조하십시오.</p>
 </section>
-<section id="id5">
-<h3>문제<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>문제<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p><strong>오류 0x800700DF: 파일 크기가 허용된 제한을 초과하여 저장할 수 없습니다.</strong> 오류 메시지가 표시됩니다.</p>
 </section>
-<section id="id6">
-<h3>솔루션<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>솔루션<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Windows는 WebDAV 공유에서 또는 WebDAV 공유로 전송된 파일의 최대 크기를 제한합니다. <a href="#id1"><span class="problematic" id="id2">**</span></a>수정**을 클릭하여 ‘’HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters’’에서 ‘’FileSizeLimitInBytes’’ 값을 늘릴 수 있습니다.</p>
 <p>제한을 최대값인 4GB로 늘리려면 <strong>10진수**를 선택하고 ‘’4294967295’’ 값을 입력한 다음 Windows를 다시 부팅하거나 **WebClient</strong> 서비스를 다시 시작합니다.</p>
 </section>
-<section id="id7">
-<h3>문제<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>문제<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Adding a WebDAV drive on Windows with the steps above does not display the correct
 available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
@@ -507,20 +492,20 @@ way for the client to retrieve available free space from the server. Windows aut
 falls back to the size and free space of the C: drive. There is no direct solution
 for this limitation.</p>
 </section>
-<section id="id8">
-<h3>문제<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>문제<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>WebDAV를 통해 Microsoft Office에서 파일에 액세스하지 못합니다.</p>
 </section>
-<section id="id9">
-<h3>솔루션<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>솔루션<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>알려진 문제점과 해결 방법은 <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> 문서에 설명되어 있습니다.</p>
 </section>
-<section id="id10">
-<h3>문제<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>문제<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>자체 서명된 인증서를 사용하여 Windows에서 Nextcloud를 WebDAV 드라이브로 매핑할 수 없습니다.</p>
 </section>
-<section id="id11">
-<h3>솔루션<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>솔루션<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>브라우저 상태 줄에 인증서 오류가 나타날 때까지 클릭합니다.</p></li>
@@ -647,8 +632,8 @@ WinSCP does not support TOTP with Nextcloud.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Accessing your files using the Nextcloud Web interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="삭제된 파일 관리하기" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Accessing your files using the Nextcloud web interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-right" title="데스크톱 및 모바일 동기화" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -752,18 +737,27 @@ WinSCP does not support TOTP with Nextcloud.</p>
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 Korean
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
-        <dt>🌐 Languages</dt>
+        <dt>🌐 언어</dt>
         
           <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/ar/"
@@ -936,6 +930,22 @@ WinSCP does not support TOTP with Nextcloud.</p>
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -1083,7 +1093,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
     </div>
     <div class="rst-other-versions">
       <dl>
-        <dt>☁️ Versions</dt>
+        <dt>☁️ 버전</dt>
         
           <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/latest/user_manual"
@@ -1104,6 +1114,14 @@ WinSCP does not support TOTP with Nextcloud.</p>
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -1111,31 +1129,20 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Downloads</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>On Read the Docs</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Project Home</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Builds</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Two-factor authentication &mdash; Nextcloud latest Administration Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -52,9 +52,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -64,7 +73,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR compliance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
@@ -115,7 +124,7 @@
 <li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_cleanup.html">LDAP user cleanup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_api.html">The LDAP configuration API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_provisioning_api.html">User provisioning API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="profile_configuration.html">Profile configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile_configuration.html">Profiles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_auth_oidc.html">User authentication with OpenID Connect</a></li>
 </ul>
 </li>
@@ -128,6 +137,10 @@
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
 <ul>
@@ -214,13 +227,13 @@ notification</em> to enable this factor.</p></li>
 <figure class="align-default">
 <img alt="../_images/2fa-app-install.png" src="../_images/2fa-app-install.png" />
 </figure>
-<p>Developers can also <a class="reference external" href="https://docs.nextcloud.com/server/33/developer_manual/digging_deeper/two-factor-provider.html">implement new two-factor provider
+<p>Developers can also <a class="reference external" href="https://docs.nextcloud.com/server/latest/developer_manual/digging_deeper/two-factor-provider.html">implement new two-factor provider
 apps</a>.</p>
 </section>
 <section id="enforcing-two-factor-authentication">
 <h2>Enforcing two-factor authentication<a class="headerlink" href="#enforcing-two-factor-authentication" title="Link to this heading"></a></h2>
 <p>By default 2FA is <em>optional</em>, hence users are given the choice whether to enable
-it for their account <a class="reference external" href="https://docs.nextcloud.com/server/33/user_manual/en/user_2fa.html">under their personal settings</a>.
+it for their account <a class="reference external" href="https://docs.nextcloud.com/server/latest/user_manual/en/user_2fa.html">under their personal settings</a>.
 Admins may, however, enforce the use of 2FA.</p>
 <p>Enforcement is possible system-wide (all users) or for selected groups only. Select groups
 can also be excluded from 2FA requirements.</p>
@@ -239,7 +252,7 @@ selected <em>and</em> excluded group, the selected takes precedence and 2FA is e
 <section id="provider-removal">
 <h2>Provider removal<a class="headerlink" href="#provider-removal" title="Link to this heading"></a></h2>
 <p>Nextcloud keeps records about the enabled two-factor authentication providers of every user.
-If a provider is simply removed/<a class="reference internal" href="../occ_command.html#apps-commands-label"><span class="std std-ref">disabled</span></a>,
+If a provider is simply removed/<a class="reference internal" href="../occ_apps.html#apps-commands-label"><span class="std std-ref">disabled</span></a>,
 Nextcloud will still consider the provider active for the user at login and show a warning like <em>Could not load at least one of your enabled two-factor auth methods</em>.</p>
 <p>The associations of removed providers can be cleaned up via <a class="reference internal" href="../occ_command.html#occ"><span class="std std-ref">occ</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">twofactorauth</span><span class="p">:</span><span class="n">cleanup</span> <span class="o">&lt;</span><span class="n">provider_id</span><span class="o">&gt;</span>
@@ -293,11 +306,16 @@ Afterwards users are free to enable this provider again via their personal setti
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-admin">
       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-admin" class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -320,6 +338,14 @@ Afterwards users are free to enable this provider again via their personal setti
         </dd>
         
         <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/admin_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
@@ -327,17 +353,20 @@ Afterwards users are free to enable this provider again via their personal setti
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/31/admin_manual"
-             
-          >
-            31
-          </a>
-        </dd>
-        
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Синхронизација са Android &mdash; документација Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,7 +72,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Увод у корисничко упутство за Nextcloud latest</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud веб интерфејс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Фајлови и синхронизација</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="contacts.html">Using the Contacts app</a></li>
@@ -85,16 +96,15 @@
 <li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Синхронизација са KDE Kontact</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Сихронизација са GNOME десктопом</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Синхронизација са Windows 10</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_migration.html">Migrate data between instances</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Постављање ваших подешавања</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Универзални приступ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Употреба двофактоске аутентификације</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управљање повезаним прегледачима и уређајима</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Спољно складиште</a></li>
 </ul>
 
         </div>
@@ -146,7 +156,9 @@ camera towards the screen.</p>
 <li><p>Инсталирајте <a class="reference external" href="https://www.davx5.com/download/">DAVx⁵ (раније познат под именом DAVDroid)</a> на свој Android уређај, <a class="reference external" href="https://play.google.com/store/apps/details?id=at.bitfire.davdroid">из Google Play продавнице</a> или <a class="reference external" href="https://f-droid.org/packages/at.bitfire.davdroid/">из F-Droid</a>.</p></li>
 <li><p>У Nextcloud мобилном, идите на <strong>Поставке</strong>/<strong>Остало</strong>, тапните на „<strong>Синхронизуј календар и контакте</strong>”.</p></li>
 <li><p>DAVx⁵ ће да отвори Nextcloud вебток прозор за пријаву, у који треба да унесете своје податке за пријаву и дозволите приступ.</p></li>
-<li><p>Отвориће се DAVx⁵ и затражити од вас да креирате налог. ПОставите назив налога на оно што желите и поставите <strong>Contact Group Method</strong> на <strong>Groups are per-contact categories</strong>.</p></li>
+<li><p>DAVx⁵ will open and ask you to create an account. Set the account
+name to one of your choosing, and set <strong>Contact group method</strong> to
+<strong>Groups are per-contact categories</strong>.</p></li>
 <li><p>Након овога, DAVx⁵ ће се затворити и поново ће се појавити Nextcloud апикација. Да бисте довршили подешавање, морате ручно поново да покренете DAVx⁵.</p></li>
 <li><p>Tap on the icon for the account DAVx⁵ has just created, when requested grant DAVx⁵ access
 to your calendars and contacts.</p></li>
@@ -160,9 +172,13 @@ to your calendars and contacts.</p></li>
 <li><p>Инсталирајте <a class="reference external" href="https://www.davx5.com/download/">DAVx⁵ (раније познат под именом DAVDroid)</a> на свој Android уређај, <a class="reference external" href="https://play.google.com/store/apps/details?id=at.bitfire.davdroid">из Google Play продавнице</a> или <a class="reference external" href="https://f-droid.org/packages/at.bitfire.davdroid/">из F-Droid</a>.</p></li>
 <li><p>Опционално инсталирајте OpenTasks (<a class="reference external" href="https://play.google.com/store/apps/details?id=org.dmfs.tasks">Google Play продавница</a> или <a class="reference external" href="https://f-droid.org/packages/org.dmfs.tasks/">F-Droid</a>).</p></li>
 <li><p>Креирајте нови налог (дугме „+”)</p></li>
-<li><p>Изаберите <strong>Connection with URL and username</strong>. <strong>Base URL:</strong> је URL ваше Nextcloud инстанце (нпр. <code class="docutils literal notranslate"><span class="pre">https://sub.example.com/remote.php/dav</span></code>) и своје податке за пријаву.</p></li>
-<li><p>За <strong>Метода групе контаката:</strong> изаберите опцију <code class="docutils literal notranslate"><span class="pre">Групе</span> <span class="pre">су</span> <span class="pre">категорије</span> <span class="pre">везане</span> <span class="pre">за</span> <span class="pre">контакт</span></code>.</p></li>
-<li><p>Кликните на <strong>Connect</strong>.</p></li>
+<li><p>Select <strong>Connection with URL and username</strong> and complete the form.
+<strong>Base URL</strong> is the URL of your Nextcloud instance (e.g. <code class="docutils literal notranslate"><span class="pre">https://sub.example.com/remote.php/dav</span></code>),
+<strong>Username</strong> is your Nextcloud username, and for <strong>Password</strong> use a <a class="reference internal" href="../session_management.html#managing-devices"><span class="std std-ref">dedicated App password</span></a>
+instead of your account password.</p></li>
+<li><p>Click <strong>Register</strong>.</p></li>
+<li><p>In <strong>Contact group method</strong>, choose the option <code class="docutils literal notranslate"><span class="pre">Groups</span> <span class="pre">are</span> <span class="pre">per-contact</span> <span class="pre">categories</span></code>; then select
+<strong>Create Account</strong>.</p></li>
 <li><p>Изаберите податке које желите да синхронизујете.</p></li>
 <li><p>Када се то од вас затражи, дозволите апликацији DAVx⁵ приступ вашим контактима, календарима и опционално задацима.</p></li>
 </ol>
@@ -298,16 +314,25 @@ to replace your login password with an app password.</p>
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 Slovenian
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Languages</dt>
         
@@ -476,6 +501,22 @@ to replace your login password with an app password.</p>
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
             </a>
           </dd>
         
@@ -650,6 +691,14 @@ to replace your login password with an app password.</p>
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -657,31 +706,20 @@ to replace your login password with an app password.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Преузимања</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>На прочитај документацију</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Почетна страница пројекта</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Изградње</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

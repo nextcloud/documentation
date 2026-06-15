@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>File Sharing &mdash; Nextcloud latest Administration Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -52,9 +52,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -64,7 +73,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR compliance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
@@ -100,7 +109,7 @@
 <li class="toctree-l2"><a class="reference internal" href="big_file_upload_configuration.html">Uploading big files &gt; 512MB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="default_files_configuration.html">Providing default files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="primary_storage.html">Configuring Object Storage as Primary Storage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="external_storage_configuration_gui.html">Configuring External Storage (GUI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage_configuration_gui.html">External Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="external_storage/auth_mechanisms.html">External Storage authentication mechanisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="encryption_configuration.html">Server-side Encryption</a></li>
 <li class="toctree-l2"><a class="reference internal" href="encryption_details.html">Server-side encryption details</a></li>
@@ -134,6 +143,10 @@
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
 <ul>
@@ -292,7 +305,7 @@ directories, though it does update the mtimes on files. See
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>There are more sharing options on config.php level available:
-<a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/configuration_server/config_sample_php_parameters.html#sharing">Configuration Parameters</a></p>
+<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#sharing">Configuration Parameters</a></p>
 </div>
 <section id="advanced-settings">
 <span id="transfer-userfiles-label"></span><h2>Advanced settings<a class="headerlink" href="#advanced-settings" title="Link to this heading"></a></h2>
@@ -386,7 +399,7 @@ Trashbin contents are not transferred:</p>
 <p>(See <a class="reference internal" href="../occ_command.html"><span class="doc">Using the occ command</span></a> for a complete <code class="docutils literal notranslate"><span class="pre">occ</span></code>
 reference.)</p>
 <p>Users may also transfer files or folders selectively by themselves.
-See <a class="reference external" href="https://docs.nextcloud.com/server/33/user_manual/en/files/transfer_ownership.html">user documentation</a> for details.</p>
+See <a class="reference external" href="https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html">user documentation</a> for details.</p>
 </section>
 <section id="creating-persistent-file-shares">
 <h2>Creating persistent file Shares<a class="headerlink" href="#creating-persistent-file-shares" title="Link to this heading"></a></h2>
@@ -439,11 +452,16 @@ Therefore the maximum file size that can be uploaded through File Drop Shares de
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-admin">
       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-admin" class="rst-other-versions">
       <dl>
         <dt>☁️ Versions</dt>
         
@@ -466,6 +484,14 @@ Therefore the maximum file size that can be uploaded through File Drop Shares de
         </dd>
         
         <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/33/admin_manual"
+             
+          >
+            33
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
@@ -473,17 +499,20 @@ Therefore the maximum file size that can be uploaded through File Drop Shares de
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/31/admin_manual"
-             
-          >
-            31
-          </a>
-        </dd>
-        
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

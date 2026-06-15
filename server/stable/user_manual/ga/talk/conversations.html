@@ -1,0 +1,805 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ga" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comhráite &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/talk/conversations.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=d9c2735f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Comhráite oscailte" href="open_conversations.html" />
+    <link rel="prev" title="Comhráite" href="conversation_index.html" />
+   
+  
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest réamhrá lámhleabhar úsáideora</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Comhaid &amp; sioncronú</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Earraí grúpa</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Caint</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="chat_index.html">Comhrá</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="conversation_index.html">Comhráite</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Comhráite</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#private-one-to-one-conversations">1. Comhráite príobháideacha (duine le duine)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#group-conversations">2. Comhráite grúpa</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#note-to-self">3. Nóta dom féin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#disposable-conversations">4. Comhráite indiúscartha</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="open_conversations.html">Comhráite oscailte</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appearance.html">Dealramh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="files_integration.html">Comhtháthú comhad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="calendar_integration.html">Comhtháthú féilire le Talk</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="call_index.html">Glaonna</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federation_index.html">Cónaidhm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moderator_index.html">Do mhodhnóirí</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html">Glac páirt i nglao nó i gcomhrá mar aoi</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ag socrú do shainroghanna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Rochtain uilíoch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Ag baint úsáide as fíordheimhniú dhá-fhachtóir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bainistigh brabhsálaithe agus gléasanna nasctha</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Caint</a></li>
+          <li class="breadcrumb-item"><a href="conversation_index.html">Comhráite</a></li>
+      <li class="breadcrumb-item active">Comhráite</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/conversations.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="conversations">
+<h1>Comhráite<a class="headerlink" href="#conversations" title="Link to this heading"></a></h1>
+<p>Bíonn comhráite agus glaonna ar siúl i gcomhráite. Is féidir leat aon líon comhráite a chruthú. Tá cineálacha éagsúla comhráite ann:</p>
+<section id="private-one-to-one-conversations">
+<h2>1. Comhráite príobháideacha (duine le duine)<a class="headerlink" href="#private-one-to-one-conversations" title="Link to this heading"></a></h2>
+<p>Seo an áit a mbíonn comhrá príobháideach nó glao gutháin agat le húsáideoir Talk eile.</p>
+<p>Sa bharra taoibh ábhair, is féidir leat faisnéis bhreise a fháil faoin duine a bhfuil tú ag comhrá leis, amhail a seoladh ríomhphoist, a n-uimhir theileafóin, nó sonraí eile atá roinnte acu ina bpróifíl.</p>
+<a class="reference internal image-reference" href="../../_images/one-to-one-right-sidebar.png"><img alt="Talk right sidebar showing contact information for a one-to-one conversation" src="../../_images/one-to-one-right-sidebar.png" style="width: 300px;" />
+</a>
+<p>Ní féidir le haon duine ach tusa agus an duine eile an comhrá seo a fheiceáil ná páirt a ghlacadh i nglao ann. Is féidir leat glao atá ar siúl a shíneadh chuig comhrá grúpa nua trí níos mó daoine a chur leis. Leanfar leis an nglao ansin gan cur isteach.</p>
+<a class="reference internal image-reference" href="../../_images/one-to-one-extend.png"><img alt="Talk dialog to extend a one-to-one call by adding more participants to a group conversation" src="../../_images/one-to-one-extend.png" style="width: 300px;" />
+</a>
+<p>Mura bhfuil úsáideoir ar fáil agus má shocraigh sé stádas <strong>as an oifig</strong> i <code class="docutils literal notranslate"><span class="pre">Socruithe</span> <span class="pre">Pearsanta</span> <span class="pre">&gt;</span> <span class="pre">Infhaighteacht</span></code>, gheobhaidh tú faisnéis bhreise sa chomhrá seo, amhail an cur síos a tugadh, dáta na neamhláithreachta, nó a n-ionadaí.</p>
+<a class="reference internal image-reference" href="../../_images/one-to-one-out-of-office.png"><img alt="Talk showing an out-of-office status message for a user in a one-to-one conversation" src="../../_images/one-to-one-out-of-office.png" style="width: 500px;" />
+</a>
+</section>
+<section id="group-conversations">
+<h2>2. Comhráite grúpa<a class="headerlink" href="#group-conversations" title="Link to this heading"></a></h2>
+<p>Is féidir aon líon daoine a bheith i gcomhrá grúpa. Is féidir leat úsáideoirí inmheánacha, ríomhphoist a sheoladh chuig aíonna, grúpaí nó foirne a chur le comhrá grúpa nuair a chruthaítear é, nó nuair a bhíonn sé ann cheana féin, tríd an táb <code class="docutils literal notranslate"><span class="pre">Rannpháirtithe</span></code>.</p>
+<p>Is féidir comhrá grúpa a roinnt le nasc poiblí, ionas gur féidir le haíonna páirt a ghlacadh i gcomhrá agus i nglao. Is féidir é a oscailt d'úsáideoirí cláraithe (nó d'úsáideoirí ón aip 'Aíonna') freisin, ionas gur féidir leo an comhrá seo a aimsiú agus páirt a ghlacadh ann.</p>
+<a class="reference internal image-reference" href="../../_images/group-public-settings.png"><img alt="Talk conversation settings dialog for group and public access options" src="../../_images/group-public-settings.png" style="width: 400px;" />
+</a>
+</section>
+<section id="note-to-self">
+<h2>3. Nóta dom féin<a class="headerlink" href="#note-to-self" title="Link to this heading"></a></h2>
+<p>Is comhrá speisialta leat féin é seo. Níl aon teorainn le heagarthóireacht ná le scriosadh teachtaireachtaí anseo. Is féidir leat é a úsáid chun:</p>
+<ul class="simple">
+<li><p><strong>Glac nótaí</strong>: scríobh síos smaointe, meabhrúcháin, nó faisnéis thábhachtach ar mhaith leat a choinneáil ar láimh.</p></li>
+<li><p><strong>Cruthaigh liostaí le déanamh</strong>: bain úsáid as comhréir Markdown chun seicliostaí a chruthú le haghaidh tascanna a chaithfidh tú a chur i gcrích.</p></li>
+<li><p><strong>Teachtaireachtaí ar aghaidh ó chomhráite eile</strong>: bain úsáid as an roghchlár teachtaireachtaí chun teachtaireachtaí tábhachtacha ó chomhráite eile a chur ar aghaidh chuig do Nóta duit féin.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/note-to-self.png"><img alt="Talk note-to-self personal conversation for saving messages" src="../../_images/note-to-self.png" style="width: 500px;" />
+</a>
+</section>
+<section id="disposable-conversations">
+<h2>4. Comhráite indiúscartha<a class="headerlink" href="#disposable-conversations" title="Link to this heading"></a></h2>
+<p>Clúdaíonn na comhráite seo roinnt cásanna speisialta agus bíonn siad ann ar feadh tréimhse teoranta ama. Is féidir le riarachán sampla an tréimhse choinneála a chumrú:</p>
+<ul class="simple">
+<li><p><strong>Cruinnithe meandracha</strong>: is féidir na comhráite seo a chruthú le haghaidh cruinnithe tapa, ad hoc. Is féidir iad a thosú láithreach ón Painéal Comhrá.</p></li>
+<li><p><strong>Comhráite imeachta</strong>: cruthaítear iad seo nuair a shocraítear iad mar shuíomh imeachta ag an aip Féilire.</p></li>
+<li><p><strong>Comhráite gutháin</strong>: tá siad seo tiomnaithe do ghlaonna gutháin SIP isteach agus amach (éilíonn sé geata SIP).</p></li>
+<li><p><strong>Fíorú físe</strong>: cruthaítear iad seo nuair a dhéanann duine iarracht rochtain a fháil ar nasc poiblí, atá cosanta ag pasfhocal le fíorú físe (scriostar láithreach tar éis dheireadh an ghlao).</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/instant-meeting-dispose.png"><img alt="Talk instant meeting with option to dispose after use" src="../../_images/instant-meeting-dispose.png" style="width: 500px;" />
+</a>
+<section id="talk-dashboard">
+<h3>Painéal Comhrá<a class="headerlink" href="#talk-dashboard" title="Link to this heading"></a></h3>
+<p>Is é Painéal na Comhrá an mol lárnach atá agat chun do chomhráite a bhainistiú agus rochtain a fháil orthu. Tugann sé forbhreathnú ar do chuid:</p>
+<ul class="simple">
+<li><p>Luaitear agus teachtaireachtaí gan léamh i gcomhráite príobháideacha;</p></li>
+<li><p>Meabhrúcháin teachtaireachtaí, sceidealaithe le dul i ngleic leo níos déanaí;</p></li>
+<li><p>Cruinnithe sceidealaithe, le sonraí imeachta agus cnaipí aicearra chun páirt a ghlacadh iontu;</p></li>
+<li><p>Gníomhartha gearrthéarmacha chun comhráite nua a chruthú, páirt a ghlacadh i gcomhráite oscailte, nó do ghléasanna meán a sheiceáil go tapa.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/talk-dashboard.png"><img alt="Talk dashboard showing recent conversations and shortcut actions" src="../../_images/talk-dashboard.png" style="width: 600px;" />
+</a>
+</section>
+<section id="creating-a-conversation">
+<h3>Comhrá á chruthú<a class="headerlink" href="#creating-a-conversation" title="Link to this heading"></a></h3>
+<p>Is féidir leat comhrá príobháideach (duine le duine) a chruthú trí ainm úsáideora, grúpa nó foirne a chuardach agus cliceáil air. I gcás úsáideora aonair, cruthaítear comhrá láithreach agus is féidir leat do chomhrá a thosú. I gcás grúpa nó ciorcail, is féidir leat ainm agus socruithe a roghnú sula gcruthaíonn tú an comhrá agus sula gcuireann tú na rannpháirtithe leis.</p>
+<a class="reference internal image-reference" href="../../_images/chat-with-one-user.png"><img alt="Talk search dialog to start a private chat with a user" src="../../_images/chat-with-one-user.png" style="width: 400px;" />
+</a>
+<p>Más mian leat comhrá grúpa saincheaptha a chruthú, cliceáil an cnaipe in aice leis an réimse cuardaigh agus an cnaipe scagairí agus ansin ar <code class="docutils literal notranslate"><span class="pre">Cruthaigh</span> <span class="pre">comhrá</span> <span class="pre">nua</span></code>.</p>
+<a class="reference internal image-reference" href="../../_images/create-new-conversation.png"><img alt="Talk button to create a new group conversation" src="../../_images/create-new-conversation.png" style="width: 400px;" />
+</a>
+<p>Ansin is féidir leat ainm a roghnú don chomhrá, cur síos a chur leis, agus avatar a shocrú dó (le grianghraf uaslódáilte nó emoji), agus a roghnú an bhfuil an comhrá oscailte d’úsáideoirí seachtracha agus an féidir le húsáideoirí eile ar an bhfreastalaí an comhrá a fheiceáil agus páirt a ghlacadh ann.</p>
+<a class="reference internal image-reference" href="../../_images/creating-open-conversation.png"><img alt="Talk new conversation setup dialog for name, description, and access type" src="../../_images/creating-open-conversation.png" style="width: 500px;" />
+</a>
+<p>Sa dara céim, is féidir leat rannpháirtithe a chur leis agus cruthú an chomhrá a chríochnú.</p>
+<a class="reference internal image-reference" href="../../_images/add-participants.png"><img alt="Talk participant selection step when creating a new conversation" src="../../_images/add-participants.png" style="width: 500px;" />
+</a>
+<p>Tar éis an deimhnithe, atreorófar chuig an gcomhrá nua thú agus is féidir leat tosú ag cumarsáid láithreach.</p>
+<a class="reference internal image-reference" href="../../_images/new-room.png"><img alt="Talk empty new conversation ready for chatting" src="../../_images/new-room.png" style="width: 700px;" />
+</a>
+</section>
+<section id="filter-your-conversations">
+<h3>Scag do chomhráite<a class="headerlink" href="#filter-your-conversations" title="Link to this heading"></a></h3>
+<p>Is féidir leat do chomhráite a scagadh trí úsáid a bhaint as an gcnaipe scagaire in aice leis an réimse cuardaigh. Tá roinnt roghanna ann le haghaidh scagtha: 1. <strong>Luaitear gan léamh</strong>: féach ar chomhráite príobháideacha gan léamh, nó ar chomhráite grúpa, inar luadh thú. 2. <strong>Teachtaireachtaí gan léamh</strong>: féach ar theachtaireachtaí gan léamh i ngach comhrá ina bhfuil tú páirteach. 3. <strong>Comhráite imeachtaí</strong>: féach ar gach comhrá, a cruthaíodh d’imeachtaí atá le teacht nó san am atá thart.</p>
+<a class="reference internal image-reference" href="../../_images/filters-menu.png"><img alt="Talk conversation list filter menu" src="../../_images/filters-menu.png" style="width: 400px;" />
+</a>
+<p>Ansin is féidir leat an scagaire a ghlanadh ón roghchlár scagairí.</p>
+<a class="reference internal image-reference" href="../../_images/clear-filter.png"><img alt="Talk conversation list with active filter and clear filter option" src="../../_images/clear-filter.png" style="width: 400px;" />
+</a>
+</section>
+<section id="archive-conversations">
+<h3>Cartlannaigh comhráite<a class="headerlink" href="#archive-conversations" title="Link to this heading"></a></h3>
+<p>Is féidir leat comhráite nach gá duit a fheiceáil a thuilleadh i do phríomhliosta comhráite a chartlannú. Nuair a dhéantar comhrá a chartlannú, aistreofar é go dtí an rannán <code class="docutils literal notranslate"><span class="pre">Comhráite</span> <span class="pre">Cartlannaithe</span></code>. Ní bheidh comhrá cartlannaithe le feiceáil i do phríomhliosta comhráite, ach beidh sé fós ailínithe leis an leibhéal fógra atá socraithe ina shocruithe.</p>
+<a class="reference internal image-reference" href="../../_images/archived-conversations-list.png"><img alt="Talk list of archived conversations" src="../../_images/archived-conversations-list.png" style="width: 400px;" />
+</a>
+<p>Is féidir rochtain a fháil ar an liosta ón gcnaipe ag bun an bharra nascleanúna.</p>
+<a class="reference internal image-reference" href="../../_images/archived-conversations-button.png"><img alt="Talk navigation bar showing the archived conversations button" src="../../_images/archived-conversations-button.png" style="width: 400px;" />
+</a>
+</section>
+<section id="managing-a-conversation">
+<h3>Comhrá a bhainistiú<a class="headerlink" href="#managing-a-conversation" title="Link to this heading"></a></h3>
+<p>Is tusa an modhnóir i gcónaí i do chomhrá nua. Sa liosta rannpháirtithe is féidir leat rannpháirtithe eile a ardú céime go modhnóirí ag baint úsáide as an roghchlár <code class="docutils literal notranslate"><span class="pre">...</span></code> ar dheis a n-ainm úsáideora, ceadanna saincheaptha a shannadh dóibh nó iad a bhaint den chomhrá.</p>
+<p>Má athraítear ceadanna úsáideora a chuaigh isteach i gcomhrá poiblí, cuirfear an t-úsáideoir sin leis an gcomhrá go buan freisin.</p>
+<a class="reference internal image-reference" href="../../_images/participant-menu.png"><img alt="Talk participant menu showing permission and moderation options" src="../../_images/participant-menu.png" style="width: 400px;" />
+</a>
+<p>Is féidir le modhnóirí an comhrá a chumrú. Roghnaigh <code class="docutils literal notranslate"><span class="pre">Socruithe</span> <span class="pre">comhrá</span></code> ón roghchlár <code class="docutils literal notranslate"><span class="pre">...</span></code> den chomhrá ag an mbarr chun rochtain a fháil ar na socruithe.</p>
+<a class="reference internal image-reference" href="../../_images/open-settings.png"><img alt="Talk conversation menu with Conversation settings option" src="../../_images/open-settings.png" style="width: 500px;" />
+</a>
+<p>Anseo is féidir leat an cur síos, rochtain aoi, cibé an bhfuil an comhrá le feiceáil ag daoine eile ar an bhfreastalaí agus tuilleadh a chumrú.</p>
+<a class="reference internal image-reference" href="../../_images/conversation-settings-dialog.png"><img alt="Talk conversation settings dialog showing description and access configuration" src="../../_images/conversation-settings-dialog.png" style="width: 600px;" />
+</a>
+</section>
+<section id="ban-participants">
+<h3>Toirmeasc ar rannpháirtithe<a class="headerlink" href="#ban-participants" title="Link to this heading"></a></h3>
+<p>Chun cabhrú le plé a choinneáil sábháilte agus faoi smacht, is féidir le modhnóirí cosc ​​a chur ar rannpháirtithe ó chomhráite. Baineann sé seo le húsáideoirí inmheánacha agus le haíonna araon; i gcás aíonna, cuirfear cosc ​​​​ar a seoladh IP freisin.</p>
+<p>Sa liosta rannpháirtithe, roghnaigh an t-úsáideoir nó an t-aoi, agus cliceáil ar <code class="docutils literal notranslate"><span class="pre">Bain</span> <span class="pre">rannpháirtí</span></code>.</p>
+<a class="reference internal image-reference" href="../../_images/ban-participant.png"><img alt="Talk participant menu with Remove participant option" src="../../_images/ban-participant.png" style="width: 300px;" />
+</a>
+<p>Ansin, múch an bosca seiceála <code class="docutils literal notranslate"><span class="pre">Toirmeasc</span> <span class="pre">ón</span> <span class="pre">gcomhrá</span> <span class="pre">seo</span> <span class="pre">freisin</span></code> agus tabhair cúis leis an toirmeasc. Bainfear an t-úsáideoir toirmiscthe agus cuirfear cosc ​​​​air athpháirt a ghlacadh.</p>
+<a class="reference internal image-reference" href="../../_images/ban-participant-dialog.png"><img alt="Talk dialog to ban a participant with a reason field" src="../../_images/ban-participant-dialog.png" style="width: 400px;" />
+</a>
+<p>Is féidir leat liosta na n-úsáideoirí toirmiscthe a fháil níos déanaí sa rannán <code class="docutils literal notranslate"><span class="pre">Modhnóireacht</span></code> de shocruithe an chomhrá. Anseo, is féidir leat cúis an toirmisc a fheiceáil agus é a aisiompú más gá.</p>
+<a class="reference internal image-reference" href="../../_images/ban-participant-list.png"><img alt="Talk list of banned participants with reasons and revert options" src="../../_images/ban-participant-list.png" style="width: 400px;" />
+</a>
+</section>
+<section id="messages-expiration">
+<h3>Éaga teachtaireachtaí<a class="headerlink" href="#messages-expiration" title="Link to this heading"></a></h3>
+<p>Is féidir le modhnóir am éaga teachtaireachta a chumrú faoi na <code class="docutils literal notranslate"><span class="pre">Socruithe</span> <span class="pre">Comhrá</span></code> laistigh den rannán <code class="docutils literal notranslate"><span class="pre">Modhnóireacht</span></code>. Nuair a shroicheann teachtaireacht a ham éaga, baintear í go huathoibríoch ón gcomhrá. Is iad na tréimhsí éaga atá ar fáil ná 1 uair an chloig, 8 n-uaire an chloig, 1 lá, 1 seachtain, 4 seachtaine, nó riamh (is é sin an socrú réamhshocraithe).</p>
+<a class="reference internal image-reference" href="../../_images/messages-expiration.png"><img alt="Talk conversation settings showing message expiration duration options" src="../../_images/messages-expiration.png" style="width: 500px;" />
+</a>
+</section>
+<section id="notifications-and-privacy">
+<h3>Fógraí agus príobháideacht<a class="headerlink" href="#notifications-and-privacy" title="Link to this heading"></a></h3>
+<p>De réir réamhshocraithe, cuirfidh Nextcloud Talk in iúl duit faoi:</p>
+<ul class="simple">
+<li><p>Teachtaireachtaí nua i gcomhráite príobháideacha;</p></li>
+<li><p>Freagraí ar theachtaireachtaí a sheol tú;</p></li>
+<li><p>Teachtaireachtaí ina luaitear tú féin nó grúpa/foireann ina bhfuil tú i do bhall de;</p></li>
+<li><p>Glaonna tosaithe i gcomhráite ina bhfuil tú páirteach.</p></li>
+</ul>
+<p>Is féidir leat an t-iompar seo a athrú sna socruithe comhrá. Ina theannta sin, is féidir leat a chumrú:</p>
+<ul class="simple">
+<li><p><strong>Important conversations</strong>: you will be always notified about new messages, even if you are in &quot;Do Not Disturb&quot; mode;</p></li>
+<li><p><strong>Comhráite íogaire</strong>: ní thaispeánfar ábhar teachtaireachtaí sa liosta comhráite agus ní bheidh sé le feiceáil i bhfógraí.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/conversation-notifications.png"><img alt="Talk conversation notification settings panel" src="../../_images/conversation-notifications.png" style="width: 300px;" />
+</a>
+<p>Chun níos mó smachta a bheith agat ar do phríobháideacht, is féidir leat infheictheacht do tháscairí clóscríbhneoireachta agus léitheoireachta a chumrú i <code class="docutils literal notranslate"><span class="pre">Socruithe</span> <span class="pre">Comhrá</span></code> freisin:</p>
+<a class="reference internal image-reference" href="../../_images/privacy-settings.png"><img alt="Talk privacy settings for controlling conversation visibility" src="../../_images/privacy-settings.png" style="width: 600px;" />
+</a>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="conversation_index.html" class="btn btn-neutral float-left" title="Comhráite" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="open_conversations.html" class="btn btn-neutral float-right" title="Comhráite oscailte" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 Irish
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl>
+        <dt>🌐 Teangacha</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Leaganacha</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

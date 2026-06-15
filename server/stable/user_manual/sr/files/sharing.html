@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Дељење фајлова &mdash; документација Nextcloud latest User Manual latest</title>
+  <title>File sharing &mdash; документација Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -32,7 +32,7 @@
     <link rel="index" title="Индекс" href="../genindex.html" />
     <link rel="search" title="Претрага" href="../search.html" />
     <link rel="next" title="Вршење анонимних отпремања" href="file_drop.html" />
-    <link rel="prev" title="Using end-to-end encryption" href="using_e2ee.html" />
+    <link rel="prev" title="Sharing &amp; collaboration" href="collaboration.html" />
    
   
 </head>
@@ -53,9 +53,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,42 +72,40 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Увод у корисничко упутство за Nextcloud latest</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud веб интерфејс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Фајлови и синхронизација</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Приступ вашим фајловима употребом Nextcloud веб интерфејса</a></li>
-<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Приступ Nextcloud фајловима преко WebDAV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Управљање обрисаним фајловима</a></li>
-<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Десктоп и мобилна синхронизација</a></li>
-<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Шифровање ваших фајлова на Nextcloud серверу</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Дељење фајлова</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#public-link-shares">Дељења путем јавног линка</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#internal-shares-with-users-and-groups">Интерна дељења са корисницима и групама</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#others-with-access">Остали са приступом</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">File sharing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#public-link-shares">Дељења путем јавног линка</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#internal-shares-with-users-and-groups">Интерна дељења са корисницима и групама</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#others-with-access">Остали са приступом</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#federated-shares">Заједничка дељења</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-federation-share">Креирање новог заједничког дељења</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Додавање јавног дељења на ваш Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#federated-shares">Federated shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Додавање јавног дељења на ваш Nextcloud</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Вршење анонимних отпремања</a></li>
-<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Отпремања великог фајла</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quota.html">Квота складишта</a></li>
-<li class="toctree-l2"><a class="reference internal" href="version_control.html">Контрола верзија</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projects.html">Пројекти</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Пренос власништва</a></li>
-<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Употреба заједничких дељења</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file_drop.html">Вршење анонимних отпремања</a></li>
+<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Using federation shares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfer ownership</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Постављање ваших подешавања</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Универзални приступ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Употреба двофактоске аутентификације</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управљање повезаним прегледачима и уређајима</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Спољно складиште</a></li>
 </ul>
 
         </div>
@@ -116,7 +123,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Фајлови и синхронизација</a></li>
-      <li class="breadcrumb-item active">Дељење фајлова</li>
+          <li class="breadcrumb-item"><a href="collaboration.html">Sharing &amp; collaboration</a></li>
+      <li class="breadcrumb-item active">File sharing</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -127,7 +135,7 @@
            <div itemprop="articleBody">
              
   <section id="file-sharing">
-<h1>Дељење фајлова<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
+<h1>File sharing<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
 <p>Nextcloud корисници могу да деле фајлове и фолдере. Могући су следећи циљеви:</p>
 <ul class="simple">
 <li><p>јавни линкови</p></li>
@@ -139,8 +147,7 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Белешка</p>
-<p>Some options may not be available due to administrative configuration.
-See <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/configuration_files/file_sharing_configuration.html">administrator documentation</a> for details.</p>
+<p>Неке опције можда нису доступне због начина на који је администратор подесио систем. За више детаља погледајте <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html">администраторску документацију</a>.</p>
 </div>
 <section id="public-link-shares">
 <h2>Дељења путем јавног линка<a class="headerlink" href="#public-link-shares" title="Link to this heading"></a></h2>
@@ -148,7 +155,7 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
 <p>Креираће се насумични жетон дужине 15 знакова. Линк ће изгледати овако некако <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/s/yxcFKRWBJqYYzp4</span></code>.</p>
 <p>Већи број опција је доступан за јавна дељења <em>фолдера</em>:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_folder.png" src="../../_images/sharing_public_folder.png" />
+<img alt="Public folder share options." src="../../_images/sharing_public_folder.png" />
 </figure>
 <ul class="simple">
 <li><p><strong>Само за читање</strong> да се дозволи преглед и преузимање</p></li>
@@ -163,41 +170,44 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
 </ul>
 <p>У случају јавних дељења <em>фајла</em>, можете да дозволите уређивање фајла једним од Nextcloud решења за заједничко уређивање:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_public_file.png" src="../../_images/sharing_public_file.png" />
+<img alt="Public file share options." src="../../_images/sharing_public_file.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Белешка</p>
-<p>Заштита лозинком као и датум истека фајла се такође пропагирају употребом Заједничког дељења фајлова почевши од Nextcloud верзије 22.</p>
+<p>Password protection and file expiration are also propagated using Federated File Sharing
+since Nextcloud 22.</p>
 </div>
 </section>
 <section id="internal-shares-with-users-and-groups">
 <h2>Интерна дељења са корисницима и групама<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Link to this heading"></a></h2>
 <p>Када се дели са корисницима, групама, круговима или члановима Talk разговора, права над фајловима или садржајима фолдера могу да се подесе:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal.png" src="../../_images/sharing_internal.png" />
+<img alt="Internal share options." src="../../_images/sharing_internal.png" />
 </figure>
 <p>Као особа којој је подељено, можете да подесите да ли аутоматски желите да се прихвати свако долазно дељење и да се додају у ваш почетни фолдер, или да ли желите да вам се сваки пут постави питање о прихватању или одбијању дељења.</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_internal_acceptNotification.png" src="../../_images/sharing_internal_acceptNotification.png" />
+<img alt="Share acceptance notification." src="../../_images/sharing_internal_acceptNotification.png" />
 </figure>
 <p>Да бисте подесили поставку прихватања, идите на <strong>Подешавања</strong> &gt; <strong>Лично</strong> &gt; <strong>Дељење</strong>:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_autoAcceptSetting.png" src="../../_images/sharing_autoAcceptSetting.png" />
+<img alt="Auto-accept sharing setting." src="../../_images/sharing_autoAcceptSetting.png" />
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Упозорење</p>
-<p>If the owner renames a shared file or folder, the new name will not be reflected on the recipient’s side. This is needed to prevent overwriting existing files or folders on the recipient’s end.</p>
+<p>If the owner renames a shared file or folder, the new name will not be reflected on the
+recipient’s side. This is needed to prevent overwriting existing files or folders on the
+recipient’s end.</p>
 </div>
 </section>
 <section id="others-with-access">
 <h2>Остали са приступом<a class="headerlink" href="#others-with-access" title="Link to this heading"></a></h2>
 <p>Да би сте сазнали да остали путем дељења фолдера који се налази више у хијерархији могу да приступе фајлу или фолдеру, кликните на <strong>Остали са приступом</strong> у картици дељења:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__collapsed.png" src="../../_images/sharing_others-with-access__collapsed.png" />
+<img alt="Others with access panel, collapsed." src="../../_images/sharing_others-with-access__collapsed.png" />
 </figure>
 <p>Листа приказује кориснике, групе, четове итд. који могу да приступе текућем објекту кроз дељење фолдера који се налази изнад у хијерархији:</p>
 <figure class="align-default">
-<img alt="../../_images/sharing_others-with-access__details.png" src="../../_images/sharing_others-with-access__details.png" />
+<img alt="Others with access panel, expanded with user details." src="../../_images/sharing_others-with-access__details.png" />
 </figure>
 <p>Кликните на три тачке да:</p>
 <ul class="simple">
@@ -212,25 +222,27 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
 </section>
 </section>
 <section id="federated-shares">
-<h1>Заједничка дељења<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
+<h1>Federated shares<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
 <p>Заједничка дељења вам омогућавају да монтирате дељења фајла са удаљених Nextcloud сервера, практично креирајући сопствени облак Nextcloud облака. Можете да креирате линкове за директно дељење са корисницима на осталим Nextcloud серверима.</p>
 <section id="creating-a-new-federation-share">
-<h2>Креирање новог заједничког дељења<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
 <p>Заједничко дељење је подразумевано укључено. Следите наредне кораке да креирате ново дељење са другим Nextcloud или ownCloud серверима:</p>
 <p>Идите на своју страницу <code class="docutils literal notranslate"><span class="pre">Фајлови</span></code> и клините на икону Дели фајла или директоријума који желите да поделите. У бочној траци унесите коирничко име и URL удаљеног корисника у следећем облику: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code>. У овом примеру, то је <code class="docutils literal notranslate"><span class="pre">bob&#64;cloud.example.com</span></code>:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-1.png" src="../../_images/share-federation-1.png" />
+<img alt="Entering a federated share address." src="../../_images/share-federation-1.png" />
 </figure>
 <p>Особа са којом се дели прима обавештење у свом Nextcloud и може или да прихвати или да одбије долазно дељење:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-2-notification.png" src="../../_images/share-federation-2-notification.png" />
+<img alt="Federated share acceptance notification." src="../../_images/share-federation-2-notification.png" />
 </figure>
 </section>
 <section id="adding-a-public-share-to-your-nextcloud">
 <h2>Додавање јавног дељења на ваш Nextcloud<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Link to this heading"></a></h2>
-<p>Nextcloud странице дељења јавним линком нуде опцију да се фајл или фолдер додају у вашу Nextcloud инстанцу као заједничко дељење. Једноставно унесите свој <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> као што је приказано за одлазна дељења изнад:</p>
+<p>Nextcloud public link share pages offer an option to add that file or folder as a federated share
+into your own Nextcloud instance.
+Enter your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> as shown for outbound shares above:</p>
 <figure class="align-default">
-<img alt="../../_images/share-federation-3-public.png" src="../../_images/share-federation-3-public.png" />
+<img alt="Adding a public share to your Nextcloud." src="../../_images/share-federation-3-public.png" />
 </figure>
 </section>
 </section>
@@ -239,7 +251,7 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="using_e2ee.html" class="btn btn-neutral float-left" title="Using end-to-end encryption" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="collaboration.html" class="btn btn-neutral float-left" title="Sharing &amp; collaboration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="file_drop.html" class="btn btn-neutral float-right" title="Вршење анонимних отпремања" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -344,16 +356,25 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 Slovenian
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Languages</dt>
         
@@ -522,6 +543,22 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
             </a>
           </dd>
         
@@ -696,6 +733,14 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -703,31 +748,20 @@ See <a class="reference external" href="https://docs.nextcloud.com/server/33/adm
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Преузимања</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>На прочитај документацију</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Почетна страница пројекта</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Изградње</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);

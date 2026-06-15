@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Synchronizing with Android &mdash; Dokumentácia Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -52,9 +52,18 @@
                 <div class="version-switch"></div>
                 <div class="language-switch"></div>
               </div>
+
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -62,7 +71,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest úvodná príručka užívateľa</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud Web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Súbory a synchronizácia</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="contacts.html">Using the Contacts app</a></li>
@@ -84,16 +95,15 @@
 <li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Synchronizing with KDE Kontact</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Synchronizing with the GNOME desktop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Synchronizing with Windows 10</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_migration.html">Migrate data between instances</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Použitie dvojfaktorovej autentifikácie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externé úložisko</a></li>
 </ul>
 
         </div>
@@ -153,7 +163,7 @@ to <strong>Settings</strong>/<strong>More</strong>, tap on „<strong>Sync calen
 <li><p>Now, DAVx⁵ will open Nextcloud’s Webflow login window, where you
 will have to enter your credentials and grant access.</p></li>
 <li><p>DAVx⁵ will open and ask you to create an account. Set the account
-name to one of your choosing, and set <strong>Contact Group Method</strong> to
+name to one of your choosing, and set <strong>Contact group method</strong> to
 <strong>Groups are per-contact categories</strong>.</p></li>
 <li><p>After this, DAVx⁵ will close and the Nextcloud app reappears. In
 order to finish setup, you have to manually launch DAVx⁵ again.</p></li>
@@ -175,10 +185,13 @@ steps are required:</p>
 <li><p>Optionally install OpenTasks (<a class="reference external" href="https://play.google.com/store/apps/details?id=org.dmfs.tasks">Google Play Store</a> or
 <a class="reference external" href="https://f-droid.org/packages/org.dmfs.tasks/">F-Droid</a>).</p></li>
 <li><p>Create a new account („+“ button).</p></li>
-<li><p>Select <strong>Connection with URL and username</strong>.
-<strong>Base URL:</strong> URL of your Nextcloud instance (e.g. <code class="docutils literal notranslate"><span class="pre">https://sub.example.com/remote.php/dav</span></code>) and your credentials.</p></li>
-<li><p>For the <strong>Contact Group Method:</strong> choose the option <code class="docutils literal notranslate"><span class="pre">Groups</span> <span class="pre">are</span> <span class="pre">per-contact</span> <span class="pre">categories</span></code>.</p></li>
-<li><p>Click <strong>Connect</strong>.</p></li>
+<li><p>Select <strong>Connection with URL and username</strong> and complete the form.
+<strong>Base URL</strong> is the URL of your Nextcloud instance (e.g. <code class="docutils literal notranslate"><span class="pre">https://sub.example.com/remote.php/dav</span></code>),
+<strong>Username</strong> is your Nextcloud username, and for <strong>Password</strong> use a <a class="reference internal" href="../session_management.html#managing-devices"><span class="std std-ref">dedicated App password</span></a>
+instead of your account password.</p></li>
+<li><p>Click <strong>Register</strong>.</p></li>
+<li><p>In <strong>Contact group method</strong>, choose the option <code class="docutils literal notranslate"><span class="pre">Groups</span> <span class="pre">are</span> <span class="pre">per-contact</span> <span class="pre">categories</span></code>; then select
+<strong>Create Account</strong>.</p></li>
 <li><p>Select the data you want to sync.</p></li>
 <li><p>When requested, grant access permissions to DAVx⁵ for your
 contacts, calendars and optionally tasks.</p></li>
@@ -315,16 +328,25 @@ to replace your login password with an app password.</p>
   
     
   
+    
+  
+    
+  
   
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
       🌐 sk-SK
-      <span class="fa fa-caret-down"></span>
-       ☁️ latest
-      <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
       <dl>
         <dt>🌐 Languages</dt>
         
@@ -497,6 +519,22 @@ to replace your login password with an app password.</p>
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -665,6 +703,14 @@ to replace your login password with an app password.</p>
           </dd>
         
           <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
@@ -672,31 +718,20 @@ to replace your login password with an app password.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/31/user_manual"
-               
-            >
-              31
-            </a>
-          </dd>
-        
-      </dl>
-      <dl>
-        <dt>Stiahnuté</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>On Read the Docs</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Domovská stránka projektu</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Zostavenia</a>
-        </dd>
       </dl>
     </div>
   </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
 <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
