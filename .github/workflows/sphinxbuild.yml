@@ -59,6 +59,40 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
+      - name: Get stable branches
+        if: github.ref == 'refs/heads/master' || github.base_ref == 'master'
+        id: stable_branches
+        run: |
+          branches=$(git ls-remote --heads origin "heads/stable[0-9][0-9]" \
+            | awk '{gsub(/^refs\/heads\/stable/, "", $2); print $2}' \
+            | sort -n -r | tr '\n' ' ')
+          echo "branches=$branches" >> $GITHUB_OUTPUT
+
+      - name: Setup PHP for version validation
+        if: github.ref == 'refs/heads/master' || github.base_ref == 'master'
+        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # v2.37.1
+
+      - name: Validate version constants in conf.py
+        if: github.ref == 'refs/heads/master' || github.base_ref == 'master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          eval $(php build/detect-versions.php ${{ steps.stable_branches.outputs.branches }})
+
+          conf_stable=$(grep -m1 '^\s*version_stable\s*=' conf.py | grep -o '[0-9]\+')
+          conf_start=$(grep -m1 '^\s*version_start\s*='  conf.py | grep -o '[0-9]\+')
+
+          err=0
+          if [ "$highest_stable" != "$conf_stable" ]; then
+            echo "::error::version_stable in conf.py ($conf_stable) != highest released stable ($highest_stable). Update conf.py."
+            err=1
+          fi
+          if [ "$lowest_stable" != "$conf_start" ]; then
+            echo "::error::version_start in conf.py ($conf_start) != lowest existing stable branch ($lowest_stable). Update conf.py."
+            err=1
+          fi
+          exit $err
+
       - name: Set up Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
@@ -242,7 +276,10 @@ jobs:
           if [[ "$branch" == stable* ]]; then
             echo "release=${branch#stable}" >> $GITHUB_OUTPUT
           else
-            echo "release=latest" >> $GITHUB_OUTPUT
+            # For master (latest), derive the dev version from conf.py so the
+            # PDF cover shows a real version number rather than "latest".
+            version_stable=$(grep -m1 '^\s*version_stable\s*=' conf.py | grep -o '[0-9]\+')
+            echo "release=$((version_stable + 1))" >> $GITHUB_OUTPUT
           fi
 
       - name: Build pdf documentation

@@ -68,7 +68,7 @@
             aria-controls="rst-other-versions-user">
       🌐 {{ language_names.get(language, language) }}
       <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ {{ current_version }}
+       ☁️ {{ display_version }}
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
@@ -90,14 +90,14 @@
     <div class="rst-other-versions">
       <dl>
         <dt>☁️ {{ _('Versions') }}</dt>
-        {% for slug, url in versions|reverse %}
+        {% for slug, url, label in versions|reverse %}
           <dd style="width: 32%">
             <a href="{{ url }}"
                {% if current_version == slug %}
                style="color: var(--dark-link-color);"
                {% endif %}
             >
-              {{ slug }}
+              {{ label }}
             </a>
           </dd>
         {% endfor %}
