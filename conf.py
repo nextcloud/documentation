@@ -56,35 +56,61 @@ html_logo = "../_shared_assets/static/logo-white.png"
 # disable including the reST sources in HTML builds (in _sources/) (default is True)
 html_copy_source = False
 
+# building the versions list
+# Update version_start when the lowest stableNN branch is deleted (version goes EoL).
+# Update version_stable when a new NC release ships (highest stableNN branch added).
+version_start = 32		# oldest documented version
+
+						# latest released stable — CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
+version_stable = 34		# mapped to https://docs.nextcloud.com/server/stable/
+
+import re as _re
+# Detect stable branch version for display purposes.
+# For PRs: GITHUB_BASE_REF is the target branch (e.g. 'stable33').
+# For direct pushes: GITHUB_REF is 'refs/heads/stable33'.
+_base = os.environ.get('GITHUB_BASE_REF', '')
+_ref  = os.environ.get('GITHUB_REF', '')
+_stable_ver = (
+    _re.match(r'^stable(\d+)$', _base)
+    or _re.match(r'^refs/heads/stable(\d+)$', _ref)
+)
+display_version = (
+    release if release != 'latest'                    # PDF/ePub builds (DOCS_RELEASE set)
+    else _stable_ver.group(1) if _stable_ver          # stableNN branches and PRs targeting them
+    else str(version_stable + 1)                      # master
+)
+
+# Also search for "TODO ON RELEASE" in the rst files
+
 # substitutions go here
 rst_epilog = """
 .. |version| replace:: %s
-""" % (release)
+""" % (display_version)
 
 # Replace hardcoded /latest/ URLs in all .rst source files with the actual release
 def replace_latest(app, docname, source):
     if release != 'latest':
         source[0] = source[0].replace('/server/latest/', '/server/%s/' % release)
- 
+
 def setup(app):
     app.connect('source-read', replace_latest)
 
-
-# building the versions list
-version_start = 31		# THIS IS THE OLDEST SUPPORTED VERSION NUMBER
-
-						# THIS IS THE VERSION THAT IS MAPPED TO https://docs.nextcloud.com/server/stable/
-version_stable = 32		# CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
-
-# Also search for "TODO ON RELEASE" in the rst files
-
 def generateVersionsDocs(current_docs):
 	versions_doc = []
-	for v in range(version_start, version_stable + 1):
+
+	# If viewing an unsupported (older than version_start) branch, prepend it so it
+	# appears last after the template's |reverse — e.g. "26 (unsupported)" at the bottom.
+	if _stable_ver:
+		branch_ver = int(_stable_ver.group(1))
+		if branch_ver < version_start:
+			url = 'https://docs.nextcloud.com/server/%s/%s' % (str(branch_ver), current_docs)
+			versions_doc.append((branch_ver, url, '%s (unsupported)' % branch_ver))
+
+	for v in range(version_start, version_stable):
 		url = 'https://docs.nextcloud.com/server/%s/%s' % (str(v), current_docs)
-		versions_doc.append(tuple((v, url)))
-	versions_doc.append(tuple(('stable', 'https://docs.nextcloud.com/server/%s/%s' % ('stable', current_docs))))
-	versions_doc.append(tuple(('latest', 'https://docs.nextcloud.com/server/%s/%s' % ('latest', current_docs))))
+		versions_doc.append((v, url, str(v)))
+	versions_doc.append(('stable', 'https://docs.nextcloud.com/server/stable/%s' % current_docs, '%s (stable)' % version_stable))
+	versions_doc.append(('latest', 'https://docs.nextcloud.com/server/latest/%s' % current_docs, '%s (latest)' % str(version_stable + 1)))
 	return versions_doc
 
 if version.isdigit():
@@ -93,7 +119,8 @@ else:
 	github_branch = 'master'
 
 html_context = {
-	'current_version': version,
+	'current_version': int(_stable_ver.group(1)) if _stable_ver else version,
+	'display_version': display_version,
 	'READTHEDOCS': True,
 
 	# force github plugin
