@@ -57,10 +57,20 @@ html_logo = "../_shared_assets/static/logo-white.png"
 html_copy_source = False
 
 # building the versions list
-version_start = 31		# THIS IS THE OLDEST SUPPORTED VERSION NUMBER
+# Update version_start when the lowest stableNN branch is deleted (version goes EoL).
+# Update version_stable when a new NC release ships (highest stableNN branch added).
+version_start = 32		# oldest documented version
 
-						# THIS IS THE VERSION THAT IS MAPPED TO https://docs.nextcloud.com/server/stable/
-version_stable = 32		# CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
+						# latest released stable — CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
+version_stable = 34		# mapped to https://docs.nextcloud.com/server/stable/
+
+import re as _re
+_stable_branch = _re.match(r'refs/heads/stable(\d+)$', os.environ.get('GITHUB_REF', ''))
+display_version = (
+    release if release != 'latest'                   # PDF/ePub builds (DOCS_RELEASE set)
+    else _stable_branch.group(1) if _stable_branch   # HTML builds on stableNN branches
+    else str(version_stable + 1)                     # HTML builds on master
+)
 
 # Also search for "TODO ON RELEASE" in the rst files
 
