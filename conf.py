@@ -101,7 +101,7 @@ def generateVersionsDocs(current_docs):
 		url = 'https://docs.nextcloud.com/server/%s/%s' % (str(v), current_docs)
 		versions_doc.append((v, url, str(v)))
 	versions_doc.append(('stable', 'https://docs.nextcloud.com/server/stable/%s' % current_docs, '%s (stable)' % version_stable))
-	versions_doc.append(('latest', 'https://docs.nextcloud.com/server/latest/%s' % current_docs, '%s (latest)' % display_version))
+	versions_doc.append(('latest', 'https://docs.nextcloud.com/server/latest/%s' % current_docs, '%s (latest)' % str(version_stable + 1)))
 	return versions_doc
 
 if version.isdigit():
