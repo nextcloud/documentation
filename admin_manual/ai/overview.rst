@@ -427,12 +427,23 @@ section:
    After=network.target docker.service
    Requires=docker.service
 
-and call ``occ`` through ``docker exec`` in ``taskprocessing.sh`` instead of running it locally:
+and call ``occ`` through ``docker exec`` in ``taskprocessing.sh`` instead of running it locally. The
+``[Unit]`` ordering above only waits for the Docker daemon, not for the ``nextcloud-aio-nextcloud``
+container, so the script waits until that container reports healthy before running ``occ`` (the AIO image
+ships a healthcheck for php-fpm and the database). Without this wait the worker would exit immediately
+after a host reboot and, with ``Restart=always``, hit systemd's start-rate limit and stay down until a
+manual reset:
 
 .. code-block:: bash
 
    #!/bin/sh
    echo "Starting Nextcloud AI Worker $1"
+   i=0
+   until [ "$(docker inspect -f '{{.State.Health.Status}}' nextcloud-aio-nextcloud 2>/dev/null)" = healthy ]; do
+       i=$((i + 1))
+       [ "$i" -ge 60 ] && echo "nextcloud-aio-nextcloud not healthy after 5 min" && exit 1
+       sleep 5
+   done
    docker exec -i nextcloud-aio-nextcloud sudo -E -u www-data php occ taskprocessing:worker -v -t 60
 
 Use ``docker exec -i`` without ``-t``: systemd does not allocate a pseudo-TTY, so adding ``-t`` makes the
