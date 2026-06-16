@@ -208,7 +208,8 @@ broken for page display and result in an invalid configuration files.</p></li>
 <p>The following configuration should be used when Nextcloud is placed in the
 webroot of your nginx installation. In this example it is
 <code class="docutils literal notranslate"><span class="pre">/var/www/nextcloud</span></code> and it is accessed via <code class="docutils literal notranslate"><span class="pre">http(s)://cloud.example.com/</span></code></p>
-<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="c1"># Version 2025-07-23</span>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nextcloud nginx configuration — root installation</span>
+<span class="c1"># Version 2026-06-09</span>
 
 <span class="k">upstream</span><span class="w"> </span><span class="s">php-handler</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
@@ -358,10 +359,16 @@ webroot of your nginx installation. In this example it is
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/)</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/(?:\.|autotest|occ|issue|indie|db_|console)</span><span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1"># Ensure this block, which passes PHP files to the PHP process, is above the blocks</span>
-<span class="w">    </span><span class="c1"># which handle static assets (as seen below). If this block is not declared first,</span>
-<span class="w">    </span><span class="c1"># then Nginx will encounter an infinite rewriting loop when it prepends `/index.php`</span>
-<span class="w">    </span><span class="c1"># to the URI, resulting in a HTTP 500 error response.</span>
+<span class="w">    </span><span class="c1"># Hide metadata files which would otherwise be served as plain files and</span>
+<span class="w">    </span><span class="c1"># leak dependency information (composer.json, package.json, core/shipped.json).</span>
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/(?:composer\.(?:json|lock)|package(?:-lock)?\.json|core/shipped\.json)$</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1"># Pass PHP requests to PHP-FPM.</span>
+<span class="w">    </span><span class="c1">#</span>
+<span class="w">    </span><span class="c1"># Important: this block must appear above the static asset locations</span>
+<span class="w">    </span><span class="c1"># below. Those locations fall back to `/index.php$request_uri`; if</span>
+<span class="w">    </span><span class="c1"># they appear first, nginx can repeatedly rewrite to `/index.php`,</span>
+<span class="w">    </span><span class="c1"># causing an internal redirection loop.</span>
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.php(?:$|/)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1"># Required for legacy support</span>
 <span class="w">        </span><span class="kn">rewrite</span><span class="w"> </span><span class="s">^/(?!index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+|.+\/richdocumentscode(_arm64)?\/proxy)</span><span class="w"> </span><span class="s">/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
@@ -437,7 +444,8 @@ The configuration differs from the “Nextcloud in webroot” configuration abov
 <li><p>The blocks that handle requests for paths outside of <code class="docutils literal notranslate"><span class="pre">/nextcloud</span></code> (i.e. <code class="docutils literal notranslate"><span class="pre">/robots.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">/.well-known</span></code>) are pulled out of the <code class="docutils literal notranslate"><span class="pre">location</span> <span class="pre">^~</span> <span class="pre">/nextcloud</span></code> block.</p></li>
 <li><p>The block which handles <cite>/.well-known</cite> doesn’t need a regex exception, since the rule which prevents users from accessing hidden folders at the root of the Nextcloud installation no longer matches that path.</p></li>
 </ul>
-<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="c1"># Version 2025-07-23</span>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nextcloud nginx configuration — subdirectory installation (/nextcloud)</span>
+<span class="c1"># Version 2026-06-09</span>
 
 <span class="k">upstream</span><span class="w"> </span><span class="s">php-handler</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
@@ -586,10 +594,16 @@ The configuration differs from the “Nextcloud in webroot” configuration abov
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/)</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/nextcloud/(?:\.|autotest|occ|issue|indie|db_|console)</span><span class="w">                  </span><span class="p">{</span><span class="w"> </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">        </span><span class="c1"># Ensure this block, which passes PHP files to the PHP process, is above the blocks</span>
-<span class="w">        </span><span class="c1"># which handle static assets (as seen below). If this block is not declared first,</span>
-<span class="w">        </span><span class="c1"># then Nginx will encounter an infinite rewriting loop when it prepends</span>
-<span class="w">        </span><span class="c1"># `/nextcloud/index.php` to the URI, resulting in a HTTP 500 error response.</span>
+<span class="w">        </span><span class="c1"># Hide metadata files which would otherwise be served as plain files and</span>
+<span class="w">        </span><span class="c1"># leak dependency information (composer.json, package.json, core/shipped.json).</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/nextcloud/(?:composer\.(?:json|lock)|package(?:-lock)?\.json|core/shipped\.json)$</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1"># Pass PHP requests to PHP-FPM.</span>
+<span class="w">        </span><span class="c1">#</span>
+<span class="w">        </span><span class="c1"># Important: this block must appear above the static asset locations</span>
+<span class="w">        </span><span class="c1"># below. Those locations fall back to `/nextcloud/index.php$request_uri`;</span>
+<span class="w">        </span><span class="c1"># if they appear first, nginx can repeatedly rewrite to</span>
+<span class="w">        </span><span class="c1"># `/nextcloud/index.php`, causing an internal redirection loop.</span>
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.php(?:$|/)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1"># Required for legacy support</span>
 <span class="w">            </span><span class="kn">rewrite</span><span class="w"> </span><span class="s">^/nextcloud/(?!index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+|.+\/richdocumentscode(_arm64)?\/proxy)</span><span class="w"> </span><span class="s">/nextcloud/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
