@@ -226,7 +226,7 @@ broken for page display and result in an invalid configuration files.</p></li>
 webroot of your nginx installation. In this example it is
 <code class="docutils literal notranslate"><span class="pre">/var/www/nextcloud</span></code> and it is accessed via <code class="docutils literal notranslate"><span class="pre">http(s)://cloud.example.com/</span></code></p>
 <div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nextcloud nginx configuration — root installation</span>
-<span class="c1"># Version 2026-03-26</span>
+<span class="c1"># Version 2026-06-09</span>
 
 <span class="c1"># PHP-FPM backend.</span>
 <span class="k">upstream</span><span class="w"> </span><span class="s">php-handler</span><span class="w"> </span><span class="p">{</span>
@@ -379,6 +379,10 @@ webroot of your nginx installation. In this example it is
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/)</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/(?:\.|autotest|occ|issue|indie|db_|console)</span><span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
+<span class="w">    </span><span class="c1"># Hide metadata files which would otherwise be served as plain files and</span>
+<span class="w">    </span><span class="c1"># leak dependency information (composer.json, package.json, core/shipped.json).</span>
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/(?:composer\.(?:json|lock)|package(?:-lock)?\.json|core/shipped\.json)$</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
 <span class="w">    </span><span class="c1"># Pass PHP requests to PHP-FPM.</span>
 <span class="w">    </span><span class="c1">#</span>
 <span class="w">    </span><span class="c1"># Important: this block must appear above the static asset locations</span>
@@ -491,7 +495,7 @@ The configuration differs from the “Nextcloud in webroot” configuration abov
 <li><p>The block which handles <cite>/.well-known</cite> doesn’t need a regex exception, since the rule which prevents users from accessing hidden folders at the root of the Nextcloud installation no longer matches that path.</p></li>
 </ul>
 <div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nextcloud nginx configuration — subdirectory installation (/nextcloud)</span>
-<span class="c1"># Version 2026-03-26</span>
+<span class="c1"># Version 2026-06-09</span>
 
 <span class="c1"># PHP-FPM backend.</span>
 <span class="k">upstream</span><span class="w"> </span><span class="s">php-handler</span><span class="w"> </span><span class="p">{</span>
@@ -643,6 +647,10 @@ The configuration differs from the “Nextcloud in webroot” configuration abov
 <span class="w">        </span><span class="c1"># Rules borrowed from `.htaccess` to hide certain paths from clients</span>
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/)</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/nextcloud/(?:\.|autotest|occ|issue|indie|db_|console)</span><span class="w">                  </span><span class="p">{</span><span class="w"> </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1"># Hide metadata files which would otherwise be served as plain files and</span>
+<span class="w">        </span><span class="c1"># leak dependency information (composer.json, package.json, core/shipped.json).</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/nextcloud/(?:composer\.(?:json|lock)|package(?:-lock)?\.json|core/shipped\.json)$</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
 <span class="w">        </span><span class="c1"># Pass PHP requests to PHP-FPM.</span>
 <span class="w">        </span><span class="c1">#</span>

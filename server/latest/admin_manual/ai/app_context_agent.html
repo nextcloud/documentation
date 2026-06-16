@@ -122,13 +122,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#circles-teams-tools">Circles/teams tools</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#contacts-tools">Contacts tools</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cookbook-tools">Cookbook tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#deck-tools">Deck tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deck-tools-require-deck">Deck tools (require Deck)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#files-tools">Files tools</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#forms-tools">Forms tools</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bookmarks-tools">Bookmarks tools</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#search-tools">Search tools</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#share-tools">Share tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#talk-tools">Talk tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#talk-tools-require-talk">Talk tools (require Talk)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mail-tools-require-mail">Mail tools (require Mail)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#miscellaneous-tools">Miscellaneous tools</a></li>
 </ul>
@@ -405,12 +405,17 @@ Tool groups are only available if their requirements are met. They can be en- an
 </li>
 </ul>
 </section>
-<section id="deck-tools">
-<h3>Deck tools<a class="headerlink" href="#deck-tools" title="Link to this heading"></a></h3>
+<section id="deck-tools-require-deck">
+<h3>Deck tools (require <a class="reference external" href="https://apps.nextcloud.com/apps/deck">Deck</a>)<a class="headerlink" href="#deck-tools-require-deck" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>List deck boards</p>
 <ul>
 <li><p>Example prompt: <em>“List the deck boards I have access to.”</em></p></li>
+</ul>
+</li>
+<li><p>List the cards on a deck board</p>
+<ul>
+<li><p>Example prompt: <em>“List the cards on my Personal deck board.”</em></p></li>
 </ul>
 </li>
 <li><p>Add a new card</p>
@@ -431,6 +436,26 @@ Tool groups are only available if their requirements are met. They can be en- an
 <li><p>Delete a card</p>
 <ul>
 <li><p>Example prompt: <em>“Delete the ‘Repair kitchen sink’ card in my Personal deck board.”</em></p></li>
+</ul>
+</li>
+<li><p>List the comments on a deck card</p>
+<ul>
+<li><p>Example prompt: <em>“Show the comments on the ‘Repair kitchen sink’ card in my Personal deck board.”</em></p></li>
+</ul>
+</li>
+<li><p>Add a comment to a deck card</p>
+<ul>
+<li><p>Example prompt: <em>“Add a comment ‘I’ll handle this Friday’ to ‘Repair kitchen sink’ in my Personal deck board.”</em></p></li>
+</ul>
+</li>
+<li><p>Edit a comment on a deck card</p>
+<ul>
+<li><p>Example prompt: <em>“Update my last comment on the ‘Repair kitchen sink’ card to say ‘Moved to Saturday’.”</em></p></li>
+</ul>
+</li>
+<li><p>Delete a comment on a deck card</p>
+<ul>
+<li><p>Example prompt: <em>“Delete my last comment on the ‘Repair kitchen sink’ card in my Personal deck board.”</em></p></li>
 </ul>
 </li>
 </ul>
@@ -612,27 +637,83 @@ Tool groups are only available if their requirements are met. They can be en- an
 </ul>
 </div></blockquote>
 </section>
-<section id="talk-tools">
-<h3>Talk tools<a class="headerlink" href="#talk-tools" title="Link to this heading"></a></h3>
+<section id="talk-tools-require-talk">
+<h3>Talk tools (require <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)<a class="headerlink" href="#talk-tools-require-talk" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>List the user’s talk conversations (requires <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)</p>
+<li><p>List the user’s talk conversations</p>
 <ul>
 <li><p>Example prompt: <em>“List my talk conversations”</em></p></li>
 </ul>
 </li>
-<li><p>List messages in a talk conversation (requires <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)</p>
+<li><p>List messages in a talk conversation</p>
 <ul>
 <li><p>Example prompt: <em>“List the latest messages in my conversation with Andrew”</em></p></li>
 </ul>
 </li>
-<li><p>Send a message to a talk conversation (requires <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)</p>
+<li><p>Send a message to a talk conversation</p>
 <ul>
 <li><p>Example prompt: <em>“Can you send a joke to Andrew in talk?”</em></p></li>
 </ul>
 </li>
-<li><p>Create a public talk conversation (requires <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)</p>
+<li><p>Create a public talk conversation</p>
 <ul>
 <li><p>Example prompt: <em>“Can you create a new public talk conversation titled ‘Press conference’?”</em></p></li>
+</ul>
+</li>
+<li><p>Reply to a specific message in a talk conversation</p>
+<ul>
+<li><p>Example prompt: <em>“Reply to Andrew’s last message in our talk conversation with ‘Got it, thanks!’”</em></p></li>
+</ul>
+</li>
+<li><p>Add an emoji reaction to a message in a talk conversation</p>
+<ul>
+<li><p>Example prompt: <em>“React with 👍 to Andrew’s last message in our talk conversation”</em></p></li>
+</ul>
+</li>
+<li><p>Remove an emoji reaction from a message in a talk conversation</p>
+<ul>
+<li><p>Example prompt: <em>“Remove my 👍 reaction from Andrew’s last message”</em></p></li>
+</ul>
+</li>
+<li><p>List the reactions on a message in a talk conversation</p>
+<ul>
+<li><p>Example prompt: <em>“Who reacted to Andrew’s last message in our talk conversation?”</em></p></li>
+</ul>
+</li>
+<li><p>Create a poll in a talk conversation</p>
+<ul>
+<li><p>Example prompt: <em>“Create a poll in the ‘Team standup’ conversation asking ‘Which day works for the offsite?’
+with options Monday, Tuesday, Wednesday”</em></p></li>
+</ul>
+</li>
+<li><p>Get the question, options, and current results of a poll in a talk conversation</p>
+<ul>
+<li><p>Example prompt: <em>“Show the current results of the offsite poll in the ‘Team standup’ conversation”</em></p></li>
+</ul>
+</li>
+<li><p>Cast a vote on a poll in a talk conversation</p>
+<ul>
+<li><p>Example prompt: <em>“Vote for Tuesday on the offsite poll in the ‘Team standup’ conversation”</em></p></li>
+</ul>
+</li>
+<li><p>Close a poll in a talk conversation</p>
+<ul>
+<li><p>Example prompt: <em>“Close the offsite poll in the ‘Team standup’ conversation”</em></p></li>
+</ul>
+</li>
+<li><p>Share a Nextcloud Files item to a talk conversation</p>
+<ul>
+<li><p>Example prompt: <em>“Share the file ‘Q3 plan.pdf’ to my conversation with Andrew”</em></p></li>
+</ul>
+</li>
+<li><p>List items of a given type (e.g. file, location, poll) that were shared in a talk conversation</p>
+<ul>
+<li><p>Example prompt: <em>“List the files shared in my conversation with Andrew”</em></p></li>
+</ul>
+</li>
+<li><p>Get an overview of items shared in a talk conversation across all types</p>
+<ul>
+<li><p>Example prompt: <em>“Give me an overview of what’s been shared in my conversation with Andrew”</em></p></li>
 </ul>
 </li>
 </ul>
