@@ -47,7 +47,7 @@ html_theme_options = {
 	'logo_only': True,
 	'navigation_with_keys': True,
 	'style_external_links': True,
-	'version_selector': False,
+	# version_selector not supported in sphinx-rtd-theme < 3.x
 }
 
 # relative path to subdirectories
