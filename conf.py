@@ -64,7 +64,13 @@ version_start = 32		# oldest documented version
 
 						# latest released stable — CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
 version_stable = 34		# mapped to https://docs.nextcloud.com/server/stable/
-display_version = release if release != 'latest' else str(version_stable + 1)
+import re as _re
+_stable_branch = _re.match(r'refs/heads/stable(\d+)$', os.environ.get('GITHUB_REF', ''))
+display_version = (
+    release if release != 'latest'          # PDF/ePub builds (DOCS_RELEASE set)
+    else _stable_branch.group(1) if _stable_branch  # HTML builds on stableNN branches
+    else str(version_stable + 1)            # HTML builds on master
+)
 
 # Also search for "TODO ON RELEASE" in the rst files
 
