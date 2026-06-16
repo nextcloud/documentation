@@ -48,34 +48,40 @@ html_theme_options = {
 html_logo = "../_shared_assets/static/logo-white.png"
 
 # substitutions go here
+display_version = '31'
 rst_epilog = """
 .. |version| replace:: %s
-""" % (release)
+""" % (display_version)
 
 # Replace hardcoded /latest/ URLs in all .rst source files with the actual release
 def replace_latest(app, docname, source):
     if release != 'latest':
         source[0] = source[0].replace('/server/latest/', '/server/%s/' % release)
- 
+
 def setup(app):
     app.connect('source-read', replace_latest)
 
 
 # building the versions list
-version_start = 28		# THIS IS THE OLDEST SUPPORTED VERSION NUMBER
+version_start = 32		# oldest documented version
 
-						# THIS IS THE VERSION THAT IS MAPPED TO https://docs.nextcloud.com/server/stable/
-version_stable = 30		# CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
+						# latest released stable — CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
+version_stable = 34		# mapped to https://docs.nextcloud.com/server/stable/
 
 # Also search for "TODO ON RELEASE" in the rst files
 
 def generateVersionsDocs(current_docs):
 	versions_doc = []
-	for v in range(version_start, version_stable + 1):
+	# Prepend this unsupported branch so it appears last after |reverse
+	branch_ver = int(display_version)
+	if branch_ver < version_start:
+		url = 'https://docs.nextcloud.com/server/%s/%s' % (display_version, current_docs)
+		versions_doc.append((branch_ver, url, '%s (unsupported)' % display_version))
+	for v in range(version_start, version_stable):
 		url = 'https://docs.nextcloud.com/server/%s/%s' % (str(v), current_docs)
-		versions_doc.append(tuple((v, url)))
-	versions_doc.append(tuple(('stable', 'https://docs.nextcloud.com/server/%s/%s' % ('stable', current_docs))))
-	versions_doc.append(tuple(('latest', 'https://docs.nextcloud.com/server/%s/%s' % ('latest', current_docs))))
+		versions_doc.append((v, url, str(v)))
+	versions_doc.append(('stable', 'https://docs.nextcloud.com/server/stable/%s' % current_docs, '%s (stable)' % version_stable))
+	versions_doc.append(('latest', 'https://docs.nextcloud.com/server/latest/%s' % current_docs, '%s (latest)' % str(version_stable + 1)))
 	return versions_doc
 
 if version.isdigit():
@@ -84,7 +90,8 @@ else:
 	github_branch = 'master'
 
 html_context = {
-	'current_version': version,
+	'current_version': int(display_version),
+	'display_version': display_version,
 	'READTHEDOCS': True,
 
 	# force github plugin
