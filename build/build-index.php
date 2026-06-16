@@ -124,6 +124,7 @@ if (isset($released_branches[$branches[0]])) {
 fwrite(STDERR, "➡️ Version $devVersion ($devStatus)\n");
 
 // Collect released stable versions within support window
+$oneYearAgo = time() - (365 * 24 * 60 * 60);
 $stableVersions = [];
 foreach ($branches as $branch) {
 	if (isset($released_branches[$branch]) && $released_branches[$branch] >= $oneYearAgo) {
