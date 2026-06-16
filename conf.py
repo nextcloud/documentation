@@ -64,7 +64,21 @@ version_start = 32		# oldest documented version
 
 						# latest released stable — CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
 version_stable = 34		# mapped to https://docs.nextcloud.com/server/stable/
-display_version = release if release != 'latest' else str(version_stable + 1)
+import re as _re
+# Detect stable branch version for display purposes.
+# For PRs: GITHUB_BASE_REF is the target branch (e.g. 'stable34').
+# For direct pushes: GITHUB_REF is 'refs/heads/stable34'.
+_base = os.environ.get('GITHUB_BASE_REF', '')
+_ref  = os.environ.get('GITHUB_REF', '')
+_stable_ver = (
+    _re.match(r'^stable(\d+)$', _base)
+    or _re.match(r'^refs/heads/stable(\d+)$', _ref)
+)
+display_version = (
+    release if release != 'latest'                    # PDF/ePub builds (DOCS_RELEASE set)
+    else _stable_ver.group(1) if _stable_ver          # stableNN branches and PRs targeting them
+    else str(version_stable + 1)                      # master
+)
 
 # Also search for "TODO ON RELEASE" in the rst files
 
@@ -96,7 +110,7 @@ else:
 	github_branch = 'master'
 
 html_context = {
-	'current_version': version,
+	'current_version': int(_stable_ver.group(1)) if _stable_ver else version,
 	'display_version': display_version,
 	'READTHEDOCS': True,
 
