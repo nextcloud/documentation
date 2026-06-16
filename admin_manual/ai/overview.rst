@@ -416,6 +416,28 @@ The complete logs of the workers can be checked with (replace 1 with the worker 
 
    journalctl -xeu nextcloud-ai-worker@1.service -f
 
+If your Nextcloud runs inside a Docker container (for example with Nextcloud AIO), the worker has to run
+*inside* the container. Make the service unit shown above wait for Docker by extending its ``[Unit]``
+section:
+
+.. code-block:: ini
+
+   [Unit]
+   Description=Nextcloud AI worker %i
+   After=network.target docker.service
+   Requires=docker.service
+
+and call ``occ`` through ``docker exec`` in ``taskprocessing.sh`` instead of running it locally:
+
+.. code-block:: bash
+
+   #!/bin/sh
+   echo "Starting Nextcloud AI Worker $1"
+   docker exec -i nextcloud-aio-nextcloud sudo -E -u www-data php occ taskprocessing:worker -v -t 60
+
+Use ``docker exec -i`` without ``-t``: systemd does not allocate a pseudo-TTY, so adding ``-t`` makes the
+command fail with ``the input device is not a TTY``.
+
 
 Frequently Asked Questions
 --------------------------
