@@ -59,6 +59,50 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
+      - name: Validate version constants in conf.py
+        if: github.ref == 'refs/heads/master' || github.base_ref == 'master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # version_stable: highest stableNN branch whose vN.0.0 release actually exists.
+          # Mirrors the is_version_released() check in build/build-index.php and stage-and-check.
+          # A branch that exists but has no release yet (e.g. RC phase) must be skipped.
+          highest_stable=""
+          for n in $(git ls-remote --heads origin \
+              | sed -n 's?.*refs/heads/stable\([0-9]\{2\}\)$?\1?p' | sort -n -r); do
+            repo=$( [ "$n" -ge 32 ] && echo "nextcloud-releases/server" || echo "nextcloud/server" )
+            status=$(curl -s -o /dev/null -w "%{http_code}" \
+              -H "Authorization: token ${GITHUB_TOKEN}" \
+              "https://api.github.com/repos/${repo}/releases/tags/v${n}.0.0")
+            if [ "$status" = "200" ]; then
+              highest_stable="$n"
+              break
+            fi
+          done
+
+          # version_start: lowest stableNN branch that still exists (branch existence = still documented).
+          lowest_stable=$(git ls-remote --heads origin \
+            | sed -n 's?.*refs/heads/stable\([0-9]\{2\}\)$?\1?p' \
+            | sort -n | head -1)
+
+          conf_stable=$(grep -m1 '^\s*version_stable\s*=' conf.py | grep -o '[0-9]\+')
+          conf_start=$(grep -m1 '^\s*version_start\s*='  conf.py | grep -o '[0-9]\+')
+
+          err=0
+          if [ -z "$highest_stable" ]; then
+            echo "::error::Could not detect any released stable branch."
+            exit 1
+          fi
+          if [ "$highest_stable" != "$conf_stable" ]; then
+            echo "::error::version_stable in conf.py ($conf_stable) != highest released stable ($highest_stable). Update conf.py."
+            err=1
+          fi
+          if [ "$lowest_stable" != "$conf_start" ]; then
+            echo "::error::version_start in conf.py ($conf_start) != lowest existing stable branch ($lowest_stable). Update conf.py."
+            err=1
+          fi
+          exit $err
+
       - name: Set up Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
@@ -237,12 +281,17 @@ jobs:
 
       - name: Compute PDF release version
         id: pdf_version
+        shell: bash
         run: |
-          branch="${GITHUB_REF#refs/heads/}"
-          if [[ "$branch" == stable* ]]; then
-            echo "release=${branch#stable}" >> $GITHUB_OUTPUT
+          # For PRs use the target branch; for pushes use the current branch.
+          # This handles both stable32 direct pushes and backport/*/stable32 PRs.
+          branch="${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}"
+          if [[ "$branch" =~ ^stable([0-9]+)$ ]]; then
+            echo "release=${BASH_REMATCH[1]}" >> $GITHUB_OUTPUT
           else
-            echo "release=latest" >> $GITHUB_OUTPUT
+            # master: derive the dev version from conf.py.
+            version_stable=$(grep -m1 '^\s*version_stable\s*=' conf.py | grep -o '[0-9]\+')
+            echo "release=$((version_stable + 1))" >> $GITHUB_OUTPUT
           fi
 
       - name: Build pdf documentation

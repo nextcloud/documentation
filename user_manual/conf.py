@@ -20,7 +20,8 @@ from conf import *
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = u'Nextcloud %s User Manual' % (version)
+project = u'Nextcloud %s User Manual' % (display_version)
+html_title = project
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -56,7 +57,7 @@ gettext_compact = False
 ## Markup
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-markup
 # a substitution that will be included in every source file
-rst_epilog =  '.. |version| replace:: %s' % version
+rst_epilog =  '.. |version| replace:: %s' % display_version
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
