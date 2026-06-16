@@ -97,6 +97,15 @@ def setup(app):
 
 def generateVersionsDocs(current_docs):
 	versions_doc = []
+
+	# If viewing an unsupported (older than version_start) branch, prepend it so it
+	# appears last after the template's |reverse — e.g. "26 (unsupported)" at the bottom.
+	if _stable_ver:
+		branch_ver = int(_stable_ver.group(1))
+		if branch_ver < version_start:
+			url = 'https://docs.nextcloud.com/server/%s/%s' % (str(branch_ver), current_docs)
+			versions_doc.append((branch_ver, url, '%s (unsupported)' % branch_ver))
+
 	for v in range(version_start, version_stable):
 		url = 'https://docs.nextcloud.com/server/%s/%s' % (str(v), current_docs)
 		versions_doc.append((v, url, str(v)))
