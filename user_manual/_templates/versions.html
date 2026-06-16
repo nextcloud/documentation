@@ -187,14 +187,14 @@
     <div class="rst-other-versions">
       <dl>
         <dt>☁️ {{ _('Versions') }}</dt>
-        {% for slug, url in versions|reverse %}
+        {% for slug, url, label in versions|reverse %}
           <dd style="width: 32%">
             <a href="{{ url }}"
                {% if current_version == slug %}
                style="color: var(--dark-link-color);"
                {% endif %}
             >
-              {{ slug }}
+              {{ label }}
             </a>
           </dd>
         {% endfor %}
