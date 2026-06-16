@@ -65,7 +65,7 @@ else:
 	github_branch = 'master'
 
 html_context = {
-	'current_version': branch_ver,
+	'current_version': int(display_version),
 	'display_version': display_version,
 	'READTHEDOCS': True,
 	'extra_css_files': ['_static/custom.css'],
