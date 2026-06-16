@@ -10,16 +10,10 @@ now = datetime.datetime.now()
 
 os.environ["READTHEDOCS"] = "True"
 
-extensions = [
-    'sphinx_rtd_theme',
-    'sphinx_rtd_dark_mode',
-    'sphinx_copybutton',
-    'sphinxcontrib.mermaid',
-    'notfound.extension',
-]
+extensions = ['sphinx_rtd_theme', 'sphinx_rtd_dark_mode', 'sphinx_copybutton', 'sphinxcontrib.mermaid']
 
 # General information about the project.
-copyright = '2016-' + str(now.year) + ' Nextcloud GmbH and Nextcloud contributors'
+copyright = str(now.year) + ' Nextcloud GmbH'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -53,36 +47,8 @@ html_theme_options = {
 # relative path to subdirectories
 html_logo = "../_shared_assets/static/logo-white.png"
 
-# disable including the reST sources in HTML builds (in _sources/) (default is True)
-html_copy_source = False
-
-# building the versions list
-# Update version_start when the lowest stableNN branch is deleted (version goes EoL).
-# Update version_stable when a new NC release ships (highest stableNN branch added).
-version_start = 32		# oldest documented version
-
-						# latest released stable — CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
-version_stable = 34		# mapped to https://docs.nextcloud.com/server/stable/
-
-import re as _re
-# Detect stable branch version for display purposes.
-# For PRs: GITHUB_BASE_REF is the target branch (e.g. 'stable32').
-# For direct pushes: GITHUB_REF is 'refs/heads/stable32'.
-_base = os.environ.get('GITHUB_BASE_REF', '')
-_ref  = os.environ.get('GITHUB_REF', '')
-_stable_ver = (
-    _re.match(r'^stable(\d+)$', _base)
-    or _re.match(r'^refs/heads/stable(\d+)$', _ref)
-)
-display_version = (
-    release if release != 'latest'                    # PDF/ePub builds (DOCS_RELEASE set)
-    else _stable_ver.group(1) if _stable_ver          # stableNN branches and PRs targeting them
-    else str(version_stable + 1)                      # master
-)
-
-# Also search for "TODO ON RELEASE" in the rst files
-
 # substitutions go here
+display_version = '31'
 rst_epilog = """
 .. |version| replace:: %s
 """ % (display_version)
@@ -95,17 +61,22 @@ def replace_latest(app, docname, source):
 def setup(app):
     app.connect('source-read', replace_latest)
 
+
+# building the versions list
+version_start = 32		# oldest documented version
+
+						# latest released stable — CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
+version_stable = 34		# mapped to https://docs.nextcloud.com/server/stable/
+
+# Also search for "TODO ON RELEASE" in the rst files
+
 def generateVersionsDocs(current_docs):
 	versions_doc = []
-
-	# If viewing an unsupported (older than version_start) branch, prepend it so it
-	# appears last after the template's |reverse — e.g. "26 (unsupported)" at the bottom.
-	if _stable_ver:
-		branch_ver = int(_stable_ver.group(1))
-		if branch_ver < version_start:
-			url = 'https://docs.nextcloud.com/server/%s/%s' % (str(branch_ver), current_docs)
-			versions_doc.append((branch_ver, url, '%s (unsupported)' % branch_ver))
-
+	# Prepend this unsupported branch so it appears last after |reverse
+	branch_ver = int(display_version)
+	if branch_ver < version_start:
+		url = 'https://docs.nextcloud.com/server/%s/%s' % (display_version, current_docs)
+		versions_doc.append((branch_ver, url, '%s (unsupported)' % display_version))
 	for v in range(version_start, version_stable):
 		url = 'https://docs.nextcloud.com/server/%s/%s' % (str(v), current_docs)
 		versions_doc.append((v, url, str(v)))
@@ -119,7 +90,7 @@ else:
 	github_branch = 'master'
 
 html_context = {
-	'current_version': int(_stable_ver.group(1)) if _stable_ver else version,
+	'current_version': int(display_version),
 	'display_version': display_version,
 	'READTHEDOCS': True,
 
@@ -157,25 +128,3 @@ if (version.isdigit() and version < version_start):
 default_dark_mode = False
 
 latex_engine = "xelatex"
-
-# -- Options for sphinx-notfound-page extension -----------------------------------
-# https://github.com/readthedocs/sphinx-notfound-page
-
-# content context passed to the 404 template
-notfound_context = {
-    "title": "404 Page Not Found",
-    "body": """
-<h1>Page Not Found</h1>
-<h2>Sorry, we can't seem to find the page you're looking for.</h2>
-<h6>Error code: 404</h6>
-
-<h3>Here are some alternatives:</h3>
-<ol>
-  <li>Try using the search box.</li>
-  <li>Check the content menu on the side of this page.</li>
-  <li>Regroup at our <a href="/">documentation homepage.</a></p></li>
-</ol>
-""",
-}
-
-notfound_urls_prefix = None
