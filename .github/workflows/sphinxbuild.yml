@@ -282,12 +282,13 @@ jobs:
       - name: Compute PDF release version
         id: pdf_version
         run: |
-          branch="${GITHUB_REF#refs/heads/}"
-          if [[ "$branch" == stable* ]]; then
-            echo "release=${branch#stable}" >> $GITHUB_OUTPUT
+          # For PRs use the target branch; for pushes use the current branch.
+          # This handles both stable33 direct pushes and backport/*/stable33 PRs.
+          branch="${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}"
+          if [[ "$branch" =~ ^stable([0-9]+)$ ]]; then
+            echo "release=${BASH_REMATCH[1]}" >> $GITHUB_OUTPUT
           else
-            # For master (latest), derive the dev version from conf.py so the
-            # PDF cover shows a real version number rather than "latest".
+            # master: derive the dev version from conf.py.
             version_stable=$(grep -m1 '^\s*version_stable\s*=' conf.py | grep -o '[0-9]\+')
             echo "release=$((version_stable + 1))" >> $GITHUB_OUTPUT
           fi
