@@ -32,6 +32,7 @@ extensions += [
     'sphinx.ext.todo',
     'rst2pdf.pdfbuilder',
     'sphinx.ext.intersphinx',
+    'sphinx_reredirects',
 ]
 
 templates_path = [
@@ -168,3 +169,11 @@ if os.path.isdir(locale_path):
     available_languages.sort()
 
 html_context['available_languages'] = available_languages
+
+# -- URL redirects -----------------------------------------------------------
+# https://documatt.gitlab.io/sphinx-reredirects/usage.html
+
+redirects = {
+    # Renamed 2026-06
+    'desktop/macosvfs': 'desktop/macosfileprovider',
+}

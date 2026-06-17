@@ -11,6 +11,7 @@ synchronized between your computer and your Nextcloud server.
    installation
    uninstallation
    usage
+   macosfileprovider
    commandline
    options
    configfile

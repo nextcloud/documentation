@@ -1,9 +1,9 @@
-==========================
-macOS Virtual Files Client
-==========================
+=============================
+Using the macOS File Provider
+=============================
 
 On macOS, our client can also seamlessly integrate Nextcloud files into macOS
-as a file provider extension. Any newly configured Nextcloud account will have
+as a File Provider extension. Any newly configured Nextcloud account will have
 the integration enabled by default.
 
 Supported features
@@ -23,15 +23,15 @@ Supported features
 Configuration
 -------------
 
-Virtual files-related settings can be adjusted on a per-account basis
-via the Nextcloud desktop client's settings window.
+Settings related to the File Provider extension can be adjusted on a
+per-account basis via the Nextcloud desktop client's settings window.
 
-.. image:: images/macosvfs-settings.jpg
-   :alt: Nextcloud desktop client settings showing the macOS file provider extension toggle
+.. image:: images/macosfileprovider-settings.jpg
+   :alt: Nextcloud desktop client settings showing the macOS File Provider extension toggle
 
 Here the integration into Finder can be enabled or disabled.
 
-When disabling the file provider extension while still having unsynchronized
+When disabling the File Provider extension while still having unsynchronized
 changes, macOS will save the unsynchronized items in a folder that is
 automatically revealed after the integration is disabled.
 
@@ -42,8 +42,8 @@ On macOS, remote storage like a Nextcloud files account appears like a
 dedicated location in the Finder sidebar. The actual location of the
 content on disk is defined by macOS.
 
-.. image:: images/macosvfs-finder-sidebar.jpg
-   :alt: Finder sidebar showing a Nextcloud file provider domain
+.. image:: images/macosfileprovider-finder-sidebar.jpg
+   :alt: Finder sidebar showing a Nextcloud File Provider domain
 
 .. note::
    To accelerate server-side change detection, we recommend enabling the
@@ -76,10 +76,10 @@ use on their system.
 Context menu actions
 --------------------
 
-.. image:: images/macosvfs-context-menu.jpg
+.. image:: images/macosfileprovider-context-menu.jpg
    :alt: macOS Finder context menu on a Nextcloud file showing Keep Downloaded, Lock, and Share options
 
-The file provider extension also provides special Nextcloud features through
+The File Provider extension also provides special Nextcloud features through
 the context menu in Finder.
 
 Keep Downloaded
@@ -102,7 +102,7 @@ To always keep everything in an account available locally, you can select
 Locking
 ^^^^^^^
 
-.. image:: images/macosvfs-file-locking.jpg
+.. image:: images/macosfileprovider-file-locking.jpg
    :alt: macOS Finder showing a Nextcloud file with a lock indicator after locking
 
 If the server supports file locking, the client will offer manual locking and
@@ -111,7 +111,7 @@ unlocking of files in Finder.
 Sharing
 ^^^^^^^
 
-.. image:: images/macosvfs-file-sharing.jpg
+.. image:: images/macosfileprovider-file-sharing.jpg
    :alt: macOS Finder share management panel for a Nextcloud file showing existing shares
 
 When the server supports sharing and the item is allowed to be shared,
@@ -134,9 +134,9 @@ macOS Extensions conflict
 
 Due to technical limitations in macOS which are imposed by Apple,
 it is not possible to have the Finder integration for classic sync folders
-running in parallel to an enabled virtual files integration.
+running in parallel to an enabled File Provider extension.
 This means that item decorations and context menu options will be
-unavailable for classic sync folders while the file provider extension is
+unavailable for classic sync folders while the File Provider extension is
 enabled.
 
 Alias files
@@ -152,3 +152,28 @@ opened or downloaded once, Nextcloud Desktop learns that it is an alias and
 stores that information locally, so all subsequent opens will work correctly.
 To avoid the issue entirely, right-click the alias file in Finder and choose
 **Keep Downloaded** before opening it for the first time.
+
+Troubleshooting
+---------------
+
+Debug-level Logging
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Debug-level log entries for the File Provider extension are disabled by
+default.
+If you want to report an issue with the File Provider, it can be helpful to
+enable them to get more detailed information about what is happening under the
+hood. To enable them, you have to issue the following command in Terminal:
+
+.. code-block:: bash
+
+   defaults write com.nextcloud.desktopclient.FileProviderExt debugLoggingEnabled -bool YES
+
+The change takes effect within a couple of seconds; no restart of the extension
+or the Mac is required. It is recommended to restore the default value by
+deleting the explicit value after you have resolved the problem you were
+investigating:
+
+.. code-block:: bash
+
+   defaults delete com.nextcloud.desktopclient.FileProviderExt debugLoggingEnabled
