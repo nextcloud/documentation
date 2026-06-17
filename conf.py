@@ -57,27 +57,15 @@ html_logo = "../_shared_assets/static/logo-white.png"
 html_copy_source = False
 
 # building the versions list
-# CI validates both constants against actual stableNN branches (see sphinxbuild.yml).
-# Update version_start when the lowest stableNN branch is deleted (version goes EoL).
-# Update version_stable when a new NC release ships (highest stableNN branch added).
-version_start = 32		# oldest documented version
-
-						# latest released stable — CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
-version_stable = 34		# mapped to https://docs.nextcloud.com/server/stable/
-import re as _re
-# Detect stable branch version for display purposes.
-# For PRs: GITHUB_BASE_REF is the target branch (e.g. 'stable34').
-# For direct pushes: GITHUB_REF is 'refs/heads/stable34'.
-_base = os.environ.get('GITHUB_BASE_REF', '')
-_ref  = os.environ.get('GITHUB_REF', '')
-_stable_ver = (
-    _re.match(r'^stable(\d+)$', _base)
-    or _re.match(r'^refs/heads/stable(\d+)$', _ref)
-)
-display_version = (
-    release if release != 'latest'                    # PDF/ePub builds (DOCS_RELEASE set)
-    else _stable_ver.group(1) if _stable_ver          # stableNN branches and PRs targeting them
-    else str(version_stable + 1)                      # master
+# In CI: DOCS_VERSION_STABLE and DOCS_VERSION_START are injected by sphinxbuild.yml
+# via detect-versions.php so these values are always current without manual updates.
+# Fallbacks here are used for local builds only.
+version_start  = int(os.environ.get('DOCS_VERSION_START',  32))
+version_stable = int(os.environ.get('DOCS_VERSION_STABLE', 34))  # CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
+# In CI: DOCS_DISPLAY_VERSION is injected by sphinxbuild.yml.
+# Fallback: PDF/ePub builds use release (DOCS_RELEASE); local master builds use version_stable+1.
+display_version = os.environ.get('DOCS_DISPLAY_VERSION') or (
+    release if release != 'latest' else str(version_stable + 1)
 )
 
 # Also search for "TODO ON RELEASE" in the rst files
@@ -100,17 +88,16 @@ def generateVersionsDocs(current_docs):
 
 	# If viewing an unsupported (older than version_start) branch, prepend it so it
 	# appears last after the template's |reverse — e.g. "26 (unsupported)" at the bottom.
-	if _stable_ver:
-		branch_ver = int(_stable_ver.group(1))
-		if branch_ver < version_start:
-			url = 'https://docs.nextcloud.com/server/%s/%s' % (str(branch_ver), current_docs)
-			versions_doc.append((branch_ver, url, '%s (unsupported)' % branch_ver))
+	if display_version.isdigit() and int(display_version) < version_start:
+		branch_ver = int(display_version)
+		url = 'https://docs.nextcloud.com/server/%s/%s' % (display_version, current_docs)
+		versions_doc.append((branch_ver, url, '%s (unsupported)' % branch_ver))
 
 	for v in range(version_start, version_stable):
 		url = 'https://docs.nextcloud.com/server/%s/%s' % (str(v), current_docs)
-		versions_doc.append((v, url, str(v)))
-	versions_doc.append(('stable', 'https://docs.nextcloud.com/server/stable/%s' % current_docs, '%s (stable)' % version_stable))
-	versions_doc.append(('latest', 'https://docs.nextcloud.com/server/latest/%s' % current_docs, '%s (latest)' % str(version_stable + 1)))
+		versions_doc.append((v, url, '%s (stable)' % v))
+	versions_doc.append(('stable', 'https://docs.nextcloud.com/server/stable/%s' % current_docs, '%s (latest)' % version_stable))
+	versions_doc.append(('latest', 'https://docs.nextcloud.com/server/latest/%s' % current_docs, '%s (upcoming)' % str(version_stable + 1)))
 	return versions_doc
 
 if version.isdigit():
@@ -119,7 +106,7 @@ else:
 	github_branch = 'master'
 
 html_context = {
-	'current_version': int(_stable_ver.group(1)) if _stable_ver else version,
+	'current_version': int(display_version) if display_version.isdigit() else version,
 	'display_version': display_version,
 	'READTHEDOCS': True,
 
