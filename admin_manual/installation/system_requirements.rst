@@ -35,8 +35,7 @@ For best performance, stability and functionality we have documented some recomm
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
-| PHP Runtime      | - 8.2 (*deprecated*)                                                  |
-|                  | - 8.3                                                                 |
+| PHP Runtime      | - 8.3                                                                 |
 |                  | - 8.4                                                                 |
 |                  | - **8.5** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
