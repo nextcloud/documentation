@@ -4,7 +4,7 @@ Lexicon
 
 .. versionadded:: 32
 
-Since v32, Nextcloud provides a way to centralize the definition of your app's configuration keys and values in a single place.
+Nextcloud provides a way to centralize the definition of your app's configuration keys and values in a single place.
 
 
 .. _concept-overview:
@@ -102,7 +102,7 @@ Each config key is defined in a object through those arguments:
 Preset
 ^^^^^^
 
-With 32, Nextcloud comes with a list of `preset` to ease the default user experience, based on the context of the instance.
+Nextcloud comes with a list of `preset` to ease the default user experience, based on the context of the instance.
 The selection of a preset is optional and can be done right after the setup of Nextcloud, and any time in the future using this occ command:
 
 .. code-block:: bash
