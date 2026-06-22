@@ -2566,17 +2566,15 @@ metadata_max_filesize
 
     'metadata_max_filesize' => 256,
 
-Maximum file size for metadata generation.
+Maximum file size for file metadata generation.
 
-If a file exceeds this size, metadata generation will be skipped.
+Files larger than this limit will be skipped.
 
+This limit helps bound resource usage during metadata generation. Actual
+resource usage depends on the active metadata providers and how they
+process files. As a rough guide, memory usage may scale with file size.
 
-
-.. note::
-
-  memory equivalent to this size will be used for metadata generation.
-
-Default: 256 megabytes.
+Default: 256 MiB.
 
 max_file_conversion_filesize
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2588,9 +2586,12 @@ max_file_conversion_filesize
 
 Maximum file size for file conversion.
 
-If a file exceeds this size, the file will not be converted.
+Files larger than this limit will be skipped.
 
-Default: 100 MiB
+Raising this limit may increase conversion time, resource usage, and the
+risk of timeouts or conversion failures depending on the provider.
+
+Default: 100 MiB.
 
 LDAP
 ----
