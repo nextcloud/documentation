@@ -1,26 +1,26 @@
-===============
+======
 Office
-===============
+======
 
-.. image:: ../images/office.png
-   :alt: Nextcloud Office document editing interface with collaborative editing
+Nextcloud supports two office solutions for collaborative document editing:
 
-Nextcloud Office supports editing your documents in real time with multiple other editors, showing high fidelity, WYSIWYG rendering and preserving the layout and formatting of your documents.
+**Nextcloud Office** (powered by Euro-Office)
+    The default office solution built into Nextcloud. Enables real-time collaborative
+    editing of text documents, spreadsheets, and presentations with high-fidelity rendering.
+    Requires a Euro-Office Document Server.
 
-Users can insert and reply to comments and invite others without a Nextcloud account for anonymous editing of files with a public link shared folder.
+**Collabora Online**
+    A fully supported alternative based on the Collabora Online Development Edition (CODE).
+    Available as a self-hosted server or as a built-in app. Enterprise users can use the
+    more stable Collabora Online Enterprise through a
+    `Nextcloud support subscription <https://nextcloud.com/enterprise/>`_.
 
-Nextcloud Office supports dozens of document formats including DOC, DOCX, PPT, PPTX, XLS, XLSX + ODF, Import/View Visio, Publisher and many more...
-
-Nextcloud Office is based on the Collabora Online Development Edition (CODE) and is available free and under heavy development, adding features and improvements all the time! Enterprise users have access to the more stable, scalable Collabora Online Enterprise based version through a `Nextcloud support subscription <https://nextcloud.com/enterprise/>`_.
-
-We are able to provide a solution for Online Office for the entire Nextcloud community through our partnership with Collabora with various deployment options. Enterprise users looking for a more reliable solution should contact Nextcloud Sales.
-
+Both solutions support dozens of document formats including DOC, DOCX, PPT, PPTX, XLS, XLSX,
+ODF and many more.
 
 .. toctree::
     :maxdepth: 2
     :includehidden:
 
-    installation
-    configuration
-    migration
-    troubleshooting
+    euro-office/index
+    collabora_online
