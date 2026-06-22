@@ -76,10 +76,12 @@ triggered::
   background:cron     use cron to run background jobs
   background:webcron  use webcron to run background jobs
  background-job
-  background-job:delete   remove a background job from the database
-  background-job:execute  execute a single background job manually
-  background-job:list     list background jobs
-  background-job:worker   run a background job worker
+  background-job:delete   Remove a background job from database
+  background-job:execute  Execute a single background job manually
+  background-job:history  Show past jobs
+  background-job:list     List background jobs
+  background-job:running  Show currently running jobs
+  background-job:worker   Run a background job worker
 
 background\:cron
 """""""""""""""""
@@ -127,6 +129,26 @@ it may be skipped; use ``--force-execute`` to run it regardless::
 
  sudo -E -u www-data php occ background-job:execute --force-execute 42
 
+background-job\:history
+"""""""""""""""""""""""
+
+Show job history with their duration and peak memory usage::
+
+ sudo -E -u www-data php occ background-job:history -l 5
+ +-------------------+-----------+-------------------------------------------+---------------------+-----------+---------+-----------+--------------+
+ | Run ID            | Status    | Class                                     | Started at          | Server ID | PID     | Duration  | Memory usage |
+ +-------------------+-----------+-------------------------------------------+---------------------+-----------+---------+-----------+--------------+
+ | 98109593040965632 | Succeeded | OC\Command\CommandJob                     | 2026-06-22 09:15:19 | 30        | 3847229 | 284 ms    | 251.6 MB     |
+ | 98109592927719424 | Succeeded | OC\FilesMetadata\Job\UpdateSingleMetadata | 2026-06-22 09:15:19 | 30        | 3847229 | 16 ms     | 222 MB       |
+ | 98109592852221952 | Succeeded | OC\FilesMetadata\Job\UpdateSingleMetadata | 2026-06-22 09:15:19 | 30        | 3847229 | 8 ms      | 221.4 MB     |
+ | 98109588267847680 | Succeeded | OC\Command\CommandJob                     | 2026-06-22 09:15:18 | 30        | 3847229 | 909 ms    | 293 MB       |
+ | 97985889682313216 | Crashed   | OCA\Text\Cron\Cleanup                     | 2026-06-22 01:15:17 | 30        | 3733554 | 594627 ms | 0 B          |
+ +-------------------+-----------+-------------------------------------------+---------------------+-----------+---------+-----------+--------------+
+
+Use ``-l``/``--limit`` to control how many jobs are shown (default: 200), one or multiple
+``-c``/``--class`` to filter by job class, and one or multiple ``-s``/``--status`` to
+filter by status (0: running, 1: succeeded, 2: failed, 3: crashed).
+
 background-job\:list
 """""""""""""""""""""
 
@@ -144,6 +166,20 @@ List all background jobs registered in the database::
 Use ``-c`` / ``--class`` to filter by job class, ``-l`` / ``--limit`` to
 control how many jobs are shown (default: 500), and ``-o`` / ``--offset`` to
 page through results.
+
+background-job\:running
+"""""""""""""""""""""""
+
+List all currently running jobs::
+
+ sudo -E -u www-data php occ background-job:running
+ +-------------------+-----------------------+---------------------+-----------+---------+---------------+
+ | Run ID            | Class                 | Started at          | Server ID | PID     | Running since |
+ +-------------------+-----------------------+---------------------+-----------+---------+---------------+
+ | 98108257692012544 | OC\Command\CommandJob | 2026-06-22 09:10:08 | 30        | 3845056 | 1 seconds     |
+ +-------------------+-----------------------+---------------------+-----------+---------+---------------+
+
+Use ``-l`` / ``--limit`` to limit the number of job shown (default: 200).
 
 background-job\:worker
 """""""""""""""""""""""
