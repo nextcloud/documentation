@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using server-side encryption &mdash; Nextcloud 35 User Manual</title>
+  <title>Mettre en oeuvre le chiffrement côté-serveur (SSE) &mdash; Nextcloud 35 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -81,7 +81,7 @@
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Gérer vos fichiers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="collaboration.html">Partage &amp; Collaboration</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="security.html">Sécurité &amp; chiffrement</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Using server-side encryption</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Mettre en oeuvre le chiffrement côté-serveur (SSE)</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#encryption-faq">Questions récurrentes sur le chiffrement</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#using-encryption">Utilisation du chiffrement</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sharing-encrypted-files">Partage de fichiers chiffrés</a></li>
@@ -119,7 +119,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Fichiers &amp; synchronisation</a></li>
           <li class="breadcrumb-item"><a href="security.html">Sécurité &amp; chiffrement</a></li>
-      <li class="breadcrumb-item active">Using server-side encryption</li>
+      <li class="breadcrumb-item active">Mettre en oeuvre le chiffrement côté-serveur (SSE)</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Éditer sur GitHub</a>
       </li>
@@ -130,15 +130,8 @@
            <div itemprop="articleBody">
              
   <section id="using-server-side-encryption">
-<h1>Using server-side encryption<a class="headerlink" href="#using-server-side-encryption" title="Lien vers cette rubrique"></a></h1>
-<p>Nextcloud includes a server-side encryption app, and when it is enabled by
-your Nextcloud administrator all of your Nextcloud data files are automatically
-encrypted on the server.
-Encryption is server-wide, so when it is enabled you cannot choose to keep your
-files unencrypted. You don’t have to do anything special, as it uses your
-Nextcloud login as the password for your unique private encryption key. Just log
-out and in and manage and share your files as you normally do, and you can
-still change your password whenever you want.</p>
+<h1>Mettre en oeuvre le chiffrement côté-serveur (SSE)<a class="headerlink" href="#using-server-side-encryption" title="Lien vers cette rubrique"></a></h1>
+<p>Nextcloud intègre une fonctionnalité de chiffrement côté serveur. Lorsque celle-ci est activée par votre administrateur Nextcloud, tous vos fichiers de données Nextcloud sont automatiquement chiffrés sur le serveur. Le chiffrement s’applique à l’ensemble du serveur ; par conséquent, une fois cette fonctionnalité activée, vous ne pouvez pas choisir de conserver vos fichiers non chiffrés. Vous n’avez aucune manipulation particulière à effectuer, car votre identifiant Nextcloud sert de mot de passe pour votre clé de chiffrement privée unique. Il suffit de vous déconnecter puis de vous reconnecter, et de gérer et partager vos fichiers comme habituellement ; vous pourrez toujours modifier votre mot de passe dès que vous le souhaiterez.</p>
 <p>Son objectif principal est de chiffrer les fichiers sur des stockages externes connectés à votre serveur Nextcloud. Ceci est une manière simple et sans couture de protéger  vos fichiers sur les services distants de stockage. Vous pouvez partager les fichiers distants à travers Nextcloud de la manière usuelle, en revanche, vous ne pouvez pas partager vos fichiers chiffrés directement à partir de vos services distants  de stockage utilisés, car les clés de chiffrement sont stockées sur le serveur Netxcloud, et ne sont jamais accessibles par les fournisseurs de services.</p>
 <p>If your Nextcloud server is not connected to any remote storage services, then
 it is better to use some other form of encryption such as file-level or whole
