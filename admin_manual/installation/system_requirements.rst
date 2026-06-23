@@ -25,7 +25,7 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - CentOS Stream                                                       |
 |                  | - Alpine Linux                                                        |
 +------------------+-----------------------------------------------------------------------+
-| Database         | - MySQL 8.0 / 8.4                                                     |
+| Database         | - MySQL 8.4 / 9.7                                                     |
 |                  | - MariaDB 10.6 / 10.11 / 11.4 / **11.8** (recommended)                |
 |                  | - Oracle Database 19c, 21c, 23ai                                      |
 |                  |   (*only as part of an enterprise subscription*)                      |

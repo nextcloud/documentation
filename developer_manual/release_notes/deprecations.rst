@@ -16,12 +16,25 @@ New deprecations
 ..
     Add one section for each group of deprecations (e.g. group files api changes, authentication changes).
     Also deprecate the feature at their dedicated documentation page.
-    After branch-off the contents below will be cleared.
+    After branch-off the contents below will be cleared and moved to the "Older deprecations" section.
 
-.. todo:: This page needs a section for every new deprecation.
+.. .. todo:: This page needs a section for every new deprecation.
 
-- ``\OCP\Broadcast\Events\\IBroadcastEvent`` is now deprecated as it is unused.
-- ``\OCP\TaskProcessing\ISynchronousWatermarkingProvider`` is now deprecated. ``\OCP\TaskProcessing\ISynchronousOptionsAwareProvider`` should now be used.
+Database
+^^^^^^^^
+
+- ``\OCP\DB\QueryBuilder\IFunctionBuilder::md5`` is now deprecated.
+  MD5 is not considered secure anymore, thus most databases have or will drop support for this SQL function.
+
+Events
+^^^^^^
+
+- ``\OCP\Broadcast\Events\IBroadcastEvent`` is now deprecated as it is unused.
+
+Task processing
+^^^^^^^^^^^^^^^
+
+- ``\OCP\TaskProcessing\ISynchronousWatermarkingProvider`` is now deprecated, instead use ``\OCP\TaskProcessing\ISynchronousOptionsAwareProvider`` now.
 
 Older deprecations
 ------------------
