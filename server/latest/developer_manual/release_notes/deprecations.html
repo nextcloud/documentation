@@ -76,7 +76,12 @@
 <li class="toctree-l2"><a class="reference internal" href="critical_changes.html">Critical changes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="new.html">New in this release</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Deprecations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#new-deprecations">New deprecations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-deprecations">New deprecations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database">Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#events">Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-processing">Task processing</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#older-deprecations">Older deprecations</a></li>
 </ul>
 </li>
@@ -129,14 +134,25 @@ three years before removal, unless the breakage can not be avoided.</p>
 rules, which can fix some API changes automatically.</p>
 <section id="new-deprecations">
 <h2>New deprecations<a class="headerlink" href="#new-deprecations" title="Link to this heading"></a></h2>
-<div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>This page needs a section for every new deprecation.</p>
-</div>
+<section id="database">
+<h3>Database<a class="headerlink" href="#database" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Broadcast\Events\\IBroadcastEvent</span></code> is now deprecated as it is unused.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousWatermarkingProvider</span></code> is now deprecated. <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousOptionsAwareProvider</span></code> should now be used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\DB\QueryBuilder\IFunctionBuilder::md5</span></code> is now deprecated.
+MD5 is not considered secure anymore, thus most databases have or will drop support for this SQL function.</p></li>
 </ul>
+</section>
+<section id="events">
+<h3>Events<a class="headerlink" href="#events" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Broadcast\Events\IBroadcastEvent</span></code> is now deprecated as it is unused.</p></li>
+</ul>
+</section>
+<section id="task-processing">
+<h3>Task processing<a class="headerlink" href="#task-processing" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousWatermarkingProvider</span></code> is now deprecated, instead use <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousOptionsAwareProvider</span></code> now.</p></li>
+</ul>
+</section>
 </section>
 <section id="older-deprecations">
 <h2>Older deprecations<a class="headerlink" href="#older-deprecations" title="Link to this heading"></a></h2>
@@ -169,7 +185,7 @@ rules, which can fix some API changes automatically.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jun 22, 2026.
+      <span class="lastupdated">Last updated on Jun 24, 2026.
       </span></p>
   </div>
 

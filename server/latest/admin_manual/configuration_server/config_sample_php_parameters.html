@@ -2559,13 +2559,12 @@ concerns:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;metadata_max_filesize&#39;</span> <span class="o">=&gt;</span> <span class="mi">256</span><span class="p">,</span>
 </pre></div>
 </div>
-<p>Maximum file size for metadata generation.</p>
-<p>If a file exceeds this size, metadata generation will be skipped.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>memory equivalent to this size will be used for metadata generation.</p>
-</div>
-<p>Default: 256 megabytes.</p>
+<p>Maximum file size for file metadata generation.</p>
+<p>Files larger than this limit will be skipped.</p>
+<p>This limit helps bound resource usage during metadata generation. Actual
+resource usage depends on the active metadata providers and how they
+process files. As a rough guide, memory usage may scale with file size.</p>
+<p>Default: 256 MiB.</p>
 </section>
 <section id="max-file-conversion-filesize">
 <h3>max_file_conversion_filesize<a class="headerlink" href="#max-file-conversion-filesize" title="Link to this heading"></a></h3>
@@ -2573,8 +2572,10 @@ concerns:</p>
 </pre></div>
 </div>
 <p>Maximum file size for file conversion.</p>
-<p>If a file exceeds this size, the file will not be converted.</p>
-<p>Default: 100 MiB</p>
+<p>Files larger than this limit will be skipped.</p>
+<p>Raising this limit may increase conversion time, resource usage, and the
+risk of timeouts or conversion failures depending on the provider.</p>
+<p>Default: 100 MiB.</p>
 </section>
 </section>
 <section id="ldap">

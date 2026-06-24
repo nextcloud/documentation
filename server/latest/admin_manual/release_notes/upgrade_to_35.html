@@ -191,13 +191,27 @@
 <h1>Upgrade to Nextcloud 35<a class="headerlink" href="#upgrade-to-nextcloud-35" title="Link to this heading"></a></h1>
 <section id="system-requirements">
 <h2>System requirements<a class="headerlink" href="#system-requirements" title="Link to this heading"></a></h2>
-<ul class="simple">
+<ul>
 <li><p>PHP 8.2 is no longer supported.</p></li>
 <li><p>The list of officially supported operating system has been updated:</p>
-<ul>
+<ul class="simple">
 <li><p>The minimum supported version of <em>SUSE Linux Enterprise Server 15</em> has been bumped to SP7.</p></li>
 <li><p>The minimum supported version of <em>Debian Linux</em> has been bumped to <em>13 (Trixie)</em>.</p></li>
 <li><p>The minimum supported version of <em>Ubuntu Linux</em> has been bumped to <em>24.04</em>.</p></li>
+</ul>
+</li>
+<li><p>The list of officially supported databases has been updated:</p>
+<ul>
+<li><p>MySQL 8.0 is out of support and thus Nextcloud dropped support for it.
+The minimum supported version of MySQL is now 8.4 LTS.</p></li>
+<li><p>MySQL 9.7 is released as a new LTS version and is now supported by Nextcloud.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>MySQL 9+ dropped support for MD5, some parts of the Nextcloud ecosystem might stilly rely on it.
+You need to make sure that after upgrading to MySQL 9+ you load the MySQL component for MD5 support, to do so run this on your MySQL 9+ server:</p>
+<p><code class="docutils literal notranslate"><span class="pre">INSTALL</span> <span class="pre">COMPONENT</span> <span class="pre">'file://component_classic_hashing';</span></code></p>
+</div>
+</li>
 </ul>
 </li>
 </ul>
