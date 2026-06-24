@@ -18,7 +18,7 @@ Alternatively, install the app using the :command:`occ` command:
 
 .. code-block:: bash
 
-    php occ app:install eurooffice
+    sudo -E -u www-data php occ app:install eurooffice
 
 Server settings
 ---------------
@@ -215,10 +215,10 @@ Settings can also be managed via :command:`occ`:
 .. code-block:: bash
 
     # Read a setting
-    php occ config:app:get eurooffice DocumentServerUrl
+    sudo -E -u www-data php occ config:app:get eurooffice DocumentServerUrl
 
     # Write a setting
-    php occ config:app:set eurooffice DocumentServerUrl --value="https://office.example.com/"
+    sudo -E -u www-data php occ config:app:set eurooffice DocumentServerUrl --value="https://office.example.com/"
 
 The ``eurooffice:documentserver`` command shows the configured server URL and optionally
 tests the connection:
@@ -226,10 +226,10 @@ tests the connection:
 .. code-block:: bash
 
     # Print the currently configured Document Server URL
-    php occ eurooffice:documentserver
+    sudo -E -u www-data php occ eurooffice:documentserver
 
     # Check the connection to the Document Server
-    php occ eurooffice:documentserver --check
+    sudo -E -u www-data php occ eurooffice:documentserver --check
 
 config.php
 ----------
