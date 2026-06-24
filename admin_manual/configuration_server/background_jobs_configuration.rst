@@ -46,85 +46,16 @@ This setting may also be set directly via ``occ`` just like any other configurat
 Cron jobs
 ---------
 
-You can schedule cron jobs in three ways -- using AJAX, Webcron, or cron. The
-default method is to use AJAX. However, the recommended method is to use cron.
-The following sections describe the differences between each method.
+You can schedule cron jobs in three ways -- using AJAX, Webcron, or cron/systemd timers. The
+default method is to use AJAX. However, the recommended method is to use systemd timers
+or cron. The following sections describe the differences between each method.
 
-AJAX
-^^^^
+systemd timer
+^^^^^^^^^^^^^
 
-**Use case: Single user instance**
-
-The AJAX scheduling method is the default option. Unfortunately, however, it is
-also the least reliable. Each time a user visits the Nextcloud page, a single
-background job is executed. The advantage of this mechanism is that it does not
-require access to the system nor registration with a third-party service. The
-disadvantage of this mechanism, when compared to the Webcron service, is that it
-requires regular visits to the page for it to be triggered.
-
-.. warning:: Especially when using the Activity app or external storages, where new
-   files are added, updated or deleted, or when **multiple users** use the server, it
-   is recommended to use ``cron``.
-
-Webcron
-^^^^^^^
-
-**Use case: Very small instance** (1–5 users depending on the usage)
-
-By registering your Nextcloud ``cron.php`` script address at an external webcron
-service (for example, easyCron_), you ensure that background jobs are executed
-regularly. To use this type of service with your server, you must be able to
-access your server using the Internet. For example::
-
-  URL to call: http[s]://<domain-of-your-server>/nextcloud/cron.php
-
-.. warning:: Since WebCron is still executed via the web, the webserver in most cases limits the
-   resources on the execution. To avoid interrupts inside jobs only 1 job is executed
-   per call. When webcron is called once every 5 minutes this limits your instance to
-   288 background jobs per day, which is only suitable for very small instances.
-   For bigger instances, it is recommended to use ``cron``.
-
-.. _system-cron-configuration-label:
-
-Cron
-^^^^
-
-Using the operating system cron feature is the preferred method for executing
-regular tasks.  This method enables the execution of scheduled jobs without the
+If systemd is installed on the system, then systemd timer is the preferred way method for executing
+regular tasks. This method enables the execution of scheduled jobs without the
 inherent limitations the Web server might have.
-
-To run a cron job on a \*nix system, every 5 minutes, under the default Web
-server user (often, ``www-data`` or ``wwwrun``), you must set up the following
-cron job to call the **cron.php** script::
-
-  # crontab -u www-data -e
-
-And append this line::
-
-  */5  *  *  *  * php -f /var/www/nextcloud/cron.php
-
-You can verify if the cron job has been added and scheduled by executing::
-
-  # crontab -u www-data -l
-
-Which returns::
-
-  [snip]
-  */5  *  *  *  * php -f /var/www/nextcloud/cron.php
-
-.. note:: You have to replace the path ``/var/www/nextcloud/cron.php`` with the
-          path to your current Nextcloud installation.
-
-.. note:: On some systems it might be required to call **php-cli** instead of **php**.
-
-.. note:: Please refer to the crontab man page for the exact command syntax.
-
-.. _easyCron: https://www.easycron.com/
-
-systemd
-^^^^^^^
-
-If systemd is installed on the system, a systemd timer could be an alternative to a cronjob.
 
 This approach requires two files: **nextcloudcron.service** and **nextcloudcron.timer**. Create these two files in ``/etc/systemd/system/``.
 
@@ -169,3 +100,72 @@ Now all that is left is to start and enable the timer by running this command::
 When the option ``--now`` is used with ``enable``, the respective unit will also be started.
 
 .. note:: Selecting the option ``Cron`` in the admin menu for background jobs is not mandatory, because once `cron.php` is executed from the command line or cron service it will set it automatically to ``Cron``.
+
+Cron
+^^^^
+
+If systemd is not installed, you can also use the system cron feature.
+
+To run a cron job on a \*nix system, every 5 minutes, under the default Web
+server user (often, ``www-data`` or ``wwwrun``), you must set up the following
+cron job to call the **cron.php** script::
+
+  # crontab -u www-data -e
+
+And append this line::
+
+  */5  *  *  *  * php -f /var/www/nextcloud/cron.php
+
+You can verify if the cron job has been added and scheduled by executing::
+
+  # crontab -u www-data -l
+
+Which returns::
+
+  [snip]
+  */5  *  *  *  * php -f /var/www/nextcloud/cron.php
+
+.. note:: You have to replace the path ``/var/www/nextcloud/cron.php`` with the
+          path to your current Nextcloud installation.
+
+.. note:: On some systems it might be required to call **php-cli** instead of **php**.
+
+.. note:: Please refer to the crontab man page for the exact command syntax.
+
+.. _easyCron: https://www.easycron.com/
+
+AJAX
+^^^^
+
+**Use case: Single user instance**
+
+The AJAX scheduling method is the default option. Unfortunately, however, it is
+also the least reliable. Each time a user visits the Nextcloud page, a single
+background job is executed. The advantage of this mechanism is that it does not
+require access to the system nor registration with a third-party service. The
+disadvantage of this mechanism, when compared to the Webcron service, is that it
+requires regular visits to the page for it to be triggered.
+
+.. warning:: Especially when using the Activity app or external storages, where new
+   files are added, updated or deleted, or when **multiple users** use the server, it
+   is recommended to use ``cron``.
+
+Webcron
+^^^^^^^
+
+**Use case: Very small instance** (1–5 users depending on the usage)
+
+By registering your Nextcloud ``cron.php`` script address at an external webcron
+service (for example, easyCron_), you ensure that background jobs are executed
+regularly. To use this type of service with your server, you must be able to
+access your server using the Internet. For example::
+
+  URL to call: http[s]://<domain-of-your-server>/nextcloud/cron.php
+
+.. warning:: Since WebCron is still executed via the web, the webserver in most cases limits the
+   resources on the execution. To avoid interrupts inside jobs only 1 job is executed
+   per call. When webcron is called once every 5 minutes this limits your instance to
+   288 background jobs per day, which is only suitable for very small instances.
+   For bigger instances, it is recommended to use ``cron``.
+
+.. _system-cron-configuration-label:
