@@ -14,6 +14,9 @@ System requirements
 
 - The list of officially supported databases has been updated:
 
+  - MariaDB 10.6 is out of support and thus Nextcloud dropped support for it.
+    The minimum supported version of MariaDB is now 10.11 LTS.
+  - MariaDB 12.3 is released as a new LTS version and is now supported by Nextcloud.
   - MySQL 8.0 is out of support and thus Nextcloud dropped support for it.
     The minimum supported version of MySQL is now 8.4 LTS.
   - MySQL 9.7 is released as a new LTS version and is now supported by Nextcloud.
