@@ -29,6 +29,39 @@ Updated PHP requirements
 
 The support for PHP 8.2 has been dropped, the minimum supported PHP version of Nextcloud 35 is now 8.3.
 
+Updated database requirements
+-----------------------------
+
+The following database versions are no longer supported in Nextcloud 35 as they are now out of support by their respective vendors:
+
+- MariaDB 10.6. The minimum supported version of MariaDB is now 10.11 LTS.
+- MySQL 8.0. The minimum supported version of MySQL is now 8.4 LTS.
+
+The following new database versions are now supported in Nextcloud 35 as they are now released as LTS versions by their respective vendors.
+Make sure to adjust your CI matrix for testing with them. This is automatically done if you use the workflow templates provided by Nextcloud.
+
+- MariaDB 12.3 is now supported.
+
+  .. note:: In MariaDB 12+ the query parser is stricter, when using GROUP BY clauses.
+
+    If you have constructs like ``SELECT `a`, CAST(`b` as CHAR) as `b` FROM `table` GROUP BY `a`, CAST(`b` as CHAR)``
+    this will break as the GROUP BY clause will self reference the alias ``b``.
+    Using a different alias name will fix MariaDB but not all other database systems, as then the cast expression is missing from the GROUP BY clause.
+    So make this work on all supported database systems you need to use a subquery:
+
+    .. code-block:: sql
+
+      SELECT `a`, `b`
+      FROM (
+        SELECT `a`, CAST(`b` as CHAR) as `b`
+        FROM `table`
+      ) AS `subquery`
+      GROUP BY `a`, `b`
+
+- MySQL 9.7 is now supported.
+
+  .. note:: MySQL 9+ deprecated support for MD5, so we strongly recommend to migrate away from the MD5 SQL function in your apps.
+
 Removed front-end APIs and libraries
 ------------------------------------
 
