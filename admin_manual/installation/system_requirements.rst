@@ -26,7 +26,7 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - Alpine Linux                                                        |
 +------------------+-----------------------------------------------------------------------+
 | Database         | - MySQL 8.4 / 9.7                                                     |
-|                  | - MariaDB 10.6 / 10.11 / 11.4 / **11.8** (recommended)                |
+|                  | - MariaDB 10.11 / 11.4 / **11.8** / 12.3 (recommended)                |
 |                  | - Oracle Database 19c, 21c, 23ai                                      |
 |                  |   (*only as part of an enterprise subscription*)                      |
 |                  | - PostgreSQL 14 / 15 / 16 / 17 / **18** (recommended)                 |
