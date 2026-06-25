@@ -202,7 +202,7 @@ and connect it to the server.</p>
 <li><p>Click <strong>Download and enable</strong>.</p></li>
 </ol>
 <p>Alternatively, install the app using the <strong class="command">occ</strong> command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>php<span class="w"> </span>occ<span class="w"> </span>app:install<span class="w"> </span>eurooffice
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app:install<span class="w"> </span>eurooffice
 </pre></div>
 </div>
 </section>
@@ -429,19 +429,19 @@ Enable <strong>Enable watermarking</strong> to configure the watermark.</p>
 <h2>occ commands<a class="headerlink" href="#occ-commands" title="Link to this heading"></a></h2>
 <p>Settings can also be managed via <strong class="command">occ</strong>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read a setting</span>
-php<span class="w"> </span>occ<span class="w"> </span>config:app:get<span class="w"> </span>eurooffice<span class="w"> </span>DocumentServerUrl
+sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>config:app:get<span class="w"> </span>eurooffice<span class="w"> </span>DocumentServerUrl
 
 <span class="c1"># Write a setting</span>
-php<span class="w"> </span>occ<span class="w"> </span>config:app:set<span class="w"> </span>eurooffice<span class="w"> </span>DocumentServerUrl<span class="w"> </span>--value<span class="o">=</span><span class="s2">&quot;https://office.example.com/&quot;</span>
+sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>config:app:set<span class="w"> </span>eurooffice<span class="w"> </span>DocumentServerUrl<span class="w"> </span>--value<span class="o">=</span><span class="s2">&quot;https://office.example.com/&quot;</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">eurooffice:documentserver</span></code> command shows the configured server URL and optionally
 tests the connection:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the currently configured Document Server URL</span>
-php<span class="w"> </span>occ<span class="w"> </span>eurooffice:documentserver
+sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>eurooffice:documentserver
 
 <span class="c1"># Check the connection to the Document Server</span>
-php<span class="w"> </span>occ<span class="w"> </span>eurooffice:documentserver<span class="w"> </span>--check
+sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>eurooffice:documentserver<span class="w"> </span>--check
 </pre></div>
 </div>
 </section>
