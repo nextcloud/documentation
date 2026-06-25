@@ -31,6 +31,18 @@ Furthermore it is recommended to configure the background job ``Webcron`` or
 There is also a configuration option ``activity_expire_days`` available in your
 ``config.php`` which allows you to clean-up older activities from the database.
 
+Admin settings
+^^^^^^^^^^^^^^
+
+As an administrator, you can:
+
+* Configure the maximum number of activities fully displayed in notification emails
+  using the ``mail_max_items`` setting. Activities beyond this limit are summarised
+  as *"and X more"* at the bottom of the email. The default is ``200`` and the
+  maximum allowed value is ``1000``. For example, to set it to ``500``::
+
+     occ config:app:set activity mail_max_items --value=500
+
 .. _label-activities-groupfolders:
 
 Activities in groupfolders or external storages
