@@ -368,31 +368,27 @@ Systemd service
 
 .. code-block::
 
-   [Unit]
-   Description=Nextcloud AI worker %i
-   After=network.target
+    [Unit]
+    Description=Nextcloud AI worker %i
+    After=network-online.target
+    Wants=network-online.target
+    StartLimitIntervalSec=60
+    StartLimitBurst=10
 
-   [Service]
-   ExecStart=/opt/nextcloud-ai-worker/taskprocessing.sh %i
-   Restart=always
-   StartLimitInterval=60
-   StartLimitBurst=10
+    [Service]
+    User=www-data
+    Group=www-data
+    WorkingDirectory=/path/to/nextcloud
+    ExecStart=/usr/bin/php occ taskprocessing:worker -v -t 60
+    Restart=always
+    RestartSec=2
 
-   [Install]
-   WantedBy=multi-user.target
+    [Install]
+    WantedBy=multi-user.target
 
-2. Create a shell script in ``/opt/nextcloud-ai-worker/taskprocessing.sh`` with the following content and make sure to make it executable:
+You may want to adjust the timeout (-t 60) to your needs (in seconds).
 
-.. code-block::
-
-   #!/bin/sh
-   echo "Starting Nextcloud AI Worker $1"
-   cd /path/to/nextcloud
-   sudo -E -u www-data php occ taskprocessing:worker -v -t 60
-
-You may want to adjust the timeout to your needs (in seconds).
-
-3. Enable and start the service 4 or more times:
+2. Enable and start the service 4 or more times:
 
 .. code-block::
 
