@@ -76,6 +76,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Critical changes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#info-xml-requirements">info.xml requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#updated-php-requirements">Updated PHP requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#updated-database-requirements">Updated database requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-front-end-apis-and-libraries">Removed front-end APIs and libraries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-back-end-apis">Removed back-end APIs</a></li>
 </ul>
@@ -139,6 +140,42 @@
 <h2>Updated PHP requirements<a class="headerlink" href="#updated-php-requirements" title="Link to this heading"></a></h2>
 <p>The support for PHP 8.2 has been dropped, the minimum supported PHP version of Nextcloud 35 is now 8.3.</p>
 </section>
+<section id="updated-database-requirements">
+<h2>Updated database requirements<a class="headerlink" href="#updated-database-requirements" title="Link to this heading"></a></h2>
+<p>The following database versions are no longer supported in Nextcloud 35 as they are now out of support by their respective vendors:</p>
+<ul class="simple">
+<li><p>MariaDB 10.6. The minimum supported version of MariaDB is now 10.11 LTS.</p></li>
+<li><p>MySQL 8.0. The minimum supported version of MySQL is now 8.4 LTS.</p></li>
+</ul>
+<p>The following new database versions are now supported in Nextcloud 35 as they are now released as LTS versions by their respective vendors.
+Make sure to adjust your CI matrix for testing with them. This is automatically done if you use the workflow templates provided by Nextcloud.</p>
+<ul>
+<li><p>MariaDB 12.3 is now supported.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In MariaDB 12+ the query parser is stricter, when using GROUP BY clauses.</p>
+<p>If you have constructs like <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">`a`,</span> <span class="pre">CAST(`b`</span> <span class="pre">as</span> <span class="pre">CHAR)</span> <span class="pre">as</span> <span class="pre">`b`</span> <span class="pre">FROM</span> <span class="pre">`table`</span> <span class="pre">GROUP</span> <span class="pre">BY</span> <span class="pre">`a`,</span> <span class="pre">CAST(`b`</span> <span class="pre">as</span> <span class="pre">CHAR)</span></code>
+this will break as the GROUP BY clause will self reference the alias <code class="docutils literal notranslate"><span class="pre">b</span></code>.
+Using a different alias name will fix MariaDB but not all other database systems, as then the cast expression is missing from the GROUP BY clause.
+So make this work on all supported database systems you need to use a subquery:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">`</span><span class="n">a</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">b</span><span class="o">`</span>
+<span class="k">FROM</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="o">`</span><span class="n">a</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="k">CAST</span><span class="p">(</span><span class="o">`</span><span class="n">b</span><span class="o">`</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="o">`</span><span class="n">b</span><span class="o">`</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="o">`</span><span class="k">table</span><span class="o">`</span>
+<span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="o">`</span><span class="n">subquery</span><span class="o">`</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="o">`</span><span class="n">a</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">b</span><span class="o">`</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p>MySQL 9.7 is now supported.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>MySQL 9+ deprecated support for MD5, so we strongly recommend to migrate away from the MD5 SQL function in your apps.</p>
+</div>
+</li>
+</ul>
+</section>
 <section id="removed-front-end-apis-and-libraries">
 <h2>Removed front-end APIs and libraries<a class="headerlink" href="#removed-front-end-apis-and-libraries" title="Link to this heading"></a></h2>
 <ul class="simple">
@@ -175,7 +212,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jun 24, 2026.
+      <span class="lastupdated">Last updated on Jun 25, 2026.
       </span></p>
   </div>
 
