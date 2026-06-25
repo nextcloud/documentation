@@ -817,6 +817,13 @@ Event that allows to register a feature policy header to a request.
 .. versionadded:: 28
 
 
+``OCP\Share\Events\ShareReviewAccessCheckEvent``
+************************************************
+
+.. versionadded:: 34.0.2
+
+Authorization gate event dispatched by a ShareReview source before deleting an app-managed share on behalf of a ShareReview operator.
+
 ``OCP\Share\Events\VerifyMountPointEvent``
 ******************************************
 
