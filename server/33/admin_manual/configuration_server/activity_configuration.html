@@ -84,7 +84,10 @@
 <li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html">Configuration Parameters</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Activity app</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#enabling-the-activity-app">Enabling the activity app</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuring-your-nextcloud-for-the-activity-app">Configuring your Nextcloud for the activity app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-your-nextcloud-for-the-activity-app">Configuring your Nextcloud for the activity app</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#admin-settings">Admin settings</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#activities-in-groupfolders-or-external-storages">Activities in groupfolders or external storages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#better-scheduling-of-activity-emails">Better scheduling of activity emails</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#excluding-users-from-the-activity-expiration">Excluding users from the activity expiration</a></li>
@@ -210,6 +213,20 @@ simply go to your Nextcloud Apps page to enable it.</p>
 <code class="docutils literal notranslate"><span class="pre">Cron</span></code> as described in <a class="reference internal" href="background_jobs_configuration.html"><span class="doc">Background jobs</span></a>.</p>
 <p>There is also a configuration option <code class="docutils literal notranslate"><span class="pre">activity_expire_days</span></code> available in your
 <code class="docutils literal notranslate"><span class="pre">config.php</span></code> which allows you to clean-up older activities from the database.</p>
+<section id="admin-settings">
+<h3>Admin settings<a class="headerlink" href="#admin-settings" title="Link to this heading"></a></h3>
+<p>As an administrator, you can:</p>
+<ul>
+<li><p>Configure the maximum number of activities fully displayed in notification emails
+using the <code class="docutils literal notranslate"><span class="pre">mail_max_items</span></code> setting. Activities beyond this limit are summarised
+as <em>“and X more”</em> at the bottom of the email. The default is <code class="docutils literal notranslate"><span class="pre">200</span></code> and the
+maximum allowed value is <code class="docutils literal notranslate"><span class="pre">1000</span></code>. For example, to set it to <code class="docutils literal notranslate"><span class="pre">500</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">activity</span> <span class="n">mail_max_items</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">500</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
 </section>
 <section id="activities-in-groupfolders-or-external-storages">
 <span id="label-activities-groupfolders"></span><h2>Activities in groupfolders or external storages<a class="headerlink" href="#activities-in-groupfolders-or-external-storages" title="Link to this heading"></a></h2>
