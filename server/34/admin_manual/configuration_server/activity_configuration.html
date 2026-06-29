@@ -259,6 +259,16 @@ still be sent by the background job on its next run. To stop those
 emails immediately, truncate or clear the <code class="docutils literal notranslate"><span class="pre">oc_activity_mq</span></code> database
 table.</p>
 </div>
+<ul>
+<li><p>Configure the maximum number of activities fully displayed in notification emails
+using the <code class="docutils literal notranslate"><span class="pre">mail_max_items</span></code> setting. Activities beyond this limit are summarised
+as <em>“and X more”</em> at the bottom of the email. The default is <code class="docutils literal notranslate"><span class="pre">200</span></code> and the
+maximum allowed value is <code class="docutils literal notranslate"><span class="pre">1000</span></code>. For example, to set it to <code class="docutils literal notranslate"><span class="pre">500</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">activity</span> <span class="n">mail_max_items</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">500</span>
+</pre></div>
+</div>
+</li>
+</ul>
 </section>
 </section>
 <section id="configuration-reference">
