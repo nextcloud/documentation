@@ -78,7 +78,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#updated-php-requirements">Updated PHP requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#updated-database-requirements">Updated database requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-front-end-apis-and-libraries">Removed front-end APIs and libraries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#removed-back-end-apis">Removed back-end APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removed-back-end-apis">Removed back-end APIs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#remote-api">Remote API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preview-api">Preview API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-removed-back-end-apis">Other removed back-end APIs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="new.html">New in this release</a></li>
@@ -184,19 +189,32 @@ So make this work on all supported database systems you need to use a subquery:<
 </section>
 <section id="removed-back-end-apis">
 <h2>Removed back-end APIs<a class="headerlink" href="#removed-back-end-apis" title="Link to this heading"></a></h2>
+<section id="remote-api">
+<h3>Remote API<a class="headerlink" href="#remote-api" title="Link to this heading"></a></h3>
+<p>All these interfaces were deprecated since Nextcloud 23 and were removed without replacement:</p>
 <ul class="simple">
-<li><p>All these interfaces were deprecated since Nextcloud 23 and were removed without replacement:
-- <code class="docutils literal notranslate"><span class="pre">\OCP\Remote\ICredentials</span></code>
-- <code class="docutils literal notranslate"><span class="pre">\OCP\Remote\IInstance</span></code>
-- <code class="docutils literal notranslate"><span class="pre">\OCP\Remote\IInstanceFactory</span></code>
-- <code class="docutils literal notranslate"><span class="pre">\OCP\Remote\IUser</span></code>
-- <code class="docutils literal notranslate"><span class="pre">\OCP\Remote\API\IUserApi</span></code>
-- <code class="docutils literal notranslate"><span class="pre">\OCP\Remote\API\ICapabilitiesApi</span></code>
-- <code class="docutils literal notranslate"><span class="pre">\OCP\Remote\API\IApiFactory</span></code>
-- <code class="docutils literal notranslate"><span class="pre">\OCP\Remote\API\IApiCollection</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Remote\ICredentials</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Remote\IInstance</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Remote\IInstanceFactory</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Remote\IUser</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Remote\API\IUserApi</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Remote\API\ICapabilitiesApi</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Remote\API\IApiFactory</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Remote\API\IApiCollection</span></code></p></li>
+</ul>
+</section>
+<section id="preview-api">
+<h3>Preview API<a class="headerlink" href="#preview-api" title="Link to this heading"></a></h3>
+<p>The registration method of the preview manager <code class="docutils literal notranslate"><span class="pre">\OCP\IPreview::registerProvider</span></code> was deprecated since Nextcloud 23 and was removed now.
+Instead of using the manager register your provider via the <code class="docutils literal notranslate"><span class="pre">IRegistrationContext</span></code> when booting the app.</p>
+</section>
+<section id="other-removed-back-end-apis">
+<h3>Other removed back-end APIs<a class="headerlink" href="#other-removed-back-end-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
 <li><p>All the deprecated methods of <code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\Resource\IManager</span></code> and <code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\Room\IManager</span></code> were deprecated since Nextcloud 24 and were removed without replacement.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">\OCP\Collaboration\AutoComplete\AutoCompleteEvent</span></code> event was deprecated since Nextcloud 28 and was removed with <code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\AutoComplete\AutoCompleteFilterEvent</span></code> as replacement;</p></li>
 </ul>
+</section>
 </section>
 </section>
 
@@ -212,7 +230,7 @@ So make this work on all supported database systems you need to use a subquery:<
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jun 25, 2026.
+      <span class="lastupdated">Last updated on Jun 29, 2026.
       </span></p>
   </div>
 
