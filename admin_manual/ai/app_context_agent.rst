@@ -9,6 +9,8 @@ The *context_agent* app is the app that provides AI agent functionality in Nextc
 When the Context Agent app is installed the AI Chat in Nextcloud Assistant will be able to interact with your Nextcloud apps via virtual integrations that are called "tools". They allow the Assistant to perform actions in your Nextcloud upon sending instructions in a chat message.
 Tool groups are only available if their requirements are met. They can be en- and disabled in the AI admin settings.
 
+Additionally, the app makes all tools available via an MCP server that you can connect third-party agents to (see below).
+
 Currently implemented tools
 ---------------------------
 
@@ -511,10 +513,11 @@ Requirements
 Installation
 ------------
 
+
 0. Make sure the :ref:`Nextcloud Assistant app<ai-app-assistant>` is installed
 1. :ref:`Install AppAPI and setup a Deploy Demon<ai-app_api>`
 2. Install the "Context Agent" ExApp via the "Apps" page in the Nextcloud web admin user interface
-3. Install a text generation backend like :ref:`llm2 <ai-app-llm2>` or :ref:`integration_openai <ai-ai_as_a_service>` via the "Apps" page in Nextcloud
+3. If you want to use the agent in the Nextcloud UI, install a text generation backend like :ref:`llm2 <ai-app-llm2>` or :ref:`integration_openai <ai-ai_as_a_service>` via the "Apps" page in Nextcloud; if you only want to use the MCP server you don't need these.
 
 
 Model requirements
@@ -526,7 +529,6 @@ Other models that may give good results are:
 * Google Gemma 3 12B or higher
 * Mistral 3 small 24B
 * Qwen 2.5 8B or higher (May not work well with languages other than English)
-* Watt Tool 8B or higher
 
 See :ref:`llm2 documentation <ai-app-llm2>` on how to configure alternate models.
 
