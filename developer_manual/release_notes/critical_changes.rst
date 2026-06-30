@@ -95,3 +95,4 @@ Other removed back-end APIs
 
 - All the deprecated methods of ``\OCP\Calendar\Resource\IManager`` and ``\OCP\Calendar\Room\IManager`` were deprecated since Nextcloud 24 and were removed without replacement.
 - The ``\OCP\Collaboration\AutoComplete\AutoCompleteEvent`` event was deprecated since Nextcloud 28 and was removed with ``OCP\Collaboration\AutoComplete\AutoCompleteFilterEvent`` as replacement;
+- ``\OCP\Files\IRootFolder`` does not publicly implement the deprecated and private ``OC\Hooks\Emitter`` interface anymore. The private implementations still do, but support might be removed at any moment without notice. The replacement for the hooks provided by ``IRootFolder`` are the node events defined in the ``OCP\Files\Events\Node`` namespace.
