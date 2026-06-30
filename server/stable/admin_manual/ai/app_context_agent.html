@@ -222,6 +222,7 @@
 <p id="ai-app-context-agent">The <em>context_agent</em> app is the app that provides AI agent functionality in Nextcloud’s “Chat with AI” feature and acts as a backend for the <a class="reference internal" href="app_assistant.html#ai-app-assistant"><span class="std std-ref">Nextcloud Assistant app</span></a>. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.</p>
 <p>When the Context Agent app is installed the AI Chat in Nextcloud Assistant will be able to interact with your Nextcloud apps via virtual integrations that are called “tools”. They allow the Assistant to perform actions in your Nextcloud upon sending instructions in a chat message.
 Tool groups are only available if their requirements are met. They can be en- and disabled in the AI admin settings.</p>
+<p>Additionally, the app makes all tools available via an MCP server that you can connect third-party agents to (see below).</p>
 <section id="currently-implemented-tools">
 <h2>Currently implemented tools<a class="headerlink" href="#currently-implemented-tools" title="Link to this heading"></a></h2>
 <section id="artificial-intelligence-tools">
@@ -784,7 +785,7 @@ The Context Agent app allows administrators to extend its capabilities by adding
 <li><p>Make sure the <a class="reference internal" href="app_assistant.html#ai-app-assistant"><span class="std std-ref">Nextcloud Assistant app</span></a> is installed</p></li>
 <li><p><a class="reference internal" href="../exapps_management/AppAPIAndExternalApps.html#ai-app-api"><span class="std std-ref">Install AppAPI and setup a Deploy Demon</span></a></p></li>
 <li><p>Install the “Context Agent” ExApp via the “Apps” page in the Nextcloud web admin user interface</p></li>
-<li><p>Install a text generation backend like <a class="reference internal" href="app_llm2.html#ai-app-llm2"><span class="std std-ref">llm2</span></a> or <a class="reference internal" href="ai_as_a_service.html#ai-ai-as-a-service"><span class="std std-ref">integration_openai</span></a> via the “Apps” page in Nextcloud</p></li>
+<li><p>If you want to use the agent in the Nextcloud UI, install a text generation backend like <a class="reference internal" href="app_llm2.html#ai-app-llm2"><span class="std std-ref">llm2</span></a> or <a class="reference internal" href="ai_as_a_service.html#ai-ai-as-a-service"><span class="std std-ref">integration_openai</span></a> via the “Apps” page in Nextcloud; if you only want to use the MCP server you don’t need these.</p></li>
 </ol>
 <section id="model-requirements">
 <h3>Model requirements<a class="headerlink" href="#model-requirements" title="Link to this heading"></a></h3>
@@ -794,7 +795,6 @@ Other models that may give good results are:</p>
 <li><p>Google Gemma 3 12B or higher</p></li>
 <li><p>Mistral 3 small 24B</p></li>
 <li><p>Qwen 2.5 8B or higher (May not work well with languages other than English)</p></li>
-<li><p>Watt Tool 8B or higher</p></li>
 </ul>
 <p>See <a class="reference internal" href="app_llm2.html#ai-app-llm2"><span class="std std-ref">llm2 documentation</span></a> on how to configure alternate models.</p>
 </section>
