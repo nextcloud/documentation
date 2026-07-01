@@ -6,6 +6,11 @@ System requirements
 -------------------
 
 - PHP 8.2 is no longer supported.
+- The 32-bit support for Nextcloud will run out in the foreseeable future.
+  Due to our dependencies as well as Linux distributions dropping support of 32-bit,
+  but also because of functional limitations of 32-bit PHP,
+  Nextcloud will drop support for 32-bit operating systems and PHP versions in the foreseeable future.
+  Please make sure to upgrade your server to a 64-bit operating system and PHP version!
 - The list of officially supported operating system has been updated:
 
   - The minimum supported version of *SUSE Linux Enterprise Server 15* has been bumped to SP7.
