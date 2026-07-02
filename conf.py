@@ -74,7 +74,7 @@ _stable_ver = (
     _re.match(r'^stable(\d+)$', _base)
     or _re.match(r'^refs/heads/stable(\d+)$', _ref)
 )
-display_version = (
+display_version = os.environ.get('DOCS_DISPLAY_VERSION') or (
     release if release != 'latest'                    # PDF/ePub builds (DOCS_RELEASE set)
     else _stable_ver.group(1) if _stable_ver          # stableNN branches and PRs targeting them
     else str(version_stable + 1)                      # master
