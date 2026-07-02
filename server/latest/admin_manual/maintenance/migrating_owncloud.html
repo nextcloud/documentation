@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=9a87ad92" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -203,26 +203,28 @@ See the table below for a version map, where migrating is easily possible:</p>
 10.14.x
 10.15.x
 10.16.x</p></td>
-<td><p>25.0.13
-25.0.13
-25.0.13
-25.0.13</p></td>
+<td><p>34.0.0
+34.0.0
+34.0.0
+34.0.0</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Since ownCloud does not and will not support PHP 8.0 or higher, you
-need to migrate from ownCloud 10.13.x to Nextcloud 25 and then
-further upgrade from there. We urge you to migrate to Nextcloud
-since PHP versions prior PHP 8 are end of life, see
+need to upgrade your PHP instance first, after which, ownCloud won’t
+be accessible anymore. See <a class="reference internal" href="../installation/system_requirements.html"><span class="doc">System requirements</span></a>
+about PHP versions supported by Nextcloud. We urge you to migrate to
+Nextcloud since PHP versions prior PHP 8 are end of life, see
 <a class="reference external" href="https://www.php.net/supported-versions.php">https://www.php.net/supported-versions.php</a>.</p>
 </div>
 <ol class="arabic simple">
-<li><p>First download the correct version of Nextcloud from our <a class="reference external" href="https://nextcloud.com/changelog/">older releases page</a>,</p></li>
+<li><p>First download the correct version of Nextcloud from our <a class="reference external" href="https://nextcloud.com/changelog/">releases page</a>,</p></li>
 <li><p>Make sure to have do a <a class="reference internal" href="backup.html"><span class="doc">backup</span></a> before migrating.</p></li>
+<li><p>Upgrade PHP to a version supported by the downloaded Nextcloud version.</p></li>
 <li><p>Follow the upgrade instructions described in the <a class="reference internal" href="manual_upgrade.html"><span class="doc">Upgrade manually</span></a> manual.</p></li>
-<li><p>When migrating to Nextcloud 20.0 or later, you will also need to run the following commands after <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code>:</p></li>
+<li><p>Run the following commands after <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code>:</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
@@ -232,17 +234,12 @@ since PHP versions prior PHP 8 are end of life, see
 <li><p><code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">db:add-missing-primary-keys</span></code></p></li>
 </ul>
 </div></blockquote>
-<ol class="arabic simple" start="5">
+<ol class="arabic simple" start="6">
 <li><p>If system cron was used, please verify if crontab entry was using the command <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">system:cron</span></code>.
 If yes, please adjust it to use the <code class="docutils literal notranslate"><span class="pre">php</span></code> command instead according to <a class="reference internal" href="../configuration_server/background_jobs_configuration.html#system-cron-configuration-label"><span class="std std-ref">the background jobs configuration documentation</span></a></p></li>
-<li><p>As Nextcloud 25 is the last Nextcloud version supporting PHP 7 you need to upgrade your PHP installation afterwards to continue updating to current Nextcloud release.
-We recommend to update PHP to version 8.1 before continuing with the updates.</p></li>
-<li><p>Use the <a class="reference internal" href="update.html"><span class="doc">Nextcloud built-in updater</span></a> to update your instance to the newest version.
-This must be done for every major version, since updates between multiple major versions are not supported.
-So the update path would be: 26 → 27.1 → 28 → 29 → 30 → 31.</p></li>
-<li><p>When reaching Nextcloud 30 or 31 we recommend to update PHP again to a current version like PHP 8.3.
-You can do so also in between, as PHP 8.2 is already supported since Nextcloud 26 and PHP 8.3 since Nextcloud 28,
-but in most cases it is easier to first complete the Nextcloud version updates.</p></li>
+<li><p>In case, use the <a class="reference internal" href="update.html"><span class="doc">Nextcloud built-in updater</span></a> to update your instance to the newest version.
+This must be done for every major version, since updates between multiple major versions are not supported.</p></li>
+<li><p>If multiple major version upgrades are done, it might be needed to upgrade PHP again in between.</p></li>
 <li><p>Make sure to also verify the “Security &amp; setup warnings” in the “Overview” section on the settings page.</p></li>
 <li><p>In some cases, apps installed from the ownCloud Market might have been disabled as incompatible
 (ex: calendar and contacts), so you should reinstall the Nextcloud ones using
@@ -284,40 +281,38 @@ but in most cases it is easier to first complete the Nextcloud version updates.<
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-admin" class="rst-other-versions">
-      <dl>
-        <dt>☁️ Versions</dt>
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/latest/admin_manual"
              
-             style="color: var(--dark-link-color);"
-             
           >
-            35 (latest)
+            35 (upcoming)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/stable/admin_manual"
              
           >
-            34 (stable)
+            34 (latest)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/33/admin_manual"
              
           >
-            33
+            33 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
-            32
+            32 (stable)
           </a>
         </dd>
         
