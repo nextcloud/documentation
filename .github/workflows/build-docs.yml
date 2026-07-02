@@ -44,6 +44,13 @@ jobs:
     name: Building ${{ matrix.manual.name }} HTML
     runs-on: ubuntu-latest
 
+    env:
+      # The single-run deploy builds each version via a checked-out `ref`, but
+      # GITHUB_REF stays the workflow's own branch. Stable branches' conf.py read
+      # GITHUB_BASE_REF to derive their display version, so expose the branch being
+      # built; otherwise every stable build is mislabelled as the dev version.
+      GITHUB_BASE_REF: ${{ inputs.branch }}
+
     strategy:
       fail-fast: false
       matrix:
@@ -165,6 +172,9 @@ jobs:
     name: Building ${{ matrix.manual.name }} ePub
     runs-on: ubuntu-latest
 
+    env:
+      GITHUB_BASE_REF: ${{ inputs.branch }}
+
     strategy:
       fail-fast: false
       matrix:
@@ -283,6 +293,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: prepare-pdf-image
     container: ${{ needs.prepare-pdf-image.outputs.image }}
+
+    env:
+      GITHUB_BASE_REF: ${{ inputs.branch }}
 
     strategy:
       fail-fast: false
