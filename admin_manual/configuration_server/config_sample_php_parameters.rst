@@ -709,7 +709,7 @@ remember_login_cookie_lifetime
 
 Lifetime of logins where the user selected "Remember me", in seconds.
 
-A value >``0`` means "Remember me" is available.
+A value > ``0`` means "Remember me" is available.
 To make "Remember me" unavailable to users, set to ``0``.
 
 To avoid unexpected expiry, set this higher than ``session_lifetime``.
