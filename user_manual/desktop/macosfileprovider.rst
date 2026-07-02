@@ -153,6 +153,23 @@ stores that information locally, so all subsequent opens will work correctly.
 To avoid the issue entirely, right-click the alias file in Finder and choose
 **Keep Downloaded** before opening it for the first time.
 
+“Edit locally”
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The “Edit locally” action offered by the Nextcloud web interface cannot open
+files that are managed by the File Provider extension.
+
+This is a restriction of macOS itself, not a fault in the client. For your
+protection, macOS only lets specific apps open a given file, and it does not
+allow an app to grant itself that permission. The part of the client that is
+allowed to manage these files is not permitted to launch other apps, and the
+part that could launch your editor is not permitted to open the file. Granting
+Full Disk Access does not help, because a different part of the macOS security
+system is responsible for this.
+
+To edit such a file, open it directly from Finder instead: select your
+Nextcloud location in the Finder sidebar and double-click the file.
+
 Troubleshooting
 ---------------
 
