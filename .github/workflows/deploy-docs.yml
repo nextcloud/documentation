@@ -15,6 +15,12 @@ on:
   schedule:
     - cron: '0 2 * * *'  # 02:00 UTC daily
   workflow_dispatch:
+    inputs:
+      branch:
+        description: "Build & deploy a single branch (e.g. master or stable34). Leave empty to build master + all supported stable branches."
+        required: false
+        type: string
+        default: ""
 
 permissions:
   contents: read
@@ -30,15 +36,46 @@ jobs:
     outputs:
       branches: ${{ steps.set.outputs.branches }}
     steps:
-      - name: Collect master and stable branches
+      - name: Checkout repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2.37.2
+        with:
+          php-version: '8.3'
+
+      - name: Compute branch matrix
         id: set
         env:
-          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INPUT_BRANCH: ${{ inputs.branch }}
         run: |
-          stable_branches=$(gh api "repos/${{ github.repository }}/branches" --paginate \
-            --jq '.[].name | select(startswith("stable"))' | sort -Vr)
-          # Build a JSON array: ["master", "stable34", "stable33", ...]
-          branches_json=$(printf '%s\n' master ${stable_branches} | jq -R . | jq -cs .)
+          # Manual single-branch dispatch: build only the requested branch.
+          if [ -n "${INPUT_BRANCH}" ]; then
+            branches_json=$(printf '%s' "${INPUT_BRANCH}" | jq -R . | jq -cs .)
+            echo "Single-branch dispatch: ${branches_json}"
+            echo "branches=${branches_json}" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Scheduled / plain dispatch: master + every stable branch that is still
+          # within the support window. Ancient branches (e.g. stable10) are on the
+          # remote but out of support and would blow past the 256-jobs-per-run cap.
+          nums=$(git ls-remote --heads origin "heads/stable[0-9][0-9]" \
+            | sed -n 's?.*refs/heads/stable\([0-9]\{2\}\)$?\1?p' | sort -n)
+
+          # Reuse the shared helper to get the supported range (lowest..highest).
+          eval $(php build/detect-versions.php ${nums})
+          echo "Supported stable range: ${lowest_stable}..${highest_stable}"
+
+          selected="master"
+          for n in ${nums}; do
+            if [ "$n" -ge "$lowest_stable" ] && [ "$n" -le "$highest_stable" ]; then
+              selected="${selected} stable${n}"
+            fi
+          done
+
+          branches_json=$(printf '%s\n' ${selected} | jq -R . | jq -cs .)
           echo "Matrix branches: ${branches_json}"
           echo "branches=${branches_json}" >> $GITHUB_OUTPUT
 
@@ -109,10 +146,12 @@ jobs:
         id: apply
         if: steps.staged.outputs.has_stage == 'true'
         run: |
+          deployed=""
           for d in stage/*/; do
             [ -d "$d" ] || continue
             branch="$(basename "$d")"
             echo "Applying version folder: ${branch}"
+            deployed="${deployed} ${branch}"
 
             mkdir -p "server/${branch}"
             for artifact in "stage/${branch}"/*; do
@@ -131,6 +170,10 @@ jobs:
               fi
             done
           done
+
+          # Record which folders we deployed this run, so later steps only touch
+          # those (not the ancient version folders already present on gh-pages).
+          echo "folders=$(echo ${deployed} | xargs)" >> $GITHUB_OUTPUT
 
           # Cleanup empty directories
           find . -type d -empty -delete
@@ -182,16 +225,49 @@ jobs:
         if: steps.apply.outputs.has_changes == 'true'
         run: |
           default_branch="${{ github.event.repository.default_branch }}"
-          git fetch origin "${default_branch}"
+          # gh-pages is checked out single-branch, so there is no origin/<default>
+          # tracking ref. Fetch with an explicit refspec to create it.
+          git fetch origin "${default_branch}:refs/remotes/origin/${default_branch}"
           git checkout "origin/${default_branch}" -- go.php/index.html user_manual/index.html
 
-          for d in server/*/; do
-            [ -d "$d" ] || continue
-            branch="$(basename "$d")"
+          # Only the folders deployed this run — not every historical version
+          # already on gh-pages (some old ones have an incompatible layout).
+          for branch in ${{ steps.apply.outputs.folders }}; do
+            rm -rf "server/${branch}/go.php"
             mkdir -p "server/${branch}/go.php" "server/${branch}/user_manual"
             cp go.php/index.html "server/${branch}/go.php/index.html"
             cp user_manual/index.html "server/${branch}/user_manual/index.html"
           done
+
+      # ========================================================================
+      # COMPOSE PR BODY — per-version change counts
+      # ========================================================================
+      - name: Compose PR body
+        id: body
+        if: steps.apply.outputs.has_changes == 'true'
+        run: |
+          # Stage everything so new files count too (create-pull-request commits this).
+          git add -A
+          {
+            echo "text<<PR_BODY_EOF"
+            echo "This PR was automatically generated by the scheduled deploy workflow."
+            echo ""
+            echo "Documentation rebuilt for: **${{ steps.apply.outputs.folders }}**"
+            echo ""
+            echo "| Version folder | Files changed |"
+            echo "| --- | ---: |"
+            total=0
+            for branch in ${{ steps.apply.outputs.folders }}; do
+              n=$(git diff --cached --name-only -- "server/${branch}" | wc -l | tr -d ' ')
+              total=$((total + n))
+              echo "| \`${branch}\` | ${n} |"
+            done
+            # Files outside the deployed version folders (redirects, robots.txt, …).
+            other=$(git diff --cached --name-only -- . ':(exclude)server/*' | wc -l | tr -d ' ')
+            echo "| _other_ | ${other} |"
+            echo "| **Total** | **$((total + other))** |"
+            echo "PR_BODY_EOF"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Create Pull Request for documentation deployment
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
@@ -206,9 +282,7 @@ jobs:
           branch: "automated/deploy/documentation"
           base: gh-pages
           title: "Documentation update"
-          body: |
-            This PR was automatically generated by the scheduled deploy workflow
-            and includes the latest documentation for all built versions.
+          body: ${{ steps.body.outputs.text }}
           delete-branch: true
           labels: "automated, 3. to review"
 

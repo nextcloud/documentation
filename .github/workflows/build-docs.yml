@@ -125,10 +125,21 @@ jobs:
           fi
           exit $err
 
+      - name: Resolve Python version
+        id: pyver
+        run: |
+          # Read the version from the checked-out branch (ref input) so each
+          # version builds with its own Python; fall back to 3.13 if absent.
+          if [ -f .python-version ]; then
+            echo "version=$(tr -d '[:space:]' < .python-version)" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=3.13" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Set up Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
-          python-version: "3.13"
+          python-version: ${{ steps.pyver.outputs.version }}
           cache: "pip"
 
       - name: Install pip dependencies
@@ -176,10 +187,19 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
 
+      - name: Resolve Python version
+        id: pyver
+        run: |
+          if [ -f .python-version ]; then
+            echo "version=$(tr -d '[:space:]' < .python-version)" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=3.13" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Set up Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
-          python-version: "3.13"
+          python-version: ${{ steps.pyver.outputs.version }}
           cache: "pip"
 
       - name: Install pip dependencies
@@ -188,6 +208,11 @@ jobs:
       - name: Build epub documentation
         run: |
           set -e
+          # HTML sets DOCS_DISPLAY_VERSION via detect-versions and PDF via DOCS_RELEASE;
+          # the epub job needs it too so stable branches render their real version.
+          if [[ "${{ inputs.branch }}" =~ ^stable([0-9]+)$ ]]; then
+            export DOCS_DISPLAY_VERSION="${BASH_REMATCH[1]}"
+          fi
           cd ${{ matrix.manual.directory }}
           make epub
           ls -la ${{ matrix.manual.build_epub_path }}
@@ -282,10 +307,19 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
 
+      - name: Resolve Python version
+        id: pyver
+        run: |
+          if [ -f .python-version ]; then
+            echo "version=$(tr -d '[:space:]' < .python-version)" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=3.13" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Set up Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
-          python-version: "3.13"
+          python-version: ${{ steps.pyver.outputs.version }}
           # pip cache is not compatible with the Docker container
           # cache: "pip"
 
