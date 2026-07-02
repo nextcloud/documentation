@@ -4,42 +4,17 @@ Configuration
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The config that allows the app to set global, app and user settings can be injected from the ServerContainer. All values are saved as strings and must be cast to the correct value.
+Nextcloud provides three configuration scopes: system-wide values (``config.php``),
+per-app values, and per-user values. Each scope has a dedicated API.
 
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\AppInfo;
-
-    use OCP\AppFramework\App;
-    use OCP\IConfig;
-    use OCP\IServerContainer;
-    use OCA\MyApp\Service\AuthorService;
-
-    class Application extends App {
-
-        public function __construct(array $urlParams=array()){
-            parent::__construct('myapp', $urlParams);
-
-            $container = $this->getContainer();
-
-            /**
-             * Controllers
-             */
-            $container->registerService('AuthorService', function(IServerContainer $c): AuthorService {
-                return new AuthorService(
-                    $c->get(IConfig::class),
-                    $c->get('appName')
-                );
-            });
-        }
-    }
 
 System values
 -------------
 
-System values are saved in the :file:`config/config.php` and allow the app to modify and read the global configuration. Please note that ``setSystemValue`` might throw a ``OCP\HintException`` when the config file is read-only.
+System values are saved in :file:`config/config.php`. Inject ``\OCP\IConfig``
+and use the ``getSystemValue*`` / ``setSystemValue`` methods.
+
+Note that ``setSystemValue`` may throw ``OCP\HintException`` when the config file is read-only.
 
 .. code-block:: php
 
@@ -50,19 +25,15 @@ System values are saved in the :file:`config/config.php` and allow the app to mo
     use OCP\IConfig;
 
     class AuthorService {
-        private IConfig $config;
-        private string $appName;
+        public function __construct(
+            private IConfig $config,
+        ) {}
 
-        public function __construct(IConfig $config, string $appName){
-            $this->config = $config;
-            $this->appName = $appName;
-        }
-
-        public function getSystemValue(string $key) {
+        public function getSystemValue(string $key): mixed {
             return $this->config->getSystemValue($key);
         }
 
-        public function setSystemValue(string $key, $value): void {
+        public function setSystemValue(string $key, mixed $value): void {
             try {
                 $this->config->setSystemValue($key, $value);
             } catch (HintException $e) {
@@ -71,7 +42,10 @@ System values are saved in the :file:`config/config.php` and allow the app to mo
         }
     }
 
-.. note:: It's also possible to use ``getSystemValueBool``, ``getSystemValueString``, ``getSystemValueInt`` to get type hinted return values.
+.. note::
+
+   Use ``getSystemValueBool()``, ``getSystemValueString()``, and ``getSystemValueInt()``
+   for typed return values.
 
 Naming conventions
 ~~~~~~~~~~~~~~~~~~
@@ -89,62 +63,82 @@ Here are some examples:
 4. ``mail_smtpname``
 5. ``session_lifetime``
 
+
 App values
 ----------
 
-App values are saved in the database per app and are useful for setting global app settings:
+.. versionchanged:: 29
+
+   Use ``\OCP\AppFramework\Services\IAppConfig`` (app-scoped) or ``\OCP\IAppConfig``
+   (global) instead of ``IConfig::getAppValue()`` / ``IConfig::setAppValue()``,
+   which are deprecated.
+
+App values are stored in the database and are useful for global app settings.
+
+Inside an AppFramework app, inject ``\OCP\AppFramework\Services\IAppConfig``.
+Methods are automatically scoped to your app — no app ID argument needed.
 
 .. code-block:: php
 
     <?php
     namespace OCA\MyApp\Service;
 
-    use OCP\IConfig;
+    use OCP\AppFramework\Services\IAppConfig;
 
     class AuthorService {
-        private IConfig $config;
-        private string $appName;
+        public function __construct(
+            private IAppConfig $appConfig,
+        ) {}
 
-        public function __construct(IConfig $config, string $appName){
-            $this->config = $config;
-            $this->appName = $appName;
+        public function getRetryCount(): int {
+            return $this->appConfig->getAppValueInt('retry_count', 3);
         }
 
-        public function getAppValue(string $key): string {
-            return $this->config->getAppValue($this->appName, $key);
-        }
-
-        public function setAppValue(string $key, string $value): void {
-            $this->config->setAppValue($this->appName, $key, $value);
+        public function setRetryCount(int $count): void {
+            $this->appConfig->setAppValueInt('retry_count', $count);
         }
     }
+
+Use ``\OCP\IAppConfig`` when you need to read or write configuration for an
+arbitrary app ID (e.g. from a different app's config).
+
+For a full reference — typed values, lazy loading, sensitive values, key management —
+see :doc:`/digging_deeper/config/appconfig`.
+
 
 User values
 -----------
 
-User values are saved in the database per user and app and are good for saving user specific app settings:
+.. versionchanged:: 31
+
+   Use ``\OCP\Config\IUserConfig`` instead of ``IConfig::getUserValue()`` /
+   ``IConfig::setUserValue()``, which are deprecated.
+
+User values are stored in the database per user and app and are suitable for
+per-user app settings.
+
+Inject ``\OCP\Config\IUserConfig`` and use the typed getter/setter methods:
 
 .. code-block:: php
 
     <?php
     namespace OCA\MyApp\Service;
 
-    use OCP\IConfig;
+    use OCP\Config\IUserConfig;
 
     class AuthorService {
-        private IConfig $config;
-        private string $appName;
+        public function __construct(
+            private IUserConfig $userConfig,
+        ) {}
 
-        public function __construct(IConfig $config, string $appName){
-            $this->config = $config;
-            $this->appName = $appName;
+        public function getUserTheme(string $userId): string {
+            return $this->userConfig->getValueString($userId, 'myapp', 'theme', 'default');
         }
 
-        public function getUserValue(string $key, string $userId): string {
-            return $this->config->getUserValue($userId, $this->appName, $key);
-        }
-
-        public function setUserValue(string $key, string $userId, string $value): void {
-            $this->config->setUserValue($userId, $this->appName, $key, $value);
+        public function setUserTheme(string $userId, string $theme): void {
+            $this->userConfig->setValueString($userId, 'myapp', 'theme', $theme);
         }
     }
+
+For a full reference — typed values, lazy loading, sensitive and indexed values,
+key management — see :doc:`/digging_deeper/config/userconfig`.
