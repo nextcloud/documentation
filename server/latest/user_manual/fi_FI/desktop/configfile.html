@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=9a87ad92" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -86,7 +86,13 @@
 <li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuration File</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuration File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nextcloud-section"><code class="docutils literal notranslate"><span class="pre">[Nextcloud]</span></code> section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-section"><code class="docutils literal notranslate"><span class="pre">[General]</span></code> section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#legacy-proxy-section">Legacy <code class="docutils literal notranslate"><span class="pre">[Proxy]</span></code> section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#per-account-network-settings">Per-account network settings</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">The Automatic Updater</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update channels</a></li>
@@ -149,122 +155,309 @@ format. You can overwrite changes using the Nextcloud configuration dialog.</p>
 <p>Use caution when making changes to the Nextcloud Client configuration
 file.  Incorrect settings can produce unintended results.</p>
 </div>
+<p>The configuration file also contains account details, sync folder state, window
+geometry, cache values, migration markers, and updater state. Those values are
+managed by the client and are not documented here for manual editing.</p>
 <p>Some interesting values that can be set on the configuration file are:</p>
+<section id="nextcloud-section">
+<h2><code class="docutils literal notranslate"><span class="pre">[Nextcloud]</span></code> section<a class="headerlink" href="#nextcloud-section" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 28.0%" />
+<col style="width: 22.0%" />
+<col style="width: 50.0%" />
+</colgroup>
 <thead>
-<tr class="row-odd"><th class="head" colspan="3"><p><code class="docutils literal notranslate"><span class="pre">[Nextcloud]</span></code> section</p></th>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Meaning</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Variable</p></td>
-<td><p>Default</p></td>
-<td><p>Meaning</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">remotePollInterval</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">remotePollInterval</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">30000</span></code> (30 sec)</p></td>
-<td><p>Specifies the poll time for the remote repository in milliseconds.</p></td>
+<td><p>Specifies the poll time for the remote repository in milliseconds. Values below <code class="docutils literal notranslate"><span class="pre">5000</span></code> are ignored and the default is used instead.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">forceSyncInterval</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">forceSyncInterval</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">7200000</span></code> (2 hr)</p></td>
-<td><p>The duration of no activity after which a synchronization run shall be triggered automatically.</p></td>
+<td><p>The duration of no activity after which a synchronization run shall be triggered automatically. If this value is lower than <code class="docutils literal notranslate"><span class="pre">remotePollInterval</span></code>, the client uses <code class="docutils literal notranslate"><span class="pre">remotePollInterval</span></code> instead.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fullLocalDiscoveryInterval</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fullLocalDiscoveryInterval</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">3600000</span></code> (1 hr)</p></td>
-<td><p>The interval after which the next synchronization will perform a full local discovery.</p></td>
+<td><p>The interval after which the next synchronization will perform a full local discovery. Set this to <code class="docutils literal notranslate"><span class="pre">-1</span></code> to disable periodic full local discovery.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notificationRefreshInterval</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">60000</span></code>  (1 min)</p></td>
-<td><p>Specifies the default interval of checking for new server notifications in milliseconds.</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notificationRefreshInterval</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">60000</span></code> (1 min)</p></td>
+<td><p>Specifies the default interval of checking for new server notifications in milliseconds. Values below <code class="docutils literal notranslate"><span class="pre">60000</span></code> are raised to <code class="docutils literal notranslate"><span class="pre">60000</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Disables update checks and hides the updater user interface.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">autoUpdateCheck</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Enables automatic update checks when update checks are not skipped.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">updateCheckInterval</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">36000000</span></code> (10 hr)</p></td>
+<td><p>Specifies the interval for automatic update checks in milliseconds. Values below <code class="docutils literal notranslate"><span class="pre">300000</span></code> (5 min) are raised to <code class="docutils literal notranslate"><span class="pre">300000</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="general-section">
+<h2><code class="docutils literal notranslate"><span class="pre">[General]</span></code> section<a class="headerlink" href="#general-section" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 28.0%" />
+<col style="width: 22.0%" />
+<col style="width: 50.0%" />
+</colgroup>
 <thead>
-<tr class="row-odd"><th class="head" colspan="3"><p><code class="docutils literal notranslate"><span class="pre">[General]</span></code> section</p></th>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Meaning</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Variable</p></td>
-<td><p>Default</p></td>
-<td><p>Meaning</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">chunkSize</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">104857600</span></code> (100 MiB)</p></td>
+<td><p>Specifies the initial chunk size of uploaded files in bytes. The client can dynamically adjust this size within the maximum and minimum bounds. Server capabilities and environment variables can also affect the effective chunk size.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">chunkSize</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">10000000</span></code> (10 MB)</p></td>
-<td><p>Specifies the chunk size of uploaded files in bytes.
-The client will dynamically adjust this size within the maximum and minimum bounds (see below).</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">minChunkSize</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5242880</span></code> (5 MiB)</p></td>
+<td><p>Specifies the minimum configured chunk size of uploaded files in bytes. Values below the protocol minimum are raised by the sync engine.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">forceLoginV2</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">maxChunkSize</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">104857600</span></code> (100 MiB)</p></td>
+<td><p>Specifies the maximum configured chunk size of uploaded files in bytes. Server capabilities can override this value at runtime.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">forceLoginV2</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><p>If the client should force the new login flow, even though some circumstances might need the old flow.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">minChunkSize</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">5000000</span></code> (5 MB)</p></td>
-<td><p>Specifies the minimum chunk size of uploaded files in bytes.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">maxChunkSize</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">5000000000</span></code> (5000 MB)</p></td>
-<td><p>Specifies the maximum chunk size of uploaded files in bytes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">targetChunkUploadDuration</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">60000</span></code> (1 minute)</p></td>
-<td><p>Target duration in milliseconds for chunk uploads.
-The client adjusts the chunk size until each chunk upload takes approximately this long.
-Set to 0 to disable dynamic chunk sizing.</p></td>
-</tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">promptDeleteAllFiles</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>If a UI prompt should ask for confirmation if it was detected that all files and folders were deleted.</p></td>
+<td><p>If a UI prompt should ask for confirmation when all files are detected as deleted or when the number of deleted files exceeds <code class="docutils literal notranslate"><span class="pre">deleteFilesThreshold</span></code>. This only applies to GUI syncs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">timeout</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">deleteFilesThreshold</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">100</span></code></p></td>
+<td><p>The number of deleted files above which <code class="docutils literal notranslate"><span class="pre">promptDeleteAllFiles</span></code> can trigger a confirmation prompt.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">timeout</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">300</span></code></p></td>
-<td><p>The timeout for network connections in seconds.</p></td>
+<td><p>The timeout for network connections in seconds. The <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_TIMEOUT</span></code> environment variable takes precedence when set.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">moveToTrash</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">moveToTrash</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>If non-locally deleted files should be moved to trash instead of deleting them completely.</p></td>
+<td><p>If files deleted on the server should be moved to the local trash instead of being deleted permanently.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">showExperimentalOptions</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">showExperimentalOptions</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Whether to show experimental options that are still undergoing testing in the user interface.
-Turning this on does not enable experimental behavior on its own. It does enable user interface
-options that can be used to opt in to experimental features.</p></td>
+<td><p>Whether to show experimental options that are still undergoing testing in the user interface. Turning this on does not enable experimental behavior on its own. It enables user interface options that can be used to opt in to experimental features.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">showMainDialogAsNormalWindow</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">showMainDialogAsNormalWindow</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><p>Whether the main dialog should be shown as a normal window even if tray icons are available.</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">monoIcons</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Whether monochrome tray icons should be used. On macOS, the official Nextcloud client defaults this to <code class="docutils literal notranslate"><span class="pre">true</span></code> when monochrome icons are available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">optionalServerNotifications</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Whether optional server notifications should be shown.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">showChatNotifications</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Whether chat notifications should be shown when optional server notifications are enabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">showCallNotifications</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Whether call notifications should be shown when optional server notifications are enabled.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">showQuotaWarningNotifications</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Whether quota warning notifications should be shown when optional server notifications are enabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">showInExplorerNavigationPane</span></code></p></td>
+<td><p>Platform dependent</p></td>
+<td><p>Whether synced folders should be shown in the Windows Explorer navigation pane. The default is <code class="docutils literal notranslate"><span class="pre">true</span></code> on Windows 10 and newer, and <code class="docutils literal notranslate"><span class="pre">false</span></code> on other platforms.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">launchOnSystemStartup</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Stores whether the option to launch the client on system startup is enabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">language</span></code></p></td>
+<td><p>empty</p></td>
+<td><p>Enforces a specific language for the user interface. An empty value uses the operating system language.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">updateChannel</span></code></p></td>
+<td><p>Build dependent</p></td>
+<td><p>The selected update channel. Invalid values are ignored. Branded clients may only support their default channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newBigFolderSizeLimit</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">500</span></code> (MB)</p></td>
+<td><p>Folder size limit in MB used when asking before synchronizing large folders.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">useNewBigFolderSizeLimit</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Enables the large-folder confirmation limit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">confirmExternalStorage</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Ask before synchronizing external storages.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notifyExistingFoldersOverLimit</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Notify when existing synced folders grow beyond <code class="docutils literal notranslate"><span class="pre">newBigFolderSizeLimit</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stopSyncingExistingFoldersOverLimit</span></code></p></td>
+<td><p>Follows <code class="docutils literal notranslate"><span class="pre">notifyExistingFoldersOverLimit</span></code></p></td>
+<td><p>Stop syncing existing folders that exceed the configured folder size limit.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logToTemporaryLogDir</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Write logs to a temporary log directory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logDir</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;config</span> <span class="pre">path&gt;/logs</span></code></p></td>
+<td><p>Directory for client log files.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logDebug</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Enable debug logging.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logExpire</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">24</span></code></p></td>
+<td><p>Log retention time in hours.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logFlush</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Flush log output immediately.</p></td>
+</tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Muista</p>
+<p>Upload sync options can also be overridden by environment variables.
+<code class="docutils literal notranslate"><span class="pre">OWNCLOUD_CHUNK_SIZE</span></code>, <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_MIN_CHUNK_SIZE</span></code>,
+<code class="docutils literal notranslate"><span class="pre">OWNCLOUD_MAX_CHUNK_SIZE</span></code>, and <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_MAX_PARALLEL</span></code> are applied
+after configuration values and server capabilities. The dynamic chunk target
+duration can be overridden with <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_TARGET_CHUNK_UPLOAD_DURATION</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">targetChunkUploadDuration</span></code> key in <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code> is currently not
+applied by GUI sync.</p>
+</div>
+</section>
+<section id="legacy-proxy-section">
+<h2>Legacy <code class="docutils literal notranslate"><span class="pre">[Proxy]</span></code> section<a class="headerlink" href="#legacy-proxy-section" title="Link to this heading"></a></h2>
+<p>The top-level <code class="docutils literal notranslate"><span class="pre">[Proxy]</span></code> section is the legacy/global proxy configuration.
+Current account proxy settings are stored per account in the <code class="docutils literal notranslate"><span class="pre">[Accounts]</span></code>
+section. Proxy passwords are stored in the system keychain where possible.</p>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 28.0%" />
+<col style="width: 22.0%" />
+<col style="width: 50.0%" />
+</colgroup>
 <thead>
-<tr class="row-odd"><th class="head" colspan="3"><p><code class="docutils literal notranslate"><span class="pre">[Proxy]</span></code> section</p></th>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Meaning</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Variable</p></td>
-<td><p>Default</p></td>
-<td><p>Meaning</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">host</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">host</span></code></p></td>
+<td><p>empty</p></td>
 <td><p>The address of the proxy server.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">port</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">8080</span></code></p></td>
-<td><p>The port where the proxy is listening.</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">port</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>The port where the proxy is listening. The settings dialog may show <code class="docutils literal notranslate"><span class="pre">8080</span></code> as the manual-proxy UI default when no port is configured.</p></td>
 </tr>
-<tr class="row-odd"><td rowspan="4"><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
-<td rowspan="4"><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">needsAuth</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Whether the proxy requires authentication.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">user</span></code></p></td>
+<td><p>empty</p></td>
+<td><p>Proxy username.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> for System Proxy.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">1</span></code> for SOCKS5 Proxy.</p></td>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code> for SOCKS5 Proxy.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">2</span></code> for No Proxy.</p></td>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code> for No Proxy.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">3</span></code> for HTTP(S) Proxy.</p></td>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span></code> for HTTP(S) Proxy.</p></td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="per-account-network-settings">
+<h2>Per-account network settings<a class="headerlink" href="#per-account-network-settings" title="Link to this heading"></a></h2>
+<p>Current proxy and bandwidth settings are stored below the individual account
+group in the <code class="docutils literal notranslate"><span class="pre">[Accounts]</span></code> section.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">networkProxyType</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<td><p>Account proxy type. <code class="docutils literal notranslate"><span class="pre">0</span></code> is System Proxy, <code class="docutils literal notranslate"><span class="pre">1</span></code> is SOCKS5 Proxy, <code class="docutils literal notranslate"><span class="pre">2</span></code> is No Proxy, and <code class="docutils literal notranslate"><span class="pre">3</span></code> is HTTP(S) Proxy.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">networkProxyHostName</span></code></p></td>
+<td><p>empty</p></td>
+<td><p>Account proxy hostname.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">networkProxyPort</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Account proxy port.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">networkProxyNeedsAuth</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Whether the account proxy requires authentication.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">networkProxyUser</span></code></p></td>
+<td><p>empty</p></td>
+<td><p>Account proxy username.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">networkUploadLimitSetting</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Upload bandwidth limit mode. <code class="docutils literal notranslate"><span class="pre">0</span></code> means no limit and <code class="docutils literal notranslate"><span class="pre">1</span></code> means manual limit. Legacy values <code class="docutils literal notranslate"><span class="pre">-1</span></code> and <code class="docutils literal notranslate"><span class="pre">-2</span></code> are treated as no limit or migration values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">networkDownloadLimitSetting</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Download bandwidth limit mode. <code class="docutils literal notranslate"><span class="pre">0</span></code> means no limit and <code class="docutils literal notranslate"><span class="pre">1</span></code> means manual limit. Legacy values <code class="docutils literal notranslate"><span class="pre">-1</span></code> and <code class="docutils literal notranslate"><span class="pre">-2</span></code> are treated as no limit or migration values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">networkUploadLimit</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Manual upload limit in KB/s.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">networkDownloadLimit</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Manual download limit in KB/s.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 
 
@@ -395,10 +588,10 @@ options that can be used to opt in to experimental features.</p></td>
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
-      <dl>
-        <dt>🌐 Languages</dt>
+      <dl class="nc-languages-list">
+        <dt>Languages</dt>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ar/"
                
             >
@@ -406,7 +599,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/br/"
                
             >
@@ -414,7 +607,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ca/"
                
             >
@@ -422,7 +615,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_CN/"
                
             >
@@ -430,7 +623,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_HK/"
                
             >
@@ -438,7 +631,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_TW/"
                
             >
@@ -446,7 +639,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/cs/"
                
             >
@@ -454,7 +647,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/da/"
                
             >
@@ -462,7 +655,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nl/"
                
             >
@@ -470,7 +663,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/en/"
                
             >
@@ -478,7 +671,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/fi_FI/"
                
             >
@@ -486,7 +679,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/fr/"
                
             >
@@ -494,7 +687,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/gl/"
                
             >
@@ -502,7 +695,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/de/"
                
             >
@@ -510,7 +703,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/el/"
                
             >
@@ -518,7 +711,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/hu_HU/"
                
             >
@@ -526,7 +719,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/id/"
                
             >
@@ -534,7 +727,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ga/"
                
             >
@@ -542,7 +735,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/it/"
                
             >
@@ -550,7 +743,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ja_JP/"
                
             >
@@ -558,7 +751,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ko/"
                
             >
@@ -566,7 +759,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/lo/"
                
             >
@@ -574,7 +767,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/lt/"
                
             >
@@ -582,7 +775,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -590,7 +783,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nb_NO/"
                
             >
@@ -598,7 +791,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nn/"
                
             >
@@ -606,7 +799,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pl/"
                
             >
@@ -614,7 +807,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pt_PT/"
                
             >
@@ -622,7 +815,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pt_BR/"
                
             >
@@ -630,7 +823,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ro/"
                
             >
@@ -638,7 +831,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ru/"
                
             >
@@ -646,7 +839,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/si/"
                
             >
@@ -654,7 +847,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sk_SK/"
                
             >
@@ -662,7 +855,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sr/"
                
             >
@@ -670,7 +863,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/es/"
                
             >
@@ -678,7 +871,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sv/"
                
             >
@@ -686,7 +879,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ta/"
                
             >
@@ -694,7 +887,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/tr/"
                
             >
@@ -702,7 +895,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/uk_UA/"
                
             >
@@ -710,7 +903,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/uz/"
                
             >
@@ -718,7 +911,7 @@ options that can be used to opt in to experimental features.</p></td>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/vi/"
                
             >
@@ -729,40 +922,38 @@ options that can be used to opt in to experimental features.</p></td>
       </dl>
     </div>
     <div class="rst-other-versions">
-      <dl>
-        <dt>☁️ Versions</dt>
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/latest/user_manual"
                
-               style="color: var(--dark-link-color);"
-               
             >
-              35 (latest)
+              35 (upcoming)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/stable/user_manual"
                
             >
-              34 (stable)
+              34 (latest)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/33/user_manual"
                
             >
-              33
+              33 (stable)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
-              32
+              32 (stable)
             </a>
           </dd>
         
