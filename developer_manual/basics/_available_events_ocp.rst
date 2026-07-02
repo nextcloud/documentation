@@ -823,6 +823,20 @@ Event that allows to register a feature policy header to a request.
 .. versionadded:: 19
 
 
+``OCP\Share\ShareReview\Events\ShareReviewAccessCheckEvent``
+************************************************************
+
+.. versionadded:: 34.0.2
+
+Authorization gate event dispatched by a ShareReview source before deleting an app-managed share on behalf of a ShareReview operator.
+
+``OCP\Share\ShareReview\RegisterShareReviewSourceEvent``
+********************************************************
+
+.. versionadded:: 34.0.2
+
+Event dispatched by a share-review app to collect share sources from other apps. Listeners register the class name of their ``OCP\Share\ShareReview\IShareReviewSource`` implementation.
+
 ``OCP\SpeechToText\Events\TranscriptionFailedEvent``
 ****************************************************
 
