@@ -146,10 +146,12 @@ jobs:
         id: apply
         if: steps.staged.outputs.has_stage == 'true'
         run: |
+          deployed=""
           for d in stage/*/; do
             [ -d "$d" ] || continue
             branch="$(basename "$d")"
             echo "Applying version folder: ${branch}"
+            deployed="${deployed} ${branch}"
 
             mkdir -p "server/${branch}"
             for artifact in "stage/${branch}"/*; do
@@ -168,6 +170,10 @@ jobs:
               fi
             done
           done
+
+          # Record which folders we deployed this run, so later steps only touch
+          # those (not the ancient version folders already present on gh-pages).
+          echo "folders=$(echo ${deployed} | xargs)" >> $GITHUB_OUTPUT
 
           # Cleanup empty directories
           find . -type d -empty -delete
@@ -224,9 +230,10 @@ jobs:
           git fetch origin "${default_branch}:refs/remotes/origin/${default_branch}"
           git checkout "origin/${default_branch}" -- go.php/index.html user_manual/index.html
 
-          for d in server/*/; do
-            [ -d "$d" ] || continue
-            branch="$(basename "$d")"
+          # Only the folders deployed this run — not every historical version
+          # already on gh-pages (some old ones have an incompatible layout).
+          for branch in ${{ steps.apply.outputs.folders }}; do
+            rm -rf "server/${branch}/go.php"
             mkdir -p "server/${branch}/go.php" "server/${branch}/user_manual"
             cp go.php/index.html "server/${branch}/go.php/index.html"
             cp user_manual/index.html "server/${branch}/user_manual/index.html"
