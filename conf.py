@@ -66,12 +66,15 @@ version_start = 32		# oldest documented version
 version_stable = 34		# mapped to https://docs.nextcloud.com/server/stable/
 import re as _re
 # Detect stable branch version for display purposes.
+# In the consolidated deploy DOCS_DISPLAY_VERSION carries the built version (the
+# reserved GITHUB_* refs cannot be set per matrix leg).
 # For PRs: GITHUB_BASE_REF is the target branch (e.g. 'stable34').
 # For direct pushes: GITHUB_REF is 'refs/heads/stable34'.
 _base = os.environ.get('GITHUB_BASE_REF', '')
 _ref  = os.environ.get('GITHUB_REF', '')
 _stable_ver = (
-    _re.match(r'^stable(\d+)$', _base)
+    _re.match(r'^(\d+)$', os.environ.get('DOCS_DISPLAY_VERSION', ''))
+    or _re.match(r'^stable(\d+)$', _base)
     or _re.match(r'^refs/heads/stable(\d+)$', _ref)
 )
 display_version = (
