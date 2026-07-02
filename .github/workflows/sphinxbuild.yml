@@ -60,7 +60,6 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Get stable branches
-        if: github.ref == 'refs/heads/master' || github.base_ref == 'master'
         id: stable_branches
         run: |
           branches=$(git ls-remote --heads origin "heads/stable[0-9][0-9]" \
@@ -68,27 +67,41 @@ jobs:
             | sort -n -r | tr '\n' ' ')
           echo "branches=$branches" >> $GITHUB_OUTPUT
 
-      - name: Setup PHP for version validation
-        if: github.ref == 'refs/heads/master' || github.base_ref == 'master'
+      - name: Setup PHP for version detection
         uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2.37.2
 
-      - name: Validate version constants in conf.py
-        if: github.ref == 'refs/heads/master' || github.base_ref == 'master'
+      - name: Detect and export version constants
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # Detect current highest released stable and lowest supported stable via
+          # GitHub API (same logic as build/build-index.php and generate-top-index.yml).
+          # Exports DOCS_VERSION_STABLE and DOCS_VERSION_START so conf.py always has
+          # accurate values without manual updates to any branch.
           eval $(php build/detect-versions.php ${{ steps.stable_branches.outputs.branches }})
+          echo "DOCS_VERSION_STABLE=$highest_stable" >> $GITHUB_ENV
+          echo "DOCS_VERSION_START=$lowest_stable"   >> $GITHUB_ENV
 
-          conf_stable=$(grep -m1 '^\s*version_stable\s*=' conf.py | grep -o '[0-9]\+')
-          conf_start=$(grep -m1 '^\s*version_start\s*='  conf.py | grep -o '[0-9]\+')
+          # Compute display version: branch number for stableNN builds, dev version for master.
+          branch="${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}"
+          if [[ "$branch" =~ ^stable([0-9]+)$ ]]; then
+            echo "DOCS_DISPLAY_VERSION=${BASH_REMATCH[1]}" >> $GITHUB_ENV
+          else
+            echo "DOCS_DISPLAY_VERSION=$((highest_stable + 1))" >> $GITHUB_ENV
+          fi
 
+      - name: Validate conf.py fallbacks are current
+        if: github.ref == 'refs/heads/master' || github.base_ref == 'master'
+        run: |
+          conf_stable=$(grep -m1 "os.environ.get('DOCS_VERSION_STABLE'" conf.py | grep -o '[0-9]\+')
+          conf_start=$(grep -m1  "os.environ.get('DOCS_VERSION_START'"  conf.py | grep -o '[0-9]\+')
           err=0
-          if [ "$highest_stable" != "$conf_stable" ]; then
-            echo "::error::version_stable in conf.py ($conf_stable) != highest released stable ($highest_stable). Update conf.py."
+          if [ "$DOCS_VERSION_STABLE" != "$conf_stable" ]; then
+            echo "::error::conf.py fallback version_stable ($conf_stable) != current highest stable ($DOCS_VERSION_STABLE). Update the fallback in conf.py."
             err=1
           fi
-          if [ "$lowest_stable" != "$conf_start" ]; then
-            echo "::error::version_start in conf.py ($conf_start) != lowest existing stable branch ($lowest_stable). Update conf.py."
+          if [ "$DOCS_VERSION_START" != "$conf_start" ]; then
+            echo "::error::conf.py fallback version_start ($conf_start) != current lowest stable ($DOCS_VERSION_START). Update the fallback in conf.py."
             err=1
           fi
           exit $err

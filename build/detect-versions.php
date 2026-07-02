@@ -101,6 +101,9 @@ function fetch_release_info(int $version): ?array {
  */
 function detect_versions(array $branches): array {
 	rsort($branches, SORT_NUMERIC);
+	// Nextcloud's support policy: a release is supported for 1 year after its initial
+	// release. Versions released more than a year ago are considered out of support
+	// and count as $lowest_stable only if no newer in-support version exists.
 	$oneYearAgo = time() - (365 * 24 * 60 * 60);
 	$released = [];
 	$firstOutOfSupportTime = null;

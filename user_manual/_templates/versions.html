@@ -72,10 +72,10 @@
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
-      <dl>
-        <dt>🌐 {{ _('Languages') }}</dt>
+      <dl class="nc-languages-list">
+        <dt>{{ _('Languages') }}</dt>
         {% for lang in sorted_languages %}
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/{{ lang.code }}/"
                {% if lang.code == language %}
                style="color: var(--dark-link-color);"
@@ -88,10 +88,10 @@
       </dl>
     </div>
     <div class="rst-other-versions">
-      <dl>
-        <dt>☁️ {{ _('Versions') }}</dt>
+      <dl class="nc-versions-list">
+        <dt>{{ _('Versions') }}</dt>
         {% for slug, url, label in versions|reverse %}
-          <dd style="width: 32%">
+          <dd>
             <a href="{{ url }}"
                {% if current_version == slug %}
                style="color: var(--dark-link-color);"
