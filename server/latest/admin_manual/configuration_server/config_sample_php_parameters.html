@@ -1128,19 +1128,36 @@ templatedirectory to empty strings.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;remember_login_cookie_lifetime&#39;</span> <span class="o">=&gt;</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">15</span><span class="p">,</span>
 </pre></div>
 </div>
-<p>Lifetime of the remember login cookie. This should be larger than the
-session_lifetime. If it is set to 0, remember me is disabled.</p>
-<p>Defaults to <code class="docutils literal notranslate"><span class="pre">60*60*24*15</span></code> seconds (15 days)</p>
+<p>Lifetime of logins where the user selected “Remember me”, in seconds.</p>
+<p>A value &gt;``0`` means “Remember me” is available.
+To make “Remember me” unavailable to users, set to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p>To avoid unexpected expiry, set this higher than <code class="docutils literal notranslate"><span class="pre">session_lifetime</span></code>.</p>
+<p>Despite the key name, this also affects server-side expiration of remembered
+login tokens. Clearing browser cookies removes remembered login on that
+browser, but does not itself revoke server-side remember tokens.</p>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">60*60*24*15</span></code> seconds (15 days).</p>
 </section>
 <section id="session-lifetime">
 <h3>session_lifetime<a class="headerlink" href="#session-lifetime" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;session_lifetime&#39;</span> <span class="o">=&gt;</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span><span class="p">,</span>
 </pre></div>
 </div>
-<p>The lifetime of a session after inactivity.</p>
-<p>The maximum possible time is limited by the <code class="docutils literal notranslate"><span class="pre">session.gc_maxlifetime</span></code> php.ini setting
-which would overwrite this option if it is less than the value in the <code class="docutils literal notranslate"><span class="pre">config.php</span></code></p>
-<p>Defaults to <code class="docutils literal notranslate"><span class="pre">60*60*24</span></code> seconds (24 hours)</p>
+<p>Lifetime of authenticated sessions after inactivity, in seconds.</p>
+<p>When “Remember me” is enabled, users may be transparently
+re-authenticated after session expiry/logout while the remember-login
+cookie remains valid.</p>
+<p>To avoid earlier-than-expected remembered-login expiry, set
+<code class="docutils literal notranslate"><span class="pre">remember_login_cookie_lifetime</span></code> higher than this value.</p>
+<p>Effective behavior also depends on related settings:
+- <code class="docutils literal notranslate"><span class="pre">session_keepalive</span></code> can extend active Web UI sessions via heartbeat requests.
+- <code class="docutils literal notranslate"><span class="pre">session_relaxed_expiry</span></code> may allow sessions to persist longer than this value.
+- <code class="docutils literal notranslate"><span class="pre">auto_logout</span></code> can enforce logout behavior in the Web UI.</p>
+<p>The effective maximum retention also depends on PHP settings and external
+session-backend cleanup policies, including (but not limited to) PHP’s
+<code class="docutils literal notranslate"><span class="pre">session.gc_maxlifetime</span></code> and environment-specific cleanup behavior (e.g., distro
+cron/tmpfiles policies and handler-specific GC behavior). These may override this
+value.</p>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">60*60*24</span></code> seconds (24 hours).</p>
 </section>
 <section id="davstorage-request-timeout">
 <h3>davstorage.request_timeout<a class="headerlink" href="#davstorage-request-timeout" title="Link to this heading"></a></h3>
