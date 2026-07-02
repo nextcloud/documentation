@@ -1,0 +1,241 @@
+# Scheduled deployment of the documentation to gh-pages.
+#
+# Replaces the old schedule-builds.yml fan-out (which dispatched one
+# sphinxbuild.yml run per branch and therefore opened one deploy PR per
+# version). Here every version is built in a single run via a matrix over the
+# reusable build-docs.yml workflow, then a single deploy job applies all
+# versions to gh-pages and opens ONE pull request.
+#
+# fail-fast is disabled on the build matrix and the deploy job runs as long as
+# the run was not cancelled: a version that fails to build simply is not
+# deployed that night, without blocking the others.
+name: "Deploy documentation"
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # 02:00 UTC daily
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write  # the reusable build may push the PDF build image to GHCR
+
+jobs:
+  # ============================================================================
+  # PREPARE — compute the branch matrix (master + all stable branches)
+  # ============================================================================
+  prepare:
+    name: Compute branch matrix
+    runs-on: ubuntu-latest
+    outputs:
+      branches: ${{ steps.set.outputs.branches }}
+    steps:
+      - name: Collect master and stable branches
+        id: set
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          stable_branches=$(gh api "repos/${{ github.repository }}/branches" --paginate \
+            --jq '.[].name | select(startswith("stable"))' | sort -Vr)
+          # Build a JSON array: ["master", "stable34", "stable33", ...]
+          branches_json=$(printf '%s\n' master ${stable_branches} | jq -R . | jq -cs .)
+          echo "Matrix branches: ${branches_json}"
+          echo "branches=${branches_json}" >> $GITHUB_OUTPUT
+
+  # ============================================================================
+  # BUILD — build + stage every version through the reusable workflow
+  # ============================================================================
+  build:
+    name: Build ${{ matrix.branch }}
+    needs: prepare
+    strategy:
+      fail-fast: false
+      matrix:
+        branch: ${{ fromJson(needs.prepare.outputs.branches) }}
+    uses: ./.github/workflows/build-docs.yml
+    with:
+      branch: ${{ matrix.branch }}
+      ref: ${{ matrix.branch }}
+    secrets: inherit
+
+  # ============================================================================
+  # DEPLOY — apply every staged version to gh-pages, open a single PR
+  # ============================================================================
+  deploy:
+    name: Deploy documentation for gh-pages
+    needs: build
+    # Deploy whatever built successfully, even if some matrix legs failed.
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: gh-pages
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Download all staged version artifacts
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          pattern: staged-docs-*
+          merge-multiple: true
+          path: stage/
+
+      - name: Fail if nothing was staged
+        id: staged
+        run: |
+          if [ -z "$(ls -A stage/ 2>/dev/null)" ]; then
+            echo "::warning::No staged artifacts found — all builds failed. Nothing to deploy."
+            echo "has_stage=false" >> $GITHUB_OUTPUT
+          else
+            echo "Staged version folders:"
+            ls -1 stage/
+            echo "has_stage=true" >> $GITHUB_OUTPUT
+          fi
+
+      # ========================================================================
+      # APPLY STAGED ARTIFACTS TO GH-PAGES
+      # ========================================================================
+      # Each staged-docs-<branch> artifact contributes one or more top-level
+      # version folders (latest / stable / <N>). Apply every folder found.
+      # ========================================================================
+      - name: Apply staged artifacts to gh-pages
+        id: apply
+        if: steps.staged.outputs.has_stage == 'true'
+        run: |
+          for d in stage/*/; do
+            [ -d "$d" ] || continue
+            branch="$(basename "$d")"
+            echo "Applying version folder: ${branch}"
+
+            mkdir -p "server/${branch}"
+            for artifact in "stage/${branch}"/*; do
+              if [ -d "$artifact" ]; then
+                manual_name="$(basename "$artifact")"
+                rm -rf "server/${branch}/${manual_name}"
+                cp -r "$artifact" "server/${branch}/${manual_name}"
+              fi
+            done
+
+            # Copy PDF and ePub files to the root of the branch folder
+            for f in "stage/${branch}"/*.pdf "stage/${branch}"/*.epub; do
+              if [ -f "$f" ]; then
+                echo "Copying: $f"
+                cp "$f" "server/${branch}/"
+              fi
+            done
+          done
+
+          # Cleanup empty directories
+          find . -type d -empty -delete
+
+          # Check for meaningful changes, ignoring:
+          # - lastupdated date lines in HTML (Sphinx build-time timestamps)
+          # - epub/pdf binaries (they regenerate automatically alongside HTML)
+          meaningful_html=$(git diff HEAD -- '*.html' | grep -E '^[+-]' | grep -v '^[+-]{3}' | grep -ivE 'lastupdated|Last updated on' | wc -l)
+          other_changes=$(git diff --name-only HEAD | grep -cvE '\.(html|epub|pdf)$' || true)
+
+          if [ "$meaningful_html" -gt 0 ] || [ "$other_changes" -gt 0 ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "::notice::Skipping deploy PR: only lastupdated timestamps or epub/pdf binaries changed"
+          fi
+
+      - name: Strip noindex from stable docs
+        if: steps.apply.outputs.has_changes == 'true'
+        run: |
+          # Strip noindex from stable docs – these are the canonical pages we want indexed
+          if [ -d server/stable ]; then
+            find server/stable -name '*.html' -print0 | \
+              xargs -0 perl -pi -e 's{<meta name="robots" content="noindex, follow" />\n?}{}g'
+          fi
+
+      - name: Write robots.txt
+        if: steps.apply.outputs.has_changes == 'true'
+        run: |
+          cat > robots.txt << 'EOF'
+          User-agent: *
+          # Only the stable version should be indexed
+          Allow: /server/stable/
+          Disallow: /server/
+          EOF
+
+        # Remove the stage/ directory BEFORE creating the PR so it doesn't get committed
+      - name: Clean up staging cache before commit
+        if: steps.apply.outputs.has_changes == 'true'
+        run: rm -rf stage/
+
+      # ========================================================================
+      # ADD REDIRECT FILES
+      # ========================================================================
+      # go.php and the user_manual language redirect are branch-agnostic stubs;
+      # take them from the default branch and apply to every deployed version.
+      # ========================================================================
+      - name: Add various redirects for go.php and user_manual english version
+        if: steps.apply.outputs.has_changes == 'true'
+        run: |
+          default_branch="${{ github.event.repository.default_branch }}"
+          git fetch origin "${default_branch}"
+          git checkout "origin/${default_branch}" -- go.php/index.html user_manual/index.html
+
+          for d in server/*/; do
+            [ -d "$d" ] || continue
+            branch="$(basename "$d")"
+            mkdir -p "server/${branch}/go.php" "server/${branch}/user_manual"
+            cp go.php/index.html "server/${branch}/go.php/index.html"
+            cp user_manual/index.html "server/${branch}/user_manual/index.html"
+          done
+
+      - name: Create Pull Request for documentation deployment
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        id: cpr
+        if: steps.apply.outputs.has_changes == 'true'
+        with:
+          token: ${{ secrets.COMMAND_BOT_PAT }}
+          commit-message: "chore: update documentation"
+          committer: nextcloud-command <nextcloud-command@users.noreply.github.com>
+          author: nextcloud-command <nextcloud-command@users.noreply.github.com>
+          signoff: true
+          branch: "automated/deploy/documentation"
+          base: gh-pages
+          title: "Documentation update"
+          body: |
+            This PR was automatically generated by the scheduled deploy workflow
+            and includes the latest documentation for all built versions.
+          delete-branch: true
+          labels: "automated, 3. to review"
+
+      - name: Enable Pull Request Automerge
+        run: gh pr merge --merge --auto "${{ steps.cpr.outputs.pull-request-number }}"
+        if: steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.COMMAND_BOT_PAT }}
+
+  summary:
+    needs: [prepare, build, deploy]
+    runs-on: ubuntu-latest-low
+    if: always()
+
+    permissions:
+      contents: read
+
+    name: deploy-summary
+
+    steps:
+      - name: Summary status
+        run: |
+          echo "prepare: ${{ needs.prepare.result }}"
+          echo "build:   ${{ needs.build.result }}"
+          echo "deploy:  ${{ needs.deploy.result }}"
+          # prepare must succeed and deploy must not fail. Individual build legs
+          # may fail (fail-fast disabled); those versions are simply not deployed.
+          if [ "${{ needs.prepare.result }}" != "success" ] || [ "${{ needs.deploy.result }}" = "failure" ]; then
+            exit 1
+          fi
