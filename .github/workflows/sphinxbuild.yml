@@ -90,6 +90,22 @@ jobs:
             echo "DOCS_DISPLAY_VERSION=$((highest_stable + 1))" >> $GITHUB_ENV
           fi
 
+      - name: Validate conf.py fallbacks are current
+        if: github.ref == 'refs/heads/master' || github.base_ref == 'master'
+        run: |
+          conf_stable=$(grep -m1 'DOCS_VERSION_STABLE' conf.py | grep -o '[0-9]\+')
+          conf_start=$(grep -m1  'DOCS_VERSION_START'  conf.py | grep -o '[0-9]\+')
+          err=0
+          if [ "$DOCS_VERSION_STABLE" != "$conf_stable" ]; then
+            echo "::error::conf.py fallback version_stable ($conf_stable) != current highest stable ($DOCS_VERSION_STABLE). Update the fallback in conf.py."
+            err=1
+          fi
+          if [ "$DOCS_VERSION_START" != "$conf_start" ]; then
+            echo "::error::conf.py fallback version_start ($conf_start) != current lowest stable ($DOCS_VERSION_START). Update the fallback in conf.py."
+            err=1
+          fi
+          exit $err
+
       - name: Set up Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
