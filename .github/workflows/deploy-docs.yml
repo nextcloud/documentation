@@ -15,6 +15,12 @@ on:
   schedule:
     - cron: '0 2 * * *'  # 02:00 UTC daily
   workflow_dispatch:
+    inputs:
+      branch:
+        description: "Build & deploy a single branch (e.g. master or stable34). Leave empty to build master + all supported stable branches."
+        required: false
+        type: string
+        default: ""
 
 permissions:
   contents: read
@@ -30,15 +36,46 @@ jobs:
     outputs:
       branches: ${{ steps.set.outputs.branches }}
     steps:
-      - name: Collect master and stable branches
+      - name: Checkout repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2.37.2
+        with:
+          php-version: '8.3'
+
+      - name: Compute branch matrix
         id: set
         env:
-          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INPUT_BRANCH: ${{ inputs.branch }}
         run: |
-          stable_branches=$(gh api "repos/${{ github.repository }}/branches" --paginate \
-            --jq '.[].name | select(startswith("stable"))' | sort -Vr)
-          # Build a JSON array: ["master", "stable34", "stable33", ...]
-          branches_json=$(printf '%s\n' master ${stable_branches} | jq -R . | jq -cs .)
+          # Manual single-branch dispatch: build only the requested branch.
+          if [ -n "${INPUT_BRANCH}" ]; then
+            branches_json=$(printf '%s' "${INPUT_BRANCH}" | jq -R . | jq -cs .)
+            echo "Single-branch dispatch: ${branches_json}"
+            echo "branches=${branches_json}" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Scheduled / plain dispatch: master + every stable branch that is still
+          # within the support window. Ancient branches (e.g. stable10) are on the
+          # remote but out of support and would blow past the 256-jobs-per-run cap.
+          nums=$(git ls-remote --heads origin "heads/stable[0-9][0-9]" \
+            | sed -n 's?.*refs/heads/stable\([0-9]\{2\}\)$?\1?p' | sort -n)
+
+          # Reuse the shared helper to get the supported range (lowest..highest).
+          eval $(php build/detect-versions.php ${nums})
+          echo "Supported stable range: ${lowest_stable}..${highest_stable}"
+
+          selected="master"
+          for n in ${nums}; do
+            if [ "$n" -ge "$lowest_stable" ] && [ "$n" -le "$highest_stable" ]; then
+              selected="${selected} stable${n}"
+            fi
+          done
+
+          branches_json=$(printf '%s\n' ${selected} | jq -R . | jq -cs .)
           echo "Matrix branches: ${branches_json}"
           echo "branches=${branches_json}" >> $GITHUB_OUTPUT
 
@@ -182,7 +219,9 @@ jobs:
         if: steps.apply.outputs.has_changes == 'true'
         run: |
           default_branch="${{ github.event.repository.default_branch }}"
-          git fetch origin "${default_branch}"
+          # gh-pages is checked out single-branch, so there is no origin/<default>
+          # tracking ref. Fetch with an explicit refspec to create it.
+          git fetch origin "${default_branch}:refs/remotes/origin/${default_branch}"
           git checkout "origin/${default_branch}" -- go.php/index.html user_manual/index.html
 
           for d in server/*/; do
