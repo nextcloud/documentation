@@ -841,7 +841,8 @@ deleted. Once denied, further grants are ignored and event propagation is stoppe
 .. versionadded:: 34.0.2
 
 Event dispatched by a share-review app to collect share sources from other apps. Listeners register the class name
-of their ``OCP\Share\ShareReview\IShareReviewSource`` implementation.
+of their ``OCP\Share\ShareReview\IShareReviewSource`` implementation, whose ``getShares()`` method returns a list of
+``OCP\Share\ShareReview\ShareReviewEntry`` objects.
 
 ``OCP\SpeechToText\Events\TranscriptionFailedEvent``
 ****************************************************
