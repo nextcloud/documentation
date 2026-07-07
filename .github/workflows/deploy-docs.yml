@@ -178,17 +178,45 @@ jobs:
           # Cleanup empty directories
           find . -type d -empty -delete
 
-          # Check for meaningful changes, ignoring:
-          # - lastupdated date lines in HTML (Sphinx build-time timestamps)
-          # - epub/pdf binaries (they regenerate automatically alongside HTML)
-          meaningful_html=$(git diff HEAD -- '*.html' | grep -E '^[+-]' | grep -v '^[+-]{3}' | grep -ivE 'lastupdated|Last updated on' | wc -l)
-          other_changes=$(git diff --name-only HEAD | grep -cvE '\.(html|epub|pdf)$' || true)
+          # ----------------------------------------------------------------
+          # Prune build-only noise so the PR carries exclusively real content
+          # changes. A rebuilt page differs every night even when its content
+          # is identical, because of:
+          #   - Sphinx build-time timestamps (lastupdated / "Last updated on")
+          #   - mermaid diagram zoom ids (random UUID regenerated each build)
+          # Files whose ENTIRE diff is noise are reverted to HEAD; files with a
+          # real change are kept untouched (noise lines ride along, harmless).
+          # ----------------------------------------------------------------
+          NOISE='lastupdated|Last updated on|data-zoom-id'
 
-          if [ "$meaningful_html" -gt 0 ] || [ "$other_changes" -gt 0 ]; then
+          # 1) Revert HTML files whose only changes are noise.
+          git diff --name-only HEAD -- '*.html' | while IFS= read -r f; do
+            [ -n "$f" ] || continue
+            real=$(git diff HEAD -- "$f" | grep -E '^[+-]' | grep -vE '^[+-]{3}' | grep -ivE "$NOISE" | wc -l)
+            [ "$real" -eq 0 ] && git checkout HEAD -- "$f"
+          done
+
+          # 2) PDF/ePub binaries regenerate every build with no content change.
+          #    Keep them only for a version folder that still has a real HTML
+          #    change after step 1; otherwise revert them too.
+          git diff --name-only HEAD -- '*.pdf' '*.epub' | while IFS= read -r f; do
+            [ -n "$f" ] || continue
+            case "$f" in
+              server/*)
+                vdir="server/$(printf '%s' "${f#server/}" | cut -d/ -f1)"
+                remaining=$(git diff --name-only HEAD -- "$vdir" | grep -vE '\.(epub|pdf)$' | wc -l)
+                [ "$remaining" -eq 0 ] && git checkout HEAD -- "$f"
+                ;;
+              *) git checkout HEAD -- "$f" ;;
+            esac
+          done
+
+          # Anything real left to deploy? (tracked diffs or brand-new files)
+          if [ -n "$(git status --porcelain)" ]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "::notice::Skipping deploy PR: only lastupdated timestamps or epub/pdf binaries changed"
+            echo "::notice::Skipping deploy PR: only build noise (timestamps, mermaid ids, binaries) changed"
           fi
 
       - name: Strip noindex from stable docs
