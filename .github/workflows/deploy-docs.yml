@@ -189,27 +189,45 @@ jobs:
           # ----------------------------------------------------------------
           NOISE='lastupdated|Last updated on|data-zoom-id'
 
-          # 1) Revert HTML files whose only changes are noise.
-          git diff --name-only HEAD -- '*.html' | while IFS= read -r f; do
+          # Read-only diffs must not take .git/index.lock: a `git diff` that
+          # refreshes the index while a `git checkout` writes it races on the
+          # lock. GIT_OPTIONAL_LOCKS=0 suppresses the refresh write; we also
+          # materialise each file list fully before running any checkout, and
+          # batch the reverts into a single checkout call.
+          export GIT_OPTIONAL_LOCKS=0
+
+          # 1) Collect HTML files whose only changes are noise, then revert them.
+          : > /tmp/revert-html.txt
+          git diff --name-only HEAD -- '*.html' > /tmp/changed-html.txt
+          while IFS= read -r f; do
             [ -n "$f" ] || continue
             real=$(git diff HEAD -- "$f" | grep -E '^[+-]' | grep -vE '^[+-]{3}' | grep -ivE "$NOISE" | wc -l)
-            [ "$real" -eq 0 ] && git checkout HEAD -- "$f"
-          done
+            [ "$real" -eq 0 ] && printf '%s\n' "$f" >> /tmp/revert-html.txt
+          done < /tmp/changed-html.txt
+          if [ -s /tmp/revert-html.txt ]; then
+            xargs -a /tmp/revert-html.txt -r git checkout HEAD --
+          fi
 
           # 2) PDF/ePub binaries regenerate every build with no content change.
           #    Keep them only for a version folder that still has a real HTML
-          #    change after step 1; otherwise revert them too.
-          git diff --name-only HEAD -- '*.pdf' '*.epub' | while IFS= read -r f; do
+          #    change after step 1; otherwise revert them too. Runs after the
+          #    HTML revert so the per-folder check sees the pruned tree.
+          : > /tmp/revert-bin.txt
+          git diff --name-only HEAD -- '*.pdf' '*.epub' > /tmp/changed-bin.txt
+          while IFS= read -r f; do
             [ -n "$f" ] || continue
             case "$f" in
               server/*)
                 vdir="server/$(printf '%s' "${f#server/}" | cut -d/ -f1)"
                 remaining=$(git diff --name-only HEAD -- "$vdir" | grep -vE '\.(epub|pdf)$' | wc -l)
-                [ "$remaining" -eq 0 ] && git checkout HEAD -- "$f"
+                [ "$remaining" -eq 0 ] && printf '%s\n' "$f" >> /tmp/revert-bin.txt
                 ;;
-              *) git checkout HEAD -- "$f" ;;
+              *) printf '%s\n' "$f" >> /tmp/revert-bin.txt ;;
             esac
-          done
+          done < /tmp/changed-bin.txt
+          if [ -s /tmp/revert-bin.txt ]; then
+            xargs -a /tmp/revert-bin.txt -r git checkout HEAD --
+          fi
 
           # Anything real left to deploy? (tracked diffs or brand-new files)
           if [ -n "$(git status --porcelain)" ]; then
