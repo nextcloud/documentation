@@ -120,11 +120,20 @@ Calendars may be shared with write access or read-only. When sharing a calendar 
 Calendar delegation
 ~~~~~~~~~~~~~~~~~~~
 
+.. versionadded:: 34.0.0
+
 In the app settings, you can delegate your calendars to other users so they can manage them for you.
 You can grant read access if they should only view the calendar, or write access if they should create,
 edit and delete events.
 
 Calendar delegation also works with other clients that support calendar delegation.
+
+By default, delegatees are not added as attendees of events that they create for a delegator, the delegator
+remains the organizer of the event. If the event has a Talk conversation attached, both the delegator and the
+delegatee are moderators of that conversation.
+
+.. note:: Currently, delegating your account delegates all of your calendars. Delegating individual
+          calendars is not yet supported.
 
 Federated calendar sharing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
