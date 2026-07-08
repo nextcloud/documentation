@@ -178,6 +178,18 @@ jobs:
           # Cleanup empty directories
           find . -type d -empty -delete
 
+          # Strip noindex from stable docs BEFORE pruning. Sphinx always emits a
+          # noindex robots meta, but the deployed stable pages have it stripped
+          # (they are the canonical, indexed version). If we pruned first, every
+          # rebuilt stable file would still carry that meta and so differ from
+          # HEAD by a "real" line — defeating the prune and leaving timestamp-only
+          # files in the PR. Stripping first makes noise-only stable pages match
+          # HEAD, so the prune below can revert them.
+          if [ -d server/stable ]; then
+            find server/stable -name '*.html' -print0 | \
+              xargs -0 perl -pi -e 's{<meta name="robots" content="noindex, follow" />\n?}{}g'
+          fi
+
           # ----------------------------------------------------------------
           # Prune build-only noise so the PR carries exclusively real content
           # changes. A rebuilt page differs every night even when its content
@@ -235,15 +247,6 @@ jobs:
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
             echo "::notice::Skipping deploy PR: only build noise (timestamps, mermaid ids, binaries) changed"
-          fi
-
-      - name: Strip noindex from stable docs
-        if: steps.apply.outputs.has_changes == 'true'
-        run: |
-          # Strip noindex from stable docs – these are the canonical pages we want indexed
-          if [ -d server/stable ]; then
-            find server/stable -name '*.html' -print0 | \
-              xargs -0 perl -pi -e 's{<meta name="robots" content="noindex, follow" />\n?}{}g'
           fi
 
       - name: Write robots.txt
