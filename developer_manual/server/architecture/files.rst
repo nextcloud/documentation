@@ -12,7 +12,7 @@ Application code mainly interacts with the filesystem through two APIs:
 - the newer ``IRootFolder`` / ``Node`` API
 - the legacy ``View`` API
 
-New code should prefer the ``IRootFolder`` / ``Node`` API. Internally, the two APIs still interoperate, and parts of the Node implementation build on the same lower-level mechanisms used by the View-based API.
+New code should prefer the ``IRootFolder`` / ``Node`` API. Internally, the two APIs still interoperate, and Node operations still rely on lower-level View-based functionality in several places.
 
 .. code-block:: text
 
@@ -36,27 +36,32 @@ New code should prefer the ``IRootFolder`` / ``Node`` API. Internally, the two A
     ╎        mount management and path routing      ╎
     └╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┬╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┘
                     │
-    ┌╌╌╌╌╌╌╌╌╌╌╌╌Metadata / storage layer╌╌╌╌╌╌╌╌╌╌╌┐
-    ╎                                               ╎
-    ╎   ┌────────┐   ┌────────┐   ┌──────────┐      ╎
-    ╎   │Storage │──►│Scanner │──►│Cache     │      ╎
-    ╎   └────────┘   └────────┘   └──────────┘      ╎
-    ╎         │            │            ▲           ╎
-    ╎         │            │            │           ╎
-    ╎         │      ┌──────────┐  ┌──────────┐     ╎
-    ╎         └─────►│Watcher   │  │Updater   │     ╎
-    ╎                └──────────┘  └──────────┘     ╎
-    ╎                        │            │         ╎
-    ╎                        └─────┬──────┘         ╎
-    ╎                              ▼                ╎
-    ╎                        ┌──────────────┐       ╎
-    ╎                        │Propagator    │       ╎
-    ╎                        └──────────────┘       ╎
-    ╎                                               ╎
-    ╎   Wrappers can alter storage, cache and       ╎
-    ╎   related behavior without reimplementing     ╎
-    ╎   a backend                                   ╎
-    └╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┘
+    ┌╌╌╌╌╌╌╌╌╌╌╌╌Storage layer and metadata services╌╌╌╌╌╌╌╌╌╌┐
+    ╎                                                         ╎
+    ╎                      ┌──────────┐                       ╎
+    ╎                      │ Storage  │                       ╎
+    ╎                      └────┬─────┘                       ╎
+    ╎           ┌───────────────┼───────────────┐             ╎
+    ╎           │               │               │             ╎
+    ╎           ▼               ▼               ▼             ╎
+    ╎   ┌────────────┐  ┌────────────┐  ┌────────────┐        ╎
+    ╎   │  Scanner   │◄─│  Watcher   │  │  Updater   │        ╎
+    ╎   └──────┬─────┘  └─────┬──────┘  └──────┬─────┘        ╎
+    ╎          │              │                │              ╎
+    ╎          │              │                ▼              ╎
+    ╎          │              │         ┌────────────┐        ╎
+    ╎          │              │         │ Propagator │        ╎
+    ╎          │              │         └──────┬─────┘        ╎
+    ╎          │              │                │              ╎
+    ╎          ▼              ▼                ▼              ╎
+    ╎   ┌──────────────────────────────────────────────┐      ╎
+    ╎   │                   Cache                      │      ╎
+    ╎   └──────────────────────────────────────────────┘      ╎
+    ╎                                                         ╎
+    ╎   Wrappers can alter storage, cache and                 ╎
+    ╎   related behavior without reimplementing               ╎
+    ╎   a backend                                             ╎
+    └╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┘
 
 Filesystem layer
 ^^^^^^^^^^^^^^^^
@@ -103,12 +108,12 @@ This includes:
 
 Mount handling is a core part of the filesystem design, not just a helper around storages. A user may see the same underlying storage through different mounts, with different visibility or permissions.
 
-Metadata and cache layer
-^^^^^^^^^^^^^^^^^^^^^^^^
+Metadata layer
+^^^^^^^^^^^^^^
 
 Each storage is paired with a metadata cache that stores information about files and folders such as path, file id, size, mtime, etag, mimetype, permissions, and related metadata.
 
-In the current implementation this cache is persistent and database-backed. It is not just an in-memory optimization layer: many filesystem operations depend on it for lookup, search, move, and consistency behavior.
+This cache is persistent and database-backed. It is not just an in-memory optimization layer: many filesystem operations depend on it for lookup, search, move, and consistency behavior.
 
 Cache maintenance is shared between several components:
 
@@ -180,25 +185,23 @@ For example:
 
 - a jail wrapper must map visible paths to paths inside the wrapped storage
 - a permissions wrapper must ensure cached permissions match the restricted view
-- wrapper-specific propagation or watcher logic may be needed so metadata updates remain consistent
+- wrapper-specific propagator or watcher logic may be needed so metadata updates remain consistent
 
 .. code-block:: text
 
     ┌────────────────┐      ┌──────────────────────┐
     │PermissionsMask │─────►│CachePermissionsMask  │
-    └───────┬────────┘      └──────────┬───────────┘
-            │                          │
-            ▼                          ▼
+    └───────┬────────┘      └──────────────────────┘
+            │
+            ▼
     ┌────────────────┐      ┌──────────────────────┐
     │Jail            │─────►│CacheJail             │
-    │                │      │JailWatcher           │
-    │                │      │JailPropagator        │
-    └───────┬────────┘      └──────────┬───────────┘
-            │                          │
-            ▼                          ▼
-    ┌────────────────┐      ┌──────────────────────┐
-    │Base storage    │─────►│Base cache            │
-    └────────────────┘      └──────────────────────┘
+    └───────┬────────┘      │JailWatcher           │
+            │               │JailPropagator        │
+            ▼               └──────────────────────┘
+    ┌────────────────┐
+    │Base storage    │
+    └────────────────┘
 
 A common example is the combination of:
 
