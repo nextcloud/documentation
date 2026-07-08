@@ -108,14 +108,14 @@ This includes:
 
 Mount handling is a core part of the filesystem design, not just a helper around storages. A user may see the same underlying storage through different mounts, with different visibility or permissions.
 
-Metadata layer
-^^^^^^^^^^^^^^
+Metadata services
+^^^^^^^^^^^^^^^^^
 
 Each storage is paired with a metadata cache that stores information about files and folders such as path, file id, size, mtime, etag, mimetype, permissions, and related metadata.
 
 This cache is persistent and database-backed. It is not just an in-memory optimization layer: many filesystem operations depend on it for lookup, search, move, and consistency behavior.
 
-Cache maintenance is shared between several components:
+Metadata cache maintenance is shared between several components and services:
 
 Scanner
 """""""
@@ -127,19 +127,20 @@ It is used for initial discovery and for refreshing metadata from the backend.
 Watcher
 """""""
 
-The watcher checks whether files or folders may have changed outside of the current Nextcloud process and determines whether cache entries should be refreshed.
+The watcher checks whether files or folders may have changed outside of the current Nextcloud process, determines whether cached entries should be refreshed, triggers rescans (via the Scanner),
+and may also directly update/remove stale cache entries when necessary.
 
 Updater
 """""""
 
-The updater reacts to changes performed through the filesystem APIs and keeps cache entries in sync with those changes.
+The updater reacts to changes performed through the filesystem APIs, keeps cache entries in sync with those changes, and triggers propagation of parent-folder metadata updates.
 
 Propagator
 """"""""""
 
-The propagator updates parent folder metadata, such as mtimes and etags, after changes to child entries.
+The propagator updates parent folder metadata, such as mtimes, etags, sizes, and sometimes other information, after changes to child entries.
 
-Together, these components keep the metadata cache coherent for both internal and external changes.
+Together, these components keep filesystem metadata coherent for both internal and external changes.
 
 Storage layer
 ^^^^^^^^^^^^^
@@ -179,7 +180,8 @@ Cache and related wrappers
 
 When a storage wrapper changes visible behavior, corresponding metadata behavior usually needs to change as well.
 
-For that reason, many storage wrappers are paired with cache wrappers. Depending on the feature, wrapper-specific behavior may also extend to watcher or propagator components.
+For that reason, many storage wrappers are paired with corresponding cache wrappers. Depending on the feature,
+wrapper-specific behavior may also extend to watcher, propagator, or other metadata-related services.
 
 For example:
 
@@ -196,12 +198,14 @@ For example:
             ▼
     ┌────────────────┐      ┌──────────────────────┐
     │Jail            │─────►│CacheJail             │
-    └───────┬────────┘      │JailWatcher           │
+    └───────┬────────┘      ├──────────────────────┤
+            │               │JailWatcher           │
+            │               ├──────────────────────┤
             │               │JailPropagator        │
             ▼               └──────────────────────┘
-    ┌────────────────┐
-    │Base storage    │
-    └────────────────┘
+    ┌────────────────┐      ┌──────────────────────┐
+    │Base storage    │─────►│Cache                 │
+    └────────────────┘      └──────────────────────┘
 
 A common example is the combination of:
 
@@ -220,7 +224,7 @@ AppData
 
 High-level API for application data directories.
 
-The ``AppData`` implementation is built on top of the Node API and exposed through the simpler ``SimpleFS`` interfaces.
+The ``AppData`` implementation is built on top of the Node API and exposed through the simpler ``IAppData`` / ``ISimpleFile`` interfaces.
 
 Cache
 ^^^^^
