@@ -336,20 +336,20 @@ It is usual to declare prefixes for those namespace in the <code class="docutils
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>DAV:</p></td>
-<td><p>d</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DAV:</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">d</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="http://owncloud.org/ns">http://owncloud.org/ns</a></p></td>
-<td><p>oc</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">http://owncloud.org/ns</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">oc</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="http://nextcloud.org/ns">http://nextcloud.org/ns</a></p></td>
-<td><p>nc</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">http://nextcloud.org/ns</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nc</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="http://open-collaboration-services.org/ns">http://open-collaboration-services.org/ns</a></p></td>
-<td><p>ocs</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">http://open-collaboration-services.org/ns</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ocs</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="http://open-cloud-mesh.org/ns">http://open-cloud-mesh.org/ns</a></p></td>
-<td><p>ocm</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">http://open-cloud-mesh.org/ns</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ocm</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -470,13 +470,27 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </tr>
 <tr class="row-even"><td><p>&lt;oc:downloadURL /&gt;</p></td>
 <td><div class="line-block">
-<div class="line">A URL to directly download the file from a</div>
-<div class="line">storage. No storage implements that yet.</div>
+<div class="line">A temporary URL to download the file directly</div>
+<div class="line">from the underlying storage backend (e.g. S3</div>
+<div class="line">object storage with pre-signed URLs). May be</div>
+<div class="line">unavailable depending on permissions, server</div>
+<div class="line">configuration, feature interactions (e.g.</div>
+<div class="line">server-side encryption, sharing), or backend</div>
+<div class="line">support.</div>
 </div>
 </td>
-<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://s3.example.com/bucket/key?X-Amz-Algorithm=...</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;oc:permissions /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:download-url-expiration /&gt;</p></td>
+<td><div class="line-block">
+<div class="line">Expiration time of <code class="docutils literal notranslate"><span class="pre">oc:downloadURL</span></code>, if one</div>
+<div class="line">has been generated. The value is a Unix</div>
+<div class="line">timestamp.</div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1733749200</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;oc:permissions /&gt;</p></td>
 <td><div class="line-block">
 <div class="line">The permissions that the user has over the</div>
 <div class="line">file or folder. The value is a string</div>
@@ -499,11 +513,11 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:creation_time /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:creation_time /&gt;</p></td>
 <td><p>Same as <code class="docutils literal notranslate"><span class="pre">creationdate</span></code>, but as a timestamp.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1675789581</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:mount-type /&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:mount-type /&gt;</p></td>
 <td><p>The type of mount.</p></td>
 <td><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">''</span></code> = local</div>
@@ -514,7 +528,7 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:hide-download /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:hide-download /&gt;</p></td>
 <td><div class="line-block">
 <div class="line">For shares, indicate if any download</div>
 <div class="line">action should be hidden or not.</div>
@@ -522,7 +536,7 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:is-encrypted /&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:is-encrypted /&gt;</p></td>
 <td><p>Whether the folder is end-to-end encrypted.</p></td>
 <td><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">0</span></code> for <code class="docutils literal notranslate"><span class="pre">false</span></code></div>
@@ -530,7 +544,7 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:is-mount-root /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:is-mount-root /&gt;</p></td>
 <td><div class="line-block">
 <div class="line">This is a special property which is used to</div>
 <div class="line">determine if a node is a mount root or not,</div>
@@ -540,11 +554,11 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;oc:tags /&gt;</p></td>
+<tr class="row-even"><td><p>&lt;oc:tags /&gt;</p></td>
 <td><p>List of user specified tags.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;oc:tag&gt;test&lt;/oc:tag&gt;</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>&lt;oc:favorite /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;oc:favorite /&gt;</p></td>
 <td><p>The favorite state.</p></td>
 <td><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">0</span></code> for not favourited</div>
@@ -552,27 +566,27 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>&lt;oc:comments-href /&gt;</p></td>
+<tr class="row-even"><td><p>&lt;oc:comments-href /&gt;</p></td>
 <td><p>The DAV endpoint to fetch the comments.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">/remote.php/dav/comments/files/{fileId}</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>&lt;oc:comments-count /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;oc:comments-count /&gt;</p></td>
 <td><p>The number of comments.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;oc:comments-unread /&gt;</p></td>
+<tr class="row-even"><td><p>&lt;oc:comments-unread /&gt;</p></td>
 <td><p>The number of unread comments.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>&lt;oc:owner-id /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;oc:owner-id /&gt;</p></td>
 <td><p>The user id of the owner of a shared file.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">alice</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;oc:owner-display-name /&gt;</p></td>
+<tr class="row-even"><td><p>&lt;oc:owner-display-name /&gt;</p></td>
 <td><p>The display name of the owner of a shared file.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Alice</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>&lt;oc:share-types /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;oc:share-types /&gt;</p></td>
 <td><p>XML array of share types.</p></td>
 <td><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;oc:share-type&gt;{shareTypeId}&lt;/oc:share-type&gt;</span></code></div>
@@ -590,7 +604,7 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>&lt;ocs:share-permissions /&gt;</p></td>
+<tr class="row-even"><td><p>&lt;ocs:share-permissions /&gt;</p></td>
 <td><div class="line-block">
 <div class="line">The permissions that the</div>
 <div class="line">user has over the share.</div>
@@ -606,7 +620,7 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>&lt;ocm:share-permissions /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;ocm:share-permissions /&gt;</p></td>
 <td><div class="line-block">
 <div class="line">The permissions that the user has</div>
 <div class="line">over the share as a JSON array.</div>
@@ -614,11 +628,11 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </td>
 <td><p><code class="docutils literal notranslate"><span class="pre">[&quot;share&quot;,</span> <span class="pre">&quot;read&quot;,</span> <span class="pre">&quot;write&quot;]</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:share-attributes /&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:share-attributes /&gt;</p></td>
 <td><p>User set attributes as a JSON array.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">[{</span> <span class="pre">&quot;scope&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&lt;string&gt;,</span> <span class="pre">&quot;key&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&lt;string&gt;,</span> <span class="pre">&quot;value&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&lt;bool&gt;</span> <span class="pre">}]</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:sharees /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:sharees /&gt;</p></td>
 <td><p>The list of share recipient.</p></td>
 <td><div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;nc:sharee&gt;</span>
 <span class="w">  </span><span class="nt">&lt;nc:id&gt;</span>alice<span class="nt">&lt;/nc:id&gt;</span>
@@ -629,7 +643,7 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>&lt;oc:checksums /&gt;</p></td>
+<tr class="row-even"><td><p>&lt;oc:checksums /&gt;</p></td>
 <td><div class="line-block">
 <div class="line">An array of checksums stored in the DB by</div>
 <div class="line">other clients. Currently used algorithms are:</div>
@@ -639,11 +653,11 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;oc:checksum&gt;md5:04c36b75222cd9fd47f2607333029106&lt;/oc:checksum&gt;</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:has-preview /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:has-preview /&gt;</p></td>
 <td><p>Whether a preview of the file is available.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:hidden /&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:hidden /&gt;</p></td>
 <td><div class="line-block">
 <div class="line">Defines if a file should be hidden</div>
 <div class="line">Currently only used for live photos</div>
@@ -651,7 +665,7 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>&lt;oc:size /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;oc:size /&gt;</p></td>
 <td><div class="line-block">
 <div class="line">Unlike <code class="docutils literal notranslate"><span class="pre">getcontentlength</span></code>, this property</div>
 <div class="line">also works for folders, reporting the size of</div>
@@ -660,23 +674,23 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </td>
 <td><p><code class="docutils literal notranslate"><span class="pre">127815235</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:rich-workspace-file /&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:rich-workspace-file /&gt;</p></td>
 <td><p>The id of the workspace file.</p></td>
 <td><p><cite>3456</cite></p></td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:rich-workspace /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:rich-workspace /&gt;</p></td>
 <td><p>The content of the workspace file.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:upload_time /&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:upload_time /&gt;</p></td>
 <td><p>Date this file was uploaded.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1675789581</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:note /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:note /&gt;</p></td>
 <td><p>Share note.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:contained-folder-count /&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:contained-folder-count /&gt;</p></td>
 <td><div class="line-block">
 <div class="line">The number of folders directly contained</div>
 <div class="line">in the folder (not recursively).</div>
@@ -684,7 +698,7 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:contained-file-count /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:contained-file-count /&gt;</p></td>
 <td><div class="line-block">
 <div class="line">The number of files directly contained</div>
 <div class="line">in the folder (not recursively).</div>
@@ -692,7 +706,7 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:data-fingerprint /&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:data-fingerprint /&gt;</p></td>
 <td><div class="line-block">
 <div class="line">Used by the clients to find out</div>
 <div class="line">if a backup has been restored.</div>
@@ -700,15 +714,15 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:acl-enabled&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:acl-enabled&gt;</p></td>
 <td><p>Whether ACL is enabled for this group folder.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:acl-can-manage&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:acl-can-manage&gt;</p></td>
 <td><p>Whether the current user can manager ACL.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:acl-list&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:acl-list&gt;</p></td>
 <td><p>Array of ACL rules.</p></td>
 <td><div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;nc:acl&gt;</span>
 <span class="w">  </span><span class="nt">&lt;nc:acl-mapping-type&gt;</span>group<span class="nt">&lt;/nc:acl-mapping-type&gt;</span>
@@ -721,19 +735,19 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:inherited-acl-list&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:inherited-acl-list&gt;</p></td>
 <td><p>Array of ACL rules from the parents folders</p></td>
 <td><p>See &lt;nc:acl-list&gt;</p></td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:group-folder-id&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:group-folder-id&gt;</p></td>
 <td><p>Numerical id of that group folder.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:lock&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:lock&gt;</p></td>
 <td><p>Whether the file is locked.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:lock-owner-type&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:lock-owner-type&gt;</p></td>
 <td><p>Type of the owner of the lock.</p></td>
 <td><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">0</span></code> = User</div>
@@ -742,19 +756,19 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:lock-owner&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:lock-owner&gt;</p></td>
 <td><p>User id of the owner of the lock.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">alice</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:lock-owner-displayname&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:lock-owner-displayname&gt;</p></td>
 <td><p>Display name of the owner of the lock.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Alice</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:lock-owner-editor&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:lock-owner-editor&gt;</p></td>
 <td><p>App id of an app owned lock.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:lock-time&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:lock-time&gt;</p></td>
 <td><div class="line-block">
 <div class="line">Date when the lock was created</div>
 <div class="line">as a timestamp.</div>
@@ -762,7 +776,7 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1675789581</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:lock-timeout&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:lock-timeout&gt;</p></td>
 <td><div class="line-block">
 <div class="line">TTL of the lock in seconds starting</div>
 <div class="line">from the creation time.</div>
@@ -770,11 +784,11 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> = No timeout</p></td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:lock-token&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:lock-token&gt;</p></td>
 <td><p>The token of the lock.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">files_lock/0e53dfb6-61b4-46f0-b38e-d9a428292998</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:reminder-due-date&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:reminder-due-date&gt;</p></td>
 <td><div class="line-block">
 <div class="line">The due date of the reminder</div>
 <div class="line">as an ISO 8601 formatted string.</div>
@@ -782,15 +796,15 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1970-01-01T00:00:00+00:00</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:version-label /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:version-label /&gt;</p></td>
 <td><p>The user-set label for a file.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:version-author /&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:version-author /&gt;</p></td>
 <td><p>The author’s id of a specified file version.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">admin</span></code>, <code class="docutils literal notranslate"><span class="pre">jane</span></code>, <code class="docutils literal notranslate"><span class="pre">thisAuthorsID</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:is-federated /&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:is-federated /&gt;</p></td>
 <td><div class="line-block">
 <div class="line">Whether the node originates from a</div>
 <div class="line">federated (server-to-server) share.</div>
@@ -798,18 +812,10 @@ Most properties in <code class="docutils literal notranslate"><span class="pre">
 </td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:metadata_etag /&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:metadata_etag /&gt;</p></td>
 <td><div class="line-block">
 <div class="line">An etag covering the file’s metadata. Changes</div>
 <div class="line">when metadata (not content), is updated.</div>
-</div>
-</td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>&lt;nc:download-url-expiration /&gt;</p></td>
-<td><div class="line-block">
-<div class="line">Expiration date/time of a direct download</div>
-<div class="line">URL (if one has been generated).</div>
 </div>
 </td>
 <td></td>
@@ -1134,7 +1140,7 @@ this anymore</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Jul 09, 2026.
       </span></p>
   </div>
 
