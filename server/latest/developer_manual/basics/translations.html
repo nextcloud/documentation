@@ -425,6 +425,25 @@ and therefore improving the experience for non-english users.</p>
 Especially translations strings that only contain a single word often result in problems.
 The most famous example in the Nextcloud code base is <code class="docutils literal notranslate"><span class="pre">Share</span></code> which can which can be the verb and action <code class="docutils literal notranslate"><span class="pre">To</span> <span class="pre">share</span> <span class="pre">something</span></code> or the noun <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">share</span></code>.
 The added hints will be shown in the Transifex web-interface:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">//</span> <span class="pre">TRANSLATORS</span></code> comment is only associated with the <strong>first</strong> translation string on the following line.
+If a single line of code contains two or more translation strings, the comment applies to the first one only,
+and the remaining strings will have no context hint. Refactor the code so that each line holds a single
+translation call, placing its own <code class="docutils literal notranslate"><span class="pre">//</span> <span class="pre">TRANSLATORS</span></code> comment on the line above.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// BAD: only &quot;Save&quot; gets the context hint, &quot;Cancel&quot; has none</span>
+<span class="c1">// TRANSLATORS Confirm or discard the current changes</span>
+<span class="k">return</span> <span class="p">[</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Save&#39;</span><span class="p">),</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Cancel&#39;</span><span class="p">)];</span>
+
+<span class="c1">// GOOD: one translation per line, each with its own hint</span>
+<span class="c1">// TRANSLATORS Confirm the current changes</span>
+<span class="nv">$save</span> <span class="o">=</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Save&#39;</span><span class="p">);</span>
+<span class="c1">// TRANSLATORS Discard the current changes</span>
+<span class="nv">$cancel</span> <span class="o">=</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Cancel&#39;</span><span class="p">);</span>
+<span class="k">return</span> <span class="p">[</span><span class="nv">$save</span><span class="p">,</span> <span class="nv">$cancel</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
 <section id="php">
 <h4>PHP<a class="headerlink" href="#php" title="Link to this heading"></a></h4>
 <p>Place the comment on the line before the <code class="docutils literal notranslate"><span class="pre">-&gt;t()</span></code> or <code class="docutils literal notranslate"><span class="pre">-&gt;n()</span></code> call:</p>
@@ -529,7 +548,7 @@ installation and updates.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Jul 10, 2026.
       </span></p>
   </div>
 
