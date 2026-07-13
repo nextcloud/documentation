@@ -28,9 +28,38 @@ the database load and improves performance. Admins of Nextcloud servers with
 heavy workloads should install a memcache. (See
 :doc:`../configuration_server/caching_configuration`.)
 
-To use a memcache with Transactional File Locking, you must install the Redis
-server and corresponding PHP module. After installing Redis you must enter a
-configuration in your ``config.php`` file like this example::
+To use a memcache with Transactional File Locking, you must install a key-value store
+server like Valkey or Redis. Two cache backends are available for it:
+
+* The Nextcloud ``keyvalue`` cache, which works with Valkey and Redis and does not
+  require the installation of a PHP module (see :ref:`keyvalue_cache_label`)
+* The ``Redis`` cache, which requires the phpredis PHP module
+
+Using the Nextcloud ``KeyValueCache`` cache
+-------------------------------------------
+
+The ``KeyValueCache`` cache is built on a library bundled with Nextcloud, so no PHP module
+needs to be installed — you only need a running Valkey or Redis compatible server.
+Enter a configuration in your ``config.php`` file like this example::
+
+  'memcache.locking' => '\OC\Memcache\KeyValueCache',
+  'memcache.kvstore' => [
+       'server' => [
+            'host' => 'localhost',
+            'port' => 6379,
+       ],
+       'password' => '', // Optional, if not defined no password will be used.
+  ],
+
+See :ref:`keyvalue_cache_label` for all available options, including Unix sockets, TLS,
+Sentinel and cluster setups.
+
+Using the Redis cache with the phpredis PHP module
+--------------------------------------------------
+
+To use the ``Redis`` cache instead, you must install the Redis server and corresponding
+PHP module. After installing Redis you must enter a configuration in your ``config.php``
+file like this example::
 
   'memcache.locking' => '\OC\Memcache\Redis',
   'redis' => array(
@@ -40,8 +69,9 @@ configuration in your ``config.php`` file like this example::
        'password' => '', // Optional, if not defined no password will be used.
         ),
 
-.. note:: For enhanced security it is recommended to configure Redis to require
-   a password. See http://redis.io/topics/security for more information.
+.. note:: For enhanced security it is recommended to configure your key-value store
+   server to require a password. See http://redis.io/topics/security or
+   https://valkey.io/topics/security/ for more information.
 
 If you want to configure Redis to listen on an Unix socket (which is
 recommended if Redis is running on the same system as Nextcloud) use this example
