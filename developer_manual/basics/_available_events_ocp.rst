@@ -823,6 +823,27 @@ Event that allows to register a feature policy header to a request.
 .. versionadded:: 19
 
 
+``OCP\Share\ShareReview\Events\ShareReviewAccessCheckEvent``
+************************************************************
+
+.. versionadded:: 34.0.2
+
+Authorization gate for deleting an app-managed share through a share-review app. Dispatched by the app that owns
+the share (its ``OCP\Share\ShareReview\IShareReviewSource`` implementation) at the beginning of ``deleteShare()``,
+before anything is deleted. The share-review app listens to this event and answers with ``grantAccess()`` or
+``denyAccess()`` depending on whether the current user is an authorized share-review operator; apps that merely
+expose shares must not listen to it. The event is default-deny: if no listener responds, the share must not be
+deleted. Once denied, further grants are ignored and event propagation is stopped.
+
+``OCP\Share\ShareReview\RegisterShareReviewSourceEvent``
+********************************************************
+
+.. versionadded:: 34.0.2
+
+Event dispatched by a share-review app to collect share sources from other apps. Listeners register the class name
+of their ``OCP\Share\ShareReview\IShareReviewSource`` implementation, whose ``getShares()`` method returns a list of
+``OCP\Share\ShareReview\ShareReviewEntry`` objects.
+
 ``OCP\SpeechToText\Events\TranscriptionFailedEvent``
 ****************************************************
 
