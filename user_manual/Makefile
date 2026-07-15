@@ -49,6 +49,7 @@ clean:
 
 html:
 	../build/change_file_extension.sh
+	../build/normalize_locale_codes.sh
 	make html-all merge-folders
 
 html-all: $(foreach lang, $(LANGS), html-allow-warnings-lang-$(lang))
