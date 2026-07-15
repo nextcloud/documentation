@@ -1343,6 +1343,27 @@ allowing to apply different rules for different password context like account pa
 <p><span class="versionmodified added">Added in version 19.</span></p>
 </div>
 </section>
+<section id="ocp-share-sharereview-events-sharereviewaccesscheckevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Share\ShareReview\Events\ShareReviewAccessCheckEvent</span></code><a class="headerlink" href="#ocp-share-sharereview-events-sharereviewaccesscheckevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 34.0.2.</span></p>
+</div>
+<p>Authorization gate for deleting an app-managed share through a share-review app. Dispatched by the app that owns
+the share (its <code class="docutils literal notranslate"><span class="pre">OCP\Share\ShareReview\IShareReviewSource</span></code> implementation) at the beginning of <code class="docutils literal notranslate"><span class="pre">deleteShare()</span></code>,
+before anything is deleted. The share-review app listens to this event and answers with <code class="docutils literal notranslate"><span class="pre">grantAccess()</span></code> or
+<code class="docutils literal notranslate"><span class="pre">denyAccess()</span></code> depending on whether the current user is an authorized share-review operator; apps that merely
+expose shares must not listen to it. The event is default-deny: if no listener responds, the share must not be
+deleted. Once denied, further grants are ignored and event propagation is stopped.</p>
+</section>
+<section id="ocp-share-sharereview-registersharereviewsourceevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Share\ShareReview\RegisterShareReviewSourceEvent</span></code><a class="headerlink" href="#ocp-share-sharereview-registersharereviewsourceevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 34.0.2.</span></p>
+</div>
+<p>Event dispatched by a share-review app to collect share sources from other apps. Listeners register the class name
+of their <code class="docutils literal notranslate"><span class="pre">OCP\Share\ShareReview\IShareReviewSource</span></code> implementation, whose <code class="docutils literal notranslate"><span class="pre">getShares()</span></code> method returns a list of
+<code class="docutils literal notranslate"><span class="pre">OCP\Share\ShareReview\ShareReviewEntry</span></code> objects.</p>
+</section>
 <section id="ocp-speechtotext-events-transcriptionfailedevent">
 <h4><code class="docutils literal notranslate"><span class="pre">OCP\SpeechToText\Events\TranscriptionFailedEvent</span></code><a class="headerlink" href="#ocp-speechtotext-events-transcriptionfailedevent" title="Link to this heading"></a></h4>
 <div class="versionadded">
@@ -1749,7 +1770,7 @@ addProvider() and addTaskType() methods.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Jul 15, 2026.
       </span></p>
   </div>
 

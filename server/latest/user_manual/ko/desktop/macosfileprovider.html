@@ -99,6 +99,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#known-issues">Known issues</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#macos-extensions-conflict">macOS Extensions conflict</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#alias-files">Alias files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-locally">Edit locally</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
@@ -277,6 +278,19 @@ opened or downloaded once, Nextcloud Desktop learns that it is an alias and
 stores that information locally, so all subsequent opens will work correctly.
 To avoid the issue entirely, right-click the alias file in Finder and choose
 <strong>Keep Downloaded</strong> before opening it for the first time.</p>
+</section>
+<section id="edit-locally">
+<h3>Edit locally<a class="headerlink" href="#edit-locally" title="Link to this heading"></a></h3>
+<p>The <span class="guilabel">Edit locally</span> action offered by the Nextcloud web interface
+cannot open files that are managed by the File Provider extension.
+It can only reveal them in Finder.</p>
+<p>This is a restriction of macOS itself, not a fault in the client. For your
+protection, macOS only lets specific apps open a given file, and it does not
+allow an app to grant itself that permission. The part of the client that is
+allowed to manage these files is not permitted to launch other apps, and the
+part that could launch your editor is not permitted to open the file.</p>
+<p>Granting Full Disk Access does not help, because a different part of the
+macOS security system is responsible for this.</p>
 </section>
 </section>
 <section id="troubleshooting">
