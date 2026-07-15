@@ -36,6 +36,8 @@ File operations
   files:mount:refresh                  refresh the list of mounts for a user
   files:move                           move a file or folder
   files:put                            write content to a file
+  files:mkdir                          create a new folder
+  files:touch                          update the modified date of a file or folder
   files:reminders                      list file reminders
   files:repair-tree                    repair malformed filesystem tree structures
   files:sanitize-filenames             rename files that do not match the current filename constraints
@@ -92,6 +94,9 @@ underlying file::
 
 When the file is accessible by multiple users, the command lists all
 affected users and asks for confirmation before proceeding.
+
+If the trashbin is enabled, you can use ``--skip-trash`` to bypass the trashbin
+and permanently delete the files directly.
 
 files:get
 """""""""
@@ -164,6 +169,30 @@ Read from standard input by passing ``-`` as the source::
 
  cat /tmp/report.pdf | sudo -E -u www-data php occ files:put - \
    /layla/files/Documents/report.pdf
+
+Any missing parent folder for the specified destination will be created automatically.
+
+files:mkdir
+"""""""""""
+
+Create a new empty folder, parent folders will automatically be created if needed::
+
+ sudo -E -u www-data php occ files:mkdir /layla/files/Documents/Reports
+
+files:touch
+"""""""""""
+
+Update the last modified date of a file or folder. The target argument
+accepts either a Nextcloud path or a numeric file ID of an existing file::
+
+  sudo -E -u www-data php occ files:touch  /layla/files/Documents/report.pdf
+
+Instead of using the current time, you can specify the modified date to use
+with the ``--date`` option.
+Accepted formats are: ISO8601, "YYYY-MM-DD" and Unix time in seconds.::
+
+  sudo -E -u www-data php occ files:touch  /layla/files/Documents/report.pdf \
+    --date 2026-07-15
 
 files:reminders
 """""""""""""""
@@ -1086,4 +1115,3 @@ certificate obtained through the Nextcloud signing process::
 See `Code Signing
 <https://docs.nextcloud.com/server/latest/developer_manual/app_publishing_maintenance/code_signing.html>`_
 in the Developer manual for the full signing process.
-
