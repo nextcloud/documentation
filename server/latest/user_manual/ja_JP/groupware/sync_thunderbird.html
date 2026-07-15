@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Synchronizing with Thunderbird &mdash; Nextcloud 35 User Manual</title>
+  <title>Thunderbird との同期 &mdash; Nextcloud 35 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -30,7 +30,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="Synchronizing with KDE Kontact" href="sync_kde.html" />
+    <link rel="next" title="KDE Kontact との同期" href="sync_kde.html" />
     <link rel="prev" title="macOS との同期" href="sync_osx.html" />
    
   <meta name="robots" content="noindex, follow" />
@@ -84,18 +84,18 @@
 <li class="toctree-l2"><a class="reference internal" href="sync_android.html">Android との同期</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_ios.html">iOS との同期</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_osx.html">macOS との同期</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Synchronizing with Thunderbird</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#recommended-method">Recommended method</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#contacts">Contacts</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#calendars">Calendars</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Thunderbird との同期</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#recommended-method">推奨方法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#contacts">連絡先</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendars">カレンダー</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#alternative-using-the-cardbook-add-on-contacts-only">Alternative: Using the CardBook add-on (Contacts only)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alternative-using-the-cardbook-add-on-contacts-only">代替方法:CardBookアドオンの利用(連絡先のみ)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Synchronizing with KDE Kontact</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Synchronizing with the GNOME desktop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Synchronizing with Windows 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">KDE Kontact との同期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">GNOME デスクトップとの同期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Windows 10 との同期</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_migration.html">Migrate data between instances</a></li>
 </ul>
 </li>
@@ -123,7 +123,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">グループウェア</a></li>
-      <li class="breadcrumb-item active">Synchronizing with Thunderbird</li>
+      <li class="breadcrumb-item active">Thunderbird との同期</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/sync_thunderbird.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -134,55 +134,54 @@
            <div itemprop="articleBody">
              
   <section id="synchronizing-with-thunderbird">
-<h1>Synchronizing with Thunderbird<a class="headerlink" href="#synchronizing-with-thunderbird" title="Link to this heading"></a></h1>
-<p><a class="reference external" href="https://www.thunderbird.net">Thunderbird</a> is a feature-rich and mature mail client that can be turned into a full-fledged Personal Information Manager (PIM). Since version 102, it supports address book synchronization via CardDAV and automatic discovery of calendars and address books available on the server.</p>
+<h1>Thunderbird との同期<a class="headerlink" href="#synchronizing-with-thunderbird" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://www.thunderbird.net">Thunderbird</a> は多機能かつ成熟したメールクライアントで、完全な個人情報管理(PIM)ツールとして利用できます。バージョン102以降、CardDAV経由のアドレス帳同期や、サーバ上のカレンダーおよびアドレス帳の自動検索に対応しています。</p>
 <section id="recommended-method">
-<h2>Recommended method<a class="headerlink" href="#recommended-method" title="Link to this heading"></a></h2>
-<p>Since Thunderbird 102, the CardDAV &amp; CalDAV protocols are natively supported.</p>
+<h2>推奨方法<a class="headerlink" href="#recommended-method" title="Link to this heading"></a></h2>
+<p>Thunderbird 102 以降では、CardDAV および CalDAV プロトコルが標準対応しています。</p>
 <section id="contacts">
-<h3>Contacts<a class="headerlink" href="#contacts" title="Link to this heading"></a></h3>
+<h3>連絡先<a class="headerlink" href="#contacts" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>On the address book view, click the down arrow near <strong>New Address Book</strong> and choose <strong>Add CardDAV Address Book</strong>.</p></li>
-<li><p>In the next window, type your <strong>Username</strong> and <strong>Location</strong> (Server URL).</p></li>
-<li><p>The next window will ask for your username and password for this account.</p></li>
-<li><p>The previous window will be refreshed and ask you which address books you wish to sync.</p></li>
-<li><p>Choose and then click <strong>Continue</strong>.</p></li>
+<li><p>アドレス帳ビューで、<a href="#id1"><span class="problematic" id="id2">**</span></a>新しいアドレス帳**の横にある下矢印をクリックし、<a href="#id3"><span class="problematic" id="id4">**</span></a>CardDAVアドレス帳を追加**を選択します。</p></li>
+<li><p>次のウィンドウで、<a href="#id1"><span class="problematic" id="id2">**</span></a>ユーザ名**と**場所**(サーバURL)を入力します。</p></li>
+<li><p>その後のウィンドウで、このアカウントのユーザ名とパスワードの入力を求められます。</p></li>
+<li><p>前のウィンドウが更新され、同期したいアドレス帳を選択する画面になります。</p></li>
+<li><p>選択後、<a href="#id1"><span class="problematic" id="id2">**</span></a>続行**をクリックしてください。</p></li>
 </ol>
-<p>If you later want to add a new address book, you can redo all of those steps and only the books not already synchronized will be suggested.</p>
+<p>後から新しいアドレス帳を追加したい場合は、同じ手順を繰り返すことで、まだ同期されていないアドレス帳のみが候補として表示されます。</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>If your account uses two-factor authentication, you need a <a class="reference internal" href="../session_management.html#managing-devices"><span class="std std-ref">dedicated app password</span></a> for login rather than your
-regular password.</p>
+<p>アカウントで二要素認証を使用している場合、通常のパスワードではなく <a class="reference internal" href="../session_management.html#managing-devices"><span class="std std-ref">専用アプリパスワード</span></a> でログインが必要です。</p>
 </div>
 </section>
 <section id="calendars">
-<h3>Calendars<a class="headerlink" href="#calendars" title="Link to this heading"></a></h3>
+<h3>カレンダー<a class="headerlink" href="#calendars" title="Link to this heading"></a></h3>
 <ol class="arabic">
-<li><p>Go to the calendar view in Thunderbird and select the <strong>New Calendar…</strong> button at the bottom of the left side panel.</p></li>
-<li><p>Choose <strong>On the network</strong>:</p>
+<li><p>Thunderbird のカレンダー表示に移動し、左側パネル下部の <strong>新しいカレンダー…</strong> ボタンをクリックします。</p></li>
+<li><p><strong>ネットワーク上</strong> を選択します。</p>
 <img alt="Thunderbird new calendar dialog with &quot;On the network&quot; option selected" src="../../_images/new_calendar.png" />
 </li>
-<li><p>Type your <strong>Username</strong> and <strong>Location</strong> (Server URL), then click on <strong>Find Calendars</strong>.</p></li>
-<li><p>Choose which calendars you want to add and click <strong>Subscribe</strong></p></li>
+<li><p><strong>ユーザ名</strong> と <a href="#id1"><span class="problematic" id="id2">**</span></a>場所**(サーバURL)を入力し、<a href="#id3"><span class="problematic" id="id4">**</span></a>カレンダーを検索**をクリックします。</p></li>
+<li><p>追加したいカレンダーを選択し、<a href="#id1"><span class="problematic" id="id2">**</span></a>購読**をクリックします。</p></li>
 </ol>
-<p>Same thing here, if you later want to add more calendars, just redo the procedure.</p>
+<p>同様に、後からカレンダーを追加したい場合もこの手順を繰り返してください。</p>
 </section>
 </section>
 <section id="alternative-using-the-cardbook-add-on-contacts-only">
-<h2>Alternative: Using the CardBook add-on (Contacts only)<a class="headerlink" href="#alternative-using-the-cardbook-add-on-contacts-only" title="Link to this heading"></a></h2>
-<p><a class="reference external" href="https://addons.thunderbird.net/en/thunderbird/addon/cardbook/">CardBook</a> is an advanced alternative to Thunderbird’s address book, which supports CardDAV.</p>
+<h2>代替方法:CardBookアドオンの利用(連絡先のみ)<a class="headerlink" href="#alternative-using-the-cardbook-add-on-contacts-only" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://addons.thunderbird.net/en/thunderbird/addon/cardbook/">CardBook</a> は Thunderbird のアドレス帳の高度な代替で、CardDAV をサポートしています。</p>
 <ol class="arabic">
-<li><p>Click the CardBook icon in the upper right corner of Thunderbird:</p>
+<li><p>Thunderbird 右上の CardBook アイコンをクリックします。</p>
 <img alt="CardBook icon in Thunderbird toolbar" src="../../_images/cardbook_icon.png" />
 </li>
-<li><p>In CardBook:</p>
+<li><p>CardBook で：</p>
 <ul class="simple">
-<li><p>Go to Address book &gt; New Address book <strong>Remote</strong> &gt; Next</p></li>
-<li><p>Select <strong>CardDAV</strong>, fill in the address of your Nextcloud server, your user name and password</p></li>
+<li><p>アドレス帳 &gt; 新しいアドレス帳 <strong>リモート</strong> &gt; 次へ</p></li>
+<li><p><strong>CardDAV</strong> を選択し、Nextcloud サーバのアドレス、ユーザ名、パスワードを入力します</p></li>
 </ul>
 <img alt="CardBook new address book dialog with CardDAV option selected" src="../../_images/new_addressbook.png" />
 </li>
-<li><p>Click on 「Validate」, click Next, then choose the name of the address book and click Next again:</p>
+<li><p>「検証」をクリックし、「次へ」をクリック、その後アドレス帳名を選び「次へ」をクリックします：</p>
 <img alt="CardBook dialog to enter a name for the new address book" src="../../_images/addressbook_name.png" />
 </li>
 <li><p>When you are finished, CardBook synchronizes your address books. You can always trigger a synchronization manually by clicking the <strong>Synchronize</strong> button in CardBook:</p>
@@ -197,7 +196,7 @@ regular password.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="sync_osx.html" class="btn btn-neutral float-left" title="macOS との同期" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="sync_kde.html" class="btn btn-neutral float-right" title="Synchronizing with KDE Kontact" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="sync_kde.html" class="btn btn-neutral float-right" title="KDE Kontact との同期" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
