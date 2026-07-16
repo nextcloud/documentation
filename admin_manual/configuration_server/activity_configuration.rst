@@ -89,6 +89,10 @@ The following ``config.php`` options control Activity app behavior.
      - ``[]``
      - An array of user IDs whose activity records are never deleted
        by the expiration job. See :ref:`label-activities-exclude-users`.
+    * - ``activity_log_exclude_users``
+     - ``[]``
+     - An associative array of [ user_ID => event_types_array ]. For each user the
+       associated event types won't be logged. See :ref:`_label-activity_log_exclude_users`.
 
 
 .. _label-activities-groupfolders:
@@ -145,6 +149,22 @@ data, for example administrators. Set the config value
 
 For these users, their activity records will never be deleted from the
 database.
+
+.. _label-activity_log_exclude_users:
+
+Excluding event types for users
+----------------------------------------
+
+For certain users, it might make sense to exclude some event types from
+being logged. For example set the config value
+``activity_log_exclude_users`` in your ``config.php``::
+
+  'activity_log_exclude_users' => [
+    'alice' => ['file_created'],
+    'bob' => ['file_created', 'file_changed' ]
+  ]
+
+For these users and event types a log record won't be created.
 
 
 Better scheduling of activity emails
