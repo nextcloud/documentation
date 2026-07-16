@@ -107,7 +107,11 @@
 <li class="toctree-l2"><a class="reference internal" href="encryption_configuration.html">Server-side Encryption</a></li>
 <li class="toctree-l2"><a class="reference internal" href="encryption_details.html">Server-side encryption details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="encryption_migration.html">Server-side encryption migration</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Transactional file locking</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Transactional file locking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-nextcloud-keyvaluecache-cache">Using the Nextcloud <code class="docutils literal notranslate"><span class="pre">KeyValueCache</span></code> cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-redis-cache-with-the-phpredis-php-module">Using the Redis cache with the phpredis PHP module</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="previews_configuration.html">Previews configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file_versioning.html">Controlling file versions and aging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trashbin_configuration.html">Deleted Items (trash bin)</a></li>
@@ -214,9 +218,36 @@ places a significant load on your database. Setting <code class="docutils litera
 the database load and improves performance. Admins of Nextcloud servers with
 heavy workloads should install a memcache. (See
 <a class="reference internal" href="../configuration_server/caching_configuration.html"><span class="doc">Memory caching</span></a>.)</p>
-<p>To use a memcache with Transactional File Locking, you must install the Redis
-server and corresponding PHP module. After installing Redis you must enter a
-configuration in your <code class="docutils literal notranslate"><span class="pre">config.php</span></code> file like this example:</p>
+<p>To use a memcache with Transactional File Locking, you must install a key-value store
+server like Valkey or Redis. Two cache backends are available for it:</p>
+<ul class="simple">
+<li><p>The Nextcloud <code class="docutils literal notranslate"><span class="pre">keyvalue</span></code> cache, which works with Valkey and Redis and does not
+require the installation of a PHP module (see <a class="reference internal" href="../configuration_server/caching_configuration.html#keyvalue-cache-label"><span class="std std-ref">Redis / Valkey using the Nextcloud KeyValueCache</span></a>)</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Redis</span></code> cache, which requires the phpredis PHP module</p></li>
+</ul>
+<section id="using-the-nextcloud-keyvaluecache-cache">
+<h2>Using the Nextcloud <code class="docutils literal notranslate"><span class="pre">KeyValueCache</span></code> cache<a class="headerlink" href="#using-the-nextcloud-keyvaluecache-cache" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">KeyValueCache</span></code> cache is built on a library bundled with Nextcloud, so no PHP module
+needs to be installed — you only need a running Valkey or Redis compatible server.
+Enter a configuration in your <code class="docutils literal notranslate"><span class="pre">config.php</span></code> file like this example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\KeyValueCache&#39;</span><span class="p">,</span>
+<span class="s1">&#39;memcache.kvstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+     <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+          <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+     <span class="p">],</span>
+     <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">//</span> <span class="n">Optional</span><span class="p">,</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">defined</span> <span class="n">no</span> <span class="n">password</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span><span class="o">.</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../configuration_server/caching_configuration.html#keyvalue-cache-label"><span class="std std-ref">Redis / Valkey using the Nextcloud KeyValueCache</span></a> for all available options, including Unix sockets, TLS,
+Sentinel and cluster setups.</p>
+</section>
+<section id="using-the-redis-cache-with-the-phpredis-php-module">
+<h2>Using the Redis cache with the phpredis PHP module<a class="headerlink" href="#using-the-redis-cache-with-the-phpredis-php-module" title="Link to this heading"></a></h2>
+<p>To use the <code class="docutils literal notranslate"><span class="pre">Redis</span></code> cache instead, you must install the Redis server and corresponding
+PHP module. After installing Redis you must enter a configuration in your <code class="docutils literal notranslate"><span class="pre">config.php</span></code>
+file like this example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
 <span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
      <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
@@ -228,8 +259,9 @@ configuration in your <code class="docutils literal notranslate"><span class="pr
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For enhanced security it is recommended to configure Redis to require
-a password. See <a class="reference external" href="http://redis.io/topics/security">http://redis.io/topics/security</a> for more information.</p>
+<p>For enhanced security it is recommended to configure your key-value store
+server to require a password. See <a class="reference external" href="http://redis.io/topics/security">http://redis.io/topics/security</a> or
+<a class="reference external" href="https://valkey.io/topics/security/">https://valkey.io/topics/security/</a> for more information.</p>
 </div>
 <p>If you want to configure Redis to listen on an Unix socket (which is
 recommended if Redis is running on the same system as Nextcloud) use this example
@@ -249,6 +281,7 @@ distributed memory caching system, is not suitable for the new file locking
 because it is not designed to store locks, and data can disappear from the cache
 at any time. Redis is a key-value store, and it guarantees that cached objects
 are available for as long as they are needed.</p>
+</section>
 </section>
 
 

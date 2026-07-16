@@ -106,7 +106,13 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#apcu">APCu</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#redis">Redis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#redis-valkey-using-the-nextcloud-keyvaluecache">Redis / Valkey using the Nextcloud <code class="docutils literal notranslate"><span class="pre">KeyValueCache</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#keyvaluecache-configuration-in-nextcloud-config-php">KeyValueCache configuration in Nextcloud (config.php)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connecting-over-tls">Connecting over TLS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connecting-over-unix-socket">Connecting over UNIX socket</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#redis-using-the-phpredis-php-extension">Redis using the phpredis PHP extension</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#redis-configuration-in-nextcloud-config-php">Redis configuration in Nextcloud (config.php)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#connecting-to-single-redis-server-over-tcp">Connecting to single Redis server over TCP</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#connecting-to-single-redis-server-over-tls">Connecting to single Redis server over TLS</a></li>
@@ -245,7 +251,9 @@ needs. The supported caching backends are:</p>
 <a class="reference external" href="https://valkey.io/">Valkey</a> and <a class="reference external" href="https://docs.keydb.dev/">KeyDB</a> are expected to work as Redis-compatible backends.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Automated/formal testing currently only occurs against Redis Open Source.</p>
+<p>Automated/formal testing currently only occurs against Redis Open Source using the <cite>redis</cite> PHP extension
+and against Valkey using the Nextcloud <cite>keyvalue</cite> cache provider.
+KeyDB is expected to work as compatible backends as well, but are not formally tested.</p>
 </div>
 <p>For local and distributed caching, as well as transactional file locking.</p>
 </li>
@@ -260,7 +268,7 @@ all possible config parameters).</p>
 <section id="recommendations-based-on-type-of-deployment">
 <h2>Recommendations based on type of deployment<a class="headerlink" href="#recommendations-based-on-type-of-deployment" title="Link to this heading"></a></h2>
 <p>You may use both a local and a distributed cache. Recommended caches are APCu
-and Redis. After installing and enabling your chosen memcache (data cache),
+and Redis or Valkey. After installing and enabling your chosen memcache (data cache),
 verify that it is active by running <a class="reference internal" href="../issues/general_troubleshooting.html#label-phpinfo"><span class="std std-ref">PHP version and information</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -351,8 +359,163 @@ increase the size. <a class="reference external" href="https://github.com/krakjo
 otherwise the <a class="reference external" href="https://github.com/nextcloud/serverinfo">serverinfo app</a> in
 Nextcloud can also show the APCu cache status.</p>
 </section>
-<section id="redis">
-<h2>Redis<a class="headerlink" href="#redis" title="Link to this heading"></a></h2>
+<section id="redis-valkey-using-the-nextcloud-keyvaluecache">
+<span id="keyvalue-cache-label"></span><h2>Redis / Valkey using the Nextcloud <code class="docutils literal notranslate"><span class="pre">KeyValueCache</span></code><a class="headerlink" href="#redis-valkey-using-the-nextcloud-keyvaluecache" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The KeyValueCache was added with Nextcloud 34.0.2.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">KeyValueCache</span></code> cache is a brand-independent cache backend for key-value stores like
+<a class="reference external" href="https://valkey.io/">Valkey</a> or <a class="reference external" href="https://redis.io/open-source/">Redis</a>. These are excellent
+modern memcaches to use for distributed caching, and as a key-value store for
+<a class="reference internal" href="../configuration_files/files_locking_transactional.html"><span class="doc">Transactional File Locking</span></a> because they
+guarantee that cached objects are available for as long as they are needed.</p>
+<p>Unlike the <code class="docutils literal notranslate"><span class="pre">phpredis</span></code> backend described in the next section, the <code class="docutils literal notranslate"><span class="pre">KeyValueCache</span></code> does not require
+a PHP extension: it is built on the <a class="reference external" href="https://github.com/predis/predis">predis</a> library which is
+bundled with Nextcloud. You only need to install and run a Valkey or Redis compatible server and
+configure it in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When the cache server is not located on the same machine the performance
+may be impacted due to network overhead compared to the <code class="docutils literal notranslate"><span class="pre">php-redis</span></code> based backend.
+In those cases it may be preferable to use the <code class="docutils literal notranslate"><span class="pre">php-redis</span></code> backend instead.</p>
+</div>
+<p>On Debian/Ubuntu/Mint, install <code class="docutils literal notranslate"><span class="pre">valkey-server</span></code> or <code class="docutils literal notranslate"><span class="pre">redis-server</span></code>. On CentOS and Fedora,
+install <code class="docutils literal notranslate"><span class="pre">valkey</span></code> or <code class="docutils literal notranslate"><span class="pre">redis</span></code>. Depending on your distribution the server might not start
+automatically, so you may need to use your service manager to start the server, and to launch it
+at boot as a daemon.</p>
+<p>You can verify that the daemon is running with <code class="docutils literal notranslate"><span class="pre">ps</span> <span class="pre">ax</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ps ax | grep valkey
+22203 ? Ssl    0:00 /usr/bin/valkey-server 127.0.0.1:6379
+</pre></div>
+</div>
+<p>Add the appropriate entries to your <code class="docutils literal notranslate"><span class="pre">config.php</span></code>, and refresh your Nextcloud admin page.</p>
+<section id="keyvaluecache-configuration-in-nextcloud-config-php">
+<span id="keyvalue-cache-configuration"></span><h3>KeyValueCache configuration in Nextcloud (config.php)<a class="headerlink" href="#keyvaluecache-configuration-in-nextcloud-config-php" title="Link to this heading"></a></h3>
+<p>For best performance, use the <code class="docutils literal notranslate"><span class="pre">KeyValueCache</span></code> for file locking by adding this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\KeyValueCache&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Additionally, you should use it for the distributed server cache:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\KeyValueCache&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Furthermore, you could use it for the local cache like so, but it’s not recommended (see
+warning below):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\KeyValueCache&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Using a key-value store server for local cache on a multi-server setup can cause
+issues. Also, even on a single-server setup, APCu (see section above) should be faster.</p>
+</div>
+<p>When using the <code class="docutils literal notranslate"><span class="pre">keyvalue</span></code> cache for any of the above cache settings, you also need to specify
+the <code class="docutils literal notranslate"><span class="pre">memcache.kvstore</span></code> configuration in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>. Three topologies are supported: a single
+server (<code class="docutils literal notranslate"><span class="pre">server</span></code>), a Sentinel managed replication set (<code class="docutils literal notranslate"><span class="pre">sentinel</span></code>), and a server cluster
+(<code class="docutils literal notranslate"><span class="pre">seeds</span></code>). Configure exactly one of them.</p>
+<p>The following options are available when using a single server (all but <code class="docutils literal notranslate"><span class="pre">server</span></code> are
+optional):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\KeyValueCache&#39;</span><span class="p">,</span>
+<span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\KeyValueCache&#39;</span><span class="p">,</span>
+<span class="s1">&#39;memcache_customprefix&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mynextcloudprefix&#39;</span><span class="p">,</span>
+<span class="s1">&#39;memcache.kvstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+      <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;cache-host.example.com&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+      <span class="o">//</span> <span class="n">Protocol</span> <span class="n">used</span> <span class="n">to</span> <span class="n">connect</span><span class="o">.</span> <span class="n">One</span> <span class="n">of</span> <span class="s1">&#39;tcp&#39;</span><span class="p">,</span> <span class="s1">&#39;tls&#39;</span> <span class="ow">or</span> <span class="s1">&#39;unix&#39;</span><span class="o">.</span>
+      <span class="o">//</span> <span class="n">When</span> <span class="n">omitted</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">derived</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">host</span> <span class="p">(</span><span class="n">a</span> <span class="n">leading</span> <span class="s1">&#39;/&#39;</span> <span class="n">means</span> <span class="s1">&#39;unix&#39;</span><span class="p">)</span><span class="o">.</span>
+      <span class="s1">&#39;protocol&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;tcp&#39;</span><span class="p">,</span>
+   <span class="p">],</span>
+   <span class="s1">&#39;user&#39;</span>         <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span> <span class="o">//</span> <span class="n">only</span> <span class="n">sent</span> <span class="n">when</span> <span class="n">the</span> <span class="n">server</span> <span class="n">uses</span> <span class="n">ACLs</span>
+   <span class="s1">&#39;password&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;dbindex&#39;</span>      <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+   <span class="s1">&#39;timeout&#39;</span>      <span class="o">=&gt;</span> <span class="mf">1.5</span><span class="p">,</span>
+   <span class="s1">&#39;read_timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">1.5</span><span class="p">,</span>
+   <span class="s1">&#39;persistent&#39;</span>   <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span> <span class="o">//</span> <span class="n">keep</span> <span class="n">the</span> <span class="n">connection</span> <span class="nb">open</span> <span class="n">across</span> <span class="n">requests</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<p>The same optional parameters are available for the Sentinel and cluster topologies below and are
+applied to every node.</p>
+<p>For a Sentinel managed replication setup, provide the name of the monitored service and one seed
+entry per Sentinel node (each seed uses the same format as the <code class="docutils literal notranslate"><span class="pre">server</span></code> entry above):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.kvstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">&#39;sentinel&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+      <span class="s1">&#39;service&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mymaster&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;seeds&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+         <span class="p">[</span><span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;sentinel1.example.com&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">26379</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;sentinel2.example.com&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">26379</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;sentinel3.example.com&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">26379</span><span class="p">],</span>
+      <span class="p">],</span>
+   <span class="p">],</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<p>For a cluster, provide some or all of the cluster nodes to bootstrap discovery:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.kvstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">&#39;seeds&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+      <span class="p">[</span><span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;cache-cluster.example.com&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">7000</span><span class="p">],</span>
+      <span class="p">[</span><span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;cache-cluster.example.com&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">7001</span><span class="p">],</span>
+   <span class="p">],</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Selecting a numbered database with <code class="docutils literal notranslate"><span class="pre">dbindex</span></code> is only supported for single servers and
+Sentinel setups; clusters always use database 0, the support for numbered databases added with Valkey v9 is pending <a class="reference external" href="https://github.com/predis/predis/issues/1696">upstream</a>.</p>
+</div>
+</section>
+<section id="connecting-over-tls">
+<h3>Connecting over TLS<a class="headerlink" href="#connecting-over-tls" title="Link to this heading"></a></h3>
+<p>To connect via TCP over TLS, set the <code class="docutils literal notranslate"><span class="pre">protocol</span></code> of the server (or of each seed) to <code class="docutils literal notranslate"><span class="pre">tls</span></code> and
+provide the SSL context (<a class="reference external" href="https://www.php.net/manual/en/context.ssl.php">SSL context options</a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.kvstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+      <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;cache-host.example.com&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+      <span class="s1">&#39;protocol&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;tls&#39;</span><span class="p">,</span>
+   <span class="p">],</span>
+   <span class="s1">&#39;ssl_context&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+      <span class="s1">&#39;local_cert&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/certs/cache.crt&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;local_pk&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/certs/cache.key&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;cafile&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/certs/ca.crt&#39;</span><span class="p">,</span>
+   <span class="p">],</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+</section>
+<section id="connecting-over-unix-socket">
+<h3>Connecting over UNIX socket<a class="headerlink" href="#connecting-over-unix-socket" title="Link to this heading"></a></h3>
+<p>If you want to connect to a server configured to listen on a Unix socket (which is recommended if
+the server is running on the same system as Nextcloud), pass the socket path as the host. A
+leading slash in the host is automatically detected as a Unix socket, so no <code class="docutils literal notranslate"><span class="pre">protocol</span></code> or
+<code class="docutils literal notranslate"><span class="pre">port</span></code> is needed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.kvstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+      <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/run/valkey/valkey.sock&#39;</span><span class="p">,</span>
+   <span class="p">],</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<p>Update the server configuration (for example <code class="docutils literal notranslate"><span class="pre">/etc/valkey/valkey.conf</span></code>) accordingly: uncomment
+the Unix socket options and ensure the socket path matches your Nextcloud configuration.</p>
+<p>Be sure to set the right permissions on the socket so that your web server can read and write to
+it. For this you typically have to add the web server user to the <code class="docutils literal notranslate"><span class="pre">valkey</span></code> (or <code class="docutils literal notranslate"><span class="pre">redis</span></code>)
+group:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">G</span> <span class="n">valkey</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span>
+</pre></div>
+</div>
+<p>And modify the <code class="docutils literal notranslate"><span class="pre">unixsocketperm</span></code> setting of the server configuration accordingly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unixsocketperm</span> <span class="mi">770</span>
+</pre></div>
+</div>
+<p>You might need to restart your web server and the cache server for the changes to take effect.</p>
+</section>
+</section>
+<section id="redis-using-the-phpredis-php-extension">
+<h2>Redis using the phpredis PHP extension<a class="headerlink" href="#redis-using-the-phpredis-php-extension" title="Link to this heading"></a></h2>
 <p>Redis is an excellent modern memcache to use for distributed caching, and
 as a key-value store for <a class="reference internal" href="../configuration_files/files_locking_transactional.html"><span class="doc">Transactional File Locking</span></a> because it guarantees
 that cached objects are available for as long as they are needed.</p>
