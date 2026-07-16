@@ -89,10 +89,10 @@ The following ``config.php`` options control Activity app behavior.
      - ``[]``
      - An array of user IDs whose activity records are never deleted
        by the expiration job. See :ref:`label-activities-exclude-users`.
-    * - ``activity_log_exclude_users``
+   * - ``activity_log_exclude_users``
      - ``[]``
      - An associative array of [ user_ID => event_types_array ]. For each user the
-       associated event types won't be logged. See :ref:`_label-activity_log_exclude_users`.
+       associated event types won't be logged. See :ref:`label-activity_log_exclude_users`.
 
 
 .. _label-activities-groupfolders:
