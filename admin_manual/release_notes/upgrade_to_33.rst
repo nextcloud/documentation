@@ -38,3 +38,10 @@ Default user agent for outgoing requests changed
 ------------------------------------------------
 
 Starting with this release, the default user agent for requests done by the instance was changed from ``Nextcloud Server Crawler`` to ``Nextcloud-Server-Crawler/X.Y.Z``, where ``X.Y.Z`` is the current server version.
+
+TaskProcessing worker command
+-----------------------------
+
+Previously we instructed admins to run `occ background-job:worker <JobClass>` to speed up AI task processing. This recommendation has changed to running `occ taskprocessing:worker`, which handles parallel execution better. Make sure to update your setup.
+
+See :doc:`../ai/overview` for more information about this.
