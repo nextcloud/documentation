@@ -303,6 +303,12 @@
 <li class="toctree-l4"><a class="reference internal" href="#memcache-local">memcache.local</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#memcache-distributed">memcache.distributed</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#memcache-customprefix">memcache_customprefix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memcache-kvstore">memcache.kvstore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#server">server</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sentinel-managed-replication-setup">Sentinel managed replication setup.</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#user">user</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#redis">redis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#redis-cluster">redis.cluster</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#memcached-servers">memcached_servers</a></li>
@@ -2732,6 +2738,81 @@ For the local cache (you can configure two) take APCu.</p></li>
 </ul>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">''</span></code> (empty string)</p>
 </section>
+<section id="memcache-kvstore">
+<h3>memcache.kvstore<a class="headerlink" href="#memcache-kvstore" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.kvstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</pre></div>
+</div>
+<p>Connection details for the Key-Value store used for in-memory caching,
+for example when using Valkey or Redis.</p>
+<p>This is the brand-independent successor of the <code class="docutils literal notranslate"><span class="pre">redis</span></code> and
+<code class="docutils literal notranslate"><span class="pre">redis.cluster</span></code> options below and supports the latest Valkey and Redis
+releases. Three topologies are supported:
+a single server, a Sentinel managed replication set, and a
+server cluster. Configure exactly one of <code class="docutils literal notranslate"><span class="pre">server</span></code>, <code class="docutils literal notranslate"><span class="pre">sentinel</span></code> or
+<code class="docutils literal notranslate"><span class="pre">seeds</span></code>.</p>
+<p>For enhanced security, it is recommended to configure ACLs in
+the cache server and configure the <code class="docutils literal notranslate"><span class="pre">user</span></code> and <code class="docutils literal notranslate"><span class="pre">password</span></code> (or a TLS
+client certificate). Alternatively, you can also configure the cache
+server to just use a <code class="docutils literal notranslate"><span class="pre">password</span></code>.
+See <a class="reference external" href="https://valkey.io/topics/security/">https://valkey.io/topics/security/</a> for more information when using Valkey.</p>
+</section>
+<section id="server">
+<h3>server<a class="headerlink" href="#server" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="o">//</span> <span class="n">can</span> <span class="n">also</span> <span class="n">be</span> <span class="n">a</span> <span class="n">Unix</span> <span class="n">domain</span> <span class="n">socket</span><span class="p">:</span> <span class="s1">&#39;/tmp/cache.sock&#39;</span>
+            <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span> <span class="o">//</span> <span class="n">ignored</span> <span class="k">for</span> <span class="n">Unix</span> <span class="n">domain</span> <span class="n">sockets</span>
+            <span class="o">//</span> <span class="n">Protocol</span> <span class="n">used</span> <span class="n">to</span> <span class="n">connect</span><span class="o">.</span> <span class="n">One</span> <span class="n">of</span> <span class="s1">&#39;tcp&#39;</span><span class="p">,</span> <span class="s1">&#39;tls&#39;</span> <span class="ow">or</span> <span class="s1">&#39;unix&#39;</span><span class="o">.</span>
+            <span class="o">//</span> <span class="n">When</span> <span class="n">omitted</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">derived</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">host</span> <span class="p">(</span><span class="n">a</span> <span class="n">leading</span> <span class="s1">&#39;/&#39;</span> <span class="n">means</span> <span class="s1">&#39;unix&#39;</span><span class="p">)</span><span class="o">.</span>
+            <span class="s1">&#39;protocol&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;tcp&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+</pre></div>
+</div>
+<p>Single server setup.</p>
+<p>Also used as the connection template for the <code class="docutils literal notranslate"><span class="pre">sentinel</span></code> managed
+primary / replica connections.</p>
+</section>
+</section>
+<section id="sentinel-managed-replication-setup">
+<h2>Sentinel managed replication setup.<a class="headerlink" href="#sentinel-managed-replication-setup" title="Link to this heading"></a></h2>
+<p>Provide the name of the monitored service and one entry per Sentinel
+node. Each seed uses the same format as the <code class="docutils literal notranslate"><span class="pre">server</span></code> entry above.
+Uncomment to enable and remove the <code class="docutils literal notranslate"><span class="pre">server</span></code> / <code class="docutils literal notranslate"><span class="pre">seeds</span></code> entries.</p>
+<section id="user">
+<h3>user<a class="headerlink" href="#user" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="s1">&#39;seeds&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="o">//</span>    <span class="p">[</span><span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">7000</span><span class="p">],</span>
+        <span class="o">//</span>    <span class="p">[</span><span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">7001</span><span class="p">],</span>
+        <span class="o">//</span><span class="p">],</span>
+
+        <span class="o">//</span> <span class="n">Optional</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span> <span class="n">only</span> <span class="n">sent</span> <span class="n">when</span> <span class="n">the</span> <span class="n">cache</span> <span class="n">server</span> <span class="n">uses</span> <span class="n">ACLs</span><span class="o">.</span>
+        <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="o">//</span> <span class="n">Optional</span><span class="p">:</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">defined</span><span class="p">,</span> <span class="n">no</span> <span class="n">password</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span><span class="o">.</span>
+        <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="o">//</span> <span class="n">Optional</span><span class="p">:</span> <span class="n">select</span> <span class="n">a</span> <span class="n">numbered</span> <span class="n">database</span><span class="o">.</span> <span class="n">Only</span> <span class="n">supported</span> <span class="k">for</span> <span class="n">single</span>
+        <span class="o">//</span> <span class="n">servers</span> <span class="ow">and</span> <span class="n">Sentinel</span> <span class="n">setups</span><span class="p">,</span> <span class="n">clusters</span> <span class="n">always</span> <span class="n">use</span> <span class="n">database</span> <span class="mf">0.</span>
+        <span class="s1">&#39;dbindex&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="o">//</span> <span class="n">Optional</span><span class="p">:</span> <span class="n">connection</span> <span class="n">timeout</span> <span class="ow">in</span> <span class="n">seconds</span> <span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span> <span class="mi">0</span> <span class="n">means</span> <span class="n">no</span> <span class="n">timeout</span><span class="o">.</span>
+        <span class="s1">&#39;timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="o">//</span> <span class="n">Optional</span><span class="p">:</span> <span class="n">read</span><span class="o">/</span><span class="n">write</span> <span class="n">timeout</span> <span class="ow">in</span> <span class="n">seconds</span> <span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span> <span class="mi">0</span> <span class="n">means</span> <span class="n">no</span> <span class="n">timeout</span><span class="o">.</span>
+        <span class="s1">&#39;read_timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="o">//</span> <span class="n">Optional</span><span class="p">:</span> <span class="n">keep</span> <span class="n">the</span> <span class="n">connection</span> <span class="nb">open</span> <span class="n">across</span> <span class="n">requests</span><span class="o">.</span> <span class="n">Defaults</span> <span class="n">to</span> <span class="n">false</span><span class="o">.</span>
+        <span class="s1">&#39;persistent&#39;</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+        <span class="o">//</span> <span class="n">Optional</span><span class="p">:</span> <span class="n">when</span> <span class="n">the</span> <span class="s1">&#39;tls&#39;</span> <span class="n">protocol</span> <span class="ow">is</span> <span class="n">used</span><span class="p">,</span> <span class="n">provide</span> <span class="n">the</span> <span class="n">SSL</span> <span class="n">context</span><span class="o">.</span>
+        <span class="o">//</span> <span class="n">SSL</span> <span class="n">context</span> <span class="n">options</span><span class="p">,</span> <span class="n">see</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">php</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">manual</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">context</span><span class="o">.</span><span class="n">ssl</span><span class="o">.</span><span class="n">php</span>
+        <span class="o">//</span><span class="s1">&#39;ssl_context&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="o">//</span>    <span class="s1">&#39;local_cert&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/certs/cache.crt&#39;</span><span class="p">,</span>
+        <span class="o">//</span>    <span class="s1">&#39;local_pk&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/certs/cache.key&#39;</span><span class="p">,</span>
+        <span class="o">//</span>    <span class="s1">&#39;cafile&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/certs/ca.crt&#39;</span><span class="p">,</span>
+        <span class="o">//</span><span class="p">],</span>
+    <span class="p">],</span>
+</pre></div>
+</div>
+<p>Cluster setup.</p>
+<p>Provide some or all of the cluster nodes to bootstrap discovery.
+Each seed uses the same format as the <code class="docutils literal notranslate"><span class="pre">server</span></code> entry above.
+Uncomment to enable and remove the <code class="docutils literal notranslate"><span class="pre">server</span></code> / <code class="docutils literal notranslate"><span class="pre">sentinel</span></code> entries.</p>
+</section>
 <section id="redis">
 <h3>redis<a class="headerlink" href="#redis" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
@@ -2758,6 +2839,9 @@ to require a password. See <a class="reference external" href="http://redis.io/t
 for more information.</p>
 <p>We also support Redis SSL/TLS encryption as of version 6.
 See <a class="reference external" href="https://redis.io/topics/encryption">https://redis.io/topics/encryption</a> for more information.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 34.0.0: </span>use <cite>memcache.kvstore</cite> instead which supports also Valkey.</p>
+</div>
 </section>
 <section id="redis-cluster">
 <h3>redis.cluster<a class="headerlink" href="#redis-cluster" title="Link to this heading"></a></h3>
@@ -2803,6 +2887,9 @@ which then causes a FileLocked exception.</p>
 <p>See <a class="reference external" href="https://redis.io/topics/cluster-spec">https://redis.io/topics/cluster-spec</a> for details about the Redis cluster</p>
 <p>Authentication works with phpredis version 4.2.1+. See
 <a class="reference external" href="https://github.com/phpredis/phpredis/commit/c5994f2a42b8a348af92d3acb4edff1328ad8ce1">https://github.com/phpredis/phpredis/commit/c5994f2a42b8a348af92d3acb4edff1328ad8ce1</a></p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 34.0.0: </span>use <cite>memcache.kvstore</cite> instead which supports also Valkey.</p>
+</div>
 </section>
 <section id="memcached-servers">
 <h3>memcached_servers<a class="headerlink" href="#memcached-servers" title="Link to this heading"></a></h3>
