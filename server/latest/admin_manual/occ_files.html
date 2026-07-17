@@ -241,6 +241,8 @@ are shipped with Nextcloud and can be enabled in the Apps menu:</p>
  <span class="n">files</span><span class="p">:</span><span class="n">mount</span><span class="p">:</span><span class="n">refresh</span>                  <span class="n">refresh</span> <span class="n">the</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">mounts</span> <span class="k">for</span> <span class="n">a</span> <span class="n">user</span>
  <span class="n">files</span><span class="p">:</span><span class="n">move</span>                           <span class="n">move</span> <span class="n">a</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span>
  <span class="n">files</span><span class="p">:</span><span class="n">put</span>                            <span class="n">write</span> <span class="n">content</span> <span class="n">to</span> <span class="n">a</span> <span class="n">file</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">mkdir</span>                          <span class="n">create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">folder</span>
+ <span class="n">files</span><span class="p">:</span><span class="n">touch</span>                          <span class="n">update</span> <span class="n">the</span> <span class="n">modified</span> <span class="n">date</span> <span class="n">of</span> <span class="n">a</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span>
  <span class="n">files</span><span class="p">:</span><span class="n">reminders</span>                      <span class="nb">list</span> <span class="n">file</span> <span class="n">reminders</span>
  <span class="n">files</span><span class="p">:</span><span class="n">repair</span><span class="o">-</span><span class="n">tree</span>                    <span class="n">repair</span> <span class="n">malformed</span> <span class="n">filesystem</span> <span class="n">tree</span> <span class="n">structures</span>
  <span class="n">files</span><span class="p">:</span><span class="n">sanitize</span><span class="o">-</span><span class="n">filenames</span>             <span class="n">rename</span> <span class="n">files</span> <span class="n">that</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">match</span> <span class="n">the</span> <span class="n">current</span> <span class="n">filename</span> <span class="n">constraints</span>
@@ -295,6 +297,8 @@ underlying file:</p>
 </div>
 <p>When the file is accessible by multiple users, the command lists all
 affected users and asks for confirmation before proceeding.</p>
+<p>If the trashbin is enabled, you can use <code class="docutils literal notranslate"><span class="pre">--skip-trash</span></code> to bypass the trashbin
+and permanently delete the files directly.</p>
 </section>
 <section id="files-get">
 <h3>files:get<a class="headerlink" href="#files-get" title="Link to this heading"></a></h3>
@@ -363,6 +367,29 @@ Nextcloud path or a numeric file ID of an existing file:</p>
 <p>Read from standard input by passing <code class="docutils literal notranslate"><span class="pre">-</span></code> as the source:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span> <span class="o">|</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">put</span> <span class="o">-</span> \
   <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span>
+</pre></div>
+</div>
+<p>Any missing parent folder for the specified destination will be created automatically.</p>
+</section>
+<section id="files-mkdir">
+<h3>files:mkdir<a class="headerlink" href="#files-mkdir" title="Link to this heading"></a></h3>
+<p>Create a new empty folder, parent folders will automatically be created if needed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">mkdir</span> <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">Reports</span>
+</pre></div>
+</div>
+</section>
+<section id="files-touch">
+<h3>files:touch<a class="headerlink" href="#files-touch" title="Link to this heading"></a></h3>
+<p>Update the last modified date of a file or folder. The target argument
+accepts either a Nextcloud path or a numeric file ID of an existing file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">touch</span>  <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span>
+</pre></div>
+</div>
+<p>Instead of using the current time, you can specify the modified date to use
+with the <code class="docutils literal notranslate"><span class="pre">--date</span></code> option.
+Accepted formats are: ISO8601, “YYYY-MM-DD” and Unix time in seconds.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">touch</span>  <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span> \
+  <span class="o">--</span><span class="n">date</span> <span class="mi">2026</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">15</span>
 </pre></div>
 </div>
 </section>
