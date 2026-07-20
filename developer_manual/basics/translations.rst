@@ -220,8 +220,6 @@ JS Example:
     /* BEST: Simple string with undefined plural not using any number in the string */
     t('myapp', 'Import calendars')
 
-.. _improving-translations:
-
 .. important::
    General rule: Whenever a variable with varying values (numbers) is part of a string, the plural form must be used.
 
@@ -247,6 +245,8 @@ Good: Two strings in source code.
 
    "Vault will be locked in %1$d second"
    "Vault will be locked in %1$d seconds"
+
+.. _improving-translations:
 
 Improving your translations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
