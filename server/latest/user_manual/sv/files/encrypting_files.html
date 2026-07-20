@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using server-side encryption &mdash; Nextcloud 35 User Manual</title>
+  <title>Använda kryptering på serversidan &mdash; Nextcloud 35 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -72,20 +72,20 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 35 user manual introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduktion till användarhandboken för Nextcloud 35</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Files &amp; synchronization</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Filer och synkronisering</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="security.html">Security &amp; encryption</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Using server-side encryption</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#encryption-faq">Encryption FAQ</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#using-encryption">Using encryption</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sharing-encrypted-files">Sharing encrypted files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#files-not-encrypted">Files not encrypted</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Använda kryptering på serversidan</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#encryption-faq">Vanliga frågor om kryptering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-encryption">Använda kryptering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-encrypted-files">Dela krypterade filer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#files-not-encrypted">Filer som inte krypteras</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
@@ -93,14 +93,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Grupprogram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Hantera dina inställningar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universell åtkomst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Använda tvåfaktorsautentisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Hantera anslutna webbläsare och enheter</a></li>
 </ul>
 
         </div>
@@ -117,9 +117,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Files &amp; synchronization</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Filer och synkronisering</a></li>
           <li class="breadcrumb-item"><a href="security.html">Security &amp; encryption</a></li>
-      <li class="breadcrumb-item active">Using server-side encryption</li>
+      <li class="breadcrumb-item active">Använda kryptering på serversidan</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Editera på GitHub</a>
       </li>
@@ -130,22 +130,9 @@
            <div itemprop="articleBody">
              
   <section id="using-server-side-encryption">
-<h1>Using server-side encryption<a class="headerlink" href="#using-server-side-encryption" title="Link to this heading"></a></h1>
-<p>Nextcloud includes a server-side encryption app, and when it is enabled by
-your Nextcloud administrator all of your Nextcloud data files are automatically
-encrypted on the server.
-Encryption is server-wide, so when it is enabled you cannot choose to keep your
-files unencrypted. You don’t have to do anything special, as it uses your
-Nextcloud login as the password for your unique private encryption key. Just log
-out and in and manage and share your files as you normally do, and you can
-still change your password whenever you want.</p>
-<p>Its main purpose is to encrypt files on remote storage services that are
-connected to your Nextcloud server. This is an
-easy and seamless way to protect your files on remote storage. You can share
-your remote files through Nextcloud in the usual way, however you cannot share
-your encrypted files directly from the remote service you are using, because
-the encryption keys are stored on your Nextcloud server, and are never exposed
-to outside service providers.</p>
+<h1>Använda kryptering på serversidan<a class="headerlink" href="#using-server-side-encryption" title="Link to this heading"></a></h1>
+<p>Nextcloud innehåller en app för kryptering på serversidan. När Nextcloud-administratören aktiverar den krypteras alla dina Nextcloud-datafiler automatiskt på servern. Krypteringen gäller hela servern, så när den är aktiverad kan du inte välja att låta vissa filer vara okrypterade. Du behöver inte göra något särskilt, eftersom ditt Nextcloud-lösenord används som lösenord för din unika privata krypteringsnyckel. Logga bara ut och in igen och hantera och dela filerna som vanligt. Du kan fortfarande ändra lösenordet när du vill.</p>
+<p>Det främsta syftet är att kryptera filer på fjärrlagringstjänster som är anslutna till Nextcloud-servern. Det är ett enkelt och smidigt sätt att skydda filer på fjärrlagring. Du kan dela fjärrfilerna via Nextcloud som vanligt, men du kan inte dela de krypterade filerna direkt från fjärrtjänsten eftersom krypteringsnycklarna lagras på Nextcloud-servern och aldrig lämnas ut till externa tjänsteleverantörer.</p>
 <p>If your Nextcloud server is not connected to any remote storage services, then
 it is better to use some other form of encryption such as file-level or whole
 disk encryption. Because the keys are kept on your Nextcloud server, it is
@@ -154,104 +141,69 @@ compromised the intruder may get access to your files. (Read
 <a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">Encryption in Nextcloud</a>
 to learn more.)</p>
 <section id="encryption-faq">
-<h2>Encryption FAQ<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
+<h2>Vanliga frågor om kryptering<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
 <section id="how-can-encryption-be-disabled">
-<h3>How can encryption be disabled?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
-<p>The only way to disable encryption is to run the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">”decrypt all”</a>
-script, which decrypts all files and disables encryption.</p>
+<h3>Hur kan krypteringen inaktiveras?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
+<p>Det enda sättet att inaktivera krypteringen är att köra skriptet <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">”decrypt all”</a>, som dekrypterar alla filer och inaktiverar krypteringen.</p>
 </section>
 <section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
-<h3>Is it possible to disable encryption with the recovery key?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
-<p>Yes, <em>if</em> every user uses the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">file recovery key</a>, <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">”decrypt all”</a> will use it to decrypt all files.</p>
+<h3>Går det att inaktivera krypteringen med återställningsnyckeln?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Ja, <em>om</em> alla användare använder <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">filåterställningsnyckeln</a>. Då använder <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">”decrypt all”</a> den för att dekryptera alla filer.</p>
 </section>
 <section id="can-encryption-be-disabled-without-the-user-s-password">
-<h3>Can encryption be disabled without the user’s password?<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
-<p>If you don’t have the users password or <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">file recovery key</a>,
-then there is no way to decrypt all files. What’s more, running it on login
-would be dangerous, because you would most likely run into timeouts.</p>
+<h3>Kan krypteringen inaktiveras utan användarens lösenord?<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
+<p>Om du inte har användarens lösenord eller <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">filåterställningsnyckel</a> går det inte att dekryptera alla filer. Att köra processen vid inloggning skulle dessutom vara riskabelt, eftersom den sannolikt skulle nå tidsgränsen.</p>
 </section>
 <section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
-<h3>Is it planned to move this to the next user login or a background job?<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
-<p>If we did that, then we would need to store your login password in the database.
-This could be seen as a security issue, so nothing like that is planned.</p>
+<h3>Finns det planer på att göra detta vid användarens nästa inloggning eller som ett bakgrundsjobb?<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
+<p>Det skulle kräva att inloggningslösenordet lagrades i databasen. Det kan betraktas som en säkerhetsrisk, så något sådant är inte planerat.</p>
 </section>
 <section id="is-group-sharing-possible-with-the-recovery-key">
 <h3>Is group sharing possible with the recovery key?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
-<p>If you mean adding users to groups and make it magically work? No. This only
-works with the master key.</p>
+<p>Om du menar att användare ska kunna läggas till i grupper och att allt därefter automatiskt ska fungera är svaret nej. Detta fungerar endast med huvudnyckeln.</p>
 </section>
 </section>
 <section id="using-encryption">
-<h2>Using encryption<a class="headerlink" href="#using-encryption" title="Link to this heading"></a></h2>
-<p>Nextcloud encryption is pretty much set it and forget it, but you have a few
-options you can use.</p>
-<p>When your Nextcloud administrator enables encryption for the first time, you must log
-out and then log back in to create your encryption keys and encrypt your files.
-When encryption has been enabled on your Nextcloud server you will see a yellow
-banner on your Files page warning you to log out and then log back in:</p>
+<h2>Använda kryptering<a class="headerlink" href="#using-encryption" title="Link to this heading"></a></h2>
+<p>Nextclouds kryptering är i stort sett något du konfigurerar en gång och sedan inte behöver tänka på, men det finns några alternativ du kan använda.</p>
+<p>När Nextcloud-administratören aktiverar kryptering för första gången måste du logga ut och sedan in igen för att skapa krypteringsnycklarna och kryptera filerna. När krypteringen har aktiverats på Nextcloud-servern visas en gul informationsrad på sidan Filer med en uppmaning att logga ut och sedan in igen:</p>
 <figure class="align-default">
 <img alt="../../_images/encryption1.png" src="../../_images/encryption1.png" />
 </figure>
-<p>When you log back in it takes a few minutes to work, depending on how many
-files you have, and then you are returned to your default Nextcloud page.</p>
+<p>När du loggar in igen tar processen några minuter beroende på hur många filer du har. Därefter återgår du till din förvalda Nextcloud-sida.</p>
 <figure class="align-default">
 <img alt="../../_images/encryption2.png" src="../../_images/encryption2.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Observera</p>
-<p>You must never lose your Nextcloud password, because you will lose
-access to your files. Though there is an optional recovery option that your
-Nextcloud administrator may enable; see the Recovery Key Password section
-(below) to learn about this.</p>
+<p>Du får inte förlora ditt Nextcloud-lösenord, eftersom du då förlorar åtkomsten till filerna. Nextcloud-administratören kan dock aktivera en valfri återställningsfunktion. Mer information finns i avsnittet Lösenord för återställningsnyckeln nedan.</p>
 </div>
 </section>
 <section id="sharing-encrypted-files">
-<h2>Sharing encrypted files<a class="headerlink" href="#sharing-encrypted-files" title="Link to this heading"></a></h2>
-<p>Only users who have private encryption keys have access to shared encrypted
-files and folders. Users who have not yet created their private encryption keys
-will not have access to encrypted shared files; they will see folders and
-filenames, but will not be able to open or download the files. They will see a
-yellow warning banner that says ”Encryption App is enabled but your keys are not
-initialized, please log-out and log-in again.”</p>
-<p>Share owners may need to re-share files after encryption is enabled; users
-trying to access the share will see a message advising them to ask the share
-owner to re-share the file with them. For individual shares, un-share and
-re-share the file. For group shares, share with any individuals who can’t access
-the share. This updates the encryption, and then the share owner can remove the
-individual shares.</p>
+<h2>Dela krypterade filer<a class="headerlink" href="#sharing-encrypted-files" title="Link to this heading"></a></h2>
+<p>Endast användare som har privata krypteringsnycklar kan komma åt delade krypterade filer och mappar. Användare som ännu inte har skapat sina privata krypteringsnycklar kan se mappar och filnamn, men kan inte öppna eller hämta filerna. De ser en gul varningsrad med texten ”Krypteringsappen är aktiverad, men dina nycklar har inte initierats. Logga ut och in igen.”</p>
+<p>Delningsägare kan behöva dela filerna på nytt när krypteringen har aktiverats. Användare som försöker öppna delningen får då ett meddelande om att be delningsägaren dela filen på nytt. För enskilda delningar tar du bort delningen och delar sedan filen igen. För gruppdelningar delar du filen med de enskilda personer som saknar åtkomst. Då uppdateras krypteringen, varefter delningsägaren kan ta bort de individuella delningarna.</p>
 <section id="recovery-key-password">
-<h3>Recovery key password<a class="headerlink" href="#recovery-key-password" title="Link to this heading"></a></h3>
-<p>If your Nextcloud administrator has enabled the recovery key feature, you can
-choose to use this feature for your account. If you enable ”Password recovery”
-the administrator can read your data with a special password. This feature
-enables the administrator to recover your files in the event you lose your
-Nextcloud password. If the recovery key is not enabled, then there is no way to
-restore your files if you lose your login password.</p>
+<h3>Lösenord för återställningsnyckeln<a class="headerlink" href="#recovery-key-password" title="Link to this heading"></a></h3>
+<p>Om Nextcloud-administratören har aktiverat återställningsnyckeln kan du välja att använda funktionen för ditt konto. Om du aktiverar ”Lösenordsåterställning” kan administratören läsa dina data med ett särskilt lösenord. Funktionen gör det möjligt för administratören att återställa filerna om du förlorar ditt Nextcloud-lösenord. Om återställningsnyckeln inte är aktiverad går filerna inte att återställa om du förlorar inloggningslösenordet.</p>
 <figure class="align-default">
 <img alt="../../_images/encryption3.png" src="../../_images/encryption3.png" />
 </figure>
 </section>
 </section>
 <section id="files-not-encrypted">
-<h2>Files not encrypted<a class="headerlink" href="#files-not-encrypted" title="Link to this heading"></a></h2>
-<p>Only the data in your files is encrypted, and not the filenames or folder
-structures. These files are never encrypted:</p>
+<h2>Filer som inte krypteras<a class="headerlink" href="#files-not-encrypted" title="Link to this heading"></a></h2>
+<p>Endast innehållet i filerna krypteras, inte filnamnen eller mappstrukturen. Följande data krypteras aldrig:</p>
 <ul class="simple">
-<li><p>Old files in the trash bin.</p></li>
-<li><p>Image thumbnails from the Gallery app.</p></li>
-<li><p>Previews from the Files app.</p></li>
-<li><p>The search index from the full text search app.</p></li>
-<li><p>Third-party app data</p></li>
+<li><p>Gamla filer i papperskorgen.</p></li>
+<li><p>Miniatyrbilder från appen Galleri.</p></li>
+<li><p>Förhandsvisningar från appen Filer.</p></li>
+<li><p>Sökindexet från appen för fulltextsökning.</p></li>
+<li><p>Data från tredjepartsappar</p></li>
 </ul>
 <section id="change-private-key-password">
-<h3>Change private key password<a class="headerlink" href="#change-private-key-password" title="Link to this heading"></a></h3>
-<p>This option is only available if the encryption password has not been changed by
-the administrator, but only the log-in password. This can occur if your Nextcloud
-provider uses an external user back-end (for example, LDAP) and changed your
-login password using that back-end configuration. In this case, you can set
-your encryption password to your new login password by providing your old and
-new login password. The Encryption app works only if your login password and
-your encryption password are identical.</p>
+<h3>Ändra lösenordet för den privata nyckeln<a class="headerlink" href="#change-private-key-password" title="Link to this heading"></a></h3>
+<p>Det här alternativet är endast tillgängligt om administratören inte har ändrat krypteringslösenordet, utan bara inloggningslösenordet. Detta kan inträffa om Nextcloud-leverantören använder en extern användarkälla, exempelvis LDAP, och ändrar inloggningslösenordet via den konfigurationen. Då kan du ange ditt gamla och nya inloggningslösenord för att ändra krypteringslösenordet till det nya inloggningslösenordet. Krypteringsappen fungerar endast om inloggningslösenordet och krypteringslösenordet är identiska.</p>
 </section>
 </section>
 </section>
@@ -385,7 +337,7 @@ your encryption password are identical.</p>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
       <dl class="nc-languages-list">
-        <dt>Languages</dt>
+        <dt>Språk</dt>
         
           <dd>
             <a href="/server/latest/user_manual/ar/"

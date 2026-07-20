@@ -2752,9 +2752,14 @@ For the local cache (you can configure two) take APCu.</p></li>
 </div>
 <p>Connection details for the Key-Value store used for in-memory caching,
 for example when using Valkey or Redis.</p>
-<p>This is the brand-independent successor of the <code class="docutils literal notranslate"><span class="pre">redis</span></code> and
-<code class="docutils literal notranslate"><span class="pre">redis.cluster</span></code> options below and supports the latest Valkey and Redis
-releases. Three topologies are supported:
+<p>This is the brand-independent version of the <code class="docutils literal notranslate"><span class="pre">redis</span></code> and
+<code class="docutils literal notranslate"><span class="pre">redis.cluster</span></code> options below without depending on <code class="docutils literal notranslate"><span class="pre">php-redis</span></code>
+meaning no additional PHP extension needs to be installed.
+Redis and Valkey 4.0 up to 8.0 are supported, for SSL support Redis v6 or higher is required,
+Valkey 9 is supported but without support for numbered databased when using cluster mode.</p>
+<p>Warning: If the cache server is not hosted on the same machine as Nextcloud,
+this can have a network overhead compared to the <code class="docutils literal notranslate"><span class="pre">php-redis</span></code> based backend below.</p>
+<p>Three topologies are supported:
 a single server, a Sentinel managed replication set, and a
 server cluster. Configure exactly one of <code class="docutils literal notranslate"><span class="pre">server</span></code>, <code class="docutils literal notranslate"><span class="pre">sentinel</span></code> or
 <code class="docutils literal notranslate"><span class="pre">seeds</span></code>.</p>
@@ -2846,9 +2851,6 @@ to require a password. See <a class="reference external" href="http://redis.io/t
 for more information.</p>
 <p>We also support Redis SSL/TLS encryption as of version 6.
 See <a class="reference external" href="https://redis.io/topics/encryption">https://redis.io/topics/encryption</a> for more information.</p>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version 34.0.0: </span>use <cite>memcache.kvstore</cite> instead which supports also Valkey.</p>
-</div>
 </section>
 <section id="redis-cluster">
 <h3>redis.cluster<a class="headerlink" href="#redis-cluster" title="Link to this heading"></a></h3>
@@ -2894,9 +2896,6 @@ which then causes a FileLocked exception.</p>
 <p>See <a class="reference external" href="https://redis.io/topics/cluster-spec">https://redis.io/topics/cluster-spec</a> for details about the Redis cluster</p>
 <p>Authentication works with phpredis version 4.2.1+. See
 <a class="reference external" href="https://github.com/phpredis/phpredis/commit/c5994f2a42b8a348af92d3acb4edff1328ad8ce1">https://github.com/phpredis/phpredis/commit/c5994f2a42b8a348af92d3acb4edff1328ad8ce1</a></p>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version 34.0.0: </span>use <cite>memcache.kvstore</cite> instead which supports also Valkey.</p>
-</div>
 </section>
 <section id="memcached-servers">
 <h3>memcached_servers<a class="headerlink" href="#memcached-servers" title="Link to this heading"></a></h3>

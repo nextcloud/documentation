@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Making anonymous uploads &mdash; Nextcloud 35 User Manual</title>
+  <title>Tillåta anonyma uppladdningar &mdash; Nextcloud 35 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -72,19 +72,19 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 35 user manual introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduktion till användarhandboken för Nextcloud 35</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Files &amp; synchronization</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Filer och synkronisering</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="sharing.html">File sharing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sharing.html#federated-shares">Federated shares</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Making anonymous uploads</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#setting-up-your-own-file-drop">Setting up your own file drop</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#uploading-files">Uploading files</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tillåta anonyma uppladdningar</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-your-own-file-drop">Konfigurera en egen filinlämning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uploading-files">Ladda upp filer</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Using federation shares</a></li>
@@ -94,14 +94,14 @@
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Grupprogram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Hantera dina inställningar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universell åtkomst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Använda tvåfaktorsautentisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Hantera anslutna webbläsare och enheter</a></li>
 </ul>
 
         </div>
@@ -118,9 +118,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Files &amp; synchronization</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Filer och synkronisering</a></li>
           <li class="breadcrumb-item"><a href="collaboration.html">Sharing &amp; collaboration</a></li>
-      <li class="breadcrumb-item active">Making anonymous uploads</li>
+      <li class="breadcrumb-item active">Tillåta anonyma uppladdningar</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/file_drop.rst" class="fa fa-github"> Editera på GitHub</a>
       </li>
@@ -131,30 +131,27 @@
            <div itemprop="articleBody">
              
   <section id="making-anonymous-uploads">
-<h1>Making anonymous uploads<a class="headerlink" href="#making-anonymous-uploads" title="Link to this heading"></a></h1>
+<h1>Tillåta anonyma uppladdningar<a class="headerlink" href="#making-anonymous-uploads" title="Link to this heading"></a></h1>
 <p>You may create your own special upload directories so that other people can upload
 files to you without logging in to the server or having a Nextcloud account.
 Uploaders cannot see the contents of the directory or make any changes. This is
 an excellent alternative to sending large attachments via email, using an FTP
 server, or using commercial file-sharing services.</p>
 <section id="setting-up-your-own-file-drop">
-<h2>Setting up your own file drop<a class="headerlink" href="#setting-up-your-own-file-drop" title="Link to this heading"></a></h2>
+<h2>Konfigurera en egen filinlämning<a class="headerlink" href="#setting-up-your-own-file-drop" title="Link to this heading"></a></h2>
 <p>In the Files app, create or choose the folder to receive anonymous uploads:</p>
 <img alt="Sharing settings panel for a folder" src="../../_images/anonym_click_sharing.png" />
 <p>Enable <strong>Share Link</strong>, <strong>Allow editing</strong>, and <strong>Hide file listing</strong>:</p>
 <img alt="Share link settings with hide file listing enabled" src="../../_images/anonym_hide_file_listing.png" />
-<p>Now you can send the link to the upload folder manually or by using the
-Nextcloud send function, if your administrator has enabled it.</p>
+<p>Nu kan du skicka länken till uppladdningsmappen manuellt eller med Nextclouds sändningsfunktion, om administratören har aktiverat den.</p>
 </section>
 <section id="uploading-files">
-<h2>Uploading files<a class="headerlink" href="#uploading-files" title="Link to this heading"></a></h2>
-<p>Using the anonymous upload function is simple. You receive a link to the upload
-folder, click the link, and then you’ll see a Nextcloud page with a ”<strong>Click to
-upload</strong>” button:</p>
+<h2>Ladda upp filer<a class="headerlink" href="#uploading-files" title="Link to this heading"></a></h2>
+<p>Den anonyma uppladdningsfunktionen är enkel att använda. Du får en länk till uppladdningsmappen. Klicka på länken så visas en Nextcloud-sida med knappen <strong>Klicka för att ladda upp</strong>:</p>
 <img alt="Anonymous upload page with a click to upload button" src="../../_images/anonym_upload.png" />
 <p>This opens a file picker, and you select the file or directory you want to
 upload. You can also drop files into the window.</p>
-<p>When your upload is completed, the filenames are listed:</p>
+<p>När uppladdningen är klar visas filnamnen:</p>
 <img alt="List of successfully uploaded files" src="../../_images/anonym_uploaded_files.png" />
 </section>
 </section>
@@ -288,7 +285,7 @@ upload. You can also drop files into the window.</p>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
       <dl class="nc-languages-list">
-        <dt>Languages</dt>
+        <dt>Språk</dt>
         
           <dd>
             <a href="/server/latest/user_manual/ar/"
