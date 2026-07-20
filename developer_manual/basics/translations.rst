@@ -222,6 +222,32 @@ JS Example:
 
 .. _improving-translations:
 
+.. important::
+   General rule: Whenever a variable with varying values (numbers) is part of a string, the plural form must be used.
+
+There are languages with multi-plural forms. See https://en.wikipedia.org/wiki/Plural#Use_in_systems_of_grammatical_number
+
+Example
+
+.. code-block:: php
+
+   "Vault will be locked in %1$d seconds"
+
+This means that even though the value ‘seconds’ is always greater than 1, translators on Transifex are unable to produce valid translations in the plural form for some languages.
+
+Bad: Only one string provided
+
+.. code-block:: php
+
+   "Vault will be locked in %1$d seconds"
+
+Good: Two strings in source code.
+
+.. code-block:: php
+
+   "Vault will be locked in %1$d second"
+   "Vault will be locked in %1$d seconds"
+
 Improving your translations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
