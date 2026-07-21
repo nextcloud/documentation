@@ -40,3 +40,5 @@ If you need to override this path for all users, you can set
   occ config:app:set core defaultTemplateDirectory --value="CustomPath"
 
 This will only apply to new users.
+
+.. note:: To create their own template directory, users should click the ``+ New`` button and then ``+ Create templates folder``.
