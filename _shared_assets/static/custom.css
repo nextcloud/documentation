@@ -164,6 +164,31 @@ html[data-theme="dark"] .rst-content img {
 	box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
 }
 
+/* Dark-theme overrides — sphinx-rtd-dark-mode sets data-theme="dark" on
+   <html>. The selectors below restore proper contrast for values that
+   were hardcoded for the light (white) background. */
+
+/* Content links: #2474a4 gives only ~3.6:1 on the dark #141414 bg.
+   Defer to the plugin's own variable (= #249ee8, ~6:1 on dark bg). */
+html[data-theme="dark"] .rst-content a,
+html[data-theme="dark"] .rst-content a:visited {
+	color: var(--dark-link-color, #249ee8);
+}
+
+/* Inline code: #c0392b (dark red) gives ~2.4:1 on the #2d2d2d code bg,
+   and the !important above defeats the plugin's dark-mode rule entirely.
+   Use a lighter coral-red (~4.9:1 on #2d2d2d). */
+html[data-theme="dark"] .rst-content code,
+html[data-theme="dark"] .rst-content tt,
+html[data-theme="dark"] code {
+	color: #ff7878 !important;
+}
+
+/* Search icon: #555 is near-invisible on the dark #0b152d sidebar bg. */
+html[data-theme="dark"] .wy-form-search-icon {
+	color: #aaa;
+}
+
 /* ICONS LIST */
 div#list-of-available-icons > blockquote {
 	margin: 0;
