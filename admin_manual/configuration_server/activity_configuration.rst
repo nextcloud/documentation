@@ -91,8 +91,9 @@ The following ``config.php`` options control Activity app behavior.
        by the expiration job. See :ref:`label-activities-exclude-users`.
    * - ``activity_log_exclude_users``
      - ``[]``
-     - An associative array of [ user_ID => event_types_array ]. For each user the
-       associated event types won't be logged. See :ref:`label-activity_log_exclude_users`.
+     - An associative array, mapping user IDs to an array of event type strings.
+       For each user the associated event types will not be logged.
+       See :ref:`label-activity_log_exclude_users`.
 
 
 .. _label-activities-groupfolders:
@@ -161,7 +162,7 @@ being logged. For example set the config value
 
   'activity_log_exclude_users' => [
     'alice' => ['file_created'],
-    'bob' => ['file_created', 'file_changed' ]
+    'bob' => ['file_created', 'file_changed'],
   ]
 
 For these users and event types a log record won't be created.
