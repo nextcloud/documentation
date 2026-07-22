@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM ubuntu:25.10
 
 LABEL org.opencontainers.image.source="https://github.com/nextcloud/documentation"
 LABEL org.opencontainers.image.description="Sphinx build environment for Nextcloud documentation"
