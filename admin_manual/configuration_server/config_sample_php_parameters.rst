@@ -3796,7 +3796,7 @@ minimum.supported.desktop.version
 
 ::
 
-    'minimum.supported.desktop.version' => '3.2.50',
+    'minimum.supported.desktop.version' => '3.2.81',
 
 Specify the minimum Nextcloud desktop client version allowed to sync with this
 server. Connections from earlier clients will be denied. Defaults to the
@@ -3805,7 +3805,7 @@ minimum officially supported version at the time of this server release.
 Changing this may cause older, unsupported clients to malfunction, potentially
 leading to data loss or unexpected behavior.
 
-Defaults to ``3.2.50``
+Defaults to ``3.2.81``
 
 maximum.supported.desktop.version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
