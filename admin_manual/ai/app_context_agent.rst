@@ -112,6 +112,62 @@ Circles/teams tools
   * Example prompt: *"Share my Hiking plans.md file with the Hiking group team."*
 
 
+Collectives tools (require `Collectives <https://apps.nextcloud.com/apps/collectives>`_)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* List the user's collectives
+
+  * Example prompt: *"List my collectives."*
+
+* List the pages in a collective
+
+  * Example prompt: *"List the pages in my Engineering collective."*
+
+* Get metadata about a page in a collective
+
+  * Example prompt: *"Show me the details of the 'Onboarding' page in my Engineering collective."*
+
+* Get the markdown content of a page
+
+  * Example prompt: *"Fetch the content of the 'Onboarding' page in my Engineering collective."*
+
+* List trashed pages in a collective
+
+  * Example prompt: *"List the trashed pages in my Engineering collective."*
+
+* Create a new page in a collective under a given parent
+
+  * Example prompt: *"Create a new 'Q3 retro' page in my Engineering collective under the 'Retros' page."*
+
+* Replace the content of a page
+
+  * Example prompt: *"Update the 'Q3 retro' page in my Engineering collective with the meeting notes."*
+
+* Rename a page
+
+  * Example prompt: *"Rename the 'Q3 retro' page in my Engineering collective to 'Q3 2026 retro'."*
+
+* Move a page to a different parent
+
+  * Example prompt: *"Move the 'Q3 2026 retro' page under the 'Archive' page in my Engineering collective."*
+
+* Set the emoji icon of a page
+
+  * Example prompt: *"Set the emoji of the 'Onboarding' page in my Engineering collective to 🚀."*
+
+* Move a page to the collective's trash
+
+  * Example prompt: *"Trash the 'Old draft' page in my Engineering collective."*
+
+* Restore a page from the collective's trash
+
+  * Example prompt: *"Restore the 'Old draft' page from the trash of my Engineering collective."*
+
+* Permanently delete a page
+
+  * Example prompt: *"Permanently delete the 'Old draft' page in my Engineering collective."*
+
+
 Contacts tools
 ~~~~~~~~~~~~~~
 
