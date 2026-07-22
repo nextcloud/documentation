@@ -29,6 +29,17 @@ Updated PHP requirements
 
 The support for PHP 8.2 has been dropped, the minimum supported PHP version of Nextcloud 35 is now 8.3.
 
+Updated 3rd party libraries
+---------------------------
+
+phpseclib 3.0
+^^^^^^^^^^^^^
+
+The ``phpseclib`` library has been updated from version 2 to version 3.
+This is a breaking change, apps that rely on the library need to update to the new version,
+this includes a new namespace (``\phpseclib3``).
+Changes can be found on the `library's website <https://phpseclib.com/docs/why#phpseclib-30-vs-phspeclib-10--20>`__.
+
 Updated database requirements
 -----------------------------
 
