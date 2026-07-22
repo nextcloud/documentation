@@ -86,6 +86,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#snowflake-ids">Snowflake IDs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#openmetrics-endpoint">OpenMetrics endpoint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#default-user-agent-for-outgoing-requests-changed">Default user agent for outgoing requests changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#taskprocessing-worker-command">TaskProcessing worker command</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="upgrade_to_32.html">Upgrade to Nextcloud 32</a></li>
@@ -220,6 +221,11 @@ For security, it only answers on localhost by default.</p>
 <section id="default-user-agent-for-outgoing-requests-changed">
 <h2>Default user agent for outgoing requests changed<a class="headerlink" href="#default-user-agent-for-outgoing-requests-changed" title="Link to this heading"></a></h2>
 <p>Starting with this release, the default user agent for requests done by the instance was changed from <code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">Server</span> <span class="pre">Crawler</span></code> to <code class="docutils literal notranslate"><span class="pre">Nextcloud-Server-Crawler/X.Y.Z</span></code>, where <code class="docutils literal notranslate"><span class="pre">X.Y.Z</span></code> is the current server version.</p>
+</section>
+<section id="taskprocessing-worker-command">
+<h2>TaskProcessing worker command<a class="headerlink" href="#taskprocessing-worker-command" title="Link to this heading"></a></h2>
+<p>Previously we instructed admins to run <cite>occ background-job:worker &lt;JobClass&gt;</cite> to speed up AI task processing. This recommendation has changed to running <cite>occ taskprocessing:worker</cite>, which handles parallel execution better. Make sure to update your setup.</p>
+<p>See <a class="reference internal" href="../ai/overview.html"><span class="doc">Overview</span></a> for more information about this.</p>
 </section>
 </section>
 

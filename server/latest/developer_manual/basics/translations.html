@@ -379,6 +379,25 @@ and therefore improving the experience for non-english users.</p>
 <span class="nx">t</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Import calendars&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>General rule: Whenever a variable with varying values (numbers) is part of a string, the plural form must be used.</p>
+</div>
+<p>There are languages with multi-plural forms. See <a class="reference external" href="https://en.wikipedia.org/wiki/Plural#Use_in_systems_of_grammatical_number">https://en.wikipedia.org/wiki/Plural#Use_in_systems_of_grammatical_number</a></p>
+<p>Example</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Vault will be locked in %1</span><span class="si">$d</span><span class="s2"> seconds&quot;</span>
+</pre></div>
+</div>
+<p>This means that even though the value ‘seconds’ is always greater than 1, translators on Transifex are unable to produce valid translations in the plural form for some languages.</p>
+<p>Bad: Only one string provided</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Vault will be locked in %1</span><span class="si">$d</span><span class="s2"> seconds&quot;</span>
+</pre></div>
+</div>
+<p>Good: Two strings in source code.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Vault will be locked in %1</span><span class="si">$d</span><span class="s2"> second&quot;</span>
+<span class="s2">&quot;Vault will be locked in %1</span><span class="si">$d</span><span class="s2"> seconds&quot;</span>
+</pre></div>
+</div>
 </section>
 <section id="improving-your-translations">
 <span id="improving-translations"></span><h3>Improving your translations<a class="headerlink" href="#improving-your-translations" title="Link to this heading"></a></h3>
@@ -548,7 +567,7 @@ installation and updates.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 10, 2026.
+      <span class="lastupdated">Last updated on Jul 22, 2026.
       </span></p>
   </div>
 
