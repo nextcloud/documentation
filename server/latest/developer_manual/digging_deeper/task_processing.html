@@ -84,7 +84,6 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Task Processing</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#consuming-the-task-processing-api">Consuming the Task Processing API</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#implementing-a-taskprocessing-provider">Implementing a TaskProcessing provider</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#implementing-an-advanced-taskprocessing-provider">Implementing an advanced TaskProcessing provider</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#provider-and-task-type-registration">Provider and task type registration</a></li>
 </ul>
 </li>
@@ -785,13 +784,36 @@ A tweak to make sure of this is to instruct the model as follows:</p>
 </pre></div>
 </div>
 <p>The method <code class="docutils literal notranslate"><span class="pre">getName</span></code> returns a string to identify the registered provider in the user interface.</p>
-<p>The method <code class="docutils literal notranslate"><span class="pre">process</span></code> implements the task processing step. In case execution fails for some reason, you should throw a <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\Exception\ProcessingException</span></code> with an explanatory error message.
-Since v33.0.0 you can now also throw an <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing\Exception\UserFacingProcessingException</span></code> which includes a string parameter to set for error messages that will be propagated to the end-user, make sure to always translate these into the language of the user that requested the task. The rule of thumb of when to use a user-facing error message, is as follows: When the error happened due to a mistake from the user or the user can do something to fix the error, throw a user facing error. However, do make sure to not include implementation or server details in the user facing error message, that’s what the normal error message is for; it will only be visible to administrators.</p>
-<p>Important to note here is that <code class="docutils literal notranslate"><span class="pre">Image</span></code>, <code class="docutils literal notranslate"><span class="pre">Audio</span></code>, <code class="docutils literal notranslate"><span class="pre">Video</span></code> and <code class="docutils literal notranslate"><span class="pre">File</span></code> slots in the input array will be filled with <code class="docutils literal notranslate"><span class="pre">\OCP\Files\File</span></code> objects for your convenience. When outputting one of these you should simply return a string, the API will turn the data into a proper file for convenience. The <code class="docutils literal notranslate"><span class="pre">$reportProgress</span></code> parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (<code class="docutils literal notranslate"><span class="pre">true</span></code>) or if it was cancelled (<code class="docutils literal notranslate"><span class="pre">false</span></code>) and processing should be terminated.</p>
+<p>The method <code class="docutils literal notranslate"><span class="pre">process</span></code> implements the task processing step. In case execution fails for some reason, you should throw a <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\Exception\ProcessingException</span></code> with an explanatory error message.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">$reportProgress</span></code> parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (<code class="docutils literal notranslate"><span class="pre">true</span></code>) or if it was cancelled (<code class="docutils literal notranslate"><span class="pre">false</span></code>) and processing should be terminated.</p>
 <p>This class would typically be saved into a file in <code class="docutils literal notranslate"><span class="pre">lib/TaskProcessing</span></code> of your app but you are free to put it elsewhere as long as it’s loadable by Nextcloud’s <a class="reference internal" href="../basics/dependency_injection.html#dependency-injection"><span class="std std-ref">dependency injection container</span></a>.</p>
+<section id="user-facing-errors">
+<h3>User-facing errors<a class="headerlink" href="#user-facing-errors" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 33.0.0.</span></p>
+</div>
+<p>Since v33.0.0 you can now also throw an <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing\Exception\UserFacingProcessingException</span></code> which includes a string parameter to set for error messages that will be propagated to the end-user, make sure to always translate these into the language of the user that requested the task. The rule of thumb of when to use a user-facing error message, is as follows: When the error happened due to a mistake from the user or the user can do something to fix the error, throw a user facing error. However, do make sure to not include implementation or server details in the user facing error message, that’s what the normal error message is for; it will only be visible to administrators.</p>
+</section>
+<section id="dealing-with-file-shaped-data">
+<h3>Dealing with file-shaped data<a class="headerlink" href="#dealing-with-file-shaped-data" title="Link to this heading"></a></h3>
+<p>TaskProcessing providers often want to operate on files. If your provider takes <code class="docutils literal notranslate"><span class="pre">Image</span></code>, <code class="docutils literal notranslate"><span class="pre">Audio</span></code>, <code class="docutils literal notranslate"><span class="pre">Video</span></code> and <code class="docutils literal notranslate"><span class="pre">File</span></code> slots, these will be passed to the <code class="docutils literal notranslate"><span class="pre">process</span></code> method as <code class="docutils literal notranslate"><span class="pre">\OCP\Files\File</span></code> objects.</p>
+<p>If your provider provides <code class="docutils literal notranslate"><span class="pre">Image</span></code>, <code class="docutils literal notranslate"><span class="pre">Audio</span></code>, <code class="docutils literal notranslate"><span class="pre">Video</span></code> and <code class="docutils literal notranslate"><span class="pre">File</span></code> slots as output, you can output these as strings that contain the binary data. These will be stored in files, and consumers will receive the corresponding file IDs instead.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 35.0.0.</span></p>
+</div>
+<p>Since v35.0.0 we recommend providing file-shaped output (ie. <code class="docutils literal notranslate"><span class="pre">Image</span></code>, <code class="docutils literal notranslate"><span class="pre">Audio</span></code>, <code class="docutils literal notranslate"><span class="pre">Video</span></code> and <code class="docutils literal notranslate"><span class="pre">File</span></code> slots) using the the <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\FileShaped</span></code> class, which also allows specifying a file extension.</p>
+<p>This eases mime-type detection for task processing consumers.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">process</span><span class="p">(</span>
+    <span class="o">?</span><span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$input</span><span class="p">,</span> <span class="nx">callable</span> <span class="nv">$reportProgress</span>
+<span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+    <span class="c1">// …</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;output&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">FileShaped</span><span class="p">(</span><span class="nx">EShapeType</span><span class="o">::</span><span class="na">Audio</span><span class="p">,</span> <span class="nv">$binaryOutput</span><span class="p">,</span> <span class="nx">extension</span><span class="o">:</span> <span class="s1">&#39;ogg&#39;</span><span class="p">)];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </section>
 <section id="implementing-an-advanced-taskprocessing-provider">
-<span id="task-processing-options"></span><h2>Implementing an advanced TaskProcessing provider<a class="headerlink" href="#implementing-an-advanced-taskprocessing-provider" title="Link to this heading"></a></h2>
+<span id="task-processing-options"></span><h3>Implementing an advanced TaskProcessing provider<a class="headerlink" href="#implementing-an-advanced-taskprocessing-provider" title="Link to this heading"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousOptionsAwareProvider</span></code> interface is available if you want your provider
 to support watermarking or streaming. If your provider implements <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousOptionsAwareProvider</span></code>,
 the process method should be adjusted:</p>
@@ -823,6 +845,7 @@ the process method should be adjusted:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
 <section id="providing-additional-inputs-and-outputs">
 <h3>Providing additional inputs and outputs<a class="headerlink" href="#providing-additional-inputs-and-outputs" title="Link to this heading"></a></h3>
 <p>Built-in task types often only specify the most basic input and output slots. If you would like to offer more input options
@@ -998,7 +1021,7 @@ here for completeness.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 09, 2026.
+      <span class="lastupdated">Last updated on Jul 24, 2026.
       </span></p>
   </div>
 
