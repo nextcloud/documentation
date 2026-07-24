@@ -112,7 +112,7 @@ In this case also make sure to run the
 :ref:`maintenance:data-fingerprint <maintenance_commands_label>` command
 afterwards.
 It changes the logic of the synchronisation algorithm
-to try an recover as much data as possible.
+to try and recover as much data as possible.
 Files missing on the server are therefore recovered from the clients
 and in case of different content the users will be asked.
 
