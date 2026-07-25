@@ -3199,6 +3199,16 @@ objectstore
                 // using Amazon S3 (or any other implementation that supports it) we recommend enabling it by using "when_supported".
                 'request_checksum_calculation' => 'when_required',
                 'response_checksum_validation' => 'when_required',
+                // optional: Enable SSE-KMS (server-side encryption using AWS Key Management Service). Default: false
+                // Recommended for new deployments. See admin_manual/configuration_files/primary_storage for details.
+                'sse_kms_enabled' => false,
+                // optional: ARN of a specific KMS key to use for SSE-KMS. Omit to use the bucket default KMS key.
+                // Example: 'arn:aws:kms:us-east-1:123456789012:key/mrk-abc123'
+                'sse_kms_key_id' => '',
+                // optional: SSE-C (customer-provided key) for server-side encryption. Deprecated in Nextcloud 34.
+                // Base64-encoded 32-byte key. Generate with: openssl rand 32 | base64
+                // AWS disabled SSE-C by default on new buckets in April 2026; use SSE-KMS for new deployments.
+                'sse_c_key' => '',
             ],
         ],
 

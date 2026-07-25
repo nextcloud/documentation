@@ -187,6 +187,8 @@ Optional parameters sometimes needing adjustment:
 * :code:`use_path_style` defaults to :code:`false`
 * :code:`port` defaults to :code:`443`
 * :code:`sse_c_key` has no default
+* :code:`sse_kms_enabled` defaults to :code:`false`
+* :code:`sse_kms_key_id` has no default (uses the bucket default KMS key when omitted)
 
 Optional parameters less commonly needing adjustment:
 
@@ -354,38 +356,111 @@ Than any newly created user will have their files put on :code:`server3`.
 It is possible to mix different object store backends and multibucket and non-multibucket in
 a multi-instance configuration.
 
+.. _s3-sse-c:
+
 ---------------------------
 S3 SSE-C encryption support
 ---------------------------
 
-Nextcloud supports server side encryption, also known as `SSE-C <http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html>`_, with compatible S3 bucket provider. The encryption and decryption happens on the S3 bucket side with a key provided by the Nextcloud server.
+.. deprecated:: 34
+   SSE-C support is deprecated. Use :ref:`s3-sse-kms` instead, which provides
+   centralized key management via AWS KMS and does not require managing encryption
+   keys on the Nextcloud server.
 
-The key can be specified with the :code:`sse_c_key` parameter which needs to be provided as a base64 encoded string with a maximum length of 32 bytes. A random key could be generated using the the following command:
+.. warning::
+   Amazon S3 disabled SSE-C by default for all new buckets in April 2026. Existing
+   buckets that already hold SSE-C encrypted objects retain support, but new buckets
+   require explicit opt-in via the AWS ``PutBucketEncryption`` API. See the
+   `AWS announcement <https://aws.amazon.com/blogs/storage/advanced-notice-amazon-s3-to-disable-the-use-of-sse-c-encryption-by-default-for-all-new-buckets-and-select-existing-buckets-in-april-2026/>`_
+   for details. For new deployments, use SSE-KMS instead.
 
-::
+Nextcloud supports server-side encryption with customer-provided keys, also known as
+`SSE-C <https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html>`_,
+with compatible S3 providers. The encryption and decryption happens on the S3 side using
+a key provided by the Nextcloud server.
+
+The key is specified with the :code:`sse_c_key` parameter as a base64-encoded string with
+a maximum length of 32 bytes. Generate a random key with:
+
+.. code-block:: bash
 
     openssl rand 32 | base64
 
+The following example shows how to configure the S3 object store with SSE-C encryption
+support:
 
-The following example shows how to configure the S3 object store with SSE-C encryption support in the objectstore section of the Nextcloud config.php file:
-
-::
+.. code-block:: php
 
     'objectstore' => [
-        array (
-            'class' => 'OC\\Files\\ObjectStore\\S3',
-            'arguments' =>
-            array (
-                'bucket' => 'nextcloud',
-                'key' => 'nextcloud',
-                'secret' => 'nextcloud',
-                'hostname' => 's3',
-                'port' => '443',
-                'use_ssl' => true,
-                'use_path_style' => true,
-                'autocreate' => true,
-                'verify_bucket_exists' => true,
-                'sse_c_key' => 'o9d3Q9tHcPMv6TIpH53MSXaUmY91YheZRwuIhwCFRSs=',
-            ),
-        );
+        'class' => 'OC\\Files\\ObjectStore\\S3',
+        'arguments' => [
+            'bucket' => 'nextcloud',
+            'key' => 'ACCESS_KEY',
+            'secret' => 'SECRET_KEY',
+            'hostname' => 's3.example.com',
+            'port' => 443,
+            'use_ssl' => true,
+            'use_path_style' => true,
+            'autocreate' => true,
+            'verify_bucket_exists' => true,
+            'sse_c_key' => 'o9d3Q9tHcPMv6TIpH53MSXaUmY91YheZRwuIhwCFRSs=',
+        ],
+    ],
+
+.. _s3-sse-kms:
+
+-----------------------------
+S3 SSE-KMS encryption support
+-----------------------------
+
+.. versionadded:: 34
+
+Nextcloud supports server-side encryption using
+`AWS Key Management Service (SSE-KMS) <https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html>`_.
+With SSE-KMS, AWS encrypts objects at rest using KMS-managed keys. This provides
+centralized key management, IAM-based access controls, CloudTrail audit logging, and
+automatic key rotation — without requiring the Nextcloud server to manage encryption keys
+directly.
+
+SSE-KMS is the recommended replacement for :ref:`SSE-C <s3-sse-c>` for new deployments.
+
+Two parameters control SSE-KMS:
+
+* :code:`sse_kms_enabled` — set to :code:`true` to enable SSE-KMS (default: :code:`false`)
+* :code:`sse_kms_key_id` — (optional) the ARN of a specific KMS key to use; omit to use the
+  bucket's default KMS key
+
+.. note:: If both :code:`sse_c_key` and :code:`sse_kms_enabled` are set, SSE-C takes
+   precedence. This allows gradual migration from SSE-C to SSE-KMS.
+
+The following example shows how to configure the S3 object store with SSE-KMS using a
+specific KMS key:
+
+.. code-block:: php
+
+    'objectstore' => [
+        'class' => 'OC\\Files\\ObjectStore\\S3',
+        'arguments' => [
+            'bucket' => 'my-nextcloud-store',
+            'region' => 'us-east-1',
+            'key' => 'ACCESS_KEY',
+            'secret' => 'SECRET_KEY',
+            'sse_kms_enabled' => true,
+            'sse_kms_key_id' => 'arn:aws:kms:us-east-1:123456789012:key/mrk-abc123',
+        ],
+    ],
+
+To use the bucket's default KMS key instead, omit :code:`sse_kms_key_id`:
+
+.. code-block:: php
+
+    'objectstore' => [
+        'class' => 'OC\\Files\\ObjectStore\\S3',
+        'arguments' => [
+            'bucket' => 'my-nextcloud-store',
+            'region' => 'us-east-1',
+            'key' => 'ACCESS_KEY',
+            'secret' => 'SECRET_KEY',
+            'sse_kms_enabled' => true,
+        ],
     ],
