@@ -1,3 +1,5 @@
+.. _js-libraries:
+
 ===============
 JavaScript APIs
 ===============

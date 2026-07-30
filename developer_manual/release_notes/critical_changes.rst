@@ -76,7 +76,24 @@ Make sure to adjust your CI matrix for testing with them. This is automatically 
 Removed front-end APIs and libraries
 ------------------------------------
 
-- TBD
+Removed global aliases
+^^^^^^^^^^^^^^^^^^^^^^
+
+The following global aliases were removed in Nextcloud 35,
+they have been deprecated since Nextcloud 17 and scheduled for removal since Nextcloud 20:
+
+- ``oc_appswebroots`` use ``OC.appswebroots`` instead
+- ``oc_config`` use ``OC.config`` instead
+- ``oc_current_user`` use ``OC.getCurrentUser().uid`` instead
+- ``oc_debug`` use ``OC.debug`` instead
+- ``oc_defaults`` use ``OC.theme`` instead
+- ``oc_isadmin`` use ``OC.isUserAdmin()`` instead
+- ``oc_requesttoken`` use ``OC.requestToken`` instead
+- ``oc_webroot`` use ``OC.webroot`` instead
+- ``OCDialogs`` use ``OC.dialogs`` instead
+
+Please keep in mind that ``OC`` is considered a private namespace for which our stability rules do not fully apply.
+Its recommended to use the :ref:`Nextcloud frontend libraries<js-libraries>` instead if possible.
 
 Removed back-end APIs
 ---------------------
