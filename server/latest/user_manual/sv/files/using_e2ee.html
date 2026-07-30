@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using end-to-end encryption &mdash; Nextcloud 35 User Manual</title>
+  <title>Använda totalsträckskryptering &mdash; Nextcloud 35 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -74,19 +74,19 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduktion till användarhandboken för Nextcloud 35</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Använda appen Aktivitet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Filer och synkronisering</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="security.html">Security &amp; encryption</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="accessing.html">Komma åt dina filer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Hantera dina filer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Delning och samarbete</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="security.html">Säkerhet och kryptering</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="encrypting_files.html">Använda kryptering på serversidan</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Using end-to-end encryption</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#enabling-e2ee">Enabling E2EE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#encrypting-a-folder">Encrypting a folder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adding-an-e2ee-device">Adding an E2EE device</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#displaying-the-mnemonic">Displaying the mnemonic</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Använda totalsträckskryptering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-e2ee">Aktivera E2EE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#encrypting-a-folder">Kryptera en mapp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-an-e2ee-device">Lägga till en E2EE-enhet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#displaying-the-mnemonic">Visa återställningsfrasen</a></li>
 </ul>
 </li>
 </ul>
@@ -118,8 +118,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Filer och synkronisering</a></li>
-          <li class="breadcrumb-item"><a href="security.html">Security &amp; encryption</a></li>
-      <li class="breadcrumb-item active">Using end-to-end encryption</li>
+          <li class="breadcrumb-item"><a href="security.html">Säkerhet och kryptering</a></li>
+      <li class="breadcrumb-item active">Använda totalsträckskryptering</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/using_e2ee.rst" class="fa fa-github"> Editera på GitHub</a>
       </li>
@@ -130,96 +130,92 @@
            <div itemprop="articleBody">
              
   <section id="using-end-to-end-encryption">
-<h1>Using end-to-end encryption<a class="headerlink" href="#using-end-to-end-encryption" title="Link to this heading"></a></h1>
-<p>If enabled server side, Nextcloud provides the possibility to encrypt your files on your devices.
-This is called end-to-end encryption, or E2EE, because the files are encrypted on your device
-and only decrypted on your device.
-The server never sees the unencrypted files, further protecting user privacy and data security.</p>
+<h1>Använda totalsträckskryptering<a class="headerlink" href="#using-end-to-end-encryption" title="Link to this heading"></a></h1>
+<p>Om funktionen har aktiverats på servern kan Nextcloud kryptera dina filer på dina enheter. Detta kallas totalsträckskryptering, eller E2EE, eftersom filerna krypteras på din enhet och endast dekrypteras på din enhet. Servern får aldrig tillgång till de okrypterade filerna, vilket ger ett starkare skydd för användarnas integritet och datasäkerhet.</p>
 <section id="enabling-e2ee">
-<h2>Enabling E2EE<a class="headerlink" href="#enabling-e2ee" title="Link to this heading"></a></h2>
+<h2>Aktivera E2EE<a class="headerlink" href="#enabling-e2ee" title="Link to this heading"></a></h2>
 <p>If your administrator has enabled the <a class="reference external" href="https://apps.nextcloud.com/apps/end_to_end_encryption">End-to-End Encryption app</a>, you can start using it from one of your devices.
 Open the settings of the Nextcloud client and look for the E2EE encryption settings.</p>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-setup.png"><img alt="Setup E2EE on the desktop client" src="../../_images/e2ee-desktop-setup.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-setup.png"><img alt="Konfigurera E2EE i skrivbordsklienten" src="../../_images/e2ee-desktop-setup.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-setup.png"><img alt="Setup E2EE on Android" src="../../_images/e2ee-android-setup.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-setup.png"><img alt="Konfigurera E2EE i Android" src="../../_images/e2ee-android-setup.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-1.png"><img alt="Setup E2EE on iOS step 1" src="../../_images/e2ee-ios-setup-1.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-1.png"><img alt="Konfigurera E2EE i iOS, steg 1" src="../../_images/e2ee-ios-setup-1.png" style="width: 400px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-2.png"><img alt="Setup E2EE on iOS step 2" src="../../_images/e2ee-ios-setup-2.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-2.png"><img alt="Konfigurera E2EE i iOS, steg 2" src="../../_images/e2ee-ios-setup-2.png" style="width: 400px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-3.png"><img alt="Setup E2EE on iOS step 3" src="../../_images/e2ee-ios-setup-3.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-3.png"><img alt="Konfigurera E2EE i iOS, steg 3" src="../../_images/e2ee-ios-setup-3.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Varning</p>
-<p>It is not possible to enable encryption on a folder in the browser. This must be done on a client app, either a desktop or mobile client.</p>
+<p>Det går inte att aktivera kryptering för en mapp i webbläsaren. Det måste göras i en klientapp, antingen i skrivbords- eller mobilklienten.</p>
 </div>
 </details><br /></section>
 <section id="encrypting-a-folder">
-<h2>Encrypting a folder<a class="headerlink" href="#encrypting-a-folder" title="Link to this heading"></a></h2>
+<h2>Kryptera en mapp<a class="headerlink" href="#encrypting-a-folder" title="Link to this heading"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Varning</p>
-<p>You can only enable encryption on empty folders.</p>
+<p>Du kan endast aktivera kryptering för tomma mappar.</p>
 </div>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-1.png"><img alt="Encrypting a folder on the desktop client step 1" src="../../_images/e2ee-desktop-encrypt-1.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-1.png"><img alt="Kryptera en mapp i skrivbordsklienten, steg 1" src="../../_images/e2ee-desktop-encrypt-1.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-2.png"><img alt="Encrypting a folder on the desktop client step 2" src="../../_images/e2ee-desktop-encrypt-2.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-2.png"><img alt="Kryptera en mapp i skrivbordsklienten, steg 2" src="../../_images/e2ee-desktop-encrypt-2.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-3.png"><img alt="Encrypting a folder on the desktop client step 3" src="../../_images/e2ee-desktop-encrypt-3.png" style="width: 750px;" />
-</a>
-</details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-encrypt.png"><img alt="Encrypting a folder on an Android device" src="../../_images/e2ee-android-encrypt.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-3.png"><img alt="Kryptera en mapp i skrivbordsklienten, steg 3" src="../../_images/e2ee-desktop-encrypt-3.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-encrypt.png"><img alt="Encrypting a folder on an iOS device" src="../../_images/e2ee-ios-encrypt.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-encrypt.png"><img alt="Kryptera en mapp på en Android-enhet" src="../../_images/e2ee-android-encrypt.png" style="width: 400px;" />
+</a>
+</details><details>
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-encrypt.png"><img alt="Kryptera en mapp på en iOS-enhet" src="../../_images/e2ee-ios-encrypt.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Varning</p>
-<p>It is not possible to enable encryption on a folder in the browser. This must be done on a client app, either a desktop or mobile client.</p>
+<p>Det går inte att aktivera kryptering för en mapp i webbläsaren. Det måste göras i en klientapp, antingen i skrivbords- eller mobilklienten.</p>
 </div>
 </details><br /></section>
 <section id="adding-an-e2ee-device">
-<h2>Adding an E2EE device<a class="headerlink" href="#adding-an-e2ee-device" title="Link to this heading"></a></h2>
+<h2>Lägga till en E2EE-enhet<a class="headerlink" href="#adding-an-e2ee-device" title="Link to this heading"></a></h2>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-add.png"><img alt="Setup a new desktop client" src="../../_images/e2ee-desktop-add.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-add.png"><img alt="Konfigurera en ny skrivbordsklient" src="../../_images/e2ee-desktop-add.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-add.png"><img alt="Setup a new Android device" src="../../_images/e2ee-android-add.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-add.png"><img alt="Konfigurera en ny Android-enhet" src="../../_images/e2ee-android-add.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-add.png"><img alt="Setup a new iOS device" src="../../_images/e2ee-ios-add.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-add.png"><img alt="Konfigurera en ny iOS-enhet" src="../../_images/e2ee-ios-add.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>Web</summary><p>In the browser, first enable E2EE in the personal settings. This is needed, as E2EE is less secure in the browser, requiring you to fully trust the administrator to not alter the source code the browser will execute.
-E2EE folders are currently read-only. Therefore, it is not possible to add, remove, edit, or share an E2EE file from the browser.</p>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-1.png"><img alt="Setup a new browser session step 1" src="../../_images/e2ee-web-add-1.png" style="width: 750px;" />
+<summary>Web</summary><p>I webbläsaren måste du först aktivera E2EE i de personliga inställningarna. Detta krävs eftersom E2EE är mindre säkert i webbläsaren: du måste lita helt på att administratören inte ändrar källkoden som webbläsaren ska köra. E2EE-mappar är för närvarande skrivskyddade. Därför går det inte att lägga till, ta bort, redigera eller dela en E2EE-fil från webbläsaren.</p>
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-1.png"><img alt="Konfigurera en ny webbläsarsession, steg 1" src="../../_images/e2ee-web-add-1.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-2.png"><img alt="Setup a new browser session step 2" src="../../_images/e2ee-web-add-2.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-2.png"><img alt="Konfigurera en ny webbläsarsession, steg 2" src="../../_images/e2ee-web-add-2.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-3.png"><img alt="Setup a new browser session step 3" src="../../_images/e2ee-web-add-3.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-3.png"><img alt="Konfigurera en ny webbläsarsession, steg 3" src="../../_images/e2ee-web-add-3.png" style="width: 750px;" />
 </a>
 </details><br /></section>
 <section id="displaying-the-mnemonic">
-<h2>Displaying the mnemonic<a class="headerlink" href="#displaying-the-mnemonic" title="Link to this heading"></a></h2>
-<p>The mnemonic is a list of words that is used to encrypt and decrypt your files. It is important to keep this mnemonic safe, as it is the only way to access your files if you lose access to your device. If you lose access to your mnemonic, you will lose access to your files.</p>
+<h2>Visa återställningsfrasen<a class="headerlink" href="#displaying-the-mnemonic" title="Link to this heading"></a></h2>
+<p>Återställningsfrasen är en lista med ord som används för att kryptera och dekryptera dina filer. Det är viktigt att förvara frasen säkert, eftersom den är det enda sättet att komma åt filerna om du förlorar åtkomsten till enheten. Om du förlorar återställningsfrasen förlorar du även åtkomsten till filerna.</p>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-mnemonic.png"><img alt="Displaying the mnemonic on the desktop client" src="../../_images/e2ee-desktop-mnemonic.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-mnemonic.png"><img alt="Visa återställningsfrasen i skrivbordsklienten" src="../../_images/e2ee-desktop-mnemonic.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-mnemonic.png"><img alt="Displaying the mnemonic on an Android device" src="../../_images/e2ee-android-mnemonic.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-mnemonic.png"><img alt="Visa återställningsfrasen på en Android-enhet" src="../../_images/e2ee-android-mnemonic.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-mnemonic.png"><img alt="Displaying the mnemonic on an iOS device" src="../../_images/e2ee-ios-mnemonic.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-mnemonic.png"><img alt="Visa återställningsfrasen på en iOS-enhet" src="../../_images/e2ee-ios-mnemonic.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Varning</p>
-<p>It is not possible to display the mnemonic in the browser.</p>
+<p>Det går inte att visa återställningsfrasen i webbläsaren.</p>
 </div>
 </details><br /></section>
 </section>
