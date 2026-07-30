@@ -95,6 +95,17 @@ they have been deprecated since Nextcloud 17 and scheduled for removal since Nex
 Please keep in mind that ``OC`` is considered a private namespace for which our stability rules do not fully apply.
 Its recommended to use the :ref:`Nextcloud frontend libraries<js-libraries>` instead if possible.
 
+Removed global libraries
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following global libraries were removed in Nextcloud 35,
+they have been deprecated since Nextcloud 17 and scheduled for removal since Nextcloud 20:
+
+* ``_`` (underscore) use modern ES2015+ syntax instead supported by all modern browsers
+* ``Clipboard`` and ``ClipboardJS`` use native `Clipboard API <https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API>`_ instead
+* ``dav`` use the :ref:`@nextcloud/files <js-library_nextcloud-files>` or `webdav <https://www.npmjs.com/package/webdav>`_ library instead
+* ``moment`` use the ``@nextcloud/moment`` library or native `Intl.DateTimeFormat <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat>`_ or `Temporal API <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal>`_ instead
+
 Removed back-end APIs
 ---------------------
 
