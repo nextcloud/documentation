@@ -889,7 +889,7 @@ Display the available installation options:
 
 .. code-block:: console
 
-   $ sudo -u www-data php /var/www/nextcloud/occ maintenance:install --help
+   $ sudo -E -u www-data php /var/www/nextcloud/occ maintenance:install --help
    Nextcloud is not installed - only a limited number of commands are available
 
    Usage:
@@ -917,7 +917,7 @@ the database and administrator passwords:
 
 .. code-block:: console
 
-   $ sudo -u www-data php /var/www/nextcloud/occ maintenance:install \
+   $ sudo -E -u www-data php /var/www/nextcloud/occ maintenance:install \
        --database mysql \
        --database-name nextcloud \
        --database-host 127.0.0.1 \
