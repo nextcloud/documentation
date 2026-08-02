@@ -526,7 +526,6 @@ Its PR description might summarize the change as:
    No production code changes.
 
    Related production code: [`Setup::findWebRoot()`](https://github.com/nextcloud/server/blob/2878e339366db50c06574ec8e6e76c58a9459405/lib/private/Setup.php#L519-L540)
-
-                                                     
+                              
 This communicates the key reviewer decision without claiming that every
 reviewer will spend exactly the same amount of time.
