@@ -47,6 +47,21 @@ These dimensions are intentionally independent. For example:
 * A complex refactoring can have low runtime risk.
 * A low-risk change can still have high priority.
 
+Suggested minimal scheme
+------------------------
+
+.. code-block:: text
+
+   risk: low                  green
+   risk: medium               amber
+   risk: high                 orange
+   risk: critical             red
+
+   review-effort: quick       blue
+   review-effort: focused     dark blue
+   review-effort: thorough    purple
+   review-effort: deep        dark purple
+
 Recommended core labels
 -----------------------
 
@@ -58,7 +73,8 @@ displayed for reviewer triage:
    ⚠️ risk: low|medium|high|critical
    ⏱️ review-effort: quick|focused|thorough|deep
 
-Add an expertise label only when it affects reviewer selection:
+Add an expertise label only when it affects reviewer selection (existing feature labels are
+often sufficient as well):
 
 .. code-block:: text
 
@@ -235,7 +251,7 @@ Priority
      - Description
    * - ``priority: low``
      - Valuable, but can wait behind more time-sensitive work.
-   * - ``priority: medium``
+   * - ``priority: normal``
      - Should receive normal review attention within the usual workflow.
    * - ``priority: high``
      - Review is important in the near term because of user, release, or
@@ -247,6 +263,8 @@ Priority
 Priority measures how soon review is wanted. It does not measure risk. A
 low-risk change can be urgent, and a high-risk change can have low priority if
 it is not time-sensitive.
+
+``priority: normal`` is the default and does not need added as a label.
 
 Avoid precise review-time labels
 --------------------------------
@@ -295,16 +313,16 @@ Risk should use conventional severity colors:
      - Suggested color
      - Meaning
    * - ``risk: low``
-     - Green
+     - Green (``#2DA44E``)
      - Low potential impact
    * - ``risk: medium``
-     - Amber
+     - Amber (``#D29922``)
      - Bounded but meaningful impact
    * - ``risk: high``
-     - Orange
+     - Orange (``#BC4C00``)
      - Significant potential impact
    * - ``risk: critical``
-     - Red
+     - Red (``#CF222E``)
      - Severe potential impact
 
 Review effort should use a separate cool-color family:
@@ -317,16 +335,16 @@ Review effort should use a separate cool-color family:
      - Suggested color
      - Meaning
    * - ``review-effort: quick``
-     - Blue
+     - Blue (``#0969DA``)
      - Short, localized review
    * - ``review-effort: focused``
-     - Dark blue
+     - Dark blue (``#0550AE``)
      - Review of one subsystem
    * - ``review-effort: thorough``
-     - Purple
+     - Purple (``#8250DF``)
      - Cross-file or cross-component review
    * - ``review-effort: deep``
-     - Dark purple
+     - Dark purple (``#6639BA``)
      - Substantial specialist or architectural review
 
 Do not use red or orange for review effort. A lengthy review is not
