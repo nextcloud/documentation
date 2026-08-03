@@ -34,7 +34,11 @@ Multilinguality
 
 This app supports input and output in languages other than English if the underlying model supports the language.
 
-Qwen 3.5 and Gemma 4 offer broad multilingual support. Llama 3.1 `supports the following languages: <https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct#multilingual-benchmarks>`_
+Qwen 3.5 supports the following 201 languages: <https://qwen.ai/blog?id=qwen3.5>
+
+Gemma 4 provides multilingual support, offering high-quality performance in 35 languages and basic support for 140 languages.
+
+Llama 3.1 `supports the following languages: <https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct#multilingual-benchmarks>`_
 
 * English
 * Portuguese
