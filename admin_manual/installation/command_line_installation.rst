@@ -43,7 +43,7 @@ For the complete manual-installation prerequisites, see
 
    You can invoke ``occ`` from any directory when using its absolute path, as
    in the example above. Alternatively, change to the Nextcloud root directory
-   and run ``php occ maintenance:install``.
+   and run ``sudo -E -u www-data php occ maintenance:install``.
 
    Use ``--database-host`` and, if necessary, ``--database-port`` when the
    database runs on another host. Use ``--data-dir`` to select a data directory
