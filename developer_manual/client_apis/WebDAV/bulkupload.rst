@@ -164,42 +164,42 @@ alternatively, hardcoded in the script itself.
 
     #!/usr/bin/env bash
     set -euo pipefail
-    
+
     if (( $# != 2 )); then
         echo "Usage: $0 <number-of-files> <bytes-per-file>" >&2
         exit 1
     fi
-    
+
     NB=$1
     SIZE=$2
-    
+
     BASE_URL="${BASE_URL:-https://nextcloud.local}"
     BASE_URL="${BASE_URL%/}"
     NC_USER="${NC_USER:-admin}"
     NC_PASSWORD="${NC_PASSWORD:-admin}"
-    
+
     REQUEST_ID="$(openssl rand -hex 8)"
     BOUNDARY="boundary_${REQUEST_ID}"
     REMOTE_FOLDER="bulk-upload-${REQUEST_ID}"
     WORK_DIR="$(mktemp -d "${TMPDIR:-/tmp}/nextcloud-bulk-upload.XXXXXX")"
     UPLOAD_PATH="$WORK_DIR/request.multipart"
-    
+
     cleanup() {
         rm -rf "$WORK_DIR"
     }
     trap cleanup EXIT
-    
+
     for ((i = 1; i <= NB; i++)); do
         file_name="$(openssl rand -hex 8).bin"
         file_local_path="$WORK_DIR/$file_name"
         file_remote_path="/$REMOTE_FOLDER/$file_name"
-    
+
         head -c "$SIZE" /dev/urandom > "$file_local_path"
-    
+
         file_mtime="$(stat -c %Y "$file_local_path")"
         file_checksum="$(sha1sum "$file_local_path" | awk '{print $1}')"
         file_size="$(wc -c < "$file_local_path")"
-    
+
         {
             printf -- '--%s\r\n' "$BOUNDARY"
             printf 'X-File-Path: %s\r\n' "$file_remote_path"
@@ -212,9 +212,9 @@ alternatively, hardcoded in the script itself.
             printf '\r\n'
         } >> "$UPLOAD_PATH"
     done
-    
+
     printf -- '--%s--\r\n' "$BOUNDARY" >> "$UPLOAD_PATH"
-    
+
     echo "Creating /$REMOTE_FOLDER"
     curl \
         --fail-with-body \
@@ -223,7 +223,7 @@ alternatively, hardcoded in the script itself.
         --user "$NC_USER:$NC_PASSWORD" \
         --request MKCOL \
         "$BASE_URL/remote.php/dav/files/$NC_USER/$REMOTE_FOLDER"
-    
+
     echo "Uploading $NB files; request body size: $(wc -c < "$UPLOAD_PATH") bytes"
     curl \
         --fail-with-body \
@@ -233,5 +233,5 @@ alternatively, hardcoded in the script itself.
         --header "Content-Type: multipart/related; boundary=$BOUNDARY" \
         --data-binary "@$UPLOAD_PATH" \
         "$BASE_URL/remote.php/dav/bulk"
-    
+
     printf '\n'
