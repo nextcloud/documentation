@@ -8,16 +8,35 @@ The *llm2* app is one of the apps that provide text processing functionality usi
 
 This app uses `llama.cpp <https://github.com/abetlen/llama-cpp-python>`_ under the hood and is thus compatible with any model in *gguf* format.
 
-However, we only test with Llama 3.1. Output quality will differ depending on which model you use and downstream tasks like summarization or Context Chat may not work on other models.
+However, we primarily test with the models listed below. Output quality will differ depending on which model you use and downstream tasks like summarization or Context Chat may not work on other models.
 We thus recommend the following models:
 
-* `Llama3.1 8b Instruct <https://huggingface.co/QuantFactory/Meta-Llama-3.1-8B-Instruct-GGUF>`_ (reasonable quality; fast; good acclaim; comes shipped with the app)
-* `Llama3.1 70B Instruct <https://huggingface.co/bartowski/Meta-Llama-3.1-70B-Instruct-GGUF>`_ (good quality; good acclaim)
+* `Qwen 3.5 9B <https://huggingface.co/unsloth/Qwen3.5-9B-GGUF>`_ (good quality; multimodal vision; comes shipped with the app)
+* `Gemma 4 E4B <https://huggingface.co/google/gemma-4-E4B-it-qat-q4_0-gguf>`_ (fast; multimodal vision and audio; comes shipped with the app)
+* `OLMo 3 7B Instruct <https://huggingface.co/allenai/Olmo-3-7B-Instruct>`_ (fully open; green Ethical AI rating; text only; comes shipped with the app; see addendum below)
+
+Multimodal chat
+---------------
+
+With a multimodal-capable model, *llm2* supports multimodal chat in the :ref:`Nextcloud Assistant app<ai-app-assistant>`: users can attach images (and with Gemma 4, also audio) to chat messages so the model can reason about their content. Text files can also be attached as context.
+
+The following shipped models support multimodality:
+
+* **Qwen 3.5 9B** - vision (images)
+* **Gemma 4 E4B** - vision (images) and audio
+
+Vision-capable models also register the *Analyze images* and *OCR* task types in addition to the usual text-processing tasks.
+
+Multimodal models need a matching multimodal projector (``mmproj``) *gguf* file next to the model file. The projector files for the shipped Qwen 3.5 and Gemma 4 models are downloaded automatically with the models. If you supply your own multimodal model, place its ``mmproj`` file in ``/nc_app_llm2_data`` as well and set ``mmproj_path`` in the model's JSON configuration (see :ref:`Configuring alternate models <ai-app-llm2-configuring-alternate-models>` below).
 
 Multilinguality
 ---------------
 
 This app supports input and output in languages other than English if the underlying model supports the language.
+
+Qwen 3.5 supports the following 201 languages: <https://qwen.ai/blog?id=qwen3.5>
+
+Gemma 4 provides multilingual support, offering high-quality performance in 35 languages and basic support for 140 languages.
 
 Llama 3.1 `supports the following languages: <https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct#multilingual-benchmarks>`_
 
@@ -30,7 +49,7 @@ Llama 3.1 `supports the following languages: <https://huggingface.co/meta-llama/
 * Hindi
 * Thai
 
-Note, that other languages may work as well, but only the above languages are guaranteed to work.
+Note that other languages may work as well, but only the above languages are guaranteed to work with Llama 3.1.
 
 Requirements
 ------------
@@ -68,6 +87,8 @@ This app allows supplying alternate LLM models as *gguf* files in the ``/nc_app_
 3. Restart the llm2 ExApp
 4. Select the new model in the Nextcloud AI admin settings
 
+
+.. _ai-app-llm2-configuring-alternate-models:
 
 Configuring alternate models
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -126,12 +147,13 @@ Nextcloud customers should file bugs directly with our Support system.
 Known Limitations
 -----------------
 
-* We currently only support languages that the underlying model supports; correctness of language use in languages other than English may be poor depending on the language's coverage in the model's training data (We recommended model Llama 3 or other models explicitly trained on multiple languages)
+* We currently only support languages that the underlying model supports; correctness of language use in languages other than English may be poor depending on the language's coverage in the model's training data (We recommend Qwen 3.5 for Asian languages, while Gemma 4 is better for European languages)
 * Language models can be bad at reasoning tasks
 * Language models can be bad at math
 * Language models are likely to generate false information and should thus only be used in situations that are not critical. It's recommended to only use AI at the beginning of a creation process and not at the end, so that outputs of AI serve as a draft for example and not as final product. Always check the output of language models before using it.
 * Make sure to test the language model you are using it for whether it meets the use-case's quality requirements
 * Language models notoriously have a high energy consumption, if you want to reduce load on your server you can choose smaller models or quantized models in exchange for lower accuracy
+* Multimodal features (chat with image or audio attachments, Analyze images, OCR) require a multimodal-capable model and its matching ``mmproj`` file; text-only models such as Llama 3.1 will not process image or audio attachments
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)
 
 Addendum: Running with a fully open model
