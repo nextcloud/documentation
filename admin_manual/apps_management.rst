@@ -157,6 +157,30 @@ which will be used to store any additional apps you install:
    you would use the command ``ln`` to create the symbolic link like this:
    ``ln -sf /var/local/lib/nextcloud/extra-apps ./extra-apps``
 
+Configuring the app store request timeout
+-----------------------------------------
+
+The timeout for requests to the Nextcloud app store can be configured with
+the ``appstore-timeout`` app setting. The value is specified in seconds.
+This setting is configured with ``occ`` and is not a ``config.php`` parameter.
+
+For example, to set the timeout to 180 seconds:
+
+.. code-block:: console
+
+   occ config:app:set settings appstore-timeout --value=180
+
+The default timeout is 120 seconds. To restore the default, remove the
+custom setting:
+
+.. code-block:: console
+
+   occ config:app:delete settings appstore-timeout
+
+.. versionchanged:: 33.0.0
+   The default app store request timeout was increased from 60 to 120 seconds
+   and can be configured with ``occ``.
+
 Using a self hosted apps store
 ------------------------------
 
