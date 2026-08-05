@@ -61,7 +61,7 @@ App updates will also be offered to you on this page. Simply click on the **Upda
 button to update a specific app or use the **Update all** button on top of the page to
 update all apps.
 
-.. note:: 
+.. note::
    **Beta releases**: You can also install beta releases of apps directly from here by
    switching your Nextcloud to the beta channel in the admin overview.
 
