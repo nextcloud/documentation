@@ -115,11 +115,21 @@ websites. To ensure that Nextcloud will work properly you need to update OpenSSL
 to at least 1.0.2b or 1.0.1d. For NSS the patch version depends on your distribution
 and an heuristic is running the test which actually reproduces the bug.
 
-Your Web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/
------------------------------------------------------------------------------------------------
+Your Web server is not set up properly to resolve /.well-known/ URLs
+--------------------------------------------------------------------
 
-Both URLs need to be correctly redirected to the DAV endpoint of Nextcloud. Please
-refer to :ref:`service-discovery-label` for more info.
+The following well-known URLs must be correctly redirected for full Nextcloud functionality:
+
+* ``/.well-known/caldav`` → ``/remote.php/dav`` (CalDAV service discovery)
+* ``/.well-known/carddav`` → ``/remote.php/dav`` (CardDAV service discovery)
+* ``/.well-known/webfinger`` → ``/index.php/.well-known/webfinger`` (identity/federation)
+* ``/.well-known/nodeinfo`` → ``/index.php/.well-known/nodeinfo`` (server metadata)
+
+The CalDAV and CardDAV redirects are required for calendar and contacts clients that use
+automatic service discovery. The WebFinger and NodeInfo redirects are used for federation
+and profile discovery between Nextcloud instances and compatible services.
+
+Please refer to :ref:`service-discovery-label` for setup instructions for Apache and NGINX.
 
 Some files have not passed the integrity check
 ----------------------------------------------
