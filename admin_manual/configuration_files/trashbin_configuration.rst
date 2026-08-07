@@ -147,19 +147,19 @@ To display the global default and any per-account values:
 
 .. code-block:: console
 
-   sudo -u www-data php occ trashbin:size
+   sudo -E -u www-data php occ trashbin:size
 
 To configure a global trash-bin size:
 
 .. code-block:: console
 
-   sudo -u www-data php occ trashbin:size 10G
+   sudo -E -u www-data php occ trashbin:size 10G
 
 To configure a size for a specific account:
 
 .. code-block:: console
 
-   sudo -u www-data php occ trashbin:size --user USER_ID 10G
+   sudo -E -u www-data php occ trashbin:size --user USER_ID 10G
 
 The ``size`` argument accepts values understood by Nextcloud's file-size
 parser, such as ``500M`` or ``10G``.
@@ -173,7 +173,7 @@ To display the configured value for one account:
 
 .. code-block:: console
 
-   sudo -u www-data php occ trashbin:size --user USER_ID
+   sudo -E -u www-data php occ trashbin:size --user USER_ID
 
 Changing a per-account size schedules cleanup for that account. Changing the
 global size causes existing trash bins to be cleaned up, although an account's
@@ -225,14 +225,14 @@ To disable the background job:
 
 .. code-block:: console
 
-   sudo -u www-data php occ config:app:set \
+   sudo -E -u www-data php occ config:app:set \
       --value=no files_trashbin background_job_expire_trash
 
 To re-enable it, remove the override:
 
 .. code-block:: console
 
-   sudo -u www-data php occ config:app:delete \
+   sudo -E -u www-data php occ config:app:delete \
       files_trashbin background_job_expire_trash
 
 When the background job is disabled, administrators can run expiration
@@ -252,24 +252,24 @@ To expire eligible items for all accounts:
 
 .. code-block:: console
 
-   sudo -u www-data php occ trashbin:expire
+   sudo -E -u www-data php occ trashbin:expire
 
 To expire eligible items for one or more accounts:
 
 .. code-block:: console
 
-   sudo -u www-data php occ trashbin:expire USER_ID
+   sudo -E -u www-data php occ trashbin:expire USER_ID
 
 .. code-block:: console
 
-   sudo -u www-data php occ trashbin:expire USER_ID_1 USER_ID_2
+   sudo -E -u www-data php occ trashbin:expire USER_ID_1 USER_ID_2
 
 The command displays a progress bar when processing all accounts. Use
 ``--quiet`` to suppress the progress bar:
 
 .. code-block:: console
 
-   sudo -u www-data php occ trashbin:expire --quiet
+   sudo -E -u www-data php occ trashbin:expire --quiet
 
 For any active retention policy, including the default ``auto`` policy,
 ``trashbin:expire`` performs a full expiration pass: it deletes items that
@@ -291,7 +291,7 @@ The trash-bin expiration command is provided by the
 
 .. code-block:: console
 
-   sudo -u www-data php occ list files_trashbin
+   sudo -E -u www-data php occ list files_trashbin
 
 Removing All Trashed Items
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -302,13 +302,13 @@ use ``trashbin:cleanup --all-users``:
 
 .. code-block:: console
 
-   sudo -u www-data php occ trashbin:cleanup --all-users
+   sudo -E -u www-data php occ trashbin:cleanup --all-users
 
 To clean up the trash bin for one or more specific accounts:
 
 .. code-block:: console
 
-   sudo -u www-data php occ trashbin:cleanup USER_ID_1 USER_ID_2
+   sudo -E -u www-data php occ trashbin:cleanup USER_ID_1 USER_ID_2
 
 The command requires either one or more account IDs or ``--all-users``.
 These forms are mutually exclusive.
@@ -325,13 +325,13 @@ To restore all trashed items for one or more accounts:
 
 .. code-block:: console
 
-   sudo -u www-data php occ trashbin:restore USER_ID_1 USER_ID_2
+   sudo -E -u www-data php occ trashbin:restore USER_ID_1 USER_ID_2
 
 To restore trashed items for all users from all configured user backends:
 
 .. code-block:: console
 
-   sudo -u www-data php occ trashbin:restore --all-users
+   sudo -E -u www-data php occ trashbin:restore --all-users
 
 Account IDs and ``--all-users`` are mutually exclusive. The command requires
 one or the other.
