@@ -118,6 +118,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#text-to-image">Text-To-Image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#context-chat">Context Chat</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#chat">Chat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multimodal-chat">Multimodal chat</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#voice-chat">Voice Chat</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#context-agent">Context Agent</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#text-to-speech">Text-To-Speech</a></li>
@@ -215,7 +216,7 @@
   <section id="nextcloud-assistant">
 <h1>Nextcloud Assistant<a class="headerlink" href="#nextcloud-assistant" title="Link to this heading"></a></h1>
 <p id="ai-app-assistant">Nextcloud assistant is the primary graphical user interface for interacting with artificial intelligence features in Nextcloud.</p>
-<p>It offers the graphical user interface for the unified AI Task processing API offering features like summarizing text, generating headlines, asking arbitrary questions, transcription of media files, image generation and it integrates with the context_chat app to offer in-context answers about your own data stored in Nextcloud. The assistant app also offers a chat interface to interact with the chosen language model. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.</p>
+<p>It offers the graphical user interface for the unified AI Task processing API offering features like summarizing text, generating headlines, asking arbitrary questions, transcription of media files, image generation and it integrates with the context_chat app to offer in-context answers about your own data stored in Nextcloud. The assistant app also offers a chat interface to interact with the chosen language model, including multimodal chat with file attachments when a compatible backend is configured. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.</p>
 <p>Find the user documentation here:
 <a class="reference external" href="https://docs.nextcloud.com/server/latest/user_manual/ai_assistant.html">AI assistant user documentation</a></p>
 <section id="installation">
@@ -296,6 +297,15 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="app_llm2.html#ai-app-llm2"><span class="std std-ref">llm2</span></a> - Runs open source AI language models locally on your own server hardware (Customer support available upon request)</p></li>
 <li><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration (via OpenAI API)</a> - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see <a class="reference internal" href="ai_as_a_service.html#ai-ai-as-a-service"><span class="std std-ref">AI as a Service</span></a>)</p></li>
+</ul>
+</section>
+<section id="multimodal-chat">
+<h3>Multimodal chat<a class="headerlink" href="#multimodal-chat" title="Link to this heading"></a></h3>
+<p>Multimodal chat extends “Chat with AI” so users can attach files for the language model to analyze in the conversation, such as images and, with some models, audio and video. Text files can also be attached as context.</p>
+<p>In order to make use of multimodal chat you will need any one of the following backends with a multimodal-capable model:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="app_llm2.html#ai-app-llm2"><span class="std std-ref">llm2</span></a> - Use a multimodal model such as the shipped Qwen 3.5 9B (vision) or Gemma 4 E4B (vision and audio) (Customer support available upon request)</p></li>
+<li><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration (via OpenAI API)</a> - Integrates with multimodal models via the OpenAI API (Customer support available upon request; see <a class="reference internal" href="ai_as_a_service.html#ai-ai-as-a-service"><span class="std std-ref">AI as a Service</span></a>)</p></li>
 </ul>
 </section>
 <section id="voice-chat">
