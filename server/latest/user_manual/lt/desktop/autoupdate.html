@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Automatic Updater &mdash; Nextcloud 35 User Manual</title>
+  <title>Automatinis atnaujinimas &mdash; Nextcloud 35 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -72,7 +72,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigacijos meniu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 35 user manual introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">„Nextcloud“ 35 vartotojo vadovo įvadas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
@@ -89,16 +89,16 @@
 <li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">The Automatic Updater</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#basic-workflow">Basic Workflow</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#macos">macOS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Automatinis atnaujinimas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-workflow">Pagrindinė eiga</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#windows">„Windows“</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#macos">„macOS“</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linux">„Linux“</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#preventing-automatic-updates">Preventing Automatic Updates</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#preventing-automatic-updates-in-windows-environments">Preventing Automatic Updates in Windows Environments</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#preventing-automatic-updates-in-linux-environments">Preventing Automatic Updates in Linux Environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preventing-automatic-updates">Automatinių atnaujinimų išjungimas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#preventing-automatic-updates-in-windows-environments">Automatinių atnaujinimų išjungimas „Windows“ aplinkoje</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preventing-automatic-updates-in-linux-environments">Automatinių atnaujinimų išjungimas „Linux“ aplinkoje</a></li>
 </ul>
 </li>
 </ul>
@@ -108,10 +108,10 @@
 <li class="toctree-l2"><a class="reference internal" href="faq.html">FAQ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Nustatykite savo parinktis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Dviejų veiksnių autentifikavimo naudojimas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Tvarkyti prijungtas naršykles ir įrenginius</a></li>
 </ul>
 
         </div>
@@ -129,7 +129,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
-      <li class="breadcrumb-item active">The Automatic Updater</li>
+      <li class="breadcrumb-item active">Automatinis atnaujinimas</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/autoupdate.rst" class="fa fa-github"> Keisti GitHub'e</a>
       </li>
@@ -140,109 +140,77 @@
            <div itemprop="articleBody">
              
   <section id="the-automatic-updater">
-<h1>The Automatic Updater<a class="headerlink" href="#the-automatic-updater" title="Link to this heading"></a></h1>
-<p>The Automatic Updater ensures that you always have the
-latest features and bug fixes for your Nextcloud synchronization client.</p>
-<p>The Automatic Updater updates only on macOS and Windows computers; Linux
-users only need to use their normal package managers. However, on Linux systems
-the Updater will check for updates and notify you when a new version is
-available.</p>
+<h1>Automatinis atnaujinimas<a class="headerlink" href="#the-automatic-updater" title="Link to this heading"></a></h1>
+<p>Automatinis atnaujinimas užtikrina, kad Jūsų „Nextcloud“ sinchronizavimo klientas visada turėtų naujausias funkcijas ir klaidų pataisymus.</p>
+<p>Automatinis atnaujinimas palaikomas tik „macOS“ ir „Windows“ kompiuteriuose. „Linux“ naudotojams programą reikia atnaujinti naudojant įprastą paketų tvarkyklę. Vis dėlto „Linux“ sistemose programa automatiškai patikrina, ar yra nauja versija, ir apie ją praneša.</p>
 <section id="basic-workflow">
-<h2>Basic Workflow<a class="headerlink" href="#basic-workflow" title="Link to this heading"></a></h2>
-<p>The following sections describe how to use the Automatic Updater on different
-operating systems.</p>
+<h2>Pagrindinė eiga<a class="headerlink" href="#basic-workflow" title="Link to this heading"></a></h2>
+<p>Toliau pateiktuose skyriuose aprašoma, kaip naudoti automatinį atnaujinimą skirtingose operacinėse sistemose.</p>
 <section id="windows">
-<h3>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h3>
-<p>The Nextcloud client checks for updates and downloads them when available. You
-can view the update status under <code class="docutils literal notranslate"><span class="pre">Settings</span> <span class="pre">-&gt;</span> <span class="pre">General</span> <span class="pre">-&gt;</span> <span class="pre">Updates</span></code> in the
-Nextcloud client.</p>
-<p>If an update is available, and has been successfully downloaded, the Nextcloud
-client starts a silent update prior to its next launch and then restarts
-itself. Should the silent update fail, the client offers a manual download.</p>
+<h3>„Windows“<a class="headerlink" href="#windows" title="Link to this heading"></a></h3>
+<p>„Nextcloud“ klientas automatiškai tikrina, ar yra naujinimų, ir, jei jų yra, juos atsisiunčia. Atnaujinimo būseną galite peržiūrėti pasirinkę Nustatymai -&gt; Bendrieji -&gt; Atnaujinimai.</p>
+<p>Jei naujinimas yra prieinamas ir buvo sėkmingai atsisiųstas, „Nextcloud“ klientas prieš kitą paleidimą tyliai įdiegia naujinimą ir automatiškai paleidžiamas iš naujo. Jei tylusis atnaujinimas nepavyksta, klientas pasiūlo atsisiųsti naujinimą rankiniu būdu.</p>
 <div class="admonition note">
 <p class="admonition-title">Pastaba</p>
-<p>Administrative privileges are required to perform the update.</p>
+<p>Norint įdiegti naujinimą, reikalingos administratoriaus teisės.</p>
 </div>
 </section>
 <section id="macos">
-<h3>macOS<a class="headerlink" href="#macos" title="Link to this heading"></a></h3>
-<p>The macOS client has an autoupdater which uses the Sparkle framework.
-This autoupdater is bundled into the client App Bundle and checks for updates
-on launch, notifying you if an update is available. This will present a pop-up
-that can let you automatically download and install the latest client update
-with one click.</p>
-<p>In versions of the client where the Sparkle-based autoupdater is not bundled,
-a clickable notification will appear informing of an update being available.
-Upon clicking on said notification, the download page for the latest version
-of the client will be opened in the system’s web browser.</p>
-<p>Like on other systems, you can view the update status under
-<code class="docutils literal notranslate"><span class="pre">Settings</span> <span class="pre">-&gt;</span> <span class="pre">General</span> <span class="pre">-&gt;</span> <span class="pre">Updates</span></code> in the Nextcloud client.</p>
+<h3>„macOS“<a class="headerlink" href="#macos" title="Link to this heading"></a></h3>
+<p>„macOS“ skirtas „Nextcloud“ klientas turi automatinio atnaujinimo funkciją, kuri naudoja Sparkle sistemą. Ši funkcija yra integruota į kliento programą ir kiekvieną kartą ją paleidus patikrina, ar yra naujinimų. Jei naujinimas pasiekiamas, apie tai informuojamas naudotojas.
+Tokiu atveju rodomas iššokantis langas, leidžiantis vienu spustelėjimu automatiškai atsisiųsti ir įdiegti naujausią kliento versiją.</p>
+<p>Kliento versijose, kuriose Sparkle pagrindu veikianti automatinio atnaujinimo funkcija nėra integruota, bus rodomas pranešimas apie galimą naujinimą. Spustelėjus šį pranešimą, numatytojoje interneto naršyklėje bus atidarytas puslapis, kuriame galima atsisiųsti naujausią kliento versiją.</p>
+<p>Kaip ir kitose operacinėse sistemose, atnaujinimo būseną galite peržiūrėti pasirinkę Nustatymai -&gt; Bendrieji -&gt; Atnaujinimai.</p>
 </section>
 <section id="linux">
-<h3>Linux<a class="headerlink" href="#linux" title="Link to this heading"></a></h3>
-<p>Linux distributions provide their own update tools, so Nextcloud clients that use
-the Linux operating system do not perform any updates on their own. The client
-will inform you (<code class="docutils literal notranslate"><span class="pre">Settings</span> <span class="pre">-&gt;</span> <span class="pre">General</span> <span class="pre">-&gt;</span> <span class="pre">Updates</span></code>) when an update is
-available.</p>
+<h3>„Linux“<a class="headerlink" href="#linux" title="Link to this heading"></a></h3>
+<p>„Linux“ distribucijos turi savo programinės įrangos atnaujinimo įrankius, todėl „Nextcloud“ klientas, veikiantis „Linux“ operacinėje sistemoje, pats automatiškai nesiatnaujina. Kai bus prieinamas naujinimas, klientas apie tai praneš skiltyje (Nustatymai -&gt; Bendrieji -&gt; Atnaujinimai).</p>
 </section>
 </section>
 <section id="preventing-automatic-updates">
-<h2>Preventing Automatic Updates<a class="headerlink" href="#preventing-automatic-updates" title="Link to this heading"></a></h2>
-<p>In controlled environments, such as companies or universities, you might not
-want to enable the auto-update mechanism, as it interferes with controlled
-deployment tools and policies. To address this case, it is possible to disable
-the auto-updater entirely.  The following sections describe how to disable the
-auto-update mechanism for different operating systems.</p>
+<h2>Automatinių atnaujinimų išjungimas<a class="headerlink" href="#preventing-automatic-updates" title="Link to this heading"></a></h2>
+<p>Valdomose aplinkose, pavyzdžiui, įmonėse ar universitetuose, automatinio atnaujinimo funkcija gali būti nepageidaujama, nes ji gali trukdyti centralizuotam programinės įrangos diegimui ir organizacijos taikomoms valdymo taisyklėms. Tokiais atvejais automatinio atnaujinimo funkciją galima visiškai išjungti.
+Toliau pateiktuose skyriuose aprašoma, kaip išjungti automatinį atnaujinimą skirtingose operacinėse sistemose.</p>
 <section id="preventing-automatic-updates-in-windows-environments">
-<h3>Preventing Automatic Updates in Windows Environments<a class="headerlink" href="#preventing-automatic-updates-in-windows-environments" title="Link to this heading"></a></h3>
-<p>Users may disable automatic updates by adding this line to the [General]
-section of their <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code> files:</p>
+<h3>Automatinių atnaujinimų išjungimas „Windows“ aplinkoje<a class="headerlink" href="#preventing-automatic-updates-in-windows-environments" title="Link to this heading"></a></h3>
+<p>Naudotojai gali išjungti automatinius atnaujinimus, į failo nextcloud.cfg skyriaus [General] konfigūraciją įtraukdami šią eilutę:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skipUpdateCheck</span><span class="o">=</span><span class="n">true</span>
 </pre></div>
 </div>
-<p>Windows administrators have more options for preventing automatic updates in
-Windows environments by using one of two methods. The first method allows users
-to override the automatic update check mechanism, whereas the second method
-prevents any manual overrides.</p>
-<p>To prevent automatic updates, but allow manual overrides:</p>
+<p>„Windows“ administratoriai turi daugiau galimybių valdyti automatinius atnaujinimus. Galimi du būdai: pirmasis leidžia naudotojams nepaisyti automatinio atnaujinimo tikrinimo nustatymų; antrasis neleidžia atlikti jokių rankinių šių nustatymų pakeitimų.</p>
+<p>Taip bus išjungti automatiniai atnaujinimai, bet leidžiama jų įjungti rankiniu būdu:</p>
 <ol class="arabic">
-<li><p>Edit this Registry key:</p>
+<li><p>Pakeiskite šį registro raktą:</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code></p>
 </div></blockquote>
 </li>
-<li><p>Add the key <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> (of type DWORD).</p></li>
-<li><p>Specify a value of <code class="docutils literal notranslate"><span class="pre">1</span></code> to the machine.</p></li>
+<li><p>Pridėkite registro raktą skipUpdateCheck (tipas DWORD).</p></li>
+<li><p>Nustatykite jo reikšmę į 1.</p></li>
 </ol>
-<p>To manually override this key, use the same value in <code class="docutils literal notranslate"><span class="pre">HKEY_CURRENT_USER</span></code>.</p>
-<p>To prevent automatic updates and disallow manual overrides:</p>
+<p>Jei norite šį nustatymą pakeisti konkrečiam naudotojui, sukurkite tokį patį raktą registro šakoje HKEY_CURRENT_USER.</p>
+<p>Taip bus išjungti automatiniai atnaujinimai ir neleidžiama jų įjungti rankiniu būdu:</p>
 <div class="admonition note">
 <p class="admonition-title">Pastaba</p>
-<p>This is the preferred method of controlling the updater behavior using
-Group Policies.</p>
+<p>Tai yra rekomenduojamas būdas valdyti automatinio atnaujinimo funkcijos veikimą naudojant Grupės strategijas (Group Policy).</p>
 </div>
 <ol class="arabic">
-<li><p>Edit this Registry key:</p>
+<li><p>Pakeiskite šį registro raktą:</p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Policies\Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code></p>
+<div><p>HKEY_LOCAL_MACHINESoftwarePoliciesNextcloud GmbHNextcloud</p>
 </div></blockquote>
 </li>
-<li><p>Add the key <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> (of type DWORD).</p></li>
-<li><p>Specify a value of <code class="docutils literal notranslate"><span class="pre">1</span></code> to the machine.</p></li>
+<li><p>Pridėkite registro raktą skipUpdateCheck (tipas DWORD).</p></li>
+<li><p>Nustatykite jo reikšmę į 1.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Pastaba</p>
-<p>Branded clients use a different key in place of
-<code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code> that matches the branded application vendor and
-name.</p>
+<p>Jei naudojate individualiai pritaikytą („branded“) klientą, vietoj Nextcloud GmbHNextcloud naudokite registro raktą, atitinkantį tos programos gamintoją ir pavadinimą.</p>
 </div>
 </section>
 <section id="preventing-automatic-updates-in-linux-environments">
-<h3>Preventing Automatic Updates in Linux Environments<a class="headerlink" href="#preventing-automatic-updates-in-linux-environments" title="Link to this heading"></a></h3>
-<p>Because the Linux client does not provide automatic updating functionality, there is no
-need to remove the automatic-update check.  However, if you want to disable it edit your desktop
-client configuration file, <code class="docutils literal notranslate"><span class="pre">$HOME/.config/Nextcloud/nextcloud.cfg</span></code>.
-Add this line to the [General] section:</p>
+<h3>Automatinių atnaujinimų išjungimas „Linux“ aplinkoje<a class="headerlink" href="#preventing-automatic-updates-in-linux-environments" title="Link to this heading"></a></h3>
+<p>Kadangi „Linux“ skirtas „Nextcloud“ klientas automatinio atnaujinimo funkcijos neturi, automatinio atnaujinimų tikrinimo išjungti nereikia. Tačiau jei vis tiek norite išjungti pranešimus apie naujinimus, redaguokite kliento konfigūracijos failą $HOME/.config/Nextcloud/nextcloud.cfg ir į skiltį [General] įtraukite šią eilutę:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skipUpdateCheck</span><span class="o">=</span><span class="n">true</span>
 </pre></div>
 </div>
