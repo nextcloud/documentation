@@ -117,8 +117,8 @@ be permanently deleted regardless of whether space is currently needed.
 The relevant configuration setting is
 ``trashbin_retention_obligation``. For details about the available values and
 their interaction with quotas and trash-bin sizes, see the
-:doc:`Deleted Files <../../admin_manual/configuration_files/trashbin_configuration>`
-section in the Administrator Manual.
+`Deleted Files section of the Administrator Manual
+<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html>`_.
 
 .. note::
 
