@@ -48,6 +48,6 @@ available filesystem space instead. An administrator can configure a global or
 per-account trash-bin size that overrides the calculated default.
 
 Your administrator can also configure minimum and maximum trash-bin retention
-periods, or disable automatic expiration. See the
-:doc:`Deleted Files <../../admin_manual/configuration_files/trashbin_configuration>`
-section of the Administrator Manual for details.
+periods, or disable automatic expiration. See the `Deleted Files section of the Administrator Manual
+<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html>`_
+for details.
