@@ -3,40 +3,30 @@ Manage connected browsers and devices
 =====================================
 
 The personal settings page gives you an overview of the connected
-browsers and devices.
+browsers and devices under the "Security" tab.
 
-Managing connected browsers
----------------------------
+Managing connected browsers and devices
+---------------------------------------
+.. _managing_devices:
 
-The list of connected browsers shows which browsers have connected to your
+The list of connected browsers and devices shows which browsers and devices have connected to your
 account recently:
 
 .. figure:: images/settings_sessions.png
-     :alt: List of browser sessions.
+     :alt: List of browser and device sessions.
 
-You can use the trash icon to disconnect any of the browsers in the list.
-
-.. _managing_devices:
-
-Managing devices
-----------------
-
-The list of connected devices shows all the devices and clients you
-generated a device password for and their last activity:
-
-.. figure:: images/settings_devices.png
-     :alt: List of connected devices.
-
-You can use the trash icon to disconnect any of the devices in the list.
+You can open the menu beside every device or session to revoke the access.
 
 At the bottom of the list, you can create a new device-specific
-password. You can choose a name to identify the token later. The generated
-password is used for configuring the new client. Ideally, generate individual
-tokens for every device you connect to your account, so you can disconnect
-those individually if necessary:
+password. The generated password is used for configuring the new client. 
+Ideally, generate individual tokens for every device you connect to your 
+account, so you can disconnect those individually if necessary:
 
 .. figure:: images/settings_devices_add.png
      :alt: Adding a new device.
+
+.. figure:: images/settings_devices_show_token.png
+     :alt: Your generated token is shown.
 
 .. note::
    You only have access to the device password when creating it.
