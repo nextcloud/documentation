@@ -2,38 +2,52 @@
 Storage quota
 =============
 
-Your Nextcloud administrator has the option to set a storage quota on users. Look at
-your Personal page to see what your quota is, and how much you have used.
+Your Nextcloud administrator can set a storage quota for your account. Open
+your Personal settings page to see your quota and how much storage you have
+used.
 
 .. figure:: ../images/quota1.png
    :alt: Storage quota indicator on the Personal page
 
 It may be helpful to understand how your quota is calculated.
 
-Metadata (thumbnails, temporary files, cache, and encryption keys) takes up
-about 10% of disk space, but is not counted against user quotas. Some apps
-store information in the database, such as the Calendar and Contacts apps. This
-data is excluded from your quota.
+Metadata such as thumbnails, temporary files, caches, and encryption keys can
+use disk space without counting against your user quota. Some apps store data
+in the database, such as the Calendar and Contacts apps. This data is not
+included in the file-storage quota.
 
-When other users share files with you, the shared files count against the
-original share owner's quota. When you share a folder and allow other users or
-groups to upload files to it, all uploaded and edited files count against your
-quota. When you re-share files shared with you, the re-share still counts
-against the quota of the original share owner.
+When other users share files with you, the shared files normally count against
+the original owner's quota. When you share a folder and allow other users or
+groups to upload or edit files in it, those files count against your quota.
+When you re-share files shared with you, the re-share normally continues to
+count against the original owner's quota.
 
-Encrypted files are a little larger than unencrypted files; the unencrypted size
-is calculated against your quota.
+Encrypted files can use more physical storage than unencrypted files. The
+quota calculation uses the file size reported by Nextcloud's storage layer.
 
-Deleted files that are still in the trash bin do not count against quotas. The
-trash bin is set at 50% of quota. Deleted file aging is set at 30 days. When
-deleted files exceed 50% of quota then the oldest files are removed until the
-total is below 50%.
+When the Versions app is enabled, older file versions are managed separately
+from the normal storage quota according to the app's retention and storage
+rules.
 
-.. note:: Your administrator may have configured the trash bin retention period
-   to override the storage space management. See `administrator documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#deleted-items-trash-bin>`_ for more details.
-
-When version control is enabled, the older file versions are not counted against
-quotas.
-
-If you create a public share via URL and allow uploads, any uploaded files
+If you create a public share through a URL and allow uploads, uploaded files
 count against your quota.
+
+Deleted files and the trash bin
+-------------------------------
+
+Files and folders in your trash bin do not count against your normal storage
+quota. The trash bin nevertheless has its own storage limit.
+
+For accounts with a quota, the default amount of space available to the trash
+bin is calculated as 50% of the account's remaining quota space. This is
+calculated after the account's active files have been taken into account; it is
+not 50% of the total quota.
+
+For accounts without a quota, the default trash-bin limit is calculated using
+available filesystem space instead. An administrator can configure a global or
+per-account trash-bin size that overrides the calculated default.
+
+Your administrator can also configure minimum and maximum trash-bin retention
+periods, or disable automatic expiration. See the
+:doc:`Deleted Files <../../admin_manual/configuration_files/trashbin_configuration>`
+section of the Administrator Manual for details.
