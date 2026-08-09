@@ -383,6 +383,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#trusted-proxies">trusted_proxies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#forwarded-for-headers">forwarded_for_headers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#allowed-admin-ranges">allowed_admin_ranges</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#allowed-no-password-confirmation-ranges">allowed_no_password_confirmation_ranges</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#max-filesize-animated-gifs-public-sharing">max_filesize_animated_gifs_public_sharing</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#filelocking-ttl">filelocking.ttl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#memcache-locking">memcache.locking</a></li>
@@ -3715,6 +3716,19 @@ access controls and rendering logs unreliable.</p>
 </div>
 <p>List of trusted IP ranges for admin actions. If non-empty, all admin actions
 must originate from IPs within these ranges.</p>
+<p>Supported formats:
+- IPv4 addresses or ranges, e.g., <code class="docutils literal notranslate"><span class="pre">192.0.2.42/32</span></code>, <code class="docutils literal notranslate"><span class="pre">233.252.0.0/24</span></code>
+- IPv6 addresses or ranges, e.g., <code class="docutils literal notranslate"><span class="pre">2001:db8::13:37/64</span></code></p>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">[]</span></code> (empty array)</p>
+</section>
+<section id="allowed-no-password-confirmation-ranges">
+<h3>allowed_no_password_confirmation_ranges<a class="headerlink" href="#allowed-no-password-confirmation-ranges" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;allowed_no_password_confirmation_ranges&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;192.0.2.42/32&#39;</span><span class="p">,</span> <span class="s1">&#39;233.252.0.0/24&#39;</span><span class="p">,</span> <span class="s1">&#39;2001:db8::13:37/64&#39;</span><span class="p">],</span>
+</pre></div>
+</div>
+<p>List of trusted IP ranges that can bypass password confirmation.</p>
+<p>If non-empty, all endpoints marked with the PasswordConfirmationRequired attribute
+won’t need a password confirmation when originating from IPs within these ranges.</p>
 <p>Supported formats:
 - IPv4 addresses or ranges, e.g., <code class="docutils literal notranslate"><span class="pre">192.0.2.42/32</span></code>, <code class="docutils literal notranslate"><span class="pre">233.252.0.0/24</span></code>
 - IPv6 addresses or ranges, e.g., <code class="docutils literal notranslate"><span class="pre">2001:db8::13:37/64</span></code></p>

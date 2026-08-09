@@ -81,7 +81,10 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#updated-database-requirements">Updated database requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#removed-front-end-apis-and-libraries">Removed front-end APIs and libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removed-front-end-apis-and-libraries">Removed front-end APIs and libraries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#removed-global-aliases">Removed global aliases</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-back-end-apis">Removed back-end APIs</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#remote-api">Remote API</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#preview-api">Preview API</a></li>
@@ -197,9 +200,24 @@ So make this work on all supported database systems you need to use a subquery:<
 </section>
 <section id="removed-front-end-apis-and-libraries">
 <h2>Removed front-end APIs and libraries<a class="headerlink" href="#removed-front-end-apis-and-libraries" title="Link to this heading"></a></h2>
+<section id="removed-global-aliases">
+<h3>Removed global aliases<a class="headerlink" href="#removed-global-aliases" title="Link to this heading"></a></h3>
+<p>The following global aliases were removed in Nextcloud 35,
+they have been deprecated since Nextcloud 17 and scheduled for removal since Nextcloud 20:</p>
 <ul class="simple">
-<li><p>TBD</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_appswebroots</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.appswebroots</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_config</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.config</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_current_user</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.getCurrentUser().uid</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_debug</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.debug</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_defaults</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.theme</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_isadmin</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.isUserAdmin()</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_requesttoken</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.requestToken</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_webroot</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.webroot</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCDialogs</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.dialogs</span></code> instead</p></li>
 </ul>
+<p>Please keep in mind that <code class="docutils literal notranslate"><span class="pre">OC</span></code> is considered a private namespace for which our stability rules do not fully apply.
+Its recommended to use the <a class="reference internal" href="../digging_deeper/javascript-apis.html#js-libraries"><span class="std std-ref">Nextcloud frontend libraries</span></a> instead if possible.</p>
+</section>
 </section>
 <section id="removed-back-end-apis">
 <h2>Removed back-end APIs<a class="headerlink" href="#removed-back-end-apis" title="Link to this heading"></a></h2>
@@ -245,7 +263,7 @@ Instead of using the manager register your provider via the <code class="docutil
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 23, 2026.
+      <span class="lastupdated">Last updated on Aug 09, 2026.
       </span></p>
   </div>
 
