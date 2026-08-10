@@ -106,12 +106,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#apps">Apps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#managing-apps">Managing apps</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#update-notifications">Update notifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-apps-with-occ">Managing apps with <code class="docutils literal notranslate"><span class="pre">occ</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-private-api">Using private API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-custom-app-directories">Using custom app directories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-the-app-store-timeout">Configuring the app store timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-a-self-hosted-app-store">Using a self-hosted app store</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#enabling-apps-via-occ-command">Enabling apps via occ command</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#using-private-api">Using private API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#using-custom-app-directories">Using custom app directories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#using-a-self-hosted-apps-store">Using a self hosted apps store</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="apps_management_api.html">Apps management API</a></li>
@@ -182,13 +183,13 @@
              
   <section id="apps-management">
 <h1>Apps management<a class="headerlink" href="#apps-management" title="Link to this heading"></a></h1>
-<p>Nextcloud apps can enhance, customize or even restrict the features and experience
-you and your users has with the Nextcloud server. Next to default enabled functions
-like Files, Activity and Photos there are other apps like Calendar, Contacts,
-Talk and more which are enhancing the features of your Nextcloud server.</p>
-<p>After installing the Nextcloud server, you might want to consider about enabling,
-disabling or even restricting some apps to groups depending on your and your users’
-needs.</p>
+<p>Nextcloud apps can enhance, customize, or restrict the features and experience
+available to you and your users on the Nextcloud server. In addition to built-in
+apps such as Files, Activity, and Photos, other apps such as Calendar, Contacts,
+and Talk can further expand its functionality.</p>
+<p>After installing the Nextcloud server, you might want to consider enabling, disabling,
+or restricting some apps for specific groups, depending on your needs and those of
+your users.</p>
 <section id="apps">
 <h2>Apps<a class="headerlink" href="#apps" title="Link to this heading"></a></h2>
 <figure class="align-default">
@@ -197,21 +198,22 @@ needs.</p>
 <p>During the Nextcloud server installation, some apps are enabled by default.
 To see which apps are enabled go to your Apps page.</p>
 <p>Those apps are supported and developed by Nextcloud GmbH directly and
-have an <strong>Featured</strong>-tag.</p>
+have a <strong>Featured</strong> tag.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Your Nextcloud server needs to be able to communicate with
-<code class="docutils literal notranslate"><span class="pre">https://apps.nextcloud.com</span></code>, <code class="docutils literal notranslate"><span class="pre">https://ltd[1-3].nextcloud.com</span></code>, <code class="docutils literal notranslate"><span class="pre">https://garm[1-5].nextcloud.com</span></code> to list and download apps. Please make sure to whitelist this target in your firewall or proxy if necessary.</p>
+<p>Your Nextcloud server needs to be able to communicate with <code class="docutils literal notranslate"><span class="pre">https://apps.nextcloud.com</span></code>,
+<code class="docutils literal notranslate"><span class="pre">https://ltd[1-3].nextcloud.com</span></code>, <code class="docutils literal notranslate"><span class="pre">https://garm[1-5].nextcloud.com</span></code> to list and download
+apps. Please make sure to allow these hosts in your firewall or proxy if necessary.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>To get access to work-arounds, long-term-support, priority bug fixing
-and custom consulting for supported apps, contact our <a class="reference external" href="https://nextcloud.com/enterprise/">sales team</a>.</p>
+<p>To get access to work-arounds, long-term-support, priority bug fixing and custom consulting
+for supported apps, contact <a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud GmbH</a>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you would like to develop your own Nextcloud app, you can find out
-more information in our <a class="reference external" href="https://docs.nextcloud.com/server/latest/go.php?to=developer-manual">developer manual</a>.</p>
+<p>If you would like to develop your own Nextcloud app, you can find out more information in
+our <a class="reference external" href="https://docs.nextcloud.com/server/latest/go.php?to=developer-manual">developer manual</a>.</p>
 </div>
 <p>All apps must be licensed under AGPLv3+ or any compatible license.</p>
 </section>
@@ -223,14 +225,13 @@ more information in our <a class="reference external" href="https://docs.nextclo
 <p>You will see which apps are enabled, disabled and available. You’ll also
 see additional app bundles and filters, such as Customization, Security and
 Monitoring for finding more apps quickly.</p>
-<p>In the Apps page you can enable or disable applications. Some apps have
+<p>On the Apps page, you can enable or disable applications. Some apps have
 configurable options on the Apps page, such as <strong>Enable only for specific
 groups</strong>, but mainly they are enabled or disabled here, and are configured in
 your Nextcloud settings (admin and/or user-settings) or in the <code class="docutils literal notranslate"><span class="pre">config.php</span></code>.</p>
-<p>Click the app name to view a description of the app and any of the app settings
-in the Application View field. Clicking the <strong>Enable</strong> button will enable the app.
-If the app is not part of the Nextcloud installation, it will be downloaded from
-the app store, installed and enabled.</p>
+<p>Select an app to view its description and available configuration options. Clicking
+the <strong>Enable</strong> button will enable the app. If the app is not part of the Nextcloud
+installation, it will be downloaded from the app store, installed and enabled.</p>
 <p>App updates will also be offered to you on this page. Simply click on the <strong>Update</strong>
 button to update a specific app or use the <strong>Update all</strong> button on top of the page to
 update all apps.</p>
@@ -241,67 +242,67 @@ switching your Nextcloud to the beta channel in the admin overview.</p>
 </div>
 <section id="update-notifications">
 <h3>Update notifications<a class="headerlink" href="#update-notifications" title="Link to this heading"></a></h3>
-<p>The always installed <code class="docutils literal notranslate"><span class="pre">updatenotification</span></code> app allows administrators to be notified on available app and Nextcloud updates.
-Moreover, since Nextcloud 29, this app also allows to notify users about updated apps and the changes that are included in the update.
-This notification is enabled by default if the app provides a changelog.</p>
+<p>The default <code class="docutils literal notranslate"><span class="pre">updatenotification</span></code> app sends administrators notifications about available
+app and Nextcloud updates. Moreover, since Nextcloud 29, this app also allows to notify
+users about updated apps and the changes that are included in the update. This notification
+is enabled by default if the app provides a changelog.</p>
 <p>To disable user notifications use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="o">--</span><span class="nb">type</span> <span class="n">boolean</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="n">updatenotification</span> <span class="n">app_updated</span><span class="o">.</span><span class="n">enabled</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">occ config:app:set --type boolean --value=&quot;false&quot; updatenotification app_updated.enabled</span>
 </pre></div>
 </div>
-<p>By default guest users, when using the guests app, are not notified, to enable notifications also for them use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="o">--</span><span class="nb">type</span> <span class="n">boolean</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">updatenotification</span> <span class="n">app_updated</span><span class="o">.</span><span class="n">notify_guests</span>
+<p>By default. when using the <code class="docutils literal notranslate"><span class="pre">guests</span></code> app, guest users are not notified. To enable notifications for them use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">occ config:app:set --type boolean --value=&quot;true&quot; updatenotification app_updated.notify_guests</span>
 </pre></div>
 </div>
 </section>
-</section>
-<section id="enabling-apps-via-occ-command">
-<h2>Enabling apps via occ command<a class="headerlink" href="#enabling-apps-via-occ-command" title="Link to this heading"></a></h2>
-<p>In addition to managing apps via the web interface, administrators can also enable or disable apps using the <cite>occ</cite> command.</p>
+<section id="managing-apps-with-occ">
+<h3>Managing apps with <code class="docutils literal notranslate"><span class="pre">occ</span></code><a class="headerlink" href="#managing-apps-with-occ" title="Link to this heading"></a></h3>
+<p>In addition to managing apps via the web interface, administrators can enable or disable apps with the <code class="docutils literal notranslate"><span class="pre">occ</span></code> command.</p>
 <p>To enable an app, use the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">enable</span> <span class="o">&lt;</span><span class="n">app</span><span class="o">-</span><span class="nb">id</span><span class="o">&gt;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">occ app:enable &lt;app-id&gt;</span>
 </pre></div>
 </div>
 <p>For example, to enable the “files” app, run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">enable</span> <span class="n">files</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">occ app:enable files</span>
 </pre></div>
 </div>
-<p>To enable the app for specific groups, use the <cite>–groups</cite> option:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">enable</span> <span class="n">files</span> <span class="o">--</span><span class="n">groups</span><span class="o">=</span><span class="n">admin</span>
+<p>To enable the app for specific groups, use the <code class="docutils literal notranslate"><span class="pre">--groups</span></code> option:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">occ app:enable files --groups=admin</span>
 </pre></div>
 </div>
 <p>This command enables the “files” app only for the “admin” group.</p>
 <p>To disable an app, use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">disable</span> <span class="o">&lt;</span><span class="n">app</span><span class="o">-</span><span class="nb">id</span><span class="o">&gt;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">occ app:disable &lt;app-id&gt;</span>
 </pre></div>
 </div>
 </section>
 <section id="using-private-api">
-<h2>Using private API<a class="headerlink" href="#using-private-api" title="Link to this heading"></a></h2>
-<p>If private API, rather than the public APIs are used in a third-party app, the
-installation fails, if <code class="docutils literal notranslate"><span class="pre">'appcodechecker'</span> <span class="pre">=&gt;</span> <span class="pre">true,</span></code> is set in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>.</p>
+<h3>Using private API<a class="headerlink" href="#using-private-api" title="Link to this heading"></a></h3>
+<p>If a third-party app uses private APIs instead of public APIs, installation
+fails when <code class="docutils literal notranslate"><span class="pre">'appcodechecker'</span> <span class="pre">=&gt;</span> <span class="pre">true,</span></code> is set in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>.</p>
 </section>
 <section id="using-custom-app-directories">
-<h2>Using custom app directories<a class="headerlink" href="#using-custom-app-directories" title="Link to this heading"></a></h2>
+<h3>Using custom app directories<a class="headerlink" href="#using-custom-app-directories" title="Link to this heading"></a></h3>
 <p>Use the <strong>apps_paths</strong> array in <code class="docutils literal notranslate"><span class="pre">config.php</span></code> to set any custom apps directory
 locations. The key <strong>path</strong> defines the absolute file system path to the app
 folder. The key <strong>url</strong> defines the HTTP web path to that folder, starting at
 the Nextcloud web root. The key <strong>writable</strong> indicates if a user can install apps
 in that folder.</p>
 <p>Example: To ensure that the default <code class="docutils literal notranslate"><span class="pre">/apps/</span></code> folder only contains apps shipped
-with Nextcloud, follow this example to setup an <code class="docutils literal notranslate"><span class="pre">/extra-apps/</span></code> folder
-which will be used to store any additional apps you install:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&quot;apps_paths&quot; =&gt; [
-    [
-            &quot;path&quot;     =&gt; OC::$SERVERROOT . &quot;/apps&quot;,
-            &quot;url&quot;      =&gt; &quot;/apps&quot;,
-            &quot;writable&quot; =&gt; false,
-    ],
-    [
-            &quot;path&quot;     =&gt; OC::$SERVERROOT . &quot;/extra-apps&quot;,
-            &quot;url&quot;      =&gt; &quot;/extra-apps&quot;,
-            &quot;writable&quot; =&gt; true,
-    ],
-],
+with Nextcloud, follow this example to set up an <code class="docutils literal notranslate"><span class="pre">/extra-apps/</span></code> folder which
+will be used to store any additional apps you install:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&quot;apps_paths&quot; =&gt; [</span>
+<span class="x">    [</span>
+<span class="x">            &quot;path&quot;     =&gt; OC::$SERVERROOT . &quot;/apps&quot;,</span>
+<span class="x">            &quot;url&quot;      =&gt; &quot;/apps&quot;,</span>
+<span class="x">            &quot;writable&quot; =&gt; false,</span>
+<span class="x">    ],</span>
+<span class="x">    [</span>
+<span class="x">            &quot;path&quot;     =&gt; OC::$SERVERROOT . &quot;/extra-apps&quot;,</span>
+<span class="x">            &quot;url&quot;      =&gt; &quot;/extra-apps&quot;,</span>
+<span class="x">            &quot;writable&quot; =&gt; true,</span>
+<span class="x">    ],</span>
+<span class="x">],</span>
 </pre></div>
 </div>
 <div class="admonition danger">
@@ -320,24 +321,49 @@ you would use the command <code class="docutils literal notranslate"><span class
 <code class="docutils literal notranslate"><span class="pre">ln</span> <span class="pre">-sf</span> <span class="pre">/var/local/lib/nextcloud/extra-apps</span> <span class="pre">./extra-apps</span></code></p>
 </div>
 </section>
-<section id="using-a-self-hosted-apps-store">
-<h2>Using a self hosted apps store<a class="headerlink" href="#using-a-self-hosted-apps-store" title="Link to this heading"></a></h2>
-<p>Enables the installation of apps from a self hosted apps store. Requires that at least one of the configured apps directories is writeable.</p>
-<p>To enable a self hosted apps store:</p>
-<ol class="arabic">
-<li><p>Set the <strong>appstoreenabled</strong> parameter to “true”.</p>
-<p>This parameter is used to enable the apps store in Nextcloud.</p>
-</li>
-<li><p>Set the <strong>appstoreurl</strong> to the URL of your Nextcloud apps store.</p>
-<p>This parameter is used to set the http path to your self hosted Nextcloud apps store.</p>
-</li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;appstoreenabled&quot;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-<span class="s2">&quot;appstoreurl&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;https://my.appstore.instance/v1&quot;</span><span class="p">,</span>
+<section id="configuring-the-app-store-timeout">
+<h3>Configuring the app store timeout<a class="headerlink" href="#configuring-the-app-store-timeout" title="Link to this heading"></a></h3>
+<p>The timeout for requests to fetch app store metadata can be configured with the
+<code class="docutils literal notranslate"><span class="pre">appstore-timeout</span></code> app setting. The value is specified in seconds. This setting is
+configured with <code class="docutils literal notranslate"><span class="pre">occ</span></code> and is not a <code class="docutils literal notranslate"><span class="pre">config.php</span></code> parameter.</p>
+<p>For example, to set the timeout to 180 seconds:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">occ config:app:set settings appstore-timeout --value=180</span>
 </pre></div>
 </div>
-<p>By default the apps store is enabled and configured to use <code class="docutils literal notranslate"><span class="pre">https://apps.nextcloud.com/api/v1</span></code> as apps store url. Nextcloud will fetch <code class="docutils literal notranslate"><span class="pre">apps.json</span></code> and <code class="docutils literal notranslate"><span class="pre">categories.json</span></code> from there. To use the defaults again remove <strong>appstoreenabled</strong> and <strong>appstoreurl</strong> from the configuration.</p>
-<p>Example: If <code class="docutils literal notranslate"><span class="pre">categories.json</span></code> is available at <code class="docutils literal notranslate"><span class="pre">https://apps.nextcloud.com/api/v1/categories.json</span></code> the apps store url is <code class="docutils literal notranslate"><span class="pre">https://apps.nextcloud.com/api/v1</span></code>.</p>
+<p>The default timeout is 120 seconds. To restore the default, remove the
+custom setting:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">occ config:app:delete settings appstore-timeout</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 33.0.0: </span>The default app store request timeout was increased from 60 to 120 seconds
+and can be configured with <code class="docutils literal notranslate"><span class="pre">occ</span></code>.</p>
+</div>
+</section>
+<section id="using-a-self-hosted-app-store">
+<h3>Using a self-hosted app store<a class="headerlink" href="#using-a-self-hosted-app-store" title="Link to this heading"></a></h3>
+<p>This section explains how to enable installation of apps from a self-hosted app store.
+At least one of the configured apps directories must be writable.</p>
+<p>To enable a self-hosted app store:</p>
+<ol class="arabic">
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">appstoreenabled</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>This parameter is used to enable the app store in Nextcloud.</p>
+</li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">appstoreurl</span></code> to the URL of your Nextcloud app store.</p>
+<p>This parameter is used to set the HTTP path to your self-hosted Nextcloud app store.</p>
+</li>
+</ol>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&quot;appstoreenabled&quot; =&gt; true,</span>
+<span class="x">&quot;appstoreurl&quot; =&gt; &quot;https://my.appstore.instance/v1&quot;,</span>
+</pre></div>
+</div>
+<p>By default the app store is enabled and configured to use <code class="docutils literal notranslate"><span class="pre">https://apps.nextcloud.com/api/v1</span></code>
+as the app store URL. Nextcloud will fetch <code class="docutils literal notranslate"><span class="pre">apps.json</span></code> and <code class="docutils literal notranslate"><span class="pre">categories.json</span></code> from there. To
+use the defaults again, remove the <code class="docutils literal notranslate"><span class="pre">appstoreenabled</span></code> and <code class="docutils literal notranslate"><span class="pre">appstoreurl</span></code> parameters from the
+configuration.</p>
+<p>Example: If <code class="docutils literal notranslate"><span class="pre">categories.json</span></code> is available at <code class="docutils literal notranslate"><span class="pre">https://apps.nextcloud.com/api/v1/categories.json</span></code>
+the app store URL is <code class="docutils literal notranslate"><span class="pre">https://apps.nextcloud.com/api/v1</span></code>.</p>
+</section>
 </section>
 </section>
 
