@@ -85,7 +85,7 @@ they have been deprecated since Nextcloud 17 and scheduled for removal since Nex
 - ``oc_appswebroots`` use ``OC.appswebroots`` instead
 - ``oc_config`` use ``OC.config`` instead
 - ``oc_current_user`` use ``OC.getCurrentUser().uid`` instead
-- ``oc_debug`` use ``OC.debug`` instead
+- ``oc_debug`` use ``OC.debug`` instead8
 - ``oc_defaults`` use ``OC.theme`` instead
 - ``oc_isadmin`` use ``OC.isUserAdmin()`` instead
 - ``oc_requesttoken`` use ``OC.requestToken`` instead
@@ -94,6 +94,23 @@ they have been deprecated since Nextcloud 17 and scheduled for removal since Nex
 
 Please keep in mind that ``OC`` is considered a private namespace for which our stability rules do not fully apply.
 Its recommended to use the :ref:`Nextcloud frontend libraries<js-libraries>` instead if possible.
+
+Modified back-end APIs
+----------------------
+
+Nextcloud now provides a wrapper for the DBAL/migration classes from ``doctrine/dbal``. This will allow
+us in the future to more easily update this dependency without breaking your applications and make it
+easier for the static analyser to analyse this part of your code without providing stubs.
+
+There are a few hard breaking changes:
+
+- ``Type::lookupName($column->getType())`` will have to be replaced with ``$column->getType()->getName()``
+- Methods taking a ``Doctrine\DBAL`` classes, will have to be changed to take a ``OCP\DB\Schema`` instead
+
+Additionally, some part of the public API were removed and are now only available in the private API for runtime compatibility reason.
+
+- ``Column->setOptions(array $options)`` is no longer available in the public API and you will have to use the typed setters instead like ``Column->setLength``
+- ``Column->setType(DBAL\Type $type)`` is no longer available in the public API and you will have to provide one of the constants available in ``\OCP\DB\Types`` instead.
 
 Removed back-end APIs
 ---------------------
