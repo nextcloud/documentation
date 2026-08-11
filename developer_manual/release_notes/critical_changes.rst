@@ -40,6 +40,22 @@ This is a breaking change, apps that rely on the library need to update to the n
 this includes a new namespace (``\phpseclib3``).
 Changes can be found on the `library's website <https://phpseclib.com/docs/why#phpseclib-30-vs-phspeclib-10--20>`__.
 
+Symfony Console
+^^^^^^^^^^^^^^^
+
+Symfony Console was updated from version 6 to version 7. This changes the signature of the
+``execute`` method, which now requires a return type declaration. If your commands still extend
+``OC\Core\Command\Base`` and implement ``configure()``/``execute()``, fix them by running:
+
+.. code-block:: bash
+
+    find lib -iname '*.php' -exec sed -i 's/function execute(InputInterface $input, OutputInterface $output) {/function execute(InputInterface $input, OutputInterface $output): int {/g' {} \;
+
+To insulate apps from breakage like this in the future, Nextcloud 35 also introduces a new,
+attribute-based interface for writing commands that does not require extending a Symfony base class.
+See :ref:`occ_commands` for the full documentation. Existing commands keep working unchanged (once
+fixed with the command above), migrating to the new interface is optional but recommended.
+
 Updated database requirements
 -----------------------------
 
