@@ -292,6 +292,26 @@ this:
     "dbhost"        => "localhost",
     "dbtableprefix" => "oc_",
 
+SSL for PostgreSQL Database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Enabling SSL is only necessary if your database does not reside on the same server as your Nextcloud instance.
+If you do not connect over localhost and need to allow remote connections then you should enable SSL.
+This just covers the SSL database configuration on the Nextcloud server. First you need to configure your database server accordingly.
+
+::
+
+  'pgsql_ssl' => [
+    'mode' => 'verify-ca',
+    'cert' => '/../ssl-cert.pem',
+    'key' => '/../ssl-key.pem',
+    'crl' => '',
+    'rootcert' => '/../ca-cert.pem',
+  ],
+
+Adjust the paths to the pem files for your environment. ``mode`` accepts the same values as PostgreSQL's
+``sslmode`` connection parameter (for example ``require``, ``verify-ca`` or ``verify-full``).
+
 .. _db-troubleshooting-label:
 
 Troubleshooting
