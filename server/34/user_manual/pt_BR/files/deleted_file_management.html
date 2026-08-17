@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gerenciar arquivos excluídos &mdash; Nextcloud 34 User Manual</title>
+  <title>Deleted files &mdash; Nextcloud 34 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -79,10 +79,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Arquivos e sincronização</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Acessar seus arquivos</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="managing.html">Gerenciar seus arquivos</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Gerenciar arquivos excluídos</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Deleted files</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#quotas">Cotas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#what-happens-when-shared-files-are-deleted">O que acontece quando arquivos compartilhados são excluídos</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#how-the-deleted-files-app-manages-storage-space">Como o aplicativo de arquivos excluídos gerencia o espaço de armazenamento</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-the-deleted-files-app-manages-storage-space">How the Deleted Files app manages storage space</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="version_control.html">Controle de versão</a></li>
@@ -120,7 +120,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Arquivos e sincronização</a></li>
           <li class="breadcrumb-item"><a href="managing.html">Gerenciar seus arquivos</a></li>
-      <li class="breadcrumb-item active">Gerenciar arquivos excluídos</li>
+      <li class="breadcrumb-item active">Deleted files</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/deleted_file_management.rst" class="fa fa-github"> Editar no GitHub</a>
       </li>
@@ -130,35 +130,116 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="managing-deleted-files">
-<h1>Gerenciar arquivos excluídos<a class="headerlink" href="#managing-deleted-files" title="Link para este cabeçalho"></a></h1>
-<p>Quando você exclui um arquivo no Nextcloud, ele não é imediatamente excluído permanentemente, apenas movido para a lixeira. Ele não é excluído permanentemente até que você o exclua manualmente ou quando o aplicativo Arquivos Excluídos o exclua para liberar espaço para novos arquivos.</p>
-<p>Find your deleted files by clicking the <strong>Deleted files</strong> button on the Files
-page of the Nextcloud web interface. You can restore or permanently delete files from there.</p>
+  <section id="deleted-files">
+<h1>Deleted files<a class="headerlink" href="#deleted-files" title="Link para este cabeçalho"></a></h1>
+<p>When you delete a file or folder in Nextcloud, it is normally moved to the
+trash bin instead of being deleted immediately. This allows you to restore it
+later.</p>
+<p>Items in the trash bin are permanently deleted when one of the following
+occurs:</p>
+<ul class="simple">
+<li><p>You manually select <em>Delete permanently</em>.</p></li>
+<li><p>The Deleted Files app removes the item according to the configured retention
+policy.</p></li>
+<li><p>The effective trash-bin size limit is exceeded and the item is eligible for
+removal to free space.</p></li>
+</ul>
+<p>Find your deleted files by selecting <strong>Deleted files</strong> in the Files area of the
+Nextcloud Web interface. From there, you can restore items, download them to
+your device, or delete them permanently.</p>
+<p>When you restore an item, Nextcloud normally attempts to return it to its
+original location. If that location no longer exists or is not writable, the
+item is restored to the root of your Files area. If an item with the same name
+already exists, Nextcloud gives the restored item a unique name.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>If the Versions app is enabled, versions associated with a deleted
+file are moved to the trash bin and are restored when the file is restored.</p>
+</div>
 <section id="quotas">
 <h2>Cotas<a class="headerlink" href="#quotas" title="Link para este cabeçalho"></a></h2>
-<p>Os arquivos excluídos não são contabilizados em sua cota de armazenamento. Apenas seus arquivos pessoais contam para sua cota, não os arquivos que foram compartilhados com você. (Veja <a class="reference internal" href="quota.html"><span class="doc">Cota de armazenamento</span></a> para aprender mais sobre cotas.)</p>
+<p>Files and folders in your trash bin do not count against your normal storage
+quota.</p>
+<p>See <a class="reference internal" href="quota.html"><span class="doc">Cota de armazenamento</span></a> for more information about how storage quotas are calculated.</p>
 </section>
 <section id="what-happens-when-shared-files-are-deleted">
 <h2>O que acontece quando arquivos compartilhados são excluídos<a class="headerlink" href="#what-happens-when-shared-files-are-deleted" title="Link para este cabeçalho"></a></h2>
-<p>Excluir arquivos fica um pouco complicado quando eles são arquivos compartilhados, como este cenário ilustra:</p>
-<ol class="arabic simple">
-<li><p>O Usuário1 compartilha uma pasta “teste” com o Usuário2 e o Usuário3</p></li>
-<li><p>O usuário2 (o destinatário) exclui um arquivo/pasta “sub” dentro de “teste”</p></li>
-<li><p>A pasta “sub” será movida para a lixeira do Usuário1 (proprietário) e do Usuário2 (destinatário)</p></li>
-<li><p>Mas o Usuário3 não terá uma cópia de “sub” em sua lixeira</p></li>
+<p>The behavior of deleted shared files depends on who deletes the item and who
+owns it.</p>
+<p>For example, User1 shares a folder named <code class="docutils literal notranslate"><span class="pre">TheProject/</span></code> with User2 and User3:</p>
+<ol class="arabic">
+<li><p>User2, a share recipient (sharee), deletes a folder or file named
+<code class="docutils literal notranslate"><span class="pre">Phase2</span></code> inside <code class="docutils literal notranslate"><span class="pre">TheProject/</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">TheProject/Phase2</span></code> is moved to the trash bin of User1, the owner, and a
+copy is placed in User2’s trash bin when possible. The item is removed from
+the shared folder for User3, but User3 does not receive a copy in their
+trash bin.</p>
+</li>
+<li><p>User1, the owner, deletes <code class="docutils literal notranslate"><span class="pre">TheProject/Phase2</span></code>.</p>
+<p>The item is moved to User1’s trash bin and removed from the shared folder for
+User2 and User3. It is not placed in their trash bins.</p>
+</li>
 </ol>
-<p>Quando o Usuário1 exclui “sub”, ele é movido para a lixeira do Usuário1. Ele é excluído do Usuário2 e do Usuário3, mas não é colocado nas lixeiras deles.</p>
-<p>Quando você compartilha arquivos, outros usuários podem copiar, renomear, mover e compartilhá-los com outras pessoas, da mesma forma que fazem com qualquer arquivo de computador; Nextcloud não tem poderes mágicos para evitar isso.</p>
-</section>
-<section id="how-the-deleted-files-app-manages-storage-space">
-<h2>Como o aplicativo de arquivos excluídos gerencia o espaço de armazenamento<a class="headerlink" href="#how-the-deleted-files-app-manages-storage-space" title="Link para este cabeçalho"></a></h2>
-<p>Para garantir que os usuários não ultrapassem suas cotas de armazenamento, o aplicativo Arquivos Excluídos aloca no máximo 50% do espaço livre disponível atualmente para os arquivos excluídos. Se seus arquivos excluídos excederem este limite, Nextcloud exclui os arquivos mais antigos (arquivos com marcas temporais mais antigas de quando foram excluídos) até atingir o limite de uso de armazenamento novamente.</p>
-<p>Nextcloud verifica a idade dos arquivos excluídos toda vez que novos arquivos são adicionados aos arquivos excluídos. Por padrão, os arquivos excluídos permanecem na lixeira por 30 dias. O administrador do servidor Nextcloud pode ajustar este valor no arquivo <code class="docutils literal notranslate"><span class="pre">config.php</span></code> definindo o valor <code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code>. Arquivos mais antigos do que o valor <code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code> serão excluídos permanentemente. Além disso, o Nextcloud calcula o espaço máximo disponível sempre que um novo arquivo é adicionado. Se os arquivos excluídos excederem o novo espaço máximo permitido, o Nextcloud excluirá permanentemente os arquivos na lixeira com a expiração mais próxima até que o limite de espaço seja atingido novamente.</p>
+<p>The exact behavior can depend on the type of share and the permissions granted
+by the share. Depending on those permissions, other users may be able to copy,
+rename, move, or re-share shared files. These operations can affect which
+account owns the resulting files and which trash bin receives a deleted item.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Seu administrador pode ter configurado o período de retenção da lixeira para sobrepor o gerenciamento do espaço de armazenamento. Veja a <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#deleted-items-trash-bin">documentação do administrador</a> para mais detalhes.</p>
+<p>When a sharee deletes an item owned by another user, Nextcloud moves the item
+to the owner’s trash bin. A copy in the deleting user’s trash bin is also
+created (in most cases; the copy is on a best-effort basis and is not
+guaranteed).</p>
 </div>
+</section>
+<section id="how-the-deleted-files-app-manages-storage-space">
+<h2>How the Deleted Files app manages storage space<a class="headerlink" href="#how-the-deleted-files-app-manages-storage-space" title="Link para este cabeçalho"></a></h2>
+<p>The Deleted Files app manages trash-bin contents using two related rules:</p>
+<ul class="simple">
+<li><p>A storage limit determines how much space the trash bin may use.</p></li>
+<li><p>A retention policy determines when deleted items become eligible for
+permanent deletion.</p></li>
+</ul>
+<section id="trash-bin-storage-limit">
+<h3>Trash-bin storage limit<a class="headerlink" href="#trash-bin-storage-limit" title="Link para este cabeçalho"></a></h3>
+<p>For accounts with a storage quota, the default trash-bin limit is up to 50% of
+the account’s remaining quota space. This is calculated after the account’s
+active files have been taken into account; it is not 50% of the account’s total
+quota.</p>
+<p>For example, if your quota is 10 GB and your active files use 8 GB, the default
+trash-bin allowance is calculated from the remaining 2 GB.</p>
+<p>For accounts without a storage quota, the default limit is calculated using
+available filesystem space instead. Your administrator can override either
+default by configuring a global or per-account trash-bin size.</p>
+<p>When the effective trash-bin limit is exceeded, Nextcloud removes eligible
+deleted items, starting with the oldest items, until the limit is satisfied
+again.</p>
+</section>
+<section id="retention-and-permanent-deletion">
+<h3>Retention and permanent deletion<a class="headerlink" href="#retention-and-permanent-deletion" title="Link para este cabeçalho"></a></h3>
+<p>By default, deleted files are retained for at least 30 days. After that,
+eligible items may be permanently deleted when space is needed; they are not
+necessarily deleted immediately after 30 days.</p>
+<p>Your administrator can configure different minimum and maximum retention
+periods. Depending on the configuration, items may be permanently deleted
+after a maximum age even when storage space is not currently needed. Automatic
+expiration can also be disabled.</p>
+<p>For policies with a configured minimum retention period, an item is eligible
+for space-based cleanup only after that period has elapsed. Policies without a
+minimum retention period may allow space-based cleanup regardless of the
+item’s age. Items that have exceeded a configured maximum retention period can
+be permanently deleted regardless of whether space is currently needed.</p>
+<p>The relevant configuration setting is
+<code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code>. For details about the available values and
+their interaction with quotas and trash-bin sizes, see the
+<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html">Deleted Files section of the Administrator Manual</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>The Deleted Files app may permanently delete an item before its maximum
+retention period when the effective trash-bin limit is exceeded and the
+item’s minimum retention period has elapsed.</p>
+</div>
+</section>
 </section>
 </section>
 

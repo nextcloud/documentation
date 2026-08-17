@@ -78,9 +78,12 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">檔案與同步</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">存取您的檔案</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="managing.html">管理您的檔案</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="deleted_file_management.html">管理已删除的檔案</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deleted_file_management.html">Deleted files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="version_control.html">版本控制</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">存儲配額</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">存儲配額</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#deleted-files-and-the-trash-bin">Deleted files and the trash bin</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="tagging.html">System tags</a></li>
 </ul>
 </li>
@@ -126,22 +129,44 @@
              
   <section id="storage-quota">
 <h1>存儲配額<a class="headerlink" href="#storage-quota" title="Link to this heading"></a></h1>
-<p>Your Nextcloud administrator has the option to set a storage quota on users. Look at
-your Personal page to see what your quota is, and how much you have used.</p>
+<p>Your Nextcloud administrator can set a storage quota for your account. Open
+your Personal settings page to see your quota and how much storage you have
+used.</p>
 <figure class="align-default">
 <img alt="Storage quota indicator on the Personal page" src="../../_images/quota1.png" />
 </figure>
 <p>了解您的配額是如何計算的可能會有所幫助。</p>
-<p>元數據（縮略圖、臨時檔案、緩存和加密密鑰）佔用大約 10% 的磁碟空間，但不計入用戶配額。一些應用程序在數據庫中存儲信息，例如日曆和聯絡人應用。這些數據不計入您的配額。</p>
-<p>當其他用戶與您共享檔案時，共享的檔案將計入原始共享擁有者的配額。當您共享一個資料夾並允許其他用戶或組上傳檔案時，所有上傳和編輯的檔案將計入您的配額。當您重新共享與您共享的檔案時，重新共享仍然會計入原始共享擁有者的配額。</p>
-<p>加密檔案比未加密檔案稍大；未加密的大小會計入您的配額。</p>
-<p>仍在垃圾桶中的已刪除檔案不計入配額。垃圾桶的限制設置為配額的 50%。已刪除檔案的保留期限設置為 30 天。當已刪除的檔案超過配額的 50% 時，將刪除最舊的檔案，直到總數低於 50%。</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>您的管理員可能已配置垃圾桶的保留期以覆蓋存儲空間管理。詳情請參閱 <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#deleted-items-trash-bin">管理員文檔</a>。</p>
-</div>
-<p>當啟用版本控制時，舊的檔案版本不計入配額。</p>
-<p>如果您透過 URL 創建公共分享並允許上傳，則任何已上傳的檔案都會計入您的配額。</p>
+<p>Metadata such as thumbnails, temporary files, caches, and encryption keys can
+use disk space without counting against your user quota. Some apps store data
+in the database, such as the Calendar and Contacts apps. This data is not
+included in the file-storage quota.</p>
+<p>When other users share files with you, the shared files normally count against
+the original owner's quota. When you share a folder and allow other users or
+groups to upload or edit files in it, those files count against your quota.
+When you re-share files shared with you, the re-share normally continues to
+count against the original owner's quota.</p>
+<p>Encrypted files can use more physical storage than unencrypted files. The
+quota calculation uses the file size reported by Nextcloud's storage layer.</p>
+<p>When the Versions app is enabled, older file versions are managed separately
+from the normal storage quota according to the app's retention and storage
+rules.</p>
+<p>If you create a public share through a URL and allow uploads, uploaded files
+count against your quota.</p>
+<section id="deleted-files-and-the-trash-bin">
+<h2>Deleted files and the trash bin<a class="headerlink" href="#deleted-files-and-the-trash-bin" title="Link to this heading"></a></h2>
+<p>Files and folders in your trash bin do not count against your normal storage
+quota. The trash bin nevertheless has its own storage limit.</p>
+<p>For accounts with a quota, the default amount of space available to the trash
+bin is calculated as 50% of the account's remaining quota space. This is
+calculated after the account's active files have been taken into account; it is
+not 50% of the total quota.</p>
+<p>For accounts without a quota, the default trash-bin limit is calculated using
+available filesystem space instead. An administrator can configure a global or
+per-account trash-bin size that overrides the calculated default.</p>
+<p>Your administrator can also configure minimum and maximum trash-bin retention
+periods, or disable automatic expiration. See the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html">Deleted Files section of the Administrator Manual</a>
+for details.</p>
+</section>
 </section>
 
 

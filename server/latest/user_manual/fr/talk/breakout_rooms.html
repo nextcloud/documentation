@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Breakout rooms &mdash; Nextcloud 35 User Manual</title>
+  <title>Salles de sous-groupes &mdash; Nextcloud 35 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -32,7 +32,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
     <link rel="next" title="Bots et commandes" href="bots.html" />
-    <link rel="prev" title="Call recording" href="call_recording.html" />
+    <link rel="prev" title="Enregistrement d’appel" href="call_recording.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -85,17 +85,17 @@
 <li class="toctree-l2"><a class="reference internal" href="federation_index.html">Fédération</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="moderator_index.html">A l’attention des modérateurs</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="webinar.html">Webinaire et salle d’attente</a></li>
-<li class="toctree-l3"><a class="reference internal" href="call_recording.html">Call recording</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Breakout rooms</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#configure-breakout-rooms">Configure breakout rooms</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#manage-breakout-rooms">Manage breakout rooms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="call_recording.html">Enregistrement d’appel</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Salles de sous-groupes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configure-breakout-rooms">Configurer les salles de sous-groupes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manage-breakout-rooms">Gérer les salles de sous-groupes</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="bots.html">Bots et commandes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="matterbridge.html">Matterbridge</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="guest.html">Join a call or chat as guest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html">Rejoindre un appel ou une discussion en tant qu’invité</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
@@ -122,7 +122,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Talk</a></li>
           <li class="breadcrumb-item"><a href="moderator_index.html">A l’attention des modérateurs</a></li>
-      <li class="breadcrumb-item active">Breakout rooms</li>
+      <li class="breadcrumb-item active">Salles de sous-groupes</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/breakout_rooms.rst" class="fa fa-github"> Éditer sur GitHub</a>
       </li>
@@ -133,42 +133,40 @@
            <div itemprop="articleBody">
              
   <section id="breakout-rooms">
-<span id="id1"></span><h1>Breakout rooms<a class="headerlink" href="#breakout-rooms" title="Lien vers cette rubrique"></a></h1>
-<p>Breakout rooms allow you to divide a Nextcloud Talk call into smaller groups for more focused discussions. The moderator of the call can create multiple breakout rooms and assign participants to each room.</p>
+<span id="id1"></span><h1>Salles de sous-groupes<a class="headerlink" href="#breakout-rooms" title="Lien vers cette rubrique"></a></h1>
+<p>Les salles de sous-groupes vous permettent de diviser un appel Nextcloud Talk en petits groupes pour des discussions plus ciblées. Le modérateur de l’appel peut créer plusieurs salles de réunion et affecter des participants à chacune d’entre elles.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Breakout rooms are currently not available in conversations that are joinable by guests (public conversations).</p>
+<p>Les salles de discussion en sous-groupes ne sont actuellement pas disponibles pour les conversations accessibles aux invités (conversations publiques).</p>
 </div>
 <section id="configure-breakout-rooms">
-<h2>Configure breakout rooms<a class="headerlink" href="#configure-breakout-rooms" title="Lien vers cette rubrique"></a></h2>
-<p>To create breakout rooms, you need to be a moderator in a group conversation. Click on the top-bar menu and click on <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">breakout</span> <span class="pre">rooms</span></code>.</p>
+<h2>Configurer les salles de sous-groupes<a class="headerlink" href="#configure-breakout-rooms" title="Lien vers cette rubrique"></a></h2>
+<p>Pour créer des salles de sous-groupes, vous devez être modérateur dans une conversation de groupe. Cliquez sur le menu de la barre supérieure et cliquez sur « Configurer les salles de sous-groupes ».</p>
 <a class="reference internal image-reference" href="../../_images/talk-breakout-rooms-setup.png"><img alt="Talk Breakout rooms setup button in conversation controls" src="../../_images/talk-breakout-rooms-setup.png" style="width: 400px;" />
 </a>
-<p>A dialog will open where you can specify the number of rooms you want to create and the participants assignment method.
-You have three options:</p>
+<p>Une boîte de dialogue s’ouvre dans laquelle vous pouvez spécifier le nombre de salles que vous souhaitez créer et la méthode d’affectation des participants. Trois options vous sont alors proposées :</p>
 <ul class="simple">
-<li><p><strong>Automatically assign participants</strong>: Talk will automatically assign participants to the rooms.</p></li>
-<li><p><strong>Manually assign participants</strong>: You’ll go through a participants editor where you can assign participants to rooms.</p></li>
+<li><p><strong>Assigner automatiquement les participants</strong> : Talk attribuera automatiquement les participants aux salles.</p></li>
+<li><p><strong>Assigner manuellement des participants</strong> : vous passerez par un éditeur de participants où vous pourrez attribuer des participants à des salles.</p></li>
 <li><p><strong>Allow participants to choose</strong>: Participants will be able to join breakout rooms themselves.</p></li>
 </ul>
 <a class="reference internal image-reference" href="../../_images/talk-breakout-rooms-setup-dialog.png"><img alt="Talk breakout rooms configuration dialog showing participant assignment options" src="../../_images/talk-breakout-rooms-setup-dialog.png" style="width: 500px;" />
 </a>
 </section>
 <section id="manage-breakout-rooms">
-<h2>Manage breakout rooms<a class="headerlink" href="#manage-breakout-rooms" title="Lien vers cette rubrique"></a></h2>
-<p>Once the breakout rooms are created, you will be able to see them in the sidebar.</p>
+<h2>Gérer les salles de sous-groupes<a class="headerlink" href="#manage-breakout-rooms" title="Lien vers cette rubrique"></a></h2>
+<p>Une fois les salles de sous-groupes créées, vous pourrez les voir dans la barre latérale.</p>
 <a class="reference internal image-reference" href="../../_images/talk-breakout-rooms-sidebar.png"><img alt="Talk sidebar showing created breakout rooms" src="../../_images/talk-breakout-rooms-sidebar.png" style="width: 500px;" />
 </a>
-<p>From the sidebar header, you can:</p>
+<p>Depuis l’entête de la barre latérale, vous pouvez :</p>
 <ul class="simple">
-<li><p><strong>Start and stop the breakout rooms</strong>: this will move all the users in the parent conversation to their respective breakout rooms.</p></li>
-<li><p><strong>Broadcast a message to all the rooms</strong>: this will send a message to all the rooms at the same time.</p></li>
-<li><p><strong>Make changes to the assigned participants</strong>: this will open the participants editor where you can change which participants are assigned to which breakout room. From this dialog it’s also possible to delete the breakout rooms.</p></li>
+<li><p><strong>Démarrer et arrêter des salles de réunion</strong> : cela déplacera tous les utilisateurs de la conversation parent vers leurs salles de sous-groupes respectives.</p></li>
+<li><p><strong>Envoyer un message à toutes les salles</strong> : cela enverra un message dans toutes les salles en même temps.</p></li>
+<li><p><strong>Apporter des modifications aux participants attribués</strong> : cela ouvrira l’éditeur de participants où vous pourrez modifier les participants assignés à telle ou telle salle de sous-groupes. À partir de cette boîte de dialogue, il est également possible de supprimer les salles de sous-groupes.</p></li>
 </ul>
 <a class="reference internal image-reference" href="../../_images/talk-breakout-rooms-sidebar-header.png"><img alt="Talk breakout rooms sidebar header with start and manage options" src="../../_images/talk-breakout-rooms-sidebar-header.png" style="width: 400px;" />
 </a>
-<p>From the breakout room element in the sidebar, you can also join a particular breakout room or send a message to a
-specific room.</p>
+<p>À partir de l’élément de salle de sous-groupes dans la barre latérale, vous pouvez également rejoindre une salle de sous-groupes particulière ou envoyer un message à une salle spécifique.</p>
 <a class="reference internal image-reference" href="../../_images/talk-breakout-rooms-sidebar-item.png"><img alt="Talk individual breakout room entry in the sidebar with join option" src="../../_images/talk-breakout-rooms-sidebar-item.png" style="width: 400px;" />
 </a>
 </section>
@@ -178,7 +176,7 @@ specific room.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
-        <a href="call_recording.html" class="btn btn-neutral float-left" title="Call recording" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="call_recording.html" class="btn btn-neutral float-left" title="Enregistrement d’appel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
         <a href="bots.html" class="btn btn-neutral float-right" title="Bots et commandes" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
