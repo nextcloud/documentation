@@ -78,6 +78,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#updated-php-requirements">Updated PHP requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#updated-3rd-party-libraries">Updated 3rd party libraries</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#phpseclib-3-0">phpseclib 3.0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#symfony-console">Symfony Console</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#updated-database-requirements">Updated database requirements</a></li>
@@ -85,12 +86,14 @@
 <li class="toctree-l4"><a class="reference internal" href="#removed-global-aliases">Removed global aliases</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#modified-back-end-apis">Modified back-end APIs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-back-end-apis">Removed back-end APIs</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#remote-api">Remote API</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#preview-api">Preview API</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#other-removed-back-end-apis">Other removed back-end APIs</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#signed-cloud-federation-notifications">Signed cloud federation notifications</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="new.html">New in this release</a></li>
@@ -161,6 +164,19 @@ This is a breaking change, apps that rely on the library need to update to the n
 this includes a new namespace (<code class="docutils literal notranslate"><span class="pre">\phpseclib3</span></code>).
 Changes can be found on the <a class="reference external" href="https://phpseclib.com/docs/why#phpseclib-30-vs-phspeclib-10--20">library’s website</a>.</p>
 </section>
+<section id="symfony-console">
+<h3>Symfony Console<a class="headerlink" href="#symfony-console" title="Link to this heading"></a></h3>
+<p>Symfony Console was updated from version 6 to version 7. This changes the signature of the
+<code class="docutils literal notranslate"><span class="pre">execute</span></code> method, which now requires a return type declaration. If your commands still extend
+<code class="docutils literal notranslate"><span class="pre">OC\Core\Command\Base</span></code> and implement <code class="docutils literal notranslate"><span class="pre">configure()</span></code>/<code class="docutils literal notranslate"><span class="pre">execute()</span></code>, fix them by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>lib<span class="w"> </span>-iname<span class="w"> </span><span class="s1">&#39;*.php&#39;</span><span class="w"> </span>-exec<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/function execute(InputInterface $input, OutputInterface $output) {/function execute(InputInterface $input, OutputInterface $output): int {/g&#39;</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+</pre></div>
+</div>
+<p>To insulate apps from breakage like this in the future, Nextcloud 35 also introduces a new,
+attribute-based interface for writing commands that does not require extending a Symfony base class.
+See <a class="reference internal" href="../app_development/commands.html#occ-commands"><span class="std std-ref">occ commands</span></a> for the full documentation. Existing commands keep working unchanged (once
+fixed with the command above), migrating to the new interface is optional but recommended.</p>
+</section>
 </section>
 <section id="updated-database-requirements">
 <h2>Updated database requirements<a class="headerlink" href="#updated-database-requirements" title="Link to this heading"></a></h2>
@@ -208,7 +224,7 @@ they have been deprecated since Nextcloud 17 and scheduled for removal since Nex
 <li><p><code class="docutils literal notranslate"><span class="pre">oc_appswebroots</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.appswebroots</span></code> instead</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">oc_config</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.config</span></code> instead</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">oc_current_user</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.getCurrentUser().uid</span></code> instead</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">oc_debug</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.debug</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_debug</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.debug</span></code> instead8</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">oc_defaults</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.theme</span></code> instead</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">oc_isadmin</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.isUserAdmin()</span></code> instead</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">oc_requesttoken</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.requestToken</span></code> instead</p></li>
@@ -218,6 +234,22 @@ they have been deprecated since Nextcloud 17 and scheduled for removal since Nex
 <p>Please keep in mind that <code class="docutils literal notranslate"><span class="pre">OC</span></code> is considered a private namespace for which our stability rules do not fully apply.
 Its recommended to use the <a class="reference internal" href="../digging_deeper/javascript-apis.html#js-libraries"><span class="std std-ref">Nextcloud frontend libraries</span></a> instead if possible.</p>
 </section>
+</section>
+<section id="modified-back-end-apis">
+<h2>Modified back-end APIs<a class="headerlink" href="#modified-back-end-apis" title="Link to this heading"></a></h2>
+<p>Nextcloud now provides a wrapper for the DBAL/migration classes from <code class="docutils literal notranslate"><span class="pre">doctrine/dbal</span></code>. This will allow
+us in the future to more easily update this dependency without breaking your applications and make it
+easier for the static analyser to analyse this part of your code without providing stubs.</p>
+<p>There are a few hard breaking changes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Type::lookupName($column-&gt;getType())</span></code> will have to be replaced with <code class="docutils literal notranslate"><span class="pre">$column-&gt;getType()-&gt;getName()</span></code></p></li>
+<li><p>Methods taking a <code class="docutils literal notranslate"><span class="pre">Doctrine\DBAL</span></code> classes, will have to be changed to take a <code class="docutils literal notranslate"><span class="pre">OCP\DB\Schema</span></code> instead</p></li>
+</ul>
+<p>Additionally, some part of the public API were removed and are now only available in the private API for runtime compatibility reason.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Column-&gt;setOptions(array</span> <span class="pre">$options)</span></code> is no longer available in the public API and you will have to use the typed setters instead like <code class="docutils literal notranslate"><span class="pre">Column-&gt;setLength</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Column-&gt;setType(DBAL\Type</span> <span class="pre">$type)</span></code> is no longer available in the public API and you will have to provide one of the constants available in <code class="docutils literal notranslate"><span class="pre">\OCP\DB\Types</span></code> instead.</p></li>
+</ul>
 </section>
 <section id="removed-back-end-apis">
 <h2>Removed back-end APIs<a class="headerlink" href="#removed-back-end-apis" title="Link to this heading"></a></h2>
@@ -249,6 +281,13 @@ Instead of using the manager register your provider via the <code class="docutil
 </ul>
 </section>
 </section>
+<section id="signed-cloud-federation-notifications">
+<h2>Signed cloud federation notifications<a class="headerlink" href="#signed-cloud-federation-notifications" title="Link to this heading"></a></h2>
+<p>Apps with a custom <code class="docutils literal notranslate"><span class="pre">\OCP\Federation\ICloudFederationProvider</span></code> that receives notifications must also implement
+<code class="docutils literal notranslate"><span class="pre">\OCP\Federation\ISignedCloudFederationProvider</span></code>. The implementation must resolve the remote federation ID from the
+notification’s shared secret and trusted data stored when the share was accepted. Return an empty string when the
+secret does not identify exactly one remote origin.</p>
+</section>
 </section>
 
 
@@ -263,7 +302,7 @@ Instead of using the manager register your provider via the <code class="docutil
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Aug 09, 2026.
+      <span class="lastupdated">Last updated on Aug 17, 2026.
       </span></p>
   </div>
 

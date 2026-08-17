@@ -84,9 +84,13 @@
 <li class="toctree-l2"><a class="reference internal" href="dependency_management.html">Dependency management</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">occ commands</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#registering-a-command">Registering a command</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-a-command-class">Creating a command class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-command-class">Creating a command class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#multiple-commands-in-one-class">Multiple commands in one class</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#command-naming">Command naming</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#arguments-and-options">Arguments and options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-input-and-other-helpers">Output, input, and other helpers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#return-codes">Return codes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#interactive-commands">Interactive commands</a></li>
 </ul>
@@ -132,9 +136,11 @@
              
   <section id="occ-commands">
 <span id="id1"></span><h1>occ commands<a class="headerlink" href="#occ-commands" title="Link to this heading"></a></h1>
-<p>Nextcloud apps can register custom <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html">occ</a> commands that administrators can run from the command line. Commands extend <code class="docutils literal notranslate"><span class="pre">OC\Core\Command\Base</span></code>, which wraps
-<a class="reference external" href="https://symfony.com/doc/current/console.html">Symfony Console</a> and adds bash completion support, so the full Symfony
-Console API is available.</p>
+<p>Nextcloud apps can register custom <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html">occ</a>
+commands that administrators can run from the command line. Commands are plain PHP classes annotated with the
+<code class="docutils literal notranslate"><span class="pre">#[AsCommand]</span></code> attribute from <code class="docutils literal notranslate"><span class="pre">OCP\Console</span></code>. Nextcloud wires the attribute on top of
+<a class="reference external" href="https://symfony.com/doc/current/console.html">Symfony Console</a> for you, so you get argument parsing, bash
+completion, and formatted output without extending a base class.</p>
 <section id="registering-a-command">
 <h2>Registering a command<a class="headerlink" href="#registering-a-command" title="Link to this heading"></a></h2>
 <p>List every command class in <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> under the <code class="docutils literal notranslate"><span class="pre">&lt;commands&gt;</span></code> element:</p>
@@ -154,12 +160,8 @@ injection container, so constructor injection works automatically.</p>
 </section>
 <section id="creating-a-command-class">
 <h2>Creating a command class<a class="headerlink" href="#creating-a-command-class" title="Link to this heading"></a></h2>
-<p>Place command classes in <code class="docutils literal notranslate"><span class="pre">lib/Command/</span></code>. Each class must extend
-<code class="docutils literal notranslate"><span class="pre">OC\Core\Command\Base</span></code> and implement two methods:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">configure()</span></code> — declare the name, description, arguments, and options.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">execute()</span></code> — run the command logic and return an exit code.</p></li>
-</ul>
+<p>Place command classes in <code class="docutils literal notranslate"><span class="pre">lib/Command/</span></code>. Add a <code class="docutils literal notranslate"><span class="pre">#[AsCommand]</span></code> attribute to the class and implement a single
+<code class="docutils literal notranslate"><span class="pre">__invoke()</span></code> method that runs the command:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">lib/Command/Greet.php</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
@@ -168,62 +170,102 @@ injection container, so constructor injection works automatically.</p>
 
 <span class="k">namespace</span> <span class="nx">OCA\MyApp\Command</span><span class="p">;</span>
 
-<span class="k">use</span> <span class="nx">OC\Core\Command\Base</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Console\Attribute\Argument</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Console\Attribute\AsCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Console\Attribute\Option</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Console\ExitCode</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Console\IOutput</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCP\IUserManager</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\InputArgument</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\InputInterface</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\InputOption</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\Console\Output\OutputInterface</span><span class="p">;</span>
 
-<span class="k">class</span> <span class="nc">Greet</span> <span class="k">extends</span> <span class="nx">Base</span> <span class="p">{</span>
-
+<span class="p">#[</span><span class="nd">AsCommand</span><span class="p">(</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp:greet&#39;</span><span class="p">,</span>
+    <span class="c1">// this short description is shown when running &quot;occ list&quot;</span>
+    <span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;Print a greeting for a Nextcloud user.&#39;</span><span class="p">,</span>
+    <span class="c1">// this is shown when running the command with the &quot;--help&quot; option</span>
+    <span class="nx">help</span><span class="o">:</span> <span class="s1">&#39;This command prints a greeting for the given Nextcloud user.&#39;</span><span class="p">,</span>
+    <span class="c1">// this allows you to show one or more usage examples (no need to add the command name)</span>
+    <span class="nx">usages</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;bob&#39;</span><span class="p">,</span> <span class="s1">&#39;alice --shout&#39;</span><span class="p">],</span>
+<span class="p">)]</span>
+<span class="k">class</span> <span class="nc">Greet</span> <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
         <span class="k">private</span> <span class="nx">IUserManager</span> <span class="nv">$userManager</span><span class="p">,</span>
     <span class="p">)</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
     <span class="p">}</span>
 
-    <span class="p">#[</span><span class="nd">\Override</span><span class="p">]</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">configure</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
-        <span class="nv">$this</span>
-            <span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s1">&#39;myapp:greet&#39;</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="s1">&#39;Print a greeting for a Nextcloud user&#39;</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">addArgument</span><span class="p">(</span>
-                <span class="s1">&#39;user-id&#39;</span><span class="p">,</span>
-                <span class="nx">InputArgument</span><span class="o">::</span><span class="na">REQUIRED</span><span class="p">,</span>
-                <span class="s1">&#39;The user to greet&#39;</span><span class="p">,</span>
-            <span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">addOption</span><span class="p">(</span>
-                <span class="s1">&#39;shout&#39;</span><span class="p">,</span>
-                <span class="k">null</span><span class="p">,</span>
-                <span class="nx">InputOption</span><span class="o">::</span><span class="na">VALUE_NONE</span><span class="p">,</span>
-                <span class="s1">&#39;Print the greeting in uppercase&#39;</span><span class="p">,</span>
-            <span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="p">#[</span><span class="nd">\Override</span><span class="p">]</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">execute</span><span class="p">(</span><span class="nx">InputInterface</span> <span class="nv">$input</span><span class="p">,</span> <span class="nx">OutputInterface</span> <span class="nv">$output</span><span class="p">)</span><span class="o">:</span> <span class="nx">int</span> <span class="p">{</span>
-        <span class="nv">$userId</span> <span class="o">=</span> <span class="nv">$input</span><span class="o">-&gt;</span><span class="na">getArgument</span><span class="p">(</span><span class="s1">&#39;user-id&#39;</span><span class="p">);</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
+        <span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span>
+        <span class="p">#[</span><span class="nd">Argument</span><span class="p">(</span><span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;The username of the user&#39;</span><span class="p">)]</span>
+        <span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span>
+        <span class="p">#[</span><span class="nd">Option</span><span class="p">(</span><span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;Print the greeting in uppercase&#39;</span><span class="p">)]</span>
+        <span class="nx">bool</span> <span class="nv">$shout</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">:</span> <span class="nx">ExitCode</span> <span class="p">{</span>
         <span class="nv">$user</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userManager</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$userId</span><span class="p">);</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nv">$user</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
             <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">writeln</span><span class="p">(</span><span class="s2">&quot;&lt;error&gt;User </span><span class="se">\&quot;</span><span class="si">$userId</span><span class="se">\&quot;</span><span class="s2"> not found.&lt;/error&gt;&quot;</span><span class="p">);</span>
-            <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">FAILURE</span><span class="p">;</span>
+            <span class="k">return</span> <span class="nx">ExitCode</span><span class="o">::</span><span class="na">Failure</span><span class="p">;</span>
         <span class="p">}</span>
 
         <span class="nv">$greeting</span> <span class="o">=</span> <span class="s1">&#39;Hello, &#39;</span> <span class="o">.</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getDisplayName</span><span class="p">()</span> <span class="o">.</span> <span class="s1">&#39;!&#39;</span><span class="p">;</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$input</span><span class="o">-&gt;</span><span class="na">getOption</span><span class="p">(</span><span class="s1">&#39;shout&#39;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$shout</span><span class="p">)</span> <span class="p">{</span>
             <span class="nv">$greeting</span> <span class="o">=</span> <span class="nb">strtoupper</span><span class="p">(</span><span class="nv">$greeting</span><span class="p">);</span>
         <span class="p">}</span>
 
         <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">writeln</span><span class="p">(</span><span class="nv">$greeting</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">SUCCESS</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">ExitCode</span><span class="o">::</span><span class="na">Success</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
+<p>The class itself needs no constructor call and no parent class, the constructor is only used for dependency
+injection.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you need the full Symfony Console API — for example a custom <code class="docutils literal notranslate"><span class="pre">configure()</span></code> step or dynamic shell
+completion — you can still extend <code class="docutils literal notranslate"><span class="pre">OC\Core\Command\Base</span></code> and implement <code class="docutils literal notranslate"><span class="pre">configure()</span></code>/<code class="docutils literal notranslate"><span class="pre">execute()</span></code>
+directly, as commands did before Nextcloud 35. The <code class="docutils literal notranslate"><span class="pre">#[AsCommand]</span></code> style above is recommended for new
+commands because it needs far less boilerplate.</p>
+</div>
+<section id="multiple-commands-in-one-class">
+<h3>Multiple commands in one class<a class="headerlink" href="#multiple-commands-in-one-class" title="Link to this heading"></a></h3>
+<p>To group related commands that share dependencies, put <code class="docutils literal notranslate"><span class="pre">#[AsCommand]</span></code> on individual public methods instead of
+on the class. Nextcloud registers one occ command per attributed method:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">lib/Command/UserCommands.php</span><a class="headerlink" href="#id4" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserCommands</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">IUserManager</span> <span class="nv">$userManager</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="p">#[</span><span class="nd">AsCommand</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp:user:create&#39;</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span>
+        <span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span>
+        <span class="p">#[</span><span class="nd">Argument</span><span class="p">(</span><span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;The username of the user&#39;</span><span class="p">)]</span>
+        <span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">:</span> <span class="nx">ExitCode</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+        <span class="k">return</span> <span class="nx">ExitCode</span><span class="o">::</span><span class="na">Success</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="p">#[</span><span class="nd">AsCommand</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp:user:delete&#39;</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span>
+        <span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span>
+        <span class="p">#[</span><span class="nd">Argument</span><span class="p">(</span><span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;The username of the user&#39;</span><span class="p">)]</span>
+        <span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">:</span> <span class="nx">ExitCode</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+        <span class="k">return</span> <span class="nx">ExitCode</span><span class="o">::</span><span class="na">Success</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Only <code class="docutils literal notranslate"><span class="pre">OCA\MyApp\Command\UserCommands</span></code> needs to be listed in <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code>, both <code class="docutils literal notranslate"><span class="pre">myapp:user:create</span></code>
+and <code class="docutils literal notranslate"><span class="pre">myapp:user:delete</span></code> are registered from it.</p>
+</section>
 </section>
 <section id="command-naming">
 <h2>Command naming<a class="headerlink" href="#command-naming" title="Link to this heading"></a></h2>
@@ -233,73 +275,117 @@ hyphens as word separators.</p>
 </section>
 <section id="arguments-and-options">
 <h2>Arguments and options<a class="headerlink" href="#arguments-and-options" title="Link to this heading"></a></h2>
-<p>Arguments are positional. Options are prefixed with <code class="docutils literal notranslate"><span class="pre">--</span></code>.</p>
+<p>Arguments are positional and declared with the <code class="docutils literal notranslate"><span class="pre">#[Argument]</span></code> attribute on a parameter of <code class="docutils literal notranslate"><span class="pre">__invoke()</span></code>.
+Options are prefixed with <code class="docutils literal notranslate"><span class="pre">--</span></code> and declared the same way with <code class="docutils literal notranslate"><span class="pre">#[Option]</span></code>. Both attributes accept a
+<code class="docutils literal notranslate"><span class="pre">description</span></code> (shown in <code class="docutils literal notranslate"><span class="pre">--help</span></code>) and an optional <code class="docutils literal notranslate"><span class="pre">name</span></code>; when <code class="docutils literal notranslate"><span class="pre">name</span></code> is omitted it defaults to the
+parameter’s own name. <code class="docutils literal notranslate"><span class="pre">#[Option]</span></code> also accepts a single-letter <code class="docutils literal notranslate"><span class="pre">shortcut</span></code>, for example <code class="docutils literal notranslate"><span class="pre">shortcut:</span> <span class="pre">'b'</span></code> for
+<code class="docutils literal notranslate"><span class="pre">-b</span></code>.</p>
+<p>The parameter’s type and default value — not the attribute — decide whether the argument or option is required,
+repeatable, or a flag:</p>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Constant</p></th>
-<th class="head"><p>Meaning</p></th>
+<tr class="row-odd"><th class="head"><p>Parameter declaration</p></th>
+<th class="head"><p>Behavior</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">InputArgument::REQUIRED</span></code></p></td>
-<td><p>Argument must be provided</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">$name</span></code></p></td>
+<td><p>Required — the command fails if it is not provided.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">InputArgument::OPTIONAL</span></code></p></td>
-<td><p>Argument may be omitted</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">$name</span> <span class="pre">=</span> <span class="pre">'foo'</span></code></p></td>
+<td><p>Optional, defaults to <code class="docutils literal notranslate"><span class="pre">'foo'</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">InputArgument::IS_ARRAY</span></code></p></td>
-<td><p>Argument accepts multiple values</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">?string</span> <span class="pre">$name</span> <span class="pre">=</span> <span class="pre">null</span></code></p></td>
+<td><p>Optional and nullable, defaults to <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">InputOption::VALUE_NONE</span></code></p></td>
-<td><p>Flag — present or absent, no value</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">array</span> <span class="pre">$name</span> <span class="pre">=</span> <span class="pre">[]</span></code></p></td>
+<td><p>Repeatable — the value can be passed multiple times and is collected
+into an array. A variadic argument (<code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">...$name</span></code>) behaves the same
+way.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">InputOption::VALUE_REQUIRED</span></code></p></td>
-<td><p>Option requires a value</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">$name</span> <span class="pre">=</span> <span class="pre">false</span></code></p></td>
+<td><p>Flag (option only) — absent means <code class="docutils literal notranslate"><span class="pre">false</span></code>, present means <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">InputOption::VALUE_OPTIONAL</span></code></p></td>
-<td><p>Option value is optional</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">InputOption::VALUE_IS_ARRAY</span></code></p></td>
-<td><p>Option can be repeated</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">$name</span> <span class="pre">=</span> <span class="pre">true</span></code></p></td>
+<td><p>Flag (option only) that is on by default; pass <code class="docutils literal notranslate"><span class="pre">--no-name</span></code> to disable
+it.</p></td>
 </tr>
 </tbody>
 </table>
-<p>See the <a class="reference external" href="https://symfony.com/doc/current/console/input.html">Symfony Console documentation</a>
-for the full reference.</p>
+<p>Since PHP parameter names are camelCase but Nextcloud’s naming convention for options and arguments uses
+lowercase with hyphens, override the default name for such parameters, for example
+<code class="docutils literal notranslate"><span class="pre">#[Option(name:</span> <span class="pre">'object-store')]</span> <span class="pre">?string</span> <span class="pre">$objectStore</span> <span class="pre">=</span> <span class="pre">null</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">bool</span></code> option cannot be nullable when it also has a non-<code class="docutils literal notranslate"><span class="pre">null</span></code> default value — declare it as a plain
+non-nullable <code class="docutils literal notranslate"><span class="pre">bool</span></code> for flags.</p>
+</div>
+<p>The arguments and options handling in Nextcloud covers the common cases of the Symfony Console component.
+Consult <a class="reference external" href="https://symfony.com/doc/current/console/input.html">its documentation</a> for background on how
+Symfony itself models arguments and options.</p>
+</section>
+<section id="output-input-and-other-helpers">
+<h2>Output, input, and other helpers<a class="headerlink" href="#output-input-and-other-helpers" title="Link to this heading"></a></h2>
+<p>Besides <code class="docutils literal notranslate"><span class="pre">#[Argument]</span></code> and <code class="docutils literal notranslate"><span class="pre">#[Option]</span></code> parameters, <code class="docutils literal notranslate"><span class="pre">__invoke()</span></code> can request the following types by
+type-hint alone — no attribute needed, and the parameter order does not matter:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Console\IOutput</span></code>: write output with <code class="docutils literal notranslate"><span class="pre">write()</span></code>/<code class="docutils literal notranslate"><span class="pre">writeln()</span></code>, check the requested verbosity, or
+emit arrays and tables (see below).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Console\IInput</span></code>: read all given arguments and options with <code class="docutils literal notranslate"><span class="pre">getArguments()</span></code>/<code class="docutils literal notranslate"><span class="pre">getOptions()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Console\IQuestionHelper</span></code>: prompt the user for confirmation or input, see <a class="reference internal" href="#occ-commands-interactive"><span class="std std-ref">Interactive commands</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Console\OutputFormat</span></code>: only resolved when <code class="docutils literal notranslate"><span class="pre">supportsOutputFormat:</span> <span class="pre">true</span></code> is set on <code class="docutils literal notranslate"><span class="pre">#[AsCommand]</span></code>;
+tells you whether the administrator requested plain text or JSON output.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Set <code class="docutils literal notranslate"><span class="pre">supportsOutputFormat:</span> <span class="pre">true</span></code> on <code class="docutils literal notranslate"><span class="pre">#[AsCommand]</span></code> to let administrators request machine-readable output
+with <code class="docutils literal notranslate"><span class="pre">--output=json</span></code> or <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code>. Use <code class="docutils literal notranslate"><span class="pre">IOutput::writeArrayInOutputFormat()</span></code> or
+<code class="docutils literal notranslate"><span class="pre">IOutput::writeTableInOutputFormat()</span></code> to emit data that automatically respects the requested format.</p>
+</div>
 </section>
 <section id="return-codes">
 <h2>Return codes<a class="headerlink" href="#return-codes" title="Link to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">execute()</span></code> must return an integer. Use the constants defined by
-<code class="docutils literal notranslate"><span class="pre">OC\Core\Command\Base</span></code> (inherited from Symfony):</p>
+<p><code class="docutils literal notranslate"><span class="pre">__invoke()</span></code> (or an attributed method) must return an <code class="docutils literal notranslate"><span class="pre">OCP\Console\ExitCode</span></code> case, or a plain integer:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">self::SUCCESS</span></code> (<code class="docutils literal notranslate"><span class="pre">0</span></code>) — command completed successfully.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">self::FAILURE</span></code> (<code class="docutils literal notranslate"><span class="pre">1</span></code>) — command encountered an error.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">self::INVALID</span></code> (<code class="docutils literal notranslate"><span class="pre">2</span></code>) — command was called with invalid input.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExitCode::Success</span></code> (<code class="docutils literal notranslate"><span class="pre">0</span></code>): command completed successfully.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExitCode::Failure</span></code> (<code class="docutils literal notranslate"><span class="pre">1</span></code>): command encountered an error.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExitCode::Invalid</span></code> (<code class="docutils literal notranslate"><span class="pre">2</span></code>): command was called with invalid input.</p></li>
 </ul>
+<p>Returning the enum case is recommended; declare the method’s return type as <code class="docutils literal notranslate"><span class="pre">ExitCode</span></code>.</p>
 </section>
 <section id="interactive-commands">
-<h2>Interactive commands<a class="headerlink" href="#interactive-commands" title="Link to this heading"></a></h2>
+<span id="occ-commands-interactive"></span><h2>Interactive commands<a class="headerlink" href="#interactive-commands" title="Link to this heading"></a></h2>
 <p>Commands can ask for confirmation or prompt for values using Symfony’s
-<a class="reference external" href="https://symfony.com/doc/current/components/console/helpers/questionhelper.html">question helper</a>:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">Symfony\Component\Console\Helper\QuestionHelper</span><span class="p">;</span>
+<a class="reference external" href="https://symfony.com/doc/current/components/console/helpers/questionhelper.html">question helper</a>. Request an
+<code class="docutils literal notranslate"><span class="pre">OCP\Console\IQuestionHelper</span></code> as a parameter of <code class="docutils literal notranslate"><span class="pre">__invoke()</span></code>, the same way as <code class="docutils literal notranslate"><span class="pre">IOutput</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">OCP\Console\ExitCode</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Console\IOutput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Console\IQuestionHelper</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Symfony\Component\Console\Question\ConfirmationQuestion</span><span class="p">;</span>
 
-<span class="c1">// In execute():</span>
-<span class="sd">/** @var QuestionHelper $helper */</span>
-<span class="nv">$helper</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getHelper</span><span class="p">(</span><span class="s1">&#39;question&#39;</span><span class="p">);</span>
-<span class="nv">$question</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ConfirmationQuestion</span><span class="p">(</span><span class="s1">&#39;Are you sure? (y/n) &#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+<span class="k">class</span> <span class="nc">Greet</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
+        <span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span>
+        <span class="nx">IQuestionHelper</span> <span class="nv">$questionHelper</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">:</span> <span class="nx">ExitCode</span> <span class="p">{</span>
+        <span class="nv">$question</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ConfirmationQuestion</span><span class="p">(</span><span class="s1">&#39;Are you sure? (y/n) &#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">ask</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="nv">$output</span><span class="p">,</span> <span class="nv">$question</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">writeln</span><span class="p">(</span><span class="s1">&#39;Aborted.&#39;</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">FAILURE</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$questionHelper</span><span class="o">-&gt;</span><span class="na">ask</span><span class="p">(</span><span class="nv">$question</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">writeln</span><span class="p">(</span><span class="s1">&#39;Aborted.&#39;</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">ExitCode</span><span class="o">::</span><span class="na">Failure</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// ...</span>
+        <span class="k">return</span> <span class="nx">ExitCode</span><span class="o">::</span><span class="na">Success</span><span class="p">;</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Interactive prompts are skipped when occ is run non-interactively (e.g. from a
-cron job). Guard against this with <code class="docutils literal notranslate"><span class="pre">$input-&gt;isInteractive()</span></code> or use
-<code class="docutils literal notranslate"><span class="pre">--yes</span></code>/<code class="docutils literal notranslate"><span class="pre">--no</span></code> options so administrators can automate the command.</p>
+<p>When occ runs non-interactively (e.g. from a cron job), the question helper returns the question’s default
+value instead of prompting. Choose a safe default, or add <code class="docutils literal notranslate"><span class="pre">--yes</span></code>/<code class="docutils literal notranslate"><span class="pre">--no</span></code> options so administrators can
+automate the command.</p>
 </div>
 </section>
 </section>
@@ -316,7 +402,7 @@ cron job). Guard against this with <code class="docutils literal notranslate"><s
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Aug 17, 2026.
       </span></p>
   </div>
 

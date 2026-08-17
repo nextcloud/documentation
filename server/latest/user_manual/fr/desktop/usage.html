@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using the Synchronization Client &mdash; Nextcloud 35 User Manual</title>
+  <title>Fonctionnement du client de synchronisation &mdash; Nextcloud 35 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -83,16 +83,16 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Désinstallation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using the Synchronization Client</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#systray-icon">Systray Icon</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuring-nextcloud-account-settings">Configuring Nextcloud Account Settings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#adding-new-accounts">Adding New Accounts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#file-manager-overlay-icons">File Manager Overlay Icons</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#set-the-user-status">Set the user status</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sharing-from-your-desktop">Sharing From Your Desktop</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-window">General Window</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-network-window">Using the Network Window</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-ignored-files-editor">Using the Ignored Files Editor</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Fonctionnement du client de synchronisation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#systray-icon">Icône de la zone de notification système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-nextcloud-account-settings">Configuration des paramètres du compte Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-new-accounts">Ajouter de nouveaux comptes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-manager-overlay-icons">Icônes superposées du gestionnaire de fichiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-the-user-status">Définir le statut de l’utilisateur</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-from-your-desktop">Partage depuis votre bureau</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-window">Fenêtre Général</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-network-window">Utilisation de la fenêtre Réseau</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-ignored-files-editor">Utilisation de l’éditeur de fichiers ignorés</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
@@ -101,7 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">L’agent de mise à jour automatique</a></li>
-<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Canaux de mise à jour</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Conflits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html">FAQ</a></li>
 </ul>
@@ -127,7 +127,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
-      <li class="breadcrumb-item active">Using the Synchronization Client</li>
+      <li class="breadcrumb-item active">Fonctionnement du client de synchronisation</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/usage.rst" class="fa fa-github"> Éditer sur GitHub</a>
       </li>
@@ -138,246 +138,161 @@
            <div itemprop="articleBody">
              
   <section id="using-the-synchronization-client">
-<h1>Using the Synchronization Client<a class="headerlink" href="#using-the-synchronization-client" title="Lien vers cette rubrique"></a></h1>
-<p>The Nextcloud Desktop Client remains in the background and is visible as an icon
-in the system tray (Windows, KDE), menu bar (macOS), or notification area
-(Linux).</p>
+<h1>Fonctionnement du client de synchronisation<a class="headerlink" href="#using-the-synchronization-client" title="Lien vers cette rubrique"></a></h1>
+<p>Le client Nextcloud reste ouvert en arrière-plan ; son icône est visible dans la barre système, le menu macOS ou la zone de notification Linux.</p>
 <figure class="align-default">
-<img alt="Status icon, green circle and white checkmark" src="../../_images/icon.png" />
+<img alt="Icône d’état,cercle vert avec coche blanche" src="../../_images/icon.png" />
 </figure>
-<p>The status indicator uses icons to indicate the current status of your
-synchronization. The green circle with the white checkmark tells you that your
-synchronization is current and you are connected to your Nextcloud server.</p>
+<p>Chaque icône représente un état précis de la synchronisation. Le cercle vert avec coche blanche signifie que tout est synchronisé et que le client est bien connecté au serveur Nextcloud.</p>
 <figure class="align-default">
-<img alt="Status icon, blue circle and white semi-circles" src="../../_images/icon-syncing.png" />
+<img alt="Icône d’état, cercle bleu avec demi-cercle blanc" src="../../_images/icon-syncing.png" />
 </figure>
-<p>The blue icon with the white semi-circles means synchronization is in progress.</p>
+<p>L’icône bleue avec demi-cercles blancs indique qu’une synchronisation est en cours.</p>
 <figure class="align-default">
 <img alt="Status icon, grey circle and vertical parallel lines" src="../../_images/icon-paused.png" />
 </figure>
-<p>The grey icon with the parallel lines tells you your synchronization
-has been paused. (Most likely by you.)</p>
+<p>L’icône grise avec des lignes parallèles vous indique que votre synchronisation a été mise en pause (très probablement par vous-même).</p>
 <figure class="align-default">
 <img alt="Status icon, gray circle and three horizontal white dots" src="../../_images/icon-offline.png" />
 </figure>
-<p>The gray icon with three white dots means your sync client has lost its
-connection with your Nextcloud server.</p>
+<p>L’icône grise avec trois points blancs signifie que votre synchronisation a perdu sa connexion avec votre serveur Nextcloud.</p>
 <figure class="align-default">
-<img alt="Status icon, sign &quot;!&quot; in yellow circle" src="../../_images/icon-information.png" />
+<img alt="Icône d’état, signe « ! » dans un cercle jaune" src="../../_images/icon-information.png" />
 </figure>
-<p>When you see a yellow circle with the sign « ! » that is the informational icon,
-so you should click it to see what it has to tell you.</p>
+<p>Quand vous voyez un cercle jaune avec le signe « ! », ce qui est l’icone d’informations, vous pouvez alors cliquer dessus pour voir ce que ça indique.</p>
 <figure class="align-default">
-<img alt="Status icon, red circle and white x" src="../../_images/icon-error.png" />
+<img alt="Icône d'état, cercle rouge avec x blanc" src="../../_images/icon-error.png" />
 </figure>
-<p>The red circle with the white « x » indicates a configuration error, such as an
-incorrect login or server URL.</p>
+<p>Le cercle rouge avec le « x » blanc indique une erreur de configuration, comme un identifiant incorrect ou une mauvaise URL de serveur.</p>
 <section id="systray-icon">
-<h2>Systray Icon<a class="headerlink" href="#systray-icon" title="Lien vers cette rubrique"></a></h2>
-<p>A right-click on the systray icon opens a menu for quick access to multiple
-operations.</p>
+<h2>Icône de la zone de notification système<a class="headerlink" href="#systray-icon" title="Lien vers cette rubrique"></a></h2>
+<p>Un clic droit sur l’icône de la zone de notification système ouvre un menu pour accéder rapidement à plusieurs opérations.</p>
 <figure class="align-default">
-<img alt="the right-click sync client menu" src="../../_images/traymenu.png" />
+<img alt="le menu du clic droit du client de synchronisation" src="../../_images/traymenu.png" />
 </figure>
-<p>This menu provides the following options:</p>
+<p>Ce menu fournit les options suivantes :</p>
 <ul class="simple">
-<li><p>Open main dialog</p></li>
-<li><p>Pause sync/Resume sync</p></li>
-<li><p>Settings</p></li>
-<li><p>Exit Nextcloud, logging out and closing the client</p></li>
+<li><p>Ouvrir la boîte de dialogue principale</p></li>
+<li><p>Mettre en pause et reprendre la synchronisation</p></li>
+<li><p>Paramètres</p></li>
+<li><p>Quitter Nextcloud, ce qui déconnecte et ferme le client</p></li>
 </ul>
-<p>A left-click on your systray icon opens the main dialog of the desktop client.</p>
+<p>Un clic gauche sur l’icône de la zone de notification système ouvre la boîte de dialogue principale du client de bureau.</p>
 <figure class="align-default">
-<img alt="Main dialog" src="../../_images/main_dialog.png" />
+<img alt="Boîte de dialogue principale" src="../../_images/main_dialog.png" />
 </figure>
-<p>The main dialogs show recent activities, errors and server notifications.</p>
-<p>When clicking on the main dialog and then clicking on the avatar of the user, the Settings can be opened.</p>
+<p>Le dialogue principal affiche les activités récentes, les erreurs et les notifications du serveur.</p>
+<p>Les Paramètres peuvent être ouverts en cliquant sur la boîte de dialogue principale puis sur l’avatar de l’utilisateur.</p>
 </section>
 <section id="configuring-nextcloud-account-settings">
-<h2>Configuring Nextcloud Account Settings<a class="headerlink" href="#configuring-nextcloud-account-settings" title="Lien vers cette rubrique"></a></h2>
+<h2>Configuration des paramètres du compte Nextcloud<a class="headerlink" href="#configuring-nextcloud-account-settings" title="Lien vers cette rubrique"></a></h2>
 <figure class="align-default">
-<img alt="Main dialog" src="../../_images/settingsdialog.png" />
+<img alt="Boîte de dialogue principale" src="../../_images/settingsdialog.png" />
 </figure>
-<p>At the top of the window are tabs for each configured sync account, and two
-others for General and Network settings. On your account tabs you
-have the following features:</p>
+<p>En haut de la fenêtre figurent des onglets pour chacun des comptes de synchronisation configurés, et deux autres qui sont Général et Réseau pour le paramétrage. Sur les onglets de vos comptes, vous disposez des fonctionnalités suivantes :</p>
 <ul class="simple">
-<li><p>Connection status, showing which Nextcloud server you are connected to, and
-your Nextcloud username.</p></li>
-<li><p>Used and available space on the server.</p></li>
-<li><p>Current synchronization status.</p></li>
-<li><p><strong>Add Folder Sync Connection</strong> button.</p></li>
+<li><p>État de la connexion, montrant à quel serveur Nextcloud vous êtes connecté, et votre nom d’utilisateur Nextcloud.</p></li>
+<li><p>Espace utilisé et disponible sur le serveur.</p></li>
+<li><p>État actuel de la synchronisation.</p></li>
+<li><p>Bouton <strong>Ajouter une synchronisation de dossier</strong>.</p></li>
 </ul>
-<p>The little button with three dots (the overflow menu) that sits to the right of
-the sync status bar offers additional options:</p>
+<p>Le bouton bouton avec trois points (le menu déroulant) qui se situe à droite de la barre d’état de synchronisation offre des options supplémentaires :</p>
 <ul class="simple">
-<li><p>Open Folder</p></li>
-<li><p>Choose What to Sync (This appears only when your file tree is collapsed, and
-expands the file tree)</p></li>
-<li><p>Pause Sync / Resume Sync</p></li>
-<li><p>Remove folder sync connection</p></li>
-<li><p>Availability (Only available if virtual files support is enabled)</p></li>
-<li><p>Enable virtual file support/Disable virtual file support</p></li>
+<li><p>Ouvrir le dossier</p></li>
+<li><p>Choisir le contenu à synchroniser (cela n’apparait que si votre arborescence de fichiers est repliée, et développe l’arborescence)</p></li>
+<li><p>Mettre en pause et reprendre la synchronisation</p></li>
+<li><p>Supprimer la synchronisation du dossier</p></li>
+<li><p>Disponibilité (uniquement disponible si la prise en charge des fichiers virtuels est activée)</p></li>
+<li><p>Activer/désactiver la prise en charge des fichiers virtuels</p></li>
 </ul>
-<p><strong>Open Folder</strong> opens your local Nextcloud sync folder.</p>
-<p><strong>Pause Sync</strong> pauses sync operations without making any changes to your
-account. It will continue to update file and folder lists, without
-downloading or updating files. To stop all sync activity use <strong>Remove
-Folder Sync Connection</strong>.</p>
+<p><strong>Ouvrir le dossier</strong> ouvre le dossier de synchronisation Nextcloud local.</p>
+<p><strong>Mettre en pause</strong> suspend les opérations de synchronisation sans faire de changement sur votre compte. Les listes de fichiers et de dossiers continueront à être actualisées, mais sans téléchargement ni téléversement de fichiers. Pour arrêter toute activité de synchronisation, utilisez <strong>Supprimer la synchronisation du dossier</strong>.</p>
 <figure class="align-default">
-<img alt="Extra options for sync operations" src="../../_images/general_settings_folder_context_menu.png" />
+<img alt="Options supplémentaires des opérations de synchronisation" src="../../_images/general_settings_folder_context_menu.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Nextcloud does not preserve the mtime (modification time) of
-directories, though it does update the mtimes on files. See
-<a class="reference external" href="https://github.com/owncloud/core/issues/7009">Wrong folder date when syncing</a> for discussion of this.</p>
+<p>Nextcloud ne préserve pas la date de modification (mtime) des répertoires, bien qu’il actualise celle des fichiers. Voir <a class="reference external" href="https://github.com/owncloud/core/issues/7009">Date de dossier incorrecte lors de la synchronisation</a> (en anglais) pour une discussion sur ce sujet.</p>
 </div>
 </section>
 <section id="adding-new-accounts">
-<h2>Adding New Accounts<a class="headerlink" href="#adding-new-accounts" title="Lien vers cette rubrique"></a></h2>
-<p>You may configure multiple Nextcloud accounts in your desktop sync client. Simply
-click the <strong>Account</strong> &gt; <strong>Add New</strong> button on any account tab to add a new
-account, and then follow the account creation wizard. The new account will
-appear as a new tab in the settings dialog, where you can adjust its settings at
-any time. Use <strong>Account</strong> &gt; <strong>Remove</strong> to delete accounts.</p>
+<h2>Ajouter de nouveaux comptes<a class="headerlink" href="#adding-new-accounts" title="Lien vers cette rubrique"></a></h2>
+<p>Vous pouvez configurer plusieurs comptes Nextcloud dans votre client de synchronisation. Cliquez simplement sur le bouton <strong>Compte</strong> &gt; <strong>Ajouter nouveau</strong> sur n’importe quel onglet de compte pour en ajouter un nouveau, et suivez ensuite l’assistant de création de compte. Le nouveau compte apparaitra dans un nouvel onglet dans la boîte de dialogue des paramètres, où vous pourrez ajuster ses paramètres à tout moment. Utilisez <strong>Compte</strong> &gt; <strong>Supprimer</strong> pour supprimer les comptes.</p>
 </section>
 <section id="file-manager-overlay-icons">
-<h2>File Manager Overlay Icons<a class="headerlink" href="#file-manager-overlay-icons" title="Lien vers cette rubrique"></a></h2>
-<p>The Nextcloud sync client provides overlay icons, in addition to the normal file
-type icons, for your system file manager (Explorer on Windows, Finder on Mac and
-Nautilus on Linux) to indicate the sync status of your Nextcloud files.</p>
-<p>The overlay icons are similar to the systray icons introduced above. They
-behave differently on files and directories according to sync status
-and errors.</p>
-<p>The overlay icon of an individual file indicates its current sync state. If the
-file is in sync with the server version, it displays a green checkmark.</p>
-<p>If the file is ignored from syncing, for example because it is on your
-exclude list, or because it is a symbolic link, it displays a warning icon.</p>
-<p>If there is a sync error, or the file is blacklisted, it displays an
-eye-catching red X.</p>
-<p>If the file is waiting to be synced, or is currently syncing, the overlay
-icon displays a blue cycling icon.</p>
-<p>When the client is offline, no icons are shown to reflect that the
-folder is currently out of sync and no changes are synced to the server.</p>
-<p>The overlay icon of a synced directory indicates the status of the files in the
-directory. If there are any sync errors, the directory is marked with a warning
-icon.</p>
-<p>If a directory includes ignored files that are marked with warning icons
-that does not change the status of the parent directories.</p>
+<h2>Icônes superposées du gestionnaire de fichiers<a class="headerlink" href="#file-manager-overlay-icons" title="Lien vers cette rubrique"></a></h2>
+<p>En plus des icônes normales des types de fichiers, le client de synchronisation Nextcloud fournit des icônes superposées pour que votre gestionnaire de fichiers système (Explorateur sur Windows, Finder sur Mac et Nautilus sur Linux) puisse indiquer le statut actuel de la synchronisation de vos fichiers Nextcloud.</p>
+<p>Les icônes superposées sont similaires à celles de la zone de notification système présentées plus haut. Elles se comportent différemment sur les fichiers et les répertoires en fonction de l’état et des erreurs de synchronisation.</p>
+<p>L’icône superposée sur un fichier individuel indique son état actuel de synchronisation. Si le fichier correspond à sa version sur le serveur, elle affiche une coche verte.</p>
+<p>Si la synchronisation du fichier est ignorée, par exemple parce qu’il figure dans la liste d’exclusion, ou parce qu’il s’agit d’un lien symbolique, il affichera une icône d’avertissement.</p>
+<p>En cas d’erreur de synchronisation, ou si le fichier est sur liste noire, l’icône affiche un X rouge pour attirer l’attention.</p>
+<p>Si le fichier est en attente de synchronisation, ou s’il est en cours de synchronisation, l’icône superposée affiche un cercle bleu en rotation.</p>
+<p>Quand le client est hors-ligne, aucune icône n’est affichée afin de signaler que le dossier ne se synchronise plus et qu’aucune modification n’est envoyée vers le serveur.</p>
+<p>L’icône superposée d’un répertoire synchronisé indique l’état des fichiers contenus dans ce répertoire. En cas d’erreur de synchronisation, le répertoire est marqué avec une icône d’avertissement.</p>
+<p>Si un répertoire contient des fichiers ignorés qui sont marqués avec des icônes d’avertissement, cela ne change pas le statut des répertoires parents.</p>
 </section>
 <section id="set-the-user-status">
-<h2>Set the user status<a class="headerlink" href="#set-the-user-status" title="Lien vers cette rubrique"></a></h2>
-<p>If you have the user status app installed on your Nextcloud server,
-you can set your user status from the desktop client. To do so, open
-the main dialog. Then click on your avatar and then click on the three
-dots. In the menu that opens click on <strong>Set status</strong>.</p>
+<h2>Définir le statut de l’utilisateur<a class="headerlink" href="#set-the-user-status" title="Lien vers cette rubrique"></a></h2>
+<p>Si vous avez l’application de statut utilisateur installée sur votre serveur Nextcloud, vous pouvez définir celui-ci à partir du client de bureau. Pour cela, ouvrez la boîte de dialogue principale. Cliquez ensuite sur votre avatar puis sur les trois points. Dans le menu qui s’ouvre, cliquez sur <strong>Définir le statut</strong>.</p>
 <figure class="align-default">
-<img alt="Open user status dialog from main dialog." src="../../_images/user_status_selector_main_dialog.png" />
+<img alt="Ouverture du dialogue de statut utilisateur depuis la boîte de dialogue principale." src="../../_images/user_status_selector_main_dialog.png" />
 </figure>
-<p>In the dialog that opens, you can set your online status if
-you click on either <strong>Online</strong>, <strong>Away</strong>, <strong>Do not disturb</strong> or
-<strong>Invisible</strong>. You can also set a custom status message with the text
-field below or choose one of the predefined status messages below. It
-is also possible to set a custom emoji if you click on the button with
-the emoji beside the text input field. The last thing you might want
-to set is when your user status should be cleared. You can choose the
-period after which the user status will be cleared by clicking on the
-button on the left hand side of the text <strong>Clear status message after</strong>.</p>
+<p>Dans la boîte de dialogue qui s’ouvre, vous pouvez définir votre statut en ligne si vous cliquez sur <strong>En ligne</strong>, <strong>Absent</strong>, <strong>Ne pas déranger</strong> ou <strong>Invisible</strong>. Vous pouvez également définir un message de statut personnalisé avec le champ texte au-dessous ou choisir un des messages de statut prédéfinis plus bas. Il est aussi possible de définir un emoji personnalisé en cliquant sur le bouton avec un emoji à côté du champ de saisie de texte. La dernière chose qu’il est possible de faire est d’effacer votre statut utilisateur. Vous pouvez choisir après combien de temps le statut utilisateur sera effacé en cliquant sur le bouton situé à droite du texte <strong>Effacer le message de statut après</strong>.</p>
 <figure class="align-default">
-<img alt="Dialog to set user status." src="../../_images/user_status-selector_dialog.png" />
+<img alt="Boîte de dialogue pour définir le statut de l'utilisateur." src="../../_images/user_status-selector_dialog.png" />
 </figure>
-<p>If you are happy with the status you have created you can enable this
-status with the button <strong>Set status message</strong>. If you had already a
-status set, you can clear the status by clicking the cutton <strong>Clear
-status message</strong>.</p>
+<p>Si le statut que vous avez créé vous convient, vous pouvez l’activer avec le bouton <strong>Définir le message de statut</strong>. Si un statut a déjà été défini, vous pouvez l’effacer en cliquant sur le bouton <strong>Effacer le message de statut</strong>.</p>
 </section>
 <section id="sharing-from-your-desktop">
-<h2>Sharing From Your Desktop<a class="headerlink" href="#sharing-from-your-desktop" title="Lien vers cette rubrique"></a></h2>
-<p>The Nextcloud desktop sync client integrates with your file manager. Finder on
-macOS and Explorer on Windows. Linux users must install an additional package
-depending on the used file manager. Available are e.g. <code class="docutils literal notranslate"><span class="pre">nautilus-nextcloud</span></code>
-(Ubuntu/Debian), <code class="docutils literal notranslate"><span class="pre">dolphin-nextcloud</span></code> (Kubuntu), <code class="docutils literal notranslate"><span class="pre">nemo-nextcloud</span></code> and
-<code class="docutils literal notranslate"><span class="pre">caja-nextcloud</span></code>. You can create  share links, and share with internal
-Nextcloud users the same way as in your Nextcloud Web interface.</p>
+<h2>Partage depuis votre bureau<a class="headerlink" href="#sharing-from-your-desktop" title="Lien vers cette rubrique"></a></h2>
+<p>Le client de bureau de synchronisation Nextcloud s’intègre à votre gestionnaire de fichiers. Finder sur macOS et Explorateur sur Windows. Les utilisateurs de Linux doivent installer un paquet supplémentaire en fonction du gestionnaire de fichiers utilisé. Ceux disponibles sont par exemple <code class="docutils literal notranslate"><span class="pre">nautilus-nextcloud</span></code> (Ubuntu/Debian), <code class="docutils literal notranslate"><span class="pre">dolphin-nextcloud</span></code> (Kubuntu), <code class="docutils literal notranslate"><span class="pre">nemo-nextcloud</span></code> et <code class="docutils literal notranslate"><span class="pre">caja-nextcloud</span></code>. Vous pouvez créer des liens de partage et faire des partages avec des utilisateurs internes de Nextcloud de la même manière que dans votre interface Web Nextcloud.</p>
 <p>In your file explorer, click on a file and in the context menu go to
 <strong>Nextcloud</strong> and then click on <strong>Share options</strong> to bring up the Share
 dialog.</p>
 <figure class="align-default">
-<img alt="Sharing from Windows Explorer." src="../../_images/share_context_menu.png" />
+<img alt="Partage depuis l'Explorateur Windows." src="../../_images/share_context_menu.png" />
 </figure>
-<p>From this dialog you can share a file.</p>
+<p>Vous pouvez partager un fichier depuis cette boîte de dialogue.</p>
 <figure class="align-default">
-<img alt="Share dialog" src="../../_images/share_dialog.png" />
+<img alt="Boîte de dialogue de partage" src="../../_images/share_dialog.png" />
 </figure>
 </section>
 <section id="general-window">
-<h2>General Window<a class="headerlink" href="#general-window" title="Lien vers cette rubrique"></a></h2>
-<p>The General window has configuration options such as <strong>Launch on System
-Startup</strong>, <strong>Use Monochrome Icons</strong>, and <strong>Show Server Notifications</strong>. This
-is where you will find the <strong>Edit Ignored Files</strong> button, to launch the ignored
-files editor, and <strong>Ask confirmation before downloading
-folders larger than [folder size]</strong>.</p>
+<h2>Fenêtre Général<a class="headerlink" href="#general-window" title="Lien vers cette rubrique"></a></h2>
+<p>La fenêtre Général possède des options de configuration telles que <strong>Lancer au démarrage du système</strong>, <strong>Utiliser les icônes monochromes</strong> et <strong>Afficher les notifications serveur</strong>. C’est là que vous trouverez le bouton <strong>Modifier les fichiers ignorés</strong> pour lancer l’éditeur des fichiers ignorés ainsi que <strong>Demander une confirmation avant de synchroniser les dossiers de plus de [taille du dossier]</strong>.</p>
 <figure class="align-default">
-<img alt="General window contains configuration options." src="../../_images/settings_general.png" />
+<img alt="La fenêtre Général contient des options de configuration." src="../../_images/settings_general.png" />
 </figure>
 </section>
 <section id="using-the-network-window">
-<h2>Using the Network Window<a class="headerlink" href="#using-the-network-window" title="Lien vers cette rubrique"></a></h2>
-<p id="index-0">The Network settings window enables you to define network proxy settings, and
-also to limit download and upload bandwidth.</p>
+<h2>Utilisation de la fenêtre Réseau<a class="headerlink" href="#using-the-network-window" title="Lien vers cette rubrique"></a></h2>
+<p id="index-0">La fenêtre des paramètres du Réseau vous permet de définir le paramétrage du serveur proxy ainsi que de limiter la bande passante en envoi et réception.</p>
 <figure class="align-default">
 <img alt="../../_images/settings_network.png" src="../../_images/settings_network.png" />
 </figure>
 </section>
 <section id="using-the-ignored-files-editor">
-<span id="usingignoredfileseditor-label"></span><h2>Using the Ignored Files Editor<a class="headerlink" href="#using-the-ignored-files-editor" title="Lien vers cette rubrique"></a></h2>
-<p id="index-1">You might have some local files or directories that you do not want to backup
-and store on the server. To identify and exclude these files or directories, you
-can use the <em>Ignored Files Editor</em> (General tab).</p>
+<span id="usingignoredfileseditor-label"></span><h2>Utilisation de l’éditeur de fichiers ignorés<a class="headerlink" href="#using-the-ignored-files-editor" title="Lien vers cette rubrique"></a></h2>
+<p id="index-1">Il peut y avoir certains fichiers ou répertoires locaux que vous ne voulez pas sauvegarder ni stocker sur le serveur. Pour identifier et exclure ces fichiers et répertoires, vous pouvez utiliser l”<em>Éditeur de fichiers ignorés</em> (onglet Général).</p>
 <figure class="align-default">
 <img alt="../../_images/ignored_files_editor.png" src="../../_images/ignored_files_editor.png" />
 </figure>
-<p>For your convenience, the editor is pre-populated with a default list of
-typical
-ignore patterns. These patterns are contained in a system file (typically
-<code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>) located in the Nextcloud Client application directory. You
-cannot modify these pre-populated patterns directly from the editor. However,
-if
-necessary, you can hover over any pattern in the list to show the path and
-filename associated with that pattern, locate the file, and edit the
-<code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code> file.</p>
+<p>Pour votre confort, l’éditeur est prérempli avec une liste de modèles d’exclusion typique. Ces modèles sont contenus dans un fichier système (généralement <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>) situé dans le répertoire de l’application Client Nextcloud. Vous ne pouvez pas modifier ces modèles préremplis directement depuis l’éditeur. Cependant, si besoin, vous pouvez survoler un modèle de la liste pour afficher le chemin et le nom de fichier associé à ce modèle, localiser le fichier et éditer le fichier <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Modifying the global exclude definition file might render the client
-unusable or result in undesired behavior.</p>
+<p>La modification du fichier global des définitions d’exclusions peut rendre le client inutilisable ou provoquer un comportement non désiré.</p>
 </div>
-<p>Each line in the editor contains an ignore pattern string. When creating custom
-patterns, in addition to being able to use normal characters to define an
-ignore pattern, you can use wildcards characters for matching values.  As an
-example, you can use an asterisk (<code class="docutils literal notranslate"><span class="pre">*</span></code>) to identify an arbitrary number of
-characters or a question mark (<code class="docutils literal notranslate"><span class="pre">?</span></code>) to identify a single character.</p>
-<p>Patterns that end with a slash character (<code class="docutils literal notranslate"><span class="pre">/</span></code>) are applied to only directory
-components of the path being checked.</p>
+<p>Chaque ligne dans l’éditeur contient un modèle de chaîne à ignorer. Lors de la création de modèles personnalisés, en plus de pouvoir utiliser des caractères normaux pour définir un modèle d’exclusion, vous pouvez utiliser des caractères génériques pour remplacer des valeurs. Par exemple, vous pouvez utiliser un astérisque (<code class="docutils literal notranslate"><span class="pre">*</span></code>) qui correspondra à un nombre quelconque de caractères, ou un point d’interrogation (<code class="docutils literal notranslate"><span class="pre">?</span></code>) pour correspondre à un caractère unique.</p>
+<p>Les modèles qui finissent par un caractère de barre oblique (<code class="docutils literal notranslate"><span class="pre">/</span></code>) sont appliqués uniquement aux composants de répertoires des chemins en cours de vérification.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Custom entries are currently not validated for syntactical
-correctness by the editor, so you will not see any warnings for bad
-syntax. If your synchronization does not work as you expected, check your
-syntax.</p>
+<p>Actuellement, les entrées personnalisées ne font pas l’objet d’une correction syntaxique de la part de l’éditeur, vous ne verrez donc aucun avertissement en cas de syntaxe incorrecte. Si votre synchronisation ne fonctionne pas comme prévu, vérifiez votre syntaxe.</p>
 </div>
-<p>Each pattern string in the list is followed by a checkbox. When the check box
-contains a check mark, in addition to ignoring the file or directory component
-matched by the pattern, any matched files are also deemed « fleeting metadata »
-and removed by the client.</p>
-<p>In addition to excluding files and directories that use patterns defined in
-this list:</p>
+<p>Chaque chaîne de modèle de la liste est suivie par une case à cocher. Quand cette case est cochée, en plus de l’exclusion du fichier ou du composant de répertoire qui correspond au modèle, tous les fichiers qui correspondent sont considérés comme des « métadonnées éphémères » et sont supprimés par le client.</p>
+<p>En plus d’exclure les fichiers et répertoires qui utilisent les modèles définis dans cette liste :</p>
 <ul class="simple">
-<li><p>The Nextcloud Client always excludes files containing characters that cannot
-be synchronized to other file systems.</p></li>
-<li><p>Files are removed that cause individual errors three times during a
-synchronization. However, the client provides the option of retrying a
-synchronization three additional times on files that produce errors.</p></li>
+<li><p>Le client Nextcloud exclut toujours les fichiers qui contiennent des caractères qui ne peuvent pas être synchronisés vers d’autres systèmes de fichiers.</p></li>
+<li><p>Des fichiers sont supprimés, ce qui provoque des erreurs individuelles trois fois au cours d’une synchronisation. Cependant, le client offre une option pour retenter une synchronisation trois fois supplémentaires sur les fichiers qui produisent des erreurs.</p></li>
 </ul>
 </section>
 </section>

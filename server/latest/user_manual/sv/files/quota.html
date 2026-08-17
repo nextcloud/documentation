@@ -79,9 +79,12 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Filer och synkronisering</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Komma åt dina filer</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="managing.html">Hantera dina filer</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="deleted_file_management.html">Hantera borttagna filer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deleted_file_management.html">Deleted files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="version_control.html">Versionshantering</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Lagringskvot</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Lagringskvot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#deleted-files-and-the-trash-bin">Deleted files and the trash bin</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="tagging.html">System tags</a></li>
 </ul>
 </li>
@@ -127,22 +130,44 @@
              
   <section id="storage-quota">
 <h1>Lagringskvot<a class="headerlink" href="#storage-quota" title="Link to this heading"></a></h1>
-<p>Your Nextcloud administrator has the option to set a storage quota on users. Look at
-your Personal page to see what your quota is, and how much you have used.</p>
+<p>Your Nextcloud administrator can set a storage quota for your account. Open
+your Personal settings page to see your quota and how much storage you have
+used.</p>
 <figure class="align-default">
 <img alt="Storage quota indicator on the Personal page" src="../../_images/quota1.png" />
 </figure>
 <p>Det kan vara bra att känna till hur kvoten beräknas.</p>
-<p>Metadata (miniatyrbilder, tillfälliga filer, cache och krypteringsnycklar) tar upp omkring 10 % av diskutrymmet men räknas inte in i användarnas kvoter. Vissa appar, till exempel Kalender och Kontakter, lagrar information i databasen. Dessa data räknas inte in i din kvot.</p>
-<p>När andra användare delar filer med dig räknas de delade filerna in i den ursprungliga ägarens kvot. När du delar en mapp och tillåter andra användare eller grupper att ladda upp filer till den räknas alla uppladdade och redigerade filer in i din kvot. Om du delar vidare filer som har delats med dig räknas de fortfarande in i den ursprungliga ägarens kvot.</p>
-<p>Krypterade filer är något större än okrypterade filer. Det är den okrypterade storleken som räknas in i din kvot.</p>
-<p>Borttagna filer som fortfarande finns i papperskorgen räknas inte in i kvoten. Papperskorgen får använda upp till 50 % av kvoten och borttagna filer behålls som standard i 30 dagar. Om de borttagna filerna överstiger 50 % av kvoten tas de äldsta filerna bort tills den sammanlagda storleken understiger 50 %.</p>
-<div class="admonition note">
-<p class="admonition-title">Observera</p>
-<p>Administratören kan ha konfigurerat en särskild lagringstid för papperskorgen som åsidosätter den automatiska hanteringen av lagringsutrymmet. Mer information finns i <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#deleted-items-trash-bin">administratörsdokumentationen</a>.</p>
-</div>
-<p>När versionshantering är aktiverad räknas äldre filversioner inte in i kvoten.</p>
-<p>Om du skapar en offentlig delning via en URL och tillåter uppladdningar räknas alla uppladdade filer in i din kvot.</p>
+<p>Metadata such as thumbnails, temporary files, caches, and encryption keys can
+use disk space without counting against your user quota. Some apps store data
+in the database, such as the Calendar and Contacts apps. This data is not
+included in the file-storage quota.</p>
+<p>When other users share files with you, the shared files normally count against
+the original owner’s quota. When you share a folder and allow other users or
+groups to upload or edit files in it, those files count against your quota.
+When you re-share files shared with you, the re-share normally continues to
+count against the original owner’s quota.</p>
+<p>Encrypted files can use more physical storage than unencrypted files. The
+quota calculation uses the file size reported by Nextcloud’s storage layer.</p>
+<p>When the Versions app is enabled, older file versions are managed separately
+from the normal storage quota according to the app’s retention and storage
+rules.</p>
+<p>If you create a public share through a URL and allow uploads, uploaded files
+count against your quota.</p>
+<section id="deleted-files-and-the-trash-bin">
+<h2>Deleted files and the trash bin<a class="headerlink" href="#deleted-files-and-the-trash-bin" title="Link to this heading"></a></h2>
+<p>Files and folders in your trash bin do not count against your normal storage
+quota. The trash bin nevertheless has its own storage limit.</p>
+<p>For accounts with a quota, the default amount of space available to the trash
+bin is calculated as 50% of the account’s remaining quota space. This is
+calculated after the account’s active files have been taken into account; it is
+not 50% of the total quota.</p>
+<p>For accounts without a quota, the default trash-bin limit is calculated using
+available filesystem space instead. An administrator can configure a global or
+per-account trash-bin size that overrides the calculated default.</p>
+<p>Your administrator can also configure minimum and maximum trash-bin retention
+periods, or disable automatic expiration. See the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html">Deleted Files section of the Administrator Manual</a>
+for details.</p>
+</section>
 </section>
 
 

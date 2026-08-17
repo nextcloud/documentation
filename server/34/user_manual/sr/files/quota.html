@@ -79,9 +79,12 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Фајлови и синхронизација</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="managing.html">Managing your files</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="deleted_file_management.html">Управљање обрисаним фајловима</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deleted_file_management.html">Deleted files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="version_control.html">Контрола верзија</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Квота складишта</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Квота складишта</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#deleted-files-and-the-trash-bin">Deleted files and the trash bin</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="tagging.html">System tags</a></li>
 </ul>
 </li>
@@ -127,22 +130,44 @@
              
   <section id="storage-quota">
 <h1>Квота складишта<a class="headerlink" href="#storage-quota" title="Link to this heading"></a></h1>
-<p>Your Nextcloud administrator has the option to set a storage quota on users. Look at
-your Personal page to see what your quota is, and how much you have used.</p>
+<p>Your Nextcloud administrator can set a storage quota for your account. Open
+your Personal settings page to see your quota and how much storage you have
+used.</p>
 <figure class="align-default">
 <img alt="Storage quota indicator on the Personal page" src="../../_images/quota1.png" />
 </figure>
 <p>Корисно је да разумете како се израчунава ваша квота.</p>
-<p>Метаподаци (сличице, привремени фајлови, кеш и кључеви за шифровање) заузимају отприлике 10% простора на диску, али не улазе у искоришћеност корисничких квота. Неке апликације, као што су Календар и Контакти, смештају информације у базу података. И ови подаци су искључени из ваше квоте.</p>
-<p>Када остали корисници поделе фајлове са вама, ти дељени фајлови се урачунавају као део квоте оног корисника који је поделио фајлове. Када ви поделите фолдер и дозволите да остали корисници или групе отпремају фајлове у њега, сви отпремљени и уређивани фајлови се броје као искоришћење ваше квоте. Када поново поделите фајлове који су подељени са вама, поновно дељење се још увек броји као искоришћавање квоте оригиналног корисника који је власник подељених фајлова.</p>
-<p>Шифровани фајлови су мало већи од нешифрованих фајлова; за искоришћавање ваше квоте се рачуна величина нешифрованог фајла.</p>
-<p>Обрисани фајлови који се још увек налазе у корипи за отпатке не улазе у искоришћење квоте. Корпа за отпатке се поставља на 50% квоте. Застаревање обрисаних фајлова се поставља на 30 дана. Када величина обрисаних фајлова премаши 50% квоте, онда се уклањају најстарији фајлови све док се укупна величина не спусти испод 50%.</p>
-<div class="admonition note">
-<p class="admonition-title">Белешка</p>
-<p>Могуће је да је ваш администратор поставио период задржавања у корпи за отпатке да би премостио управљање простором складишта. Погледајте <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#deleted-items-trash-bin">администраторску документацију</a> да сазнате више детаља.</p>
-</div>
-<p>Када је укључена контрола верзија, старије верзија фајла се не рачунају у искоришћење квоте.</p>
-<p>Ако креирате јавно дељење преко URL и дозволите отпремања, сви отпремљени фајлови улазе у рачунање искоришћења ваше квоте.</p>
+<p>Metadata such as thumbnails, temporary files, caches, and encryption keys can
+use disk space without counting against your user quota. Some apps store data
+in the database, such as the Calendar and Contacts apps. This data is not
+included in the file-storage quota.</p>
+<p>When other users share files with you, the shared files normally count against
+the original owner’s quota. When you share a folder and allow other users or
+groups to upload or edit files in it, those files count against your quota.
+When you re-share files shared with you, the re-share normally continues to
+count against the original owner’s quota.</p>
+<p>Encrypted files can use more physical storage than unencrypted files. The
+quota calculation uses the file size reported by Nextcloud’s storage layer.</p>
+<p>When the Versions app is enabled, older file versions are managed separately
+from the normal storage quota according to the app’s retention and storage
+rules.</p>
+<p>If you create a public share through a URL and allow uploads, uploaded files
+count against your quota.</p>
+<section id="deleted-files-and-the-trash-bin">
+<h2>Deleted files and the trash bin<a class="headerlink" href="#deleted-files-and-the-trash-bin" title="Link to this heading"></a></h2>
+<p>Files and folders in your trash bin do not count against your normal storage
+quota. The trash bin nevertheless has its own storage limit.</p>
+<p>For accounts with a quota, the default amount of space available to the trash
+bin is calculated as 50% of the account’s remaining quota space. This is
+calculated after the account’s active files have been taken into account; it is
+not 50% of the total quota.</p>
+<p>For accounts without a quota, the default trash-bin limit is calculated using
+available filesystem space instead. An administrator can configure a global or
+per-account trash-bin size that overrides the calculated default.</p>
+<p>Your administrator can also configure minimum and maximum trash-bin retention
+periods, or disable automatic expiration. See the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html">Deleted Files section of the Administrator Manual</a>
+for details.</p>
+</section>
 </section>
 
 
