@@ -52,7 +52,7 @@ Choose the policy
 -----------------
 
 Block every standard desktop client
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Match the case-insensitive substring:
 
@@ -61,7 +61,7 @@ Match the case-insensitive substring:
     mirall/
 
 Block releases older than 34.0.2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Web-server regular expressions do not compare arbitrary version strings as
 semantic versions. The following case-insensitive expression is deliberately
