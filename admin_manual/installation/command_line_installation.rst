@@ -53,6 +53,10 @@ For the complete manual-installation prerequisites, see
 
       $ sudo -E -u www-data php /var/www/nextcloud/occ maintenance:install --help
 
+   When the database runs on another host, encrypt the connection using the
+   ``--database-ssl-*`` options described in
+   :ref:`command_line_installation_ssl_label` below.
+
 Supported databases are:
 
 - ``sqlite`` (SQLite)
@@ -63,5 +67,72 @@ Supported databases are:
 
 The selected database requires its corresponding PHP extension or driver to be
 installed and enabled.
+
+.. _command_line_installation_ssl_label:
+
+Encrypted database connection
+-----------------------------
+
+.. versionadded:: 35
+
+When the database does not run on the same host as Nextcloud, the connection
+should be encrypted so that the credentials and all queries are not sent in
+plaintext. The following options configure this during the installation, so
+that the installation itself already uses an encrypted connection:
+
+.. list-table:: SSL/TLS options of ``maintenance:install``
+   :header-rows: 1
+   :widths: 30 20 50
+
+   * - Option
+     - Supported by
+     - Description
+   * - ``--database-ssl-mode``
+     - ``pgsql``
+     - Encryption mode of the connection, for example ``require`` or
+       ``verify-full``. See the `PostgreSQL documentation
+       <https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS>`_
+       for the available modes.
+   * - ``--database-ssl-ca``
+     - ``mysql``, ``pgsql``
+     - Path to the CA certificate the database server is verified against.
+   * - ``--database-ssl-cert``
+     - ``mysql``, ``pgsql``
+     - Path to the client certificate used to authenticate against the
+       database server.
+   * - ``--database-ssl-key``
+     - ``mysql``, ``pgsql``
+     - Path to the private key belonging to the client certificate.
+   * - ``--database-ssl-crl``
+     - ``pgsql``
+     - Path to the certificate revocation list.
+   * - ``--database-ssl-no-verify``
+     - ``mysql``
+     - Do not verify that the certificate of the database server matches the
+       hostname used to connect. MySQL and MariaDB verify this by default,
+       PostgreSQL only in the ``verify-full`` mode.
+
+``--database-ssl-cert`` and ``--database-ssl-key`` have to be provided
+together. Passing an option that the selected database does not support aborts
+the installation with an error — ``sqlite`` and ``oci`` support none of them.
+The certificates and keys have to be readable by the PHP process.
+
+This example installs Nextcloud with a remote MySQL database, verifying the
+server against a CA certificate:
+
+.. code-block:: console
+
+   $ sudo -E -u www-data php /var/www/nextcloud/occ maintenance:install \
+     --database mysql --database-name nextcloud \
+     --database-host db.example.com \
+     --database-user nextcloud \
+     --database-ssl-ca /etc/ssl/nextcloud/ca-cert.pem \
+     --admin-user admin
+
+Nextcloud writes the resulting configuration to ``dbdriveroptions``
+(MySQL/MariaDB) or ``pgsql_ssl`` (PostgreSQL) in ``config.php``, see
+:doc:`../configuration_server/config_sample_php_parameters`. The same
+connection can be configured for the Installation Wizard, see
+:ref:`autoconfig_database_encryption_label`.
 
 See :ref:`command_line_installation_label` for more information.
