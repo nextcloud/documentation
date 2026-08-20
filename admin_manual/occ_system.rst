@@ -904,6 +904,22 @@ Display the available installation options:
          --database-pass[=DATABASE-PASS]        Password of the database login
          --database-table-space[=DATABASE-TABLE-SPACE]
                                                    Table space of the database (``oci`` only)
+         --database-ssl-mode[=DATABASE-SSL-MODE]
+                                                   Encryption mode for the database connection,
+                                                   e.g. "require" or "verify-full" (``pgsql`` only)
+         --database-ssl-ca[=DATABASE-SSL-CA]    Path to the CA certificate the database server
+                                                   is verified against (``mysql`` and ``pgsql`` only)
+         --database-ssl-cert[=DATABASE-SSL-CERT]
+                                                   Path to the client certificate used to
+                                                   authenticate against the database
+                                                   (``mysql`` and ``pgsql`` only)
+         --database-ssl-key[=DATABASE-SSL-KEY]  Path to the private key of the client certificate
+                                                   (``mysql`` and ``pgsql`` only)
+         --database-ssl-crl[=DATABASE-SSL-CRL]  Path to the certificate revocation list
+                                                   (``pgsql`` only)
+         --database-ssl-no-verify               Do not verify that the database server certificate
+                                                   matches the hostname used to connect
+                                                   (``mysql`` only)
          --disable-admin-user                   Disable the creation of an administrator login
          --admin-user[=ADMIN-USER]              Login for initial administrator account [default: "admin"]
          --admin-pass[=ADMIN-PASS]              Password for initial administrator login
@@ -934,6 +950,11 @@ Supported databases:
 * ``pgsql`` — PostgreSQL
 * ``oci`` — Oracle; contact `Nextcloud GmbH
   <https://nextcloud.com/enterprise/>`_ for enterprise support
+
+.. versionadded:: 35
+   The ``--database-ssl-*`` options set up an SSL/TLS encrypted connection to
+   the database, see
+   :ref:`Encrypted database connection <command_line_installation_ssl_label>`.
 
 .. _command_line_upgrade_label:
 

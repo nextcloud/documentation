@@ -188,6 +188,13 @@ This just covers the SSL database configuration on the Nextcloud server. First y
 
 Adjust the paths to the pem files for your environment.
 
+.. tip::
+   The encrypted connection can also be set up during the installation, so that
+   no unencrypted connection is used at any point. See
+   :ref:`autoconfig_database_encryption_label` when installing with an
+   autoconfig file, or :ref:`command_line_installation_ssl_label` when
+   installing with ``occ maintenance:install``.
+
 .. _db-config-postgresql-label:
 
 PostgreSQL database
@@ -291,6 +298,35 @@ this:
     "dbpassword"    => "password",
     "dbhost"        => "localhost",
     "dbtableprefix" => "oc_",
+
+SSL for PostgreSQL database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+As with MySQL, enabling SSL is only necessary if your database does not reside on the same server as your
+Nextcloud instance. First configure your database server accordingly, then add the ``pgsql_ssl``
+configuration to your :file:`config/config.php`.
+
+::
+
+  'pgsql_ssl' => [
+    'mode' => 'verify-full',
+    'rootcert' => '/../ca-cert.pem',
+    'cert' => '/../ssl-cert.pem',
+    'key' => '/../ssl-key.pem',
+  ],
+
+The ``mode`` corresponds to the ``sslmode`` connection parameter of PostgreSQL, see the
+`PostgreSQL documentation
+<https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS>`_ for the
+available modes. Only ``verify-full`` verifies that the certificate of the database server was
+issued for the hostname used to connect. Adjust the paths to the pem files for your environment.
+
+.. tip::
+   The encrypted connection can also be set up during the installation, so that
+   no unencrypted connection is used at any point. See
+   :ref:`autoconfig_database_encryption_label` when installing with an
+   autoconfig file, or :ref:`command_line_installation_ssl_label` when
+   installing with ``occ maintenance:install``.
 
 .. _db-troubleshooting-label:
 
