@@ -191,9 +191,11 @@ Adjust the paths to the pem files for your environment.
 .. tip::
    The encrypted connection can also be set up during the installation, so that
    no unencrypted connection is used at any point. See
-   :ref:`autoconfig_database_encryption_label` when installing with an
-   autoconfig file, or :ref:`command_line_installation_ssl_label` when
-   installing with ``occ maintenance:install``.
+   :ref:`installation_wizard_database_encryption_label` when installing with the
+   Installation Wizard, :ref:`autoconfig_database_encryption_label` when
+   installing with an autoconfig file, or
+   :ref:`command_line_installation_ssl_label` when installing with
+   ``occ maintenance:install``.
 
 .. _db-config-postgresql-label:
 
@@ -324,9 +326,11 @@ issued for the hostname used to connect. Adjust the paths to the pem files for y
 .. tip::
    The encrypted connection can also be set up during the installation, so that
    no unencrypted connection is used at any point. See
-   :ref:`autoconfig_database_encryption_label` when installing with an
-   autoconfig file, or :ref:`command_line_installation_ssl_label` when
-   installing with ``occ maintenance:install``.
+   :ref:`installation_wizard_database_encryption_label` when installing with the
+   Installation Wizard, :ref:`autoconfig_database_encryption_label` when
+   installing with an autoconfig file, or
+   :ref:`command_line_installation_ssl_label` when installing with
+   ``occ maintenance:install``.
 
 .. _db-troubleshooting-label:
 
