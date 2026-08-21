@@ -38,9 +38,17 @@ Note that apache by default strips this. Make sure you have ``mod_headers``, ``m
 Security considerations
 -----------------------
 
-Nextcloud ``OAuth2`` implementation currently does not support scoped access. This means that every token has full access to the complete account including read and write permission to the stored files. It is essential to store the ``OAuth2`` tokens in a safe way!
+Nextcloud's ``OAuth2`` implementation does not support scoped access. Every access token therefore grants read and write
+access to all data available to the account. Treat the token like the account credentials and only provide it to clients
+and intermediaries that you fully trust.
 
-Without scopes and restrictable access it is not recommended to use a Nextcloud instance as a user authentication service.
+This risk applies whenever a service receives or stores the Nextcloud access token and can use it to call Nextcloud
+APIs. If an authentication proxy completes the OAuth2 flow without exposing the token to its upstream application,
+that application does not receive direct access to Nextcloud. The proxy still holds a full-access token and must store
+and handle it securely.
+
+Do not use Nextcloud's built-in OAuth2 provider when the client requires restricted access to account data. If you want
+to use Nextcloud as an identity provider, see :doc:`../configuration_user/user_auth_oidc`.
 
 Skipping pre-login warning
 --------------------------
