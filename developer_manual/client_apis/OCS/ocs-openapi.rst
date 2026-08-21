@@ -95,6 +95,13 @@ For details take a look at :ref:`OCS <ocscontroller>`.
             }
         }
 
+.. note::
+
+   If you use a custom base controller instead of extending ``OCSController`` directly, the name of that
+   base class must also end with ``OCSController`` (for example ``MyBaseOCSController``).
+   ``openapi-extractor`` only checks the name of the immediate parent class, not the full inheritance
+   chain, so a base class with a different name is not recognized as OCS and produces a confusing warning.
+
 CAREFULLY handle empty values in JSON Responses
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
