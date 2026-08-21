@@ -54,4 +54,4 @@ Information about code changes can be found on `php.net <https://www.php.net/mig
 Entity slug deprecation
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The usage of :ref:`entity slugs <database-entity-slugs>` has been deprecated. There is no provided replacement. If your app needs slugs, add your own logic to create them.
+The usage of `entity slugs <https://docs.nextcloud.com/server/34/developer_manual/basics/storage/database.html#slugs>`_ has been deprecated. There is no provided replacement. If your app needs slugs, add your own logic to create them.
