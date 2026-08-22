@@ -89,8 +89,8 @@
 <li class="toctree-l2"><a class="reference internal" href="php_configuration.html">Preparing PHP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Install from the command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automated installation with <code class="docutils literal notranslate"><span class="pre">autoconfig.php</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">NGINX configuration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#nextcloud-in-the-webroot-of-nginx">Nextcloud in the webroot of NGINX</a></li>
@@ -452,6 +452,15 @@ webroot of your nginx installation. In this example it is
 <span class="w">    </span><span class="c1"># Serve static files</span>
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.(?:css|js|mjs|svg|gif|ico|jpg|png|webp|wasm|tflite|map|ogg|flac|mp4|webm)$</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="s">/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
+<span class="w">	</span>
+<span class="w">		</span><span class="c1"># HSTS settings</span>
+<span class="w">		</span><span class="c1"># WARNING: Only add the preload option once you read about</span>
+<span class="w">		</span><span class="c1"># the consequences in https://hstspreload.org/. This option</span>
+<span class="w">		</span><span class="c1"># will add the domain to a hardcoded list that is shipped</span>
+<span class="w">		</span><span class="c1"># in all major browsers and getting removed from this list</span>
+<span class="w">		</span><span class="c1"># could take several months.</span>
+<span class="w">		</span><span class="c1">#add_header Strict-Transport-Security &quot;max-age=31536000; includeSubDomains; preload&quot; always;</span>
+
 <span class="w">        </span><span class="c1"># HTTP response headers borrowed from Nextcloud `.htaccess`</span>
 <span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Cache-Control</span><span class="w">                     </span><span class="s">&quot;public,</span><span class="w"> </span><span class="s">max-age=15778463</span><span class="nv">$asset_immutable&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Referrer-Policy</span><span class="w">                   </span><span class="s">&quot;no-referrer&quot;</span><span class="w">       </span><span class="s">always</span><span class="p">;</span>
