@@ -95,6 +95,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#configuring-a-mysql-or-mariadb-database">Configuring a MySQL or MariaDB database</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ssl-for-mysql-database">SSL for MySQL Database</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#postgresql-database">PostgreSQL database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ssl-for-postgresql-database">SSL for PostgreSQL database</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
@@ -370,6 +371,14 @@ This just covers the SSL database configuration on the Nextcloud server. First y
 </pre></div>
 </div>
 <p>Adjust the paths to the pem files for your environment.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The encrypted connection can also be set up during the installation, so that
+no unencrypted connection is used at any point. See
+<a class="reference internal" href="../installation/automatic_configuration.html#autoconfig-database-encryption-label"><span class="std std-ref">Encrypted database connection</span></a> when installing with an
+autoconfig file, or <a class="reference internal" href="../installation/command_line_installation.html#command-line-installation-ssl-label"><span class="std std-ref">Encrypted database connection</span></a> when
+installing with <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">maintenance:install</span></code>.</p>
+</div>
 </section>
 <section id="postgresql-database">
 <span id="db-config-postgresql-label"></span><h3>PostgreSQL database<a class="headerlink" href="#postgresql-database" title="Link to this heading"></a></h3>
@@ -461,6 +470,32 @@ this:</p>
   &quot;dbhost&quot;        =&gt; &quot;localhost&quot;,
   &quot;dbtableprefix&quot; =&gt; &quot;oc_&quot;,
 </pre></div>
+</div>
+</section>
+<section id="ssl-for-postgresql-database">
+<h3>SSL for PostgreSQL database<a class="headerlink" href="#ssl-for-postgresql-database" title="Link to this heading"></a></h3>
+<p>As with MySQL, enabling SSL is only necessary if your database does not reside on the same server as your
+Nextcloud instance. First configure your database server accordingly, then add the <code class="docutils literal notranslate"><span class="pre">pgsql_ssl</span></code>
+configuration to your <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;pgsql_ssl&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+  <span class="s1">&#39;mode&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;verify-full&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;rootcert&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/../ca-cert.pem&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;cert&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/../ssl-cert.pem&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/../ssl-key.pem&#39;</span><span class="p">,</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">mode</span></code> corresponds to the <code class="docutils literal notranslate"><span class="pre">sslmode</span></code> connection parameter of PostgreSQL, see the
+<a class="reference external" href="https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS">PostgreSQL documentation</a> for the
+available modes. Only <code class="docutils literal notranslate"><span class="pre">verify-full</span></code> verifies that the certificate of the database server was
+issued for the hostname used to connect. Adjust the paths to the pem files for your environment.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The encrypted connection can also be set up during the installation, so that
+no unencrypted connection is used at any point. See
+<a class="reference internal" href="../installation/automatic_configuration.html#autoconfig-database-encryption-label"><span class="std std-ref">Encrypted database connection</span></a> when installing with an
+autoconfig file, or <a class="reference internal" href="../installation/command_line_installation.html#command-line-installation-ssl-label"><span class="std std-ref">Encrypted database connection</span></a> when
+installing with <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">maintenance:install</span></code>.</p>
 </div>
 </section>
 </section>
