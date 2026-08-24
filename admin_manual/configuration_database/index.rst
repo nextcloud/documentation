@@ -1,6 +1,6 @@
-======================
-Database configuration
-======================
+================================
+Database setup and configuration
+================================
 
 .. toctree::
     :maxdepth: 2
