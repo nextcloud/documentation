@@ -1,5 +1,5 @@
 =========================
-Converting database types 
+Converting database types
 =========================
 
 You can convert a SQLite database to a better performing MySQL, MariaDB or
