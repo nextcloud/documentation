@@ -1,6 +1,6 @@
-=============================
-Configuring a database server
-=============================
+========================
+Set up a database server
+========================
 
 Nextcloud requires a database in which administrative data is stored. The following databases are currently supported:
 
