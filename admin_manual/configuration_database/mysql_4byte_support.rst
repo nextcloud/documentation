@@ -1,13 +1,16 @@
-=====================================
-Enabling MySQL/MariaDB 4-byte support
-=====================================
+===========================================
+Enabling MySQL/MariaDB full Unicode support
+===========================================
 
 .. note::
 
-    Be sure to backup your database before performing this database upgrade.
+    Be sure to back up your database before performing this database upgrade.
 
-In order to use Emojis (textbased smilies) on your Nextcloud server with a MySQL database, the
-installation needs to be tweaked a bit.
+To store the full range of Unicode characters in Nextcloud, including emoji,
+less-common writing systems, historic scripts, and specialized symbols, a
+MySQL or MariaDB database must use the ``utf8mb4`` character set. The older
+three-byte ``utf8`` character set cannot store characters outside `Unicode's
+Basic Multilingual Plane <https://en.wikipedia.org/wiki/Plane_(Unicode)>`_.
 
 .. warning::
 
@@ -15,12 +18,12 @@ installation needs to be tweaked a bit.
     For a list of supported MySQL and MariaDB versions, see our
     :doc:`system requirements documentation <../installation/system_requirements>`.
 
-1. Make sure the following InnoDB settings are set on your MySQL server::
+1. Make sure the following InnoDB setting is enabled on your database server::
 
     [mysqld]
     innodb_file_per_table=1
 
-2. Restart the MySQL server in case you changed the configuration in step 1.
+2. Restart the database server if you changed the configuration in step 1.
 
 You can then verify that the change worked:
 
@@ -38,35 +41,50 @@ The result should look like this::
     +-----------------------+-------+
     1 row in set (0.00 sec)
 
-3. Open a shell, change dir (adjust ``/var/www/nextcloud`` to your nextcloud location if needed), and put your nextcloud instance in maintenance mode, if it isn't already::
+3. Open a shell, change to the Nextcloud installation directory (adjust
+   ``/var/www/nextcloud`` as needed), and enable maintenance mode if it is not
+   already enabled::
 
    $ cd /var/www/nextcloud
    $ sudo -E -u www-data php occ maintenance:mode --on
 
-4. Change your databases character set and collation:
+4. Change the database character set to ``utf8mb4`` and set its default
+   collation:
 
 .. code-block:: sql
 
     ALTER DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
-5. Set the ``mysql.utf8mb4`` config to true in your config.php::
+.. note::
+
+    The character set determines which characters can be stored. The collation
+    determines how text is compared and sorted.
+
+5. Enable ``utf8mb4`` support in the Nextcloud system configuration::
 
     $ sudo -E -u www-data php occ config:system:set mysql.utf8mb4 --type boolean --value="true"
 
-6. Convert all existing tables to the new collation by running the repair step::
+6. Run the repair command to convert the existing tables to the ``utf8mb4``
+   character set and collation::
 
     $ sudo -E -u www-data php occ maintenance:repair
 
 .. note::
 
-    This will also change the `ROW_FORMAT` to `DYNAMIC` for your tables.
+    This also changes the ``ROW_FORMAT`` of all tables to ``DYNAMIC``.
 
 7. Disable maintenance mode::
 
    $ sudo -E -u www-data php occ maintenance:mode --off
 
 Now you should be able to use Emojis in your file names, calendar events, comments and many more.
+Nextcloud can now use the full range of Unicode characters - such as emojis - in file names,
+calendar events, and comments.
 
 .. note::
 
-    Also make sure your backup strategy still work. If you use ``mysqldump`` make sure to add the ``--default-character-set=utf8mb4`` option. Otherwise your backups are broken and restoring them will result in ``?`` instead of the emojis, making files inaccessible.
+    Make sure your backup strategy supports ``utf8mb4``. If you use
+    ``mysqldump``, add the ``--default-character-set=utf8mb4`` option.
+    Otherwise, four-byte Unicode characters may not be preserved correctly
+    when the backup is restored. (A common symptom of this problem is the
+    appearance of ``?`` instead of emojis in text and file names).
