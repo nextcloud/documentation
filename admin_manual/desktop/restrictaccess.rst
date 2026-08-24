@@ -22,7 +22,7 @@ blocks currently available desktop client versions:
 
 .. code-block:: console
 
-    sudo -u www-data php occ config:system:set \
+    sudo -E -u www-data php occ config:system:set \
         minimum.supported.desktop.version --value='99.0.0'
 
 Record the previous value before changing it so that the policy can be rolled
