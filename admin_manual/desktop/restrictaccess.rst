@@ -1,6 +1,60 @@
-=============================================
-Block desktop client access at the HTTP layer
-=============================================
+===========================
+Block desktop client access
+===========================
+
+Administrators can restrict desktop client synchronization in three ways. The
+appropriate method depends on whether access should be controlled by client
+version, by a Nextcloud workflow rule, or before a request reaches Nextcloud.
+
+Blocking methods
+----------------
+
+Minimum supported desktop version
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Nextcloud Server can deny synchronization to desktop clients older than a
+configured version. Set ``minimum.supported.desktop.version`` to the oldest
+release that should be allowed. Clients reporting that version or a newer one
+can connect, while older clients are denied.
+
+For example, the following command sets the minimum to ``99.0.0`` and therefore
+blocks currently available desktop client versions:
+
+.. code-block:: console
+
+    sudo -u www-data php occ config:system:set \
+        minimum.supported.desktop.version --value='99.0.0'
+
+Record the previous value before changing it so that the policy can be rolled
+back. This method is best suited to a version-based policy. A future client
+whose version is ``99.0.0`` or higher would be allowed, so the setting should
+not be treated as a permanent unconditional block.
+
+File Access Control
+^^^^^^^^^^^^^^^^^^^
+
+The `File Access Control app
+<https://docs.nextcloud.com/server/stable/admin_manual/file_workflows/access_control.html>`_
+can deny file operations based on the type of client making the request. After
+enabling the app, open the Flow settings in the administration settings and
+create a blocking rule with **Request user agent** set to **Desktop client**.
+Add further rule conditions when the restriction should apply only to selected
+users, groups, files, or folders.
+
+.. warning::
+
+   File Access Control rules are evaluated during file operations and can have
+   a negative performance impact, particularly on busy installations or with
+   complex rule sets. Test the rule and monitor server performance before
+   rolling it out broadly.
+
+This method blocks matching file operations, including synchronization. It
+does not reject every non-file endpoint used by the desktop client. Use an
+HTTP-layer rule when the complete request path must be blocked before it
+reaches Nextcloud.
+
+HTTP layer
+^^^^^^^^^^
 
 Server administrators can reject Nextcloud Desktop requests at a web server,
 reverse proxy, or web application firewall (WAF) by matching the HTTP
