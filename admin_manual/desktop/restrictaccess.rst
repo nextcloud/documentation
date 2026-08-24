@@ -33,13 +33,13 @@ not be treated as a permanent unconditional block.
 File Access Control
 ^^^^^^^^^^^^^^^^^^^
 
-The `File Access Control app
-<https://docs.nextcloud.com/server/stable/admin_manual/file_workflows/access_control.html>`_
-can deny file operations based on the type of client making the request. After
+The `File Access Control app`_ can deny file operations based on the type of client making the request. After
 enabling the app, open the Flow settings in the administration settings and
 create a blocking rule with **Request user agent** set to **Desktop client**.
 Add further rule conditions when the restriction should apply only to selected
 users, groups, files, or folders.
+
+.. _`File Access Control app`: https://docs.nextcloud.com/server/latest/admin_manual/file_workflows/access_control.html
 
 .. warning::
 
