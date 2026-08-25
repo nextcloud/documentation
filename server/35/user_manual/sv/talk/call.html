@@ -1,0 +1,776 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="sv" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ansluta till ett samtal &mdash; Nextcloud 35 User Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/talk/call.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=cf80ac52"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=55d7b627"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Sök" href="../search.html" />
+    <link rel="next" title="Skärmdelning" href="call_screenshare.html" />
+    <link rel="prev" title="Samtal" href="call_index.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Sök i dokumentationen</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Sök i dokumentationen"
+             aria-label="Sök i dokumentationen" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduktion till användarhandboken för Nextcloud 35</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Använda appen Aktivitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Filer och synkronisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Grupprogram</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Talk</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="chat_index.html">Chatt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conversation_index.html">Samtal</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="call_index.html">Samtal</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Ansluta till ett samtal</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#starting-or-joining-a-call">Starta eller ansluta till ett samtal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#during-a-call">Under ett samtal</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="call_screenshare.html">Skärmdelning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="call_views.html">Samtalslayout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="call_transcription.html">Transkribering och översättning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="federation_index.html">Federering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moderator_index.html">För moderatorer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html">Ansluta till ett samtal eller en chatt som gäst</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Hantera dina inställningar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universell åtkomst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Använda tvåfaktorsautentisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Hantera anslutna webbläsare och enheter</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Talk</a></li>
+          <li class="breadcrumb-item"><a href="call_index.html">Samtal</a></li>
+      <li class="breadcrumb-item active">Ansluta till ett samtal</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/call.rst" class="fa fa-github"> Editera på GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="joining-a-call">
+<h1>Ansluta till ett samtal<a class="headerlink" href="#joining-a-call" title="Link to this heading"></a></h1>
+<section id="starting-or-joining-a-call">
+<h2>Starta eller ansluta till ett samtal<a class="headerlink" href="#starting-or-joining-a-call" title="Link to this heading"></a></h2>
+<section id="browser-and-talk-desktop-client">
+<h3>Webbläsare och Talk-skrivbordsklient<a class="headerlink" href="#browser-and-talk-desktop-client" title="Link to this heading"></a></h3>
+<p>När du deltar i ett samtal och har behörighet kan du när som helst starta ett samtal genom att klicka på <code class="docutils literal notranslate"><span class="pre">Starta</span> <span class="pre">samtal</span></code> i det övre fältet. Om ett samtal redan pågår ansluter du genom att klicka på den gröna knappen <code class="docutils literal notranslate"><span class="pre">Anslut</span> <span class="pre">till</span> <span class="pre">samtal</span></code> i chattområdet eller det övre fältet.</p>
+<a class="reference internal image-reference" href="../../_images/join-call.png"><img alt="Talk conversation with a green Join call button" src="../../_images/join-call.png" style="width: 600px;" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Om du ännu inte har gett webbläsaren eller Talk-skrivbordsklienten behörighet att använda mikrofonen och kameran uppmanas du att göra det när du klickar på <code class="docutils literal notranslate"><span class="pre">Starta</span> <span class="pre">samtal</span></code> eller <code class="docutils literal notranslate"><span class="pre">Anslut</span> <span class="pre">till</span> <span class="pre">samtal</span></code>. Välj vilken mikrofon och kamera du vill använda och klicka på <code class="docutils literal notranslate"><span class="pre">Tillåt</span></code> för att ge åtkomst till enheterna.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Medieinställningar</span></code> visas, där du kan anpassa samtalsupplevelsen:</p>
+<a class="reference internal image-reference" href="../../_images/media-settings-initial.png"><img alt="Talk media settings dialog before joining a call" src="../../_images/media-settings-initial.png" style="width: 600px;" />
+</a>
+<section id="controlling-audio-and-video">
+<h4>Styra ljud och video<a class="headerlink" href="#controlling-audio-and-video" title="Link to this heading"></a></h4>
+<p>Använd mikrofon- och kameraikonerna längst ned i videoförhandsvisningen för att slå på eller stänga av mikrofonen och aktivera eller inaktivera kameran innan du ansluter.</p>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Om en eller båda ikonerna är nedtonade saknas antingen en installerad mikrofon eller kamera, eller så har du inte gett webbläsaren eller Talk-skrivbordsklienten behörighet att använda mikrofonen eller kameran. Kontrollera att behörigheten har beviljats och att mikrofonen och kameran inte används av något annat program.</p>
+</div>
+<p>I enhetsinställningarna kan du välja vilken mikrofon och kamera som ska användas. Det är praktiskt om flera mikrofoner eller kameror är tillgängliga:</p>
+<a class="reference internal image-reference" href="../../_images/media-settings-devices.png"><img alt="Talk media settings showing microphone and camera device selection" src="../../_images/media-settings-devices.png" style="width: 400px;" />
+</a>
+</section>
+<section id="backgrounds">
+<h4>Bakgrunder<a class="headerlink" href="#backgrounds" title="Link to this heading"></a></h4>
+<p>Med bakgrunder kan du ersätta videobakgrunden med någon av de fördefinierade bilderna. Du kan också ladda upp en egen bild eller välja en bild som redan finns i Nextcloud Filer. Du kan även välja alternativet <code class="docutils literal notranslate"><span class="pre">Oskärpa</span></code> för att göra bakgrunden i den direktsända videon oskarp.</p>
+<a class="reference internal image-reference" href="../../_images/media-settings-backgrounds.png"><img alt="Talk media settings showing virtual background and blur options for video" src="../../_images/media-settings-backgrounds.png" style="width: 400px;" />
+</a>
+</section>
+<section id="immediately-join-a-call">
+<h4>Ansluta direkt till ett samtal<a class="headerlink" href="#immediately-join-a-call" title="Link to this heading"></a></h4>
+<p>Om du vill hoppa över <code class="docutils literal notranslate"><span class="pre">Medieinställningar</span></code> i fortsättningen aktiverar du reglaget <code class="docutils literal notranslate"><span class="pre">Hoppa</span> <span class="pre">över</span> <span class="pre">enhetsförhandsvisningen</span> <span class="pre">innan</span> <span class="pre">du</span> <span class="pre">ansluter</span> <span class="pre">till</span> <span class="pre">ett</span> <span class="pre">samtal</span></code> i appinställningarna. Vid framtida samtal i den här konversationen ansluter du direkt utan att förhandsvisningsdialogrutan visas.</p>
+</section>
+<section id="record-a-call">
+<h4>Spela in ett samtal<a class="headerlink" href="#record-a-call" title="Link to this heading"></a></h4>
+<p>Om du startade samtalet och vill spela in det markerar du kryssrutan <code class="docutils literal notranslate"><span class="pre">Starta</span> <span class="pre">inspelningen</span> <span class="pre">direkt</span> <span class="pre">när</span> <span class="pre">samtalet</span> <span class="pre">börjar</span></code>. Inspelningsalternativet kanske inte är tillgängligt, beroende på om systemadministratörerna har aktiverat det och om du har behörigheten <code class="docutils literal notranslate"><span class="pre">Moderator</span></code> för konversationen. Om du ansluter till ett samtal som spelas in kan du behöva samtycka innan du får ansluta. Mer information finns i <a class="reference internal" href="call_recording.html#call-recording"><span class="std std-ref">Samtalsinspelning</span></a>.</p>
+</section>
+<section id="start-the-call">
+<h4>Starta samtalet<a class="headerlink" href="#start-the-call" title="Link to this heading"></a></h4>
+<p>Klicka på knappen <code class="docutils literal notranslate"><span class="pre">Starta</span> <span class="pre">samtal</span></code> längst ned i <code class="docutils literal notranslate"><span class="pre">Medieinställningar</span></code> för att avisera alla deltagare i konversationen om samtalet. Om du inte vill avisera de andra deltagarna öppnar du trepunktsmenyn till vänster om knappen <code class="docutils literal notranslate"><span class="pre">Starta</span> <span class="pre">samtal</span></code> och väljer <code class="docutils literal notranslate"><span class="pre">Samtal</span> <span class="pre">utan</span> <span class="pre">avisering</span></code>.</p>
+<a class="reference internal image-reference" href="../../_images/media-settings-silent-call.png"><img alt="Talk Call without notification option in media settings" src="../../_images/media-settings-silent-call.png" style="width: 400px;" />
+</a>
+<a class="reference internal image-reference" href="../../_images/media-settings-silent-call-2.png"><img alt="Talk confirmation step for calling without sending a notification" src="../../_images/media-settings-silent-call-2.png" style="width: 400px;" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Andra deltagare kan anpassa aviseringarna separat för varje konversation, bland annat om de vill få samtalsaviseringar.</p>
+</div>
+<p>Din användarstatus ändras till <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">ett</span> <span class="pre">samtal</span></code> och statusikonen visar pratbubbel-emojin.</p>
+</section>
+</section>
+<section id="mobile-clients">
+<h3>Mobilklienter<a class="headerlink" href="#mobile-clients" title="Link to this heading"></a></h3>
+<p>När du deltar i en konversation och har behörighet kan du när som helst starta ett samtal genom att trycka på ikonen <code class="docutils literal notranslate"><span class="pre">Telefon</span></code> eller <code class="docutils literal notranslate"><span class="pre">Video</span></code> i det övre fältet. Ikonen <code class="docutils literal notranslate"><span class="pre">Telefon</span></code> startar ett röstsamtal och ikonen <code class="docutils literal notranslate"><span class="pre">Video</span></code> startar ett videosamtal.</p>
+<p>Ett röstsamtal använder enhetens mikrofon och hörlur, precis som ett vanligt telefonsamtal. Ett videosamtal använder högtalaren i handsfreeläge och aktiverar den framåtriktade kameran som standard. Du kan när som helst inaktivera kameran.</p>
+<p>Om någon annan startar ett samtal kan du få en avisering och enheten kan ringa eller vibrera, beroende på aviseringsinställningarna. Tryck på <code class="docutils literal notranslate"><span class="pre">Telefon</span></code> eller <code class="docutils literal notranslate"><span class="pre">Video</span></code> för att ansluta, eller på den röda knappen för att avvisa samtalet. Om du avvisar samtalet stängs samtalsaviseringen på den enheten.</p>
+<p>Du kan styra mikrofonen och, under ett videosamtal, kameran med alternativen längst ned på skärmen.</p>
+<p>Din användarstatus ändras till <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">ett</span> <span class="pre">samtal</span></code> och statusikonen visar en pratbubbla.</p>
+</section>
+</section>
+<section id="during-a-call">
+<h2>Under ett samtal<a class="headerlink" href="#during-a-call" title="Link to this heading"></a></h2>
+<p>När du har anslutit till ett samtal visas samtalsvyn. Där visas videoflödena från alla deltagare som för närvarande deltar i samtalet samt ytterligare information och kontroller.</p>
+<a class="reference internal image-reference" href="../../_images/during-a-call-details.png"><img alt="Talk active call view showing participant video feeds" src="../../_images/during-a-call-details.png" style="width: 400px;" />
+</a>
+<p>Elementet längst till vänster visar hur länge samtalet har pågått.</p>
+<p>Bredvid visas antalet deltagare som har anslutit till det pågående samtalet. Om du klickar på antalet öppnas det högra sidofältet med deltagarlistan. De deltagare som har anslutit till samtalet visas först.</p>
+<p>Du ser även varje deltagares taltid om personen har talat under samtalet:</p>
+<a class="reference internal image-reference" href="../../_images/participant-talk-time.png"><img alt="Talk active call showing talking time indicator for each participant" src="../../_images/participant-talk-time.png" style="width: 400px;" />
+</a>
+<p>Du kommer åt fler samtalsalternativ och inställningar via trepunktsmenyn i det övre fältet.</p>
+<a class="reference internal image-reference" href="../../_images/media-settings.png"><img alt="Talk in-call three-dot menu for additional settings and options" src="../../_images/media-settings.png" style="width: 300px;" />
+</a>
+<section id="set-up-breakout-rooms">
+<h3>Konfigurera grupprum<a class="headerlink" href="#set-up-breakout-rooms" title="Link to this heading"></a></h3>
+<p>Med grupprum kan du dela upp ett samtal i mindre grupper för mer fokuserade diskussioner. Alternativet kanske inte är tillgängligt beroende på dina behörigheter och hur instansen är konfigurerad. Mer information finns i <a class="reference internal" href="breakout_rooms.html#breakout-rooms"><span class="std std-ref">Grupprum</span></a>.</p>
+</section>
+<section id="download-call-participants-list">
+<h3>Hämta samtalets deltagarlista<a class="headerlink" href="#download-call-participants-list" title="Link to this heading"></a></h3>
+<p>Du kan hämta listan över deltagare i ett samtal via trepunktsmenyn i det övre fältet. Då hämtas en CSV-fil med alla deltagares namn och e-postadresser.</p>
+<a class="reference internal image-reference" href="../../_images/download-participants-list.png"><img alt="Talk in-call menu showing download participants list option" src="../../_images/download-participants-list.png" style="width: 400px;" />
+</a>
+<p>CSV-filen innehåller följande kolumner:</p>
+<ul class="simple">
+<li><p><strong>Namn</strong>: Deltagarens namn.</p></li>
+<li><p><strong>E-post</strong>: Deltagarens e-postadress.</p></li>
+<li><p><strong>Typ</strong>: Anger om deltagaren är en registrerad användare eller gäst.</p></li>
+<li><p><strong>Identifierare</strong>: Deltagarens unika identifierare.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Styra ljud och video<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Det nedre fältet i samtalsvyn innehåller mediekontroller, layoutinställningar och andra funktioner som du kan använda under samtalet.</p>
+<a class="reference internal image-reference" href="../../_images/during-a-call-controls.png"><img alt="Talk active call bottom bar showing media controls and layout settings" src="../../_images/during-a-call-controls.png" style="width: 400px;" />
+</a>
+<p>Use the microphone and camera icons to mute/unmute your microphone and enable/disable your camera.
+You can also use the keyboard shortcuts <kbd class="kbd docutils literal notranslate">M</kbd> to mute/unmute your microphone and <kbd class="kbd docutils literal notranslate">V</kbd> to enable/disable your camera.
+Use <kbd class="kbd docutils literal notranslate">Space</kbd> for push-to-talk: holding space temporarily unmutes you while muted, or temporarily mutes you while unmuted.</p>
+</section>
+<section id="reactions">
+<h3>Reaktioner<a class="headerlink" href="#reactions" title="Link to this heading"></a></h3>
+<p>Med reaktionsknappen kan du skicka en emoji-reaktion till alla deltagare i samtalet.</p>
+<a class="reference internal image-reference" href="../../_images/call-reactions.png"><img alt="Talk active call reactions panel with emoji options" src="../../_images/call-reactions.png" style="width: 400px;" />
+</a>
+<p>Alla deltagare ser emojin stiga från nederkanten av samtalsskärmen. Emojin försvinner efter två sekunder.</p>
+<section id="raise-hand">
+<h4>Räck upp handen<a class="headerlink" href="#raise-hand" title="Link to this heading"></a></h4>
+<p>Clicking <code class="docutils literal notranslate"><span class="pre">Raise</span> <span class="pre">hand</span></code> will notify moderators and show an icon next to your name. This is also available via the keyboard shortcut <kbd class="kbd docutils literal notranslate">R</kbd>.</p>
+</section>
+<section id="full-screen">
+<h4>Helskärm<a class="headerlink" href="#full-screen" title="Link to this heading"></a></h4>
+<p>Resizes your browser window or the Talk Desktop client to full-screen mode.
+Also available via the keyboard shortcut <kbd class="kbd docutils literal notranslate">F</kbd>. Press <kbd class="kbd docutils literal notranslate">Esc</kbd> to return to the regular view.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="call_index.html" class="btn btn-neutral float-left" title="Samtal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Tillbaka</a>
+        <a href="call_screenshare.html" class="btn btn-neutral float-right" title="Skärmdelning" accesskey="n" rel="next">Nästa <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 Swedish
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ 35
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl class="nc-languages-list">
+        <dt>Språk</dt>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sv/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versioner</dt>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              35 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              34 (latest)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33 (stable)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32 (stable)
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

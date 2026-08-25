@@ -1,0 +1,1214 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="lt" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programėlės „Kalendorius“ naudojimas &mdash; Nextcloud 35 User Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/calendar.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=865490d1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=e4682f4a"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Indeksas" href="../genindex.html" />
+    <link rel="search" title="Paieška" href="../search.html" />
+    <link rel="next" title="Using the Mail app" href="mail.html" />
+    <link rel="prev" title="Using the Contacts app" href="contacts.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Ieškoti dokumentuose</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Ieškoti dokumentuose"
+             aria-label="Ieškoti dokumentuose" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigacijos meniu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">„Nextcloud“ 35 vartotojo vadovo įvadas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Failai ir sinchronizavimas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Using the Contacts app</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Programėlės „Kalendorius“ naudojimas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-calendars">Jūsų kalendorių tvarkymas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-calendar">Sukurti naują kalendorių</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-a-calendar">Importuoti kalendorių</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-an-event-add-ics-event">Importuoti įvykį / Pridėti .ics įvykį</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-export-or-delete-a-calendar">Redaguoti, eksportuoti arba ištrinti kalendorių</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-transparency">Kalendoriaus skaidrumas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-calendars">Kalendorių bendrinimas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-delegation">Calendar delegation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#federated-calendar-sharing">Federacinis kalendorių bendrinimas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#publishing-a-calendar">Kalendoriaus skelbimas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-widget">Kalendoriaus valdiklis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-calendar">Prenumeruoti kalendorių</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-holiday-calendar">Prenumeruoti švenčių kalendorių</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-events">Renginių valdymas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-event">Sukurti naują įvykį</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-talk-conversation">Pridėti „Pokalbiai“ pokalbį</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-duplicate-or-delete-an-event">Redaguoti, dubliuoti arba ištrinti įvykį</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#invite-attendees-to-an-event">Pakvieskite dalyvius į renginį</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-attendees-busy-times">Dalyvių užimtumo tikrinimas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assign-rooms-and-resources-to-an-event">Priskirkite patalpas ir išteklius renginiui</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#room-availability">Laisvi kambariai</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-attachments-to-events">Pridėti priedus prie įvykių</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-reminders">Nustatyti priminimus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-recurring-options">Pridėti pasikartojimo parinktis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trash-bin">Šiukšliadėžė</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automated-user-status">Automatizuota vartotojo būsena</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#responding-to-invitations">Atsakymas į kvietimus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#availability-working-hours">Pasiekiamumas (darbo valandos)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#birthday-calendar">Gimtadienių kalendorius</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appointments">Susitikimai</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-an-appointment-configuration">Susitikimų konfigūracijos kūrimas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#booking-an-appointment">Susitikimo rezervavimas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-the-booked-appointment">Darbas su suplanuotu susitikimu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-talk-room-for-booked-appointments">Sukurti „Pokalbiai“ kambarį suplanuotiems susitikimams</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#proposals">Pasiūlymai</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#managing-proposals">Pasiūlymų valdymas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-proposal">Pasiūlymo rengimas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editing-a-proposal">Pasiūlymo redagavimas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#viewing-a-proposal-progress">Pasiūlymo eigos peržiūra</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notifications-for-a-proposed-meeting">Pranešimai apie siūlomą susitikimą</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#responding-to-a-proposed-meeting">Atsakymas į pasiūlymą susitikti</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Using the Mail app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Setting out-of-office messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Synchronizing with Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Synchronizing with iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Synchronizing with macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Synchronizing with Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Synchronizing with KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Synchronizing with the GNOME desktop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Synchronizing with Windows 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">Migrate data between instances</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">„Pokalbiai“</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Nustatykite savo parinktis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Visuotinė prieiga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Dviejų veiksnių autentifikavimo naudojimas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Tvarkyti prijungtas naršykles ir įrenginius</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobilios navigacijos meniu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Puslapių navigacija">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Programėlės „Kalendorius“ naudojimas</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/calendar.rst" class="fa fa-github"> Keisti GitHub'e</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-calendar-app">
+<span id="calendar-app"></span><h1>Programėlės „Kalendorius“ naudojimas<a class="headerlink" href="#using-the-calendar-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>„Kalendorius“ programėlė įdiegiama kartu su „Nextcloud Hub“ pagal numatytuosius nustatymus, tačiau ją galima išjungti. Dėl jos kreipkitės į administratorių.</p>
+</div>
+<p>„Nextcloud“ kalendoriaus programėlė veikia panašiai kaip kitos kalendorių programėlės, su kuriomis galite sinchronizuoti savo „Nextcloud“ kalendorius bei įvykius.</p>
+<p>Pirmą kartą atidarius „Kalendoriaus“ programėlę, jums bus sukurtas numatytasis pirmasis kalendorius.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_application.png" src="../../_images/calendar_application.png" />
+</figure>
+<section id="managing-your-calendars">
+<h2>Jūsų kalendorių tvarkymas<a class="headerlink" href="#managing-your-calendars" title="Link to this heading"></a></h2>
+<section id="create-a-new-calendar">
+<h3>Sukurti naują kalendorių<a class="headerlink" href="#create-a-new-calendar" title="Link to this heading"></a></h3>
+<p>Jei ketinate susikurti naują kalendorių neperkeldami jokių senų duomenų iš ankstesniojo, geriausia išeitis – sukurti naują kalendorių.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_1.png"><img alt="../../_images/calendar_create_1.png" src="../../_images/calendar_create_1.png" style="width: 604.0px; height: 480.8px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>Kairiojoje šoninėje juostoje spustelėkite „+ Naujas kalendorius“.</p></li>
+<li><p>Įveskite naujo kalendoriaus pavadinimą, pvz., „Darbas“, „Namai“ arba „Rinkodaros planavimas“.</p></li>
+<li><p>Paspaudus varnelę, sukuriamas naujas kalendorius, kurį galima sinchronizuoti įvairiuose įrenginiuose, pildyti naujais įvykiais bei bendrinti su draugais ir kolegomis.</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_2.png"><img alt="../../_images/calendar_create_2.png" src="../../_images/calendar_create_2.png" style="width: 603.2px; height: 478.40000000000003px;" />
+</a>
+</figure>
+</section>
+<section id="import-a-calendar">
+<h3>Importuoti kalendorių<a class="headerlink" href="#import-a-calendar" title="Link to this heading"></a></h3>
+<p>Jei norite perkelti savo kalendorių ir jame esančius įvykius į savo „Nextcloud“ egzempliorių, geriausias būdas tai padaryti – importavimas.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_importing.png"><img alt="../../_images/calendar_importing.png" src="../../_images/calendar_importing.png" style="width: 697.5px; height: 225.0px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>Click on the <strong>Calendar settings</strong> icon.</p></li>
+<li><p>Spustelėję „Importuoti kalendorių“, esantį skyriuje „Bendra“, galite pasirinkti vieną ar kelis kalendoriaus failus iš savo vietinio įrenginio ir juos įkelti.</p></li>
+<li><p>Pasirinkite „Kalendorius, į kurį importuoti“.</p></li>
+<li><p>Įkėlimas gali užtrukti – tai priklauso nuo importuojamo kalendoriaus dydžio. Po „Kalendoriaus nustatymai“ pasirodys mėlyna eigos juosta.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>„Nextcloud Kalendorius“ programa palaiko tik su „iCalendar“ suderinamus „.ics“ formato failus, apibrėžtus RFC 5545 standarte.</p>
+</div>
+</section>
+<section id="import-an-event-add-ics-event">
+<h3>Importuoti įvykį / Pridėti .ics įvykį<a class="headerlink" href="#import-an-event-add-ics-event" title="Link to this heading"></a></h3>
+<p>Individual events are often distributed as <code class="docutils literal notranslate"><span class="pre">.ics</span></code> files (sometimes via a button labelled „iCal“, „Apple Calendar“ or „Outlook“). You can import them into Nextcloud Calendar using the same import flow as a full calendar.</p>
+<ol class="arabic simple">
+<li><p>Click on the <strong>Calendar settings</strong> icon.</p></li>
+<li><p>After clicking on <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">calendar</span></code> you can select one or more <code class="docutils literal notranslate"><span class="pre">.ics</span></code> files
+from your local device to upload. Single-event files are added to the calendar you select.</p></li>
+<li><p>Pasirinkite „Kalendorius, į kurį importuoti“.</p></li>
+<li><p>Įkėlimas gali užtrukti – tai priklauso nuo importuojamo kalendoriaus ar renginio dydžio. Po „Kalendoriaus nustatymai“ pasirodys mėlyna eigos juosta.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>„Nextcloud Kalendorius“ programa palaiko tik su „iCalendar“ suderinamus „.ics“ formato failus, apibrėžtus RFC 5545 standarte.</p>
+</div>
+</section>
+<section id="edit-export-or-delete-a-calendar">
+<h3>Redaguoti, eksportuoti arba ištrinti kalendorių<a class="headerlink" href="#edit-export-or-delete-a-calendar" title="Link to this heading"></a></h3>
+<p>Kartais gali prireikti pakeisti anksčiau importuoto ar sukurto kalendoriaus spalvą arba visą pavadinimą. Taip pat gali kilti noras eksportuoti jį į vietinį standųjį diską arba visam laikui ištrinti.</p>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Atminkite, kad kalendoriaus ištrynimas yra negrįžtamas veiksmas. Ištrynus kalendorių, jo neįmanoma atkurti, nebent turite vietinę atsarginę kopiją.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/calendar_dropdown.png" src="../../_images/calendar_dropdown.png" />
+</figure>
+<p>Spustelėkite atitinkamo kalendoriaus „pieštuko“ piktogramą. Pamatysite naują iššokantįjį langą, kuriame galėsite pakeisti kalendoriaus pavadinimą bei spalvą, taip pat rasite mygtukus kalendoriui ištrinti arba eksportuoti.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_settings.png" src="../../_images/calendar_settings.png" />
+</figure>
+</section>
+<section id="calendar-transparency">
+<h3>Kalendoriaus skaidrumas<a class="headerlink" href="#calendar-transparency" title="Link to this heading"></a></h3>
+<p>Galite pažymėti arba atžymėti parinktį „Niekada nerodyti manęs kaip užimto ​​(nustatyti šį kalendorių kaip skaidrų)“ ir taip nuspręsti, ar šio kalendoriaus įvykiai bus įtraukiami į užimtumo (laisvo / užimto ​​laiko) skaičiavimus. Jei ši parinktis pažymėta, jokie šio kalendoriaus įvykiai nebus įtraukiami į skaičiavimus – jūsų laikas visada bus rodomas kaip laisvas, nepaisant konkrečių įvykių nustatymų.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_transparency.png" src="../../_images/calendar_transparency.png" />
+</figure>
+</section>
+<section id="sharing-calendars">
+<h3>Kalendorių bendrinimas<a class="headerlink" href="#sharing-calendars" title="Link to this heading"></a></h3>
+<p>Savo kalendoriumi galite dalytis su vietiniais vartotojais, grupėmis arba nuotoliniais vartotojais federaciniuose serveriuose.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_1.png" src="../../_images/calendar_sharing_1.png" />
+</figure>
+<p>Kalendoriais galima dalytis suteikiant rašymo arba tik skaitymo teisę. Dalijantis kalendoriumi su rašymo teise, vartotojai, su kuriais jis bendrinamas, galės kurti naujus įvykius, taip pat redaguoti ir šalinti esamus.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_2.png" src="../../_images/calendar_sharing_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Šiuo metu bendrinamų kalendorių negalima priimti ar atmesti. Jei nebenorite matyti kalendoriaus, kuriuo su jumis pasidalijo kitas asmuo, kalendorių sąraše šalia kalendoriaus spustelėkite 3 taškų meniu piktogramą ir pasirinkite „Nebebendrinti su manimi“. Norint atkurti bendrinimą, kalendorių galima bendrinti iš naujo – visai grupei, taip anuliuojant visus ankstesnius bendrinimo atsisakymus, arba konkrečiam vartotojui.</p>
+</div>
+</section>
+<section id="calendar-delegation">
+<h3>Calendar delegation<a class="headerlink" href="#calendar-delegation" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 34.0.0.</span></p>
+</div>
+<p>In the app settings, you can delegate your calendars to other users so they can manage them for you.
+You can grant read access if they should only view the calendar, or write access if they should create,
+edit and delete events.</p>
+<p>Calendar delegation also works with other clients that support calendar delegation.</p>
+<p>By default, delegatees are not added as attendees of events that they create for a delegator, the delegator
+remains the organizer of the event. If the event has a Talk conversation attached, both the delegator and the
+delegatee are moderators of that conversation.</p>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Currently, delegating your account delegates all of your calendars. Delegating individual
+calendars is not yet supported.</p>
+</div>
+</section>
+<section id="federated-calendar-sharing">
+<h3>Federacinis kalendorių bendrinimas<a class="headerlink" href="#federated-calendar-sharing" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 32.0.0.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Pakeista 33.0.0 versijoje: </span>Bendrinami federaciniai kalendoriai palaiko skaitymo ir rašymo prieigą.</p>
+</div>
+<p>Kalendoriaus bendrinimas su kitame „Nextcloud“ elemente esančiu vartotoju vyksta lygiai taip pat, kaip ir bendrinant su vietiniu vartotoju. Skirtumas tas, kad gavėją nurodant reikia naudoti federacinį vartotojo identifikatorių, kurio formatas yra <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;instance&gt;</span></code> (pvz., <code class="docutils literal notranslate"><span class="pre">alice&#64;cloud.example.com</span></code>).</p>
+<p>Pradedant nuo „Nextcloud 33“, federaciniai bendrinimai palaiko visišką skaitymo ir rašymo prieigą, leidžiančią nuotoliniams vartotojams kurti, redaguoti ir šalinti įvykius bendrinamame kalendoriuje. „Nextcloud 32“ versijoje federaciniai bendrinimai buvo skirti tik skaitymui.</p>
+</section>
+<section id="publishing-a-calendar">
+<h3>Kalendoriaus skelbimas<a class="headerlink" href="#publishing-a-calendar" title="Link to this heading"></a></h3>
+<p>Kalendorius galima paskelbti naudojant viešąją nuorodą, kad išoriniai vartotojai galėtų juos peržiūrėti (tik skaitymo režimu). Viešąją nuorodą galite sukurti atidarę kalendoriaus bendrinimo meniu ir spustelėję „+“ šalia parinkties „Bendrinimo nuoroda“. Sukūrę nuorodą, galite ją nukopijuoti į iškarpinę arba išsiųsti el. paštu.</p>
+<p>Taip pat yra „ įterpimo kodas “, suteikiantis HTML „iframe“ elementą, skirtą kalendoriui įterpti į viešus puslapius.</p>
+<p>Galima bendrinti kelis kalendorius vienu metu, įterpimo nuorodos pabaigoje pridėjus jų unikalius žymenis. Atskirus žymenis rasite kiekvieno kalendoriaus viešosios nuorodos pabaigoje. Visas adresas atrodys taip: <cite>https://cloud.example.com/index.php/apps/calendar/embed/&lt;token1&gt;-&lt;token2&gt;-&lt;token3&gt;</cite></p>
+<p>Norėdami pakeisti įterptojo kalendoriaus numatytąjį rodinį arba datą, turite nurodyti URL, atrodantį taip: „<a class="reference external" href="https://cloud.example.com/index.php/apps/calendar/embed">https://cloud.example.com/index.php/apps/calendar/embed</a>/&lt;token&gt;/&lt;view&gt;/&lt;date&gt;“. Šiame URL turite pakeisti šiuos kintamuosius:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;token&gt;</span></code> su kalendoriaus žymeniu,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;view&gt;</span></code> su vienu iš <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code>, <code class="docutils literal notranslate"><span class="pre">timeGridWeek</span></code>, <code class="docutils literal notranslate"><span class="pre">timeGridDay</span></code>, <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>, <code class="docutils literal notranslate"><span class="pre">listWeek</span></code>, <code class="docutils literal notranslate"><span class="pre">listDay</span></code>. Numatytasis rodinys yra <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code>, o paprastai naudojamas sąrašas yra <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;date&gt;</span></code> su <code class="docutils literal notranslate"><span class="pre">dabar</span></code> arba bet kokia data tokiu formatu: <code class="docutils literal notranslate"><span class="pre">&lt;year&gt;-&lt;month&gt;-&lt;day&gt;</span></code> (pvz., <code class="docutils literal notranslate"><span class="pre">2019-12-28</span></code>).</p></li>
+</ul>
+<p>Viešajame puslapyje vartotojai gali gauti kalendoriaus prenumeratos nuorodą ir tiesiogiai eksportuoti visą kalendorių.</p>
+</section>
+<section id="calendar-widget">
+<h3>Kalendoriaus valdiklis<a class="headerlink" href="#calendar-widget" title="Link to this heading"></a></h3>
+<p>Savo kalendorius galite įterpti į palaikomas programas (pvz., „Pokalbiai“, „Užrašai“ ir kt.), pasidalydami viešąja nuoroda (kad įterptas kalendorius būtų matomas visiems vartotojams tik peržiūros režimu) arba naudodami vidinę nuorodą (kad jis liktų privatus).</p>
+</section>
+<section id="subscribe-to-a-calendar">
+<h3>Prenumeruoti kalendorių<a class="headerlink" href="#subscribe-to-a-calendar" title="Link to this heading"></a></h3>
+<p>„iCal“ kalendorius galite užsiprenumeruoti tiesiogiai „Nextcloud“ aplinkoje. Palaikydami šį sąveikos standartą (RFC 5545), užtikrinome „Nextcloud“ kalendoriaus suderinamumą su „Google Calendar“, „Apple iCloud“ ir daugeliu kitų kalendorių serverių, su kuriais galite keistis kalendoriais – įskaitant ir prenumeratos nuorodas į kalendorius, paskelbtus kitose „Nextcloud“ instancijose (kaip aprašyta anksčiau).</p>
+<ol class="arabic simple">
+<li><p>Kairiojoje šoninėje juostoje spustelėkite „+ Naujas kalendorius“</p></li>
+<li><p>Spustelėkite „+ Nauja prenumerata pagal nuorodą (tik skaitymui)“</p></li>
+<li><p>Įveskite arba įklijuokite bendrinamo kalendoriaus, kurį norite užsiprenumeruoti, nuorodą.</p></li>
+</ol>
+<p>Baigta. Jūsų kalendoriaus prenumeratos bus reguliariai atnaujinamos.</p>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Prenumeratos pagal numatytuosius nustatymus atnaujinamos kas savaitę. Jūsų administratorius galėjo pakeisti šią nuostatą.</p>
+</div>
+</section>
+<section id="subscribe-to-a-holiday-calendar">
+<h3>Prenumeruoti švenčių kalendorių<a class="headerlink" href="#subscribe-to-a-holiday-calendar" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.4: </span>Nextcloud 25 or newer</p>
+</div>
+<p>Galite užsiprenumeruoti tik skaitymui skirtą švenčių kalendorių, kurį teikia „Thunderbird“ &lt;<a class="reference external" href="https://www.thunderbird.net/calendar/holidays/">https://www.thunderbird.net/calendar/holidays/</a>&gt;.</p>
+<ol class="arabic simple">
+<li><p>Kairiojoje šoninėje juostoje spustelėkite „+ Naujas kalendorius“</p></li>
+<li><p>Spustelėkite „+ Pridėti švenčių kalendorių“</p></li>
+<li><p>Raskite savo šalį arba regioną ir spustelėkite „Prenumeruoti“</p></li>
+</ol>
+</section>
+</section>
+<section id="managing-events">
+<h2>Renginių valdymas<a class="headerlink" href="#managing-events" title="Link to this heading"></a></h2>
+<section id="create-a-new-event">
+<h3>Sukurti naują įvykį<a class="headerlink" href="#create-a-new-event" title="Link to this heading"></a></h3>
+<p>Įvykius galima sukurti spustelėjus toje srityje, kuriai numatytas įvykis. Dienos ir savaitės kalendoriaus rodiniuose tiesiog spustelėkite, vilkite ir atleiskite žymeklį toje srityje, kurioje vyks įvykis.</p>
+<p>Paspaudus gaublio piktogramą, atidaromas laiko juostų pasirinkimo įrankis. Galite pasirinkti skirtingas laiko juostas renginio pradžiai ir pabaigai. Tai ypač naudinga keliaujant.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_week.png" src="../../_images/calendar_new-event_week.png" />
+</figure>
+<p>Norint peržiūrėti mėnesio vaizdą, pakanka vieną kartą spustelėti norimos dienos sritį.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_month.png" src="../../_images/calendar_new-event_month.png" />
+</figure>
+<p>Po to galite įvesti įvykio pavadinimą (pvz., <strong>Susitikimas su Linus</strong>), pasirinkti kalendorių, kuriame norite išsaugoti įvykį (pvz., <strong>Asmeninis</strong>, <strong>Bendruomenės renginiai</strong>), patikrinti ir patikslinti laiką arba nustatyti, kad įvykis vyktų visą dieną. Taip pat galite nurodyti vietą ir pridėti aprašymą.</p>
+<p>Jei norite redaguoti išsamius duomenis, pavyzdžiui, <strong>Dalyvius</strong> ar <strong>Priminimus</strong>, arba nustatyti įvykį kaip pasikartojantį, spustelėkite mygtuką „Daugiau“, kad atidarytumėte išplėstinį redaktorių.</p>
+</section>
+<section id="add-talk-conversation">
+<h3>Pridėti „Pokalbiai“ pokalbį<a class="headerlink" href="#add-talk-conversation" title="Link to this heading"></a></h3>
+<p>Į savo įvykį galite įtraukti esamą „Pokalbiai“ pokalbį spustelėję „Pridėti „Pokalbiai“ pokalbį“. Norėdami peržiūrėti esamų „Pokalbiai“ pokalbių sąrašą, įsitikinkite, kad „Pokalbiai“ programėlė yra įjungta. Jei norite sukurti naują „Pokalbiai“ pokalbį, tai galite padaryti tiesiog tame pačiame lange.</p>
+<figure class="align-default">
+<img alt="../../_images/add-talk-room.png" src="../../_images/add-talk-room.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Jei vietoj paprasto įvykių redagavimo lango visada norite atidaryti išplėstinį redaktorių, programėlės skiltyje „Nustatymai“ panaikinkite žymą prie parinkties „Įjungti supaprastintą redaktorių“.</p>
+</div>
+<p>Spustelėjus mėlyną mygtuką „Sukurti“, renginys bus galutinai sukurtas.</p>
+</section>
+<section id="edit-duplicate-or-delete-an-event">
+<h3>Redaguoti, dubliuoti arba ištrinti įvykį<a class="headerlink" href="#edit-duplicate-or-delete-an-event" title="Link to this heading"></a></h3>
+<p>Jei norite redaguoti, nukopijuoti ar ištrinti konkretų įvykį, pirmiausia turite jį spustelėti.</p>
+<p>Po to galėsite iš naujo nustatyti visą renginio informaciją ir atidaryti išplėstinį redaktorių spustelėję „Daugiau“.</p>
+<p>Clicking on the <code class="docutils literal notranslate"><span class="pre">Update</span></code> button will update the event. To cancel your changes, click the <strong>Close</strong> button of the popup or advanced editor.</p>
+<p>Jei atidarysite išplėstinį rodinį ir spustelėsite trijų taškų meniu šalia įvykio pavadinimo, galėsite eksportuoti įvykį kaip „.ics“ failą arba pašalinti jį iš savo kalendoriaus.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu.png" src="../../_images/calendar_event_menu.png" />
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Patarimas</p>
+<p>Jei ištrinsite įvykius, jie pateks į jūsų <a class="reference internal" href="#calendar-trash-bin"><span class="std std-ref">šiukšlinę</span></a>. Ten galėsite atkurti netyčia ištrintus įvykius.</p>
+</div>
+<p>Pagrindiniame redaktoriuje taip pat galite eksportuoti, dubliuoti arba ištrinti įvykį.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu_modal.png" src="../../_images/calendar_event_menu_modal.png" />
+</figure>
+</section>
+<section id="invite-attendees-to-an-event">
+<span id="calendar-attendees"></span><h3>Pakvieskite dalyvius į renginį<a class="headerlink" href="#invite-attendees-to-an-event" title="Link to this heading"></a></h3>
+<p>Į renginį galite įtraukti dalyvių, kad jie sužinotų apie kvietimą. Jie gaus kvietimą el. paštu ir galės patvirtinti savo dalyvavimą renginyje arba jo atsisakyti. Dalyviais gali būti kiti jūsų „Nextcloud“ elemento vartotojai, adresų knygose esantys kontaktai bei tiesiogiai nurodyti el. pašto adresai. Taip pat galite keisti kiekvieno dalyvio dalyvavimo lygį arba išjungti pranešimus el. paštu konkrečiam dalyviui.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_invitation_level.png"><img alt="../../_images/calendar_event_invitation_level.png" src="../../_images/calendar_event_invitation_level.png" style="width: 811.2px; height: 380.8px;" />
+</a>
+</figure>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Pakeista 25.0.0 versijoje: </span>Dalyviams siunčiamų el. laiškų atsakymų nuorodose nebeliko laukelių, skirtų komentarui įrašyti ar papildomiems svečiams į renginį pakviesti.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Patarimas</p>
+<p>Į renginį įtraukdami kitus „Nextcloud“ vartotojus kaip dalyvius, galite matyti jų užimtumo informaciją, jei ji prieinama – tai padeda parinkti tinkamiausią renginio laiką. Nustatykite savo <a class="reference internal" href="#calendar-working-hours"><span class="std std-ref">darbo valandas</span></a>, kad kiti žinotų, kada esate laisvi. Informacija apie užimtumą prieinama tik kitiems vartotojams, esantiems tame pačiame „Nextcloud“ elemente.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Dėmesio</p>
+<p>Serverio administratoriai turi sukonfigūruoti el. pašto serverį skirtuke „Pagrindiniai nustatymai“, nes šis el. paštas bus naudojamas kvietimams siųsti.</p>
+</div>
+<p>Kvietimo būsenos paaiškinimas (dalyviui):</p>
+<ul class="simple">
+<li><p><strong>Renginys užpildytas</strong>: Jūs sutikote</p></li>
+<li><p><strong>Perbraukimas</strong>: Jūs atsisakėte</p></li>
+<li><p><strong>Dryžiai</strong>: Preliminarus</p></li>
+<li><p><strong>Tuščias renginys</strong>: dar neatsakėte</p></li>
+</ul>
+<p>Jei esate organizatorius ir visi dalyviai atsisakė dalyvauti, renginys bus tuščias ir pažymėtas įspėjamuoju simboliu.</p>
+</section>
+<section id="checking-attendees-busy-times">
+<h3>Dalyvių užimtumo tikrinimas<a class="headerlink" href="#checking-attendees-busy-times" title="Link to this heading"></a></h3>
+<p>Į renginį įtraukę dalyvius, galite spustelėti „Rasti laiką“ ir atidaryti „Laisva / Užimta“ langą. Jame matysite, kada kiekvienas dalyvis turi kitų renginių, ir galėsite parinkti laiką, kai visi yra laisvi.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_free_busy_modal.png"><img alt="../../_images/calendar_free_busy_modal.png" src="../../_images/calendar_free_busy_modal.png" style="width: 942.0px; height: 752.4px;" />
+</a>
+</figure>
+<p>Jūsų užimti laiko tarpai bus rodomi ta pačia spalva kaip ir jūsų asmeniniame kalendoriuje, laikas, kai esate ne biure, bus rodomas pilka spalva, o kitų dalyvių užimtas laikas bus pažymėtas tokia pat spalva, kokia išplėstiniame redaktoriuje rodomas jų avataras.</p>
+<p>Renginio laiką galite pasirinkti tiesiogiai kalendoriuje.</p>
+</section>
+<section id="assign-rooms-and-resources-to-an-event">
+<h3>Priskirkite patalpas ir išteklius renginiui<a class="headerlink" href="#assign-rooms-and-resources-to-an-event" title="Link to this heading"></a></h3>
+<p>Panašiai kaip ir dalyvius, prie savo renginių galite pridėti kambarius bei išteklius. Sistema užtikrins, kad kiekvienas kamabrys ir išteklius būtų rezervuoti be konfliktų. Kai vartotojas pirmą kartą prideda kamabrį ar išteklių prie renginio, rezervacija bus rodoma kaip patvirtinta. Vėlesnių renginių, kurių laikas sutampa, atveju ta pati patalpa ar išteklius bus rodomi kaip atmesti.</p>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Kambarių ir išteklių pati „Nextcloud“ sistema nevaldo, o kalendoriaus programėlė neleidžia jų pridėti ar keisti. Prieš pradedant naudotis ištekliais, administratorius turi įdiegti ir, galbūt, sukonfigūruoti jų valdymo sistemas.</p>
+</div>
+</section>
+<section id="room-availability">
+<h3>Laisvi kambariai<a class="headerlink" href="#room-availability" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.0: </span>Nextcloud 30 or newer</p>
+</div>
+<p>Jei jūsų sistemoje įdiegta „Calendar Rooms and Resources“ programėlė, skiltyje „Ištekliai“ dabar rasite „Patalpų užimtumas“. Čia pateikiamas visų esamų kamabarių sąrašas. Kiekvieno kambario užimtumą galite tikrinti panašiai, kaip tikrinamas renginio dalyvių užimtumas - laisvas / užimtas laikas.</p>
+<figure class="align-default">
+<img alt="../../_images/room_availability.png" src="../../_images/room_availability.png" />
+</figure>
+</section>
+<section id="add-attachments-to-events">
+<h3>Pridėti priedus prie įvykių<a class="headerlink" href="#add-attachments-to-events" title="Link to this heading"></a></h3>
+<p>Priedus prie savo renginių galite įkelti arba pridėti iš failų.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_adding_attachments.png"><img alt="../../_images/calendar_adding_attachments.png" src="../../_images/calendar_adding_attachments.png" style="width: 790.4000000000001px; height: 382.40000000000003px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Priedus galima pridėti kuriant naujus įvykius arba redaguojant esamus. Naujai įkelti failai pagal numatytuosius nustatymus bus išsaugoti kalendoriaus aplanke, esančiame šakniniame kataloge.</p>
+</div>
+<p>You can change the attachment folder by going to <strong>Calendar settings</strong> and changing <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">attachments</span> <span class="pre">location</span></code>.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_attachments_location.png"><img alt="../../_images/calendar_attachments_location.png" src="../../_images/calendar_attachments_location.png" style="width: 389.4px; height: 357.0px;" />
+</a>
+</figure>
+</section>
+<section id="set-up-reminders">
+<h3>Nustatyti priminimus<a class="headerlink" href="#set-up-reminders" title="Link to this heading"></a></h3>
+<p>Galite nustatyti priminimus, kad gautumėte pranešimą prieš įvykstant renginiui. Šiuo metu palaikomi šie pranešimų gavimo būdai:</p>
+<ul class="simple">
+<li><p>El. pašto pranešimai</p></li>
+<li><p>„Nextcloud“ pranešimai</p></li>
+</ul>
+<p>You may set reminders at a time relative to the event or at a specific date. If you would like all the events in a calendar to have a default reminder, you can configure that in the settings of that calendar.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_reminders.png"><img alt="../../_images/calendar_event_reminders.png" src="../../_images/calendar_event_reminders.png" style="width: 507.20000000000005px; height: 284.0px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Pranešimus gaus tik kalendoriaus savininkas bei asmenys ar grupės, su kuriais kalendorius bendrinamas suteikiant rašymo teises. Jei negaunate pranešimų, nors manote, kad turėtumėte juos gauti, gali būti, kad administratorius šią funkciją išjungė jūsų serveryje.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Jei sinchronizuojate kalendorių su mobiliaisiais įrenginiais ar kitomis trečiųjų šalių programomis, pranešimai gali būti rodomi ir juose.</p>
+</div>
+</section>
+<section id="add-recurring-options">
+<h3>Pridėti pasikartojimo parinktis<a class="headerlink" href="#add-recurring-options" title="Link to this heading"></a></h3>
+<p>Įvykį galima nustatyti kaip „pasikartojantį“, kad jis vyktų kasdien, kas savaitę, kas mėnesį ar kasmet. Galima nustatyti konkrečias taisykles, nurodančias, kurią savaitės dieną įvykis vyksta, arba taikyti sudėtingesnes taisykles, pavyzdžiui, nustatyti, kad jis vyktų kiekvieno mėnesio ketvirtąjį trečiadienį.</p>
+<p>Taip pat galite nustatyti, kada baigiasi pasikartojimas.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_repeat.png"><img alt="../../_images/calendar_event_repeat.png" src="../../_images/calendar_event_repeat.png" style="width: 519.2px; height: 557.6px;" />
+</a>
+</figure>
+</section>
+<section id="trash-bin">
+<span id="calendar-trash-bin"></span><h3>Šiukšliadėžė<a class="headerlink" href="#trash-bin" title="Link to this heading"></a></h3>
+<p>Jei programoje „Kalendorius“ ištrinsite įvykius, užduotis ar kalendorių, jūsų duomenys dar nebus visiškai prarasti. Vietoj to šie elementai bus perkelti į <em>šiukšlinę</em>, todėl ištrynimo veiksmą galėsite atšaukti. Praėjus numatytajam 30 dienų laikotarpiui (administratorius gali būti pakeitęs šią nuostatą), šie elementai bus ištrinti visam laikui. Taip pat galite patys anksčiau visam laikui ištrinti šiuos elementus.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_trash_bin.png" src="../../_images/calendar_trash_bin.png" />
+</figure>
+<p>Mygtukai „Ištuštinti šiukšlinę“ vienu veiksmu pašalins visą šiukšlinės turinį.</p>
+<div class="admonition tip">
+<p class="admonition-title">Patarimas</p>
+<p>Šiukšlinę galima pasiekti tik naudojantis „Kalendorius“ programėle. Jokia susieta programa ar programėlė negalės rodyti jos turinio. Vis dėlto susietose programose ar programėlėse ištrinti įvykiai, užduotys ir kalendoriai taip pat pateks į šiukšlinę.</p>
+</div>
+</section>
+<section id="automated-user-status">
+<span id="calendar-working-hours"></span><h3>Automatizuota vartotojo būsena<a class="headerlink" href="#automated-user-status" title="Link to this heading"></a></h3>
+<p>Kai kalendoriuje suplanuotas įvykis, kurio statusas yra „Užimtas“, jūsų vartotojo būsena automatiškai bus pakeista į „Susitikime“, nebent būsite pasirinkę režimą „Netrukdyti“ arba „Nematomas“. Bet kuriuo metu galite pakeisti šią būseną į savo pasirinktą pranešimą arba nustatyti kalendoriaus įvykių statusą į „Laisvas“. Skaidrūs kalendoriai bus ignoruojami.</p>
+</section>
+</section>
+<section id="responding-to-invitations">
+<h2>Atsakymas į kvietimus<a class="headerlink" href="#responding-to-invitations" title="Link to this heading"></a></h2>
+<p>Į kvietimus galite atsakyti tiesiogiai programėlėje. Paspauskite ant renginio ir pasirinkite savo dalyvavimo statusą. Į kvietimą galite atsakyti jį priimdami, atmesdami arba nurodydami, kad dalyvausite tikėtina.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_simple_editor.png"><img alt="../../_images/calendar_accept_simple_editor.png" src="../../_images/calendar_accept_simple_editor.png" style="width: 663.2px; height: 477.6px;" />
+</a>
+</figure>
+<p>Į kvietimą galite atsakyti ir naudodamiesi išplėstiniu redaktoriumi.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_advanced_editor.png"><img alt="../../_images/calendar_accept_advanced_editor.png" src="../../_images/calendar_accept_advanced_editor.png" style="width: 800.0px; height: 160.8px;" />
+</a>
+</figure>
+</section>
+<section id="availability-working-hours">
+<h2>Pasiekiamumas (darbo valandos)<a class="headerlink" href="#availability-working-hours" title="Link to this heading"></a></h2>
+<p>Bendrąjį užimtumą, nepriklausomai nuo suplanuotų įvykių, galima nustatyti „Nextcloud“ grupės darbo įrankių „groupware“ nuostatose. Šie nustatymai bus atvaizduoti užimtumo peržiūroje, kai „Kalendoriuje“ <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">planuosite susitikimą su kitais žmonėmis</span></a>. Šiuos duomenis taip pat rodys kai kurios prijungtos programos, pavyzdžiui, „Thunderbird“.</p>
+<figure class="align-default">
+<img alt="../../_images/caldav_availability.png" src="../../_images/caldav_availability.png" />
+</figure>
+<p>Be įprasto užimtumo grafiko, galite sukonfigūruoti vienkartinius neatvykimo laikotarpius skyriuje „Neatvykimo nustatymai&lt;groupware-absence&gt;“.</p>
+</section>
+<section id="birthday-calendar">
+<h2>Gimtadienių kalendorius<a class="headerlink" href="#birthday-calendar" title="Link to this heading"></a></h2>
+<p>Gimtadienių kalendorius yra automatiškai sukuriamas kalendorius, kuris pats įtraukia gimtadienius iš jūsų kontaktų sąrašo. Vienintelis būdas redaguoti šį kalendorių – nurodyti gimimo datas savo kontaktuose; tiesiogiai redaguoti šio kalendoriaus naudojantis pačia kalendoriaus programėle negalima.</p>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Jei nematote gimtadienių kalendoriaus, gali būti, kad administratorius jį išjungė jūsų serveryje.</p>
+</div>
+</section>
+<section id="appointments">
+<h2>Susitikimai<a class="headerlink" href="#appointments" title="Link to this heading"></a></h2>
+<p>Pradedant „Kalendorius“ 3-ąja versija, programėlė gali sukurti susitikimų laikus, kuriuos gali rezervuoti ne tik kiti „Nextcloud“ vartotojai, bet ir žmonės, neturintys paskyros tame serveryje. Ši funkcija suteikia galimybę tiksliai nurodyti laisvus susitikimų intervalus, todėl nebereikia siuntinėti daugybės el. laiškų derinant susitikimo datą ir laiką.</p>
+<p>Šiame skyriuje terminą <em>organizatorius</em> vartosime kalendoriaus savininkui, kuris nustato susitikimų laikus, apibūdinti. <em>Dalyvis</em> – tai asmuo, kuris rezervuoja vieną iš šių laikų.</p>
+<section id="creating-an-appointment-configuration">
+<h3>Susitikimų konfigūracijos kūrimas<a class="headerlink" href="#creating-an-appointment-configuration" title="Link to this heading"></a></h3>
+<p>Kaip susitikimų organizatorius, atveriate pagrindinę žiniatinklio kalendoriaus sąsają. Kairiojoje šoninėje juostoje rasite susitikimų skiltį, kurioje galėsite atverti langą naujam susitikimui sukurti.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_new.png" src="../../_images/appointment_new.png" />
+</figure>
+<p>Viena iš pagrindinių kiekvieno susitikimo detalių – pavadinimas, nurodantis susitikimo pobūdį (pvz., „Individualus pokalbis“, kai organizatorius nori pasiūlyti kolegoms asmeninį skambutį), taip pat informacija apie susitikimo vietą ir išsamesnis jo aprašymas.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_basics.png" src="../../_images/appointment_config_basics.png" />
+</figure>
+<p>Susitikimo trukmę galima pasirinkti iš nustatyto iš anksto sąrašo. Toliau galite nustatyti pageidaujamą žingsnį. Žingsnis – tai dažnumas, su kuriuo siūlomi galimi laiko intervalai. Pavyzdžiui, galite turėti vienos valandos trukmės laiko intervalus, tačiau juos siūlyti 30 minučių žingsniais, kad dalyvis galėtų užsisakyti laiką 9:00 val., bet taip pat ir 9:30 val. Papildoma informacija apie vietą ir aprašymas suteikia dalyviams daugiau konteksto. Kiekvienas užsakytas susitikimas bus įrašytas į vieną iš jūsų kalendorių, todėl galite pasirinkti, į kurį iš jų jis turėtų būti įtrauktas. Susitikimai gali būti <em>vieši</em> arba <em>privatūs</em>. Viešus susitikimus galima rasti „Nextcloud“ vartotojo profilio puslapyje. Privatūs susitikimai prieinami tik tiems asmenims, kurie gauna slaptą URL adresą.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_calendar_settings.png" src="../../_images/appointment_config_calendar_settings.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Dalyviams bus rodomi tik tie laiko tarpai, kurie nesikerta su esamais įvykiais jūsų kalendoriuose.</p>
+</div>
+<p>Susitikimo organizatorius gali nurodyti, kuriuo savaitės metu paprastai galima rezervuoti laiką. Tai gali būti darbo valandos arba bet koks kitas individualiai pritaikytas tvarkaraštis.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_booking_hours.png" src="../../_images/appointment_config_booking_hours.png" />
+</figure>
+<p>Kai kuriems susitikimams reikia laiko pasiruošti – pavyzdžiui, kai susitinkama tam tikroje vietoje ir iki jos reikia nuvykti. Organizatorius gali nustatyti laiko trukmę, kuri turi likti laisva. Pasirinkimui bus rodomi tik tie laiko tarpai, kurie nesikerta su kitais įvykiais pasiruošimui reikalingu metu. Be to, galima nustatyti laiko tarpą po kiekvieno susitikimo, kuris taip pat turi likti laisvas. Siekiant išvengti susitikimų rezervavimo paskutinę minutę, galima nustatyti, kiek anksčiausiai gali įvykti kitas susitikimas. Nustačius maksimalų galimų susitikimų skaičių per dieną, galima apriboti bendrą dalyvių rezervuojamų susitikimų kiekį.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_limits.png" src="../../_images/appointment_config_limits.png" />
+</figure>
+<p>Sukonfigūruotas susitikimas bus rodomas kairiojoje šoninėje juostoje. Naudodamiesi trijų taškų meniu, galite peržiūrėti susitikimą. Galite nukopijuoti susitikimo nuorodą ir pasidalyti ja su numatomais dalyviais arba leisti jiems rasti viešą susitikimą per jūsų profilio puslapį. Taip pat galite redaguoti arba ištrinti susitikimo konfigūraciją.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_options.png" src="../../_images/appointment_config_options.png" />
+</figure>
+</section>
+<section id="booking-an-appointment">
+<h3>Susitikimo rezervavimas<a class="headerlink" href="#booking-an-appointment" title="Link to this heading"></a></h3>
+<p>Rezervavimo puslapyje dalyviui rodomas susitikimo pavadinimas, vieta, aprašymas ir trukmė. Pasirinkus konkrečią dieną, pateikiamas galimų laikų sąrašas. Jei tą dieną nėra laisvų laikų, yra per daug konfliktų arba pasiekta maksimali dienos rezervacijų riba, sąrašas gali būti tuščias.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_1.png"><img alt="../../_images/appointment_booking_1.png" src="../../_images/appointment_booking_1.png" style="width: 926.4000000000001px; height: 592.0px;" />
+</a>
+</figure>
+<p>Norėdami užsiregistruoti, dalyviai turi įvesti vardą ir pavardę bei el. pašto adresą. Jei nori, jie taip pat gali pridėti komentarą.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_2.png"><img alt="../../_images/appointment_booking_2.png" src="../../_images/appointment_booking_2.png" style="width: 745.6px; height: 463.20000000000005px;" />
+</a>
+</figure>
+<p>Sėkmingai atlikus rezervaciją, dalyviui bus parodytas patvirtinimo langas.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_3.png" src="../../_images/appointment_booking_3.png" />
+</figure>
+<p>Norint patvirtinti, kad dalyvio el. pašto adresas yra galiojantis, jam bus išsiųstas patvirtinimo el. laiškas.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_email.png" src="../../_images/appointment_booking_confirmation_email.png" />
+</figure>
+<p>Tik tada, kai dalyvis paspaus el. laiške esančią patvirtinimo nuorodą, susitikimo rezervacija bus priimta ir perduota organizatoriui.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_dialogue.png" src="../../_images/appointment_booking_confirmation_dialogue.png" />
+</figure>
+<p>Dalyvis gaus dar vieną el. laišką, patvirtinantį susitikimo detales.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_email_2.png" src="../../_images/appointment_booking_email_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Jei laiko rezervacija nėra patvirtinta, ji vis tiek bus rodoma kaip prieinama. Tuo tarpu tą patį laiką gali užimti kitas vartotojas, anksčiau patvirtinęs savo rezervaciją. Sistema aptiks susikirtimus ir pasiūlys pasirinkti kitą laiką.</p>
+</div>
+</section>
+<section id="working-with-the-booked-appointment">
+<h3>Darbas su suplanuotu susitikimu<a class="headerlink" href="#working-with-the-booked-appointment" title="Link to this heading"></a></h3>
+<p>Atlikus rezervaciją, organizatorius savo kalendoriuje ras įvykį su susitikimo informacija ir <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">dalyviu</span></a>.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_event.png" src="../../_images/appointment_calendar_event.png" />
+</figure>
+<p>Jei susitikimui įjungta nuostata „Pridėti laiko prieš įvykį“ arba „Pridėti laiko po įvykio“, organizatoriaus kalendoriuje jie bus rodomi kaip atskiri įvykiai.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_prep.png" src="../../_images/appointment_calendar_prep.png" />
+</figure>
+<p>Kaip ir bet kurio kito renginio, kuriame yra dalyviai, atveju, įvykus pakeitimams ar renginiui neįvykus, dalyviui bus išsiųstas pranešimas el. paštu.</p>
+<p>Jei dalyviai nori atšaukti susitikimą, jie turi susisiekti su organizatoriumi, kad šis galėtų atšaukti arba net ištrinti renginį.</p>
+</section>
+<section id="create-talk-room-for-booked-appointments">
+<h3>Sukurti „Pokalbiai“ kambarį suplanuotiems susitikimams<a class="headerlink" href="#create-talk-room-for-booked-appointments" title="Link to this heading"></a></h3>
+<p>„Pokalbiai“ kambarį suplanuotam susitikimui galite sukurti tiesiai kalendoriaus programėlėje. Ši parinktis pasiekiama susitikimo kūrimo lange. Pažymėjus šią parinktį, kiekvienam suplanuotam susitikimui bus sugeneruota unikali nuoroda ir išsiųsta kartu su patvirtinimo el. laišku.</p>
+</section>
+</section>
+<section id="proposals">
+<h2>Pasiūlymai<a class="headerlink" href="#proposals" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 6.0: </span>Nextcloud 32 or newer</p>
+</div>
+<p>Rasti tinkamą susitikimo laiką dalyvių grupei gali būti sudėtinga. „Kalendorius“ 6-ojoje versijoje įdiegta nauja funkcija, leidžianti vartotojams teikti susitikimo laiko pasiūlymus. Tai reiškia, kad užuot tiesiog rezervavus laiką ar ieškojus laisvų „užimta / laisva“ rodinyje, dalyviai gali balsuoti už kelis pasiūlytus susitikimo laikus. Tuomet organizatorius gali peržiūrėti dalyvių pageidavimus ir pasirinkti tinkamiausią susitikimo laiką.</p>
+<section id="managing-proposals">
+<h3>Pasiūlymų valdymas<a class="headerlink" href="#managing-proposals" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_list.png" src="../../_images/calendar_proposal_list.png" />
+</figure>
+<p>Kairiojoje šoninėje juostoje esančiame pasiūlymų sąraše rodomi visi vartotojo sukurti pasiūlymai. Sąraše pateikiamas pasiūlymo pavadinimas, atsakymus pateikusių dalyvių skaičius bei informacija apie tai, ar atsakymus pateikė visi dalyviai.</p>
+<p>Vartotojas gali spustelėti trijų taškų meniu šalia pasiūlymo elemento, kad redaguotų, ištrintų arba peržiūrėtų esamą pasiūlymą.</p>
+</section>
+<section id="creating-a-proposal">
+<h3>Pasiūlymo rengimas<a class="headerlink" href="#creating-a-proposal" title="Link to this heading"></a></h3>
+<p>Norėdamas sukurti naują pasiūlymą, vartotojas gali spustelėti pliuso piktogramą šalia antraštės „Susitikimų pasiūlymai“, esančios pasiūlymų sąrašo viršuje. Atsidarys modalinis langas, kuriame vartotojas galės įvesti visą reikiamą informaciją apie siūlomą susitikimą.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_create.png" src="../../_images/calendar_proposal_create.png" />
+</figure>
+<p>Pasiūlymų redaktoriuje yra keletas pagrindinių laukų, kuriuos vartotojas gali užpildyti ir kurie panašūs į esančius renginių redaktoriuje, pvz., pavadinimas, aprašymas, vieta, trukmė bei dalyvių pasirinkimas. Ši informacija vėliau naudojama dalyviams informuoti apie siūlomą susitikimą ir jo laiką.</p>
+<p>Pagrindinis skirtumas – „Siūlomi laikai“ pasirinkimas, leidžiantis vartotojui susitikimui parinkti kelis laiko intervalus. Vartotojas gali pridėti tiek laiko intervalų, kiek nori, o kiekvieną iš jų – prireikus redaguoti arba pašalinti.</p>
+<p>Kai vartotojas užpildys visą būtiną informaciją – pavadinimą, trukmę, dalyvių sąrašą – ir pasirinks siūlomus laikus, galės paspausti mygtuką „Kurti“, kad sukurtų pasiūlymą. Taip pasiūlymas bus išsaugotas, o visiems pasirinktiems dalyviams bus išsiųsti pranešimai.</p>
+</section>
+<section id="editing-a-proposal">
+<h3>Pasiūlymo redagavimas<a class="headerlink" href="#editing-a-proposal" title="Link to this heading"></a></h3>
+<p>Vartotojas gali redaguoti esamą pasiūlymą spustelėjęs trijų taškų meniu šalia pasiūlymo įrašo sąraše ir pasirinkęs „Redaguoti“. Atidaromas tas pats langas, kaip ir kuriant naują pasiūlymą, tačiau jame jau būna užpildyta visa esama informacija.</p>
+<p>Atlikęs reikiamus pakeitimus, vartotojas gali spustelėti mygtuką „Atnaujinti“, kad juos išsaugotų. Tai taip pat išsiųs pranešimus visiems dalyviams apie atnaujintą pasiūlymą.</p>
+</section>
+<section id="viewing-a-proposal-progress">
+<h3>Pasiūlymo eigos peržiūra<a class="headerlink" href="#viewing-a-proposal-progress" title="Link to this heading"></a></h3>
+<p>Vartotojai gali peržiūrėti pasiūlymo eigą spustelėję atitinkamą įrašą pasiūlymų sąraše arba pasirinkę „Peržiūrėti“ trijų taškų meniu. Taip bus atvertas išsamus pasiūlymo vaizdas su visa informacija bei laiko ir dalyvių matrica, kurioje pateikiami visi pasiūlyti laikai ir dalyvių atsakymai.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_view.png" src="../../_images/calendar_proposal_view.png" />
+</figure>
+<p>Šiame rodinyje vartotojas gali matyti, kurie dalyviai atsakė į pasiūlymą, ir jų pasirinkimus dėl kiekvieno pasiūlyto laiko. Vartotojas taip pat gali matyti bendrą balsų skaičių už kiekvieną pasiūlytą laiką; tai padeda nuspręsti, koks laikas susitikimui yra tinkamiausias.</p>
+<p>Peržiūrėjęs dalyvių atsakymus, vartotojas gali pasirinkti populiariausią susitikimo laiką spustelėdamas mygtuką „Sukurti“, esantį datos ir dalyvių matricos apačioje. Tai sukurs naują įvykį vartotojo kalendoriuje ir išsiųs pranešimus visiems dalyviams apie patvirtintą susitikimo laiką.</p>
+</section>
+<section id="notifications-for-a-proposed-meeting">
+<h3>Pranešimai apie siūlomą susitikimą<a class="headerlink" href="#notifications-for-a-proposed-meeting" title="Link to this heading"></a></h3>
+<p>Vartotojai gaus el. pašto pranešimus apie įvairius su siūlomu susitikimu susijusius įvykius, įskaitant:</p>
+<ul class="simple">
+<li><p>Kai sukuriamas naujas pasiūlymas</p></li>
+<li><p>Kai pasiūlymas atnaujinamas</p></li>
+<li><p>Kai pasiūlymas atnaujinamas</p></li>
+<li><p>Kai bus patvirtintas galutinis susitikimo laikas</p></li>
+</ul>
+<p>Šie pranešimai padeda visiems dalyviams gauti naujausią informaciją ir išlikti įsitraukusiems viso pasiūlymo rengimo proceso metu.</p>
+<p>Pranešimų el. laiškuose pateikiama pagrindinė informacija apie siūlomą susitikimą: pavadinimas, aprašymas, vieta, trukmė ir siūlomas laikas. Juose taip pat yra nuoroda į atsakymų puslapį, kuriame dalyviai gali peržiūrėti visą informaciją ir atsakyti dėl siūlomo laiko.</p>
+</section>
+<section id="responding-to-a-proposed-meeting">
+<h3>Atsakymas į pasiūlymą susitikti<a class="headerlink" href="#responding-to-a-proposed-meeting" title="Link to this heading"></a></h3>
+<p>Dalyviai gali atsakyti į kvietimą į susitikimą spustelėdami nuorodą pranešimo el. laiške. Taip bus atidarytas išsamus siūlomo susitikimo vaizdas, kuriame galima peržiūrėti visus siūlomus laikus bei kitų dalyvių ir savo atsakymus, taip pat nurodyti savo užimtumą ar pasirinkimus kiekvienam siūlomam laikui.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_respond.png" src="../../_images/calendar_proposal_respond.png" />
+</figure>
+<p>Dalyviai gali nurodyti savo galimybes kiekvienam pasiūlytam laikui, pasirinkdami tinkamą variantą atitinkamoje laiko ir dalyvių matricos eilutėje. Galima rinktis iš trijų variantų: „Taip“, „Ne“ arba „Galbūt“. Pasirinkę variantą, dalyviai gali spustelėti mygtuką „Pateikti“ ir išsaugoti savo atsakymus.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Poraštė">
+        <a href="contacts.html" class="btn btn-neutral float-left" title="Using the Contacts app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Ankstesnis</a>
+        <a href="mail.html" class="btn btn-neutral float-right" title="Using the Mail app" accesskey="n" rel="next">Kitas <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 lt
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ 35
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl class="nc-languages-list">
+        <dt>Kalbos</dt>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lt/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versijos</dt>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              35 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              34 (latest)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33 (stable)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32 (stable)
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,560 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Block desktop client access at the HTTP layer &mdash; Nextcloud 35 Administration Manual</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/desktop/restrictaccess.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Troubleshooting" href="troubleshooting.html" />
+    <link rel="prev" title="Desktop Client Deployment and Setup" href="massdeployment.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management_api.html">Apps management API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Clients</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="massdeployment.html">Desktop Client Deployment and Setup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Block desktop client access at the HTTP layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#identify-desktop-client-requests">Identify desktop client requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#choose-the-policy">Choose the policy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#block-every-standard-desktop-client">Block every standard desktop client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#block-releases-older-than-34-0-2">Block releases older than 34.0.2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#nginx">nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apache-http-server-2-4">Apache HTTP Server 2.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#caddy-2">Caddy 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#haproxy">HAProxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-the-rule">Verify the rule</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 35 Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Clients</a></li>
+      <li class="breadcrumb-item active">Block desktop client access at the HTTP layer</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/desktop/restrictaccess.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="block-desktop-client-access-at-the-http-layer">
+<h1>Block desktop client access at the HTTP layer<a class="headerlink" href="#block-desktop-client-access-at-the-http-layer" title="Link to this heading"></a></h1>
+<p>Server administrators can reject Nextcloud Desktop requests at a web server,
+reverse proxy, or web application firewall (WAF) by matching the HTTP
+<code class="docutils literal notranslate"><span class="pre">User-Agent</span></code> header.</p>
+<p>This can be useful as a compatibility guard or an operational policy, for
+example to temporarily block all desktop clients or require a particular
+client release.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is not a security boundary. The client controls the <code class="docutils literal notranslate"><span class="pre">User-Agent</span></code>
+header and can change or omit it. Do not use this rule as the only control
+when access must be prevented against a deliberately modified client.</p>
+</div>
+<section id="identify-desktop-client-requests">
+<h2>Identify desktop client requests<a class="headerlink" href="#identify-desktop-client-requests" title="Link to this heading"></a></h2>
+<p>The standard desktop client sends a header with this shape:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Mozilla/5.0 (Macintosh) mirall/34.0.2 (Nextcloud, macos-25.5.0 ClientArchitecture: arm64 OsArchitecture: arm64)
+</pre></div>
+</div>
+<p>The stable marker is <code class="docutils literal notranslate"><span class="pre">mirall/</span></code>; the value immediately after it is the desktop
+client version. The current client constructs this value in
+<a class="reference external" href="https://github.com/nextcloud/desktop/blob/master/src/common/utility.cpp">Utility::userAgentString()</a>.</p>
+<p>Use a case-insensitive match for:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mirall/
+</pre></div>
+</div>
+<p>Apply the rule to every request reaching the Nextcloud virtual host. Blocking
+only one OCS or WebDAV endpoint does not block desktop access because the
+client uses multiple OCS, WebDAV, login-flow, status, and provisioning
+endpoints.</p>
+<p>Nextcloud Server’s
+<code class="docutils literal notranslate"><span class="pre">USER_AGENT_CLIENT_DESKTOP</span></code>
+<a class="reference external" href="https://github.com/nextcloud-deps/ocp/blob/22f259b5b27e65a70b6797e1c0c0ecd4b02c0ef9/OCP/IRequest.php">matcher</a>
+also recognizes the legacy marker <code class="docutils literal notranslate"><span class="pre">csyncoC/</span></code>. To include those clients,
+replace <code class="docutils literal notranslate"><span class="pre">mirall/</span></code> with <code class="docutils literal notranslate"><span class="pre">(mirall|csyncoC)/</span></code> in regular-expression rules, or
+add a second substring rule where the configuration format does not support
+regular expressions.</p>
+</section>
+<section id="choose-the-policy">
+<h2>Choose the policy<a class="headerlink" href="#choose-the-policy" title="Link to this heading"></a></h2>
+<section id="block-every-standard-desktop-client">
+<h3>Block every standard desktop client<a class="headerlink" href="#block-every-standard-desktop-client" title="Link to this heading"></a></h3>
+<p>Match the case-insensitive substring:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mirall/
+</pre></div>
+</div>
+</section>
+<section id="block-releases-older-than-34-0-2">
+<h3>Block releases older than 34.0.2<a class="headerlink" href="#block-releases-older-than-34-0-2" title="Link to this heading"></a></h3>
+<p>Web-server regular expressions do not compare arbitrary version strings as
+semantic versions. The following case-insensitive expression is deliberately
+written for one minimum release, <code class="docutils literal notranslate"><span class="pre">34.0.2</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mirall/(([0-9]|[12][0-9]|3[0-3])[.]|34[.]0[.](0|1)([^0-9]|$))
+</pre></div>
+</div>
+<p>It has these results:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Desktop version</p></th>
+<th class="head"><p>Result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">3.14.3</span></code></p></td>
+<td><p>blocked</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">33.0.0</span></code></p></td>
+<td><p>blocked</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">34.0.0</span></code></p></td>
+<td><p>blocked</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">34.0.1</span></code></p></td>
+<td><p>blocked</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">34.0.2</span></code></p></td>
+<td><p>allowed by this rule</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">34.1.0</span></code></p></td>
+<td><p>allowed by this rule</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">35.0.0</span></code></p></td>
+<td><p>allowed by this rule</p></td>
+</tr>
+</tbody>
+</table>
+<p>The expression assumes normal release versions with three numeric components.
+Do not change only the version text in the expression. Build and test a new
+set of numeric ranges whenever the minimum release changes. A WAF that can
+extract the version and compare three integer fields is preferable when the
+minimum changes frequently.</p>
+<p>Return <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code>. Do not return <code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code>: by HTTP
+semantics, that status asks the client to authenticate and obscures that this
+is an administrative policy. The desktop client is not guaranteed to display
+a custom response body, so the administrator should communicate the policy
+separately to users.</p>
+<p>The examples below assume that Nextcloud has its own virtual host at
+<code class="docutils literal notranslate"><span class="pre">cloud.example.com</span></code>. If the host serves other applications, additionally
+scope the rule to the Nextcloud URL prefix.</p>
+</section>
+</section>
+<section id="nginx">
+<h2>nginx<a class="headerlink" href="#nginx" title="Link to this heading"></a></h2>
+<p>Define one <code class="docutils literal notranslate"><span class="pre">map</span></code> in the <code class="docutils literal notranslate"><span class="pre">http</span></code> context. Enable exactly one of the two match
+entries:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>http {
+    map $http_user_agent $block_nextcloud_desktop {
+        default 0;
+
+        # Policy A: block every standard desktop client.
+        ~*mirall/ 1;
+
+        # Policy B: instead block releases older than 34.0.2.
+        # ~*mirall/(([0-9]|[12][0-9]|3[0-3])[.]|34[.]0[.](0|1)([^0-9]|$)) 1;
+    }
+
+    server {
+        server_name cloud.example.com;
+
+        if ($block_nextcloud_desktop) {
+            return 403 &quot;Nextcloud desktop client access is disabled.\n&quot;;
+        }
+
+        # The existing Nextcloud configuration follows here.
+    }
+}
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">map</span></code> directive is valid only in the <code class="docutils literal notranslate"><span class="pre">http</span></code> context. The resulting
+variable is then checked in the Nextcloud <code class="docutils literal notranslate"><span class="pre">server</span></code> block. A conditional
+containing only <code class="docutils literal notranslate"><span class="pre">return</span></code> is sufficient here; no URI rewrite is involved.</p>
+<p>Validate and reload the configuration with the commands appropriate to the
+installation, commonly:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nginx -t</span>
+<span class="go">systemctl reload nginx</span>
+</pre></div>
+</div>
+<p>See the nginx documentation for
+<a class="reference external" href="https://nginx.org/en/docs/http/ngx_http_map_module.html">map</a> and
+<a class="reference external" href="https://nginx.org/en/docs/http/ngx_http_rewrite_module.html#return">return</a>.</p>
+</section>
+<section id="apache-http-server-2-4">
+<h2>Apache HTTP Server 2.4<a class="headerlink" href="#apache-http-server-2-4" title="Link to this heading"></a></h2>
+<p>Place <code class="docutils literal notranslate"><span class="pre">SetEnvIfNoCase</span></code> in the Nextcloud virtual host and deny requests
+carrying the resulting environment variable. Enable exactly one
+<code class="docutils literal notranslate"><span class="pre">SetEnvIfNoCase</span></code> line:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;VirtualHost *:443&gt;
+    ServerName cloud.example.com
+
+    # Policy A: block every standard desktop client.
+    SetEnvIfNoCase User-Agent &quot;mirall/&quot; block_nextcloud_desktop
+
+    # Policy B: instead block releases older than 34.0.2.
+    # SetEnvIfNoCase User-Agent &quot;mirall/(([0-9]|[12][0-9]|3[0-3])[.]|34[.]0[.](0|1)([^0-9]|$))&quot; block_nextcloud_desktop
+
+    &lt;Location &quot;/&quot;&gt;
+        &lt;RequireAll&gt;
+            Require all granted
+            Require not env block_nextcloud_desktop
+        &lt;/RequireAll&gt;
+    &lt;/Location&gt;
+
+    # The existing Nextcloud configuration follows here.
+&lt;/VirtualHost&gt;
+</pre></div>
+</div>
+<p>For a subdirectory installation, such as
+<code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/nextcloud</span></code>, use <code class="docutils literal notranslate"><span class="pre">&lt;Location</span> <span class="pre">&quot;/nextcloud&quot;&gt;</span></code>
+instead. The modules <code class="docutils literal notranslate"><span class="pre">mod_setenvif</span></code> and <code class="docutils literal notranslate"><span class="pre">mod_authz_core</span></code> must be enabled.</p>
+<p>Validate and reload the configuration with the commands appropriate to the
+installation, commonly:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">apachectl configtest</span>
+<span class="go">systemctl reload apache2</span>
+</pre></div>
+</div>
+<p>The Apache documentation describes this
+<a class="reference external" href="https://httpd.apache.org/docs/2.4/rewrite/avoid.html#blocked-bot">SetEnvIfNoCase and Require blocking pattern</a>
+and also notes that a client can circumvent a <code class="docutils literal notranslate"><span class="pre">User-Agent</span></code> rule.</p>
+</section>
+<section id="caddy-2">
+<h2>Caddy 2<a class="headerlink" href="#caddy-2" title="Link to this heading"></a></h2>
+<p>Place the matcher and response before the existing Nextcloud handler. Enable
+exactly one matcher line:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cloud.example.com {
+    # Policy A: block every standard desktop client.
+    @blockedNextcloudDesktop header_regexp User-Agent (?i)mirall/
+
+    # Policy B: instead block releases older than 34.0.2.
+    # @blockedNextcloudDesktop header_regexp User-Agent (?i)mirall/(([0-9]|[12][0-9]|3[0-3])[.]|34[.]0[.](0|1)([^0-9]|$))
+
+    respond @blockedNextcloudDesktop &quot;Nextcloud desktop client access is disabled.&quot; 403
+
+    # The existing Nextcloud file_server, php_fastcgi, or reverse_proxy
+    # directives follow here.
+}
+</pre></div>
+</div>
+<p>Caddy uses RE2 regular expressions. The example therefore uses capturing
+groups rather than PCRE-only constructs.</p>
+<p>Validate and reload the configuration with the commands appropriate to the
+installation, commonly:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">caddy validate --config /etc/caddy/Caddyfile</span>
+<span class="go">systemctl reload caddy</span>
+</pre></div>
+</div>
+<p>See the Caddy documentation for
+<a class="reference external" href="https://caddyserver.com/docs/caddyfile/matchers#header-regexp">header_regexp</a>
+and <a class="reference external" href="https://caddyserver.com/docs/caddyfile/directives/respond">respond</a>.</p>
+</section>
+<section id="haproxy">
+<h2>HAProxy<a class="headerlink" href="#haproxy" title="Link to this heading"></a></h2>
+<p>Add the ACL and deny action to the HTTP <code class="docutils literal notranslate"><span class="pre">frontend</span></code> that receives Nextcloud
+traffic. Enable exactly one <code class="docutils literal notranslate"><span class="pre">blocked_nextcloud_desktop</span></code> ACL:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>frontend https_frontend
+    bind :443 ssl crt /etc/haproxy/certs/cloud.example.com.pem
+
+    acl nextcloud_host hdr(host) -i cloud.example.com cloud.example.com:443
+
+    # Policy A: block every standard desktop client.
+    acl blocked_nextcloud_desktop req.hdr(User-Agent) -m sub -i mirall/
+
+    # Policy B: instead block releases older than 34.0.2.
+    # acl blocked_nextcloud_desktop req.hdr(User-Agent) -m reg -i mirall/(([0-9]|[12][0-9]|3[0-3])[.]|34[.]0[.](0|1)([^0-9]|$))
+
+    http-request deny deny_status 403 if nextcloud_host blocked_nextcloud_desktop
+
+    # The existing backend selection follows here.
+</pre></div>
+</div>
+<p>Keep the host ACL when this frontend serves more than Nextcloud. Validate and
+reload the configuration with the commands appropriate to the installation,
+commonly:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">haproxy -c -f /etc/haproxy/haproxy.cfg</span>
+<span class="go">systemctl reload haproxy</span>
+</pre></div>
+</div>
+<p>See the HAProxy documentation for
+<a class="reference external" href="https://www.haproxy.com/documentation/haproxy-configuration-tutorials/proxying-essentials/custom-rules/acls/">ACLs</a>
+and
+<a class="reference external" href="https://www.haproxy.com/documentation/haproxy-configuration-tutorials/security/traffic-policing/">http-request deny</a>.</p>
+</section>
+<section id="verify-the-rule">
+<h2>Verify the rule<a class="headerlink" href="#verify-the-rule" title="Link to this heading"></a></h2>
+<p>Test from a system that reaches the same proxy or WAF path as real users. The
+following probes do not require Nextcloud credentials:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Must<span class="w"> </span>be<span class="w"> </span><span class="m">403</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>both<span class="w"> </span>policies.
+<span class="go">curl -sS -o /dev/null -w &#39;%{http_code}\n&#39; \</span>
+<span class="go">    -A &#39;Mozilla/5.0 (Linux) mirall/34.0.1 (Nextcloud, linux)&#39; \</span>
+<span class="go">    https://cloud.example.com/status.php</span>
+
+<span class="gp"># </span>Must<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>blocked<span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>minimum-version<span class="w"> </span>policy.<span class="w"> </span>It<span class="w"> </span>is<span class="w"> </span>still<span class="w"> </span><span class="m">403</span><span class="w"> </span>when
+<span class="gp"># </span>the<span class="w"> </span>block-all<span class="w"> </span>policy<span class="w"> </span>is<span class="w"> </span>active.
+<span class="go">curl -sS -o /dev/null -w &#39;%{http_code}\n&#39; \</span>
+<span class="go">    -A &#39;Mozilla/5.0 (Linux) mirall/34.0.2 (Nextcloud, linux)&#39; \</span>
+<span class="go">    https://cloud.example.com/status.php</span>
+
+<span class="gp"># </span>Must<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>blocked<span class="w"> </span>by<span class="w"> </span>either<span class="w"> </span>desktop<span class="w"> </span>rule.
+<span class="go">curl -sS -o /dev/null -w &#39;%{http_code}\n&#39; \</span>
+<span class="go">    -A &#39;Mozilla/5.0 (compatible; policy-check)&#39; \</span>
+<span class="go">    https://cloud.example.com/status.php</span>
+</pre></div>
+</div>
+<p>Also verify these operational details:</p>
+<ol class="arabic simple">
+<li><p>The rule covers all Nextcloud paths and HTTP methods, including WebDAV
+methods such as <code class="docutils literal notranslate"><span class="pre">PROPFIND</span></code>, <code class="docutils literal notranslate"><span class="pre">PUT</span></code>, and <code class="docutils literal notranslate"><span class="pre">DELETE</span></code>.</p></li>
+<li><p>The origin server cannot be reached through another hostname or IP address
+that bypasses the proxy or WAF.</p></li>
+<li><p>Proxy layers preserve the original <code class="docutils literal notranslate"><span class="pre">User-Agent</span></code> header until the component
+enforcing the rule has evaluated it.</p></li>
+<li><p>Access and WAF logs record blocked requests, the matched policy, and the
+returned status.</p></li>
+<li><p>A rollback consists of disabling the match rule and reloading the
+configuration; it does not require changing Nextcloud itself.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="massdeployment.html" class="btn btn-neutral float-left" title="Desktop Client Deployment and Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-admin">
+      ☁️ 35
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-admin" class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+          >
+            35 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            34 (latest)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/33/admin_manual"
+             
+          >
+            33 (stable)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32 (stable)
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

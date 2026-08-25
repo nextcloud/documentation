@@ -1,0 +1,820 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fonctionnement du client de synchronisation &mdash; Nextcloud 35 User Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/desktop/usage.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=2c11b175"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=e6b791cb"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Using the macOS File Provider" href="macosfileprovider.html" />
+    <link rel="prev" title="Désinstallation" href="uninstallation.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Rechercher docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Rechercher docs"
+             aria-label="Rechercher docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Manuel utilisateur de Nextcloud 35 : Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Utilisation de l’application Activité</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Fichiers &amp; synchronisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Désinstallation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Fonctionnement du client de synchronisation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#systray-icon">Icône de la zone de notification système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-nextcloud-account-settings">Configuration des paramètres du compte Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-new-accounts">Ajouter de nouveaux comptes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-manager-overlay-icons">Icônes superposées du gestionnaire de fichiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-the-user-status">Définir le statut de l’utilisateur</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-from-your-desktop">Partage depuis votre bureau</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-window">Fenêtre Général</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-network-window">Utilisation de la fenêtre Réseau</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-ignored-files-editor">Utilisation de l’éditeur de fichiers ignorés</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoupdate.html">L’agent de mise à jour automatique</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Canaux de mise à jour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conflicts.html">Conflits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Définir vos préférences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Accès universel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Utilisation de l’authentification à deux facteurs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestion des navigateurs et des appareils liés</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
+      <li class="breadcrumb-item active">Fonctionnement du client de synchronisation</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/usage.rst" class="fa fa-github"> Éditer sur GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-synchronization-client">
+<h1>Fonctionnement du client de synchronisation<a class="headerlink" href="#using-the-synchronization-client" title="Lien vers cette rubrique"></a></h1>
+<p>Le client Nextcloud reste ouvert en arrière-plan ; son icône est visible dans la barre système, le menu macOS ou la zone de notification Linux.</p>
+<figure class="align-default">
+<img alt="Icône d’état,cercle vert avec coche blanche" src="../../_images/icon.png" />
+</figure>
+<p>Chaque icône représente un état précis de la synchronisation. Le cercle vert avec coche blanche signifie que tout est synchronisé et que le client est bien connecté au serveur Nextcloud.</p>
+<figure class="align-default">
+<img alt="Icône d’état, cercle bleu avec demi-cercle blanc" src="../../_images/icon-syncing.png" />
+</figure>
+<p>L’icône bleue avec demi-cercles blancs indique qu’une synchronisation est en cours.</p>
+<figure class="align-default">
+<img alt="Status icon, grey circle and vertical parallel lines" src="../../_images/icon-paused.png" />
+</figure>
+<p>L’icône grise avec des lignes parallèles vous indique que votre synchronisation a été mise en pause (très probablement par vous-même).</p>
+<figure class="align-default">
+<img alt="Status icon, gray circle and three horizontal white dots" src="../../_images/icon-offline.png" />
+</figure>
+<p>L’icône grise avec trois points blancs signifie que votre synchronisation a perdu sa connexion avec votre serveur Nextcloud.</p>
+<figure class="align-default">
+<img alt="Icône d’état, signe « ! » dans un cercle jaune" src="../../_images/icon-information.png" />
+</figure>
+<p>Quand vous voyez un cercle jaune avec le signe « ! », ce qui est l’icone d’informations, vous pouvez alors cliquer dessus pour voir ce que ça indique.</p>
+<figure class="align-default">
+<img alt="Icône d'état, cercle rouge avec x blanc" src="../../_images/icon-error.png" />
+</figure>
+<p>Le cercle rouge avec le « x » blanc indique une erreur de configuration, comme un identifiant incorrect ou une mauvaise URL de serveur.</p>
+<section id="systray-icon">
+<h2>Icône de la zone de notification système<a class="headerlink" href="#systray-icon" title="Lien vers cette rubrique"></a></h2>
+<p>Un clic droit sur l’icône de la zone de notification système ouvre un menu pour accéder rapidement à plusieurs opérations.</p>
+<figure class="align-default">
+<img alt="le menu du clic droit du client de synchronisation" src="../../_images/traymenu.png" />
+</figure>
+<p>Ce menu fournit les options suivantes :</p>
+<ul class="simple">
+<li><p>Ouvrir la boîte de dialogue principale</p></li>
+<li><p>Mettre en pause et reprendre la synchronisation</p></li>
+<li><p>Paramètres</p></li>
+<li><p>Quitter Nextcloud, ce qui déconnecte et ferme le client</p></li>
+</ul>
+<p>Un clic gauche sur l’icône de la zone de notification système ouvre la boîte de dialogue principale du client de bureau.</p>
+<figure class="align-default">
+<img alt="Boîte de dialogue principale" src="../../_images/main_dialog.png" />
+</figure>
+<p>Le dialogue principal affiche les activités récentes, les erreurs et les notifications du serveur.</p>
+<p>Les Paramètres peuvent être ouverts en cliquant sur la boîte de dialogue principale puis sur l’avatar de l’utilisateur.</p>
+</section>
+<section id="configuring-nextcloud-account-settings">
+<h2>Configuration des paramètres du compte Nextcloud<a class="headerlink" href="#configuring-nextcloud-account-settings" title="Lien vers cette rubrique"></a></h2>
+<figure class="align-default">
+<img alt="Boîte de dialogue principale" src="../../_images/settingsdialog.png" />
+</figure>
+<p>En haut de la fenêtre figurent des onglets pour chacun des comptes de synchronisation configurés, et deux autres qui sont Général et Réseau pour le paramétrage. Sur les onglets de vos comptes, vous disposez des fonctionnalités suivantes :</p>
+<ul class="simple">
+<li><p>État de la connexion, montrant à quel serveur Nextcloud vous êtes connecté, et votre nom d’utilisateur Nextcloud.</p></li>
+<li><p>Espace utilisé et disponible sur le serveur.</p></li>
+<li><p>État actuel de la synchronisation.</p></li>
+<li><p>Bouton <strong>Ajouter une synchronisation de dossier</strong>.</p></li>
+</ul>
+<p>Le bouton bouton avec trois points (le menu déroulant) qui se situe à droite de la barre d’état de synchronisation offre des options supplémentaires :</p>
+<ul class="simple">
+<li><p>Ouvrir le dossier</p></li>
+<li><p>Choisir le contenu à synchroniser (cela n’apparait que si votre arborescence de fichiers est repliée, et développe l’arborescence)</p></li>
+<li><p>Mettre en pause et reprendre la synchronisation</p></li>
+<li><p>Supprimer la synchronisation du dossier</p></li>
+<li><p>Disponibilité (uniquement disponible si la prise en charge des fichiers virtuels est activée)</p></li>
+<li><p>Activer/désactiver la prise en charge des fichiers virtuels</p></li>
+</ul>
+<p><strong>Ouvrir le dossier</strong> ouvre le dossier de synchronisation Nextcloud local.</p>
+<p><strong>Mettre en pause</strong> suspend les opérations de synchronisation sans faire de changement sur votre compte. Les listes de fichiers et de dossiers continueront à être actualisées, mais sans téléchargement ni téléversement de fichiers. Pour arrêter toute activité de synchronisation, utilisez <strong>Supprimer la synchronisation du dossier</strong>.</p>
+<figure class="align-default">
+<img alt="Options supplémentaires des opérations de synchronisation" src="../../_images/general_settings_folder_context_menu.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nextcloud ne préserve pas la date de modification (mtime) des répertoires, bien qu’il actualise celle des fichiers. Voir <a class="reference external" href="https://github.com/owncloud/core/issues/7009">Date de dossier incorrecte lors de la synchronisation</a> (en anglais) pour une discussion sur ce sujet.</p>
+</div>
+</section>
+<section id="adding-new-accounts">
+<h2>Ajouter de nouveaux comptes<a class="headerlink" href="#adding-new-accounts" title="Lien vers cette rubrique"></a></h2>
+<p>Vous pouvez configurer plusieurs comptes Nextcloud dans votre client de synchronisation. Cliquez simplement sur le bouton <strong>Compte</strong> &gt; <strong>Ajouter nouveau</strong> sur n’importe quel onglet de compte pour en ajouter un nouveau, et suivez ensuite l’assistant de création de compte. Le nouveau compte apparaitra dans un nouvel onglet dans la boîte de dialogue des paramètres, où vous pourrez ajuster ses paramètres à tout moment. Utilisez <strong>Compte</strong> &gt; <strong>Supprimer</strong> pour supprimer les comptes.</p>
+</section>
+<section id="file-manager-overlay-icons">
+<h2>Icônes superposées du gestionnaire de fichiers<a class="headerlink" href="#file-manager-overlay-icons" title="Lien vers cette rubrique"></a></h2>
+<p>En plus des icônes normales des types de fichiers, le client de synchronisation Nextcloud fournit des icônes superposées pour que votre gestionnaire de fichiers système (Explorateur sur Windows, Finder sur Mac et Nautilus sur Linux) puisse indiquer le statut actuel de la synchronisation de vos fichiers Nextcloud.</p>
+<p>Les icônes superposées sont similaires à celles de la zone de notification système présentées plus haut. Elles se comportent différemment sur les fichiers et les répertoires en fonction de l’état et des erreurs de synchronisation.</p>
+<p>L’icône superposée sur un fichier individuel indique son état actuel de synchronisation. Si le fichier correspond à sa version sur le serveur, elle affiche une coche verte.</p>
+<p>Si la synchronisation du fichier est ignorée, par exemple parce qu’il figure dans la liste d’exclusion, ou parce qu’il s’agit d’un lien symbolique, il affichera une icône d’avertissement.</p>
+<p>En cas d’erreur de synchronisation, ou si le fichier est sur liste noire, l’icône affiche un X rouge pour attirer l’attention.</p>
+<p>Si le fichier est en attente de synchronisation, ou s’il est en cours de synchronisation, l’icône superposée affiche un cercle bleu en rotation.</p>
+<p>Quand le client est hors-ligne, aucune icône n’est affichée afin de signaler que le dossier ne se synchronise plus et qu’aucune modification n’est envoyée vers le serveur.</p>
+<p>L’icône superposée d’un répertoire synchronisé indique l’état des fichiers contenus dans ce répertoire. En cas d’erreur de synchronisation, le répertoire est marqué avec une icône d’avertissement.</p>
+<p>Si un répertoire contient des fichiers ignorés qui sont marqués avec des icônes d’avertissement, cela ne change pas le statut des répertoires parents.</p>
+</section>
+<section id="set-the-user-status">
+<h2>Définir le statut de l’utilisateur<a class="headerlink" href="#set-the-user-status" title="Lien vers cette rubrique"></a></h2>
+<p>Si vous avez l’application de statut utilisateur installée sur votre serveur Nextcloud, vous pouvez définir celui-ci à partir du client de bureau. Pour cela, ouvrez la boîte de dialogue principale. Cliquez ensuite sur votre avatar puis sur les trois points. Dans le menu qui s’ouvre, cliquez sur <strong>Définir le statut</strong>.</p>
+<figure class="align-default">
+<img alt="Ouverture du dialogue de statut utilisateur depuis la boîte de dialogue principale." src="../../_images/user_status_selector_main_dialog.png" />
+</figure>
+<p>Dans la boîte de dialogue qui s’ouvre, vous pouvez définir votre statut en ligne si vous cliquez sur <strong>En ligne</strong>, <strong>Absent</strong>, <strong>Ne pas déranger</strong> ou <strong>Invisible</strong>. Vous pouvez également définir un message de statut personnalisé avec le champ texte au-dessous ou choisir un des messages de statut prédéfinis plus bas. Il est aussi possible de définir un emoji personnalisé en cliquant sur le bouton avec un emoji à côté du champ de saisie de texte. La dernière chose qu’il est possible de faire est d’effacer votre statut utilisateur. Vous pouvez choisir après combien de temps le statut utilisateur sera effacé en cliquant sur le bouton situé à droite du texte <strong>Effacer le message de statut après</strong>.</p>
+<figure class="align-default">
+<img alt="Boîte de dialogue pour définir le statut de l'utilisateur." src="../../_images/user_status-selector_dialog.png" />
+</figure>
+<p>Si le statut que vous avez créé vous convient, vous pouvez l’activer avec le bouton <strong>Définir le message de statut</strong>. Si un statut a déjà été défini, vous pouvez l’effacer en cliquant sur le bouton <strong>Effacer le message de statut</strong>.</p>
+</section>
+<section id="sharing-from-your-desktop">
+<h2>Partage depuis votre bureau<a class="headerlink" href="#sharing-from-your-desktop" title="Lien vers cette rubrique"></a></h2>
+<p>Le client de bureau de synchronisation Nextcloud s’intègre à votre gestionnaire de fichiers. Finder sur macOS et Explorateur sur Windows. Les utilisateurs de Linux doivent installer un paquet supplémentaire en fonction du gestionnaire de fichiers utilisé. Ceux disponibles sont par exemple <code class="docutils literal notranslate"><span class="pre">nautilus-nextcloud</span></code> (Ubuntu/Debian), <code class="docutils literal notranslate"><span class="pre">dolphin-nextcloud</span></code> (Kubuntu), <code class="docutils literal notranslate"><span class="pre">nemo-nextcloud</span></code> et <code class="docutils literal notranslate"><span class="pre">caja-nextcloud</span></code>. Vous pouvez créer des liens de partage et faire des partages avec des utilisateurs internes de Nextcloud de la même manière que dans votre interface Web Nextcloud.</p>
+<p>In your file explorer, click on a file and in the context menu go to
+<strong>Nextcloud</strong> and then click on <strong>Share options</strong> to bring up the Share
+dialog.</p>
+<figure class="align-default">
+<img alt="Partage depuis l'Explorateur Windows." src="../../_images/share_context_menu.png" />
+</figure>
+<p>Vous pouvez partager un fichier depuis cette boîte de dialogue.</p>
+<figure class="align-default">
+<img alt="Boîte de dialogue de partage" src="../../_images/share_dialog.png" />
+</figure>
+</section>
+<section id="general-window">
+<h2>Fenêtre Général<a class="headerlink" href="#general-window" title="Lien vers cette rubrique"></a></h2>
+<p>La fenêtre Général possède des options de configuration telles que <strong>Lancer au démarrage du système</strong>, <strong>Utiliser les icônes monochromes</strong> et <strong>Afficher les notifications serveur</strong>. C’est là que vous trouverez le bouton <strong>Modifier les fichiers ignorés</strong> pour lancer l’éditeur des fichiers ignorés ainsi que <strong>Demander une confirmation avant de synchroniser les dossiers de plus de [taille du dossier]</strong>.</p>
+<figure class="align-default">
+<img alt="La fenêtre Général contient des options de configuration." src="../../_images/settings_general.png" />
+</figure>
+</section>
+<section id="using-the-network-window">
+<h2>Utilisation de la fenêtre Réseau<a class="headerlink" href="#using-the-network-window" title="Lien vers cette rubrique"></a></h2>
+<p id="index-0">La fenêtre des paramètres du Réseau vous permet de définir le paramétrage du serveur proxy ainsi que de limiter la bande passante en envoi et réception.</p>
+<figure class="align-default">
+<img alt="../../_images/settings_network.png" src="../../_images/settings_network.png" />
+</figure>
+</section>
+<section id="using-the-ignored-files-editor">
+<span id="usingignoredfileseditor-label"></span><h2>Utilisation de l’éditeur de fichiers ignorés<a class="headerlink" href="#using-the-ignored-files-editor" title="Lien vers cette rubrique"></a></h2>
+<p id="index-1">Il peut y avoir certains fichiers ou répertoires locaux que vous ne voulez pas sauvegarder ni stocker sur le serveur. Pour identifier et exclure ces fichiers et répertoires, vous pouvez utiliser l”<em>Éditeur de fichiers ignorés</em> (onglet Général).</p>
+<figure class="align-default">
+<img alt="../../_images/ignored_files_editor.png" src="../../_images/ignored_files_editor.png" />
+</figure>
+<p>Pour votre confort, l’éditeur est prérempli avec une liste de modèles d’exclusion typique. Ces modèles sont contenus dans un fichier système (généralement <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>) situé dans le répertoire de l’application Client Nextcloud. Vous ne pouvez pas modifier ces modèles préremplis directement depuis l’éditeur. Cependant, si besoin, vous pouvez survoler un modèle de la liste pour afficher le chemin et le nom de fichier associé à ce modèle, localiser le fichier et éditer le fichier <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La modification du fichier global des définitions d’exclusions peut rendre le client inutilisable ou provoquer un comportement non désiré.</p>
+</div>
+<p>Chaque ligne dans l’éditeur contient un modèle de chaîne à ignorer. Lors de la création de modèles personnalisés, en plus de pouvoir utiliser des caractères normaux pour définir un modèle d’exclusion, vous pouvez utiliser des caractères génériques pour remplacer des valeurs. Par exemple, vous pouvez utiliser un astérisque (<code class="docutils literal notranslate"><span class="pre">*</span></code>) qui correspondra à un nombre quelconque de caractères, ou un point d’interrogation (<code class="docutils literal notranslate"><span class="pre">?</span></code>) pour correspondre à un caractère unique.</p>
+<p>Les modèles qui finissent par un caractère de barre oblique (<code class="docutils literal notranslate"><span class="pre">/</span></code>) sont appliqués uniquement aux composants de répertoires des chemins en cours de vérification.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Actuellement, les entrées personnalisées ne font pas l’objet d’une correction syntaxique de la part de l’éditeur, vous ne verrez donc aucun avertissement en cas de syntaxe incorrecte. Si votre synchronisation ne fonctionne pas comme prévu, vérifiez votre syntaxe.</p>
+</div>
+<p>Chaque chaîne de modèle de la liste est suivie par une case à cocher. Quand cette case est cochée, en plus de l’exclusion du fichier ou du composant de répertoire qui correspond au modèle, tous les fichiers qui correspondent sont considérés comme des « métadonnées éphémères » et sont supprimés par le client.</p>
+<p>En plus d’exclure les fichiers et répertoires qui utilisent les modèles définis dans cette liste :</p>
+<ul class="simple">
+<li><p>Le client Nextcloud exclut toujours les fichiers qui contiennent des caractères qui ne peuvent pas être synchronisés vers d’autres systèmes de fichiers.</p></li>
+<li><p>Des fichiers sont supprimés, ce qui provoque des erreurs individuelles trois fois au cours d’une synchronisation. Cependant, le client offre une option pour retenter une synchronisation trois fois supplémentaires sur les fichiers qui produisent des erreurs.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="uninstallation.html" class="btn btn-neutral float-left" title="Désinstallation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="macosfileprovider.html" class="btn btn-neutral float-right" title="Using the macOS File Provider" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 French
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ 35
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl class="nc-languages-list">
+        <dt>Langues</dt>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fr/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              35 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              34 (latest)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33 (stable)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32 (stable)
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

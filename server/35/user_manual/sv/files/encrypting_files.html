@@ -1,0 +1,731 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="sv" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Använda kryptering på serversidan &mdash; Nextcloud 35 User Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/files/encrypting_files.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=cf80ac52"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=55d7b627"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Sök" href="../search.html" />
+    <link rel="next" title="Använda totalsträckskryptering" href="using_e2ee.html" />
+    <link rel="prev" title="Säkerhet och kryptering" href="security.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Sök i dokumentationen</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Sök i dokumentationen"
+             aria-label="Sök i dokumentationen" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduktion till användarhandboken för Nextcloud 35</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Använda appen Aktivitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Filer och synkronisering</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="accessing.html">Komma åt dina filer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Hantera dina filer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Delning och samarbete</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="security.html">Säkerhet och kryptering</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Använda kryptering på serversidan</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#encryption-faq">Vanliga frågor om kryptering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-encryption">Använda kryptering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-encrypted-files">Dela krypterade filer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#files-not-encrypted">Filer som inte krypteras</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="using_e2ee.html">Använda totalsträckskryptering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Grupprogram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Hantera dina inställningar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universell åtkomst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Använda tvåfaktorsautentisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Hantera anslutna webbläsare och enheter</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Filer och synkronisering</a></li>
+          <li class="breadcrumb-item"><a href="security.html">Säkerhet och kryptering</a></li>
+      <li class="breadcrumb-item active">Använda kryptering på serversidan</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Editera på GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-server-side-encryption">
+<h1>Använda kryptering på serversidan<a class="headerlink" href="#using-server-side-encryption" title="Link to this heading"></a></h1>
+<p>Nextcloud innehåller en app för kryptering på serversidan. När Nextcloud-administratören aktiverar den krypteras alla dina Nextcloud-datafiler automatiskt på servern. Krypteringen gäller hela servern, så när den är aktiverad kan du inte välja att låta vissa filer vara okrypterade. Du behöver inte göra något särskilt, eftersom ditt Nextcloud-lösenord används som lösenord för din unika privata krypteringsnyckel. Logga bara ut och in igen och hantera och dela filerna som vanligt. Du kan fortfarande ändra lösenordet när du vill.</p>
+<p>Det främsta syftet är att kryptera filer på fjärrlagringstjänster som är anslutna till Nextcloud-servern. Det är ett enkelt och smidigt sätt att skydda filer på fjärrlagring. Du kan dela fjärrfilerna via Nextcloud som vanligt, men du kan inte dela de krypterade filerna direkt från fjärrtjänsten eftersom krypteringsnycklarna lagras på Nextcloud-servern och aldrig lämnas ut till externa tjänsteleverantörer.</p>
+<p>If your Nextcloud server is not connected to any remote storage services, then
+it is better to use some other form of encryption such as file-level or whole
+disk encryption. Because the keys are kept on your Nextcloud server, it is
+possible for your Nextcloud administrator to access your unencrypted files, and if the server is
+compromised the intruder may get access to your files. (Read
+<a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">Encryption in Nextcloud</a>
+to learn more.)</p>
+<section id="encryption-faq">
+<h2>Vanliga frågor om kryptering<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
+<section id="how-can-encryption-be-disabled">
+<h3>Hur kan krypteringen inaktiveras?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
+<p>Det enda sättet att inaktivera krypteringen är att köra skriptet <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">”decrypt all”</a>, som dekrypterar alla filer och inaktiverar krypteringen.</p>
+</section>
+<section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
+<h3>Går det att inaktivera krypteringen med återställningsnyckeln?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Ja, <em>om</em> alla användare använder <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">filåterställningsnyckeln</a>. Då använder <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">”decrypt all”</a> den för att dekryptera alla filer.</p>
+</section>
+<section id="can-encryption-be-disabled-without-the-user-s-password">
+<h3>Kan krypteringen inaktiveras utan användarens lösenord?<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
+<p>Om du inte har användarens lösenord eller <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">filåterställningsnyckel</a> går det inte att dekryptera alla filer. Att köra processen vid inloggning skulle dessutom vara riskabelt, eftersom den sannolikt skulle nå tidsgränsen.</p>
+</section>
+<section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
+<h3>Finns det planer på att göra detta vid användarens nästa inloggning eller som ett bakgrundsjobb?<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
+<p>Det skulle kräva att inloggningslösenordet lagrades i databasen. Det kan betraktas som en säkerhetsrisk, så något sådant är inte planerat.</p>
+</section>
+<section id="is-group-sharing-possible-with-the-recovery-key">
+<h3>Is group sharing possible with the recovery key?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Om du menar att användare ska kunna läggas till i grupper och att allt därefter automatiskt ska fungera är svaret nej. Detta fungerar endast med huvudnyckeln.</p>
+</section>
+</section>
+<section id="using-encryption">
+<h2>Använda kryptering<a class="headerlink" href="#using-encryption" title="Link to this heading"></a></h2>
+<p>Nextclouds kryptering är i stort sett något du konfigurerar en gång och sedan inte behöver tänka på, men det finns några alternativ du kan använda.</p>
+<p>När Nextcloud-administratören aktiverar kryptering för första gången måste du logga ut och sedan in igen för att skapa krypteringsnycklarna och kryptera filerna. När krypteringen har aktiverats på Nextcloud-servern visas en gul informationsrad på sidan Filer med en uppmaning att logga ut och sedan in igen:</p>
+<figure class="align-default">
+<img alt="../../_images/encryption1.png" src="../../_images/encryption1.png" />
+</figure>
+<p>När du loggar in igen tar processen några minuter beroende på hur många filer du har. Därefter återgår du till din förvalda Nextcloud-sida.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption2.png" src="../../_images/encryption2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Du får inte förlora ditt Nextcloud-lösenord, eftersom du då förlorar åtkomsten till filerna. Nextcloud-administratören kan dock aktivera en valfri återställningsfunktion. Mer information finns i avsnittet Lösenord för återställningsnyckeln nedan.</p>
+</div>
+</section>
+<section id="sharing-encrypted-files">
+<h2>Dela krypterade filer<a class="headerlink" href="#sharing-encrypted-files" title="Link to this heading"></a></h2>
+<p>Endast användare som har privata krypteringsnycklar kan komma åt delade krypterade filer och mappar. Användare som ännu inte har skapat sina privata krypteringsnycklar kan se mappar och filnamn, men kan inte öppna eller hämta filerna. De ser en gul varningsrad med texten ”Krypteringsappen är aktiverad, men dina nycklar har inte initierats. Logga ut och in igen.”</p>
+<p>Delningsägare kan behöva dela filerna på nytt när krypteringen har aktiverats. Användare som försöker öppna delningen får då ett meddelande om att be delningsägaren dela filen på nytt. För enskilda delningar tar du bort delningen och delar sedan filen igen. För gruppdelningar delar du filen med de enskilda personer som saknar åtkomst. Då uppdateras krypteringen, varefter delningsägaren kan ta bort de individuella delningarna.</p>
+<section id="recovery-key-password">
+<h3>Lösenord för återställningsnyckeln<a class="headerlink" href="#recovery-key-password" title="Link to this heading"></a></h3>
+<p>Om Nextcloud-administratören har aktiverat återställningsnyckeln kan du välja att använda funktionen för ditt konto. Om du aktiverar ”Lösenordsåterställning” kan administratören läsa dina data med ett särskilt lösenord. Funktionen gör det möjligt för administratören att återställa filerna om du förlorar ditt Nextcloud-lösenord. Om återställningsnyckeln inte är aktiverad går filerna inte att återställa om du förlorar inloggningslösenordet.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption3.png" src="../../_images/encryption3.png" />
+</figure>
+</section>
+</section>
+<section id="files-not-encrypted">
+<h2>Filer som inte krypteras<a class="headerlink" href="#files-not-encrypted" title="Link to this heading"></a></h2>
+<p>Endast innehållet i filerna krypteras, inte filnamnen eller mappstrukturen. Följande data krypteras aldrig:</p>
+<ul class="simple">
+<li><p>Gamla filer i papperskorgen.</p></li>
+<li><p>Miniatyrbilder från appen Galleri.</p></li>
+<li><p>Förhandsvisningar från appen Filer.</p></li>
+<li><p>Sökindexet från appen för fulltextsökning.</p></li>
+<li><p>Data från tredjepartsappar</p></li>
+</ul>
+<section id="change-private-key-password">
+<h3>Ändra lösenordet för den privata nyckeln<a class="headerlink" href="#change-private-key-password" title="Link to this heading"></a></h3>
+<p>Det här alternativet är endast tillgängligt om administratören inte har ändrat krypteringslösenordet, utan bara inloggningslösenordet. Detta kan inträffa om Nextcloud-leverantören använder en extern användarkälla, exempelvis LDAP, och ändrar inloggningslösenordet via den konfigurationen. Då kan du ange ditt gamla och nya inloggningslösenord för att ändra krypteringslösenordet till det nya inloggningslösenordet. Krypteringsappen fungerar endast om inloggningslösenordet och krypteringslösenordet är identiska.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="security.html" class="btn btn-neutral float-left" title="Säkerhet och kryptering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Tillbaka</a>
+        <a href="using_e2ee.html" class="btn btn-neutral float-right" title="Använda totalsträckskryptering" accesskey="n" rel="next">Nästa <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 Swedish
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ 35
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl class="nc-languages-list">
+        <dt>Språk</dt>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sv/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versioner</dt>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              35 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              34 (latest)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33 (stable)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32 (stable)
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
