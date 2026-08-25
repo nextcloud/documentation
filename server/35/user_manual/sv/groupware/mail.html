@@ -1,0 +1,1409 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="sv" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Använda appen E-post &mdash; Nextcloud 35 User Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/mail.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=cf80ac52"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=55d7b627"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Sök" href="../search.html" />
+    <link rel="next" title="Ställa in frånvaromeddelanden" href="absence.html" />
+    <link rel="prev" title="Använda appen Kalender" href="calendar.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Sök i dokumentationen</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Sök i dokumentationen"
+             aria-label="Sök i dokumentationen" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduktion till användarhandboken för Nextcloud 35</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Använda appen Aktivitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Filer och synkronisering</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Grupprogram</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Använda appen Kontakter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Använda appen Kalender</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Använda appen E-post</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-mail-account">Hantera ditt e-postkonto</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#switch-layout">Byta layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-compact-mode">Använd kompakt läge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#message-display-operation-mode">Visnings- och funktionsläge för meddelanden</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-new-mail-account">Lägg till ett nytt e-postkonto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-sort-order">Ändra sorteringsordning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sort-favorites-up">Visa favoriter överst</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scheduled-messages">Schemalagda meddelanden</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#priority-inbox">Prioriterad inkorg</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#all-inboxes">Alla inkorgar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-settings">Kontoinställningar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#move-messages-to-junk-folder">Flytta meddelanden till skräppostmappen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refresh-folder">Refresh folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unified-search">Samlad sökning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-in-folder">Search in folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-search-in-folder">Advanced search in folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-mail-body-search">Aktivera sökning i meddelandetext</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-delegation">Kontodelegering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automatic-trash-deletion">Automatisk radering av papperskorgen</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#compose-messages">Skriva meddelanden</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#minimize-the-composer-modal">Minimera skrivfönstret</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#recipient-info-on-composer">Mottagarinformation i skrivfönstret</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mention-contacts">Nämna kontakter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text-blocks">Textblock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#outbox">Utkorg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#folder-actions">Folder actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-folder">Add a folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-subfolder">Add a subfolder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-folder">Shared folder</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#envelope-actions">Åtgärder för meddelanden</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-an-event">Skapa en händelse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-task">Skapa en uppgift</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-tags">Redigera etiketter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-color-for-tags">Ändra färg på etiketter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-tags">Ta bort etiketter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ai-summary">AI-sammanfattning</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quick-actions">Snabbåtgärder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#message-actions">Meddelandeåtgärder</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unsubscribe-from-a-mailing-list">Avsluta prenumeration på en e-postlista</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#snooze">Skjut upp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#smart-replies">Smarta svar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mail-translation">Översättning av e-post</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#thread-summary">Sammanfattning av konversationer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-and-autoresponder">Filtrering och autosvar</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autoresponders">Autosvar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filter">Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-filter-from-a-message">Skapa ett filter från ett meddelande</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#follow-up-reminders">Påminnelser om uppföljning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security">Säkerhet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#phishing-detection">Identifiering av nätfiske</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#internal-addresses">Interna adresser</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dashboard-integration">Integrering med instrumentpanelen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calendar-integration">Kalenderintegrering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#meeting-invitations">Mötesinbjudningar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#meeting-invitation-automation">Automatisering av mötesinbjudningar</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#keyboard-shortcuts">Kortkommandon</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Ställa in frånvaromeddelanden</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Synkronisera med Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Synkronisera med iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Synkronisera med macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Synkronisera med Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Synkronisera med KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Synkronisera med GNOME-skrivbordet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Synkronisera med Windows 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">Migrate data between instances</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Hantera dina inställningar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universell åtkomst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Använda tvåfaktorsautentisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Hantera anslutna webbläsare och enheter</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Grupprogram</a></li>
+      <li class="breadcrumb-item active">Använda appen E-post</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/mail.rst" class="fa fa-github"> Editera på GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-mail-app">
+<h1>Använda appen E-post<a class="headerlink" href="#using-the-mail-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Appen E-post installeras som standard med Nextcloud Hub, men kan inaktiveras. Kontakta administratören om du behöver appen.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/mail.png" src="../../_images/mail.png" />
+</figure>
+<section id="managing-your-mail-account">
+<h2>Hantera ditt e-postkonto<a class="headerlink" href="#managing-your-mail-account" title="Link to this heading"></a></h2>
+<section id="switch-layout">
+<h3>Byta layout<a class="headerlink" href="#switch-layout" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.6: </span>Nextcloud 26 or newer</p>
+</div>
+<ol class="arabic simple">
+<li><p>Öppna e-postinställningarna</p></li>
+<li><p>Välj mellan <em>Lista</em>, <em>Vertikal delning</em> och <em>Horisontell delning</em></p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_layout.png" src="../../_images/mail_layout.png" />
+</figure>
+</section>
+<section id="use-compact-mode">
+<h3>Använd kompakt läge<a class="headerlink" href="#use-compact-mode" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7: </span>Nextcloud 32 or newer</p>
+</div>
+<p>Kompakt läge ger ett renare och effektivare sätt att visa meddelanden. Avatarer döljs, kryssrutorna för markering visas alltid och förhandsvisningen av meddelanden tas bort. Det sparar utrymme så att du kan se fler e-postmeddelanden samtidigt.</p>
+<ol class="arabic simple">
+<li><p>Öppna e-postinställningarna</p></li>
+<li><p>Gå till <strong>Utseende</strong></p></li>
+<li><p>Aktivera eller inaktivera kompakt läge</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/use-compact-mode.png" src="../../_images/use-compact-mode.png" />
+</figure>
+</section>
+<section id="message-display-operation-mode">
+<h3>Visnings- och funktionsläge för meddelanden<a class="headerlink" href="#message-display-operation-mode" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2: </span>Nextcloud 30 or newer</p>
+</div>
+<p>I E-post kan du växla mellan två olika visnings- och funktionslägen för meddelanden: <em>Konversationer</em> och <em>Enskilda meddelanden</em>.</p>
+<p>In <em>Threaded</em> mode, messages are grouped by conversation. In the folder message list, related messages are stacked so only the most recent message is shown, and all relates messages are shown in message display panel after the stacked message is selected. This is useful for following discussions and understanding the context of replies. In this mode, message operation like move and delete apply to the entire thread, meaning that when you move or delete a thread, all messages within that thread are affected.</p>
+<p>In <em>Singleton</em> mode, messages are displayed individually, in both the folder message list and message display panel and operation like move and delete apply to only the selected message. This mode is useful when you want to manage messages separately without affecting the entire conversation.</p>
+<ol class="arabic simple">
+<li><p>Öppna e-postinställningarna</p></li>
+<li><p>Välj mellan <em>Konversationer</em> och <em>Enskilda meddelanden</em></p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_display-mode.png" src="../../_images/mail_display-mode.png" />
+</figure>
+</section>
+<section id="add-a-new-mail-account">
+<h3>Lägg till ett nytt e-postkonto<a class="headerlink" href="#add-a-new-mail-account" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Aktivera appen E-post bland apparna</p></li>
+<li><p>Klicka på e-postikonen i sidhuvudet</p></li>
+<li><p>Fyll i inloggningsformuläret automatiskt eller manuellt</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/new-mail-account.png" src="../../_images/new-mail-account.png" />
+</figure>
+</section>
+<section id="change-sort-order">
+<h3>Ändra sorteringsordning<a class="headerlink" href="#change-sort-order" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
+</div>
+<ol class="arabic simple">
+<li><p>Öppna e-postinställningarna</p></li>
+<li><p>Gå till <em>Sortering</em></p></li>
+<li><p>Du kan välja att visa <em>Äldsta</em> eller <em>Nyaste</em> e-post först</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>This change will apply across all your accounts and folders</p>
+</div>
+</section>
+<section id="sort-favorites-up">
+<h3>Visa favoriter överst<a class="headerlink" href="#sort-favorites-up" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7: </span>Nextcloud 31 eller senare</p>
+</div>
+<p>Med den här inställningen visas favoritmarkerade meddelanden i ett separat avsnitt högst upp i meddelandelistan.</p>
+<ol class="arabic simple">
+<li><p>Öppna e-postinställningarna</p></li>
+<li><p>Gå till <em>Utseende</em></p></li>
+<li><p>Aktivera sortering med favoriter överst</p></li>
+</ol>
+</section>
+<section id="scheduled-messages">
+<span id="mail-scheduled-messages"></span><h3>Schemalagda meddelanden<a class="headerlink" href="#scheduled-messages" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Click the <strong>New message</strong> button</p></li>
+<li><p>Klicka på åtgärdsmenyn (…) i det fristående skrivfönstret</p></li>
+<li><p>Klicka på <em>Skicka senare</em></p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/scheduled-msg.png" src="../../_images/scheduled-msg.png" />
+</figure>
+</section>
+<section id="priority-inbox">
+<h3>Prioriterad inkorg<a class="headerlink" href="#priority-inbox" title="Link to this heading"></a></h3>
+<p>Den prioriterade inkorgen har två avsnitt: <em>Viktigt</em> och <em>Övrigt</em>. Meddelanden markeras automatiskt som viktiga utifrån vilka meddelanden du har interagerat med eller själv markerat som viktiga. I början kan du behöva ändra prioriteringen manuellt för att lära systemet, men klassificeringen förbättras med tiden.</p>
+<p>Den automatiska klassificeringen är valfri. Du kan välja bort den när du konfigurerar ett konto och när som helst aktivera eller inaktivera den i kontoinställningarna.</p>
+<figure class="align-default">
+<img alt="../../_images/priority-inbox.png" src="../../_images/priority-inbox.png" />
+</figure>
+</section>
+<section id="all-inboxes">
+<h3>Alla inkorgar<a class="headerlink" href="#all-inboxes" title="Link to this heading"></a></h3>
+<p>Alla meddelanden från samtliga konton som du har loggat in på visas här i kronologisk ordning.</p>
+</section>
+<section id="account-settings">
+<span id="mail-account-settings"></span><h3>Kontoinställningar<a class="headerlink" href="#account-settings" title="Link to this heading"></a></h3>
+<p>Dina kontoinställningar, till exempel:</p>
+<ol class="arabic simple">
+<li><p>Alias</p></li>
+<li><p>Signatur</p></li>
+<li><p>Standardmappar</p></li>
+<li><p>Autosvar</p></li>
+<li><p>Betrodda avsändare</p></li>
+<li><p>… och mer</p></li>
+</ol>
+<p>finns i åtgärdsmenyn för ett e-postkonto. Där kan du redigera, lägga till eller ta bort inställningar efter behov.</p>
+</section>
+<section id="move-messages-to-junk-folder">
+<h3>Flytta meddelanden till skräppostmappen<a class="headerlink" href="#move-messages-to-junk-folder" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
+</div>
+<p>E-post kan flytta ett meddelande till en annan mapp när det markeras som skräppost.</p>
+<ol class="arabic simple">
+<li><p>Öppna kontoinställningarna</p></li>
+<li><p>Gå till Standardmappar</p></li>
+<li><p>Kontrollera att en mapp har valts för skräppost</p></li>
+<li><p>Gå till skräppostinställningarna</p></li>
+<li><p>Klicka på Flytta meddelanden till skräppostmappen</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_move-message-to-junk-folder.png" src="../../_images/mail_move-message-to-junk-folder.png" />
+</figure>
+</section>
+<section id="refresh-folder">
+<h3>Refresh folder<a class="headerlink" href="#refresh-folder" title="Link to this heading"></a></h3>
+<p>You can manually trigger a sync of your folder by clicking the refresh button located at the top of the folder list.
+Starting from <code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">5.7</span></code> triggering the sync will also refresh the list of folders for the selected account.</p>
+</section>
+<section id="unified-search">
+<h3>Samlad sökning<a class="headerlink" href="#unified-search" title="Link to this heading"></a></h3>
+<p>Appen E-post är integrerad med Nextclouds funktion för <a class="reference internal" href="../webinterface.html#id1"><span class="std std-ref">samlad sökning</span></a> (mer information finns i <a class="reference internal" href="../webinterface.html"><span class="doc">The Nextcloud web interface</span></a>). Du kan söka efter e-post i alla dina konton med sökfältet i Nextclouds sidhuvud.</p>
+<p>Mail searches email subjects and sender/recipient fields. To search email bodies,
+use the folder search feature in the app.</p>
+</section>
+<section id="search-in-folder">
+<h3>Search in folder<a class="headerlink" href="#search-in-folder" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 2.1: </span>Nextcloud 25 or newer</p>
+</div>
+<p>Överst i meddelandelistan i alla e-postlayouter finns ett sökfält för snabb sökning i ämnesrader. Från och med <code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">3.7</span></code> kan du som standard även söka efter mottagare (till) och avsändare (från).</p>
+</section>
+<section id="advanced-search-in-folder">
+<h3>Advanced search in folder<a class="headerlink" href="#advanced-search-in-folder" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
+</div>
+<p>Du öppnar den avancerade sökningen via en dialogruta i slutet av snabbsökfältet.</p>
+</section>
+<section id="enable-mail-body-search">
+<h3>Aktivera sökning i meddelandetext<a class="headerlink" href="#enable-mail-body-search" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
+</div>
+<p>Det går nu att söka i meddelandetexten. Funktionen måste aktiveras manuellt eftersom den kan orsaka prestandaproblem.</p>
+<p>Så aktiverar du den:</p>
+<ol class="arabic simple">
+<li><p>Öppna kontoinställningarna</p></li>
+<li><p>Go to Folder search</p></li>
+<li><p>Aktivera sökning i meddelandetext</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Varning</p>
+<p>If you want to also enable it for unified folders you have to do so in Mail settings</p>
+</div>
+<p>När funktionen aktiveras söker huvudsökfältet både i ämnesrader och meddelandetext. Dessutom visas ett separat alternativ för <em>Meddelandetext</em> i den avancerade sökningen.</p>
+</section>
+<section id="account-delegation">
+<h3>Kontodelegering<a class="headerlink" href="#account-delegation" title="Link to this heading"></a></h3>
+<p>The app supports two ways of letting one user act on behalf of another’s mail account.</p>
+<section id="sending-as-another-address-server-alias">
+<h4>Sending as another address (server alias)<a class="headerlink" href="#sending-as-another-address-server-alias" title="Link to this heading"></a></h4>
+<p>This lets you send emails from the address of another account.</p>
+<ol class="arabic simple">
+<li><p>Delegeringen måste konfigureras på e-postservern av en administratör</p></li>
+<li><p>Lägg till den andra e-postadressen som ett alias för ditt eget e-postkonto</p></li>
+<li><p>Välj aliaset som avsändare när du skickar ett e-postmeddelande</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Varning</p>
+<p>The sent email might not be visible to the original account if it’s stored in your personal <em>Sent</em> folder.</p>
+</div>
+</section>
+<section id="native-account-delegation">
+<h4>Native account delegation<a class="headerlink" href="#native-account-delegation" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.9: </span>Nextcloud Mail</p>
+</div>
+<p>Native account delegation lets you grant other Nextcloud users access to one of your mail accounts directly from the
+app, without any server-side alias configuration. A delegate can do everything the account owner can — send, receive,
+and delete mail on your behalf — except deleting the account or updating its authentication information.</p>
+<p>To delegate one of your accounts:</p>
+<ol class="arabic simple">
+<li><p>Open the account’s three-dot menu and select <strong>Delegate account</strong></p></li>
+<li><p>In the <strong>Delegation</strong> dialog, click <strong>Add delegate</strong></p></li>
+<li><p>Use the <strong>Select a user</strong> field to choose the Nextcloud user you want to grant access to</p></li>
+<li><p>Confirm with <strong>Delegate access</strong></p></li>
+</ol>
+<p>The shared account then appears in the delegate’s account list, marked as delegated.</p>
+<p>To remove access:</p>
+<ol class="arabic simple">
+<li><p>Open the <strong>Delegate account</strong> dialog again</p></li>
+<li><p>Click <strong>Revoke</strong> next to the delegate you want to remove</p></li>
+<li><p>Confirm with <strong>Revoke access</strong></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Provisioned accounts cannot be delegated.</p>
+</div>
+</section>
+</section>
+<section id="automatic-trash-deletion">
+<h3>Automatisk radering av papperskorgen<a class="headerlink" href="#automatic-trash-deletion" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
+</div>
+<p>Appen E-post kan automatiskt ta bort meddelanden från papperskorgen efter ett visst antal dagar.</p>
+<ol class="arabic simple">
+<li><p>Öppna kontoinställningarna</p></li>
+<li><p>Gå till Automatisk radering av papperskorgen</p></li>
+<li><p>Ange efter hur många dagar meddelandena ska tas bort</p></li>
+</ol>
+<p>Inaktivera lagringstiden för papperskorgen genom att lämna fältet tomt eller ange 0.</p>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Endast e-postmeddelanden som tas bort efter att lagringstiden för papperskorgen har aktiverats behandlas.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/mail_trash_retention_settings.png" src="../../_images/mail_trash_retention_settings.png" />
+</figure>
+</section>
+</section>
+<section id="compose-messages">
+<h2>Skriva meddelanden<a class="headerlink" href="#compose-messages" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Click the <strong>New message</strong> button</p></li>
+<li><p>Börja skriva ditt meddelande</p></li>
+</ol>
+<section id="minimize-the-composer-modal">
+<h3>Minimera skrivfönstret<a class="headerlink" href="#minimize-the-composer-modal" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.2: </span>Nextcloud 26 or newer</p>
+</div>
+<p>The composer modal can be minimized while writing a new message, editing an existing draft or a message from the outbox. Simply click the <strong>Minimize</strong> button on the modal or click anywhere outside the modal.</p>
+<figure class="align-default">
+<img alt="../../_images/mail-minimize-composer.png" src="../../_images/mail-minimize-composer.png" />
+</figure>
+<p>You can resume your minimized message by clicking anywhere on the minimized composer indicator.</p>
+<figure class="align-default">
+<img alt="../../_images/mail-composer-indicator.png" src="../../_images/mail-composer-indicator.png" />
+</figure>
+<p>Press the <strong>Close</strong> button on the modal or on the minimized composer indicator to stop editing a message. A draft will be saved automatically into your draft folder.</p>
+</section>
+</section>
+<section id="recipient-info-on-composer">
+<h2>Mottagarinformation i skrivfönstret<a class="headerlink" href="#recipient-info-on-composer" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
+</div>
+<p>When you add your first recipient or contact in the ”To” field, a right pane will appear displaying the saved profile details of that contact.
+Adding a second contact will collapse the list, allowing you to select and expand any contact you added to view their details.
+If you prefer to focus solely on writing in the composer, you can hide the right pane by clicking the <strong>Expand</strong> icon in the composer toolbar.
+To show the right pane again, simply click the <strong>Minimize</strong> icon in the same toolbar.</p>
+</section>
+<section id="mention-contacts">
+<h2>Nämna kontakter<a class="headerlink" href="#mention-contacts" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
+</div>
+<p>Du kan nämna kontakter i meddelandet genom att skriva <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> och sedan välja kontakten i listan. Kontakten läggs då automatiskt till som mottagare.</p>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Endast kontakter med en giltig e-postadress föreslås.</p>
+</div>
+</section>
+<section id="text-blocks">
+<h2>Textblock<a class="headerlink" href="#text-blocks" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2: </span>Nextcloud 30 or newer</p>
+</div>
+<p>Textblock är fördefinierade textstycken som kan infogas i e-postmeddelanden. De kan skapas och hanteras i e-postinställningarna. Du kan infoga ett textblock i skrivfönstret genom att skriva <code class="docutils literal notranslate"><span class="pre">!</span></code> och sedan välja blocket i listan eller bland skrivfönstrets åtgärder. Textblock kan delas med användare och användargrupper.</p>
+</section>
+<section id="outbox">
+<h2>Utkorg<a class="headerlink" href="#outbox" title="Link to this heading"></a></h2>
+<p>When a message has been composed and the ”Send” button was clicked, the message is added to the <strong>Outbox</strong>, which appears at the bottom of the left sidebar.</p>
+<p>Du kan även ange ett framtida datum och klockslag för sändningen (se <a class="reference internal" href="#mail-scheduled-messages"><span class="std std-ref">Schemalagda meddelanden</span></a>). Meddelandet ligger kvar i utkorgen tills den valda tiden infaller och skickas sedan automatiskt.</p>
+<p>Utkorgen visas endast när den innehåller ett meddelande som väntar på att behandlas.</p>
+<p>You can reopen the composer for a message in the outbox any time before the send operation is triggered.</p>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Om ett fel uppstår under sändningen kan något av följande tre felmeddelanden visas:</p>
+<dl class="simple">
+<dt>Could not copy to ”Sent” folder</dt><dd><p>The mail was sent but couldn’t be copied to the ”Sent” folder. This error will be handled by the outbox and the copy operation will be tried again.</p>
+</dd>
+<dt>Fel på e-postservern</dt><dd><p>Sending was unsuccessful with a state that can be retried (ex: the SMTP server couldn’t be reached). The outbox will retry sending the message.</p>
+</dd>
+<dt>Meddelandet kunde inte skickas</dt><dd><p>Sändningen kan ha lyckats eller misslyckats. E-postservern kan inte ange meddelandets status. Eftersom appen E-post inte kan avgöra om meddelandet har skickats ligger det kvar i utkorgen och kontots användare måste bestämma hur det ska hanteras.</p>
+</dd>
+</dl>
+</div>
+</section>
+<section id="folder-actions">
+<h2>Folder actions<a class="headerlink" href="#folder-actions" title="Link to this heading"></a></h2>
+<section id="add-a-folder">
+<h3>Add a folder<a class="headerlink" href="#add-a-folder" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Öppna åtgärdsmenyn för ett konto</p></li>
+<li><p>Click add folder</p></li>
+</ol>
+</section>
+<section id="add-a-subfolder">
+<h3>Add a subfolder<a class="headerlink" href="#add-a-subfolder" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Open the action menu of a folder</p></li>
+<li><p>Click add subfolder</p></li>
+</ol>
+</section>
+<section id="shared-folder">
+<h3>Shared folder<a class="headerlink" href="#shared-folder" title="Link to this heading"></a></h3>
+<p>If a folder was shared with you with some specific rights, that folder will show as a new folder with a shared icon as below:</p>
+<figure class="align-default">
+<img alt="../../_images/shared-mailbox-icon.png" src="../../_images/shared-mailbox-icon.png" />
+</figure>
+</section>
+</section>
+<section id="envelope-actions">
+<h2>Åtgärder för meddelanden<a class="headerlink" href="#envelope-actions" title="Link to this heading"></a></h2>
+<section id="create-an-event">
+<h3>Skapa en händelse<a class="headerlink" href="#create-an-event" title="Link to this heading"></a></h3>
+<p>Skapa en händelse för ett visst meddelande eller en viss konversation direkt i appen E-post</p>
+<ol class="arabic simple">
+<li><p>Öppna åtgärdsmenyn för ett meddelande</p></li>
+<li><p>Klicka på <em>Fler åtgärder</em></p></li>
+<li><p>Klicka på <em>Skapa händelse</em></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>An event title and agenda are created for you if the administrator has enabled it.</p>
+</div>
+</section>
+<section id="create-a-task">
+<h3>Skapa en uppgift<a class="headerlink" href="#create-a-task" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.2: </span>Nextcloud 26 or newer</p>
+</div>
+<p>Skapa en uppgift för ett visst meddelande eller en viss konversation direkt i appen E-post</p>
+<ol class="arabic simple">
+<li><p>Öppna åtgärdsmenyn för ett meddelande</p></li>
+<li><p>Klicka på <em>Fler åtgärder</em></p></li>
+<li><p>Klicka på <em>Skapa uppgift</em></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Uppgifter lagras i kalendrar som stöder dem. Om det inte finns någon kompatibel kalender kan du skapa en ny med <a class="reference internal" href="calendar.html#calendar-app"><span class="std std-ref">appen Kalender</span></a>.</p>
+</div>
+</section>
+<section id="edit-tags">
+<h3>Redigera etiketter<a class="headerlink" href="#edit-tags" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Öppna åtgärdsmenyn för ett meddelande</p></li>
+<li><p>Klicka på <em>Redigera etiketter</em></p></li>
+<li><p>Aktivera eller inaktivera etiketter i dialogrutan för etiketter</p></li>
+</ol>
+</section>
+<section id="change-color-for-tags">
+<h3>Ändra färg på etiketter<a class="headerlink" href="#change-color-for-tags" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/change-tag-color.png" src="../../_images/change-tag-color.png" />
+</figure>
+<p>När en etikett skapas tilldelas den automatiskt en slumpmässig färg. När etiketten har sparats kan du anpassa färgen efter dina önskemål. Funktionen finns i åtgärdsmenyn i dialogrutan Etiketter.</p>
+</section>
+<section id="delete-tags">
+<h3>Ta bort etiketter<a class="headerlink" href="#delete-tags" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/delete-tag.png" src="../../_images/delete-tag.png" />
+</figure>
+<p>Du kan nu ta bort etiketter som du tidigare har skapat. Så använder du funktionen:</p>
+<ol class="arabic simple">
+<li><p>Öppna åtgärdsmenyn för ett meddelande eller en konversation.</p></li>
+<li><p>Välj Redigera etiketter.</p></li>
+<li><p>Öppna åtgärdsmenyn för den etikett som du vill ta bort i dialogrutan för etiketter.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Observera att standardetiketter som Arbete, Att göra, Personligt och Senare inte kan tas bort. De kan endast byta namn.</p>
+</div>
+</section>
+<section id="ai-summary">
+<h3>AI-sammanfattning<a class="headerlink" href="#ai-summary" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
+</div>
+<p>When looking through your folder you will see a short AI generated summary of your emails as a preview.</p>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Observera att funktionen måste aktiveras av administratören</p>
+</div>
+</section>
+</section>
+<section id="quick-actions">
+<h2>Snabbåtgärder<a class="headerlink" href="#quick-actions" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.5: </span>Nextcloud 30 or newer</p>
+</div>
+<p>Med snabbåtgärder kan du gruppera åtgärder som du normalt utför på meddelanden, exempelvis att lägga till etiketter, flytta eller markera som läst, och sedan köra hela gruppen med ett enda klick. Snabbåtgärder gäller ett enskilt e-postkonto och kan skapas och hanteras under ”Snabbåtgärder” i e-postinställningarna eller direkt från meddelandets åtgärdsmeny.</p>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Vissa åtgärdssteg, exempelvis <cite>Markera som skräppost</cite>, <cite>Flytta konversation</cite> och <cite>Ta bort konversation</cite>, utesluter varandra och kan inte ingå i samma snabbåtgärd. De kan inte heller ordnas om och körs alltid sist.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Observera att en snabbåtgärd som körs för ett meddelande i en konversation tillämpas på alla meddelanden i konversationen.</p>
+</div>
+</section>
+<section id="message-actions">
+<h2>Meddelandeåtgärder<a class="headerlink" href="#message-actions" title="Link to this heading"></a></h2>
+<section id="unsubscribe-from-a-mailing-list">
+<h3>Avsluta prenumeration på en e-postlista<a class="headerlink" href="#unsubscribe-from-a-mailing-list" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.1: </span>Nextcloud 26 or newer</p>
+</div>
+<p>På vissa e-postlistor och nyhetsbrev är det enkelt att avsluta prenumerationen. Om appen E-post identifierar meddelanden från en sådan avsändare visas knappen <em>Avsluta prenumeration</em> bredvid avsändarinformationen. Klicka på knappen och bekräfta för att avsluta prenumerationen.</p>
+</section>
+<section id="snooze">
+<h3>Skjut upp<a class="headerlink" href="#snooze" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
+</div>
+<p>Snoozing a message or thread moves it into a dedicated folder until the selected snooze date is reached and the message or thread is moved back to the original folder.</p>
+<ol class="arabic simple">
+<li><p>Öppna åtgärdsmenyn för ett meddelande eller en konversation</p></li>
+<li><p>Klicka på <em>Skjut upp</em></p></li>
+<li><p>Välj hur länge meddelandet eller konversationen ska skjutas upp</p></li>
+</ol>
+</section>
+<section id="smart-replies">
+<h3>Smarta svar<a class="headerlink" href="#smart-replies" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.6: </span>Nextcloud 26 or newer</p>
+</div>
+<p>När du öppnar ett meddelande i appen E-post föreslås AI-genererade svar. Klicka på ett förslag så öppnas skrivfönstret med svaret redan infogat.</p>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Observera att funktionen måste aktiveras av administratören</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Vilka språk som stöds beror på den stora språkmodell som används</p>
+</div>
+</section>
+<section id="mail-translation">
+<h3>Översättning av e-post<a class="headerlink" href="#mail-translation" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
+</div>
+<p>Du kan översätta meddelanden till de språk som du har konfigurerat, på samma sätt som i Talk.</p>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Observera att översättningsfunktionerna måste aktiveras på servern</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Från och med version 5.3 föreslås översättningar om administratören har aktiverat en stor språkmodell</p>
+</div>
+</section>
+</section>
+<section id="thread-summary">
+<h2>Sammanfattning av konversationer<a class="headerlink" href="#thread-summary" title="Link to this heading"></a></h2>
+<p>Appen E-post kan sammanfatta meddelandekonversationer som innehåller tre eller fler meddelanden.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Observera att funktionen måste aktiveras av administratören</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Observera att funktionen endast fungerar bra med integration_openai. Lokala stora språkmodeller svarar för långsamt, vilket gör att begäran om en sammanfattning sannolikt hinner överskrida tidsgränsen samtidigt som den ändå orsakar en betydande belastning på systemet.</p>
+</div>
+</section>
+<section id="filtering-and-autoresponder">
+<h2>Filtrering och autosvar<a class="headerlink" href="#filtering-and-autoresponder" title="Link to this heading"></a></h2>
+<p>Appen E-post har en redigerare för Sieve-skript, ett gränssnitt för att konfigurera autosvar och ett gränssnitt för att konfigurera filter. Sieve måste vara aktiverat i <a class="reference internal" href="#mail-account-settings"><span class="std std-ref">kontoinställningarna</span></a>.</p>
+<section id="autoresponders">
+<h3>Autosvar<a class="headerlink" href="#autoresponders" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5: </span>Nextcloud 26 or newer</p>
+</div>
+<p>Autosvar är inaktiverat som standard. Det kan ställas in manuellt eller följa systeminställningarna. När systeminställningarna följs används automatiskt det långa frånvaromeddelande som har angetts i <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">avsnittet med frånvaroinställningar</span></a>.</p>
+</section>
+<section id="filter">
+<h3>Filter<a class="headerlink" href="#filter" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.1: </span>Nextcloud 30 or newer</p>
+</div>
+<p>E-post 4.1 innehåller en enkel redigerare för att konfigurera filterregler.</p>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Det går inte att importera befintliga filter. Alla befintliga filter fortsätter dock att vara aktiva och förblir oförändrade. Som en försiktighetsåtgärd rekommenderar vi att du säkerhetskopierar det aktuella skriptet med redigeraren för Sieve-skript.</p>
+</div>
+<section id="how-to-add-a-new-filter">
+<h4>Så lägger du till ett nytt filter<a class="headerlink" href="#how-to-add-a-new-filter" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Öppna kontoinställningarna.</p></li>
+<li><p>Kontrollera att Sieve är aktiverat för kontot (se inställningarna för Sieve-servern).</p></li>
+<li><p>Klicka på Filter.</p></li>
+<li><p>Välj Nytt filter för att skapa en ny regel.</p></li>
+</ol>
+</section>
+<section id="how-to-delete-a-filter">
+<h4>Så tar du bort ett filter<a class="headerlink" href="#how-to-delete-a-filter" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Öppna kontoinställningarna.</p></li>
+<li><p>Kontrollera att Sieve är aktiverat för kontot (se inställningarna för Sieve-servern).</p></li>
+<li><p>Klicka på Filter.</p></li>
+<li><p>Håll pekaren över filtret som du vill ta bort och klicka sedan på papperskorgsikonen.</p></li>
+</ol>
+</section>
+<section id="conditions">
+<h4>Villkor<a class="headerlink" href="#conditions" title="Link to this heading"></a></h4>
+<p>Villkoren tillämpas på inkommande e-postmeddelanden på e-postservern och kan avse fält som Ämne, Avsändare och Mottagare. Du kan använda följande operatorer för att definiera villkor för dessa fält:</p>
+<ul class="simple">
+<li><p><strong>är exakt</strong>: En exakt matchning. Fältet måste vara identiskt med det angivna värdet.</p></li>
+<li><p><strong>innehåller</strong>: En delsträngsmatchning. Fältet matchar om det angivna värdet ingår i det. Till exempel matchar ”rapport” värdet ”porträtt”.</p></li>
+<li><p><strong>matchar</strong>: En mönstermatchning med jokertecken. Symbolen ”*” representerar valfritt antal tecken, även inga alls, medan ”?” representerar exakt ett tecken. Till exempel matchar ”<em>rapport</em>” värdet ”Affärsrapport 2024”.</p></li>
+</ul>
+</section>
+<section id="actions">
+<h4>Åtgärder<a class="headerlink" href="#actions" title="Link to this heading"></a></h4>
+<p>Åtgärder körs när de angivna testerna är sanna. Följande åtgärder är tillgängliga:</p>
+<ul class="simple">
+<li><p><strong>fileinto</strong>: Flyttar meddelandet till en angiven mapp.</p></li>
+<li><p><strong>addflag</strong>: Lägger till en flagga i meddelandet.</p></li>
+<li><p><strong>stop</strong>: Stoppar körningen av filterskriptet. Inga ytterligare filter behandlas efter den här åtgärden.</p></li>
+</ul>
+</section>
+</section>
+<section id="create-a-filter-from-a-message">
+<h3>Skapa ett filter från ett meddelande<a class="headerlink" href="#create-a-filter-from-a-message" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2: </span>Nextcloud 30 or newer</p>
+</div>
+<p>Om du vill skapa ett filter från ett visst meddelande öppnar du meddelandet och sedan menyn genom att klicka på de tre punkterna. Klicka därefter på ”Fler åtgärder” och sedan på ”Skapa e-postfilter”.</p>
+<p>Välj i dialogrutan vilka villkor som inkommande meddelanden ska matcha och fortsätt genom att klicka på ”Skapa e-postfilter”.</p>
+<figure class="align-default">
+<img alt="../../_images/mail_create_filter_from_message.png" src="../../_images/mail_create_filter_from_message.png" />
+</figure>
+</section>
+</section>
+<section id="follow-up-reminders">
+<h2>Påminnelser om uppföljning<a class="headerlink" href="#follow-up-reminders" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0: </span>Nextcloud 30 or newer</p>
+</div>
+<p>Appen E-post påminner dig automatiskt när ett skickat e-postmeddelande inte har fått något svar. Varje skickat meddelande analyseras av AI för att avgöra om ett svar förväntas. Efter fyra dagar visas alla relevanta meddelanden i den prioriterade inkorgen.</p>
+<p>När du klickar på ett sådant meddelande visas en knapp som gör det möjligt att snabbt följa upp med alla mottagare. Du kan även inaktivera uppföljningspåminnelser för ett skickat meddelande.</p>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Observera att funktionen måste aktiveras av administratören.</p>
+</div>
+</section>
+<section id="security">
+<h2>Säkerhet<a class="headerlink" href="#security" title="Link to this heading"></a></h2>
+<section id="phishing-detection">
+<h3>Identifiering av nätfiske<a class="headerlink" href="#phishing-detection" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0: </span>Nextcloud 30 or newer</p>
+</div>
+<p>Appen E-post söker efter möjliga nätfiskeförsök och visar en varning för användaren.</p>
+<p>Följande kontroller görs:</p>
+<ul class="simple">
+<li><p>Avsändaradressen som har sparats i adressboken är inte densamma som adressen i e-postkontot</p></li>
+<li><p>Avsändaren använder en anpassad e-postadress som inte överensstämmer med Från-adressen</p></li>
+<li><p>Sändningsdatumet ligger i framtiden</p></li>
+<li><p>Länkar i meddelandetexten leder inte till den adress som den visade texten anger</p></li>
+<li><p>Svarsadressen är inte densamma som avsändaradressen</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>Observera att varningen inte innebär att meddelandet är ett nätfiskeförsök. Den betyder endast att appen E-post har upptäckt ett möjligt nätfiskeförsök.</p>
+</div>
+</section>
+<section id="internal-addresses">
+<h3>Interna adresser<a class="headerlink" href="#internal-addresses" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0: </span>Nextcloud 30 or newer</p>
+</div>
+<p>I appen E-post kan du lägga till interna adresser och domäner. Appen varnar användaren om en adress inte finns i listan, både när ett meddelande skickas och när det tas emot.</p>
+<p>Så lägger du till en intern adress:</p>
+<ol class="arabic simple">
+<li><p>Öppna e-postinställningarna</p></li>
+<li><p>Gå till avsnittet Integritet och säkerhet</p></li>
+<li><p>Aktivera interna adresser genom att markera kryssrutan</p></li>
+<li><p>Klicka på knappen Lägg till intern adress</p></li>
+<li><p>Ange adressen eller domänen och klicka på Lägg till</p></li>
+</ol>
+</section>
+</section>
+<section id="dashboard-integration">
+<h2>Integrering med instrumentpanelen<a class="headerlink" href="#dashboard-integration" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.8: </span>Nextcloud 20 or newer</p>
+</div>
+<p>Appen E-post har två komponenter som är utformade för integrering med Nextclouds instrumentpanel:</p>
+<ul class="simple">
+<li><p>Olästa e-postmeddelanden: Den här komponenten visar olästa e-postmeddelanden.</p></li>
+<li><p>Viktiga e-postmeddelanden: Den här komponenten visar e-postmeddelanden som har markerats som viktiga.</p></li>
+</ul>
+<p>Komponenterna använder e-postmeddelanden från de e-postkonton som har konfigurerats för ditt konto.</p>
+</section>
+<section id="calendar-integration">
+<h2>Kalenderintegrering<a class="headerlink" href="#calendar-integration" title="Link to this heading"></a></h2>
+<p>Appen E-post är integrerad med appen Kalender för att hjälpa dig att hantera mötesinbjudningar och hålla kalendern uppdaterad.</p>
+<section id="meeting-invitations">
+<h3>Mötesinbjudningar<a class="headerlink" href="#meeting-invitations" title="Link to this heading"></a></h3>
+<p>När du får ett meddelande med en mötesinbjudan identifierar appen E-post automatiskt den bifogade kalenderfilen och visar ett formaterat åtgärdsavsnitt som hjälper dig att svara.</p>
+<p>Du kan:</p>
+<ul class="simple">
+<li><p><strong>Acceptera</strong> inbjudan</p></li>
+<li><p><strong>Avböja</strong> inbjudan</p></li>
+<li><p><strong>Acceptera preliminärt</strong></p></li>
+</ul>
+<p>Ditt svar skickas direkt från appen E-post och händelsen läggs till i din primära kalender i enlighet med svaret.</p>
+<p>Du kan också lägga till en mötesinbjudan manuellt i en viss kalender:</p>
+<ol class="arabic simple">
+<li><p>Öppna meddelandet med mötesinbjudan</p></li>
+<li><p>Rulla längst ned i meddelandet till avsnittet med bilagor</p></li>
+<li><p>Välj kalenderfilen, som vanligtvis har filändelsen .ics, och klicka sedan på menyn med tre punkter.</p></li>
+<li><p>Klicka på ”Importera till kalender” och välj önskad kalender.</p></li>
+</ol>
+</section>
+<section id="meeting-invitation-automation">
+<h3>Automatisering av mötesinbjudningar<a class="headerlink" href="#meeting-invitation-automation" title="Link to this heading"></a></h3>
+<p>När en mötesorganisatör skickar uppdateringar till en befintlig händelse, exempelvis en ny tid eller plats, behandlar appen E-post dem automatiskt och uppdaterar motsvarande händelse i kalendern.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7: </span>Nextcloud 32 or newer</p>
+</div>
+<p>Du kan också konfigurera E-post så att alla nya mötesinbjudningar automatiskt läggs till i kalendern utan att behöva accepteras manuellt. Inbjudningarna läggs till i kalendern som preliminära.</p>
+<p>Så aktiverar du funktionen:</p>
+<ol class="arabic simple">
+<li><p>Öppna kontoinställningarna för ett visst e-postkonto</p></li>
+<li><p>Gå till avsnittet Kalenderinställningar</p></li>
+<li><p>Aktivera <em>Skapa preliminära bokningar automatiskt i kalendern</em></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Observera</p>
+<p>När inställningen är aktiverad visas inbjudningarna fortfarande i e-postlistan, men läggs automatiskt till i kalendern.</p>
+</div>
+</section>
+</section>
+<section id="keyboard-shortcuts">
+<h2>Kortkommandon<a class="headerlink" href="#keyboard-shortcuts" title="Link to this heading"></a></h2>
+<p>Appen E-post har flera kortkommandon som gör arbetet snabbare.</p>
+<p>En fullständig lista över de kortkommandon som stöds finns i e-postinställningarna i din instans.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="calendar.html" class="btn btn-neutral float-left" title="Använda appen Kalender" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Tillbaka</a>
+        <a href="absence.html" class="btn btn-neutral float-right" title="Ställa in frånvaromeddelanden" accesskey="n" rel="next">Nästa <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 Swedish
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ 35
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl class="nc-languages-list">
+        <dt>Språk</dt>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sv/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versioner</dt>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              35 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              34 (latest)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33 (stable)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32 (stable)
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

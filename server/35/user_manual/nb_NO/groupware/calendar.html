@@ -1,0 +1,1212 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="nb-NO" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bruke Kalenderappen &mdash; Nextcloud 35 User Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/calendar.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=6dee543a"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=b06a96f2"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Søk" href="../search.html" />
+    <link rel="next" title="Using the Mail app" href="mail.html" />
+    <link rel="prev" title="Using the Contacts app" href="contacts.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 35 brukerhåndbok introduksjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Filer og synkronisering</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Using the Contacts app</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bruke Kalenderappen</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-calendars">Administrere kalenderne dine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-calendar">Opprette en ny kalender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-a-calendar">Importer en kalender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-an-event-add-ics-event">Importer en Event/ADD .ics Event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-export-or-delete-a-calendar">Rediger, eksporter eller slett en kalender.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-transparency">Kalendergjennomsiktighet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-calendars">Deling av kalendere</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-delegation">Calendar delegation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#federated-calendar-sharing">Føderert kalenderdeling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#publishing-a-calendar">Publisere en kalender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-widget">Kalenderwidget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-calendar">Abonnere på en kalender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-holiday-calendar">Abonner på en feriekalender</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-events">Administrere hendelser</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-event">Opprett en ny hendelse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-talk-conversation">Legg til Talk samtaler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-duplicate-or-delete-an-event">Rediger, dupliser eller slett en hendelse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#invite-attendees-to-an-event">Invitere deltakere til en hendelse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-attendees-busy-times">Sjekke deltakernes opptatt-tider</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assign-rooms-and-resources-to-an-event">Tildele rom og ressurser til en hendelse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#room-availability">Romtilgjengelighet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-attachments-to-events">Legge til vedlegg til hendelser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-reminders">Sett opp påminnelser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-recurring-options">Legg til regelmessige alternativer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trash-bin">Papirkurv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automated-user-status">Automatisert brukerstatus</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#responding-to-invitations">Svare på invitasjoner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#availability-working-hours">Tilgjengelighet (arbeidstid)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#birthday-calendar">Bursdagskalender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appointments">Avtaler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-an-appointment-configuration">Opprette en avtalekonfigurasjon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#booking-an-appointment">Bestilling av avtale</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-the-booked-appointment">Arbeide med bestilt time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-talk-room-for-booked-appointments">Opprette Talk-rom for bestilte avtaler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#proposals">Forslag</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#managing-proposals">Administrere forslag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-proposal">Lage et forslag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editing-a-proposal">Redigere et forslag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#viewing-a-proposal-progress">Vise fremdriften til et forslag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notifications-for-a-proposed-meeting">Varsler for et foreslått møte</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#responding-to-a-proposed-meeting">Svare på et foreslått møte</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Using the Mail app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Setting out-of-office messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Synkronisere med Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Synchronizing with iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Synkronisere med macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Synchronizing with Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Synkronisere med KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Synkronisere med Gnome-skrivebordet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Synkronisere med Windows 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">Migrate data between instances</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Angir preferansene dine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universell tilgang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Bruker tofaktorautentisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Administrer tilkoblede nettlesere og enheter</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Bruke Kalenderappen</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/calendar.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-calendar-app">
+<span id="calendar-app"></span><h1>Bruke Kalenderappen<a class="headerlink" href="#using-the-calendar-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Merknad</p>
+<p>Kalender-appen leveres installert med Nextcloud Hub som standard, men kan deaktiveres. Spør administratoren om dette.</p>
+</div>
+<p>Nextcloud Kalender-appen fungerer på samme måte som andre kalenderapplikasjoner du kan synkronisere Nextcloud-kalendere og hendelser med.</p>
+<p>Når du først åpner Kalender-appen, opprettes en standard første kalender for deg.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_application.png" src="../../_images/calendar_application.png" />
+</figure>
+<section id="managing-your-calendars">
+<h2>Administrere kalenderne dine<a class="headerlink" href="#managing-your-calendars" title="Link to this heading"></a></h2>
+<section id="create-a-new-calendar">
+<h3>Opprette en ny kalender<a class="headerlink" href="#create-a-new-calendar" title="Link to this heading"></a></h3>
+<p>Hvis du planlegger å sette opp en ny kalender uten å overføre gamle data fra den forrige kalenderen, er det å opprette en ny kalender veien du bør gå.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_1.png"><img alt="../../_images/calendar_create_1.png" src="../../_images/calendar_create_1.png" style="width: 604.0px; height: 480.8px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>Klikk på ’’+ Ny kalender’’ i venstre sidefelt.</p></li>
+<li><p>Skriv inn et navn for den nye kalenderen, for eksempel «Arbeid», «Hjem» eller «Markedsføringsplanlegging».</p></li>
+<li><p>Etter å ha klikket på haken, opprettes den nye kalenderen din og kan synkroniseres på tvers av enhetene dine, fylles med nye hendelser og deles med venner og kolleger.</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_2.png"><img alt="../../_images/calendar_create_2.png" src="../../_images/calendar_create_2.png" style="width: 603.2px; height: 478.40000000000003px;" />
+</a>
+</figure>
+</section>
+<section id="import-a-calendar">
+<h3>Importer en kalender<a class="headerlink" href="#import-a-calendar" title="Link to this heading"></a></h3>
+<p>Hvis du vil overføre kalenderen din og deres respektive hendelser til Nextcloud-forekomsten, er import den beste måten å gjøre det på.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_importing.png"><img alt="../../_images/calendar_importing.png" src="../../_images/calendar_importing.png" style="width: 697.5px; height: 225.0px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>Click on the <strong>Calendar settings</strong> icon.</p></li>
+<li><p>Etter å ha klikket på <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">Calendar</span></code>, som finnes i <code class="docutils literal notranslate"><span class="pre">General</span></code>-seksjonen, kan du velge én eller flere kalenderfiler fra din lokale enhet for å laste opp.</p></li>
+<li><p>Velg en <code class="docutils literal notranslate"><span class="pre">Calendar</span> <span class="pre">to</span> <span class="pre">import</span> <span class="pre">into</span></code>.</p></li>
+<li><p>Opplastingen kan ta litt tid og avhenger av hvor stor kalenderen du importerer er. En blå fremdriftslinje vil vises under «Calendar Settings».</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Merknad</p>
+<p>Nextcloud Calendar-applikasjonen støtter bare iCalendar-kompatible ’’.ics’’-filer, definert i RFC 5545.</p>
+</div>
+</section>
+<section id="import-an-event-add-ics-event">
+<h3>Importer en Event/ADD .ics Event<a class="headerlink" href="#import-an-event-add-ics-event" title="Link to this heading"></a></h3>
+<p>Individual events are often distributed as <code class="docutils literal notranslate"><span class="pre">.ics</span></code> files (sometimes via a button labelled «iCal», «Apple Calendar» or «Outlook»). You can import them into Nextcloud Calendar using the same import flow as a full calendar.</p>
+<ol class="arabic simple">
+<li><p>Click on the <strong>Calendar settings</strong> icon.</p></li>
+<li><p>After clicking on <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">calendar</span></code> you can select one or more <code class="docutils literal notranslate"><span class="pre">.ics</span></code> files
+from your local device to upload. Single-event files are added to the calendar you select.</p></li>
+<li><p>Velg en <code class="docutils literal notranslate"><span class="pre">Calendar</span> <span class="pre">to</span> <span class="pre">import</span> <span class="pre">into</span></code>.</p></li>
+<li><p>Opplastingen kan ta litt tid og avhenger av hvor stor kalenderen/hendelsen du importerer er. En blå fremdriftslinje vil vises under «Calendar Settings».</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Merknad</p>
+<p>Nextcloud Calendar-applikasjonen støtter bare iCalendar-kompatible ’’.ics’’-filer, definert i RFC 5545.</p>
+</div>
+</section>
+<section id="edit-export-or-delete-a-calendar">
+<h3>Rediger, eksporter eller slett en kalender.<a class="headerlink" href="#edit-export-or-delete-a-calendar" title="Link to this heading"></a></h3>
+<p>Noen ganger vil du kanskje endre fargen eller hele navnet på en tidligere importert eller opprettet kalender. Det kan også være lurt å eksportere den til din lokale harddisk eller slette den for alltid.</p>
+<div class="admonition note">
+<p class="admonition-title">Merknad</p>
+<p>Husk at sletting av en kalender er en uopprettelig handling. Etter sletting er det ingen måte å gjenopprette kalenderen på, med mindre du har en lokal sikkerhetskopi.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/calendar_dropdown.png" src="../../_images/calendar_dropdown.png" />
+</figure>
+<p>Klikk på «penn»-ikonet til den aktuelle kalenderen. Du vil se et nytt pop-up-vindu som lar deg endre kalendernavnet og fargen, samt knapper for å slette eller eksportere kalenderen.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_settings.png" src="../../_images/calendar_settings.png" />
+</figure>
+</section>
+<section id="calendar-transparency">
+<h3>Kalendergjennomsiktighet<a class="headerlink" href="#calendar-transparency" title="Link to this heading"></a></h3>
+<p>Du kan veksle avkrysningsboksen «Never show me as busy (set calendar to transparent)» for å påvirke om denne kalenderens hendelser tas i betraktning i ledig/opptatt-beregninger. Hvis den er huket av, vil ingen hendelser i denne kalenderen tas i betraktning, og timeplanen din vil alltid være ledig, uavhengig av en hendelses innstillinger.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_transparency.png" src="../../_images/calendar_transparency.png" />
+</figure>
+</section>
+<section id="sharing-calendars">
+<h3>Deling av kalendere<a class="headerlink" href="#sharing-calendars" title="Link to this heading"></a></h3>
+<p>Du kan dele kalenderen din med lokale brukere, grupper eller med eksterne brukere på fødererte servere.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_1.png" src="../../_images/calendar_sharing_1.png" />
+</figure>
+<p>Kalendere kan deles med skrivetilgang eller skrivebeskyttet. Når du deler en kalender med skrivetilgang, vil brukerne som kalenderen deles med kunne opprette nye hendelser i kalenderen, samt redigere og slette eksisterende.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_2.png" src="../../_images/calendar_sharing_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Merknad</p>
+<p>Kalenderdelinger kan for øyeblikket ikke godtas eller avvises. Hvis du vil slutte å ha en kalender som noen har delt med deg, kan du klikke på 3-punktsmenyen ved siden av kalenderen i kalenderlisten og klikke på «Unshare from me». For å gjenopprette en deling kan kalenderen deles på nytt, enten for hele gruppen, noe som tilbakestiller alle opphevede delinger, eller for en enkelt bruker.</p>
+</div>
+</section>
+<section id="calendar-delegation">
+<h3>Calendar delegation<a class="headerlink" href="#calendar-delegation" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 34.0.0.</span></p>
+</div>
+<p>In the app settings, you can delegate your calendars to other users so they can manage them for you.
+You can grant read access if they should only view the calendar, or write access if they should create,
+edit and delete events.</p>
+<p>Calendar delegation also works with other clients that support calendar delegation.</p>
+<p>By default, delegatees are not added as attendees of events that they create for a delegator, the delegator
+remains the organizer of the event. If the event has a Talk conversation attached, both the delegator and the
+delegatee are moderators of that conversation.</p>
+<div class="admonition note">
+<p class="admonition-title">Merknad</p>
+<p>Currently, delegating your account delegates all of your calendars. Delegating individual
+calendars is not yet supported.</p>
+</div>
+</section>
+<section id="federated-calendar-sharing">
+<h3>Føderert kalenderdeling<a class="headerlink" href="#federated-calendar-sharing" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 32.0.0.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Endret i version 33.0.0: </span>Fødererte kalenderdelinger støtter lese-/skrivetilgang.</p>
+</div>
+<p>Å dele en kalender med en bruker på en annen Nextcloud-instans fungerer akkurat som å dele med en lokal bruker. Forskjellen er at du må bruke den fødererte brukeridentifikatoren som mottaker, som har formatet <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;instance&gt;</span></code> (f.eks. <code class="docutils literal notranslate"><span class="pre">alice&#64;cloud.example.com</span></code>).</p>
+<p>Fra og med Nextcloud 33 støtter fødererte delinger full lese-/skrivetilgang, slik at eksterne brukere kan opprette, redigere og slette hendelser i den delte kalenderen. I Nextcloud 32 var fødererte delinger skrivebeskyttede.</p>
+</section>
+<section id="publishing-a-calendar">
+<h3>Publisere en kalender<a class="headerlink" href="#publishing-a-calendar" title="Link to this heading"></a></h3>
+<p>Kalendere kan publiseres via en offentlig kobling for å gjøre dem synlige (skrivebeskyttet) for eksterne brukere. Du kan opprette en offentlig lenke ved å åpne delingsmenyen for en kalender og klikke på «+» ved siden av «Del lenke». Når den er opprettet, kan du kopiere den offentlige lenken til utklippstavlen eller sende den via e-post.</p>
+<p>Det er også en «embedding code» som gir en HTML iframe for å legge inn kalenderen din på offentlige sider.</p>
+<p>Flere kalendere kan deles sammen ved å legge til sine unike tokener på slutten av en innebyggingskobling. Individuelle tokener finner du på slutten av hver kalenders offentlige lenke. Den fullstendige adressen vil se slik ut  ’<a class="reference external" href="https://cloud.example.com/index.php/apps/calendar/embed">https://cloud.example.com/index.php/apps/calendar/embed</a>/&lt;token1&gt;-&lt;token2&gt;-&lt;token3&gt;’</p>
+<p>For å endre standardvisningen eller datoen for en innebygd kalender, må du oppgi en URL som ser slik ut: <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;token&gt;/&lt;view&gt;/&lt;date&gt;</span></code>. I denne URL-en må du erstatte følgende variabler:</p>
+<ul class="simple">
+<li><p>’&lt;token&gt;’ med kalenderens token,</p></li>
+<li><p>«&lt;view&gt;» med en av «dagrutenettmåned», «tidrutenettuke», «tidrutenettdag», «listemåned», «listeuke», «listedag». Standard visning er «dagrutenettmåned» og den normalt brukte listen er «listemåned»,</p></li>
+<li><p>«&lt;date&gt;» med «nå» eller en hvilken som helst dato med følgende format «&lt;year&gt;-&lt;month&gt;-&lt;day&gt;» (f.eks. «2019-12-28»).</p></li>
+</ul>
+<p>På den offentlige siden kan brukere få abonnementslenken for kalenderen og eksportere hele kalenderen direkte.</p>
+</section>
+<section id="calendar-widget">
+<h3>Kalenderwidget<a class="headerlink" href="#calendar-widget" title="Link to this heading"></a></h3>
+<p>Du kan bygge inn kalenderne dine i støttede apper som <code class="docutils literal notranslate"><span class="pre">Talk</span></code>, <code class="docutils literal notranslate"><span class="pre">Notes</span></code>, osv. ved enten å dele den offentlige lenken for å gjøre den innebygde kalenderen synlig (skrivebeskyttet) for alle brukere, eller ved å bruke den interne lenken for å gjøre den privat.</p>
+</section>
+<section id="subscribe-to-a-calendar">
+<h3>Abonnere på en kalender<a class="headerlink" href="#subscribe-to-a-calendar" title="Link to this heading"></a></h3>
+<p>Du kan abonnere på iCal-kalendere direkte i Nextcloud. Ved å støtte denne interoperable standarden (RFC 5545) gjorde vi Nextcloud-kalenderen kompatibel med Google Kalender, Apple iCloud og mange andre kalenderservere du kan bytte kalendere med, inkludert abonnementslenker fra kalender publisert på andre Nextcloud-forekomster, som beskrevet ovenfor.</p>
+<ol class="arabic simple">
+<li><p>Klikk på «+ Ny kalender» i venstre sidefelt</p></li>
+<li><p>Klikk på «+ Nytt abonnement fra kobling (skrivebeskyttet»)</p></li>
+<li><p>Skriv inn eller lim inn koblingen til den delte kalenderen du vil abonnere på.</p></li>
+</ol>
+<p>Fullført. Kalenderabonnementene dine oppdateres regelmessig.</p>
+<div class="admonition note">
+<p class="admonition-title">Merknad</p>
+<p>Abonnementer oppdateres som standard hver uke. Systemansvarlig kan ha endret denne innstillingen.</p>
+</div>
+</section>
+<section id="subscribe-to-a-holiday-calendar">
+<h3>Abonner på en feriekalender<a class="headerlink" href="#subscribe-to-a-holiday-calendar" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.4: </span>Nextcloud 25 or newer</p>
+</div>
+<p>Du kan abonnere på en skrivebeskyttet feriekalender levert av <a class="reference external" href="https://www.thunderbird.net/calendar/holidays/">Thunderbird</a>.</p>
+<ol class="arabic simple">
+<li><p>Klikk på «+ Ny kalender» i venstre sidefelt</p></li>
+<li><p>Klikk på «+ Legg til feriekalender»</p></li>
+<li><p>Finn ditt land eller din region og klikk ’’Abonner’’</p></li>
+</ol>
+</section>
+</section>
+<section id="managing-events">
+<h2>Administrere hendelser<a class="headerlink" href="#managing-events" title="Link to this heading"></a></h2>
+<section id="create-a-new-event">
+<h3>Opprett en ny hendelse<a class="headerlink" href="#create-a-new-event" title="Link to this heading"></a></h3>
+<p>Hendelser kan opprettes ved å klikke i området når arrangementet er planlagt. I dag- og ukevisningen av kalenderen klikker du, drar og slipper du markøren over området når hendelsen finner sted.</p>
+<p>Ved å klikke på globusknappen åpnes tidssonevelgeren. Du kan velge ulike tidssoner for start og slutt på hendelsen din. Dette er nyttig når du reiser.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_week.png" src="../../_images/calendar_new-event_week.png" />
+</figure>
+<p>Månedsvisningen krever bare ett enkelt klikk på området for måldagen.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_month.png" src="../../_images/calendar_new-event_month.png" />
+</figure>
+<p>Etter det kan du skrive inn navnet på hendelsen (f.eks. <strong>Meeting with Linus</strong>), velge kalenderen du vil lagre hendelsen i (f.eks. <strong>Personal</strong>, <strong>Community Events</strong>), sjekke og konkretisere tidsrommet eller sette hendelsen som en heldagshendelse. Eventuelt kan du angi en plassering og en beskrivelse.</p>
+<p>Hvis du vil redigere avanserte detaljer som <strong>Attendees</strong> eller <strong>Reminders</strong>, eller hvis du vil sette hendelsen som en gjentakende hendelse, klikk på <code class="docutils literal notranslate"><span class="pre">More</span></code>-knappen for å åpne den avanserte editoren.</p>
+</section>
+<section id="add-talk-conversation">
+<h3>Legg til Talk samtaler<a class="headerlink" href="#add-talk-conversation" title="Link to this heading"></a></h3>
+<p>Du kan inkludere en eksisterende Talk-samtale i hendelsen din ved å klikke på «Add Talk conversation». For å se listen over eksisterende Talk-samtaler, sørg for at Talk-appen er aktivert. Hvis du vil opprette en ny Talk-samtale, kan du gjøre det direkte fra den samme dialogboksen.</p>
+<figure class="align-default">
+<img alt="../../_images/add-talk-room.png" src="../../_images/add-talk-room.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Merknad</p>
+<p>Hvis du alltid vil åpne den avanserte editoren i stedet for popup-vinduet for den enkle hendelseseditoren, fjerner du avkrysningen for alternativet <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">simplified</span> <span class="pre">editor</span></code> i <code class="docutils literal notranslate"><span class="pre">Settings</span></code>-seksjonen av appen.</p>
+</div>
+<p>Ved å klikke på den blå ’’Opprett’’ knappen vil endelig opprette hendelsen.</p>
+</section>
+<section id="edit-duplicate-or-delete-an-event">
+<h3>Rediger, dupliser eller slett en hendelse<a class="headerlink" href="#edit-duplicate-or-delete-an-event" title="Link to this heading"></a></h3>
+<p>Hvis du vil redigere, duplisere eller slette en bestemt hendelse, må du først klikke på hendelsen.</p>
+<p>Etter det vil du kunne sette alle hendelsesdetaljer på nytt og åpne den avanserte editoren ved å klikke på <code class="docutils literal notranslate"><span class="pre">More</span></code>.</p>
+<p>Clicking on the <code class="docutils literal notranslate"><span class="pre">Update</span></code> button will update the event. To cancel your changes, click the <strong>Close</strong> button of the popup or advanced editor.</p>
+<p>Hvis du åpner den avanserte visningen og klikker på trepunktsmenyen ved siden av hendelsesnavnet, har du muligheten til å eksportere hendelsen som en <code class="docutils literal notranslate"><span class="pre">.ics</span></code>-fil eller fjerne hendelsen fra kalenderen din.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu.png" src="../../_images/calendar_event_menu.png" />
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tips</p>
+<p>Hvis du sletter hendelser, vil de gå inn i :ref:’papirkurven&lt;calendar-trash-bin&gt;’ din. Du kan gjenopprette utilsiktet slettede hendelser der.</p>
+</div>
+<p>Du kan også eksportere, duplisere eller slette en hendelse fra det grunnleggende redigeringsprogrammet.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu_modal.png" src="../../_images/calendar_event_menu_modal.png" />
+</figure>
+</section>
+<section id="invite-attendees-to-an-event">
+<span id="calendar-attendees"></span><h3>Invitere deltakere til en hendelse<a class="headerlink" href="#invite-attendees-to-an-event" title="Link to this heading"></a></h3>
+<p>Du kan legge til deltakere i en hendelse for å fortelle dem at de er invitert. De vil motta en invitasjon på e-post og vil kunne bekrefte eller avbryte sin deltakelse på arrangementet. Deltakere kan være andre brukere på Nextcloud-forekomstene dine, kontakter i adressebøkene dine og direkte e-postadresser. Du kan også endre deltakelsesnivået per deltaker, eller deaktivere e-postinformasjonen for en bestemt deltaker.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_invitation_level.png"><img alt="../../_images/calendar_event_invitation_level.png" src="../../_images/calendar_event_invitation_level.png" style="width: 811.2px; height: 380.8px;" />
+</a>
+</figure>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Endret i version 25.0.0: </span>Koblinger for svar på e-post fra deltakere gir ikke lenger inndata for å legge til en kommentar eller invitere flere gjester til hendelsen.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tips</p>
+<p>Når du legger til andre Nextcloud-brukere som deltakere til en hendelse, kan du få tilgang til deres ledig/opptatthetsinformasjon hvis tilgjengelig, slik at du kan bestemme når den beste tidsluken for arrangementet ditt er. Angi :ref:’arbeidstid&lt;calendar-working-hours&gt;’ for å la andre få vite når du er tilgjengelig. Informasjon om ledige tidspunkt er bare tilgjengelig for andre brukere på samme Nextcloud-forekomst.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Obs</p>
+<p>Serveradministrasjonen må konfigurere e-postserveren i fanen «Grunnleggende innstillinger», da denne e-posten vil bli brukt til å sende invitasjoner.</p>
+</div>
+<p>Forklaring på invitasjonsstatus (som deltaker):</p>
+<ul class="simple">
+<li><p><strong>Utfylt hendelse</strong>: Du godtok</p></li>
+<li><p><strong>Gjennomstreket</strong>: Du avslo</p></li>
+<li><p><strong>Striper</strong>: Foreløpig</p></li>
+<li><p><strong>Tom hendelse</strong>: Du har ikke svart ennå</p></li>
+</ul>
+<p>Hvis du er arrangøren og alle deltakerne dine avslo, vil hendelsen være tom med et advarselssymbol.</p>
+</section>
+<section id="checking-attendees-busy-times">
+<h3>Sjekke deltakernes opptatt-tider<a class="headerlink" href="#checking-attendees-busy-times" title="Link to this heading"></a></h3>
+<p>Etter å ha lagt til deltakere i en hendelse, kan du klikke på <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">a</span> <span class="pre">time</span></code> for å åpne «Free / Busy»-dialogboksen. Den lar deg se når hver deltaker har andre hendelser, og kan hjelpe deg med å bestemme et tidspunkt da alle er ledige.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_free_busy_modal.png"><img alt="../../_images/calendar_free_busy_modal.png" src="../../_images/calendar_free_busy_modal.png" style="width: 942.0px; height: 752.4px;" />
+</a>
+</figure>
+<p>Dine egne opptatt-blokker vil vises i samme farge som din personlige kalender, fraværstidene dine vil vises i grått, og andre deltakeres opptatt-tider vil ha samme farge som avataren deres som vises i den avanserte editoren.</p>
+<p>Du kan velge et tidsrom for hendelsen direkte i kalenderen.</p>
+</section>
+<section id="assign-rooms-and-resources-to-an-event">
+<h3>Tildele rom og ressurser til en hendelse<a class="headerlink" href="#assign-rooms-and-resources-to-an-event" title="Link to this heading"></a></h3>
+<p>I likhet med deltakere kan du legge til rom og ressurser i hendelsene dine. Systemet vil sørge for at hvert rom og ressurs er booket uten konflikt. Første gang en bruker legger til rommet eller ressursen i en hendelse, vises den som godtatt. Eventuelle ytterligere hendelser på overlappende tidspunkter vil vise rommet eller ressursen som avvist.</p>
+<div class="admonition note">
+<p class="admonition-title">Merknad</p>
+<p>Rom og ressurser administreres ikke av Nextcloud selv, og Kalender-appen lar deg ikke legge til eller endre en ressurs. Systemansvarlig må installere og muligens konfigurere ressursserverdeler før du kan bruke dem som bruker.</p>
+</div>
+</section>
+<section id="room-availability">
+<h3>Romtilgjengelighet<a class="headerlink" href="#room-availability" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.0: </span>Nextcloud 30 or newer</p>
+</div>
+<p>Hvis appen «Calendar Rooms and Resources» er installert på instansen din, kan du nå finne <code class="docutils literal notranslate"><span class="pre">Room</span> <span class="pre">availability</span></code> i <code class="docutils literal notranslate"><span class="pre">Resources</span></code>-seksjonen. Den lister opp alle eksisterende rom. Du kan sjekke tilgjengeligheten til hvert rom på en måte som ligner på å sjekke ledig/opptatt-statusen til hendelsesdeltakere.</p>
+<figure class="align-default">
+<img alt="../../_images/room_availability.png" src="../../_images/room_availability.png" />
+</figure>
+</section>
+<section id="add-attachments-to-events">
+<h3>Legge til vedlegg til hendelser<a class="headerlink" href="#add-attachments-to-events" title="Link to this heading"></a></h3>
+<p>Du kan importere vedlegg til hendelsene dine enten ved å laste dem opp eller legge dem til fra filer</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_adding_attachments.png"><img alt="../../_images/calendar_adding_attachments.png" src="../../_images/calendar_adding_attachments.png" style="width: 790.4000000000001px; height: 382.40000000000003px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Merknad</p>
+<p>Vedlegg kan legges til mens du oppretter nye hendelser eller redigerer eksisterende. Nylig opplastede filer lagres som standard i kalendermappen i rotkatalogen.</p>
+</div>
+<p>You can change the attachment folder by going to <strong>Calendar settings</strong> and changing <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">attachments</span> <span class="pre">location</span></code>.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_attachments_location.png"><img alt="../../_images/calendar_attachments_location.png" src="../../_images/calendar_attachments_location.png" style="width: 389.4px; height: 357.0px;" />
+</a>
+</figure>
+</section>
+<section id="set-up-reminders">
+<h3>Sett opp påminnelser<a class="headerlink" href="#set-up-reminders" title="Link to this heading"></a></h3>
+<p>Du kan konfigurere påminnelser som skal varsles før en hendelse inntreffer. Varslingsmetoder som støttes for øyeblikket, er:</p>
+<ul class="simple">
+<li><p>E-postvarslinger</p></li>
+<li><p>Nextcloud-varslinger</p></li>
+</ul>
+<p>You may set reminders at a time relative to the event or at a specific date. If you would like all the events in a calendar to have a default reminder, you can configure that in the settings of that calendar.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_reminders.png"><img alt="../../_images/calendar_event_reminders.png" src="../../_images/calendar_event_reminders.png" style="width: 507.20000000000005px; height: 284.0px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Merknad</p>
+<p>Bare eieren av kalenderen og personer eller grupper som kalenderen er delt med skrivetilgang, får varsler. Hvis du ikke får noen varsler, men synes du burde, kan administratoren din også ha deaktivert dette for serveren din.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Merknad</p>
+<p>Hvis du synkroniserer kalenderen din med mobile enheter eller andre 3-partsklienter, kan det også vises varsler der.</p>
+</div>
+</section>
+<section id="add-recurring-options">
+<h3>Legg til regelmessige alternativer<a class="headerlink" href="#add-recurring-options" title="Link to this heading"></a></h3>
+<p>En hendelse kan settes som «gjentakende», slik at den kan skje hver dag, uke, måned eller år. Spesifikke regler kan legges til for å angi hvilken ukedag hendelsen skjer eller mer komplekse regler, for eksempel hver fjerde onsdag i hver måned.</p>
+<p>Du kan også fortelle når gjentakelsen slutter.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_repeat.png"><img alt="../../_images/calendar_event_repeat.png" src="../../_images/calendar_event_repeat.png" style="width: 519.2px; height: 557.6px;" />
+</a>
+</figure>
+</section>
+<section id="trash-bin">
+<span id="calendar-trash-bin"></span><h3>Papirkurv<a class="headerlink" href="#trash-bin" title="Link to this heading"></a></h3>
+<p>Hvis du sletter hendelser, oppgaver eller en kalender i Kalender, er ikke dataene borte ennå. I stedet vil disse elementene bli samlet i en <em>papirkurv</em>. Dette gir deg mulighet til å angre en sletting. Etter en periode som er standard til 30 dager (administrasjonen din kan ha endret denne innstillingen), vil disse elementene bli slettet permanent. Du kan også slette elementer permanent tidligere hvis du ønsker det.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_trash_bin.png" src="../../_images/calendar_trash_bin.png" />
+</figure>
+<p>«Tøm papirkurv»-knappene vil slette alt innholdet i papirkurven i ett enkelt trinn.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tips</p>
+<p>Papirkurven er bare tilgjengelig fra Kalender-appen. Tilkoblede apper kan ikke vise innholdet. Hendelser, oppgaver og kalendere som slettes i tilkoblede applikasjoner eller apper, havner imidlertid også i papirkurven.</p>
+</div>
+</section>
+<section id="automated-user-status">
+<span id="calendar-working-hours"></span><h3>Automatisert brukerstatus<a class="headerlink" href="#automated-user-status" title="Link to this heading"></a></h3>
+<p>Når du har en kalenderhendelse planlagt som har «BUSY»-status, settes brukerstatusen din automatisk til «In a meeting», med mindre du har satt deg selv til «Do Not Disturb» eller «Invisible». Du kan overstyre statusen med en egendefinert melding når som helst, eller sette kalenderhendelsene dine til «FREE». Kalendere som er gjennomsiktige, vil bli ignorert.</p>
+</section>
+</section>
+<section id="responding-to-invitations">
+<h2>Svare på invitasjoner<a class="headerlink" href="#responding-to-invitations" title="Link to this heading"></a></h2>
+<p>Du kan svare direkte på invitasjoner inne i appen. Klikk på hendelsen og velg din deltakelsesstatus. Du kan svare på en invitasjon ved å godta, avslå eller godta foreløpig.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_simple_editor.png"><img alt="../../_images/calendar_accept_simple_editor.png" src="../../_images/calendar_accept_simple_editor.png" style="width: 663.2px; height: 477.6px;" />
+</a>
+</figure>
+<p>Du kan svare på en invitasjon fra den avanserte editoren også.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_advanced_editor.png"><img alt="../../_images/calendar_accept_advanced_editor.png" src="../../_images/calendar_accept_advanced_editor.png" style="width: 800.0px; height: 160.8px;" />
+</a>
+</figure>
+</section>
+<section id="availability-working-hours">
+<h2>Tilgjengelighet (arbeidstid)<a class="headerlink" href="#availability-working-hours" title="Link to this heading"></a></h2>
+<p>Den generelle tilgjengeligheten uavhengig av planlagte hendelser kan angis i gruppevareinnstillingene til Nextcloud. Disse innstillingene gjenspeiles i ledig-opptatt-visningen når du :ref:’planlegg et møte med andre&lt;calendar-attendees&gt;’ i Kalender. Noen tilkoblede klienter som Thunderbird vil også vise disse dataene.</p>
+<figure class="align-default">
+<img alt="../../_images/caldav_availability.png" src="../../_images/caldav_availability.png" />
+</figure>
+<p>You can configure one-time absences on top of your regular availability in the <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">Absence settings section</span></a>.</p>
+</section>
+<section id="birthday-calendar">
+<h2>Bursdagskalender<a class="headerlink" href="#birthday-calendar" title="Link to this heading"></a></h2>
+<p>Bursdagskalenderen er en automatisk generert kalender som automatisk henter fødselsdagene fra kontaktene dine. Den eneste måten å redigere denne kalenderen på er å arkivere kontaktene dine med bursdagsdatoer. Du kan ikke redigere denne kalenderen direkte fra kalender-appen.</p>
+<div class="admonition note">
+<p class="admonition-title">Merknad</p>
+<p>Hvis du ikke ser bursdagskalenderen, kan administratoren ha deaktivert denne for serveren din.</p>
+</div>
+</section>
+<section id="appointments">
+<h2>Avtaler<a class="headerlink" href="#appointments" title="Link to this heading"></a></h2>
+<p>Fra og med Kalender v3 kan appen generere avtaletidsluker som andre Nextcloud-brukere, men også personer uten konto på forekomsten, kan bestille. Avtaler gir fin-granulær kontroll over når du eventuelt har fri til å møte opp. Dette kan eliminere behovet for å sende e-post frem og tilbake for å avgjøre en dato og klokkeslett.</p>
+<p>I denne delen bruker vi begrepet <em>arrangør</em> for personen som eier kalenderen og setter opp avtaleplasser. <em>Deltakeren</em> er personen som bestiller en av plassene.</p>
+<section id="creating-an-appointment-configuration">
+<h3>Opprette en avtalekonfigurasjon<a class="headerlink" href="#creating-an-appointment-configuration" title="Link to this heading"></a></h3>
+<p>Som arrangør av avtaler åpner du hovedgrensesnittet for kalenderweb. I venstre sidefelt finner du en seksjon for avtaler, hvor du kan åpne dialogen for å opprette en ny.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_new.png" src="../../_images/appointment_new.png" />
+</figure>
+<p>En av de grunnleggende infoene til hver avtale er en tittel som beskriver hva avtalen handler om (f.eks. «En-til-en» når en arrangør ønsker å tilby kolleger en personlig samtale), hvor en avtale vil finne sted og en mer detaljert beskrivelse av hva denne avtalen handler om.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_basics.png" src="../../_images/appointment_config_basics.png" />
+</figure>
+<p>Varigheten av avtalen kan plukkes fra en forhåndsdefinert liste. Deretter kan du angi ønsket økning. Økningen er hastigheten som mulige plasser er tilgjengelige med. Du kan for eksempel ha luker på én time, men du gir dem bort i trinn på 30 minutter, slik at en deltaker kan bestille klokken 09.00, men også klokken 09.30. Valgfri informasjon om sted og en beskrivelse gir deltakerne litt mer kontekst. Hver bestilt time vil bli skrevet inn i en av kalenderne dine, slik at du kan velge hvilken som skal være. Avtaler kan være <em>offentlige</em> eller <em>private</em>. Offentlige avtaler kan oppdages gjennom profilsiden til en Nextcloud-bruker. Private avtaler er bare tilgjengelige for personene som mottar den hemmelige URL-adressen.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_calendar_settings.png" src="../../_images/appointment_config_calendar_settings.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Merknad</p>
+<p>Bare tidsluker som ikke er i konflikt med eksisterende hendelser i kalenderne dine, vises til deltakerne.</p>
+</div>
+<p>Arrangøren av en avtale kan spesifisere på hvilke tider av uken det generelt er mulig å bestille en luke. Dette kan være arbeidstiden, men også en hvilken som helst annen tilpasset tidsplan.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_booking_hours.png" src="../../_images/appointment_config_booking_hours.png" />
+</figure>
+<p>Noen avtaler krever tid til å forberede seg, for eksempel når du møter på et sted og du må kjøre dit. Arrangøren kan velge å velge en tidsvarighet som må være ledig. Kun tidsluker som ikke er i konflikt med andre arrangementer i forberedelsestiden vil være tilgjengelige. Videre er det muligheten til å spesifisere en tid etter hver avtale som må være ledig.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_limits.png" src="../../_images/appointment_config_limits.png" />
+</figure>
+<p>Den konfigurerte avtalen vil da bli oppført i venstre sidefelt. Via menyen med tre prikker kan du forhåndsvise avtalen. Du kan kopiere lenken til avtalen og dele den med måldeltakerne, eller la dem oppdage din offentlige avtale via profilsiden. Du kan også redigere eller slette avtalekonfigurasjonen.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_options.png" src="../../_images/appointment_config_options.png" />
+</figure>
+</section>
+<section id="booking-an-appointment">
+<h3>Bestilling av avtale<a class="headerlink" href="#booking-an-appointment" title="Link to this heading"></a></h3>
+<p>Bestillingssiden viser en deltaker tittelen, plasseringen, beskrivelsen og lengden på en avtale. For en valgt dag vil det være en liste med alle mulige tidsluker. På dager uten ledige plasser, for mange konflikter eller en nådd daglig maksimumsgrense for allerede bestilte timer, kan listen være tom.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_1.png"><img alt="../../_images/appointment_booking_1.png" src="../../_images/appointment_booking_1.png" style="width: 926.4000000000001px; height: 592.0px;" />
+</a>
+</figure>
+<p>For bestillingen må deltakerne oppgi et navn og en e-postadresse. Eventuelt kan de også legge til en kommentar.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_2.png"><img alt="../../_images/appointment_booking_2.png" src="../../_images/appointment_booking_2.png" style="width: 745.6px; height: 463.20000000000005px;" />
+</a>
+</figure>
+<p>Når bestillingen var vellykket, vises en bekreftelsesdialogboks til deltakeren.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_3.png" src="../../_images/appointment_booking_3.png" />
+</figure>
+<p>For å bekrefte at deltakerens e-postadresse er gyldig, vil en bekreftelses-e-post bli sendt til dem.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_email.png" src="../../_images/appointment_booking_confirmation_email.png" />
+</figure>
+<p>Først etter at deltakeren har klikket på bekreftelseslenken fra e-posten, blir timebestillingen akseptert og videresendt til arrangøren.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_dialogue.png" src="../../_images/appointment_booking_confirmation_dialogue.png" />
+</figure>
+<p>Deltakeren vil motta en ny e-post som bekrefter detaljene for avtalen.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_email_2.png" src="../../_images/appointment_booking_email_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Merknad</p>
+<p>Hvis en tidsluke ikke er bekreftet, vil den fortsatt vises som mulig for bestilling. Inntil da kan tidsluken også bestilles av en annen bruker som bekrefter bestillingen tidligere. Systemet vil oppdage konflikten og tilby å velge en ny tidsluke.</p>
+</div>
+</section>
+<section id="working-with-the-booked-appointment">
+<h3>Arbeide med bestilt time<a class="headerlink" href="#working-with-the-booked-appointment" title="Link to this heading"></a></h3>
+<p>Når bestillingen er gjort, vil arrangøren finne et arrangement i kalenderen sin med avtaledetaljene og :ref:’attendee&lt;calendar-attendees&gt;’.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_event.png" src="../../_images/appointment_calendar_event.png" />
+</figure>
+<p>Hvis avtalen har innstillingen «Legg til tid før hendelse» eller «Legg til tid etter hendelsen» aktivert, vil de dukke opp som separate hendelser i kalenderen for arrangøren.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_prep.png" src="../../_images/appointment_calendar_prep.png" />
+</figure>
+<p>Som med alle andre hendelser som har deltakere, vil endringer og kanselleringer utløse et varsel til deltakerens e-post.</p>
+<p>Hvis deltakerne ønsker å avbestille avtalen, må de ta kontakt med arrangøren, slik at arrangøren kan avlyse eller til og med slette arrangementet.</p>
+</section>
+<section id="create-talk-room-for-booked-appointments">
+<h3>Opprette Talk-rom for bestilte avtaler<a class="headerlink" href="#create-talk-room-for-booked-appointments" title="Link to this heading"></a></h3>
+<p>Du kan opprette et Talk-rom direkte fra kalenderappen for en bestilt avtale. Alternativet finner du på modalen ’Opprett avtale’. En unik lenke vil bli generert for hver bestilte time og sendt via bekreftelses-e-posten når du sjekker dette alternativet.</p>
+</section>
+</section>
+<section id="proposals">
+<h2>Forslag<a class="headerlink" href="#proposals" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 6.0: </span>Nextcloud 32 or newer</p>
+</div>
+<p>Å finne et møtetidspunkt for en gruppe deltakere kan være utfordrende. Fra og med Calendar v6 ble en ny funksjon introdusert som lar brukere opprette forslag til møtetidspunkter. Dette betyr at i stedet for bare å booke et tidspunkt, eller søke etter et ledig tidspunkt i ledig/opptatt-visningen, kan deltakerne stemme på et sett med foreslåtte tidspunkter for et møte. Arrangøren kan deretter gjennomgå deltakernes preferanser og velge det mest passende tidspunktet for møtet.</p>
+<section id="managing-proposals">
+<h3>Administrere forslag<a class="headerlink" href="#managing-proposals" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_list.png" src="../../_images/calendar_proposal_list.png" />
+</figure>
+<p>Forslagslisten i venstre sidefelt viser alle forslagene som brukeren har opprettet. Listen viser tittelen på forslaget, antall deltakere som har svart, og en status for hvorvidt alle deltakerne har svart.</p>
+<p>Brukeren kan klikke på trepunktsmenyen ved siden av et forslagselement for å redigere, slette eller vise et eksisterende forslag.</p>
+</section>
+<section id="creating-a-proposal">
+<h3>Lage et forslag<a class="headerlink" href="#creating-a-proposal" title="Link to this heading"></a></h3>
+<p>For å opprette et nytt forslag kan en bruker klikke på pluss-ikonet ved siden av «Meeting Proposals»-overskriften øverst i forslagslisten. Dette åpner en dialogboks der brukeren kan angi alle relevante detaljer for det foreslåtte møtet.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_create.png" src="../../_images/calendar_proposal_create.png" />
+</figure>
+<p>Forslagseditoren har noen grunnleggende felt som ligner på hendelseseditoren, som tittel, beskrivelse, plassering, varighet og deltakervalg, som brukeren kan fylle ut. Disse detaljene brukes deretter til å informere deltakerne om det foreslåtte møtet og tidspunktene.</p>
+<p>Den viktigste forskjellen er «Proposed times»-valget, der brukeren kan velge flere tidsrom for et møte. Brukeren kan legge til så mange tidsrom de vil, og hvert tidsrom kan redigeres eller fjernes etter behov.</p>
+<p>Når brukeren har fylt ut alle de nødvendige detaljene – tittel, varighet, deltakere – og valgt de foreslåtte tidspunktene, kan de klikke på «Create»-knappen for å opprette forslaget. Dette lagrer forslaget og sender varsler til alle de valgte deltakerne.</p>
+</section>
+<section id="editing-a-proposal">
+<h3>Redigere et forslag<a class="headerlink" href="#editing-a-proposal" title="Link to this heading"></a></h3>
+<p>En bruker kan redigere et eksisterende forslag ved å klikke på trepunktsmenyen ved siden av et forslagselement i forslagslisten og velge «Edit». Dette åpner den samme dialogboksen som når du oppretter et nytt forslag, men med alle de eksisterende detaljene fylt ut.</p>
+<p>Etter å ha gjort eventuelle nødvendige endringer, kan brukeren klikke på «Update»-knappen for å lagre endringene. Dette vil også sende varsler til alle deltakerne om det oppdaterte forslaget.</p>
+</section>
+<section id="viewing-a-proposal-progress">
+<h3>Vise fremdriften til et forslag<a class="headerlink" href="#viewing-a-proposal-progress" title="Link to this heading"></a></h3>
+<p>Brukere kan se fremdriften til et forslag ved å klikke på forslagselementet i forslagslisten eller klikke på «View» i trepunktsmenyen. Dette åpner en detaljert visning av forslaget, med alle detaljer og en matrise over tidspunkter og deltakere, som viser alle de foreslåtte tidspunktene og deltakernes svar.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_view.png" src="../../_images/calendar_proposal_view.png" />
+</figure>
+<p>I denne visningen kan brukeren se hvilke deltakere som har svart på forslaget og deres preferanser for hvert foreslåtte tidspunkt. Brukeren kan også se det totale antallet stemmer for hvert foreslåtte tidspunkt, noe som kan hjelpe dem med å bestemme det beste tidspunktet for møtet.</p>
+<p>Når brukeren har gjennomgått deltakernes svar, kan de velge det mest populære tidspunktet for møtet ved å klikke på «Create»-knappen på slutten av dato-/deltakermatrisen. Dette oppretter en ny hendelse i brukerens kalender og sender varsler til alle deltakerne om det bekreftede møtetidspunktet.</p>
+</section>
+<section id="notifications-for-a-proposed-meeting">
+<h3>Varsler for et foreslått møte<a class="headerlink" href="#notifications-for-a-proposed-meeting" title="Link to this heading"></a></h3>
+<p>Brukere vil motta e-postvarsler for ulike hendelser knyttet til et foreslått møte, inkludert:</p>
+<ul class="simple">
+<li><p>Når et nytt forslag opprettes</p></li>
+<li><p>Når et forslag oppdateres</p></li>
+<li><p>Når et forslag slettes</p></li>
+<li><p>Når det endelige møtetidspunktet bekreftes</p></li>
+</ul>
+<p>Disse varslene hjelper alle deltakerne med å holde seg informert og engasjert gjennom hele forslagsprosessen.</p>
+<p>Varslings-e-postene inneholder de grunnleggende detaljene for det foreslåtte møtet, som tittel, beskrivelse, plassering, varighet og foreslåtte tidspunkter. De inkluderer også en lenke til svarsiden, der deltakerne kan se alle detaljene og svare på de foreslåtte tidspunktene.</p>
+</section>
+<section id="responding-to-a-proposed-meeting">
+<h3>Svare på et foreslått møte<a class="headerlink" href="#responding-to-a-proposed-meeting" title="Link to this heading"></a></h3>
+<p>Deltakerne kan svare på et foreslått møte ved å klikke på lenken i varslings-e-posten. Dette åpner den detaljerte visningen av det foreslåtte møtet, der de kan se alle de foreslåtte tidspunktene, andre deltakere og deres svar, og velge sin tilgjengelighet/preferanser for hvert foreslåtte tidspunkt.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_respond.png" src="../../_images/calendar_proposal_respond.png" />
+</figure>
+<p>Deltakerne kan velge sin tilgjengelighet for hvert foreslåtte tidspunkt ved å velge preferansen sin på den tilsvarende linjen i tids- og deltakermatrisen. De kan velge mellom tre alternativer: «Yes», «No» eller «Maybe». Når de har gjort valgene sine, kan de klikke på «Submit»-knappen for å lagre svarene sine.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contacts.html" class="btn btn-neutral float-left" title="Using the Contacts app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mail.html" class="btn btn-neutral float-right" title="Using the Mail app" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 nb-NO
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ 35
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl class="nc-languages-list">
+        <dt>Språk</dt>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versjoner</dt>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              35 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              34 (latest)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33 (stable)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32 (stable)
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

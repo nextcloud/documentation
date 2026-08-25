@@ -1,0 +1,1211 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja-JP" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Celendar アプリを使用する &mdash; Nextcloud 35 User Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/calendar.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=7442688e"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="Mail アプリを使用する" href="mail.html" />
+    <link rel="prev" title="連絡先アプリの使い方" href="contacts.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 35 ユーザーマニュアル はじめに</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">アクティビティアプリの使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">ファイル（Files）と同期</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">グループウェア</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">連絡先アプリの使い方</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Celendar アプリを使用する</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-calendars">カレンダーの管理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-calendar">新しいカレンダーを作成する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-a-calendar">カレンダーをインポートする</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-an-event-add-ics-event">イベントのインポートまたは.icsイベントの追加</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-export-or-delete-a-calendar">カレンダーを編集・エクスポート・削除する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-transparency">カレンダーの透明度設定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-calendars">カレンダーの共有</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-delegation">Calendar delegation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#federated-calendar-sharing">フェデレーテッドカレンダー共有</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#publishing-a-calendar">カレンダーの公開</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-widget">カレンダーウィジェット</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-calendar">カレンダーを購読する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-holiday-calendar">休日カレンダーを購読する</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-events">イベントの管理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-event">イベントを作成する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-talk-conversation">Talk 会話を追加</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-duplicate-or-delete-an-event">イベントを編集・複製・削除する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#invite-attendees-to-an-event">イベントに参加者を招待する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-attendees-busy-times">参加者の予定の確認</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assign-rooms-and-resources-to-an-event">部屋やリソースをイベントに割り当てる</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#room-availability">部屋の空き状況</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-attachments-to-events">イベントに添付ファイルを追加する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-reminders">リマインダーを設定する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-recurring-options">繰り返しを追加する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trash-bin">ゴミ箱</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automated-user-status">自動ユーザステータス</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#responding-to-invitations">招待への応答</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#availability-working-hours">空き時間 (勤務時間)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#birthday-calendar">誕生日カレンダー</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appointments">予定予約</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-an-appointment-configuration">予約枠設定の作成</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#booking-an-appointment">予約の実施</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-the-booked-appointment">予約済み予約の操作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-talk-room-for-booked-appointments">予約済み予約用に Talk ルームを作成</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#proposals">提案</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#managing-proposals">提案の管理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-proposal">提案の作成</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editing-a-proposal">提案の編集</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#viewing-a-proposal-progress">提案の進捗の確認</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notifications-for-a-proposed-meeting">提案された会議の通知</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#responding-to-a-proposed-meeting">提案された会議への応答</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Mail アプリを使用する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">不在時メッセージの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Android との同期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">iOS との同期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">macOS との同期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Thunderbird との同期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">KDE Kontact との同期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">GNOME デスクトップとの同期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Windows 10 との同期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">Migrate data between instances</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">グループウェア</a></li>
+      <li class="breadcrumb-item active">Celendar アプリを使用する</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/calendar.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-calendar-app">
+<span id="calendar-app"></span><h1>Celendar アプリを使用する<a class="headerlink" href="#using-the-calendar-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>Calendar アプリは、デフォルトでは Nextcloud Hub と併せてインストールされますが、無効化することもできます。管理者に問い合わせて下さい。</p>
+</div>
+<p>Nextcloud Calendar アプリは、Nextcloud カレンダーやそのイベントを同期できる他のカレンダーアプリと、同様に動作します。</p>
+<p>最初にカレンダーアプリにアクセスすると、既定の最初のカレンダーがあなた用に作成されます。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_application.png" src="../../_images/calendar_application.png" />
+</figure>
+<section id="managing-your-calendars">
+<h2>カレンダーの管理<a class="headerlink" href="#managing-your-calendars" title="Link to this heading"></a></h2>
+<section id="create-a-new-calendar">
+<h3>新しいカレンダーを作成する<a class="headerlink" href="#create-a-new-calendar" title="Link to this heading"></a></h3>
+<p>過去のカレンダーからデータを引き継がずに新しいカレンダーを設定する場合、新しいカレンダーを作成するのがおすすめです。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_1.png"><img alt="../../_images/calendar_create_1.png" src="../../_images/calendar_create_1.png" style="width: 604.0px; height: 480.8px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>左のサイドバーの <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">New</span> <span class="pre">calendar</span></code> をクリックします。</p></li>
+<li><p>新しく作成するカレンダーの名前を入力します、例えば 「Work」 ・ 「Home」 ・ 「Marketing Planning」 のように。</p></li>
+<li><p>チェックマークをクリックした後、新しいカレンダーが作成されます。他の機器とカレンダーを同期できるようになったり、カレンダーに予定を追加したり、友人や同僚にカレンダーを共有したりすることができます。</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_2.png"><img alt="../../_images/calendar_create_2.png" src="../../_images/calendar_create_2.png" style="width: 603.2px; height: 478.40000000000003px;" />
+</a>
+</figure>
+</section>
+<section id="import-a-calendar">
+<h3>カレンダーをインポートする<a class="headerlink" href="#import-a-calendar" title="Link to this heading"></a></h3>
+<p>カレンダーとそのイベントを Nextcloud に取り込みたい場合、インポートがおすすめです。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_importing.png"><img alt="../../_images/calendar_importing.png" src="../../_images/calendar_importing.png" style="width: 697.5px; height: 225.0px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>Click on the <strong>Calendar settings</strong> icon.</p></li>
+<li><p>「一般」セクションの「カレンダーをインポート」をクリック後、ローカル端末から1つ以上のカレンダーファイルを選択してアップロードできます。</p></li>
+<li><p>「インポート先のカレンダー」を選択します。</p></li>
+<li><p>インポートするカレンダーが大きい場合、アップロードに時間がかかることがあります。「カレンダー設定」下部に進捗バーが表示されます。</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>Nextcloud Calendar アプリは、 iCalendar と互換性があり、RFC 5545に規定された、 <code class="docutils literal notranslate"><span class="pre">.ics</span></code> ファイルのみをサポートします。</p>
+</div>
+</section>
+<section id="import-an-event-add-ics-event">
+<h3>イベントのインポートまたは.icsイベントの追加<a class="headerlink" href="#import-an-event-add-ics-event" title="Link to this heading"></a></h3>
+<p>Individual events are often distributed as <code class="docutils literal notranslate"><span class="pre">.ics</span></code> files (sometimes via a button labelled 「iCal」, 「Apple Calendar」 or 「Outlook」). You can import them into Nextcloud Calendar using the same import flow as a full calendar.</p>
+<ol class="arabic simple">
+<li><p>Click on the <strong>Calendar settings</strong> icon.</p></li>
+<li><p>After clicking on <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">calendar</span></code> you can select one or more <code class="docutils literal notranslate"><span class="pre">.ics</span></code> files
+from your local device to upload. Single-event files are added to the calendar you select.</p></li>
+<li><p>「インポート先のカレンダー」を選択します。</p></li>
+<li><p>アップロードには時間がかかることがあり、インポートするカレンダーやイベントのサイズに依存します。「カレンダー設定」の下に青い進捗バーが出現します。</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>Nextcloud Calendar アプリは、 iCalendar と互換性があり、RFC 5545に規定された、 <code class="docutils literal notranslate"><span class="pre">.ics</span></code> ファイルのみをサポートします。</p>
+</div>
+</section>
+<section id="edit-export-or-delete-a-calendar">
+<h3>カレンダーを編集・エクスポート・削除する<a class="headerlink" href="#edit-export-or-delete-a-calendar" title="Link to this heading"></a></h3>
+<p>過去にインポート・作成したカレンダーの、色や名前を変更したくなることがあるかもしれません。あるいは、ローカルのハードディスクにエクスポートしたり、永久に削除したくなることがあるかもしれません。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>カレンダーの削除は元に戻せない操作であることに注意してください。削除後、ローカルバックアップがない限り、カレンダーを復元する方法はありません。</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/calendar_dropdown.png" src="../../_images/calendar_dropdown.png" />
+</figure>
+<p>該当するカレンダーの「ペン」アイコンをクリックします。カレンダー名や色の変更、およびカレンダーの削除やエクスポートを行うボタンがある新しいポップアップが表示されます。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_settings.png" src="../../_images/calendar_settings.png" />
+</figure>
+</section>
+<section id="calendar-transparency">
+<h3>カレンダーの透明度設定<a class="headerlink" href="#calendar-transparency" title="Link to this heading"></a></h3>
+<p>「常に空きにする（カレンダーを透明に設定）」のチェックボックスを切り替えることで、このカレンダーの予定が空き／予定あり判定に反映されるかを調整できます。有効にした場合は、このカレンダーの予定がすべて無視され、常に空き状態と見なされます。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_transparency.png" src="../../_images/calendar_transparency.png" />
+</figure>
+</section>
+<section id="sharing-calendars">
+<h3>カレンダーの共有<a class="headerlink" href="#sharing-calendars" title="Link to this heading"></a></h3>
+<p>カレンダーをローカルユーザ、グループ、またはフェデレーテッドサーバ上のリモートユーザと共有できます。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_1.png" src="../../_images/calendar_sharing_1.png" />
+</figure>
+<p>カレンダーは書き込み権限または読み取り専用で共有できます。書き込み権限でカレンダーを共有すると、共有先のユーザはカレンダーに新しいイベントを作成したり、既存のイベントを編集・削除したりできるようになります。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_2.png" src="../../_images/calendar_sharing_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>現在、カレンダーの共有は承諾または拒否できません。誰かが共有したカレンダーを受け取るのをやめたい場合は、カレンダー一覧のカレンダー横の3点メニューをクリックし、「Unshare from me」をクリックします。共有を復元するには、グループ全体に対して（すべての共有解除をリセットする）か、単一のユーザに対して、カレンダーを再度共有できます。</p>
+</div>
+</section>
+<section id="calendar-delegation">
+<h3>Calendar delegation<a class="headerlink" href="#calendar-delegation" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 34.0.0.</span></p>
+</div>
+<p>In the app settings, you can delegate your calendars to other users so they can manage them for you.
+You can grant read access if they should only view the calendar, or write access if they should create,
+edit and delete events.</p>
+<p>Calendar delegation also works with other clients that support calendar delegation.</p>
+<p>By default, delegatees are not added as attendees of events that they create for a delegator, the delegator
+remains the organizer of the event. If the event has a Talk conversation attached, both the delegator and the
+delegatee are moderators of that conversation.</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>Currently, delegating your account delegates all of your calendars. Delegating individual
+calendars is not yet supported.</p>
+</div>
+</section>
+<section id="federated-calendar-sharing">
+<h3>フェデレーテッドカレンダー共有<a class="headerlink" href="#federated-calendar-sharing" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 32.0.0.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">バージョン 33.0.0 で変更: </span>フェデレーテッドカレンダーの共有は読み書きアクセスをサポートしています。</p>
+</div>
+<p>別の Nextcloud インスタンスのユーザとのカレンダー共有は、ローカルユーザとの共有と同様に行えます。違いは、受信者として <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;instance&gt;</span></code> の形式（例：<code class="docutils literal notranslate"><span class="pre">alice&#64;cloud.example.com</span></code>）のフェデレーテッドユーザ識別子を使用する必要があることです。</p>
+<p>Nextcloud 33 から、フェデレーテッド共有は完全な読み書きアクセスをサポートし、リモートユーザが共有カレンダーでイベントを作成、編集、削除できるようになりました。Nextcloud 32 では、フェデレーテッド共有は読み取り専用でした。</p>
+</section>
+<section id="publishing-a-calendar">
+<h3>カレンダーの公開<a class="headerlink" href="#publishing-a-calendar" title="Link to this heading"></a></h3>
+<p>カレンダーを、パブリック リンクを通じて公開して、外部ユーザーが表示 (読取専用) できるようにすることができます。カレンダーの共有メニューを開いて、« 共有リンク » の横にある « + »  をクリックすると、パブリックリンクを作成できます。作成したら、パブリック リンクをクリップボードにコピーするか、電子メールで送信できます。</p>
+<p>« embedding code » で発行できる HTML iframe でカレンダーを公開ページに埋め込むこともできます。</p>
+<p>埋め込みリンクの末尾に固有のトークンを追加することで、複数のカレンダーを一緒に共有できます。トークンは、各カレンダーの公開リンクの最後にあります。完全なアドレスは``https://cloud.example.com/index.php/apps/calendar/embed/&lt;token1&gt;-&lt;token2&gt;-&lt;token3&gt;``のようになります。</p>
+<p>埋め込みカレンダーのデフォルト表示や日付を変更するには、<code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;token&gt;/&lt;view&gt;/&lt;date&gt;</span></code> のような URL を指定する必要があります。この URL では、次の変数を置き換えます。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;token&gt;</span></code> をカレンダーのトークンへ置き換え</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;view&gt;</span></code> を、これらのいずれか一つに置き換えます。 <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code> ・ <code class="docutils literal notranslate"><span class="pre">timeGridWeek</span></code> ・ <code class="docutils literal notranslate"><span class="pre">timeGridDay</span></code> ・ <code class="docutils literal notranslate"><span class="pre">listMonth</span></code> ・ <code class="docutils literal notranslate"><span class="pre">listWeek</span></code> ・ <code class="docutils literal notranslate"><span class="pre">listDay</span></code>。デフォルトのビューでは <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code> が、また、リストでは通常 <code class="docutils literal notranslate"><span class="pre">listMonth</span></code> が使用されます。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;date&gt;</span></code> を <code class="docutils literal notranslate"><span class="pre">now</span></code> に置き換えるか、この形式で日付を指定して置き換えます。 <code class="docutils literal notranslate"><span class="pre">&lt;year&gt;-&lt;month&gt;-&lt;day&gt;</span></code> （例：<code class="docutils literal notranslate"><span class="pre">2019-12-28</span></code>）</p></li>
+</ul>
+<p>パブリックページ上では、ユーザーはカレンダーの購読リンクを入手することができ、カレンダー全体をエクスポートできます。</p>
+</section>
+<section id="calendar-widget">
+<h3>カレンダーウィジェット<a class="headerlink" href="#calendar-widget" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Talk</span></code> や <code class="docutils literal notranslate"><span class="pre">Notes</span></code> などの対応アプリにカレンダーを埋め込むには、すべてのユーザが埋め込みを閲覧（読み取り専用）できるようにパブリックリンクを共有するか、内部リンクを使用して非公開にします。</p>
+</section>
+<section id="subscribe-to-a-calendar">
+<h3>カレンダーを購読する<a class="headerlink" href="#subscribe-to-a-calendar" title="Link to this heading"></a></h3>
+<p>Nextcloud 内で iCal カレンダーを直接購読できます。相互運用可能な標準形式のiCal (RFC 5545) をサポートすることで、Google カレンダー、Apple iCloud、および上記のような他の Nextcloud インスタンスで公開されているカレンダーの購読リンク等、カレンダーを交換できる他の多くのカレンダー サーバーと、Nextcloud カレンダーが互換性を持つようになりました。</p>
+<ol class="arabic simple">
+<li><p>左のサイドバーの <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">New</span> <span class="pre">calendar</span></code> をクリックします。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">New</span> <span class="pre">subscription</span> <span class="pre">from</span> <span class="pre">link</span> <span class="pre">(read-only)</span></code> をクリックします。</p></li>
+<li><p>購読したい共有カレンダーのリンクを、入力・ペーストします。</p></li>
+</ol>
+<p>完了です。購読しているカレンダーは定期的に更新されます。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>購読が更新される頻度は、デフォルトでは毎週です。管理者がこの設定を変更している可能性があります。</p>
+</div>
+</section>
+<section id="subscribe-to-a-holiday-calendar">
+<h3>休日カレンダーを購読する<a class="headerlink" href="#subscribe-to-a-holiday-calendar" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.4: </span>Nextcloud 25 or newer</p>
+</div>
+<p><a class="reference external" href="https://www.thunderbird.net/calendar/holidays/">Thunderbird</a> が提供する、読取専用の休日カレンダーを購読できます。</p>
+<ol class="arabic simple">
+<li><p>左のサイドバーの <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">New</span> <span class="pre">calendar</span></code> をクリックします。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Add</span> <span class="pre">holiday</span> <span class="pre">calendar</span></code> をクリックします。</p></li>
+<li><p>あなたの国や地域を探して、 <code class="docutils literal notranslate"><span class="pre">Subscribe</span></code> をクリックします。</p></li>
+</ol>
+</section>
+</section>
+<section id="managing-events">
+<h2>イベントの管理<a class="headerlink" href="#managing-events" title="Link to this heading"></a></h2>
+<section id="create-a-new-event">
+<h3>イベントを作成する<a class="headerlink" href="#create-a-new-event" title="Link to this heading"></a></h3>
+<p>イベントがスケジュールされている日時をクリックすると、イベントを作成できます。カレンダーの日表示および週表示では、イベントが開催される日時を、クリックしたままカーソルでなぞって放すだけで、作成できます。</p>
+<p>地球儀ボタンをクリックすると、タイムゾーン選択ツールが表示されます。イベントの開始と終了に異なるタイムゾーンを選択できます。旅行時に便利です。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_week.png" src="../../_images/calendar_new-event_week.png" />
+</figure>
+<p>月表示では、対象の日をシングルクリックすることで、イベントを作成できます。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_month.png" src="../../_images/calendar_new-event_month.png" />
+</figure>
+<p>その後、イベント名（例：<strong>Meeting with Linus</strong>）を入力し、イベントを保存するカレンダー（例：<strong>Personal</strong>、<strong>Community Events</strong>）を選択し、時間帯を確認・具体化するか、終日イベントとして設定できます。必要に応じて、場所と説明を指定することもできます。</p>
+<p><strong>参加者</strong> や <strong>リマインダー</strong> などの詳細設定を編集したり、イベントを繰り返しイベントとして設定したい場合は、<code class="docutils literal notranslate"><span class="pre">More</span></code> ボタンをクリックして高度なエディターを開きます。</p>
+</section>
+<section id="add-talk-conversation">
+<h3>Talk 会話を追加<a class="headerlink" href="#add-talk-conversation" title="Link to this heading"></a></h3>
+<p>「Add Talk conversation」をクリックすると、既存の Talk 会話をイベントに含めることができます。既存の Talk 会話の一覧を表示するには、Talk アプリが有効になっていることを確認してください。新しい Talk 会話を作成したい場合は、同じモーダルから直接作成できます。</p>
+<figure class="align-default">
+<img alt="../../_images/add-talk-room.png" src="../../_images/add-talk-room.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>常にシンプルなイベントエディターのポップアップではなく高度なエディターを開きたい場合は、アプリの <code class="docutils literal notranslate"><span class="pre">Settings</span></code> セクションで <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">simplified</span> <span class="pre">editor</span></code> オプションのチェックを外します。</p>
+</div>
+<p>青い <code class="docutils literal notranslate"><span class="pre">Create</span></code> ボタンをクリックすると、イベントが作成が完了します。</p>
+</section>
+<section id="edit-duplicate-or-delete-an-event">
+<h3>イベントを編集・複製・削除する<a class="headerlink" href="#edit-duplicate-or-delete-an-event" title="Link to this heading"></a></h3>
+<p>特定のイベントを編集・複製・削除したい場合は、まずイベントをクリックします。</p>
+<p>その後、イベントの詳細を再設定でき、<code class="docutils literal notranslate"><span class="pre">More</span></code> をクリックすると高度なエディターを開けます。</p>
+<p>Clicking on the <code class="docutils literal notranslate"><span class="pre">Update</span></code> button will update the event. To cancel your changes, click the <strong>Close</strong> button of the popup or advanced editor.</p>
+<p>高度な表示を開き、イベント名の横の3点メニューをクリックすると、イベントを <code class="docutils literal notranslate"><span class="pre">.ics</span></code> ファイルとしてエクスポートするか、カレンダーからイベントを削除するオプションがあります。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu.png" src="../../_images/calendar_event_menu.png" />
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>イベントを削除すると、イベントは <a class="reference internal" href="#calendar-trash-bin"><span class="std std-ref">ゴミ箱</span></a> に入ります。誤って削除したイベントをそこから復元できます。</p>
+</div>
+<p>基本エディターからイベントをエクスポート・複製・削除することもできます。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu_modal.png" src="../../_images/calendar_event_menu_modal.png" />
+</figure>
+</section>
+<section id="invite-attendees-to-an-event">
+<span id="calendar-attendees"></span><h3>イベントに参加者を招待する<a class="headerlink" href="#invite-attendees-to-an-event" title="Link to this heading"></a></h3>
+<p>イベントに参加者を追加して、招待されていることを知らせることができます。招待されたユーザーには、招待メールが届き、イベントへの参加を確認またはキャンセルすることができます。出席者には、Nextcloud インスタンス上の他のユーザー、アドレス帳の連絡先、および直接の電子メール アドレスを指定できます。出席者ごとの参加レベルを変更したり、特定の出席者の電子メール情報を無効にしたりすることもできます。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_invitation_level.png"><img alt="../../_images/calendar_event_invitation_level.png" src="../../_images/calendar_event_invitation_level.png" style="width: 811.2px; height: 380.8px;" />
+</a>
+</figure>
+<div class="versionchanged">
+<p><span class="versionmodified changed">バージョン 25.0.0 で変更: </span>出席者の電子メール応答リンクでは、コメントの追加入力や、追加のゲストの招待の入力が、できなくなりました。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>他の Nextcloud ユーザーをイベントの参加者として追加すると、参照可能な空き時間情報にアクセスでき、イベントに最適な時間帯を判断するのに役立ちます。 <a class="reference internal" href="#calendar-working-hours"><span class="std std-ref">勤務時間</span></a> を設定して、いつ空いているかを他のユーザーに知らせます。空き時間情報は、同じ Nextcloud インスタンス上の他のユーザーのみが利用できます。</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">注意</p>
+<p>このメールは招待状の送信に使用されるため、サーバー管理者は <code class="docutils literal notranslate"><span class="pre">基本設定</span></code> タブでメールサーバーを設定する必要があります。</p>
+</div>
+<p>招待ステータスの凡例（参加者として）：</p>
+<ul class="simple">
+<li><p><strong>塗りつぶされたイベント</strong>：承諾済み</p></li>
+<li><p><strong>取り消し線</strong>：辞退済み</p></li>
+<li><p><strong>縞模様</strong>：仮承諾</p></li>
+<li><p><strong>空のイベント</strong>：まだ応答していません</p></li>
+</ul>
+<p>主催者で全参加者が辞退した場合、イベントは警告記号付きの空のイベントとして表示されます。</p>
+</section>
+<section id="checking-attendees-busy-times">
+<h3>参加者の予定の確認<a class="headerlink" href="#checking-attendees-busy-times" title="Link to this heading"></a></h3>
+<p>イベントに参加者を追加した後、<code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">a</span> <span class="pre">time</span></code> をクリックすると「Free / Busy」モーダルが表示されます。各参加者が他にどのイベントがあるかを確認でき、全員が空いている時間帯を決めるのに役立ちます。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_free_busy_modal.png"><img alt="../../_images/calendar_free_busy_modal.png" src="../../_images/calendar_free_busy_modal.png" style="width: 942.0px; height: 752.4px;" />
+</a>
+</figure>
+<p>自分の予定ブロックは個人カレンダーと同じ色で表示され、外出中の時間はグレーで表示されます。他の参加者の予定時間は、高度なエディターに表示されるアバターと同じ色になります。</p>
+<p>カレンダー上で直接イベントの時間帯を選択できます。</p>
+</section>
+<section id="assign-rooms-and-resources-to-an-event">
+<h3>部屋やリソースをイベントに割り当てる<a class="headerlink" href="#assign-rooms-and-resources-to-an-event" title="Link to this heading"></a></h3>
+<p>出席者と同様に、部屋やリソースを、イベントに追加できます。各部屋とリソースが競合することなく予約されていることをシステムが確認します。ユーザーが初めてルームまたはリソースをイベントに追加すると、承認済みとして表示されます。重複する時間のイベントに追加しようとすると、部屋またはリソースが拒否されたと表示されます。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>部屋とリソースは Nextcloud 自体によっては管理されず、カレンダー アプリでの追加・変更ができません。ユーザーとして部屋とリソースを使用する前に、管理者がリソース バックエンドをインストールし、場合によってはリソースバックエンドを構成する必要があります。</p>
+</div>
+</section>
+<section id="room-availability">
+<h3>部屋の空き状況<a class="headerlink" href="#room-availability" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.0: </span>Nextcloud 30 or newer</p>
+</div>
+<p>インスタンスに「Calendar Rooms and Resources」アプリがインストールされている場合、<code class="docutils literal notranslate"><span class="pre">Resources</span></code> セクションに <code class="docutils literal notranslate"><span class="pre">Room</span> <span class="pre">availability</span></code> が表示されます。すべての既存の部屋が一覧表示されます。イベント参加者の空き／予定ありステータスを確認するのと同様の方法で、各部屋の空き状況を確認できます。</p>
+<figure class="align-default">
+<img alt="../../_images/room_availability.png" src="../../_images/room_availability.png" />
+</figure>
+</section>
+<section id="add-attachments-to-events">
+<h3>イベントに添付ファイルを追加する<a class="headerlink" href="#add-attachments-to-events" title="Link to this heading"></a></h3>
+<p>添付ファイルをアップロードするか、ファイルから追加することで、イベントに添付ファイルをインポートできます。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_adding_attachments.png"><img alt="../../_images/calendar_adding_attachments.png" src="../../_images/calendar_adding_attachments.png" style="width: 790.4000000000001px; height: 382.40000000000003px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>新しいイベントを作成するとき、または既存のイベントを編集するときに、添付ファイルを追加できます。新しくアップロードされたファイルは、デフォルトでルート ディレクトリのカレンダー フォルダーにファイルとして保存されます。</p>
+</div>
+<p>You can change the attachment folder by going to <strong>Calendar settings</strong> and changing <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">attachments</span> <span class="pre">location</span></code>.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_attachments_location.png"><img alt="../../_images/calendar_attachments_location.png" src="../../_images/calendar_attachments_location.png" style="width: 389.4px; height: 357.0px;" />
+</a>
+</figure>
+</section>
+<section id="set-up-reminders">
+<h3>リマインダーを設定する<a class="headerlink" href="#set-up-reminders" title="Link to this heading"></a></h3>
+<p>イベントの前に通知を受けるようにリマインダーを設定できます。現在サポートされている通知方法は次のとおりです。</p>
+<ul class="simple">
+<li><p>メール通知</p></li>
+<li><p>Nextcloud 通知</p></li>
+</ul>
+<p>You may set reminders at a time relative to the event or at a specific date. If you would like all the events in a calendar to have a default reminder, you can configure that in the settings of that calendar.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_reminders.png"><img alt="../../_images/calendar_event_reminders.png" src="../../_images/calendar_event_reminders.png" style="width: 507.20000000000005px; height: 284.0px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>カレンダーの所有者と、書込権限でカレンダーを共有されているユーザーまたはグループのみが、通知を受け取ります。もし通知を受け取る必要があるのに受け取れていないと思われる場合は、管理者がサーバーに対して通知を無効にしている可能性もあります。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>カレンダーを、モバイル機器または他の 3rd-party クライアントと同期すると、そこにも通知が表示される場合があります。</p>
+</div>
+</section>
+<section id="add-recurring-options">
+<h3>繰り返しを追加する<a class="headerlink" href="#add-recurring-options" title="Link to this heading"></a></h3>
+<p>イベントは、毎日、毎週、毎月、または毎年のような「繰り返し」の設定ができます。特定のルールを追加して、イベントが発生する曜日を設定したり、「毎月第 4 水曜日」などの より複雑なルールを設定したりできます。</p>
+<p>繰り返しの収量も設定できます。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_repeat.png"><img alt="../../_images/calendar_event_repeat.png" src="../../_images/calendar_event_repeat.png" style="width: 519.2px; height: 557.6px;" />
+</a>
+</figure>
+</section>
+<section id="trash-bin">
+<span id="calendar-trash-bin"></span><h3>ゴミ箱<a class="headerlink" href="#trash-bin" title="Link to this heading"></a></h3>
+<p>カレンダーでイベント・タスク・カレンダーを削除しても、データはまだ消えていません。代わりに、それらのアイテムは <em>ゴミ箱</em> に収集されます。これにより、削除を元に戻すことができます。デフォルトで 30 日の期間 (管理者はこの設定を変更できます) が経過すると、それらのアイテムは完全に削除されます。必要に応じて、自動削除より先にアイテムを完全に削除することもできます。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_trash_bin.png" src="../../_images/calendar_trash_bin.png" />
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">ゴミ箱を空にする</span></code> ボタンでゴミ箱の中身全てを一度に削除できます。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>ゴミ箱にはカレンダーアプリからのみアクセスできます。接続された他のアプリ・App はゴミ箱の中身を表示しません。但し、接続されているアプリ・Appで削除された、イベント・タスク・カレンダーは、ゴミ箱に移動します。</p>
+</div>
+</section>
+<section id="automated-user-status">
+<span id="calendar-working-hours"></span><h3>自動ユーザステータス<a class="headerlink" href="#automated-user-status" title="Link to this heading"></a></h3>
+<p>「BUSY」ステータスのカレンダーイベントが予定されている場合、「取り込み中」や「非表示」に設定していない限り、ユーザステータスは自動的に「会議中」に設定されます。いつでもカスタムメッセージでステータスを上書きでき、カレンダーイベントを「FREE」に設定することもできます。透明なカレンダーは無視されます。</p>
+</section>
+</section>
+<section id="responding-to-invitations">
+<h2>招待への応答<a class="headerlink" href="#responding-to-invitations" title="Link to this heading"></a></h2>
+<p>アプリ内でイベントへの招待に直接応答できます。イベントをクリックし、参加ステータスを選択します。応答するステータスとして、承諾・拒否・暫定的に承諾、が選択できます。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_simple_editor.png"><img alt="../../_images/calendar_accept_simple_editor.png" src="../../_images/calendar_accept_simple_editor.png" style="width: 663.2px; height: 477.6px;" />
+</a>
+</figure>
+<p>高度なエディターからも招待に応答できます。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_advanced_editor.png"><img alt="../../_images/calendar_accept_advanced_editor.png" src="../../_images/calendar_accept_advanced_editor.png" style="width: 800.0px; height: 160.8px;" />
+</a>
+</figure>
+</section>
+<section id="availability-working-hours">
+<h2>空き時間 (勤務時間)<a class="headerlink" href="#availability-working-hours" title="Link to this heading"></a></h2>
+<p>スケジュールされたイベントとは別の設定として、Working Hoursを、Nextcloud のグループウェア設定で設定できます。これらの設定は、カレンダーで <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">他の人との会議をスケジュールする</span></a> ときに、空き時間ビューに反映されます。 Thunderbird などの一部の接続されたクライアントでも同様に、このデータが表示されます。</p>
+<figure class="align-default">
+<img alt="../../_images/caldav_availability.png" src="../../_images/caldav_availability.png" />
+</figure>
+<p>通常の空き時間に加えて、一回限りの不在は <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">不在設定セクション</span></a> で設定できます。</p>
+</section>
+<section id="birthday-calendar">
+<h2>誕生日カレンダー<a class="headerlink" href="#birthday-calendar" title="Link to this heading"></a></h2>
+<p>誕生日カレンダーは、連絡先から誕生日を自動的に取得する自動生成カレンダーです。このカレンダーを編集する唯一の方法は、連絡先に誕生日の日付を登録することです。カレンダー app からこのカレンダーを直接編集することはできません。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>誕生日カレンダーが表示されない場合は、管理者がサーバーに対して無効にしている可能性があります。</p>
+</div>
+</section>
+<section id="appointments">
+<h2>予定予約<a class="headerlink" href="#appointments" title="Link to this heading"></a></h2>
+<p>カレンダー v3 以降、カレンダーアプリは、他の Nextcloud ユーザーだけでなく、その Nextcloud インスタンスにアカウントを持たないユーザーも予約できる、予定スロットを生成できます。この予定機能を使用すると、いつ会えるかを細かく制御でき、日程調整のためのメールを何度もやりとりせずにすみます。</p>
+<p>このセクションでは、以下、用語を使用します。<em>主催者</em> はカレンダーを所有し、予定のスロットを設定する人を表します。  <em>出席者</em> は、いずれかのスロットを予約する人です。</p>
+<section id="creating-an-appointment-configuration">
+<h3>予約枠設定の作成<a class="headerlink" href="#creating-an-appointment-configuration" title="Link to this heading"></a></h3>
+<p>予定の主催者は、カレンダー web UI を開きます。左のサイドバーに予定セクションがあります。ここで、新しい予定の作成ダイアログを表示できます。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_new.png" src="../../_images/appointment_new.png" />
+</figure>
+<p>全ての予定の基本情報の一つは、予定名（例：主催者が同僚に個人的な電話を提案したい場合の「1 on 1」）・場所・詳細な説明（この予定は何についてのものなのか）です。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_basics.png" src="../../_images/appointment_config_basics.png" />
+</figure>
+<p>予定の期間は、事前に定義されたリストから選択できます。次に、希望の「インクリメント」を設定できます。インクリメントは、使用可能な時間枠の頻度です。たとえば、1 時間の時間枠を 30 分のインクリメントで割り当てると、出席者は、午前 09:00 からだけでなく午前 09:30 からも予約できるようになります。場所の追加情報と説明は、出席者にさらなるコンテキストを提供します。予約された予定はすべてカレンダーの 1 つに書き込まれるため、どのカレンダーにするか選択できます。予約は <em>公開</em> または <em>非公開</em> にすることができます。公開の予定は、Nextcloud ユーザーのプロフィール ページから見つけることができます。非公開の予定には、秘密の URL を受け取った人のみがアクセスできます。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_calendar_settings.png" src="../../_images/appointment_config_calendar_settings.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>カレンダー内の既存のイベントと競合しないスロットのみが出席者に表示されます。</p>
+</div>
+<p>予定の主催者は、通常、週のどの時間帯のスロットを予約できるかを指定できます。これは、勤務時間だけでなく、その他のカスタマイズされたスケジュールでも構いません。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_booking_hours.png" src="../../_images/appointment_config_booking_hours.png" />
+</figure>
+<p>一部の予定では準備に時間がかかる場合があります。現地開催で、そこまで車で行かなければならないときを想像してください。主催者は、予定前に空いたまま確保する必要がある時間の長さを選択できます。こうすると、予定前の準備時間も他のイベントと競合しないスロットのみが、利用可能になります。さらに、予定後に空ける必要がある時間も選択できます。出席者が急な予約をしないように、次に可能な予定がどれくらい事前に予約されるかを設定することができます。 1 日あたりのスロットの最大数を構成すると、出席者が予約できる予定の数を制限できます。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_limits.png" src="../../_images/appointment_config_limits.png" />
+</figure>
+<p>設定した予約は左サイドバーに一覧表示されます。3点メニューから予約をプレビューできます。予約のリンクをコピーして対象の参加者と共有したり、プロフィールページから公開予約を見つけてもらうこともできます。予約設定の編集や削除も可能です。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_options.png" src="../../_images/appointment_config_options.png" />
+</figure>
+</section>
+<section id="booking-an-appointment">
+<h3>予約の実施<a class="headerlink" href="#booking-an-appointment" title="Link to this heading"></a></h3>
+<p>予約ページには、参加者に対して予約のタイトル、場所、説明、所要時間が表示されます。選択した日には、利用可能なすべての時間帯の一覧が表示されます。利用可能なスロットがない日、競合が多すぎる日、または1日の予約上限に達した日は、一覧が空になる場合があります。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_1.png"><img alt="../../_images/appointment_booking_1.png" src="../../_images/appointment_booking_1.png" style="width: 926.4000000000001px; height: 592.0px;" />
+</a>
+</figure>
+<p>予約には、参加者が名前とメールアドレスを入力する必要があります。必要に応じてコメントも追加できます。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_2.png"><img alt="../../_images/appointment_booking_2.png" src="../../_images/appointment_booking_2.png" style="width: 745.6px; height: 463.20000000000005px;" />
+</a>
+</figure>
+<p>予約が成功すると、参加者に確認ダイアログが表示されます。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_3.png" src="../../_images/appointment_booking_3.png" />
+</figure>
+<p>参加者のメールアドレスが有効であることを確認するため、確認メールが送信されます。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_email.png" src="../../_images/appointment_booking_confirmation_email.png" />
+</figure>
+<p>参加者がメールの確認リンクをクリックした後にのみ、予約が承認され、主催者に転送されます。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_dialogue.png" src="../../_images/appointment_booking_confirmation_dialogue.png" />
+</figure>
+<p>参加者には、予約の詳細を確認する別のメールが届きます。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_email_2.png" src="../../_images/appointment_booking_email_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>スロットが確認されていない場合でも、予約可能として表示されます。その間、先に予約を確認した別のユーザによって同じ時間帯が予約される可能性があります。システムが競合を検出し、新しい時間帯の選択を提案します。</p>
+</div>
+</section>
+<section id="working-with-the-booked-appointment">
+<h3>予約済み予約の操作<a class="headerlink" href="#working-with-the-booked-appointment" title="Link to this heading"></a></h3>
+<p>予約が完了すると、主催者のカレンダーに予約の詳細と <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">参加者</span></a> を含むイベントが作成されます。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_event.png" src="../../_images/appointment_calendar_event.png" />
+</figure>
+<p>予約に「Add time before event」または「Add time after the event」設定が有効になっている場合、主催者のカレンダーに別のイベントとして表示されます。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_prep.png" src="../../_images/appointment_calendar_prep.png" />
+</figure>
+<p>参加者がいる他のイベントと同様に、変更やキャンセルは参加者のメールに通知されます。</p>
+<p>参加者が予約をキャンセルしたい場合は、主催者に連絡し、主催者がイベントをキャンセルまたは削除する必要があります。</p>
+</section>
+<section id="create-talk-room-for-booked-appointments">
+<h3>予約済み予約用に Talk ルームを作成<a class="headerlink" href="#create-talk-room-for-booked-appointments" title="Link to this heading"></a></h3>
+<p>カレンダーアプリから予約済みの予約用に Talk ルームを直接作成できます。このオプションは「Create appointment」モーダルにあります。このオプションをオンにすると、予約ごとに一意のリンクが生成され、確認メールで送信されます。</p>
+</section>
+</section>
+<section id="proposals">
+<h2>提案<a class="headerlink" href="#proposals" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 6.0: </span>Nextcloud 32 or newer</p>
+</div>
+<p>複数の参加者との会議時間を見つけるのは難しいことがあります。カレンダー v6 から、ユーザが会議時間の提案を作成できる新機能が導入されました。つまり、単に時間を予約したり、空き時間ビューで利用可能な時間を検索したりする代わりに、参加者が提案された会議時間のセットに投票できるようになります。主催者は参加者の希望を確認し、会議に最適な時間を選択できます。</p>
+<section id="managing-proposals">
+<h3>提案の管理<a class="headerlink" href="#managing-proposals" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_list.png" src="../../_images/calendar_proposal_list.png" />
+</figure>
+<p>左サイドバーの提案一覧には、ユーザが作成したすべての提案が表示されます。一覧には提案のタイトル、応答した参加者数、およびすべての参加者が応答したかどうかのステータスが表示されます。</p>
+<p>ユーザは提案項目の横の3点メニューをクリックして、既存の提案を編集、削除、または表示できます。</p>
+</section>
+<section id="creating-a-proposal">
+<h3>提案の作成<a class="headerlink" href="#creating-a-proposal" title="Link to this heading"></a></h3>
+<p>新しい提案を作成するには、提案一覧上部の「Meeting Proposals」ヘッダー横のプラスアイコンをクリックします。提案された会議の関連詳細をすべて入力できるモーダルが開きます。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_create.png" src="../../_images/calendar_proposal_create.png" />
+</figure>
+<p>提案エディターには、タイトル、説明、場所、所要時間、参加者の選択など、イベントエディターと同様の基本フィールドがあり、ユーザが入力できます。これらの詳細は、参加者に提案された会議と時間について知らせるために使用されます。</p>
+<p>主な違いは「Proposed times」選択で、ユーザが会議の複数の時間帯を選択できることです。必要な数だけ時間帯を追加でき、各時間帯は必要に応じて編集または削除できます。</p>
+<p>ユーザが必要な詳細（タイトル、所要時間、参加者）をすべて入力し、提案時間を選択したら、「Create」ボタンをクリックして提案を作成できます。これにより提案が保存され、選択したすべての参加者に通知が送信されます。</p>
+</section>
+<section id="editing-a-proposal">
+<h3>提案の編集<a class="headerlink" href="#editing-a-proposal" title="Link to this heading"></a></h3>
+<p>ユーザは提案一覧の提案項目の横の3点メニューをクリックし、「Edit」を選択して既存の提案を編集できます。新しい提案を作成するときと同じモーダルが開き、既存の詳細がすべて入力された状態になります。</p>
+<p>必要な変更を行った後、ユーザは「Update」ボタンをクリックして変更を保存できます。これにより、更新された提案についてすべての参加者に通知が送信されます。</p>
+</section>
+<section id="viewing-a-proposal-progress">
+<h3>提案の進捗の確認<a class="headerlink" href="#viewing-a-proposal-progress" title="Link to this heading"></a></h3>
+<p>ユーザは提案一覧の提案項目をクリックするか、3点メニューの「View」をクリックして、提案の進捗を確認できます。すべての詳細と、提案された時間と参加者の応答を示す時間・参加者マトリックスが表示された詳細ビューが開きます。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_view.png" src="../../_images/calendar_proposal_view.png" />
+</figure>
+<p>このビューでは、どの参加者が提案に応答したか、および各提案時間に対する希望を確認できます。また、各提案時間の投票総数も確認でき、会議の最適な時間を決めるのに役立ちます。</p>
+<p>参加者の応答を確認した後、日付／参加者マトリックスの末尾の「Create」ボタンをクリックして、最も人気のある会議時間を選択できます。これによりユーザのカレンダーに新しいイベントが作成され、確定した会議時間についてすべての参加者に通知が送信されます。</p>
+</section>
+<section id="notifications-for-a-proposed-meeting">
+<h3>提案された会議の通知<a class="headerlink" href="#notifications-for-a-proposed-meeting" title="Link to this heading"></a></h3>
+<p>ユーザは、提案された会議に関連する以下のようなさまざまなイベントについて、メール通知を受け取ります。</p>
+<ul class="simple">
+<li><p>新しい提案が作成されたとき</p></li>
+<li><p>提案が更新されたとき</p></li>
+<li><p>提案が削除されたとき</p></li>
+<li><p>最終的な会議時間が確定したとき</p></li>
+</ul>
+<p>これらの通知により、すべての参加者が提案プロセス全体を通じて情報を得られ、関与し続けることができます。</p>
+<p>通知メールには、タイトル、説明、場所、所要時間、提案された時間など、提案された会議の基本詳細が含まれます。参加者がすべての詳細を確認し、提案された時間に応答できる応答ページへのリンクも含まれます。</p>
+</section>
+<section id="responding-to-a-proposed-meeting">
+<h3>提案された会議への応答<a class="headerlink" href="#responding-to-a-proposed-meeting" title="Link to this heading"></a></h3>
+<p>参加者は通知メールのリンクをクリックして提案された会議に応答できます。提案された会議の詳細ビューが開き、すべての提案時間、他の参加者とその応答を確認し、各提案時間に対する空き状況や希望を選択できます。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_respond.png" src="../../_images/calendar_proposal_respond.png" />
+</figure>
+<p>参加者は、時間・参加者マトリックスの対応する行で希望を選択することで、各提案時間の空き状況を選択できます。「Yes」「No」「Maybe」の3つのオプションから選べます。選択が完了したら、「Submit」ボタンをクリックして応答を保存できます。</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contacts.html" class="btn btn-neutral float-left" title="連絡先アプリの使い方" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mail.html" class="btn btn-neutral float-right" title="Mail アプリを使用する" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 ja-JP
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ 35
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl class="nc-languages-list">
+        <dt>Languages</dt>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              35 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              34 (latest)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33 (stable)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32 (stable)
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

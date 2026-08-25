@@ -1,0 +1,899 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja-JP" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>連絡先アプリの使い方 &mdash; Nextcloud 35 User Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/contacts.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=7442688e"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="Celendar アプリを使用する" href="calendar.html" />
+    <link rel="prev" title="グループウェア" href="index.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 35 ユーザーマニュアル はじめに</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">アクティビティアプリの使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">ファイル（Files）と同期</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">グループウェア</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">連絡先アプリの使い方</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-contacts">連絡先の追加</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#importing-virtual-contacts">仮想連絡先のインポート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-contacts-manually">連絡先の手動追加</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-or-remove-contact-information">連絡先情報の編集・削除</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contact-picture">連絡先画像</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-multiple-contacts-at-a-time">複数の連絡先をまとめて管理する</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#merging-duplicate-contacts">重複連絡先の統合</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mark-contacts-as-favorite">Mark contacts as favorite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#organize-your-contacts-with-contact-groups">連絡先グループで連絡先を整理する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-and-managing-address-books">アドレス帳の追加と管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#teams">チーム</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-team">チームを作成する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#team-roles">チームのロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-members-to-a-team">チームにメンバーを追加</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#team-options">チームのオプション</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-items">共有アイテム</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Celendar アプリを使用する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Mail アプリを使用する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">不在時メッセージの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Android との同期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">iOS との同期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">macOS との同期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Thunderbird との同期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">KDE Kontact との同期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">GNOME デスクトップとの同期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Windows 10 との同期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">Migrate data between instances</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">グループウェア</a></li>
+      <li class="breadcrumb-item active">連絡先アプリの使い方</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/contacts.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-contacts-app">
+<h1>連絡先アプリの使い方<a class="headerlink" href="#using-the-contacts-app" title="Link to this heading"></a></h1>
+<p>連絡先アプリは、Nextcloud 35 ではデフォルトで有効になっておらず、App Storeから別途インストールする必要があります。</p>
+<p>The Nextcloud Contacts app is similar to other mobile contact applications, but
+with more functionality.
+This section covers the basic features that will help you maintain your address book
+in the application.</p>
+<p>以下では、連絡先の追加・編集・削除、連絡先画像のアップロード、アドレス帳の管理方法について説明します。</p>
+<section id="adding-contacts">
+<h2>連絡先の追加<a class="headerlink" href="#adding-contacts" title="Link to this heading"></a></h2>
+<p>連絡先アプリに初めてアクセスしたとき、あなたが閲覧可能なすべてのユーザーを含むシステムアドレス帳と、空のデフォルトアドレス帳が利用可能になります。</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/contacts_empty.png" src="../../_images/contacts_empty.png" />
+<figcaption>
+<p><span class="caption-text">※デフォルトアドレス帳（空）</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>アドレス帳に連絡先を追加するには、次のいずれかの方法を使えます：</p>
+<ul class="simple">
+<li><p>仮想連絡先ファイル（VCF/vCardファイル）を使って連絡先をインポートする</p></li>
+<li><p>連絡先を手動で追加する</p></li>
+</ul>
+<p>連絡先を追加する最も速い方法は、仮想連絡先ファイル（VCF/vCardファイル）を使うことです。</p>
+<section id="importing-virtual-contacts">
+<h3>仮想連絡先のインポート<a class="headerlink" href="#importing-virtual-contacts" title="Link to this heading"></a></h3>
+<p>VCF/vCardファイルを使って連絡先をインポートする方法：</p>
+<ol class="arabic">
+<li><p>An <strong>Import contacts</strong> button is shown when you have no contacts yet.</p></li>
+<li><p>左サイドバーの一番下にある歯車アイコンの隣に「設定」があります：</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="連絡先設定の歯車ボタン" src="../../_images/contact_bottombar.png" />
+</figure>
+</div></blockquote>
+</li>
+<li><p>歯車ボタンをクリックすると、連絡先アプリの「インポート」ボタンが表示されます：</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="連絡先のアップロード欄" src="../../_images/contact_uploadbutton.png" />
+</figure>
+</div></blockquote>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>連絡先アプリは、vCardバージョン3.0と4.0のみインポートに対応しています。</p>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>「インポート」ボタンをクリックし、VCF/vCardファイルをアップロードしてください。</p></li>
+</ol>
+<p>インポートが完了すると、新しい連絡先がアドレス帳に表示されます。</p>
+</section>
+<section id="adding-contacts-manually">
+<h3>連絡先の手動追加<a class="headerlink" href="#adding-contacts-manually" title="Link to this heading"></a></h3>
+<p>仮想連絡先のインポートができない場合は、連絡先アプリで連絡先を手動で追加することができます。</p>
+<p>新しい連絡先を作成する手順：</p>
+<ol class="arabic">
+<li><p>「+新規連絡先」ボタンをクリックします。</p>
+<p>編集ビュー構成がアプリケーションビュー欄で開きます：</p>
+</li>
+</ol>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../../_images/contact_new.png" src="../../_images/contact_new.png" />
+</figure>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>新しい連絡先情報を入力し「保存」をクリックします。</p></li>
+<li><p>追加したデータが表示モードに反映されます</p></li>
+</ol>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../../_images/contact_view_mode.png" src="../../_images/contact_view_mode.png" />
+</figure>
+</div></blockquote>
+</section>
+<section id="edit-or-remove-contact-information">
+<h3>連絡先情報の編集・削除<a class="headerlink" href="#edit-or-remove-contact-information" title="Link to this heading"></a></h3>
+<p>連絡先アプリでは連絡先情報の編集や削除ができます。</p>
+<p>連絡先情報を編集または削除するには：</p>
+<ol class="arabic simple">
+<li><p>変更したい連絡先を選択します。</p></li>
+<li><p>編集または削除したい項目を選択します。</p></li>
+<li><p>内容を修正するか、ゴミ箱アイコンをクリックしてください。</p></li>
+</ol>
+<p>連絡先情報の変更や削除は即座に反映されます。</p>
+<p>すべての連絡先が編集可能とは限りません。システムアドレス帳では他のユーザーのデータは変更できず、自分自身のデータのみ編集できます。自分のデータはユーザ設定（<a class="reference internal" href="../userpreferences.html"><span class="doc">user settings</span></a>）でも編集できます。</p>
+</section>
+<section id="contact-picture">
+<h3>連絡先画像<a class="headerlink" href="#contact-picture" title="Link to this heading"></a></h3>
+<p>新しい連絡先の画像を追加するには「アップロード」ボタンをクリックします：</p>
+<figure class="align-default">
+<img alt="連絡先画像（アップロードボタン）" src="../../_images/contact_picture.png" />
+</figure>
+<p>連絡先画像を設定すると、このように表示されます：</p>
+<figure class="align-default">
+<img alt="連絡先画像（設定済み）" src="../../_images/contact_picture_set.png" />
+</figure>
+<p>画像を新たにアップロードしたい場合や、削除・全画面表示・ダウンロードする場合は、連絡先画像をクリックして各オプションを表示させてください：</p>
+<figure class="align-default">
+<img alt="../../_images/contact_picture_options.png" src="../../_images/contact_picture_options.png" />
+</figure>
+<p>管理者がグループウェアの管理設定でソーシャルメディアからの更新を許可している場合、ユーザは連絡先画像をソーシャルネットワークから直接取得できます。その場合、連絡先にはソーシャルメディア欄にユーザ名を登録しておく必要があります。対応するソーシャルネットワークごとに、ダウンロード項目が追加されます。現在、以下のソーシャルネットワークがサポートされています：</p>
+<ul class="simple">
+<li><p>Instagram</p></li>
+<li><p>Mastodon</p></li>
+<li><p>Tumblr</p></li>
+<li><p>Diaspora</p></li>
+<li><p>Xing</p></li>
+<li><p>Telegram</p></li>
+<li><p>Gravatar</p></li>
+</ul>
+<p>ソーシャルアバターは、各ソーシャルネットワークにログインしなくても公開されている場合のみ取得されます。連絡先ページのユーザ設定でソーシャルメディアからの自動更新を有効化できます。この設定により、アバターは週次でソーシャルプロフィールの情報で自動的に更新されます。ソーシャルネットワークは上記の順序でチェックされます。</p>
+</section>
+</section>
+<section id="managing-multiple-contacts-at-a-time">
+<h2>複数の連絡先をまとめて管理する<a class="headerlink" href="#managing-multiple-contacts-at-a-time" title="Link to this heading"></a></h2>
+<p>連絡先アプリでは、複数の連絡先を選択して一括操作できます。複数選択するには、各連絡先のプロフィール画像を個別にクリックするか、最初の連絡先の画像をクリックしてShiftキーを押しながら別の連絡先をクリックし、その間の連絡先をまとめて選択します。</p>
+<p>これにより、連絡先リストの上部に選択した連絡先への操作メニューが表示されます：</p>
+<figure class="align-default">
+<img alt="連絡先の複数選択アクション" src="../../_images/contact_multiselect.png" />
+</figure>
+<p>バッチモードでは、(×)アイコンですべての連絡先の選択を解除、ゴミ箱アイコンで全選択した連絡先を削除できます。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>連絡先によっては編集や削除ができない場合があります（たとえば読み取り専用のアドレス帳など）。その場合、該当操作は無効になります。</p>
+</div>
+<section id="merging-duplicate-contacts">
+<h3>重複連絡先の統合<a class="headerlink" href="#merging-duplicate-contacts" title="Link to this heading"></a></h3>
+<p>連絡先を統合するには、2件の連絡先を選択してリスト上部の「連絡先を統合」アイコンをクリックします。統合用ダイアログが開き、両方の連絡先の詳細が並べて表示されるので、統合後に保持する情報を選択できます。</p>
+<p>円形のラジオボタンで選択する項目は1つしか値を持てません（例：名前）。一方、四角いチェックボックスでは、両方の値を保持すること（例：電話番号やメールアドレス）ができます。</p>
+<p>いずれかの連絡先がグループに属している場合、統合後も両方のグループに自動的に所属します。統合時にグループから除外したい場合はチェックを外してください。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>現在、1回に統合できる連絡先は2件のみです。また、統合できるのは自分が編集可能な連絡先だけです。統合ができない場合は、選択した連絡先の条件を確認してください。</p>
+</div>
+</section>
+</section>
+<section id="mark-contacts-as-favorite">
+<h2>Mark contacts as favorite<a class="headerlink" href="#mark-contacts-as-favorite" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 8.4.</span></p>
+</div>
+<p>Now you can mark contacts as favorites to always find them at the top of your contacts list, without needing to search or filter.</p>
+<p>To mark a contacts as favorite, hover over a contact, a star will show on the right. Click the star and a yellow star will appear on the contact’s avatar to confirm it’s been marked as a favorite.</p>
+<p>To remove it form the favorite list - Hover over a favorited contact, and click the star on the right. The star will disappear and the contact will return to its alphabetical position in the list.</p>
+<figure class="align-default">
+<img alt="../../_images/mark_favorite.png" src="../../_images/mark_favorite.png" />
+</figure>
+</section>
+<section id="organize-your-contacts-with-contact-groups">
+<h2>連絡先グループで連絡先を整理する<a class="headerlink" href="#organize-your-contacts-with-contact-groups" title="Link to this heading"></a></h2>
+<p>連絡先グループを使うと、連絡先をグループごとに整理できます。</p>
+<p>新しい連絡先グループを作成するには、左サイドバーの「連絡先グループ」横のプラス記号をクリックします。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>連絡先グループは、最低1名のメンバーがいないと保存できません。書き込み可能なアドレス帳の連絡先のみ追加でき、読み取り専用のアドレス帳（システムアドレス帳など）の連絡先は追加できません。</p>
+</div>
+</section>
+<section id="adding-and-managing-address-books">
+<h2>アドレス帳の追加と管理<a class="headerlink" href="#adding-and-managing-address-books" title="Link to this heading"></a></h2>
+<p>左サイドバー下部の「設定」（歯車）ボタンをクリックすると、連絡先アプリの設定画面が開きます。ここには利用可能なすべてのアドレス帳、各アドレス帳のオプション、および新しいアドレス帳を名前指定で作成する機能が表示されます：</p>
+<figure class="align-default">
+<img alt="連絡先設定でアドレス帳を追加する" src="../../_images/contact_manageaddressbook.png" />
+</figure>
+<p>連絡先設定では、アドレス帳の共有、エクスポート、削除も可能です。ここでCardDAVのURLも確認できます。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>無効化したアドレス帳の連絡先は、連絡先アプリや連絡先メニューに表示されません。</p>
+</div>
+<p>See <a class="reference internal" href="index.html"><span class="doc">グループウェア</span></a> for more details about syncing your address books
+with iOS, macOS, Thunderbird and other CardDAV clients.</p>
+</section>
+<section id="teams">
+<h2>チーム<a class="headerlink" href="#teams" title="Link to this heading"></a></h2>
+<p>組織内では、数週間のイベント運営や、異なる部門同士の短いアイディエーションセッション、ワークショップ、雑談やチームビルディングの場など、非公式な協働の機会がよく生まれます。特に、フォーマルな体制を最小限に抑えた柔軟な組織ではその傾向が強くなります。</p>
+<p>こうしたさまざまな理由から、Nextcloudの連絡先アプリにはTeams機能が組み込まれています。各ユーザは自分自身のチーム（アカウントの集合体）を作成できます。作成したチームは、後からファイルやフォルダーの共有、Talkでの会話グループなど、通常のグループと同様に活用できます。</p>
+<figure class="align-default">
+<img alt="連絡先アプリ左メニューのチーム" src="../../_images/circle.png" />
+</figure>
+<section id="create-a-team">
+<h3>チームを作成する<a class="headerlink" href="#create-a-team" title="Link to this heading"></a></h3>
+<p>左メニューの「チーム」横の+マークをクリックしてチーム名を指定すると、チーム設定画面が開きます。ここで次のことができます：</p>
+<ul class="simple">
+<li><p>チームにメンバーを追加する</p></li>
+<li><p>ユーザ横の三点メニューをクリックすると、そのユーザのチーム内ロールを変更できます。</p></li>
+</ul>
+</section>
+<section id="team-roles">
+<h3>チームのロール<a class="headerlink" href="#team-roles" title="Link to this heading"></a></h3>
+<p>チームでは4種類のロールがサポートされています：</p>
+<ul class="simple">
+<li><p>メンバー</p></li>
+<li><p>モデレーター</p></li>
+<li><p>管理者（チーム設定の変更 + モデレーター権限）</p></li>
+<li><p>オーナー</p></li>
+</ul>
+<p><strong>メンバー</strong></p>
+<p>メンバーは最も権限が低いロールであり、チーム内で共有されたリソースの閲覧と、チームメンバーの閲覧のみが可能です。</p>
+<p><strong>モデレーター</strong></p>
+<p>モデレーターは、メンバーの権限に加え、メンバーの招待・招待の承認・メンバー管理ができます。</p>
+<p><strong>管理者</strong></p>
+<p>管理者は、モデレーター権限に加え、チームの設定ができます。</p>
+<p><strong>オーナー</strong></p>
+<p>オーナーは、管理者権限に加えてチームの所有権を別のメンバーへ移譲できます（チームごとにオーナーは1人だけです）。</p>
+</section>
+<section id="add-members-to-a-team">
+<h3>チームにメンバーを追加<a class="headerlink" href="#add-members-to-a-team" title="Link to this heading"></a></h3>
+<p>ローカルアカウント、グループ、メールアドレス、他のチームなどをチームのメンバーに追加できます。グループやチームの場合は、その全メンバーにロールが適用されます。</p>
+</section>
+<section id="team-options">
+<h3>チームのオプション<a class="headerlink" href="#team-options" title="Link to this heading"></a></h3>
+<p>チームの設定として、招待やメンバーシップの管理、チームの公開範囲設定、他チームメンバーシップの許可、パスワード保護など分かりやすい各種オプションが用意されています。</p>
+<p><strong>他のチームのメンバーになることを制限する</strong></p>
+<p>このオプションを有効にすると、このチームは他チームのメンバーとして新たに追加できなくなります。ただし、この制限は新規の直接追加にのみ適用され、既存のメンバーシップや（親チーム経由での）継承されたメンバーシップには影響しません。</p>
+</section>
+<section id="shared-items">
+<h3>共有アイテム<a class="headerlink" href="#shared-items" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.5: </span>Nextcloud  25 or newer</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/shared-items.png" src="../../_images/shared-items.png" />
+</figure>
+<p>2人の連絡先間で共有されているアイテムは、連絡先アプリで表示されます。これはメディア、カレンダーイベント、チャットルーム、共有デッキカードなどが含まれ、連絡先の詳細で閲覧できます。この機能はシステムアドレス帳に載っている連絡先に限定されており、現在は2人の連絡先間の共有のみサポートしています。</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="グループウェア" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="calendar.html" class="btn btn-neutral float-right" title="Celendar アプリを使用する" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 ja-JP
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ 35
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl class="nc-languages-list">
+        <dt>Languages</dt>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              35 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              34 (latest)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33 (stable)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32 (stable)
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

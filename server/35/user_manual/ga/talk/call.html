@@ -1,0 +1,775 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ga" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ag dul isteach i nglao &mdash; Nextcloud 35 User Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/talk/call.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=d9c2735f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Comhroinnt scáileáin" href="call_screenshare.html" />
+    <link rel="prev" title="Glaonna" href="call_index.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 35 réamhrá lámhleabhar úsáideora</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Ag baint úsáide as an aip Gníomhaíochta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Comhaid &amp; sioncronú</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Earraí grúpa</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Caint</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="chat_index.html">Comhrá</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conversation_index.html">Comhráite</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="call_index.html">Glaonna</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Ag dul isteach i nglao</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#starting-or-joining-a-call">Glao a thosú nó páirt a ghlacadh ann</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#during-a-call">Le linn glao</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="call_screenshare.html">Comhroinnt scáileáin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="call_views.html">Leagan amach glaonna</a></li>
+<li class="toctree-l3"><a class="reference internal" href="call_transcription.html">Trascríobh agus aistriúchán</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="federation_index.html">Cónaidhm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moderator_index.html">Do mhodhnóirí</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html">Glac páirt i nglao nó i gcomhrá mar aoi</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ag socrú do shainroghanna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Rochtain uilíoch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Ag baint úsáide as fíordheimhniú dhá-fhachtóir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bainistigh brabhsálaithe agus gléasanna nasctha</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Caint</a></li>
+          <li class="breadcrumb-item"><a href="call_index.html">Glaonna</a></li>
+      <li class="breadcrumb-item active">Ag dul isteach i nglao</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/call.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="joining-a-call">
+<h1>Ag dul isteach i nglao<a class="headerlink" href="#joining-a-call" title="Link to this heading"></a></h1>
+<section id="starting-or-joining-a-call">
+<h2>Glao a thosú nó páirt a ghlacadh ann<a class="headerlink" href="#starting-or-joining-a-call" title="Link to this heading"></a></h2>
+<section id="browser-and-talk-desktop-client">
+<h3>Cliant Brabhsálaí agus Deisce Talk<a class="headerlink" href="#browser-and-talk-desktop-client" title="Link to this heading"></a></h3>
+<p>Nuair atá tú mar chuid de chomhrá agus cead agat é sin a dhéanamh, is féidir leat glao a thosú am ar bith trí chliceáil ar <code class="docutils literal notranslate"><span class="pre">Tosaigh</span> <span class="pre">glao</span></code> sa bharra uachtarach. Nuair atá glao ar siúl cheana féin, téigh isteach ann trí chliceáil ar an gcnaipe glas <code class="docutils literal notranslate"><span class="pre">Glac</span> <span class="pre">páirt</span> <span class="pre">sa</span> <span class="pre">ghlao</span></code> sa limistéar comhrá nó sa bharra uachtarach.</p>
+<a class="reference internal image-reference" href="../../_images/join-call.png"><img alt="Talk conversation with a green Join call button" src="../../_images/join-call.png" style="width: 600px;" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Mura bhfuil cead tugtha agat fós don bhrabhsálaí nó don chliant Talk Desktop do mhicreafón agus do cheamara a úsáid, iarrfar ort é sin a dhéanamh nuair a chliceálann tú ar &quot;Tosaigh glao&quot; nó &quot;Glac páirt sa ghlao&quot;. Roghnaigh an micreafón agus an ceamara ar mhaith leat a úsáid agus cliceáil ar &quot;Ceadaigh&quot; chun rochtain a dheonú ar do ghléasanna.</p>
+</div>
+<p>Feicfidh tú <code class="docutils literal notranslate"><span class="pre">Socruithe</span> <span class="pre">meán</span></code>, áit ar féidir leat do thaithí glaonna a shaincheapadh:</p>
+<a class="reference internal image-reference" href="../../_images/media-settings-initial.png"><img alt="Talk media settings dialog before joining a call" src="../../_images/media-settings-initial.png" style="width: 600px;" />
+</a>
+<section id="controlling-audio-and-video">
+<h4>Rialú fuaime agus físe<a class="headerlink" href="#controlling-audio-and-video" title="Link to this heading"></a></h4>
+<p>Bain úsáid as deilbhíní an mhicreafóin agus an cheamara ag bun réamhamharc an fhíseáin chun do mhicreafón a mhúchadh nó a dhímhúchadh agus do cheamara a chumasú nó a dhíchumasú sula dtéann tú isteach.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Mura bhfuil ach ceann amháin nó an dá dheilbhín liath, níl micreafón ná ceamara suiteáilte agat, nó níor thug tú cead don bhrabhsálaí ná don chliant Talk Desktop do mhicreafón ná do cheamara a úsáid. Seiceáil gur thug tú cead don bhrabhsálaí ná don chliant Talk Desktop, agus déan cinnte nach bhfuil do mhicreafón ná do cheamara in úsáid ag feidhmchlár eile.</p>
+</div>
+<p>Ligeann socruithe gléis duit a roghnú cén micreafón agus ceamara is mian leat a úsáid. Tá sé seo úsáideach má tá níos mó ná micreafón nó ceamara amháin ar fáil agat:</p>
+<a class="reference internal image-reference" href="../../_images/media-settings-devices.png"><img alt="Talk media settings showing microphone and camera device selection" src="../../_images/media-settings-devices.png" style="width: 400px;" />
+</a>
+</section>
+<section id="backgrounds">
+<h4>Cúlraí<a class="headerlink" href="#backgrounds" title="Link to this heading"></a></h4>
+<p>Le cúlraí is féidir leat cúlra do fhíseáin a athsholáthar le ceann de na híomhánna réamhshainithe. Is féidir leat d’íomhá féin a uaslódáil freisin nó ceann atá i gComhaid Nextcloud cheana féin a roghnú. Nó is féidir leat an rogha “doiléiriú” a roghnú chun cúlra do fhíseáin bheo a dhoiléiriú.</p>
+<a class="reference internal image-reference" href="../../_images/media-settings-backgrounds.png"><img alt="Talk media settings showing virtual background and blur options for video" src="../../_images/media-settings-backgrounds.png" style="width: 400px;" />
+</a>
+</section>
+<section id="immediately-join-a-call">
+<h4>Glac páirt i nglao láithreach<a class="headerlink" href="#immediately-join-a-call" title="Link to this heading"></a></h4>
+<p>Más mian leat <code class="docutils literal notranslate"><span class="pre">Socruithe</span> <span class="pre">meán</span></code> a scipeáil amach anseo, múch an lasc <code class="docutils literal notranslate"><span class="pre">Seachain</span> <span class="pre">réamhamharc</span> <span class="pre">gléis</span> <span class="pre">sula</span> <span class="pre">dtéann</span> <span class="pre">tú</span> <span class="pre">isteach</span> <span class="pre">i</span> <span class="pre">nglao</span></code> i socruithe an aip. I gcás glaonna amach anseo sa chomhrá seo, glacfaidh tú páirt go díreach, ag scipeáil an dialóg réamhamhairc.</p>
+</section>
+<section id="record-a-call">
+<h4>Glao a thaifeadadh<a class="headerlink" href="#record-a-call" title="Link to this heading"></a></h4>
+<p>Más tusa a thosaigh an glao agus más mian leat é a thaifeadadh, seiceáil an bosca seiceála <code class="docutils literal notranslate"><span class="pre">Tosaigh</span> <span class="pre">ag</span> <span class="pre">taifeadadh</span> <span class="pre">láithreach</span> <span class="pre">leis</span> <span class="pre">an</span> <span class="pre">nglao</span></code>. B’fhéidir nach mbeidh an rogha taifeadta glaonna ar fáil duit, ag brath ar cibé an bhfuil an rogha seo cumasaithe ag riarthóirí do chórais agus cibé an bhfuil cead <code class="docutils literal notranslate"><span class="pre">Modhnóir</span></code> agat don chomhrá. Má tá tú ag dul isteach agus má tá an glao á thaifeadadh, b’fhéidir go mbeadh ort toiliú a thabhairt sula gceadaítear duit dul isteach. Le haghaidh tuilleadh eolais, féach <a class="reference internal" href="call_recording.html#call-recording"><span class="std std-ref">Call recording</span></a>.</p>
+</section>
+<section id="start-the-call">
+<h4>Tosaigh an glao<a class="headerlink" href="#start-the-call" title="Link to this heading"></a></h4>
+<p>Cliceáil an cnaipe <code class="docutils literal notranslate"><span class="pre">Tosaigh</span> <span class="pre">glao</span></code> ag bun <code class="docutils literal notranslate"><span class="pre">Socruithe</span> <span class="pre">meán</span></code> chun fógra a thabhairt do na rannpháirtithe uile sa chomhrá faoin nglao. Mura mian leat fógra a thabhairt do na rannpháirtithe eile, cuir tús le glao ciúin tríd an roghchlár trí phonc a oscailt ar chlé an chnaipe <code class="docutils literal notranslate"><span class="pre">Tosaigh</span> <span class="pre">glao</span></code> agus <code class="docutils literal notranslate"><span class="pre">Glaoigh</span> <span class="pre">gan</span> <span class="pre">fógra</span></code> a roghnú.</p>
+<a class="reference internal image-reference" href="../../_images/media-settings-silent-call.png"><img alt="Talk Call without notification option in media settings" src="../../_images/media-settings-silent-call.png" style="width: 400px;" />
+</a>
+<a class="reference internal image-reference" href="../../_images/media-settings-silent-call-2.png"><img alt="Talk confirmation step for calling without sending a notification" src="../../_images/media-settings-silent-call-2.png" style="width: 400px;" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Is féidir le rannpháirtithe eile fógraí a mhodhnú ar leibhéal gach comhrá, lena n-áirítear an mian leo fógraí glaonna a fháil.</p>
+</div>
+<p>Socrófar do stádas úsáideora go &quot;I nglao&quot; agus taispeánfar emoji boilgeog cainte ar dheilbhín do stádais úsáideora.</p>
+</section>
+</section>
+<section id="mobile-clients">
+<h3>Cliant soghluaiste<a class="headerlink" href="#mobile-clients" title="Link to this heading"></a></h3>
+<p>Nuair atá tú mar chuid de chomhrá agus cead agat é sin a dhéanamh, is féidir leat glao a thosú am ar bith trí thapáil ar an deilbhín <code class="docutils literal notranslate"><span class="pre">Fón</span></code> nó <code class="docutils literal notranslate"><span class="pre">Físeán</span></code> sa bharra uachtarach. Tosaíonn an deilbhín <code class="docutils literal notranslate"><span class="pre">Fón</span></code> glao gutha amháin; tosaíonn an deilbhín <code class="docutils literal notranslate"><span class="pre">Físeán</span></code> glao físe.</p>
+<p>Úsáideann glao gutha micreafón agus cluasán an ghléis, díreach mar a dhéanfadh glao gutháin rialta. Úsáideann glao físe an callaire i mód saorlámha agus cuireann sé do cheamara tosaigh ar siúl de réir réamhshocraithe; is féidir leat é a dhíchumasú am ar bith.</p>
+<p>Má thosaíonn duine eile glao, féadfaidh tú fógra a fháil agus féadfaidh do ghléas glaoch nó creathadh, ag brath ar do shocruithe fógra. Tapáil &quot;Fón&quot; nó &quot;Físeán&quot; chun páirt a ghlacadh, nó tapáil an cnaipe dearg chun diúltú. Má dhiúltaíonn tú, cuirtear an fógra glao ar an ngléas sin ar ceal.</p>
+<p>Is féidir leat do mhicreafón agus do cheamara a rialú (más glao físe atá i gceist) leis na roghanna a thaispeántar ag bun an scáileáin.</p>
+<p>Socrófar do stádas úsáideora go &quot;I nglao&quot; agus taispeánfar boilgeog cainte ar dheilbhín do stádais úsáideora.</p>
+</section>
+</section>
+<section id="during-a-call">
+<h2>Le linn glao<a class="headerlink" href="#during-a-call" title="Link to this heading"></a></h2>
+<p>Tar éis duit páirt a ghlacadh i nglao, feicfidh tú an radharc glaonna. Taispeánann sé fothaí físe na rannpháirtithe uile atá sa ghlao faoi láthair, mar aon le faisnéis agus rialuithe breise.</p>
+<a class="reference internal image-reference" href="../../_images/during-a-call-details.png"><img alt="Talk active call view showing participant video feeds" src="../../_images/during-a-call-details.png" style="width: 400px;" />
+</a>
+<p>Taispeánann an eilimint is faide ar chlé an t-am glaonna atá caite.</p>
+<p>In aice leis, feicfidh tú líon na rannpháirtithe atá páirteach sa ghlao reatha. Trí chliceáil ar an uimhir, osclaítear an barra taoibh ar dheis agus taispeánfar liosta na rannpháirtithe. Liostálfar na rannpháirtithe atá páirteach sa ghlao ar dtús.</p>
+<p>Feicfidh tú am cainte gach rannpháirtí freisin má labhair siad le linn an ghlao:</p>
+<a class="reference internal image-reference" href="../../_images/participant-talk-time.png"><img alt="Talk active call showing talking time indicator for each participant" src="../../_images/participant-talk-time.png" style="width: 400px;" />
+</a>
+<p>Is féidir leat rochtain a fháil ar roghanna agus socruithe glaonna breise ón roghchlár trí phointe sa bharra barr.</p>
+<a class="reference internal image-reference" href="../../_images/media-settings.png"><img alt="Talk in-call three-dot menu for additional settings and options" src="../../_images/media-settings.png" style="width: 300px;" />
+</a>
+<section id="set-up-breakout-rooms">
+<h3>Socraigh seomraí scoite amach<a class="headerlink" href="#set-up-breakout-rooms" title="Link to this heading"></a></h3>
+<p>Le seomraí scoite amach, is féidir leat glao a roinnt ina ghrúpaí níos lú le haghaidh plé níos dírithe. Ag brath ar do cheadanna agus ar an gcaoi a bhfuil do chás cumraithe, b'fhéidir nach mbeidh an rogha seo ar fáil duit. Le haghaidh tuilleadh eolais, féach <span class="xref std std-ref">Seomraí scoite amach</span>.</p>
+</section>
+<section id="download-call-participants-list">
+<h3>Íoslódáil liosta rannpháirtithe glaonna<a class="headerlink" href="#download-call-participants-list" title="Link to this heading"></a></h3>
+<p>Is féidir leat liosta na rannpháirtithe i nglao a íoslódáil ón roghchlár trí phonc sa bharra uachtarach. Íoslódálann sé seo comhad CSV ina bhfuil ainmneacha agus seoltaí ríomhphoist na rannpháirtithe uile.</p>
+<a class="reference internal image-reference" href="../../_images/download-participants-list.png"><img alt="Talk in-call menu showing download participants list option" src="../../_images/download-participants-list.png" style="width: 400px;" />
+</a>
+<p>Tá na colúin seo a leanas sa chomhad CSV:</p>
+<ul class="simple">
+<li><p><strong>Ainm</strong>: Ainm an rannpháirtí.</p></li>
+<li><p><strong>Ríomhphost</strong>: Seoladh ríomhphoist an rannpháirtí.</p></li>
+<li><p><strong>Cineál</strong>: Léiríonn sé seo an úsáideoir cláraithe nó aoi an rannpháirtí.</p></li>
+<li><p><strong>Aitheantóir</strong>: Aitheantóir uathúil don rannpháirtí.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Rialú fuaime agus físe<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Tá rialuithe meán, socruithe leagan amach agus gnéithe eile ar féidir leat a úsáid le linn glao ar fáil sa bharra bun den radharc glaonna.</p>
+<a class="reference internal image-reference" href="../../_images/during-a-call-controls.png"><img alt="Talk active call bottom bar showing media controls and layout settings" src="../../_images/during-a-call-controls.png" style="width: 400px;" />
+</a>
+<p>Use the microphone and camera icons to mute/unmute your microphone and enable/disable your camera.
+You can also use the keyboard shortcuts <kbd class="kbd docutils literal notranslate">M</kbd> to mute/unmute your microphone and <kbd class="kbd docutils literal notranslate">V</kbd> to enable/disable your camera.
+Use <kbd class="kbd docutils literal notranslate">Space</kbd> for push-to-talk: holding space temporarily unmutes you while muted, or temporarily mutes you while unmuted.</p>
+</section>
+<section id="reactions">
+<h3>Imoibrithe<a class="headerlink" href="#reactions" title="Link to this heading"></a></h3>
+<p>Ligeann an cnaipe imoibrithe duit imoibriú emoji a sheoladh chuig gach rannpháirtí sa ghlao.</p>
+<a class="reference internal image-reference" href="../../_images/call-reactions.png"><img alt="Talk active call reactions panel with emoji options" src="../../_images/call-reactions.png" style="width: 400px;" />
+</a>
+<p>Feicfidh gach rannpháirtí an emoji ag ardú ó bhun a scáileáin glaonna. Imíonn an emoji tar éis dhá shoicind.</p>
+<section id="raise-hand">
+<h4>Ardaigh lámh<a class="headerlink" href="#raise-hand" title="Link to this heading"></a></h4>
+<p>Clicking <code class="docutils literal notranslate"><span class="pre">Raise</span> <span class="pre">hand</span></code> will notify moderators and show an icon next to your name. This is also available via the keyboard shortcut <kbd class="kbd docutils literal notranslate">R</kbd>.</p>
+</section>
+<section id="full-screen">
+<h4>Lánscáileán<a class="headerlink" href="#full-screen" title="Link to this heading"></a></h4>
+<p>Resizes your browser window or the Talk Desktop client to full-screen mode.
+Also available via the keyboard shortcut <kbd class="kbd docutils literal notranslate">F</kbd>. Press <kbd class="kbd docutils literal notranslate">Esc</kbd> to return to the regular view.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="call_index.html" class="btn btn-neutral float-left" title="Glaonna" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="call_screenshare.html" class="btn btn-neutral float-right" title="Comhroinnt scáileáin" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 Irish
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ 35
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl class="nc-languages-list">
+        <dt>Teangacha</dt>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ga/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Leaganacha</dt>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              35 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              34 (latest)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33 (stable)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32 (stable)
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

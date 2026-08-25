@@ -1,0 +1,743 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja-JP" data-content_root="./">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>アクティビティアプリの使用 &mdash; Nextcloud 35 User Manual</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/activity.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7442688e"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="AI assistant" href="ai_assistant.html" />
+    <link rel="prev" title="The Nextcloud web interface" href="webinterface.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud 35 ユーザーマニュアル はじめに</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">アクティビティアプリの使用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#viewing-your-activity-stream">アクティビティストリームの表示</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-activities">アクティビティのフィルター</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#activity-in-the-files-sidebar">ファイルのサイドバーでのアクティビティ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rss-feed">RSS フィード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notification-settings">通知設定</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#email-notification-frequency">メール通知の頻度</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#daily-activity-summary">毎日のアクティビティサマリー</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files/index.html">ファイル（Files）と同期</a></li>
+<li class="toctree-l1"><a class="reference internal" href="groupware/index.html">グループウェア</a></li>
+<li class="toctree-l1"><a class="reference internal" href="talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Setting your preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session_management.html">Manage connected browsers and devices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">Nextcloud 35 User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="contents.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">アクティビティアプリの使用</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/activity.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-activity-app">
+<span id="activity"></span><h1>アクティビティアプリの使用<a class="headerlink" href="#using-the-activity-app" title="Link to this heading"></a></h1>
+<p>アクティビティアプリは、Nextcloud で起きたことをすべて記録します。ファイルの変更、共有、カレンダーの更新などのイベントを記録し、何がいつ起きたかを時系列で確認できます。</p>
+<p>アクティビティアプリはデフォルトで有効になっています。</p>
+<figure class="align-default" id="id1">
+<img alt="The Activity stream showing all recent activities." src="../_images/activity-stream-all.png" />
+<figcaption>
+<p><span class="caption-text"><em>すべての最近のアクティビティを表示するアクティビティストリーム</em></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="viewing-your-activity-stream">
+<h2>アクティビティストリームの表示<a class="headerlink" href="#viewing-your-activity-stream" title="Link to this heading"></a></h2>
+<p>アクティビティストリームを表示するには、上部のナビゲーションバーにある <strong>アクティビティ</strong> アイコンをクリックするか、ブラウザで <code class="docutils literal notranslate"><span class="pre">/apps/activity</span></code> にアクセスします。</p>
+<p>ストリームには、日付ごとにグループ化されたすべてのイベントが表示されます。各エントリには、何が起きたか、どのファイルまたはオブジェクトに影響があったか、イベントがいつ起きたかが表示されます。カレンダー、連絡先、Talk などの他のアプリがインストールされている場合、それらのアプリからのエントリもストリームに表示されます。</p>
+<section id="filtering-activities">
+<h3>アクティビティのフィルター<a class="headerlink" href="#filtering-activities" title="Link to this heading"></a></h3>
+<p>左側のサイドバーには、アクティビティストリームを絞り込むフィルターがあります:</p>
+<ul class="simple">
+<li><p><strong>すべてのアクティビティ</strong> はすべてを表示します。</p></li>
+<li><p><strong>自分</strong> は、自分が実行したアクティビティのみを表示します。</p></li>
+<li><p><strong>他のユーザ</strong> は、他のユーザが実行したアクティビティのみを表示します。</p></li>
+<li><p><strong>ファイルの変更</strong> は、ファイルおよびフォルダのイベント（作成、変更、削除、名前の変更、移動）のみを表示します。</p></li>
+</ul>
+<p>Nextcloud インスタンスにインストールされているアプリによっては、追加のフィルターが表示される場合があります（例: <strong>お気に入り</strong>、<strong>カレンダー</strong>、<strong>連絡先</strong>）。</p>
+<figure class="align-default" id="id2">
+<img alt="Activity stream filtered to show only activities you triggered." src="../_images/activity-stream-self.png" />
+<figcaption>
+<p><span class="caption-text"><em>自分のアクティビティのみを表示するようにフィルターされたアクティビティストリーム</em></span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
+<img alt="Activity stream filtered to show file changes only." src="../_images/activity-stream-file-changes.png" />
+<figcaption>
+<p><span class="caption-text"><em>ファイルの変更のみを表示するようにフィルターされたアクティビティストリーム</em></span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="activity-in-the-files-sidebar">
+<h2>ファイルのサイドバーでのアクティビティ<a class="headerlink" href="#activity-in-the-files-sidebar" title="Link to this heading"></a></h2>
+<p>「ファイル」アプリから、特定のファイルまたはフォルダーに関するアクティビティを直接表示することもできます。ファイルを選択し、サイドバーを開いて <strong>アクティビティ</strong> タブをクリックします。作成、変更、共有、タグ付けなど、そのファイルに関連するイベントのみが表示されます。</p>
+<figure class="align-default" id="id4">
+<img alt="The Activity tab in the Files sidebar showing per-file events." src="../_images/activity-sidebar.png" />
+<figcaption>
+<p><span class="caption-text"><em>ファイルごとのイベントを表示する、ファイルのサイドバー内のアクティビティタブ</em></span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="rss-feed">
+<h2>RSS フィード<a class="headerlink" href="#rss-feed" title="Link to this heading"></a></h2>
+<p>アクティビティアプリは、アクティビティストリームを RSS フィードとして提供できるため、任意のフィードリーダーから Nextcloud のアクティビティを追跡できます。</p>
+<p>RSS フィードを有効にするには:</p>
+<ol class="arabic simple">
+<li><p>アクティビティアプリを開きます。</p></li>
+<li><p>左側のサイドバーの下部にある <strong>アクティビティの設定</strong> をクリックします。</p></li>
+<li><p><strong>RSS フィードを有効にする</strong> トグルをオンにします。</p></li>
+<li><p>表示された RSS フィードのリンクをコピーします。</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>RSS フィードのリンクには秘密のトークンが含まれています。認証なしでアクティビティストリームにアクセスできるため、他の人と共有しないでください。</p>
+</div>
+</section>
+<section id="notification-settings">
+<h2>通知設定<a class="headerlink" href="#notification-settings" title="Link to this heading"></a></h2>
+<p>アクティビティの種類ごとに、どのように通知を受け取るかを選択できます。<strong>設定</strong> &gt; <strong>個人</strong> &gt; <strong>通知</strong> に移動して、設定を行います。</p>
+<figure class="align-default" id="id5">
+<img alt="Personal notification settings for the Activity app." src="../_images/activity-settings-personal.png" />
+<figcaption>
+<p><span class="caption-text"><em>アクティビティアプリの個人用通知設定</em></span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>設定はカテゴリー別に整理されています。（例: <strong>ファイル</strong>、<strong>共有</strong>、<strong>カレンダー、連絡先、タスク</strong>）　各アクティビティの種類について、次の通知を受け取るかを選択できます:</p>
+<ul class="simple">
+<li><p><strong>メール</strong> 通知（メール）</p></li>
+<li><p><strong>プッシュ</strong> 通知（モバイルおよびデスクトップ）</p></li>
+</ul>
+<p>各アクティビティの種類について通知を有効または無効にするには、対応するチェックボックスをオンまたはオフにします。</p>
+<section id="email-notification-frequency">
+<h3>メール通知の頻度<a class="headerlink" href="#email-notification-frequency" title="Link to this heading"></a></h3>
+<p>通知マトリックスの下で、メール通知の送信頻度を選択できます:</p>
+<ul class="simple">
+<li><p><strong>できるだけ早く</strong> は、各イベントの直後にメールを送信します。</p></li>
+<li><p><strong>1時間ごと</strong> は通知をまとめて、1時間に1回送信します。</p></li>
+<li><p><strong>毎日</strong> は、1日に1通のメールを送信します。</p></li>
+<li><p><strong>毎週</strong> は、1週間に1通のメールを送信します。</p></li>
+</ul>
+</section>
+<section id="daily-activity-summary">
+<h3>毎日のアクティビティサマリー<a class="headerlink" href="#daily-activity-summary" title="Link to this heading"></a></h3>
+<p>毎朝、前日のアクティビティの概要を記載したサマリーメールを送信する機能を有効にできます。このオプションは、通知頻度の設定の下にある別のトグルとして利用できます:</p>
+<ul class="simple">
+<li><p><strong>毎朝アクティビティのサマリーを送信する</strong> にチェックを入れると有効になります。</p></li>
+</ul>
+<p>毎日のサマリーは、上記のイベントごとの通知とは独立しており、すべてのアクティビティをまとめた便利なダイジェストを提供します。</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="webinterface.html" class="btn btn-neutral float-left" title="The Nextcloud web interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ai_assistant.html" class="btn btn-neutral float-right" title="AI assistant" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 ja-JP
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ 35
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl class="nc-languages-list">
+        <dt>Languages</dt>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              35 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              34 (latest)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33 (stable)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32 (stable)
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

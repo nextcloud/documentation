@@ -1,0 +1,485 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>occ commands &mdash; Nextcloud 35 Developer Manual</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/app_development/commands.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Extending the DAV server" href="dav_extension.html" />
+    <link rel="prev" title="Dependency management" href="dependency_management.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bootstrap.html">Bootstrapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_management.html">Dependency management</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">occ commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#registering-a-command">Registering a command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-command-class">Creating a command class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#multiple-commands-in-one-class">Multiple commands in one class</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#command-naming">Command naming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arguments-and-options">Arguments and options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-input-and-other-helpers">Output, input, and other helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#return-codes">Return codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-commands">Interactive commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dav_extension.html">Extending the DAV server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html">Translation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 35 Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">App development</a></li>
+      <li class="breadcrumb-item active">occ commands</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app_development/commands.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="occ-commands">
+<span id="id1"></span><h1>occ commands<a class="headerlink" href="#occ-commands" title="Link to this heading"></a></h1>
+<p>Nextcloud apps can register custom <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html">occ</a>
+commands that administrators can run from the command line. Commands are plain PHP classes annotated with the
+<code class="docutils literal notranslate"><span class="pre">#[AsCommand]</span></code> attribute from <code class="docutils literal notranslate"><span class="pre">OCP\Console</span></code>. Nextcloud wires the attribute on top of
+<a class="reference external" href="https://symfony.com/doc/current/console.html">Symfony Console</a> for you, so you get argument parsing, bash
+completion, and formatted output without extending a base class.</p>
+<section id="registering-a-command">
+<h2>Registering a command<a class="headerlink" href="#registering-a-command" title="Link to this heading"></a></h2>
+<p>List every command class in <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> under the <code class="docutils literal notranslate"><span class="pre">&lt;commands&gt;</span></code> element:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">appinfo/info.xml</span><a class="headerlink" href="#id2" title="Link to this code"></a></div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;info&gt;</span>
+<span class="w">    </span>...
+<span class="w">    </span><span class="nt">&lt;commands&gt;</span>
+<span class="w">        </span><span class="nt">&lt;command&gt;</span>OCA\MyApp\Command\Greet<span class="nt">&lt;/command&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/commands&gt;</span>
+<span class="nt">&lt;/info&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Nextcloud reads this list at startup and wires each class through the dependency
+injection container, so constructor injection works automatically.</p>
+</section>
+<section id="creating-a-command-class">
+<h2>Creating a command class<a class="headerlink" href="#creating-a-command-class" title="Link to this heading"></a></h2>
+<p>Place command classes in <code class="docutils literal notranslate"><span class="pre">lib/Command/</span></code>. Add a <code class="docutils literal notranslate"><span class="pre">#[AsCommand]</span></code> attribute to the class and implement a single
+<code class="docutils literal notranslate"><span class="pre">__invoke()</span></code> method that runs the command:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">lib/Command/Greet.php</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Command</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\Console\Attribute\Argument</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Console\Attribute\AsCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Console\Attribute\Option</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Console\ExitCode</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Console\IOutput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IUserManager</span><span class="p">;</span>
+
+<span class="p">#[</span><span class="nd">AsCommand</span><span class="p">(</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp:greet&#39;</span><span class="p">,</span>
+    <span class="c1">// this short description is shown when running &quot;occ list&quot;</span>
+    <span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;Print a greeting for a Nextcloud user.&#39;</span><span class="p">,</span>
+    <span class="c1">// this is shown when running the command with the &quot;--help&quot; option</span>
+    <span class="nx">help</span><span class="o">:</span> <span class="s1">&#39;This command prints a greeting for the given Nextcloud user.&#39;</span><span class="p">,</span>
+    <span class="c1">// this allows you to show one or more usage examples (no need to add the command name)</span>
+    <span class="nx">usages</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;bob&#39;</span><span class="p">,</span> <span class="s1">&#39;alice --shout&#39;</span><span class="p">],</span>
+<span class="p">)]</span>
+<span class="k">class</span> <span class="nc">Greet</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">IUserManager</span> <span class="nv">$userManager</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
+        <span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span>
+        <span class="p">#[</span><span class="nd">Argument</span><span class="p">(</span><span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;The username of the user&#39;</span><span class="p">)]</span>
+        <span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span>
+        <span class="p">#[</span><span class="nd">Option</span><span class="p">(</span><span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;Print the greeting in uppercase&#39;</span><span class="p">)]</span>
+        <span class="nx">bool</span> <span class="nv">$shout</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">:</span> <span class="nx">ExitCode</span> <span class="p">{</span>
+        <span class="nv">$user</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userManager</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$userId</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$user</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">writeln</span><span class="p">(</span><span class="s2">&quot;&lt;error&gt;User </span><span class="se">\&quot;</span><span class="si">$userId</span><span class="se">\&quot;</span><span class="s2"> not found.&lt;/error&gt;&quot;</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">ExitCode</span><span class="o">::</span><span class="na">Failure</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$greeting</span> <span class="o">=</span> <span class="s1">&#39;Hello, &#39;</span> <span class="o">.</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getDisplayName</span><span class="p">()</span> <span class="o">.</span> <span class="s1">&#39;!&#39;</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$shout</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$greeting</span> <span class="o">=</span> <span class="nb">strtoupper</span><span class="p">(</span><span class="nv">$greeting</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">writeln</span><span class="p">(</span><span class="nv">$greeting</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">ExitCode</span><span class="o">::</span><span class="na">Success</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>The class itself needs no constructor call and no parent class, the constructor is only used for dependency
+injection.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you need the full Symfony Console API — for example a custom <code class="docutils literal notranslate"><span class="pre">configure()</span></code> step or dynamic shell
+completion — you can still extend <code class="docutils literal notranslate"><span class="pre">OC\Core\Command\Base</span></code> and implement <code class="docutils literal notranslate"><span class="pre">configure()</span></code>/<code class="docutils literal notranslate"><span class="pre">execute()</span></code>
+directly, as commands did before Nextcloud 35. The <code class="docutils literal notranslate"><span class="pre">#[AsCommand]</span></code> style above is recommended for new
+commands because it needs far less boilerplate.</p>
+</div>
+<section id="multiple-commands-in-one-class">
+<h3>Multiple commands in one class<a class="headerlink" href="#multiple-commands-in-one-class" title="Link to this heading"></a></h3>
+<p>To group related commands that share dependencies, put <code class="docutils literal notranslate"><span class="pre">#[AsCommand]</span></code> on individual public methods instead of
+on the class. Nextcloud registers one occ command per attributed method:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">lib/Command/UserCommands.php</span><a class="headerlink" href="#id4" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserCommands</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">IUserManager</span> <span class="nv">$userManager</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="p">#[</span><span class="nd">AsCommand</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp:user:create&#39;</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span>
+        <span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span>
+        <span class="p">#[</span><span class="nd">Argument</span><span class="p">(</span><span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;The username of the user&#39;</span><span class="p">)]</span>
+        <span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">:</span> <span class="nx">ExitCode</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+        <span class="k">return</span> <span class="nx">ExitCode</span><span class="o">::</span><span class="na">Success</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="p">#[</span><span class="nd">AsCommand</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp:user:delete&#39;</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span>
+        <span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span>
+        <span class="p">#[</span><span class="nd">Argument</span><span class="p">(</span><span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;The username of the user&#39;</span><span class="p">)]</span>
+        <span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">:</span> <span class="nx">ExitCode</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+        <span class="k">return</span> <span class="nx">ExitCode</span><span class="o">::</span><span class="na">Success</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Only <code class="docutils literal notranslate"><span class="pre">OCA\MyApp\Command\UserCommands</span></code> needs to be listed in <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code>, both <code class="docutils literal notranslate"><span class="pre">myapp:user:create</span></code>
+and <code class="docutils literal notranslate"><span class="pre">myapp:user:delete</span></code> are registered from it.</p>
+</section>
+</section>
+<section id="command-naming">
+<h2>Command naming<a class="headerlink" href="#command-naming" title="Link to this heading"></a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">appid:command-name</span></code> as the command name. For apps with many commands, group them
+with an extra segment: <code class="docutils literal notranslate"><span class="pre">appid:group:command-name</span></code>. Names must be lowercase and use
+hyphens as word separators.</p>
+</section>
+<section id="arguments-and-options">
+<h2>Arguments and options<a class="headerlink" href="#arguments-and-options" title="Link to this heading"></a></h2>
+<p>Arguments are positional and declared with the <code class="docutils literal notranslate"><span class="pre">#[Argument]</span></code> attribute on a parameter of <code class="docutils literal notranslate"><span class="pre">__invoke()</span></code>.
+Options are prefixed with <code class="docutils literal notranslate"><span class="pre">--</span></code> and declared the same way with <code class="docutils literal notranslate"><span class="pre">#[Option]</span></code>. Both attributes accept a
+<code class="docutils literal notranslate"><span class="pre">description</span></code> (shown in <code class="docutils literal notranslate"><span class="pre">--help</span></code>) and an optional <code class="docutils literal notranslate"><span class="pre">name</span></code>; when <code class="docutils literal notranslate"><span class="pre">name</span></code> is omitted it defaults to the
+parameter’s own name. <code class="docutils literal notranslate"><span class="pre">#[Option]</span></code> also accepts a single-letter <code class="docutils literal notranslate"><span class="pre">shortcut</span></code>, for example <code class="docutils literal notranslate"><span class="pre">shortcut:</span> <span class="pre">'b'</span></code> for
+<code class="docutils literal notranslate"><span class="pre">-b</span></code>.</p>
+<p>The parameter’s type and default value — not the attribute — decide whether the argument or option is required,
+repeatable, or a flag:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter declaration</p></th>
+<th class="head"><p>Behavior</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">$name</span></code></p></td>
+<td><p>Required — the command fails if it is not provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">$name</span> <span class="pre">=</span> <span class="pre">'foo'</span></code></p></td>
+<td><p>Optional, defaults to <code class="docutils literal notranslate"><span class="pre">'foo'</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">?string</span> <span class="pre">$name</span> <span class="pre">=</span> <span class="pre">null</span></code></p></td>
+<td><p>Optional and nullable, defaults to <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">array</span> <span class="pre">$name</span> <span class="pre">=</span> <span class="pre">[]</span></code></p></td>
+<td><p>Repeatable — the value can be passed multiple times and is collected
+into an array. A variadic argument (<code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">...$name</span></code>) behaves the same
+way.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">$name</span> <span class="pre">=</span> <span class="pre">false</span></code></p></td>
+<td><p>Flag (option only) — absent means <code class="docutils literal notranslate"><span class="pre">false</span></code>, present means <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">$name</span> <span class="pre">=</span> <span class="pre">true</span></code></p></td>
+<td><p>Flag (option only) that is on by default; pass <code class="docutils literal notranslate"><span class="pre">--no-name</span></code> to disable
+it.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Since PHP parameter names are camelCase but Nextcloud’s naming convention for options and arguments uses
+lowercase with hyphens, override the default name for such parameters, for example
+<code class="docutils literal notranslate"><span class="pre">#[Option(name:</span> <span class="pre">'object-store')]</span> <span class="pre">?string</span> <span class="pre">$objectStore</span> <span class="pre">=</span> <span class="pre">null</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">bool</span></code> option cannot be nullable when it also has a non-<code class="docutils literal notranslate"><span class="pre">null</span></code> default value — declare it as a plain
+non-nullable <code class="docutils literal notranslate"><span class="pre">bool</span></code> for flags.</p>
+</div>
+<p>The arguments and options handling in Nextcloud covers the common cases of the Symfony Console component.
+Consult <a class="reference external" href="https://symfony.com/doc/current/console/input.html">its documentation</a> for background on how
+Symfony itself models arguments and options.</p>
+</section>
+<section id="output-input-and-other-helpers">
+<h2>Output, input, and other helpers<a class="headerlink" href="#output-input-and-other-helpers" title="Link to this heading"></a></h2>
+<p>Besides <code class="docutils literal notranslate"><span class="pre">#[Argument]</span></code> and <code class="docutils literal notranslate"><span class="pre">#[Option]</span></code> parameters, <code class="docutils literal notranslate"><span class="pre">__invoke()</span></code> can request the following types by
+type-hint alone — no attribute needed, and the parameter order does not matter:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Console\IOutput</span></code>: write output with <code class="docutils literal notranslate"><span class="pre">write()</span></code>/<code class="docutils literal notranslate"><span class="pre">writeln()</span></code>, check the requested verbosity, or
+emit arrays and tables (see below).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Console\IInput</span></code>: read all given arguments and options with <code class="docutils literal notranslate"><span class="pre">getArguments()</span></code>/<code class="docutils literal notranslate"><span class="pre">getOptions()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Console\IQuestionHelper</span></code>: prompt the user for confirmation or input, see <a class="reference internal" href="#occ-commands-interactive"><span class="std std-ref">Interactive commands</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Console\OutputFormat</span></code>: only resolved when <code class="docutils literal notranslate"><span class="pre">supportsOutputFormat:</span> <span class="pre">true</span></code> is set on <code class="docutils literal notranslate"><span class="pre">#[AsCommand]</span></code>;
+tells you whether the administrator requested plain text or JSON output.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Set <code class="docutils literal notranslate"><span class="pre">supportsOutputFormat:</span> <span class="pre">true</span></code> on <code class="docutils literal notranslate"><span class="pre">#[AsCommand]</span></code> to let administrators request machine-readable output
+with <code class="docutils literal notranslate"><span class="pre">--output=json</span></code> or <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code>. Use <code class="docutils literal notranslate"><span class="pre">IOutput::writeArrayInOutputFormat()</span></code> or
+<code class="docutils literal notranslate"><span class="pre">IOutput::writeTableInOutputFormat()</span></code> to emit data that automatically respects the requested format.</p>
+</div>
+</section>
+<section id="return-codes">
+<h2>Return codes<a class="headerlink" href="#return-codes" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">__invoke()</span></code> (or an attributed method) must return an <code class="docutils literal notranslate"><span class="pre">OCP\Console\ExitCode</span></code> case, or a plain integer:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ExitCode::Success</span></code> (<code class="docutils literal notranslate"><span class="pre">0</span></code>): command completed successfully.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExitCode::Failure</span></code> (<code class="docutils literal notranslate"><span class="pre">1</span></code>): command encountered an error.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExitCode::Invalid</span></code> (<code class="docutils literal notranslate"><span class="pre">2</span></code>): command was called with invalid input.</p></li>
+</ul>
+<p>Returning the enum case is recommended; declare the method’s return type as <code class="docutils literal notranslate"><span class="pre">ExitCode</span></code>.</p>
+</section>
+<section id="interactive-commands">
+<span id="occ-commands-interactive"></span><h2>Interactive commands<a class="headerlink" href="#interactive-commands" title="Link to this heading"></a></h2>
+<p>Commands can ask for confirmation or prompt for values using Symfony’s
+<a class="reference external" href="https://symfony.com/doc/current/components/console/helpers/questionhelper.html">question helper</a>. Request an
+<code class="docutils literal notranslate"><span class="pre">OCP\Console\IQuestionHelper</span></code> as a parameter of <code class="docutils literal notranslate"><span class="pre">__invoke()</span></code>, the same way as <code class="docutils literal notranslate"><span class="pre">IOutput</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">OCP\Console\ExitCode</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Console\IOutput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Console\IQuestionHelper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Question\ConfirmationQuestion</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Greet</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
+        <span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span>
+        <span class="nx">IQuestionHelper</span> <span class="nv">$questionHelper</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">:</span> <span class="nx">ExitCode</span> <span class="p">{</span>
+        <span class="nv">$question</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ConfirmationQuestion</span><span class="p">(</span><span class="s1">&#39;Are you sure? (y/n) &#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$questionHelper</span><span class="o">-&gt;</span><span class="na">ask</span><span class="p">(</span><span class="nv">$question</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">writeln</span><span class="p">(</span><span class="s1">&#39;Aborted.&#39;</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">ExitCode</span><span class="o">::</span><span class="na">Failure</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// ...</span>
+        <span class="k">return</span> <span class="nx">ExitCode</span><span class="o">::</span><span class="na">Success</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When occ runs non-interactively (e.g. from a cron job), the question helper returns the question’s default
+value instead of prompting. Choose a safe default, or add <code class="docutils literal notranslate"><span class="pre">--yes</span></code>/<code class="docutils literal notranslate"><span class="pre">--no</span></code> options so administrators can
+automate the command.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dependency_management.html" class="btn btn-neutral float-left" title="Dependency management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dav_extension.html" class="btn btn-neutral float-right" title="Extending the DAV server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Aug 25, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-dev">
+      ☁️ 35
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-dev" class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+          >
+            35 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            34 (latest)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/33/developer_manual"
+             
+          >
+            33 (stable)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32 (stable)
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

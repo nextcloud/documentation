@@ -1,0 +1,745 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ga" data-content_root="./">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ag baint úsáide as an aip Gníomhaíochta &mdash; Nextcloud 35 User Manual</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/activity.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d9c2735f"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="AI assistant" href="ai_assistant.html" />
+    <link rel="prev" title="The Nextcloud web interface" href="webinterface.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud 35 réamhrá lámhleabhar úsáideora</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Ag baint úsáide as an aip Gníomhaíochta</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#viewing-your-activity-stream">Ag féachaint ar do shruth gníomhaíochta</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-activities">Gníomhaíochtaí scagtha</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#activity-in-the-files-sidebar">Gníomhaíocht sa bharra taoibh Comhad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rss-feed">Fotha RSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notification-settings">Socruithe fógra</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#email-notification-frequency">Minicíocht fógra ríomhphoist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#daily-activity-summary">Achoimre ar ghníomhaíocht laethúil</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files/index.html">Comhaid &amp; sioncronú</a></li>
+<li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Earraí grúpa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="talk/index.html">Caint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Ag socrú do shainroghanna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="universal_access.html">Rochtain uilíoch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_2fa.html">Ag baint úsáide as fíordheimhniú dhá-fhachtóir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session_management.html">Bainistigh brabhsálaithe agus gléasanna nasctha</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">Nextcloud 35 User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="contents.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Ag baint úsáide as an aip Gníomhaíochta</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/activity.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-activity-app">
+<span id="activity"></span><h1>Ag baint úsáide as an aip Gníomhaíochta<a class="headerlink" href="#using-the-activity-app" title="Link to this heading"></a></h1>
+<p>Coinníonn an aip Gníomhaíochta súil ar gach rud a tharlaíonn i do Nextcloud. Taifeadann sé imeachtaí ar nós athruithe comhad, comhroinnt, nuashonruithe féilire, agus tuilleadh, ag tabhairt forbhreathnú croineolaíoch duit ar a tharla agus cathain.</p>
+<p>Tá an aip Gníomhaíochta cumasaithe de réir réamhshocraithe.</p>
+<figure class="align-default" id="id1">
+<img alt="The Activity stream showing all recent activities." src="../_images/activity-stream-all.png" />
+<figcaption>
+<p><span class="caption-text"><em>An sruth Gníomhaíochta a thaispeánann na gníomhaíochtaí le déanaí go léir.</em></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="viewing-your-activity-stream">
+<h2>Ag féachaint ar do shruth gníomhaíochta<a class="headerlink" href="#viewing-your-activity-stream" title="Link to this heading"></a></h2>
+<p>Chun do shruth gníomhaíochta a fheiceáil, cliceáil ar an deilbhín <strong>Gníomhaíocht</strong> sa bharra nascleanúna uachtarach nó téigh chuig <code class="docutils literal notranslate"><span class="pre">/apps/activity</span></code> i do bhrabhsálaí.</p>
+<p>Taispeánann an sruth na himeachtaí go léir grúpáilte de réir lae. Taispeánann gach iontráil cad a tharla, cén comhad nó réad a raibh tionchar air, agus cé chomh fada ó shin a tharla an teagmhas. Feictear iontrálacha ó aipeanna eile ar nós Féilire, Teagmhálaithe, nó Talk sa sruth freisin má tá na haipeanna sin suiteáilte.</p>
+<section id="filtering-activities">
+<h3>Gníomhaíochtaí scagtha<a class="headerlink" href="#filtering-activities" title="Link to this heading"></a></h3>
+<p>Cuireann an taobhbharra clé scagairí ar fáil chun an sruth gníomhaíochta a chúngú:</p>
+<ul class="simple">
+<li><p>Taispeánann <strong>Gach gníomhaíocht</strong> gach rud.</p></li>
+<li><p>Ní thaispeánann <strong>Tusa</strong> ach gníomhaíochtaí a spreag tú féin.</p></li>
+<li><p>Ní thaispeánann <strong>Ó dhaoine eile</strong> ach gníomhaíochtaí arna spreagadh ag úsáideoirí eile.</p></li>
+<li><p>Ní thaispeánann <strong>Athruithe comhaid</strong> ach imeachtaí comhad agus fillteán (cruthú, modhnú, scriosadh, athainmniú, bogadh).</p></li>
+</ul>
+<p>D’fhéadfadh scagairí breise teacht chun cinn ag brath ar na haipeanna atá suiteáilte ar d’eispéireas Nextcloud (m.sh. <strong>Is Fearr Liom</strong>, <strong>Féilire</strong>, <strong>Teagmhálaithe</strong>).</p>
+<figure class="align-default" id="id2">
+<img alt="Activity stream filtered to show only activities you triggered." src="../_images/activity-stream-self.png" />
+<figcaption>
+<p><span class="caption-text"><em>Scagadh an sruth gníomhaíochta chun do ghníomhaíochtaí féin amháin a thaispeáint.</em></span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
+<img alt="Activity stream filtered to show file changes only." src="../_images/activity-stream-file-changes.png" />
+<figcaption>
+<p><span class="caption-text"><em>Sruth na gníomhaíochta scagtha chun athruithe comhaid amháin a fheiceáil.</em></span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="activity-in-the-files-sidebar">
+<h2>Gníomhaíocht sa bharra taoibh Comhad<a class="headerlink" href="#activity-in-the-files-sidebar" title="Link to this heading"></a></h2>
+<p>Is féidir leat féachaint ar ghníomhaíochtaí le haghaidh comhaid nó fillteáin ar leith go díreach ón aip Comhad freisin. Roghnaigh comhad, oscail an barra taoibh agus cliceáil ar an táb <strong>Gníomhaíocht</strong>. Ní thaispeánann sé seo ach na himeachtaí a bhaineann leis an gcomhad sin, amhail cathain a cruthaíodh, a modhnaíodh, a roinneadh nó a clibeáladh é.</p>
+<figure class="align-default" id="id4">
+<img alt="The Activity tab in the Files sidebar showing per-file events." src="../_images/activity-sidebar.png" />
+<figcaption>
+<p><span class="caption-text"><em>An cluaisín Gníomhaíochta sa bharra taoibh Comhad a thaispeánann imeachtaí in aghaidh an chomhaid.</em></span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="rss-feed">
+<h2>Fotha RSS<a class="headerlink" href="#rss-feed" title="Link to this heading"></a></h2>
+<p>Is féidir leis an aip Gníomhaíochta do shruth gníomhaíochta a sholáthar mar bheatha RSS, rud a ligeann duit do ghníomhaíocht Nextcloud a leanúint ó aon léitheoir beatha.</p>
+<p>Chun an fotha RSS a chumasú:</p>
+<ol class="arabic simple">
+<li><p>Oscail an aip Gníomhaíochta.</p></li>
+<li><p>Cliceáil <strong>Socruithe gníomhaíochta</strong> ag bun an bharra taoibh chlé.</p></li>
+<li><p>Cumasaigh an lascthach <strong>Cumasaigh fotha RSS</strong>.</p></li>
+<li><p>Cóipeáil an nasc chuig an bhfotha RSS a thaispeántar.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tá comhartha rúnda sa nasc chuig an bhfotha RSS. Ná roinn le daoine eile é, mar go dtugann sé rochtain neamhúdaraithe ar do shruth gníomhaíochta.</p>
+</div>
+</section>
+<section id="notification-settings">
+<h2>Socruithe fógra<a class="headerlink" href="#notification-settings" title="Link to this heading"></a></h2>
+<p>Is féidir leat a roghnú conas is mian leat fógra a fháil faoi chineálacha éagsúla gníomhaíochtaí. Téigh go <strong>Socruithe</strong> &gt; <strong>Pearsanta</strong> &gt; <strong>Fógraí</strong> chun do chuid sainroghanna a chumrú.</p>
+<figure class="align-default" id="id5">
+<img alt="Personal notification settings for the Activity app." src="../_images/activity-settings-personal.png" />
+<figcaption>
+<p><span class="caption-text"><em>Socruithe fógra pearsanta don aip Gníomhaíochta.</em></span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Tá na socruithe eagraithe de réir catagóire (m.sh. <strong>Comhaid</strong>, <strong>Comhroinnt</strong>, <strong>Féilire, teagmhálacha agus tascanna</strong>). Maidir le gach cineál gníomhaíochta is féidir leat a roghnú na nithe seo a leanas a fháil:</p>
+<ul class="simple">
+<li><p>Fógraí <strong>Post</strong> (ríomhphost)</p></li>
+<li><p>Fógraí <strong>Brú</strong> (soghluaiste agus deisce)</p></li>
+</ul>
+<p>Seiceáil nó díthiceáil na boscaí comhfhreagracha chun fógraí a chumasú nó a dhíchumasú do gach cineál gníomhaíochta.</p>
+<section id="email-notification-frequency">
+<h3>Minicíocht fógra ríomhphoist<a class="headerlink" href="#email-notification-frequency" title="Link to this heading"></a></h3>
+<p>Faoin maitrís fógraí is féidir leat a roghnú cé chomh minic a sheolfar fógraí ríomhphoist:</p>
+<ul class="simple">
+<li><p><strong>A luaithe is féidir</strong> seolann siad ríomhphost go gairid i ndiaidh gach imeachta.</p></li>
+<li><p>Déanann <strong>fógraí uair an chloig</strong> a bhaisc agus a sheoladh uair san uair.</p></li>
+<li><p>Seolann <strong>gach lá</strong> ríomhphost amháin in aghaidh an lae.</p></li>
+<li><p>Seolann <strong>Seachtainiúil</strong> ríomhphost amháin in aghaidh na seachtaine.</p></li>
+</ul>
+</section>
+<section id="daily-activity-summary">
+<h3>Achoimre ar ghníomhaíocht laethúil<a class="headerlink" href="#daily-activity-summary" title="Link to this heading"></a></h3>
+<p>Is féidir leat ríomhphost achoimre laethúil a chumasú a sheoltar gach maidin ina bhfuil forbhreathnú ar ghníomhaíochtaí an lae roimhe sin. Tá an rogha seo ar fáil mar lasc ar leithligh faoin socrú minicíochta fógraí:</p>
+<ul class="simple">
+<li><p>Seiceáil <strong>Seol achoimre ar ghníomhaíocht laethúil ar maidin</strong> chun é a chumasú.</p></li>
+</ul>
+<p>Tá an achoimre laethúil neamhspleách ar na fógraí in aghaidh an imeachta thuas agus cuireann sé achoimre áisiúil ar fáil ar an ngníomhaíocht go léir.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="webinterface.html" class="btn btn-neutral float-left" title="The Nextcloud web interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ai_assistant.html" class="btn btn-neutral float-right" title="AI assistant" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 Irish
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ 35
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl class="nc-languages-list">
+        <dt>Teangacha</dt>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ga/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Leaganacha</dt>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              35 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              34 (latest)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33 (stable)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32 (stable)
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

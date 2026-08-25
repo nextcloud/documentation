@@ -1,0 +1,805 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="sv" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samtal &mdash; Nextcloud 35 User Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/talk/conversations.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=cf80ac52"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=55d7b627"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Sök" href="../search.html" />
+    <link rel="next" title="Öppna samtal" href="open_conversations.html" />
+    <link rel="prev" title="Samtal" href="conversation_index.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Sök i dokumentationen</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Sök i dokumentationen"
+             aria-label="Sök i dokumentationen" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduktion till användarhandboken för Nextcloud 35</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Använda appen Aktivitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Filer och synkronisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Grupprogram</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Talk</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="chat_index.html">Chatt</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="conversation_index.html">Samtal</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Samtal</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#private-one-to-one-conversations">1. Privata samtal (en-till-en)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#group-conversations">2. Gruppsamtal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#note-to-self">3. Anteckning till mig själv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#disposable-conversations">4. Tillfälliga samtal</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="open_conversations.html">Öppna samtal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appearance.html">Utseende</a></li>
+<li class="toctree-l3"><a class="reference internal" href="files_integration.html">Filerintegration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="calendar_integration.html">Kalenderintegrering med Talk</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="call_index.html">Samtal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federation_index.html">Federering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moderator_index.html">För moderatorer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html">Ansluta till ett samtal eller en chatt som gäst</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Hantera dina inställningar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universell åtkomst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Använda tvåfaktorsautentisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Hantera anslutna webbläsare och enheter</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Talk</a></li>
+          <li class="breadcrumb-item"><a href="conversation_index.html">Samtal</a></li>
+      <li class="breadcrumb-item active">Samtal</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/conversations.rst" class="fa fa-github"> Editera på GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="conversations">
+<h1>Samtal<a class="headerlink" href="#conversations" title="Link to this heading"></a></h1>
+<p>Chattar och samtal äger rum i samtal. Du kan skapa hur många samtal som helst. Det finns olika typer av samtal:</p>
+<section id="private-one-to-one-conversations">
+<h2>1. Privata samtal (en-till-en)<a class="headerlink" href="#private-one-to-one-conversations" title="Link to this heading"></a></h2>
+<p>Här kan du chatta eller ringa privat med en annan Talk-användare.</p>
+<p>I innehållssidofältet finns ytterligare information om personen du chattar med, exempelvis e-postadress, telefonnummer och andra uppgifter som personen har delat i sin profil.</p>
+<a class="reference internal image-reference" href="../../_images/one-to-one-right-sidebar.png"><img alt="Talk right sidebar showing contact information for a one-to-one conversation" src="../../_images/one-to-one-right-sidebar.png" style="width: 300px;" />
+</a>
+<p>Ingen annan än du och den andra personen kan se samtalet eller ansluta till ett samtal i det. Du kan utöka ett pågående samtal till ett nytt gruppsamtal genom att lägga till fler personer. Samtalet fortsätter där utan avbrott.</p>
+<a class="reference internal image-reference" href="../../_images/one-to-one-extend.png"><img alt="Talk dialog to extend a one-to-one call by adding more participants to a group conversation" src="../../_images/one-to-one-extend.png" style="width: 300px;" />
+</a>
+<p>Om en användare inte är tillgänglig och har angett statusen <strong>frånvarande</strong> i <code class="docutils literal notranslate"><span class="pre">Personliga</span> <span class="pre">inställningar</span> <span class="pre">&gt;</span> <span class="pre">Tillgänglighet</span></code> visas ytterligare information i samtalet, exempelvis en angiven beskrivning, frånvaroperiod och ersättare.</p>
+<a class="reference internal image-reference" href="../../_images/one-to-one-out-of-office.png"><img alt="Talk showing an out-of-office status message for a user in a one-to-one conversation" src="../../_images/one-to-one-out-of-office.png" style="width: 500px;" />
+</a>
+</section>
+<section id="group-conversations">
+<h2>2. Gruppsamtal<a class="headerlink" href="#group-conversations" title="Link to this heading"></a></h2>
+<p>Ett gruppsamtal kan innehålla hur många personer som helst. Du kan lägga till interna användare, e-postgäster, grupper eller team när gruppsamtalet skapas eller senare via fliken <code class="docutils literal notranslate"><span class="pre">Deltagare</span></code>.</p>
+<p>Ett gruppsamtal kan delas med en offentlig länk så att gäster kan ansluta till chatten och samtalet. Det kan även öppnas för registrerade användare, eller användare från appen ”Gäster”, så att de kan hitta och ansluta till samtalet.</p>
+<a class="reference internal image-reference" href="../../_images/group-public-settings.png"><img alt="Talk conversation settings dialog for group and public access options" src="../../_images/group-public-settings.png" style="width: 400px;" />
+</a>
+</section>
+<section id="note-to-self">
+<h2>3. Anteckning till mig själv<a class="headerlink" href="#note-to-self" title="Link to this heading"></a></h2>
+<p>Det här är ett särskilt samtal med dig själv. Meddelanden här har ingen tidsgräns för redigering eller borttagning. Du kan använda det för att:</p>
+<ul class="simple">
+<li><p><strong>Göra anteckningar</strong>: skriv ned idéer, påminnelser eller viktig information som du vill ha nära till hands.</p></li>
+<li><p><strong>Skapa att-göra-listor</strong>: använd Markdown-syntax för att skapa checklistor över uppgifter som du behöver slutföra.</p></li>
+<li><p><strong>Vidarebefordra meddelanden från andra chattar</strong>: använd meddelandemenyn för att vidarebefordra viktiga meddelanden från andra samtal till Anteckning till mig själv.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/note-to-self.png"><img alt="Talk note-to-self personal conversation for saving messages" src="../../_images/note-to-self.png" style="width: 500px;" />
+</a>
+</section>
+<section id="disposable-conversations">
+<h2>4. Tillfälliga samtal<a class="headerlink" href="#disposable-conversations" title="Link to this heading"></a></h2>
+<p>Dessa samtal används i vissa särskilda situationer och finns bara under en begränsad tid. Bevarandetiden kan konfigureras av instansadministratören:</p>
+<ul class="simple">
+<li><p><strong>Snabbmöten</strong>: dessa samtal kan skapas för snabba, spontana möten. De kan startas direkt från Talk-instrumentpanelen.</p></li>
+<li><p><strong>Händelsesamtal</strong>: dessa skapas när de anges som plats för en händelse i appen Kalender.</p></li>
+<li><p><strong>Telefonsamtal</strong>: dessa är avsedda för inkommande och utgående SIP-samtal (kräver en SIP-gateway).</p></li>
+<li><p><strong>Videoverifiering</strong>: dessa skapas när någon försöker öppna en offentlig länk som är lösenordsskyddad med videoverifiering. Samtalet tas bort omedelbart när videosamtalet avslutas.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/instant-meeting-dispose.png"><img alt="Talk instant meeting with option to dispose after use" src="../../_images/instant-meeting-dispose.png" style="width: 500px;" />
+</a>
+<section id="talk-dashboard">
+<h3>Talk-instrumentpanelen<a class="headerlink" href="#talk-dashboard" title="Link to this heading"></a></h3>
+<p>Talk-instrumentpanelen är den centrala platsen för att hantera och öppna dina samtal. Den ger en översikt över:</p>
+<ul class="simple">
+<li><p>Olästa omnämnanden och meddelanden i privata chattar;</p></li>
+<li><p>Meddelandepåminnelser som har schemalagts för senare;</p></li>
+<li><p>Schemalagda möten med händelseinformation och genvägsknappar för att ansluta till dem;</p></li>
+<li><p>Snabbåtgärder för att skapa nya samtal, ansluta till öppna samtal eller snabbt kontrollera dina medieenheter.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/talk-dashboard.png"><img alt="Talk dashboard showing recent conversations and shortcut actions" src="../../_images/talk-dashboard.png" style="width: 600px;" />
+</a>
+</section>
+<section id="creating-a-conversation">
+<h3>Skapa ett samtal<a class="headerlink" href="#creating-a-conversation" title="Link to this heading"></a></h3>
+<p>Du kan skapa en privat chatt (en-till-en) genom att söka efter namnet på en användare, grupp eller ett team och klicka på det. För en enskild användare skapas samtalet omedelbart och du kan börja chatta. För en grupp eller ett team kan du välja namn och inställningar innan du skapar samtalet och lägger till deltagarna.</p>
+<a class="reference internal image-reference" href="../../_images/chat-with-one-user.png"><img alt="Talk search dialog to start a private chat with a user" src="../../_images/chat-with-one-user.png" style="width: 400px;" />
+</a>
+<p>Skapa ett anpassat gruppsamtal genom att klicka på knappen bredvid sökfältet och filterknappen och sedan på <code class="docutils literal notranslate"><span class="pre">Skapa</span> <span class="pre">ett</span> <span class="pre">nytt</span> <span class="pre">samtal</span></code>.</p>
+<a class="reference internal image-reference" href="../../_images/create-new-conversation.png"><img alt="Talk button to create a new group conversation" src="../../_images/create-new-conversation.png" style="width: 400px;" />
+</a>
+<p>Du kan sedan ange ett namn och en beskrivning för samtalet, välja en avatar (ett uppladdat foto eller en emoji) och bestämma om externa användare ska kunna ansluta samt om andra användare på servern ska kunna se och ansluta till samtalet.</p>
+<a class="reference internal image-reference" href="../../_images/creating-open-conversation.png"><img alt="Talk new conversation setup dialog for name, description, and access type" src="../../_images/creating-open-conversation.png" style="width: 500px;" />
+</a>
+<p>I det andra steget lägger du till deltagare och slutför skapandet av samtalet.</p>
+<a class="reference internal image-reference" href="../../_images/add-participants.png"><img alt="Talk participant selection step when creating a new conversation" src="../../_images/add-participants.png" style="width: 500px;" />
+</a>
+<p>När du har bekräftat omdirigeras du till det nya samtalet och kan börja kommunicera direkt.</p>
+<a class="reference internal image-reference" href="../../_images/new-room.png"><img alt="Talk empty new conversation ready for chatting" src="../../_images/new-room.png" style="width: 700px;" />
+</a>
+</section>
+<section id="filter-your-conversations">
+<h3>Filtrera dina samtal<a class="headerlink" href="#filter-your-conversations" title="Link to this heading"></a></h3>
+<p>Du kan filtrera samtalen med filterknappen bredvid sökfältet. Det finns flera filteralternativ: 1. <strong>Olästa omnämnanden</strong>: visa olästa privata samtal eller gruppsamtal där du har omnämnts. 2. <strong>Olästa meddelanden</strong>: visa olästa meddelanden i alla samtal som du deltar i. 3. <strong>Händelsesamtal</strong>: visa alla samtal som har skapats för kommande eller tidigare händelser.</p>
+<a class="reference internal image-reference" href="../../_images/filters-menu.png"><img alt="Talk conversation list filter menu" src="../../_images/filters-menu.png" style="width: 400px;" />
+</a>
+<p>Du kan sedan rensa filtret från filtermenyn.</p>
+<a class="reference internal image-reference" href="../../_images/clear-filter.png"><img alt="Talk conversation list with active filter and clear filter option" src="../../_images/clear-filter.png" style="width: 400px;" />
+</a>
+</section>
+<section id="archive-conversations">
+<h3>Arkivera samtal<a class="headerlink" href="#archive-conversations" title="Link to this heading"></a></h3>
+<p>Du kan arkivera samtal som du inte längre behöver se i den huvudsakliga samtalslistan. Ett arkiverat samtal flyttas till avsnittet <code class="docutils literal notranslate"><span class="pre">Arkiverade</span> <span class="pre">samtal</span></code>. Det visas inte i den huvudsakliga samtalslistan, men följer fortfarande den aviseringsnivå som har angetts i dess inställningar.</p>
+<a class="reference internal image-reference" href="../../_images/archived-conversations-list.png"><img alt="Talk list of archived conversations" src="../../_images/archived-conversations-list.png" style="width: 400px;" />
+</a>
+<p>Listan kan öppnas med knappen längst ned i navigeringsfältet.</p>
+<a class="reference internal image-reference" href="../../_images/archived-conversations-button.png"><img alt="Talk navigation bar showing the archived conversations button" src="../../_images/archived-conversations-button.png" style="width: 400px;" />
+</a>
+</section>
+<section id="managing-a-conversation">
+<h3>Hantera ett samtal<a class="headerlink" href="#managing-a-conversation" title="Link to this heading"></a></h3>
+<p>Du är alltid moderator i ett nytt samtal som du skapar. I deltagarlistan kan du använda menyn <code class="docutils literal notranslate"><span class="pre">...</span></code> till höger om användarnamnet för att befordra andra deltagare till moderatorer, tilldela anpassade behörigheter eller ta bort dem från samtalet.</p>
+<p>Om du ändrar behörigheterna för en användare som har anslutit till ett offentligt samtal läggs användaren även till permanent i samtalet.</p>
+<a class="reference internal image-reference" href="../../_images/participant-menu.png"><img alt="Talk participant menu showing permission and moderation options" src="../../_images/participant-menu.png" style="width: 400px;" />
+</a>
+<p>Moderatorer kan konfigurera samtalet. Öppna menyn <code class="docutils literal notranslate"><span class="pre">...</span></code> för samtalet i det övre fältet och välj <code class="docutils literal notranslate"><span class="pre">Samtalsinställningar</span></code> för att öppna inställningarna.</p>
+<a class="reference internal image-reference" href="../../_images/open-settings.png"><img alt="Talk conversation menu with Conversation settings option" src="../../_images/open-settings.png" style="width: 500px;" />
+</a>
+<p>Här kan du bland annat konfigurera beskrivningen, gäståtkomsten och om samtalet ska vara synligt för andra på servern.</p>
+<a class="reference internal image-reference" href="../../_images/conversation-settings-dialog.png"><img alt="Talk conversation settings dialog showing description and access configuration" src="../../_images/conversation-settings-dialog.png" style="width: 600px;" />
+</a>
+</section>
+<section id="ban-participants">
+<h3>Stänga av deltagare<a class="headerlink" href="#ban-participants" title="Link to this heading"></a></h3>
+<p>För att hålla diskussionerna trygga och under kontroll kan moderatorer stänga av deltagare från samtal. Det gäller både interna användare och gäster. För gäster spärras även IP-adressen.</p>
+<p>Markera användaren eller gästen i deltagarlistan och klicka på <code class="docutils literal notranslate"><span class="pre">Ta</span> <span class="pre">bort</span> <span class="pre">deltagare</span></code>.</p>
+<a class="reference internal image-reference" href="../../_images/ban-participant.png"><img alt="Talk participant menu with Remove participant option" src="../../_images/ban-participant.png" style="width: 300px;" />
+</a>
+<p>Aktivera kryssrutan <code class="docutils literal notranslate"><span class="pre">Stäng</span> <span class="pre">även</span> <span class="pre">av</span> <span class="pre">från</span> <span class="pre">det</span> <span class="pre">här</span> <span class="pre">samtalet</span></code> och ange orsaken till avstängningen. Den avstängda användaren tas bort och hindras från att ansluta igen.</p>
+<a class="reference internal image-reference" href="../../_images/ban-participant-dialog.png"><img alt="Talk dialog to ban a participant with a reason field" src="../../_images/ban-participant-dialog.png" style="width: 400px;" />
+</a>
+<p>Listan över avstängda användare finns senare i avsnittet <code class="docutils literal notranslate"><span class="pre">Moderering</span></code> i samtalsinställningarna. Där kan du se orsaken till avstängningen och häva den vid behov.</p>
+<a class="reference internal image-reference" href="../../_images/ban-participant-list.png"><img alt="Talk list of banned participants with reasons and revert options" src="../../_images/ban-participant-list.png" style="width: 400px;" />
+</a>
+</section>
+<section id="messages-expiration">
+<h3>Meddelandens utgångstid<a class="headerlink" href="#messages-expiration" title="Link to this heading"></a></h3>
+<p>En moderator kan konfigurera meddelandenas utgångstid under <code class="docutils literal notranslate"><span class="pre">Samtalsinställningar</span></code> i avsnittet <code class="docutils literal notranslate"><span class="pre">Moderering</span></code>. När ett meddelande når sin utgångstid tas det automatiskt bort från samtalet. De tillgängliga tiderna är 1 timme, 8 timmar, 1 dag, 1 vecka, 4 veckor eller aldrig, vilket är standardinställningen.</p>
+<a class="reference internal image-reference" href="../../_images/messages-expiration.png"><img alt="Talk conversation settings showing message expiration duration options" src="../../_images/messages-expiration.png" style="width: 500px;" />
+</a>
+</section>
+<section id="notifications-and-privacy">
+<h3>Aviseringar och integritet<a class="headerlink" href="#notifications-and-privacy" title="Link to this heading"></a></h3>
+<p>Som standard aviserar Nextcloud Talk dig om:</p>
+<ul class="simple">
+<li><p>Nya meddelanden i privata samtal;</p></li>
+<li><p>Svar på meddelanden som du har skickat;</p></li>
+<li><p>Meddelanden där du eller en grupp eller ett team som du tillhör omnämns;</p></li>
+<li><p>Startade samtal i konversationer som du deltar i.</p></li>
+</ul>
+<p>Du kan ändra detta beteende i samtalsinställningarna. Dessutom kan du konfigurera:</p>
+<ul class="simple">
+<li><p><strong>Important conversations</strong>: you will be always notified about new messages, even if you are in ”Do Not Disturb” mode;</p></li>
+<li><p><strong>Känsliga samtal</strong>: meddelandenas innehåll visas inte i samtalslistan och döljs i aviseringar.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/conversation-notifications.png"><img alt="Talk conversation notification settings panel" src="../../_images/conversation-notifications.png" style="width: 300px;" />
+</a>
+<p>För större kontroll över din integritet kan du även konfigurera synligheten för indikatorerna för skrivaktivitet och läskvitton i <code class="docutils literal notranslate"><span class="pre">Talk-inställningar</span></code>:</p>
+<a class="reference internal image-reference" href="../../_images/privacy-settings.png"><img alt="Talk privacy settings for controlling conversation visibility" src="../../_images/privacy-settings.png" style="width: 600px;" />
+</a>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="conversation_index.html" class="btn btn-neutral float-left" title="Samtal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Tillbaka</a>
+        <a href="open_conversations.html" class="btn btn-neutral float-right" title="Öppna samtal" accesskey="n" rel="next">Nästa <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 Swedish
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ 35
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl class="nc-languages-list">
+        <dt>Språk</dt>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sv/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versioner</dt>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              35 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              34 (latest)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33 (stable)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32 (stable)
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
