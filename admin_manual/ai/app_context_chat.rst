@@ -107,7 +107,7 @@ Listed below are the major parts of the system that can be scaled independently 
       The embedding model cannot be changed after installing the app. To use a different embedding model or service, you
       will need to do a full uninstall (removing all data of the ExApp) and reinstall the ``context_chat_backend`` ExApp
       with the new environment variables and an empty vector DB. If the vector DB is external, the connected database
-      (can be ``ccb``) should be dropped before installing the ExApp again.
+      (database may be named ``ccb``) should be dropped before installing the ExApp again.
 
       For the ``context_chat`` app, obtain a clean slate by dropping all the ``<PREFIX>_context_chat_*`` tables in the database, and removing all the config values:
       And re-installing it.
@@ -169,7 +169,8 @@ The options for each command can be found like this, using scan as example: ``co
    | These file and ownership changes are synced with the backed through this actions queue.
 
 * ``context_chat:reindex``
-   Schedule a full re-crawl of all mounts. Indexed files are not re-indexed when compared against context_chat_backend's vector DB.
+   | Schedule a full re-crawl of all the files in all the mounts. Indexed files are not re-indexed when compared against context_chat_backend's vector DB.
+   | Content providers are not re-indexed.
 
 
 Configuration Options
