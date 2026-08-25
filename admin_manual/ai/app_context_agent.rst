@@ -464,15 +464,15 @@ Combining tools
 
 These tools can also be combined by the agent to fulfil tasks like the following:
 
- * *"How is the weather where Andrew lives?"*
+* *"How is the weather where Andrew lives?"*
 
   * Uses contacts to look up Andrew's address and then checks the weather
 
- * *"How is the weather where I live?"*
+* *"How is the weather where I live?"*
 
   * Look up the current user's address and then checks the weather
 
- * *"Send an email from carry@company.com to Andrew"*
+* *"Send an email from carry@company.com to Andrew"*
 
   * Uses contacts to look up Andrew's email and then sends an email
 
