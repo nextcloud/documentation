@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Automatic setup &mdash; Nextcloud 35 Administration Manual</title>
+  <title>Automated installation with autoconfig.php &mdash; Nextcloud 35 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="SELinux configuration" href="selinux_configuration.html" />
-    <link rel="prev" title="Installing from command line" href="command_line_installation.html" />
+    <link rel="prev" title="Install from the command line" href="command_line_installation.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -89,15 +89,18 @@
 <li class="toctree-l2"><a class="reference internal" href="php_configuration.html">Preparing PHP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Automatic setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Install from the command line</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Automated installation with <code class="docutils literal notranslate"><span class="pre">autoconfig.php</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#automatic-configurations-examples">Automatic configurations examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#encrypted-database-connection">Encrypted database connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#data-directory">Data Directory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sqlite-database">SQLite database</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mysql-database">MySQL database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mysql-mariadb-database">MySQL / MariaDB database</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#postgresql-database">PostgreSQL database</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#all-parameters">All parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#encrypted-mysql-mariadb-connection">Encrypted MySQL / MariaDB connection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#encrypted-postgresql-connection">Encrypted PostgreSQL connection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#complete-non-interactive-setup">Complete non-interactive setup</a></li>
 </ul>
 </li>
 </ul>
@@ -188,7 +191,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Installation and server configuration</a></li>
-      <li class="breadcrumb-item active">Automatic setup</li>
+      <li class="breadcrumb-item active">Automated installation with <code class="docutils literal notranslate"><span class="pre">autoconfig.php</span></code></li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/installation/automatic_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -198,124 +201,257 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="automatic-setup">
-<h1>Automatic setup<a class="headerlink" href="#automatic-setup" title="Link to this heading"></a></h1>
-<p>If you need to install Nextcloud on multiple servers, you normally do not want
-to set up each instance separately as described in
-<a class="reference internal" href="../configuration_database/linux_database_configuration.html"><span class="doc">Database configuration</span></a>.
-For this reason, Nextcloud provides an automatic configuration feature.</p>
-<p>To take advantage of this feature, you must create a configuration file, called
-<code class="file docutils literal notranslate"><span class="pre">config/autoconfig.php</span></code>, and set the file parameters as required.
-You can specify any number of parameters in this file.  Any unspecified parameters appear on the “Finish setup” screen when you first launch Nextcloud.</p>
-<p>The <code class="file docutils literal notranslate"><span class="pre">config/autoconfig.php</span></code> is automatically removed after the initial configuration has been applied.</p>
+  <section id="automated-installation-with-autoconfig-php">
+<h1>Automated installation with <code class="docutils literal notranslate"><span class="pre">autoconfig.php</span></code><a class="headerlink" href="#automated-installation-with-autoconfig-php" title="Link to this heading"></a></h1>
+<p>Use <code class="file docutils literal notranslate"><span class="pre">config/autoconfig.php</span></code> to prefill, or fully automate, the web-based
+initial setup of Nextcloud. This is useful when installing multiple identical
+or similar instances.</p>
+<p>Create <code class="file docutils literal notranslate"><span class="pre">config/autoconfig.php</span></code> and include the installation parameters
+that you want to prefill. Any values not provided in the file can be completed
+in the setup form when you first launch Nextcloud.</p>
+<p>To complete the installation without interaction, provide a valid database
+configuration, data directory, and both <code class="docutils literal notranslate"><span class="pre">adminlogin</span></code> and <code class="docutils literal notranslate"><span class="pre">adminpass</span></code>.
+Otherwise, Nextcloud displays the setup form so that missing or invalid values
+can be corrected.</p>
+<p>Nextcloud removes <code class="file docutils literal notranslate"><span class="pre">config/autoconfig.php</span></code> after a successful
+installation. The file remains in place if installation fails.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Keep in mind that the automatic configuration does not eliminate the need for
-creating the  database user and database in advance, as described in
+<p>The supplied database account must be able to connect to the database
+server and have sufficient privileges for the selected configuration.
+Depending on the database backend and the account’s privileges, Nextcloud may
+create the database and a dedicated database user. Alternatively, create the
+database and database user in advance, and grant the user the required
+privileges, as described in
 <a class="reference internal" href="../configuration_database/linux_database_configuration.html"><span class="doc">Database configuration</span></a>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">autoconfig.php</span></code> commonly contains plaintext database and
+administrator passwords. Restrict access to the file before writing secrets
+to it. If installation fails, remove the file or rotate any exposed secrets.</p>
 </div>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
-<p>When configuring parameters, you must understand that two parameters are named differently in this configuration file when compared to the standard <code class="file docutils literal notranslate"><span class="pre">config.php</span></code> file.</p>
+<p>The following parameters are commonly used:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">directory</span></code> (written to <code class="file docutils literal notranslate"><span class="pre">config.php</span></code> as <code class="docutils literal notranslate"><span class="pre">datadirectory</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dbtype</span></code>, <code class="docutils literal notranslate"><span class="pre">dbname</span></code>, <code class="docutils literal notranslate"><span class="pre">dbuser</span></code>, <code class="docutils literal notranslate"><span class="pre">dbpass</span></code>, <code class="docutils literal notranslate"><span class="pre">dbhost</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">dbtableprefix</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">adminlogin</span></code> and <code class="docutils literal notranslate"><span class="pre">adminpass</span></code></p></li>
+<li><p>optionally, <code class="docutils literal notranslate"><span class="pre">trusted_domains</span></code> and <code class="docutils literal notranslate"><span class="pre">adminemail</span></code></p></li>
+<li><p>optionally, the parameters of an
+<a class="reference internal" href="#autoconfig-database-encryption-label"><span class="std std-ref">encrypted database connection</span></a></p></li>
+</ul>
+<p>Two parameters have different names from their corresponding
+<code class="file docutils literal notranslate"><span class="pre">config.php</span></code> settings:</p>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>autoconfig.php</p></th>
-<th class="head"><p>config.php</p></th>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">autoconfig.php</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">config.php</span></code></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>directory</p></td>
-<td><p>datadirectory</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directory</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">datadirectory</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>dbpass</p></td>
-<td><p>dbpassword</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dbpass</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dbpassword</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="automatic-configurations-examples">
-<h2>Automatic configurations examples<a class="headerlink" href="#automatic-configurations-examples" title="Link to this heading"></a></h2>
-<p>The following sections provide sample automatic configuration examples and what information is requested at the end of the configuration.</p>
+<section id="encrypted-database-connection">
+<span id="autoconfig-database-encryption-label"></span><h2>Encrypted database connection<a class="headerlink" href="#encrypted-database-connection" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 35.</span></p>
+</div>
+<p>An SSL/TLS encrypted connection to the database server can be configured during
+the installation. Use this when the database does not run on the same host as
+Nextcloud, so that the credentials and all queries are not sent in plaintext.</p>
+<p>The following parameters are independent of the database backend. Nextcloud
+translates them into the corresponding <code class="file docutils literal notranslate"><span class="pre">config.php</span></code> settings before the
+first connection is opened, so the installation itself already uses an
+encrypted connection.</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Connection encryption parameters</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Supported by</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dbsslmode</span></code></p></td>
+<td><p>PostgreSQL</p></td>
+<td><p>Encryption mode of the connection, for example <code class="docutils literal notranslate"><span class="pre">require</span></code> or
+<code class="docutils literal notranslate"><span class="pre">verify-full</span></code>. See the <a class="reference external" href="https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS">PostgreSQL documentation</a>
+for the available modes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dbsslca</span></code></p></td>
+<td><p>MySQL/MariaDB, PostgreSQL</p></td>
+<td><p>Path to the CA certificate the database server is verified against.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dbsslcert</span></code></p></td>
+<td><p>MySQL/MariaDB, PostgreSQL</p></td>
+<td><p>Path to the client certificate used to authenticate against the
+database server.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dbsslkey</span></code></p></td>
+<td><p>MySQL/MariaDB, PostgreSQL</p></td>
+<td><p>Path to the private key belonging to the client certificate.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dbsslcrl</span></code></p></td>
+<td><p>PostgreSQL</p></td>
+<td><p>Path to the certificate revocation list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dbsslnoverify</span></code></p></td>
+<td><p>MySQL/MariaDB</p></td>
+<td><p>Set to <code class="docutils literal notranslate"><span class="pre">true</span></code> to not verify that the certificate of the database
+server matches the hostname used to connect. MySQL and MariaDB verify
+this by default, PostgreSQL only in the <code class="docutils literal notranslate"><span class="pre">verify-full</span></code> mode.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note the following restrictions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dbsslcert</span></code> and <code class="docutils literal notranslate"><span class="pre">dbsslkey</span></code> have to be provided together.</p></li>
+<li><p>A parameter that the selected database does not support is rejected with an
+error instead of being ignored, and the installation does not proceed.
+SQLite and Oracle support none of them — an Oracle connection is encrypted
+through the connect string and <code class="file docutils literal notranslate"><span class="pre">sqlnet.ora</span></code> instead.</p></li>
+<li><p>The certificates and keys have to be readable by the PHP process.</p></li>
+</ul>
+<p>Alternatively, the backend-specific <code class="docutils literal notranslate"><span class="pre">dbdriveroptions</span></code> (MySQL/MariaDB) and
+<code class="docutils literal notranslate"><span class="pre">pgsql_ssl</span></code> (PostgreSQL) settings, as documented in
+<a class="reference internal" href="../configuration_server/config_sample_php_parameters.html"><span class="doc">Configuration Parameters</span></a>, can be written to
+<code class="file docutils literal notranslate"><span class="pre">autoconfig.php</span></code> verbatim. They are passed to <code class="file docutils literal notranslate"><span class="pre">config.php</span></code> as
+provided and are not validated. Values set through the parameters above take
+precedence over individual entries of these arrays.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p>The following examples show partial and complete automatic configurations.</p>
 <section id="data-directory">
 <h3>Data Directory<a class="headerlink" href="#data-directory" title="Link to this heading"></a></h3>
-<p>Using the following parameter settings, the “Finish setup” screen requests database and admin credentials settings.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
-$AUTOCONFIG = [
-  &quot;directory&quot;     =&gt; &quot;/www/htdocs/nextcloud/data&quot;,
-];
+<p>This configuration prefills the data directory. Complete the database and
+administrator-account settings in the setup form.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$AUTOCONFIG</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">&quot;directory&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;/www/htdocs/nextcloud/data&quot;</span><span class="p">,</span>
+<span class="p">];</span>
 </pre></div>
 </div>
 </section>
 <section id="sqlite-database">
 <h3>SQLite database<a class="headerlink" href="#sqlite-database" title="Link to this heading"></a></h3>
-<p>Using the following parameter settings, the “Finish setup” screen requests data directory and admin credentials settings.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
-$AUTOCONFIG = [
-  &quot;dbtype&quot;        =&gt; &quot;sqlite&quot;,
-  &quot;dbname&quot;        =&gt; &quot;nextcloud&quot;,
-  &quot;dbtableprefix&quot; =&gt; &quot;&quot;,
-];
+<p>This configuration prefills the SQLite database settings. Complete the data
+directory and administrator-account settings in the setup form.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$AUTOCONFIG</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">&quot;dbtype&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;sqlite&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbname&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;nextcloud&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbtableprefix&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="p">];</span>
 </pre></div>
 </div>
 </section>
-<section id="mysql-database">
-<h3>MySQL database<a class="headerlink" href="#mysql-database" title="Link to this heading"></a></h3>
-<p>Using the following parameter settings, the “Finish setup” screen requests data directory and admin credentials settings.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
-$AUTOCONFIG = array(
-  &quot;dbtype&quot;        =&gt; &quot;mysql&quot;,
-  &quot;dbname&quot;        =&gt; &quot;nextcloud&quot;,
-  &quot;dbuser&quot;        =&gt; &quot;username&quot;,
-  &quot;dbpass&quot;        =&gt; &quot;password&quot;,
-  &quot;dbhost&quot;        =&gt; &quot;localhost&quot;,
-  &quot;dbtableprefix&quot; =&gt; &quot;&quot;,
-);
+<section id="mysql-mariadb-database">
+<h3>MySQL / MariaDB database<a class="headerlink" href="#mysql-mariadb-database" title="Link to this heading"></a></h3>
+<p>This configuration prefills the MySQL or MariaDB settings. Complete the data
+directory and administrator-account settings in the setup form.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$AUTOCONFIG</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">&quot;dbtype&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;mysql&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbname&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;nextcloud&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbuser&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbpass&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbhost&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbtableprefix&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="p">];</span>
 </pre></div>
 </div>
 </section>
 <section id="postgresql-database">
 <h3>PostgreSQL database<a class="headerlink" href="#postgresql-database" title="Link to this heading"></a></h3>
-<p>Using the following parameter settings, the “Finish setup” screen requests data directory and admin credentials settings.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
-$AUTOCONFIG = array(
-  &quot;dbtype&quot;        =&gt; &quot;pgsql&quot;,
-  &quot;dbname&quot;        =&gt; &quot;nextcloud&quot;,
-  &quot;dbuser&quot;        =&gt; &quot;username&quot;,
-  &quot;dbpass&quot;        =&gt; &quot;password&quot;,
-  &quot;dbhost&quot;        =&gt; &quot;localhost&quot;,
-  &quot;dbtableprefix&quot; =&gt; &quot;&quot;,
-);
+<p>This configuration prefills the PostgreSQL settings. Complete the data
+directory and administrator-account settings in the setup form.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$AUTOCONFIG</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">&quot;dbtype&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;pgsql&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbname&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;nextcloud&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbuser&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbpass&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbhost&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbtableprefix&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="p">];</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Keep in mind that the automatic configuration does not eliminate the need for
-creating the database user and database in advance, as described in
-<a class="reference internal" href="../configuration_database/linux_database_configuration.html"><span class="doc">Database configuration</span></a>.</p>
 </div>
 </section>
-<section id="all-parameters">
-<h3>All parameters<a class="headerlink" href="#all-parameters" title="Link to this heading"></a></h3>
-<p>Using the following parameter settings, because all parameters are already configured in the file, the Nextcloud installation skips the “Finish setup” screen.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
-$AUTOCONFIG = array(
-  &quot;dbtype&quot;        =&gt; &quot;mysql&quot;,
-  &quot;dbname&quot;        =&gt; &quot;nextcloud&quot;,
-  &quot;dbuser&quot;        =&gt; &quot;username&quot;,
-  &quot;dbpass&quot;        =&gt; &quot;password&quot;,
-  &quot;dbhost&quot;        =&gt; &quot;localhost&quot;,
-  &quot;dbtableprefix&quot; =&gt; &quot;&quot;,
-  &quot;adminlogin&quot;    =&gt; &quot;root&quot;,
-  &quot;adminpass&quot;     =&gt; &quot;root-password&quot;,
-  &quot;directory&quot;     =&gt; &quot;/www/htdocs/nextcloud/data&quot;,
-);
+<section id="encrypted-mysql-mariadb-connection">
+<h3>Encrypted MySQL / MariaDB connection<a class="headerlink" href="#encrypted-mysql-mariadb-connection" title="Link to this heading"></a></h3>
+<p>This configuration connects to a remote MySQL or MariaDB server over an
+encrypted connection, verifying the server against a CA certificate and
+authenticating with a client certificate.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$AUTOCONFIG</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">&quot;dbtype&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;mysql&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbname&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;nextcloud&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbuser&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbpass&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbhost&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;db.example.com&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbtableprefix&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbsslca&quot;</span>       <span class="o">=&gt;</span> <span class="s2">&quot;/etc/ssl/nextcloud/ca-cert.pem&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbsslcert&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;/etc/ssl/nextcloud/client-cert.pem&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbsslkey&quot;</span>      <span class="o">=&gt;</span> <span class="s2">&quot;/etc/ssl/nextcloud/client-key.pem&quot;</span><span class="p">,</span>
+<span class="p">];</span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Keep in mind that the automatic configuration does not eliminate the need for
-creating the database user and database in advance, as described in
-<a class="reference internal" href="../configuration_database/linux_database_configuration.html"><span class="doc">Database configuration</span></a>.</p>
+<p>Nextcloud stores these paths as <code class="docutils literal notranslate"><span class="pre">dbdriveroptions</span></code> in <code class="file docutils literal notranslate"><span class="pre">config.php</span></code>.</p>
+</section>
+<section id="encrypted-postgresql-connection">
+<h3>Encrypted PostgreSQL connection<a class="headerlink" href="#encrypted-postgresql-connection" title="Link to this heading"></a></h3>
+<p>This configuration requires an encrypted connection to a remote PostgreSQL
+server and verifies both the certificate of the server and the hostname it was
+issued for.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$AUTOCONFIG</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">&quot;dbtype&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;pgsql&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbname&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;nextcloud&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbuser&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbpass&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbhost&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;db.example.com&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbtableprefix&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbsslmode&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;verify-full&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbsslca&quot;</span>       <span class="o">=&gt;</span> <span class="s2">&quot;/etc/ssl/nextcloud/ca-cert.pem&quot;</span><span class="p">,</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+<p>Nextcloud stores these values as <code class="docutils literal notranslate"><span class="pre">pgsql_ssl</span></code> in <code class="file docutils literal notranslate"><span class="pre">config.php</span></code>.</p>
+</section>
+<section id="complete-non-interactive-setup">
+<h3>Complete non-interactive setup<a class="headerlink" href="#complete-non-interactive-setup" title="Link to this heading"></a></h3>
+<p>When all required values are present and valid, the installation proceeds
+without requiring user interaction.</p>
+<p>The following configuration bypasses the setup form:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$AUTOCONFIG</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">&quot;dbtype&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;mysql&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbname&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;nextcloud&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbuser&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbpass&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbhost&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dbtableprefix&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;adminlogin&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;adminpass&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;root-password&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;directory&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;/www/htdocs/nextcloud/data&quot;</span><span class="p">,</span>
+<span class="p">];</span>
+</pre></div>
 </div>
 </section>
 </section>
@@ -325,7 +461,7 @@ creating the database user and database in advance, as described in
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="command_line_installation.html" class="btn btn-neutral float-left" title="Installing from command line" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="command_line_installation.html" class="btn btn-neutral float-left" title="Install from the command line" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="selinux_configuration.html" class="btn btn-neutral float-right" title="SELinux configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

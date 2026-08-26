@@ -1047,44 +1047,71 @@ by scope; <code class="docutils literal notranslate"><span class="pre">admin</sp
 you have unpacked the archive and copied Nextcloud into the appropriate
 directories.</p>
 <p>Display the available installation options:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">install</span> <span class="o">--</span><span class="n">help</span>
-<span class="n">Nextcloud</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">installed</span> <span class="o">-</span> <span class="n">only</span> <span class="n">a</span> <span class="n">limited</span> <span class="n">number</span> <span class="n">of</span> <span class="n">commands</span> <span class="n">are</span> <span class="n">available</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>/var/www/nextcloud/occ<span class="w"> </span>maintenance:install<span class="w"> </span>--help
+<span class="go">Nextcloud is not installed - only a limited number of commands are available</span>
 
-<span class="n">Usage</span><span class="p">:</span>
-  <span class="n">maintenance</span><span class="p">:</span><span class="n">install</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span>
+<span class="go">Usage:</span>
+<span class="go">  maintenance:install [options]</span>
 
-<span class="n">Options</span><span class="p">:</span>
-      <span class="o">--</span><span class="n">database</span><span class="p">[</span><span class="o">=</span><span class="n">DATABASE</span><span class="p">]</span>                  <span class="n">Supported</span> <span class="n">database</span> <span class="nb">type</span> <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;sqlite&quot;</span><span class="p">]</span>
-      <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">name</span><span class="p">[</span><span class="o">=</span><span class="n">DATABASE</span><span class="o">-</span><span class="n">NAME</span><span class="p">]</span>        <span class="n">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">database</span>
-      <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">host</span><span class="p">[</span><span class="o">=</span><span class="n">DATABASE</span><span class="o">-</span><span class="n">HOST</span><span class="p">]</span>        <span class="n">Hostname</span> <span class="n">of</span> <span class="n">the</span> <span class="n">database</span> <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">]</span>
-      <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">port</span><span class="p">[</span><span class="o">=</span><span class="n">DATABASE</span><span class="o">-</span><span class="n">PORT</span><span class="p">]</span>        <span class="n">Port</span> <span class="n">of</span> <span class="n">the</span> <span class="n">database</span>
-      <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">user</span><span class="p">[</span><span class="o">=</span><span class="n">DATABASE</span><span class="o">-</span><span class="n">USER</span><span class="p">]</span>        <span class="n">User</span> <span class="n">name</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">the</span> <span class="n">database</span>
-      <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="k">pass</span><span class="p">[</span><span class="o">=</span><span class="n">DATABASE</span><span class="o">-</span><span class="n">PASS</span><span class="p">]</span>        <span class="n">Password</span> <span class="n">of</span> <span class="n">the</span> <span class="n">database</span> <span class="n">user</span>
-      <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">table</span><span class="o">-</span><span class="n">prefix</span><span class="p">[</span><span class="o">=...</span><span class="p">]</span>          <span class="n">Table</span> <span class="n">prefix</span> <span class="k">for</span> <span class="n">every</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">database</span>
-      <span class="o">--</span><span class="n">admin</span><span class="o">-</span><span class="n">user</span><span class="p">[</span><span class="o">=</span><span class="n">ADMIN</span><span class="o">-</span><span class="n">USER</span><span class="p">]</span>              <span class="n">User</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">admin</span> <span class="n">account</span> <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">]</span>
-      <span class="o">--</span><span class="n">admin</span><span class="o">-</span><span class="k">pass</span><span class="p">[</span><span class="o">=</span><span class="n">ADMIN</span><span class="o">-</span><span class="n">PASS</span><span class="p">]</span>              <span class="n">Password</span> <span class="n">of</span> <span class="n">the</span> <span class="n">admin</span> <span class="n">account</span>
-      <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="nb">dir</span><span class="p">[</span><span class="o">=</span><span class="n">DATA</span><span class="o">-</span><span class="n">DIR</span><span class="p">]</span>                  <span class="n">Path</span> <span class="n">to</span> <span class="n">data</span> <span class="n">directory</span> <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="s2">&quot;/var/www/nextcloud/data&quot;</span><span class="p">]</span>
+<span class="go">Options:</span>
+<span class="go">      --database[=DATABASE]                  Supported database type [default: &quot;sqlite&quot;]</span>
+<span class="go">      --database-name[=DATABASE-NAME]        Name of the database</span>
+<span class="go">      --database-host[=DATABASE-HOST]        Hostname of the database [default: &quot;localhost&quot;]</span>
+<span class="go">      --database-port[=DATABASE-PORT]        Port the database is listening on</span>
+<span class="go">      --database-user[=DATABASE-USER]        Login for database connection</span>
+<span class="go">      --database-pass[=DATABASE-PASS]        Password of the database login</span>
+<span class="go">      --database-table-space[=DATABASE-TABLE-SPACE]</span>
+<span class="go">                                                Table space of the database (``oci`` only)</span>
+<span class="go">      --database-ssl-mode[=DATABASE-SSL-MODE]</span>
+<span class="go">                                                Encryption mode for the database connection,</span>
+<span class="go">                                                e.g. &quot;require&quot; or &quot;verify-full&quot; (``pgsql`` only)</span>
+<span class="go">      --database-ssl-ca[=DATABASE-SSL-CA]    Path to the CA certificate the database server</span>
+<span class="go">                                                is verified against (``mysql`` and ``pgsql`` only)</span>
+<span class="go">      --database-ssl-cert[=DATABASE-SSL-CERT]</span>
+<span class="go">                                                Path to the client certificate used to</span>
+<span class="go">                                                authenticate against the database</span>
+<span class="go">                                                (``mysql`` and ``pgsql`` only)</span>
+<span class="go">      --database-ssl-key[=DATABASE-SSL-KEY]  Path to the private key of the client certificate</span>
+<span class="go">                                                (``mysql`` and ``pgsql`` only)</span>
+<span class="go">      --database-ssl-crl[=DATABASE-SSL-CRL]  Path to the certificate revocation list</span>
+<span class="go">                                                (``pgsql`` only)</span>
+<span class="go">      --database-ssl-no-verify               Do not verify that the database server certificate</span>
+<span class="go">                                                matches the hostname used to connect</span>
+<span class="go">                                                (``mysql`` only)</span>
+<span class="go">      --disable-admin-user                   Disable the creation of an administrator login</span>
+<span class="go">      --admin-user[=ADMIN-USER]              Login for initial administrator account [default: &quot;admin&quot;]</span>
+<span class="go">      --admin-pass[=ADMIN-PASS]              Password for initial administrator login</span>
+<span class="go">      --admin-email[=ADMIN-EMAIL]            E-Mail to associate with the initial administrator login</span>
+<span class="go">      --data-dir[=DATA-DIR]                  Path to data directory</span>
+<span class="go">      --password-salt[=PASSWORD-SALT]        Password salt; generated if not provided (ADVANCED)</span>
+<span class="go">      --server-secret[=SERVER-SECRET]        Server secret; generated if not provided (ADVANCED)</span>
 </pre></div>
 </div>
-<p>This example installs Nextcloud with a MySQL database:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">install</span> \
-  <span class="o">--</span><span class="n">database</span> <span class="n">mysql</span> \
-  <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">name</span> <span class="n">nextcloud</span> \
-  <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">host</span> <span class="mf">127.0.0.1</span> \
-  <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="n">user</span> <span class="n">nextcloud</span> \
-  <span class="o">--</span><span class="n">database</span><span class="o">-</span><span class="k">pass</span> <span class="n">secret</span> \
-  <span class="o">--</span><span class="n">admin</span><span class="o">-</span><span class="n">user</span> <span class="n">admin</span> \
-  <span class="o">--</span><span class="n">admin</span><span class="o">-</span><span class="k">pass</span> <span class="n">password</span>
-  <span class="n">Nextcloud</span> <span class="n">was</span> <span class="n">successfully</span> <span class="n">installed</span>
+<p>This example installs Nextcloud with a MySQL database. <code class="docutils literal notranslate"><span class="pre">occ</span></code> prompts for
+the database and administrator passwords:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>/var/www/nextcloud/occ<span class="w"> </span>maintenance:install<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--database<span class="w"> </span>mysql<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--database-name<span class="w"> </span>nextcloud<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--database-host<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--database-user<span class="w"> </span>nextcloud<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--admin-user<span class="w"> </span>admin
+<span class="go">What is the password to access the database with user &lt;nextcloud&gt;?</span>
+<span class="go">What is the password you like to use for the admin account &lt;admin&gt;?</span>
+<span class="go">Nextcloud was successfully installed</span>
 </pre></div>
 </div>
 <p>Supported databases:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sqlite</span></code> — SQLite (community edition only; not recommended for production)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sqlite</span></code> — SQLite (not recommended for production usage)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">mysql</span></code> — MySQL or MariaDB</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgsql</span></code> — PostgreSQL</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">oci</span></code> — Oracle (Nextcloud Enterprise only)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oci</span></code> — Oracle; contact <a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud GmbH</a> for enterprise support</p></li>
 </ul>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 35: </span>The <code class="docutils literal notranslate"><span class="pre">--database-ssl-*</span></code> options set up an SSL/TLS encrypted connection to
+the database, see
+<a class="reference internal" href="installation/command_line_installation.html#command-line-installation-ssl-label"><span class="std std-ref">Encrypted database connection</span></a>.</p>
+</div>
 </section>
 <section id="command-line-upgrade">
 <span id="command-line-upgrade-label"></span><h2><a class="toc-backref" href="#id18" role="doc-backlink">Command line upgrade</a><a class="headerlink" href="#command-line-upgrade" title="Link to this heading"></a></h2>

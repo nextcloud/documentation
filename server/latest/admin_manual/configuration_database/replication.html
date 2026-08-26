@@ -89,7 +89,12 @@
 <li class="toctree-l2"><a class="reference internal" href="linux_database_configuration.html">Database configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mysql_4byte_support.html">Enabling MySQL 4-byte support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bigint_identifiers.html">BigInt (64bit) identifiers</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Replication</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Replication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-queries-are-routed">How queries are routed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connection-scope">Connection scope</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="splitting.html">Splitting databases</a></li>
 </ul>
 </li>
@@ -183,13 +188,59 @@
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 29.</span></p>
 </div>
-<p>Nextcloud can natively split read and write operations on a database query level. Replicas are only used for reads. The default database connection will be used for writes and causal reads.</p>
+<p>Nextcloud can natively split read and write operations at the level of individual database queries. Read-only
+replicas serve reads, while the default (primary) database connection handles writes as well as reads that must be
+consistent with a preceding write.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nextcloud only routes queries to the endpoints you provide. Setting up the replication itself (provisioning the
+replicas, keeping them in sync, and monitoring replication health) is the responsibility of your database
+administrator.</p>
+</div>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>Add the read-only replicas to <code class="docutils literal notranslate"><span class="pre">config.php</span></code> with the <code class="docutils literal notranslate"><span class="pre">dbreplica</span></code> parameter. Each entry describes one replica and
+accepts the same connection options as the primary database connection:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;dbreplica&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
         <span class="p">[</span><span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;password1&#39;</span><span class="p">,</span> <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10.0.3.1&#39;</span><span class="p">,</span> <span class="s1">&#39;dbname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">],</span>
         <span class="p">[</span><span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;password2&#39;</span><span class="p">,</span> <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10.0.3.2&#39;</span><span class="p">,</span> <span class="s1">&#39;dbname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">],</span>
     <span class="p">],</span>
 </pre></div>
 </div>
+<p>When more than one replica is configured, Nextcloud picks one of them at random for the reads of a given connection.
+There is no load weighting or health checking, so if you need balanced or fault-tolerant read distribution, place the
+replicas behind your own load balancer and point <code class="docutils literal notranslate"><span class="pre">dbreplica</span></code> at it.</p>
+</section>
+<section id="how-queries-are-routed">
+<h2>How queries are routed<a class="headerlink" href="#how-queries-are-routed" title="Link to this heading"></a></h2>
+<p>Nextcloud does not inspect the SQL to decide where a query goes. The routing is based on which method sends the query:
+read operations are sent to a replica, and write operations are sent to the primary.</p>
+<p>To avoid reading stale data right after a change, Nextcloud keeps a request consistent with itself: once a request has
+written to the database, its subsequent reads are served from the primary as well. This guarantees <em>read-your-writes</em>
+consistency: data written earlier in the same request is always read back in its up-to-date state.</p>
+</section>
+<section id="connection-scope">
+<h2>Connection scope<a class="headerlink" href="#connection-scope" title="Link to this heading"></a></h2>
+<p>This consistency guarantee is scoped to a single PHP process, that is one web request, one cron execution, or one
+<code class="docutils literal notranslate"><span class="pre">occ</span></code> invocation. It is therefore short-lived and does not carry over to other processes.</p>
+<p>A single user operation may span more than one request, and there the guarantee no longer applies. Consider two
+requests belonging to the same operation:</p>
+<ol class="arabic simple">
+<li><p>Request 1 creates a row.</p></li>
+<li><p>Request 2 reads that row.</p></li>
+</ol>
+<p>Request 2 does not know about the write in request 1, so it is free to read from a replica. If the two requests arrive
+within a shorter timeframe than the replication lag, the replica may not have received the new row yet, the read
+returns nothing, and the application logic fails.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Because the consistency guarantee does not span multiple requests, the replicas must not lag significantly behind
+the primary. Noticeable replication delay leads to symptoms such as newly created or changed content that seems to
+disappear after a page refresh.</p>
+<p>For this reason the feature works best with a synchronous, always-consistent cluster such as Galera. Setups with
+asynchronous replication are only safe when the replication delay stays negligible.</p>
+</div>
+</section>
 </section>
 
 

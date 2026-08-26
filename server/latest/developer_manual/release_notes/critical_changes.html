@@ -84,6 +84,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#updated-database-requirements">Updated database requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-front-end-apis-and-libraries">Removed front-end APIs and libraries</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#removed-global-aliases">Removed global aliases</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#removed-global-libraries">Removed global libraries</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#modified-back-end-apis">Modified back-end APIs</a></li>
@@ -234,6 +235,17 @@ they have been deprecated since Nextcloud 17 and scheduled for removal since Nex
 <p>Please keep in mind that <code class="docutils literal notranslate"><span class="pre">OC</span></code> is considered a private namespace for which our stability rules do not fully apply.
 Its recommended to use the <a class="reference internal" href="../digging_deeper/javascript-apis.html#js-libraries"><span class="std std-ref">Nextcloud frontend libraries</span></a> instead if possible.</p>
 </section>
+<section id="removed-global-libraries">
+<h3>Removed global libraries<a class="headerlink" href="#removed-global-libraries" title="Link to this heading"></a></h3>
+<p>The following global libraries were removed in Nextcloud 35,
+they have been deprecated since Nextcloud 17 and scheduled for removal since Nextcloud 20:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_</span></code> (underscore) use modern ES2015+ syntax instead supported by all modern browsers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Clipboard</span></code> and <code class="docutils literal notranslate"><span class="pre">ClipboardJS</span></code> use native <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API">Clipboard API</a> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dav</span></code> use the <a class="reference internal" href="../digging_deeper/javascript-apis.html#js-library-nextcloud-files"><span class="std std-ref">&#64;nextcloud/files</span></a> or <a class="reference external" href="https://www.npmjs.com/package/webdav">webdav</a> library instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">moment</span></code> use the <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/moment</span></code> library or native <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat">Intl.DateTimeFormat</a> or <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal">Temporal API</a> instead</p></li>
+</ul>
+</section>
 </section>
 <section id="modified-back-end-apis">
 <h2>Modified back-end APIs<a class="headerlink" href="#modified-back-end-apis" title="Link to this heading"></a></h2>
@@ -302,7 +314,7 @@ secret does not identify exactly one remote origin.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Aug 17, 2026.
+      <span class="lastupdated">Last updated on Aug 26, 2026.
       </span></p>
   </div>
 
