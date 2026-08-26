@@ -313,7 +313,63 @@
                         "type": "string"
                     },
                     "type": {
+                        "type": "string",
+                        "enum": [
+                            "link"
+                        ]
+                    },
+                    "name": {
                         "type": "string"
+                    },
+                    "app": {
+                        "type": "string"
+                    },
+                    "default": {
+                        "type": "boolean"
+                    },
+                    "active": {
+                        "type": "boolean"
+                    },
+                    "classes": {
+                        "type": "string"
+                    },
+                    "unread": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "CoreNavigationSettingsEntry": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "href",
+                    "icon",
+                    "type",
+                    "name",
+                    "active",
+                    "classes",
+                    "unread"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "order": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "href": {
+                        "type": "string"
+                    },
+                    "icon": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "settings"
+                        ]
                     },
                     "name": {
                         "type": "string"
@@ -4887,7 +4943,9 @@
                             "defaultBackgroundColor",
                             "inverted",
                             "cacheBuster",
-                            "enabledThemes"
+                            "enabledThemes",
+                            "toastTimeout",
+                            "toastTimeoutValues"
                         ],
                         "properties": {
                             "name": {
@@ -4966,6 +5024,17 @@
                                 "type": "array",
                                 "items": {
                                     "type": "string"
+                                }
+                            },
+                            "toastTimeout": {
+                                "type": "integer",
+                                "format": "int64"
+                            },
+                            "toastTimeoutValues": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int64"
                                 }
                             }
                         }
@@ -7791,7 +7860,7 @@
                                                 "data": {
                                                     "type": "array",
                                                     "items": {
-                                                        "$ref": "#/components/schemas/CoreNavigationEntry"
+                                                        "$ref": "#/components/schemas/CoreNavigationSettingsEntry"
                                                     }
                                                 }
                                             }
@@ -40406,6 +40475,15 @@
                             "type": "string",
                             "nullable": true,
                             "minLength": 1
+                        }
+                    },
+                    {
+                        "name": "filterState",
+                        "in": "query",
+                        "description": "State to filter by.",
+                        "schema": {
+                            "type": "string",
+                            "nullable": true
                         }
                     },
                     {

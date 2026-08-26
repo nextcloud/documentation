@@ -192,6 +192,53 @@ to answer questions, provide insights and search results based on the submitted 
 and allows your app to import all existing content into Context Chat in one bulk.
 Any other items that are created afterwards will need to be added on demand.</p>
 </section>
+<section id="the-icontentproviderwithsearchtask-interface">
+<h3>The IContentProviderWithSearchTask interface<a class="headerlink" href="#the-icontentproviderwithsearchtask-interface" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 35.0.0.</span></p>
+</div>
+<p>To improve document retrieval and LLM response quality, content providers can implement the
+<code class="docutils literal notranslate"><span class="pre">\OCP\ContextChat\IContentProviderWithSearchTask</span></code> interface, which extends <code class="docutils literal notranslate"><span class="pre">IContentProvider</span></code>
+with two additional methods: <code class="docutils literal notranslate"><span class="pre">getDataDescription</span></code> and <code class="docutils literal notranslate"><span class="pre">getSearchTaskDescription</span></code>.</p>
+<p>An example implementation could look like this:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ContextChatProvider</span> <span class="k">implements</span> <span class="nx">\OCP\ContextChat\IContentProviderWithSearchTask</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">PROVIDER_ID</span> <span class="o">=</span> <span class="s1">&#39;financial_report&#39;</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">PROVIDER_ID</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAppId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getItemUrl</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">linkToRouteAbsolute</span><span class="p">(</span>
+            <span class="s1">&#39;finance_reports.report.show&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;reportId&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">triggerInitialImport</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="c1">// schedule the initial import bg job, or leave it empty in favour of a persistent TimedJob</span>
+        <span class="c1">// $this-&gt;jobList-&gt;add(InitialImportJob::class);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDataDescription</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;Quarterly financial reports for a manufacturing company in CSV format. &#39;</span>
+            <span class="o">.</span> <span class="s1">&#39;Columns: report_id, quarter (e.g. Q1-2026), department, &#39;</span>
+            <span class="o">.</span> <span class="s1">&#39;revenue, operating_costs, net_profit, currency (ISO 4217), &#39;</span>
+            <span class="o">.</span> <span class="s1">&#39;headcount, and notes. &#39;</span>
+            <span class="o">.</span> <span class="s1">&#39;Each row represents one department\&#39;s figures for a single quarter.&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSearchTaskDescription</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;Given a question, retrieve financial report rows whose department, &#39;</span>
+            <span class="o">.</span> <span class="s1">&#39;quarter, or notes field relates to the query, including cost and revenue figures.&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
 <section id="using-the-icontentmanager-service">
 <h3>Using the IContentManager service<a class="headerlink" href="#using-the-icontentmanager-service" title="Link to this heading"></a></h3>
 <p>To add content and register your provider implementation you will need to use the <code class="docutils literal notranslate"><span class="pre">\OCP\ContextChat\IContentManager</span></code> service.</p>
@@ -276,7 +323,7 @@ by calling the <code class="docutils literal notranslate"><span class="pre">isCo
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Aug 26, 2026.
       </span></p>
   </div>
 
