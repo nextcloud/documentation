@@ -577,6 +577,97 @@ When the optional ``tables`` app is installed:
      "time": 1700054321,
    }
 
+
+Mail App Events
+~~~~~~~~~~~~~~~~~
+Mail events use different distinct payload formats, depending on the event.
+When the optional ``mail`` app is installed:
+
+- ``NewMessageReceivedEvent``
+
+.. code-block:: json
+
+   {
+     "event": {
+       "class": "OCA\\Mail\\Event\\NewMessageReceivedEvent",
+       "accountId": 34,
+       "inReplyToRfcMessageId": "5888857",
+       "mailboxId": 10,
+       "messageId": 108778,
+       "messageUri": "89789789",
+       "RfcMessageId": "897789",
+       "sentAt": "1787826765",
+       "subject": "Important data changes",
+       "threadRootId": "9947988"
+     },
+     "user": {
+       "uid": "carol",
+       "displayName": "Carol"
+     },
+     "time": 1787826832,
+   }
+
+
+- ``MessageSentEvent``
+
+.. code-block:: json
+
+   {
+     "event": {
+       "class": "OCA\\Mail\\Event\\MessageSentEvent",
+       "accountId": 34,
+       "inReplyToRfcMessageId": "5888857",
+       "sendAt": "1787826765",
+       "subject": "Important data changes"
+     },
+     "user": {
+       "uid": "carol",
+       "displayName": "Carol"
+     },
+     "time": 1787826832,
+   }
+
+
+- ``MessageFlaggedEvent``
+
+.. code-block:: json
+
+   {
+     "event": {
+       "class": "OCA\\Mail\\Event\\MessageFlaggedEvent",
+       "accountId": 34,
+       "flag": "Spam",
+       "mailboxId": 10,
+       "messageId": 108778,
+       "set": true,
+       "uid": 897789
+     },
+     "user": {
+       "uid": "carol",
+       "displayName": "Carol"
+     },
+     "time": 1787826832,
+   }
+
+
+- ``MessageDeletedEvent``
+
+.. code-block:: json
+
+   {
+     "event": {
+       "class": "OCA\\Mail\\Event\\MessageDeletedEvent",
+       "accountId": 34,
+       "mailboxId": 10,
+       "uid": 108778
+     },
+     "user": {
+       "uid": "carol",
+       "displayName": "Carol"
+     },
+     "time": 1787826832,
+   }
+
 .. note::
 
    For filtering or automation, always check the actual payload you receive, as it matches
