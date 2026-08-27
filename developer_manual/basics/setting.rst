@@ -4,6 +4,9 @@ Settings
 
 .. sectionauthor:: Carl Schwan <carl@carlschwan.eu>
 
+Creating an admin section
+-------------------------
+
 Each Nextcloud application can provide both personal and admin settings. For this
 you will need to create a section implementing `IIconSection`. This section will be
 used in the setting sidebar to create a new entry.
@@ -45,9 +48,8 @@ In our case we will create an admin section class in **<myapp>/lib/Sections/Note
         }
     }
 
-
-The next step is to fill the new admin section with am admin setting. For that, we create a new class
-in *<myapp>/lib/Settings/NotesAdmin.php**.
+The next step is to fill the new admin section with an admin setting. For that,
+we create a new class in ``<myapp>/lib/Settings/NotesAdmin.php``.
 
 .. code-block:: php
 
@@ -109,11 +111,29 @@ The last missing part is to register both classes inside **<myapp>/appinfo/info.
    To register personal sections and settings class use `<personal-section>` and
    `<personal>` instead.
 
-Additionally since Nextcloud 23, groups can be granted authorization to access individual
-admin settings (`see admin docs <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/admin_delegation_configuration.html>`_).
-This is a feature that needs to be enabled for each admin setting class.
-To do so, the setting class needs to implement `IDelegatedSettings` instead of `ISettings`
-and implement two additional methods.
+Delegated administration
+------------------------
+
+.. versionadded:: 23
+
+Nextcloud has built-in functionality which permits `administrators to delegate authority
+<https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/admin_delegation_configuration.html>`_
+to others without granting them full administration privileges (and without making them a
+member of the ``admin`` group).
+
+Specific groups can be granted authorization to access individual admin settings. This is a
+feature that needs to be enabled for each admin setting class. To do so, the setting class
+needs to implement ``IDelegatedSettings`` instead of ``ISettings`` and implement two additional
+methods.
+
+Authorizing app-config keys
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The values returned by ``getAuthorizedAppConfig()`` define which app-config keys delegated
+administrators may modify. Use exact key names whenever possible. Regular expressions are
+supported for dynamic key names, but should match the complete key using ``^`` and ``$``.
+Avoid unanchored expressions such as ``/notes_.*/``, which can match a key that merely
+contains the intended prefix.
 
 .. code-block:: php
 
@@ -137,19 +157,138 @@ and implement two additional methods.
 
         public function getAuthorizedAppConfig(): array {
             return [
-                // Allow a list of regex that the user can modify with this setting.
-                'notes' => ['/notes_.*/', '/my_notes_setting/'],
+                // Simplest: authorize one exact key from this app.
+                'notes' => [
+                    'my_notes_setting',
+                ],
             ];
         }
     }
 
-Additionally, if your setting class needs to fetch data or send data to some admin-only
-controllers, you will need to mark the methods in the controller as accessible by the
-setting with attribute.
+Using the application ID
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. note::
+The app name can be referenced through ``Application::APP_ID``. This avoids duplicating
+the app ID as a string:
 
-    The attribute is only available in Nextcloud 27 or later. In older versions, the ``@AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin)`` annotation can be used.
+.. code-block:: php
+
+    use OCA\NotesTutorial\AppInfo\Application;
+
+    public function getAuthorizedAppConfig(): array {
+        return [
+            // Multiple keys: authorize several exact keys in this app.
+            Application::APP_ID => [
+                'my_notes_setting',
+                'another_notes_setting',
+            ],
+        ];
+    }
+
+Authorizing dynamic key names
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For a family of dynamically named keys, use an anchored regular expression that is as
+restrictive as possible:
+
+.. code-block:: php
+
+    public function getAuthorizedAppConfig(): array {
+        return [
+            // Authorize keys such as "notes_feature_a" and "notes_feature_b",
+            // but not "custom_notes_feature_a".
+            Application::APP_ID => [
+                '/^notes_[a-z0-9_]+$/',
+            ],
+        ];
+    }
+
+Escaping dynamic regular expressions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a regular expression is built from a variable or a constant, escape the inserted
+value with ``preg_quote()``:
+
+.. code-block:: php
+
+    $prefix = preg_quote('notes_', '/');
+
+    return [
+        Application::APP_ID => [
+            "/^{$prefix}[a-z0-9_]+$/",
+        ],
+    ];
+
+Using configuration constants
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For stable, declared configuration keys, prefer dedicated constants or constants from an
+app's ``ConfigLexicon`` class. This keeps the delegated authorization list synchronized
+with the app's configuration definitions. 
+
+For example, ``<myapp>/lib/ConfigLexicon.php`` might contain:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\NotesTutorial;
+
+    class ConfigLexicon {
+         // For PHP versions before 8.3, omit the "string" type.
+        public const string MY_SETTING = 'my_notes_setting';
+        public const string ANOTHER_SETTING = 'another_notes_setting';
+    }
+
+Which can then reference:
+
+.. code-block:: php
+
+    use OCA\NotesTutorial\AppInfo\Application;
+    use OCA\NotesTutorial\ConfigLexicon;
+
+    public function getAuthorizedAppConfig(): array {
+        return [
+            // Constants: Preferred for stable, declared configuration keys.
+            Application::APP_ID => [
+                ConfigLexicon::MY_SETTING,
+                ConfigLexicon::ANOTHER_SETTING,
+            ],
+        ];
+    }
+
+Authorizing keys from multiple apps
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If a setting intentionally authorizes configuration keys from more than one app, return
+one entry for each app. Prefer the corresponding app's ``Application::APP_ID`` constant
+when it is available:
+
+.. code-block:: php
+
+    use OCA\AnotherApp\AppInfo\Application as AnotherAppApplication;
+
+    public function getAuthorizedAppConfig(): array {
+        return [
+            Application::APP_ID => [
+                ConfigLexicon::MY_SETTING,
+            ],
+            AnotherAppApplication::APP_ID => [
+                // Prefer AnotherApp's ConfigLexicon constant when available.
+                'another_setting',
+            ],
+        ];
+    }
+
+Do not use ``/.*/`` unless the setting intentionally grants delegated administrators
+access to every key belonging to the app. Do not use a regular expression for a fixed key:
+return the literal key instead.
+
+Authorizing admin-only controllers
+----------------------------------
+
+The ``getAuthorizedAppConfig()`` method controls app-config writes. It does not grant
+access to arbitrary controller endpoints. If your setting class needs to call admin-only
+controller methods, mark those methods with the ``AuthorizedAdminSetting`` attribute.
 
 .. code-block:: php
     :emphasize-lines: 8
@@ -168,14 +307,17 @@ setting with attribute.
         ...
     }
 
-
-If you have several ``IDelegatedSettings`` classes that are needed for a function, add multiple attributes and separate them with semicolons.
-
 .. note::
 
-    If you use the deprecated annotation specify the classes separated by semicolons:
+    The attribute is only available in Nextcloud 27 or later. In older versions, the
+    ``@AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin)`` annotation
+    must be used instead.
 
-    ``@AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin;OCA\NotesTutorial\Settings\NotesSubAdmin)``
+Authorizing multiple delegated settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you have several ``IDelegatedSettings`` classes that are needed for a function, add multiple
+attributes:
 
 .. code-block:: php
     :emphasize-lines: 8-9
@@ -194,3 +336,9 @@ If you have several ``IDelegatedSettings`` classes that are needed for a functio
          }
          ...
     }
+
+.. note::
+
+    If you must use the deprecated annotation, specify the classes separated by semicolons:
+
+    ``@AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin;OCA\NotesTutorial\Settings\NotesSubAdmin)``
