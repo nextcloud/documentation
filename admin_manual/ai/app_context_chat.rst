@@ -102,9 +102,29 @@ Listed below are the major parts of the system that can be scaled independently 
    | The embedding model performance can be scaled by using a hosted embedding service, locally or remotely hosted. It should be able to serve an OpenAI-compatible API.
    | The embedding service URL can be set using the environment variable ``CC_EM_BASE_URL`` during deployment in the "Deploy Options". Other options like the model name, api key, or username and password can be set using the environment variables ``CC_EM_MODEL_NAME``, ``CC_EM_API_KEY``, ``CC_EM_USERNAME``, and ``CC_EM_PASSWORD`` respectively.
 
-One part of the system that cannot be scaled yet is the parsing of the documents to extract text.
-This is currently done in a single instance of the ``context_chat_backend`` ExApp.
-It is a CPU-bound task so having a powerful CPU will help speed up the parsing process.
+   .. warning::
+
+      The embedding model cannot be changed after installing the app. To use a different embedding model or service, you
+      will need to do a full uninstall (removing all data of the ExApp) and reinstall the ``context_chat_backend`` ExApp
+      with the new environment variables and an empty vector DB. If the vector DB is external, the connected database
+      (database may be named ``ccb``) should be dropped before installing the ExApp again.
+
+      For the ``context_chat`` app, obtain a clean slate by dropping all the ``<PREFIX>_context_chat_*`` tables in the database, and removing all the config values:
+      And re-installing it.
+
+      .. code-block:: sql
+
+         drop table if exists oc_context_chat_action_queue;
+         drop table if exists oc_context_chat_content_queue;
+         drop table if exists oc_context_chat_fs_events;
+         drop table if exists oc_context_chat_queue;
+         delete from oc_appconfig where appid = 'context_chat';
+
+
+4. The parsing of the documents to extract text
+
+   | The parsing of the documents to extract text is done in a single instance of the ``context_chat_backend`` ExApp in a docker-based environment. It is a CPU-bound task, so having a powerful CPU will help speed up the parsing process.
+   | This can be scaled by using Kubernetes for deployment, allowing multiple instances of the ``context_chat_backend`` ExApp to handle the parsing concurrently, see :ref:`the Kubernetes section <kubernetes-context-chat>`.
 
 If ``context_chat_backend`` is already deployed, you can change these environment variables by redeploying it with the new values.
 
