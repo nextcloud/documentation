@@ -36,17 +36,33 @@ Enable the ``webhook_listeners`` app that comes bundled with Nextcloud - e.g.
 
    occ app:enable webhook_listeners
 
-Listening to events
--------------------
+Managing webhooks
+-----------------
 
-You can use the OCS API to add webhooks for specific events. See:
+You can either use the OCS API to manage your webhooks or install the additional ``orchestration_gateway`` app to have a graphical user interface for adding, changing and deleting webhooks.
+
+the Orchestration Gateway adds an administration settings page listing your registered webhooks and making it easy to configure them.
+
+.. image:: images/list_webhooks.png
+   :alt: Orchestration Gateway settings showing a list of registered webhooks
+
+To add a new one, you can choose between a generic new webhook or a Budibase-specific one. 
+
+
+.. image:: images/new_webhook.png
+   :alt: Orchestration Gateway dialog for adding a new webhook
+
+
+If you want to use the OCS API to add webhooks for specific events, see:
 `Register a new webhook <https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index>`_.
 
-Note: When authenticating with the OCS API to register webhooks, the account you
-use must have administrator rights or delegated administrator rights.
+.. note::
+  
+  When authenticating with the OCS API to register webhooks, the account you use must have administrator rights or delegated administrator rights. To delegate the webhook registration to non-admin users, they have to be in a group that gets administration privileges for "Webhooks" granted. To use the Orchestration Gateway UI, they need *additional* privileges for "Orchestration Gateway".
 
-Listing registered webhooks
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Listing registered webhooks via occ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can list all currently registered webhook listeners from the command line:
 
@@ -202,6 +218,8 @@ The complete logs of the workers can be checked with (replace 1 with the worker 
    sudo journalctl -xeu nextcloud-webhook-worker@1.service -f
 
 It is recommended to restart this worker at least once a day to make sure code changes are effective and avoid memory leaks, in this example the service restarts every 60 seconds.
+
+.. _webhook_events:
 
 Nextcloud Webhook Events
 ------------------------
@@ -672,3 +690,9 @@ When the optional ``mail`` app is installed:
 
    For filtering or automation, always check the actual payload you receive, as it matches
    the JSON examples above, not PHPDoc or internal PHP array type style.
+
+
+.. toctree::
+    :maxdepth: 2
+
+    budibase_workflows
