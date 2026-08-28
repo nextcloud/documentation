@@ -1104,28 +1104,65 @@ pages), and <code class="docutils literal notranslate"><span class="pre">false</
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;skeletondirectory&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/nextcloud/core/skeleton&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
-<p>The directory where the skeleton files are located. These files will be
-copied to the data directory of new users. Set empty string to not copy any
-skeleton files. If unset and templatedirectory is an empty string, shipped
-templates will be used to create a template directory for the user.</p>
-<p><code class="docutils literal notranslate"><span class="pre">{lang}</span></code> can be used as a placeholder for the language of the user.
-If the directory does not exist, it falls back to non-dialect (from <code class="docutils literal notranslate"><span class="pre">de_DE</span></code>
-to <code class="docutils literal notranslate"><span class="pre">de</span></code>). If that does not exist either, it falls back to <code class="docutils literal notranslate"><span class="pre">default</span></code></p>
-<p>Defaults to <code class="docutils literal notranslate"><span class="pre">core/skeleton</span></code> in the Nextcloud directory.</p>
+<p>The directory containing initial content copied to a user’s personal files
+during their first login. This content can include ordinary files and
+folders, such as welcome documents, example files, or organization-wide
+reusable documents and folder structures.</p>
+<p>The path may include the optional <code class="docutils literal notranslate"><span class="pre">{lang}</span></code> placeholder to select
+language-specific content. The placeholder is replaced with the user’s
+language code. For example, when this is set to
+<code class="docutils literal notranslate"><span class="pre">/path/to/skeleton/{lang}</span></code> and a user’s language is <code class="docutils literal notranslate"><span class="pre">de_DE</span></code>, Nextcloud
+first looks for <code class="docutils literal notranslate"><span class="pre">/path/to/skeleton/de_DE</span></code>. If that directory does not
+exist, Nextcloud falls back to the base language code (<code class="docutils literal notranslate"><span class="pre">de</span></code> in this
+example), looking for <code class="docutils literal notranslate"><span class="pre">/path/to/skeleton/de</span></code>. If that directory also does
+not exist, Nextcloud looks for <code class="docutils literal notranslate"><span class="pre">/path/to/skeleton/default</span></code>.</p>
+<p>If the path does not include <code class="docutils literal notranslate"><span class="pre">{lang}</span></code>, Nextcloud uses the configured
+directory directly. Only one matching directory is used; content from
+fallback directories is not merged. If no matching directory exists, no
+content is copied.</p>
+<p>Set to an empty string (<code class="docutils literal notranslate"><span class="pre">''</span></code>) to disable copying skeleton content.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Copying skeleton content also triggers automatic initialization of the
+user’s template directory (see <code class="docutils literal notranslate"><span class="pre">templatedirectory</span></code>). Setting this
+parameter to an empty string therefore prevents template initialization on
+first login. Users can still initialize a template directory later through
+the Files UI, which uses the OCS API, but doing so does not copy skeleton
+content. The template source directory itself is configured separately and is
+not derived from this directory.</p>
+</div>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">core/skeleton</span></code> relative to the Nextcloud installation root.</p>
 </section>
 <section id="templatedirectory">
 <h3>templatedirectory<a class="headerlink" href="#templatedirectory" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;templatedirectory&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/nextcloud/templates&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
-<p>The directory where the template files are located. These files will be
-copied to the template directory of new users. Set empty string to not copy any
-template files.</p>
-<p><code class="docutils literal notranslate"><span class="pre">{lang}</span></code> can be used as a placeholder for the language of the user.
-If the directory does not exist, it falls back to non-dialect (from <code class="docutils literal notranslate"><span class="pre">de_DE</span></code>
-to <code class="docutils literal notranslate"><span class="pre">de</span></code>). If that does not exist either, it falls back to <code class="docutils literal notranslate"><span class="pre">default</span></code></p>
-<p>To disable creating a template directory, set both skeletondirectory and
-templatedirectory to empty strings.</p>
+<p>The directory containing template content that can be copied to a user’s
+template directory. Template files are ordinary files that users can select
+as reusable templates when creating supported file types in the Files app.</p>
+<p>Like <code class="docutils literal notranslate"><span class="pre">skeletondirectory</span></code>, this path may contain the optional <code class="docutils literal notranslate"><span class="pre">{lang}</span></code>
+placeholder. Nextcloud resolves it using the same language, base-language,
+and <code class="docutils literal notranslate"><span class="pre">default</span></code> fallback order described for <code class="docutils literal notranslate"><span class="pre">skeletondirectory</span></code>. The
+placeholder is resolved independently for this setting.</p>
+<p>If the path does not include <code class="docutils literal notranslate"><span class="pre">{lang}</span></code>, Nextcloud uses the configured
+directory directly. Only one matching directory is used; content from
+fallback directories is not merged. If no matching directory exists, no
+template content is copied.</p>
+<p>This setting is independent of <code class="docutils literal notranslate"><span class="pre">skeletondirectory</span></code>. Its default value is
+<code class="docutils literal notranslate"><span class="pre">core/skeleton/Templates</span></code> relative to the Nextcloud installation root.
+Changing <code class="docutils literal notranslate"><span class="pre">skeletondirectory</span></code> does not change that value. If a custom
+skeleton directory contains a <code class="docutils literal notranslate"><span class="pre">Templates</span></code> subdirectory, Nextcloud copies
+it as ordinary skeleton content; it does not automatically use it as the
+user’s template directory.</p>
+<p>Template content is copied only when the target template folder is empty.</p>
+<p>Set to an empty string (<code class="docutils literal notranslate"><span class="pre">''</span></code>) to disable copying template content from
+this source. During automatic first-login initialization, Nextcloud may
+still create or reuse the default template folder, but it will not copy
+content from this source or configure that folder as the user’s template
+directory.</p>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">core/skeleton/Templates</span></code> relative to the Nextcloud
+installation root, regardless of the <code class="docutils literal notranslate"><span class="pre">skeletondirectory</span></code> value.</p>
 </section>
 </section>
 <section id="user-session">
