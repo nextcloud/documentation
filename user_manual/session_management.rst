@@ -18,8 +18,8 @@ account recently:
 You can open the menu beside every device or session to revoke the access.
 
 At the bottom of the list, you can create a new device-specific
-password. The generated password is used for configuring the new client. 
-Ideally, generate individual tokens for every device you connect to your 
+password. The generated password is used for configuring the new client.
+Ideally, generate individual tokens for every device you connect to your
 account, so you can disconnect those individually if necessary:
 
 .. figure:: images/settings_devices_add.png
