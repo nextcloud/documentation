@@ -20,7 +20,7 @@ the **Files** area of the Nextcloud Web interface. Items in the trash bin can
 be restored, downloaded, or permanently deleted.
 
 For information about using the trash bin as an account holder, see the
-:doc:`Deleted files <https://docs.nextcloud.com/server/latest/user_manual/en/files/deleted_file_management.html>`
+:doc:`Deleted files <https://docs.nextcloud.com/server/latest/user_manual/en/files/deleted_file_management.html>`_
 section of the User Manual.
 
 .. note:: If the *Versions* app is enabled, versions associated with a deleted
