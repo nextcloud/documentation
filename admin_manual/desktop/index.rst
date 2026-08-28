@@ -15,6 +15,7 @@ Your files are always automatically synchronized between your Nextcloud server, 
    :maxdepth: 1
 
    massdeployment
+   restrictaccess
    troubleshooting
 
 You can find additional information here:
