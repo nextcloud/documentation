@@ -364,16 +364,27 @@ The logs of the worker can be checked by attaching to the screen or tmux session
 Systemd service
 ^^^^^^^^^^^^^^^
 
-1. Create a systemd service file in ``/etc/systemd/system/nextcloud-ai-worker@.service`` with the following content:
+This section assumes four workers are to be run simultaneously, the suggested default.
+
+1. Note the location of your php executable, and create a systemd service file for the AI workers:
+
+.. code-block:: console
+
+   $ which php
+   /usr/bin/php
+   $ sudo systemctl edit --full --force nextcloud-ai-worker@.service
+
+Paste the following content into the editor:
 
 .. code-block::
 
    [Unit]
    Description=Nextcloud AI worker %i
-   After=network.target
-
+   
    [Service]
-   ExecStart=/opt/nextcloud-ai-worker/taskprocessing.sh %i
+   WorkingDirectory=/path/to/nextcloud
+   User=www-data
+   ExecStart=/usr/bin/php occ taskprocessing:worker -v -t 60
    Restart=always
    StartLimitInterval=60
    StartLimitBurst=10
@@ -381,34 +392,27 @@ Systemd service
    [Install]
    WantedBy=multi-user.target
 
-2. Create a shell script in ``/opt/nextcloud-ai-worker/taskprocessing.sh`` with the following content and make sure to make it executable:
+Make sure the ``ExecStart=`` line above points to your php execuatable file location
+
+You may want to adjust the timeout (``-t 60`` above) to your needs (in seconds).
+
+2. Enable and start 4 instances of the service (the command can be safely re-run with a higher value if more instances are needed):
 
 .. code-block::
 
-   #!/bin/sh
-   echo "Starting Nextcloud AI Worker $1"
-   cd /path/to/nextcloud
-   sudo -E -u www-data php occ taskprocessing:worker -v -t 60
+   systemctl enable --now nextcloud-ai-worker@{1..4}.service
 
-You may want to adjust the timeout to your needs (in seconds).
-
-3. Enable and start the service 4 or more times:
+The status of the workers can be checked with:
 
 .. code-block::
 
-   for i in {1..4}; do systemctl enable --now nextcloud-ai-worker@$i.service; done
-
-The status of the workers can be checked with (replace 1 with the worker number):
-
-.. code-block::
-
-   systemctl status nextcloud-ai-worker@1.service
+   systemctl status nextcloud-ai-worker@{1..4}.service
 
 The list of workers can be checked with:
 
 .. code-block::
 
-   systemctl list-units --type=service | grep nextcloud-ai-worker
+   systemctl list-units --type=service | grep nextcloud-ai-worker@
 
 The complete logs of the workers can be checked with (replace 1 with the worker number):
 
