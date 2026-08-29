@@ -120,7 +120,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#initial-loading-of-data">Initial loading of data</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#auto-indexing">Auto-indexing</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#synchronous-indexing">Synchronous indexing</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#scaling">Scaling</a><ul>
@@ -225,17 +224,17 @@
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
 <ul>
-<li><p>Minimal Nextcloud version: 30</p></li>
+<li><p>Minimal Nextcloud version: 32</p></li>
 <li><p>Nextcloud AIO is supported</p></li>
-<li><p>We currently support NVIDIA GPUs and x86_64 CPUs</p></li>
+<li><p>We currently support NVIDIA GPUs, AMD GPUs (via Vulkan) and x86_64 CPUs</p></li>
 <li><p>CPU that supports AVX and AVX2 instruction</p></li>
-<li><p>CUDA &gt;= v12.2 on your host system</p></li>
+<li><p>CUDA &gt;= v12.8 on your host system if NVIDIA GPUs are used</p></li>
 <li><p>Both podman and docker are supported</p></li>
 <li><p>GPU Setup Sizing</p>
 <blockquote>
 <div><ul class="simple">
 <li><dl class="simple">
-<dt>A NVIDIA GPU with at least 2GB VRAM</dt><dd><ul>
+<dt>A GPU with at least 2GB VRAM</dt><dd><ul>
 <li><p>The requirements for the text-to-text providers should be checked separately for each app <a class="reference internal" href="overview.html#tp-consumer-apps"><span class="std std-ref">here</span></a> in the “Backend apps” section, as they can vary greatly based on the model used and whether the provider is hosted locally or remotely.</p></li>
 </ul>
 </dd>
@@ -293,39 +292,23 @@
 <li><p>Install a text-to-text provider (text generation provider) via the “Apps” page in Nextcloud. A list of providers can be found <a class="reference internal" href="overview.html#tp-consumer-apps"><span class="std std-ref">here</span></a> in the “Backend apps” section.</p></li>
 <li><p>Optionally but recommended, setup background workers for faster pickup of tasks. See <a class="reference internal" href="overview.html#ai-overview-improve-ai-task-pickup-speed"><span class="std std-ref">the relevant section in AI Overview</span></a> for more information.</p></li>
 </ol>
-<p><strong>Note</strong>: Both apps need to be installed and both major version and minor version of the two apps must match for the functionality to work (ie. “v1.3.4” and “v1.3.1”; but not “v1.3.4” and “v2.1.6”; and not “v1.3.4” and “v1.4.5”). Keep this in mind when updating.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both apps need to be installed and both major version and minor version of the two apps must match for the functionality to work (ie. “v1.3.4” and “v1.3.1”; but not “v1.3.4” and “v2.1.6”; and not “v1.3.4” and “v1.4.5”). Keep this in mind when updating.</p>
+</div>
 </section>
 <section id="initial-loading-of-data">
 <h2>Initial loading of data<a class="headerlink" href="#initial-loading-of-data" title="Link to this heading"></a></h2>
 <section id="auto-indexing">
 <h3>Auto-indexing<a class="headerlink" href="#auto-indexing" title="Link to this heading"></a></h3>
 <div class="line-block">
-<div class="line">Context chat will automatically load user data into the Vector DB using asynchronous background jobs.</div>
+<div class="line">Context chat will automatically load user data into the Vector DB. Context chat backend pulls the queued files and content providers’ items from the context chat PHP app and indexes them.</div>
 <div class="line">The initial loading of data can take a long time depending on the number of files and their size.</div>
 </div>
-<p>The indexing jobs are set up to run during the Nextcloud instance’s maintenance window (typically during the night) only. If you have not set a maintenance window, indexing will run 24/7.</p>
-<div class="line-block">
-<div class="line">You can set up a separate cron job to run every 30 minutes for Context Chat to avoid slowing down normal background job operation on larger instances.</div>
-<div class="line">The following command can bypass the maintenance window so it can either be set to run during the day even with a maintenance window set, or it can be set to run during the weekends 24/7 to speed up the indexing process.</div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">php</span> <span class="n">cron</span><span class="o">.</span><span class="n">php</span> <span class="s2">&quot;OCA</span><span class="se">\\</span><span class="s2">ContextChat</span><span class="se">\\</span><span class="s2">BackgroundJobs</span><span class="se">\\</span><span class="s2">IndexerJob&quot;</span> <span class="s2">&quot;OCA</span><span class="se">\\</span><span class="s2">ContextChat</span><span class="se">\\</span><span class="s2">BackgroundJobs</span><span class="se">\\</span><span class="s2">ActionJob&quot;</span> <span class="s2">&quot;OCA</span><span class="se">\\</span><span class="s2">ContextChat</span><span class="se">\\</span><span class="s2">BackgroundJobs</span><span class="se">\\</span><span class="s2">SubmitContentJob&quot;</span> <span class="s2">&quot;OCA</span><span class="se">\\</span><span class="s2">ContextChat</span><span class="se">\\</span><span class="s2">BackgroundJobs</span><span class="se">\\</span><span class="s2">StorageCrawlJob&quot;</span> <span class="s2">&quot;OCA</span><span class="se">\\</span><span class="s2">ContextChat</span><span class="se">\\</span><span class="s2">BackgroundJobs</span><span class="se">\\</span><span class="s2">InitialContentImportJob&quot;</span>
-</pre></div>
-</div>
-</section>
-<section id="synchronous-indexing">
-<h3>Synchronous indexing<a class="headerlink" href="#synchronous-indexing" title="Link to this heading"></a></h3>
-<div class="line-block">
-<div class="line">To index all the files synchronously, use the following command:</div>
-<div class="line">Note: This does not interact with the auto-indexing feature and that list would remain unchanged. However, the indexed files would be skipped when the auto indexer runs.</div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">context_chat</span><span class="p">:</span><span class="n">scan</span> <span class="o">&lt;</span><span class="n">user_id</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p><strong>Note</strong>: The synchronous command could take several days to complete. On larger systems we thus recommend to use auto-indexing.</p>
 </section>
 </section>
 <section id="scaling">
-<h2>Scaling<a class="headerlink" href="#scaling" title="Link to this heading"></a></h2>
+<span id="scaling-context-chat"></span><h2>Scaling<a class="headerlink" href="#scaling" title="Link to this heading"></a></h2>
 <p>Listed below are the major parts of the system that can be scaled independently to improve performance:</p>
 <ol class="arabic">
 <li><p>The text-to-text task processing provider (from among the list of providers <a class="reference internal" href="overview.html#tp-consumer-apps"><span class="std std-ref">here</span></a> in the “Backend apps” section)</p>
@@ -342,21 +325,40 @@
 <div class="line">The embedding model performance can be scaled by using a hosted embedding service, locally or remotely hosted. It should be able to serve an OpenAI-compatible API.</div>
 <div class="line">The embedding service URL can be set using the environment variable <code class="docutils literal notranslate"><span class="pre">CC_EM_BASE_URL</span></code> during deployment in the “Deploy Options”. Other options like the model name, api key, or username and password can be set using the environment variables <code class="docutils literal notranslate"><span class="pre">CC_EM_MODEL_NAME</span></code>, <code class="docutils literal notranslate"><span class="pre">CC_EM_API_KEY</span></code>, <code class="docutils literal notranslate"><span class="pre">CC_EM_USERNAME</span></code>, and <code class="docutils literal notranslate"><span class="pre">CC_EM_PASSWORD</span></code> respectively.</div>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The embedding model cannot be changed after installing the app. To use a different embedding model or service, you
+will need to do a full uninstall (removing all data of the ExApp) and reinstall the <code class="docutils literal notranslate"><span class="pre">context_chat_backend</span></code> ExApp
+with the new environment variables and an empty vector DB. If the vector DB is external, the connected database
+(database may be named <code class="docutils literal notranslate"><span class="pre">ccb</span></code>) should be dropped before installing the ExApp again.</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">context_chat</span></code> app, obtain a clean slate by dropping all the <code class="docutils literal notranslate"><span class="pre">&lt;PREFIX&gt;_context_chat_*</span></code> tables in the database, and removing all the config values:
+And re-installing it.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">drop</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="n">oc_context_chat_action_queue</span><span class="p">;</span>
+<span class="k">drop</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="n">oc_context_chat_content_queue</span><span class="p">;</span>
+<span class="k">drop</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="n">oc_context_chat_fs_events</span><span class="p">;</span>
+<span class="k">drop</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="n">oc_context_chat_queue</span><span class="p">;</span>
+<span class="k">delete</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">oc_appconfig</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">appid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;context_chat&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p>The parsing of the documents to extract text</p>
+<div class="line-block">
+<div class="line">The parsing of the documents to extract text is done in a single instance of the <code class="docutils literal notranslate"><span class="pre">context_chat_backend</span></code> ExApp in a docker-based environment. It is a CPU-bound task, so having a powerful CPU will help speed up the parsing process.</div>
+<div class="line">This can be scaled by using Kubernetes for deployment, allowing multiple instances of the <code class="docutils literal notranslate"><span class="pre">context_chat_backend</span></code> ExApp to handle the parsing concurrently, see <a class="reference internal" href="#kubernetes-context-chat"><span class="std std-ref">the Kubernetes section</span></a>.</div>
+</div>
 </li>
 </ol>
-<p>One part of the system that cannot be scaled yet is the parsing of the documents to extract text.
-This is currently done in a single instance of the <code class="docutils literal notranslate"><span class="pre">context_chat_backend</span></code> ExApp.
-It is a CPU-bound task so having a powerful CPU will help speed up the parsing process.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">context_chat_backend</span></code> is already deployed, you can change these environment variables by redeploying it with the new values.</p>
 <ol class="arabic simple">
 <li><p>Go to Apps page -&gt; search for “Context Chat Backend”</p></li>
-<li><p>Disable and remove the app taking care the data is not removed</p></li>
+<li><p>Disable and remove the app taking care the data is not removed (except when the embedding model is changed, in which case the data should be removed)</p></li>
 <li><p>Set the “Deploy Options” with the new environment variables</p></li>
 <li><p>Reinstall the app</p></li>
 </ol>
 <section id="kubernetes">
-<h3>Kubernetes<a class="headerlink" href="#kubernetes" title="Link to this heading"></a></h3>
-<p>Starting with version 5.4.0 of the app, Kubernetes is supported for deployment of the backend to scale ContextChat to large instances. Nextcloud customers can find details about Kubernetes deployment in the customer documentation or by contacting support.</p>
+<span id="kubernetes-context-chat"></span><h3>Kubernetes<a class="headerlink" href="#kubernetes" title="Link to this heading"></a></h3>
+<p>Starting with version 5.4.0 of the app and Nextcloud 34, Kubernetes is supported for deployment of the backend to scale ContextChat to large instances. Nextcloud customers can find details about Kubernetes deployment in the customer documentation or by contacting support.</p>
 </section>
 </section>
 <section id="app-store">
@@ -382,17 +384,20 @@ It is a CPU-bound task so having a powerful CPU will help speed up the parsing p
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">context_chat:scan</span></code></dt><dd><p>Scan and index the user’s documents based on the user ID provided, synchronously.</p>
-</dd>
-</dl>
-</li>
 <li><dl>
 <dt><code class="docutils literal notranslate"><span class="pre">context_chat:stats</span></code></dt><dd><div class="line-block">
 <div class="line">Shows the time taken to complete the initial indexing of the documents if it has finished,</div>
 <div class="line">and the current no. of items in the indexer and actions queue.</div>
 <div class="line">“Actions” refers to tasks like file deletions, ownership changes through share changes, etc.</div>
 <div class="line">These file and ownership changes are synced with the backed through this actions queue.</div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">context_chat:reindex</span></code></dt><dd><div class="line-block">
+<div class="line">Schedule a full re-crawl of all the files in all the mounts. Indexed files are not re-indexed when compared against context_chat_backend’s vector DB.</div>
+<div class="line">Content providers are not re-indexed.</div>
 </div>
 </dd>
 </dl>
@@ -411,6 +416,7 @@ It is a CPU-bound task so having a powerful CPU will help speed up the parsing p
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">context_chat</span> <span class="n">auto_indexing</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;true&#39;</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">string</span>
 </pre></div>
 </div>
+<p>Context chat backend’s configuration options are available through the environment variable in <a class="reference internal" href="../exapps_management/AdvancedDeployOptions.html#ai-app-api-deploy-options"><span class="std std-ref">Deploy Options</span></a>.</p>
 </section>
 <section id="logs">
 <h2>Logs<a class="headerlink" href="#logs" title="Link to this heading"></a></h2>
