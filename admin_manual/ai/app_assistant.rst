@@ -190,6 +190,33 @@ To enable/disable the text-to-image smart picker for all the users.
 
 To enable/disable the speech-to-text smart picker for all the users.
 
+5. Data folder
+
+.. code-block::
+
+   occ config:app:set assistant default_data_folder --value="Assistant" --type=string
+
+The assistant stores the content it generates, such as generated images and speech-to-text
+output, in a folder in the files of each user. This sets the name that folder is given when
+it is created. It defaults to ``Assistant``, and is also editable in the Assistant admin
+settings.
+
+Users can choose their own name in their personal Assistant settings, which is stored per
+user and takes precedence over the server-wide default:
+
+.. code-block::
+
+   occ user:setting $USER_ID assistant data_folder "Assistant"
+
+Two things to keep in mind:
+
+* Changing either value does not rename or move a folder that already exists. It only
+  affects the name used the next time a folder has to be created, so existing generated
+  content stays where it is.
+* A user who already has a folder under the built-in name ``Assistant``, from before a
+  default was set, keeps using it. This avoids starting a second folder for them and
+  leaving their earlier output behind.
+
 Task processing
 ~~~~~~~~~~~~~~~
 

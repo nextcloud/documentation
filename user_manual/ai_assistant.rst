@@ -20,8 +20,23 @@ Personal settings
 -----------------
 
 The assistant personal settings are in **Personal settings** under the **Artificial intelligence**
-section. You can disable the assistant top menu entry there, and enable or disable the
-AI-related smart pickers.
+section. You can disable the assistant top menu entry there, enable or disable the
+AI-related smart pickers, and change the name of the folder the assistant saves its output to.
+
+Where generated content is saved
+--------------------------------
+
+Content the assistant generates for you, such as generated images and speech-to-text output, is
+saved to a folder in your Files. It is called ``Assistant`` unless your administrator has chosen
+a different name for the instance.
+
+You can pick your own name for it under **Data folder** in the assistant personal settings. Leave
+the field empty to keep the name your administrator has set; the placeholder shows what that is.
+
+.. note::
+
+   Changing the name does not rename or move the folder you already have. It applies the next
+   time a folder has to be created, so anything generated before the change stays where it is.
 
 Running a task
 --------------
