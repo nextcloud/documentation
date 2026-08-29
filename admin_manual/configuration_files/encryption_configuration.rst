@@ -119,12 +119,27 @@ Before You Enable Encryption
 
 1. Read this guide fully and understand the risks.
 2. Back up your instance configuration and all encryption keys in a safe location before proceeding.
-3. Decide which key management mode suits your needs (see below).
+3. Decide which key management mode suits your needs (see below). Select the
+   mode before enabling encryption or creating encrypted data.
+
+.. warning::
+   Master key mode and user key mode are not interchangeable operating modes
+   that can be migrated between after encryption is in use.
+
+   The ``encryption:enable-master-key`` and
+   ``encryption:disable-master-key`` commands only select a mode for a fresh
+   setup with no existing encrypted data. They do not convert existing
+   ciphertext or migrate existing keys. Once encrypted data exists, changing
+   the mode is unsupported and can make files inaccessible.
 
 .. _encryption_configuration_key_management_modes:
 
 Key Management Modes
 --------------------
+
+Master key mode is enabled by default for new installations. Existing
+installations upgraded from older Nextcloud releases may retain user key mode.
+Check the current mode before making assumptions about an existing deployment.
 
 **Master Key (default):**
 
@@ -158,14 +173,28 @@ Key Management Modes
 
 **To select user key mode:**
 
-Run:
+On a fresh setup with no existing encrypted data, run:
 
 .. code-block:: bash
 
    occ encryption:disable-master-key
 
-before enabling encryption.
+Run this command before enabling server-side encryption or storing encrypted
+files. The command displays a confirmation warning and does not migrate
+existing encrypted data.
 
+**To explicitly select master key mode:**
+
+Master key mode is the default for new installations. If it was explicitly
+disabled on a fresh setup and no data has yet been encrypted, it can be
+selected with:
+
+.. code-block:: bash
+
+   occ encryption:enable-master-key
+
+Treat either mode-selection command as an effectively one-way operation. Do
+not use them to convert an installation that already contains encrypted data.
 
 Enabling Encryption (Step-by-Step)
 ----------------------------------
@@ -237,9 +266,9 @@ Here is a reference table for common occ commands:
    * - occ encryption:change-key-storage-root [dir]
      - Move key storage directory
    * - occ encryption:enable-master-key
-     - Enable master key mode
+     - Select master key mode on a fresh setup with no encrypted data
    * - occ encryption:disable-master-key
-     - Disable master key mode
+     - Select per-user key mode on a fresh setup with no encrypted data
    * - occ encryption:fix-encrypted-version
      - Fix bad signature errors
    * - occ encryption:fix-key-location [user]
