@@ -22,13 +22,18 @@ Definitions
 -----------
 
 - **Server-Side Encryption (SSE):** Performed by the Nextcloud server, protecting
-  files at rest on local and external storage. Encryption keys are stored on the server.
+  file contents at rest on local and external storage. The server has access to
+  the keys and plaintext while processing files, so the server remains inside
+  the trust boundary.
 - **End-to-End Encryption (E2EE):** Performed by Nextcloud desktop or mobile clients
   before uploading files. Only the client can decrypt, making data inaccessible to
   server administrators and external storage providers.
-- **Master Key:** A central key controlled by the server, used to encrypt all files.
-- **User Keys:** Each user has their own key, protected by their password, to encrypt
-  their files.
+- **File Key:** A symmetric key used to encrypt an individual file's contents.
+- **Master Key:** A server-controlled key pair used to unlock the file keys in
+  master key mode.
+- **User Keys:** Per-user key pairs used to unlock file keys for authorized users.
+  A user's private key is protected by their password while stored, but is made
+  available to the server when needed to process encrypted files.
 - **Recovery Key:** An admin-defined key to recover files if users lose their passwords.
 - **Disk/Block Device Encryption:** A method of securing all data stored on a physical
   storage device by encrypting it at the hardware or filesystem level - typically using
@@ -48,16 +53,16 @@ Encryption Method Comparison
      - Protects Against
    * - SSE (Master Key)
      - Server
-     - Admins & users
-     - External storage providers
+     - Nextcloud server; users through Nextcloud
+     - External storage providers lacking access to the Nextcloud server or keys
    * - SSE (User Keys)
      - Server
-     - Users & malicious admins
-     - External storage providers
+     - Authorized users through Nextcloud; the server while their keys are available
+     - External storage providers lacking access to the Nextcloud server or keys
    * - SSE (User Keys w/ Recovery)
      - Server
-     - Users & admins with recovery key
-     - External storage providers
+     - Authorized users and recovery-key holders through Nextcloud
+     - External storage providers lacking access to the Nextcloud server or keys
    * - E2EE
      - Client
      - Users only
@@ -74,8 +79,10 @@ Key Points & Limitations
 - **Server-Side Encryption (SSE)** is mainly for protecting files on external, third-party storage.
 - **End-to-End Encryption (E2EE)** is for scenarios where server administrators must not access data.
 - SSE does **not** encrypt filenames or folder structures, only file contents.
-- SSE does not protect data from a compromised Nextcloud server or malicious administrator.
-  Use E2EE for this threat.
+- All SSE key-management modes trust the Nextcloud server. SSE does not protect
+  data from a compromised server or from an administrator who controls the
+  server, its configuration, or its runtime. Use E2EE (with web access mode left disabled) when the
+  server must not have access to plaintext.
 - SSE cannot be reversed via the Nextcloud Web interface.
 - Troubleshooting SSE generally requires ``occ`` command access. Make sure you have
   this before enabling SSE!
@@ -122,14 +129,22 @@ Key Management Modes
 **Master Key (default):**
 
 - All files are encrypted with a central server-controlled key.
-- Admins can decrypt any user’s files.
+- File contents are encrypted with per-file keys that the server-wide master key
+  can unlock.
+- An operator with access to the Nextcloud server, instance secret, and key
+  storage can recover encrypted file contents. This does not imply that every
+  delegated Nextcloud application administrator has a user-interface action to
+  browse every user's files.
 - **Recovery keys are not available in master key mode.** Files remain accessible if a user forgets their password, as they are encrypted by the master key, not the user password.
 - Recommended for most deployments.
 
 **User Keys:**
 
-- Each user’s files are encrypted with a password-protected key.
-- Admins cannot (readily) decrypt files without the user's password, unless a recovery key is defined.
+- Each user has a private key that is protected by their password while stored.
+  File keys are wrapped for the users authorized to access each file.
+- Routine administrative recovery requires the user's password or an enabled
+  recovery key. However, this mode does not protect against an administrator who
+  controls or compromises the running Nextcloud server.
 - If a user forgets their password and no recovery key exists, their files are lost.
 - This mode does not work with all authentication methods (e.g., app passwords, single sign-on) and is only recommended for compatibility with older setups.
 
@@ -137,7 +152,9 @@ Key Management Modes
 
 - If you trust your server administrators, use master key mode.
 - If you need to prevent admins from accessing files, use E2EE.
-- User key mode offers some protection against malicious server administrators, but has limitations.
+- User key mode can limit routine administrative recovery without user credentials, but 
+  it does not move the Nextcloud server outside the trust boundary. A malicious administrator
+  can gain access to plaintext file contents.
 
 **To select user key mode:**
 
