@@ -264,6 +264,11 @@ To expire eligible items for one or more accounts:
 
    sudo -E -u www-data php occ trashbin:expire USER_ID_1 USER_ID_2
 
+When no account IDs are provided, the command automatically discovers accounts
+that have previously logged in. This normally covers all accounts that can have
+trash-bin contents. For an account with imported or otherwise provisioned
+trash-bin data but no recorded login, provide its account ID explicitly.
+
 The command displays a progress bar when processing all accounts. Use
 ``--quiet`` to suppress the progress bar:
 
