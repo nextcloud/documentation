@@ -100,14 +100,49 @@ impact depends on the data and capabilities available to the actor:
   way to recover the password. However, password hashes must still be protected
   against offline password-guessing attacks.
 
-Limit on password length
-^^^^^^^^^^^^^^^^^^^^^^^^
+.. _password_length_limits:
 
-Nextcloud uses the bcrypt algorithm, and thus for security and performance
-reasons, e.g. Denial of Service as CPU demand increases exponentially, it only
-verifies the first 72 characters of passwords. This applies to all passwords
-that you use in Nextcloud: user passwords, passwords on link shares, and
-passwords on external shares.
+Password Length Limits
+^^^^^^^^^^^^^^^^^^^^^^
+
+Nextcloud accepts account passwords of up to 469 bytes through its standard
+account-creation, password-change, and password-reset interfaces. This is the
+maximum account-password length enforced by these interfaces. Because the
+limit is measured in bytes, a password containing multibyte characters (such as
+emojis or characters from non-Latin scripts) may reach the limit with fewer than
+469 characters.
+
+Administrators can use the :doc:`Password Policy app </configuration_user/user_password_policy>`
+to configure requirements such as a minimum password length and other
+complexity rules. External user backends may impose additional or different
+requirements.
+
+The following implementation details do not reduce the general password limits,
+but they are relevant when selecting a password policy:
+
+Token Encryption Performance
+    When ``auth.storeCryptedPassword`` is enabled and an account password is
+    longer than 214 bytes, Nextcloud uses a larger RSA key when creating
+    authentication-token records. This increases token-generation overhead, but
+    does not prevent passwords between 214 and 469 bytes from being accepted.
+    The 214-byte threshold is therefore a performance consideration, not a
+    password-length limit.
+
+    Administrators who expect very long or one-time passwords to be used may
+    consider disabling ``auth.storeCryptedPassword`` to avoid this overhead,
+    subject to the functional consequences described above.
+
+Algorithmic Truncation (Bcrypt)
+    Nextcloud prefers Argon2id for one-way password hashing when it is supported
+    by PHP, with Argon2i and bcrypt as fallbacks. Bcrypt considers only the first
+    72 bytes of its input. Therefore, if bcrypt is selected, input after the
+    first 72 bytes does not contribute to password verification. This is a
+    bcrypt-specific behavior, not a general 72-byte limit imposed by Nextcloud.
+
+Passwords protecting public link and mail shares use the same one-way password
+hasher and are subject to the applicable share-password policy. They are not
+stored in authentication-token records, so the encryption-related performance
+considerations above do not apply.
 
 Operating system
 ----------------
