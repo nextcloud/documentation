@@ -85,7 +85,7 @@ Administrators can disable this behavior with ``auth.storeCryptedPassword``.
 Disabling it does not affect the one-way account-password hash used by the
 built-in database user backend. Features that rely on recovering the login
 password from an authenticate-token record cannot retrieve it from records
-created without a stored password. 
+created without a stored password.
 
 When an authentication token contains a stored password, Nextcloud periodically
 checks that password against the user backend. If the password is no longer
