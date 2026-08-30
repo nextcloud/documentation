@@ -258,7 +258,7 @@ Here is a reference table for common occ commands:
    * - occ encryption:set-default-module [Module ID]
      - Select default encryption module
    * - occ encryption:encrypt-all
-     - Encrypt all files for all users
+     - Encrypt existing files in users' current files trees
    * - occ encryption:decrypt-all [user]
      - Decrypt all files (or for one user)
    * - occ encryption:show-key-storage-root
@@ -291,16 +291,55 @@ Encrypting All Files
 --------------------
 
 By default, only new and changed files are encrypted when you enable SSE.
-To encrypt all files for all users run:
+To encrypt existing files for all users, run:
 
 .. code-block:: bash
 
    occ encryption:encrypt-all
 
-- **Make sure you have backups before running.**
-- The command creates a key pair for each user and encrypts their files.
-- Progress is displayed until all files are encrypted.
-- **Make sure no users access files during this process.**
+.. warning::
+   Create and verify a complete backup before running this command. Make sure
+   that no users access their files while it is running.
+
+The command:
+
+- Requires server-side encryption to be enabled and an encryption module to be
+  loaded.
+- Must be started while maintenance mode is disabled. It enables maintenance
+  mode and temporarily disables the trash bin app while processing files.
+- Processes the current files in each user's ``files`` tree. It does not
+  retroactively encrypt existing historical file versions or existing trash
+  bin content.
+- Skips shared entries encountered while traversing a user's files. Such files
+  are processed through their owner's file tree.
+- Displays progress and logs failures encountered while processing individual
+  files. Review both the command output and the Nextcloud log before considering
+  the operation complete.
+
+The key setup performed by the command depends on the configured key-management
+mode:
+
+**Master key mode**
+
+- The command validates or creates the server-wide master key.
+- It does not create a separate key pair or password for every user.
+
+**User key mode**
+
+- The command creates a key pair for each user who does not already have one.
+- A one-time private-key password is generated for each newly created key pair.
+- The generated credentials are displayed and written to
+  ``data/oneTimeEncryptionPasswords.csv``.
+- The command can optionally send the one-time passwords to users by email.
+- Each affected user must sign in to the Web interface, open the **Security**
+  section of their personal settings, and replace the one-time private-key
+  password with their current login password.
+
+.. warning::
+   ``data/oneTimeEncryptionPasswords.csv`` contains sensitive credentials.
+   Restrict access to it, deliver the credentials to users through an
+   appropriate secure channel, and securely remove or archive the file after
+   every affected user has updated their private-key password.
 
 .. _occ_disable_encryption_label:
 
