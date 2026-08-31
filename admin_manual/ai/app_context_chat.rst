@@ -18,14 +18,15 @@ This app supports input and output in the same languages that the currently conf
 Requirements
 ------------
 
-* Minimal Nextcloud version: 30
+* Minimal Nextcloud version: 32
 * Nextcloud AIO is supported
-* We currently support NVIDIA GPUs and x86_64 CPUs
+* We currently support NVIDIA GPUs, AMD GPUs (via Vulkan) and x86_64 CPUs
 * CPU that supports AVX and AVX2 instruction
-* CUDA >= v12.2 on your host system
+* CUDA >= v12.8 on your host system if NVIDIA GPUs are used
+* Both podman and docker are supported
 * GPU Setup Sizing
 
-   * A NVIDIA GPU with at least 2GB VRAM
+   * A GPU with at least 2GB VRAM
       * The requirements for the text-to-text providers should be checked separately for each app :ref:`here <tp-consumer-apps>` in the "Backend apps" section, as they can vary greatly based on the model used and whether the provider is hosted locally or remotely.
    * At least 8GB of system RAM
       * 2 GB + additional 500MB for each concurrent request made to the backend if configuration parameters are changed
@@ -65,7 +66,9 @@ Installation
 
 6. Optionally but recommended, setup background workers for faster pickup of tasks. See :ref:`the relevant section in AI Overview<ai-overview_improve-ai-task-pickup-speed>` for more information.
 
-**Note**: Both apps need to be installed and both major version and minor version of the two apps must match for the functionality to work (ie. "v1.3.4" and "v1.3.1"; but not "v1.3.4" and "v2.1.6"; and not "v1.3.4" and "v1.4.5"). Keep this in mind when updating.
+.. note::
+
+   Both apps need to be installed and both major version and minor version of the two apps must match for the functionality to work (ie. "v1.3.4" and "v1.3.1"; but not "v1.3.4" and "v2.1.6"; and not "v1.3.4" and "v1.4.5"). Keep this in mind when updating.
 
 
 Initial loading of data
@@ -74,30 +77,11 @@ Initial loading of data
 Auto-indexing
 ~~~~~~~~~~~~~
 
-| Context chat will automatically load user data into the Vector DB using asynchronous background jobs.
+| Context chat will automatically load user data into the Vector DB. Context chat backend pulls the queued files and content providers' items from the context chat PHP app and indexes them.
 | The initial loading of data can take a long time depending on the number of files and their size.
 
-The indexing jobs are set up to run during the Nextcloud instance's maintenance window (typically during the night) only. If you have not set a maintenance window, indexing will run 24/7.
 
-| You can set up a separate cron job to run every 30 minutes for Context Chat to avoid slowing down normal background job operation on larger instances.
-| The following command can bypass the maintenance window so it can either be set to run during the day even with a maintenance window set, or it can be set to run during the weekends 24/7 to speed up the indexing process.
-
-.. code-block::
-
-   php cron.php "OCA\\ContextChat\\BackgroundJobs\\IndexerJob" "OCA\\ContextChat\\BackgroundJobs\\ActionJob" "OCA\\ContextChat\\BackgroundJobs\\SubmitContentJob" "OCA\\ContextChat\\BackgroundJobs\\StorageCrawlJob" "OCA\\ContextChat\\BackgroundJobs\\InitialContentImportJob"
-
-
-Synchronous indexing
-~~~~~~~~~~~~~~~~~~~~
-
-| To index all the files synchronously, use the following command:
-| Note: This does not interact with the auto-indexing feature and that list would remain unchanged. However, the indexed files would be skipped when the auto indexer runs.
-
-.. code-block::
-
-   occ context_chat:scan <user_id>
-
-**Note**: The synchronous command could take several days to complete. On larger systems we thus recommend to use auto-indexing.
+.. _scaling-context-chat:
 
 Scaling
 -------
@@ -118,17 +102,38 @@ Listed below are the major parts of the system that can be scaled independently 
    | The embedding model performance can be scaled by using a hosted embedding service, locally or remotely hosted. It should be able to serve an OpenAI-compatible API.
    | The embedding service URL can be set using the environment variable ``CC_EM_BASE_URL`` during deployment in the "Deploy Options". Other options like the model name, api key, or username and password can be set using the environment variables ``CC_EM_MODEL_NAME``, ``CC_EM_API_KEY``, ``CC_EM_USERNAME``, and ``CC_EM_PASSWORD`` respectively.
 
-One part of the system that cannot be scaled yet is the parsing of the documents to extract text.
-This is currently done in a single instance of the ``context_chat_backend`` ExApp.
-It is a CPU-bound task so having a powerful CPU will help speed up the parsing process.
+   .. warning::
+
+      The embedding model cannot be changed after installing the app. To use a different embedding model or service, you
+      will need to do a full uninstall (removing all data of the ExApp) and reinstall the ``context_chat_backend`` ExApp
+      with the new environment variables and an empty vector DB. If the vector DB is external, the connected database
+      (database may be named ``ccb``) should be dropped before installing the ExApp again.
+
+      For the ``context_chat`` app, obtain a clean slate by dropping all the ``<PREFIX>_context_chat_*`` tables in the database, and removing all the config values:
+      And re-installing it.
+
+      .. code-block:: sql
+
+         drop table if exists oc_context_chat_action_queue;
+         drop table if exists oc_context_chat_content_queue;
+         drop table if exists oc_context_chat_fs_events;
+         drop table if exists oc_context_chat_queue;
+         delete from oc_appconfig where appid = 'context_chat';
+
+
+4. The parsing of the documents to extract text
+
+   | The parsing of the documents to extract text is done in a single instance of the ``context_chat_backend`` ExApp in a docker-based environment. It is a CPU-bound task, so having a powerful CPU will help speed up the parsing process.
+   | This can be scaled by using Kubernetes for deployment, allowing multiple instances of the ``context_chat_backend`` ExApp to handle the parsing concurrently, see :ref:`the Kubernetes section <kubernetes-context-chat>`.
 
 If ``context_chat_backend`` is already deployed, you can change these environment variables by redeploying it with the new values.
 
 1. Go to Apps page -> search for "Context Chat Backend"
-2. Disable and remove the app taking care the data is not removed
+2. Disable and remove the app taking care the data is not removed (except when the embedding model is changed, in which case the data should be removed)
 3. Set the "Deploy Options" with the new environment variables
 4. Reinstall the app
 
+.. _kubernetes-context-chat:
 
 App store
 ---------
@@ -153,14 +158,15 @@ The options for each command can be found like this, using scan as example: ``co
 * ``context_chat:search``
    Perform a semantic (vector DB based) search on your indexed documents, with options for selective context.
 
-* ``context_chat:scan``
-   Scan and index the user's documents based on the user ID provided, synchronously.
-
 * ``context_chat:stats``
    | Shows the time taken to complete the initial indexing of the documents if it has finished,
    | and the current no. of items in the indexer and actions queue.
    | "Actions" refers to tasks like file deletions, ownership changes through share changes, etc.
    | These file and ownership changes are synced with the backed through this actions queue.
+
+* ``context_chat:reindex``
+   | Schedule a full re-crawl of all the files in all the mounts. Indexed files are not re-indexed when compared against context_chat_backend's vector DB.
+   | Content providers are not re-indexed.
 
 
 Configuration Options
@@ -173,6 +179,8 @@ Configuration Options
 
    occ config:app:set context_chat auto_indexing --value=true --type=boolean
 
+
+Context chat backend's configuration options are available through the environment variable in :ref:`Deploy Options <ai-app_api_deploy_options>`.
 
 Logs
 ----
@@ -206,5 +214,4 @@ Known Limitations
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI).
 * Files larger than 100MB are not supported
 * Password protected PDFs or any other files are not supported. There will be error logs mentioning cryptography and AES in the docker container when such files are encountered but it is nothing to worry about, they will be simply ignored and the system will continue to function normally.
-* Podman and Kubernetes are currently not supported for the Context Chat Backend ExApp.
 * External storages (through ``files_external``) may not work as well as the local storage.
