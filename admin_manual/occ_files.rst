@@ -783,6 +783,7 @@ Create a new mount configuration::
    --config region=eu-central-1 \
    --config key=AKIAIOSFODNN7EXAMPLE \
    --config secret=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+   --applicable-group engineering
 
 Arguments:
 
@@ -794,6 +795,8 @@ Arguments:
 
 Use ``files_external:backends`` to list all available storage and
 authentication backends.
+
+A mount with no users or groups assigned is available to all users.
 
 For a personal mount, specify the user with ``--user``::
 
