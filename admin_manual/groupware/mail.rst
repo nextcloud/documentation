@@ -30,6 +30,23 @@ To enable anti-abuse alerts, you'll have to set a few configuration options :doc
     # Alert when more than 100 messages are sent in one day
     occ config:app:set mail abuse_number_of_messages_per_1d --value=100
 
+Avoid duplicate sent messages (Exchange / Office 365)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 5.8 Nextcloud 32 or newer
+
+Microsoft Exchange and Office 365 automatically save a copy of sent messages to the *Sent* folder
+on the server. If the Mail app saves a copy too, users will see duplicates in their *Sent* folder.
+
+To avoid this, you can enable a check that skips the client-side copy when the server has already
+saved one. The check is disabled by default as it adds an IMAP round-trip to every send::
+
+    occ config:app:set mail smtp_saves_sent --value=true
+
+To disable it again::
+
+    occ config:app:delete mail smtp_saves_sent
+
 Attachment size limit
 ^^^^^^^^^^^^^^^^^^^^^
 
