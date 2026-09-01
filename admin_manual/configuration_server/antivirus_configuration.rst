@@ -244,3 +244,8 @@ Disabling background scan task
 You can disable background scan with occ to only scan files during upload::
 
     sudo -E -u www-data php occ config:app:set files_antivirus av_background_scan --value="off"
+
+.. note:: Setting ``av_rescan_days`` to ``0`` does **not** disable the periodic rescan of
+   already-scanned files. Any value below ``1`` is silently replaced with the default of 28 days,
+   so the rescan continues on its normal schedule. Use ``av_background_scan`` as shown above to
+   stop background scanning altogether.
