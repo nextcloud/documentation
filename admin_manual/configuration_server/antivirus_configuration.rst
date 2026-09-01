@@ -146,7 +146,7 @@ Daemon (Socket)
   .. figure:: ../images/antivirus-daemon-socket.png
 
   The ``Stream Length`` value sets the number of bytes read in one pass.
-  10485760 bytes, or ten megabytes, is the default. This value should be
+  26214400 bytes, or 25 MiB, is the default. This value should be
   no larger than the PHP ``memory_limit`` settings, or physical memory if
   ``memory_limit`` is set to -1 (no limit).
 
