@@ -1,6 +1,6 @@
-==========================
-BigInt (64bit) identifiers
-==========================
+======================================
+Convert to 64-bit database identifiers
+======================================
 
 Nextcloud uses big integers to store identifiers and auto-increment keys in the database.
 Because changing columns on huge tables can take quite a while (up to hours or days)
