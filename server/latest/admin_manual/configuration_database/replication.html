@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Replication &mdash; Nextcloud 35 Administration Manual</title>
+  <title>Using database read replicas &mdash; Nextcloud 35 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -30,8 +30,8 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Splitting databases" href="splitting.html" />
-    <link rel="prev" title="BigInt (64bit) identifiers" href="bigint_identifiers.html" />
+    <link rel="next" title="Splitting tables or apps across databases" href="splitting.html" />
+    <link rel="prev" title="Prevent identifier exhaustion in large databases" href="bigint_identifiers.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -84,18 +84,18 @@
 <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Database configuration</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="db_conversion.html">Converting database type</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_database_configuration.html">Database configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mysql_4byte_support.html">Enabling MySQL 4-byte support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bigint_identifiers.html">BigInt (64bit) identifiers</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Replication</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Database setup and configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_database_configuration.html">Set up a database server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mysql_4byte_support.html">Enabling MySQL/MariaDB 4-byte support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_conversion.html">Convert to a different database type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bigint_identifiers.html">Prevent identifier exhaustion in large databases</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using database read replicas</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-queries-are-routed">How queries are routed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connection-scope">Connection scope</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="splitting.html">Splitting databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splitting.html">Splitting tables or apps across databases</a></li>
 </ul>
 </li>
 </ul>
@@ -172,8 +172,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Database configuration</a></li>
-      <li class="breadcrumb-item active">Replication</li>
+          <li class="breadcrumb-item"><a href="index.html">Database setup and configuration</a></li>
+      <li class="breadcrumb-item active">Using database read replicas</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_database/replication.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -183,8 +183,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="replication">
-<h1>Replication<a class="headerlink" href="#replication" title="Link to this heading"></a></h1>
+  <section id="using-database-read-replicas">
+<h1>Using database read replicas<a class="headerlink" href="#using-database-read-replicas" title="Link to this heading"></a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 29.</span></p>
 </div>
@@ -247,8 +247,8 @@ asynchronous replication are only safe when the replication delay stays negligib
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="bigint_identifiers.html" class="btn btn-neutral float-left" title="BigInt (64bit) identifiers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="splitting.html" class="btn btn-neutral float-right" title="Splitting databases" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="bigint_identifiers.html" class="btn btn-neutral float-left" title="Prevent identifier exhaustion in large databases" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="splitting.html" class="btn btn-neutral float-right" title="Splitting tables or apps across databases" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

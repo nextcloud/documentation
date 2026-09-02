@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deleted Items (trash bin) &mdash; Nextcloud 35 Administration Manual</title>
+  <title>Deleted Files &mdash; Nextcloud 35 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -84,7 +84,7 @@
 <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database setup and configuration</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
@@ -110,8 +110,20 @@
 <li class="toctree-l2"><a class="reference internal" href="files_locking_transactional.html">Transactional file locking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="previews_configuration.html">Previews configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file_versioning.html">Controlling file versions and aging</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Deleted Items (trash bin)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#background-job">Background job</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Deleted Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#policy-configuration">Policy Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trash-bin-size-limits">Trash-bin Size Limits</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interaction-with-quotas">Interaction with Quotas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#background-jobs">Background Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-commands">Other Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#expiring-items-manually">Expiring Items Manually</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#removing-all-trashed-items">Removing All Trashed Items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#restoring-all-trashed-items">Restoring All Trashed Items</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="file_conversion.html">File conversion</a></li>
@@ -181,7 +193,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">File sharing and management</a></li>
-      <li class="breadcrumb-item active">Deleted Items (trash bin)</li>
+      <li class="breadcrumb-item active">Deleted Files</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_files/trashbin_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -191,70 +203,285 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="deleted-items-trash-bin">
-<h1>Deleted Items (trash bin)<a class="headerlink" href="#deleted-items-trash-bin" title="Link to this heading"></a></h1>
-<p>If the trash bin app is enabled (default), this setting defines the policy
-for when files and folders in the trash bin will be permanently deleted.</p>
+  <section id="deleted-files">
+<h1>Deleted Files<a class="headerlink" href="#deleted-files" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>When a file or folder is deleted, Nextcloud normally moves it to the trash bin
+instead of deleting it immediately. This allows the item to be restored later.</p>
+<p>Items in the trash bin are permanently deleted when one of the following occurs:</p>
+<ul class="simple">
+<li><p>The account owner selects <em>Delete permanently</em>.</p></li>
+<li><p>The configured retention policy expires the item.</p></li>
+<li><p>The effective trash-bin size limit is exceeded and the item is eligible for
+removal to free space.</p></li>
+</ul>
+<p>Logged-in accounts can access their trash bin by selecting <em>Deleted files</em> in
+the <strong>Files</strong> area of the Nextcloud Web interface. Items in the trash bin can
+be restored, downloaded, or permanently deleted.</p>
+<p>For information about using the trash bin as an account holder, see the
+<a class="reference external" href="https://docs.nextcloud.com/server/latest/user_manual/en/files/deleted_file_management.html">Deleted files</a>
+section of the User Manual.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If the user quota limit is exceeded due to deleted files in the trash bin,
-retention settings will be ignored and files will be cleaned up until
-the quota requirements are met.</p>
+<p>If the <em>Versions</em> app is enabled, versions associated with a deleted
+file are moved to the trash bin and are restored when the file is restored.</p>
 </div>
-<p>The app allows for two settings, a minimum time for trash bin retention,
-and a maximum time for trash bin retention.
-Minimum time is the number of days a file will be kept, after which it
-may be deleted. Maximum time is the number of days at which it is guaranteed
-to be deleted.
-Both minimum and maximum times can be set together to explicitly define
-file and folder deletion. For migration purposes, this setting is installed
-initially set to “auto”, which is equivalent to the default setting in
-Nextcloud.</p>
-<p>You may alter the default pattern in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>. The default setting is
-<code class="docutils literal notranslate"><span class="pre">auto</span></code>, which sets the default pattern:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;trashbin_retention_obligation&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+<p>When a file is restored, Nextcloud attempts to restore it to its original
+location. If that location no longer exists or is not writable, the file is
+restored to the account’s files root. If a file with the same name already
+exists, the restored file receives a unique name.</p>
+<p>This functionality is provided by the <em>Deleted files</em> app, whose application
+ID is <code class="docutils literal notranslate"><span class="pre">files_trashbin</span></code>. The app provides:</p>
+<ul class="simple">
+<li><p>The web interface for viewing, restoring, downloading, and permanently
+deleting items.</p></li>
+<li><p>The trash-bin filesystem integration.</p></li>
+<li><p>Automatic expiration through a background job.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">trashbin:size</span></code>, <code class="docutils literal notranslate"><span class="pre">trashbin:expire</span></code>, <code class="docutils literal notranslate"><span class="pre">trashbin:cleanup</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">trashbin:restore</span></code> commands.</p></li>
+</ul>
+</section>
+<section id="policy-configuration">
+<h2>Policy Configuration<a class="headerlink" href="#policy-configuration" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">files_trashbin</span></code> app uses two related mechanisms to determine when items
+are permanently deleted:</p>
+<ul class="simple">
+<li><p>A time-based retention policy configured with
+<code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code>.</p></li>
+<li><p>An effective trash-bin size limit, configured explicitly or calculated from
+the account’s available space.</p></li>
+</ul>
+<p>The default retention policy is <code class="docutils literal notranslate"><span class="pre">auto</span></code>. In the default configuration, items
+are retained for at least 30 days. After that minimum retention period, eligible
+items may be permanently deleted when space is needed.</p>
+<p>The default effective trash-bin size is calculated as follows:</p>
+<ul class="simple">
+<li><p>For an account with a quota, the trash bin may use up to 50% of the
+account’s remaining quota space.</p></li>
+<li><p>For an account without a quota, the trash bin may use the available
+filesystem space.</p></li>
+<li><p>If an explicit global or per-account trash-bin size is configured, that
+value overrides the calculated default.</p></li>
+</ul>
+<p>The 50% calculation is based on the account’s <strong>remaining</strong> quota space, not
+the account’s total quota. For example, if an account has a 10 GB quota and is
+already using 8 GB, the default trash-bin allowance is calculated from the
+remaining 2 GB.</p>
+<p>When the effective trash-bin limit is exceeded, Nextcloud processes the oldest
+items first. An item can be removed to free space only when it is eligible
+under the configured retention policy.</p>
+<p>The global retention policy is configured with the
+<code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code> setting in <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&#39;trashbin_retention_obligation&#39; =&gt; &#39;auto&#39;,</span>
 </pre></div>
 </div>
-<p>Available values:</p>
-<ul class="simple">
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">auto</span></code></dt><dd><p>default setting. keeps files and folders in the trash bin for 30 days
-and automatically deletes anytime after that if space is needed (note:
-files may not be deleted if space is not needed).</p>
+<p>Available retention policy values are described below. <code class="docutils literal notranslate"><span class="pre">D1</span></code> and <code class="docutils literal notranslate"><span class="pre">D2</span></code> are
+numbers of days.</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">auto</span></code></dt><dd><p>The default policy. This is equivalent to <code class="docutils literal notranslate"><span class="pre">auto,</span> <span class="pre">auto</span></code>.</p>
+<p>Files and folders are retained for at least 30 days. After 30 days, they may
+be permanently deleted when space is needed.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">D1,</span> <span class="pre">auto</span></code></dt><dd><p>Files and folders are retained for at least <code class="docutils literal notranslate"><span class="pre">D1</span></code> days. After that, they
+may be permanently deleted when space is needed.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">auto,</span> <span class="pre">D2</span></code></dt><dd><p>Files and folders may be permanently deleted when space is needed,
+regardless of age. In addition, all items older than <code class="docutils literal notranslate"><span class="pre">D2</span></code> days are
+permanently deleted automatically, even when space is not currently needed.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">D1,</span> <span class="pre">D2</span></code></dt><dd><p>Files and folders are retained for at least <code class="docutils literal notranslate"><span class="pre">D1</span></code> days. Items older than
+<code class="docutils literal notranslate"><span class="pre">D2</span></code> days are permanently deleted automatically.</p>
+<p>If the effective trash-bin size is exceeded, items older than <code class="docutils literal notranslate"><span class="pre">D1</span></code> days
+may also be deleted early to free space, oldest first. Items younger than
+<code class="docutils literal notranslate"><span class="pre">D1</span></code> days are protected from size-based cleanup.</p>
+<p>Items older than <code class="docutils literal notranslate"><span class="pre">D2</span></code> days are deleted automatically even when space is
+not currently needed. If <code class="docutils literal notranslate"><span class="pre">D2</span></code> is smaller than <code class="docutils literal notranslate"><span class="pre">D1</span></code>, Nextcloud adjusts
+the effective maximum retention period to <code class="docutils literal notranslate"><span class="pre">D1</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">disabled</span></code></dt><dd><p>Automatic trash-bin expiration is disabled. Files and folders remain in the
+trash bin until they are manually deleted or another operation removes them.</p>
 </dd>
 </dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">D,</span> <span class="pre">auto</span></code></dt><dd><p>keeps files and folders in the trash bin for D+ days, delete anytime if
-space needed (note: files may not be deleted if space is not needed)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">auto,</span> <span class="pre">D</span></code></dt><dd><p>delete all files in the trash bin that are older than D days
-automatically, delete other files anytime if space needed</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">D1,</span> <span class="pre">D2</span></code></dt><dd><p>keep files and folders in the trash bin for at least D1 days and
-delete when exceeds D2 days (note: files will not be deleted automatically if space is needed)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">disabled</span></code></dt><dd><p>trash bin auto clean disabled, files and folders will be kept forever</p>
-</dd>
-</dl>
-</li>
-</ul>
-<section id="background-job">
-<h2>Background job<a class="headerlink" href="#background-job" title="Link to this heading"></a></h2>
-<p>To permanently delete files a background jobs runs every 30 minutes.
-It’s possible to deactivate the background job and setup a (system) cron to expire the versions via occ.</p>
-<p>Deactivate background job: <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">config:app:set</span> <span class="pre">--value=no</span> <span class="pre">files_trashbin</span> <span class="pre">background_job_expire_trash</span></code></p>
-<p>Activate background job: <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">config:app:delete</span> <span class="pre">files_trashbin</span> <span class="pre">background_job_expire_trash</span></code></p>
-<p>Expire versions: <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">trashbin:expire</span></code> or <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">trashbin:expire</span> <span class="pre">--quiet</span></code> (without the progress bar)</p>
+<p>A single numeric value is also accepted. The value is used as the minimum
+retention period, while the default maximum retention period is 30 days. If
+the resulting maximum period would be shorter than the minimum period, the
+maximum is raised to match the minimum.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">10</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">10,</span> <span class="pre">30</span></code>: items are retained for at
+least 10 days and are automatically deleted once they exceed 30 days. By
+contrast, <code class="docutils literal notranslate"><span class="pre">45</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">45,</span> <span class="pre">45</span></code>, because the default maximum
+of 30 days is shorter than the 45-day minimum and is therefore raised to
+match it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">D1,</span> <span class="pre">auto</span></code>, and <code class="docutils literal notranslate"><span class="pre">auto,</span> <span class="pre">D2</span></code>, this form (including a
+bare numeric value) disables purely space-triggered cleanup of the trash
+bin. Items may still be removed early if the trash-bin size limit is
+exceeded, but only once they are older than the minimum retention period
+(<code class="docutils literal notranslate"><span class="pre">D1</span></code>).</p>
+</div>
+<p>For clarity, use the explicit <code class="docutils literal notranslate"><span class="pre">D1,</span> <span class="pre">D2</span></code> form when configuring a numeric
+retention policy.</p>
+</section>
+<section id="trash-bin-size-limits">
+<h2>Trash-bin Size Limits<a class="headerlink" href="#trash-bin-size-limits" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">trashbin:size</span></code> command configures or displays the effective trash-bin
+size.</p>
+<p>To display the global default and any per-account values:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -E -u www-data php occ trashbin:size</span>
+</pre></div>
+</div>
+<p>To configure a global trash-bin size:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -E -u www-data php occ trashbin:size 10G</span>
+</pre></div>
+</div>
+<p>To configure a size for a specific account:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -E -u www-data php occ trashbin:size --user USER_ID 10G</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">size</span></code> argument accepts values understood by Nextcloud’s file-size
+parser, such as <code class="docutils literal notranslate"><span class="pre">500M</span></code> or <code class="docutils literal notranslate"><span class="pre">10G</span></code>.</p>
+<p>A per-account value takes precedence over the global value. If no per-account
+value is configured, the account uses the global value. If neither value is
+configured, Nextcloud uses the calculated default based on the account’s
+remaining quota space or available filesystem space.</p>
+<p>To display the configured value for one account:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -E -u www-data php occ trashbin:size --user USER_ID</span>
+</pre></div>
+</div>
+<p>Changing a per-account size schedules cleanup for that account. Changing the
+global size causes existing trash bins to be cleaned up, although an account’s
+trash bin can temporarily exceed the newly configured size until cleanup is
+performed or another item is moved to the trash bin.</p>
+<section id="interaction-with-quotas">
+<h3>Interaction with Quotas<a class="headerlink" href="#interaction-with-quotas" title="Link to this heading"></a></h3>
+<p>An explicit trash-bin size is independent of the account quota. It can
+therefore be used for accounts both with and without quotas.</p>
+<p>For accounts with quotas, the following order applies:</p>
+<ol class="arabic simple">
+<li><p>A per-account <code class="docutils literal notranslate"><span class="pre">trashbin_size</span></code> value is used when configured.</p></li>
+<li><p>Otherwise, the global <code class="docutils literal notranslate"><span class="pre">files_trashbin</span></code> <code class="docutils literal notranslate"><span class="pre">trashbin_size</span></code> value is used
+when configured.</p></li>
+<li><p>Otherwise, the default limit is calculated from 50% of the account’s
+remaining quota space.</p></li>
+</ol>
+<p>When no explicit trash-bin size is configured for an account without a quota,
+the available filesystem space is used to determine whether the trash bin
+needs cleanup.</p>
+<p>Trash-bin cleanup does not necessarily remove all deleted files when an
+account exceeds its quota. Items are removed according to the retention policy
+and in oldest-first order until the effective trash-bin space requirement is
+satisfied.</p>
+</section>
+</section>
+<section id="background-jobs">
+<h2>Background Jobs<a class="headerlink" href="#background-jobs" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">files_trashbin</span></code> app registers a background job for policies with a
+configured maximum retention age, such as <code class="docutils literal notranslate"><span class="pre">auto,</span> <span class="pre">D2</span></code> and <code class="docutils literal notranslate"><span class="pre">D1,</span> <span class="pre">D2</span></code>. The job
+runs at a 30-minute interval, processes accounts in batches of 10, and runs
+for no more than 30 minutes per invocation.</p>
+<p>For the default <code class="docutils literal notranslate"><span class="pre">auto</span></code> policy and other policies without a configured
+maximum retention age, the background job does not perform an expiration pass.
+For <code class="docutils literal notranslate"><span class="pre">disabled</span></code>, automatic expiration is disabled.</p>
+<p>Space-based cleanup can instead be scheduled when trash-bin usage or available
+space changes.</p>
+<p>The background job is controlled by the <code class="docutils literal notranslate"><span class="pre">files_trashbin</span></code> app configuration
+value <code class="docutils literal notranslate"><span class="pre">background_job_expire_trash</span></code>. It is enabled by default.</p>
+<p>To disable the background job:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -E -u www-data php occ config:app:set \</span>
+<span class="go">   --value=no files_trashbin background_job_expire_trash</span>
+</pre></div>
+</div>
+<p>To re-enable it, remove the override:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -E -u www-data php occ config:app:delete \</span>
+<span class="go">   files_trashbin background_job_expire_trash</span>
+</pre></div>
+</div>
+<p>When the background job is disabled, administrators can run expiration
+manually with <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">trashbin:expire</span></code> or configure an external system task to
+run that command.</p>
+</section>
+<section id="other-commands">
+<h2>Other Commands<a class="headerlink" href="#other-commands" title="Link to this heading"></a></h2>
+<p>The below operations are useful under certain circumstances, but do not typically
+need to be used directly.</p>
+<section id="expiring-items-manually">
+<h3>Expiring Items Manually<a class="headerlink" href="#expiring-items-manually" title="Link to this heading"></a></h3>
+<p>To expire eligible items for all accounts:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -E -u www-data php occ trashbin:expire</span>
+</pre></div>
+</div>
+<p>To expire eligible items for one or more accounts:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -E -u www-data php occ trashbin:expire USER_ID</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -E -u www-data php occ trashbin:expire USER_ID_1 USER_ID_2</span>
+</pre></div>
+</div>
+<p>When no account IDs are provided, the command automatically discovers accounts
+that have previously logged in. This normally covers all accounts that can have
+trash-bin contents. For an account with imported or otherwise provisioned
+trash-bin data but no recorded login, provide its account ID explicitly.</p>
+<p>The command displays a progress bar when processing all accounts. Use
+<code class="docutils literal notranslate"><span class="pre">--quiet</span></code> to suppress the progress bar:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -E -u www-data php occ trashbin:expire --quiet</span>
+</pre></div>
+</div>
+<p>For any active retention policy, including the default <code class="docutils literal notranslate"><span class="pre">auto</span></code> policy,
+<code class="docutils literal notranslate"><span class="pre">trashbin:expire</span></code> performs a full expiration pass: it deletes items that
+exceed the configured maximum age, and it also deletes items to satisfy the
+effective trash-bin size limit when needed, subject to the retention
+policy’s minimum age.</p>
+<p>If trash-bin expiration is disabled (<code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code> set
+to <code class="docutils literal notranslate"><span class="pre">disabled</span></code>), <code class="docutils literal notranslate"><span class="pre">trashbin:expire</span></code> does not delete any items and exits
+with a non-zero status.</p>
+<p>Space-based cleanup can also be triggered automatically outside of
+<code class="docutils literal notranslate"><span class="pre">trashbin:expire</span></code> and the background job — for example, when a file is
+moved to the trash bin or when a change to the account’s available space
+causes the effective trash-bin limit to be exceeded.</p>
+<p>The trash-bin expiration command is provided by the
+<code class="docutils literal notranslate"><span class="pre">files_trashbin</span></code> app:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -E -u www-data php occ list files_trashbin</span>
+</pre></div>
+</div>
+</section>
+<section id="removing-all-trashed-items">
+<h3>Removing All Trashed Items<a class="headerlink" href="#removing-all-trashed-items" title="Link to this heading"></a></h3>
+<p>To immediately and permanently delete <strong>all</strong> trashed items for all users
+from all configured user backends, bypassing the retention policy entirely,
+use <code class="docutils literal notranslate"><span class="pre">trashbin:cleanup</span> <span class="pre">--all-users</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -E -u www-data php occ trashbin:cleanup --all-users</span>
+</pre></div>
+</div>
+<p>To clean up the trash bin for one or more specific accounts:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -E -u www-data php occ trashbin:cleanup USER_ID_1 USER_ID_2</span>
+</pre></div>
+</div>
+<p>The command requires either one or more account IDs or <code class="docutils literal notranslate"><span class="pre">--all-users</span></code>.
+These forms are mutually exclusive.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>This command deletes trashed items unconditionally and does not honor
+the configured retention policy. Deleted items cannot be recovered.</p>
+</div>
+</section>
+<section id="restoring-all-trashed-items">
+<h3>Restoring All Trashed Items<a class="headerlink" href="#restoring-all-trashed-items" title="Link to this heading"></a></h3>
+<p>To restore all trashed items for one or more accounts:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -E -u www-data php occ trashbin:restore USER_ID_1 USER_ID_2</span>
+</pre></div>
+</div>
+<p>To restore trashed items for all users from all configured user backends:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -E -u www-data php occ trashbin:restore --all-users</span>
+</pre></div>
+</div>
+<p>Account IDs and <code class="docutils literal notranslate"><span class="pre">--all-users</span></code> are mutually exclusive. The command requires
+one or the other.</p>
+<p>The command supports additional filters, including <code class="docutils literal notranslate"><span class="pre">--since</span></code>, <code class="docutils literal notranslate"><span class="pre">--until</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">--scope</span></code> (<code class="docutils literal notranslate"><span class="pre">user</span></code>, <code class="docutils literal notranslate"><span class="pre">groupfolders</span></code>, or <code class="docutils literal notranslate"><span class="pre">all</span></code>), as well as
+<code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> to preview which items would be restored without performing any
+action. See <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">trashbin:restore</span> <span class="pre">--help</span></code> for details.</p>
+</section>
 </section>
 </section>
 

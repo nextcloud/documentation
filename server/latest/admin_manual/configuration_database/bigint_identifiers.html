@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BigInt (64bit) identifiers &mdash; Nextcloud 35 Administration Manual</title>
+  <title>Prevent identifier exhaustion in large databases &mdash; Nextcloud 35 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -30,8 +30,8 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Replication" href="replication.html" />
-    <link rel="prev" title="Enabling MySQL 4-byte support" href="mysql_4byte_support.html" />
+    <link rel="next" title="Using database read replicas" href="replication.html" />
+    <link rel="prev" title="Convert to a different database type" href="db_conversion.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -84,13 +84,13 @@
 <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Database configuration</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="db_conversion.html">Converting database type</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_database_configuration.html">Database configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mysql_4byte_support.html">Enabling MySQL 4-byte support</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">BigInt (64bit) identifiers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="replication.html">Replication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="splitting.html">Splitting databases</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Database setup and configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_database_configuration.html">Set up a database server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mysql_4byte_support.html">Enabling MySQL/MariaDB 4-byte support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_conversion.html">Convert to a different database type</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Prevent identifier exhaustion in large databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="replication.html">Using database read replicas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splitting.html">Splitting tables or apps across databases</a></li>
 </ul>
 </li>
 </ul>
@@ -167,8 +167,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Database configuration</a></li>
-      <li class="breadcrumb-item active">BigInt (64bit) identifiers</li>
+          <li class="breadcrumb-item"><a href="index.html">Database setup and configuration</a></li>
+      <li class="breadcrumb-item active">Prevent identifier exhaustion in large databases</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_database/bigint_identifiers.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -178,12 +178,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="bigint-64bit-identifiers">
-<h1>BigInt (64bit) identifiers<a class="headerlink" href="#bigint-64bit-identifiers" title="Link to this heading"></a></h1>
-<p>Nextcloud uses big integers to store identifiers and auto-increment keys in the database.
-Because changing columns on huge tables can take quite a while (up to hours or days)
-depending on the number of files in the Nextcloud instance, this migration on the filecache
-and activity table has to be triggered manually by a console command.</p>
+  <section id="prevent-identifier-exhaustion-in-large-databases">
+<h1>Prevent identifier exhaustion in large databases<a class="headerlink" href="#prevent-identifier-exhaustion-in-large-databases" title="Link to this heading"></a></h1>
+<p>Database identifiers stored as 32-bit integers have a limited range. Larger Nextcloud
+installations can exhaust this range in heavily used tables, preventing new records from
+being created. Converting these identifiers and their auto-increment keys to 64-bit
+integers provides more capacity for future growth.</p>
+<p>Changing columns in large tables can take several hours or even days, depending on the
+number of files in the Nextcloud instance. For this reason, conversion of the
+<code class="docutils literal notranslate"><span class="pre">filecache</span></code> and activity tables must be triggered manually with a console command.</p>
 <p>The command can safely be executed. It will show a success message when there is nothing to do:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo -E -u www-data php occ db:convert-filecache-bigint
 All tables already up to date!
@@ -210,8 +213,8 @@ mode before running the command to avoid issues with your sync clients.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="mysql_4byte_support.html" class="btn btn-neutral float-left" title="Enabling MySQL 4-byte support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="replication.html" class="btn btn-neutral float-right" title="Replication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="db_conversion.html" class="btn btn-neutral float-left" title="Convert to a different database type" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="replication.html" class="btn btn-neutral float-right" title="Using database read replicas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -83,7 +83,7 @@
 <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation and server configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_database/index.html">Database setup and configuration</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
 <ul>
@@ -578,17 +578,8 @@
 <li class="toctree-l2"><a class="reference internal" href="installation/uninstallation.html">Uninstallation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="configuration_database/index.html">Database configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="configuration_database/db_conversion.html">Converting database type</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="configuration_database/db_conversion.html#run-the-conversion">Run the conversion</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="configuration_database/db_conversion.html#establishing-the-target-database">Establishing the target database</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuration_database/db_conversion.html#triggering-the-conversion">Triggering the conversion</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="configuration_database/db_conversion.html#inconvertible-tables">Inconvertible tables</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="configuration_database/linux_database_configuration.html">Database configuration</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration_database/index.html">Database setup and configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration_database/linux_database_configuration.html">Set up a database server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="configuration_database/linux_database_configuration.html#requirements">Requirements</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="configuration_database/linux_database_configuration.html#database-read-committed-transaction-isolation-level">Database “READ COMMITTED” transaction isolation level</a></li>
 </ul>
@@ -609,15 +600,24 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="configuration_database/mysql_4byte_support.html">Enabling MySQL 4-byte support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration_database/bigint_identifiers.html">BigInt (64bit) identifiers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration_database/replication.html">Replication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration_database/mysql_4byte_support.html">Enabling MySQL/MariaDB 4-byte support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration_database/db_conversion.html">Convert to a different database type</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration_database/db_conversion.html#run-the-conversion">Run the conversion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration_database/db_conversion.html#establishing-the-target-database">Establishing the target database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_database/db_conversion.html#triggering-the-conversion">Triggering the conversion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_database/db_conversion.html#inconvertible-tables">Inconvertible tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration_database/bigint_identifiers.html">Prevent identifier exhaustion in large databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration_database/replication.html">Using database read replicas</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="configuration_database/replication.html#configuration">Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_database/replication.html#how-queries-are-routed">How queries are routed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_database/replication.html#connection-scope">Connection scope</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="configuration_database/splitting.html">Splitting databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration_database/splitting.html">Splitting tables or apps across databases</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="configuration_database/splitting.html#initial-splitting">Initial splitting</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_database/splitting.html#migrations-on-updates">Migrations on updates</a></li>
 </ul>
@@ -896,6 +896,8 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#federated-cloud-sharing">Federated Cloud Sharing</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#sharing-federation-allowselfsignedcertificates">sharing.federation.allowSelfSignedCertificates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#sharing-federation-ocm-apiversion">sharing.federation.ocm.apiVersion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#sharing-federation-ocm-removepublickey">sharing.federation.ocm.removePublicKey</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#hashing">Hashing</a><ul>
@@ -1031,6 +1033,7 @@
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/antivirus_configuration.html#confirm-everything-is-working">Confirm everything is working</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/antivirus_configuration.html#encrypted-file-detection-limitations-with-clamav">Encrypted File Detection Limitations with ClamAV</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/antivirus_configuration.html#manage-the-background-scanner">Manage the background scanner</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/antivirus_configuration.html#how-the-background-scanner-works">How the background scanner works</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/antivirus_configuration.html#get-info-about-files-in-the-scan-queue">Get info about files in the scan queue</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/antivirus_configuration.html#manually-trigger-the-background-scan">Manually trigger the background scan</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/antivirus_configuration.html#manually-scan-a-single-file">Manually scan a single file</a></li>
@@ -1923,8 +1926,20 @@
 <li class="toctree-l3"><a class="reference internal" href="configuration_files/file_versioning.html#background-job">Background job</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="configuration_files/trashbin_configuration.html">Deleted Items (trash bin)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="configuration_files/trashbin_configuration.html#background-job">Background job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration_files/trashbin_configuration.html">Deleted Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration_files/trashbin_configuration.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_files/trashbin_configuration.html#policy-configuration">Policy Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_files/trashbin_configuration.html#trash-bin-size-limits">Trash-bin Size Limits</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration_files/trashbin_configuration.html#interaction-with-quotas">Interaction with Quotas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_files/trashbin_configuration.html#background-jobs">Background Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_files/trashbin_configuration.html#other-commands">Other Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration_files/trashbin_configuration.html#expiring-items-manually">Expiring Items Manually</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_files/trashbin_configuration.html#removing-all-trashed-items">Removing All Trashed Items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_files/trashbin_configuration.html#restoring-all-trashed-items">Restoring All Trashed Items</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuration_files/file_conversion.html">File conversion</a></li>

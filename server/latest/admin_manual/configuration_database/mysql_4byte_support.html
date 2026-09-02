@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Enabling MySQL 4-byte support &mdash; Nextcloud 35 Administration Manual</title>
+  <title>Enabling MySQL/MariaDB 4-byte support &mdash; Nextcloud 35 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -30,8 +30,8 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="BigInt (64bit) identifiers" href="bigint_identifiers.html" />
-    <link rel="prev" title="Database configuration" href="linux_database_configuration.html" />
+    <link rel="next" title="Convert to a different database type" href="db_conversion.html" />
+    <link rel="prev" title="Set up a database server" href="linux_database_configuration.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -84,13 +84,13 @@
 <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Database configuration</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="db_conversion.html">Converting database type</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_database_configuration.html">Database configuration</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Enabling MySQL 4-byte support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bigint_identifiers.html">BigInt (64bit) identifiers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="replication.html">Replication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="splitting.html">Splitting databases</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Database setup and configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_database_configuration.html">Set up a database server</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Enabling MySQL/MariaDB 4-byte support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_conversion.html">Convert to a different database type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bigint_identifiers.html">Prevent identifier exhaustion in large databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="replication.html">Using database read replicas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splitting.html">Splitting tables or apps across databases</a></li>
 </ul>
 </li>
 </ul>
@@ -167,8 +167,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Database configuration</a></li>
-      <li class="breadcrumb-item active">Enabling MySQL 4-byte support</li>
+          <li class="breadcrumb-item"><a href="index.html">Database setup and configuration</a></li>
+      <li class="breadcrumb-item active">Enabling MySQL/MariaDB 4-byte support</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_database/mysql_4byte_support.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -178,8 +178,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="enabling-mysql-4-byte-support">
-<h1>Enabling MySQL 4-byte support<a class="headerlink" href="#enabling-mysql-4-byte-support" title="Link to this heading"></a></h1>
+  <section id="enabling-mysql-mariadb-4-byte-support">
+<h1>Enabling MySQL/MariaDB 4-byte support<a class="headerlink" href="#enabling-mysql-mariadb-4-byte-support" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Be sure to backup your database before performing this database upgrade.</p>
@@ -261,8 +261,8 @@ $ sudo -E -u www-data php occ maintenance:mode --on
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="linux_database_configuration.html" class="btn btn-neutral float-left" title="Database configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="bigint_identifiers.html" class="btn btn-neutral float-right" title="BigInt (64bit) identifiers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="linux_database_configuration.html" class="btn btn-neutral float-left" title="Set up a database server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="db_conversion.html" class="btn btn-neutral float-right" title="Convert to a different database type" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

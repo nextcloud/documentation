@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Splitting databases &mdash; Nextcloud 35 Administration Manual</title>
+  <title>Splitting tables or apps across databases &mdash; Nextcloud 35 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Nextcloud configuration" href="../configuration_server/index.html" />
-    <link rel="prev" title="Replication" href="replication.html" />
+    <link rel="prev" title="Using database read replicas" href="replication.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -84,13 +84,13 @@
 <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Database configuration</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="db_conversion.html">Converting database type</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_database_configuration.html">Database configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mysql_4byte_support.html">Enabling MySQL 4-byte support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bigint_identifiers.html">BigInt (64bit) identifiers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="replication.html">Replication</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Splitting databases</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Database setup and configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_database_configuration.html">Set up a database server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mysql_4byte_support.html">Enabling MySQL/MariaDB 4-byte support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_conversion.html">Convert to a different database type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bigint_identifiers.html">Prevent identifier exhaustion in large databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="replication.html">Using database read replicas</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Splitting tables or apps across databases</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#initial-splitting">Initial splitting</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#migrations-on-updates">Migrations on updates</a></li>
 </ul>
@@ -171,8 +171,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Database configuration</a></li>
-      <li class="breadcrumb-item active">Splitting databases</li>
+          <li class="breadcrumb-item"><a href="index.html">Database setup and configuration</a></li>
+      <li class="breadcrumb-item active">Splitting tables or apps across databases</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_database/splitting.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -182,8 +182,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="splitting-databases">
-<h1>Splitting databases<a class="headerlink" href="#splitting-databases" title="Link to this heading"></a></h1>
+  <section id="splitting-tables-or-apps-across-databases">
+<h1>Splitting tables or apps across databases<a class="headerlink" href="#splitting-tables-or-apps-across-databases" title="Link to this heading"></a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This is still proof-of-concept level. Use with care.</p>
@@ -257,7 +257,7 @@ We hope to have a dedicated plan by the time this happens. For now a potential w
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="replication.html" class="btn btn-neutral float-left" title="Replication" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="replication.html" class="btn btn-neutral float-left" title="Using database read replicas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../configuration_server/index.html" class="btn btn-neutral float-right" title="Nextcloud configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
