@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Converting database type &mdash; Nextcloud 35 Administration Manual</title>
+  <title>Convert to a different database type &mdash; Nextcloud 35 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -30,8 +30,8 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Database configuration" href="linux_database_configuration.html" />
-    <link rel="prev" title="Database configuration" href="index.html" />
+    <link rel="next" title="Prevent identifier exhaustion in large databases" href="bigint_identifiers.html" />
+    <link rel="prev" title="Enabling MySQL/MariaDB 4-byte support" href="mysql_4byte_support.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -84,8 +84,10 @@
 <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Database configuration</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Converting database type</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Database setup and configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_database_configuration.html">Set up a database server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mysql_4byte_support.html">Enabling MySQL/MariaDB 4-byte support</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Convert to a different database type</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#run-the-conversion">Run the conversion</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#establishing-the-target-database">Establishing the target database</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#triggering-the-conversion">Triggering the conversion</a></li>
@@ -94,11 +96,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#inconvertible-tables">Inconvertible tables</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="linux_database_configuration.html">Database configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mysql_4byte_support.html">Enabling MySQL 4-byte support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bigint_identifiers.html">BigInt (64bit) identifiers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="replication.html">Replication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="splitting.html">Splitting databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bigint_identifiers.html">Prevent identifier exhaustion in large databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="replication.html">Using database read replicas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splitting.html">Splitting tables or apps across databases</a></li>
 </ul>
 </li>
 </ul>
@@ -175,8 +175,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Database configuration</a></li>
-      <li class="breadcrumb-item active">Converting database type</li>
+          <li class="breadcrumb-item"><a href="index.html">Database setup and configuration</a></li>
+      <li class="breadcrumb-item active">Convert to a different database type</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_database/db_conversion.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -186,8 +186,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="converting-database-type">
-<h1>Converting database type<a class="headerlink" href="#converting-database-type" title="Link to this heading"></a></h1>
+  <section id="convert-to-a-different-database-type">
+<h1>Convert to a different database type<a class="headerlink" href="#convert-to-a-different-database-type" title="Link to this heading"></a></h1>
 <p>You can convert a SQLite database to a better performing MySQL, MariaDB or
 PostgreSQL database with the Nextcloud command line tool. SQLite is good for
 testing and simple single-user Nextcloud servers, but it does not scale for
@@ -289,8 +289,8 @@ Here is a list of known old tables:</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Database configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="linux_database_configuration.html" class="btn btn-neutral float-right" title="Database configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="mysql_4byte_support.html" class="btn btn-neutral float-left" title="Enabling MySQL/MariaDB 4-byte support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bigint_identifiers.html" class="btn btn-neutral float-right" title="Prevent identifier exhaustion in large databases" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

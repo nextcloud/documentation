@@ -100,6 +100,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#confirm-everything-is-working">Confirm everything is working</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#encrypted-file-detection-limitations-with-clamav">Encrypted File Detection Limitations with ClamAV</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#manage-the-background-scanner">Manage the background scanner</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-the-background-scanner-works">How the background scanner works</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-info-about-files-in-the-scan-queue">Get info about files in the scan queue</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#manually-trigger-the-background-scan">Manually trigger the background scan</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#manually-scan-a-single-file">Manually scan a single file</a></li>
@@ -345,7 +346,7 @@ run <code class="docutils literal notranslate"><span class="pre">netstat</span><
 <img alt="../_images/antivirus-daemon-socket.png" src="../_images/antivirus-daemon-socket.png" />
 </figure>
 <p>The <code class="docutils literal notranslate"><span class="pre">Stream</span> <span class="pre">Length</span></code> value sets the number of bytes read in one pass.
-10485760 bytes, or ten megabytes, is the default. This value should be
+26214400 bytes, or 25 MiB, is the default. This value should be
 no larger than the PHP <code class="docutils literal notranslate"><span class="pre">memory_limit</span></code> settings, or physical memory if
 <code class="docutils literal notranslate"><span class="pre">memory_limit</span></code> is set to -1 (no limit).</p>
 <p><code class="docutils literal notranslate"><span class="pre">Action</span> <span class="pre">for</span> <span class="pre">infected</span> <span class="pre">files</span> <span class="pre">found</span> <span class="pre">while</span> <span class="pre">scanning</span></code> gives you the choice of
@@ -393,6 +394,34 @@ You may configure additional alert options in <code class="docutils literal notr
 <h2>Manage the background scanner<a class="headerlink" href="#manage-the-background-scanner" title="Link to this heading"></a></h2>
 <p>The background scanner does not require any manual intervention.
 However at times you might want to inspect it or perform tasks on it.</p>
+<section id="how-the-background-scanner-works">
+<h3>How the background scanner works<a class="headerlink" href="#how-the-background-scanner-works" title="Link to this heading"></a></h3>
+<p>Each time the background scanner runs, it processes files in three passes (in priority order),
+up to the configured batch size per run:</p>
+<ol class="arabic simple">
+<li><p><strong>Unscanned files</strong> — files that have never been scanned, including files that were
+uploaded or existed before the Antivirus app was installed. All such files will
+eventually be scanned as the background job runs repeatedly.</p></li>
+<li><p><strong>Modified files</strong> — files whose modification time is newer than their last scan time,
+i.e. files that have been updated since they were last scanned.</p></li>
+<li><p><strong>Outdated files</strong> — files that were last scanned more than 28 days ago (configurable
+via <code class="docutils literal notranslate"><span class="pre">av_rescan_days</span></code>), to account for updated virus definitions.</p></li>
+</ol>
+<p>The scanner runs at most once every 15 minutes by default. The effective
+frequency is also bounded by how often Nextcloud’s background job mechanism
+(cron, webcron, or ajax) runs.</p>
+<p>To change the minimum interval between runs (in seconds):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_scan_interval</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;900&quot;</span>
+</pre></div>
+</div>
+<p>To change the number of days before already-scanned files are rescanned:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_rescan_days</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;28&quot;</span>
+</pre></div>
+</div>
+<p><strong>External storage:</strong> files on external storage are included in passes 1 and 2
+(initial scan and rescan on modification). However, the periodic 28-day rescan
+(pass 3) applies only to files under <code class="docutils literal notranslate"><span class="pre">files/</span></code> (i.e. home storage), not external storage.</p>
+</section>
 <section id="get-info-about-files-in-the-scan-queue">
 <h3>Get info about files in the scan queue<a class="headerlink" href="#get-info-about-files-in-the-scan-queue" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">status</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span>
@@ -433,6 +462,13 @@ Additional documentation is work in progress.</p>
 <p>You can disable background scan with occ to only scan files during upload:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_background_scan</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;off&quot;</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Setting <code class="docutils literal notranslate"><span class="pre">av_rescan_days</span></code> to <code class="docutils literal notranslate"><span class="pre">0</span></code> does <strong>not</strong> disable the periodic rescan of
+already-scanned files. Any value below <code class="docutils literal notranslate"><span class="pre">1</span></code> is silently replaced with the default of 28 days,
+so the rescan continues on its normal schedule. Use <code class="docutils literal notranslate"><span class="pre">av_background_scan</span></code> as shown above to
+stop background scanning altogether.</p>
 </div>
 </section>
 </section>
