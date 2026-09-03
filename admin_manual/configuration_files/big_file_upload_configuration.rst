@@ -7,10 +7,6 @@ Uploading large files
 Understanding upload limits
 ---------------------------
 
-Nextcloud does not impose a single default maximum file size for all uploads.
-The effective limit depends on the client, the upload method, and every
-component in the end-to-end request path, including:
-
 Nextcloud does not impose a single default maximum file size that applies to
 every upload method. Whether an upload can complete depends on the client,
 upload method, storage destination, and every component in the end-to-end
@@ -33,9 +29,12 @@ Request-size limits normally apply to each individual chunk rather than to the
 complete file. Chunking also allows individual requests to be retried and can
 permit supporting clients to resume an interrupted upload.
 
-Chunking does not remove complete-file constraints. Storage capacity, quota,
-temporary and staging space, and backend file-size limits still apply to the
-completed file. Timeouts can also affect individual chunk requests and the
+Chunking does not remove constraints on the complete file. The destination
+storage and user quota must accommodate the completed file, and any backend
+file-size limit still applies.
+
+Temporary and staging locations may also need enough capacity to hold some or
+all of the upload. Timeouts can affect individual chunk requests and the
 finalization request.
 
 Configure each component for the part of the upload it processes:
@@ -43,8 +42,10 @@ Configure each component for the part of the upload it processes:
 * request-size limits must permit either the complete direct upload or an
   individual chunk;
 * timeout settings must permit individual upload requests and finalization;
-  and
-* storage, staging-space, and quota limits must permit the completed file.
+* destination storage, quota, and backend file-size limits must permit the
+  completed file; and
+* temporary and staging locations must have sufficient capacity for the
+  upload path being used.
 
 .. note::
    Official Nextcloud clients normally use chunked uploads for large
@@ -61,9 +62,10 @@ Configure each component for the part of the upload it processes:
 Upload paths at a glance
 ------------------------
 
-The following table summarizes the main upload scenarios from an
-administrator's perspective. Exact behavior depends on the storage backend and
-the capabilities it provides.
+The following table summarizes both upload methods and storage-specific
+scenarios. The rows are not mutually exclusive: an upload to External Storage
+or primary object storage can itself be direct or chunked. Exact behavior
+depends on the storage backend and the capabilities it provides.
 
 .. list-table::
    :header-rows: 1
@@ -85,9 +87,10 @@ the capabilities it provides.
      - Apply to each individual chunk rather than directly to the complete
        file.
      - Chunks may be staged in the user's upload storage or sent through a
-       storage-native multipart mechanism.
-     - Chunk size, staging capacity, quota, and the time required to finalize
-       the upload.
+       storage-native chunked-write mechanism. A compatible object-store
+       backend may map that mechanism to multipart upload.
+     - Per-chunk request size, complete-file quota and storage limits, staging
+       capacity, and the time required to finalize the upload.
 
    * - Upload to External Storage
      - Depend on whether the client uses a direct or chunked upload.
@@ -152,9 +155,10 @@ chunks are being uploaded rather than waiting until finalization.
 Configuring the upload path
 ---------------------------
 
-Every web server, reverse proxy, content delivery network, load balancer, PHP
-runtime, and storage service in the request path must accept the required
-request size and duration.
+Every HTTP intermediary in the upload path must accept the size and duration
+of each request. The destination storage must support the completed file and
+the write or multipart operations used by its backend. Temporary and staging
+locations must provide the capacity required by the selected upload path.
 
 Reverse proxies and web servers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -280,10 +284,14 @@ For PHP-FPM or CGI deployments, configure the applicable ``php.ini`` or
 
 ``post_max_size`` should be at least as large as ``upload_max_filesize``.
 
-These settings primarily affect uploads processed through PHP's form-upload
-mechanism. Raw WebDAV ``PUT`` requests and chunked WebDAV uploads are not
-necessarily restricted by these settings in the same way, but remain subject
-to web-server limits and timeout settings.
+The values above are examples, not required Nextcloud defaults. Choose values
+appropriate for the PHP-managed upload requests used by your deployment.
+
+These settings primarily affect requests processed through PHP's form-upload
+mechanism. They do not define the maximum size of a completed chunked upload.
+Raw WebDAV ``PUT`` requests and chunked WebDAV requests are not necessarily
+restricted by these settings in the same way, but remain subject to
+web-server request limits and timeout settings.
 
 If PHP needs a dedicated request-upload temporary directory, configure it in
 ``php.ini``::
