@@ -7,10 +7,14 @@ This is **not** an exhaustive list of changes, including numerous new features, 
 System requirements
 -------------------
 
+There have been changes to supported PHP, operating systems, and database versions:
+
+**PHP**
+
 * PHP 8.2 is no longer supported. PHP 8.3 is now the minimum supported version.
 * PHP 8.6 and newer are not supported yet.
 
-----
+**Operating Systems**
 
 The list of officially supported operating systems has been updated:
 
@@ -18,7 +22,7 @@ The list of officially supported operating systems has been updated:
 * The minimum supported version of *Debian Linux* has been bumped to *13 (Trixie)*.
 * The minimum supported version of *Ubuntu Linux* has been bumped to *24.04*.
 
-----
+**Databases**
 
 The list of officially supported databases has been updated:
 
@@ -27,7 +31,17 @@ The list of officially supported databases has been updated:
 - MySQL 8.0 is out of support and thus Nextcloud dropped support for it. The minimum supported version of MySQL is now 8.4 LTS.
 - MySQL 9.7 is released as a new LTS version and is now supported by Nextcloud.
 
-----
+32-bit systems
+--------------
+
+32-bit systems are no longer a recommended platform for Nextcloud. The
+administrator warning for 32-bit installations has been strengthened.
+
+Plan migration to a 64-bit operating system and PHP environment. Support for
+32-bit systems is scheduled for removal in a future major release.
+
+Behavior Changes
+----------------
 
 MySQL 9 and MD5 support
 -----------------------
@@ -55,6 +69,52 @@ scripts that create invalid references may fail after upgrading.
 Administrators using custom database tooling should verify that it preserves
 referential integrity. Direct modification of the Nextcloud database is not
 supported.
+
+ownCloud database migrations
+-----------------------------
+
+The migration code has improved compatibility with older ownCloud database
+schemas. During an ownCloud-to-Nextcloud migration, Nextcloud can now
+temporarily operate with the older ``appconfig`` and ``preferences`` column
+sets until the required Nextcloud schema migrations have run.
+
+Administrators performing an ownCloud migration should still make a complete
+database backup and monitor the migration output for errors.
+
+DAV sync-token retention
+------------------------
+
+The CalDAV and CardDAV sync-token cleanup jobs now correctly apply the
+configured retention period.
+
+On installations where old sync-token rows have accumulated, cleanup may
+remove a larger backlog after upgrading. Make sure background jobs are running
+and monitor database activity on instances with large calendar or address-book
+tables.
+
+See :ref:`CalDAV retention <caldav-data-retention>` and
+:ref:`CardDAV retention <carddav-data-retention>`.
+
+Encryption configuration values
+-------------------------------
+
+Some server-side encryption app configuration values are migrated from
+string-typed values to boolean-typed values during the upgrade.
+
+The migration is performed automatically. Administrators using scripts or
+external tooling that reads these app configuration values should ensure that
+the tooling handles boolean values rather than relying on the previous string
+representation.
+
+Deprecated external-storage backends
+-------------------------------------
+
+Deprecated external-storage backends are ignored by Nextcloud 35. If an
+existing external-storage mount disappears after upgrading, check whether it
+uses a deprecated backend and migrate it to a supported backend.
+
+Review external-storage configuration and the server log after upgrading if
+mounts are unexpectedly unavailable.
 
 Applications incompatible with this release
 -------------------------------------------
@@ -91,13 +151,23 @@ OCM discovery compatibility
 For compatibility with older federated peers, the following options remain
 disabled by default:
 
-``sharing.federation.ocm.apiVersion``
-``sharing.federation.ocm.removePublicKey``
+* ``sharing.federation.ocm.apiVersion``
+* ``sharing.federation.ocm.removePublicKey``
 
 Do not enable ``sharing.federation.ocm.removePublicKey`` until all federated
 peers support RFC 9421 HTTP Message Signatures. Leave
 ``sharing.federation.ocm.apiVersion`` empty unless the compatibility of all
 federated peers has been verified.
+
+Deprecated external-storage backends
+-------------------------------------
+
+Deprecated external-storage backends are ignored by Nextcloud 35. If an
+existing external-storage mount disappears after upgrading, check whether it
+uses a deprecated backend and migrate it to a supported backend.
+
+Review external-storage configuration and the server log after upgrading if
+mounts are unexpectedly unavailable.
 
 Unified Sharing API
 -------------------
@@ -141,14 +211,80 @@ Make sure the override is also applied to web requests. Single-server
 installations can generally use the fallback behavior, although the setup
 checks may recommend configuring an explicit server ID.
 
+Share password generation
+-------------------------
+
+Automatically generated share passwords now follow the sharing password
+policy. If your instance enforces longer passwords or special-character
+requirements for shares, generated passwords may appear different after the
+upgrade.
+
+Added Functionality
+-------------------
+
+Custom login names for generated app passwords
+-----------------------------------------------
+
+``occ user:add-app-password`` can now assign a custom login name to a generated
+app password. This can be useful when provisioning CalDAV or CardDAV clients
+that expect an email address as the login name.
+
+Database schema verification
+----------------------------
+
+Nextcloud 35 adds a database schema consistency check:
+
+``occ db:schema:check``
+
+The check compares the current database schema with the schema expected by
+Nextcloud and is also included in the post-upgrade checks.
+
+If the check reports differences after an upgrade, review the migration output
+and logs before returning the instance to normal operation. Do not manually
+modify the database schema unless instructed by Nextcloud documentation or
+support.
+
+New database diagnostic commands
+--------------------------------
+
+These are valuable for troubleshooting:
+
+* ``occ db:info``
+* ``occ db:size``
+* ``occ db:index-usage``
+* ``occ db:locks``
+
+Controlling file-version creation with workflows
+-------------------------------------------------
+
+The workflow engine can now prevent new file versions from being created when
+configured conditions match. This can be used for compliance or storage-policy
+scenarios.
+
+Review existing workflow rules after upgrading if your instance uses workflows
+to control file lifecycle behavior.
+
+Database SSL/TLS configuration during installation
+--------------------------------------------------
+
+The command-line and web installers now support configuring encrypted database
+connections.
+
+For PostgreSQL, SSL mode, CA, client certificate, client key, and certificate
+revocation-list options can be provided during installation. MySQL/MariaDB
+installations can provide CA and client certificate options through the
+installer as well.
+
+Existing installations do not need to change their database configuration.
+
 Background job diagnostics
 --------------------------
 
 Nextcloud 35 adds commands for inspecting configured background jobs and
 historical job executions:
 
-``occ background-job:list``
-``occ background-job:history``
+* ``occ background-job:list``
+* ``occ background-job:history``
 
 The history output includes the job status, class, start time, server ID,
 process ID, duration, and peak memory usage. This can help identify failed or
@@ -157,10 +293,19 @@ slow jobs and determine which server executed a job.
 Running ``occ`` as root
 -----------------------
 
-When ``occ`` is invoked as root, it now attempts to switch to the owner of
+When ``occ`` is invoked as root, it attempts to switch to the owner of
 ``config/config.php`` before executing the command.
 
-This helps prevent files generated by ``occ`` from being owned by root.
-However, the switch is best-effort and is not a complete security sandbox.
-Ensure that ``config/config.php`` has the expected owner and that the account
-running ``occ`` has access to the data directory and other required paths.
+Check the ownership of ``config/config.php`` and ensure that its owner has the
+permissions required by the command. This privilege switch is best-effort and
+is not a complete security sandbox.
+
+Redis and Valkey cache support
+------------------------------
+
+Nextcloud 35 adds a pure-PHP Redis-compatible cache implementation based on
+Predis. This can be used where the PHP Redis extension is unavailable and
+improves compatibility with recent Redis and Valkey releases.
+
+Review the cache configuration documentation before changing an existing
+production cache backend.
