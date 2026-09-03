@@ -115,19 +115,116 @@ In the context of a class you can use the ``TTransactional`` trait and move the 
         }
     }
 
-Mappers
--------
+Repositories and entities
+-------------------------
 
 The aforementioned example is the most basic way to write a simple database query but the more queries amass, the more code has to be written and the harder it will become to maintain it.
 
-To generalize and simplify the problem, split code into resources and create an **Entity** and a **Mapper** class for it. The mapper class provides a way to run SQL queries and maps the result onto the related entities.
+To generalize and simplify the problem, split code into resources and create an **Entity** and a **Repository**
+class for it: the entity is a plain PHP class carrying one table row's data, and the repository knows how to
+read and write entities of that class.
 
+.. versionadded:: 35
+   The attribute-based ``OCP\AppFramework\ORM`` namespace described in this section. Apps built against
+   older Nextcloud versions used ``QBMapper`` and ``Entity`` instead; see the
+   `Nextcloud 34 developer manual <https://docs.nextcloud.com/server/34/developer_manual/basics/storage/database.html>`_
+   for that approach.
 
-To create a mapper, inherit from the mapper base class and call the parent constructor with the following parameters:
+Defining an entity
+^^^^^^^^^^^^^^^^^^^
 
-* Database connection
-* Table name
-* **Optional**: Entity class name, defaults to \\OCA\\MyApp\\Db\\Author in the example below
+An entity is a plain class with one public, typed property per column. Mark the class with the
+**#[Entity]** attribute, giving it the table name, and mark every mapped property with a **#[Column]**
+attribute describing its database column. Exactly one property must carry the **#[Id]** attribute to mark
+the table's primary key.
+
+.. code-block:: php
+    :caption: lib/Db/Author.php
+
+    <?php
+
+    namespace OCA\MyApp\Db;
+
+    use OCP\AppFramework\ORM\Attribute\Column;
+    use OCP\AppFramework\ORM\Attribute\Entity;
+    use OCP\AppFramework\ORM\Attribute\Id;
+    use OCP\DB\Schema\ColumnType;
+
+    #[Entity(name: 'myapp_authors')]
+    final class Author {
+        #[Id]
+        #[Column(name: 'id', type: ColumnType::Integer)]
+        public ?int $id = null;
+
+        #[Column(name: 'name', type: ColumnType::String, length: 64)]
+        public string $name;
+
+        #[Column(name: 'stars', type: ColumnType::Integer, default: 0)]
+        public int $stars = 0;
+    }
+
+Unlike the legacy ``Entity`` base class, there is no base class to extend and no getters or setters are
+generated for you: read and write the properties directly, for example ``$author->name`` or
+``$author->name = 'Jane Doe'``. The property name and the column name are independent and set explicitly
+in the ``#[Column]`` attribute, so there is no implicit camelCase-to-underscore conversion to reason about,
+and no need to override a mapping method to deviate from it.
+
+By default, as in the example above, a bare ``#[Id]`` relies on the database's autoincrement column:
+``insert()`` only fills in ``$author->id`` after the row has been written. Pass a ``generatorClass`` to
+generate the id application-side, before the row is inserted, instead. ``OCP\Snowflake\ISnowflakeGenerator``
+produces such an id — a `Snowflake ID <https://en.wikipedia.org/wiki/Snowflake_ID>`_, unique across your
+whole cluster and sortable by creation time — which is useful when you need the id before the row exists
+(for example to pass it to another service as part of the same request), or to avoid the write contention
+a single autoincrement column creates across a cluster. Snowflake ids are ``non-empty-string`` values even
+though they are typically stored in a ``ColumnType::Bigint`` column:
+
+.. code-block:: php
+
+    <?php
+
+    use OCP\Snowflake\ISnowflakeGenerator;
+
+    #[Id(generatorClass: ISnowflakeGenerator::class)]
+    #[Column(name: 'id', type: ColumnType::Bigint)]
+    public ?string $id = null;
+
+A property without a ``#[Column]`` attribute is never read from or written to the database. This is the
+replacement for what used to be called *transient attributes*: just leave the property unannotated.
+
+.. note:: The ``#[Entity]`` and ``#[Column]`` attributes only describe how PHP objects map onto an
+   already-existing table. They do not create the table for you. You still need a schema migration (see
+   :doc:`migrations`) whose columns, types, length, and primary key match your entity's attributes.
+
+Column types
+^^^^^^^^^^^^
+
+The ``type`` of a ``#[Column]`` is one of the cases of ``OCP\DB\Schema\ColumnType``, and controls how the
+value is converted for storage (e.g. PHP casts ``false`` to an empty string, which fails on PostgreSQL) and
+how it is cast back when read from the database:
+
+* ``ColumnType::Integer``, ``ColumnType::Smallint``, ``ColumnType::Bigint``
+* ``ColumnType::Float``, ``ColumnType::Decimal``
+* ``ColumnType::Boolean``
+* ``ColumnType::String`` - for short text; provide a ``length``
+* ``ColumnType::Text`` - for long text without a length limit
+* ``ColumnType::Binary``, ``ColumnType::Blob`` - for binary data
+* ``ColumnType::Json`` - decoded automatically when read; avoid using it in ``findBy()``/``findOneBy()``
+  criteria, as ``JSON`` columns cannot properly be filtered on in Oracle and MySQL
+* For dates and/or times, provided as ``\DateTimeImmutable`` objects:
+
+  * ``ColumnType::DateImmutable`` - only the date is stored (without timezone)
+  * ``ColumnType::TimeImmutable`` - only the time is stored (without timezone)
+  * ``ColumnType::DatetimeImmutable`` - date and time are stored, but without timezone
+  * ``ColumnType::DatetimeTzImmutable`` - date and time are stored with timezone information
+
+* ``ColumnType::Date``, ``ColumnType::Time``, ``ColumnType::Datetime``, ``ColumnType::DatetimeTz`` -
+  the same, but provided as ``\DateTime`` objects. Prefer the immutable variants above.
+
+Defining a repository
+^^^^^^^^^^^^^^^^^^^^^^
+
+To read and write ``Author`` entities, extend the **Repository** base class and set its ``entityClass``
+constant to the entity it manages:
 
 .. code-block:: php
     :caption: lib/Db/AuthorMapper.php
@@ -136,51 +233,129 @@ To create a mapper, inherit from the mapper base class and call the parent const
 
     namespace OCA\MyApp\Db;
 
+    use OCP\AppFramework\ORM\Repository;
+
+    /**
+     * @template-extends Repository<Author>
+     */
+    class AuthorMapper extends Repository {
+        public const string entityClass = Author::class;
+    }
+
+There is no constructor to write: dependency injection builds the repository for you, so ``AuthorMapper``
+can be injected into a controller or service just like any other class.
+
+Inserting, updating, and deleting entities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: php
+
+    <?php
+
+    $author = new Author();
+    $author->name = 'Jane Doe';
+
+    $authorMapper->insert($author);
+    // $author->id is now populated
+
+    $author->name = 'Jane D. Doe';
+    $authorMapper->update($author);
+
+    $authorMapper->delete($author);
+
+``insertOrUpdate()`` tries to insert the entity, and falls back to updating the existing row instead when
+the database reports a unique constraint violation::
+
+    $authorMapper->insertOrUpdate($author);
+
+Finding entities
+^^^^^^^^^^^^^^^^
+
+``Repository`` provides ready-made finder methods keyed by property name, so you rarely need to write a
+query by hand:
+
+.. code-block:: php
+
+    <?php
+
+    // A single entity; throws DoesNotExistException if there is no match, or
+    // MultipleObjectsReturnedException if there is more than one
+    $author = $authorMapper->findOneBy(['id' => $id]);
+
+    // Every entity matching the criteria, as a \Generator
+    foreach ($authorMapper->findBy(['name' => $name]) as $author) {
+        // ...
+    }
+
+    // Sorting, and simple offset-based pagination
+    $authors = iterator_to_array($authorMapper->findBy(
+        criteria: [],
+        orderBy: ['name' => \SortDirection::Ascending],
+        limit: 20,
+        offset: 40,
+    ));
+
+    // Every entity in the table
+    $authors = iterator_to_array($authorMapper->yieldAll());
+
+.. note:: ``findBy()``, ``yieldAll()``, and ``findByAfterId()`` all return a ``\Generator``. Iterate it
+   with ``foreach`` or collect it with ``iterator_to_array()``; the underlying database cursor is closed
+   automatically once the generator is exhausted.
+
+For paginating a large table, prefer keyset (seek) pagination over ``offset``: an ``offset`` forces the
+database to scan and discard every preceding row on each call, while ``findByAfterId()`` seeks straight to
+the right spot through the primary key's index, so each page costs the same regardless of how deep it is.
+Pass ``null`` to fetch the first page, then the id of the last entity returned to fetch the next one, and
+stop once fewer than ``$limit`` entities come back:
+
+.. code-block:: php
+
+    <?php
+
+    $lastId = null;
+    do {
+        $page = iterator_to_array($authorMapper->findByAfterId([], $lastId, 20));
+        foreach ($page as $author) {
+            // ...
+            $lastId = $author->id;
+        }
+    } while (count($page) === 20);
+
+.. warning:: ``findByAfterId()`` does not support entities with a composite primary key.
+
+To delete every entity matching a set of criteria in one query, without loading them first, use
+``deleteBy()``, which returns the number of rows deleted::
+
+    $deletedCount = $authorMapper->deleteBy(['stars' => 0]);
+
+Custom queries in a repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The built-in finders cover simple equality and ``IN`` criteria. For anything else — aggregates, joins your
+entity doesn't declare, and so on — add a method to your repository and fall back to the query builder,
+using the protected ``$this->connection`` and ``$this->getTableName()``:
+
+.. code-block:: php
+    :caption: lib/Db/AuthorMapper.php
+
+    <?php
+
+    namespace OCA\MyApp\Db;
+
+    use OCP\AppFramework\ORM\Repository;
     use OCP\DB\QueryBuilder\IQueryBuilder;
-    use OCP\IDBConnection;
-    use OCP\AppFramework\Db\QBMapper;
 
-    class AuthorMapper extends QBMapper {
+    /**
+     * @template-extends Repository<Author>
+     */
+    class AuthorMapper extends Repository {
+        public const string entityClass = Author::class;
 
-        public function __construct(IDBConnection $db) {
-            parent::__construct($db, 'myapp_authors');
-        }
-
-
-        /**
-         * @throws \OCP\AppFramework\Db\DoesNotExistException if not found
-         * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException if more than one result
-         */
-        public function find(int $id) {
-            $qb = $this->db->getQueryBuilder();
-
-            $qb->select('*')
-               ->from('myapp_authors')
-               ->where(
-                   $qb->expr()->eq('id', $qb->createNamedParameter($id, IQueryBuilder::PARAM_INT))
-               );
-
-            return $this->findEntity($qb);
-        }
-
-
-        public function findAll($limit=null, $offset=null) {
-            $qb = $this->db->getQueryBuilder();
-
-            $qb->select('*')
-               ->from('myapp_authors')
-               ->setMaxResults($limit)
-               ->setFirstResult($offset);
-
-            return $this->findEntities($qb);
-        }
-
-
-        public function authorNameCount($name) {
-            $qb = $this->db->getQueryBuilder();
+        public function authorNameCount(string $name): int {
+            $qb = $this->connection->getQueryBuilder();
 
             $qb->select($qb->func()->count('*', 'count'))
-               ->from('myapp_authors')
+               ->from($this->getTableName())
                ->where(
                    $qb->expr()->eq('name', $qb->createNamedParameter($name, IQueryBuilder::PARAM_STR))
                );
@@ -189,208 +364,122 @@ To create a mapper, inherit from the mapper base class and call the parent const
             $row = $result->fetchAssociative();
             $result->closeCursor();
 
-            return $row['count'];
-        }
-
-    }
-
-.. note:: The cursor is closed automatically for all **INSERT**, **DELETE**, **UPDATE** queries and when calling the methods **findOneQuery**, **findEntities**, **findEntity**, **delete**, **insert** and **update**. For custom calls using execute you should always close the cursor after you are done with the fetching to prevent database lock problems on SQLite
-
-Every mapper also implements default methods for deleting and updating an entity based on its id::
-
-    $authorMapper->delete($entity);
-
-or::
-
-    $authorMapper->update($entity);
-
-
-
-Entities
---------
-
-Entities are data objects that carry all the table's information for one row.
-Every Entity has an **id** field by default that is set to the integer type.
-Table rows are mapped from lower case and underscore separated names to *lowerCamelCase* attributes:
-
-* **Table column name**: phone_number
-* **Property name**: phoneNumber
-
-.. code-block:: php
-    :caption: lib/Db/Author.php
-
-    <?php
-
-    namespace OCA\MyApp\Db;
-
-    use OCP\AppFramework\Db\Entity;
-    use OCP\DB\Types;
-
-    class Author extends Entity {
-
-        protected $stars;
-        protected $name;
-        protected $phoneNumber;
-
-        public function __construct() {
-            // add types in constructor
-            $this->addType('stars', Types::INTEGER);
-            // other fields are implicitly `Types::STRING`
+            return (int)$row['count'];
         }
     }
 
-Types
-^^^^^
+Relations between entities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following properties should be annotated by types, to not only assure that the types are converted correctly for storing them in the database
-(e.g. PHP casts false to the empty string which fails on PostgreSQL) but also for casting them when they are retrieved from the database.
-
-The following types (as part of ``OCP\DB\Types``) can be added for a field:
-
-* ``Types::INTEGER``
-* ``Types::FLOAT``
-* ``Types::BOOLEAN``
-* ``Types::STRING`` - For text and string columns
-* ``Types::BLOB`` - For binary data
-* ``Types::JSON`` - JSON data is automatically decoded on reading
-* For time and/or dates, provided as ``\DateTimeImmutable`` objects, the following types can be used:
-
-  * ``Types::DATE_IMMUTABLE`` - only the date is stored (without timezone)
-  * ``Types::TIME_IMMUTABLE`` - only the time is stored (without timezone)
-  * ``Types::DATETIME_IMMUTABLE`` - date and time are stored, but without timezone
-  * ``Types::DATETIME_TZ_IMMUTABLE`` - date and time are stored with timezone information
-
-* ``Types::DATE``, ``Types::TIME``, ``Types::DATETIME``, ``Types::DATETIME_TZ`` - similar as the immutable variants, but these will be provided as ``\DateTime`` objects.
-  It is recommended to use the immutable variants as the internal state tracking of the ``Entity`` class only work with re-assignments,
-  so any changes on this mutable types will not be tracked and the update method will not write back the changes to the database.
-
-.. _database-entity-attribute-access:
-
-Accessing attributes
-^^^^^^^^^^^^^^^^^^^^
-
-Since all attributes should be protected, getters and setters are automatically generated for you:
-
-
-.. code-block:: php
-
-    :caption: lib/Db/Author.php
-
-    <?php
-
-    namespace OCA\MyApp\Db;
-
-    use OCP\AppFramework\Db\Entity;
-
-    class Author extends Entity {
-        protected $stars;
-        protected $name;
-        protected $phoneNumber;
-    }
-
-    $author = new Author();
-    $author->setId(3);
-    $author->getPhoneNumber()  // null
-
-Custom attribute to database column mapping
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-By default each attribute will be mapped to a database column by a certain convention, e.g. **phoneNumber**
-will be mapped to the column **phone_number** and vice versa. Sometimes it is needed though to map attributes to
-different columns because of backwards compatibility. To define a custom
-mapping, simply override the **columnToProperty** and **propertyToColumn** methods of the entity in question:
-
-.. code-block:: php
-    :caption: lib/Db/Author.php
-
-    <?php
-
-    namespace OCA\MyApp\Db;
-
-    use OCP\AppFramework\Db\Entity;
-
-    class Author extends Entity {
-        protected $stars;
-        protected $name;
-        protected $phoneNumber;
-
-        // map attribute phoneNumber to the database column phonenumber
-        public function columnToProperty($column) {
-            if ($column === 'phonenumber') {
-                return 'phoneNumber';
-            } else {
-                return parent::columnToProperty($column);
-            }
-        }
-
-        public function propertyToColumn($property) {
-            if ($property === 'phoneNumber') {
-                return 'phonenumber';
-            } else {
-                return parent::propertyToColumn($property);
-            }
-        }
-
-    }
-
-.. _database-entity-slugs:
-
-Transient attributes
-^^^^^^^^^^^^^^^^^^^^
-
-You can add attributes to an entity class that do not map to a database column. These are called *transient* because they are neither loaded from database rows nor are their values persisted.
-
-.. code-block:: php
-    :caption: lib/Db/User.php
-
-    <?php
-
-    namespace OCA\MyApp\Db;
-
-    use OCP\AppFramework\Db\Entity;
-
-    class User extends Entity {
-        protected string $uid;       // Exists in the database
-        protected $lastLogin; // Does not exist in the database
-
-        public function getLastLogin(): ?int {
-            return $this->lastLogin;
-        }
-
-        public function setLastLogin(int $lastLogin): void {
-            $this->lastLogin = $lastLogin;
-        }
-    }
-
-It is important to define getters and setters for any transient attributes.
-Do not use the :ref:`magic getters and setters<database-entity-attribute-access>` of attributes that map to database columns.
-
-Slugs
-^^^^^
-
-.. deprecated:: 24
-
-Slugs are used to identify resources in the URL by a string rather than integer id.
-Since the URL allows only certain values, the entity base class provides a slugify method for it:
+Two entities can be linked with the **#[ManyToOne]** or **#[OneToOne]** attribute, paired with
+**#[JoinColumn]** on the property holding the foreign key. Related entities are always resolved eagerly, in
+the same query, via a ``LEFT JOIN`` — there is no lazy-loading, and a missing relation resolves to ``null``:
 
 .. code-block:: php
 
     <?php
-    $author = new Author();
-    $author->setName('Some*thing');
-    $author->slugify('name');  // Some-thing
+
+    #[Entity(name: 'myapp_merchants')]
+    final class Merchant {
+        #[Id]
+        #[Column(name: 'id', type: ColumnType::Bigint)]
+        public ?int $id = null;
+
+        #[Column(name: 'name', type: ColumnType::String, length: 64)]
+        public string $name;
+    }
+
+    #[Entity(name: 'myapp_orders')]
+    final class Order {
+        #[Id]
+        #[Column(name: 'id', type: ColumnType::Bigint)]
+        public ?int $id = null;
+
+        #[ManyToOne(targetEntity: Merchant::class)]
+        #[JoinColumn(name: 'merchant_id', referencedColumnName: 'id', nullable: true)]
+        public ?Merchant $merchant = null;
+    }
+
+Reading an ``Order`` back through its repository also resolves ``$order->merchant`` to the matching
+``Merchant`` entity, or ``null`` if none is set. Unlike ``OneToOne``, several ``Order`` rows may reference
+the same ``Merchant``.
+
+``OneToOne`` works the same way, but is additionally enforced with a unique constraint on the join column.
+A bidirectional ``OneToOne`` relation is declared from both sides, with ``mappedBy``/``invertedBy`` naming
+the property on the other side, and the ``#[JoinColumn]`` only repeated on the owning (``invertedBy``) side:
+
+.. code-block:: php
+
+    <?php
+
+    #[Entity(name: 'myapp_customers')]
+    final class Customer {
+        #[Id]
+        #[Column(name: 'id', type: ColumnType::Bigint)]
+        public ?int $id = null;
+
+        #[OneToOne(targetEntity: Cart::class, mappedBy: 'customer')]
+        #[JoinColumn(name: 'cart_id', referencedColumnName: 'id')]
+        public ?Cart $cart = null;
+    }
+
+    #[Entity(name: 'myapp_carts')]
+    final class Cart {
+        #[Id]
+        #[Column(name: 'id', type: ColumnType::Bigint)]
+        public ?int $id = null;
+
+        #[OneToOne(targetEntity: Customer::class, invertedBy: 'cart')]
+        #[JoinColumn(name: 'customer_id', referencedColumnName: 'id')]
+        public ?Customer $customer = null;
+    }
+
+Set ``onDelete: 'CASCADE'`` on a ``#[JoinColumn]`` to have the database remove dependent rows automatically;
+otherwise deleting an entity that is still referenced by another entity's join column throws a
+``\LogicException``.
+
+Composite primary keys
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Applying ``#[Id]`` to more than one property declares a composite primary key:
+
+.. code-block:: php
+
+    <?php
+
+    #[Entity(name: 'myapp_shelf_items')]
+    final class ShelfItem {
+        #[Id]
+        #[Column(name: 'shelf_id', type: ColumnType::Bigint)]
+        public ?int $shelfId = null;
+
+        #[Id]
+        #[Column(name: 'author_id', type: ColumnType::Bigint)]
+        public ?int $authorId = null;
+    }
+
+A composite key cannot rely on a single autoincrement column, so every id property must already have a
+value set by the caller before ``insert()`` is called.
+``findByAfterId()`` is not supported for entities with a composite primary key; use ``findBy()`` with an
+``offset`` instead.
+
+.. note:: Nextcloud 34 and earlier documented a different, hand-written approach based on ``QBMapper``
+   and the ``Entity`` base class. Both classes are still shipped for backwards compatibility, but are no
+   longer the recommended way to write new code; see the
+   `Nextcloud 34 developer manual <https://docs.nextcloud.com/server/34/developer_manual/basics/storage/database.html>`_
+   for their documentation.
 
 Table management tips
----------------------
+----------------------
 
 It makes sense to apply some general tips from the beginning, so you don't have to migrate your data and schema later on.
 
 1. Don't use table name longer than 23 characters. As Oracle is limited to 30 chars and we need 3 more for ``oc_`` at the beginning and 5 for the primary key suffix ``_pkey``.
 
-2. Add an auto-incremented ``id`` column. This will ease the use of ``QBMapper`` + ``Entity`` approach:
+2. Add an auto-incremented ``id`` column. This will ease the use of the ``Repository`` + attributes approach:
 
-    - https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/Db/QBMapper.php
-    - https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/Db/Entity.php
+    - https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/ORM/Repository.php
+    - https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/ORM/Attribute/Id.php
 
 .. code-block:: php
 
@@ -417,7 +506,7 @@ It makes sense to apply some general tips from the beginning, so you don't have 
     $table->addUniqueIndex(['your', 'column', 'names', '...'], 'table_name_uniq_feature');
 
 Querying the database provider
-------------------------------
+-------------------------------
 
 If you would like to find out which database your app is running on, use the ``IDBConnection::getDatabaseProvider`` method.
 This can be helpful in cases where specific databases have their own
@@ -425,7 +514,7 @@ requirements, such as Oracle limiting ``IN``- queries to 1000 expressions.
 
 
 Supporting more databases
--------------------------
+--------------------------
 
 Most queries should run fine on all supported databases, but if scaling is required and a database is split into a cluster and for some special database types more rules apply.
 You can specify your supported databases in the ``appinfo/info.xml`` of your app in the dependencies section:
