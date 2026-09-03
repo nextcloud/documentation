@@ -1,31 +1,45 @@
 .. _uploading_big_files:
 
-===========================
-Uploading big files > 512MB
-===========================
+=====================
+Uploading large files
+=====================
 
 General upload limits
 ---------------------
 
-The default PHP upload limit configured by many Nextcloud installations is
-512MB. This limit primarily affects uploads handled through PHP's form-upload
-mechanism.
+Nextcloud does not impose a single default maximum file size for uploads. The
+effective limit depends on the client, upload method, and every component in the
+end-to-end request path, including:
 
-Raw WebDAV ``PUT`` requests and chunked WebDAV uploads are not necessarily
-subject to ``upload_max_filesize`` and ``post_max_size`` in the same way.
-However, every request and the complete upload remain subject to limits imposed
-by the client, web server, reverse proxy, PHP timeouts, operating system,
-filesystem, storage backend, and user quota.
+* the web server;
+* any reverse proxy, load balancer, or content delivery network;
+* PHP configuration and timeouts;
+* the operating system;
+* the performance of the underlying storage mediums and filesystems;
+* the Nextcloud storage backend involved;
+* available temporary and staging space; and
+* the user's available quota.
 
-In particular, 32-bit environments may be unable to process files of 2 GiB or
-larger reliably. Consult the documentation for each component in the upload
-path.
+For a simple, direct upload, one HTTP request can contain the entire file (i.e. a WebDAV
+``PUT`` transaction).
 
-.. note:: The Nextcloud sync client normally uploads large files in smaller
-   chunks and is therefore not affected by PHP form-upload limits in the same
-   way. See the `Client documentation
+For a chunked upload, a larger file is split into multiple "chunks" to avoid many
+end-to-end paths transaction size limits and optimize bandwidth usage, but storage and
+quota limits still apply to the complete, re-assembled file. Also, path timeout constraints
+may still impact final chunk assembly.
+
+The relevant limits must therefore be configured consistently - or at least in a compatible
+manner - across all components of the end-to-end upload path. The lowest applicable limit
+determines whether an upload can complete.
+
+.. note:: The official Nextcloud clients upload larger files by splitting them into
+   smaller chunks by default. This reduces the likelihood of being impacted by per-request
+   size limits, but the complete upload remains subject to request path constraints. And even
+   the default chunk size may be inappropriate for particularly restrictive paths. See the 
+   server-side chunk sizing parameters (which some clients use to auto-configure themselves) as
+   well as the `client documentation
    <https://docs.nextcloud.com/server/latest/user_manual/en/desktop/configfile.html#general-section>`_
-   for more information about configuration options.
+   for more information about options.
 
 How Nextcloud handles uploads
 -----------------------------
