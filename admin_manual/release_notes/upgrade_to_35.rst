@@ -3,24 +3,27 @@ Upgrade to Nextcloud 35
 =======================
 
 This is **not** an exhaustive list of changes or new features. It contains
-only a summary of key operational related changes relevant to those upgrading
-from a previous major version of Nextcloud.
+only a summary of key operational changes relevant to administrators
+upgrading from a previous major version of Nextcloud.
 
 System requirements
 -------------------
 
-There have been changes to supported PHP, operating systems, and database versions:
+There have been changes to supported PHP, operating systems, and database
+versions.
 
-**PHP**
+PHP
+~~~
 
 - PHP 8.2 is no longer supported.
-- PHP 8.3 is now the minimum supported version.
+- PHP 8.3 is the minimum supported version for Nextcloud 35.
 
 .. warning::
-   PHP 8.6 is still in beta as of the first release of Nextcloud 35.
-   It will not be supported by Nextcloud until Nextcloud 36 or later.
+   PHP 8.6 is not supported by Nextcloud 35. Use an officially supported PHP
+   version until a later Nextcloud release explicitly adds PHP 8.6 support.
 
-**Operating Systems**
+Operating systems
+~~~~~~~~~~~~~~~~~
 
 - The minimum supported version of *SUSE Linux Enterprise Server 15* has
   been bumped to SP7.
@@ -29,63 +32,40 @@ There have been changes to supported PHP, operating systems, and database versio
 - The minimum supported version of *Ubuntu Linux* has been bumped to
   *24.04*.
 
-**Databases**
+Databases
+~~~~~~~~~
 
-The list of officially supported databases has been updated:
+The list of officially supported databases has been updated. Verify the final
+Nextcloud 35 database support matrix before upgrading a database server.
 
-- MariaDB 10.6 is out of support and thus Nextcloud dropped support for it.
-- The minimum supported version of MariaDB is now 10.11 LTS.
-- MariaDB 12.3 is released as a new LTS version; it is now supported.
-- MySQL 8.0 is out of support and thus Nextcloud dropped support for it.
-- The minimum supported version of MySQL is now 8.4 LTS.
-- MySQL 9.7 is released as a new LTS version; it is now supported.
+- MariaDB 10.6 is no longer supported.
+- The minimum supported MariaDB version is MariaDB 10.11 LTS.
+- MySQL 8.0 is no longer supported.
+- The minimum supported MySQL version is MySQL 8.4 LTS.
+- MySQL 9.7 is released as a new LTS version and now supported.
 
 MySQL 9 and MD5 support
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-MySQL 9 no longer provides MD5 by default. Nextcloud still has limited
-internal uses of MD5, so installations using MySQL 9 or newer must ensure
-that the ``component_classic_hashing`` component is available.
+MySQL 9 no longer provides the classic MD5 functions by default. Some parts of
+the Nextcloud ecosystem may still use MD5, so installations using MySQL 9 or
+newer must ensure that the ``component_classic_hashing`` component is
+available.
 
-For existing installations, verify this before upgrading the database server.
+Before upgrading the database server, verify that the component is available.
+If necessary, load it on the MySQL server with::
 
-.. note::
-   Make sure that after upgrading an existing installation to MySQL 9+,
-   the MySQL component for MD5 support gets loaded. To do so, run this on
-   your MySQL 9+ server::
-
-      INSTALL COMPONENT 'file://component_classic_hashing';
+   INSTALL COMPONENT 'file://component_classic_hashing';
 
 32-bit systems
 ~~~~~~~~~~~~~~
 
-32-bit systems are no longer a recommended platform for Nextcloud. The
-administrator warning for 32-bit installations has been strengthened.
+32-bit systems are not recommended for new deployments and support is planned
+for removal in a future major release.
 
-Plan migration to a 64-bit operating system and PHP environment. Support for
-32-bit systems is scheduled for removal in a future major release.
-
-SQLite foreign-key enforcement
-------------------------------
-
-SQLite installations now enforce foreign-key constraints more consistently.
-Direct writes to the Nextcloud SQLite database and third-party maintenance
-scripts that create invalid references may fail after upgrading.
-
-Administrators using custom database tooling should verify that it preserves
-referential integrity. Direct modification of the Nextcloud database is not
-supported.
-
-ownCloud database migrations
------------------------------
-
-The migration code has improved compatibility with older ownCloud database
-schemas. During an ownCloud-to-Nextcloud migration, Nextcloud can now
-temporarily operate with the older ``appconfig`` and ``preferences`` column
-sets until the required Nextcloud schema migrations have run.
-
-Administrators performing an ownCloud migration should still make a complete
-database backup and monitor the migration output for errors.
+Plan migration to a 64-bit operating system and PHP environment. Administrators
+and app developers must also ensure that Snowflake identifiers and millisecond
+timestamps are handled as strings rather than native integers.
 
 App compatibility
 -----------------
@@ -107,20 +87,6 @@ the App Store, the app can be enabled again.
 Review custom apps, locally installed apps, and apps previously installed
 through ``app_install_overwrite`` before upgrading.
 
-DAV sync-token retention
-------------------------
-
-The CalDAV and CardDAV sync-token cleanup jobs now correctly apply the
-configured retention period.
-
-On installations where old sync-token rows have accumulated, cleanup may
-remove a larger backlog after upgrading. Make sure background jobs are running
-and monitor database activity on instances with large calendar or address-book
-tables.
-
-See :ref:`CalDAV retention <caldav-data-retention>` and
-:ref:`CardDAV retention <carddav-data-retention>`.
-
 Database migrations and schema verification
 --------------------------------------------
 
@@ -129,8 +95,7 @@ idempotency. This includes fixes affecting Sharing, DAV, and TaskProcessing
 migrations.
 
 Allow the upgrade to complete fully before returning the instance to normal
-operation. Do not interrupt the upgrade while database migrations are
-running.
+operation. Do not interrupt the upgrade while database migrations are running.
 
 Nextcloud 35 adds the following database schema check:
 
@@ -144,20 +109,24 @@ reported, investigate and resolve it before returning the instance to normal
 service. Do not manually modify the database schema without first taking a
 verified database backup.
 
-The ``dbdoctor`` app is also shipped with Nextcloud 35. Use it only according
-to the database-maintenance documentation and take a verified database backup
-before running database repair operations.
+The ``dbdoctor`` app is shipped with Nextcloud 35. Consult the database
+maintenance documentation for its supported commands and workflow. Take a
+verified database backup before running database repair operations.
 
 The help text for ``occ migrations:migrate`` has also been corrected and
 clarified. Use the command-specific help from the installed version rather
 than relying on examples from older releases.
 
-.. note::
-   Nextcloud 35 beta releases contained a regression affecting prepared
-   statement parameter binding. This was fixed before the stable release.
-   Installations that tested an early Nextcloud 35 beta should upgrade to the
-   final release and rerun database-backed app operations and migrations that
-   previously failed.
+ownCloud database migrations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Nextcloud 35 includes additional safeguards for migrations from older ownCloud
+database schemas.
+
+Administrators performing an ownCloud-to-Nextcloud migration should make a
+complete database backup, run the migration in maintenance mode, and monitor
+the migration output for errors before returning the instance to normal
+service.
 
 Unified Sharing
 ---------------
@@ -200,11 +169,9 @@ Email-share expiration dates are normalized using the server's configured
 timezone. This prevents an expiration date selected by a user in another
 timezone from being stored or evaluated at an unexpected time.
 
-Password policies also apply to recipients of email shares. When a password is
-required, a default password is generated if one was not provided.
-
-Review sharing policies if different recipient types have different password
-or expiration requirements.
+Password policies also apply to recipients of email shares. Review sharing
+policies if different recipient types have different password or expiration
+requirements.
 
 Share-management permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -277,11 +244,9 @@ Administrators using public links or file requests for group folders, external
 storage, object storage, or other non-home storage should test those links
 after upgrading.
 
-Uploads now fail with HTTP 403 when the request URI does not match the
-current session or share token.
-
-Custom WebDAV clients, upload gateways, and reverse proxies that construct
-upload URLs manually should be tested after upgrading.
+Uploads now fail with HTTP 403 when the request URI does not match the current
+session or share token. Custom WebDAV clients, upload gateways, and reverse
+proxies that construct upload URLs manually should be tested after upgrading.
 
 Authentication and security
 ---------------------------
@@ -289,18 +254,17 @@ Authentication and security
 Nextcloud 35 changes several authentication flows and security checks.
 
 WebAuthn and two-factor authentication
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 WebAuthn credentials that perform user verification can satisfy the
 second-factor requirement without requiring a separate 2FA challenge.
 
 Keys without user verification continue to use the usual 2FA challenge.
-
 Review WebAuthn and 2FA policies and test the login behavior of passkeys and
 security keys after upgrading.
 
 Password confirmation
-~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 Password confirmation can be bypassed for selected IP ranges.
 
@@ -345,9 +309,6 @@ enumerate users.
 Integrations should not depend on distinguishing nonexistent users from other
 lookup or authorization failures unless explicitly documented.
 
-Remember that authentication responses may also be rate-limited or subject to
-brute-force protection.
-
 Sensitive configuration output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -366,10 +327,8 @@ System-tag permissions
 All system-tag updates now require administrator permissions.
 
 Review applications or automation that rename or otherwise modify system tags.
-
 System-tag object IDs are also filtered according to the requesting user's
-visibility. Applications should not assume that object IDs for inaccessible
-objects are returned.
+visibility.
 
 Storage and file handling
 -------------------------
@@ -441,9 +400,7 @@ Nextcloud 35 improves handling of failed and moved DAV uploads:
 - part-file locks are released after failed uploads;
 - DAV uploads are finalized correctly when using ``MOVE``;
 - write-size detection is derived more strictly from the PUT
-  ``Content-Length`` header;
-- metadata-encoding failures no longer terminate the upload path
-  unnecessarily; and
+  ``Content-Length`` header; and
 - missing files encountered while streaming DAV output are handled correctly.
 
 No configuration change is required. Administrators operating DAV clients,
@@ -475,6 +432,32 @@ Nextcloud 35 adds the following file-management commands and options:
 Review automation using these commands, especially deletion scripts that may
 need to preserve the previous trashbin behavior.
 
+Scoped external-storage creation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``occ files_external:create`` can specify the users and groups to which a new
+external-storage mount applies.
+
+This allows provisioning scripts to create a mount with its final scope without
+temporarily exposing it to all users. Use the exact option names shown by
+``occ files_external:create --help``.
+
+DAV sync-token retention
+------------------------
+
+The CalDAV and CardDAV sync-token cleanup job now applies both the configured
+number of tokens to keep and the configured retention period. The job runs
+once per day.
+
+On installations where old sync-token rows have accumulated, cleanup may
+remove a larger backlog after upgrading. Make sure background jobs are running
+and monitor database activity on instances with large calendar or address-book
+tables.
+
+The retention settings are shared by the CalDAV and CardDAV cleanup behavior.
+See :ref:`CalDAV retention <caldav-data-retention>` and
+:ref:`CardDAV retention <carddav-data-retention>`.
+
 Background jobs and caching
 ---------------------------
 
@@ -497,14 +480,8 @@ Background-job Snowflake identifiers are preserved and bound as strings.
 Integrations must not cast these identifiers to integers. This is particularly
 important on 32-bit PHP systems, where large integer values can lose precision.
 
-Review custom integrations for 32-bit compatibility. Avoid converting
-Snowflake IDs, share IDs, job IDs, or millisecond timestamps to native
-integers.
-
 Redis and Predis
 ~~~~~~~~~~~~~~~~
-
-The Redis cache backend remains supported in Nextcloud 35.
 
 A pure-PHP Predis-based implementation is also available for deployments where
 the PHP Redis extension cannot be installed or does not yet support the
@@ -538,11 +515,8 @@ Quota values are expressed in bytes. A value of ``0`` means unlimited, while
 ``null`` indicates that the active TeamFolder provider does not expose quota
 information.
 
-Team folders can also be associated with teams through the Team and
-TeamFolder APIs.
-
-Review TeamFolder integrations, quota-management automation, and team-folder
-provisioning after upgrading.
+Review TeamFolder integrations and quota-management automation after
+upgrading.
 
 LDAP, federation, and OCM
 -------------------------
@@ -558,11 +532,9 @@ Older LDAP configurations do not need to be renamed manually.
 Delegated administration
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Delegated-administrator handling has been tightened.
-
-Delegated administrators can manage only the groups and users within their
-permitted scope. They cannot add accounts to the ``admin`` group, and they
-cannot edit delegated administrator accounts outside their authority.
+Sub-admins can add and remove users from groups they administer through the
+Provisioning API. Groups outside their scope remain unchanged, and adding a
+user to the ``admin`` group remains restricted to full administrators.
 
 Review delegated-administration assignments and any automation that modifies
 group memberships.
@@ -574,8 +546,7 @@ Share processing skips recipients that can no longer be resolved instead of
 failing the entire share operation.
 
 The unresolved recipient will not receive the share. Administrators should
-investigate stale LDAP, Talk, or federated recipient records when this
-occurs.
+investigate stale LDAP, Talk, or federated recipient records when this occurs.
 
 Federated and external shares
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -587,10 +558,6 @@ upgrade.
 
 Federated users are identified more accurately in trashbin information,
 including the remote user who deleted a file in a federated share.
-
-Administrators may see additional background jobs after accepting external
-shares. Review stale or unresolved federated recipients if synchronization or
-share attribution appears incomplete.
 
 OCM HTTP Message Signatures
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -632,7 +599,7 @@ Provisioning API
 The Provisioning API now interprets ``newUser.sendEmail`` as a boolean.
 
 Clients should send JSON ``true`` or ``false`` values rather than relying on
-string values such as ``"yes"`` or ``"no``.
+string values such as ``"yes"`` or ``"no"``.
 
 Use the help output and API documentation from Nextcloud 35 when updating
 provisioning automation.
@@ -649,18 +616,17 @@ without diagnostics being mixed into the JSON payload.
 Scripts that consume machine-readable ``occ`` output should still handle
 non-zero exit statuses and inspect stderr for diagnostics.
 
-Database installation
-----------------------
+Running ``occ`` as root
+-----------------------
 
-Database SSL/TLS options can now be supplied during command-line, web-based,
-and autoconfig installation.
+When ``occ`` is invoked as root, it attempts to switch to the owner of
+``config/config.php`` before executing the command. The order in which
+``occ`` sets the effective group and user IDs when invoked as root was
+fixed.
 
-Review automated installation files if the database server requires encrypted
-connections.
-
-The installer also handles IPv6 database hosts correctly. Review custom
-database-host, proxy, and autoconfig values if the installation uses IPv6
-literals or non-standard host formats.
+Check the ownership of ``config/config.php`` and ensure that its owner has the
+permissions required by the command. This privilege switch remains best-effort
+and is not a complete security sandbox.
 
 App-store link
 --------------
@@ -678,29 +644,74 @@ The behavior of ``skeletondirectory`` and ``templatedirectory`` is clarified.
 Skeleton content is copied during user initialization, while the template
 directory is configured independently.
 
-Review custom values if the deployment uses localized skeleton content or
-user templates.
+Review custom values if the deployment uses localized skeleton content or user
+templates.
 
-Encryption configuration values
--------------------------------
+Other Notable Operational Related Changes
+-----------------------------------------
 
-Some server-side encryption app configuration values are migrated from
-string-typed values to boolean-typed values during the upgrade.
+Controlling file-version creation with workflows
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The migration is performed automatically. Administrators using scripts or
-external tooling that reads these app configuration values should ensure that
-the tooling handles boolean values rather than relying on the previous string
-representation.
+The workflow engine can now prevent new file versions from being created when
+configured conditions match. This can be used for compliance or storage-policy
+scenarios.
 
-Deprecated external-storage backends
--------------------------------------
+Review existing workflow rules after upgrading if your instance uses workflows
+to control file lifecycle behavior.
 
-Deprecated external-storage backends are ignored by Nextcloud 35. If an
-existing external-storage mount disappears after upgrading, check whether it
-uses a deprecated backend and migrate it to a supported backend.
+Database installation: (SSL/TLS, IPv6)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Review external-storage configuration and the server log after upgrading if
-mounts are unexpectedly unavailable.
+Database SSL/TLS options can now be supplied during command-line, web-based,
+and autoconfig installation.
+
+Review automated installation files if the database server requires encrypted
+connections.
+
+The installer also handles IPv6 database hosts correctly. Review custom
+database-host, proxy, and autoconfig values if the installation uses IPv6
+literals or non-standard host formats.
+
+Custom login names for generated app passwords
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``occ user:add-app-password`` can now assign a custom login name to a generated
+app password. This can be useful when provisioning CalDAV or CardDAV clients
+that expect an email address as the login name.
+
+Controlling file-version creation with workflows
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The workflow engine can now prevent new file versions from being created when
+configured conditions match. This can be used for compliance or storage-policy
+scenarios.
+
+Review existing workflow rules after upgrading if your instance uses workflows
+to control file lifecycle behavior.
+
+Background job diagnostics
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Nextcloud 35 adds commands for inspecting configured background jobs and
+historical job executions:
+
+* ``occ background-job:list``
+* ``occ background-job:history``
+
+The history output includes the job status, class, start time, server ID,
+process ID, duration, and peak memory usage. This can help identify failed or
+slow jobs and determine which server executed a job.
+
+New database diagnostic commands
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+These are valuable for troubleshooting, but no migration or configuration change is required::
+
+   occ db:info
+   occ db:size
+   occ db:index-usage
+   occ db:locks
 
 Post-upgrade checks
 -------------------
@@ -709,6 +720,8 @@ After the upgrade has completed:
 
 #. Confirm that the instance reports no pending database migrations.
 #. Run ``occ db:schema:check`` and investigate any reported schema drift.
+#. If using ``dbdoctor``, follow its database-maintenance documentation and
+   take a verified backup before repair operations.
 #. Review disabled and incompatible apps, especially apps previously listed in
    ``app_install_overwrite``.
 #. Review delegated-administrator assignments and group-management behavior.
@@ -721,11 +734,11 @@ After the upgrade has completed:
    mounts.
 #. Test external-storage access and representative copy, move, upload, and
    restore operations.
-#. Test S3 folder moves, presigned download URLs, FTP mounts, and SFTP mounts
-   if used.
-#. Check TeamFolder quotas and team-folder provisioning if used.
-#. Check background-job processing and review the logs for storage,
-   authentication, migration, or schema errors.
+#. Test S3 folder moves, presigned download URLs, FTP mounts, SFTP mounts, and
+   scoped external-storage provisioning if used.
+#. Check TeamFolder quotas if used.
+#. Check background-job processing, including DAV sync-token cleanup, and
+   review the logs for storage, authentication, migration, or schema errors.
 #. Verify that automated scripts consuming ``occ`` JSON output still parse
    stdout correctly and collect diagnostics from stderr.
 #. Protect any diagnostic output produced with ``occ config:list --private``.
