@@ -11,35 +11,52 @@ Nextcloud does not impose a single default maximum file size for all uploads.
 The effective limit depends on the client, the upload method, and every
 component in the end-to-end request path, including:
 
+Nextcloud does not impose a single default maximum file size that applies to
+every upload method. Whether an upload can complete depends on the client,
+upload method, storage destination, and every component in the end-to-end
+request path, including:
+
 * the web server;
 * any reverse proxy, load balancer, or content delivery network;
 * PHP configuration and timeouts;
 * the operating system and filesystem;
-* the primary or External Storage backend;
+* the capabilities and available capacity of the storage backend;
 * available temporary and staging space; and
-* the user's available quota.
+* the user's remaining quota.
 
-A direct upload sends the file in one HTTP request. Request-size limits must
+For a direct upload, one HTTP request contains the complete file, normally in
+a WebDAV ``PUT`` request. Any request-size limit in the upload path must
 therefore permit the complete file.
 
-A chunked upload divides the file into multiple requests. Request-size limits
-normally apply to each individual chunk rather than directly to the complete
-file. Storage, quota, staging-space, and finalization-time constraints still
-apply to the complete file.
+For a chunked upload, the client divides the file into multiple requests.
+Request-size limits normally apply to each individual chunk rather than to the
+complete file. Chunking also allows individual requests to be retried and can
+permit supporting clients to resume an interrupted upload.
 
-The relevant limits must be configured consistently, or at least compatibly,
-across every component in the upload path. The lowest applicable limit
-determines whether an upload can complete.
+Chunking does not remove complete-file constraints. Storage capacity, quota,
+temporary and staging space, and backend file-size limits still apply to the
+completed file. Timeouts can also affect individual chunk requests and the
+finalization request.
 
-.. note:: Official Nextcloud clients normally use chunked uploading for 
-   larger files. This reduces the likelihood of encountering per-request size
-   limits, but it does not eliminate all possible constraints.
+Configure each component for the part of the upload it processes:
 
-   The configured chunk size can itself still exceed a restrictive request-size
-   limit imposed by a proxy, content delivery network, or other intermediary.
-   See :ref:`files_configure_max_chunk_size` and the `client documentation
+* request-size limits must permit either the complete direct upload or an
+  individual chunk;
+* timeout settings must permit individual upload requests and finalization;
+  and
+* storage, staging-space, and quota limits must permit the completed file.
+
+.. note::
+   Official Nextcloud clients normally use chunked uploads for large
+   files. This reduces the likelihood of encountering per-request size limits,
+   but does not remove complete-file, staging, quota, or timeout constraints.
+
+   The configured chunk size can itself exceed a request-size limit imposed by
+   a proxy, content delivery network, or other intermediary. See
+   :ref:`files_configure_max_chunk_size` for the server-advertised chunk
+   settings used by supporting clients, and see the `client documentation
    <https://docs.nextcloud.com/server/latest/user_manual/en/desktop/configfile.html#general-section>`_
-   for relevant options.
+   for client configuration options.
 
 Upload paths at a glance
 ------------------------
