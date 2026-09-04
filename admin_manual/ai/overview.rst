@@ -54,6 +54,7 @@ Nextcloud uses modularity to separate raw AI functionality from the Graphical Us
    "","`OpenAI and LocalAI integration (via MistralAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
    "","`Replicate integration <https://apps.nextcloud.com/apps/integration_replicate>`_","Yellow","Yes","Yes - Whisper models by OpenAI","No","No"
    "Image generation","`Local Stable Diffusion 2 (ExApp) <https://apps.nextcloud.com/apps/text2image_stablediffusion2>`_","Yellow","Yes","Yes - StableDiffusion XL model by StabilityAI","No","Yes"
+   "","`Local Image Generation: Flux (ExApp) <https://apps.nextcloud.com/apps/text2image_flux>`_","Yellow","Yes","Yes - FLUX.2 [klein] 4B model by Black Forest Labs","No","Yes"
    "","`Replicate integration <https://apps.nextcloud.com/apps/integration_replicate>`_","Yellow","Yes","Yes - StableDiffusion models by StabilityAI","No","No"
    "","`OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
    "","`OpenAI and LocalAI integration (via LocalAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Green","Yes","Yes","Yes","Yes"
@@ -198,6 +199,7 @@ Backend apps
 ~~~~~~~~~~~~
 
 * `Local Stable Diffusion 2 (ExApp) <https://apps.nextcloud.com/apps/text2image_stablediffusion2>`_ (Customer support available upon request)
+* :ref:`Local Image Generation: Flux (ExApp)<ai-app-text2image_flux>` (Customer support available upon request)
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * *integration_replicate* - Integrates with the replicate API to provide AI functionality from replicate servers (see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
