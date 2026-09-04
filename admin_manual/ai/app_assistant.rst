@@ -85,7 +85,8 @@ Text-To-Image
 
 In order to make use of Text-To-Image features, you will need an app that provides an image generation backend:
 
-* :ref:`tex2image_stablediffusion2<ai-app-text2image_stablediffusion2>` (Customer support available upon request)
+* :ref:`text2image_stablediffusion2<ai-app-text2image_stablediffusion2>` (Customer support available upon request)
+* :ref:`text2image_flux<ai-app-text2image_flux>` - Local text-to-image and image editing with FLUX.2 [klein] 4B (Customer support available upon request)
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * *integration_replicate* - Integrates with the replicate API to provide AI functionality from replicate servers (see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
