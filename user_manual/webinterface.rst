@@ -1,84 +1,84 @@
 ===========================
-The Nextcloud web interface
+A interface Web do Nextcloud
 ===========================
 
-Open your Nextcloud server's URL in any web browser and log in with your account name (or email address) and password:
+Abra a URL do seu servidor Nextcloud em qualquer navegador web e acesse com o seu nome de usuário (ou endereço de e-mail) e a sua senha:
 
 .. figure:: images/login_page.png
-   :alt: Nextcloud login screen.
+   :alt: Tela de login do Nextcloud.
 
-You can also log in using a passkey or hardware security key by clicking **Log in with a device**.
+Você também pode fazer login usando uma senha ou chave de segurança clicando em **Fazer login com um dispositivo**.
 
-Web browser requirements
+Requisitos do navegador web
 ------------------------
 
-For the best experience, use the latest version of one of these browsers:
+Para uma melhor experiência, utilize a versão mais recente de um destes navegadores:
 
 * Google **Chrome** / Chromium
 * Mozilla **Firefox**
 * Apple **Safari**
 * Microsoft **Edge**
 
-.. note:: Not all versions are supported. Nextcloud targets `browsers meeting the minimum usage threshold <https://browserslist.dev/?q=PjAuMjUlLCBub3Qgb3BfbWluaSBhbGwsIG5vdCBkZWFkLCBGaXJlZm94IEVTUg==>`_.
+.. note:: Nem todas as versões são suportadas. O Nextcloud tem como alvo navegadores que atendam ao limite mínimo de uso <https://browserslist.dev/?q=PjAuMjUlLCBub3Qgb3BfbWluaSBhbGwsIG5vdCBkZWFkLCBGaXJlZm94IEVTUg==>`_.
 
-The Dashboard
+O painel de controle
 -------------
 
-After logging in, Nextcloud opens the **Dashboard** — a customisable overview of your most important activity: upcoming calendar events, unread messages, recent files, and more.
+Após fazer login, o Nextcloud abre o **Painel de Controle** — uma visão geral personalizável das suas atividades mais importantes: eventos futuros da agenda, mensagens não lidas, arquivos recentes e muito mais.
 
 .. figure:: images/webinterface_dashboard.png
-   :alt: The Nextcloud Dashboard showing a personalised greeting and widgets.
+   :alt: O painel do Nextcloud exibindo uma saudação personalizada e widgets.
 
-Use the **Customise** button at the bottom of the page to add, remove, or rearrange widgets to suit your workflow.
+Use o botão **Personalizar** na parte inferior da página para adicionar, remover ou reorganizar widgets de acordo com seu fluxo de trabalho.
 
-Navigating the interface
+Navegando pela interface
 ------------------------
 
-The navigation bar at the top of every page is your main access point:
+A barra de navegação no topo de cada página é o seu principal ponto de acesso:
 
 .. figure:: images/webinterface_nav.png
-   :alt: The Nextcloud navigation bar with the logo, app shortcuts, and action icons.
+   :alt: A barra de navegação do Nextcloud com o logotipo, atalhos de aplicativos e ícones de ação.
 
-* The **Nextcloud logo** (top left) takes you back to the Dashboard.
-* **App shortcuts** are shown next to the logo — click any icon to switch to that app (Files, Calendar, Talk, and so on).
-* The **search icon** on the right opens :ref:`unified search <unified-search>`, which searches across all your apps at once.
-* The **bell icon** shows your notifications.
-* The **contacts icon** lets you quickly look up and contact other users on your server.
-* Your **profile picture** (far right) opens the settings menu.
+* O **logotipo do Nextcloud** (canto superior esquerdo) leva você de volta ao Painel de Controle.
+* **Atalhos de aplicativos** são exibidos ao lado do logotipo — clique em qualquer ícone para alternar para o aplicativo correspondente (Arquivos, Calendário, Talk etc.).
+* O **ícone de pesquisa** à direita abre a :ref:`busca unificada <unified-search>`, que pesquisa em todos os seus aplicativos ao mesmo tempo.
+* O **ícone de sino** mostra suas notificações.
+* O **ícone de contatos** permite que você localize e entre em contato rapidamente com outros usuários em seu servidor.
+* Sua **foto de perfil** (à direita) abre o menu de configurações.
 
-Each app also has its own **left sidebar** with filters and actions specific to that app.
+Cada aplicativo também possui sua própria **barra lateral esquerda** com filtros e ações específicas para aquele aplicativo.
 
-Settings and profile
+Configurações e perfil
 --------------------
 
-Click your profile picture to access your account options:
+Clique na sua foto de perfil para acessar as opções da sua conta:
 
 .. figure:: images/webinterface_profile_menu.png
-   :alt: The profile menu showing options for settings, status, appearance, and logging out.
+   :alt: O menu de perfil exibe opções para configurações, status, aparência e para sair da conta.
 
-From this menu you can:
+A partir deste menu você pode:
 
-* View and edit your profile
-* Set your online status
-* Change appearance and accessibility settings
-* Open your personal :doc:`Settings <userpreferences>` page
-* Access help and privacy information
-* Log out
+* Ver e edite seu perfil
+* Definir seu status online
+* Alterar as configurações de aparência e acessibilidade
+* Abra sua página pessoal de :doc:`Configurações <userpreferences>`
+* Acesse informações sobre ajuda e privacidade
+* Sair
 
-Unified search
+Busca unificada
 --------------
 
 .. _unified-search:
 
-Click the search icon in the navigation bar (or press :kbd:`Ctrl+F`) to open the unified search modal:
+Clique no ícone de pesquisa na barra de navegação (ou pressione :kbd:`Ctrl+F`) para abrir o modal de pesquisa unificada:
 
 .. figure:: images/webinterface_search.png
-   :alt: The unified search modal with Places, Date, and People filters.
+   :alt: O modal de pesquisa unificado com filtros de Locais, Data e Pessoas.
 
-Unified search looks across all your installed apps — files, calendar events, messages, contacts, and more — at once. Results are grouped by app so you can quickly see where a match was found.
+A busca unificada pesquisa em todos os seus aplicativos instalados — arquivos, eventos da agenda, mensagens, contatos e muito mais — simultaneamente. Os resultados são agrupados por aplicativo para que você possa ver rapidamente onde uma correspondência foi encontrada.
 
-Use the filter chips to narrow results:
+Use os chips de filtro para refinar os resultados:
 
-* **Places** — limit the search to a specific app, such as Files or Calendar.
-* **Date** — filter by time period (today, last 7 days, last 30 days, this year, or a custom range).
-* **People** — show only results related to a specific person.
+* **Lugares** — limite a pesquisa a um aplicativo específico, como Arquivos ou Calendário.
+* **Data** — filtre por período (hoje, últimos 7 dias, últimos 30 dias, este ano ou um intervalo personalizado).
+* **Pessoas** — mostrar apenas resultados relacionados a uma pessoa específica.
