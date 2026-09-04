@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Version control &mdash; Nextcloud 35 User Manual</title>
+  <title>バージョン管理 &mdash; Nextcloud 35 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -30,7 +30,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="Storage quota" href="quota.html" />
+    <link rel="next" title="ストレージクォータ" href="quota.html" />
     <link rel="prev" title="Deleted files" href="deleted_file_management.html" />
    
   <meta name="robots" content="noindex, follow" />
@@ -79,16 +79,16 @@
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">ファイルへのアクセス</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="managing.html">ファイルの管理</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="deleted_file_management.html">Deleted files</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Version control</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#naming-a-version">Naming a version</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#deleting-a-version">Deleting a version</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">バージョン管理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#naming-a-version">バージョンに名前を付ける</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deleting-a-version">バージョンの削除</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="quota.html">Storage quota</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quota.html">ストレージクォータ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tagging.html">System tags</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration.html">共有とコラボレーション</a></li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
 </ul>
 </li>
@@ -118,7 +118,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">ファイル（Files）と同期</a></li>
           <li class="breadcrumb-item"><a href="managing.html">ファイルの管理</a></li>
-      <li class="breadcrumb-item active">Version control</li>
+      <li class="breadcrumb-item active">バージョン管理</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/version_control.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -129,7 +129,7 @@
            <div itemprop="articleBody">
              
   <section id="version-control">
-<h1>Version control<a class="headerlink" href="#version-control" title="Link to this heading"></a></h1>
+<h1>バージョン管理<a class="headerlink" href="#version-control" title="Link to this heading"></a></h1>
 <p>Nextcloud supports a simple version control system for files. Versioning creates
 backups of files which are accessible via the Versions tab on the Details
 sidebar. This tab contains the history of the file where you can roll back a
@@ -138,39 +138,35 @@ have passed since the last version was created. Versions are stored in <code cla
 <figure class="align-default">
 <img alt="File version history in the Details sidebar" src="../../_images/files_versioning.png" />
 </figure>
-<p>To restore a specific version of a file, click the circular arrow to the right.
-Click on the timestamp to download it.</p>
+<p>ファイルの特定のバージョンを復元するには、右側の円形の矢印をクリックします。タイムスタンプをクリックするとダウンロードできます。</p>
 <p>The versioning app expires old versions automatically to make sure that
 you don’t run out of space. This pattern is used to delete
 old versions:</p>
 <ul class="simple">
-<li><p>For the first second we keep one version</p></li>
-<li><p>For the first 10 seconds Nextcloud keeps one version every 2 seconds</p></li>
-<li><p>For the first minute Nextcloud keeps one version every 10 seconds</p></li>
-<li><p>For the first hour Nextcloud keeps one version every minute</p></li>
-<li><p>For the first 24 hours Nextcloud keeps one version every hour</p></li>
-<li><p>For the first 30 days Nextcloud keeps one version every day</p></li>
-<li><p>After the first 30 days Nextcloud keeps one version every week</p></li>
+<li><p>最初の1秒間は1つのバージョンを保持します</p></li>
+<li><p>最初の10秒間は2秒ごとに1つのバージョンを保持します</p></li>
+<li><p>最初の1分間は10秒ごとに1つのバージョンを保持します</p></li>
+<li><p>最初の1時間は1分ごとに1つのバージョンを保持します</p></li>
+<li><p>最初の24時間は1時間ごとに1つのバージョンを保持します</p></li>
+<li><p>最初の30日間は1日ごとに1つのバージョンを保持します</p></li>
+<li><p>30日経過後は1週間ごとに1つのバージョンを保持します</p></li>
 </ul>
-<p>The versions are adjusted along this pattern every time a new version gets
-created.</p>
-<p>The version app never uses more than 50% of the user’s currently available free
-space. If the stored versions exceed this limit, Nextcloud deletes the oldest
-versions until it meets the disk space limit again.</p>
+<p>新しいバージョンが作成されるたびに、このパターンに沿ってバージョンが調整されます。</p>
+<p>バージョン管理アプリが利用者の現在利用可能な空き容量の50%を超えて使用することはありません。保存されたバージョンがこの上限を超えた場合、Nextcloud はディスク容量の制限を満たすまで最も古いバージョンを順に削除します。</p>
 <section id="naming-a-version">
-<h2>Naming a version<a class="headerlink" href="#naming-a-version" title="Link to this heading"></a></h2>
-<p>You can give a name to a version.</p>
+<h2>バージョンに名前を付ける<a class="headerlink" href="#naming-a-version" title="Link to this heading"></a></h2>
+<p>バージョンに名前を付けることができます。</p>
 <figure class="align-default">
 <img alt="Version actions menu" src="../../_images/files_versions_actions.png" />
 </figure>
 <figure class="align-default">
 <img alt="Naming a file version" src="../../_images/files_versions_naming.png" />
 </figure>
-<p>When a version has a name, it will be excluded from the automatic expiration process.</p>
+<p>バージョンに名前が付いている場合、自動的な期限切れ処理から除外されます。</p>
 </section>
 <section id="deleting-a-version">
-<h2>Deleting a version<a class="headerlink" href="#deleting-a-version" title="Link to this heading"></a></h2>
-<p>You can also manually delete a version without waiting for the automatic expiration process.</p>
+<h2>バージョンの削除<a class="headerlink" href="#deleting-a-version" title="Link to this heading"></a></h2>
+<p>自動的な期限切れ処理を待たずに、手動でバージョンを削除することもできます。</p>
 </section>
 </section>
 
@@ -179,7 +175,7 @@ versions until it meets the disk space limit again.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="deleted_file_management.html" class="btn btn-neutral float-left" title="Deleted files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="quota.html" class="btn btn-neutral float-right" title="Storage quota" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="quota.html" class="btn btn-neutral float-right" title="ストレージクォータ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -30,8 +30,8 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="Making anonymous uploads" href="file_drop.html" />
-    <link rel="prev" title="Sharing &amp; collaboration" href="collaboration.html" />
+    <link rel="next" title="匿名アップロードの利用" href="file_drop.html" />
+    <link rel="prev" title="共有とコラボレーション" href="collaboration.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -78,19 +78,19 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ファイル（Files）と同期</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">ファイルへのアクセス</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">ファイルの管理</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="collaboration.html">共有とコラボレーション</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">File sharing</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#public-link-shares">Public link shares</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#internal-shares-with-users-and-groups">Internal shares with users and groups</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#others-with-access">Others with access</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#public-link-shares">公開リンクによる共有</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#internal-shares-with-users-and-groups">ユーザ・グループとの内部共有</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#others-with-access">アクセス権を持つ他のユーザ</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#federated-shares">Federated shares</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Adding a public share to your Nextcloud</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">公開共有を自分の Nextcloud に追加する</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="file_drop.html">Making anonymous uploads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file_drop.html">匿名アップロードの利用</a></li>
 <li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing.html">Using federation shares</a></li>
 <li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Transfer ownership</a></li>
 </ul>
@@ -123,7 +123,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">ファイル（Files）と同期</a></li>
-          <li class="breadcrumb-item"><a href="collaboration.html">Sharing &amp; collaboration</a></li>
+          <li class="breadcrumb-item"><a href="collaboration.html">共有とコラボレーション</a></li>
       <li class="breadcrumb-item active">File sharing</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -136,40 +136,39 @@
              
   <section id="file-sharing">
 <h1>File sharing<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
-<p>Nextcloud users can share files and folders. Possible targets are:</p>
+<p>Nextcloud のユーザはファイルやフォルダを共有できます。共有先として可能なのは次の通りです:</p>
 <ul class="simple">
-<li><p>public links</p></li>
-<li><p>users</p></li>
-<li><p>groups</p></li>
-<li><p>circles</p></li>
-<li><p>talk conversations</p></li>
-<li><p>users or groups on federated Nextcloud servers</p></li>
+<li><p>公開リンク</p></li>
+<li><p>ユーザ</p></li>
+<li><p>グループ</p></li>
+<li><p>サークル</p></li>
+<li><p>Talk の会話</p></li>
+<li><p>フェデレーションされた Nextcloud サーバ上のユーザまたはグループ</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>Some options may not be available due to administrative configuration.
-See <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html">administrator documentation</a> for details.</p>
+<p>一部のオプションは管理者の設定によりご利用いただけない場合があります。詳しくは <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html">administrator documentation</a> をご覧ください。</p>
 </div>
 <section id="public-link-shares">
-<h2>Public link shares<a class="headerlink" href="#public-link-shares" title="Link to this heading"></a></h2>
-<p>You can share files and folders via public links.</p>
-<p>A random 15-digit token will be created. The link will look like <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/s/yxcFKRWBJqYYzp4</span></code>.</p>
-<p>A number of options are available for public <em>folder</em> shares:</p>
+<h2>公開リンクによる共有<a class="headerlink" href="#public-link-shares" title="Link to this heading"></a></h2>
+<p>ファイルやフォルダは公開リンク経由でも共有できます。</p>
+<p>ランダムな15文字のトークンが生成され、リンクは <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/s/yxcFKRWBJqYYzp4</span></code> のような形式になります。</p>
+<p>公開 <em>フォルダ</em> 共有ではさまざまなオプションが利用可能です:</p>
 <figure class="align-default">
 <img alt="Public folder share options." src="../../_images/sharing_public_folder.png" />
 </figure>
 <ul class="simple">
-<li><p><strong>Read only</strong> to allow viewing and downloading</p></li>
-<li><p><strong>Allow upload and editing</strong></p></li>
-<li><p>With <strong>File drop</strong>, the sharee can only upload files to a folder without seeing the files that are already in that folder.</p></li>
-<li><p><strong>Hide download</strong> hides the download buttons and the default browser right-click options in order to make downloading for the sharee harder</p></li>
-<li><p><strong>Password protect</strong></p></li>
-<li><p><strong>Set expiration date</strong> will automatically disable the share</p></li>
-<li><p><strong>Note to recipient</strong></p></li>
-<li><p><strong>Unshare</strong> to revert the share</p></li>
-<li><p><strong>Add another link</strong> to create multiple public links with different rights</p></li>
+<li><p><strong>閲覧のみ</strong>: 閲覧やダウンロードのみ許可します</p></li>
+<li><p><strong>アップロードと編集を許可</strong></p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>ファイルドロップ**を有効にすると、共有先は既存のファイルを閲覧せずにファイルのアップロードだけが可能です。</p></li>
+<li><p><strong>ダウンロードを非表示</strong>: 共有先でダウンロードボタンやデフォルトブラウザの右クリックオプションを隠し、ダウンロードを難しくします</p></li>
+<li><p><strong>パスワード保護</strong></p></li>
+<li><p><strong>有効期限を設定</strong> すると、期限到来時に共有が自動的に無効になります</p></li>
+<li><p><strong>受信者へのメモ</strong></p></li>
+<li><p><strong>共有の解除</strong>: 共有を元に戻します</p></li>
+<li><p><strong>別のリンクを追加</strong>: 権限の異なる複数の公開リンクを作成できます</p></li>
 </ul>
-<p>For public <em>file</em> shares, you may allow editing the file with one of Nextcloud’s collaborative editing solutions:</p>
+<p>公開 <em>ファイル</em> 共有では、Nextcloud の共同編集ソリューションのいずれかでファイル編集を許可できます。</p>
 <figure class="align-default">
 <img alt="Public file share options." src="../../_images/sharing_public_file.png" />
 </figure>
@@ -180,75 +179,63 @@ since Nextcloud 22.</p>
 </div>
 </section>
 <section id="internal-shares-with-users-and-groups">
-<h2>Internal shares with users and groups<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Link to this heading"></a></h2>
-<p>When sharing with users, groups, circles or members of a Talk conversation, rights for the files
-or folder contents are adjustable:</p>
+<h2>ユーザ・グループとの内部共有<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Link to this heading"></a></h2>
+<p>ユーザやグループ、サークル、または Talk 会話メンバーと共有する場合、ファイルやフォルダの権限を調整できます。</p>
 <figure class="align-default">
 <img alt="Internal share options." src="../../_images/sharing_internal.png" />
 </figure>
-<p>As a sharee, you can configure if you automatically want to accept all incoming shares and have
-them added to your root folder, or if you want to be asked each time if you want to accept or
-decline the share.</p>
+<p>共有を受け取る側は、すべての新しい共有を自動的に受け入れてルートフォルダに追加するか、毎回受け入れるか拒否するか確認するかを設定できます。</p>
 <figure class="align-default">
 <img alt="Share acceptance notification." src="../../_images/sharing_internal_acceptNotification.png" />
 </figure>
-<p>For adjusting the acceptance setting, go to <strong>Settings</strong> &gt; <strong>Personal</strong> &gt; <strong>Sharing</strong>:</p>
+<p>受け入れ設定を調整するには <strong>設定</strong> &gt; <strong>個人</strong> &gt; <strong>共有</strong> へ進んでください:</p>
 <figure class="align-default">
 <img alt="Auto-accept sharing setting." src="../../_images/sharing_autoAcceptSetting.png" />
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
-<p>If the owner renames a shared file or folder, the new name will not be reflected on the
-recipient’s side. This is needed to prevent overwriting existing files or folders on the
-recipient’s end.</p>
+<p>共有ファイルやフォルダの所有者が名前を変更しても、新しい名前は共有先には反映されません。これは、受信側に既存のファイルやフォルダが上書きされるのを防ぐためです。</p>
 </div>
 </section>
 <section id="others-with-access">
-<h2>Others with access<a class="headerlink" href="#others-with-access" title="Link to this heading"></a></h2>
-<p>In order to find out if a file or folder is accessible to others through sharing of a superior folder
-hierarchy level, click on <strong>Others with access</strong> in the sharing tab:</p>
+<h2>アクセス権を持つ他のユーザ<a class="headerlink" href="#others-with-access" title="Link to this heading"></a></h2>
+<p>上位のフォルダ階層で共有されていることで他のユーザがファイルやフォルダにアクセスできるか確かめるには、共有タブの <strong>アクセス権を持つ他のユーザ</strong> をクリックしてください:</p>
 <figure class="align-default">
 <img alt="Others with access panel, collapsed." src="../../_images/sharing_others-with-access__collapsed.png" />
 </figure>
-<p>The list shows all users, groups, chats etc. that the current object has been given access to through
-sharing of a superior folder in the hierarchy:</p>
+<p>このリストには、上位のフォルダの共有によって現在のファイルやフォルダにアクセスできるすべてのユーザ・グループ・チャット等が表示されます:</p>
 <figure class="align-default">
 <img alt="Others with access panel, expanded with user details." src="../../_images/sharing_others-with-access__details.png" />
 </figure>
-<p>Click on the three dots to:</p>
+<p>三点リーダをクリックすると次の操作ができます:</p>
 <ul class="simple">
-<li><p>see who initiated the share</p></li>
-<li><p>see where the share was initiated (click to navigate to the folder, as far as you have access there)</p></li>
-<li><p>unshare the initial share (only accessible for the share owner)</p></li>
+<li><p>誰が共有を開始したか確認できます</p></li>
+<li><p>どの場所で共有されたかを確認できます（クリックすると、そのフォルダにアクセス権がある場合は移動できます）</p></li>
+<li><p>元の共有を解除します（この操作は共有の所有者のみ可能です）</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>This information is only visible to the owner of a file/folder or sharees with resharing rights.</p>
+<p>この情報はファイル・フォルダの所有者、または再共有権限をもつ共有先だけが確認できます。</p>
 </div>
 </section>
 </section>
 <section id="federated-shares">
 <h1>Federated shares<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
-<p>Federation Sharing allows you to mount file shares from remote Nextcloud servers, in effect
-creating your own cloud of Nextclouds. You can create direct share links with
-users on other Nextcloud servers.</p>
+<p>フェデレーション共有を使うと、リモートの Nextcloud サーバからのファイル共有をマウントでき、独自の Nextcloud クラウドを構築できます。他の Nextcloud サーバ上のユーザと直接共有リンクを作成することも可能です。</p>
 <section id="creating-a-new-federation-share">
 <h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
-<p>Federation sharing is enabled by default. Follow these steps to create a new share with other Nextcloud or ownCloud servers:</p>
-<p>Go to your <code class="docutils literal notranslate"><span class="pre">Files</span></code> page and click the Share icon on the file or directory
-you want to share. In the sidebar enter the username and URL of the remote user
-in this form: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code>. In this example, that is
-<code class="docutils literal notranslate"><span class="pre">bob&#64;cloud.example.com</span></code>:</p>
+<p>フェデレーション共有はデフォルトで有効になっています。他の Nextcloud または ownCloud サーバと新しい共有を作成するには、次の手順に従ってください:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Files</span></code> ページで共有したいファイルやディレクトリの共有アイコンをクリックします。サイドバーでリモートユーザのユーザ名と URL を <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> の形で入力します。例: <code class="docutils literal notranslate"><span class="pre">bob&#64;cloud.example.com</span></code></p>
 <figure class="align-default">
 <img alt="Entering a federated share address." src="../../_images/share-federation-1.png" />
 </figure>
-<p>The sharee is receiving a notification in their Nextcloud, allowing them to either accept or decline the incoming share:</p>
+<p>共有先ユーザは自分の Nextcloud で通知を受け取り、共有を承認するか拒否するかを選択できます。</p>
 <figure class="align-default">
 <img alt="Federated share acceptance notification." src="../../_images/share-federation-2-notification.png" />
 </figure>
 </section>
 <section id="adding-a-public-share-to-your-nextcloud">
-<h2>Adding a public share to your Nextcloud<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Link to this heading"></a></h2>
+<h2>公開共有を自分の Nextcloud に追加する<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Link to this heading"></a></h2>
 <p>Nextcloud public link share pages offer an option to add that file or folder as a federated share
 into your own Nextcloud instance.
 Enter your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> as shown for outbound shares above:</p>
@@ -262,8 +249,8 @@ Enter your <code class="docutils literal notranslate"><span class="pre">&lt;user
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="collaboration.html" class="btn btn-neutral float-left" title="Sharing &amp; collaboration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="file_drop.html" class="btn btn-neutral float-right" title="Making anonymous uploads" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="collaboration.html" class="btn btn-neutral float-left" title="共有とコラボレーション" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="file_drop.html" class="btn btn-neutral float-right" title="匿名アップロードの利用" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
