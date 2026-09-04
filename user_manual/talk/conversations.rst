@@ -168,6 +168,30 @@ Here you can configure the description, guest access, if the conversation is vis
    :alt: Talk conversation settings dialog showing description and access configuration
    :width: 600px
 
+Owner role
+----------
+
+The person who created a conversation is its owner. An owner can promote other moderators to owners, and demote
+co-owners back to moderator, from the participant list ``...`` menu.
+
+.. TODO: mock screenshot below, replace with a real capture once the feature ships
+.. image:: images/participant-menu.png
+    :alt: Talk participant menu with promote/demote owner options
+    :width: 400px
+
+Unlike moderators, an owner cannot be removed or demoted by another moderator, only by another owner.
+
+Preserved conversations
+------------------------
+
+An owner can mark a conversation as preserved, to protect it from accidental deletion, purging or from having its
+visibility changed. This is useful for conversations that must be kept for record-keeping or compliance reasons.
+
+.. TODO: mock screenshot below, replace with a real capture once the feature ships
+.. image:: images/conversation-settings-dialog.png
+    :alt: Talk conversation settings showing the preserve conversation option
+    :width: 600px
+
 Ban participants
 ----------------
 
