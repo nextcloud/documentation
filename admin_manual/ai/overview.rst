@@ -392,6 +392,17 @@ Systemd service
 
 You may want to adjust the timeout to your needs (in seconds).
 
+For Nextcloud-AIO or when running Nextcloud inside a Docker container, use a script like this instead,
+which runs the worker inside the container:
+
+.. code-block::
+
+   #!/bin/sh
+   echo "Starting Nextcloud AI Worker $1"
+   docker exec -u www-data -i nextcloud-aio-nextcloud php occ taskprocessing:worker -v -t 60
+
+Use ``-i`` without ``-t`` in ``docker exec`` to avoid the "input device is not a TTY" error when running under systemd.
+
 3. Enable and start the service 4 or more times:
 
 .. code-block::
