@@ -536,6 +536,7 @@ users:</p>
  <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="n">filecache</span><span class="o">-</span><span class="n">bigint</span>     <span class="n">convert</span> <span class="n">the</span> <span class="n">ID</span> <span class="n">columns</span> <span class="n">of</span> <span class="n">the</span> <span class="n">filecache</span> <span class="n">to</span> <span class="n">BigInt</span>
  <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="n">mysql</span><span class="o">-</span><span class="n">charset</span>        <span class="n">convert</span> <span class="n">charset</span> <span class="n">of</span> <span class="n">MySQL</span><span class="o">/</span><span class="n">MariaDB</span> <span class="n">to</span> <span class="n">utf8mb4</span>
  <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="nb">type</span>                 <span class="n">convert</span> <span class="n">the</span> <span class="n">Nextcloud</span> <span class="n">database</span> <span class="n">to</span> <span class="n">a</span> <span class="n">different</span> <span class="nb">type</span>
+ <span class="n">db</span><span class="p">:</span><span class="n">schema</span><span class="p">:</span><span class="n">check</span>                 <span class="n">compare</span> <span class="n">the</span> <span class="n">live</span> <span class="n">database</span> <span class="n">schema</span> <span class="k">with</span> <span class="n">the</span> <span class="n">expected</span> <span class="n">schema</span>
  <span class="n">db</span><span class="p">:</span><span class="n">schema</span><span class="p">:</span><span class="n">expected</span>              <span class="n">export</span> <span class="n">the</span> <span class="n">expected</span> <span class="n">database</span> <span class="n">schema</span> <span class="k">for</span> <span class="n">a</span> <span class="n">fresh</span> <span class="n">installation</span>
  <span class="n">db</span><span class="p">:</span><span class="n">schema</span><span class="p">:</span><span class="n">export</span>                <span class="n">export</span> <span class="n">the</span> <span class="n">current</span> <span class="n">database</span> <span class="n">schema</span>
 </pre></div>
@@ -579,6 +580,118 @@ current installation:</p>
 </section>
 <section id="schema-inspection">
 <h3>Schema inspection<a class="headerlink" href="#schema-inspection" title="Link to this heading"></a></h3>
+<section id="db-schema-check">
+<h4>db:schema:check<a class="headerlink" href="#db-schema-check" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 35.0.</span></p>
+</div>
+<p>Compare the live database schema with the schema expected for the
+currently installed Nextcloud version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">schema</span><span class="p">:</span><span class="n">check</span>
+  <span class="n">The</span> <span class="n">live</span> <span class="n">database</span> <span class="n">schema</span> <span class="n">matches</span> <span class="n">the</span> <span class="n">expected</span> <span class="n">schema</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>The expected schema is generated from the migrations provided by
+Nextcloud core, all enabled apps, and any disabled apps whose code is
+still present. The command reports missing or unexpected tables,
+columns, and indexes. It also reports column properties that differ,
+such as the type, length, default value, or whether the column is
+nullable.</p>
+<p>The command only inspects the schema and does not modify the database.
+It exits with status <code class="docutils literal notranslate"><span class="pre">0</span></code> if there are no findings for core or an
+enabled app, and status <code class="docutils literal notranslate"><span class="pre">1</span></code> otherwise. This makes it suitable for use
+in monitoring scripts. Findings that only concern a disabled app never
+affect the exit status. They are excluded from the plain output unless
+you add <code class="docutils literal notranslate"><span class="pre">-v</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">schema</span><span class="p">:</span><span class="n">check</span> <span class="o">-</span><span class="n">v</span>
+  <span class="n">oc_example</span><span class="p">:</span> <span class="n">column</span> <span class="s1">&#39;size&#39;</span> <span class="n">differs</span> <span class="ow">in</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">default</span>
+  <span class="n">Disabled</span> <span class="n">apps</span> <span class="p">(</span><span class="ow">not</span> <span class="n">affecting</span> <span class="n">exit</span> <span class="n">code</span><span class="p">):</span>
+  <span class="n">If</span> <span class="n">the</span> <span class="n">schema</span> <span class="k">for</span> <span class="n">a</span> <span class="n">disabled</span> <span class="n">app</span> <span class="n">differs</span> <span class="kn">from</span><span class="w"> </span><span class="nn">what</span> <span class="ow">is</span> <span class="n">expected</span><span class="p">,</span> <span class="n">this</span> <span class="n">might</span> <span class="n">indicate</span> <span class="n">the</span> <span class="n">app</span> <span class="n">was</span>
+  <span class="n">updated</span> <span class="n">since</span> <span class="n">it</span> <span class="n">was</span> <span class="n">disabled</span><span class="o">.</span> <span class="n">Missing</span> <span class="n">migrations</span> <span class="n">will</span> <span class="n">be</span> <span class="n">applied</span> <span class="n">once</span> <span class="n">the</span> <span class="n">app</span> <span class="ow">is</span> <span class="n">enabled</span> <span class="n">again</span><span class="o">.</span>
+    <span class="n">files_external</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">oc_storages</span><span class="p">:</span> <span class="n">missing</span> <span class="n">column</span> <span class="s1">&#39;backend&#39;</span>
+</pre></div>
+</div>
+<p>Specify a table name to limit the comparison to that table:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">schema</span><span class="p">:</span><span class="n">check</span> <span class="n">oc_filecache</span>
+</pre></div>
+</div>
+<p>Use the complete table name, including the configured database table
+prefix. Use <code class="docutils literal notranslate"><span class="pre">--output=json</span></code> or <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> to produce
+machine-readable output. Unlike plain output, JSON output always
+includes every finding, including those for disabled apps. For example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>db:schema:check<span class="w"> </span>--output<span class="o">=</span>json_pretty
+<span class="go">[</span>
+<span class="go">    {</span>
+<span class="go">        &quot;table&quot;: &quot;oc_filecache&quot;,</span>
+<span class="go">        &quot;type&quot;: &quot;modified_column&quot;,</span>
+<span class="go">        &quot;name&quot;: &quot;size&quot;,</span>
+<span class="go">        &quot;changes&quot;: [</span>
+<span class="go">            &quot;type&quot;,</span>
+<span class="go">            &quot;default&quot;</span>
+<span class="go">        ],</span>
+<span class="go">        &quot;app&quot;: null,</span>
+<span class="go">        &quot;enabled&quot;: true</span>
+<span class="go">    },</span>
+<span class="go">    {</span>
+<span class="go">        &quot;table&quot;: &quot;oc_storages&quot;,</span>
+<span class="go">        &quot;type&quot;: &quot;missing_column&quot;,</span>
+<span class="go">        &quot;name&quot;: &quot;backend&quot;,</span>
+<span class="go">        &quot;app&quot;: &quot;files_external&quot;,</span>
+<span class="go">        &quot;enabled&quot;: false</span>
+<span class="go">    },</span>
+<span class="go">    {</span>
+<span class="go">        &quot;table&quot;: &quot;oc_example&quot;,</span>
+<span class="go">        &quot;type&quot;: &quot;unexpected_table&quot;,</span>
+<span class="go">        &quot;app&quot;: null,</span>
+<span class="go">        &quot;enabled&quot;: true</span>
+<span class="go">    }</span>
+<span class="go">]</span>
+</pre></div>
+</div>
+<p>Each finding contains:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">table</span></code> — the complete database table name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> — one of <code class="docutils literal notranslate"><span class="pre">missing_table</span></code>, <code class="docutils literal notranslate"><span class="pre">unexpected_table</span></code>,
+<code class="docutils literal notranslate"><span class="pre">missing_column</span></code>, <code class="docutils literal notranslate"><span class="pre">unexpected_column</span></code>, <code class="docutils literal notranslate"><span class="pre">modified_column</span></code>,
+<code class="docutils literal notranslate"><span class="pre">missing_index</span></code>, or <code class="docutils literal notranslate"><span class="pre">unexpected_index</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> — the affected column or index. This field is omitted for
+table findings.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">changes</span></code> — the changed column properties. This field is only
+present when <code class="docutils literal notranslate"><span class="pre">type</span></code> is <code class="docutils literal notranslate"><span class="pre">modified_column</span></code>. Possible values include
+<code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">length</span></code>, <code class="docutils literal notranslate"><span class="pre">precision</span></code>, <code class="docutils literal notranslate"><span class="pre">scale</span></code>, <code class="docutils literal notranslate"><span class="pre">nullable</span></code>,
+<code class="docutils literal notranslate"><span class="pre">default</span></code>, <code class="docutils literal notranslate"><span class="pre">autoincrement</span></code>, <code class="docutils literal notranslate"><span class="pre">unsigned</span></code>, <code class="docutils literal notranslate"><span class="pre">fixed</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">comment</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app</span></code> — the ID of the disabled app that owns the affected table, or
+<code class="docutils literal notranslate"><span class="pre">null</span></code> if the table belongs to core or an enabled app.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enabled</span></code> — <code class="docutils literal notranslate"><span class="pre">false</span></code> if the finding only concerns a disabled app
+and does not affect the exit status, <code class="docutils literal notranslate"><span class="pre">true</span></code> otherwise.</p></li>
+</ul>
+<p>When the schemas match, JSON output contains an empty array.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The expected schema does not account for all database-wide settings
+or defaults, so some reported differences may be valid. A table or
+other object still counts as unexpected if it belongs to an app that
+was disabled and then fully removed. Review each finding before
+changing the database.</p>
+</div>
+<p>The schema check also runs automatically after <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code>.
+Findings for core or an enabled app are displayed as warnings but do
+not cause the upgrade to fail; findings that only concern a disabled
+app are not shown here. For example, the following output may appear
+near the end of an upgrade:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">The database schema does not match what is expected for the installed version:</span>
+<span class="go">  - oc_filecache: column &#39;size&#39; differs in: type, default</span>
+<span class="go">  - oc_filecache: missing index &#39;fs_storage_path_hash&#39;</span>
+<span class="go">  - unexpected table &#39;oc_example&#39;</span>
+<span class="go">Run &quot;occ db:schema:check -v&quot; for details.</span>
+</pre></div>
+</div>
+<p>Run <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">db:schema:check</span></code> separately to inspect the differences in
+plain (add <code class="docutils literal notranslate"><span class="pre">-v</span></code> to include disabled-app findings) or machine-readable
+format.</p>
+</section>
 <section id="db-schema-export">
 <h4>db:schema:export<a class="headerlink" href="#db-schema-export" title="Link to this heading"></a></h4>
 <p>Export the current database schema. Useful for debugging or comparing
