@@ -108,7 +108,7 @@ The table below summarizes common WebDAV methods used by Nextcloud and the most 
 +------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
 | PUT        | ``/remote.php/dav/files/{user}/file``     | Optional: ``X-OC-MTime``, ``X-OC-CTime``,    | Uploads/overwrites file content.                            |
 |            |                                           | ``OC-Checksum``, ``OC-Total-Length``,        |                                                             |
-|            |                                           | ``X-NC-WebDAV-AutoMkcol``                    |                                                             |
+|            |                                           | ``X-NC-WebDAV-Auto-Mkcol``                   |                                                             |
 +------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
 | MKCOL      | ``/remote.php/dav/files/{user}/folder``   | (none required)                              | Creates a folder.                                           |
 +------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
@@ -583,44 +583,44 @@ Request Headers
 
 You can set some special headers that Nextcloud will interpret.
 
-+-----------------------+-----------------------------------------------------------------+--------------------------------------------+
-|        Header         |                           Description                           |                 Example                    |
-+=======================+=================================================================+============================================+
-| X-OC-MTime            | | Allow to specify a modification time.                         | ``1675789581``                             |
-|                       | | The response will contain the header ``X-OC-MTime: accepted`` |                                            |
-|                       | | if the mtime was accepted.                                    |                                            |
-+-----------------------+-----------------------------------------------------------------+--------------------------------------------+
-| X-OC-CTime            | | Allow to specify a creation time.                             | ``1675789581``                             |
-|                       | | The response will contain the header ``X-OC-CTime: accepted`` |                                            |
-|                       | | if the mtime was accepted.                                    |                                            |
-+-----------------------+-----------------------------------------------------------------+--------------------------------------------+
-| OC-Checksum           | | A checksum that will be stored in the DB.                     | ``md5:04c36b75222cd9fd47f2607333029106``   |
-|                       | | For regular ``PUT`` uploads, the server stores the value      |                                            |
-|                       | | without validation. During bulk uploads, the checksum         |                                            |
-|                       | | **is** validated against the uploaded content.                |                                            |
-|                       | | Currently used algorithms are ``MD5``, ``SHA1``, ``SHA256``,  |                                            |
-|                       | | ``SHA3-256``, ``Adler32``.                                    |                                            |
-+-----------------------+-----------------------------------------------------------------+--------------------------------------------+
-| X-Hash                | | On ``PUT`` requests, instructs the server to compute a hash   | ``md5``, ``sha1``, ``sha256``,             |
-|                       | | of the uploaded file content during the write. The server     | or ``all``                                 |
-|                       | | returns the hash(es) in response headers named                |                                            |
-|                       | | ``X-Hash-MD5``, ``X-Hash-SHA1``, and/or ``X-Hash-SHA256``.    |                                            |
-|                       | | Setting the value to ``all`` computes all three hashes.       |                                            |
-|                       | | Beware of performance implications!                           |                                            |
-+-----------------------+-----------------------------------------------------------------+--------------------------------------------+
-| OC-Total-Length       | | Contains the total size of the file during a chunk upload.    | ``4052412``                                |
-|                       | | This allow the server to abort faster if the remaining        |                                            |
-|                       | | user's quota is not enough.                                   |                                            |
-+-----------------------+-----------------------------------------------------------------+--------------------------------------------+
-| X-NC-WebDAV-AutoMkcol | | When set to ``1``, instructs the server to automatically      |                                            |
-|                       | | create any missing parent directories when uploading a file.  |                                            |
-|                       | | Available since Nextcloud 32.                                 |                                            |
-+-----------------------+-----------------------------------------------------------------+--------------------------------------------+
-| OC-Chunked            | | Used for legacy chunk upload to differentiate a regular       | Deprecated                                 |
-|                       | | upload from a chunked upload. It allowed checking for quota   |                                            |
-| (deprecated)          | | and various other things. Nowadays, you need to provide the   | You do not have to provide                 |
-|                       | | ``OC-Total-Length`` header on the ``PUT`` requests instead.   | this anymore                               |
-+-----------------------+-----------------------------------------------------------------+--------------------------------------------+
++------------------------+-----------------------------------------------------------------+--------------------------------------------+
+|        Header          |                           Description                           |                 Example                    |
++========================+=================================================================+============================================+
+| X-OC-MTime             | | Allow to specify a modification time.                         | ``1675789581``                             |
+|                        | | The response will contain the header ``X-OC-MTime: accepted`` |                                            |
+|                        | | if the mtime was accepted.                                    |                                            |
++------------------------+-----------------------------------------------------------------+--------------------------------------------+
+| X-OC-CTime             | | Allow to specify a creation time.                             | ``1675789581``                             |
+|                        | | The response will contain the header ``X-OC-CTime: accepted`` |                                            |
+|                        | | if the mtime was accepted.                                    |                                            |
++------------------------+-----------------------------------------------------------------+--------------------------------------------+
+| OC-Checksum            | | A checksum that will be stored in the DB.                     | ``md5:04c36b75222cd9fd47f2607333029106``   |
+|                        | | For regular ``PUT`` uploads, the server stores the value      |                                            |
+|                        | | without validation. During bulk uploads, the checksum         |                                            |
+|                        | | **is** validated against the uploaded content.                |                                            |
+|                        | | Currently used algorithms are ``MD5``, ``SHA1``, ``SHA256``,  |                                            |
+|                        | | ``SHA3-256``, ``Adler32``.                                    |                                            |
++------------------------+-----------------------------------------------------------------+--------------------------------------------+
+| X-Hash                 | | On ``PUT`` requests, instructs the server to compute a hash   | ``md5``, ``sha1``, ``sha256``,             |
+|                        | | of the uploaded file content during the write. The server     | or ``all``                                 |
+|                        | | returns the hash(es) in response headers named                |                                            |
+|                        | | ``X-Hash-MD5``, ``X-Hash-SHA1``, and/or ``X-Hash-SHA256``.    |                                            |
+|                        | | Setting the value to ``all`` computes all three hashes.       |                                            |
+|                        | | Beware of performance implications!                           |                                            |
++------------------------+-----------------------------------------------------------------+--------------------------------------------+
+| OC-Total-Length        | | Contains the total size of the file during a chunk upload.    | ``4052412``                                |
+|                        | | This allow the server to abort faster if the remaining        |                                            |
+|                        | | user's quota is not enough.                                   |                                            |
++------------------------+-----------------------------------------------------------------+--------------------------------------------+
+| X-NC-WebDAV-Auto-Mkcol | | When set to ``1``, instructs the server to automatically      |                                            |
+|                        | | create any missing parent directories when uploading a file.  |                                            |
+|                        | | Available since Nextcloud 32.                                 |                                            |
++------------------------+-----------------------------------------------------------------+--------------------------------------------+
+| OC-Chunked             | | Used for legacy chunk upload to differentiate a regular       | Deprecated                                 |
+|                        | | upload from a chunked upload. It allowed checking for quota   |                                            |
+| (deprecated)           | | and various other things. Nowadays, you need to provide the   | You do not have to provide                 |
+|                        | | ``OC-Total-Length`` header on the ``PUT`` requests instead.   | this anymore                               |
++------------------------+-----------------------------------------------------------------+--------------------------------------------+
 
 Response Headers
 ----------------
