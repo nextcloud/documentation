@@ -42,6 +42,7 @@ Similar types can also be grouped together:
 - **Show private ones first**: Show private conversations before groups/public
 - **Show group ones first**: Show groups/public conversations before private
 
+.. TODO: update screenshot to show the last message time next to each conversation
 .. image:: images/conversations-sorting.png
     :alt: Talk conversations sorting and grouping options
     :width: 400px

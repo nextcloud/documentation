@@ -43,10 +43,22 @@ In the submenu, you can select an appropriate time to receive a notification lat
 
 You can also forward a message to another conversation using the ``...`` menu, or send it to your **Note to self** conversation for personal reference.
 
+Global message search
+----------------------
+
+You can search for messages across all your conversations at once from the conversation list search field, without
+opening each conversation individually. Results show a preview of the matching message and its conversation, so you
+can jump straight to it.
+
+.. TODO: mock screenshot below, replace with a real capture once the feature ships
+.. image:: images/chat-search-messages.png
+   :alt: Talk global search results showing matching messages across conversations
+   :width: 500px
+
 Messages search in a conversation
 ---------------------------------
 
-In addition to global unified search, you can search for messages within a specific conversation. In the content sidebar of a conversation, click the search icon to open the search tab.
+In addition to the global message search, you can search for messages within a specific conversation. In the content sidebar of a conversation, click the search icon to open the search tab.
 
 .. image:: images/chat-search-messages.png
    :alt: Talk in-conversation message search field
