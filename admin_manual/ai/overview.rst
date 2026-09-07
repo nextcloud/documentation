@@ -71,13 +71,13 @@ Nextcloud uses modularity to separate raw AI functionality from the Graphical Us
    "Document generation","`Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_","Green","Yes","Yes","Yes","Yes"
    "Live Transcription","`Local Live Transcription <https://apps.nextcloud.com/apps/live_transcription>`_","Yellow","Yes","Yes","No","Yes"
    "Optical Character Recognition","`Local OCR: PaddleOCR <https://apps.nextcloud.com/apps/ocr_paddle>`_","Yellow","Yes","Yes","No","Yes"
-   "","`OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
-   "","`OpenAI and LocalAI integration (via LocalAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Green","Yes","Yes","Yes","Yes"
-   "","`OpenAI and LocalAI integration (via Ollama) <https://apps.nextcloud.com/apps/integration_openai>`_","Yellow","Yes","Yes - e.g. Llama models by Meta", "No","Yes"
-   "","`OpenAI and LocalAI integration (via IONOS AI Model Hub) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
-   "","`OpenAI and LocalAI integration (via Plusserver) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
-   "","`OpenAI and LocalAI integration (via Groqcloud) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
-   "","`OpenAI and LocalAI integration (via MistralAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
+   "","`OpenAI and LocalAI integration >= v5.0.0 (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
+   "","`OpenAI and LocalAI integration >= v5.0.0 (via LocalAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Green","Yes","Yes","Yes","Yes"
+   "","`OpenAI and LocalAI integration >= v5.0.0 (via Ollama) <https://apps.nextcloud.com/apps/integration_openai>`_","Yellow","Yes","Yes - e.g. Llama models by Meta", "No","Yes"
+   "","`OpenAI and LocalAI integration >= v5.0.0 (via IONOS AI Model Hub) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
+   "","`OpenAI and LocalAI integration >= v5.0.0 (via Plusserver) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
+   "","`OpenAI and LocalAI integration >= v5.0.0 (via Groqcloud) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
+   "","`OpenAI and LocalAI integration >= v5.0.0 (via MistralAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
 
 
 Ethical AI Rating
