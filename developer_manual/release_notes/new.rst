@@ -51,3 +51,17 @@ Changed APIs
 
 - The ``\OCP\TaskProcessing\Task`` class now has ``getPreferStreaming`` and ``setPreferStreaming`` methods for indicating whether the provider should report the output progressively if it supports it.
 - The TaskProcessing OCS API now also accepts the ``preferStreaming`` flag when scheduling tasks.
+
+Context Chat
+------------
+
+A new interface was added to allow content providers to supply additional metadata for improved document retrieval
+and LLM responses.
+
+See :ref:`context_chat` for details.
+
+Added APIs
+^^^^^^^^^^
+
+- A new interface ``\OCP\ContextChat\IContentProviderWithSearchTask`` was added, extending ``\OCP\ContextChat\IContentProvider``.
+  It can be implemented as a drop-in replacement for ``\OCP\ContextChat\IContentProvider``.

@@ -1,0 +1,164 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2026 Nextcloud GmbH and Nextcloud contributors
+# This file is distributed under the same license as the Nextcloud latest User Manual package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Jonatan Nyberg, 2026
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud latest User Manual latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-02 09:19+0000\n"
+"PO-Revision-Date: 2025-02-12 13:33+0000\n"
+"Last-Translator: Jonatan Nyberg, 2026\n"
+"Language-Team: Swedish (https://app.transifex.com/nextcloud/teams/64236/sv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../desktop/conflicts.rst:3
+msgid "Conflicts"
+msgstr "Konflikter"
+
+#: ../../desktop/conflicts.rst:6
+msgid "Overview"
+msgstr "Översikt"
+
+#: ../../desktop/conflicts.rst:8
+msgid ""
+"The Nextcloud desktop client uploads local changes and downloads remote "
+"changes. When a file has changed on the local side and on the remote between"
+" synchronization runs the client will be unable to resolve the situation on "
+"its own. It will create a conflict file with the local version, download the"
+" remote version and notify the user that a conflict occurred which needs "
+"attention."
+msgstr ""
+"Nextclouds skrivbordsklient laddar upp lokala ändringar och hämtar ändringar"
+" från servern. Om en fil har ändrats både lokalt och på servern mellan "
+"synkroniseringarna kan klienten inte lösa situationen på egen hand. Den "
+"skapar då en konfliktfil med den lokala versionen, hämtar versionen från "
+"servern och meddelar användaren om att en konflikt har uppstått och behöver "
+"åtgärdas."
+
+#: ../../desktop/conflicts.rst:15
+msgid "Example"
+msgstr "Exempel"
+
+#: ../../desktop/conflicts.rst:17
+msgid ""
+"Imagine there is a file called ``mydata.txt`` your synchronized folder. It "
+"has not changed for a while and contains the text \"contents\" locally and "
+"remotely. Now, nearly at the same time you update it locally to say \"local "
+"contents\" while the file on the server gets updated to contain \"remote "
+"contents\" by someone else."
+msgstr ""
+"Föreställ dig att det finns en fil som heter ``mydata.txt`` i din "
+"synkroniserade mapp. Den har inte ändrats på ett tag och innehåller texten "
+"”innehåll” både lokalt och på servern. Nästan samtidigt ändrar du den lokalt"
+" till ”lokalt innehåll”, medan någon annan ändrar filen på servern till "
+"”serverinnehåll”."
+
+#: ../../desktop/conflicts.rst:22
+msgid ""
+"When attempting to upload your local changes the desktop client will notice "
+"that the server version has also changed. It creates a conflict and you will"
+" now have two files on your local machine:"
+msgstr ""
+"När skrivbordsklienten försöker ladda upp dina lokala ändringar upptäcker "
+"den att även versionen på servern har ändrats. En konflikt skapas och du får"
+" nu två filer på den lokala datorn:"
+
+#: ../../desktop/conflicts.rst:26
+msgid "``mydata.txt`` containing \"remote contents\""
+msgstr "``mydata.txt`` med innehållet ”serverinnehåll”"
+
+#: ../../desktop/conflicts.rst:27
+msgid ""
+"``mydata (conflicted copy 2018-04-10 093612).txt`` containing \"local "
+"contents\""
+msgstr ""
+"``mydata (konfliktkopia 2018-04-10 093612).txt`` med innehållet ”lokalt "
+"innehåll”"
+
+#: ../../desktop/conflicts.rst:29
+msgid ""
+"In this situation the file ``mydata.txt`` has the remote changes (and will "
+"continue to be updated with further remote changes when they happen), but "
+"your local adjustments have not been sent to the server (unless the server "
+"enables conflict uploading, see below)."
+msgstr ""
+"I den här situationen innehåller filen ``mydata.txt`` ändringarna från "
+"servern (och fortsätter att uppdateras när fler ändringar görs där), men "
+"dina lokala ändringar har inte skickats till servern (om inte servern har "
+"aktiverat uppladdning av konfliktfiler, se nedan)."
+
+#: ../../desktop/conflicts.rst:34
+msgid ""
+"The desktop client notifies you of this situation via system notifications, "
+"the system tray icon and a yellow \"unresolved conflicts\" badge in the "
+"account settings window. Clicking this badge shows a list that includes the "
+"unresolved conflicts and clicking one of them opens an explorer window "
+"pointing at the relevant file."
+msgstr ""
+"Skrivbordsklienten meddelar dig om situationen genom systemaviseringar, "
+"ikonen i systemfältet och en gul markering för ”olösta konflikter” i "
+"fönstret med kontoinställningar. Om du klickar på markeringen visas en lista"
+" över de olösta konflikterna. Om du klickar på en konflikt öppnas ett "
+"filhanterarfönster som visar den berörda filen."
+
+#: ../../desktop/conflicts.rst:39
+msgid ""
+"To resolve this conflict, open both files, compare the differences and copy "
+"your local changes from the \"conflicted copy\" file into the base file "
+"where applicable. In this example you might change ``mydata.txt`` to say "
+"\"local and remote contents\" and delete the file with \"conflicted copy\" "
+"in its name. With that, the conflict is resolved."
+msgstr ""
+"Lös konflikten genom att öppna båda filerna, jämföra skillnaderna och vid "
+"behov kopiera dina lokala ändringar från filen med ”konfliktkopia” i namnet "
+"till ursprungsfilen. I det här exemplet kan du ändra ``mydata.txt`` så att "
+"den innehåller ”lokalt innehåll och serverinnehåll” och sedan ta bort filen "
+"med ”konfliktkopia” i namnet. Därefter är konflikten löst."
+
+#: ../../desktop/conflicts.rst:46
+msgid "Uploading conflicts (experimental)"
+msgstr "Uppladdning av konfliktfiler (experimentellt)"
+
+#: ../../desktop/conflicts.rst:48
+msgid ""
+"By default the conflict file (the file with \"conflicted copy\" in its name "
+"that contains your local conflicting changes) is not uploaded to the server."
+" The idea is that you, the author of the changes, are the best person for "
+"resolving the conflict and showing the conflict to other users might create "
+"confusion."
+msgstr ""
+"Som standard laddas konfliktfilen inte upp till servern. Det är filen med "
+"”konfliktkopia” i namnet som innehåller dina motstridiga lokala ändringar. "
+"Tanken är att du som har gjort ändringarna är bäst lämpad att lösa "
+"konflikten och att det kan skapa förvirring om konflikten visas för andra "
+"användare."
+
+#: ../../desktop/conflicts.rst:53
+msgid ""
+"However, in some scenarios it makes a lot of sense to upload these "
+"conflicting changes such that local work can become visible even if the "
+"conflict won't be resolved immediately."
+msgstr ""
+"I vissa situationer är det dock lämpligt att ladda upp de motstridiga "
+"ändringarna, så att det lokala arbetet blir synligt även om konflikten inte "
+"kan lösas omedelbart."
+
+#: ../../desktop/conflicts.rst:57
+msgid ""
+"In the future there might be a server-wide switch for this behavior. For now"
+" it can already be tested by setting the environment variable "
+"``OWNCLOUD_UPLOAD_CONFLICT_FILES=1``."
+msgstr ""
+"I framtiden kan det komma en serverövergripande inställning för detta "
+"beteende. Redan nu kan funktionen testas genom att ange miljövariabeln "
+"``OWNCLOUD_UPLOAD_CONFLICT_FILES=1``."

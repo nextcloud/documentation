@@ -267,8 +267,8 @@ Once it's set it shouldn't be changed.
 
 Value must be an integer, comprised between 0 and 511.
 
-When config.php is shared between different servers, this value should be overriden with "NC_serverid=<int>" on each server.
-Note that it must be overriden for CLI and for your webserver.
+When config.php is shared between different servers, this value should be overridden with "NC_serverid=<int>" on each server.
+Note that it must be overridden for CLI and for your webserver.
 
 Example for CLI: NC_serverid=42 occ config:list system
 
@@ -665,16 +665,40 @@ skeletondirectory
 
     'skeletondirectory' => '/path/to/nextcloud/core/skeleton',
 
-The directory where the skeleton files are located. These files will be
-copied to the data directory of new users. Set empty string to not copy any
-skeleton files. If unset and templatedirectory is an empty string, shipped
-templates will be used to create a template directory for the user.
+The directory containing initial content copied to a user's personal files
+during their first login. This content can include ordinary files and
+folders, such as welcome documents, example files, or organization-wide
+reusable documents and folder structures.
 
-``{lang}`` can be used as a placeholder for the language of the user.
-If the directory does not exist, it falls back to non-dialect (from ``de_DE``
-to ``de``). If that does not exist either, it falls back to ``default``
+The path may include the optional ``{lang}`` placeholder to select
+language-specific content. The placeholder is replaced with the user's
+language code. For example, when this is set to
+``/path/to/skeleton/{lang}`` and a user's language is ``de_DE``, Nextcloud
+first looks for ``/path/to/skeleton/de_DE``. If that directory does not
+exist, Nextcloud falls back to the base language code (``de`` in this
+example), looking for ``/path/to/skeleton/de``. If that directory also does
+not exist, Nextcloud looks for ``/path/to/skeleton/default``.
 
-Defaults to ``core/skeleton`` in the Nextcloud directory.
+If the path does not include ``{lang}``, Nextcloud uses the configured
+directory directly. Only one matching directory is used; content from
+fallback directories is not merged. If no matching directory exists, no
+content is copied.
+
+Set to an empty string (``''``) to disable copying skeleton content.
+
+
+
+.. note::
+
+  Copying skeleton content also triggers automatic initialization of the
+  user's template directory (see ``templatedirectory``). Setting this
+  parameter to an empty string therefore prevents template initialization on
+  first login. Users can still initialize a template directory later through
+  the Files UI, which uses the OCS API, but doing so does not copy skeleton
+  content. The template source directory itself is configured separately and is
+  not derived from this directory.
+
+Defaults to ``core/skeleton`` relative to the Nextcloud installation root.
 
 templatedirectory
 ^^^^^^^^^^^^^^^^^
@@ -684,16 +708,37 @@ templatedirectory
 
     'templatedirectory' => '/path/to/nextcloud/templates',
 
-The directory where the template files are located. These files will be
-copied to the template directory of new users. Set empty string to not copy any
-template files.
+The directory containing template content that can be copied to a user's
+template directory. Template files are ordinary files that users can select
+as reusable templates when creating supported file types in the Files app.
 
-``{lang}`` can be used as a placeholder for the language of the user.
-If the directory does not exist, it falls back to non-dialect (from ``de_DE``
-to ``de``). If that does not exist either, it falls back to ``default``
+Like ``skeletondirectory``, this path may contain the optional ``{lang}``
+placeholder. Nextcloud resolves it using the same language, base-language,
+and ``default`` fallback order described for ``skeletondirectory``. The
+placeholder is resolved independently for this setting.
 
-To disable creating a template directory, set both skeletondirectory and
-templatedirectory to empty strings.
+If the path does not include ``{lang}``, Nextcloud uses the configured
+directory directly. Only one matching directory is used; content from
+fallback directories is not merged. If no matching directory exists, no
+template content is copied.
+
+This setting is independent of ``skeletondirectory``. Its default value is
+``core/skeleton/Templates`` relative to the Nextcloud installation root.
+Changing ``skeletondirectory`` does not change that value. If a custom
+skeleton directory contains a ``Templates`` subdirectory, Nextcloud copies
+it as ordinary skeleton content; it does not automatically use it as the
+user's template directory.
+
+Template content is copied only when the target template folder is empty.
+
+Set to an empty string (``''``) to disable copying template content from
+this source. During automatic first-login initialization, Nextcloud may
+still create or reuse the default template folder, but it will not copy
+content from this source or configure that folder as the user's template
+directory.
+
+Defaults to ``core/skeleton/Templates`` relative to the Nextcloud
+installation root, regardless of the ``skeletondirectory`` value.
 
 User session
 ------------
@@ -3402,6 +3447,35 @@ sharing.federation.allowSelfSignedCertificates
 
 Allow self-signed certificates for federated shares
 
+sharing.federation.ocm.apiVersion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+    'sharing.federation.ocm.apiVersion' => '',
+
+Override the ``apiVersion`` advertised in the local OCM discovery document.
+
+Setting this to a non-empty string also removes the non-standard ``version``
+field. Leave empty for compatibility with older Nextcloud servers.
+
+Defaults to ``''`` (empty string)
+
+sharing.federation.ocm.removePublicKey
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+    'sharing.federation.ocm.removePublicKey' => false,
+
+Remove the non-standard ``publicKey`` field from the local OCM discovery
+document. Enable this only when all federated peers support RFC 9421 HTTP
+signatures, for example when all peers run Nextcloud 35 or higher.
+
+Defaults to ``false``
+
 Hashing
 -------
 
@@ -3806,7 +3880,7 @@ minimum.supported.desktop.version
 
 ::
 
-    'minimum.supported.desktop.version' => '3.2.81',
+    'minimum.supported.desktop.version' => '3.3.50',
 
 Specify the minimum Nextcloud desktop client version allowed to sync with this
 server. Connections from earlier clients will be denied. Defaults to the
@@ -3815,7 +3889,7 @@ minimum officially supported version at the time of this server release.
 Changing this may cause older, unsupported clients to malfunction, potentially
 leading to data loss or unexpected behavior.
 
-Defaults to ``3.2.81``
+Defaults to ``3.3.50``
 
 maximum.supported.desktop.version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4067,6 +4141,25 @@ allowed_admin_ranges
 
 List of trusted IP ranges for admin actions. If non-empty, all admin actions
 must originate from IPs within these ranges.
+
+Supported formats:
+- IPv4 addresses or ranges, e.g., ``192.0.2.42/32``, ``233.252.0.0/24``
+- IPv6 addresses or ranges, e.g., ``2001:db8::13:37/64``
+
+Defaults to ``[]`` (empty array)
+
+allowed_no_password_confirmation_ranges
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+    'allowed_no_password_confirmation_ranges' => ['192.0.2.42/32', '233.252.0.0/24', '2001:db8::13:37/64'],
+
+List of trusted IP ranges that can bypass password confirmation.
+
+If non-empty, all endpoints marked with the PasswordConfirmationRequired attribute
+won't need a password confirmation when originating from IPs within these ranges.
 
 Supported formats:
 - IPv4 addresses or ranges, e.g., ``192.0.2.42/32``, ``233.252.0.0/24``

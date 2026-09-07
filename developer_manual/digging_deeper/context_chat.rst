@@ -64,6 +64,56 @@ The ``triggerInitialImport`` method is called when Context Chat is first set up
 and allows your app to import all existing content into Context Chat in one bulk.
 Any other items that are created afterwards will need to be added on demand.
 
+The IContentProviderWithSearchTask interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 35.0.0
+
+To improve document retrieval and LLM response quality, content providers can implement the
+``\OCP\ContextChat\IContentProviderWithSearchTask`` interface, which extends ``IContentProvider``
+with two additional methods: ``getDataDescription`` and ``getSearchTaskDescription``.
+
+An example implementation could look like this:
+
+.. code-block:: php
+
+    class ContextChatProvider implements \OCP\ContextChat\IContentProviderWithSearchTask {
+        public const PROVIDER_ID = 'financial_report';
+
+        public function getId(): string {
+            return self::PROVIDER_ID;
+        }
+
+        public function getAppId(): string {
+            return Application::APP_ID;
+        }
+
+        public function getItemUrl(string $id): string {
+            return $this->urlGenerator->linkToRouteAbsolute(
+                'finance_reports.report.show', ['reportId' => $id]
+            );
+        }
+
+        public function triggerInitialImport(): void {
+            // schedule the initial import bg job, or leave it empty in favour of a persistent TimedJob
+            // $this->jobList->add(InitialImportJob::class);
+        }
+
+        public function getDataDescription(): string {
+            return 'Quarterly financial reports for a manufacturing company in CSV format. '
+                . 'Columns: report_id, quarter (e.g. Q1-2026), department, '
+                . 'revenue, operating_costs, net_profit, currency (ISO 4217), '
+                . 'headcount, and notes. '
+                . 'Each row represents one department\'s figures for a single quarter.';
+        }
+
+        public function getSearchTaskDescription(): string {
+            return 'Given a question, retrieve financial report rows whose department, '
+                . 'quarter, or notes field relates to the query, including cost and revenue figures.';
+        }
+    }
+
+
 Using the IContentManager service
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
