@@ -149,12 +149,13 @@ the table's primary key.
     use OCP\AppFramework\ORM\Attribute\Entity;
     use OCP\AppFramework\ORM\Attribute\Id;
     use OCP\DB\Schema\ColumnType;
+    use OCP\Snowflake\ISnowflakeGenerator;
 
     #[Entity(name: 'myapp_authors')]
     final class Author {
-        #[Id]
-        #[Column(name: 'id', type: ColumnType::Integer)]
-        public ?int $id = null;
+        #[Id(generatorClass: ISnowflakeGenerator::class)]
+        #[Column(name: 'id', type: ColumnType::Bigint)]
+        public ?string $id = null;
 
         #[Column(name: 'name', type: ColumnType::String, length: 64)]
         public string $name;
@@ -169,24 +170,23 @@ generated for you: read and write the properties directly, for example ``$author
 in the ``#[Column]`` attribute, so there is no implicit camelCase-to-underscore conversion to reason about,
 and no need to override a mapping method to deviate from it.
 
-By default, as in the example above, a bare ``#[Id]`` relies on the database's autoincrement column:
-``insert()`` only fills in ``$author->id`` after the row has been written. Pass a ``generatorClass`` to
-generate the id application-side, before the row is inserted, instead. ``OCP\Snowflake\ISnowflakeGenerator``
-produces such an id — a `Snowflake ID <https://en.wikipedia.org/wiki/Snowflake_ID>`_, unique across your
-whole cluster and sortable by creation time — which is useful when you need the id before the row exists
-(for example to pass it to another service as part of the same request), or to avoid the write contention
-a single autoincrement column creates across a cluster. Snowflake ids are ``non-empty-string`` values even
-though they are typically stored in a ``ColumnType::Bigint`` column:
+The ``generatorClass`` passed to ``#[Id]`` generates the id application-side, before the row is inserted.
+``OCP\Snowflake\ISnowflakeGenerator`` produces such an id — a
+`Snowflake ID <https://en.wikipedia.org/wiki/Snowflake_ID>`_, unique across your whole cluster and sortable
+by creation time — which is useful when you need the id before the row exists (for example to pass it to
+another service as part of the same request), or to avoid the write contention a single autoincrement
+column creates across a cluster. Snowflake ids are ``non-empty-string`` values even though they are
+typically stored in a ``ColumnType::Bigint`` column, as in the example above.
 
-.. code-block:: php
+.. note:: For a legacy table that already has an auto-incremented primary key, a bare ``#[Id]`` without a
+   ``generatorClass`` also works: it relies on the database's autoincrement column instead, and
+   ``insert()`` only fills in the id property after the row has been written.
 
-    <?php
+   .. code-block:: php
 
-    use OCP\Snowflake\ISnowflakeGenerator;
-
-    #[Id(generatorClass: ISnowflakeGenerator::class)]
-    #[Column(name: 'id', type: ColumnType::Bigint)]
-    public ?string $id = null;
+       #[Id]
+       #[Column(name: 'id', type: ColumnType::Integer)]
+       public ?int $id = null;
 
 A property without a ``#[Column]`` attribute is never read from or written to the database. This is the
 replacement for what used to be called *transient attributes*: just leave the property unannotated.
@@ -381,9 +381,9 @@ the same query, via a ``LEFT JOIN`` — there is no lazy-loading, and a missing 
 
     #[Entity(name: 'myapp_merchants')]
     final class Merchant {
-        #[Id]
+        #[Id(generatorClass: ISnowflakeGenerator::class)]
         #[Column(name: 'id', type: ColumnType::Bigint)]
-        public ?int $id = null;
+        public ?string $id = null;
 
         #[Column(name: 'name', type: ColumnType::String, length: 64)]
         public string $name;
@@ -391,9 +391,9 @@ the same query, via a ``LEFT JOIN`` — there is no lazy-loading, and a missing 
 
     #[Entity(name: 'myapp_orders')]
     final class Order {
-        #[Id]
+        #[Id(generatorClass: ISnowflakeGenerator::class)]
         #[Column(name: 'id', type: ColumnType::Bigint)]
-        public ?int $id = null;
+        public ?string $id = null;
 
         #[ManyToOne(targetEntity: Merchant::class)]
         #[JoinColumn(name: 'merchant_id', referencedColumnName: 'id', nullable: true)]
@@ -414,9 +414,9 @@ the property on the other side, and the ``#[JoinColumn]`` only repeated on the o
 
     #[Entity(name: 'myapp_customers')]
     final class Customer {
-        #[Id]
+        #[Id(generatorClass: ISnowflakeGenerator::class)]
         #[Column(name: 'id', type: ColumnType::Bigint)]
-        public ?int $id = null;
+        public ?string $id = null;
 
         #[OneToOne(targetEntity: Cart::class, mappedBy: 'customer')]
         #[JoinColumn(name: 'cart_id', referencedColumnName: 'id')]
@@ -425,9 +425,9 @@ the property on the other side, and the ``#[JoinColumn]`` only repeated on the o
 
     #[Entity(name: 'myapp_carts')]
     final class Cart {
-        #[Id]
+        #[Id(generatorClass: ISnowflakeGenerator::class)]
         #[Column(name: 'id', type: ColumnType::Bigint)]
-        public ?int $id = null;
+        public ?string $id = null;
 
         #[OneToOne(targetEntity: Customer::class, invertedBy: 'cart')]
         #[JoinColumn(name: 'customer_id', referencedColumnName: 'id')]
