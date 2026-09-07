@@ -347,7 +347,7 @@ Frontend apps
 Backend apps
 ~~~~~~~~~~~~
 
-* `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
+* `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ >= v5.0.0 - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * :ref:`Local OCR: PaddleOCR (ExApp) <<ai-app-ocr_paddle>` - (Customer support available upon request)
 
 Windmill workflows
