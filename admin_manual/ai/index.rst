@@ -17,6 +17,7 @@ Artificial Intelligence
     app_summary_bot
     app_text2speech_kokoro
     app_live_transcription
+    app_ocr_paddle
     ai_as_a_service
     insight_and_debugging
     eu_ai_act
