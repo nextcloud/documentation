@@ -70,6 +70,14 @@ Nextcloud uses modularity to separate raw AI functionality from the Graphical Us
    "","`Local Text To Speech (ExApp) <https://apps.nextcloud.com/apps/text2speech_kokoro>`_","Yellow","Yes","Yes","No","Yes"
    "Document generation","`Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_","Green","Yes","Yes","Yes","Yes"
    "Live Transcription","`Local Live Transcription <https://apps.nextcloud.com/apps/live_transcription>`_","Yellow","Yes","Yes","No","Yes"
+   "Optical Character Recognition","`Local OCR: PaddleOCR <https://apps.nextcloud.com/apps/ocr_paddle>`_","Yellow","Yes","Yes","No","Yes"
+   "","`OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
+   "","`OpenAI and LocalAI integration (via LocalAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Green","Yes","Yes","Yes","Yes"
+   "","`OpenAI and LocalAI integration (via Ollama) <https://apps.nextcloud.com/apps/integration_openai>`_","Yellow","Yes","Yes - e.g. Llama models by Meta", "No","Yes"
+   "","`OpenAI and LocalAI integration (via IONOS AI Model Hub) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
+   "","`OpenAI and LocalAI integration (via Plusserver) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
+   "","`OpenAI and LocalAI integration (via Groqcloud) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
+   "","`OpenAI and LocalAI integration (via MistralAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
 
 
 Ethical AI Rating
@@ -220,7 +228,6 @@ Backend apps
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * `Local Text To Speech (ExApp) <https://apps.nextcloud.com/apps/text2speech_kokoro>`_ (Customer support available upon request)
 
-
 Context Chat
 ^^^^^^^^^^^^
 Our Context Chat feature was introduced in Nextcloud Hub 7 (v28). It allows asking questions to the assistant related to your documents in Nextcloud. You will need to install both the context_chat app as well as the context_chat_backend External App. Be prepared that things might break or be a little rough around the edges. We look forward to your feedback!
@@ -324,7 +331,24 @@ Backend apps
 
 * :ref:`live_transcription<ai-live-transcription>` - Runs open weights AI Speech-To-Text models on your own server hardware (Customer support available upon request)
 
-.. _ai-overview_improve-ai-task-pickup-speed:
+
+Optical Character Recognition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _ocr-consumer-apps:
+
+As you can see in the table above we have multiple apps offering OCR capabilities. In downstream apps like the assistant app, users can use OCR functionality regardless of which app implements it behind the scenes.
+
+Frontend apps
+~~~~~~~~~~~~~
+
+* `Assistant <https://apps.nextcloud.com/apps/assistant>`_
+
+Backend apps
+~~~~~~~~~~~~
+
+* `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
+* :ref:`Local OCR: PaddleOCR (ExApp) <<ai-app-ocr_paddle>` - (Customer support available upon request)
 
 Windmill workflows
 ^^^^^^^^^^^^^^^^^^
@@ -334,6 +358,7 @@ You can use the AI endpoints in your :ref:`Windmill workflows<windmill_workflows
 
 Improve AI task pickup speed
 ----------------------------
+.. _ai-overview_improve-ai-task-pickup-speed:
 
 Most AI tasks will be run as part of the background job system in Nextcloud which only runs jobs every 5 minutes by default.
 To pick up scheduled jobs faster you can set up background job workers inside your Nextcloud main server/container that process AI tasks as soon as they are scheduled.
