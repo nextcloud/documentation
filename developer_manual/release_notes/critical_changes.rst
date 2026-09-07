@@ -176,3 +176,12 @@ Apps with a custom ``\OCP\Federation\ICloudFederationProvider`` that receives no
 ``\OCP\Federation\ISignedCloudFederationProvider``. The implementation must resolve the remote federation ID from the
 notification's shared secret and trusted data stored when the share was accepted. Return an empty string when the
 secret does not identify exactly one remote origin.
+
+Unified sharing
+---------------
+
+.. todo::
+
+    This is work in progress and needs an update when the changes have been finalized.
+
+Changes to sharing APIs and user interface are planned. This includes both a new general API for sharing of entities and updates to the sharing user interface. See `nextcloud/server#51803 <https://github.com/nextcloud/server/issues/51803>`_ for details and mockups.
