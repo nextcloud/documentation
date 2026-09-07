@@ -62,7 +62,8 @@ Known Limitations
 
 * We currently only support languages supported by the underlying PaddleOCR-VL model
 * The PaddleOCR-VL model performs unevenly across languages, and may show lower accuracy on low-resource and/or low-discoverability languages or languages where there was less training data available.
-* Only the first 50 pages of PDF files are read (configurable via the OCR_MAX_PDF_PAGES deploy option), longer PDFs are silently truncated.
+* Only the first 50 pages of PDF files are read (configurable via the ``OCR_MAX_PDF_PAGES`` deploy option), longer PDFs are silently truncated.
+* PDF pages are rasterized at 170 DPI (configurable via the ``OCR_PDF_DPI`` deploy option) before OCR
 * Inputs are downscaled to ≤2.8 MP (max_pixels: 2822400), so high-resolution scans lose detail before OCR runs.
 * Make sure to test the language model you are using it for whether it meets the use-case's quality requirements
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)
