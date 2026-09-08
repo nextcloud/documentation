@@ -6,7 +6,7 @@ Nextcloud Assistant
 
 Nextcloud assistant is the primary graphical user interface for interacting with artificial intelligence features in Nextcloud.
 
-It offers the graphical user interface for the unified AI Task processing API offering features like summarizing text, generating headlines, asking arbitrary questions, transcription of media files, image generation and it integrates with the context_chat app to offer in-context answers about your own data stored in Nextcloud. The assistant app also offers a chat interface to interact with the chosen language model. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
+It offers the graphical user interface for the unified AI Task processing API offering features like summarizing text, generating headlines, asking arbitrary questions, transcription of media files, image generation and it integrates with the context_chat app to offer in-context answers about your own data stored in Nextcloud. The assistant app also offers a chat interface to interact with the chosen language model, including multimodal chat with file attachments when a compatible backend is configured. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
 Find the user documentation here:
 `AI assistant user documentation <https://docs.nextcloud.com/server/latest/user_manual/ai_assistant.html>`_
@@ -106,6 +106,15 @@ In order to make use of our "Chat with AI" feature you will need any one of the 
 * :ref:`llm2<ai-app-llm2>` - Runs open source AI language models locally on your own server hardware (Customer support available upon request)
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
+Multimodal chat
+~~~~~~~~~~~~~~~
+
+Multimodal chat extends "Chat with AI" so users can attach files for the language model to analyze in the conversation, such as images and, with some models, audio and video. Text files can also be attached as context.
+
+In order to make use of multimodal chat you will need any one of the following backends with a multimodal-capable model:
+
+* :ref:`llm2<ai-app-llm2>` - Use a multimodal model such as the shipped Qwen 3.5 9B (vision) or Gemma 4 E4B (vision and audio) (Customer support available upon request)
+* `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with multimodal models via the OpenAI API (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
 Voice Chat
 ~~~~~~~~~~

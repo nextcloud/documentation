@@ -49,6 +49,7 @@ clean:
 
 html:
 	../build/change_file_extension.sh
+	../build/normalize_locale_codes.sh
 	make html-all merge-folders
 
 html-all: $(foreach lang, $(LANGS), html-allow-warnings-lang-$(lang))
@@ -68,8 +69,8 @@ merge-folders:
 	cd $(BUILDDIR)/html/ && rm -rf `find -type d -name _images`
 	mv ./_static $(BUILDDIR)/html/
 	mv ./_images $(BUILDDIR)/html/
-	cd $(BUILDDIR)/html/ && find ./ -type f -exec sed -i -e 's/_images/..\/_images/g' {} \;
-	cd $(BUILDDIR)/html/ && find ./ -type f -exec sed -i -e 's/_static/..\/_static/g' {} \;
+	cd $(BUILDDIR)/html/ && find ./ -type f -exec perl -pi -e 's|_images|../_images|g' {} \;
+	cd $(BUILDDIR)/html/ && find ./ -type f -exec perl -pi -e 's|_static|../_static|g' {} \;
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml

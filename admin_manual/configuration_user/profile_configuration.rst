@@ -82,11 +82,21 @@ These correspond to the visibility options in **Personal settings** -> **Persona
 Defaults
 ^^^^^^^^
 
-By default, most profile fields are configured as **Show to everyone**, while some
-contact-related fields default to **Show to logged in accounts only**.
+Most profile fields default to **Show to everyone**, while some contact-related fields
+(e.g. address, email, and phone) default to **Show to logged in accounts only**.
 
 Administrators should note that these defaults are independent from the default
 *property scopes* described below.
+
+Server configuration preset categories can override these initial defaults:
+
+- **Shared**, **School**, and **University**: address, email, and phone default to **Hide**.
+- **Private**, **Family**, and **Club**: email defaults to **Show to everyone**.
+- **Small**, **Medium**, and **Large**: email and phone default to
+  **Show to everyone**.
+
+These are initial per-user profile-visibility values. Existing stored profile
+visibility settings are not changed merely by selecting or changing a preset.
 
 .. _profile-property-scopes:
 

@@ -1,5 +1,5 @@
 # Nextcloud nginx configuration — root installation
-# Version 2026-03-26
+# Version 2026-06-09
 
 # PHP-FPM backend.
 upstream php-handler {
@@ -152,6 +152,10 @@ server {
     location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/)  { return 404; }
     location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console)                { return 404; }
 
+    # Hide metadata files which would otherwise be served as plain files and
+    # leak dependency information (composer.json, package.json, core/shipped.json).
+    location ~ ^/(?:composer\.(?:json|lock)|package(?:-lock)?\.json|core/shipped\.json)$ { return 404; }
+
     # Pass PHP requests to PHP-FPM.
     #
     # Important: this block must appear above the static asset locations
@@ -221,6 +225,15 @@ server {
     # Serve static files
     location ~ \.(?:css|js|mjs|svg|gif|ico|jpg|png|webp|wasm|tflite|map|ogg|flac|mp4|webm)$ {
         try_files $uri /index.php$request_uri;
+	
+		# HSTS settings
+		# WARNING: Only add the preload option once you read about
+		# the consequences in https://hstspreload.org/. This option
+		# will add the domain to a hardcoded list that is shipped
+		# in all major browsers and getting removed from this list
+		# could take several months.
+		#add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+
         # HTTP response headers borrowed from Nextcloud `.htaccess`
         add_header Cache-Control                     "public, max-age=15778463$asset_immutable";
         add_header Referrer-Policy                   "no-referrer"       always;

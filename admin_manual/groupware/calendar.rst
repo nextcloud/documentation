@@ -210,6 +210,9 @@ Example event
 .. versionadded:: 32.0.0
 
 When a user logs in for the first time an example event is created in their personal calendar.
+
+This feature is enabled by default and is controlled by the ``create_example_event`` app config.
+
 As an admin, you can disable the creation of the example event.
 It is also possible to replace the default event with a custom one.
 
@@ -218,6 +221,10 @@ To disable the creation of the example event for new users:
 1. Navigate to the Groupware settings in the admin settings.
 2. Scroll down to the "Example content" section.
 3. Disable the "Add example event ..." setting with the checkbox
+
+It can also be toggled from the command line::
+
+  sudo -E -u www-data php occ config:app:set dav create_example_event --value=no
 
 To replace the built-in default event with a custom one:
 

@@ -25,8 +25,8 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - CentOS Stream                                                       |
 |                  | - Alpine Linux                                                        |
 +------------------+-----------------------------------------------------------------------+
-| Database         | - MySQL 8.0 / 8.4                                                     |
-|                  | - MariaDB 10.6 / 10.11 / 11.4 / **11.8** (recommended)                |
+| Database         | - MySQL 8.4 / 9.7                                                     |
+|                  | - MariaDB 10.11 / 11.4 / **11.8** / 12.3 (recommended)                |
 |                  | - Oracle Database 19c, 21c, 23ai                                      |
 |                  |   (*only as part of an enterprise subscription*)                      |
 |                  | - PostgreSQL 14 / 15 / 16 / 17 / **18** (recommended)                 |
@@ -35,8 +35,7 @@ For best performance, stability and functionality we have documented some recomm
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
-| PHP Runtime      | - 8.2 (*deprecated*)                                                  |
-|                  | - 8.3                                                                 |
+| PHP Runtime      | - 8.3                                                                 |
 |                  | - 8.4                                                                 |
 |                  | - **8.5** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+

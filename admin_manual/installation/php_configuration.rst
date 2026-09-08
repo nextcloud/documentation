@@ -111,7 +111,8 @@ performance and reliability. Choose and install your preferred combination of me
 
 .. note::
    Memory caching is highly recommended for optimal performance. In most cases, a combination of `APCu` and
-   `redis` are the best choice for new installations.
+   `redis` are the best choice for new installations. You can also use the ``KeyValueCache`` cache option
+   which provides Redis-like functionality without requiring installing a PHP module, see :ref:`keyvalue_cache_configuration`.
 
 See :doc:`../configuration_server/caching_configuration` for configuration details.
 

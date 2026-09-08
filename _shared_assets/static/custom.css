@@ -229,3 +229,44 @@ table.docutils {
 #code-style table.docutils {
 	width: 100%;
 }
+
+/* Version picker lists — 2-column grid, emoji as absolute ::before bullet */
+.rst-versions .rst-other-versions {
+	padding-left: 26px;
+}
+
+.rst-versions .rst-other-versions dl.nc-versions-list,
+.rst-versions .rst-other-versions dl.nc-languages-list {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8px;
+	padding: 6px;
+}
+
+.rst-versions .rst-other-versions dl.nc-versions-list dt,
+.rst-versions .rst-other-versions dl.nc-languages-list dt {
+	grid-column: span 2;
+	position: relative;
+	padding: 0;
+}
+
+.rst-versions .rst-other-versions dl dt::before {
+	position: absolute;
+	left: -22px;
+	height: 18px;
+	width: 18px;
+	font-size: 16px;
+	line-height: 18px;
+}
+
+.rst-versions .rst-other-versions dl.nc-versions-list dt::before {
+	content: "☁️";
+}
+
+.rst-versions .rst-other-versions dl.nc-languages-list dt::before {
+	content: "🌐";
+}
+
+.rst-versions .rst-other-versions dd a {
+	padding: 0;
+}

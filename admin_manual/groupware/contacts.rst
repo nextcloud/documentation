@@ -87,11 +87,17 @@ Example contact
 
 When a user logs in for the first time an example contact is created in the user's address book.
 
+This feature is enabled by default and is controlled by the ``enableDefaultContact`` app config.
+
 To disable the example contact feature:
 
 1. Navigate to the Groupware settings in the admin settings.
 2. Scroll down to the "Example content" section.
 3. Disable the "Add example contact ..." setting with the checkbox
+
+It can also be toggled from the command line::
+
+  sudo -E -u www-data php occ config:app:set dav enableDefaultContact --value=no
 
 If you want to set a specific contact that should be created.
 

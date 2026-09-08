@@ -4,9 +4,11 @@
 occ commands
 ============
 
-Nextcloud apps can register custom `occ <https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html>`_ commands that administrators can run from the command line. Commands extend ``OC\Core\Command\Base``, which wraps
-`Symfony Console <https://symfony.com/doc/current/console.html>`_ and adds bash completion support, so the full Symfony
-Console API is available.
+Nextcloud apps can register custom `occ <https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html>`_
+commands that administrators can run from the command line. Commands are plain PHP classes annotated with the
+``#[AsCommand]`` attribute from ``OCP\Console``. Nextcloud wires the attribute on top of
+`Symfony Console <https://symfony.com/doc/current/console.html>`_ for you, so you get argument parsing, bash
+completion, and formatted output without extending a base class.
 
 
 Registering a command
@@ -31,11 +33,8 @@ injection container, so constructor injection works automatically.
 Creating a command class
 ------------------------
 
-Place command classes in ``lib/Command/``. Each class must extend
-``OC\Core\Command\Base`` and implement two methods:
-
-- ``configure()`` — declare the name, description, arguments, and options.
-- ``execute()`` — run the command logic and return an exit code.
+Place command classes in ``lib/Command/``. Add a ``#[AsCommand]`` attribute to the class and implement a single
+``__invoke()`` method that runs the command:
 
 .. code-block:: php
    :caption: lib/Command/Greet.php
@@ -46,59 +45,102 @@ Place command classes in ``lib/Command/``. Each class must extend
 
    namespace OCA\MyApp\Command;
 
-   use OC\Core\Command\Base;
+   use OCP\Console\Attribute\Argument;
+   use OCP\Console\Attribute\AsCommand;
+   use OCP\Console\Attribute\Option;
+   use OCP\Console\ExitCode;
+   use OCP\Console\IOutput;
    use OCP\IUserManager;
-   use Symfony\Component\Console\Input\InputArgument;
-   use Symfony\Component\Console\Input\InputInterface;
-   use Symfony\Component\Console\Input\InputOption;
-   use Symfony\Component\Console\Output\OutputInterface;
 
-   class Greet extends Base {
-
+   #[AsCommand(
+       name: 'myapp:greet',
+       // this short description is shown when running "occ list"
+       description: 'Print a greeting for a Nextcloud user.',
+       // this is shown when running the command with the "--help" option
+       help: 'This command prints a greeting for the given Nextcloud user.',
+       // this allows you to show one or more usage examples (no need to add the command name)
+       usages: ['bob', 'alice --shout'],
+   )]
+   class Greet {
        public function __construct(
            private IUserManager $userManager,
        ) {
-           parent::__construct();
        }
 
-       #[\Override]
-       protected function configure(): void {
-           $this
-               ->setName('myapp:greet')
-               ->setDescription('Print a greeting for a Nextcloud user')
-               ->addArgument(
-                   'user-id',
-                   InputArgument::REQUIRED,
-                   'The user to greet',
-               )
-               ->addOption(
-                   'shout',
-                   null,
-                   InputOption::VALUE_NONE,
-                   'Print the greeting in uppercase',
-               );
-       }
-
-       #[\Override]
-       protected function execute(InputInterface $input, OutputInterface $output): int {
-           $userId = $input->getArgument('user-id');
+       public function __invoke(
+           IOutput $output,
+           #[Argument(description: 'The username of the user')]
+           string $userId,
+           #[Option(description: 'Print the greeting in uppercase')]
+           bool $shout = false,
+       ): ExitCode {
            $user = $this->userManager->get($userId);
 
            if ($user === null) {
                $output->writeln("<error>User \"$userId\" not found.</error>");
-               return self::FAILURE;
+               return ExitCode::Failure;
            }
 
            $greeting = 'Hello, ' . $user->getDisplayName() . '!';
 
-           if ($input->getOption('shout')) {
+           if ($shout) {
                $greeting = strtoupper($greeting);
            }
 
            $output->writeln($greeting);
-           return self::SUCCESS;
+           return ExitCode::Success;
        }
    }
+
+The class itself needs no constructor call and no parent class, the constructor is only used for dependency
+injection.
+
+.. note::
+
+   If you need the full Symfony Console API — for example a custom ``configure()`` step or dynamic shell
+   completion — you can still extend ``OC\Core\Command\Base`` and implement ``configure()``/``execute()``
+   directly, as commands did before Nextcloud 35. The ``#[AsCommand]`` style above is recommended for new
+   commands because it needs far less boilerplate.
+
+Multiple commands in one class
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To group related commands that share dependencies, put ``#[AsCommand]`` on individual public methods instead of
+on the class. Nextcloud registers one occ command per attributed method:
+
+.. code-block:: php
+   :caption: lib/Command/UserCommands.php
+
+   class UserCommands {
+       public function __construct(
+           private IUserManager $userManager,
+       ) {
+       }
+
+       #[AsCommand(name: 'myapp:user:create')]
+       public function create(
+           IOutput $output,
+           #[Argument(description: 'The username of the user')]
+           string $userId,
+       ): ExitCode {
+           // ...
+           return ExitCode::Success;
+       }
+
+       #[AsCommand(name: 'myapp:user:delete')]
+       public function delete(
+           IOutput $output,
+           #[Argument(description: 'The username of the user')]
+           string $userId,
+       ): ExitCode {
+           // ...
+           return ExitCode::Success;
+       }
+   }
+
+Only ``OCA\MyApp\Command\UserCommands`` needs to be listed in ``appinfo/info.xml``, both ``myapp:user:create``
+and ``myapp:user:delete`` are registered from it.
+
 
 Command naming
 --------------
@@ -109,66 +151,117 @@ hyphens as word separators.
 
 
 Arguments and options
----------------------
+----------------------
 
-Arguments are positional. Options are prefixed with ``--``.
+Arguments are positional and declared with the ``#[Argument]`` attribute on a parameter of ``__invoke()``.
+Options are prefixed with ``--`` and declared the same way with ``#[Option]``. Both attributes accept a
+``description`` (shown in ``--help``) and an optional ``name``; when ``name`` is omitted it defaults to the
+parameter's own name. ``#[Option]`` also accepts a single-letter ``shortcut``, for example ``shortcut: 'b'`` for
+``-b``.
 
-+-----------------------------------------+-------------------------------------------+
-| Constant                                | Meaning                                   |
-+=========================================+===========================================+
-| ``InputArgument::REQUIRED``             | Argument must be provided                 |
-+-----------------------------------------+-------------------------------------------+
-| ``InputArgument::OPTIONAL``             | Argument may be omitted                   |
-+-----------------------------------------+-------------------------------------------+
-| ``InputArgument::IS_ARRAY``             | Argument accepts multiple values          |
-+-----------------------------------------+-------------------------------------------+
-| ``InputOption::VALUE_NONE``             | Flag — present or absent, no value        |
-+-----------------------------------------+-------------------------------------------+
-| ``InputOption::VALUE_REQUIRED``         | Option requires a value                   |
-+-----------------------------------------+-------------------------------------------+
-| ``InputOption::VALUE_OPTIONAL``         | Option value is optional                  |
-+-----------------------------------------+-------------------------------------------+
-| ``InputOption::VALUE_IS_ARRAY``         | Option can be repeated                    |
-+-----------------------------------------+-------------------------------------------+
+The parameter's type and default value — not the attribute — decide whether the argument or option is required,
+repeatable, or a flag:
 
-See the `Symfony Console documentation <https://symfony.com/doc/current/console/input.html>`_
-for the full reference.
++-------------------------------+-----------------------------------------------------------------------------+
+| Parameter declaration         | Behavior                                                                    |
++===============================+=============================================================================+
+| ``string $name``              | Required — the command fails if it is not provided.                         |
++-------------------------------+-----------------------------------------------------------------------------+
+| ``string $name = 'foo'``      | Optional, defaults to ``'foo'``.                                            |
++-------------------------------+-----------------------------------------------------------------------------+
+| ``?string $name = null``      | Optional and nullable, defaults to ``null``.                                |
++-------------------------------+-----------------------------------------------------------------------------+
+| ``array $name = []``          | Repeatable — the value can be passed multiple times and is collected        |
+|                               | into an array. A variadic argument (``string ...$name``) behaves the same   |
+|                               | way.                                                                        |
++-------------------------------+-----------------------------------------------------------------------------+
+| ``bool $name = false``        | Flag (option only) — absent means ``false``, present means ``true``.        |
++-------------------------------+-----------------------------------------------------------------------------+
+| ``bool $name = true``         | Flag (option only) that is on by default; pass ``--no-name`` to disable     |
+|                               | it.                                                                         |
++-------------------------------+-----------------------------------------------------------------------------+
+
+Since PHP parameter names are camelCase but Nextcloud's naming convention for options and arguments uses
+lowercase with hyphens, override the default name for such parameters, for example
+``#[Option(name: 'object-store')] ?string $objectStore = null``.
+
+.. note::
+
+   A ``bool`` option cannot be nullable when it also has a non-``null`` default value — declare it as a plain
+   non-nullable ``bool`` for flags.
+
+The arguments and options handling in Nextcloud covers the common cases of the Symfony Console component.
+Consult `its documentation <https://symfony.com/doc/current/console/input.html>`_ for background on how
+Symfony itself models arguments and options.
+
+
+Output, input, and other helpers
+---------------------------------
+
+Besides ``#[Argument]`` and ``#[Option]`` parameters, ``__invoke()`` can request the following types by
+type-hint alone — no attribute needed, and the parameter order does not matter:
+
+- ``OCP\Console\IOutput``: write output with ``write()``/``writeln()``, check the requested verbosity, or
+  emit arrays and tables (see below).
+- ``OCP\Console\IInput``: read all given arguments and options with ``getArguments()``/``getOptions()``.
+- ``OCP\Console\IQuestionHelper``: prompt the user for confirmation or input, see :ref:`occ_commands_interactive`.
+- ``OCP\Console\OutputFormat``: only resolved when ``supportsOutputFormat: true`` is set on ``#[AsCommand]``;
+  tells you whether the administrator requested plain text or JSON output.
+
+.. tip::
+
+   Set ``supportsOutputFormat: true`` on ``#[AsCommand]`` to let administrators request machine-readable output
+   with ``--output=json`` or ``--output=json_pretty``. Use ``IOutput::writeArrayInOutputFormat()`` or
+   ``IOutput::writeTableInOutputFormat()`` to emit data that automatically respects the requested format.
 
 
 Return codes
 ------------
 
-``execute()`` must return an integer. Use the constants defined by
-``OC\Core\Command\Base`` (inherited from Symfony):
+``__invoke()`` (or an attributed method) must return an ``OCP\Console\ExitCode`` case, or a plain integer:
 
-- ``self::SUCCESS`` (``0``) — command completed successfully.
-- ``self::FAILURE`` (``1``) — command encountered an error.
-- ``self::INVALID`` (``2``) — command was called with invalid input.
+- ``ExitCode::Success`` (``0``): command completed successfully.
+- ``ExitCode::Failure`` (``1``): command encountered an error.
+- ``ExitCode::Invalid`` (``2``): command was called with invalid input.
 
+Returning the enum case is recommended; declare the method's return type as ``ExitCode``.
+
+
+.. _occ_commands_interactive:
 
 Interactive commands
---------------------
+---------------------
 
 Commands can ask for confirmation or prompt for values using Symfony's
-`question helper <https://symfony.com/doc/current/components/console/helpers/questionhelper.html>`_:
+`question helper <https://symfony.com/doc/current/components/console/helpers/questionhelper.html>`_. Request an
+``OCP\Console\IQuestionHelper`` as a parameter of ``__invoke()``, the same way as ``IOutput``:
 
 .. code-block:: php
 
-   use Symfony\Component\Console\Helper\QuestionHelper;
+   use OCP\Console\ExitCode;
+   use OCP\Console\IOutput;
+   use OCP\Console\IQuestionHelper;
    use Symfony\Component\Console\Question\ConfirmationQuestion;
 
-   // In execute():
-   /** @var QuestionHelper $helper */
-   $helper = $this->getHelper('question');
-   $question = new ConfirmationQuestion('Are you sure? (y/n) ', false);
+   class Greet {
+       public function __invoke(
+           IOutput $output,
+           IQuestionHelper $questionHelper,
+       ): ExitCode {
+           $question = new ConfirmationQuestion('Are you sure? (y/n) ', false);
 
-   if (!$helper->ask($input, $output, $question)) {
-       $output->writeln('Aborted.');
-       return self::FAILURE;
+           if (!$questionHelper->ask($question)) {
+               $output->writeln('Aborted.');
+               return ExitCode::Failure;
+           }
+
+           // ...
+           return ExitCode::Success;
+       }
    }
 
 .. note::
 
-   Interactive prompts are skipped when occ is run non-interactively (e.g. from a
-   cron job). Guard against this with ``$input->isInteractive()`` or use
-   ``--yes``/``--no`` options so administrators can automate the command.
+   When occ runs non-interactively (e.g. from a cron job), the question helper returns the question's default
+   value instead of prompting. Choose a safe default, or add ``--yes``/``--no`` options so administrators can
+   automate the command.

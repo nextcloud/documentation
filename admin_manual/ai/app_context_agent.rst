@@ -9,6 +9,8 @@ The *context_agent* app is the app that provides AI agent functionality in Nextc
 When the Context Agent app is installed the AI Chat in Nextcloud Assistant will be able to interact with your Nextcloud apps via virtual integrations that are called "tools". They allow the Assistant to perform actions in your Nextcloud upon sending instructions in a chat message.
 Tool groups are only available if their requirements are met. They can be en- and disabled in the AI admin settings.
 
+Additionally, the app makes all tools available via an MCP server that you can connect third-party agents to (see below).
+
 Currently implemented tools
 ---------------------------
 
@@ -209,12 +211,16 @@ Cookbook tools
 
   * Example prompt: *"Which recipe categories do I have in my cookbook?"*
 
-Deck tools
-~~~~~~~~~~
+Deck tools (require `Deck <https://apps.nextcloud.com/apps/deck>`_)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * List deck boards
 
   * Example prompt: *"List the deck boards I have access to."*
+
+* List the cards on a deck board
+
+  * Example prompt: *"List the cards on my Personal deck board."*
 
 * Add a new card
 
@@ -231,6 +237,22 @@ Deck tools
 * Delete a card
 
   * Example prompt: *"Delete the 'Repair kitchen sink' card in my Personal deck board."*
+
+* List the comments on a deck card
+
+  * Example prompt: *"Show the comments on the 'Repair kitchen sink' card in my Personal deck board."*
+
+* Add a comment to a deck card
+
+  * Example prompt: *"Add a comment 'I'll handle this Friday' to 'Repair kitchen sink' in my Personal deck board."*
+
+* Edit a comment on a deck card
+
+  * Example prompt: *"Update my last comment on the 'Repair kitchen sink' card to say 'Moved to Saturday'."*
+
+* Delete a comment on a deck card
+
+  * Example prompt: *"Delete my last comment on the 'Repair kitchen sink' card in my Personal deck board."*
 
 Files tools
 ~~~~~~~~~~~
@@ -370,24 +392,69 @@ Share tools
  * Example prompt: *"Does martin have write access to the Design/Ideas.md file I shared with him?"*
 
 
-Talk tools
-~~~~~~~~~~
+Talk tools (require `Talk <https://apps.nextcloud.com/apps/spreed>`_)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* List the user's talk conversations (requires `Talk <https://apps.nextcloud.com/apps/spreed>`_)
+* List the user's talk conversations
 
   * Example prompt: *"List my talk conversations"*
 
-* List messages in a talk conversation (requires `Talk <https://apps.nextcloud.com/apps/spreed>`_)
+* List messages in a talk conversation
 
   * Example prompt: *"List the latest messages in my conversation with Andrew"*
 
-* Send a message to a talk conversation (requires `Talk <https://apps.nextcloud.com/apps/spreed>`_)
+* Send a message to a talk conversation
 
   * Example prompt: *"Can you send a joke to Andrew in talk?"*
 
-* Create a public talk conversation (requires `Talk <https://apps.nextcloud.com/apps/spreed>`_)
+* Create a public talk conversation
 
   * Example prompt: *"Can you create a new public talk conversation titled 'Press conference'?"*
+
+* Reply to a specific message in a talk conversation
+
+  * Example prompt: *"Reply to Andrew's last message in our talk conversation with 'Got it, thanks!'"*
+
+* Add an emoji reaction to a message in a talk conversation
+
+  * Example prompt: *"React with 👍 to Andrew's last message in our talk conversation"*
+
+* Remove an emoji reaction from a message in a talk conversation
+
+  * Example prompt: *"Remove my 👍 reaction from Andrew's last message"*
+
+* List the reactions on a message in a talk conversation
+
+  * Example prompt: *"Who reacted to Andrew's last message in our talk conversation?"*
+
+* Create a poll in a talk conversation
+
+  * Example prompt: *"Create a poll in the 'Team standup' conversation asking 'Which day works for the offsite?'
+    with options Monday, Tuesday, Wednesday"*
+
+* Get the question, options, and current results of a poll in a talk conversation
+
+  * Example prompt: *"Show the current results of the offsite poll in the 'Team standup' conversation"*
+
+* Cast a vote on a poll in a talk conversation
+
+  * Example prompt: *"Vote for Tuesday on the offsite poll in the 'Team standup' conversation"*
+
+* Close a poll in a talk conversation
+
+  * Example prompt: *"Close the offsite poll in the 'Team standup' conversation"*
+
+* Share a Nextcloud Files item to a talk conversation
+
+  * Example prompt: *"Share the file 'Q3 plan.pdf' to my conversation with Andrew"*
+
+* List items of a given type (e.g. file, location, poll) that were shared in a talk conversation
+
+  * Example prompt: *"List the files shared in my conversation with Andrew"*
+
+* Get an overview of items shared in a talk conversation across all types
+
+  * Example prompt: *"Give me an overview of what's been shared in my conversation with Andrew"*
 
 
 Mail tools (require `Mail <https://apps.nextcloud.com/apps/mail>`_)
@@ -454,15 +521,15 @@ Combining tools
 
 These tools can also be combined by the agent to fulfil tasks like the following:
 
- * *"How is the weather where Andrew lives?"*
+* *"How is the weather where Andrew lives?"*
 
   * Uses contacts to look up Andrew's address and then checks the weather
 
- * *"How is the weather where I live?"*
+* *"How is the weather where I live?"*
 
   * Look up the current user's address and then checks the weather
 
- * *"Send an email from carry@company.com to Andrew"*
+* *"Send an email from carry@company.com to Andrew"*
 
   * Uses contacts to look up Andrew's email and then sends an email
 
@@ -503,10 +570,11 @@ Requirements
 Installation
 ------------
 
+
 0. Make sure the :ref:`Nextcloud Assistant app<ai-app-assistant>` is installed
 1. :ref:`Install AppAPI and setup a Deploy Demon<ai-app_api>`
 2. Install the "Context Agent" ExApp via the "Apps" page in the Nextcloud web admin user interface
-3. Install a text generation backend like :ref:`llm2 <ai-app-llm2>` or :ref:`integration_openai <ai-ai_as_a_service>` via the "Apps" page in Nextcloud
+3. If you want to use the agent in the Nextcloud UI, install a text generation backend like :ref:`llm2 <ai-app-llm2>` or :ref:`integration_openai <ai-ai_as_a_service>` via the "Apps" page in Nextcloud; if you only want to use the MCP server you don't need these.
 
 
 Model requirements
@@ -518,7 +586,6 @@ Other models that may give good results are:
 * Google Gemma 3 12B or higher
 * Mistral 3 small 24B
 * Qwen 2.5 8B or higher (May not work well with languages other than English)
-* Watt Tool 8B or higher
 
 See :ref:`llm2 documentation <ai-app-llm2>` on how to configure alternate models.
 

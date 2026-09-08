@@ -1,0 +1,364 @@
+# Scheduled deployment of the documentation to gh-pages.
+#
+# Replaces the old schedule-builds.yml fan-out (which dispatched one
+# sphinxbuild.yml run per branch and therefore opened one deploy PR per
+# version). Here every version is built in a single run via a matrix over the
+# reusable build-docs.yml workflow, then a single deploy job applies all
+# versions to gh-pages and opens ONE pull request.
+#
+# fail-fast is disabled on the build matrix and the deploy job runs as long as
+# the run was not cancelled: a version that fails to build simply is not
+# deployed that night, without blocking the others.
+name: "Deploy documentation"
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # 02:00 UTC daily
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Build & deploy a single branch (e.g. master or stable34). Leave empty to build master + all supported stable branches."
+        required: false
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+  packages: write  # the reusable build may push the PDF build image to GHCR
+
+jobs:
+  # ============================================================================
+  # PREPARE — compute the branch matrix (master + all stable branches)
+  # ============================================================================
+  prepare:
+    name: Compute branch matrix
+    runs-on: ubuntu-latest
+    outputs:
+      branches: ${{ steps.set.outputs.branches }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2.37.2
+        with:
+          php-version: '8.3'
+
+      - name: Compute branch matrix
+        id: set
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INPUT_BRANCH: ${{ inputs.branch }}
+        run: |
+          # Manual single-branch dispatch: build only the requested branch.
+          if [ -n "${INPUT_BRANCH}" ]; then
+            branches_json=$(printf '%s' "${INPUT_BRANCH}" | jq -R . | jq -cs .)
+            echo "Single-branch dispatch: ${branches_json}"
+            echo "branches=${branches_json}" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Scheduled / plain dispatch: master + every stable branch that is still
+          # within the support window. Ancient branches (e.g. stable10) are on the
+          # remote but out of support and would blow past the 256-jobs-per-run cap.
+          nums=$(git ls-remote --heads origin "heads/stable[0-9][0-9]" \
+            | sed -n 's?.*refs/heads/stable\([0-9]\{2\}\)$?\1?p' | sort -n)
+
+          # Reuse the shared helper to get the supported range (lowest..highest).
+          eval $(php build/detect-versions.php ${nums})
+          echo "Supported stable range: ${lowest_stable}..${highest_stable}"
+
+          selected="master"
+          for n in ${nums}; do
+            if [ "$n" -ge "$lowest_stable" ] && [ "$n" -le "$highest_stable" ]; then
+              selected="${selected} stable${n}"
+            fi
+          done
+
+          branches_json=$(printf '%s\n' ${selected} | jq -R . | jq -cs .)
+          echo "Matrix branches: ${branches_json}"
+          echo "branches=${branches_json}" >> $GITHUB_OUTPUT
+
+  # ============================================================================
+  # BUILD — build + stage every version through the reusable workflow
+  # ============================================================================
+  build:
+    name: Build ${{ matrix.branch }}
+    needs: prepare
+    strategy:
+      fail-fast: false
+      matrix:
+        branch: ${{ fromJson(needs.prepare.outputs.branches) }}
+    uses: ./.github/workflows/build-docs.yml
+    with:
+      branch: ${{ matrix.branch }}
+      ref: ${{ matrix.branch }}
+    secrets: inherit
+
+  # ============================================================================
+  # DEPLOY — apply every staged version to gh-pages, open a single PR
+  # ============================================================================
+  deploy:
+    name: Deploy documentation for gh-pages
+    needs: build
+    # Deploy whatever built successfully, even if some matrix legs failed.
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: gh-pages
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Download all staged version artifacts
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          pattern: staged-docs-*
+          merge-multiple: true
+          path: stage/
+
+      - name: Fail if nothing was staged
+        id: staged
+        run: |
+          if [ -z "$(ls -A stage/ 2>/dev/null)" ]; then
+            echo "::warning::No staged artifacts found — all builds failed. Nothing to deploy."
+            echo "has_stage=false" >> $GITHUB_OUTPUT
+          else
+            echo "Staged version folders:"
+            ls -1 stage/
+            echo "has_stage=true" >> $GITHUB_OUTPUT
+          fi
+
+      # ========================================================================
+      # APPLY STAGED ARTIFACTS TO GH-PAGES
+      # ========================================================================
+      # Each staged-docs-<branch> artifact contributes one or more top-level
+      # version folders (latest / stable / <N>). Apply every folder found.
+      # ========================================================================
+      - name: Apply staged artifacts to gh-pages
+        id: apply
+        if: steps.staged.outputs.has_stage == 'true'
+        run: |
+          deployed=""
+          for d in stage/*/; do
+            [ -d "$d" ] || continue
+            branch="$(basename "$d")"
+            echo "Applying version folder: ${branch}"
+            deployed="${deployed} ${branch}"
+
+            mkdir -p "server/${branch}"
+            for artifact in "stage/${branch}"/*; do
+              if [ -d "$artifact" ]; then
+                manual_name="$(basename "$artifact")"
+                rm -rf "server/${branch}/${manual_name}"
+                cp -r "$artifact" "server/${branch}/${manual_name}"
+              fi
+            done
+
+            # Copy PDF and ePub files to the root of the branch folder
+            for f in "stage/${branch}"/*.pdf "stage/${branch}"/*.epub; do
+              if [ -f "$f" ]; then
+                echo "Copying: $f"
+                cp "$f" "server/${branch}/"
+              fi
+            done
+          done
+
+          # Record which folders we deployed this run, so later steps only touch
+          # those (not the ancient version folders already present on gh-pages).
+          echo "folders=$(echo ${deployed} | xargs)" >> $GITHUB_OUTPUT
+
+          # Cleanup empty directories
+          find . -type d -empty -delete
+
+          # Strip noindex from stable docs BEFORE pruning. Sphinx always emits a
+          # noindex robots meta, but the deployed stable pages have it stripped
+          # (they are the canonical, indexed version). If we pruned first, every
+          # rebuilt stable file would still carry that meta and so differ from
+          # HEAD by a "real" line — defeating the prune and leaving timestamp-only
+          # files in the PR. Stripping first makes noise-only stable pages match
+          # HEAD, so the prune below can revert them.
+          if [ -d server/stable ]; then
+            find server/stable -name '*.html' -print0 | \
+              xargs -0 perl -pi -e 's{<meta name="robots" content="noindex, follow" />\n?}{}g'
+          fi
+
+          # ----------------------------------------------------------------
+          # Prune build-only noise so the PR carries exclusively real content
+          # changes. A rebuilt page differs every night even when its content
+          # is identical, because of:
+          #   - Sphinx build-time timestamps (lastupdated / "Last updated on")
+          #   - mermaid diagram zoom ids (random UUID regenerated each build)
+          # Files whose ENTIRE diff is noise are reverted to HEAD; files with a
+          # real change are kept untouched (noise lines ride along, harmless).
+          # ----------------------------------------------------------------
+          NOISE='lastupdated|Last updated on|data-zoom-id'
+
+          # Read-only diffs must not take .git/index.lock: a `git diff` that
+          # refreshes the index while a `git checkout` writes it races on the
+          # lock. GIT_OPTIONAL_LOCKS=0 suppresses the refresh write; we also
+          # materialise each file list fully before running any checkout, and
+          # batch the reverts into a single checkout call.
+          export GIT_OPTIONAL_LOCKS=0
+
+          # 1) Collect HTML files whose only changes are noise, then revert them.
+          : > /tmp/revert-html.txt
+          git diff --name-only HEAD -- '*.html' > /tmp/changed-html.txt
+          while IFS= read -r f; do
+            [ -n "$f" ] || continue
+            real=$(git diff HEAD -- "$f" | grep -E '^[+-]' | grep -vE '^[+-]{3}' | grep -ivE "$NOISE" | wc -l)
+            [ "$real" -eq 0 ] && printf '%s\n' "$f" >> /tmp/revert-html.txt
+          done < /tmp/changed-html.txt
+          if [ -s /tmp/revert-html.txt ]; then
+            xargs -a /tmp/revert-html.txt -r git checkout HEAD --
+          fi
+
+          # 2) PDF/ePub binaries regenerate every build with no content change.
+          #    Keep them only for a version folder that still has a real HTML
+          #    change after step 1; otherwise revert them too. Runs after the
+          #    HTML revert so the per-folder check sees the pruned tree.
+          : > /tmp/revert-bin.txt
+          git diff --name-only HEAD -- '*.pdf' '*.epub' > /tmp/changed-bin.txt
+          while IFS= read -r f; do
+            [ -n "$f" ] || continue
+            case "$f" in
+              server/*)
+                vdir="server/$(printf '%s' "${f#server/}" | cut -d/ -f1)"
+                remaining=$(git diff --name-only HEAD -- "$vdir" | grep -vE '\.(epub|pdf)$' | wc -l)
+                [ "$remaining" -eq 0 ] && printf '%s\n' "$f" >> /tmp/revert-bin.txt
+                ;;
+              *) printf '%s\n' "$f" >> /tmp/revert-bin.txt ;;
+            esac
+          done < /tmp/changed-bin.txt
+          if [ -s /tmp/revert-bin.txt ]; then
+            xargs -a /tmp/revert-bin.txt -r git checkout HEAD --
+          fi
+
+          # Anything real left to deploy? (tracked diffs or brand-new files)
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "::notice::Skipping deploy PR: only build noise (timestamps, mermaid ids, binaries) changed"
+          fi
+
+      - name: Write robots.txt
+        if: steps.apply.outputs.has_changes == 'true'
+        run: |
+          cat > robots.txt << 'EOF'
+          User-agent: *
+          # Only the stable version should be indexed
+          Allow: /server/stable/
+          Disallow: /server/
+          EOF
+
+        # Remove the stage/ directory BEFORE creating the PR so it doesn't get committed
+      - name: Clean up staging cache before commit
+        if: steps.apply.outputs.has_changes == 'true'
+        run: rm -rf stage/
+
+      # ========================================================================
+      # ADD REDIRECT FILES
+      # ========================================================================
+      # go.php and the user_manual language redirect are branch-agnostic stubs;
+      # take them from the default branch and apply to every deployed version.
+      # ========================================================================
+      - name: Add various redirects for go.php and user_manual english version
+        if: steps.apply.outputs.has_changes == 'true'
+        run: |
+          default_branch="${{ github.event.repository.default_branch }}"
+          # gh-pages is checked out single-branch, so there is no origin/<default>
+          # tracking ref. Fetch with an explicit refspec to create it.
+          git fetch origin "${default_branch}:refs/remotes/origin/${default_branch}"
+          git checkout "origin/${default_branch}" -- go.php/index.html user_manual/index.html
+
+          # Only the folders deployed this run — not every historical version
+          # already on gh-pages (some old ones have an incompatible layout).
+          for branch in ${{ steps.apply.outputs.folders }}; do
+            rm -rf "server/${branch}/go.php"
+            mkdir -p "server/${branch}/go.php" "server/${branch}/user_manual"
+            cp go.php/index.html "server/${branch}/go.php/index.html"
+            cp user_manual/index.html "server/${branch}/user_manual/index.html"
+          done
+
+      # ========================================================================
+      # COMPOSE PR BODY — per-version change counts
+      # ========================================================================
+      - name: Compose PR body
+        id: body
+        if: steps.apply.outputs.has_changes == 'true'
+        run: |
+          # Stage everything so new files count too (create-pull-request commits this).
+          git add -A
+          {
+            echo "text<<PR_BODY_EOF"
+            echo "This PR was automatically generated by the scheduled deploy workflow."
+            echo ""
+            echo "Documentation rebuilt for: **${{ steps.apply.outputs.folders }}**"
+            echo ""
+            echo "| Version folder | Files changed |"
+            echo "| --- | ---: |"
+            total=0
+            for branch in ${{ steps.apply.outputs.folders }}; do
+              n=$(git diff --cached --name-only -- "server/${branch}" | wc -l | tr -d ' ')
+              total=$((total + n))
+              echo "| \`${branch}\` | ${n} |"
+            done
+            # Files outside the deployed version folders (redirects, robots.txt, …).
+            other=$(git diff --cached --name-only -- . ':(exclude)server/*' | wc -l | tr -d ' ')
+            echo "| _other_ | ${other} |"
+            echo "| **Total** | **$((total + other))** |"
+            echo "PR_BODY_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Create Pull Request for documentation deployment
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        id: cpr
+        if: steps.apply.outputs.has_changes == 'true'
+        with:
+          token: ${{ secrets.COMMAND_BOT_PAT }}
+          commit-message: "chore: update documentation"
+          committer: nextcloud-command <nextcloud-command@users.noreply.github.com>
+          author: nextcloud-command <nextcloud-command@users.noreply.github.com>
+          signoff: true
+          branch: "automated/deploy/documentation"
+          base: gh-pages
+          title: "Documentation update"
+          body: ${{ steps.body.outputs.text }}
+          delete-branch: true
+          labels: "automated, 3. to review"
+
+      - name: Enable Pull Request Automerge
+        run: gh pr merge --merge --auto "${{ steps.cpr.outputs.pull-request-number }}"
+        if: steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.COMMAND_BOT_PAT }}
+
+  summary:
+    needs: [prepare, build, deploy]
+    runs-on: ubuntu-latest-low
+    if: always()
+
+    permissions:
+      contents: read
+
+    name: deploy-summary
+
+    steps:
+      - name: Summary status
+        run: |
+          echo "prepare: ${{ needs.prepare.result }}"
+          echo "build:   ${{ needs.build.result }}"
+          echo "deploy:  ${{ needs.deploy.result }}"
+          # prepare must succeed and deploy must not fail. Individual build legs
+          # may fail (fail-fast disabled); those versions are simply not deployed.
+          if [ "${{ needs.prepare.result }}" != "success" ] || [ "${{ needs.deploy.result }}" = "failure" ]; then
+            exit 1
+          fi

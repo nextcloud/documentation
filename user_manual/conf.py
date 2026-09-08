@@ -20,7 +20,8 @@ from conf import *
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = u'Nextcloud %s User Manual' % (version)
+project = u'Nextcloud %s User Manual' % (display_version)
+html_title = project
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -31,6 +32,7 @@ extensions += [
     'sphinx.ext.todo',
     'rst2pdf.pdfbuilder',
     'sphinx.ext.intersphinx',
+    'sphinx_reredirects',
 ]
 
 templates_path = [
@@ -55,7 +57,7 @@ gettext_compact = False
 ## Markup
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-markup
 # a substitution that will be included in every source file
-rst_epilog =  '.. |version| replace:: %s' % version
+rst_epilog =  '.. |version| replace:: %s' % display_version
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
@@ -167,3 +169,11 @@ if os.path.isdir(locale_path):
     available_languages.sort()
 
 html_context['available_languages'] = available_languages
+
+# -- URL redirects -----------------------------------------------------------
+# https://documatt.gitlab.io/sphinx-reredirects/usage.html
+
+redirects = {
+    # Renamed 2026-06
+    'desktop/macosvfs': 'desktop/macosfileprovider',
+}

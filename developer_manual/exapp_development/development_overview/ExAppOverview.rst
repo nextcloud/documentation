@@ -214,7 +214,7 @@ It is recommended to use the following default set of commands:
 - ``copy_translations``: copies translations to needed location depending on your ExApp backend programming language.
 
 .. note::
-    These Makefiles are typically written to work in the `nextcloud-docker-dev <https://github.com/juliusknorr/nextcloud-docker-dev>`_ development environment.
+    These Makefiles are typically written to work in the `nextcloud-docker-dev <https://github.com/nextcloud/nextcloud-docker-dev>`_ development environment.
 
 For a complete example, you can take a look at our `Makefile for the 3rd-party service example <https://github.com/cloud-py-api/visionatrix/blob/main/Makefile>`_.
 This example also requires the ``xmlstarlet`` program to be installed so that the Makefile can automatically detect the ExApp version from the info.xml file.

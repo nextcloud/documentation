@@ -76,10 +76,12 @@ triggered::
   background:cron     use cron to run background jobs
   background:webcron  use webcron to run background jobs
  background-job
-  background-job:delete   remove a background job from the database
-  background-job:execute  execute a single background job manually
-  background-job:list     list background jobs
-  background-job:worker   run a background job worker
+  background-job:delete   Remove a background job from database
+  background-job:execute  Execute a single background job manually
+  background-job:history  Show past jobs
+  background-job:list     List background jobs
+  background-job:running  Show currently running jobs
+  background-job:worker   Run a background job worker
 
 background\:cron
 """""""""""""""""
@@ -127,6 +129,26 @@ it may be skipped; use ``--force-execute`` to run it regardless::
 
  sudo -E -u www-data php occ background-job:execute --force-execute 42
 
+background-job\:history
+"""""""""""""""""""""""
+
+Show job history with their duration and peak memory usage::
+
+ sudo -E -u www-data php occ background-job:history -l 5
+ +-------------------+-----------+-------------------------------------------+---------------------+-----------+---------+-----------+--------------+
+ | Run ID            | Status    | Class                                     | Started at          | Server ID | PID     | Duration  | Memory usage |
+ +-------------------+-----------+-------------------------------------------+---------------------+-----------+---------+-----------+--------------+
+ | 98109593040965632 | Succeeded | OC\Command\CommandJob                     | 2026-06-22 09:15:19 | 30        | 3847229 | 284 ms    | 251.6 MB     |
+ | 98109592927719424 | Succeeded | OC\FilesMetadata\Job\UpdateSingleMetadata | 2026-06-22 09:15:19 | 30        | 3847229 | 16 ms     | 222 MB       |
+ | 98109592852221952 | Succeeded | OC\FilesMetadata\Job\UpdateSingleMetadata | 2026-06-22 09:15:19 | 30        | 3847229 | 8 ms      | 221.4 MB     |
+ | 98109588267847680 | Succeeded | OC\Command\CommandJob                     | 2026-06-22 09:15:18 | 30        | 3847229 | 909 ms    | 293 MB       |
+ | 97985889682313216 | Crashed   | OCA\Text\Cron\Cleanup                     | 2026-06-22 01:15:17 | 30        | 3733554 | 594627 ms | 0 B          |
+ +-------------------+-----------+-------------------------------------------+---------------------+-----------+---------+-----------+--------------+
+
+Use ``-l``/``--limit`` to control how many jobs are shown (default: 200), one or multiple
+``-c``/``--class`` to filter by job class, and one or multiple ``-s``/``--status`` to
+filter by status (0: running, 1: succeeded, 2: failed, 3: crashed).
+
 background-job\:list
 """""""""""""""""""""
 
@@ -144,6 +166,20 @@ List all background jobs registered in the database::
 Use ``-c`` / ``--class`` to filter by job class, ``-l`` / ``--limit`` to
 control how many jobs are shown (default: 500), and ``-o`` / ``--offset`` to
 page through results.
+
+background-job\:running
+"""""""""""""""""""""""
+
+List all currently running jobs::
+
+ sudo -E -u www-data php occ background-job:running
+ +-------------------+-----------------------+---------------------+-----------+---------+---------------+
+ | Run ID            | Class                 | Started at          | Server ID | PID     | Running since |
+ +-------------------+-----------------------+---------------------+-----------+---------+---------------+
+ | 98108257692012544 | OC\Command\CommandJob | 2026-06-22 09:10:08 | 30        | 3845056 | 1 seconds     |
+ +-------------------+-----------------------+---------------------+-----------+---------+---------------+
+
+Use ``-l`` / ``--limit`` to limit the number of job shown (default: 200).
 
 background-job\:worker
 """""""""""""""""""""""
@@ -849,45 +885,76 @@ These commands are only available before Nextcloud has been installed, after
 you have unpacked the archive and copied Nextcloud into the appropriate
 directories.
 
-Display the available installation options::
+Display the available installation options:
 
- sudo -E -u www-data php /var/www/nextcloud/occ maintenance:install --help
- Nextcloud is not installed - only a limited number of commands are available
+.. code-block:: console
 
- Usage:
-   maintenance:install [options]
+   $ sudo -E -u www-data php /var/www/nextcloud/occ maintenance:install --help
+   Nextcloud is not installed - only a limited number of commands are available
 
- Options:
-       --database[=DATABASE]                  Supported database type [default: "sqlite"]
-       --database-name[=DATABASE-NAME]        Name of the database
-       --database-host[=DATABASE-HOST]        Hostname of the database [default: "localhost"]
-       --database-port[=DATABASE-PORT]        Port of the database
-       --database-user[=DATABASE-USER]        User name to connect to the database
-       --database-pass[=DATABASE-PASS]        Password of the database user
-       --database-table-prefix[=...]          Table prefix for every table in the database
-       --admin-user[=ADMIN-USER]              User name of the admin account [default: "admin"]
-       --admin-pass[=ADMIN-PASS]              Password of the admin account
-       --data-dir[=DATA-DIR]                  Path to data directory [default: "/var/www/nextcloud/data"]
+   Usage:
+     maintenance:install [options]
 
-This example installs Nextcloud with a MySQL database::
+   Options:
+         --database[=DATABASE]                  Supported database type [default: "sqlite"]
+         --database-name[=DATABASE-NAME]        Name of the database
+         --database-host[=DATABASE-HOST]        Hostname of the database [default: "localhost"]
+         --database-port[=DATABASE-PORT]        Port the database is listening on
+         --database-user[=DATABASE-USER]        Login for database connection
+         --database-pass[=DATABASE-PASS]        Password of the database login
+         --database-table-space[=DATABASE-TABLE-SPACE]
+                                                   Table space of the database (``oci`` only)
+         --database-ssl-mode[=DATABASE-SSL-MODE]
+                                                   Encryption mode for the database connection,
+                                                   e.g. "require" or "verify-full" (``pgsql`` only)
+         --database-ssl-ca[=DATABASE-SSL-CA]    Path to the CA certificate the database server
+                                                   is verified against (``mysql`` and ``pgsql`` only)
+         --database-ssl-cert[=DATABASE-SSL-CERT]
+                                                   Path to the client certificate used to
+                                                   authenticate against the database
+                                                   (``mysql`` and ``pgsql`` only)
+         --database-ssl-key[=DATABASE-SSL-KEY]  Path to the private key of the client certificate
+                                                   (``mysql`` and ``pgsql`` only)
+         --database-ssl-crl[=DATABASE-SSL-CRL]  Path to the certificate revocation list
+                                                   (``pgsql`` only)
+         --database-ssl-no-verify               Do not verify that the database server certificate
+                                                   matches the hostname used to connect
+                                                   (``mysql`` only)
+         --disable-admin-user                   Disable the creation of an administrator login
+         --admin-user[=ADMIN-USER]              Login for initial administrator account [default: "admin"]
+         --admin-pass[=ADMIN-PASS]              Password for initial administrator login
+         --admin-email[=ADMIN-EMAIL]            E-Mail to associate with the initial administrator login
+         --data-dir[=DATA-DIR]                  Path to data directory
+         --password-salt[=PASSWORD-SALT]        Password salt; generated if not provided (ADVANCED)
+         --server-secret[=SERVER-SECRET]        Server secret; generated if not provided (ADVANCED)
 
- sudo -E -u www-data php occ maintenance:install \
-   --database mysql \
-   --database-name nextcloud \
-   --database-host 127.0.0.1 \
-   --database-user nextcloud \
-   --database-pass secret \
-   --admin-user admin \
-   --admin-pass password
+This example installs Nextcloud with a MySQL database. ``occ`` prompts for
+the database and administrator passwords:
+
+.. code-block:: console
+
+   $ sudo -E -u www-data php /var/www/nextcloud/occ maintenance:install \
+       --database mysql \
+       --database-name nextcloud \
+       --database-host 127.0.0.1 \
+       --database-user nextcloud \
+       --admin-user admin
+   What is the password to access the database with user <nextcloud>?
+   What is the password you like to use for the admin account <admin>?
    Nextcloud was successfully installed
 
 Supported databases:
 
-* ``sqlite`` — SQLite (community edition only; not recommended for production)
+* ``sqlite`` — SQLite (not recommended for production usage)
 * ``mysql`` — MySQL or MariaDB
 * ``pgsql`` — PostgreSQL
-* ``oci`` — Oracle (Nextcloud Enterprise only)
+* ``oci`` — Oracle; contact `Nextcloud GmbH
+  <https://nextcloud.com/enterprise/>`_ for enterprise support
 
+.. versionadded:: 35
+   The ``--database-ssl-*`` options set up an SSL/TLS encrypted connection to
+   the database, see
+   :ref:`Encrypted database connection <command_line_installation_ssl_label>`.
 
 .. _command_line_upgrade_label:
 

@@ -96,3 +96,35 @@ You can edit the thread title from the thread itself or from the sidebar.
 .. image:: images/thread-edit-title.png
    :alt: Talk thread title edit option in the thread header
    :width: 500px
+
+Private replies
+---------------
+
+Private replies are messages that are forwarded directly to a one-to-one conversation between you and specific message author, to maintain privacy where it's needed.
+
+1. In group and public conversations, select a message you want to reply to privately
+2. In message actions, select ``Reply privately``
+3. A one-to-one conversation window opens with the original message quoted
+4. Add your response and send a message
+
+The reply provides a full context of a quoted message — including the original sender's name, original conversation context, and backlink.
+
+.. image:: images/private-reply-in-chat.png
+   :alt: Talk 1-1 conversation with private reply
+   :width: 500px
+
+Message reactions
+-----------------
+
+Add emoji reactions to messages to quickly express agreement, celebrate, or indicate emotions without typing full responses.
+
+1. Hover over a message in the chat
+2. Click the ``Add reaction`` button from message actions
+3. Select an emoji from the list of frequently used or full picker
+
+You can hover over a reaction to see other users who reacted with it.
+Click one of the existing reactions to react with the same emoji! You can click it again to remove your reaction from the message.
+
+.. image:: images/message-reactions.png
+   :alt: Talk message with reactions
+   :width: 500px

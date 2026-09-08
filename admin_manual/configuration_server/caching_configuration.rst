@@ -29,7 +29,10 @@ needs. The supported caching backends are:
 * `Redis <https://redis.io/open-source/>`__ (4.0.0 and up required);
   `Valkey <https://valkey.io/>`__ and `KeyDB <https://docs.keydb.dev/>`__ are expected to work as Redis-compatible backends.
 
-  .. note:: Automated/formal testing currently only occurs against Redis Open Source.
+  .. note::
+      Automated/formal testing currently only occurs against Redis Open Source using the `redis` PHP extension
+      and against Valkey using the Nextcloud `keyvalue` cache provider.
+      KeyDB is expected to work as compatible backends as well, but are not formally tested.
 
   For local and distributed caching, as well as transactional file locking.
 
@@ -47,7 +50,7 @@ Recommendations based on type of deployment
 -------------------------------------------
 
 You may use both a local and a distributed cache. Recommended caches are APCu
-and Redis. After installing and enabling your chosen memcache (data cache),
+and Redis or Valkey. After installing and enabling your chosen memcache (data cache),
 verify that it is active by running :ref:`label-phpinfo`.
 
 .. note:: See specific cache configuration options under the appropriate section further down.
@@ -142,8 +145,170 @@ increase the size. `APCu provides a script
 otherwise the `serverinfo app <https://github.com/nextcloud/serverinfo>`_ in
 Nextcloud can also show the APCu cache status.
 
-Redis
------
+.. _keyvalue_cache_label:
+
+Redis / Valkey using the Nextcloud ``KeyValueCache``
+----------------------------------------------------
+
+.. note::
+   The KeyValueCache was added with Nextcloud 34.0.2.
+
+The ``KeyValueCache`` cache is a brand-independent cache backend for key-value stores like
+`Valkey <https://valkey.io/>`__ or `Redis <https://redis.io/open-source/>`__. These are excellent
+modern memcaches to use for distributed caching, and as a key-value store for
+:doc:`Transactional File Locking <../configuration_files/files_locking_transactional>` because they
+guarantee that cached objects are available for as long as they are needed.
+
+Unlike the ``phpredis`` backend described in the next section, the ``KeyValueCache`` does not require
+a PHP extension: it is built on the `predis <https://github.com/predis/predis>`__ library which is
+bundled with Nextcloud. You only need to install and run a Valkey or Redis compatible server and
+configure it in ``config.php``.
+
+.. note::
+   When the cache server is not located on the same machine the performance
+   may be impacted due to network overhead compared to the ``php-redis`` based backend.
+   In those cases it may be preferable to use the ``php-redis`` backend instead.
+
+On Debian/Ubuntu/Mint, install ``valkey-server`` or ``redis-server``. On CentOS and Fedora,
+install ``valkey`` or ``redis``. Depending on your distribution the server might not start
+automatically, so you may need to use your service manager to start the server, and to launch it
+at boot as a daemon.
+
+You can verify that the daemon is running with ``ps ax``::
+
+ ps ax | grep valkey
+ 22203 ? Ssl    0:00 /usr/bin/valkey-server 127.0.0.1:6379
+
+Add the appropriate entries to your ``config.php``, and refresh your Nextcloud admin page.
+
+.. _keyvalue_cache_configuration:
+
+KeyValueCache configuration in Nextcloud (config.php)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For best performance, use the ``KeyValueCache`` for file locking by adding this::
+
+  'memcache.locking' => '\OC\Memcache\KeyValueCache',
+
+Additionally, you should use it for the distributed server cache::
+
+  'memcache.distributed' => '\OC\Memcache\KeyValueCache',
+
+Furthermore, you could use it for the local cache like so, but it's not recommended (see
+warning below)::
+
+  'memcache.local' => '\OC\Memcache\KeyValueCache',
+
+.. warning:: Using a key-value store server for local cache on a multi-server setup can cause
+   issues. Also, even on a single-server setup, APCu (see section above) should be faster.
+
+When using the ``keyvalue`` cache for any of the above cache settings, you also need to specify
+the ``memcache.kvstore`` configuration in ``config.php``. Three topologies are supported: a single
+server (``server``), a Sentinel managed replication set (``sentinel``), and a server cluster
+(``seeds``). Configure exactly one of them.
+
+The following options are available when using a single server (all but ``server`` are
+optional)::
+
+   'memcache.locking' => '\OC\Memcache\KeyValueCache',
+   'memcache.distributed' => '\OC\Memcache\KeyValueCache',
+   'memcache_customprefix' => 'mynextcloudprefix',
+   'memcache.kvstore' => [
+      'server' => [
+         'host' => 'cache-host.example.com',
+         'port' => 6379,
+         // Protocol used to connect. One of 'tcp', 'tls' or 'unix'.
+         // When omitted it is derived from the host (a leading '/' means 'unix').
+         'protocol' => 'tcp',
+      ],
+      'user'         => 'nextcloud', // only sent when the server uses ACLs
+      'password'     => 'password',
+      'dbindex'      => 0,
+      'timeout'      => 1.5,
+      'read_timeout' => 1.5,
+      'persistent'   => false, // keep the connection open across requests
+   ],
+
+The same optional parameters are available for the Sentinel and cluster topologies below and are
+applied to every node.
+
+For a Sentinel managed replication setup, provide the name of the monitored service and one seed
+entry per Sentinel node (each seed uses the same format as the ``server`` entry above)::
+
+   'memcache.kvstore' => [
+      'sentinel' => [
+         'service' => 'mymaster',
+         'seeds' => [
+            ['host' => 'sentinel1.example.com', 'port' => 26379],
+            ['host' => 'sentinel2.example.com', 'port' => 26379],
+            ['host' => 'sentinel3.example.com', 'port' => 26379],
+         ],
+      ],
+   ],
+
+For a cluster, provide some or all of the cluster nodes to bootstrap discovery::
+
+   'memcache.kvstore' => [
+      'seeds' => [
+         ['host' => 'cache-cluster.example.com', 'port' => 7000],
+         ['host' => 'cache-cluster.example.com', 'port' => 7001],
+      ],
+   ],
+
+.. note:: Selecting a numbered database with ``dbindex`` is only supported for single servers and
+   Sentinel setups; clusters always use database 0, the support for numbered databases added with Valkey v9 is pending `upstream <https://github.com/predis/predis/issues/1696>`_.
+
+Connecting over TLS
+^^^^^^^^^^^^^^^^^^^
+
+To connect via TCP over TLS, set the ``protocol`` of the server (or of each seed) to ``tls`` and
+provide the SSL context (`SSL context options
+<https://www.php.net/manual/en/context.ssl.php>`_)::
+
+   'memcache.kvstore' => [
+      'server' => [
+         'host' => 'cache-host.example.com',
+         'port' => 6379,
+         'protocol' => 'tls',
+      ],
+      'ssl_context' => [
+         'local_cert' => '/certs/cache.crt',
+         'local_pk' => '/certs/cache.key',
+         'cafile' => '/certs/ca.crt',
+      ],
+   ],
+
+Connecting over UNIX socket
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you want to connect to a server configured to listen on a Unix socket (which is recommended if
+the server is running on the same system as Nextcloud), pass the socket path as the host. A
+leading slash in the host is automatically detected as a Unix socket, so no ``protocol`` or
+``port`` is needed::
+
+   'memcache.kvstore' => [
+      'server' => [
+         'host' => '/run/valkey/valkey.sock',
+      ],
+   ],
+
+Update the server configuration (for example ``/etc/valkey/valkey.conf``) accordingly: uncomment
+the Unix socket options and ensure the socket path matches your Nextcloud configuration.
+
+Be sure to set the right permissions on the socket so that your web server can read and write to
+it. For this you typically have to add the web server user to the ``valkey`` (or ``redis``)
+group::
+
+  usermod -a -G valkey www-data
+
+And modify the ``unixsocketperm`` setting of the server configuration accordingly::
+
+  unixsocketperm 770
+
+You might need to restart your web server and the cache server for the changes to take effect.
+
+Redis using the phpredis PHP extension
+--------------------------------------
 
 Redis is an excellent modern memcache to use for distributed caching, and
 as a key-value store for :doc:`Transactional File Locking

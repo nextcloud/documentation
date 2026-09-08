@@ -56,6 +56,12 @@ As an administrator, you can:
    emails immediately, truncate or clear the ``oc_activity_mq`` database
    table.
 
+* Configure the maximum number of activities fully displayed in notification emails
+  using the ``mail_max_items`` setting. Activities beyond this limit are summarised
+  as *"and X more"* at the bottom of the email. The default is ``200`` and the
+  maximum allowed value is ``1000``. For example, to set it to ``500``::
+
+     occ config:app:set activity mail_max_items --value=500
 
 Configuration reference
 -----------------------

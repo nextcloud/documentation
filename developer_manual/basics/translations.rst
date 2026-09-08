@@ -220,6 +220,32 @@ JS Example:
     /* BEST: Simple string with undefined plural not using any number in the string */
     t('myapp', 'Import calendars')
 
+.. important::
+   General rule: Whenever a variable with varying values (numbers) is part of a string, the plural form must be used.
+
+There are languages with multi-plural forms. See https://en.wikipedia.org/wiki/Plural#Use_in_systems_of_grammatical_number
+
+Example
+
+.. code-block:: php
+
+   "Vault will be locked in %1$d seconds"
+
+This means that even though the value ‘seconds’ is always greater than 1, translators on Transifex are unable to produce valid translations in the plural form for some languages.
+
+Bad: Only one string provided
+
+.. code-block:: php
+
+   "Vault will be locked in %1$d seconds"
+
+Good: Two strings in source code.
+
+.. code-block:: php
+
+   "Vault will be locked in %1$d second"
+   "Vault will be locked in %1$d seconds"
+
 .. _improving-translations:
 
 Improving your translations
@@ -282,6 +308,26 @@ In case some translation strings may be translated wrongly because they have mul
 Especially translations strings that only contain a single word often result in problems.
 The most famous example in the Nextcloud code base is ``Share`` which can which can be the verb and action ``To share something`` or the noun ``A share``.
 The added hints will be shown in the Transifex web-interface:
+
+.. warning::
+
+   A ``// TRANSLATORS`` comment is only associated with the **first** translation string on the following line.
+   If a single line of code contains two or more translation strings, the comment applies to the first one only,
+   and the remaining strings will have no context hint. Refactor the code so that each line holds a single
+   translation call, placing its own ``// TRANSLATORS`` comment on the line above.
+
+   .. code-block:: php
+
+       // BAD: only "Save" gets the context hint, "Cancel" has none
+       // TRANSLATORS Confirm or discard the current changes
+       return [$l->t('Save'), $l->t('Cancel')];
+
+       // GOOD: one translation per line, each with its own hint
+       // TRANSLATORS Confirm the current changes
+       $save = $l->t('Save');
+       // TRANSLATORS Discard the current changes
+       $cancel = $l->t('Cancel');
+       return [$save, $cancel];
 
 PHP
 """

@@ -160,15 +160,15 @@ It is usual to declare prefixes for those namespace in the ``d:propfind`` elemen
 
 Here is the list of available namespace:
 
-=========================================  ======
-                   URI                     Prefix
-=========================================  ======
-DAV:                                       d
-http://owncloud.org/ns                     oc
-http://nextcloud.org/ns                    nc
-http://open-collaboration-services.org/ns  ocs
-http://open-cloud-mesh.org/ns              ocm
-=========================================  ======
+=============================================  ======
+                     URI                       Prefix
+=============================================  ======
+``DAV:``                                       ``d``
+``http://owncloud.org/ns``                     ``oc``
+``http://nextcloud.org/ns``                    ``nc``
+``http://open-collaboration-services.org/ns``  ``ocs``
+``http://open-cloud-mesh.org/ns``              ``ocm``
+=============================================  ======
 
 And here is how it should look in your DAV request:
 
@@ -240,8 +240,17 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <oc:fileid />                 | The unique id for the file within the instance. | ``7``                                                                                |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <oc:downloadURL />            | | A URL to directly download the file from a    |                                                                                      |
-|                               | | storage. No storage implements that yet.      |                                                                                      |
+| <oc:downloadURL />            | | A temporary URL to download the file directly | ``https://s3.example.com/bucket/key?X-Amz-Algorithm=...``                            |
+|                               | | from the underlying storage backend (e.g. S3  |                                                                                      |
+|                               | | object storage with pre-signed URLs). May be  |                                                                                      |
+|                               | | unavailable depending on permissions, server  |                                                                                      |
+|                               | | configuration, feature interactions (e.g.     |                                                                                      |
+|                               | | server-side encryption, sharing), or backend  |                                                                                      |
+|                               | | support.                                      |                                                                                      |
++-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
+| <nc:download-url-expiration />| | Expiration time of ``oc:downloadURL``, if one | ``1733749200``                                                                       |
+|                               | | has been generated. The value is a Unix       |                                                                                      |
+|                               | | timestamp.                                    |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <oc:permissions />            | | The permissions that the user has over the    | | ``S``: Shared                                                                      |
 |                               | | file or folder. The value is a string         | | ``R``: Shareable                                                                   |
@@ -402,9 +411,6 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:metadata_etag />          | | An etag covering the file's metadata. Changes |                                                                                      |
 |                               | | when metadata (not content), is updated.      |                                                                                      |
-+-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:download-url-expiration />| | Expiration date/time of a direct download     |                                                                                      |
-|                               | | URL (if one has been generated).              |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 
 .. note::
