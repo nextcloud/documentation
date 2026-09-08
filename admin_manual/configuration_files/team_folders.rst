@@ -48,16 +48,24 @@ cannot.
 Configuration
 -------------
 
-Team space provisioning is controlled by two app settings of the ``circles`` app. Neither is exposed in the
-administration interface, so set them with :command:`occ`:
+Team space provisioning is controlled by app settings of the ``circles`` app. The team spaces, the default quota and
+quota overrides for groups and teams can be managed in the administration settings under **Teams**. Whether teams can
+get a space at all can only be set with :command:`occ`:
 
 .. code-block:: bash
 
     # allow teams to be created with a space, and existing teams to be upgraded (default: yes)
     occ config:app:set circles team_folder_auto_create --value=1 --type=boolean
 
-    # default quota in bytes for a new team space; 0 means unlimited (default: 0)
-    occ config:app:set circles team_folder_default_quota --value=0 --type=integer
+    # default quota in bytes for a new team space; 0 means unlimited (default: 104857600, which is 100 MB)
+    occ config:app:set circles team_folder_default_quota --value=104857600 --type=integer
+
+    # quota overrides in bytes per Nextcloud group ID; 0 means unlimited (default: none)
+    occ config:app:set circles team_folder_group_quotas --value='{"staff":1073741824}' --type=array
+
+A new space gets the highest matching quota override: the team's own override, the overrides of the groups the team
+owner belongs to, and those of the teams the owner is a member of. An unlimited quota (``0``) wins over all others. If
+no override matches, the default quota applies.
 
 With provisioning disabled, requests to create or upgrade a team space are refused, and existing spaces are left
 untouched.
@@ -93,6 +101,11 @@ Team folders behave differently from ordinary user storage in several areas that
 Frequently asked questions
 --------------------------
 
+**What is the difference between a team folder and a team space?**
+    A team folder is mounted for any number of groups and teams and is administered centrally. A team space is a team
+    folder in an **exclusive** relationship with one team: it belongs to that team, follows its membership, and has
+    its own quota. See the comparison above.
+
 **A user says their team cannot own any files. Is that expected?**
     Yes. A team is a membership list; anything shared with it stays owned by the account that shared it. For storage
     owned by the team, the team needs a space, which its owner can add if provisioning is enabled.
@@ -110,3 +123,12 @@ Frequently asked questions
 
 **Does a team space count against the members' quotas?**
     No. It has its own quota, set per space, where zero means unlimited.
+
+**Can I limit the size of a team space?**
+    Yes. A new space is created with the default quota (100 MB unless changed), or with a group or team quota
+    override if one applies to the team owner. The quota of an existing space can be changed afterwards. Zero means
+    unlimited.
+
+**Which apps can contribute resources to a team?**
+    Files, Talk and Deck out of the box, and any app implementing the team resource provider interface described in
+    the developer manual under *Digging deeper* → *Teams*.
