@@ -120,6 +120,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#context-agent">Context Agent</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#document-generation">Document generation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#live-transcription">Live transcription</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optical-character-recognition">Optical Character Recognition</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#windmill-workflows">Windmill workflows</a></li>
 </ul>
 </li>
@@ -145,6 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="app_summary_bot.html">App: Summary Bot (Talk chat summarize bot)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="app_text2speech_kokoro.html">App: Local Text-To-Speech (text2speech_kokoro)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="app_live_transcription.html">App: Live Transcription and Translation in Nextcloud Talk (live_transcription)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_ocr_paddle.html">App: Local Optical Character Recognition (ocr_paddle)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ai_as_a_service.html">AI as a Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="insight_and_debugging.html">Insight and debugging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eu_ai_act.html">Legal: Compliance with EU AI Act</a></li>
@@ -661,6 +663,70 @@ All of these features are completely optional. If you want to have them on your 
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 </tr>
+<tr class="row-odd"><td><p>Optical Character Recognition</p></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/ocr_paddle">Local OCR: PaddleOCR</a></p></td>
+<td><p>Yellow</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration &gt;= v5.0.0 (via OpenAI API)</a></p></td>
+<td><p>Red</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration &gt;= v5.0.0 (via LocalAI)</a></p></td>
+<td><p>Green</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration &gt;= v5.0.0 (via Ollama)</a></p></td>
+<td><p>Yellow</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes - e.g. Llama models by Meta</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration &gt;= v5.0.0 (via IONOS AI Model Hub)</a></p></td>
+<td><p>Orange</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration &gt;= v5.0.0 (via Plusserver)</a></p></td>
+<td><p>Orange</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration &gt;= v5.0.0 (via Groqcloud)</a></p></td>
+<td><p>Orange</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration &gt;= v5.0.0 (via MistralAI)</a></p></td>
+<td><p>Orange</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -914,14 +980,31 @@ This functionality is available in the assistant app and made possible by the Ne
 </ul>
 </section>
 </section>
+<section id="optical-character-recognition">
+<h3>Optical Character Recognition<a class="headerlink" href="#optical-character-recognition" title="Link to this heading"></a></h3>
+<p id="ocr-consumer-apps">As you can see in the table above we have multiple apps offering OCR capabilities. In downstream apps like the assistant app, users can use OCR functionality regardless of which app implements it behind the scenes.</p>
+<section id="id87">
+<h4>Frontend apps<a class="headerlink" href="#id87" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://apps.nextcloud.com/apps/assistant">Assistant</a></p></li>
+</ul>
+</section>
+<section id="id89">
+<h4>Backend apps<a class="headerlink" href="#id89" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration (via OpenAI API)</a> &gt;= v5.0.0 - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see <a class="reference internal" href="ai_as_a_service.html#ai-ai-as-a-service"><span class="std std-ref">AI as a Service</span></a>)</p></li>
+<li><p><a class="reference internal" href="app_ocr_paddle.html#ai-app-ocr-paddle"><span class="std std-ref">Local OCR: PaddleOCR (ExApp)</span></a> - (Customer support available upon request)</p></li>
+</ul>
+</section>
+</section>
 <section id="windmill-workflows">
-<span id="ai-overview-improve-ai-task-pickup-speed"></span><h3>Windmill workflows<a class="headerlink" href="#windmill-workflows" title="Link to this heading"></a></h3>
+<h3>Windmill workflows<a class="headerlink" href="#windmill-workflows" title="Link to this heading"></a></h3>
 <p>You can use the AI endpoints in your <a class="reference internal" href="../windmill_workflows/index.html#windmill-workflows"><span class="std std-ref">Windmill workflows</span></a>. Some example workflows showcasing the possibilities of combining Windmill workflows with Nextcloud AI are available on the  <a class="reference external" href="https://hub.windmill.dev/integrations/nextcloud/flows">Windmill Hub</a></p>
 </section>
 </section>
 <section id="improve-ai-task-pickup-speed">
 <h2>Improve AI task pickup speed<a class="headerlink" href="#improve-ai-task-pickup-speed" title="Link to this heading"></a></h2>
-<p>Most AI tasks will be run as part of the background job system in Nextcloud which only runs jobs every 5 minutes by default.
+<p id="ai-overview-improve-ai-task-pickup-speed">Most AI tasks will be run as part of the background job system in Nextcloud which only runs jobs every 5 minutes by default.
 To pick up scheduled jobs faster you can set up background job workers inside your Nextcloud main server/container that process AI tasks as soon as they are scheduled.
 If the PHP code or the Nextcloud settings values are changed while a worker is running, those changes won’t be effective inside the runner. For that reason, the worker needs to be restarted regularly. It is done with a timeout of N seconds which means any changes to the settings or the code will be picked up after N seconds (worst case scenario). This timeout does not, in any way, affect the processing or the timeout of the AI tasks.</p>
 <div class="versionchanged">
