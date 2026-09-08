@@ -76,8 +76,10 @@ Frequently asked questions
     Nothing is deleted. The folder and its contents remain, and an administrator can attach it to another team or hand
     it back to individual users. Deleting the space is a separate, destructive action.
 
-**Who can add a team space?**
-    The team owner, or a server administrator. Moderators and admins of the team cannot.
+**Who can add a team space, and can I set a size limit?**
+    The team owner, or a server administrator - moderators and team admins cannot. The space is created with the
+    default size limit your server sets, which may be unlimited; changing it afterwards is an administrator's job, so
+    ask if the space needs to be bigger.
 
 **Can a team have more than one space?**
     No. The relationship is exclusive: one team, at most one team space.
