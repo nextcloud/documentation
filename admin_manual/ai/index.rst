@@ -11,6 +11,7 @@ Artificial Intelligence
     app_llm2
     app_stt_whisper2
     app_text2image_stablediffusion2
+    app_text2image_flux
     app_recognize
     app_context_chat
     app_context_agent
