@@ -201,7 +201,15 @@ Teams
 
 Informal collaboration takes place within organizations: an event to organize for a few weeks, a short ideation session between members from different entities, workshops, a place to joke around and support team building, or simply in very organic organizations where formal structure is kept to a minimum.
 
-For all these reasons, Nextcloud supports Teams, a feature embedded in the Contacts app, where every user is able to create its own team, a user-defined aggregate of accounts. Teams can be used later on to share files and folders, added to Talk conversations, like a regular group.
+For all these reasons, Nextcloud supports Teams, where every user is able to create its own team, a user-defined
+aggregate of accounts. Teams can be used later on to share files and folders, added to Talk conversations, like a
+regular group.
+
+.. note::
+
+    Teams are managed in the **Teams** app, which has its own entry in the app navigation. The Contacts app manages
+    teams only on servers where the Teams app's own interface has been disabled, in which case the team views described
+    below appear in Contacts instead.
 
 .. figure:: ./images/circle.png
     :alt: Teams in the Contacts app left menu
