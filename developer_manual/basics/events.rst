@@ -384,13 +384,6 @@ This event is triggered right after the LDAP group backend is registered.
 
 This event is triggered right after the LDAP user backend is registered.
 
-``\OCA\Viewer\Event\LoadViewer``
-********************************
-
-.. versionadded:: 17
-
-This event is triggered whenever the viewer is loaded and extensions should be loaded.
-
 .. include:: _available_events_ocp.rst
 
 Hooks
