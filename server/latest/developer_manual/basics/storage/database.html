@@ -91,8 +91,7 @@
 <li class="toctree-l3"><a class="reference internal" href="migrations.html">Migrations</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Database access</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#transactions">Transactions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mappers">Mappers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#entities">Entities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#repositories-and-entities">Repositories and entities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#table-management-tips">Table management tips</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#querying-the-database-provider">Querying the database provider</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#supporting-more-databases">Supporting more databases</a></li>
@@ -148,8 +147,8 @@
 <span id="database"></span><h1>Database access<a class="headerlink" href="#database-access" title="Link to this heading"></a></h1>
 <p>The basic way to run a database query is to use the database connection provided by <strong>OCP\IDBConnection</strong>.</p>
 <p>Inside your database layer class you can now start running queries like:</p>
-<div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">lib/Db/AuthorDAO.php</span><a class="headerlink" href="#id1" title="Link to this code"></a></div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">lib/Db/AuthorDAO.php</span><a class="headerlink" href="#id2" title="Link to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
@@ -251,67 +250,240 @@
 </pre></div>
 </div>
 </section>
-<section id="mappers">
-<h2>Mappers<a class="headerlink" href="#mappers" title="Link to this heading"></a></h2>
+<section id="repositories-and-entities">
+<h2>Repositories and entities<a class="headerlink" href="#repositories-and-entities" title="Link to this heading"></a></h2>
 <p>The aforementioned example is the most basic way to write a simple database query but the more queries amass, the more code has to be written and the harder it will become to maintain it.</p>
-<p>To generalize and simplify the problem, split code into resources and create an <strong>Entity</strong> and a <strong>Mapper</strong> class for it. The mapper class provides a way to run SQL queries and maps the result onto the related entities.</p>
-<p>To create a mapper, inherit from the mapper base class and call the parent constructor with the following parameters:</p>
-<ul class="simple">
-<li><p>Database connection</p></li>
-<li><p>Table name</p></li>
-<li><p><strong>Optional</strong>: Entity class name, defaults to \OCA\MyApp\Db\Author in the example below</p></li>
-</ul>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">lib/Db/AuthorMapper.php</span><a class="headerlink" href="#id2" title="Link to this code"></a></div>
+<p>To generalize and simplify the problem, split code into resources and create an <strong>Entity</strong> and a <strong>Repository</strong>
+class for it: the entity is a plain PHP class carrying one table row’s data, and the repository knows how to
+read and write entities of that class.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 35: </span>The attribute-based <code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\ORM</span></code> namespace described in this section. Apps built against
+older Nextcloud versions used <code class="docutils literal notranslate"><span class="pre">QBMapper</span></code> and <code class="docutils literal notranslate"><span class="pre">Entity</span></code> instead; see the
+<a class="reference external" href="https://docs.nextcloud.com/server/34/developer_manual/basics/storage/database.html">Nextcloud 34 developer manual</a>
+for that approach.</p>
+</div>
+<section id="defining-an-entity">
+<h3>Defining an entity<a class="headerlink" href="#defining-an-entity" title="Link to this heading"></a></h3>
+<p>An entity is a plain class with one public, typed property per column. Mark the class with the
+<strong>#[Entity]</strong> attribute, giving it the table name, and mark every mapped property with a <strong>#[Column]</strong>
+attribute describing its database column. Exactly one property must carry the <strong>#[Id]</strong> attribute to mark
+the table’s primary key.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">lib/Db/Author.php</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
 
+<span class="k">use</span> <span class="nx">OCP\AppFramework\ORM\Attribute\Column</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\ORM\Attribute\Entity</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\ORM\Attribute\Id</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\DB\Schema\ColumnType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Snowflake\ISnowflakeGenerator</span><span class="p">;</span>
+
+<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp_authors&#39;</span><span class="p">)]</span>
+<span class="k">final</span> <span class="k">class</span> <span class="nc">Author</span> <span class="p">{</span>
+    <span class="p">#[</span><span class="nd">Id</span><span class="p">(</span><span class="nx">generatorClass</span><span class="o">:</span> <span class="nx">ISnowflakeGenerator</span><span class="o">::</span><span class="na">class</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="o">?</span><span class="nx">string</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">String</span><span class="p">,</span> <span class="nx">length</span><span class="o">:</span> <span class="mi">64</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;stars&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Integer</span><span class="p">,</span> <span class="k">default</span><span class="o">:</span> <span class="mi">0</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="nx">int</span> <span class="nv">$stars</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Unlike the legacy <code class="docutils literal notranslate"><span class="pre">Entity</span></code> base class, there is no base class to extend and no getters or setters are
+generated for you: read and write the properties directly, for example <code class="docutils literal notranslate"><span class="pre">$author-&gt;name</span></code> or
+<code class="docutils literal notranslate"><span class="pre">$author-&gt;name</span> <span class="pre">=</span> <span class="pre">'Jane</span> <span class="pre">Doe'</span></code>. The property name and the column name are independent and set explicitly
+in the <code class="docutils literal notranslate"><span class="pre">#[Column]</span></code> attribute, so there is no implicit camelCase-to-underscore conversion to reason about,
+and no need to override a mapping method to deviate from it.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">generatorClass</span></code> passed to <code class="docutils literal notranslate"><span class="pre">#[Id]</span></code> generates the id application-side, before the row is inserted.
+<code class="docutils literal notranslate"><span class="pre">OCP\Snowflake\ISnowflakeGenerator</span></code> produces such an id — a
+<a class="reference external" href="https://en.wikipedia.org/wiki/Snowflake_ID">Snowflake ID</a>, unique across your whole cluster and sortable
+by creation time — which is useful when you need the id before the row exists (for example to pass it to
+another service as part of the same request), or to avoid the write contention a single autoincrement
+column creates across a cluster. Snowflake ids are <code class="docutils literal notranslate"><span class="pre">non-empty-string</span></code> values even though they are
+typically stored in a <code class="docutils literal notranslate"><span class="pre">ColumnType::Bigint</span></code> column, as in the example above.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a legacy table that already has an auto-incremented primary key, a bare <code class="docutils literal notranslate"><span class="pre">#[Id]</span></code> without a
+<code class="docutils literal notranslate"><span class="pre">generatorClass</span></code> also works: it relies on the database’s autoincrement column instead, and
+<code class="docutils literal notranslate"><span class="pre">insert()</span></code> only fills in the id property after the row has been written.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">#[</span><span class="nd">Id</span><span class="p">]</span>
+<span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Integer</span><span class="p">)]</span>
+<span class="k">public</span> <span class="o">?</span><span class="nx">int</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>A property without a <code class="docutils literal notranslate"><span class="pre">#[Column]</span></code> attribute is never read from or written to the database. This is the
+replacement for what used to be called <em>transient attributes</em>: just leave the property unannotated.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">#[Entity]</span></code> and <code class="docutils literal notranslate"><span class="pre">#[Column]</span></code> attributes only describe how PHP objects map onto an
+already-existing table. They do not create the table for you. You still need a schema migration (see
+<a class="reference internal" href="migrations.html"><span class="doc">Migrations</span></a>) whose columns, types, length, and primary key match your entity’s attributes.</p>
+</div>
+</section>
+<section id="column-types">
+<h3>Column types<a class="headerlink" href="#column-types" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">type</span></code> of a <code class="docutils literal notranslate"><span class="pre">#[Column]</span></code> is one of the cases of <code class="docutils literal notranslate"><span class="pre">OCP\DB\Schema\ColumnType</span></code>, and controls how the
+value is converted for storage (e.g. PHP casts <code class="docutils literal notranslate"><span class="pre">false</span></code> to an empty string, which fails on PostgreSQL) and
+how it is cast back when read from the database:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ColumnType::Integer</span></code>, <code class="docutils literal notranslate"><span class="pre">ColumnType::Smallint</span></code>, <code class="docutils literal notranslate"><span class="pre">ColumnType::Bigint</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ColumnType::Float</span></code>, <code class="docutils literal notranslate"><span class="pre">ColumnType::Decimal</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ColumnType::Boolean</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ColumnType::String</span></code> - for short text; provide a <code class="docutils literal notranslate"><span class="pre">length</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ColumnType::Text</span></code> - for long text without a length limit</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ColumnType::Binary</span></code>, <code class="docutils literal notranslate"><span class="pre">ColumnType::Blob</span></code> - for binary data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ColumnType::Json</span></code> - decoded automatically when read; avoid using it in <code class="docutils literal notranslate"><span class="pre">findBy()</span></code>/<code class="docutils literal notranslate"><span class="pre">findOneBy()</span></code>
+criteria, as <code class="docutils literal notranslate"><span class="pre">JSON</span></code> columns cannot properly be filtered on in Oracle and MySQL</p></li>
+<li><p>For dates and/or times, provided as <code class="docutils literal notranslate"><span class="pre">\DateTimeImmutable</span></code> objects:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ColumnType::DateImmutable</span></code> - only the date is stored (without timezone)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ColumnType::TimeImmutable</span></code> - only the time is stored (without timezone)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ColumnType::DatetimeImmutable</span></code> - date and time are stored, but without timezone</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ColumnType::DatetimeTzImmutable</span></code> - date and time are stored with timezone information</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ColumnType::Date</span></code>, <code class="docutils literal notranslate"><span class="pre">ColumnType::Time</span></code>, <code class="docutils literal notranslate"><span class="pre">ColumnType::Datetime</span></code>, <code class="docutils literal notranslate"><span class="pre">ColumnType::DatetimeTz</span></code> -
+the same, but provided as <code class="docutils literal notranslate"><span class="pre">\DateTime</span></code> objects. Prefer the immutable variants above.</p></li>
+</ul>
+</section>
+<section id="defining-a-repository">
+<h3>Defining a repository<a class="headerlink" href="#defining-a-repository" title="Link to this heading"></a></h3>
+<p>To read and write <code class="docutils literal notranslate"><span class="pre">Author</span></code> entities, extend the <strong>Repository</strong> base class and set its <code class="docutils literal notranslate"><span class="pre">entityClass</span></code>
+constant to the entity it manages:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">lib/Db/AuthorMapper.php</span><a class="headerlink" href="#id4" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\ORM\Repository</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @template-extends Repository&lt;Author&gt;</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">AuthorMapper</span> <span class="k">extends</span> <span class="nx">Repository</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">string</span> <span class="nx">entityClass</span> <span class="o">=</span> <span class="nx">Author</span><span class="o">::</span><span class="na">class</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>There is no constructor to write: dependency injection builds the repository for you, so <code class="docutils literal notranslate"><span class="pre">AuthorMapper</span></code>
+can be injected into a controller or service just like any other class.</p>
+</section>
+<section id="inserting-updating-and-deleting-entities">
+<h3>Inserting, updating, and deleting entities<a class="headerlink" href="#inserting-updating-and-deleting-entities" title="Link to this heading"></a></h3>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="nv">$author</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Author</span><span class="p">();</span>
+<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">&#39;Jane Doe&#39;</span><span class="p">;</span>
+
+<span class="nv">$authorMapper</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span><span class="nv">$author</span><span class="p">);</span>
+<span class="c1">// $author-&gt;id is now populated</span>
+
+<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">&#39;Jane D. Doe&#39;</span><span class="p">;</span>
+<span class="nv">$authorMapper</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="nv">$author</span><span class="p">);</span>
+
+<span class="nv">$authorMapper</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$author</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">insertOrUpdate()</span></code> tries to insert the entity, and falls back to updating the existing row instead when
+the database reports a unique constraint violation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$authorMapper-&gt;insertOrUpdate($author);
+</pre></div>
+</div>
+</section>
+<section id="finding-entities">
+<h3>Finding entities<a class="headerlink" href="#finding-entities" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Repository</span></code> provides ready-made finder methods keyed by property name, so you rarely need to write a
+query by hand:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="c1">// A single entity; throws DoesNotExistException if there is no match, or</span>
+<span class="c1">// MultipleObjectsReturnedException if there is more than one</span>
+<span class="nv">$author</span> <span class="o">=</span> <span class="nv">$authorMapper</span><span class="o">-&gt;</span><span class="na">findOneBy</span><span class="p">([</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">]);</span>
+
+<span class="c1">// Every entity matching the criteria, as a \Generator</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$authorMapper</span><span class="o">-&gt;</span><span class="na">findBy</span><span class="p">([</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">])</span> <span class="k">as</span> <span class="nv">$author</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="c1">// Sorting, and simple offset-based pagination</span>
+<span class="nv">$authors</span> <span class="o">=</span> <span class="nb">iterator_to_array</span><span class="p">(</span><span class="nv">$authorMapper</span><span class="o">-&gt;</span><span class="na">findBy</span><span class="p">(</span>
+    <span class="nx">criteria</span><span class="o">:</span> <span class="p">[],</span>
+    <span class="nx">orderBy</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nx">\SortDirection</span><span class="o">::</span><span class="na">Ascending</span><span class="p">],</span>
+    <span class="nx">limit</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="nx">offset</span><span class="o">:</span> <span class="mi">40</span><span class="p">,</span>
+<span class="p">));</span>
+
+<span class="c1">// Every entity in the table</span>
+<span class="nv">$authors</span> <span class="o">=</span> <span class="nb">iterator_to_array</span><span class="p">(</span><span class="nv">$authorMapper</span><span class="o">-&gt;</span><span class="na">yieldAll</span><span class="p">());</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">findBy()</span></code>, <code class="docutils literal notranslate"><span class="pre">yieldAll()</span></code>, and <code class="docutils literal notranslate"><span class="pre">findByAfterId()</span></code> all return a <code class="docutils literal notranslate"><span class="pre">\Generator</span></code>. Iterate it
+with <code class="docutils literal notranslate"><span class="pre">foreach</span></code> or collect it with <code class="docutils literal notranslate"><span class="pre">iterator_to_array()</span></code>; the underlying database cursor is closed
+automatically once the generator is exhausted.</p>
+</div>
+<p>For paginating a large table, prefer keyset (seek) pagination over <code class="docutils literal notranslate"><span class="pre">offset</span></code>: an <code class="docutils literal notranslate"><span class="pre">offset</span></code> forces the
+database to scan and discard every preceding row on each call, while <code class="docutils literal notranslate"><span class="pre">findByAfterId()</span></code> seeks straight to
+the right spot through the primary key’s index, so each page costs the same regardless of how deep it is.
+Pass <code class="docutils literal notranslate"><span class="pre">null</span></code> to fetch the first page, then the id of the last entity returned to fetch the next one, and
+stop once fewer than <code class="docutils literal notranslate"><span class="pre">$limit</span></code> entities come back:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="nv">$lastId</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="nv">$page</span> <span class="o">=</span> <span class="nb">iterator_to_array</span><span class="p">(</span><span class="nv">$authorMapper</span><span class="o">-&gt;</span><span class="na">findByAfterId</span><span class="p">([],</span> <span class="nv">$lastId</span><span class="p">,</span> <span class="mi">20</span><span class="p">));</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$page</span> <span class="k">as</span> <span class="nv">$author</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+        <span class="nv">$lastId</span> <span class="o">=</span> <span class="nv">$author</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$page</span><span class="p">)</span> <span class="o">===</span> <span class="mi">20</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">findByAfterId()</span></code> does not support entities with a composite primary key.</p>
+</div>
+<p>To delete every entity matching a set of criteria in one query, without loading them first, use
+<code class="docutils literal notranslate"><span class="pre">deleteBy()</span></code>, which returns the number of rows deleted:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$deletedCount = $authorMapper-&gt;deleteBy([&#39;stars&#39; =&gt; 0]);
+</pre></div>
+</div>
+</section>
+<section id="custom-queries-in-a-repository">
+<h3>Custom queries in a repository<a class="headerlink" href="#custom-queries-in-a-repository" title="Link to this heading"></a></h3>
+<p>The built-in finders cover simple equality and <code class="docutils literal notranslate"><span class="pre">IN</span></code> criteria. For anything else — aggregates, joins your
+entity doesn’t declare, and so on — add a method to your repository and fall back to the query builder,
+using the protected <code class="docutils literal notranslate"><span class="pre">$this-&gt;connection</span></code> and <code class="docutils literal notranslate"><span class="pre">$this-&gt;getTableName()</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">lib/Db/AuthorMapper.php</span><a class="headerlink" href="#id5" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\ORM\Repository</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCP\DB\QueryBuilder\IQueryBuilder</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">OCP\IDBConnection</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\QBMapper</span><span class="p">;</span>
 
-<span class="k">class</span> <span class="nc">AuthorMapper</span> <span class="k">extends</span> <span class="nx">QBMapper</span> <span class="p">{</span>
+<span class="sd">/**</span>
+<span class="sd"> * @template-extends Repository&lt;Author&gt;</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">AuthorMapper</span> <span class="k">extends</span> <span class="nx">Repository</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">string</span> <span class="nx">entityClass</span> <span class="o">=</span> <span class="nx">Author</span><span class="o">::</span><span class="na">class</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$db</span><span class="p">,</span> <span class="s1">&#39;myapp_authors&#39;</span><span class="p">);</span>
-    <span class="p">}</span>
-
-
-    <span class="sd">/**</span>
-<span class="sd">     * @throws \OCP\AppFramework\Db\DoesNotExistException if not found</span>
-<span class="sd">     * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException if more than one result</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">getQueryBuilder</span><span class="p">();</span>
-
-        <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
-           <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s1">&#39;myapp_authors&#39;</span><span class="p">)</span>
-           <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span>
-               <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">expr</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">eq</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">createNamedParameter</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nx">IQueryBuilder</span><span class="o">::</span><span class="na">PARAM_INT</span><span class="p">))</span>
-           <span class="p">);</span>
-
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">findEntity</span><span class="p">(</span><span class="nv">$qb</span><span class="p">);</span>
-    <span class="p">}</span>
-
-
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAll</span><span class="p">(</span><span class="nv">$limit</span><span class="o">=</span><span class="k">null</span><span class="p">,</span> <span class="nv">$offset</span><span class="o">=</span><span class="k">null</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">getQueryBuilder</span><span class="p">();</span>
-
-        <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
-           <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s1">&#39;myapp_authors&#39;</span><span class="p">)</span>
-           <span class="o">-&gt;</span><span class="na">setMaxResults</span><span class="p">(</span><span class="nv">$limit</span><span class="p">)</span>
-           <span class="o">-&gt;</span><span class="na">setFirstResult</span><span class="p">(</span><span class="nv">$offset</span><span class="p">);</span>
-
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">findEntities</span><span class="p">(</span><span class="nv">$qb</span><span class="p">);</span>
-    <span class="p">}</span>
-
-
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">authorNameCount</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">getQueryBuilder</span><span class="p">();</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">authorNameCount</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">int</span> <span class="p">{</span>
+        <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">connection</span><span class="o">-&gt;</span><span class="na">getQueryBuilder</span><span class="p">();</span>
 
         <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">func</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">))</span>
-           <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s1">&#39;myapp_authors&#39;</span><span class="p">)</span>
+           <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getTableName</span><span class="p">())</span>
            <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span>
                <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">expr</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">eq</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">createNamedParameter</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nx">IQueryBuilder</span><span class="o">::</span><span class="na">PARAM_STR</span><span class="p">))</span>
            <span class="p">);</span>
@@ -320,189 +492,105 @@
         <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetchAssociative</span><span class="p">();</span>
         <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">closeCursor</span><span class="p">();</span>
 
-        <span class="k">return</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">];</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">];</span>
     <span class="p">}</span>
-
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
+</section>
+<section id="relations-between-entities">
+<h3>Relations between entities<a class="headerlink" href="#relations-between-entities" title="Link to this heading"></a></h3>
+<p>Two entities can be linked with the <strong>#[ManyToOne]</strong> or <strong>#[OneToOne]</strong> attribute, paired with
+<strong>#[JoinColumn]</strong> on the property holding the foreign key. Related entities are always resolved eagerly, in
+the same query, via a <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code> — there is no lazy-loading, and a missing relation resolves to <code class="docutils literal notranslate"><span class="pre">null</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp_merchants&#39;</span><span class="p">)]</span>
+<span class="k">final</span> <span class="k">class</span> <span class="nc">Merchant</span> <span class="p">{</span>
+    <span class="p">#[</span><span class="nd">Id</span><span class="p">(</span><span class="nx">generatorClass</span><span class="o">:</span> <span class="nx">ISnowflakeGenerator</span><span class="o">::</span><span class="na">class</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="o">?</span><span class="nx">string</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">String</span><span class="p">,</span> <span class="nx">length</span><span class="o">:</span> <span class="mi">64</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp_orders&#39;</span><span class="p">)]</span>
+<span class="k">final</span> <span class="k">class</span> <span class="nc">Order</span> <span class="p">{</span>
+    <span class="p">#[</span><span class="nd">Id</span><span class="p">(</span><span class="nx">generatorClass</span><span class="o">:</span> <span class="nx">ISnowflakeGenerator</span><span class="o">::</span><span class="na">class</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="o">?</span><span class="nx">string</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="p">#[</span><span class="nd">ManyToOne</span><span class="p">(</span><span class="nx">targetEntity</span><span class="o">:</span> <span class="nx">Merchant</span><span class="o">::</span><span class="na">class</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">JoinColumn</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;merchant_id&#39;</span><span class="p">,</span> <span class="nx">referencedColumnName</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">nullable</span><span class="o">:</span> <span class="k">true</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="o">?</span><span class="nx">Merchant</span> <span class="nv">$merchant</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Reading an <code class="docutils literal notranslate"><span class="pre">Order</span></code> back through its repository also resolves <code class="docutils literal notranslate"><span class="pre">$order-&gt;merchant</span></code> to the matching
+<code class="docutils literal notranslate"><span class="pre">Merchant</span></code> entity, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if none is set. Unlike <code class="docutils literal notranslate"><span class="pre">OneToOne</span></code>, several <code class="docutils literal notranslate"><span class="pre">Order</span></code> rows may reference
+the same <code class="docutils literal notranslate"><span class="pre">Merchant</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">OneToOne</span></code> works the same way, but is additionally enforced with a unique constraint on the join column.
+A bidirectional <code class="docutils literal notranslate"><span class="pre">OneToOne</span></code> relation is declared from both sides, with <code class="docutils literal notranslate"><span class="pre">mappedBy</span></code>/<code class="docutils literal notranslate"><span class="pre">invertedBy</span></code> naming
+the property on the other side, and the <code class="docutils literal notranslate"><span class="pre">#[JoinColumn]</span></code> only repeated on the owning (<code class="docutils literal notranslate"><span class="pre">invertedBy</span></code>) side:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp_customers&#39;</span><span class="p">)]</span>
+<span class="k">final</span> <span class="k">class</span> <span class="nc">Customer</span> <span class="p">{</span>
+    <span class="p">#[</span><span class="nd">Id</span><span class="p">(</span><span class="nx">generatorClass</span><span class="o">:</span> <span class="nx">ISnowflakeGenerator</span><span class="o">::</span><span class="na">class</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="o">?</span><span class="nx">string</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="p">#[</span><span class="nd">OneToOne</span><span class="p">(</span><span class="nx">targetEntity</span><span class="o">:</span> <span class="nx">Cart</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">mappedBy</span><span class="o">:</span> <span class="s1">&#39;customer&#39;</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">JoinColumn</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;cart_id&#39;</span><span class="p">,</span> <span class="nx">referencedColumnName</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="o">?</span><span class="nx">Cart</span> <span class="nv">$cart</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp_carts&#39;</span><span class="p">)]</span>
+<span class="k">final</span> <span class="k">class</span> <span class="nc">Cart</span> <span class="p">{</span>
+    <span class="p">#[</span><span class="nd">Id</span><span class="p">(</span><span class="nx">generatorClass</span><span class="o">:</span> <span class="nx">ISnowflakeGenerator</span><span class="o">::</span><span class="na">class</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="o">?</span><span class="nx">string</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="p">#[</span><span class="nd">OneToOne</span><span class="p">(</span><span class="nx">targetEntity</span><span class="o">:</span> <span class="nx">Customer</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">invertedBy</span><span class="o">:</span> <span class="s1">&#39;cart&#39;</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">JoinColumn</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;customer_id&#39;</span><span class="p">,</span> <span class="nx">referencedColumnName</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="o">?</span><span class="nx">Customer</span> <span class="nv">$customer</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Set <code class="docutils literal notranslate"><span class="pre">onDelete:</span> <span class="pre">'CASCADE'</span></code> on a <code class="docutils literal notranslate"><span class="pre">#[JoinColumn]</span></code> to have the database remove dependent rows automatically;
+otherwise deleting an entity that is still referenced by another entity’s join column throws a
+<code class="docutils literal notranslate"><span class="pre">\LogicException</span></code>.</p>
+</section>
+<section id="composite-primary-keys">
+<h3>Composite primary keys<a class="headerlink" href="#composite-primary-keys" title="Link to this heading"></a></h3>
+<p>Applying <code class="docutils literal notranslate"><span class="pre">#[Id]</span></code> to more than one property declares a composite primary key:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp_shelf_items&#39;</span><span class="p">)]</span>
+<span class="k">final</span> <span class="k">class</span> <span class="nc">ShelfItem</span> <span class="p">{</span>
+    <span class="p">#[</span><span class="nd">Id</span><span class="p">]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;shelf_id&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="o">?</span><span class="nx">int</span> <span class="nv">$shelfId</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="p">#[</span><span class="nd">Id</span><span class="p">]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="o">?</span><span class="nx">int</span> <span class="nv">$authorId</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A composite key cannot rely on a single autoincrement column, so every id property must already have a
+value set by the caller before <code class="docutils literal notranslate"><span class="pre">insert()</span></code> is called.
+<code class="docutils literal notranslate"><span class="pre">findByAfterId()</span></code> is not supported for entities with a composite primary key; use <code class="docutils literal notranslate"><span class="pre">findBy()</span></code> with an
+<code class="docutils literal notranslate"><span class="pre">offset</span></code> instead.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The cursor is closed automatically for all <strong>INSERT</strong>, <strong>DELETE</strong>, <strong>UPDATE</strong> queries and when calling the methods <strong>findOneQuery</strong>, <strong>findEntities</strong>, <strong>findEntity</strong>, <strong>delete</strong>, <strong>insert</strong> and <strong>update</strong>. For custom calls using execute you should always close the cursor after you are done with the fetching to prevent database lock problems on SQLite</p>
-</div>
-<p>Every mapper also implements default methods for deleting and updating an entity based on its id:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$authorMapper-&gt;delete($entity);
-</pre></div>
-</div>
-<p>or:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$authorMapper-&gt;update($entity);
-</pre></div>
-</div>
-</section>
-<section id="entities">
-<h2>Entities<a class="headerlink" href="#entities" title="Link to this heading"></a></h2>
-<p>Entities are data objects that carry all the table’s information for one row.
-Every Entity has an <strong>id</strong> field by default that is set to the integer type.
-Table rows are mapped from lower case and underscore separated names to <em>lowerCamelCase</em> attributes:</p>
-<ul class="simple">
-<li><p><strong>Table column name</strong>: phone_number</p></li>
-<li><p><strong>Property name</strong>: phoneNumber</p></li>
-</ul>
-<div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">lib/Db/Author.php</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\Entity</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">OCP\DB\Types</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">Author</span> <span class="k">extends</span> <span class="nx">Entity</span> <span class="p">{</span>
-
-    <span class="k">protected</span> <span class="nv">$stars</span><span class="p">;</span>
-    <span class="k">protected</span> <span class="nv">$name</span><span class="p">;</span>
-    <span class="k">protected</span> <span class="nv">$phoneNumber</span><span class="p">;</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// add types in constructor</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addType</span><span class="p">(</span><span class="s1">&#39;stars&#39;</span><span class="p">,</span> <span class="nx">Types</span><span class="o">::</span><span class="na">INTEGER</span><span class="p">);</span>
-        <span class="c1">// other fields are implicitly `Types::STRING`</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<section id="types">
-<h3>Types<a class="headerlink" href="#types" title="Link to this heading"></a></h3>
-<p>The following properties should be annotated by types, to not only assure that the types are converted correctly for storing them in the database
-(e.g. PHP casts false to the empty string which fails on PostgreSQL) but also for casting them when they are retrieved from the database.</p>
-<p>The following types (as part of <code class="docutils literal notranslate"><span class="pre">OCP\DB\Types</span></code>) can be added for a field:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Types::INTEGER</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Types::FLOAT</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Types::BOOLEAN</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Types::STRING</span></code> - For text and string columns</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Types::BLOB</span></code> - For binary data</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Types::JSON</span></code> - JSON data is automatically decoded on reading</p></li>
-<li><p>For time and/or dates, provided as <code class="docutils literal notranslate"><span class="pre">\DateTimeImmutable</span></code> objects, the following types can be used:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">Types::DATE_IMMUTABLE</span></code> - only the date is stored (without timezone)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Types::TIME_IMMUTABLE</span></code> - only the time is stored (without timezone)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Types::DATETIME_IMMUTABLE</span></code> - date and time are stored, but without timezone</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Types::DATETIME_TZ_IMMUTABLE</span></code> - date and time are stored with timezone information</p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Types::DATE</span></code>, <code class="docutils literal notranslate"><span class="pre">Types::TIME</span></code>, <code class="docutils literal notranslate"><span class="pre">Types::DATETIME</span></code>, <code class="docutils literal notranslate"><span class="pre">Types::DATETIME_TZ</span></code> - similar as the immutable variants, but these will be provided as <code class="docutils literal notranslate"><span class="pre">\DateTime</span></code> objects.
-It is recommended to use the immutable variants as the internal state tracking of the <code class="docutils literal notranslate"><span class="pre">Entity</span></code> class only work with re-assignments,
-so any changes on this mutable types will not be tracked and the update method will not write back the changes to the database.</p></li>
-</ul>
-</section>
-<section id="accessing-attributes">
-<span id="database-entity-attribute-access"></span><h3>Accessing attributes<a class="headerlink" href="#accessing-attributes" title="Link to this heading"></a></h3>
-<p>Since all attributes should be protected, getters and setters are automatically generated for you:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">:</span><span class="nx">caption</span><span class="o">:</span> <span class="nx">lib</span><span class="o">/</span><span class="nx">Db</span><span class="o">/</span><span class="nx">Author</span><span class="o">.</span><span class="nx">php</span>
-
-<span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\Entity</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">Author</span> <span class="k">extends</span> <span class="nx">Entity</span> <span class="p">{</span>
-    <span class="k">protected</span> <span class="nv">$stars</span><span class="p">;</span>
-    <span class="k">protected</span> <span class="nv">$name</span><span class="p">;</span>
-    <span class="k">protected</span> <span class="nv">$phoneNumber</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nv">$author</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Author</span><span class="p">();</span>
-<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">setId</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">getPhoneNumber</span><span class="p">()</span>  <span class="c1">// null</span>
-</pre></div>
-</div>
-</section>
-<section id="custom-attribute-to-database-column-mapping">
-<h3>Custom attribute to database column mapping<a class="headerlink" href="#custom-attribute-to-database-column-mapping" title="Link to this heading"></a></h3>
-<p>By default each attribute will be mapped to a database column by a certain convention, e.g. <strong>phoneNumber</strong>
-will be mapped to the column <strong>phone_number</strong> and vice versa. Sometimes it is needed though to map attributes to
-different columns because of backwards compatibility. To define a custom
-mapping, simply override the <strong>columnToProperty</strong> and <strong>propertyToColumn</strong> methods of the entity in question:</p>
-<div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text">lib/Db/Author.php</span><a class="headerlink" href="#id4" title="Link to this code"></a></div>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\Entity</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">Author</span> <span class="k">extends</span> <span class="nx">Entity</span> <span class="p">{</span>
-    <span class="k">protected</span> <span class="nv">$stars</span><span class="p">;</span>
-    <span class="k">protected</span> <span class="nv">$name</span><span class="p">;</span>
-    <span class="k">protected</span> <span class="nv">$phoneNumber</span><span class="p">;</span>
-
-    <span class="c1">// map attribute phoneNumber to the database column phonenumber</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">columnToProperty</span><span class="p">(</span><span class="nv">$column</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$column</span> <span class="o">===</span> <span class="s1">&#39;phonenumber&#39;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="s1">&#39;phoneNumber&#39;</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">columnToProperty</span><span class="p">(</span><span class="nv">$column</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">propertyToColumn</span><span class="p">(</span><span class="nv">$property</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$property</span> <span class="o">===</span> <span class="s1">&#39;phoneNumber&#39;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="s1">&#39;phonenumber&#39;</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">propertyToColumn</span><span class="p">(</span><span class="nv">$property</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</section>
-<section id="transient-attributes">
-<span id="database-entity-slugs"></span><h3>Transient attributes<a class="headerlink" href="#transient-attributes" title="Link to this heading"></a></h3>
-<p>You can add attributes to an entity class that do not map to a database column. These are called <em>transient</em> because they are neither loaded from database rows nor are their values persisted.</p>
-<div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">lib/Db/User.php</span><a class="headerlink" href="#id5" title="Link to this code"></a></div>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\Entity</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Entity</span> <span class="p">{</span>
-    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$uid</span><span class="p">;</span>       <span class="c1">// Exists in the database</span>
-    <span class="k">protected</span> <span class="nv">$lastLogin</span><span class="p">;</span> <span class="c1">// Does not exist in the database</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getLastLogin</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">int</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">lastLogin</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">setLastLogin</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$lastLogin</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">lastLogin</span> <span class="o">=</span> <span class="nv">$lastLogin</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<p>It is important to define getters and setters for any transient attributes.
-Do not use the <a class="reference internal" href="#database-entity-attribute-access"><span class="std std-ref">magic getters and setters</span></a> of attributes that map to database columns.</p>
-</section>
-<section id="slugs">
-<h3>Slugs<a class="headerlink" href="#slugs" title="Link to this heading"></a></h3>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version 24.</span></p>
-</div>
-<p>Slugs are used to identify resources in the URL by a string rather than integer id.
-Since the URL allows only certain values, the entity base class provides a slugify method for it:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nv">$author</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Author</span><span class="p">();</span>
-<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s1">&#39;Some*thing&#39;</span><span class="p">);</span>
-<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">slugify</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">);</span>  <span class="c1">// Some-thing</span>
-</pre></div>
+<p>Nextcloud 34 and earlier documented a different, hand-written approach based on <code class="docutils literal notranslate"><span class="pre">QBMapper</span></code>
+and the <code class="docutils literal notranslate"><span class="pre">Entity</span></code> base class. Both classes are still shipped for backwards compatibility, but are no
+longer the recommended way to write new code; see the
+<a class="reference external" href="https://docs.nextcloud.com/server/34/developer_manual/basics/storage/database.html">Nextcloud 34 developer manual</a>
+for their documentation.</p>
 </div>
 </section>
 </section>
@@ -511,11 +599,11 @@ Since the URL allows only certain values, the entity base class provides a slugi
 <p>It makes sense to apply some general tips from the beginning, so you don’t have to migrate your data and schema later on.</p>
 <ol class="arabic">
 <li><p>Don’t use table name longer than 23 characters. As Oracle is limited to 30 chars and we need 3 more for <code class="docutils literal notranslate"><span class="pre">oc_</span></code> at the beginning and 5 for the primary key suffix <code class="docutils literal notranslate"><span class="pre">_pkey</span></code>.</p></li>
-<li><p>Add an auto-incremented <code class="docutils literal notranslate"><span class="pre">id</span></code> column. This will ease the use of <code class="docutils literal notranslate"><span class="pre">QBMapper</span></code> + <code class="docutils literal notranslate"><span class="pre">Entity</span></code> approach:</p>
+<li><p>Add an auto-incremented <code class="docutils literal notranslate"><span class="pre">id</span></code> column. This will ease the use of the <code class="docutils literal notranslate"><span class="pre">Repository</span></code> + attributes approach:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference external" href="https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/Db/QBMapper.php">https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/Db/QBMapper.php</a></p></li>
-<li><p><a class="reference external" href="https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/Db/Entity.php">https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/Db/Entity.php</a></p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/ORM/Repository.php">https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/ORM/Repository.php</a></p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/ORM/Attribute/Id.php">https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/ORM/Attribute/Id.php</a></p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -595,7 +683,7 @@ You can specify your supported databases in the <code class="docutils literal no
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 09, 2026.
       </span></p>
   </div>
 
