@@ -152,7 +152,7 @@
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/SQL_injection">SQL Injection</a> occurs when SQL query strings are concatenated with variables.</p>
 <p>To prevent this, always use prepared queries:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nv">$sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM `users` WHERE `id` = ?&#39;</span><span class="p">;</span>
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s1">'SELECT * FROM `users` WHERE `id` = ?'</span><span class="p">;</span>
 <span class="nv">$query</span> <span class="o">=</span> <span class="nx">\OCP\DB</span><span class="o">::</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
 <span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$params</span><span class="p">);</span>
@@ -161,7 +161,7 @@
 <p>If the App Framework is used, write SQL queries like this in a class that extends the Mapper:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="c1">// inside a child mapper class</span>
-<span class="nv">$sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM `users` WHERE `id` = ?&#39;</span><span class="p">;</span>
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s1">'SELECT * FROM `users` WHERE `id` = ?'</span><span class="p">;</span>
 <span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
 </pre></div>
@@ -176,16 +176,16 @@
 <h3>Templates<a class="headerlink" href="#templates" title="Link to this heading"></a></h3>
 <p>Let’s assume you use the following example in your application:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">echo</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">];</span>
+<span class="k">echo</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'username'</span><span class="p">];</span>
 </pre></div>
 </div>
 <p>An attacker might now easily send the user a link to:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>app.php?username=&lt;script src=&quot;attacker.tld&quot;&gt;&lt;/script&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>app.php?username=&lt;script src="attacker.tld"&gt;&lt;/script&gt;
 </pre></div>
 </div>
 <p>to overtake the user account. The same problem occurs when outputting content from the database or any other location that is writable by users.</p>
 <p>Another attack vector that is often overlooked is XSS in <strong>href</strong> attributes. HTML allows to execute JavaScript in href attributes like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;javascript:alert(&#39;xss&#39;)&quot;</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">"javascript:alert('xss')"</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>To prevent XSS in your app, <strong>never use echo, print() or &lt;%=</strong> - use <strong>p()</strong> instead which will sanitize the input. Also <strong>validate URLs to start with the expected protocol</strong> (starts with http for instance)!</p>
@@ -197,11 +197,11 @@
 <section id="javascript">
 <h3>JavaScript<a class="headerlink" href="#javascript" title="Link to this heading"></a></h3>
 <p>Avoid manipulating the HTML directly via JavaScript, this often leads to XSS since people often forget to sanitize variables:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&lt;li&gt;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">username</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&lt;/li&gt;&quot;&#39;</span><span class="p">;</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'&lt;li&gt;'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">username</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'&lt;/li&gt;"'</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>If you <strong>really</strong> want to use JavaScript for something like this use <cite>escapeHTML</cite> to sanitize the variables:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&lt;li&gt;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">escapeHTML</span><span class="p">(</span><span class="nx">username</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&lt;/li&gt;&#39;</span><span class="p">;</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'&lt;li&gt;'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">escapeHTML</span><span class="p">(</span><span class="nx">username</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'&lt;/li&gt;'</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>An even better way to make your app safer is to use the jQuery built-in function <strong>$.text()</strong> instead of <strong>$.html()</strong>.</p>
@@ -239,7 +239,7 @@
 </div>
 <p><strong>DON’T</strong></p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">require</span><span class="p">(</span><span class="s2">&quot;/includes/&quot;</span> <span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]);</span>
+<span class="k">require</span><span class="p">(</span><span class="s2">"/includes/"</span> <span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'file'</span><span class="p">]);</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -253,14 +253,14 @@
 <p><strong>DON’T</strong></p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="nv">$username</span> <span class="o">=</span> <span class="nx">OC_User</span><span class="o">::</span><span class="na">getUser</span><span class="p">();</span>
-<span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;/data/&quot;</span> <span class="o">.</span> <span class="nv">$username</span> <span class="o">.</span> <span class="s2">&quot;/&quot;</span> <span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;.txt&quot;</span><span class="p">);</span>
+<span class="nb">fopen</span><span class="p">(</span><span class="s2">"/data/"</span> <span class="o">.</span> <span class="nv">$username</span> <span class="o">.</span> <span class="s2">"/"</span> <span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'file'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">".txt"</span><span class="p">);</span>
 </pre></div>
 </div>
 <p><strong>DO</strong></p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="nv">$username</span> <span class="o">=</span> <span class="nx">OC_User</span><span class="o">::</span><span class="na">getUser</span><span class="p">();</span>
-<span class="nv">$file</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;\\&#39;</span><span class="p">),</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>  <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]);</span>
-<span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;/data/&quot;</span> <span class="o">.</span> <span class="nv">$username</span> <span class="o">.</span> <span class="s2">&quot;/&quot;</span> <span class="o">.</span> <span class="nv">$file</span> <span class="o">.</span> <span class="s2">&quot;.txt&quot;</span><span class="p">);</span>
+<span class="nv">$file</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="s1">'\\'</span><span class="p">),</span> <span class="s1">''</span><span class="p">,</span>  <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'file'</span><span class="p">]);</span>
+<span class="nb">fopen</span><span class="p">(</span><span class="s2">"/data/"</span> <span class="o">.</span> <span class="nv">$username</span> <span class="o">.</span> <span class="s2">"/"</span> <span class="o">.</span> <span class="nv">$file</span> <span class="o">.</span> <span class="s2">".txt"</span><span class="p">);</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -291,12 +291,12 @@
 </ul>
 <p><strong>DON’T</strong></p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nb">system</span><span class="p">(</span><span class="s1">&#39;ls &#39;</span><span class="o">.</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;dir&#39;</span><span class="p">]);</span>
+<span class="nb">system</span><span class="p">(</span><span class="s1">'ls '</span><span class="o">.</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'dir'</span><span class="p">]);</span>
 </pre></div>
 </div>
 <p><strong>DO</strong></p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nb">system</span><span class="p">(</span><span class="s1">&#39;ls &#39;</span><span class="o">.</span><span class="nb">escapeshellarg</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;dir&#39;</span><span class="p">]));</span>
+<span class="nb">system</span><span class="p">(</span><span class="s1">'ls '</span><span class="o">.</span><span class="nb">escapeshellarg</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'dir'</span><span class="p">]));</span>
 </pre></div>
 </div>
 </section>
@@ -339,12 +339,12 @@ This way, at least no typed (or copied) URL might alter data (e.g. clicking a li
 <p>Always validate the URL before redirecting if the requested URL is on the same domain or an allowed resource.</p>
 <p><strong>DON’T</strong></p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nb">header</span><span class="p">(</span><span class="s1">&#39;Location:&#39;</span><span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;redirectURL&#39;</span><span class="p">]);</span>
+<span class="nb">header</span><span class="p">(</span><span class="s1">'Location:'</span><span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'redirectURL'</span><span class="p">]);</span>
 </pre></div>
 </div>
 <p><strong>DO</strong></p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nb">header</span><span class="p">(</span><span class="s1">&#39;Location: https://example.com&#39;</span><span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;redirectURL&#39;</span><span class="p">]);</span>
+<span class="nb">header</span><span class="p">(</span><span class="s1">'Location: https://example.com'</span><span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'redirectURL'</span><span class="p">]);</span>
 </pre></div>
 </div>
 </section>
@@ -384,7 +384,7 @@ You need <a class="reference internal" href="#csrf-introduction"><span class="st
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

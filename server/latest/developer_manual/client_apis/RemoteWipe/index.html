@@ -136,12 +136,12 @@ This will allow users to wipe a lost device for example.</p>
 <h2>Obtaining wipe status<a class="headerlink" href="#obtaining-wipe-status" title="Link to this heading"></a></h2>
 <p>Once a client receives a 401 or 403 status response it will do a fetch to <code class="code docutils literal notranslate"><span class="pre">&lt;server&gt;/index.php/core/wipe/check</span></code> and set the
 token parameter to the apptoken.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://cloud.example.com/index.php/core/wipe/check<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;token=&lt;TOKEN&gt;&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://cloud.example.com/index.php/core/wipe/check<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-d<span class="w"> </span><span class="s1">'token=&lt;TOKEN&gt;'</span>
 </pre></div>
 </div>
 <p>In case the client gets back a 200 status code and a JSON array with wipe set to true like:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;wipe&quot;</span><span class="p">:</span><span class="kc">true</span>
+<span class="w">        </span><span class="nt">"wipe"</span><span class="p">:</span><span class="kc">true</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -162,7 +162,7 @@ token parameter to the apptoken.</p>
 <h2>Signalling completion<a class="headerlink" href="#signalling-completion" title="Link to this heading"></a></h2>
 <p>Once the client has wiped all the required data a POST to <code class="code docutils literal notranslate"><span class="pre">&lt;server&gt;/index.php/core/wipe/success</span></code> has to be made with the token.
 This signals the server the wipe is completed and triggers the final cleanup on the server side.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://cloud.example.com/index.php/core/wipe/success<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;token=&lt;TOKEN&gt;&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://cloud.example.com/index.php/core/wipe/success<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-d<span class="w"> </span><span class="s1">'token=&lt;TOKEN&gt;'</span>
 </pre></div>
 </div>
 </section>
@@ -180,7 +180,7 @@ This signals the server the wipe is completed and triggers the final cleanup on 
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

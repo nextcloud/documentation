@@ -899,15 +899,15 @@ Options:
 …
 
 # Example
-$ sudo -E -u www-data php occ ldap:promote-group  &quot;Nextcloud Admins&quot;
+$ sudo -E -u www-data php occ ldap:promote-group  "Nextcloud Admins"
 Promote Nextcloud Admins to the admin group (y|N)? y
 Group Nextcloud Admins was promoted
 
-$ sudo -E -u www-data php occ ldap:promote-group  &quot;Paramount Court&quot;
+$ sudo -E -u www-data php occ ldap:promote-group  "Paramount Court"
 Promote Nextcloud Admins to the admin group and demote Nextcloud Admins (Group ID: nextcloud_admins) (y|N)? y
 Group Paramount Court was promoted
 
-$ sudo -E -u www-data php occ ldap:promote-group  &quot;Paramount Court&quot;
+$ sudo -E -u www-data php occ ldap:promote-group  "Paramount Court"
 The specified group is already promoted
 </pre></div>
 </div>
@@ -924,9 +924,9 @@ and determine the group ID.</p>
 <p>In order to demote or reset a promotion, an empty string should be set against
 to the targeted config’s ldapAdminGroup:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Reset an admin group mapping via set-config
-occ ldap:set-config $configId ldapAdminGroup &quot;&quot;
+occ ldap:set-config $configId ldapAdminGroup ""
 # Example
-occ ldap:set-config s01 ldapAdminGroup &quot;&quot;
+occ ldap:set-config s01 ldapAdminGroup ""
 </pre></div>
 </div>
 <div class="admonition tip">

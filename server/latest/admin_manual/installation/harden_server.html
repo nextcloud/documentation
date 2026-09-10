@@ -408,7 +408,7 @@ web server misconfiguration.</p>
 <span class="nb">SetEnv</span><span class="w"> </span>NEXTCLOUD_CONFIG_DIR<span class="w"> </span><span class="sx">/etc/nextcloud</span>
 </pre></div>
 </div>
-<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="c1"># nginx — set via fastcgi_param or the PHP-FPM pool&#39;s env[] setting</span>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="c1"># nginx — set via fastcgi_param or the PHP-FPM pool's env[] setting</span>
 <span class="k">fastcgi_param</span><span class="w"> </span><span class="s">NEXTCLOUD_CONFIG_DIR</span><span class="w"> </span><span class="s">/etc/nextcloud</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -481,7 +481,7 @@ VirtualHost file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">VirtualHost</span> <span class="o">*</span><span class="p">:</span><span class="mi">443</span><span class="o">&gt;</span>
   <span class="n">ServerName</span> <span class="n">cloud</span><span class="o">.</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">com</span>
     <span class="o">&lt;</span><span class="n">IfModule</span> <span class="n">mod_headers</span><span class="o">.</span><span class="n">c</span><span class="o">&gt;</span>
-      <span class="n">Header</span> <span class="n">always</span> <span class="nb">set</span> <span class="n">Strict</span><span class="o">-</span><span class="n">Transport</span><span class="o">-</span><span class="n">Security</span> <span class="s2">&quot;max-age=15552000; includeSubDomains&quot;</span>
+      <span class="n">Header</span> <span class="n">always</span> <span class="nb">set</span> <span class="n">Strict</span><span class="o">-</span><span class="n">Transport</span><span class="o">-</span><span class="n">Security</span> <span class="s2">"max-age=15552000; includeSubDomains"</span>
     <span class="o">&lt;/</span><span class="n">IfModule</span><span class="o">&gt;</span>
  <span class="o">&lt;/</span><span class="n">VirtualHost</span><span class="o">&gt;</span>
 </pre></div>
@@ -520,10 +520,10 @@ information about the TLS settings.</p>
 <h2>Restrict admin actions to a specific range of IP addresses<a class="headerlink" href="#restrict-admin-actions-to-a-specific-range-of-ip-addresses" title="Link to this heading"></a></h2>
 <p>Configure <code class="docutils literal notranslate"><span class="pre">allowed_admin_ranges</span></code> in <code class="docutils literal notranslate"><span class="pre">config.php</span></code> to restrict the admin actions to trusted IP ranges.</p>
 <p>This can be achieved with this kind of setting, usually using private IP ranges:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;allowed_admin_ranges&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-  <span class="s1">&#39;127.0.0.1/8&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;192.168.0.0/16&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;fd00::/8&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'allowed_admin_ranges'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+  <span class="s1">'127.0.0.1/8'</span><span class="p">,</span>
+  <span class="s1">'192.168.0.0/16'</span><span class="p">,</span>
+  <span class="s1">'fd00::/8'</span><span class="p">,</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -741,11 +741,11 @@ server.</p>
 <p>Create a file in <code class="docutils literal notranslate"><span class="pre">/etc/fail2ban/filter.d</span></code> named <code class="docutils literal notranslate"><span class="pre">nextcloud.conf</span></code> with the
 following contents:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[Definition]
-_groupsre = (?:(?:,?\s*&quot;\w+&quot;:(?:&quot;[^&quot;]+&quot;|\w+))*)
-failregex = ^\{%(_groupsre)s,?\s*&quot;remoteAddr&quot;:&quot;&lt;HOST&gt;&quot;%(_groupsre)s,?\s*&quot;message&quot;:&quot;Login failed:
-            ^\{%(_groupsre)s,?\s*&quot;remoteAddr&quot;:&quot;&lt;HOST&gt;&quot;%(_groupsre)s,?\s*&quot;message&quot;:&quot;Two-factor challenge failed:
-            ^\{%(_groupsre)s,?\s*&quot;remoteAddr&quot;:&quot;&lt;HOST&gt;&quot;%(_groupsre)s,?\s*&quot;message&quot;:&quot;Trusted domain error.
-datepattern = ,?\s*&quot;time&quot;\s*:\s*&quot;%%Y-%%m-%%d[T ]%%H:%%M:%%S(%%z)?&quot;
+_groupsre = (?:(?:,?\s*"\w+":(?:"[^"]+"|\w+))*)
+failregex = ^\{%(_groupsre)s,?\s*"remoteAddr":"&lt;HOST&gt;"%(_groupsre)s,?\s*"message":"Login failed:
+            ^\{%(_groupsre)s,?\s*"remoteAddr":"&lt;HOST&gt;"%(_groupsre)s,?\s*"message":"Two-factor challenge failed:
+            ^\{%(_groupsre)s,?\s*"remoteAddr":"&lt;HOST&gt;"%(_groupsre)s,?\s*"message":"Trusted domain error.
+datepattern = ,?\s*"time"\s*:\s*"%%Y-%%m-%%d[T ]%%H:%%M:%%S(%%z)?"
 </pre></div>
 </div>
 <p>The jail file defines how to handle the failed authentication attempts found by

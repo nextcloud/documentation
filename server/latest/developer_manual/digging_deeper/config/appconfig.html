@@ -179,7 +179,7 @@ need to pass an app ID explicitly.</p>
     <span class="p">)</span> <span class="p">{}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">hasConfig</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appConfig</span><span class="o">-&gt;</span><span class="na">hasAppKey</span><span class="p">(</span><span class="s1">&#39;mykey&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appConfig</span><span class="o">-&gt;</span><span class="na">hasAppKey</span><span class="p">(</span><span class="s1">'mykey'</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -192,8 +192,8 @@ Use <code class="docutils literal notranslate"><span class="pre">OCP\AppFramewor
 <p>A type is set when the key is created in the database and cannot be changed later.</p>
 <p>A key’s type is defined by the setter you use when the key is first created
 (for example, <code class="docutils literal notranslate"><span class="pre">setValueString()</span></code> creates a string key, <code class="docutils literal notranslate"><span class="pre">setValueInt()</span></code> an int key).</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setValueInt</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="s1">&#39;retry_count&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>       <span class="c1">// key type: int</span>
-<span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setValueString</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="s1">&#39;display_name&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">);</span> <span class="c1">// key type: string</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setValueInt</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span> <span class="s1">'retry_count'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>       <span class="c1">// key type: int</span>
+<span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setValueString</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span> <span class="s1">'display_name'</span><span class="p">,</span> <span class="s1">'A'</span><span class="p">);</span> <span class="c1">// key type: string</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -240,9 +240,9 @@ when touching related code paths, especially if:</p>
 <p>Sensitive values are hidden from filtered listings/reports and are handled as protected
 values in AppConfig storage.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setValueString</span><span class="p">(</span>
-    <span class="s1">&#39;myapp&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;mykey&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;myvalue&#39;</span><span class="p">,</span>
+    <span class="s1">'myapp'</span><span class="p">,</span>
+    <span class="s1">'mykey'</span><span class="p">,</span>
+    <span class="s1">'myvalue'</span><span class="p">,</span>
     <span class="nx">sensitive</span><span class="o">:</span> <span class="k">true</span>
 <span class="p">);</span>
 </pre></div>
@@ -258,18 +258,18 @@ values in AppConfig storage.</p>
 <p>Non-lazy values are loaded first. Lazy values are loaded only when needed. When one lazy
 value is requested, lazy values are loaded together.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setValueString</span><span class="p">(</span>
-    <span class="s1">&#39;myapp&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;mykey&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;myvalue&#39;</span><span class="p">,</span>
+    <span class="s1">'myapp'</span><span class="p">,</span>
+    <span class="s1">'mykey'</span><span class="p">,</span>
+    <span class="s1">'myvalue'</span><span class="p">,</span>
     <span class="nx">lazy</span><span class="o">:</span> <span class="k">true</span>
 <span class="p">);</span>
 </pre></div>
 </div>
 <p>Retrieving a lazy value requires using the lazy read mode:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">getValueString</span><span class="p">(</span>
-    <span class="s1">&#39;myapp&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;mykey&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;default&#39;</span><span class="p">,</span>
+    <span class="s1">'myapp'</span><span class="p">,</span>
+    <span class="s1">'mykey'</span><span class="p">,</span>
+    <span class="s1">'default'</span><span class="p">,</span>
     <span class="nx">lazy</span><span class="o">:</span> <span class="k">true</span>
 <span class="p">);</span>
 </pre></div>
@@ -372,9 +372,9 @@ and you do not pass the app ID.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">setValueArray(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">array</span> <span class="pre">$value,</span> <span class="pre">bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false,</span> <span class="pre">bool</span> <span class="pre">$sensitive</span> <span class="pre">=</span> <span class="pre">false)</span></code></p></li>
 </ul>
 <p>AppFramework equivalents (app-scoped, no <code class="docutils literal notranslate"><span class="pre">$app</span></code> argument):</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setAppValueString</span><span class="p">(</span><span class="s1">&#39;mykey&#39;</span><span class="p">,</span> <span class="s1">&#39;myvalue&#39;</span><span class="p">,</span> <span class="nx">lazy</span><span class="o">:</span> <span class="k">true</span><span class="p">);</span>
-<span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setAppValueInt</span><span class="p">(</span><span class="s1">&#39;retry_count&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-<span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setAppValueArray</span><span class="p">(</span><span class="s1">&#39;options&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">],</span> <span class="nx">sensitive</span><span class="o">:</span> <span class="k">true</span><span class="p">);</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setAppValueString</span><span class="p">(</span><span class="s1">'mykey'</span><span class="p">,</span> <span class="s1">'myvalue'</span><span class="p">,</span> <span class="nx">lazy</span><span class="o">:</span> <span class="k">true</span><span class="p">);</span>
+<span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setAppValueInt</span><span class="p">(</span><span class="s1">'retry_count'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">setAppValueArray</span><span class="p">(</span><span class="s1">'options'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'a'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">],</span> <span class="nx">sensitive</span><span class="o">:</span> <span class="k">true</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
@@ -389,9 +389,9 @@ and you do not pass the app ID.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">getValueArray(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">array</span> <span class="pre">$default</span> <span class="pre">=</span> <span class="pre">[],</span> <span class="pre">bool</span> <span class="pre">$lazy</span> <span class="pre">=</span> <span class="pre">false)</span></code></p></li>
 </ul>
 <p>AppFramework equivalents (app-scoped, no <code class="docutils literal notranslate"><span class="pre">$app</span></code> argument):</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$name</span> <span class="o">=</span> <span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">getAppValueString</span><span class="p">(</span><span class="s1">&#39;display_name&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">);</span>
-<span class="nv">$count</span> <span class="o">=</span> <span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">getAppValueInt</span><span class="p">(</span><span class="s1">&#39;retry_count&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-<span class="nv">$enabled</span> <span class="o">=</span> <span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">getAppValueBool</span><span class="p">(</span><span class="s1">&#39;enabled&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="nx">lazy</span><span class="o">:</span> <span class="k">true</span><span class="p">);</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$name</span> <span class="o">=</span> <span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">getAppValueString</span><span class="p">(</span><span class="s1">'display_name'</span><span class="p">,</span> <span class="s1">'default'</span><span class="p">);</span>
+<span class="nv">$count</span> <span class="o">=</span> <span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">getAppValueInt</span><span class="p">(</span><span class="s1">'retry_count'</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="nv">$enabled</span> <span class="o">=</span> <span class="nv">$appConfig</span><span class="o">-&gt;</span><span class="na">getAppValueBool</span><span class="p">(</span><span class="s1">'enabled'</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="nx">lazy</span><span class="o">:</span> <span class="k">true</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
@@ -467,7 +467,7 @@ clears internal cache.</p></li>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

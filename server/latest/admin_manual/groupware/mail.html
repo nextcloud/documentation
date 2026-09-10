@@ -230,7 +230,7 @@
 <section id="attachment-size-limit">
 <h3>Attachment size limit<a class="headerlink" href="#attachment-size-limit" title="Link to this heading"></a></h3>
 <p>Admins can prevent users from attaching large attachments to their emails. Users will be asked to use link shares instead.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;app.mail.attachment-size-limit&#39;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="o">*</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'app.mail.attachment-size-limit'</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="o">*</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>The unit is bytes. The example about with limit to 3MB attachments. The default is 0 bytes which means no upload limit.</p>
@@ -238,14 +238,14 @@
 <section id="background-sync-interval">
 <h3>Background sync interval<a class="headerlink" href="#background-sync-interval" title="Link to this heading"></a></h3>
 <p>Configure how often Mail keeps users’ mailboxes updated in the background in seconds. Defaults to 3600, minimum 300.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;app.mail.background-sync-interval&#39;</span> <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'app.mail.background-sync-interval'</span> <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
 </pre></div>
 </div>
 </section>
 <section id="disable-tls-verification-for-imap-smtp">
 <h3>Disable TLS verification for IMAP/SMTP<a class="headerlink" href="#disable-tls-verification-for-imap-smtp" title="Link to this heading"></a></h3>
 <p>Turn off TLS verification for IMAP/SMTP. This happens globally for all accounts and is only needed in edge cases like with email servers that have a self-signed certificate.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;app.mail.verify-tls-peer&#39;</span> <span class="o">=&gt;</span> <span class="n">false</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'app.mail.verify-tls-peer'</span> <span class="o">=&gt;</span> <span class="n">false</span>
 </pre></div>
 </div>
 </section>
@@ -261,7 +261,7 @@
 <h3>Local IMAP and SMTP servers<a class="headerlink" href="#local-imap-and-smtp-servers" title="Link to this heading"></a></h3>
 <p>By default, Nextcloud does not allow local hostnames and IP addresses as remote servers. This includes IMAP, SMTP and Sieve servers
 like <code class="docutils literal notranslate"><span class="pre">localhost</span></code>, <code class="docutils literal notranslate"><span class="pre">mx.local</span></code> and <code class="docutils literal notranslate"><span class="pre">10.0.0.3</span></code>. This check can be disabled with via <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;allow_local_remote_servers&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'allow_local_remote_servers'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
 </pre></div>
 </div>
 </section>
@@ -271,19 +271,19 @@ like <code class="docutils literal notranslate"><span class="pre">localhost</spa
 Currently IMAP defaults to 5 seconds and SMTP defaults to 20 seconds. They can be changed as follows:</p>
 <section id="imap-timeout">
 <h4>IMAP timeout<a class="headerlink" href="#imap-timeout" title="Link to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;app.mail.imap.timeout&#39;</span> <span class="o">=&gt;</span> <span class="mi">5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'app.mail.imap.timeout'</span> <span class="o">=&gt;</span> <span class="mi">5</span>
 </pre></div>
 </div>
 </section>
 <section id="smtp-timeout">
 <h4>SMTP timeout<a class="headerlink" href="#smtp-timeout" title="Link to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;app.mail.smtp.timeout&#39;</span> <span class="o">=&gt;</span> <span class="mi">20</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'app.mail.smtp.timeout'</span> <span class="o">=&gt;</span> <span class="mi">20</span>
 </pre></div>
 </div>
 </section>
 <section id="sieve-timeout">
 <h4>Sieve timeout<a class="headerlink" href="#sieve-timeout" title="Link to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;app.mail.sieve.timeout&#39;</span> <span class="o">=&gt;</span> <span class="mi">5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'app.mail.sieve.timeout'</span> <span class="o">=&gt;</span> <span class="mi">5</span>
 </pre></div>
 </div>
 </section>
@@ -295,7 +295,7 @@ Currently IMAP defaults to 5 seconds and SMTP defaults to 20 seconds. They can b
 <p>Support for using php-mail was removed in version 4.4 of the mail app!</p>
 </div>
 <p>You can use the php-mail function to send mails. This is needed for some web hosters (1&amp;1 (1und1)).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;app.mail.transport&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;php-mail&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'app.mail.transport'</span> <span class="o">=&gt;</span> <span class="s1">'php-mail'</span>
 </pre></div>
 </div>
 </section>

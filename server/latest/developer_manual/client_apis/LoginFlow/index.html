@@ -545,11 +545,11 @@ After this the webview is destroyed including all the state the webview holds.</
 <p>Old configurations of clients might still be using username and passwords. The login flow ensures that each device has an unique app password. In order to facilitate transparent migration to app passwords there is an endpoint that can be called by client.</p>
 <p>If the client is authenticated with an app password a 403 will be returned. If the client is authenticating with a real password an app password will be generated and returned.</p>
 <p>The user agent header will be used to name the app password.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:password<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;OCS-APIRequest: true&#39;</span><span class="w"> </span>https://cloud.example.com/ocs/v2.php/core/getapppassword
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:password<span class="w"> </span>-H<span class="w"> </span><span class="s1">'OCS-APIRequest: true'</span><span class="w"> </span>https://cloud.example.com/ocs/v2.php/core/getapppassword
 </pre></div>
 </div>
 <p>The response would look (in XML) something like:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0"?&gt;</span>
 <span class="nt">&lt;ocs&gt;</span>
 <span class="w">        </span><span class="nt">&lt;meta&gt;</span>
 <span class="w">                </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
@@ -567,11 +567,11 @@ After this the webview is destroyed including all the state the webview holds.</
 <h2>Deleting an app password<a class="headerlink" href="#deleting-an-app-password" title="Link to this heading"></a></h2>
 <p>When an account on a client is removed for housekeeping it is desired to destroy the apptoken in use.
 This can be done by a simple call:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:app-password<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;OCS-APIREQUEST: true&#39;</span><span class="w">  </span>http://localhost/ocs/v2.php/core/apppassword
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:app-password<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>-H<span class="w"> </span><span class="s1">'OCS-APIREQUEST: true'</span><span class="w">  </span>http://localhost/ocs/v2.php/core/apppassword
 </pre></div>
 </div>
 <p>The response should be a plain OCS response with a status 200</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0"?&gt;</span>
 <span class="nt">&lt;ocs&gt;</span>
 <span class="w">        </span><span class="nt">&lt;meta&gt;</span>
 <span class="w">                </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
@@ -593,25 +593,25 @@ This can be done by a simple call:</p>
 </div>
 <p>This will return a json object like</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;poll&quot;</span><span class="p">:{</span>
-<span class="w">        </span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;mQUYQdffOSAMJYtm8pVpkOsVqXt5hglnuSpO5EMbgJMNEPFGaiDe8OUjvrJ2WcYcBSLgqynu9jaPFvZHMl83ybMvp6aDIDARjTFIBpRWod6p32fL9LIpIStvc6k8Wrs1&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="s2">&quot;https:\/\/cloud.example.com\/login\/v2\/poll&quot;</span>
+<span class="w">    </span><span class="nt">"poll"</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">"token"</span><span class="p">:</span><span class="s2">"mQUYQdffOSAMJYtm8pVpkOsVqXt5hglnuSpO5EMbgJMNEPFGaiDe8OUjvrJ2WcYcBSLgqynu9jaPFvZHMl83ybMvp6aDIDARjTFIBpRWod6p32fL9LIpIStvc6k8Wrs1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"endpoint"</span><span class="p">:</span><span class="s2">"https:\/\/cloud.example.com\/login\/v2\/poll"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;login&quot;</span><span class="p">:</span><span class="s2">&quot;https:\/\/cloud.example.com\/login\/v2\/flow\/guyjGtcKPTKCi4epIRIupIexgJ8wNInMFSfHabACRPZUkmEaWZSM54bFkFuzWksbps7jmTFQjeskLpyJXyhpHlgK8sZBn9HXLXjohIx5iXgJKdOkkZTYCzUWHlsg3YFg&quot;</span>
+<span class="w">    </span><span class="nt">"login"</span><span class="p">:</span><span class="s2">"https:\/\/cloud.example.com\/login\/v2\/flow\/guyjGtcKPTKCi4epIRIupIexgJ8wNInMFSfHabACRPZUkmEaWZSM54bFkFuzWksbps7jmTFQjeskLpyJXyhpHlgK8sZBn9HXLXjohIx5iXgJKdOkkZTYCzUWHlsg3YFg"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>The url in login should be opened in the default browser, this is where the user will follow the login procedure.
 The program should directly start polling the poll endpoint:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://cloud.example.com/login/v2/poll<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;token=mQUYQdffOSAMJYtm8pVpkOsVqXt5hglnuSpO5EMbgJMNEPFGaiDe8OUjvrJ2WcYcBSLgqynu9jaPFvZHMl83ybMvp6aDIDARjTFIBpRWod6p32fL9LIpIStvc6k8Wrs1&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://cloud.example.com/login/v2/poll<span class="w"> </span>-d<span class="w"> </span><span class="s2">"token=mQUYQdffOSAMJYtm8pVpkOsVqXt5hglnuSpO5EMbgJMNEPFGaiDe8OUjvrJ2WcYcBSLgqynu9jaPFvZHMl83ybMvp6aDIDARjTFIBpRWod6p32fL9LIpIStvc6k8Wrs1"</span>
 </pre></div>
 </div>
 <p>The token will be valid for 20 minutes.
 This will return a 404 until authentication is done. Once a 200 is returned it is another json object.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;server&quot;</span><span class="p">:</span><span class="s2">&quot;https:\/\/cloud.example.com&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;loginName&quot;</span><span class="p">:</span><span class="s2">&quot;username&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;appPassword&quot;</span><span class="p">:</span><span class="s2">&quot;yKTVA4zgxjfivy52WqD8kW3M2pKGQr6srmUXMipRdunxjPFripJn0GMfmtNOqOolYSuJ6sCN&quot;</span>
+<span class="w">    </span><span class="nt">"server"</span><span class="p">:</span><span class="s2">"https:\/\/cloud.example.com"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"loginName"</span><span class="p">:</span><span class="s2">"username"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"appPassword"</span><span class="p">:</span><span class="s2">"yKTVA4zgxjfivy52WqD8kW3M2pKGQr6srmUXMipRdunxjPFripJn0GMfmtNOqOolYSuJ6sCN"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -678,7 +678,7 @@ Note that the 200 will only be returned once.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Aug 09, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

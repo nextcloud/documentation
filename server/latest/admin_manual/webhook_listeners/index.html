@@ -243,9 +243,9 @@ Each row contains the full configuration of a registered webhook</p>
 The filter is evaluated against the <strong>complete webhook payload envelope</strong>, which has this
 structure:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;…&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;…event-specific fields…&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;…&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;…&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
+<span class="w">  </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"…"</span><span class="p">,</span><span class="w"> </span><span class="s2">"…event-specific fields…"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"…"</span><span class="p">,</span><span class="w"> </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"…"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -296,11 +296,11 @@ To trigger webhooks sooner, you can set up a background job worker.</p>
 or more times, to enable parallel processing of multiple requests by different users
 or the same user. It is best to run one command per screen session or tmux window/pane
 to keep logs visible and make each worker easy to restart.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="o">-</span><span class="n">e</span><span class="p">;</span> <span class="k">while</span> <span class="n">true</span><span class="p">;</span> <span class="n">do</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">worker</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="s2">&quot;OCA\WebhookListeners\BackgroundJobs\WebhookCall&quot;</span><span class="p">;</span> <span class="n">done</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="o">-</span><span class="n">e</span><span class="p">;</span> <span class="k">while</span> <span class="n">true</span><span class="p">;</span> <span class="n">do</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">worker</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="s2">"OCA\WebhookListeners\BackgroundJobs\WebhookCall"</span><span class="p">;</span> <span class="n">done</span>
 </pre></div>
 </div>
 <p>For Nextcloud-AIO you should use this command on the host server.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="o">-</span><span class="n">e</span><span class="p">;</span> <span class="k">while</span> <span class="n">true</span><span class="p">;</span> <span class="n">do</span> <span class="n">sudo</span> <span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">aio</span><span class="o">-</span><span class="n">nextcloud</span> <span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">aio</span><span class="o">-</span><span class="n">nextcloud</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">worker</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="s2">&quot;OCA\WebhookListeners\BackgroundJobs\WebhookCall&quot;</span><span class="p">;</span> <span class="n">done</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="o">-</span><span class="n">e</span><span class="p">;</span> <span class="k">while</span> <span class="n">true</span><span class="p">;</span> <span class="n">do</span> <span class="n">sudo</span> <span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">aio</span><span class="o">-</span><span class="n">nextcloud</span> <span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">aio</span><span class="o">-</span><span class="n">nextcloud</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">worker</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="s2">"OCA\WebhookListeners\BackgroundJobs\WebhookCall"</span><span class="p">;</span> <span class="n">done</span>
 </pre></div>
 </div>
 <p>You may want to adjust the number of workers and the timeout (in seconds) to your needs.
@@ -329,9 +329,9 @@ The logs of the worker can be checked by attaching to the screen or tmux session
 <li><p>Create a shell script in <code class="docutils literal notranslate"><span class="pre">/opt/nextcloud-webhook-worker/taskprocessing.sh</span></code> with the following content and make sure to make it executable:</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
-<span class="n">echo</span> <span class="s2">&quot;Starting Nextcloud Webhook Worker $1&quot;</span>
+<span class="n">echo</span> <span class="s2">"Starting Nextcloud Webhook Worker $1"</span>
 <span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">nextcloud</span>
-<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">worker</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="s1">&#39;OCA\WebhookListeners\BackgroundJobs\WebhookCall&#39;</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">worker</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="s1">'OCA\WebhookListeners\BackgroundJobs\WebhookCall'</span>
 </pre></div>
 </div>
 <p>You may want to adjust the timeout to your needs (in seconds).</p>
@@ -368,9 +368,9 @@ The logs of the worker can be checked by attaching to the screen or tmux session
 <h3>Payload envelope<a class="headerlink" href="#payload-envelope" title="Link to this heading"></a></h3>
 <p>Every webhook HTTP POST body shares the same top-level structure:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
-<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
+<span class="w">  </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice"</span><span class="p">,</span><span class="w"> </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -407,18 +407,18 @@ includes a <code class="docutils literal notranslate"><span class="pre">node</sp
 <li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\NodeDeletedEvent</span></code></p></li>
 </ul>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCP\\Files\\Events\\Node\\NodeCreatedEvent&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;node&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">437</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/admin/files/test-webhook.txt&quot;</span>
+<span class="w">  </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OCP\\Files\\Events\\Node\\NodeCreatedEvent"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"node"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">437</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/files/test-webhook.txt"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Admin&quot;</span>
+<span class="w">  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin"</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
+<span class="w">  </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -441,17 +441,17 @@ the node before deletion.</p>
 </div>
 <p>Example of a deleted node webhook payload:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCP\\Files\\Events\\Node\\NodeDeletedEvent&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;node&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/user/files/oldfile.txt&quot;</span>
+<span class="w">  </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OCP\\Files\\Events\\Node\\NodeDeletedEvent"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"node"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/user/files/oldfile.txt"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User&quot;</span>
+<span class="w">  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100500</span>
+<span class="w">  </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100500</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -466,22 +466,22 @@ the node before deletion.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\BeforeNodeRenamedEvent</span></code></p></li>
 </ul>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCP\\Files\\Events\\Node\\NodeRestoredEvent&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">399</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/admin/files_trashbin/files/myfile.txt&quot;</span>
+<span class="w">  </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OCP\\Files\\Events\\Node\\NodeRestoredEvent"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">399</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/files_trashbin/files/myfile.txt"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">437</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/admin/files/myfile.txt&quot;</span>
+<span class="w">    </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">437</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/files/myfile.txt"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Admin&quot;</span>
+<span class="w">  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin"</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
+<span class="w">  </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -496,21 +496,21 @@ the node before deletion.</p>
 </div>
 <p>Example of a two-node event (NodeRenamedEvent) where the source node is missing:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">     </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCP\\Files\\Events\\Node\\NodeRenamedEvent&quot;</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">         </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/user/files/previousname.txt&quot;</span>
+<span class="w">  </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OCP\\Files\\Events\\Node\\NodeRenamedEvent"</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/user/files/previousname.txt"</span>
 <span class="w">     </span><span class="p">},</span>
-<span class="w">     </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">599</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/user/files/newname.txt&quot;</span>
+<span class="w">     </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">599</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/user/files/newname.txt"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">         </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Joe User&quot;</span>
+<span class="w">    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joe User"</span>
 <span class="w">     </span><span class="p">},</span>
-<span class="w">     </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
+<span class="w">     </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
 <span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
@@ -526,17 +526,17 @@ the node before deletion.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">OCP\SystemTag\TagUnassignedEvent</span></code></p></li>
 </ul>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCP\\SystemTag\\TagAssignedEvent&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;objectType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;files&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;objectIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;437&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;438&quot;</span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;tagIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">]</span>
+<span class="w">    </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OCP\\SystemTag\\TagAssignedEvent"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"objectType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"files"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"objectIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"437"</span><span class="p">,</span><span class="w"> </span><span class="s2">"438"</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"tagIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">]</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Admin&quot;</span>
+<span class="w">    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
+<span class="w">    </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -554,43 +554,43 @@ the node before deletion.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Events\CalendarObjectUpdatedEvent</span></code></p></li>
 </ul>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCP\\Calendar\\Events\\CalendarObjectCreatedEvent&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;calendarId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;calendarData&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;work&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;{http://calendarserver.org/ns/}getctag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1736283&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;{http://sabredav.org/ns}sync-token&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9651</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VEVENT,VTODO&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;opaque&quot;</span>
+<span class="w">  </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OCP\\Calendar\\Events\\CalendarObjectCreatedEvent"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"calendarId"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"calendarData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"{http://calendarserver.org/ns/}getctag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1736283"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"{http://sabredav.org/ns}sync-token"</span><span class="p">:</span><span class="w"> </span><span class="mi">9651</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VEVENT,VTODO"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"opaque"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;shares&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"shares"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mailto:alice@example.com&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;commonName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;readOnly&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;{http://owncloud.org/ns}principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;principal:users/alice&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;{http://owncloud.org/ns}group-share&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mailto:alice@example.com"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"commonName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"readOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"{http://owncloud.org/ns}principal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"principal:users/alice"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"{http://owncloud.org/ns}group-share"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;objectData&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;event-20251111T100000Z.ics&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;lastmodified&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700099500</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;etag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;19fa45b394&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;calendarid&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;component&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VEVENT&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;classification&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="nt">"objectData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"event-20251111T100000Z.ics"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"lastmodified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1700099500</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19fa45b394"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"calendarid"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"component"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VEVENT"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"classification"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;david&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;David&quot;</span>
+<span class="w">  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"david"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"David"</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
+<span class="w">  </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -600,40 +600,40 @@ the node before deletion.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Events\CalendarObjectMovedEvent</span></code></p></li>
 </ul>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCP\\Calendar\\Events\\CalendarObjectMovedEvent&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;sourceCalendarId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;sourceCalendarData&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;work&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OCP\\Calendar\\Events\\CalendarObjectMovedEvent"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"sourceCalendarId"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"sourceCalendarData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;targetCalendarId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;targetCalendarData&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;meetings&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"targetCalendarId"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"targetCalendarData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"meetings"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;sourceShares&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"sourceShares"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mailto:alice@example.com&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;commonName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span>
+<span class="w">        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mailto:alice@example.com"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"commonName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alice"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;targetShares&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"targetShares"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">       </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mailto:bob@example.com&quot;</span><span class="p">,</span>
-<span class="w">       </span><span class="nt">&quot;commonName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bob&quot;</span>
+<span class="w">       </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mailto:bob@example.com"</span><span class="p">,</span>
+<span class="w">       </span><span class="nt">"commonName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;objectData&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;event-20251111T100000Z.ics&quot;</span>
+<span class="w">    </span><span class="nt">"objectData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"event-20251111T100000Z.ics"</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;david&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;David&quot;</span>
+<span class="w">  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"david"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"David"</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
+<span class="w">  </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -645,38 +645,38 @@ the node before deletion.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">OCA\Forms\Events\FormSubmittedEvent</span></code></p></li>
 </ul>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCA\\Forms\\Events\\FormSubmittedEvent&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;form&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;abc123def456&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Employee Feedback&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Annual employee feedback form.&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;ownerId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alice&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;fileId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1002</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;fileFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;created&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700001000</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;access&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;expires&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1702606600</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;isAnonymous&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;submitMultiple&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;showExpiration&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;lastUpdated&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700001200</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;submissionMessage&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OCA\\Forms\\Events\\FormSubmittedEvent"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"form"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc123def456"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Employee Feedback"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Annual employee feedback form."</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"ownerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"fileId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1002</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"fileFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pdf"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1700001000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">1702606600</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"isAnonymous"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"submitMultiple"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"showExpiration"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1700001200</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"submissionMessage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;submission&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;formId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;userId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bob&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700001234</span>
+<span class="w">    </span><span class="nt">"submission"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"formId"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bob"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1700001234</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bob&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bob&quot;</span>
+<span class="w">  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bob"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob"</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700001234</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1700001234</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -690,22 +690,22 @@ the node before deletion.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">OCA\Tables\Event\RowUpdatedEvent</span></code></p></li>
 </ul>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCA\\Tables\\Event\\RowAddedEvent&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;tableId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;rowId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;previousValues&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;0&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Project X&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span>
+<span class="w">  </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OCA\\Tables\\Event\\RowAddedEvent"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"tableId"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"rowId"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"previousValues"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project X"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"1"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;carol&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Carol&quot;</span>
+<span class="w">  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"carol"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carol"</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700054321</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1700054321</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>

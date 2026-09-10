@@ -141,7 +141,7 @@
 </pre></div>
 </div>
 <p>When writing your own tests, please ensure that PHPUnit bootstraps from <code class="file docutils literal notranslate"><span class="pre">tests/bootstrap.php</span></code>, to set up various environment variables and autoloader registration correctly. Without this, you will see errors as the Nextcloud autoloader security policy prevents access to the tests/ subdirectory. This can be configured in your <code class="file docutils literal notranslate"><span class="pre">phpunit.xml</span></code> file as follows:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;phpunit</span><span class="w"> </span><span class="na">bootstrap=</span><span class="s">&quot;../../tests/bootstrap.php&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;phpunit</span><span class="w"> </span><span class="na">bootstrap=</span><span class="s">"../../tests/bootstrap.php"</span><span class="nt">&gt;</span>
 </pre></div>
 </div>
 <p>PHP classes should be tested by accessing them from the container to ensure that the container is wired up properly. Services that should be mocked can be replaced directly in the container.</p>
@@ -164,10 +164,10 @@
             <span class="k">if</span><span class="p">(</span><span class="nv">$file</span> <span class="nx">instanceof</span> <span class="nx">\OCP\Files\File</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">return</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="k">throw</span> <span class="k">new</span> <span class="nx">StorageException</span><span class="p">(</span><span class="s1">&#39;Can not read from folder&#39;</span><span class="p">);</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nx">StorageException</span><span class="p">(</span><span class="s1">'Can not read from folder'</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">\OCP\Files\NotFoundException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">StorageException</span><span class="p">(</span><span class="s1">&#39;File does not exist&#39;</span><span class="p">);</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">StorageException</span><span class="p">(</span><span class="s1">'File does not exist'</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -188,11 +188,11 @@
 
         <span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\OCA\MyApp\AppInfo\Application</span><span class="p">();</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">();</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">storage</span> <span class="o">=</span> <span class="nv">$storage</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMockBuilder</span><span class="p">(</span><span class="s1">&#39;\OCP\Files\Folder&#39;</span><span class="p">)</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">storage</span> <span class="o">=</span> <span class="nv">$storage</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMockBuilder</span><span class="p">(</span><span class="s1">'\OCP\Files\Folder'</span><span class="p">)</span>
             <span class="o">-&gt;</span><span class="na">disableOriginalConstructor</span><span class="p">()</span>
             <span class="o">-&gt;</span><span class="na">getMock</span><span class="p">();</span>
 
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="s1">&#39;RootStorage&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$storage</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="s1">'RootStorage'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$storage</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nv">$storage</span><span class="p">;</span>
         <span class="p">});</span>
     <span class="p">}</span>
@@ -202,11 +202,11 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">testFileNotFound</span><span class="p">()</span> <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">storage</span><span class="o">-&gt;</span><span class="na">expects</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">once</span><span class="p">())</span>
-            <span class="o">-&gt;</span><span class="na">method</span><span class="p">(</span><span class="s1">&#39;get&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">method</span><span class="p">(</span><span class="s1">'get'</span><span class="p">)</span>
             <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">equalTo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
             <span class="o">-&gt;</span><span class="na">will</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">throwException</span><span class="p">(</span><span class="k">new</span> <span class="nx">\OCP\Files\NotFoundException</span><span class="p">()));</span>
 
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="p">[</span><span class="s1">&#39;AuthorStorage&#39;</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="p">[</span><span class="s1">'AuthorStorage'</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -231,7 +231,7 @@ so the next test can run without side effects, like remaining files and entries 
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

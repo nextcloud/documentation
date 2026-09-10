@@ -274,7 +274,7 @@ shares. This argument expects a well formatted date string, e.g. ‘YYYY-MM-DD�
 <span id="id1"></span><h3>Share attributes<a class="headerlink" href="#share-attributes" title="Link to this heading"></a></h3>
 <p>Share attributes are used for more advanced flags like permissions.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;permissions&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;download&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"permissions"</span><span class="p">,</span><span class="w"> </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"download"</span><span class="p">,</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -286,7 +286,7 @@ shares. This argument expects a well formatted date string, e.g. ‘YYYY-MM-DD�
 <h4>Download permission<a class="headerlink" href="#download-permission" title="Link to this heading"></a></h4>
 <p>To remove the download permission from a share, use the following serialized string in the “attributes” parameter:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;permissions&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;download&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"permissions"</span><span class="p">,</span><span class="w"> </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"download"</span><span class="p">,</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -301,7 +301,7 @@ which itself will present the file in a way that downloading will not be allowed
 It will ask recipients to enter their name and all uploaded files will be stored in a
 separate folder with the provided name.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fileRequest&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fileRequest"</span><span class="p">,</span><span class="w"> </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enabled"</span><span class="p">,</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -309,8 +309,8 @@ separate folder with the provided name.</p>
 Traditionally, only one is allowed with the <cite>shareWith</cite> parameter,
 but you can provide a list of emails via attributes. This only works for MAIL shares.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fileRequest&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shareWith&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;emails&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;maria@company.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;paul@company.com&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fileRequest"</span><span class="p">,</span><span class="w"> </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enabled"</span><span class="p">,</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shareWith"</span><span class="p">,</span><span class="w"> </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"emails"</span><span class="p">,</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"maria@company.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"paul@company.com"</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -451,7 +451,7 @@ of the share recipient as shareWith. See <a class="reference internal" href="#cr
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

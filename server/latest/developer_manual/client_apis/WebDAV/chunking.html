@@ -143,15 +143,22 @@
 <p>Uploading large files is always a bit problematic as your connection can be interrupted
 which will fail your entire upload. Nextcloud has a chunking API where you can
 upload smaller chunks which will be assembled on the server once they are all uploaded.</p>
-<p>There are two versions of the chunking API. Version 1 is the original version and version 2 was built as a backward compatible extension to support uploads directly to supporting target storages like S3. Version 2 is the recommended version to use.</p>
-<p>Version 2 comes with a few additional requirements and limitations to consider (compared to version 1):</p>
+<p>There are two versions of the chunking API. Version 1 is the original version and version
+2 was built as a backward compatible extension to support uploads directly to supporting
+target storages like S3. Version 2 is the recommended version to use.</p>
+<p>Version 2 comes with a few additional requirements and limitations to consider
+(compared to version 1):</p>
 <ul class="simple">
-<li><p>Every request needs to have a <code class="docutils literal notranslate"><span class="pre">Destination</span></code> header present which specifies the target path of the file</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">MKCOL</span></code>, chunk <code class="docutils literal notranslate"><span class="pre">PUT</span></code>, and final <code class="docutils literal notranslate"><span class="pre">MOVE</span></code> requests need to have a
+<code class="docutils literal notranslate"><span class="pre">Destination</span></code> header present which specifies the target path of the file</p></li>
 <li><p>The naming of the individual chunks is limited to be a number between 1 and 10000</p></li>
 <li><p>The chunks will be assembled in the order of their names</p></li>
 <li><p>The size of chunks must be between 5MB and 5GB (except for the last chunk, which can be smaller)</p></li>
 <li><p>Chunks cannot be downloaded from the upload directory</p></li>
 </ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">Destination</span></code> header is not required when aborting an upload with
+<code class="docutils literal notranslate"><span class="pre">DELETE</span></code>. The destination and backend upload token are stored when the
+upload is created.</p>
 <p>Nextcloud will expire the upload directory after 24 hours of inactivity. This means that if you start an upload and do not finish it within 24 hours, the upload directory will be deleted and the upload will fail.</p>
 </section>
 <section id="chunked-upload-v2">
@@ -167,7 +174,7 @@ are uploaded to.</p>
 folder but if you take a random UUID chances of collision are tiny.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -X MKCOL -u roeland:pass \</span>
 <span class="go">    https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0 \</span>
-<span class="go">    --header &#39;Destination: https://server/remote.php/dav/files/roeland/dest/file.zip&#39;</span>
+<span class="go">    --header 'Destination: https://server/remote.php/dav/files/roeland/dest/file.zip'</span>
 </pre></div>
 </div>
 </section>
@@ -185,14 +192,14 @@ If you do not provide it, the upload will only fail on the <code class="docutils
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -X PUT -u roeland:pass \</span>
 <span class="go">    https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/00001 \</span>
 <span class="go">    --data-binary @chunk1 \</span>
-<span class="go">    --header &#39;Destination: https://server/remote.php/dav/files/roeland/dest/file.zip&#39; \</span>
-<span class="go">    --header &#39;OC-Total-Length: 15000000&#39;</span>
+<span class="go">    --header 'Destination: https://server/remote.php/dav/files/roeland/dest/file.zip' \</span>
+<span class="go">    --header 'OC-Total-Length: 15000000'</span>
 
 <span class="go">curl -X PUT -u roeland:pass \</span>
 <span class="go">    https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/00002 \</span>
 <span class="go">    --data-binary @chunk2 \</span>
-<span class="go">    --header &#39;Destination: https://server/remote.php/dav/files/roeland/dest/file.zip&#39; \</span>
-<span class="go">    --header &#39;OC-Total-Length: 15000000&#39;</span>
+<span class="go">    --header 'Destination: https://server/remote.php/dav/files/roeland/dest/file.zip' \</span>
+<span class="go">    --header 'OC-Total-Length: 15000000'</span>
 </pre></div>
 </div>
 <p>This will upload 2 chunks of a file. The first chunk is 10MB in size and the second
@@ -203,8 +210,8 @@ chunk is 5MB in size.</p>
 <p>Assembling the chunk on the server is a matter of initiating a move from the client.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -X MOVE -u roeland:pass \</span>
 <span class="go">    https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/.file \</span>
-<span class="go">    --header &#39;Destination: https://server/remote.php/dav/files/roeland/dest/file.zip&#39; \</span>
-<span class="go">    --header &#39;OC-Total-Length: 15000000&#39;</span>
+<span class="go">    --header 'Destination: https://server/remote.php/dav/files/roeland/dest/file.zip' \</span>
+<span class="go">    --header 'OC-Total-Length: 15000000'</span>
 </pre></div>
 </div>
 <p>The server will now assemble the chunks and move the final file to the folder <code class="docutils literal notranslate"><span class="pre">dest/file.zip</span></code>.</p>
@@ -212,9 +219,9 @@ chunk is 5MB in size.</p>
 <h4>Setting the modification time<a class="headerlink" href="#setting-the-modification-time" title="Link to this heading"></a></h4>
 <p>If a modification time should be set, you can by adding it as header with date as unixtime:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -X MOVE -u roeland:pass</span>
-<span class="go">    --header &#39;Destination: https://server/remote.php/dav/files/roeland/dest/file.zip&#39; \</span>
-<span class="go">    --header &#39;X-OC-Mtime: 1547545326&#39; \</span>
-<span class="go">    --header &#39;OC-Total-Length: 15000000&#39;</span>
+<span class="go">    --header 'Destination: https://server/remote.php/dav/files/roeland/dest/file.zip' \</span>
+<span class="go">    --header 'X-OC-Mtime: 1547545326' \</span>
+<span class="go">    --header 'OC-Total-Length: 15000000'</span>
 </pre></div>
 </div>
 <p>Otherwise the current upload date will be used as modification date.</p>
@@ -223,11 +230,16 @@ chunk is 5MB in size.</p>
 </section>
 <section id="aborting-the-upload">
 <h3>Aborting the upload<a class="headerlink" href="#aborting-the-upload" title="Link to this heading"></a></h3>
-<p>If the upload has to be aborted this is a simple matter or deleting the upload folder.</p>
+<p>If the upload has to be aborted, delete the upload folder:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -X DELETE -u roeland:pass \</span>
 <span class="go">    https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/</span>
 </pre></div>
 </div>
+<p>For a Chunking v2 upload, Nextcloud uses the stored upload metadata to cancel
+the backend chunked write before deleting the upload folder. This also aborts
+the underlying multipart upload when the target storage supports multipart
+uploads. No <code class="docutils literal notranslate"><span class="pre">Destination</span></code> header is needed for this request.</p>
+<p>Uploads without Chunking v2 metadata are handled by normal DAV deletion.</p>
 </section>
 </section>
 </section>
@@ -244,7 +256,7 @@ chunk is 5MB in size.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

@@ -309,7 +309,7 @@ entries:</p>
         server_name cloud.example.com;
 
         if ($block_nextcloud_desktop) {
-            return 403 &quot;Nextcloud desktop client access is disabled.\n&quot;;
+            return 403 "Nextcloud desktop client access is disabled.\n";
         }
 
         # The existing Nextcloud configuration follows here.
@@ -339,12 +339,12 @@ carrying the resulting environment variable. Enable exactly one
     ServerName cloud.example.com
 
     # Policy A: block every standard desktop client.
-    SetEnvIfNoCase User-Agent &quot;mirall/&quot; block_nextcloud_desktop
+    SetEnvIfNoCase User-Agent "mirall/" block_nextcloud_desktop
 
     # Policy B: instead block releases older than 34.0.2.
-    # SetEnvIfNoCase User-Agent &quot;mirall/(([0-9]|[12][0-9]|3[0-3])[.]|34[.]0[.](0|1)([^0-9]|$))&quot; block_nextcloud_desktop
+    # SetEnvIfNoCase User-Agent "mirall/(([0-9]|[12][0-9]|3[0-3])[.]|34[.]0[.](0|1)([^0-9]|$))" block_nextcloud_desktop
 
-    &lt;Location &quot;/&quot;&gt;
+    &lt;Location "/"&gt;
         &lt;RequireAll&gt;
             Require all granted
             Require not env block_nextcloud_desktop
@@ -379,7 +379,7 @@ exactly one matcher line:</p>
     # Policy B: instead block releases older than 34.0.2.
     # @blockedNextcloudDesktop header_regexp User-Agent (?i)mirall/(([0-9]|[12][0-9]|3[0-3])[.]|34[.]0[.](0|1)([^0-9]|$))
 
-    respond @blockedNextcloudDesktop &quot;Nextcloud desktop client access is disabled.&quot; 403
+    respond @blockedNextcloudDesktop "Nextcloud desktop client access is disabled." 403
 
     # The existing Nextcloud file_server, php_fastcgi, or reverse_proxy
     # directives follow here.
@@ -435,19 +435,19 @@ and
 <p>Test from a system that reaches the same proxy or WAF path as real users. The
 following probes do not require Nextcloud credentials:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Must<span class="w"> </span>be<span class="w"> </span><span class="m">403</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>both<span class="w"> </span>policies.
-<span class="go">curl -sS -o /dev/null -w &#39;%{http_code}\n&#39; \</span>
-<span class="go">    -A &#39;Mozilla/5.0 (Linux) mirall/34.0.1 (Nextcloud, linux)&#39; \</span>
+<span class="go">curl -sS -o /dev/null -w '%{http_code}\n' \</span>
+<span class="go">    -A 'Mozilla/5.0 (Linux) mirall/34.0.1 (Nextcloud, linux)' \</span>
 <span class="go">    https://cloud.example.com/status.php</span>
 
 <span class="gp"># </span>Must<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>blocked<span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>minimum-version<span class="w"> </span>policy.<span class="w"> </span>It<span class="w"> </span>is<span class="w"> </span>still<span class="w"> </span><span class="m">403</span><span class="w"> </span>when
 <span class="gp"># </span>the<span class="w"> </span>block-all<span class="w"> </span>policy<span class="w"> </span>is<span class="w"> </span>active.
-<span class="go">curl -sS -o /dev/null -w &#39;%{http_code}\n&#39; \</span>
-<span class="go">    -A &#39;Mozilla/5.0 (Linux) mirall/34.0.2 (Nextcloud, linux)&#39; \</span>
+<span class="go">curl -sS -o /dev/null -w '%{http_code}\n' \</span>
+<span class="go">    -A 'Mozilla/5.0 (Linux) mirall/34.0.2 (Nextcloud, linux)' \</span>
 <span class="go">    https://cloud.example.com/status.php</span>
 
 <span class="gp"># </span>Must<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>blocked<span class="w"> </span>by<span class="w"> </span>either<span class="w"> </span>desktop<span class="w"> </span>rule.
-<span class="go">curl -sS -o /dev/null -w &#39;%{http_code}\n&#39; \</span>
-<span class="go">    -A &#39;Mozilla/5.0 (compatible; policy-check)&#39; \</span>
+<span class="go">curl -sS -o /dev/null -w '%{http_code}\n' \</span>
+<span class="go">    -A 'Mozilla/5.0 (compatible; policy-check)' \</span>
 <span class="go">    https://cloud.example.com/status.php</span>
 </pre></div>
 </div>

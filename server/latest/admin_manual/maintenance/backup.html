@@ -211,7 +211,7 @@
 Change <code class="docutils literal notranslate"><span class="pre">&quot;maintenance&quot;</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;maintenance&quot;</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
 
- &quot;maintenance&quot; =&gt; true,
+ "maintenance" =&gt; true,
 </pre></div>
 </div>
 <p>Don’t forget to change it back to <code class="docutils literal notranslate"><span class="pre">false</span></code> when you are finished.</p>
@@ -219,7 +219,7 @@ Change <code class="docutils literal notranslate"><span class="pre">&quot;mainte
 <section id="backup-folders">
 <h2>Backup folders<a class="headerlink" href="#backup-folders" title="Link to this heading"></a></h2>
 <p>Copy your config, data, and theme directories to a location outside your Nextcloud environment. Alternatively, copy your entire Nextcloud installation directory (including the data directory). You could use this command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rsync -Aavx nextcloud/ nextcloud-dirbkp_`date +&quot;%Y%m%d&quot;`/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rsync -Aavx nextcloud/ nextcloud-dirbkp_`date +"%Y%m%d"`/
 </pre></div>
 </div>
 </section>
@@ -232,34 +232,34 @@ Change <code class="docutils literal notranslate"><span class="pre">&quot;mainte
 <section id="mariadb">
 <h3>MariaDB<a class="headerlink" href="#mariadb" title="Link to this heading"></a></h3>
 <p>MariaDB is the recommended database engine. To backup MariaDB using <a class="reference external" href="https://mariadb.com/docs/server/clients-and-utilities/backup-restore-and-import-clients/mariadb-dump">mariadb-dump</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mariadb-dump --single-transaction -h [server] -u [username] -p[password] [db_name] &gt; nextcloud-sqlbkp_`date +&quot;%Y%m%d&quot;`.bak
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mariadb-dump --single-transaction -h [server] -u [username] -p[password] [db_name] &gt; nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
 </pre></div>
 </div>
 <p>If you have enabled MariaDB 4-byte support (<a class="reference internal" href="../configuration_database/mysql_4byte_support.html"><span class="doc">Enabling MySQL/MariaDB 4-byte support</span></a>, needed for emoji), add <code class="docutils literal notranslate"><span class="pre">--default-character-set=utf8mb4</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mariadb-dump --single-transaction --default-character-set=utf8mb4 -h [server] -u [username] -p[password] [db_name] &gt; nextcloud-sqlbkp_`date +&quot;%Y%m%d&quot;`.bak
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mariadb-dump --single-transaction --default-character-set=utf8mb4 -h [server] -u [username] -p[password] [db_name] &gt; nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
 </pre></div>
 </div>
 </section>
 <section id="mysql">
 <h3>MySQL<a class="headerlink" href="#mysql" title="Link to this heading"></a></h3>
 <p>To backup MySQL:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mysqldump --single-transaction -h [server] -u [username] -p[password] [db_name] &gt; nextcloud-sqlbkp_`date +&quot;%Y%m%d&quot;`.bak
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mysqldump --single-transaction -h [server] -u [username] -p[password] [db_name] &gt; nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
 </pre></div>
 </div>
 <p>If you have enabled MySQL 4-byte support (<a class="reference internal" href="../configuration_database/mysql_4byte_support.html"><span class="doc">Enabling MySQL/MariaDB 4-byte support</span></a>, needed for emoji), add <code class="docutils literal notranslate"><span class="pre">--default-character-set=utf8mb4</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mysqldump --single-transaction --default-character-set=utf8mb4 -h [server] -u [username] -p[password] [db_name] &gt; nextcloud-sqlbkp_`date +&quot;%Y%m%d&quot;`.bak
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mysqldump --single-transaction --default-character-set=utf8mb4 -h [server] -u [username] -p[password] [db_name] &gt; nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
 </pre></div>
 </div>
 </section>
 <section id="sqlite">
 <h3>SQLite<a class="headerlink" href="#sqlite" title="Link to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sqlite3 data/owncloud.db .dump &gt; nextcloud-sqlbkp_`date +&quot;%Y%m%d&quot;`.bak
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sqlite3 data/owncloud.db .dump &gt; nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
 </pre></div>
 </div>
 </section>
 <section id="postgresql">
 <h3>PostgreSQL<a class="headerlink" href="#postgresql" title="Link to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PGPASSWORD=&quot;password&quot; pg_dump [db_name] -h [server] -U [username] -f nextcloud-sqlbkp_`date +&quot;%Y%m%d&quot;`.bak
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PGPASSWORD="password" pg_dump [db_name] -h [server] -U [username] -f nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
 </pre></div>
 </div>
 </section>

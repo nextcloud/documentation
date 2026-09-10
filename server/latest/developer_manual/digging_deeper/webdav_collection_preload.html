@@ -172,17 +172,17 @@ check their caches to avoid duplicate work.</p>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="nx">\Sabre\DAV\Server</span> <span class="nv">$server</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
         <span class="c1">// Called before per-node property handlers</span>
-        <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">&#39;preloadCollection&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">preloadCollection</span><span class="p">(</span><span class="o">...</span><span class="p">));</span>
+        <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">'preloadCollection'</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">preloadCollection</span><span class="p">(</span><span class="o">...</span><span class="p">));</span>
 
         <span class="c1">// Your usual property handlers</span>
-        <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">&#39;propFind&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">handleGetProperties</span><span class="p">(</span><span class="o">...</span><span class="p">));</span>
+        <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">'propFind'</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">handleGetProperties</span><span class="p">(</span><span class="o">...</span><span class="p">));</span>
     <span class="p">}</span>
 
     <span class="k">private</span> <span class="k">function</span> <span class="nf">preloadCollection</span><span class="p">(</span><span class="nx">PropFind</span> <span class="nv">$propFind</span><span class="p">,</span> <span class="nx">ICollection</span> <span class="nv">$collection</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
         <span class="c1">// Only preload when your properties were actually requested</span>
         <span class="nv">$requested</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;{http://appdomain.example/ns}your-prop&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;{http://appdomain.example/ns}another-prop&#39;</span><span class="p">,</span>
+            <span class="s1">'{http://appdomain.example/ns}your-prop'</span><span class="p">,</span>
+            <span class="s1">'{http://appdomain.example/ns}another-prop'</span><span class="p">,</span>
         <span class="p">];</span>
         <span class="nv">$anyRequested</span> <span class="o">=</span> <span class="nb">array_reduce</span><span class="p">(</span>
             <span class="nv">$requested</span><span class="p">,</span>
@@ -202,7 +202,7 @@ check their caches to avoid duplicate work.</p>
         <span class="c1">// Read and return values from $this-&gt;cache to avoid per-node queries</span>
 
         <span class="c1">// Handle per-node property loading here to support Depth = 0</span>
-        <span class="c1">// and cases where the &#39;preloadCollection&#39; event is not emitted.</span>
+        <span class="c1">// and cases where the 'preloadCollection' event is not emitted.</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -245,7 +245,7 @@ its direct children; avoid fetching across the whole tree.</p></li>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

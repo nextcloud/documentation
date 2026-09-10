@@ -171,7 +171,7 @@ registered in your app’s <code class="docutils literal notranslate"><span clas
 <h2>Registering activity components<a class="headerlink" href="#registering-activity-components" title="Link to this heading"></a></h2>
 <p>Add an <code class="docutils literal notranslate"><span class="pre">&lt;activity&gt;</span></code> section to your <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> to register
 providers, settings, and filters:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0"?&gt;</span>
 <span class="nt">&lt;info&gt;</span>
 <span class="w">    </span>...
 <span class="w">    </span><span class="nt">&lt;activity&gt;</span>
@@ -199,11 +199,11 @@ the activity manager and call <code class="docutils literal notranslate"><span c
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="c1">// IManager is injected via dependency injection</span>
 <span class="nv">$event</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">activityManager</span><span class="o">-&gt;</span><span class="na">generateEvent</span><span class="p">();</span>
-<span class="nv">$event</span><span class="o">-&gt;</span><span class="na">setApp</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">setType</span><span class="p">(</span><span class="s1">&#39;myapp_action&#39;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">setAffectedUser</span><span class="p">(</span><span class="s1">&#39;targetUser&#39;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="s1">&#39;subject_key&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;param1&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;value1&#39;</span><span class="p">])</span>
-    <span class="o">-&gt;</span><span class="na">setObject</span><span class="p">(</span><span class="s1">&#39;myobject&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;Object Name&#39;</span><span class="p">);</span>
+<span class="nv">$event</span><span class="o">-&gt;</span><span class="na">setApp</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setType</span><span class="p">(</span><span class="s1">'myapp_action'</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setAffectedUser</span><span class="p">(</span><span class="s1">'targetUser'</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="s1">'subject_key'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'param1'</span> <span class="o">=&gt;</span> <span class="s1">'value1'</span><span class="p">])</span>
+    <span class="o">-&gt;</span><span class="na">setObject</span><span class="p">(</span><span class="s1">'myobject'</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">'Object Name'</span><span class="p">);</span>
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">activityManager</span><span class="o">-&gt;</span><span class="na">publish</span><span class="p">(</span><span class="nv">$event</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -250,7 +250,7 @@ and beautify activities for display. The interface has a single
 next provider:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">public</span> <span class="k">function</span> <span class="nf">parse</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$language</span><span class="p">,</span> <span class="nx">IEvent</span> <span class="nv">$event</span><span class="p">,</span> <span class="o">?</span><span class="nx">IEvent</span> <span class="nv">$previousEvent</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">IEvent</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getApp</span><span class="p">()</span> <span class="o">!==</span> <span class="s1">&#39;myapp&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getApp</span><span class="p">()</span> <span class="o">!==</span> <span class="s1">'myapp'</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">throw</span> <span class="k">new</span> <span class="nx">\OCP\Activity\Exceptions\UnknownActivityException</span><span class="p">();</span>
     <span class="p">}</span>
 
@@ -269,7 +269,7 @@ For older versions, throw <code class="docutils literal notranslate"><span class
 <p>At minimum, you must call <code class="docutils literal notranslate"><span class="pre">setParsedSubject()</span></code> with a translated,
 plain-text string:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">setParsedSubject</span><span class="p">(</span>
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;You created %1$s&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getObjectName</span><span class="p">()])</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'You created %1$s'</span><span class="p">,</span> <span class="p">[</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getObjectName</span><span class="p">()])</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -292,12 +292,12 @@ automatically generates a parsed subject, so a separate
 links and user avatars. The <code class="docutils literal notranslate"><span class="pre">setRichSubject()</span></code> method takes a
 translated string with placeholders and an array of typed objects:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">setRichSubject</span><span class="p">(</span>
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;You added {file} to your favorites&#39;</span><span class="p">),</span>
-    <span class="p">[</span><span class="s1">&#39;file&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getObjectId</span><span class="p">(),</span>
-        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nb">basename</span><span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getObjectName</span><span class="p">()),</span>
-        <span class="s1">&#39;path&#39;</span> <span class="o">=&gt;</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getObjectName</span><span class="p">(),</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'You added {file} to your favorites'</span><span class="p">),</span>
+    <span class="p">[</span><span class="s1">'file'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s1">'file'</span><span class="p">,</span>
+        <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getObjectId</span><span class="p">(),</span>
+        <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nb">basename</span><span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getObjectName</span><span class="p">()),</span>
+        <span class="s1">'path'</span> <span class="o">=&gt;</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getObjectName</span><span class="p">(),</span>
     <span class="p">]]</span>
 <span class="p">);</span>
 </pre></div>
@@ -419,7 +419,7 @@ all types.</p></td>
 </table>
 <p>Example filtering to only show calendar todo activities:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">filterTypes</span><span class="p">(</span><span class="k">array</span> <span class="nv">$types</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nb">array_intersect</span><span class="p">([</span><span class="s1">&#39;calendar_todo&#39;</span><span class="p">],</span> <span class="nv">$types</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">array_intersect</span><span class="p">([</span><span class="s1">'calendar_todo'</span><span class="p">],</span> <span class="nv">$types</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -616,42 +616,42 @@ parameters object</p></td>
 <section id="example-response">
 <h3>Example response<a class="headerlink" href="#example-response" title="Link to this heading"></a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;activity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-20T12:49:31+00:00&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;app&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;files&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file_created&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test1&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test1 created hello.txt&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;subject_rich&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;0&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{user1} created {file1}&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;user1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test1&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Test User&quot;</span>
+<span class="w">  </span><span class="nt">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-20T12:49:31+00:00"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"files"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file_created"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test1"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test1 created hello.txt"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"subject_rich"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{user1} created {file1}"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"user1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test User"</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;file1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hello.txt&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/test/hello.txt&quot;</span>
+<span class="w">      </span><span class="nt">"file1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello.txt"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/test/hello.txt"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://cloud.example.com/apps/files/img/add-color.svg&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://cloud.example.com/apps/files/?dir=/test&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;object_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;files&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;object_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;object_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/test/hello.txt&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;previews&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cloud.example.com/apps/files/img/add-color.svg"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cloud.example.com/apps/files/?dir=/test"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"object_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"files"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"object_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/test/hello.txt"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"previews"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://cloud.example.com/core/preview.png?file=/hello.txt&amp;x=150&amp;y=150&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://cloud.example.com/apps/files/?dir=/test&amp;scrollto=hello.txt&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;mimeType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;fileId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;view&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;files&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;isMimeTypeIcon&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hello.txt&quot;</span>
+<span class="w">      </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cloud.example.com/core/preview.png?file=/hello.txt&amp;x=150&amp;y=150"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cloud.example.com/apps/files/?dir=/test&amp;scrollto=hello.txt"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text/plain"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"fileId"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"view"</span><span class="p">:</span><span class="w"> </span><span class="s2">"files"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"isMimeTypeIcon"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello.txt"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
@@ -690,7 +690,7 @@ more detailed examples:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

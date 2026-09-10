@@ -158,10 +158,10 @@ For now we support adding app-defined actions to a “context menu” of files a
 <section id="exposing-actions-via-capability">
 <h2>Exposing actions via capability<a class="headerlink" href="#exposing-actions-via-capability" title="Link to this heading"></a></h2>
 <p>Each app can add new actions via capabilities, following the syntax “app-id”, “hook-name” and list of all endpoints.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;client_integration&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="s1">'client_integration'</span> <span class="o">=&gt;</span> <span class="p">[</span>
     <span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;version&#39;</span> <span class="o">=&gt;</span> <span class="mf">0.1</span><span class="p">,</span>
-        <span class="s1">&#39;context-menu&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'version'</span> <span class="o">=&gt;</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="s1">'context-menu'</span> <span class="o">=&gt;</span> <span class="p">[</span>
             <span class="c1">// ... endpoints ...</span>
         <span class="p">]</span>
     <span class="p">]</span>
@@ -189,12 +189,12 @@ For now we support adding app-defined actions to a “context menu” of files a
 <li><p><code class="docutils literal notranslate"><span class="pre">method</span></code> supports POST/GET.</p></li>
 </ul>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-<span class="w">    </span><span class="s1">&#39;name&#39;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">&#39;translated title&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;url&#39;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">&#39;/ocs/v2.php/apps/abc&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;method&#39;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">&#39;POST/GET&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;mimetype_filters&#39;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">&#39;text/, application/pdf&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// will match text/* and PDFs</span>
-<span class="w">    </span><span class="s1">&#39;params&#39;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;file_id&#39;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">&#39;{fileId}&#39;</span><span class="p">,</span><span class="s1">&#39;file_path&#39;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">&#39;{filePath}&#39;</span><span class="p">],</span><span class="w"> </span><span class="c1">// only for POST; the key can vary depending on the app</span>
-<span class="w">    </span><span class="s1">&#39;icon&#39;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">&#39;/apps/abc/img/app.svg&#39;</span>
+<span class="w">    </span><span class="s1">'name'</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">'translated title'</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">'url'</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">'/ocs/v2.php/apps/abc'</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">'method'</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">'POST/GET'</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">'mimetype_filters'</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">'text/, application/pdf'</span><span class="p">,</span><span class="w"> </span><span class="c1">// will match text/* and PDFs</span>
+<span class="w">    </span><span class="s1">'params'</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="s1">'file_id'</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">'{fileId}'</span><span class="p">,</span><span class="s1">'file_path'</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">'{filePath}'</span><span class="p">],</span><span class="w"> </span><span class="c1">// only for POST; the key can vary depending on the app</span>
+<span class="w">    </span><span class="s1">'icon'</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">'/apps/abc/img/app.svg'</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -209,23 +209,23 @@ The app in question can then handle the request and can send two different respo
 - version: Indicates which version it is. Clients will be backwards compatible. If server sends a newer version than the client can understand the response will be ignored.
 - tooltip: Translated text, which will be shown as tooltip / snackbar.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;ocs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;meta&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;statuscode&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;message&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span>
+<span class="w">  </span><span class="s2">"ocs"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">"meta"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">"status"</span><span class="o">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"statuscode"</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"message"</span><span class="o">:</span><span class="w"> </span><span class="s2">"OK"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="s2">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;root&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">&quot;orientation&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vertical&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;rows&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">"data"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">"version"</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"root"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">"orientation"</span><span class="o">:</span><span class="w"> </span><span class="s2">"vertical"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"rows"</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="s2">&quot;children&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">"children"</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">              </span><span class="p">{</span>
-<span class="w">                </span><span class="s2">&quot;element&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;URL&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;text&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Link created&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/some/link/to/a/page&quot;</span>
+<span class="w">                </span><span class="s2">"element"</span><span class="o">:</span><span class="w"> </span><span class="s2">"URL"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"text"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Link created"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"url"</span><span class="o">:</span><span class="w"> </span><span class="s2">"/some/link/to/a/page"</span>
 <span class="w">              </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">          </span><span class="p">}</span>
@@ -244,15 +244,15 @@ The app in question can then handle the request and can send two different respo
 - version: Indicates which version it is. Clients will be backwards compatible. If server sends a newer version than the client can understand the response will be ignored.
 - tooltip: Translated text, which will be shown as tooltip / snackbar.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;ocs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;meta&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;statuscode&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;message&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span>
+<span class="w">  </span><span class="s2">"ocs"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">"meta"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">"status"</span><span class="o">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"statuscode"</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"message"</span><span class="o">:</span><span class="w"> </span><span class="s2">"OK"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="s2">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0.1&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Task submitted successfully&quot;</span>
+<span class="w">    </span><span class="s2">"data"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">"version"</span><span class="o">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"tooltip"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Task submitted successfully"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -265,30 +265,30 @@ The app in question can then handle the request and can send two different respo
 <p>Here is an example of using the Assistant app.</p>
 <p><strong>Capabilities:</strong></p>
 <p><cite>ocs/v1.php/cloud/capabilities</cite> returns the following capability:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;client_integration&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;assistant&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;context-menu&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">"client_integration"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"assistant"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">"version"</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"context-menu"</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Summarize using AI&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/ocs/v2.php/apps/assistant/api/v1/file-action/{fileId}/core:text2text:summary&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;method&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;mimetype_filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;text/, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.oasis.opendocument.text, application/pdf&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;icon&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/apps/assistant/img/client_integration/summarize.svg&quot;</span>
+<span class="w">        </span><span class="s2">"name"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Summarize using AI"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"url"</span><span class="o">:</span><span class="w"> </span><span class="s2">"/ocs/v2.php/apps/assistant/api/v1/file-action/{fileId}/core:text2text:summary"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"method"</span><span class="o">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"mimetype_filters"</span><span class="o">:</span><span class="w"> </span><span class="s2">"text/, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.oasis.opendocument.text, application/pdf"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"icon"</span><span class="o">:</span><span class="w"> </span><span class="s2">"/apps/assistant/img/client_integration/summarize.svg"</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Transcribe audio using AI&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/ocs/v2.php/apps/assistant/api/v1/file-action/{fileId}/core:audio2text&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;method&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;mimetype_filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;audio/&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;icon&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/apps/assistant/img/client_integration/speech_to_text.svg&quot;</span>
+<span class="w">        </span><span class="s2">"name"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Transcribe audio using AI"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"url"</span><span class="o">:</span><span class="w"> </span><span class="s2">"/ocs/v2.php/apps/assistant/api/v1/file-action/{fileId}/core:audio2text"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"method"</span><span class="o">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"mimetype_filters"</span><span class="o">:</span><span class="w"> </span><span class="s2">"audio/"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"icon"</span><span class="o">:</span><span class="w"> </span><span class="s2">"/apps/assistant/img/client_integration/speech_to_text.svg"</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Text-To-Speech using AI&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/ocs/v2.php/apps/assistant/api/v1/file-action/{fileId}/core:text2speech&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;method&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;mimetype_filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;text/, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.oasis.opendocument.text, application/pdf&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;icon&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/apps/assistant/img/client_integration/text_to_speech.svg&quot;</span>
+<span class="w">        </span><span class="s2">"name"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Text-To-Speech using AI"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"url"</span><span class="o">:</span><span class="w"> </span><span class="s2">"/ocs/v2.php/apps/assistant/api/v1/file-action/{fileId}/core:text2speech"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"method"</span><span class="o">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"mimetype_filters"</span><span class="o">:</span><span class="w"> </span><span class="s2">"text/, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.oasis.opendocument.text, application/pdf"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"icon"</span><span class="o">:</span><span class="w"> </span><span class="s2">"/apps/assistant/img/client_integration/text_to_speech.svg"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
@@ -300,15 +300,15 @@ The app in question can then handle the request and can send two different respo
 <p>Looking at the “Summarize using AI” action, it will only show for files with mimetypes starting with “text/” or the specified document and PDF mimetypes, as described in <cite>mimetype_filters</cite>.
 When clicking on the action, the client will send a POST request to the specified URL, replacing {fileId} with the actual file id. The app can then handle the request and for example send a tooltip response back to the client. The client will show the tooltip to the user:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;ocs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">&quot;meta&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;statuscode&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;message&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span>
+<span class="w">    </span><span class="s2">"ocs"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">"meta"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">"status"</span><span class="o">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"statuscode"</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"message"</span><span class="o">:</span><span class="w"> </span><span class="s2">"OK"</span>
 <span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="s2">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Summarization task submitted successfully&quot;</span>
+<span class="w">        </span><span class="s2">"data"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">"version"</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"tooltip"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Summarization task submitted successfully"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -322,14 +322,14 @@ When clicking on the action, the client will send a POST request to the specifie
 <li><p>Create <code class="docutils literal notranslate"><span class="pre">Capabilities.php</span></code> in <code class="docutils literal notranslate"><span class="pre">/lib</span></code> folder and add to array in <code class="docutils literal notranslate"><span class="pre">getCapabilities()</span></code>:</p></li>
 </ol>
 <blockquote>
-<div><div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;client_integration&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                <span class="s1">&#39;pingpong&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                    <span class="s1">&#39;version&#39;</span> <span class="o">=&gt;</span> <span class="mf">0.1</span><span class="p">,</span>
-                    <span class="s1">&#39;context-menu&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<div><div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="s1">'client_integration'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s1">'pingpong'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                    <span class="s1">'version'</span> <span class="o">=&gt;</span> <span class="mf">0.1</span><span class="p">,</span>
+                    <span class="s1">'context-menu'</span> <span class="o">=&gt;</span> <span class="p">[</span>
                         <span class="p">[</span>
-                            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Ping&#39;</span><span class="p">),</span>
-                            <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/ocs/v2.php/apps/pingpong/ping/{fileId}&#39;</span><span class="p">,</span>
-                            <span class="s1">&#39;method&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+                            <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Ping'</span><span class="p">),</span>
+                            <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'/ocs/v2.php/apps/pingpong/ping/{fileId}'</span><span class="p">,</span>
+                            <span class="s1">'method'</span> <span class="o">=&gt;</span> <span class="s1">'GET'</span><span class="p">,</span>
                         <span class="p">],</span>
                     <span class="p">],</span>
                 <span class="p">],</span>
@@ -353,11 +353,11 @@ When clicking on the action, the client will send a POST request to the specifie
 </ol>
 <blockquote>
 <div><div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
-<span class="p">#[</span><span class="nd">ApiRoute</span><span class="p">(</span><span class="nx">verb</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/ping/{fileId}&#39;</span><span class="p">)]</span>
+<span class="p">#[</span><span class="nd">ApiRoute</span><span class="p">(</span><span class="nx">verb</span><span class="o">:</span> <span class="s1">'GET'</span><span class="p">,</span> <span class="nx">url</span><span class="o">:</span> <span class="s1">'/ping/{fileId}'</span><span class="p">)]</span>
 <span class="k">public</span> <span class="k">function</span> <span class="nf">ping</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$fileId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span>
-        <span class="p">[</span><span class="s1">&#39;version&#39;</span> <span class="o">=&gt;</span> <span class="mf">0.1</span><span class="p">,</span>
-            <span class="s1">&#39;tooltip&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s2">&quot;Pong file %s&quot;</span><span class="p">,</span> <span class="nv">$fileId</span><span class="p">)]</span>
+        <span class="p">[</span><span class="s1">'version'</span> <span class="o">=&gt;</span> <span class="mf">0.1</span><span class="p">,</span>
+            <span class="s1">'tooltip'</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s2">"Pong file %s"</span><span class="p">,</span> <span class="nv">$fileId</span><span class="p">)]</span>
     <span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -385,7 +385,7 @@ When clicking on the action, the client will send a POST request to the specifie
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

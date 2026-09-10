@@ -244,7 +244,7 @@ can further reduce what other accounts can find or see.</p></li>
 <img alt="../_images/profile_default_setting.png" src="../_images/profile_default_setting.png" />
 </figure>
 <p>You can also set this via <code class="docutils literal notranslate"><span class="pre">occ</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">settings</span> <span class="n">profile_enabled_by_default</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">settings</span> <span class="n">profile_enabled_by_default</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">"0"</span>
 </pre></div>
 </div>
 <p>Use <code class="docutils literal notranslate"><span class="pre">--value=&quot;1&quot;</span></code> to enable it by default again.</p>
@@ -253,7 +253,7 @@ can further reduce what other accounts can find or see.</p></li>
 <section id="disable-profiles-globally">
 <h3>Disable profiles globally<a class="headerlink" href="#disable-profiles-globally" title="Link to this heading"></a></h3>
 <p>To disable profile functionality for all users, add this to <code class="docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;profile.enabled&#39;</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'profile.enabled'</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
 </pre></div>
 </div>
 </section>
@@ -565,7 +565,7 @@ source is the <code class="docutils literal notranslate"><span class="pre">DEFAU
 <h3>Override default scopes in <code class="docutils literal notranslate"><span class="pre">config.php</span></code><a class="headerlink" href="#override-default-scopes-in-config-php" title="Link to this heading"></a></h3>
 <p>To override one or several default visibility scopes for <em>new users</em>, use
 <code class="docutils literal notranslate"><span class="pre">account_manager.default_property_scope</span></code> (default: empty array):</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&#39;account_manager.default_property_scope&#39; =&gt; [</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">'account_manager.default_property_scope' =&gt; [</span>
 <span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_PHONE =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
 <span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_ROLE =&gt; \OCP\Accounts\IAccountManager::SCOPE_FEDERATED,</span>
 <span class="x">]</span>
@@ -583,7 +583,7 @@ source is the <code class="docutils literal notranslate"><span class="pre">DEFAU
 <p>If your goal is maximum privacy:</p>
 <ol class="arabic">
 <li><p>Disable profiles globally (strictest option):</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&#39;profile.enabled&#39; =&gt; false,</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">'profile.enabled' =&gt; false,</span>
 </pre></div>
 </div>
 <p>Effect:</p>
@@ -593,7 +593,7 @@ source is the <code class="docutils literal notranslate"><span class="pre">DEFAU
 </ul>
 </li>
 <li><p>If profiles must remain enabled, set restrictive defaults for new users:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&#39;account_manager.default_property_scope&#39; =&gt; [</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">'account_manager.default_property_scope' =&gt; [</span>
 <span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_ADDRESS =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
 <span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_PHONE =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
 <span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_WEBSITE =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
@@ -641,9 +641,9 @@ admins cannot set scopes on behalf of other users.</p>
 <p>Users can update their own scopes in <strong>Personal settings</strong> → <strong>Personal info</strong> →
 <strong>Edit your Profile visibility</strong>, or via the API:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">u</span> <span class="n">alice</span><span class="p">:</span><span class="n">password</span> <span class="o">-</span><span class="n">X</span> <span class="n">PUT</span> \
-  <span class="s2">&quot;https://cloud.example.com/ocs/v2.php/cloud/users/alice&quot;</span> \
-  <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;OCS-APIRequest: true&quot;</span> \
-  <span class="o">-</span><span class="n">d</span> <span class="s2">&quot;key=phoneScope&amp;value=v2-private&quot;</span>
+  <span class="s2">"https://cloud.example.com/ocs/v2.php/cloud/users/alice"</span> \
+  <span class="o">-</span><span class="n">H</span> <span class="s2">"OCS-APIRequest: true"</span> \
+  <span class="o">-</span><span class="n">d</span> <span class="s2">"key=phoneScope&amp;value=v2-private"</span>
 </pre></div>
 </div>
 <p>The scope key is the property name with <code class="docutils literal notranslate"><span class="pre">Scope</span></code> appended. Available keys:</p>

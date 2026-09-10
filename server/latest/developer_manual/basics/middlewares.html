@@ -156,10 +156,10 @@
 <span class="k">class</span> <span class="nc">CensorMiddleware</span> <span class="k">extends</span> <span class="nx">Middleware</span> <span class="p">{</span>
 
     <span class="sd">/**</span>
-<span class="sd">     * this replaces &quot;bad words&quot; with &quot;********&quot; in the output</span>
+<span class="sd">     * this replaces "bad words" with "********" in the output</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeOutput</span><span class="p">(</span><span class="nv">$controller</span><span class="p">,</span> <span class="nv">$methodName</span><span class="p">,</span> <span class="nv">$output</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39;bad words&#39;</span><span class="p">,</span> <span class="s1">&#39;********&#39;</span><span class="p">,</span> <span class="nv">$output</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">'bad words'</span><span class="p">,</span> <span class="s1">'********'</span><span class="p">,</span> <span class="nv">$output</span><span class="p">);</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -183,7 +183,7 @@
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
@@ -219,7 +219,7 @@
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
@@ -252,7 +252,7 @@
 <span class="k">class</span> <span class="nc">MyApp</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
 
 <span class="hll">        <span class="nv">$container</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">();</span>
 </span><span class="hll">
@@ -291,8 +291,8 @@
 <span class="sd">   * Add custom header if @MyHeader is used</span>
 <span class="sd">   */</span>
   <span class="k">public</span> <span class="k">function</span> <span class="nf">afterController</span><span class="p">(</span><span class="nv">$controller</span><span class="p">,</span> <span class="nv">$methodName</span><span class="p">,</span> <span class="nx">Response</span> <span class="nv">$response</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
-      <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">reflector</span><span class="o">-&gt;</span><span class="na">hasAnnotation</span><span class="p">(</span><span class="s1">&#39;MyHeader&#39;</span><span class="p">))</span> <span class="p">{</span>
-          <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;My-Header&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+      <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">reflector</span><span class="o">-&gt;</span><span class="na">hasAnnotation</span><span class="p">(</span><span class="s1">'MyHeader'</span><span class="p">))</span> <span class="p">{</span>
+          <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">'My-Header'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
       <span class="p">}</span>
       <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
   <span class="p">}</span>
@@ -318,7 +318,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

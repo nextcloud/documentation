@@ -152,8 +152,8 @@ to register any services or run some code for every request.</p>
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
-        <span class="nx">\OCP\Util</span><span class="o">::</span><span class="na">connectHook</span><span class="p">(</span><span class="s1">&#39;OC_User&#39;</span><span class="p">,</span> <span class="s1">&#39;pre_deleteUser&#39;</span><span class="p">,</span> <span class="s1">&#39;OCA\MyApp\Hooks\User&#39;</span><span class="p">,</span> <span class="s1">&#39;deleteUser&#39;</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">);</span>
+        <span class="nx">\OCP\Util</span><span class="o">::</span><span class="na">connectHook</span><span class="p">(</span><span class="s1">'OC_User'</span><span class="p">,</span> <span class="s1">'pre_deleteUser'</span><span class="p">,</span> <span class="s1">'OCA\MyApp\Hooks\User'</span><span class="p">,</span> <span class="s1">'deleteUser'</span><span class="p">);</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -180,14 +180,14 @@ to register any services or run some code for every request.</p>
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
         <span class="c1">// ... registration logic goes here ...</span>
 
         <span class="c1">// Register the composer autoloader for packages shipped by this app, if applicable</span>
-        <span class="k">include_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/../../vendor/autoload.php&#39;</span><span class="p">;</span>
+        <span class="k">include_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/../../vendor/autoload.php'</span><span class="p">;</span>
 
         <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerEventListener</span><span class="p">(</span>
             <span class="nx">BeforeUserDeletedEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
@@ -242,7 +242,7 @@ you may assume that all registrations via <code class="docutils literal notransl
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{}</span>
@@ -265,7 +265,7 @@ you may assume that all registrations via <code class="docutils literal notransl
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{}</span>
@@ -288,7 +288,7 @@ you may assume that all registrations via <code class="docutils literal notransl
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{}</span>
@@ -322,7 +322,7 @@ you may assume that all registrations via <code class="docutils literal notransl
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

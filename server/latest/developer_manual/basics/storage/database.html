@@ -167,10 +167,10 @@
     <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
         <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">getQueryBuilder</span><span class="p">();</span>
 
-        <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
-           <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s1">&#39;myapp_authors&#39;</span><span class="p">)</span>
+        <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">'*'</span><span class="p">)</span>
+           <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s1">'myapp_authors'</span><span class="p">)</span>
            <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span>
-               <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">expr</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">eq</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">createNamedParameter</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nx">IQueryBuilder</span><span class="o">::</span><span class="na">PARAM_INT</span><span class="p">))</span>
+               <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">expr</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">eq</span><span class="p">(</span><span class="s1">'id'</span><span class="p">,</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">createNamedParameter</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nx">IQueryBuilder</span><span class="o">::</span><span class="na">PARAM_INT</span><span class="p">))</span>
            <span class="p">);</span>
 
         <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">();</span>
@@ -235,7 +235,7 @@
     <span class="p">}</span>
 
     <span class="sd">/**</span>
-<span class="sd">     * It&#39;s also possible to get a result out of the closure</span>
+<span class="sd">     * It's also possible to get a result out of the closure</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">doSomeWorkWithResults</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">atomic</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
@@ -280,16 +280,16 @@ the table’s primary key.</p>
 <span class="k">use</span> <span class="nx">OCP\DB\Schema\ColumnType</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCP\Snowflake\ISnowflakeGenerator</span><span class="p">;</span>
 
-<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp_authors&#39;</span><span class="p">)]</span>
+<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'myapp_authors'</span><span class="p">)]</span>
 <span class="k">final</span> <span class="k">class</span> <span class="nc">Author</span> <span class="p">{</span>
     <span class="p">#[</span><span class="nd">Id</span><span class="p">(</span><span class="nx">generatorClass</span><span class="o">:</span> <span class="nx">ISnowflakeGenerator</span><span class="o">::</span><span class="na">class</span><span class="p">)]</span>
-    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'id'</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
     <span class="k">public</span> <span class="o">?</span><span class="nx">string</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
-    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">String</span><span class="p">,</span> <span class="nx">length</span><span class="o">:</span> <span class="mi">64</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'name'</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">String</span><span class="p">,</span> <span class="nx">length</span><span class="o">:</span> <span class="mi">64</span><span class="p">)]</span>
     <span class="k">public</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">;</span>
 
-    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;stars&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Integer</span><span class="p">,</span> <span class="k">default</span><span class="o">:</span> <span class="mi">0</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'stars'</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Integer</span><span class="p">,</span> <span class="k">default</span><span class="o">:</span> <span class="mi">0</span><span class="p">)]</span>
     <span class="k">public</span> <span class="nx">int</span> <span class="nv">$stars</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -313,7 +313,7 @@ typically stored in a <code class="docutils literal notranslate"><span class="pr
 <code class="docutils literal notranslate"><span class="pre">generatorClass</span></code> also works: it relies on the database’s autoincrement column instead, and
 <code class="docutils literal notranslate"><span class="pre">insert()</span></code> only fills in the id property after the row has been written.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">#[</span><span class="nd">Id</span><span class="p">]</span>
-<span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Integer</span><span class="p">)]</span>
+<span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'id'</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Integer</span><span class="p">)]</span>
 <span class="k">public</span> <span class="o">?</span><span class="nx">int</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -382,12 +382,12 @@ can be injected into a controller or service just like any other class.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$author</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Author</span><span class="p">();</span>
-<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">&#39;Jane Doe&#39;</span><span class="p">;</span>
+<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">'Jane Doe'</span><span class="p">;</span>
 
 <span class="nv">$authorMapper</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span><span class="nv">$author</span><span class="p">);</span>
 <span class="c1">// $author-&gt;id is now populated</span>
 
-<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">&#39;Jane D. Doe&#39;</span><span class="p">;</span>
+<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">'Jane D. Doe'</span><span class="p">;</span>
 <span class="nv">$authorMapper</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="nv">$author</span><span class="p">);</span>
 
 <span class="nv">$authorMapper</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$author</span><span class="p">);</span>
@@ -407,17 +407,17 @@ query by hand:</p>
 
 <span class="c1">// A single entity; throws DoesNotExistException if there is no match, or</span>
 <span class="c1">// MultipleObjectsReturnedException if there is more than one</span>
-<span class="nv">$author</span> <span class="o">=</span> <span class="nv">$authorMapper</span><span class="o">-&gt;</span><span class="na">findOneBy</span><span class="p">([</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">]);</span>
+<span class="nv">$author</span> <span class="o">=</span> <span class="nv">$authorMapper</span><span class="o">-&gt;</span><span class="na">findOneBy</span><span class="p">([</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">]);</span>
 
 <span class="c1">// Every entity matching the criteria, as a \Generator</span>
-<span class="k">foreach</span> <span class="p">(</span><span class="nv">$authorMapper</span><span class="o">-&gt;</span><span class="na">findBy</span><span class="p">([</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">])</span> <span class="k">as</span> <span class="nv">$author</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$authorMapper</span><span class="o">-&gt;</span><span class="na">findBy</span><span class="p">([</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">])</span> <span class="k">as</span> <span class="nv">$author</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// ...</span>
 <span class="p">}</span>
 
 <span class="c1">// Sorting, and simple offset-based pagination</span>
 <span class="nv">$authors</span> <span class="o">=</span> <span class="nb">iterator_to_array</span><span class="p">(</span><span class="nv">$authorMapper</span><span class="o">-&gt;</span><span class="na">findBy</span><span class="p">(</span>
     <span class="nx">criteria</span><span class="o">:</span> <span class="p">[],</span>
-    <span class="nx">orderBy</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nx">\SortDirection</span><span class="o">::</span><span class="na">Ascending</span><span class="p">],</span>
+    <span class="nx">orderBy</span><span class="o">:</span> <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nx">\SortDirection</span><span class="o">::</span><span class="na">Ascending</span><span class="p">],</span>
     <span class="nx">limit</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
     <span class="nx">offset</span><span class="o">:</span> <span class="mi">40</span><span class="p">,</span>
 <span class="p">));</span>
@@ -455,7 +455,7 @@ stop once fewer than <code class="docutils literal notranslate"><span class="pre
 </div>
 <p>To delete every entity matching a set of criteria in one query, without loading them first, use
 <code class="docutils literal notranslate"><span class="pre">deleteBy()</span></code>, which returns the number of rows deleted:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$deletedCount = $authorMapper-&gt;deleteBy([&#39;stars&#39; =&gt; 0]);
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$deletedCount = $authorMapper-&gt;deleteBy(['stars' =&gt; 0]);
 </pre></div>
 </div>
 </section>
@@ -482,17 +482,17 @@ using the protected <code class="docutils literal notranslate"><span class="pre"
     <span class="k">public</span> <span class="k">function</span> <span class="nf">authorNameCount</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">int</span> <span class="p">{</span>
         <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">connection</span><span class="o">-&gt;</span><span class="na">getQueryBuilder</span><span class="p">();</span>
 
-        <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">func</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">))</span>
+        <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">func</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">(</span><span class="s1">'*'</span><span class="p">,</span> <span class="s1">'count'</span><span class="p">))</span>
            <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getTableName</span><span class="p">())</span>
            <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span>
-               <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">expr</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">eq</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">createNamedParameter</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nx">IQueryBuilder</span><span class="o">::</span><span class="na">PARAM_STR</span><span class="p">))</span>
+               <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">expr</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">eq</span><span class="p">(</span><span class="s1">'name'</span><span class="p">,</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">createNamedParameter</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nx">IQueryBuilder</span><span class="o">::</span><span class="na">PARAM_STR</span><span class="p">))</span>
            <span class="p">);</span>
 
         <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">();</span>
         <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetchAssociative</span><span class="p">();</span>
         <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">closeCursor</span><span class="p">();</span>
 
-        <span class="k">return</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">];</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span><span class="nv">$row</span><span class="p">[</span><span class="s1">'count'</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -506,24 +506,24 @@ using the protected <code class="docutils literal notranslate"><span class="pre"
 the same query, via a <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code> — there is no lazy-loading, and a missing relation resolves to <code class="docutils literal notranslate"><span class="pre">null</span></code>:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
-<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp_merchants&#39;</span><span class="p">)]</span>
+<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'myapp_merchants'</span><span class="p">)]</span>
 <span class="k">final</span> <span class="k">class</span> <span class="nc">Merchant</span> <span class="p">{</span>
     <span class="p">#[</span><span class="nd">Id</span><span class="p">(</span><span class="nx">generatorClass</span><span class="o">:</span> <span class="nx">ISnowflakeGenerator</span><span class="o">::</span><span class="na">class</span><span class="p">)]</span>
-    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'id'</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
     <span class="k">public</span> <span class="o">?</span><span class="nx">string</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
-    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">String</span><span class="p">,</span> <span class="nx">length</span><span class="o">:</span> <span class="mi">64</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'name'</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">String</span><span class="p">,</span> <span class="nx">length</span><span class="o">:</span> <span class="mi">64</span><span class="p">)]</span>
     <span class="k">public</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp_orders&#39;</span><span class="p">)]</span>
+<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'myapp_orders'</span><span class="p">)]</span>
 <span class="k">final</span> <span class="k">class</span> <span class="nc">Order</span> <span class="p">{</span>
     <span class="p">#[</span><span class="nd">Id</span><span class="p">(</span><span class="nx">generatorClass</span><span class="o">:</span> <span class="nx">ISnowflakeGenerator</span><span class="o">::</span><span class="na">class</span><span class="p">)]</span>
-    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'id'</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
     <span class="k">public</span> <span class="o">?</span><span class="nx">string</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
     <span class="p">#[</span><span class="nd">ManyToOne</span><span class="p">(</span><span class="nx">targetEntity</span><span class="o">:</span> <span class="nx">Merchant</span><span class="o">::</span><span class="na">class</span><span class="p">)]</span>
-    <span class="p">#[</span><span class="nd">JoinColumn</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;merchant_id&#39;</span><span class="p">,</span> <span class="nx">referencedColumnName</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">nullable</span><span class="o">:</span> <span class="k">true</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">JoinColumn</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'merchant_id'</span><span class="p">,</span> <span class="nx">referencedColumnName</span><span class="o">:</span> <span class="s1">'id'</span><span class="p">,</span> <span class="nx">nullable</span><span class="o">:</span> <span class="k">true</span><span class="p">)]</span>
     <span class="k">public</span> <span class="o">?</span><span class="nx">Merchant</span> <span class="nv">$merchant</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -536,25 +536,25 @@ A bidirectional <code class="docutils literal notranslate"><span class="pre">One
 the property on the other side, and the <code class="docutils literal notranslate"><span class="pre">#[JoinColumn]</span></code> only repeated on the owning (<code class="docutils literal notranslate"><span class="pre">invertedBy</span></code>) side:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
-<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp_customers&#39;</span><span class="p">)]</span>
+<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'myapp_customers'</span><span class="p">)]</span>
 <span class="k">final</span> <span class="k">class</span> <span class="nc">Customer</span> <span class="p">{</span>
     <span class="p">#[</span><span class="nd">Id</span><span class="p">(</span><span class="nx">generatorClass</span><span class="o">:</span> <span class="nx">ISnowflakeGenerator</span><span class="o">::</span><span class="na">class</span><span class="p">)]</span>
-    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'id'</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
     <span class="k">public</span> <span class="o">?</span><span class="nx">string</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
-    <span class="p">#[</span><span class="nd">OneToOne</span><span class="p">(</span><span class="nx">targetEntity</span><span class="o">:</span> <span class="nx">Cart</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">mappedBy</span><span class="o">:</span> <span class="s1">&#39;customer&#39;</span><span class="p">)]</span>
-    <span class="p">#[</span><span class="nd">JoinColumn</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;cart_id&#39;</span><span class="p">,</span> <span class="nx">referencedColumnName</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">OneToOne</span><span class="p">(</span><span class="nx">targetEntity</span><span class="o">:</span> <span class="nx">Cart</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">mappedBy</span><span class="o">:</span> <span class="s1">'customer'</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">JoinColumn</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'cart_id'</span><span class="p">,</span> <span class="nx">referencedColumnName</span><span class="o">:</span> <span class="s1">'id'</span><span class="p">)]</span>
     <span class="k">public</span> <span class="o">?</span><span class="nx">Cart</span> <span class="nv">$cart</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp_carts&#39;</span><span class="p">)]</span>
+<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'myapp_carts'</span><span class="p">)]</span>
 <span class="k">final</span> <span class="k">class</span> <span class="nc">Cart</span> <span class="p">{</span>
     <span class="p">#[</span><span class="nd">Id</span><span class="p">(</span><span class="nx">generatorClass</span><span class="o">:</span> <span class="nx">ISnowflakeGenerator</span><span class="o">::</span><span class="na">class</span><span class="p">)]</span>
-    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'id'</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
     <span class="k">public</span> <span class="o">?</span><span class="nx">string</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
-    <span class="p">#[</span><span class="nd">OneToOne</span><span class="p">(</span><span class="nx">targetEntity</span><span class="o">:</span> <span class="nx">Customer</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">invertedBy</span><span class="o">:</span> <span class="s1">&#39;cart&#39;</span><span class="p">)]</span>
-    <span class="p">#[</span><span class="nd">JoinColumn</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;customer_id&#39;</span><span class="p">,</span> <span class="nx">referencedColumnName</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">OneToOne</span><span class="p">(</span><span class="nx">targetEntity</span><span class="o">:</span> <span class="nx">Customer</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">invertedBy</span><span class="o">:</span> <span class="s1">'cart'</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">JoinColumn</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'customer_id'</span><span class="p">,</span> <span class="nx">referencedColumnName</span><span class="o">:</span> <span class="s1">'id'</span><span class="p">)]</span>
     <span class="k">public</span> <span class="o">?</span><span class="nx">Customer</span> <span class="nv">$customer</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -568,14 +568,14 @@ otherwise deleting an entity that is still referenced by another entity’s join
 <p>Applying <code class="docutils literal notranslate"><span class="pre">#[Id]</span></code> to more than one property declares a composite primary key:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
-<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp_shelf_items&#39;</span><span class="p">)]</span>
+<span class="p">#[</span><span class="nd">Entity</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'myapp_shelf_items'</span><span class="p">)]</span>
 <span class="k">final</span> <span class="k">class</span> <span class="nc">ShelfItem</span> <span class="p">{</span>
     <span class="p">#[</span><span class="nd">Id</span><span class="p">]</span>
-    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;shelf_id&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'shelf_id'</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
     <span class="k">public</span> <span class="o">?</span><span class="nx">int</span> <span class="nv">$shelfId</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
     <span class="p">#[</span><span class="nd">Id</span><span class="p">]</span>
-    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">Column</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'author_id'</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">Bigint</span><span class="p">)]</span>
     <span class="k">public</span> <span class="o">?</span><span class="nx">int</span> <span class="nv">$authorId</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -609,11 +609,11 @@ for their documentation.</p>
 </li>
 </ol>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">Types</span><span class="o">::</span><span class="na">BIGINT</span><span class="p">,</span> <span class="p">[</span>
-    <span class="s1">&#39;autoincrement&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-    <span class="s1">&#39;notnull&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-    <span class="s1">&#39;length&#39;</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
-    <span class="s1">&#39;unsigned&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s1">'id'</span><span class="p">,</span> <span class="nx">Types</span><span class="o">::</span><span class="na">BIGINT</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">'autoincrement'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+    <span class="s1">'notnull'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+    <span class="s1">'length'</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s1">'unsigned'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
 <span class="p">]);</span>
 </pre></div>
 </div>
@@ -621,14 +621,14 @@ for their documentation.</p>
 <li><p>Set a primary key to prevent errors in clustered setups. You can use the <cite>id</cite> field for that.</p></li>
 </ol>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nv">$table</span><span class="o">-&gt;</span><span class="na">setPrimaryKey</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">]);</span>
+<span class="nv">$table</span><span class="o">-&gt;</span><span class="na">setPrimaryKey</span><span class="p">([</span><span class="s1">'id'</span><span class="p">]);</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
 <li><p>Manually set the name of your indexes. It will help you to manipulate them if needed in the future. Note that the names of the index are “global” database wide in some database platforms so having generic names can create conflicts. Since Nextcloud 28 uniqueness across all tables is ensured at installation time and during updates. This happens <em>regardless of the in-use database platform</em> to maintain broad compatibility and consistency.</p></li>
 </ol>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addUniqueIndex</span><span class="p">([</span><span class="s1">&#39;your&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">,</span> <span class="s1">&#39;names&#39;</span><span class="p">,</span> <span class="s1">&#39;...&#39;</span><span class="p">],</span> <span class="s1">&#39;table_name_uniq_feature&#39;</span><span class="p">);</span>
+<span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addUniqueIndex</span><span class="p">([</span><span class="s1">'your'</span><span class="p">,</span> <span class="s1">'column'</span><span class="p">,</span> <span class="s1">'names'</span><span class="p">,</span> <span class="s1">'...'</span><span class="p">],</span> <span class="s1">'table_name_uniq_feature'</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
@@ -683,7 +683,7 @@ You can specify your supported databases in the <code class="docutils literal no
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Sep 09, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

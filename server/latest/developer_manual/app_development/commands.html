@@ -178,13 +178,13 @@ injection container, so constructor injection works automatically.</p>
 <span class="k">use</span> <span class="nx">OCP\IUserManager</span><span class="p">;</span>
 
 <span class="p">#[</span><span class="nd">AsCommand</span><span class="p">(</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp:greet&#39;</span><span class="p">,</span>
-    <span class="c1">// this short description is shown when running &quot;occ list&quot;</span>
-    <span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;Print a greeting for a Nextcloud user.&#39;</span><span class="p">,</span>
-    <span class="c1">// this is shown when running the command with the &quot;--help&quot; option</span>
-    <span class="nx">help</span><span class="o">:</span> <span class="s1">&#39;This command prints a greeting for the given Nextcloud user.&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">'myapp:greet'</span><span class="p">,</span>
+    <span class="c1">// this short description is shown when running "occ list"</span>
+    <span class="nx">description</span><span class="o">:</span> <span class="s1">'Print a greeting for a Nextcloud user.'</span><span class="p">,</span>
+    <span class="c1">// this is shown when running the command with the "--help" option</span>
+    <span class="nx">help</span><span class="o">:</span> <span class="s1">'This command prints a greeting for the given Nextcloud user.'</span><span class="p">,</span>
     <span class="c1">// this allows you to show one or more usage examples (no need to add the command name)</span>
-    <span class="nx">usages</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;bob&#39;</span><span class="p">,</span> <span class="s1">&#39;alice --shout&#39;</span><span class="p">],</span>
+    <span class="nx">usages</span><span class="o">:</span> <span class="p">[</span><span class="s1">'bob'</span><span class="p">,</span> <span class="s1">'alice --shout'</span><span class="p">],</span>
 <span class="p">)]</span>
 <span class="k">class</span> <span class="nc">Greet</span> <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
@@ -194,19 +194,19 @@ injection container, so constructor injection works automatically.</p>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
         <span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span>
-        <span class="p">#[</span><span class="nd">Argument</span><span class="p">(</span><span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;The username of the user&#39;</span><span class="p">)]</span>
+        <span class="p">#[</span><span class="nd">Argument</span><span class="p">(</span><span class="nx">description</span><span class="o">:</span> <span class="s1">'The username of the user'</span><span class="p">)]</span>
         <span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span>
-        <span class="p">#[</span><span class="nd">Option</span><span class="p">(</span><span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;Print the greeting in uppercase&#39;</span><span class="p">)]</span>
+        <span class="p">#[</span><span class="nd">Option</span><span class="p">(</span><span class="nx">description</span><span class="o">:</span> <span class="s1">'Print the greeting in uppercase'</span><span class="p">)]</span>
         <span class="nx">bool</span> <span class="nv">$shout</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span>
     <span class="p">)</span><span class="o">:</span> <span class="nx">ExitCode</span> <span class="p">{</span>
         <span class="nv">$user</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userManager</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$userId</span><span class="p">);</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nv">$user</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">writeln</span><span class="p">(</span><span class="s2">&quot;&lt;error&gt;User </span><span class="se">\&quot;</span><span class="si">$userId</span><span class="se">\&quot;</span><span class="s2"> not found.&lt;/error&gt;&quot;</span><span class="p">);</span>
+            <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">writeln</span><span class="p">(</span><span class="s2">"&lt;error&gt;User </span><span class="se">\"</span><span class="si">$userId</span><span class="se">\"</span><span class="s2"> not found.&lt;/error&gt;"</span><span class="p">);</span>
             <span class="k">return</span> <span class="nx">ExitCode</span><span class="o">::</span><span class="na">Failure</span><span class="p">;</span>
         <span class="p">}</span>
 
-        <span class="nv">$greeting</span> <span class="o">=</span> <span class="s1">&#39;Hello, &#39;</span> <span class="o">.</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getDisplayName</span><span class="p">()</span> <span class="o">.</span> <span class="s1">&#39;!&#39;</span><span class="p">;</span>
+        <span class="nv">$greeting</span> <span class="o">=</span> <span class="s1">'Hello, '</span> <span class="o">.</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getDisplayName</span><span class="p">()</span> <span class="o">.</span> <span class="s1">'!'</span><span class="p">;</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nv">$shout</span><span class="p">)</span> <span class="p">{</span>
             <span class="nv">$greeting</span> <span class="o">=</span> <span class="nb">strtoupper</span><span class="p">(</span><span class="nv">$greeting</span><span class="p">);</span>
@@ -240,20 +240,20 @@ on the class. Nextcloud registers one occ command per attributed method:</p>
     <span class="p">)</span> <span class="p">{</span>
     <span class="p">}</span>
 
-    <span class="p">#[</span><span class="nd">AsCommand</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp:user:create&#39;</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">AsCommand</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'myapp:user:create'</span><span class="p">)]</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span>
         <span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span>
-        <span class="p">#[</span><span class="nd">Argument</span><span class="p">(</span><span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;The username of the user&#39;</span><span class="p">)]</span>
+        <span class="p">#[</span><span class="nd">Argument</span><span class="p">(</span><span class="nx">description</span><span class="o">:</span> <span class="s1">'The username of the user'</span><span class="p">)]</span>
         <span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span>
     <span class="p">)</span><span class="o">:</span> <span class="nx">ExitCode</span> <span class="p">{</span>
         <span class="c1">// ...</span>
         <span class="k">return</span> <span class="nx">ExitCode</span><span class="o">::</span><span class="na">Success</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="p">#[</span><span class="nd">AsCommand</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;myapp:user:delete&#39;</span><span class="p">)]</span>
+    <span class="p">#[</span><span class="nd">AsCommand</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'myapp:user:delete'</span><span class="p">)]</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span>
         <span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span>
-        <span class="p">#[</span><span class="nd">Argument</span><span class="p">(</span><span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;The username of the user&#39;</span><span class="p">)]</span>
+        <span class="p">#[</span><span class="nd">Argument</span><span class="p">(</span><span class="nx">description</span><span class="o">:</span> <span class="s1">'The username of the user'</span><span class="p">)]</span>
         <span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span>
     <span class="p">)</span><span class="o">:</span> <span class="nx">ExitCode</span> <span class="p">{</span>
         <span class="c1">// ...</span>
@@ -368,10 +368,10 @@ with <code class="docutils literal notranslate"><span class="pre">--output=json<
         <span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span>
         <span class="nx">IQuestionHelper</span> <span class="nv">$questionHelper</span><span class="p">,</span>
     <span class="p">)</span><span class="o">:</span> <span class="nx">ExitCode</span> <span class="p">{</span>
-        <span class="nv">$question</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ConfirmationQuestion</span><span class="p">(</span><span class="s1">&#39;Are you sure? (y/n) &#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+        <span class="nv">$question</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ConfirmationQuestion</span><span class="p">(</span><span class="s1">'Are you sure? (y/n) '</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$questionHelper</span><span class="o">-&gt;</span><span class="na">ask</span><span class="p">(</span><span class="nv">$question</span><span class="p">))</span> <span class="p">{</span>
-            <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">writeln</span><span class="p">(</span><span class="s1">&#39;Aborted.&#39;</span><span class="p">);</span>
+            <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">writeln</span><span class="p">(</span><span class="s1">'Aborted.'</span><span class="p">);</span>
             <span class="k">return</span> <span class="nx">ExitCode</span><span class="o">::</span><span class="na">Failure</span><span class="p">;</span>
         <span class="p">}</span>
 
@@ -402,7 +402,7 @@ automate the command.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Aug 17, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

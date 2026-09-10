@@ -245,9 +245,9 @@ the objectstore backend and any backend specific configuration.</p>
 make all existing files on the instance inaccessible.</p>
 </div>
 <p>The configuration has the following structure:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Object</span><span class="se">\\</span><span class="s1">Storage</span><span class="se">\\</span><span class="s1">Backend</span><span class="se">\\</span><span class="s1">Class&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'objectstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'Object</span><span class="se">\\</span><span class="s1">Storage</span><span class="se">\\</span><span class="s1">Backend</span><span class="se">\\</span><span class="s1">Class'</span><span class="p">,</span>
+    <span class="s1">'arguments'</span> <span class="o">=&gt;</span> <span class="p">[</span>
         <span class="o">...</span>
     <span class="p">],</span>
 <span class="p">],</span>
@@ -260,50 +260,50 @@ server into the virtual filesystem.</p>
 <p>The class to be used is <code class="code docutils literal notranslate"><span class="pre">\OC\Files\ObjectStore\Swift</span></code></p>
 <p>Both openstack v2 and v3 authentication are supported,</p>
 <p>V2 Authentication:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">Swift&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Secr3tPaSSWoRdt7&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'objectstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'</span><span class="se">\\</span><span class="s1">OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">Swift'</span><span class="p">,</span>
+    <span class="s1">'arguments'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'username'</span> <span class="o">=&gt;</span> <span class="s1">'username'</span><span class="p">,</span>
+        <span class="s1">'password'</span> <span class="o">=&gt;</span> <span class="s1">'Secr3tPaSSWoRdt7'</span><span class="p">,</span>
         <span class="o">//</span> <span class="n">the</span> <span class="n">container</span> <span class="n">to</span> <span class="n">store</span> <span class="n">the</span> <span class="n">data</span> <span class="ow">in</span>
-        <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;autocreate&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-        <span class="s1">&#39;region&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;RegionOne&#39;</span><span class="p">,</span>
+        <span class="s1">'bucket'</span> <span class="o">=&gt;</span> <span class="s1">'nextcloud'</span><span class="p">,</span>
+        <span class="s1">'autocreate'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s1">'region'</span> <span class="o">=&gt;</span> <span class="s1">'RegionOne'</span><span class="p">,</span>
         <span class="o">//</span> <span class="n">The</span> <span class="n">Identity</span> <span class="o">/</span> <span class="n">Keystone</span> <span class="n">endpoint</span>
-        <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://example.com/v2.0&#39;</span><span class="p">,</span>
+        <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'http://example.com/v2.0'</span><span class="p">,</span>
         <span class="o">//</span> <span class="n">optional</span> <span class="n">on</span> <span class="n">some</span> <span class="n">swift</span> <span class="n">implementations</span>
-        <span class="s1">&#39;tenantName&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;serviceName&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;swift&#39;</span><span class="p">,</span>
+        <span class="s1">'tenantName'</span> <span class="o">=&gt;</span> <span class="s1">'username'</span><span class="p">,</span>
+        <span class="s1">'serviceName'</span> <span class="o">=&gt;</span> <span class="s1">'swift'</span><span class="p">,</span>
         <span class="o">//</span> <span class="n">The</span> <span class="n">Interface</span> <span class="o">/</span> <span class="n">url</span> <span class="n">Type</span><span class="p">,</span> <span class="n">optional</span>
-        <span class="s1">&#39;urlType&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;internal&#39;</span>
+        <span class="s1">'urlType'</span> <span class="o">=&gt;</span> <span class="s1">'internal'</span>
     <span class="p">],</span>
 <span class="p">],</span>
 </pre></div>
 </div>
 <p>V3 Authentication:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">Swift&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;autocreate&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-        <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;UserName&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Secr3tPaSSWoRdt7&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;domain&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Default&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'objectstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">Swift'</span><span class="p">,</span>
+    <span class="s1">'arguments'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'autocreate'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s1">'user'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'UserName'</span><span class="p">,</span>
+            <span class="s1">'password'</span> <span class="o">=&gt;</span> <span class="s1">'Secr3tPaSSWoRdt7'</span><span class="p">,</span>
+            <span class="s1">'domain'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Default'</span><span class="p">,</span>
             <span class="p">],</span>
         <span class="p">],</span>
-        <span class="s1">&#39;scope&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s1">&#39;project&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;TenantName&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;domain&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Default&#39;</span><span class="p">,</span>
+        <span class="s1">'scope'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'project'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'TenantName'</span><span class="p">,</span>
+                <span class="s1">'domain'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                    <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Default'</span><span class="p">,</span>
                 <span class="p">],</span>
             <span class="p">],</span>
         <span class="p">],</span>
-        <span class="s1">&#39;serviceName&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;swift&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;region&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;regionOne&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://example.com/v3&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
+        <span class="s1">'serviceName'</span> <span class="o">=&gt;</span> <span class="s1">'swift'</span><span class="p">,</span>
+        <span class="s1">'region'</span> <span class="o">=&gt;</span> <span class="s1">'regionOne'</span><span class="p">,</span>
+        <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'http://example.com/v3'</span><span class="p">,</span>
+        <span class="s1">'bucket'</span> <span class="o">=&gt;</span> <span class="s1">'nextcloud'</span><span class="p">,</span>
     <span class="p">],</span>
 <span class="p">],</span>
 </pre></div>
@@ -316,28 +316,28 @@ storage or compatible implementation (e.g. Minio or Ceph Object Gateway) into th
 virtual filesystem.</p>
 <p>The class to be used is <code class="code docutils literal notranslate"><span class="pre">\OC\Files\ObjectStore\S3</span></code></p>
 <p>Amazon-hosted S3:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">S3&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my-nextcloud-store&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;region&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;us-east-1&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;EJ39ITYZEUH5BGWDRUFY&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'objectstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'</span><span class="se">\\</span><span class="s1">OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">S3'</span><span class="p">,</span>
+    <span class="s1">'arguments'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'bucket'</span> <span class="o">=&gt;</span> <span class="s1">'my-nextcloud-store'</span><span class="p">,</span>
+        <span class="s1">'region'</span> <span class="o">=&gt;</span> <span class="s1">'us-east-1'</span><span class="p">,</span>
+        <span class="s1">'key'</span> <span class="o">=&gt;</span> <span class="s1">'EJ39ITYZEUH5BGWDRUFY'</span><span class="p">,</span>
+        <span class="s1">'secret'</span> <span class="o">=&gt;</span> <span class="s1">'M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj'</span><span class="p">,</span>
     <span class="p">],</span>
 <span class="p">],</span>
 </pre></div>
 </div>
 <p>Non-Amazon hosted S3:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">S3&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my-nextcloud-store&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;hostname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;s3.example.com&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;EJ39ITYZEUH5BGWDRUFY&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">8443</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'objectstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'</span><span class="se">\\</span><span class="s1">OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">S3'</span><span class="p">,</span>
+    <span class="s1">'arguments'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'bucket'</span> <span class="o">=&gt;</span> <span class="s1">'my-nextcloud-store'</span><span class="p">,</span>
+        <span class="s1">'hostname'</span> <span class="o">=&gt;</span> <span class="s1">'s3.example.com'</span><span class="p">,</span>
+        <span class="s1">'key'</span> <span class="o">=&gt;</span> <span class="s1">'EJ39ITYZEUH5BGWDRUFY'</span><span class="p">,</span>
+        <span class="s1">'secret'</span> <span class="o">=&gt;</span> <span class="s1">'M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj'</span><span class="p">,</span>
+        <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">8443</span><span class="p">,</span>
         <span class="o">//</span> <span class="n">required</span> <span class="k">for</span> <span class="n">some</span> <span class="n">non</span><span class="o">-</span><span class="n">Amazon</span> <span class="n">S3</span> <span class="n">implementations</span>
-        <span class="s1">&#39;use_path_style&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s1">'use_path_style'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
     <span class="p">],</span>
 <span class="p">],</span>
 </pre></div>
@@ -400,13 +400,13 @@ Setting <code class="code docutils literal notranslate"><span class="pre">use_pa
 <p>The Azure Blob Storage backend mounts a container on Microsoft’s Azure Blob Storage into the
 virtual filesystem.</p>
 <p>The class to be used is <code class="code docutils literal notranslate"><span class="pre">\OC\Files\ObjectStore\Azure</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">Azure&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;container&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;autocreate&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-        <span class="s1">&#39;account_name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;account_name&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;account_key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;xxxxxxxxxx&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'objectstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'</span><span class="se">\\</span><span class="s1">OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">Azure'</span><span class="p">,</span>
+    <span class="s1">'arguments'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'container'</span> <span class="o">=&gt;</span> <span class="s1">'nextcloud'</span><span class="p">,</span>
+        <span class="s1">'autocreate'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s1">'account_name'</span> <span class="o">=&gt;</span> <span class="s1">'account_name'</span><span class="p">,</span>
+        <span class="s1">'account_key'</span> <span class="o">=&gt;</span> <span class="s1">'xxxxxxxxxx'</span>
     <span class="p">],</span>
 <span class="p">],</span>
 </pre></div>
@@ -419,14 +419,14 @@ virtual filesystem.</p>
 for scalability purposes.</p>
 <p>To setup multiple buckets, set <code class="code docutils literal notranslate"><span class="pre">'multibucket</span> <span class="pre">=&gt;</span> <span class="pre">true'</span></code> in the object store
 configuration in <code class="code docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Object</span><span class="se">\\</span><span class="s1">Storage</span><span class="se">\\</span><span class="s1">Backend</span><span class="se">\\</span><span class="s1">Class&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;multibucket&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'objectstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'Object</span><span class="se">\\</span><span class="s1">Storage</span><span class="se">\\</span><span class="s1">Backend</span><span class="se">\\</span><span class="s1">Class'</span><span class="p">,</span>
+    <span class="s1">'arguments'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'multibucket'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
         <span class="o">//</span> <span class="n">optional</span><span class="p">,</span> <span class="n">defaults</span> <span class="n">to</span> <span class="mi">64</span>
-        <span class="s1">&#39;num_buckets&#39;</span> <span class="o">=&gt;</span> <span class="mi">64</span><span class="p">,</span>
+        <span class="s1">'num_buckets'</span> <span class="o">=&gt;</span> <span class="mi">64</span><span class="p">,</span>
         <span class="o">//</span> <span class="n">will</span> <span class="n">be</span> <span class="n">postfixed</span> <span class="n">by</span> <span class="n">an</span> <span class="n">integer</span> <span class="ow">in</span> <span class="n">the</span> <span class="nb">range</span> <span class="kn">from</span><span class="w"> </span><span class="mi">0</span> <span class="n">to</span> <span class="p">(</span><span class="n">num_nuckets</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud_&#39;</span><span class="p">,</span>
+        <span class="s1">'bucket'</span> <span class="o">=&gt;</span> <span class="s1">'nextcloud_'</span><span class="p">,</span>
         <span class="o">...</span>
     <span class="p">],</span>
 <span class="p">],</span>
@@ -446,14 +446,14 @@ users will be mapped to the updated range of buckets.</p>
 <section id="multibucket-object-store-with-per-bucket-configuration-overrides">
 <h2>Multibucket Object Store with per Bucket configuration overrides<a class="headerlink" href="#multibucket-object-store-with-per-bucket-configuration-overrides" title="Link to this heading"></a></h2>
 <p>When using an Object Store with <code class="code docutils literal notranslate"><span class="pre">'multibucket</span> <span class="pre">=&gt;</span> <span class="pre">true'</span></code> it is possible to configure overrides for all config options per bucket:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Object</span><span class="se">\\</span><span class="s1">Storage</span><span class="se">\\</span><span class="s1">Backend</span><span class="se">\\</span><span class="s1">Class&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;multibucket&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-        <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud_&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;perBucket&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s1">&#39;nextcloud_1&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">9999</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'objectstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'Object</span><span class="se">\\</span><span class="s1">Storage</span><span class="se">\\</span><span class="s1">Backend</span><span class="se">\\</span><span class="s1">Class'</span><span class="p">,</span>
+    <span class="s1">'arguments'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'multibucket'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s1">'bucket'</span> <span class="o">=&gt;</span> <span class="s1">'nextcloud_'</span><span class="p">,</span>
+        <span class="s1">'perBucket'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'nextcloud_1'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">9999</span><span class="p">,</span>
             <span class="p">],</span>
         <span class="p">],</span>
     <span class="p">],</span>
@@ -476,23 +476,23 @@ instances for further scaling and gradual migration.</p>
 <p>To setup multiple buckets, set <code class="code docutils literal notranslate"><span class="pre">'objectstore'</span></code> to an array of named configurations
 configuration in <code class="code docutils literal notranslate"><span class="pre">config.php</span></code> and set the <code class="code docutils literal notranslate"><span class="pre">'default'</span></code> to the name of the
 configuration to use for newly created users:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;server2&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;root&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;server1&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;server1&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Object</span><span class="se">\\</span><span class="s1">Storage</span><span class="se">\\</span><span class="s1">Backend</span><span class="se">\\</span><span class="s1">Class&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s1">&#39;hostname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;s3-server1.example.com&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;s1_nextcloud&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'objectstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'default'</span> <span class="o">=&gt;</span> <span class="s1">'server2'</span><span class="p">,</span>
+    <span class="s1">'root'</span> <span class="o">=&gt;</span> <span class="s1">'server1'</span><span class="p">,</span>
+    <span class="s1">'server1'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'Object</span><span class="se">\\</span><span class="s1">Storage</span><span class="se">\\</span><span class="s1">Backend</span><span class="se">\\</span><span class="s1">Class'</span><span class="p">,</span>
+        <span class="s1">'arguments'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'hostname'</span> <span class="o">=&gt;</span> <span class="s1">'s3-server1.example.com'</span><span class="p">,</span>
+            <span class="s1">'bucket'</span> <span class="o">=&gt;</span> <span class="s1">'s1_nextcloud'</span><span class="p">,</span>
             <span class="o">...</span>
         <span class="p">],</span>
     <span class="p">],</span>
-    <span class="s1">&#39;server2&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Object</span><span class="se">\\</span><span class="s1">Storage</span><span class="se">\\</span><span class="s1">Backend</span><span class="se">\\</span><span class="s1">Class&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s1">&#39;multibucket&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-            <span class="s1">&#39;hostname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;s3-server2.example.com&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;s2_nextcloud_&#39;</span><span class="p">,</span>
+    <span class="s1">'server2'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'Object</span><span class="se">\\</span><span class="s1">Storage</span><span class="se">\\</span><span class="s1">Backend</span><span class="se">\\</span><span class="s1">Class'</span><span class="p">,</span>
+        <span class="s1">'arguments'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'multibucket'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s1">'hostname'</span> <span class="o">=&gt;</span> <span class="s1">'s3-server2.example.com'</span><span class="p">,</span>
+            <span class="s1">'bucket'</span> <span class="o">=&gt;</span> <span class="s1">'s2_nextcloud_'</span><span class="p">,</span>
             <span class="o">...</span>
         <span class="p">],</span>
     <span class="p">],</span>
@@ -525,21 +525,21 @@ a multi-instance configuration.</p>
 </pre></div>
 </div>
 <p>The following example shows how to configure the S3 object store with SSE-C encryption support in the objectstore section of the Nextcloud config.php file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'objectstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
     <span class="n">array</span> <span class="p">(</span>
-        <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">S3&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span>
+        <span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">S3'</span><span class="p">,</span>
+        <span class="s1">'arguments'</span> <span class="o">=&gt;</span>
         <span class="n">array</span> <span class="p">(</span>
-            <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;hostname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;s3&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;443&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;use_ssl&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-            <span class="s1">&#39;use_path_style&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-            <span class="s1">&#39;autocreate&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-            <span class="s1">&#39;verify_bucket_exists&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-            <span class="s1">&#39;sse_c_key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;o9d3Q9tHcPMv6TIpH53MSXaUmY91YheZRwuIhwCFRSs=&#39;</span><span class="p">,</span>
+            <span class="s1">'bucket'</span> <span class="o">=&gt;</span> <span class="s1">'nextcloud'</span><span class="p">,</span>
+            <span class="s1">'key'</span> <span class="o">=&gt;</span> <span class="s1">'nextcloud'</span><span class="p">,</span>
+            <span class="s1">'secret'</span> <span class="o">=&gt;</span> <span class="s1">'nextcloud'</span><span class="p">,</span>
+            <span class="s1">'hostname'</span> <span class="o">=&gt;</span> <span class="s1">'s3'</span><span class="p">,</span>
+            <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="s1">'443'</span><span class="p">,</span>
+            <span class="s1">'use_ssl'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s1">'use_path_style'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s1">'autocreate'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s1">'verify_bucket_exists'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s1">'sse_c_key'</span> <span class="o">=&gt;</span> <span class="s1">'o9d3Q9tHcPMv6TIpH53MSXaUmY91YheZRwuIhwCFRSs='</span><span class="p">,</span>
         <span class="p">),</span>
     <span class="p">);</span>
 <span class="p">],</span>

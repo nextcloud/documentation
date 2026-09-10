@@ -160,12 +160,12 @@ attributes in the request.
 <section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
 <p>REPORT request:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">u</span> <span class="n">user</span><span class="p">:</span><span class="n">pwd</span> <span class="o">-</span><span class="n">i</span> <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">binary</span> <span class="s2">&quot;@report.xml&quot;</span> <span class="o">-</span><span class="n">X</span> <span class="n">REPORT</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Content-Type: text/xml&quot;</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">test</span><span class="o">.</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">bla</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">comments</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="mi">2156</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">u</span> <span class="n">user</span><span class="p">:</span><span class="n">pwd</span> <span class="o">-</span><span class="n">i</span> <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">binary</span> <span class="s2">"@report.xml"</span> <span class="o">-</span><span class="n">X</span> <span class="n">REPORT</span> <span class="o">-</span><span class="n">H</span> <span class="s2">"Content-Type: text/xml"</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">test</span><span class="o">.</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">bla</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">comments</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="mi">2156</span>
 </pre></div>
 </div>
 <p>report.xml your receive:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
-<span class="nt">&lt;D:report</span><span class="w"> </span><span class="na">xmlns:D=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="nt">&lt;D:report</span><span class="w"> </span><span class="na">xmlns:D=</span><span class="s">"DAV:"</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">"http://owncloud.org/ns"</span><span class="w"> </span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="nt">&lt;oc:limit&gt;</span>5<span class="nt">&lt;/oc:limit&gt;</span>
 <span class="w">  </span><span class="nt">&lt;oc:offset&gt;</span>0<span class="nt">&lt;/oc:offset&gt;</span>
 <span class="w">  </span><span class="nt">&lt;oc:datetime&gt;</span>2016-01-18<span class="w"> </span>22:10:30<span class="nt">&lt;/oc:datetime&gt;</span>
@@ -173,8 +173,8 @@ attributes in the request.
 </pre></div>
 </div>
 <p>Example Output (without headers):</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="nt">&lt;d:multistatus</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:s=</span><span class="s">&quot;http://sabredav.org/ns&quot;</span><span class="w"> </span><span class="na">xmlns:cal=</span><span class="s">&quot;urn:ietf:params:xml:ns:caldav&quot;</span><span class="w"> </span><span class="na">xmlns:cs=</span><span class="s">&quot;http://calendarserver.org/ns/&quot;</span><span class="w"> </span><span class="na">xmlns:card=</span><span class="s">&quot;urn:ietf:params:xml:ns:carddav&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;d:multistatus</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">"DAV:"</span><span class="w"> </span><span class="na">xmlns:s=</span><span class="s">"http://sabredav.org/ns"</span><span class="w"> </span><span class="na">xmlns:cal=</span><span class="s">"urn:ietf:params:xml:ns:caldav"</span><span class="w"> </span><span class="na">xmlns:cs=</span><span class="s">"http://calendarserver.org/ns/"</span><span class="w"> </span><span class="na">xmlns:card=</span><span class="s">"urn:ietf:params:xml:ns:carddav"</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">"http://owncloud.org/ns"</span><span class="nt">&gt;</span>
 <span class="w"> </span><span class="nt">&lt;d:response&gt;</span>
 <span class="w">  </span><span class="nt">&lt;oc:comment&gt;</span>
 <span class="w">   </span><span class="nt">&lt;oc:id&gt;</span>3<span class="nt">&lt;/oc:id&gt;</span>
@@ -231,7 +231,7 @@ there are also some follow up PRs.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

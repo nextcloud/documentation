@@ -367,7 +367,7 @@ queue up; a full queue produces 502/504 errors.</p>
 </pre></div>
 </div>
 <p>Measure the average RSS of a running pool:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">headers</span> <span class="o">-</span><span class="n">o</span> <span class="n">rss</span> <span class="o">-</span><span class="n">C</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm</span> <span class="o">|</span> <span class="n">awk</span> <span class="s1">&#39;{sum+=$1; count++} END {if (count&gt;0) print sum/count/1024 &quot; MB&quot;; else print &quot;No php-fpm processes found&quot;}&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">headers</span> <span class="o">-</span><span class="n">o</span> <span class="n">rss</span> <span class="o">-</span><span class="n">C</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm</span> <span class="o">|</span> <span class="n">awk</span> <span class="s1">'{sum+=$1; count++} END {if (count&gt;0) print sum/count/1024 " MB"; else print "No php-fpm processes found"}'</span>
 </pre></div>
 </div>
 <p>A typical Nextcloud worker uses <strong>50–100 MB</strong> (more if Imagick or LDAP is loaded).
@@ -521,14 +521,14 @@ You can find the image at <a class="reference external" href="https://ghcr.io/ne
 </div>
 <p>Ensure the service is only accessible from your internal servers. Then, configure
 Nextcloud to use Imaginary by editing your <code class="docutils literal notranslate"><span class="pre">config.php</span></code> file:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&#39;enabledPreviewProviders&#39; =&gt; [</span>
-<span class="x">    &#39;OC\Preview\TXT&#39;,</span>
-<span class="x">    &#39;OC\Preview\MarkDown&#39;,</span>
-<span class="x">    &#39;OC\Preview\OpenDocument&#39;,</span>
-<span class="x">    &#39;OC\Preview\Krita&#39;,</span>
-<span class="x">    &#39;OC\Preview\Imaginary&#39;,</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">'enabledPreviewProviders' =&gt; [</span>
+<span class="x">    'OC\Preview\TXT',</span>
+<span class="x">    'OC\Preview\MarkDown',</span>
+<span class="x">    'OC\Preview\OpenDocument',</span>
+<span class="x">    'OC\Preview\Krita',</span>
+<span class="x">    'OC\Preview\Imaginary',</span>
 <span class="x">],</span>
-<span class="x">&#39;preview_imaginary_url&#39; =&gt; &#39;http://&lt;url of imaginary&gt;:&lt;port&gt;&#39;,</span>
+<span class="x">'preview_imaginary_url' =&gt; 'http://&lt;url of imaginary&gt;:&lt;port&gt;',</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -547,15 +547,15 @@ outside of Docker.</p>
 <section id="settings">
 <h3>Settings<a class="headerlink" href="#settings" title="Link to this heading"></a></h3>
 <p>To set the preview format for Imaginary (default is jpeg), add to your <code class="docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;preview_format&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;webp&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'preview_format'</span> <span class="o">=&gt;</span> <span class="s1">'webp'</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>To set an API key for Imaginary:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;preview_imaginary_key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;secret&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'preview_imaginary_key'</span> <span class="o">=&gt;</span> <span class="s1">'secret'</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>The default WebP quality setting for preview images is ‘80’. Change this with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">preview</span> <span class="n">webp_quality</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;30&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">preview</span> <span class="n">webp_quality</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">"30"</span>
 </pre></div>
 </div>
 </section>

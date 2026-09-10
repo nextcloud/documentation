@@ -155,17 +155,17 @@
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span><span class="o">=</span><span class="k">array</span><span class="p">()){</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
 
         <span class="nv">$container</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">();</span>
 
         <span class="sd">/**</span>
 <span class="sd">         * Controllers</span>
 <span class="sd">         */</span>
-        <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="s1">&#39;AuthorService&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nx">IServerContainer</span> <span class="nv">$c</span><span class="p">)</span><span class="o">:</span> <span class="nx">AuthorService</span> <span class="p">{</span>
+        <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="s1">'AuthorService'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nx">IServerContainer</span> <span class="nv">$c</span><span class="p">)</span><span class="o">:</span> <span class="nx">AuthorService</span> <span class="p">{</span>
             <span class="k">return</span> <span class="k">new</span> <span class="nx">AuthorService</span><span class="p">(</span>
                 <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">IConfig</span><span class="o">::</span><span class="na">class</span><span class="p">),</span>
-                <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;appName&#39;</span><span class="p">)</span>
+                <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'appName'</span><span class="p">)</span>
             <span class="p">);</span>
         <span class="p">});</span>
     <span class="p">}</span>
@@ -295,7 +295,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

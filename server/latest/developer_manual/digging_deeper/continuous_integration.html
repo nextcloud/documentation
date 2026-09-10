@@ -158,8 +158,8 @@ Please refer to our <a class="reference external" href="https://github.com/nextc
 <p>A lint of all php source files can find syntax errors that could crash the application in production. You can find the github actions in our <a class="reference external" href="https://github.com/nextcloud/.github">nextcloud template repository</a>.
 You will also require the following lint script in your <code class="docutils literal notranslate"><span class="pre">composer.json</span></code>:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;lint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;find . -name \\*.php -not -path &#39;./vendor/*&#39; -print0 | xargs -0 -n1 php -l&quot;</span>
+<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"lint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"find . -name \\*.php -not -path './vendor/*' -print0 | xargs -0 -n1 php -l"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -178,41 +178,41 @@ relevant github actions in our <a class="reference external" href="https://githu
 For the basic setup see the <a class="reference external" href="https://psalm.dev/docs/">Psalm</a> website. In order to let Psalm know about Nextcloud interfaces (the OCP namespace),
 you can install the <a class="reference external" href="https://packagist.org/packages/nextcloud/ocp">API package</a>.
 Afterwards you’ll be able to check the app with the following <code class="docutils literal notranslate"><span class="pre">psalm.xml</span></code> that should be put into the root of the app.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0"?&gt;</span>
 <span class="nt">&lt;psalm</span>
-<span class="w">    </span><span class="na">totallyTyped=</span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="na">errorLevel=</span><span class="s">&quot;5&quot;</span>
-<span class="w">    </span><span class="na">resolveFromConfigFile=</span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
-<span class="w">    </span><span class="na">xmlns=</span><span class="s">&quot;https://getpsalm.org/schema/config&quot;</span>
-<span class="w">    </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd&quot;</span>
-<span class="w">    </span><span class="na">errorBaseline=</span><span class="s">&quot;tests/psalm-baseline.xml&quot;</span>
+<span class="w">    </span><span class="na">totallyTyped=</span><span class="s">"true"</span>
+<span class="w">    </span><span class="na">errorLevel=</span><span class="s">"5"</span>
+<span class="w">    </span><span class="na">resolveFromConfigFile=</span><span class="s">"true"</span>
+<span class="w">    </span><span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+<span class="w">    </span><span class="na">xmlns=</span><span class="s">"https://getpsalm.org/schema/config"</span>
+<span class="w">    </span><span class="na">xsi:schemaLocation=</span><span class="s">"https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"</span>
+<span class="w">    </span><span class="na">errorBaseline=</span><span class="s">"tests/psalm-baseline.xml"</span>
 <span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;projectFiles&gt;</span>
-<span class="w">        </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;lib&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">"lib"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">        </span><span class="nt">&lt;ignoreFiles&gt;</span>
-<span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;lib/Vendor&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">"vendor"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">"lib/Vendor"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">        </span><span class="nt">&lt;/ignoreFiles&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/projectFiles&gt;</span>
 <span class="w">    </span><span class="nt">&lt;extraFiles&gt;</span>
-<span class="w">        </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">"vendor"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">        </span><span class="nt">&lt;ignoreFiles&gt;</span>
-<span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor/phpunit/php-code-coverage&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">"vendor/phpunit/php-code-coverage"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">        </span><span class="nt">&lt;/ignoreFiles&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/extraFiles&gt;</span>
 <span class="w">    </span><span class="nt">&lt;issueHandlers&gt;</span>
 <span class="w">        </span><span class="nt">&lt;UndefinedClass&gt;</span>
-<span class="w">            </span><span class="nt">&lt;errorLevel</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;suppress&quot;</span><span class="nt">&gt;</span>
-<span class="w">                </span><span class="nt">&lt;referencedClass</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;OC&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;errorLevel</span><span class="w"> </span><span class="na">type=</span><span class="s">"suppress"</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;referencedClass</span><span class="w"> </span><span class="na">name=</span><span class="s">"OC"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">            </span><span class="nt">&lt;/errorLevel&gt;</span>
 <span class="w">        </span><span class="nt">&lt;/UndefinedClass&gt;</span>
 <span class="w">        </span><span class="nt">&lt;UndefinedDocblockClass&gt;</span>
-<span class="w">            </span><span class="nt">&lt;errorLevel</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;suppress&quot;</span><span class="nt">&gt;</span>
-<span class="w">                </span><span class="nt">&lt;referencedClass</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Doctrine\DBAL\Schema\Schema&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">                </span><span class="nt">&lt;referencedClass</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Doctrine\DBAL\Schema\SchemaException&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">                </span><span class="nt">&lt;referencedClass</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Doctrine\DBAL\Driver\Statement&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">                </span><span class="nt">&lt;referencedClass</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Doctrine\DBAL\Schema\Table&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;errorLevel</span><span class="w"> </span><span class="na">type=</span><span class="s">"suppress"</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;referencedClass</span><span class="w"> </span><span class="na">name=</span><span class="s">"Doctrine\DBAL\Schema\Schema"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;referencedClass</span><span class="w"> </span><span class="na">name=</span><span class="s">"Doctrine\DBAL\Schema\SchemaException"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;referencedClass</span><span class="w"> </span><span class="na">name=</span><span class="s">"Doctrine\DBAL\Driver\Statement"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;referencedClass</span><span class="w"> </span><span class="na">name=</span><span class="s">"Doctrine\DBAL\Schema\Table"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">            </span><span class="nt">&lt;/errorLevel&gt;</span>
 <span class="w">        </span><span class="nt">&lt;/UndefinedDocblockClass&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/issueHandlers&gt;</span>
@@ -247,7 +247,7 @@ branch of Nextcloud server, as well as other currently supported stable branches
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

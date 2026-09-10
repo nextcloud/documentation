@@ -165,11 +165,11 @@ the <code class="docutils literal notranslate"><span class="pre">event-bus</span
 <p>All these events use a Node as argument. You can use a webdav client (for example, by using the davGetClient function from <a class="reference external" href="https://nextcloud-libraries.github.io/nextcloud-files/">&#64;nextcloud/files</a>) to retrieve a node from a file’s name.</p>
 <section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
-<div class="highlight-ts notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Node</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/files&#39;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">subscribe</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/event-bus&#39;</span>
+<div class="highlight-ts notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Node</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/files'</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">subscribe</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/event-bus'</span>
 
-<span class="nx">subscribe</span><span class="p">(</span><span class="s1">&#39;files:node:created&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">node</span><span class="o">:</span><span class="w"> </span><span class="kt">Node</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Node created&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">node</span><span class="p">)</span>
+<span class="nx">subscribe</span><span class="p">(</span><span class="s1">'files:node:created'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">node</span><span class="o">:</span><span class="w"> </span><span class="kt">Node</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Node created'</span><span class="p">,</span><span class="w"> </span><span class="nx">node</span><span class="p">)</span>
 <span class="p">})</span>
 </pre></div>
 </div>
@@ -183,7 +183,7 @@ better understand the methods.</p>
 <div class="highlight-ts notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
 <span class="cm"> * Trigger a route change on the files app</span>
 <span class="cm"> *</span>
-<span class="cm"> * @param path the url path, eg: &#39;/trashbin?dir=/Deleted&#39;</span>
+<span class="cm"> * @param path the url path, eg: '/trashbin?dir=/Deleted'</span>
 <span class="cm"> * @param replace replace the current history</span>
 <span class="cm"> * @see https://router.vuejs.org/guide/essentials/navigation.html#navigate-to-a-different-location</span>
 <span class="cm"> */</span>
@@ -208,8 +208,8 @@ better understand the methods.</p>
 </div>
 <section id="id1">
 <h3>Examples<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">OCP</span><span class="p">.</span><span class="nx">Files</span><span class="p">.</span><span class="nx">Router</span><span class="p">.</span><span class="nx">goTo</span><span class="p">(</span><span class="s1">&#39;/trashbin?dir=/Unsplash.d1680193199&#39;</span><span class="p">)</span>
-<span class="nx">OCP</span><span class="p">.</span><span class="nx">Files</span><span class="p">.</span><span class="nx">Router</span><span class="p">.</span><span class="nx">goToRoute</span><span class="p">(</span><span class="s1">&#39;fileslist&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;files&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dir</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/Folders/Group folder&#39;</span><span class="w"> </span><span class="p">})</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">OCP</span><span class="p">.</span><span class="nx">Files</span><span class="p">.</span><span class="nx">Router</span><span class="p">.</span><span class="nx">goTo</span><span class="p">(</span><span class="s1">'/trashbin?dir=/Unsplash.d1680193199'</span><span class="p">)</span>
+<span class="nx">OCP</span><span class="p">.</span><span class="nx">Files</span><span class="p">.</span><span class="nx">Router</span><span class="p">.</span><span class="nx">goToRoute</span><span class="p">(</span><span class="s1">'fileslist'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="s1">'files'</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dir</span><span class="o">:</span><span class="w"> </span><span class="s1">'/Folders/Group folder'</span><span class="w"> </span><span class="p">})</span>
 </pre></div>
 </div>
 </section>
@@ -228,7 +228,7 @@ better understand the methods.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

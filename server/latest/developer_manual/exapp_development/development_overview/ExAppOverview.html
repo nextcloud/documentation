@@ -203,18 +203,18 @@ It is available inside the container under the <code class="docutils literal not
 It is a regular Nextcloud Vue.js application with a small routing adjustment to the paths,
 as they are being loaded via AppAPI proxy from the ExApp server.</p>
 <p>To simplify the usage, we declare a few constants:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">const</span> <span class="n">EX_APP_ID</span> <span class="o">=</span> <span class="s1">&#39;ui_example&#39;</span>
-<span class="n">export</span> <span class="n">const</span> <span class="n">EX_APP_MENU_ENTRY_NAME</span> <span class="o">=</span> <span class="s1">&#39;first_menu&#39;</span>
-<span class="n">export</span> <span class="n">const</span> <span class="n">APP_API_PROXY_URL_PREFIX</span> <span class="o">=</span> <span class="s1">&#39;/apps/app_api/proxy&#39;</span>
-<span class="n">export</span> <span class="n">const</span> <span class="n">APP_API_ROUTER_BASE</span> <span class="o">=</span> <span class="s1">&#39;/apps/app_api/embedded&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">const</span> <span class="n">EX_APP_ID</span> <span class="o">=</span> <span class="s1">'ui_example'</span>
+<span class="n">export</span> <span class="n">const</span> <span class="n">EX_APP_MENU_ENTRY_NAME</span> <span class="o">=</span> <span class="s1">'first_menu'</span>
+<span class="n">export</span> <span class="n">const</span> <span class="n">APP_API_PROXY_URL_PREFIX</span> <span class="o">=</span> <span class="s1">'/apps/app_api/proxy'</span>
+<span class="n">export</span> <span class="n">const</span> <span class="n">APP_API_ROUTER_BASE</span> <span class="o">=</span> <span class="s1">'/apps/app_api/embedded'</span>
 </pre></div>
 </div>
 <p>The bootstrap of the Vue app (<a class="reference external" href="https://github.com/nextcloud/ui_example/blob/main/src/bootstrap.js">UI Example bootstrap</a>) is changed as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import Vue from &#39;vue&#39;
-import { translate, translatePlural } from &#39;@nextcloud/l10n&#39;
-import { generateUrl } from &#39;@nextcloud/router&#39;
-import { APP_API_PROXY_URL_PREFIX, EX_APP_ID } from &#39;./constants/AppAPI.js&#39;
-import { getCSPNonce } from &#39;@nextcloud/auth&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import Vue from 'vue'
+import { translate, translatePlural } from '@nextcloud/l10n'
+import { generateUrl } from '@nextcloud/router'
+import { APP_API_PROXY_URL_PREFIX, EX_APP_ID } from './constants/AppAPI.js'
+import { getCSPNonce } from '@nextcloud/auth'
 
 Vue.prototype.t = translate
 Vue.prototype.n = translatePlural
@@ -231,9 +231,9 @@ __webpack_nonce__ = getCSPNonce() // eslint-disable-line
 For example, the <strong>vuex</strong> router has the following base URL configuration:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>...
 const router = new VueRouter({
-    mode: &#39;history&#39;,
-    base: generateUrl(`${APP_API_ROUTER_BASE}/${EX_APP_ID}/${EX_APP_MENU_ENTRY_NAME}`, &#39;&#39;), // setting base to AppAPI embedded URL
-    linkActiveClass: &#39;active&#39;,
+    mode: 'history',
+    base: generateUrl(`${APP_API_ROUTER_BASE}/${EX_APP_ID}/${EX_APP_MENU_ENTRY_NAME}`, ''), // setting base to AppAPI embedded URL
+    linkActiveClass: 'active',
 ...
 </pre></div>
 </div>
@@ -260,28 +260,28 @@ index 42513563..8aa06618 100644
         $this-&gt;createFakeFileForVueFiles();
         $this-&gt;createFakeFileForLocale();
         $translatableFiles = $this-&gt;findTranslatableFiles(
--           [&#39;.php&#39;, &#39;.js&#39;, &#39;.jsx&#39;, &#39;.mjs&#39;, &#39;.html&#39;, &#39;.ts&#39;, &#39;.tsx&#39;],
-+           [&#39;.php&#39;, &#39;.js&#39;, &#39;.jsx&#39;, &#39;.mjs&#39;, &#39;.html&#39;, &#39;.ts&#39;, &#39;.tsx&#39;, &#39;.py&#39;],
-            [&#39;.min.js&#39;]
+-           ['.php', '.js', '.jsx', '.mjs', '.html', '.ts', '.tsx'],
++           ['.php', '.js', '.jsx', '.mjs', '.html', '.ts', '.tsx', '.py'],
+            ['.min.js']
         );
 
 @@ -79,6 +79,8 @@ public function createPotFile() {
-            $keywords = &#39;&#39;;
-            if (substr($entry, -4) === &#39;.php&#39;) {
-                $keywords = &#39;--keyword=t --keyword=n:1,2&#39;;
-+           } elseif (substr($entry, -3) === &#39;.py&#39;) {
-+               $keywords = &#39;--keyword=_ --keyword=_n:1,2&#39;;
+            $keywords = '';
+            if (substr($entry, -4) === '.php') {
+                $keywords = '--keyword=t --keyword=n:1,2';
++           } elseif (substr($entry, -3) === '.py') {
++               $keywords = '--keyword=_ --keyword=_n:1,2';
             } else {
-                $keywords = &#39;--keyword=t:2 --keyword=n:2,3&#39;;
+                $keywords = '--keyword=t:2 --keyword=n:2,3';
             }
 @@ -86,6 +88,8 @@ public function createPotFile() {
-            $language = &#39;--language=&#39;;
-            if (substr($entry, -4) === &#39;.php&#39;) {
-                $language .= &#39;PHP&#39;;
-+           } elseif (substr($entry, -3) === &#39;.py&#39;) {
-+               $language .= &#39;Python&#39;;
+            $language = '--language=';
+            if (substr($entry, -4) === '.php') {
+                $language .= 'PHP';
++           } elseif (substr($entry, -3) === '.py') {
++               $language .= 'Python';
             } else {
-                $language .= &#39;Javascript&#39;;
+                $language .= 'Javascript';
             }
 </pre></div>
 </div>
@@ -343,7 +343,7 @@ This example also requires the <code class="docutils literal notranslate"><span 
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

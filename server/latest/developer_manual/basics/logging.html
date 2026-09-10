@@ -162,7 +162,7 @@ yourself:</p>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">doSomething</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something went wrong&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -180,7 +180,7 @@ the app ID.</p>
 
 <span class="k">use</span> <span class="k">function</span> <span class="nf">OCP\Log\logger</span><span class="p">;</span>
 
-<span class="nx">logger</span><span class="p">(</span><span class="s1">&#39;my_app&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s1">&#39;look, no dependency injection&#39;</span><span class="p">);</span>
+<span class="nx">logger</span><span class="p">(</span><span class="s1">'my_app'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s1">'look, no dependency injection'</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
@@ -241,8 +241,8 @@ configured <code class="docutils literal notranslate"><span class="pre">loglevel
 <p>Nextcloud supports PSR-3 message interpolation. Context values whose keys
 appear as <code class="docutils literal notranslate"><span class="pre">{placeholder}</span></code> tokens in the message string are substituted
 automatically:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s1">&#39;User {user} failed to log in&#39;</span><span class="p">,</span> <span class="p">[</span>
-    <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="nv">$userId</span><span class="p">,</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s1">'User {user} failed to log in'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">'user'</span> <span class="o">=&gt;</span> <span class="nv">$userId</span><span class="p">,</span>
 <span class="p">]);</span>
 </pre></div>
 </div>
@@ -262,7 +262,7 @@ is the recommended way to log exceptions:</strong></p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">try</span> <span class="p">{</span>
     <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">doRiskyThing</span><span class="p">();</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Operation failed&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;exception&#39;</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="p">]);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Operation failed'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'exception'</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="p">]);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -272,16 +272,16 @@ exception’s own message is used.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">app</span></code></dt><dd><p>Identifies the app that produced the message. This is <strong>set automatically</strong>
 when you obtain the logger via dependency injection or the <code class="docutils literal notranslate"><span class="pre">logger()</span></code>
 helper. You can override it explicitly if needed:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">&#39;Cross-app note&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;app&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;other_app&#39;</span><span class="p">]);</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">'Cross-app note'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'app'</span> <span class="o">=&gt;</span> <span class="s1">'other_app'</span><span class="p">]);</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <p>Any other keys you add to the context array are included in the log entry as
 additional data:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">&#39;Cron job finished&#39;</span><span class="p">,</span> <span class="p">[</span>
-    <span class="s1">&#39;duration&#39;</span> <span class="o">=&gt;</span> <span class="nv">$seconds</span><span class="p">,</span>
-    <span class="s1">&#39;items_processed&#39;</span> <span class="o">=&gt;</span> <span class="nv">$count</span><span class="p">,</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">'Cron job finished'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">'duration'</span> <span class="o">=&gt;</span> <span class="nv">$seconds</span><span class="p">,</span>
+    <span class="s1">'items_processed'</span> <span class="o">=&gt;</span> <span class="nv">$count</span><span class="p">,</span>
 <span class="p">]);</span>
 </pre></div>
 </div>
@@ -295,9 +295,9 @@ chain of previous exceptions.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">try</span> <span class="p">{</span>
     <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">process</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\OCP\DB\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Database operation failed for item {id}&#39;</span><span class="p">,</span> <span class="p">[</span>
-        <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$itemId</span><span class="p">,</span>
-        <span class="s1">&#39;exception&#39;</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="p">,</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Database operation failed for item {id}'</span><span class="p">,</span> <span class="p">[</span>
+        <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="nv">$itemId</span><span class="p">,</span>
+        <span class="s1">'exception'</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="p">,</span>
     <span class="p">]);</span>
 <span class="p">}</span>
 </pre></div>
@@ -321,12 +321,12 @@ verbose debug output out of the main log), you can use
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">ILogFactory</span> <span class="nv">$logFactory</span><span class="p">)</span> <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">importLogger</span> <span class="o">=</span> <span class="nv">$logFactory</span><span class="o">-&gt;</span><span class="na">getCustomPsrLogger</span><span class="p">(</span>
-            <span class="s1">&#39;/var/log/nextcloud/import.log&#39;</span>
+            <span class="s1">'/var/log/nextcloud/import.log'</span>
         <span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">run</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">importLogger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">&#39;Import started&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">importLogger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">'Import started'</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -334,8 +334,8 @@ verbose debug output out of the main log), you can use
 <p>The method signature is:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getCustomPsrLogger</span><span class="p">(</span>
     <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
-    <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span>
-    <span class="nx">string</span> <span class="nv">$tag</span> <span class="o">=</span> <span class="s1">&#39;Nextcloud&#39;</span>
+    <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="s1">'file'</span><span class="p">,</span>
+    <span class="nx">string</span> <span class="nv">$tag</span> <span class="o">=</span> <span class="s1">'Nextcloud'</span>
 <span class="p">)</span><span class="o">:</span> <span class="nx">LoggerInterface</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -355,12 +355,12 @@ arbitrary structured data:</p>
 
 <span class="sd">/** @var IDataLogger $logger */</span>
 <span class="nv">$logger</span> <span class="o">=</span> <span class="nx">\OCP\Server</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="nx">\Psr\Log\LoggerInterface</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">logData</span><span class="p">(</span><span class="s1">&#39;Sync completed&#39;</span><span class="p">,</span> <span class="p">[</span>
-    <span class="s1">&#39;provider&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;caldav&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;items&#39;</span> <span class="o">=&gt;</span> <span class="mi">42</span><span class="p">,</span>
+<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">logData</span><span class="p">(</span><span class="s1">'Sync completed'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">'provider'</span> <span class="o">=&gt;</span> <span class="s1">'caldav'</span><span class="p">,</span>
+    <span class="s1">'items'</span> <span class="o">=&gt;</span> <span class="mi">42</span><span class="p">,</span>
 <span class="p">],</span> <span class="p">[</span>
-    <span class="s1">&#39;app&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_app&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;level&#39;</span> <span class="o">=&gt;</span> <span class="nx">\OCP\ILogger</span><span class="o">::</span><span class="na">INFO</span><span class="p">,</span>
+    <span class="s1">'app'</span> <span class="o">=&gt;</span> <span class="s1">'my_app'</span><span class="p">,</span>
+    <span class="s1">'level'</span> <span class="o">=&gt;</span> <span class="nx">\OCP\ILogger</span><span class="o">::</span><span class="na">INFO</span><span class="p">,</span>
 <span class="p">]);</span>
 </pre></div>
 </div>
@@ -415,8 +415,8 @@ is the correct place.</p>
 <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="nx">\OCP\Server</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="nx">\OCP\EventDispatcher\IEventDispatcher</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 
 <span class="nv">$event</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\OCP\Log\Audit\CriticalActionPerformedEvent</span><span class="p">(</span>
-    <span class="s1">&#39;My critical action for app %s&#39;</span><span class="p">,</span>
-    <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;My App ID&#39;</span><span class="p">]</span>
+    <span class="s1">'My critical action for app %s'</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'My App ID'</span><span class="p">]</span>
 <span class="p">);</span>
 <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">dispatchTyped</span><span class="p">(</span><span class="nv">$event</span><span class="p">);</span>
 </pre></div>
@@ -426,8 +426,8 @@ is the correct place.</p>
 may contain sensitive information (passwords, tokens, etc.) that should not be
 written in clear text to the audit log:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$event</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\OCP\Log\Audit\CriticalActionPerformedEvent</span><span class="p">(</span>
-    <span class="s1">&#39;Password changed for user %s&#39;</span><span class="p">,</span>
-    <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$userId</span><span class="p">],</span>
+    <span class="s1">'Password changed for user %s'</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nv">$userId</span><span class="p">],</span>
     <span class="k">true</span>  <span class="c1">// obfuscate parameters in the audit log</span>
 <span class="p">);</span>
 </pre></div>
@@ -447,7 +447,7 @@ written in clear text to the audit log:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

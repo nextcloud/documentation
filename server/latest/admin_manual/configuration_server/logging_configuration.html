@@ -245,7 +245,7 @@
 <section id="errorlog">
 <h3>errorlog<a class="headerlink" href="#errorlog" title="Link to this heading"></a></h3>
 <p>All log information will be sent to PHP <code class="docutils literal notranslate"><span class="pre">error_log()</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;log_type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;errorlog&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"log_type"</span> <span class="o">=&gt;</span> <span class="s2">"errorlog"</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>Log entries will be prefixed with <code class="docutils literal notranslate"><span class="pre">[nextcloud]</span></code>.</p>
@@ -261,10 +261,10 @@ By default the <a class="reference external" href="http://www.php.net/manual/en/
 date/time is written in the format <code class="docutils literal notranslate"><span class="pre">2013-01-10T15:20:25+02:00</span></code>. By using the
 date format in the example below, the date/time format will be written in the format
 <code class="docutils literal notranslate"><span class="pre">January</span> <span class="pre">10,</span> <span class="pre">2013</span> <span class="pre">15:20:25</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;log_type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span>
-<span class="s2">&quot;logfile&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;nextcloud.log&quot;</span><span class="p">,</span>
-<span class="s2">&quot;loglevel&quot;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
-<span class="s2">&quot;logdateformat&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;F d, Y H:i:s&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"log_type"</span> <span class="o">=&gt;</span> <span class="s2">"file"</span><span class="p">,</span>
+<span class="s2">"logfile"</span> <span class="o">=&gt;</span> <span class="s2">"nextcloud.log"</span><span class="p">,</span>
+<span class="s2">"loglevel"</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
+<span class="s2">"logdateformat"</span> <span class="o">=&gt;</span> <span class="s2">"F d, Y H:i:s"</span><span class="p">,</span>
 </pre></div>
 </div>
 <section id="additional-file-based-logging-parameters">
@@ -273,13 +273,13 @@ date format in the example below, the date/time format will be written in the fo
 <dl>
 <dt><strong>logfilemode</strong></dt><dd><p>Sets the file permissions (in octal notation) for the log file.</p>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">0640</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;logfilemode&quot;</span> <span class="o">=&gt;</span> <span class="mi">0640</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"logfilemode"</span> <span class="o">=&gt;</span> <span class="mi">0640</span><span class="p">,</span>
 </pre></div>
 </div>
 </dd>
 <dt><strong>logtimezone</strong></dt><dd><p>Sets the timezone used for log timestamps. See the <a class="reference external" href="https://www.php.net/manual/en/timezones.php">PHP list of supported timezones</a>.</p>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">UTC</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;logtimezone&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Europe/Berlin&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"logtimezone"</span> <span class="o">=&gt;</span> <span class="s2">"Europe/Berlin"</span><span class="p">,</span>
 </pre></div>
 </div>
 </dd>
@@ -288,7 +288,7 @@ specified in bytes. When the current log file reaches this size a new log
 file is created. If a rotated log file already exists it will be
 overwritten. Set to <code class="docutils literal notranslate"><span class="pre">0</span></code> to disable rotation.</p>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">104857600</span></code> (100 MB).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;log_rotate_size&quot;</span> <span class="o">=&gt;</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"log_rotate_size"</span> <span class="o">=&gt;</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span>
 </pre></div>
 </div>
 </dd>
@@ -296,28 +296,28 @@ overwritten. Set to <code class="docutils literal notranslate"><span class="pre"
 exceptions. This significantly increases log size and should only be used
 for debugging.</p>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;log.backtrace&quot;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"log.backtrace"</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
 </pre></div>
 </div>
 </dd>
 <dt><strong>log_query</strong></dt><dd><p>Appends all database queries and their parameters to the log file. Use
 this only for debugging as it produces very large log files.</p>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;log_query&quot;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"log_query"</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
 </pre></div>
 </div>
 </dd>
 <dt><strong>loglevel_frontend</strong></dt><dd><p>Sets a separate log level for messages originating from the Nextcloud
 frontend (browser). Accepts the same values as <code class="docutils literal notranslate"><span class="pre">loglevel</span></code> (0–4).</p>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">2</span></code> (WARN).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;loglevel_frontend&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"loglevel_frontend"</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
 </pre></div>
 </div>
 </dd>
 <dt><strong>loglevel_dirty_database_queries</strong></dt><dd><p>Sets the log level at which dirty database queries (queries executed
 after the response has already been sent) are logged.</p>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code> (DEBUG).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;loglevel_dirty_database_queries&quot;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"loglevel_dirty_database_queries"</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
 </pre></div>
 </div>
 </dd>
@@ -327,18 +327,18 @@ after the response has already been sent) are logged.</p>
 <section id="syslog">
 <h3>syslog<a class="headerlink" href="#syslog" title="Link to this heading"></a></h3>
 <p>All log information will be sent to your default syslog daemon.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;log_type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;syslog&quot;</span><span class="p">,</span>
-<span class="s2">&quot;syslog_tag&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Nextcloud&quot;</span><span class="p">,</span>
-<span class="s2">&quot;logfile&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;loglevel&quot;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"log_type"</span> <span class="o">=&gt;</span> <span class="s2">"syslog"</span><span class="p">,</span>
+<span class="s2">"syslog_tag"</span> <span class="o">=&gt;</span> <span class="s2">"Nextcloud"</span><span class="p">,</span>
+<span class="s2">"logfile"</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+<span class="s2">"loglevel"</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
 </pre></div>
 </div>
 </section>
 <section id="systemd">
 <h3>systemd<a class="headerlink" href="#systemd" title="Link to this heading"></a></h3>
 <p>All log information will be sent to Systemd journal. Requires <a class="reference external" href="https://github.com/systemd/php-systemd">php-systemd</a> extension.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;log_type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;systemd&quot;</span><span class="p">,</span>
-<span class="s2">&quot;syslog_tag&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Nextcloud&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"log_type"</span> <span class="o">=&gt;</span> <span class="s2">"systemd"</span><span class="p">,</span>
+<span class="s2">"syslog_tag"</span> <span class="o">=&gt;</span> <span class="s2">"Nextcloud"</span><span class="p">,</span>
 </pre></div>
 </div>
 </section>
@@ -366,9 +366,9 @@ one of these apps will be logged at DEBUG level.</p>
 </dd>
 </dl>
 <p>Example – enable debug logging for user <code class="docutils literal notranslate"><span class="pre">jane</span></code> and the <code class="docutils literal notranslate"><span class="pre">files</span></code> app:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;log.condition&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="s1">&#39;users&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;jane&#39;</span><span class="p">],</span>
-    <span class="s1">&#39;apps&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">],</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'log.condition'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'users'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'jane'</span><span class="p">],</span>
+    <span class="s1">'apps'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'files'</span><span class="p">],</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -388,16 +388,16 @@ DEBUG / <code class="docutils literal notranslate"><span class="pre">0</span></c
 AND). Multiple groups are evaluated independently (logical OR).</p>
 <p>Example – log all messages from the <code class="docutils literal notranslate"><span class="pre">files</span></code> app at INFO level, and log any
 message containing <code class="docutils literal notranslate"><span class="pre">&quot;Lock&quot;</span></code> for user <code class="docutils literal notranslate"><span class="pre">admin</span></code> at DEBUG level:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;log.condition&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="s1">&#39;matches&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'log.condition'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'matches'</span> <span class="o">=&gt;</span> <span class="p">[</span>
         <span class="p">[</span>
-            <span class="s1">&#39;apps&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">],</span>
-            <span class="s1">&#39;loglevel&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s1">'apps'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'files'</span><span class="p">],</span>
+            <span class="s1">'loglevel'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
         <span class="p">],</span>
         <span class="p">[</span>
-            <span class="s1">&#39;users&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;admin&#39;</span><span class="p">],</span>
-            <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Lock&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;loglevel&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s1">'users'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'admin'</span><span class="p">],</span>
+            <span class="s1">'message'</span> <span class="o">=&gt;</span> <span class="s1">'Lock'</span><span class="p">,</span>
+            <span class="s1">'loglevel'</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
         <span class="p">],</span>
     <span class="p">],</span>
 <span class="p">],</span>
@@ -408,8 +408,8 @@ message containing <code class="docutils literal notranslate"><span class="pre">
 <h3>Using a shared secret for on-demand debugging<a class="headerlink" href="#using-a-shared-secret-for-on-demand-debugging" title="Link to this heading"></a></h3>
 <p>You can trigger debug logging for a single request by adding a
 <code class="docutils literal notranslate"><span class="pre">log_secret</span></code> query parameter. Set a secret in <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;log.condition&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="s1">&#39;shared_secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;57b58edb6637fe3059b3595cf9c41b9&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'log.condition'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'shared_secret'</span> <span class="o">=&gt;</span> <span class="s1">'57b58edb6637fe3059b3595cf9c41b9'</span><span class="p">,</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -429,31 +429,31 @@ logging on your instance.</p>
 <section id="example-log-entries">
 <h3>Example log entries<a class="headerlink" href="#example-log-entries" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;reqId&quot;</span><span class="p">:</span><span class="s2">&quot;TBsuA2uE86DiOD0S8f9j&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
-    <span class="s2">&quot;time&quot;</span><span class="p">:</span><span class="s2">&quot;April 13, 2021 16:55:37&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;remoteAddr&quot;</span><span class="p">:</span><span class="s2">&quot;192.168.56.1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;app&quot;</span><span class="p">:</span><span class="s2">&quot;admin_audit&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;/ocs/v1.php/cloud/users?disabled&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Login successful: </span><span class="se">\&quot;</span><span class="s2">admin</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;userAgent&quot;</span><span class="p">:</span><span class="s2">&quot;curl/7.68.0&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;21.0.1.1&quot;</span>
+    <span class="s2">"reqId"</span><span class="p">:</span><span class="s2">"TBsuA2uE86DiOD0S8f9j"</span><span class="p">,</span>
+    <span class="s2">"level"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+    <span class="s2">"time"</span><span class="p">:</span><span class="s2">"April 13, 2021 16:55:37"</span><span class="p">,</span>
+    <span class="s2">"remoteAddr"</span><span class="p">:</span><span class="s2">"192.168.56.1"</span><span class="p">,</span>
+    <span class="s2">"user"</span><span class="p">:</span><span class="s2">"admin"</span><span class="p">,</span>
+    <span class="s2">"app"</span><span class="p">:</span><span class="s2">"admin_audit"</span><span class="p">,</span>
+    <span class="s2">"method"</span><span class="p">:</span><span class="s2">"GET"</span><span class="p">,</span>
+    <span class="s2">"url"</span><span class="p">:</span><span class="s2">"/ocs/v1.php/cloud/users?disabled"</span><span class="p">,</span>
+    <span class="s2">"message"</span><span class="p">:</span><span class="s2">"Login successful: </span><span class="se">\"</span><span class="s2">admin</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span>
+    <span class="s2">"userAgent"</span><span class="p">:</span><span class="s2">"curl/7.68.0"</span><span class="p">,</span>
+    <span class="s2">"version"</span><span class="p">:</span><span class="s2">"21.0.1.1"</span>
 <span class="p">}</span>
 
 <span class="p">{</span>
-    <span class="s2">&quot;reqId&quot;</span><span class="p">:</span><span class="s2">&quot;ByeDVLuwkXKMfLpBgvxC&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
-    <span class="s2">&quot;time&quot;</span><span class="p">:</span><span class="s2">&quot;April 14, 2021 09:03:29&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;remoteAddr&quot;</span><span class="p">:</span><span class="s2">&quot;192.168.56.1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;app&quot;</span><span class="p">:</span><span class="s2">&quot;no app in context&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;/login&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Login failed: asdf (Remote IP: 192.168.56.1)&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;userAgent&quot;</span><span class="p">:</span><span class="s2">&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;21.0.1.1&quot;</span>
+    <span class="s2">"reqId"</span><span class="p">:</span><span class="s2">"ByeDVLuwkXKMfLpBgvxC"</span><span class="p">,</span>
+    <span class="s2">"level"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+    <span class="s2">"time"</span><span class="p">:</span><span class="s2">"April 14, 2021 09:03:29"</span><span class="p">,</span>
+    <span class="s2">"remoteAddr"</span><span class="p">:</span><span class="s2">"192.168.56.1"</span><span class="p">,</span>
+    <span class="s2">"user"</span><span class="p">:</span><span class="s2">"--"</span><span class="p">,</span>
+    <span class="s2">"app"</span><span class="p">:</span><span class="s2">"no app in context"</span><span class="p">,</span>
+    <span class="s2">"method"</span><span class="p">:</span><span class="s2">"POST"</span><span class="p">,</span>
+    <span class="s2">"url"</span><span class="p">:</span><span class="s2">"/login"</span><span class="p">,</span>
+    <span class="s2">"message"</span><span class="p">:</span><span class="s2">"Login failed: asdf (Remote IP: 192.168.56.1)"</span><span class="p">,</span>
+    <span class="s2">"userAgent"</span><span class="p">:</span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"</span><span class="p">,</span>
+    <span class="s2">"version"</span><span class="p">:</span><span class="s2">"21.0.1.1"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -493,7 +493,7 @@ described above (file, syslog, systemd, errorlog).</p>
 <strong>audit.log</strong> inside the directory configured by <code class="docutils literal notranslate"><span class="pre">datadirectory</span></code> in
 <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">/var/www/html/data/audit.log</span></code>).</p>
 <p>You can override the path with the <code class="docutils literal notranslate"><span class="pre">logfile_audit</span></code> system config key:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;logfile_audit&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/var/log/nextcloud/audit.log&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'logfile_audit'</span> <span class="o">=&gt;</span> <span class="s1">'/var/log/nextcloud/audit.log'</span><span class="p">,</span>
 </pre></div>
 </div>
 </section>
@@ -516,9 +516,9 @@ of <code class="docutils literal notranslate"><span class="pre">syslog_tag</span
 </dd>
 </dl>
 <p>Example – send audit events to syslog instead of a file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;log_type_audit&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;syslog&#39;</span><span class="p">,</span>
-<span class="s1">&#39;syslog_tag_audit&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Nextcloud&#39;</span><span class="p">,</span>
-<span class="s1">&#39;logfile_audit&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'log_type_audit'</span> <span class="o">=&gt;</span> <span class="s1">'syslog'</span><span class="p">,</span>
+<span class="s1">'syslog_tag_audit'</span> <span class="o">=&gt;</span> <span class="s1">'Nextcloud'</span><span class="p">,</span>
+<span class="s1">'logfile_audit'</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span>
 </pre></div>
 </div>
 </section>
@@ -531,8 +531,8 @@ conditional override.</p>
 <p>The recommended approach is to add a <code class="docutils literal notranslate"><span class="pre">log.condition</span></code> entry that forces
 DEBUG-level logging for the <code class="docutils literal notranslate"><span class="pre">admin_audit</span></code> app context, without affecting
 other apps:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;log.condition&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="s1">&#39;apps&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;admin_audit&#39;</span><span class="p">],</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'log.condition'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'apps'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'admin_audit'</span><span class="p">],</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -547,10 +547,10 @@ audit log is written to a separate <code class="docutils literal notranslate"><s
 will not appear in the web interface.</p>
 <p>If you want audit events to appear in the logreader, point
 <code class="docutils literal notranslate"><span class="pre">logfile_audit</span></code> at the same file as <code class="docutils literal notranslate"><span class="pre">nextcloud.log</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;log.condition&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="s1">&#39;apps&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;admin_audit&#39;</span><span class="p">],</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'log.condition'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'apps'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'admin_audit'</span><span class="p">],</span>
 <span class="p">],</span>
-<span class="s1">&#39;logfile_audit&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/var/www/html/data/nextcloud.log&#39;</span><span class="p">,</span>
+<span class="s1">'logfile_audit'</span> <span class="o">=&gt;</span> <span class="s1">'/var/www/html/data/nextcloud.log'</span><span class="p">,</span>
 </pre></div>
 </div>
 <div class="admonition note">

@@ -253,7 +253,7 @@ privileges:</p>
 <h3>admin-delegation:add<a class="headerlink" href="#admin-delegation-add" title="Link to this heading"></a></h3>
 <p>Delegate an admin settings class to a group:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">admin</span><span class="o">-</span><span class="n">delegation</span><span class="p">:</span><span class="n">add</span> \
-  <span class="s1">&#39;OCA\Settings\Settings\Admin\Sharing&#39;</span> <span class="n">milliways</span>
+  <span class="s1">'OCA\Settings\Settings\Admin\Sharing'</span> <span class="n">milliways</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">settingClass</span></code> argument must be the fully qualified PHP class name of a
@@ -269,7 +269,7 @@ settings class that implements <code class="docutils literal notranslate"><span 
 <h3>admin-delegation:remove<a class="headerlink" href="#admin-delegation-remove" title="Link to this heading"></a></h3>
 <p>Remove a settings delegation from a group:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">admin</span><span class="o">-</span><span class="n">delegation</span><span class="p">:</span><span class="n">remove</span> \
-  <span class="s1">&#39;OCA\Settings\Settings\Admin\Sharing&#39;</span> <span class="n">milliways</span>
+  <span class="s1">'OCA\Settings\Settings\Admin\Sharing'</span> <span class="n">milliways</span>
 </pre></div>
 </div>
 </section>
@@ -306,7 +306,7 @@ triggered:</p>
 <p>Set the background job execution mode to cron. Nextcloud recommends the
 system cron mode for production instances:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="p">:</span><span class="n">cron</span>
-  <span class="n">Set</span> <span class="n">mode</span> <span class="k">for</span> <span class="n">background</span> <span class="n">jobs</span> <span class="n">to</span> <span class="s1">&#39;cron&#39;</span>
+  <span class="n">Set</span> <span class="n">mode</span> <span class="k">for</span> <span class="n">background</span> <span class="n">jobs</span> <span class="n">to</span> <span class="s1">'cron'</span>
 </pre></div>
 </div>
 <p>Use <code class="docutils literal notranslate"><span class="pre">background:ajax</span></code> to switch to the in-browser AJAX scheduler or
@@ -421,7 +421,7 @@ like <code class="docutils literal notranslate"><span class="pre">30s</span></co
 </div>
 <p>Pass one or more job class names to process only jobs of those types:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">worker</span> \
-  <span class="s1">&#39;OCA\Files\BackgroundJob\ScanFiles&#39;</span>
+  <span class="s1">'OCA\Files\BackgroundJob\ScanFiles'</span>
 </pre></div>
 </div>
 </section>
@@ -507,8 +507,8 @@ or <code class="docutils literal notranslate"><span class="pre">-a</span></code>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span>
  <span class="n">log</span><span class="p">:</span><span class="n">file</span>    <span class="n">manipulate</span> <span class="n">Nextcloud</span> <span class="n">logging</span> <span class="n">backend</span>
  <span class="n">log</span><span class="p">:</span><span class="n">manage</span>  <span class="n">manage</span> <span class="n">logging</span> <span class="n">configuration</span>
- <span class="n">log</span><span class="p">:</span><span class="n">tail</span>    <span class="n">tail</span> <span class="n">the</span> <span class="n">Nextcloud</span> <span class="n">logfile</span> <span class="p">[</span><span class="n">requires</span> <span class="n">app</span> <span class="s2">&quot;Log Reader&quot;</span> <span class="n">to</span> <span class="n">be</span> <span class="n">enabled</span><span class="p">]</span>
- <span class="n">log</span><span class="p">:</span><span class="n">watch</span>   <span class="n">watch</span> <span class="n">the</span> <span class="n">Nextcloud</span> <span class="n">logfile</span> <span class="n">live</span> <span class="p">[</span><span class="n">requires</span> <span class="n">app</span> <span class="s2">&quot;Log Reader&quot;</span> <span class="n">to</span> <span class="n">be</span> <span class="n">enabled</span><span class="p">]</span>
+ <span class="n">log</span><span class="p">:</span><span class="n">tail</span>    <span class="n">tail</span> <span class="n">the</span> <span class="n">Nextcloud</span> <span class="n">logfile</span> <span class="p">[</span><span class="n">requires</span> <span class="n">app</span> <span class="s2">"Log Reader"</span> <span class="n">to</span> <span class="n">be</span> <span class="n">enabled</span><span class="p">]</span>
+ <span class="n">log</span><span class="p">:</span><span class="n">watch</span>   <span class="n">watch</span> <span class="n">the</span> <span class="n">Nextcloud</span> <span class="n">logfile</span> <span class="n">live</span> <span class="p">[</span><span class="n">requires</span> <span class="n">app</span> <span class="s2">"Log Reader"</span> <span class="n">to</span> <span class="n">be</span> <span class="n">enabled</span><span class="p">]</span>
 </pre></div>
 </div>
 <section id="log-file">
@@ -757,12 +757,12 @@ automated monitoring.</p>
 </pre></div>
 </div>
 <p>Filter by a specific file path:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">share</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">file</span> <span class="s2">&quot;/layla/files/Documents/report.pdf&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">share</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">file</span> <span class="s2">"/layla/files/Documents/report.pdf"</span>
 </pre></div>
 </div>
 <p>Filter by a folder; use <code class="docutils literal notranslate"><span class="pre">--recursive</span></code> to include shares nested anywhere
 inside it:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">share</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">parent</span> <span class="s2">&quot;/layla/files/Projects&quot;</span> <span class="o">--</span><span class="n">recursive</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">share</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">parent</span> <span class="s2">"/layla/files/Projects"</span> <span class="o">--</span><span class="n">recursive</span>
 </pre></div>
 </div>
 <p>Filter by share type (one of <code class="docutils literal notranslate"><span class="pre">user</span></code>, <code class="docutils literal notranslate"><span class="pre">group</span></code>, <code class="docutils literal notranslate"><span class="pre">link</span></code>, <code class="docutils literal notranslate"><span class="pre">email</span></code>,
@@ -812,14 +812,14 @@ installation:</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> for machine-readable output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">status</span> <span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">json_pretty</span>
 <span class="p">{</span>
-    <span class="s2">&quot;installed&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-    <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;30.0.0.0&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;versionstring&quot;</span><span class="p">:</span> <span class="s2">&quot;30.0.0&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;edition&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;maintenance&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-    <span class="s2">&quot;needsDbUpgrade&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-    <span class="s2">&quot;productname&quot;</span><span class="p">:</span> <span class="s2">&quot;Nextcloud&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;extendedSupport&quot;</span><span class="p">:</span> <span class="n">false</span>
+    <span class="s2">"installed"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">"version"</span><span class="p">:</span> <span class="s2">"30.0.0.0"</span><span class="p">,</span>
+    <span class="s2">"versionstring"</span><span class="p">:</span> <span class="s2">"30.0.0"</span><span class="p">,</span>
+    <span class="s2">"edition"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+    <span class="s2">"maintenance"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">"needsDbUpgrade"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">"productname"</span><span class="p">:</span> <span class="s2">"Nextcloud"</span><span class="p">,</span>
+    <span class="s2">"extendedSupport"</span><span class="p">:</span> <span class="n">false</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -975,11 +975,11 @@ interface:</p>
 </pre></div>
 </div>
 <p>Set a value:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">name</span> <span class="s2">&quot;Acme Cloud&quot;</span>
-<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">url</span> <span class="s2">&quot;https://acme.example.com&quot;</span>
-<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">slogan</span> <span class="s2">&quot;Secure file sync for Acme&quot;</span>
-<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">primary_color</span> <span class="s2">&quot;#0082c9&quot;</span>
-<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">background_color</span> <span class="s2">&quot;#00679e&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">name</span> <span class="s2">"Acme Cloud"</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">url</span> <span class="s2">"https://acme.example.com"</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">slogan</span> <span class="s2">"Secure file sync for Acme"</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">primary_color</span> <span class="s2">"#0082c9"</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">background_color</span> <span class="s2">"#00679e"</span>
 <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">theming</span><span class="p">:</span><span class="n">config</span> <span class="n">disable</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">theming</span> <span class="n">true</span>
 </pre></div>
 </div>
@@ -1054,9 +1054,9 @@ directories.</p>
 <span class="go">  maintenance:install [options]</span>
 
 <span class="go">Options:</span>
-<span class="go">      --database[=DATABASE]                  Supported database type [default: &quot;sqlite&quot;]</span>
+<span class="go">      --database[=DATABASE]                  Supported database type [default: "sqlite"]</span>
 <span class="go">      --database-name[=DATABASE-NAME]        Name of the database</span>
-<span class="go">      --database-host[=DATABASE-HOST]        Hostname of the database [default: &quot;localhost&quot;]</span>
+<span class="go">      --database-host[=DATABASE-HOST]        Hostname of the database [default: "localhost"]</span>
 <span class="go">      --database-port[=DATABASE-PORT]        Port the database is listening on</span>
 <span class="go">      --database-user[=DATABASE-USER]        Login for database connection</span>
 <span class="go">      --database-pass[=DATABASE-PASS]        Password of the database login</span>
@@ -1064,7 +1064,7 @@ directories.</p>
 <span class="go">                                                Table space of the database (``oci`` only)</span>
 <span class="go">      --database-ssl-mode[=DATABASE-SSL-MODE]</span>
 <span class="go">                                                Encryption mode for the database connection,</span>
-<span class="go">                                                e.g. &quot;require&quot; or &quot;verify-full&quot; (``pgsql`` only)</span>
+<span class="go">                                                e.g. "require" or "verify-full" (``pgsql`` only)</span>
 <span class="go">      --database-ssl-ca[=DATABASE-SSL-CA]    Path to the CA certificate the database server</span>
 <span class="go">                                                is verified against (``mysql`` and ``pgsql`` only)</span>
 <span class="go">      --database-ssl-cert[=DATABASE-SSL-CERT]</span>
@@ -1079,7 +1079,7 @@ directories.</p>
 <span class="go">                                                matches the hostname used to connect</span>
 <span class="go">                                                (``mysql`` only)</span>
 <span class="go">      --disable-admin-user                   Disable the creation of an administrator login</span>
-<span class="go">      --admin-user[=ADMIN-USER]              Login for initial administrator account [default: &quot;admin&quot;]</span>
+<span class="go">      --admin-user[=ADMIN-USER]              Login for initial administrator account [default: "admin"]</span>
 <span class="go">      --admin-pass[=ADMIN-PASS]              Password for initial administrator login</span>
 <span class="go">      --admin-email[=ADMIN-EMAIL]            E-Mail to associate with the initial administrator login</span>
 <span class="go">      --data-dir[=DATA-DIR]                  Path to data directory</span>

@@ -170,14 +170,14 @@
             <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
 
-        <span class="c1">// retrieve types of providers available (array of id&#39;s and labels)</span>
+        <span class="c1">// retrieve types of providers available (array of id's and labels)</span>
         <span class="nv">$types</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">types</span><span class="p">();</span>
 
         <span class="c1">// retrieve all providers available (array of provider objects)</span>
         <span class="nv">$providers</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">providers</span><span class="p">();</span>
 
         <span class="c1">// retrieve a single provider (provider objects)</span>
-        <span class="nv">$provider</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">findProviderById</span><span class="p">(</span><span class="s1">&#39;provider1&#39;</span><span class="p">);</span>
+        <span class="nv">$provider</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">findProviderById</span><span class="p">(</span><span class="s1">'provider1'</span><span class="p">);</span>
 
     <span class="p">}</span>
 
@@ -189,10 +189,10 @@
         <span class="p">}</span>
 
         <span class="c1">// retrieve services available for a user (array of service objects)</span>
-        <span class="nv">$services</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">services</span><span class="p">(</span><span class="s1">&#39;user1&#39;</span><span class="p">);</span>
+        <span class="nv">$services</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">services</span><span class="p">(</span><span class="s1">'user1'</span><span class="p">);</span>
 
         <span class="c1">// retrieve a single service with a specific mail address (service objects)</span>
-        <span class="nv">$service</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">findServiceByAddress</span><span class="p">(</span><span class="s1">&#39;user@testing.com&#39;</span><span class="p">);</span>
+        <span class="nv">$service</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">findServiceByAddress</span><span class="p">(</span><span class="s1">'user@testing.com'</span><span class="p">);</span>
 
     <span class="p">}</span>
 
@@ -204,19 +204,19 @@
         <span class="p">}</span>
 
         <span class="c1">// retrieve a single service with a specific mail address (service objects)</span>
-        <span class="nv">$service</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">findServiceByAddress</span><span class="p">(</span><span class="s1">&#39;user@testing.com&#39;</span><span class="p">);</span>
+        <span class="nv">$service</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">findServiceByAddress</span><span class="p">(</span><span class="s1">'user@testing.com'</span><span class="p">);</span>
 
         <span class="c1">// construct mail message and set required parameters</span>
         <span class="nv">$message</span> <span class="o">=</span> <span class="nv">$service</span><span class="o">-&gt;</span><span class="na">initiateMessage</span><span class="p">();</span>
-        <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setFrom</span><span class="p">(</span><span class="k">new</span> <span class="nx">Address</span><span class="p">(</span><span class="s1">&#39;user1@testing.com&#39;</span><span class="p">,</span> <span class="s1">&#39;User One&#39;</span><span class="p">));</span>
-        <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setTo</span><span class="p">(</span><span class="k">new</span> <span class="nx">Address</span><span class="p">(</span><span class="s1">&#39;user2@testing.com&#39;</span><span class="p">,</span> <span class="s1">&#39;User Two&#39;</span><span class="p">));</span>
-        <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="s1">&#39;Our Great Plan&#39;</span><span class="p">);</span>
-        <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setBodyPlain</span><span class="p">(</span><span class="s1">&#39;See the attached itinerary for our great plan&#39;</span><span class="p">);</span>
-        <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setBodyHtml</span><span class="p">(</span><span class="s1">&#39;&lt;html&gt;See the attached itinerary for our great plan&lt;/html&gt;&#39;</span><span class="p">);</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setFrom</span><span class="p">(</span><span class="k">new</span> <span class="nx">Address</span><span class="p">(</span><span class="s1">'user1@testing.com'</span><span class="p">,</span> <span class="s1">'User One'</span><span class="p">));</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setTo</span><span class="p">(</span><span class="k">new</span> <span class="nx">Address</span><span class="p">(</span><span class="s1">'user2@testing.com'</span><span class="p">,</span> <span class="s1">'User Two'</span><span class="p">));</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="s1">'Our Great Plan'</span><span class="p">);</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setBodyPlain</span><span class="p">(</span><span class="s1">'See the attached itinerary for our great plan'</span><span class="p">);</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setBodyHtml</span><span class="p">(</span><span class="s1">'&lt;html&gt;See the attached itinerary for our great plan&lt;/html&gt;'</span><span class="p">);</span>
         <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setAttachments</span><span class="p">(</span><span class="k">new</span> <span class="nx">Attachment</span><span class="p">(</span>
-            <span class="s1">&#39;Our great plan itinerary&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;theplan.txt&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;text/plain&#39;</span>
+            <span class="s1">'Our great plan itinerary'</span><span class="p">,</span>
+            <span class="s1">'theplan.txt'</span><span class="p">,</span>
+            <span class="s1">'text/plain'</span>
         <span class="p">));</span>
         <span class="c1">// send message</span>
         <span class="nv">$service</span><span class="o">-&gt;</span><span class="na">sendMessage</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
@@ -242,11 +242,11 @@
 <span class="k">class</span> <span class="nc">MailProvider</span> <span class="k">implements</span> <span class="nx">IProvider</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">id</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s1">&#39;big-hosting-app&#39;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s1">'big-hosting-app'</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">label</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s1">&#39;Big Hosting App&#39;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s1">'Big Hosting App'</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">hasServices</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$userId</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
@@ -285,7 +285,7 @@
 <span class="k">class</span> <span class="nc">MailService</span> <span class="k">implements</span> <span class="nx">IService</span><span class="p">,</span> <span class="nx">IMessageSend</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">id</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s1">&#39;1 or service1 or anything else&#39;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s1">'1 or service1 or anything else'</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">capable</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
@@ -332,7 +332,7 @@
 
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
 
-    <span class="k">public</span> <span class="k">const</span> <span class="no">APP_ID</span> <span class="o">=</span> <span class="s1">&#39;BigHostingApp&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">APP_ID</span> <span class="o">=</span> <span class="s1">'BigHostingApp'</span><span class="p">;</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
         <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
@@ -340,7 +340,7 @@
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
 
-        <span class="c1">// Tip: If your app spans multiple version of Nextcloud, we recommend to make sure the method exists with &#39;method_exists()&#39;</span>
+        <span class="c1">// Tip: If your app spans multiple version of Nextcloud, we recommend to make sure the method exists with 'method_exists()'</span>
         <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerMailProvider</span><span class="p">(</span><span class="nx">MailProvider</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 
     <span class="p">}</span>
@@ -364,7 +364,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

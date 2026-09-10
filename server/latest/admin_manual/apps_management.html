@@ -247,11 +247,11 @@ app and Nextcloud updates. Moreover, since Nextcloud 29, this app also allows to
 users about updated apps and the changes that are included in the update. This notification
 is enabled by default if the app provides a changelog.</p>
 <p>To disable user notifications use:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">occ config:app:set --type boolean --value=&quot;false&quot; updatenotification app_updated.enabled</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">occ config:app:set --type boolean --value="false" updatenotification app_updated.enabled</span>
 </pre></div>
 </div>
 <p>By default. when using the <code class="docutils literal notranslate"><span class="pre">guests</span></code> app, guest users are not notified. To enable notifications for them use:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">occ config:app:set --type boolean --value=&quot;true&quot; updatenotification app_updated.notify_guests</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">occ config:app:set --type boolean --value="true" updatenotification app_updated.notify_guests</span>
 </pre></div>
 </div>
 </section>
@@ -291,16 +291,16 @@ in that folder.</p>
 <p>Example: To ensure that the default <code class="docutils literal notranslate"><span class="pre">/apps/</span></code> folder only contains apps shipped
 with Nextcloud, follow this example to set up an <code class="docutils literal notranslate"><span class="pre">/extra-apps/</span></code> folder which
 will be used to store any additional apps you install:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&quot;apps_paths&quot; =&gt; [</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">"apps_paths" =&gt; [</span>
 <span class="x">    [</span>
-<span class="x">            &quot;path&quot;     =&gt; OC::$SERVERROOT . &quot;/apps&quot;,</span>
-<span class="x">            &quot;url&quot;      =&gt; &quot;/apps&quot;,</span>
-<span class="x">            &quot;writable&quot; =&gt; false,</span>
+<span class="x">            "path"     =&gt; OC::$SERVERROOT . "/apps",</span>
+<span class="x">            "url"      =&gt; "/apps",</span>
+<span class="x">            "writable" =&gt; false,</span>
 <span class="x">    ],</span>
 <span class="x">    [</span>
-<span class="x">            &quot;path&quot;     =&gt; OC::$SERVERROOT . &quot;/extra-apps&quot;,</span>
-<span class="x">            &quot;url&quot;      =&gt; &quot;/extra-apps&quot;,</span>
-<span class="x">            &quot;writable&quot; =&gt; true,</span>
+<span class="x">            "path"     =&gt; OC::$SERVERROOT . "/extra-apps",</span>
+<span class="x">            "url"      =&gt; "/extra-apps",</span>
+<span class="x">            "writable" =&gt; true,</span>
 <span class="x">    ],</span>
 <span class="x">],</span>
 </pre></div>
@@ -353,8 +353,8 @@ At least one of the configured apps directories must be writable.</p>
 <p>This parameter is used to set the HTTP path to your self-hosted Nextcloud app store.</p>
 </li>
 </ol>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&quot;appstoreenabled&quot; =&gt; true,</span>
-<span class="x">&quot;appstoreurl&quot; =&gt; &quot;https://my.appstore.instance/v1&quot;,</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">"appstoreenabled" =&gt; true,</span>
+<span class="x">"appstoreurl" =&gt; "https://my.appstore.instance/v1",</span>
 </pre></div>
 </div>
 <p>By default the app store is enabled and configured to use <code class="docutils literal notranslate"><span class="pre">https://apps.nextcloud.com/api/v1</span></code>

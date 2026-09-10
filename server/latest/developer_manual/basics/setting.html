@@ -151,15 +151,15 @@ used in the setting sidebar to create a new entry.</p>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getIcon</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">imagePath</span><span class="p">(</span><span class="s1">&#39;core&#39;</span><span class="p">,</span> <span class="s1">&#39;actions/settings-dark.svg&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">imagePath</span><span class="p">(</span><span class="s1">'core'</span><span class="p">,</span> <span class="s1">'actions/settings-dark.svg'</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getID</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s1">&#39;notes&#39;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s1">'notes'</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Notes tutorial&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Notes tutorial'</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getPriority</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span> <span class="p">{</span>
@@ -192,14 +192,14 @@ in <em>&lt;myapp&gt;/lib/Settings/NotesAdmin.php*</em>.</p>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getForm</span><span class="p">()</span> <span class="p">{</span>
         <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;mySetting&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">getSystemValue</span><span class="p">(</span><span class="s1">&#39;my_notes_setting&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">),</span>
+            <span class="s1">'mySetting'</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">getSystemValue</span><span class="p">(</span><span class="s1">'my_notes_setting'</span><span class="p">,</span> <span class="k">true</span><span class="p">),</span>
         <span class="p">];</span>
 
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="s1">&#39;settings&#39;</span><span class="p">,</span> <span class="s1">&#39;settings/admin&#39;</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="s1">'settings'</span><span class="p">,</span> <span class="s1">'settings/admin'</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">,</span> <span class="s1">''</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getSection</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s1">&#39;notes&#39;</span><span class="p">;</span> <span class="c1">// Name of the previously created section.</span>
+        <span class="k">return</span> <span class="s1">'notes'</span><span class="p">;</span> <span class="c1">// Name of the previously created section.</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
@@ -247,13 +247,13 @@ and implement two additional methods.</p>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">string</span> <span class="p">{</span>
         <span class="c1">// This can also return an empty string in case there is only one setting</span>
         <span class="c1">// in the section.</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Notes Admin Settings&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Notes Admin Settings'</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getAuthorizedAppConfig</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">[</span>
             <span class="c1">// Allow a list of regex that the user can modify with this setting.</span>
-            <span class="s1">&#39;notes&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;/notes_.*/&#39;</span><span class="p">,</span> <span class="s1">&#39;/my_notes_setting/&#39;</span><span class="p">],</span>
+            <span class="s1">'notes'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'/notes_.*/'</span><span class="p">,</span> <span class="s1">'/my_notes_setting/'</span><span class="p">],</span>
         <span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -273,7 +273,7 @@ setting with attribute.</p>
 <span class="sd">     * Save settings</span>
 <span class="sd">     */</span>
     <span class="p">#[</span><span class="nd">PasswordConfirmationRequired</span><span class="p">]</span>
-<span class="hll">    <span class="p">#[</span><span class="nd">AuthorizedAdminSetting</span><span class="p">(</span><span class="nx">settings</span><span class="o">:</span> <span class="s1">&#39;OCA\NotesTutorial\Settings\NotesAdmin&#39;</span><span class="p">)]</span>
+<span class="hll">    <span class="p">#[</span><span class="nd">AuthorizedAdminSetting</span><span class="p">(</span><span class="nx">settings</span><span class="o">:</span> <span class="s1">'OCA\NotesTutorial\Settings\NotesAdmin'</span><span class="p">)]</span>
 </span>    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveSettings</span><span class="p">(</span><span class="nv">$mySetting</span><span class="p">)</span> <span class="p">{</span>
         <span class="o">....</span>
     <span class="p">}</span>
@@ -294,8 +294,8 @@ setting with attribute.</p>
 <span class="sd">     * Save settings</span>
 <span class="sd">     */</span>
     <span class="p">#[</span><span class="nd">PasswordConfirmationRequired</span><span class="p">]</span>
-<span class="hll">    <span class="p">#[</span><span class="nd">AuthorizedAdminSetting</span><span class="p">(</span><span class="nx">settings</span><span class="o">:</span> <span class="s1">&#39;OCA\NotesTutorial\Settings\NotesAdmin&#39;</span><span class="p">)]</span>
-</span><span class="hll">    <span class="p">#[</span><span class="nd">AuthorizedAdminSetting</span><span class="p">(</span><span class="nx">settings</span><span class="o">:</span> <span class="s1">&#39;OCA\NotesTutorial\Settings\NotesSubAdmin&#39;</span><span class="p">)]</span>
+<span class="hll">    <span class="p">#[</span><span class="nd">AuthorizedAdminSetting</span><span class="p">(</span><span class="nx">settings</span><span class="o">:</span> <span class="s1">'OCA\NotesTutorial\Settings\NotesAdmin'</span><span class="p">)]</span>
+</span><span class="hll">    <span class="p">#[</span><span class="nd">AuthorizedAdminSetting</span><span class="p">(</span><span class="nx">settings</span><span class="o">:</span> <span class="s1">'OCA\NotesTutorial\Settings\NotesSubAdmin'</span><span class="p">)]</span>
 </span>     <span class="k">public</span> <span class="k">function</span> <span class="nf">saveSettings</span><span class="p">(</span><span class="nv">$mySetting</span><span class="p">)</span> <span class="p">{</span>
          <span class="o">....</span>
      <span class="p">}</span>
@@ -317,7 +317,7 @@ setting with attribute.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

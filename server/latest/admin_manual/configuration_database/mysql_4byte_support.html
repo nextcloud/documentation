@@ -202,11 +202,11 @@ For a list of supported MySQL and MariaDB versions, see our
 <li><p>Restart the MySQL server in case you changed the configuration in step 1.</p></li>
 </ol>
 <p>You can then verify that the change worked:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SHOW</span><span class="w"> </span><span class="n">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;innodb_file_per_table&#39;</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SHOW</span><span class="w"> </span><span class="n">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'innodb_file_per_table'</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The result should look like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="n">SHOW</span> <span class="n">VARIABLES</span> <span class="n">LIKE</span> <span class="s1">&#39;innodb_file_per_table&#39;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="n">SHOW</span> <span class="n">VARIABLES</span> <span class="n">LIKE</span> <span class="s1">'innodb_file_per_table'</span><span class="p">;</span>
 <span class="o">+-----------------------+-------+</span>
 <span class="o">|</span> <span class="n">Variable_name</span>         <span class="o">|</span> <span class="n">Value</span> <span class="o">|</span>
 <span class="o">+-----------------------+-------+</span>
@@ -229,7 +229,7 @@ $ sudo -E -u www-data php occ maintenance:mode --on
 </div>
 <ol class="arabic" start="5">
 <li><p>Set the <code class="docutils literal notranslate"><span class="pre">mysql.utf8mb4</span></code> config to true in your config.php:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -E -u www-data php occ config:system:set mysql.utf8mb4 --type boolean --value=&quot;true&quot;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -E -u www-data php occ config:system:set mysql.utf8mb4 --type boolean --value="true"
 </pre></div>
 </div>
 </li>

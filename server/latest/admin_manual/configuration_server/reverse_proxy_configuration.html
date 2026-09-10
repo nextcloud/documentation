@@ -273,15 +273,15 @@ reverse proxy. The recommended solution is that your reverse proxy does the redi
 <section id="traefik-1">
 <h3>Traefik 1<a class="headerlink" href="#traefik-1" title="Link to this heading"></a></h3>
 <p>Using Docker labels:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">traefik</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">redirect</span><span class="o">.</span><span class="n">permanent</span><span class="p">:</span> <span class="s1">&#39;true&#39;</span>
-<span class="n">traefik</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">redirect</span><span class="o">.</span><span class="n">regex</span><span class="p">:</span> <span class="s1">&#39;https://(.*)/.well-known/(?:card|cal)dav&#39;</span>
-<span class="n">traefik</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">redirect</span><span class="o">.</span><span class="n">replacement</span><span class="p">:</span> <span class="s1">&#39;https://$$1/remote.php/dav&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">traefik</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">redirect</span><span class="o">.</span><span class="n">permanent</span><span class="p">:</span> <span class="s1">'true'</span>
+<span class="n">traefik</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">redirect</span><span class="o">.</span><span class="n">regex</span><span class="p">:</span> <span class="s1">'https://(.*)/.well-known/(?:card|cal)dav'</span>
+<span class="n">traefik</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">redirect</span><span class="o">.</span><span class="n">replacement</span><span class="p">:</span> <span class="s1">'https://$$1/remote.php/dav'</span>
 </pre></div>
 </div>
 <p>Using traefik.toml:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">frontend1</span><span class="o">.</span><span class="n">redirect</span><span class="p">]</span>
-  <span class="n">regex</span> <span class="o">=</span> <span class="s2">&quot;https://(.*)/.well-known/(?:card|cal)dav&quot;</span>
-  <span class="n">replacement</span> <span class="o">=</span> <span class="s2">&quot;https://$1/remote.php/dav</span>
+  <span class="n">regex</span> <span class="o">=</span> <span class="s2">"https://(.*)/.well-known/(?:card|cal)dav"</span>
+  <span class="n">replacement</span> <span class="o">=</span> <span class="s2">"https://$1/remote.php/dav</span>
   <span class="n">permanent</span> <span class="o">=</span> <span class="n">true</span>
 </pre></div>
 </div>
@@ -290,18 +290,18 @@ reverse proxy. The recommended solution is that your reverse proxy does the redi
 <section id="traefik-2">
 <h3>Traefik 2<a class="headerlink" href="#traefik-2" title="Link to this heading"></a></h3>
 <p>Using Docker labels:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="s2">&quot;traefik.http.routers.nextcloud.middlewares=nextcloud_redirectregex@docker&quot;</span>
-<span class="o">-</span> <span class="s2">&quot;traefik.http.middlewares.nextcloud_redirectregex.redirectregex.permanent=true&quot;</span>
-<span class="o">-</span> <span class="s2">&quot;traefik.http.middlewares.nextcloud_redirectregex.redirectregex.regex=https://(.*)/.well-known/(?:card|cal)dav&quot;</span>
-<span class="o">-</span> <span class="s2">&quot;traefik.http.middlewares.nextcloud_redirectregex.redirectregex.replacement=https://$$</span><span class="si">{1}</span><span class="s2">/remote.php/dav&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="s2">"traefik.http.routers.nextcloud.middlewares=nextcloud_redirectregex@docker"</span>
+<span class="o">-</span> <span class="s2">"traefik.http.middlewares.nextcloud_redirectregex.redirectregex.permanent=true"</span>
+<span class="o">-</span> <span class="s2">"traefik.http.middlewares.nextcloud_redirectregex.redirectregex.regex=https://(.*)/.well-known/(?:card|cal)dav"</span>
+<span class="o">-</span> <span class="s2">"traefik.http.middlewares.nextcloud_redirectregex.redirectregex.replacement=https://$$</span><span class="si">{1}</span><span class="s2">/remote.php/dav"</span>
 </pre></div>
 </div>
 <p>Using a TOML file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">http</span><span class="o">.</span><span class="n">middlewares</span><span class="p">]</span>
   <span class="p">[</span><span class="n">http</span><span class="o">.</span><span class="n">middlewares</span><span class="o">.</span><span class="n">nextcloud</span><span class="o">-</span><span class="n">redirectregex</span><span class="o">.</span><span class="n">redirectRegex</span><span class="p">]</span>
     <span class="n">permanent</span> <span class="o">=</span> <span class="n">true</span>
-    <span class="n">regex</span> <span class="o">=</span> <span class="s2">&quot;https://(.*)/.well-known/(?:card|cal)dav&quot;</span>
-    <span class="n">replacement</span> <span class="o">=</span> <span class="s2">&quot;https://$</span><span class="si">{1}</span><span class="s2">/remote.php/dav&quot;</span>
+    <span class="n">regex</span> <span class="o">=</span> <span class="s2">"https://(.*)/.well-known/(?:card|cal)dav"</span>
+    <span class="n">replacement</span> <span class="o">=</span> <span class="s2">"https://$</span><span class="si">{1}</span><span class="s2">/remote.php/dav"</span>
 </pre></div>
 </div>
 </section>
@@ -367,10 +367,10 @@ of the proxy host under <em>“Custom Nginx Configuration”</em>, otherwise mob
 <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
 $CONFIG = array (
-  &#39;trusted_proxies&#39;   =&gt; [&#39;10.0.0.1&#39;],
-  &#39;overwriteprotocol&#39; =&gt; &#39;https&#39;,
-  &#39;overwritewebroot&#39;  =&gt; &#39;/nextcloud&#39;,
-  &#39;overwrite.cli.url&#39; =&gt; &#39;https://example.com/nextcloud&#39;,
+  'trusted_proxies'   =&gt; ['10.0.0.1'],
+  'overwriteprotocol' =&gt; 'https',
+  'overwritewebroot'  =&gt; '/nextcloud',
+  'overwrite.cli.url' =&gt; 'https://example.com/nextcloud',
 );
 </pre></div>
 </div>
@@ -394,11 +394,11 @@ come from the proxy at <strong>10.0.0.1</strong>, which serves Nextcloud as
 <strong>https://public.example.com</strong>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
 $CONFIG = array (
-  &#39;trusted_proxies&#39;   =&gt; [&#39;10.0.0.1&#39;],
-  &#39;overwritehost&#39;     =&gt; &#39;public.example.com&#39;,
-  &#39;overwriteprotocol&#39; =&gt; &#39;https&#39;,
-  &#39;overwritecondaddr&#39; =&gt; &#39;^10\.0\.0\.1$&#39;,
-  &#39;overwrite.cli.url&#39; =&gt; &#39;https://public.example.com&#39;,
+  'trusted_proxies'   =&gt; ['10.0.0.1'],
+  'overwritehost'     =&gt; 'public.example.com',
+  'overwriteprotocol' =&gt; 'https',
+  'overwritecondaddr' =&gt; '^10\.0\.0\.1$',
+  'overwrite.cli.url' =&gt; 'https://public.example.com',
 );
 </pre></div>
 </div>
@@ -425,10 +425,10 @@ by users on a different network who only have access to the public hostname
 <code class="docutils literal notranslate"><span class="pre">overwritehost</span></code> and <code class="docutils literal notranslate"><span class="pre">overwrite.cli.url</span></code> unconditionally:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
 $CONFIG = array (
-  &#39;trusted_domains&#39;   =&gt; [&#39;cloud.local&#39;, &#39;cloud.example.com&#39;],
-  &#39;overwritehost&#39;     =&gt; &#39;cloud.example.com&#39;,
-  &#39;overwriteprotocol&#39; =&gt; &#39;https&#39;,
-  &#39;overwrite.cli.url&#39; =&gt; &#39;https://cloud.example.com&#39;,
+  'trusted_domains'   =&gt; ['cloud.local', 'cloud.example.com'],
+  'overwritehost'     =&gt; 'cloud.example.com',
+  'overwriteprotocol' =&gt; 'https',
+  'overwrite.cli.url' =&gt; 'https://cloud.example.com',
 );
 </pre></div>
 </div>

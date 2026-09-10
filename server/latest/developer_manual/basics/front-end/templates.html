@@ -143,11 +143,11 @@
   <section id="templates">
 <h1>Templates<a class="headerlink" href="#templates" title="Link to this heading"></a></h1>
 <p>Nextcloud provides its own templating system which is basically plain PHP with some additional functions and preset variables. All the parameters which have been passed from the <a class="reference internal" href="../controllers.html"><span class="doc">controller</span></a> are available in an array called <strong>$_[]</strong>, e.g.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;something&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">(</span><span class="s1">'key'</span> <span class="o">=&gt;</span> <span class="s1">'something'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>can be accessed through:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$_[&#39;key&#39;]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$_['key']
 </pre></div>
 </div>
 <div class="admonition note">
@@ -156,7 +156,7 @@
 </div>
 <p>Printing values is done by using the <code class="xref php php-func docutils literal notranslate"><span class="pre">p()</span></code> function, printing HTML is done by using <code class="xref php php-func docutils literal notranslate"><span class="pre">print_unescaped()</span></code>.</p>
 <p><code class="file docutils literal notranslate"><span class="pre">templates/main.php</span></code></p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">foreach</span><span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$entry</span><span class="p">){</span> <span class="cp">?&gt;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">foreach</span><span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">'entries'</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$entry</span><span class="p">){</span> <span class="cp">?&gt;</span>
 <span class="x">  &lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$entry</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
 <span class="cp">&lt;?php</span>
 <span class="p">}</span>
@@ -165,15 +165,15 @@
 <section id="including-templates">
 <h2>Including templates<a class="headerlink" href="#including-templates" title="Link to this heading"></a></h2>
 <p>Templates can also include other templates by using the <strong>$this-&gt;inc(‘templateName’)</strong> method.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">print_unescaped</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">inc</span><span class="p">(</span><span class="s1">&#39;sub.inc&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">print_unescaped</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">inc</span><span class="p">(</span><span class="s1">'sub.inc'</span><span class="p">));</span> <span class="cp">?&gt;</span>
 </pre></div>
 </div>
 <p>The parent variables will also be available in the included templates, but should you require it, you can also pass new variables to it by using the second optional parameter as array for <strong>$this-&gt;inc</strong>.</p>
 <p><code class="file docutils literal notranslate"><span class="pre">templates/sub.inc.php</span></code></p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">I</span> <span class="nx">am</span> <span class="nx">included</span><span class="p">,</span> <span class="nx">but</span> <span class="nx">I</span> <span class="nx">can</span> <span class="nx">still</span> <span class="nx">access</span> <span class="nx">the</span> <span class="nx">parents</span> <span class="nx">variables</span><span class="o">!&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
-<span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span>
+<span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]);</span> <span class="cp">?&gt;</span>
 
-<span class="cp">&lt;?php</span> <span class="nx">print_unescaped</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">inc</span><span class="p">(</span><span class="s1">&#39;other_template&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;variable&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;value&#39;</span><span class="p">)));</span> <span class="cp">?&gt;</span>
+<span class="cp">&lt;?php</span> <span class="nx">print_unescaped</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">inc</span><span class="p">(</span><span class="s1">'other_template'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'variable'</span> <span class="o">=&gt;</span> <span class="s1">'value'</span><span class="p">)));</span> <span class="cp">?&gt;</span>
 </pre></div>
 </div>
 </section>
@@ -186,15 +186,15 @@ See <a class="reference internal" href="js.html#applicationjs"><span class="std 
 </div>
 <p>To include CSS or JavaScript use the <strong>style</strong> and <strong>script</strong> functions:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nx">script</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="s1">&#39;script&#39;</span><span class="p">);</span>  <span class="c1">// add js/script.js</span>
-<span class="nx">style</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="s1">&#39;style&#39;</span><span class="p">);</span>  <span class="c1">// add css/style.css</span>
+<span class="nx">script</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span> <span class="s1">'script'</span><span class="p">);</span>  <span class="c1">// add js/script.js</span>
+<span class="nx">style</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span> <span class="s1">'style'</span><span class="p">);</span>  <span class="c1">// add css/style.css</span>
 </pre></div>
 </div>
 </section>
 <section id="including-images">
 <h2>Including images<a class="headerlink" href="#including-images" title="Link to this heading"></a></h2>
 <p>To generate links to images use the <strong>image_path</strong> function:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;&lt;?php print_unescaped(image_path(&#39;myapp&#39;, &#39;app.png&#39;)); ?&gt;&quot;</span> <span class="o">/&gt;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"&lt;?php print_unescaped(image_path('myapp', 'app.png')); ?&gt;"</span> <span class="o">/&gt;</span>
 </pre></div>
 </div>
 </section>
@@ -212,7 +212,7 @@ See <a class="reference internal" href="js.html#applicationjs"><span class="std 
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

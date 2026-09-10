@@ -151,7 +151,7 @@ In order to add your own resource type, we need to create a class implementing t
 <span class="k">use</span> <span class="nx">OCP\IUser</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">MyResourceProvider</span> <span class="k">implements</span> <span class="nx">IProvider</span> <span class="p">{</span>
-    <span class="k">public</span> <span class="k">const</span> <span class="no">RESOURCE_TYPE</span> <span class="o">=</span> <span class="s1">&#39;my-app-item&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">RESOURCE_TYPE</span> <span class="o">=</span> <span class="s1">'my-app-item'</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * @var IURLGenerator</span>
@@ -174,15 +174,15 @@ In order to add your own resource type, we need to create a class implementing t
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getResourceRichObject</span><span class="p">(</span><span class="nx">IResource</span> <span class="nv">$resource</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
         <span class="nv">$item</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getItem</span><span class="p">(</span><span class="nv">$resource</span><span class="p">);</span>
-        <span class="nv">$icon</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">url</span><span class="o">-&gt;</span><span class="na">linkToRouteAbsolute</span><span class="p">(</span><span class="s1">&#39;myapp.images.get_icon&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()]);</span>
-        <span class="nv">$resourceUrl</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">url</span><span class="o">-&gt;</span><span class="na">linkToRouteAbsolute</span><span class="p">(</span><span class="s1">&#39;bookmarks.page.index&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;item&#39;</span> <span class="o">=&gt;</span> <span class="nv">$bookmark</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()]);</span>
+        <span class="nv">$icon</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">url</span><span class="o">-&gt;</span><span class="na">linkToRouteAbsolute</span><span class="p">(</span><span class="s1">'myapp.images.get_icon'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()]);</span>
+        <span class="nv">$resourceUrl</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">url</span><span class="o">-&gt;</span><span class="na">linkToRouteAbsolute</span><span class="p">(</span><span class="s1">'bookmarks.page.index'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'item'</span> <span class="o">=&gt;</span> <span class="nv">$bookmark</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()]);</span>
 
         <span class="k">return</span> <span class="p">[</span>
-            <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">self</span><span class="o">::</span><span class="na">RESOURCE_TYPE</span><span class="p">,</span>
-            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$resource</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">(),</span>
-            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">getTitle</span><span class="p">(),</span>
-            <span class="s1">&#39;link&#39;</span> <span class="o">=&gt;</span> <span class="nv">$resourceUrl</span><span class="p">,</span>
-            <span class="s1">&#39;iconUrl&#39;</span> <span class="o">=&gt;</span> <span class="nv">$icon</span><span class="p">,</span>
+            <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="nx">self</span><span class="o">::</span><span class="na">RESOURCE_TYPE</span><span class="p">,</span>
+            <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="nv">$resource</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">(),</span>
+            <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">getTitle</span><span class="p">(),</span>
+            <span class="s1">'link'</span> <span class="o">=&gt;</span> <span class="nv">$resourceUrl</span><span class="p">,</span>
+            <span class="s1">'iconUrl'</span> <span class="o">=&gt;</span> <span class="nv">$icon</span><span class="p">,</span>
         <span class="p">];</span>
     <span class="p">}</span>
 
@@ -221,7 +221,7 @@ In order to add your own resource type, we need to create a class implementing t
 
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
 
-    <span class="k">public</span> <span class="k">const</span> <span class="no">APP_ID</span> <span class="o">=</span> <span class="s1">&#39;myapp&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">APP_ID</span> <span class="o">=</span> <span class="s1">'myapp'</span><span class="p">;</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
         <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
@@ -231,14 +231,14 @@ In order to add your own resource type, we need to create a class implementing t
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
-        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">injectFn</span><span class="p">(</span><span class="nx">Closure</span><span class="o">::</span><span class="na">fromCallable</span><span class="p">([</span><span class="nv">$this</span><span class="p">,</span> <span class="s1">&#39;registerCollaborationResources&#39;</span><span class="p">]));</span>
+        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">injectFn</span><span class="p">(</span><span class="nx">Closure</span><span class="o">::</span><span class="na">fromCallable</span><span class="p">([</span><span class="nv">$this</span><span class="p">,</span> <span class="s1">'registerCollaborationResources'</span><span class="p">]));</span>
     <span class="p">}</span>
 
     <span class="k">protected</span> <span class="k">function</span> <span class="nf">registerCollaborationResources</span><span class="p">(</span><span class="nx">IProviderManager</span> <span class="nv">$resourceManager</span><span class="p">,</span> <span class="nx">IEventDispatcher</span> <span class="nv">$eventDispatcher</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
         <span class="nv">$resourceManager</span><span class="o">-&gt;</span><span class="na">registerResourceProvider</span><span class="p">(</span><span class="nx">ResourceProvider</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 
         <span class="nv">$eventDispatcher</span><span class="o">-&gt;</span><span class="na">addListener</span><span class="p">(</span><span class="nx">\OCP\Collaboration\Resources\LoadAdditionalScriptsEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="k">static</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="nx">Util</span><span class="o">::</span><span class="na">addScript</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="s1">&#39;collections&#39;</span><span class="p">);</span>
+            <span class="nx">Util</span><span class="o">::</span><span class="na">addScript</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="s1">'collections'</span><span class="p">);</span>
         <span class="p">});</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -262,34 +262,34 @@ three properties:</p>
 <p>The following example shows how a Vue.js component could be used to render the
 widget user interface, however this approach works for any other framework as well
 as plain JavaScript:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="nx">Vue</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;vue&#39;</span>
-<span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="nx">ItemPickerDialog</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./components/ItemPickerDialog&#39;</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="nx">Vue</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'vue'</span>
+<span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="nx">ItemPickerDialog</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./components/ItemPickerDialog'</span>
 
-<span class="w">    </span><span class="nx">OCP</span><span class="p">.</span><span class="nx">Collaboration</span><span class="p">.</span><span class="nx">registerType</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">OCP</span><span class="p">.</span><span class="nx">Collaboration</span><span class="p">.</span><span class="nx">registerType</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
-<span class="w">            </span><span class="nx">container</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;myapp-item-select&#39;</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;body-user&#39;</span><span class="p">)</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'div'</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">container</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'myapp-item-select'</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'body-user'</span><span class="p">)</span>
 <span class="w">            </span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">container</span><span class="p">)</span>
 <span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">ComponentVM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
 <span class="w">                </span><span class="nx">render</span><span class="o">:</span><span class="w"> </span><span class="nx">h</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">h</span><span class="p">(</span><span class="nx">ItemPickerDialog</span><span class="p">),</span>
 <span class="w">            </span><span class="p">})</span>
 <span class="w">            </span><span class="nx">ComponentVM</span><span class="p">.</span><span class="nx">$mount</span><span class="p">(</span><span class="nx">container</span><span class="p">)</span>
-<span class="w">            </span><span class="nx">ComponentVM</span><span class="p">.</span><span class="nx">$root</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">ComponentVM</span><span class="p">.</span><span class="nx">$root</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">'close'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="nx">ComponentVM</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
 <span class="w">                </span><span class="nx">ComponentVM</span><span class="p">.</span><span class="nx">$destroy</span><span class="p">()</span>
-<span class="w">                </span><span class="nx">reject</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;User cancelled resource selection&#39;</span><span class="p">))</span>
+<span class="w">                </span><span class="nx">reject</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'User cancelled resource selection'</span><span class="p">))</span>
 <span class="w">            </span><span class="p">})</span>
-<span class="w">            </span><span class="nx">ComponentVM</span><span class="p">.</span><span class="nx">$root</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;select&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">ComponentVM</span><span class="p">.</span><span class="nx">$root</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">'select'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="nx">resolve</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
 <span class="w">                </span><span class="nx">ComponentVM</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
 <span class="w">                </span><span class="nx">ComponentVM</span><span class="p">.</span><span class="nx">$destroy</span><span class="p">()</span>
 <span class="w">            </span><span class="p">})</span>
 <span class="w">        </span><span class="p">})</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nx">typeString</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Link to an item&#39;</span><span class="p">),</span>
-<span class="w">    </span><span class="nx">typeIconClass</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;icon-file&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">typeString</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Link to an item'</span><span class="p">),</span>
+<span class="w">    </span><span class="nx">typeIconClass</span><span class="o">:</span><span class="w"> </span><span class="s1">'icon-file'</span><span class="p">,</span>
 <span class="p">})</span>
 </pre></div>
 </div>
@@ -308,7 +308,7 @@ we can simply dispatch it when we render our main page template.</p>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span> <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">eventDispatcher</span><span class="o">-&gt;</span><span class="na">dispatchTyped</span><span class="p">(</span><span class="k">new</span> <span class="nx">\OCP\Collaboration\Resources\LoadAdditionalScriptsEvent</span><span class="p">());</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="s1">&#39;my_app&#39;</span><span class="p">,</span> <span class="s1">&#39;main&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="s1">'my_app'</span><span class="p">,</span> <span class="s1">'main'</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -316,28 +316,28 @@ we can simply dispatch it when we render our main page template.</p>
 <p>In our Vue app, we can then render the pre-built projects picker available in the npm package <code class="docutils literal notranslate"><span class="pre">nextcloud-vue-collections</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="n">CollectionList</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;itemId&quot;</span>
-            <span class="p">:</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;itemId&quot;</span>
-            <span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;itemTitle&quot;</span>
-            <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;myapp&quot;</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="n">CollectionList</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">"itemId"</span>
+            <span class="p">:</span><span class="nb">id</span><span class="o">=</span><span class="s2">"itemId"</span>
+            <span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">"itemTitle"</span>
+            <span class="nb">type</span><span class="o">=</span><span class="s2">"myapp"</span> <span class="o">/&gt;</span>
     <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
 
 <span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="kn">import</span><span class="w"> </span><span class="p">{</span> <span class="n">CollectionList</span> <span class="p">}</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;nextcloud-vue-collections&#39;</span>
+<span class="kn">import</span><span class="w"> </span><span class="p">{</span> <span class="n">CollectionList</span> <span class="p">}</span> <span class="kn">from</span><span class="w"> </span><span class="s1">'nextcloud-vue-collections'</span>
 <span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
-    <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;CollaborationView&#39;</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">'CollaborationView'</span><span class="p">,</span>
     <span class="n">components</span><span class="p">:</span> <span class="p">{</span>
         <span class="n">CollectionList</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="n">props</span><span class="p">:</span> <span class="p">{</span>
         <span class="nb">id</span><span class="p">:</span> <span class="p">{</span>
             <span class="nb">type</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
-            <span class="n">default</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="n">default</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
         <span class="p">},</span>
         <span class="n">name</span><span class="p">:</span> <span class="p">{</span>
             <span class="nb">type</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
-            <span class="n">default</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="n">default</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -359,7 +359,7 @@ we can simply dispatch it when we render our main page template.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

@@ -226,10 +226,10 @@ File comments and Talk messages are stored in <code class="docutils literal notr
 and will be left attributed to “unknown/anonymous user” if not cleaned
 up first. Run these SQL queries before deleting the account:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">oc_comments</span>
-<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">actor_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;users&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">actor_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;$USERID&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">actor_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'users'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">actor_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'$USERID'</span><span class="p">;</span>
 
 <span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">oc_comments_read_markers</span>
-<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;$USERID&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'$USERID'</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Replace <code class="docutils literal notranslate"><span class="pre">$USERID</span></code> with the account’s username. To find all comment

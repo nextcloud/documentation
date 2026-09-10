@@ -179,23 +179,23 @@ without writing a custom settings handling front-end and back-end code
 <span class="k">class</span> <span class="nc">MyDeclarativeSettingsForm</span> <span class="k">implements</span> <span class="nx">IDeclarativeSettingsForm</span> <span class="p">{</span>
 <span class="hll">    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSchema</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
 </span>        <span class="k">return</span> <span class="p">[</span>
-            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_declarative_settings_form&#39;</span><span class="p">,</span> <span class="c1">// unique form id</span>
-            <span class="s1">&#39;priority&#39;</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span> <span class="c1">// declarative section priority (ordering)</span>
-            <span class="s1">&#39;section_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">SECTION_TYPE_ADMIN</span><span class="p">,</span> <span class="c1">// admin, personal</span>
-            <span class="s1">&#39;section_id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_section_id&#39;</span><span class="p">,</span> <span class="c1">// existing section id or your custom section id</span>
-            <span class="s1">&#39;storage_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">STORAGE_TYPE_INTERNAL</span><span class="p">,</span> <span class="c1">// external, internal (handled by core to store in appconfig and preferences)</span>
-            <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;MyApp settings title&#39;</span><span class="p">,</span> <span class="c1">// NcSettingsSection name</span>
-            <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;My app settings section description&#39;</span><span class="p">,</span> <span class="c1">// NcSettingsSection description</span>
-            <span class="s1">&#39;doc_url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="c1">// NcSettingsSection doc_url for documentation or help page, empty string if not needed</span>
-            <span class="s1">&#39;fields&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'my_declarative_settings_form'</span><span class="p">,</span> <span class="c1">// unique form id</span>
+            <span class="s1">'priority'</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span> <span class="c1">// declarative section priority (ordering)</span>
+            <span class="s1">'section_type'</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">SECTION_TYPE_ADMIN</span><span class="p">,</span> <span class="c1">// admin, personal</span>
+            <span class="s1">'section_id'</span> <span class="o">=&gt;</span> <span class="s1">'my_section_id'</span><span class="p">,</span> <span class="c1">// existing section id or your custom section id</span>
+            <span class="s1">'storage_type'</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">STORAGE_TYPE_INTERNAL</span><span class="p">,</span> <span class="c1">// external, internal (handled by core to store in appconfig and preferences)</span>
+            <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'MyApp settings title'</span><span class="p">,</span> <span class="c1">// NcSettingsSection name</span>
+            <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'My app settings section description'</span><span class="p">,</span> <span class="c1">// NcSettingsSection description</span>
+            <span class="s1">'doc_url'</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span> <span class="c1">// NcSettingsSection doc_url for documentation or help page, empty string if not needed</span>
+            <span class="s1">'fields'</span> <span class="o">=&gt;</span> <span class="p">[</span>
                 <span class="p">[</span>
-                    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_field_key&#39;</span><span class="p">,</span> <span class="c1">// configkey</span>
-                    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Field title&#39;</span><span class="p">,</span> <span class="c1">// name or label</span>
-                    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Additional setting hint or description&#39;</span><span class="p">,</span> <span class="c1">// hint</span>
-                    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">MULTI_SELECT</span><span class="p">,</span>
-                    <span class="s1">&#39;options&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">],</span>
-                    <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select some multiple options&#39;</span><span class="p">,</span> <span class="c1">// input placeholder</span>
-                    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">],</span>
+                    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'my_field_key'</span><span class="p">,</span> <span class="c1">// configkey</span>
+                    <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Field title'</span><span class="p">,</span> <span class="c1">// name or label</span>
+                    <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'Additional setting hint or description'</span><span class="p">,</span> <span class="c1">// hint</span>
+                    <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">MULTI_SELECT</span><span class="p">,</span>
+                    <span class="s1">'options'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">],</span>
+                    <span class="s1">'placeholder'</span> <span class="o">=&gt;</span> <span class="s1">'Select some multiple options'</span><span class="p">,</span> <span class="c1">// input placeholder</span>
+                    <span class="s1">'default'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">],</span>
                 <span class="p">],</span>
             <span class="p">]</span>
         <span class="p">];</span>
@@ -217,7 +217,7 @@ without writing a custom settings handling front-end and back-end code
 </span>
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;my_app&#39;</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">'my_app'</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
@@ -251,7 +251,7 @@ without writing a custom settings handling front-end and back-end code
             <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
 
-        <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">registerSchema</span><span class="p">(</span><span class="s1">&#39;my_app&#39;</span><span class="p">,</span> <span class="p">[</span>
+        <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">registerSchema</span><span class="p">(</span><span class="s1">'my_app'</span><span class="p">,</span> <span class="p">[</span>
             <span class="c1">// your declarative settings schema here</span>
         <span class="p">]);</span>
     <span class="p">}</span>
@@ -272,7 +272,7 @@ without writing a custom settings handling front-end and back-end code
 </span>
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;my_app&#39;</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">'my_app'</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
@@ -333,7 +333,7 @@ are user specific and stored in <code class="docutils literal notranslate"><span
         <span class="p">}</span>
 
         <span class="c1">// Always check if the event is related to your app declarative settings</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getApp</span><span class="p">()</span> <span class="o">!==</span> <span class="s1">&#39;my_app&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getApp</span><span class="p">()</span> <span class="o">!==</span> <span class="s1">'my_app'</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
 
@@ -366,7 +366,7 @@ are user specific and stored in <code class="docutils literal notranslate"><span
         <span class="p">}</span>
 
         <span class="c1">// Always check if the event is related to your app declarative settings</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getApp</span><span class="p">()</span> <span class="o">!==</span> <span class="s1">&#39;my_app&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getApp</span><span class="p">()</span> <span class="o">!==</span> <span class="s1">'my_app'</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
 
@@ -393,7 +393,7 @@ are user specific and stored in <code class="docutils literal notranslate"><span
 </span>
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;my_app&#39;</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">'my_app'</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
@@ -433,12 +433,12 @@ are user specific and stored in <code class="docutils literal notranslate"><span
 <img alt="Declarative settings input fields (text, password, email, tel, url, number)" src="../_images/declarative_settings_input_fields.png" />
 </figure>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_field_unique_id&#39;</span><span class="p">,</span> <span class="c1">// configkey</span>
-    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Default text field&#39;</span><span class="p">,</span> <span class="c1">// label</span>
-    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Set some simple text setting&#39;</span><span class="p">,</span> <span class="c1">// hint</span>
-    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">TEXT</span><span class="p">,</span> <span class="c1">// text, password, email, tel, url, number</span>
-    <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Enter text setting&#39;</span><span class="p">,</span> <span class="c1">// placeholder</span>
-    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'my_field_unique_id'</span><span class="p">,</span> <span class="c1">// configkey</span>
+    <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Default text field'</span><span class="p">,</span> <span class="c1">// label</span>
+    <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'Set some simple text setting'</span><span class="p">,</span> <span class="c1">// hint</span>
+    <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">TEXT</span><span class="p">,</span> <span class="c1">// text, password, email, tel, url, number</span>
+    <span class="s1">'placeholder'</span> <span class="o">=&gt;</span> <span class="s1">'Enter text setting'</span><span class="p">,</span> <span class="c1">// placeholder</span>
+    <span class="s1">'default'</span> <span class="o">=&gt;</span> <span class="s1">'foo'</span><span class="p">,</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -449,35 +449,35 @@ are user specific and stored in <code class="docutils literal notranslate"><span
 <img alt="checkbox and multi-checkbox field types" src="../_images/declarative_settings_checkboxes.png" />
 </figure>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_checkbox_field&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Toggle something&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select checkbox option setting&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">CHECKBOX</span><span class="p">,</span> <span class="c1">// checkbox, multiple-checkbox</span>
-    <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Verify something if enabled&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'my_checkbox_field'</span><span class="p">,</span>
+    <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Toggle something'</span><span class="p">,</span>
+    <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'Select checkbox option setting'</span><span class="p">,</span>
+    <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">CHECKBOX</span><span class="p">,</span> <span class="c1">// checkbox, multiple-checkbox</span>
+    <span class="s1">'label'</span> <span class="o">=&gt;</span> <span class="s1">'Verify something if enabled'</span><span class="p">,</span>
+    <span class="s1">'default'</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
 <span class="p">],</span>
 <span class="p">[</span>
-    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_multicheckbox_field&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Multiple checkbox toggles, describing one setting, checked options are saved as an JSON object {foo: true, bar: false}&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select checkbox option setting&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">MULTI_CHECKBOX</span><span class="p">,</span> <span class="c1">// checkbox, multi-checkbox</span>
-    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">],</span>
-    <span class="s1">&#39;options&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'my_multicheckbox_field'</span><span class="p">,</span>
+    <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Multiple checkbox toggles, describing one setting, checked options are saved as an JSON object {foo: true, bar: false}'</span><span class="p">,</span>
+    <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'Select checkbox option setting'</span><span class="p">,</span>
+    <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">MULTI_CHECKBOX</span><span class="p">,</span> <span class="c1">// checkbox, multi-checkbox</span>
+    <span class="s1">'default'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'foo'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="s1">'bar'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="s1">'baz'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">],</span>
+    <span class="s1">'options'</span> <span class="o">=&gt;</span> <span class="p">[</span>
         <span class="p">[</span>
-            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Foo&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="c1">// multiple-checkbox configkey</span>
+            <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Foo'</span><span class="p">,</span>
+            <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="s1">'foo'</span><span class="p">,</span> <span class="c1">// multiple-checkbox configkey</span>
         <span class="p">],</span>
         <span class="p">[</span>
-            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Bar&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+            <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Bar'</span><span class="p">,</span>
+            <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="s1">'bar'</span><span class="p">,</span>
         <span class="p">],</span>
         <span class="p">[</span>
-            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Baz&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;baz&#39;</span><span class="p">,</span>
+            <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Baz'</span><span class="p">,</span>
+            <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="s1">'baz'</span><span class="p">,</span>
         <span class="p">],</span>
         <span class="p">[</span>
-            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Qux&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;qux&#39;</span><span class="p">,</span>
+            <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Qux'</span><span class="p">,</span>
+            <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="s1">'qux'</span><span class="p">,</span>
         <span class="p">],</span>
     <span class="p">],</span>
 <span class="p">],</span>
@@ -490,24 +490,24 @@ are user specific and stored in <code class="docutils literal notranslate"><span
 <img alt="radio field type" src="../_images/declarative_settings_radio.png" />
 </figure>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_radio_field&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Radio toggles, describing one setting like single select&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select radio option setting&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">RADIO</span><span class="p">,</span> <span class="c1">// radio (NcCheckboxRadioSwitch type radio)</span>
-    <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select single toggle&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;options&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'my_radio_field'</span><span class="p">,</span>
+    <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Radio toggles, describing one setting like single select'</span><span class="p">,</span>
+    <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'Select radio option setting'</span><span class="p">,</span>
+    <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">RADIO</span><span class="p">,</span> <span class="c1">// radio (NcCheckboxRadioSwitch type radio)</span>
+    <span class="s1">'label'</span> <span class="o">=&gt;</span> <span class="s1">'Select single toggle'</span><span class="p">,</span>
+    <span class="s1">'default'</span> <span class="o">=&gt;</span> <span class="s1">'foo'</span><span class="p">,</span>
+    <span class="s1">'options'</span> <span class="o">=&gt;</span> <span class="p">[</span>
         <span class="p">[</span>
-            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;First radio&#39;</span><span class="p">,</span> <span class="c1">// NcCheckboxRadioSwitch display name</span>
-            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;foo&#39;</span> <span class="c1">// NcCheckboxRadioSwitch value</span>
+            <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'First radio'</span><span class="p">,</span> <span class="c1">// NcCheckboxRadioSwitch display name</span>
+            <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="s1">'foo'</span> <span class="c1">// NcCheckboxRadioSwitch value</span>
         <span class="p">],</span>
         <span class="p">[</span>
-            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Second radio&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;bar&#39;</span>
+            <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Second radio'</span><span class="p">,</span>
+            <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="s1">'bar'</span>
         <span class="p">],</span>
         <span class="p">[</span>
-            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Third radio&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;baz&#39;</span>
+            <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Third radio'</span><span class="p">,</span>
+            <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="s1">'baz'</span>
         <span class="p">],</span>
     <span class="p">],</span>
 <span class="p">],</span>
@@ -520,13 +520,13 @@ are user specific and stored in <code class="docutils literal notranslate"><span
 <img alt="select field type" src="../_images/declarative_settings_select.png" />
 </figure>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_select_field&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Selection&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select some option setting&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">SELECT</span><span class="p">,</span> <span class="c1">// select, radio, multi-select</span>
-    <span class="s1">&#39;options&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">],</span>
-    <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select some option setting&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'my_select_field'</span><span class="p">,</span>
+    <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Selection'</span><span class="p">,</span>
+    <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'Select some option setting'</span><span class="p">,</span>
+    <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">SELECT</span><span class="p">,</span> <span class="c1">// select, radio, multi-select</span>
+    <span class="s1">'options'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">],</span>
+    <span class="s1">'placeholder'</span> <span class="o">=&gt;</span> <span class="s1">'Select some option setting'</span><span class="p">,</span>
+    <span class="s1">'default'</span> <span class="o">=&gt;</span> <span class="s1">'foo'</span><span class="p">,</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -534,13 +534,13 @@ are user specific and stored in <code class="docutils literal notranslate"><span
 <img alt="multi-select field type" src="../_images/declarative_settings_multi_select.png" />
 </figure>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_multi_select_field&#39;</span><span class="p">,</span> <span class="c1">// configkey</span>
-    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Multi-selection&#39;</span><span class="p">,</span> <span class="c1">// name or label</span>
-    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select some option setting&#39;</span><span class="p">,</span> <span class="c1">// hint</span>
-    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">MULTI_SELECT</span><span class="p">,</span> <span class="c1">// select, radio, multi-select</span>
-    <span class="s1">&#39;options&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">],</span> <span class="c1">// simple options for select, radio, multi-select</span>
-    <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select some multiple options&#39;</span><span class="p">,</span> <span class="c1">// input placeholder</span>
-    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">],</span>
+    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'my_multi_select_field'</span><span class="p">,</span> <span class="c1">// configkey</span>
+    <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Multi-selection'</span><span class="p">,</span> <span class="c1">// name or label</span>
+    <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'Select some option setting'</span><span class="p">,</span> <span class="c1">// hint</span>
+    <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">MULTI_SELECT</span><span class="p">,</span> <span class="c1">// select, radio, multi-select</span>
+    <span class="s1">'options'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">],</span> <span class="c1">// simple options for select, radio, multi-select</span>
+    <span class="s1">'placeholder'</span> <span class="o">=&gt;</span> <span class="s1">'Select some multiple options'</span><span class="p">,</span> <span class="c1">// input placeholder</span>
+    <span class="s1">'default'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">],</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -550,24 +550,24 @@ are user specific and stored in <code class="docutils literal notranslate"><span
 <p>Since Nextcloud 32 there is a new field attribute <code class="docutils literal notranslate"><span class="pre">sensitive:</span> <span class="pre">true/false</span></code> available for <code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::TEXT</span></code>, <code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::PASSWORD</span></code> types.
 The values of such fields are stored in an encrypted form in the database and are not exposed to the UI.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;test_sensitive_field&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Sensitive text field&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Set some secure value setting that is stored encrypted&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">TEXT</span><span class="p">,</span>
-    <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Sensitive field&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Set secure value&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;sensitive&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="c1">// only for TEXT, PASSWORD types</span>
+    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'test_sensitive_field'</span><span class="p">,</span>
+    <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Sensitive text field'</span><span class="p">,</span>
+    <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'Set some secure value setting that is stored encrypted'</span><span class="p">,</span>
+    <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">TEXT</span><span class="p">,</span>
+    <span class="s1">'label'</span> <span class="o">=&gt;</span> <span class="s1">'Sensitive field'</span><span class="p">,</span>
+    <span class="s1">'placeholder'</span> <span class="o">=&gt;</span> <span class="s1">'Set secure value'</span><span class="p">,</span>
+    <span class="s1">'default'</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="s1">'sensitive'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="c1">// only for TEXT, PASSWORD types</span>
 <span class="p">],</span>
 <span class="p">[</span>
-    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;test_sensitive_field_2&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Sensitive password field&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Set some password setting that is stored encrypted&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">PASSWORD</span><span class="p">,</span>
-    <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Sensitive field&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Set secure value&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;sensitive&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="c1">// only for TEXT, PASSWORD types</span>
+    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'test_sensitive_field_2'</span><span class="p">,</span>
+    <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Sensitive password field'</span><span class="p">,</span>
+    <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'Set some password setting that is stored encrypted'</span><span class="p">,</span>
+    <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">PASSWORD</span><span class="p">,</span>
+    <span class="s1">'label'</span> <span class="o">=&gt;</span> <span class="s1">'Sensitive field'</span><span class="p">,</span>
+    <span class="s1">'placeholder'</span> <span class="o">=&gt;</span> <span class="s1">'Set secure value'</span><span class="p">,</span>
+    <span class="s1">'default'</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="s1">'sensitive'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="c1">// only for TEXT, PASSWORD types</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -590,7 +590,7 @@ The values of such fields are stored in an encrypted form in the database and ar
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

@@ -184,11 +184,11 @@ in a new migration.</p>
            <span class="sd">/** @var ISchemaWrapper $schema */</span>
            <span class="nv">$schema</span> <span class="o">=</span> <span class="nv">$schemaClosure</span><span class="p">();</span>
 
-           <span class="nv">$table</span> <span class="o">=</span> <span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">getTable</span><span class="p">(</span><span class="s1">&#39;twofactor_backupcodes&#39;</span><span class="p">);</span>
+           <span class="nv">$table</span> <span class="o">=</span> <span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">getTable</span><span class="p">(</span><span class="s1">'twofactor_backupcodes'</span><span class="p">);</span>
 
-           <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="nx">\OCP\DB\Types</span><span class="o">::</span><span class="na">STRING</span><span class="p">,</span> <span class="p">[</span>
-                   <span class="s1">&#39;notnull&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-                   <span class="s1">&#39;length&#39;</span> <span class="o">=&gt;</span> <span class="mi">64</span><span class="p">,</span>
+           <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">,</span> <span class="nx">\OCP\DB\Types</span><span class="o">::</span><span class="na">STRING</span><span class="p">,</span> <span class="p">[</span>
+                   <span class="s1">'notnull'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+                   <span class="s1">'length'</span> <span class="o">=&gt;</span> <span class="mi">64</span><span class="p">,</span>
            <span class="p">]);</span>
 
            <span class="k">return</span> <span class="nv">$schema</span><span class="p">;</span>
@@ -206,8 +206,8 @@ a pre schema change</p>
 </div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">postSchemaChange</span><span class="p">(</span><span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span> <span class="nx">\Closure</span> <span class="nv">$schemaClosure</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span> <span class="p">{</span>
        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">getQueryBuilder</span><span class="p">();</span>
-       <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="s1">&#39;twofactor_backupcodes&#39;</span><span class="p">)</span>
-               <span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;uid&#39;</span><span class="p">);</span>
+       <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="s1">'twofactor_backupcodes'</span><span class="p">)</span>
+               <span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">,</span> <span class="s1">'uid'</span><span class="p">);</span>
        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">executeStatement</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
@@ -220,8 +220,8 @@ a pre schema change</p>
         <span class="sd">/** @var ISchemaWrapper $schema */</span>
         <span class="nv">$schema</span> <span class="o">=</span> <span class="nv">$schemaClosure</span><span class="p">();</span>
 
-        <span class="nv">$table</span> <span class="o">=</span> <span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">getTable</span><span class="p">(</span><span class="s1">&#39;twofactor_backupcodes&#39;</span><span class="p">);</span>
-        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">dropColumn</span><span class="p">(</span><span class="s1">&#39;uid&#39;</span><span class="p">);</span>
+        <span class="nv">$table</span> <span class="o">=</span> <span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">getTable</span><span class="p">(</span><span class="s1">'twofactor_backupcodes'</span><span class="p">);</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">dropColumn</span><span class="p">(</span><span class="s1">'uid'</span><span class="p">);</span>
 
         <span class="k">return</span> <span class="nv">$schema</span><span class="p">;</span>
 <span class="p">}</span>
@@ -257,11 +257,11 @@ instance into your migration class like this:</p>
 <span class="k">use</span> <span class="nx">OCP\Migration\Attributes\ModifyColumn</span><span class="p">;</span>
 
 <span class="hll"><span class="p">#[</span><span class="nd">CreateTable</span><span class="p">(</span>
-</span><span class="hll">    <span class="nx">table</span><span class="o">:</span> <span class="s1">&#39;new_table&#39;</span><span class="p">,</span>
-</span><span class="hll">    <span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;Table is used to store things, but also to get more things&#39;</span><span class="p">,</span>
-</span><span class="hll">    <span class="nx">notes</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;this is a notice&#39;</span><span class="p">,</span> <span class="s1">&#39;and another one, if really needed&#39;</span><span class="p">]</span>
+</span><span class="hll">    <span class="nx">table</span><span class="o">:</span> <span class="s1">'new_table'</span><span class="p">,</span>
+</span><span class="hll">    <span class="nx">description</span><span class="o">:</span> <span class="s1">'Table is used to store things, but also to get more things'</span><span class="p">,</span>
+</span><span class="hll">    <span class="nx">notes</span><span class="o">:</span> <span class="p">[</span><span class="s1">'this is a notice'</span><span class="p">,</span> <span class="s1">'and another one, if really needed'</span><span class="p">]</span>
 </span><span class="hll"><span class="p">)]</span>
-</span><span class="hll"><span class="p">#[</span><span class="nd">ModifyColumn</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="s1">&#39;other_table&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;this_field&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">BIGINT</span><span class="p">)]</span>
+</span><span class="hll"><span class="p">#[</span><span class="nd">ModifyColumn</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="s1">'other_table'</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">'this_field'</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">BIGINT</span><span class="p">)]</span>
 </span><span class="k">class</span> <span class="nc">Version30000Date20240729185117</span> <span class="k">extends</span> <span class="nx">SimpleMigrationStep</span> <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">changeSchema</span><span class="p">(</span><span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span> <span class="nx">Closure</span> <span class="nv">$schemaClosure</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span> <span class="p">{</span>
 <span class="p">[</span><span class="o">...</span><span class="p">]</span>
@@ -359,7 +359,7 @@ version, without executing them:</p>
          <span class="k">return</span><span class="p">;</span>
       <span class="p">}</span>
 
-      <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">addMissingIndex</span><span class="p">(</span><span class="s1">&#39;my_table&#39;</span><span class="p">,</span> <span class="s1">&#39;my_index&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;column_a&#39;</span><span class="p">,</span> <span class="s1">&#39;column_b&#39;</span><span class="p">]);</span>
+      <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">addMissingIndex</span><span class="p">(</span><span class="s1">'my_table'</span><span class="p">,</span> <span class="s1">'my_index'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'column_a'</span><span class="p">,</span> <span class="s1">'column_b'</span><span class="p">]);</span>
    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -382,7 +382,7 @@ version, without executing them:</p>
          <span class="k">return</span><span class="p">;</span>
       <span class="p">}</span>
 
-      <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">replaceIndex</span><span class="p">(</span><span class="s1">&#39;my_table&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;my_old_index_one&#39;</span><span class="p">,</span> <span class="s1">&#39;my_old_index_two&#39;</span><span class="p">],</span> <span class="s1">&#39;my_new_index&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;column_a&#39;</span><span class="p">,</span> <span class="s1">&#39;column_b&#39;</span><span class="p">],</span> <span class="k">false</span><span class="p">);</span>
+      <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">replaceIndex</span><span class="p">(</span><span class="s1">'my_table'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'my_old_index_one'</span><span class="p">,</span> <span class="s1">'my_old_index_two'</span><span class="p">],</span> <span class="s1">'my_new_index'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'column_a'</span><span class="p">,</span> <span class="s1">'column_b'</span><span class="p">],</span> <span class="k">false</span><span class="p">);</span>
    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -402,7 +402,7 @@ version, without executing them:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

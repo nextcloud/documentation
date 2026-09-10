@@ -176,10 +176,10 @@ but for public shares the legacy frontend-end was still used. With Nextcloud 31 
 This means accessing the legacy private API in <code class="docutils literal notranslate"><span class="pre">OCA.Files</span></code> is no longer possible, all existing apps should migrate to the <a class="reference internal" href="../../digging_deeper/javascript-apis.html#js-library-nextcloud-files"><span class="std std-ref">public API</span></a>.</p>
 <p>To make migration easier utility functions are provided in the <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/sharing</span></code> <a class="reference internal" href="../../digging_deeper/javascript-apis.html#js-library-nextcloud-sharing"><span class="std std-ref">package</span></a>
 to check whether the current Files app instance is a public share or not, and if so to fetch the share token.</p>
-<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">isPublicShare</span><span class="p">,</span><span class="w"> </span><span class="nx">getSharingToken</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/sharing/public&#39;</span>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">isPublicShare</span><span class="p">,</span><span class="w"> </span><span class="nx">getSharingToken</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/sharing/public'</span>
 
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isPublicShare</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;This is a public share with the sharing token: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">getSharingToken</span><span class="p">())</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'This is a public share with the sharing token: '</span><span class="p">,</span><span class="w"> </span><span class="nx">getSharingToken</span><span class="p">())</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -190,10 +190,10 @@ to check whether the current Files app instance is a public share or not, and if
 <li><p><code class="docutils literal notranslate"><span class="pre">OCA.FilesSharingDrop</span></code> removed as part of the Vue migration. Use the Files app API provided by the <a class="reference internal" href="../../digging_deeper/javascript-apis.html#js-library-nextcloud-files"><span class="std std-ref">package</span></a> .</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">$.Event('OCA.Notification.Action')</span></code> jQuery event removed from Notifications app as part of the Vue migration. Use <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/event-bus</span></code> <a class="reference internal" href="../../digging_deeper/javascript-apis.html#js-library-nextcloud-event-bus"><span class="std std-ref">package</span></a> instead.</p></li>
 </ul>
-<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">subscribe</span><span class="p">,</span><span class="w"> </span><span class="nx">unsubscribe</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/event-bus&#39;</span>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">subscribe</span><span class="p">,</span><span class="w"> </span><span class="nx">unsubscribe</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/event-bus'</span>
 
-<span class="nx">subscribe</span><span class="p">(</span><span class="s1">&#39;notifications:action:execute&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;Notification action has been executed:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">notification</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">action</span><span class="p">)</span>
+<span class="nx">subscribe</span><span class="p">(</span><span class="s1">'notifications:action:execute'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'Notification action has been executed:'</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">notification</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">action</span><span class="p">)</span>
 <span class="p">})</span>
 </pre></div>
 </div>
@@ -208,8 +208,8 @@ to check whether the current Files app instance is a public share or not, and if
 However, it is recommended to always support all PHP versions that are compatible with supported Nextcloud version.
 In that case the <code class="docutils literal notranslate"><span class="pre">php</span></code>-dependencies entries can be omitted.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependencies&gt;</span>
-<span class="w">  </span><span class="nt">&lt;php</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;8.1&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;8.4&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;29&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;31&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;php</span><span class="w"> </span><span class="na">min-version=</span><span class="s">"8.1"</span><span class="w"> </span><span class="na">max-version=</span><span class="s">"8.4"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">"29"</span><span class="w"> </span><span class="na">max-version=</span><span class="s">"31"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/dependencies&gt;</span>
 </pre></div>
 </div>
@@ -217,8 +217,8 @@ In that case the <code class="docutils literal notranslate"><span class="pre">ph
 <li><p>If your app has a <code class="docutils literal notranslate"><span class="pre">composer.json</span></code> and the file contains the PHP restrictions from <code class="docutils literal notranslate"><span class="pre">info.xml</span></code>, adjust it as well.</p></li>
 </ol>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;require&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;php&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;=8.1 &lt;=8.4&quot;</span>
+<span class="w">  </span><span class="nt">"require"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"php"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=8.1 &lt;=8.4"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -564,7 +564,7 @@ All using apps should migrate to <code class="docutils literal notranslate"><spa
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

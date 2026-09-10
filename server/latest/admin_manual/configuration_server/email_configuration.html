@@ -343,7 +343,7 @@ use OC\Mail\EMailTemplate;
 class MyClass extends EMailTemplate
 {
    protected string $header = &lt;&lt;&lt;EOF
-      &lt;table align=&quot;center&quot; class=&quot;wrapper&quot;&gt;
+      &lt;table align="center" class="wrapper"&gt;
             // your theme email header modification
       &lt;/table&gt;
    EOF;
@@ -352,7 +352,7 @@ class MyClass extends EMailTemplate
 </div>
 <ol class="arabic" start="3">
 <li><p>Then in <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code> change <code class="docutils literal notranslate"><span class="pre">mail_template_class</span></code> to your class namespace:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;mail_template_class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OCA</span><span class="se">\\</span><span class="s1">MyApp</span><span class="se">\\</span><span class="s1">MyClass&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'mail_template_class'</span> <span class="o">=&gt;</span> <span class="s1">'OCA</span><span class="se">\\</span><span class="s1">MyApp</span><span class="se">\\</span><span class="s1">MyClass'</span><span class="p">,</span>
 </pre></div>
 </div>
 </li>
@@ -371,46 +371,46 @@ to enter the name or IP address of the server, optionally followed by a colon
 separated port number, e.g. <strong>:425</strong>. If this value is not given the default
 port 25/tcp will be used unless you change that by modifying the
 <strong>mail_smtpport</strong> parameter.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;mail_smtpmode&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;smtp&quot;</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtphost&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;smtp.server.dom:425&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"mail_smtpmode"</span>     <span class="o">=&gt;</span> <span class="s2">"smtp"</span><span class="p">,</span>
+<span class="s2">"mail_smtphost"</span>     <span class="o">=&gt;</span> <span class="s2">"smtp.server.dom:425"</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;mail_smtpmode&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;smtp&quot;</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtphost&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;smtp.server.dom&quot;</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtpport&quot;</span>     <span class="o">=&gt;</span> <span class="mi">425</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"mail_smtpmode"</span>     <span class="o">=&gt;</span> <span class="s2">"smtp"</span><span class="p">,</span>
+<span class="s2">"mail_smtphost"</span>     <span class="o">=&gt;</span> <span class="s2">"smtp.server.dom"</span><span class="p">,</span>
+<span class="s2">"mail_smtpport"</span>     <span class="o">=&gt;</span> <span class="mi">425</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>If a malware or SPAM scanner is running on the SMTP server it might be
 necessary that you increase the SMTP timeout to e.g. 30s:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;mail_smtptimeout&quot;</span>  <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"mail_smtptimeout"</span>  <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>If the SMTP server accepts insecure connections, the default setting can be
 used:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;mail_smtpsecure&quot;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"mail_smtpsecure"</span>   <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>The connection will be upgraded automatically via STARTTLS if the SMTP server
 supports it.</p>
 <p>If required by the SMTP server, a secure SSL/TLS connection can be enforced
 via the SMTPS protocol which uses the port 465/tcp:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;mail_smtphost&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;smtp.server.dom:465&quot;</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtpsecure&quot;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;ssl&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"mail_smtphost"</span>     <span class="o">=&gt;</span> <span class="s2">"smtp.server.dom:465"</span><span class="p">,</span>
+<span class="s2">"mail_smtpsecure"</span>   <span class="o">=&gt;</span> <span class="s1">'ssl'</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>And finally it is necessary to configure if the SMTP server requires
 authentication, if not, the default values can be taken as is.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;mail_smtpauth&quot;</span>     <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtpname&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtppassword&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"mail_smtpauth"</span>     <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+<span class="s2">"mail_smtpname"</span>     <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+<span class="s2">"mail_smtppassword"</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>If SMTP authentication is required you have to set the required username
 and password.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;mail_smtpauth&quot;</span>     <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtpname&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtppassword&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"mail_smtpauth"</span>     <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+<span class="s2">"mail_smtpname"</span>     <span class="o">=&gt;</span> <span class="s2">"username"</span><span class="p">,</span>
+<span class="s2">"mail_smtppassword"</span> <span class="o">=&gt;</span> <span class="s2">"password"</span><span class="p">,</span>
 </pre></div>
 </div>
 </section>
@@ -420,15 +420,15 @@ and password.</p>
 necessary to have an installed and working email system on your *nix server.
 The sendmail binary (<strong>/usr/sbin/sendmail</strong>) is usually part of that system.
 Nextcloud should be able to send email out of the box.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;mail_smtpmode&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;sendmail&quot;</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtphost&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtpport&quot;</span>     <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtptimeout&quot;</span>  <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtpsecure&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtpauth&quot;</span>     <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtpauthtype&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;LOGIN&quot;</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtpname&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtppassword&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"mail_smtpmode"</span>     <span class="o">=&gt;</span> <span class="s2">"sendmail"</span><span class="p">,</span>
+<span class="s2">"mail_smtphost"</span>     <span class="o">=&gt;</span> <span class="s2">"127.0.0.1"</span><span class="p">,</span>
+<span class="s2">"mail_smtpport"</span>     <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span>
+<span class="s2">"mail_smtptimeout"</span>  <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+<span class="s2">"mail_smtpsecure"</span>   <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+<span class="s2">"mail_smtpauth"</span>     <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+<span class="s2">"mail_smtpauthtype"</span> <span class="o">=&gt;</span> <span class="s2">"LOGIN"</span><span class="p">,</span>
+<span class="s2">"mail_smtpname"</span>     <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+<span class="s2">"mail_smtppassword"</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
 </pre></div>
 </div>
 </section>
@@ -438,15 +438,15 @@ Nextcloud should be able to send email out of the box.</p>
 installed and working qmail email system on your server. The qmail binary
 installed on your server will then be used to send email. Nextcloud should
 be able to send email out of the box.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;mail_smtpmode&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;qmail&quot;</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtphost&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtpport&quot;</span>     <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtptimeout&quot;</span>  <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtpsecure&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtpauth&quot;</span>     <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtpauthtype&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;LOGIN&quot;</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtpname&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;mail_smtppassword&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"mail_smtpmode"</span>     <span class="o">=&gt;</span> <span class="s2">"qmail"</span><span class="p">,</span>
+<span class="s2">"mail_smtphost"</span>     <span class="o">=&gt;</span> <span class="s2">"127.0.0.1"</span><span class="p">,</span>
+<span class="s2">"mail_smtpport"</span>     <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span>
+<span class="s2">"mail_smtptimeout"</span>  <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+<span class="s2">"mail_smtpsecure"</span>   <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+<span class="s2">"mail_smtpauth"</span>     <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+<span class="s2">"mail_smtpauthtype"</span> <span class="o">=&gt;</span> <span class="s2">"LOGIN"</span><span class="p">,</span>
+<span class="s2">"mail_smtpname"</span>     <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+<span class="s2">"mail_smtppassword"</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
 </pre></div>
 </div>
 </section>
@@ -463,14 +463,14 @@ of the Admin settings page.</p>
 <h3>Enabling debug mode<a class="headerlink" href="#enabling-debug-mode" title="Link to this heading"></a></h3>
 <p>If you are unable to send email, it might be useful to activate further debug
 messages by enabling the <code class="docutils literal notranslate"><span class="pre">mail_smtpdebug</span></code> parameter and temporarily setting your NC loglevel to DEBUG:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;mail_smtpdebug&quot;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-<span class="s2">&quot;loglevel&quot;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"mail_smtpdebug"</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+<span class="s2">"loglevel"</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>Be cautious setting your <code class="docutils literal notranslate"><span class="pre">loglevel</span></code> to DEBUG (<code class="docutils literal notranslate"><span class="pre">0</span></code>) since it’ll apply to everything occurring on your NC instance, not just email.
 And don’t forget to set it back to a more reasonable level when you’re done troubleshooting:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;mail_smtpdebug&quot;</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
-<span class="s2">&quot;loglevel&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"mail_smtpdebug"</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+<span class="s2">"loglevel"</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -486,7 +486,7 @@ This is expected behavior and can be ignored.</p>
 where your Nextcloud installation is served. If you have a different mail domain
 name you can override this behavior by setting the following configuration
 parameter:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;mail_domain&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;example.com&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"mail_domain"</span> <span class="o">=&gt;</span> <span class="s2">"example.com"</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>This setting results in every email sent by Nextcloud (for example, the password
@@ -553,7 +553,7 @@ using the <code class="docutils literal notranslate"><span class="pre">telnet</s
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Trying</span> <span class="mf">192.168.1.10</span><span class="o">...</span>
 <span class="n">Connected</span> <span class="n">to</span> <span class="n">smtp</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">dom</span><span class="o">.</span>
-<span class="n">Escape</span> <span class="n">character</span> <span class="ow">is</span> <span class="s1">&#39;^]&#39;</span><span class="o">.</span>
+<span class="n">Escape</span> <span class="n">character</span> <span class="ow">is</span> <span class="s1">'^]'</span><span class="o">.</span>
 <span class="mi">220</span> <span class="n">smtp</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">dom</span> <span class="n">ESMTP</span> <span class="n">Exim</span> <span class="mf">4.80.1</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">22</span> <span class="n">Jan</span> <span class="mi">2013</span> <span class="mi">22</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">55</span> <span class="o">+</span><span class="mi">0100</span>
 <span class="n">EHLO</span> <span class="n">your</span><span class="o">-</span><span class="n">server</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">lan</span>                   <span class="c1"># &lt;&lt;&lt; enter this command</span>
 <span class="mi">250</span><span class="o">-</span><span class="n">smtp</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">dom</span> <span class="n">Hello</span> <span class="n">your</span><span class="o">-</span><span class="n">server</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">lan</span> <span class="p">[</span><span class="n">ip</span><span class="o">-</span><span class="n">address</span><span class="p">]</span>
@@ -573,11 +573,11 @@ using the <code class="docutils literal notranslate"><span class="pre">telnet</s
 <span id="tlspeerverification"></span><h3>How can I send mail using self-signed certificates or use STARTTLS with self signed certificates?<a class="headerlink" href="#how-can-i-send-mail-using-self-signed-certificates-or-use-starttls-with-self-signed-certificates" title="Link to this heading"></a></h3>
 <p>To disable peer verification or to use self signed certificates, add the following
 to your <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;mail_smtpstreamoptions&quot;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
-    <span class="s1">&#39;ssl&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
-        <span class="s1">&#39;allow_self_signed&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-        <span class="s1">&#39;verify_peer&#39;</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
-        <span class="s1">&#39;verify_peer_name&#39;</span> <span class="o">=&gt;</span> <span class="n">false</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"mail_smtpstreamoptions"</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+    <span class="s1">'ssl'</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+        <span class="s1">'allow_self_signed'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s1">'verify_peer'</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s1">'verify_peer_name'</span> <span class="o">=&gt;</span> <span class="n">false</span>
     <span class="p">)</span>
 <span class="p">),</span>
 </pre></div>

@@ -175,7 +175,7 @@ From the root folder you can either access a user’s home folder or access a fi
             <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
         <span class="p">}</span>
 
-        <span class="c1">// the &quot;user folder&quot; corresponds to the root of the user visible files</span>
+        <span class="c1">// the "user folder" corresponds to the root of the user visible files</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">rootFolder</span><span class="o">-&gt;</span><span class="na">getUserFolder</span><span class="p">(</span><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getUID</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -198,22 +198,22 @@ From the root folder you can either access a user’s home folder or access a fi
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">writeContentToFile</span><span class="p">(</span><span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
 
-        <span class="nv">$userFolder</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">storage</span><span class="o">-&gt;</span><span class="na">getUserFolder</span><span class="p">(</span><span class="s1">&#39;myUser&#39;</span><span class="p">);</span>
+        <span class="nv">$userFolder</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">storage</span><span class="o">-&gt;</span><span class="na">getUserFolder</span><span class="p">(</span><span class="s1">'myUser'</span><span class="p">);</span>
 
         <span class="c1">// check if file exists and write to it if possible</span>
         <span class="k">try</span> <span class="p">{</span>
             <span class="k">try</span> <span class="p">{</span>
-                <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$userFolder</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;myfile.txt&#39;</span><span class="p">);</span>
+                <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$userFolder</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'myfile.txt'</span><span class="p">);</span>
 
                 <span class="c1">// the id can be accessed by $file-&gt;getId();</span>
                 <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">putContent</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">\OCP\Files\NotFoundException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nv">$userFolder</span><span class="o">-&gt;</span><span class="na">newFile</span><span class="p">(</span><span class="s1">&#39;myfile.txt&#39;</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
+                <span class="nv">$userFolder</span><span class="o">-&gt;</span><span class="na">newFile</span><span class="p">(</span><span class="s1">'myfile.txt'</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
             <span class="p">}</span>
 
         <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">\OCP\Files\NotPermittedException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// you have to create this exception by yourself ;)</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">StorageException</span><span class="p">(</span><span class="s1">&#39;Cant write to file&#39;</span><span class="p">);</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">StorageException</span><span class="p">(</span><span class="s1">'Cant write to file'</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -235,7 +235,7 @@ From the root folder you can either access a user’s home folder or access a fi
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getFileContent</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
 
-        <span class="nv">$userFolder</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">storage</span><span class="o">-&gt;</span><span class="na">getUserFolder</span><span class="p">(</span><span class="s1">&#39;myUser&#39;</span><span class="p">);</span>
+        <span class="nv">$userFolder</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">storage</span><span class="o">-&gt;</span><span class="na">getUserFolder</span><span class="p">(</span><span class="s1">'myUser'</span><span class="p">);</span>
 
         <span class="c1">// check if file exists and read from it if possible</span>
         <span class="k">try</span> <span class="p">{</span>
@@ -243,10 +243,10 @@ From the root folder you can either access a user’s home folder or access a fi
             <span class="k">if</span> <span class="p">(</span><span class="nv">$file</span> <span class="nx">instanceof</span> <span class="nx">\OCP\Files\File</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">return</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="k">throw</span> <span class="k">new</span> <span class="nx">StorageException</span><span class="p">(</span><span class="s1">&#39;Can not read from folder&#39;</span><span class="p">);</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nx">StorageException</span><span class="p">(</span><span class="s1">'Can not read from folder'</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">\OCP\Files\NotFoundException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">StorageException</span><span class="p">(</span><span class="s1">&#39;File does not exist&#39;</span><span class="p">);</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">StorageException</span><span class="p">(</span><span class="s1">'File does not exist'</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -293,7 +293,7 @@ can return a list of mounts to add for that user.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

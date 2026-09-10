@@ -201,7 +201,7 @@ on a background job by requesting a re-run by calling the method <code class="do
 
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$params</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;my_app&#39;</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">'my_app'</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
@@ -243,7 +243,7 @@ on a background job by requesting a re-run by calling the method <code class="do
 
         <span class="c1">// my-first-meta is light enough</span>
         <span class="nv">$metadata</span> <span class="o">=</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getMetadata</span><span class="p">();</span>
-        <span class="nv">$metadata</span><span class="o">-&gt;</span><span class="na">setString</span><span class="p">(</span><span class="s1">&#39;my-first-meta&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">);</span>
+        <span class="nv">$metadata</span><span class="o">-&gt;</span><span class="na">setString</span><span class="p">(</span><span class="s1">'my-first-meta'</span><span class="p">,</span> <span class="s1">'yes'</span><span class="p">);</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">MetadataLiveEvent</span><span class="p">)</span> <span class="p">{</span>
             <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">requestBackgroundJob</span><span class="p">();</span>
@@ -251,7 +251,7 @@ on a background job by requesting a re-run by calling the method <code class="do
         <span class="p">}</span>
 
         <span class="c1">// my-second-meta is too heavy and should be run on a background job</span>
-        <span class="nv">$metadata</span><span class="o">-&gt;</span><span class="na">setInt</span><span class="p">(</span><span class="s1">&#39;my-second-meta&#39;</span><span class="p">,</span> <span class="mi">1234</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+        <span class="nv">$metadata</span><span class="o">-&gt;</span><span class="na">setInt</span><span class="p">(</span><span class="s1">'my-second-meta'</span><span class="p">,</span> <span class="mi">1234</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -262,15 +262,15 @@ on a background job by requesting a re-run by calling the method <code class="do
 <p>Stored metadata related to a file can be obtained from a console, using the <code class="docutils literal notranslate"><span class="pre">occ</span></code> command:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./occ<span class="w"> </span>metadata:get<span class="w"> </span><span class="m">1742</span>
 <span class="go">{</span>
-<span class="go">    &quot;my-first-meta&quot;: {</span>
-<span class="go">        &quot;value&quot;: &quot;yes&quot;,</span>
-<span class="go">        &quot;type&quot;: &quot;string&quot;,</span>
-<span class="go">        &quot;indexed&quot;: false</span>
+<span class="go">    "my-first-meta": {</span>
+<span class="go">        "value": "yes",</span>
+<span class="go">        "type": "string",</span>
+<span class="go">        "indexed": false</span>
 <span class="go">    },</span>
-<span class="go">    &quot;my-second-meta&quot;: {</span>
-<span class="go">        &quot;value&quot;: 1234,</span>
-<span class="go">        &quot;type&quot;: &quot;int&quot;,</span>
-<span class="go">        &quot;indexed&quot;: true</span>
+<span class="go">    "my-second-meta": {</span>
+<span class="go">        "value": 1234,</span>
+<span class="go">        "type": "int",</span>
+<span class="go">        "indexed": true</span>
 <span class="go">    }</span>
 <span class="go">}</span>
 </pre></div>
@@ -284,22 +284,22 @@ When refreshing metadata from the console, both <code class="docutils literal no
 <section id="update-metadata-using-proppatch">
 <h2>Update metadata using PROPPATCH<a class="headerlink" href="#update-metadata-using-proppatch" title="Link to this heading"></a></h2>
 <p>Using WebDAV request, a client can create or update metadata about a file:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl &#39;https://cloud.example.net/remote.php/dav/files/test/document.txt&#39; \</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl 'https://cloud.example.net/remote.php/dav/files/test/document.txt' \</span>
 <span class="go">    --user test:test \</span>
 <span class="go">    --request PROPPATCH \</span>
-<span class="go">    --data &#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="go">        &lt;d:propertyupdate xmlns:d=&quot;DAV:&quot; xmlns:oc=&quot;http://owncloud.org/ns&quot; xmlns:nc=&quot;http://nextcloud.org/ns&quot;&gt;</span>
+<span class="go">    --data '&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="go">        &lt;d:propertyupdate xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns"&gt;</span>
 <span class="go">            &lt;d:set&gt;</span>
 <span class="go">                &lt;d:prop&gt;</span>
 <span class="go">                    &lt;nc:metadata-myapp-test&gt;123&lt;/nc:metadata-myapp-test&gt;</span>
 <span class="go">                &lt;/d:prop&gt;</span>
 <span class="go">            &lt;/d:set&gt;</span>
-<span class="go">        &lt;/d:propertyupdate&gt;&#39;</span>
+<span class="go">        &lt;/d:propertyupdate&gt;'</span>
 </pre></div>
 </div>
 <p>This will return a result like</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="nt">&lt;d:multistatus</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;d:multistatus</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">"DAV:"</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">"http://owncloud.org/ns"</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">"http://nextcloud.org/ns"</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;d:response&gt;</span>
 <span class="w">        </span><span class="nt">&lt;d:href&gt;</span>/remote.php/dav/files/test/document.txt<span class="nt">&lt;/d:href&gt;</span>
 <span class="w">        </span><span class="nt">&lt;d:propstat&gt;</span>
@@ -325,7 +325,7 @@ It is required to initiate it first using <code class="docutils literal notransl
 <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
     <span class="sd">/** @var IFilesMetadataManager $metadataManager */</span>
     <span class="nv">$metadataManager</span> <span class="o">=</span> <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">getServerContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">IFilesMetadataManager</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-    <span class="nv">$metadataManager</span><span class="o">-&gt;</span><span class="na">initMetadata</span><span class="p">(</span><span class="s1">&#39;myapp-test&#39;</span><span class="p">,</span> <span class="nx">IMetadataValueWrapper</span><span class="o">::</span><span class="na">TYPE_INT</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="nx">IMetadataValueWrapper</span><span class="o">::</span><span class="na">EDIT_REQ_OWNERSHIP</span><span class="p">);</span>
+    <span class="nv">$metadataManager</span><span class="o">-&gt;</span><span class="na">initMetadata</span><span class="p">(</span><span class="s1">'myapp-test'</span><span class="p">,</span> <span class="nx">IMetadataValueWrapper</span><span class="o">::</span><span class="na">TYPE_INT</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="nx">IMetadataValueWrapper</span><span class="o">::</span><span class="na">EDIT_REQ_OWNERSHIP</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -333,37 +333,37 @@ It is required to initiate it first using <code class="docutils literal notransl
 <section id="delete-metadata-using-proppatch">
 <h2>Delete metadata using PROPPATCH<a class="headerlink" href="#delete-metadata-using-proppatch" title="Link to this heading"></a></h2>
 <p>Using WebDAV request, a client can delete metadata about a file:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl &#39;https://cloud.example.net/remote.php/dav/files/test/document.txt&#39; \</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl 'https://cloud.example.net/remote.php/dav/files/test/document.txt' \</span>
 <span class="go">    --user test:test \</span>
 <span class="go">    --request PROPPATCH \</span>
-<span class="go">    --data &#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="go">        &lt;d:propertyupdate xmlns:d=&quot;DAV:&quot; xmlns:oc=&quot;http://owncloud.org/ns&quot; xmlns:nc=&quot;http://nextcloud.org/ns&quot;&gt;</span>
+<span class="go">    --data '&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="go">        &lt;d:propertyupdate xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns"&gt;</span>
 <span class="go">            &lt;d:remove&gt;</span>
 <span class="go">                &lt;d:prop&gt;</span>
 <span class="go">                    &lt;nc:metadata-myapp-test&gt;&lt;/nc:metadata-myapp-test&gt;</span>
 <span class="go">                &lt;/d:prop&gt;</span>
 <span class="go">            &lt;/d:remove&gt;</span>
-<span class="go">        &lt;/d:propertyupdate&gt;&#39;</span>
+<span class="go">        &lt;/d:propertyupdate&gt;'</span>
 </pre></div>
 </div>
 </section>
 <section id="retrieve-metadata-using-propfind">
 <h2>Retrieve metadata using PROPFIND<a class="headerlink" href="#retrieve-metadata-using-propfind" title="Link to this heading"></a></h2>
 <p>Metadata are available to the WebDAV PROPFIND requests:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl &#39;https://cloud.example.net/remote.php/dav/files/test/document.txt&#39; \</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl 'https://cloud.example.net/remote.php/dav/files/test/document.txt' \</span>
 <span class="go">    --user test:test \</span>
 <span class="go">    --request PROPFIND \</span>
-<span class="go">    --data &#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="go">        &lt;d:propfind xmlns:d=&quot;DAV:&quot; xmlns:oc=&quot;http://owncloud.org/ns&quot; xmlns:nc=&quot;http://nextcloud.org/ns&quot;&gt;</span>
+<span class="go">    --data '&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="go">        &lt;d:propfind xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns"&gt;</span>
 <span class="go">            &lt;d:prop&gt;</span>
 <span class="go">                &lt;nc:metadata-myapp-test&gt;</span>
 <span class="go">            &lt;/d:prop&gt;</span>
-<span class="go">        &lt;/d:propfind&gt;&#39;</span>
+<span class="go">        &lt;/d:propfind&gt;'</span>
 </pre></div>
 </div>
 <p>This will return a result like</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="nt">&lt;d:multistatus</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;d:multistatus</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">"DAV:"</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">"http://owncloud.org/ns"</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">"http://nextcloud.org/ns"</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;d:response&gt;</span>
 <span class="w">        </span><span class="nt">&lt;d:href&gt;</span>/remote.php/dav/files/test/document.txt<span class="nt">&lt;/d:href&gt;</span>
 <span class="w">        </span><span class="nt">&lt;d:propstat&gt;</span>
@@ -379,11 +379,11 @@ It is required to initiate it first using <code class="docutils literal notransl
 </section>
 <section id="webdav-search-based-on-metadata">
 <h2>WebDAV SEARCH based on metadata<a class="headerlink" href="#webdav-search-based-on-metadata" title="Link to this heading"></a></h2>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl &#39;https://cloud.example.net/remote.php/dav/&#39; \</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl 'https://cloud.example.net/remote.php/dav/' \</span>
 <span class="go">    --user test:test \</span>
 <span class="go">    --request SEARCH \</span>
-<span class="go">    --data &#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="go">        &lt;d:searchrequest xmlns:d=&quot;DAV:&quot; xmlns:oc=&quot;http://owncloud.org/ns&quot; xmlns:nc=&quot;http://nextcloud.org/ns&quot;&gt;</span>
+<span class="go">    --data '&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="go">        &lt;d:searchrequest xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns"&gt;</span>
 <span class="go">            &lt;d:basicsearch&gt;</span>
 <span class="go">                &lt;d:select&gt;</span>
 <span class="hll"><span class="go">                    &lt;d:prop&gt;</span>
@@ -425,12 +425,12 @@ It is required to initiate it first using <code class="docutils literal notransl
 <span class="go">                    &lt;ns:firstresult&gt;0&lt;/ns:firstresult&gt;</span>
 <span class="go">                &lt;/d:limit&gt;</span>
 <span class="go">            &lt;/d:basicsearch&gt;</span>
-<span class="go">        &lt;/d:searchrequest&gt;&#39;</span>
+<span class="go">        &lt;/d:searchrequest&gt;'</span>
 </pre></div>
 </div>
 <p>This will return a result like:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="nt">&lt;d:multistatus</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;d:multistatus</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">"DAV:"</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">"http://owncloud.org/ns"</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">"http://nextcloud.org/ns"</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;d:response&gt;</span>
 <span class="w">        </span><span class="nt">&lt;d:href&gt;</span>/remote.php/dav/files/test/<span class="nt">&lt;/d:href&gt;</span>
 <span class="w">        </span><span class="nt">&lt;d:propstat&gt;</span>
@@ -470,7 +470,7 @@ It is required to call <code class="docutils literal notranslate"><span class="p
 <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
     <span class="sd">/** @var IFilesMetadataManager $metadataManager */</span>
     <span class="nv">$metadataManager</span> <span class="o">=</span> <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">getServerContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">IFilesMetadataManager</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-    <span class="nv">$metadataManager</span><span class="o">-&gt;</span><span class="na">initMetadata</span><span class="p">(</span><span class="s1">&#39;my-second-meta&#39;</span><span class="p">,</span> <span class="nx">IMetadataValueWrapper</span><span class="o">::</span><span class="na">TYPE_INT</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="nv">$metadataManager</span><span class="o">-&gt;</span><span class="na">initMetadata</span><span class="p">(</span><span class="s1">'my-second-meta'</span><span class="p">,</span> <span class="nx">IMetadataValueWrapper</span><span class="o">::</span><span class="na">TYPE_INT</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -490,19 +490,19 @@ Parameters when calling the method are the alias of the table, and the name of t
 </div></blockquote>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// generate your normal query builder</span>
 <span class="nv">$qb</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QueryBuilder</span><span class="p">();</span>
-<span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">&#39;file_id&#39;</span><span class="p">)</span>
-   <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s1">&#39;my_table&#39;</span><span class="p">,</span> <span class="s1">&#39;my_alias&#39;</span><span class="p">);</span>
+<span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">'file_id'</span><span class="p">)</span>
+   <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s1">'my_table'</span><span class="p">,</span> <span class="s1">'my_alias'</span><span class="p">);</span>
 
 <span class="sd">/** @var IFilesMetadataManager $metadataManager */</span>
 <span class="nv">$metadataManager</span> <span class="o">=</span> <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">getServerContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">IFilesMetadataManager</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 
 <span class="c1">// get a configured query helper and add a select on the metadata</span>
-<span class="nv">$metadataQuery</span> <span class="o">=</span> <span class="nv">$metadataManager</span><span class="o">-&gt;</span><span class="na">getMetadataQuery</span><span class="p">(</span><span class="nv">$qb</span><span class="p">,</span> <span class="s1">&#39;my_alias&#39;</span><span class="p">,</span> <span class="s1">&#39;file_id&#39;</span><span class="p">);</span>
+<span class="nv">$metadataQuery</span> <span class="o">=</span> <span class="nv">$metadataManager</span><span class="o">-&gt;</span><span class="na">getMetadataQuery</span><span class="p">(</span><span class="nv">$qb</span><span class="p">,</span> <span class="s1">'my_alias'</span><span class="p">,</span> <span class="s1">'file_id'</span><span class="p">);</span>
 <span class="nv">$metadataQuery</span><span class="o">-&gt;</span><span class="na">retrieveMetadata</span><span class="p">();</span>
 
-<span class="c1">// right join the index table and get only value lower than 8910 for metadata &#39;my-second-meta&#39;</span>
-<span class="nv">$metadataQuery</span><span class="o">-&gt;</span><span class="na">joinIndex</span><span class="p">(</span><span class="s1">&#39;my-second-meta&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
-<span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">expr</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">lt</span><span class="p">(</span><span class="nv">$metadataQuery</span><span class="o">-&gt;</span><span class="na">getMetadataValueField</span><span class="p">(</span><span class="s1">&#39;my-second-meta&#39;</span><span class="p">),</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">createNamedParameter</span><span class="p">(</span><span class="mi">8910</span><span class="p">)));</span>
+<span class="c1">// right join the index table and get only value lower than 8910 for metadata 'my-second-meta'</span>
+<span class="nv">$metadataQuery</span><span class="o">-&gt;</span><span class="na">joinIndex</span><span class="p">(</span><span class="s1">'my-second-meta'</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">expr</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">lt</span><span class="p">(</span><span class="nv">$metadataQuery</span><span class="o">-&gt;</span><span class="na">getMetadataValueField</span><span class="p">(</span><span class="s1">'my-second-meta'</span><span class="p">),</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">createNamedParameter</span><span class="p">(</span><span class="mi">8910</span><span class="p">)));</span>
 
 <span class="c1">// get result</span>
 <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
@@ -510,7 +510,7 @@ Parameters when calling the method are the alias of the table, and the name of t
 
 <span class="c1">// extract metadata from each row</span>
 <span class="nv">$entries</span> <span class="o">=</span> <span class="nb">array_map</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="k">array</span> <span class="nv">$data</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$metadataQuery</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
-    <span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$metadataQuery</span><span class="o">-&gt;</span><span class="na">extractMetadata</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">asArray</span><span class="p">();</span>
+    <span class="nv">$data</span><span class="p">[</span><span class="s1">'metadata'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$metadataQuery</span><span class="o">-&gt;</span><span class="na">extractMetadata</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">asArray</span><span class="p">();</span>
 <span class="p">},</span> <span class="nv">$items</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -529,7 +529,7 @@ Parameters when calling the method are the alias of the table, and the name of t
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

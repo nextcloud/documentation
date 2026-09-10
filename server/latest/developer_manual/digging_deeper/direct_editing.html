@@ -178,7 +178,7 @@ web page and the native client once the webview is open.</p></li>
 <span class="mf">3.</span> <span class="nb">open</span> <span class="n">URL</span> <span class="ow">in</span> <span class="n">webview</span>          <span class="o">-&gt;</span>  <span class="n">route</span> <span class="n">resolves</span> <span class="n">token</span><span class="p">,</span> <span class="n">calls</span>
                                     <span class="n">IEditor</span><span class="p">::</span><span class="nb">open</span><span class="p">(</span><span class="n">IToken</span><span class="p">)</span>        <span class="o">-&gt;</span> <span class="n">editor</span> <span class="n">page</span>
 <span class="mf">4.</span> <span class="n">webview</span> <span class="o">&lt;----------------------------------------------------&gt;</span> <span class="n">native</span> <span class="n">client</span>
-   <span class="p">(</span><span class="n">loading</span><span class="o">/</span><span class="n">loaded</span><span class="o">/</span><span class="n">close</span><span class="o">/...</span> <span class="n">messages</span><span class="p">,</span> <span class="n">see</span> <span class="s2">&quot;Webview integration&quot;</span><span class="p">)</span>
+   <span class="p">(</span><span class="n">loading</span><span class="o">/</span><span class="n">loaded</span><span class="o">/</span><span class="n">close</span><span class="o">/...</span> <span class="n">messages</span><span class="p">,</span> <span class="n">see</span> <span class="s2">"Webview integration"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The one-time token is consumed the first time the webview URL is opened. From that
@@ -328,32 +328,32 @@ omit boilerplate for brevity.</p>
 <p>Returns the available editors and creators. Clients use this for discovery before
 offering create/open actions. The response carries an <strong>ETag</strong>; clients should
 cache the result and re-request only when the ETag changes.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/ocs/v2.php/apps/files/api/v1/directEditing?format=json&#39;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span><span class="s1">'https://cloud.example.com/ocs/v2.php/apps/files/api/v1/directEditing?format=json'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-u<span class="w"> </span>user:password<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;OCS-APIRequest: true&#39;</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'OCS-APIRequest: true'</span>
 </pre></div>
 </div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;ocs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;statuscode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;editors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nextcloud Text&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;mimetypes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;text/markdown&quot;</span><span class="p">],</span>
-<span class="w">          </span><span class="nt">&quot;optionalMimetypes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;text/plain&quot;</span><span class="p">],</span>
-<span class="w">          </span><span class="nt">&quot;secure&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="nt">"ocs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> </span><span class="nt">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"editors"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nextcloud Text"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"mimetypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"text/markdown"</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">"optionalMimetypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"text/plain"</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">"secure"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;creators&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;textdocument&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;textdocument&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;editor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;New text document&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;extension&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.md&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;templates&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;mimetype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/markdown&quot;</span>
+<span class="w">      </span><span class="nt">"creators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"textdocument"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"textdocument"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"editor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New text document"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"extension"</span><span class="p">:</span><span class="w"> </span><span class="s2">".md"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"templates"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"mimetype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text/markdown"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -366,18 +366,18 @@ cache the result and re-request only when the ETag changes.</p>
 <h3>List templates<a class="headerlink" href="#list-templates" title="Link to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/directEditing/templates/{editorId}/{creatorId}</span></code></p>
 <p>Returns the templates for a creator that advertises <code class="docutils literal notranslate"><span class="pre">templates:</span> <span class="pre">true</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/ocs/v2.php/apps/files/api/v1/directEditing/templates/text/textdocumenttemplate?format=json&#39;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span><span class="s1">'https://cloud.example.com/ocs/v2.php/apps/files/api/v1/directEditing/templates/text/textdocumenttemplate?format=json'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-u<span class="w"> </span>user:password<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;OCS-APIRequest: true&#39;</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'OCS-APIRequest: true'</span>
 </pre></div>
 </div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;ocs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;statuscode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;templates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Weekly ToDo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;preview&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://…&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;2&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Meeting notes&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;preview&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://…&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">"ocs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> </span><span class="nt">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"templates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Weekly ToDo"</span><span class="p">,</span><span class="w"> </span><span class="nt">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://…"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w"> </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting notes"</span><span class="p">,</span><span class="w"> </span><span class="nt">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://…"</span><span class="w"> </span><span class="p">}</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
@@ -396,16 +396,16 @@ cache the result and re-request only when the ETag changes.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">creatorId</span></code> (required) — creator to use for the new file.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">templateId</span></code> (optional) — template to base the file on.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/ocs/v2.php/apps/files/api/v1/directEditing/create?path=/foo.md&amp;editorId=text&amp;creatorId=textdocument&amp;format=json&#39;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s1">'https://cloud.example.com/ocs/v2.php/apps/files/api/v1/directEditing/create?path=/foo.md&amp;editorId=text&amp;creatorId=textdocument&amp;format=json'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-u<span class="w"> </span>user:password<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;OCS-APIRequest: true&#39;</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'OCS-APIRequest: true'</span>
 </pre></div>
 </div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;ocs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;statuscode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://cloud.example.com/index.php/apps/files/directEditing/&lt;token&gt;&quot;</span>
+<span class="w">  </span><span class="nt">"ocs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> </span><span class="nt">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cloud.example.com/index.php/apps/files/directEditing/&lt;token&gt;"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -423,9 +423,9 @@ cache the result and re-request only when the ETag changes.</p>
 editor for the file’s mimetype is used.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fileId</span></code> (optional) — open by file id instead of path.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/ocs/v2.php/apps/files/api/v1/directEditing/open?path=/foo.md&amp;editorId=text&amp;format=json&#39;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s1">'https://cloud.example.com/ocs/v2.php/apps/files/api/v1/directEditing/open?path=/foo.md&amp;editorId=text&amp;format=json'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-u<span class="w"> </span>user:password<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;OCS-APIRequest: true&#39;</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'OCS-APIRequest: true'</span>
 </pre></div>
 </div>
 <p>The response has the same shape as <code class="docutils literal notranslate"><span class="pre">create</span></code> — a <code class="docutils literal notranslate"><span class="pre">data.url</span></code> pointing at
@@ -468,10 +468,10 @@ exposes one method per message name. Arguments, if any, are passed as a single
 handler. A message with arguments is sent as an object with <code class="docutils literal notranslate"><span class="pre">MessageName</span></code> and
 <code class="docutils literal notranslate"><span class="pre">Values</span></code>; a message without arguments is sent as the bare name string:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// no arguments</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">webkit</span><span class="p">.</span><span class="nx">messageHandlers</span><span class="p">.</span><span class="nx">DirectEditingMobileInterface</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">)</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">webkit</span><span class="p">.</span><span class="nx">messageHandlers</span><span class="p">.</span><span class="nx">DirectEditingMobileInterface</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="s1">'close'</span><span class="p">)</span>
 <span class="c1">// with arguments</span>
 <span class="nb">window</span><span class="p">.</span><span class="nx">webkit</span><span class="p">.</span><span class="nx">messageHandlers</span><span class="p">.</span><span class="nx">DirectEditingMobileInterface</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">MessageName</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;hyperlink&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">MessageName</span><span class="o">:</span><span class="w"> </span><span class="s1">'hyperlink'</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">Values</span><span class="o">:</span><span class="w"> </span><span class="nx">values</span><span class="p">,</span>
 <span class="p">})</span>
 </pre></div>
@@ -603,7 +603,7 @@ and both apps to keep behaviour consistent.</p></li>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

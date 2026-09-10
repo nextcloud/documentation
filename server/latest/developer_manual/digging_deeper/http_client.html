@@ -162,7 +162,7 @@
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">downloadNextcloudWebsite</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
         <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">clientService</span><span class="o">-&gt;</span><span class="na">newClient</span><span class="p">();</span>
-        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;https://nextcloud.com&#39;</span><span class="p">);</span>
+        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'https://nextcloud.com'</span><span class="p">);</span>
         <span class="nv">$body</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -174,7 +174,7 @@
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">clientService</span><span class="o">-&gt;</span><span class="na">newClient</span><span class="p">();</span>
-<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">head</span><span class="p">(</span><span class="s1">&#39;https://nextcloud.com&#39;</span><span class="p">);</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">head</span><span class="p">(</span><span class="s1">'https://nextcloud.com'</span><span class="p">);</span>
 <span class="nv">$body</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -184,7 +184,7 @@
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">clientService</span><span class="o">-&gt;</span><span class="na">newClient</span><span class="p">();</span>
-<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;https://nextcloud.com&#39;</span><span class="p">);</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'https://nextcloud.com'</span><span class="p">);</span>
 <span class="nv">$body</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -194,15 +194,15 @@
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">clientService</span><span class="o">-&gt;</span><span class="na">newClient</span><span class="p">();</span>
-<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;https://api.domain.tld/pizza&#39;</span><span class="p">,</span> <span class="p">[</span>
-    <span class="s1">&#39;headers&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;Accept&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;Content-Type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">'https://api.domain.tld/pizza'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+        <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
     <span class="p">],</span>
-    <span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="nb">json_encode</span><span class="p">([</span>
-        <span class="s1">&#39;toppings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s1">&#39;cheese&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;pineapple&#39;</span><span class="p">,</span>
+    <span class="s1">'body'</span> <span class="o">=&gt;</span> <span class="nb">json_encode</span><span class="p">([</span>
+        <span class="s1">'toppings'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'cheese'</span><span class="p">,</span>
+            <span class="s1">'pineapple'</span><span class="p">,</span>
         <span class="p">],</span>
     <span class="p">])</span>
 <span class="p">]);</span>
@@ -215,15 +215,15 @@
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">clientService</span><span class="o">-&gt;</span><span class="na">newClient</span><span class="p">();</span>
-<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="s1">&#39;https://api.domain.tld/pizza/42&#39;</span><span class="p">,</span> <span class="p">[</span>
-    <span class="s1">&#39;headers&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;Accept&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;Content-Type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="s1">'https://api.domain.tld/pizza/42'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+        <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
     <span class="p">],</span>
-    <span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="nb">json_encode</span><span class="p">([</span>
-        <span class="s1">&#39;toppings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s1">&#39;cheese&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;pineapple&#39;</span><span class="p">,</span>
+    <span class="s1">'body'</span> <span class="o">=&gt;</span> <span class="nb">json_encode</span><span class="p">([</span>
+        <span class="s1">'toppings'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'cheese'</span><span class="p">,</span>
+            <span class="s1">'pineapple'</span><span class="p">,</span>
         <span class="p">],</span>
     <span class="p">])</span>
 <span class="p">]);</span>
@@ -236,7 +236,7 @@
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">clientService</span><span class="o">-&gt;</span><span class="na">newClient</span><span class="p">();</span>
-<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;https://api.domain.tld/pizza/42&#39;</span><span class="p">);</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">'https://api.domain.tld/pizza/42'</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
@@ -245,10 +245,10 @@
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">clientService</span><span class="o">-&gt;</span><span class="na">newClient</span><span class="p">();</span>
-<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">(</span><span class="s1">&#39;https://nextcloud.com&#39;</span><span class="p">);</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">(</span><span class="s1">'https://nextcloud.com'</span><span class="p">);</span>
 <span class="nv">$status</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">();</span>
 <span class="nv">$allHeaders</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getHeaders</span><span class="p">();</span>
-<span class="nv">$contentType</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">&#39;content-type&#39;</span><span class="p">);</span>
+<span class="nv">$contentType</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">'content-type'</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
@@ -261,7 +261,7 @@
 
 <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">clientService</span><span class="o">-&gt;</span><span class="na">newClient</span><span class="p">();</span>
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">(</span><span class="s1">&#39;https://nextcloud.com&#39;</span><span class="p">);</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">(</span><span class="s1">'https://nextcloud.com'</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Handle the error</span>
 <span class="p">}</span>
@@ -282,7 +282,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

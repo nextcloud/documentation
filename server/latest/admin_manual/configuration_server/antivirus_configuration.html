@@ -289,11 +289,11 @@ This example is based on docker image from <a class="reference external" href="h
 </pre></div>
 </div>
 <p>For a Docker-compose use following settings:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">version</span><span class="p">:</span> <span class="s2">&quot;3.6&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">version</span><span class="p">:</span> <span class="s2">"3.6"</span>
 <span class="n">services</span><span class="p">:</span>
   <span class="n">clamav</span><span class="p">:</span>
-    <span class="n">image</span><span class="p">:</span> <span class="s2">&quot;clamav/clamav:stable_base&quot;</span>
-    <span class="n">container_name</span><span class="p">:</span> <span class="s2">&quot;clamav&quot;</span>
+    <span class="n">image</span><span class="p">:</span> <span class="s2">"clamav/clamav:stable_base"</span>
+    <span class="n">container_name</span><span class="p">:</span> <span class="s2">"clamav"</span>
     <span class="n">volumes</span><span class="p">:</span>
       <span class="c1"># Socket</span>
       <span class="o">-</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">clamav</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">clamav</span><span class="o">/</span>
@@ -413,11 +413,11 @@ via <code class="docutils literal notranslate"><span class="pre">av_rescan_days<
 frequency is also bounded by how often Nextcloud’s background job mechanism
 (cron, webcron, or ajax) runs.</p>
 <p>To change the minimum interval between runs (in seconds):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_scan_interval</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;900&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_scan_interval</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">"900"</span>
 </pre></div>
 </div>
 <p>To change the number of days before already-scanned files are rescanned:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_rescan_days</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;28&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_rescan_days</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">"28"</span>
 </pre></div>
 </div>
 <p><strong>External storage:</strong> files on external storage are included in passes 1 and 2
@@ -462,7 +462,7 @@ Additional documentation is work in progress.</p>
 <section id="disabling-background-scan-task">
 <h2>Disabling background scan task<a class="headerlink" href="#disabling-background-scan-task" title="Link to this heading"></a></h2>
 <p>You can disable background scan with occ to only scan files during upload:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_background_scan</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;off&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_background_scan</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">"off"</span>
 </pre></div>
 </div>
 <div class="admonition note">

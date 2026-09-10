@@ -235,14 +235,14 @@ Documentation: <a class="reference external" href="https://nextcloud-libraries.g
 <section id="network-state-changes">
 <h3>Network state changes<a class="headerlink" href="#network-state-changes" title="Link to this heading"></a></h3>
 <p>Your app can react to lost network connectivity, e.g. to gracefully handle this state where no server interaction is possible. Since the communication with the server mostly requires a valid CSRF token, you might not want to send any request before the token was updated. Nextcloud can notify you when this has happened. Use the <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/event-bus</span></code> to listen for the <code class="docutils literal notranslate"><span class="pre">networkOnline</span></code> and <code class="docutils literal notranslate"><span class="pre">networkOffline</span></code> events:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">subscribe</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/event-bus&#39;</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">subscribe</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/event-bus'</span>
 
-<span class="nx">subscribe</span><span class="p">(</span><span class="s1">&#39;networkOffline&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;we&#39;re offline&quot;</span><span class="p">))</span>
-<span class="nx">subscribe</span><span class="p">(</span><span class="s1">&#39;networkOnline&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="nx">subscribe</span><span class="p">(</span><span class="s1">'networkOffline'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">"we're offline"</span><span class="p">))</span>
+<span class="nx">subscribe</span><span class="p">(</span><span class="s1">'networkOnline'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">successful</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;we&#39;re back online, the token was updated&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">"we're back online, the token was updated"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;we&#39;re back online, but the token might not be up to date&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">"we're back online, but the token might not be up to date"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">})</span>
 </pre></div>
@@ -283,7 +283,7 @@ Documentation: <a class="reference external" href="https://nextcloud-libraries.g
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Aug 09, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

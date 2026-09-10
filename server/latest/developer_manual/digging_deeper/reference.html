@@ -208,14 +208,14 @@ if you need more examples.</p>
 <h3>NcRichText<a class="headerlink" href="#ncrichtext" title="Link to this heading"></a></h3>
 <p>Link previews will be automatically rendered for links in the content of the <code class="docutils literal notranslate"><span class="pre">&lt;NcRichText&gt;</span></code> Vue component.
 This component will take care of resolving the links itself.</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">NcRichText</span> <span class="na">:text</span><span class="o">=</span><span class="s">&quot;message&quot;</span>
-    <span class="na">:arguments</span><span class="o">=</span><span class="s">&quot;richParameters&quot;</span>
-    <span class="na">:autolink</span><span class="o">=</span><span class="s">&quot;true&quot;</span>
-    <span class="na">:reference-limit</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="p">/&gt;</span>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">NcRichText</span> <span class="na">:text</span><span class="o">=</span><span class="s">"message"</span>
+    <span class="na">:arguments</span><span class="o">=</span><span class="s">"richParameters"</span>
+    <span class="na">:autolink</span><span class="o">=</span><span class="s">"true"</span>
+    <span class="na">:reference-limit</span><span class="o">=</span><span class="s">"0"</span> <span class="p">/&gt;</span>
 </pre></div>
 </div>
 <p>NcRichText can be imported like this:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nx">NcRichText</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/vue/dist/Components/NcRichText.js&#39;</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nx">NcRichText</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/vue/dist/Components/NcRichText.js'</span>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcRichText?id=ncrichtext-1">NcRichText component documentation</a></p>
@@ -226,20 +226,20 @@ This component will take care of resolving the links itself.</p>
 You need to ask the server to resolve the link to get a reference object that you can then give as a property
 to NcReferenceWidget.</p>
 <p>To resolve a link:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">myLink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;https://github.com&#39;</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">myLink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'https://github.com'</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">requestOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">reference</span><span class="o">:</span><span class="w"> </span><span class="nx">myLink</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="p">}</span>
-<span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">generateOcsUrl</span><span class="p">(</span><span class="s1">&#39;references/resolve&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">),</span><span class="w"> </span><span class="nx">requestOptions</span><span class="p">)</span>
+<span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">generateOcsUrl</span><span class="p">(</span><span class="s1">'references/resolve'</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">),</span><span class="w"> </span><span class="nx">requestOptions</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">reference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">ocs</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">references</span><span class="p">[</span><span class="nx">myLink</span><span class="p">]</span>
 <span class="w">    </span><span class="p">})</span>
 </pre></div>
 </div>
 <p>Then you can use the reference object you got:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">NcReferenceWidget</span> <span class="na">:reference</span><span class="o">=</span><span class="s">&quot;reference&quot;</span> <span class="p">/&gt;</span>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">NcReferenceWidget</span> <span class="na">:reference</span><span class="o">=</span><span class="s">"reference"</span> <span class="p">/&gt;</span>
 </pre></div>
 </div>
 </section>
@@ -287,37 +287,37 @@ to NcReferenceWidget.</p>
 </ul>
 <section id="request-examples">
 <h4>Request examples<a class="headerlink" href="#request-examples" title="Link to this heading"></a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;ocs-apirequest: true&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s2">&quot;https://my.nextcloud.org/ocs/v2.php/references/resolve?reference=https://github.com&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Accept: application/json"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"ocs-apirequest: true"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">"https://my.nextcloud.org/ocs/v2.php/references/resolve?reference=https://github.com"</span>
 </pre></div>
 </div>
 <p>will return an OCS response with that data:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;ocs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;statuscode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span>
+<span class="w">  </span><span class="nt">"ocs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;references&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;https://github.com&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;richObjectType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;open-graph&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;richObject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GitHub: Let’s build from here&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GitHub is where over 100 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories, review code like a pro, track bugs and fea...&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;thumb&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my.nextcloud.org/core/references/preview/3097fca9b1ec8942c4305e550ef1b50a&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com&quot;</span>
+<span class="w">  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"references"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"https://github.com"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"richObjectType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open-graph"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"richObject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GitHub: Let’s build from here"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GitHub is where over 100 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories, review code like a pro, track bugs and fea..."</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my.nextcloud.org/core/references/preview/3097fca9b1ec8942c4305e550ef1b50a"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com"</span>
 <span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;openGraphObject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GitHub: Let’s build from here&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GitHub is where over 100 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories, review code like a pro, track bugs and fea...&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;thumb&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my.nextcloud.org/core/references/preview/3097fca9b1ec8942c4305e550ef1b50a&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com&quot;</span>
+<span class="w">        </span><span class="nt">"openGraphObject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GitHub: Let’s build from here"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GitHub is where over 100 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories, review code like a pro, track bugs and fea..."</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my.nextcloud.org/core/references/preview/3097fca9b1ec8942c4305e550ef1b50a"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com"</span>
 <span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;accessible&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="nt">"accessible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
@@ -328,46 +328,46 @@ to NcReferenceWidget.</p>
 The generic openGraphObject is still returned. It contains a title, description and image URL if the matching reference
 provider defined those correctly.
 For example, resolving <code class="docutils literal notranslate"><span class="pre">https://www.themoviedb.org/movie/70981</span></code> if the <code class="docutils literal notranslate"><span class="pre">integration_tmdb</span></code> app is installed will return:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;references&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;https://www.themoviedb.org/movie/70981&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;richObjectType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integration_tmdb_movie&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;richObject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;adult&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;budget&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">130000000</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;genres&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"references"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"https://www.themoviedb.org/movie/70981"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"richObjectType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integration_tmdb_movie"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"richObject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"adult"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"budget"</span><span class="p">:</span><span class="w"> </span><span class="mi">130000000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">878</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Science Fiction&quot;</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">878</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Science Fiction"</span>
 <span class="w">          </span><span class="p">},</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Adventure&quot;</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adventure"</span>
 <span class="w">          </span><span class="p">},</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9648</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mystery&quot;</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9648</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mystery"</span>
 <span class="w">          </span><span class="p">}</span>
 <span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;homepage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.20thcenturystudios.com/movies/prometheus&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">70981</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;imdb_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tt1446714&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;original_language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;original_title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Prometheus&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;overview&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A team of explorers discover a clue to the origins of mankind on Earth, leading them on a journey to the darkest corners of the universe. There, they must fight a terrifying battle to save the future of the human race.&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;popularity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">68.389</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;release_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-05-30&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;revenue&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">403354469</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;runtime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">124</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.20thcenturystudios.com/movies/prometheus"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">70981</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"imdb_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tt1446714"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"original_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"original_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prometheus"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"overview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A team of explorers discover a clue to the origins of mankind on Earth, leading them on a journey to the darkest corners of the universe. There, they must fight a terrifying battle to save the future of the human race."</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"popularity"</span><span class="p">:</span><span class="w"> </span><span class="mf">68.389</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"release_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-05-30"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"revenue"</span><span class="p">:</span><span class="w"> </span><span class="mi">403354469</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"runtime"</span><span class="p">:</span><span class="w"> </span><span class="mi">124</span><span class="p">,</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;openGraphObject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.themoviedb.org/movie/70981&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Prometheus&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;30 mai 2012 - A team of explorers discover a clue to the origins of mankind on Earth, leading them on a journey to the darkest corners of the universe. There, they must fight a terrifying battle to save the future of the human race.&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;thumb&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my.nextcloud.org/apps/integration_tmdb/t/p/w500/qsYQflQhOuhDpQ0W2aOcwqgDAeI.jpg?fallbackName=???&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.themoviedb.org/movie/70981&quot;</span>
+<span class="w">      </span><span class="nt">"openGraphObject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.themoviedb.org/movie/70981"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prometheus"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 mai 2012 - A team of explorers discover a clue to the origins of mankind on Earth, leading them on a journey to the darkest corners of the universe. There, they must fight a terrifying battle to save the future of the human race."</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my.nextcloud.org/apps/integration_tmdb/t/p/w500/qsYQflQhOuhDpQ0W2aOcwqgDAeI.jpg?fallbackName=???"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.themoviedb.org/movie/70981"</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;accessible&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">      </span><span class="nt">"accessible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -405,7 +405,7 @@ The picker result then gets directly inserted in the content.</p>
 <section id="ncreferencepickermodal">
 <h3>NcReferencePickerModal<a class="headerlink" href="#ncreferencepickermodal" title="Link to this heading"></a></h3>
 <p>You display the Smart Picker by using the NcReferencePickerModal Vue component. It is available in the Nextcloud Vue library.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">NcReferencePickerModal</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/vue/dist/Components/NcRichText.js&#39;</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">NcReferencePickerModal</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/vue/dist/Components/NcRichText.js'</span>
 </pre></div>
 </div>
 <p>Available props:</p>
@@ -425,14 +425,14 @@ It takes 2 parameters:</p>
 </ul>
 <p>This function returns a promise that resolves with the picker result. This promise is rejected if the user closes
 the Smart Picker.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getLinkWithPicker</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/vue/dist/Components/NcRichText.js&#39;</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getLinkWithPicker</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/vue/dist/Components/NcRichText.js'</span>
 
 <span class="nx">getLinkWithPicker</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;Smart Picker result&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">'Smart Picker result'</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
 <span class="w">    </span><span class="p">})</span>
 <span class="w">    </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Smart Picker promise rejected&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Smart Picker promise rejected'</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">)</span>
 <span class="w">    </span><span class="p">})</span>
 </pre></div>
 </div>
@@ -463,43 +463,43 @@ The search is done by directly querying the Unified Search OCS API. This is desc
 <p>The list of Smart Picker providers can be obtained via an OCS endpoint.
 Each provider object contains the list of supported unified search providers.</p>
 <p>Here is the server endpoint to list the smart picker providers:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;ocs-apirequest: true&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s2">&quot;https://my.nextcloud.org/ocs/v2.php/references/providers&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Accept: application/json"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"ocs-apirequest: true"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">"https://my.nextcloud.org/ocs/v2.php/references/providers"</span>
 </pre></div>
 </div>
 <p>and an example response:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;ocs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;statuscode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span>
+<span class="w">  </span><span class="nt">"ocs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;github-issue-pr&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GitHub issues, pull requests and comments&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;icon_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my.nextcloud.org/apps/integration_github/img/app-dark.svg&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;search_providers_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">          </span><span class="s2">&quot;github-search-issues&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">&quot;github-search-repos&quot;</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"github-issue-pr"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GitHub issues, pull requests and comments"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my.nextcloud.org/apps/integration_github/img/app-dark.svg"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"search_providers_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">"github-search-issues"</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">"github-search-repos"</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openstreetmap-point&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Map location (by OpenStreetMap)&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;icon_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my.nextcloud.org/apps/integration_openstreetmap/img/app-dark.svg&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;search_providers_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">          </span><span class="s2">&quot;openstreetmap-search-location&quot;</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openstreetmap-point"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Map location (by OpenStreetMap)"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my.nextcloud.org/apps/integration_openstreetmap/img/app-dark.svg"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"search_providers_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">"openstreetmap-search-location"</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;files&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Files&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;icon_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my.nextcloud.org/apps/files/img/folder.svg&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"files"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Files"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my.nextcloud.org/apps/files/img/folder.svg"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
@@ -513,50 +513,50 @@ but the “github-issue-pr” one supports 2 of them and the “openstreetmap-po
 <h3>Use the Unified Search API<a class="headerlink" href="#use-the-unified-search-api" title="Link to this heading"></a></h3>
 <p>More details in the <a class="reference internal" href="search.html#unified-search"><span class="std std-ref">Unified Search</span></a> documentation.</p>
 <p>Here is how to search using the Unified Search OCS API:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;ocs-apirequest: true&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s2">&quot;https://my.nextcloud.org/ocs/v2.php/search/providers/PROVIDER_ID/search?term=QUERY&amp;limit=LIMIT&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Accept: application/json"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"ocs-apirequest: true"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">"https://my.nextcloud.org/ocs/v2.php/search/providers/PROVIDER_ID/search?term=QUERY&amp;limit=LIMIT"</span>
 
 <span class="c1"># with a cursor (paginated search)</span>
-curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;ocs-apirequest: true&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s2">&quot;https://my.nextcloud.org/ocs/v2.php/search/providers/PROVIDER_ID/search?term=QUERY&amp;limit=LIMIT&amp;cursor=CURSOR&quot;</span>
+curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Accept: application/json"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"ocs-apirequest: true"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">"https://my.nextcloud.org/ocs/v2.php/search/providers/PROVIDER_ID/search?term=QUERY&amp;limit=LIMIT&amp;cursor=CURSOR"</span>
 
-<span class="c1"># search a github issue with the query &quot;bug&quot;</span>
-curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;ocs-apirequest: true&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s2">&quot;https://my.nextcloud.org/ocs/v2.php/search/providers/github-search-issues/search?term=bug&amp;limit=2&quot;</span>
+<span class="c1"># search a github issue with the query "bug"</span>
+curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Accept: application/json"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"ocs-apirequest: true"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">"https://my.nextcloud.org/ocs/v2.php/search/providers/github-search-issues/search?term=bug&amp;limit=2"</span>
 </pre></div>
 </div>
 <p>Example response:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;ocs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;statuscode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span>
+<span class="w">  </span><span class="nt">"ocs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"statuscode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GitHub issues and pull requests&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;isPaginated&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;entries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GitHub issues and pull requests"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"isPaginated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;thumbnailUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my.nextcloud.org/apps/integration_github/avatar/Daily-DAYO&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; [bug] Change Trim bugs&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;subline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;⑁ DAYO_Android#409&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;resourceUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/Daily-DAYO/DAYO_Android/pull/409&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;rounded&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">          </span><span class="nt">"thumbnailUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my.nextcloud.org/apps/integration_github/avatar/Daily-DAYO"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">" [bug] Change Trim bugs"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"subline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"⑁ DAYO_Android#409"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"resourceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/Daily-DAYO/DAYO_Android/pull/409"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"rounded"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;thumbnailUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my.nextcloud.org/apps/integration_github/avatar/walinejs&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; [Bug]:  || [Bug]:&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;subline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;⦿ waline#2014&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;resourceUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/walinejs/waline/issues/2014&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;rounded&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">          </span><span class="nt">"thumbnailUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my.nextcloud.org/apps/integration_github/avatar/walinejs"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">" [Bug]:  || [Bug]:"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"subline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"⦿ waline#2014"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"resourceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/walinejs/waline/issues/2014"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"rounded"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;cursor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">      </span><span class="nt">"cursor"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -568,8 +568,8 @@ curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"
 <p>In Nextcloud’s web UI, the order in which the providers are listed to the users depends on the last
 date they were used. The most recently used providers are displayed first.</p>
 <p>In a client, once a provider has been used, a request to this endpoint should be done:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;ocs-apirequest: true&quot;</span><span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s2">&quot;https://my.nextcloud.org/ocs/v2.php/search/provider/PROVIDER_ID&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Accept: application/json"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"ocs-apirequest: true"</span><span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">"https://my.nextcloud.org/ocs/v2.php/search/provider/PROVIDER_ID"</span>
 </pre></div>
 </div>
 <p>A <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> optional request parameter can be passed. The last usage date will be set to “now” by default.</p>
@@ -605,7 +605,7 @@ additionally.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">matchReference</span></code> method of <code class="docutils literal notranslate"><span class="pre">IReferenceProvider</span></code> tells the reference manager if a provider supports a link or not.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">matchReference</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$referenceText</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
     <span class="c1">// support all URLs starting with https://my.website.org/</span>
-    <span class="k">return</span> <span class="nb">str_starts_with</span><span class="p">(</span><span class="nv">$referenceText</span><span class="p">,</span> <span class="s1">&#39;https://my.website.org/&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">str_starts_with</span><span class="p">(</span><span class="nv">$referenceText</span><span class="p">,</span> <span class="s1">'https://my.website.org/'</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -665,12 +665,12 @@ This way we make sure any generic rendering of link previews still shows some in
         <span class="nv">$reference</span><span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="nv">$description</span><span class="p">);</span>
         <span class="nv">$reference</span><span class="o">-&gt;</span><span class="na">setImageUrl</span><span class="p">(</span><span class="nv">$imageUrl</span><span class="p">);</span>
         <span class="nv">$reference</span><span class="o">-&gt;</span><span class="na">setRichObject</span><span class="p">(</span>
-            <span class="s1">&#39;my_rich_object_type&#39;</span><span class="p">,</span>
+            <span class="s1">'my_rich_object_type'</span><span class="p">,</span>
             <span class="p">[</span>
-                <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="nv">$title</span><span class="p">,</span>
-                <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="nv">$description</span><span class="p">,</span>
-                <span class="s1">&#39;image_url&#39;</span> <span class="o">=&gt;</span> <span class="nv">$imageUrl</span><span class="p">,</span>
-                <span class="s1">&#39;extra_info&#39;</span> <span class="o">=&gt;</span> <span class="nv">$extraInformation</span><span class="p">,</span>
+                <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="nv">$title</span><span class="p">,</span>
+                <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="nv">$description</span><span class="p">,</span>
+                <span class="s1">'image_url'</span> <span class="o">=&gt;</span> <span class="nv">$imageUrl</span><span class="p">,</span>
+                <span class="s1">'extra_info'</span> <span class="o">=&gt;</span> <span class="nv">$extraInformation</span><span class="p">,</span>
             <span class="p">]</span>
         <span class="p">);</span>
 
@@ -710,20 +710,20 @@ For example, in your <code class="docutils literal notranslate"><span class="pre
             <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
 
-        <span class="nx">Util</span><span class="o">::</span><span class="na">addScript</span><span class="p">(</span><span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="s1">&#39;myapp-reference&#39;</span><span class="p">);</span>
+        <span class="nx">Util</span><span class="o">::</span><span class="na">addScript</span><span class="p">(</span><span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="s1">'myapp-reference'</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">myapp-reference.js</span></code> file contains the widget registration:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">registerWidget</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/vue/dist/Components/NcRichText.js&#39;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">Vue</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;vue&#39;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">MyCustomWidgetComponent</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./MyCustomWidgetComponent.vue&#39;</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">registerWidget</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/vue/dist/Components/NcRichText.js'</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Vue</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'vue'</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">MyCustomWidgetComponent</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./MyCustomWidgetComponent.vue'</span>
 
 <span class="nx">Vue</span><span class="p">.</span><span class="nx">mixin</span><span class="p">({</span><span class="w"> </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">})</span>
 
-<span class="c1">// here we register the MyCustomWidgetComponent to handle rich objects which type is &#39;my_rich_object_type&#39;</span>
-<span class="nx">registerWidget</span><span class="p">(</span><span class="s1">&#39;my_rich_object_type&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">richObjectType</span><span class="p">,</span><span class="w"> </span><span class="nx">richObject</span><span class="p">,</span><span class="w"> </span><span class="nx">accessible</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">// here we register the MyCustomWidgetComponent to handle rich objects which type is 'my_rich_object_type'</span>
+<span class="nx">registerWidget</span><span class="p">(</span><span class="s1">'my_rich_object_type'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">richObjectType</span><span class="p">,</span><span class="w"> </span><span class="nx">richObject</span><span class="p">,</span><span class="w"> </span><span class="nx">accessible</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">Widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Vue</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">MyCustomWidgetComponent</span><span class="p">)</span>
 <span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">Widget</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">propsData</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
@@ -738,10 +738,10 @@ For example, in your <code class="docutils literal notranslate"><span class="pre
 <p>And last but not least, the MyCustomWidgetComponent Vue component in which you can render the link preview
 in a custom fashion:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;richObject&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">"richObject"</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>
-                {{ t(&#39;myapp&#39;, &#39;Title&#39;) }}
+                {{ t('myapp', 'Title') }}
             <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>
                 {{ richObject.title }}
@@ -749,7 +749,7 @@ in a custom fashion:</p>
         <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>
-                {{ t(&#39;myapp&#39;, &#39;Extra info&#39;) }}
+                {{ t('myapp', 'Extra info') }}
             <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>
                 {{ richObject.extra_info }}
@@ -760,11 +760,11 @@ in a custom fashion:</p>
 
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;MyCustomWidgetComponent&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'MyCustomWidgetComponent'</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">richObjectType</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
-<span class="w">            </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="s1">''</span><span class="p">,</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="nx">richObject</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">Object</span><span class="p">,</span>
@@ -791,11 +791,11 @@ in a custom fashion:</p>
 <li><p>The height can be flexible but might be limited by the parent element, so ensure that the widget can be scrolled if necessary</p></li>
 <li><p>Your script will be loaded on every page that uses widget rendering so make sure to keep the script size as small as possible and use lazy loading for any additional resources</p></li>
 </ul>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">registerCustomPickerElement</span><span class="p">,</span><span class="w"> </span><span class="nx">registerWidget</span><span class="p">,</span><span class="w"> </span><span class="nx">NcCustomPickerRenderResult</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/vue/dist/Functions/registerReference.js&#39;</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">registerCustomPickerElement</span><span class="p">,</span><span class="w"> </span><span class="nx">registerWidget</span><span class="p">,</span><span class="w"> </span><span class="nx">NcCustomPickerRenderResult</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/vue/dist/Functions/registerReference.js'</span>
 
-<span class="nx">registerWidget</span><span class="p">(</span><span class="s1">&#39;my_rich_object_type&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">richObjectType</span><span class="p">,</span><span class="w"> </span><span class="nx">richObject</span><span class="p">,</span><span class="w"> </span><span class="nx">accessible</span><span class="p">,</span><span class="w"> </span><span class="nx">interactive</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="nx">Vue</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">&#39;vue&#39;</span><span class="p">)</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="nx">MyWidget</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">&#39;./views/MyWidget.vue&#39;</span><span class="p">)</span>
+<span class="nx">registerWidget</span><span class="p">(</span><span class="s1">'my_rich_object_type'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">richObjectType</span><span class="p">,</span><span class="w"> </span><span class="nx">richObject</span><span class="p">,</span><span class="w"> </span><span class="nx">accessible</span><span class="p">,</span><span class="w"> </span><span class="nx">interactive</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="nx">Vue</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">'vue'</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="nx">MyWidget</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">'./views/MyWidget.vue'</span><span class="p">)</span>
 
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">Widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Vue</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">MyWidget</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">vueElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Widget</span><span class="p">({</span>
@@ -923,11 +923,11 @@ This function takes 3 parameters:</p>
 you just created and optionally an object (the Vue instance for example).
 This render result will be then be passed to the destroy callback to let you properly clean and delete your custom component.</p>
 <p>To register a Vue component as a custom picker component:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">registerCustomPickerElement</span><span class="p">,</span><span class="w"> </span><span class="nx">NcCustomPickerRenderResult</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/vue/dist/Components/NcRichText.js&#39;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">Vue</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;vue&#39;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">MyCustomPickerElement</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./MyCustomPickerElement.vue&#39;</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">registerCustomPickerElement</span><span class="p">,</span><span class="w"> </span><span class="nx">NcCustomPickerRenderResult</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/vue/dist/Components/NcRichText.js'</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Vue</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'vue'</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">MyCustomPickerElement</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./MyCustomPickerElement.vue'</span>
 
-<span class="nx">registerCustomPickerElement</span><span class="p">(</span><span class="s1">&#39;REFERENCE_PROVIDER_ID&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">providerId</span><span class="p">,</span><span class="w"> </span><span class="nx">accessible</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="nx">registerCustomPickerElement</span><span class="p">(</span><span class="s1">'REFERENCE_PROVIDER_ID'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">providerId</span><span class="p">,</span><span class="w"> </span><span class="nx">accessible</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">Element</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Vue</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">MyCustomPickerElement</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">vueElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Element</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">propsData</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
@@ -937,7 +937,7 @@ This render result will be then be passed to the destroy callback to let you pro
 <span class="w">    </span><span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">NcCustomPickerRenderResult</span><span class="p">(</span><span class="nx">vueElement</span><span class="p">.</span><span class="nx">$el</span><span class="p">,</span><span class="w"> </span><span class="nx">vueElement</span><span class="p">)</span>
 <span class="p">},</span><span class="w"> </span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="nx">renderResult</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// call the $destroy method on your custom element&#39;s Vue instance</span>
+<span class="w">    </span><span class="c1">// call the $destroy method on your custom element's Vue instance</span>
 <span class="w">    </span><span class="nx">renderResult</span><span class="p">.</span><span class="nx">object</span><span class="p">.</span><span class="nx">$destroy</span><span class="p">()</span>
 <span class="p">})</span>
 </pre></div>
@@ -946,20 +946,20 @@ This render result will be then be passed to the destroy callback to let you pro
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">registerCustomPickerElement</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">NcCustomPickerRenderResult</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/vue/dist/Components/NcRichText.js&#39;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/vue/dist/Components/NcRichText.js'</span>
 
-<span class="nx">registerCustomPickerElement</span><span class="p">(</span><span class="s1">&#39;REFERENCE_PROVIDER_ID&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">providerId</span><span class="p">,</span><span class="w"> </span><span class="nx">accessible</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">paragraph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">paragraph</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;click this button to return a link&#39;</span>
+<span class="nx">registerCustomPickerElement</span><span class="p">(</span><span class="s1">'REFERENCE_PROVIDER_ID'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">providerId</span><span class="p">,</span><span class="w"> </span><span class="nx">accessible</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">paragraph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'p'</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">paragraph</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'click this button to return a link'</span>
 <span class="w">    </span><span class="nx">el</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">paragraph</span><span class="p">)</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">button</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;I am a button&#39;</span>
-<span class="w">    </span><span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'button'</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">button</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'I am a button'</span>
+<span class="w">    </span><span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CustomEvent</span><span class="p">(</span>
-<span class="w">            </span><span class="s1">&#39;submit&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="s1">'submit'</span><span class="p">,</span>
 <span class="w">            </span><span class="p">{</span>
 <span class="w">                </span><span class="nx">bubbles</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">detail</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://nextcloud.com&#39;</span>
+<span class="w">                </span><span class="nx">detail</span><span class="o">:</span><span class="w"> </span><span class="s1">'https://nextcloud.com'</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">)</span>
 <span class="w">        </span><span class="nx">el</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
@@ -989,7 +989,7 @@ You can also emit the <code class="docutils literal notranslate"><span class="pr
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

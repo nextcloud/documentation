@@ -163,14 +163,14 @@ They should be stored as <code class="docutils literal notranslate"><span class=
     <span class="sd">/** @var ISchemaWrapper $schema */</span>
     <span class="nv">$schema</span> <span class="o">=</span> <span class="nv">$schemaClosure</span><span class="p">();</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">hasTable</span><span class="p">(</span><span class="s1">&#39;my_table&#39;</span><span class="p">))</span> <span class="p">{</span>
-        <span class="nv">$table</span> <span class="o">=</span> <span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">createTable</span><span class="p">(</span><span class="s1">&#39;my_table&#39;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">hasTable</span><span class="p">(</span><span class="s1">'my_table'</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$table</span> <span class="o">=</span> <span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">createTable</span><span class="p">(</span><span class="s1">'my_table'</span><span class="p">);</span>
         <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span>
-            <span class="s1">&#39;id&#39;</span><span class="p">,</span>
+            <span class="s1">'id'</span><span class="p">,</span>
             <span class="nx">Types</span><span class="o">::</span><span class="na">BIGINT</span><span class="p">,</span>
-            <span class="p">[</span><span class="s1">&#39;notnull&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="s1">&#39;unsigned&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">]</span>
+            <span class="p">[</span><span class="s1">'notnull'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="s1">'unsigned'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">]</span>
         <span class="p">);</span>
-        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">setPrimaryKey</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">]);</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">setPrimaryKey</span><span class="p">([</span><span class="s1">'id'</span><span class="p">]);</span>
 
         <span class="c1">// TODO Add other fields</span>
     <span class="p">}</span>
@@ -240,7 +240,7 @@ command line:</p>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">createdAt</span><span class="p">()</span><span class="o">:</span> <span class="nx">DateTimeImmutable</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">decoder</span><span class="o">-&gt;</span><span class="na">decode</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">)[</span><span class="s1">&#39;createdAt&#39;</span><span class="p">];</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">decoder</span><span class="o">-&gt;</span><span class="na">decode</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">)[</span><span class="s1">'createdAt'</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -260,7 +260,7 @@ command line:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

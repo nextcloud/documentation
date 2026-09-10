@@ -201,11 +201,11 @@
 <p>The interfaces <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\IAppContainer</span></code> and <code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer</span></code> will remain, but they won’t extend the <code class="docutils literal notranslate"><span class="pre">IContainer</span></code> anymore once that interface gets removed. As a result, <code class="docutils literal notranslate"><span class="pre">IAppContainer</span></code> and <code class="docutils literal notranslate"><span class="pre">IServerContainer</span></code> will eventually become tagging interfaces with the sole purpose of making it possible to have either the app or server container injected explicitly.</p>
 <p>If your app requires Nextcloud 20 or later, you can replace any of the old type hints with one of <code class="docutils literal notranslate"><span class="pre">\Psr\Container\ContainerInterface</span></code> and replace calls of <code class="docutils literal notranslate"><span class="pre">query</span></code> with <code class="docutils literal notranslate"><span class="pre">get</span></code>, e.g. on the closures used when registering services:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// old</span>
-<span class="nv">$container</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="s1">&#39;DecryptAll&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">IAppContainer</span> <span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
+<span class="nv">$container</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="s1">'DecryptAll'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">IAppContainer</span> <span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="k">new</span> <span class="nx">DecryptAll</span><span class="p">(</span>
-    <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;Util&#39;</span><span class="p">),</span>
+    <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">'Util'</span><span class="p">),</span>
     <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nx">KeyManager</span><span class="o">::</span><span class="na">class</span><span class="p">),</span>
-    <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;Crypt&#39;</span><span class="p">),</span>
+    <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">'Crypt'</span><span class="p">),</span>
     <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nx">ISession</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
   <span class="p">)</span>
 <span class="p">})</span>
@@ -213,11 +213,11 @@
 </div>
 <p>becomes</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// new</span>
-<span class="nv">$container</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="s1">&#39;DecryptAll&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">ContainerInterface</span> <span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
+<span class="nv">$container</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="s1">'DecryptAll'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">ContainerInterface</span> <span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="k">new</span> <span class="nx">DecryptAll</span><span class="p">(</span>
-    <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;Util&#39;</span><span class="p">),</span>
+    <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'Util'</span><span class="p">),</span>
     <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">KeyManager</span><span class="o">::</span><span class="na">class</span><span class="p">),</span>
-    <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;Crypt&#39;</span><span class="p">),</span>
+    <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'Crypt'</span><span class="p">),</span>
     <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">ISession</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
   <span class="p">)</span>
 <span class="p">})</span>
@@ -375,7 +375,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 
