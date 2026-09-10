@@ -100,7 +100,7 @@ Listed below are the major parts of the system that can be scaled independently 
 3. The embedding model performance
 
    | The embedding model performance can be scaled by using a hosted embedding service, locally or remotely hosted. It should be able to serve an OpenAI-compatible API.
-   | The embedding service URL can be set using the environment variable ``CC_EM_BASE_URL`` during deployment in the "Deploy Options". Other options like the model name, api key, or username and password can be set using the environment variables ``CC_EM_MODEL_NAME``, ``CC_EM_API_KEY``, ``CC_EM_USERNAME``, and ``CC_EM_PASSWORD`` respectively.
+   | The embedding service URL can be set using the environment variable ``CC_EM_BASE_URL`` during deployment in the "Deploy Options". Other options like the model name, api key, or username and password can be set using the environment variables ``CC_EM_MODEL_NAME``, ``CC_EM_APIKEY``, ``CC_EM_USERNAME``, and ``CC_EM_PASSWORD`` respectively.
 
    .. warning::
 
