@@ -203,7 +203,7 @@
 <p>The following steps will download the Collabora Online docker. Make sure to replace “cloud.example.com” with the host that your own Nextcloud runs on. If you want to use the docker container with more than one Nextcloud, you can add another <cite>-e aliasgroup2=https://cloud2.example.com:443</cite>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>collabora/code
 docker<span class="w"> </span>run<span class="w"> </span>-t<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:9980:9980<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-e<span class="w"> </span><span class="s1">&#39;aliasgroup1=https://cloud.example.com:443&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="s1">'aliasgroup1=https://cloud.example.com:443'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--restart<span class="w"> </span>always<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--cap-add<span class="w"> </span>MKNOD<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>collabora/code
@@ -246,7 +246,7 @@ ProxyPass           /hosting/capabilities https://127.0.0.1:9980/hosting/capabil
 ProxyPassReverse    /hosting/capabilities https://127.0.0.1:9980/hosting/capabilities
 
 # Main websocket
-ProxyPassMatch      &quot;/cool/(.*)/ws$&quot;      wss://127.0.0.1:9980/cool/$1/ws nocanon
+ProxyPassMatch      "/cool/(.*)/ws$"      wss://127.0.0.1:9980/cool/$1/ws nocanon
 
 # Admin Console websocket
 ProxyPass           /cool/adminws wss://127.0.0.1:9980/cool/adminws
@@ -292,7 +292,7 @@ docker<span class="w"> </span>rm<span class="w"> </span>CONTAINER_ID
 </pre></div>
 </div>
 </dd>
-<dt>Start the new container:</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-t<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:9980:9980<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;domain=cloud\\.example\\.com&#39;</span><span class="w"> </span><span class="se">\</span>
+<dt>Start the new container:</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-t<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:9980:9980<span class="w"> </span>-e<span class="w"> </span><span class="s1">'domain=cloud\\.example\\.com'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--restart<span class="w"> </span>always<span class="w"> </span>--cap-add<span class="w"> </span>MKNOD<span class="w"> </span>collabora/code
 </pre></div>
 </div>

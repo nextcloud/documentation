@@ -295,7 +295,7 @@ If you are automating the installation, run the following command:</p>
 </div>
 </li>
 <li><p>Pass the <code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code> and <code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code> properties:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">NO_DESKTOP_SHORTCUT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">NO_SHELL_EXTENSIONS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">NO_DESKTOP_SHORTCUT</span><span class="o">=</span><span class="s2">"1"</span> <span class="n">NO_SHELL_EXTENSIONS</span><span class="o">=</span><span class="s2">"1"</span>
 </pre></div>
 </div>
 </li>
@@ -314,11 +314,11 @@ If you want to do that, see the next section.</p>
 <h3>Changing installed features<a class="headerlink" href="#changing-installed-features" title="Link to this heading"></a></h3>
 <p>You can change the installed features later by using the <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> and <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code> properties.</p>
 <p>To add the desktop shortcut later, run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="s2">"DesktopShortcut"</span>
 </pre></div>
 </div>
 <p>To remove it, run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="s2">"DesktopShortcut"</span>
 </pre></div>
 </div>
 <p>Windows keeps track of the installed features, and <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> or <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code> affects only the specified features.</p>
@@ -330,7 +330,7 @@ If you want to do that, see the next section.</p>
 <section id="installation-folder">
 <h3>Installation folder<a class="headerlink" href="#installation-folder" title="Link to this heading"></a></h3>
 <p>You can adjust the installation folder by specifying the <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> property:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">INSTALLDIR</span><span class="o">=</span><span class="s2">&quot;C:\Program Files\Non Standard Nextcloud Client Folder&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">INSTALLDIR</span><span class="o">=</span><span class="s2">"C:\Program Files\Non Standard Nextcloud Client Folder"</span>
 </pre></div>
 </div>
 <p>Be careful when using PowerShell instead of <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code>; getting the whitespace escaping right can be tricky.</p>
@@ -340,14 +340,14 @@ If you still need to change it, uninstall the client first and then reinstall it
 <section id="disabling-automatic-updates">
 <h3>Disabling automatic updates<a class="headerlink" href="#disabling-automatic-updates" title="Link to this heading"></a></h3>
 <p>To disable automatic updates, pass the <code class="docutils literal notranslate"><span class="pre">SKIPAUTOUPDATE</span></code> property:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">SKIPAUTOUPDATE</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">SKIPAUTOUPDATE</span><span class="o">=</span><span class="s2">"1"</span>
 </pre></div>
 </div>
 </section>
 <section id="launch-after-installation">
 <h3>Launch after installation<a class="headerlink" href="#launch-after-installation" title="Link to this heading"></a></h3>
 <p>To launch the client automatically after installation, pass the <code class="docutils literal notranslate"><span class="pre">LAUNCH</span></code> property:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">LAUNCH</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">LAUNCH</span><span class="o">=</span><span class="s2">"1"</span>
 </pre></div>
 </div>
 <p>This option also removes the checkbox that lets users decide whether to launch the client during non-passive or non-quiet installations.</p>
@@ -365,7 +365,7 @@ If you are handling reboots yourself, you can set the <code class="docutils lite
 </div>
 <p>This makes <code class="docutils literal notranslate"><span class="pre">msiexec</span></code> exit with error <code class="docutils literal notranslate"><span class="pre">ERROR_SUCCESS_REBOOT_REQUIRED</span></code> (3010).
 If your deployment tooling interprets this as an actual error and you want to avoid that, you may want to set <code class="docutils literal notranslate"><span class="pre">DO_NOT_SCHEDULE_REBOOT</span></code> instead:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">DO_NOT_SCHEDULE_REBOOT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">DO_NOT_SCHEDULE_REBOOT</span><span class="o">=</span><span class="s2">"1"</span>
 </pre></div>
 </div>
 </section>
@@ -459,11 +459,11 @@ An empty local folder does not by itself mean that provisioning failed.</p>
 <section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
 <p>Windows:</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\Nextcloud\nextcloud.exe&quot;</span> <span class="p">^</span>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="s2">"C:\Program Files\Nextcloud\nextcloud.exe"</span> <span class="p">^</span>
   <span class="p">-</span><span class="n">-userid</span> <span class="n">admin</span> <span class="p">^</span>
   <span class="p">-</span><span class="n">-apppassword</span> <span class="n">Jliy12356785jxnHa2ZCiZ9MX48ncECwDso95Pq3a5HABjY34ZvhZiXrPfpKWUg7aOHAX5</span> <span class="p">^</span>
   <span class="p">-</span><span class="n">-serverurl</span> <span class="n">https</span><span class="p">://</span><span class="n">cloud</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">com</span> <span class="p">^</span>
-  <span class="p">-</span><span class="n">-localdirpath</span> <span class="s2">&quot;D:\Nextcloud-sync-folder&quot;</span> <span class="p">^</span>
+  <span class="p">-</span><span class="n">-localdirpath</span> <span class="s2">"D:\Nextcloud-sync-folder"</span> <span class="p">^</span>
   <span class="p">-</span><span class="n">-remotedirpath</span> <span class="p">/</span><span class="n">Music</span> <span class="p">^</span>
   <span class="p">-</span><span class="n">-isvfsenabled</span> <span class="n">1</span>
 </pre></div>
@@ -473,7 +473,7 @@ An empty local folder does not by itself mean that provisioning failed.</p>
 <span class="w">  </span>--userid<span class="w"> </span>admin<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--apppassword<span class="w"> </span>Jliy12356785jxnHa2ZCiZ9MX48ncECwDso95Pq3a5HABjY34ZvhZiXrPfpKWUg7aOHAX5<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--serverurl<span class="w"> </span>https://cloud.example.com<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--localdirpath<span class="w"> </span><span class="s2">&quot;/home/admin/Nextcloud-sync-folder&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--localdirpath<span class="w"> </span><span class="s2">"/home/admin/Nextcloud-sync-folder"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--remotedirpath<span class="w"> </span>/Music<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--isvfsenabled<span class="w"> </span><span class="m">0</span>
 </pre></div>
@@ -483,7 +483,7 @@ An empty local folder does not by itself mean that provisioning failed.</p>
 <span class="w">  </span>--userid<span class="w"> </span>admin<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--apppassword<span class="w"> </span>Jliy12356785jxnHa2ZCiZ9MX48ncECwDso95Pq3a5HABjY34ZvhZiXrPfpKWUg7aOHAX5<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--serverurl<span class="w"> </span>https://cloud.example.com<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--localdirpath<span class="w"> </span><span class="s2">&quot;/Users/admin/Nextcloud-sync-folder&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--localdirpath<span class="w"> </span><span class="s2">"/Users/admin/Nextcloud-sync-folder"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--remotedirpath<span class="w"> </span>/Music<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--isvfsenabled<span class="w"> </span><span class="m">1</span>
 </pre></div>
@@ -527,11 +527,11 @@ They do not directly create an account in the same way as non-interactive accoun
 <section id="id4">
 <h3>Examples<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>Windows:</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\Nextcloud\nextcloud.exe&quot;</span> <span class="p">-</span><span class="n">-overridelocaldir</span> <span class="s2">&quot;D:/work/nextcloud-sync-folder&quot;</span> <span class="p">-</span><span class="n">-overrideserverurl</span> <span class="n">https</span><span class="p">://</span><span class="n">cloud</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">com</span>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="s2">"C:\Program Files\Nextcloud\nextcloud.exe"</span> <span class="p">-</span><span class="n">-overridelocaldir</span> <span class="s2">"D:/work/nextcloud-sync-folder"</span> <span class="p">-</span><span class="n">-overrideserverurl</span> <span class="n">https</span><span class="p">://</span><span class="n">cloud</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">com</span>
 </pre></div>
 </div>
 <p>Linux and macOS:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nextcloud<span class="w"> </span>--overridelocaldir<span class="w"> </span><span class="s2">&quot;/home/&lt;user&gt;/nextcloud-sync-folder&quot;</span><span class="w"> </span>--overrideserverurl<span class="w"> </span>https://cloud.example.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nextcloud<span class="w"> </span>--overridelocaldir<span class="w"> </span><span class="s2">"/home/&lt;user&gt;/nextcloud-sync-folder"</span><span class="w"> </span>--overrideserverurl<span class="w"> </span>https://cloud.example.com
 </pre></div>
 </div>
 </section>

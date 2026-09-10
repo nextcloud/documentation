@@ -299,23 +299,23 @@ We thus recommend the following models:</p>
 <p>The strings <code class="docutils literal notranslate"><span class="pre">{system_prompt}</span></code> and <code class="docutils literal notranslate"><span class="pre">{user_prompt}</span></code> are variables that will be filled in by the app, so they must be part of your prompt template.</p>
 <p>Here is an example config file for Llama 2:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;prompt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;|im_start|&gt; system\n{system_prompt}\n&lt;|im_end|&gt;\n&lt;|im_start|&gt; user\n{user_prompt}\n&lt;|im_end|&gt;\n&lt;|im_start|&gt; assistant\n&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;loader_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">     </span><span class="nt">&quot;n_ctx&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">&quot;max_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2048</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&lt;|im_end|&gt;&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="nt">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;|im_start|&gt; system\n{system_prompt}\n&lt;|im_end|&gt;\n&lt;|im_start|&gt; user\n{user_prompt}\n&lt;|im_end|&gt;\n&lt;|im_start|&gt; assistant\n"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"loader_config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="nt">"n_ctx"</span><span class="p">:</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">"max_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">2048</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">"stop"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"&lt;|im_end|&gt;"</span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Here is an example configuration for Llama 3:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;prompt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;|begin_of_text|&gt;&lt;|start_header_id|&gt;system&lt;|end_header_id|&gt;\n{system_prompt}&lt;|eot_id|&gt;&lt;|start_header_id|&gt;user&lt;|end_header_id|&gt;\n{user_prompt}&lt;|eot_id|&gt;\n&lt;|start_header_id|&gt;assistant&lt;|end_header_id|&gt;\n&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;loader_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;n_ctx&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;max_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4000</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&lt;|eot_id|&gt;&quot;</span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span>
+<span class="w">  </span><span class="nt">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;|begin_of_text|&gt;&lt;|start_header_id|&gt;system&lt;|end_header_id|&gt;\n{system_prompt}&lt;|eot_id|&gt;&lt;|start_header_id|&gt;user&lt;|end_header_id|&gt;\n{user_prompt}&lt;|eot_id|&gt;\n&lt;|start_header_id|&gt;assistant&lt;|end_header_id|&gt;\n"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"loader_config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"n_ctx"</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"max_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">4000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"stop"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"&lt;|eot_id|&gt;"</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>

@@ -156,14 +156,14 @@
 <h2>Redis Cluster<a class="headerlink" href="#redis-cluster" title="Link to this heading"></a></h2>
 <p>For a local Redis cluster setup there are some docker script collected in <a class="reference external" href="https://github.com/Grokzen/docker-redis-cluster">this repository</a>. It boils down to clone the repo and run <cite>make up</cite>. Then the redis cluster is available at <code class="docutils literal notranslate"><span class="pre">localhost:7000</span></code>.</p>
 <p>Following <code class="docutils literal notranslate"><span class="pre">config.php</span></code> can be used:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
-<span class="s1">&#39;redis.cluster&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-   <span class="s1">&#39;seeds&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="o">//</span> <span class="n">provide</span> <span class="n">some</span><span class="o">/</span><span class="nb">all</span> <span class="n">of</span> <span class="n">the</span> <span class="n">cluster</span> <span class="n">servers</span> <span class="n">to</span> <span class="n">bootstrap</span> <span class="n">discovery</span><span class="p">,</span> <span class="n">port</span> <span class="n">required</span>
-      <span class="s1">&#39;localhost:7000&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.distributed'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
+<span class="s1">'redis.cluster'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">'seeds'</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="o">//</span> <span class="n">provide</span> <span class="n">some</span><span class="o">/</span><span class="nb">all</span> <span class="n">of</span> <span class="n">the</span> <span class="n">cluster</span> <span class="n">servers</span> <span class="n">to</span> <span class="n">bootstrap</span> <span class="n">discovery</span><span class="p">,</span> <span class="n">port</span> <span class="n">required</span>
+      <span class="s1">'localhost:7000'</span><span class="p">,</span>
    <span class="p">],</span>
-   <span class="s1">&#39;timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
-   <span class="s1">&#39;read_timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
-   <span class="s1">&#39;failover_mode&#39;</span> <span class="o">=&gt;</span> \<span class="n">RedisCluster</span><span class="p">::</span><span class="n">FAILOVER_ERROR</span><span class="p">,</span>
+   <span class="s1">'timeout'</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
+   <span class="s1">'read_timeout'</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
+   <span class="s1">'failover_mode'</span> <span class="o">=&gt;</span> \<span class="n">RedisCluster</span><span class="p">::</span><span class="n">FAILOVER_ERROR</span><span class="p">,</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -174,18 +174,18 @@
 </pre></div>
 </div>
 <p>The edit <code class="docutils literal notranslate"><span class="pre">config.php</span></code> and add the following section:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'objectstore'</span> <span class="o">=&gt;</span>
     <span class="n">array</span> <span class="p">(</span>
-        <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">S3&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span>
+        <span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">S3'</span><span class="p">,</span>
+        <span class="s1">'arguments'</span> <span class="o">=&gt;</span>
         <span class="n">array</span> <span class="p">(</span>
-            <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud-dev&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;minioadmin&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;minioadmin&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;hostname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;9000&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;use_ssl&#39;</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
-            <span class="s1">&#39;use_path_style&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s1">'bucket'</span> <span class="o">=&gt;</span> <span class="s1">'nextcloud-dev'</span><span class="p">,</span>
+            <span class="s1">'key'</span> <span class="o">=&gt;</span> <span class="s1">'minioadmin'</span><span class="p">,</span>
+            <span class="s1">'secret'</span> <span class="o">=&gt;</span> <span class="s1">'minioadmin'</span><span class="p">,</span>
+            <span class="s1">'hostname'</span> <span class="o">=&gt;</span> <span class="s1">'localhost'</span><span class="p">,</span>
+            <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="s1">'9000'</span><span class="p">,</span>
+            <span class="s1">'use_ssl'</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s1">'use_path_style'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
         <span class="p">),</span>
     <span class="p">),</span>
 </pre></div>
@@ -223,10 +223,10 @@
     <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">samba</span><span class="o">/</span><span class="n">public</span><span class="p">:</span><span class="o">/</span><span class="n">smbpublic</span> \
     <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">samba</span><span class="o">/</span><span class="n">home</span><span class="p">:</span><span class="o">/</span><span class="n">smbhome</span> \
     <span class="n">dperson</span><span class="o">/</span><span class="n">samba</span> \
-    <span class="o">-</span><span class="n">u</span> <span class="s2">&quot;smb1;pwd1&quot;</span> \
-    <span class="o">-</span><span class="n">u</span> <span class="s2">&quot;smb2;pwd2&quot;</span> \
-    <span class="o">-</span><span class="n">s</span> <span class="s2">&quot;public;/smbmount;yes;no;yes&quot;</span> \
-    <span class="o">-</span><span class="n">s</span> <span class="s2">&quot;home;/smbhome/%U;yes;no;no;all;none&quot;</span>
+    <span class="o">-</span><span class="n">u</span> <span class="s2">"smb1;pwd1"</span> \
+    <span class="o">-</span><span class="n">u</span> <span class="s2">"smb2;pwd2"</span> \
+    <span class="o">-</span><span class="n">s</span> <span class="s2">"public;/smbmount;yes;no;yes"</span> \
+    <span class="o">-</span><span class="n">s</span> <span class="s2">"home;/smbhome/%U;yes;no;no;all;none"</span>
 </pre></div>
 </div>
 <p>Make sure that smbclient is installed on your Nextcloud server and has the following configuration:</p>
@@ -285,9 +285,9 @@
 <section id="collabora-without-ssl">
 <h2>Collabora without SSL<a class="headerlink" href="#collabora-without-ssl" title="Link to this heading"></a></h2>
 <p><strong>1) Start Collabora in a docker container</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">9980</span><span class="p">:</span><span class="mi">9980</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;domain=172.17.0.1&#39;</span> \
-    <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;username=admin&#39;</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;password=487903ffcf4&#39;</span> \
-    <span class="o">-</span><span class="n">e</span> <span class="n">extra_params</span><span class="o">=</span><span class="s1">&#39;--o:ssl.enable=false&#39;</span> \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">9980</span><span class="p">:</span><span class="mi">9980</span> <span class="o">-</span><span class="n">e</span> <span class="s1">'domain=172.17.0.1'</span> \
+    <span class="o">-</span><span class="n">e</span> <span class="s1">'username=admin'</span> <span class="o">-</span><span class="n">e</span> <span class="s1">'password=487903ffcf4'</span> \
+    <span class="o">-</span><span class="n">e</span> <span class="n">extra_params</span><span class="o">=</span><span class="s1">'--o:ssl.enable=false'</span> \
     <span class="o">--</span><span class="n">restart</span> <span class="n">always</span> <span class="o">--</span><span class="n">cap</span><span class="o">-</span><span class="n">add</span> <span class="n">MKNOD</span> <span class="n">collabora</span><span class="o">/</span><span class="n">code</span>
 </pre></div>
 </div>
@@ -317,7 +317,7 @@
 </ul>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;convert-to&quot;</span><span class="p">:{</span><span class="s2">&quot;available&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">},</span><span class="s2">&quot;hasMobileSupport&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;hasTemplateSaveAs&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;productName&quot;</span><span class="p">:</span><span class="s2">&quot;Collabora Online Development Edition&quot;</span><span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">"convert-to"</span><span class="p">:{</span><span class="s2">"available"</span><span class="p">:</span><span class="n">false</span><span class="p">},</span><span class="s2">"hasMobileSupport"</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">"hasTemplateSaveAs"</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">"productName"</span><span class="p">:</span><span class="s2">"Collabora Online Development Edition"</span><span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -340,7 +340,7 @@
 </li>
 <li><p>Start docker, important: do not use certs folder, but parent folder:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="n">ONLYOFFICEDOCKER</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">t</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">p</span> <span class="mi">4433</span><span class="p">:</span><span class="mi">443</span> \
-<span class="o">-</span><span class="n">e</span> <span class="n">JWT_ENABLED</span><span class="o">=</span><span class="s1">&#39;true&#39;</span> <span class="o">-</span><span class="n">e</span> <span class="n">JWT_SECRET</span><span class="o">=</span><span class="s1">&#39;secret&#39;</span> <span class="o">--</span><span class="n">restart</span><span class="o">=</span><span class="n">always</span> \
+<span class="o">-</span><span class="n">e</span> <span class="n">JWT_ENABLED</span><span class="o">=</span><span class="s1">'true'</span> <span class="o">-</span><span class="n">e</span> <span class="n">JWT_SECRET</span><span class="o">=</span><span class="s1">'secret'</span> <span class="o">--</span><span class="n">restart</span><span class="o">=</span><span class="n">always</span> \
 <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oo</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">onlyoffice</span><span class="o">/</span><span class="n">Data</span> <span class="n">onlyoffice</span><span class="o">/</span><span class="n">documentserver</span>
 </pre></div>
 </div>
@@ -368,10 +368,10 @@
 </li>
 <li><p>Add the following to your config.php</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;onlyoffice&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span> <span class="p">(</span>
-    <span class="s1">&#39;verify_peer_off&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-    <span class="s1">&#39;jwt_secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;secret&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;jwt_header&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;AuthorizationJWT&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'onlyoffice'</span> <span class="o">=&gt;</span> <span class="n">array</span> <span class="p">(</span>
+    <span class="s1">'verify_peer_off'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s1">'jwt_secret'</span> <span class="o">=&gt;</span> <span class="s1">'secret'</span><span class="p">,</span>
+    <span class="s1">'jwt_header'</span> <span class="o">=&gt;</span> <span class="s1">'AuthorizationJWT'</span>
 <span class="p">),</span>
 </pre></div>
 </div>
@@ -408,14 +408,14 @@ index 8400ba9c..49279cc7 100644
 --- a/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
 +++ b/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
 @@ -152,7 +152,7 @@ class AuthenticatorAssertionResponseValidator
-             Assertion::isArray($parsedRelyingPartyId, &#39;Invalid origin&#39;);
+             Assertion::isArray($parsedRelyingPartyId, 'Invalid origin');
              if (!in_array($facetId, $securedRelyingPartyId, true)) {
-                 $scheme = $parsedRelyingPartyId[&#39;scheme&#39;] ?? &#39;&#39;;
--                Assertion::eq(&#39;https&#39;, $scheme, &#39;Invalid scheme. HTTPS required.&#39;);
-+                #Assertion::eq(&#39;https&#39;, $scheme, &#39;Invalid scheme. HTTPS required.&#39;);
+                 $scheme = $parsedRelyingPartyId['scheme'] ?? '';
+-                Assertion::eq('https', $scheme, 'Invalid scheme. HTTPS required.');
++                #Assertion::eq('https', $scheme, 'Invalid scheme. HTTPS required.');
              }
-             $clientDataRpId = $parsedRelyingPartyId[&#39;host&#39;] ?? &#39;&#39;;
-             Assertion::notEmpty($clientDataRpId, &#39;Invalid origin rpId.&#39;);
+             $clientDataRpId = $parsedRelyingPartyId['host'] ?? '';
+             Assertion::notEmpty($clientDataRpId, 'Invalid origin rpId.');
 diff --git a/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php b/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
 index f3e5a15d..3927bf23 100644
 --- a/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
@@ -423,9 +423,9 @@ index f3e5a15d..3927bf23 100644
 @@ -150,7 +150,7 @@ class AuthenticatorAttestationResponseValidator
 
              if (!in_array($facetId, $securedRelyingPartyId, true)) {
-                 $scheme = $parsedRelyingPartyId[&#39;scheme&#39;] ?? &#39;&#39;;
--                Assertion::eq(&#39;https&#39;, $scheme, &#39;Invalid scheme. HTTPS required.&#39;);
-+                #Assertion::eq(&#39;https&#39;, $scheme, &#39;Invalid scheme. HTTPS required.&#39;);
+                 $scheme = $parsedRelyingPartyId['scheme'] ?? '';
+-                Assertion::eq('https', $scheme, 'Invalid scheme. HTTPS required.');
++                #Assertion::eq('https', $scheme, 'Invalid scheme. HTTPS required.');
              }
 
              /* @see 7.1.6 */
@@ -446,7 +446,7 @@ index f3e5a15d..3927bf23 100644
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

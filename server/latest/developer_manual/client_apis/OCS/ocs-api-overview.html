@@ -159,11 +159,11 @@
 <h2>Authentication<a class="headerlink" href="#authentication" title="Link to this heading"></a></h2>
 <p>Authentication can happen either via username / password (or app token) or with OIDC tokens, see the examples below:</p>
 <p>Username/Password:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:password<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/ocs/v1.php/...&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:password<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">'https://cloud.example.com/ocs/v1.php/...'</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"OCS-APIRequest: true"</span>
 </pre></div>
 </div>
 <p>OIDC Token:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/ocs/v1.php/...&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer ID_TOKEN&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">'https://cloud.example.com/ocs/v1.php/...'</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"OCS-APIRequest: true"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer ID_TOKEN"</span>
 </pre></div>
 </div>
 </section>
@@ -171,11 +171,11 @@
 <h2>Testing requests with curl<a class="headerlink" href="#testing-requests-with-curl" title="Link to this heading"></a></h2>
 <p>All OCS requests can be easily tested out using <code class="code docutils literal notranslate"><span class="pre">curl</span></code> by specifying the request method (<code class="code docutils literal notranslate"><span class="pre">GET</span></code>, <code class="code docutils literal notranslate"><span class="pre">PUT</span></code>, etc) and setting a request body where needed.</p>
 <p>For example: you can perform a <code class="code docutils literal notranslate"><span class="pre">GET</span></code> request to get information about a user:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:password<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/ocs/v1.php/...&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:password<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">'https://cloud.example.com/ocs/v1.php/...'</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"OCS-APIRequest: true"</span>
 </pre></div>
 </div>
 <p>You can change the response type of your request by adding an Accept header. For example, if you prefer JSON responses:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:password<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/ocs/v1.php/...&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:password<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">'https://cloud.example.com/ocs/v1.php/...'</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"Accept: application/json"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"OCS-APIRequest: true"</span>
 </pre></div>
 </div>
 <p>Adding the Accept header also ensures consistency of your responses, since some legacy OCS requests return XML as their default response, while newer requests return JSON.</p>
@@ -187,7 +187,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">ocs</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">cloud</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">USERID</span>
 </pre></div>
 </div>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0"?&gt;</span>
 <span class="nt">&lt;ocs&gt;</span>
 <span class="w">    </span><span class="nt">&lt;meta&gt;</span>
 <span class="w">        </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
@@ -240,7 +240,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">ocs</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">cloud</span><span class="o">/</span><span class="n">users</span>
 </pre></div>
 </div>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0"?&gt;</span>
 <span class="nt">&lt;ocs&gt;</span>
 <span class="w">    </span><span class="nt">&lt;meta&gt;</span>
 <span class="w">        </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
@@ -267,7 +267,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">ocs</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">cloud</span><span class="o">/</span><span class="n">capabilities</span>
 </pre></div>
 </div>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0"?&gt;</span>
 <span class="nt">&lt;ocs&gt;</span>
 <span class="w">    </span><span class="nt">&lt;meta&gt;</span>
 <span class="w">        </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
@@ -343,14 +343,14 @@ As well as documentation on how to <a class="reference external" href="https://g
 <h2>Auto-complete and user search<a class="headerlink" href="#auto-complete-and-user-search" title="Link to this heading"></a></h2>
 <p>It is possible to search for users using the auto-complete API, used to auto-complete usernames in comments, chat or to find guest accounts. The code <a class="reference external" href="https://github.com/nextcloud/server/blob/master/core/Controller/AutoCompleteController.php#L69">can be found here</a></p>
 <p>An example curl command would be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="n">master</span> <span class="o">-</span><span class="n">X</span> <span class="n">GET</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;OCS-APIRequest: true&quot;</span> <span class="s1">&#39;https://my.nextcloud/ocs/v2.php/core/autocomplete/get?search=JOANNE</span><span class="si">%40E</span><span class="s1">MAIL.ISP&amp;itemType=%20&amp;itemId=%20&amp;shareTypes[]=8&amp;limit=2&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="n">master</span> <span class="o">-</span><span class="n">X</span> <span class="n">GET</span> <span class="o">-</span><span class="n">H</span> <span class="s2">"OCS-APIRequest: true"</span> <span class="s1">'https://my.nextcloud/ocs/v2.php/core/autocomplete/get?search=JOANNE</span><span class="si">%40E</span><span class="s1">MAIL.ISP&amp;itemType=%20&amp;itemId=%20&amp;shareTypes[]=8&amp;limit=2'</span>
 </pre></div>
 </div>
 <p>That would look for <a class="reference external" href="mailto:JOANNE&#37;&#52;&#48;EMAIL&#46;ISP">JOANNE<span>&#64;</span>EMAIL<span>&#46;</span>ISP</a> as guest user. Maximum 2 results to be returned for a regular user, the
 shareTypes array would carry only “8”. <code class="docutils literal notranslate"><span class="pre">itemType</span></code> and <code class="docutils literal notranslate"><span class="pre">itemId</span></code> are left out (set to a white space),
 essentially they are to give context about the use case, so sorters can do their work (like who commented last).
 It can be an option for filtering on a later stage but you can also leave them out as per the below example.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="n">master</span> <span class="o">-</span><span class="n">X</span> <span class="n">GET</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;OCS-APIRequest: true&quot;</span> <span class="s1">&#39;https://my.nextcloud/ocs/v2.php/core/autocomplete/get?search=JOANNE</span><span class="si">%40E</span><span class="s1">MAIL.ISP&amp;shareTypes[]=8&amp;limit=2&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="n">master</span> <span class="o">-</span><span class="n">X</span> <span class="n">GET</span> <span class="o">-</span><span class="n">H</span> <span class="s2">"OCS-APIRequest: true"</span> <span class="s1">'https://my.nextcloud/ocs/v2.php/core/autocomplete/get?search=JOANNE</span><span class="si">%40E</span><span class="s1">MAIL.ISP&amp;shareTypes[]=8&amp;limit=2'</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">shareTypes</span></code> parameter filters results by share type. If omitted, it defaults to regular
@@ -396,7 +396,7 @@ results to users that are actually in the current chat conversation.</p>
 <section id="force-language-for-a-given-call">
 <span id="api-force-language"></span><h2>Force language for a given call<a class="headerlink" href="#force-language-for-a-given-call" title="Link to this heading"></a></h2>
 <p>All Nextcloud API calls support forcing the language using the query parameter <code class="docutils literal notranslate"><span class="pre">forceLanguage</span></code>. It will override any user setting for the given call.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:password<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/ocs/v1.php/...?forceLanguage=en&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:password<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">'https://cloud.example.com/ocs/v1.php/...?forceLanguage=en'</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"OCS-APIRequest: true"</span>
 </pre></div>
 </div>
 </section>
@@ -414,7 +414,7 @@ results to users that are actually in the current chat conversation.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

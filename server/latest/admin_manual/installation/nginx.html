@@ -237,8 +237,8 @@ webroot of your nginx installation. In this example it is
 
 <span class="c1"># Set the `immutable` cache control options only for assets with a cache busting `v` argument</span>
 <span class="k">map</span><span class="w"> </span><span class="nv">$arg_v</span><span class="w"> </span><span class="nv">$asset_immutable</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kn">&quot;&quot;</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">default</span><span class="w"> </span><span class="s">&quot;,</span><span class="w"> </span><span class="s">immutable&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">""</span><span class="w"> </span><span class="s">""</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">default</span><span class="w"> </span><span class="s">",</span><span class="w"> </span><span class="s">immutable"</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="k">server</span><span class="w"> </span><span class="p">{</span>
@@ -265,7 +265,7 @@ webroot of your nginx installation. In this example it is
 <span class="w">    </span><span class="c1"># Path to the root of your installation</span>
 <span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/nextcloud</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1"># Use Mozilla&#39;s guidelines for SSL/TLS settings</span>
+<span class="w">    </span><span class="c1"># Use Mozilla's guidelines for SSL/TLS settings</span>
 <span class="w">    </span><span class="c1"># https://mozilla.github.io/server-side-tls/ssl-config-generator/</span>
 <span class="w">    </span><span class="kn">ssl_certificate</span><span class="w">     </span><span class="s">/etc/ssl/nginx/cloud.example.com.crt</span><span class="p">;</span>
 <span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/ssl/nginx/cloud.example.com.key</span><span class="p">;</span>
@@ -279,7 +279,7 @@ webroot of your nginx installation. In this example it is
 <span class="w">    </span><span class="c1"># will add the domain to a hardcoded list that is shipped</span>
 <span class="w">    </span><span class="c1"># in all major browsers and getting removed from this list</span>
 <span class="w">    </span><span class="c1"># could take several months.</span>
-<span class="w">    </span><span class="c1">#add_header Strict-Transport-Security &quot;max-age=31536000; includeSubDomains; preload&quot; always;</span>
+<span class="w">    </span><span class="c1">#add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;</span>
 
 <span class="w">    </span><span class="c1"># set max upload size and increase upload timeout:</span>
 <span class="w">    </span><span class="kn">client_max_body_size</span><span class="w"> </span><span class="s">512M</span><span class="p">;</span>
@@ -312,11 +312,11 @@ webroot of your nginx installation. In this example it is
 <span class="w">    </span><span class="kn">client_body_buffer_size</span><span class="w"> </span><span class="mi">512k</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1"># HTTP response headers borrowed from Nextcloud `.htaccess`</span>
-<span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Referrer-Policy</span><span class="w">                   </span><span class="s">&quot;no-referrer&quot;</span><span class="w">       </span><span class="s">always</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Content-Type-Options</span><span class="w">            </span><span class="s">&quot;nosniff&quot;</span><span class="w">           </span><span class="s">always</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Frame-Options</span><span class="w">                   </span><span class="s">&quot;SAMEORIGIN&quot;</span><span class="w">        </span><span class="s">always</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Permitted-Cross-Domain-Policies</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="w">              </span><span class="s">always</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Robots-Tag</span><span class="w">                      </span><span class="s">&quot;noindex,</span><span class="w"> </span><span class="s">nofollow&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Referrer-Policy</span><span class="w">                   </span><span class="s">"no-referrer"</span><span class="w">       </span><span class="s">always</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Content-Type-Options</span><span class="w">            </span><span class="s">"nosniff"</span><span class="w">           </span><span class="s">always</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Frame-Options</span><span class="w">                   </span><span class="s">"SAMEORIGIN"</span><span class="w">        </span><span class="s">always</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Permitted-Cross-Domain-Policies</span><span class="w"> </span><span class="s">"none"</span><span class="w">              </span><span class="s">always</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Robots-Tag</span><span class="w">                      </span><span class="s">"noindex,</span><span class="w"> </span><span class="s">nofollow"</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1"># Remove X-Powered-By, which is an information leak</span>
 <span class="w">    </span><span class="kn">fastcgi_hide_header</span><span class="w"> </span><span class="s">X-Powered-By</span><span class="p">;</span>
@@ -335,8 +335,8 @@ webroot of your nginx installation. In this example it is
 <span class="w">    </span><span class="c1"># here as the fallback means that Nginx always exhibits the desired behaviour</span>
 <span class="w">    </span><span class="c1"># when a client requests a path that corresponds to a directory that exists</span>
 <span class="w">    </span><span class="c1"># on the server. In particular, if that directory contains an index.php file,</span>
-<span class="w">    </span><span class="c1"># that file is correctly served; if it doesn&#39;t, then the request is passed to</span>
-<span class="w">    </span><span class="c1"># the front-end controller. This consistent behaviour means that we don&#39;t need</span>
+<span class="w">    </span><span class="c1"># that file is correctly served; if it doesn't, then the request is passed to</span>
+<span class="w">    </span><span class="c1"># the front-end controller. This consistent behaviour means that we don't need</span>
 <span class="w">    </span><span class="c1"># to specify custom rules for certain paths (e.g. images and other assets,</span>
 <span class="w">    </span><span class="c1"># `/updater`, `/ocs-provider`), and thus</span>
 <span class="w">    </span><span class="c1"># `try_files $uri $uri/ /index.php$request_uri`</span>
@@ -370,7 +370,7 @@ webroot of your nginx installation. In this example it is
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/.well-known/acme-challenge</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/.well-known/pki-validation</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">        </span><span class="c1"># Let Nextcloud&#39;s API for `/.well-known` URIs handle all other</span>
+<span class="w">        </span><span class="c1"># Let Nextcloud's API for `/.well-known` URIs handle all other</span>
 <span class="w">        </span><span class="c1"># requests by passing them to the front-end controller.</span>
 <span class="w">        </span><span class="kn">return</span><span class="w"> </span><span class="mi">301</span><span class="w"> </span><span class="s">/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
@@ -390,9 +390,9 @@ webroot of your nginx installation. In this example it is
 <span class="w">    </span><span class="c1"># they appear first, nginx can repeatedly rewrite to `/index.php`,</span>
 <span class="w">    </span><span class="c1"># causing an internal redirection loop.</span>
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.php(?:$|/)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1"># Rewrite most PHP requests to Nextcloud&#39;s front controller (`/index.php`).</span>
+<span class="w">        </span><span class="c1"># Rewrite most PHP requests to Nextcloud's front controller (`/index.php`).</span>
 <span class="w">        </span><span class="c1">#</span>
-<span class="w">        </span><span class="c1"># (Mirrors the rewrite exceptions in Nextcloud&#39;s Apache .htaccess.)</span>
+<span class="w">        </span><span class="c1"># (Mirrors the rewrite exceptions in Nextcloud's Apache .htaccess.)</span>
 <span class="w">        </span><span class="c1">#</span>
 <span class="w">        </span><span class="c1"># Exceptions (not rewritten; must remain directly reachable):</span>
 <span class="w">        </span><span class="c1">#   index.php, remote.php, public.php, cron.php, status.php</span>
@@ -459,22 +459,22 @@ webroot of your nginx installation. In this example it is
 <span class="w">		</span><span class="c1"># will add the domain to a hardcoded list that is shipped</span>
 <span class="w">		</span><span class="c1"># in all major browsers and getting removed from this list</span>
 <span class="w">		</span><span class="c1"># could take several months.</span>
-<span class="w">		</span><span class="c1">#add_header Strict-Transport-Security &quot;max-age=31536000; includeSubDomains; preload&quot; always;</span>
+<span class="w">		</span><span class="c1">#add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;</span>
 
 <span class="w">        </span><span class="c1"># HTTP response headers borrowed from Nextcloud `.htaccess`</span>
-<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Cache-Control</span><span class="w">                     </span><span class="s">&quot;public,</span><span class="w"> </span><span class="s">max-age=15778463</span><span class="nv">$asset_immutable&quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Referrer-Policy</span><span class="w">                   </span><span class="s">&quot;no-referrer&quot;</span><span class="w">       </span><span class="s">always</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Content-Type-Options</span><span class="w">            </span><span class="s">&quot;nosniff&quot;</span><span class="w">           </span><span class="s">always</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Frame-Options</span><span class="w">                   </span><span class="s">&quot;SAMEORIGIN&quot;</span><span class="w">        </span><span class="s">always</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Permitted-Cross-Domain-Policies</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="w">              </span><span class="s">always</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Robots-Tag</span><span class="w">                      </span><span class="s">&quot;noindex,</span><span class="w"> </span><span class="s">nofollow&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span><span class="w">     </span><span class="c1"># Optional: Don&#39;t log access to assets</span>
+<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Cache-Control</span><span class="w">                     </span><span class="s">"public,</span><span class="w"> </span><span class="s">max-age=15778463</span><span class="nv">$asset_immutable"</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Referrer-Policy</span><span class="w">                   </span><span class="s">"no-referrer"</span><span class="w">       </span><span class="s">always</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Content-Type-Options</span><span class="w">            </span><span class="s">"nosniff"</span><span class="w">           </span><span class="s">always</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Frame-Options</span><span class="w">                   </span><span class="s">"SAMEORIGIN"</span><span class="w">        </span><span class="s">always</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Permitted-Cross-Domain-Policies</span><span class="w"> </span><span class="s">"none"</span><span class="w">              </span><span class="s">always</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Robots-Tag</span><span class="w">                      </span><span class="s">"noindex,</span><span class="w"> </span><span class="s">nofollow"</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span><span class="w">     </span><span class="c1"># Optional: Don't log access to assets</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.(otf|woff2?)$</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="s">/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">expires</span><span class="w"> </span><span class="s">7d</span><span class="p">;</span><span class="w">         </span><span class="c1"># Cache-Control policy borrowed from `.htaccess`</span>
-<span class="w">        </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span><span class="w">     </span><span class="c1"># Optional: Don&#39;t log access to assets</span>
+<span class="w">        </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span><span class="w">     </span><span class="c1"># Optional: Don't log access to assets</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1"># Rule borrowed from `.htaccess`</span>
@@ -515,8 +515,8 @@ The configuration differs from the “Nextcloud in webroot” configuration abov
 
 <span class="c1"># Set the `immutable` cache control options only for assets with a cache busting `v` argument</span>
 <span class="k">map</span><span class="w"> </span><span class="nv">$arg_v</span><span class="w"> </span><span class="nv">$asset_immutable</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kn">&quot;&quot;</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">default</span><span class="w"> </span><span class="s">&quot;,</span><span class="w"> </span><span class="s">immutable&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">""</span><span class="w"> </span><span class="s">""</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">default</span><span class="w"> </span><span class="s">",</span><span class="w"> </span><span class="s">immutable"</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="k">server</span><span class="w"> </span><span class="p">{</span>
@@ -545,7 +545,7 @@ The configuration differs from the “Nextcloud in webroot” configuration abov
 <span class="w">    </span><span class="c1"># Path to the root of the domain</span>
 <span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1"># Use Mozilla&#39;s guidelines for SSL/TLS settings</span>
+<span class="w">    </span><span class="c1"># Use Mozilla's guidelines for SSL/TLS settings</span>
 <span class="w">    </span><span class="c1"># https://mozilla.github.io/server-side-tls/ssl-config-generator/</span>
 <span class="w">    </span><span class="kn">ssl_certificate</span><span class="w">     </span><span class="s">/etc/ssl/nginx/cloud.example.com.crt</span><span class="p">;</span>
 <span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/ssl/nginx/cloud.example.com.key</span><span class="p">;</span>
@@ -580,7 +580,7 @@ The configuration differs from the “Nextcloud in webroot” configuration abov
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/.well-known/acme-challenge</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/.well-known/pki-validation</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">        </span><span class="c1"># Let Nextcloud&#39;s API for `/.well-known` URIs handle all other</span>
+<span class="w">        </span><span class="c1"># Let Nextcloud's API for `/.well-known` URIs handle all other</span>
 <span class="w">        </span><span class="c1"># requests by passing them to the front-end controller.</span>
 <span class="w">        </span><span class="kn">return</span><span class="w"> </span><span class="mi">301</span><span class="w"> </span><span class="s">/nextcloud/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
@@ -622,14 +622,14 @@ The configuration differs from the “Nextcloud in webroot” configuration abov
 <span class="w">        </span><span class="c1"># will add the domain to a hardcoded list that is shipped</span>
 <span class="w">        </span><span class="c1"># in all major browsers and getting removed from this list</span>
 <span class="w">        </span><span class="c1"># could take several months.</span>
-<span class="w">        </span><span class="c1">#add_header Strict-Transport-Security &quot;max-age=31536000; includeSubDomains; preload&quot; always;</span>
+<span class="w">        </span><span class="c1">#add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;</span>
 
 <span class="w">        </span><span class="c1"># HTTP response headers borrowed from Nextcloud `.htaccess`</span>
-<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Referrer-Policy</span><span class="w">                   </span><span class="s">&quot;no-referrer&quot;</span><span class="w">       </span><span class="s">always</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Content-Type-Options</span><span class="w">            </span><span class="s">&quot;nosniff&quot;</span><span class="w">           </span><span class="s">always</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Frame-Options</span><span class="w">                   </span><span class="s">&quot;SAMEORIGIN&quot;</span><span class="w">        </span><span class="s">always</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Permitted-Cross-Domain-Policies</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="w">              </span><span class="s">always</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Robots-Tag</span><span class="w">                      </span><span class="s">&quot;noindex,</span><span class="w"> </span><span class="s">nofollow&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Referrer-Policy</span><span class="w">                   </span><span class="s">"no-referrer"</span><span class="w">       </span><span class="s">always</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Content-Type-Options</span><span class="w">            </span><span class="s">"nosniff"</span><span class="w">           </span><span class="s">always</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Frame-Options</span><span class="w">                   </span><span class="s">"SAMEORIGIN"</span><span class="w">        </span><span class="s">always</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Permitted-Cross-Domain-Policies</span><span class="w"> </span><span class="s">"none"</span><span class="w">              </span><span class="s">always</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Robots-Tag</span><span class="w">                      </span><span class="s">"noindex,</span><span class="w"> </span><span class="s">nofollow"</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
 
 <span class="w">        </span><span class="c1"># Remove X-Powered-By, which is an information leak</span>
 <span class="w">        </span><span class="kn">fastcgi_hide_header</span><span class="w"> </span><span class="s">X-Powered-By</span><span class="p">;</span>
@@ -638,8 +638,8 @@ The configuration differs from the “Nextcloud in webroot” configuration abov
 <span class="w">        </span><span class="c1"># here as the fallback means that Nginx always exhibits the desired behaviour</span>
 <span class="w">        </span><span class="c1"># when a client requests a path that corresponds to a directory that exists</span>
 <span class="w">        </span><span class="c1"># on the server. In particular, if that directory contains an index.php file,</span>
-<span class="w">        </span><span class="c1"># that file is correctly served; if it doesn&#39;t, then the request is passed to</span>
-<span class="w">        </span><span class="c1"># the front-end controller. This consistent behaviour means that we don&#39;t need</span>
+<span class="w">        </span><span class="c1"># that file is correctly served; if it doesn't, then the request is passed to</span>
+<span class="w">        </span><span class="c1"># the front-end controller. This consistent behaviour means that we don't need</span>
 <span class="w">        </span><span class="c1"># to specify custom rules for certain paths (e.g. images and other assets,</span>
 <span class="w">        </span><span class="c1"># `/updater`, `/ocs-provider`), and thus</span>
 <span class="w">        </span><span class="c1"># `try_files $uri $uri/ /nextcloud/index.php$request_uri`</span>
@@ -668,10 +668,10 @@ The configuration differs from the “Nextcloud in webroot” configuration abov
 <span class="w">        </span><span class="c1"># if they appear first, nginx can repeatedly rewrite to</span>
 <span class="w">        </span><span class="c1"># `/nextcloud/index.php`, causing an internal redirection loop.</span>
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.php(?:$|/)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1"># Rewrite most PHP requests to Nextcloud&#39;s front controller</span>
+<span class="w">            </span><span class="c1"># Rewrite most PHP requests to Nextcloud's front controller</span>
 <span class="w">            </span><span class="c1"># (`/nextcloud/index.php`).</span>
 <span class="w">            </span><span class="c1">#</span>
-<span class="w">            </span><span class="c1"># (Mirrors the rewrite exceptions in Nextcloud&#39;s Apache .htaccess.)</span>
+<span class="w">            </span><span class="c1"># (Mirrors the rewrite exceptions in Nextcloud's Apache .htaccess.)</span>
 <span class="w">            </span><span class="c1">#</span>
 <span class="w">            </span><span class="c1"># Exceptions (not rewritten; must remain directly reachable):</span>
 <span class="w">            </span><span class="c1">#   index.php, remote.php, public.php, cron.php, status.php</span>
@@ -732,19 +732,19 @@ The configuration differs from the “Nextcloud in webroot” configuration abov
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.(?:css|js|mjs|svg|gif|ico|jpg|png|webp|wasm|tflite|map|ogg|flac|mp4|webm)$</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="s">/nextcloud/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
 <span class="w">            </span><span class="c1"># HTTP response headers borrowed from Nextcloud `.htaccess`</span>
-<span class="w">            </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Cache-Control</span><span class="w">                     </span><span class="s">&quot;public,</span><span class="w"> </span><span class="s">max-age=15778463</span><span class="nv">$asset_immutable&quot;</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Referrer-Policy</span><span class="w">                   </span><span class="s">&quot;no-referrer&quot;</span><span class="w">       </span><span class="s">always</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Content-Type-Options</span><span class="w">            </span><span class="s">&quot;nosniff&quot;</span><span class="w">           </span><span class="s">always</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Frame-Options</span><span class="w">                   </span><span class="s">&quot;SAMEORIGIN&quot;</span><span class="w">        </span><span class="s">always</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Permitted-Cross-Domain-Policies</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="w">              </span><span class="s">always</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Robots-Tag</span><span class="w">                      </span><span class="s">&quot;noindex,</span><span class="w"> </span><span class="s">nofollow&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span><span class="w">     </span><span class="c1"># Optional: Don&#39;t log access to assets</span>
+<span class="w">            </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Cache-Control</span><span class="w">                     </span><span class="s">"public,</span><span class="w"> </span><span class="s">max-age=15778463</span><span class="nv">$asset_immutable"</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Referrer-Policy</span><span class="w">                   </span><span class="s">"no-referrer"</span><span class="w">       </span><span class="s">always</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Content-Type-Options</span><span class="w">            </span><span class="s">"nosniff"</span><span class="w">           </span><span class="s">always</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Frame-Options</span><span class="w">                   </span><span class="s">"SAMEORIGIN"</span><span class="w">        </span><span class="s">always</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Permitted-Cross-Domain-Policies</span><span class="w"> </span><span class="s">"none"</span><span class="w">              </span><span class="s">always</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Robots-Tag</span><span class="w">                      </span><span class="s">"noindex,</span><span class="w"> </span><span class="s">nofollow"</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span><span class="w">     </span><span class="c1"># Optional: Don't log access to assets</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.(otf|woff2?)$</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="s">/nextcloud/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
 <span class="w">            </span><span class="kn">expires</span><span class="w"> </span><span class="s">7d</span><span class="p">;</span><span class="w">         </span><span class="c1"># Cache-Control policy borrowed from `.htaccess`</span>
-<span class="w">            </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span><span class="w">     </span><span class="c1"># Optional: Don&#39;t log access to assets</span>
+<span class="w">            </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span><span class="w">     </span><span class="c1"># Optional: Don't log access to assets</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="c1"># Rule borrowed from `.htaccess`</span>

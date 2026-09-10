@@ -379,14 +379,14 @@ or nextcloud-x.y.z.tar.bz2.sha256.</p></li>
 <h2>SELinux<a class="headerlink" href="#selinux" title="Link to this heading"></a></h2>
 <p>Again, there is an extensive write-up done on SELinux which can be found at <a class="reference internal" href="selinux_configuration.html"><span class="doc">SELinux configuration</span></a>, so if you are using SELinux in Enforcing mode, please run the commands suggested on that page.
 The following commands only refers to this tutorial:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/data(/.*)?&#39;</span>
-<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/config(/.*)?&#39;</span>
-<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/apps(/.*)?&#39;</span>
-<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/.htaccess&#39;</span>
-<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/.user.ini&#39;</span>
-<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/3rdparty/aws/aws-sdk-php/src/data/logs(/.*)?&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">'/var/www/html/nextcloud/data(/.*)?'</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">'/var/www/html/nextcloud/config(/.*)?'</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">'/var/www/html/nextcloud/apps(/.*)?'</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">'/var/www/html/nextcloud/.htaccess'</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">'/var/www/html/nextcloud/.user.ini'</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">'/var/www/html/nextcloud/3rdparty/aws/aws-sdk-php/src/data/logs(/.*)?'</span>
 
-<span class="n">restorecon</span> <span class="o">-</span><span class="n">R</span> <span class="s1">&#39;/var/www/html/nextcloud/&#39;</span>
+<span class="n">restorecon</span> <span class="o">-</span><span class="n">R</span> <span class="s1">'/var/www/html/nextcloud/'</span>
 
 <span class="n">setsebool</span> <span class="o">-</span><span class="n">P</span> <span class="n">httpd_can_network_connect</span> <span class="n">on</span>
 </pre></div>
@@ -399,13 +399,13 @@ The following commands only refers to this tutorial:</p>
 </div>
 <p>Because we used <code class="docutils literal notranslate"><span class="pre">Redis</span></code> as a memcache, you will need a config similar to the following example in <code class="docutils literal notranslate"><span class="pre">/var/www/html/nextcloud/config/config.php</span></code> which is auto-generated when you run the online installation wizard mentioned earlier.</p>
 <p>Example config:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\APCu&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache_customprefix&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud_centos&#39;</span><span class="p">,</span>
-<span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
-  <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.distributed'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
+<span class="s1">'memcache.locking'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
+<span class="s1">'memcache.local'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\APCu'</span><span class="p">,</span>
+<span class="s1">'memcache_customprefix'</span> <span class="o">=&gt;</span> <span class="s1">'nextcloud_centos'</span><span class="p">,</span>
+<span class="s1">'redis'</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+  <span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'localhost'</span><span class="p">,</span>
+  <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
 <span class="p">),</span>
 </pre></div>
 </div>

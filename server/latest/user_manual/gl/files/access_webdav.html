@@ -562,21 +562,21 @@ for this limitation.</p>
 <p><strong>Axustes</strong> → <strong>Administración</strong> → <strong>Compartir</strong> → <strong>Permitir que os usuarios deste servidor envíen recursos compartidos a outros servidores</strong>. Se esta opción está desactivada, a opción <code class="docutils literal notranslate"><span class="pre">--header</span> <span class="pre">&quot;X-Requested-With:</span> <span class="pre">XMLHttpRequest&quot;</span></code> debe pasarse a cURL.</p>
 </div>
 <p>Para crear un cartafol coa data actual como nome:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MKCOL<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MKCOL<span class="w"> </span><span class="s2">"https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">'+%d-%b-%Y'</span><span class="k">)</span><span class="s2">"</span>
 </pre></div>
 </div>
 <p>Para enviar un ficheiro <code class="docutils literal notranslate"><span class="pre">error.log</span></code> cara a ese directorio:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-T<span class="w"> </span>error.log<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">/error.log&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-T<span class="w"> </span>error.log<span class="w"> </span><span class="s2">"https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">'+%d-%b-%Y'</span><span class="k">)</span><span class="s2">/error.log"</span>
 </pre></div>
 </div>
 <p>Para mover un ficheiro:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MOVE<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg&#39;</span><span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MOVE<span class="w"> </span>--header<span class="w"> </span><span class="s1">'Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg'</span><span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
 </pre></div>
 </div>
 <p>Para obter as propiedades dos ficheiros no cartafol raíz:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PROPFIND<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Depth: 1&quot;</span><span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/<span class="w"> </span><span class="p">|</span><span class="w"> </span>xml_pp
-&lt;?xml<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>?&gt;
-&lt;d:multistatus<span class="w"> </span>xmlns:d<span class="o">=</span><span class="s2">&quot;DAV:&quot;</span><span class="w"> </span>xmlns:oc<span class="o">=</span><span class="s2">&quot;http://nextcloud.org/ns&quot;</span><span class="w"> </span>xmlns:s<span class="o">=</span><span class="s2">&quot;http://sabredav.org/ns&quot;</span>&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PROPFIND<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Depth: 1"</span><span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/<span class="w"> </span><span class="p">|</span><span class="w"> </span>xml_pp
+&lt;?xml<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="s2">"1.0"</span><span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span>?&gt;
+&lt;d:multistatus<span class="w"> </span>xmlns:d<span class="o">=</span><span class="s2">"DAV:"</span><span class="w"> </span>xmlns:oc<span class="o">=</span><span class="s2">"http://nextcloud.org/ns"</span><span class="w"> </span>xmlns:s<span class="o">=</span><span class="s2">"http://sabredav.org/ns"</span>&gt;
 <span class="w">  </span>&lt;d:response&gt;
 <span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/&lt;/d:href&gt;
 <span class="w">    </span>&lt;d:propstat&gt;
@@ -587,7 +587,7 @@ for this limitation.</p>
 <span class="w">        </span>&lt;/d:resourcetype&gt;
 <span class="w">        </span>&lt;d:quota-used-bytes&gt;163&lt;/d:quota-used-bytes&gt;
 <span class="w">        </span>&lt;d:quota-available-bytes&gt;11802275840&lt;/d:quota-available-bytes&gt;
-<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;561d3a6139d05&quot;</span>&lt;/d:getetag&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">"561d3a6139d05"</span>&lt;/d:getetag&gt;
 <span class="w">      </span>&lt;/d:prop&gt;
 <span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
 <span class="w">    </span>&lt;/d:propstat&gt;
@@ -599,7 +599,7 @@ for this limitation.</p>
 <span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:35<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
 <span class="w">        </span>&lt;d:getcontentlength&gt;163&lt;/d:getcontentlength&gt;
 <span class="w">        </span>&lt;d:resourcetype/&gt;
-<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;47465fae667b2d0fee154f5e17d1f0f1&quot;</span>&lt;/d:getetag&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">"47465fae667b2d0fee154f5e17d1f0f1"</span>&lt;/d:getetag&gt;
 <span class="w">        </span>&lt;d:getcontenttype&gt;text/plain&lt;/d:getcontenttype&gt;
 <span class="w">      </span>&lt;/d:prop&gt;
 <span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;

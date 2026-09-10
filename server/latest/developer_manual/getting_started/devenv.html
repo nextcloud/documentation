@@ -225,7 +225,7 @@ You can check the <code class="docutils literal notranslate"><span class="pre">a
 <p>To disable JavaScript and CSS caching, debugging has to be enabled by setting <code class="docutils literal notranslate"><span class="pre">debug</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> in <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
 $CONFIG = array (
-    &#39;debug&#39; =&gt; true,
+    'debug' =&gt; true,
     ... configuration goes here ...
 );
 </pre></div>
@@ -234,15 +234,15 @@ $CONFIG = array (
 <section id="keep-the-code-up-to-date">
 <h3>Keep the code up-to-date<a class="headerlink" href="#keep-the-code-up-to-date" title="Link to this heading"></a></h3>
 <p>If you have more than one repository cloned, it can be time consuming to do the same the action to all repositories one by one. To solve this, you can use the following command template:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">maxdepth</span> <span class="o">&lt;</span><span class="n">DEPTH</span><span class="o">&gt;</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span> <span class="o">-</span><span class="n">name</span> <span class="o">.</span><span class="n">git</span> <span class="o">-</span><span class="n">exec</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;cd &quot;</span><span class="si">{}</span><span class="s1">&quot;/../ &amp;&amp; pwd &amp;&amp; &lt;GIT COMMAND&gt;&#39;</span> \<span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">maxdepth</span> <span class="o">&lt;</span><span class="n">DEPTH</span><span class="o">&gt;</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span> <span class="o">-</span><span class="n">name</span> <span class="o">.</span><span class="n">git</span> <span class="o">-</span><span class="n">exec</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">'cd "</span><span class="si">{}</span><span class="s1">"/../ &amp;&amp; pwd &amp;&amp; &lt;GIT COMMAND&gt;'</span> \<span class="p">;</span>
 </pre></div>
 </div>
 <p>then, e.g. to pull all changes in all repositories, you only need this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">maxdepth</span> <span class="mi">3</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span> <span class="o">-</span><span class="n">name</span> <span class="o">.</span><span class="n">git</span> <span class="o">-</span><span class="n">exec</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;cd &quot;</span><span class="si">{}</span><span class="s1">&quot;/../ &amp;&amp; pwd &amp;&amp; git pull --rebase&#39;</span> \<span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">maxdepth</span> <span class="mi">3</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span> <span class="o">-</span><span class="n">name</span> <span class="o">.</span><span class="n">git</span> <span class="o">-</span><span class="n">exec</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">'cd "</span><span class="si">{}</span><span class="s1">"/../ &amp;&amp; pwd &amp;&amp; git pull --rebase'</span> \<span class="p">;</span>
 </pre></div>
 </div>
 <p>or to prune all merged branches, you would execute this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">maxdepth</span> <span class="mi">3</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span> <span class="o">-</span><span class="n">name</span> <span class="o">.</span><span class="n">git</span> <span class="o">-</span><span class="n">exec</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;cd &quot;</span><span class="si">{}</span><span class="s1">&quot;/../ &amp;&amp; pwd &amp;&amp; git remote prune origin&#39;</span> \<span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">maxdepth</span> <span class="mi">3</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span> <span class="o">-</span><span class="n">name</span> <span class="o">.</span><span class="n">git</span> <span class="o">-</span><span class="n">exec</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">'cd "</span><span class="si">{}</span><span class="s1">"/../ &amp;&amp; pwd &amp;&amp; git remote prune origin'</span> \<span class="p">;</span>
 </pre></div>
 </div>
 <p>It is even easier if you create aliases for these commands in case you want to avoid retyping those each time you need them.</p>
@@ -262,7 +262,7 @@ $CONFIG = array (
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

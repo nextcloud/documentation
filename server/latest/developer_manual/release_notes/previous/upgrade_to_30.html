@@ -243,9 +243,9 @@ but if you are using Webpack or otherwise dynamically load scripts, you now need
 <li><p>Or directly read the nonce from the <code class="docutils literal notranslate"><span class="pre">&lt;meta</span> <span class="pre">name=&quot;csp-nonce&quot;</span> <span class="pre">/&gt;</span></code> tag.</p></li>
 </ul>
 <p>When using Webpack:</p>
-<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gd">- import { getRequestToken } from &#39;@nextcloud/auth&#39;</span>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gd">- import { getRequestToken } from '@nextcloud/auth'</span>
 <span class="gd">- __webpack_nonce__ = btoa(getRequestToken())</span>
-<span class="gi">+ import { getCSPNonce } from &#39;@nextcloud/auth&#39;</span>
+<span class="gi">+ import { getCSPNonce } from '@nextcloud/auth'</span>
 <span class="gi">+ __webpack_nonce__ = getCSPNonce()</span>
 </pre></div>
 </div>
@@ -281,8 +281,8 @@ A list of the now deprecated methods:</p>
 <li><p>If <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> has a dependency specification for PHP, increase the <code class="docutils literal notranslate"><span class="pre">min-version</span></code> to 8.1.</p></li>
 </ol>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependencies&gt;</span>
-<span class="w">  </span><span class="nt">&lt;php</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;8.1&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;8.3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;27&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;30&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;php</span><span class="w"> </span><span class="na">min-version=</span><span class="s">"8.1"</span><span class="w"> </span><span class="na">max-version=</span><span class="s">"8.3"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">"27"</span><span class="w"> </span><span class="na">max-version=</span><span class="s">"30"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/dependencies&gt;</span>
 </pre></div>
 </div>
@@ -290,8 +290,8 @@ A list of the now deprecated methods:</p>
 <li><p>If your app has a <code class="docutils literal notranslate"><span class="pre">composer.json</span></code> and the file contains the PHP restrictions from <code class="docutils literal notranslate"><span class="pre">info.xml</span></code>, adjust it as well.</p></li>
 </ol>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;require&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;php&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;=8.1 &lt;=8.3&quot;</span>
+<span class="w">  </span><span class="nt">"require"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"php"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=8.1 &lt;=8.3"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -462,7 +462,7 @@ A list of the now deprecated methods:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

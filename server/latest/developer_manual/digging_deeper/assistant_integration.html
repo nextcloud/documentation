@@ -215,19 +215,19 @@ available. Defaults to <code class="docutils literal notranslate"><span class="p
 was scheduled, or a synchronous task ran and produced results. The promise resolves with a task
 object:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nx">appId</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;text&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">appId</span><span class="o">:</span><span class="w"> </span><span class="s1">'text'</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">310</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">customId</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;my custom identifier&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;give me a short summary of a simple settings section about GitHub&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">customId</span><span class="o">:</span><span class="w"> </span><span class="s1">'my custom identifier'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="s1">'give me a short summary of a simple settings section about GitHub'</span><span class="w"> </span><span class="p">},</span>
 <span class="w">    </span><span class="nx">ocpTaskId</span><span class="o">:</span><span class="w"> </span><span class="mf">152</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">output</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">output</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;blabla&#39;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;STATUS_SUCCESSFUL&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;core:text2text&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">output</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">output</span><span class="o">:</span><span class="w"> </span><span class="s1">'blabla'</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s1">'STATUS_SUCCESSFUL'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">'core:text2text'</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">lastUpdated</span><span class="o">:</span><span class="w"> </span><span class="mf">1711545305</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">scheduledAt</span><span class="o">:</span><span class="w"> </span><span class="mf">1711545301</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">startedAt</span><span class="o">:</span><span class="w"> </span><span class="mf">1711545302</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">endedAt</span><span class="o">:</span><span class="w"> </span><span class="mf">1711545303</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;janedoe&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="s1">'janedoe'</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -235,28 +235,28 @@ object:</p>
 <code class="docutils literal notranslate"><span class="pre">STATUS_RUNNING</span></code> (2), <code class="docutils literal notranslate"><span class="pre">STATUS_SUCCESSFUL</span></code> (3), <code class="docutils literal notranslate"><span class="pre">STATUS_FAILED</span></code> (4).</p>
 <p>Complete example:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">OCA</span><span class="p">.</span><span class="nx">Assistant</span><span class="p">.</span><span class="nx">openAssistantForm</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">appId</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;my_app_id&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">customId</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;my custom identifier&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">taskType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;core:text2text&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">inputs</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;count to 3&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">appId</span><span class="o">:</span><span class="w"> </span><span class="s1">'my_app_id'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">customId</span><span class="o">:</span><span class="w"> </span><span class="s1">'my custom identifier'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">taskType</span><span class="o">:</span><span class="w"> </span><span class="s1">'core:text2text'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">inputs</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="s1">'count to 3'</span><span class="w"> </span><span class="p">},</span>
 <span class="w">    </span><span class="nx">actionButtons</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Label 1&#39;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Title 1&#39;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">variant</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;warning&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">'Label 1'</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">'Title 1'</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">variant</span><span class="o">:</span><span class="w"> </span><span class="s1">'warning'</span><span class="p">,</span>
 <span class="w">            </span><span class="nx">iconSvg</span><span class="o">:</span><span class="w"> </span><span class="nx">cogSvg</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">output</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;first button clicked&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">output</span><span class="p">)</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">output</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">'first button clicked'</span><span class="p">,</span><span class="w"> </span><span class="nx">output</span><span class="p">)</span><span class="w"> </span><span class="p">},</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Label 2&#39;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Title 2&#39;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">output</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;second button clicked&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">output</span><span class="p">)</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">'Label 2'</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">'Title 2'</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">output</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">'second button clicked'</span><span class="p">,</span><span class="w"> </span><span class="nx">output</span><span class="p">)</span><span class="w"> </span><span class="p">},</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">    </span><span class="p">],</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">task</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;assistant promise success&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">task</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">'assistant promise success'</span><span class="p">,</span><span class="w"> </span><span class="nx">task</span><span class="p">)</span>
 <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;assistant promise failure&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">'assistant promise failure'</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">)</span>
 <span class="p">})</span>
 </pre></div>
 </div>
@@ -266,17 +266,17 @@ object:</p>
 <p>You can pre-fill a task input field with the content of a file by passing a <code class="docutils literal notranslate"><span class="pre">fileId</span></code> or
 <code class="docutils literal notranslate"><span class="pre">filePath</span></code> instead of a plain string value:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">OCA</span><span class="p">.</span><span class="nx">Assistant</span><span class="p">.</span><span class="nx">openAssistantForm</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">appId</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;my_app_id&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">customId</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;my custom identifier&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">taskType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;core:text2text&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">appId</span><span class="o">:</span><span class="w"> </span><span class="s1">'my_app_id'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">customId</span><span class="o">:</span><span class="w"> </span><span class="s1">'my custom identifier'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">taskType</span><span class="o">:</span><span class="w"> </span><span class="s1">'core:text2text'</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">inputs</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fileId</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
 <span class="p">})</span>
 
 <span class="nx">OCA</span><span class="p">.</span><span class="nx">Assistant</span><span class="p">.</span><span class="nx">openAssistantForm</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">appId</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;my_app_id&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">customId</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;my custom identifier&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">taskType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;core:text2text&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">inputs</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">filePath</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/path/to/file.txt&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">appId</span><span class="o">:</span><span class="w"> </span><span class="s1">'my_app_id'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">customId</span><span class="o">:</span><span class="w"> </span><span class="s1">'my custom identifier'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">taskType</span><span class="o">:</span><span class="w"> </span><span class="s1">'core:text2text'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">inputs</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">filePath</span><span class="o">:</span><span class="w"> </span><span class="s1">'/path/to/file.txt'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
 <span class="p">})</span>
 </pre></div>
 </div>
@@ -295,7 +295,7 @@ object:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

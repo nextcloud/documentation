@@ -205,18 +205,18 @@ The OCS API will allow your script to:</p>
 <h3>Retrieving the list of document to be (re-)indexed<a class="headerlink" href="#retrieving-the-list-of-document-to-be-re-indexed" title="Link to this heading"></a></h3>
 <p>The endpoint to get this list is:</p>
 <p><code class="docutils literal notranslate"><span class="pre">/ocs/v2.php/apps/fulltextsearch/collection/&lt;collection_name&gt;/index</span></code></p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s2">&quot;https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/index?format=json&amp;length=50&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;admin:password&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s2">"https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/index?format=json&amp;length=50"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"OCS-APIRequest: true"</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">"admin:password"</span>
 <span class="go">{</span>
-<span class="go">    &quot;ocs&quot;: {</span>
-<span class="go">        &quot;meta&quot;: {</span>
-<span class="go">            &quot;status&quot;: &quot;ok&quot;,</span>
-<span class="go">            &quot;statuscode&quot;: 200,</span>
-<span class="go">            &quot;message&quot;: &quot;OK&quot;</span>
+<span class="go">    "ocs": {</span>
+<span class="go">        "meta": {</span>
+<span class="go">            "status": "ok",</span>
+<span class="go">            "statuscode": 200,</span>
+<span class="go">            "message": "OK"</span>
 <span class="go">        },</span>
-<span class="go">        &quot;data&quot;: [</span>
+<span class="go">        "data": [</span>
 <span class="go">            {</span>
-<span class="go">                &quot;url&quot;: &quot;https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/document/files/597996&quot;,</span>
-<span class="go">                &quot;status&quot;: 28</span>
+<span class="go">                "url": "https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/document/files/597996",</span>
+<span class="go">                "status": 28</span>
 <span class="go">            }</span>
 <span class="go">        ]</span>
 <span class="go">    }</span>
@@ -243,43 +243,43 @@ The OCS API will allow your script to:</p>
 <h3>Get data and metadata from a document<a class="headerlink" href="#get-data-and-metadata-from-a-document" title="Link to this heading"></a></h3>
 <p>The endpoint to get data about a document is:</p>
 <p><code class="docutils literal notranslate"><span class="pre">/ocs/v2.php/apps/fulltextsearch/collection/&lt;collection_name&gt;/document/&lt;provider_id&gt;/&lt;document_id&gt;</span></code></p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s2">&quot;https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/document/files/597996?format=json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;admin:password&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s2">"https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/document/files/597996?format=json"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"OCS-APIRequest: true"</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">"admin:password"</span>
 <span class="go">{</span>
-<span class="go">    &quot;ocs&quot;: {</span>
-<span class="go">        &quot;meta&quot;: {</span>
-<span class="go">            &quot;status&quot;: &quot;ok&quot;,</span>
-<span class="go">            &quot;statuscode&quot;: 200,</span>
-<span class="go">            &quot;message&quot;: &quot;OK&quot;</span>
+<span class="go">    "ocs": {</span>
+<span class="go">        "meta": {</span>
+<span class="go">            "status": "ok",</span>
+<span class="go">            "statuscode": 200,</span>
+<span class="go">            "message": "OK"</span>
 <span class="go">        },</span>
-<span class="go">        &quot;data&quot;: {</span>
-<span class="go">            &quot;id&quot;: &quot;597996&quot;,</span>
-<span class="go">            &quot;providerId&quot;: &quot;files&quot;,</span>
-<span class="go">            &quot;access&quot;: {</span>
-<span class="go">                &quot;ownerId&quot;: &quot;user1&quot;,</span>
-<span class="go">                &quot;users&quot;: [&#39;user2&#39;, &#39;user3&#39;],</span>
-<span class="go">                &quot;groups&quot;: [&#39;group1&#39;],</span>
-<span class="go">                &quot;circles&quot;: [],</span>
-<span class="go">                &quot;links&quot;: []</span>
+<span class="go">        "data": {</span>
+<span class="go">            "id": "597996",</span>
+<span class="go">            "providerId": "files",</span>
+<span class="go">            "access": {</span>
+<span class="go">                "ownerId": "user1",</span>
+<span class="go">                "users": ['user2', 'user3'],</span>
+<span class="go">                "groups": ['group1'],</span>
+<span class="go">                "circles": [],</span>
+<span class="go">                "links": []</span>
 <span class="go">            },</span>
-<span class="go">            &quot;index&quot;: {</span>
-<span class="go">                &quot;ownerId&quot;: &quot;user1&quot;,</span>
-<span class="go">                &quot;providerId&quot;: &quot;files&quot;,</span>
-<span class="go">                &quot;collection&quot;: &quot;test&quot;,</span>
-<span class="go">                &quot;source&quot;: &quot;files_local&quot;,</span>
-<span class="go">                &quot;documentId&quot;: &quot;597996&quot;,</span>
-<span class="go">                &quot;lastIndex&quot;: 0,</span>
-<span class="go">                &quot;errors&quot;: [],</span>
-<span class="go">                &quot;errorCount&quot;: 0,</span>
-<span class="go">                &quot;status&quot;: 28,</span>
-<span class="go">                &quot;options&quot;: []</span>
+<span class="go">            "index": {</span>
+<span class="go">                "ownerId": "user1",</span>
+<span class="go">                "providerId": "files",</span>
+<span class="go">                "collection": "test",</span>
+<span class="go">                "source": "files_local",</span>
+<span class="go">                "documentId": "597996",</span>
+<span class="go">                "lastIndex": 0,</span>
+<span class="go">                "errors": [],</span>
+<span class="go">                "errorCount": 0,</span>
+<span class="go">                "status": 28,</span>
+<span class="go">                "options": []</span>
 <span class="go">            },</span>
-<span class="go">            &quot;title&quot;: &quot;640-240-max.png&quot;,</span>
-<span class="go">            &quot;link&quot;: &quot;https://cloud.example.net/index.php/f/597996&quot;,</span>
-<span class="go">            &quot;parts&quot;: {</span>
-<span class="go">                &quot;comments&quot;: &quot;&lt;user3&gt; This is a comment !&quot;</span>
+<span class="go">            "title": "640-240-max.png",</span>
+<span class="go">            "link": "https://cloud.example.net/index.php/f/597996",</span>
+<span class="go">            "parts": {</span>
+<span class="go">                "comments": "&lt;user3&gt; This is a comment !"</span>
 <span class="go">            },</span>
-<span class="go">            &quot;content&quot;: &quot;VGhlIHF1aWNrIGJyb3duIGZveApqdW1wcyBvdmVyCnRoZSBsYXp5IGRvZy4=&quot;,</span>
-<span class="go">            &quot;isContentEncoded&quot;: 1</span>
+<span class="go">            "content": "VGhlIHF1aWNrIGJyb3duIGZveApqdW1wcyBvdmVyCnRoZSBsYXp5IGRvZy4=",</span>
+<span class="go">            "isContentEncoded": 1</span>
 <span class="go">        }</span>
 <span class="go">    }</span>
 <span class="go">}</span>
@@ -289,7 +289,7 @@ The OCS API will allow your script to:</p>
 <p class="admonition-title">Note</p>
 <p>If <cite>isContentEncoded</cite> is set to 1, content needs to be decoded</p>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;echo base64_decode(&#39;VGhlIHF1aWNrIGJyb3duIGZveApqdW1wcyBvdmVyCnRoZSBsYXp5IGRvZy4=&#39;);&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s2">"echo base64_decode('VGhlIHF1aWNrIGJyb3duIGZveApqdW1wcyBvdmVyCnRoZSBsYXp5IGRvZy4=');"</span>
 <span class="go">The quick brown fox</span>
 <span class="go">jumps over</span>
 <span class="go">the lazy dog.</span>
@@ -300,15 +300,15 @@ The OCS API will allow your script to:</p>
 <h3>Set document as indexed<a class="headerlink" href="#set-document-as-indexed" title="Link to this heading"></a></h3>
 <p>Once a document has been indexed in your external search engine, you have to notice the FullTextSearch of this action. This is done by doing a <code class="docutils literal notranslate"><span class="pre">POST</span></code> request on the following path:</p>
 <p><code class="docutils literal notranslate"><span class="pre">/ocs/v2.php/apps/fulltextsearch/collection/&lt;collection_name&gt;/document/&lt;provider_id&gt;/&lt;document_id&gt;/done</span></code></p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/document/files/597996/done&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;admin:password&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">"https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/document/files/597996/done"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"OCS-APIRequest: true"</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">"admin:password"</span>
 <span class="go">{</span>
-<span class="go">    &quot;ocs&quot;: {</span>
-<span class="go">        &quot;meta&quot;: {</span>
-<span class="go">            &quot;status&quot;: &quot;ok&quot;,</span>
-<span class="go">            &quot;statuscode&quot;: 200,</span>
-<span class="go">            &quot;message&quot;: &quot;OK&quot;</span>
+<span class="go">    "ocs": {</span>
+<span class="go">        "meta": {</span>
+<span class="go">            "status": "ok",</span>
+<span class="go">            "statuscode": 200,</span>
+<span class="go">            "message": "OK"</span>
 <span class="go">        },</span>
-<span class="go">        &quot;data&quot;: []</span>
+<span class="go">        "data": []</span>
 <span class="go">    }</span>
 <span class="go">}</span>
 </pre></div>
@@ -319,7 +319,7 @@ The OCS API will allow your script to:</p>
 <h3>Reset collection<a class="headerlink" href="#reset-collection" title="Link to this heading"></a></h3>
 <p>If needed, an endpoint is available to reset the whole index:</p>
 <p><code class="docutils literal notranslate"><span class="pre">/ocs/v2.php/apps/fulltextsearch/collection/&lt;collection_name&gt;/index</span></code></p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;user1:password&quot;</span><span class="w"> </span><span class="s2">&quot;https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/index&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span><span class="w"> </span>-k
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>-u<span class="w"> </span><span class="s2">"user1:password"</span><span class="w"> </span><span class="s2">"https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/index"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"OCS-APIRequest: true"</span><span class="w"> </span>-k
 </pre></div>
 </div>
 </section>
@@ -338,7 +338,7 @@ The OCS API will allow your script to:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

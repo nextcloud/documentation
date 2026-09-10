@@ -272,7 +272,7 @@ Write support is also supported. Please note that deleting entities is currently
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">function</span> <span class="nf">delete</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Sabre\DAV\Exception\Forbidden</span><span class="p">(</span><span class="s1">&#39;This calendar-object is read-only&#39;</span><span class="p">);</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Sabre\DAV\Exception\Forbidden</span><span class="p">(</span><span class="s1">'This calendar-object is read-only'</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -294,7 +294,7 @@ Write support is also supported. Please note that deleting entities is currently
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">function</span> <span class="nf">setName</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Sabre\DAV\Exception\Forbidden</span><span class="p">(</span><span class="s1">&#39;This calendar-object is read-only&#39;</span><span class="p">);</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Sabre\DAV\Exception\Forbidden</span><span class="p">(</span><span class="s1">'This calendar-object is read-only'</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -333,7 +333,7 @@ Write support is also supported. Please note that deleting entities is currently
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">function</span> <span class="nf">getETag</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="s1">&#39;&quot;&#39;</span> <span class="o">.</span> <span class="nb">md5</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">())</span> <span class="o">.</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s1">'"'</span> <span class="o">.</span> <span class="nb">md5</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">())</span> <span class="o">.</span> <span class="s1">'"'</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -344,7 +344,7 @@ Write support is also supported. Please note that deleting entities is currently
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">function</span> <span class="nf">getContentType</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="s1">&#39;text/calendar; charset=utf-8&#39;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s1">'text/calendar; charset=utf-8'</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -380,7 +380,7 @@ Write support is also supported. Please note that deleting entities is currently
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">function</span> <span class="nf">put</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Sabre\DAV\Exception\Forbidden</span><span class="p">(</span><span class="s1">&#39;This calendar-object is read-only&#39;</span><span class="p">);</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Sabre\DAV\Exception\Forbidden</span><span class="p">(</span><span class="s1">'This calendar-object is read-only'</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -434,7 +434,7 @@ Write support is also supported. Please note that deleting entities is currently
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">function</span> <span class="nf">setACL</span><span class="p">(</span><span class="k">array</span> <span class="nv">$acl</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Sabre\DAV\Exception\Forbidden</span><span class="p">(</span><span class="s1">&#39;Setting ACL is not supported on this node&#39;</span><span class="p">);</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Sabre\DAV\Exception\Forbidden</span><span class="p">(</span><span class="s1">'Setting ACL is not supported on this node'</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -468,7 +468,7 @@ Write support is also supported. Please note that deleting entities is currently
 <span class="sd">    * @param string $calendarUri</span>
 <span class="sd">    */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$principalUri</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$calendarUri</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;yourappname&#39;</span><span class="p">,</span> <span class="nv">$calendarUri</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">'yourappname'</span><span class="p">,</span> <span class="nv">$calendarUri</span><span class="p">);</span>
 
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">principalUri</span> <span class="o">=</span> <span class="nv">$principalUri</span><span class="p">;</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendarUri</span> <span class="o">=</span> <span class="nv">$calendarUri</span><span class="p">;</span>
@@ -516,7 +516,7 @@ Write support is also supported. Please note that deleting entities is currently
 
 <span class="k">function</span> <span class="nf">createFile</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
-    <span class="c1">// return &quot;\&quot;$etag\&quot;&quot;;</span>
+    <span class="c1">// return "\"$etag\"";</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -559,7 +559,7 @@ Write support is also supported. Please note that deleting entities is currently
 
 <span class="k">function</span> <span class="nf">getChildren</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// Get the list of calendar entries</span>
-    <span class="nv">$children</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;test.ics&#39;</span><span class="p">];</span>
+    <span class="nv">$children</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'test.ics'</span><span class="p">];</span>
 
     <span class="c1">// Obtain the calendar objects for each of them</span>
     <span class="nv">$children</span> <span class="o">=</span> <span class="nb">array_map</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$childName</span><span class="p">)</span> <span class="nx">using</span> <span class="p">(</span><span class="nv">$this</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getChild</span><span class="p">(</span><span class="nv">$childName</span><span class="p">);</span> <span class="p">});</span>
@@ -578,7 +578,7 @@ Write support is also supported. Please note that deleting entities is currently
 
 <span class="k">function</span> <span class="nf">calendarQuery</span><span class="p">(</span><span class="k">array</span> <span class="nv">$filters</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// In a real implementation this should actually filter</span>
-    <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;test.ics&#39;</span><span class="p">];</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s1">'test.ics'</span><span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -638,19 +638,19 @@ Write support is also supported. Please note that deleting entities is currently
 <span class="k">function</span> <span class="nf">getACL</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span>
         <span class="p">[</span>
-            <span class="s1">&#39;privilege&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;{DAV:}read&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;principal&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getOwner</span><span class="p">(),</span>
-            <span class="s1">&#39;protected&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="s1">'privilege'</span> <span class="o">=&gt;</span> <span class="s1">'{DAV:}read'</span><span class="p">,</span>
+            <span class="s1">'principal'</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getOwner</span><span class="p">(),</span>
+            <span class="s1">'protected'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
         <span class="p">],</span>
         <span class="p">[</span>
-            <span class="s1">&#39;privilege&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;{DAV:}read&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;principal&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getOwner</span><span class="p">()</span> <span class="o">.</span> <span class="s1">&#39;/calendar-proxy-write&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;protected&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="s1">'privilege'</span> <span class="o">=&gt;</span> <span class="s1">'{DAV:}read'</span><span class="p">,</span>
+            <span class="s1">'principal'</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getOwner</span><span class="p">()</span> <span class="o">.</span> <span class="s1">'/calendar-proxy-write'</span><span class="p">,</span>
+            <span class="s1">'protected'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
         <span class="p">],</span>
         <span class="p">[</span>
-            <span class="s1">&#39;privilege&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;{DAV:}read&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;principal&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getOwner</span><span class="p">()</span> <span class="o">.</span> <span class="s1">&#39;/calendar-proxy-read&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;protected&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="s1">'privilege'</span> <span class="o">=&gt;</span> <span class="s1">'{DAV:}read'</span><span class="p">,</span>
+            <span class="s1">'principal'</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getOwner</span><span class="p">()</span> <span class="o">.</span> <span class="s1">'/calendar-proxy-read'</span><span class="p">,</span>
+            <span class="s1">'protected'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
         <span class="p">],</span>
     <span class="p">];</span>
 <span class="p">}</span>
@@ -663,7 +663,7 @@ Write support is also supported. Please note that deleting entities is currently
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">function</span> <span class="nf">setACL</span><span class="p">(</span><span class="k">array</span> <span class="nv">$acl</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Sabre\DAV\Exception\Forbidden</span><span class="p">(</span><span class="s1">&#39;Setting ACL is not supported on this node&#39;</span><span class="p">);</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Sabre\DAV\Exception\Forbidden</span><span class="p">(</span><span class="s1">'Setting ACL is not supported on this node'</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -692,9 +692,9 @@ Write support is also supported. Please note that deleting entities is currently
 <span class="k">function</span> <span class="nf">getProperties</span><span class="p">(</span><span class="nv">$properties</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// A backend should provide at least minimum properties</span>
     <span class="k">return</span> <span class="p">[</span>
-        <span class="s1">&#39;{DAV:}displayname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Dav Example Calendar: &#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendarUri</span><span class="p">,</span>
-        <span class="s1">&#39;{http://apple.com/ns/ical/}calendar-color&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;#565656&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;{&#39;</span> <span class="o">.</span> <span class="nx">Plugin</span><span class="o">::</span><span class="na">NS_CALDAV</span> <span class="o">.</span> <span class="s1">&#39;}supported-calendar-component-set&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">SupportedCalendarComponentSet</span><span class="p">([</span><span class="s1">&#39;VTODO&#39;</span><span class="p">,</span> <span class="s1">&#39;VEVENT&#39;</span><span class="p">]),</span>
+        <span class="s1">'{DAV:}displayname'</span> <span class="o">=&gt;</span> <span class="s1">'Dav Example Calendar: '</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendarUri</span><span class="p">,</span>
+        <span class="s1">'{http://apple.com/ns/ical/}calendar-color'</span>  <span class="o">=&gt;</span> <span class="s1">'#565656'</span><span class="p">,</span>
+        <span class="s1">'{'</span> <span class="o">.</span> <span class="nx">Plugin</span><span class="o">::</span><span class="na">NS_CALDAV</span> <span class="o">.</span> <span class="s1">'}supported-calendar-component-set'</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">SupportedCalendarComponentSet</span><span class="p">([</span><span class="s1">'VTODO'</span><span class="p">,</span> <span class="s1">'VEVENT'</span><span class="p">]),</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
@@ -731,17 +731,17 @@ Write support is also supported. Please note that deleting entities is currently
 <span class="k">class</span> <span class="nc">CalendarPlugin</span> <span class="k">implements</span> <span class="nx">ICalendarProvider</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getAppId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s1">&#39;yourappname&#39;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s1">'yourappname'</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">fetchAllForCalendarHome</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$principalUri</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">[</span>
-            <span class="k">new</span> <span class="nx">Calendar</span><span class="p">(</span><span class="nv">$principalUri</span><span class="p">,</span> <span class="s1">&#39;my-calendar-1234&#39;</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nx">Calendar</span><span class="p">(</span><span class="nv">$principalUri</span><span class="p">,</span> <span class="s1">'my-calendar-1234'</span><span class="p">),</span>
         <span class="p">];</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">hasCalendarInCalendarHome</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$principalUri</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$calendarUri</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$calendarUri</span> <span class="o">===</span> <span class="s1">&#39;my-calendar-1234&#39;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nv">$calendarUri</span> <span class="o">===</span> <span class="s1">'my-calendar-1234'</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getCalendarInCalendarHome</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$principalUri</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$calendarUri</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">ExternalCalendar</span> <span class="p">{</span>
@@ -780,7 +780,7 @@ Write support is also supported. Please note that deleting entities is currently
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

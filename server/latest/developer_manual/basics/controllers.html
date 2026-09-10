@@ -253,11 +253,11 @@ will resolve your controller and its dependencies automatically.</p>
     <span class="sd">/**</span>
 <span class="sd">     * @param int $id</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">doSomething</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$name</span><span class="o">=</span><span class="s1">&#39;john&#39;</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$job</span><span class="o">=</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">doSomething</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$name</span><span class="o">=</span><span class="s1">'john'</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$job</span><span class="o">=</span><span class="s1">'author'</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
         <span class="c1">// GET ?id=3&amp;job=killer</span>
         <span class="c1">// $id = 3</span>
-        <span class="c1">// $name = &#39;john&#39;</span>
-        <span class="c1">// $job = &#39;killer&#39;</span>
+        <span class="c1">// $name = 'john'</span>
+        <span class="c1">// $job = 'killer'</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -309,12 +309,12 @@ will resolve your controller and its dependencies automatically.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">myapp</span><span class="o">/</span><span class="n">authors</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
 <span class="p">{</span>
-    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="s2">&quot;publisher&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-    <span class="s2">&quot;customFields&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;mail&quot;</span><span class="p">:</span> <span class="s2">&quot;test@example.com&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;Somewhere&quot;</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"test"</span><span class="p">,</span>
+    <span class="s2">"number"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">"publisher"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">"customFields"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"mail"</span><span class="p">:</span> <span class="s2">"test@example.com"</span><span class="p">,</span>
+        <span class="s2">"address"</span><span class="p">:</span> <span class="s2">"Somewhere"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -328,10 +328,10 @@ will resolve your controller and its dependencies automatically.</p>
 <span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$number</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$publisher</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$customFields</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
-        <span class="c1">// $name = &#39;test&#39;</span>
+        <span class="c1">// $name = 'test'</span>
         <span class="c1">// $number = 3</span>
         <span class="c1">// $publisher = true</span>
-        <span class="c1">// $customFields = array(&quot;mail&quot; =&gt; &quot;test@example.com&quot;, &quot;address&quot; =&gt; &quot;Somewhere&quot;)</span>
+        <span class="c1">// $customFields = array("mail" =&gt; "test@example.com", "address" =&gt; "Somewhere")</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -351,10 +351,10 @@ will resolve your controller and its dependencies automatically.</p>
 <span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">someMethod</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
-        <span class="nv">$type</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">);</span>  <span class="c1">// $_SERVER[&#39;HTTP_CONTENT_TYPE&#39;]</span>
-        <span class="nv">$cookie</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getCookie</span><span class="p">(</span><span class="s1">&#39;myCookie&#39;</span><span class="p">);</span>  <span class="c1">// $_COOKIES[&#39;myCookie&#39;]</span>
-        <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getUploadedFile</span><span class="p">(</span><span class="s1">&#39;myfile&#39;</span><span class="p">);</span>  <span class="c1">// $_FILES[&#39;myfile&#39;]</span>
-        <span class="nv">$env</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getEnv</span><span class="p">(</span><span class="s1">&#39;SOME_VAR&#39;</span><span class="p">);</span>  <span class="c1">// $_ENV[&#39;SOME_VAR&#39;]</span>
+        <span class="nv">$type</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">);</span>  <span class="c1">// $_SERVER['HTTP_CONTENT_TYPE']</span>
+        <span class="nv">$cookie</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getCookie</span><span class="p">(</span><span class="s1">'myCookie'</span><span class="p">);</span>  <span class="c1">// $_COOKIES['myCookie']</span>
+        <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getUploadedFile</span><span class="p">(</span><span class="s1">'myfile'</span><span class="p">);</span>  <span class="c1">// $_FILES['myfile']</span>
+        <span class="nv">$env</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getEnv</span><span class="p">(</span><span class="s1">'SOME_VAR'</span><span class="p">);</span>  <span class="c1">// $_ENV['SOME_VAR']</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -403,22 +403,22 @@ lifecycle management, leading to race conditions or lost data.</p>
 
     <span class="c1">// Simple (existing) variable retrieval</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">simpleReads</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;last_visit&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'last_visit'</span><span class="p">);</span>
         <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">();</span>
     <span class="p">}</span>
 
     <span class="c1">// Default: Implicit locking per write. Good for single operations.</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">simpleWrite</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;last_visit&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">());</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">'last_visit'</span><span class="p">,</span> <span class="nb">time</span><span class="p">());</span>
         <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">();</span>
     <span class="p">}</span>
 
     <span class="c1">// Optimization: Keeps session open for the entire method.</span>
     <span class="p">#[</span><span class="nd">UseSession</span><span class="p">]</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">batchUpdate</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;theme&#39;</span><span class="p">,</span> <span class="s1">&#39;dark&#39;</span><span class="p">);</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;font_size&#39;</span><span class="p">,</span> <span class="s1">&#39;14px&#39;</span><span class="p">);</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">(</span><span class="s1">&#39;fallback_theme&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">'theme'</span><span class="p">,</span> <span class="s1">'dark'</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">'font_size'</span><span class="p">,</span> <span class="s1">'14px'</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">(</span><span class="s1">'fallback_theme'</span><span class="p">);</span>
         <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -486,24 +486,24 @@ deadlocks.</p>
  <span class="k">class</span> <span class="nc">BakeryController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
 
      <span class="sd">/**</span>
-<span class="sd">      * Adds a cookie &quot;foo&quot; with value &quot;bar&quot; that expires after user closes the browser</span>
-<span class="sd">      * Adds a cookie &quot;bar&quot; with value &quot;foo&quot; that expires 2015-01-01</span>
+<span class="sd">      * Adds a cookie "foo" with value "bar" that expires after user closes the browser</span>
+<span class="sd">      * Adds a cookie "bar" with value "foo" that expires 2015-01-01</span>
 <span class="sd">      */</span>
      <span class="k">public</span> <span class="k">function</span> <span class="nf">addCookie</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
          <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="o">...</span><span class="p">);</span>
-         <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">addCookie</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">);</span>
-         <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">addCookie</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">&#39;2015-01-01 00:00&#39;</span><span class="p">));</span>
+         <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">addCookie</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">);</span>
+         <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">addCookie</span><span class="p">(</span><span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'foo'</span><span class="p">,</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">'2015-01-01 00:00'</span><span class="p">));</span>
          <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
      <span class="p">}</span>
 
      <span class="sd">/**</span>
-<span class="sd">      * Invalidates the cookie &quot;foo&quot;</span>
-<span class="sd">      * Invalidates the cookie &quot;bar&quot; and &quot;bazinga&quot;</span>
+<span class="sd">      * Invalidates the cookie "foo"</span>
+<span class="sd">      * Invalidates the cookie "bar" and "bazinga"</span>
 <span class="sd">      */</span>
      <span class="k">public</span> <span class="k">function</span> <span class="nf">invalidateCookie</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
          <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="o">...</span><span class="p">);</span>
-         <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">invalidateCookie</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
-         <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">invalidateCookies</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;bazinga&#39;</span><span class="p">));</span>
+         <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">invalidateCookie</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">);</span>
+         <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">invalidateCookies</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'bazinga'</span><span class="p">));</span>
          <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
      <span class="p">}</span>
 <span class="p">}</span>
@@ -533,11 +533,11 @@ This section only focuses on the actual HTML content, not the data to fill into 
 <li><p><strong>appName</strong>: tells the template engine in which app the template should be located</p></li>
 <li><p><strong>templateName</strong>: the name of the template inside the templates/ folder without the .php extension</p></li>
 <li><p><strong>parameters</strong>: optional array parameters that are available in the template through $_, e.g.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;something&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">(</span><span class="s1">'key'</span> <span class="o">=&gt;</span> <span class="s1">'something'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>can be accessed through:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$_[&#39;key&#39;]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$_['key']
 </pre></div>
 </div>
 </li>
@@ -552,8 +552,8 @@ This section only focuses on the actual HTML content, not the data to fill into 
 <span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
-        <span class="nv">$templateName</span> <span class="o">=</span> <span class="s1">&#39;main&#39;</span><span class="p">;</span>  <span class="c1">// will use templates/main.php</span>
-        <span class="nv">$parameters</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;hi&#39;</span><span class="p">);</span>
+        <span class="nv">$templateName</span> <span class="o">=</span> <span class="s1">'main'</span><span class="p">;</span>  <span class="c1">// will use templates/main.php</span>
+        <span class="nv">$parameters</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'key'</span> <span class="o">=&gt;</span> <span class="s1">'hi'</span><span class="p">);</span>
         <span class="k">return</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appName</span><span class="p">,</span> <span class="nv">$templateName</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
     <span class="p">}</span>
 
@@ -580,12 +580,12 @@ will be shown in the top right corner of the public page.</p>
 <span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span><span class="o">:</span> <span class="nx">PublicTemplateResponse</span> <span class="p">{</span>
-        <span class="nv">$template</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PublicTemplateResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appName</span><span class="p">,</span> <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="p">[]);</span>
-        <span class="nv">$template</span><span class="o">-&gt;</span><span class="na">setHeaderTitle</span><span class="p">(</span><span class="s1">&#39;Public page&#39;</span><span class="p">);</span>
-        <span class="nv">$template</span><span class="o">-&gt;</span><span class="na">setHeaderDetails</span><span class="p">(</span><span class="s1">&#39;some details&#39;</span><span class="p">);</span>
+        <span class="nv">$template</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PublicTemplateResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appName</span><span class="p">,</span> <span class="s1">'main'</span><span class="p">,</span> <span class="p">[]);</span>
+        <span class="nv">$template</span><span class="o">-&gt;</span><span class="na">setHeaderTitle</span><span class="p">(</span><span class="s1">'Public page'</span><span class="p">);</span>
+        <span class="nv">$template</span><span class="o">-&gt;</span><span class="na">setHeaderDetails</span><span class="p">(</span><span class="s1">'some details'</span><span class="p">);</span>
         <span class="nv">$template</span><span class="o">-&gt;</span><span class="na">setHeaderActions</span><span class="p">([</span>
-            <span class="k">new</span> <span class="nx">SimpleMenuAction</span><span class="p">(</span><span class="s1">&#39;download&#39;</span><span class="p">,</span> <span class="s1">&#39;Label 1&#39;</span><span class="p">,</span> <span class="s1">&#39;icon-css-class1&#39;</span><span class="p">,</span> <span class="s1">&#39;link-url&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-            <span class="k">new</span> <span class="nx">SimpleMenuAction</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">,</span> <span class="s1">&#39;Label 2&#39;</span><span class="p">,</span> <span class="s1">&#39;icon-css-class2&#39;</span><span class="p">,</span> <span class="s1">&#39;link-url&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nx">SimpleMenuAction</span><span class="p">(</span><span class="s1">'download'</span><span class="p">,</span> <span class="s1">'Label 1'</span><span class="p">,</span> <span class="s1">'icon-css-class1'</span><span class="p">,</span> <span class="s1">'link-url'</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nx">SimpleMenuAction</span><span class="p">(</span><span class="s1">'share'</span><span class="p">,</span> <span class="s1">'Label 2'</span><span class="p">,</span> <span class="s1">'icon-css-class2'</span><span class="p">,</span> <span class="s1">'link-url'</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
         <span class="p">]);</span>
         <span class="k">return</span> <span class="nv">$template</span><span class="p">;</span>
     <span class="p">}</span>
@@ -654,11 +654,11 @@ Inside these, there are the same information as there are for normal routes.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">return</span> <span class="p">[</span>
-     <span class="s1">&#39;ocs&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+     <span class="s1">'ocs'</span> <span class="o">=&gt;</span> <span class="p">[</span>
          <span class="p">[</span>
-             <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Share#getShares&#39;</span><span class="p">,</span>
-             <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/v1/shares&#39;</span><span class="p">,</span>
-             <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+             <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Share#getShares'</span><span class="p">,</span>
+             <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'/api/v1/shares'</span><span class="p">,</span>
+             <span class="s1">'verb'</span> <span class="o">=&gt;</span> <span class="s1">'GET'</span><span class="p">,</span>
          <span class="p">],</span>
      <span class="p">],</span>
 <span class="p">];</span>
@@ -686,7 +686,7 @@ Better use <a class="reference internal" href="#ocscontroller"><span class="std 
 <span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">returnJSON</span><span class="p">()</span><span class="o">:</span> <span class="nx">JSONResponse</span> <span class="p">{</span>
-        <span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;test&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;hi&#39;</span><span class="p">);</span>
+        <span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'test'</span> <span class="o">=&gt;</span> <span class="s1">'hi'</span><span class="p">);</span>
         <span class="k">return</span> <span class="k">new</span> <span class="nx">JSONResponse</span><span class="p">(</span><span class="nv">$params</span><span class="p">);</span>
     <span class="p">}</span>
 
@@ -702,7 +702,7 @@ Better use <a class="reference internal" href="#ocscontroller"><span class="std 
 <span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">returnJSON</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;test&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;hi&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">'test'</span> <span class="o">=&gt;</span> <span class="s1">'hi'</span><span class="p">);</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -778,7 +778,7 @@ Better use <a class="reference internal" href="#ocscontroller"><span class="std 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">returnHi</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
 
         <span class="c1">// XMLResponse has to be implemented</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">registerResponder</span><span class="p">(</span><span class="s1">&#39;xml&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">registerResponder</span><span class="p">(</span><span class="s1">'xml'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="nv">$value</span> <span class="nx">instanceof</span> <span class="nx">DataResponse</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">return</span> <span class="k">new</span> <span class="nx">XMLResponse</span><span class="p">(</span>
                     <span class="nv">$value</span><span class="o">-&gt;</span><span class="na">getData</span><span class="p">(),</span>
@@ -790,7 +790,7 @@ Better use <a class="reference internal" href="#ocscontroller"><span class="std 
             <span class="p">}</span>
         <span class="p">});</span>
 
-        <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;test&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;hi&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">'test'</span> <span class="o">=&gt;</span> <span class="s1">'hi'</span><span class="p">);</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -814,7 +814,7 @@ Better use <a class="reference internal" href="#ocscontroller"><span class="std 
         <span class="k">try</span> <span class="p">{</span>
             <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nx">calculate_hi</span><span class="p">());</span>
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;msg&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;not found!&#39;</span><span class="p">),</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'msg'</span> <span class="o">=&gt;</span> <span class="s1">'not found!'</span><span class="p">),</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
@@ -839,7 +839,7 @@ These are discussed here.</p>
 <span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">toGoogle</span><span class="p">()</span><span class="o">:</span> <span class="nx">RedirectResponse</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="s1">&#39;https://google.com&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="s1">'https://google.com'</span><span class="p">);</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -858,8 +858,8 @@ These are discussed here.</p>
 <span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">downloadXMLFile</span><span class="p">()</span><span class="o">:</span> <span class="nx">DownloadResponse</span> <span class="p">{</span>
-        <span class="nv">$path</span> <span class="o">=</span> <span class="s1">&#39;/some/path/to/file.xml&#39;</span><span class="p">;</span>
-        <span class="nv">$contentType</span> <span class="o">=</span> <span class="s1">&#39;application/xml&#39;</span><span class="p">;</span>
+        <span class="nv">$path</span> <span class="o">=</span> <span class="s1">'/some/path/to/file.xml'</span><span class="p">;</span>
+        <span class="nv">$contentType</span> <span class="o">=</span> <span class="s1">'application/xml'</span><span class="p">;</span>
 
         <span class="k">return</span> <span class="k">new</span> <span class="nx">DownloadResponse</span><span class="p">(</span><span class="nv">$path</span><span class="p">,</span> <span class="nv">$contentType</span><span class="p">);</span>
     <span class="p">}</span>
@@ -882,13 +882,13 @@ These are discussed here.</p>
     <span class="k">private</span> <span class="k">array</span> <span class="nv">$xml</span><span class="p">;</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$xml</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s1">&#39;application/xml&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span> <span class="s1">'application/xml'</span><span class="p">);</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">xml</span> <span class="o">=</span> <span class="nv">$xml</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">render</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="nv">$root</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SimpleXMLElement</span><span class="p">(</span><span class="s1">&#39;&lt;root/&gt;&#39;</span><span class="p">);</span>
-        <span class="nb">array_walk_recursive</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">xml</span><span class="p">,</span> <span class="k">array</span> <span class="p">(</span><span class="nv">$root</span><span class="p">,</span> <span class="s1">&#39;addChild&#39;</span><span class="p">));</span>
+        <span class="nv">$root</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SimpleXMLElement</span><span class="p">(</span><span class="s1">'&lt;root/&gt;'</span><span class="p">);</span>
+        <span class="nb">array_walk_recursive</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">xml</span><span class="p">,</span> <span class="k">array</span> <span class="p">(</span><span class="nv">$root</span><span class="p">,</span> <span class="s1">'addChild'</span><span class="p">));</span>
         <span class="k">return</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">asXML</span><span class="p">();</span>
     <span class="p">}</span>
 
@@ -908,7 +908,7 @@ These are discussed here.</p>
 <span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">downloadXMLFile</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">StreamResponse</span><span class="p">(</span><span class="s1">&#39;/some/path/to/file.xml&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">StreamResponse</span><span class="p">(</span><span class="s1">'/some/path/to/file.xml'</span><span class="p">);</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -995,7 +995,7 @@ Additionally, as the user might not have a CSRF checker cookie set yet, the CSRF
     <span class="p">#[</span><span class="nd">NoCSRFRequired</span><span class="p">]</span>
     <span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appName</span><span class="p">,</span> <span class="s1">&#39;main&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appName</span><span class="p">,</span> <span class="s1">'main'</span><span class="p">);</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -1119,7 +1119,7 @@ You should only use this for public pages that anyone is allowed to access.</p>
 
 <span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
 
-<span class="hll">    <span class="p">#[</span><span class="nd">BruteForceProtection</span><span class="p">(</span><span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;foobar&#39;</span><span class="p">)]</span>
+<span class="hll">    <span class="p">#[</span><span class="nd">BruteForceProtection</span><span class="p">(</span><span class="nx">action</span><span class="o">:</span> <span class="s1">'foobar'</span><span class="p">)]</span>
 </span>    <span class="k">public</span> <span class="k">function</span> <span class="nf">bruteforceProtected</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
         <span class="nv">$templateResponse</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="nx">…</span><span class="p">);</span>
         <span class="c1">// In case of a violation increase the throttle counter</span>
@@ -1144,16 +1144,16 @@ You should only use this for public pages that anyone is allowed to access.</p>
 
 <span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
 
-<span class="hll">    <span class="p">#[</span><span class="nd">BruteForceProtection</span><span class="p">(</span><span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;token&#39;</span><span class="p">)]</span>
-</span><span class="hll">    <span class="p">#[</span><span class="nd">BruteForceProtection</span><span class="p">(</span><span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;password&#39;</span><span class="p">)]</span>
+<span class="hll">    <span class="p">#[</span><span class="nd">BruteForceProtection</span><span class="p">(</span><span class="nx">action</span><span class="o">:</span> <span class="s1">'token'</span><span class="p">)]</span>
+</span><span class="hll">    <span class="p">#[</span><span class="nd">BruteForceProtection</span><span class="p">(</span><span class="nx">action</span><span class="o">:</span> <span class="s1">'password'</span><span class="p">)]</span>
 </span>    <span class="k">public</span> <span class="k">function</span> <span class="nf">getPasswordProtectedShare</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$token</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$password</span><span class="p">)</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
         <span class="nv">$templateResponse</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="nx">…</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">shareManager</span><span class="o">-&gt;</span><span class="na">getByToken</span><span class="p">(</span><span class="nv">$token</span><span class="p">))</span> <span class="p">{</span>
-<span class="hll">            <span class="nv">$templateResponse</span><span class="o">-&gt;</span><span class="na">throttle</span><span class="p">([</span><span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;token&#39;</span><span class="p">]);</span>
+<span class="hll">            <span class="nv">$templateResponse</span><span class="o">-&gt;</span><span class="na">throttle</span><span class="p">([</span><span class="s1">'action'</span> <span class="o">=&gt;</span> <span class="s1">'token'</span><span class="p">]);</span>
 </span>        <span class="p">}</span>
         <span class="c1">// …</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$share</span><span class="o">-&gt;</span><span class="na">verifyPassword</span><span class="p">(</span><span class="nv">$password</span><span class="p">))</span> <span class="p">{</span>
-<span class="hll">            <span class="nv">$templateResponse</span><span class="o">-&gt;</span><span class="na">throttle</span><span class="p">([</span><span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;password&#39;</span><span class="p">]);</span>
+<span class="hll">            <span class="nv">$templateResponse</span><span class="o">-&gt;</span><span class="na">throttle</span><span class="p">([</span><span class="s1">'action'</span> <span class="o">=&gt;</span> <span class="s1">'password'</span><span class="p">]);</span>
 </span>        <span class="p">}</span>
         <span class="k">return</span> <span class="nv">$templateResponse</span><span class="p">;</span>
     <span class="p">}</span>
@@ -1209,10 +1209,10 @@ However if an app relies on third-party media or other features which are forbid
 <span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="s1">&#39;main&#39;</span><span class="p">);</span>
+        <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span> <span class="s1">'main'</span><span class="p">);</span>
         <span class="nv">$csp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ContentSecurityPolicy</span><span class="p">();</span>
-        <span class="nv">$csp</span><span class="o">-&gt;</span><span class="na">addAllowedImageDomain</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">);</span>
-            <span class="o">-&gt;</span><span class="na">addAllowedMediaDomain</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">);</span>
+        <span class="nv">$csp</span><span class="o">-&gt;</span><span class="na">addAllowedImageDomain</span><span class="p">(</span><span class="s1">'*'</span><span class="p">);</span>
+            <span class="o">-&gt;</span><span class="na">addAllowedMediaDomain</span><span class="p">(</span><span class="s1">'*'</span><span class="p">);</span>
         <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentSecurityPolicy</span><span class="p">(</span><span class="nv">$csp</span><span class="p">);</span>
     <span class="p">}</span>
 
@@ -1242,7 +1242,7 @@ Until NC 30, classical controller methods did not respect the header.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

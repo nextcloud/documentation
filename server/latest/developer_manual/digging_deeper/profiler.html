@@ -147,7 +147,7 @@ with your Nextcloud application. This feature is available starting from Nextclo
 <p>The profiler application is available on <a class="reference external" href="https://github.com/nextcloud/profiler">GitHub</a>
 you need to clone the stableX branch if you are using Nextcloud X or master if you are
 using the latest development version of Nextcloud.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">major_version</span><span class="o">=</span><span class="k">$(</span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>version<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="s1">&#39;[. ]&#39;</span><span class="w"> </span><span class="s1">&#39;{print $2;exit}&#39;</span><span class="k">)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">major_version</span><span class="o">=</span><span class="k">$(</span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>version<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="s1">'[. ]'</span><span class="w"> </span><span class="s1">'{print $2;exit}'</span><span class="k">)</span>
 <span class="nb">cd</span><span class="w"> </span>apps/
 git<span class="w"> </span>clone<span class="w"> </span>--branch<span class="w"> </span>stable<span class="nv">$major_version</span><span class="w"> </span>https://github.com/nextcloud/profiler.git
 <span class="nb">cd</span><span class="w"> </span>profiler
@@ -249,12 +249,12 @@ the mailer service, …</p>
 
 <span class="k">class</span> <span class="nc">MyAppDataCollector</span> <span class="k">extends</span> <span class="nx">AbstractDataCollector</span> <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s1">&#39;myappcollector&#39;</span><span class="p">;</span> <span class="c1">// default to the class&#39; name</span>
+        <span class="k">return</span> <span class="s1">'myappcollector'</span><span class="p">;</span> <span class="c1">// default to the class' name</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">collect</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">Response</span> <span class="nv">$response</span><span class="p">,</span> <span class="nx">\Throwable</span> <span class="nv">$exception</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
          <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span> <span class="o">=</span> <span class="p">[</span>
-             <span class="s1">&#39;mydata&#39;</span> <span class="o">=&gt;</span> <span class="mi">42</span>
+             <span class="s1">'mydata'</span> <span class="o">=&gt;</span> <span class="mi">42</span>
         <span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -290,7 +290,7 @@ the mailer service, …</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

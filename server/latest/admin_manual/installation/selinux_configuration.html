@@ -214,26 +214,26 @@ because SELinux does not log all system calls used for verifying access. See <a 
 <p>The following settings should work for most SELinux systems that use the
 default distro profiles. Run these commands as root, and remember to adjust the filepaths
 in these examples for your installation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/data(/.*)?&#39;</span>
-<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/config(/.*)?&#39;</span>
-<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/apps(/.*)?&#39;</span>
-<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/.htaccess&#39;</span>
-<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/.user.ini&#39;</span>
-<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/3rdparty/aws/aws-sdk-php/src/data/logs(/.*)?&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">'/var/www/html/nextcloud/data(/.*)?'</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">'/var/www/html/nextcloud/config(/.*)?'</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">'/var/www/html/nextcloud/apps(/.*)?'</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">'/var/www/html/nextcloud/.htaccess'</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">'/var/www/html/nextcloud/.user.ini'</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">'/var/www/html/nextcloud/3rdparty/aws/aws-sdk-php/src/data/logs(/.*)?'</span>
 
-<span class="n">restorecon</span> <span class="o">-</span><span class="n">Rv</span> <span class="s1">&#39;/var/www/html/nextcloud/&#39;</span>
+<span class="n">restorecon</span> <span class="o">-</span><span class="n">Rv</span> <span class="s1">'/var/www/html/nextcloud/'</span>
 </pre></div>
 </div>
 <p>If you uninstall Nextcloud you need to remove the Nextcloud directory labels. To do
 this execute the following commands as root after uninstalling Nextcloud:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;/var/www/html/nextcloud/data(/.*)?&#39;</span>
-<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;/var/www/html/nextcloud/config(/.*)?&#39;</span>
-<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;/var/www/html/nextcloud/apps(/.*)?&#39;</span>
-<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;/var/www/html/nextcloud/.htaccess&#39;</span>
-<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;/var/www/html/nextcloud/.user.ini&#39;</span>
-<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;/var/www/html/nextcloud/3rdparty/aws/aws-sdk-php/src/data/logs(/.*)?&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">'/var/www/html/nextcloud/data(/.*)?'</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">'/var/www/html/nextcloud/config(/.*)?'</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">'/var/www/html/nextcloud/apps(/.*)?'</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">'/var/www/html/nextcloud/.htaccess'</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">'/var/www/html/nextcloud/.user.ini'</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">'/var/www/html/nextcloud/3rdparty/aws/aws-sdk-php/src/data/logs(/.*)?'</span>
 
-<span class="n">restorecon</span> <span class="o">-</span><span class="n">Rv</span> <span class="s1">&#39;/var/www/html/nextcloud/&#39;</span>
+<span class="n">restorecon</span> <span class="o">-</span><span class="n">Rv</span> <span class="s1">'/var/www/html/nextcloud/'</span>
 </pre></div>
 </div>
 <p>If you have customized SELinux policies and these examples do not work, you must give the
@@ -336,7 +336,7 @@ package <code class="docutils literal notranslate"><span class="pre">setroublesh
 <p>to get a report which helps you configuring your SELinux profiles.</p>
 <p>Another tool for troubleshooting is to enable a single ruleset for your
 Nextcloud directory:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud(/.*)?&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">'/var/www/html/nextcloud(/.*)?'</span>
 <span class="n">restorecon</span> <span class="o">-</span><span class="n">RF</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">nextcloud</span>
 </pre></div>
 </div>

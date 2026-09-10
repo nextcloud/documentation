@@ -154,7 +154,7 @@
 <h3>info.xml<a class="headerlink" href="#info-xml" title="Link to this heading"></a></h3>
 <p>Make sure your <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> allows for Nextcloud 28.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependencies&gt;</span>
-<span class="w">    </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;26&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;28&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">"26"</span><span class="w"> </span><span class="na">max-version=</span><span class="s">"28"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/dependencies&gt;</span>
 </pre></div>
 </div>
@@ -211,8 +211,8 @@ in <a class="reference external" href="https://github.com/nextcloud/server/pull/
 <li><p>If <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> has a dependency specification for PHP, increase the <code class="docutils literal notranslate"><span class="pre">max-version</span></code> to 8.3.</p></li>
 </ol>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependencies&gt;</span>
-<span class="w">  </span><span class="nt">&lt;php</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;8.0&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;8.3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;26&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;28&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;php</span><span class="w"> </span><span class="na">min-version=</span><span class="s">"8.0"</span><span class="w"> </span><span class="na">max-version=</span><span class="s">"8.3"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">"26"</span><span class="w"> </span><span class="na">max-version=</span><span class="s">"28"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/dependencies&gt;</span>
 </pre></div>
 </div>
@@ -220,8 +220,8 @@ in <a class="reference external" href="https://github.com/nextcloud/server/pull/
 <li><p>If your app has a <code class="docutils literal notranslate"><span class="pre">composer.json</span></code> and the file contains the PHP restrictions from <code class="docutils literal notranslate"><span class="pre">info.xml</span></code>, adjust it as well.</p></li>
 </ol>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;require&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;php&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;=8.0 &lt;=8.3&quot;</span>
+<span class="w">  </span><span class="nt">"require"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"php"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=8.0 &lt;=8.3"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -334,8 +334,8 @@ and have <code class="docutils literal notranslate"><span class="pre">\OCP\Event
 <p>The factory <code class="docutils literal notranslate"><span class="pre">\OCP\IEventSourceFactory</span></code> works only from Nextcloud 28.
 For older versions use <code class="docutils literal notranslate"><span class="pre">\OC::$server-&gt;createEventSource()</span></code>.</p>
 <p>If you want to support Nextcloud 27 and Nextcloud 28:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// @TODO: Remove method_exists when min-version=&quot;28&quot;</span>
-<span class="k">if</span> <span class="p">(</span><span class="nb">method_exists</span><span class="p">(</span><span class="nx">\OC</span><span class="o">::</span><span class="nv">$server</span><span class="p">,</span> <span class="s1">&#39;createEventSource&#39;</span><span class="p">))</span> <span class="p">{</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// @TODO: Remove method_exists when min-version="28"</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">method_exists</span><span class="p">(</span><span class="nx">\OC</span><span class="o">::</span><span class="nv">$server</span><span class="p">,</span> <span class="s1">'createEventSource'</span><span class="p">))</span> <span class="p">{</span>
     <span class="nv">$eventSource</span> <span class="o">=</span> <span class="nx">\OC</span><span class="o">::</span><span class="nv">$server</span><span class="o">-&gt;</span><span class="na">createEventSource</span><span class="p">();</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="nv">$eventSource</span> <span class="o">=</span> <span class="nx">\OCP\Server</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="nx">IEventSourceFactory</span><span class="o">::</span><span class="na">class</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">();</span>
@@ -462,7 +462,7 @@ For older versions use <code class="docutils literal notranslate"><span class="p
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

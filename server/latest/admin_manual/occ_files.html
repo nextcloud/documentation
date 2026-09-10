@@ -450,7 +450,7 @@ a specific user, or a specific path:</p>
 </div>
 <p>Use <code class="docutils literal notranslate"><span class="pre">--path</span></code> to limit the scan to a specific directory. The path must
 include the user ID and <code class="docutils literal notranslate"><span class="pre">files/</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span> <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/layla/files/Photos&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span> <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">"/layla/files/Photos"</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">--path</span></code>, <code class="docutils literal notranslate"><span class="pre">--all</span></code>, and <code class="docutils literal notranslate"><span class="pre">[user_id]</span></code> options are mutually exclusive;
@@ -515,7 +515,7 @@ directly into the root without creating a subdirectory:</p>
 </div>
 <p>Transfer only a specific folder with <code class="docutils literal notranslate"><span class="pre">--path</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">transfer</span><span class="o">-</span><span class="n">ownership</span> \
-  <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;Documents/Project&quot;</span> <span class="n">layla</span> <span class="n">fred</span>
+  <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">"Documents/Project"</span> <span class="n">layla</span> <span class="n">fred</span>
 </pre></div>
 </div>
 <p>Incoming shares (files shared with the source user) are not transferred by
@@ -746,7 +746,7 @@ path:</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">--path</span></code> to limit deletion to a specific directory. The path must
 include the user ID and <code class="docutils literal notranslate"><span class="pre">files/</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span> \
-  <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/layla/files/Documents&quot;</span> <span class="n">layla</span>
+  <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">"/layla/files/Documents"</span> <span class="n">layla</span>
 </pre></div>
 </div>
 </section>
@@ -1130,7 +1130,7 @@ for all users:</p>
 a given time window. Both options accept any format supported by PHP
 <code class="docutils literal notranslate"><span class="pre">strtotime</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">trashbin</span><span class="p">:</span><span class="n">restore</span> <span class="o">--</span><span class="n">scope</span> <span class="nb">all</span> \
-  <span class="o">--</span><span class="n">since</span> <span class="s2">&quot;2026-08-01 11:55:22&quot;</span> <span class="o">--</span><span class="n">until</span> <span class="s2">&quot;2026-08-02 01:33:00&quot;</span> <span class="n">layla</span>
+  <span class="o">--</span><span class="n">since</span> <span class="s2">"2026-08-01 11:55:22"</span> <span class="o">--</span><span class="n">until</span> <span class="s2">"2026-08-02 01:33:00"</span> <span class="n">layla</span>
 </pre></div>
 </div>
 <p>Use <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> to simulate the restore without making any changes:</p>
@@ -1178,7 +1178,7 @@ shows the current configured size:</p>
 to limit deletion to a specific path:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span>
 <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span> <span class="n">layla</span>
-<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span> <span class="n">layla</span> <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/files/Documents&quot;</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">versions</span><span class="p">:</span><span class="n">cleanup</span> <span class="n">layla</span> <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">"/files/Documents"</span>
 </pre></div>
 </div>
 </section>

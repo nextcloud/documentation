@@ -319,7 +319,7 @@ with <code class="docutils literal notranslate"><span class="pre">[default*]</sp
 <h3>encryption:set-default-module<a class="headerlink" href="#encryption-set-default-module" title="Link to this heading"></a></h3>
 <p>Set the default encryption module. Maintenance mode must be disabled:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="nb">set</span><span class="o">-</span><span class="n">default</span><span class="o">-</span><span class="n">module</span> <span class="n">OC_DEFAULT_MODULE</span>
-  <span class="n">Set</span> <span class="n">default</span> <span class="n">module</span> <span class="n">to</span> <span class="s2">&quot;OC_DEFAULT_MODULE&quot;</span>
+  <span class="n">Set</span> <span class="n">default</span> <span class="n">module</span> <span class="n">to</span> <span class="s2">"OC_DEFAULT_MODULE"</span>
 </pre></div>
 </div>
 </section>
@@ -449,26 +449,26 @@ whether to delete all, specific ones, or none:</p>
 cannot be downloaded. Requires <strong>master key</strong> encryption.</p>
 <p>Run for a single user:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">encrypted</span><span class="o">-</span><span class="n">version</span> <span class="n">layla</span>
-  <span class="n">Verifying</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span> <span class="n">file</span> <span class="s2">&quot;/layla/files/Documents/report.pdf&quot;</span>
-  <span class="n">The</span> <span class="n">file</span> <span class="s2">&quot;/layla/files/Documents/report.pdf&quot;</span> <span class="ow">is</span><span class="p">:</span> <span class="n">OK</span>
+  <span class="n">Verifying</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span> <span class="n">file</span> <span class="s2">"/layla/files/Documents/report.pdf"</span>
+  <span class="n">The</span> <span class="n">file</span> <span class="s2">"/layla/files/Documents/report.pdf"</span> <span class="ow">is</span><span class="p">:</span> <span class="n">OK</span>
 </pre></div>
 </div>
 <p>Run for all users:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">encrypted</span><span class="o">-</span><span class="n">version</span> <span class="o">--</span><span class="nb">all</span>
   <span class="n">Processing</span> <span class="n">files</span> <span class="k">for</span> <span class="n">layla</span>
-  <span class="n">Verifying</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span> <span class="n">file</span> <span class="s2">&quot;/layla/files/Documents/report.pdf&quot;</span>
-  <span class="n">The</span> <span class="n">file</span> <span class="s2">&quot;/layla/files/Documents/report.pdf&quot;</span> <span class="ow">is</span><span class="p">:</span> <span class="n">OK</span>
+  <span class="n">Verifying</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span> <span class="n">file</span> <span class="s2">"/layla/files/Documents/report.pdf"</span>
+  <span class="n">The</span> <span class="n">file</span> <span class="s2">"/layla/files/Documents/report.pdf"</span> <span class="ow">is</span><span class="p">:</span> <span class="n">OK</span>
 </pre></div>
 </div>
 <p>When a broken file is found, the command tries decrementing and then
 incrementing the encrypted version counter until the file can be read:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Attempting</span> <span class="n">to</span> <span class="n">fix</span> <span class="n">the</span> <span class="n">path</span><span class="p">:</span> <span class="s2">&quot;/layla/files/Documents/broken.pdf&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Attempting</span> <span class="n">to</span> <span class="n">fix</span> <span class="n">the</span> <span class="n">path</span><span class="p">:</span> <span class="s2">"/layla/files/Documents/broken.pdf"</span>
 <span class="n">Decrement</span> <span class="n">the</span> <span class="n">encrypted</span> <span class="n">version</span> <span class="n">to</span> <span class="mi">2</span>
-<span class="n">Fixed</span> <span class="n">the</span> <span class="n">file</span><span class="p">:</span> <span class="s2">&quot;/layla/files/Documents/broken.pdf&quot;</span> <span class="k">with</span> <span class="n">version</span> <span class="mi">2</span>
+<span class="n">Fixed</span> <span class="n">the</span> <span class="n">file</span><span class="p">:</span> <span class="s2">"/layla/files/Documents/broken.pdf"</span> <span class="k">with</span> <span class="n">version</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <p>Use <code class="docutils literal notranslate"><span class="pre">-p</span></code> / <code class="docutils literal notranslate"><span class="pre">--path</span></code> to limit the scan to a specific directory:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">encrypted</span><span class="o">-</span><span class="n">version</span> <span class="n">layla</span> <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/Documents&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">encrypted</span><span class="o">-</span><span class="n">version</span> <span class="n">layla</span> <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">"/Documents"</span>
 </pre></div>
 </div>
 </section>

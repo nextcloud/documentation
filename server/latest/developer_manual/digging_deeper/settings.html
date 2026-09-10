@@ -236,35 +236,35 @@ on the survey_client solution.</p>
 <span class="sd">         */</span>
         <span class="k">public</span> <span class="k">function</span> <span class="nf">getForm</span><span class="p">()</span> <span class="p">{</span>
 
-                <span class="nv">$lastSentReportTime</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">getAppValue</span><span class="p">(</span><span class="s1">&#39;survey_client&#39;</span><span class="p">,</span> <span class="s1">&#39;last_sent&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+                <span class="nv">$lastSentReportTime</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">getAppValue</span><span class="p">(</span><span class="s1">'survey_client'</span><span class="p">,</span> <span class="s1">'last_sent'</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nv">$lastSentReportTime</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nv">$lastSentReportDate</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Never&#39;</span><span class="p">);</span>
+                        <span class="nv">$lastSentReportDate</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Never'</span><span class="p">);</span>
                 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                         <span class="nv">$lastSentReportDate</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dateTimeFormatter</span><span class="o">-&gt;</span><span class="na">formatDate</span><span class="p">(</span><span class="nv">$lastSentReportTime</span><span class="p">);</span>
                 <span class="p">}</span>
 
-                <span class="nv">$lastReport</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">getAppValue</span><span class="p">(</span><span class="s1">&#39;survey_client&#39;</span><span class="p">,</span> <span class="s1">&#39;last_report&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nv">$lastReport</span> <span class="o">!==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$lastReport</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">getAppValue</span><span class="p">(</span><span class="s1">'survey_client'</span><span class="p">,</span> <span class="s1">'last_report'</span><span class="p">,</span> <span class="s1">''</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$lastReport</span> <span class="o">!==</span> <span class="s1">''</span><span class="p">)</span> <span class="p">{</span>
                         <span class="nv">$lastReport</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nb">json_decode</span><span class="p">(</span><span class="nv">$lastReport</span><span class="p">,</span> <span class="k">true</span><span class="p">),</span> <span class="nx">JSON_PRETTY_PRINT</span><span class="p">);</span>
                 <span class="p">}</span>
 
                 <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[</span>
-                        <span class="s1">&#39;is_enabled&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">jobList</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="s1">&#39;OCA\Survey_Client\BackgroundJobs\MonthlyReport&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">),</span>
-                        <span class="s1">&#39;last_sent&#39;</span> <span class="o">=&gt;</span> <span class="nv">$lastSentReportDate</span><span class="p">,</span>
-                        <span class="s1">&#39;last_report&#39;</span> <span class="o">=&gt;</span> <span class="nv">$lastReport</span><span class="p">,</span>
-                        <span class="s1">&#39;categories&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">collector</span><span class="o">-&gt;</span><span class="na">getCategories</span><span class="p">()</span>
+                        <span class="s1">'is_enabled'</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">jobList</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="s1">'OCA\Survey_Client\BackgroundJobs\MonthlyReport'</span><span class="p">,</span> <span class="k">null</span><span class="p">),</span>
+                        <span class="s1">'last_sent'</span> <span class="o">=&gt;</span> <span class="nv">$lastSentReportDate</span><span class="p">,</span>
+                        <span class="s1">'last_report'</span> <span class="o">=&gt;</span> <span class="nv">$lastReport</span><span class="p">,</span>
+                        <span class="s1">'categories'</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">collector</span><span class="o">-&gt;</span><span class="na">getCategories</span><span class="p">()</span>
                 <span class="p">];</span>
 
-                <span class="k">return</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="s1">&#39;yourappid&#39;</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="s1">'yourappid'</span><span class="p">,</span> <span class="s1">'admin'</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
         <span class="p">}</span>
 
         <span class="sd">/**</span>
-<span class="sd">         * The section ID, e.g. &#39;sharing&#39;</span>
+<span class="sd">         * The section ID, e.g. 'sharing'</span>
 <span class="sd">         *</span>
 <span class="sd">         * @return string</span>
 <span class="sd">         */</span>
         <span class="k">public</span> <span class="k">function</span> <span class="nf">getSection</span><span class="p">()</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="s1">&#39;survey_client&#39;</span><span class="p">;</span>
+                <span class="k">return</span> <span class="s1">'survey_client'</span><span class="p">;</span>
         <span class="p">}</span>
 
         <span class="sd">/**</span>
@@ -297,45 +297,45 @@ would be the final relative path.</p>
 <span class="sd">/** @var $l \OCP\IL10N */</span>
 <span class="sd">/** @var $_ array */</span>
 
-<span class="nx">script</span><span class="p">(</span><span class="s1">&#39;myappid&#39;</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">);</span>         <span class="c1">// adds a JavaScript file</span>
-<span class="nx">style</span><span class="p">(</span><span class="s1">&#39;survey_client&#39;</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">);</span>    <span class="c1">// adds a CSS file</span>
+<span class="nx">script</span><span class="p">(</span><span class="s1">'myappid'</span><span class="p">,</span> <span class="s1">'admin'</span><span class="p">);</span>         <span class="c1">// adds a JavaScript file</span>
+<span class="nx">style</span><span class="p">(</span><span class="s1">'survey_client'</span><span class="p">,</span> <span class="s1">'admin'</span><span class="p">);</span>    <span class="c1">// adds a CSS file</span>
 <span class="cp">?&gt;</span>
 
-<span class="x">&lt;div id=&quot;survey_client&quot; class=&quot;section&quot;&gt;</span>
-<span class="x">        &lt;h2&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Your app&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/h2&gt;</span>
+<span class="x">&lt;div id="survey_client" class="section"&gt;</span>
+<span class="x">        &lt;h2&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Your app'</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/h2&gt;</span>
 
 <span class="x">        &lt;p&gt;</span>
-<span class="x">                </span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Only administrators are allowed to click the red button&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span>
+<span class="x">                </span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Only administrators are allowed to click the red button'</span><span class="p">));</span> <span class="cp">?&gt;</span>
 <span class="x">        &lt;/p&gt;</span>
 
-<span class="x">        &lt;button&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Click red button&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/button&gt;</span>
+<span class="x">        &lt;button&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Click red button'</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/button&gt;</span>
 
 <span class="x">        &lt;p&gt;</span>
-<span class="x">                &lt;input id=&quot;your_app_magic&quot; name=&quot;your_app_magic&quot;</span>
-<span class="x">                           type=&quot;checkbox&quot; class=&quot;checkbox&quot; value=&quot;1&quot; </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;is_enabled&#39;</span><span class="p">])</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"> checked=&quot;checked&quot;</span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> /&gt;</span>
-<span class="x">                &lt;label for=&quot;your_app_magic&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Do some magic&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/label&gt;</span>
+<span class="x">                &lt;input id="your_app_magic" name="your_app_magic"</span>
+<span class="x">                           type="checkbox" class="checkbox" value="1" </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">'is_enabled'</span><span class="p">])</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"> checked="checked"</span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> /&gt;</span>
+<span class="x">                &lt;label for="your_app_magic"&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Do some magic'</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/label&gt;</span>
 <span class="x">        &lt;/p&gt;</span>
 
-<span class="x">        &lt;h3&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Things to define&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/h3&gt;</span>
+<span class="x">        &lt;h3&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Things to define'</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/h3&gt;</span>
 <span class="x">        </span><span class="cp">&lt;?php</span>
-        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;categories&#39;</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$category</span> <span class="o">=&gt;</span> <span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">'categories'</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$category</span> <span class="o">=&gt;</span> <span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
                 <span class="cp">?&gt;</span>
 <span class="x">                &lt;p&gt;</span>
-<span class="x">                        &lt;input id=&quot;your_app_</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$category</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&quot; name=&quot;your_app_</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$category</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&quot;</span>
-<span class="x">                                   type=&quot;checkbox&quot; class=&quot;checkbox your_app_category&quot; value=&quot;1&quot; </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;enabled&#39;</span><span class="p">])</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"> checked=&quot;checked&quot;</span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> /&gt;</span>
-<span class="x">                        &lt;label for=&quot;your_app_</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$category</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">print_unescaped</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;displayName&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&lt;/label&gt;</span>
+<span class="x">                        &lt;input id="your_app_</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$category</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">" name="your_app_</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$category</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">"</span>
+<span class="x">                                   type="checkbox" class="checkbox your_app_category" value="1" </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">'enabled'</span><span class="p">])</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"> checked="checked"</span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> /&gt;</span>
+<span class="x">                        &lt;label for="your_app_</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$category</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span><span class="cp">&lt;?php</span> <span class="nx">print_unescaped</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">'displayName'</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&lt;/label&gt;</span>
 <span class="x">                &lt;/p&gt;</span>
 <span class="x">                </span><span class="cp">&lt;?php</span>
         <span class="p">}</span>
         <span class="cp">?&gt;</span>
 
-<span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;last_report&#39;</span><span class="p">]))</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">'last_report'</span><span class="p">]))</span><span class="o">:</span> <span class="cp">?&gt;</span>
 
-<span class="x">        &lt;h3&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Last report&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/h3&gt;</span>
+<span class="x">        &lt;h3&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Last report'</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/h3&gt;</span>
 
-<span class="x">        &lt;p&gt;&lt;textarea title=&quot;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Last report&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&quot; class=&quot;last_report&quot; readonly=&quot;readonly&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;last_report&#39;</span><span class="p">]);</span><span class="cp">?&gt;</span><span class="x">&lt;/textarea&gt;&lt;/p&gt;</span>
+<span class="x">        &lt;p&gt;&lt;textarea title="</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Last report'</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">" class="last_report" readonly="readonly"&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">'last_report'</span><span class="p">]);</span><span class="cp">?&gt;</span><span class="x">&lt;/textarea&gt;&lt;/p&gt;</span>
 
-<span class="x">        &lt;em class=&quot;last_sent&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Sent on: %s&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;last_sent&#39;</span><span class="p">]]));</span> <span class="cp">?&gt;</span><span class="x">&lt;/em&gt;</span>
+<span class="x">        &lt;em class="last_sent"&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Sent on: %s'</span><span class="p">,</span> <span class="p">[</span><span class="nv">$_</span><span class="p">[</span><span class="s1">'last_sent'</span><span class="p">]]));</span> <span class="cp">?&gt;</span><span class="x">&lt;/em&gt;</span>
 
 <span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
 
@@ -384,17 +384,17 @@ differences. First, the interface that must be implemented is <code class="docut
 <span class="sd">         * @returns string</span>
 <span class="sd">         */</span>
         <span class="k">public</span> <span class="k">function</span> <span class="nf">getID</span><span class="p">()</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="s1">&#39;yourappid&#39;</span><span class="p">;</span> <span class="c1">//or a generic id if feasible</span>
+                <span class="k">return</span> <span class="s1">'yourappid'</span><span class="p">;</span> <span class="c1">//or a generic id if feasible</span>
         <span class="p">}</span>
 
         <span class="sd">/**</span>
-<span class="sd">         * Returns the translated name as it should be displayed, e.g. &#39;LDAP / AD</span>
-<span class="sd">         * integration&#39;. Use the L10N service to translate it.</span>
+<span class="sd">         * Returns the translated name as it should be displayed, e.g. 'LDAP / AD</span>
+<span class="sd">         * integration'. Use the L10N service to translate it.</span>
 <span class="sd">         *</span>
 <span class="sd">         * @return string</span>
 <span class="sd">         */</span>
         <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Translatable Section Name&#39;</span><span class="p">);</span>
+                <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Translatable Section Name'</span><span class="p">);</span>
         <span class="p">}</span>
 
         <span class="sd">/**</span>
@@ -414,7 +414,7 @@ differences. First, the interface that must be implemented is <code class="docut
 <span class="sd">         * @return string</span>
 <span class="sd">         */</span>
         <span class="k">public</span> <span class="k">function</span> <span class="nf">getIcon</span><span class="p">()</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">imagePath</span><span class="p">(</span><span class="s1">&#39;yourapp&#39;</span><span class="p">,</span> <span class="s1">&#39;icon.svg&#39;</span><span class="p">);</span>
+                <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">imagePath</span><span class="p">(</span><span class="s1">'yourapp'</span><span class="p">,</span> <span class="s1">'icon.svg'</span><span class="p">);</span>
         <span class="p">}</span>
 
 <span class="p">}</span>
@@ -451,7 +451,7 @@ This is rather straightforward as you can see in the code snippet below</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

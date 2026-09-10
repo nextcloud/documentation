@@ -225,20 +225,20 @@ manage authentication tokens, and report on user activity:</p>
 <h3>user:add<a class="headerlink" href="#user-add" title="Link to this heading"></a></h3>
 <p>Create a new user with a display name, login name, and optional group
 memberships:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span><span class="p">:</span><span class="n">add</span> <span class="p">[</span><span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">env</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">generate</span><span class="o">-</span><span class="n">password</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">display</span><span class="o">-</span><span class="n">name</span><span class="p">[</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">]]</span> <span class="p">[</span><span class="o">-</span><span class="n">g</span><span class="o">|--</span><span class="n">group</span><span class="p">[</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">]]</span> <span class="p">[</span><span class="o">--</span><span class="n">email</span> <span class="n">EMAIL</span><span class="p">]</span> <span class="n">uid</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span><span class="p">:</span><span class="n">add</span> <span class="p">[</span><span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">env</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">generate</span><span class="o">-</span><span class="n">password</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">display</span><span class="o">-</span><span class="n">name</span><span class="p">[</span><span class="o">=</span><span class="s2">"..."</span><span class="p">]]</span> <span class="p">[</span><span class="o">-</span><span class="n">g</span><span class="o">|--</span><span class="n">group</span><span class="p">[</span><span class="o">=</span><span class="s2">"..."</span><span class="p">]]</span> <span class="p">[</span><span class="o">--</span><span class="n">email</span> <span class="n">EMAIL</span><span class="p">]</span> <span class="n">uid</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">display-name</span></code> corresponds to the <strong>Full Name</strong> on the Users page in your
 Nextcloud web interface, and the <code class="docutils literal notranslate"><span class="pre">uid</span></code> is their <strong>Username</strong> (login name).
 Any groups that do not exist are created automatically:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">add</span> <span class="o">--</span><span class="n">display</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Layla Smith&quot;</span> \
-  <span class="o">--</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;users&quot;</span> <span class="o">--</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;db-admins&quot;</span> <span class="n">layla</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">add</span> <span class="o">--</span><span class="n">display</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="s2">"Layla Smith"</span> \
+  <span class="o">--</span><span class="n">group</span><span class="o">=</span><span class="s2">"users"</span> <span class="o">--</span><span class="n">group</span><span class="o">=</span><span class="s2">"db-admins"</span> <span class="n">layla</span>
   <span class="n">Enter</span> <span class="n">password</span><span class="p">:</span>
   <span class="n">Confirm</span> <span class="n">password</span><span class="p">:</span>
-  <span class="n">The</span> <span class="n">user</span> <span class="s2">&quot;layla&quot;</span> <span class="n">was</span> <span class="n">created</span> <span class="n">successfully</span>
-  <span class="n">Display</span> <span class="n">name</span> <span class="nb">set</span> <span class="n">to</span> <span class="s2">&quot;Layla Smith&quot;</span>
-  <span class="n">User</span> <span class="s2">&quot;layla&quot;</span> <span class="n">added</span> <span class="n">to</span> <span class="n">group</span> <span class="s2">&quot;users&quot;</span>
-  <span class="n">User</span> <span class="s2">&quot;layla&quot;</span> <span class="n">added</span> <span class="n">to</span> <span class="n">group</span> <span class="s2">&quot;db-admins&quot;</span>
+  <span class="n">The</span> <span class="n">user</span> <span class="s2">"layla"</span> <span class="n">was</span> <span class="n">created</span> <span class="n">successfully</span>
+  <span class="n">Display</span> <span class="n">name</span> <span class="nb">set</span> <span class="n">to</span> <span class="s2">"Layla Smith"</span>
+  <span class="n">User</span> <span class="s2">"layla"</span> <span class="n">added</span> <span class="n">to</span> <span class="n">group</span> <span class="s2">"users"</span>
+  <span class="n">User</span> <span class="s2">"layla"</span> <span class="n">added</span> <span class="n">to</span> <span class="n">group</span> <span class="s2">"db-admins"</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">--password-from-env</span></code> reads the password from the <code class="docutils literal notranslate"><span class="pre">OC_PASS</span></code> environment
@@ -247,17 +247,17 @@ the creation of multiple users. Note that <code class="docutils literal notransl
 by default; the <code class="docutils literal notranslate"><span class="pre">-E</span></code> flag preserves them, as shown in the example below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">OC_PASS</span><span class="o">=</span><span class="n">newpassword</span>
 <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">add</span> <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">env</span> \
-  <span class="o">--</span><span class="n">display</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Layla Smith&quot;</span> <span class="o">--</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;users&quot;</span> <span class="n">layla</span>
-<span class="n">The</span> <span class="n">user</span> <span class="s2">&quot;layla&quot;</span> <span class="n">was</span> <span class="n">created</span> <span class="n">successfully</span>
-<span class="n">Display</span> <span class="n">name</span> <span class="nb">set</span> <span class="n">to</span> <span class="s2">&quot;Layla Smith&quot;</span>
-<span class="n">User</span> <span class="s2">&quot;layla&quot;</span> <span class="n">added</span> <span class="n">to</span> <span class="n">group</span> <span class="s2">&quot;users&quot;</span>
+  <span class="o">--</span><span class="n">display</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="s2">"Layla Smith"</span> <span class="o">--</span><span class="n">group</span><span class="o">=</span><span class="s2">"users"</span> <span class="n">layla</span>
+<span class="n">The</span> <span class="n">user</span> <span class="s2">"layla"</span> <span class="n">was</span> <span class="n">created</span> <span class="n">successfully</span>
+<span class="n">Display</span> <span class="n">name</span> <span class="nb">set</span> <span class="n">to</span> <span class="s2">"Layla Smith"</span>
+<span class="n">User</span> <span class="s2">"layla"</span> <span class="n">added</span> <span class="n">to</span> <span class="n">group</span> <span class="s2">"users"</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">--generate-password</span></code> sets a securely generated password that is never shown
 in the output. Combined with <code class="docutils literal notranslate"><span class="pre">--email</span></code>, this creates a user with a temporary
 password and sends a welcome email:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">add</span> <span class="n">layla</span> <span class="o">--</span><span class="n">generate</span><span class="o">-</span><span class="n">password</span> <span class="o">--</span><span class="n">email</span> <span class="n">layla</span><span class="nd">@example</span><span class="o">.</span><span class="n">tld</span>
-  <span class="n">The</span> <span class="n">account</span> <span class="s2">&quot;layla&quot;</span> <span class="n">was</span> <span class="n">created</span> <span class="n">successfully</span>
+  <span class="n">The</span> <span class="n">account</span> <span class="s2">"layla"</span> <span class="n">was</span> <span class="n">created</span> <span class="n">successfully</span>
   <span class="n">Welcome</span> <span class="n">email</span> <span class="n">sent</span> <span class="n">to</span> <span class="n">layla</span><span class="nd">@example</span><span class="o">.</span><span class="n">tld</span>
 </pre></div>
 </div>
@@ -267,7 +267,7 @@ if it is not set at all (<code class="docutils literal notranslate"><span class=
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">add</span> <span class="n">layla</span> <span class="o">--</span><span class="n">email</span> <span class="n">layla</span><span class="nd">@example</span><span class="o">.</span><span class="n">tld</span>
   <span class="n">Enter</span> <span class="n">password</span><span class="p">:</span>
   <span class="n">Confirm</span> <span class="n">password</span><span class="p">:</span>
-  <span class="n">The</span> <span class="n">account</span> <span class="s2">&quot;layla&quot;</span> <span class="n">was</span> <span class="n">created</span> <span class="n">successfully</span>
+  <span class="n">The</span> <span class="n">account</span> <span class="s2">"layla"</span> <span class="n">was</span> <span class="n">created</span> <span class="n">successfully</span>
   <span class="n">Welcome</span> <span class="n">email</span> <span class="n">sent</span> <span class="n">to</span> <span class="n">layla</span><span class="nd">@example</span><span class="o">.</span><span class="n">tld</span>
 </pre></div>
 </div>
@@ -319,15 +319,15 @@ if it is not set at all (<code class="docutils literal notranslate"><span class=
 <h3>user:lastseen<a class="headerlink" href="#user-lastseen" title="Link to this heading"></a></h3>
 <p>Show a specific user’s most recent login:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">lastseen</span> <span class="n">layla</span>
-  <span class="n">layla</span><span class="s1">&#39;s last login: 2024-03-20 17:18</span>
+  <span class="n">layla</span><span class="s1">'s last login: 2024-03-20 17:18</span>
 </pre></div>
 </div>
 <p>Show all users’ most recent logins:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">lastseen</span> <span class="o">--</span><span class="nb">all</span>
-  <span class="n">albert</span><span class="s1">&#39;s last login: 2024-03-18 10:30</span>
+  <span class="n">albert</span><span class="s1">'s last login: 2024-03-18 10:30</span>
   <span class="n">bob</span> <span class="n">has</span> <span class="n">never</span> <span class="n">logged</span> <span class="ow">in</span><span class="o">.</span>
-  <span class="n">layla</span><span class="s1">&#39;s last login: 2024-03-20 17:18</span>
-  <span class="n">stephanie</span><span class="s1">&#39;s last login: 2024-01-11 13:26</span>
+  <span class="n">layla</span><span class="s1">'s last login: 2024-03-20 17:18</span>
+  <span class="n">stephanie</span><span class="s1">'s last login: 2024-01-11 13:26</span>
 </pre></div>
 </div>
 </section>
@@ -420,7 +420,7 @@ quota, and storage usage:</p>
 </pre></div>
 </div>
 <p>Set a setting:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">setting</span> <span class="n">layla</span> <span class="n">settings</span> <span class="n">email</span> <span class="s2">&quot;new-layla@example.tld&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">setting</span> <span class="n">layla</span> <span class="n">settings</span> <span class="n">email</span> <span class="s2">"new-layla@example.tld"</span>
 </pre></div>
 </div>
 <p>Delete a setting:</p>
@@ -471,7 +471,7 @@ user:</p>
 <p>Create an app password for a user. If no login password is provided, the
 generated token will have limited capabilities (operations that require the
 login password will fail):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">auth</span><span class="o">-</span><span class="n">tokens</span><span class="p">:</span><span class="n">add</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Backup script&quot;</span> <span class="n">layla</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">auth</span><span class="o">-</span><span class="n">tokens</span><span class="p">:</span><span class="n">add</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="s2">"Backup script"</span> <span class="n">layla</span>
   <span class="n">Enter</span> <span class="n">password</span><span class="p">:</span>
   <span class="n">app</span> <span class="n">password</span><span class="p">:</span> <span class="n">kFrH9</span><span class="o">-</span><span class="n">TXk4s</span><span class="o">-</span><span class="n">gUoOQ</span><span class="o">-</span><span class="n">KOVH8</span>
 </pre></div>
@@ -479,7 +479,7 @@ login password will fail):</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">--password-from-env</span></code> to read the login password from <code class="docutils literal notranslate"><span class="pre">NC_PASS</span></code>
 non-interactively:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">NC_PASS</span><span class="o">=</span><span class="n">userpassword</span>
-<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">auth</span><span class="o">-</span><span class="n">tokens</span><span class="p">:</span><span class="n">add</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;CI runner&quot;</span> \
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">auth</span><span class="o">-</span><span class="n">tokens</span><span class="p">:</span><span class="n">add</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="s2">"CI runner"</span> \
   <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">env</span> <span class="n">layla</span>
 </pre></div>
 </div>
@@ -492,7 +492,7 @@ non-interactively:</p>
 </div>
 <p>Delete all tokens for a user that have not been used since a given date:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">auth</span><span class="o">-</span><span class="n">tokens</span><span class="p">:</span><span class="n">delete</span> <span class="n">layla</span> \
-  <span class="o">--</span><span class="n">last</span><span class="o">-</span><span class="n">used</span><span class="o">-</span><span class="n">before</span><span class="o">=</span><span class="s2">&quot;2024-01-01&quot;</span>
+  <span class="o">--</span><span class="n">last</span><span class="o">-</span><span class="n">used</span><span class="o">-</span><span class="n">before</span><span class="o">=</span><span class="s2">"2024-01-01"</span>
 </pre></div>
 </div>
 </section>
@@ -744,8 +744,8 @@ restricted and invisible tags, such as retention and access control.</p>
 <section id="tag-edit">
 <h3>tag:edit<a class="headerlink" href="#tag-edit" title="Link to this heading"></a></h3>
 <p>Rename a tag or change its access level. Use the tag ID from <code class="docutils literal notranslate"><span class="pre">tag:list</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">tag</span><span class="p">:</span><span class="n">edit</span> <span class="o">--</span><span class="n">name</span> <span class="s2">&quot;reviewed&quot;</span> <span class="o">--</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="mi">2</span>
-  <span class="n">Tag</span> <span class="n">updated</span> <span class="p">(</span><span class="s2">&quot;reviewed&quot;</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">tag</span><span class="p">:</span><span class="n">edit</span> <span class="o">--</span><span class="n">name</span> <span class="s2">"reviewed"</span> <span class="o">--</span><span class="n">color</span><span class="o">=</span><span class="s2">""</span> <span class="mi">2</span>
+  <span class="n">Tag</span> <span class="n">updated</span> <span class="p">(</span><span class="s2">"reviewed"</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">--name</span></code> and <code class="docutils literal notranslate"><span class="pre">--access</span></code> are optional. <code class="docutils literal notranslate"><span class="pre">--color=&quot;&quot;</span></code> must be passed

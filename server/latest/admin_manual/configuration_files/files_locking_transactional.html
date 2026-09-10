@@ -230,13 +230,13 @@ require the installation of a PHP module (see <a class="reference internal" href
 <p>The <code class="docutils literal notranslate"><span class="pre">KeyValueCache</span></code> cache is built on a library bundled with Nextcloud, so no PHP module
 needs to be installed — you only need a running Valkey or Redis compatible server.
 Enter a configuration in your <code class="docutils literal notranslate"><span class="pre">config.php</span></code> file like this example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\KeyValueCache&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.kvstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-     <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-          <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.locking'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\KeyValueCache'</span><span class="p">,</span>
+<span class="s1">'memcache.kvstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+     <span class="s1">'server'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+          <span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'localhost'</span><span class="p">,</span>
+          <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
      <span class="p">],</span>
-     <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">//</span> <span class="n">Optional</span><span class="p">,</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">defined</span> <span class="n">no</span> <span class="n">password</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span><span class="o">.</span>
+     <span class="s1">'password'</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span> <span class="o">//</span> <span class="n">Optional</span><span class="p">,</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">defined</span> <span class="n">no</span> <span class="n">password</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span><span class="o">.</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -248,12 +248,12 @@ Sentinel and cluster setups.</p>
 <p>To use the <code class="docutils literal notranslate"><span class="pre">Redis</span></code> cache instead, you must install the Redis server and corresponding
 PHP module. After installing Redis you must enter a configuration in your <code class="docutils literal notranslate"><span class="pre">config.php</span></code>
 file like this example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
-<span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
-     <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
-     <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
-     <span class="s1">&#39;timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
-     <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">//</span> <span class="n">Optional</span><span class="p">,</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">defined</span> <span class="n">no</span> <span class="n">password</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.locking'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
+<span class="s1">'redis'</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+     <span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'localhost'</span><span class="p">,</span>
+     <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+     <span class="s1">'timeout'</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
+     <span class="s1">'password'</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span> <span class="o">//</span> <span class="n">Optional</span><span class="p">,</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">defined</span> <span class="n">no</span> <span class="n">password</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span><span class="o">.</span>
       <span class="p">),</span>
 </pre></div>
 </div>
@@ -266,11 +266,11 @@ server to require a password. See <a class="reference external" href="http://red
 <p>If you want to configure Redis to listen on an Unix socket (which is
 recommended if Redis is running on the same system as Nextcloud) use this example
 <code class="docutils literal notranslate"><span class="pre">config.php</span></code> configuration:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
-<span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
-     <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/run/redis/redis-server.sock&#39;</span><span class="p">,</span>
-     <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
-     <span class="s1">&#39;timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.locking'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
+<span class="s1">'redis'</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+     <span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'/run/redis/redis-server.sock'</span><span class="p">,</span>
+     <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+     <span class="s1">'timeout'</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
       <span class="p">),</span>
 </pre></div>
 </div>

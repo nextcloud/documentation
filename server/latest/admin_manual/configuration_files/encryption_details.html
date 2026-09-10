@@ -328,8 +328,8 @@ With user key encryption enabled all users have their own user keys that are use
 <section id="id1">
 <h3>File format<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>The RSA private key that is represented in PEM format is encrypted and Base64 encoded (denoted as <code class="docutils literal notranslate"><span class="pre">$encryption</span></code>). For the encryption an initialization vector of 16 bytes is selected (denoted as <code class="docutils literal notranslate"><span class="pre">$iv</span></code>). Furthermore a hexadecimally encoded message authentication code of 64 bytes is calculated (denoted as <code class="docutils literal notranslate"><span class="pre">$signature</span></code>). The resulting file contains:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&quot;HBEGIN:cipher:AES-256-CTR:keyFormat:hash:HEND&quot;.
-$encrypted.&quot;00iv00&quot;.$iv.&quot;00sig00&quot;.$signature.&quot;xxx&quot;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>"HBEGIN:cipher:AES-256-CTR:keyFormat:hash:HEND".
+$encrypted."00iv00".$iv."00sig00".$signature."xxx"
 </pre></div>
 </div>
 </section>
@@ -386,12 +386,12 @@ $encrypted.&quot;00iv00&quot;.$iv.&quot;00sig00&quot;.$signature.&quot;xxx&quot;
 <section id="id7">
 <h3>File format<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>The file content is split into blocks of 6072 bytes. Each block is encrypted and Base64 encoded (denoted as <code class="docutils literal notranslate"><span class="pre">$encryption[0..$n]</span></code>). For the encryption an initialization vector of 16 bytes is selected for each block (denoted as <code class="docutils literal notranslate"><span class="pre">$iv[0..$n]</span></code>). Furthermore a hexadecimally encoded message authentication code of 64 bytes is calculated of each block (denoted as <code class="docutils literal notranslate"><span class="pre">$signature[0..$n]</span></code>). An encrypted block has a total size of 8192 bytes (8096 bytes for <code class="docutils literal notranslate"><span class="pre">$encrypted[]</span></code>, 6 bytes for <code class="docutils literal notranslate"><span class="pre">&quot;00iv00&quot;</span></code>, 16 bytes for <code class="docutils literal notranslate"><span class="pre">$iv[]</span></code>, 7 bytes for <code class="docutils literal notranslate"><span class="pre">&quot;00sig00&quot;</span></code>, 64 bytes for <code class="docutils literal notranslate"><span class="pre">$signature[]</span></code> and 3 bytes for <code class="docutils literal notranslate"><span class="pre">&quot;xxx&quot;</span></code>). Only the last encrypted block may be shorter. The header of the encrypted file is padded with 8147 bytes of <code class="docutils literal notranslate"><span class="pre">&quot;-&quot;</span></code> (denoted as <code class="docutils literal notranslate"><span class="pre">$padding</span></code>) to a total of 8192 bytes. The resulting file contains:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&quot;HBEGIN:cipher:AES-256-CTR:keyFormat:hash:HEND&quot;.$padding.
-$encrypted[0].&quot;00iv00&quot;.$iv[0].&quot;00sig00&quot;.$signature[0].&quot;xxx&quot;.
-$encrypted[1].&quot;00iv00&quot;.$iv[1].&quot;00sig00&quot;.$signature[1].&quot;xxx&quot;.
-$encrypted[2].&quot;00iv00&quot;.$iv[2].&quot;00sig00&quot;.$signature[2].&quot;xxx&quot;.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>"HBEGIN:cipher:AES-256-CTR:keyFormat:hash:HEND".$padding.
+$encrypted[0]."00iv00".$iv[0]."00sig00".$signature[0]."xxx".
+$encrypted[1]."00iv00".$iv[1]."00sig00".$signature[1]."xxx".
+$encrypted[2]."00iv00".$iv[2]."00sig00".$signature[2]."xxx".
 [...]
-$encrypted[$n].&quot;00iv00&quot;.$iv[$n].&quot;00sig00&quot;.$signature[$n].&quot;xxx&quot;
+$encrypted[$n]."00iv00".$iv[$n]."00sig00".$signature[$n]."xxx"
 </pre></div>
 </div>
 </section>

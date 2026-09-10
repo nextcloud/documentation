@@ -300,8 +300,8 @@ If that user already exists, a numeric suffix is appended (<code class="docutils
 <code class="docutils literal notranslate"><span class="pre">oc_admin2</span></code>, etc.) until an available username is found.</p>
 <p>A random password is generated for the new user. The resulting credentials are
 written into <code class="docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;dbuser&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;oc_admin&#39;</span><span class="p">,</span>
-<span class="s1">&#39;dbpassword&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;pX65Ty5DrHQkYPE5HRsDvyFHlZZHcm&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'dbuser'</span> <span class="o">=&gt;</span> <span class="s1">'oc_admin'</span><span class="p">,</span>
+<span class="s1">'dbpassword'</span> <span class="o">=&gt;</span> <span class="s1">'pX65Ty5DrHQkYPE5HRsDvyFHlZZHcm'</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>If the provided user lacks the privileges to create new database users, the
@@ -310,7 +310,7 @@ installer falls back to using the provided credentials directly.</p>
 <p class="admonition-title">Tip</p>
 <p>You can also explicitly prevent automatic user creation by setting the following
 in your <code class="docutils literal notranslate"><span class="pre">config.php</span></code> before running the wizard (or via an autoconfig file):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;setup_create_db_user&#39;</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'setup_create_db_user'</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>This is useful when your database administrator has already created a dedicated
@@ -351,12 +351,12 @@ list of allowed client-side domains or IP addresses.
 You may use IP addresses and domain names. Wildcard patterns using <code class="docutils literal notranslate"><span class="pre">*</span></code> are
 also supported (e.g. <code class="docutils literal notranslate"><span class="pre">*.example.com</span></code>).
 A typical configuration looks like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;trusted_domains&#39;</span> <span class="o">=&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'trusted_domains'</span> <span class="o">=&gt;</span>
   <span class="n">array</span> <span class="p">(</span>
-   <span class="mi">0</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
-   <span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;server1.example.com&#39;</span><span class="p">,</span>
-   <span class="mi">2</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.1.50&#39;</span><span class="p">,</span>
-   <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s1">&#39;[fe80::1:50]&#39;</span><span class="p">,</span>
+   <span class="mi">0</span> <span class="o">=&gt;</span> <span class="s1">'localhost'</span><span class="p">,</span>
+   <span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">'server1.example.com'</span><span class="p">,</span>
+   <span class="mi">2</span> <span class="o">=&gt;</span> <span class="s1">'192.168.1.50'</span><span class="p">,</span>
+   <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s1">'[fe80::1:50]'</span><span class="p">,</span>
 <span class="p">),</span>
 </pre></div>
 </div>

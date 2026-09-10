@@ -277,19 +277,19 @@ verify that it is active by running <a class="reference internal" href="../issue
 <section id="small-private-home-server">
 <h3>Small/Private home server<a class="headerlink" href="#small-private-home-server" title="Link to this heading"></a></h3>
 <p>Only use APCu:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\APCu&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.local'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\APCu'</span><span class="p">,</span>
 </pre></div>
 </div>
 </section>
 <section id="organizations-with-single-server">
 <h3>Organizations with single-server<a class="headerlink" href="#organizations-with-single-server" title="Link to this heading"></a></h3>
 <p>Use Redis for everything except local memcache:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\APCu&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
-<span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-     <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
-     <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.local'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\APCu'</span><span class="p">,</span>
+<span class="s1">'memcache.distributed'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
+<span class="s1">'memcache.locking'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
+<span class="s1">'redis'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+     <span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'localhost'</span><span class="p">,</span>
+     <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -297,24 +297,24 @@ verify that it is active by running <a class="reference internal" href="../issue
 <section id="organizations-with-clustered-setups">
 <h3>Organizations with clustered setups<a class="headerlink" href="#organizations-with-clustered-setups" title="Link to this heading"></a></h3>
 <p>Use APCu for local cache and either Redis cluster …:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\APCu&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
-<span class="s1">&#39;redis.cluster&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="s1">&#39;seeds&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="o">//</span> <span class="n">provide</span> <span class="n">some</span><span class="o">/</span><span class="nb">all</span> <span class="n">of</span> <span class="n">the</span> <span class="n">cluster</span> <span class="n">servers</span> <span class="n">to</span> <span class="n">bootstrap</span> <span class="n">discovery</span><span class="p">,</span> <span class="n">port</span> <span class="n">required</span>
-       <span class="s1">&#39;cache-cluster:7000&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;cache-cluster:7001&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.local'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\APCu'</span><span class="p">,</span>
+<span class="s1">'memcache.distributed'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
+<span class="s1">'memcache.locking'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
+<span class="s1">'redis.cluster'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'seeds'</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="o">//</span> <span class="n">provide</span> <span class="n">some</span><span class="o">/</span><span class="nb">all</span> <span class="n">of</span> <span class="n">the</span> <span class="n">cluster</span> <span class="n">servers</span> <span class="n">to</span> <span class="n">bootstrap</span> <span class="n">discovery</span><span class="p">,</span> <span class="n">port</span> <span class="n">required</span>
+       <span class="s1">'cache-cluster:7000'</span><span class="p">,</span>
+       <span class="s1">'cache-cluster:7001'</span><span class="p">,</span>
     <span class="p">],</span>
  <span class="p">],</span>
 </pre></div>
 </div>
 <p>… or Memcached cluster …:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\APCu&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Memcached&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Memcached&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcached_servers&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="p">[</span> <span class="s1">&#39;server1.example.com&#39;</span><span class="p">,</span> <span class="mi">11211</span> <span class="p">],</span>
-    <span class="p">[</span> <span class="s1">&#39;server2.example.com&#39;</span><span class="p">,</span> <span class="mi">11211</span> <span class="p">],</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.local'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\APCu'</span><span class="p">,</span>
+<span class="s1">'memcache.distributed'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Memcached'</span><span class="p">,</span>
+<span class="s1">'memcache.locking'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Memcached'</span><span class="p">,</span>
+<span class="s1">'memcached_servers'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="p">[</span> <span class="s1">'server1.example.com'</span><span class="p">,</span> <span class="mi">11211</span> <span class="p">],</span>
+    <span class="p">[</span> <span class="s1">'server2.example.com'</span><span class="p">,</span> <span class="mi">11211</span> <span class="p">],</span>
  <span class="p">],</span>
 </pre></div>
 </div>
@@ -340,7 +340,7 @@ use Redis for both.</p>
 Linux distributions. On Red Hat/CentOS/Fedora systems install
 <code class="docutils literal notranslate"><span class="pre">php-pecl-apcu</span></code>. On Debian/Ubuntu/Mint systems install <code class="docutils literal notranslate"><span class="pre">php-apcu</span></code>.</p>
 <p>After restarting your Web server, add this line to your <code class="docutils literal notranslate"><span class="pre">config.php</span></code> file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\APCu&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.local'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\APCu'</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>Refresh your Nextcloud admin page, and the cache warning should disappear.</p>
@@ -393,16 +393,16 @@ at boot as a daemon.</p>
 <section id="keyvaluecache-configuration-in-nextcloud-config-php">
 <span id="keyvalue-cache-configuration"></span><h3>KeyValueCache configuration in Nextcloud (config.php)<a class="headerlink" href="#keyvaluecache-configuration-in-nextcloud-config-php" title="Link to this heading"></a></h3>
 <p>For best performance, use the <code class="docutils literal notranslate"><span class="pre">KeyValueCache</span></code> for file locking by adding this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\KeyValueCache&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.locking'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\KeyValueCache'</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>Additionally, you should use it for the distributed server cache:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\KeyValueCache&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.distributed'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\KeyValueCache'</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>Furthermore, you could use it for the local cache like so, but it’s not recommended (see
 warning below):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\KeyValueCache&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.local'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\KeyValueCache'</span><span class="p">,</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -416,23 +416,23 @@ server (<code class="docutils literal notranslate"><span class="pre">server</spa
 (<code class="docutils literal notranslate"><span class="pre">seeds</span></code>). Configure exactly one of them.</p>
 <p>The following options are available when using a single server (all but <code class="docutils literal notranslate"><span class="pre">server</span></code> are
 optional):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\KeyValueCache&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\KeyValueCache&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache_customprefix&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mynextcloudprefix&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.kvstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-   <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-      <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;cache-host.example.com&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
-      <span class="o">//</span> <span class="n">Protocol</span> <span class="n">used</span> <span class="n">to</span> <span class="n">connect</span><span class="o">.</span> <span class="n">One</span> <span class="n">of</span> <span class="s1">&#39;tcp&#39;</span><span class="p">,</span> <span class="s1">&#39;tls&#39;</span> <span class="ow">or</span> <span class="s1">&#39;unix&#39;</span><span class="o">.</span>
-      <span class="o">//</span> <span class="n">When</span> <span class="n">omitted</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">derived</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">host</span> <span class="p">(</span><span class="n">a</span> <span class="n">leading</span> <span class="s1">&#39;/&#39;</span> <span class="n">means</span> <span class="s1">&#39;unix&#39;</span><span class="p">)</span><span class="o">.</span>
-      <span class="s1">&#39;protocol&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;tcp&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.locking'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\KeyValueCache'</span><span class="p">,</span>
+<span class="s1">'memcache.distributed'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\KeyValueCache'</span><span class="p">,</span>
+<span class="s1">'memcache_customprefix'</span> <span class="o">=&gt;</span> <span class="s1">'mynextcloudprefix'</span><span class="p">,</span>
+<span class="s1">'memcache.kvstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">'server'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+      <span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'cache-host.example.com'</span><span class="p">,</span>
+      <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+      <span class="o">//</span> <span class="n">Protocol</span> <span class="n">used</span> <span class="n">to</span> <span class="n">connect</span><span class="o">.</span> <span class="n">One</span> <span class="n">of</span> <span class="s1">'tcp'</span><span class="p">,</span> <span class="s1">'tls'</span> <span class="ow">or</span> <span class="s1">'unix'</span><span class="o">.</span>
+      <span class="o">//</span> <span class="n">When</span> <span class="n">omitted</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">derived</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">host</span> <span class="p">(</span><span class="n">a</span> <span class="n">leading</span> <span class="s1">'/'</span> <span class="n">means</span> <span class="s1">'unix'</span><span class="p">)</span><span class="o">.</span>
+      <span class="s1">'protocol'</span> <span class="o">=&gt;</span> <span class="s1">'tcp'</span><span class="p">,</span>
    <span class="p">],</span>
-   <span class="s1">&#39;user&#39;</span>         <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span> <span class="o">//</span> <span class="n">only</span> <span class="n">sent</span> <span class="n">when</span> <span class="n">the</span> <span class="n">server</span> <span class="n">uses</span> <span class="n">ACLs</span>
-   <span class="s1">&#39;password&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span>
-   <span class="s1">&#39;dbindex&#39;</span>      <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
-   <span class="s1">&#39;timeout&#39;</span>      <span class="o">=&gt;</span> <span class="mf">1.5</span><span class="p">,</span>
-   <span class="s1">&#39;read_timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">1.5</span><span class="p">,</span>
-   <span class="s1">&#39;persistent&#39;</span>   <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span> <span class="o">//</span> <span class="n">keep</span> <span class="n">the</span> <span class="n">connection</span> <span class="nb">open</span> <span class="n">across</span> <span class="n">requests</span>
+   <span class="s1">'user'</span>         <span class="o">=&gt;</span> <span class="s1">'nextcloud'</span><span class="p">,</span> <span class="o">//</span> <span class="n">only</span> <span class="n">sent</span> <span class="n">when</span> <span class="n">the</span> <span class="n">server</span> <span class="n">uses</span> <span class="n">ACLs</span>
+   <span class="s1">'password'</span>     <span class="o">=&gt;</span> <span class="s1">'password'</span><span class="p">,</span>
+   <span class="s1">'dbindex'</span>      <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+   <span class="s1">'timeout'</span>      <span class="o">=&gt;</span> <span class="mf">1.5</span><span class="p">,</span>
+   <span class="s1">'read_timeout'</span> <span class="o">=&gt;</span> <span class="mf">1.5</span><span class="p">,</span>
+   <span class="s1">'persistent'</span>   <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span> <span class="o">//</span> <span class="n">keep</span> <span class="n">the</span> <span class="n">connection</span> <span class="nb">open</span> <span class="n">across</span> <span class="n">requests</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -440,23 +440,23 @@ optional):</p>
 applied to every node.</p>
 <p>For a Sentinel managed replication setup, provide the name of the monitored service and one seed
 entry per Sentinel node (each seed uses the same format as the <code class="docutils literal notranslate"><span class="pre">server</span></code> entry above):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.kvstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-   <span class="s1">&#39;sentinel&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-      <span class="s1">&#39;service&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mymaster&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;seeds&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-         <span class="p">[</span><span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;sentinel1.example.com&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">26379</span><span class="p">],</span>
-         <span class="p">[</span><span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;sentinel2.example.com&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">26379</span><span class="p">],</span>
-         <span class="p">[</span><span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;sentinel3.example.com&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">26379</span><span class="p">],</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.kvstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">'sentinel'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+      <span class="s1">'service'</span> <span class="o">=&gt;</span> <span class="s1">'mymaster'</span><span class="p">,</span>
+      <span class="s1">'seeds'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+         <span class="p">[</span><span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'sentinel1.example.com'</span><span class="p">,</span> <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">26379</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'sentinel2.example.com'</span><span class="p">,</span> <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">26379</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'sentinel3.example.com'</span><span class="p">,</span> <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">26379</span><span class="p">],</span>
       <span class="p">],</span>
    <span class="p">],</span>
 <span class="p">],</span>
 </pre></div>
 </div>
 <p>For a cluster, provide some or all of the cluster nodes to bootstrap discovery:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.kvstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-   <span class="s1">&#39;seeds&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-      <span class="p">[</span><span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;cache-cluster.example.com&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">7000</span><span class="p">],</span>
-      <span class="p">[</span><span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;cache-cluster.example.com&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">7001</span><span class="p">],</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.kvstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">'seeds'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+      <span class="p">[</span><span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'cache-cluster.example.com'</span><span class="p">,</span> <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">7000</span><span class="p">],</span>
+      <span class="p">[</span><span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'cache-cluster.example.com'</span><span class="p">,</span> <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">7001</span><span class="p">],</span>
    <span class="p">],</span>
 <span class="p">],</span>
 </pre></div>
@@ -471,16 +471,16 @@ Sentinel setups; clusters always use database 0, the support for numbered databa
 <h3>Connecting over TLS<a class="headerlink" href="#connecting-over-tls" title="Link to this heading"></a></h3>
 <p>To connect via TCP over TLS, set the <code class="docutils literal notranslate"><span class="pre">protocol</span></code> of the server (or of each seed) to <code class="docutils literal notranslate"><span class="pre">tls</span></code> and
 provide the SSL context (<a class="reference external" href="https://www.php.net/manual/en/context.ssl.php">SSL context options</a>):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.kvstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-   <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-      <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;cache-host.example.com&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
-      <span class="s1">&#39;protocol&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;tls&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.kvstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">'server'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+      <span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'cache-host.example.com'</span><span class="p">,</span>
+      <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+      <span class="s1">'protocol'</span> <span class="o">=&gt;</span> <span class="s1">'tls'</span><span class="p">,</span>
    <span class="p">],</span>
-   <span class="s1">&#39;ssl_context&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-      <span class="s1">&#39;local_cert&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/certs/cache.crt&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;local_pk&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/certs/cache.key&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;cafile&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/certs/ca.crt&#39;</span><span class="p">,</span>
+   <span class="s1">'ssl_context'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+      <span class="s1">'local_cert'</span> <span class="o">=&gt;</span> <span class="s1">'/certs/cache.crt'</span><span class="p">,</span>
+      <span class="s1">'local_pk'</span> <span class="o">=&gt;</span> <span class="s1">'/certs/cache.key'</span><span class="p">,</span>
+      <span class="s1">'cafile'</span> <span class="o">=&gt;</span> <span class="s1">'/certs/ca.crt'</span><span class="p">,</span>
    <span class="p">],</span>
 <span class="p">],</span>
 </pre></div>
@@ -492,9 +492,9 @@ provide the SSL context (<a class="reference external" href="https://www.php.net
 the server is running on the same system as Nextcloud), pass the socket path as the host. A
 leading slash in the host is automatically detected as a Unix socket, so no <code class="docutils literal notranslate"><span class="pre">protocol</span></code> or
 <code class="docutils literal notranslate"><span class="pre">port</span></code> is needed:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.kvstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-   <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-      <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/run/valkey/valkey.sock&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.kvstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">'server'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+      <span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'/run/valkey/valkey.sock'</span><span class="p">,</span>
    <span class="p">],</span>
 <span class="p">],</span>
 </pre></div>
@@ -541,16 +541,16 @@ refresh your Nextcloud admin page.</p>
 <section id="redis-configuration-in-nextcloud-config-php">
 <h3>Redis configuration in Nextcloud (config.php)<a class="headerlink" href="#redis-configuration-in-nextcloud-config-php" title="Link to this heading"></a></h3>
 <p>For best performance, use Redis for file locking by adding this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.locking'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>Additionally, you should use Redis for the distributed server cache:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.distributed'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>Furthermore, you could use Redis for the local cache like so, but it’s not recommended (see
 warning below):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.local'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -562,42 +562,42 @@ even on a single-server setup, APCu (see section above) should be faster.</p>
 specify either the <code class="docutils literal notranslate"><span class="pre">redis</span></code> or <code class="docutils literal notranslate"><span class="pre">redis.cluster</span></code> configuration in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>.</p>
 <p>The following options are available to configure when using a single redis server
 (all but <code class="docutils literal notranslate"><span class="pre">host</span></code> and <code class="docutils literal notranslate"><span class="pre">port</span></code> are optional. For the latter two, see the next sections):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span><span class="s1">&#39;\OC\Memcache\Redis&#39;</span> <span class="p">,</span>
-<span class="s1">&#39;memcache_customprefix&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mynextcloudprefix&#39;</span><span class="p">,</span>
-<span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-   <span class="o">//</span> <span class="s1">&#39;host&#39;</span>      <span class="o">=&gt;</span> <span class="n">see</span> <span class="n">connection</span> <span class="n">parameters</span> <span class="n">below</span>
-   <span class="o">//</span> <span class="s1">&#39;port&#39;</span>      <span class="o">=&gt;</span> <span class="n">see</span> <span class="n">connection</span> <span class="n">parameters</span> <span class="n">below</span>
-  <span class="s1">&#39;user&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;password&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;dbindex&#39;</span>       <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s1">&#39;timeout&#39;</span>       <span class="o">=&gt;</span> <span class="mf">1.5</span><span class="p">,</span>
-  <span class="s1">&#39;read_timeout&#39;</span>  <span class="o">=&gt;</span> <span class="mf">1.5</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.locking'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
+<span class="s1">'memcache.distributed'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
+<span class="s1">'memcache.local'</span> <span class="o">=&gt;</span><span class="s1">'\OC\Memcache\Redis'</span> <span class="p">,</span>
+<span class="s1">'memcache_customprefix'</span> <span class="o">=&gt;</span> <span class="s1">'mynextcloudprefix'</span><span class="p">,</span>
+<span class="s1">'redis'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="o">//</span> <span class="s1">'host'</span>      <span class="o">=&gt;</span> <span class="n">see</span> <span class="n">connection</span> <span class="n">parameters</span> <span class="n">below</span>
+   <span class="o">//</span> <span class="s1">'port'</span>      <span class="o">=&gt;</span> <span class="n">see</span> <span class="n">connection</span> <span class="n">parameters</span> <span class="n">below</span>
+  <span class="s1">'user'</span>          <span class="o">=&gt;</span> <span class="s1">'nextcloud'</span><span class="p">,</span>
+  <span class="s1">'password'</span>      <span class="o">=&gt;</span> <span class="s1">'password'</span><span class="p">,</span>
+  <span class="s1">'dbindex'</span>       <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s1">'timeout'</span>       <span class="o">=&gt;</span> <span class="mf">1.5</span><span class="p">,</span>
+  <span class="s1">'read_timeout'</span>  <span class="o">=&gt;</span> <span class="mf">1.5</span><span class="p">,</span>
 <span class="p">],</span>
 </pre></div>
 </div>
 <p>The following options are available to configure when using a redis cluster (all but <code class="docutils literal notranslate"><span class="pre">seeds</span></code>
 are optional):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span><span class="s1">&#39;\OC\Memcache\Redis&#39;</span> <span class="p">,</span>
-<span class="s1">&#39;memcache_customprefix&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mynextcloudprefix&#39;</span><span class="p">,</span>
-<span class="s1">&#39;redis.cluster&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-   <span class="s1">&#39;seeds&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="o">//</span> <span class="n">provide</span> <span class="n">some</span><span class="o">/</span><span class="nb">all</span> <span class="n">of</span> <span class="n">the</span> <span class="n">cluster</span> <span class="n">servers</span> <span class="n">to</span> <span class="n">bootstrap</span> <span class="n">discovery</span><span class="p">,</span> <span class="n">port</span> <span class="n">required</span>
-      <span class="s1">&#39;cache-cluster:7000&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;cache-cluster:7001&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;cache-cluster:7002&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;cache-cluster:7003&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;cache-cluster:7004&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;cache-cluster:7005&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.locking'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
+<span class="s1">'memcache.distributed'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
+<span class="s1">'memcache.local'</span> <span class="o">=&gt;</span><span class="s1">'\OC\Memcache\Redis'</span> <span class="p">,</span>
+<span class="s1">'memcache_customprefix'</span> <span class="o">=&gt;</span> <span class="s1">'mynextcloudprefix'</span><span class="p">,</span>
+<span class="s1">'redis.cluster'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">'seeds'</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="o">//</span> <span class="n">provide</span> <span class="n">some</span><span class="o">/</span><span class="nb">all</span> <span class="n">of</span> <span class="n">the</span> <span class="n">cluster</span> <span class="n">servers</span> <span class="n">to</span> <span class="n">bootstrap</span> <span class="n">discovery</span><span class="p">,</span> <span class="n">port</span> <span class="n">required</span>
+      <span class="s1">'cache-cluster:7000'</span><span class="p">,</span>
+      <span class="s1">'cache-cluster:7001'</span><span class="p">,</span>
+      <span class="s1">'cache-cluster:7002'</span><span class="p">,</span>
+      <span class="s1">'cache-cluster:7003'</span><span class="p">,</span>
+      <span class="s1">'cache-cluster:7004'</span><span class="p">,</span>
+      <span class="s1">'cache-cluster:7005'</span>
    <span class="p">],</span>
-   <span class="s1">&#39;failover_mode&#39;</span>   <span class="o">=&gt;</span> \<span class="n">RedisCluster</span><span class="p">::</span><span class="n">FAILOVER_ERROR</span><span class="p">,</span>
-   <span class="s1">&#39;timeout&#39;</span>         <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
-   <span class="s1">&#39;read_timeout&#39;</span>    <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
-   <span class="s1">&#39;user&#39;</span>            <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
-   <span class="s1">&#39;password&#39;</span>        <span class="o">=&gt;</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span>
-   <span class="s1">&#39;dbindex&#39;</span>         <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+   <span class="s1">'failover_mode'</span>   <span class="o">=&gt;</span> \<span class="n">RedisCluster</span><span class="p">::</span><span class="n">FAILOVER_ERROR</span><span class="p">,</span>
+   <span class="s1">'timeout'</span>         <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
+   <span class="s1">'read_timeout'</span>    <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
+   <span class="s1">'user'</span>            <span class="o">=&gt;</span> <span class="s1">'nextcloud'</span><span class="p">,</span>
+   <span class="s1">'password'</span>        <span class="o">=&gt;</span> <span class="s1">'password'</span><span class="p">,</span>
+   <span class="s1">'dbindex'</span>         <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -611,9 +611,9 @@ server name is required.</p>
 <section id="connecting-to-single-redis-server-over-tcp">
 <h3>Connecting to single Redis server over TCP<a class="headerlink" href="#connecting-to-single-redis-server-over-tcp" title="Link to this heading"></a></h3>
 <p>To connect to a remote or local Redis server over TCP use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-   <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;redis-host.example.com&#39;</span><span class="p">,</span>
-   <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'redis'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'redis-host.example.com'</span><span class="p">,</span>
+   <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -621,14 +621,14 @@ server name is required.</p>
 <section id="connecting-to-single-redis-server-over-tls">
 <h3>Connecting to single Redis server over TLS<a class="headerlink" href="#connecting-to-single-redis-server-over-tls" title="Link to this heading"></a></h3>
 <p>To connect via TCP over TLS, add the following  configuration:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-   <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;tls://127.0.0.1&#39;</span><span class="p">,</span>
-   <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
-   <span class="s1">&#39;ssl_context&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-      <span class="s1">&#39;local_cert&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/certs/redis.crt&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;local_pk&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/certs/redis.key&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;cafile&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/certs/ca.crt&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;verify_peer_name&#39;</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'redis'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'tls://127.0.0.1'</span><span class="p">,</span>
+   <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+   <span class="s1">'ssl_context'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+      <span class="s1">'local_cert'</span> <span class="o">=&gt;</span> <span class="s1">'/certs/redis.crt'</span><span class="p">,</span>
+      <span class="s1">'local_pk'</span> <span class="o">=&gt;</span> <span class="s1">'/certs/redis.key'</span><span class="p">,</span>
+      <span class="s1">'cafile'</span> <span class="o">=&gt;</span> <span class="s1">'/certs/ca.crt'</span><span class="p">,</span>
+      <span class="s1">'verify_peer_name'</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
    <span class="p">],</span>
 <span class="p">],</span>
 </pre></div>
@@ -637,16 +637,16 @@ server name is required.</p>
 <section id="connecting-to-redis-cluster-over-tls">
 <h3>Connecting to Redis cluster over TLS<a class="headerlink" href="#connecting-to-redis-cluster-over-tls" title="Link to this heading"></a></h3>
 <p>To connect via TCP over TLS, add the following  configuration:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;redis.cluster&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-   <span class="s1">&#39;seeds&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="o">//</span> <span class="n">provide</span> <span class="n">some</span><span class="o">/</span><span class="nb">all</span> <span class="n">of</span> <span class="n">the</span> <span class="n">cluster</span> <span class="n">servers</span> <span class="n">to</span> <span class="n">bootstrap</span> <span class="n">discovery</span><span class="p">,</span> <span class="n">port</span> <span class="n">required</span>
-      <span class="s1">&#39;cache-cluster:7000&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;cache-cluster:7001&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'redis.cluster'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">'seeds'</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="o">//</span> <span class="n">provide</span> <span class="n">some</span><span class="o">/</span><span class="nb">all</span> <span class="n">of</span> <span class="n">the</span> <span class="n">cluster</span> <span class="n">servers</span> <span class="n">to</span> <span class="n">bootstrap</span> <span class="n">discovery</span><span class="p">,</span> <span class="n">port</span> <span class="n">required</span>
+      <span class="s1">'cache-cluster:7000'</span><span class="p">,</span>
+      <span class="s1">'cache-cluster:7001'</span><span class="p">,</span>
    <span class="p">],</span>
-   <span class="s1">&#39;ssl_context&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-      <span class="s1">&#39;local_cert&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/certs/redis.crt&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;local_pk&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/certs/redis.key&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;cafile&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/certs/ca.crt&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;verify_peer_name&#39;</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+   <span class="s1">'ssl_context'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+      <span class="s1">'local_cert'</span> <span class="o">=&gt;</span> <span class="s1">'/certs/redis.crt'</span><span class="p">,</span>
+      <span class="s1">'local_pk'</span> <span class="o">=&gt;</span> <span class="s1">'/certs/redis.key'</span><span class="p">,</span>
+      <span class="s1">'cafile'</span> <span class="o">=&gt;</span> <span class="s1">'/certs/ca.crt'</span><span class="p">,</span>
+      <span class="s1">'verify_peer_name'</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
    <span class="p">],</span>
 <span class="p">],</span>
 </pre></div>
@@ -657,9 +657,9 @@ server name is required.</p>
 <p>If you want to connect to Redis configured to listen on an Unix socket (which is
 recommended if Redis is running on the same system as Nextcloud) use this example
 <code class="docutils literal notranslate"><span class="pre">config.php</span></code> configuration:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-   <span class="s1">&#39;host&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;/run/redis/redis-server.sock&#39;</span><span class="p">,</span>
-   <span class="s1">&#39;port&#39;</span>     <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'redis'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">'host'</span>     <span class="o">=&gt;</span> <span class="s1">'/run/redis/redis-server.sock'</span><span class="p">,</span>
+   <span class="s1">'port'</span>     <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
 <span class="p">],</span>
 </pre></div>
 </div>
@@ -736,13 +736,13 @@ daemon.</p>
 <h3>Memcached configuration in Nextcloud (config.php)<a class="headerlink" href="#memcached-configuration-in-nextcloud-config-php" title="Link to this heading"></a></h3>
 <p>This example uses APCu for the local cache, Memcached as the distributed memcache,
 and lists all the servers in the shared cache pool with their port numbers:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\APCu&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Memcached&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Memcached&#39;</span><span class="p">,</span>
-<span class="s1">&#39;memcached_servers&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-     <span class="p">[</span> <span class="s1">&#39;server0.example.com&#39;</span><span class="p">,</span> <span class="mi">11211</span> <span class="p">],</span>
-     <span class="p">[</span> <span class="s1">&#39;server1.example.com&#39;</span><span class="p">,</span> <span class="mi">11211</span> <span class="p">],</span>
-     <span class="p">[</span> <span class="s1">&#39;server2.example.com&#39;</span><span class="p">,</span> <span class="mi">11211</span> <span class="p">],</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache.local'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\APCu'</span><span class="p">,</span>
+<span class="s1">'memcache.distributed'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Memcached'</span><span class="p">,</span>
+<span class="s1">'memcache.locking'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Memcached'</span><span class="p">,</span>
+<span class="s1">'memcached_servers'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+     <span class="p">[</span> <span class="s1">'server0.example.com'</span><span class="p">,</span> <span class="mi">11211</span> <span class="p">],</span>
+     <span class="p">[</span> <span class="s1">'server1.example.com'</span><span class="p">,</span> <span class="mi">11211</span> <span class="p">],</span>
+     <span class="p">[</span> <span class="s1">'server2.example.com'</span><span class="p">,</span> <span class="mi">11211</span> <span class="p">],</span>
  <span class="p">],</span>
 </pre></div>
 </div>
@@ -760,7 +760,7 @@ current user. You may use the <code class="docutils literal notranslate"><span c
 collisions when using the same cache for multiple Nextcloud instances.
 If you want to make sure to prevent collisions altogether, you can use the following
 setting to define your custom prefix:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache_customprefix&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mynextcloudprefix&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'memcache_customprefix'</span> <span class="o">=&gt;</span> <span class="s1">'mynextcloudprefix'</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>This also allows you to create ACLs in Redis and limit the keys specific users can access

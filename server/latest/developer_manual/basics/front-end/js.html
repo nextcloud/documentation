@@ -155,12 +155,12 @@ in the appropriate controller. There are two methods to inject your JavaScript f
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
 <span class="sd"> * Add a javascript file</span>
 <span class="sd"> *</span>
-<span class="sd"> * @param string $application Your application ID, e.g. &#39;your_app&#39;</span>
-<span class="sd"> * @param string $file Your script name, e.g. &#39;main&#39;</span>
+<span class="sd"> * @param string $application Your application ID, e.g. 'your_app'</span>
+<span class="sd"> * @param string $file Your script name, e.g. 'main'</span>
 <span class="sd"> * @param string $afterAppId Optional, the script will be loaded after this app</span>
 <span class="sd"> * @param bool $prepend Optional, if true the script will be prepended to this app scripts list</span>
 <span class="sd"> */</span>
- <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">addScript</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$application</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$file</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$afterAppId</span> <span class="o">=</span> <span class="s1">&#39;core&#39;</span><span class="p">,</span> <span class="nx">bool</span> <span class="nv">$prepend</span> <span class="o">=</span> <span class="k">false</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+ <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">addScript</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$application</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$file</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$afterAppId</span> <span class="o">=</span> <span class="s1">'core'</span><span class="p">,</span> <span class="nx">bool</span> <span class="nv">$prepend</span> <span class="o">=</span> <span class="k">false</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
 
 <span class="sd">/**</span>
 <span class="sd"> * Add a standalone init js file that is loaded for initialization.</span>
@@ -168,8 +168,8 @@ in the appropriate controller. There are two methods to inject your JavaScript f
 <span class="sd"> * and block the initial page rendering. They should not have dependencies</span>
 <span class="sd"> * on any other scripts than core-common and core-main.</span>
 <span class="sd"> *</span>
-<span class="sd"> * @param string $application Your application ID, e.g. &#39;your_app&#39;</span>
-<span class="sd"> * @param string $file Your script name, e.g. &#39;main&#39;</span>
+<span class="sd"> * @param string $application Your application ID, e.g. 'your_app'</span>
+<span class="sd"> * @param string $file Your script name, e.g. 'main'</span>
 <span class="sd"> */</span>
  <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">addInitScript</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$application</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$file</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
 </pre></div>
@@ -194,7 +194,7 @@ For more information about app bootstrapping, see the <a class="reference intern
 <span class="sd"> * @package OCA\YourApp\AppInfo</span>
 <span class="sd"> */</span>
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBackendProvider</span><span class="p">,</span> <span class="nx">IAuthMechanismProvider</span><span class="p">,</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
-  <span class="k">public</span> <span class="k">const</span> <span class="no">APP_ID</span> <span class="o">=</span> <span class="s1">&#39;your_app&#39;</span><span class="p">;</span>
+  <span class="k">public</span> <span class="k">const</span> <span class="no">APP_ID</span> <span class="o">=</span> <span class="s1">'your_app'</span><span class="p">;</span>
 
   <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
     <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
@@ -222,8 +222,8 @@ For more information about app bootstrapping, see the <a class="reference intern
             <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
 
-        <span class="nx">Util</span><span class="o">::</span><span class="na">addInitScript</span><span class="p">(</span><span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="s1">&#39;init&#39;</span><span class="p">);</span>
-        <span class="nx">Util</span><span class="o">::</span><span class="na">addScript</span><span class="p">(</span><span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;files&#39;</span><span class="p">);</span>
+        <span class="nx">Util</span><span class="o">::</span><span class="na">addInitScript</span><span class="p">(</span><span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="s1">'init'</span><span class="p">);</span>
+        <span class="nx">Util</span><span class="o">::</span><span class="na">addScript</span><span class="p">(</span><span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="s1">'main'</span><span class="p">,</span> <span class="s1">'files'</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -232,7 +232,7 @@ For more information about app bootstrapping, see the <a class="reference intern
 <h2>Sending the CSRF token<a class="headerlink" href="#sending-the-csrf-token" title="Link to this heading"></a></h2>
 <p>If any other JavaScript request library than jQuery is being used, the requests need to send the CSRF token as an HTTP header named <strong>requesttoken</strong>. The token is available in the global variable <strong>OC.requestToken</strong>.</p>
 <p>For AngularJS the following lines would need to be added:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;MyApp&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[]).</span><span class="nx">config</span><span class="p">([</span><span class="s1">&#39;$httpProvider&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">$httpProvider</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'MyApp'</span><span class="p">,</span><span class="w"> </span><span class="p">[]).</span><span class="nx">config</span><span class="p">([</span><span class="s1">'$httpProvider'</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">$httpProvider</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">$httpProvider</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">common</span><span class="p">.</span><span class="nx">requesttoken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">OC</span><span class="p">.</span><span class="nx">requestToken</span><span class="p">;</span>
 <span class="p">}]);</span>
 </pre></div>
@@ -241,11 +241,11 @@ For more information about app bootstrapping, see the <a class="reference intern
 <section id="generating-urls">
 <h2>Generating URLs<a class="headerlink" href="#generating-urls" title="Link to this heading"></a></h2>
 <p>To send requests to Nextcloud the base URL where Nextcloud is currently running is needed. To get the base URL use:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">OC</span><span class="p">.</span><span class="nx">generateUrl</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">OC</span><span class="p">.</span><span class="nx">generateUrl</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Full URLs can be generated by using:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">authorUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">OC</span><span class="p">.</span><span class="nx">generateUrl</span><span class="p">(</span><span class="s1">&#39;/apps/myapp/authors/1&#39;</span><span class="p">);</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">authorUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">OC</span><span class="p">.</span><span class="nx">generateUrl</span><span class="p">(</span><span class="s1">'/apps/myapp/authors/1'</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
@@ -261,18 +261,18 @@ should show how this is possible.</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">myFileMenuPlugin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">attach</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">menu</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">menu</span><span class="p">.</span><span class="nx">addMenuEntry</span><span class="p">({</span>
-<span class="w">            </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;abc&#39;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">displayName</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Menu display name&#39;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">templateName</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;templateName.ext&#39;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">iconClass</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;icon-filetype-text&#39;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">fileType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;file&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">'abc'</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">displayName</span><span class="o">:</span><span class="w"> </span><span class="s1">'Menu display name'</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">templateName</span><span class="o">:</span><span class="w"> </span><span class="s1">'templateName.ext'</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">iconClass</span><span class="o">:</span><span class="w"> </span><span class="s1">'icon-filetype-text'</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">fileType</span><span class="o">:</span><span class="w"> </span><span class="s1">'file'</span><span class="p">,</span>
 <span class="w">            </span><span class="nx">actionHandler</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;do something here&#39;</span><span class="p">);</span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'do something here'</span><span class="p">);</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">});</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
-<span class="nx">OC</span><span class="p">.</span><span class="nx">Plugins</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">&#39;OCA.Files.NewFileMenu&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">myFileMenuPlugin</span><span class="p">);</span>
+<span class="nx">OC</span><span class="p">.</span><span class="nx">Plugins</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">'OCA.Files.NewFileMenu'</span><span class="p">,</span><span class="w"> </span><span class="nx">myFileMenuPlugin</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>This will register a new menu entry in the “New” menu of the files app. The
@@ -314,18 +314,18 @@ function</p>
 <ul class="simple">
 <li><p>Vue way with <a class="reference external" href="https://github.com/nextcloud/nextcloud-initial-state">&#64;nextcloud/initial-state</a>:</p></li>
 </ul>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">loadState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/initial-state&#39;</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">loadState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/initial-state'</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">loadState</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user_preference&#39;</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">loadState</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span><span class="w"> </span><span class="s1">'user_preference'</span><span class="p">)</span>
 
 <span class="c1">// Provide a fallback value to return when the state is not found</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">valWithFallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">loadState</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user_preference&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;no_preference&#39;</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">valWithFallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">loadState</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span><span class="w"> </span><span class="s1">'user_preference'</span><span class="p">,</span><span class="w"> </span><span class="s1">'no_preference'</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Legacy way:</p></li>
 </ul>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">OCP</span><span class="p">.</span><span class="nx">InitialState</span><span class="p">.</span><span class="nx">loadState</span><span class="p">(</span><span class="s1">&#39;MyApp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;MyState&#39;</span><span class="p">);</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">OCP</span><span class="p">.</span><span class="nx">InitialState</span><span class="p">.</span><span class="nx">loadState</span><span class="p">(</span><span class="s1">'MyApp'</span><span class="p">,</span><span class="w"> </span><span class="s1">'MyState'</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Now state will contain the provided state which you can use as any variable. It
@@ -360,7 +360,7 @@ as any other shortcut might interfere with screenreaders and other accessibility
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

@@ -197,12 +197,12 @@ interface. This class is instantiated whenever the user profile is loaded.</p>
     <span class="sd">/**</span>
 <span class="sd">     * Returns the app ID of the action</span>
 <span class="sd">     *</span>
-<span class="sd">     * e.g. &#39;spreed&#39;</span>
+<span class="sd">     * e.g. 'spreed'</span>
 <span class="sd">     *</span>
 <span class="sd">     * @since 23.0.0</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getAppId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s1">&#39;my_app_id&#39;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s1">'my_app_id'</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
@@ -210,12 +210,12 @@ interface. This class is instantiated whenever the user profile is loaded.</p>
 <span class="sd">     *</span>
 <span class="sd">     * *For account properties this is the constant defined in lib/public/Accounts/IAccountManager.php*</span>
 <span class="sd">     *</span>
-<span class="sd">     * e.g. &#39;email&#39;</span>
+<span class="sd">     * e.g. 'email'</span>
 <span class="sd">     *</span>
 <span class="sd">     * @since 23.0.0</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s1">&#39;my_unique_action&#39;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s1">'my_unique_action'</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
@@ -224,25 +224,25 @@ interface. This class is instantiated whenever the user profile is loaded.</p>
 <span class="sd">     * Should be something short and descriptive of the action</span>
 <span class="sd">     * as this is seen by the end-user when configuring actions</span>
 <span class="sd">     *</span>
-<span class="sd">     * e.g. &#39;Email&#39;</span>
+<span class="sd">     * e.g. 'Email'</span>
 <span class="sd">     *</span>
 <span class="sd">     * @since 23.0.0</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getDisplayId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;My unique action&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'My unique action'</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Returns the translated title</span>
 <span class="sd">     *</span>
-<span class="sd">     * e.g. &#39;Mail user@domain.com&#39;</span>
+<span class="sd">     * e.g. 'Mail user@domain.com'</span>
 <span class="sd">     *</span>
 <span class="sd">     * Use the L10N service to translate it</span>
 <span class="sd">     *</span>
 <span class="sd">     * @since 23.0.0</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getTitle</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Ping %s&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">targetUser</span><span class="o">-&gt;</span><span class="na">getDisplayName</span><span class="p">()]);</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Ping %s'</span><span class="p">,</span> <span class="p">[</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">targetUser</span><span class="o">-&gt;</span><span class="na">getDisplayName</span><span class="p">()]);</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
@@ -264,19 +264,19 @@ interface. This class is instantiated whenever the user profile is loaded.</p>
 <span class="sd">     * @since 23.0.0</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getIcon</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">getAbsoluteURL</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">imagePath</span><span class="p">(</span><span class="s1">&#39;my_app_id&#39;</span><span class="p">,</span> <span class="s1">&#39;actions/my_unique_action.svg&#39;</span><span class="p">));</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">getAbsoluteURL</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">imagePath</span><span class="p">(</span><span class="s1">'my_app_id'</span><span class="p">,</span> <span class="s1">'actions/my_unique_action.svg'</span><span class="p">));</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Returns the target of the action,</span>
-<span class="sd">     * if null is returned the action won&#39;t be registered</span>
+<span class="sd">     * if null is returned the action won't be registered</span>
 <span class="sd">     *</span>
-<span class="sd">     * e.g. &#39;mailto:user@domain.com&#39;</span>
+<span class="sd">     * e.g. 'mailto:user@domain.com'</span>
 <span class="sd">     *</span>
 <span class="sd">     * @since 23.0.0</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getTarget</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">linkToRouteAbsolute</span><span class="p">(</span><span class="s1">&#39;my_app_id.Page.index&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;?pingUser=&#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">targetUser</span><span class="o">-&gt;</span><span class="na">getUID</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">linkToRouteAbsolute</span><span class="p">(</span><span class="s1">'my_app_id.Page.index'</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'?pingUser='</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">targetUser</span><span class="o">-&gt;</span><span class="na">getUID</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -296,7 +296,7 @@ interface. This class is instantiated whenever the user profile is loaded.</p>
 
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
 
-    <span class="k">public</span> <span class="k">const</span> <span class="no">APP_ID</span> <span class="o">=</span> <span class="s1">&#39;my_app_id&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">APP_ID</span> <span class="o">=</span> <span class="s1">'my_app_id'</span><span class="p">;</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
         <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
@@ -326,7 +326,7 @@ interface. This class is instantiated whenever the user profile is loaded.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

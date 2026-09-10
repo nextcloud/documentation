@@ -615,8 +615,8 @@ window.runMermaid = runMermaid;</script>
 <p>The simplest configuration is when Nextcloud is installed on the host and docker is on the same host and applications are deployed to it.</p>
 <p>Create a HaRP container with either <code class="docutils literal notranslate"><span class="pre">--network</span> <span class="pre">host</span></code> option or expose the ports <code class="docutils literal notranslate"><span class="pre">8780</span></code> and <code class="docutils literal notranslate"><span class="pre">8782</span></code> to the host.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_SHARED_KEY</span><span class="o">=</span><span class="s2">&quot;some_very_secure_password&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">NC_INSTANCE_URL</span><span class="o">=</span><span class="s2">&quot;https://127.0.0.1:8080&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_SHARED_KEY</span><span class="o">=</span><span class="s2">"some_very_secure_password"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">NC_INSTANCE_URL</span><span class="o">=</span><span class="s2">"https://127.0.0.1:8080"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/certs:/certs<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--name<span class="w"> </span>appapi-harp<span class="w"> </span>-h<span class="w"> </span>appapi-harp<span class="w"> </span><span class="se">\</span>
@@ -635,8 +635,8 @@ window.runMermaid = runMermaid;</script>
 <p>When Nextcloud is installed in Docker, the HaRP container can be created in the same docker network as the Nextcloud instance.</p>
 <p>Create a HaRP container with <code class="docutils literal notranslate"><span class="pre">--network</span> <span class="pre">&lt;nextcloud_docker_network_name&gt;</span></code> option, where <code class="docutils literal notranslate"><span class="pre">&lt;nextcloud_docker_network_name&gt;</span></code> is the name of the Docker network in which Nextcloud is accessible.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_SHARED_KEY</span><span class="o">=</span><span class="s2">&quot;some_very_secure_password&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">NC_INSTANCE_URL</span><span class="o">=</span><span class="s2">&quot;https://nextcloud.tld&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_SHARED_KEY</span><span class="o">=</span><span class="s2">"some_very_secure_password"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">NC_INSTANCE_URL</span><span class="o">=</span><span class="s2">"https://nextcloud.tld"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/certs:/certs<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--name<span class="w"> </span>appapi-harp<span class="w"> </span>-h<span class="w"> </span>appapi-harp<span class="w"> </span><span class="se">\</span>
@@ -659,8 +659,8 @@ A setup with the HaRP container itself on the remote is not supported.</p>
 </ol>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_SHARED_KEY</span><span class="o">=</span><span class="s2">&quot;some_very_secure_password&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">NC_INSTANCE_URL</span><span class="o">=</span><span class="s2">&quot;https://127.0.0.1:8080&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_SHARED_KEY</span><span class="o">=</span><span class="s2">"some_very_secure_password"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">NC_INSTANCE_URL</span><span class="o">=</span><span class="s2">"https://127.0.0.1:8080"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/certs:/certs<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--name<span class="w"> </span>appapi-harp<span class="w"> </span>-h<span class="w"> </span>appapi-harp<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--restart<span class="w"> </span>unless-stopped<span class="w"> </span><span class="se">\</span>
@@ -682,24 +682,24 @@ A setup with the HaRP container itself on the remote is not supported.</p>
 <li><p>Create a new file <code class="docutils literal notranslate"><span class="pre">frpc.toml</span></code> with the following contents.</p>
 <blockquote>
 <div><div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># frpc.toml</span>
-<span class="n">serverAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;your.harp.server.address&quot;</span><span class="w">          </span><span class="c1"># Replace with your HP_FRP_ADDRESS host</span>
+<span class="n">serverAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"your.harp.server.address"</span><span class="w">          </span><span class="c1"># Replace with your HP_FRP_ADDRESS host</span>
 <span class="n">serverPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8782</span><span class="w">                                </span><span class="c1"># Default port for FRP or the port your reverse proxy listens on</span>
 <span class="n">loginFailExit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">                            </span><span class="c1"># If the FRP (HaRP) server is unavailable, continue trying to log in.</span>
 
-<span class="n">transport</span><span class="p">.</span><span class="n">tls</span><span class="p">.</span><span class="n">certFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;certs/frp/client.crt&quot;</span>
-<span class="n">transport</span><span class="p">.</span><span class="n">tls</span><span class="p">.</span><span class="n">keyFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;certs/frp/client.key&quot;</span>
-<span class="n">transport</span><span class="p">.</span><span class="n">tls</span><span class="p">.</span><span class="n">trustedCaFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;certs/frp/ca.crt&quot;</span>
-<span class="n">transport</span><span class="p">.</span><span class="n">tls</span><span class="p">.</span><span class="n">serverName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;harp.nc&quot;</span><span class="w">             </span><span class="c1"># DO NOT CHANGE THIS VALUE</span>
+<span class="n">transport</span><span class="p">.</span><span class="n">tls</span><span class="p">.</span><span class="n">certFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"certs/frp/client.crt"</span>
+<span class="n">transport</span><span class="p">.</span><span class="n">tls</span><span class="p">.</span><span class="n">keyFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"certs/frp/client.key"</span>
+<span class="n">transport</span><span class="p">.</span><span class="n">tls</span><span class="p">.</span><span class="n">trustedCaFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"certs/frp/ca.crt"</span>
+<span class="n">transport</span><span class="p">.</span><span class="n">tls</span><span class="p">.</span><span class="n">serverName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"harp.nc"</span><span class="w">             </span><span class="c1"># DO NOT CHANGE THIS VALUE</span>
 
-<span class="n">metadatas</span><span class="p">.</span><span class="n">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;some_very_secure_password&quot;</span><span class="w">    </span><span class="c1"># HP_SHARED_KEY in quotes</span>
+<span class="n">metadatas</span><span class="p">.</span><span class="n">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"some_very_secure_password"</span><span class="w">    </span><span class="c1"># HP_SHARED_KEY in quotes</span>
 
 <span class="k">[[proxies]]</span>
 <span class="n">remotePort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">24001</span><span class="w">                               </span><span class="c1"># Unique remotePort for each Docker Engine (range: 24001-24099)</span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deploy-daemon-1&quot;</span><span class="w">                         </span><span class="c1"># Unique name for each Docker Engine</span>
-<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;tcp&quot;</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"deploy-daemon-1"</span><span class="w">                         </span><span class="c1"># Unique name for each Docker Engine</span>
+<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tcp"</span>
 <span class="k">[proxies.plugin]</span>
-<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unix_domain_socket&quot;</span>
-<span class="n">unixPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/var/run/docker.sock&quot;</span>
+<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unix_domain_socket"</span>
+<span class="n">unixPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/var/run/docker.sock"</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -793,9 +793,9 @@ firewall-cmd<span class="w"> </span>--reload
 <p>1.3. Deploy of the HaRP Container</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_SHARED_KEY</span><span class="o">=</span><span class="s2">&quot;some_very_secure_password&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">NC_INSTANCE_URL</span><span class="o">=</span><span class="s2">&quot;https://cloud.acme.com&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_TRUSTED_PROXY_IPS</span><span class="o">=</span><span class="s2">&quot;192.168.0.0/24&quot;</span><span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># Replace with your actual trusted proxy subnet (Host3&#39;s IP or subnet)</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_SHARED_KEY</span><span class="o">=</span><span class="s2">"some_very_secure_password"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">NC_INSTANCE_URL</span><span class="o">=</span><span class="s2">"https://cloud.acme.com"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_TRUSTED_PROXY_IPS</span><span class="o">=</span><span class="s2">"192.168.0.0/24"</span><span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># Replace with your actual trusted proxy subnet (Host3's IP or subnet)</span>
 <span class="w">  </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span>/some/path/certs:/certs<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-p<span class="w"> </span><span class="m">8780</span>:8780<span class="w"> </span><span class="se">\</span>
@@ -845,14 +845,14 @@ When HaRP has the Docker socket mounted directly (as in this setup), it uses <co
 virtual port for that local socket. This value does not require any additional firewall or port configuration.</p>
 </div></blockquote>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsS<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;harp-shared-key: some_very_secure_password&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;docker-engine-port: 24000&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"harp-shared-key: some_very_secure_password"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"docker-engine-port: 24000"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>http://&lt;IP_host2_docker&gt;:8780/exapps/app_api/v1.41/_ping
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsS<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;harp-shared-key: some_very_secure_password&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;docker-engine-port: 24000&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"harp-shared-key: some_very_secure_password"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"docker-engine-port: 24000"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>https://cloud.acme.com/exapps/app_api/v1.41/_ping
 </pre></div>
 </div>
@@ -1115,10 +1115,10 @@ container the daemon runs.</p>
 <p>Docker’s default <code class="docutils literal notranslate"><span class="pre">json-file</span></code> driver sets no size limit. Add the following to the Docker daemon configuration file
 (<code class="file docutils literal notranslate"><span class="pre">/etc/docker/daemon.json</span></code> on most Linux hosts) and restart the daemon:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;log-driver&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;json-file&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;log-opts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;max-size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10m&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;max-file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3&quot;</span>
+<span class="w">    </span><span class="nt">"log-driver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"json-file"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"log-opts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"max-size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10m"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"max-file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1147,7 +1147,7 @@ existing setup: rotation is then handled by that driver and the steps above do n
 <p>When the deploy daemon is Podman, set a global default in <code class="file docutils literal notranslate"><span class="pre">/etc/containers/containers.conf</span></code> (or the per-user
 file) and re-deploy the affected ExApps:</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[containers]</span>
-<span class="n">log_driver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;json-file&quot;</span>
+<span class="n">log_driver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"json-file"</span>
 <span class="n">log_size_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10485760</span>
 </pre></div>
 </div>
@@ -1194,24 +1194,24 @@ AppAPI will try to send request s directly to this address assuming that ExApp i
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">public function resolveExAppUrl(</span>
 <span class="x">    string $appId, string $protocol, string $host, array $deployConfig, int $port, array &amp;$auth</span>
 <span class="x">): string {</span>
-<span class="x">    if (boolval($deployConfig[&#39;harp&#39;] ?? false)) {</span>
-<span class="x">        $url = rtrim($deployConfig[&#39;nextcloud_url&#39;], &#39;/&#39;);</span>
-<span class="x">        if (str_ends_with($url, &#39;/index.php&#39;)) {</span>
+<span class="x">    if (boolval($deployConfig['harp'] ?? false)) {</span>
+<span class="x">        $url = rtrim($deployConfig['nextcloud_url'], '/');</span>
+<span class="x">        if (str_ends_with($url, '/index.php')) {</span>
 <span class="x">            $url = substr($url, 0, -10);</span>
 <span class="x">        }</span>
-<span class="x">        return sprintf(&#39;%s/exapps/%s&#39;, $url, $appId);</span>
+<span class="x">        return sprintf('%s/exapps/%s', $url, $appId);</span>
 <span class="x">    }</span>
 
 <span class="x">    $auth = [];</span>
-<span class="x">    if (isset($deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;]) &amp;&amp;</span>
-<span class="x">        $deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;] !== &#39;&#39;</span>
+<span class="x">    if (isset($deployConfig['additional_options']['OVERRIDE_APP_HOST']) &amp;&amp;</span>
+<span class="x">        $deployConfig['additional_options']['OVERRIDE_APP_HOST'] !== ''</span>
 <span class="x">    ) {</span>
-<span class="x">        $wideNetworkAddresses = [&#39;0.0.0.0&#39;, &#39;127.0.0.1&#39;, &#39;::&#39;, &#39;::1&#39;];</span>
-<span class="x">        if (!in_array($deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;], $wideNetworkAddresses)) {</span>
-<span class="x">            $host = $deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;];</span>
+<span class="x">        $wideNetworkAddresses = ['0.0.0.0', '127.0.0.1', '::', '::1'];</span>
+<span class="x">        if (!in_array($deployConfig['additional_options']['OVERRIDE_APP_HOST'], $wideNetworkAddresses)) {</span>
+<span class="x">            $host = $deployConfig['additional_options']['OVERRIDE_APP_HOST'];</span>
 <span class="x">        }</span>
 <span class="x">    }</span>
-<span class="x">    return sprintf(&#39;%s://%s:%s&#39;, $protocol, $host, $port);</span>
+<span class="x">    return sprintf('%s://%s:%s', $protocol, $host, $port);</span>
 <span class="x">}</span>
 </pre></div>
 </div>
@@ -1223,39 +1223,39 @@ AppAPI will try to send request s directly to this address assuming that ExApp i
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">public function resolveExAppUrl(</span>
 <span class="x">    string $appId, string $protocol, string $host, array $deployConfig, int $port, array &amp;$auth</span>
 <span class="x">): string {</span>
-<span class="x">    if (boolval($deployConfig[&#39;harp&#39;] ?? false)) {</span>
-<span class="x">        $url = rtrim($deployConfig[&#39;nextcloud_url&#39;], &#39;/&#39;);</span>
-<span class="x">        if (str_ends_with($url, &#39;/index.php&#39;)) {</span>
+<span class="x">    if (boolval($deployConfig['harp'] ?? false)) {</span>
+<span class="x">        $url = rtrim($deployConfig['nextcloud_url'], '/');</span>
+<span class="x">        if (str_ends_with($url, '/index.php')) {</span>
 <span class="x">            $url = substr($url, 0, -10);</span>
 <span class="x">        }</span>
-<span class="x">        return sprintf(&#39;%s/exapps/%s&#39;, $url, $appId);</span>
+<span class="x">        return sprintf('%s/exapps/%s', $url, $appId);</span>
 <span class="x">    }</span>
 
 <span class="x">    $auth = [];</span>
-<span class="x">    if (isset($deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;]) &amp;&amp;</span>
-<span class="x">        $deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;] !== &#39;&#39;</span>
+<span class="x">    if (isset($deployConfig['additional_options']['OVERRIDE_APP_HOST']) &amp;&amp;</span>
+<span class="x">        $deployConfig['additional_options']['OVERRIDE_APP_HOST'] !== ''</span>
 <span class="x">    ) {</span>
-<span class="x">        $wideNetworkAddresses = [&#39;0.0.0.0&#39;, &#39;127.0.0.1&#39;, &#39;::&#39;, &#39;::1&#39;];</span>
-<span class="x">        if (!in_array($deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;], $wideNetworkAddresses)) {</span>
+<span class="x">        $wideNetworkAddresses = ['0.0.0.0', '127.0.0.1', '::', '::1'];</span>
+<span class="x">        if (!in_array($deployConfig['additional_options']['OVERRIDE_APP_HOST'], $wideNetworkAddresses)) {</span>
 <span class="x">            return sprintf(</span>
-<span class="x">                &#39;%s://%s:%s&#39;, $protocol, $deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;], $port</span>
+<span class="x">                '%s://%s:%s', $protocol, $deployConfig['additional_options']['OVERRIDE_APP_HOST'], $port</span>
 <span class="x">            );</span>
 <span class="x">        }</span>
 <span class="x">    }</span>
-<span class="x">    $host = explode(&#39;:&#39;, $host)[0];</span>
-<span class="x">    if ($protocol == &#39;https&#39;) {</span>
+<span class="x">    $host = explode(':', $host)[0];</span>
+<span class="x">    if ($protocol == 'https') {</span>
 <span class="x">        $exAppHost = $host;</span>
-<span class="x">    } elseif (isset($deployConfig[&#39;net&#39;]) &amp;&amp; $deployConfig[&#39;net&#39;] === &#39;host&#39;) {</span>
-<span class="x">        $exAppHost = &#39;localhost&#39;;</span>
+<span class="x">    } elseif (isset($deployConfig['net']) &amp;&amp; $deployConfig['net'] === 'host') {</span>
+<span class="x">        $exAppHost = 'localhost';</span>
 <span class="x">    } else {</span>
 <span class="x">        $exAppHost = $appId;</span>
 <span class="x">    }</span>
-<span class="x">    if ($protocol == &#39;https&#39; &amp;&amp; isset($deployConfig[&#39;haproxy_password&#39;]) &amp;&amp; $deployConfig[&#39;haproxy_password&#39;] !== &#39;&#39;) {</span>
+<span class="x">    if ($protocol == 'https' &amp;&amp; isset($deployConfig['haproxy_password']) &amp;&amp; $deployConfig['haproxy_password'] !== '') {</span>
 <span class="x">        // we only set haproxy auth for remote installations, when all requests come through HaProxy.</span>
-<span class="x">        $haproxyPass = $this-&gt;crypto-&gt;decrypt($deployConfig[&#39;haproxy_password&#39;]);</span>
+<span class="x">        $haproxyPass = $this-&gt;crypto-&gt;decrypt($deployConfig['haproxy_password']);</span>
 <span class="x">        $auth = [self::APP_API_HAPROXY_USER, $haproxyPass];</span>
 <span class="x">    }</span>
-<span class="x">    return sprintf(&#39;%s://%s:%s&#39;, $protocol, $exAppHost, $port);</span>
+<span class="x">    return sprintf('%s://%s:%s', $protocol, $exAppHost, $port);</span>
 <span class="x">}</span>
 </pre></div>
 </div>

@@ -172,10 +172,10 @@ Psalm is used to validate types and return shapes so <code class="docutils liter
 <p>You need Psalm <code class="docutils literal notranslate"><span class="pre">&gt;=5.9.0</span></code>. Older versions contain a bug that prevents the changes in this tutorial from working.</p>
 <p>Install and enable the required extensions as explained in <a class="reference internal" href="../../server/static-analysis.html#psalm-php-extensions"><span class="std std-ref">Required PHP extensions</span></a>.</p>
 <p>Configure the following issue handlers in your Psalm config (see <a class="reference external" href="https://psalm.dev/docs/running_psalm/dealing_with_code_issues">https://psalm.dev/docs/running_psalm/dealing_with_code_issues</a> for a tutorial):</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;LessSpecificReturnStatement</span><span class="w"> </span><span class="na">errorLevel=</span><span class="s">&quot;error&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;LessSpecificReturnType</span><span class="w"> </span><span class="na">errorLevel=</span><span class="s">&quot;error&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;LessSpecificImplementedReturnType</span><span class="w"> </span><span class="na">errorLevel=</span><span class="s">&quot;error&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;MoreSpecificReturnType</span><span class="w"> </span><span class="na">errorLevel=</span><span class="s">&quot;error&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;LessSpecificReturnStatement</span><span class="w"> </span><span class="na">errorLevel=</span><span class="s">"error"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;LessSpecificReturnType</span><span class="w"> </span><span class="na">errorLevel=</span><span class="s">"error"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;LessSpecificImplementedReturnType</span><span class="w"> </span><span class="na">errorLevel=</span><span class="s">"error"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;MoreSpecificReturnType</span><span class="w"> </span><span class="na">errorLevel=</span><span class="s">"error"</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </li>
@@ -337,9 +337,9 @@ all 4xx responses should use the same data structure.</p>
 <span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
     <span class="o">...</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">{</span>
-<span class="hll">        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_OK</span><span class="p">);</span>
+<span class="hll">        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_OK</span><span class="p">);</span>
 </span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="hll">        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_CREATED</span><span class="p">);</span>
+<span class="hll">        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span> <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_CREATED</span><span class="p">);</span>
 </span>    <span class="p">}</span>
 <span class="p">}</span>
 
@@ -349,9 +349,9 @@ all 4xx responses should use the same data structure.</p>
 <span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
     <span class="o">...</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;bad request&quot;</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_BAD_REQUEST</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">"error"</span> <span class="o">=&gt;</span> <span class="s2">"bad request"</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_BAD_REQUEST</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;forbidden&quot;</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_FORBIDDEN</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">"message"</span> <span class="o">=&gt;</span> <span class="s2">"forbidden"</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_FORBIDDEN</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -365,9 +365,9 @@ all 4xx responses should use the same data structure.</p>
 <span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
     <span class="o">...</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">{</span>
-<span class="hll">        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_OK</span><span class="p">);</span>
+<span class="hll">        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span> <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_OK</span><span class="p">);</span>
 </span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="hll">        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_CREATED</span><span class="p">);</span>
+<span class="hll">        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span> <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_CREATED</span><span class="p">);</span>
 </span>    <span class="p">}</span>
 <span class="p">}</span>
 
@@ -377,9 +377,9 @@ all 4xx responses should use the same data structure.</p>
 <span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
     <span class="o">...</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;bad request&quot;</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_BAD_REQUEST</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">"error"</span> <span class="o">=&gt;</span> <span class="s2">"bad request"</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_BAD_REQUEST</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;forbidden&quot;</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_FORBIDDEN</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">"error"</span> <span class="o">=&gt;</span> <span class="s2">"forbidden"</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_FORBIDDEN</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -407,10 +407,10 @@ even when the endpoint cannot actually produce those errors.</p>
     <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">handleError</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="o">...</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">PermissionError</span><span class="p">(</span><span class="s2">&quot;some error&quot;</span><span class="p">);</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">PermissionError</span><span class="p">(</span><span class="s2">"some error"</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="o">...</span>
-        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;some message&quot;</span><span class="p">];</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">"message"</span> <span class="o">=&gt;</span> <span class="s2">"some message"</span><span class="p">];</span>
     <span class="p">});</span>
 <span class="p">}</span>
 
@@ -424,10 +424,10 @@ even when the endpoint cannot actually produce those errors.</p>
     <span class="k">try</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$callback</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PermissionError</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$message</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()];</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"error"</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()];</span>
         <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$message</span><span class="p">,</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_FORBIDDEN</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">NotFoundError</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$message</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()];</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"error"</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()];</span>
         <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$message</span><span class="p">,</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -443,12 +443,12 @@ even when the endpoint cannot actually produce those errors.</p>
     <span class="k">try</span> <span class="p">{</span>
         <span class="o">...</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">PermissionError</span><span class="p">(</span><span class="s2">&quot;some error&quot;</span><span class="p">);</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">PermissionError</span><span class="p">(</span><span class="s2">"some error"</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="o">...</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;some message&quot;</span><span class="p">]);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">"message"</span> <span class="o">=&gt;</span> <span class="s2">"some message"</span><span class="p">]);</span>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PermissionError</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$message</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()];</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"error"</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()];</span>
         <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$message</span><span class="p">,</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_FORBIDDEN</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -469,8 +469,8 @@ Psalm will catch these problems for you if you configured the issue handlers men
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">someHelperMethod</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
 <span class="hll">    <span class="o">...</span>
 </span>    <span class="k">return</span> <span class="p">[</span>
-        <span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
-        <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">,</span>
+        <span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
+        <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">,</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
@@ -484,8 +484,8 @@ Psalm will catch these problems for you if you configured the issue handlers men
 <span class="k">public</span> <span class="k">function</span> <span class="nf">someHelperMethod</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
     <span class="o">...</span>
     <span class="k">return</span> <span class="p">[</span>
-        <span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
-        <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">,</span>
+        <span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
+        <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">,</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
@@ -507,7 +507,7 @@ There you can explain what the APIs in the controller do, or give examples of ho
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
         <span class="o">...</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nx">name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_CREATED</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="nx">name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_CREATED</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -531,7 +531,7 @@ There you can explain what the APIs in the controller do, or give examples of ho
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
         <span class="o">...</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nx">name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_CREATED</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="nx">name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_CREATED</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -565,7 +565,7 @@ responses and will not be represented correctly in the extracted OpenAPI specifi
 <span class="sd"> */</span>
 <span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
     <span class="o">...</span>
-    <span class="k">throw</span> <span class="k">new</span> <span class="nx">OCSBadRequestException</span><span class="p">(</span><span class="s2">&quot;some message&quot;</span><span class="p">);</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">OCSBadRequestException</span><span class="p">(</span><span class="s2">"some message"</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -579,7 +579,7 @@ Use the <code class="docutils literal notranslate"><span class="pre">setHeaders<
 <summary>Examples</summary><div class="literal-block-wrapper docutils container" id="id17">
 <div class="code-block-caption"><span class="caption-text">Bad</span><a class="headerlink" href="#id17" title="Link to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">();</span>
-<span class="hll"><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">addHeader</span><span class="p">(</span><span class="s2">&quot;X-My-Header&quot;</span><span class="p">,</span> <span class="s2">&quot;some value&quot;</span><span class="p">);</span>
+<span class="hll"><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">addHeader</span><span class="p">(</span><span class="s2">"X-My-Header"</span><span class="p">,</span> <span class="s2">"some value"</span><span class="p">);</span>
 </span><span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -587,7 +587,7 @@ Use the <code class="docutils literal notranslate"><span class="pre">setHeaders<
 <div class="literal-block-wrapper docutils container" id="id18">
 <div class="code-block-caption"><span class="caption-text">Good</span><a class="headerlink" href="#id18" title="Link to this code"></a></div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">();</span>
-<span class="hll"><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setHeaders</span><span class="p">([</span><span class="s2">&quot;X-My-Header&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;some value&quot;</span><span class="p">]);</span>
+<span class="hll"><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setHeaders</span><span class="p">([</span><span class="s2">"X-My-Header"</span> <span class="o">=&gt;</span> <span class="s2">"some value"</span><span class="p">]);</span>
 </span><span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -627,7 +627,7 @@ Use these flags only to speed up the initial adaptation process.</p>
         <span class="k">try</span> <span class="p">{</span>
             <span class="nv">$todo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">getTodo</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">NotFoundException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Todo not found&quot;</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">"error"</span> <span class="o">=&gt;</span> <span class="s2">"Todo not found"</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
         <span class="p">}</span>
 
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatTodo</span><span class="p">(</span><span class="nv">$todo</span><span class="p">);</span>
@@ -638,9 +638,9 @@ Use these flags only to speed up the initial adaptation process.</p>
         <span class="k">try</span> <span class="p">{</span>
             <span class="nv">$todo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">updateTodo</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$etag</span><span class="p">,</span> <span class="nv">$title</span><span class="p">,</span> <span class="nv">$description</span><span class="p">,</span> <span class="nv">$image</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">NotFoundException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Todo not found&quot;</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">"error"</span> <span class="o">=&gt;</span> <span class="s2">"Todo not found"</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ForbiddenException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;ETag does not match&quot;</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_BAD_REQUEST</span><span class="p">);</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">"error"</span> <span class="o">=&gt;</span> <span class="s2">"ETag does not match"</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_BAD_REQUEST</span><span class="p">);</span>
         <span class="p">}</span>
 
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatTodo</span><span class="p">(</span><span class="nv">$todo</span><span class="p">);</span>
@@ -651,7 +651,7 @@ Use these flags only to speed up the initial adaptation process.</p>
         <span class="k">try</span> <span class="p">{</span>
             <span class="nv">$todo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">deleteTodo</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">NotFoundException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Todo not found&quot;</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">"error"</span> <span class="o">=&gt;</span> <span class="s2">"Todo not found"</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
         <span class="p">}</span>
 
         <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
@@ -659,12 +659,12 @@ Use these flags only to speed up the initial adaptation process.</p>
 
     <span class="k">private</span> <span class="k">function</span> <span class="nf">formatTodo</span><span class="p">(</span><span class="nx">Todo</span> <span class="nv">$todo</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span>
-            <span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="nv">$todo</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-            <span class="s2">&quot;title&quot;</span> <span class="o">=&gt;</span> <span class="nv">$todo</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">,</span>
-            <span class="s2">&quot;description&quot;</span> <span class="o">=&gt;</span> <span class="nv">$todo</span><span class="o">-&gt;</span><span class="na">description</span><span class="p">,</span>
-            <span class="s2">&quot;image&quot;</span> <span class="o">=&gt;</span> <span class="nv">$todo</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">,</span>
+            <span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="nv">$todo</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+            <span class="s2">"title"</span> <span class="o">=&gt;</span> <span class="nv">$todo</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">,</span>
+            <span class="s2">"description"</span> <span class="o">=&gt;</span> <span class="nv">$todo</span><span class="o">-&gt;</span><span class="na">description</span><span class="p">,</span>
+            <span class="s2">"image"</span> <span class="o">=&gt;</span> <span class="nv">$todo</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">,</span>
         <span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_OK</span><span class="p">,</span> <span class="p">[</span>
-            <span class="s2">&quot;ETag&quot;</span> <span class="o">=&gt;</span> <span class="nv">$todo</span><span class="o">-&gt;</span><span class="na">etag</span><span class="p">,</span>
+            <span class="s2">"ETag"</span> <span class="o">=&gt;</span> <span class="nv">$todo</span><span class="o">-&gt;</span><span class="na">etag</span><span class="p">,</span>
         <span class="p">]);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -820,7 +820,7 @@ matching annotation, default to the <code class="docutils literal notranslate"><
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">#[</span><span class="nd">OpenAPI</span><span class="p">(</span><span class="nx">scope</span><span class="o">:</span> <span class="nx">OpenAPI</span><span class="o">::</span><span class="na">SCOPE_ADMINISTRATION</span><span class="p">)]</span>
 <span class="p">#[</span><span class="nd">OpenAPI</span><span class="p">(</span><span class="nx">scope</span><span class="o">:</span> <span class="nx">OpenAPI</span><span class="o">::</span><span class="na">SCOPE_FEDERATION</span><span class="p">)]</span>
 <span class="p">#[</span><span class="nd">OpenAPI</span><span class="p">(</span><span class="nx">scope</span><span class="o">:</span> <span class="nx">OpenAPI</span><span class="o">::</span><span class="na">SCOPE_DEFAULT</span><span class="p">)]</span>
-<span class="p">#[</span><span class="nd">OpenAPI</span><span class="p">(</span><span class="nx">scope</span><span class="o">:</span> <span class="s1">&#39;myscope&#39;</span><span class="p">)]</span>
+<span class="p">#[</span><span class="nd">OpenAPI</span><span class="p">(</span><span class="nx">scope</span><span class="o">:</span> <span class="s1">'myscope'</span><span class="p">)]</span>
 <span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
     <span class="o">...</span>
 <span class="p">}</span>
@@ -832,8 +832,8 @@ matching annotation, default to the <code class="docutils literal notranslate"><
 <h2>Tags<a class="headerlink" href="#tags" title="Link to this heading"></a></h2>
 <p>To organize the API endpoints within a scope, tags can be used to group them. By default the controller name is used.
 Tags can also differ between different scopes.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">#[</span><span class="nd">OpenAPI</span><span class="p">(</span><span class="nx">scope</span><span class="o">:</span> <span class="nx">OpenAPI</span><span class="o">::</span><span class="na">SCOPE_DEFAULT</span><span class="p">,</span> <span class="nx">tags</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;mytag1&#39;</span><span class="p">])]</span>
-<span class="p">#[</span><span class="nd">OpenAPI</span><span class="p">(</span><span class="nx">scope</span><span class="o">:</span> <span class="nx">OpenAPI</span><span class="o">::</span><span class="na">SCOPE_ADMINISTRATION</span><span class="p">,</span> <span class="nx">tags</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;settings&#39;</span><span class="p">,</span> <span class="s1">&#39;custom2&#39;</span><span class="p">])]</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">#[</span><span class="nd">OpenAPI</span><span class="p">(</span><span class="nx">scope</span><span class="o">:</span> <span class="nx">OpenAPI</span><span class="o">::</span><span class="na">SCOPE_DEFAULT</span><span class="p">,</span> <span class="nx">tags</span><span class="o">:</span> <span class="p">[</span><span class="s1">'mytag1'</span><span class="p">])]</span>
+<span class="p">#[</span><span class="nd">OpenAPI</span><span class="p">(</span><span class="nx">scope</span><span class="o">:</span> <span class="nx">OpenAPI</span><span class="o">::</span><span class="na">SCOPE_ADMINISTRATION</span><span class="p">,</span> <span class="nx">tags</span><span class="o">:</span> <span class="p">[</span><span class="s1">'settings'</span><span class="p">,</span> <span class="s1">'custom2'</span><span class="p">])]</span>
 <span class="k">public</span> <span class="k">function</span> <span class="nf">saveSettings</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
     <span class="o">...</span>
 <span class="p">}</span>
@@ -879,7 +879,7 @@ For this example our <code class="docutils literal notranslate"><span class="pre
 <span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$etag</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$title</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$image</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
     <span class="o">...</span>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ForbiddenException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">throw</span> <span class="k">new</span> <span class="nx">OCSBadRequestException</span><span class="p">(</span><span class="s2">&quot;ETag does not match&quot;</span><span class="p">);</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">OCSBadRequestException</span><span class="p">(</span><span class="s2">"ETag does not match"</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="o">...</span>
 <span class="p">}</span>
@@ -926,9 +926,9 @@ First, you should create your <cite>Capabilities</cite> in the <cite>lib</cite> 
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Capabilities</span> <span class="k">implements</span> <span class="nx">ICapability</span> <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getCapabilities</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">[</span>
-            <span class="s2">&quot;todo&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                <span class="s2">&quot;supported-operations&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;create&quot;</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">,</span> <span class="s2">&quot;update&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">],</span>
-                <span class="s2">&quot;emojis-supported&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="s2">"todo"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">"supported-operations"</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"create"</span><span class="p">,</span> <span class="s2">"read"</span><span class="p">,</span> <span class="s2">"update"</span><span class="p">,</span> <span class="s2">"delete"</span><span class="p">],</span>
+                <span class="s2">"emojis-supported"</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
             <span class="p">],</span>
         <span class="p">];</span>
     <span class="p">}</span>
@@ -942,9 +942,9 @@ First, you should create your <cite>Capabilities</cite> in the <cite>lib</cite> 
 </span><span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getCapabilities</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">[</span>
-            <span class="s2">&quot;todo&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                <span class="s2">&quot;supported-operations&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;create&quot;</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">,</span> <span class="s2">&quot;update&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">],</span>
-                <span class="s2">&quot;emojis-supported&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="s2">"todo"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">"supported-operations"</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"create"</span><span class="p">,</span> <span class="s2">"read"</span><span class="p">,</span> <span class="s2">"update"</span><span class="p">,</span> <span class="s2">"delete"</span><span class="p">],</span>
+                <span class="s2">"emojis-supported"</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
             <span class="p">],</span>
         <span class="p">];</span>
     <span class="p">}</span>
@@ -959,7 +959,7 @@ First, you should create your <cite>Capabilities</cite> in the <cite>lib</cite> 
 </span><span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootstrap</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
-    <span class="k">public</span> <span class="k">const</span> <span class="no">APP_ID</span> <span class="o">=</span> <span class="s1">&#39;todo&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">APP_ID</span> <span class="o">=</span> <span class="s1">'todo'</span><span class="p">;</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
         <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
@@ -998,7 +998,7 @@ Additionally you should run psalm to check for any problems.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

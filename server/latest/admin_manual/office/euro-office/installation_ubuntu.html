@@ -210,8 +210,8 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <h2>Step 2 — Create the database<a class="headerlink" href="#step-2-create-the-database" title="Link to this heading"></a></h2>
 <p>The post-install script connects to PostgreSQL during installation. Create the user
 and database first:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;CREATE USER ds WITH PASSWORD &#39;ds&#39;;&quot;</span>
-sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;CREATE DATABASE ds OWNER ds;&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">"CREATE USER ds WITH PASSWORD 'ds';"</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">"CREATE DATABASE ds OWNER ds;"</span>
 </pre></div>
 </div>
 </section>
@@ -219,12 +219,12 @@ sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> <
 <h2>Step 3 — Pre-seed the installer answers<a class="headerlink" href="#step-3-pre-seed-the-installer-answers" title="Link to this heading"></a></h2>
 <p>The package installer configures itself non-interactively using debconf. Pre-seed the
 database connection details so the post-install script can proceed without a prompt:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ds ds/db-type select postgres</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"ds ds/db-type select postgres</span>
 <span class="s2">ds ds/db-host string localhost</span>
 <span class="s2">ds ds/db-port string 5432</span>
 <span class="s2">ds ds/db-user string ds</span>
 <span class="s2">ds ds/db-pwd password ds</span>
-<span class="s2">ds ds/db-name string ds&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>debconf-set-selections
+<span class="s2">ds ds/db-name string ds"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>debconf-set-selections
 </pre></div>
 </div>
 </section>
@@ -232,7 +232,7 @@ database connection details so the post-install script can proceed without a pro
 <h2>Step 4 — Download the package<a class="headerlink" href="#step-4-download-the-package" title="Link to this heading"></a></h2>
 <p>Download the latest release from <a class="reference external" href="https://github.com/Euro-Office/DocumentServer/releases">GitHub Releases</a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Replace &lt;version&gt; and &lt;arch&gt; with your values, e.g. 9.3.1 and amd64 or arm64</span>
-wget<span class="w"> </span><span class="s2">&quot;https://github.com/Euro-Office/DocumentServer/releases/download/v&lt;version&gt;/euro-office-documentserver_&lt;version&gt;_&lt;arch&gt;.deb&quot;</span><span class="w"> </span><span class="se">\</span>
+wget<span class="w"> </span><span class="s2">"https://github.com/Euro-Office/DocumentServer/releases/download/v&lt;version&gt;/euro-office-documentserver_&lt;version&gt;_&lt;arch&gt;.deb"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-O<span class="w"> </span>/tmp/euro-office-documentserver.deb
 </pre></div>
 </div>
@@ -270,7 +270,7 @@ A successful install ends with:</p>
 <section id="updating">
 <h2>Updating<a class="headerlink" href="#updating" title="Link to this heading"></a></h2>
 <p>Download the new release package and reinstall:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span><span class="s2">&quot;https://github.com/Euro-Office/DocumentServer/releases/download/v&lt;new-version&gt;/euro-office-documentserver_&lt;new-version&gt;_&lt;arch&gt;.deb&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span><span class="s2">"https://github.com/Euro-Office/DocumentServer/releases/download/v&lt;new-version&gt;/euro-office-documentserver_&lt;new-version&gt;_&lt;arch&gt;.deb"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-O<span class="w"> </span>/tmp/euro-office-documentserver.deb
 sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>/tmp/euro-office-documentserver.deb
 </pre></div>
@@ -279,8 +279,8 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <section id="uninstalling">
 <h2>Uninstalling<a class="headerlink" href="#uninstalling" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>remove<span class="w"> </span>--purge<span class="w"> </span>euro-office-documentserver
-sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;DROP DATABASE ds;&quot;</span>
-sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;DROP USER ds;&quot;</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">"DROP DATABASE ds;"</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">"DROP USER ds;"</span>
 </pre></div>
 </div>
 </section>

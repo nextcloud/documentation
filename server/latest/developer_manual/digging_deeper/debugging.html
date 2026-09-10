@@ -148,7 +148,7 @@
 <p>When debug mode is enabled in Nextcloud, a variety of debugging features are enabled - see debugging documentation. Set <code class="docutils literal notranslate"><span class="pre">debug</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> in <code class="file docutils literal notranslate"><span class="pre">/config/config.php</span></code> to enable it:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="nv">$CONFIG</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span>
-    <span class="s1">&#39;debug&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+    <span class="s1">'debug'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
     <span class="o">...</span> <span class="nx">configuration</span> <span class="nx">goes</span> <span class="nx">here</span> <span class="o">...</span>
 <span class="p">);</span>
 </pre></div>
@@ -162,11 +162,11 @@
 <h2>Debugging variables<a class="headerlink" href="#debugging-variables" title="Link to this heading"></a></h2>
 <p>You should use exceptions if you need to debug variable values manually, and not alternatives like trigger_error() (which may not be logged).</p>
 <p>e.g.:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span> <span class="s2">&quot;</span><span class="se">\$</span><span class="s2">user = </span><span class="si">$user</span><span class="s2">&quot;</span> <span class="p">);</span> <span class="c1">// should be logged in Nextcloud ?&gt;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span> <span class="s2">"</span><span class="se">\$</span><span class="s2">user = </span><span class="si">$user</span><span class="s2">"</span> <span class="p">);</span> <span class="c1">// should be logged in Nextcloud ?&gt;</span>
 </pre></div>
 </div>
 <p>not:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nb">trigger_error</span><span class="p">(</span> <span class="s2">&quot;</span><span class="se">\$</span><span class="s2">user = </span><span class="si">$user</span><span class="s2">&quot;</span> <span class="p">);</span> <span class="c1">// may not be logged anywhere ?&gt;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nb">trigger_error</span><span class="p">(</span> <span class="s2">"</span><span class="se">\$</span><span class="s2">user = </span><span class="si">$user</span><span class="s2">"</span> <span class="p">);</span> <span class="c1">// may not be logged anywhere ?&gt;</span>
 </pre></div>
 </div>
 <p>To disable custom error handling in Nextcloud (and have PHP and your Web server handle errors instead), see Debug mode.</p>
@@ -209,8 +209,8 @@
 <section id="debugging-mariadb-queries">
 <h3>Debugging MariaDB queries<a class="headerlink" href="#debugging-mariadb-queries" title="Link to this heading"></a></h3>
 <p>MariaDB can log all queries to a file or a table.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">general_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;ON&#39;</span><span class="p">;</span>
-<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">log_output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;table&#39;</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">general_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ON'</span><span class="p">;</span>
+<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">log_output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'table'</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>These global settings will enable the log on the fly. No database restart is required.</p>
@@ -242,7 +242,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

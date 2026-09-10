@@ -162,9 +162,9 @@ many small files together in order to optimize the use of network bandwidth.</p>
 </ul>
 <p>The reply is a json document with the following structure:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;/small file.txt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;etag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;adb9aa24cbfa8e372c88431d1d99629a&quot;</span>
+<span class="w">    </span><span class="nt">"/small file.txt"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adb9aa24cbfa8e372c88431d1d99629a"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -175,54 +175,54 @@ many small files together in order to optimize the use of network bandwidth.</p>
 <span class="nv">NB</span><span class="o">=</span><span class="nv">$1</span>
 <span class="nv">SIZE</span><span class="o">=</span><span class="nv">$2</span>
 
-<span class="nv">USER</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span>
-<span class="nv">PASS</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span>
-<span class="nv">SERVER</span><span class="o">=</span><span class="s2">&quot;nextcloud.local&quot;</span>
-<span class="nv">UPLOAD_PATH</span><span class="o">=</span><span class="s2">&quot;/tmp/bulk_upload_request_</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>--hex<span class="w"> </span><span class="m">8</span><span class="k">)</span><span class="s2">.txt&quot;</span>
-<span class="nv">BOUNDARY</span><span class="o">=</span><span class="s2">&quot;boundary_</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>--hex<span class="w"> </span><span class="m">8</span><span class="k">)</span><span class="s2">&quot;</span>
-<span class="nv">REMOTE_FOLDER</span><span class="o">=</span><span class="s2">&quot;/test&quot;</span>
+<span class="nv">USER</span><span class="o">=</span><span class="s2">"admin"</span>
+<span class="nv">PASS</span><span class="o">=</span><span class="s2">"admin"</span>
+<span class="nv">SERVER</span><span class="o">=</span><span class="s2">"nextcloud.local"</span>
+<span class="nv">UPLOAD_PATH</span><span class="o">=</span><span class="s2">"/tmp/bulk_upload_request_</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>--hex<span class="w"> </span><span class="m">8</span><span class="k">)</span><span class="s2">.txt"</span>
+<span class="nv">BOUNDARY</span><span class="o">=</span><span class="s2">"boundary_</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>--hex<span class="w"> </span><span class="m">8</span><span class="k">)</span><span class="s2">"</span>
+<span class="nv">REMOTE_FOLDER</span><span class="o">=</span><span class="s2">"/test"</span>
 
-<span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="nv">i</span><span class="o">=</span><span class="m">1</span><span class="p">;</span><span class="w"> </span>i&lt;<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$NB</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span>i++<span class="o">))</span>
+<span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="nv">i</span><span class="o">=</span><span class="m">1</span><span class="p">;</span><span class="w"> </span>i&lt;<span class="o">=</span><span class="s2">"</span><span class="nv">$NB</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span>i++<span class="o">))</span>
 <span class="k">do</span>
 <span class="w">        </span><span class="nv">file_name</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>--hex<span class="w"> </span><span class="m">8</span><span class="k">)</span>
-<span class="w">        </span><span class="nv">file_local_path</span><span class="o">=</span><span class="s2">&quot;./</span><span class="nv">$file_name</span><span class="s2">.txt&quot;</span>
-<span class="w">        </span><span class="nv">file_remote_path</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$REMOTE_FOLDER</span><span class="s2">/</span><span class="nv">$file_name</span><span class="s2">.txt&quot;</span>
-<span class="w">        </span>head<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SIZE</span><span class="s2">&quot;</span><span class="w"> </span>/dev/urandom<span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file_local_path</span><span class="s2">&quot;</span>
-<span class="w">        </span><span class="nv">file_mtime</span><span class="o">=</span><span class="k">$(</span>stat<span class="w"> </span>-c<span class="w"> </span>%Y<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file_local_path</span><span class="s2">&quot;</span><span class="k">)</span>
-<span class="w">        </span><span class="nv">file_hash</span><span class="o">=</span><span class="k">$(</span>md5sum<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file_local_path</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print $1 }&#39;</span><span class="k">)</span>
-<span class="w">        </span><span class="nv">file_size</span><span class="o">=</span><span class="k">$(</span>du<span class="w"> </span>-sb<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file_local_path</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print $1 }&#39;</span><span class="k">)</span>
+<span class="w">        </span><span class="nv">file_local_path</span><span class="o">=</span><span class="s2">"./</span><span class="nv">$file_name</span><span class="s2">.txt"</span>
+<span class="w">        </span><span class="nv">file_remote_path</span><span class="o">=</span><span class="s2">"</span><span class="nv">$REMOTE_FOLDER</span><span class="s2">/</span><span class="nv">$file_name</span><span class="s2">.txt"</span>
+<span class="w">        </span>head<span class="w"> </span>-c<span class="w"> </span><span class="s2">"</span><span class="nv">$SIZE</span><span class="s2">"</span><span class="w"> </span>/dev/urandom<span class="w"> </span>&gt;<span class="w"> </span><span class="s2">"</span><span class="nv">$file_local_path</span><span class="s2">"</span>
+<span class="w">        </span><span class="nv">file_mtime</span><span class="o">=</span><span class="k">$(</span>stat<span class="w"> </span>-c<span class="w"> </span>%Y<span class="w"> </span><span class="s2">"</span><span class="nv">$file_local_path</span><span class="s2">"</span><span class="k">)</span>
+<span class="w">        </span><span class="nv">file_hash</span><span class="o">=</span><span class="k">$(</span>md5sum<span class="w"> </span><span class="s2">"</span><span class="nv">$file_local_path</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{ print $1 }'</span><span class="k">)</span>
+<span class="w">        </span><span class="nv">file_size</span><span class="o">=</span><span class="k">$(</span>du<span class="w"> </span>-sb<span class="w"> </span><span class="s2">"</span><span class="nv">$file_local_path</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{ print $1 }'</span><span class="k">)</span>
 
 <span class="w">        </span><span class="o">{</span>
-<span class="w">                </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">&quot;--</span><span class="nv">$BOUNDARY</span><span class="s2">\r\n&quot;</span>
-<span class="w">                </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">&quot;X-File-Path: </span><span class="nv">$file_remote_path</span><span class="s2">\r\n&quot;</span>
-<span class="w">                </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">&quot;X-OC-Mtime: </span><span class="nv">$file_mtime</span><span class="s2">\r\n&quot;</span>
-<span class="w">                </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">&quot;X-File-Md5: </span><span class="nv">$file_hash</span><span class="s2">\r\n&quot;</span>
-<span class="w">                </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">&quot;Content-Length: </span><span class="nv">$file_size</span><span class="s2">\r\n&quot;</span>
-<span class="w">                </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">&quot;\r\n&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$UPLOAD_PATH</span><span class="s2">&quot;</span>
+<span class="w">                </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">"--</span><span class="nv">$BOUNDARY</span><span class="s2">\r\n"</span>
+<span class="w">                </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">"X-File-Path: </span><span class="nv">$file_remote_path</span><span class="s2">\r\n"</span>
+<span class="w">                </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">"X-OC-Mtime: </span><span class="nv">$file_mtime</span><span class="s2">\r\n"</span>
+<span class="w">                </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">"X-File-Md5: </span><span class="nv">$file_hash</span><span class="s2">\r\n"</span>
+<span class="w">                </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">"Content-Length: </span><span class="nv">$file_size</span><span class="s2">\r\n"</span>
+<span class="w">                </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">"\r\n"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">"</span><span class="nv">$UPLOAD_PATH</span><span class="s2">"</span>
 
-<span class="w">                </span>cat<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file_local_path</span><span class="s2">&quot;</span>
-<span class="w">                </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">&quot;\r\n&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$UPLOAD_PATH</span><span class="s2">&quot;</span>
-<span class="w">        </span><span class="o">}</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$UPLOAD_PATH</span><span class="s2">&quot;</span>
+<span class="w">                </span>cat<span class="w"> </span><span class="s2">"</span><span class="nv">$file_local_path</span><span class="s2">"</span>
+<span class="w">                </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">"\r\n"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">"</span><span class="nv">$UPLOAD_PATH</span><span class="s2">"</span>
+<span class="w">        </span><span class="o">}</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">"</span><span class="nv">$UPLOAD_PATH</span><span class="s2">"</span>
 <span class="k">done</span>
 
-<span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">&quot;--</span><span class="nv">$BOUNDARY</span><span class="s2">--\r\n&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$UPLOAD_PATH</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">"--</span><span class="nv">$BOUNDARY</span><span class="s2">--\r\n"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">"</span><span class="nv">$UPLOAD_PATH</span><span class="s2">"</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Creating folder /test&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Creating folder /test"</span>
 curl<span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>-X<span class="w"> </span>MKCOL<span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>-k<span class="w"> </span><span class="se">\</span>
-<span class="w">        </span><span class="s2">&quot;https://</span><span class="nv">$USER</span><span class="s2">:</span><span class="nv">$PASS</span><span class="s2">@</span><span class="nv">$SERVER</span><span class="s2">/remote.php/dav/files/</span><span class="nv">$USER</span><span class="s2">/test&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+<span class="w">        </span><span class="s2">"https://</span><span class="nv">$USER</span><span class="s2">:</span><span class="nv">$PASS</span><span class="s2">@</span><span class="nv">$SERVER</span><span class="s2">/remote.php/dav/files/</span><span class="nv">$USER</span><span class="s2">/test"</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Uploading </span><span class="nv">$NB</span><span class="s2"> files with total size: </span><span class="k">$(</span>du<span class="w"> </span>-sh<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$UPLOAD_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;   &#39;</span><span class="w"> </span>-f1<span class="k">)</span><span class="s2">&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Local file is: </span><span class="nv">$UPLOAD_PATH</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Uploading </span><span class="nv">$NB</span><span class="s2"> files with total size: </span><span class="k">$(</span>du<span class="w"> </span>-sh<span class="w"> </span><span class="s2">"</span><span class="nv">$UPLOAD_PATH</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">'   '</span><span class="w"> </span>-f1<span class="k">)</span><span class="s2">"</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Local file is: </span><span class="nv">$UPLOAD_PATH</span><span class="s2">"</span>
 curl<span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>-k<span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>--progress-bar<span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>--cookie<span class="w"> </span><span class="s2">&quot;XDEBUG_PROFILE=true;path=/;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: multipart/related; boundary=</span><span class="nv">$BOUNDARY</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>--data-binary<span class="w"> </span><span class="s2">&quot;@</span><span class="nv">$UPLOAD_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">        </span><span class="s2">&quot;https://</span><span class="nv">$USER</span><span class="s2">:</span><span class="nv">$PASS</span><span class="s2">@</span><span class="nv">$SERVER</span><span class="s2">/remote.php/dav/bulk&quot;</span>
+<span class="w">        </span>--cookie<span class="w"> </span><span class="s2">"XDEBUG_PROFILE=true;path=/;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-H<span class="w"> </span><span class="s2">"Content-Type: multipart/related; boundary=</span><span class="nv">$BOUNDARY</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--data-binary<span class="w"> </span><span class="s2">"@</span><span class="nv">$UPLOAD_PATH</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span><span class="s2">"https://</span><span class="nv">$USER</span><span class="s2">:</span><span class="nv">$PASS</span><span class="s2">@</span><span class="nv">$SERVER</span><span class="s2">/remote.php/dav/bulk"</span>
 </pre></div>
 </div>
 </section>
@@ -241,7 +241,7 @@ curl<span class="w"> </span><span class="se">\</span>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

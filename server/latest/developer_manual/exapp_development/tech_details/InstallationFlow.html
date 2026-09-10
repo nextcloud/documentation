@@ -139,8 +139,8 @@
 <p>AppAPI will first try to pull the Docker image whose <code class="docutils literal notranslate"><span class="pre">suffix</span></code> is equal to the value of <em>computeDevice</em>.</p>
 <p>The following values are available for <code class="docutils literal notranslate"><span class="pre">computeDevice</span></code>: <code class="docutils literal notranslate"><span class="pre">cpu</span></code>, <code class="docutils literal notranslate"><span class="pre">cuda</span></code>, or <code class="docutils literal notranslate"><span class="pre">rocm</span></code>.</p>
 <p>The suffix will be added as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>return $imageParams[&#39;image_src&#39;] . &#39;/&#39; .
-    $imageParams[&#39;image_name&#39;] . &#39;-&#39; . $daemonConfig[&#39;computeDevice&#39;][&#39;id&#39;] . &#39;:&#39; . $imageParams[&#39;image_tag&#39;];
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>return $imageParams['image_src'] . '/' .
+    $imageParams['image_name'] . '-' . $daemonConfig['computeDevice']['id'] . ':' . $imageParams['image_tag'];
 </pre></div>
 </div>
 <p>For <code class="docutils literal notranslate"><span class="pre">cpu</span></code>, AppAPI will first try to get the image from <code class="docutils literal notranslate"><span class="pre">ghcr.io/nextcloud/skeleton-cpu:latest</span></code>.
@@ -194,7 +194,7 @@ after receiving the value 100, the <strong>application is considered initialized
 should be added to the <code class="docutils literal notranslate"><span class="pre">OCS</span> <span class="pre">request</span></code> for setting progress,
 with a short explanation at what stage this error occurred.</p>
 <p>Example of request payload with error:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;progress&quot;</span><span class="p">:</span> <span class="mi">67</span><span class="p">,</span> <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;connection error to huggingface.&quot;</span><span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">"progress"</span><span class="p">:</span> <span class="mi">67</span><span class="p">,</span> <span class="s2">"error"</span><span class="p">:</span> <span class="s2">"connection error to huggingface."</span><span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -229,11 +229,11 @@ so the app should determine what is going on using the <code class="docutils lit
 </div>
 <p>Inside the <code class="docutils literal notranslate"><span class="pre">/enabled</span></code> handler, the application should register all actions related to the Nextcloud, such as the UI and other stuff.</p>
 <p>The response for this request should contain:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">"error"</span><span class="p">:</span> <span class="s2">""</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>for success, and if some error occurs during <strong>enabling</strong>, it should be present and not be empty:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;i can&#39;t handle enabling&quot;</span><span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">"error"</span><span class="p">:</span> <span class="s2">"i can't handle enabling"</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>This is all the steps involved in the ExApp installation flow.</p>
@@ -252,7 +252,7 @@ so the app should determine what is going on using the <code class="docutils lit
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

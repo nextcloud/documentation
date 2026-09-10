@@ -181,19 +181,19 @@ In order to make your app translatable (internationalization), you should use Ne
 
     <span class="k">public</span> <span class="nx">sayHello</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// Simple string</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Hello'</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getAuthorName</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// String using a parameter</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Getting author %1$s&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$name</span><span class="p">]);</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Getting author %1$s'</span><span class="p">,</span> <span class="p">[</span><span class="nv">$name</span><span class="p">]);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getAuthors</span><span class="p">(</span><span class="nv">$count</span><span class="p">,</span> <span class="nv">$city</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Translation with plural</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">n</span><span class="p">(</span>
-            <span class="s1">&#39;%n author is currently in the city %1$s&#39;</span><span class="p">,</span> <span class="c1">// singular string</span>
-            <span class="s1">&#39;%n authors are currently in the city %1$s&#39;</span><span class="p">,</span> <span class="c1">// plural string</span>
+            <span class="s1">'%n author is currently in the city %1$s'</span><span class="p">,</span> <span class="c1">// singular string</span>
+            <span class="s1">'%n authors are currently in the city %1$s'</span><span class="p">,</span> <span class="c1">// plural string</span>
             <span class="nv">$count</span><span class="p">,</span> <span class="c1">// number to decide which plural to use</span>
             <span class="p">[</span><span class="nv">$city</span><span class="p">]</span> <span class="c1">// further parameters are possible</span>
         <span class="p">);</span>
@@ -215,7 +215,7 @@ the <code class="docutils literal notranslate"><span class="pre">force_language<
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">send</span><span class="p">(</span><span class="nx">IUser</span> <span class="nv">$user</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
         <span class="nv">$lang</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10nFactory</span><span class="o">-&gt;</span><span class="na">getUserLanguage</span><span class="p">(</span><span class="nv">$user</span><span class="p">);</span>
-        <span class="nv">$l</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10nFactory</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="nv">$lang</span><span class="p">);</span>
+        <span class="nv">$l</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10nFactory</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span> <span class="nv">$lang</span><span class="p">);</span>
 
         <span class="c1">// …</span>
     <span class="p">}</span>
@@ -227,13 +227,13 @@ the <code class="docutils literal notranslate"><span class="pre">force_language<
 <h2>PHP Templates<a class="headerlink" href="#php-templates" title="Link to this heading"></a></h2>
 <p>In every template the global variable <code class="docutils literal notranslate"><span class="pre">$l</span></code> can be used to translate the strings using its methods <code class="docutils literal notranslate"><span class="pre">t()</span></code> and <code class="docutils literal notranslate"><span class="pre">n()</span></code>:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// Simple text string</span>
-<span class="o">&lt;</span><span class="nx">button</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Hide&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/button&gt;</span>
+<span class="o">&lt;</span><span class="nx">button</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Hide'</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/button&gt;</span>
 
 <span class="x">// Text with a placeholder</span>
-<span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Show files of %1$s&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$user</span><span class="p">]));</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Show files of %1$s'</span><span class="p">,</span> <span class="p">[</span><span class="nv">$user</span><span class="p">]));</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
 
 <span class="x">// Date string</span>
-<span class="x">&lt;em&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">l</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()));</span> <span class="cp">?&gt;</span><span class="x">&lt;/em&gt;</span>
+<span class="x">&lt;em&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">l</span><span class="p">(</span><span class="s1">'date'</span><span class="p">,</span> <span class="nb">time</span><span class="p">()));</span> <span class="cp">?&gt;</span><span class="x">&lt;/em&gt;</span>
 </pre></div>
 </div>
 </section>
@@ -247,9 +247,9 @@ They differ a bit in terms of usage compared to php:</p>
 <li><p>Placeholders (apart from the count in plurals) use single-mustache brackets with meaning-full descriptors.</p></li>
 <li><p>The parameter list is an object with the descriptors as key.</p></li>
 </ul>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">t</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Hello World!&#39;</span><span class="p">);</span>
-<span class="nx">t</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;{name} is available. Get {linkstart}more information{linkend}&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Nextcloud 16&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">linkstart</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;a href=&quot;...&quot;&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">linkend</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;/a&gt;&#39;</span><span class="p">});</span>
-<span class="nx">n</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Import %n calendar into {collection}&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Import %n calendars into {collection}&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">selectionLength</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">collection</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Nextcloud&#39;</span><span class="p">});</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">t</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Hello World!'</span><span class="p">);</span>
+<span class="nx">t</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span><span class="w"> </span><span class="s1">'{name} is available. Get {linkstart}more information{linkend}'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'Nextcloud 16'</span><span class="p">,</span><span class="w"> </span><span class="nx">linkstart</span><span class="o">:</span><span class="w"> </span><span class="s1">'&lt;a href="..."&gt;'</span><span class="p">,</span><span class="w"> </span><span class="nx">linkend</span><span class="o">:</span><span class="w"> </span><span class="s1">'&lt;/a&gt;'</span><span class="p">});</span>
+<span class="nx">n</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Import %n calendar into {collection}'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Import %n calendars into {collection}'</span><span class="p">,</span><span class="w"> </span><span class="nx">selectionLength</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">collection</span><span class="o">:</span><span class="w"> </span><span class="s1">'Nextcloud'</span><span class="p">});</span>
 </pre></div>
 </div>
 </section>
@@ -362,21 +362,21 @@ and therefore improving the experience for non-english users.</p>
 <p>If you use a plural, you <strong>must</strong> also use the <code class="docutils literal notranslate"><span class="pre">%n</span></code> placeholder. The placeholder defines the plural and the word without the number preceding is wrong. If you don’t know/have a number for your translation, e.g. because you don’t know how many items are going to be selected, just use an undefined plural. They exist in every language and have one form. They do not follow the normal plural pattern.</p>
 <p>PHP Example:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// BAD: Plural without count</span>
-<span class="nv">$title</span> <span class="o">=</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">n</span><span class="p">(</span><span class="s1">&#39;Import calendar&#39;</span><span class="p">,</span> <span class="s1">&#39;Import calendars&#39;</span><span class="p">,</span> <span class="nv">$selectionLength</span><span class="p">)</span>
+<span class="nv">$title</span> <span class="o">=</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">n</span><span class="p">(</span><span class="s1">'Import calendar'</span><span class="p">,</span> <span class="s1">'Import calendars'</span><span class="p">,</span> <span class="nv">$selectionLength</span><span class="p">)</span>
 <span class="c1">// BETTER: Plural has count, but disrupting to read and unnecessary information</span>
-<span class="nv">$title</span> <span class="o">=</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">n</span><span class="p">(</span><span class="s1">&#39;Import %n calendar&#39;</span><span class="p">,</span> <span class="s1">&#39;Import %n calendars&#39;</span><span class="p">,</span> <span class="nv">$selectionLength</span><span class="p">)</span>
+<span class="nv">$title</span> <span class="o">=</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">n</span><span class="p">(</span><span class="s1">'Import %n calendar'</span><span class="p">,</span> <span class="s1">'Import %n calendars'</span><span class="p">,</span> <span class="nv">$selectionLength</span><span class="p">)</span>
 <span class="c1">// BEST: Simple string with undefined plural not using any number in the string</span>
-<span class="nv">$title</span> <span class="o">=</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Import calendars&#39;</span><span class="p">)</span>
+<span class="nv">$title</span> <span class="o">=</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Import calendars'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Opposed to the normal placeholders in javascript, the plural number also uses the <code class="docutils literal notranslate"><span class="pre">%n</span></code> syntax:</p>
 <p>JS Example:</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="cm">/* BAD: Plural without count */</span>
-<span class="nx">n</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Import calendar&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Import calendars&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+<span class="nx">n</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Import calendar'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Import calendars'</span><span class="p">,</span><span class="w"> </span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
 <span class="cm">/* BETTER: Plural has count, but disrupting to read and unnecessary information */</span>
-<span class="nx">n</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Import %n calendar&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Import %n calendars&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+<span class="nx">n</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Import %n calendar'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Import %n calendars'</span><span class="p">,</span><span class="w"> </span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
 <span class="cm">/* BEST: Simple string with undefined plural not using any number in the string */</span>
-<span class="nx">t</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Import calendars&#39;</span><span class="p">)</span>
+<span class="nx">t</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Import calendars'</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition important">
@@ -385,24 +385,24 @@ and therefore improving the experience for non-english users.</p>
 </div>
 <p>There are languages with multi-plural forms. See <a class="reference external" href="https://en.wikipedia.org/wiki/Plural#Use_in_systems_of_grammatical_number">https://en.wikipedia.org/wiki/Plural#Use_in_systems_of_grammatical_number</a></p>
 <p>Example</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Vault will be locked in %1</span><span class="si">$d</span><span class="s2"> seconds&quot;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="s2">"Vault will be locked in %1</span><span class="si">$d</span><span class="s2"> seconds"</span>
 </pre></div>
 </div>
 <p>This means that even though the value ‘seconds’ is always greater than 1, translators on Transifex are unable to produce valid translations in the plural form for some languages.</p>
 <p>Bad: Only one string provided</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Vault will be locked in %1</span><span class="si">$d</span><span class="s2"> seconds&quot;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="s2">"Vault will be locked in %1</span><span class="si">$d</span><span class="s2"> seconds"</span>
 </pre></div>
 </div>
 <p>Good: Two strings in source code.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Vault will be locked in %1</span><span class="si">$d</span><span class="s2"> second&quot;</span>
-<span class="s2">&quot;Vault will be locked in %1</span><span class="si">$d</span><span class="s2"> seconds&quot;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="s2">"Vault will be locked in %1</span><span class="si">$d</span><span class="s2"> second"</span>
+<span class="s2">"Vault will be locked in %1</span><span class="si">$d</span><span class="s2"> seconds"</span>
 </pre></div>
 </div>
 </section>
 <section id="improving-your-translations">
 <span id="improving-translations"></span><h3>Improving your translations<a class="headerlink" href="#improving-your-translations" title="Link to this heading"></a></h3>
 <p>Starting with the following example, improving it step by step:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Select file from&#39;</span><span class="p">))</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;a href=&#39;#&#39; id=&quot;browselink&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;local filesystem&#39;</span><span class="p">));</span><span class="cp">?&gt;</span><span class="x">&lt;/a&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39; or &#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;a href=&#39;#&#39; id=&quot;cloudlink&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;cloud&#39;</span><span class="p">));</span><span class="cp">?&gt;</span><span class="x">&lt;/a&gt;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Select file from'</span><span class="p">))</span> <span class="o">.</span> <span class="s1">' '</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;a href='#' id="browselink"&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'local filesystem'</span><span class="p">));</span><span class="cp">?&gt;</span><span class="x">&lt;/a&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">' or '</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;a href='#' id="cloudlink"&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'cloud'</span><span class="p">));</span><span class="cp">?&gt;</span><span class="x">&lt;/a&gt;</span>
 </pre></div>
 </div>
 <section id="step-1-string-split">
@@ -417,14 +417,14 @@ and therefore improving the experience for non-english users.</p>
 </ul>
 <p>Translating these individual strings results in  <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">filesystem</span></code> and <code class="docutils literal notranslate"><span class="pre">cloud</span></code> losing case. The two white spaces surrounding <code class="docutils literal notranslate"><span class="pre">or</span></code> will get lost while translating as well. For languages that have a different grammatical order it prevents the translators from reordering the sentence components.</p>
 <p>So the following code is a bit better, but suffers from another issue:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Select file from &lt;a href=&quot;#&quot; id=&quot;browselink&quot;&gt;local filesystem&lt;/a&gt; or &lt;a href=&quot;#&quot; id=&quot;cloudlink&quot;&gt;cloud&lt;/a&gt;&#39;</span><span class="p">));</span><span class="cp">?&gt;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Select file from &lt;a href="#" id="browselink"&gt;local filesystem&lt;/a&gt; or &lt;a href="#" id="cloudlink"&gt;cloud&lt;/a&gt;'</span><span class="p">));</span><span class="cp">?&gt;</span>
 </pre></div>
 </div>
 </section>
 <section id="step-2-html-markup">
 <h4>Step 2: HTML Markup<a class="headerlink" href="#step-2-html-markup" title="Link to this heading"></a></h4>
 <p>In this case the translators can re-arrange as they like, but have to deal with your markup and can mess it up easily. It is better to <strong>keep the markup out</strong> of your code, so the following translation is even better:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Select file from %slocal filesystem%s or %scloud%s&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;&lt;a href=&quot;#&quot; id=&quot;browselink&quot;&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;/a&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;a href=&quot;#&quot; id=&quot;cloudlink&quot;&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;/a&gt;&#39;</span><span class="p">]));</span><span class="cp">?&gt;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Select file from %slocal filesystem%s or %scloud%s'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'&lt;a href="#" id="browselink"&gt;'</span><span class="p">,</span> <span class="s1">'&lt;/a&gt;'</span><span class="p">,</span> <span class="s1">'&lt;a href="#" id="cloudlink"&gt;'</span><span class="p">,</span> <span class="s1">'&lt;/a&gt;'</span><span class="p">]));</span><span class="cp">?&gt;</span>
 </pre></div>
 </div>
 <p>But there is one last problem with this.</p>
@@ -432,7 +432,7 @@ and therefore improving the experience for non-english users.</p>
 <section id="step-3-placeholders">
 <h4>Step 3: Placeholders<a class="headerlink" href="#step-3-placeholders" title="Link to this heading"></a></h4>
 <p>In case the language has to turn things around, your code will still insert the parameters in the given order and they can not re-order them. To prevent this last hurdle simply <strong>use positioned placeholders</strong> like <code class="docutils literal notranslate"><span class="pre">%1$s</span></code>:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Select file from %1$slocal filesystem%2$s or %3$scloud%4$s&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;&lt;a href=&quot;#&quot; id=&quot;browselink&quot;&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;/a&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;a href=&quot;#&quot; id=&quot;cloudlink&quot;&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;/a&gt;&#39;</span><span class="p">]));</span><span class="cp">?&gt;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Select file from %1$slocal filesystem%2$s or %3$scloud%4$s'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'&lt;a href="#" id="browselink"&gt;'</span><span class="p">,</span> <span class="s1">'&lt;/a&gt;'</span><span class="p">,</span> <span class="s1">'&lt;a href="#" id="cloudlink"&gt;'</span><span class="p">,</span> <span class="s1">'&lt;/a&gt;'</span><span class="p">]));</span><span class="cp">?&gt;</span>
 </pre></div>
 </div>
 <p>This allows translators to have the cloudlink before the browselink in case the language is e.g. right-to-left.</p>
@@ -450,15 +450,15 @@ The added hints will be shown in the Transifex web-interface:</p>
 If a single line of code contains two or more translation strings, the comment applies to the first one only,
 and the remaining strings will have no context hint. Refactor the code so that each line holds a single
 translation call, placing its own <code class="docutils literal notranslate"><span class="pre">//</span> <span class="pre">TRANSLATORS</span></code> comment on the line above.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// BAD: only &quot;Save&quot; gets the context hint, &quot;Cancel&quot; has none</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// BAD: only "Save" gets the context hint, "Cancel" has none</span>
 <span class="c1">// TRANSLATORS Confirm or discard the current changes</span>
-<span class="k">return</span> <span class="p">[</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Save&#39;</span><span class="p">),</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Cancel&#39;</span><span class="p">)];</span>
+<span class="k">return</span> <span class="p">[</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Save'</span><span class="p">),</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Cancel'</span><span class="p">)];</span>
 
 <span class="c1">// GOOD: one translation per line, each with its own hint</span>
 <span class="c1">// TRANSLATORS Confirm the current changes</span>
-<span class="nv">$save</span> <span class="o">=</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Save&#39;</span><span class="p">);</span>
+<span class="nv">$save</span> <span class="o">=</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Save'</span><span class="p">);</span>
 <span class="c1">// TRANSLATORS Discard the current changes</span>
-<span class="nv">$cancel</span> <span class="o">=</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Cancel&#39;</span><span class="p">);</span>
+<span class="nv">$cancel</span> <span class="o">=</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Cancel'</span><span class="p">);</span>
 <span class="k">return</span> <span class="p">[</span><span class="nv">$save</span><span class="p">,</span> <span class="nv">$cancel</span><span class="p">];</span>
 </pre></div>
 </div>
@@ -467,17 +467,17 @@ translation call, placing its own <code class="docutils literal notranslate"><sp
 <h4>PHP<a class="headerlink" href="#php" title="Link to this heading"></a></h4>
 <p>Place the comment on the line before the <code class="docutils literal notranslate"><span class="pre">-&gt;t()</span></code> or <code class="docutils literal notranslate"><span class="pre">-&gt;n()</span></code> call:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// TRANSLATORS Will be shown inside a popup and asks the user to add a new file</span>
-<span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Add new file&#39;</span><span class="p">));</span>
+<span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Add new file'</span><span class="p">));</span>
 
-<span class="c1">// TRANSLATORS The placeholder refers to the software product name, e.g. &quot;Add to your Nextcloud&quot;</span>
-<span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Add to your %s&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$productName</span><span class="p">]);</span>
+<span class="c1">// TRANSLATORS The placeholder refers to the software product name, e.g. "Add to your Nextcloud"</span>
+<span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Add to your %s'</span><span class="p">,</span> <span class="p">[</span><span class="nv">$productName</span><span class="p">]);</span>
 </pre></div>
 </div>
 <p>For multi-line context or example output, use consecutive comment lines:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// TRANSLATORS</span>
 <span class="c1">// Indicates when a calendar event will happen, shown on invitation emails.</span>
-<span class="c1">// Output example: &quot;In 1 hour on July 1, 2024 for the entire day&quot;</span>
-<span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;In %1$s on %2$s for the entire day&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$relativeTime</span><span class="p">,</span> <span class="nv">$date</span><span class="p">]);</span>
+<span class="c1">// Output example: "In 1 hour on July 1, 2024 for the entire day"</span>
+<span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'In %1$s on %2$s for the entire day'</span><span class="p">,</span> <span class="p">[</span><span class="nv">$relativeTime</span><span class="p">,</span> <span class="nv">$date</span><span class="p">]);</span>
 </pre></div>
 </div>
 </section>
@@ -485,10 +485,10 @@ translation call, placing its own <code class="docutils literal notranslate"><sp
 <h4>JavaScript / TypeScript<a class="headerlink" href="#javascript-typescript" title="Link to this heading"></a></h4>
 <p>Place the comment on the line before the <code class="docutils literal notranslate"><span class="pre">t()</span></code> or <code class="docutils literal notranslate"><span class="pre">n()</span></code> call:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// TRANSLATORS: name that is appended to copied files, will be put in parenthesis with a number for the second+ copy</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">copyNameLocalized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">t</span><span class="p">(</span><span class="s1">&#39;files&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;copy&#39;</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">copyNameLocalized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">t</span><span class="p">(</span><span class="s1">'files'</span><span class="p">,</span><span class="w"> </span><span class="s1">'copy'</span><span class="p">);</span>
 
-<span class="c1">// TRANSLATORS: {relativeDueDate} will be replaced with a relative time, e.g. &quot;2 hours ago&quot; or &quot;in 3 days&quot;</span>
-<span class="nx">t</span><span class="p">(</span><span class="s1">&#39;files_reminders&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;We will remind you of this file {relativeDueDate}&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">relativeDueDate</span><span class="w"> </span><span class="p">})</span>
+<span class="c1">// TRANSLATORS: {relativeDueDate} will be replaced with a relative time, e.g. "2 hours ago" or "in 3 days"</span>
+<span class="nx">t</span><span class="p">(</span><span class="s1">'files_reminders'</span><span class="p">,</span><span class="w"> </span><span class="s1">'We will remind you of this file {relativeDueDate}'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">relativeDueDate</span><span class="w"> </span><span class="p">})</span>
 </pre></div>
 </div>
 </section>
@@ -496,29 +496,29 @@ translation call, placing its own <code class="docutils literal notranslate"><sp
 <h4>Vue<a class="headerlink" href="#vue" title="Link to this heading"></a></h4>
 <p>In the <code class="docutils literal notranslate"><span class="pre">&lt;template&gt;</span></code> block, use an HTML comment on the line above the element:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- TRANSLATORS: Making this question necessary to be answered when submitting to a form --&gt;</span>
-<span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>{{ t(&#39;forms&#39;, &#39;Required&#39;) }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>{{ t('forms', 'Required') }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>In the <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> block, use the same <code class="docutils literal notranslate"><span class="pre">//</span></code> style as JavaScript.</p>
 </section>
 <section id="c-qt-desktop-client">
 <h4>C++ (Qt) / Desktop client<a class="headerlink" href="#c-qt-desktop-client" title="Link to this heading"></a></h4>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">//: Example text: &quot;Progress of sync process. Shows the currently synced filename&quot;</span>
-<span class="n">fileProgressString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tr</span><span class="p">(</span><span class="s">&quot;Syncing %1&quot;</span><span class="p">).</span><span class="n">arg</span><span class="p">(</span><span class="n">allFilenames</span><span class="p">);</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">//: Example text: "Progress of sync process. Shows the currently synced filename"</span>
+<span class="n">fileProgressString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tr</span><span class="p">(</span><span class="s">"Syncing %1"</span><span class="p">).</span><span class="n">arg</span><span class="p">(</span><span class="n">allFilenames</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
 <section id="android">
 <h4>Android<a class="headerlink" href="#android" title="Link to this heading"></a></h4>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- TRANSLATORS List of deck boards --&gt;</span>
-<span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;simple_boards&quot;</span><span class="nt">&gt;</span>Boards<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">"simple_boards"</span><span class="nt">&gt;</span>Boards<span class="nt">&lt;/string&gt;</span>
 </pre></div>
 </div>
 </section>
 <section id="ios">
 <h4>iOS<a class="headerlink" href="#ios" title="Link to this heading"></a></h4>
 <div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="cm">/* The title on the navigation bar of the Scanning screen. */</span>
-<span class="s">&quot;wescan.scanning.title&quot;</span><span class="w">             </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Scanning&quot;</span><span class="p">;</span>
+<span class="s">"wescan.scanning.title"</span><span class="w">             </span><span class="p">=</span><span class="w"> </span><span class="s">"Scanning"</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -567,7 +567,7 @@ installation and updates.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 22, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

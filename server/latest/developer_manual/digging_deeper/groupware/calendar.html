@@ -161,7 +161,7 @@
                                          <span class="nx">string</span> <span class="nv">$calendarUri</span><span class="p">,</span>
                                          <span class="nx">DateTimeImmutable</span> <span class="nv">$from</span><span class="p">,</span>
                                          <span class="nx">DateTimeImmutable</span> <span class="nv">$to</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
-        <span class="nv">$principal</span> <span class="o">=</span> <span class="s1">&#39;principals/users/&#39;</span> <span class="o">.</span> <span class="nv">$uid</span><span class="p">;</span>
+        <span class="nv">$principal</span> <span class="o">=</span> <span class="s1">'principals/users/'</span> <span class="o">.</span> <span class="nv">$uid</span><span class="p">;</span>
 
         <span class="c1">// Prepare the query</span>
         <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendarManager</span><span class="o">-&gt;</span><span class="na">newQuery</span><span class="p">(</span><span class="nv">$principal</span><span class="p">);</span>
@@ -196,7 +196,7 @@
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">processCalendarData</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$uid</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
-        <span class="nv">$principal</span> <span class="o">=</span> <span class="s1">&#39;principals/users/&#39;</span> <span class="o">.</span> <span class="nv">$uid</span><span class="p">;</span>
+        <span class="nv">$principal</span> <span class="o">=</span> <span class="s1">'principals/users/'</span> <span class="o">.</span> <span class="nv">$uid</span><span class="p">;</span>
 
         <span class="c1">// This will find all calendars of the principal</span>
         <span class="nv">$calendars</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendarManager</span><span class="o">-&gt;</span><span class="na">getCalendarsForPrincipal</span><span class="p">(</span><span class="nv">$principal</span><span class="p">);</span>
@@ -205,7 +205,7 @@
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">processCalendarData</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$uid</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$calendarUri</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
-        <span class="nv">$principal</span> <span class="o">=</span> <span class="s1">&#39;principals/users/&#39;</span> <span class="o">.</span> <span class="nv">$uid</span><span class="p">;</span>
+        <span class="nv">$principal</span> <span class="o">=</span> <span class="s1">'principals/users/'</span> <span class="o">.</span> <span class="nv">$uid</span><span class="p">;</span>
 
         <span class="c1">// This will only find specific calendars of the principal</span>
         <span class="nv">$calendars</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendarManager</span><span class="o">-&gt;</span><span class="na">getCalendarsForPrincipal</span><span class="p">(</span>
@@ -246,7 +246,7 @@ Please consider the example below to see both methods in action.</p>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">createEvent</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$uid</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
-        <span class="nv">$principal</span> <span class="o">=</span> <span class="s1">&#39;principals/users/&#39;</span> <span class="o">.</span> <span class="nv">$uid</span><span class="p">;</span>
+        <span class="nv">$principal</span> <span class="o">=</span> <span class="s1">'principals/users/'</span> <span class="o">.</span> <span class="nv">$uid</span><span class="p">;</span>
 
         <span class="c1">// This will find all calendars of the principal</span>
         <span class="nv">$calendars</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendarManager</span><span class="o">-&gt;</span><span class="na">getCalendarsForPrincipal</span><span class="p">(</span><span class="nv">$principal</span><span class="p">);</span>
@@ -264,18 +264,18 @@ Please consider the example below to see both methods in action.</p>
         <span class="p">}</span>
 
         <span class="c1">// Build an event</span>
-        <span class="nv">$startDate</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">\DateTimeImmutable</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">))</span>
-            <span class="o">-&gt;</span><span class="na">setTimezone</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTimeZone</span><span class="p">(</span><span class="s1">&#39;Europe/Berlin&#39;</span><span class="p">));</span>
-        <span class="nv">$endDate</span> <span class="o">=</span> <span class="nv">$startDate</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateInterval</span><span class="p">(</span><span class="s1">&#39;PT1H&#39;</span><span class="p">));</span>
+        <span class="nv">$startDate</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">\DateTimeImmutable</span><span class="p">(</span><span class="s1">'now'</span><span class="p">))</span>
+            <span class="o">-&gt;</span><span class="na">setTimezone</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTimeZone</span><span class="p">(</span><span class="s1">'Europe/Berlin'</span><span class="p">));</span>
+        <span class="nv">$endDate</span> <span class="o">=</span> <span class="nv">$startDate</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateInterval</span><span class="p">(</span><span class="s1">'PT1H'</span><span class="p">));</span>
         <span class="nv">$builder</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendarManager</span><span class="o">-&gt;</span><span class="na">createEventBuilder</span><span class="p">()</span>
             <span class="o">-&gt;</span><span class="na">setStartDate</span><span class="p">(</span><span class="nv">$startDate</span><span class="p">)</span>
             <span class="o">-&gt;</span><span class="na">setEndDate</span><span class="p">(</span><span class="nv">$endDate</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">setSummary</span><span class="p">(</span><span class="s1">&#39;An Event&#39;</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="s1">&#39;With a description&#39;</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">setLocation</span><span class="p">(</span><span class="s1">&#39;Some address&#39;</span><span class="p">)</span> <span class="c1">// A URL (of a meeting) would also work</span>
-            <span class="o">-&gt;</span><span class="na">setOrganizer</span><span class="p">(</span><span class="s1">&#39;organizer@domain.com&#39;</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">addAttendee</span><span class="p">(</span><span class="s1">&#39;user.1@domain.com&#39;</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">addAttendee</span><span class="p">(</span><span class="s1">&#39;user.2@domain.com&#39;</span><span class="p">,</span> <span class="s1">&#39;User Two&#39;</span><span class="p">);</span>
+            <span class="o">-&gt;</span><span class="na">setSummary</span><span class="p">(</span><span class="s1">'An Event'</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="s1">'With a description'</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setLocation</span><span class="p">(</span><span class="s1">'Some address'</span><span class="p">)</span> <span class="c1">// A URL (of a meeting) would also work</span>
+            <span class="o">-&gt;</span><span class="na">setOrganizer</span><span class="p">(</span><span class="s1">'organizer@domain.com'</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">addAttendee</span><span class="p">(</span><span class="s1">'user.1@domain.com'</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">addAttendee</span><span class="p">(</span><span class="s1">'user.2@domain.com'</span><span class="p">,</span> <span class="s1">'User Two'</span><span class="p">);</span>
 
         <span class="c1">// Write the calendar to an event</span>
         <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">createInCalendar</span><span class="p">(</span><span class="nv">$writableCalendar</span><span class="p">);</span>
@@ -285,7 +285,7 @@ Please consider the example below to see both methods in action.</p>
 
         <span class="c1">// For example, make use of ICreateFromString</span>
         <span class="c1">// Make sure to generate a unique filename/UUID for each event</span>
-        <span class="nv">$writableCalendar</span><span class="o">-&gt;</span><span class="na">createFromString</span><span class="p">(</span><span class="s1">&#39;edb29d1d-817c-4e43-9d52-cf26dff4be60.ics&#39;</span><span class="p">,</span> <span class="nv">$ics</span><span class="p">);</span>
+        <span class="nv">$writableCalendar</span><span class="o">-&gt;</span><span class="na">createFromString</span><span class="p">(</span><span class="s1">'edb29d1d-817c-4e43-9d52-cf26dff4be60.ics'</span><span class="p">,</span> <span class="nv">$ics</span><span class="p">);</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -310,7 +310,7 @@ The section <a class="reference internal" href="calendar_provider.html#calendar-
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
@@ -343,7 +343,7 @@ The section <a class="reference internal" href="calendar_provider.html#calendar-
 <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
@@ -378,7 +378,7 @@ The section <a class="reference internal" href="calendar_provider.html#calendar-
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

@@ -148,15 +148,15 @@ public API and functionality.</p>
 <h2>Convert input into standard format<a class="headerlink" href="#convert-input-into-standard-format" title="Link to this heading"></a></h2>
 <p>To convert a phone number to E164 format, call <code class="docutils literal notranslate"><span class="pre">convertToStandardFormat()</span></code> with a known region. The input can also
 contain formatting characters, such as spaces, slashes and dashes:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$input</span> <span class="o">=</span> <span class="s1">&#39;044 / 668-1800&#39;</span><span class="p">;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$input</span> <span class="o">=</span> <span class="s1">'044 / 668-1800'</span><span class="p">;</span>
 <span class="nv">$util</span> <span class="o">=</span> <span class="nx">\OCP\Server</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="nx">\OCP\IPhoneNumberUtil</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$util</span><span class="o">-&gt;</span><span class="na">convertToStandardFormat</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="s1">&#39;CH&#39;</span><span class="p">));</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$util</span><span class="o">-&gt;</span><span class="na">convertToStandardFormat</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="s1">'CH'</span><span class="p">));</span>
 <span class="c1">// Will output:</span>
-<span class="c1">// string(12) &quot;+41446681800&quot;</span>
+<span class="c1">// string(12) "+41446681800"</span>
 </pre></div>
 </div>
 <p>When no region is given and the phone number can not be mapped to a single region, converting will fail:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$input</span> <span class="o">=</span> <span class="s1">&#39;044 668 1800&#39;</span><span class="p">;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$input</span> <span class="o">=</span> <span class="s1">'044 668 1800'</span><span class="p">;</span>
 <span class="nv">$util</span> <span class="o">=</span> <span class="nx">\OCP\Server</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="nx">\OCP\IPhoneNumberUtil</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$util</span><span class="o">-&gt;</span><span class="na">convertToStandardFormat</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">null</span><span class="p">));</span>
 <span class="c1">// Will output:</span>
@@ -164,12 +164,12 @@ contain formatting characters, such as spaces, slashes and dashes:</p>
 </pre></div>
 </div>
 <p>The phone number can also be provided in an international format containing the region code. In this case, the default region is ignored:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$input</span> <span class="o">=</span> <span class="s1">&#39;+41 44 668 1800&#39;</span><span class="p">;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$input</span> <span class="o">=</span> <span class="s1">'+41 44 668 1800'</span><span class="p">;</span>
 <span class="nv">$util</span> <span class="o">=</span> <span class="nx">\OCP\Server</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="nx">\OCP\IPhoneNumberUtil</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$util</span><span class="o">-&gt;</span><span class="na">convertToStandardFormat</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">null</span><span class="p">));</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$util</span><span class="o">-&gt;</span><span class="na">convertToStandardFormat</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="s1">&#39;DE&#39;</span><span class="p">));</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$util</span><span class="o">-&gt;</span><span class="na">convertToStandardFormat</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="s1">'DE'</span><span class="p">));</span>
 <span class="c1">// Both will output:</span>
-<span class="c1">// string(12) &quot;+41446681800&quot;</span>
+<span class="c1">// string(12) "+41446681800"</span>
 </pre></div>
 </div>
 </section>
@@ -177,14 +177,14 @@ contain formatting characters, such as spaces, slashes and dashes:</p>
 <h2>Get the country code for a region<a class="headerlink" href="#get-the-country-code-for-a-region" title="Link to this heading"></a></h2>
 <p>To check if a provided region is valid (2-letter code of <code class="docutils literal notranslate"><span class="pre">ISO</span> <span class="pre">3166-1</span></code>) and has a country code use <code class="docutils literal notranslate"><span class="pre">getCountryCodeForRegion()</span></code>:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$util</span> <span class="o">=</span> <span class="nx">\OCP\Server</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="nx">\OCP\IPhoneNumberUtil</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$util</span><span class="o">-&gt;</span><span class="na">getCountryCodeForRegion</span><span class="p">(</span><span class="s1">&#39;DE&#39;</span><span class="p">));</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$util</span><span class="o">-&gt;</span><span class="na">getCountryCodeForRegion</span><span class="p">(</span><span class="s1">'DE'</span><span class="p">));</span>
 <span class="c1">// Will output:</span>
 <span class="c1">// int(49)</span>
 </pre></div>
 </div>
 <p>Again <code class="docutils literal notranslate"><span class="pre">null</span></code> is used to indicate invalid input:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$util</span> <span class="o">=</span> <span class="nx">\OCP\Server</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="nx">\OCP\IPhoneNumberUtil</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$util</span><span class="o">-&gt;</span><span class="na">getCountryCodeForRegion</span><span class="p">(</span><span class="s1">&#39;Germany&#39;</span><span class="p">));</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$util</span><span class="o">-&gt;</span><span class="na">getCountryCodeForRegion</span><span class="p">(</span><span class="s1">'Germany'</span><span class="p">));</span>
 <span class="c1">// Will output:</span>
 <span class="c1">// NULL</span>
 </pre></div>
@@ -204,7 +204,7 @@ contain formatting characters, such as spaces, slashes and dashes:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

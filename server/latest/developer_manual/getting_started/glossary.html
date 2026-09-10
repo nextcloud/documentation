@@ -232,10 +232,10 @@ widely-used helpers (such as <code class="docutils literal notranslate"><span cl
 the Nextcloud codebase itself.</p></li>
 </ul>
 <p>In practice, you will see namespaces at the top of every PHP file:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">OCA\NoteBook\Controller</span><span class="p">;</span>   <span class="c1">// &quot;I am part of the NoteBook app, in the Controller subfolder&quot;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">OCA\NoteBook\Controller</span><span class="p">;</span>   <span class="c1">// "I am part of the NoteBook app, in the Controller subfolder"</span>
 
-<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>     <span class="c1">// &quot;I want to use Nextcloud&#39;s public Controller class&quot;</span>
-<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>                    <span class="c1">// &quot;I want to use Nextcloud&#39;s public IRequest interface&quot;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>     <span class="c1">// "I want to use Nextcloud's public Controller class"</span>
+<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>                    <span class="c1">// "I want to use Nextcloud's public IRequest interface"</span>
 </pre></div>
 </div>
 </section>
@@ -246,7 +246,7 @@ the Nextcloud codebase itself.</p></li>
 <p>In Nextcloud, you use attributes to configure routing and access control:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">#[</span><span class="nd">NoCSRFRequired</span><span class="p">]</span>
 <span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
-<span class="p">#[</span><span class="nd">FrontpageRoute</span><span class="p">(</span><span class="nx">verb</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">)]</span>
+<span class="p">#[</span><span class="nd">FrontpageRoute</span><span class="p">(</span><span class="nx">verb</span><span class="o">:</span> <span class="s1">'GET'</span><span class="p">,</span> <span class="nx">url</span><span class="o">:</span> <span class="s1">'/'</span><span class="p">)]</span>
 <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
 </pre></div>
 </div>
@@ -308,7 +308,7 @@ test double during unit tests, and your code does not care which it receives.</p
 for that URL and calls it.</p>
 <p>In modern Nextcloud apps, routes are declared directly on the method using the
 <code class="docutils literal notranslate"><span class="pre">#[FrontpageRoute]</span></code> attribute:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">#[</span><span class="nd">FrontpageRoute</span><span class="p">(</span><span class="nx">verb</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">)]</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">#[</span><span class="nd">FrontpageRoute</span><span class="p">(</span><span class="nx">verb</span><span class="o">:</span> <span class="s1">'GET'</span><span class="p">,</span> <span class="nx">url</span><span class="o">:</span> <span class="s1">'/'</span><span class="p">)]</span>
 <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
 </pre></div>
 </div>
@@ -333,27 +333,27 @@ and returns a response.</p>
 it is almost always just a single HTML mount point — a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> that your Vue frontend attaches to.
 The ID can be anything you like, as long as it matches the <code class="docutils literal notranslate"><span class="pre">mount()</span></code> call in your JavaScript:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="c1">// templates/index.php — the entire file in a modern app ?&gt;</span>
-<span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;notebook&quot;</span><span class="o">&gt;&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"notebook"</span><span class="o">&gt;&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/main.js</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createApp</span><span class="p">(</span><span class="nx">App</span><span class="p">)</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">mount</span><span class="p">(</span><span class="s1">&#39;#notebook&#39;</span><span class="p">)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">mount</span><span class="p">(</span><span class="s1">'#notebook'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The controller loads the compiled JavaScript bundle and passes initial data using <code class="docutils literal notranslate"><span class="pre">IInitialState</span></code>,
 then returns the template:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// In the controller:</span>
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">initialState</span><span class="o">-&gt;</span><span class="na">provideInitialState</span><span class="p">(</span><span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">findAll</span><span class="p">());</span>
-<span class="nx">Util</span><span class="o">::</span><span class="na">addScript</span><span class="p">(</span><span class="s1">&#39;notebook&#39;</span><span class="p">,</span> <span class="s1">&#39;main&#39;</span><span class="p">);</span>
-<span class="k">return</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="s1">&#39;notebook&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">initialState</span><span class="o">-&gt;</span><span class="na">provideInitialState</span><span class="p">(</span><span class="s1">'notes'</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">findAll</span><span class="p">());</span>
+<span class="nx">Util</span><span class="o">::</span><span class="na">addScript</span><span class="p">(</span><span class="s1">'notebook'</span><span class="p">,</span> <span class="s1">'main'</span><span class="p">);</span>
+<span class="k">return</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="s1">'notebook'</span><span class="p">,</span> <span class="s1">'index'</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The frontend picks up that data with <code class="docutils literal notranslate"><span class="pre">loadState('notebook',</span> <span class="pre">'notes')</span></code>; no PHP variables appear in
 the template itself.</p>
 <p>You may still encounter the older <code class="docutils literal notranslate"><span class="pre">$_['key']</span></code> / <code class="docutils literal notranslate"><span class="pre">p()</span></code> pattern in legacy apps:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;!--</span> <span class="nx">Older</span> <span class="nx">style</span> <span class="nx">—</span> <span class="nx">still</span> <span class="nx">works</span><span class="p">,</span> <span class="nx">but</span> <span class="k">not</span> <span class="nx">used</span> <span class="nx">in</span> <span class="k">new</span> <span class="nx">development</span> <span class="o">--&gt;</span>
-<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">'username'</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">p()</span></code> outputs a value safely (HTML-escaped). If you see it, it belongs to an older app.</p>
@@ -377,9 +377,9 @@ your app gets the correct database structure automatically.</p>
 <p>An entity is a PHP class that represents a single row in a database table. Each property of the
 class corresponds to a column. Nextcloud’s app framework provides a base <code class="docutils literal notranslate"><span class="pre">Entity</span></code> class to extend:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Note</span> <span class="k">extends</span> <span class="nx">Entity</span> <span class="p">{</span>
-    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$title</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$content</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$userId</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$title</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$content</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$userId</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -439,7 +439,7 @@ be identical</strong>. Nextcloud discovers apps by reading the folder name and t
 <p>For example, an app with the display name “My NoteBook” could have the ID <code class="docutils literal notranslate"><span class="pre">notebook</span></code>,
 <code class="docutils literal notranslate"><span class="pre">mynotebook</span></code>, <code class="docutils literal notranslate"><span class="pre">my_notebook</span></code>, or anything else you choose, as long as the folder and <code class="docutils literal notranslate"><span class="pre">info.xml</span></code>
 agree:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>apps-extra/mynotebook/                    # folder name is &quot;mynotebook&quot;
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>apps-extra/mynotebook/                    # folder name is "mynotebook"
 apps-extra/mynotebook/appinfo/info.xml    # &lt;id&gt;mynotebook&lt;/id&gt;  must match
 </pre></div>
 </div>
@@ -534,9 +534,9 @@ to your PHP backend.</p>
 <h3>JSON<a class="headerlink" href="#json" title="Link to this heading"></a></h3>
 <p>JSON (JavaScript Object Notation) is a text format for structured data:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My first note&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hello, world!&quot;</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My first note"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello, world!"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -563,7 +563,7 @@ typically use the <code class="docutils literal notranslate"><span class="pre">&
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

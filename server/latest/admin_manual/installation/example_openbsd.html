@@ -216,7 +216,7 @@
 <section id="httpd-8">
 <h2>HTTPD(8)<a class="headerlink" href="#httpd-8" title="Link to this heading"></a></h2>
 <p>Create a virtualhost in <code class="docutils literal notranslate"><span class="pre">/etc/httpd.conf</span></code> and add the following content to it:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">server</span> <span class="s2">&quot;domain.tld&quot;</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">server</span> <span class="s2">"domain.tld"</span> <span class="p">{</span>
       <span class="n">listen</span> <span class="n">on</span> <span class="n">egress</span> <span class="n">tls</span> <span class="n">port</span> <span class="mi">443</span>
       <span class="n">hsts</span> <span class="p">{</span>
     <span class="nb">max</span><span class="o">-</span><span class="n">age</span> <span class="mi">15768000</span>
@@ -225,8 +225,8 @@
   <span class="p">}</span>
 
     <span class="n">tls</span> <span class="p">{</span>
-          <span class="n">certificate</span> <span class="s2">&quot;/etc/ssl/domain.tld_fullchain.pem&quot;</span>
-          <span class="n">key</span> <span class="s2">&quot;/etc/ssl/private/domain.tld_private.pem&quot;</span>
+          <span class="n">certificate</span> <span class="s2">"/etc/ssl/domain.tld_fullchain.pem"</span>
+          <span class="n">key</span> <span class="s2">"/etc/ssl/private/domain.tld_private.pem"</span>
     <span class="p">}</span>
 
     <span class="c1"># Set max upload size to 513M (in bytes)</span>
@@ -235,44 +235,44 @@
     <span class="n">connection</span> <span class="n">request</span> <span class="n">timeout</span> <span class="mi">3600</span>
     <span class="n">connection</span> <span class="n">timeout</span> <span class="mi">3600</span>
 
-    <span class="n">root</span> <span class="s2">&quot;/nextcloud&quot;</span>
-    <span class="n">directory</span> <span class="n">index</span> <span class="s2">&quot;index.php&quot;</span>
+    <span class="n">root</span> <span class="s2">"/nextcloud"</span>
+    <span class="n">directory</span> <span class="n">index</span> <span class="s2">"index.php"</span>
 
-    <span class="c1"># Ensure that no &#39;*.php*&#39; files can be fetched from these directories</span>
-    <span class="n">location</span> <span class="s2">&quot;/config/*&quot;</span> <span class="p">{</span>
+    <span class="c1"># Ensure that no '*.php*' files can be fetched from these directories</span>
+    <span class="n">location</span> <span class="s2">"/config/*"</span> <span class="p">{</span>
         <span class="n">block</span> <span class="n">drop</span>
     <span class="p">}</span>
 
-    <span class="n">location</span> <span class="s2">&quot;/data/*&quot;</span> <span class="p">{</span>
+    <span class="n">location</span> <span class="s2">"/data/*"</span> <span class="p">{</span>
         <span class="n">block</span> <span class="n">drop</span>
     <span class="p">}</span>
 
-    <span class="c1"># Note that this matches &quot;*.php*&quot; anywhere in the request path.</span>
-    <span class="n">location</span> <span class="s2">&quot;/nextcloud/*.php*&quot;</span> <span class="p">{</span>
-        <span class="n">fastcgi</span> <span class="n">socket</span> <span class="s2">&quot;/run/php-fpm.sock&quot;</span>
+    <span class="c1"># Note that this matches "*.php*" anywhere in the request path.</span>
+    <span class="n">location</span> <span class="s2">"/nextcloud/*.php*"</span> <span class="p">{</span>
+        <span class="n">fastcgi</span> <span class="n">socket</span> <span class="s2">"/run/php-fpm.sock"</span>
     <span class="p">}</span>
 
-    <span class="n">location</span> <span class="s2">&quot;/apps/*&quot;</span> <span class="p">{</span>
+    <span class="n">location</span> <span class="s2">"/apps/*"</span> <span class="p">{</span>
         <span class="k">pass</span>
     <span class="p">}</span>
 
-    <span class="n">location</span> <span class="s2">&quot;/core/*&quot;</span> <span class="p">{</span>
+    <span class="n">location</span> <span class="s2">"/core/*"</span> <span class="p">{</span>
         <span class="k">pass</span>
     <span class="p">}</span>
 
-    <span class="n">location</span> <span class="s2">&quot;/.well-known/carddav&quot;</span> <span class="p">{</span>
-        <span class="n">block</span> <span class="k">return</span> <span class="mi">301</span> <span class="s2">&quot;https://$SERVER_NAME/remote.php/dav&quot;</span>
+    <span class="n">location</span> <span class="s2">"/.well-known/carddav"</span> <span class="p">{</span>
+        <span class="n">block</span> <span class="k">return</span> <span class="mi">301</span> <span class="s2">"https://$SERVER_NAME/remote.php/dav"</span>
     <span class="p">}</span>
 
-    <span class="n">location</span> <span class="s2">&quot;/.well-known/caldav&quot;</span> <span class="p">{</span>
-        <span class="n">block</span> <span class="k">return</span> <span class="mi">301</span> <span class="s2">&quot;https://$SERVER_NAME/remote.php/dav&quot;</span>
+    <span class="n">location</span> <span class="s2">"/.well-known/caldav"</span> <span class="p">{</span>
+        <span class="n">block</span> <span class="k">return</span> <span class="mi">301</span> <span class="s2">"https://$SERVER_NAME/remote.php/dav"</span>
     <span class="p">}</span>
 
-    <span class="n">location</span> <span class="s2">&quot;/.well-known/webfinger&quot;</span> <span class="p">{</span>
-        <span class="n">block</span> <span class="k">return</span> <span class="mi">301</span> <span class="s2">&quot;https://$SERVER_NAME/public.php?service=webfinger&quot;</span>
+    <span class="n">location</span> <span class="s2">"/.well-known/webfinger"</span> <span class="p">{</span>
+        <span class="n">block</span> <span class="k">return</span> <span class="mi">301</span> <span class="s2">"https://$SERVER_NAME/public.php?service=webfinger"</span>
     <span class="p">}</span>
 
-    <span class="n">location</span> <span class="n">match</span> <span class="s2">&quot;/ocs-provider/*&quot;</span> <span class="p">{</span>
+    <span class="n">location</span> <span class="n">match</span> <span class="s2">"/ocs-provider/*"</span> <span class="p">{</span>
         <span class="k">pass</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -348,11 +348,11 @@ $ exit
 <span class="c1"># rcctl start redis</span>
 <span class="c1"># mg /var/www/nextcloud/config/config.php</span>
 <span class="o">...</span>
-  <span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
-  <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
-  <span class="s1">&#39;timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
+  <span class="s1">'memcache.local'</span> <span class="o">=&gt;</span> <span class="s1">'\OC\Memcache\Redis'</span><span class="p">,</span>
+  <span class="s1">'redis'</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+  <span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'localhost'</span><span class="p">,</span>
+  <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+  <span class="s1">'timeout'</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
 <span class="p">),</span>
 <span class="o">...</span>
 </pre></div>

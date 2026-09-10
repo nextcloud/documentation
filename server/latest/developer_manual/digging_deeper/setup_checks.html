@@ -190,18 +190,18 @@ for this example we will create a check that ensures the Nextcloud instance is n
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Debug mode&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Debug mode'</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getCategory</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s1">&#39;system&#39;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s1">'system'</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">run</span><span class="p">()</span><span class="o">:</span> <span class="nx">SetupResult</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">getSystemValueBool</span><span class="p">(</span><span class="s1">&#39;debug&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">))</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">SetupResult</span><span class="o">::</span><span class="na">warning</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;This instance is running in debug mode. Only enable this for local development and not in production environments.&#39;</span><span class="p">));</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">getSystemValueBool</span><span class="p">(</span><span class="s1">'debug'</span><span class="p">,</span> <span class="k">false</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">SetupResult</span><span class="o">::</span><span class="na">warning</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'This instance is running in debug mode. Only enable this for local development and not in production environments.'</span><span class="p">));</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">SetupResult</span><span class="o">::</span><span class="na">success</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Debug mode is disabled.&#39;</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nx">SetupResult</span><span class="o">::</span><span class="na">success</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Debug mode is disabled.'</span><span class="p">));</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -210,7 +210,7 @@ for this example we will create a check that ensures the Nextcloud instance is n
 <p>First it is required to provide a name, the name which should summarize the check and should be provided as a user visible, thus translated string.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
     <span class="c1">// This is user visible and thus should be translated</span>
-    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Debug mode&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Debug mode'</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -222,7 +222,7 @@ for this example we will create a check that ensures the Nextcloud instance is n
 <li><p>Custom category: Will be merged into system. Examples for existing custom categories are  <code class="docutils literal notranslate"><span class="pre">network</span></code> and <code class="docutils literal notranslate"><span class="pre">database</span></code>.</p></li>
 </ul>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getCategory</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="s1">&#39;system&#39;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s1">'system'</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -245,10 +245,10 @@ in this case the third parameter should contain the rich object parameters.</p>
 the web frontend and from the CLI. Meaning they might use different <code class="docutils literal notranslate"><span class="pre">php.ini</span></code> files.</p>
 </div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">run</span><span class="p">()</span><span class="o">:</span> <span class="nx">SetupResult</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">getSystemValueBool</span><span class="p">(</span><span class="s1">&#39;debug&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">SetupResult</span><span class="o">::</span><span class="na">warning</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;This instance is running in debug mode. Only enable this for local development and not in production environments.&#39;</span><span class="p">));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">getSystemValueBool</span><span class="p">(</span><span class="s1">'debug'</span><span class="p">,</span> <span class="k">false</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">SetupResult</span><span class="o">::</span><span class="na">warning</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'This instance is running in debug mode. Only enable this for local development and not in production environments.'</span><span class="p">));</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">SetupResult</span><span class="o">::</span><span class="na">success</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Debug mode is disabled.&#39;</span><span class="p">));</span>
+        <span class="k">return</span> <span class="nx">SetupResult</span><span class="o">::</span><span class="na">success</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Debug mode is disabled.'</span><span class="p">));</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -261,20 +261,20 @@ To ease writing tests like that we provide the <code class="docutils literal not
 <p>The <code class="docutils literal notranslate"><span class="pre">run</span></code> function of the JavaScript modules setup check could look like:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">run</span><span class="p">()</span><span class="o">:</span> <span class="nx">SetupResult</span> <span class="p">{</span>
     <span class="c1">// This is a real existing file</span>
-    <span class="nv">$testFile</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">linkTo</span><span class="p">(</span><span class="s1">&#39;settings&#39;</span><span class="p">,</span> <span class="s1">&#39;js/esm-test.mjs&#39;</span><span class="p">);</span>
+    <span class="nv">$testFile</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">linkTo</span><span class="p">(</span><span class="s1">'settings'</span><span class="p">,</span> <span class="s1">'js/esm-test.mjs'</span><span class="p">);</span>
 
     <span class="nv">$noResponse</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">runRequest</span><span class="p">(</span><span class="s1">&#39;HEAD&#39;</span><span class="p">,</span> <span class="nv">$testFile</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">runRequest</span><span class="p">(</span><span class="s1">'HEAD'</span><span class="p">,</span> <span class="nv">$testFile</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$response</span><span class="p">)</span> <span class="p">{</span>
         <span class="nv">$noResponse</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s1">&#39;/(text|application)\/javascript/i&#39;</span><span class="p">,</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">)))</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s1">'/(text|application)\/javascript/i'</span><span class="p">,</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">)))</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nx">SetupResult</span><span class="o">::</span><span class="na">success</span><span class="p">();</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nv">$noResponse</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">SetupResult</span><span class="o">::</span><span class="na">warning</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Unable to run check for JavaScript support.&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">serverConfigHelp</span><span class="p">());</span>
+        <span class="k">return</span> <span class="nx">SetupResult</span><span class="o">::</span><span class="na">warning</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Unable to run check for JavaScript support.'</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">serverConfigHelp</span><span class="p">());</span>
     <span class="p">}</span>
-    <span class="k">return</span> <span class="nx">SetupResult</span><span class="o">::</span><span class="na">error</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Your webserver does not serve `.mjs` files using the JavaScript MIME type. This will break some apps by preventing browsers from executing the JavaScript files.&#39;</span><span class="p">));</span>
+    <span class="k">return</span> <span class="nx">SetupResult</span><span class="o">::</span><span class="na">error</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Your webserver does not serve `.mjs` files using the JavaScript MIME type. This will break some apps by preventing browsers from executing the JavaScript files.'</span><span class="p">));</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -302,7 +302,7 @@ If no response is yielded from the <code class="docutils literal notranslate"><s
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

@@ -183,15 +183,15 @@ This lexicon allow developers to define the config keys of their apps, their val
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getAppConfigs</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">[</span>
-            <span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">,</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">STRING</span><span class="p">,</span> <span class="s1">&#39;abcde&#39;</span><span class="p">,</span> <span class="s1">&#39;test key&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="nx">IAppConfig</span><span class="o">::</span><span class="na">FLAG_SENSITIVE</span><span class="p">),</span>
-            <span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span><span class="s1">&#39;key2&#39;</span><span class="p">,</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">INT</span><span class="p">,</span> <span class="mi">12345</span><span class="p">,</span> <span class="s1">&#39;test key&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
+            <span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span><span class="s1">'key1'</span><span class="p">,</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">STRING</span><span class="p">,</span> <span class="s1">'abcde'</span><span class="p">,</span> <span class="s1">'test key'</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="nx">IAppConfig</span><span class="o">::</span><span class="na">FLAG_SENSITIVE</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span><span class="s1">'key2'</span><span class="p">,</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">INT</span><span class="p">,</span> <span class="mi">12345</span><span class="p">,</span> <span class="s1">'test key'</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
         <span class="p">];</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getUserConfigs</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">[</span>
-            <span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">,</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">STRING</span><span class="p">,</span> <span class="s1">&#39;abcde&#39;</span><span class="p">,</span> <span class="s1">&#39;test key&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="nx">IUserConfig</span><span class="o">::</span><span class="na">FLAG_SENSITIVE</span><span class="p">),</span>
-            <span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span><span class="s1">&#39;key2&#39;</span><span class="p">,</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">INT</span><span class="p">,</span> <span class="mi">12345</span><span class="p">,</span> <span class="s1">&#39;test key&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
+            <span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span><span class="s1">'key1'</span><span class="p">,</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">STRING</span><span class="p">,</span> <span class="s1">'abcde'</span><span class="p">,</span> <span class="s1">'test key'</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="nx">IUserConfig</span><span class="o">::</span><span class="na">FLAG_SENSITIVE</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span><span class="s1">'key2'</span><span class="p">,</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">INT</span><span class="p">,</span> <span class="mi">12345</span><span class="p">,</span> <span class="s1">'test key'</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
         <span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -214,10 +214,10 @@ Must returns a value from enum <code class="docutils literal notranslate"><span 
 <h3>Config Lexicon Entry<a class="headerlink" href="#config-lexicon-entry" title="Link to this heading"></a></h3>
 <p>Each config key is defined in a object through those arguments:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span>
-    <span class="nb">key</span><span class="o">:</span> <span class="s1">&#39;my_config_key&#39;</span><span class="p">,</span>        <span class="c1">// config key</span>
+    <span class="nb">key</span><span class="o">:</span> <span class="s1">'my_config_key'</span><span class="p">,</span>        <span class="c1">// config key</span>
     <span class="nx">type</span><span class="o">:</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">STRING</span><span class="p">,</span>     <span class="c1">// expected value type when the code set/get value</span>
-    <span class="nx">defaultRaw</span><span class="o">:</span> <span class="s1">&#39;default value&#39;</span><span class="p">,</span> <span class="c1">// value to returns if a config value is not available in the database</span>
-    <span class="nx">definition</span><span class="o">:</span> <span class="s1">&#39;this is a description of the use for this config key&#39;</span><span class="p">,</span>
+    <span class="nx">defaultRaw</span><span class="o">:</span> <span class="s1">'default value'</span><span class="p">,</span> <span class="c1">// value to returns if a config value is not available in the database</span>
+    <span class="nx">definition</span><span class="o">:</span> <span class="s1">'this is a description of the use for this config key'</span><span class="p">,</span>
     <span class="nx">lazy</span><span class="o">:</span> <span class="k">true</span><span class="p">,</span>                  <span class="c1">// config value is stored as lazy</span>
     <span class="nx">flags</span><span class="o">:</span> <span class="nx">FLAG_SENSITIVE</span><span class="p">,</span>       <span class="c1">// value is sensitive and/or indexable, using IAppConfig::FLAG_*, IUserConfig::FLAG_*</span>
     <span class="nx">deprecated</span><span class="o">:</span> <span class="k">false</span><span class="p">,</span>           <span class="c1">// if set to ``true`` will generate a notice entry in the nextcloud logs when called</span>
@@ -241,10 +241,10 @@ current<span class="w"> </span>preset:<span class="w"> </span>PRIVATE
 </div>
 <p>If you want your app to have a different default value based on the selected Preset, you need to generate a Closure as <code class="docutils literal notranslate"><span class="pre">$defaultRaw</span></code> when generating the Lexicon Entry.
 The first parameter of the Closure is an Enum <code class="docutils literal notranslate"><span class="pre">'\OCP\Config\Lexicon\Preset'</span></code> that define the current Preset:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span><span class="s1">&#39;key3&#39;</span><span class="p">,</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">STRING</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">(</span><span class="nx">Preset</span> <span class="nv">$p</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="o">=&gt;</span> <span class="k">match</span> <span class="p">(</span><span class="nv">$p</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">Preset</span><span class="o">::</span><span class="na">FAMILY</span> <span class="o">=&gt;</span> <span class="s1">&#39;family&#39;</span><span class="p">,</span>
-            <span class="nx">Preset</span><span class="o">::</span><span class="na">CLUB</span><span class="p">,</span> <span class="nx">Preset</span><span class="o">::</span><span class="na">MEDIUM</span> <span class="o">=&gt;</span> <span class="s1">&#39;club+medium&#39;</span><span class="p">,</span>
-            <span class="k">default</span> <span class="o">=&gt;</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span><span class="s1">'key3'</span><span class="p">,</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">STRING</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">(</span><span class="nx">Preset</span> <span class="nv">$p</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="o">=&gt;</span> <span class="k">match</span> <span class="p">(</span><span class="nv">$p</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">Preset</span><span class="o">::</span><span class="na">FAMILY</span> <span class="o">=&gt;</span> <span class="s1">'family'</span><span class="p">,</span>
+            <span class="nx">Preset</span><span class="o">::</span><span class="na">CLUB</span><span class="p">,</span> <span class="nx">Preset</span><span class="o">::</span><span class="na">MEDIUM</span> <span class="o">=&gt;</span> <span class="s1">'club+medium'</span><span class="p">,</span>
+            <span class="k">default</span> <span class="o">=&gt;</span> <span class="s1">'none'</span><span class="p">,</span>
         <span class="p">}),</span>
 </pre></div>
 </div>
@@ -268,7 +268,7 @@ The first parameter of the Closure is an Enum <code class="docutils literal notr
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./occ<span class="w"> </span>config:app:get<span class="w"> </span>myapp<span class="w"> </span>my_config_key<span class="w"> </span>--details
 <span class="w">  </span>-<span class="w"> </span>app:<span class="w"> </span>myapp
 <span class="w">  </span>-<span class="w"> </span>key:<span class="w"> </span>my_config_key
-<span class="w">  </span>-<span class="w"> </span>value:<span class="w"> </span><span class="s1">&#39;a_value&#39;</span>
+<span class="w">  </span>-<span class="w"> </span>value:<span class="w"> </span><span class="s1">'a_value'</span>
 <span class="w">  </span>-<span class="w"> </span>type:<span class="w"> </span>string
 <span class="w">  </span>-<span class="w"> </span>lazy:<span class="w"> </span><span class="nb">true</span>
 <span class="w">  </span>-<span class="w"> </span>description:
@@ -291,7 +291,7 @@ The first parameter of the Closure is an Enum <code class="docutils literal notr
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

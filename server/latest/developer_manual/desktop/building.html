@@ -223,7 +223,7 @@ to streamline the process.</p>
 <li><p>Install Homebrew from <a class="reference external" href="https://brew.sh">brew.sh</a> (which will just give you the following):</p></li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%<span class="w"> </span>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%<span class="w"> </span>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">"</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -248,8 +248,8 @@ the permissions on the affected files with the following command:</p>
 <li><p>Certain Homebrew packages are not automatically linked in places where
 the build scripts can find them, so you can create a shell-profile script
 that will find and load them dynamically when you run a build:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export QT_PATH=$(brew --prefix qt6)/bin&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.nextcloud_build_variables
-%<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export CMAKE_PREFIX_PATH=$(brew --prefix qt6);$(brew --prefix karchive)&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.nextcloud_build_variables
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'export QT_PATH=$(brew --prefix qt6)/bin'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.nextcloud_build_variables
+%<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'export CMAKE_PREFIX_PATH=$(brew --prefix qt6);$(brew --prefix karchive)'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.nextcloud_build_variables
 </pre></div>
 </div>
 <div class="admonition note">
@@ -294,9 +294,9 @@ for tidiness and consistency.</p>
 so you need to specify a build location. You can do this every time you build,
 or you can add it to your save build variables, like so:</p>
 </div></blockquote>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export CMAKE_INSTALL_PREFIX=~/Builds&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.nextcloud_build_variables
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'export CMAKE_INSTALL_PREFIX=~/Builds'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.nextcloud_build_variables
 <span class="c1"># If you want to build a macOS app bundle for distribution</span>
-%<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export BUILD_OWNCLOUD_OSX_BUNDLE=ON&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.nextcloud_build_variables
+%<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'export BUILD_OWNCLOUD_OSX_BUNDLE=ON'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.nextcloud_build_variables
 </pre></div>
 </div>
 <p>Replace <code class="docutils literal notranslate"><span class="pre">~/Builds</span></code> with a different directory if you’d like the build to end up elsewhere.</p>
@@ -375,7 +375,7 @@ craft craft
 <li><p>Open the Command Prompt (cmd.exe)</p></li>
 <li><p>Run:</p></li>
 </ol>
-<div class="highlight-winbatch notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat&quot;</span> x64
+<div class="highlight-winbatch notranslate"><div class="highlight"><pre><span></span><span class="s2">"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat"</span> x64
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
@@ -387,7 +387,7 @@ craft craft
 <ol class="arabic simple" start="5">
 <li><p>Alternatively you can use the tools installed with KDE Craft by adding them to %PATH%:</p></li>
 </ol>
-<div class="highlight-winbatch notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="s2">&quot;PATH=C:\CraftRoot\bin;C:\CraftRoot\dev-utils\bin;</span><span class="nv">%PATH%</span><span class="s2">&quot;</span>
+<div class="highlight-winbatch notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="s2">"PATH=C:\CraftRoot\bin;C:\CraftRoot\dev-utils\bin;</span><span class="nv">%PATH%</span><span class="s2">"</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -435,7 +435,7 @@ of Nextcloud client!</p>
 </div>
 </li>
 <li><p>From within the source tree Run the docker instance:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -v &quot;$PWD:/home/user/client&quot; nextcloud-client-win32:&lt;version&gt; \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -v "$PWD:/home/user/client" nextcloud-client-win32:&lt;version&gt; \
    /home/user/client/admin/win/docker/build.sh client/  $(id -u)
 </pre></div>
 </div>
@@ -451,9 +451,9 @@ source tree.</p>
 This requires a <a class="reference external" href="https://msdn.microsoft.com/en-us/library/ie/ms537361%28v=vs.85%29.aspx">Microsoft Authenticode</a> Certificate <code class="docutils literal notranslate"><span class="pre">osslsigncode</span></code> to sign the installer:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>osslsigncode -pkcs12 $HOME/.codesign/packages.pfx -h sha256 \
           -pass yourpass \
-          -n &quot;ACME Client&quot; \
-          -i &quot;http://acme.com&quot; \
-          -ts &quot;http://timestamp.server/&quot; \
+          -n "ACME Client" \
+          -i "http://acme.com" \
+          -ts "http://timestamp.server/" \
           -in ${unsigned_file} \
           -out ${installer_file}
 </pre></div>
@@ -486,7 +486,7 @@ $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>clien
 </div>
 </li>
 <li><p>Configure the client build</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span><span class="s2">&quot;Debug&quot;</span><span class="w"> </span>..
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span><span class="s2">"Debug"</span><span class="w"> </span>..
 </pre></div>
 </div>
 <div class="admonition note">
@@ -574,7 +574,7 @@ right above the table.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

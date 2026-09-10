@@ -637,7 +637,7 @@
 </ul>
 <p>Also, make sure that you instruct the model to use the correct language in its output. By default most models will answer in English if the main prompt is in English, even though the source data is in another language.
 A tweak to make sure of this is to instruct the model as follows:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Detect the language used in the text and make sure to answer in the same language without mentioning the language explicitly.&quot;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="s2">"Detect the language used in the text and make sure to answer in the same language without mentioning the language explicitly."</span>
 </pre></div>
 </div>
 <section id="input-and-output-shapes">
@@ -650,14 +650,14 @@ A tweak to make sure of this is to instruct the model as follows:</p>
 <span class="sd"> */</span>
 <span class="k">public</span> <span class="k">function</span> <span class="nf">getInputShape</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span>
-        <span class="s1">&#39;input&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Prompt&#39;</span><span class="p">),</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Describe the image you want to generate&#39;</span><span class="p">),</span>
+        <span class="s1">'input'</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Prompt'</span><span class="p">),</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Describe the image you want to generate'</span><span class="p">),</span>
             <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Text</span>
         <span class="p">),</span>
-        <span class="s1">&#39;numberOfImages&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Number of images&#39;</span><span class="p">),</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;How many images to generate&#39;</span><span class="p">),</span>
+        <span class="s1">'numberOfImages'</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Number of images'</span><span class="p">),</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'How many images to generate'</span><span class="p">),</span>
             <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Number</span>
         <span class="p">),</span>
     <span class="p">];</span>
@@ -696,9 +696,9 @@ A tweak to make sure of this is to instruct the model as follows:</p>
 <p>To create a task we use the <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\Task</span></code> class. Its constructor takes the following arguments: <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">\OCP\TaskProcessing\Task(string</span> <span class="pre">$taskTypeId,</span> <span class="pre">array</span> <span class="pre">$input,</span> <span class="pre">string</span> <span class="pre">$appId,</span> <span class="pre">?string</span> <span class="pre">$userId,</span> <span class="pre">string</span> <span class="pre">$customId</span> <span class="pre">=</span> <span class="pre">'')</span></code>. For example:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// getAvailableTaskTypeIds is faster than getAvailableTaskTypes</span>
 <span class="c1">// if (isset($textprocessingManager-&gt;getAvailableTaskTypes()[TextToTextSummary::ID]) {</span>
-<span class="c1">// if you don&#39;t need the task type metadata, prefer this:</span>
+<span class="c1">// if you don't need the task type metadata, prefer this:</span>
 <span class="k">if</span> <span class="p">(</span><span class="nb">in_array</span><span class="p">(</span><span class="nx">TextToTextSummary</span><span class="o">::</span><span class="na">ID</span><span class="p">,</span> <span class="nv">$textprocessingManager</span><span class="o">-&gt;</span><span class="na">getAvailableTaskTypeIds</span><span class="p">(),</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$summaryTask</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Task</span><span class="p">(</span><span class="nx">TextToTextSummary</span><span class="o">::</span><span class="na">ID</span><span class="p">,</span> <span class="nv">$emailText</span><span class="p">,</span> <span class="s2">&quot;my_app&quot;</span><span class="p">,</span> <span class="nv">$userId</span><span class="p">,</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$emailId</span><span class="p">);</span>
+    <span class="nv">$summaryTask</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Task</span><span class="p">(</span><span class="nx">TextToTextSummary</span><span class="o">::</span><span class="na">ID</span><span class="p">,</span> <span class="nv">$emailText</span><span class="p">,</span> <span class="s2">"my_app"</span><span class="p">,</span> <span class="nv">$userId</span><span class="p">,</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$emailId</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="c1">// cannot use summarization</span>
 <span class="p">}</span>
@@ -826,11 +826,11 @@ A tweak to make sure of this is to instruct the model as follows:</p>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="s1">&#39;myapp:summary&#39;</span><span class="p">;</span>
+      <span class="k">return</span> <span class="s1">'myapp:summary'</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;My awesome summary provider&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'My awesome summary provider'</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getTaskTypeId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
@@ -904,7 +904,7 @@ A tweak to make sure of this is to instruct the model as follows:</p>
     <span class="o">?</span><span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$input</span><span class="p">,</span> <span class="nx">callable</span> <span class="nv">$reportProgress</span>
 <span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
     <span class="c1">// …</span>
-    <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;output&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">FileShaped</span><span class="p">(</span><span class="nx">EShapeType</span><span class="o">::</span><span class="na">Audio</span><span class="p">,</span> <span class="nv">$binaryOutput</span><span class="p">,</span> <span class="nx">extension</span><span class="o">:</span> <span class="s1">&#39;ogg&#39;</span><span class="p">)];</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s1">'output'</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">FileShaped</span><span class="p">(</span><span class="nx">EShapeType</span><span class="o">::</span><span class="na">Audio</span><span class="p">,</span> <span class="nv">$binaryOutput</span><span class="p">,</span> <span class="nx">extension</span><span class="o">:</span> <span class="s1">'ogg'</span><span class="p">)];</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -922,23 +922,23 @@ the process method should be adjusted:</p>
     <span class="nv">$preferStreaming</span> <span class="o">=</span> <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">getPreferStreaming</span><span class="p">();</span>
     <span class="nv">$reportOutput</span> <span class="o">=</span> <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">getReportIntermediateOutput</span><span class="p">();</span>
 
-    <span class="nv">$textOutput</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span><span class="p">;</span>
+    <span class="nv">$textOutput</span> <span class="o">=</span> <span class="s1">'1'</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nv">$preferStreaming</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$reportOutput</span><span class="p">([</span><span class="s1">&#39;output&#39;</span> <span class="o">=&gt;</span> <span class="nv">$textOutput</span><span class="p">]);</span>
+        <span class="nv">$reportOutput</span><span class="p">([</span><span class="s1">'output'</span> <span class="o">=&gt;</span> <span class="nv">$textOutput</span><span class="p">]);</span>
     <span class="p">}</span>
     <span class="k">foreach</span> <span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$textOutput</span> <span class="o">.=</span> <span class="s1">&#39; and &#39;</span> <span class="o">.</span> <span class="nv">$i</span><span class="p">;</span>
+        <span class="nv">$textOutput</span> <span class="o">.=</span> <span class="s1">' and '</span> <span class="o">.</span> <span class="nv">$i</span><span class="p">;</span>
         <span class="nv">$reportProgress</span><span class="p">(</span><span class="nv">$i</span> <span class="o">/</span> <span class="mi">100</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nv">$preferStreaming</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$reportOutput</span><span class="p">([</span><span class="s1">&#39;output&#39;</span> <span class="o">=&gt;</span> <span class="nv">$textOutput</span><span class="p">]);</span>
+            <span class="nv">$reportOutput</span><span class="p">([</span><span class="s1">'output'</span> <span class="o">=&gt;</span> <span class="nv">$textOutput</span><span class="p">]);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nv">$includeWatermark</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$textOutput</span> <span class="o">.=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">.</span> <span class="s1">&#39;This was generated using artificial intelligence.&#39;</span><span class="p">;</span>
+        <span class="nv">$textOutput</span> <span class="o">.=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">.</span> <span class="s1">'This was generated using artificial intelligence.'</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;output&#39;</span> <span class="o">=&gt;</span> <span class="nv">$textOutput</span><span class="p">];</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s1">'output'</span> <span class="o">=&gt;</span> <span class="nv">$textOutput</span><span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -950,7 +950,7 @@ with your provider you can specify optional inputs and outputs using the <code c
 You will need to return an associative array of <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ShapeDescriptor</span></code> objects.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getOptionalInputShape</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span>
-        <span class="s1">&#39;tone&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Tone of voice&#39;</span><span class="p">),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Set the tone of voice to be used for the output&#39;</span><span class="p">),</span> <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Text</span><span class="p">)</span>
+        <span class="s1">'tone'</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Tone of voice'</span><span class="p">),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Set the tone of voice to be used for the output'</span><span class="p">),</span> <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Text</span><span class="p">)</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
@@ -958,7 +958,7 @@ You will need to return an associative array of <code class="docutils literal no
 <p>In the same vein you can also provide optional output shape slots in addition to the pre-defined output slots.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getOptionalOutputShape</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span>
-        <span class="s1">&#39;co2_emissions&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;CO2 Emissions&#39;</span><span class="p">),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;The CO2 emissions produced by running this task in metric tons&#39;</span><span class="p">),</span> <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Number</span><span class="p">)</span>
+        <span class="s1">'co2_emissions'</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'CO2 Emissions'</span><span class="p">),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'The CO2 emissions produced by running this task in metric tons'</span><span class="p">),</span> <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Number</span><span class="p">)</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
@@ -969,7 +969,7 @@ You will need to return an associative array of <code class="docutils literal no
 <p>With the method <code class="docutils literal notranslate"><span class="pre">getInputShapeDefaults</span></code> you can specify default values for input slots (which are defined by the task type). For example:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getInputShapeDefaults</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span>
-        <span class="s1">&#39;input&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;There was once a man with many cows who wanted to have even more cows.&#39;</span>
+        <span class="s1">'input'</span> <span class="o">=&gt;</span> <span class="s1">'There was once a man with many cows who wanted to have even more cows.'</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
@@ -978,7 +978,7 @@ You will need to return an associative array of <code class="docutils literal no
 <p>The same works for your optional input shapes that you defined in <code class="docutils literal notranslate"><span class="pre">getOptionalInputShape</span></code>:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getOptionalInputShapeDefaults</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span>
-        <span class="s1">&#39;tone&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Formal&#39;</span>
+        <span class="s1">'tone'</span> <span class="o">=&gt;</span> <span class="s1">'Formal'</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
@@ -992,17 +992,17 @@ by the provider implementing the task type using <code class="docutils literal n
 <p>You could, for example, implement the above tone of voice slot using an Enum:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getOptionalInputShape</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span>
-        <span class="s1">&#39;tone&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Tone of voice&#39;</span><span class="p">),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Set the tone of voice to be used for the output&#39;</span><span class="p">),</span> <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Enum</span><span class="p">)</span>
+        <span class="s1">'tone'</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Tone of voice'</span><span class="p">),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Set the tone of voice to be used for the output'</span><span class="p">),</span> <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Enum</span><span class="p">)</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getOptionalInputShapeEnumValues</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span>
-        <span class="s1">&#39;tone&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="k">new</span> <span class="nx">ShapeEnumValue</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Simple&#39;</span><span class="p">),</span> <span class="s1">&#39;So that a kid could understand&#39;</span><span class="p">),</span>
-            <span class="k">new</span> <span class="nx">ShapeEnumValue</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Funny&#39;</span><span class="p">),</span> <span class="s1">&#39;Funny&#39;</span><span class="p">),</span>
-            <span class="k">new</span> <span class="nx">ShapeEnumValue</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Formal&#39;</span><span class="p">),</span> <span class="s1">&#39;Formal&#39;</span><span class="p">),</span>
+        <span class="s1">'tone'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="k">new</span> <span class="nx">ShapeEnumValue</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Simple'</span><span class="p">),</span> <span class="s1">'So that a kid could understand'</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nx">ShapeEnumValue</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Funny'</span><span class="p">),</span> <span class="s1">'Funny'</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nx">ShapeEnumValue</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Formal'</span><span class="p">),</span> <span class="s1">'Formal'</span><span class="p">),</span>
         <span class="p">]</span>
     <span class="p">];</span>
 <span class="p">}</span>
@@ -1024,29 +1024,29 @@ by the provider implementing the task type using <code class="docutils literal n
 <span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">AudioToImage</span> <span class="k">implements</span> <span class="nx">ITaskType</span> <span class="p">{</span>
-    <span class="k">public</span> <span class="k">const</span> <span class="no">ID</span> <span class="o">=</span> <span class="s1">&#39;myapp:audiotoimage&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">ID</span> <span class="o">=</span> <span class="s1">'myapp:audiotoimage'</span><span class="p">;</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">ID</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s1">&#39;Get Spectrogram&#39;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s1">'Get Spectrogram'</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getDescription</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s1">&#39;Turns audio into an image&#39;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s1">'Turns audio into an image'</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getInputShape</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">[</span>
-            <span class="s1">&#39;audio&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span><span class="s1">&#39;Audio&#39;</span><span class="p">,</span> <span class="s1">&#39;The audio&#39;</span><span class="p">,</span> <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Audio</span><span class="p">),</span>
+            <span class="s1">'audio'</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span><span class="s1">'Audio'</span><span class="p">,</span> <span class="s1">'The audio'</span><span class="p">,</span> <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Audio</span><span class="p">),</span>
         <span class="p">];</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getOutputShape</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">[</span>
-            <span class="s1">&#39;spectrogram&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span><span class="s1">&#39;Spectrogram&#39;</span><span class="p">,</span> <span class="s1">&#39;The audio spectrogram&#39;</span><span class="p">,</span> <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Image</span><span class="p">),</span>
+            <span class="s1">'spectrogram'</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span><span class="s1">'Spectrogram'</span><span class="p">,</span> <span class="s1">'The audio spectrogram'</span><span class="p">,</span> <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Image</span><span class="p">),</span>
         <span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -1118,7 +1118,7 @@ here for completeness.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Sep 09, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

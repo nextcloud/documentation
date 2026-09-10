@@ -186,11 +186,11 @@ Without this header, the server will reject the request with a <code class="docu
 <h3>With curl<a class="headerlink" href="#with-curl" title="Link to this heading"></a></h3>
 <p>All WebDAV requests can be easily tested out using <code class="code docutils literal notranslate"><span class="pre">curl</span></code> by specifying the request method (<code class="code docutils literal notranslate"><span class="pre">GET</span></code>, <code class="code docutils literal notranslate"><span class="pre">PROPFIND</span></code>, <code class="code docutils literal notranslate"><span class="pre">PUT</span></code>, …) and providing a request body where needed.</p>
 <p>For example: you can perform a <code class="code docutils literal notranslate"><span class="pre">PROPFIND</span></code> request to find files in a folder using:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/remote.php/dav/files/username/folder&#39;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span><span class="s1">'https://cloud.example.com/remote.php/dav/files/username/folder'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--user<span class="w"> </span>username:password<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--request<span class="w"> </span>PROPFIND<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--data<span class="w"> </span><span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="s1">    &lt;d:propfind xmlns:d=&quot;DAV:&quot; xmlns:oc=&quot;http://owncloud.org/ns&quot; xmlns:nc=&quot;http://nextcloud.org/ns&quot;&gt;</span>
+<span class="w">  </span>--data<span class="w"> </span><span class="s1">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="s1">    &lt;d:propfind xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns"&gt;</span>
 <span class="s1">      &lt;d:prop&gt;</span>
 <span class="s1">        &lt;d:getlastmodified/&gt;</span>
 <span class="s1">        &lt;d:getcontentlength/&gt;</span>
@@ -199,22 +199,22 @@ Without this header, the server will reject the request with a <code class="docu
 <span class="s1">        &lt;d:resourcetype/&gt;</span>
 <span class="s1">        &lt;d:getetag/&gt;</span>
 <span class="s1">      &lt;/d:prop&gt;</span>
-<span class="s1">    &lt;/d:propfind&gt;&#39;</span>
+<span class="s1">    &lt;/d:propfind&gt;'</span>
 </pre></div>
 </div>
 </section>
 <section id="making-requests-in-javascript">
 <h3>Making requests in JavaScript<a class="headerlink" href="#making-requests-in-javascript" title="Link to this heading"></a></h3>
 <p>Here is a JavaScript code sample to get you started:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createClient</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;webdav&#39;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">generateRemoteUrl</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/router&#39;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getCurrentUser</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/auth&#39;</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createClient</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'webdav'</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">generateRemoteUrl</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/router'</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getCurrentUser</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/auth'</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createClient</span><span class="p">(</span><span class="nx">generateRemoteUrl</span><span class="p">(</span><span class="s1">&#39;dav&#39;</span><span class="p">))</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createClient</span><span class="p">(</span><span class="nx">generateRemoteUrl</span><span class="p">(</span><span class="s1">'dav'</span><span class="p">))</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">getDirectoryContents</span><span class="p">(</span><span class="sb">`/files/</span><span class="si">${</span><span class="nx">getCurrentUser</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="nx">uid</span><span class="si">}</span><span class="sb">/folder`</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">details</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="sb">`&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="sb">        &lt;d:propfind xmlns:d=&quot;DAV:&quot; xmlns:oc=&quot;http://owncloud.org/ns&quot; xmlns:nc=&quot;http://nextcloud.org/ns&quot;&gt;</span>
+<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="sb">`&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="sb">        &lt;d:propfind xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns"&gt;</span>
 <span class="sb">            &lt;d:prop&gt;</span>
 <span class="sb">                &lt;d:getlastmodified/&gt;</span>
 <span class="sb">                &lt;d:getcontentlength/&gt;</span>
@@ -302,8 +302,8 @@ Without this header, the server will reject the request with a <code class="docu
 <p>By default, a <code class="code docutils literal notranslate"><span class="pre">PROPFIND</span></code> request will only return a small number of properties for each file: last modified date, file size, whether it’s a folder, etag and mime type.</p>
 <p>You can request additional properties by sending a request body with the <code class="code docutils literal notranslate"><span class="pre">PROPFIND</span></code> request that lists all requested properties.
 If a property is not supported for a resource, the server will report it as not found in the multi-status response for that property.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="nt">&lt;d:propfind</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;d:propfind</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">"DAV:"</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">"http://owncloud.org/ns"</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">"http://nextcloud.org/ns"</span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="nt">&lt;d:prop&gt;</span>
 <span class="w">    </span><span class="nt">&lt;d:getlastmodified</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;d:getetag</span><span class="w"> </span><span class="nt">/&gt;</span>
@@ -354,13 +354,13 @@ It is usual to declare prefixes for those namespace in the <code class="docutils
 </tbody>
 </table>
 <p>And here is how it should look in your DAV request:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0"?&gt;</span>
 <span class="nt">&lt;d:propfind</span>
-<span class="w">    </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span>
-<span class="w">    </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span>
-<span class="w">    </span><span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span>
-<span class="w">    </span><span class="na">xmlns:ocs=</span><span class="s">&quot;http://open-collaboration-services.org/ns&quot;</span>
-<span class="w">    </span><span class="na">xmlns:ocm=</span><span class="s">&quot;http://open-cloud-mesh.org/ns&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="na">xmlns:d=</span><span class="s">"DAV:"</span>
+<span class="w">    </span><span class="na">xmlns:oc=</span><span class="s">"http://owncloud.org/ns"</span>
+<span class="w">    </span><span class="na">xmlns:nc=</span><span class="s">"http://nextcloud.org/ns"</span>
+<span class="w">    </span><span class="na">xmlns:ocs=</span><span class="s">"http://open-collaboration-services.org/ns"</span>
+<span class="w">    </span><span class="na">xmlns:ocm=</span><span class="s">"http://open-cloud-mesh.org/ns"</span><span class="nt">&gt;</span>
 <span class="w">    </span>...
 <span class="nt">&lt;/d:propfind&gt;</span>
 </pre></div>
@@ -879,7 +879,7 @@ The <code class="code docutils literal notranslate"><span class="pre">Accept</sp
 In this case the <code class="code docutils literal notranslate"><span class="pre">Accept</span></code> header value must be passed as the <code class="code docutils literal notranslate"><span class="pre">accept</span></code> query parameter.
 Both full MIME types (<code class="code docutils literal notranslate"><span class="pre">application/zip</span></code>, <code class="code docutils literal notranslate"><span class="pre">application/x-tar</span></code>) and shorthand values (<code class="code docutils literal notranslate"><span class="pre">zip</span></code>, <code class="code docutils literal notranslate"><span class="pre">tar</span></code>) are accepted.
 The optional files list can be provided as a JSON encoded array through the <code class="code docutils literal notranslate"><span class="pre">files</span></code> query parameter.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET remote.php/dav/files/user/path/to/folder?accept=zip&amp;files=[&quot;image.png&quot;,&quot;document.txt&quot;]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET remote.php/dav/files/user/path/to/folder?accept=zip&amp;files=["image.png","document.txt"]
 </pre></div>
 </div>
 <p>When using query parameters, ensure values are URL-encoded. In particular, <code class="code docutils literal notranslate"><span class="pre">files</span></code> must be a URL-encoded JSON array.</p>
@@ -929,8 +929,8 @@ The optional files list can be provided as a JSON encoded array through the <cod
 <h2>Settings favorites<a class="headerlink" href="#settings-favorites" title="Link to this heading"></a></h2>
 <p>A file or folder can be marked as favorite by sending a <code class="code docutils literal notranslate"><span class="pre">PROPPATCH</span></code> request to the file or folder and setting the <code class="code docutils literal notranslate"><span class="pre">oc:favorite</span></code> property.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>PROPPATCH<span class="w"> </span>remote.php/dav/files/user/path/to/file
-<span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="nt">&lt;d:propertyupdate</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;d:propertyupdate</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">"DAV:"</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">"http://owncloud.org/ns"</span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="nt">&lt;d:set&gt;</span>
 <span class="w">    </span><span class="nt">&lt;d:prop&gt;</span>
 <span class="w">      </span><span class="nt">&lt;oc:favorite&gt;</span>1<span class="nt">&lt;/oc:favorite&gt;</span>
@@ -945,8 +945,8 @@ The optional files list can be provided as a JSON encoded array through the <cod
 <h2>Listing favorites<a class="headerlink" href="#listing-favorites" title="Link to this heading"></a></h2>
 <p>Favorites for a user can be retrieved by sending a <code class="code docutils literal notranslate"><span class="pre">REPORT</span></code> request and specifying <code class="code docutils literal notranslate"><span class="pre">oc:favorite</span></code> as a filter.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>REPORT<span class="w"> </span>remote.php/dav/files/user/path/to/folder
-<span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="nt">&lt;oc:filter-files</span><span class="w">  </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;oc:filter-files</span><span class="w">  </span><span class="na">xmlns:d=</span><span class="s">"DAV:"</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">"http://owncloud.org/ns"</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">"http://nextcloud.org/ns"</span><span class="nt">&gt;</span>
 <span class="w">     </span><span class="nt">&lt;oc:filter-rules&gt;</span>
 <span class="w">         </span><span class="nt">&lt;oc:favorite&gt;</span>1<span class="nt">&lt;/oc:favorite&gt;</span>
 <span class="w">     </span><span class="nt">&lt;/oc:filter-rules&gt;</span>
@@ -1021,7 +1021,7 @@ or <code class="docutils literal notranslate"><span class="pre">all</span></code
 </td>
 <td><p><code class="docutils literal notranslate"><span class="pre">4052412</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>X-NC-WebDAV-AutoMkcol</p></td>
+<tr class="row-odd"><td><p>X-NC-WebDAV-Auto-Mkcol</p></td>
 <td><div class="line-block">
 <div class="line">When set to <code class="docutils literal notranslate"><span class="pre">1</span></code>, instructs the server to automatically</div>
 <div class="line">create any missing parent directories when uploading a file.</div>
@@ -1140,7 +1140,7 @@ this anymore</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 09, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

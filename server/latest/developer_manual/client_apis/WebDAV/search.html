@@ -149,8 +149,8 @@ full details of the api can be found at <a class="reference external" href="http
 <p>Search requests can be made by sending a <code class="code docutils literal notranslate"><span class="pre">SEARCH</span></code> http request to <code class="code docutils literal notranslate"><span class="pre">https://cloud.example.com/remote.php/dav/</span></code>
 with a content type of <code class="code docutils literal notranslate"><span class="pre">text/xml</span></code> and the query as xml in the request body.</p>
 <p>For example, to search for text files for the user ‘test’:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>test:password<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/remote.php/dav/&#39;</span><span class="w"> </span>-X<span class="w"> </span>SEARCH<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;content-Type: text/xml&quot;</span><span class="w"> </span>--data<span class="w"> </span><span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="s1"> &lt;d:searchrequest xmlns:d=&quot;DAV:&quot; xmlns:oc=&quot;http://owncloud.org/ns&quot;&gt;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>test:password<span class="w"> </span><span class="s1">'https://cloud.example.com/remote.php/dav/'</span><span class="w"> </span>-X<span class="w"> </span>SEARCH<span class="w"> </span>-H<span class="w"> </span><span class="s2">"content-Type: text/xml"</span><span class="w"> </span>--data<span class="w"> </span><span class="s1">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="s1"> &lt;d:searchrequest xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns"&gt;</span>
 <span class="s1">     &lt;d:basicsearch&gt;</span>
 <span class="s1">         &lt;d:select&gt;</span>
 <span class="s1">             &lt;d:prop&gt;</span>
@@ -177,7 +177,7 @@ with a content type of <code class="code docutils literal notranslate"><span cla
 <span class="s1">         &lt;/d:where&gt;</span>
 <span class="s1">         &lt;d:orderby/&gt;</span>
 <span class="s1">    &lt;/d:basicsearch&gt;</span>
-<span class="s1">&lt;/d:searchrequest&gt;&#39;</span>
+<span class="s1">&lt;/d:searchrequest&gt;'</span>
 </pre></div>
 </div>
 </section>
@@ -334,8 +334,8 @@ At the moment only search queries for files are supported meaning the the scope 
 <section id="examples-search-bodies">
 <h2>Examples search bodies<a class="headerlink" href="#examples-search-bodies" title="Link to this heading"></a></h2>
 <p>Search for all plain text files in the folder <code class="code docutils literal notranslate"><span class="pre">Documents</span></code>, sorted by size.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;d:searchrequest</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;d:searchrequest</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">"DAV:"</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">"http://owncloud.org/ns"</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;d:basicsearch&gt;</span>
 <span class="w">        </span><span class="nt">&lt;d:select&gt;</span>
 <span class="w">            </span><span class="nt">&lt;d:prop&gt;</span>
@@ -369,8 +369,8 @@ At the moment only search queries for files are supported meaning the the scope 
 </pre></div>
 </div>
 <p>Get a file by id.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;d:searchrequest</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;d:searchrequest</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">"DAV:"</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">"http://owncloud.org/ns"</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;d:basicsearch&gt;</span>
 <span class="w">        </span><span class="nt">&lt;d:select&gt;</span>
 <span class="w">            </span><span class="nt">&lt;d:prop&gt;</span>
@@ -397,8 +397,8 @@ At the moment only search queries for files are supported meaning the the scope 
 </pre></div>
 </div>
 <p>Get all png and jpg files over 10MB.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;d:searchrequest</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;d:searchrequest</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">"DAV:"</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">"http://owncloud.org/ns"</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;d:basicsearch&gt;</span>
 <span class="w">        </span><span class="nt">&lt;d:select&gt;</span>
 <span class="w">            </span><span class="nt">&lt;d:prop&gt;</span>
@@ -441,7 +441,7 @@ At the moment only search queries for files are supported meaning the the scope 
 </pre></div>
 </div>
 <p>Search for all common files (no directories) and limit the result of the last 5 files with ordering, last modified</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="nt">&lt;d:searchrequest</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="nt">&lt;d:searchrequest</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">"DAV:"</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">"http://owncloud.org/ns"</span><span class="nt">&gt;</span>
 <span class="w">     </span><span class="nt">&lt;d:basicsearch&gt;</span>
 <span class="w">         </span><span class="nt">&lt;d:select&gt;</span>
 <span class="w">             </span><span class="nt">&lt;d:prop&gt;</span>
@@ -480,8 +480,8 @@ At the moment only search queries for files are supported meaning the the scope 
 </pre></div>
 </div>
 <p>Get all files last modified after a given date.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;d:searchrequest</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;d:searchrequest</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">"DAV:"</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;d:basicsearch&gt;</span>
 <span class="w">        </span><span class="nt">&lt;d:select&gt;</span>
 <span class="w">            </span><span class="nt">&lt;d:prop&gt;</span>
@@ -523,7 +523,7 @@ At the moment only search queries for files are supported meaning the the scope 
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

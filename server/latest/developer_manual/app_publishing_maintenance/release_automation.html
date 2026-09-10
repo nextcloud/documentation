@@ -148,12 +148,12 @@ To get started you create a new yaml file in the <code class="docutils literal n
 <span class="w">  </span><span class="nt">build_and_publish</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">release</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Release:</span><span class="nv"> </span><span class="s">build,</span><span class="nv"> </span><span class="s">sign</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">upload</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">app&quot;</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"Release:</span><span class="nv"> </span><span class="s">build,</span><span class="nv"> </span><span class="s">sign</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">upload</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">app"</span>
 <span class="w">    </span><span class="nt">strategy</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">matrix</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">php-versions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;7.4&#39;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">nextcloud</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;stable21&#39;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;sqlite&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">php-versions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'7.4'</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">nextcloud</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'stable21'</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'sqlite'</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout</span>
 <span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f</span>
@@ -256,8 +256,8 @@ One example you may use is provided by the news app.</p>
 <span class="sd">*/</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="nv">$argc</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;This script expects two parameters:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="s2">&quot;./file_from_env.php ENV_VAR PATH_TO_FILE</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"This script expects two parameters:</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"./file_from_env.php ENV_VAR PATH_TO_FILE</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
     <span class="k">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -265,13 +265,13 @@ One example you may use is provided by the news app.</p>
 <span class="nv">$content</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$content</span><span class="p">){</span>
-    <span class="k">echo</span> <span class="s2">&quot;Variable was empty</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"Variable was empty</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
     <span class="k">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nv">$content</span><span class="p">);</span>
 
-<span class="k">echo</span> <span class="s2">&quot;Done...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"Done...</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>It’s a very simple php script that takes an environment variable and a filepath and dumps whatever it finds in the variable into the file.
@@ -282,19 +282,19 @@ appstore:
 <span class="o">[</span>...<span class="o">]</span>
 <span class="c1"># export the key and cert to a file</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span><span class="k">$(</span>cert_dir<span class="k">)</span>
-php<span class="w"> </span>./bin/tools/file_from_env.php<span class="w"> </span><span class="s2">&quot;app_private_key&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>cert_dir<span class="k">)</span><span class="s2">/</span><span class="k">$(</span>app_name<span class="k">)</span><span class="s2">.key&quot;</span>
-php<span class="w"> </span>./bin/tools/file_from_env.php<span class="w"> </span><span class="s2">&quot;app_public_crt&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>cert_dir<span class="k">)</span><span class="s2">/</span><span class="k">$(</span>app_name<span class="k">)</span><span class="s2">.crt&quot;</span>
+php<span class="w"> </span>./bin/tools/file_from_env.php<span class="w"> </span><span class="s2">"app_private_key"</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>cert_dir<span class="k">)</span><span class="s2">/</span><span class="k">$(</span>app_name<span class="k">)</span><span class="s2">.key"</span>
+php<span class="w"> </span>./bin/tools/file_from_env.php<span class="w"> </span><span class="s2">"app_public_crt"</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>cert_dir<span class="k">)</span><span class="s2">/</span><span class="k">$(</span>app_name<span class="k">)</span><span class="s2">.crt"</span>
 <span class="o">[</span>...<span class="o">]</span>
 </pre></div>
 </div>
 <p>Also make sure that these files are used when signing your app, in the Makefile.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>@if<span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="k">$(</span>cert_dir<span class="k">)</span>/<span class="k">$(</span>app_name<span class="k">)</span>.key<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Signing app files…&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Signing app files…"</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>php<span class="w"> </span>../../occ<span class="w"> </span>integrity:sign-app<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--privateKey<span class="o">=</span><span class="k">$(</span>cert_dir<span class="k">)</span>/<span class="k">$(</span>app_name<span class="k">)</span>.key<span class="se">\</span>
 <span class="w">    </span>--certificate<span class="o">=</span><span class="k">$(</span>cert_dir<span class="k">)</span>/<span class="k">$(</span>app_name<span class="k">)</span>.crt<span class="se">\</span>
 <span class="w">    </span>--path<span class="o">=</span><span class="k">$(</span>appstore_sign_dir<span class="k">)</span>/<span class="k">$(</span>app_name<span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Signing app files ... done&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Signing app files ... done"</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
 <span class="k">fi</span>
 </pre></div>
 </div>
@@ -325,7 +325,7 @@ php<span class="w"> </span>./bin/tools/file_from_env.php<span class="w"> </span>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

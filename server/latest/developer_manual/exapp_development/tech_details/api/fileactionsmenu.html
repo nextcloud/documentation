@@ -514,13 +514,13 @@ AppAPI takes responsibility to register FileActionsMenu; ExApps only need to reg
 <h3>Params<a class="headerlink" href="#params" title="Link to this heading"></a></h3>
 <p>Complete list of params (including optional):</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_name_of_file_actions_menu&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Display name (for UI listing)&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;actionHandler&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;/action_handler_route&quot;</span>
-<span class="w">    </span><span class="nt">&quot;mime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mime of files where to display action menu&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;img/icon.svg&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;permissions&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;order_in_file_actions_menu&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unique_name_of_file_actions_menu"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Display name (for UI listing)"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"actionHandler"</span><span class="p">:</span><span class="w"> </span><span class="nt">"/action_handler_route"</span>
+<span class="w">    </span><span class="nt">"mime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mime of files where to display action menu"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"img/icon.svg"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"permissions"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_in_file_actions_menu"</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -548,7 +548,7 @@ AppAPI takes responsibility to register FileActionsMenu; ExApps only need to reg
 <h3>Params<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>To unregister FileActionsMenu, you just need to provide the name of the registered FileActionsMenu:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_name_of_file_action_menu&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unique_name_of_file_action_menu"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -559,23 +559,23 @@ AppAPI takes responsibility to register FileActionsMenu; ExApps only need to reg
 <p>When FileActionsMenu is invoked, AppAPI forwards the handling action to the ExApp.
 The following data is sent to the ExApp FileActionsMenu handler from the context of the action:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;fileId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;filename&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;directory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;relative/to/user/path/to/directory&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;etag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file_etag&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;mime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file_full_mime&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;fileType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dir/file&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;mtime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;last modify time(integer)&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;favorite&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nc_favorite_flag&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file_permissions_for_owner&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;shareOwner&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional, str&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;shareOwnerId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional, str&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;shareTypes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional, int&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;shareAttributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional, int&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;sharePermissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional, int&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;userId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;instanceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"fileId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filename"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"directory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"relative/to/user/path/to/directory"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file_etag"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"mime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file_full_mime"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"fileType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dir/file"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"mtime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"last modify time(integer)"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"favorite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nc_favorite_flag"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file_permissions_for_owner"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"shareOwner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optional, str"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"shareOwnerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optional, str"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"shareTypes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optional, int"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"shareAttributes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optional, int"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"sharePermissions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optional, int"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"instanceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -641,7 +641,7 @@ e.g. on a location configured in ExApp settings (<code class="docutils literal n
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Aug 09, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 

@@ -146,8 +146,8 @@
 <p>Routes map a URL and a method to a controller method. Routes are defined inside <code class="file docutils literal notranslate"><span class="pre">appinfo/routes.php</span></code> by returning them as an array:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">return</span> <span class="p">[</span>
-    <span class="s1">&#39;routes&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;page#index&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">],</span>
+    <span class="s1">'routes'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'page#index'</span><span class="p">,</span> <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'/'</span><span class="p">,</span> <span class="s1">'verb'</span> <span class="o">=&gt;</span> <span class="s1">'GET'</span><span class="p">],</span>
     <span class="p">],</span>
 <span class="p">];</span>
 </pre></div>
@@ -157,7 +157,7 @@
 They support all the same parameters (except for <code class="docutils literal notranslate"><span class="pre">name</span></code> which is not needed).
 <code class="docutils literal notranslate"><span class="pre">FrontpageRoute</span></code> has to be used for routes that were in the <code class="docutils literal notranslate"><span class="pre">routes</span></code> section and <code class="docutils literal notranslate"><span class="pre">ApiRoute</span></code> has to be used for routes that were in the <code class="docutils literal notranslate"><span class="pre">ocs</span></code> section.</p>
 </div>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">#[</span><span class="nd">FrontpageRoute</span><span class="p">(</span><span class="nx">verb</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">)]</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">#[</span><span class="nd">FrontpageRoute</span><span class="p">(</span><span class="nx">verb</span><span class="o">:</span> <span class="s1">'GET'</span><span class="p">,</span> <span class="nx">url</span><span class="o">:</span> <span class="s1">'/'</span><span class="p">)]</span>
 </pre></div>
 </div>
 <p>The route array contains the following parts:</p>
@@ -178,11 +178,11 @@ The rest of the structure is the same.</p>
 <p>You can of course have both index.php and OCS routes.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">return</span> <span class="p">[</span>
-    <span class="s1">&#39;routes&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;page#index&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">],</span>
+    <span class="s1">'routes'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'page#index'</span><span class="p">,</span> <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'/'</span><span class="p">,</span> <span class="s1">'verb'</span> <span class="o">=&gt;</span> <span class="s1">'GET'</span><span class="p">],</span>
     <span class="p">],</span>
-    <span class="s1">&#39;ocs&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;api#data&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/v1/data&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">],</span>
+    <span class="s1">'ocs'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'api#data'</span><span class="p">,</span> <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'/v1/data'</span><span class="p">,</span> <span class="s1">'verb'</span> <span class="o">=&gt;</span> <span class="s1">'GET'</span><span class="p">],</span>
     <span class="p">],</span>
 <span class="p">];</span>
 </pre></div>
@@ -193,7 +193,7 @@ So, the configured URL for the OCS endpoint in the example would be <code class=
 <p><span class="versionmodified added">Added in version 29: </span>Similar to <code class="docutils literal notranslate"><span class="pre">FrontpageRoute</span></code>, you can use <code class="docutils literal notranslate"><span class="pre">ApiRoute</span></code> as attribute to mark a route in the controller directly.</p>
 <p>This is equivalent to the configuration in the <code class="docutils literal notranslate"><span class="pre">routes.php</span></code> above.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// In class ApiController that is a OCSController</span>
-<span class="p">#[</span><span class="nd">ApiRoute</span><span class="p">(</span><span class="nx">verb</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/v1/data&#39;</span><span class="p">)]</span>
+<span class="p">#[</span><span class="nd">ApiRoute</span><span class="p">(</span><span class="nx">verb</span><span class="o">:</span> <span class="s1">'GET'</span><span class="p">,</span> <span class="nx">url</span><span class="o">:</span> <span class="s1">'/v1/data'</span><span class="p">)]</span>
 <span class="k">function</span> <span class="nf">data</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
 </pre></div>
 </div>
@@ -207,12 +207,12 @@ So, the configured URL for the OCS endpoint in the example would be <code class=
 <span class="c1">// Request: GET /index.php/apps/myapp/authors/3</span>
 
 <span class="c1">// appinfo/routes.php</span>
-<span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;author#show&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/authors/{id}&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">],</span>
+<span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'author#show'</span><span class="p">,</span> <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'/authors/{id}'</span><span class="p">,</span> <span class="s1">'verb'</span> <span class="o">=&gt;</span> <span class="s1">'GET'</span><span class="p">],</span>
 
 <span class="c1">// controller/authorcontroller.php</span>
 <span class="k">class</span> <span class="nc">AuthorController</span> <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
-        <span class="c1">// $id is &#39;3&#39;</span>
+        <span class="c1">// $id is '3'</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -227,13 +227,13 @@ So, the configured URL for the OCS endpoint in the example would be <code class=
 <span class="c1">// Request: OPTIONS /index.php/apps/myapp/api/my/route</span>
 
 <span class="c1">// appinfo/routes.php</span>
-<span class="k">array</span><span class="p">(</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;author_api#cors&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/{path}&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OPTIONS&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;requirements&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;path&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;.+&#39;</span><span class="p">)),</span>
+<span class="k">array</span><span class="p">(</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'author_api#cors'</span><span class="p">,</span> <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'/api/{path}'</span><span class="p">,</span> <span class="s1">'verb'</span> <span class="o">=&gt;</span> <span class="s1">'OPTIONS'</span><span class="p">,</span>
+      <span class="s1">'requirements'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">'path'</span> <span class="o">=&gt;</span> <span class="s1">'.+'</span><span class="p">)),</span>
 
 <span class="c1">// controller/authorapicontroller.php</span>
 <span class="k">class</span> <span class="nc">AuthorApiController</span> <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">cors</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$path</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
-        <span class="c1">// $path will be &#39;my/route&#39;</span>
+        <span class="c1">// $path will be 'my/route'</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -248,10 +248,10 @@ So, the configured URL for the OCS endpoint in the example would be <code class=
 
 <span class="c1">// appinfo/routes.php</span>
 <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;name&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;post#index&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;url&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;/post/{page}&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;verb&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;defaults&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;page&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">// this allows same URL as /index.php/myapp/post/1</span>
+    <span class="s1">'name'</span>     <span class="o">=&gt;</span> <span class="s1">'post#index'</span><span class="p">,</span>
+    <span class="s1">'url'</span>      <span class="o">=&gt;</span> <span class="s1">'/post/{page}'</span><span class="p">,</span>
+    <span class="s1">'verb'</span>     <span class="o">=&gt;</span> <span class="s1">'GET'</span><span class="p">,</span>
+    <span class="s1">'defaults'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">'page'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">// this allows same URL as /index.php/myapp/post/1</span>
 <span class="p">),</span>
 
 <span class="c1">// controller/postcontroller.php</span>
@@ -276,12 +276,12 @@ So, the configured URL for the OCS endpoint in the example would be <code class=
 <p>To prevent repetition, it’s possible to define resources. The following routes:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">return</span> <span class="p">[</span>
-    <span class="s1">&#39;routes&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;author#index&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/authors&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">],</span>
-        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;author#show&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/authors/{id}&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">],</span>
-        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;author#create&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/authors&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;POST&#39;</span><span class="p">],</span>
-        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;author#update&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/authors/{id}&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;PUT&#39;</span><span class="p">],</span>
-        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;author#destroy&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/authors/{id}&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;DELETE&#39;</span><span class="p">],</span>
+    <span class="s1">'routes'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'author#index'</span><span class="p">,</span> <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'/authors'</span><span class="p">,</span> <span class="s1">'verb'</span> <span class="o">=&gt;</span> <span class="s1">'GET'</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'author#show'</span><span class="p">,</span> <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'/authors/{id}'</span><span class="p">,</span> <span class="s1">'verb'</span> <span class="o">=&gt;</span> <span class="s1">'GET'</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'author#create'</span><span class="p">,</span> <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'/authors'</span><span class="p">,</span> <span class="s1">'verb'</span> <span class="o">=&gt;</span> <span class="s1">'POST'</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'author#update'</span><span class="p">,</span> <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'/authors/{id}'</span><span class="p">,</span> <span class="s1">'verb'</span> <span class="o">=&gt;</span> <span class="s1">'PUT'</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'author#destroy'</span><span class="p">,</span> <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'/authors/{id}'</span><span class="p">,</span> <span class="s1">'verb'</span> <span class="o">=&gt;</span> <span class="s1">'DELETE'</span><span class="p">],</span>
         <span class="c1">// your other routes here</span>
     <span class="p">],</span>
 <span class="p">];</span>
@@ -290,10 +290,10 @@ So, the configured URL for the OCS endpoint in the example would be <code class=
 <p>can be abbreviated by using the <strong>resources</strong> key:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">return</span> <span class="p">[</span>
-    <span class="s1">&#39;resources&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;author&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/authors&#39;</span><span class="p">],</span>
+    <span class="s1">'resources'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'author'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'/authors'</span><span class="p">],</span>
     <span class="p">],</span>
-    <span class="s1">&#39;routes&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'routes'</span> <span class="o">=&gt;</span> <span class="p">[</span>
         <span class="c1">// your other routes here</span>
     <span class="p">],</span>
 <span class="p">];</span>
@@ -330,8 +330,8 @@ So, the configured URL for the OCS endpoint in the example would be <code class=
 
         <span class="c1">// # needs to be replaced with a . due to limitations and prefixed</span>
         <span class="c1">// with your app id</span>
-        <span class="nv">$route</span> <span class="o">=</span> <span class="s1">&#39;myapp.author_api.do_something&#39;</span><span class="p">;</span>
-        <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">];</span>
+        <span class="nv">$route</span> <span class="o">=</span> <span class="s1">'myapp.author_api.do_something'</span><span class="p">;</span>
+        <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">];</span>
 
         <span class="nv">$url</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">linkToRoute</span><span class="p">(</span><span class="nv">$route</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
 
@@ -343,7 +343,7 @@ So, the configured URL for the OCS endpoint in the example would be <code class=
 <p>URLGenerator is case sensitive, so <strong>appName</strong> must match <strong>exactly</strong> the name you use in <a class="reference internal" href="storage/configuration.html"><span class="doc">configuration</span></a>.
 If you use a CamelCase name as <em>myCamelCaseApp</em>,</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nv">$route</span> <span class="o">=</span> <span class="s1">&#39;myCamelCaseApp.author_api.do_something&#39;</span><span class="p">;</span>
+<span class="nv">$route</span> <span class="o">=</span> <span class="s1">'myCamelCaseApp.author_api.do_something'</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -397,7 +397,7 @@ place:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 10, 2026.
       </span></p>
   </div>
 
