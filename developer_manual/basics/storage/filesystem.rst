@@ -26,6 +26,7 @@ From the root folder you can either access a user's home folder or access a file
 .. code-block:: php
 
     use OCP\Files\IRootFolder;
+    use OCP\Files\IUserFolder;
     use OCP\IUserSession;
 
     class FileSystemAccessExample {
@@ -38,10 +39,9 @@ From the root folder you can either access a user's home folder or access a file
         }
 
         /**
-        * Create a new file with specified content in the home folder of the current user
-        * returning the size of the resulting file.
+        * Get the home folder of the current user, or null if no user is logged in.
         */
-        public function getCurrentUserFolder(string $path, string $content): int {
+        public function getCurrentUserFolder(): ?IUserFolder {
             $user = $this->userSession->getUser();
 
             if ($user === null) {
@@ -54,6 +54,67 @@ From the root folder you can either access a user's home folder or access a file
     }
 
 For more details on the specific methods provided by file and folder nodes see the method documentation from the ``OCP\Files\File`` and ``OCP\Files\Folder`` interfaces.
+
+
+The user folder
+---------------
+
+``IRootFolder::getUserFolder()`` returns an ``OCP\Files\IUserFolder``, the node that represents the root of the files
+of one specific user. It relates to a single user in the same way the ``IRootFolder`` relates to the whole instance.
+
+``IUserFolder`` extends ``OCP\Files\Folder``, so every node operation works as before. In addition it groups the
+methods that only make sense for a user's home folder, so they no longer have to be looked up somewhere else.
+
+.. versionadded:: 36
+   ``OCP\Files\IUserFolder`` was added. ``OCP\Files\IRootFolder::getUserFolder()`` now returns this interface instead
+   of a plain ``OCP\Files\Folder``. Because the new interface extends ``OCP\Files\Folder``, existing code keeps
+   working, only type hints of your own methods might need to be widened or narrowed.
+
+Reading the quota of a user is done using the ``getUserQuota()`` method:
+
+.. code-block:: php
+
+    use OCP\Files\IRootFolder;
+
+    class QuotaExample {
+
+        public function __construct(
+            private IRootFolder $rootFolder,
+        ) {
+        }
+
+        public function getUsedSpace(string $userId): int|float {
+            $userFolder = $this->rootFolder->getUserFolder($userId);
+
+            return $userFolder->getUserQuota()['used'];
+        }
+    }
+
+The returned array contains the following entries, all of them in bytes:
+
+.. list-table:: Values returned by ``getUserQuota()``
+   :header-rows: 1
+   :widths: 15 85
+
+   * - Key
+     - Description
+   * - ``used``
+     - Space currently occupied by the files of the user.
+   * - ``free``
+     - Space still available to the user.
+   * - ``total``
+     - Sum of ``used`` and ``free``.
+   * - ``quota``
+     - Quota configured for the user, or ``OCP\Files\FileInfo::SPACE_UNLIMITED`` if the user has no quota.
+
+The ``free`` and ``total`` values can also be one of the negative ``OCP\Files\FileInfo`` constants
+(``SPACE_NOT_COMPUTED``, ``SPACE_UNKNOWN`` or ``SPACE_UNLIMITED``) if the storage backend can not report the available
+space. Whether external storages are taken into account depends on the ``quota_include_external_storage`` system
+configuration of the instance.
+
+.. note::
+   The values are cached for a couple of minutes, as calculating them can be expensive.
+   Pass ``false`` as the first parameter to force a recalculation.
 
 
 Writing to a file

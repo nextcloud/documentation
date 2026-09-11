@@ -65,3 +65,24 @@ Added APIs
 
 - A new interface ``\OCP\ContextChat\IContentProviderWithSearchTask`` was added, extending ``\OCP\ContextChat\IContentProvider``.
   It can be implemented as a drop-in replacement for ``\OCP\ContextChat\IContentProvider``.
+
+Files
+-----
+
+``\OCP\Files\IUserFolder`` was added. It represents the root folder of a single user, similar to how
+``\OCP\Files\IRootFolder`` represents the root of the whole instance, and groups the methods that only apply to the
+files of one user.
+
+See :doc:`../basics/storage/filesystem` for details.
+
+Added APIs
+^^^^^^^^^^
+
+- A new interface ``\OCP\Files\IUserFolder`` was added, extending ``\OCP\Files\Folder``.
+- ``\OCP\Files\IUserFolder::getUserQuota`` was added to read the used, free, total and configured quota space of a user.
+
+Changed APIs
+^^^^^^^^^^^^
+
+- ``\OCP\Files\IRootFolder::getUserFolder`` now returns a ``\OCP\Files\IUserFolder`` instead of a ``\OCP\Files\Folder``.
+  As the new interface extends ``\OCP\Files\Folder`` this is not a breaking change for consumers.
