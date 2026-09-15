@@ -86,6 +86,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#id2">Added APIs</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#files">Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Added APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Changed APIs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="deprecations.html">Deprecations</a></li>
@@ -183,6 +188,27 @@ It can be implemented as a drop-in replacement for <code class="docutils literal
 </ul>
 </section>
 </section>
+<section id="files">
+<h2>Files<a class="headerlink" href="#files" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder</span></code> was added. It represents the root folder of a single user, similar to how
+<code class="docutils literal notranslate"><span class="pre">\OCP\Files\IRootFolder</span></code> represents the root of the whole instance, and groups the methods that only apply to the
+files of one user.</p>
+<p>See <a class="reference internal" href="../basics/storage/filesystem.html"><span class="doc">Nextcloud filesystem API</span></a> for details.</p>
+<section id="id3">
+<h3>Added APIs<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>A new interface <code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder</span></code> was added, extending <code class="docutils literal notranslate"><span class="pre">\OCP\Files\Folder</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder::getUserQuota</span></code> was added to read the used, free, total and configured quota space of a user.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Changed APIs<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Files\IRootFolder::getUserFolder</span></code> now returns a <code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">\OCP\Files\Folder</span></code>.
+As the new interface extends <code class="docutils literal notranslate"><span class="pre">\OCP\Files\Folder</span></code> this is not a breaking change for consumers.</p></li>
+</ul>
+</section>
+</section>
 </section>
 
 
@@ -197,7 +223,7 @@ It can be implemented as a drop-in replacement for <code class="docutils literal
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Aug 26, 2026.
+      <span class="lastupdated">Last updated on Sep 15, 2026.
       </span></p>
   </div>
 
