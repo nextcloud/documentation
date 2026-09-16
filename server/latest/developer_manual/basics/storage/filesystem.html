@@ -153,6 +153,7 @@ and actions for the node.</p>
 <p>Access to the filesystem is provided by the <code class="docutils literal notranslate"><span class="pre">IRootFolder</span></code> which can be injected into your class.
 From the root folder you can either access a user’s home folder or access a file or folder by its absolute path.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">OCP\Files\IRootFolder</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Files\IUserFolder</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCP\IUserSession</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">FileSystemAccessExample</span> <span class="p">{</span>
@@ -165,10 +166,9 @@ From the root folder you can either access a user’s home folder or access a fi
     <span class="p">}</span>
 
     <span class="sd">/**</span>
-<span class="sd">    * Create a new file with specified content in the home folder of the current user</span>
-<span class="sd">    * returning the size of the resulting file.</span>
+<span class="sd">    * Get the home folder of the current user, or null if no user is logged in.</span>
 <span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getCurrentUserFolder</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$content</span><span class="p">)</span><span class="o">:</span> <span class="nx">int</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getCurrentUserFolder</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">IUserFolder</span> <span class="p">{</span>
         <span class="nv">$user</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userSession</span><span class="o">-&gt;</span><span class="na">getUser</span><span class="p">();</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nv">$user</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
@@ -182,6 +182,72 @@ From the root folder you can either access a user’s home folder or access a fi
 </pre></div>
 </div>
 <p>For more details on the specific methods provided by file and folder nodes see the method documentation from the <code class="docutils literal notranslate"><span class="pre">OCP\Files\File</span></code> and <code class="docutils literal notranslate"><span class="pre">OCP\Files\Folder</span></code> interfaces.</p>
+</section>
+<section id="the-user-folder">
+<h3>The user folder<a class="headerlink" href="#the-user-folder" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">IRootFolder::getUserFolder()</span></code> returns an <code class="docutils literal notranslate"><span class="pre">OCP\Files\IUserFolder</span></code>, the node that represents the root of the files
+of one specific user. It relates to a single user in the same way the <code class="docutils literal notranslate"><span class="pre">IRootFolder</span></code> relates to the whole instance.</p>
+<p><code class="docutils literal notranslate"><span class="pre">IUserFolder</span></code> extends <code class="docutils literal notranslate"><span class="pre">OCP\Files\Folder</span></code>, so every node operation works as before. In addition it groups the
+methods that only make sense for a user’s home folder, so they no longer have to be looked up somewhere else.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 36: </span><code class="docutils literal notranslate"><span class="pre">OCP\Files\IUserFolder</span></code> was added. <code class="docutils literal notranslate"><span class="pre">OCP\Files\IRootFolder::getUserFolder()</span></code> now returns this interface instead
+of a plain <code class="docutils literal notranslate"><span class="pre">OCP\Files\Folder</span></code>. Because the new interface extends <code class="docutils literal notranslate"><span class="pre">OCP\Files\Folder</span></code>, existing code keeps
+working, only type hints of your own methods might need to be widened or narrowed.</p>
+</div>
+<p>Reading the quota of a user is done using the <code class="docutils literal notranslate"><span class="pre">getUserQuota()</span></code> method:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">OCP\Files\IRootFolder</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">QuotaExample</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">IRootFolder</span> <span class="nv">$rootFolder</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getUsedSpace</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$userId</span><span class="p">)</span><span class="o">:</span> <span class="nx">int</span><span class="o">|</span><span class="nx">float</span> <span class="p">{</span>
+        <span class="nv">$userFolder</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">rootFolder</span><span class="o">-&gt;</span><span class="na">getUserFolder</span><span class="p">(</span><span class="nv">$userId</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$userFolder</span><span class="o">-&gt;</span><span class="na">getUserQuota</span><span class="p">()[</span><span class="s1">'used'</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The returned array contains the following entries, all of them in bytes:</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Values returned by <code class="docutils literal notranslate"><span class="pre">getUserQuota()</span></code></span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 85.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">used</span></code></p></td>
+<td><p>Space currently occupied by the files of the user.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">free</span></code></p></td>
+<td><p>Space still available to the user.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">total</span></code></p></td>
+<td><p>Sum of <code class="docutils literal notranslate"><span class="pre">used</span></code> and <code class="docutils literal notranslate"><span class="pre">free</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">quota</span></code></p></td>
+<td><p>Quota configured for the user, or <code class="docutils literal notranslate"><span class="pre">OCP\Files\FileInfo::SPACE_UNLIMITED</span></code> if the user has no quota.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">free</span></code> and <code class="docutils literal notranslate"><span class="pre">total</span></code> values can also be one of the negative <code class="docutils literal notranslate"><span class="pre">OCP\Files\FileInfo</span></code> constants
+(<code class="docutils literal notranslate"><span class="pre">SPACE_NOT_COMPUTED</span></code>, <code class="docutils literal notranslate"><span class="pre">SPACE_UNKNOWN</span></code> or <code class="docutils literal notranslate"><span class="pre">SPACE_UNLIMITED</span></code>) if the storage backend can not report the available
+space. Whether external storages are taken into account depends on the <code class="docutils literal notranslate"><span class="pre">quota_include_external_storage</span></code> system
+configuration of the instance.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The values are cached for a couple of minutes, as calculating them can be expensive.
+Pass <code class="docutils literal notranslate"><span class="pre">false</span></code> as the first parameter to force a recalculation.</p>
+</div>
 </section>
 <section id="writing-to-a-file">
 <h3>Writing to a file<a class="headerlink" href="#writing-to-a-file" title="Link to this heading"></a></h3>
@@ -293,7 +359,7 @@ can return a list of mounts to add for that user.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Sep 10, 2026.
+      <span class="lastupdated">Last updated on Sep 15, 2026.
       </span></p>
   </div>
 
