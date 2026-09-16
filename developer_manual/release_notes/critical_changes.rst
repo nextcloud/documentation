@@ -89,6 +89,82 @@ Make sure to adjust your CI matrix for testing with them. This is automatically 
 
   .. note:: MySQL 9+ deprecated support for MD5, so we strongly recommend to migrate away from the MD5 SQL function in your apps.
 
+The Viewer is a library, not an app
+-----------------------------------
+
+The ``viewer`` app has been removed from Nextcloud 36. The viewer itself now ships as the
+`@nextcloud/viewer <https://www.npmjs.com/package/@nextcloud/viewer>`_ library, which any app
+can depend on:
+
+.. code-block:: bash
+
+    npm install --save @nextcloud/viewer
+
+Importing it registers the handlers for images, video and audio, and offers this copy of the
+viewer to the page. Several apps on one page may each bring their own copy: they elect the
+newest between them, and only that one is ever loaded, the first time a file is opened.
+
+Registering a handler
+^^^^^^^^^^^^^^^^^^^^^
+
+Register handlers from a script loaded with ``\OCP\Util::addInitScript()``. The Files list
+reads the available actions when it first renders, so a handler registered after that is a
+file that does not open.
+
+.. code-block:: javascript
+
+    import { registerHandler } from '@nextcloud/viewer'
+
+    registerHandler({
+        id: 'my-app',
+        displayName: t('my_app', 'My files'),
+        // A custom element you define yourself, and which receives the file to show
+        tagname: 'my-app-viewer',
+        enabled: (nodes) => nodes.every((node) => node.mime === 'application/x-my-format'),
+    })
+
+Opening the viewer
+^^^^^^^^^^^^^^^^^^
+
+``OCA.Viewer`` is gone, along with the ``\OCA\Viewer\Event\LoadViewer`` event apps
+dispatched to ask the app to load itself. Nothing needs to be dispatched any more; ask the
+service for the viewer and hand it nodes:
+
+.. code-block:: javascript
+
+    import { canView, getViewer } from '@nextcloud/viewer'
+
+    // OCA.Viewer.open({ path }) becomes, with `node` an INode from @nextcloud/files:
+    getViewer().open([node], node)
+
+    // OCA.Viewer.mimetypes.includes(node.mime) becomes:
+    canView(node)
+
+The first argument is the list to page through, the second the file to open. ``compare(a, b)``
+replaces ``OCA.Viewer.compare()``, and ``open()`` takes options as a third argument, among them
+``enableSidebar`` for a file the Files sidebar cannot resolve.
+
+``OCA.Viewer.setRootElement()`` has no replacement. It rendered a single file into an element
+of your choosing instead of the modal, and the only known user was a public share page. Show a
+preview of the file there and let a click on it call ``open()``.
+
+The full handler API is documented with the library.
+
+Enabled preview providers
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The viewer app provided the enabled preview providers as an initial state, which apps could
+read with ``loadState('viewer', 'enabled_preview_providers')``. It is a capability now, so it
+is available wherever capabilities are, public share pages included:
+
+.. code-block:: javascript
+
+    import { getCapabilities } from '@nextcloud/capabilities'
+
+    getCapabilities().core.previews.enabled_providers
+
+See :ref:`preview-capabilities` for what it contains.
+
 Removed front-end APIs and libraries
 ------------------------------------
 
