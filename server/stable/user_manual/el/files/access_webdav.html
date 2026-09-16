@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Πρόσβαση σε αρχεία Nextcloud χρησιμοποιώντας το WebDAV &mdash; Nextcloud 34 User Manual</title>
+  <title>Πρόσβαση σε αρχεία Nextcloud χρησιμοποιώντας το WebDAV &mdash; Nextcloud 35 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -119,7 +119,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../contents.html">Nextcloud 34 User Manual</a>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -226,10 +226,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <li><p>Ακολουθήστε τις οδηγίες στην οθόνη για να συνδεθείτε</p></li>
 <li><p>Μετά τη σύνδεση, βεβαιωθείτε ότι ενεργοποιείτε το «Αποθήκευση» στην ενότητα «Χρήση αυτού του λογαριασμού για»</p></li>
 <li><p>Μπορείτε τώρα να αποκτήσετε πρόσβαση στα αρχεία σας στο Dolphin κάτω από «Δίκτυο» στην πλαϊνή γραμμή</p></li>
-<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click
-«Nextcloud Storage», then click «Add to Places»</p></li>
-<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then
-click «Edit…» and customize the icon and label</p></li>
+<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click «Nextcloud Storage», then click «Add to Places»</p></li>
+<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then click «Edit…» and customize the icon and label</p></li>
 </ol>
 </section>
 </section>
@@ -461,6 +459,23 @@ for example
 <h2>Γνωστά προβλήματα<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
 <section id="id3">
 <h3>Πρόβλημα<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>WebDAV access is very slow or times out.</p>
+</section>
+<section id="id4">
+<h3>Λύση<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>When using a third-party WebDAV client (including your operating system’s built-in
+client), you should authenticate with an <strong>application password</strong> rather than your
+regular account password. Using a regular password carries a significant performance
+penalty because Nextcloud must perform additional work to verify it on every request.
+Using an application password removes this overhead and can improve transfer speeds
+substantially.</p>
+<p>To create an application password, log in to the Nextcloud web interface, click your
+avatar, choose <strong>Personal settings</strong>, then open the <strong>Security</strong> section in the left
+sidebar and scroll to the bottom. Create an app password there and use it in your
+WebDAV client instead of your main password.</p>
+</section>
+<section id="id5">
+<h3>Πρόβλημα<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Τα Windows δεν συνδέονται χρησιμοποιώντας HTTPS.</p>
 </section>
 <section id="solution-1">
@@ -471,17 +486,17 @@ for example
 <h3>Λύση 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
 <p>Ο Πελάτης WebDAV των Windows ενδέχεται να μην υποστηρίζει συνδέσεις TLSv1.1 και TLSv1.2. Εάν έχετε περιορίσει τη διαμόρφωση του διακομιστή σας να παρέχει μόνο TLSv1.1 και άνω, η σύνδεση με τον διακομιστή σας ενδέχεται να αποτύχει. Παρακαλώ ανατρέξτε στην τεκμηρίωση <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> για περισσότερες πληροφορίες.</p>
 </section>
-<section id="id4">
-<h3>Πρόβλημα<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id6">
+<h3>Πρόβλημα<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>Λαμβάνετε το ακόλουθο μήνυμα σφάλματος: <strong>Σφάλμα 0x800700DF: Το μέγεθος του αρχείου υπερβαίνει το επιτρεπόμενο όριο και δεν μπορεί να αποθηκευτεί.</strong></p>
 </section>
-<section id="id5">
-<h3>Λύση<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Λύση<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>Τα Windows περιορίζουν το μέγιστο μέγεθος που μπορεί να έχει ένα αρχείο που μεταφέρεται από ή προς μια κοινή χρήση WebDAV. Μπορείτε να αυξήσετε την τιμή <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> στο <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> κάνοντας κλικ στο <strong>Τροποποίηση</strong>.</p>
 <p>Για να αυξήσετε το όριο στη μέγιστη τιμή των 4GB, επιλέξτε <strong>Δεκαδικό</strong>, εισάγετε μια τιμή <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> και επανεκκινήστε τα Windows ή επανεκκινήστε την υπηρεσία <strong>WebClient</strong>.</p>
 </section>
-<section id="id6">
-<h3>Πρόβλημα<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Πρόβλημα<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>Adding a WebDAV drive on Windows with the steps above does not display the correct
 available Nextcloud space and instead shows the size and free space of the C: drive.</p>
 </section>
@@ -492,20 +507,20 @@ way for the client to retrieve available free space from the server. Windows aut
 falls back to the size and free space of the C: drive. There is no direct solution
 for this limitation.</p>
 </section>
-<section id="id7">
-<h3>Πρόβλημα<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
-<p>Αποτυγχάνει η πρόσβαση στα αρχεία σας από το Microsoft Office μέσω WebDAV.</p>
-</section>
-<section id="id8">
-<h3>Λύση<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
-<p>Τα γνωστά προβλήματα και οι λύσεις τους τεκμηριώνονται στο άρθρο <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
-</section>
 <section id="id9">
 <h3>Πρόβλημα<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
-<p>Δεν είναι δυνατή η αντιστοίχιση του Nextcloud ως μονάδας δίσκου WebDAV στα Windows χρησιμοποιώντας αυτο-υπογεγραμμένο πιστοποιητικό.</p>
+<p>Αποτυγχάνει η πρόσβαση στα αρχεία σας από το Microsoft Office μέσω WebDAV.</p>
 </section>
 <section id="id10">
 <h3>Λύση<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>Τα γνωστά προβλήματα και οι λύσεις τους τεκμηριώνονται στο άρθρο <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
+</section>
+<section id="id11">
+<h3>Πρόβλημα<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<p>Δεν είναι δυνατή η αντιστοίχιση του Nextcloud ως μονάδας δίσκου WebDAV στα Windows χρησιμοποιώντας αυτο-υπογεγραμμένο πιστοποιητικό.</p>
+</section>
+<section id="id12">
+<h3>Λύση<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
 <li><p>Κάντε κλικ μέχρι να φτάσετε στο σφάλμα πιστοποιητικού στη γραμμή κατάστασης του προγράμματος περιήγησης.</p></li>
@@ -752,14 +767,14 @@ WinSCP does not support TOTP with Nextcloud.</p>
             aria-controls="rst-other-versions-user">
       🌐 Greek
       <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ 34
+       ☁️ 35
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
-      <dl>
-        <dt>🌐 Γλώσσες</dt>
+      <dl class="nc-languages-list">
+        <dt>Γλώσσες</dt>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ar/"
                
             >
@@ -767,7 +782,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/br/"
                
             >
@@ -775,7 +790,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ca/"
                
             >
@@ -783,7 +798,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_CN/"
                
             >
@@ -791,7 +806,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_HK/"
                
             >
@@ -799,7 +814,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_TW/"
                
             >
@@ -807,7 +822,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/cs/"
                
             >
@@ -815,7 +830,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/da/"
                
             >
@@ -823,7 +838,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nl/"
                
             >
@@ -831,7 +846,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/en/"
                
             >
@@ -839,7 +854,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/fi_FI/"
                
             >
@@ -847,7 +862,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/fr/"
                
             >
@@ -855,7 +870,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/gl/"
                
             >
@@ -863,7 +878,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/de/"
                
             >
@@ -871,7 +886,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/el/"
                
                style="color: var(--dark-link-color);"
@@ -881,7 +896,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/hu_HU/"
                
             >
@@ -889,7 +904,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/id/"
                
             >
@@ -897,7 +912,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ga/"
                
             >
@@ -905,7 +920,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/it/"
                
             >
@@ -913,7 +928,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ja_JP/"
                
             >
@@ -921,7 +936,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ko/"
                
             >
@@ -929,7 +944,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/lo/"
                
             >
@@ -937,7 +952,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/lt/"
                
             >
@@ -945,7 +960,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -953,7 +968,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nb_NO/"
                
             >
@@ -961,7 +976,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nn/"
                
             >
@@ -969,7 +984,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pl/"
                
             >
@@ -977,7 +992,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pt_PT/"
                
             >
@@ -985,7 +1000,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pt_BR/"
                
             >
@@ -993,7 +1008,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ro/"
                
             >
@@ -1001,7 +1016,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ru/"
                
             >
@@ -1009,7 +1024,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/si/"
                
             >
@@ -1017,7 +1032,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sk_SK/"
                
             >
@@ -1025,7 +1040,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sr/"
                
             >
@@ -1033,7 +1048,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/es/"
                
             >
@@ -1041,7 +1056,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sv/"
                
             >
@@ -1049,7 +1064,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ta/"
                
             >
@@ -1057,7 +1072,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/tr/"
                
             >
@@ -1065,7 +1080,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/uk_UA/"
                
             >
@@ -1073,7 +1088,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/uz/"
                
             >
@@ -1081,7 +1096,7 @@ WinSCP does not support TOTP with Nextcloud.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/vi/"
                
             >
@@ -1092,38 +1107,46 @@ WinSCP does not support TOTP with Nextcloud.</p>
       </dl>
     </div>
     <div class="rst-other-versions">
-      <dl>
-        <dt>☁️ Εκδόσεις</dt>
+      <dl class="nc-versions-list">
+        <dt>Εκδόσεις</dt>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              36 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
                
             >
               35 (latest)
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+          <dd>
+            <a href="https://docs.nextcloud.com/server/34/user_manual"
                
             >
               34 (stable)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/33/user_manual"
                
             >
-              33
+              33 (stable)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
-              32
+              32 (stable)
             </a>
           </dd>
         

@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Configuration &mdash; Nextcloud 34 Administration Manual</title>
+  <title>Configuration &mdash; Nextcloud 35 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -102,6 +102,7 @@
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management_api.html">Apps management API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
 </ul>
@@ -117,28 +118,18 @@
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Office</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#nextcloud-office-app-settings">Nextcloud Office App Settings</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#collabora-online-server">Collabora Online Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#restrict-usage-to-specific-groups">Restrict usage to specific groups</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#restrict-edit-to-specific-groups">Restrict edit to specific groups</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#use-ooxml-by-default-for-new-files">Use OOXML by default for new files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#enable-access-for-external-apps">Enable access for external apps</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#canonical-webroot">Canonical webroot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="euro-office/index.html">Nextcloud Office</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="collabora_online.html">Collabora Online</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-office-app-settings">Nextcloud Office App Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-configuration-options">Additional configuration options</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#additional-configuration-options">Additional configuration options</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#previews">Previews</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#custom-fonts">Custom fonts</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#secure-view-settings">Secure view settings</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Wopi configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration.html">Migration from Collabora Online</a></li>
+<li class="toctree-l3"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="migration.html">Migration from Collabora Online</a></li>
-<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </li>
 </ul>
@@ -173,7 +164,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../contents.html">Nextcloud 34 Administration Manual</a>
+          <a href="../contents.html">Nextcloud 35 Administration Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -182,6 +173,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Office</a></li>
+          <li class="breadcrumb-item"><a href="collabora_online.html">Collabora Online</a></li>
       <li class="breadcrumb-item active">Configuration</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/office/configuration.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -297,42 +289,50 @@ token. These credentials then can be used by the 3rd party application to make c
             data-toggle="rst-current-version"
             aria-expanded="false"
             aria-controls="rst-other-versions-admin">
-      ☁️ 34
+      ☁️ 35
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-admin" class="rst-other-versions">
-      <dl>
-        <dt>☁️ Versions</dt>
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+          >
+            36 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
              
           >
             35 (latest)
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/admin_manual"
              
           >
             34 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/33/admin_manual"
              
           >
-            33
+            33 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
-            32
+            32 (stable)
           </a>
         </dd>
         

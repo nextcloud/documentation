@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>New in this release &mdash; Nextcloud 34 Developer Manual</title>
+  <title>New in this release &mdash; Nextcloud 35 Developer Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -76,7 +76,11 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">New in this release</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#typed-query-builder">Typed query builder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#expensive-post-migration-repair-steps">Expensive post migration repair steps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#application-namespace-management">Application namespace management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-processing">Task Processing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#added-apis">Added APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#changed-apis">Changed APIs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="deprecations.html">Deprecations</a></li>
@@ -90,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
@@ -102,7 +106,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Nextcloud 34 Developer Manual</a>
+          <a href="../index.html">Nextcloud 35 Developer Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -143,14 +147,23 @@ but they might be required to have a fully working instance later on.</p>
 <p>Expensive repair steps are only executed when explicitly requested by the administrator.</p>
 <p>See <a class="reference internal" href="../digging_deeper/repair.html#migration-repair-steps"><span class="std std-ref">Repair steps</span></a> for details.</p>
 </section>
-<section id="application-namespace-management">
-<h2>Application namespace management<a class="headerlink" href="#application-namespace-management" title="Link to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">\OCP\App\IAppManager</span></code> was extended with two new methods related to application namespaces:</p>
+<section id="task-processing">
+<h2>Task Processing<a class="headerlink" href="#task-processing" title="Link to this heading"></a></h2>
+<p>Support for streaming the text output of TaskProcessing providers has been added.
+See <a class="reference internal" href="../digging_deeper/task_processing.html#task-processing-options"><span class="std std-ref">Implementing an advanced TaskProcessing provider</span></a> for details about how to adjust your providers.</p>
+<section id="added-apis">
+<h3>Added APIs<a class="headerlink" href="#added-apis" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">getAppNamespace(string</span> <span class="pre">$appId):</span> <span class="pre">string</span></code> returns the namespace for an application from its appid. See <a class="reference external" href="https://nextcloud-server.netlify.app/classes/ocp-app-iappmanager#method_getAppNamespace">Documentation</a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">getAppFromNamespace(string</span> <span class="pre">$className):</span> <span class="pre">?string</span></code> does the opposite. Less common but it is used in guests application. See <a class="reference external" href="https://nextcloud-server.netlify.app/classes/ocp-app-iappmanager#method_getAppFromNamespace">Documentation</a>.</p></li>
+<li><p>There is a new TaskProcessing provider interface: <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousOptionsAwareProvider</span></code>. It takes a <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\SynchronousProviderOptions</span></code> option object that contains includeWatermarks, preferStreaming and the callback to report intermediate output.</p></li>
 </ul>
-<p>This replaces static method <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\App::buildAppNamespace</span></code> which is now deprecated.</p>
+</section>
+<section id="changed-apis">
+<h3>Changed APIs<a class="headerlink" href="#changed-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\Task</span></code> class now has <code class="docutils literal notranslate"><span class="pre">getPreferStreaming</span></code> and <code class="docutils literal notranslate"><span class="pre">setPreferStreaming</span></code> methods for indicating whether the provider should report the output progressively if it supports it.</p></li>
+<li><p>The TaskProcessing OCS API now also accepts the <code class="docutils literal notranslate"><span class="pre">preferStreaming</span></code> flag when scheduling tasks.</p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -166,7 +179,7 @@ but they might be required to have a fully working instance later on.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 08, 2026.
+      <span class="lastupdated">Last updated on Sep 16, 2026.
       </span></p>
   </div>
 
@@ -186,42 +199,50 @@ but they might be required to have a fully working instance later on.</p>
             data-toggle="rst-current-version"
             aria-expanded="false"
             aria-controls="rst-other-versions-dev">
-      ☁️ 34
+      ☁️ 35
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-dev" class="rst-other-versions">
-      <dl>
-        <dt>☁️ Versions</dt>
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+          >
+            36 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
              
           >
             35 (latest)
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/developer_manual"
              
           >
             34 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/33/developer_manual"
              
           >
-            33
+            33 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/32/developer_manual"
              
           >
-            32
+            32 (stable)
           </a>
         </dd>
         

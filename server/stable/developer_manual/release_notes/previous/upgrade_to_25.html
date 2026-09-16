@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Upgrade to Nextcloud 25 &mdash; Nextcloud 34 Developer Manual</title>
+  <title>Upgrade to Nextcloud 25 &mdash; Nextcloud 35 Developer Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -76,6 +76,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../new.html">New in this release</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../deprecations.html">Deprecations</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Previous release notes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_34.html">Upgrade to Nextcloud 34</a></li>
 <li class="toctree-l3"><a class="reference internal" href="upgrade_to_33.html">Upgrade to Nextcloud 33</a></li>
 <li class="toctree-l3"><a class="reference internal" href="upgrade_to_32.html">Upgrade to Nextcloud 32</a></li>
 <li class="toctree-l3"><a class="reference internal" href="upgrade_to_31.html">Upgrade to Nextcloud 31</a></li>
@@ -112,7 +113,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
@@ -124,7 +125,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">Nextcloud 34 Developer Manual</a>
+          <a href="../../index.html">Nextcloud 35 Developer Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -176,8 +177,8 @@ See <a class="reference external" href="https://github.com/nextcloud/server/issu
 Since it heavily depends on the screenreader and tools that you use if Ctrl and/or Alt or other things are okay to use
 or not and maintaining a more detailed list is too much effort, we went for a global on/off switch. Apps can use this
 public javascript API call to determine whether the user used the opt-out: <code class="docutils literal notranslate"><span class="pre">OCP.Accessibility.disableKeyboardShortcuts()</span></code>.
-If that is the case, no additional shortcuts shall be registered by any app. Only <code class="docutils literal notranslate"><span class="pre">space</span></code> to toggle checkboxes and
-<code class="docutils literal notranslate"><span class="pre">enter</span></code> to submit the currently active buttons/links are okay to be used.
+If that is the case, no additional shortcuts shall be registered by any app. Only <kbd class="kbd docutils literal notranslate">Space</kbd> to toggle checkboxes and
+<kbd class="kbd docutils literal notranslate">Enter</kbd> to submit the currently active buttons/links are okay to be used.
 See <a class="reference external" href="https://github.com/nextcloud/server/pull/34081">Github issue #34081</a> and <a class="reference internal" href="../../basics/front-end/js.html#basics-frontend-javascript-keyboard-shortcuts"><span class="std std-ref">JavaScript Frontend documentation</span></a>.</p>
 </section>
 </section>
@@ -210,7 +211,7 @@ same and all older versions were generated, so you can transition right away no 
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 08, 2026.
+      <span class="lastupdated">Last updated on Sep 16, 2026.
       </span></p>
   </div>
 
@@ -230,42 +231,50 @@ same and all older versions were generated, so you can transition right away no 
             data-toggle="rst-current-version"
             aria-expanded="false"
             aria-controls="rst-other-versions-dev">
-      ☁️ 34
+      ☁️ 35
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-dev" class="rst-other-versions">
-      <dl>
-        <dt>☁️ Versions</dt>
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+          >
+            36 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
              
           >
             35 (latest)
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/developer_manual"
              
           >
             34 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/33/developer_manual"
              
           >
-            33
+            33 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/32/developer_manual"
              
           >
-            32
+            32 (stable)
           </a>
         </dd>
         

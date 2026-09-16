@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using end-to-end encryption &mdash; Nextcloud 34 User Manual</title>
+  <title>Utilisation du chiffrement de bout en bout &mdash; Nextcloud 35 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -32,7 +32,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
     <link rel="next" title="Groupware" href="../groupware/index.html" />
-    <link rel="prev" title="Using server-side encryption" href="encrypting_files.html" />
+    <link rel="prev" title="Mettre en oeuvre le chiffrement côté-serveur (SSE)" href="encrypting_files.html" />
    
   
 </head>
@@ -71,21 +71,21 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Manuel utilisateur de Nextcloud 34 : Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Manuel utilisateur de Nextcloud 35 : Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Utilisation de l’application Activité</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Fichiers &amp; synchronisation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accéder à vos fichiers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Gérer vos fichiers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="collaboration.html">Partage &amp; Collaboration</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="security.html">Sécurité &amp; chiffrement</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="encrypting_files.html">Using server-side encryption</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Using end-to-end encryption</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#enabling-e2ee">Enabling E2EE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#encrypting-a-folder">Encrypting a folder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adding-an-e2ee-device">Adding an E2EE device</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#displaying-the-mnemonic">Displaying the mnemonic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="encrypting_files.html">Mettre en oeuvre le chiffrement côté-serveur (SSE)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Utilisation du chiffrement de bout en bout</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-e2ee">Activation de l’E2EE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#encrypting-a-folder">Chiffrement d’un dossier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-an-e2ee-device">Ajout d’un appareil E2EE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#displaying-the-mnemonic">Affichage de la phrase mnémotechnique</a></li>
 </ul>
 </li>
 </ul>
@@ -108,7 +108,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../contents.html">Nextcloud 34 User Manual</a>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -118,7 +118,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Fichiers &amp; synchronisation</a></li>
           <li class="breadcrumb-item"><a href="security.html">Sécurité &amp; chiffrement</a></li>
-      <li class="breadcrumb-item active">Using end-to-end encryption</li>
+      <li class="breadcrumb-item active">Utilisation du chiffrement de bout en bout</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/using_e2ee.rst" class="fa fa-github"> Éditer sur GitHub</a>
       </li>
@@ -129,96 +129,92 @@
            <div itemprop="articleBody">
              
   <section id="using-end-to-end-encryption">
-<h1>Using end-to-end encryption<a class="headerlink" href="#using-end-to-end-encryption" title="Lien vers cette rubrique"></a></h1>
-<p>If enabled server side, Nextcloud provides the possibility to encrypt your files on your devices.
-This is called end-to-end encryption, or E2EE, because the files are encrypted on your device
-and only decrypted on your device.
-The server never sees the unencrypted files, further protecting user privacy and data security.</p>
+<h1>Utilisation du chiffrement de bout en bout<a class="headerlink" href="#using-end-to-end-encryption" title="Lien vers cette rubrique"></a></h1>
+<p>Si cela est activé côté serveur, Nextcloud fournit la possibilité de chiffrer vos fichiers sur vos appareils. Cela est appelé le chiffrement de bout en bout, ou E2EE, car les fichiers sont chiffrés sur votre appareil et ne sont déchiffrés que sur celui-ci. Le serveur ne voit jamais les fichiers déchiffrés, ce qui en plus protège la vie privée de l’utilisateur et la sécurité des données.</p>
 <section id="enabling-e2ee">
-<h2>Enabling E2EE<a class="headerlink" href="#enabling-e2ee" title="Lien vers cette rubrique"></a></h2>
+<h2>Activation de l’E2EE<a class="headerlink" href="#enabling-e2ee" title="Lien vers cette rubrique"></a></h2>
 <p>If your administrator has enabled the <a class="reference external" href="https://apps.nextcloud.com/apps/end_to_end_encryption">End-to-End Encryption app</a>, you can start using it from one of your devices.
 Open the settings of the Nextcloud client and look for the E2EE encryption settings.</p>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-setup.png"><img alt="Setup E2EE on the desktop client" src="../../_images/e2ee-desktop-setup.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-setup.png"><img alt="Configuration de l'E2EE sur le client de bureau" src="../../_images/e2ee-desktop-setup.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-setup.png"><img alt="Setup E2EE on Android" src="../../_images/e2ee-android-setup.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-setup.png"><img alt="Configuration de l'E2EE sur Android" src="../../_images/e2ee-android-setup.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-1.png"><img alt="Setup E2EE on iOS step 1" src="../../_images/e2ee-ios-setup-1.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-1.png"><img alt="Configuration de l'E2EE sur iOS, étape 1" src="../../_images/e2ee-ios-setup-1.png" style="width: 400px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-2.png"><img alt="Setup E2EE on iOS step 2" src="../../_images/e2ee-ios-setup-2.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-2.png"><img alt="Configuration de l'E2EE sur iOS, étape 2" src="../../_images/e2ee-ios-setup-2.png" style="width: 400px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-3.png"><img alt="Setup E2EE on iOS step 3" src="../../_images/e2ee-ios-setup-3.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-3.png"><img alt="Configuration de l'E2EE sur iOS, étape 3" src="../../_images/e2ee-ios-setup-3.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p>It is not possible to enable encryption on a folder in the browser. This must be done on a client app, either a desktop or mobile client.</p>
+<p>Il n’est pas possible d’activer le chiffrement sur un dossier à partir du navigateur. Cela doit être fait sur une application cliente, soit un client de bureau, soit un client mobile.</p>
 </div>
 </details><br /></section>
 <section id="encrypting-a-folder">
-<h2>Encrypting a folder<a class="headerlink" href="#encrypting-a-folder" title="Lien vers cette rubrique"></a></h2>
+<h2>Chiffrement d’un dossier<a class="headerlink" href="#encrypting-a-folder" title="Lien vers cette rubrique"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p>You can only enable encryption on empty folders.</p>
+<p>Vous ne pouvez activer le chiffrement que sur des dossiers vides.</p>
 </div>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-1.png"><img alt="Encrypting a folder on the desktop client step 1" src="../../_images/e2ee-desktop-encrypt-1.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-1.png"><img alt="Chiffrement d'un dossier sur le client de bureau, étape 1" src="../../_images/e2ee-desktop-encrypt-1.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-2.png"><img alt="Encrypting a folder on the desktop client step 2" src="../../_images/e2ee-desktop-encrypt-2.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-2.png"><img alt="Chiffrement d'un dossier sur le client de bureau, étape 2" src="../../_images/e2ee-desktop-encrypt-2.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-3.png"><img alt="Encrypting a folder on the desktop client step 3" src="../../_images/e2ee-desktop-encrypt-3.png" style="width: 750px;" />
-</a>
-</details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-encrypt.png"><img alt="Encrypting a folder on an Android device" src="../../_images/e2ee-android-encrypt.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-3.png"><img alt="Chiffrement d'un dossier sur le client de bureau, étape 3" src="../../_images/e2ee-desktop-encrypt-3.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-encrypt.png"><img alt="Encrypting a folder on an iOS device" src="../../_images/e2ee-ios-encrypt.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-encrypt.png"><img alt="Chiffrement d'un dossier sur un appareil Android" src="../../_images/e2ee-android-encrypt.png" style="width: 400px;" />
+</a>
+</details><details>
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-encrypt.png"><img alt="Chiffrement d'un dossier sur un appareil iOS" src="../../_images/e2ee-ios-encrypt.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p>It is not possible to enable encryption on a folder in the browser. This must be done on a client app, either a desktop or mobile client.</p>
+<p>Il n’est pas possible d’activer le chiffrement sur un dossier à partir du navigateur. Cela doit être fait sur une application cliente, soit un client de bureau, soit un client mobile.</p>
 </div>
 </details><br /></section>
 <section id="adding-an-e2ee-device">
-<h2>Adding an E2EE device<a class="headerlink" href="#adding-an-e2ee-device" title="Lien vers cette rubrique"></a></h2>
+<h2>Ajout d’un appareil E2EE<a class="headerlink" href="#adding-an-e2ee-device" title="Lien vers cette rubrique"></a></h2>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-add.png"><img alt="Setup a new desktop client" src="../../_images/e2ee-desktop-add.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-add.png"><img alt="Configuration d'un nouveau client de bureau" src="../../_images/e2ee-desktop-add.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-add.png"><img alt="Setup a new Android device" src="../../_images/e2ee-android-add.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-add.png"><img alt="Configuration d'un nouvel appareil Android" src="../../_images/e2ee-android-add.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-add.png"><img alt="Setup a new iOS device" src="../../_images/e2ee-ios-add.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-add.png"><img alt="Configuration d'un nouvel appareil iOS" src="../../_images/e2ee-ios-add.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>Web</summary><p>In the browser, first enable E2EE in the personal settings. This is needed, as E2EE is less secure in the browser, requiring you to fully trust the administrator to not alter the source code the browser will execute.
-E2EE folders are currently read-only. Therefore, it is not possible to add, remove, edit, or share an E2EE file from the browser.</p>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-1.png"><img alt="Setup a new browser session step 1" src="../../_images/e2ee-web-add-1.png" style="width: 750px;" />
+<summary>Web</summary><p>Dans le navigateur, commencez par activer l’E2EE dans les paramètres personnels. Cela est nécessaire car l’E2EE est moins sécurisé dans le navigateur, ce qui vous oblige à faire totalement confiance à l’administrateur pour ne pas altérer le code source que le navigateur va exécuter. Les dossiers E2EE sont actuellement en lecture seule. Par conséquent, il n’est pas possible d’ajouter, supprimer, éditer ou partager un fichier E2EE depuis la navigateur.</p>
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-1.png"><img alt="Configuration d'une nouvelle session de navigateur, étape 1" src="../../_images/e2ee-web-add-1.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-2.png"><img alt="Setup a new browser session step 2" src="../../_images/e2ee-web-add-2.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-2.png"><img alt="Configuration d'une nouvelle session de navigateur, étape 2" src="../../_images/e2ee-web-add-2.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-3.png"><img alt="Setup a new browser session step 3" src="../../_images/e2ee-web-add-3.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-3.png"><img alt="Configuration d'une nouvelle session de navigateur, étape 3" src="../../_images/e2ee-web-add-3.png" style="width: 750px;" />
 </a>
 </details><br /></section>
 <section id="displaying-the-mnemonic">
-<h2>Displaying the mnemonic<a class="headerlink" href="#displaying-the-mnemonic" title="Lien vers cette rubrique"></a></h2>
-<p>The mnemonic is a list of words that is used to encrypt and decrypt your files. It is important to keep this mnemonic safe, as it is the only way to access your files if you lose access to your device. If you lose access to your mnemonic, you will lose access to your files.</p>
+<h2>Affichage de la phrase mnémotechnique<a class="headerlink" href="#displaying-the-mnemonic" title="Lien vers cette rubrique"></a></h2>
+<p>La phrase mnémotechnique est une liste de mots qui sert à chiffrer et déchiffrer vos fichiers. Il est important de la conserver au lieu sûr car c’est la seule façon d’accéder à vos fichiers si vous perdez l’accès à votre appareil. Si vous perdez l’accès à votre phrase mnémotechnique, vous perdrez l’accès à vos fichiers.</p>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-mnemonic.png"><img alt="Displaying the mnemonic on the desktop client" src="../../_images/e2ee-desktop-mnemonic.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-mnemonic.png"><img alt="Affichage de la phrase mnémotechnique sur le client de bureau" src="../../_images/e2ee-desktop-mnemonic.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-mnemonic.png"><img alt="Displaying the mnemonic on an Android device" src="../../_images/e2ee-android-mnemonic.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-mnemonic.png"><img alt="Affichage de la phrase mnémotechnique sur un client Android" src="../../_images/e2ee-android-mnemonic.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-mnemonic.png"><img alt="Displaying the mnemonic on an iOS device" src="../../_images/e2ee-ios-mnemonic.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-mnemonic.png"><img alt="Affichage de la phrase mnémotechnique sur un client iOS" src="../../_images/e2ee-ios-mnemonic.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p>It is not possible to display the mnemonic in the browser.</p>
+<p>Il n’est pas possible d’afficher la phrase mnémotechnique dans le navigateur.</p>
 </div>
 </details><br /></section>
 </section>
@@ -227,7 +223,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
-        <a href="encrypting_files.html" class="btn btn-neutral float-left" title="Using server-side encryption" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="encrypting_files.html" class="btn btn-neutral float-left" title="Mettre en oeuvre le chiffrement côté-serveur (SSE)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
         <a href="../groupware/index.html" class="btn btn-neutral float-right" title="Groupware" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -347,14 +343,14 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             aria-controls="rst-other-versions-user">
       🌐 French
       <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ 34
+       ☁️ 35
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
-      <dl>
-        <dt>🌐 Langues</dt>
+      <dl class="nc-languages-list">
+        <dt>Langues</dt>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ar/"
                
             >
@@ -362,7 +358,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/br/"
                
             >
@@ -370,7 +366,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ca/"
                
             >
@@ -378,7 +374,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_CN/"
                
             >
@@ -386,7 +382,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_HK/"
                
             >
@@ -394,7 +390,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_TW/"
                
             >
@@ -402,7 +398,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/cs/"
                
             >
@@ -410,7 +406,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/da/"
                
             >
@@ -418,7 +414,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nl/"
                
             >
@@ -426,7 +422,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/en/"
                
             >
@@ -434,7 +430,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/fi_FI/"
                
             >
@@ -442,7 +438,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/fr/"
                
                style="color: var(--dark-link-color);"
@@ -452,7 +448,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/gl/"
                
             >
@@ -460,7 +456,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/de/"
                
             >
@@ -468,7 +464,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/el/"
                
             >
@@ -476,7 +472,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/hu_HU/"
                
             >
@@ -484,7 +480,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/id/"
                
             >
@@ -492,7 +488,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ga/"
                
             >
@@ -500,7 +496,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/it/"
                
             >
@@ -508,7 +504,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ja_JP/"
                
             >
@@ -516,7 +512,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ko/"
                
             >
@@ -524,7 +520,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/lo/"
                
             >
@@ -532,7 +528,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/lt/"
                
             >
@@ -540,7 +536,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -548,7 +544,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nb_NO/"
                
             >
@@ -556,7 +552,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nn/"
                
             >
@@ -564,7 +560,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pl/"
                
             >
@@ -572,7 +568,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pt_PT/"
                
             >
@@ -580,7 +576,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pt_BR/"
                
             >
@@ -588,7 +584,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ro/"
                
             >
@@ -596,7 +592,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ru/"
                
             >
@@ -604,7 +600,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/si/"
                
             >
@@ -612,7 +608,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sk_SK/"
                
             >
@@ -620,7 +616,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sr/"
                
             >
@@ -628,7 +624,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/es/"
                
             >
@@ -636,7 +632,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sv/"
                
             >
@@ -644,7 +640,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ta/"
                
             >
@@ -652,7 +648,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/tr/"
                
             >
@@ -660,7 +656,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/uk_UA/"
                
             >
@@ -668,7 +664,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/uz/"
                
             >
@@ -676,7 +672,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/vi/"
                
             >
@@ -687,38 +683,46 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
       </dl>
     </div>
     <div class="rst-other-versions">
-      <dl>
-        <dt>☁️ Versions</dt>
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              36 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
                
             >
               35 (latest)
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+          <dd>
+            <a href="https://docs.nextcloud.com/server/34/user_manual"
                
             >
               34 (stable)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/33/user_manual"
                
             >
-              33
+              33 (stable)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
-              32
+              32 (stable)
             </a>
           </dd>
         
