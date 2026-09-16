@@ -32,7 +32,27 @@ Removed front-end APIs and libraries
 Removed back-end APIs
 ---------------------
 
-- TBD
+Removed legacy hooks
+^^^^^^^^^^^^^^^^^^^^
+
+Hooks were the predecessor of the current Nextcloud event system.
+They were deprecated in Nextcloud 17 in favor of the event system in general
+and specific hooks based on when a replacement event was available.
+With Nextcloud 36 the following hooks were removed,
+if your app relies on them please migrate to the replacement event.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 55 45
+
+   * - Hook
+     - Replacement event
+   * - ``\OC\Core\LostPassword\Controller\LostController::pre_passwordReset``
+     - ``OC\Core\Events\BeforePasswordResetEvent``
+   * - ``\OC\Core\LostPassword\Controller\LostController::post_passwordReset``
+     - ``OC\Core\Events\PasswordResetEvent``
+   * - ``\OCP\Versions::rollback``
+     - ``OCA\Files_Versions\Events\VersionRestoredEvent``
 
 Unified sharing
 ---------------
