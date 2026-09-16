@@ -14,6 +14,7 @@ Installation and server configuration
    automatic_configuration
    selinux_configuration
    nginx
+   caddy
    harden_server
    server_tuning
 
