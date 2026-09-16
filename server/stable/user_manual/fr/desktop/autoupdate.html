@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Automatic Updater &mdash; Nextcloud 34 User Manual</title>
+  <title>L’agent de mise à jour automatique &mdash; Nextcloud 35 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
-    <link rel="next" title="Update channels" href="updatechannel.html" />
+    <link rel="next" title="Canaux de mise à jour" href="updatechannel.html" />
     <link rel="prev" title="Environment Variables" href="envvars.html" />
    
   
@@ -71,9 +71,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Manuel utilisateur de Nextcloud 34 : Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Manuel utilisateur de Nextcloud 35 : Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Utilisation de l’application Activité</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Fichiers &amp; synchronisation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
@@ -82,26 +82,27 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Désinstallation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html">Using the Synchronization Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html">Fonctionnement du client de synchronisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">The Automatic Updater</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#basic-workflow">Basic Workflow</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">L’agent de mise à jour automatique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-workflow">Processus de base</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#macos">macOS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#macos">Cas des systèmes sous macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linux">Cas des systèmes sous Linux</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#preventing-automatic-updates">Preventing Automatic Updates</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#preventing-automatic-updates-in-windows-environments">Preventing Automatic Updates in Windows Environments</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#preventing-automatic-updates-in-linux-environments">Preventing Automatic Updates in Linux Environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preventing-automatic-updates">Désactiver les mises à jour automatiques</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#preventing-automatic-updates-in-windows-environments">Désactiver les mises à jour automatiques en environnement Windows administré</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preventing-automatic-updates-in-linux-environments">Désactiver les mises à jour automatiques dans les environnements Linux administrés</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Canaux de mise à jour</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Conflits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html">FAQ</a></li>
 </ul>
@@ -118,7 +119,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../contents.html">Nextcloud 34 User Manual</a>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -127,7 +128,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
-      <li class="breadcrumb-item active">The Automatic Updater</li>
+      <li class="breadcrumb-item active">L’agent de mise à jour automatique</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/autoupdate.rst" class="fa fa-github"> Éditer sur GitHub</a>
       </li>
@@ -138,109 +139,75 @@
            <div itemprop="articleBody">
              
   <section id="the-automatic-updater">
-<h1>The Automatic Updater<a class="headerlink" href="#the-automatic-updater" title="Lien vers cette rubrique"></a></h1>
-<p>The Automatic Updater ensures that you always have the
-latest features and bug fixes for your Nextcloud synchronization client.</p>
-<p>The Automatic Updater updates only on macOS and Windows computers; Linux
-users only need to use their normal package managers. However, on Linux systems
-the Updater will check for updates and notify you when a new version is
-available.</p>
+<h1>L’agent de mise à jour automatique<a class="headerlink" href="#the-automatic-updater" title="Lien vers cette rubrique"></a></h1>
+<p>Le rôle de l’agent de mise à jour automatique est de faire en sorte que votre client de synchronisation Nextcloud dispose des dernières corrections et nouvelles fonctionnalités.</p>
+<p>L’agent de mise à jour n’opère que dans les systèmes sous MacOS ou Windows. Les usagers de Linux doivent utiliser leurs gestionnaires de packages habituels. Néanmoins, sur les systèmes sous Linux, l’agent de mise à jour recherchera la présence de mises à jour et vous préviendra en cas de nouvelle version.</p>
 <section id="basic-workflow">
-<h2>Basic Workflow<a class="headerlink" href="#basic-workflow" title="Lien vers cette rubrique"></a></h2>
-<p>The following sections describe how to use the Automatic Updater on different
-operating systems.</p>
+<h2>Processus de base<a class="headerlink" href="#basic-workflow" title="Lien vers cette rubrique"></a></h2>
+<p>Les sections suivantes expliquent la mise en oeuvre de l’agent de mise à jour automatique sur différents systèmes d’exploitation.</p>
 <section id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Lien vers cette rubrique"></a></h3>
-<p>The Nextcloud client checks for updates and downloads them when available. You
-can view the update status under <code class="docutils literal notranslate"><span class="pre">Settings</span> <span class="pre">-&gt;</span> <span class="pre">General</span> <span class="pre">-&gt;</span> <span class="pre">Updates</span></code> in the
-Nextcloud client.</p>
-<p>If an update is available, and has been successfully downloaded, the Nextcloud
-client starts a silent update prior to its next launch and then restarts
-itself. Should the silent update fail, the client offers a manual download.</p>
+<p>L’agent de mise à jour Nextcloud recherche la présence des mises à jour et les télécharge lorsqu’elles sont disponibles. L’état des mises à jour est consultable dans le client Nextcloud, dans la rubrique « Paramètres -&gt; Général -&gt; Mises à jour ».</p>
+<p>Quand une mise à jour est disponible et a été téléchargée avec succès par le client Nextcloud, une mise à jour en arrière-plan est démarrée avant son prochain démarrage, et il redémarre automatiquement ensuite. En cas d’échec de la mise à jour en arrière-plan, le client Nextcloud propose d’effectuer un téléchargement manuel.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Administrative privileges are required to perform the update.</p>
+<p>Des droits d’administrateur sont nécessaires pour effectuer la mise à jour.</p>
 </div>
 </section>
 <section id="macos">
-<h3>macOS<a class="headerlink" href="#macos" title="Lien vers cette rubrique"></a></h3>
-<p>The macOS client has an autoupdater which uses the Sparkle framework.
-This autoupdater is bundled into the client App Bundle and checks for updates
-on launch, notifying you if an update is available. This will present a pop-up
-that can let you automatically download and install the latest client update
-with one click.</p>
-<p>In versions of the client where the Sparkle-based autoupdater is not bundled,
-a clickable notification will appear informing of an update being available.
-Upon clicking on said notification, the download page for the latest version
-of the client will be opened in the system’s web browser.</p>
-<p>Like on other systems, you can view the update status under
-<code class="docutils literal notranslate"><span class="pre">Settings</span> <span class="pre">-&gt;</span> <span class="pre">General</span> <span class="pre">-&gt;</span> <span class="pre">Updates</span></code> in the Nextcloud client.</p>
+<h3>Cas des systèmes sous macOS<a class="headerlink" href="#macos" title="Lien vers cette rubrique"></a></h3>
+<p>Le client macOS dispose d’un agent de mise à jour automatique qui utilise le framework Sparkle. Cet agent est intégré au paquet d’application du client et vérifie la présence de mises à jour au démarrage, vous avertissant dès qu’une mise à jour est disponible. Une fenêtre contextuelle s’ouvre alors, vous invitant en un seul clic à télécharger et à installer automatiquement la dernière mise à jour du client.</p>
+<p>Dans les versions du client où l’agent de mise à jour automatique basé sur Sparkle n’a pas été intégré, une notification s’affichera afin de signaler qu’une mise à jour est disponible. Cliquer sur cette notification ouvrira, dans le navigateur Web du système, la page de téléchargement de la dernière version du client.</p>
+<p>Comme sur les systèmes sous d’autres OS, l’état de mise à jour du client Nextcloud, est consultable dans la rubrique « Paramètres -&gt; Général -&gt; Mises à jour ».</p>
 </section>
 <section id="linux">
-<h3>Linux<a class="headerlink" href="#linux" title="Lien vers cette rubrique"></a></h3>
-<p>Linux distributions provide their own update tools, so Nextcloud clients that use
-the Linux operating system do not perform any updates on their own. The client
-will inform you (<code class="docutils literal notranslate"><span class="pre">Settings</span> <span class="pre">-&gt;</span> <span class="pre">General</span> <span class="pre">-&gt;</span> <span class="pre">Updates</span></code>) when an update is
-available.</p>
+<h3>Cas des systèmes sous Linux<a class="headerlink" href="#linux" title="Lien vers cette rubrique"></a></h3>
+<p>Les distributions Linux fournissent leurs propres outils de mise à jour; par conséquent, les clients Nextcloud pour l’OS Linux n’effectuent de manière autonome aucune mise à jour. Le client vous informera (dans la rubrique « Paramètres -&gt; Général -&gt; Mises à jour « ) dès qu’une mise à jour sera disponible.</p>
 </section>
 </section>
 <section id="preventing-automatic-updates">
-<h2>Preventing Automatic Updates<a class="headerlink" href="#preventing-automatic-updates" title="Lien vers cette rubrique"></a></h2>
-<p>In controlled environments, such as companies or universities, you might not
-want to enable the auto-update mechanism, as it interferes with controlled
-deployment tools and policies. To address this case, it is possible to disable
-the auto-updater entirely.  The following sections describe how to disable the
-auto-update mechanism for different operating systems.</p>
+<h2>Désactiver les mises à jour automatiques<a class="headerlink" href="#preventing-automatic-updates" title="Lien vers cette rubrique"></a></h2>
+<p>Dans des environnements administrés, tels qu’en entreprise ou en université, il peut être préférable de désactiver le mécanisme de mise à jour automatique, car celui-ci peut interférer avec les outils et les politiques générales de déploiement. Pour cela, il a été rendu possible de désactiver complètement le programme de mise à jour automatique. Les sections suivantes décrivent comment désactiver le mécanisme de mise à jour automatique pour différents systèmes d’exploitation.</p>
 <section id="preventing-automatic-updates-in-windows-environments">
-<h3>Preventing Automatic Updates in Windows Environments<a class="headerlink" href="#preventing-automatic-updates-in-windows-environments" title="Lien vers cette rubrique"></a></h3>
-<p>Users may disable automatic updates by adding this line to the [General]
-section of their <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code> files:</p>
+<h3>Désactiver les mises à jour automatiques en environnement Windows administré<a class="headerlink" href="#preventing-automatic-updates-in-windows-environments" title="Lien vers cette rubrique"></a></h3>
+<p>On désactivera les mises à jour automatiques en ajoutant cette ligne à la section [General] du fichier <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code> des utilisateurs:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skipUpdateCheck</span><span class="o">=</span><span class="n">true</span>
 </pre></div>
 </div>
-<p>Windows administrators have more options for preventing automatic updates in
-Windows environments by using one of two methods. The first method allows users
-to override the automatic update check mechanism, whereas the second method
-prevents any manual overrides.</p>
-<p>To prevent automatic updates, but allow manual overrides:</p>
+<p>Les administrateurs disposent d’autres options pour désactiver les mises à jour automatiques en environnement Windows, et pourront utiliser l’une des deux méthodes suivantes. La première méthode permet un contournement du mécanisme automatique de vérification des mises à jour, tandis que la seconde interdit toute modification manuelle.</p>
+<p>Méthode 1  -  désactiver les mises à jour automatiques tout en autorisant les mises à jour manuelles :</p>
 <ol class="arabic">
-<li><p>Edit this Registry key:</p>
+<li><p>Modifiez cette clé de registre :</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code></p>
 </div></blockquote>
 </li>
-<li><p>Add the key <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> (of type DWORD).</p></li>
-<li><p>Specify a value of <code class="docutils literal notranslate"><span class="pre">1</span></code> to the machine.</p></li>
+<li><p>Insérer la clé « skipUpdateCheck » (de type DWORD).</p></li>
+<li><p>Attribuez la valeur « 1 » à la clef.</p></li>
 </ol>
-<p>To manually override this key, use the same value in <code class="docutils literal notranslate"><span class="pre">HKEY_CURRENT_USER</span></code>.</p>
-<p>To prevent automatic updates and disallow manual overrides:</p>
+<p>Pour permettre de contourner manuellement cette clé, attribuez la même valeur dans « HKEY_CURRENT_USER ».</p>
+<p>Méthode 2 - désactiver les mises à jour automatiques et inetrdire toute modification manuelle :</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This is the preferred method of controlling the updater behavior using
-Group Policies.</p>
+<p>Il s’agit de la méthode recommandée pour permettre de contrôler le comportement de l’agent de mise à jour automatique au moyen des stratégies de groupe.</p>
 </div>
 <ol class="arabic">
-<li><p>Edit this Registry key:</p>
+<li><p>Modifiez cette clé de registre :</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Policies\Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code></p>
 </div></blockquote>
 </li>
-<li><p>Add the key <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> (of type DWORD).</p></li>
-<li><p>Specify a value of <code class="docutils literal notranslate"><span class="pre">1</span></code> to the machine.</p></li>
+<li><p>Insérer la clé « skipUpdateCheck » (de type DWORD).</p></li>
+<li><p>Attribuez la valeur « 1 » à la clef.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Branded clients use a different key in place of
-<code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code> that matches the branded application vendor and
-name.</p>
+<p>Les clients de synchronisation personnalisés utilisent une clé de registre différente à la place de « Nextcloud GmbHNextcloud », qui correspond généralement au nom et à l’éditeur de l’application personnalisée.</p>
 </div>
 </section>
 <section id="preventing-automatic-updates-in-linux-environments">
-<h3>Preventing Automatic Updates in Linux Environments<a class="headerlink" href="#preventing-automatic-updates-in-linux-environments" title="Lien vers cette rubrique"></a></h3>
-<p>Because the Linux client does not provide automatic updating functionality, there is no
-need to remove the automatic-update check.  However, if you want to disable it edit your desktop
-client configuration file, <code class="docutils literal notranslate"><span class="pre">$HOME/.config/Nextcloud/nextcloud.cfg</span></code>.
-Add this line to the [General] section:</p>
+<h3>Désactiver les mises à jour automatiques dans les environnements Linux administrés<a class="headerlink" href="#preventing-automatic-updates-in-linux-environments" title="Lien vers cette rubrique"></a></h3>
+<p>Étant donné que le client Linux n’offre pas la fonctionnalité de mise à jour automatique, il n’est pas indispensable de supprimer la vérification automatique des mises à jour. Toutefois, si vous souhaitiez désactiver celle-ci, modifiez le fichier de configuration de votre client de bureau, <code class="docutils literal notranslate"><span class="pre">$HOME/.config/Nextcloud/nextcloud.cfg</span></code>. Ajoutez cette ligne à la section [General] :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skipUpdateCheck</span><span class="o">=</span><span class="n">true</span>
 </pre></div>
 </div>
@@ -253,7 +220,7 @@ Add this line to the [General] section:</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
         <a href="envvars.html" class="btn btn-neutral float-left" title="Environment Variables" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
-        <a href="updatechannel.html" class="btn btn-neutral float-right" title="Update channels" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="updatechannel.html" class="btn btn-neutral float-right" title="Canaux de mise à jour" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -372,14 +339,14 @@ Add this line to the [General] section:</p>
             aria-controls="rst-other-versions-user">
       🌐 French
       <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ 34
+       ☁️ 35
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
-      <dl>
-        <dt>🌐 Langues</dt>
+      <dl class="nc-languages-list">
+        <dt>Langues</dt>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ar/"
                
             >
@@ -387,7 +354,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/br/"
                
             >
@@ -395,7 +362,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ca/"
                
             >
@@ -403,7 +370,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_CN/"
                
             >
@@ -411,7 +378,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_HK/"
                
             >
@@ -419,7 +386,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_TW/"
                
             >
@@ -427,7 +394,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/cs/"
                
             >
@@ -435,7 +402,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/da/"
                
             >
@@ -443,7 +410,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nl/"
                
             >
@@ -451,7 +418,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/en/"
                
             >
@@ -459,7 +426,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/fi_FI/"
                
             >
@@ -467,7 +434,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/fr/"
                
                style="color: var(--dark-link-color);"
@@ -477,7 +444,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/gl/"
                
             >
@@ -485,7 +452,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/de/"
                
             >
@@ -493,7 +460,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/el/"
                
             >
@@ -501,7 +468,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/hu_HU/"
                
             >
@@ -509,7 +476,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/id/"
                
             >
@@ -517,7 +484,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ga/"
                
             >
@@ -525,7 +492,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/it/"
                
             >
@@ -533,7 +500,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ja_JP/"
                
             >
@@ -541,7 +508,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ko/"
                
             >
@@ -549,7 +516,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/lo/"
                
             >
@@ -557,7 +524,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/lt/"
                
             >
@@ -565,7 +532,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -573,7 +540,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nb_NO/"
                
             >
@@ -581,7 +548,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nn/"
                
             >
@@ -589,7 +556,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pl/"
                
             >
@@ -597,7 +564,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pt_PT/"
                
             >
@@ -605,7 +572,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pt_BR/"
                
             >
@@ -613,7 +580,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ro/"
                
             >
@@ -621,7 +588,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ru/"
                
             >
@@ -629,7 +596,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/si/"
                
             >
@@ -637,7 +604,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sk_SK/"
                
             >
@@ -645,7 +612,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sr/"
                
             >
@@ -653,7 +620,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/es/"
                
             >
@@ -661,7 +628,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sv/"
                
             >
@@ -669,7 +636,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ta/"
                
             >
@@ -677,7 +644,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/tr/"
                
             >
@@ -685,7 +652,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/uk_UA/"
                
             >
@@ -693,7 +660,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/uz/"
                
             >
@@ -701,7 +668,7 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/vi/"
                
             >
@@ -712,38 +679,46 @@ Add this line to the [General] section:</p>
       </dl>
     </div>
     <div class="rst-other-versions">
-      <dl>
-        <dt>☁️ Versions</dt>
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              36 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
                
             >
               35 (latest)
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+          <dd>
+            <a href="https://docs.nextcloud.com/server/34/user_manual"
                
             >
               34 (stable)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/33/user_manual"
                
             >
-              33
+              33 (stable)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
-              32
+              32 (stable)
             </a>
           </dd>
         

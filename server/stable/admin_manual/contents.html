@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Table of contents &mdash; Nextcloud 34 Administration Manual</title>
+  <title>Table of contents &mdash; Nextcloud 35 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -101,6 +101,7 @@
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apps_management_api.html">Apps management API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exapps_management/index.html">ExApps management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ai/index.html">Artificial Intelligence</a></li>
 </ul>
@@ -148,7 +149,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">Nextcloud 34 Administration Manual</a>
+          <a href="#">Nextcloud 35 Administration Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -261,6 +262,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes/index.html">Critical changes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="release_notes/index.html#critical-changes">Critical changes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release_notes/upgrade_to_35.html">Upgrade to Nextcloud 35</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="release_notes/upgrade_to_35.html#system-requirements">System requirements</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="release_notes/upgrade_to_33.html">Upgrade to Nextcloud 33</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="release_notes/upgrade_to_33.html#system-requirements">System requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="release_notes/upgrade_to_33.html#previews">Previews</a></li>
@@ -418,15 +423,21 @@
 <li class="toctree-l3"><a class="reference internal" href="installation/installation_wizard.html#trusted-domains">Trusted domains</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="installation/command_line_installation.html">Installing from command line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation/automatic_configuration.html">Automatic setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation/command_line_installation.html">Install from the command line</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation/command_line_installation.html#encrypted-database-connection">Encrypted database connection</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation/automatic_configuration.html">Automated installation with <code class="docutils literal notranslate"><span class="pre">autoconfig.php</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="installation/automatic_configuration.html#parameters">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation/automatic_configuration.html#automatic-configurations-examples">Automatic configurations examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation/automatic_configuration.html#encrypted-database-connection">Encrypted database connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/automatic_configuration.html#examples">Examples</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="installation/automatic_configuration.html#data-directory">Data Directory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation/automatic_configuration.html#sqlite-database">SQLite database</a></li>
-<li class="toctree-l4"><a class="reference internal" href="installation/automatic_configuration.html#mysql-database">MySQL database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation/automatic_configuration.html#mysql-mariadb-database">MySQL / MariaDB database</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation/automatic_configuration.html#postgresql-database">PostgreSQL database</a></li>
-<li class="toctree-l4"><a class="reference internal" href="installation/automatic_configuration.html#all-parameters">All parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation/automatic_configuration.html#encrypted-mysql-mariadb-connection">Encrypted MySQL / MariaDB connection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation/automatic_configuration.html#encrypted-postgresql-connection">Encrypted PostgreSQL connection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation/automatic_configuration.html#complete-non-interactive-setup">Complete non-interactive setup</a></li>
 </ul>
 </li>
 </ul>
@@ -455,6 +466,8 @@
 <li class="toctree-l4"><a class="reference internal" href="installation/nginx.html#javascript-js-or-css-css-files-not-served-properly">JavaScript (.js) or CSS (.css) files not served properly</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation/nginx.html#upload-of-files-greater-than-10-mib-fails">Upload of files greater than 10 MiB fails</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation/nginx.html#login-loop-without-any-clue-in-access-log-error-log-nor-nextcloud-log">Login loop without any clue in access.log, error.log, nor nextcloud.log</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation/nginx.html#trusted-proxy-not-detected-when-using-a-unix-domain-socket">Trusted proxy not detected when using a Unix domain socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation/nginx.html#access-through-untrusted-domain-error-with-http-3">“Access through untrusted domain” error with HTTP/3</a></li>
 </ul>
 </li>
 </ul>
@@ -580,6 +593,7 @@
 <li class="toctree-l4"><a class="reference internal" href="configuration_database/linux_database_configuration.html#configuring-a-mysql-or-mariadb-database">Configuring a MySQL or MariaDB database</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_database/linux_database_configuration.html#ssl-for-mysql-database">SSL for MySQL Database</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_database/linux_database_configuration.html#postgresql-database">PostgreSQL database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_database/linux_database_configuration.html#ssl-for-postgresql-database">SSL for PostgreSQL database</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_database/linux_database_configuration.html#troubleshooting">Troubleshooting</a><ul>
@@ -818,7 +832,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#comments">Comments</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#comments-managerfactory">comments.managerFactory</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#systemtags-managerfactory">systemtags.managerFactory</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#maintenance">Maintenance</a><ul>
@@ -1065,7 +1078,13 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/caching_configuration.html#apcu">APCu</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration_server/caching_configuration.html#redis">Redis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration_server/caching_configuration.html#redis-valkey-using-the-nextcloud-keyvaluecache">Redis / Valkey using the Nextcloud <code class="docutils literal notranslate"><span class="pre">KeyValueCache</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/caching_configuration.html#keyvaluecache-configuration-in-nextcloud-config-php">KeyValueCache configuration in Nextcloud (config.php)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/caching_configuration.html#connecting-over-tls">Connecting over TLS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/caching_configuration.html#connecting-over-unix-socket">Connecting over UNIX socket</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_server/caching_configuration.html#redis-using-the-phpredis-php-extension">Redis using the phpredis PHP extension</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/caching_configuration.html#redis-configuration-in-nextcloud-config-php">Redis configuration in Nextcloud (config.php)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/caching_configuration.html#connecting-to-single-redis-server-over-tcp">Connecting to single Redis server over TCP</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/caching_configuration.html#connecting-to-single-redis-server-over-tls">Connecting to single Redis server over TLS</a></li>
@@ -1185,6 +1204,7 @@
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/reverse_proxy_configuration.html#examples">Examples</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/reverse_proxy_configuration.html#nextcloud-behind-a-reverse-proxy-subdirectory">Nextcloud behind a reverse proxy (subdirectory)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/reverse_proxy_configuration.html#nextcloud-accessible-via-multiple-domains-conditional-overwrite">Nextcloud accessible via multiple domains / conditional overwrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/reverse_proxy_configuration.html#multiple-trusted-domains-and-share-link-urls">Multiple trusted domains and share link URLs</a></li>
 </ul>
 </li>
 </ul>
@@ -1283,6 +1303,7 @@
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="occ_database.html#schema-inspection">Schema inspection</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="occ_database.html#db-schema-check">db:schema:check</a></li>
 <li class="toctree-l6"><a class="reference internal" href="occ_database.html#db-schema-export">db:schema:export</a></li>
 <li class="toctree-l6"><a class="reference internal" href="occ_database.html#db-schema-expected">db:schema:expected</a></li>
 </ul>
@@ -1349,6 +1370,8 @@
 <li class="toctree-l5"><a class="reference internal" href="occ_files.html#files-mount-refresh">files:mount:refresh</a></li>
 <li class="toctree-l5"><a class="reference internal" href="occ_files.html#files-move">files:move</a></li>
 <li class="toctree-l5"><a class="reference internal" href="occ_files.html#files-put">files:put</a></li>
+<li class="toctree-l5"><a class="reference internal" href="occ_files.html#files-mkdir">files:mkdir</a></li>
+<li class="toctree-l5"><a class="reference internal" href="occ_files.html#files-touch">files:touch</a></li>
 <li class="toctree-l5"><a class="reference internal" href="occ_files.html#files-reminders">files:reminders</a></li>
 <li class="toctree-l5"><a class="reference internal" href="occ_files.html#files-repair-tree">files:repair-tree</a></li>
 <li class="toctree-l5"><a class="reference internal" href="occ_files.html#files-sanitize-filenames">files:sanitize-filenames</a></li>
@@ -1516,7 +1539,9 @@
 <li class="toctree-l5"><a class="reference internal" href="occ_system.html#background-cron">background:cron</a></li>
 <li class="toctree-l5"><a class="reference internal" href="occ_system.html#background-job-delete">background-job:delete</a></li>
 <li class="toctree-l5"><a class="reference internal" href="occ_system.html#background-job-execute">background-job:execute</a></li>
+<li class="toctree-l5"><a class="reference internal" href="occ_system.html#background-job-history">background-job:history</a></li>
 <li class="toctree-l5"><a class="reference internal" href="occ_system.html#background-job-list">background-job:list</a></li>
+<li class="toctree-l5"><a class="reference internal" href="occ_system.html#background-job-running">background-job:running</a></li>
 <li class="toctree-l5"><a class="reference internal" href="occ_system.html#background-job-worker">background-job:worker</a></li>
 </ul>
 </li>
@@ -1742,7 +1767,13 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_files/external_storage_configuration_gui.html#allow-users-to-mount-external-storage">Allow Users to Mount External Storage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration_files/external_storage_configuration_gui.html#adding-files-to-external-storage">Adding files to external storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_files/external_storage_configuration_gui.html#detecting-changes-made-outside-nextcloud">Detecting changes made outside Nextcloud</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration_files/external_storage_configuration_gui.html#how-the-filesystem-check-frequency-option-works">How the “Filesystem check frequency” option works</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_files/external_storage_configuration_gui.html#why-desktop-clients-miss-deep-changes">Why desktop clients miss deep changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_files/external_storage_configuration_gui.html#how-to-make-external-changes-reliably-detectable">How to make external changes reliably detectable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_files/external_storage_configuration_gui.html#limitation-renames-are-not-detected-reliably">Limitation: renames are not detected reliably</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_files/external_storage_configuration_gui.html#troubleshooting-file-name-encoding">Troubleshooting File Name Encoding</a></li>
 </ul>
 </li>
@@ -1863,7 +1894,11 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="configuration_files/files_locking_transactional.html">Transactional file locking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration_files/files_locking_transactional.html">Transactional file locking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration_files/files_locking_transactional.html#using-the-nextcloud-keyvaluecache-cache">Using the Nextcloud <code class="docutils literal notranslate"><span class="pre">KeyValueCache</span></code> cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_files/files_locking_transactional.html#using-the-redis-cache-with-the-phpredis-php-module">Using the Redis cache with the phpredis PHP module</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="configuration_files/previews_configuration.html">Previews configuration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="configuration_files/previews_configuration.html#parameters">Parameters</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="configuration_files/previews_configuration.html#disabling-previews">Disabling previews:</a></li>
@@ -1955,6 +1990,29 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="apps_management_api.html">Apps management API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apps_management_api.html#get-list-of-apps">Get list of apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apps_management_api.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apps_management_api.html#xml-output">XML output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apps_management_api.html#get-app-info">Get app info</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apps_management_api.html#id1">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apps_management_api.html#id2">XML output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apps_management_api.html#enable-an-app">Enable an app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apps_management_api.html#id3">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apps_management_api.html#id4">XML output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apps_management_api.html#disable-an-app">Disable an app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apps_management_api.html#id5">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apps_management_api.html#id6">XML output</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="exapps_management/index.html">ExApps management</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="exapps_management/AppAPIAndExternalApps.html">AppAPI and External Apps</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="exapps_management/AppAPIAndExternalApps.html#installing-appapi">Installing AppAPI</a></li>
@@ -1986,6 +2044,12 @@
 <li class="toctree-l5"><a class="reference internal" href="exapps_management/DeployConfigurations.html#docker-socket-proxy-security">Docker Socket Proxy security</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="exapps_management/DeployConfigurations.html#container-log-rotation">Container log rotation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="exapps_management/DeployConfigurations.html#docker">Docker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="exapps_management/DeployConfigurations.html#podman">Podman</a></li>
+<li class="toctree-l4"><a class="reference internal" href="exapps_management/DeployConfigurations.html#kubernetes">Kubernetes</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="exapps_management/DeployConfigurations.html#nc-to-exapp-communication">NC to ExApp Communication</a></li>
@@ -2110,6 +2174,11 @@
 <li class="toctree-l5"><a class="reference internal" href="ai/overview.html#id86">Backend apps</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="ai/overview.html#optical-character-recognition">Optical Character Recognition</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ai/overview.html#id87">Frontend apps</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ai/overview.html#id89">Backend apps</a></li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="ai/overview.html#windmill-workflows">Windmill workflows</a></li>
 </ul>
 </li>
@@ -2135,6 +2204,7 @@
 <li class="toctree-l4"><a class="reference internal" href="ai/app_assistant.html#text-to-image">Text-To-Image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_assistant.html#context-chat">Context Chat</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_assistant.html#chat">Chat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/app_assistant.html#multimodal-chat">Multimodal chat</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_assistant.html#voice-chat">Voice Chat</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_assistant.html#context-agent">Context Agent</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_assistant.html#text-to-speech">Text-To-Speech</a></li>
@@ -2167,6 +2237,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ai/app_llm2.html">App: Local large language model (llm2)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai/app_llm2.html#multimodal-chat">Multimodal chat</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ai/app_llm2.html#multilinguality">Multilinguality</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ai/app_llm2.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ai/app_llm2.html#installation">Installation</a><ul>
@@ -2256,15 +2327,16 @@
 <li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#calendar-tools">Calendar tools</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#tasks-tools">Tasks tools</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#circles-teams-tools">Circles/teams tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#collectives-tools-require-collectives">Collectives tools (require Collectives)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#contacts-tools">Contacts tools</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#cookbook-tools">Cookbook tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#deck-tools">Deck tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#deck-tools-require-deck">Deck tools (require Deck)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#files-tools">Files tools</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#forms-tools">Forms tools</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#bookmarks-tools">Bookmarks tools</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#search-tools">Search tools</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#share-tools">Share tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#talk-tools">Talk tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#talk-tools-require-talk">Talk tools (require Talk)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#mail-tools-require-mail">Mail tools (require Mail)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_context_agent.html#miscellaneous-tools">Miscellaneous tools</a></li>
 </ul>
@@ -2316,6 +2388,15 @@
 <li class="toctree-l3"><a class="reference internal" href="ai/app_live_transcription.html#app-store">App store</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ai/app_live_transcription.html#repository">Repository</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ai/app_live_transcription.html#limitations">Limitations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai/app_ocr_paddle.html">App: Local Optical Character Recognition (ocr_paddle)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai/app_ocr_paddle.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/app_ocr_paddle.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/app_ocr_paddle.html#scaling">Scaling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/app_ocr_paddle.html#app-store">App store</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/app_ocr_paddle.html#repository">Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/app_ocr_paddle.html#known-limitations">Known Limitations</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ai/ai_as_a_service.html">AI as a Service</a><ul>
@@ -2559,29 +2640,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="configuration_user/instruction_set_for_apps.html">Instruction set for apps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="configuration_user/instruction_set_for_apps.html#get-list-of-apps">Get list of apps</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="configuration_user/instruction_set_for_apps.html#example">Example</a></li>
-<li class="toctree-l5"><a class="reference internal" href="configuration_user/instruction_set_for_apps.html#xml-output">XML output</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="configuration_user/instruction_set_for_apps.html#get-app-info">Get app info</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="configuration_user/instruction_set_for_apps.html#id1">Example</a></li>
-<li class="toctree-l5"><a class="reference internal" href="configuration_user/instruction_set_for_apps.html#id2">XML output</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="configuration_user/instruction_set_for_apps.html#enable-an-app">Enable an app</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="configuration_user/instruction_set_for_apps.html#id3">Example</a></li>
-<li class="toctree-l5"><a class="reference internal" href="configuration_user/instruction_set_for_apps.html#id4">XML output</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="configuration_user/instruction_set_for_apps.html#disable-an-app">Disable an app</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="configuration_user/instruction_set_for_apps.html#id5">Example</a></li>
-<li class="toctree-l5"><a class="reference internal" href="configuration_user/instruction_set_for_apps.html#id6">XML output</a></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuration_user/profile_configuration.html">Profiles</a><ul>
@@ -2649,6 +2707,20 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="desktop/massdeployment.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="desktop/restrictaccess.html">Block desktop client access at the HTTP layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="desktop/restrictaccess.html#identify-desktop-client-requests">Identify desktop client requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="desktop/restrictaccess.html#choose-the-policy">Choose the policy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="desktop/restrictaccess.html#block-every-standard-desktop-client">Block every standard desktop client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="desktop/restrictaccess.html#block-releases-older-than-34-0-2">Block releases older than 34.0.2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="desktop/restrictaccess.html#nginx">nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="desktop/restrictaccess.html#apache-http-server-2-4">Apache HTTP Server 2.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="desktop/restrictaccess.html#caddy-2">Caddy 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="desktop/restrictaccess.html#haproxy">HAProxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="desktop/restrictaccess.html#verify-the-rule">Verify the rule</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="desktop/troubleshooting.html">Troubleshooting</a><ul>
@@ -2763,6 +2835,7 @@
 <li class="toctree-l3"><a class="reference internal" href="groupware/mail.html#thread-summary">Thread Summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="groupware/mail.html#follow-up-reminders">Follow-up reminders</a></li>
 <li class="toctree-l3"><a class="reference internal" href="groupware/mail.html#translation">Translation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="groupware/mail.html#user-migration">User migration</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="groupware/out_of_office.html">Out-of-office feature</a></li>
@@ -2800,34 +2873,95 @@
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="office/index.html">Office</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="office/installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="office/configuration.html">Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="office/configuration.html#nextcloud-office-app-settings">Nextcloud Office App Settings</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#collabora-online-server">Collabora Online Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#restrict-usage-to-specific-groups">Restrict usage to specific groups</a></li>
-<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#restrict-edit-to-specific-groups">Restrict edit to specific groups</a></li>
-<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#use-ooxml-by-default-for-new-files">Use OOXML by default for new files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#enable-access-for-external-apps">Enable access for external apps</a></li>
-<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#canonical-webroot">Canonical webroot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="office/euro-office/index.html">Nextcloud Office</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="office/euro-office/installation.html">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_ubuntu.html">Installing on Ubuntu 24.04 LTS</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#system-requirements">System requirements</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-1-install-prerequisites">Step 1 — Install prerequisites</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-2-create-the-database">Step 2 — Create the database</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-3-pre-seed-the-installer-answers">Step 3 — Pre-seed the installer answers</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-4-download-the-package">Step 4 — Download the package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-5-install-the-package">Step 5 — Install the package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-6-verify">Step 6 — Verify</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#updating">Updating</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#uninstalling">Uninstalling</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="office/configuration.html#additional-configuration-options">Additional configuration options</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#previews">Previews</a></li>
-<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#custom-fonts">Custom fonts</a></li>
-<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#secure-view-settings">Secure view settings</a></li>
-<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#id1">Wopi configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_debian.html">Installing on Debian 12</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#system-requirements">System requirements</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#step-1-enable-the-contrib-component">Step 1 — Enable the contrib component</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#step-2-install-prerequisites">Step 2 — Install prerequisites</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#step-3-create-the-database">Step 3 — Create the database</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#step-4-pre-seed-the-installer-answers">Step 4 — Pre-seed the installer answers</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#step-5-download-the-package">Step 5 — Download the package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#step-6-install-the-package">Step 6 — Install the package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#step-7-verify">Step 7 — Verify</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#updating">Updating</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#uninstalling">Uninstalling</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_docker.html">Installing via Docker</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#quick-start">Quick start</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#image-tags">Image tags</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#persistent-data">Persistent data</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#environment-variables">Environment variables</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#updating">Updating</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#uninstalling">Uninstalling</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="office/migration.html">Migration from Collabora Online</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="office/migration.html#update-the-reverse-proxy-configuration">Update the reverse proxy configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="office/migration.html#upgrade-distribution-packages">Upgrade distribution packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="office/migration.html#upgrade-the-docker-image">Upgrade the docker image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="office/euro-office/configuration.html">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#installing-the-connector-app">Installing the connector app</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#server-settings">Server settings</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/configuration.html#advanced-server-settings">Advanced server settings</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="office/troubleshooting.html">Troubleshooting</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="office/troubleshooting.html#frequently-asked-questions">Frequently asked questions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#common-settings">Common settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#editor-customization-settings">Editor customization settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#common-templates">Common templates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#security">Security</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/configuration.html#watermarks">Watermarks</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#occ-commands">occ commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#config-php">config.php</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="office/collabora_online.html">Collabora Online</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="office/installation.html">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="office/configuration.html">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#nextcloud-office-app-settings">Nextcloud Office App Settings</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#collabora-online-server">Collabora Online Server</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#restrict-usage-to-specific-groups">Restrict usage to specific groups</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#restrict-edit-to-specific-groups">Restrict edit to specific groups</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#use-ooxml-by-default-for-new-files">Use OOXML by default for new files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#enable-access-for-external-apps">Enable access for external apps</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#canonical-webroot">Canonical webroot</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#additional-configuration-options">Additional configuration options</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#previews">Previews</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#custom-fonts">Custom fonts</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#secure-view-settings">Secure view settings</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#id1">Wopi configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="office/migration.html">Migration from Collabora Online</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="office/migration.html#update-the-reverse-proxy-configuration">Update the reverse proxy configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/migration.html#upgrade-distribution-packages">Upgrade distribution packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/migration.html#upgrade-the-docker-image">Upgrade the docker image</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="office/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="office/troubleshooting.html#frequently-asked-questions">Frequently asked questions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2907,9 +3041,13 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="maintenance/update.html">Upgrade via built-in updater</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="maintenance/update.html#what-does-the-updater-do">What does the updater do?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="maintenance/update.html#using-the-web-based-updater">Using the web based updater</a></li>
 <li class="toctree-l3"><a class="reference internal" href="maintenance/update.html#using-the-command-line-based-updater">Using the command line based updater</a></li>
 <li class="toctree-l3"><a class="reference internal" href="maintenance/update.html#batch-mode-for-command-line-based-updater">Batch mode for command line based updater</a></li>
+<li class="toctree-l3"><a class="reference internal" href="maintenance/update.html#using-a-custom-download-url">Using a custom download URL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="maintenance/update.html#signature-verification">Signature verification</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="maintenance/update.html#using-the-web-based-updater">Using the web based updater</a></li>
 <li class="toctree-l3"><a class="reference internal" href="maintenance/update.html#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
@@ -3027,42 +3165,50 @@
             data-toggle="rst-current-version"
             aria-expanded="false"
             aria-controls="rst-other-versions-admin">
-      ☁️ 34
+      ☁️ 35
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-admin" class="rst-other-versions">
-      <dl>
-        <dt>☁️ Versions</dt>
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+          >
+            36 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
              
           >
             35 (latest)
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/admin_manual"
              
           >
             34 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/33/admin_manual"
              
           >
-            33
+            33 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
-            32
+            32 (stable)
           </a>
         </dd>
         

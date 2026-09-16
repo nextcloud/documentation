@@ -127,6 +127,17 @@ button.rst-current-version {
 	background: rgba(0, 130, 201, 0.1)
 }
 
+/* kbd elements pick up the red code text color (#e74c3c) which gives
+   ~3.82:1 on white — below the 4.5:1 required by WCAG AA / BITV 9.1.4.3.
+   Override to a darker red (~5.4:1) and darken the border so the
+   key outline meets the 3:1 non-text contrast requirement. */
+.rst-content kbd,
+kbd {
+	color: #c0392b !important;
+	border-color: #767676 !important;
+	margin-block: 1px;
+}
+
 /* Inline code — RTD uses #e74c3c on white which gives ~3.82:1, below
    the 4.5:1 required by WCAG AA / BITV 9.1.4.3. Use a darker shade. */
 .rst-content code,
@@ -217,4 +228,45 @@ table.docutils {
 
 #code-style table.docutils {
 	width: 100%;
+}
+
+/* Version picker lists — 2-column grid, emoji as absolute ::before bullet */
+.rst-versions .rst-other-versions {
+	padding-left: 26px;
+}
+
+.rst-versions .rst-other-versions dl.nc-versions-list,
+.rst-versions .rst-other-versions dl.nc-languages-list {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8px;
+	padding: 6px;
+}
+
+.rst-versions .rst-other-versions dl.nc-versions-list dt,
+.rst-versions .rst-other-versions dl.nc-languages-list dt {
+	grid-column: span 2;
+	position: relative;
+	padding: 0;
+}
+
+.rst-versions .rst-other-versions dl dt::before {
+	position: absolute;
+	left: -22px;
+	height: 18px;
+	width: 18px;
+	font-size: 16px;
+	line-height: 18px;
+}
+
+.rst-versions .rst-other-versions dl.nc-versions-list dt::before {
+	content: "☁️";
+}
+
+.rst-versions .rst-other-versions dl.nc-languages-list dt::before {
+	content: "🌐";
+}
+
+.rst-versions .rst-other-versions dd a {
+	padding: 0;
 }

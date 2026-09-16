@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deprecations &mdash; Nextcloud 34 Developer Manual</title>
+  <title>Deprecations &mdash; Nextcloud 35 Developer Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -76,7 +76,9 @@
 <li class="toctree-l2"><a class="reference internal" href="new.html">New in this release</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Deprecations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#new-deprecations">New deprecations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#application-management">Application management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database">Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#events">Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-processing">Task processing</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#older-deprecations">Older deprecations</a></li>
@@ -92,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
@@ -104,7 +106,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Nextcloud 34 Developer Manual</a>
+          <a href="../index.html">Nextcloud 35 Developer Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -131,27 +133,41 @@ three years before removal, unless the breakage can not be avoided.</p>
 rules, which can fix some API changes automatically.</p>
 <section id="new-deprecations">
 <h2>New deprecations<a class="headerlink" href="#new-deprecations" title="Link to this heading"></a></h2>
-<div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>This page needs a section for every new deprecation.</p>
-</div>
+<section id="database">
+<h3>Database<a class="headerlink" href="#database" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::setChannel</span></code> is now deprecated and you need to use <code class="docutils literal notranslate"><span class="pre">\OCP\ServerVersion::setChannel</span></code> instead.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::linkToAbsolute</span></code> is now deprecated and you need to use <code class="docutils literal notranslate"><span class="pre">\OCP\IUrlGenerator::getAbsoluteUrl</span></code> and <code class="docutils literal notranslate"><span class="pre">\OCP\IUrlGenerator::linkTo</span></code> instead.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::linkToRemove</span></code> is now deprecated and you need to use <code class="docutils literal notranslate"><span class="pre">\OCP\IUrlGenerator::linkToRemote</span></code> instead.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::isPublicLinkPasswordRequired</span></code> is now deprecated and you need to use <code class="docutils literal notranslate"><span class="pre">\OCP\Share\IManager::shareApiLinkEnforcePassword</span></code> instead.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::isDefaultExpireDateEnforced</span></code> is now deprecated and you need to use <code class="docutils literal notranslate"><span class="pre">\OCP\Share\IManager::shareApiLinkDefaultExpireDateEnforced</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\DB\QueryBuilder\IFunctionBuilder::md5</span></code> is now deprecated.
+MD5 is not considered secure anymore, thus most databases have or will drop support for this SQL function.</p></li>
 </ul>
-<section id="application-management">
-<h3>Application management<a class="headerlink" href="#application-management" title="Link to this heading"></a></h3>
+</section>
+<section id="events">
+<h3>Events<a class="headerlink" href="#events" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\App::buildAppNamespace</span></code> is deprecated in favor of non-static method <code class="docutils literal notranslate"><span class="pre">\OCP\App\IAppManager::getAppNamespace</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Broadcast\Events\IBroadcastEvent</span></code> is now deprecated as it is unused.</p></li>
+</ul>
+</section>
+<section id="task-processing">
+<h3>Task processing<a class="headerlink" href="#task-processing" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousWatermarkingProvider</span></code> is now deprecated, instead use <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousOptionsAwareProvider</span></code> now.</p></li>
 </ul>
 </section>
 </section>
 <section id="older-deprecations">
 <h2>Older deprecations<a class="headerlink" href="#older-deprecations" title="Link to this heading"></a></h2>
 <p>You find all current deprecations in this section.</p>
+<ul class="simple">
+<li><p>Deprecated since Nextcloud 34</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\App::buildAppNamespace</span></code> is deprecated in favor of non-static method <code class="docutils literal notranslate"><span class="pre">\OCP\App\IAppManager::getAppNamespace</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::setChannel</span></code> is deprecated in favor of <code class="docutils literal notranslate"><span class="pre">\OCP\ServerVersion::setChannel</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::linkToAbsolute</span></code> is deprecated in favor of <code class="docutils literal notranslate"><span class="pre">\OCP\IUrlGenerator::getAbsoluteUrl</span></code> and <code class="docutils literal notranslate"><span class="pre">\OCP\IUrlGenerator::linkTo</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::linkToRemove</span></code> is deprecated in favor of <code class="docutils literal notranslate"><span class="pre">\OCP\IUrlGenerator::linkToRemote</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::isPublicLinkPasswordRequired</span></code> is deprecated in favor of <code class="docutils literal notranslate"><span class="pre">\OCP\Share\IManager::shareApiLinkEnforcePassword</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::isDefaultExpireDateEnforced</span></code> is deprecated in favor of <code class="docutils literal notranslate"><span class="pre">\OCP\Share\IManager::shareApiLinkDefaultExpireDateEnforced</span></code>.</p></li>
+</ul>
+</li>
+</ul>
 <p>Also see the older <a class="reference internal" href="previous/index.html#previous-versions"><span class="std std-ref">Release Notes</span></a> for deprecations.</p>
 </section>
 </section>
@@ -168,7 +184,7 @@ rules, which can fix some API changes automatically.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 08, 2026.
+      <span class="lastupdated">Last updated on Sep 16, 2026.
       </span></p>
   </div>
 
@@ -188,42 +204,50 @@ rules, which can fix some API changes automatically.</p>
             data-toggle="rst-current-version"
             aria-expanded="false"
             aria-controls="rst-other-versions-dev">
-      ☁️ 34
+      ☁️ 35
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-dev" class="rst-other-versions">
-      <dl>
-        <dt>☁️ Versions</dt>
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+          >
+            36 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
              
           >
             35 (latest)
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/developer_manual"
              
           >
             34 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/33/developer_manual"
              
           >
-            33
+            33 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/32/developer_manual"
              
           >
-            32
+            32 (stable)
           </a>
         </dd>
         

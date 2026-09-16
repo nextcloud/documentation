@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Использование приложения Почта &mdash; Nextcloud 34 User Manual</title>
+  <title>Использование приложения Почта &mdash; Nextcloud 35 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -71,7 +71,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 34 руководство пользователя. Введение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 35 руководство пользователя. Введение</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Использование приложения «Активность»</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
@@ -92,10 +92,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#all-inboxes">Все входящие</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#account-settings">Настройки учётной записи</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#move-messages-to-junk-folder">Переместить сообщения в папку «Спам»</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#refresh-mailbox">Обновить почтовый ящик</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refresh-folder">Refresh folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#unified-search">Единый поиск</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#search-in-mailbox">Искать в почтовом ящике</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#advanced-search-in-mailbox">Расширенный поиск в почтовом ящике</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-in-folder">Search in folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-search-in-folder">Advanced search in folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#enable-mail-body-search">Включить поиск по телу письма</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#account-delegation">Делегирование учётной записи</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#automatic-trash-deletion">Автоматическое удаление мусора</a></li>
@@ -109,10 +109,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#mention-contacts">Упоминание контактов</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#text-blocks">Текстовые блоки</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#outbox">Исходящие</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mailbox-actions">Действия с почтовым ящиком</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#add-a-mailbox">Добавить почтовый ящик</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#add-a-submailbox">Добавить дополнительный почтовый ящик</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#shared-mailbox">Общий почтовый ящик</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#folder-actions">Folder actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-folder">Add a folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-subfolder">Add a subfolder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-folder">Shared folder</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#envelope-actions">Действия с конвертом</a><ul>
@@ -162,6 +162,7 @@
 <li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Синхронизация с KDE Kontact</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Синхронизация с рабочим столом GNOME</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Синхронизация с Windows 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">Migrate data between instances</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
@@ -179,7 +180,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../contents.html">Nextcloud 34 User Manual</a>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -243,8 +244,8 @@
 <p><span class="versionmodified added">Добавлено в версии 5.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>Почта имеет возможность переключаться между двумя различными режимами просмотра и работы сообщений: <em>Нитевый</em> и <em>Синглтон</em>.</p>
-<p>В режиме <em>Нитевый</em> сообщения группируются по цепочкам. В списке сообщений почтового ящика связанные сообщения группируются, поэтому отображается только самое последнее сообщение, а все связанные сообщения отображаются на панели отображения сообщений после выбора сгруппированного сообщения. Это полезно для отслеживания обсуждений и понимания контекста ответов. В этом режиме операции с сообщениями, такие как перемещение и удаление, применяются ко всей цепочке, а это означает, что когда вы перемещаете или удаляете цепочку, это затрагивает все сообщения в этой цепочке.</p>
-<p>В режиме <em>Синглтон</em> сообщения отображаются индивидуально, как в списке сообщений почтового ящика, так и на панели отображения сообщений, а такие операции, как перемещение и удаление, применяются только к выбранному сообщению. Этот режим полезен, если вы хотите управлять сообщениями отдельно, не затрагивая весь разговор.</p>
+<p>In <em>Threaded</em> mode, messages are grouped by conversation. In the folder message list, related messages are stacked so only the most recent message is shown, and all relates messages are shown in message display panel after the stacked message is selected. This is useful for following discussions and understanding the context of replies. In this mode, message operation like move and delete apply to the entire thread, meaning that when you move or delete a thread, all messages within that thread are affected.</p>
+<p>In <em>Singleton</em> mode, messages are displayed individually, in both the folder message list and message display panel and operation like move and delete apply to only the selected message. This mode is useful when you want to manage messages separately without affecting the entire conversation.</p>
 <ol class="arabic simple">
 <li><p>Посетите настройки почты</p></li>
 <li><p>Выберите между <em>Нитевый</em> или <em>Синглтон</em></p></li>
@@ -276,7 +277,7 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Примечание</p>
-<p>Это изменение будет применяться ко всем вашим учётным записям и почтовым ящикам</p>
+<p>This change will apply across all your accounts and folders</p>
 </div>
 </section>
 <section id="sort-favorites-up">
@@ -344,24 +345,26 @@
 <img alt="../../_images/mail_move-message-to-junk-folder.png" src="../../_images/mail_move-message-to-junk-folder.png" />
 </figure>
 </section>
-<section id="refresh-mailbox">
-<h3>Обновить почтовый ящик<a class="headerlink" href="#refresh-mailbox" title="Ссылка на этот заголовок"></a></h3>
-<p>Вы можете вручную запустить синхронизацию своего почтового ящика, нажав кнопку обновления, расположенную вверху списка почтовых ящиков. Начиная с версии 5.7, при запуске синхронизации также обновится список папок для выбранной учётной записи.</p>
+<section id="refresh-folder">
+<h3>Refresh folder<a class="headerlink" href="#refresh-folder" title="Ссылка на этот заголовок"></a></h3>
+<p>You can manually trigger a sync of your folder by clicking the refresh button located at the top of the folder list.
+Starting from <code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">5.7</span></code> triggering the sync will also refresh the list of folders for the selected account.</p>
 </section>
 <section id="unified-search">
 <h3>Единый поиск<a class="headerlink" href="#unified-search" title="Ссылка на этот заголовок"></a></h3>
 <p>Приложение Mail интегрируется с функцией <a class="reference internal" href="../webinterface.html#id1"><span class="std std-ref">унифицированный поиск</span></a> Nextcloud (подробности см. в <a class="reference internal" href="../webinterface.html"><span class="doc">The Nextcloud web interface</span></a>). Вы можете искать электронные письма во всех своих учётных записях, используя панель поиска в заголовке Nextcloud.</p>
-<p>Почта выполняет поиск по темам электронных писем и полям отправителя/получателя. Для поиска в тексте электронной почты используйте функцию поиска в почтовом ящике в приложении.</p>
+<p>Mail searches email subjects and sender/recipient fields. To search email bodies,
+use the folder search feature in the app.</p>
 </section>
-<section id="search-in-mailbox">
-<h3>Искать в почтовом ящике<a class="headerlink" href="#search-in-mailbox" title="Ссылка на этот заголовок"></a></h3>
+<section id="search-in-folder">
+<h3>Search in folder<a class="headerlink" href="#search-in-folder" title="Ссылка на этот заголовок"></a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">Добавлено в версии 2.1: </span>Nextcloud 25 or newer</p>
 </div>
 <p>В верхней части списка конвертов в любом макете письма находится ярлык поля поиска для поиска по темам электронных писем. Начиная с <code class="docutils literal notranslate"><span class="pre">версии</span> <span class="pre">3.7</span></code>, этот ярлык позволяет вам выполнять поиск по теме, получателю (кому) или отправителю (от) по умолчанию.</p>
 </section>
-<section id="advanced-search-in-mailbox">
-<h3>Расширенный поиск в почтовом ящике<a class="headerlink" href="#advanced-search-in-mailbox" title="Ссылка на этот заголовок"></a></h3>
+<section id="advanced-search-in-folder">
+<h3>Advanced search in folder<a class="headerlink" href="#advanced-search-in-folder" title="Ссылка на этот заголовок"></a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">Добавлено в версии 3.4: </span>Nextcloud 26 or newer</p>
 </div>
@@ -376,18 +379,21 @@
 <p>Чтобы включить его:</p>
 <ol class="arabic simple">
 <li><p>Посетите настройки учётной записи</p></li>
-<li><p>Перейти к поиску в почтовом ящике</p></li>
+<li><p>Go to Folder search</p></li>
 <li><p>Включить поиск по телу письма</p></li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Предупреждение</p>
-<p>Если вы хотите включить его и для единых почтовых ящиков, вам необходимо сделать это в настройках почты.</p>
+<p>If you want to also enable it for unified folders you have to do so in Mail settings</p>
 </div>
 <p>Если включить эту функцию, основное окно поиска теперь будет выполнять поиск как по темам, так и по телу письма, а в расширенном поиске появится отдельная опция <em>Тело</em>.</p>
 </section>
 <section id="account-delegation">
 <h3>Делегирование учётной записи<a class="headerlink" href="#account-delegation" title="Ссылка на этот заголовок"></a></h3>
-<p>Приложение позволяет делегировать учётную запись, чтобы один пользователь мог отправлять электронные письма с адреса другого.</p>
+<p>The app supports two ways of letting one user act on behalf of another’s mail account.</p>
+<section id="sending-as-another-address-server-alias">
+<h4>Sending as another address (server alias)<a class="headerlink" href="#sending-as-another-address-server-alias" title="Ссылка на этот заголовок"></a></h4>
+<p>This lets you send emails from the address of another account.</p>
 <ol class="arabic simple">
 <li><p>Делегирование должно быть настроено на почтовом сервере администратором.</p></li>
 <li><p>Добавьте другой адрес электронной почты в качестве псевдонима для своей учётной записи электронной почты.</p></li>
@@ -395,8 +401,36 @@
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Предупреждение</p>
-<p>Отправленная электронная почта может быть не видна в исходной учётной записи, если она хранится в вашем личном почтовом ящике <em>Отправленные</em>.</p>
+<p>The sent email might not be visible to the original account if it’s stored in your personal <em>Sent</em> folder.</p>
 </div>
+</section>
+<section id="native-account-delegation">
+<h4>Native account delegation<a class="headerlink" href="#native-account-delegation" title="Ссылка на этот заголовок"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Добавлено в версии 5.9: </span>Nextcloud Mail</p>
+</div>
+<p>Native account delegation lets you grant other Nextcloud users access to one of your mail accounts directly from the
+app, without any server-side alias configuration. A delegate can do everything the account owner can — send, receive,
+and delete mail on your behalf — except deleting the account or updating its authentication information.</p>
+<p>To delegate one of your accounts:</p>
+<ol class="arabic simple">
+<li><p>Open the account’s three-dot menu and select <strong>Delegate account</strong></p></li>
+<li><p>In the <strong>Delegation</strong> dialog, click <strong>Add delegate</strong></p></li>
+<li><p>Use the <strong>Select a user</strong> field to choose the Nextcloud user you want to grant access to</p></li>
+<li><p>Confirm with <strong>Delegate access</strong></p></li>
+</ol>
+<p>The shared account then appears in the delegate’s account list, marked as delegated.</p>
+<p>To remove access:</p>
+<ol class="arabic simple">
+<li><p>Open the <strong>Delegate account</strong> dialog again</p></li>
+<li><p>Click <strong>Revoke</strong> next to the delegate you want to remove</p></li>
+<li><p>Confirm with <strong>Revoke access</strong></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Provisioned accounts cannot be delegated.</p>
+</div>
+</section>
 </section>
 <section id="automatic-trash-deletion">
 <h3>Автоматическое удаление мусора<a class="headerlink" href="#automatic-trash-deletion" title="Ссылка на этот заголовок"></a></h3>
@@ -438,7 +472,7 @@
 <figure class="align-default">
 <img alt="../../_images/mail-composer-indicator.png" src="../../_images/mail-composer-indicator.png" />
 </figure>
-<p>Press the <strong>Close</strong> button on the modal or on the minimized composer indicator to stop editing a message. A draft will be saved automatically into your draft mailbox.</p>
+<p>Press the <strong>Close</strong> button on the modal or on the minimized composer indicator to stop editing a message. A draft will be saved automatically into your draft folder.</p>
 </section>
 </section>
 <section id="recipient-info-on-composer">
@@ -479,7 +513,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <p class="admonition-title">Примечание</p>
 <p>При возникновении ошибки во время отправки возможны три сообщения об ошибках:</p>
 <dl class="simple">
-<dt>Не удалось скопировать в почтовый ящик «Отправленные»</dt><dd><p>Письмо было отправлено, но его не удалось скопировать в почтовый ящик «Отправленные». Эта ошибка будет обработана исходящими сообщениями, и операция копирования будет предпринята ещё раз.</p>
+<dt>Could not copy to «Sent» folder</dt><dd><p>The mail was sent but couldn’t be copied to the «Sent» folder. This error will be handled by the outbox and the copy operation will be tried again.</p>
 </dd>
 <dt>Ошибка почтового сервера</dt><dd><p>Sending was unsuccessful with a state that can be retried (ex: the SMTP server couldn’t be reached). The outbox will retry sending the message.</p>
 </dd>
@@ -488,25 +522,25 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 </dl>
 </div>
 </section>
-<section id="mailbox-actions">
-<h2>Действия с почтовым ящиком<a class="headerlink" href="#mailbox-actions" title="Ссылка на этот заголовок"></a></h2>
-<section id="add-a-mailbox">
-<h3>Добавить почтовый ящик<a class="headerlink" href="#add-a-mailbox" title="Ссылка на этот заголовок"></a></h3>
+<section id="folder-actions">
+<h2>Folder actions<a class="headerlink" href="#folder-actions" title="Ссылка на этот заголовок"></a></h2>
+<section id="add-a-folder">
+<h3>Add a folder<a class="headerlink" href="#add-a-folder" title="Ссылка на этот заголовок"></a></h3>
 <ol class="arabic simple">
 <li><p>Откройте меню действий учётной записи</p></li>
-<li><p>Нажмите добавить почтовый ящик</p></li>
+<li><p>Click add folder</p></li>
 </ol>
 </section>
-<section id="add-a-submailbox">
-<h3>Добавить дополнительный почтовый ящик<a class="headerlink" href="#add-a-submailbox" title="Ссылка на этот заголовок"></a></h3>
+<section id="add-a-subfolder">
+<h3>Add a subfolder<a class="headerlink" href="#add-a-subfolder" title="Ссылка на этот заголовок"></a></h3>
 <ol class="arabic simple">
-<li><p>Откройте меню действий почтового ящика</p></li>
-<li><p>Нажмите Добавить дополнительный почтовый ящик</p></li>
+<li><p>Open the action menu of a folder</p></li>
+<li><p>Click add subfolder</p></li>
 </ol>
 </section>
-<section id="shared-mailbox">
-<h3>Общий почтовый ящик<a class="headerlink" href="#shared-mailbox" title="Ссылка на этот заголовок"></a></h3>
-<p>Если вам предоставили общий доступ к почтовому ящику с определёнными правами, этот почтовый ящик будет отображаться как новый почтовый ящик с общим значком, как показано ниже:</p>
+<section id="shared-folder">
+<h3>Shared folder<a class="headerlink" href="#shared-folder" title="Ссылка на этот заголовок"></a></h3>
+<p>If a folder was shared with you with some specific rights, that folder will show as a new folder with a shared icon as below:</p>
 <figure class="align-default">
 <img alt="../../_images/shared-mailbox-icon.png" src="../../_images/shared-mailbox-icon.png" />
 </figure>
@@ -585,7 +619,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <div class="versionadded">
 <p><span class="versionmodified added">Добавлено в версии 4.2: </span>Nextcloud 30 or newer</p>
 </div>
-<p>Просматривая свой почтовый ящик, вы увидите в качестве предварительного просмотра краткую сводку ваших писем, созданную искусственным интеллектом.</p>
+<p>When looking through your folder you will see a short AI generated summary of your emails as a preview.</p>
 <div class="admonition note">
 <p class="admonition-title">Примечание</p>
 <p>Обратите внимание, что функция должна быть включена администратором.</p>
@@ -621,7 +655,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <div class="versionadded">
 <p><span class="versionmodified added">Добавлено в версии 3.4: </span>Nextcloud 26 or newer</p>
 </div>
-<p>«Заморозка» сообщений или ветки помещает их в выделенный ящик до выбранной даты заморозки, после которой сообщения или ветка возвращается в прежний ящик</p>
+<p>Snoozing a message or thread moves it into a dedicated folder until the selected snooze date is reached and the message or thread is moved back to the original folder.</p>
 <ol class="arabic simple">
 <li><p>Открыть меню действий конверта или ветки</p></li>
 <li><p>нажмите «Заморозить»</p></li>
@@ -975,14 +1009,14 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             aria-controls="rst-other-versions-user">
       🌐 Russian
       <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ 34
+       ☁️ 35
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
-      <dl>
-        <dt>🌐  Языки</dt>
+      <dl class="nc-languages-list">
+        <dt> Языки</dt>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ar/"
                
             >
@@ -990,7 +1024,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/br/"
                
             >
@@ -998,7 +1032,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ca/"
                
             >
@@ -1006,7 +1040,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_CN/"
                
             >
@@ -1014,7 +1048,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_HK/"
                
             >
@@ -1022,7 +1056,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_TW/"
                
             >
@@ -1030,7 +1064,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/cs/"
                
             >
@@ -1038,7 +1072,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/da/"
                
             >
@@ -1046,7 +1080,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nl/"
                
             >
@@ -1054,7 +1088,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/en/"
                
             >
@@ -1062,7 +1096,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/fi_FI/"
                
             >
@@ -1070,7 +1104,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/fr/"
                
             >
@@ -1078,7 +1112,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/gl/"
                
             >
@@ -1086,7 +1120,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/de/"
                
             >
@@ -1094,7 +1128,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/el/"
                
             >
@@ -1102,7 +1136,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/hu_HU/"
                
             >
@@ -1110,7 +1144,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/id/"
                
             >
@@ -1118,7 +1152,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ga/"
                
             >
@@ -1126,7 +1160,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/it/"
                
             >
@@ -1134,7 +1168,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ja_JP/"
                
             >
@@ -1142,7 +1176,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ko/"
                
             >
@@ -1150,7 +1184,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/lo/"
                
             >
@@ -1158,7 +1192,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/lt/"
                
             >
@@ -1166,7 +1200,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -1174,7 +1208,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nb_NO/"
                
             >
@@ -1182,7 +1216,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nn/"
                
             >
@@ -1190,7 +1224,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pl/"
                
             >
@@ -1198,7 +1232,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pt_PT/"
                
             >
@@ -1206,7 +1240,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pt_BR/"
                
             >
@@ -1214,7 +1248,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ro/"
                
             >
@@ -1222,7 +1256,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ru/"
                
                style="color: var(--dark-link-color);"
@@ -1232,7 +1266,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/si/"
                
             >
@@ -1240,7 +1274,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sk_SK/"
                
             >
@@ -1248,7 +1282,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sr/"
                
             >
@@ -1256,7 +1290,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/es/"
                
             >
@@ -1264,7 +1298,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sv/"
                
             >
@@ -1272,7 +1306,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ta/"
                
             >
@@ -1280,7 +1314,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/tr/"
                
             >
@@ -1288,7 +1322,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/uk_UA/"
                
             >
@@ -1296,7 +1330,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/uz/"
                
             >
@@ -1304,7 +1338,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/vi/"
                
             >
@@ -1315,38 +1349,46 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
       </dl>
     </div>
     <div class="rst-other-versions">
-      <dl>
-        <dt>☁️ Версии</dt>
+      <dl class="nc-versions-list">
+        <dt>Версии</dt>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              36 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
                
             >
               35 (latest)
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+          <dd>
+            <a href="https://docs.nextcloud.com/server/34/user_manual"
                
             >
               34 (stable)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/33/user_manual"
                
             >
-              33
+              33 (stable)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
-              32
+              32 (stable)
             </a>
           </dd>
         

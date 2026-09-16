@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Critical changes &mdash; Nextcloud 34 Developer Manual</title>
+  <title>Critical changes &mdash; Nextcloud 35 Developer Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -74,11 +74,27 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Release notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Critical changes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#info-xml-requirements">info.xml requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#removed-front-end-apis-and-libraries">Removed front-end APIs and libraries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#removed-back-end-apis">Removed back-end APIs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#navigation-styling-revisions">Navigation styling revisions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sidebar-tabs-redesign">Sidebar tabs redesign</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#settings-title-left-alignment">Settings title left-alignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#updated-php-requirements">Updated PHP requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#updated-3rd-party-libraries">Updated 3rd party libraries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#phpseclib-3-0">phpseclib 3.0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#symfony-console">Symfony Console</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#updated-database-requirements">Updated database requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removed-front-end-apis-and-libraries">Removed front-end APIs and libraries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#removed-global-aliases">Removed global aliases</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#removed-global-libraries">Removed global libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#modified-back-end-apis">Modified back-end APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removed-back-end-apis">Removed back-end APIs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#remote-api">Remote API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preview-api">Preview API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-removed-back-end-apis">Other removed back-end APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#signed-cloud-federation-notifications">Signed cloud federation notifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unified-sharing">Unified sharing</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="new.html">New in this release</a></li>
@@ -93,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
@@ -105,7 +121,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Nextcloud 34 Developer Manual</a>
+          <a href="../index.html">Nextcloud 35 Developer Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -128,96 +144,169 @@
 <span id="id1"></span><h1>Critical changes<a class="headerlink" href="#critical-changes" title="Link to this heading"></a></h1>
 <section id="info-xml-requirements">
 <h2>info.xml requirements<a class="headerlink" href="#info-xml-requirements" title="Link to this heading"></a></h2>
-<p>Update info.xml to add Nextcloud 34 to the support range:</p>
+<p>Update info.xml to add Nextcloud 35 to the support range:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependencies&gt;</span>
-<span class="w">  </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;34&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;34&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;35&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;35&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/dependencies&gt;</span>
 </pre></div>
 </div>
 <p>To allow installation on older versions too, just keep the previous min-version.</p>
 </section>
+<section id="updated-php-requirements">
+<h2>Updated PHP requirements<a class="headerlink" href="#updated-php-requirements" title="Link to this heading"></a></h2>
+<p>The support for PHP 8.2 has been dropped, the minimum supported PHP version of Nextcloud 35 is now 8.3.</p>
+</section>
+<section id="updated-3rd-party-libraries">
+<h2>Updated 3rd party libraries<a class="headerlink" href="#updated-3rd-party-libraries" title="Link to this heading"></a></h2>
+<section id="phpseclib-3-0">
+<h3>phpseclib 3.0<a class="headerlink" href="#phpseclib-3-0" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">phpseclib</span></code> library has been updated from version 2 to version 3.
+This is a breaking change, apps that rely on the library need to update to the new version,
+this includes a new namespace (<code class="docutils literal notranslate"><span class="pre">\phpseclib3</span></code>).
+Changes can be found on the <a class="reference external" href="https://phpseclib.com/docs/why#phpseclib-30-vs-phspeclib-10--20">library’s website</a>.</p>
+</section>
+<section id="symfony-console">
+<h3>Symfony Console<a class="headerlink" href="#symfony-console" title="Link to this heading"></a></h3>
+<p>Symfony Console was updated from version 6 to version 7. This changes the signature of the
+<code class="docutils literal notranslate"><span class="pre">execute</span></code> method, which now requires a return type declaration. If your commands still extend
+<code class="docutils literal notranslate"><span class="pre">OC\Core\Command\Base</span></code> and implement <code class="docutils literal notranslate"><span class="pre">configure()</span></code>/<code class="docutils literal notranslate"><span class="pre">execute()</span></code>, fix them by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>lib<span class="w"> </span>-iname<span class="w"> </span><span class="s1">&#39;*.php&#39;</span><span class="w"> </span>-exec<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/function execute(InputInterface $input, OutputInterface $output) {/function execute(InputInterface $input, OutputInterface $output): int {/g&#39;</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+</pre></div>
+</div>
+<p>To insulate apps from breakage like this in the future, Nextcloud 35 also introduces a new,
+attribute-based interface for writing commands that does not require extending a Symfony base class.
+See <a class="reference internal" href="../app_development/commands.html#occ-commands"><span class="std std-ref">occ commands</span></a> for the full documentation. Existing commands keep working unchanged (once
+fixed with the command above), migrating to the new interface is optional but recommended.</p>
+</section>
+</section>
+<section id="updated-database-requirements">
+<h2>Updated database requirements<a class="headerlink" href="#updated-database-requirements" title="Link to this heading"></a></h2>
+<p>The following database versions are no longer supported in Nextcloud 35 as they are now out of support by their respective vendors:</p>
+<ul class="simple">
+<li><p>MariaDB 10.6. The minimum supported version of MariaDB is now 10.11 LTS.</p></li>
+<li><p>MySQL 8.0. The minimum supported version of MySQL is now 8.4 LTS.</p></li>
+</ul>
+<p>The following new database versions are now supported in Nextcloud 35 as they are now released as LTS versions by their respective vendors.
+Make sure to adjust your CI matrix for testing with them. This is automatically done if you use the workflow templates provided by Nextcloud.</p>
+<ul>
+<li><p>MariaDB 12.3 is now supported.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In MariaDB 12+ the query parser is stricter, when using GROUP BY clauses.</p>
+<p>If you have constructs like <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">`a`,</span> <span class="pre">CAST(`b`</span> <span class="pre">as</span> <span class="pre">CHAR)</span> <span class="pre">as</span> <span class="pre">`b`</span> <span class="pre">FROM</span> <span class="pre">`table`</span> <span class="pre">GROUP</span> <span class="pre">BY</span> <span class="pre">`a`,</span> <span class="pre">CAST(`b`</span> <span class="pre">as</span> <span class="pre">CHAR)</span></code>
+this will break as the GROUP BY clause will self reference the alias <code class="docutils literal notranslate"><span class="pre">b</span></code>.
+Using a different alias name will fix MariaDB but not all other database systems, as then the cast expression is missing from the GROUP BY clause.
+So make this work on all supported database systems you need to use a subquery:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">`</span><span class="n">a</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">b</span><span class="o">`</span>
+<span class="k">FROM</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="o">`</span><span class="n">a</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="k">CAST</span><span class="p">(</span><span class="o">`</span><span class="n">b</span><span class="o">`</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="o">`</span><span class="n">b</span><span class="o">`</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="o">`</span><span class="k">table</span><span class="o">`</span>
+<span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="o">`</span><span class="n">subquery</span><span class="o">`</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="o">`</span><span class="n">a</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">b</span><span class="o">`</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p>MySQL 9.7 is now supported.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>MySQL 9+ deprecated support for MD5, so we strongly recommend to migrate away from the MD5 SQL function in your apps.</p>
+</div>
+</li>
+</ul>
+</section>
 <section id="removed-front-end-apis-and-libraries">
 <h2>Removed front-end APIs and libraries<a class="headerlink" href="#removed-front-end-apis-and-libraries" title="Link to this heading"></a></h2>
+<section id="removed-global-aliases">
+<h3>Removed global aliases<a class="headerlink" href="#removed-global-aliases" title="Link to this heading"></a></h3>
+<p>The following global aliases were removed in Nextcloud 35,
+they have been deprecated since Nextcloud 17 and scheduled for removal since Nextcloud 20:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">OC.Dialogs.fileexists</span></code> was deprecated and is now removed.
-Use the conflict picker from the <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/dialogs</span></code> library instead.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OC.Notifications</span></code> was deprecated and is now removed.
-Use the notification API from the <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/dialogs</span></code> library instead.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OC.Apps</span></code> was deprecated and is now removed.
-Use Vue components from the <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/vue</span></code> instead.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OC.*menu*</span></code> methods were deprecated and are now removed.
-Use Vue components from the <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/vue</span></code> instead.</p></li>
-<li><p>Magic handling of <code class="docutils literal notranslate"><span class="pre">.live-relative-timestamp</span></code> (elements with this class were automatically updated to show relative timestamps) was removed.
-Use the <code class="docutils literal notranslate"><span class="pre">NcDateTime</span></code> component from the <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/vue</span></code> library instead</p></li>
-<li><p>The global <code class="docutils literal notranslate"><span class="pre">snapper</span></code> was deprecated and is now removed.
-For the app navigation please migrate your app to Vue
-and use the <code class="docutils literal notranslate"><span class="pre">NcAppNavigation</span></code> component from the <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/vue</span></code> library instead.</p></li>
-<li><p>Some deprecated globally shared libraries were removed. If you still rely on them, you need to bundle them with your app:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">jQuery</span></code> was deprecated and scheduled for removal since Nextcloud 19.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">jQuery</span> <span class="pre">UI</span></code> was deprecated and scheduled for removal since Nextcloud 19.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Backbone</span></code> was deprecated and scheduled for removal since Nextcloud 19.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OC.Files.Client</span></code> as it was extending the <code class="docutils literal notranslate"><span class="pre">Backbone</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Handlebars</span></code> was deprecated and scheduled for removal since Nextcloud 19.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_appswebroots</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.appswebroots</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_config</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.config</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_current_user</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.getCurrentUser().uid</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_debug</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.debug</span></code> instead8</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_defaults</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.theme</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_isadmin</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.isUserAdmin()</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_requesttoken</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.requestToken</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_webroot</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.webroot</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCDialogs</span></code> use <code class="docutils literal notranslate"><span class="pre">OC.dialogs</span></code> instead</p></li>
 </ul>
-</li>
+<p>Please keep in mind that <code class="docutils literal notranslate"><span class="pre">OC</span></code> is considered a private namespace for which our stability rules do not fully apply.
+Its recommended to use the <a class="reference internal" href="../digging_deeper/javascript-apis.html#js-libraries"><span class="std std-ref">Nextcloud frontend libraries</span></a> instead if possible.</p>
+</section>
+<section id="removed-global-libraries">
+<h3>Removed global libraries<a class="headerlink" href="#removed-global-libraries" title="Link to this heading"></a></h3>
+<p>The following global libraries were removed in Nextcloud 35,
+they have been deprecated since Nextcloud 17 and scheduled for removal since Nextcloud 20:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_</span></code> (underscore) use modern ES2015+ syntax instead supported by all modern browsers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Clipboard</span></code> and <code class="docutils literal notranslate"><span class="pre">ClipboardJS</span></code> use native <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API">Clipboard API</a> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dav</span></code> use the <a class="reference internal" href="../digging_deeper/javascript-apis.html#js-library-nextcloud-files"><span class="std std-ref">&#64;nextcloud/files</span></a> or <a class="reference external" href="https://www.npmjs.com/package/webdav">webdav</a> library instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">moment</span></code> use the <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/moment</span></code> library or native <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat">Intl.DateTimeFormat</a> or <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal">Temporal API</a> instead</p></li>
+</ul>
+</section>
+</section>
+<section id="modified-back-end-apis">
+<h2>Modified back-end APIs<a class="headerlink" href="#modified-back-end-apis" title="Link to this heading"></a></h2>
+<p>Nextcloud now provides a wrapper for the DBAL/migration classes from <code class="docutils literal notranslate"><span class="pre">doctrine/dbal</span></code>. This will allow
+us in the future to more easily update this dependency without breaking your applications and make it
+easier for the static analyser to analyse this part of your code without providing stubs.</p>
+<p>There are a few hard breaking changes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Type::lookupName($column-&gt;getType())</span></code> will have to be replaced with <code class="docutils literal notranslate"><span class="pre">$column-&gt;getType()-&gt;getName()</span></code></p></li>
+<li><p>Methods taking a <code class="docutils literal notranslate"><span class="pre">Doctrine\DBAL</span></code> classes, will have to be changed to take a <code class="docutils literal notranslate"><span class="pre">OCP\DB\Schema</span></code> instead</p></li>
+</ul>
+<p>Additionally, some part of the public API were removed and are now only available in the private API for runtime compatibility reason.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Column-&gt;setOptions(array</span> <span class="pre">$options)</span></code> is no longer available in the public API and you will have to use the typed setters instead like <code class="docutils literal notranslate"><span class="pre">Column-&gt;setLength</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Column-&gt;setType(DBAL\Type</span> <span class="pre">$type)</span></code> is no longer available in the public API and you will have to provide one of the constants available in <code class="docutils literal notranslate"><span class="pre">\OCP\DB\Types</span></code> instead.</p></li>
 </ul>
 </section>
 <section id="removed-back-end-apis">
 <h2>Removed back-end APIs<a class="headerlink" href="#removed-back-end-apis" title="Link to this heading"></a></h2>
+<section id="remote-api">
+<h3>Remote API<a class="headerlink" href="#remote-api" title="Link to this heading"></a></h3>
+<p>All these interfaces were deprecated since Nextcloud 23 and were removed without replacement:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Share_Backend</span></code>, <code class="docutils literal notranslate"><span class="pre">\OCP\Share_Backend_Collection</span></code>, <code class="docutils literal notranslate"><span class="pre">\OCP\Share_Backend_File_Dependent</span></code> were removed. This old
-share backend was replaced in Nextcloud 9 with a new backend system based on <code class="docutils literal notranslate"><span class="pre">IShareProvider</span></code>.</p></li>
-<li><p>All these methods were deprecated since before Nextcloud 20 and were removed:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\EmptyContentSecurityPolicy::allowEvalScript</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\EmptyContentSecurityPolicy::addAllowedChildSrcDomain</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\EmptyContentSecurityPolicy::disallowChildSrcDomain</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Collaboration\Resources\IManager::registerResourceProvider</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Notification\IManager::registerNotifier</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::recursiveArraySearch</span></code></p></li>
-</ul>
-</li>
-<li><p>All these classes were deprecated since before Nextcloud 20 and were removed:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\StrictContentSecurityPolicy</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\StrictEvalContentSecurityPolicy</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\StrictInlineContentSecurityPolicy</span></code></p></li>
-</ul>
-</li>
-<li><p>Various methods from the legacy <code class="docutils literal notranslate"><span class="pre">OC_Util</span></code> static class were removed:</p>
-<ul>
-<li><p>Instead of <code class="docutils literal notranslate"><span class="pre">\OC_Util::encodePath</span></code> use <code class="docutils literal notranslate"><span class="pre">\OCP\Util::encodePath</span></code>.</p></li>
-<li><p>Instead of <code class="docutils literal notranslate"><span class="pre">\OC_Util::sanitizeHTML</span></code> use <code class="docutils literal notranslate"><span class="pre">\OCP\Util::sanitizeHTML</span></code></p></li>
-<li><p>Instead of <code class="docutils literal notranslate"><span class="pre">\OC_Util::redirectToDefaultPage</span></code> and  <code class="docutils literal notranslate"><span class="pre">\OC_Util::getDefaultPageUrl</span></code> use <code class="docutils literal notranslate"><span class="pre">\OCP\IUrlGenerator::linkToDefaultPageUrl</span></code></p></li>
-<li><p>Instead of <code class="docutils literal notranslate"><span class="pre">\OC_Util::checkAdminUser</span></code> use <code class="docutils literal notranslate"><span class="pre">IGroupManager::class::isAdmin</span></code></p></li>
-</ul>
-</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Remote\ICredentials</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Remote\IInstance</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Remote\IInstanceFactory</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Remote\IUser</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Remote\API\IUserApi</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Remote\API\ICapabilitiesApi</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Remote\API\IApiFactory</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Remote\API\IApiCollection</span></code></p></li>
 </ul>
 </section>
-<section id="navigation-styling-revisions">
-<h2>Navigation styling revisions<a class="headerlink" href="#navigation-styling-revisions" title="Link to this heading"></a></h2>
+<section id="preview-api">
+<h3>Preview API<a class="headerlink" href="#preview-api" title="Link to this heading"></a></h3>
+<p>The registration method of the preview manager <code class="docutils literal notranslate"><span class="pre">\OCP\IPreview::registerProvider</span></code> was deprecated since Nextcloud 23 and was removed now.
+Instead of using the manager register your provider via the <code class="docutils literal notranslate"><span class="pre">IRegistrationContext</span></code> when booting the app.</p>
+</section>
+<section id="other-removed-back-end-apis">
+<h3>Other removed back-end APIs<a class="headerlink" href="#other-removed-back-end-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>All the deprecated methods of <code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\Resource\IManager</span></code> and <code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\Room\IManager</span></code> were deprecated since Nextcloud 24 and were removed without replacement.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">\OCP\Collaboration\AutoComplete\AutoCompleteEvent</span></code> event was deprecated since Nextcloud 28 and was removed with <code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\AutoComplete\AutoCompleteFilterEvent</span></code> as replacement;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Files\IRootFolder</span></code> does not publicly implement the deprecated and private <code class="docutils literal notranslate"><span class="pre">OC\Hooks\Emitter</span></code> interface anymore. The private implementations still do, but support might be removed at any moment without notice. The replacement for the hooks provided by <code class="docutils literal notranslate"><span class="pre">IRootFolder</span></code> are the node events defined in the <code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node</span></code> namespace.</p></li>
+</ul>
+</section>
+</section>
+<section id="signed-cloud-federation-notifications">
+<h2>Signed cloud federation notifications<a class="headerlink" href="#signed-cloud-federation-notifications" title="Link to this heading"></a></h2>
+<p>Apps with a custom <code class="docutils literal notranslate"><span class="pre">\OCP\Federation\ICloudFederationProvider</span></code> that receives notifications must also implement
+<code class="docutils literal notranslate"><span class="pre">\OCP\Federation\ISignedCloudFederationProvider</span></code>. The implementation must resolve the remote federation ID from the
+notification’s shared secret and trusted data stored when the share was accepted. Return an empty string when the
+secret does not identify exactly one remote origin.</p>
+</section>
+<section id="unified-sharing">
+<h2>Unified sharing<a class="headerlink" href="#unified-sharing" title="Link to this heading"></a></h2>
 <div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
 <p>This is work in progress and needs an update when the changes have been finalized.</p>
 </div>
-<p>Styling of navigation components will be revised. See <a class="reference external" href="https://github.com/nextcloud-libraries/nextcloud-vue/issues/7222">nextcloud-libraries/nextcloud-vue#7222</a> for details.</p>
-</section>
-<section id="sidebar-tabs-redesign">
-<h2>Sidebar tabs redesign<a class="headerlink" href="#sidebar-tabs-redesign" title="Link to this heading"></a></h2>
-<div class="admonition-todo admonition" id="id3">
-<p class="admonition-title">Todo</p>
-<p>This is work in progress and needs an update when the changes have been finalized.</p>
-</div>
-<p>Sidebar tab components will be redesigned. See <a class="reference external" href="https://github.com/nextcloud-libraries/nextcloud-vue/issues/7520">nextcloud-libraries/nextcloud-vue#7520</a> for details.</p>
-</section>
-<section id="settings-title-left-alignment">
-<h2>Settings title left-alignment<a class="headerlink" href="#settings-title-left-alignment" title="Link to this heading"></a></h2>
-<div class="admonition-todo admonition" id="id4">
-<p class="admonition-title">Todo</p>
-<p>This is work in progress and needs an update when the changes have been finalized.</p>
-</div>
-<p>The title alignment of settings pages will be changed to left-aligned. See <a class="reference external" href="https://github.com/nextcloud-libraries/nextcloud-vue/issues/7641">nextcloud-libraries/nextcloud-vue#7641</a> for details.</p>
+<p>Changes to sharing APIs and user interface are planned. This includes both a new general API for sharing of entities and updates to the sharing user interface. See <a class="reference external" href="https://github.com/nextcloud/server/issues/51803">nextcloud/server#51803</a> for details and mockups.</p>
 </section>
 </section>
 
@@ -233,7 +322,7 @@ share backend was replaced in Nextcloud 9 with a new backend system based on <co
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Sep 07, 2026.
+      <span class="lastupdated">Last updated on Sep 16, 2026.
       </span></p>
   </div>
 
@@ -253,42 +342,50 @@ share backend was replaced in Nextcloud 9 with a new backend system based on <co
             data-toggle="rst-current-version"
             aria-expanded="false"
             aria-controls="rst-other-versions-dev">
-      ☁️ 34
+      ☁️ 35
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-dev" class="rst-other-versions">
-      <dl>
-        <dt>☁️ Versions</dt>
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+          >
+            36 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
              
           >
             35 (latest)
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/developer_manual"
              
           >
             34 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/33/developer_manual"
              
           >
-            33
+            33 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/32/developer_manual"
              
           >
-            32
+            32 (stable)
           </a>
         </dd>
         

@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NGINX configuration &mdash; Nextcloud 34 Administration Manual</title>
+  <title>NGINX configuration &mdash; Nextcloud 35 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -88,8 +88,8 @@
 <li class="toctree-l2"><a class="reference internal" href="php_configuration.html">Preparing PHP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Install from the command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automated installation with <code class="docutils literal notranslate"><span class="pre">autoconfig.php</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">NGINX configuration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#nextcloud-in-the-webroot-of-nginx">Nextcloud in the webroot of NGINX</a></li>
@@ -100,6 +100,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#javascript-js-or-css-css-files-not-served-properly">JavaScript (.js) or CSS (.css) files not served properly</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#upload-of-files-greater-than-10-mib-fails">Upload of files greater than 10 MiB fails</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#login-loop-without-any-clue-in-access-log-error-log-nor-nextcloud-log">Login loop without any clue in access.log, error.log, nor nextcloud.log</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trusted-proxy-not-detected-when-using-a-unix-domain-socket">Trusted proxy not detected when using a Unix domain socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#access-through-untrusted-domain-error-with-http-3">“Access through untrusted domain” error with HTTP/3</a></li>
 </ul>
 </li>
 </ul>
@@ -131,6 +133,7 @@
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management_api.html">Apps management API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
 </ul>
@@ -178,7 +181,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../contents.html">Nextcloud 34 Administration Manual</a>
+          <a href="../contents.html">Nextcloud 35 Administration Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -284,6 +287,7 @@ webroot of your nginx installation. In this example it is
 
 <span class="w">    </span><span class="c1"># Proxy and client response timeouts</span>
 <span class="w">    </span><span class="c1"># Uncomment an increase these if facing timeout errors during large file uploads</span>
+<span class="w">    </span><span class="c1">#keepalive_timeout 60s;</span>
 <span class="w">    </span><span class="c1">#proxy_connect_timeout 60s;</span>
 <span class="w">    </span><span class="c1">#proxy_send_timeout 60s;</span>
 <span class="w">    </span><span class="c1">#proxy_read_timeout 60s;</span>
@@ -447,6 +451,15 @@ webroot of your nginx installation. In this example it is
 <span class="w">    </span><span class="c1"># Serve static files</span>
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.(?:css|js|mjs|svg|gif|ico|jpg|png|webp|wasm|tflite|map|ogg|flac|mp4|webm)$</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="s">/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
+<span class="w">	</span>
+<span class="w">		</span><span class="c1"># HSTS settings</span>
+<span class="w">		</span><span class="c1"># WARNING: Only add the preload option once you read about</span>
+<span class="w">		</span><span class="c1"># the consequences in https://hstspreload.org/. This option</span>
+<span class="w">		</span><span class="c1"># will add the domain to a hardcoded list that is shipped</span>
+<span class="w">		</span><span class="c1"># in all major browsers and getting removed from this list</span>
+<span class="w">		</span><span class="c1"># could take several months.</span>
+<span class="w">		</span><span class="c1">#add_header Strict-Transport-Security &quot;max-age=31536000; includeSubDomains; preload&quot; always;</span>
+
 <span class="w">        </span><span class="c1"># HTTP response headers borrowed from Nextcloud `.htaccess`</span>
 <span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Cache-Control</span><span class="w">                     </span><span class="s">&quot;public,</span><span class="w"> </span><span class="s">max-age=15778463</span><span class="nv">$asset_immutable&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Referrer-Policy</span><span class="w">                   </span><span class="s">&quot;no-referrer&quot;</span><span class="w">       </span><span class="s">always</span><span class="p">;</span>
@@ -579,6 +592,7 @@ The configuration differs from the “Nextcloud in webroot” configuration abov
 
 <span class="w">        </span><span class="c1"># Proxy and client response timeouts</span>
 <span class="w">        </span><span class="c1"># Uncomment an increase these if facing timeout errors during large file uploads</span>
+<span class="w">        </span><span class="c1">#keepalive_timeout 60s;</span>
 <span class="w">        </span><span class="c1">#proxy_connect_timeout 60s;</span>
 <span class="w">        </span><span class="c1">#proxy_send_timeout 60s;</span>
 <span class="w">        </span><span class="c1">#proxy_read_timeout 60s;</span>
@@ -820,6 +834,42 @@ chown<span class="w"> </span>root:nginx<span class="w"> </span>/var/lib/php/opca
 </pre></div>
 </div>
 </section>
+<section id="trusted-proxy-not-detected-when-using-a-unix-domain-socket">
+<h3>Trusted proxy not detected when using a Unix domain socket<a class="headerlink" href="#trusted-proxy-not-detected-when-using-a-unix-domain-socket" title="Link to this heading"></a></h3>
+<p>When an upstream proxy (another nginx instance, Caddy, HAProxy, etc.) passes
+requests to Nextcloud’s nginx via a Unix domain socket, nginx sets
+<code class="docutils literal notranslate"><span class="pre">REMOTE_ADDR</span></code> to the literal string <code class="docutils literal notranslate"><span class="pre">unix:</span></code> instead of an IP address.
+Nextcloud cannot parse this as a trusted proxy, causing trusted proxy detection
+to fail and resulting in errors such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Unsupported</span> <span class="n">operand</span> <span class="n">types</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">&amp;</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">IpAddress</span><span class="o">.</span><span class="n">php</span>
+</pre></div>
+</div>
+<p>To fix this, add the following directives to the nginx <code class="docutils literal notranslate"><span class="pre">server</span></code> block that
+listens on the Unix socket:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">set_real_ip_from</span><span class="w">  </span><span class="s">unix:</span><span class="p">;</span>
+<span class="k">real_ip_header</span><span class="w">    </span><span class="s">X-Forwarded-For</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This tells nginx to treat the Unix socket peer as a trusted source and extract
+the real client IP from the <code class="docutils literal notranslate"><span class="pre">X-Forwarded-For</span></code> header passed by the upstream
+proxy. You must also ensure the upstream proxy sets that header correctly,
+for example with <code class="docutils literal notranslate"><span class="pre">proxy_set_header</span> <span class="pre">X-Forwarded-For</span> <span class="pre">$proxy_add_x_forwarded_for;</span></code>.</p>
+</section>
+<section id="access-through-untrusted-domain-error-with-http-3">
+<h3>“Access through untrusted domain” error with HTTP/3<a class="headerlink" href="#access-through-untrusted-domain-error-with-http-3" title="Link to this heading"></a></h3>
+<p>When HTTP/3 (QUIC) is enabled in nginx, the <code class="docutils literal notranslate"><span class="pre">HTTP_HOST</span></code> FastCGI parameter
+may not be forwarded correctly to PHP-FPM, causing Nextcloud to show the
+<em>“Access through untrusted domain”</em> error page even though the domain is listed
+in <code class="docutils literal notranslate"><span class="pre">trusted_domains</span></code>.</p>
+<p>Add the following line to the <code class="docutils literal notranslate"><span class="pre">fastcgi_param</span></code> block in your nginx
+configuration to explicitly pass the host:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">fastcgi_param</span><span class="w">  </span><span class="s">HTTP_HOST</span><span class="w">  </span><span class="nv">$host</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Place it alongside the other <code class="docutils literal notranslate"><span class="pre">fastcgi_param</span></code> directives (after
+<code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">fastcgi_params;</span></code>). This overrides whatever value (or lack thereof)
+nginx would otherwise derive from the HTTP/3 request headers.</p>
+</section>
 </section>
 </section>
 
@@ -853,42 +903,50 @@ chown<span class="w"> </span>root:nginx<span class="w"> </span>/var/lib/php/opca
             data-toggle="rst-current-version"
             aria-expanded="false"
             aria-controls="rst-other-versions-admin">
-      ☁️ 34
+      ☁️ 35
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-admin" class="rst-other-versions">
-      <dl>
-        <dt>☁️ Versions</dt>
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+          >
+            36 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
              
           >
             35 (latest)
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/admin_manual"
              
           >
             34 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/33/admin_manual"
              
           >
-            33
+            33 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
-            32
+            32 (stable)
           </a>
         </dd>
         

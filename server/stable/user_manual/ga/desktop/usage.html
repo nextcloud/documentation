@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ag baint úsáide as an gCliant Sioncrónaithe &mdash; Nextcloud 34 User Manual</title>
+  <title>Ag baint úsáide as an gCliant Sioncrónaithe &mdash; Nextcloud 35 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -30,8 +30,8 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Cliant Comhad Fíorúil macOS" href="macosvfs.html" />
-    <link rel="prev" title="Uninstallation" href="uninstallation.html" />
+    <link rel="next" title="Using the macOS File Provider" href="macosfileprovider.html" />
+    <link rel="prev" title="Díshuiteáil" href="uninstallation.html" />
    
   
 </head>
@@ -70,9 +70,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 34 réamhrá lámhleabhar úsáideora</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 35 réamhrá lámhleabhar úsáideora</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Ag baint úsáide as an aip Gníomhaíochta</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Comhaid &amp; sioncronú</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Earraí grúpa</a></li>
@@ -80,7 +80,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Suiteáil</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Díshuiteáil</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Ag baint úsáide as an gCliant Sioncrónaithe</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#systray-icon">Deilbhín Systray</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuring-nextcloud-account-settings">Socruithe Cuntais Nextcloud á chumrú</a></li>
@@ -91,12 +91,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#general-window">Fuinneog Ghinearálta</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#using-the-network-window">Ag baint úsáide as an bhFuinneog Líonra</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#using-the-ignored-files-editor">Ag baint úsáide as an Eagarthóir Comhad Neamhaird</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#virtual-files-on-macos">Virtual Files on macOS</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="macosvfs.html">Cliant Comhad Fíorúil macOS</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
@@ -119,7 +116,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../contents.html">Nextcloud 34 User Manual</a>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -296,23 +293,14 @@ dialog.</p>
 <li><p>Baintear comhaid a chruthaíonn earráidí aonair trí huaire le linn sioncronaithe. Mar sin féin, soláthraíonn an cliant an rogha chun sioncrónú a thriail arís trí huaire breise ar chomhaid a tháirgeann earráidí.</p></li>
 </ul>
 </section>
-<section id="virtual-files-on-macos">
-<h2>Virtual Files on macOS<a class="headerlink" href="#virtual-files-on-macos" title="Link to this heading"></a></h2>
-<p>For information about using virtual files integration on macOS, see:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="macosvfs.html">Cliant Comhad Fíorúil macOS</a></li>
-</ul>
-</div>
-</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="uninstallation.html" class="btn btn-neutral float-left" title="Uninstallation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="macosvfs.html" class="btn btn-neutral float-right" title="Cliant Comhad Fíorúil macOS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="uninstallation.html" class="btn btn-neutral float-left" title="Díshuiteáil" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="macosfileprovider.html" class="btn btn-neutral float-right" title="Using the macOS File Provider" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -431,14 +419,14 @@ dialog.</p>
             aria-controls="rst-other-versions-user">
       🌐 Irish
       <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ 34
+       ☁️ 35
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
-      <dl>
-        <dt>🌐 Teangacha</dt>
+      <dl class="nc-languages-list">
+        <dt>Teangacha</dt>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ar/"
                
             >
@@ -446,7 +434,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/br/"
                
             >
@@ -454,7 +442,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ca/"
                
             >
@@ -462,7 +450,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_CN/"
                
             >
@@ -470,7 +458,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_HK/"
                
             >
@@ -478,7 +466,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_TW/"
                
             >
@@ -486,7 +474,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/cs/"
                
             >
@@ -494,7 +482,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/da/"
                
             >
@@ -502,7 +490,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nl/"
                
             >
@@ -510,7 +498,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/en/"
                
             >
@@ -518,7 +506,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/fi_FI/"
                
             >
@@ -526,7 +514,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/fr/"
                
             >
@@ -534,7 +522,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/gl/"
                
             >
@@ -542,7 +530,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/de/"
                
             >
@@ -550,7 +538,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/el/"
                
             >
@@ -558,7 +546,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/hu_HU/"
                
             >
@@ -566,7 +554,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/id/"
                
             >
@@ -574,7 +562,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ga/"
                
                style="color: var(--dark-link-color);"
@@ -584,7 +572,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/it/"
                
             >
@@ -592,7 +580,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ja_JP/"
                
             >
@@ -600,7 +588,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ko/"
                
             >
@@ -608,7 +596,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/lo/"
                
             >
@@ -616,7 +604,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/lt/"
                
             >
@@ -624,7 +612,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -632,7 +620,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nb_NO/"
                
             >
@@ -640,7 +628,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nn/"
                
             >
@@ -648,7 +636,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pl/"
                
             >
@@ -656,7 +644,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pt_PT/"
                
             >
@@ -664,7 +652,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pt_BR/"
                
             >
@@ -672,7 +660,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ro/"
                
             >
@@ -680,7 +668,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ru/"
                
             >
@@ -688,7 +676,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/si/"
                
             >
@@ -696,7 +684,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sk_SK/"
                
             >
@@ -704,7 +692,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sr/"
                
             >
@@ -712,7 +700,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/es/"
                
             >
@@ -720,7 +708,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sv/"
                
             >
@@ -728,7 +716,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ta/"
                
             >
@@ -736,7 +724,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/tr/"
                
             >
@@ -744,7 +732,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/uk_UA/"
                
             >
@@ -752,7 +740,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/uz/"
                
             >
@@ -760,7 +748,7 @@ dialog.</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/vi/"
                
             >
@@ -771,38 +759,46 @@ dialog.</p>
       </dl>
     </div>
     <div class="rst-other-versions">
-      <dl>
-        <dt>☁️ Leaganacha</dt>
+      <dl class="nc-versions-list">
+        <dt>Leaganacha</dt>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              36 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
                
             >
               35 (latest)
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+          <dd>
+            <a href="https://docs.nextcloud.com/server/34/user_manual"
                
             >
               34 (stable)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/33/user_manual"
                
             >
-              33
+              33 (stable)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
-              32
+              32 (stable)
             </a>
           </dd>
         

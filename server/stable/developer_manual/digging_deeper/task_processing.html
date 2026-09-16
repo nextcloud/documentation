@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Task Processing &mdash; Nextcloud 34 Developer Manual</title>
+  <title>Task Processing &mdash; Nextcloud 35 Developer Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -95,6 +95,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="apis.html">APIs &amp; Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auth.html">Users &amp; Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="direct_editing.html">Direct editing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="groupware_workflows.html">Groupware &amp; Workflows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="discovery.html">Search &amp; Discovery</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devtools.html">Development Tools</a></li>
@@ -102,7 +103,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
@@ -114,7 +115,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Nextcloud 34 Developer Manual</a>
+          <a href="../index.html">Nextcloud 35 Developer Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -228,6 +229,33 @@
 </dl>
 </li>
 <li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:text2text:multimodal-chatwithtools'</span></code>: This task allows chatting with the language model with tools calling support and file attachments. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\MultimodalChatWithTools</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">system_prompt</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_attachments</span></code>: <code class="docutils literal notranslate"><span class="pre">ListOfFiles</span></code> Files to send along with the chat message</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tool_message</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code> A string containing a JSON array of <code class="docutils literal notranslate"><span class="pre">{&quot;name&quot;:</span> <span class="pre">string,</span> <span class="pre">&quot;content&quot;:</span> <span class="pre">string,</span> <span class="pre">&quot;tool_call_id&quot;:</span> <span class="pre">string}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">history</span></code>: <code class="docutils literal notranslate"><span class="pre">ListOfTexts</span></code> Each list item is a JSON string with <code class="docutils literal notranslate"><span class="pre">{&quot;role&quot;:</span> <span class="pre">&quot;human&quot;,</span> <span class="pre">&quot;content&quot;:</span> <span class="pre">string}</span></code> or <code class="docutils literal notranslate"><span class="pre">{&quot;role&quot;:</span> <span class="pre">&quot;assistant&quot;,</span> <span class="pre">&quot;content&quot;:</span> <span class="pre">string,</span> <span class="pre">(optional:</span> <span class="pre">&quot;tool_calls&quot;:</span> <span class="pre">array&lt;{&quot;name&quot;:</span> <span class="pre">string,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;tool_call&quot;,</span> <span class="pre">&quot;id&quot;:</span> <span class="pre">string,</span> <span class="pre">&quot;args&quot;:</span> <span class="pre">object}&gt;)}</span></code> or <code class="docutils literal notranslate"><span class="pre">{&quot;role&quot;:</span> <span class="pre">&quot;tool&quot;,</span> <span class="pre">&quot;content&quot;:</span> <span class="pre">string,</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">string,</span> <span class="pre">&quot;tool_call_id&quot;:</span> <span class="pre">string}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tools</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code> The tools parameter should be a JSON array formatted according to the OpenAI API specifications: <a class="reference external" href="https://platform.openai.com/docs/api-reference/chat/create#chat-create-tools">https://platform.openai.com/docs/api-reference/chat/create#chat-create-tools</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_attachments</span></code>: <code class="docutils literal notranslate"><span class="pre">ListOfFiles</span></code> Files generated by the model</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tool_calls</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code> A string containing a JSON array with <code class="docutils literal notranslate"><span class="pre">{&quot;name&quot;:</span> <span class="pre">string,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;tool_call&quot;,</span> <span class="pre">&quot;id&quot;:</span> <span class="pre">string,</span> <span class="pre">&quot;args&quot;:</span> <span class="pre">object}</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">'core:contextagent:interaction'</span></code>: This task allows chatting with an agent. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\ContextAgentInteraction</span></code></dt><dd><ul>
 <li><dl class="simple">
 <dt>Input shape:</dt><dd><ul>
@@ -243,6 +271,34 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">conversation_token</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">actions</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:contextagent:multimodal-interaction'</span></code>: This task allows chatting with an agent using file attachments. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\MultimodalContextAgentInteraction</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_attachments</span></code>: <code class="docutils literal notranslate"><span class="pre">ListOfFiles</span></code> Files to send along with the chat message</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">confirmation</span></code>: <code class="docutils literal notranslate"><span class="pre">Number</span></code> Boolean integer indicating whether to confirm previously requested actions: 0 to reject or 1 to confirm.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conversation_token</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code> Token representing the conversation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">memories</span></code>: <code class="docutils literal notranslate"><span class="pre">ListOfTexts</span></code> Memories to send to the agent</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_attachments</span></code>: <code class="docutils literal notranslate"><span class="pre">ListOfFiles</span></code> Files generated by the agent</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conversation_token</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actions</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sources</span></code>: <code class="docutils literal notranslate"><span class="pre">ListOfTexts</span></code> Sources of the generated response</p></li>
 </ul>
 </dd>
 </dl>
@@ -276,6 +332,27 @@
 <li><dl class="simple">
 <dt>Input shape:</dt><dd><ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:text2text:improve'</span></code>: This task will improve the passed input text based on instructions. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\TextToTextImprove</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">instructions</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -375,6 +452,26 @@
 <li><dl class="simple">
 <dt>Output shape:</dt><dd><ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:audio2text:subtitles'</span></code>: This task type is for transcribing audio or video to a subtitles file. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\AudioToTextSubtitles</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">File</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">File</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -699,7 +796,7 @@ A tweak to make sure of this is to instruct the model as follows:</p>
 <span class="k">use</span> <span class="nx">OCP\TaskProcessing\SummaryTaskType</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
 
-<span class="k">class</span> <span class="nc">Provider</span> <span class="k">implements</span> <span class="nx">ISynchrounousProvider</span> <span class="p">{</span>
+<span class="k">class</span> <span class="nc">Provider</span> <span class="k">implements</span> <span class="nx">ISynchronousProvider</span> <span class="p">{</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
         <span class="k">private</span> <span class="nx">IL10N</span> <span class="nv">$l</span><span class="p">,</span>
@@ -762,10 +859,68 @@ A tweak to make sure of this is to instruct the model as follows:</p>
 </pre></div>
 </div>
 <p>The method <code class="docutils literal notranslate"><span class="pre">getName</span></code> returns a string to identify the registered provider in the user interface.</p>
-<p>The method <code class="docutils literal notranslate"><span class="pre">process</span></code> implements the task processing step. In case execution fails for some reason, you should throw a <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\Exception\ProcessingException</span></code> with an explanatory error message.
-Since v33.0.0 you can now also throw an <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing\Exception\UserFacingProcessingException</span></code> which includes a string parameter to set for error messages that will be propagated to the end-user, make sure to always translate these into the language of the user that requested the task. The rule of thumb of when to use a user-facing error message, is as follows: When the error happened due to a mistake from the user or the user can do something to fix the error, throw a user facing error. However, do make sure to not include implementation or server details in the user facing error message, that’s what the normal error message is for; it will only be visible to administrators.</p>
-<p>Important to note here is that <code class="docutils literal notranslate"><span class="pre">Image</span></code>, <code class="docutils literal notranslate"><span class="pre">Audio</span></code>, <code class="docutils literal notranslate"><span class="pre">Video</span></code> and <code class="docutils literal notranslate"><span class="pre">File</span></code> slots in the input array will be filled with <code class="docutils literal notranslate"><span class="pre">\OCP\Files\File</span></code> objects for your convenience. When outputting one of these you should simply return a string, the API will turn the data into a proper file for convenience. The <code class="docutils literal notranslate"><span class="pre">$reportProgress</span></code> parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (<code class="docutils literal notranslate"><span class="pre">true</span></code>) or if it was cancelled (<code class="docutils literal notranslate"><span class="pre">false</span></code>) and processing should be terminated.</p>
+<p>The method <code class="docutils literal notranslate"><span class="pre">process</span></code> implements the task processing step. In case execution fails for some reason, you should throw a <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\Exception\ProcessingException</span></code> with an explanatory error message.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">$reportProgress</span></code> parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (<code class="docutils literal notranslate"><span class="pre">true</span></code>) or if it was cancelled (<code class="docutils literal notranslate"><span class="pre">false</span></code>) and processing should be terminated.</p>
 <p>This class would typically be saved into a file in <code class="docutils literal notranslate"><span class="pre">lib/TaskProcessing</span></code> of your app but you are free to put it elsewhere as long as it’s loadable by Nextcloud’s <a class="reference internal" href="../basics/dependency_injection.html#dependency-injection"><span class="std std-ref">dependency injection container</span></a>.</p>
+<section id="user-facing-errors">
+<h3>User-facing errors<a class="headerlink" href="#user-facing-errors" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 33.0.0.</span></p>
+</div>
+<p>Since v33.0.0 you can now also throw an <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing\Exception\UserFacingProcessingException</span></code> which includes a string parameter to set for error messages that will be propagated to the end-user, make sure to always translate these into the language of the user that requested the task. The rule of thumb of when to use a user-facing error message, is as follows: When the error happened due to a mistake from the user or the user can do something to fix the error, throw a user facing error. However, do make sure to not include implementation or server details in the user facing error message, that’s what the normal error message is for; it will only be visible to administrators.</p>
+</section>
+<section id="dealing-with-file-shaped-data">
+<h3>Dealing with file-shaped data<a class="headerlink" href="#dealing-with-file-shaped-data" title="Link to this heading"></a></h3>
+<p>TaskProcessing providers often want to operate on files. If your provider takes <code class="docutils literal notranslate"><span class="pre">Image</span></code>, <code class="docutils literal notranslate"><span class="pre">Audio</span></code>, <code class="docutils literal notranslate"><span class="pre">Video</span></code> and <code class="docutils literal notranslate"><span class="pre">File</span></code> slots, these will be passed to the <code class="docutils literal notranslate"><span class="pre">process</span></code> method as <code class="docutils literal notranslate"><span class="pre">\OCP\Files\File</span></code> objects.</p>
+<p>If your provider provides <code class="docutils literal notranslate"><span class="pre">Image</span></code>, <code class="docutils literal notranslate"><span class="pre">Audio</span></code>, <code class="docutils literal notranslate"><span class="pre">Video</span></code> and <code class="docutils literal notranslate"><span class="pre">File</span></code> slots as output, you can output these as strings that contain the binary data. These will be stored in files, and consumers will receive the corresponding file IDs instead.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 35.0.0.</span></p>
+</div>
+<p>Since v35.0.0 we recommend providing file-shaped output (ie. <code class="docutils literal notranslate"><span class="pre">Image</span></code>, <code class="docutils literal notranslate"><span class="pre">Audio</span></code>, <code class="docutils literal notranslate"><span class="pre">Video</span></code> and <code class="docutils literal notranslate"><span class="pre">File</span></code> slots) using the the <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\FileShaped</span></code> class, which also allows specifying a file extension.</p>
+<p>This eases mime-type detection for task processing consumers.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">process</span><span class="p">(</span>
+    <span class="o">?</span><span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$input</span><span class="p">,</span> <span class="nx">callable</span> <span class="nv">$reportProgress</span>
+<span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+    <span class="c1">// …</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;output&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">FileShaped</span><span class="p">(</span><span class="nx">EShapeType</span><span class="o">::</span><span class="na">Audio</span><span class="p">,</span> <span class="nv">$binaryOutput</span><span class="p">,</span> <span class="nx">extension</span><span class="o">:</span> <span class="s1">&#39;ogg&#39;</span><span class="p">)];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="implementing-an-advanced-taskprocessing-provider">
+<span id="task-processing-options"></span><h3>Implementing an advanced TaskProcessing provider<a class="headerlink" href="#implementing-an-advanced-taskprocessing-provider" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousOptionsAwareProvider</span></code> interface is available if you want your provider
+to support watermarking or streaming. If your provider implements <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousOptionsAwareProvider</span></code>,
+the process method should be adjusted:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">process</span><span class="p">(</span>
+    <span class="o">?</span><span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$input</span><span class="p">,</span> <span class="nx">callable</span> <span class="nv">$reportProgress</span><span class="p">,</span>
+    <span class="nx">SynchronousProviderOptions</span> <span class="nv">$options</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SynchronousProviderOptions</span><span class="p">(),</span>
+<span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+    <span class="nv">$includeWatermark</span> <span class="o">=</span> <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">getIncludeWatermark</span><span class="p">();</span>
+    <span class="nv">$preferStreaming</span> <span class="o">=</span> <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">getPreferStreaming</span><span class="p">();</span>
+    <span class="nv">$reportOutput</span> <span class="o">=</span> <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">getReportIntermediateOutput</span><span class="p">();</span>
+
+    <span class="nv">$textOutput</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$preferStreaming</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$reportOutput</span><span class="p">([</span><span class="s1">&#39;output&#39;</span> <span class="o">=&gt;</span> <span class="nv">$textOutput</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$textOutput</span> <span class="o">.=</span> <span class="s1">&#39; and &#39;</span> <span class="o">.</span> <span class="nv">$i</span><span class="p">;</span>
+        <span class="nv">$reportProgress</span><span class="p">(</span><span class="nv">$i</span> <span class="o">/</span> <span class="mi">100</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$preferStreaming</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$reportOutput</span><span class="p">([</span><span class="s1">&#39;output&#39;</span> <span class="o">=&gt;</span> <span class="nv">$textOutput</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$includeWatermark</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$textOutput</span> <span class="o">.=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">.</span> <span class="s1">&#39;This was generated using artificial intelligence.&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;output&#39;</span> <span class="o">=&gt;</span> <span class="nv">$textOutput</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
 <section id="providing-additional-inputs-and-outputs">
 <h3>Providing additional inputs and outputs<a class="headerlink" href="#providing-additional-inputs-and-outputs" title="Link to this heading"></a></h3>
 <p>Built-in task types often only specify the most basic input and output slots. If you would like to offer more input options
@@ -941,7 +1096,7 @@ here for completeness.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 08, 2026.
+      <span class="lastupdated">Last updated on Sep 16, 2026.
       </span></p>
   </div>
 
@@ -961,42 +1116,50 @@ here for completeness.</p>
             data-toggle="rst-current-version"
             aria-expanded="false"
             aria-controls="rst-other-versions-dev">
-      ☁️ 34
+      ☁️ 35
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-dev" class="rst-other-versions">
-      <dl>
-        <dt>☁️ Versions</dt>
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+          >
+            36 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
              
           >
             35 (latest)
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/developer_manual"
              
           >
             34 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/33/developer_manual"
              
           >
-            33
+            33 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/32/developer_manual"
              
           >
-            32
+            32 (stable)
           </a>
         </dd>
         

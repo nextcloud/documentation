@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using server-side encryption &mdash; Nextcloud 34 User Manual</title>
+  <title>Mettre en oeuvre le chiffrement côté-serveur (SSE) &mdash; Nextcloud 35 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
-    <link rel="next" title="Using end-to-end encryption" href="using_e2ee.html" />
+    <link rel="next" title="Utilisation du chiffrement de bout en bout" href="using_e2ee.html" />
     <link rel="prev" title="Sécurité &amp; chiffrement" href="security.html" />
    
   
@@ -71,23 +71,23 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Manuel utilisateur de Nextcloud 34 : Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Manuel utilisateur de Nextcloud 35 : Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Utilisation de l’application Activité</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Fichiers &amp; synchronisation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accéder à vos fichiers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing.html">Gérer vos fichiers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="collaboration.html">Partage &amp; Collaboration</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="security.html">Sécurité &amp; chiffrement</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Using server-side encryption</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Mettre en oeuvre le chiffrement côté-serveur (SSE)</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#encryption-faq">Questions récurrentes sur le chiffrement</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#using-encryption">Utilisation du chiffrement</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sharing-encrypted-files">Partage de fichiers chiffrés</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#files-not-encrypted">Fichiers qui ne sont pas chiffrés</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using_e2ee.html">Utilisation du chiffrement de bout en bout</a></li>
 </ul>
 </li>
 </ul>
@@ -108,7 +108,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../contents.html">Nextcloud 34 User Manual</a>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -118,7 +118,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Fichiers &amp; synchronisation</a></li>
           <li class="breadcrumb-item"><a href="security.html">Sécurité &amp; chiffrement</a></li>
-      <li class="breadcrumb-item active">Using server-side encryption</li>
+      <li class="breadcrumb-item active">Mettre en oeuvre le chiffrement côté-serveur (SSE)</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Éditer sur GitHub</a>
       </li>
@@ -129,15 +129,8 @@
            <div itemprop="articleBody">
              
   <section id="using-server-side-encryption">
-<h1>Using server-side encryption<a class="headerlink" href="#using-server-side-encryption" title="Lien vers cette rubrique"></a></h1>
-<p>Nextcloud includes a server-side encryption app, and when it is enabled by
-your Nextcloud administrator all of your Nextcloud data files are automatically
-encrypted on the server.
-Encryption is server-wide, so when it is enabled you cannot choose to keep your
-files unencrypted. You don’t have to do anything special, as it uses your
-Nextcloud login as the password for your unique private encryption key. Just log
-out and in and manage and share your files as you normally do, and you can
-still change your password whenever you want.</p>
+<h1>Mettre en oeuvre le chiffrement côté-serveur (SSE)<a class="headerlink" href="#using-server-side-encryption" title="Lien vers cette rubrique"></a></h1>
+<p>Nextcloud intègre une fonctionnalité de chiffrement côté serveur. Lorsque celle-ci est activée par votre administrateur Nextcloud, tous vos fichiers de données Nextcloud sont automatiquement chiffrés sur le serveur. Le chiffrement s’applique à l’ensemble du serveur ; par conséquent, une fois cette fonctionnalité activée, vous ne pouvez pas choisir de conserver vos fichiers non chiffrés. Vous n’avez aucune manipulation particulière à effectuer, car votre identifiant Nextcloud sert de mot de passe pour votre clé de chiffrement privée unique. Il suffit de vous déconnecter puis de vous reconnecter, et de gérer et partager vos fichiers comme habituellement ; vous pourrez toujours modifier votre mot de passe dès que vous le souhaiterez.</p>
 <p>Son objectif principal est de chiffrer les fichiers sur des stockages externes connectés à votre serveur Nextcloud. Ceci est une manière simple et sans couture de protéger  vos fichiers sur les services distants de stockage. Vous pouvez partager les fichiers distants à travers Nextcloud de la manière usuelle, en revanche, vous ne pouvez pas partager vos fichiers chiffrés directement à partir de vos services distants  de stockage utilisés, car les clés de chiffrement sont stockées sur le serveur Netxcloud, et ne sont jamais accessibles par les fournisseurs de services.</p>
 <p>If your Nextcloud server is not connected to any remote storage services, then
 it is better to use some other form of encryption such as file-level or whole
@@ -219,7 +212,7 @@ to learn more.)</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
         <a href="security.html" class="btn btn-neutral float-left" title="Sécurité &amp; chiffrement" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
-        <a href="using_e2ee.html" class="btn btn-neutral float-right" title="Using end-to-end encryption" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="using_e2ee.html" class="btn btn-neutral float-right" title="Utilisation du chiffrement de bout en bout" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -338,14 +331,14 @@ to learn more.)</p>
             aria-controls="rst-other-versions-user">
       🌐 French
       <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ 34
+       ☁️ 35
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
-      <dl>
-        <dt>🌐 Langues</dt>
+      <dl class="nc-languages-list">
+        <dt>Langues</dt>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ar/"
                
             >
@@ -353,7 +346,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/br/"
                
             >
@@ -361,7 +354,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ca/"
                
             >
@@ -369,7 +362,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_CN/"
                
             >
@@ -377,7 +370,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_HK/"
                
             >
@@ -385,7 +378,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_TW/"
                
             >
@@ -393,7 +386,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/cs/"
                
             >
@@ -401,7 +394,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/da/"
                
             >
@@ -409,7 +402,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nl/"
                
             >
@@ -417,7 +410,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/en/"
                
             >
@@ -425,7 +418,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/fi_FI/"
                
             >
@@ -433,7 +426,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/fr/"
                
                style="color: var(--dark-link-color);"
@@ -443,7 +436,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/gl/"
                
             >
@@ -451,7 +444,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/de/"
                
             >
@@ -459,7 +452,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/el/"
                
             >
@@ -467,7 +460,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/hu_HU/"
                
             >
@@ -475,7 +468,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/id/"
                
             >
@@ -483,7 +476,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ga/"
                
             >
@@ -491,7 +484,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/it/"
                
             >
@@ -499,7 +492,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ja_JP/"
                
             >
@@ -507,7 +500,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ko/"
                
             >
@@ -515,7 +508,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/lo/"
                
             >
@@ -523,7 +516,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/lt/"
                
             >
@@ -531,7 +524,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -539,7 +532,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nb_NO/"
                
             >
@@ -547,7 +540,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nn/"
                
             >
@@ -555,7 +548,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pl/"
                
             >
@@ -563,7 +556,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pt_PT/"
                
             >
@@ -571,7 +564,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pt_BR/"
                
             >
@@ -579,7 +572,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ro/"
                
             >
@@ -587,7 +580,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ru/"
                
             >
@@ -595,7 +588,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/si/"
                
             >
@@ -603,7 +596,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sk_SK/"
                
             >
@@ -611,7 +604,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sr/"
                
             >
@@ -619,7 +612,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/es/"
                
             >
@@ -627,7 +620,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sv/"
                
             >
@@ -635,7 +628,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ta/"
                
             >
@@ -643,7 +636,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/tr/"
                
             >
@@ -651,7 +644,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/uk_UA/"
                
             >
@@ -659,7 +652,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/uz/"
                
             >
@@ -667,7 +660,7 @@ to learn more.)</p>
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/vi/"
                
             >
@@ -678,38 +671,46 @@ to learn more.)</p>
       </dl>
     </div>
     <div class="rst-other-versions">
-      <dl>
-        <dt>☁️ Versions</dt>
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              36 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
                
             >
               35 (latest)
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+          <dd>
+            <a href="https://docs.nextcloud.com/server/34/user_manual"
                
             >
               34 (stable)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/33/user_manual"
                
             >
-              33
+              33 (stable)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
-              32
+              32 (stable)
             </a>
           </dd>
         

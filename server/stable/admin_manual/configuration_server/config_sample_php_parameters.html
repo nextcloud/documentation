@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Configuration Parameters &mdash; Nextcloud 34 Administration Manual</title>
+  <title>Configuration Parameters &mdash; Nextcloud 35 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -285,7 +285,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#comments">Comments</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#comments-managerfactory">comments.managerFactory</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#systemtags-managerfactory">systemtags.managerFactory</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#maintenance">Maintenance</a><ul>
@@ -467,6 +466,7 @@
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management_api.html">Apps management API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
 </ul>
@@ -514,7 +514,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../contents.html">Nextcloud 34 Administration Manual</a>
+          <a href="../contents.html">Nextcloud 35 Administration Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -812,8 +812,8 @@ is created when you install Nextcloud.</p>
 <p>It is useful when your Nextcloud instance is using different PHP servers.
 Once it’s set it shouldn’t be changed.</p>
 <p>Value must be an integer, comprised between 0 and 511.</p>
-<p>When config.php is shared between different servers, this value should be overriden with “NC_serverid=&lt;int&gt;” on each server.
-Note that it must be overriden for CLI and for your webserver.</p>
+<p>When config.php is shared between different servers, this value should be overridden with “NC_serverid=&lt;int&gt;” on each server.
+Note that it must be overridden for CLI and for your webserver.</p>
 <p>Example for CLI: NC_serverid=42 occ config:list system</p>
 </section>
 <section id="passwordsalt">
@@ -1134,19 +1134,36 @@ templatedirectory to empty strings.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;remember_login_cookie_lifetime&#39;</span> <span class="o">=&gt;</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">15</span><span class="p">,</span>
 </pre></div>
 </div>
-<p>Lifetime of the remember login cookie. This should be larger than the
-session_lifetime. If it is set to 0, remember me is disabled.</p>
-<p>Defaults to <code class="docutils literal notranslate"><span class="pre">60*60*24*15</span></code> seconds (15 days)</p>
+<p>Lifetime of logins where the user selected “Remember me”, in seconds.</p>
+<p>A value &gt; <code class="docutils literal notranslate"><span class="pre">0</span></code> means “Remember me” is available.
+To make “Remember me” unavailable to users, set to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p>To avoid unexpected expiry, set this higher than <code class="docutils literal notranslate"><span class="pre">session_lifetime</span></code>.</p>
+<p>Despite the key name, this also affects server-side expiration of remembered
+login tokens. Clearing browser cookies removes remembered login on that
+browser, but does not itself revoke server-side remember tokens.</p>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">60*60*24*15</span></code> seconds (15 days).</p>
 </section>
 <section id="session-lifetime">
 <h3>session_lifetime<a class="headerlink" href="#session-lifetime" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;session_lifetime&#39;</span> <span class="o">=&gt;</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span><span class="p">,</span>
 </pre></div>
 </div>
-<p>The lifetime of a session after inactivity.</p>
-<p>The maximum possible time is limited by the <code class="docutils literal notranslate"><span class="pre">session.gc_maxlifetime</span></code> php.ini setting
-which would overwrite this option if it is less than the value in the <code class="docutils literal notranslate"><span class="pre">config.php</span></code></p>
-<p>Defaults to <code class="docutils literal notranslate"><span class="pre">60*60*24</span></code> seconds (24 hours)</p>
+<p>Lifetime of authenticated sessions after inactivity, in seconds.</p>
+<p>When “Remember me” is enabled, users may be transparently
+re-authenticated after session expiry/logout while the remember-login
+cookie remains valid.</p>
+<p>To avoid earlier-than-expected remembered-login expiry, set
+<code class="docutils literal notranslate"><span class="pre">remember_login_cookie_lifetime</span></code> higher than this value.</p>
+<p>Effective behavior also depends on related settings:
+- <code class="docutils literal notranslate"><span class="pre">session_keepalive</span></code> can extend active Web UI sessions via heartbeat requests.
+- <code class="docutils literal notranslate"><span class="pre">session_relaxed_expiry</span></code> may allow sessions to persist longer than this value.
+- <code class="docutils literal notranslate"><span class="pre">auto_logout</span></code> can enforce logout behavior in the Web UI.</p>
+<p>The effective maximum retention also depends on PHP settings and external
+session-backend cleanup policies, including (but not limited to) PHP’s
+<code class="docutils literal notranslate"><span class="pre">session.gc_maxlifetime</span></code> and environment-specific cleanup behavior (e.g., distro
+cron/tmpfiles policies and handler-specific GC behavior). These may override this
+value.</p>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">60*60*24</span></code> seconds (24 hours).</p>
 </section>
 <section id="davstorage-request-timeout">
 <h3>davstorage.request_timeout<a class="headerlink" href="#davstorage-request-timeout" title="Link to this heading"></a></h3>
@@ -2623,16 +2640,6 @@ own or 3rd-party CommentsManager should be used that – for instance – uses t
 filesystem instead of the database to keep the comments.</p>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">\OC\Comments\ManagerFactory</span></code></p>
 </section>
-<section id="systemtags-managerfactory">
-<h3>systemtags.managerFactory<a class="headerlink" href="#systemtags-managerfactory" title="Link to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;systemtags.managerFactory&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\SystemTag\ManagerFactory&#39;</span><span class="p">,</span>
-</pre></div>
-</div>
-<p>Replaces the default System Tags Manager Factory. This can be utilized if an
-own or 3rd-party SystemTagsManager should be used that – for instance – uses the
-filesystem instead of the database to keep the tags.</p>
-<p>Defaults to <code class="docutils literal notranslate"><span class="pre">\OC\SystemTag\ManagerFactory</span></code></p>
-</section>
 </section>
 <section id="maintenance">
 <h2>Maintenance<a class="headerlink" href="#maintenance" title="Link to this heading"></a></h2>
@@ -3518,7 +3525,7 @@ encrypted files remain readable regardless of the format.</p>
 </section>
 <section id="minimum-supported-desktop-version">
 <h3>minimum.supported.desktop.version<a class="headerlink" href="#minimum-supported-desktop-version" title="Link to this heading"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;minimum.supported.desktop.version&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;3.2.50&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;minimum.supported.desktop.version&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;3.3.50&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>Specify the minimum Nextcloud desktop client version allowed to sync with this
@@ -3526,7 +3533,7 @@ server. Connections from earlier clients will be denied. Defaults to the
 minimum officially supported version at the time of this server release.</p>
 <p>Changing this may cause older, unsupported clients to malfunction, potentially
 leading to data loss or unexpected behavior.</p>
-<p>Defaults to <code class="docutils literal notranslate"><span class="pre">3.2.50</span></code></p>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">3.3.50</span></code></p>
 </section>
 <section id="maximum-supported-desktop-version">
 <h3>maximum.supported.desktop.version<a class="headerlink" href="#maximum-supported-desktop-version" title="Link to this heading"></a></h3>
@@ -4246,42 +4253,50 @@ Restricts the IP addresses able to make requests on the <code class="docutils li
             data-toggle="rst-current-version"
             aria-expanded="false"
             aria-controls="rst-other-versions-admin">
-      ☁️ 34
+      ☁️ 35
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-admin" class="rst-other-versions">
-      <dl>
-        <dt>☁️ Versions</dt>
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+          >
+            36 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
              
           >
             35 (latest)
           </a>
         </dd>
         
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/admin_manual"
              
           >
             34 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/33/admin_manual"
              
           >
-            33
+            33 (stable)
           </a>
         </dd>
         
-        <dd style="width: 32%">
+        <dd>
           <a href="https://docs.nextcloud.com/server/32/admin_manual"
              
           >
-            32
+            32 (stable)
           </a>
         </dd>
         

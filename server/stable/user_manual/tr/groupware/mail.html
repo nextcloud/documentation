@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>E-posta uygulamasını kullanmak &mdash; Nextcloud 34 User Manual</title>
+  <title>E-posta uygulamasını kullanmak &mdash; Nextcloud 35 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e1cd3458" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -71,7 +71,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 34 kullanıcı rehberi giriş</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 35 kullanıcı rehberi giriş</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
@@ -92,10 +92,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#all-inboxes">Tüm gelen kutuları</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#account-settings">Hesap ayarları</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#move-messages-to-junk-folder">İletileri gereksiz klasörüne taşımak</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#refresh-mailbox">Refresh mailbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refresh-folder">Refresh folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#unified-search">Unified search</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#search-in-mailbox">E-posta kutusunda arama yapmak</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#advanced-search-in-mailbox">E-posta kutusunda gelişmiş arama yapmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-in-folder">Search in folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-search-in-folder">Advanced search in folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#enable-mail-body-search">E-posta içeriğinde arama yapmak</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#account-delegation">Hesap yetkilendirmesi</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#automatic-trash-deletion">Otomatik çöp boşaltma</a></li>
@@ -109,10 +109,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#mention-contacts">Kişileri anmak</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#text-blocks">Yazı blokları</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#outbox">Giden kutusu</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mailbox-actions">E-posta kutusu işlemleri</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#add-a-mailbox">E-posta kutusu eklemek</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#add-a-submailbox">Bir alt e-posta kutusu eklemek</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#shared-mailbox">Paylaşılan e-posta kutusu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#folder-actions">Folder actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-folder">Add a folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-subfolder">Add a subfolder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-folder">Shared folder</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#envelope-actions">Zarf işlemleri</a><ul>
@@ -162,6 +162,7 @@
 <li class="toctree-l2"><a class="reference internal" href="sync_kde.html">KDE Kontact ile eşitlemek</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">GNOME masaüstü ile eşitleme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Windows 10 ile eşitlemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">Migrate data between instances</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Konuş</a></li>
@@ -179,7 +180,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../contents.html">Nextcloud 34 User Manual</a>
+          <a href="../contents.html">Nextcloud 35 User Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -243,8 +244,8 @@
 <p><span class="versionmodified added">Added in version 5.2: </span>Nextcloud 30 or newer</p>
 </div>
 <p>E-posta, iki farklı ileti görünümü ve çalışma kipi arasında geçiş yapabilir: <em>Yazışma</em> ve <em>Tekil</em>.</p>
-<p><em>Yazışma</em> görünümde, iletiler görüşmeye göre gruplandırılır. E-posta kutusu ileti listesinde, ilgili iletiler bir araya toplanır. Böylece yalnızca son ileti görüntülenir. Yazışma iletisi seçildiğinde, tüm ilgili iletiler ileti görüntüleme panosunda görüntülenir. Böylece, yazışmaları izlemek ve yanıtların bağlamını anlamak kolaylaşır. Bu görünümde, taşıma ve silme gibi ileti işlemleri tüm gruba uygulanır. Yani bir yazışmayı taşıdığınızda ya da sildiğinizde, o yazışmadaki tüm iletiler etkilenir.</p>
-<p><em>Tekil</em> görünümünde, iletiler hem e-posta kutusu ileti listesinde hem de ileti görüntüleme panosunda ayrı ayrı görüntülenir. Taşıma ve silme gibi işlemler yalnızca seçilmiş iletiye uygulanır. Bu görünüm, tüm yazışmayı etkilemeden iletileri ayrı ayrı yönetmek için kullanışlıdır.</p>
+<p>In <em>Threaded</em> mode, messages are grouped by conversation. In the folder message list, related messages are stacked so only the most recent message is shown, and all relates messages are shown in message display panel after the stacked message is selected. This is useful for following discussions and understanding the context of replies. In this mode, message operation like move and delete apply to the entire thread, meaning that when you move or delete a thread, all messages within that thread are affected.</p>
+<p>In <em>Singleton</em> mode, messages are displayed individually, in both the folder message list and message display panel and operation like move and delete apply to only the selected message. This mode is useful when you want to manage messages separately without affecting the entire conversation.</p>
 <ol class="arabic simple">
 <li><p>E-posta ayarlarını değiştirmek</p></li>
 <li><p><em>Yazışma</em> ya da <em>Tekil</em> olarak seçin</p></li>
@@ -276,7 +277,7 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
-<p>Bu değişiklik tüm hesaplarınıza ve e-posta kutularınıza uygulanır</p>
+<p>This change will apply across all your accounts and folders</p>
 </div>
 </section>
 <section id="sort-favorites-up">
@@ -344,9 +345,9 @@
 <img alt="../../_images/mail_move-message-to-junk-folder.png" src="../../_images/mail_move-message-to-junk-folder.png" />
 </figure>
 </section>
-<section id="refresh-mailbox">
-<h3>Refresh mailbox<a class="headerlink" href="#refresh-mailbox" title="Link to this heading"></a></h3>
-<p>You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
+<section id="refresh-folder">
+<h3>Refresh folder<a class="headerlink" href="#refresh-folder" title="Link to this heading"></a></h3>
+<p>You can manually trigger a sync of your folder by clicking the refresh button located at the top of the folder list.
 Starting from <code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">5.7</span></code> triggering the sync will also refresh the list of folders for the selected account.</p>
 </section>
 <section id="unified-search">
@@ -355,17 +356,17 @@ Starting from <code class="docutils literal notranslate"><span class="pre">versi
 feature (see <a class="reference internal" href="../webinterface.html"><span class="doc">The Nextcloud web interface</span></a> for details). You can search for emails across
 all your accounts using the search bar in the Nextcloud header.</p>
 <p>Mail searches email subjects and sender/recipient fields. To search email bodies,
-use the mailbox search feature in the app.</p>
+use the folder search feature in the app.</p>
 </section>
-<section id="search-in-mailbox">
-<h3>E-posta kutusunda arama yapmak<a class="headerlink" href="#search-in-mailbox" title="Link to this heading"></a></h3>
+<section id="search-in-folder">
+<h3>Search in folder<a class="headerlink" href="#search-in-folder" title="Link to this heading"></a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.1: </span>Nextcloud 25 or newer</p>
 </div>
 <p>Herhangi bir e-posta yerleşimindeki zarf listesinin en üstünde, e-posta konularını aramak için bir arama alanı kısayolu bulunur. <code class="docutils literal notranslate"><span class="pre">3.7</span> <span class="pre">sürümü</span></code> ile başlayarak, bu kısayol varsayılan olarak konuya, alıcıya (kime) veya göndericiye (kimden) göre arama yapmanızı sağlar.</p>
 </section>
-<section id="advanced-search-in-mailbox">
-<h3>E-posta kutusunda gelişmiş arama yapmak<a class="headerlink" href="#advanced-search-in-mailbox" title="Link to this heading"></a></h3>
+<section id="advanced-search-in-folder">
+<h3>Advanced search in folder<a class="headerlink" href="#advanced-search-in-folder" title="Link to this heading"></a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
@@ -380,18 +381,21 @@ use the mailbox search feature in the app.</p>
 <p>Kullanıma almak için:</p>
 <ol class="arabic simple">
 <li><p>Hesap ayarlarına gidin</p></li>
-<li><p>E-posta kutusu arama bölümüne gidin</p></li>
+<li><p>Go to Folder search</p></li>
 <li><p>E-posta içeriğinde arama yapmak</p></li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Uyarı</p>
-<p>Birleşik e-posta kutuları için de kullanıma almak isterseniz, bu işlemi E-posta ayarlarından yapmanız gerekir</p>
+<p>If you want to also enable it for unified folders you have to do so in Mail settings</p>
 </div>
 <p>Kullanıma alındığında asıl arama kutusu artık eüpostaların hem konularında hem deiçeriklerinde arama yapar ve gelişmiş aramada ayrı bir <em>İçerik</em> seçeneği görüntülenir.</p>
 </section>
 <section id="account-delegation">
 <h3>Hesap yetkilendirmesi<a class="headerlink" href="#account-delegation" title="Link to this heading"></a></h3>
-<p>Uygulamada, bir kullanıcının diğerinin adresinden e-posta gönderebilmesi için hesap yetkilendirmesi yapılabilir.</p>
+<p>The app supports two ways of letting one user act on behalf of another’s mail account.</p>
+<section id="sending-as-another-address-server-alias">
+<h4>Sending as another address (server alias)<a class="headerlink" href="#sending-as-another-address-server-alias" title="Link to this heading"></a></h4>
+<p>This lets you send emails from the address of another account.</p>
 <ol class="arabic simple">
 <li><p>Yetkilendirme, e-posta sunucusunda bir yönetici tarafından yapılandırılmalıdır.</p></li>
 <li><p>Diğer e-posta adresini kendi e-posta hesabınıza takma ad olarak ekleyin</p></li>
@@ -399,8 +403,36 @@ use the mailbox search feature in the app.</p>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Uyarı</p>
-<p>Kişisel <em>Gönderilmiş</em> kutunuzda tutuluyorsa, gönderilen e-posta özgün hesap tarafından görülemeyebilir.</p>
+<p>The sent email might not be visible to the original account if it’s stored in your personal <em>Sent</em> folder.</p>
 </div>
+</section>
+<section id="native-account-delegation">
+<h4>Native account delegation<a class="headerlink" href="#native-account-delegation" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.9: </span>Nextcloud Mail</p>
+</div>
+<p>Native account delegation lets you grant other Nextcloud users access to one of your mail accounts directly from the
+app, without any server-side alias configuration. A delegate can do everything the account owner can — send, receive,
+and delete mail on your behalf — except deleting the account or updating its authentication information.</p>
+<p>To delegate one of your accounts:</p>
+<ol class="arabic simple">
+<li><p>Open the account’s three-dot menu and select <strong>Delegate account</strong></p></li>
+<li><p>In the <strong>Delegation</strong> dialog, click <strong>Add delegate</strong></p></li>
+<li><p>Use the <strong>Select a user</strong> field to choose the Nextcloud user you want to grant access to</p></li>
+<li><p>Confirm with <strong>Delegate access</strong></p></li>
+</ol>
+<p>The shared account then appears in the delegate’s account list, marked as delegated.</p>
+<p>To remove access:</p>
+<ol class="arabic simple">
+<li><p>Open the <strong>Delegate account</strong> dialog again</p></li>
+<li><p>Click <strong>Revoke</strong> next to the delegate you want to remove</p></li>
+<li><p>Confirm with <strong>Revoke access</strong></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Provisioned accounts cannot be delegated.</p>
+</div>
+</section>
 </section>
 <section id="automatic-trash-deletion">
 <h3>Otomatik çöp boşaltma<a class="headerlink" href="#automatic-trash-deletion" title="Link to this heading"></a></h3>
@@ -442,7 +474,7 @@ use the mailbox search feature in the app.</p>
 <figure class="align-default">
 <img alt="../../_images/mail-composer-indicator.png" src="../../_images/mail-composer-indicator.png" />
 </figure>
-<p>Press the <strong>Close</strong> button on the modal or on the minimized composer indicator to stop editing a message. A draft will be saved automatically into your draft mailbox.</p>
+<p>Press the <strong>Close</strong> button on the modal or on the minimized composer indicator to stop editing a message. A draft will be saved automatically into your draft folder.</p>
 </section>
 </section>
 <section id="recipient-info-on-composer">
@@ -483,7 +515,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <p class="admonition-title">Not</p>
 <p>Gönderim sırasında bir sorun oluştuğunda üç hata iletisinden biri görüntülenir:</p>
 <dl class="simple">
-<dt>“Gönderilmiş” kutusuna kopyalanamadı</dt><dd><p>E-posta gönderilmiştir ancak “Gönderilmiş” kutusuna kopyalanamamıştır. Bu hata giden kutusu tarafından işlenir ve kopyalama işlemi yeniden denenir.</p>
+<dt>Could not copy to “Sent” folder</dt><dd><p>The mail was sent but couldn’t be copied to the “Sent” folder. This error will be handled by the outbox and the copy operation will be tried again.</p>
 </dd>
 <dt>E-posta sunucusu sorunu</dt><dd><p>Sending was unsuccessful with a state that can be retried (ex: the SMTP server couldn’t be reached). The outbox will retry sending the message.</p>
 </dd>
@@ -492,25 +524,25 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 </dl>
 </div>
 </section>
-<section id="mailbox-actions">
-<h2>E-posta kutusu işlemleri<a class="headerlink" href="#mailbox-actions" title="Link to this heading"></a></h2>
-<section id="add-a-mailbox">
-<h3>E-posta kutusu eklemek<a class="headerlink" href="#add-a-mailbox" title="Link to this heading"></a></h3>
+<section id="folder-actions">
+<h2>Folder actions<a class="headerlink" href="#folder-actions" title="Link to this heading"></a></h2>
+<section id="add-a-folder">
+<h3>Add a folder<a class="headerlink" href="#add-a-folder" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Bir hesabın işlem menüsünü açın</p></li>
-<li><p>E-posta kutusu ekle üzerine tıklayın</p></li>
+<li><p>Click add folder</p></li>
 </ol>
 </section>
-<section id="add-a-submailbox">
-<h3>Bir alt e-posta kutusu eklemek<a class="headerlink" href="#add-a-submailbox" title="Link to this heading"></a></h3>
+<section id="add-a-subfolder">
+<h3>Add a subfolder<a class="headerlink" href="#add-a-subfolder" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Bir e-posta kutusunun işlem menüsünü açın</p></li>
-<li><p>Alt e-posta kutusu ekle üzerine tıklayın</p></li>
+<li><p>Open the action menu of a folder</p></li>
+<li><p>Click add subfolder</p></li>
 </ol>
 </section>
-<section id="shared-mailbox">
-<h3>Paylaşılan e-posta kutusu<a class="headerlink" href="#shared-mailbox" title="Link to this heading"></a></h3>
-<p>Size belirli izinler verilmiş bir e-posta kutusu paylaşıldıysa, bu e-posta kutusu aşağıdaki gibi bir paylaşım simgesiyle yeni bir posta kutusu olarak görüntülenir:</p>
+<section id="shared-folder">
+<h3>Shared folder<a class="headerlink" href="#shared-folder" title="Link to this heading"></a></h3>
+<p>If a folder was shared with you with some specific rights, that folder will show as a new folder with a shared icon as below:</p>
 <figure class="align-default">
 <img alt="../../_images/shared-mailbox-icon.png" src="../../_images/shared-mailbox-icon.png" />
 </figure>
@@ -589,7 +621,7 @@ To show the right pane again, simply click the <strong>Minimize</strong> icon in
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 4.2: </span>Nextcloud 30 or newer</p>
 </div>
-<p>E-posta kutunuza baktığınızda, e-postalarınızın yapay zeka tarafından oluşturulmuş kısa bir özetini ön izleme olarak görürsünüz.</p>
+<p>When looking through your folder you will see a short AI generated summary of your emails as a preview.</p>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
 <p>Bu özelliğin yönetici tarafından açılmış olması gerektiğini lütfen unutmayın</p>
@@ -626,7 +658,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.4: </span>Nextcloud 26 or newer</p>
 </div>
-<p>Bir iletiyi ya da yazışmayı ertelemek, seçilmiş erteleme tarihine ulaşılana ve ileti ya da yazışma özgün e-posta kutusuna geri taşınana kadar onu özel bir e-posta kutusuna taşır.</p>
+<p>Snoozing a message or thread moves it into a dedicated folder until the selected snooze date is reached and the message or thread is moved back to the original folder.</p>
 <ol class="arabic simple">
 <li><p>Bir zarfın ya da yazışmanın işlem menüsünü açın</p></li>
 <li><p><em>Ertele</em> üzerine tıklayın</p></li>
@@ -980,14 +1012,14 @@ Quick actions are scoped to one mail account and can be created and managed in t
             aria-controls="rst-other-versions-user">
       🌐 Turkish
       <span class="fa fa-caret-down" aria-hidden="true"></span>
-       ☁️ 34
+       ☁️ 35
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
-      <dl>
-        <dt>🌐 Diller</dt>
+      <dl class="nc-languages-list">
+        <dt>Diller</dt>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ar/"
                
             >
@@ -995,7 +1027,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/br/"
                
             >
@@ -1003,7 +1035,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ca/"
                
             >
@@ -1011,7 +1043,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_CN/"
                
             >
@@ -1019,7 +1051,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_HK/"
                
             >
@@ -1027,7 +1059,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/zh_TW/"
                
             >
@@ -1035,7 +1067,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/cs/"
                
             >
@@ -1043,7 +1075,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/da/"
                
             >
@@ -1051,7 +1083,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nl/"
                
             >
@@ -1059,7 +1091,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/en/"
                
             >
@@ -1067,7 +1099,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/fi_FI/"
                
             >
@@ -1075,7 +1107,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/fr/"
                
             >
@@ -1083,7 +1115,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/gl/"
                
             >
@@ -1091,7 +1123,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/de/"
                
             >
@@ -1099,7 +1131,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/el/"
                
             >
@@ -1107,7 +1139,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/hu_HU/"
                
             >
@@ -1115,7 +1147,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/id/"
                
             >
@@ -1123,7 +1155,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ga/"
                
             >
@@ -1131,7 +1163,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/it/"
                
             >
@@ -1139,7 +1171,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ja_JP/"
                
             >
@@ -1147,7 +1179,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ko/"
                
             >
@@ -1155,7 +1187,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/lo/"
                
             >
@@ -1163,7 +1195,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/lt/"
                
             >
@@ -1171,7 +1203,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -1179,7 +1211,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nb_NO/"
                
             >
@@ -1187,7 +1219,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/nn/"
                
             >
@@ -1195,7 +1227,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pl/"
                
             >
@@ -1203,7 +1235,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pt_PT/"
                
             >
@@ -1211,7 +1243,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/pt_BR/"
                
             >
@@ -1219,7 +1251,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ro/"
                
             >
@@ -1227,7 +1259,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ru/"
                
             >
@@ -1235,7 +1267,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/si/"
                
             >
@@ -1243,7 +1275,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sk_SK/"
                
             >
@@ -1251,7 +1283,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sr/"
                
             >
@@ -1259,7 +1291,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/es/"
                
             >
@@ -1267,7 +1299,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/sv/"
                
             >
@@ -1275,7 +1307,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/ta/"
                
             >
@@ -1283,7 +1315,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/tr/"
                
                style="color: var(--dark-link-color);"
@@ -1293,7 +1325,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/uk_UA/"
                
             >
@@ -1301,7 +1333,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/uz/"
                
             >
@@ -1309,7 +1341,7 @@ Quick actions are scoped to one mail account and can be created and managed in t
             </a>
           </dd>
         
-          <dd style="width: 32%; vertical-align: top;">
+          <dd>
             <a href="/server/latest/user_manual/vi/"
                
             >
@@ -1320,38 +1352,46 @@ Quick actions are scoped to one mail account and can be created and managed in t
       </dl>
     </div>
     <div class="rst-other-versions">
-      <dl>
-        <dt>☁️ Sürümler</dt>
+      <dl class="nc-versions-list">
+        <dt>Sürümler</dt>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              36 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
                
             >
               35 (latest)
             </a>
           </dd>
         
-          <dd style="width: 32%">
-            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+          <dd>
+            <a href="https://docs.nextcloud.com/server/34/user_manual"
                
             >
               34 (stable)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/33/user_manual"
                
             >
-              33
+              33 (stable)
             </a>
           </dd>
         
-          <dd style="width: 32%">
+          <dd>
             <a href="https://docs.nextcloud.com/server/32/user_manual"
                
             >
-              32
+              32 (stable)
             </a>
           </dd>
         
