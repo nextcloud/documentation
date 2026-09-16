@@ -11,78 +11,14 @@ This pages covers new features of the platform.
     Every feature should just have a brief description. Details have to be documented on a dedicated, persistent page.
     After branch-off the contents below will be cleared.
 
-Typed query builder
--------------------
+New ``\OCP\Files\IUserFolder`` API
+----------------------------------
 
-``\OCP\DB\QueryBuilder\ITypedQueryBuilder`` was added in favour of ``\OCP\DB\QueryBuilder\IQueryBuilder`` and can be accessed through ``\OCP\IDBConnection::getTypedQueryBuilder``.
+A new interface ``\OCP\Files\IUserFolder`` was added, extending ``\OCP\Files\Folder``.
+This interface represents the user root folder similar to ``\OCP\Files\IRootFolder``.
+``\OCP\Files\IRootFolder::getUserFolder`` now returns a ``\OCP\Files\IUserFolder`` instead of a ``\OCP\Files\Folder``.
 
-This query builder has the benefit of accurately returning the selected columns in a query result, increasing type safety.
-
-.. todo:: This linked page does not have coverage for the new API.
-
-See :ref:`database` for details.
-
-Expensive post migration repair steps
--------------------------------------
-
-``\OCP\Migration\IRepairStepExpensive`` was added and can be used to mark post-migration repair steps as expensive.
-
-Expensive repair steps are non-critical repair steps that might take a long time to execute.
-Non-critical means that they are not required to directly be executed during migration to have a working instance,
-but they might be required to have a fully working instance later on.
-
-Expensive repair steps are only executed when explicitly requested by the administrator.
-
-See :ref:`migration-repair-steps` for details.
-
-Task Processing
----------------
-
-Support for streaming the text output of TaskProcessing providers has been added.
-See :ref:`task_processing-options` for details about how to adjust your providers.
-
-Added APIs
-^^^^^^^^^^
-
-- There is a new TaskProcessing provider interface: ``\OCP\TaskProcessing\ISynchronousOptionsAwareProvider``. It takes a ``\OCP\TaskProcessing\SynchronousProviderOptions`` option object that contains includeWatermarks, preferStreaming and the callback to report intermediate output.
-
-Changed APIs
-^^^^^^^^^^^^
-
-- The ``\OCP\TaskProcessing\Task`` class now has ``getPreferStreaming`` and ``setPreferStreaming`` methods for indicating whether the provider should report the output progressively if it supports it.
-- The TaskProcessing OCS API now also accepts the ``preferStreaming`` flag when scheduling tasks.
-
-Context Chat
-------------
-
-A new interface was added to allow content providers to supply additional metadata for improved document retrieval
-and LLM responses.
-
-See :ref:`context_chat` for details.
-
-Added APIs
-^^^^^^^^^^
-
-- A new interface ``\OCP\ContextChat\IContentProviderWithSearchTask`` was added, extending ``\OCP\ContextChat\IContentProvider``.
-  It can be implemented as a drop-in replacement for ``\OCP\ContextChat\IContentProvider``.
-
-Files
------
-
-``\OCP\Files\IUserFolder`` was added. It represents the root folder of a single user, similar to how
-``\OCP\Files\IRootFolder`` represents the root of the whole instance, and groups the methods that only apply to the
-files of one user.
+Moreover ``\OCP\Files\IUserFolder::getUserQuota`` was added to read the used, free, total and configured quota space of a user.
+As the new interface extends ``\OCP\Files\Folder`` this is not a breaking change for consumers.
 
 See :doc:`../basics/storage/filesystem` for details.
-
-Added APIs
-^^^^^^^^^^
-
-- A new interface ``\OCP\Files\IUserFolder`` was added, extending ``\OCP\Files\Folder``.
-- ``\OCP\Files\IUserFolder::getUserQuota`` was added to read the used, free, total and configured quota space of a user.
-
-Changed APIs
-^^^^^^^^^^^^
-
-- ``\OCP\Files\IRootFolder::getUserFolder`` now returns a ``\OCP\Files\IUserFolder`` instead of a ``\OCP\Files\Folder``.
-  As the new interface extends ``\OCP\Files\Folder`` this is not a breaking change for consumers.
