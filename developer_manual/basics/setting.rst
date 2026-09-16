@@ -206,7 +206,7 @@ Using configuration constants
 
 For stable, declared configuration keys, prefer dedicated constants or constants from an
 app's ``ConfigLexicon`` class. This keeps the delegated authorization list synchronized
-with the app's configuration definitions. 
+with the app's configuration definitions.
 
 For example, ``<myapp>/lib/ConfigLexicon.php`` might contain:
 
