@@ -612,7 +612,7 @@ You can set some special headers that Nextcloud will interpret.
 |                       | | This allow the server to abort faster if the remaining        |                                            |
 |                       | | user's quota is not enough.                                   |                                            |
 +-----------------------+-----------------------------------------------------------------+--------------------------------------------+
-| X-NC-WebDAV-AutoMkcol | | When set to ``1``, instructs the server to automatically      |                                            |
+| X-NC-WebDAV-Auto-Mkcol| | When set to ``1``, instructs the server to automatically      |                                            |
 |                       | | create any missing parent directories when uploading a file.  |                                            |
 |                       | | Available since Nextcloud 32.                                 |                                            |
 +-----------------------+-----------------------------------------------------------------+--------------------------------------------+

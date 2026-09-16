@@ -118,7 +118,7 @@ Frontend apps
 ~~~~~~~~~~~~~
 
 * `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a graphical UI for the various tasks, a smart picker and "Chat with AI" functionality
-* `Mail <https://apps.nextcloud.com/apps/mail>`_ for summarizing mail threads (see :ref:`the Nextcloud Mail docs<mail_thread_summary>` for how to enable this)
+* `Mail <https://apps.nextcloud.com/apps/mail>`_ for summarizing mail threads (see :ref:`the Nextcloud Mail docs<mail_thread_summary>` for how to enable this). For smart replies. To active it - Administration settings > Groupware > Mail app > Enable text processing through LLMs
 * `Summary Bot <https://apps.nextcloud.com/apps/summary_bot>`_ for summarizing chat histories in `Talk <https://apps.nextcloud.com/apps/spreed>`_
 * `Talk <https://apps.nextcloud.com/apps/spreed>`_ for summarizing chat history (see `Nextcloud Talk docs <https://nextcloud-talk.readthedocs.io/en/latest/settings/#app-configuration>`_ for how to enable this)
 * `Text <https://apps.nextcloud.com/apps/text>`_ for offering an inline graphical UI for the various tasks
@@ -157,6 +157,7 @@ Frontend apps
 * `Collectives <https://apps.nextcloud.com/apps/collectives>`_ for offering a translation UI in the page content
 * `Whiteboard <https://apps.nextcloud.com/apps/whiteboard>`_ for offering a translation UI through the assistant
 * `Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_ for offering translation UI in the document content
+* `Mail <https://apps.nextcloud.com/apps/mail>`_ for offering translations for messages
 
 Backend apps
 ~~~~~~~~~~~~
@@ -252,7 +253,7 @@ Apps can integrate their content with Context Chat to make it available for quer
 
 * *files*
 * `Analytics <https://apps.nextcloud.com/apps/analytics>`_
-* `Mail <https://apps.nextcloud.com/apps/mail>`_ (coming soon)
+* `Mail <https://apps.nextcloud.com/apps/mail>`_
 * `Bookmarks <https://apps.nextcloud.com/apps/bookmarks>`_
 
 Context Chat Search
