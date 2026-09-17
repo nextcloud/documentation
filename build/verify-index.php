@@ -56,6 +56,29 @@ if (!preg_match('/<h2>Nextcloud \d+/', $content)) {
 $version_count = preg_match_all('/<h2>Nextcloud (\d+)/', $content, $versions);
 fprintf(STDERR, "✓ Found %d version sections: %s\n", $version_count, implode(', ', $versions[1]));
 
+// Verify the status notes of the maintained versions.
+// Everything before the "older releases" heading is the maintained block.
+$maintained = explode('<div class="section" id="nextcloud-older">', $content)[0];
+
+// Each note names a single version, so none of them may appear twice. The versions
+// between the newest and the oldest maintained one carry no note at all.
+foreach (['upcoming', 'latest stable', 'last supported stable'] as $note) {
+	$occurrences = substr_count($maintained, "<em>$note</em>");
+	if ($occurrences > 1) {
+		fprintf(STDERR, "❌ ERROR: note \"%s\" appears %d times, expected at most one!\n", $note, $occurrences);
+		exit(1);
+	}
+}
+
+// The newest maintained version is always labelled, whatever the number of maintained
+// versions. A missing note means a section was generated without a role.
+if (substr_count($maintained, '<em>latest stable</em>') !== 1) {
+	fwrite(STDERR, "❌ ERROR: no version is labelled as the latest stable!\n");
+	exit(1);
+}
+
+fprintf(STDERR, "✓ Maintained version notes are unambiguous\n");
+
 // Validate documentation links format (should be server/VERSION/)
 // Check both relative links (server/latest, server/stable, etc.) and external docs links
 $relative_docs_links = array_filter($relative_links, fn($l) => preg_match('~^server/(latest|stable|\d+)/~', $l));
