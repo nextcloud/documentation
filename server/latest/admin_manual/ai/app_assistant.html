@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nextcloud Assistant &mdash; Nextcloud 35 Administration Manual</title>
+  <title>Nextcloud Assistant &mdash; Nextcloud 36 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -196,7 +196,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../contents.html">Nextcloud 35 Administration Manual</a>
+          <a href="../contents.html">Nextcloud 36 Administration Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -385,6 +385,30 @@ The occ commands to change the options are listed below.</p>
 </pre></div>
 </div>
 <p>To enable/disable the speech-to-text smart picker for all the users.</p>
+<ol class="arabic simple" start="5">
+<li><p>Data folder</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">assistant</span> <span class="n">default_data_folder</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">"Assistant"</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">string</span>
+</pre></div>
+</div>
+<p>The assistant stores the content it generates, such as generated images and speech-to-text
+output, in a folder in the files of each user. This sets the name that folder is given when
+it is created. It defaults to <code class="docutils literal notranslate"><span class="pre">Assistant</span></code>, and is also editable in the Assistant admin
+settings.</p>
+<p>Users can choose their own name in their personal Assistant settings, which is stored per
+user and takes precedence over the server-wide default:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>occ user:setting $USER_ID assistant data_folder "Assistant"
+</pre></div>
+</div>
+<p>Two things to keep in mind:</p>
+<ul class="simple">
+<li><p>Changing either value does not rename or move a folder that already exists. It only
+affects the name used the next time a folder has to be created, so existing generated
+content stays where it is.</p></li>
+<li><p>A user who already has a folder under the built-in name <code class="docutils literal notranslate"><span class="pre">Assistant</span></code>, from before a
+default was set, keeps using it. This avoids starting a second folder for them and
+leaving their earlier output behind.</p></li>
+</ul>
 </section>
 <section id="task-processing">
 <h3>Task processing<a class="headerlink" href="#task-processing" title="Link to this heading"></a></h3>
@@ -494,7 +518,7 @@ The AI text generation provider should ideally handle the max token limit case.<
             data-toggle="rst-current-version"
             aria-expanded="false"
             aria-controls="rst-other-versions-admin">
-      ☁️ 35
+      ☁️ 36
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-admin" class="rst-other-versions">
@@ -505,7 +529,7 @@ The AI text generation provider should ideally handle the max token limit case.<
           <a href="https://docs.nextcloud.com/server/latest/admin_manual"
              
           >
-            35 (upcoming)
+            36 (upcoming)
           </a>
         </dd>
         
@@ -513,7 +537,15 @@ The AI text generation provider should ideally handle the max token limit case.<
           <a href="https://docs.nextcloud.com/server/stable/admin_manual"
              
           >
-            34 (latest)
+            35 (latest)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/admin_manual"
+             
+          >
+            34 (stable)
           </a>
         </dd>
         

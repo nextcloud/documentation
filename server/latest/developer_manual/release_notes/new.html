@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>New in this release &mdash; Nextcloud 35 Developer Manual</title>
+  <title>New in this release &mdash; Nextcloud 36 Developer Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -75,22 +75,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Release notes</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="critical_changes.html">Critical changes</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">New in this release</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#typed-query-builder">Typed query builder</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#expensive-post-migration-repair-steps">Expensive post migration repair steps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#task-processing">Task Processing</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#added-apis">Added APIs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#changed-apis">Changed APIs</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#context-chat">Context Chat</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">Added APIs</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#files">Files</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">Added APIs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">Changed APIs</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#new-ocp-files-iuserfolder-api">New <code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder</span></code> API</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="deprecations.html">Deprecations</a></li>
@@ -116,7 +101,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Nextcloud 35 Developer Manual</a>
+          <a href="../index.html">Nextcloud 36 Developer Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -138,76 +123,14 @@
   <section id="new-in-this-release">
 <span id="new-apis"></span><h1>New in this release<a class="headerlink" href="#new-in-this-release" title="Link to this heading"></a></h1>
 <p>This pages covers new features of the platform.</p>
-<section id="typed-query-builder">
-<h2>Typed query builder<a class="headerlink" href="#typed-query-builder" title="Link to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">\OCP\DB\QueryBuilder\ITypedQueryBuilder</span></code> was added in favour of <code class="docutils literal notranslate"><span class="pre">\OCP\DB\QueryBuilder\IQueryBuilder</span></code> and can be accessed through <code class="docutils literal notranslate"><span class="pre">\OCP\IDBConnection::getTypedQueryBuilder</span></code>.</p>
-<p>This query builder has the benefit of accurately returning the selected columns in a query result, increasing type safety.</p>
-<div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>This linked page does not have coverage for the new API.</p>
-</div>
-<p>See <a class="reference internal" href="../basics/storage/database.html#database"><span class="std std-ref">Database access</span></a> for details.</p>
-</section>
-<section id="expensive-post-migration-repair-steps">
-<h2>Expensive post migration repair steps<a class="headerlink" href="#expensive-post-migration-repair-steps" title="Link to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">\OCP\Migration\IRepairStepExpensive</span></code> was added and can be used to mark post-migration repair steps as expensive.</p>
-<p>Expensive repair steps are non-critical repair steps that might take a long time to execute.
-Non-critical means that they are not required to directly be executed during migration to have a working instance,
-but they might be required to have a fully working instance later on.</p>
-<p>Expensive repair steps are only executed when explicitly requested by the administrator.</p>
-<p>See <a class="reference internal" href="../digging_deeper/repair.html#migration-repair-steps"><span class="std std-ref">Repair steps</span></a> for details.</p>
-</section>
-<section id="task-processing">
-<h2>Task Processing<a class="headerlink" href="#task-processing" title="Link to this heading"></a></h2>
-<p>Support for streaming the text output of TaskProcessing providers has been added.
-See <a class="reference internal" href="../digging_deeper/task_processing.html#task-processing-options"><span class="std std-ref">Implementing an advanced TaskProcessing provider</span></a> for details about how to adjust your providers.</p>
-<section id="added-apis">
-<h3>Added APIs<a class="headerlink" href="#added-apis" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>There is a new TaskProcessing provider interface: <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousOptionsAwareProvider</span></code>. It takes a <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\SynchronousProviderOptions</span></code> option object that contains includeWatermarks, preferStreaming and the callback to report intermediate output.</p></li>
-</ul>
-</section>
-<section id="changed-apis">
-<h3>Changed APIs<a class="headerlink" href="#changed-apis" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\Task</span></code> class now has <code class="docutils literal notranslate"><span class="pre">getPreferStreaming</span></code> and <code class="docutils literal notranslate"><span class="pre">setPreferStreaming</span></code> methods for indicating whether the provider should report the output progressively if it supports it.</p></li>
-<li><p>The TaskProcessing OCS API now also accepts the <code class="docutils literal notranslate"><span class="pre">preferStreaming</span></code> flag when scheduling tasks.</p></li>
-</ul>
-</section>
-</section>
-<section id="context-chat">
-<h2>Context Chat<a class="headerlink" href="#context-chat" title="Link to this heading"></a></h2>
-<p>A new interface was added to allow content providers to supply additional metadata for improved document retrieval
-and LLM responses.</p>
-<p>See <a class="reference internal" href="../digging_deeper/context_chat.html#context-chat"><span class="std std-ref">Context Chat</span></a> for details.</p>
-<section id="id2">
-<h3>Added APIs<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>A new interface <code class="docutils literal notranslate"><span class="pre">\OCP\ContextChat\IContentProviderWithSearchTask</span></code> was added, extending <code class="docutils literal notranslate"><span class="pre">\OCP\ContextChat\IContentProvider</span></code>.
-It can be implemented as a drop-in replacement for <code class="docutils literal notranslate"><span class="pre">\OCP\ContextChat\IContentProvider</span></code>.</p></li>
-</ul>
-</section>
-</section>
-<section id="files">
-<h2>Files<a class="headerlink" href="#files" title="Link to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder</span></code> was added. It represents the root folder of a single user, similar to how
-<code class="docutils literal notranslate"><span class="pre">\OCP\Files\IRootFolder</span></code> represents the root of the whole instance, and groups the methods that only apply to the
-files of one user.</p>
+<section id="new-ocp-files-iuserfolder-api">
+<h2>New <code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder</span></code> API<a class="headerlink" href="#new-ocp-files-iuserfolder-api" title="Link to this heading"></a></h2>
+<p>A new interface <code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder</span></code> was added, extending <code class="docutils literal notranslate"><span class="pre">\OCP\Files\Folder</span></code>.
+This interface represents the user root folder similar to <code class="docutils literal notranslate"><span class="pre">\OCP\Files\IRootFolder</span></code>.
+<code class="docutils literal notranslate"><span class="pre">\OCP\Files\IRootFolder::getUserFolder</span></code> now returns a <code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">\OCP\Files\Folder</span></code>.</p>
+<p>Moreover <code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder::getUserQuota</span></code> was added to read the used, free, total and configured quota space of a user.
+As the new interface extends <code class="docutils literal notranslate"><span class="pre">\OCP\Files\Folder</span></code> this is not a breaking change for consumers.</p>
 <p>See <a class="reference internal" href="../basics/storage/filesystem.html"><span class="doc">Nextcloud filesystem API</span></a> for details.</p>
-<section id="id3">
-<h3>Added APIs<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>A new interface <code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder</span></code> was added, extending <code class="docutils literal notranslate"><span class="pre">\OCP\Files\Folder</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder::getUserQuota</span></code> was added to read the used, free, total and configured quota space of a user.</p></li>
-</ul>
-</section>
-<section id="id4">
-<h3>Changed APIs<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Files\IRootFolder::getUserFolder</span></code> now returns a <code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">\OCP\Files\Folder</span></code>.
-As the new interface extends <code class="docutils literal notranslate"><span class="pre">\OCP\Files\Folder</span></code> this is not a breaking change for consumers.</p></li>
-</ul>
-</section>
 </section>
 </section>
 
@@ -223,7 +146,7 @@ As the new interface extends <code class="docutils literal notranslate"><span cl
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Sep 15, 2026.
+      <span class="lastupdated">Last updated on Sep 17, 2026.
       </span></p>
   </div>
 
@@ -243,7 +166,7 @@ As the new interface extends <code class="docutils literal notranslate"><span cl
             data-toggle="rst-current-version"
             aria-expanded="false"
             aria-controls="rst-other-versions-dev">
-      ☁️ 35
+      ☁️ 36
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-dev" class="rst-other-versions">
@@ -254,7 +177,7 @@ As the new interface extends <code class="docutils literal notranslate"><span cl
           <a href="https://docs.nextcloud.com/server/latest/developer_manual"
              
           >
-            35 (upcoming)
+            36 (upcoming)
           </a>
         </dd>
         
@@ -262,7 +185,15 @@ As the new interface extends <code class="docutils literal notranslate"><span cl
           <a href="https://docs.nextcloud.com/server/stable/developer_manual"
              
           >
-            34 (latest)
+            35 (latest)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/developer_manual"
+             
+          >
+            34 (stable)
           </a>
         </dd>
         

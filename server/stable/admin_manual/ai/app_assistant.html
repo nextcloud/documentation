@@ -382,6 +382,30 @@ The occ commands to change the options are listed below.</p>
 </pre></div>
 </div>
 <p>To enable/disable the speech-to-text smart picker for all the users.</p>
+<ol class="arabic simple" start="5">
+<li><p>Data folder</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">assistant</span> <span class="n">default_data_folder</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;Assistant&quot;</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">string</span>
+</pre></div>
+</div>
+<p>The assistant stores the content it generates, such as generated images and speech-to-text
+output, in a folder in the files of each user. This sets the name that folder is given when
+it is created. It defaults to <code class="docutils literal notranslate"><span class="pre">Assistant</span></code>, and is also editable in the Assistant admin
+settings.</p>
+<p>Users can choose their own name in their personal Assistant settings, which is stored per
+user and takes precedence over the server-wide default:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>occ user:setting $USER_ID assistant data_folder &quot;Assistant&quot;
+</pre></div>
+</div>
+<p>Two things to keep in mind:</p>
+<ul class="simple">
+<li><p>Changing either value does not rename or move a folder that already exists. It only
+affects the name used the next time a folder has to be created, so existing generated
+content stays where it is.</p></li>
+<li><p>A user who already has a folder under the built-in name <code class="docutils literal notranslate"><span class="pre">Assistant</span></code>, from before a
+default was set, keeps using it. This avoids starting a second folder for them and
+leaving their earlier output behind.</p></li>
+</ul>
 </section>
 <section id="task-processing">
 <h3>Task processing<a class="headerlink" href="#task-processing" title="Link to this heading"></a></h3>

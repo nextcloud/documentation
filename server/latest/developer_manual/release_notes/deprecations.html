@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deprecations &mdash; Nextcloud 35 Developer Manual</title>
+  <title>Deprecations &mdash; Nextcloud 36 Developer Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -76,12 +76,7 @@
 <li class="toctree-l2"><a class="reference internal" href="critical_changes.html">Critical changes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="new.html">New in this release</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Deprecations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#new-deprecations">New deprecations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#database">Database</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#events">Events</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task-processing">Task processing</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#new-deprecations">New deprecations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#older-deprecations">Older deprecations</a></li>
 </ul>
 </li>
@@ -107,7 +102,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Nextcloud 35 Developer Manual</a>
+          <a href="../index.html">Nextcloud 36 Developer Manual</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -134,30 +129,21 @@ three years before removal, unless the breakage can not be avoided.</p>
 rules, which can fix some API changes automatically.</p>
 <section id="new-deprecations">
 <h2>New deprecations<a class="headerlink" href="#new-deprecations" title="Link to this heading"></a></h2>
-<section id="database">
-<h3>Database<a class="headerlink" href="#database" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\DB\QueryBuilder\IFunctionBuilder::md5</span></code> is now deprecated.
-MD5 is not considered secure anymore, thus most databases have or will drop support for this SQL function.</p></li>
-</ul>
-</section>
-<section id="events">
-<h3>Events<a class="headerlink" href="#events" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Broadcast\Events\IBroadcastEvent</span></code> is now deprecated as it is unused.</p></li>
-</ul>
-</section>
-<section id="task-processing">
-<h3>Task processing<a class="headerlink" href="#task-processing" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousWatermarkingProvider</span></code> is now deprecated, instead use <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousOptionsAwareProvider</span></code> now.</p></li>
-</ul>
-</section>
 </section>
 <section id="older-deprecations">
 <h2>Older deprecations<a class="headerlink" href="#older-deprecations" title="Link to this heading"></a></h2>
 <p>You find all current deprecations in this section.</p>
 <ul class="simple">
+<li><p>Deprecated since Nextcloud 35</p>
+<ul>
+<li><p>32-bit PHP support is deprecated, Nextcloud 35 will be the last version to support 32-bit PHP.
+See <a class="reference external" href="https://github.com/nextcloud/server/issues/63411">our announcement</a> for details.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\DB\QueryBuilder\IFunctionBuilder::md5</span></code> is deprecated.
+MD5 is not considered secure anymore, thus most databases have or will drop support for this SQL function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Broadcast\Events\IBroadcastEvent</span></code> is now deprecated as it is unused.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousWatermarkingProvider</span></code> is now deprecated, instead use <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ISynchronousOptionsAwareProvider</span></code> now.</p></li>
+</ul>
+</li>
 <li><p>Deprecated since Nextcloud 34</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\App::buildAppNamespace</span></code> is deprecated in favor of non-static method <code class="docutils literal notranslate"><span class="pre">\OCP\App\IAppManager::getAppNamespace</span></code></p></li>
@@ -185,7 +171,7 @@ MD5 is not considered secure anymore, thus most databases have or will drop supp
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Sep 17, 2026.
       </span></p>
   </div>
 
@@ -205,7 +191,7 @@ MD5 is not considered secure anymore, thus most databases have or will drop supp
             data-toggle="rst-current-version"
             aria-expanded="false"
             aria-controls="rst-other-versions-dev">
-      ☁️ 35
+      ☁️ 36
       <span class="fa fa-caret-down" aria-hidden="true"></span>
     </button>
     <div id="rst-other-versions-dev" class="rst-other-versions">
@@ -216,7 +202,7 @@ MD5 is not considered secure anymore, thus most databases have or will drop supp
           <a href="https://docs.nextcloud.com/server/latest/developer_manual"
              
           >
-            35 (upcoming)
+            36 (upcoming)
           </a>
         </dd>
         
@@ -224,7 +210,15 @@ MD5 is not considered secure anymore, thus most databases have or will drop supp
           <a href="https://docs.nextcloud.com/server/stable/developer_manual"
              
           >
-            34 (latest)
+            35 (latest)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/developer_manual"
+             
+          >
+            34 (stable)
           </a>
         </dd>
         
