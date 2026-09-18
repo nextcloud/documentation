@@ -128,46 +128,59 @@ Systray icon
 ------------
 
 The desktop client shows a status icon in the system tray on Windows and Linux or the menu bar on macOS. Colorful
-status icons and monochrome tray icons are available for the same sync states. You can choose monochrome icons under
-**General** in the settings dialog.
+status icons and colorful or monochrome tray icons are available for the same sync states. You can choose monochrome
+icons under **General** in the settings dialog.
 
 .. list-table:: Synchronization status icons
    :header-rows: 1
-   :widths: 30 35 35
+   :widths: 30 23 23 24
 
    * - Status
      - Colorful status icon
      - Monochrome tray icon
+     - Colorful tray icon
    * - Up to date and connected
      - .. image:: images/icon-status-ok.svg
           :alt: Colorful up-to-date status icon
      - .. image:: images/icon-tray-ok.svg
           :alt: Monochrome up-to-date tray icon
+     - .. image:: images/icon-tray-colored-ok.svg
+          :alt: Colorful up-to-date tray icon
    * - Synchronizing
      - .. image:: images/icon-status-sync.svg
           :alt: Colorful synchronizing status icon
      - .. image:: images/icon-tray-sync.svg
           :alt: Monochrome synchronizing tray icon
+     - .. image:: images/icon-tray-colored-sync.svg
+          :alt: Colorful synchronizing tray icon
    * - Paused
      - .. image:: images/icon-status-pause.svg
           :alt: Colorful paused status icon
      - .. image:: images/icon-tray-pause.svg
           :alt: Monochrome paused tray icon
+     - .. image:: images/icon-tray-colored-pause.svg
+          :alt: Colorful paused tray icon
    * - Offline
      - .. image:: images/icon-status-offline.svg
           :alt: Colorful offline status icon
      - .. image:: images/icon-tray-offline.svg
           :alt: Monochrome offline tray icon
+     - .. image:: images/icon-tray-colored-offline.svg
+          :alt: Colorful offline tray icon
    * - Warning; open the client for details
      - .. image:: images/icon-status-warning.svg
           :alt: Colorful warning status icon
      - .. image:: images/icon-tray-warning.svg
           :alt: Monochrome warning tray icon
+     - .. image:: images/icon-tray-colored-warning.svg
+          :alt: Colorful warning tray icon
    * - Error; open the client for details
      - .. image:: images/icon-status-error.svg
           :alt: Colorful error status icon
      - .. image:: images/icon-tray-error.svg
           :alt: Monochrome error tray icon
+     - .. image:: images/icon-tray-colored-error.svg
+          :alt: Colorful error tray icon
 
 Open the tray or menu bar icon to view the client and its available actions, such as pausing or resuming sync.
 
