@@ -74,41 +74,7 @@ then click **Log in**.
 .. image:: images/wizard-server.png
    :alt: Server address field and Log in button in the desktop client setup wizard
 
-If you need an account, use **Sign up** to find a provider or **Self-host** for information about running your own
-server. The available options may depend on how your desktop client was built.
-
-The wizard asks you to switch to your browser. Click **Open** if the browser does not open automatically. Log in to
-your Nextcloud server in the browser and grant the desktop client access when prompted. Then return to the wizard.
-
-.. image:: images/wizard-browser-auth.png
-   :alt: Setup wizard prompting you to switch to your browser to authorize the desktop client
-
-.. note::
-   You might not need to enter your username and password if you are
-   already logged in to your web browser.
-
-Choose how to sync your files. On macOS, **File Provider** downloads files on demand. Classic synchronization keeps
-the selected files in a local sync folder.
-
-Classic synchronization
-^^^^^^^^^^^^^^^^^^^^^^^
-
-Choose **Synchronize everything** to sync all files, or **Choose what to sync** to select folders. To change the
-local sync folder, click **Choose** beside its path. Click **Done** to finish setting up the account.
-
-.. image:: images/wizard-sync-classic.png
-   :alt: Classic synchronization choices and local sync folder in the setup wizard
-
-File Provider on macOS
-^^^^^^^^^^^^^^^^^^^^^^
-
-Choose **File Provider** to download files on demand through macOS. Click **Done** to finish setting up the account.
-For more information about this mode, see :doc:`macosfileprovider`.
-
-.. image:: images/wizard-sync-file-provider.png
-   :alt: File Provider option selected in the macOS setup wizard
-
-After setup, you can open the main desktop client window from its system tray or menu bar icon.
+For the remaining wizard steps, including browser authorization and sync options, see :ref:`desktop-add-account`.
 
 .. Links
 
