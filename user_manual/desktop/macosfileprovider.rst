@@ -118,6 +118,32 @@ When the server supports sharing and the item is allowed to be shared,
 then you can create new shares or manage existing shares for an item directly
 from the context menu in Finder, as in the Nextcloud web interface.
 
+Remove download
+^^^^^^^^^^^^^^^
+
+macOS takes care of freeing up local disk space automatically by evicting items
+when needed. However, you can also manually remove the local copy of a file or
+folder by selecting "Remove Download" in the context menu, if it is not marked
+to be kept available offline. This will not delete the item on the server, but
+it will free up local disk space. The item will still be visible in Finder, and
+it can be downloaded again at any time, assuming a network connection is
+available.
+
+Copy internal link
+^^^^^^^^^^^^^^^^^^
+
+Copy the internal link of the selected item on the Nextcloud server to the
+macOS clipboard.
+Other users on the same Nextcloud server can use this link to access the item
+directly in their Nextcloud web interface, assuming they have the necessary
+permissions.
+
+Open in browser
+^^^^^^^^^^^^^^^
+
+Reveal the selected item in the Nextcloud web interface in your default
+browser.
+
 File actions
 ^^^^^^^^^^^^
 
