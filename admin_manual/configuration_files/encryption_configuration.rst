@@ -95,7 +95,9 @@ Key Points & Limitations
    SSE does **not** encrypt filenames or folder structures, only file contents.
 
 .. note::
-   Don't confuse Nextcloud's SSE with S3 SSE-C (also supported).
+   Don't confuse Nextcloud's SSE with S3 server-side encryption. Nextcloud also supports
+   :ref:`S3 SSE-KMS <s3-sse-kms>` (recommended) and the deprecated
+   :ref:`S3 SSE-C <s3-sse-c>` — both are configured in :doc:`primary_storage`.
 
 .. versionchanged:: 9.0.0
    Nextcloud (since v9.0.0) supports Authenticated Encryption for all newly encrypted files.
