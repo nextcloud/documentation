@@ -18,34 +18,32 @@ if (empty($branches)) {
 $versions = detect_versions($branches);
 $released_branches = $versions['released'];
 $devVersion = $versions['dev_version'];
-$devStatus = isset($released_branches[$branches[0]]) ? 'development' : 'upcoming';
+$devStatus = array_key_exists($branches[0], $released_branches) ? 'development' : 'upcoming';
 
 fwrite(STDERR, "➡️ Version $devVersion ($devStatus)\n");
 
-// Collect released stable versions within support window
-$oneYearAgo = time() - (365 * 24 * 60 * 60);
-$stableVersions = [];
-foreach ($branches as $branch) {
-	if (isset($released_branches[$branch]) && $released_branches[$branch] >= $oneYearAgo) {
-		$stableVersions[] = $branch;
-	} elseif (isset($released_branches[$branch])) {
-		// Once we hit an unsupported version, stop
-		break;
-	}
-}
+// Maintained stable versions, newest first
+$stableVersions = $versions['supported'];
 
-// Generate sections with proper indices
-$supported = [generate_section($devVersion, 0)];
+// Generate sections with their roles. Only the newest and the oldest maintained version
+// are labelled; the ones between them carry no note.
+$lastIdx = count($stableVersions) - 1;
+$supported = [generate_section($devVersion, SECTION_UPCOMING)];
 foreach ($stableVersions as $idx => $version) {
-	// Index 3 for the oldest supported version if there are multiple
-	$index = ($idx + 1 === count($stableVersions) && count($stableVersions) > 1) ? 3 : $idx + 1;
-	$supported[] = generate_section($version, $index);
+	if ($idx === 0) {
+		$role = SECTION_LATEST_STABLE;
+	} elseif ($idx === $lastIdx) {
+		$role = SECTION_LAST_SUPPORTED;
+	} else {
+		$role = null;
+	}
+	$supported[] = generate_section($version, $role);
 }
 
-// Generate legacy sections (released but outside support window)
+// Generate legacy sections (released but no longer maintained)
 $legacy = [];
 foreach ($branches as $branch) {
-	if (isset($released_branches[$branch]) && !in_array($branch, $stableVersions)) {
+	if (array_key_exists($branch, $released_branches) && !in_array($branch, $stableVersions)) {
 		$legacy[] = generate_section($branch, null);
 	}
 }
