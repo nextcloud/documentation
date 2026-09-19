@@ -13,9 +13,7 @@ synchronized between your computer and your Nextcloud server.
    usage
    macosfileprovider
    commandline
-   options
-   configfile
-   envvars
+   advanced_configuration
    autoupdate
    updatechannel
    conflicts
