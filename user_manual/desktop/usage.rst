@@ -130,6 +130,7 @@ status icons and colorful or monochrome tray icons are available for the same sy
 icons under **General** in the settings dialog.
 
 .. list-table:: Synchronization status icons
+   :class: desktop-status-icons
    :header-rows: 1
    :widths: 46 18 18 18
 
@@ -140,63 +141,81 @@ icons under **General** in the settings dialog.
    * - Up to date and connected
      - .. image:: images/icon-status-ok.png
           :alt: Colorful up-to-date status icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
      - .. image:: images/icon-tray-ok.png
           :alt: Monochrome up-to-date tray icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
      - .. image:: images/icon-tray-colored-ok.png
           :alt: Colorful up-to-date tray icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
    * - Synchronizing
      - .. image:: images/icon-status-sync.png
           :alt: Colorful synchronizing status icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
      - .. image:: images/icon-tray-sync.png
           :alt: Monochrome synchronizing tray icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
      - .. image:: images/icon-tray-colored-sync.png
           :alt: Colorful synchronizing tray icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
    * - Paused
      - .. image:: images/icon-status-pause.png
           :alt: Colorful paused status icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
      - .. image:: images/icon-tray-pause.png
           :alt: Monochrome paused tray icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
      - .. image:: images/icon-tray-colored-pause.png
           :alt: Colorful paused tray icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
    * - Offline
      - .. image:: images/icon-status-offline.png
           :alt: Colorful offline status icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
      - .. image:: images/icon-tray-offline.png
           :alt: Monochrome offline tray icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
      - .. image:: images/icon-tray-colored-offline.png
           :alt: Colorful offline tray icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
    * - Warning; open the client for details
      - .. image:: images/icon-status-warning.png
           :alt: Colorful warning status icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
      - .. image:: images/icon-tray-warning.png
           :alt: Monochrome warning tray icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
      - .. image:: images/icon-tray-colored-warning.png
           :alt: Colorful warning tray icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
    * - Error; open the client for details
      - .. image:: images/icon-status-error.png
           :alt: Colorful error status icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
      - .. image:: images/icon-tray-error.png
           :alt: Monochrome error tray icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
      - .. image:: images/icon-tray-colored-error.png
           :alt: Colorful error tray icon
-          :width: 40px
+          :width: 25px
+          :class: desktop-status-icon
 
 Open the tray or menu bar icon to view the client and its available actions, such as pausing or resuming sync.
 
@@ -211,8 +230,8 @@ for the folder's current sync state.
 A folder's overlay reflects sync errors in its contents. Ignored files do not change the parent folder's status.
 On macOS, File Provider uses the standard Finder status indicators described in :doc:`macosfileprovider`.
 
-Sharing from your desktop
--------------------------
+Sharing
+-------
 
 The desktop client integrates sharing actions into Finder on macOS and Explorer on Windows. On Linux, install the
 integration package for your file manager, such as ``nautilus-nextcloud`` or ``dolphin-nextcloud``.
