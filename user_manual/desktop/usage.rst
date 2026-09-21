@@ -131,12 +131,12 @@ icons under **General** in the settings dialog.
 
 .. list-table:: Synchronization status icons
    :header-rows: 1
-   :widths: 30 23 23 24
+   :widths: 46 18 18 18
 
-   * - Status
-     - Colorful status icon
-     - Monochrome tray icon
-     - Colorful tray icon
+   * - State
+     - Status
+     - Mono tray
+     - Color tray
    * - Up to date and connected
      - .. image:: images/icon-status-ok.png
           :alt: Colorful up-to-date status icon
