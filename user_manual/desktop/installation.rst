@@ -73,6 +73,8 @@ then click **Log in**.
 
 .. image:: images/wizard-server.png
    :alt: Server address field and Log in button in the desktop client setup wizard
+   :width: 50%
+   :align: center
 
 For the remaining wizard steps, including browser authorization and sync options, see :ref:`desktop-add-account`.
 

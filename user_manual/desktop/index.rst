@@ -12,6 +12,7 @@ synchronized between your computer and your Nextcloud server.
    usage
    macosfileprovider
    commandline
+   client_features
    options
    configfile
    envvars
