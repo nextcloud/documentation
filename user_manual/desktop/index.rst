@@ -9,14 +9,15 @@ synchronized between your computer and your Nextcloud server.
    :maxdepth: 1
 
    installation
-   uninstallation
    usage
    macosfileprovider
-   commandline
+   client_features
    advanced_configuration
    autoupdate
    updatechannel
    conflicts
+   commandline
+   uninstallation
    faq
 
 For additional information, see:
