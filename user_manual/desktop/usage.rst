@@ -219,14 +219,27 @@ integration package for your file manager, such as ``nautilus-nextcloud`` or ``d
 
 In your file manager, right-click a file and select **Nextcloud** > **Share options** to open the share dialog.
 
-.. image:: images/share_context_menu.png
-   :alt: Nextcloud sharing option in a file manager context menu
+Use **Search for recipients** to share the file with people or groups. Existing shares and share links appear below
+the search field. Use the copy button to copy an internal link or share link. Use the three-dot menu to edit a share,
+or the **X** button to remove it.
+
+.. image:: images/sharing-overview.png
+   :alt: Sharing overview with recipient search, existing shares, and link controls
    :width: 50%
    :align: center
 
-From this dialog, you can create a share link or share with another Nextcloud user.
+When you edit a share, choose the recipient's permission from the dropdown menu. You can also add a note for the
+recipients. Changes are applied immediately.
 
-.. image:: images/share_dialog.png
-   :alt: Desktop client share dialog
+.. image:: images/sharing-details.png
+   :alt: Share details with recipients, permissions, and a note to recipients
+   :width: 50%
+   :align: center
+
+Open **Sharing settings** with the gear button to set an expiration date or protect the share with a password.
+Changes are applied immediately.
+
+.. image:: images/sharing-advanced-settings.png
+   :alt: Advanced sharing settings for expiration date and password protection
    :width: 50%
    :align: center
