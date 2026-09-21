@@ -28,6 +28,8 @@ per-account basis via the Nextcloud desktop client's settings window.
 
 .. image:: images/macosfileprovider-settings.jpg
    :alt: Nextcloud desktop client settings showing the macOS File Provider extension toggle
+   :width: 50%
+   :align: center
 
 Here the integration into Finder can be enabled or disabled.
 
@@ -44,6 +46,8 @@ content on disk is defined by macOS.
 
 .. image:: images/macosfileprovider-finder-sidebar.jpg
    :alt: Finder sidebar showing a Nextcloud File Provider domain
+   :width: 50%
+   :align: center
 
 .. note::
    To accelerate server-side change detection, we recommend enabling the
@@ -78,6 +82,8 @@ Context menu actions
 
 .. image:: images/macosfileprovider-context-menu.jpg
    :alt: macOS Finder context menu on a Nextcloud file showing Keep Downloaded, Lock, and Share options
+   :width: 50%
+   :align: center
 
 The File Provider extension also provides special Nextcloud features through
 the context menu in Finder.
@@ -104,6 +110,8 @@ Locking
 
 .. image:: images/macosfileprovider-file-locking.jpg
    :alt: macOS Finder showing a Nextcloud file with a lock indicator after locking
+   :width: 50%
+   :align: center
 
 If the server supports file locking, the client will offer manual locking and
 unlocking of files in Finder.
@@ -113,6 +121,8 @@ Sharing
 
 .. image:: images/macosfileprovider-file-sharing.jpg
    :alt: macOS Finder share management panel for a Nextcloud file showing existing shares
+   :width: 50%
+   :align: center
 
 When the server supports sharing and the item is allowed to be shared,
 then you can create new shares or manage existing shares for an item directly
