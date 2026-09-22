@@ -203,7 +203,7 @@ On Windows, administrator policies can override those update settings and the fo
      - Enable automatic update checks, provided ``skipUpdateCheck`` is false.
    * - ``updateCheckInterval``
      - ``36000000`` ms
-     - Automatic update-check interval (10 hours). Values below ``300000`` ms (5 minutes) are raised to that minimum.
+     - Automatic update-check interval (default: 10 hours). Values below ``300000`` ms (5 minutes) are raised to that minimum.
 
 .. _general-section:
 .. _desktop-general-settings:
