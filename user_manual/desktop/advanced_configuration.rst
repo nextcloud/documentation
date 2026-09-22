@@ -166,6 +166,7 @@ managed by the client. Use the setup wizard and **Settings** window to change th
 Precedence depends on the setting. The environment overrides listed below apply only to their corresponding settings.
 For ``skipUpdateCheck`` and ``autoUpdateCheck``, a value in ``[General]`` takes precedence over ``[Nextcloud]``.
 On Windows, administrator policies can override those update settings and the folder-size and external-storage settings.
+See :ref:`preventing-automatic-updates-in-windows-environments` for details about update policies.
 
 .. _nextcloud-section:
 
