@@ -377,6 +377,16 @@ In the ``<template>`` block, use an HTML comment on the line above the element:
 
 In the ``<script>`` block, use the same ``//`` style as JavaScript.
 
+.. note::
+
+   The marker depends on the extraction toolchain, and the examples below are **not** all
+   ``TRANSLATORS``. The gettext-based projects - PHP, JavaScript/TypeScript and Vue - require the
+   comment to start with ``TRANSLATORS``, because that is the prefix the extractor is configured to
+   look for. Android uses a plain XML comment and ``TRANSLATORS`` there is a project convention
+   rather than a requirement. **Qt and iOS use their own markers** - ``//:`` for ``lupdate`` and a
+   ``/* ... */`` comment for the iOS string tooling - and writing ``TRANSLATORS`` in those files
+   produces no hint at all, because the extractor never looks for it.
+
 C++ (Qt) / Desktop client
 """""""""""""""""""""""""
 
@@ -400,6 +410,139 @@ iOS
 
     /* The title on the navigation bar of the Scanning screen. */
     "wescan.scanning.title"             = "Scanning";
+
+Contributing a context hint without a local checkout
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Context hints are one of the few code changes that are worth making even if you do not develop
+Nextcloud. Translators are usually the people who notice that a string is ambiguous, and a hint is a
+single comment line. You do not need git, a development environment or a checkout to add one - the
+GitHub web editor is enough.
+
+Find the string
+"""""""""""""""
+
+Search the repository the string belongs to for the text in quotes. If you do not know which
+repository that is, the Transifex resource name matches the app: a string in the ``files_external``
+resource lives in ``apps/files_external/`` in ``nextcloud/server``, and a string in the ``deck``
+resource lives in ``nextcloud/deck``.
+
+Edit the file
+"""""""""""""
+
+Open the file on GitHub and click the pencil icon.
+
+Unless you are a member of the Nextcloud organisation, you will not land in the editor. GitHub stops
+you with **"You need to fork this repository to propose changes"** and a **Fork this repository**
+button. Nothing has gone wrong. A fork is your own copy of the repository under your own account: you
+make the change there, and the pull request asks the Nextcloud maintainers to take it from your copy
+into theirs. Click the button; it takes a moment and then opens the editor.
+
+.. figure:: ../images/translations-hint-fork-required.png
+   :alt: GitHub page reading "You need to fork this repository to propose changes", with a
+         "Fork this repository" button
+
+   What an outside contributor sees instead of the editor. This is expected.
+
+**You only do this once.** The fork stays on your account, so the next hint you add starts in the
+editor straight away.
+
+If it has been a while since you last contributed, your fork will be behind the original repository.
+Go to your fork - ``github.com/<your-username>/<repository>`` - and look at the bar above the file
+list. When the fork is out of date, a line there reads *"This branch is N commits behind ..."*, with
+a **Sync fork** button at its right-hand end, next to **Contribute**. Use it, then **Update branch**,
+before you start editing, so your change is made against the current files rather than an old copy.
+If no such line is shown, your fork is already up to date and there is nothing to do.
+
+.. figure:: ../images/translations-hint-sync-fork.png
+   :alt: The bar above a fork's file list, reading "This branch is 12 commits behind", with
+         Contribute and Sync fork buttons at the right
+
+   An out-of-date fork. The **Sync fork** button only appears while there is something to sync.
+
+Once you are in the editor a banner reads *"You're making changes in a project you don't have write
+access to. Submitting a change will write it to a new branch in your fork ..., so you can send a pull
+request."* That is the expected state for an outside contributor.
+
+.. figure:: ../images/translations-hint-editor-fork-banner.png
+   :alt: The GitHub web editor with a banner explaining that changes will be written to a new
+         branch in the contributor's fork, and a "Commit changes..." button
+
+   After forking: the banner names your fork, and the editor opens as normal.
+
+Add the comment **on the line directly above** the translation call, in the style that matches the
+file type (see the examples above), and match the surrounding indentation exactly. The editor's
+**Tabs / width / wrap** controls, above the top-right of the text area, show what the file uses.
+
+.. code-block:: php
+
+    // TRANSLATORS Name of the SMB/CIFS share on the server, not the verb "to share"
+    'share' => $l->t('Share'),
+
+Commit and open the pull request
+""""""""""""""""""""""""""""""""
+
+Click **Commit changes...**. A dialog headed **Sign off and propose changes** opens, with a commit
+message, an extended description, and a **Sign off and propose changes** button that takes you to the
+pull request form. You are not asked to choose a branch: a change to a fork always goes to a new
+branch, which is what the pull request is opened from.
+
+* Nextcloud uses `conventional commits <https://www.conventionalcommits.org/>`_, so the message needs
+  a type and a short summary, for example ``docs: add translator comment for "None"``. Check the
+  repository's recent history for the types it actually uses.
+* **Do not accept a pre-filled message without reading it.** The dialog may arrive with the message
+  and description already written - if Copilot is enabled for your account it suggests them, and the
+  dialog says so underneath. The suggestion describes the change accurately enough but has no type
+  prefix, for example *"Add translator comment in NullMechanism constructor"*. Putting ``docs:`` in
+  front of it is normally the whole fix. This is the most likely reason a first pull request fails a
+  check.
+* You do **not** need to add a ``Signed-off-by`` line by hand. The dialog signs the commit off for
+  you and shows which address it is using, which satisfies the DCO check. If you have enabled
+  **Keep my email addresses private** in your GitHub settings, that address is your
+  ``@users.noreply.github.com`` one.
+
+.. figure:: ../images/translations-hint-signoff-dialog.png
+   :alt: The "Sign off and propose changes" dialog, with a commit message field, an extended
+         description, and a note showing the address the commit is signed off with
+
+   The commit dialog, with the suggested message already corrected to a conventional commit.
+
+Avoiding the automated checks, rather than fixing them
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Pull requests run linters and coding-style checks, and there is generally no way to run or fix those
+from the web interface. It is therefore worth avoiding a failure in the first place:
+
+* Put the comment on its own line. Do not append it to an existing line of code.
+* Copy the indentation of the line below it, including tabs versus spaces.
+* Leave no trailing whitespace at the end of the comment.
+* Change nothing else in the file, so that the diff is the single added line.
+
+If a check does fail, say so in the pull request. A maintainer can push the fix to your branch.
+
+What happens next
+"""""""""""""""""
+
+A Nextcloud maintainer will review the pull request. You do not need to request a review, add labels
+or assign anyone - an outside contributor cannot do those things, and it is not a sign that anything
+is missing from your pull request. If nothing happens for a while, a polite comment on the pull
+request is the right nudge.
+
+You are also welcome to tell the translation community about it. Other translators hit the same
+ambiguous strings, and it is the easiest way to let them know a hint is on its way:
+
+* the `translation chat room <https://cloud.nextcloud.com/call/xs25tz5y>`_ is open to the public and
+  needs no account, and is the quickest way to say something
+* the `Translations category of the Nextcloud forum
+  <https://help.nextcloud.com/c/translations/23>`_ keeps the note findable afterwards. Anyone can
+  read it, but posting needs a free forum account
+
+Post the link to your pull request and a sentence about the string you clarified.
+
+Once it is merged, the hint still does not reach translators immediately. It reaches them when the
+source strings are next extracted and synchronised to Transifex, so allow for that delay before
+looking for it in the web interface.
+
 
 Adding translations
 -------------------
