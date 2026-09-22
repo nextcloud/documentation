@@ -304,10 +304,11 @@ This allows translators to have the cloudlink before the browselink in case the 
 Provide context hints for translators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In case some translation strings may be translated wrongly because they have multiple meanings.
-Especially translations strings that only contain a single word often result in problems.
-The most famous example in the Nextcloud code base is ``Share`` which can which can be the verb and action ``To share something`` or the noun ``A share``.
-The added hints will be shown in the Transifex web-interface:
+Some translation strings can be translated wrongly because they have multiple meanings.
+Strings that contain only a single word are especially prone to this.
+The most famous example in the Nextcloud code base is ``Share``, which can be the verb and action
+``To share something`` or the noun ``A share``.
+Adding a context hint resolves the ambiguity, and the hint is shown to translators in the Transifex web interface.
 
 .. warning::
 
