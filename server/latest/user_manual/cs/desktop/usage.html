@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Používání synchronizačního klienta &mdash; Nextcloud 36 User Manual</title>
+  <title>Using the Client &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=08b96895" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -32,7 +32,7 @@
     <link rel="index" title="Rejstřík" href="../genindex.html" />
     <link rel="search" title="Vyhledávání" href="../search.html" />
     <link rel="next" title="Using the macOS File Provider" href="macosfileprovider.html" />
-    <link rel="prev" title="Uninstallation" href="uninstallation.html" />
+    <link rel="prev" title="Instalace" href="installation.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -82,27 +82,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Instalace</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Používání synchronizačního klienta</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#systray-icon">Ikona v oznamovací oblasti systémového panelu</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuring-nextcloud-account-settings">Nastavování Nextcloud účtu</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#adding-new-accounts">Přidávání nových účtů</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#file-manager-overlay-icons">Překryvné ikony správce souborů</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#set-the-user-status">Nastavit stav uživatele</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sharing-from-your-desktop">Sdílení z vašeho desktopu</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-window">Obecné okno</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-network-window">Použití okna Síť</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-ignored-files-editor">Používání editoru seznamu souborů k ignorování</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using the Client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add-account">Add account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#settings-dialog">Settings dialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#systray-icon">Systray icon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-manager-overlay-icons">File manager overlay icons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing">Sharing</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client_features.html">Client features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Nástroj pro automatickou aktualizaci</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Kanály aktualizací</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Kolize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html">Často kladené dotazy</a></li>
 </ul>
 </li>
@@ -127,7 +124,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
-      <li class="breadcrumb-item active">Používání synchronizačního klienta</li>
+      <li class="breadcrumb-item active">Using the Client</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/usage.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -137,163 +134,189 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="using-the-synchronization-client">
-<h1>Používání synchronizačního klienta<a class="headerlink" href="#using-the-synchronization-client" title="Link to this heading"></a></h1>
-<p>Nextcloud klient pro počítač zůstane spuštěný na pozadí a je viditelný jako ikona v oznamovací oblasti systémového panelu (Windows, KDE), pruhu nabídky (macOS), nebo oblasti pro upozornění (ostatní linuxová prostředí).</p>
-<figure class="align-default">
-<img alt="Stavová ikona – zelený kruh a bílé zatržítko" src="../../_images/icon.png" />
-</figure>
-<p>Indikátor stavu používá ikony, které značí stávající stav synchronizace. Zelený kruh s bílým zatržítkem sděluje, že synchronizace je aktuální a jste připojeni k Nextcloud serveru.</p>
-<figure class="align-default">
-<img alt="Stavová ikona – modrý kruh a bílé skoro-kruhy" src="../../_images/icon-syncing.png" />
-</figure>
-<p>Modrá ikona s bílými něco jako kruhy znamená, že synchronizace probíhá.</p>
-<figure class="align-default">
-<img alt="Status icon, grey circle and vertical parallel lines" src="../../_images/icon-paused.png" />
-</figure>
-<p>Šedá ikona s rovnoběžnými čárami sděluje, že synchronizace byla pozastavena (nejspíš vámi).</p>
-<figure class="align-default">
-<img alt="Status icon, gray circle and three horizontal white dots" src="../../_images/icon-offline.png" />
-</figure>
-<p>Šedá ikona se třemi bílými tečkami znamená, že synchronizační klient ztratil spojení s Nextcloud serverem.</p>
-<figure class="align-default">
-<img alt="Stavová ikona – znak „!“ ve žlutém kruhu" src="../../_images/icon-information.png" />
-</figure>
-<p>Když uvidíte žlutý kruh se znakem „!“, který je informační ikonou, klikněte na něj a dozvíte se, co vám sděluje.</p>
-<figure class="align-default">
-<img alt="Stavová ikona – červený kruh a bílé x" src="../../_images/icon-error.png" />
-</figure>
-<p>červený kroužek s bílým „x“ značí chybu v nastavení, jako například nesprávné přihlašovací údaje nebo URL serveru.</p>
+  <section id="using-the-client">
+<h1>Using the Client<a class="headerlink" href="#using-the-client" title="Link to this heading"></a></h1>
+<p>The Nextcloud desktop client runs in the background. Open its settings from the system tray on Windows and Linux or
+the menu bar on macOS.</p>
+<section id="add-account">
+<span id="desktop-add-account"></span><h2>Add account<a class="headerlink" href="#add-account" title="Link to this heading"></a></h2>
+<p>To connect another Nextcloud account, open the settings dialog and click <strong>Add account</strong> in the sidebar. Enter the
+address you use to access your Nextcloud server in a browser, then click <strong>Log in</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-server.png"><img alt="Setup wizard with the server address field and Log in button" class="align-center" src="../../_images/wizard-server.png" style="width: 50%;" />
+</a>
+<p>If your network requires a proxy, click <strong>Proxy settings</strong> before logging in. Choose the system proxy or enter your
+proxy settings manually, then click <strong>Done</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-proxy-settings.png"><img alt="Proxy settings dialog with no proxy, system proxy, and manual proxy options" class="align-center" src="../../_images/wizard-proxy-settings.png" style="width: 50%;" />
+</a>
+<p>If the secure connection fails, check the server address and contact your server administrator. The wizard may offer
+to connect without TLS or use a client certificate. Use <strong>Use client certificate</strong> only if your server requires one.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-secure-connection.png"><img alt="Warning that the secure server connection failed, with client certificate and unencrypted options" class="align-center" src="../../_images/wizard-secure-connection.png" style="width: 50%;" />
+</a>
+<p>If prompted for a client certificate, choose the PKCS#12 file provided by your administrator, enter its password,
+and click <strong>Connect</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-client-certificate.png"><img alt="Client certificate dialog with certificate file and password fields" class="align-center" src="../../_images/wizard-client-certificate.png" style="width: 50%;" />
+</a>
+<p>The wizard asks you to switch to your browser. Click <strong>Open</strong> if the browser does not open automatically. Log in and
+grant the desktop client access when prompted. Then return to the wizard.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-browser-auth.png"><img alt="Setup wizard prompting you to open a browser to authorize the account" class="align-center" src="../../_images/wizard-browser-auth.png" style="width: 50%;" />
+</a>
+<p>Choose how to sync your files. With classic synchronization, choose <strong>Synchronize everything</strong> or <strong>Choose what to
+sync</strong>. Use <strong>Choose</strong> beside <strong>Local sync folder</strong> to change where files are stored, then click <strong>Done</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-sync-classic.png"><img alt="Classic synchronization options and local sync folder in the setup wizard" class="align-center" src="../../_images/wizard-sync-classic.png" style="width: 50%;" />
+</a>
+<p>You can choose <strong>File Provider</strong> to download files on demand. Click <strong>Done</strong> to finish adding the account. On macOS,
+see <a class="reference internal" href="macosfileprovider.html"><span class="doc">Using the macOS File Provider</span></a> for details about Finder integration.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-sync-file-provider.png"><img alt="File Provider selected in the setup wizard" class="align-center" src="../../_images/wizard-sync-file-provider.png" style="width: 50%;" />
+</a>
+<p>Before finishing classic synchronization, click <strong>Advanced</strong> if you want confirmation before syncing large folders
+or external storage. Set your preferences in <strong>Advanced options</strong>, then click <strong>Done</strong> to return to the wizard.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-advanced-options.png"><img alt="Advanced options for large folders and external storage in the setup wizard" class="align-center" src="../../_images/wizard-advanced-options.png" style="width: 50%;" />
+</a>
+</section>
+<section id="settings-dialog">
+<h2>Settings dialog<a class="headerlink" href="#settings-dialog" title="Link to this heading"></a></h2>
+<p>Select an account in the sidebar to see its sync status, local folder, storage usage, and connection settings. Use
+<strong>Add Folder Sync Connection</strong> to set up another classic sync folder for that account. You can log out or remove the
+account from the same page.</p>
+<a class="reference internal image-reference" href="../../_images/settings-account-classic.png"><img alt="Account settings with classic sync status, connection settings, and account controls" class="align-center" src="../../_images/settings-account-classic.png" style="width: 50%;" />
+</a>
+<p>Under <strong>General</strong>, choose whether to launch the client at startup, use monochrome icons, and show notifications.
+On macOS, you can also enable File Provider for all accounts. This setting replaces classic sync folders and their
+Finder integration.</p>
+<a class="reference internal image-reference" href="../../_images/settings-general.png"><img alt="General settings for startup, icons, File Provider, and notifications" class="align-center" src="../../_images/settings-general.png" style="width: 50%;" />
+</a>
+<p>Under <strong>Advanced</strong>, set confirmation thresholds for large folders and external storage. You can also adjust the
+server polling interval, decide whether removed files go to the trash, edit ignored files, or create a debug archive.</p>
+<a class="reference internal image-reference" href="../../_images/settings-advanced.png"><img alt="Advanced settings for sync confirmations, server polling, ignored files, and debug archives" class="align-center" src="../../_images/settings-advanced.png" style="width: 50%;" />
+</a>
+<p id="usingignoredfileseditor-label">To exclude files or folders from synchronization, click <strong>Edit Ignored Files</strong> under <strong>Advanced</strong>. Add a pattern for
+each item you want to ignore. An asterisk (<code class="docutils literal notranslate"><span class="pre">*</span></code>) matches any number of characters, a question mark (<code class="docutils literal notranslate"><span class="pre">?</span></code>)
+matches one character, and a trailing slash (<code class="docutils literal notranslate"><span class="pre">/</span></code>) limits a pattern to folders. Select <strong>Allow Deletion</strong> only for
+ignored items that the client may remove when they prevent a folder from being deleted. Click <strong>OK</strong> to save.</p>
+<a class="reference internal image-reference" href="../../_images/settings-ignored-files.png"><img alt="Ignored files editor with patterns, Allow Deletion checkboxes, and save controls" class="align-center" src="../../_images/settings-ignored-files.png" style="width: 50%;" />
+</a>
+<p>Under <strong>Info</strong>, you can check the desktop client version and open its usage documentation or legal notice.</p>
+<a class="reference internal image-reference" href="../../_images/settings-info.png"><img alt="Info page showing the desktop client version and documentation link" class="align-center" src="../../_images/settings-info.png" style="width: 50%;" />
+</a>
+</section>
 <section id="systray-icon">
-<h2>Ikona v oznamovací oblasti systémového panelu<a class="headerlink" href="#systray-icon" title="Link to this heading"></a></h2>
-<p>Kliknutí pravým tlačítkem na ikonu v oznamovací oblasti otevře nabídku pro rychlý přístup k vícero operacím.</p>
-<figure class="align-default">
-<img alt="nabídka pod pravým tlačítkem myši v synchronizačním klientovi" src="../../_images/traymenu.png" />
-</figure>
-<p>Tato nabídka poskytuje následující možnosti:</p>
-<ul class="simple">
-<li><p>Otevření hlavní dialogu</p></li>
-<li><p>Pozastavit synchronizaci / pokračovat v synchronizaci</p></li>
-<li><p>Nastavení</p></li>
-<li><p>Ukončení Nextcloud, odhlášení a zavření klienta</p></li>
-</ul>
-<p>Kliknutí levým tlačítkem na ikonu v oznamovací oblasti systémového panelu otevře hlavní dialog klienta pro počítač.</p>
-<figure class="align-default">
-<img alt="Hlavní dialog" src="../../_images/main_dialog.png" />
-</figure>
-<p>Hlavní dialog zobrazuje nedávné aktivity, chyby a upozornění ze serveru.</p>
-<p>Při kliknutí na hlavní dialog a poté kliknutí na zástupný obrázek uživatele, je možné otevřít Nastavení.</p>
-</section>
-<section id="configuring-nextcloud-account-settings">
-<h2>Nastavování Nextcloud účtu<a class="headerlink" href="#configuring-nextcloud-account-settings" title="Link to this heading"></a></h2>
-<figure class="align-default">
-<img alt="Hlavní dialog" src="../../_images/settingsdialog.png" />
-</figure>
-<p>V horní části okna jsou karty pro každý z nastavených synchronizačních účtů a dva další pro Obecná a Síťová nastavení. Na kartách svých účtů máte následující funkce:</p>
-<ul class="simple">
-<li><p>Stav spojení, zobrazující ke kterému Nextcloud serveru jste připojení a vaše uživatelské jméno na něm.</p></li>
-<li><p>Prostor na serveru využitý a ještě dostupný.</p></li>
-<li><p>Stávající stav synchronizace.</p></li>
-<li><p>Tlačítko <strong>Přidat spojení synchronizace složky</strong>.</p></li>
-</ul>
-<p>Malé tlačítko s třemi tečkami („přetékající“ nabídka), které se nachází napravo od pruhu stavu synchronizace, nabízí další možnosti:</p>
-<ul class="simple">
-<li><p>Otevřít složku</p></li>
-<li><p>Zvolit co synchronizovat (toto se objeví pouze pokud je strom souborů sbalený a při použití ho rozbalí)</p></li>
-<li><p>Pozast./pokračovat v synchronizaci</p></li>
-<li><p>Odebrání spojení synchronizace složky</p></li>
-<li><p>Dostupnost (k dispozici pouze pokud je zapnutá podpora pro virtuální soubory)</p></li>
-<li><p>Zapnutí/vypnutí podpory virtuálních souborů</p></li>
-</ul>
-<p><strong>Otevřít složku</strong> otevře vaší lokální Nextcloud synchronizační složku.</p>
-<p><strong>Pozastavit synchronizaci</strong> pozastaví operace synchronizace, ale neudělá žádné změny ve vašem účtu. Bude pokračovat v aktualizaci seznamů souborů a složek, jen je nebude stahovat či aktualizovat. Pokud chcete zastavit veškerou synchronizační aktivitu, použijte <strong>Odebrat spojení synchronizace složky</strong>.</p>
-<figure class="align-default">
-<img alt="Další předvolby pro operace synchronizace" src="../../_images/general_settings_folder_context_menu.png" />
-</figure>
-<div class="admonition note">
-<p class="admonition-title">Poznámka</p>
-<p>Nextcloud nezachovává mtime (čas změny) složek, ačkoli ho aktualizuje u souborů. Viz diskuze u <a class="reference external" href="https://github.com/owncloud/core/issues/7009">Nesprávné datum složky při synchronizování</a>.</p>
-</div>
-</section>
-<section id="adding-new-accounts">
-<h2>Přidávání nových účtů<a class="headerlink" href="#adding-new-accounts" title="Link to this heading"></a></h2>
-<p>V klientovi synchronizace pro počítač je možné nastavit vícero Nextlcoud účtů. Stačí kliknout na tlačítko <strong>Účet</strong> &gt; <strong>Přidat nový</strong> na kartě libovolného účtu a přidat nový účet a poté následovat průvodce vytvořením účtu. Nový účet se zobrazí jako nový panel v dialogu nastavení, kde můžete kdykoli uzpůsobit jeho nastavení. Účet smažete pomocí <strong>Účet</strong> &gt; <strong>Odebrat</strong>.</p>
+<h2>Systray icon<a class="headerlink" href="#systray-icon" title="Link to this heading"></a></h2>
+<p>The desktop client shows a status icon in the system tray on Windows and Linux or the menu bar on macOS. Colorful
+status icons and colorful or monochrome tray icons are available for the same sync states. You can choose monochrome
+icons under <strong>General</strong> in the settings dialog.</p>
+<table class="desktop-status-icons docutils align-default" id="id1">
+<caption><span class="caption-text">Synchronization status icons</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 46.0%" />
+<col style="width: 18.0%" />
+<col style="width: 18.0%" />
+<col style="width: 18.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Status</p></th>
+<th class="head"><p>Mono tray</p></th>
+<th class="head"><p>Color tray</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Up to date and connected</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-ok.png"><img alt="Colorful up-to-date status icon" class="desktop-status-icon" src="../../_images/icon-status-ok.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-ok.png"><img alt="Monochrome up-to-date tray icon" class="desktop-status-icon" src="../../_images/icon-tray-ok.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-ok.png"><img alt="Colorful up-to-date tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-ok.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Synchronizing</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-sync.png"><img alt="Colorful synchronizing status icon" class="desktop-status-icon" src="../../_images/icon-status-sync.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-sync.png"><img alt="Monochrome synchronizing tray icon" class="desktop-status-icon" src="../../_images/icon-tray-sync.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-sync.png"><img alt="Colorful synchronizing tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-sync.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+<tr class="row-even"><td><p>Paused</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-pause.png"><img alt="Colorful paused status icon" class="desktop-status-icon" src="../../_images/icon-status-pause.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-pause.png"><img alt="Monochrome paused tray icon" class="desktop-status-icon" src="../../_images/icon-tray-pause.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-pause.png"><img alt="Colorful paused tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-pause.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Offline</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-offline.png"><img alt="Colorful offline status icon" class="desktop-status-icon" src="../../_images/icon-status-offline.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-offline.png"><img alt="Monochrome offline tray icon" class="desktop-status-icon" src="../../_images/icon-tray-offline.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-offline.png"><img alt="Colorful offline tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-offline.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+<tr class="row-even"><td><p>Warning; open the client for details</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-warning.png"><img alt="Colorful warning status icon" class="desktop-status-icon" src="../../_images/icon-status-warning.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-warning.png"><img alt="Monochrome warning tray icon" class="desktop-status-icon" src="../../_images/icon-tray-warning.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-warning.png"><img alt="Colorful warning tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-warning.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Error; open the client for details</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-error.png"><img alt="Colorful error status icon" class="desktop-status-icon" src="../../_images/icon-status-error.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-error.png"><img alt="Monochrome error tray icon" class="desktop-status-icon" src="../../_images/icon-tray-error.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-error.png"><img alt="Colorful error tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-error.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Open the tray or menu bar icon to view the client and its available actions, such as pausing or resuming sync.</p>
 </section>
 <section id="file-manager-overlay-icons">
-<h2>Překryvné ikony správce souborů<a class="headerlink" href="#file-manager-overlay-icons" title="Link to this heading"></a></h2>
-<p>Nextcloud synchronizační klient poskytuje překryvné ikony – dodatek k normálním typům ikon, pro systémového správce souborů (Průzkumník na Windows, Finder na macOS a Nautilus na Linuxu) k označení stavu synchronizace vašich souborů s Nextcloud.</p>
-<p>Překryvné ikony jsou podobné ikonám v oznamovací oblasti systémového panelu, uvedené výše. Chovají se jinak v případě souborů a složek, podle stavu synchronizace a chyb.</p>
-<p>Překryvná ikona jednotlivého souboru značí stávající stav jeho synchronizace. Pokud je soubor synchronní s verzí na serveru, zobrazuje se zelené zatržítko.</p>
-<p>Pokud je soubor ignorován ze synchronizace, například protože se nachází na seznamu vyloučených, nebo protože se jedná o symbolický odkaz, zobrazí ikonu varování.</p>
-<p>Pokud dojde k chybě synchronizace, nebo je soubor zařazen na seznam vyloučených, zobrazí se zrak upoutávající červené X.</p>
-<p>Pokud soubor čeká na synchronizaci, nebo je v tuto chvíli synchronizován, zobrazí se překryvná ikona modré otáčející se ikony.</p>
-<p>Když klient nemá připojení, nejsou zobrazovány žádné ikony, což odráží stav, že složka není synchronizována a žádné ze změn nejsou synchronizovány na server.</p>
-<p>Překryvná ikona synchronizované složky značí stav souborů v ní. V případě výskytu jakýchkoli chyb synchronizace je složka označena ikonou varování.</p>
-<p>Pokud složka obsahuje ignorované soubory, které jsou označené ikonami varování, tak to nemění stav nadřazených složek.</p>
+<h2>File manager overlay icons<a class="headerlink" href="#file-manager-overlay-icons" title="Link to this heading"></a></h2>
+<p>For classic sync folders, the desktop client adds overlay icons to files in the file manager. A green checkmark
+means a file is up to date. A warning icon can mean that a file is ignored; a red X indicates a sync error. A blue
+icon indicates a file waiting to sync or currently syncing. When the client is offline, it does not show overlays
+for the folder’s current sync state.</p>
+<p>A folder’s overlay reflects sync errors in its contents. Ignored files do not change the parent folder’s status.
+On macOS, File Provider uses the standard Finder status indicators described in <a class="reference internal" href="macosfileprovider.html"><span class="doc">Using the macOS File Provider</span></a>.</p>
 </section>
-<section id="set-the-user-status">
-<h2>Nastavit stav uživatele<a class="headerlink" href="#set-the-user-status" title="Link to this heading"></a></h2>
-<p>Pokud je na vámi využívaném Nextcloud serveru nainstalovaná aplikace stav uživatele, je možné si nastavit svůj stav z klienta pro počítač. Dělá se to otevření hlavního dialogu. Poté kliknete na váš zástupný obrázek a poté kliknete na tři tečky. V nabídce, která se otevře klikněte na <strong>Nastavit stav</strong>.</p>
-<figure class="align-default">
-<img alt="Otevřete dialog stavu uživatele z hlavního dialogu." src="../../_images/user_status_selector_main_dialog.png" />
-</figure>
-<p>V dialogu, který se otevře, je možné si nastavit svůj vlastní stav online a to kliknutím na buď <strong>Online</strong>, <strong>Pryč</strong>, <strong>Nerušit</strong> nebo <strong>Neviditelný</strong>. Je také možné si nastavit uživatelsky určenou stavovou zprávu pomocí níže uvedené textové kolonky nebo zvolit jednu z přednastavených zpráv. Je také možné nastavit si uživatelsky určenou emotikonu a to kliknutím na tlačítko s emotikonou vedle kolonky pro zadání textu. Poslední věc, kterou byste si mohli chtít nastavit je kdy má být váš uživatelský stav vyčištěn. Je možné zvolit období, po kterém bude stav uživatele vyčištěn a to kliknutím na tlačítko na lévé straně textu <strong>Vyčistit stavovou zprávu po uplynutí</strong>.</p>
-<figure class="align-default">
-<img alt="Dialog pro nastavení stavu uživatele." src="../../_images/user_status-selector_dialog.png" />
-</figure>
-<p>Pokud jste spokojení se stavem, který jste vytvořili, je možné tento stav zapnout pomocí tlačítka <strong>Nastavit stavovou zprávu</strong>. Pokud už jste měli stav nastavený, je možné ho vyčistit kliknutím na tlačítko <strong>Vyčistit stavovou zprávu</strong>.</p>
-</section>
-<section id="sharing-from-your-desktop">
-<h2>Sdílení z vašeho desktopu<a class="headerlink" href="#sharing-from-your-desktop" title="Link to this heading"></a></h2>
-<p>Nextcloud klient synchronizace pro počítač se včlení do správce souborů v systému – Finderu v macOS a Průzkumníka ve Windows. Uživatelé Linuxu nainstalují dodatečný balíček v závislosti na jimi používaném správci souborů. K dispozici jsou např. <code class="docutils literal notranslate"><span class="pre">nautilus-nextcloud</span></code> (Ubuntu/Debian), <code class="docutils literal notranslate"><span class="pre">dolphin-nextcloud</span></code> (Kubuntu), <code class="docutils literal notranslate"><span class="pre">nemo-nextcloud</span></code> a <code class="docutils literal notranslate"><span class="pre">caja-nextcloud</span></code>. Je možné vytvářet odkazy na sdílení a sdílet s interními uživateli v Nextcloud stejným způsobem, jako ve webovém rozhraní vámi využívané instance Nextcloud.</p>
-<p>In your file explorer, click on a file and in the context menu go to
-<strong>Nextcloud</strong> and then click on <strong>Share options</strong> to bring up the Share
-dialog.</p>
-<figure class="align-default">
-<img alt="Sdílení z Průzkumníka Windows." src="../../_images/share_context_menu.png" />
-</figure>
-<p>Z tohoto dialogu je možné nasdílet soubor.</p>
-<figure class="align-default">
-<img alt="Dialog sdílení" src="../../_images/share_dialog.png" />
-</figure>
-</section>
-<section id="general-window">
-<h2>Obecné okno<a class="headerlink" href="#general-window" title="Link to this heading"></a></h2>
-<p>Okno Obecné obsahuje předvolby nastavení jako např. <strong>Spouštět při startu systému</strong>, <strong>Používat monochromatické ikony</strong>, a <strong>Zobrazovat upozornění ze serveru</strong>. Toto je, kde naleznete tlačítko <strong>Upravit ignorované soubory</strong> pro spuštění editoru seznamů ignorovaných souborů, a <strong>Zeptat se na potvrzení před stahování složek větších, než [velikost složky]</strong>.</p>
-<figure class="align-default">
-<img alt="Obecné okno obsahující předvolby nastavení." src="../../_images/settings_general.png" />
-</figure>
-</section>
-<section id="using-the-network-window">
-<h2>Použití okna Síť<a class="headerlink" href="#using-the-network-window" title="Link to this heading"></a></h2>
-<p id="index-0">Okno nastavení sítě umožňuje zadat nastavení pro síťovou proxy a také stanovit, jak velkou část z přenosové kapacity sítě využívat pro stahování a nahrávání.</p>
-<figure class="align-default">
-<img alt="../../_images/settings_network.png" src="../../_images/settings_network.png" />
-</figure>
-</section>
-<section id="using-the-ignored-files-editor">
-<span id="usingignoredfileseditor-label"></span><h2>Používání editoru seznamu souborů k ignorování<a class="headerlink" href="#using-the-ignored-files-editor" title="Link to this heading"></a></h2>
-<p id="index-1">Může být, že máte některé místní soubory či složky, které nechcete zálohovat a uchovávat na serveru. Pro identifikaci a vynechání těchto souborů nebo složek je možné použít <em>Editor ignorovaných souborů</em> (záložka Obecné).</p>
-<figure class="align-default">
-<img alt="../../_images/ignored_files_editor.png" src="../../_images/ignored_files_editor.png" />
-</figure>
-<p>Pro vaše pohodlí je editor předvyplněn výchozím seznamem vzorů typicky ignorovaného. Tyto vzory jsou obsažené v systémovém souboru (typicky <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>), nacházejícím se ve složce aplikace Nextcloud klient. Tyto vzory nelze měnit přímo z editoru. Nicméně, pokud je to třeba, je možné najet ukazatelem na jakýkoli vzor v seznamu a zobrazí se popis umístění a název souboru, ze kterého pochází. Přejděte k němu a upravte přímo soubor <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Poznámka</p>
-<p>Změna souboru s globálními definicemi pro vynechávání může vést k tomu, že klient nebude použitelný nebo jeho nezamýšlenému chování.</p>
-</div>
-<p>Každý řádek v editoru obsahuje řetězec vzoru ignorovaného. Při vytváření uživatelsky určených vzorů, krom možnosti používání běžných znaků pro definování vzoru ignorovaného, je možné použít zástupné znaky pro odpovídající hodnoty. Jako příklad je možné použít hvězdičku (<code class="docutils literal notranslate"><span class="pre">*</span></code>) pro identifikaci libovolného množství znaků nebo otazník (<code class="docutils literal notranslate"><span class="pre">?</span></code>) pro identifikaci jednotlivého znaku.</p>
-<p>Vzory, které končí na znak dopředné lomítko (<code class="docutils literal notranslate"><span class="pre">/</span></code>) jsou uplatňovány pouze na tu část kontrolovaného popisu umístění, která se týká složky.</p>
-<div class="admonition note">
-<p class="admonition-title">Poznámka</p>
-<p>Uživatelsky určené položky v tuto chvíli nejsou editorem ověřovány ohledně syntaktické správnosti, takže neuvidíte žádná varování ohledně nesprávné syntaxe. Pokud synchronizace nefunguje tak, jak očekáváte, zkontrolujte syntaxi.</p>
-</div>
-<p>Každý řetězec vzoru v seznamu je následován zaškrtávací kolonkou. Když zaškrtávací kolonka obsahuje zatržítko, pak kromě ignorování součásti souboru či složky, shodující se se vzorem, jakékoli shodující se soubory jsou také považovány za „pomíjivá metadata“ a klientem odebrána.</p>
-<p>Krom vynechávání souborů a složek, které používá vzory, definované v tomto seznamu:</p>
-<ul class="simple">
-<li><p>Nexcloud klient vždy vynechává soubory, jejichž názvy obsahují znaky, které není možné synchronizovat na ostatní souborové systémy.</p></li>
-<li><p>Ty soubory, které způsobí jednotlivé chyby třikrát v průběhu jedné synchronizace, jsou odebrány. Nicméně, klient poskytuje možnost pokusit se u problematických souborů o další pokus (opět s limitem třech neúspěchů).</p></li>
-</ul>
+<section id="sharing">
+<h2>Sharing<a class="headerlink" href="#sharing" title="Link to this heading"></a></h2>
+<p>The desktop client integrates sharing actions into Finder on macOS and Explorer on Windows. On Linux, install the
+integration package for your file manager, such as <code class="docutils literal notranslate"><span class="pre">nautilus-nextcloud</span></code> or <code class="docutils literal notranslate"><span class="pre">dolphin-nextcloud</span></code>.</p>
+<p>In your file manager, right-click a file and select <strong>Nextcloud</strong> &gt; <strong>Share options</strong> to open the share dialog.</p>
+<p>Use <strong>Search for recipients</strong> to share the file with people or groups. Existing shares and share links appear below
+the search field. Use the copy button to copy an internal link or share link. Use the three-dot menu to edit a share,
+or the <strong>X</strong> button to remove it.</p>
+<a class="reference internal image-reference" href="../../_images/sharing-overview.png"><img alt="Sharing overview with recipient search, existing shares, and link controls" class="align-center" src="../../_images/sharing-overview.png" style="width: 50%;" />
+</a>
+<p>When you edit a share, choose the recipient’s permission from the dropdown menu. You can also add a note for the
+recipients. Changes are applied immediately.</p>
+<a class="reference internal image-reference" href="../../_images/sharing-details.png"><img alt="Share details with recipients, permissions, and a note to recipients" class="align-center" src="../../_images/sharing-details.png" style="width: 50%;" />
+</a>
+<p>Open <strong>Sharing settings</strong> with the gear button to set an expiration date or protect the share with a password.
+Changes are applied immediately.</p>
+<a class="reference internal image-reference" href="../../_images/sharing-advanced-settings.png"><img alt="Advanced sharing settings for expiration date and password protection" class="align-center" src="../../_images/sharing-advanced-settings.png" style="width: 50%;" />
+</a>
 </section>
 </section>
 
@@ -301,7 +324,7 @@ dialog.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="uninstallation.html" class="btn btn-neutral float-left" title="Uninstallation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-left" title="Instalace" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="macosfileprovider.html" class="btn btn-neutral float-right" title="Using the macOS File Provider" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
