@@ -10,7 +10,7 @@
      - Description
    * - ``--userid <user>``
      - Required
-     - User ID for the account to create. Use together with ``--serverurl``.
+     - User ID for the account to create.
    * - ``--serverurl <url>``
      - Required
      - Base URL of the Nextcloud server, for example ``https://cloud.example.com``.
