@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>De synchronisatieclient gebruiken &mdash; Nextcloud 36 User Manual</title>
+  <title>Using the Client &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=08b96895" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -32,7 +32,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
     <link rel="next" title="Using the macOS File Provider" href="macosfileprovider.html" />
-    <link rel="prev" title="Uninstallation" href="uninstallation.html" />
+    <link rel="prev" title="Installatie" href="installation.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -82,27 +82,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installatie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">De synchronisatieclient gebruiken</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#systray-icon">Systeemvakpictogram</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuring-nextcloud-account-settings">Instellingen voor Nextcloud-accounts configureren</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#adding-new-accounts">Nieuwe accounts toevoegen</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#file-manager-overlay-icons">Bestandsbeheer overlay-pictogrammen</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#set-the-user-status">Gebruikersstatus instellen</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sharing-from-your-desktop">Delen vanaf je bureaublad</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-window">Algemene venster</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-network-window">Netwerkvenster gebruiken</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-ignored-files-editor">Het gebruik van de Genegeerde Bestanden Editor</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using the Client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add-account">Add account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#settings-dialog">Settings dialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#systray-icon">Systray icon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-manager-overlay-icons">File manager overlay icons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing">Sharing</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client_features.html">Client features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">De Automatische Updater</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update-kanalen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Conflicten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html">Veelgestelde vragen</a></li>
 </ul>
 </li>
@@ -127,7 +124,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
-      <li class="breadcrumb-item active">De synchronisatieclient gebruiken</li>
+      <li class="breadcrumb-item active">Using the Client</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/usage.rst" class="fa fa-github"> Bewerk op GitHub</a>
       </li>
@@ -137,164 +134,189 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="using-the-synchronization-client">
-<h1>De synchronisatieclient gebruiken<a class="headerlink" href="#using-the-synchronization-client" title="Link to this heading"></a></h1>
-<p>De Nextcloud Desktop Client blijft actief op de achtergrond en is zichtbaar als een pictogram in het systeemvak (Windows, KDE), menubalk (macOS) of meldingsgebied (Linux).</p>
-<figure class="align-default">
-<img alt="Statuspictogram, groene cirkel en wit vinkje" src="../../_images/icon.png" />
-</figure>
-<p>De statusindicator gebruikt pictogrammen om de huidige status van de synchronisatie aan te geven. De groene cirkel met het witte vinkje vertelt dat de synchronisatie geactualiseerd is en dat je verbonden bent met je Nextcloud-server.</p>
-<figure class="align-default">
-<img alt="Statuspictogram, blauwe cirkel en witte halve cirkels" src="../../_images/icon-syncing.png" />
-</figure>
-<p>Het blauwe pictogram met de witte halve cirkels geeft aan dat er gesynchroniseerd wordt.</p>
-<figure class="align-default">
-<img alt="Status icon, grey circle and vertical parallel lines" src="../../_images/icon-paused.png" />
-</figure>
-<p>The grey icon with the parallel lines tells you your synchronization
-has been paused. (Most likely by you.)</p>
-<figure class="align-default">
-<img alt="Status icon, gray circle and three horizontal white dots" src="../../_images/icon-offline.png" />
-</figure>
-<p>Het grijze pictogram met drie witte stippen geeft aan dat de synchronisatieclient de verbinding met je Nextcloud-server heeft verloren.</p>
-<figure class="align-default">
-<img alt="Statuspictogram, &quot;!&quot;-teken in gele cirkel" src="../../_images/icon-information.png" />
-</figure>
-<p>Als je een gele cirkel ziet met het “!”-teken dan is dat het informatiepictogram, dus klik erop om te zien wat het te vertellen heeft.</p>
-<figure class="align-default">
-<img alt="Statuspictogram, rode cirkel met witte x" src="../../_images/icon-error.png" />
-</figure>
-<p>De rode cirkel met de witte “x” geeft een configuratiefout aan, zoals een onjuiste aanmelding of server-URL.</p>
+  <section id="using-the-client">
+<h1>Using the Client<a class="headerlink" href="#using-the-client" title="Link to this heading"></a></h1>
+<p>The Nextcloud desktop client runs in the background. Open its settings from the system tray on Windows and Linux or
+the menu bar on macOS.</p>
+<section id="add-account">
+<span id="desktop-add-account"></span><h2>Add account<a class="headerlink" href="#add-account" title="Link to this heading"></a></h2>
+<p>To connect another Nextcloud account, open the settings dialog and click <strong>Add account</strong> in the sidebar. Enter the
+address you use to access your Nextcloud server in a browser, then click <strong>Log in</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-server.png"><img alt="Setup wizard with the server address field and Log in button" class="align-center" src="../../_images/wizard-server.png" style="width: 50%;" />
+</a>
+<p>If your network requires a proxy, click <strong>Proxy settings</strong> before logging in. Choose the system proxy or enter your
+proxy settings manually, then click <strong>Done</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-proxy-settings.png"><img alt="Proxy settings dialog with no proxy, system proxy, and manual proxy options" class="align-center" src="../../_images/wizard-proxy-settings.png" style="width: 50%;" />
+</a>
+<p>If the secure connection fails, check the server address and contact your server administrator. The wizard may offer
+to connect without TLS or use a client certificate. Use <strong>Use client certificate</strong> only if your server requires one.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-secure-connection.png"><img alt="Warning that the secure server connection failed, with client certificate and unencrypted options" class="align-center" src="../../_images/wizard-secure-connection.png" style="width: 50%;" />
+</a>
+<p>If prompted for a client certificate, choose the PKCS#12 file provided by your administrator, enter its password,
+and click <strong>Connect</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-client-certificate.png"><img alt="Client certificate dialog with certificate file and password fields" class="align-center" src="../../_images/wizard-client-certificate.png" style="width: 50%;" />
+</a>
+<p>The wizard asks you to switch to your browser. Click <strong>Open</strong> if the browser does not open automatically. Log in and
+grant the desktop client access when prompted. Then return to the wizard.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-browser-auth.png"><img alt="Setup wizard prompting you to open a browser to authorize the account" class="align-center" src="../../_images/wizard-browser-auth.png" style="width: 50%;" />
+</a>
+<p>Choose how to sync your files. With classic synchronization, choose <strong>Synchronize everything</strong> or <strong>Choose what to
+sync</strong>. Use <strong>Choose</strong> beside <strong>Local sync folder</strong> to change where files are stored, then click <strong>Done</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-sync-classic.png"><img alt="Classic synchronization options and local sync folder in the setup wizard" class="align-center" src="../../_images/wizard-sync-classic.png" style="width: 50%;" />
+</a>
+<p>You can choose <strong>File Provider</strong> to download files on demand. Click <strong>Done</strong> to finish adding the account. On macOS,
+see <a class="reference internal" href="macosfileprovider.html"><span class="doc">Using the macOS File Provider</span></a> for details about Finder integration.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-sync-file-provider.png"><img alt="File Provider selected in the setup wizard" class="align-center" src="../../_images/wizard-sync-file-provider.png" style="width: 50%;" />
+</a>
+<p>Before finishing classic synchronization, click <strong>Advanced</strong> if you want confirmation before syncing large folders
+or external storage. Set your preferences in <strong>Advanced options</strong>, then click <strong>Done</strong> to return to the wizard.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-advanced-options.png"><img alt="Advanced options for large folders and external storage in the setup wizard" class="align-center" src="../../_images/wizard-advanced-options.png" style="width: 50%;" />
+</a>
+</section>
+<section id="settings-dialog">
+<h2>Settings dialog<a class="headerlink" href="#settings-dialog" title="Link to this heading"></a></h2>
+<p>Select an account in the sidebar to see its sync status, local folder, storage usage, and connection settings. Use
+<strong>Add Folder Sync Connection</strong> to set up another classic sync folder for that account. You can log out or remove the
+account from the same page.</p>
+<a class="reference internal image-reference" href="../../_images/settings-account-classic.png"><img alt="Account settings with classic sync status, connection settings, and account controls" class="align-center" src="../../_images/settings-account-classic.png" style="width: 50%;" />
+</a>
+<p>Under <strong>General</strong>, choose whether to launch the client at startup, use monochrome icons, and show notifications.
+On macOS, you can also enable File Provider for all accounts. This setting replaces classic sync folders and their
+Finder integration.</p>
+<a class="reference internal image-reference" href="../../_images/settings-general.png"><img alt="General settings for startup, icons, File Provider, and notifications" class="align-center" src="../../_images/settings-general.png" style="width: 50%;" />
+</a>
+<p>Under <strong>Advanced</strong>, set confirmation thresholds for large folders and external storage. You can also adjust the
+server polling interval, decide whether removed files go to the trash, edit ignored files, or create a debug archive.</p>
+<a class="reference internal image-reference" href="../../_images/settings-advanced.png"><img alt="Advanced settings for sync confirmations, server polling, ignored files, and debug archives" class="align-center" src="../../_images/settings-advanced.png" style="width: 50%;" />
+</a>
+<p id="usingignoredfileseditor-label">To exclude files or folders from synchronization, click <strong>Edit Ignored Files</strong> under <strong>Advanced</strong>. Add a pattern for
+each item you want to ignore. An asterisk (<code class="docutils literal notranslate"><span class="pre">*</span></code>) matches any number of characters, a question mark (<code class="docutils literal notranslate"><span class="pre">?</span></code>)
+matches one character, and a trailing slash (<code class="docutils literal notranslate"><span class="pre">/</span></code>) limits a pattern to folders. Select <strong>Allow Deletion</strong> only for
+ignored items that the client may remove when they prevent a folder from being deleted. Click <strong>OK</strong> to save.</p>
+<a class="reference internal image-reference" href="../../_images/settings-ignored-files.png"><img alt="Ignored files editor with patterns, Allow Deletion checkboxes, and save controls" class="align-center" src="../../_images/settings-ignored-files.png" style="width: 50%;" />
+</a>
+<p>Under <strong>Info</strong>, you can check the desktop client version and open its usage documentation or legal notice.</p>
+<a class="reference internal image-reference" href="../../_images/settings-info.png"><img alt="Info page showing the desktop client version and documentation link" class="align-center" src="../../_images/settings-info.png" style="width: 50%;" />
+</a>
+</section>
 <section id="systray-icon">
-<h2>Systeemvakpictogram<a class="headerlink" href="#systray-icon" title="Link to this heading"></a></h2>
-<p>Een klik met de rechtermuisknop op het systeemvak-pictogram opent een menu voor snelle toegang tot meerdere bewerkingen.</p>
-<figure class="align-default">
-<img alt="klik met de rechtermuisknop op het synchronisatieclientmenu" src="../../_images/traymenu.png" />
-</figure>
-<p>Dit menu biedt de volgende opties:</p>
-<ul class="simple">
-<li><p>Hoofddialoogvenster openen</p></li>
-<li><p>Synchronisatie pauzeren/hervatten</p></li>
-<li><p>Instellingen</p></li>
-<li><p>Nextcloud afsluiten, uitloggen en de client sluiten</p></li>
-</ul>
-<p>Een linkerklik op het systeemvak-pictogram opent het hoofddialoogvenster van de desktopclient.</p>
-<figure class="align-default">
-<img alt="Hoofddialoog" src="../../_images/main_dialog.png" />
-</figure>
-<p>De belangrijkste dialogen tonen recente activiteiten, fouten en servermeldingen.</p>
-<p>Met het klikken op het hoofddialoogvenster en vervolgens de avatar van de gebruiker, worden de instellingen geopend.</p>
-</section>
-<section id="configuring-nextcloud-account-settings">
-<h2>Instellingen voor Nextcloud-accounts configureren<a class="headerlink" href="#configuring-nextcloud-account-settings" title="Link to this heading"></a></h2>
-<figure class="align-default">
-<img alt="Hoofddialoog" src="../../_images/settingsdialog.png" />
-</figure>
-<p>Bovenaan het venster bevinden zich tabbladen voor elk geconfigureerd synchronisatieaccount en twee andere voor algemene en netwerkinstellingen. Op je account tabbladen heb je de volgende kenmerken:</p>
-<ul class="simple">
-<li><p>Verbindingsstatus, die laat zien met welke Nextcloud-server je bent verbonden en jouw Nextcloud-gebruikersnaam.</p></li>
-<li><p>Gebruikte en beschikbare ruimte op de server.</p></li>
-<li><p>Huidige synchronisatiestatus.</p></li>
-<li><p>Knop <strong>Mapsynchronisatieverbinding toevoegen</strong></p></li>
-</ul>
-<p>De kleine knop met drie stippen (het overloop-menu) die rechts van de synchronisatiestatusbalk staat, biedt extra opties:</p>
-<ul class="simple">
-<li><p>Map openen</p></li>
-<li><p>Kies wat je wilt synchroniseren (Dit verschijnt alleen wanneer je bestandstructuur is ingeklapt, en breidt de bestandstructuur uit)</p></li>
-<li><p>Synchronisatie pauzren/hervatten</p></li>
-<li><p>Mapsynchronisatieverbinding verwijderen</p></li>
-<li><p>Beschikbaarheid (Alleen beschikbaar als de ondersteuning voor virtuele bestanden is ingeschakeld)</p></li>
-<li><p>Ondersteuning voor virtuele bestanden in-/uitschakelen</p></li>
-</ul>
-<p><strong>Map openen</strong> opent je lokale Nextcloud synchronisatiemap.</p>
-<p><strong>Synchronisatie pauzeren</strong> pauzeert synchronisatiebewerkingen zonder wijzigingen aan te brengen in je account. Het zal doorgaan met het bijwerken van bestands- en mappenlijsten, zonder bestanden te downloaden of bij te werken. Gebruik <strong>Mapsynchronisatieverbinding verwijderen</strong> om alle synchronisatieactiviteiten te stoppen.</p>
-<figure class="align-default">
-<img alt="Extra opties voor synchronisaties" src="../../_images/general_settings_folder_context_menu.png" />
-</figure>
-<div class="admonition note">
-<p class="admonition-title">Notitie</p>
-<p>Nextcloud behoudt niet de mtime (modification time) van mappen, maar het werkt wel de mtimes van bestanden bij. Ziee <a class="reference external" href="https://github.com/owncloud/core/issues/7009">Wrong folder date when syncing</a> voor bespreking hiervan.</p>
-</div>
-</section>
-<section id="adding-new-accounts">
-<h2>Nieuwe accounts toevoegen<a class="headerlink" href="#adding-new-accounts" title="Link to this heading"></a></h2>
-<p>Je kunt meerdere Nextcloud-accounts configureren in je desktop synchronisatieclient. Gebruik <strong>Account</strong> &gt; <strong>Nieuw Account Toevoegen</strong> in een van de accounttabs om een nieuw account toe te voegen, en volg daarna de assistent voor het aanmaken van een account. Het nieuwe account verschijnt als een nieuwe tab in het instellingenvenster, waar je op elk moment de instellingen kunt aanpassen. Gebruik <strong>Account</strong> &gt; <strong>Verwijderen</strong> om accounts te verwijderen.</p>
+<h2>Systray icon<a class="headerlink" href="#systray-icon" title="Link to this heading"></a></h2>
+<p>The desktop client shows a status icon in the system tray on Windows and Linux or the menu bar on macOS. Colorful
+status icons and colorful or monochrome tray icons are available for the same sync states. You can choose monochrome
+icons under <strong>General</strong> in the settings dialog.</p>
+<table class="desktop-status-icons docutils align-default" id="id1">
+<caption><span class="caption-text">Synchronization status icons</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 46.0%" />
+<col style="width: 18.0%" />
+<col style="width: 18.0%" />
+<col style="width: 18.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Status</p></th>
+<th class="head"><p>Mono tray</p></th>
+<th class="head"><p>Color tray</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Up to date and connected</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-ok.png"><img alt="Colorful up-to-date status icon" class="desktop-status-icon" src="../../_images/icon-status-ok.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-ok.png"><img alt="Monochrome up-to-date tray icon" class="desktop-status-icon" src="../../_images/icon-tray-ok.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-ok.png"><img alt="Colorful up-to-date tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-ok.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Synchronizing</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-sync.png"><img alt="Colorful synchronizing status icon" class="desktop-status-icon" src="../../_images/icon-status-sync.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-sync.png"><img alt="Monochrome synchronizing tray icon" class="desktop-status-icon" src="../../_images/icon-tray-sync.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-sync.png"><img alt="Colorful synchronizing tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-sync.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+<tr class="row-even"><td><p>Paused</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-pause.png"><img alt="Colorful paused status icon" class="desktop-status-icon" src="../../_images/icon-status-pause.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-pause.png"><img alt="Monochrome paused tray icon" class="desktop-status-icon" src="../../_images/icon-tray-pause.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-pause.png"><img alt="Colorful paused tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-pause.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Offline</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-offline.png"><img alt="Colorful offline status icon" class="desktop-status-icon" src="../../_images/icon-status-offline.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-offline.png"><img alt="Monochrome offline tray icon" class="desktop-status-icon" src="../../_images/icon-tray-offline.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-offline.png"><img alt="Colorful offline tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-offline.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+<tr class="row-even"><td><p>Warning; open the client for details</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-warning.png"><img alt="Colorful warning status icon" class="desktop-status-icon" src="../../_images/icon-status-warning.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-warning.png"><img alt="Monochrome warning tray icon" class="desktop-status-icon" src="../../_images/icon-tray-warning.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-warning.png"><img alt="Colorful warning tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-warning.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Error; open the client for details</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-error.png"><img alt="Colorful error status icon" class="desktop-status-icon" src="../../_images/icon-status-error.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-error.png"><img alt="Monochrome error tray icon" class="desktop-status-icon" src="../../_images/icon-tray-error.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-error.png"><img alt="Colorful error tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-error.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Open the tray or menu bar icon to view the client and its available actions, such as pausing or resuming sync.</p>
 </section>
 <section id="file-manager-overlay-icons">
-<h2>Bestandsbeheer overlay-pictogrammen<a class="headerlink" href="#file-manager-overlay-icons" title="Link to this heading"></a></h2>
-<p>De Nextcloud synchronisatieclient biedt overlay-pictogrammen, naast die voor normale bestandstypes, voor jouw besturingssysteembeheerder (Verkenner op Windows, Finder op Mac en Nautilus op Linux) om de synchronisatiestatus van je Nextcloud-bestanden aan te geven.</p>
-<p>De overlay-pictogrammen zijn vergelijkbaar met de systeempictogrammen die hierboven zijn geïntroduceerd. Ze gedragen zich anders bij bestanden en mappen op basis van de synchronisatiestatus en fouten.</p>
-<p>Het overlay-pictogram van een individueel bestand geeft de huidige synchronisatietoestand aan. Als het bestand gesynchroniseerd is met de serverversie, toont het een groene vink.</p>
-<p>Als het bestand wordt genegeerd bij het synchroniseren, bijvoorbeeld omdat het op je uitsluitlingsijst staat of omdat het een symbolische link is, wordt er een waarschuwingssymbool weergegeven.</p>
-<p>Als er een synchronisatiefout is, of als het bestand op de zwarte lijst staat, wordt er een opvallende rode X weergegeven.</p>
-<p>Als het bestand in de wachtrij staat om gesynchroniseerd te worden, of momenteel aan het synchroniseren is, wordt er een blauw draaiend pictogram getoond.</p>
-<p>Is de client offline, dan worden er geen pictogrammen weergegeven ter indicatie dat de map momenteel niet gesynchroniseerd is en er geen wijzigingen met de server worden uitgewisseld.</p>
-<p>Het overlay-pictogram van een gesynchroniseerde map geeft de status van de bestanden in de map aan. Als er sync-fouten zijn, wordt de map gemarkeerd met een waarschuwingspictogram.</p>
-<p>Als een map genegeerde bestanden bevat die zijn gemarkeerd met waarschuwingsiconen, verandert dit niet de status van de bovenliggende mappen.</p>
+<h2>File manager overlay icons<a class="headerlink" href="#file-manager-overlay-icons" title="Link to this heading"></a></h2>
+<p>For classic sync folders, the desktop client adds overlay icons to files in the file manager. A green checkmark
+means a file is up to date. A warning icon can mean that a file is ignored; a red X indicates a sync error. A blue
+icon indicates a file waiting to sync or currently syncing. When the client is offline, it does not show overlays
+for the folder’s current sync state.</p>
+<p>A folder’s overlay reflects sync errors in its contents. Ignored files do not change the parent folder’s status.
+On macOS, File Provider uses the standard Finder status indicators described in <a class="reference internal" href="macosfileprovider.html"><span class="doc">Using the macOS File Provider</span></a>.</p>
 </section>
-<section id="set-the-user-status">
-<h2>Gebruikersstatus instellen<a class="headerlink" href="#set-the-user-status" title="Link to this heading"></a></h2>
-<p>Als je de gebruikersstatus-app op je Nextcloud-server hebt geïnstalleerd, kun je je gebruikersstatus vanuit de desktopclient instellen. Open daarvoor de hoofd-dialoog. Klik vervolgens op je avatar en klik daarna op de drie stippen. In het menu dat opent, klik op <strong>Status instellen</strong>.</p>
-<figure class="align-default">
-<img alt="Gebruikersstatusdialoog openen vanuit hoofddialoog." src="../../_images/user_status_selector_main_dialog.png" />
-</figure>
-<p>In het dialoogvenster dat opent, kun je je online status instellen door op <strong>Online</strong>, <strong>Afwezig</strong>, <strong>Niet storen</strong> of <strong>Onzichtbaar</strong> te klikken. Je kunt ook een aangepaste statusbericht instellen met het tekstveld hieronder of een van de vooraf gedefinieerde statusberichten hieronder kiezen. Het is ook mogelijk om een aangepaste emoji in te stellen als je op de knop met de emoji naast het tekstinvoerveld klikt. De laatste optie die je misschien wilt instellen, is wanneer de status van je gebruiker moet worden gewist. Je kunt de periode kiezen waarna de gebruikersstatus zal worden gewist door op de knop aan de linkerkant van de tekst <strong>Statusbericht wissen na</strong> te klikken.</p>
-<figure class="align-default">
-<img alt="Dialoog om de gebruikersstatus in te stellen." src="../../_images/user_status-selector_dialog.png" />
-</figure>
-<p>Als je tevreden bent met de status die je hebt gecreëerd, kun je deze status inschakelen met de knop <strong>Statusbericht instellen</strong>. Als je al een status had ingesteld, kun je de status wissen door op de knop <strong>Statusbericht wissen</strong> te klikken.</p>
-</section>
-<section id="sharing-from-your-desktop">
-<h2>Delen vanaf je bureaublad<a class="headerlink" href="#sharing-from-your-desktop" title="Link to this heading"></a></h2>
-<p>De Nextcloud desktop sync-client integreert met je bestandsbeheer; Finder op macOS en Verkenner op Windows. Linux-gebruikers moeten een aanvullend pakket installeren, afhankelijk van de gebruikte bestandsbeheer. Beschikbaar zijn bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">nautilus-nextcloud</span></code> (Ubuntu/Debian), <code class="docutils literal notranslate"><span class="pre">dolphin-nextcloud</span></code> (Kubuntu), <code class="docutils literal notranslate"><span class="pre">nemo-nextcloud</span></code> en <code class="docutils literal notranslate"><span class="pre">caja-nextcloud</span></code>. Je kunt deel-links maken en delen met interne Nextcloud-gebruikers op dezelfde manier als in de Nextcloud-webinterface.</p>
-<p>In your file explorer, click on a file and in the context menu go to
-<strong>Nextcloud</strong> and then click on <strong>Share options</strong> to bring up the Share
-dialog.</p>
-<figure class="align-default">
-<img alt="Delen vanuit Windows Verkenner." src="../../_images/share_context_menu.png" />
-</figure>
-<p>Vanuit deze dialoog kun je een bestand delen.</p>
-<figure class="align-default">
-<img alt="Dialoog Delen" src="../../_images/share_dialog.png" />
-</figure>
-</section>
-<section id="general-window">
-<h2>Algemene venster<a class="headerlink" href="#general-window" title="Link to this heading"></a></h2>
-<p>Het Algemeen scherm heeft configuratie-opties zoals <strong>Starten als systeem start</strong>, <strong>Gebruik monochrome iconen</strong>, and <strong>Toon servermeldingen</strong>. Hier bevindt zich ook de <strong>Wijzig genegeerde bestanden</strong> knop om de genegeerde bestanden-editor te starten, en <strong>Vraag bevestiging voor downloaden van mappen groter dan [mapgrootte]</strong>.</p>
-<figure class="align-default">
-<img alt="Het algemene venster bevat configuratieopties." src="../../_images/settings_general.png" />
-</figure>
-</section>
-<section id="using-the-network-window">
-<h2>Netwerkvenster gebruiken<a class="headerlink" href="#using-the-network-window" title="Link to this heading"></a></h2>
-<p id="index-0">Het venster Netwerkinstellingen stelt je in staat om netwerkproxy-instellingen te definiëren en ook om de download- en uploadbandbreedte te beperken.</p>
-<figure class="align-default">
-<img alt="../../_images/settings_network.png" src="../../_images/settings_network.png" />
-</figure>
-</section>
-<section id="using-the-ignored-files-editor">
-<span id="usingignoredfileseditor-label"></span><h2>Het gebruik van de Genegeerde Bestanden Editor<a class="headerlink" href="#using-the-ignored-files-editor" title="Link to this heading"></a></h2>
-<p id="index-1">Je hebt misschien enkele lokale bestanden of mappen die je niet wilt back-uppen en op de server wilt opslaan. Om deze bestanden of mappen te identificeren en uit te sluiten, kun je de <em>Genegeerde Bestanden Editor</em> (Algemene tabblad) gebruiken.</p>
-<figure class="align-default">
-<img alt="../../_images/ignored_files_editor.png" src="../../_images/ignored_files_editor.png" />
-</figure>
-<p>Voor jouw gemak is de editor voorgeprogrammeerd met een standaardlijst van typische negeerpatronen. Deze patronen zijn opgenomen in een systeembestand (typisch <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>) dat zich bevindt in de applicatiemap van de Nextcloud Client. Je kunt deze voorgeprogrammeerde patronen niet rechtstreeks vanuit de editor aanpassen. Wanneer dat nodig is, kun je met de muis over elk patroon in de lijst bewegen om het pad en de bestandsnaam die aan dat patroon zijn gekoppeld te tonen, het bestand lokaliseren en het bestand <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code> bewerken.</p>
-<div class="admonition note">
-<p class="admonition-title">Notitie</p>
-<p>Het wijzigen van het globale uitsluitingsdefinitiebestand kan de client onbruikbaar maken of leiden tot ongewenst gedrag.</p>
-</div>
-<p>Elke regel in de editor bevat de tekenreeks van een negerpatroon. Bij het maken van aangepaste patronen kun je naast het gebruik van gewone tekens om een negerpatroon te definiëren, ook wildcard-tekens gebruiken om waarden te matchen. Als voorbeeld kun je een asterisk (<code class="docutils literal notranslate"><span class="pre">*</span></code>) gebruiken om een willekeurig aantal tekens te identificeren of een vraagteken (<code class="docutils literal notranslate"><span class="pre">?</span></code>) om een enkel teken te identificeren.</p>
-<p>Patronen die eindigen met een schuine streep (<code class="docutils literal notranslate"><span class="pre">/</span></code>) worden alleen toegepast op directorycomponenten van het pad dat wordt gecontroleerd.</p>
-<div class="admonition note">
-<p class="admonition-title">Notitie</p>
-<p>Aangepaste invoer wordt momenteel niet gevalideerd op syntactische correctheid door de editor, dus je zult geen waarschuwingen zien voor incorrecte syntaxis. Als je synchronisatie niet werkt zoals je had verwacht, controleer dan je syntaxis.</p>
-</div>
-<p>Elke patroonreeks in de lijst wordt gevolgd door een selectievakje. Wanneer het selectievakje een vinkje bevat, worden naast het negeren van het bestand of de mapcomponent die door het patroon wordt gematcht, ook alle gematchte bestanden beschouwd als “tijdelijke metadata” en door de client verwijderd.</p>
-<p>Naast het uitsluiten van bestanden en mappen die gebruik maken van patronen die in deze lijst zijn gedefinieerd:</p>
-<ul class="simple">
-<li><p>De Nextcloud Client sluit altijd bestanden uit die tekens bevatten die niet kunnen worden gesynchroniseerd naar andere bestandssystemen.</p></li>
-<li><p>Bestanden die drie keer individuele fouten veroorzaken tijdens een synchronisatie worden verwijderd. De client biedt echter de optie om een synchronisatie drie extra keren te herhalen op bestanden die fouten veroorzaken.</p></li>
-</ul>
+<section id="sharing">
+<h2>Sharing<a class="headerlink" href="#sharing" title="Link to this heading"></a></h2>
+<p>The desktop client integrates sharing actions into Finder on macOS and Explorer on Windows. On Linux, install the
+integration package for your file manager, such as <code class="docutils literal notranslate"><span class="pre">nautilus-nextcloud</span></code> or <code class="docutils literal notranslate"><span class="pre">dolphin-nextcloud</span></code>.</p>
+<p>In your file manager, right-click a file and select <strong>Nextcloud</strong> &gt; <strong>Share options</strong> to open the share dialog.</p>
+<p>Use <strong>Search for recipients</strong> to share the file with people or groups. Existing shares and share links appear below
+the search field. Use the copy button to copy an internal link or share link. Use the three-dot menu to edit a share,
+or the <strong>X</strong> button to remove it.</p>
+<a class="reference internal image-reference" href="../../_images/sharing-overview.png"><img alt="Sharing overview with recipient search, existing shares, and link controls" class="align-center" src="../../_images/sharing-overview.png" style="width: 50%;" />
+</a>
+<p>When you edit a share, choose the recipient’s permission from the dropdown menu. You can also add a note for the
+recipients. Changes are applied immediately.</p>
+<a class="reference internal image-reference" href="../../_images/sharing-details.png"><img alt="Share details with recipients, permissions, and a note to recipients" class="align-center" src="../../_images/sharing-details.png" style="width: 50%;" />
+</a>
+<p>Open <strong>Sharing settings</strong> with the gear button to set an expiration date or protect the share with a password.
+Changes are applied immediately.</p>
+<a class="reference internal image-reference" href="../../_images/sharing-advanced-settings.png"><img alt="Advanced sharing settings for expiration date and password protection" class="align-center" src="../../_images/sharing-advanced-settings.png" style="width: 50%;" />
+</a>
 </section>
 </section>
 
@@ -302,7 +324,7 @@ dialog.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Voettekst">
-        <a href="uninstallation.html" class="btn btn-neutral float-left" title="Uninstallation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Vorige</a>
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installatie" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Vorige</a>
         <a href="macosfileprovider.html" class="btn btn-neutral float-right" title="Using the macOS File Provider" accesskey="n" rel="next">Volgende <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

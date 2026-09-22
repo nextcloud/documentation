@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Використання Клієнта синхронізації &mdash; Nextcloud 36 User Manual</title>
+  <title>Using the Client &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=08b96895" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -32,7 +32,7 @@
     <link rel="index" title="Індекс" href="../genindex.html" />
     <link rel="search" title="Пошук" href="../search.html" />
     <link rel="next" title="Using the macOS File Provider" href="macosfileprovider.html" />
-    <link rel="prev" title="Uninstallation" href="uninstallation.html" />
+    <link rel="prev" title="Встановлення" href="installation.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -82,27 +82,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Встановлення</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Використання Клієнта синхронізації</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#systray-icon">Значок системної скриньки</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuring-nextcloud-account-settings">Налаштування параметрів облікового запису Nextcloud</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#adding-new-accounts">Додавання нових облікових записів</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#file-manager-overlay-icons">Накладні значки файлового менеджера</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#set-the-user-status">Встановлення статусу користувача</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sharing-from-your-desktop">Спільний доступ з робочого столу</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-window">Головне вікно</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-network-window">Використання мережевого вікна</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-ignored-files-editor">Використання редактора ігнорованих файлів</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using the Client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add-account">Add account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#settings-dialog">Settings dialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#systray-icon">Systray icon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-manager-overlay-icons">File manager overlay icons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing">Sharing</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client_features.html">Client features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Автоматичне оновлення</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Оновлення каналів</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Конфлікти</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html">ПОШИРЕНІ ЗАПИТАННЯ</a></li>
 </ul>
 </li>
@@ -127,7 +124,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
-      <li class="breadcrumb-item active">Використання Клієнта синхронізації</li>
+      <li class="breadcrumb-item active">Using the Client</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/usage.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -137,164 +134,189 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="using-the-synchronization-client">
-<h1>Використання Клієнта синхронізації<a class="headerlink" href="#using-the-synchronization-client" title="Link to this heading"></a></h1>
-<p>Клієнт Nextcloud Desktop Client залишається у фоновому режимі і відображається у вигляді іконки в системному лотку (Windows, KDE), рядку меню (macOS) або області сповіщень (Linux).</p>
-<figure class="align-default">
-<img alt="Значок стану, зелене коло та біла галочка" src="../../_images/icon.png" />
-</figure>
-<p>Індикатор стану використовує піктограми для відображення поточного стану вашої синхронізації. Зелене коло з білою галочкою вказує на те, що синхронізація відбувається і ви підключені до сервера Nextcloud.</p>
-<figure class="align-default">
-<img alt="Значок стану, синє коло та білі півкола" src="../../_images/icon-syncing.png" />
-</figure>
-<p>Синя іконка з білими півколами означає, що йде синхронізація.</p>
-<figure class="align-default">
-<img alt="Status icon, grey circle and vertical parallel lines" src="../../_images/icon-paused.png" />
-</figure>
-<p>The grey icon with the parallel lines tells you your synchronization
-has been paused. (Most likely by you.)</p>
-<figure class="align-default">
-<img alt="Status icon, gray circle and three horizontal white dots" src="../../_images/icon-offline.png" />
-</figure>
-<p>Сіра іконка з трьома білими крапками означає, що ваш клієнт синхронізації втратив зв’язок із сервером Nextcloud.</p>
-<figure class="align-default">
-<img alt="Значок стану, знак &quot;!&quot; у жовтому колі" src="../../_images/icon-information.png" />
-</figure>
-<p>Коли ви бачите жовте коло зі знаком «!» - це інформаційна піктограма, і ви повинні натиснути на неї, щоб побачити, що вона вам скаже.</p>
-<figure class="align-default">
-<img alt="Значок стану, червоне коло та білий х" src="../../_images/icon-error.png" />
-</figure>
-<p>Червоне коло з білим «x» вказує на помилку конфігурації, наприклад, неправильний логін або URL-адресу сервера.</p>
+  <section id="using-the-client">
+<h1>Using the Client<a class="headerlink" href="#using-the-client" title="Link to this heading"></a></h1>
+<p>The Nextcloud desktop client runs in the background. Open its settings from the system tray on Windows and Linux or
+the menu bar on macOS.</p>
+<section id="add-account">
+<span id="desktop-add-account"></span><h2>Add account<a class="headerlink" href="#add-account" title="Link to this heading"></a></h2>
+<p>To connect another Nextcloud account, open the settings dialog and click <strong>Add account</strong> in the sidebar. Enter the
+address you use to access your Nextcloud server in a browser, then click <strong>Log in</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-server.png"><img alt="Setup wizard with the server address field and Log in button" class="align-center" src="../../_images/wizard-server.png" style="width: 50%;" />
+</a>
+<p>If your network requires a proxy, click <strong>Proxy settings</strong> before logging in. Choose the system proxy or enter your
+proxy settings manually, then click <strong>Done</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-proxy-settings.png"><img alt="Proxy settings dialog with no proxy, system proxy, and manual proxy options" class="align-center" src="../../_images/wizard-proxy-settings.png" style="width: 50%;" />
+</a>
+<p>If the secure connection fails, check the server address and contact your server administrator. The wizard may offer
+to connect without TLS or use a client certificate. Use <strong>Use client certificate</strong> only if your server requires one.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-secure-connection.png"><img alt="Warning that the secure server connection failed, with client certificate and unencrypted options" class="align-center" src="../../_images/wizard-secure-connection.png" style="width: 50%;" />
+</a>
+<p>If prompted for a client certificate, choose the PKCS#12 file provided by your administrator, enter its password,
+and click <strong>Connect</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-client-certificate.png"><img alt="Client certificate dialog with certificate file and password fields" class="align-center" src="../../_images/wizard-client-certificate.png" style="width: 50%;" />
+</a>
+<p>The wizard asks you to switch to your browser. Click <strong>Open</strong> if the browser does not open automatically. Log in and
+grant the desktop client access when prompted. Then return to the wizard.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-browser-auth.png"><img alt="Setup wizard prompting you to open a browser to authorize the account" class="align-center" src="../../_images/wizard-browser-auth.png" style="width: 50%;" />
+</a>
+<p>Choose how to sync your files. With classic synchronization, choose <strong>Synchronize everything</strong> or <strong>Choose what to
+sync</strong>. Use <strong>Choose</strong> beside <strong>Local sync folder</strong> to change where files are stored, then click <strong>Done</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-sync-classic.png"><img alt="Classic synchronization options and local sync folder in the setup wizard" class="align-center" src="../../_images/wizard-sync-classic.png" style="width: 50%;" />
+</a>
+<p>You can choose <strong>File Provider</strong> to download files on demand. Click <strong>Done</strong> to finish adding the account. On macOS,
+see <a class="reference internal" href="macosfileprovider.html"><span class="doc">Using the macOS File Provider</span></a> for details about Finder integration.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-sync-file-provider.png"><img alt="File Provider selected in the setup wizard" class="align-center" src="../../_images/wizard-sync-file-provider.png" style="width: 50%;" />
+</a>
+<p>Before finishing classic synchronization, click <strong>Advanced</strong> if you want confirmation before syncing large folders
+or external storage. Set your preferences in <strong>Advanced options</strong>, then click <strong>Done</strong> to return to the wizard.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-advanced-options.png"><img alt="Advanced options for large folders and external storage in the setup wizard" class="align-center" src="../../_images/wizard-advanced-options.png" style="width: 50%;" />
+</a>
+</section>
+<section id="settings-dialog">
+<h2>Settings dialog<a class="headerlink" href="#settings-dialog" title="Link to this heading"></a></h2>
+<p>Select an account in the sidebar to see its sync status, local folder, storage usage, and connection settings. Use
+<strong>Add Folder Sync Connection</strong> to set up another classic sync folder for that account. You can log out or remove the
+account from the same page.</p>
+<a class="reference internal image-reference" href="../../_images/settings-account-classic.png"><img alt="Account settings with classic sync status, connection settings, and account controls" class="align-center" src="../../_images/settings-account-classic.png" style="width: 50%;" />
+</a>
+<p>Under <strong>General</strong>, choose whether to launch the client at startup, use monochrome icons, and show notifications.
+On macOS, you can also enable File Provider for all accounts. This setting replaces classic sync folders and their
+Finder integration.</p>
+<a class="reference internal image-reference" href="../../_images/settings-general.png"><img alt="General settings for startup, icons, File Provider, and notifications" class="align-center" src="../../_images/settings-general.png" style="width: 50%;" />
+</a>
+<p>Under <strong>Advanced</strong>, set confirmation thresholds for large folders and external storage. You can also adjust the
+server polling interval, decide whether removed files go to the trash, edit ignored files, or create a debug archive.</p>
+<a class="reference internal image-reference" href="../../_images/settings-advanced.png"><img alt="Advanced settings for sync confirmations, server polling, ignored files, and debug archives" class="align-center" src="../../_images/settings-advanced.png" style="width: 50%;" />
+</a>
+<p id="usingignoredfileseditor-label">To exclude files or folders from synchronization, click <strong>Edit Ignored Files</strong> under <strong>Advanced</strong>. Add a pattern for
+each item you want to ignore. An asterisk (<code class="docutils literal notranslate"><span class="pre">*</span></code>) matches any number of characters, a question mark (<code class="docutils literal notranslate"><span class="pre">?</span></code>)
+matches one character, and a trailing slash (<code class="docutils literal notranslate"><span class="pre">/</span></code>) limits a pattern to folders. Select <strong>Allow Deletion</strong> only for
+ignored items that the client may remove when they prevent a folder from being deleted. Click <strong>OK</strong> to save.</p>
+<a class="reference internal image-reference" href="../../_images/settings-ignored-files.png"><img alt="Ignored files editor with patterns, Allow Deletion checkboxes, and save controls" class="align-center" src="../../_images/settings-ignored-files.png" style="width: 50%;" />
+</a>
+<p>Under <strong>Info</strong>, you can check the desktop client version and open its usage documentation or legal notice.</p>
+<a class="reference internal image-reference" href="../../_images/settings-info.png"><img alt="Info page showing the desktop client version and documentation link" class="align-center" src="../../_images/settings-info.png" style="width: 50%;" />
+</a>
+</section>
 <section id="systray-icon">
-<h2>Значок системної скриньки<a class="headerlink" href="#systray-icon" title="Link to this heading"></a></h2>
-<p>Клацання правою кнопкою миші на піктограмі системного лотка відкриває меню для швидкого доступу до різних операцій.</p>
-<figure class="align-default">
-<img alt="меню клієнта синхронізації правою кнопкою миші" src="../../_images/traymenu.png" />
-</figure>
-<p>Це меню містить наступні опції:</p>
-<ul class="simple">
-<li><p>Відкрийте головний діалог</p></li>
-<li><p>Призупинити синхронізацію/відновити синхронізацію</p></li>
-<li><p>Налаштування</p></li>
-<li><p>Вихід з Nextcloud, вихід з системи та закриття клієнта</p></li>
-</ul>
-<p>Клацніть лівою кнопкою миші на піктограмі системного лотка, щоб відкрити головний діалог десктопного клієнта.</p>
-<figure class="align-default">
-<img alt="Головний діалог" src="../../_images/main_dialog.png" />
-</figure>
-<p>Основні діалоги показують нещодавні дії, помилки та сповіщення сервера.</p>
-<p>При натисканні на головне діалогове вікно, а потім на аватарку користувача, можна відкрити Налаштування.</p>
-</section>
-<section id="configuring-nextcloud-account-settings">
-<h2>Налаштування параметрів облікового запису Nextcloud<a class="headerlink" href="#configuring-nextcloud-account-settings" title="Link to this heading"></a></h2>
-<figure class="align-default">
-<img alt="Головний діалог" src="../../_images/settingsdialog.png" />
-</figure>
-<p>У верхній частині вікна знаходяться вкладки для кожного налаштованого облікового запису синхронізації, а також дві інші - для загальних і мережевих налаштувань. На вкладках вашого облікового запису доступні такі функції:</p>
-<ul class="simple">
-<li><p>Статус з’єднання, який показує, до якого сервера Nextcloud ви підключені, і ваше ім’я користувача Nextcloud.</p></li>
-<li><p>Використане та доступне місце на сервері.</p></li>
-<li><p>Поточний стан синхронізації.</p></li>
-<li><p>Кнопка <strong>Додати підключення для синхронізації папок</strong>.</p></li>
-</ul>
-<p>Маленька кнопка з трьома крапками (меню переповнення), що знаходиться праворуч від рядка стану синхронізації, пропонує додаткові опції:</p>
-<ul class="simple">
-<li><p>Відкрити папку</p></li>
-<li><p>Виберіть «Що синхронізувати» (з’являється лише тоді, коли дерево файлів згорнуто, і розгортає дерево файлів)</p></li>
-<li><p>Призупинити синхронізацію / відновити синхронізацію</p></li>
-<li><p>Видалити підключення синхронізації папок</p></li>
-<li><p>Доступність (Доступно, якщо ввімкнено підтримку віртуальних файлів)</p></li>
-<li><p>Увімкнути підтримку віртуальних файлів/Вимкнути підтримку віртуальних файлів</p></li>
-</ul>
-<p><strong>Відкрити папку</strong> відкриває вашу локальну папку синхронізації Nextcloud.</p>
-<p><strong>Призупинити синхронізацію</strong> призупиняє операції синхронізації, не вносячи жодних змін до вашого облікового запису. Програма продовжить оновлювати списки файлів і папок, не завантажуючи та не оновлюючи файли. Щоб зупинити всі операції синхронізації, скористайтеся <strong>Видалити підключення до синхронізації папок</strong>.</p>
-<figure class="align-default">
-<img alt="Додаткові опції для операцій синхронізації" src="../../_images/general_settings_folder_context_menu.png" />
-</figure>
-<div class="admonition note">
-<p class="admonition-title">Примітка</p>
-<p>Nextcloud не зберігає mtime (час модифікації) каталогів, хоча оновлює mtimes файлів. Дивіться розділ <a href="#id1"><span class="problematic" id="id2">`Неправильна дата теки при синхронізації &amp;lt;https://github.com/owncloud/core/issues/7009&amp;gt;`_</span></a> для обговорення цього питання.</p>
-</div>
-</section>
-<section id="adding-new-accounts">
-<h2>Додавання нових облікових записів<a class="headerlink" href="#adding-new-accounts" title="Link to this heading"></a></h2>
-<p>Ви можете налаштувати кілька облікових записів Nextcloud у клієнті синхронізації для настільних комп’ютерів. Просто натисніть кнопку <strong>Акаунт</strong> &amp;gt; <strong>Додати новий</strong> на будь-якій вкладці облікового запису, щоб додати новий обліковий запис, а потім дотримуйтесь вказівок майстра створення облікового запису. Новий обліковий запис з’явиться на новій вкладці в діалоговому вікні налаштувань, де ви зможете будь-коли змінити його параметри. Використовуйте <strong>Акаунт</strong> &amp;gt; <strong>Видалити</strong>, щоб видалити акаунти.</p>
+<h2>Systray icon<a class="headerlink" href="#systray-icon" title="Link to this heading"></a></h2>
+<p>The desktop client shows a status icon in the system tray on Windows and Linux or the menu bar on macOS. Colorful
+status icons and colorful or monochrome tray icons are available for the same sync states. You can choose monochrome
+icons under <strong>General</strong> in the settings dialog.</p>
+<table class="desktop-status-icons docutils align-default" id="id1">
+<caption><span class="caption-text">Synchronization status icons</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 46.0%" />
+<col style="width: 18.0%" />
+<col style="width: 18.0%" />
+<col style="width: 18.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Status</p></th>
+<th class="head"><p>Mono tray</p></th>
+<th class="head"><p>Color tray</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Up to date and connected</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-ok.png"><img alt="Colorful up-to-date status icon" class="desktop-status-icon" src="../../_images/icon-status-ok.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-ok.png"><img alt="Monochrome up-to-date tray icon" class="desktop-status-icon" src="../../_images/icon-tray-ok.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-ok.png"><img alt="Colorful up-to-date tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-ok.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Synchronizing</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-sync.png"><img alt="Colorful synchronizing status icon" class="desktop-status-icon" src="../../_images/icon-status-sync.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-sync.png"><img alt="Monochrome synchronizing tray icon" class="desktop-status-icon" src="../../_images/icon-tray-sync.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-sync.png"><img alt="Colorful synchronizing tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-sync.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+<tr class="row-even"><td><p>Paused</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-pause.png"><img alt="Colorful paused status icon" class="desktop-status-icon" src="../../_images/icon-status-pause.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-pause.png"><img alt="Monochrome paused tray icon" class="desktop-status-icon" src="../../_images/icon-tray-pause.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-pause.png"><img alt="Colorful paused tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-pause.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Offline</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-offline.png"><img alt="Colorful offline status icon" class="desktop-status-icon" src="../../_images/icon-status-offline.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-offline.png"><img alt="Monochrome offline tray icon" class="desktop-status-icon" src="../../_images/icon-tray-offline.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-offline.png"><img alt="Colorful offline tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-offline.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+<tr class="row-even"><td><p>Warning; open the client for details</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-warning.png"><img alt="Colorful warning status icon" class="desktop-status-icon" src="../../_images/icon-status-warning.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-warning.png"><img alt="Monochrome warning tray icon" class="desktop-status-icon" src="../../_images/icon-tray-warning.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-warning.png"><img alt="Colorful warning tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-warning.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Error; open the client for details</p></td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-status-error.png"><img alt="Colorful error status icon" class="desktop-status-icon" src="../../_images/icon-status-error.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-error.png"><img alt="Monochrome error tray icon" class="desktop-status-icon" src="../../_images/icon-tray-error.png" style="width: 25px;" />
+</a>
+</td>
+<td><a class="desktop-status-icon reference internal image-reference" href="../../_images/icon-tray-colored-error.png"><img alt="Colorful error tray icon" class="desktop-status-icon" src="../../_images/icon-tray-colored-error.png" style="width: 25px;" />
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Open the tray or menu bar icon to view the client and its available actions, such as pausing or resuming sync.</p>
 </section>
 <section id="file-manager-overlay-icons">
-<h2>Накладні значки файлового менеджера<a class="headerlink" href="#file-manager-overlay-icons" title="Link to this heading"></a></h2>
-<p>Клієнт синхронізації Nextcloud надає значки накладання, на додаток до звичайних значків типів файлів, для вашого системного файлового менеджера (Explorer у Windows, Finder у Mac і Nautilus у Linux), щоб показати стан синхронізації ваших файлів Nextcloud.</p>
-<p>Піктограми накладання схожі на піктограми системної панелі, описані вище. Вони поводяться по-різному для файлів і каталогів залежно від стану синхронізації та помилок.</p>
-<p>Значок накладання окремого файлу вказує на його поточний стан синхронізації. Якщо файл синхронізовано з версією сервера, він буде позначений зеленою галочкою.</p>
-<p>Якщо файл ігнорується при синхронізації, наприклад, через те, що він знаходиться у вашому списку виключень або є символічним посиланням, буде показано значок попередження.</p>
-<p>Якщо сталася помилка синхронізації або файл занесено до чорного списку, він буде позначений червоним хрестиком, що привертає увагу.</p>
-<p>Якщо файл очікує на синхронізацію або вже синхронізується, на піктограмі накладання відображається синя піктограма у вигляді кружечка.</p>
-<p>Коли клієнт перебуває в автономному режимі, жодні значки не відображаються, щоб показати, що папка не синхронізована, і жодні зміни не синхронізуються з сервером.</p>
-<p>Значок накладання синхронізованої теки вказує на стан файлів у ній. Якщо є помилки синхронізації, каталог буде позначено піктограмою з попередженням.</p>
-<p>Якщо каталог містить ігноровані файли, позначені попереджувальними піктограмами, це не змінює стан батьківських каталогів.</p>
+<h2>File manager overlay icons<a class="headerlink" href="#file-manager-overlay-icons" title="Link to this heading"></a></h2>
+<p>For classic sync folders, the desktop client adds overlay icons to files in the file manager. A green checkmark
+means a file is up to date. A warning icon can mean that a file is ignored; a red X indicates a sync error. A blue
+icon indicates a file waiting to sync or currently syncing. When the client is offline, it does not show overlays
+for the folder’s current sync state.</p>
+<p>A folder’s overlay reflects sync errors in its contents. Ignored files do not change the parent folder’s status.
+On macOS, File Provider uses the standard Finder status indicators described in <a class="reference internal" href="macosfileprovider.html"><span class="doc">Using the macOS File Provider</span></a>.</p>
 </section>
-<section id="set-the-user-status">
-<h2>Встановлення статусу користувача<a class="headerlink" href="#set-the-user-status" title="Link to this heading"></a></h2>
-<p>Якщо на вашому сервері Nextcloud встановлено додаток «Статус користувача», ви можете налаштувати свій статус користувача з десктопного клієнта. Для цього відкрийте головне діалогове вікно. Потім натисніть на свій аватар і натисніть на три крапки. У меню, що відкриється, натисніть на <strong>Встановити статус</strong>.</p>
-<figure class="align-default">
-<img alt="Відкрийте діалог статусу користувача з головного діалогу." src="../../_images/user_status_selector_main_dialog.png" />
-</figure>
-<p>У діалоговому вікні, що відкриється, ви можете встановити свій онлайн-статус, натиснувши на <strong>Онлайн</strong>, <strong>Відсутній</strong>, <strong>Не турбувати</strong> або <strong>Невидимий</strong>. Ви також можете встановити власне повідомлення про стан за допомогою текстового поля нижче або вибрати одне з попередньо визначених повідомлень про стан, наведених нижче. Ви також можете встановити власний смайлик, натиснувши на кнопку зі смайликом поруч з полем для введення тексту. Останнє, що ви можете налаштувати, це коли ваш статус користувача буде очищено. Ви можете вибрати період, через який статус користувача буде очищено, натиснувши на кнопку зліва від тексту <strong>Очистити повідомлення про статус після</strong>.</p>
-<figure class="align-default">
-<img alt="Діалогове вікно для встановлення статусу користувача." src="../../_images/user_status-selector_dialog.png" />
-</figure>
-<p>Якщо вас влаштовує створений вами статус, ви можете увімкнути його за допомогою кнопки <strong>Встановити повідомлення про статус</strong>. Якщо ви вже встановили статус, ви можете очистити його, натиснувши кнопку <strong>Очистити повідомлення про статус</strong>.</p>
-</section>
-<section id="sharing-from-your-desktop">
-<h2>Спільний доступ з робочого столу<a class="headerlink" href="#sharing-from-your-desktop" title="Link to this heading"></a></h2>
-<p>Клієнт синхронізації для настільних комп’ютерів Nextcloud інтегрується з вашим файловим менеджером. Finder на macOS та Провідник на Windows. Користувачі Linux повинні встановити додатковий пакунок залежно від використовуваного файлового менеджера. Доступні, наприклад, <code class="docutils literal notranslate"><span class="pre">nautilus-nextcloud</span></code> (Ubuntu/Debian), <code class="docutils literal notranslate"><span class="pre">dolphin-nextcloud</span></code> (Kubuntu), <code class="docutils literal notranslate"><span class="pre">nemo-nextcloud</span></code> і <code class="docutils literal notranslate"><span class="pre">caja-nextcloud</span></code>. Ви можете створювати посилання для спільного доступу і ділитися з внутрішніми користувачами Nextcloud так само, як і в веб-інтерфейсі Nextcloud.</p>
-<p>In your file explorer, click on a file and in the context menu go to
-<strong>Nextcloud</strong> and then click on <strong>Share options</strong> to bring up the Share
-dialog.</p>
-<figure class="align-default">
-<img alt="Надання спільного доступу з Провідника Windows." src="../../_images/share_context_menu.png" />
-</figure>
-<p>За допомогою цього діалогового вікна ви можете надати спільний доступ до файлу.</p>
-<figure class="align-default">
-<img alt="Поділіться діалогом" src="../../_images/share_dialog.png" />
-</figure>
-</section>
-<section id="general-window">
-<h2>Головне вікно<a class="headerlink" href="#general-window" title="Link to this heading"></a></h2>
-<p>У вікні Загальні можна налаштувати такі параметри, як <strong>Запускати під час запуску системи</strong>, <strong>Використовувати монохромні піктограми</strong> і <strong>Показувати сповіщення сервера</strong>. Тут ви знайдете кнопку <strong>Редагувати ігноровані файли</strong>, щоб запустити редактор ігнорованих файлів, і <strong>Запитувати підтвердження перед завантаженням папок, розмір яких перевищує [розмір папки]</strong>.</p>
-<figure class="align-default">
-<img alt="Загальне вікно містить параметри конфігурації." src="../../_images/settings_general.png" />
-</figure>
-</section>
-<section id="using-the-network-window">
-<h2>Використання мережевого вікна<a class="headerlink" href="#using-the-network-window" title="Link to this heading"></a></h2>
-<p id="index-0">У вікні Налаштування мережі ви можете визначити налаштування мережевого проксі-сервера, а також обмежити пропускну здатність для завантаження і вивантаження.</p>
-<figure class="align-default">
-<img alt="../../_images/settings_network.png" src="../../_images/settings_network.png" />
-</figure>
-</section>
-<section id="using-the-ignored-files-editor">
-<span id="usingignoredfileseditor-label"></span><h2>Використання редактора ігнорованих файлів<a class="headerlink" href="#using-the-ignored-files-editor" title="Link to this heading"></a></h2>
-<p id="index-1">Можливо, у вас є локальні файли або каталоги, які ви не хочете створювати резервні копії та зберігати на сервері. Щоб визначити і виключити ці файли або каталоги, ви можете скористатися редактором <em>Ігнорованих файлів</em> (вкладка Загальні).</p>
-<figure class="align-default">
-<img alt="../../_images/ignored_files_editor.png" src="../../_images/ignored_files_editor.png" />
-</figure>
-<p>Для вашої зручності редактор попередньо заповнений списком типових шаблонів ігнорування за замовчуванням. Ці шаблони містяться в системному файлі (зазвичай <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>), розташованому в каталозі програми Nextcloud Client. Ви не можете змінити ці попередньо заповнені шаблони безпосередньо з редактора. Однак, якщо необхідно, ви можете навести курсор на будь-який шаблон у списку, щоб побачити шлях і ім’я файлу, пов’язаного з цим шаблоном, знайти файл і відредагувати файл <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Примітка</p>
-<p>Зміна файлу визначення глобального виключення може зробити клієнт непрацездатним або призвести до небажаної поведінки.</p>
-</div>
-<p>Кожен рядок у редакторі містить рядок шаблону ігнорування. При створенні користувацьких шаблонів, окрім звичайних символів для визначення шаблону ігнорування, ви можете використовувати символи підстановки для значень, що збігаються.  Наприклад, ви можете використовувати зірочку (<code class="docutils literal notranslate"><span class="pre">*</span></code>) для позначення довільної кількості символів або знак питання (<code class="docutils literal notranslate"><span class="pre">?</span></code>) для позначення одного символу.</p>
-<p>Шаблони, які закінчуються косою рискою (<code class="docutils literal notranslate"><span class="pre">/</span></code>), застосовуються лише до компонентів каталогів шляху, що перевіряється.</p>
-<div class="admonition note">
-<p class="admonition-title">Примітка</p>
-<p>Користувацькі записи наразі не перевіряються редактором на синтаксичну правильність, тому ви не побачите жодних попереджень про неправильний синтаксис. Якщо синхронізація працює не так, як ви очікували, перевірте синтаксис.</p>
-</div>
-<p>Кожен рядок шаблону у списку супроводжується прапорцем. Якщо прапорець встановлено, крім ігнорування файлу або компонента каталогу, якому відповідає шаблон, усі знайдені файли також вважаються «швидкоплинними метаданими» і вилучаються клієнтом.</p>
-<p>Крім виключення файлів і каталогів, які використовують шаблони, визначені у цьому списку:</p>
-<ul class="simple">
-<li><p>Клієнт Nextcloud завжди виключає файли, що містять символи, які не можуть бути синхронізовані з іншими файловими системами.</p></li>
-<li><p>Файли, які спричиняють окремі помилки, видаляються тричі під час синхронізації. Однак клієнт надає можливість повторити спробу синхронізації ще три рази для файлів, які спричиняють помилки.</p></li>
-</ul>
+<section id="sharing">
+<h2>Sharing<a class="headerlink" href="#sharing" title="Link to this heading"></a></h2>
+<p>The desktop client integrates sharing actions into Finder on macOS and Explorer on Windows. On Linux, install the
+integration package for your file manager, such as <code class="docutils literal notranslate"><span class="pre">nautilus-nextcloud</span></code> or <code class="docutils literal notranslate"><span class="pre">dolphin-nextcloud</span></code>.</p>
+<p>In your file manager, right-click a file and select <strong>Nextcloud</strong> &gt; <strong>Share options</strong> to open the share dialog.</p>
+<p>Use <strong>Search for recipients</strong> to share the file with people or groups. Existing shares and share links appear below
+the search field. Use the copy button to copy an internal link or share link. Use the three-dot menu to edit a share,
+or the <strong>X</strong> button to remove it.</p>
+<a class="reference internal image-reference" href="../../_images/sharing-overview.png"><img alt="Sharing overview with recipient search, existing shares, and link controls" class="align-center" src="../../_images/sharing-overview.png" style="width: 50%;" />
+</a>
+<p>When you edit a share, choose the recipient’s permission from the dropdown menu. You can also add a note for the
+recipients. Changes are applied immediately.</p>
+<a class="reference internal image-reference" href="../../_images/sharing-details.png"><img alt="Share details with recipients, permissions, and a note to recipients" class="align-center" src="../../_images/sharing-details.png" style="width: 50%;" />
+</a>
+<p>Open <strong>Sharing settings</strong> with the gear button to set an expiration date or protect the share with a password.
+Changes are applied immediately.</p>
+<a class="reference internal image-reference" href="../../_images/sharing-advanced-settings.png"><img alt="Advanced sharing settings for expiration date and password protection" class="align-center" src="../../_images/sharing-advanced-settings.png" style="width: 50%;" />
+</a>
 </section>
 </section>
 
@@ -302,7 +324,7 @@ dialog.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="uninstallation.html" class="btn btn-neutral float-left" title="Uninstallation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-left" title="Встановлення" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="macosfileprovider.html" class="btn btn-neutral float-right" title="Using the macOS File Provider" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

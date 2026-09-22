@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=752934d9" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=08b96895" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -30,7 +30,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Sisällysluettelo" href="../genindex.html" />
     <link rel="search" title="Etsi" href="../search.html" />
-    <link rel="next" title="Uninstallation" href="uninstallation.html" />
+    <link rel="next" title="Using the Client" href="usage.html" />
     <link rel="prev" title="Desktop Client" href="index.html" />
    
   <meta name="robots" content="noindex, follow" />
@@ -86,19 +86,20 @@
 <li class="toctree-l3"><a class="reference internal" href="#system-requirements">System Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#install-on-macos-and-windows">Install on macOS and Windows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#install-on-linux">Install on Linux</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#initial-setup">Initial Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-setup">Initial setup</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html">Using the Synchronization Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html">Using the Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client_features.html">Client features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">The Automatic Updater</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update channels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html">FAQ</a></li>
 </ul>
 </li>
@@ -194,46 +195,12 @@ distribution’s documentation.</p>
 KWallet, so that the desktop client can log in automatically.</p>
 </section>
 <section id="initial-setup">
-<h2>Initial Setup<a class="headerlink" href="#initial-setup" title="Link to this heading"></a></h2>
-<p>After installation, the initial setup wizard is triggered. In the setup wizard,
-you can log in to your server, create an account with a provider, and configure
-which folders to sync. The wizard will guide you step-by-step through the
-essential configuration options and basic account setup.</p>
-<p>First, you need to enter the URL of your Nextcloud server.</p>
-<img alt="form for choosing between login and registering" src="../../_images/wizard_welcome.png" />
-<p>If you already have an account on a Nextcloud instance, click <code class="docutils literal notranslate"><span class="pre">Login</span> <span class="pre">to</span> <span class="pre">your</span>
-<span class="pre">Nextcloud</span></code>. If you do not yet have a Nextcloud instance or an account, you may
-need to create one first. Alternatively, you might want to register an account
-with a provider. Press <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">account</span> <span class="pre">with</span> <span class="pre">Provider</span></code> in that case.</p>
-<div class="admonition note">
-<p class="admonition-title">Muista</p>
-<p>The desktop client build you are using may have been built without provider
-support. In that case, you won’t see this page and will immediately see the
-next page.</p>
-</div>
-<img alt="form for entering Nextcloud server URL" src="../../_images/wizard_setup.png" />
-<p>Enter the URL for your Nextcloud instance. The URL is the same URL that
-you type into your browser when you try to access your Nextcloud
-instance.</p>
-<img alt="form waiting for authorization" src="../../_images/wizard_flow2.png" />
-<p>Now your web browser should open and prompt you to log in to your
-Nextcloud instance. Enter your username and password in your web
-browser and click <em>Grant access</em> when prompted. After you do that,
-go back to the wizard.</p>
-<div class="admonition note">
-<p class="admonition-title">Muista</p>
-<p>You might not need to enter your username and password if you are
-already logged in to your web browser.</p>
-</div>
-<img alt="Select which remote folders to sync, and which local folder to store them in." src="../../_images/wizard_advanced.png" />
-<p>On the local folder options screen, you may sync all of your files on
-the Nextcloud server, or select individual folders. The default local
-sync folder is <code class="docutils literal notranslate"><span class="pre">Nextcloud</span></code>, in your home directory. You may change
-this as well.</p>
-<p>When you have completed selecting your sync folders, click the <em>Connect</em> button. The client will attempt to connect to your
-Nextcloud server. If it is successful, the wizard will close itself. You
-can then observe the sync activity and open the main dialog by clicking
-on the tray icon.</p>
+<h2>Initial setup<a class="headerlink" href="#initial-setup" title="Link to this heading"></a></h2>
+<p>After installation, the setup wizard opens. Enter the address you use to access your Nextcloud server in a browser,
+then click <strong>Log in</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/wizard-server.png"><img alt="Server address field and Log in button in the desktop client setup wizard" class="align-center" src="../../_images/wizard-server.png" style="width: 50%;" />
+</a>
+<p>For the remaining wizard steps, including browser authorization and sync options, see <a class="reference internal" href="usage.html#desktop-add-account"><span class="std std-ref">Add account</span></a>.</p>
 </section>
 </section>
 
@@ -242,7 +209,7 @@ on the tray icon.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Desktop Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="uninstallation.html" class="btn btn-neutral float-right" title="Uninstallation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="usage.html" class="btn btn-neutral float-right" title="Using the Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
