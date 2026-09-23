@@ -61,6 +61,24 @@ Shared items
 
 For this feature, the shipped `related resources app <https://apps.nextcloud.com/apps/related_resources>`_ needs to be enabled.
 
+Team folder creation shortcut
+-----------------------------
+
+By default, Contacts displays a shortcut on the Teams page that creates a personal folder and shares it with the team.
+You can hide this shortcut when your organization uses Team Folders for collaborative work. Hiding the shortcut does
+not prevent users from sharing personal folders with a team.
+
+The shortcut is only available when Contacts runs on Nextcloud 34 or earlier. Starting with Nextcloud 35, teams are
+managed in the dedicated Teams app.
+
+To hide the shortcut, run:
+
+.. code-block:: bash
+
+  sudo -E -u www-data php occ config:app:set contacts hide_team_shared_folder_creation --value=true
+
+The default value is ``false``. Set the value to ``false`` to show the shortcut again.
+
 Rate limits
 -----------
 
