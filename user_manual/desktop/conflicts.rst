@@ -54,6 +54,6 @@ However, in some scenarios it makes a lot of sense to upload these conflicting
 changes such that local work can become visible even if the conflict won't be
 resolved immediately.
 
-In the future there might be a server-wide switch for this behavior. For now it
-can already be tested by setting the environment variable
-``OWNCLOUD_UPLOAD_CONFLICT_FILES=1``.
+The server can enable conflict uploads. To override the server setting, use
+``OWNCLOUD_UPLOAD_CONFLICT_FILES=1`` to enable uploads or ``OWNCLOUD_UPLOAD_CONFLICT_FILES=0`` to disable them.
+See :ref:`desktop-environment-variables` for how to apply environment variables.

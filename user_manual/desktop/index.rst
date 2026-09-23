@@ -11,14 +11,12 @@ synchronized between your computer and your Nextcloud server.
    installation
    usage
    macosfileprovider
-   commandline
    client_features
-   options
-   configfile
-   envvars
+   advanced_configuration
    autoupdate
    updatechannel
    conflicts
+   commandline
    uninstallation
    faq
 
