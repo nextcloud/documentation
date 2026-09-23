@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Enabling MySQL/MariaDB 4-byte support &mdash; Nextcloud 36 Administration Manual</title>
+  <title>Enabling MySQL/MariaDB full Unicode support &mdash; Nextcloud 36 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -86,7 +86,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Database setup and configuration</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="linux_database_configuration.html">Set up a database server</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Enabling MySQL/MariaDB 4-byte support</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Enabling MySQL/MariaDB full Unicode support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="db_conversion.html">Convert to a different database type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bigint_identifiers.html">Prevent identifier exhaustion in large databases</a></li>
 <li class="toctree-l2"><a class="reference internal" href="replication.html">Using database read replicas</a></li>
@@ -168,7 +168,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Database setup and configuration</a></li>
-      <li class="breadcrumb-item active">Enabling MySQL/MariaDB 4-byte support</li>
+      <li class="breadcrumb-item active">Enabling MySQL/MariaDB full Unicode support</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_database/mysql_4byte_support.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -178,14 +178,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="enabling-mysql-mariadb-4-byte-support">
-<h1>Enabling MySQL/MariaDB 4-byte support<a class="headerlink" href="#enabling-mysql-mariadb-4-byte-support" title="Link to this heading"></a></h1>
+  <section id="enabling-mysql-mariadb-full-unicode-support">
+<h1>Enabling MySQL/MariaDB full Unicode support<a class="headerlink" href="#enabling-mysql-mariadb-full-unicode-support" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Be sure to backup your database before performing this database upgrade.</p>
+<p>Be sure to back up your database before performing this database upgrade.</p>
 </div>
-<p>In order to use Emojis (textbased smilies) on your Nextcloud server with a MySQL database, the
-installation needs to be tweaked a bit.</p>
+<p>To store the full range of Unicode characters in Nextcloud, including emoji,
+less-common writing systems, historic scripts, and specialized symbols, a
+MySQL or MariaDB database must use the <code class="docutils literal notranslate"><span class="pre">utf8mb4</span></code> character set. The older
+three-byte <code class="docutils literal notranslate"><span class="pre">utf8</span></code> character set cannot store characters outside <a class="reference external" href="https://en.wikipedia.org/wiki/Plane_(Unicode)">Unicode’s
+Basic Multilingual Plane</a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This guide applies only to MySQL 8 or newer and MariaDB 10.6 or newer.
@@ -193,13 +196,13 @@ For a list of supported MySQL and MariaDB versions, see our
 <a class="reference internal" href="../installation/system_requirements.html"><span class="doc">system requirements documentation</span></a>.</p>
 </div>
 <ol class="arabic">
-<li><p>Make sure the following InnoDB settings are set on your MySQL server:</p>
+<li><p>Make sure the following InnoDB setting is enabled on your database server:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">mysqld</span><span class="p">]</span>
 <span class="n">innodb_file_per_table</span><span class="o">=</span><span class="mi">1</span>
 </pre></div>
 </div>
 </li>
-<li><p>Restart the MySQL server in case you changed the configuration in step 1.</p></li>
+<li><p>Restart the database server if you changed the configuration in step 1.</p></li>
 </ol>
 <p>You can then verify that the change worked:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SHOW</span><span class="w"> </span><span class="n">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'innodb_file_per_table'</span><span class="p">;</span>
@@ -216,24 +219,33 @@ For a list of supported MySQL and MariaDB versions, see our
 </pre></div>
 </div>
 <ol class="arabic" start="3">
-<li><p>Open a shell, change dir (adjust <code class="docutils literal notranslate"><span class="pre">/var/www/nextcloud</span></code> to your nextcloud location if needed), and put your nextcloud instance in maintenance mode, if it isn’t already:</p>
+<li><p>Open a shell, change to the Nextcloud installation directory (adjust
+<code class="docutils literal notranslate"><span class="pre">/var/www/nextcloud</span></code> as needed), and enable maintenance mode if it is not
+already enabled:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd /var/www/nextcloud
 $ sudo -E -u www-data php occ maintenance:mode --on
 </pre></div>
 </div>
 </li>
-<li><p>Change your databases character set and collation:</p></li>
+<li><p>Change the database character set to <code class="docutils literal notranslate"><span class="pre">utf8mb4</span></code> and set its default
+collation:</p></li>
 </ol>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">nextcloud</span><span class="w"> </span><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_general_ci</span><span class="p">;</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The character set determines which characters can be stored. The collation
+determines how text is compared and sorted.</p>
+</div>
 <ol class="arabic" start="5">
-<li><p>Set the <code class="docutils literal notranslate"><span class="pre">mysql.utf8mb4</span></code> config to true in your config.php:</p>
+<li><p>Enable <code class="docutils literal notranslate"><span class="pre">utf8mb4</span></code> support in the Nextcloud system configuration:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -E -u www-data php occ config:system:set mysql.utf8mb4 --type boolean --value="true"
 </pre></div>
 </div>
 </li>
-<li><p>Convert all existing tables to the new collation by running the repair step:</p>
+<li><p>Run the repair command to convert the existing tables to the <code class="docutils literal notranslate"><span class="pre">utf8mb4</span></code>
+character set and collation:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -E -u www-data php occ maintenance:repair
 </pre></div>
 </div>
@@ -241,7 +253,7 @@ $ sudo -E -u www-data php occ maintenance:mode --on
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This will also change the <cite>ROW_FORMAT</cite> to <cite>DYNAMIC</cite> for your tables.</p>
+<p>This also changes the <code class="docutils literal notranslate"><span class="pre">ROW_FORMAT</span></code> of all tables to <code class="docutils literal notranslate"><span class="pre">DYNAMIC</span></code>.</p>
 </div>
 <ol class="arabic" start="7">
 <li><p>Disable maintenance mode:</p>
@@ -250,10 +262,16 @@ $ sudo -E -u www-data php occ maintenance:mode --on
 </div>
 </li>
 </ol>
-<p>Now you should be able to use Emojis in your file names, calendar events, comments and many more.</p>
+<p>Now you should be able to use Emojis in your file names, calendar events, comments and many more.
+Nextcloud can now use the full range of Unicode characters - such as emojis - in file names,
+calendar events, and comments.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Also make sure your backup strategy still work. If you use <code class="docutils literal notranslate"><span class="pre">mysqldump</span></code> make sure to add the <code class="docutils literal notranslate"><span class="pre">--default-character-set=utf8mb4</span></code> option. Otherwise your backups are broken and restoring them will result in <code class="docutils literal notranslate"><span class="pre">?</span></code> instead of the emojis, making files inaccessible.</p>
+<p>Make sure your backup strategy supports <code class="docutils literal notranslate"><span class="pre">utf8mb4</span></code>. If you use
+<code class="docutils literal notranslate"><span class="pre">mysqldump</span></code>, add the <code class="docutils literal notranslate"><span class="pre">--default-character-set=utf8mb4</span></code> option.
+Otherwise, four-byte Unicode characters may not be preserved correctly
+when the backup is restored. (A common symptom of this problem is the
+appearance of <code class="docutils literal notranslate"><span class="pre">?</span></code> instead of emojis in text and file names).</p>
 </div>
 </section>
 

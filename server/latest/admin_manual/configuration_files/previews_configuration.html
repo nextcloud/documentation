@@ -227,6 +227,17 @@ previews such as <code class="docutils literal notranslate"><span class="pre">OC
 and <code class="docutils literal notranslate"><span class="pre">OC\Preview\MSOfficeDoc</span></code> require LibreOffice. Image formats handled
 through ImageMagick, such as <code class="docutils literal notranslate"><span class="pre">OC\Preview\Illustrator</span></code>, <code class="docutils literal notranslate"><span class="pre">OC\Preview\SVG</span></code>
 and <code class="docutils literal notranslate"><span class="pre">OC\Preview\TIFF</span></code>, require the corresponding ImageMagick support.</p>
+<p>Installing the <code class="docutils literal notranslate"><span class="pre">imagick</span></code> PHP extension is not on its own enough for those providers.
+ImageMagick also has to carry the delegate for the format, which is a separate build
+option and often a separate distribution package: <code class="docutils literal notranslate"><span class="pre">OC\Preview\JP2</span></code> needs the OpenJPEG
+delegate, and <code class="docutils literal notranslate"><span class="pre">OC\Preview\HEIC</span></code> and <code class="docutils literal notranslate"><span class="pre">OC\Preview\AVIFImagick</span></code> need an HEIF one,
+usually libheif. A provider whose delegate is missing is never registered, so those
+files keep their mimetype icon rather than producing a broken preview.</p>
+<p><code class="docutils literal notranslate"><span class="pre">OC\Preview\AVIF</span></code> is the one enabled-by-default provider with a build dependency of
+its own. It decodes with GD, which handles AVIF only if PHP was built against a libgd
+that supports it. Where it was not, enable <code class="docutils literal notranslate"><span class="pre">OC\Preview\AVIFImagick</span></code> alongside it:
+both answer for AVIF, GD is asked first, and ImageMagick is asked after it if GD
+returns nothing.</p>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
 <p>Please notice that the Nextcloud preview system comes already with sensible

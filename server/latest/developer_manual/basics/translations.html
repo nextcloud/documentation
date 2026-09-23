@@ -95,6 +95,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#correct-plurals">Correct plurals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#improving-your-translations">Improving your translations</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#provide-context-hints-for-translators">Provide context hints for translators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contributing-a-context-hint-without-a-local-checkout">Contributing a context hint without a local checkout</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#adding-translations">Adding translations</a></li>
@@ -440,10 +441,11 @@ and therefore improving the experience for non-english users.</p>
 </section>
 <section id="provide-context-hints-for-translators">
 <span id="hints"></span><h3>Provide context hints for translators<a class="headerlink" href="#provide-context-hints-for-translators" title="Link to this heading"></a></h3>
-<p>In case some translation strings may be translated wrongly because they have multiple meanings.
-Especially translations strings that only contain a single word often result in problems.
-The most famous example in the Nextcloud code base is <code class="docutils literal notranslate"><span class="pre">Share</span></code> which can which can be the verb and action <code class="docutils literal notranslate"><span class="pre">To</span> <span class="pre">share</span> <span class="pre">something</span></code> or the noun <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">share</span></code>.
-The added hints will be shown in the Transifex web-interface:</p>
+<p>Some translation strings can be translated wrongly because they have multiple meanings.
+Strings that contain only a single word are especially prone to this.
+The most famous example in the Nextcloud code base is <code class="docutils literal notranslate"><span class="pre">Share</span></code>, which can be the verb and action
+<code class="docutils literal notranslate"><span class="pre">To</span> <span class="pre">share</span> <span class="pre">something</span></code> or the noun <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">share</span></code>.
+Adding a context hint resolves the ambiguity, and the hint is shown to translators in the Transifex web interface.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>A <code class="docutils literal notranslate"><span class="pre">//</span> <span class="pre">TRANSLATORS</span></code> comment is only associated with the <strong>first</strong> translation string on the following line.
@@ -500,6 +502,16 @@ translation call, placing its own <code class="docutils literal notranslate"><sp
 </pre></div>
 </div>
 <p>In the <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> block, use the same <code class="docutils literal notranslate"><span class="pre">//</span></code> style as JavaScript.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The marker depends on the extraction toolchain, and the examples below are <strong>not</strong> all
+<code class="docutils literal notranslate"><span class="pre">TRANSLATORS</span></code>. The gettext-based projects - PHP, JavaScript/TypeScript and Vue - require the
+comment to start with <code class="docutils literal notranslate"><span class="pre">TRANSLATORS</span></code>, because that is the prefix the extractor is configured to
+look for. Android uses a plain XML comment and <code class="docutils literal notranslate"><span class="pre">TRANSLATORS</span></code> there is a project convention
+rather than a requirement. <strong>Qt and iOS use their own markers</strong> - <code class="docutils literal notranslate"><span class="pre">//:</span></code> for <code class="docutils literal notranslate"><span class="pre">lupdate</span></code> and a
+<code class="docutils literal notranslate"><span class="pre">/*</span> <span class="pre">...</span> <span class="pre">*/</span></code> comment for the iOS string tooling - and writing <code class="docutils literal notranslate"><span class="pre">TRANSLATORS</span></code> in those files
+produces no hint at all, because the extractor never looks for it.</p>
+</div>
 </section>
 <section id="c-qt-desktop-client">
 <h4>C++ (Qt) / Desktop client<a class="headerlink" href="#c-qt-desktop-client" title="Link to this heading"></a></h4>
@@ -521,6 +533,124 @@ translation call, placing its own <code class="docutils literal notranslate"><sp
 <span class="s">"wescan.scanning.title"</span><span class="w">             </span><span class="p">=</span><span class="w"> </span><span class="s">"Scanning"</span><span class="p">;</span>
 </pre></div>
 </div>
+</section>
+</section>
+<section id="contributing-a-context-hint-without-a-local-checkout">
+<h3>Contributing a context hint without a local checkout<a class="headerlink" href="#contributing-a-context-hint-without-a-local-checkout" title="Link to this heading"></a></h3>
+<p>Context hints are one of the few code changes that are worth making even if you do not develop
+Nextcloud. Translators are usually the people who notice that a string is ambiguous, and a hint is a
+single comment line. You do not need git, a development environment or a checkout to add one - the
+GitHub web editor is enough.</p>
+<section id="find-the-string">
+<h4>Find the string<a class="headerlink" href="#find-the-string" title="Link to this heading"></a></h4>
+<p>Search the repository the string belongs to for the text in quotes. If you do not know which
+repository that is, the Transifex resource name matches the app: a string in the <code class="docutils literal notranslate"><span class="pre">files_external</span></code>
+resource lives in <code class="docutils literal notranslate"><span class="pre">apps/files_external/</span></code> in <code class="docutils literal notranslate"><span class="pre">nextcloud/server</span></code>, and a string in the <code class="docutils literal notranslate"><span class="pre">deck</span></code>
+resource lives in <code class="docutils literal notranslate"><span class="pre">nextcloud/deck</span></code>.</p>
+</section>
+<section id="edit-the-file">
+<h4>Edit the file<a class="headerlink" href="#edit-the-file" title="Link to this heading"></a></h4>
+<p>Open the file on GitHub and click the pencil icon.</p>
+<p>Unless you are a member of the Nextcloud organisation, you will not land in the editor. GitHub stops
+you with <strong>“You need to fork this repository to propose changes”</strong> and a <strong>Fork this repository</strong>
+button. Nothing has gone wrong. A fork is your own copy of the repository under your own account: you
+make the change there, and the pull request asks the Nextcloud maintainers to take it from your copy
+into theirs. Click the button; it takes a moment and then opens the editor.</p>
+<figure class="align-default" id="id2">
+<img alt="GitHub page reading &quot;You need to fork this repository to propose changes&quot;, with a &quot;Fork this repository&quot; button" src="../_images/translations-hint-fork-required.png" />
+<figcaption>
+<p><span class="caption-text">What an outside contributor sees instead of the editor. This is expected.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>You only do this once.</strong> The fork stays on your account, so the next hint you add starts in the
+editor straight away.</p>
+<p>If it has been a while since you last contributed, your fork will be behind the original repository.
+Go to your fork - <code class="docutils literal notranslate"><span class="pre">github.com/&lt;your-username&gt;/&lt;repository&gt;</span></code> - and look at the bar above the file
+list. When the fork is out of date, a line there reads <em>“This branch is N commits behind …”</em>, with
+a <strong>Sync fork</strong> button at its right-hand end, next to <strong>Contribute</strong>. Use it, then <strong>Update branch</strong>,
+before you start editing, so your change is made against the current files rather than an old copy.
+If no such line is shown, your fork is already up to date and there is nothing to do.</p>
+<figure class="align-default" id="id3">
+<img alt="The bar above a fork's file list, reading &quot;This branch is 12 commits behind&quot;, with Contribute and Sync fork buttons at the right" src="../_images/translations-hint-sync-fork.png" />
+<figcaption>
+<p><span class="caption-text">An out-of-date fork. The <strong>Sync fork</strong> button only appears while there is something to sync.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Once you are in the editor a banner reads <em>“You’re making changes in a project you don’t have write
+access to. Submitting a change will write it to a new branch in your fork …, so you can send a pull
+request.”</em> That is the expected state for an outside contributor.</p>
+<figure class="align-default" id="id4">
+<img alt="The GitHub web editor with a banner explaining that changes will be written to a new branch in the contributor's fork, and a &quot;Commit changes...&quot; button" src="../_images/translations-hint-editor-fork-banner.png" />
+<figcaption>
+<p><span class="caption-text">After forking: the banner names your fork, and the editor opens as normal.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Add the comment <strong>on the line directly above</strong> the translation call, in the style that matches the
+file type (see the examples above), and match the surrounding indentation exactly. The editor’s
+<strong>Tabs / width / wrap</strong> controls, above the top-right of the text area, show what the file uses.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// TRANSLATORS Name of the SMB/CIFS share on the server, not the verb "to share"</span>
+<span class="s1">'share'</span> <span class="o">=&gt;</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Share'</span><span class="p">),</span>
+</pre></div>
+</div>
+</section>
+<section id="commit-and-open-the-pull-request">
+<h4>Commit and open the pull request<a class="headerlink" href="#commit-and-open-the-pull-request" title="Link to this heading"></a></h4>
+<p>Click <strong>Commit changes…</strong>. A dialog headed <strong>Sign off and propose changes</strong> opens, with a commit
+message, an extended description, and a <strong>Sign off and propose changes</strong> button that takes you to the
+pull request form. You are not asked to choose a branch: a change to a fork always goes to a new
+branch, which is what the pull request is opened from.</p>
+<ul class="simple">
+<li><p>Nextcloud uses <a class="reference external" href="https://www.conventionalcommits.org/">conventional commits</a>, so the message needs
+a type and a short summary, for example <code class="docutils literal notranslate"><span class="pre">docs:</span> <span class="pre">add</span> <span class="pre">translator</span> <span class="pre">comment</span> <span class="pre">for</span> <span class="pre">&quot;None&quot;</span></code>. Check the
+repository’s recent history for the types it actually uses.</p></li>
+<li><p><strong>Do not accept a pre-filled message without reading it.</strong> The dialog may arrive with the message
+and description already written - if Copilot is enabled for your account it suggests them, and the
+dialog says so underneath. The suggestion describes the change accurately enough but has no type
+prefix, for example <em>“Add translator comment in NullMechanism constructor”</em>. Putting <code class="docutils literal notranslate"><span class="pre">docs:</span></code> in
+front of it is normally the whole fix. This is the most likely reason a first pull request fails a
+check.</p></li>
+<li><p>You do <strong>not</strong> need to add a <code class="docutils literal notranslate"><span class="pre">Signed-off-by</span></code> line by hand. The dialog signs the commit off for
+you and shows which address it is using, which satisfies the DCO check. If you have enabled
+<strong>Keep my email addresses private</strong> in your GitHub settings, that address is your
+<code class="docutils literal notranslate"><span class="pre">&#64;users.noreply.github.com</span></code> one.</p></li>
+</ul>
+<figure class="align-default" id="id5">
+<img alt="The &quot;Sign off and propose changes&quot; dialog, with a commit message field, an extended description, and a note showing the address the commit is signed off with" src="../_images/translations-hint-signoff-dialog.png" />
+<figcaption>
+<p><span class="caption-text">The commit dialog, with the suggested message already corrected to a conventional commit.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="avoiding-the-automated-checks-rather-than-fixing-them">
+<h4>Avoiding the automated checks, rather than fixing them<a class="headerlink" href="#avoiding-the-automated-checks-rather-than-fixing-them" title="Link to this heading"></a></h4>
+<p>Pull requests run linters and coding-style checks, and there is generally no way to run or fix those
+from the web interface. It is therefore worth avoiding a failure in the first place:</p>
+<ul class="simple">
+<li><p>Put the comment on its own line. Do not append it to an existing line of code.</p></li>
+<li><p>Copy the indentation of the line below it, including tabs versus spaces.</p></li>
+<li><p>Leave no trailing whitespace at the end of the comment.</p></li>
+<li><p>Change nothing else in the file, so that the diff is the single added line.</p></li>
+</ul>
+<p>If a check does fail, say so in the pull request. A maintainer can push the fix to your branch.</p>
+</section>
+<section id="what-happens-next">
+<h4>What happens next<a class="headerlink" href="#what-happens-next" title="Link to this heading"></a></h4>
+<p>A Nextcloud maintainer will review the pull request. You do not need to request a review, add labels
+or assign anyone - an outside contributor cannot do those things, and it is not a sign that anything
+is missing from your pull request. If nothing happens for a while, a polite comment on the pull
+request is the right nudge.</p>
+<p>You are also welcome to tell the translation community about it. Other translators hit the same
+ambiguous strings, and it is the easiest way to let them know a hint is on its way:</p>
+<ul class="simple">
+<li><p>the <a class="reference external" href="https://cloud.nextcloud.com/call/xs25tz5y">translation chat room</a> is open to the public and
+needs no account, and is the quickest way to say something</p></li>
+<li><p>the <a class="reference external" href="https://help.nextcloud.com/c/translations/23">Translations category of the Nextcloud forum</a> keeps the note findable afterwards. Anyone can
+read it, but posting needs a free forum account</p></li>
+</ul>
+<p>Post the link to your pull request and a sentence about the string you clarified.</p>
+<p>Once it is merged, the hint still does not reach translators immediately. It reaches them when the
+source strings are next extracted and synchronised to Transifex, so allow for that delay before
+looking for it in the web interface.</p>
 </section>
 </section>
 </section>
@@ -567,7 +697,7 @@ installation and updates.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Sep 22, 2026.
+      <span class="lastupdated">Last updated on Sep 23, 2026.
       </span></p>
   </div>
 
