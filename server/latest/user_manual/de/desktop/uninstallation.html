@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=08b96895" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=c37f0e9a" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -32,7 +32,7 @@
     <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
     <link rel="search" title="Suche" href="../search.html" />
     <link rel="next" title="FAQ" href="faq.html" />
-    <link rel="prev" title="Konflikte" href="conflicts.html" />
+    <link rel="prev" title="Command-line client" href="commandline.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -84,14 +84,12 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">Using the Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
-<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="client_features.html">Client features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_configuration.html">Advanced configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Der automatische Updater</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update-Kanäle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Konflikte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Command-line client</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Deinstallation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#general-instructions">Allgemeine Anweisungen</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
@@ -144,7 +142,8 @@
 <ol class="arabic">
 <li><p>Sicherstellen, dass Sie den Desktop-Client beenden, bevor dieser entfernt wird.</p></li>
 <li><p><em>Deinstallieren</em> Sie den Desktop-Client.</p></li>
-<li><p>You may also need to take into consideration that uninstalling the desktop client will not remove the <a class="reference internal" href="configfile.html"><span class="doc">user’s configuration</span></a> file and synced data.</p>
+<li><p>You may also need to take into consideration that uninstalling the desktop client will not remove the
+<a class="reference internal" href="advanced_configuration.html#desktop-configuration-file"><span class="std std-ref">user’s configuration</span></a> file and synced data.</p>
 <blockquote>
 <div><p>Zum Löschen von Daten (Synchronisierungsordner) empfiehlt sich die Serverfunktion <a class="reference external" href="https://nextcloud.com/de/blog/nextcloud-desktop-client-2-6-1-brings-remote-wipe-dark-mode-support-to-mac-os-x-and-more/">Remote-Löschen &lt;siehe</a>. Diese Funktion ist auf allen Clients verfügbar.</p>
 </div></blockquote>
@@ -162,7 +161,7 @@
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>The <a class="reference internal" href="configfile.html"><span class="doc">user’s configuration</span></a> is located at <code class="docutils literal notranslate"><span class="pre">%APPDATA%\Nextcloud\nextcloud.cfg</span></code>.</p></li>
+<li><p>The <a class="reference internal" href="advanced_configuration.html#desktop-configuration-file"><span class="std std-ref">user’s configuration</span></a> is located at <code class="docutils literal notranslate"><span class="pre">%APPDATA%\Nextcloud\nextcloud.cfg</span></code>.</p></li>
 </ol>
 </section>
 <section id="macos">
@@ -185,7 +184,8 @@ rm<span class="w"> </span>-f<span class="w">  </span><span class="s2">"</span><s
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>From version 33.0.0 the <a class="reference internal" href="configfile.html"><span class="doc">user’s configuration</span></a> is located at <code class="docutils literal notranslate"><span class="pre">$HOME/Library/Containers/com.nextcloud.desktopclient/Data/Library/Preferences/Nextcloud/nextcloud.cfg</span></code>.
+<li><p>From version 33.0.0 the <a class="reference internal" href="advanced_configuration.html#desktop-configuration-file"><span class="std std-ref">user’s configuration</span></a> is located at
+<code class="docutils literal notranslate"><span class="pre">$HOME/Library/Containers/com.nextcloud.desktopclient/Data/Library/Preferences/Nextcloud/nextcloud.cfg</span></code>.
 On older versions it is located at <code class="docutils literal notranslate"><span class="pre">$HOME/Library/Preferences/Nextcloud/nextcloud.cfg</span></code>.</p></li>
 </ol>
 </section>
@@ -200,7 +200,7 @@ On older versions it is located at <code class="docutils literal notranslate"><s
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>The <a class="reference internal" href="configfile.html"><span class="doc">user’s configuration</span></a> is located at <em>$HOME/.config/Nextcloud/nextcloud.cfg</em>.</p></li>
+<li><p>The <a class="reference internal" href="advanced_configuration.html#desktop-configuration-file"><span class="std std-ref">user’s configuration</span></a> is located at <em>$HOME/.config/Nextcloud/nextcloud.cfg</em>.</p></li>
 </ol>
 </section>
 </section>
@@ -210,7 +210,7 @@ On older versions it is located at <code class="docutils literal notranslate"><s
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="conflicts.html" class="btn btn-neutral float-left" title="Konflikte" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Zurück</a>
+        <a href="commandline.html" class="btn btn-neutral float-left" title="Command-line client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Zurück</a>
         <a href="faq.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n" rel="next">Weiter <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

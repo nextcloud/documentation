@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=08b96895" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=c37f0e9a" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -30,7 +30,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Tárgymutató" href="../genindex.html" />
     <link rel="search" title="Keresés" href="../search.html" />
-    <link rel="next" title="Uninstallation" href="uninstallation.html" />
+    <link rel="next" title="Command-line client" href="commandline.html" />
     <link rel="prev" title="Update channels" href="updatechannel.html" />
    
   <meta name="robots" content="noindex, follow" />
@@ -83,11 +83,8 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">Using the Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
-<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="client_features.html">Client features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_configuration.html">Advanced configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">The Automatic Updater</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update channels</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Conflicts</a><ul>
@@ -96,6 +93,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#uploading-conflicts-experimental">Uploading conflicts (experimental)</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Command-line client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html">FAQ</a></li>
 </ul>
@@ -177,9 +175,9 @@ conflict and showing the conflict to other users might create confusion.</p>
 <p>However, in some scenarios it makes a lot of sense to upload these conflicting
 changes such that local work can become visible even if the conflict won’t be
 resolved immediately.</p>
-<p>In the future there might be a server-wide switch for this behavior. For now it
-can already be tested by setting the environment variable
-<code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=1</span></code>.</p>
+<p>The server can enable conflict uploads. To override the server setting, use
+<code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=1</span></code> to enable uploads or <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=0</span></code> to disable them.
+See <a class="reference internal" href="advanced_configuration.html#desktop-environment-variables"><span class="std std-ref">Environment variables</span></a> for how to apply environment variables.</p>
 </section>
 </section>
 
@@ -188,7 +186,7 @@ can already be tested by setting the environment variable
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="updatechannel.html" class="btn btn-neutral float-left" title="Update channels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="uninstallation.html" class="btn btn-neutral float-right" title="Uninstallation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="commandline.html" class="btn btn-neutral float-right" title="Command-line client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

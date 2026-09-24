@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=08b96895" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=c37f0e9a" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="색인" href="../genindex.html" />
     <link rel="search" title="검색" href="../search.html" />
-    <link rel="next" title="Uninstallation" href="uninstallation.html" />
+    <link rel="next" title="Command-line client" href="commandline.html" />
     <link rel="prev" title="업데이트 채널" href="updatechannel.html" />
    
   <meta name="robots" content="noindex, follow" />
@@ -84,11 +84,8 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">설치</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">Using the Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
-<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="client_features.html">Client features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_configuration.html">Advanced configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">자동 업데이터</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">업데이트 채널</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">충돌</a><ul>
@@ -97,6 +94,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#uploading-conflicts-experimental">충돌 올리기 (실험적)</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Command-line client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html">FAQ</a></li>
 </ul>
@@ -157,7 +155,9 @@ the file on the server gets updated to contain “remote contents” by someone 
 <h2>충돌 올리기 (실험적)<a class="headerlink" href="#uploading-conflicts-experimental" title="Link to this heading"></a></h2>
 <p>기본적으로 충돌 파일 (이름에 “충돌된 복사” 이 있고 로컬 충돌 변경을 포함된 파일) 은 서버로 업로드되지 않습니다. 이 아이디어는 변경의 작성자인 당신이 충돌을 해결할 가장 적절한 사람이고 다른 사용자에게 충돌을 표시하면 혼동을 일으킬 수 있다는 것입니다.</p>
 <p>하지만 일부 상황에서는 충돌이 바로 해결되지 않더라도 로컬 작업이 표시되도록 이 충돌된 변경을 올리는 것이 합리적일 수 있습니다.</p>
-<p>차후 이러한 동작 방식에 대하여 서버 측 설정 스위치가 존재할 수 있습니다. 지금은 환경 변수 <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=1</span></code> 을 설정하여 동작을 테스트할 수 있습니다.</p>
+<p>The server can enable conflict uploads. To override the server setting, use
+<code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=1</span></code> to enable uploads or <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=0</span></code> to disable them.
+See <a class="reference internal" href="advanced_configuration.html#desktop-environment-variables"><span class="std std-ref">Environment variables</span></a> for how to apply environment variables.</p>
 </section>
 </section>
 
@@ -166,7 +166,7 @@ the file on the server gets updated to contain “remote contents” by someone 
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="updatechannel.html" class="btn btn-neutral float-left" title="업데이트 채널" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="uninstallation.html" class="btn btn-neutral float-right" title="Uninstallation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="commandline.html" class="btn btn-neutral float-right" title="Command-line client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

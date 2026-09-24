@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=08b96895" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=c37f0e9a" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -125,6 +125,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#shared-items">Shared items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#team-folder-creation-shortcut">Team folder creation shortcut</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rate-limits">Rate limits</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#example-contact">Example contact</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#data-retention">Data retention</a><ul>
@@ -245,6 +246,19 @@
 <p><span class="versionmodified added">Added in version 5.5.0: </span>Nextcloud 25 or newer</p>
 </div>
 <p>For this feature, the shipped <a class="reference external" href="https://apps.nextcloud.com/apps/related_resources">related resources app</a> needs to be enabled.</p>
+</section>
+<section id="team-folder-creation-shortcut">
+<h2>Team folder creation shortcut<a class="headerlink" href="#team-folder-creation-shortcut" title="Link to this heading"></a></h2>
+<p>By default, Contacts displays a shortcut on the Teams page that creates a personal folder and shares it with the team.
+You can hide this shortcut when your organization uses Team Folders for collaborative work. Hiding the shortcut does
+not prevent users from sharing personal folders with a team.</p>
+<p>The shortcut is only available when Contacts runs on Nextcloud 34 or earlier. Starting with Nextcloud 35, teams are
+managed in the dedicated Teams app.</p>
+<p>To hide the shortcut, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>config:app:set<span class="w"> </span>contacts<span class="w"> </span>hide_team_shared_folder_creation<span class="w"> </span>--value<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+<p>The default value is <code class="docutils literal notranslate"><span class="pre">false</span></code>. Set the value to <code class="docutils literal notranslate"><span class="pre">false</span></code> to show the shortcut again.</p>
 </section>
 <section id="rate-limits">
 <h2>Rate limits<a class="headerlink" href="#rate-limits" title="Link to this heading"></a></h2>

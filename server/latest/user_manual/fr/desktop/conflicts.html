@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=08b96895" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=c37f0e9a" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
-    <link rel="next" title="Désinstallation" href="uninstallation.html" />
+    <link rel="next" title="Command-line client" href="commandline.html" />
     <link rel="prev" title="Canaux de mise à jour" href="updatechannel.html" />
    
   <meta name="robots" content="noindex, follow" />
@@ -84,11 +84,8 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">Using the Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
-<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="client_features.html">Client features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_configuration.html">Advanced configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">L’agent de mise à jour automatique</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Canaux de mise à jour</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Conflits</a><ul>
@@ -97,6 +94,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#uploading-conflicts-experimental">Conflits de téléversement (expérimental)</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Command-line client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Désinstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html">FAQ</a></li>
 </ul>
@@ -157,7 +155,9 @@ the file on the server gets updated to contain « remote contents » by someon
 <h2>Conflits de téléversement (expérimental)<a class="headerlink" href="#uploading-conflicts-experimental" title="Lien vers cette rubrique"></a></h2>
 <p>Par défaut, le fichier en conflit (le fichier avec le nom « copie en conflit » qui contient vos modifications locales conflictuelles) n’est pas téléversé sur le serveur. L’idée est que vous, l’auteur des modifications, êtes la personne la mieux placée pour résoudre le conflit. Le fait de le montrer le conflit aux autres utilisateurs pourrait créer de la confusion.</p>
 <p>Cependant, dans certains scénarios, il est tout à fait judicieux de téléverser ces modifications conflictuelles afin que le travail local puisse devenir visible même si le conflit n’est pas résolu immédiatement.</p>
-<p>À l’avenir, un changement de comportement à l’échelle du serveur pourrait être apporté. Pour l’instant, il est possible de le tester en définissant la variable d’environnement « OWNCLOUD_UPLOAD_CONFLICT_FILES=1 ».</p>
+<p>The server can enable conflict uploads. To override the server setting, use
+<code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=1</span></code> to enable uploads or <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=0</span></code> to disable them.
+See <a class="reference internal" href="advanced_configuration.html#desktop-environment-variables"><span class="std std-ref">Environment variables</span></a> for how to apply environment variables.</p>
 </section>
 </section>
 
@@ -166,7 +166,7 @@ the file on the server gets updated to contain « remote contents » by someon
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
         <a href="updatechannel.html" class="btn btn-neutral float-left" title="Canaux de mise à jour" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
-        <a href="uninstallation.html" class="btn btn-neutral float-right" title="Désinstallation" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="commandline.html" class="btn btn-neutral float-right" title="Command-line client" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

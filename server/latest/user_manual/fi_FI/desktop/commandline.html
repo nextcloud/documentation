@@ -7,11 +7,11 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using the Command-Line Client &mdash; Nextcloud 36 User Manual</title>
+  <title>Command-line client &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=08b96895" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=c37f0e9a" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -30,8 +30,8 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Sisällysluettelo" href="../genindex.html" />
     <link rel="search" title="Etsi" href="../search.html" />
-    <link rel="next" title="Client features" href="client_features.html" />
-    <link rel="prev" title="Using the macOS File Provider" href="macosfileprovider.html" />
+    <link rel="next" title="Uninstallation" href="uninstallation.html" />
+    <link rel="prev" title="Conflicts" href="conflicts.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -83,21 +83,20 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">Using the Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using the Command-Line Client</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#install">Install</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#credential-handling">Credential Handling</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#exclude-list">Exclude List</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="client_features.html">Client features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_configuration.html">Advanced configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">The Automatic Updater</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update channels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Conflicts</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Command-line client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#desktop-command-line-credentials">Credential handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exclude-lists">Exclude lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#account-setup">Account setup</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html">FAQ</a></li>
 </ul>
@@ -123,7 +122,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
-      <li class="breadcrumb-item active">Using the Command-Line Client</li>
+      <li class="breadcrumb-item active">Command-line client</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/commandline.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -133,122 +132,258 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="using-the-command-line-client">
-<h1>Using the Command-Line Client<a class="headerlink" href="#using-the-command-line-client" title="Link to this heading"></a></h1>
-<p>The Nextcloud Client packages contain a command line client, <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code>, that can
-be used to synchronize Nextcloud files to client machines.</p>
-<p><code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> performs a single <em>sync run</em> and then exits the synchronization
-process. In this manner, <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> processes the differences between
-client and server directories and propagates the files to bring both
-repositories to the same state. Contrary to the GUI-based client,
-<code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> does not repeat synchronizations on its own. It also does not
-monitor for file system changes.</p>
-<section id="install">
-<h2>Install<a class="headerlink" href="#install" title="Link to this heading"></a></h2>
-<table class="docutils align-default">
+  <section id="command-line-client">
+<span id="using-the-command-line-client"></span><h1>Command-line client<a class="headerlink" href="#command-line-client" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> synchronizes a local directory with a Nextcloud server, then exits. It can perform follow-up syncs
+when needed, but it does not continuously monitor local files or poll for server changes like the desktop app.
+For options passed to the desktop app’s <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> command, see <a class="reference internal" href="advanced_configuration.html#desktop-command-line-options"><span class="std std-ref">Command-line options</span></a>.</p>
+<section id="installation">
+<span id="install"></span><h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>Install a package that provides <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code>. Availability depends on your operating system and package:</p>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>OS</p></th>
-<th class="head"><p>Package</p></th>
+<tr class="row-odd"><th class="head"><p>Operating system</p></th>
+<th class="head"><p>Package source</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Alpine</p></td>
-<td><p><a class="reference external" href="https://pkgs.alpinelinux.org/package/edge/community/x86_64/nextcloud-client">https://pkgs.alpinelinux.org/package/edge/community/x86_64/nextcloud-client</a></p></td>
+<tr class="row-even"><td><p>Alpine Linux</p></td>
+<td><p><a class="reference external" href="https://pkgs.alpinelinux.org/package/edge/community/x86_64/nextcloud-client">nextcloud-client</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Debian</p></td>
-<td><p><a class="reference external" href="https://packages.debian.org/search?suite=all&amp;arch=any&amp;searchon=names&amp;keywords=nextcloud-desktop-cmd">https://packages.debian.org/search?suite=all&amp;arch=any&amp;searchon=names&amp;keywords=nextcloud-desktop-cmd</a></p></td>
+<td><p><a class="reference external" href="https://packages.debian.org/search?suite=all&amp;arch=any&amp;searchon=names&amp;keywords=nextcloud-desktop-cmd">nextcloud-desktop-cmd</a></p></td>
 </tr>
 <tr class="row-even"><td><p>Fedora</p></td>
-<td><p><a class="reference external" href="https://packages.fedoraproject.org/pkgs/nextcloud-client/nextcloud-client/">https://packages.fedoraproject.org/pkgs/nextcloud-client/nextcloud-client/</a></p></td>
+<td><p><a class="reference external" href="https://packages.fedoraproject.org/pkgs/nextcloud-client/nextcloud-client/">nextcloud-client</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Ubuntu</p></td>
-<td><p><a class="reference external" href="https://packages.ubuntu.com/search?keywords=nextcloud-desktop-cmd">https://packages.ubuntu.com/search?keywords=nextcloud-desktop-cmd</a></p></td>
+<td><p><a class="reference external" href="https://packages.ubuntu.com/search?keywords=nextcloud-desktop-cmd">nextcloud-desktop-cmd</a></p></td>
 </tr>
-<tr class="row-even"><td><p>Ubuntu (PPA)</p></td>
-<td><p><a class="reference external" href="https://launchpad.net/~nextcloud-devs/+archive/ubuntu/client">https://launchpad.net/~nextcloud-devs/+archive/ubuntu/client</a></p></td>
+<tr class="row-even"><td><p>Ubuntu PPA</p></td>
+<td><p><a class="reference external" href="https://launchpad.net/~nextcloud-devs/+archive/ubuntu/client">Nextcloud client PPA</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Windows</p></td>
-<td><p><a class="reference external" href="https://nextcloud.com/install/#install-clients">https://nextcloud.com/install/#install-clients</a></p></td>
+<td><p><a class="reference external" href="https://nextcloud.com/install/#install-clients">Nextcloud downloads</a></p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
-<p>To invoke <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code>, you must provide the local and the remote repository
-URL using the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nextcloudcmd</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="o">...</span><span class="p">]</span> <span class="n">sourcedir</span> <span class="n">nextcloudurl</span>
+<p>Use an existing local directory and the base URL of the Nextcloud server:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nextcloudcmd [options] local_directory server_url</span>
 </pre></div>
 </div>
-<p>where <code class="docutils literal notranslate"><span class="pre">sourcedir</span></code> is the local directory and <code class="docutils literal notranslate"><span class="pre">nextcloudurl</span></code> is
-the server URL.</p>
-<p>Other command line switches supported by <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> include the following:</p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">--path</span></code></dt><dd><p>Overrides default remote root folder to a specific subfolder on the server(e.g.: /Documents would sync the Documents subfolder on the server)</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--user</span></code>, <code class="docutils literal notranslate"><span class="pre">-u</span></code> <cite>&lt;user&gt;</cite></dt><dd><p>Use <code class="docutils literal notranslate"><span class="pre">user</span></code> as the login name.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--password</span></code>, <code class="docutils literal notranslate"><span class="pre">-p</span></code> <cite>&lt;password&gt;</cite></dt><dd><p>Use <cite>password</cite> as the password.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">-n</span></code></dt><dd><p>Use <code class="docutils literal notranslate"><span class="pre">netrc(5)</span></code> for login.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--non-interactive</span></code></dt><dd><p>Do not prompt for questions and tries to read $NC_USER and $NC_PASSWORD from the environment.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--silent</span></code>, <code class="docutils literal notranslate"><span class="pre">--s</span></code></dt><dd><p>Inhibits verbose log output.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--trust</span></code></dt><dd><p>Trust any SSL certificate, including invalid ones.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--httpproxy</span></code>  <cite>http://[user&#64;pass:]&lt;server&gt;:&lt;port&gt;</cite></dt><dd><p>Uses <cite>server</cite> as HTTP proxy.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--exclude</span></code> <cite>&lt;file&gt;</cite></dt><dd><p>Exclude list file</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--unsyncedfolders</span></code> <cite>&lt;file&gt;</cite></dt><dd><p>File containing the list of unsynced folders (selective sync)</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--max-sync-retries</span></code> <cite>&lt;n&gt;</cite></dt><dd><p>Retries maximum n times (defaults to 3)</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">-h</span></code></dt><dd><p>Sync hidden files,do not ignore them</p>
-</dd>
-</dl>
+<p id="example">For example, synchronize the remote <code class="docutils literal notranslate"><span class="pre">Music</span></code> folder into an existing local folder:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nextcloudcmd<span class="w"> </span>--user<span class="w"> </span>carla<span class="w"> </span>--path<span class="w"> </span>/Music<span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/media/music"</span><span class="w"> </span>https://cloud.example.com
+</pre></div>
+</div>
+<p>The client prompts for the password. You can use an app password from your Nextcloud account’s security settings.
+Do not append a WebDAV endpoint to the server URL; use <code class="docutils literal notranslate"><span class="pre">--path</span></code> for a remote subfolder.</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> without arguments to display its help, or <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span> <span class="pre">--version</span></code> to display its version.
+Options with values accept both <code class="docutils literal notranslate"><span class="pre">--option</span> <span class="pre">value</span></code> and <code class="docutils literal notranslate"><span class="pre">--option=value</span></code>.</p>
 </section>
-<section id="credential-handling">
-<h2>Credential Handling<a class="headerlink" href="#credential-handling" title="Link to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> requires the user to specify the username and password using the standard URL pattern, e.g.,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nextcloudcmd /home/user/my_sync_folder https://carla:secret@server/nextcloud
-</pre></div>
-</div>
-<p>To synchronize the Nextcloud directory <code class="docutils literal notranslate"><span class="pre">Music</span></code> to the local directory
-<code class="docutils literal notranslate"><span class="pre">media/music</span></code>, through a proxy listening on port <code class="docutils literal notranslate"><span class="pre">8080</span></code>, and on a gateway
-machine using IP address <code class="docutils literal notranslate"><span class="pre">192.168.178.1</span></code>, the command line would be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nextcloudcmd --httpproxy http://192.168.178.1:8080 --path /Music \
-              $HOME/media/music \
-              https://server/nextcloud
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> will prompt for the user name and password, unless they have
-been specified on the command line or <code class="docutils literal notranslate"><span class="pre">-n</span></code> has been passed.</p>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--path</span> <span class="pre">&lt;path&gt;</span></code></p></td>
+<td><p>Server root</p></td>
+<td><p>Synchronize a remote subfolder, for example <code class="docutils literal notranslate"><span class="pre">/Documents</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--user</span> <span class="pre">&lt;user&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">-u</span> <span class="pre">&lt;user&gt;</span></code></p></td>
+<td><p>See credentials below</p></td>
+<td><p>Login name. Overrides the username in the server URL.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--password</span> <span class="pre">&lt;password&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">&lt;password&gt;</span></code></p></td>
+<td><p>See credentials below</p></td>
+<td><p>Password or app password. Overrides the password in the server URL. Command-line passwords may be visible in
+process listings and shell history.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-n</span></code></p></td>
+<td><p>Not set</p></td>
+<td><p>Read credentials from a matching host or default entry in <code class="docutils literal notranslate"><span class="pre">.netrc</span></code>. These replace credentials supplied in the URL or
+with <code class="docutils literal notranslate"><span class="pre">--user</span></code> and <code class="docutils literal notranslate"><span class="pre">--password</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--non-interactive</span></code></p></td>
+<td><p>Not set</p></td>
+<td><p>Do not prompt for credentials. Read missing credentials from <code class="docutils literal notranslate"><span class="pre">NC_USER</span></code> and <code class="docutils literal notranslate"><span class="pre">NC_PASSWORD</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--silent</span></code>, <code class="docutils literal notranslate"><span class="pre">-s</span></code></p></td>
+<td><p>Not set</p></td>
+<td><p>Suppress Qt log messages. Does not suppress every console message.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--trust</span></code></p></td>
+<td><p>Not set</p></td>
+<td><p>Accept untrusted TLS certificates. Use only for a controlled diagnostic run; normally fix the certificate trust
+configuration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--httpproxy</span> <span class="pre">&lt;url&gt;</span></code></p></td>
+<td><p>No explicit proxy</p></td>
+<td><p>Set an HTTP proxy using <code class="docutils literal notranslate"><span class="pre">http://hostname:port</span></code>. This option does not parse proxy credentials in the URL.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--exclude</span> <span class="pre">&lt;file&gt;</span></code></p></td>
+<td><p>System exclude list</p></td>
+<td><p>Add an exclude list. The file must exist. Pattern anchoring depends on its filename; see
+<a class="reference internal" href="#desktop-command-line-excludes"><span class="std std-ref">Exclude lists</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--exclude-anchored</span> <span class="pre">&lt;file&gt;</span></code></p></td>
+<td><p>Not set</p></td>
+<td><p>Add an exclude list with patterns anchored at the sync root, regardless of the filename.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--unsyncedfolders</span> <span class="pre">&lt;file&gt;</span></code></p></td>
+<td><p>Not set</p></td>
+<td><p>Read remote folders to exclude from synchronization, one relative path per line. Empty lines and lines starting
+with <code class="docutils literal notranslate"><span class="pre">#</span></code> are ignored.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--max-sync-retries</span> <span class="pre">&lt;number&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+<td><p>Maximum number of follow-up runs when the sync engine requests another sync. This is not a general retry count
+for every failed request.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--uplimit</span> <span class="pre">&lt;number&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> KB/s</p></td>
+<td><p>Upload speed limit in KB/s (1000 bytes per second). Zero means unlimited.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--downlimit</span> <span class="pre">&lt;number&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> KB/s</p></td>
+<td><p>Download speed limit in KB/s (1000 bytes per second). Zero means unlimited.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-h</span></code></p></td>
+<td><p>Hidden files included</p></td>
+<td><p>Include hidden files. This is already the default; <code class="docutils literal notranslate"><span class="pre">-h</span></code> does not display help.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--logdebug</span></code></p></td>
+<td><p>Not set</p></td>
+<td><p>Enable Nextcloud debug logging and send log output to standard output.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--confdir</span> <span class="pre">&lt;directory&gt;</span></code></p></td>
+<td><p>Standard location</p></td>
+<td><p>Use a different configuration directory. Does not make the one-run sync inherit all desktop sync settings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--version</span></code>, <code class="docutils literal notranslate"><span class="pre">-v</span></code></p></td>
+<td><p>Not requested</p></td>
+<td><p>Display version information and exit. Run this option without the directory and server arguments.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="exclude-list">
-<h2>Exclude List<a class="headerlink" href="#exclude-list" title="Link to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> requires access to an exclude list file. It must either be
-installed along with <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> and thus be available in a system location,
-be placed next to the binary as <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code> or be explicitly specified
-with the <code class="docutils literal notranslate"><span class="pre">--exclude</span></code> switch.</p>
-<p>The required file content is one exclude item per line where wildcards are allowed, e.g.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~*.</span><span class="n">tmp</span>
-<span class="o">.</span><span class="n">_</span><span class="o">*</span>
-<span class="p">]</span><span class="n">Thumbs</span><span class="o">.</span><span class="n">db</span>
-<span class="p">]</span><span class="n">photothumb</span><span class="o">.</span><span class="n">db</span>
-<span class="n">System</span> <span class="n">Volume</span> <span class="n">Information</span>
+<section id="desktop-command-line-credentials">
+<span id="credential-handling"></span><span id="id1"></span><h2>Credential handling<a class="headerlink" href="#desktop-command-line-credentials" title="Link to this heading"></a></h2>
+<p>Credentials are read in this order:</p>
+<ol class="arabic simple">
+<li><p>Username and password in the server URL, if supplied.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--user</span></code> and <code class="docutils literal notranslate"><span class="pre">--password</span></code>, which replace the corresponding URL values.</p></li>
+<li><p>A matching host or default <code class="docutils literal notranslate"><span class="pre">.netrc</span></code> entry when <code class="docutils literal notranslate"><span class="pre">-n</span></code> is used, which replaces both values.</p></li>
+<li><p>Prompts for any missing values, or the environment variables below when <code class="docutils literal notranslate"><span class="pre">--non-interactive</span></code> is used.</p></li>
+</ol>
+<p>Prefer a password prompt or a protected <code class="docutils literal notranslate"><span class="pre">.netrc</span></code> file over putting passwords in a command or URL.</p>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NC_USER</span></code></p></td>
+<td><p>Unset</p></td>
+<td><p>Username fallback for a one-run sync with <code class="docutils literal notranslate"><span class="pre">--non-interactive</span></code>. Only used if no username was supplied by the
+preceding methods.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NC_PASSWORD</span></code></p></td>
+<td><p>Unset</p></td>
+<td><p>Password fallback for a one-run sync with <code class="docutils literal notranslate"><span class="pre">--non-interactive</span></code>. Only used if no password was supplied by the
+preceding methods.</p></td>
+</tr>
+</tbody>
+</table>
+<p>These variables do not supply credentials for the account setup mode below.
+For transfer overrides shared with the desktop sync engine, see <a class="reference internal" href="advanced_configuration.html#desktop-environment-variables"><span class="std std-ref">Environment variables</span></a>.
+<code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> uses an initial chunk size of 100 MiB, a minimum of 5 MB, a maximum of 5 GB, and 6 parallel jobs unless
+overridden by those variables. It does not read the desktop app’s chunk-size settings from <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code>.</p>
+</section>
+<section id="exclude-lists">
+<span id="desktop-command-line-excludes"></span><span id="exclude-list"></span><h2>Exclude lists<a class="headerlink" href="#exclude-lists" title="Link to this heading"></a></h2>
+<p>The client loads the system exclude list when available. You can add your own list with <code class="docutils literal notranslate"><span class="pre">--exclude</span></code> or
+<code class="docutils literal notranslate"><span class="pre">--exclude-anchored</span></code>. A missing explicitly supplied file is an error.</p>
+<p>With <code class="docutils literal notranslate"><span class="pre">--exclude</span></code>, a file named <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code> uses the sync root for pattern matching. Other filenames can use
+the exclude file’s directory as the base. Use <code class="docutils literal notranslate"><span class="pre">--exclude-anchored</span></code> when the filename and location should not affect
+matching.</p>
+<p>Write one pattern per line. Wildcards are supported, for example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>*.tmp
+._*
+Thumbs.db
 </pre></div>
 </div>
 </section>
-<section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>Synchronize a local directory to the specified directory of the nextcloud server</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nextcloudcmd --path /&lt;Directory_that_has_been_created&gt; /home/user/&lt;my_sync_folder&gt; \
-https://&lt;username&gt;:&lt;secret&gt;@&lt;server_address&gt;
+<section id="account-setup">
+<h2>Account setup<a class="headerlink" href="#account-setup" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> can also save an account for use by the desktop app. The presence of <code class="docutils literal notranslate"><span class="pre">--userid</span></code> selects this mode;
+omit the positional local directory and server URL used for a one-run sync. The command exits after setup completes.</p>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--userid</span> <span class="pre">&lt;user&gt;</span></code></p></td>
+<td><p>Required</p></td>
+<td><p>User ID for the account to create.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--serverurl</span> <span class="pre">&lt;url&gt;</span></code></p></td>
+<td><p>Required</p></td>
+<td><p>Base URL of the Nextcloud server, for example <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--apppassword</span> <span class="pre">&lt;password&gt;</span></code></p></td>
+<td><p>Not set</p></td>
+<td><p>App password for the account. If omitted, the account is saved and you must log in from the desktop app later.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--localdirpath</span> <span class="pre">&lt;path&gt;</span></code></p></td>
+<td><p>Suggested folder</p></td>
+<td><p>Local sync folder. If omitted, use the folder suggested by the setup wizard. An existing folder must be empty.
+Ignored when macOS File Provider mode is enabled.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--remotedirpath</span> <span class="pre">&lt;path&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
+<td><p>Remote folder for the new classic sync connection. Applies when a local sync folder is created.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--isvfsenabled</span> <span class="pre">&lt;0|1&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Use <code class="docutils literal notranslate"><span class="pre">1</span></code> to request virtual files for the new classic sync folder, where supported, or <code class="docutils literal notranslate"><span class="pre">0</span></code> to download
+files. This does not enable macOS File Provider mode.</p></td>
+</tr>
+</tbody>
+</table>
+<p>For example, save an account and log in from the desktop app afterward:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nextcloudcmd<span class="w"> </span>--userid<span class="w"> </span>carla<span class="w"> </span>--serverurl<span class="w"> </span>https://cloud.example.com<span class="w"> </span>--localdirpath<span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/Nextcloud"</span>
 </pre></div>
 </div>
 </section>
@@ -258,8 +393,8 @@ https://&lt;username&gt;:&lt;secret&gt;@&lt;server_address&gt;
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="macosfileprovider.html" class="btn btn-neutral float-left" title="Using the macOS File Provider" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="client_features.html" class="btn btn-neutral float-right" title="Client features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="conflicts.html" class="btn btn-neutral float-left" title="Conflicts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="uninstallation.html" class="btn btn-neutral float-right" title="Uninstallation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

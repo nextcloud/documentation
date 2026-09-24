@@ -1,0 +1,1496 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-HK" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced configuration &mdash; Nextcloud 36 User Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=c37f0e9a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/desktop/advanced_configuration.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=05269ba6"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=11dc2623"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="自動更新器" href="autoupdate.html" />
+    <link rel="prev" title="Client features" href="client_features.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 36 用戶手冊介紹</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">使用「動態」應用程式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">檔案與同步</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">安裝</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html">Using the Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client_features.html">Client features</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Advanced configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-options">Command-line options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general-options">General options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#logging-options">Logging options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-setup-options">Account setup options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-file">Configuration file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-section"><code class="docutils literal notranslate"><span class="pre">[Nextcloud]</span></code> section</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#desktop-general-settings"><code class="docutils literal notranslate"><span class="pre">[General]</span></code> section</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#per-account-network-settings">Per-account network settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#legacy-proxy-settings">Legacy proxy settings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#environment-variables">Environment variables</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#transfer-settings">Transfer settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synchronization-and-disk-space">Synchronization and disk space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checksums">Checksums</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoupdate.html">自動更新器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">更新頻道</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conflicts.html">衝突</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Command-line client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">解除安裝</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">常見問題</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">設置您的偏好</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">普遍存取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">使用雙重身份驗證</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">管理已連接的瀏覽器和裝置</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 36 User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
+      <li class="breadcrumb-item active">Advanced configuration</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/advanced_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="advanced-configuration">
+<h1>Advanced configuration<a class="headerlink" href="#advanced-configuration" title="Link to this heading"></a></h1>
+<p>You can configure the desktop app through command-line options, <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code>, and environment variables.
+Use the app's <strong>Settings</strong> window for options available there; this page describes advanced settings and overrides.
+For the separate tool that performs a single synchronization run, see <a class="reference internal" href="commandline.html"><span class="doc">Command-line client</span></a>.</p>
+<nav class="contents local" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#command-line-options" id="id7">Command-line options</a></p>
+<ul>
+<li><p><a class="reference internal" href="#general-options" id="id8">General options</a></p></li>
+<li><p><a class="reference internal" href="#logging-options" id="id9">Logging options</a></p></li>
+<li><p><a class="reference internal" href="#account-setup-options" id="id10">Account setup options</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#configuration-file" id="id11">Configuration file</a></p>
+<ul>
+<li><p><a class="reference internal" href="#nextcloud-section" id="id12"><code class="docutils literal notranslate"><span class="pre">[Nextcloud]</span></code> section</a></p></li>
+<li><p><a class="reference internal" href="#desktop-general-settings" id="id13"><code class="docutils literal notranslate"><span class="pre">[General]</span></code> section</a></p></li>
+<li><p><a class="reference internal" href="#per-account-network-settings" id="id14">Per-account network settings</a></p></li>
+<li><p><a class="reference internal" href="#legacy-proxy-settings" id="id15">Legacy proxy settings</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#environment-variables" id="id16">Environment variables</a></p>
+<ul>
+<li><p><a class="reference internal" href="#transfer-settings" id="id17">Transfer settings</a></p></li>
+<li><p><a class="reference internal" href="#synchronization-and-disk-space" id="id18">Synchronization and disk space</a></p></li>
+<li><p><a class="reference internal" href="#checksums" id="id19">Checksums</a></p></li>
+<li><p><a class="reference internal" href="#troubleshooting" id="id20">Troubleshooting</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<p>Defaults below refer to the standard Nextcloud client. Branded clients, server capabilities, and operating system
+policies can change some defaults. Sync-engine settings apply to classic sync, including Windows virtual files.
+The macOS File Provider extension handles its own file transfers; these settings do not configure its transfer engine.
+See <a class="reference internal" href="macosfileprovider.html"><span class="doc">Using the macOS File Provider</span></a>.</p>
+<section id="command-line-options">
+<span id="desktop-command-line-options"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">Command-line options</a><a class="headerlink" href="#command-line-options" title="Link to this heading"></a></h2>
+<p>Start the desktop app with <code class="docutils literal notranslate"><span class="pre">nextcloud</span> <span class="pre">[options]</span></code>. Use <code class="docutils literal notranslate"><span class="pre">nextcloud</span> <span class="pre">--help</span></code> to see the options in your installed
+version.
+Options with a value accept both <code class="docutils literal notranslate"><span class="pre">--option</span> <span class="pre">value</span></code> and <code class="docutils literal notranslate"><span class="pre">--option=value</span></code>.</p>
+<p>Quit the running client before applying startup options or environment variables. Starting another instance can forward
+commands to the existing process instead of starting a new process with the requested environment.</p>
+<section id="general-options">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">General options</a><a class="headerlink" href="#general-options" title="Link to this heading"></a></h3>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--help</span></code>, <code class="docutils literal notranslate"><span class="pre">-h</span></code></p></td>
+<td><p>Not requested</p></td>
+<td><p>Show the available command-line options and exit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--version</span></code>, <code class="docutils literal notranslate"><span class="pre">-v</span></code></p></td>
+<td><p>Not requested</p></td>
+<td><p>Show version information and exit.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--quit</span></code>, <code class="docutils literal notranslate"><span class="pre">-q</span></code></p></td>
+<td><p>Not requested</p></td>
+<td><p>Quit the running desktop client.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--confdir</span> <span class="pre">&lt;directory&gt;</span></code></p></td>
+<td><p>Standard location</p></td>
+<td><p>Use a different configuration directory. See <a class="reference internal" href="#desktop-configuration-file"><span class="std std-ref">Configuration file</span></a> for the standard locations.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--background</span></code></p></td>
+<td><p>Not set</p></td>
+<td><p>Start without opening the main dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--set-language</span> <span class="pre">&lt;language&gt;</span></code></p></td>
+<td><p>From <code class="docutils literal notranslate"><span class="pre">language</span></code></p></td>
+<td><p>Save the interface language and exit. For example, use <code class="docutils literal notranslate"><span class="pre">de</span></code> for German. An empty value restores the operating
+system language. Start the client again to apply it.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--overrideserverurl</span> <span class="pre">&lt;url&gt;</span></code></p></td>
+<td><p>Not set</p></td>
+<td><p>Save <code class="docutils literal notranslate"><span class="pre">overrideServerUrl</span></code> for the next account setup and exit. Start the client again to open the setup
+wizard.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--overridelocaldir</span> <span class="pre">&lt;path&gt;</span></code></p></td>
+<td><p>Not set</p></td>
+<td><p>Save <code class="docutils literal notranslate"><span class="pre">overrideLocalDir</span></code> for the next account setup and exit.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--forcelegacyconfigimport</span></code></p></td>
+<td><p>Not set</p></td>
+<td><p>Force import of an available legacy client configuration. Only available in builds that support account
+migration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--reverse</span></code></p></td>
+<td><p>Normal direction</p></td>
+<td><p>Reverse the interface layout direction for this run.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="logging-options">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Logging options</a><a class="headerlink" href="#logging-options" title="Link to this heading"></a></h3>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--logwindow</span></code>, <code class="docutils literal notranslate"><span class="pre">-l</span></code></p></td>
+<td><p>Not set</p></td>
+<td><p>Open the log output window.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--logfile</span> <span class="pre">&lt;filename&gt;</span></code></p></td>
+<td><p>Not set</p></td>
+<td><p>Write logs to this file. Use <code class="docutils literal notranslate"><span class="pre">-</span></code> to write to standard output. Takes precedence over <code class="docutils literal notranslate"><span class="pre">--logdir</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--logdir</span> <span class="pre">&lt;directory&gt;</span></code></p></td>
+<td><p>From <code class="docutils literal notranslate"><span class="pre">logDir</span></code></p></td>
+<td><p>Write rotating log files to this directory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--logexpire</span> <span class="pre">&lt;hours&gt;</span></code></p></td>
+<td><p>From <code class="docutils literal notranslate"><span class="pre">logExpire</span></code></p></td>
+<td><p>Set retention for rotating logs. A positive value overrides <code class="docutils literal notranslate"><span class="pre">logExpire</span></code>; zero or a negative value uses the
+configuration setting.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--logflush</span></code></p></td>
+<td><p>From <code class="docutils literal notranslate"><span class="pre">logFlush</span></code></p></td>
+<td><p>Flush the log after each write so that recent messages are available immediately.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--logdebug</span></code></p></td>
+<td><p>From <code class="docutils literal notranslate"><span class="pre">logDebug</span></code></p></td>
+<td><p>Enable debug messages in Nextcloud logging categories. This does not enable all Qt debug categories.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--debug</span></code></p></td>
+<td><p>Not set</p></td>
+<td><p>Also enables debug logging. Prefer <code class="docutils literal notranslate"><span class="pre">--logdebug</span></code> when collecting diagnostic logs.</p></td>
+</tr>
+</tbody>
+</table>
+<p>For example, collect debug output in a file on Linux:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nextcloud<span class="w"> </span>--logdebug<span class="w"> </span>--logflush<span class="w"> </span>--logfile<span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/nextcloud-debug.log"</span>
+</pre></div>
+</div>
+<p>For persistent logging settings, see <a class="reference internal" href="#desktop-general-settings"><span class="std std-ref">[General] section</span></a>.</p>
+</section>
+<section id="account-setup-options">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Account setup options</a><a class="headerlink" href="#account-setup-options" title="Link to this heading"></a></h3>
+<p>These options create and save an account, then exit. Start the desktop app again to use the account.</p>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--userid</span> <span class="pre">&lt;user&gt;</span></code></p></td>
+<td><p>Required</p></td>
+<td><p>User ID for the account to create.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--serverurl</span> <span class="pre">&lt;url&gt;</span></code></p></td>
+<td><p>Required</p></td>
+<td><p>Base URL of the Nextcloud server, for example <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--apppassword</span> <span class="pre">&lt;password&gt;</span></code></p></td>
+<td><p>Not set</p></td>
+<td><p>App password for the account. If omitted, the account is saved and you must log in from the desktop app later.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--localdirpath</span> <span class="pre">&lt;path&gt;</span></code></p></td>
+<td><p>Suggested folder</p></td>
+<td><p>Local sync folder. If omitted, use the folder suggested by the setup wizard. An existing folder must be empty.
+Ignored when macOS File Provider mode is enabled.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--remotedirpath</span> <span class="pre">&lt;path&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
+<td><p>Remote folder for the new classic sync connection. Applies when a local sync folder is created.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--isvfsenabled</span> <span class="pre">&lt;0|1&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Use <code class="docutils literal notranslate"><span class="pre">1</span></code> to request virtual files for the new classic sync folder, where supported, or <code class="docutils literal notranslate"><span class="pre">0</span></code> to download
+files. This does not enable macOS File Provider mode.</p></td>
+</tr>
+</tbody>
+</table>
+<p>For example, create an account and log in from the desktop app afterward:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nextcloud<span class="w"> </span>--userid<span class="w"> </span>carla<span class="w"> </span>--serverurl<span class="w"> </span>https://cloud.example.com<span class="w"> </span>--localdirpath<span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/Nextcloud"</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuration-file">
+<span id="desktop-configuration-file"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">Configuration file</a><a class="headerlink" href="#configuration-file" title="Link to this heading"></a></h2>
+<p>The client stores its settings in <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code> using the INI format. Quit the client and back up this file before
+editing it, then start the client again. Changes made in the app's <strong>Settings</strong> window can overwrite the corresponding
+values in the file.</p>
+<p>The standard locations are:</p>
+<ul class="simple">
+<li><p>Linux: <code class="docutils literal notranslate"><span class="pre">$HOME/.config/Nextcloud/nextcloud.cfg</span></code>. If <code class="docutils literal notranslate"><span class="pre">XDG_CONFIG_HOME</span></code> is set, use
+<code class="docutils literal notranslate"><span class="pre">$XDG_CONFIG_HOME/Nextcloud/nextcloud.cfg</span></code>.</p></li>
+<li><p>Windows: <code class="docutils literal notranslate"><span class="pre">%APPDATA%\Nextcloud\nextcloud.cfg</span></code>.</p></li>
+<li><p>macOS, client 33.0.0 and later:
+<code class="docutils literal notranslate"><span class="pre">$HOME/Library/Containers/com.nextcloud.desktopclient/Data/Library/Preferences/Nextcloud/nextcloud.cfg</span></code>.</p></li>
+<li><p>Older macOS clients: <code class="docutils literal notranslate"><span class="pre">$HOME/Library/Preferences/Nextcloud/nextcloud.cfg</span></code>.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--confdir</span></code> overrides the configuration directory. Branded clients can use a different directory and filename.
+In Citrix and other environments with roaming profiles, persist the user's configuration between sessions to retain
+account setup.</p>
+<p>The tables identify the INI section for each setting. For example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Nextcloud]</span>
+<span class="na">remotePollInterval</span><span class="o">=</span><span class="s">30000</span>
+
+<span class="k">[General]</span>
+<span class="na">logDebug</span><span class="o">=</span><span class="s">true</span>
+<span class="na">logExpire</span><span class="o">=</span><span class="s">48</span>
+</pre></div>
+</div>
+<p>Account identities, credentials, sync-folder state, window geometry, caches, migration markers, and updater state are
+managed by the client. Use the setup wizard and <strong>Settings</strong> window to change those values.</p>
+<p>Precedence depends on the setting. The environment overrides listed below apply only to their corresponding settings.
+For <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> and <code class="docutils literal notranslate"><span class="pre">autoUpdateCheck</span></code>, a value in <code class="docutils literal notranslate"><span class="pre">[General]</span></code> takes precedence over <code class="docutils literal notranslate"><span class="pre">[Nextcloud]</span></code>.
+On Windows, administrator policies can override those update settings and the folder-size and external-storage settings.
+See <a class="reference internal" href="autoupdate.html#preventing-automatic-updates-in-windows-environments"><span class="std std-ref">在 Windows 環境中防止自動更新</span></a> for details about update policies.</p>
+<section id="nextcloud-section">
+<span id="id1"></span><h3><a class="toc-backref" href="#id12" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">[Nextcloud]</span></code> section</a><a class="headerlink" href="#nextcloud-section" title="Link to this heading"></a></h3>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">remotePollInterval</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">30000</span></code> ms</p></td>
+<td><p>Interval for polling the server for changes. Values below <code class="docutils literal notranslate"><span class="pre">5000</span></code> ms fall back to <code class="docutils literal notranslate"><span class="pre">30000</span></code> ms. Server push
+can reduce the need for polling.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">forceSyncInterval</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">7200000</span></code> ms</p></td>
+<td><p>Schedule a sync after this much time has passed since the last sync (2 hours). Values below
+<code class="docutils literal notranslate"><span class="pre">remotePollInterval</span></code> are raised to that interval.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fullLocalDiscoveryInterval</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3600000</span></code> ms</p></td>
+<td><p>After this interval (1 hour), the next eligible sync scans the local filesystem fully. Use <code class="docutils literal notranslate"><span class="pre">-1</span></code> to disable
+periodic full scans. Overridden by <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_FULL_LOCAL_DISCOVERY_INTERVAL</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notificationRefreshInterval</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">60000</span></code> ms</p></td>
+<td><p>Interval for polling server notifications. Values below <code class="docutils literal notranslate"><span class="pre">60000</span></code> ms are raised to <code class="docutils literal notranslate"><span class="pre">60000</span></code> ms.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Disable update checks and hide the updater interface.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">autoUpdateCheck</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Enable automatic update checks, provided <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> is false.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">updateCheckInterval</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">36000000</span></code> ms</p></td>
+<td><p>Automatic update-check interval (default: 10 hours). Values below <code class="docutils literal notranslate"><span class="pre">300000</span></code> ms (5 minutes) are raised to that minimum.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="desktop-general-settings">
+<span id="general-section"></span><span id="id2"></span><h3><a class="toc-backref" href="#id13" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">[General]</span></code> section</a><a class="headerlink" href="#desktop-general-settings" title="Link to this heading"></a></h3>
+<table class="configuration-table docutils align-default" id="id3">
+<caption><span class="caption-text">Synchronization and transfers</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">chunkSize</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">104857600</span></code> bytes</p></td>
+<td><p>Initial upload chunk size (100 MiB). The client can adjust it during upload. Server capabilities can replace
+it; <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_CHUNK_SIZE</span></code> overrides the resulting value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">minChunkSize</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5242880</span></code> bytes</p></td>
+<td><p>Minimum configured upload chunk size (5 MiB). The sync engine initially bounds it between 5 MB and 5 GB.
+Overridden by <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_MIN_CHUNK_SIZE</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">maxChunkSize</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">104857600</span></code> bytes</p></td>
+<td><p>Maximum configured upload chunk size (100 MiB). A server-provided maximum takes precedence.
+<code class="docutils literal notranslate"><span class="pre">OWNCLOUD_MAX_CHUNK_SIZE</span></code> overrides the resulting value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">timeout</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">300</span></code> seconds</p></td>
+<td><p>Default network inactivity timeout. Activity can reset the timer and individual requests can use different
+timeouts. A nonzero <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_TIMEOUT</span></code> overrides it.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">promptDeleteAllFiles</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Ask for confirmation when all files are detected as deleted or when the number of deleted files exceeds
+<code class="docutils literal notranslate"><span class="pre">deleteFilesThreshold</span></code>. Applies to desktop classic sync; <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> does not show this prompt.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">deleteFilesThreshold</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">100</span></code> files</p></td>
+<td><p>Deletion count above which <code class="docutils literal notranslate"><span class="pre">promptDeleteAllFiles</span></code> asks for confirmation. Has no effect unless that setting is
+enabled.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">moveToTrash</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Move files deleted on the server to the local trash instead of deleting them permanently, where the local
+filesystem supports it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newBigFolderSizeLimit</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">500</span></code> MB</p></td>
+<td><p>Size above which a new remote folder requires confirmation before downloading. Used when
+<code class="docutils literal notranslate"><span class="pre">useNewBigFolderSizeLimit</span></code> is true; a negative value disables the limit. Does not apply to virtual-file
+folders.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">useNewBigFolderSizeLimit</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Enable the folder-size confirmation limit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">confirmExternalStorage</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Ask before synchronizing newly discovered external storage folders.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notifyExistingFoldersOverLimit</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Notify when an existing synchronized folder grows beyond the active folder-size limit. Requires that limit to
+be enabled and virtual files to be disabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stopSyncingExistingFoldersOverLimit</span></code></p></td>
+<td><p>From <code class="docutils literal notranslate"><span class="pre">notifyExistingFoldersOverLimit</span></code></p></td>
+<td><p>Also stop synchronizing such folders until you choose to keep syncing them. Requires
+<code class="docutils literal notranslate"><span class="pre">notifyExistingFoldersOverLimit</span></code> and the folder-size limit to be enabled.</p></td>
+</tr>
+</tbody>
+</table>
+<p>For classic desktop sync, the client applies chunk settings from the configuration file, then server capabilities,
+then environment overrides. It adjusts the minimum and maximum afterward to include the initial chunk size.
+The <code class="docutils literal notranslate"><span class="pre">targetChunkUploadDuration</span></code> configuration key is not used by the sync engine; use
+<code class="docutils literal notranslate"><span class="pre">OWNCLOUD_TARGET_CHUNK_UPLOAD_DURATION</span></code> instead. <code class="docutils literal notranslate"><span class="pre">forceLoginV2</span></code> is no longer read by the client.</p>
+<table class="configuration-table docutils align-default" id="id4">
+<caption><span class="caption-text">Interface and notifications</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">showExperimentalOptions</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Show experimental options in the interface. This does not itself enable experimental features.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">showMainDialogAsNormalWindow</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Show the main dialog as a normal window even when a tray icon is available.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">monoIcons</span></code></p></td>
+<td><p>Platform dependent</p></td>
+<td><p>Use monochrome tray icons. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> for the standard Nextcloud client on macOS and <code class="docutils literal notranslate"><span class="pre">false</span></code>
+elsewhere.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">optionalServerNotifications</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Show optional server notifications. Individual notification settings below also apply.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">showChatNotifications</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Show chat notifications when optional server notifications are enabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">showCallNotifications</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Show call notifications when optional server notifications are enabled.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">showQuotaWarningNotifications</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Show quota warnings when optional server notifications are enabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">showInExplorerNavigationPane</span></code></p></td>
+<td><p>Platform dependent</p></td>
+<td><p>Show sync folders in the Windows Explorer navigation pane. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> on Windows 10 and later, and
+<code class="docutils literal notranslate"><span class="pre">false</span></code> on other platforms.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">launchOnSystemStartup</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Store the startup preference. Use <strong>Settings</strong> to change it so that the operating system startup registration
+is updated too.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">language</span></code></p></td>
+<td><p>Empty</p></td>
+<td><p>Interface language code, for example <code class="docutils literal notranslate"><span class="pre">de</span></code>. An empty value uses the operating system language.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">updateChannel</span></code></p></td>
+<td><p>Build/server dependent</p></td>
+<td><p>Select a supported update channel. Invalid values are ignored. Branded clients and server subscription settings
+can restrict the selection. See <a class="reference internal" href="updatechannel.html"><span class="doc">更新頻道</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">showConfigBackupWarning</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Show a notification listing configuration backups created during startup.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="configuration-table docutils align-default" id="id5">
+<caption><span class="caption-text">Logging</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logToTemporaryLogDir</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Use a temporary log directory when logging has not already been directed to a file or standard output. Also
+enables debug logging and sets retention to 4 hours.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logDir</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;config</span> <span class="pre">path&gt;/logs</span></code></p></td>
+<td><p>Directory for rotating log files. Overridden by <code class="docutils literal notranslate"><span class="pre">--logdir</span></code>; <code class="docutils literal notranslate"><span class="pre">--logfile</span></code> selects a file or standard output
+instead.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logDebug</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Enable Nextcloud debug logging. <code class="docutils literal notranslate"><span class="pre">--logdebug</span></code> also enables it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logExpire</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">24</span></code> hours</p></td>
+<td><p>Retention for rotating logs. A value of <code class="docutils literal notranslate"><span class="pre">0</span></code> disables age-based removal. A positive <code class="docutils literal notranslate"><span class="pre">--logexpire</span></code> value
+overrides this setting.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logFlush</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Flush the log after every write. <code class="docutils literal notranslate"><span class="pre">--logflush</span></code> also enables it.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Development and debug builds can enable debug logging and immediate flushing regardless of these defaults.</p>
+<table class="configuration-table docutils align-default" id="id6">
+<caption><span class="caption-text">Account setup defaults</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">overrideServerUrl</span></code></p></td>
+<td><p>Empty</p></td>
+<td><p>Force the server URL in the next account setup and start login automatically. Cleared after successful wizard
+setup. Can also be set with <code class="docutils literal notranslate"><span class="pre">--overrideserverurl</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">overrideLocalDir</span></code></p></td>
+<td><p>Empty</p></td>
+<td><p>Suggested local directory for account setup. Cleared after successful wizard setup. Can also be set with
+<code class="docutils literal notranslate"><span class="pre">--overridelocaldir</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">isVfsEnabled</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Virtual-file preference used with <code class="docutils literal notranslate"><span class="pre">overrideServerUrl</span></code> during setup. Does not convert existing sync folders or
+enable macOS File Provider mode.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="per-account-network-settings">
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">Per-account network settings</a><a class="headerlink" href="#per-account-network-settings" title="Link to this heading"></a></h3>
+<p>Use the account's network settings in the app where possible. Values below belong to the existing account group inside
+<code class="docutils literal notranslate"><span class="pre">[Accounts]</span></code>. In the INI file they appear with the account ID prefix, for example <code class="docutils literal notranslate"><span class="pre">0\networkProxyType=0</span></code> for account
+<code class="docutils literal notranslate"><span class="pre">0</span></code>. Use the account ID already present in your file. Proxy passwords belong in the system keychain.</p>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">networkProxyType</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> if absent</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code>: system proxy; <code class="docutils literal notranslate"><span class="pre">1</span></code>: SOCKS5 proxy; <code class="docutils literal notranslate"><span class="pre">2</span></code>: no proxy; <code class="docutils literal notranslate"><span class="pre">3</span></code>: HTTP proxy. Account setup or migration can
+store a different value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">networkProxyHostName</span></code></p></td>
+<td><p>Empty</p></td>
+<td><p>Proxy hostname.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">networkProxyPort</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Proxy port. Set the actual port when configuring a manual proxy.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">networkProxyNeedsAuth</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Whether the proxy requires authentication.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">networkProxyUser</span></code></p></td>
+<td><p>Empty</p></td>
+<td><p>Proxy username.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">networkUploadLimitSetting</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Upload limit mode: <code class="docutils literal notranslate"><span class="pre">0</span></code> for unlimited, <code class="docutils literal notranslate"><span class="pre">1</span></code> for a manual limit. Negative values are reserved for legacy
+migration.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">networkDownloadLimitSetting</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Download limit mode: <code class="docutils literal notranslate"><span class="pre">0</span></code> for unlimited, <code class="docutils literal notranslate"><span class="pre">1</span></code> for a manual limit. Negative values are reserved for legacy
+migration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">networkUploadLimit</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> KB/s</p></td>
+<td><p>Manual upload limit, used when <code class="docutils literal notranslate"><span class="pre">networkUploadLimitSetting</span></code> is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">networkDownloadLimit</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> KB/s</p></td>
+<td><p>Manual download limit, used when <code class="docutils literal notranslate"><span class="pre">networkDownloadLimitSetting</span></code> is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="legacy-proxy-settings">
+<span id="legacy-proxy-section"></span><h3><a class="toc-backref" href="#id15" role="doc-backlink">Legacy proxy settings</a><a class="headerlink" href="#legacy-proxy-settings" title="Link to this heading"></a></h3>
+<p>The top-level <code class="docutils literal notranslate"><span class="pre">[Proxy]</span></code> section is retained for migration from older clients. Current desktop accounts use the
+per-account settings above. Legacy proxy settings can be removed automatically after migration.</p>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Legacy proxy type: <code class="docutils literal notranslate"><span class="pre">0</span></code> for system proxy, <code class="docutils literal notranslate"><span class="pre">1</span></code> for SOCKS5, <code class="docutils literal notranslate"><span class="pre">2</span></code> for no proxy, or <code class="docutils literal notranslate"><span class="pre">3</span></code> for HTTP proxy.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">host</span></code></p></td>
+<td><p>Empty</p></td>
+<td><p>Legacy proxy hostname.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">port</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Legacy proxy port.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">needsAuth</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Whether the legacy proxy requires authentication.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">user</span></code></p></td>
+<td><p>Empty</p></td>
+<td><p>Legacy proxy username.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="environment-variables">
+<span id="desktop-environment-variables"></span><h2><a class="toc-backref" href="#id16" role="doc-backlink">Environment variables</a><a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h2>
+<p>Set environment variables before starting the client. A variable set in a terminal applies to processes launched from
+that terminal; an already running client or a client launched from the desktop does not automatically inherit it.
+For example, temporarily change the network inactivity timeout on Linux:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">OWNCLOUD_TIMEOUT</span><span class="o">=</span><span class="m">600</span><span class="w"> </span>nextcloud
+</pre></div>
+</div>
+<p>The historic <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_</span></code> prefix is still used by the Nextcloud client. Follow the value format in each description:
+some switches require <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>, while others react to any nonempty value, including <code class="docutils literal notranslate"><span class="pre">0</span></code>.
+<code class="docutils literal notranslate"><span class="pre">Default</span></code> describes behavior when the variable is unset.</p>
+<section id="transfer-settings">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Transfer settings</a><a class="headerlink" href="#transfer-settings" title="Link to this heading"></a></h3>
+<p>The chunk-size and parallel-job overrides apply after configuration values and server capabilities in desktop classic
+sync. <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> also reads these variables, but starts with its sync-engine defaults instead of the desktop app's
+chunk configuration.</p>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_CHUNK_SIZE</span></code></p></td>
+<td><p>Effective chunk size</p></td>
+<td><p>Initial chunk size in bytes. Desktop sync starts from <code class="docutils literal notranslate"><span class="pre">chunkSize</span></code> or the server-provided size.
+<code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">104857600</span></code> bytes (100 MiB).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_MIN_CHUNK_SIZE</span></code></p></td>
+<td><p>Effective minimum</p></td>
+<td><p>Minimum chunk size in bytes. Desktop sync starts from <code class="docutils literal notranslate"><span class="pre">minChunkSize</span></code>; <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> defaults to
+<code class="docutils literal notranslate"><span class="pre">5000000</span></code> bytes (5 MB).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_MAX_CHUNK_SIZE</span></code></p></td>
+<td><p>Effective maximum</p></td>
+<td><p>Maximum chunk size in bytes. Desktop sync starts from <code class="docutils literal notranslate"><span class="pre">maxChunkSize</span></code> or the server-provided maximum;
+<code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">5000000000</span></code> bytes (5 GB).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_TARGET_CHUNK_UPLOAD_DURATION</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">60000</span></code> ms</p></td>
+<td><p>Target duration for dynamic chunk sizing (1 minute). Use <code class="docutils literal notranslate"><span class="pre">0</span></code> to disable dynamic sizing. The similarly named
+configuration-file key has no effect.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_MAX_PARALLEL</span></code></p></td>
+<td><p>Server/protocol dependent</p></td>
+<td><p>Positive maximum number of parallel sync jobs. Desktop sync uses the server-provided value when available;
+otherwise it uses <code class="docutils literal notranslate"><span class="pre">20</span></code> for HTTP/2 or <code class="docutils literal notranslate"><span class="pre">6</span></code> for HTTP/1. <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">6</span></code>. This is not the
+number of simultaneous file transfers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_TIMEOUT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">timeout</span></code> or 300 seconds</p></td>
+<td><p>Network inactivity timeout. A nonzero integer overrides <code class="docutils literal notranslate"><span class="pre">timeout</span></code> in the desktop app. <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code>
+defaults to 300 seconds. Zero or an invalid value uses the normal default.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_HTTP2_ENABLED</span></code></p></td>
+<td><p>Disabled</p></td>
+<td><p>Set to <code class="docutils literal notranslate"><span class="pre">1</span></code> to allow HTTP/2 for HTTPS requests. Other values disable it. Actual use still depends on the
+server and network connection.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_CHUNKING_NG</span></code></p></td>
+<td><p>Server capability</p></td>
+<td><p>Set to <code class="docutils literal notranslate"><span class="pre">0</span></code> to disable the newer chunked-upload protocol or <code class="docutils literal notranslate"><span class="pre">1</span></code> to force it. Other values use the server
+capability. Only force it when the server supports it.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_BULK_UPLOAD</span></code></p></td>
+<td><p>Server capability</p></td>
+<td><p>Set to <code class="docutils literal notranslate"><span class="pre">0</span></code> to disable bulk uploads or <code class="docutils literal notranslate"><span class="pre">1</span></code> to force them. Other values use the server capability. Only force
+them when the server supports them.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_PARALLEL_CHUNK</span></code></p></td>
+<td><p>Server dependent</p></td>
+<td><p>For the legacy chunked-upload path only: <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code> disables parallel chunks. Other nonempty values
+enable them unless the server disables them.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_LAZYOPS</span></code></p></td>
+<td><p>Disabled</p></td>
+<td><p>A nonzero integer adds the <code class="docutils literal notranslate"><span class="pre">OC-LazyOps:</span> <span class="pre">true</span></code> header to upload requests. Its effect depends on server
+support.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Keep chunk sizes positive. The client adjusts the minimum and maximum to include the initial chunk size.
+The environment parser accepts unsigned 32-bit byte values for the three chunk-size overrides, so do not use values
+above <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> bytes for those variables.</p>
+</section>
+<section id="synchronization-and-disk-space">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Synchronization and disk space</a><a class="headerlink" href="#synchronization-and-disk-space" title="Link to this heading"></a></h3>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_FULL_LOCAL_DISCOVERY_INTERVAL</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fullLocalDiscoveryInterval</span></code></p></td>
+<td><p>Desktop classic sync only. Override the full local scan interval in milliseconds. Use <code class="docutils literal notranslate"><span class="pre">-1</span></code> to disable
+periodic full scans.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_CRITICAL_FREE_SPACE_BYTES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">512000000</span></code> bytes</p></td>
+<td><p>Abort the folder sync when remaining local space is below this threshold (512 MB). The value is bounded between
+zero and <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_FREE_SPACE_BYTES</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_FREE_SPACE_BYTES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1000000000</span></code> bytes</p></td>
+<td><p>Skip or abort downloads that would leave less than this amount of local free space (1 GB). Other
+synchronization can continue.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_BLACKLIST_TIME_MIN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">25</span></code> seconds</p></td>
+<td><p>Minimum retry delay for files that failed to synchronize. Values below <code class="docutils literal notranslate"><span class="pre">25</span></code> are raised to <code class="docutils literal notranslate"><span class="pre">25</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_BLACKLIST_TIME_MAX</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">86400</span></code> seconds</p></td>
+<td><p>Maximum retry delay for files that failed to synchronize (1 day). Only positive values override the default.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES</span></code></p></td>
+<td><p>Server capability</p></td>
+<td><p>Set to <code class="docutils literal notranslate"><span class="pre">1</span></code> to upload conflict copies or <code class="docutils literal notranslate"><span class="pre">0</span></code> to prevent their upload. A nonempty value overrides the server
+setting. See <a class="reference internal" href="conflicts.html"><span class="doc">衝突</span></a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p id="low-disk-space">Downloads skipped because of the free-space threshold are retried in later sync runs. The critical threshold stops the
+whole folder sync. These limits are independent of your server storage quota.</p>
+</section>
+<section id="checksums">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Checksums</a><a class="headerlink" href="#checksums" title="Link to this heading"></a></h3>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_CONTENT_CHECKSUM_TYPE</span></code></p></td>
+<td><p>Server preference, then <code class="docutils literal notranslate"><span class="pre">SHA1</span></code></p></td>
+<td><p>Override the preferred upload checksum algorithm. Choose an algorithm supported by both client and server.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_DISABLE_CHECKSUM_UPLOAD</span></code></p></td>
+<td><p>Unset</p></td>
+<td><p>Any nonempty value disables sending upload checksums. Unset it to restore normal checksum uploads.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_DISABLE_CHECKSUM_COMPUTATIONS</span></code></p></td>
+<td><p>Unset</p></td>
+<td><p>Any nonempty value disables synchronous checksum calculations. Upload and download paths using asynchronous
+calculations still run.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Use checksum overrides only when diagnosing a specific compatibility problem; disabling checksums reduces integrity
+checks used during synchronization.</p>
+</section>
+<section id="troubleshooting">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Troubleshooting</a><a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h3>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 18.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_SQLITE_JOURNAL_MODE</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WAL</span></code> or <code class="docutils literal notranslate"><span class="pre">DELETE</span></code></p></td>
+<td><p>Override the sync journal database mode. Normally <code class="docutils literal notranslate"><span class="pre">WAL</span></code>; <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> on Windows FAT filesystems and macOS sync
+paths under <code class="docutils literal notranslate"><span class="pre">/Volumes/</span></code>. Change only when diagnosing a database compatibility problem.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_SQLITE_LOCKING_MODE</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXCLUSIVE</span></code></p></td>
+<td><p>Override the SQLite locking mode for the sync journal database.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_SQLITE_TEMP_STORE</span></code></p></td>
+<td><p>SQLite default</p></td>
+<td><p>Override the SQLite <code class="docutils literal notranslate"><span class="pre">temp_store</span></code> setting for the sync journal database.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_CORE_DUMP</span></code></p></td>
+<td><p>Unset</p></td>
+<td><p>On Unix systems, any nonempty value requests an unlimited core-dump size limit for the desktop app. Operating
+system restrictions still apply.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">QT_LOGGING_RULES</span></code></p></td>
+<td><p>Qt logging defaults</p></td>
+<td><p>Set logging-category filters, for example <code class="docutils literal notranslate"><span class="pre">nextcloud.*.debug=true</span></code>. This Qt variable also allows selecting
+individual categories.</p></td>
+</tr>
+</tbody>
+</table>
+<p>For <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> credentials, see <a class="reference internal" href="commandline.html#desktop-command-line-credentials"><span class="std std-ref">Credential handling</span></a>. Its <code class="docutils literal notranslate"><span class="pre">NC_USER</span></code> and <code class="docutils literal notranslate"><span class="pre">NC_PASSWORD</span></code>
+variables do not configure accounts in the desktop app.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="client_features.html" class="btn btn-neutral float-left" title="Client features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="autoupdate.html" class="btn btn-neutral float-right" title="自動更新器" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-user">
+      🌐 zh-HK
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+       ☁️ 36
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-user" class="rst-other-versions">
+      <dl class="nc-languages-list">
+        <dt>語言</dt>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>版本</dt>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+            >
+              36 (upcoming)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              35 (latest)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/34/user_manual"
+               
+            >
+              34 (stable)
+            </a>
+          </dd>
+        
+          <dd>
+            <a href="https://docs.nextcloud.com/server/33/user_manual"
+               
+            >
+              33 (stable)
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
