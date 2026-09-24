@@ -30,7 +30,7 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Windmill Workflows" href="../windmill_workflows/index.html" />
+    <link rel="next" title="Budibase workflows" href="budibase_workflows.html" />
     <link rel="prev" title="The Smart Picker" href="../reference/smart_picker.html" />
    
   <meta name="robots" content="noindex, follow" />
@@ -95,8 +95,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#listening-to-events">Listening to events</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#listing-registered-webhooks">Listing registered webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#managing-webhooks">Managing webhooks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#listing-registered-webhooks-via-occ">Listing registered webhooks via occ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#filters">Filters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#speeding-up-webhook-dispatch">Speeding up webhook dispatch</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#screen-or-tmux-session">Screen or tmux session</a></li>
@@ -112,6 +112,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#calendar-object-events">Calendar Object Events</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#forms-app-events">Forms App Events</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tables-app-events">Tables App Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mail-app-events">Mail App Events</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="budibase_workflows.html">Budibase workflows</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -222,14 +226,21 @@ without requiring manual polling.</p>
 </pre></div>
 </div>
 </section>
-<section id="listening-to-events">
-<h2>Listening to events<a class="headerlink" href="#listening-to-events" title="Link to this heading"></a></h2>
-<p>You can use the OCS API to add webhooks for specific events. See:
+<section id="managing-webhooks">
+<h2>Managing webhooks<a class="headerlink" href="#managing-webhooks" title="Link to this heading"></a></h2>
+<p>You can either use the OCS API to manage your webhooks or install the additional <code class="docutils literal notranslate"><span class="pre">orchestration_gateway</span></code> app to have a graphical user interface for adding, changing and deleting webhooks.</p>
+<p>the Orchestration Gateway adds an administration settings page listing your registered webhooks and making it easy to configure them.</p>
+<img alt="Orchestration Gateway settings showing a list of registered webhooks" src="../_images/list_webhooks.png" />
+<p>To add a new one, you can choose between a generic new webhook or a Budibase-specific one.</p>
+<img alt="Orchestration Gateway dialog for adding a new webhook" src="../_images/new_webhook.png" />
+<p>If you want to use the OCS API to add webhooks for specific events, see:
 <a class="reference external" href="https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index">Register a new webhook</a>.</p>
-<p>Note: When authenticating with the OCS API to register webhooks, the account you
-use must have administrator rights or delegated administrator rights.</p>
-<section id="listing-registered-webhooks">
-<h3>Listing registered webhooks<a class="headerlink" href="#listing-registered-webhooks" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When authenticating with the OCS API to register webhooks, the account you use must have administrator rights or delegated administrator rights. To delegate the webhook registration to non-admin users, they have to be in a group that gets administration privileges for “Webhooks” granted. To use the Orchestration Gateway UI, they need <em>additional</em> privileges for “Orchestration Gateway”.</p>
+</div>
+<section id="listing-registered-webhooks-via-occ">
+<h3>Listing registered webhooks via occ<a class="headerlink" href="#listing-registered-webhooks-via-occ" title="Link to this heading"></a></h3>
 <p>You can list all currently registered webhook listeners from the command line:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>occ<span class="w"> </span>webhook_listeners:list
 </pre></div>
@@ -358,7 +369,7 @@ The logs of the worker can be checked by attaching to the screen or tmux session
 </section>
 </section>
 <section id="nextcloud-webhook-events">
-<h2>Nextcloud Webhook Events<a class="headerlink" href="#nextcloud-webhook-events" title="Link to this heading"></a></h2>
+<span id="webhook-events"></span><h2>Nextcloud Webhook Events<a class="headerlink" href="#nextcloud-webhook-events" title="Link to this heading"></a></h2>
 <p>This is list of typically available events. It features the event ID and the available variables for filtering.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -709,10 +720,106 @@ the node before deletion.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
+<section id="mail-app-events">
+<h3>Mail App Events<a class="headerlink" href="#mail-app-events" title="Link to this heading"></a></h3>
+<p>Mail events use different distinct payload formats, depending on the event.
+When the optional <code class="docutils literal notranslate"><span class="pre">mail</span></code> app is installed:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NewMessageReceivedEvent</span></code></p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCA\\Mail\\Event\\NewMessageReceivedEvent&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;accountId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;inReplyToRfcMessageId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5888857&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mailboxId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;messageId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">108778</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;messageUri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;89789789&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;RfcMessageId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;897789&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sentAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1787826765&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Important data changes&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;threadRootId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9947988&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;carol&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Carol&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1787826832</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MessageSentEvent</span></code></p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCA\\Mail\\Event\\MessageSentEvent&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;accountId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;inReplyToRfcMessageId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5888857&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sendAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1787826765&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Important data changes&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;carol&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Carol&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1787826832</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MessageFlaggedEvent</span></code></p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCA\\Mail\\Event\\MessageFlaggedEvent&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;accountId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;flag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Spam&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mailboxId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;messageId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">108778</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;set&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">897789</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;carol&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Carol&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1787826832</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MessageDeletedEvent</span></code></p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCA\\Mail\\Event\\MessageDeletedEvent&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;accountId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mailboxId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">108778</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;carol&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Carol&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1787826832</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For filtering or automation, always check the actual payload you receive, as it matches
 the JSON examples above, not PHPDoc or internal PHP array type style.</p>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="budibase_workflows.html">Budibase workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="budibase_workflows.html#using-a-nextcloud-webhook-as-automation-trigger">Using a Nextcloud webhook as automation trigger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="budibase_workflows.html#use-payload-information-in-bindings">Use payload information in bindings</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </section>
 </section>
@@ -723,7 +830,7 @@ the JSON examples above, not PHPDoc or internal PHP array type style.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../reference/smart_picker.html" class="btn btn-neutral float-left" title="The Smart Picker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../windmill_workflows/index.html" class="btn btn-neutral float-right" title="Windmill Workflows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="budibase_workflows.html" class="btn btn-neutral float-right" title="Budibase workflows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

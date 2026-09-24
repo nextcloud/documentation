@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=08b96895" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=c37f0e9a" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Індекс" href="../genindex.html" />
     <link rel="search" title="Пошук" href="../search.html" />
-    <link rel="next" title="Uninstallation" href="uninstallation.html" />
+    <link rel="next" title="Command-line client" href="commandline.html" />
     <link rel="prev" title="Оновлення каналів" href="updatechannel.html" />
    
   <meta name="robots" content="noindex, follow" />
@@ -84,11 +84,8 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Встановлення</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">Using the Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
-<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="client_features.html">Client features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_configuration.html">Advanced configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Автоматичне оновлення</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Оновлення каналів</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Конфлікти</a><ul>
@@ -97,6 +94,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#uploading-conflicts-experimental">Завантаження конфліктів (експериментально)</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Command-line client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html">ПОШИРЕНІ ЗАПИТАННЯ</a></li>
 </ul>
@@ -157,7 +155,9 @@ the file on the server gets updated to contain «remote contents» by someone el
 <h2>Завантаження конфліктів (експериментально)<a class="headerlink" href="#uploading-conflicts-experimental" title="Link to this heading"></a></h2>
 <p>За замовчуванням файл конфлікту (файл з назвою «конфліктна копія», який містить ваші локальні конфліктні зміни) не завантажується на сервер. Ідея полягає в тому, що ви, автор змін, є найкращою людиною для вирішення конфлікту, а показ конфлікту іншим користувачам може створити плутанину.</p>
 <p>Однак у деяких сценаріях має сенс завантажити ці суперечливі зміни так, щоб локальна робота стала видимою, навіть якщо конфлікт не буде вирішено негайно.</p>
-<p>У майбутньому, можливо, буде створено загальносерверний перемикач для цієї поведінки. Наразі це можна перевірити, встановивши змінну оточення <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=1</span></code>.</p>
+<p>The server can enable conflict uploads. To override the server setting, use
+<code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=1</span></code> to enable uploads or <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=0</span></code> to disable them.
+See <a class="reference internal" href="advanced_configuration.html#desktop-environment-variables"><span class="std std-ref">Environment variables</span></a> for how to apply environment variables.</p>
 </section>
 </section>
 
@@ -166,7 +166,7 @@ the file on the server gets updated to contain «remote contents» by someone el
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="updatechannel.html" class="btn btn-neutral float-left" title="Оновлення каналів" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="uninstallation.html" class="btn btn-neutral float-right" title="Uninstallation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="commandline.html" class="btn btn-neutral float-right" title="Command-line client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
