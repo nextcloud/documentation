@@ -84,6 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="absence.html">Nastavování zpráv „Jsem mimo kancelář“</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_android.html">Synchronizace se systémem Android</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Synchronizace se systémem iOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#calendar">Kalendář</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contacts">Kontakty</a></li>
 </ul>
@@ -132,10 +133,21 @@
              
   <section id="synchronizing-with-ios">
 <h1>Synchronizace se systémem iOS<a class="headerlink" href="#synchronizing-with-ios" title="Link to this heading"></a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Generate an App password:</p>
+<ol class="arabic simple">
+<li><p>In Nextcloud, go to Settings</p></li>
+<li><p>Go to Security</p></li>
+<li><p>Scroll down to Devices &amp; sessions</p></li>
+<li><p>In ‚App name‘ fill in for example ‚iPhone‘</p></li>
+<li><p>Keep the displayed App login and password for the next steps</p></li>
+</ol>
+</section>
 <section id="calendar">
 <h2>Kalendář<a class="headerlink" href="#calendar" title="Link to this heading"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>Otevřete aplikaci Nastavení.</p></li>
 <li><p>Vyberte Aplikace.</p></li>
 <li><p>Vyberte Kalendář.</p></li>
 <li><p>Vyberte Účty v kalendáři.</p></li>
@@ -143,13 +155,20 @@
 <li><p>Jako typ účtu vyberte Jiný.</p></li>
 <li><p>Select Add <strong>CalDAV</strong> account.</p></li>
 <li><p>Pro server, zadejte název domény vámi využívaného serveru např. <code class="docutils literal notranslate"><span class="pre">example.com</span></code>.</p></li>
-<li><p>Zadejte své uživatelské jméno a heslo.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>Vyberte Další.</p></li>
 <li><p>Otevřete Pokročilá nastavení</p></li>
 <li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
+<li><p>Toggle ‚SSL‘ on</p></li>
+<li><p>For port, fill in 443</p></li>
 <li><p>Zavřete Pokročilá nastavení</p></li>
 </ol>
 <p>Váš kalendář nyní bude viditelný v aplikaci Kalendář.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>It may take a few minutes to synchronise all the events.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
 <p>Pokud obdržíte chybové hlášení související s SSL, je možné zkusit následující: Zajistěte, že do kolonky <code class="docutils literal notranslate"><span class="pre">Server</span></code> zadáte buď jak protokol (<code class="docutils literal notranslate"><span class="pre">https://</span></code>), tak port (obvykle <code class="docutils literal notranslate"><span class="pre">443</span></code>) , tj. <code class="docutils literal notranslate"><span class="pre">https://example.com:443/remote.php/dav/principals/users/username/</span></code>, nebo ani jedno z toho, jako ve výše uvedených pokynech krok za krokem. V obou případech se aplikace pokusí použít SSL, což je možné potvrdit v “Pokročilých nastaveních” účtu (po uložení).</p>
@@ -165,17 +184,23 @@
 </section>
 <section id="contacts">
 <h2>Kontakty<a class="headerlink" href="#contacts" title="Link to this heading"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>Otevřete aplikaci Nastavení.</p></li>
 <li><p>Vyberte Aplikace.</p></li>
 <li><p>Vyberte Kontakty.</p></li>
 <li><p>Vyberte Účty kontaktů.</p></li>
 <li><p>Vyberte Přidat účet.</p></li>
 <li><p>Jako typ účtu vyberte Jiný.</p></li>
 <li><p>Select Add <strong>CardDAV</strong> account.</p></li>
-<li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
-<li><p>Zadejte své uživatelské jméno a heslo.</p></li>
+<li><p>Pro server, zadejte název domény vámi využívaného serveru např. <code class="docutils literal notranslate"><span class="pre">example.com</span></code>.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>Vyberte Další.</p></li>
+<li><p>Otevřete Pokročilá nastavení</p></li>
+<li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
+<li><p>Toggle ‚SSL‘ on</p></li>
+<li><p>For port, fill in 443</p></li>
+<li><p>Zavřete Pokročilá nastavení</p></li>
 </ol>
 <p>Nyní byste své kontakty měli nalézt v adresáři svého iPhone.</p>
 <div class="admonition note">
@@ -186,7 +211,7 @@
 <p class="admonition-title">Poznámka</p>
 <p>If you select <strong>CalDAV</strong> only calendar syncing will be made available.</p>
 </div>
-<p>Pokud to ani tak nefunguje, podívejte se do příručky <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/issues/general_troubleshooting.html#troubleshooting-contacts-calendar">Řešení problémů s kontakty a kalendářem</a> nebo <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/issues/general_troubleshooting.html#service-discovery">Řešení problémů s objevováním služby</a>.</p>
+<p>Pokud to ani tak nefunguje, podívejte se do příručky <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/issues/general_troubleshooting.html#service-discovery">Řešení problémů s kontakty a kalendářem</a> nebo <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/issues/general_troubleshooting.html#troubleshooting-contacts-calendar">Řešení problémů s objevováním služby</a>.</p>
 </section>
 </section>
 

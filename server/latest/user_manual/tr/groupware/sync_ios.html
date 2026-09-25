@@ -84,6 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="absence.html">Ofis dışında iletilerini ayarlamak</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_android.html">Android ile eşitlemek</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">iOS ile eşitlemek</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#calendar">Takvim</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contacts">Kişiler</a></li>
 </ul>
@@ -132,10 +133,21 @@
              
   <section id="synchronizing-with-ios">
 <h1>iOS ile eşitlemek<a class="headerlink" href="#synchronizing-with-ios" title="Link to this heading"></a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Generate an App password:</p>
+<ol class="arabic simple">
+<li><p>In Nextcloud, go to Settings</p></li>
+<li><p>Go to Security</p></li>
+<li><p>Scroll down to Devices &amp; sessions</p></li>
+<li><p>In ‘App name’ fill in for example ‘iPhone’</p></li>
+<li><p>Keep the displayed App login and password for the next steps</p></li>
+</ol>
+</section>
 <section id="calendar">
 <h2>Takvim<a class="headerlink" href="#calendar" title="Link to this heading"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>Ayarlar uygulamasını açın</p></li>
 <li><p>Uygulamaları seçin.</p></li>
 <li><p>Takvim seçin.</p></li>
 <li><p>Takvim hesaplarını seçin.</p></li>
@@ -143,13 +155,20 @@
 <li><p>Hesap türü olarak diğer seçin.</p></li>
 <li><p>Select Add <strong>CalDAV</strong> account.</p></li>
 <li><p>Sunucu olarak, sunucunuzun <code class="docutils literal notranslate"><span class="pre">ornek.com</span></code> gibi olan etki alanı adını yazın.</p></li>
-<li><p>Kullanıcı adı ve parolanızı yazın.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>Sonraki üzerine dokunun.</p></li>
 <li><p>Gelişmiş ayarları açın</p></li>
 <li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
+<li><p>Toggle ‘SSL’ on</p></li>
+<li><p>For port, fill in 443</p></li>
 <li><p>Gelişmiş ayarları kapatın</p></li>
 </ol>
 <p>Artık Takvim uygulamasında Nextcloud takviminizi görebilmelisiniz.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>It may take a few minutes to synchronise all the events.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
 <p>SSL ile ilgili bir hata iletisi görürseniz, şunları deneyebilirsiniz: <code class="docutils literal notranslate"><span class="pre">Sunucu</span></code> alanında hem iletişim kuralını (<cite>https://``</cite>) hem de bağlantı noktasını (genellikle <code class="docutils literal notranslate"><span class="pre">443</span></code>) belirttiğinizden emin olun. Yukarıdaki rehberde olduğu gibi <code class="docutils literal notranslate"><span class="pre">https://ornek.com:443/remote.php/dav/principals/users/kullaniciadi/`</span></code> veya yok. İki durumda da, uygulama otomatik olarak SSL kullanmaya çalışır. Kaydettikten sonra hesabın “Gelişmiş ayarlar” bölümünden doğrulayabilirsiniz.</p>
@@ -165,17 +184,23 @@
 </section>
 <section id="contacts">
 <h2>Kişiler<a class="headerlink" href="#contacts" title="Link to this heading"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>Ayarlar uygulamasını açın</p></li>
 <li><p>Uygulamaları seçin.</p></li>
 <li><p>Kişileri seçin.</p></li>
 <li><p>Kişi hesaplarını seçin.</p></li>
 <li><p>Hesap ekle üzerine dokunun.</p></li>
 <li><p>Hesap türü olarak diğer seçin.</p></li>
 <li><p>Select Add <strong>CardDAV</strong> account.</p></li>
-<li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
-<li><p>Kullanıcı adı ve parolanızı yazın.</p></li>
+<li><p>Sunucu olarak, sunucunuzun <code class="docutils literal notranslate"><span class="pre">ornek.com</span></code> gibi olan etki alanı adını yazın.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>Sonraki üzerine dokunun.</p></li>
+<li><p>Gelişmiş ayarları açın</p></li>
+<li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
+<li><p>Toggle ‘SSL’ on</p></li>
+<li><p>For port, fill in 443</p></li>
+<li><p>Gelişmiş ayarları kapatın</p></li>
 </ol>
 <p>Artık iPhone ya da iPad kişileriniz içinde Nextcloud kişilerinizi görebilmelisiniz.</p>
 <div class="admonition note">

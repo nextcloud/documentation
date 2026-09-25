@@ -84,6 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="absence.html">Definir mensaxes de «fóra da oficina»</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_android.html">Sincronización con Android</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Sincronización con iOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#calendar">Calendario</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contacts">Contactos</a></li>
 </ul>
@@ -132,10 +133,21 @@
              
   <section id="synchronizing-with-ios">
 <h1>Sincronización con iOS<a class="headerlink" href="#synchronizing-with-ios" title="Ligazón a este título"></a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Ligazón a este título"></a></h2>
+<p>Generate an App password:</p>
+<ol class="arabic simple">
+<li><p>In Nextcloud, go to Settings</p></li>
+<li><p>Go to Security</p></li>
+<li><p>Scroll down to Devices &amp; sessions</p></li>
+<li><p>In “App name” fill in for example “iPhone”</p></li>
+<li><p>Keep the displayed App login and password for the next steps</p></li>
+</ol>
+</section>
 <section id="calendar">
 <h2>Calendario<a class="headerlink" href="#calendar" title="Ligazón a este título"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>Abra a aplicación de axustes.</p></li>
 <li><p>Seleccione Aplicacións.</p></li>
 <li><p>Seleccione Calendario.</p></li>
 <li><p>Seleccione Contas do Calendario.</p></li>
@@ -143,13 +155,20 @@
 <li><p>Seleccione Outro como tipo de conta.</p></li>
 <li><p>Select Add <strong>CalDAV</strong> account.</p></li>
 <li><p>Para o servidor, escriba o nome de dominio do servidor, é dicir <code class="docutils literal notranslate"><span class="pre">example.com</span></code>.</p></li>
-<li><p>Introduza o seu nome de usuario e contrasinal.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>Seleccione Seguinte.</p></li>
 <li><p>Abra Axustes avanzados</p></li>
 <li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
+<li><p>Toggle “SSL” on</p></li>
+<li><p>For port, fill in 443</p></li>
 <li><p>Peche Axustes avanzados</p></li>
 </ol>
 <p>O seu calendario agora será visíbel na aplicación Calendario.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>It may take a few minutes to synchronise all the events.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Se recibe unha mensaxe de erro relacionada con SSL, pode probar o seguinte: Asegúrese de especificar tanto o protocolo (<code class="docutils literal notranslate"><span class="pre">https://</span></code>) como o porto (normalmente <code class="docutils literal notranslate"><span class="pre">443</span></code>) no campo <code class="docutils literal notranslate"><span class="pre">Servidor</span></code>, p. ex., <code class="docutils literal notranslate"><span class="pre">https://example.com:443/remote.php/dav/principals/users/username/</span></code>, ou ningún, como na guía paso a paso anterior. De calquera xeito, a aplicación tenta automaticamente empregar SSL, o que pode confirmar en «Axustes avanzados» da conta após gardar.</p>
@@ -165,17 +184,23 @@
 </section>
 <section id="contacts">
 <h2>Contactos<a class="headerlink" href="#contacts" title="Ligazón a este título"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>Abra a aplicación de axustes.</p></li>
 <li><p>Seleccione Aplicacións.</p></li>
 <li><p>Seleccione Contactos.</p></li>
 <li><p>Seleccione Contas de Contactos</p></li>
 <li><p>Seleccione Engadir conta.</p></li>
 <li><p>Seleccione Outro como tipo de conta.</p></li>
 <li><p>Select Add <strong>CardDAV</strong> account.</p></li>
-<li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
-<li><p>Introduza o seu nome de usuario e contrasinal.</p></li>
+<li><p>Para o servidor, escriba o nome de dominio do servidor, é dicir <code class="docutils literal notranslate"><span class="pre">example.com</span></code>.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>Seleccione Seguinte.</p></li>
+<li><p>Abra Axustes avanzados</p></li>
+<li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
+<li><p>Toggle “SSL” on</p></li>
+<li><p>For port, fill in 443</p></li>
+<li><p>Peche Axustes avanzados</p></li>
 </ol>
 <p>Agora debe atopar os seus contactos no caderno de enderezos do seu iPhone.</p>
 <div class="admonition note">
@@ -186,7 +211,7 @@
 <p class="admonition-title">Nota</p>
 <p>If you select <strong>CalDAV</strong> only calendar syncing will be made available.</p>
 </div>
-<p>Se aínda non funciona, bótelle unha ollada a <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/issues/general_troubleshooting.html#service-discovery">Solución de problemas de Contactos e Calendario</a> ou a <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/issues/general_troubleshooting.html#troubleshooting-contacts-calendar">Solución de problemas de descubrimento do servizo</a>.</p>
+<p>Se aínda non funciona, bótelle unha ollada a <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/issues/general_troubleshooting.html#troubleshooting-contacts-calendar">Solución de problemas de Contactos e Calendario</a> ou a <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/issues/general_troubleshooting.html#service-discovery">Solución de problemas de descubrimento do servizo</a>.</p>
 </section>
 </section>
 

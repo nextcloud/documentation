@@ -84,6 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="absence.html">Het instellen van automatische afwezigheidsberichten</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_android.html">Synchronizing with Android</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Synchronisatie met iOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#calendar">Agenda</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contacts">Contactpersonen</a></li>
 </ul>
@@ -132,10 +133,21 @@
              
   <section id="synchronizing-with-ios">
 <h1>Synchronisatie met iOS<a class="headerlink" href="#synchronizing-with-ios" title="Link to this heading"></a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Generate an App password:</p>
+<ol class="arabic simple">
+<li><p>In Nextcloud, go to Settings</p></li>
+<li><p>Go to Security</p></li>
+<li><p>Scroll down to Devices &amp; sessions</p></li>
+<li><p>In ‘App name’ fill in for example ‘iPhone’</p></li>
+<li><p>Keep the displayed App login and password for the next steps</p></li>
+</ol>
+</section>
 <section id="calendar">
 <h2>Agenda<a class="headerlink" href="#calendar" title="Link to this heading"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>Open de instellingenapplicatie.</p></li>
 <li><p>Kies Apps.</p></li>
 <li><p>Kies Agenda.</p></li>
 <li><p>Kies Agenda-accounts.</p></li>
@@ -143,13 +155,20 @@
 <li><p>Kies Overig als accounttype.</p></li>
 <li><p>Select Add <strong>CalDAV</strong> account.</p></li>
 <li><p>Voor de server, typ de domeinnaam van jouw server, bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">voorbeeld.com</span></code>.</p></li>
-<li><p>Voer je gebruikersnaam en wachtwoord in.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>Kies Volgende.</p></li>
 <li><p>Open Geavanceerde instellingen</p></li>
 <li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
+<li><p>Toggle ‘SSL’ on</p></li>
+<li><p>For port, fill in 443</p></li>
 <li><p>Sluit Geavanceerde instellingen</p></li>
 </ol>
 <p>Je Agenda zal nu zichtbaar zijn in de Kalender applicatie.</p>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>It may take a few minutes to synchronise all the events.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Notitie</p>
 <p>Als je een foutmelding krijgt die verband houdt met SSL, kun je het volgende proberen: Zorg ervoor dat je zowel het protocol (<code class="docutils literal notranslate"><span class="pre">https://</span></code>) als de poort (meestal <code class="docutils literal notranslate"><span class="pre">443</span></code>) in het veld <code class="docutils literal notranslate"><span class="pre">Server</span></code> opgeeft, bijv. <code class="docutils literal notranslate"><span class="pre">https://example.com:443/remote.php/dav/principals/users/gebruikersnaam/</span></code>, of geen van beide, zoals in de stapsgewijze gids hierboven. Hoe dan ook, de applicatie probeert automatisch SSL te gebruiken, wat je kunt bevestigen in ‘Geavanceerde Instellingen’ van het account na het opslaan.</p>
@@ -165,17 +184,23 @@
 </section>
 <section id="contacts">
 <h2>Contactpersonen<a class="headerlink" href="#contacts" title="Link to this heading"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>Open de instellingenapplicatie.</p></li>
 <li><p>Kies Apps.</p></li>
 <li><p>Kies Contactpersonen</p></li>
 <li><p>Kies Contacten Accounts.</p></li>
 <li><p>Kies Account toevoegen.</p></li>
 <li><p>Kies Overig als accounttype.</p></li>
 <li><p>Select Add <strong>CardDAV</strong> account.</p></li>
-<li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
-<li><p>Voer je gebruikersnaam en wachtwoord in.</p></li>
+<li><p>Voor de server, typ de domeinnaam van jouw server, bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">voorbeeld.com</span></code>.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>Kies Volgende.</p></li>
+<li><p>Open Geavanceerde instellingen</p></li>
+<li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
+<li><p>Toggle ‘SSL’ on</p></li>
+<li><p>For port, fill in 443</p></li>
+<li><p>Sluit Geavanceerde instellingen</p></li>
 </ol>
 <p>Je zou nu je contactpersonen in het adresboek van je iPhone moeten vinden.</p>
 <div class="admonition note">
