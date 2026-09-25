@@ -68,7 +68,9 @@ Nextcloud, so that the credentials and all queries are not sent in plaintext.
 The following parameters are independent of the database backend. Nextcloud
 translates them into the corresponding :file:`config.php` settings before the
 first connection is opened, so the installation itself already uses an
-encrypted connection.
+encrypted connection. If the setup form is displayed, the values prefill the
+fields of its **Encrypted database connection** section, see
+:ref:`installation_wizard_database_encryption_label`.
 
 .. list-table:: Connection encryption parameters
    :header-rows: 1

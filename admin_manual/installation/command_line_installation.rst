@@ -132,7 +132,8 @@ server against a CA certificate:
 Nextcloud writes the resulting configuration to ``dbdriveroptions``
 (MySQL/MariaDB) or ``pgsql_ssl`` (PostgreSQL) in ``config.php``, see
 :doc:`../configuration_server/config_sample_php_parameters`. The same
-connection can be configured for the Installation Wizard, see
-:ref:`autoconfig_database_encryption_label`.
+connection can be configured in the Installation Wizard, see
+:ref:`installation_wizard_database_encryption_label`, or prefilled with an
+autoconfig file, see :ref:`autoconfig_database_encryption_label`.
 
 See :ref:`command_line_installation_label` for more information.
