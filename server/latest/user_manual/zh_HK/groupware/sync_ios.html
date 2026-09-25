@@ -84,6 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="absence.html">設置離開辦公室的消息</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_android.html">與 Android 同步</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">與 iOS 同步</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#calendar">日曆</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contacts">聯絡人</a></li>
 </ul>
@@ -132,10 +133,21 @@
              
   <section id="synchronizing-with-ios">
 <h1>與 iOS 同步<a class="headerlink" href="#synchronizing-with-ios" title="Link to this heading"></a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Generate an App password:</p>
+<ol class="arabic simple">
+<li><p>In Nextcloud, go to Settings</p></li>
+<li><p>Go to Security</p></li>
+<li><p>Scroll down to Devices &amp; sessions</p></li>
+<li><p>In 'App name' fill in for example 'iPhone'</p></li>
+<li><p>Keep the displayed App login and password for the next steps</p></li>
+</ol>
+</section>
 <section id="calendar">
 <h2>日曆<a class="headerlink" href="#calendar" title="Link to this heading"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>打開設定應用。</p></li>
 <li><p>選擇應用程式</p></li>
 <li><p>選擇日曆。</p></li>
 <li><p>選擇日曆帳戶</p></li>
@@ -143,13 +155,20 @@
 <li><p>選擇其他作為帳戶類型。</p></li>
 <li><p>Select Add <strong>CalDAV</strong> account.</p></li>
 <li><p>在伺服器中，輸入您的伺服器域名，例如 <code class="docutils literal notranslate"><span class="pre">example.com</span></code>。</p></li>
-<li><p>輸入您的用戶名稱和密碼。</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>選擇下一步。</p></li>
 <li><p>打開高級設定</p></li>
 <li><p>在伺服器欄位中，輸入你的伺服器網域名稱及路徑，例如 <a href="#id1"><span class="problematic" id="id2">``</span></a>example.com/remote.php/dav/principals/users/username/<a href="#id3"><span class="problematic" id="id4">``</span></a>（請將 <strong>example.com</strong> 及 <strong>username</strong> 替換為實際值）。</p></li>
+<li><p>Toggle 'SSL' on</p></li>
+<li><p>For port, fill in 443</p></li>
 <li><p>關閉高級設定</p></li>
 </ol>
 <p>您的日曆現在將在日曆應用中顯示。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It may take a few minutes to synchronise all the events.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>如果您收到與 SSL 相關的錯誤消息，可以嘗試以下方法：確保在「伺服器」欄位中同時指定協議（<a class="reference external" href="https://">https://</a>）和端口（通常是 443），例如：<a class="reference external" href="https://example.com:443/remote.php/dav/principals/users/username/">https://example.com:443/remote.php/dav/principals/users/username/</a>，或者都不指定，就像上面的逐步指南所示。無論哪種方式，應用程式都會自動嘗試使用 SSL，您可以在儲存後的「進階設定」中確認。</p>
@@ -165,17 +184,23 @@
 </section>
 <section id="contacts">
 <h2>聯絡人<a class="headerlink" href="#contacts" title="Link to this heading"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>打開設定應用。</p></li>
 <li><p>選擇應用程式</p></li>
 <li><p>選擇聯絡人。</p></li>
 <li><p>選擇聯絡人帳戶。</p></li>
 <li><p>選擇添加帳戶。</p></li>
 <li><p>選擇其他作為帳戶類型。</p></li>
 <li><p>Select Add <strong>CardDAV</strong> account.</p></li>
-<li><p>在伺服器欄位中，輸入你的伺服器網域名稱及路徑，例如 <a href="#id1"><span class="problematic" id="id2">``</span></a>example.com/remote.php/dav/principals/users/username/<a href="#id3"><span class="problematic" id="id4">``</span></a>（請將 <strong>example.com</strong> 及 <strong>username</strong> 替換為實際值）。</p></li>
-<li><p>輸入您的用戶名稱和密碼。</p></li>
+<li><p>在伺服器中，輸入您的伺服器域名，例如 <code class="docutils literal notranslate"><span class="pre">example.com</span></code>。</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>選擇下一步。</p></li>
+<li><p>打開高級設定</p></li>
+<li><p>在伺服器欄位中，輸入你的伺服器網域名稱及路徑，例如 <a href="#id1"><span class="problematic" id="id2">``</span></a>example.com/remote.php/dav/principals/users/username/<a href="#id3"><span class="problematic" id="id4">``</span></a>（請將 <strong>example.com</strong> 及 <strong>username</strong> 替換為實際值）。</p></li>
+<li><p>Toggle 'SSL' on</p></li>
+<li><p>For port, fill in 443</p></li>
+<li><p>關閉高級設定</p></li>
 </ol>
 <p>您現在應該能在 iPhone 的通訊錄中找到您的聯絡人。</p>
 <div class="admonition note">

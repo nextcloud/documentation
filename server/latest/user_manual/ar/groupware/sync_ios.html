@@ -84,6 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="absence.html">Setting out-of-office messages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_android.html">المزامنة مع أندرويد</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">المزامنة مع iOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#calendar">تقويم</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contacts">جهات اتصال</a></li>
 </ul>
@@ -132,10 +133,21 @@
              
   <section id="synchronizing-with-ios">
 <h1>المزامنة مع iOS<a class="headerlink" href="#synchronizing-with-ios" title="Link to this heading"></a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Generate an App password:</p>
+<ol class="arabic simple">
+<li><p>In Nextcloud, go to Settings</p></li>
+<li><p>Go to Security</p></li>
+<li><p>Scroll down to Devices &amp; sessions</p></li>
+<li><p>In 'App name' fill in for example 'iPhone'</p></li>
+<li><p>Keep the displayed App login and password for the next steps</p></li>
+</ol>
+</section>
 <section id="calendar">
 <h2>تقويم<a class="headerlink" href="#calendar" title="Link to this heading"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>إفتَح تطبيق الإعدادات.</p></li>
 <li><p>حدِّد التطبيقات.</p></li>
 <li><p>إختَر تقويماً.</p></li>
 <li><p>حدِّد حسابات التقويم.</p></li>
@@ -143,13 +155,20 @@
 <li><p>إختَر &quot;أخرى&quot; كنوع حساب.</p></li>
 <li><p>Select Add <strong>CalDAV</strong> account.</p></li>
 <li><p>في الخادوم، أدخِل اسم نطاق خادومك. مثلاً: <code class="docutils literal notranslate"><span class="pre">example.com</span></code>.</p></li>
-<li><p>إدخل اسم المستخدِم و كلمة المرور.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>إختَر &quot;التالي&quot;.</p></li>
 <li><p>إفتَح الإعدادات المتقدمة</p></li>
 <li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
+<li><p>Toggle 'SSL' on</p></li>
+<li><p>For port, fill in 443</p></li>
 <li><p>أغلِق الإعدادات المتقدمة</p></li>
 </ol>
 <p>سيصبح تقويمك الآن مرئيّاً في تطبيق التقويم.</p>
+<div class="admonition note">
+<p class="admonition-title">ملاحظة</p>
+<p>It may take a few minutes to synchronise all the events.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">ملاحظة</p>
 <p>إذا ظهرت لك رسالة خطأ تتعلق بـ SSL، يمكنك تجربة ما يلي: تأكد من تحديد كلٍّ من البروتوكول (<a class="reference external" href="https://">https://</a>) والمنفذ (عادةً 443) في حقل &quot;الخادوم server&quot;، أي <code class="docutils literal notranslate"><span class="pre">https://example.com:443/remote.php/dav/principals/users/username/</span></code> ، أو عدم تحديد أيٍّ منهما، كما هو موضح في الدليل التفصيلي أعلاه. في كلتا الحالتين، سيحاول التطبيق تلقائيًا استخدام SSL، ويمكنك تأكيد ذلك في &quot;الإعدادات المتقدمة&quot; للحساب بعد الحفظ.</p>
@@ -165,17 +184,23 @@
 </section>
 <section id="contacts">
 <h2>جهات اتصال<a class="headerlink" href="#contacts" title="Link to this heading"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>إفتَح تطبيق الإعدادات.</p></li>
 <li><p>حدِّد التطبيقات.</p></li>
 <li><p>إختَر جهات اتصال.</p></li>
 <li><p>حدِّد حسابات جهات الاتصال.</p></li>
 <li><p>إختَر إضافة حساب.</p></li>
 <li><p>إختَر &quot;أخرى&quot; كنوع حساب.</p></li>
 <li><p>Select Add <strong>CardDAV</strong> account.</p></li>
-<li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
-<li><p>إدخل اسم المستخدِم و كلمة المرور.</p></li>
+<li><p>في الخادوم، أدخِل اسم نطاق خادومك. مثلاً: <code class="docutils literal notranslate"><span class="pre">example.com</span></code>.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>إختَر &quot;التالي&quot;.</p></li>
+<li><p>إفتَح الإعدادات المتقدمة</p></li>
+<li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
+<li><p>Toggle 'SSL' on</p></li>
+<li><p>For port, fill in 443</p></li>
+<li><p>أغلِق الإعدادات المتقدمة</p></li>
 </ol>
 <p>يُفترض الآن أن تجد جهات اتصالك في دفتر العناوين على آيفونك.</p>
 <div class="admonition note">

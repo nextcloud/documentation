@@ -84,6 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="absence.html">Ρύθμιση μηνυμάτων απουσίας</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_android.html">Συγχρονισμός με Android</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Συγχρονισμός με iOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#calendar">Ημερολόγιο</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contacts">Επαφές</a></li>
 </ul>
@@ -132,10 +133,21 @@
              
   <section id="synchronizing-with-ios">
 <h1>Συγχρονισμός με iOS<a class="headerlink" href="#synchronizing-with-ios" title="Link to this heading"></a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Generate an App password:</p>
+<ol class="arabic simple">
+<li><p>In Nextcloud, go to Settings</p></li>
+<li><p>Go to Security</p></li>
+<li><p>Scroll down to Devices &amp; sessions</p></li>
+<li><p>In “App name” fill in for example “iPhone”</p></li>
+<li><p>Keep the displayed App login and password for the next steps</p></li>
+</ol>
+</section>
 <section id="calendar">
 <h2>Ημερολόγιο<a class="headerlink" href="#calendar" title="Link to this heading"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>Ανοίξτε την εφαρμογή ρυθμίσεων.</p></li>
 <li><p>Επιλέξτε Εφαρμογές.</p></li>
 <li><p>Επιλέξτε Ημερολόγιο.</p></li>
 <li><p>Επιλέξτε Λογαριασμοί Ημερολογίου.</p></li>
@@ -143,13 +155,20 @@
 <li><p>Επιλέξτε Άλλο ως τύπο λογαριασμού.</p></li>
 <li><p>Select Add <strong>CalDAV</strong> account.</p></li>
 <li><p>Για διακομιστή, πληκτρολογήστε το όνομα τομέα του διακομιστή σας, π.χ. <code class="docutils literal notranslate"><span class="pre">example.com</span></code>.</p></li>
-<li><p>Εισάγετε το όνομα χρήστη και τον κωδικό πρόσβασής σας.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>Επιλέξτε Επόμενο.</p></li>
 <li><p>Ανοίξτε τις Προχωρημένες Ρυθμίσεις</p></li>
 <li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
+<li><p>Toggle “SSL” on</p></li>
+<li><p>For port, fill in 443</p></li>
 <li><p>Κλείστε τις Προχωρημένες Ρυθμίσεις</p></li>
 </ol>
 <p>Το ημερολόγιό σας θα είναι τώρα ορατό στην εφαρμογή Ημερολόγιο.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>It may take a few minutes to synchronise all the events.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Σημείωση</p>
 <p>Εάν λάβετε ένα μήνυμα σφάλματος σχετικό με το SSL, μπορείτε να δοκιμάσετε τα ακόλουθα: Βεβαιωθείτε ότι είτε καθορίζετε και το πρωτόκολλο (<code class="docutils literal notranslate"><span class="pre">https://</span></code>) και τη θύρα (συνήθως <code class="docutils literal notranslate"><span class="pre">443</span></code>) στο πεδίο <code class="docutils literal notranslate"><span class="pre">Διακομιστής</span></code>, π.χ., <code class="docutils literal notranslate"><span class="pre">https://example.com:443/remote.php/dav/principals/users/username/</span></code>, είτε κανένα, όπως στον παραπάνω βήμα-προς-βήμα οδηγό. Με κάθε τρόπο, η εφαρμογή προσπαθεί αυτόματα να χρησιμοποιήσει SSL, το οποίο μπορείτε να επιβεβαιώσετε στις «Προχωρημένες Ρυθμίσεις» του λογαριασμού μετά την αποθήκευση.</p>
@@ -165,17 +184,23 @@
 </section>
 <section id="contacts">
 <h2>Επαφές<a class="headerlink" href="#contacts" title="Link to this heading"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>Ανοίξτε την εφαρμογή ρυθμίσεων.</p></li>
 <li><p>Επιλέξτε Εφαρμογές.</p></li>
 <li><p>Επιλέξτε Επαφές.</p></li>
 <li><p>Επιλέξτε Λογαριασμοί Επαφών.</p></li>
 <li><p>Επιλέξτε Προσθήκη Λογαριασμού.</p></li>
 <li><p>Επιλέξτε Άλλο ως τύπο λογαριασμού.</p></li>
 <li><p>Select Add <strong>CardDAV</strong> account.</p></li>
-<li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
-<li><p>Εισάγετε το όνομα χρήστη και τον κωδικό πρόσβασής σας.</p></li>
+<li><p>Για διακομιστή, πληκτρολογήστε το όνομα τομέα του διακομιστή σας, π.χ. <code class="docutils literal notranslate"><span class="pre">example.com</span></code>.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>Επιλέξτε Επόμενο.</p></li>
+<li><p>Ανοίξτε τις Προχωρημένες Ρυθμίσεις</p></li>
+<li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
+<li><p>Toggle “SSL” on</p></li>
+<li><p>For port, fill in 443</p></li>
+<li><p>Κλείστε τις Προχωρημένες Ρυθμίσεις</p></li>
 </ol>
 <p>Θα πρέπει τώρα να βρείτε τις επαφές σας στον φάκελο διευθύνσεων του iPhone σας.</p>
 <div class="admonition note">

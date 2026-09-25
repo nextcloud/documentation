@@ -84,6 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="absence.html">Setting out-of-office messages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_android.html">Synchronizing with Android</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Synchronizing with iOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#calendar">Calendar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contacts">Contacts</a></li>
 </ul>
@@ -132,10 +133,21 @@
              
   <section id="synchronizing-with-ios">
 <h1>Synchronizing with iOS<a class="headerlink" href="#synchronizing-with-ios" title="Link to this heading"></a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Generate an App password:</p>
+<ol class="arabic simple">
+<li><p>In Nextcloud, go to Settings</p></li>
+<li><p>Go to Security</p></li>
+<li><p>Scroll down to Devices &amp; sessions</p></li>
+<li><p>In 'App name' fill in for example 'iPhone'</p></li>
+<li><p>Keep the displayed App login and password for the next steps</p></li>
+</ol>
+</section>
 <section id="calendar">
 <h2>Calendar<a class="headerlink" href="#calendar" title="Link to this heading"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>Open the settings application.</p></li>
 <li><p>Select Apps.</p></li>
 <li><p>Select Calendar.</p></li>
 <li><p>Select Calendar Accounts.</p></li>
@@ -143,13 +155,20 @@
 <li><p>Select Other as account type.</p></li>
 <li><p>Select Add <strong>CalDAV</strong> account.</p></li>
 <li><p>For server, type the domain name of your server i.e. <code class="docutils literal notranslate"><span class="pre">example.com</span></code>.</p></li>
-<li><p>Enter your user name and password.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>Select Next.</p></li>
 <li><p>Open Advanced Settings</p></li>
 <li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
+<li><p>Toggle 'SSL' on</p></li>
+<li><p>For port, fill in 443</p></li>
 <li><p>Close Advanced Settings</p></li>
 </ol>
 <p>Your calendar will now be visible in the Calendar application.</p>
+<div class="admonition note">
+<p class="admonition-title">Catatan</p>
+<p>It may take a few minutes to synchronise all the events.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Catatan</p>
 <p>If you get an error message related to SSL, you can try the following: Make sure that you
@@ -170,17 +189,23 @@ which you can confirm in  “Advanced Settings” of the account after saving.</
 </section>
 <section id="contacts">
 <h2>Contacts<a class="headerlink" href="#contacts" title="Link to this heading"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>Open the settings application.</p></li>
 <li><p>Select Apps.</p></li>
 <li><p>Select Contacts.</p></li>
 <li><p>Select Contacts Accounts.</p></li>
 <li><p>Select Add Account.</p></li>
 <li><p>Select Other as account type.</p></li>
 <li><p>Select Add <strong>CardDAV</strong> account.</p></li>
-<li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
-<li><p>Enter your user name and password.</p></li>
+<li><p>For server, type the domain name of your server i.e. <code class="docutils literal notranslate"><span class="pre">example.com</span></code>.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>Select Next.</p></li>
+<li><p>Open Advanced Settings</p></li>
+<li><p>For server, type the domain name of your server and path, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (replace <strong>example.com</strong> and <strong>username</strong>).</p></li>
+<li><p>Toggle 'SSL' on</p></li>
+<li><p>For port, fill in 443</p></li>
+<li><p>Close Advanced Settings</p></li>
 </ol>
 <p>You should now find your contacts in the address book of your iPhone.</p>
 <div class="admonition note">

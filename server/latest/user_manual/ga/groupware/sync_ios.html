@@ -83,6 +83,7 @@
 <li class="toctree-l2"><a class="reference internal" href="absence.html">Teachtaireachtaí as oifig a shocrú</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_android.html">Sioncrónú le Android</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Sioncrónú le iOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#calendar">Féilire</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contacts">Teagmhálaithe</a></li>
 </ul>
@@ -131,10 +132,21 @@
              
   <section id="synchronizing-with-ios">
 <h1>Sioncrónú le iOS<a class="headerlink" href="#synchronizing-with-ios" title="Link to this heading"></a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Generate an App password:</p>
+<ol class="arabic simple">
+<li><p>In Nextcloud, go to Settings</p></li>
+<li><p>Go to Security</p></li>
+<li><p>Scroll down to Devices &amp; sessions</p></li>
+<li><p>In 'App name' fill in for example 'iPhone'</p></li>
+<li><p>Keep the displayed App login and password for the next steps</p></li>
+</ol>
+</section>
 <section id="calendar">
 <h2>Féilire<a class="headerlink" href="#calendar" title="Link to this heading"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>Oscail an feidhmchlár socruithe.</p></li>
 <li><p>Roghnaigh Aipeanna.</p></li>
 <li><p>Roghnaigh Féilire.</p></li>
 <li><p>Roghnaigh Cuntais Féilire.</p></li>
@@ -142,13 +154,20 @@
 <li><p>Roghnaigh Eile mar chineál cuntais.</p></li>
 <li><p>Select Add <strong>CalDAV</strong> account.</p></li>
 <li><p>Maidir le freastalaí, clóscríobh ainm fearainn do fhreastalaí i.e. <code class="docutils literal notranslate"><span class="pre">example.com</span></code>.</p></li>
-<li><p>Cuir isteach d'ainm úsáideora agus do phasfhocal.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>Roghnaigh Ar Aghaidh.</p></li>
 <li><p>Oscail Ardsocruithe</p></li>
 <li><p>I gcás freastalaí, clóscríobh ainm fearainn agus an cosán do fhreastalaí, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (cuir <strong>example.com</strong> agus <strong>username</strong> in ionad <strong>example.com</strong>).</p></li>
+<li><p>Toggle 'SSL' on</p></li>
+<li><p>For port, fill in 443</p></li>
 <li><p>Dún Ardsocruithe</p></li>
 </ol>
 <p>Beidh d’fhéilire le feiceáil anois san fheidhmchlár Calendar.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It may take a few minutes to synchronise all the events.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Má fhaigheann tú teachtaireacht earráide a bhaineann le SSL, is féidir leat triail a bhaint as an méid seo a leanas: Bí cinnte go sonróidh tú an prótacal (`` <a class="reference external" href="https://">https://</a><code class="docutils literal notranslate"><span class="pre">)</span> <span class="pre">agus</span> <span class="pre">an</span> <span class="pre">port</span> <span class="pre">(go</span> <span class="pre">hiondúil</span> <span class="pre">``</span> <span class="pre">443</span></code>) sa réimse `` Freastalaí``, i.e., <code class="docutils literal notranslate"><span class="pre">https://example.com:443/remote.php/dav/principals/users/username/</span></code>, nó ceann ar bith, mar atá sa treoir céim ar chéim thuas. Slí amháin nó slí, déanann an feidhmchlár iarracht go huathoibríoch SSL a úsáid, ar féidir leat a dhearbhú i “Ardsocruithe” an chuntais tar éis duit a shábháil.</p>
@@ -164,17 +183,23 @@
 </section>
 <section id="contacts">
 <h2>Teagmhálaithe<a class="headerlink" href="#contacts" title="Link to this heading"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>Oscail an feidhmchlár socruithe.</p></li>
 <li><p>Roghnaigh Aipeanna.</p></li>
 <li><p>Roghnaigh Teagmhálacha.</p></li>
 <li><p>Roghnaigh Cuntais Teagmhálaithe.</p></li>
 <li><p>Roghnaigh Cuir Cuntas leis.</p></li>
 <li><p>Roghnaigh Eile mar chineál cuntais.</p></li>
 <li><p>Select Add <strong>CardDAV</strong> account.</p></li>
-<li><p>I gcás freastalaí, clóscríobh ainm fearainn agus an cosán do fhreastalaí, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (cuir <strong>example.com</strong> agus <strong>username</strong> in ionad <strong>example.com</strong>).</p></li>
-<li><p>Cuir isteach d'ainm úsáideora agus do phasfhocal.</p></li>
+<li><p>Maidir le freastalaí, clóscríobh ainm fearainn do fhreastalaí i.e. <code class="docutils literal notranslate"><span class="pre">example.com</span></code>.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>Roghnaigh Ar Aghaidh.</p></li>
+<li><p>Oscail Ardsocruithe</p></li>
+<li><p>I gcás freastalaí, clóscríobh ainm fearainn agus an cosán do fhreastalaí, i.e., <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (cuir <strong>example.com</strong> agus <strong>username</strong> in ionad <strong>example.com</strong>).</p></li>
+<li><p>Toggle 'SSL' on</p></li>
+<li><p>For port, fill in 443</p></li>
+<li><p>Dún Ardsocruithe</p></li>
 </ol>
 <p>Ba cheart duit do theagmhálaithe a aimsiú anois i leabhar seoltaí do iPhone.</p>
 <div class="admonition note">

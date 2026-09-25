@@ -84,6 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="absence.html">Настройка сообщений об отсутствии на работе</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_android.html">Синхронизация с Android</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Синхронизация с iOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#calendar">Календарь</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contacts">Контакты</a></li>
 </ul>
@@ -132,10 +133,21 @@
              
   <section id="synchronizing-with-ios">
 <h1>Синхронизация с iOS<a class="headerlink" href="#synchronizing-with-ios" title="Ссылка на этот заголовок"></a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Ссылка на этот заголовок"></a></h2>
+<p>Generate an App password:</p>
+<ol class="arabic simple">
+<li><p>In Nextcloud, go to Settings</p></li>
+<li><p>Go to Security</p></li>
+<li><p>Scroll down to Devices &amp; sessions</p></li>
+<li><p>In „App name“ fill in for example „iPhone“</p></li>
+<li><p>Keep the displayed App login and password for the next steps</p></li>
+</ol>
+</section>
 <section id="calendar">
 <h2>Календарь<a class="headerlink" href="#calendar" title="Ссылка на этот заголовок"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>Откройте настройки приложения.</p></li>
 <li><p>Выберите Приложения.</p></li>
 <li><p>Выберите Календарь.</p></li>
 <li><p>Выберите Учётные записи календаря.</p></li>
@@ -143,13 +155,20 @@
 <li><p>Выберите Другой в качестве типа учётной записи.</p></li>
 <li><p>Select Add <strong>CalDAV</strong> account.</p></li>
 <li><p>Для сервера введите доменное имя вашего сервера, например <code class="docutils literal notranslate"><span class="pre">example.com</span></code>.</p></li>
-<li><p>Введите имя пользователя и пароль.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>Нажмите Далее</p></li>
 <li><p>Открыть Дополнительные настройки</p></li>
 <li><p>Для сервера введите доменное имя вашего сервера и путь, например, <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (замените <strong>example.com</strong> и <strong>username</strong>).</p></li>
+<li><p>Toggle „SSL“ on</p></li>
+<li><p>For port, fill in 443</p></li>
 <li><p>Закрыть Дополнительные настройки</p></li>
 </ol>
 <p>Ваш календарь теперь будет виден в приложении Календарь.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>It may take a few minutes to synchronise all the events.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Примечание</p>
 <p>Если вы получаете сообщение об ошибке, связанное с SSL, вы можете попробовать следующее: Убедитесь, что вы либо указали протокол (<code class="docutils literal notranslate"><span class="pre">https://</span></code>) и порт (обычно <code class="docutils literal notranslate"><span class="pre">443</span></code>) в поле <code class="docutils literal notranslate"><span class="pre">Сервер</span></code>, напр. <code class="docutils literal notranslate"><span class="pre">https://example.com:443/remote.php/dav/principals/users/username/</span></code>, либо не указали ни одного, как в пошаговом руководстве выше. Приложение автоматически попытается использовать SSL, что вы можете подтвердить в «Дополнительных настройках» учётной записи после сохранения.</p>
@@ -165,17 +184,23 @@
 </section>
 <section id="contacts">
 <h2>Контакты<a class="headerlink" href="#contacts" title="Ссылка на этот заголовок"></a></h2>
+<p>Open the settings application on iOS:</p>
 <ol class="arabic simple">
-<li><p>Откройте настройки приложения.</p></li>
 <li><p>Выберите Приложения.</p></li>
 <li><p>Выберите Контакты.</p></li>
 <li><p>Выберите «Учетные записи контактов».</p></li>
 <li><p>Выберите Добавить Учётную запись.</p></li>
 <li><p>Выберите Другой в качестве типа учётной записи.</p></li>
 <li><p>Select Add <strong>CardDAV</strong> account.</p></li>
-<li><p>Для сервера введите доменное имя вашего сервера и путь, например, <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (замените <strong>example.com</strong> и <strong>username</strong>).</p></li>
-<li><p>Введите имя пользователя и пароль.</p></li>
+<li><p>Для сервера введите доменное имя вашего сервера, например <code class="docutils literal notranslate"><span class="pre">example.com</span></code>.</p></li>
+<li><p>Enter your App login as username.</p></li>
+<li><p>Enter your App password.</p></li>
 <li><p>Нажмите Далее</p></li>
+<li><p>Открыть Дополнительные настройки</p></li>
+<li><p>Для сервера введите доменное имя вашего сервера и путь, например, <code class="docutils literal notranslate"><span class="pre">example.com/remote.php/dav/principals/users/username/</span></code> (замените <strong>example.com</strong> и <strong>username</strong>).</p></li>
+<li><p>Toggle „SSL“ on</p></li>
+<li><p>For port, fill in 443</p></li>
+<li><p>Закрыть Дополнительные настройки</p></li>
 </ol>
 <p>Теперь вы должны найти свои контакты в адресной книге вашего iPhone.</p>
 <div class="admonition note">
