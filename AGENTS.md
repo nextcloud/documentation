@@ -171,6 +171,161 @@ gh issue edit NNNN \
 
 Use `fixes #NNNN` in the PR body to auto-close on merge; use `relates to #NNNN` if the PR only partially addresses the issue.
 
+## Screenshot composition
+
+Rules for Playwright screenshot specs. Refine this section as new patterns emerge.
+
+### Clip to element bounding box, not container offsets
+
+Always anchor clips to the target element's own `boundingBox()`, never to hardcoded pixel offsets
+from a parent container. Fixed offsets break silently when adjacent UI (badges, notification buttons,
+extra rows) shifts position.
+
+```typescript
+const btn = page.locator('button', { hasText: 'Archived conversations' })
+const listEl = page.locator('[aria-label="Conversation list"]')
+const listBox = await listEl.boundingBox()
+const btnBox = await btn.boundingBox()
+if (listBox && btnBox) {
+    await page.screenshot({
+        path: dest,
+        clip: {
+            x: listBox.x,
+            y: btnBox.y - 80,            // ~80px above to show context
+            width: listBox.width,
+            height: btnBox.height + 88,  // button height + ~8px below
+        },
+    })
+}
+```
+
+### Show menu/list items in context
+
+When screenshotting a button or item inside a list or panel, include enough surrounding rows to show
+where it lives. ~80px above the target is a reasonable default; adjust if nearby rows are unusually
+tall. A crop so tight the element appears orphaned gives users no spatial reference.
+
+### Wait for animation before screenshotting nested panels
+
+If clicking a button navigates *within* a container (not a separate modal), the replaced section may
+still be animating out. Wait for it to reach `state: 'hidden'`, then add a short `waitForTimeout(400)`
+to let the incoming panel settle:
+
+```typescript
+await page.locator('button:has-text("Manage bans")').click()
+const banDialog = page.getByRole('dialog', { name: /banned users/i })
+await banDialog.waitFor({ state: 'visible', timeout: 10000 })
+await page.locator('#settings-section_conversation-settings')
+    .waitFor({ state: 'hidden', timeout: 5000 }).catch(() => {})
+await page.waitForTimeout(400)
+await banDialog.screenshot({ path: dest })
+```
+
+### Use `pressSequentially` for Vue reactive search inputs
+
+`fill()` sets an input's value in one shot and can bypass Vue's reactive watchers, leaving the UI
+in its previous state (e.g. a search field appears empty, results never update). Use
+`pressSequentially` with a small inter-key delay so each keystroke fires its own input event:
+
+```typescript
+// fill() bypasses Vue reactivity — use pressSequentially instead
+await searchInput.click()
+await searchInput.pressSequentially('laptop', { delay: 80 })
+// Confirm reactivity fired: wait for a DOM change only possible after the search updates
+await page.locator('.frequently-used-label').waitFor({ state: 'hidden', timeout: 3000 }).catch(() => {})
+await page.locator('.search-result').first().click({ timeout: 3000 }).catch(() => {})
+```
+
+### Guard conditional `boundingBox()` calls with `isVisible()`
+
+`locator.boundingBox()` waits for the element using the full action timeout (default 30–60 s) when the
+element is absent from the DOM. An unguarded `.catch(() => null)` does not help — the 60 s timeout fires
+before the catch runs. Always check `isVisible()` first (instant, no wait) before calling `boundingBox()`:
+
+```typescript
+// Wrong — times out for 60s if element is absent:
+const box = await locator.boundingBox().catch(() => null)
+
+// Correct — instant check, then fetch box only when present:
+const box = (await locator.isVisible()) ? await locator.boundingBox() : null
+```
+
+This is especially important inside screenshot tests that compute clip regions from optional UI
+(e.g. a badge button that only appears under certain conditions).
+
+### Seed rich content inline between messages
+
+File shares, reactions, and other message cards must be seeded *between* the surrounding messages
+they should appear near. Seeding them before the conversation is populated places them at the top of
+chat history, scrolled out of the visible viewport by the time the screenshot is taken.
+
+```typescript
+await seedChatMessages(token, [ /* messages before the share */ ])
+await uploadFile(path, name, user, password)
+await ocsRequest('POST', '/ocs/v2.php/apps/files_sharing/api/v1/shares', user, password, {
+    shareType: '10', path: `/${name}`, shareWith: token,
+})
+await seedChatMessages(token, [ /* messages after the share */ ])
+```
+
+### Backdating folder mtimes in the Files app
+
+NC's `oc_filecache.mtime` is what the Files app displays, but you must update **both** the DB and
+the real filesystem — NC's lazy scanner re-reads the filesystem on every PROPFIND and will overwrite
+a DB-only change. Use `files/FolderName` as the path (the home storage prepends `files/`):
+
+```typescript
+// Update oc_filecache
+const sql = `UPDATE oc_filecache SET mtime=${ts}, storage_mtime=${ts}
+             WHERE path='files/Documents'
+             AND storage=(SELECT numeric_id FROM oc_storages WHERE id='home::christine')`
+// Also touch the real directory
+await runExec(['touch', '-m', '-d', `@${ts}`, '/var/www/html/data/christine/files/Documents'])
+```
+
+Run backdates **after** the first login — apps like Talk initialise their storage folder on first
+login and would overwrite an earlier backdate.
+
+NC's in-process Sabre/DAV cache (per Apache worker, not APCu) holds the mtime from first access
+and ignores external writes for the lifetime of that worker. For screenshots that must show a
+specific folder date, intercept the PROPFIND response and patch `getlastmodified` directly:
+
+```typescript
+// In beforeEach — intercepts the root directory listing for all tests
+await page.route('**/remote.php/dav/files/christine/', async (route, request) => {
+    if (request.method() !== 'PROPFIND') { await route.continue(); return }
+    try {
+        const response = await route.fetch()
+        const body = await response.text()
+        const patched = body.replace(
+            /(<d:href>[^<]*\/Talk\/<\/d:href>[\s\S]*?<d:getlastmodified>)(.*?)(<\/d:getlastmodified>)/,
+            '$1Thu, 15 May 2026 00:00:00 GMT$3',
+        )
+        await route.fulfill({ response, body: patched, contentType: response.headers()['content-type'] || 'application/xml' })
+    } catch (_) {
+        await route.continue().catch(() => {})
+    }
+})
+```
+
+### `oc_talk_rooms.last_activity` is a DATETIME column, not a Unix integer
+
+Writing a raw integer to this column causes PHP's `new DateTime()` to throw (HTTP 500). Use
+SQLite's `datetime()` conversion:
+
+```sql
+UPDATE oc_talk_rooms SET last_activity = datetime(1748822400, 'unixepoch') WHERE token = 'abc'
+```
+
+Talk's `getRooms` API also filters rooms by `modifiedSince`. Backdating `last_activity` makes rooms
+disappear after the first poll. Fix by setting `last_attendee_activity` 2 h in the future — Talk
+passes the room if either timestamp is recent enough:
+
+```sql
+UPDATE oc_talk_attendees SET last_attendee_activity = <now + 7200>
+WHERE room_id = (SELECT id FROM oc_talk_rooms WHERE token = 'abc') AND actor_id = 'christine'
+```
+
 ## CI checks (must all pass)
 
 | Check | What it catches |
