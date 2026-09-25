@@ -4,6 +4,14 @@ Installation on Linux
 
 There are multiple ways of installing Nextcloud depending on your preferences, requirements and goals.
 
+If you prefer installing from the source tarball, you can deploy Nextcloud
+from scratch using a classic LAMP (Linux, Apache, MySQL/MariaDB, PHP) stack.
+
+The :ref:`manual_installation_label` section provides a complete walk-through
+for installing Nextcloud for use with Apache and MariaDB, using `the Nextcloud
+.tar archive <https://nextcloud.com/install/>`_. Usage with other web servers
+(e.g. Nginx) and database backends are also covered.
+
 If you prefer an automated installation, you have the option to:
 
 * use the `official Nextcloud installation method <https://github.com/nextcloud/all-in-one#nextcloud-all-in-one>`_. Nextcloud AIO provides easy deployment and maintenance with most features included in this one Nextcloud instance. It includes Office, a turnkey Backup solution, Imaginary (for previews of heic, heif, illustrator, pdf, svg, tiff and webp) and more.
@@ -16,74 +24,54 @@ If you prefer an automated installation, you have the option to:
 
 .. tip:: For an enterprise-ready and scalable installation based on Helm Charts (also available for Podman), please `contact Nextcloud GmbH <https://nextcloud.com/enterprise/>`_.
 
-In case you prefer installing from the source tarball, you can setup Nextcloud
-from scratch using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP).
-This document provides a complete walk-through for installing Nextcloud on
-Ubuntu 24.04 LTS Server with Apache and MariaDB, using `the Nextcloud .tar
-archive <https://nextcloud.com/install/>`_. This method is recommended to install Nextcloud.
+.. _manual_installation_label:
 
-This installation guide is giving a general overview of required dependencies and their configuration. For a distribution specific setup guide have a look at the :doc:`./example_ubuntu` and :doc:`./example_centos`.
+Manual Installation
+===================
+
+This installation guide is giving a general overview of required dependencies
+and their configuration. For distribution specific setup guide have a look at
+the :doc:`./example_ubuntu`, :doc:`./example_centos`, etc.
 
 .. _prerequisites_label:
 
-
-.. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and
-   Red Hat Enterprise Linux may need to set new rules to enable installing
-   Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
-
-Prerequisites for manual installation
--------------------------------------
+Prerequisites
+-------------
 
 The Nextcloud .tar archive contains all of the required PHP modules.
 Your Linux distribution should have packages for all required modules.
 See :doc:`php_configuration` for a list of required and suggested modules.
 
-You don’t need the WebDAV module for your Web server (i.e. Apache’s
-``mod_webdav``), as Nextcloud has a built-in WebDAV server of its own,
-SabreDAV.
-If ``mod_webdav`` is enabled you must disable it for Nextcloud. (See
-:ref:`apache_configuration_label` for an example configuration.)
+.. note:: If your web server includes a WebDAV module of its own, make sure
+   to disable it so that it does not interfere with Nextcloud's own WebDAV
+   server.
+
+.. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and
+   Red Hat Enterprise Linux may need to set new rules to enable installing
+   Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
 
 .. _apache_configuration_label:
 
 Apache Web server configuration
 -------------------------------
 
-Configuring Apache requires the creation of a single configuration
-file. On Debian, Ubuntu, and their derivatives, this file will be
-:file:`/etc/apache2/sites-available/nextcloud.conf`. On Fedora,
-CentOS, RHEL, and similar systems, the configuration file will be
-:file:`/etc/httpd/conf.d/nextcloud.conf`.
+For Apache-based deployments, we recommend serving Nextcloud from its own
+virtual host, for example ``https://cloud.example.com/``. Installing
+Nextcloud in a subdirectory of an existing site, for example
+``https://www.example.com/nextcloud/``, is also supported.
 
-You can choose to install Nextcloud in a directory on an existing
-webserver, for example `https://www.example.com/nextcloud/`, or in a
-virtual host if you want Nextcloud to be accessible from its own
-subdomain such as `https://cloud.example.com/`.
+Nextcloud ships with a ``.htaccess`` file containing Apache-specific
+rules. In most cases, it is sufficient to configure the virtual host and
+allow overrides so Apache can apply the rules from Nextcloud's
+``.htaccess`` file.
 
-To use the directory-based installation, put the following in your
-:file:`nextcloud.conf` replacing the **Directory** and **Alias** filepaths
-with the filepaths appropriate for your system::
-
-    Alias /nextcloud "/var/www/nextcloud/"
-
-    <Directory /var/www/nextcloud/>
-      Require all granted
-      AllowOverride All
-      Options FollowSymLinks MultiViews
-
-      <IfModule mod_dav.c>
-        Dav off
-      </IfModule>
-    </Directory>
-
-To use the virtual host installation, put the following in your
-:file:`nextcloud.conf` replacing **ServerName**, as well as the
-**DocumentRoot** and **Directory** filepaths with values appropriate
-for your system::
+The following example shows a minimal Apache virtual host
+configuration. Replace ``ServerName``, ``DocumentRoot``, and
+``Directory`` with values appropriate for your system::
 
     <VirtualHost *:80>
       DocumentRoot /var/www/nextcloud/
-      ServerName  your.server.com
+      ServerName cloud.example.com
 
       <Directory /var/www/nextcloud/>
         Require all granted
@@ -96,80 +84,80 @@ for your system::
       </Directory>
     </VirtualHost>
 
+When using SSL/TLS, make sure that the Apache ``ServerName`` matches
+the hostname clients use to reach Nextcloud and that your certificate
+is valid for that hostname.
 
-On Debian, Ubuntu, and their derivatives, you should run the following
-command to enable the configuration::
+On Debian, Ubuntu, and their derivatives, save this configuration as
+:file:`/etc/apache2/sites-available/nextcloud.conf` and enable it with::
 
     a2ensite nextcloud.conf
 
+On Fedora, CentOS, RHEL, and similar systems, save the configuration as
+:file:`/etc/httpd/conf.d/nextcloud.conf`.
+
+If you prefer to install Nextcloud in a subdirectory of an existing
+site, use an ``Alias``-based configuration such as the following,
+adjusting the paths for your system::
+
+    Alias /nextcloud "/var/www/html/nextcloud/"
+
+    <Directory /var/www/html/nextcloud/>
+      Require all granted
+      AllowOverride All
+      Options FollowSymLinks MultiViews
+
+      <IfModule mod_dav.c>
+        Dav off
+      </IfModule>
+    </Directory>
+
+If you have configured authentication for a parent directory, disable it
+for the Nextcloud location. Following the examples above, add the
+following line to the ``<Directory>`` section::
+
+    Satisfy Any
+
+For more information about Apache virtual host layouts and other
+general Apache configuration patterns, see the Apache HTTP Server
+documentation.
 
 Additional Apache configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Required modules:**
-
-* For Nextcloud to work correctly, we need the module ``mod_rewrite``. Enable
-  it by running::
+Enable the following required module::
 
     a2enmod rewrite
 
-* If you're using ``mod_fcgi`` or ``php-fpm`` (PHP FastCGI Process Manager),
-  you must enable the proxy modules::
-
-    a2enmod proxy
-    a2enmod proxy_fcgi
-
-**Recommended modules** are ``mod_headers``, ``mod_env``, ``mod_dir`` and ``mod_mime``::
+Recommended modules are ``mod_headers``, ``mod_env``, ``mod_dir``, and
+``mod_mime``::
 
     a2enmod headers
     a2enmod env
     a2enmod dir
     a2enmod mime
 
-  If you're running ``mod_fcgi`` instead of the standard ``mod_php`` also enable::
+After making your changes, restart Apache::
 
-    a2enmod setenvif
+    service apache2 restart
 
-  and apply the following modifications to the configuration::
+If Nextcloud is installed in a subdirectory and you want to use CalDAV
+or CardDAV clients, configure the correct
+:ref:`service-discovery-label` URLs.
 
-    ProxyFCGIBackendType FPM
-
-    <FilesMatch remote.php>
-      SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
-    </FilesMatch>
+If you are using ``php-fpm`` or ``mod_fcgi``, see
+:ref:`php_fpm_tips_label` for additional Apache configuration.
 
 **Verifying modules are enabled:**
 
   To verify that required modules are enabled, use the ``apache2ctl`` command::
 
-    apache2ctl -M | grep -E "rewrite|proxy|proxy_fcgi"
+    apache2ctl -M | grep -E "rewrite|headers|env|dir|mime"
 
   If you see matching output for the modules you've enabled, they are active.
   If any required module is missing, troubleshoot your OS package manager to
   ensure the Apache modules are installed (package names may vary by distribution;
   for example, on Debian/Ubuntu look for ``libapache2-mod-fcgid`` or similar).
-
-* You must disable any server-configured authentication for Nextcloud, as it
-  uses Basic authentication internally for DAV services. If you have turned on
-  authentication on a parent folder (via e.g. an ``AuthType Basic``
-  directive), you can turn off the authentication specifically for the
-  Nextcloud entry. Following the above example configuration file, add the
-  following line in the ``<Directory>`` section::
-
-    Satisfy Any
-
-* When using SSL, take special note of the ServerName. You should specify one
-  in the server configuration, as well as in the CommonName field of the
-  certificate. If you want your Nextcloud to be reachable via the internet,
-  then set both of these to the domain you want to reach your Nextcloud server.
-
-* Now restart Apache::
-
-    service apache2 restart
-
-* If you're running Nextcloud in a subdirectory and want to use CalDAV or
-  CardDAV clients make sure you have configured the correct
-  :ref:`service-discovery-label` URLs.
 
 .. _pretty_urls_label:
 
@@ -181,7 +169,9 @@ in sharing links like ``https://example.org/nextcloud/index.php/s/Sv1b7krAUqmF8Q
 making URLs shorter and thus prettier.
 
 ``mod_env`` and ``mod_rewrite`` must be installed on your webserver and the :file:`.htaccess`
-must be writable by the HTTP user. To enable ``mod_env`` and ``mod_rewrite``, run ``sudo a2enmod env`` and ``sudo a2enmod rewrite``. Then you can set in the :file:`config.php` two variables::
+must be writable by the HTTP user. To enable ``mod_env`` and ``mod_rewrite``, run
+``sudo a2enmod env`` and ``sudo a2enmod rewrite``. Then you can set in the :file:`config.php`
+two variables::
 
     'overwrite.cli.url' => 'https://example.org/nextcloud',
     'htaccess.RewriteBase' => '/nextcloud',
@@ -289,6 +279,27 @@ SELinux-enabled distributions such as Fedora and CentOS.
 
 PHP-FPM configuration
 ---------------------
+
+Apache integration
+^^^^^^^^^^^^^^^^^^
+
+* If you're using ``mod_fcgi`` or ``php-fpm`` (PHP FastCGI Process Manager),
+  you must enable the proxy modules::
+
+    a2enmod proxy
+    a2enmod proxy_fcgi
+
+  If you're running ``mod_fcgi`` instead of the standard ``mod_php`` also enable::
+
+    a2enmod setenvif
+
+  and apply the following modifications to the configuration::
+
+    ProxyFCGIBackendType FPM
+
+    <FilesMatch remote.php>
+      SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+    </FilesMatch>
 
 Overview
 ^^^^^^^^
