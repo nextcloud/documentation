@@ -14,24 +14,147 @@ in a Linux environment.
 
 Passwords
 ---------
-Storage of access tokens
-^^^^^^^^^^^^^^^^^^^^^^^^
 
-Upon successful authentication, Nextcloud issues an access token that clients will use for all future HTTP requests. This access token uniquely identifies a user and should not be stored on any system other than the client requesting it. The user password is also stored encrypted in the Nextcloud database. For encryption of the password, the token and an instance-specific secret is used.
+Storage of account passwords
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Leakage of the access token can have negative security consequences. Depending on the data access by the actor, the risk here is different:
+Nextcloud's built-in database user backend stores a salted, one-way hash of
+each account password. It prefers Argon2id (when supported by the PHP
+installation), with Argon2i and bcrypt used as fallbacks. The algorithm, salt,
+and cost parameters are included in the stored hash. Existing hashes are
+automatically upgraded following successful password verification when they no
+longer match the preferred algorithm or parameters.
 
-- An actor with access to only the access token can impersonate users and login as them.
-- An actor with access to the access token, the Nextcloud config file, and the Nextcloud database can decrypt user passwords stored in the database.
+The hash is used to verify password-based login attempts and is not designed
+to be decrypted. When an external user backend (such as LDAP) is used, storage
+and verification of the account password are controlled by that backend.
 
-Limit on password length
-^^^^^^^^^^^^^^^^^^^^^^^^
+This account-password hash is separate from any recoverable copy of the login
+password that Nextcloud stores in connection with authentication tokens, as
+described below.
 
-Nextcloud uses the bcrypt algorithm, and thus for security and performance
-reasons, e.g. Denial of Service as CPU demand increases exponentially, it only
-verifies the first 72 characters of passwords. This applies to all passwords
-that you use in Nextcloud: user passwords, passwords on link shares, and
-passwords on external shares.
+Storage of authentication tokens
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After successful authentication, Nextcloud issues an authentication token that
+the client presents with subsequent authenticated requests. A valid token can
+authenticate as the associated user, subject to the token's scope, expiration,
+type, and server-side validity checks. Depending on the token type and client,
+the token may be transmitted in a session cookie, used as an app password, or
+sent as a bearer token.
+
+Nextcloud does not store the plaintext authentication token in the database.
+Instead, it stores a SHA-512 hash derived from the token and the
+instance-specific ``secret``. The corresponding server-side token record
+contains the associated user identity, authentication metadata, and
+cryptographic key material. Authentication tokens must therefore be
+protected like passwords. They should not be logged, placed in URLs, or
+intentionally persisted outside the client that uses them.
+
+Token-associated storage of login passwords
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, ``auth.storeCryptedPassword`` is enabled. When this setting is
+enabled and the login password is available during token creation, Nextcloud
+stores a reversibly encrypted copy of it in the server-side
+authentication-token record.
+
+For an account using the built-in database user backend, this encrypted copy is
+separate from the one-way account-password hash. The database contains the
+one-way account-password hash and also contains an encrypted password copy for
+each authentication-token record created with password storage enabled and a
+login password supplied.
+
+The recoverable copy is used by features that need the original login
+credentials, such as connecting to external storage, autoconfiguring accounts
+in the Mail app, and periodically checking whether the login credentials
+remain valid. When token creation receives no login password, the resulting
+token record contains no recoverable password. Such a token record remains
+without a stored password until Nextcloud receives the password during a later
+login or password update.
+
+The authentication token itself does not contain the login password. Each
+token record has a separate RSA key pair. Nextcloud encrypts the login password
+with the record's public key and encrypts the corresponding private key using
+the authentication token together with the instance-specific ``secret`` from
+``config.php``. Possession of the authentication token, instance secret, and
+corresponding database record is therefore sufficient to decrypt a password
+stored in that record.
+
+Administrators can disable this behavior with ``auth.storeCryptedPassword``.
+Disabling it does not affect the one-way account-password hash used by the
+built-in database user backend. Features that rely on recovering the login
+password from an authenticate-token record cannot retrieve it from records
+created without a stored password.
+
+When an authentication token contains a stored password, Nextcloud periodically
+checks that password against the user backend. If the password is no longer
+valid, Nextcloud marks the token as having an invalid password and rejects
+authentication with that token. When the token contains no stored password,
+Nextcloud skips this password check. Consequently, changing a password directly
+in an external user backend does not cause a token without a stored password
+to be rejected through the periodic credential check. The password change
+alone does not invalidate the token; the token remains valid until it expires,
+is otherwise invalidated, or the user is disabled.
+
+Security consequences
+^^^^^^^^^^^^^^^^^^^^^
+
+Leakage of authentication data has the following security consequences:
+
+- An actor with a valid authentication token can authenticate as the associated
+  user, subject to the token's scope, expiration, type, and server-side validity
+  checks.
+- An actor with the authentication token, the instance-specific ``secret`` from
+  ``config.php``, and the corresponding database record can decrypt the login
+  password stored in that record.
+- An account-password hash does not reveal the original password directly, but
+  an actor who obtains it can perform offline password-guessing attacks.
+
+.. _password_length_limits:
+
+Password Length Limits
+^^^^^^^^^^^^^^^^^^^^^^
+
+Nextcloud accepts account passwords of up to 469 bytes through its standard
+account-creation, password-change, and password-reset interfaces. This is the
+maximum account-password length enforced by these interfaces. Because the
+limit is measured in bytes, a password containing multibyte characters (such as
+emojis or characters from non-Latin scripts) can reach the limit with fewer
+than 469 characters.
+
+Administrators can use the
+:doc:`Password Policy app </configuration_user/user_password_policy>` to
+configure requirements such as a minimum password length and other complexity
+rules. External user backends can impose additional or different requirements.
+
+The following implementation details do not change the 469-byte
+account-password maximum, but are relevant when selecting a password policy:
+
+Token Encryption Performance
+    When ``auth.storeCryptedPassword`` is enabled and an account password is
+    longer than 214 bytes, Nextcloud uses a larger RSA key when creating
+    authentication-token records. This increases token-generation overhead, but
+    does not prevent passwords between 215 and 469 bytes from being accepted.
+    The 214-byte threshold is therefore a performance consideration, not a
+    password-length limit.
+
+    Administrators who expect very long or one-time passwords to be used may
+    consider disabling ``auth.storeCryptedPassword`` to avoid this overhead,
+    subject to the functional consequences described above.
+
+Algorithmic Truncation (bcrypt fallback)
+    Nextcloud prefers Argon2id for one-way password hashing (when supported
+    by the PHP installation), with Argon2i and bcrypt as fallbacks. Bcrypt
+    considers only the first 72 bytes of its input. Therefore, if bcrypt is
+    selected, input after the first 72 bytes does not contribute to password
+    verification. This is a bcrypt-specific behavior, not a general 72-byte
+    limit imposed by Nextcloud.
+
+Passwords protecting public link and mail shares use the same one-way password
+hasher and are subject to the applicable share-password policy. They are not
+stored in authentication-token records, so the encryption-related performance
+considerations above do not apply.
 
 Operating system
 ----------------
