@@ -242,8 +242,17 @@ applied to every ExApp deployed through that daemon. Only one mapping per ``from
 ExApp containers are not affected: a mapping takes effect the next time an ExApp is deployed or updated.
 
 .. important::
-    AppAPI does not send registry credentials when pulling images. If your registry requires authentication, log the
-    Docker daemon into it beforehand with ``docker login``, so the pull can succeed with the stored credentials.
+    AppAPI does not send registry credentials when pulling images, so the registry has to allow anonymous pulls.
+    Running ``docker login`` on the Docker host does not change this: it stores the credentials for the ``docker``
+    command line client only, and the Docker daemon does not use them for the pulls requested by AppAPI. For a
+    registry that requires authentication, pull the image manually, tag it with its original name and use the
+    ``local`` target:
+
+    .. code-block:: bash
+
+        docker login registry.example.com
+        docker pull registry.example.com/example-org/exapp_name:1.0.0
+        docker tag registry.example.com/example-org/exapp_name:1.0.0 ghcr.io/example-org/exapp_name:1.0.0
 
 Web interface
 -------------
