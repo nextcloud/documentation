@@ -324,9 +324,9 @@ Command: ``app_api:daemon:registry:remove [--registry-from REGISTRY-FROM] [--reg
 * ``--registry-from`` - ``[required]`` source registry of the mapping to remove
 * ``--registry-to`` - ``[required]`` target registry of the mapping to remove
 
-    .. code-block:: bash
+.. code-block:: bash
 
-        sudo -E -u www-data php occ app_api:daemon:registry:remove docker_install --registry-from "ghcr.io" --registry-to "registry.example.com"
+    sudo -E -u www-data php occ app_api:daemon:registry:remove docker_install --registry-from "ghcr.io" --registry-to "registry.example.com"
 
 List registry mappings
 ----------------------
@@ -337,9 +337,9 @@ Command: ``app_api:daemon:registry:list <name>``
 
 * ``name`` - name of the Deploy Daemon to list the mappings of (e.g. ``docker_install``)
 
-    .. code-block:: bash
+.. code-block:: bash
 
-        sudo -E -u www-data php occ app_api:daemon:registry:list docker_install
+    sudo -E -u www-data php occ app_api:daemon:registry:list docker_install
 
 The mappings are printed as ``from -> to`` pairs:
 
