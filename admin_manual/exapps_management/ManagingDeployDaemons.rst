@@ -41,7 +41,9 @@ Options
 * ``--set-default`` - ``[optional]`` set created daemon as default for ExApps installation
 * ``--harp`` - ``[optional]`` Flag to set daemon to use HaRP for all docker and exapp communication
 * ``--harp_frp_address`` - ``[optional]`` [host]:[port] of the HaRP FRP server, default host is same as HaRP host and port is 8782
-* ``--harp_shared_key`` - ``[optional]`` HaRP shared key for secure communication between HaRP and AppAPI
+* ``--harp_shared_key`` - ``[optional]`` HaRP shared key for secure communication between HaRP and AppAPI. It must
+  match ``HP_SHARED_KEY`` of the HaRP container. The ``some_very_secure_password`` value in the examples below is only
+  a placeholder, see :ref:`HaRP shared key <ai-app_api_harp-shared-key>`.
 * ``--harp_docker_socket_port`` - ``[optional]`` 'remotePort' of the FRP client of the remote docker socket proxy. There is one included in the harp container so this can be skipped for default setups. (default: "24000")
 * ``--harp_exapp_direct`` - ``[optional]`` Flag for the advanced setups only. Disables the FRP tunnel between ExApps and HaRP.
 
