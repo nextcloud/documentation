@@ -170,8 +170,8 @@ ExApp itself. This is useful when your servers have no access to the public regi
 images into a private registry, or when you want to test locally built images.
 
 .. note::
-    Registry mappings only apply to daemons of the ``docker-install`` type. They have no effect on ``manual-install``
-    daemons, because those do not pull images.
+    Registry mappings apply to daemons of the ``docker-install`` and ``kubernetes-install`` types. They have no effect
+    on ``manual-install`` daemons, because those do not pull images.
 
 Finding the registry of an ExApp
 --------------------------------
@@ -233,19 +233,25 @@ locally:
     declared: ghcr.io/example-org/exapp_name:1.0.0
     pulled:   nothing, the image already present on the host is used
 
+On Kubernetes, ``local`` makes HaRP create the ExApp Pod with ``imagePullPolicy: Never``, so the image has to be
+present under its original name on every node that can run the Pod. This needs a HaRP version newer than 0.4.5. Older
+versions use ``IfNotPresent``, which takes the image from the node if it is there and otherwise pulls it from the
+original registry.
+
 .. warning::
     With a ``local`` target, AppAPI cannot pull a missing image. If the image is absent from the Docker host,
-    deployment of the ExApp fails at the container creation step.
+    deployment of the ExApp fails at the container creation step. On Kubernetes, the ExApp Pod fails to start with
+    ``ErrImageNeverPull`` instead.
 
 Mappings are stored per daemon in the ``registries`` key of its :ref:`DeployConfig <deploy_config>`, and are
 applied to every ExApp deployed through that daemon. Only one mapping per ``from`` registry is allowed, and existing
 ExApp containers are not affected: a mapping takes effect the next time an ExApp is deployed or updated.
 
 .. important::
-    AppAPI does not send registry credentials when pulling images, so the registry has to allow anonymous pulls.
-    Running ``docker login`` on the Docker host does not change this: it stores the credentials for the ``docker``
-    command line client only, and the Docker daemon does not use them for the pulls requested by AppAPI. For a
-    registry that requires authentication, pull the image manually, tag it with its original name and use the
+    AppAPI does not send registry credentials when pulling images, so on Docker the registry has to allow anonymous
+    pulls. Running ``docker login`` on the Docker host does not change this: it stores the credentials for the
+    ``docker`` command line client only, and the Docker daemon does not use them for the pulls requested by AppAPI.
+    For a registry that requires authentication, pull the image manually, tag it with its original name and use the
     ``local`` target:
 
     .. code-block:: bash
@@ -253,6 +259,10 @@ ExApp containers are not affected: a mapping takes effect the next time an ExApp
         docker login registry.example.com
         docker pull registry.example.com/example-org/exapp_name:1.0.0
         docker tag registry.example.com/example-org/exapp_name:1.0.0 ghcr.io/example-org/exapp_name:1.0.0
+
+    On Kubernetes, the nodes pull the images. For a registry that requires authentication, add an image pull secret
+    to the ``default`` service account of the ExApp namespace, as described in the
+    `HaRP documentation <https://github.com/nextcloud/HaRP#hardening-the-exapp-pods>`_.
 
 Web interface
 -------------
