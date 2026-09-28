@@ -207,6 +207,10 @@ ExApp, add a mapping with ``ghcr.io`` as the source registry.
         docker tag ghcr.io/example-org/exapp_name:1.0.0 registry.example.com/example-org/exapp_name:1.0.0
         docker push registry.example.com/example-org/exapp_name:1.0.0
 
+    On Docker daemons with a compute device, AppAPI first looks for the tag with the device appended, for example
+    ``1.0.0-cuda`` or ``1.0.0-rocm``, and falls back to the plain tag when it is missing. Mirror these tags as well,
+    otherwise a GPU daemon deploys the plain tag.
+
 How mappings are applied
 ------------------------
 
