@@ -241,7 +241,9 @@ original registry.
 .. warning::
     With a ``local`` target, AppAPI cannot pull a missing image. If the image is absent from the Docker host,
     deployment of the ExApp fails at the container creation step. On Kubernetes, the ExApp Pod fails to start with
-    ``ErrImageNeverPull`` instead.
+    ``ErrImageNeverPull`` instead. On an update, the container of the previous version is already removed at that
+    point, so the ExApp is left without a running container until the image is provided and the ExApp is deployed
+    again.
 
 Mappings are stored per daemon in the ``registries`` key of its :ref:`DeployConfig <deploy_config>`, and are
 applied to every ExApp deployed through that daemon. Only one mapping per ``from`` registry is allowed, and existing
