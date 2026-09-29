@@ -114,6 +114,15 @@
 <li class="toctree-l4"><a class="reference internal" href="#list-registered-daemons">List registered daemons</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-registry-mappings">Docker registry mappings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#finding-the-registry-of-an-exapp">Finding the registry of an ExApp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-mappings-are-applied">How mappings are applied</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#web-interface">Web interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-registry-mapping">Add a registry mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remove-a-registry-mapping">Remove a registry mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#list-registry-mappings">List registry mappings</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#nextcloud-aio">Nextcloud AIO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#additional-options">Additional options</a></li>
 </ul>
@@ -199,6 +208,9 @@
 <li><p>Register <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">app_api:daemon:register</span></code></p></li>
 <li><p>Unregister <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">app_api:daemon:unregister</span></code></p></li>
 <li><p>List registered daemons <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">app_api:daemon:list</span></code></p></li>
+<li><p>Add a Docker registry mapping <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">app_api:daemon:registry:add</span></code></p></li>
+<li><p>Remove a Docker registry mapping <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">app_api:daemon:registry:remove</span></code></p></li>
+<li><p>List Docker registry mappings <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">app_api:daemon:registry:list</span></code></p></li>
 </ol>
 <section id="register">
 <h3>Register<a class="headerlink" href="#register" title="Link to this heading"></a></h3>
@@ -224,7 +236,9 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">--set-default</span></code> - <code class="docutils literal notranslate"><span class="pre">[optional]</span></code> set created daemon as default for ExApps installation</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--harp</span></code> - <code class="docutils literal notranslate"><span class="pre">[optional]</span></code> Flag to set daemon to use HaRP for all docker and exapp communication</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--harp_frp_address</span></code> - <code class="docutils literal notranslate"><span class="pre">[optional]</span></code> [host]:[port] of the HaRP FRP server, default host is same as HaRP host and port is 8782</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--harp_shared_key</span></code> - <code class="docutils literal notranslate"><span class="pre">[optional]</span></code> HaRP shared key for secure communication between HaRP and AppAPI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--harp_shared_key</span></code> - <code class="docutils literal notranslate"><span class="pre">[optional]</span></code> HaRP shared key for secure communication between HaRP and AppAPI. It must
+match <code class="docutils literal notranslate"><span class="pre">HP_SHARED_KEY</span></code> of the HaRP container. The <code class="docutils literal notranslate"><span class="pre">some_very_secure_password</span></code> value in the examples below is only
+a placeholder, see <a class="reference internal" href="DeployConfigurations.html#ai-app-api-harp-shared-key"><span class="std std-ref">HaRP shared key</span></a>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--harp_docker_socket_port</span></code> - <code class="docutils literal notranslate"><span class="pre">[optional]</span></code> ‘remotePort’ of the FRP client of the remote docker socket proxy. There is one included in the harp container so this can be skipped for default setups. (default: “24000”)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--harp_exapp_direct</span></code> - <code class="docutils literal notranslate"><span class="pre">[optional]</span></code> Flag for the advanced setups only. Disables the FRP tunnel between ExApps and HaRP.</p></li>
 </ul>
@@ -291,7 +305,7 @@
 </ul>
 </section>
 <section id="deployconfig">
-<h4>DeployConfig<a class="headerlink" href="#deployconfig" title="Link to this heading"></a></h4>
+<span id="deploy-config"></span><h4>DeployConfig<a class="headerlink" href="#deployconfig" title="Link to this heading"></a></h4>
 <p>DeployConfig is a set of additional options in Daemon config, which are used in deployment algorithms to configure
 ExApp container.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -306,7 +320,14 @@ ExApp container.</p>
 <span class="w">        </span><span class="nt">"frp_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"localhost:8782"</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">"docker_socket_port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24000"</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">"exapp_direct"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"resourceLimits"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"memory"</span><span class="p">:</span><span class="w"> </span><span class="mi">2147483648</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"nanoCPUs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000000000</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"registries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ghcr.io"</span><span class="p">,</span><span class="w"> </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"registry.example.com"</span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -328,6 +349,15 @@ ExApp container.</p>
 </dd>
 </dl>
 </li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">resourceLimits</span></code> <em>[optional]</em> - limits applied to each ExApp container deployed by this daemon. Empty (<code class="docutils literal notranslate"><span class="pre">[]</span></code>) when no limits are set, and absent for daemons registered over the CLI, both of which mean unlimited. Each limit is only present when it is set</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">memory</span></code> <em>[optional]</em> - memory limit <strong>in bytes</strong> (e.g. <code class="docutils literal notranslate"><span class="pre">2147483648</span></code> for 2 GiB). In the admin settings this is entered in MiB</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nanoCPUs</span></code> <em>[optional]</em> - CPU limit <strong>in nanoCPUs</strong>, where <code class="docutils literal notranslate"><span class="pre">1000000000</span></code> equals one CPU core (e.g. <code class="docutils literal notranslate"><span class="pre">2000000000</span></code> for 2 cores). In the admin settings this is entered in cores</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">registries</span></code> <em>[optional]</em> - list of <a class="reference internal" href="#docker-registry-mappings"><span class="std std-ref">Docker registry mappings</span></a>, each entry being a <code class="docutils literal notranslate"><span class="pre">{&quot;from&quot;:</span> <span class="pre">...,</span> <span class="pre">&quot;to&quot;:</span> <span class="pre">...}</span></code> pair</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -341,6 +371,177 @@ ExApp container.</p>
 <h3>List registered daemons<a class="headerlink" href="#list-registered-daemons" title="Link to this heading"></a></h3>
 <p>List registered Deploy Daemons (DaemonConfigs).</p>
 <p>Command: <code class="docutils literal notranslate"><span class="pre">app_api:daemon:list</span></code></p>
+</section>
+</section>
+<section id="docker-registry-mappings">
+<span id="id2"></span><h2>Docker registry mappings<a class="headerlink" href="#docker-registry-mappings" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 32.0.0.</span></p>
+</div>
+<p>Every ExApp declares in its <code class="docutils literal notranslate"><span class="pre">info.xml</span></code> the registry its image is pulled from, usually <code class="docutils literal notranslate"><span class="pre">ghcr.io</span></code> or <code class="docutils literal notranslate"><span class="pre">docker.io</span></code>.
+A Deploy Daemon can override those registries so that images are pulled from somewhere else, without any change to the
+ExApp itself. This is useful when your servers have no access to the public registries, when you mirror the ExApp
+images into a private registry, or when you want to test locally built images.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Registry mappings apply to daemons of the <code class="docutils literal notranslate"><span class="pre">docker-install</span></code> and <code class="docutils literal notranslate"><span class="pre">kubernetes-install</span></code> types. They have no effect
+on <code class="docutils literal notranslate"><span class="pre">manual-install</span></code> daemons, because those do not pull images.</p>
+</div>
+<section id="finding-the-registry-of-an-exapp">
+<h3>Finding the registry of an ExApp<a class="headerlink" href="#finding-the-registry-of-an-exapp" title="Link to this heading"></a></h3>
+<p>The registry to map is the one in the <code class="docutils literal notranslate"><span class="pre">&lt;registry&gt;</span></code> element of the <code class="docutils literal notranslate"><span class="pre">&lt;docker-install&gt;</span></code> section of the ExApp’s
+<code class="docutils literal notranslate"><span class="pre">info.xml</span></code>, which is part of the ExApp source:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;info&gt;</span>
+<span class="w">    </span>...
+<span class="w">    </span><span class="nt">&lt;external-app&gt;</span>
+<span class="w">        </span><span class="nt">&lt;docker-install&gt;</span>
+<span class="w">            </span><span class="nt">&lt;registry&gt;</span>ghcr.io<span class="nt">&lt;/registry&gt;</span>
+<span class="w">            </span><span class="nt">&lt;image&gt;</span>example-org/exapp_name<span class="nt">&lt;/image&gt;</span>
+<span class="w">            </span><span class="nt">&lt;image-tag&gt;</span>1.0.0<span class="nt">&lt;/image-tag&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/docker-install&gt;</span>
+<span class="w">        </span>...
+<span class="w">    </span><span class="nt">&lt;/external-app&gt;</span>
+<span class="nt">&lt;/info&gt;</span>
+</pre></div>
+</div>
+<p>Together these three elements form the image that is pulled, <code class="docutils literal notranslate"><span class="pre">ghcr.io/example-org/exapp_name:1.0.0</span></code>. To redirect this
+ExApp, add a mapping with <code class="docutils literal notranslate"><span class="pre">ghcr.io</span></code> as the source registry.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Only the registry is replaced. The <code class="docutils literal notranslate"><span class="pre">&lt;image&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;image-tag&gt;</span></code> values are used unchanged, so the image must be
+available in your custom registry under exactly the same repository path and tag, in this example
+<code class="docutils literal notranslate"><span class="pre">example-org/exapp_name:1.0.0</span></code>. Mirror the image with its original name, for instance:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>ghcr.io/example-org/exapp_name:1.0.0
+docker<span class="w"> </span>tag<span class="w"> </span>ghcr.io/example-org/exapp_name:1.0.0<span class="w"> </span>registry.example.com/example-org/exapp_name:1.0.0
+docker<span class="w"> </span>push<span class="w"> </span>registry.example.com/example-org/exapp_name:1.0.0
+</pre></div>
+</div>
+<p>On Docker daemons with a compute device, AppAPI first looks for the tag with the device appended, for example
+<code class="docutils literal notranslate"><span class="pre">1.0.0-cuda</span></code> or <code class="docutils literal notranslate"><span class="pre">1.0.0-rocm</span></code>, and falls back to the plain tag when it is missing. Mirror these tags as well,
+otherwise a GPU daemon deploys the plain tag.</p>
+</div>
+</section>
+<section id="how-mappings-are-applied">
+<h3>How mappings are applied<a class="headerlink" href="#how-mappings-are-applied" title="Link to this heading"></a></h3>
+<p>A mapping is a pair of registry domains: <code class="docutils literal notranslate"><span class="pre">from</span></code> is the registry declared by the ExApp, and <code class="docutils literal notranslate"><span class="pre">to</span></code> is the registry
+that should be used instead. During deployment, at the image pull step, AppAPI compares the ExApp registry with the
+<code class="docutils literal notranslate"><span class="pre">from</span></code> value of each mapping. On the first match, the registry part of the image name is replaced with <code class="docutils literal notranslate"><span class="pre">to</span></code>, while
+the image name and tag stay untouched:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mapping:  ghcr.io -&gt; registry.example.com
+
+declared: ghcr.io/example-org/exapp_name:1.0.0
+pulled:   registry.example.com/example-org/exapp_name:1.0.0
+</pre></div>
+</div>
+<p>The special target <code class="docutils literal notranslate"><span class="pre">local</span></code> does not rewrite the image name. Instead it skips the image pull entirely, and the image is
+expected to already be present on the Docker host under its original name, either pulled manually beforehand or built
+locally:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mapping:  ghcr.io -&gt; local
+
+declared: ghcr.io/example-org/exapp_name:1.0.0
+pulled:   nothing, the image already present on the host is used
+</pre></div>
+</div>
+<p>On Kubernetes, <code class="docutils literal notranslate"><span class="pre">local</span></code> makes HaRP create the ExApp Pod with <code class="docutils literal notranslate"><span class="pre">imagePullPolicy:</span> <span class="pre">Never</span></code>, so the image has to be
+present under its original name on every node that can run the Pod. This needs a HaRP version newer than 0.4.5. Older
+versions use <code class="docutils literal notranslate"><span class="pre">IfNotPresent</span></code>, which takes the image from the node if it is there and otherwise pulls it from the
+original registry.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>With a <code class="docutils literal notranslate"><span class="pre">local</span></code> target, AppAPI cannot pull a missing image. If the image is absent from the Docker host,
+deployment of the ExApp fails at the container creation step. On Kubernetes, the ExApp Pod fails to start with
+<code class="docutils literal notranslate"><span class="pre">ErrImageNeverPull</span></code> instead. On an update, the container of the previous version is already removed at that
+point, so the ExApp is left without a running container until the image is provided and the ExApp is deployed
+again.</p>
+</div>
+<p>Mappings are stored per daemon in the <code class="docutils literal notranslate"><span class="pre">registries</span></code> key of its <a class="reference internal" href="#deploy-config"><span class="std std-ref">DeployConfig</span></a>, and are
+applied to every ExApp deployed through that daemon. Only one mapping per <code class="docutils literal notranslate"><span class="pre">from</span></code> registry is allowed, and existing
+ExApp containers are not affected: a mapping takes effect the next time an ExApp is deployed or updated.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>AppAPI does not send registry credentials when pulling images, so on Docker the registry has to allow anonymous
+pulls. Running <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">login</span></code> on the Docker host does not change this: it stores the credentials for the
+<code class="docutils literal notranslate"><span class="pre">docker</span></code> command line client only, and the Docker daemon does not use them for the pulls requested by AppAPI.
+For a registry that requires authentication, pull the image manually, tag it with its original name and use the
+<code class="docutils literal notranslate"><span class="pre">local</span></code> target:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>login<span class="w"> </span>registry.example.com
+docker<span class="w"> </span>pull<span class="w"> </span>registry.example.com/example-org/exapp_name:1.0.0
+docker<span class="w"> </span>tag<span class="w"> </span>registry.example.com/example-org/exapp_name:1.0.0<span class="w"> </span>ghcr.io/example-org/exapp_name:1.0.0
+</pre></div>
+</div>
+<p>On Kubernetes, the nodes pull the images. For a registry that requires authentication, add an image pull secret
+to the <code class="docutils literal notranslate"><span class="pre">default</span></code> service account of the ExApp namespace, as described in the
+<a class="reference external" href="https://github.com/nextcloud/HaRP#hardening-the-exapp-pods">HaRP documentation</a>.</p>
+</div>
+</section>
+<section id="web-interface">
+<h3>Web interface<a class="headerlink" href="#web-interface" title="Link to this heading"></a></h3>
+<p>Open the AppAPI admin settings, click the three-dots menu of a Deploy Daemon and select <strong>Docker registries</strong>:</p>
+<img alt="AppAPI admin settings showing the Docker registries entry in the three-dots menu of a Deploy Daemon" src="../_images/docker-registries-menu.png" />
+<p>In the <strong>Override Docker registries</strong> dialog, the configured mappings are listed, and mappings with the <code class="docutils literal notranslate"><span class="pre">local</span></code>
+target are marked with <em>Image pull will be skipped</em>. Click <strong>Add registry override mapping</strong>, fill in the <strong>From</strong> and
+<strong>To</strong> fields, and confirm with the <strong>Add</strong> button. To delete a mapping, use <strong>Remove</strong> in the three-dots menu of the
+respective list entry:</p>
+<img alt="AppAPI Override Docker registries dialog listing registry mappings with the form to add a new mapping" src="../_images/docker-registries-modal.png" />
+</section>
+<section id="add-a-registry-mapping">
+<h3>Add a registry mapping<a class="headerlink" href="#add-a-registry-mapping" title="Link to this heading"></a></h3>
+<p>Add a Docker registry mapping to a Deploy Daemon.</p>
+<p>Command: <code class="docutils literal notranslate"><span class="pre">app_api:daemon:registry:add</span> <span class="pre">[--registry-from</span> <span class="pre">REGISTRY-FROM]</span> <span class="pre">[--registry-to</span> <span class="pre">REGISTRY-TO]</span> <span class="pre">[--]</span> <span class="pre">&lt;name&gt;</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - name of the Deploy Daemon the mapping is added to (e.g. <code class="docutils literal notranslate"><span class="pre">docker_install</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--registry-from</span></code> - <code class="docutils literal notranslate"><span class="pre">[required]</span></code> registry declared by the ExApp (e.g. <code class="docutils literal notranslate"><span class="pre">ghcr.io</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--registry-to</span></code> - <code class="docutils literal notranslate"><span class="pre">[required]</span></code> registry to use instead, or <code class="docutils literal notranslate"><span class="pre">local</span></code> to skip the image pull</p></li>
+</ul>
+<p>The command fails if the daemon does not exist, if a mapping for the same <code class="docutils literal notranslate"><span class="pre">from</span></code> registry is already configured, or
+if both registries are the same.</p>
+<ul>
+<li><p>Pull images that ExApps declare on <code class="docutils literal notranslate"><span class="pre">ghcr.io</span></code> from a private registry instead:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_api:daemon:registry:add<span class="w"> </span>docker_install<span class="w"> </span>--registry-from<span class="w"> </span><span class="s2">"ghcr.io"</span><span class="w"> </span>--registry-to<span class="w"> </span><span class="s2">"registry.example.com"</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Use images that are already present on the Docker host instead of pulling them from <code class="docutils literal notranslate"><span class="pre">ghcr.io</span></code>:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_api:daemon:registry:add<span class="w"> </span>docker_install<span class="w"> </span>--registry-from<span class="w"> </span><span class="s2">"ghcr.io"</span><span class="w"> </span>--registry-to<span class="w"> </span><span class="s2">"local"</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="remove-a-registry-mapping">
+<h3>Remove a registry mapping<a class="headerlink" href="#remove-a-registry-mapping" title="Link to this heading"></a></h3>
+<p>Remove a Docker registry mapping from a Deploy Daemon. Both registries of the mapping must be given, so that the exact
+pair is removed.</p>
+<p>Command: <code class="docutils literal notranslate"><span class="pre">app_api:daemon:registry:remove</span> <span class="pre">[--registry-from</span> <span class="pre">REGISTRY-FROM]</span> <span class="pre">[--registry-to</span> <span class="pre">REGISTRY-TO]</span> <span class="pre">[--]</span> <span class="pre">&lt;name&gt;</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - name of the Deploy Daemon the mapping is removed from (e.g. <code class="docutils literal notranslate"><span class="pre">docker_install</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--registry-from</span></code> - <code class="docutils literal notranslate"><span class="pre">[required]</span></code> source registry of the mapping to remove</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--registry-to</span></code> - <code class="docutils literal notranslate"><span class="pre">[required]</span></code> target registry of the mapping to remove</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_api:daemon:registry:remove<span class="w"> </span>docker_install<span class="w"> </span>--registry-from<span class="w"> </span><span class="s2">"ghcr.io"</span><span class="w"> </span>--registry-to<span class="w"> </span><span class="s2">"registry.example.com"</span>
+</pre></div>
+</div>
+</section>
+<section id="list-registry-mappings">
+<h3>List registry mappings<a class="headerlink" href="#list-registry-mappings" title="Link to this heading"></a></h3>
+<p>List the Docker registry mappings configured for a Deploy Daemon.</p>
+<p>Command: <code class="docutils literal notranslate"><span class="pre">app_api:daemon:registry:list</span> <span class="pre">&lt;name&gt;</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - name of the Deploy Daemon to list the mappings of (e.g. <code class="docutils literal notranslate"><span class="pre">docker_install</span></code>)</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_api:daemon:registry:list<span class="w"> </span>docker_install
+</pre></div>
+</div>
+<p>The mappings are printed as <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">-&gt;</span> <span class="pre">to</span></code> pairs:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Configured registries for daemon "docker_install":
+ - ghcr.io -&gt; registry.example.com
+ - docker.io -&gt; local
+</pre></div>
+</div>
 </section>
 </section>
 <section id="nextcloud-aio">

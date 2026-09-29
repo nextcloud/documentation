@@ -612,6 +612,14 @@ window.runMermaid = runMermaid;</script>
 <li><p>ExApp -&gt; HaRP container (on port 8782)</p></li>
 <li><p>ExApp -&gt; Nextcloud (through proxy or directly as the <code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">URL</span></code> in the daemon config dictates)</p></li>
 </ul>
+<div class="admonition warning" id="ai-app-api-harp-shared-key">
+<p class="admonition-title">Warning</p>
+<p>The examples below use <code class="docutils literal notranslate"><span class="pre">some_very_secure_password</span></code> as the HaRP shared key. This is only a placeholder: generate
+your own random key for every installation, for example with <code class="docutils literal notranslate"><span class="pre">openssl</span> <span class="pre">rand</span> <span class="pre">-hex</span> <span class="pre">32</span></code>.</p>
+<p>Use the same key for <code class="docutils literal notranslate"><span class="pre">HP_SHARED_KEY</span></code> of the HaRP container, the <strong>HaRP shared key</strong> field of the deploy daemon
+and, for a remote Docker host, <code class="docutils literal notranslate"><span class="pre">metadatas.token</span></code> in <code class="docutils literal notranslate"><span class="pre">frpc.toml</span></code>. Anyone who knows the key can talk to HaRP the
+way Nextcloud does, including managing ExApp containers on the Docker host, so keep it secret.</p>
+</div>
 <section id="nextcloud-and-docker-on-the-same-host-with-nextcloud-bare-metal">
 <span id="ai-app-api-nc-harp-baremetal"></span><h3>Nextcloud and Docker on the same host - with Nextcloud bare metal<a class="headerlink" href="#nextcloud-and-docker-on-the-same-host-with-nextcloud-bare-metal" title="Link to this heading"></a></h3>
 <p>The simplest configuration is when Nextcloud is installed on the host and docker is on the same host and applications are deployed to it.</p>
