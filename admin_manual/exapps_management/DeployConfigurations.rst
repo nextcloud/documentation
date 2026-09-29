@@ -49,6 +49,17 @@ In any of the cases, the following connections should succeed:
 * ExApp -> HaRP container (on port 8782)
 * ExApp -> Nextcloud (through proxy or directly as the ``Nextcloud URL`` in the daemon config dictates)
 
+.. _ai-app_api_harp-shared-key:
+
+.. warning::
+
+    The examples below use ``some_very_secure_password`` as the HaRP shared key. This is only a placeholder: generate
+    your own random key for every installation, for example with ``openssl rand -hex 32``.
+
+    Use the same key for ``HP_SHARED_KEY`` of the HaRP container, the **HaRP shared key** field of the deploy daemon
+    and, for a remote Docker host, ``metadatas.token`` in ``frpc.toml``. Anyone who knows the key can talk to HaRP the
+    way Nextcloud does, including managing ExApp containers on the Docker host, so keep it secret.
+
 .. _ai-app_api_nc-harp-baremetal:
 
 Nextcloud and Docker on the same host - with Nextcloud bare metal
