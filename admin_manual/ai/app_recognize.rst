@@ -34,7 +34,7 @@ Compared to the Node.js backend this means:
 * The classification load can be moved to a dedicated (GPU) machine, independent of the nodes that run cron
 * Newer, larger and generally more accurate models (see the table below), loaded through their canonical Python libraries (Hugging Face ``transformers``, ``insightface``)
 * GPU acceleration through CUDA, with automatic fall back to CPU if no usable GPU is present
-* In return: a sizeable container image and model downloads, and a hard dependency on AppAPI and a working deploy daemon
+* Drawback: a sizeable container image and model downloads, and a hard dependency on AppAPI and a working deploy daemon
 
 The following task types and models are implemented by *recognize_backend*:
 
@@ -97,7 +97,7 @@ recognize_backend ExApp
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 * Nextcloud v35 or later, and at least *recognize* v13
-* The `AppAPI <https://apps.nextcloud.com/apps/app_api>`_ app with a configured deploy daemon (Docker socket proxy or Docker socket)
+* The `AppAPI <https://apps.nextcloud.com/apps/app_api>`_ app with a configured deploy daemon (Docker socket proxy or Harp proxy)
 * x86-64 host for the deploy daemon; the published container image is built for ``linux/amd64``
 * Outbound HTTPS access from the container to ``huggingface.co``, since the models are downloaded on first use
 * Using GPU processing is supported, but not required; expect slow performance on CPU, especially for video
