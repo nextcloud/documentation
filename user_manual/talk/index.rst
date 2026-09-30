@@ -18,5 +18,6 @@ Download the desktop and mobile clients from `nextcloud.com/install <https://nex
    conversation_index
    call_index
    federation_index
+   integrations_index
    moderator_index
    guest

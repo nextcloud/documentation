@@ -11,12 +11,14 @@ Artificial Intelligence
     app_llm2
     app_stt_whisper2
     app_text2image_stablediffusion2
+    app_text2image_flux
     app_recognize
     app_context_chat
     app_context_agent
     app_summary_bot
     app_text2speech_kokoro
     app_live_transcription
+    app_ocr_paddle
     ai_as_a_service
     insight_and_debugging
     eu_ai_act

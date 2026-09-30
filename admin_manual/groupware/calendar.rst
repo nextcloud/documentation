@@ -154,7 +154,7 @@ shared calendar. In Nextcloud 32, shares were read-only.
 The feature can be optionally disabled through an app config.
 Run the following command to disable creating new federated calendar shares for all users::
 
-  sudo -E -u www-data php occ config:app:set dav enableCalendarFederation --type=bool --value=false
+  sudo -E -u www-data php occ config:app:set dav enableCalendarFederation --type=boolean --value=false
 
 Note that existing shares will be deleted when the feature is disabled as they will fail to sync.
 

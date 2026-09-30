@@ -54,6 +54,7 @@ Nextcloud uses modularity to separate raw AI functionality from the Graphical Us
    "","`OpenAI and LocalAI integration (via MistralAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
    "","`Replicate integration <https://apps.nextcloud.com/apps/integration_replicate>`_","Yellow","Yes","Yes - Whisper models by OpenAI","No","No"
    "Image generation","`Local Stable Diffusion 2 (ExApp) <https://apps.nextcloud.com/apps/text2image_stablediffusion2>`_","Yellow","Yes","Yes - StableDiffusion XL model by StabilityAI","No","Yes"
+   "","`Local Image Generation: Flux (ExApp) <https://apps.nextcloud.com/apps/text2image_flux>`_","Yellow","Yes","Yes - FLUX.2 [klein] 4B model by Black Forest Labs","No","Yes"
    "","`Replicate integration <https://apps.nextcloud.com/apps/integration_replicate>`_","Yellow","Yes","Yes - StableDiffusion models by StabilityAI","No","No"
    "","`OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
    "","`OpenAI and LocalAI integration (via LocalAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Green","Yes","Yes","Yes","Yes"
@@ -70,6 +71,14 @@ Nextcloud uses modularity to separate raw AI functionality from the Graphical Us
    "","`Local Text To Speech (ExApp) <https://apps.nextcloud.com/apps/text2speech_kokoro>`_","Yellow","Yes","Yes","No","Yes"
    "Document generation","`Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_","Green","Yes","Yes","Yes","Yes"
    "Live Transcription","`Local Live Transcription <https://apps.nextcloud.com/apps/live_transcription>`_","Yellow","Yes","Yes","No","Yes"
+   "Optical Character Recognition","`Local OCR: PaddleOCR <https://apps.nextcloud.com/apps/ocr_paddle>`_","Yellow","Yes","Yes","No","Yes"
+   "","`OpenAI and LocalAI integration >= v5.0.0 (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
+   "","`OpenAI and LocalAI integration >= v5.0.0 (via LocalAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Green","Yes","Yes","Yes","Yes"
+   "","`OpenAI and LocalAI integration >= v5.0.0 (via Ollama) <https://apps.nextcloud.com/apps/integration_openai>`_","Yellow","Yes","Yes - e.g. Llama models by Meta", "No","Yes"
+   "","`OpenAI and LocalAI integration >= v5.0.0 (via IONOS AI Model Hub) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
+   "","`OpenAI and LocalAI integration >= v5.0.0 (via Plusserver) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
+   "","`OpenAI and LocalAI integration >= v5.0.0 (via Groqcloud) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
+   "","`OpenAI and LocalAI integration >= v5.0.0 (via MistralAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
 
 
 Ethical AI Rating
@@ -109,7 +118,7 @@ Frontend apps
 ~~~~~~~~~~~~~
 
 * `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a graphical UI for the various tasks, a smart picker and "Chat with AI" functionality
-* `Mail <https://apps.nextcloud.com/apps/mail>`_ for summarizing mail threads (see :ref:`the Nextcloud Mail docs<mail_thread_summary>` for how to enable this)
+* `Mail <https://apps.nextcloud.com/apps/mail>`_ for summarizing mail threads (see :ref:`the Nextcloud Mail docs<mail_thread_summary>` for how to enable this). For smart replies. To active it - Administration settings > Groupware > Mail app > Enable text processing through LLMs
 * `Summary Bot <https://apps.nextcloud.com/apps/summary_bot>`_ for summarizing chat histories in `Talk <https://apps.nextcloud.com/apps/spreed>`_
 * `Talk <https://apps.nextcloud.com/apps/spreed>`_ for summarizing chat history (see `Nextcloud Talk docs <https://nextcloud-talk.readthedocs.io/en/latest/settings/#app-configuration>`_ for how to enable this)
 * `Text <https://apps.nextcloud.com/apps/text>`_ for offering an inline graphical UI for the various tasks
@@ -148,6 +157,7 @@ Frontend apps
 * `Collectives <https://apps.nextcloud.com/apps/collectives>`_ for offering a translation UI in the page content
 * `Whiteboard <https://apps.nextcloud.com/apps/whiteboard>`_ for offering a translation UI through the assistant
 * `Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_ for offering translation UI in the document content
+* `Mail <https://apps.nextcloud.com/apps/mail>`_ for offering translations for messages
 
 Backend apps
 ~~~~~~~~~~~~
@@ -198,6 +208,7 @@ Backend apps
 ~~~~~~~~~~~~
 
 * `Local Stable Diffusion 2 (ExApp) <https://apps.nextcloud.com/apps/text2image_stablediffusion2>`_ (Customer support available upon request)
+* :ref:`Local Image Generation: Flux (ExApp)<ai-app-text2image_flux>` (Customer support available upon request)
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * *integration_replicate* - Integrates with the replicate API to provide AI functionality from replicate servers (see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
@@ -219,7 +230,6 @@ Backend apps
 
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * `Local Text To Speech (ExApp) <https://apps.nextcloud.com/apps/text2speech_kokoro>`_ (Customer support available upon request)
-
 
 Context Chat
 ^^^^^^^^^^^^
@@ -243,7 +253,7 @@ Apps can integrate their content with Context Chat to make it available for quer
 
 * *files*
 * `Analytics <https://apps.nextcloud.com/apps/analytics>`_
-* `Mail <https://apps.nextcloud.com/apps/mail>`_ (coming soon)
+* `Mail <https://apps.nextcloud.com/apps/mail>`_
 * `Bookmarks <https://apps.nextcloud.com/apps/bookmarks>`_
 
 Context Chat Search
@@ -324,7 +334,24 @@ Backend apps
 
 * :ref:`live_transcription<ai-live-transcription>` - Runs open weights AI Speech-To-Text models on your own server hardware (Customer support available upon request)
 
-.. _ai-overview_improve-ai-task-pickup-speed:
+
+Optical Character Recognition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _ocr-consumer-apps:
+
+As you can see in the table above we have multiple apps offering OCR capabilities. In downstream apps like the assistant app, users can use OCR functionality regardless of which app implements it behind the scenes.
+
+Frontend apps
+~~~~~~~~~~~~~
+
+* `Assistant <https://apps.nextcloud.com/apps/assistant>`_
+
+Backend apps
+~~~~~~~~~~~~
+
+* `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ >= v5.0.0 - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
+* :ref:`Local OCR: PaddleOCR (ExApp) <ai-app-ocr_paddle>` - (Customer support available upon request)
 
 Windmill workflows
 ^^^^^^^^^^^^^^^^^^
@@ -334,6 +361,7 @@ You can use the AI endpoints in your :ref:`Windmill workflows<windmill_workflows
 
 Improve AI task pickup speed
 ----------------------------
+.. _ai-overview_improve-ai-task-pickup-speed:
 
 Most AI tasks will be run as part of the background job system in Nextcloud which only runs jobs every 5 minutes by default.
 To pick up scheduled jobs faster you can set up background job workers inside your Nextcloud main server/container that process AI tasks as soon as they are scheduled.

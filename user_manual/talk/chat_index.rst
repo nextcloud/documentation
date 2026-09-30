@@ -8,4 +8,3 @@ Chat
    messages
    message_integrations
    attachments
-.. bots

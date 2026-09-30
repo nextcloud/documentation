@@ -58,6 +58,11 @@ jobs:
       # - mailto: links: These are not valid URLs and will always fail
       # - 404.html: This is not necessary
       # - latest/stable/xx links from the version selector
+      # - links to a specific numbered version (e.g. docs.nextcloud.com/server/34/...): this
+      #   job only ever builds and stages the branch under test (e.g. "latest" for master), so
+      #   any other version's folder under stage/ doesn't exist here and can never be verified
+      #   locally. Content referencing an older/newer release intentionally links to a pinned
+      #   version and is checked against the live site instead, not this offline build.
       - name: Check for broken links with lychee
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:
@@ -71,7 +76,8 @@ jobs:
             --remap "https://docs.nextcloud.com/server/ file://$(pwd)/stage/"
             --exclude 'go\.php' --exclude 'mailto:' --exclude-path '.*/404\.html' --exclude-path '.*/_static/.*'
             --exclude "/user_manual/" --include "/user_manual/en/"
-            --exclude '^file://.*/stage/(latest|stable|[0-9]+)/(developer_manual|admin_manual|user_manual)/?$'
+            --exclude '^file://.*/stage/(latest|stable)/(developer_manual|admin_manual|user_manual)/?$'
+            --exclude '^file://.*/stage/[0-9]+/'
             'stage/${{ needs.build.outputs.branch_name }}/user_manual/en/**/*.html'
             'stage/${{ needs.build.outputs.branch_name }}/admin_manual/**/*.html'
             'stage/${{ needs.build.outputs.branch_name }}/developer_manual/**/*.html'

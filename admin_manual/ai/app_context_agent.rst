@@ -112,6 +112,63 @@ Circles/teams tools
   * Example prompt: *"Share my Hiking plans.md file with the Hiking group team."*
 
 
+Collectives tools (require `Collectives <https://apps.nextcloud.com/apps/collectives>`_)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* List the user's collectives
+
+  * Example prompt: *"List my collectives."*
+
+* List the pages in a collective
+
+  * Example prompt: *"List the pages in my Engineering collective."*
+
+* Get metadata about a page in a collective
+
+  * Example prompt: *"Show me the details of the 'Onboarding' page in my Engineering collective."*
+
+* Get the markdown content of a page
+
+  * Example prompt: *"Fetch the content of the 'Onboarding' page in my Engineering collective."*
+
+* List trashed pages in a collective
+
+  * Example prompt: *"List the trashed pages in my Engineering collective."*
+
+* Create a new page in a collective under a given parent
+
+  * Example prompt: *"Create a new 'Q3 retro' page in my Engineering collective under the 'Retros' page."*
+
+* Replace the content of a page (a note saying the page was edited with the help of the AI Assistant is
+  appended automatically)
+
+  * Example prompt: *"Update the 'Q3 retro' page in my Engineering collective with the meeting notes."*
+
+* Rename a page
+
+  * Example prompt: *"Rename the 'Q3 retro' page in my Engineering collective to 'Q3 2026 retro'."*
+
+* Move a page to a different parent
+
+  * Example prompt: *"Move the 'Q3 2026 retro' page under the 'Archive' page in my Engineering collective."*
+
+* Set the emoji icon of a page
+
+  * Example prompt: *"Set the emoji of the 'Onboarding' page in my Engineering collective to 🚀."*
+
+* Move a page to the collective's trash
+
+  * Example prompt: *"Trash the 'Old draft' page in my Engineering collective."*
+
+* Restore a page from the collective's trash
+
+  * Example prompt: *"Restore the 'Old draft' page from the trash of my Engineering collective."*
+
+* Permanently delete a page
+
+  * Example prompt: *"Permanently delete the 'Old draft' page in my Engineering collective."*
+
+
 Contacts tools
 ~~~~~~~~~~~~~~
 
@@ -333,6 +390,58 @@ Share tools
 * Retrieve share details
 
  * Example prompt: *"Does martin have write access to the Design/Ideas.md file I shared with him?"*
+
+
+Tables tools (require `Tables <https://apps.nextcloud.com/apps/tables>`_)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* List the user's tables
+
+  * Example prompt: *"List my tables."*
+
+* Create a new table, optionally from a template
+
+  * Example prompt: *"Create a new table 'Project tasks' in my Tables with the todo template."*
+
+* Update a table's title, emoji or archived state
+
+  * Example prompt: *"Rename my 'Project tasks' table to 'Q3 project tasks'."*
+
+* Delete a table
+
+  * Example prompt: *"Delete the 'Q3 project tasks' table."*
+
+* List the columns of a table
+
+  * Example prompt: *"List the columns of the 'Project tasks' table."*
+
+* Create a new column in a table
+
+  * Example prompt: *"Add a 'Status' column to the 'Project tasks' table."*
+
+* Update an existing column's properties
+
+  * Example prompt: *"Rename the 'Status' column in 'Project tasks' to 'State'."*
+
+* Delete a column from a table
+
+  * Example prompt: *"Delete the 'Notes' column from the 'Project tasks' table."*
+
+* List the rows of a table
+
+  * Example prompt: *"Show the rows of the 'Project tasks' table."*
+
+* Add a row to a table
+
+  * Example prompt: *"Add a row to 'Project tasks' with title 'Buy materials' and status 'Open'."*
+
+* Update a row in a table
+
+  * Example prompt: *"Mark the 'Buy materials' row in 'Project tasks' as done."*
+
+* Delete a row from a table
+
+  * Example prompt: *"Delete the 'Buy materials' row from 'Project tasks'."*
 
 
 Talk tools (require `Talk <https://apps.nextcloud.com/apps/spreed>`_)

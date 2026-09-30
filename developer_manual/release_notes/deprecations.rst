@@ -20,21 +20,6 @@ New deprecations
 
 .. .. todo:: This page needs a section for every new deprecation.
 
-Database
-^^^^^^^^
-
-- ``\OCP\DB\QueryBuilder\IFunctionBuilder::md5`` is now deprecated.
-  MD5 is not considered secure anymore, thus most databases have or will drop support for this SQL function.
-
-Events
-^^^^^^
-
-- ``\OCP\Broadcast\Events\IBroadcastEvent`` is now deprecated as it is unused.
-
-Task processing
-^^^^^^^^^^^^^^^
-
-- ``\OCP\TaskProcessing\ISynchronousWatermarkingProvider`` is now deprecated, instead use ``\OCP\TaskProcessing\ISynchronousOptionsAwareProvider`` now.
 
 Older deprecations
 ------------------
@@ -43,6 +28,15 @@ You find all current deprecations in this section.
 
 ..
     This is where we will move the deprecations from the "new deprecations" section after the branch off. Entries will stay until actual removal.
+
+- Deprecated since Nextcloud 35
+
+  - 32-bit PHP support is deprecated, Nextcloud 35 will be the last version to support 32-bit PHP.
+    See `our announcement <https://github.com/nextcloud/server/issues/63411>`__ for details.
+  - ``\OCP\DB\QueryBuilder\IFunctionBuilder::md5`` is deprecated.
+    MD5 is not considered secure anymore, thus most databases have or will drop support for this SQL function.
+  - ``\OCP\Broadcast\Events\IBroadcastEvent`` is now deprecated as it is unused.
+  - ``\OCP\TaskProcessing\ISynchronousWatermarkingProvider`` is now deprecated, instead use ``\OCP\TaskProcessing\ISynchronousOptionsAwareProvider`` now.
 
 - Deprecated since Nextcloud 34
 

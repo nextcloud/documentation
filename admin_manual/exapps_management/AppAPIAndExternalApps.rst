@@ -42,7 +42,7 @@ HaRP
 | This is the newer and the **recommended** way to install ExApps.
 | It requires changes in the proxy of your Nextcloud instance. If you don't have access to the proxy, you can use the usual method :ref:`described below <ai-app_api_dsp>`.
 
-1. Setup a Docker container called `HaRP <https://github.com/nextcloud/HaRP?tab=readme-ov-file#how-to-install-it>`_ that proxies access to Docker and to the ExApps for your Nextcloud instance. Be mindful of changing the values of ``HP_SHARED_KEY`` and ``NC_INSTANCE_URL``.
+1. Setup a Docker container called `HaRP <https://github.com/nextcloud/HaRP?tab=readme-ov-file#how-to-install-it>`_ that proxies access to Docker and to the ExApps for your Nextcloud instance. Be mindful of changing the values of ``HP_SHARED_KEY`` and ``NC_INSTANCE_URL``, and :ref:`generate your own shared key <ai-app_api_harp-shared-key>` instead of using the example value.
 2. Go to AppAPI admin settings.
 3. Click on the "Register Daemon" button.
 4. | A filled form should appear. This default configuration ``HaRP Proxy (Host)`` should work for most setups. For Nextcloud AIO, use ``HaRP All-in-One``.

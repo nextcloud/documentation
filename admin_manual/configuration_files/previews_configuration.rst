@@ -31,6 +31,19 @@ and ``OC\Preview\MSOfficeDoc`` require LibreOffice. Image formats handled
 through ImageMagick, such as ``OC\Preview\Illustrator``, ``OC\Preview\SVG``
 and ``OC\Preview\TIFF``, require the corresponding ImageMagick support.
 
+Installing the ``imagick`` PHP extension is not on its own enough for those providers.
+ImageMagick also has to carry the delegate for the format, which is a separate build
+option and often a separate distribution package: ``OC\Preview\JP2`` needs the OpenJPEG
+delegate, and ``OC\Preview\HEIC`` and ``OC\Preview\AVIFImagick`` need an HEIF one,
+usually libheif. A provider whose delegate is missing is never registered, so those
+files keep their mimetype icon rather than producing a broken preview.
+
+``OC\Preview\AVIF`` is the one enabled-by-default provider with a build dependency of
+its own. It decodes with GD, which handles AVIF only if PHP was built against a libgd
+that supports it. Where it was not, enable ``OC\Preview\AVIFImagick`` alongside it:
+both answer for AVIF, GD is asked first, and ImageMagick is asked after it if GD
+returns nothing.
+
 Parameters
 ----------
 

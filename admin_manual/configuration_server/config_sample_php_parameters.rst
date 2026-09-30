@@ -3437,6 +3437,35 @@ sharing.federation.allowSelfSignedCertificates
 
 Allow self-signed certificates for federated shares
 
+sharing.federation.ocm.apiVersion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+    'sharing.federation.ocm.apiVersion' => '',
+
+Override the ``apiVersion`` advertised in the local OCM discovery document.
+
+Setting this to a non-empty string also removes the non-standard ``version``
+field. Leave empty for compatibility with older Nextcloud servers.
+
+Defaults to ``''`` (empty string)
+
+sharing.federation.ocm.removePublicKey
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+    'sharing.federation.ocm.removePublicKey' => false,
+
+Remove the non-standard ``publicKey`` field from the local OCM discovery
+document. Enable this only when all federated peers support RFC 9421 HTTP
+signatures, for example when all peers run Nextcloud 35 or higher.
+
+Defaults to ``false``
+
 Hashing
 -------
 

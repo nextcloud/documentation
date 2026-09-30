@@ -85,7 +85,8 @@ Text-To-Image
 
 In order to make use of Text-To-Image features, you will need an app that provides an image generation backend:
 
-* :ref:`tex2image_stablediffusion2<ai-app-text2image_stablediffusion2>` (Customer support available upon request)
+* :ref:`text2image_stablediffusion2<ai-app-text2image_stablediffusion2>` (Customer support available upon request)
+* :ref:`text2image_flux<ai-app-text2image_flux>` - Local text-to-image and image editing with FLUX.2 [klein] 4B (Customer support available upon request)
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * *integration_replicate* - Integrates with the replicate API to provide AI functionality from replicate servers (see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
@@ -189,6 +190,33 @@ To enable/disable the text-to-image smart picker for all the users.
    occ config:app:set assistant speech_to_text_picker_enabled --value=1 --type=string
 
 To enable/disable the speech-to-text smart picker for all the users.
+
+5. Data folder
+
+.. code-block::
+
+   occ config:app:set assistant default_data_folder --value="Assistant" --type=string
+
+The assistant stores the content it generates, such as generated images and speech-to-text
+output, in a folder in the files of each user. This sets the name that folder is given when
+it is created. It defaults to ``Assistant``, and is also editable in the Assistant admin
+settings.
+
+Users can choose their own name in their personal Assistant settings, which is stored per
+user and takes precedence over the server-wide default:
+
+.. code-block::
+
+   occ user:setting $USER_ID assistant data_folder "Assistant"
+
+Two things to keep in mind:
+
+* Changing either value does not rename or move a folder that already exists. It only
+  affects the name used the next time a folder has to be created, so existing generated
+  content stays where it is.
+* A user who already has a folder under the built-in name ``Assistant``, from before a
+  default was set, keeps using it. This avoids starting a second folder for them and
+  leaving their earlier output behind.
 
 Task processing
 ~~~~~~~~~~~~~~~

@@ -1,130 +1,204 @@
-=============================
-Using the Command-Line Client
-=============================
+.. _using-the-command-line-client:
 
-The Nextcloud Client packages contain a command line client, ``nextcloudcmd``, that can
-be used to synchronize Nextcloud files to client machines.
+===================
+Command-line client
+===================
 
-``nextcloudcmd`` performs a single *sync run* and then exits the synchronization
-process. In this manner, ``nextcloudcmd`` processes the differences between
-client and server directories and propagates the files to bring both
-repositories to the same state. Contrary to the GUI-based client,
-``nextcloudcmd`` does not repeat synchronizations on its own. It also does not
-monitor for file system changes.
+``nextcloudcmd`` synchronizes a local directory with a Nextcloud server, then exits. It can perform follow-up syncs
+when needed, but it does not continuously monitor local files or poll for server changes like the desktop app.
+For options passed to the desktop app's ``nextcloud`` command, see :ref:`desktop-command-line-options`.
 
+.. _install:
 
-Install
-~~~~~~~
+Installation
+------------
 
-+---------------+---------------------------------------------------------------------------------------------------------+
-| OS            | Package                                                                                                 |
-+===============+=========================================================================================================+
-| Alpine        | https://pkgs.alpinelinux.org/package/edge/community/x86_64/nextcloud-client                             |
-+---------------+---------------------------------------------------------------------------------------------------------+
-| Debian        | https://packages.debian.org/search?suite=all&arch=any&searchon=names&keywords=nextcloud-desktop-cmd     |
-+---------------+---------------------------------------------------------------------------------------------------------+
-| Fedora        | https://packages.fedoraproject.org/pkgs/nextcloud-client/nextcloud-client/                              |
-+---------------+---------------------------------------------------------------------------------------------------------+
-| Ubuntu        | https://packages.ubuntu.com/search?keywords=nextcloud-desktop-cmd                                       |
-+---------------+---------------------------------------------------------------------------------------------------------+
-| Ubuntu (PPA)  | https://launchpad.net/~nextcloud-devs/+archive/ubuntu/client                                            |
-+---------------+---------------------------------------------------------------------------------------------------------+
-| Windows       | https://nextcloud.com/install/#install-clients                                                          |
-+---------------+---------------------------------------------------------------------------------------------------------+
+Install a package that provides ``nextcloudcmd``. Availability depends on your operating system and package:
+
+.. list-table::
+   :header-rows: 1
+   :class: configuration-table
+   :widths: 25 75
+
+   * - Operating system
+     - Package source
+   * - Alpine Linux
+     - `nextcloud-client <https://pkgs.alpinelinux.org/package/edge/community/x86_64/nextcloud-client>`__
+   * - Debian
+     - `nextcloud-desktop-cmd
+       <https://packages.debian.org/search?suite=all&arch=any&searchon=names&keywords=nextcloud-desktop-cmd>`__
+   * - Fedora
+     - `nextcloud-client <https://packages.fedoraproject.org/pkgs/nextcloud-client/nextcloud-client/>`__
+   * - Ubuntu
+     - `nextcloud-desktop-cmd <https://packages.ubuntu.com/search?keywords=nextcloud-desktop-cmd>`__
+   * - Ubuntu PPA
+     - `Nextcloud client PPA <https://launchpad.net/~nextcloud-devs/+archive/ubuntu/client>`__
+   * - Windows
+     - `Nextcloud downloads <https://nextcloud.com/install/#install-clients>`__
 
 Usage
-~~~~~
+-----
 
-To invoke ``nextcloudcmd``, you must provide the local and the remote repository
-URL using the following command::
+Use an existing local directory and the base URL of the Nextcloud server:
 
-  nextcloudcmd [OPTIONS...] sourcedir nextcloudurl
+.. code-block:: console
 
-where ``sourcedir`` is the local directory and ``nextcloudurl`` is
-the server URL.
+   nextcloudcmd [options] local_directory server_url
 
-Other command line switches supported by ``nextcloudcmd`` include the following:
+.. _example:
 
-``--path``
-       Overrides default remote root folder to a specific subfolder on the server(e.g.: /Documents would sync the Documents subfolder on the server)
+For example, synchronize the remote ``Music`` folder into an existing local folder:
 
-``--user``, ``-u`` `<user>`
-       Use ``user`` as the login name.
+.. code-block:: bash
 
-``--password``, ``-p`` `<password>`
-       Use `password` as the password.
+   nextcloudcmd --user carla --path /Music "$HOME/media/music" https://cloud.example.com
 
-``-n``
-       Use ``netrc(5)`` for login.
+The client prompts for the password. You can use an app password from your Nextcloud account's security settings.
+Do not append a WebDAV endpoint to the server URL; use ``--path`` for a remote subfolder.
 
-``--non-interactive``
-       Do not prompt for questions and tries to read $NC_USER and $NC_PASSWORD from the environment.
+Run ``nextcloudcmd`` without arguments to display its help, or ``nextcloudcmd --version`` to display its version.
+Options with values accept both ``--option value`` and ``--option=value``.
 
-``--silent``, ``--s``
-       Inhibits verbose log output.
+Options
+-------
 
-``--trust``
-       Trust any SSL certificate, including invalid ones.
+.. list-table::
+   :header-rows: 1
+   :class: configuration-table
+   :widths: 32 18 50
 
-``--httpproxy``  `http://[user@pass:]<server>:<port>`
-      Uses `server` as HTTP proxy.
+   * - Parameter
+     - Default
+     - Description
+   * - ``--path <path>``
+     - Server root
+     - Synchronize a remote subfolder, for example ``/Documents``.
+   * - ``--user <user>``, ``-u <user>``
+     - See credentials below
+     - Login name. Overrides the username in the server URL.
+   * - ``--password <password>``, ``-p <password>``
+     - See credentials below
+     - Password or app password. Overrides the password in the server URL. Command-line passwords may be visible in
+       process listings and shell history.
+   * - ``-n``
+     - Not set
+     - Read credentials from a matching host or default entry in ``.netrc``. These replace credentials supplied in the URL or
+       with ``--user`` and ``--password``.
+   * - ``--non-interactive``
+     - Not set
+     - Do not prompt for credentials. Read missing credentials from ``NC_USER`` and ``NC_PASSWORD``.
+   * - ``--silent``, ``-s``
+     - Not set
+     - Suppress Qt log messages. Does not suppress every console message.
+   * - ``--trust``
+     - Not set
+     - Accept untrusted TLS certificates. Use only for a controlled diagnostic run; normally fix the certificate trust
+       configuration.
+   * - ``--httpproxy <url>``
+     - No explicit proxy
+     - Set an HTTP proxy using ``http://hostname:port``. This option does not parse proxy credentials in the URL.
+   * - ``--exclude <file>``
+     - System exclude list
+     - Add an exclude list. The file must exist. Pattern anchoring depends on its filename; see
+       :ref:`desktop-command-line-excludes`.
+   * - ``--exclude-anchored <file>``
+     - Not set
+     - Add an exclude list with patterns anchored at the sync root, regardless of the filename.
+   * - ``--unsyncedfolders <file>``
+     - Not set
+     - Read remote folders to exclude from synchronization, one relative path per line. Empty lines and lines starting
+       with ``#`` are ignored.
+   * - ``--max-sync-retries <number>``
+     - ``3``
+     - Maximum number of follow-up runs when the sync engine requests another sync. This is not a general retry count
+       for every failed request.
+   * - ``--uplimit <number>``
+     - ``0`` KB/s
+     - Upload speed limit in KB/s (1000 bytes per second). Zero means unlimited.
+   * - ``--downlimit <number>``
+     - ``0`` KB/s
+     - Download speed limit in KB/s (1000 bytes per second). Zero means unlimited.
+   * - ``-h``
+     - Hidden files included
+     - Include hidden files. This is already the default; ``-h`` does not display help.
+   * - ``--logdebug``
+     - Not set
+     - Enable Nextcloud debug logging and send log output to standard output.
+   * - ``--confdir <directory>``
+     - Standard location
+     - Use a different configuration directory. Does not make the one-run sync inherit all desktop sync settings.
+   * - ``--version``, ``-v``
+     - Not requested
+     - Display version information and exit. Run this option without the directory and server arguments.
 
-``--exclude`` `<file>`
-      Exclude list file
+.. _credential-handling:
+.. _desktop-command-line-credentials:
 
-``--unsyncedfolders`` `<file>`
-      File containing the list of unsynced folders (selective sync)
+Credential handling
+-------------------
 
-``--max-sync-retries`` `<n>`
-      Retries maximum n times (defaults to 3)
+Credentials are read in this order:
 
-``-h``
-      Sync hidden files,do not ignore them
+1. Username and password in the server URL, if supplied.
+2. ``--user`` and ``--password``, which replace the corresponding URL values.
+3. A matching host or default ``.netrc`` entry when ``-n`` is used, which replaces both values.
+4. Prompts for any missing values, or the environment variables below when ``--non-interactive`` is used.
 
+Prefer a password prompt or a protected ``.netrc`` file over putting passwords in a command or URL.
 
-Credential Handling
-~~~~~~~~~~~~~~~~~~~
+.. list-table::
+   :header-rows: 1
+   :class: configuration-table
+   :widths: 32 18 50
 
-``nextcloudcmd`` requires the user to specify the username and password using the standard URL pattern, e.g.,
+   * - Parameter
+     - Default
+     - Description
+   * - ``NC_USER``
+     - Unset
+     - Username fallback for a one-run sync with ``--non-interactive``. Only used if no username was supplied by the
+       preceding methods.
+   * - ``NC_PASSWORD``
+     - Unset
+     - Password fallback for a one-run sync with ``--non-interactive``. Only used if no password was supplied by the
+       preceding methods.
 
-::
+These variables do not supply credentials for the account setup mode below.
+For transfer overrides shared with the desktop sync engine, see :ref:`desktop-environment-variables`.
+``nextcloudcmd`` uses an initial chunk size of 100 MiB, a minimum of 5 MB, a maximum of 5 GB, and 6 parallel jobs unless
+overridden by those variables. It does not read the desktop app's chunk-size settings from ``nextcloud.cfg``.
 
-  $ nextcloudcmd /home/user/my_sync_folder https://carla:secret@server/nextcloud
+.. _exclude-list:
+.. _desktop-command-line-excludes:
 
-To synchronize the Nextcloud directory ``Music`` to the local directory
-``media/music``, through a proxy listening on port ``8080``, and on a gateway
-machine using IP address ``192.168.178.1``, the command line would be::
+Exclude lists
+-------------
 
-  $ nextcloudcmd --httpproxy http://192.168.178.1:8080 --path /Music \
-                $HOME/media/music \
-                https://server/nextcloud
+The client loads the system exclude list when available. You can add your own list with ``--exclude`` or
+``--exclude-anchored``. A missing explicitly supplied file is an error.
 
-``nextcloudcmd`` will prompt for the user name and password, unless they have
-been specified on the command line or ``-n`` has been passed.
+With ``--exclude``, a file named ``sync-exclude.lst`` uses the sync root for pattern matching. Other filenames can use
+the exclude file's directory as the base. Use ``--exclude-anchored`` when the filename and location should not affect
+matching.
 
-Exclude List
-~~~~~~~~~~~~
+Write one pattern per line. Wildcards are supported, for example:
 
-``nextcloudcmd`` requires access to an exclude list file. It must either be
-installed along with ``nextcloudcmd`` and thus be available in a system location,
-be placed next to the binary as ``sync-exclude.lst`` or be explicitly specified
-with the ``--exclude`` switch.
+.. code-block:: text
 
-The required file content is one exclude item per line where wildcards are allowed, e.g.:
-::
+   *.tmp
+   ._*
+   Thumbs.db
 
-    ~*.tmp
-    ._*
-    ]Thumbs.db
-    ]photothumb.db
-    System Volume Information
+Account setup
+-------------
 
-Example
-~~~~~~~~~~~~
+``nextcloudcmd`` can also save an account for use by the desktop app. The presence of ``--userid`` selects this mode;
+omit the positional local directory and server URL used for a one-run sync. The command exits after setup completes.
 
-- Synchronize a local directory to the specified directory of the nextcloud server
+.. include:: ../../_shared_assets/_desktop_account_setup_options.rst
 
-::
+For example, save an account and log in from the desktop app afterward:
 
-    $ nextcloudcmd --path /<Directory_that_has_been_created> /home/user/<my_sync_folder> \
-    https://<username>:<secret>@<server_address>
+.. code-block:: bash
+
+   nextcloudcmd --userid carla --serverurl https://cloud.example.com --localdirpath "$HOME/Nextcloud"

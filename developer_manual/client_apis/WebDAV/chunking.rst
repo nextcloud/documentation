@@ -12,15 +12,23 @@ Uploading large files is always a bit problematic as your connection can be inte
 which will fail your entire upload. Nextcloud has a chunking API where you can
 upload smaller chunks which will be assembled on the server once they are all uploaded.
 
-There are two versions of the chunking API. Version 1 is the original version and version 2 was built as a backward compatible extension to support uploads directly to supporting target storages like S3. Version 2 is the recommended version to use.
+There are two versions of the chunking API. Version 1 is the original version and version
+2 was built as a backward compatible extension to support uploads directly to supporting
+target storages like S3. Version 2 is the recommended version to use.
 
-Version 2 comes with a few additional requirements and limitations to consider (compared to version 1):
+Version 2 comes with a few additional requirements and limitations to consider
+(compared to version 1):
 
-- Every request needs to have a ``Destination`` header present which specifies the target path of the file
+- The ``MKCOL``, chunk ``PUT``, and final ``MOVE`` requests need to have a
+  ``Destination`` header present which specifies the target path of the file
 - The naming of the individual chunks is limited to be a number between 1 and 10000
 - The chunks will be assembled in the order of their names
 - The size of chunks must be between 5MB and 5GB (except for the last chunk, which can be smaller)
 - Chunks cannot be downloaded from the upload directory
+
+The ``Destination`` header is not required when aborting an upload with
+``DELETE``. The destination and backend upload token are stored when the
+upload is created.
 
 Nextcloud will expire the upload directory after 24 hours of inactivity. This means that if you start an upload and do not finish it within 24 hours, the upload directory will be deleted and the upload will fail.
 
@@ -108,9 +116,16 @@ The chunks and the temporary upload folder will be deleted afterwards.
 Aborting the upload
 -------------------
 
-If the upload has to be aborted this is a simple matter or deleting the upload folder.
+If the upload has to be aborted, delete the upload folder:
 
 .. code-block:: console
 
     curl -X DELETE -u roeland:pass \
         https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/
+
+For a Chunking v2 upload, Nextcloud uses the stored upload metadata to cancel
+the backend chunked write before deleting the upload folder. This also aborts
+the underlying multipart upload when the target storage supports multipart
+uploads. No ``Destination`` header is needed for this request.
+
+Uploads without Chunking v2 metadata are handled by normal DAV deletion.

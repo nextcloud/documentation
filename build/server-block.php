@@ -1,22 +1,28 @@
 <?php
+// Role of a version section on the index page. Each role renders a note naming a single
+// version, so each may be used at most once per page.
+const SECTION_UPCOMING = 0;
+const SECTION_LATEST_STABLE = 1;
+const SECTION_LAST_SUPPORTED = 2;
+
 /**
  * Generate the HTML section for a given Nextcloud version,
  * including links to manuals and notes about the version status.
- * The $index parameter is used to determine if the version is latest, stable, previous stable, or last supported stable.
- * If $index is null, it means it's a legacy version (released but outside support window).
+ *
+ * @param int|null $role One of the SECTION_* constants, or null for a version that gets
+ *                       no note: a legacy release, or a maintained one that is neither
+ *                       the newest nor the oldest.
  */
-function generate_section(string $version, ?int $index = null): string {
+function generate_section(string $version, ?int $role = null): string {
 	$note = '';
 	$label = $version;
-	if ($index === 0) {
+	if ($role === SECTION_UPCOMING) {
 		$label = 'latest';
 		$note = '<p>This documents the <em>upcoming</em> version of Nextcloud (not released).</p>';
-	} else if ($index === 1) {
+	} else if ($role === SECTION_LATEST_STABLE) {
 		$label = 'stable';
 		$note = '<p>This documents the <em>latest stable</em> version of Nextcloud.</p>';
-	} else if ($index === 2) {
-		$note = '<p>This documents the <em>previous stable</em> (still supported) version of Nextcloud.</p>';
-	} else if ($index === 3) {
+	} else if ($role === SECTION_LAST_SUPPORTED) {
 		$note = '<p>This documents the <em>last supported stable</em> version of Nextcloud.</p>';
 	}
 

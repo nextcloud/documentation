@@ -1,6 +1,6 @@
-===========
-Replication
-===========
+============================
+Using database read replicas
+============================
 
 .. versionadded:: 29
 

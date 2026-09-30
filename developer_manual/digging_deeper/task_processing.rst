@@ -142,6 +142,12 @@ The following built-in task types are available:
          * ``numberOfImages``: ``Number``
       * Output shape:
          * ``output``: ``ListOfImages``
+ * ``'core:image2image'``: This task type is for editing images based on a text description of the changes. It is implemented by ``\OCP\TaskProcessing\TaskTypes\ImageToImage``
+      * Input shape:
+         * ``input``: ``ListOfImages``
+         * ``prompt``: ``Text``
+      * Output shape:
+         * ``output``: ``Image``
  * ``'core:text2text:changetone'``: This task type is for reformulating a text, changing its tone. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextChangeTone``
       * Input shape:
          * ``input``: ``Text``

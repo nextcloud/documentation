@@ -14,6 +14,18 @@
  */
 
 /**
+ * The end of life dates the updater serves to every instance. A major is listed
+ * from its release, and carries an "eol" date once one is announced; the current
+ * major has none yet.
+ *
+ * This is the same source the release tooling derives maintenance from, so the
+ * index cannot disagree with the updater about what is still supported.
+ *
+ * @see https://github.com/nextcloud-releases/updater_server/blob/master/config/major_versions.json
+ */
+const MAJOR_VERSIONS_URL = 'https://raw.githubusercontent.com/nextcloud-releases/updater_server/master/config/major_versions.json';
+
+/**
  * Get the GitHub API headers with optional authentication.
  */
 function get_github_headers(): string {
@@ -25,67 +37,40 @@ function get_github_headers(): string {
 }
 
 /**
- * Get the repository name for a given version.
- * Nextcloud moved to nextcloud-releases/server starting with version 32.
- */
-function get_repo_for_version(int $version): string {
-	return $version >= 32 ? 'nextcloud-releases/server' : 'nextcloud/server';
-}
-
-/**
- * Parse the HTTP status code from the response headers populated by file_get_contents.
+ * Fetch the released majors and their end of life dates.
  *
- * @param array $headers The $http_response_header array
- */
-function parse_http_status(array $headers): int {
-	preg_match('/HTTP\/[\d.]+ (\d+)/', $headers[0] ?? '', $matches);
-	return (int)($matches[1] ?? 0);
-}
-
-/**
- * Fetch release info for a given version from the GitHub API.
+ * Exits with code 1 when the file cannot be fetched or parsed, rather than
+ * silently generating an index that claims every version is out of support.
  *
- * Returns an array ['date' => int] if the release exists (HTTP 200).
- * Returns null if the release does not exist (HTTP 404).
- * Exits with code 1 on any other HTTP status (rate limit, server error, etc.)
- * to prevent silently generating empty or incorrect output.
+ * @return array<int, ?string> major => end of life date (Y-m-d), null while none is announced
  */
-function fetch_release_info(int $version): ?array {
-	$repo = get_repo_for_version($version);
-	$url = sprintf('https://api.github.com/repos/%s/releases/tags/v%d.0.0', $repo, $version);
-
+function fetch_major_versions(): array {
 	$context = stream_context_create([
 		'http' => [
 			'header' => get_github_headers(),
 			'timeout' => 10,
-			'ignore_errors' => true
 		]
 	]);
 
-	$response = @file_get_contents($url, false, $context);
-
-	// FIXME: function_exists conditional can be dropped once we don't need to support <8.4.0
-	if (function_exists('http_get_last_response_headers')) {
-		/** @var array|null */
-		$http_response_header = \http_get_last_response_headers();
+	$response = @file_get_contents(MAJOR_VERSIONS_URL, false, $context);
+	if ($response === false) {
+		fwrite(STDERR, 'Error: could not fetch ' . MAJOR_VERSIONS_URL . " — aborting\n");
+		exit(1);
 	}
 
-	$status = isset($http_response_header) && is_array($http_response_header)
-		? parse_http_status($http_response_header)
-		: 0;
-
-	if ($status === 200) {
-		$data = json_decode($response, true);
-		$publishedAt = $data['published_at'] ?? $data['created_at'] ?? null;
-		return ['date' => $publishedAt ? strtotime($publishedAt) : time()];
+	$data = json_decode($response, true);
+	if (!is_array($data) || empty($data)) {
+		fwrite(STDERR, 'Error: could not parse ' . MAJOR_VERSIONS_URL . " — aborting\n");
+		exit(1);
 	}
 
-	if ($status === 404) {
-		return null;
+	$majors = [];
+	foreach ($data as $major => $info) {
+		$majors[(int)$major] = $info['eol'] ?? null;
 	}
+	krsort($majors, SORT_NUMERIC);
 
-	fwrite(STDERR, "GitHub API error (HTTP $status) checking v$version.0.0 — aborting\n");
-	exit(1);
+	return $majors;
 }
 
 /**
@@ -96,59 +81,48 @@ function fetch_release_info(int $version): ?array {
  *   highest_stable: int|null,
  *   lowest_stable:  int,
  *   dev_version:    int,
- *   released:       array<int, int>
+ *   released:       array<int, ?string>,
+ *   supported:      int[]
  * }
  */
 function detect_versions(array $branches): array {
 	rsort($branches, SORT_NUMERIC);
-	// Nextcloud's support policy: a release is supported for 1 year after its initial
-	// release. Versions released more than a year ago are considered out of support
-	// and count as $lowest_stable only if no newer in-support version exists.
-	$oneYearAgo = time() - (365 * 24 * 60 * 60);
+	$majors = fetch_major_versions();
+	$today = gmdate('Y-m-d');
+
+	// A branch with no entry has not been released yet. Dates are compared as
+	// Y-m-d strings, which orders correctly because the parts are zero-padded.
 	$released = [];
-	$firstOutOfSupportTime = null;
-
+	$supportedVersions = [];
 	foreach ($branches as $branch) {
-		if ($firstOutOfSupportTime !== null) {
-			// Older than the first out-of-support version — skip API call,
-			// store with the same timestamp (also out of support).
-			fwrite(STDERR, "🛑 Version $branch is unsupported\n");
-			$released[$branch] = $firstOutOfSupportTime;
+		if (!array_key_exists($branch, $majors)) {
+			fwrite(STDERR, "⏳ Version $branch is not released\n");
 			continue;
 		}
 
-		$info = fetch_release_info($branch);
-		if ($info === null) {
-			fwrite(STDERR, "⏳ Version $branch is not released (tag v$branch.0.0 not found)\n");
-			continue;
-		}
+		$eol = $majors[$branch];
+		$released[$branch] = $eol;
 
-		$released[$branch] = $info['date'];
-		if ($info['date'] < $oneYearAgo) {
-			fwrite(STDERR, "🛑 Version $branch is unsupported (released on " . date('Y-m-d', $info['date']) . ")\n");
-			$firstOutOfSupportTime = $info['date'];
+		if ($eol === null) {
+			fwrite(STDERR, "✅ Version $branch is maintained (no end of life announced)\n");
+			$supportedVersions[] = $branch;
+		} elseif ($eol >= $today) {
+			fwrite(STDERR, "✅ Version $branch is maintained (end of life on $eol)\n");
+			$supportedVersions[] = $branch;
 		} else {
-			fwrite(STDERR, "✅ Version $branch is supported (released on " . date('Y-m-d', $info['date']) . ")\n");
+			fwrite(STDERR, "🛑 Version $branch reached end of life on $eol\n");
 		}
 	}
 
-	// highest_stable: highest branch with a confirmed release
-	$highestStable = null;
-	foreach ($branches as $b) {
-		if (isset($released[$b])) {
-			$highestStable = $b;
-			break;
-		}
-	}
+	// highest_stable: highest released branch
+	$highestStable = !empty($released) ? max(array_keys($released)) : null;
 
-	// dev_version: if the highest branch has a release, dev = highest + 1;
+	// dev_version: if the highest branch is released, dev = highest + 1;
 	// otherwise the branch exists but isn't released yet (upcoming).
-	$devVersion = isset($released[$branches[0]]) ? $branches[0] + 1 : $branches[0];
+	$devVersion = array_key_exists($branches[0], $released) ? $branches[0] + 1 : $branches[0];
 
-	// lowest_stable: lowest version still within the support window.
-	// Using min($branches) would include ancient branches (e.g. stable10) that still
-	// exist on the remote but are long out of support.
-	$supportedVersions = array_keys(array_filter($released, fn($date) => $date >= $oneYearAgo));
+	// lowest_stable: lowest maintained version. Using min($branches) would include ancient
+	// branches (e.g. stable10) that still exist on the remote but are long out of support.
 	$lowestStable = !empty($supportedVersions) ? min($supportedVersions) : $highestStable;
 
 	return [
@@ -156,6 +130,7 @@ function detect_versions(array $branches): array {
 		'lowest_stable'  => $lowestStable,
 		'dev_version'    => $devVersion,
 		'released'       => $released,
+		'supported'      => $supportedVersions,
 	];
 }
 

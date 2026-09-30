@@ -63,6 +63,8 @@ deployment tools and policies. To address this case, it is possible to disable
 the auto-updater entirely.  The following sections describe how to disable the
 auto-update mechanism for different operating systems.
 
+.. _preventing-automatic-updates-in-windows-environments:
+
 Preventing Automatic Updates in Windows Environments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

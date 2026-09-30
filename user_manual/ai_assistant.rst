@@ -20,8 +20,23 @@ Personal settings
 -----------------
 
 The assistant personal settings are in **Personal settings** under the **Artificial intelligence**
-section. You can disable the assistant top menu entry there, and enable or disable the
-AI-related smart pickers.
+section. You can disable the assistant top menu entry there, enable or disable the
+AI-related smart pickers, and change the name of the folder the assistant saves its output to.
+
+Where generated content is saved
+--------------------------------
+
+Content the assistant generates for you, such as generated images and speech-to-text output, is
+saved to a folder in your Files. It is called ``Assistant`` unless your administrator has chosen
+a different name for the instance.
+
+You can pick your own name for it under **Data folder** in the assistant personal settings. Leave
+the field empty to keep the name your administrator has set; the placeholder shows what that is.
+
+.. note::
+
+   Changing the name does not rename or move the folder you already have. It applies the next
+   time a folder has to be created, so anything generated before the change stays where it is.
 
 Running a task
 --------------
@@ -628,7 +643,9 @@ applies it in future conversations without you having to repeat yourself.
 Where skills are stored
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Your personal skills live in your Nextcloud Files under the folder ``Assistant/Context Agent/Skills/``.
+Your personal skills live in your Nextcloud Files under ``Context Agent/Skills/`` inside the
+assistant data folder, so with the default folder name that is
+``Assistant/Context Agent/Skills/``.
 
 Each skill is a subfolder containing a file called ``SKILL.md``. The ``SKILL.md`` file starts
 with a YAML frontmatter block that defines the skill's name and description, followed by the

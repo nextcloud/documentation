@@ -164,6 +164,41 @@ html[data-theme="dark"] .rst-content img {
 	box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
 }
 
+/* Desktop synchronization status icons are UI glyphs, not screenshots. */
+.rst-content img.desktop-status-icon,
+html[data-theme="dark"] .rst-content img.desktop-status-icon {
+	border-radius: 0;
+	box-shadow: none;
+}
+
+.rst-content table.desktop-status-icons th,
+.rst-content table.desktop-status-icons td {
+	vertical-align: middle;
+}
+
+.rst-content table.desktop-status-icons th:not(:first-child),
+.rst-content table.desktop-status-icons td:not(:first-child) {
+	text-align: center;
+}
+
+/* Dark-theme overrides — sphinx-rtd-dark-mode sets data-theme="dark" on
+   <html>. The selectors below restore proper contrast for values that
+   were hardcoded for the light (white) background. */
+
+/* Inline code: #c0392b (dark red) gives ~2.4:1 on the #2d2d2d code bg,
+   and the !important above defeats the plugin's dark-mode rule entirely.
+   Use a lighter coral-red (~4.9:1 on #2d2d2d). */
+html[data-theme="dark"] .rst-content code,
+html[data-theme="dark"] .rst-content tt,
+html[data-theme="dark"] code {
+	color: #ff7878 !important;
+}
+
+/* Search icon: #555 is near-invisible on the dark #0b152d sidebar bg. */
+html[data-theme="dark"] .wy-form-search-icon {
+	color: #aaa;
+}
+
 /* ICONS LIST */
 div#list-of-available-icons > blockquote {
 	margin: 0;
@@ -228,6 +263,18 @@ table.docutils {
 
 #code-style table.docutils {
 	width: 100%;
+}
+
+.rst-content table.configuration-table {
+	width: 100%;
+	table-layout: fixed;
+}
+
+.rst-content table.configuration-table th,
+.rst-content table.configuration-table td,
+.rst-content table.configuration-table code {
+	white-space: normal;
+	overflow-wrap: anywhere;
 }
 
 /* Version picker lists — 2-column grid, emoji as absolute ::before bullet */

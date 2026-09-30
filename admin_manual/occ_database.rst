@@ -370,6 +370,7 @@ The ``db`` commands manage database schema, indices, and data conversions::
   db:convert-filecache-bigint     convert the ID columns of the filecache to BigInt
   db:convert-mysql-charset        convert charset of MySQL/MariaDB to utf8mb4
   db:convert-type                 convert the Nextcloud database to a different type
+  db:schema:check                 compare the live database schema with the expected schema
   db:schema:expected              export the expected database schema for a fresh installation
   db:schema:export                export the current database schema
 
@@ -416,6 +417,124 @@ Use ``--dry-run`` to preview the SQL statements without executing them.
 
 Schema inspection
 ^^^^^^^^^^^^^^^^^^
+
+db:schema:check
+"""""""""""""""
+
+.. versionadded:: 35.0
+
+Compare the live database schema with the schema expected for the
+currently installed Nextcloud version::
+
+ sudo -E -u www-data php occ db:schema:check
+   The live database schema matches the expected schema.
+
+The expected schema is generated from the migrations provided by
+Nextcloud core, all enabled apps, and any disabled apps whose code is
+still present. The command reports missing or unexpected tables,
+columns, and indexes. It also reports column properties that differ,
+such as the type, length, default value, or whether the column is
+nullable.
+
+The command only inspects the schema and does not modify the database.
+It exits with status ``0`` if there are no findings for core or an
+enabled app, and status ``1`` otherwise. This makes it suitable for use
+in monitoring scripts. Findings that only concern a disabled app never
+affect the exit status. They are excluded from the plain output unless
+you add ``-v``::
+
+ sudo -E -u www-data php occ db:schema:check -v
+   oc_example: column 'size' differs in: type, default
+   Disabled apps (not affecting exit code):
+   If the schema for a disabled app differs from what is expected, this might indicate the app was
+   updated since it was disabled. Missing migrations will be applied once the app is enabled again.
+     files_external:
+       - oc_storages: missing column 'backend'
+
+Specify a table name to limit the comparison to that table::
+
+ sudo -E -u www-data php occ db:schema:check oc_filecache
+
+Use the complete table name, including the configured database table
+prefix. Use ``--output=json`` or ``--output=json_pretty`` to produce
+machine-readable output. Unlike plain output, JSON output always
+includes every finding, including those for disabled apps. For example:
+
+.. code-block:: console
+
+   $ sudo -E -u www-data php occ db:schema:check --output=json_pretty
+   [
+       {
+           "table": "oc_filecache",
+           "type": "modified_column",
+           "name": "size",
+           "changes": [
+               "type",
+               "default"
+           ],
+           "app": null,
+           "enabled": true
+       },
+       {
+           "table": "oc_storages",
+           "type": "missing_column",
+           "name": "backend",
+           "app": "files_external",
+           "enabled": false
+       },
+       {
+           "table": "oc_example",
+           "type": "unexpected_table",
+           "app": null,
+           "enabled": true
+       }
+   ]
+
+Each finding contains:
+
+* ``table`` — the complete database table name.
+* ``type`` — one of ``missing_table``, ``unexpected_table``,
+  ``missing_column``, ``unexpected_column``, ``modified_column``,
+  ``missing_index``, or ``unexpected_index``.
+* ``name`` — the affected column or index. This field is omitted for
+  table findings.
+* ``changes`` — the changed column properties. This field is only
+  present when ``type`` is ``modified_column``. Possible values include
+  ``type``, ``length``, ``precision``, ``scale``, ``nullable``,
+  ``default``, ``autoincrement``, ``unsigned``, ``fixed``, and
+  ``comment``.
+* ``app`` — the ID of the disabled app that owns the affected table, or
+  ``null`` if the table belongs to core or an enabled app.
+* ``enabled`` — ``false`` if the finding only concerns a disabled app
+  and does not affect the exit status, ``true`` otherwise.
+
+When the schemas match, JSON output contains an empty array.
+
+.. note::
+
+   The expected schema does not account for all database-wide settings
+   or defaults, so some reported differences may be valid. A table or
+   other object still counts as unexpected if it belongs to an app that
+   was disabled and then fully removed. Review each finding before
+   changing the database.
+
+The schema check also runs automatically after ``occ upgrade``.
+Findings for core or an enabled app are displayed as warnings but do
+not cause the upgrade to fail; findings that only concern a disabled
+app are not shown here. For example, the following output may appear
+near the end of an upgrade:
+
+.. code-block:: console
+
+   The database schema does not match what is expected for the installed version:
+     - oc_filecache: column 'size' differs in: type, default
+     - oc_filecache: missing index 'fs_storage_path_hash'
+     - unexpected table 'oc_example'
+   Run "occ db:schema:check -v" for details.
+
+Run ``occ db:schema:check`` separately to inspect the differences in
+plain (add ``-v`` to include disabled-app findings) or machine-readable
+format.
 
 db:schema:export
 """"""""""""""""

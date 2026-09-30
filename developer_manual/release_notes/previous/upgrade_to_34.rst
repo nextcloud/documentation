@@ -57,17 +57,6 @@ Removed back-end APIs
   - Instead of ``\OC_Util::redirectToDefaultPage`` and  ``\OC_Util::getDefaultPageUrl`` use ``\OCP\IUrlGenerator::linkToDefaultPageUrl``
   - Instead of ``\OC_Util::checkAdminUser`` use ``IGroupManager::class::isAdmin``
 
-
-Unified sharing
----------------
-
-.. todo::
-
-    This is work in progress and needs an update when the changes have been finalized.
-
-Changes to sharing APIs and user interface are planned. This includes both a new general API for sharing of entities and updates to the sharing user interface. See `nextcloud/server#51803 <https://github.com/nextcloud/server/issues/51803>`_ for details and mockups.
-
-
 Navigation styling revisions
 ----------------------------
 

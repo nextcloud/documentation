@@ -174,6 +174,9 @@ html_context['available_languages'] = available_languages
 # https://documatt.gitlab.io/sphinx-reredirects/usage.html
 
 redirects = {
+    'desktop/options': 'advanced_configuration.html',
+    'desktop/configfile': 'advanced_configuration.html',
+    'desktop/envvars': 'advanced_configuration.html',
     # Renamed 2026-06
     'desktop/macosvfs': 'desktop/macosfileprovider',
 }

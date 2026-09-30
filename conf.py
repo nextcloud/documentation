@@ -60,8 +60,8 @@ html_copy_source = False
 # In CI: DOCS_VERSION_STABLE and DOCS_VERSION_START are injected by sphinxbuild.yml
 # via detect-versions.php so these values are always current without manual updates.
 # Fallbacks here are used for local builds only.
-version_start  = int(os.environ.get('DOCS_VERSION_START',  32))
-version_stable = int(os.environ.get('DOCS_VERSION_STABLE', 34))  # CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
+version_start  = int(os.environ.get('DOCS_VERSION_START',  33))
+version_stable = int(os.environ.get('DOCS_VERSION_STABLE', 35))  # CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
 # In CI: DOCS_DISPLAY_VERSION is injected by sphinxbuild.yml.
 # Fallback: PDF/ePub builds use release (DOCS_RELEASE); local master builds use version_stable+1.
 display_version = os.environ.get('DOCS_DISPLAY_VERSION') or (
