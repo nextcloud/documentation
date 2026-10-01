@@ -136,26 +136,41 @@ Code executions and file inclusions can be easily prevented by **never** allowin
 Directory traversal
 -------------------
 
-Very often developers forget about sanitizing the file path (removing all \\ and /), this allows an attacker to traverse through directories on the server which opens several potential attack vectors including privilege escalations, code executions or file disclosures.
+Directory traversal happens when a file path built from user input escapes the folder it was meant for, for example with ``../``. This opens several attack vectors, including file disclosure, privilege escalation and code execution.
+
+Never build paths into the data directory yourself. Access files through the Files API instead: it rejects paths containing ``..``, and it also applies permissions, encryption and external storage handling.
 
 **DON'T**
 
 .. code-block:: php
 
   <?php
-  $username = OC_User::getUser();
-  fopen("/data/" . $username . "/" . $_GET['file'] . ".txt");
+  $content = file_get_contents($dataDir . '/' . $userId . '/files/' . $_GET['file']);
 
 **DO**
 
 .. code-block:: php
 
   <?php
-  $username = OC_User::getUser();
-  $file = str_replace(array('/', '\\'), '',  $_GET['file']);
-  fopen("/data/" . $username . "/" . $file . ".txt");
+  use OCP\AppFramework\Http;
+  use OCP\AppFramework\Http\DataResponse;
+  use OCP\Files\File;
+  use OCP\Files\IRootFolder;
+  use OCP\Files\NotFoundException;
+  use OCP\Files\NotPermittedException;
 
-.. note:: PHP also interprets the backslash (\\) in paths, don't forget to replace it too!
+  // $this->rootFolder is an injected IRootFolder, $userId the ID of the current user,
+  // $path the user-supplied path
+  try {
+      $node = $this->rootFolder->getUserFolder($userId)->get($path);
+  } catch (NotFoundException|NotPermittedException $e) {
+      // NotPermittedException is also thrown for paths containing ".."
+      return new DataResponse([], Http::STATUS_NOT_FOUND);
+  }
+  if (!$node instanceof File) {
+      return new DataResponse([], Http::STATUS_NOT_FOUND);
+  }
+  $content = $node->getContent();
 
 
 Shell injection
