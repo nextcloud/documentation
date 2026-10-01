@@ -8,17 +8,23 @@ developer manuals.
 
 ## Table of Contents
 
-1. [Where to ask questions](#where-to-ask-questions)
-2. [Setting up a local build environment](#setting-up-a-local-build-environment)
-3. [Making changes](#making-changes)
-4. [Opening a pull request](#opening-a-pull-request)
-5. [Commit message format](#commit-message-format)
-6. [DCO sign-off](#dco-sign-off)
-7. [Review process](#review-process)
-8. [Style guide](#style-guide)
-9. [Issue templates](#issue-templates)
+1. [Code of Conduct](#code-of-conduct)
+2. [Where to ask questions](#where-to-ask-questions)
+3. [Setting up a local build environment](#setting-up-a-local-build-environment)
+4. [Making changes](#making-changes)
+5. [Opening a pull request](#opening-a-pull-request)
+6. [Commit message format](#commit-message-format)
+7. [DCO sign-off](#dco-sign-off)
+8. [Review process](#review-process)
+9. [Style guide](#style-guide)
+10. [Issue templates](#issue-templates)
 
 ---
+
+## Code of Conduct
+
+All contributors are expected to follow the
+[Nextcloud Code of Conduct](https://nextcloud.com/contribute/code-of-conduct/).
 
 ## Where to ask questions
 
@@ -36,7 +42,13 @@ developer manuals.
 Documentation is built with [Sphinx](https://www.sphinx-doc.org/). A local
 build lets you preview changes accurately before opening a PR.
 
-### Using a Python virtual environment (recommended)
+### Using uv (recommended)
+
+[uv](https://docs.astral.sh/uv/) is the fastest way to get started:
+
+The Python version below matches `master`. If you are building an older `stable<N>` branch,
+check that branch's CI configuration for the required Python version and adjust
+the `--python` flag accordingly.
 
 ```bash
 # 1. Clone the repository
@@ -44,13 +56,21 @@ git clone https://github.com/nextcloud/documentation.git
 cd documentation
 
 # 2. Create and activate a virtual environment
-python3 -m venv venv
-source venv/bin/activate       # on Windows: venv\Scripts\activate
+uv venv --python 3.13 && source .venv/bin/activate   # on Windows: .venv\Scripts\activate
 
 # 3. Install dependencies
-pip install -r requirements.txt
+uv pip install -r requirements.txt
 
 # 4. Build HTML (all manuals)
+make html
+```
+
+### Using a plain Python virtual environment
+
+```bash
+python3.13 -m venv venv
+source venv/bin/activate               # on Windows: venv\Scripts\activate
+pip install -r requirements.txt
 make html
 ```
 
@@ -67,7 +87,7 @@ then run `make html` in the integrated terminal.
 ### Live-reload while editing
 
 ```bash
-pip install sphinx-autobuild
+uv pip install sphinx-autobuild
 cd user_manual          # or admin_manual / developer_manual
 make SPHINXBUILD=sphinx-autobuild html
 # Open http://127.0.0.1:8000 in your browser
@@ -107,7 +127,7 @@ versions, etc.).
    ```
 5. Open a pull request against the appropriate branch of
    `nextcloud/documentation`.
-6. Fill in the pull request template — include a screenshot of changed pages
+6. Fill in the pull request template; include a screenshot of changed pages
    where relevant.
 
 ---
@@ -129,7 +149,7 @@ Signed-off-by: Your Name <your.email@example.com>
 
 | Type       | When to use                                                  |
 | ---------- | ------------------------------------------------------------ |
-| `docs`     | Content changes — new or updated documentation text         |
+| `docs`     | Content changes: new or updated documentation text          |
 | `fix`      | Correcting errors (broken links, wrong commands, typos, …)  |
 | `feat`     | Adding a new page or section                                 |
 | `refactor` | Restructuring without changing the meaning of the content   |
@@ -185,7 +205,7 @@ GitHub's privacy setting enabled, it will be
 2. Automated checks (spelling, link validation) run on every PR. Fix any
    reported issues before requesting a re-review.
 3. The reviewer may request changes. Address feedback and push new commits to
-   the same branch — do **not** force-push after a review has started.
+   the same branch; do **not** force-push after a review has started.
 4. Once approved, a maintainer will merge the PR.
 
 ---
