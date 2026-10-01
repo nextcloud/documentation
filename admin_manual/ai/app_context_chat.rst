@@ -154,7 +154,7 @@ Nextcloud customers should file bugs directly with our Customer Support.
 Commands (OCC)
 --------------
 
-The options for each command can be found like this, using scan as example: ``context_chat:scan --help``
+The options for each command can be found like this, using stats as example: ``context_chat:stats --help``
 
 * ``context_chat:prompt``
    Ask a question about your data, with options for selective context.
@@ -167,10 +167,6 @@ The options for each command can be found like this, using scan as example: ``co
    | and the current no. of items in the indexer and actions queue.
    | "Actions" refers to tasks like file deletions, ownership changes through share changes, etc.
    | These file and ownership changes are synced with the backed through this actions queue.
-
-* ``context_chat:reindex``
-   | Schedule a full re-crawl of all the files in all the mounts. Indexed files are not re-indexed when compared against context_chat_backend's vector DB.
-   | Content providers are not re-indexed.
 
 
 Configuration Options
