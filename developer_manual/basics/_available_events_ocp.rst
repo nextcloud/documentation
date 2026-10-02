@@ -828,12 +828,29 @@ Event that allows to register a feature policy header to a request.
 
 .. versionadded:: 34.0.2
 
-Authorization gate for deleting an app-managed share through a share-review app. Dispatched by the app that owns
+Authorization gate for acting on an app-managed share through a share-review app. Dispatched by the app that owns
 the share (its ``OCP\Share\ShareReview\IShareReviewSource`` implementation) at the beginning of ``deleteShare()``,
 before anything is deleted. The share-review app listens to this event and answers with ``grantAccess()`` or
 ``denyAccess()`` depending on whether the current user is an authorized share-review operator; apps that merely
 expose shares must not listen to it. The event is default-deny: if no listener responds, the share must not be
 deleted. Once denied, further grants are ignored and event propagation is stopped.
+
+.. versionchanged:: 35.0.1
+
+   The event carries the operation being authorized (``getAction()``: ``ACTION_DELETE``, ``ACTION_REMEDIATE`` for
+   the password/expiration mutators of ``OCP\Share\ShareReview\IShareReviewSourceRemediation``, ``ACTION_RESTORE``
+   for ``OCP\Share\ShareReview\IShareReviewSourceSnapshot::restoreShare()``), the acting user (``getActingUserId()``,
+   ``null`` for the session user) and the scope (``getScope()``: ``SCOPE_OPERATOR`` for an instance-wide review,
+   ``SCOPE_SELF`` for a user reviewing their own shares, where the listener must additionally verify that the acting
+   user is the share's initiator). The acting user and the scope reach the owning app through an optional
+   ``OCP\Share\ShareReview\ShareReviewActionContext`` that the share-review app passes to ``deleteShare()`` and to
+   the mutators of the two capability interfaces; the owning app forwards both values into this event verbatim and
+   never decides them itself. Passing no context means the session user acts as an operator, exactly as in 34.0.2.
+   Listeners written against the 34.0.2 event keep working and keep failing closed
+   for non-operators — but for operators the new actions extend the granted capability set: ``ACTION_REMEDIATE``
+   includes removing a link share's password, which can expose content deletion never could. A listener that
+   distinguishes reviewers with delete-only rights must check ``getAction()`` and deny actions it does not
+   recognize.
 
 ``OCP\Share\ShareReview\RegisterShareReviewSourceEvent``
 ********************************************************
@@ -843,6 +860,34 @@ deleted. Once denied, further grants are ignored and event propagation is stoppe
 Event dispatched by a share-review app to collect share sources from other apps. Listeners register the class name
 of their ``OCP\Share\ShareReview\IShareReviewSource`` implementation, whose ``getShares()`` method returns a list of
 ``OCP\Share\ShareReview\ShareReviewEntry`` objects.
+
+.. versionchanged:: 35.0.1
+
+   Sources with many shares should implement ``OCP\Share\ShareReview\IPaginatedShareReviewSource`` instead, which
+   extends ``IShareReviewSource`` and lists shares page by page: ``queryShares()`` takes an
+   ``OCP\Share\ShareReview\ShareReviewQuery`` (page size and offset, sort field and direction, a case-insensitive
+   substring search across object, initiator and recipient, and filters for share types, password protection,
+   expiration date and range, modification range, scoped identity substrings, exact initiator, recipient and access
+   token lists, and opaque permission ids) and returns an ``OCP\Share\ShareReview\ShareReviewPage`` carrying the
+   entries and the total and filtered counts (``ShareReviewCounts``); ``countShares()``, ``countSharesByType()`` and
+   ``countSharesByInitiator()`` return counts without rows, ``getShare()`` looks a single share up by its deletion
+   identifier, and ``getDisplayName()`` provides a localized label while ``getName()`` stays a stable, untranslated
+   identifier. The share-review app detects the paginated interface with ``instanceof`` and falls back to
+   ``getShares()`` otherwise.
+
+   The contract is identical for every source, so a share-review app can offer the same table controls on every tab.
+   An implementation evaluates it in the database rather than in PHP and must honour the rules the interface
+   docblocks state: append the primary key as a secondary sort so equal-keyed rows never straddle a page boundary,
+   order NULL sort keys last in both directions, escape LIKE wildcards in every substring input, compare access
+   tokens exactly (never as a prefix — they are bearer credentials), treat an empty list filter as matching nothing,
+   and answer the grouped counts with a single ``GROUP BY`` scan rather than a count per group.
+
+   Two optional capability interfaces can be implemented alongside: ``IShareReviewSourceRemediation`` sets or removes
+   passwords and expiration dates (declared per source through ``canSetPassword()`` and ``canSetExpiration()``;
+   because only link and mail shares carry them, a mutator called for an entry of any other type returns ``false``
+   without dispatching the access check), and ``IShareReviewSourceSnapshot`` serializes a share before deletion and
+   restores it later from that opaque, app-owned string. Both are discovered with ``instanceof`` and gated by the
+   access-check event with ``ACTION_REMEDIATE`` and ``ACTION_RESTORE`` respectively.
 
 ``OCP\SpeechToText\Events\TranscriptionFailedEvent``
 ****************************************************
