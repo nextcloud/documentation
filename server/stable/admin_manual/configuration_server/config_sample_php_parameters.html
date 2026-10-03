@@ -206,6 +206,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#nextcloud-verifications">Nextcloud Verifications</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#appcodechecker">appcodechecker</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#updatechecker">updatechecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integrity-check-scheduled">integrity.check.scheduled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#updater-server-url">updater.server.url</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#updater-release-channel">updater.release.channel</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#has-internet-connection">has_internet_connection</a></li>
@@ -1871,6 +1872,16 @@ enabling apps that pass this check.</p>
 available. It sends current version, PHP version, installation and last update
 time, and release channel to the updater server which responds with the latest
 available version based on those metrics.</p>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code></p>
+</section>
+<section id="integrity-check-scheduled">
+<h3>integrity.check.scheduled<a class="headerlink" href="#integrity-check-scheduled" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;integrity.check.scheduled&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Re-run the code integrity check once a day in a background job and notify
+admins when its result changes, for example when a file inside the Nextcloud
+or app folders is modified or added.</p>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code></p>
 </section>
 <section id="updater-server-url">
