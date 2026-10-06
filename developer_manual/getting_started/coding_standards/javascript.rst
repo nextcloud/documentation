@@ -11,7 +11,7 @@ General rules and advice
 - Nextcloud uses Vue.js for its interface, for a consistent user interface we recommend apps to also use Vue with :ref:`provided components <js-library_nextcloud-vue>`.
   Yet also vanilla JavaScript and HTML can be used.
 - We recommend using Typescript for its type checking and improved static code analysis features.
-- Do not create global variables, instead if needed use global namespace objects like ``OCA.YourApp.…``
+- Do not create global variables, instead if needed use global namespace objects like ``OCA.YourApp.â€¦``
 - Use JavaScript strict mode (automatically the case when using JavaScript modules)
 
 ESLint config
@@ -19,7 +19,26 @@ ESLint config
 
 There is a shared configuration for `eslint <https://eslint.org/>`_ that you can use to automatically format your Nextcloud apps's JavaScript and Typescript code.
 It consists of two parts: a `config package <https://github.com/nextcloud-libraries/eslint-config>`_ that contains the formatting preferences
-and a `plugin <https://github.com/nextcloud-libraries/eslint-plugin>`_ to detect deprecated and removed APIs in your code. See their readmes for instructions.
+and a `plugin <https://github.com/nextcloud-libraries/eslint-plugin>`_ to detect deprecated and removed APIs in your code.
+
+Install the shared config (it pulls in ESLint and the Nextcloud plugin):
+
+.. code-block:: bash
+
+  npm install --save-dev @nextcloud/eslint-config
+
+Add an ``eslint.config.js`` in your app root using the flat config format (required since ``@nextcloud/eslint-config`` v9 / ESLint 9+):
+
+.. code-block:: javascript
+
+  import { recommended } from '@nextcloud/eslint-config'
+
+  export default [
+  	...recommended,
+  ]
+
+``recommended`` covers TypeScript and Vue 3. Alternatives such as ``recommendedJavascript`` and ``recommendedVue2`` are documented in the `config package README <https://github.com/nextcloud-libraries/eslint-config>`_.
+See also :ref:`app-npm` for the ``lint`` / ``lint:fix`` npm scripts.
 
 Filesystem structure
 ^^^^^^^^^^^^^^^^^^^^
@@ -79,7 +98,7 @@ Naming and casing
 
 - For readability only capitalize the first letter of abbreviations like ``callHttpApi()`` instead of ``callHTTPAPI()``.
 - Sub-components should be prefixed.
-  E.g. splitting a component like ``FileListEntry`` into smaller components called ``FileListEntryName``, ``FileListEntryIcon`` …
+  E.g. splitting a component like ``FileListEntry`` into smaller components called ``FileListEntryName``, ``FileListEntryIcon`` â€¦
 - Components should not have single-word names, this could conflict with current or future native HTML tags as these are always single-word.
   E.g. if you have a settings view, do not call it ``Settings`` but ``SettingsView`` or ``UserSettings`` etc.
 
@@ -87,8 +106,8 @@ Naming and casing
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -111,8 +130,8 @@ Naming and casing
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -141,8 +160,8 @@ Semicolons
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -170,8 +189,8 @@ Strings
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -186,8 +205,8 @@ Strings
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -205,8 +224,8 @@ Arrays
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -225,8 +244,8 @@ Arrays
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -280,8 +299,8 @@ Functions
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -296,8 +315,8 @@ Functions
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -351,8 +370,8 @@ Functions
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -390,8 +409,8 @@ Functions
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -433,8 +452,8 @@ Functions
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -456,8 +475,8 @@ Functions
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -492,8 +511,8 @@ Objects
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -514,8 +533,8 @@ Objects
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -540,8 +559,8 @@ Objects
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -559,8 +578,8 @@ Objects
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -575,8 +594,8 @@ Objects
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -638,8 +657,8 @@ Here's why:
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -666,8 +685,8 @@ Control structures
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
@@ -696,8 +715,8 @@ Control structures
     :widths: 50 50
     :header-rows: 1
 
-    * - ✅ Do
-      - ❌ Don't
+    * - âœ… Do
+      - âŒ Don't
     * -
         .. code-block:: javascript
 
