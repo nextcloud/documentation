@@ -248,23 +248,35 @@
 </section>
 <section id="directory-traversal">
 <h2>Directory traversal<a class="headerlink" href="#directory-traversal" title="Link to this heading"></a></h2>
-<p>Very often developers forget about sanitizing the file path (removing all \ and /), this allows an attacker to traverse through directories on the server which opens several potential attack vectors including privilege escalations, code executions or file disclosures.</p>
+<p>Directory traversal happens when a file path built from user input escapes the folder it was meant for, for example with <code class="docutils literal notranslate"><span class="pre">../</span></code>. This opens several attack vectors, including file disclosure, privilege escalation and code execution.</p>
+<p>Never build paths into the data directory yourself. Access files through the Files API instead: it rejects paths containing <code class="docutils literal notranslate"><span class="pre">..</span></code>, and it also applies permissions, encryption and external storage handling.</p>
 <p><strong>DON’T</strong></p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nv">$username</span> <span class="o">=</span> <span class="nx">OC_User</span><span class="o">::</span><span class="na">getUser</span><span class="p">();</span>
-<span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;/data/&quot;</span> <span class="o">.</span> <span class="nv">$username</span> <span class="o">.</span> <span class="s2">&quot;/&quot;</span> <span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;.txt&quot;</span><span class="p">);</span>
+<span class="nv">$content</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$dataDir</span> <span class="o">.</span> <span class="s1">&#39;/&#39;</span> <span class="o">.</span> <span class="nv">$userId</span> <span class="o">.</span> <span class="s1">&#39;/files/&#39;</span> <span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]);</span>
 </pre></div>
 </div>
 <p><strong>DO</strong></p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nv">$username</span> <span class="o">=</span> <span class="nx">OC_User</span><span class="o">::</span><span class="na">getUser</span><span class="p">();</span>
-<span class="nv">$file</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;\\&#39;</span><span class="p">),</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>  <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]);</span>
-<span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;/data/&quot;</span> <span class="o">.</span> <span class="nv">$username</span> <span class="o">.</span> <span class="s2">&quot;/&quot;</span> <span class="o">.</span> <span class="nv">$file</span> <span class="o">.</span> <span class="s2">&quot;.txt&quot;</span><span class="p">);</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\DataResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Files\File</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Files\IRootFolder</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Files\NotFoundException</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Files\NotPermittedException</span><span class="p">;</span>
+
+<span class="c1">// $this-&gt;rootFolder is an injected IRootFolder, $userId the ID of the current user,</span>
+<span class="c1">// $path the user-supplied path</span>
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">rootFolder</span><span class="o">-&gt;</span><span class="na">getUserFolder</span><span class="p">(</span><span class="nv">$userId</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$path</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">NotFoundException</span><span class="o">|</span><span class="nx">NotPermittedException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// NotPermittedException is also thrown for paths containing &quot;..&quot;</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$node</span> <span class="nx">instanceof</span> <span class="nx">File</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nv">$content</span> <span class="o">=</span> <span class="nv">$node</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>PHP also interprets the backslash (\) in paths, don’t forget to replace it too!</p>
 </div>
 </section>
 <section id="shell-injection">
@@ -383,7 +395,7 @@ You need <a class="reference internal" href="#csrf-introduction"><span class="st
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Sep 27, 2026.
+      <span class="lastupdated">Last updated on Oct 06, 2026.
       </span></p>
   </div>
 
