@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c37f0e9a" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=850d043c" />
       <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -762,6 +762,7 @@
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#nextcloud-verifications">Nextcloud Verifications</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#appcodechecker">appcodechecker</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#updatechecker">updatechecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#integrity-check-scheduled">integrity.check.scheduled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#updater-server-url">updater.server.url</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#updater-release-channel">updater.release.channel</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#has-internet-connection">has_internet_connection</a></li>
@@ -2331,20 +2332,41 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ai/app_recognize.html">App: Recognize</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="ai/app_recognize.html#front-end">Front-end</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/app_recognize.html#classifier-backends">Classifier backends</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ai/app_recognize.html#node-js-backend-default">Node.js backend (default)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/app_recognize.html#recognize-backend-exapp-taskprocessing">recognize_backend ExApp (TaskProcessing)</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="ai/app_recognize.html#requirements">Requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ai/app_recognize.html#common-requirements">Common requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/app_recognize.html#node-js-backend">Node.js backend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/app_recognize.html#recognize-backend-exapp">recognize_backend ExApp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ai/app_recognize.html#disk-space-usage">Disk space usage</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="ai/app_recognize.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ai/app_recognize.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ai/app_recognize.html#installation-with-the-node-js-backend">Installation with the Node.js backend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/app_recognize.html#installation-with-the-recognize-backend-exapp">Installation with the recognize_backend ExApp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/app_recognize.html#switching-between-backends">Switching between backends</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ai/app_recognize.html#configuration-of-the-recognize-backend-exapp">Configuration of the recognize_backend ExApp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ai/app_recognize.html#scaling">Scaling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ai/app_recognize.html#app-store">App store</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ai/app_recognize.html#repository">Repository</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ai/app_recognize.html#known-limitations">Known Limitations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ai/app_recognize.html#ethical-ai-rating">Ethical AI Rating</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ai/app_recognize.html#rating-for-photo-object-detection-green">Rating for Photo object detection: Green</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ai/app_recognize.html#rating-for-photo-face-recognition-green">Rating for Photo face recognition: Green</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ai/app_recognize.html#rating-for-video-action-recognition-green">Rating for Video action recognition: Green</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ai/app_recognize.html#rating-music-genre-recognition-yellow">Rating Music genre recognition: Yellow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai/app_recognize.html#id1">Node.js backend</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ai/app_recognize.html#rating-for-photo-object-detection-green">Rating for Photo object detection: Green</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ai/app_recognize.html#rating-for-photo-face-recognition-green">Rating for Photo face recognition: Green</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ai/app_recognize.html#rating-for-video-action-recognition-green">Rating for Video action recognition: Green</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ai/app_recognize.html#rating-music-genre-recognition-yellow">Rating Music genre recognition: Yellow</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="ai/app_recognize.html#id2">recognize_backend ExApp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ai/app_recognize.html#rating-yellow">Rating: Yellow</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
