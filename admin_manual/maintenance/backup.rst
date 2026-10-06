@@ -28,6 +28,21 @@ Change ``"maintenance" => false`` to ``"maintenance" => true``:
 
 Don't forget to change it back to ``false`` when you are finished.
 
+.. warning::
+
+   Enabling maintenance mode updates ``config.php``. With PHP OPcache, other
+   PHP-FPM / Apache (``mod_php``) workers may keep serving the previous config
+   until ``opcache.revalidate_freq`` seconds elapse (PHP's default is often
+   ``2``; some installs raise it, for example to ``60``). For scripted backups,
+   wait at least that long — or reload PHP-FPM / ``mod_php`` — before dumping
+   the database or copying the data directory, so every web request is truly
+   in maintenance mode.
+
+   Checking ``occ maintenance:mode`` (without ``--on`` / ``--off``) is **not**
+   enough: CLI PHP starts a fresh process and does not see the web workers'
+   OPcache. See :doc:`../installation/server_tuning` (Enable PHP OPcache) for
+   how revalidation settings affect ``config.php`` and maintenance mode.
+
 Backup folders
 --------------
 
