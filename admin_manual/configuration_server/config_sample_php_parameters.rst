@@ -1543,9 +1543,20 @@ allow_local_remote_servers
 
     'allow_local_remote_servers' => true,
 
-Allow remote servers with local addresses, e.g., in federated shares, webcal services, and more
+When Nextcloud Server acts as an HTTP client, destinations whose hostname
+or **resolved IP** falls in a private or local range are blocked unless this
+is ``true``. That includes RFC1918 private networks, loopback, link-local
+addresses, and some special-use hostnames — not only names ending in
+``.local``.
 
-Defaults to ``false``
+Typical need: Keycloak / OIDC, Imaginary, federated shares, webcal, or other
+services on the same Docker or LAN network that resolve to a private IP
+(``LocalServerException`` / "Host … violates local access rules").
+
+Defaults to ``false`` (safer). Some code paths (for example Imaginary
+previews and selected setup checks) may allow local targets without this
+global flag. Prefer app-specific allowlists when available instead of
+enabling it globally.
 
 http_client_add_user_agent_url
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
