@@ -1029,6 +1029,14 @@ Emitted when the user password has been updated.
 .. versionadded:: 18
 
 
+``OCP\User\Events\UserConfigChangedEvent``
+******************************************
+
+.. versionadded:: 33
+
+Emitted when a user preference / config value changes (``userId``, ``appId``,
+``key``, new ``value``, and optional ``oldValue``).
+
 ``OCP\User\Events\UserCreatedEvent``
 ************************************
 
