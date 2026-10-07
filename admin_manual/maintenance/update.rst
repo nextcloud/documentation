@@ -236,6 +236,14 @@ Using the web based updater
 The web based updater performs the same steps and checks as the command line
 based updater.
 
+.. important::
+
+   Before you open the web based updater, review third-party apps for
+   compatibility with the target release and **disable all 3rd party apps**
+   (any app not developed by Nextcloud). Re-enable them only after the upgrade
+   and ``occ upgrade`` have finished successfully. See also the prerequisites
+   in :doc:`upgrade`.
+
 Using the built-in updater to update your Nextcloud installation is just a few
 steps:
 
