@@ -1,15 +1,15 @@
 =======================
-Using federation shares
+Using federated shares
 =======================
 
-Federation Sharing allows you to mount file shares from remote Nextcloud servers, in effect
+Federated sharing allows you to mount file shares from remote Nextcloud servers, in effect
 creating your own cloud of Nextclouds. You can create direct share links with
 users on other Nextcloud servers.
 
-Creating a new federation share
--------------------------------
+Creating a new federated share
+------------------------------
 
-Federation sharing is enabled on new or upgraded Nextcloud installations
+Federated sharing is enabled on new or upgraded Nextcloud installations
 by default. Follow these steps to create a new share with other Nextcloud or ownCloud 9+ servers:
 
 1. Go to your ``Files`` page and click the **Share** icon on the file or directory
