@@ -42,6 +42,13 @@ Nextcloud ``OAuth2`` implementation currently does not support scoped access. Th
 
 Without scopes and restrictable access it is not recommended to use a Nextcloud instance as a user authentication service.
 
+Putting an authenticating reverse proxy (for example ``oauth2_proxy``) in front
+of an application does **not** reduce that scope. Nextcloud still issues a
+Bearer token with full account access; the proxy only controls who can start the
+login. Treat every issued token as highly privileged, and do not reuse Nextcloud
+as a generic identity provider for third-party apps that should receive limited
+permissions.
+
 Skipping pre-login warning
 --------------------------
 
