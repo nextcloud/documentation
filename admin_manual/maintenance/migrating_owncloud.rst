@@ -28,6 +28,18 @@ See the table below for a version map, where migrating is easily possible:
           Nextcloud since PHP versions prior PHP 8 are end of life, see
           `<https://www.php.net/supported-versions.php>`_.
 
+
+.. important::
+
+   The version map above describes the intended entry points. If the web/CLI
+   updater rejects the ownCloud database because ``version.php`` only lists a
+   slightly older ownCloud release than the one you are migrating from, you may
+   temporarily adjust the ``$OC_VersionCanBeUpgradedFrom['ownCloud']`` entries in
+   Nextcloud's ``version.php`` so they include your ownCloud version, then run
+   the upgrade. Revert any temporary edits after the first successful
+   ``occ upgrade``. Prefer migrating from the newest ownCloud version that is
+   listed in the table when possible.
+
 1. First download the correct version of Nextcloud from our `releases page <https://nextcloud.com/changelog/>`_,
 
 2. Make sure to have do a :doc:`backup<backup>` before migrating.
@@ -48,6 +60,16 @@ See the table below for a version map, where migrating is easily possible:
 
 7. In case, use the :doc:`Nextcloud built-in updater<update>` to update your instance to the newest version.
    This must be done for every major version, since updates between multiple major versions are not supported.
+
+   .. important::
+
+      After each major upgrade finishes (``occ upgrade`` / the updater), wait
+      until all background migrations have completed before starting the next
+      major upgrade. See :doc:`upgrade` ("Approaching Upgrades") for why you
+      must not skip major releases and must let each step finish fully.
+      Trigger or wait for background jobs (``occ background-job:worker`` /
+      system cron) if migrations are still queued. Jumping ahead while
+      migrations are pending can leave the database schema inconsistent.
 
 8. If multiple major version upgrades are done, it might be needed to upgrade PHP again in between.
 
