@@ -15,6 +15,7 @@ These sub pages will cover the most important changes in Nextcloud, as well as s
    :maxdepth: 1
 
    upgrade_to_35.rst
+   upgrade_to_34.rst
    upgrade_to_33.rst
    upgrade_to_32.rst
    upgrade_to_31.rst
