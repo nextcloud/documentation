@@ -25,6 +25,10 @@ If you later want to add a new address book, you can redo all of those steps and
 .. note:: If your account uses two-factor authentication, you need a :ref:`dedicated app password <managing_devices>` for login rather than your
    regular password.
 
+.. note:: Thunderbird's built-in CardDAV address book does **not** support contact groups/lists
+   (the group UI stays disabled). If you need groups, use the CardBook add-on described below
+   instead of the native method.
+
 Calendars
 ~~~~~~~~~
 
