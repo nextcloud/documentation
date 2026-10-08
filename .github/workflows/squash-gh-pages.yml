@@ -1,0 +1,136 @@
+# SPDX-FileCopyrightText: 2026 Nextcloud GmbH and Nextcloud contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Squash the gh-pages history on every release.
+#
+# Every deploy commits a full set of rebuilt PDF and ePub files, so gh-pages
+# grows by ~18 MiB a day. build/squash-gh-pages.sh rebuilds the branch as one
+# snapshot commit per release day, keeps the deploys made since the last
+# release, and stores out of support version folders only once. The published
+# tree is unchanged; see the script for details.
+#
+# Required setup (repository admin):
+#   GH_PAGES_DEPLOY_KEY – private half of a deploy key with write access, added
+#                         as a bypass actor to the "Pages" ruleset, which
+#                         otherwise blocks force pushes to gh-pages.
+name: "Squash gh-pages history"
+
+on:
+  push:
+    tags:
+      - 'v*'
+  pull_request:
+    paths:
+      - '.github/workflows/squash-gh-pages.yml'
+      - 'build/squash-gh-pages.sh'
+      - 'build/tests/**'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Compute the rewrite without pushing it"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: squash-gh-pages
+  cancel-in-progress: false
+
+jobs:
+  test:
+    name: Test squash script
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Run unit tests
+        run: bash build/tests/test-squash-gh-pages.sh
+
+  squash:
+    name: Squash gh-pages
+    needs: test
+    # Final releases only: rc, beta and alpha tags do not get a snapshot.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'push' && !contains(github.ref_name, 'rc') &&
+      !contains(github.ref_name, 'beta') && !contains(github.ref_name, 'alpha'))
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      # Full history: the release dates are read from the tags.
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2.37.2
+        with:
+          php-version: '8.3'
+
+      - name: Detect lowest supported version
+        id: versions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mapfile -t nums < <(git ls-remote --heads origin "heads/stable[0-9][0-9]" \
+            | sed -n 's?.*refs/heads/stable\([0-9]\{2\}\)$?\1?p' | sort -n)
+          eval "$(php build/detect-versions.php "${nums[@]}")"
+          echo "Folders below server/${lowest_stable} are frozen"
+          echo "lowest_stable=${lowest_stable}" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch gh-pages history
+        run: git fetch --no-tags origin +refs/heads/gh-pages:refs/heads/gh-pages
+
+      - name: Rewrite gh-pages
+        id: rewrite
+        run: |
+          echo "old=$(git rev-parse gh-pages)" >> "$GITHUB_OUTPUT"
+          build/squash-gh-pages.sh gh-pages "${{ steps.versions.outputs.lowest_stable }}" \
+            refs/heads/gh-pages-squashed | tee -a "$GITHUB_OUTPUT"
+
+      # Deploy PRs are based on the old history: merging one after the rewrite
+      # would bring every squashed commit back. The next nightly deploy opens a
+      # fresh one on top of the new history.
+      - name: Close open deploy pull requests
+        if: steps.rewrite.outputs.changed == 'true' && inputs.dry_run != true
+        env:
+          GH_TOKEN: ${{ secrets.COMMAND_BOT_PAT }}
+        run: |
+          gh pr list --repo "${{ github.repository }}" --base gh-pages --state open \
+            --json number,headRefName \
+            --jq '.[] | select(.headRefName | startswith("automated/deploy/")) | .number' \
+          | while read -r number; do
+            gh pr close "${number}" --repo "${{ github.repository }}" --delete-branch \
+              --comment "Closed because gh-pages was squashed. The next scheduled deploy reopens it on the new history."
+          done
+
+      # The lease makes the push fail if anything landed on gh-pages since the
+      # fetch, rather than dropping it. Re-run the workflow in that case.
+      - name: Push rewritten gh-pages
+        if: steps.rewrite.outputs.changed == 'true' && inputs.dry_run != true
+        env:
+          DEPLOY_KEY: ${{ secrets.GH_PAGES_DEPLOY_KEY }}
+        run: |
+          key="${RUNNER_TEMP}/gh-pages-deploy-key"
+          hosts="${RUNNER_TEMP}/github-known-hosts"
+          install -m 600 /dev/null "${key}"
+          printf '%s\n' "${DEPLOY_KEY}" > "${key}"
+          # GitHub's published host keys, fetched over TLS rather than trusted on first use.
+          curl -fsSL https://api.github.com/meta | jq -r '.ssh_keys[] | "github.com " + .' > "${hosts}"
+          GIT_SSH_COMMAND="ssh -i ${key} -o IdentitiesOnly=yes -o UserKnownHostsFile=${hosts} -o StrictHostKeyChecking=yes" git push \
+            --force-with-lease="refs/heads/gh-pages:${{ steps.rewrite.outputs.old }}" \
+            "git@github.com:${{ github.repository }}.git" \
+            refs/heads/gh-pages-squashed:refs/heads/gh-pages
+          rm -f "${key}"
