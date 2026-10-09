@@ -11,6 +11,20 @@ This pages covers new features of the platform.
     Every feature should just have a brief description. Details have to be documented on a dedicated, persistent page.
     After branch-off the contents below will be cleared.
 
+Email template blocks
+---------------------
+
+The email template (``\OCP\Mail\IEMailTemplate``) was redesigned with dark mode and
+right-to-left support, and has new building blocks so emails no longer need hand-built HTML:
+
+- ``addBodySender()`` shows who the email is about, with an initials circle.
+- ``addBodyNote()`` shows a highlighted note from a user, or an info, warning or error message.
+- ``addBodyDetails()`` shows a card with a title and labelled rows, built with ``\OCP\Mail\EMailDetails``.
+- ``addBodyButtons()`` shows any number of buttons.
+- ``setLanguage()`` sets the language of the email, which also mirrors the layout for right-to-left languages.
+
+All values are escaped by the template. See :ref:`email` for details.
+
 New ``\OCP\Files\IUserFolder`` API
 ----------------------------------
 
