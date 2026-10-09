@@ -322,6 +322,15 @@ showing HTML on the client (or removing the HTML part in the mail server).</p>
 </div>
 <section id="modifying-the-look-of-emails-beyond-the-theming-app-capabilities">
 <h3>Modifying the look of emails beyond the theming app capabilities<a class="headerlink" href="#modifying-the-look-of-emails-beyond-the-theming-app-capabilities" title="Link to this heading"></a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Nextcloud 36 redesigned the email template: every email is now a single card,
+with dark mode and right-to-left support. A custom class overriding the HTML fragments of the
+previous design keeps working, but its parts will look out of place next to the new ones.
+Review it against the new <code class="docutils literal notranslate"><span class="pre">EMailTemplate</span></code> before upgrading. Calendar emails also no longer
+pass the <code class="docutils literal notranslate"><span class="pre">meeting_*_html</span></code> values to the template, they pass <code class="docutils literal notranslate"><span class="pre">meeting_*_previous</span></code> for
+changed values instead.</p>
+</div>
 <p>You can overwrite templates by writing a class that implements the template interface
 (or extends it to not need to copy over everything). Easiest way is to then put this class into
 an app and load it so you do not need to patch it on every update.</p>
