@@ -59,7 +59,6 @@ Table of contents
     webhook_listeners/index
     webhook_listeners/budibase_workflows
     windmill_workflows/index
-    
 
 .. toctree::
     :caption: Groupware
