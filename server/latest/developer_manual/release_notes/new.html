@@ -75,6 +75,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Release notes</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="critical_changes.html">Critical changes</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">New in this release</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#email-template-blocks">Email template blocks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-ocp-files-iuserfolder-api">New <code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder</span></code> API</a></li>
 </ul>
 </li>
@@ -123,6 +124,19 @@
   <section id="new-in-this-release">
 <span id="new-apis"></span><h1>New in this release<a class="headerlink" href="#new-in-this-release" title="Link to this heading"></a></h1>
 <p>This pages covers new features of the platform.</p>
+<section id="email-template-blocks">
+<h2>Email template blocks<a class="headerlink" href="#email-template-blocks" title="Link to this heading"></a></h2>
+<p>The email template (<code class="docutils literal notranslate"><span class="pre">\OCP\Mail\IEMailTemplate</span></code>) was redesigned with dark mode and
+right-to-left support, and has new building blocks so emails no longer need hand-built HTML:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">addBodySender()</span></code> shows who the email is about, with an initials circle.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addBodyNote()</span></code> shows a highlighted note from a user, or an info, warning or error message.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addBodyDetails()</span></code> shows a card with a title and labelled rows, built with <code class="docutils literal notranslate"><span class="pre">\OCP\Mail\EMailDetails</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addBodyButtons()</span></code> shows any number of buttons.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setLanguage()</span></code> sets the language of the email, which also mirrors the layout for right-to-left languages.</p></li>
+</ul>
+<p>All values are escaped by the template. See <a class="reference internal" href="../digging_deeper/email.html#email"><span class="std std-ref">Email</span></a> for details.</p>
+</section>
 <section id="new-ocp-files-iuserfolder-api">
 <h2>New <code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder</span></code> API<a class="headerlink" href="#new-ocp-files-iuserfolder-api" title="Link to this heading"></a></h2>
 <p>A new interface <code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder</span></code> was added, extending <code class="docutils literal notranslate"><span class="pre">\OCP\Files\Folder</span></code>.
@@ -146,7 +160,7 @@ As the new interface extends <code class="docutils literal notranslate"><span cl
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Oct 06, 2026.
+      <span class="lastupdated">Last updated on Oct 09, 2026.
       </span></p>
   </div>
 
