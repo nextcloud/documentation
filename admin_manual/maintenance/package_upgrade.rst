@@ -53,8 +53,27 @@ manually too by issuing the command:
 
 ``sudo snap refresh nextcloud``
 
+.. note::
+
+   Snap installs are usually tracked on a **channel tied to a major version**
+   (for example ``27`` or ``stable``). ``snap refresh`` alone only updates
+   within the channel you are already on. To move to a newer major release,
+   switch the channel first, then refresh::
+
+      sudo snap switch --channel=28 nextcloud
+      sudo snap refresh nextcloud
+
+   Replace ``28`` with the target major channel from the
+   `release strategy <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Release-strategy>`_.
+
 If the upgrade fails you can easily revert to the last working version by issuing the command:
 
 ``sudo snap revert nextcloud``
+
+After a successful snap refresh that includes a Nextcloud major upgrade, finish
+the database/app upgrade with the snap-wrapped ``occ`` (not a system
+``php occ`` as ``www-data``)::
+
+   sudo nextcloud.occ upgrade
 
 Further documentation, an `extensive Wiki <https://github.com/nextcloud-snap/nextcloud-snap/wiki>`_ and `FAQ's <https://github.com/nextcloud-snap/nextcloud-snap/wiki/FAQ's>`_  can be found on the `developers GitHub <https://github.com/nextcloud-snap/nextcloud-snap>`_.
