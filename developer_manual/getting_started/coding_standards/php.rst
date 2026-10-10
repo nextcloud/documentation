@@ -4,6 +4,52 @@ PHP coding standards
 
 Starting with Nextcloud 19 there is a shared `PHP Coding Standards Fixer <https://github.com/FriendsOfPhp/PHP-CS-Fixer>`_ configuration you can use to automatically format your app's source code. For full details see the `repository on GitHub <https://github.com/nextcloud/coding-standard/>`_.
 
+Setup
+-----
+
+Install the shared configuration as a development dependency:
+
+.. code-block:: bash
+
+  composer require --dev nextcloud/coding-standard
+
+Create a ``.php-cs-fixer.dist.php`` in your app root:
+
+.. code-block:: php
+
+  <?php
+
+  declare(strict_types=1);
+
+  require_once './vendor/autoload.php';
+
+  use Nextcloud\CodingStandard\Config;
+
+  $config = new Config();
+  $config
+  	->getFinder()
+  	->ignoreVCSIgnored(true)
+  	->notPath('build')
+  	->notPath('l10n')
+  	->notPath('src')
+  	->notPath('vendor')
+  	->in(__DIR__);
+  return $config;
+
+Add convenience scripts to ``composer.json``:
+
+.. code-block:: json
+
+  {
+      "scripts": {
+          "cs:check": "php-cs-fixer fix --dry-run --diff",
+          "cs:fix": "php-cs-fixer fix"
+      }
+  }
+
+Then run ``composer cs:check`` to list violations, or ``composer cs:fix`` to apply fixes.
+Exclude ``.php-cs-fixer.dist.php`` and ``.php-cs-fixer.cache`` from your release build.
+
 Always use::
 
   <?php
