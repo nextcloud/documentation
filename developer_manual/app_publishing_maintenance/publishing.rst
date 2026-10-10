@@ -38,6 +38,7 @@ Legal and security
    * Malicious intent includes deliberate spying on users by leaking user data to a third party system or adding a back door (like a hard-coded user account) to Nextcloud. An unintentional security bug that gets fixed in time won't be considered bad faith.
 * Apps do not violate any laws; it has to comply with copyright- and trademark law.
 * App authors have to respond timely to security concerns and not make Nextcloud more vulnerable to attacks.
+* Apps should ship a ``SECURITY.md`` (or equivalent) that tells reporters how to contact the app's developers about security issues. See the organization example: https://github.com/nextcloud/.github/blob/master/SECURITY.md
 
 .. note:: Distributing malicious or illegal applications can have legal consequences including, but not limited to Nextcloud or affected users taking legal action.
 
