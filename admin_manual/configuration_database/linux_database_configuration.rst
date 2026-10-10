@@ -98,32 +98,33 @@ Your :file:`/etc/mysql/my.cnf` could look like this:
 
 Please refer to the `page in the MySQL manual <https://mariadb.com/kb/en/library/set-transaction/#read-committed>`_.
 
-* That you have installed and enabled the pdo_mysql extension in PHP
+* That you have installed and enabled the **pdo_mysql** (and **mysqlnd**) extensions in PHP
 
-* That the **mysql.default_socket** points to the correct socket (if the database runs on the same server as Nextcloud).
+* That **pdo_mysql.default_socket** points to the correct socket when the database runs on the same server as Nextcloud (optional; omit to use the PHP build default).
 
 .. note:: MariaDB is backwards compatible with MySQL.  All instructions work for both. You will not need to replace mysql with anything.
 
-The PHP configuration in :file:`/etc/php7/conf.d/mysql.ini` could look like this:
+The PHP MySQL extensions Nextcloud uses are **mysqlnd** (network driver) and
+**pdo_mysql**. The old ``ext/mysql`` / ``[mysql]`` INI section was removed in
+PHP 7.0 and must not appear in modern configs.
+
+Example drop-ins (paths vary by distro; often under
+:file:`/etc/php/*/mods-available/` or :file:`/etc/php/*/conf.d/`):
 
 ::
 
-  # configuration for PHP MySQL module
-  extension=pdo_mysql.so
+  ; mysqlnd (priority typically 10)
+  ; https://www.php.net/manual/en/mysqlnd.config.php
+  extension=mysqlnd
 
-  [mysql]
-  mysql.allow_local_infile=On
-  mysql.allow_persistent=On
-  mysql.cache_size=2000
-  mysql.max_persistent=-1
-  mysql.max_links=-1
-  mysql.default_port=
-  mysql.default_socket=/var/lib/mysql/mysql.sock  # Debian squeeze: /var/run/mysqld/mysqld.sock
-  mysql.default_host=
-  mysql.default_user=
-  mysql.default_password=
-  mysql.connect_timeout=60
-  mysql.trace_mode=Off
+  ; pdo_mysql (priority typically 20)
+  ; https://www.php.net/manual/en/ref.pdo-mysql.php
+  extension=pdo_mysql
+  ; optional: default Unix socket when connecting to localhost
+  ; pdo_mysql.default_socket=/run/mysqld/mysqld.sock
+
+Tune ``mysqlnd.*`` / ``pdo_mysql.*`` only if needed; see the PHP manual pages
+above. Confirm the modules are loaded with ``php -m | grep -E 'mysqlnd|pdo_mysql'``.
 
 Now you need to create a database user and the database itself by using the
 MySQL command line interface. The database tables will be created by Nextcloud
