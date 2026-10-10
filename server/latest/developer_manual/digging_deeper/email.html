@@ -88,6 +88,7 @@
 <li class="toctree-l3"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Email</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#basic-usage">Basic usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#email-templates">Email templates</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#inline-attachments">Inline attachments</a></li>
 </ul>
 </li>
@@ -172,6 +173,106 @@
 </div>
 </div>
 </section>
+<section id="email-templates">
+<h2>Email templates<a class="headerlink" href="#email-templates" title="Link to this heading"></a></h2>
+<p>Most emails should not build their own HTML. <code class="docutils literal notranslate"><span class="pre">IMailer::createEMailTemplate()</span></code> returns an
+<code class="docutils literal notranslate"><span class="pre">\OCP\Mail\IEMailTemplate</span></code> that renders a themed HTML email and a matching plain text version,
+with dark mode support for the mail clients that have it. Attach it to a message with
+<code class="docutils literal notranslate"><span class="pre">IMessage::useTemplate()</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$template</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailer</span><span class="o">-&gt;</span><span class="na">createEMailTemplate</span><span class="p">(</span><span class="s1">'myapp.ProjectShared'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">'project'</span> <span class="o">=&gt;</span> <span class="nv">$projectName</span><span class="p">,</span>
+<span class="p">]);</span>
+<span class="nv">$template</span><span class="o">-&gt;</span><span class="na">setLanguage</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">getLanguageCode</span><span class="p">());</span>
+<span class="nv">$template</span><span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'%s shared a project with you'</span><span class="p">,</span> <span class="p">[</span><span class="nv">$sharerName</span><span class="p">]));</span>
+<span class="nv">$template</span><span class="o">-&gt;</span><span class="na">addHeader</span><span class="p">();</span>
+<span class="nv">$template</span><span class="o">-&gt;</span><span class="na">addHeading</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'%s shared a project with you'</span><span class="p">,</span> <span class="p">[</span><span class="nv">$sharerName</span><span class="p">]));</span>
+<span class="nv">$template</span><span class="o">-&gt;</span><span class="na">addBodyText</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'You can now see and edit the project.'</span><span class="p">));</span>
+<span class="nv">$template</span><span class="o">-&gt;</span><span class="na">addBodyButton</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Open project'</span><span class="p">),</span> <span class="nv">$projectUrl</span><span class="p">);</span>
+<span class="nv">$template</span><span class="o">-&gt;</span><span class="na">addFooter</span><span class="p">();</span>
+
+<span class="nv">$message</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailer</span><span class="o">-&gt;</span><span class="na">createMessage</span><span class="p">();</span>
+<span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setTo</span><span class="p">([</span><span class="nv">$recipientEmail</span><span class="p">]);</span>
+<span class="nv">$message</span><span class="o">-&gt;</span><span class="na">useTemplate</span><span class="p">(</span><span class="nv">$template</span><span class="p">);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailer</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The first argument of <code class="docutils literal notranslate"><span class="pre">createEMailTemplate()</span></code> identifies the email (<code class="docutils literal notranslate"><span class="pre">&lt;app&gt;.&lt;EmailName&gt;</span></code>), and
+the second one passes data to custom templates (see <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/email_configuration.html">Modifying the look of emails</a>
+in the administration manual).</p>
+<p>Write the email in the recipient’s language: get an <code class="docutils literal notranslate"><span class="pre">IL10N</span></code> for their language from
+<code class="docutils literal notranslate"><span class="pre">\OCP\L10N\IFactory</span></code> and pass its code to <code class="docutils literal notranslate"><span class="pre">setLanguage()</span></code>. The template then sets the right
+<code class="docutils literal notranslate"><span class="pre">lang</span></code> and <code class="docutils literal notranslate"><span class="pre">dir</span></code> attributes, mirrors the layout for right-to-left languages like Arabic or
+Hebrew, and writes the default footer in that language. Call it before <code class="docutils literal notranslate"><span class="pre">addFooter()</span></code>.</p>
+<section id="building-blocks">
+<h3>Building blocks<a class="headerlink" href="#building-blocks" title="Link to this heading"></a></h3>
+<p>Since Nextcloud 36, the template has blocks to show who an email is about, a highlighted note, a
+card with details, and a row of buttons. Unlike <code class="docutils literal notranslate"><span class="pre">addBodyText()</span></code> with a separate plain text, these
+blocks never take HTML: every value is escaped by the template, URLs included, and each block
+writes its own plain text version.</p>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/email-template-blocks.png"><img alt="An email with a sender, a heading, a details card with a calendar badge, a description note, a warning note and three buttons" src="../_images/email-template-blocks.png" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">A sender, a details card, two notes and a row of buttons.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">addBodySender()</span></code></dt><dd><p>The person the email is sent for (sharer, organizer…), with an initials circle, their name
+and an optional second line such as their email address. Add it before the heading.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">addBodyNote()</span></code></dt><dd><p>A highlighted box. Use <code class="docutils literal notranslate"><span class="pre">IEMailTemplate::NOTE_NEUTRAL</span></code> (the default) for text written by a
+user, like a share note or an event description, with the label shown above it. Use
+<code class="docutils literal notranslate"><span class="pre">NOTE_INFO</span></code>, <code class="docutils literal notranslate"><span class="pre">NOTE_WARNING</span></code> or <code class="docutils literal notranslate"><span class="pre">NOTE_ERROR</span></code> for messages from the server, with the label
+as a bold title. Line breaks are kept.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">addBodyDetails()</span></code></dt><dd><p>A card describing an item: title, subtitle, an initials circle or a calendar badge, and
+labelled rows. See below.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">addBodyButtons()</span></code></dt><dd><p>Any number of buttons, the first one is the primary action, with an optional question above
+them like “Will you attend?”.</p>
+</dd>
+</dl>
+<p>The details card is built with <code class="docutils literal notranslate"><span class="pre">\OCP\Mail\EMailDetails</span></code>. Each row holds one or more parts, each
+rendered on its own line: plain text, a link, or muted secondary text.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">OCP\Mail\EMailDetails</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Mail\IEMailTemplate</span><span class="p">;</span>
+
+<span class="nv">$template</span><span class="o">-&gt;</span><span class="na">addHeader</span><span class="p">();</span>
+<span class="nv">$template</span><span class="o">-&gt;</span><span class="na">addBodySender</span><span class="p">(</span><span class="nv">$organizerName</span><span class="p">,</span> <span class="nv">$organizerEmail</span><span class="p">);</span>
+<span class="nv">$template</span><span class="o">-&gt;</span><span class="na">addHeading</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'%s invited you to an event'</span><span class="p">,</span> <span class="p">[</span><span class="nv">$organizerName</span><span class="p">]));</span>
+
+<span class="nv">$details</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">EMailDetails</span><span class="p">(</span><span class="nv">$eventTitle</span><span class="p">))</span>
+    <span class="o">-&gt;</span><span class="na">setSubtitle</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">l</span><span class="p">(</span><span class="s1">'date'</span><span class="p">,</span> <span class="nv">$start</span><span class="p">,</span> <span class="p">[</span><span class="s1">'width'</span> <span class="o">=&gt;</span> <span class="s1">'full'</span><span class="p">]))</span>
+    <span class="o">-&gt;</span><span class="na">setDateBadge</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">l</span><span class="p">(</span><span class="s1">'date'</span><span class="p">,</span> <span class="nv">$start</span><span class="p">,</span> <span class="p">[</span><span class="s1">'width'</span> <span class="o">=&gt;</span> <span class="s1">'~MMM'</span><span class="p">]),</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">l</span><span class="p">(</span><span class="s1">'date'</span><span class="p">,</span> <span class="nv">$start</span><span class="p">,</span> <span class="p">[</span><span class="s1">'width'</span> <span class="o">=&gt;</span> <span class="s1">'~d'</span><span class="p">]));</span>
+<span class="nv">$details</span><span class="o">-&gt;</span><span class="na">addRow</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Where'</span><span class="p">))</span>
+    <span class="o">-&gt;</span><span class="na">text</span><span class="p">(</span><span class="nv">$location</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">link</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Join in Nextcloud Talk'</span><span class="p">),</span> <span class="nv">$talkUrl</span><span class="p">);</span>
+<span class="nv">$details</span><span class="o">-&gt;</span><span class="na">addRow</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Attendees'</span><span class="p">))</span>
+    <span class="o">-&gt;</span><span class="na">text</span><span class="p">(</span><span class="nv">$firstAttendee</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">muted</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">n</span><span class="p">(</span><span class="s1">'and %n other'</span><span class="p">,</span> <span class="s1">'and %n others'</span><span class="p">,</span> <span class="nv">$remaining</span><span class="p">));</span>
+<span class="nv">$template</span><span class="o">-&gt;</span><span class="na">addBodyDetails</span><span class="p">(</span><span class="nv">$details</span><span class="p">);</span>
+
+<span class="nv">$template</span><span class="o">-&gt;</span><span class="na">addBodyNote</span><span class="p">(</span><span class="nv">$description</span><span class="p">,</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Description'</span><span class="p">));</span>
+<span class="nv">$template</span><span class="o">-&gt;</span><span class="na">addBodyButtons</span><span class="p">([</span>
+    <span class="p">[</span><span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Accept'</span><span class="p">),</span> <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="nv">$acceptUrl</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Decline'</span><span class="p">),</span> <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="nv">$declineUrl</span><span class="p">],</span>
+<span class="p">],</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Will you attend?'</span><span class="p">));</span>
+<span class="nv">$template</span><span class="o">-&gt;</span><span class="na">addFooter</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">setInitials($name)</span></code> instead of <code class="docutils literal notranslate"><span class="pre">setDateBadge()</span></code> to show an initials circle, for example
+for a conversation or a team. The badge strings are passed as is, so localize them yourself.</p>
+<p>A short note about a shared item goes before its details card. Longer content, like an event
+description, goes after it.</p>
+</section>
+<section id="footer">
+<h3>Footer<a class="headerlink" href="#footer" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">addFooter()</span></code> without a text adds the default footer: the instance name and slogan, then
+“This is an automatically sent email, please do not reply.”. When the email has a sender block,
+the second line becomes “This email was sent from &lt;instance&gt; on behalf of &lt;name&gt;.” instead.
+Pass a text to <code class="docutils literal notranslate"><span class="pre">addFooter()</span></code> to replace the default footer entirely.</p>
+</section>
+</section>
 <section id="inline-attachments">
 <h2>Inline attachments<a class="headerlink" href="#inline-attachments" title="Link to this heading"></a></h2>
 <p>Inline attachments can be appended to a message with <code class="docutils literal notranslate"><span class="pre">IMessage::attachInline</span></code>:</p>
@@ -199,7 +300,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Oct 06, 2026.
+      <span class="lastupdated">Last updated on Oct 10, 2026.
       </span></p>
   </div>
 

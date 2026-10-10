@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Version control &mdash; Nextcloud 36 User Manual</title>
+  <title>Versionskontrol &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -77,20 +77,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Filer og synkronisering</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="managing.html">Managing your files</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="accessing.html">Adgang til dine filer</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="managing.html">Håndtering af dine filer</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="deleted_file_management.html">Deleted files</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Version control</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#naming-a-version">Naming a version</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#deleting-a-version">Deleting a version</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Versionskontrol</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#naming-a-version">Navngivning af en version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deleting-a-version">Sletning af en version</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="quota.html">Lagerkvote</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tagging.html">System tags</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Deling og samarbejde</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Sikkerhed og kryptering</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
@@ -118,8 +118,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Filer og synkronisering</a></li>
-          <li class="breadcrumb-item"><a href="managing.html">Managing your files</a></li>
-      <li class="breadcrumb-item active">Version control</li>
+          <li class="breadcrumb-item"><a href="managing.html">Håndtering af dine filer</a></li>
+      <li class="breadcrumb-item active">Versionskontrol</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/version_control.rst" class="fa fa-github"> Ret på GitHub</a>
       </li>
@@ -130,7 +130,7 @@
            <div itemprop="articleBody">
              
   <section id="version-control">
-<h1>Version control<a class="headerlink" href="#version-control" title="Link to this heading"></a></h1>
+<h1>Versionskontrol<a class="headerlink" href="#version-control" title="Link to this heading"></a></h1>
 <p>Nextcloud supports a simple version control system for files. Versioning creates
 backups of files which are accessible via the Versions tab on the Details
 sidebar. This tab contains the history of the file where you can roll back a
@@ -139,39 +139,35 @@ have passed since the last version was created. Versions are stored in <code cla
 <figure class="align-default">
 <img alt="File version history in the Details sidebar" src="../../_images/files_versioning.png" />
 </figure>
-<p>To restore a specific version of a file, click the circular arrow to the right.
-Click on the timestamp to download it.</p>
+<p>Klik på den runde pil til højre for at gendanne en bestemt version af en fil. Klik på tidsstemplet for at hente versionen.</p>
 <p>The versioning app expires old versions automatically to make sure that
 you don’t run out of space. This pattern is used to delete
 old versions:</p>
 <ul class="simple">
-<li><p>For the first second we keep one version</p></li>
-<li><p>For the first 10 seconds Nextcloud keeps one version every 2 seconds</p></li>
-<li><p>For the first minute Nextcloud keeps one version every 10 seconds</p></li>
-<li><p>For the first hour Nextcloud keeps one version every minute</p></li>
-<li><p>For the first 24 hours Nextcloud keeps one version every hour</p></li>
-<li><p>For the first 30 days Nextcloud keeps one version every day</p></li>
-<li><p>After the first 30 days Nextcloud keeps one version every week</p></li>
+<li><p>I det første sekund beholder vi én version</p></li>
+<li><p>I de første 10 sekunder beholder Nextcloud én version hvert 2 sekund</p></li>
+<li><p>I det første minut beholder Nextcloud én version hvert 10. sekund</p></li>
+<li><p>I den første time beholder Nextcloud én version hvert minut</p></li>
+<li><p>I de første 24 timer beholder Nextcloud én version hver time</p></li>
+<li><p>I de første 30 dage beholder Nextcloud én version hver dag</p></li>
+<li><p>Efter de første 30 dage beholder Nextcloud én version hver uge</p></li>
 </ul>
-<p>The versions are adjusted along this pattern every time a new version gets
-created.</p>
-<p>The version app never uses more than 50% of the user’s currently available free
-space. If the stored versions exceed this limit, Nextcloud deletes the oldest
-versions until it meets the disk space limit again.</p>
+<p>Versionerne justeres efter dette mønster, hver gang en ny version bliver oprettet.</p>
+<p>Versionsappen bruger aldrig mere end 50 % af brugerens aktuelt ledige plads. Hvis de gemte versioner fylder mere end det, sletter Nextcloud de ældste versioner, indtil grænsen er overholdt igen.</p>
 <section id="naming-a-version">
-<h2>Naming a version<a class="headerlink" href="#naming-a-version" title="Link to this heading"></a></h2>
-<p>You can give a name to a version.</p>
+<h2>Navngivning af en version<a class="headerlink" href="#naming-a-version" title="Link to this heading"></a></h2>
+<p>Du kan give en version et navn.</p>
 <figure class="align-default">
 <img alt="Version actions menu" src="../../_images/files_versions_actions.png" />
 </figure>
 <figure class="align-default">
 <img alt="Naming a file version" src="../../_images/files_versions_naming.png" />
 </figure>
-<p>When a version has a name, it will be excluded from the automatic expiration process.</p>
+<p>Når en version har et navn, bliver den ikke slettet automatisk, når den udløber.</p>
 </section>
 <section id="deleting-a-version">
-<h2>Deleting a version<a class="headerlink" href="#deleting-a-version" title="Link to this heading"></a></h2>
-<p>You can also manually delete a version without waiting for the automatic expiration process.</p>
+<h2>Sletning af en version<a class="headerlink" href="#deleting-a-version" title="Link to this heading"></a></h2>
+<p>Du kan også slette en version manuelt i stedet for at vente på, at den udløber automatisk.</p>
 </section>
 </section>
 
