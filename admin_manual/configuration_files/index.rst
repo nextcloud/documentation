@@ -8,6 +8,7 @@ File sharing and management
 
     file_sharing_configuration
     federated_cloud_sharing_configuration
+    team_folders
     big_file_upload_configuration
     default_files_configuration
     primary_storage
