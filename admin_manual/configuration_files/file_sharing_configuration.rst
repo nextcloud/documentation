@@ -134,6 +134,20 @@ You can use the ``occ`` command to update those, for example:
     + When full match is activated, do not match user email
     + Default: ``yes``
 
+- ``core.shareapi_public_link_base_url``
+    + Set a custom base URL used when generating public share links (link shares and email shares).
+      This applies to the web UI copy-link, the OCS Share API, share-notification emails, and reminders.
+      Useful when Nextcloud sits behind a public gateway or reverse proxy that exposes a different domain.
+    + Default: empty (unset), links use the instance URL.
+    + Must be an absolute ``http://`` or ``https://`` URL. Credentials, query strings, and fragments are not
+      allowed. Invalid values are rejected with a warning in the log and links fall back to the instance URL.
+    + The share-link path is appended as the instance would generate it —
+      ``/s/{token}``, or ``/index.php/s/{token}`` on instances without pretty URLs.
+      The configured base URL must accept and route that path to the instance.
+    + Example:
+      ``occ config:app:set core shareapi_public_link_base_url --value='https://public.example.com/'``
+
+
 Distinguish between max expiration date and default expiration date
 -------------------------------------------------------------------
 
