@@ -26,3 +26,14 @@ Use the navigation buttons on the left and right to scroll through participants 
 .. image:: images/talk-promoted-view.png
     :alt: Talk call in promoted (speaker) view with the active speaker highlighted
     :width: 700px
+
+Multi-speaker view
+-------------------
+
+Multi-speaker view works like speaker view, but promotes two or three active speakers into large tiles instead of
+just one, so you can follow a discussion between several people at once.
+
+.. TODO: mock screenshot below, replace with a real capture once the feature ships
+.. image:: images/talk-promoted-view.png
+    :alt: Talk call in multi-speaker view with several active speakers highlighted
+    :width: 700px

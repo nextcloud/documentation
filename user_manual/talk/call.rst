@@ -81,6 +81,18 @@ and whether you have ``Moderator`` permission for the conversation.
 If you are joining and the call is being recorded, you might be required to consent before being allowed to join.
 For more information, see :ref:`Call recording <call-recording>`.
 
+Restricting who can start a call (moderator)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+An administrator can limit who is allowed to start a call server-wide, to one of: everyone, users and moderators
+only, moderators only, or nobody (calls disabled). An administrator can additionally restrict starting a call to
+members of specific groups; when such groups are configured, only their members can start a call, and this also
+applies to moderators, while guests and federated users can never be part of a group.
+
+If you are not allowed to start a call, you can still join one already in progress, but you will not see the
+``Start call`` button. For conversations hosted on a federated server, the configuration of that server applies
+instead. Ask your administrator to check the Talk admin settings if you need to start calls yourself.
+
 Start the call
 ^^^^^^^^^^^^^^
 
