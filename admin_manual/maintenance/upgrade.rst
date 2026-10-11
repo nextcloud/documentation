@@ -93,9 +93,7 @@ backup before every upgrade.
 
 Then review third-party apps, if you have any, for compatibility with the new
 Nextcloud release. Any apps that are not developed by Nextcloud show a 3rd party
-designation. **Install unsupported apps at your own risk**. Then, before the
-upgrade, all 3rd party apps must be disabled. After the upgrade is complete you
-may re-enable them.
+designation. **Install unsupported apps at your own risk**.
 
 Maintenance mode
 ----------------
