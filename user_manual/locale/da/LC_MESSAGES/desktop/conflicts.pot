@@ -1,0 +1,162 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2026 Nextcloud GmbH and Nextcloud contributors
+# This file is distributed under the same license as the Nextcloud latest User Manual package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Christian Koerner, 2026
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud latest User Manual latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-02 09:19+0000\n"
+"PO-Revision-Date: 2025-02-12 13:33+0000\n"
+"Last-Translator: Christian Koerner, 2026\n"
+"Language-Team: Danish (https://app.transifex.com/nextcloud/teams/64236/da/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../desktop/conflicts.rst:3
+msgid "Conflicts"
+msgstr "Konflikter"
+
+#: ../../desktop/conflicts.rst:6
+msgid "Overview"
+msgstr "Oversigt"
+
+#: ../../desktop/conflicts.rst:8
+msgid ""
+"The Nextcloud desktop client uploads local changes and downloads remote "
+"changes. When a file has changed on the local side and on the remote between"
+" synchronization runs the client will be unable to resolve the situation on "
+"its own. It will create a conflict file with the local version, download the"
+" remote version and notify the user that a conflict occurred which needs "
+"attention."
+msgstr ""
+"Nextclouds skrivebordsklient overfører lokale ændringer og henter ændringer "
+"fra serveren. Hvis en fil er ændret både lokalt og på serveren mellem to "
+"synkroniseringer, kan klienten ikke selv løse situationen. Så opretter den "
+"en konfliktfil med den lokale version, henter serverens version og giver "
+"brugeren besked om, at der er en konflikt, som skal løses."
+
+#: ../../desktop/conflicts.rst:15
+msgid "Example"
+msgstr "Eksempel"
+
+#: ../../desktop/conflicts.rst:17
+msgid ""
+"Imagine there is a file called ``mydata.txt`` your synchronized folder. It "
+"has not changed for a while and contains the text \"contents\" locally and "
+"remotely. Now, nearly at the same time you update it locally to say \"local "
+"contents\" while the file on the server gets updated to contain \"remote "
+"contents\" by someone else."
+msgstr ""
+"Forestil dig, at der er en fil, der hedder ``mydata.txt``, i din "
+"synkroniserede mappe. Den har ikke været ændret i et stykke tid og "
+"indeholder teksten \"indhold\" både lokalt og på serveren. Næsten samtidig "
+"ændrer du den lokalt til \"lokalt indhold\", mens en anden ændrer filen på "
+"serveren til \"server-indhold\"."
+
+#: ../../desktop/conflicts.rst:22
+msgid ""
+"When attempting to upload your local changes the desktop client will notice "
+"that the server version has also changed. It creates a conflict and you will"
+" now have two files on your local machine:"
+msgstr ""
+"Når skrivebordsklienten prøver at overføre dine lokale ændringer, opdager "
+"den, at serverens version også er ændret. Den opretter en konflikt, og du "
+"har nu to filer på din computer:"
+
+#: ../../desktop/conflicts.rst:26
+msgid "``mydata.txt`` containing \"remote contents\""
+msgstr "``mydata.txt`` med indholdet \"server-indhold\""
+
+#: ../../desktop/conflicts.rst:27
+msgid ""
+"``mydata (conflicted copy 2018-04-10 093612).txt`` containing \"local "
+"contents\""
+msgstr ""
+"``mydata (conflicted copy 2018-04-10 093612).txt`` med indholdet \"lokalt "
+"indhold\""
+
+#: ../../desktop/conflicts.rst:29
+msgid ""
+"In this situation the file ``mydata.txt`` has the remote changes (and will "
+"continue to be updated with further remote changes when they happen), but "
+"your local adjustments have not been sent to the server (unless the server "
+"enables conflict uploading, see below)."
+msgstr ""
+"Her har filen ``mydata.txt`` ændringerne fra serveren (og bliver ved med at "
+"blive opdateret med nye ændringer fra serveren), men dine lokale ændringer "
+"er ikke sendt til serveren (medmindre serveren tillader overførsel af "
+"konflikter, se nedenfor)."
+
+#: ../../desktop/conflicts.rst:34
+msgid ""
+"The desktop client notifies you of this situation via system notifications, "
+"the system tray icon and a yellow \"unresolved conflicts\" badge in the "
+"account settings window. Clicking this badge shows a list that includes the "
+"unresolved conflicts and clicking one of them opens an explorer window "
+"pointing at the relevant file."
+msgstr ""
+"Skrivebordsklienten giver dig besked via systemnotifikationer, ikonet i "
+"meddelelsesområdet og et gult mærke med \"uløste konflikter\" i vinduet med "
+"kontoindstillinger. Hvis du klikker på mærket, vises en liste med de uløste "
+"konflikter. Hvis du klikker på en af dem, åbnes et vindue i filhåndteringen "
+"ved den pågældende fil."
+
+#: ../../desktop/conflicts.rst:39
+msgid ""
+"To resolve this conflict, open both files, compare the differences and copy "
+"your local changes from the \"conflicted copy\" file into the base file "
+"where applicable. In this example you might change ``mydata.txt`` to say "
+"\"local and remote contents\" and delete the file with \"conflicted copy\" "
+"in its name. With that, the conflict is resolved."
+msgstr ""
+"For at løse konflikten åbner du begge filer, sammenligner forskellene og "
+"kopierer dine lokale ændringer fra filen med \"conflicted copy\" over i den "
+"oprindelige fil, hvor det er relevant. I eksemplet kan du ændre "
+"``mydata.txt`` til \"lokalt indhold og server-indhold\" og slette filen med "
+"\"conflicted copy\" i navnet. Så er konflikten løst."
+
+#: ../../desktop/conflicts.rst:46
+msgid "Uploading conflicts (experimental)"
+msgstr "Overførsel af konflikter (eksperimentel)"
+
+#: ../../desktop/conflicts.rst:48
+msgid ""
+"By default the conflict file (the file with \"conflicted copy\" in its name "
+"that contains your local conflicting changes) is not uploaded to the server."
+" The idea is that you, the author of the changes, are the best person for "
+"resolving the conflict and showing the conflict to other users might create "
+"confusion."
+msgstr ""
+"Som standard bliver konfliktfilen (filen med \"conflicted copy\" i navnet, "
+"som indeholder dine lokale ændringer) ikke overført til serveren. Tanken er,"
+" at du, der har lavet ændringerne, er den bedste til at løse konflikten, og "
+"at det kan skabe forvirring at vise konflikten for andre brugere."
+
+#: ../../desktop/conflicts.rst:53
+msgid ""
+"However, in some scenarios it makes a lot of sense to upload these "
+"conflicting changes such that local work can become visible even if the "
+"conflict won't be resolved immediately."
+msgstr ""
+"I nogle tilfælde giver det dog god mening at overføre ændringerne i "
+"konflikt, så det lokale arbejde bliver synligt, selvom konflikten ikke "
+"bliver løst med det samme."
+
+#: ../../desktop/conflicts.rst:57
+msgid ""
+"In the future there might be a server-wide switch for this behavior. For now"
+" it can already be tested by setting the environment variable "
+"``OWNCLOUD_UPLOAD_CONFLICT_FILES=1``."
+msgstr ""
+"På et tidspunkt kommer der måske en indstilling for hele serveren. Indtil "
+"videre kan det testes ved at sætte miljøvariablen "
+"``OWNCLOUD_UPLOAD_CONFLICT_FILES=1``."
