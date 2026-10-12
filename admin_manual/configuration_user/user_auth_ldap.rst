@@ -392,6 +392,26 @@ Group Member association:
 
   * Example: *uniquemember*
 
+.. warning::
+   Matching a user's ``gidNumber`` to a group's ``gidNumber`` also makes
+   Nextcloud treat that user as a member of the group. This is the POSIX
+   primary-group mechanism. It applies **in addition to** (and independently
+   of) whatever you configure here — for example ``member``, ``memberUid``,
+   or ``uniqueMember``.
+
+   So after you remove a user from an LDAP group via the usual membership
+   attribute, they may still appear as a member in the web UI and in
+   ``occ`` output while their ``gidNumber`` still matches the group's. The
+   same idea applies to Active Directory ``primaryGroupID``. The attribute
+   name used for the user-side value is configurable as ``ldapGidNumber``
+   (default ``gidNumber``) via the LDAP configuration API / ``occ``, but it
+   is not exposed in the admin UI.
+
+   Prefer distinct ``gidNumber`` namespaces for users versus groups, or
+   change the user's ``gidNumber`` / ``primaryGroupID`` when membership
+   should end. ``ldap:show-remnants`` only lists deleted users and does not
+   clear this secondary relation.
+
 Nested groups:
   Enable group member retrieval from sub groups.
 
