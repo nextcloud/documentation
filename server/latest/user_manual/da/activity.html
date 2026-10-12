@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using the Activity app &mdash; Nextcloud 36 User Manual</title>
+  <title>Brug af Aktivitet &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -74,16 +74,16 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud 36 brugermanual introduktion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Using the Activity app</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#viewing-your-activity-stream">Viewing your activity stream</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#filtering-activities">Filtering activities</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Brug af Aktivitet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#viewing-your-activity-stream">Se dine aktiviteter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-activities">Filtrer aktiviteter</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#activity-in-the-files-sidebar">Activity in the Files sidebar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#rss-feed">RSS feed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#notification-settings">Notification settings</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#email-notification-frequency">Email notification frequency</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#daily-activity-summary">Daily activity summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#activity-in-the-files-sidebar">Aktivitet i sidepanelet i Filer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rss-feed">RSS-feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notification-settings">Indstillinger for notifikationer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#email-notification-frequency">Hvor ofte du får notifikationer via e-mail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#daily-activity-summary">Daglig aktivitetsoversigt</a></li>
 </ul>
 </li>
 </ul>
@@ -94,9 +94,9 @@
 <li class="toctree-l1"><a class="reference internal" href="talk/index.html">Talk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Setting your preferences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="universal_access.html">Universal access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Indstilling af dine præferencer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="universal_access.html">Tilgængelighed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_2fa.html">Brug af to-faktor-godkendelse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="session_management.html">Administrer tilsluttede browsere og enheder</a></li>
 </ul>
 
@@ -114,7 +114,7 @@
           <div role="navigation" aria-label="Navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="contents.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Using the Activity app</li>
+      <li class="breadcrumb-item active">Brug af Aktivitet</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/activity.rst" class="fa fa-github"> Ret på GitHub</a>
       </li>
@@ -125,124 +125,100 @@
            <div itemprop="articleBody">
              
   <section id="using-the-activity-app">
-<span id="activity"></span><h1>Using the Activity app<a class="headerlink" href="#using-the-activity-app" title="Link to this heading"></a></h1>
-<p>The Activity app keeps track of everything happening in your Nextcloud.
-It records events such as file changes, shares, calendar updates, and
-more, giving you a chronological overview of what happened and when.</p>
-<p>The Activity app is enabled by default.</p>
+<span id="activity"></span><h1>Brug af Aktivitet<a class="headerlink" href="#using-the-activity-app" title="Link to this heading"></a></h1>
+<p>Aktivitet holder styr på alt, hvad der sker i din Nextcloud. Appen registrerer hændelser som ændringer af filer, delinger, opdateringer i kalenderen og meget mere, så du får et tidsmæssigt overblik over, hvad der skete hvornår.</p>
+<p>Aktivitet er slået til som standard.</p>
 <figure class="align-default" id="id1">
 <img alt="The Activity stream showing all recent activities." src="../_images/activity-stream-all.png" />
 <figcaption>
-<p><span class="caption-text"><em>The Activity stream showing all recent activities.</em></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+<p><span class="caption-text"><em>Aktivitetslisten med alle de seneste aktiviteter.</em></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <section id="viewing-your-activity-stream">
-<h2>Viewing your activity stream<a class="headerlink" href="#viewing-your-activity-stream" title="Link to this heading"></a></h2>
-<p>To view your activity stream, click on the <strong>Activity</strong> icon in the
-top navigation bar or navigate to <code class="docutils literal notranslate"><span class="pre">/apps/activity</span></code> in your browser.</p>
-<p>The stream shows all events grouped by day. Each entry shows what
-happened, which file or object was affected, and how long ago the
-event occurred. Entries from other apps such as Calendar, Contacts,
-or Talk also appear in the stream if those apps are installed.</p>
+<h2>Se dine aktiviteter<a class="headerlink" href="#viewing-your-activity-stream" title="Link to this heading"></a></h2>
+<p>Klik på ikonet <strong>Aktivitet</strong> i navigationen øverst, eller gå til <code class="docutils literal notranslate"><span class="pre">/apps/activity</span></code> i din browser for at se dine aktiviteter.</p>
+<p>Listen viser alle hændelser grupperet efter dag. Hver post viser, hvad der skete, hvilken fil eller hvilket element det drejede sig om, og hvor længe siden det er. Poster fra andre apps som Kalender, Kontakter eller Talk vises også på listen, hvis appsene er installeret.</p>
 <section id="filtering-activities">
-<h3>Filtering activities<a class="headerlink" href="#filtering-activities" title="Link to this heading"></a></h3>
-<p>The left sidebar provides filters to narrow down the activity stream:</p>
+<h3>Filtrer aktiviteter<a class="headerlink" href="#filtering-activities" title="Link to this heading"></a></h3>
+<p>I venstre sidepanel er der filtre, som indsnævrer aktivitetslisten:</p>
 <ul class="simple">
-<li><p><strong>All activities</strong> shows everything.</p></li>
-<li><p><strong>By you</strong> shows only activities that you triggered yourself.</p></li>
-<li><p><strong>By others</strong> shows only activities triggered by other users.</p></li>
-<li><p><strong>File changes</strong> shows only file and folder events (create, modify,
-delete, rename, move).</p></li>
+<li><p><strong>Alle aktiviteter</strong> viser alt.</p></li>
+<li><p><strong>Af dig</strong> viser kun aktiviteter, som du selv har udløst.</p></li>
+<li><p><strong>Af andre</strong> viser kun aktiviteter, som andre brugere har udløst.</p></li>
+<li><p><strong>Filændringer</strong> viser kun hændelser for filer og mapper (oprettet, ændret, slettet, omdøbt, flyttet).</p></li>
 </ul>
-<p>Additional filters may appear depending on which apps are installed
-on your Nextcloud instance (e.g. <strong>Favorites</strong>, <strong>Calendar</strong>,
-<strong>Contacts</strong>).</p>
+<p>Der kan være flere filtre, afhængigt af hvilke apps der er installeret på din Nextcloud-instans (f.eks. <strong>Foretrukne</strong>, <strong>Kalender</strong>, <strong>Kontakter</strong>).</p>
 <figure class="align-default" id="id2">
 <img alt="Activity stream filtered to show only activities you triggered." src="../_images/activity-stream-self.png" />
 <figcaption>
-<p><span class="caption-text"><em>The activity stream filtered to show only your own activities.</em></span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+<p><span class="caption-text"><em>Aktivitetslisten filtreret, så den kun viser dine egne aktiviteter.</em></span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id3">
 <img alt="Activity stream filtered to show file changes only." src="../_images/activity-stream-file-changes.png" />
 <figcaption>
-<p><span class="caption-text"><em>The activity stream filtered to file changes only.</em></span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+<p><span class="caption-text"><em>Aktivitetslisten filtreret, så den kun viser ændringer af filer.</em></span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="activity-in-the-files-sidebar">
-<h2>Activity in the Files sidebar<a class="headerlink" href="#activity-in-the-files-sidebar" title="Link to this heading"></a></h2>
-<p>You can also view activities for a specific file or folder directly
-from the Files app. Select a file, open the sidebar and click on the
-<strong>Activity</strong> tab. This shows only the events related to that
-particular file, such as when it was created, modified, shared, or
-tagged.</p>
+<h2>Aktivitet i sidepanelet i Filer<a class="headerlink" href="#activity-in-the-files-sidebar" title="Link to this heading"></a></h2>
+<p>Du kan også se aktiviteterne for en bestemt fil eller mappe direkte i Filer. Vælg en fil, åbn sidepanelet, og klik på fanen <strong>Aktivitet</strong>. Så ser du kun hændelserne for netop den fil, f.eks. hvornår den blev oprettet, ændret, delt eller fik et mærke.</p>
 <figure class="align-default" id="id4">
 <img alt="The Activity tab in the Files sidebar showing per-file events." src="../_images/activity-sidebar.png" />
 <figcaption>
-<p><span class="caption-text"><em>The Activity tab in the Files sidebar showing per-file events.</em></span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+<p><span class="caption-text"><em>Fanen Aktivitet i sidepanelet i Filer med hændelser for den enkelte fil.</em></span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>
 <section id="rss-feed">
-<h2>RSS feed<a class="headerlink" href="#rss-feed" title="Link to this heading"></a></h2>
-<p>The Activity app can provide your activity stream as an RSS feed,
-allowing you to follow your Nextcloud activity from any feed reader.</p>
-<p>To enable the RSS feed:</p>
+<h2>RSS-feed<a class="headerlink" href="#rss-feed" title="Link to this heading"></a></h2>
+<p>Aktivitet kan levere dine aktiviteter som et RSS-feed, så du kan følge aktiviteten i din Nextcloud i et hvilket som helst program til feeds.</p>
+<p>Sådan slår du RSS-feedet til:</p>
 <ol class="arabic simple">
-<li><p>Open the Activity app.</p></li>
-<li><p>Click <strong>Activity settings</strong> at the bottom of the left sidebar.</p></li>
-<li><p>Enable the <strong>Enable RSS feed</strong> toggle.</p></li>
-<li><p>Copy the RSS feed link that appears.</p></li>
+<li><p>Åbn Aktivitet.</p></li>
+<li><p>Klik på <strong>Aktivitetsindstillinger</strong> nederst i venstre sidepanel.</p></li>
+<li><p>Slå <strong>Aktivér RSS-feed</strong> til.</p></li>
+<li><p>Kopiér linket til RSS-feedet, der vises.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Bemærk</p>
-<p>The RSS feed link contains a secret token. Do not share it with others,
-as it provides unauthenticated access to your activity stream.</p>
+<p>Linket til RSS-feedet indeholder et hemmeligt token. Del det ikke med andre, for det giver adgang til dine aktiviteter uden login.</p>
 </div>
 </section>
 <section id="notification-settings">
-<h2>Notification settings<a class="headerlink" href="#notification-settings" title="Link to this heading"></a></h2>
-<p>You can choose how you want to be notified about different types of
-activities. Go to <strong>Settings</strong> &gt; <strong>Personal</strong> &gt; <strong>Notifications</strong> to
-configure your preferences.</p>
+<h2>Indstillinger for notifikationer<a class="headerlink" href="#notification-settings" title="Link to this heading"></a></h2>
+<p>Du kan vælge, hvordan du vil have besked om forskellige typer aktiviteter. Gå til <strong>Indstillinger</strong> &gt; <strong>Personligt</strong> &gt; <strong>Notifikationer</strong> for at vælge dine indstillinger.</p>
 <figure class="align-default" id="id5">
 <img alt="Personal notification settings for the Activity app." src="../_images/activity-settings-personal.png" />
 <figcaption>
-<p><span class="caption-text"><em>Personal notification settings for the Activity app.</em></span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+<p><span class="caption-text"><em>Personlige indstillinger for notifikationer i Aktivitet.</em></span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
 </figcaption>
 </figure>
-<p>The settings are organized by category (e.g. <strong>Files</strong>, <strong>Sharing</strong>,
-<strong>Calendar, contacts and tasks</strong>). For each activity type you can
-choose to receive:</p>
+<p>Indstillingerne er ordnet efter kategori (f.eks. <strong>Filer</strong>, <strong>Deling</strong>, <strong>Kalender, kontakter og opgaver</strong>). For hver type aktivitet kan du vælge at få:</p>
 <ul class="simple">
-<li><p><strong>Mail</strong> notifications (email)</p></li>
-<li><p><strong>Push</strong> notifications (mobile and desktop)</p></li>
+<li><p>Notifikationer via <strong>Mail</strong> (e-mail)</p></li>
+<li><p><strong>Push</strong>-notifikationer (mobil og computer)</p></li>
 </ul>
-<p>Check or uncheck the corresponding boxes to enable or disable
-notifications for each activity type.</p>
+<p>Markér eller fjern markeringen i de tilhørende felter for at slå notifikationer til eller fra for hver type aktivitet.</p>
 <section id="email-notification-frequency">
-<h3>Email notification frequency<a class="headerlink" href="#email-notification-frequency" title="Link to this heading"></a></h3>
-<p>Below the notification matrix you can choose how often email
-notifications are sent:</p>
+<h3>Hvor ofte du får notifikationer via e-mail<a class="headerlink" href="#email-notification-frequency" title="Link to this heading"></a></h3>
+<p>Under oversigten over notifikationer kan du vælge, hvor ofte der sendes notifikationer via e-mail:</p>
 <ul class="simple">
-<li><p><strong>As soon as possible</strong> sends an email shortly after each event.</p></li>
-<li><p><strong>Hourly</strong> batches notifications and sends them once per hour.</p></li>
-<li><p><strong>Daily</strong> sends a single email per day.</p></li>
-<li><p><strong>Weekly</strong> sends a single email per week.</p></li>
+<li><p><strong>Så hurtigt som muligt</strong> sender en e-mail kort efter hver hændelse.</p></li>
+<li><p><strong>Hver time</strong> samler notifikationerne og sender dem én gang i timen.</p></li>
+<li><p><strong>Dagligt</strong> sender én e-mail om dagen.</p></li>
+<li><p><strong>Ugentligt</strong> sender én e-mail om ugen.</p></li>
 </ul>
 </section>
 <section id="daily-activity-summary">
-<h3>Daily activity summary<a class="headerlink" href="#daily-activity-summary" title="Link to this heading"></a></h3>
-<p>You can enable a daily summary email that is sent every morning with
-an overview of the previous day’s activities. This option is available
-as a separate toggle below the notification frequency setting:</p>
+<h3>Daglig aktivitetsoversigt<a class="headerlink" href="#daily-activity-summary" title="Link to this heading"></a></h3>
+<p>Du kan slå en daglig oversigt via e-mail til, som sendes hver morgen med et overblik over aktiviteterne dagen før. Det er et særskilt valg under indstillingen for, hvor ofte der sendes notifikationer:</p>
 <ul class="simple">
-<li><p>Check <strong>Send daily activity summary in the morning</strong> to enable it.</p></li>
+<li><p>Markér <strong>Send daglig aktivitetsoversigt om morgenen</strong> for at slå den til.</p></li>
 </ul>
-<p>The daily summary is independent of the per-event notifications above
-and provides a convenient digest of all activity.</p>
+<p>Den daglige oversigt er uafhængig af notifikationerne for de enkelte hændelser ovenfor og giver et praktisk samlet overblik over al aktivitet.</p>
 </section>
 </section>
 </section>
@@ -376,7 +352,7 @@ and provides a convenient digest of all activity.</p>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
       <dl class="nc-languages-list">
-        <dt>Languages</dt>
+        <dt>Sprog</dt>
         
           <dd>
             <a href="/server/latest/user_manual/ar/"
