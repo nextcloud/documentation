@@ -2,10 +2,9 @@
 Convert to a different database type
 ====================================
 
-You can convert a SQLite database to a better performing MySQL, MariaDB or
-PostgreSQL database with the Nextcloud command line tool. SQLite is good for
-testing and simple single-user Nextcloud servers, but it does not scale for
-multiple-user production servers.
+You can convert a server to another database configuration with the Nextcloud command line tool.
+
+This can be used to convert to a more scalable database. SQLite is good for testing and simple single-user Nextcloud servers, but it does not scale for multiple-user production servers.
 
 
 Run the conversion
@@ -17,7 +16,7 @@ Conversion consists of two steps:
 2. Triggering the conversion tool which migrates the contents of the existing database to the target database
 
 Establishing the target database
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 First create up the target (new) database (along with its associated username and password) by following the manual database configuration instructions for your chosen target database type:
 
@@ -34,17 +33,16 @@ The ``occ db:convert-type`` command handles all the tasks of the conversion. The
 
 ::
 
-  sudo -E -u www-data php occ db:convert-type [options] type username hostname database
+  sudo -E -u www-data php occ db:convert-type [options] newConfigFile
 
-``type`` should be the target database type. The same values are available here as for the ``config.php`` ``dbtype`` parameter. It should be one of: ``mysql`` for MariaDB/MySQL,
-``pgsql`` for PostgreSQL, or ``oci`` for Oracle.
+``newConfigFile`` should be the name of a second ``config.php`` file stored in the same location as the servers ``config.php`` file with the new database parameters.
+Ensure that the new config file has the same permissions so that it is protected appropriately.
 
 The options:
 
-* ``--port="3306"``                       the database port (optional) [defaults to "3306"]
-* ``--password="mysql_user_password"``    password for the new database. If omitted the tool will ask you (optional)
 * ``--clear-schema``                      clear schema (optional)
 * ``--all-apps``                          by default, tables for enabled apps are converted, use to convert also tables of deactivated apps (optional)
+* ``--chunk-size``                        the maximum number of database rows to handle in a single query to limit memory use during conversion (optional, default 1000)
 * ``-n, --no-interaction``                do not ask any interactive question
 
 .. note:: The conversion tool searches for apps in your configured app folders and uses
@@ -55,27 +53,9 @@ Let's convert our existing (functioning) sqlite3 installation to be MariaDB/MySQ
 
 ::
 
-  sudo -E -u www-data php occ db:convert-type --password="<password>" --port="3306" --all-apps mysql <username> <hostname> nextcloud
+  sudo -E -u www-data php occ db:convert-type --all-apps newConfig.php
 
-.. note:: It was unnecessary to specify the port in this example because ``3306`` is already the default. We did so
-   merely for demonstration purposes and completeness in case the reader is using a non-standard port on their target
-   database server.
-
-On success the converter will automatically configure the new database in your
-Nextcloud config ``config.php``.
-
-If you are converting to a MySQL/MariaDB database, you will also want to set ``mysql.utf8mb4`` parameter to true in your ``config.php``:
-
-::
-
-   sudo -E -u www-data php occ config:system:set mysql.utf8mb4 --type boolean --value="true"
-
-If you like, you can view the changes that were made by looking for the ``db*`` parameters in your ``config.php`` (you could also use this command before
-doing the conversion to compare your configuration before/after):
-
-::
-
-   grep db config/config.php
+After conversion, replace your ``config.php`` with the new config file.
 
 Inconvertible tables
 --------------------
