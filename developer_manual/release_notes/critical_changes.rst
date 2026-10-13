@@ -53,6 +53,8 @@ if your app relies on them please migrate to the replacement event.
      - ``OC\Core\Events\PasswordResetEvent``
    * - ``\OCP\Versions::rollback``
      - ``OCA\Files_Versions\Events\VersionRestoredEvent``
+   * - ``\OC_User::post_login``
+     - ``OCP\User\Events\UserLoggedInEvent`` and ``OCP\User\Events\UserLoggedInWithCookieEvent``
 
 Unified sharing
 ---------------
