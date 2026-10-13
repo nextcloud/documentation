@@ -180,7 +180,9 @@ The API related to these tables are now using a string instead of a int. See Cha
 Added Events
 ^^^^^^^^^^^^
 
-- TBD
+- New ``OCP\OCM\Events\LocalOCMDiscoveryEvent`` event emitted before the API returns a local OCM provider.
+- New ``OCP\OCM\Events\OCMEndpointRequestEvent`` event emitted on incoming OCM endpoint requests.
+
 
 Added APIs
 ^^^^^^^^^^
@@ -206,6 +208,9 @@ Added APIs
 - ``ISynchronousWatermarkingProvider`` TaskProcessing provider interface was added to allow synchronous processing providers to react to the boolean includeWatermark flag
 
 - Support for delegation-only section and settings have been added to the info.xml schema for applications. Only useful if your application needs to enable delegation of rights which are not related to a setting page. Known examples of that is user management and webhook registration. See :ref:`app metadata<app metadata>` for details.
+
+- New ``OCP\OCM\Events\LocalOCMDiscoveryEvent`` event. Catch this to register additional resources and/or capabilities at the local OCM provider before the provider is returned by the API.
+- New ``OCP\OCM\Events\OCMEndpointRequestEvent`` event. Catch this event in order to manage the OCM request/capability.
 
 Changed APIs
 ^^^^^^^^^^^^
