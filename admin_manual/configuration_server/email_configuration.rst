@@ -110,6 +110,13 @@ settings and look the same in all the different email clients out there.
 Modifying the look of emails beyond the theming app capabilities
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+.. warning:: Nextcloud 36 redesigned the email template: every email is now a single card,
+   with dark mode and right-to-left support. A custom class overriding the HTML fragments of the
+   previous design keeps working, but its parts will look out of place next to the new ones.
+   Review it against the new ``EMailTemplate`` before upgrading. Calendar emails also no longer
+   pass the ``meeting_*_html`` values to the template, they pass ``meeting_*_previous`` for
+   changed values instead.
+
 You can overwrite templates by writing a class that implements the template interface
 (or extends it to not need to copy over everything). Easiest way is to then put this class into
 an app and load it so you do not need to patch it on every update.
