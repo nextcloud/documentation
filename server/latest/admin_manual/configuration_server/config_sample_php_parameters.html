@@ -2575,6 +2575,7 @@ have to add the <code class="docutils literal notranslate"><span class="pre">OC\
         <span class="s1">'OC\Preview\XBitmap'</span><span class="p">,</span>
         <span class="s1">'OC\Preview\Krita'</span><span class="p">,</span>
         <span class="s1">'OC\Preview\WebP'</span><span class="p">,</span>
+        <span class="s1">'OC\Preview\AVIF'</span><span class="p">,</span>
         <span class="s1">'OC\Preview\MarkDown'</span><span class="p">,</span>
         <span class="s1">'OC\Preview\TXT'</span><span class="p">,</span>
         <span class="s1">'OC\Preview\OpenDocument'</span><span class="p">,</span>
@@ -2586,10 +2587,12 @@ have to add the <code class="docutils literal notranslate"><span class="pre">OC\
 concerns:</p>
 <blockquote>
 <div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\AVIFImagick</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\EMF</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\Font</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\HEIC</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\Illustrator</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\JP2</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\Movie</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\MP3</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\MSOffice2003</span></code></p></li>
@@ -2612,6 +2615,12 @@ concerns:</p>
 </ul>
 </dd>
 </dl>
+<p>AVIF has two providers for the same mimetype. <code class="docutils literal notranslate"><span class="pre">OC\Preview\AVIF</span></code> is enabled
+by default and decodes with GD, which handles AVIF only when PHP was built
+against a libgd that supports it. <code class="docutils literal notranslate"><span class="pre">OC\Preview\AVIFImagick</span></code> covers the
+builds where it was not, and registers only when ImageMagick reports an
+AVIF delegate. Enabling it alongside the default is the useful case: GD is
+tried first, and ImageMagick is tried after it if GD returns nothing.</p>
 <p>Defaults to the following providers:</p>
 <blockquote>
 <div><ul class="simple">
@@ -2622,6 +2631,7 @@ concerns:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\XBitmap</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\Krita</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\WebP</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\AVIF</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\MarkDown</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\TXT</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\OpenDocument</span></code></p></li>
