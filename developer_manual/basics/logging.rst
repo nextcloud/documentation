@@ -301,7 +301,7 @@ Admin audit logging
 
 If you want to log things less for system administration but for compliance reasons, e.g. who accessed which file,
 who changed the password of an item or made it public, the
-`admin audit log <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/logging_configuration.html#admin-audit-log>`_
+`admin audit log <https://docs.nextcloud.com/server/latest/admin_manual/configuration_monitoring/audit_log.html>`_
 is the correct place.
 
 You can easily add a log by simply emitting an ``OCP\Log\Audit\CriticalActionPerformedEvent`` event:
@@ -330,3 +330,34 @@ written in clear text to the audit log:
         ['name' => $userId],
         true  // obfuscate parameters in the audit log
     );
+
+Each entry in the audit log contains the message with the parameters inserted, and the parameters themselves as a
+JSON object in ``data.params``. The keys of your parameters array become the keys of that object, so use short and
+descriptive names, for example ``user``, ``path`` or ``shareId``. The values must be scalars, ``null`` or
+``\DateTimeInterface`` objects. When ``$obfuscateParameters`` is ``true``, ``data.params`` is left out.
+
+Operation identifier
+^^^^^^^^^^^^^^^^^^^^
+
+Since Nextcloud 36, the constructor accepts an optional fourth parameter ``?string $operation``. It is a stable
+identifier of the action in the form ``<app>.<entity>.<action>``, using lowercase letters, digits and underscores, for
+example ``myapp.document.published``. It is written to ``data.operation`` and lets administrators filter and alert on
+your actions without parsing the message. Any other form throws an ``\InvalidArgumentException``.
+
+.. note::
+
+    The operation identifier will become required in a future Nextcloud version. Pass one for every event you emit,
+    so your app keeps working when that happens.
+
+.. code-block:: php
+
+    $event = new \OCP\Log\Audit\CriticalActionPerformedEvent(
+        'Document "%s" published by "%s"',
+        ['document' => $documentId, 'user' => $userId],
+        false,
+        'myapp.document.published'
+    );
+    $dispatcher->dispatchTyped($event);
+
+Treat the identifier as part of your app's API: administrators may rely on it in their filters, so do not change it
+once it was released.

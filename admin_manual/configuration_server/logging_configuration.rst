@@ -4,7 +4,7 @@ Logging
 
 Use your Nextcloud log to review system status, or to help debug problems. You may adjust logging levels, and choose how and where log data is stored. If additional event logging is required, you can optionally activate the **admin_audit** app.
 
-When ``file`` based logging is utilized, both the Nextcloud log and, optionally, the **admin_audit** app log can be viewed within the Nextcloud interface under *Administration settings -> Logging* (this functionality is provided by the **logreader** app).
+When ``file`` based logging is utilized, the Nextcloud log can be viewed within the Nextcloud interface under *Administration settings -> Logging* (this functionality is provided by the **logreader** app).
 
 Further configuration and usage details for both the standard Nextcloud log and the optional **admin_audit** app log can be found below.
 
@@ -295,6 +295,7 @@ Log field breakdown
 * **time**: date and time (format and timezone can be configured in config.php)
 * **remoteAddr**: the IP address of the user (if applicable – empty for occ commands)
 * **user**: acting user's id (if applicable)
+* **userDisplayName**: acting user's display name (only present when a user is logged in)
 * **app**: affected app (always admin_audit in audit.log)
 * **method**: HTTP method, for example GET, POST, PROPFIND, etc. – empty on occ calls
 * **url**: request path (if applicable – empty on occ calls)
@@ -318,6 +319,20 @@ Admin audit log (Optional)
 By enabling the **admin_audit** app, additional information about various
 events can be logged. The audit log supports all of the logging backends
 described above (file, syslog, systemd, errorlog).
+
+This section covers how to set up the audit log. See :doc:`../configuration_monitoring/audit_log` for the format of its entries,
+how to read them, and its known limitations.
+
+Enabling the audit log
+~~~~~~~~~~~~~~~~~~~~~~
+
+The **admin_audit** app is shipped with Nextcloud, but disabled by default. Enable it with:
+
+::
+
+    occ app:enable admin_audit
+
+Audit entries are only written when the log level allows it. See `Log level interaction`_ below.
 
 Default audit log location
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
