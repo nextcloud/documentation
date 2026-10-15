@@ -12,40 +12,29 @@ System values
 -------------
 
 System values are saved in :file:`config/config.php`. Inject ``\OCP\IConfig``
-and use the ``getSystemValue*`` / ``setSystemValue`` methods.
-
-Note that ``setSystemValue`` may throw ``OCP\HintException`` when the config file is read-only.
+and read them with the typed getters ``getSystemValueBool()``,
+``getSystemValueInt()`` and ``getSystemValueString()``:
 
 .. code-block:: php
 
     <?php
     namespace OCA\MyApp\Service;
 
-    use OCP\HintException;
     use OCP\IConfig;
 
-    class AuthorService {
+    class LoginService {
         public function __construct(
             private IConfig $config,
         ) {}
 
-        public function getSystemValue(string $key): mixed {
-            return $this->config->getSystemValue($key);
-        }
-
-        public function setSystemValue(string $key, mixed $value): void {
-            try {
-                $this->config->setSystemValue($key, $value);
-            } catch (HintException $e) {
-                // Handle exception, e.g. when config file is read-only
-            }
+        public function isLoginFormHidden(): bool {
+            return $this->config->getSystemValueBool('hide_login_form', false);
         }
     }
 
-.. note::
-
-   Use ``getSystemValueBool()``, ``getSystemValueString()``, and ``getSystemValueInt()``
-   for typed return values.
+System values are usually set by administrators. If your app must write one,
+use ``setSystemValue()``, which throws ``OCP\HintException`` when the config
+file is read-only.
 
 Naming conventions
 ~~~~~~~~~~~~~~~~~~
@@ -76,7 +65,7 @@ App values
 App values are stored in the database and are useful for global app settings.
 
 Inside an AppFramework app, inject ``\OCP\AppFramework\Services\IAppConfig``.
-Methods are automatically scoped to your app — no app ID argument needed.
+Its methods are scoped to your app, so they take no app ID.
 
 .. code-block:: php
 
@@ -102,19 +91,19 @@ Methods are automatically scoped to your app — no app ID argument needed.
 Use ``\OCP\IAppConfig`` when you need to read or write configuration for an
 arbitrary app ID (e.g. from a different app's config).
 
-For a full reference — typed values, lazy loading, sensitive values, key management —
-see :doc:`/digging_deeper/config/appconfig`.
+For typed values, lazy loading, sensitive values and key management, see
+:doc:`/digging_deeper/config/appconfig`.
 
 
-User values
------------
+User settings
+-------------
 
 .. versionchanged:: 31
 
    Use ``\OCP\Config\IUserConfig`` instead of ``IConfig::getUserValue()`` /
    ``IConfig::setUserValue()``, which are deprecated.
 
-User values are stored in the database per user and app and are suitable for
+User settings are stored in the database per user and app and are suitable for
 per-user app settings.
 
 Inject ``\OCP\Config\IUserConfig`` and use the typed getter/setter methods:
@@ -140,5 +129,16 @@ Inject ``\OCP\Config\IUserConfig`` and use the typed getter/setter methods:
         }
     }
 
-For a full reference — typed values, lazy loading, sensitive and indexed values,
-key management — see :doc:`/digging_deeper/config/userconfig`.
+For typed values, lazy loading, sensitive and indexed values and key management,
+see :doc:`/digging_deeper/config/userconfig`.
+
+
+Declaring your config keys
+--------------------------
+
+.. versionadded:: 32
+
+Declare the app values and user settings of your app in a Lexicon: one place
+that defines each key, its type, its default value and whether it is lazy or
+sensitive. The typed getters and setters then check every access against it.
+See :doc:`/digging_deeper/config/lexicon`.
