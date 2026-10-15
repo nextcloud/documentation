@@ -690,9 +690,3 @@ When the optional ``mail`` app is installed:
 
    For filtering or automation, always check the actual payload you receive, as it matches
    the JSON examples above, not PHPDoc or internal PHP array type style.
-
-
-.. toctree::
-    :maxdepth: 2
-
-    budibase_workflows

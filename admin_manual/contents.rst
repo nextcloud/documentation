@@ -30,8 +30,6 @@ Table of contents
     configuration_server/index
     occ_command
     reference/index
-    webhook_listeners/index
-    windmill_workflows/index
 
 .. toctree::
     :caption: Files
@@ -53,6 +51,14 @@ Table of contents
 
     configuration_user/index
     desktop/index
+
+.. toctree::
+    :caption: automation
+
+    automation_overview/index
+    webhook_listeners/index
+    webhook_listeners/budibase_workflows
+    windmill_workflows/index
 
 .. toctree::
     :caption: Groupware
