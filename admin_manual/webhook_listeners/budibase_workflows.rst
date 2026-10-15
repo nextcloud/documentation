@@ -1,5 +1,7 @@
+.. _budibase_workflows:
+
 ==================
-Budibase workflows
+Budibase Workflows
 ==================
 
 
