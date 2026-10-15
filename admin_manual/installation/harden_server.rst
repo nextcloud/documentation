@@ -230,43 +230,91 @@ Also set it for CLI work (``occ``, cron):
 Set strong file permissions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Strong file system permissions reduce the attack surface if an attacker gains
-access to the web server process. The recommended baseline restricts world
-access to the Nextcloud installation directory:
+Strong file system permissions limit what an attacker can read or change after
+gaining access to the server. As a baseline, give the web server user ownership
+of the Nextcloud files and remove all access for other users:
 
 .. code-block:: bash
 
-   # Set ownership to the web server user and group
    sudo chown -R www-data:www-data /var/www/nextcloud/
+   sudo find /var/www/nextcloud/ -type d -exec chmod 750 {} \;
+   sudo find /var/www/nextcloud/ -type f -exec chmod 640 {} \;
 
-   # Files: owner read/write, group read-only, no world access
-   sudo find /var/www/nextcloud/ -type f -print0 | sudo xargs -0 chmod 0640
-
-   # Directories: owner full, group read+execute, no world access
-   sudo find /var/www/nextcloud/ -type d -print0 | sudo xargs -0 chmod 0750
-
-The **data directory** must remain writable by the web server user:
+Apply the same to the data directory if it is outside the installation directory:
 
 .. code-block:: bash
 
    sudo chown -R www-data:www-data /path/to/nextcloud-data/
+   sudo find /path/to/nextcloud-data/ -type d -exec chmod 750 {} \;
+   sudo find /path/to/nextcloud-data/ -type f -exec chmod 640 {} \;
 
-If you install or update apps via the Nextcloud **app store**, the ``apps/``
-directory also needs to be writable by the web server:
+With these permissions the web updater, the command-line updater and the App
+Store keep working, as they run as the web server user.
+
+Read-only installation directory
+""""""""""""""""""""""""""""""""
+
+You can go further and stop the web server from changing the Nextcloud code. A
+compromised web server process then cannot modify PHP files. Only these
+locations must stay writable by the web server user:
+
+* the data directory
+* the ``config/`` directory, which ``occ`` and the web interface write to
+* the apps directory where the App Store installs apps, see below
+* on Apache, the ``.htaccess`` file at the root of the installation, which
+  ``occ upgrade`` rewrites
 
 .. code-block:: bash
 
-   sudo chown -R www-data:www-data /var/www/nextcloud/apps/
+   sudo chown -R root:www-data /var/www/nextcloud/
+   sudo find /var/www/nextcloud/ -type d -exec chmod 750 {} \;
+   sudo find /var/www/nextcloud/ -type f -exec chmod 640 {} \;
 
-.. note::
+   sudo chown -R www-data:www-data /var/www/nextcloud/config/
+   sudo chown www-data:www-data /var/www/nextcloud/.htaccess
 
-   The built-in **web updater** requires write access to the entire Nextcloud
-   installation directory. If you apply stricter permissions that prevent
-   web server writes, the web updater will fail. Disable it first by adding the following to
-   ``config/config.php``, then use the command-line updater or package
-   manager instead::
+To keep installing apps from the App Store, add a separate writable apps
+directory with ``apps_paths`` in ``config/config.php`` and leave the bundled
+``apps/`` directory read-only:
+
+.. code-block:: php
+
+   'apps_paths' => [
+       [
+           'path' => '/var/www/nextcloud/apps',
+           'url' => '/apps',
+           'writable' => false,
+       ],
+       [
+           'path' => '/var/www/nextcloud/apps-extra',
+           'url' => '/apps-extra',
+           'writable' => true,
+       ],
+   ],
+
+.. code-block:: bash
+
+   sudo mkdir /var/www/nextcloud/apps-extra
+   sudo chown www-data:www-data /var/www/nextcloud/apps-extra
+
+Otherwise, disable the App Store with ``'appstoreenabled' => false,``.
+
+.. warning::
+
+   The web updater and the command-line updater (``updater.phar``) replace the
+   Nextcloud files as the web server user, so both fail on a read-only
+   installation directory. Disable the web updater:
+
+   .. code-block:: php
 
       'upgrade.disable-web' => true,
+
+   Update by replacing the files as ``root`` and running ``occ upgrade`` as the
+   web server user, as described in :doc:`../maintenance/manual_upgrade`. Then
+   apply the permissions above again.
+
+.. seealso:: :doc:`../configuration_server/config_sample_php_parameters` for
+   ``apps_paths``, ``appstoreenabled`` and ``upgrade.disable-web``.
 
 Disable preview image generation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
