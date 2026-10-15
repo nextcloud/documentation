@@ -28,7 +28,7 @@ All contributors are expected to follow the
 
 ## Where to ask questions
 
-- **GitHub Discussions / Issues** – open an issue in this repository for
+- **GitHub Issues** – open an issue in this repository for
   documentation-specific questions and suggestions.
 - **Nextcloud Community Forum** – <https://help.nextcloud.com>
 - **Talk room** – join the public documentation chat room at
@@ -46,9 +46,8 @@ build lets you preview changes accurately before opening a PR.
 
 [uv](https://docs.astral.sh/uv/) is the fastest way to get started:
 
-The Python version below matches `master`. If you are building an older `stable<N>` branch,
-check that branch's CI configuration for the required Python version and adjust
-the `--python` flag accordingly.
+uv picks the Python version from `.python-version`, so the same steps work on
+the `stable<N>` branches.
 
 ```bash
 # 1. Clone the repository
@@ -56,7 +55,7 @@ git clone https://github.com/nextcloud/documentation.git
 cd documentation
 
 # 2. Create and activate a virtual environment
-uv venv --python 3.13 && source .venv/bin/activate   # on Windows: .venv\Scripts\activate
+uv venv && source .venv/bin/activate   # on Windows: .venv\Scripts\activate
 
 # 3. Install dependencies
 uv pip install -r requirements.txt
@@ -102,7 +101,7 @@ versions, etc.).
 
 - Work in the correct branch:
   - `master` → latest (unreleased) version
-  - `stable*` branches → the corresponding released version (e.g. `stable29`)
+  - `stable*` branches → the corresponding released version (e.g. `stable35`)
 - If your change applies to multiple versions, open one PR per branch (or
   note in the PR description that backporting is needed).
 - Keep the scope of a PR focused. Separate unrelated fixes into separate PRs.
@@ -205,7 +204,7 @@ GitHub's privacy setting enabled, it will be
 2. Automated checks (spelling, link validation) run on every PR. Fix any
    reported issues before requesting a re-review.
 3. The reviewer may request changes. Address feedback and push new commits to
-   the same branch; do **not** force-push after a review has started.
+   the same branch.
 4. Once approved, a maintainer will merge the PR.
 
 ---

@@ -30,8 +30,8 @@ This repository hosts three manuals:
 * **Administration manual**: server installation, configuration, and operations
 * **Developer manual**: app development, APIs, and architecture
 
-Use the correct branch for the version you are targeting: ``master`` tracks the latest
-release; ``stable<N>`` branches (e.g. ``stable32``) cover specific releases.
+Use the correct branch for the version you are targeting: ``master`` tracks the next
+release; ``stable<N>`` branches (e.g. ``stable35``) cover released versions.
 
 .. note::
    ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from
@@ -56,6 +56,20 @@ Quick entry points:
 
 Before writing, read the `style guide <style_guide.rst>`_.
 
+Structure policy
+^^^^^^^^^^^^^^^^
+
+Once a page is created, **do not rename or move it** without adding a redirect in that
+manual's ``conf.py``. External links and search-engine indexes depend on stable URLs;
+treat page paths like a public API.
+
+Spelling conventions
+^^^^^^^^^^^^^^^^^^^^
+
+* Nextcloud App Store
+* synchronize (not "sync" in prose)
+* Web, Web page, Web site (capitalised)
+
 Code of Conduct
 ---------------
 
@@ -71,20 +85,6 @@ Getting help
 * `GitHub Issues <https://github.com/nextcloud/documentation/issues>`_: bug reports and
   documentation gaps
 
-Structure policy
-^^^^^^^^^^^^^^^^
-
-Once a page is created, **do not rename or move it** without adding a redirect in that
-manual's ``conf.py``. External links and search-engine indexes depend on stable URLs;
-treat page paths like a public API.
-
-Spelling conventions
-^^^^^^^^^^^^^^^^^^^^
-
-* Nextcloud App Store
-* synchronize (not "sync" in prose)
-* Web, Web page, Web site (capitalised)
-
 Building
 --------
 
@@ -92,15 +92,14 @@ Quick start
 ^^^^^^^^^^^
 
 .. note::
-   The Python version below matches ``master``. If you are building an older
-   ``stable<N>`` branch, check that branch's CI configuration for the required version
-   and adjust the ``--python`` flag accordingly.
+   ``uv`` picks the Python version from ``.python-version``, which also matches the
+   ``stable<N>`` branches.
 
 .. code-block:: bash
 
    git clone https://github.com/nextcloud/documentation.git
    cd documentation
-   uv venv --python 3.13 && source .venv/bin/activate    # recommended
+   uv venv && source .venv/bin/activate                  # recommended
    uv pip install -r requirements.txt
    make html                                              # all manuals
 
