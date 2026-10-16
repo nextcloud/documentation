@@ -180,9 +180,9 @@ Key parameters
 
   Measure the average RSS of a running pool::
 
-    ps --no-headers -o rss -C php-fpm | awk '{sum+=$1; count++} END {if (count>0) print sum/count/1024 " MB"; else print "No php-fpm processes found"}'
+    ps --no-headers -o rss -C php-fpm | awk '{sum+=$1; count++} END {if (count>0) print sum/count/1024 " MiB"; else print "No php-fpm processes found"}'
 
-  A typical Nextcloud worker uses **50–100 MB** (more if Imagick or LDAP is loaded).
+  A typical Nextcloud worker uses **50–100 MiB** (more if Imagick or LDAP is loaded).
   Leave headroom for the OS, web server, database, and cache. Setting ``pm.max_children``
   too high causes swapping, which is worse than queuing.
 
