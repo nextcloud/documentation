@@ -24,11 +24,11 @@ jobs:
         with:
           python-version: '3.13'
 
-      - uses: ammaraskar/sphinx-action@54e52bfb642e9b60ea5b6bcb05fe3f74b40d290a # v8.2.3
-        with:
-          docs-folder: "user_manual/"
-          pre-build-command: "pip install -r requirements.txt"
-          build-command: "make gettext"
+      - name: Install pip dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Generate POT files using Makefile
+        run: cd user_manual && make gettext
 
       - name: Change file owner to correct user
         run: |
