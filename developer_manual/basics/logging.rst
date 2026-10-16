@@ -184,6 +184,46 @@ You can combine message interpolation with exception logging -- Nextcloud
 handles both.
 
 
+Keeping secrets out of stack traces
+-----------------------------------
+
+Exception stack traces can include method arguments. If your app has methods
+that accept secrets (passwords, tokens, credentials, and similar), register
+them during bootstrap so the logger replaces those arguments before writing
+the trace:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\AppInfo;
+
+    use OCA\MyApp\Service\AuthService;
+    use OCP\AppFramework\App;
+    use OCP\AppFramework\Bootstrap\IBootContext;
+    use OCP\AppFramework\Bootstrap\IBootstrap;
+    use OCP\AppFramework\Bootstrap\IRegistrationContext;
+
+    class Application extends App implements IBootstrap {
+        public function register(IRegistrationContext $context): void {
+            $context->registerSensitiveMethods(
+                AuthService::class,
+                ['login', 'updatePassword'],
+            );
+        }
+
+        public function boot(IBootContext $context): void {
+        }
+    }
+
+``IRegistrationContext::registerSensitiveMethods()`` takes the fully qualified
+class name and an array of method names. It has been available since Nextcloud
+25.
+
+.. note::
+   This only covers **stack traces**. Never put passwords, tokens, or personal
+   data into a log message (or its context array) yourself.
+
+
 Custom log file
 ---------------
 
