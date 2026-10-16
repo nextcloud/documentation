@@ -30,12 +30,6 @@ jobs:
       - name: Generate POT files using Makefile
         run: cd user_manual && make gettext
 
-      - name: Change file owner to correct user
-        run: |
-          ls -la user_manual/locale/source
-          sudo chown -R 1001:1001 user_manual/locale/source
-          ls -la user_manual/locale/source
-
       - uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         id: cpr
         with:
