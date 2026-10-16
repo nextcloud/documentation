@@ -20,21 +20,17 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: '3.13'
+          python-version-file: '.python-version'
+          cache: 'pip'
 
-      - uses: ammaraskar/sphinx-action@54e52bfb642e9b60ea5b6bcb05fe3f74b40d290a # v8.2.3
-        with:
-          docs-folder: "user_manual/"
-          pre-build-command: "pip install -r requirements.txt"
-          build-command: "make gettext"
+      - name: Install pip dependencies
+        run: python -m pip install -r requirements.txt
 
-      - name: Change file owner to correct user
-        run: |
-          ls -la user_manual/locale/source
-          sudo chown -R 1001:1001 user_manual/locale/source
-          ls -la user_manual/locale/source
+      - name: Generate catalog templates
+        run: cd user_manual && make gettext
 
       - uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         id: cpr
