@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2016-2026 Nextcloud GmbH and Nextcloud contributors
-# This file is distributed under the same license as the Nextcloud latest User Manual package.
+# This file is distributed under the same license as the Nextcloud 36 User Manual package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Nextcloud latest User Manual latest\n"
+"Project-Id-Version: Nextcloud 36 User Manual latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-02 09:19+0000\n"
+"POT-Creation-Date: 2026-10-16 07:16+0000\n"
 "PO-Revision-Date: 2019-11-07 20:29+0000\n"
 "Last-Translator: Alex <kekcuha@gmail.com>, 2026\n"
 "Language-Team: Russian (https://app.transifex.com/nextcloud/teams/64236/ru/)\n"
@@ -29,19 +29,25 @@ msgstr "Контроль версий"
 
 #: ../../files/version_control.rst:5
 msgid ""
-"Nextcloud supports simple version control system for files. Versioning "
+"Nextcloud supports a simple version control system for files. Versioning "
 "creates backups of files which are accessible via the Versions tab on the "
 "Details sidebar. This tab contains the history of the file where you can "
-"roll back a file to any previous version. Changes made at intervals greater "
-"than two minutes are saved in **data/[user]/files_versions**."
+"roll back a file to any previous version. A new version is saved only if at "
+"least two minutes have passed since the last version was created. Versions "
+"are stored in ``data/[user]/files_versions``."
 msgstr ""
 "Nextcloud поддерживает простую систему контроля версий файлов. Версии — это "
 "резервные копии файлов, доступные на вкладке «Версии» боковой панели "
 "«Подробности». На этой вкладке хранится история файла, из которой можно "
-"вернуть любую предыдущую версию. Изменения, сделанные с интервалом более "
-"двух минут, сохраняются в **data/[user]/files_versions**."
+"вернуть любую предыдущую версию. Новая версия сохраняется, только если с "
+"момента создания последней версии прошло не менее двух минут. Версии "
+"хранятся в ``data/[user]/files_versions``."
 
-#: ../../files/version_control.rst:13
+#: ../../files/version_control.rst:11
+msgid "File version history in the Details sidebar"
+msgstr "История версий файла на боковой панели «Подробности»"
+
+#: ../../files/version_control.rst:14
 msgid ""
 "To restore a specific version of a file, click the circular arrow to the "
 "right. Click on the timestamp to download it."
@@ -49,45 +55,46 @@ msgstr ""
 "Чтобы восстановить определённую версию файла, нажмите круглую стрелку "
 "справа. Чтобы скачать версию, нажмите на отметку времени."
 
-#: ../../files/version_control.rst:16
+#: ../../files/version_control.rst:17
 msgid ""
-"The versioning app expires old versions automatically to make sure that the "
-"user doesn't run out of space. This pattern is used to delete old versions:"
+"The versioning app expires old versions automatically to make sure that you "
+"don't run out of space. This pattern is used to delete old versions:"
 msgstr ""
-"Приложение версий автоматически удаляет старые версии, чтобы у пользователя "
-"не закончилось место. Для удаления старых версий применяется такая схема:"
+"Приложение «Версии» автоматически удаляет старые версии, чтобы у "
+"пользователя не закончилось место. Для удаления старых версий применяется "
+"такая схема:"
 
-#: ../../files/version_control.rst:20
+#: ../../files/version_control.rst:21
 msgid "For the first second we keep one version"
 msgstr "В течение первой секунды хранится одна версия"
 
-#: ../../files/version_control.rst:21
+#: ../../files/version_control.rst:22
 msgid "For the first 10 seconds Nextcloud keeps one version every 2 seconds"
 msgstr ""
 "В течение первых 10 секунд Nextcloud сохраняет одну версию каждые 2 секунды"
 
-#: ../../files/version_control.rst:22
+#: ../../files/version_control.rst:23
 msgid "For the first minute Nextcloud keeps one version every 10 seconds"
 msgstr ""
 "В течение первой минуты Nextcloud сохраняет одну версию каждые 10 секунд"
 
-#: ../../files/version_control.rst:23
+#: ../../files/version_control.rst:24
 msgid "For the first hour Nextcloud keeps one version every minute"
 msgstr "В течение первого часа Nextcloud сохраняет одну версию каждую минуту"
 
-#: ../../files/version_control.rst:24
+#: ../../files/version_control.rst:25
 msgid "For the first 24 hours Nextcloud keeps one version every hour"
 msgstr "В течение первых 24 часов Nextcloud сохраняет одну версию каждый час"
 
-#: ../../files/version_control.rst:25
+#: ../../files/version_control.rst:26
 msgid "For the first 30 days Nextcloud keeps one version every day"
 msgstr "В течение первых 30 дней Nextcloud сохраняет одну версию каждый день"
 
-#: ../../files/version_control.rst:26
+#: ../../files/version_control.rst:27
 msgid "After the first 30 days Nextcloud keeps one version every week"
 msgstr "После первых 30 дней Nextcloud сохраняет одну версию каждую неделю"
 
-#: ../../files/version_control.rst:28
+#: ../../files/version_control.rst:29
 msgid ""
 "The versions are adjusted along this pattern every time a new version gets "
 "created."
@@ -95,7 +102,7 @@ msgstr ""
 "Набор хранимых версий пересчитывается по этой схеме при создании каждой "
 "новой версии."
 
-#: ../../files/version_control.rst:31
+#: ../../files/version_control.rst:32
 msgid ""
 "The version app never uses more than 50% of the user's currently available "
 "free space. If the stored versions exceed this limit, Nextcloud deletes the "
@@ -106,25 +113,33 @@ msgstr ""
 "предел, Nextcloud удаляет самые старые, пока объём снова не уложится в "
 "предел."
 
-#: ../../files/version_control.rst:37
+#: ../../files/version_control.rst:38
 msgid "Naming a version"
 msgstr "Название версии"
 
-#: ../../files/version_control.rst:39
+#: ../../files/version_control.rst:40
 msgid "You can give a name to a version."
 msgstr "Версии можно давать название."
 
-#: ../../files/version_control.rst:44
+#: ../../files/version_control.rst:42
+msgid "Version actions menu"
+msgstr "Меню действий с версиями"
+
+#: ../../files/version_control.rst:45
+msgid "Naming a file version"
+msgstr "Присвоение имени версии файла"
+
+#: ../../files/version_control.rst:48
 msgid ""
 "When a version has a name, it will be excluded from the automatic expiration"
 " process."
 msgstr "Версия с названием исключается из автоматического удаления."
 
-#: ../../files/version_control.rst:47
+#: ../../files/version_control.rst:51
 msgid "Deleting a version"
 msgstr "Удаление версии"
 
-#: ../../files/version_control.rst:49
+#: ../../files/version_control.rst:53
 msgid ""
 "You can also manually delete a version without waiting for the automatic "
 "expiration process."
