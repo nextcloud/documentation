@@ -96,6 +96,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#user-metadata">User metadata</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#user-metadata-list-user-ids">User metadata - List user IDs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#capabilities-api">Capabilities API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preview-capabilities">Preview capabilities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#theming-capabilities">Theming capabilities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#direct-download">Direct Download</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#notifications">Notifications</a></li>
@@ -296,6 +297,32 @@
 </pre></div>
 </div>
 </section>
+<section id="preview-capabilities">
+<span id="id1"></span><h2>Preview capabilities<a class="headerlink" href="#preview-capabilities" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 36.</span></p>
+</div>
+<p>The mime types the server can render a preview for. A client uses it to tell the formats a
+browser cannot display on its own, but the server can render, from the ones it can do neither
+of: <code class="docutils literal notranslate"><span class="pre">image/heic</span></code>, <code class="docutils literal notranslate"><span class="pre">image/heif</span></code> and <code class="docutils literal notranslate"><span class="pre">image/tiff</span></code> are viewable through a preview and not
+otherwise.</p>
+<p>Each entry is the mime pattern a provider registered itself for, as a regular expression
+delimited by slashes. The list is empty when previews are turned off entirely
+(<code class="docutils literal notranslate"><span class="pre">enable_previews</span></code>), which means no preview can be requested for any file.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"core"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"previews"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"enabled_providers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">"/image\\/png/"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"/image\\/jpeg/"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"/image\\/hei(f|c)/"</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
 <section id="theming-capabilities">
 <h2>Theming capabilities<a class="headerlink" href="#theming-capabilities" title="Link to this heading"></a></h2>
 <p>Values of the theming app are exposed through the capabilities API, allowing client developers to adjust the look of clients to the theming of different Nextcloud instances.</p>
@@ -414,7 +441,7 @@ results to users that are actually in the current chat conversation.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Oct 06, 2026.
+      <span class="lastupdated">Last updated on Oct 17, 2026.
       </span></p>
   </div>
 

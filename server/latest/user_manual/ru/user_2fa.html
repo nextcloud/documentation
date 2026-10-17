@@ -31,7 +31,7 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Алфавитный указатель" href="genindex.html" />
     <link rel="search" title="Поиск" href="search.html" />
-    <link rel="next" title="Управление подключенными браузерами и устройствами" href="session_management.html" />
+    <link rel="next" title="Управление подключёнными браузерами и устройствами" href="session_management.html" />
     <link rel="prev" title="Специальные возможности" href="universal_access.html" />
    
   <meta name="robots" content="noindex, follow" />
@@ -72,27 +72,27 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud 36 руководство пользователя. Введение</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="activity.html">Использование приложения «Активность»</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Руководство пользователя Nextcloud 36: введение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">Веб-интерфейс Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="activity.html">Использование приложения «События»</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ai_assistant.html">Помощник ИИ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files/index.html">Файлы и синхронизация</a></li>
-<li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Программное обеспечение для совместной работы</a></li>
-<li class="toctree-l1"><a class="reference internal" href="talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Персональные настройки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Приложения для совместной работы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="talk/index.html">«Конференции»</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Коллективы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Клиент для ПК</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Настройка личных параметров</a></li>
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Специальные возможности</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Использование двухфакторной аутентификации</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Настройка двухфакторной аутентификации</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Recovery codes if you lose your second factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Коды восстановления на случай потери второго фактора</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Вход с двухфакторной аутентификацией</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Использование двухфакторной аутентификации с аппаратными токенами</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Использование клиентских приложений с двухфакторной аутентификацией</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#considerations">Рекомендации</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="session_management.html">Управление подключенными браузерами и устройствами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session_management.html">Управление подключёнными браузерами и устройствами</a></li>
 </ul>
 
         </div>
@@ -121,60 +121,47 @@
              
   <section id="using-two-factor-authentication">
 <h1>Использование двухфакторной аутентификации<a class="headerlink" href="#using-two-factor-authentication" title="Ссылка на этот заголовок"></a></h1>
-<p>Двухфакторная аутентификация (2FA) - это способ защитить вашу учетную запись Nextcloud от несанкционированного доступа. Это работает, требуя два разных «доказательства» вашей личности. Например, <em>что-то, что вы знаете</em> (например, пароль) и <em>что-то, что у вас есть</em>, как физический ключ. Как правило, первым фактором является пароль, который у вас уже есть, а вторым может быть текстовое сообщение, которое вы получаете, или код, который вы генерируете на своем телефоне или другом устройстве (<em>что-то, что у вас есть</em>). Nextcloud поддерживает множество 2-х факторов и может быть добавлено еще больше.</p>
-<p>Once a two-factor authentication app has been enabled by your administrator,
-you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Персональные настройки</span></a>.</p>
+<p>Двухфакторная аутентификация (2FA) — способ защитить учётную запись Nextcloud от несанкционированного доступа. Она требует два разных «доказательства» вашей личности: например, <em>что-то, что вы знаете</em> (пароль), и <em>что-то, что у вас есть</em> (физический ключ). Обычно первый фактор — пароль, который у вас уже есть, а второй — SMS-сообщение или код, созданный на телефоне или другом устройстве (<em>что-то, что у вас есть</em>). Nextcloud поддерживает множество вторых факторов, и можно добавить новые.</p>
+<p>Когда администратор включит приложение двухфакторной аутентификации, его можно включить и настроить в разделе <a class="reference internal" href="userpreferences.html"><span class="doc">Настройка личных параметров</span></a>.</p>
 <section id="configuring-two-factor-authentication">
 <h2>Настройка двухфакторной аутентификации<a class="headerlink" href="#configuring-two-factor-authentication" title="Ссылка на этот заголовок"></a></h2>
-<p>In your personal settings, look up the <strong>Second-factor Auth</strong> setting. In this
-example this is TOTP, a Google Authenticator compatible time-based code:</p>
+<p>В личных параметрах найдите параметр <strong>Двухфакторная аутентификация</strong>. В этом примере используется TOTP — код на основе времени, совместимый с Google Authenticator:</p>
 <figure class="align-default">
-<img alt="Конфигурация TOTP." src="../_images/totp_enable.png" />
+<img alt="Настройка TOTP." src="../_images/totp_enable.png" />
 </figure>
-<p>Вы увидите свой секрет и QR-код, который можно отсканировать с помощью приложения TOTP на вашем телефоне (или другом устройстве). В зависимости от приложения или инструмента введите код или отсканируйте QR-код, и на вашем устройстве будет отображаться код входа, который меняется каждые 30 секунд.</p>
+<p>Вы увидите секретный ключ и QR-код, который можно отсканировать приложением TOTP на телефоне (или другом устройстве). В зависимости от приложения введите ключ или отсканируйте QR-код, и устройство начнёт показывать код для входа, меняющийся каждые 30 секунд.</p>
 </section>
 <section id="recovery-codes-if-you-lose-your-second-factor">
-<h2>Recovery codes if you lose your second factor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Ссылка на этот заголовок"></a></h2>
-<p>You should always generate backup codes for 2FA. If your second factor device
-gets stolen or stops working, you can use one of these codes to unlock your
-account. It effectively functions as a backup second factor. To get the backup
-codes, go to your personal settings and look under <strong>Second-factor Auth</strong>
-settings. Choose <em>Generate backup codes</em>:</p>
+<h2>Коды восстановления на случай потери второго фактора<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Ссылка на этот заголовок"></a></h2>
+<p>Резервные коды для 2FA стоит создавать всегда. Если устройство со вторым фактором украдут или оно перестанет работать, один из этих кодов позволит разблокировать учётную запись: по сути, это резервный второй фактор. Чтобы получить резервные коды, откройте личные параметры и найдите раздел <strong>Двухфакторная аутентификация</strong>. Выберите <em>Создать резервные коды</em>:</p>
 <figure class="align-default">
-<img alt="Генератор резервного кода 2FA" src="../_images/2fa_backupcode_1.png" />
+<img alt="Генератор резервных кодов 2FA" src="../_images/2fa_backupcode_1.png" />
 </figure>
-<p>You will then see a list of one-time-use backup codes:</p>
+<p>После этого будет показан список одноразовых резервных кодов:</p>
 <figure class="align-default">
 <img alt="Резервные коды 2FA" src="../_images/2fa_backupcode_2.png" />
 </figure>
-<p>Store these codes somewhere safe where you can find them. Do not keep them
-with your second factor (such as your mobile phone), but store them separately
-so that losing one does not mean losing the other.</p>
+<p>Храните эти коды в надёжном месте, где их можно будет найти. Не храните их вместе со вторым фактором (например, на мобильном телефоне), а храните отдельно, чтобы потеря одного не означала потерю другого.</p>
 </section>
 <section id="logging-in-with-two-factor-authentication">
 <h2>Вход с двухфакторной аутентификацией<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Ссылка на этот заголовок"></a></h2>
-<p>After you log out and log in again, you will see a prompt to enter the
-TOTP code in your browser. If you have enabled more than one second factor,
-you will see a selection screen where you can choose which method to use for
-this login. Select TOTP:</p>
+<p>Когда вы выйдете из системы и захотите войти снова, браузер запросит код TOTP. Если включён не только TOTP, но и другой фактор, откроется экран выбора, на котором можно выбрать метод двухфакторной аутентификации для этого входа. Выберите TOTP:</p>
 <figure class="align-default">
 <img alt="Выбор метода двухфакторной аутентификации." src="../_images/totp_login_1.png" />
 </figure>
-<p>Теперь просто введите свой код:</p>
+<p>Теперь введите код:</p>
 <figure class="align-default">
 <img alt="Ввод кода TOTP при входе в систему." src="../_images/totp_login_2.png" />
 </figure>
-<p>Если код был верным, вы будете перенаправлены на вашу учетную запись Nextcloud.</p>
+<p>Если код верный, вы попадёте в свою учётную запись Nextcloud.</p>
 <div class="admonition note">
 <p class="admonition-title">Примечание</p>
-<p>Since the code is time-based, it is important that your server’s and
-your smartphone’s clock are almost in sync. A time drift of a few seconds
-won’t be a problem.</p>
+<p>Код зависит от времени, поэтому часы сервера и смартфона должны быть почти синхронизированы. Расхождение в несколько секунд не помешает.</p>
 </div>
 </section>
 <section id="using-two-factor-authentication-with-hardware-tokens">
 <h2>Использование двухфакторной аутентификации с аппаратными токенами<a class="headerlink" href="#using-two-factor-authentication-with-hardware-tokens" title="Ссылка на этот заголовок"></a></h2>
-<p>Вы можете использовать двухфакторную аутентификацию на основе аппаратных токенов. Известно, что работают следующие устройства:</p>
+<p>Можно использовать двухфакторную аутентификацию на основе аппаратных токенов. Известно, что работают следующие устройства:</p>
 <ul class="simple">
 <li><p>На основе TOTP:</p>
 <ul>
@@ -182,7 +169,7 @@ won’t be a problem.</p>
 <li><p><a class="reference external" href="https://shop.nitrokey.com/shop">Nitrokey Storage</a></p></li>
 </ul>
 </li>
-<li><p>Основанный на FIDO2:</p>
+<li><p>На основе FIDO2:</p>
 <ul>
 <li><p><a class="reference external" href="https://shop.nitrokey.com/shop/product/nkfi2-nitrokey-fido2-55">Nitrokey FIDO2</a></p></li>
 <li><p><a class="reference external" href="https://shop.nitrokey.com/shop/product/nitrokey-fido-u2f-20">Nitrokey FIDO U2F</a></p></li>
@@ -192,15 +179,11 @@ won’t be a problem.</p>
 </section>
 <section id="using-client-applications-with-two-factor-authentication">
 <h2>Использование клиентских приложений с двухфакторной аутентификацией<a class="headerlink" href="#using-client-applications-with-two-factor-authentication" title="Ссылка на этот заголовок"></a></h2>
-<p>Once you have enabled 2FA, your clients will no longer be able to connect with
-just your password unless they also have support for two-factor authentication.
-To solve this, you should generate device-specific passwords for them. See
-<a class="reference internal" href="session_management.html"><span class="doc">Управление подключенными браузерами и устройствами</span></a> for more information on how to do this.</p>
+<p>После включения 2FA клиенты не смогут подключаться только по паролю, если не поддерживают двухфакторную аутентификацию. Для них нужно создать пароли для отдельных устройств. Как это сделать, описано в разделе <a class="reference internal" href="session_management.html"><span class="doc">Управление подключёнными браузерами и устройствами</span></a>.</p>
 </section>
 <section id="considerations">
 <h2>Рекомендации<a class="headerlink" href="#considerations" title="Ссылка на этот заголовок"></a></h2>
-<p>If you use WebAuthn to log in to your Nextcloud, be sure to not use the same token for 2FA, as this
-would mean you are again only using a single factor.</p>
+<p>Если для входа в Nextcloud используется WebAuthn, не используйте тот же токен для двухфакторной аутентификации: иначе снова будет задействован всего один фактор.</p>
 </section>
 </section>
 
@@ -209,7 +192,7 @@ would mean you are again only using a single factor.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
         <a href="universal_access.html" class="btn btn-neutral float-left" title="Специальные возможности" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
-        <a href="session_management.html" class="btn btn-neutral float-right" title="Управление подключенными браузерами и устройствами" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="session_management.html" class="btn btn-neutral float-right" title="Управление подключёнными браузерами и устройствами" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -333,7 +316,7 @@ would mean you are again only using a single factor.</p>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
       <dl class="nc-languages-list">
-        <dt> Языки</dt>
+        <dt>Языки</dt>
         
           <dd>
             <a href="/server/latest/user_manual/ar/"
