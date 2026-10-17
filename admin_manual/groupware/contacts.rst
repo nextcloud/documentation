@@ -54,6 +54,51 @@ Address Book Sync
 
 The address book is updated automatically with every added, modified, disabled or removed user. Admins can also trigger a full rewrite of the address book :ref:`with occ<dav-sync-system-address-book>`.
 
+Organization chart
+------------------
+
+The Contacts app can show an **organization chart** built from system address
+book contacts. Hierarchy comes from each account's line manager; job labels come
+from profile fields.
+
+Prerequisites
+^^^^^^^^^^^^^
+
+* The :ref:`system address book<system-address-book>` must be enabled and
+  exposed to users.
+* Only accounts that appear in the system address book are included. Users who
+  set all profile property scopes to *Private* are omitted.
+* After changing managers or profile fields, wait for the automatic sync or run
+  the :ref:`system address book sync<dav-sync-system-address-book>` occ command.
+
+Define a line manager
+^^^^^^^^^^^^^^^^^^^^^
+
+In **Administration settings** → **Users**, open a user and set the
+**Manager** field to another local account. See :doc:`../configuration_user/user_configuration`.
+
+Setting a manager does **not** grant admin rights. The value is written into the
+user's system address book card (``X-MANAGERSNAME``) and is what the chart uses
+as the parent node.
+
+Set organisation and job title (role)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Users (or admins editing profile data) set **Organisation** and **Role** under
+**Personal settings** → **Personal info**. Keep the property scope at *Local* or
+higher so the values are copied into the system address book:
+
+* **Organisation** becomes the contact ``ORG`` field.
+* **Role** becomes the contact ``TITLE`` (job title) field shown on the chart.
+
+Viewing the chart
+^^^^^^^^^^^^^^^^^
+
+In the Contacts app, open the **Organization chart** / **Chart** view. Contacts
+without a manager appear as chart roots; reports nest under their manager.
+Charts only form when manager links resolve to other system address book
+contacts on the same instance.
+
 Shared items
 ------------
 
