@@ -75,6 +75,12 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Release notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Critical changes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#info-xml-requirements">info.xml requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-viewer-is-a-library-not-an-app">The Viewer is a library, not an app</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#registering-a-handler">Registering a handler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opening-the-viewer">Opening the viewer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enabled-preview-providers">Enabled preview providers</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-front-end-apis-and-libraries">Removed front-end APIs and libraries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-back-end-apis">Removed back-end APIs</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#removed-legacy-hooks">Removed legacy hooks</a></li>
@@ -137,6 +143,121 @@
 </pre></div>
 </div>
 <p>To allow installation on older versions too, just keep the previous min-version.</p>
+</section>
+<section id="the-viewer-is-a-library-not-an-app">
+<h2>The Viewer is a library, not an app<a class="headerlink" href="#the-viewer-is-a-library-not-an-app" title="Link to this heading"></a></h2>
+<p>The viewer no longer lives in the <code class="docutils literal notranslate"><span class="pre">viewer</span></code> app: from Nextcloud 36 it ships as the
+<a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/viewer">&#64;nextcloud/viewer</a> library, which any app
+can depend on:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>install<span class="w"> </span>--save<span class="w"> </span>@nextcloud/viewer
+</pre></div>
+</div>
+<p>The server registers the handlers for images, video and audio itself. Several apps on one page
+may each bring their own copy of the library: they elect the newest between them, and only that
+one is ever loaded, the first time a file is opened.</p>
+<section id="registering-a-handler">
+<h3>Registering a handler<a class="headerlink" href="#registering-a-handler" title="Link to this heading"></a></h3>
+<p>Register handlers from a script loaded with <code class="docutils literal notranslate"><span class="pre">\OCP\Util::addInitScript()</span></code>. The Files list
+reads the available actions when it first renders, so a handler registered after that is a
+file that does not open.</p>
+<p>A handler shows the file in a custom element of its own. Define it in <code class="docutils literal notranslate"><span class="pre">onInit</span></code>, which the
+viewer calls the first time it needs the element, so the view stays out of the script that runs
+on every page:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">registerHandler</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/viewer'</span>
+
+<span class="nx">registerHandler</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">'my_app'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">displayName</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="p">(</span><span class="s1">'my_app'</span><span class="p">,</span><span class="w"> </span><span class="s1">'My files'</span><span class="p">),</span>
+<span class="w">    </span><span class="c1">// Custom element names are shared by the whole page: start yours with your app id</span>
+<span class="w">    </span><span class="nx">tagName</span><span class="o">:</span><span class="w"> </span><span class="s1">'my_app-viewer'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">enabled</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">nodes</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">nodes</span><span class="p">.</span><span class="nx">every</span><span class="p">((</span><span class="nx">node</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">node</span><span class="p">.</span><span class="nx">mime</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'application/x-my-format'</span><span class="p">),</span>
+<span class="w">    </span><span class="nx">onInit</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// A module that calls customElements.define('my_app-viewer', …)</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">'./viewer-element.js'</span><span class="p">)</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>The element receives the file to show, and the list it belongs to, as properties.</p>
+<p>A handler is only offered end-to-end encrypted files if it says it can read them, with
+<code class="docutils literal notranslate"><span class="pre">supportsEndToEndEncryption:</span> <span class="pre">true</span></code>: such a file is decrypted when fetched from its WebDAV address,
+and a handler that fetches it any other way gets ciphertext.</p>
+</section>
+<section id="opening-the-viewer">
+<h3>Opening the viewer<a class="headerlink" href="#opening-the-viewer" title="Link to this heading"></a></h3>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">OCA.Viewer</span></code> with the library. Nothing needs to be dispatched to load the viewer, so
+apps can stop dispatching <code class="docutils literal notranslate"><span class="pre">\OCA\Viewer\Event\LoadViewer</span></code> too. Ask the service for the
+viewer and hand it nodes:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">canView</span><span class="p">,</span><span class="w"> </span><span class="nx">getViewer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/viewer'</span>
+
+<span class="c1">// OCA.Viewer.open({ path }) becomes, with `node` an INode from @nextcloud/files:</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getViewer</span><span class="p">().</span><span class="nx">open</span><span class="p">([</span><span class="nx">node</span><span class="p">],</span><span class="w"> </span><span class="nx">node</span><span class="p">)</span>
+
+<span class="c1">// OCA.Viewer.mimetypes.includes(node.mime) becomes:</span>
+<span class="nx">canView</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The first argument is the list to page through, the second the file to open. <code class="docutils literal notranslate"><span class="pre">open()</span></code> takes
+options as a third argument, among them <code class="docutils literal notranslate"><span class="pre">enableSidebar</span></code> for a file the Files sidebar cannot
+resolve.</p>
+<p><code class="docutils literal notranslate"><span class="pre">canView(node)</span></code> and <code class="docutils literal notranslate"><span class="pre">canCompare(node)</span></code> tell whether to offer a button that opens the viewer, or
+compares two versions of a file, without opening anything.</p>
+<p>The viewer tells you what happens with events on the session <code class="docutils literal notranslate"><span class="pre">open()</span></code> resolves with, rather
+than with callbacks:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Event</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">detail</span></code></p></th>
+<th class="head"><p>Replaces</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">update:file</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[file]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">onPrev</span></code>, <code class="docutils literal notranslate"><span class="pre">onNext</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">update:editing</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[editing]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">onEditingChange</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">close</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">onClose</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">before-download</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">file,</span> <span class="pre">waitUntil</span> <span class="pre">}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">downloadCallback</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">session</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'close'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// the viewer was closed</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">getViewer()</span></code> dispatches the same events, whoever opened the viewer. A handler’s element gets
+<code class="docutils literal notranslate"><span class="pre">before-download</span></code> as well: an editor with unsaved changes can pass <code class="docutils literal notranslate"><span class="pre">waitUntil()</span></code> a promise
+to have the download wait until they are saved.</p>
+<p><code class="docutils literal notranslate"><span class="pre">getViewer().compare(file,</span> <span class="pre">base)</span></code> replaces <code class="docutils literal notranslate"><span class="pre">OCA.Viewer.compare()</span></code>, with <code class="docutils literal notranslate"><span class="pre">base</span></code> the older
+version. It shows both side by side, or, for a handler that can, what changed between them in one
+view: pass <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">view:</span> <span class="pre">'differences'</span> <span class="pre">}</span></code> as a third argument to open on it.</p>
+<p><code class="docutils literal notranslate"><span class="pre">OCA.Viewer.setRootElement()</span></code> has no replacement. It rendered a single file into an element
+of your choosing instead of the modal, and the only known user was a public share page. Show a
+preview of the file there and let a click on it call <code class="docutils literal notranslate"><span class="pre">open()</span></code>.</p>
+<p>The full API is documented with <a class="reference external" href="https://github.com/nextcloud-libraries/nextcloud-viewer#readme">the library</a>.</p>
+</section>
+<section id="enabled-preview-providers">
+<h3>Enabled preview providers<a class="headerlink" href="#enabled-preview-providers" title="Link to this heading"></a></h3>
+<p>The viewer app provided the enabled preview providers as an initial state, which apps could
+read with <code class="docutils literal notranslate"><span class="pre">loadState('viewer',</span> <span class="pre">'enabled_preview_providers')</span></code>. It is a capability now, so it
+is available wherever capabilities are, public share pages included:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getCapabilities</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nextcloud/capabilities'</span>
+
+<span class="nx">getCapabilities</span><span class="p">().</span><span class="nx">core</span><span class="p">.</span><span class="nx">previews</span><span class="p">.</span><span class="nx">enabled_providers</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../client_apis/OCS/ocs-api-overview.html#preview-capabilities"><span class="std std-ref">Preview capabilities</span></a> for what it contains.</p>
+</section>
 </section>
 <section id="removed-front-end-apis-and-libraries">
 <h2>Removed front-end APIs and libraries<a class="headerlink" href="#removed-front-end-apis-and-libraries" title="Link to this heading"></a></h2>
@@ -202,7 +323,7 @@ if your app relies on them please migrate to the replacement event.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Oct 14, 2026.
+      <span class="lastupdated">Last updated on Oct 17, 2026.
       </span></p>
   </div>
 

@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Søg" href="../search.html" />
-    <link rel="next" title="System tags" href="tagging.html" />
+    <link rel="next" title="Systemmærker" href="tagging.html" />
     <link rel="prev" title="Versionskontrol" href="version_control.html" />
    
   <meta name="robots" content="noindex, follow" />
@@ -57,14 +57,14 @@
 
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Søg i dokumentation</label>
+    <label for="rtd-search-input" class="sr-only">Søg i dokumentationen</label>
     <div class="wy-form-search">
       <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
       <input id="rtd-search-input"
              type="text"
              name="q"
-             placeholder="Søg i dokumentation"
-             aria-label="Søg i dokumentation" />
+             placeholder="Søg i dokumentationen"
+             aria-label="Søg i dokumentationen" />
     </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -73,19 +73,19 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 36 brugermanual introduktion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextclouds webbrugerflade</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Brug af Aktivitet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI-assistent</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Filer og synkronisering</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Adgang til dine filer</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="managing.html">Håndtering af dine filer</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="deleted_file_management.html">Deleted files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deleted_file_management.html">Slettede filer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="version_control.html">Versionskontrol</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Lagerkvote</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#deleted-files-and-the-trash-bin">Deleted files and the trash bin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deleted-files-and-the-trash-bin">Slettede filer og papirkurven</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="tagging.html">System tags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tagging.html">Systemmærker</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="collaboration.html">Deling og samarbejde</a></li>
@@ -95,7 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Skrivebordsklient</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Indstilling af dine præferencer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Tilgængelighed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Brug af to-faktor-godkendelse</a></li>
@@ -130,43 +130,22 @@
              
   <section id="storage-quota">
 <h1>Lagerkvote<a class="headerlink" href="#storage-quota" title="Link to this heading"></a></h1>
-<p>Your Nextcloud administrator can set a storage quota for your account. Open
-your Personal settings page to see your quota and how much storage you have
-used.</p>
+<p>Din Nextcloud-administrator kan sætte en lagerkvote for din konto. Åbn siden med dine personlige indstillinger for at se din kvote, og hvor meget lagerplads du har brugt.</p>
 <figure class="align-default">
-<img alt="Storage quota indicator on the Personal page" src="../../_images/quota1.png" />
+<img alt="Visning af lagerkvoten på siden med personlige indstillinger" src="../../_images/quota1.png" />
 </figure>
 <p>Det kan være nyttigt at forstå, hvordan din kvote beregnes.</p>
-<p>Metadata such as thumbnails, temporary files, caches, and encryption keys can
-use disk space without counting against your user quota. Some apps store data
-in the database, such as the Calendar and Contacts apps. This data is not
-included in the file-storage quota.</p>
-<p>When other users share files with you, the shared files normally count against
-the original owner’s quota. When you share a folder and allow other users or
-groups to upload or edit files in it, those files count against your quota.
-When you re-share files shared with you, the re-share normally continues to
-count against the original owner’s quota.</p>
-<p>Encrypted files can use more physical storage than unencrypted files. The
-quota calculation uses the file size reported by Nextcloud’s storage layer.</p>
-<p>When the Versions app is enabled, older file versions are managed separately
-from the normal storage quota according to the app’s retention and storage
-rules.</p>
-<p>If you create a public share through a URL and allow uploads, uploaded files
-count against your quota.</p>
+<p>Metadata som miniaturer, midlertidige filer, cache og krypteringsnøgler kan bruge diskplads uden at tælle med i din brugerkvote. Nogle apps, f.eks. Kalender og Kontakter, gemmer data i databasen. De data tæller ikke med i kvoten for fillagring.</p>
+<p>Når andre brugere deler filer med dig, tæller de delte filer normalt med i den oprindelige ejers kvote. Når du deler en mappe og lader andre brugere eller grupper overføre eller redigere filer i den, tæller de filer med i din kvote. Når du videredeler filer, der er delt med dig, tæller videredelingen normalt fortsat med i den oprindelige ejers kvote.</p>
+<p>Krypterede filer kan fylde mere fysisk lagerplads end ukrypterede. Kvoten beregnes ud fra den filstørrelse, som Nextclouds lagerlag oplyser.</p>
+<p>Når appen Versioner er slået til, styres ældre versioner af filer separat fra den almindelige lagerkvote efter appens regler for opbevaring og lagerplads.</p>
+<p>Hvis du opretter en offentlig deling via en URL og tillader overførsler, tæller de overførte filer med i din kvote.</p>
 <section id="deleted-files-and-the-trash-bin">
-<h2>Deleted files and the trash bin<a class="headerlink" href="#deleted-files-and-the-trash-bin" title="Link to this heading"></a></h2>
-<p>Files and folders in your trash bin do not count against your normal storage
-quota. The trash bin nevertheless has its own storage limit.</p>
-<p>For accounts with a quota, the default amount of space available to the trash
-bin is calculated as 50% of the account’s remaining quota space. This is
-calculated after the account’s active files have been taken into account; it is
-not 50% of the total quota.</p>
-<p>For accounts without a quota, the default trash-bin limit is calculated using
-available filesystem space instead. An administrator can configure a global or
-per-account trash-bin size that overrides the calculated default.</p>
-<p>Your administrator can also configure minimum and maximum trash-bin retention
-periods, or disable automatic expiration. See the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html">Deleted Files section of the Administrator Manual</a>
-for details.</p>
+<h2>Slettede filer og papirkurven<a class="headerlink" href="#deleted-files-and-the-trash-bin" title="Link to this heading"></a></h2>
+<p>Filer og mapper i papirkurven tæller ikke med i din almindelige lagerkvote. Papirkurven har dog sin egen lagergrænse.</p>
+<p>For konti med en kvote beregnes papirkurvens standardplads som 50 % af den plads, der er tilbage i kontoens kvote. Den beregnes, efter at kontoens aktive filer er talt med. Den er altså ikke 50 % af den samlede kvote.</p>
+<p>For konti uden kvote beregnes papirkurvens standardgrænse i stedet ud fra den ledige plads i filsystemet. En administrator kan sætte en størrelse for papirkurven for alle eller for den enkelte konto, der tilsidesætter den beregnede standard.</p>
+<p>Din administrator kan også sætte minimale og maksimale opbevaringsperioder for papirkurven eller slå automatisk udløb fra. Se <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html">afsnittet om slettede filer i dokumentationen til administration</a> for at få flere oplysninger.</p>
 </section>
 </section>
 
@@ -175,7 +154,7 @@ for details.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Sidefod">
         <a href="version_control.html" class="btn btn-neutral float-left" title="Versionskontrol" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Forrige</a>
-        <a href="tagging.html" class="btn btn-neutral float-right" title="System tags" accesskey="n" rel="next">Næste <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tagging.html" class="btn btn-neutral float-right" title="Systemmærker" accesskey="n" rel="next">Næste <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
