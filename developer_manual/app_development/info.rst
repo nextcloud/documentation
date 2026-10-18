@@ -333,10 +333,22 @@ activity/providers/provider
     * must contain a php class which implements OCP\Activity\IProvider and is used to react to events from the activity app
 settings/admin
     * optional
-    * must contain a php class which implements OCP\Settings\ISettings and returns the form to render for the global settings area
+    * must contain a php class which implements OCP\Settings\ISettings and returns the form to render for the admin settings area
 settings/admin-section
     * optional
-    * must contain a php class which implements OCP\Settings\ISection and returns data to render navigation entries in the global settings area
+    * must contain a php class which implements OCP\Settings\ISection and returns data to render navigation entries in the admin settings area
+settings/personal
+    * optional
+    * must contain a php class which implements OCP\Settings\ISettings and returns the form to render for the personal settings area
+settings/personal-section
+    * optional
+    * must contain a php class which implements OCP\Settings\ISection and returns data to render navigation entries in the personal settings area
+settings/admin-delegation
+    * optional
+    * must contain a php class which implements OCP\Settings\ISettings and has no UI (in settings) because it is only intended to be used for admin delegation
+settings/admin-delegation-section
+    * optional
+    * must contain a php class which implements OCP\Settings\ISection which contains delegation-only settings classes as defined above
 navigations
     * optional
     * must contain at least one navigation element
