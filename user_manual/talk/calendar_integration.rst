@@ -28,7 +28,7 @@ When creating a new event in Calendar, you can set a Talk conversation as event 
    :alt: Nextcloud Calendar new event dialog with Talk conversation link option
    :width: 600px
 
-When the event is created, you will see a link to the conversation in the event details. The conversation will also appear in the list of conversations (discoverable by ``Events`` filter).
+When the event is created, you will see a link to the conversation in the event details. The conversation will also appear in the list of conversations (discoverable by the ``Meeting conversations`` filter).
 
 .. image:: images/event-conversation-list.png
    :alt: Nextcloud Calendar event view showing a linked Talk conversation
