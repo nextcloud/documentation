@@ -31,7 +31,7 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Indeks" href="genindex.html" />
     <link rel="search" title="Søg" href="search.html" />
-    <link rel="next" title="Administrer tilsluttede browsere og enheder" href="session_management.html" />
+    <link rel="next" title="Tilsluttede browsere og enheder" href="session_management.html" />
     <link rel="prev" title="Tilgængelighed" href="universal_access.html" />
    
   <meta name="robots" content="noindex, follow" />
@@ -57,14 +57,14 @@
 
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Søg i dokumentation</label>
+    <label for="rtd-search-input" class="sr-only">Søg i dokumentationen</label>
     <div class="wy-form-search">
       <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
       <input id="rtd-search-input"
              type="text"
              name="q"
-             placeholder="Søg i dokumentation"
-             aria-label="Søg i dokumentation" />
+             placeholder="Søg i dokumentationen"
+             aria-label="Søg i dokumentationen" />
     </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -72,27 +72,27 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud 36 brugermanual introduktion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="activity.html">Brug af Aktivitet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introduktion til brugermanualen for Nextcloud 36</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">Nextclouds webbrugerflade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="activity.html">Brug af appen Aktivitet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ai_assistant.html">AI-assistent</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files/index.html">Filer og synkronisering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="talk/index.html">Talk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Indstilling af dine præferencer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Skrivebordsklient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Dine personlige indstillinger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Tilgængelighed</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Brug af to-faktor-godkendelse</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Opsætning af to-faktor-godkendelse</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Recovery codes if you lose your second factor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Log ind med to-faktor-godkendelse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Backup-koder, hvis du mister din anden faktor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Login med to-faktor-godkendelse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Brug af to-faktor-godkendelse med hardware-nøgler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Brug af klienter med to-faktor-godkendelse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#considerations">Overvejelser</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="session_management.html">Administrer tilsluttede browsere og enheder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session_management.html">Tilsluttede browsere og enheder</a></li>
 </ul>
 
         </div>
@@ -121,42 +121,31 @@
              
   <section id="using-two-factor-authentication">
 <h1>Brug af to-faktor-godkendelse<a class="headerlink" href="#using-two-factor-authentication" title="Link to this heading"></a></h1>
-<p>To-faktor-godkendelse (2FA) er en måde at beskytte din Nextcloud-konto mod uvedkommende adgang på. Den kræver to forskellige ›beviser‹ for din identitet, for eksempel <em>noget, du ved</em> (som en adgangskode) og <em>noget, du har</em>, som en fysisk nøgle. Typisk er den første faktor en adgangskode, som du allerede har, og den anden kan være en sms, du modtager, eller en kode, du genererer på din telefon eller en anden enhed (<em>noget, du har</em>). Nextcloud understøtter flere slags anden faktor, og der kan tilføjes flere.</p>
-<p>Once a two-factor authentication app has been enabled by your administrator,
-you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Indstilling af dine præferencer</span></a>.</p>
+<p>To-faktor-godkendelse (2FA) er en måde at beskytte din Nextcloud-konto mod uvedkommende adgang på. Den kræver to forskellige »beviser« for din identitet, for eksempel <em>noget, du ved</em> (som en adgangskode) og <em>noget, du har</em>, som en fysisk nøgle. Typisk er den første faktor en adgangskode, som du allerede har, og den anden kan være en sms, du modtager, eller en kode, du genererer på din telefon eller en anden enhed (<em>noget, du har</em>). Nextcloud understøtter flere slags anden faktor, og der kan tilføjes flere.</p>
+<p>Når din administrator har gjort en app til to-faktor-godkendelse tilgængelig, kan du slå den til og sætte den op i <a class="reference internal" href="userpreferences.html"><span class="doc">dine personlige indstillinger</span></a>.</p>
 <section id="configuring-two-factor-authentication">
 <h2>Opsætning af to-faktor-godkendelse<a class="headerlink" href="#configuring-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>In your personal settings, look up the <strong>Second-factor Auth</strong> setting. In this
-example this is TOTP, a Google Authenticator compatible time-based code:</p>
+<p>Find indstillingen <strong>To-faktor-godkendelse</strong> i dine personlige indstillinger. I dette eksempel er det TOTP, en tidsbaseret kode, der virker med Google Authenticator:</p>
 <figure class="align-default">
 <img alt="Opsætning af TOTP." src="../_images/totp_enable.png" />
 </figure>
 <p>Du ser nu din hemmelige nøgle og en QR-kode, som du kan scanne med TOTP-appen på din telefon (eller en anden enhed). Afhængigt af appen eller værktøjet skal du indtaste koden eller scanne QR-koden, hvorefter din enhed viser en loginkode, der skifter hvert 30. sekund.</p>
 </section>
 <section id="recovery-codes-if-you-lose-your-second-factor">
-<h2>Recovery codes if you lose your second factor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Link to this heading"></a></h2>
-<p>You should always generate backup codes for 2FA. If your second factor device
-gets stolen or stops working, you can use one of these codes to unlock your
-account. It effectively functions as a backup second factor. To get the backup
-codes, go to your personal settings and look under <strong>Second-factor Auth</strong>
-settings. Choose <em>Generate backup codes</em>:</p>
+<h2>Backup-koder, hvis du mister din anden faktor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Link to this heading"></a></h2>
+<p>Du bør altid oprette backup-koder til 2FA. Hvis din enhed til anden faktor bliver stjålet eller holder op med at virke, kan du bruge en af koderne til at låse din konto op. Koderne fungerer altså som en reserve for din anden faktor. Du får backup-koderne i dine personlige indstillinger under <strong>To-faktor-godkendelse</strong>. Vælg <em>Generer backup-koder</em>:</p>
 <figure class="align-default">
 <img alt="Generering af backup-koder til 2FA" src="../_images/2fa_backupcode_1.png" />
 </figure>
-<p>You will then see a list of one-time-use backup codes:</p>
+<p>Så ser du en liste med backup-koder, der hver kan bruges én gang:</p>
 <figure class="align-default">
 <img alt="Backup-koder til 2FA" src="../_images/2fa_backupcode_2.png" />
 </figure>
-<p>Store these codes somewhere safe where you can find them. Do not keep them
-with your second factor (such as your mobile phone), but store them separately
-so that losing one does not mean losing the other.</p>
+<p>Gem koderne et sikkert sted, hvor du kan finde dem. Opbevar dem ikke sammen med din anden faktor (f.eks. din mobiltelefon), men et andet sted, så du ikke mister begge dele på én gang.</p>
 </section>
 <section id="logging-in-with-two-factor-authentication">
-<h2>Log ind med to-faktor-godkendelse<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>After you log out and log in again, you will see a prompt to enter the
-TOTP code in your browser. If you have enabled more than one second factor,
-you will see a selection screen where you can choose which method to use for
-this login. Select TOTP:</p>
+<h2>Login med to-faktor-godkendelse<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
+<p>Når du logger ud og ind igen, bliver du bedt om at indtaste TOTP-koden i din browser. Hvis du har slået mere end én anden faktor til, ser du et skærmbillede, hvor du kan vælge, hvilken metode du vil bruge til dette login. Vælg TOTP:</p>
 <figure class="align-default">
 <img alt="Valg af metode til to-faktor-godkendelse." src="../_images/totp_login_1.png" />
 </figure>
@@ -167,14 +156,12 @@ this login. Select TOTP:</p>
 <p>Hvis koden er korrekt, bliver du sendt videre til din Nextcloud-konto.</p>
 <div class="admonition note">
 <p class="admonition-title">Bemærk</p>
-<p>Since the code is time-based, it is important that your server’s and
-your smartphone’s clock are almost in sync. A time drift of a few seconds
-won’t be a problem.</p>
+<p>Da koden er tidsbaseret, er det vigtigt, at uret på din server og på din smartphone går nogenlunde ens. En forskel på nogle få sekunder er ikke et problem.</p>
 </div>
 </section>
 <section id="using-two-factor-authentication-with-hardware-tokens">
 <h2>Brug af to-faktor-godkendelse med hardware-nøgler<a class="headerlink" href="#using-two-factor-authentication-with-hardware-tokens" title="Link to this heading"></a></h2>
-<p>Du kan bruge to-faktor-godkendelse med hardware-nøgler. Det er kendt, at følgende enheder virker:</p>
+<p>Du kan bruge to-faktor-godkendelse med hardware-nøgler. Følgende enheder er kendt for at virke:</p>
 <ul class="simple">
 <li><p>TOTP-baserede:</p>
 <ul>
@@ -192,15 +179,11 @@ won’t be a problem.</p>
 </section>
 <section id="using-client-applications-with-two-factor-authentication">
 <h2>Brug af klienter med to-faktor-godkendelse<a class="headerlink" href="#using-client-applications-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>Once you have enabled 2FA, your clients will no longer be able to connect with
-just your password unless they also have support for two-factor authentication.
-To solve this, you should generate device-specific passwords for them. See
-<a class="reference internal" href="session_management.html"><span class="doc">Administrer tilsluttede browsere og enheder</span></a> for more information on how to do this.</p>
+<p>Når du har slået 2FA til, kan dine klienter ikke længere oprette forbindelse med kun din adgangskode, medmindre de også understøtter to-faktor-godkendelse. Løsningen er at oprette app-adgangskoder til dem. Se, hvordan du gør, på siden <a class="reference internal" href="session_management.html"><span class="doc">Tilsluttede browsere og enheder</span></a>.</p>
 </section>
 <section id="considerations">
 <h2>Overvejelser<a class="headerlink" href="#considerations" title="Link to this heading"></a></h2>
-<p>If you use WebAuthn to log in to your Nextcloud, be sure to not use the same token for 2FA, as this
-would mean you are again only using a single factor.</p>
+<p>Hvis du bruger WebAuthn til at logge ind på din Nextcloud, så sørg for ikke at bruge den samme nøgle til 2FA, da du så igen kun bruger én faktor.</p>
 </section>
 </section>
 
@@ -209,7 +192,7 @@ would mean you are again only using a single factor.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Sidefod">
         <a href="universal_access.html" class="btn btn-neutral float-left" title="Tilgængelighed" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Forrige</a>
-        <a href="session_management.html" class="btn btn-neutral float-right" title="Administrer tilsluttede browsere og enheder" accesskey="n" rel="next">Næste <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="session_management.html" class="btn btn-neutral float-right" title="Tilsluttede browsere og enheder" accesskey="n" rel="next">Næste <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

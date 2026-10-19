@@ -57,14 +57,14 @@
 
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Belgeleri arayın</label>
+    <label for="rtd-search-input" class="sr-only">Belgelerde ara</label>
     <div class="wy-form-search">
       <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
       <input id="rtd-search-input"
              type="text"
              name="q"
-             placeholder="Belgeleri arayın"
-             aria-label="Belgeleri arayın" />
+             placeholder="Belgelerde ara"
+             aria-label="Belgelerde ara" />
     </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -73,14 +73,14 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud 36 kullanıcı rehberi giriş</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">Nextcloud site arayüzü</a></li>
 <li class="toctree-l1"><a class="reference internal" href="activity.html">İşlem uygulamasını kullanmak</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files/index.html">Dosyalar ve eşitleme</a></li>
 <li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="talk/index.html">Konuş</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Topluluklar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Bilgisayar istemcisi</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Kullanıcı ayarları</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#sharing-your-data-in-the-global-address-book">Verilerinizi genel adres defterinde paylaşmak</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#restrict-who-can-see-your-profile-data">Profil verilerinizi kimin görebileceğini kısıtlamak</a></li>
@@ -88,7 +88,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Evrensel erişim</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_2fa.html">İki adımlı doğrulamayı kullanmak</a></li>
-<li class="toctree-l1"><a class="reference internal" href="session_management.html">Bağlı tarayıcı ve aygıtların yönetimi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session_management.html">Bağlı tarayıcıların ve aygıtların yönetimi</a></li>
 </ul>
 
         </div>
@@ -120,14 +120,14 @@
 <p>Bir kullanıcı olarak kişisel ayarlarınızı yapabilirsiniz.</p>
 <p>Kişisel ayarlarınıza erişmek için:</p>
 <ol class="arabic">
-<li><p>Click your profile picture to open the menu.</p>
+<li><p>Menüyü açmak için profil görselinize tıklayın.</p>
 <figure class="align-default">
-<img alt="Nextcloud account menu showing Settings, Help, and Log out options" src="../_images/oc_personal_settings_dropdown.png" />
+<img alt="Ayarlar, yardım ve oturumu kapat seçeneklerini gösteren Nextcloud hesabı menüsü" src="../_images/oc_personal_settings_dropdown.png" />
 </figure>
 </li>
-<li><p>Click <strong>Settings</strong> in the dropdown menu to open your personal settings.</p>
+<li><p>Kişisel ayarlarınızı açmak için açılan listede <strong>Ayarlar</strong> üzerine tıklayın.</p>
 <figure class="align-default">
-<img alt="Nextcloud personal settings page listing profile, security, and notification options" src="../_images/personal_settings.png" />
+<img alt="Profil, güvenlik ve bildirim seçeneklerini gösteren Nextcloud kişisel ayarlar sayfası" src="../_images/personal_settings.png" />
 </figure>
 </li>
 </ol>
@@ -156,53 +156,39 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
-<p>Available options and settings depend on your administrator’s configuration.
-If you are not able to change the password or the display name in your personal settings,
-please contact your administrator for help.</p>
+<p>Yönetici yapılandırması tarafından belirlenmiş kullanılabilecek seçenek ve ayarlar. Kişisel ayarlarınızda parolayı veya görüntülenen tam adınızı değiştiremiyorsanız, yardım almak için Nextcloud yöneticiniz ile görüşün.</p>
 </div>
 <section id="sharing-your-data-in-the-global-address-book">
 <h2>Verilerinizi genel adres defterinde paylaşmak<a class="headerlink" href="#sharing-your-data-in-the-global-address-book" title="Link to this heading"></a></h2>
-<p>Some administrators share their global address book with other Nextcloud instances
-(so-called <em>Trusted Servers</em>) or even with the wider world.
-This is helpful when two instances want to work closely together, or when people
-want to use Nextcloud as a virtual telephone book for others to browse.
-It also allows searching for contacts, creating shares, and much more.</p>
-<p>You can change what personal data is shared by setting the scope of your data.
-Click the lock icon to open the following dropdown next to each entry:</p>
+<p>Bazı yöneticiler, genel adres defterlerini diğer Nextcloud kopyaları ile (<em>Güvenilen sunucular</em> olarak adlandırılır) veya daha geniş dünyayla paylaşır. Bu uygulama, iki bulut sunucusu yakın bir şekilde birlikte çalışmak istediğinde veya insanlar Nextcloud uygulamasını başkalarının göz atması için bir sanal telefon rehberi olarak kullanmak istediğinde faydalıdır. Ayrıca kişileri arama ve paylaşımlar oluşturma gibi birçok başka özellik sağlar.</p>
+<p>Verilerinizin kapsamını belirleyerek hangi kişisel verilerin paylaşılacağını değiştirebilirsiniz. Her kaydın yanındaki kilit simgesine tıklayarak açılan listeyi görebilirsiniz:</p>
 <blockquote>
 <div><figure class="align-default">
-<img alt="Visibility scope dropdown on a personal information field with Private, Local, Federated, and Published options" src="../_images/userdata-scope.png" />
+<img alt="Kişisel, Yerel, Birleşik ve Yayınlanmış seçenekleriyle bir kişisel bilgi alanında görünürlük kapsamı açılan listesi" src="../_images/userdata-scope.png" />
 </figure>
 </div></blockquote>
 <p>Verilerinizi <strong>Kişisel</strong> olarak ayarlarsanız sizden başka kimse göremez.</p>
-<p>If you set your data to <strong>Local</strong>, all logged-in users within your Nextcloud instance will be able to
-see the information, but no one outside of it.</p>
-<p>If you set your data to <strong>Federated</strong>, the trusted server(s) added by your administrator will be able
-to see this data, in addition to all logged-in users.</p>
-<p>If you set your data to <strong>Published</strong>, anyone can see your data. This is useful in some cases.
-Someone with a public-facing role such as marketing or sales might want to share their contact
-details with a wide variety of connections who might not be using Nextcloud.</p>
+<p>Verilerinizi <strong>Yerel</strong> olarak ayarlarsanız, Nextcloud kopyanızda oturum açmış tüm kullanıcılar bilgileri görebilir, ancak bunun dışında kimse göremez.</p>
+<p>Verilerinizi <strong>Birleşik</strong> olarak ayarlarsanız, oturum açmış tüm kullanıcıların yanında yöneticiniz tarafından eklenen güvenilen sunucular da bu verileri görebilir.</p>
+<p>Verilerinizi <strong>Yayınlanmış</strong> olarak ayarlarsanız, herkes tarafından görülebilir. Bazı durumlarda bu özellik kullanışlıdır. Pazarlama veya satış gibi herkese açık bir rolü olan biri, kişi bilgilerini Nextcloud kullanmayan çok çeşitli kişilerle paylaşmak isteyebilir.</p>
 </section>
 <section id="restrict-who-can-see-your-profile-data">
 <h2>Profil verilerinizi kimin görebileceğini kısıtlamak<a class="headerlink" href="#restrict-who-can-see-your-profile-data" title="Link to this heading"></a></h2>
-<p>If the profile is enabled by your administrator, your profile data can be read by other users and
-guests. To control who can see which information, adjust the scopes mentioned above:</p>
+<p>Yöneticiniz profil özelliğini açmışsa, profil verileriniz diğer kullanıcılar ve konuklar tarafından görülebilir. Kimin hangi bilgileri görebileceğini belirlemek için yukarıda anılan kapsamları ayarlayabilirsiniz:</p>
 <ul class="simple">
-<li><p><strong>Private</strong> will only allow you and users you have added to your phone book to see the data.</p></li>
-<li><p><strong>Local</strong> and above will also allow guests to see your data.</p></li>
+<li><p><strong>Kişisel</strong> seçeneği, yalnızca sizin ve telefon rehberinize eklediğiniz kullanıcıların verileri görmesine izin verir.</p></li>
+<li><p><strong>Yerel</strong> ve üzeri seçenekler, konukların verilerinizi görmesine izin verir.</p></li>
 </ul>
-<p>To restrict the visibility further, you can prevent guests from seeing your profile data by
-changing the profile visibility to logged-in users.
-In your personal settings, find the profile visibility button:</p>
+<p>Görünürlüğü daha da kısıtlamak için, profil görünürlüğünü oturum açmış kullanıcılar olarak değiştirerek konukların profil verilerinizi görmesini önleyebilirsiniz. Kişisel ayarlarınızda profil görünürlüğü düğmesini bulun:</p>
 <blockquote>
 <div><figure class="align-default" style="width: 50%">
-<img alt="Profile visibility toggle button in personal settings" src="../_images/userdata-visibility-toggle.png" />
+<img alt="Kişisel ayarlarda profil görünürlüğü değiştirme düğmesi" src="../_images/userdata-visibility-toggle.png" />
 </figure>
 </div></blockquote>
-<p>This allows you to configure the visibility for each profile attribute:</p>
+<p>Her bir profil özelliği için görünürlüğü yapılandırmanızı sağlar:</p>
 <blockquote>
 <div><figure class="align-default">
-<img alt="Visibility scope dropdown on a personal information field with Private, Local, Federated, and Published options" src="../_images/userdata-visibility.png" />
+<img alt="Kişisel, Yerel, Birleşik ve Yayınlanmış seçenekleriyle bir kişisel bilgi alanında görünürlük kapsamı açılan listesi" src="../_images/userdata-visibility.png" />
 </figure>
 </div></blockquote>
 </section>

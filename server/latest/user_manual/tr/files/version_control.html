@@ -32,7 +32,7 @@
     <link rel="index" title="Dizin" href="../genindex.html" />
     <link rel="search" title="Ara" href="../search.html" />
     <link rel="next" title="Depolama alanı kotası" href="quota.html" />
-    <link rel="prev" title="Deleted files" href="deleted_file_management.html" />
+    <link rel="prev" title="Silinmiş dosyalar" href="deleted_file_management.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -57,14 +57,14 @@
 
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Belgeleri arayın</label>
+    <label for="rtd-search-input" class="sr-only">Belgelerde ara</label>
     <div class="wy-form-search">
       <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
       <input id="rtd-search-input"
              type="text"
              name="q"
-             placeholder="Belgeleri arayın"
-             aria-label="Belgeleri arayın" />
+             placeholder="Belgelerde ara"
+             aria-label="Belgelerde ara" />
     </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -73,20 +73,20 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 36 kullanıcı rehberi giriş</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud site arayüzü</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">İşlem uygulamasını kullanmak</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Dosyalar ve eşitleme</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Dosyalara erişmek</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="managing.html">Dosyaları yönetmek</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="deleted_file_management.html">Deleted files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deleted_file_management.html">Silinmiş dosyalar</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Sürüm denetimi</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#naming-a-version">Bir sürümü adlandırmak</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#deleting-a-version">Bir sürümü silmek</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="quota.html">Depolama alanı kotası</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tagging.html">System tags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tagging.html">Sistem etiketleri</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="collaboration.html">Paylaşım ve iş birliği</a></li>
@@ -95,12 +95,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Konuş</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Topluluklar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Bilgisayar istemcisi</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Kullanıcı ayarları</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Evrensel erişim</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">İki adımlı doğrulamayı kullanmak</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bağlı tarayıcı ve aygıtların yönetimi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bağlı tarayıcıların ve aygıtların yönetimi</a></li>
 </ul>
 
         </div>
@@ -131,18 +131,12 @@
              
   <section id="version-control">
 <h1>Sürüm denetimi<a class="headerlink" href="#version-control" title="Link to this heading"></a></h1>
-<p>Nextcloud supports a simple version control system for files. Versioning creates
-backups of files which are accessible via the Versions tab on the Details
-sidebar. This tab contains the history of the file where you can roll back a
-file to any previous version. A new version is saved only if at least two minutes
-have passed since the last version was created. Versions are stored in <code class="docutils literal notranslate"><span class="pre">data/[user]/files_versions</span></code>.</p>
+<p>Nextcloud, dosyalar için basit bir sürüm denetimi sistemini destekler. Sürüm tutma, Ayrıntılar kenar çubuğundaki Sürümler sekmesinden erişilebilen dosyaların yedeklerini oluşturur. Bu sekmede, bir dosyanın önceki herhangi bir sürümüne geri dönebileceğiniz geçmiş kopyaları bulunur. Yeni bir sürüm yalnızca son sürümün oluşturulmasından sonra en az iki dakika geçmişse kaydedilir. Sürümler <code class="docutils literal notranslate"><span class="pre">data/[user]/files_versions</span></code> klasörüne kaydedilir.</p>
 <figure class="align-default">
-<img alt="File version history in the Details sidebar" src="../../_images/files_versioning.png" />
+<img alt="Ayrıntılar kenar çubuğunda dosya sürümü geçmişi" src="../../_images/files_versioning.png" />
 </figure>
 <p>Bir dosyanın belirli bir sürümünü geri yüklemek için sağdaki dairesel oka tıklayın. İndirmek için zaman damgasına tıklayın.</p>
-<p>The versioning app expires old versions automatically to make sure that
-you don’t run out of space. This pattern is used to delete
-old versions:</p>
+<p>Sürüm tutma uygulaması, depolama alanınızın dolmadığından emin olmak için eski sürümleri otomatik olarak kaldırır. Eski sürümleri silmek için şu model kullanılır:</p>
 <ul class="simple">
 <li><p>İlk saniye için Nextcloud yeni bir sürüm tutar</p></li>
 <li><p>İlk 10 saniye boyunca Nextcloud, 2 saniyede bir yeni bir sürüm tutar</p></li>
@@ -158,10 +152,10 @@ old versions:</p>
 <h2>Bir sürümü adlandırmak<a class="headerlink" href="#naming-a-version" title="Link to this heading"></a></h2>
 <p>Bir sürüme bir ad verebilirsiniz.</p>
 <figure class="align-default">
-<img alt="Version actions menu" src="../../_images/files_versions_actions.png" />
+<img alt="Sürüm işlemleri menüsü" src="../../_images/files_versions_actions.png" />
 </figure>
 <figure class="align-default">
-<img alt="Naming a file version" src="../../_images/files_versions_naming.png" />
+<img alt="Bir dosya sürümünü adlandırmak" src="../../_images/files_versions_naming.png" />
 </figure>
 <p>Bir sürümün bir adı olduğunda, otomatik olarak sona erme sürecine katılmaz.</p>
 </section>
@@ -175,7 +169,7 @@ old versions:</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="deleted_file_management.html" class="btn btn-neutral float-left" title="Deleted files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Önceki</a>
+        <a href="deleted_file_management.html" class="btn btn-neutral float-left" title="Silinmiş dosyalar" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Önceki</a>
         <a href="quota.html" class="btn btn-neutral float-right" title="Depolama alanı kotası" accesskey="n" rel="next">Sonraki <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

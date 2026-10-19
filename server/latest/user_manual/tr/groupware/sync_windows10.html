@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Dizin" href="../genindex.html" />
     <link rel="search" title="Ara" href="../search.html" />
-    <link rel="next" title="Migrate data between instances" href="user_migration.html" />
+    <link rel="next" title="Verileri kopyalar arasında aktarmak" href="user_migration.html" />
     <link rel="prev" title="GNOME masaüstü ile eşitleme" href="sync_gnome.html" />
    
   <meta name="robots" content="noindex, follow" />
@@ -57,14 +57,14 @@
 
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Belgeleri arayın</label>
+    <label for="rtd-search-input" class="sr-only">Belgelerde ara</label>
     <div class="wy-form-search">
       <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
       <input id="rtd-search-input"
              type="text"
              name="q"
-             placeholder="Belgeleri arayın"
-             aria-label="Belgeleri arayın" />
+             placeholder="Belgelerde ara"
+             aria-label="Belgelerde ara" />
     </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -73,7 +73,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 36 kullanıcı rehberi giriş</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud site arayüzü</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">İşlem uygulamasını kullanmak</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Dosyalar ve eşitleme</a></li>
@@ -91,21 +91,21 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Windows 10 ile eşitlemek</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#calendar">Takvim</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contacts">Kişiler</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-2fa">Troubleshooting: 2FA</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-tlsv1-2">Troubleshooting: TLSv1.2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#credits">Credits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-2fa">Sorun çözme: İki adımlı doğrulama</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-tlsv1-2">Sorun çözme: TLSv1.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#credits">Emeği geçenler</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="user_migration.html">Migrate data between instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">Verileri kopyalar arasında aktarmak</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Konuş</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Topluluklar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Bilgisayar istemcisi</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Kullanıcı ayarları</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Evrensel erişim</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">İki adımlı doğrulamayı kullanmak</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bağlı tarayıcı ve aygıtların yönetimi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bağlı tarayıcıların ve aygıtların yönetimi</a></li>
 </ul>
 
         </div>
@@ -151,30 +151,29 @@
 <section id="contacts">
 <h2>Kişiler<a class="headerlink" href="#contacts" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
-<li><p>Repeat steps 1–7 from the <a class="reference internal" href="#calendar-section"><span class="std std-ref">Calendar instructions</span></a>. If you already have set up the Calendar synchronization, you can use the same account for this.</p></li>
-<li><p>From the “Advanced mailbox settings” screen, scroll to the bottom of the dialog box and paste your CardDAV URL in the field labelled “Contacts server (CardDAV)”.</p></li>
+<li><p><a class="reference internal" href="#calendar-section"><span class="std std-ref">Takvim yönergelerindeki</span></a> 1–7 arasındaki adımları yenileyin. Takvim eşitlemesini  zaten kurduysanız, bunun için de aynı hesabı kullanabilirsiniz.</p></li>
+<li><p>“Gelişmiş e-posta kutusu ayarları” ekranında iletişim kutusunun altına gidin ve CardDAV adresinizi “Kişiler sunucusu (CardDAV)” alanına yapıştırın.</p></li>
 <li><p>Adres yolundaki “principals” yerine “addressbooks” yazın.</p></li>
 <li><p>“Bitti” üzerine tıklayın. İlgili alanlara Nextcloud kullanıcı adı ve parolanızı yazın. Hesap adını istediğiniz şekilde değiştirin “Nextcloud” gibi). “Kaydet” üzerine tıklayın.</p></li>
 </ol>
 </section>
 <section id="troubleshooting-2fa">
-<h2>Troubleshooting: 2FA<a class="headerlink" href="#troubleshooting-2fa" title="Link to this heading"></a></h2>
+<h2>Sorun çözme: İki adımlı doğrulama<a class="headerlink" href="#troubleshooting-2fa" title="Link to this heading"></a></h2>
 <p><strong>NOT: İki adımlı doğrulamayı kullanıma aldıysanız takviminizi eşitleyemezsiniz. Takvim istemci uygulamasıyla kullanılabilecek bir uygulama parolası almak için aşağıdaki adımları izleyin:</strong></p>
 <ol class="arabic simple">
 <li><p>Nextcloud oturumunuzu açın. Kullanıcı simgenize ve ardından “Ayarlar” üzerine tıklayın.</p></li>
-<li><p>Click on “Security”, then locate a button labeled “Create new app password”. Next to this button, enter “Windows 10 Calendar app”. Then, click the button, copy and paste the password. Use this password instead of your Nextcloud password when prompted for credentials during setup, for example in Calendar step 8 or Contacts step 4.</p></li>
+<li><p>“Güvenlik” üzerine tıklayın. Ardından “Yeni uygulama parolası oluştur” düğmesini bulun. Bu düğmenin yanına “Windows 10 Takvim uygulaması (Windows 10 Calendar app)” yazın. Düğmeye tıklayın. Parolayı kopyalayın. Takvimde 8. adımda veya Kişiler de 4. adımda kimlik doğrulama bilgileri sorulduğunda Nextcloud parolanız yerine bu parolayı kullanın.</p></li>
 </ol>
 </section>
 <section id="troubleshooting-tlsv1-2">
-<h2>Troubleshooting: TLSv1.2<a class="headerlink" href="#troubleshooting-tlsv1-2" title="Link to this heading"></a></h2>
+<h2>Sorun çözme: TLSv1.2<a class="headerlink" href="#troubleshooting-tlsv1-2" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>For Windows 10 your Nextcloud https server <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/secauthn/protocols-in-tls-ssl--schannel-ssp-">must support TLSv1.2</a>.  This is apparent if no connection attempts are seen on the server, and the Windows client Event Viewer will display Schannel TLS errors under “Windows Logs -&gt; System”.</p></li>
+<li><p>Windows 10 için Nextcloud https sunucunuz <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/secauthn/protocols-in-tls-ssl--schannel-sssp-">TLSv1.2</a> desteklemelidir. Bu durum, sunucuda herhangi bir bağlantı girişimi görülmezse ve Windows istemcisi Olay Görüntüleyicisi “Windows günlükleri -&gt; Sistem” altında Schannel TLS hataları görüntülüyorsa ortaya çıkar.</p></li>
 </ul>
 </section>
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading"></a></h2>
-<p>Special thanks to this Reddit user for their post:
-<a class="reference external" href="https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar_application_with/">https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar_application_with/</a></p>
+<h2>Emeği geçenler<a class="headerlink" href="#credits" title="Link to this heading"></a></h2>
+<p>Şu Reddit kullanıcısına gönderileri için özellikle teşekkür ederiz: <a class="reference external" href="https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar_application_with/">https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar_application_with/</a></p>
 </section>
 </section>
 
@@ -183,7 +182,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="sync_gnome.html" class="btn btn-neutral float-left" title="GNOME masaüstü ile eşitleme" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Önceki</a>
-        <a href="user_migration.html" class="btn btn-neutral float-right" title="Migrate data between instances" accesskey="n" rel="next">Sonraki <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="user_migration.html" class="btn btn-neutral float-right" title="Verileri kopyalar arasında aktarmak" accesskey="n" rel="next">Sonraki <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

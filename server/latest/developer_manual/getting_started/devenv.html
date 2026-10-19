@@ -81,7 +81,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#get-the-source">Get the source</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#gather-information-about-server-setup">Gather information about server setup</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#check-out-the-code">Check out the code</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#check-out-external-shipped-apps">Check out external shipped apps</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#enabling-debug-mode">Enabling debug mode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#keep-the-code-up-to-date">Keep the code up-to-date</a></li>
 </ul>
@@ -200,22 +199,6 @@
 </div>
 <p>Now access the installation at <a class="reference external" href="http://localhost/">http://localhost/</a> (or the corresponding URL) in your web browser to set up your instance.</p>
 </section>
-<section id="check-out-external-shipped-apps">
-<h3>Check out external shipped apps<a class="headerlink" href="#check-out-external-shipped-apps" title="Link to this heading"></a></h3>
-<p>This optional step is especially necessary if you want to test upgrading, as the following apps are required to be present during an upgrade.</p>
-<p>Install the viewer app:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">apps</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">viewer</span><span class="o">.</span><span class="n">git</span>
-</pre></div>
-</div>
-<p>Make sure to use a version compatible with the server by checking out the matching tag.
-You can check the <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> of the app to see if its <code class="docutils literal notranslate"><span class="pre">min-version</span></code> field is compatible with the current server.</p>
-<p>When upgrading the server code you might need to upgrade the app code as well before running <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The same applies to all the apps listed under <code class="docutils literal notranslate"><span class="pre">alwaysEnabled</span></code> in <a class="reference external" href="https://github.com/nextcloud/server/blob/master/core/shipped.json#L49">shipped.json</a> but most are already present in the server repository.</p>
-</div>
-</section>
 <section id="enabling-debug-mode">
 <span id="debugmode"></span><h3>Enabling debug mode<a class="headerlink" href="#enabling-debug-mode" title="Link to this heading"></a></h3>
 <div class="admonition note">
@@ -262,7 +245,7 @@ $CONFIG = array (
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Oct 06, 2026.
+      <span class="lastupdated">Last updated on Oct 19, 2026.
       </span></p>
   </div>
 
