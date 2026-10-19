@@ -57,14 +57,14 @@
 
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Dokumentation durchsuchen</label>
+    <label for="rtd-search-input" class="sr-only">Suche Dokumente</label>
     <div class="wy-form-search">
       <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
       <input id="rtd-search-input"
              type="text"
              name="q"
-             placeholder="Dokumentation durchsuchen"
-             aria-label="Dokumentation durchsuchen" />
+             placeholder="Suche Dokumente"
+             aria-label="Suche Dokumente" />
     </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -73,14 +73,14 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 36 - Einführung in die Benutzeranleitung</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Die Weboberfläche von Nextcloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Verwendung der Aktivitäts-App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Dateien &amp; Synchronisation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Kollektive</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop-Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">Using the Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
@@ -119,7 +119,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop-Client</a></li>
       <li class="breadcrumb-item active">Konflikte</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/conflicts.rst" class="fa fa-github"> Auf GitHub bearbeiten</a>
@@ -138,10 +138,7 @@
 </section>
 <section id="example">
 <h2>Beispiel<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
-<p>Imagine there is a file called <code class="docutils literal notranslate"><span class="pre">mydata.txt</span></code> in your synchronized folder. It has
-not changed for a while and contains the text „contents“ locally and remotely.
-Now, nearly at the same time you update it locally to say „local contents“ while
-the file on the server gets updated to contain „remote contents“ by someone else.</p>
+<p>Stellen Sie sich vor, in Ihrem synchronisierten Ordner gibt es eine Datei namens „mydata.txt“. Sie wurde eine Zeit lang nicht geändert und enthält den Text „Inhalt“ lokal und remote. Jetzt aktualisieren Sie sie fast gleichzeitig lokal, sodass sie „Lokaler Inhalt“ lautet, während die Datei auf dem Server von jemand anderem aktualisiert wird und „Entfernter Inhalt“ enthält.</p>
 <p>Beim Versuch, Ihre lokalen Änderungen hochzuladen, wird der Desktop-Client feststellen, dass sich auch die Serverversion geändert hat. Dies führt zu einem Konflikt und Sie haben nun zwei Dateien auf Ihrem lokalen Computer:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">mydata.txt</span></code> enthält „Remote-Inhalte“</p></li>
@@ -155,9 +152,7 @@ the file on the server gets updated to contain „remote contents“ by someone 
 <h2>Konflikte beim Hochladen (experimentell)<a class="headerlink" href="#uploading-conflicts-experimental" title="Link to this heading"></a></h2>
 <p>Standardmäßig wird die Konfliktdatei (die Datei mit „konfliktbehaftete Kopie“ im Namen, die Ihre lokalen, widersprüchlichen Änderungen enthält) nicht auf den Server hochgeladen. Der Grundgedanke ist, dass Sie als Autor der Änderungen den Konflikt am besten lösen können und dass es zu Verwirrung führen könnte, wenn Sie den Konflikt anderen Benutzern zeigen.</p>
 <p>In einigen Szenarien ist es jedoch sehr sinnvoll, diese widersprüchlichen Änderungen hochzuladen, sodass die lokale Arbeit sichtbar wird, auch wenn der Konflikt nicht sofort gelöst wird.</p>
-<p>The server can enable conflict uploads. To override the server setting, use
-<code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=1</span></code> to enable uploads or <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=0</span></code> to disable them.
-See <a class="reference internal" href="advanced_configuration.html#desktop-environment-variables"><span class="std std-ref">Environment variables</span></a> for how to apply environment variables.</p>
+<p>Der Server kann das Hochladen von Dateien bei Konflikten ermöglichen. Um die Servereinstellung zu überschreiben, verwenden Sie <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=1</span></code>, um das Hochladen zu aktivieren, oder <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=0</span></code>, um es zu deaktivieren. Informationen zur Anwendung von Umgebungsvariablen finden Sie unter <a class="reference internal" href="advanced_configuration.html#desktop-environment-variables"><span class="std std-ref">Environment variables</span></a>.</p>
 </section>
 </section>
 

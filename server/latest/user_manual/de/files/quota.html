@@ -57,14 +57,14 @@
 
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Dokumentation durchsuchen</label>
+    <label for="rtd-search-input" class="sr-only">Suche Dokumente</label>
     <div class="wy-form-search">
       <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
       <input id="rtd-search-input"
              type="text"
              name="q"
-             placeholder="Dokumentation durchsuchen"
-             aria-label="Dokumentation durchsuchen" />
+             placeholder="Suche Dokumente"
+             aria-label="Suche Dokumente" />
     </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -73,7 +73,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 36 - Einführung in die Benutzeranleitung</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Die Weboberfläche von Nextcloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Verwendung der Aktivitäts-App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Dateien &amp; Synchronisation</a><ul class="current">
@@ -82,7 +82,7 @@
 <li class="toctree-l3"><a class="reference internal" href="deleted_file_management.html">Deleted files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="version_control.html">Versionskontrolle</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Speicherkontingent</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#deleted-files-and-the-trash-bin">Deleted files and the trash bin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deleted-files-and-the-trash-bin">Gelöschte Dateien und der Papierkorb</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="tagging.html">System tags</a></li>
@@ -94,8 +94,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Kollektive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop-Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Einstellungen vornehmen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universeller Zugriff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Verwendung der Zwei-Faktor-Authentifizierung</a></li>
@@ -130,43 +130,22 @@
              
   <section id="storage-quota">
 <h1>Speicherkontingent<a class="headerlink" href="#storage-quota" title="Link to this heading"></a></h1>
-<p>Your Nextcloud administrator can set a storage quota for your account. Open
-your Personal settings page to see your quota and how much storage you have
-used.</p>
+<p>Ihr Nextcloud-Administration kann ein Speicherkontingent für Ihr Konto festlegen. Öffnen Sie Ihre Seite „Persönliche Einstellungen“, um Ihr Kontingent und die von Ihnen genutzte Speicherkapazität anzuzeigen.</p>
 <figure class="align-default">
-<img alt="Storage quota indicator on the Personal page" src="../../_images/quota1.png" />
+<img alt="Speicherkontigentanzeige auf der persönlichen Seite" src="../../_images/quota1.png" />
 </figure>
 <p>Es dürfte hilfreich sein zu verstehen, wie Ihr Speicherkontingent berechnet wird.</p>
-<p>Metadata such as thumbnails, temporary files, caches, and encryption keys can
-use disk space without counting against your user quota. Some apps store data
-in the database, such as the Calendar and Contacts apps. This data is not
-included in the file-storage quota.</p>
-<p>When other users share files with you, the shared files normally count against
-the original owner’s quota. When you share a folder and allow other users or
-groups to upload or edit files in it, those files count against your quota.
-When you re-share files shared with you, the re-share normally continues to
-count against the original owner’s quota.</p>
-<p>Encrypted files can use more physical storage than unencrypted files. The
-quota calculation uses the file size reported by Nextcloud’s storage layer.</p>
-<p>When the Versions app is enabled, older file versions are managed separately
-from the normal storage quota according to the app’s retention and storage
-rules.</p>
-<p>If you create a public share through a URL and allow uploads, uploaded files
-count against your quota.</p>
+<p>Metadaten wie Miniaturansichten, temporäre Dateien, Caches und Verschlüsselungsschlüssel können Speicherplatz nutzen, ohne auf Ihr Benutzerkontingent angerechnet zu werden. Einige Apps speichern Daten in der Datenbank, beispielsweise die Apps Kalender und Kontakte. Diese Daten sind nicht im Dateispeicherkontingent enthalten.</p>
+<p>Wenn andere Benutzer Dateien mit Ihnen teilen, werden die freigegebenen Dateien normalerweise auf das Kontingent des ursprünglichen Eigentümers angerechnet. Wenn Sie einen Ordner freigeben und anderen Benutzern oder Gruppen erlauben, darin Dateien hochzuladen oder zu bearbeiten, werden diese Dateien auf Ihr Kontingent angerechnet. Wenn Sie mit Ihnen geteilte Dateien erneut freigeben, wird die erneute Freigabe normalerweise weiterhin auf das Kontingent des ursprünglichen Eigentümers angerechnet.</p>
+<p>Verschlüsselte Dateien können mehr physischen Speicher verbrauchen als unverschlüsselte Dateien. Die Quotenberechnung verwendet die von der Speicherverwaltung von Nextcloud gemeldete Dateigröße.</p>
+<p>Wenn die Versions-App aktiviert ist, werden ältere Dateiversionen gemäß den Aufbewahrungs- und Speicherregeln der App getrennt vom normalen Speicherkontingent verwaltet.</p>
+<p>Wenn Sie über eine URL eine öffentliche Freigabe erstellen und das Hochladen zulassen, werden hochgeladene Dateien auf Ihr Kontingent angerechnet.</p>
 <section id="deleted-files-and-the-trash-bin">
-<h2>Deleted files and the trash bin<a class="headerlink" href="#deleted-files-and-the-trash-bin" title="Link to this heading"></a></h2>
-<p>Files and folders in your trash bin do not count against your normal storage
-quota. The trash bin nevertheless has its own storage limit.</p>
-<p>For accounts with a quota, the default amount of space available to the trash
-bin is calculated as 50% of the account’s remaining quota space. This is
-calculated after the account’s active files have been taken into account; it is
-not 50% of the total quota.</p>
-<p>For accounts without a quota, the default trash-bin limit is calculated using
-available filesystem space instead. An administrator can configure a global or
-per-account trash-bin size that overrides the calculated default.</p>
-<p>Your administrator can also configure minimum and maximum trash-bin retention
-periods, or disable automatic expiration. See the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html">Deleted Files section of the Administrator Manual</a>
-for details.</p>
+<h2>Gelöschte Dateien und der Papierkorb<a class="headerlink" href="#deleted-files-and-the-trash-bin" title="Link to this heading"></a></h2>
+<p>Dateien und Ordner in Ihrem Papierkorb werden nicht auf Ihr normales Speicherkontingent angerechnet. Der Papierkorb hat jedoch eine eigene Speichergrenze.</p>
+<p>Bei Konten mit einem Kontingent wird die Standardmenge an Speicherplatz, die dem Papierkorb zur Verfügung steht, mit 50% des verbleibenden Kontingents des Kontos berechnet. Dieser Betrag wird nach Berücksichtigung der aktiven Dateien des Kontos berechnet und beträgt nicht 50 % des Gesamtkontingents.</p>
+<p>Für Konten ohne Kontingent wird das Standard-Papierkorb-Limit stattdessen unter Verwendung des verfügbaren Dateisystemspeichers berechnet. Die Administration kann eine globale oder kontospezifische Papierkorbgröße einrichten, die den berechneten Standard überschreibt.</p>
+<p>Ihr Administration kann auch minimale und maximale Aufbewahrungsfristen für den Papierkorb konfigurieren oder das automatische Leeren deaktivieren. Einzelheiten finden Sie im Abschnitt „Gelöschte Dateien“ des Administrationshandbuchs &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html">https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html</a>&gt;`_.</p>
 </section>
 </section>
 

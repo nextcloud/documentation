@@ -57,14 +57,14 @@
 
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Dokumentation durchsuchen</label>
+    <label for="rtd-search-input" class="sr-only">Suche Dokumente</label>
     <div class="wy-form-search">
       <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
       <input id="rtd-search-input"
              type="text"
              name="q"
-             placeholder="Dokumentation durchsuchen"
-             aria-label="Dokumentation durchsuchen" />
+             placeholder="Suche Dokumente"
+             aria-label="Suche Dokumente" />
     </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -73,7 +73,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 36 - Einführung in die Benutzeranleitung</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Die Weboberfläche von Nextcloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Verwendung der Aktivitäts-App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Dateien &amp; Synchronisation</a><ul class="current">
@@ -106,8 +106,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Kollektive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop-Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Einstellungen vornehmen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universeller Zugriff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Verwendung der Zwei-Faktor-Authentifizierung</a></li>
@@ -142,12 +142,9 @@
              
   <section id="accessing-nextcloud-files-using-webdav">
 <h1>Zugriff auf Nextcloud-Dateien über WebDAV<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
-<p>Nextcloud fully supports the WebDAV protocol, and you can connect to and synchronize
-with Nextcloud Files over WebDAV. This chapter explains how to connect Linux, macOS,
-Windows, and mobile devices to your Nextcloud server.</p>
+<p>Nextcloud unterstützt das WebDAV-Protokoll vollständig und Sie können über WebDAV eine Verbindung zu Nextcloud-Dateien herstellen und diese synchronisieren. In diesem Kapitel wird erläutert, wie Sie Linux, macOS, Windows und mobile Geräte mit Ihrem Nextcloud-Server verbinden.</p>
 <p>WebDAV steht für Distributed Authoring and Versioning. Es ist eine HTTP-Erweiterung, die es einfach macht, Dateien zu erstellen, zu lesen und zu bearbeiten, die auf entfernten Webservern gehostet werden. Mit einem WebDAV-Client können Sie auf Ihre Nextcloud-Dateien (einschließlich Freigaben) unter Linux, macOS und Windows auf ähnliche Weise zugreifen, wie auf jede entfernte Netzwerkfreigabe und so synchronisiert bleiben.</p>
-<p>Before you configure WebDAV, review the recommended way to connect client devices to
-Nextcloud.</p>
+<p>Bevor Sie WebDAV konfigurieren, überprüfen Sie die empfohlene Möglichkeit, Client-Geräte mit Nextcloud zu verbinden.</p>
 <section id="official-nextcloud-desktop-and-mobile-clients">
 <h2>Offizielle Nextcloud-Desktop- und Mobilclients<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
 <p>Der empfohlene Weg, einen Computer mit einem Nextcloud-Server zu synchronisieren, ist die Verwendung des offiziellen <a class="reference external" href="https://nextcloud.com/install/#install-clients">Nextcloud-Sync-Clients</a>. Sie können den Client so einrichten, dass er Dateien in einem beliebigen lokalen Verzeichnis speichert und Sie können auswählen, mit welchen Verzeichnissen auf dem Nextcloud-Server synchronisiert werden soll. Der Client zeigt den aktuellen Verbindungsstatus an und protokolliert alle Aktivitäten, so dass Sie immer wissen, welche Remote-Dateien auf Ihren PC heruntergeladen wurden. Weiter können Sie prüfen, ob die auf Ihrem lokalen PC erstellten und aktualisierten Dateien ordnungsgemäß mit dem Server synchronisiert wurden.</p>
@@ -181,19 +178,13 @@ Nextcloud.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
-<p>When using a third-party WebDAV client (including your operating system’s
-built-in client), you should use an application password for login rather than your
-regular password. In addition to improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
-configure an application password, log in to the Nextcloud Web interface, click your avatar,
-and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
-sidebar and scroll to the very bottom. There you can create an app password (which can
-also be revoked in the future without changing your main user password).</p>
+<p>Wenn Sie einen WebDAV-Client eines Drittanbieters verwenden (einschließlich des integrierten Clients Ihres Betriebssystems), sollten Sie für die Anmeldung ein Anwendungskennwort anstelle Ihres normalen Kennworts verwenden. Zusätzlich zur verbesserten Sicherheit erhöht dies „die Leistung erheblich &lt;<a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151</a>&gt;`_. Um ein Anwendungskennwort einzurichten, melden Sie sich an der Nextcloud-Weboberfläche an, klicken Sie auf Ihren Avatar und wählen Sie <em>Persönliche Einstellungen</em>. Wählen Sie dann in der linken Seitenleiste <em>Sicherheit</em> und scrollen Sie ganz nach unten. Dort können Sie ein App-Passwort erstellen (das auch widerrufen werden kann, ohne Ihr Hauptbenutzerpasswort zu ändern).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
 <p>In den folgenden Beispielen sollten Sie <strong>example.com/nextcloud</strong> durch die URL Ihres Nextcloud-Servers (lassen Sie den Verzeichnisteil weg, wenn die Installation im Stammverzeichnis Ihrer Domain erfolgt) und <strong>BENUTZERNAME</strong> durch den Benutzernamen des verbindenden Benutzers ersetzen.</p>
-<p>You can find the WebDAV URL in <strong>Files settings</strong> under <strong>WebDAV</strong> in your Nextcloud account.</p>
-<img alt="Nextcloud Files settings panel showing the personal WebDAV URL" src="../../_images/webdav_link.png" />
+<p>Sie finden die WebDAV-URL in Ihrem Nextcloud-Konto bei <strong>Dateieinstellungen</strong> unter <strong>WebDAV</strong>.</p>
+<img alt="Nextcloud Dateien-Einstellungsfeld, das die persönliche WebDAV-URL anzeigt" src="../../_images/webdav_link.png" />
 </div>
 </section>
 <section id="accessing-files-using-linux">
@@ -201,8 +192,7 @@ also be revoked in the future without changing your main user password).</p>
 <p>Sie können auf Dateien in Linux-Betriebssystemen mit den folgenden Methoden zugreifen.</p>
 <section id="nautilus-file-manager">
 <h3>Nautilus-Dateimanager<a class="headerlink" href="#nautilus-file-manager" title="Link to this heading"></a></h3>
-<p><strong>When you configure your Nextcloud account in the</strong> <a class="reference internal" href="../groupware/sync_gnome.html"><span class="doc">GNOME Control Center</span></a>, <strong>your files will automatically be mounted
-by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
+<p><strong>Wenn Sie Ihr Nextcloud-Konto im</strong> <a class="reference internal" href="../groupware/sync_gnome.html"><span class="doc">GNOME Control Center</span></a> einrichten, <strong>werden Ihre Dateien von Nautilus automatisch als WebDAV-Freigabe eingehängt, es sei denn, Sie deaktivieren den Dateizugriff</strong>.</p>
 <p>Sie können Ihre Nextcloud-Dateien auch manuell einhängen. Benutzen Sie das <code class="docutils literal notranslate"><span class="pre">davs://</span></code> Protokoll, um den Nautilus-Dateimanager mit Ihrer Nextcloud-Freigabe zu verbinden:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">davs</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
 </pre></div>
@@ -211,14 +201,14 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <p class="admonition-title">Bemerkung</p>
 <p>Wenn die Verbindung zu Ihrem Server nicht über HTTPS gesichert ist, verwenden Sie <code class="docutils literal notranslate"><span class="pre">dav://</span></code> statt <code class="docutils literal notranslate"><span class="pre">davs://</span></code>:</p>
 </div>
-<img alt="GNOME Nautilus file manager Connect to Server dialog with a Nextcloud WebDAV address entered" src="../../_images/webdav_gnome3_nautilus.png" />
+<img alt="GNOME Nautilus-Dateimanager &quot;Verbindung zum Server&quot;-Dialog mit eingegebener Nextcloud-WebDAV-Adresse" src="../../_images/webdav_gnome3_nautilus.png" />
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
 <p>Die gleiche Methode funktioniert für andere Dateimanager, die GVFS verwenden, wie zum Beispiel Caja von MATE und Nemo von Cinnamon.</p>
 </div>
 </section>
 <section id="accessing-files-with-kde-and-dolphin">
-<h3>Accessing files with KDE and Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin" title="Link to this heading"></a></h3>
+<h3>Zugriff auf Dateien mit KDE und Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Zu Systemeinstellungen navigieren -&gt; Netzwerk -&gt; Online-Konten</p></li>
 <li><p>Auf „Konto hinzufügen …“ klicken</p></li>
@@ -227,8 +217,8 @@ by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
 <li><p>Folgen Sie den Anweisungen auf dem Bildschirm, um sich anzumelden</p></li>
 <li><p>Stellen Sie nach der Anmeldung sicher, dass Sie im Abschnitt „Dieses Konto verwenden für“ die Option „Speicher“ aktivieren.</p></li>
 <li><p>Sie können nun auf Ihre Dateien in Dolphin unter „Netzwerk“ in der Seitenleiste zugreifen</p></li>
-<li><p>(Optional) To add this location as a shortcut in the sidebar, right-click „Nextcloud Storage“, then click „Add to Places“</p></li>
-<li><p>(Optional) To customize the shortcut, right-click it in the sidebar, then click „Edit…“ and customize the icon and label</p></li>
+<li><p>(Optional) Um diesen Standort als Verknüpfung in der Seitenleiste hinzuzufügen, klicken Sie mit der rechten Maustaste auf „Nextcloud Speicher“ und dann auf „Zu Orten hinzufügen“</p></li>
+<li><p>(Optional) Um die Verknüpfung anzupassen, klicken Sie mit der rechten Maustaste in die Seitenleiste, klicken Sie dann auf „Bearbeiten …“ und passen Sie das Symbol sowie die Beschriftung an</p></li>
 </ol>
 </section>
 </section>
@@ -255,7 +245,7 @@ Verwenden Sie diesen Befehl für eine Installation unter Debian/Ubuntu:</p>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
-<p>If the davfs2 group doesn’t exist after installing the package, you may need to create it yourself and, possibly, adjust the davfs config file to use the group after you’ve created it.</p>
+<p>Wenn die davfs2-Gruppe nach der Installation des Pakets nicht existiert, müssen Sie sie möglicherweise selbst erstellen und ggf. die davfs-Konfigurationsdatei anpassen, um die Gruppe nach der Erstellung zu verwenden.</p>
 </div>
 <ol class="arabic">
 <li><p>Erstellen Sie dann in Ihrem Home-Verzeichnis ein <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code>-Verzeichnis für den Mount-Punkt und <code class="docutils literal notranslate"><span class="pre">.davfs2/</span></code> für Ihre persönliche Konfigurationsdatei:</p>
@@ -332,13 +322,13 @@ for example
 <p>Auf Dateien mit macOS Finder zugreifen:</p>
 <ol class="arabic">
 <li><p>Wählen Sie in der oberen Menüleiste des Finders <strong>Gehe zu &gt; Mit Server verbinden…</strong>:</p>
-<img alt="macOS Go menu with Connect to Server option highlighted" src="../../_images/osx_webdav1.png" />
+<img alt="macOS Go-Menü mit hervorgehobener Option &quot;Mit Server verbinden&quot;" src="../../_images/osx_webdav1.png" />
 </li>
 <li><p>Wenn das Fenster <strong>Mit Server verbinden…</strong> geöffnet wird, geben Sie die WebDAV-Adresse Ihres Nextcloud-Servers in das Feld <strong>Serveradresse:</strong> ein, z.B.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
 </pre></div>
 </div>
-<img alt="macOS Connect to Server dialog with a Nextcloud WebDAV URL in the Server Address field" src="../../_images/osx_webdav2.png" />
+<img alt="macOS-Dialogfeld &quot;Mit Server verbinden&quot; mit einer Nextcloud-WebDAV-URL im Feld &quot;Serveradresse&quot;" src="../../_images/osx_webdav2.png" />
 </li>
 <li><p>Klicken Sie auf <strong>Verbinden</strong>. Ihr WebDAV-Server sollte auf dem Desktop als freigegebenes Laufwerk angezeigt werden.</p></li>
 </ol>
@@ -349,7 +339,7 @@ for example
 <p>Die Verwendung dieser Funktion erfordert eine Netzwerkverbindung. Wenn Sie Ihre Dateien offline ablegen möchten, verwenden Sie den Desktop-Client, um alle Dateien Ihrer Nextcloud mit einem oder mehreren Verzeichnissen Ihrer lokalen Festplatte zu synchronisieren.</p>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
-<p>In Windows 10, Basic Authentication is allowed by default when HTTPS is enabled before mapping your drive.</p>
+<p>In Windows 10 ist die Basisauthentifizierung standardmäßig zulässig, wenn HTTPS vor der Zuordnung Ihres Laufwerks aktiviert ist.</p>
 <p>Bei älteren Windows-Versionen müssen Sie die Verwendung der Standardauthentifizierung in der Windows-Registrierung zulassen:</p>
 <ul class="simple">
 <li><p>Starten Sie <code class="docutils literal notranslate"><span class="pre">regedit</span></code> und navigieren Sie zu <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code>.</p></li>
@@ -407,7 +397,7 @@ for example
 <p>Aktivieren Sie bei SSL-geschützten Servern <strong>Bei der Anmeldung wiederherstellen</strong>, um sicherzustellen, dass die Zuordnung bei nachfolgenden Neustarts bestehen bleibt. Wenn Sie sich als anderer Benutzer mit dem Nextcloud-Server verbinden möchten, aktivieren Sie <strong>Mit anderen Anmeldeinformationen verbinden</strong>.</p>
 </div>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Windows Explorer Map Network Drive wizard with a Nextcloud WebDAV URL entered" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Assistent zum Einbinden eines Netzlaufwerks im Windows-Explorer mit eingetragener Nextcloud-WebDAV-URL" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
 </a>
 </figure>
 </li>
@@ -461,20 +451,12 @@ for example
 <h2>Bekannte Probleme<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
 <section id="id3">
 <h3>Problem<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
-<p>WebDAV access is very slow or times out.</p>
+<p>Der WebDAV-Zugriff ist sehr langsam oder erzeugt ein Timeout.</p>
 </section>
 <section id="id4">
 <h3>Lösung<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
-<p>When using a third-party WebDAV client (including your operating system’s built-in
-client), you should authenticate with an <strong>application password</strong> rather than your
-regular account password. Using a regular password carries a significant performance
-penalty because Nextcloud must perform additional work to verify it on every request.
-Using an application password removes this overhead and can improve transfer speeds
-substantially.</p>
-<p>To create an application password, log in to the Nextcloud web interface, click your
-avatar, choose <strong>Personal settings</strong>, then open the <strong>Security</strong> section in the left
-sidebar and scroll to the bottom. Create an app password there and use it in your
-WebDAV client instead of your main password.</p>
+<p>Wenn Sie einen WebDAV-Client eines Drittanbieters verwenden (einschließlich des integrierten Clients Ihres Betriebssystems), sollten Sie sich mit einem <strong>Anwendungskennwort</strong> und nicht mit Ihrem normalen Kontokennwort authentifizieren. Die Verwendung eines regulären Passworts bringt erhebliche Leistungseinbußen mit sich, da Nextcloud zusätzliche Arbeit leisten muss, um es bei jeder Anfrage zu überprüfen. Durch die Verwendung eines Anwendungskennworts wird dieser Overhead beseitigt und die Übertragungsgeschwindigkeiten können erheblich verbessert werden.</p>
+<p>Um ein Anwendungskennwort zu erstellen, melden Sie sich an der Nextcloud-Weboberfläche an, klicken Sie auf Ihren Avatar, wählen Sie <strong>Persönliche Einstellungen</strong>, öffnen Sie dann den Abschnitt <strong>Sicherheit</strong> in der linken Seitenleiste und scrollen Sie nach unten. Erstellen Sie dort ein App-Passwort und verwenden Sie es in Ihrem WebDAV-Client anstelle Ihres Hauptpassworts.</p>
 </section>
 <section id="id5">
 <h3>Problem<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
@@ -499,15 +481,11 @@ WebDAV client instead of your main password.</p>
 </section>
 <section id="id8">
 <h3>Problem<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
-<p>Adding a WebDAV drive on Windows with the steps above does not display the correct
-available Nextcloud space and instead shows the size and free space of the C: drive.</p>
+<p>Das Hinzufügen eines WebDAV-Laufwerks unter Windows mit den obigen Schritten zeigt nicht den richtigen verfügbaren Nextcloud-Speicherplatz an, sondern zeigt stattdessen die Größe und den freien Speicherplatz des Laufwerks C: an.</p>
 </section>
 <section id="answer">
 <h3>Antwort<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
-<p>Unfortunately, this is a limitation of WebDAV itself, because it does not provide a
-way for the client to retrieve available free space from the server. Windows automatically
-falls back to the size and free space of the C: drive. There is no direct solution
-for this limitation.</p>
+<p>Leider handelt es sich hierbei um eine Einschränkung von WebDAV selbst, da es dem Client keine Möglichkeit bietet, verfügbaren freien Speicherplatz vom Server abzurufen. Windows fällt automatisch auf die Größe und den freien Speicherplatz des Laufwerks C: zurück. Für diese Einschränkung gibt es keine direkte Lösung.</p>
 </section>
 <section id="id9">
 <h3>Problem<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
@@ -524,7 +502,7 @@ for this limitation.</p>
 <section id="id12">
 <h3>Lösung<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Access your Nextcloud instance in your preferred Web browser.</p></li>
+<li><p>Greifen Sie in Ihrem bevorzugten Webbrowser auf Ihre Nextcloud-Instanz zu.</p></li>
 <li><p>Klicken Sie sich durch, bis Sie zum Zertifikatsfehler in der Browser-Statuszeile gelangen.</p></li>
 <li><p>Sehen Sie sich das Zertifikat an und wählen Sie dann auf der Registerkarte “Details“ die Option ‚In Datei kopieren‘ aus.</p></li>
 <li><p>Speichern Sie die Datei unter einem beliebigen Namen auf Ihrem Desktop, zum Beispiel <code class="docutils literal notranslate"><span class="pre">meineNextcloud.pem</span></code>.</p></li>
@@ -612,13 +590,9 @@ for this limitation.</p>
 </section>
 <section id="accessing-files-using-winscp">
 <h2>Zugriff auf Dateien mittels WinSCP<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
-<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> is a free, open-source SFTP,
-FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer
-between a local and a remote computer. WinSCP also offers scripting and basic file
-management functionality.</p>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> ist ein kostenloser Open-Source-SFTP-, FTP-, WebDAV-, S3- und SCP-Client für Windows. Seine Hauptfunktion ist die Dateiübertragung zwischen einem lokalen und einem entfernten Computer. WinSCP bietet außerdem Skripting und grundlegende Dateiverwaltungsfunktionen.</p>
 <p>Sie können die portable Version von WinSCP <a class="reference external" href="https://winscp.net/eng/downloads.php/">herunterladen</a> und sie unter Linux mit <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a> ausführen.</p>
-<p>To run WinSCP on Linux, install Wine through your distribution’s package manager,
-then run: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
+<p>Um WinSCP unter Linux auszuführen, installieren Sie Wine über den Paketmanager Ihrer Distribution und führen Sie dann „wine WinSCP.exe“ aus.</p>
 <p>Um sich mit Nextcloud zu verbinden:</p>
 <ul class="simple">
 <li><p>WinSCP starten</p></li>
@@ -639,8 +613,7 @@ then run: <code class="docutils literal notranslate"><span class="pre">wine</spa
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
-<p>If you use TOTP, use an app password. At the time of writing (2022-11-07),
-WinSCP does not support TOTP with Nextcloud.</p>
+<p>Wenn Sie TOTP verwenden, verwenden Sie ein App-Passwort. Zum Zeitpunkt des Verfassens dieses Artikels (07.11.2022) unterstützt WinSCP TOTP mit Nextcloud nicht.</p>
 </div>
 </section>
 </section>

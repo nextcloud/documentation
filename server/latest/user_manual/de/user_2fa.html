@@ -57,14 +57,14 @@
 
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Dokumentation durchsuchen</label>
+    <label for="rtd-search-input" class="sr-only">Suche Dokumente</label>
     <div class="wy-form-search">
       <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
       <input id="rtd-search-input"
              type="text"
              name="q"
-             placeholder="Dokumentation durchsuchen"
-             aria-label="Dokumentation durchsuchen" />
+             placeholder="Suche Dokumente"
+             aria-label="Suche Dokumente" />
     </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -73,19 +73,19 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud 36 - Einführung in die Benutzeranleitung</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">Die Weboberfläche von Nextcloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="activity.html">Verwendung der Aktivitäts-App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files/index.html">Dateien &amp; Synchronisation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collectives/index.html">Kollektive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop-Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Einstellungen vornehmen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="universal_access.html">Universeller Zugriff</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Verwendung der Zwei-Faktor-Authentifizierung</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Einrichtung der Zwei-Faktor Authentifizierung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Recovery codes if you lose your second factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-if-you-lose-your-second-factor">Wiederherstellungscodes, für den Fall, dass Sie Ihren zweiten Faktor verlieren</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Anmelden mit der Zwei-Faktor Authentifizierung</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Verwendung der Zwei-Faktor-Authentifizierung mit Hardware-Schlüsseln</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Verwenden von Clientanwendungen mit Zwei-Faktor-Authentifizierung</a></li>
@@ -122,41 +122,30 @@
   <section id="using-two-factor-authentication">
 <h1>Verwendung der Zwei-Faktor-Authentifizierung<a class="headerlink" href="#using-two-factor-authentication" title="Link to this heading"></a></h1>
 <p>Die Zwei-Faktor-Authentifizierung (2FA) ist eine Möglichkeit, Ihr Nextcloud-Konto vor unberechtigtem Zugriff zu schützen. Sie funktioniert, indem zwei verschiedene ‚Beweise‘ Ihrer Identität erforderlich sind. Zum Beispiel <em>etwas, das Sie wissen</em> (wie ein Passwort) und <em>etwas, das Sie haben</em> wie einen physischen Schlüssel. Typischerweise ist der erste Faktor ein Passwort, wie Sie es bereits haben, und der zweite kann eine Textnachricht sein, die Sie erhalten oder ein Code, den Sie auf Ihrem Telefon oder einem anderen Gerät generieren (<em>etwas, das Sie haben</em>). Nextcloud unterstützt eine Vielzahl von 2. Faktoren und weitere können hinzugefügt werden.</p>
-<p>Once a two-factor authentication app has been enabled by your administrator,
-you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Einstellungen vornehmen</span></a>.</p>
+<p>Sobald Ihre Administration eine Zwei-Faktor-Authentifizierungs-App aktiviert hat, können Sie sie unter <a class="reference internal" href="userpreferences.html"><span class="doc">Einstellungen vornehmen</span></a> aktivieren und konfigurieren.</p>
 <section id="configuring-two-factor-authentication">
 <h2>Einrichtung der Zwei-Faktor Authentifizierung<a class="headerlink" href="#configuring-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>In your personal settings, look up the <strong>Second-factor Auth</strong> setting. In this
-example this is TOTP, a Google Authenticator compatible time-based code:</p>
+<p>Suchen Sie in Ihren persönlichen Einstellungen nach der Einstellung <strong>Zwei-Faktor Anmeldung</strong>. In diesem Beispiel ist dies TOTP, ein zeitbasierter Code, der mit Google Authenticator kompatibel ist:</p>
 <figure class="align-default">
 <img alt="TOTP-Einrichtung." src="../_images/totp_enable.png" />
 </figure>
 <p>Sie sehen Ihr Geheimnis und einen QR-Code, der von der TOTP-App auf Ihrem Smartphone (oder einem anderen Gerät) gescannt werden kann. Je nach App oder Tool geben Sie den Code ein oder scannen den QR-Code und Ihr Gerät zeigt einen Anmeldecode an, der sich alle 30 Sekunden ändert.</p>
 </section>
 <section id="recovery-codes-if-you-lose-your-second-factor">
-<h2>Recovery codes if you lose your second factor<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Link to this heading"></a></h2>
-<p>You should always generate backup codes for 2FA. If your second factor device
-gets stolen or stops working, you can use one of these codes to unlock your
-account. It effectively functions as a backup second factor. To get the backup
-codes, go to your personal settings and look under <strong>Second-factor Auth</strong>
-settings. Choose <em>Generate backup codes</em>:</p>
+<h2>Wiederherstellungscodes, für den Fall, dass Sie Ihren zweiten Faktor verlieren<a class="headerlink" href="#recovery-codes-if-you-lose-your-second-factor" title="Link to this heading"></a></h2>
+<p>Sie sollten immer Backup-Codes für 2FA generieren. Wenn Ihr Zweit-Faktor-Gerät gestohlen wird oder nicht mehr funktioniert, können Sie einen dieser Codes verwenden, um Ihr Konto zu entsperren. Es fungiert effektiv als Backup-Zweitfaktor. Um die Backup-Codes zu erhalten, gehen Sie zu Ihren persönlichen Einstellungen und schauen Sie unter <strong>Zwei-Faktor-Anmeldung</strong> Einstellungen. Wählen Sie <em>Backup-Codes generieren</em>:</p>
 <figure class="align-default">
 <img alt="2FA-Backup-Code-Generator" src="../_images/2fa_backupcode_1.png" />
 </figure>
-<p>You will then see a list of one-time-use backup codes:</p>
+<p>Anschließend sehen Sie eine Liste Einmal-Backup-Codes:</p>
 <figure class="align-default">
 <img alt="2FA-Backup-Codes" src="../_images/2fa_backupcode_2.png" />
 </figure>
-<p>Store these codes somewhere safe where you can find them. Do not keep them
-with your second factor (such as your mobile phone), but store them separately
-so that losing one does not mean losing the other.</p>
+<p>Bewahren Sie diese Codes an einem sicheren Ort auf, an dem Sie sie finden können. Bewahren Sie sie nicht zusammen mit Ihrem zweiten Faktor (z. B. Ihrem Smartphone) auf, sondern bewahren Sie sie separat auf, damit der Verlust des einen nicht den Verlust des anderen bedeutet.</p>
 </section>
 <section id="logging-in-with-two-factor-authentication">
 <h2>Anmelden mit der Zwei-Faktor Authentifizierung<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>After you log out and log in again, you will see a prompt to enter the
-TOTP code in your browser. If you have enabled more than one second factor,
-you will see a selection screen where you can choose which method to use for
-this login. Select TOTP:</p>
+<p>Nachdem Sie sich abgemeldet und erneut angemeldet haben, werden Sie aufgefordert, den TOTP-Code in Ihren Browser einzugeben. Wenn Sie mehr als einen Sekundenfaktor aktiviert haben, wird ein Auswahlbildschirm angezeigt, auf dem Sie auswählen können, welche Methode für diese Anmeldung verwendet werden soll. Wählen Sie TOTP:</p>
 <figure class="align-default">
 <img alt="Zwei-Faktor-Authentifizierungs-Methode auswählen." src="../_images/totp_login_1.png" />
 </figure>
@@ -167,9 +156,7 @@ this login. Select TOTP:</p>
 <p>Wenn der Code korrekt war, werden Sie zu Ihrem Nextcloud-Konto weitergeleitet.</p>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
-<p>Since the code is time-based, it is important that your server’s and
-your smartphone’s clock are almost in sync. A time drift of a few seconds
-won’t be a problem.</p>
+<p>Da der Code zeitbasiert ist, ist es wichtig, dass die Uhr Ihres Servers und Ihres Smartphones nahezu synchron ist. Eine Zeitdrift von einigen Sekunden ist zumeist kein Problem.</p>
 </div>
 </section>
 <section id="using-two-factor-authentication-with-hardware-tokens">
@@ -192,15 +179,11 @@ won’t be a problem.</p>
 </section>
 <section id="using-client-applications-with-two-factor-authentication">
 <h2>Verwenden von Clientanwendungen mit Zwei-Faktor-Authentifizierung<a class="headerlink" href="#using-client-applications-with-two-factor-authentication" title="Link to this heading"></a></h2>
-<p>Once you have enabled 2FA, your clients will no longer be able to connect with
-just your password unless they also have support for two-factor authentication.
-To solve this, you should generate device-specific passwords for them. See
-<a class="reference internal" href="session_management.html"><span class="doc">Verwaltung verbundener Browser und Geräte</span></a> for more information on how to do this.</p>
+<p>Sobald Sie 2FA aktiviert haben, können sich Ihre Clients nicht mehr nur mit Ihrem Kennwort verbinden, es sei denn, sie haben auch Unterstützung für die Zwei-Faktor-Authentifizierung. Um dies zu lösen, sollten Sie gerätespezifische Passwörter für sie generieren. Weitere Informationen dazu finden Sie unter <a class="reference internal" href="session_management.html"><span class="doc">Verwaltung verbundener Browser und Geräte</span></a>.</p>
 </section>
 <section id="considerations">
 <h2>Überlegungen<a class="headerlink" href="#considerations" title="Link to this heading"></a></h2>
-<p>If you use WebAuthn to log in to your Nextcloud, be sure to not use the same token for 2FA, as this
-would mean you are again only using a single factor.</p>
+<p>Wenn Sie WebAuthn zur Anmeldung an Ihrer Nextcloud verwenden, achten Sie darauf, dass Sie nicht das gleiche Token für 2FA verwenden. Denn das würde bedeuten, dass Sie wieder nur einen einzigen Faktor verwenden.</p>
 </section>
 </section>
 

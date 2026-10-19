@@ -57,14 +57,14 @@
 
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Belgeleri arayın</label>
+    <label for="rtd-search-input" class="sr-only">Belgelerde ara</label>
     <div class="wy-form-search">
       <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
       <input id="rtd-search-input"
              type="text"
              name="q"
-             placeholder="Belgeleri arayın"
-             aria-label="Belgeleri arayın" />
+             placeholder="Belgelerde ara"
+             aria-label="Belgelerde ara" />
     </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -73,7 +73,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 36 kullanıcı rehberi giriş</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud site arayüzü</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">İşlem uygulamasını kullanmak</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Dosyalar ve eşitleme</a></li>
@@ -87,7 +87,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#edit-export-or-delete-a-calendar">Bir takvimi düzenlemek, dışa aktarmak ve silmek</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#calendar-transparency">Takvim şeffaflığı</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sharing-calendars">Takvimleri paylaşmak</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#calendar-delegation">Calendar delegation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-delegation">Takvimleri devretmek</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#federated-calendar-sharing">Birleşik takvim paylaşımı</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#publishing-a-calendar">Bir takvimi yayınlamak</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#calendar-widget">Takvim pano bileşeni</a></li>
@@ -140,16 +140,16 @@
 <li class="toctree-l2"><a class="reference internal" href="sync_kde.html">KDE Kontact ile eşitlemek</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">GNOME masaüstü ile eşitleme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Windows 10 ile eşitlemek</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_migration.html">Migrate data between instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">Verileri kopyalar arasında aktarmak</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Konuş</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Topluluklar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Bilgisayar istemcisi</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Kullanıcı ayarları</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Evrensel erişim</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">İki adımlı doğrulamayı kullanmak</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bağlı tarayıcı ve aygıtların yönetimi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bağlı tarayıcıların ve aygıtların yönetimi</a></li>
 </ul>
 
         </div>
@@ -215,7 +215,7 @@
 </a>
 </figure>
 <ol class="arabic simple">
-<li><p>Click on the <strong>Calendar settings</strong> icon.</p></li>
+<li><p><strong>Takvim ayarları</strong> simgesine tıklayın.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Genel</span></code> bölümünde bulunan <code class="docutils literal notranslate"><span class="pre">Takvimi</span> <span class="pre">içe</span> <span class="pre">aktar</span></code> üzerine tıkladıktan sonra, yüklemek için yerel aygıtınızdan bir ya da birkaç takvim dosyası seçebilirsiniz.</p></li>
 <li><p>Bir <code class="docutils literal notranslate"><span class="pre">İçine</span> <span class="pre">aktarılacak</span> <span class="pre">takvim</span></code> seçin.</p></li>
 <li><p>Yükleme işlemi biraz zaman alabilir ve içe aktardığınız takvimin büyüklüğüne bağlıdır. “Takvim ayarları” altında mavi bir ilerleme çubuğu görüntülenir.</p></li>
@@ -227,11 +227,10 @@
 </section>
 <section id="import-an-event-add-ics-event">
 <h3>Bir etkinlik içe aktarmak / .ics etkinliği eklemek<a class="headerlink" href="#import-an-event-add-ics-event" title="Link to this heading"></a></h3>
-<p>Individual events are often distributed as <code class="docutils literal notranslate"><span class="pre">.ics</span></code> files (sometimes via a button labelled “iCal”, “Apple Calendar” or “Outlook”). You can import them into Nextcloud Calendar using the same import flow as a full calendar.</p>
+<p>Bireysel etkinlikler genellikle <code class="docutils literal notranslate"><span class="pre">.ics</span></code> dosyaları olarak dağıtılır (bazen “iCal”, “Apple Takvimi” veya “Outlook” etiketli bir düğme ile). Tam bir takvimle aynı içe aktarma akışını kullanarak bunları Nextcloud Takvim içine aktarabilirsiniz.</p>
 <ol class="arabic simple">
-<li><p>Click on the <strong>Calendar settings</strong> icon.</p></li>
-<li><p>After clicking on <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">calendar</span></code> you can select one or more <code class="docutils literal notranslate"><span class="pre">.ics</span></code> files
-from your local device to upload. Single-event files are added to the calendar you select.</p></li>
+<li><p><strong>Takvim ayarları</strong> simgesine tıklayın.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Takvimi</span> <span class="pre">içe</span> <span class="pre">aktar</span></code> üzerine tıkladıktan sonra, yüklemek için yerel aygıtınızdan bir ya da birkaç <code class="docutils literal notranslate"><span class="pre">.ics</span></code> dosyası seçebilirsiniz. Bireysel etkinlik dosyaları seçtiğiniz takvime eklenir.</p></li>
 <li><p>Bir <code class="docutils literal notranslate"><span class="pre">İçine</span> <span class="pre">aktarılacak</span> <span class="pre">takvim</span></code> seçin.</p></li>
 <li><p>Yükleme işlemi biraz zaman alabilir ve içe aktardığınız takvimin ya da etkinliğin büyüklüğüne bağlıdır. “Takvim ayarları” altında mavi bir ilerleme çubuğu görüntülenir.</p></li>
 </ol>
@@ -278,21 +277,16 @@ from your local device to upload. Single-event files are added to the calendar y
 </div>
 </section>
 <section id="calendar-delegation">
-<h3>Calendar delegation<a class="headerlink" href="#calendar-delegation" title="Link to this heading"></a></h3>
+<h3>Takvimleri devretmek<a class="headerlink" href="#calendar-delegation" title="Link to this heading"></a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 34.0.0.</span></p>
 </div>
-<p>In the app settings, you can delegate your calendars to other users so they can manage them for you.
-You can grant read access if they should only view the calendar, or write access if they should create,
-edit and delete events.</p>
-<p>Calendar delegation also works with other clients that support calendar delegation.</p>
-<p>By default, delegatees are not added as attendees of events that they create for a delegator, the delegator
-remains the organizer of the event. If the event has a Talk conversation attached, both the delegator and the
-delegatee are moderators of that conversation.</p>
+<p>Takvimlerinizi uygulama ayarlarından, sizin adınıza yönetebilmeleri için diğer kullanıcılara devredebilirsiniz. Yalnızca takvimi görüntülemeleri gerekiyorsa okuma izni veya etkinlik oluşturmaları, düzenlemeleri ve silmeleri gerekiyorsa yazma izni verebilirsiniz.</p>
+<p>Takvim devri, takvim devretme özelliğini destekleyen diğer istemciler ile de çalışır.</p>
+<p>Varsayılan olarak, devredilen kişiler bir devreden için oluşturdukları etkinliklerin katılımcıları olarak eklenmez. Devreden kişi, etkinliğin düzenleyicisi olarak kalır. Etkinliğe eklenmiş bir Konuş görüşmesi varsa, hem devreden hem de devredilen o konuşmanın sorumlusu olur.</p>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
-<p>Currently, delegating your account delegates all of your calendars. Delegating individual
-calendars is not yet supported.</p>
+<p>Şu anda, hesabınızı devretmek tüm takvimlerinizi devrediyor. Bireysel takvimlerin devredilmesi henüz desteklenmiyor.</p>
 </div>
 </section>
 <section id="federated-calendar-sharing">
@@ -321,7 +315,7 @@ calendars is not yet supported.</p>
 </section>
 <section id="calendar-widget">
 <h3>Takvim pano bileşeni<a class="headerlink" href="#calendar-widget" title="Link to this heading"></a></h3>
-<p>Takvimlerinizi <code class="docutils literal notranslate"><span class="pre">Konuş</span></code>, <code class="docutils literal notranslate"><span class="pre">Notlar</span></code> gibi desteklenen uygulamalara ekleyebilirsiniz. Bunun için, genel bağlantıyı paylaşarak eklediğiniz içeriğin tüm kullanıcılar tarafından görüntülenmesini (salt okunur) sağlayabilir veya iç bağlantıyı kullanarak gizleyebilirsiniz.</p>
+<p>Takvimlerinizi <code class="docutils literal notranslate"><span class="pre">Konuş</span></code>, <code class="docutils literal notranslate"><span class="pre">Notlar</span></code> gibi desteklenen uygulamalara ekleyebilirsiniz. Bunun için, herkese açık bağlantıyı paylaşarak eklediğiniz içeriğin tüm kullanıcılar tarafından görüntülenmesini (salt okunur) sağlayabilir veya iç bağlantıyı kullanarak gizleyebilirsiniz.</p>
 </section>
 <section id="subscribe-to-a-calendar">
 <h3>Bir takvime abone olmak<a class="headerlink" href="#subscribe-to-a-calendar" title="Link to this heading"></a></h3>
@@ -340,7 +334,7 @@ calendars is not yet supported.</p>
 <section id="subscribe-to-a-holiday-calendar">
 <h3>Bir tatil takvimi üzerine tıklayın<a class="headerlink" href="#subscribe-to-a-holiday-calendar" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 4.4: </span>Nextcloud 25 or newer</p>
+<p><span class="versionmodified added">Added in version 4.4: </span>Nextcloud 25 ya da üzeri</p>
 </div>
 <p><a class="reference external" href="https://www.thunderbird.net/calendar/holidays/">Thunderbird</a> tarafından sağlanan salt okunur bir tatil takvimine abone olabilirsiniz.</p>
 <ol class="arabic simple">
@@ -382,7 +376,7 @@ calendars is not yet supported.</p>
 <h3>Bir etkinliği düzenlemek, kopyalamak ya da silmek<a class="headerlink" href="#edit-duplicate-or-delete-an-event" title="Link to this heading"></a></h3>
 <p>Belirli bir etkinliği düzenlemek, kopyalamak ya da silmek istiyorsanız, üzerine tıklamanız yeterlidir.</p>
 <p>Böylece, tüm etkinlik ayrıntılarını yeniden ayarlayabilir ve <code class="docutils literal notranslate"><span class="pre">Diğer</span></code> üzerine tıklayarak gelişmiş düzenleyiciyi açabilirsiniz.</p>
-<p>Clicking on the <code class="docutils literal notranslate"><span class="pre">Update</span></code> button will update the event. To cancel your changes, click the <strong>Close</strong> button of the popup or advanced editor.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Güncelle</span></code> düğmesine tıkladığınızda etkinlik güncellenir. Değişiklikleri iptal etmek için açılan pencerenin veya gelişmiş düzenleyicinin <strong>Kapat</strong> düğmesine tıklayın.</p>
 <p>Gelişmiş görünümünü açar ve etkinlik adının yanındaki üç nokta menüsüne tıklarsanız, etkinliği <code class="docutils literal notranslate"><span class="pre">.ics</span></code> dosyası olarak dışa aktarma veya etkinliği takviminizden kaldırma seçeneklerini görebilirsiniz.</p>
 <figure class="align-default">
 <img alt="../../_images/calendar_event_menu.png" src="../../_images/calendar_event_menu.png" />
@@ -430,7 +424,7 @@ calendars is not yet supported.</p>
 <a class="reference internal image-reference" href="../../_images/calendar_free_busy_modal.png"><img alt="../../_images/calendar_free_busy_modal.png" src="../../_images/calendar_free_busy_modal.png" style="width: 942.0px; height: 752.4px;" />
 </a>
 </figure>
-<p>Kendi meşgul bloklarınız kişisel takviminizle aynı renkte, ofis dışı saatleriniz gri renkte ve diğer katılımcıların meşgul zamanları gelişmiş düzenleyicideki avatarları ile aynı renkte görüntülenir.</p>
+<p>Kendi meşgul bloklarınız kişisel takviminizle aynı renkte, ofis dışı saatleriniz gri renkte ve diğer katılımcıların meşgul zamanları gelişmiş düzenleyicideki profil görselleri ile aynı renkte görüntülenir.</p>
 <p>Etkinlik için doğrudan takvim üzerinden bir zaman aralığı seçebilirsiniz.</p>
 </section>
 <section id="assign-rooms-and-resources-to-an-event">
@@ -444,7 +438,7 @@ calendars is not yet supported.</p>
 <section id="room-availability">
 <h3>Oda uygunluğu<a class="headerlink" href="#room-availability" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 5.0: </span>Nextcloud 30 or newer</p>
+<p><span class="versionmodified added">Added in version 5.0: </span>Nextcloud 30 ya da üzeri</p>
 </div>
 <p>Kopyanızda “Takvim odaları ve kaynakları” uygulaması kurulmuşsa, <code class="docutils literal notranslate"><span class="pre">Kaynaklar</span></code> altında <code class="docutils literal notranslate"><span class="pre">Oda</span> <span class="pre">uygunluğu</span></code> bölümünde bulabilirsiniz. Var olan tüm odalar görüntülenir. Her odanın uygunluğunu, etkinlik katılımcılarının Uygun/Meşgul durumunu kontrol ederken olduğu gibi kontrol edebilirsiniz.</p>
 <figure class="align-default">
@@ -462,7 +456,7 @@ calendars is not yet supported.</p>
 <p class="admonition-title">Not</p>
 <p>Dosyalar, yeni etkinlikler oluşturulurken ya da var olan etkinlikler düzenlenirken eklenebilir. Yeni yüklenen dosyalar, varsayılan olarak kök klasördeki calendar klasörüne kaydedilir.</p>
 </div>
-<p>You can change the attachment folder by going to <strong>Calendar settings</strong> and changing <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">attachments</span> <span class="pre">location</span></code>.</p>
+<p>Sol alt köşedeki “<em>Takvim ayarları</em>” bölümüne gidip <code class="docutils literal notranslate"><span class="pre">varsayılan</span> <span class="pre">ek</span> <span class="pre">dosya</span> <span class="pre">konumu</span></code> seçeneğini değiştirerek ek dosyalar klasörünü değiştirebilirsiniz.</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/calendar_attachments_location.png"><img alt="../../_images/calendar_attachments_location.png" src="../../_images/calendar_attachments_location.png" style="width: 389.4px; height: 357.0px;" />
 </a>
@@ -475,7 +469,7 @@ calendars is not yet supported.</p>
 <li><p>E-posta bildirimleri</p></li>
 <li><p>Nextcloud bildirimleri</p></li>
 </ul>
-<p>You may set reminders at a time relative to the event or at a specific date. If you would like all the events in a calendar to have a default reminder, you can configure that in the settings of that calendar.</p>
+<p>Anımsatıcıları etkinlik ile ilgili bir zamana veya belirli bir tarihe ayarlayabilirsiniz. Bir takvimdeki tüm etkinliklerin varsayılan bir anımsatıcısı olmasını istiyorsanız, bunu o takvimin ayarlarından yapılandırabilirsiniz.</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/calendar_event_reminders.png"><img alt="../../_images/calendar_event_reminders.png" src="../../_images/calendar_event_reminders.png" style="width: 507.20000000000005px; height: 284.0px;" />
 </a>
@@ -574,7 +568,7 @@ calendars is not yet supported.</p>
 <figure class="align-default">
 <img alt="../../_images/appointment_config_limits.png" src="../../_images/appointment_config_limits.png" />
 </figure>
-<p>Yapılandırılmış randevu daha sonra sol kenar çubuğunda listelenir. Üç noktalı menüden randevu ön izlemesini görüntüleyebilirsiniz. Randevu bağlantısını kopyalayıp hedef kitlenizle paylaşabilir ya da profil sayfanızdan herkese açık randevunuzu bulmalarını sağlayabilirsiniz. Ayrıca randevu yapılandırmasını düzenleyebilir ya da silebilirsiniz.</p>
+<p>Yapılandırılmış randevu daha sonra sol kenar çubuğunda listelenir. Üç nokta menüsünden randevu ön izlemesini görüntüleyebilirsiniz. Randevu bağlantısını kopyalayıp hedef kitlenizle paylaşabilir ya da profil sayfanızdan herkese açık randevunuzu bulmalarını sağlayabilirsiniz. Ayrıca randevu yapılandırmasını düzenleyebilir ya da silebilirsiniz.</p>
 <figure class="align-default">
 <img alt="../../_images/appointment_config_options.png" src="../../_images/appointment_config_options.png" />
 </figure>
@@ -633,7 +627,7 @@ calendars is not yet supported.</p>
 <section id="proposals">
 <h2>Öneriler<a class="headerlink" href="#proposals" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 6.0: </span>Nextcloud 32 or newer</p>
+<p><span class="versionmodified added">Added in version 6.0: </span>Nextcloud 32 ya da üzeri</p>
 </div>
 <p>Bir grup katılımcı için ortak bir toplantı zamanı bulmak zor olabilir. Takvim 6 sürümünden sonra, kullanıcıların toplantı zamanları için öneriler oluşturmasını sağlayan yeni bir özellik tanıtıldı. Bu, yalnızca bir zaman ayırtmak veya uygun/meşgul görünümünde uygun bir zaman aramak yerine, katılımcıların bir toplantı için önerilen bir dizi zaman üzerinde oy kullanabilmesini sağlar. Düzenleyici daha sonra katılımcıların tercihlerini gözden geçirebilir ve toplantı için en uygun zamanı seçebilir.</p>
 <section id="managing-proposals">
