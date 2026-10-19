@@ -19,10 +19,10 @@ When a call is already in progress, join it by clicking the green ``Join call`` 
     you will be prompted to do so when you click ``Start call`` or ``Join call``.
     Choose the microphone and camera you would like to use and click ``Allow`` to grant access to your devices.
 
-You will see ``Media settings``, where you can customise your call experience:
+You will see the ``Check devices`` dialog, where you can customise your call experience:
 
 .. image:: images/calls/media-settings-initial.png
-    :alt: Talk media settings dialog before joining a call
+    :alt: Talk Check devices dialog before joining a call
     :width: 600px
 
 Controlling audio and video
@@ -37,7 +37,7 @@ Use the microphone and camera icons at the bottom of the video preview to mute o
 Device settings allow you to choose which microphone and camera you want to use. This is useful if you have more than one microphone or camera available:
 
 .. image:: images/calls/media-settings-devices.png
-    :alt: Talk media settings showing microphone and camera device selection
+    :alt: Talk Check devices dialog showing microphone and camera device selection
     :width: 400px
 
 Noise suppression
@@ -45,14 +45,14 @@ Noise suppression
 
 Enable noise suppression to reduce background noise during calls with following steps:
 
-1. Open ``Media settings`` before or during a call
+1. Open the ``Check devices`` dialog before or during a call
 2. Locate the ``Microphone settings`` section
 3. Enable ``Noise suppression`` at desired level
 
 Auto-gain control and echo cancellation options are also available in the same section.
 
 .. image:: images/media-settings-noise-suppression.png
-    :alt: Talk media settings showing microphone options
+    :alt: Talk Check devices dialog showing microphone options
     :width: 400px
 
 Backgrounds
@@ -63,13 +63,13 @@ You can also upload your own image or choose one already in Nextcloud Files.
 Alternatively, choose the ``blur`` option to blur your live video background.
 
 .. image:: images/calls/media-settings-backgrounds.png
-    :alt: Talk media settings showing virtual background and blur options for video
+    :alt: Talk Check devices dialog showing virtual background and blur options for video
     :width: 400px
 
 Immediately join a call
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-If you wish to skip ``Media settings`` in the future, toggle the ``Skip device preview before joining a call`` switch in app settings.
+If you wish to skip the ``Check devices`` dialog in the future, toggle the ``Skip device preview before joining a call`` switch in app settings.
 For future calls in this conversation, you will join directly, skipping the preview dialog.
 
 Record a call
@@ -84,12 +84,12 @@ For more information, see :ref:`Call recording <call-recording>`.
 Start the call
 ^^^^^^^^^^^^^^
 
-Click the ``Start call`` button at the bottom of ``Media settings`` to notify all conversation participants of the call.
+Click the ``Start call`` button at the bottom of the ``Check devices`` dialog to notify all conversation participants of the call.
 If you do not want to notify the other participants, start a silent call by opening the three-dot menu to the left of the ``Start call`` button
-and choosing ``Call without notification``.
+and choosing ``Start call silently``.
 
 .. image:: images/calls/media-settings-silent-call.png
-    :alt: Talk Call without notification option in media settings
+    :alt: Talk Start call silently option in the Check devices dialog
     :width: 400px
 
 .. image:: images/calls/media-settings-silent-call-2.png
