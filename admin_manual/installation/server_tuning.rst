@@ -351,11 +351,11 @@ external microservice: `Imaginary <https://github.com/h2non/imaginary>`_.
    See https://github.com/nextcloud/server/issues/34262
 
 We strongly recommend running our custom Docker image, which is more up to date than the official image.
-You can find the image at `<https://ghcr.io/nextcloud-releases/aio-imaginary>`_. When running it, map a port by adding `-p <port>:9000` to the `docker run` command (or Compose equivalent), e.g.
+You can find the image at `<https://ghcr.io/nextcloud-releases/aio-imaginary>`_. When running it, map a port by adding `-p 127.0.0.1:<port>:9000` to the `docker run` command (or Compose equivalent), e.g.
 
 .. code::
 
-  docker run -d -p 9000:9000 --name nextcloud_imaginary --restart always ghcr.io/nextcloud-releases/aio-imaginary:latest
+  docker run -d -p 127.0.0.1:9000:9000 --name nextcloud_imaginary --restart always ghcr.io/nextcloud-releases/aio-imaginary:latest
 
 Ensure the service is only accessible from your internal servers. Then, configure
 Nextcloud to use Imaginary by editing your ``config.php`` file:
@@ -404,3 +404,47 @@ The default WebP quality setting for preview images is '80'. Change this with:
 ::
 
   occ config:app:set preview webp_quality --value="30"
+
+Video previews
+^^^^^^^^^^^^^^
+
+.. versionadded:: 36
+
+Like Imaginary for images, video previews can be generated on an external
+`ffmpeg-over-ip <https://github.com/steelbrain/ffmpeg-over-ip>`_ server. The ``OC\Preview\MovieRemote`` provider runs
+``ffprobe`` and ``ffmpeg`` on that server and receives a single still image. Neither ``ffmpeg`` nor the CPU load of
+decoding videos is then needed on the Nextcloud server. The server reads the video from Nextcloud over the same
+connection, so it needs no access to the data directory and works with any storage, including object storage and
+external storages.
+
+.. warning::
+
+   The connection to the ffmpeg-over-ip server is not encrypted. Only use it within a trusted network.
+
+We recommend running our custom Docker image. You can find the image at
+`<https://ghcr.io/nextcloud-releases/aio-ffmpeg>`_. The server listens on port ``5050`` and requires the
+``FFMPEG_SECRET`` environment variable to be set, e.g.
+
+.. code::
+
+  docker run -d -p 127.0.0.1:5050:5050 -e FFMPEG_SECRET=secret \
+    --name nextcloud_ffmpeg --restart always ghcr.io/nextcloud-releases/aio-ffmpeg:latest
+
+Ensure the service is only accessible from your internal servers. Then, configure Nextcloud to use it by editing your
+``config.php`` file:
+
+.. code:: php
+
+    'enabledPreviewProviders' => [
+        // ... the providers you already use ...
+        'OC\Preview\MovieRemote',
+    ],
+    'preview_ffmpeg_url' => '<host of ffmpeg-over-ip>:5050',
+    'preview_ffmpeg_key' => 'secret',
+
+``preview_ffmpeg_url`` is the address of the server as ``host:port``, without a scheme. ``preview_ffmpeg_key`` must
+match ``FFMPEG_SECRET``, or the ``authSecret`` of the server if you run ffmpeg-over-ip yourself.
+
+.. note::
+
+   Do not enable ``OC\Preview\Movie`` at the same time, otherwise the local provider is tried as well.
