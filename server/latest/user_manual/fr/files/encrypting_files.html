@@ -133,13 +133,7 @@
 <h1>Mettre en oeuvre le chiffrement côté-serveur (SSE)<a class="headerlink" href="#using-server-side-encryption" title="Lien vers cette rubrique"></a></h1>
 <p>Nextcloud intègre une fonctionnalité de chiffrement côté serveur. Lorsque celle-ci est activée par votre administrateur Nextcloud, tous vos fichiers de données Nextcloud sont automatiquement chiffrés sur le serveur. Le chiffrement s’applique à l’ensemble du serveur ; par conséquent, une fois cette fonctionnalité activée, vous ne pouvez pas choisir de conserver vos fichiers non chiffrés. Vous n’avez aucune manipulation particulière à effectuer, car votre identifiant Nextcloud sert de mot de passe pour votre clé de chiffrement privée unique. Il suffit de vous déconnecter puis de vous reconnecter, et de gérer et partager vos fichiers comme habituellement ; vous pourrez toujours modifier votre mot de passe dès que vous le souhaiterez.</p>
 <p>Son objectif principal est de chiffrer les fichiers sur des stockages externes connectés à votre serveur Nextcloud. Ceci est une manière simple et sans couture de protéger  vos fichiers sur les services distants de stockage. Vous pouvez partager les fichiers distants à travers Nextcloud de la manière usuelle, en revanche, vous ne pouvez pas partager vos fichiers chiffrés directement à partir de vos services distants  de stockage utilisés, car les clés de chiffrement sont stockées sur le serveur Netxcloud, et ne sont jamais accessibles par les fournisseurs de services.</p>
-<p>If your Nextcloud server is not connected to any remote storage services, then
-it is better to use some other form of encryption such as file-level or whole
-disk encryption. Because the keys are kept on your Nextcloud server, it is
-possible for your Nextcloud administrator to access your unencrypted files, and if the server is
-compromised the intruder may get access to your files. (Read
-<a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">Encryption in Nextcloud</a>
-to learn more.)</p>
+<p>Si votre serveur Nextcloud n’est pas connecté à un service de stockage externe, alors il est préférable d’utiliser une autre forme de chiffrement, par exemple en chiffrant directement les fichiers ou le disque dur entier. En effet, les clés étant conservées sur votre serveur Netxcloud, votre administrateur Nextcloud a la possibilité d’accéder à vos fichiers non chiffrés, et, si le serveur est compromis, un intrus pourrait obtenir l’accès à vos fichiers. (Lisez <a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">Chiffrement dans Nextcloud</a> pour en savoir plus.)</p>
 <section id="encryption-faq">
 <h2>Questions récurrentes sur le chiffrement<a class="headerlink" href="#encryption-faq" title="Lien vers cette rubrique"></a></h2>
 <section id="how-can-encryption-be-disabled">
@@ -159,7 +153,7 @@ to learn more.)</p>
 <p>Si on fait ça, alors on devrait stocker le nom d’utilisateur ou le mot de passe dans la base de donnée ce qui pose un problème de sécurité, donc rien de tel n’est prévu.</p>
 </section>
 <section id="is-group-sharing-possible-with-the-recovery-key">
-<h3>Is group sharing possible with the recovery key?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Lien vers cette rubrique"></a></h3>
+<h3>Le partage de groupe est-il possible avec la clé de récupération ?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Lien vers cette rubrique"></a></h3>
 <p>Si cela veut dire ajouter des utilisateurs à un groupe et espérer que ça fonctionne magiquement, non. Ça ne fonctionne qu’avec la clé maitresse.</p>
 </section>
 </section>
@@ -181,7 +175,12 @@ to learn more.)</p>
 </section>
 <section id="sharing-encrypted-files">
 <h2>Partage de fichiers chiffrés<a class="headerlink" href="#sharing-encrypted-files" title="Lien vers cette rubrique"></a></h2>
-<p>Seuls les utilisateurs qui ont des clés privées de chiffrement ont accès aux fichiers et dossiers chiffrés partagés. Les utilisateurs qui n’ont pas encore créé leurs clés n’y auront pas accès, ils verront des dossiers et des noms de fichiers, mais ne pourront pas les ouvrir ni les télécharger. Un bandeau jaune les avertira : « L’application de chiffrement est activée mais vos clefs ne sont pas initialisées. Veuillez vous déconnecter et ensuite vous reconnecter. »</p>
+<p>Only users who have private encryption keys have access to shared encrypted
+files and folders. Users who have not yet created their private encryption keys
+will not have access to encrypted shared files; they will see folders and
+filenames, but will not be able to open or download the files. They will see a
+yellow warning banner that says « Your encryption keys are not initialized for this
+session. Please sign out and sign back in. »</p>
 <p>Les utilisateurs ayant partagé leurs fichiers devront peut-être recommencer les partages une fois que le chiffrement a été activé. Les utilisateurs essayant d’accéder aux partages verront un message leur suggérant d’avertir le propriétaire des fichiers de recommencer le partage. Pour les partages directs entre utilisateurs, désactivez puis réactivez le partage. Pour les partages avec des groupes, activez le partage avec n’importe quel utilisateur qui ne peut pas y accéder, cela va mettre à jour le chiffrement, vous pourrez ensuite retirer les partages individuels.</p>
 <section id="recovery-key-password">
 <h3>Mot de passe de clé de récupération<a class="headerlink" href="#recovery-key-password" title="Lien vers cette rubrique"></a></h3>
