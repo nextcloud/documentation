@@ -21,6 +21,7 @@ When a call is already in progress, join it by clicking the green ``Join call`` 
 
 You will see the ``Check devices`` dialog, where you can customise your call experience:
 
+.. TODO: update screenshot to show the notify all participants checkbox next to the Start call button
 .. image:: images/calls/media-settings-initial.png
     :alt: Talk Check devices dialog before joining a call
     :width: 600px
@@ -102,6 +103,7 @@ If you do not want to notify the other participants, start a silent call: clear 
 In the conversation top bar, open the ``More actions`` menu next to the ``Start call`` button and choose
 ``Start call silently``.
 
+.. TODO: screenshots below show the old three-dot menu, replace them with the notify checkbox and the top bar menu
 
 .. image:: images/calls/media-settings-silent-call.png
     :alt: Talk Start call silently option in the Check devices dialog
@@ -188,6 +190,7 @@ Controlling audio and video
 
 Bottom bar of the call view offers media controls, layout settings and other features you can use during a call.
 
+.. TODO: update screenshot to show the new layout menu with multi-speaker view in the bottom bar
 .. image:: images/calls/during-a-call-controls.png
     :alt: Talk active call bottom bar showing media controls and layout settings
     :width: 400px

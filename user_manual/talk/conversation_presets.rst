@@ -13,6 +13,7 @@ Available presets
 Depending on your instance configuration, you may see presets when creating a new conversation.
 Each preset applies a specific set of defaults suited to a particular use case.
 
+.. TODO: update screenshot to show the Conversation type field with the classified, channel and announcement presets
 .. image:: images/new-conversation-presets.png
     :alt: Talk new conversation dialog with presets selection
     :width: 400px

@@ -5,6 +5,7 @@ Call layout
 You can switch between ``Grid view``, ``Speaker view`` and ``Multi-speaker view`` using the layout menu in the
 bottom bar. Talk remembers your choice for each conversation.
 
+.. TODO: update screenshot to show the layout menu with grid, speaker and multi-speaker view
 .. image:: images/call-view-toggle-button.png
     :alt: Talk call layout menu to switch between grid, speaker and multi-speaker view
     :width: 300px

@@ -13,6 +13,7 @@ Tags
 Create custom tags to categorize your conversations and keep them organized.
 Tags help you group conversations by project, team, topic, or any other criteria that makes sense for your workflow.
 
+.. TODO: update screenshot to show the last message time next to each conversation
 .. image:: images/conversations-tag-overview.png
     :alt: Talk conversations tag appearance
     :width: 400px
