@@ -81,12 +81,27 @@ and whether you have ``Moderator`` permission for the conversation.
 If you are joining and the call is being recorded, you might be required to consent before being allowed to join.
 For more information, see :ref:`Call recording <call-recording>`.
 
+Restricting who can start a call (moderator)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+An administrator can limit who is allowed to start a call server-wide, to one of: everyone, users and moderators,
+moderators only, or nobody (calls disabled). An administrator can additionally restrict starting a call to
+members of specific groups; when such groups are configured, only their members can start a call, and this also
+applies to moderators, while guests and federated users can never be part of a group.
+
+If you are not allowed to start a call, the ``Start call`` button is disabled until somebody else starts the call.
+You can then join the call in progress. For conversations hosted on a federated server, the configuration of that
+server applies instead. Ask your administrator to check the Talk admin settings if you need to start calls yourself.
+
 Start the call
 ^^^^^^^^^^^^^^
 
 Click the ``Start call`` button at the bottom of the ``Check devices`` dialog to notify all conversation participants of the call.
-If you do not want to notify the other participants, start a silent call by opening the three-dot menu to the left of the ``Start call`` button
-and choosing ``Start call silently``.
+If you do not want to notify the other participants, start a silent call: clear the
+``Notify all participants about this call`` checkbox, then click ``Start call silently``.
+In the conversation top bar, open the ``More actions`` menu next to the ``Start call`` button and choose
+``Start call silently``.
+
 
 .. image:: images/calls/media-settings-silent-call.png
     :alt: Talk Start call silently option in the Check devices dialog
