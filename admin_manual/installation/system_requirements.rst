@@ -39,10 +39,10 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - 8.4                                                                 |
 |                  | - **8.5** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
-| Cache / locking  | - **Redis** Open Source **4.0+** (recommended for distributed cache   |
-| (optional)       |   and file locking; see :doc:`../configuration_server/caching_configuration`) |
-|                  | - Valkey / KeyDB (Redis-compatible; expected to work)                 |
+| Cache / locking  | - **Redis** Open Source **4.0+** or Valkey (recommended for           |
+| (optional)       |   distributed cache and file locking)                                 |
 |                  | - APCu for local memory cache                                         |
+|                  | - See :doc:`../configuration_server/caching_configuration`            |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
