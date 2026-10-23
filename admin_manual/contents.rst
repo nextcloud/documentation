@@ -68,7 +68,9 @@ Table of contents
 .. toctree::
     :caption: Office
 
-    office/index
+    Overview <office/index>
+    office/euro-office/index
+    office/collabora_online
 
 .. toctree::
     :caption: Collectives
