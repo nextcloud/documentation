@@ -34,7 +34,7 @@ Add an ``eslint.config.js`` in your app root using the flat config format (requi
   import { recommended } from '@nextcloud/eslint-config'
 
   export default [
-  	...recommended,
+      ...recommended,
   ]
 
 ``recommended`` covers TypeScript and Vue 3. Alternatives such as ``recommendedJavascript`` and ``recommendedVue2`` are documented in the `config package README <https://github.com/nextcloud-libraries/eslint-config>`_.
