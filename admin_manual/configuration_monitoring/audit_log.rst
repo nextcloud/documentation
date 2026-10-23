@@ -188,6 +188,8 @@ Apps that write to the audit log can define their own identifiers in the same fo
 not provide an identifier have no ``data.operation`` field. Providing an identifier will become required in a future
 Nextcloud version, so every entry will then have one.
 
+See :doc:`audit_log_actions` for the list of actions recorded by Nextcloud server and the apps shipped with it.
+
 Log rotation
 ------------
 
