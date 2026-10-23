@@ -407,11 +407,6 @@ Group Member association:
    (default ``gidNumber``) via the LDAP configuration API / ``occ``, but it
    is not exposed in the admin UI.
 
-   Prefer distinct ``gidNumber`` namespaces for users versus groups, or
-   change the user's ``gidNumber`` / ``primaryGroupID`` when membership
-   should end. ``ldap:show-remnants`` only lists deleted users and does not
-   clear this secondary relation.
-
 Nested groups:
   Enable group member retrieval from sub groups.
 
