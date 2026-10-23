@@ -68,8 +68,8 @@ Prerequisites
   exposed to users.
 * Only accounts that appear in the system address book are included. Users who
   set all profile property scopes to *Private* are omitted.
-* After changing managers or profile fields, wait for the automatic sync or run
-  the :ref:`system address book sync<dav-sync-system-address-book>` occ command.
+* Changes to managers or profile fields are applied to the system address
+  book right away.
 
 Define a line manager
 ^^^^^^^^^^^^^^^^^^^^^
@@ -77,19 +77,16 @@ Define a line manager
 In **Administration settings** → **Users**, open a user and set the
 **Manager** field to another local account. See :doc:`../configuration_user/user_configuration`.
 
-Setting a manager does **not** grant admin rights. The value is written into the
-user's system address book card (``X-MANAGERSNAME``) and is what the chart uses
-as the parent node.
+Setting a manager does **not** grant admin rights. The chart uses the manager
+as the user's parent node.
 
 Set organisation and job title (role)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Users (or admins editing profile data) set **Organisation** and **Role** under
 **Personal settings** → **Personal info**. Keep the property scope at *Local* or
-higher so the values are copied into the system address book:
-
-* **Organisation** becomes the contact ``ORG`` field.
-* **Role** becomes the contact ``TITLE`` (job title) field shown on the chart.
+higher so the values are copied into the system address book. The **Role** is
+shown as the job title on the chart.
 
 Viewing the chart
 ^^^^^^^^^^^^^^^^^
