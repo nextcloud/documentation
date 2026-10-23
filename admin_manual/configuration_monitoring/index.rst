@@ -7,6 +7,7 @@ Monitoring
 
    openmetrics
    audit_log
+   audit_log_actions
 
 .. Keeps links to the former OpenMetrics section of this page working.
 .. raw:: html
