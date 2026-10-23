@@ -187,37 +187,33 @@ handles both.
 Keeping secrets out of stack traces
 -----------------------------------
 
-Exception stack traces can include method arguments. If your app has methods
-that accept secrets (passwords, tokens, credentials, and similar), register
-them during bootstrap so the logger replaces those arguments before writing
-the trace:
+Exception stack traces can include method arguments. Mark parameters that
+accept secrets (passwords, tokens, credentials, and similar) with PHP's
+standard `#[\SensitiveParameter] <https://www.php.net/manual/en/class.sensitiveparameter.php>`_
+attribute so their values do not end up in the log:
 
 .. code-block:: php
 
     <?php
-    namespace OCA\MyApp\AppInfo;
+    namespace OCA\MyApp\Service;
 
-    use OCA\MyApp\Service\AuthService;
-    use OCP\AppFramework\App;
-    use OCP\AppFramework\Bootstrap\IBootContext;
-    use OCP\AppFramework\Bootstrap\IBootstrap;
-    use OCP\AppFramework\Bootstrap\IRegistrationContext;
-
-    class Application extends App implements IBootstrap {
-        public function register(IRegistrationContext $context): void {
-            $context->registerSensitiveMethods(
-                AuthService::class,
-                ['login', 'updatePassword'],
-            );
-        }
-
-        public function boot(IBootContext $context): void {
+    class AuthService {
+        public function login(
+            string $user,
+            #[\SensitiveParameter]
+            string $password,
+        ): void {
+            // ...
         }
     }
 
-``IRegistrationContext::registerSensitiveMethods()`` takes the fully qualified
-class name and an array of method names. It has been available since Nextcloud
-25.
+Since Nextcloud 36 the logger replaces these values in stack traces with the
+same placeholder it uses for other sensitive data, and also removes them where
+they are passed on to other calls further down the trace.
+
+.. deprecated:: 36
+   ``IRegistrationContext::registerSensitiveMethods()`` is deprecated in favor
+   of the ``#[\SensitiveParameter]`` attribute.
 
 .. note::
    This only covers **stack traces**. Never put passwords, tokens, or personal
