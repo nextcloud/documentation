@@ -71,8 +71,8 @@ If the upgrade fails you can easily revert to the last working version by issuin
 ``sudo snap revert nextcloud``
 
 After a successful snap refresh that includes a Nextcloud major upgrade, finish
-the database/app upgrade with the snap-wrapped ``occ`` (not a system
-``php occ`` as ``www-data``)::
+the database/app upgrade with the snap-wrapped ``occ`` command instead of
+``sudo -E -u www-data php occ``::
 
    sudo nextcloud.occ upgrade
 
