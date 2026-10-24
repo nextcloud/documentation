@@ -1,0 +1,470 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin audit log &mdash; Nextcloud 36 Administration Manual</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=850d043c" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/configuration_monitoring/audit_log.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Audited actions" href="audit_log_actions.html" />
+    <link rel="prev" title="OpenMetrics" href="openmetrics.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database setup and configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management_api.html">Apps management API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../automation_overview/index.html">Automation in Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/budibase_workflows.html">Budibase Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Monitoring</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="openmetrics.html">OpenMetrics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Admin audit log</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#viewing-the-audit-log">Viewing the audit log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#record-format">Record format</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#field-reference">Field reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#message-and-structured-data">Message and structured data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#operation-identifiers">Operation identifiers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#log-rotation">Log rotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-limitations">Known limitations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html">Audited actions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 36 Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Monitoring</a></li>
+      <li class="breadcrumb-item active">Admin audit log</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_monitoring/audit_log.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="admin-audit-log">
+<h1>Admin audit log<a class="headerlink" href="#admin-audit-log" title="Link to this heading"></a></h1>
+<p id="audit-log-reference">The <strong>admin_audit</strong> app records security and compliance relevant actions, for example logins, file access, sharing,
+and user and group management. It answers the question <em>who did what, and when</em>. The audit log is kept separate from
+the regular Nextcloud log, which is meant for debugging and system status.</p>
+<p>Apps other than the ones shipped with Nextcloud can write to the audit log too. Which actions are recorded therefore
+depends on the apps installed on your server.</p>
+<p>This page describes how to read and maintain the audit log. To enable and configure it, see
+<a class="reference internal" href="../configuration_server/logging_configuration.html#config-admin-audit"><span class="std std-ref">Admin audit log configuration</span></a>.</p>
+<section id="viewing-the-audit-log">
+<h2>Viewing the audit log<a class="headerlink" href="#viewing-the-audit-log" title="Link to this heading"></a></h2>
+<p>The <strong>logreader</strong> app (<em>Administration settings → Logging</em>) only shows the regular Nextcloud log. To show audit
+entries there as well, see <a class="reference internal" href="../configuration_server/logging_configuration.html#config-admin-audit"><span class="std std-ref">Admin audit log configuration</span></a>.</p>
+<p>For most purposes, read the audit log with command line tools, or forward it to a log management or SIEM system. Each
+entry is a single line of JSON, so it can be filtered with a tool such as <code class="docutils literal notranslate"><span class="pre">jq</span></code>.</p>
+<p>Show all groups that were deleted:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jq</span> <span class="o">-</span><span class="n">c</span> <span class="s1">'select(.data.operation == "groups.group.deleted")'</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">audit</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+<p>List time, action and message of everything the user <code class="docutils literal notranslate"><span class="pre">alice</span></code> did:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jq</span> <span class="o">-</span><span class="n">r</span> <span class="s1">'select(.user == "alice") | [.time, .data.operation, .message] | @tsv'</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">audit</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+<p>Follow the actions of a single request:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jq</span> <span class="o">-</span><span class="n">c</span> <span class="s1">'select(.reqId == "eB2rT9vXqN4kLm8sP0aZ")'</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">audit</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+</section>
+<section id="record-format">
+<h2>Record format<a class="headerlink" href="#record-format" title="Link to this heading"></a></h2>
+<p>With the <code class="docutils literal notranslate"><span class="pre">file</span></code> backend, the audit log is a <a class="reference external" href="https://jsonlines.org/">JSON Lines</a> file: every line is one
+complete JSON object describing one action. The <code class="docutils literal notranslate"><span class="pre">syslog</span></code> and <code class="docutils literal notranslate"><span class="pre">systemd</span></code> backends write the same JSON object as the
+message. The <code class="docutils literal notranslate"><span class="pre">errorlog</span></code> backend prefixes it with <code class="docutils literal notranslate"><span class="pre">[&lt;tag&gt;][admin_audit][1]</span></code>.</p>
+<p>Example entry, written when the administrator <code class="docutils literal notranslate"><span class="pre">alice</span></code> created the group <code class="docutils literal notranslate"><span class="pre">marketing</span></code> (formatted for readability):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"reqId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eB2rT9vXqN4kLm8sP0aZ"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-10-12T14:26:05+00:00"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"remoteAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.0.2.10"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"userDisplayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alice Auditor"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin_audit"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/ocs/v2.php/cloud/groups"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"scriptName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/ocs/v2.php"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Group created: \"marketing\""</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36.0.0.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin_audit"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"groups.group.created"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"marketing"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Example entry for an action performed with <code class="docutils literal notranslate"><span class="pre">occ</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"reqId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVhhZeg6hZ6mT7oEwtM3"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-10-12T14:31:17+00:00"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"remoteAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"--"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin_audit"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"--"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"scriptName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"occ"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App \"files_external\" enabled"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"--"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36.0.0.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"occ_command"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"occ"</span><span class="p">,</span><span class="w"> </span><span class="s2">"app:enable"</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin_audit"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apps.app.enabled"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"files_external"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="field-reference">
+<h3>Field reference<a class="headerlink" href="#field-reference" title="Link to this heading"></a></h3>
+<p>Empty values are written as two dashes: <code class="docutils literal notranslate"><span class="pre">--</span></code>. Fields marked as optional are left out when they do not apply.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">reqId</span></code></dt><dd><p>Request ID. All entries written during the same request share this value, also across the audit log and the regular
+Nextcloud log.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">level</span></code></dt><dd><p>Log level. Always <code class="docutils literal notranslate"><span class="pre">1</span></code> (INFO) for audited actions.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">time</span></code></dt><dd><p>Date and time of the entry. The format and time zone are set with <code class="docutils literal notranslate"><span class="pre">logdateformat</span></code> and <code class="docutils literal notranslate"><span class="pre">logtimezone</span></code> in
+<code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code>. Defaults to ISO 8601 in UTC.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">remoteAddr</span></code></dt><dd><p>IP address of the client. Empty for <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands and background jobs.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">user</span></code></dt><dd><p>ID of the user who performed the action, or <code class="docutils literal notranslate"><span class="pre">--</span></code> when no user is logged in, for example for <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands,
+background jobs and failed logins.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">userDisplayName</span></code></dt><dd><p>Optional. Display name of the acting user at the time the entry was written. Left out when <code class="docutils literal notranslate"><span class="pre">user</span></code> is <code class="docutils literal notranslate"><span class="pre">--</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">app</span></code></dt><dd><p>Always <code class="docutils literal notranslate"><span class="pre">admin_audit</span></code> in the audit log.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">method</span></code></dt><dd><p>HTTP method, for example <code class="docutils literal notranslate"><span class="pre">GET</span></code>, <code class="docutils literal notranslate"><span class="pre">POST</span></code> or <code class="docutils literal notranslate"><span class="pre">PROPFIND</span></code>. Empty for <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">url</span></code></dt><dd><p>Request path. <code class="docutils literal notranslate"><span class="pre">--</span></code> for <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">scriptName</span></code></dt><dd><p>PHP script that handled the request, for example <code class="docutils literal notranslate"><span class="pre">/remote.php</span></code> or <code class="docutils literal notranslate"><span class="pre">occ</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">message</span></code></dt><dd><p>Human readable description of the action. See <a class="reference internal" href="#message-and-structured-data">Message and structured data</a>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">userAgent</span></code></dt><dd><p>User agent of the client. <code class="docutils literal notranslate"><span class="pre">--</span></code> for <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">version</span></code></dt><dd><p>Nextcloud version at the time of the entry.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">clientReqId</span></code></dt><dd><p>Optional. Value of the <code class="docutils literal notranslate"><span class="pre">X-Request-Id</span></code> HTTP header sent by the client.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">occ_command</span></code></dt><dd><p>Optional. The <code class="docutils literal notranslate"><span class="pre">occ</span></code> command that was run, as an array of up to two arguments. Only present for actions performed
+on the command line.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">data.app</span></code></dt><dd><p>Always <code class="docutils literal notranslate"><span class="pre">admin_audit</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">data.operation</span></code></dt><dd><p>Optional for now, will be present in every entry in a future Nextcloud version. Stable identifier of the action.
+See <a class="reference internal" href="#operation-identifiers">Operation identifiers</a>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">data.params</span></code></dt><dd><p>Optional. The parameters of the action as a JSON object, for example the affected user, group, file path or share
+ID. Left out when the action has no parameters or when the parameters are marked as sensitive.</p>
+</dd>
+</dl>
+</section>
+<section id="message-and-structured-data">
+<h3>Message and structured data<a class="headerlink" href="#message-and-structured-data" title="Link to this heading"></a></h3>
+<p>Every entry describes the action twice:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">message</span></code> is an English sentence with the parameters inserted, meant to be read by people. Its wording can change
+between Nextcloud versions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data.operation</span></code> and <code class="docutils literal notranslate"><span class="pre">data.params</span></code> describe the same action in a machine readable form.</p></li>
+</ul>
+<p>When you filter, count, or alert on audit entries, use <code class="docutils literal notranslate"><span class="pre">data.operation</span></code> and <code class="docutils literal notranslate"><span class="pre">data.params</span></code> instead of parsing
+<code class="docutils literal notranslate"><span class="pre">message</span></code>.</p>
+<p>The keys of <code class="docutils literal notranslate"><span class="pre">data.params</span></code> are the parameter names of the action, for example <code class="docutils literal notranslate"><span class="pre">group</span></code>, <code class="docutils literal notranslate"><span class="pre">user</span></code>, <code class="docutils literal notranslate"><span class="pre">path</span></code> or
+<code class="docutils literal notranslate"><span class="pre">id</span></code>. The values are strings, numbers, booleans or <code class="docutils literal notranslate"><span class="pre">null</span></code>. Dates are written as strings in the format
+<code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span> <span class="pre">HH:MM:SS</span></code>.</p>
+</section>
+<section id="operation-identifiers">
+<h3>Operation identifiers<a class="headerlink" href="#operation-identifiers" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">data.operation</span></code> identifies the type of action in the form <code class="docutils literal notranslate"><span class="pre">&lt;app&gt;.&lt;entity&gt;.&lt;action&gt;</span></code>, for example
+<code class="docutils literal notranslate"><span class="pre">files.file.deleted</span></code>, <code class="docutils literal notranslate"><span class="pre">sharing.share.created</span></code> or <code class="docutils literal notranslate"><span class="pre">auth.login.failed</span></code>. The identifier does not change when the
+wording of <code class="docutils literal notranslate"><span class="pre">message</span></code> changes, so it is safe to use it in filters, alert rules and retention policies.</p>
+<p>Apps that write to the audit log can define their own identifiers in the same form. Entries written by apps that do
+not provide an identifier have no <code class="docutils literal notranslate"><span class="pre">data.operation</span></code> field. Providing an identifier will become required in a future
+Nextcloud version, so every entry will then have one.</p>
+<p>See <a class="reference internal" href="audit_log_actions.html"><span class="doc">Audited actions</span></a> for the list of actions recorded by Nextcloud server and the apps shipped with it.</p>
+</section>
+</section>
+<section id="log-rotation">
+<h2>Log rotation<a class="headerlink" href="#log-rotation" title="Link to this heading"></a></h2>
+<p>A background job checks the size of the audit log file every three hours. When the file is larger than
+<code class="docutils literal notranslate"><span class="pre">log_rotate_size</span></code> (see <a class="reference internal" href="../configuration_server/logging_configuration.html"><span class="doc">Logging</span></a>), it is renamed by appending <code class="docutils literal notranslate"><span class="pre">.1</span></code>
+and a new file is started. An existing <code class="docutils literal notranslate"><span class="pre">.1</span></code> file is overwritten, so only one rotated file is kept.</p>
+<p>This background job only rotates the default <strong>audit.log</strong> and a file set with the legacy app setting. A file set
+with <code class="docutils literal notranslate"><span class="pre">logfile_audit</span></code> is not rotated by Nextcloud. Use a tool such as <code class="docutils literal notranslate"><span class="pre">logrotate</span></code> for such files, and whenever you
+need to keep audit entries for a defined period.</p>
+</section>
+<section id="known-limitations">
+<h2>Known limitations<a class="headerlink" href="#known-limitations" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Coverage depends on the apps.</strong> Only actions that an app explicitly reports are recorded. Actions in apps that do
+not report to the audit log are not recorded at all.</p></li>
+<li><p><strong>No retention management.</strong> Nextcloud keeps at most one rotated file, and does not rotate a file set with
+<code class="docutils literal notranslate"><span class="pre">logfile_audit</span></code>. Configure <code class="docutils literal notranslate"><span class="pre">logrotate</span></code>, or forward the entries to a central log system, when you need to keep
+audit entries for a defined period.</p></li>
+<li><p><strong>No viewer in the web interface.</strong> The audit log is only shown in <em>Administration settings → Logging</em> when it is
+written to the same file as the regular Nextcloud log.</p></li>
+<li><p><strong>No protection against tampering.</strong> The audit log is a plain file that the web server user can write to. To make
+sure entries cannot be changed after the fact, forward them to a separate system, for example with
+<code class="docutils literal notranslate"><span class="pre">log_type_audit</span></code> set to <code class="docutils literal notranslate"><span class="pre">syslog</span></code> and a remote syslog server.</p></li>
+<li><p><strong>Display names can change.</strong> <code class="docutils literal notranslate"><span class="pre">userDisplayName</span></code> is the display name at the time of the entry. Use <code class="docutils literal notranslate"><span class="pre">user</span></code> to
+correlate entries of the same account.</p></li>
+<li><p><strong>Entries depend on the log level.</strong> If the system log level is above INFO and no <code class="docutils literal notranslate"><span class="pre">log.condition</span></code> is set for
+<strong>admin_audit</strong>, nothing is written. See <a class="reference internal" href="../configuration_server/logging_configuration.html#config-admin-audit"><span class="std std-ref">Admin audit log configuration</span></a>.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="openmetrics.html" class="btn btn-neutral float-left" title="OpenMetrics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="audit_log_actions.html" class="btn btn-neutral float-right" title="Audited actions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-admin">
+      ☁️ 36
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-admin" class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+          >
+            36 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            35 (latest)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/admin_manual"
+             
+          >
+            34 (stable)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/33/admin_manual"
+             
+          >
+            33 (stable)
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

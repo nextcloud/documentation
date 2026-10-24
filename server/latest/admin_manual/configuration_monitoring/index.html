@@ -30,7 +30,7 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Maintenance" href="../maintenance/index.html" />
+    <link rel="next" title="OpenMetrics" href="openmetrics.html" />
     <link rel="prev" title="Collectives" href="../collectives/index.html" />
    
   <meta name="robots" content="noindex, follow" />
@@ -132,7 +132,9 @@
 <p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Monitoring</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#openmetrics">OpenMetrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openmetrics.html">OpenMetrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log.html">Admin audit log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html">Audited actions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
@@ -179,45 +181,49 @@
              
   <section id="monitoring">
 <h1>Monitoring<a class="headerlink" href="#monitoring" title="Link to this heading"></a></h1>
-<section id="openmetrics">
-<h2>OpenMetrics<a class="headerlink" href="#openmetrics" title="Link to this heading"></a></h2>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 33.</span></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="openmetrics.html">OpenMetrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit_log.html">Admin audit log</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="audit_log.html#viewing-the-audit-log">Viewing the audit log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log.html#record-format">Record format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log.html#log-rotation">Log rotation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log.html#known-limitations">Known limitations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="audit_log_actions.html">Audited actions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html#users">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html#groups">Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html#files">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html#trash-bin-and-versions">Trash bin and versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html#sharing">Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html#unified-sharing">Unified sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html#federated-sharing">Federated sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html#external-storage">External storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html#encryption">Encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html#calendars-and-contacts">Calendars and contacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html#apps-and-configuration">Apps and configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html#administration-settings">Administration settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html#ldap">LDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html#integrations">Integrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log_actions.html#system-tags">System tags</a></li>
+</ul>
+</li>
+</ul>
 </div>
-<p>Nextcloud exposes a <code class="docutils literal notranslate"><span class="pre">/metrics</span></code> endpoint. By default, it responds only on localhost.
-You can change this behaviour with <code class="docutils literal notranslate"><span class="pre">openmetrics_allowed_clients</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'openmetrics_allowed_clients'</span> <span class="o">=&gt;</span> <span class="p">[</span>
-  <span class="s1">'192.168.0.0/16'</span><span class="p">,</span>
-<span class="p">],</span>
-</pre></div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Ensure this endpoint is not accessible to everyone as it could lead to some load on your server.</p>
-</div>
-<p>You can view the content of this endpoint with the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="s2">"https://your.domain/metrics"</span>
-</pre></div>
-</div>
-<p>If for some reason you want to disable some metrics (eg. if they take too long to generate), you can disable them by adding their class name into <code class="docutils literal notranslate"><span class="pre">openmetrics_skipped_classes</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'openmetrics_skipped_classes'</span> <span class="o">=&gt;</span> <span class="p">[</span>
-  <span class="s1">'OC\OpenMetrics\Exporters\FilesByType'</span><span class="p">,</span>
-<span class="p">],</span>
-</pre></div>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>Check <a class="reference internal" href="../configuration_server/config_sample_php_parameters.html"><span class="doc">Configuration Parameters</span></a> for more information</p>
-</div>
-</section>
-</section>
+<script>
+  if (window.location.hash === '#openmetrics') {
+    window.location.replace('openmetrics.html');
+  }
+</script></section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../collectives/index.html" class="btn btn-neutral float-left" title="Collectives" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../maintenance/index.html" class="btn btn-neutral float-right" title="Maintenance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="openmetrics.html" class="btn btn-neutral float-right" title="OpenMetrics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

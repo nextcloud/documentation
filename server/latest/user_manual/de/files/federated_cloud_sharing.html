@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using federation shares &mdash; Nextcloud 36 User Manual</title>
+  <title>Federated-Freigaben verwenden &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -83,9 +83,9 @@
 <li class="toctree-l3"><a class="reference internal" href="sharing.html">File sharing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sharing.html#federated-shares">Federated shares</a></li>
 <li class="toctree-l3"><a class="reference internal" href="file_drop.html">Anonyme Uploads durchführen</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Using federation shares</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new federation share</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federated-cloud-share-via-email">Creating a new federated cloud share via email</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Federated-Freigaben verwenden</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Eine neue Federated-Freigabe erstellen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federated-cloud-share-via-email">Eine neue Federated-Cloud-Freigabe erstellen und über E-Mail teilen</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="transfer_ownership.html">Besitz übertragen</a></li>
@@ -120,7 +120,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Dateien &amp; Synchronisation</a></li>
           <li class="breadcrumb-item"><a href="collaboration.html">Teilen &amp; Zusammenarbeit</a></li>
-      <li class="breadcrumb-item active">Using federation shares</li>
+      <li class="breadcrumb-item active">Federated-Freigaben verwenden</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/federated_cloud_sharing.rst" class="fa fa-github"> Auf GitHub bearbeiten</a>
       </li>
@@ -131,35 +131,29 @@
            <div itemprop="articleBody">
              
   <section id="using-federation-shares">
-<h1>Using federation shares<a class="headerlink" href="#using-federation-shares" title="Link to this heading"></a></h1>
+<h1>Federated-Freigaben verwenden<a class="headerlink" href="#using-federation-shares" title="Link to this heading"></a></h1>
 <p>Federation-Freigaben ermöglichen es Ihnen, auf Dateifreigaben von entfernten Nextcloud-Servern zuzugreifen und somit ihre eigene Cloud aus unterschiedlichen Nextcloud-Servern zu erstellen. Sie können direkte Freigabelinks für Benutzer auf anderen Nextcloud-Servern erstellen.</p>
 <section id="creating-a-new-federation-share">
-<h2>Creating a new federation share<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<h2>Eine neue Federated-Freigabe erstellen<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
 <p>Federation-Freigaben sind bei neuen oder aktualisierten Nextcloud-Installationen standardmäßig aktiviert. Befolgen Sie diese Schritte, um eine neue Freigabe mit anderen Nextcloud- oder ownCloud 9+-Servern zu erstellen:</p>
 <ol class="arabic">
-<li><p>Gehen Sie auf Ihre <code class="docutils literal notranslate"><span class="pre">Dateien</span></code>-Seite und klicken Sie auf das <strong>Teilen</strong>-Symbol bei der Datei oder dem Ordner, die Sie freigeben möchten. Geben Sie in der Seitenleiste den Benutzernamen und die URL des entfernten Benutzers in dieser Form ein: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;oc-server-url&gt;</span></code>. Das Formular bestätigt automatisch die von Ihnen eingegebene Adresse und kennzeichnet sie als „entfernt“. Klicken Sie auf die Beschriftung.</p>
+<li><p>Gehen Sie auf Ihre <code class="docutils literal notranslate"><span class="pre">Dateien</span></code>-Seite und klicken Sie auf das <strong>Teilen</strong>-Symbol bei der Datei oder dem Ordner, die Sie freigeben möchten. Geben Sie in der Seitenleiste den Benutzernamen und die URL des externen Benutzers in dieser Form ein: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;oc-server-url&gt;</span></code>. Das Formular bestätigt automatisch die von Ihnen eingegebene Adresse und kennzeichnet sie als „extern“. Klicken Sie auf die Beschriftung.</p>
 <figure class="align-default">
 <img alt="../../_images/direct-share-1.png" src="../../_images/direct-share-1.png" />
 </figure>
 </li>
-<li><p>When your local Nextcloud server makes a successful connection with the remote
-Nextcloud server you will see a confirmation. Your only share option is <strong>Can edit</strong>.</p></li>
+<li><p>Sobald Ihr lokaler Nextcloud-Server eine erfolgreiche Verbindung mit dem entfernten Nextcloud-Server herstellt, sehen Sie eine Bestätigung. Ihre einzige Freigabeoption ist <strong>kann bearbeiten</strong>.</p></li>
 </ol>
-<p>Click the <strong>Share</strong> button anytime to see who you have shared your file with. Remove
-your linked share anytime by clicking the trash can icon. This only unlinks the
-share, and does not delete any files.</p>
+<p>Sie können jederzeit auf die Schaltfläche <strong>Teilen</strong> drücken, um zu sehen, für wen Sie Ihre Datei freigegeben haben. Sie können Ihre Freigabe jederzeit entfernen, indem Sie auf das Papierkorb-Symbol klicken. Dadurch wird nur die Freigabe aufgehoben, aber es werden keine Dateien gelöscht.</p>
 </section>
 <section id="creating-a-new-federated-cloud-share-via-email">
-<h2>Creating a new federated cloud share via email<a class="headerlink" href="#creating-a-new-federated-cloud-share-via-email" title="Link to this heading"></a></h2>
+<h2>Eine neue Federated-Cloud-Freigabe erstellen und über E-Mail teilen<a class="headerlink" href="#creating-a-new-federated-cloud-share-via-email" title="Link to this heading"></a></h2>
 <p>Verwenden Sie diese Methode, wenn Sie mit Benutzern von ownCloud 8.x oder älter teilen.</p>
-<p>If you do not know the username or URL, you can have Nextcloud create
-the link for you and email it to your recipient.</p>
+<p>Falls Sie den Benutzernamen oder die URL nicht kennen, können Sie Nextcloud den Link für Sie erstellen und an den Empfänger senden lassen.</p>
 <figure class="align-default">
 <img alt="../../_images/create_public_share-6.png" src="../../_images/create_public_share-6.png" />
 </figure>
-<p>When your recipient receives your email they will have to take a number of
-steps to complete the share link. First they must open the link you sent them in
-a web browser, and then click the <strong>Add to your Nextcloud</strong> button.</p>
+<p>Wenn Ihr Empfänger die E-Mail erhält, muss er eine Reihe von Aktionen durchführen, um den Freigabeprozess abzuschließen. Zuerst muss der Empfänger den Link in einem Webbrowser öffnen und anschließend auf die Schaltfläche <strong>Zu Ihrer Nextcloud hinzufügen</strong> klicken.</p>
 <figure class="align-default">
 <img alt="../../_images/create_public_share-8.png" src="../../_images/create_public_share-8.png" />
 </figure>

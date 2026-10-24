@@ -124,6 +124,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#admin-audit-log-optional">Admin audit log (Optional)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-the-audit-log">Enabling the audit log</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#default-audit-log-location">Default audit log location</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dedicated-audit-logging-configuration">Dedicated audit logging configuration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#log-level-interaction">Log level interaction</a></li>
@@ -230,7 +231,7 @@
   <section id="logging">
 <h1>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h1>
 <p>Use your Nextcloud log to review system status, or to help debug problems. You may adjust logging levels, and choose how and where log data is stored. If additional event logging is required, you can optionally activate the <strong>admin_audit</strong> app.</p>
-<p>When <code class="docutils literal notranslate"><span class="pre">file</span></code> based logging is utilized, both the Nextcloud log and, optionally, the <strong>admin_audit</strong> app log can be viewed within the Nextcloud interface under <em>Administration settings -&gt; Logging</em> (this functionality is provided by the <strong>logreader</strong> app).</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">file</span></code> based logging is utilized, the Nextcloud log can be viewed within the Nextcloud interface under <em>Administration settings -&gt; Logging</em> (this functionality is provided by the <strong>logreader</strong> app).</p>
 <p>Further configuration and usage details for both the standard Nextcloud log and the optional <strong>admin_audit</strong> app log can be found below.</p>
 <section id="log-level">
 <h2>Log level<a class="headerlink" href="#log-level" title="Link to this heading"></a></h2>
@@ -471,6 +472,7 @@ logging on your instance.</p>
 <li><p><strong>time</strong>: date and time (format and timezone can be configured in config.php)</p></li>
 <li><p><strong>remoteAddr</strong>: the IP address of the user (if applicable – empty for occ commands)</p></li>
 <li><p><strong>user</strong>: acting user’s id (if applicable)</p></li>
+<li><p><strong>userDisplayName</strong>: acting user’s display name (only present when a user is logged in)</p></li>
 <li><p><strong>app</strong>: affected app (always admin_audit in audit.log)</p></li>
 <li><p><strong>method</strong>: HTTP method, for example GET, POST, PROPFIND, etc. – empty on occ calls</p></li>
 <li><p><strong>url</strong>: request path (if applicable – empty on occ calls)</p></li>
@@ -492,6 +494,16 @@ logging on your instance.</p>
 <p id="config-admin-audit">By enabling the <strong>admin_audit</strong> app, additional information about various
 events can be logged. The audit log supports all of the logging backends
 described above (file, syslog, systemd, errorlog).</p>
+<p>This section covers how to set up the audit log. See <a class="reference internal" href="../configuration_monitoring/audit_log.html"><span class="doc">Admin audit log</span></a> for the format of its entries,
+how to read them, and its known limitations.</p>
+<section id="enabling-the-audit-log">
+<h3>Enabling the audit log<a class="headerlink" href="#enabling-the-audit-log" title="Link to this heading"></a></h3>
+<p>The <strong>admin_audit</strong> app is shipped with Nextcloud, but disabled by default. Enable it with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">enable</span> <span class="n">admin_audit</span>
+</pre></div>
+</div>
+<p>Audit entries are only written when the log level allows it. See <a class="reference internal" href="#log-level-interaction">Log level interaction</a> below.</p>
+</section>
 <section id="default-audit-log-location">
 <h3>Default audit log location<a class="headerlink" href="#default-audit-log-location" title="Link to this heading"></a></h3>
 <p>When using the default <code class="docutils literal notranslate"><span class="pre">file</span></code> backend, the audit log is written to

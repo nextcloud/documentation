@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>System tags &mdash; Nextcloud 36 User Manual</title>
+  <title>Étiquettes système &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -73,20 +73,20 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Manuel utilisateur de Nextcloud 36 : Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">L’interface web de Nextcloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Utilisation de l’application Activité</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Fichiers &amp; synchronisation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accéder à vos fichiers</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="managing.html">Gérer vos fichiers</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="deleted_file_management.html">Deleted files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deleted_file_management.html">Fichiers supprimés</a></li>
 <li class="toctree-l3"><a class="reference internal" href="version_control.html">Contrôle de version</a></li>
 <li class="toctree-l3"><a class="reference internal" href="quota.html">Quota de stockage utilisable</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">System tags</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tag-access-levels">Tag access levels</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#browsing-files-by-tag">Browsing files by tag</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#assigning-tags-to-files">Assigning tags to files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creating-and-managing-tags">Creating and managing tags</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Étiquettes système</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tag-access-levels">Niveaux d’accès des étiquettes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#browsing-files-by-tag">Navigation dans les fichiers par étiquette</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assigning-tags-to-files">Attribution d’étiquettes à des fichiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-and-managing-tags">Création et gestion des étiquettes</a></li>
 </ul>
 </li>
 </ul>
@@ -97,12 +97,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectifs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Définir vos préférences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Accès universel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Utilisation de l’authentification à deux facteurs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestion des navigateurs et des appareils liés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestion des navigateurs et des appareils connectés</a></li>
 </ul>
 
         </div>
@@ -121,7 +121,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Fichiers &amp; synchronisation</a></li>
           <li class="breadcrumb-item"><a href="managing.html">Gérer vos fichiers</a></li>
-      <li class="breadcrumb-item active">System tags</li>
+      <li class="breadcrumb-item active">Étiquettes système</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/tagging.rst" class="fa fa-github"> Éditer sur GitHub</a>
       </li>
@@ -132,108 +132,86 @@
            <div itemprop="articleBody">
              
   <section id="system-tags">
-<h1>System tags<a class="headerlink" href="#system-tags" title="Lien vers cette rubrique"></a></h1>
-<p>System tags are server-wide labels you can attach to files and folders to
-organise them, filter your file list, and drive automated workflows such as
-retention rules and access control.</p>
-<p>Tags appear directly on file and folder rows in the <strong>Files</strong> app so you can
-see at a glance which labels are assigned:</p>
+<h1>Étiquettes système<a class="headerlink" href="#system-tags" title="Lien vers cette rubrique"></a></h1>
+<p>Les étiquettes système sont des libellés à l’échelle du système que vous pouvez poser sur des fichiers ou des dossiers pour les organiser, filtrer votre liste de fichiers et piloter des flux de travail automatisés tels que des règles de rétention et des contrôles d’accès.</p>
+<p>Les étiquettes apparaissent directement sur les lignes des fichiers et des dossiers dans l’application <strong>Fichiers</strong> afin que vous puissiez voir en un coup d’œil celles qui sont attribuées :</p>
 <figure class="align-default" id="id1">
-<img alt="File list showing two tags, Photos and Vacations, displayed on a folder row." src="../../_images/systemtags-inline.png" />
+<img alt="Liste de fichiers montrant deux étiquettes, Photos et Vacances, affichées sur la ligne d'un dossier." src="../../_images/systemtags-inline.png" />
 <figcaption>
-<p><span class="caption-text"><em>Figure 1: Tags are shown inline on files and folders.</em></span><a class="headerlink" href="#id1" title="Lien vers cette image"></a></p>
+<p><span class="caption-text"><em>Figure 1 : Les étiquettes sont affichées sur les fichiers et les dossiers.</em></span><a class="headerlink" href="#id1" title="Lien vers cette image"></a></p>
 </figcaption>
 </figure>
-<p>Tags are created by administrators in the server settings. Depending on your
-server configuration, regular users may also be able to create tags — your
-administrator can restrict tag creation to admins only.</p>
+<p>Les étiquettes sont créées par les administrateurs dans les paramètres du serveur. En fonction de la configuration du vôtre, les simples utilisateurs peuvent aussi être en mesure d’en créer — votre administrateur peut restreindre la création d’étiquettes aux seuls administrateurs.</p>
 <section id="tag-access-levels">
-<h2>Tag access levels<a class="headerlink" href="#tag-access-levels" title="Lien vers cette rubrique"></a></h2>
-<p>Every tag has one of three access levels that control what regular users can
-see and do:</p>
+<h2>Niveaux d’accès des étiquettes<a class="headerlink" href="#tag-access-levels" title="Lien vers cette rubrique"></a></h2>
+<p>Chaque étiquette possède un des trois niveaux d’accès qui contrôlent ce que les utilisateurs normaux peuvent voir et faire :</p>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Level</p></th>
-<th class="head"><p>Visible to users</p></th>
-<th class="head"><p>Users can assign / remove</p></th>
+<tr class="row-odd"><th class="head"><p>Niveau</p></th>
+<th class="head"><p>Visible par les utilisateurs</p></th>
+<th class="head"><p>Les utilisateurs peuvent l’attribuer / enlever</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Public</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
+<td><p>Oui</p></td>
+<td><p>Oui</p></td>
 </tr>
-<tr class="row-odd"><td><p>Restricted</p></td>
-<td><p>Yes</p></td>
-<td><p>No</p></td>
+<tr class="row-odd"><td><p>Restreint</p></td>
+<td><p>Oui</p></td>
+<td><p>Non</p></td>
 </tr>
 <tr class="row-even"><td><p>Invisible</p></td>
-<td><p>No</p></td>
-<td><p>No</p></td>
+<td><p>Non</p></td>
+<td><p>Non</p></td>
 </tr>
 </tbody>
 </table>
-<p>Restricted and invisible tags are used by administrators for automated
-workflows. You cannot work around them by removing the tag yourself.</p>
+<p>Des étiquettes invisibles ou à accès restreint sont utilisées par les administrateurs pour les flux de travail automatisés. Vous ne pouvez pas contourner ces derniers en enlevant l’étiquette vous-même.</p>
 </section>
 <section id="browsing-files-by-tag">
-<h2>Browsing files by tag<a class="headerlink" href="#browsing-files-by-tag" title="Lien vers cette rubrique"></a></h2>
-<p>Click the navigation icon (≡) at the top left of the <strong>Files</strong> app to open
-the navigation panel, then click <strong>Tags</strong>. The view lists all tags visible to
-you. Click a tag name to see every file and folder that has that tag assigned.</p>
+<h2>Navigation dans les fichiers par étiquette<a class="headerlink" href="#browsing-files-by-tag" title="Lien vers cette rubrique"></a></h2>
+<p>Cliquez sur l’icône de navigation (≡) en haut à gauche de l’application <strong>Fichiers</strong> pour ouvrir le panneau de navigation, puis cliquez sur <strong>Étiquettes</strong>. La vue va lister toutes les étiquettes qui vous sont visibles. Cliquez sur le nom d’une étiquette pour voir tous les fichiers et dossiers sur lesquels cette étiquette a été attribuée.</p>
 <figure class="align-default" id="id2">
-<img alt="The Tags view with Vacations selected, showing the filtered file list with inline tags on each row." src="../../_images/systemtags-browse.png" />
+<img alt="La vue Étiquettes avec l'étiquette Vacances sélectionnée, affichant la liste des fichiers filtrée avec les étiquettes incluses sur chacune des lignes." src="../../_images/systemtags-browse.png" />
 <figcaption>
-<p><span class="caption-text"><em>Figure 2: Clicking a tag in the navigation panel filters the file list to files with that tag.</em></span><a class="headerlink" href="#id2" title="Lien vers cette image"></a></p>
+<p><span class="caption-text"><em>Figure 2 : Cliquer sur une étiquette dans le panneau de navigation filtre la liste des fichiers pour ne montrer que ceux qui ont cette étiquette.</em></span><a class="headerlink" href="#id2" title="Lien vers cette image"></a></p>
 </figcaption>
 </figure>
 </section>
 <section id="assigning-tags-to-files">
-<h2>Assigning tags to files<a class="headerlink" href="#assigning-tags-to-files" title="Lien vers cette rubrique"></a></h2>
-<p>You can assign or remove tags on one file at a time or across a selection of
-files in one step.</p>
-<p><strong>Single file</strong></p>
+<h2>Attribution d’étiquettes à des fichiers<a class="headerlink" href="#assigning-tags-to-files" title="Lien vers cette rubrique"></a></h2>
+<p>Vous pouvez attribuer ou enlever des étiquettes sur un fichier à la fois ou sur toute une sélection de fichiers en même temps.</p>
+<p><strong>Un seul fichier</strong></p>
 <ol class="arabic simple">
-<li><p>Click the three-dot action menu (<strong>…</strong>) next to a file or folder and select
-<strong>Details</strong> to open the details sidebar.</p></li>
-<li><p>In the details sidebar, click <strong>Add tags</strong>.</p></li>
-<li><p>Type a tag name in the search field and select the tag from the list.</p></li>
-<li><p>Click outside the picker to close it. Changes are saved immediately.</p></li>
+<li><p>Cliquez sur le menu d’action à trois points (<strong>…</strong>) à côté d’un fichier ou d’un dossier et sélectionnez <strong>Détails</strong> pour ouvrir la barre latérale des détails.</p></li>
+<li><p>Dans la barre latérale des détails, cliquez sur <strong>Ajouter des étiquettes</strong>.</p></li>
+<li><p>Saisissez le nom d’une étiquette dans le champ de recherche et sélectionnez-la dans la liste.</p></li>
+<li><p>Cliquez en dehors du sélecteur pour le fermer. Les modifications sont enregistrées immédiatement.</p></li>
 </ol>
-<p>To remove a tag, open the same picker and click the <strong>×</strong> next to the tag
-name.</p>
+<p>Pour retirer une étiquette, ouvrez le même sélecteur et cliquez sur le <strong>×</strong> à côté du nom de celle-ci.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Only public tags appear in the picker for regular users. Restricted and
-invisible tags can only be assigned by administrators.</p>
+<p>Seules les étiquettes publiques apparaissent dans le sélecteur pour les utilisateurs normaux. Celles invisibles ou à accès restreint ne peuvent être attribuées que par des administrateurs.</p>
 </div>
-<p><strong>Multiple files</strong></p>
+<p><strong>Plusieurs fichiers</strong></p>
 <ol class="arabic simple">
-<li><p>Select two or more files by clicking the checkbox to the left of each row.</p></li>
-<li><p>Click <strong>··· Actions</strong> in the toolbar above the file list, then select
-<strong>Manage tags</strong>.</p></li>
-<li><p>Check or uncheck tags in the dialog that appears. An info line shows how
-the change will be applied across the selected files.</p></li>
-<li><p>Click <strong>Apply</strong>.</p></li>
+<li><p>Sélectionnez deux fichiers ou plus en cliquant sur la case à cocher située à gauche de chacune des lignes.</p></li>
+<li><p>Cliquez sur <strong>··· Actions</strong> dans la barre d’outils au-dessus de la liste des fichiers puis sélectionnez <strong>Gérer les étiquettes</strong>.</p></li>
+<li><p>Cochez ou décochez les étiquettes dans la boîte de dialogue qui s’est affichée. Une ligne d’informations montre la façon dont les modifications seront appliquées aux fichiers sélectionnés.</p></li>
+<li><p>Cliquez sur <strong>Appliquer</strong>.</p></li>
 </ol>
 <figure class="align-default" id="id3">
-<img alt="The Manage tags dialog showing three tags with checkboxes and an info line." src="../../_images/systemtags-manage.png" />
+<img alt="La boîte de dialogue Gérer les étiquettes montrant trois étiquettes avec des cases à cocher et une ligne d'information." src="../../_images/systemtags-manage.png" />
 <figcaption>
-<p><span class="caption-text"><em>Figure 3: Manage tags lets you apply or remove tags across multiple files at once.</em></span><a class="headerlink" href="#id3" title="Lien vers cette image"></a></p>
+<p><span class="caption-text"><em>Figure 3 : Gérer les étiquettes vous permet de les appliquer ou de les enlever sur plusieurs fichiers à la fois.</em></span><a class="headerlink" href="#id3" title="Lien vers cette image"></a></p>
 </figcaption>
 </figure>
 </section>
 <section id="creating-and-managing-tags">
-<h2>Creating and managing tags<a class="headerlink" href="#creating-and-managing-tags" title="Lien vers cette rubrique"></a></h2>
-<p>If your administrator has not restricted tag creation, you can create a new
-tag directly from the <strong>Manage tags</strong> dialog or the single-file tag picker:
-type a new name in the <strong>Search or create tag</strong> field and select the
-<strong>Create tag</strong> option that appears.</p>
-<p>Administrators create, rename, and delete tags under
-<span class="menuselection">Administration settings ‣ Server</span>.
-For details on tag management and command-line tools, see the
-<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/file_workflows/automated_tagging.html">Automated tagging</a>
-section of the administration manual.</p>
+<h2>Création et gestion des étiquettes<a class="headerlink" href="#creating-and-managing-tags" title="Lien vers cette rubrique"></a></h2>
+<p>Si votre administrateur n’a pas restreint la création d’étiquettes, vous pouvez en créer une nouvelle directement à partir de la boîte de dialogue <strong>Gérer les étiquettes</strong> ou du sélecteur d’étiquette pour un fichier unique : saisissez un nouveau nom dans le champ <strong>Rechercher ou créer une étiquette</strong> et sélectionnez l’option <strong>Créer une étiquette</strong> quand elle apparaît.</p>
+<p>Les administrateurs créent, renomment et suppriment les étiquettes dans <span class="menuselection">Paramètres d’administration ‣ Serveur</span>. Pour plus de détails sur la gestion des étiquettes et les outils en ligne de commande, consultez la section <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/file_workflows/automated_tagging.html">Étiquetage automatisé</a> du mauel d’administration.</p>
 </section>
 </section>
 

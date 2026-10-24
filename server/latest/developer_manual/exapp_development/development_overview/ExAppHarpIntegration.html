@@ -553,26 +553,38 @@ as it’s needed by the following script to download the FRP client.</p>
 <p>4. Add the following lines to your Dockerfile to automatically include the FRP
 client binaries in your Docker image:</p>
 <blockquote>
-<div><div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="c"># Download and install FRP client</span>
+<div><div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="c"># Download and install FRP client with checksum verification</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">FRP_VERSION</span><span class="o">=</span><span class="m">0</span>.71.1
+<span class="k">ARG</span><span class="w"> </span><span class="nv">FRP_AMD64_SHA256</span><span class="o">=</span>1d9875210972a5d1a62b2dc4c48df45ab0af05d3ca1b5e494a014428259df803
+<span class="k">ARG</span><span class="w"> </span><span class="nv">FRP_ARM64_SHA256</span><span class="o">=</span>8edf590b0c396fa42f9c147121a76af83cfc2002b08f5aef0ea1008c43482019
+
 <span class="k">RUN</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-ex<span class="p">;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="nv">ARCH</span><span class="o">=</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$ARCH</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"aarch64"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="se">\</span>
-<span class="w">      </span><span class="nv">FRP_URL</span><span class="o">=</span><span class="s2">"https://raw.githubusercontent.com/nextcloud/HaRP/main/exapps_dev/frp_0.61.1_linux_arm64.tar.gz"</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="nv">FRP_ARCH</span><span class="o">=</span><span class="s2">"arm64"</span><span class="p">;</span><span class="w"> </span><span class="nv">FRP_SHA256</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">FRP_ARM64_SHA256</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="se">\</span>
-<span class="w">      </span><span class="nv">FRP_URL</span><span class="o">=</span><span class="s2">"https://raw.githubusercontent.com/nextcloud/HaRP/main/exapps_dev/frp_0.61.1_linux_amd64.tar.gz"</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="nv">FRP_ARCH</span><span class="o">=</span><span class="s2">"amd64"</span><span class="p">;</span><span class="w"> </span><span class="nv">FRP_SHA256</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">FRP_AMD64_SHA256</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="k">fi</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Downloading FRP client from </span><span class="nv">$FRP_URL</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>curl<span class="w"> </span>-L<span class="w"> </span><span class="s2">"</span><span class="nv">$FRP_URL</span><span class="s2">"</span><span class="w"> </span>-o<span class="w"> </span>/tmp/frp.tar.gz<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">FRP_DIR</span><span class="o">=</span><span class="s2">"frp_</span><span class="si">${</span><span class="nv">FRP_VERSION</span><span class="si">}</span><span class="s2">_linux_</span><span class="si">${</span><span class="nv">FRP_ARCH</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">FRP_URL</span><span class="o">=</span><span class="s2">"https://github.com/fatedier/frp/releases/download/v</span><span class="si">${</span><span class="nv">FRP_VERSION</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">FRP_DIR</span><span class="si">}</span><span class="s2">.tar.gz"</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>curl<span class="w"> </span>-fsSL<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">FRP_URL</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>-o<span class="w"> </span>/tmp/frp.tar.gz<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">FRP_SHA256</span><span class="si">}</span><span class="s2">  /tmp/frp.tar.gz"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sha256sum<span class="w"> </span>-c<span class="w"> </span>-<span class="p">;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>tar<span class="w"> </span>-C<span class="w"> </span>/tmp<span class="w"> </span>-xzf<span class="w"> </span>/tmp/frp.tar.gz<span class="p">;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>mv<span class="w"> </span>/tmp/frp_0.61.1_linux_*<span class="w"> </span>/tmp/frp<span class="p">;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>cp<span class="w"> </span>/tmp/frp/frpc<span class="w"> </span>/usr/local/bin/frpc<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>cp<span class="w"> </span><span class="s2">"/tmp/</span><span class="si">${</span><span class="nv">FRP_DIR</span><span class="si">}</span><span class="s2">/frpc"</span><span class="w"> </span>/usr/local/bin/frpc<span class="p">;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/local/bin/frpc<span class="p">;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>/tmp/frp<span class="w"> </span>/tmp/frp.tar.gz
+<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">"/tmp/</span><span class="si">${</span><span class="nv">FRP_DIR</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>/tmp/frp.tar.gz
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For Alpine 3.21 Linux you can just install FRP from repo using apk add frp command.</p>
+<p>The checksums come from the <code class="docutils literal notranslate"><span class="pre">frp_sha256_checksums.txt</span></code> file of the
+<a class="reference external" href="https://github.com/fatedier/frp/releases">FRP release</a>. When upgrading FRP, update the version and both
+checksums together.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Alpine Linux, <code class="docutils literal notranslate"><span class="pre">apk</span> <span class="pre">add</span> <span class="pre">frp</span></code> also installs the FRP client, but the Alpine package can be several releases
+behind the version above.</p>
 </div>
 </div></blockquote>
 </section>
@@ -751,7 +763,7 @@ compatibility.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Oct 06, 2026.
+      <span class="lastupdated">Last updated on Oct 24, 2026.
       </span></p>
   </div>
 
