@@ -61,7 +61,11 @@ Step 4 — Pre-seed the installer answers
     ds ds/db-port string 5432
     ds ds/db-user string ds
     ds ds/db-pwd password ds
-    ds ds/db-name string ds" | sudo debconf-set-selections
+    ds ds/db-name string ds
+    ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | sudo debconf-set-selections
+
+The last line accepts the license of the Microsoft core fonts, which the Document Server needs to render
+documents correctly. Without it, the installer asks for confirmation, and declining leaves the fonts missing.
 
 Step 5 — Add the Nextcloud Office repository
 --------------------------------------------
@@ -78,11 +82,14 @@ Step 6 — Install the package
     sudo apt-get install -y nextcloud-office-documentserver
 
 .. tip::
-    For hosts without access to the repository, or to install a specific version, download the
-    ``.deb`` package from https://download.nextcloud.com/office/docserver/ and install it with
-    ``sudo apt-get install -y ./<package>.deb``.
+    To install a specific version, list the available versions and pass one to ``apt-get install``:
 
-The installer generates fonts, WOPI keys, and JS caches. This takes a minute or two.
+    .. code-block:: bash
+
+        apt-cache madison nextcloud-office-documentserver
+        sudo apt-get install -y nextcloud-office-documentserver=<version>
+
+The installer generates fonts, WOPI keys, and JS caches. This can take several minutes.
 A successful install ends with::
 
     Congratulations, the Nextcloud Office DocumentServer has been installed successfully!

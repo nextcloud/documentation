@@ -39,6 +39,9 @@ Debian and Ubuntu
 
     sudo apt-get install nextcloud-office-nextcloudoffice
 
+The installation also offers the Microsoft core fonts, which improve how documents created in Microsoft Office are
+displayed. To install them, accept their license when prompted.
+
 Fedora and RHEL
 ^^^^^^^^^^^^^^^
 
@@ -55,35 +58,22 @@ Fedora and RHEL
     EOF
     sudo dnf install nextcloud-office-nextcloudoffice
 
-Individual packages
-^^^^^^^^^^^^^^^^^^^
+During the first installation, ``dnf`` asks you to confirm the repository signing key. Check that its fingerprint is
+``C013 F0BE F968 00BB BC4D 93DD E6E7 0E5F A287 C3D0`` before you accept it.
 
-If you cannot use the package repository, download a package directly. These packages are not updated
-automatically.
+Portable archive
+^^^^^^^^^^^^^^^^
+
+On other distributions, use the portable archive. It is not updated automatically.
 
 .. list-table::
     :header-rows: 1
 
-    * - Distribution
-      - Architecture
+    * - Architecture
       - Download
-    * - Debian, Ubuntu
-      - x64
-      - `.deb <nco-linux-x64.deb_>`__
-    * - Debian, Ubuntu
-      - ARM64
-      - `.deb <nco-linux-arm64.deb_>`__
-    * - Fedora, RHEL, openSUSE
-      - x64
-      - `.rpm <nco-linux-x64.rpm_>`__
-    * - Fedora, RHEL, openSUSE
-      - ARM64
-      - `.rpm <nco-linux-arm64.rpm_>`__
-    * - Any distribution (portable)
-      - x64
+    * - x64
       - `.tar.xz <nco-linux-x64.tar.xz_>`__
-    * - Any distribution (portable)
-      - ARM64
+    * - ARM64
       - `.tar.xz <nco-linux-arm64.tar.xz_>`__
 
 .. _nco-windows-x64.exe:
@@ -92,14 +82,6 @@ automatically.
     https://download.nextcloud.com/office/desktopeditors/Nextcloud-Office-DesktopEditors-latest-windows-arm64.exe
 .. _nco-macos-arm64.dmg:
     https://download.nextcloud.com/office/desktopeditors/Nextcloud-Office-DesktopEditors-latest-macos-arm64.dmg
-.. _nco-linux-x64.deb:
-    https://download.nextcloud.com/office/desktopeditors/Nextcloud-Office-DesktopEditors-latest-linux-x64.deb
-.. _nco-linux-arm64.deb:
-    https://download.nextcloud.com/office/desktopeditors/Nextcloud-Office-DesktopEditors-latest-linux-arm64.deb
-.. _nco-linux-x64.rpm:
-    https://download.nextcloud.com/office/desktopeditors/Nextcloud-Office-DesktopEditors-latest-linux-x64.rpm
-.. _nco-linux-arm64.rpm:
-    https://download.nextcloud.com/office/desktopeditors/Nextcloud-Office-DesktopEditors-latest-linux-arm64.rpm
 .. _nco-linux-x64.tar.xz:
     https://download.nextcloud.com/office/desktopeditors/Nextcloud-Office-DesktopEditors-latest-linux-x64.tar.xz
 .. _nco-linux-arm64.tar.xz:
