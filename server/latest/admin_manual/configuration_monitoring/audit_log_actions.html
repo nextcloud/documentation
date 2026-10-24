@@ -1,0 +1,1308 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audited actions &mdash; Nextcloud 36 Administration Manual</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=850d043c" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/configuration_monitoring/audit_log_actions.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Maintenance" href="../maintenance/index.html" />
+    <link rel="prev" title="Admin audit log" href="audit_log.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database setup and configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management_api.html">Apps management API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../automation_overview/index.html">Automation in Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/budibase_workflows.html">Budibase Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Monitoring</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="openmetrics.html">OpenMetrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audit_log.html">Admin audit log</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Audited actions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#authentication">Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#users">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#groups">Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#files">Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trash-bin-and-versions">Trash bin and versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing">Sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unified-sharing">Unified sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#federated-sharing">Federated sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-storage">External storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#encryption">Encryption</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calendars-and-contacts">Calendars and contacts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apps-and-configuration">Apps and configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#administration-settings">Administration settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ldap">LDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integrations">Integrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#system-tags">System tags</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 36 Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Monitoring</a></li>
+      <li class="breadcrumb-item active">Audited actions</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_monitoring/audit_log_actions.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="audited-actions">
+<h1>Audited actions<a class="headerlink" href="#audited-actions" title="Link to this heading"></a></h1>
+<div class="versionadded" id="audit-log-actions">
+<p><span class="versionmodified added">Added in version 36.</span></p>
+</div>
+<p>This page lists the actions that Nextcloud server and the apps shipped with it record in the audit log. The
+<strong>Event name</strong> is the value of the <code class="docutils literal notranslate"><span class="pre">data.operation</span></code> field of the audit log entry. Use it to filter entries or to set
+up alerts. See <a class="reference internal" href="audit_log.html"><span class="doc">Admin audit log</span></a> for the format of the entries and how to read them.</p>
+<p>Actions are only recorded when the <strong>admin_audit</strong> app is enabled. See
+<a class="reference internal" href="../configuration_server/logging_configuration.html#config-admin-audit"><span class="std std-ref">Admin audit log configuration</span></a>.</p>
+<p>Apps from the App Store document the actions they record in their own documentation or README.</p>
+<section id="authentication">
+<h2>Authentication<a class="headerlink" href="#authentication" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Login attempt</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.login.attempted</span></code></p></td>
+<td><p>A user tried to log in. Recorded before the credentials are checked.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Successful login</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.login.succeeded</span></code></p></td>
+<td><p>A user logged in successfully.</p></td>
+</tr>
+<tr class="row-even"><td><p>Failed login</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.login.failed</span></code></p></td>
+<td><p>A login failed, for example because of a wrong password.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Logout</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.logout.performed</span></code></p></td>
+<td><p>A user logged out.</p></td>
+</tr>
+<tr class="row-even"><td><p>Successful two-factor login</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.twofactor.passed</span></code></p></td>
+<td><p>A user passed the second factor of a two-factor login.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Failed two-factor login</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.twofactor.failed</span></code></p></td>
+<td><p>A user failed the second factor of a two-factor login.</p></td>
+</tr>
+<tr class="row-even"><td><p>Enable two-factor provider</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.twofactor_provider.enabled</span></code></p></td>
+<td><p>A two-factor provider was enabled for a user.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Disable two-factor provider</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.twofactor_provider.disabled</span></code></p></td>
+<td><p>A two-factor provider was disabled for a user.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change two-factor enforcement</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.twofactor_enforcement.updated</span></code></p></td>
+<td><p>An administrator changed whether two-factor authentication is enforced, and for which groups.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Add WebAuthn device</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.webauthn_device.added</span></code></p></td>
+<td><p>A user added a WebAuthn device, for example a security key, to their account.</p></td>
+</tr>
+<tr class="row-even"><td><p>Remove WebAuthn device</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.webauthn_device.removed</span></code></p></td>
+<td><p>A user removed a WebAuthn device from their account.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Create app password</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.app_password.created</span></code></p></td>
+<td><p>An app password was created, in the personal security settings or by a client logging in with the login flow.</p></td>
+</tr>
+<tr class="row-even"><td><p>Delete app password</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.app_password.deleted</span></code></p></td>
+<td><p>An app password was deleted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change app password access</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.app_password.scope_changed</span></code></p></td>
+<td><p>The filesystem access of an app password was allowed or denied.</p></td>
+</tr>
+<tr class="row-even"><td><p>Request remote wipe</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.remote_wipe.requested</span></code></p></td>
+<td><p>A remote wipe was requested for one app password or for all devices of a user.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Finish remote wipe</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.remote_wipe.finished</span></code></p></td>
+<td><p>A device confirmed that its remote wipe was finished.</p></td>
+</tr>
+<tr class="row-even"><td><p>Request password reset</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.password_reset.requested</span></code></p></td>
+<td><p>A password reset email was requested for a user.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Brute force attempt from allow-listed address</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auth.bruteforce.bypassed</span></code></p></td>
+<td><p>A brute force attempt, for example a failed login, came from an IP address on the brute force allow-list, so it
+was not throttled.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="users">
+<h2>Users<a class="headerlink" href="#users" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Create user account</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">users.user.created</span></code></p></td>
+<td><p>A user account was created, in the user management or with occ.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Delete user account</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">users.user.deleted</span></code></p></td>
+<td><p>A user account was deleted.</p></td>
+</tr>
+<tr class="row-even"><td><p>Enable user account</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">users.user.enabled</span></code></p></td>
+<td><p>A disabled user account was enabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Disable user account</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">users.user.disabled</span></code></p></td>
+<td><p>A user account was disabled.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change user password</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">users.user.password_changed</span></code></p></td>
+<td><p>The password of a user was changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change email address</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">users.user.email_changed</span></code></p></td>
+<td><p>The email address of a user was changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change display name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">users.user.display_name_changed</span></code></p></td>
+<td><p>The display name of a user was changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change quota</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">users.user.quota_changed</span></code></p></td>
+<td><p>The storage quota of a user was changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change managers</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">users.user.managers_changed</span></code></p></td>
+<td><p>The managers of a user were changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change account property</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">users.user.account_updated</span></code></p></td>
+<td><p>A property of a user account, for example the phone number or address, was changed through the provisioning API.</p></td>
+</tr>
+<tr class="row-even"><td><p>Send welcome email</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">users.user.welcome_email_sent</span></code></p></td>
+<td><p>A welcome email was sent to a user.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Assign user ID</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">users.user.id_assigned</span></code></p></td>
+<td><p>A user ID was assigned to a user of an external user backend, for example LDAP.</p></td>
+</tr>
+<tr class="row-even"><td><p>Unassign user ID</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">users.user.id_unassigned</span></code></p></td>
+<td><p>A user ID was removed from a user of an external user backend.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Allow interaction</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">users.interaction.allowed</span></code></p></td>
+<td><p>An interaction of a user with other users or resources, for example sharing, was checked and allowed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Restrict interaction</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">users.interaction.restricted</span></code></p></td>
+<td><p>An interaction of a user with other users or resources was checked and blocked, for example by a policy app.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="groups">
+<h2>Groups<a class="headerlink" href="#groups" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Create group</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">groups.group.created</span></code></p></td>
+<td><p>A group was created.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Delete group</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">groups.group.deleted</span></code></p></td>
+<td><p>A group was deleted.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change group display name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">groups.group.display_name_changed</span></code></p></td>
+<td><p>The display name of a group was changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Add group member</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">groups.member.added</span></code></p></td>
+<td><p>A user was added to a group.</p></td>
+</tr>
+<tr class="row-even"><td><p>Remove group member</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">groups.member.removed</span></code></p></td>
+<td><p>A user was removed from a group.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Add group administrator</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">groups.subadmin.added</span></code></p></td>
+<td><p>A user was made a subadmin of a group.</p></td>
+</tr>
+<tr class="row-even"><td><p>Remove group administrator</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">groups.subadmin.removed</span></code></p></td>
+<td><p>A user was removed as subadmin of a group.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="files">
+<h2>Files<a class="headerlink" href="#files" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Read file</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files.file.read</span></code></p></td>
+<td><p>A file was opened or downloaded.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Create file</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files.file.created</span></code></p></td>
+<td><p>A file or folder was created.</p></td>
+</tr>
+<tr class="row-even"><td><p>Write file</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files.file.written</span></code></p></td>
+<td><p>A file was written to, for example uploaded or saved.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rename file</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files.file.renamed</span></code></p></td>
+<td><p>A file or folder was renamed or moved.</p></td>
+</tr>
+<tr class="row-even"><td><p>Copy file</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files.file.copied</span></code></p></td>
+<td><p>A file or folder was copied.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Delete file</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files.file.deleted</span></code></p></td>
+<td><p>A file or folder was deleted.</p></td>
+</tr>
+<tr class="row-even"><td><p>Access preview</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files.preview.accessed</span></code></p></td>
+<td><p>A preview image of a file was requested.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Insert file cache entry</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files.cache_entry.inserted</span></code></p></td>
+<td><p>An entry was added to the file cache, for example when a file is found by a scan. Recorded for every file and can
+produce many entries.</p></td>
+</tr>
+<tr class="row-even"><td><p>Remove file cache entry</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files.cache_entry.removed</span></code></p></td>
+<td><p>An entry was removed from the file cache.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Request ownership transfer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files.ownership_transfer.requested</span></code></p></td>
+<td><p>A user requested to transfer the ownership of a file or folder to another user.</p></td>
+</tr>
+<tr class="row-even"><td><p>Accept ownership transfer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files.ownership_transfer.accepted</span></code></p></td>
+<td><p>The receiving user accepted an ownership transfer.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Reject ownership transfer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files.ownership_transfer.rejected</span></code></p></td>
+<td><p>The receiving user rejected an ownership transfer.</p></td>
+</tr>
+<tr class="row-even"><td><p>Transfer ownership</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files.ownership.transferred</span></code></p></td>
+<td><p>The ownership of files was transferred from one user to another, after an accepted request or with occ.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="trash-bin-and-versions">
+<h2>Trash bin and versions<a class="headerlink" href="#trash-bin-and-versions" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Delete from trash bin</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trashbin.file.deleted</span></code></p></td>
+<td><p>A file was permanently deleted from the trash bin.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Restore from trash bin</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trashbin.file.restored</span></code></p></td>
+<td><p>A file was restored from the trash bin.</p></td>
+</tr>
+<tr class="row-even"><td><p>Delete file version</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">versions.version.deleted</span></code></p></td>
+<td><p>A version of a file was deleted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Restore file version</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">versions.version.restored</span></code></p></td>
+<td><p>A previous version of a file was restored.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sharing">
+<h2>Sharing<a class="headerlink" href="#sharing" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Create share</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sharing.share.created</span></code></p></td>
+<td><p>A file or folder was shared, for example with a user, a group, a team, by email or with a public link.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Delete share</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sharing.share.deleted</span></code></p></td>
+<td><p>A share was deleted.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change share permissions</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sharing.share.permissions_updated</span></code></p></td>
+<td><p>The permissions of a share were changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change share attributes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sharing.share.attributes_updated</span></code></p></td>
+<td><p>The attributes of a share, for example whether downloads are hidden, were changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change share password</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sharing.share.password_updated</span></code></p></td>
+<td><p>The password of a public share was changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change share expiration date</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sharing.share.expiration_updated</span></code></p></td>
+<td><p>The expiration date of a public share was set or changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Remove share expiration date</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sharing.share.expiration_removed</span></code></p></td>
+<td><p>The expiration date of a public share was removed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change share link</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sharing.share.token_updated</span></code></p></td>
+<td><p>The token, and with it the link, of a public share was changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Access public share</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sharing.share.link_accessed</span></code></p></td>
+<td><p>A public share link was opened.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Accept share</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sharing.share.accepted</span></code></p></td>
+<td><p>A recipient accepted a share.</p></td>
+</tr>
+<tr class="row-even"><td><p>Leave share</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sharing.share.left</span></code></p></td>
+<td><p>A recipient removed a share that was shared with them.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Restore share</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sharing.share.restored</span></code></p></td>
+<td><p>A recipient restored a share they had removed before.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="unified-sharing">
+<h2>Unified sharing<a class="headerlink" href="#unified-sharing" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Create share</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unified_sharing.share.created</span></code></p></td>
+<td><p>A share was created.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Delete share</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unified_sharing.share.deleted</span></code></p></td>
+<td><p>A share was deleted.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change share state</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unified_sharing.share.state_updated</span></code></p></td>
+<td><p>The state of a share was changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change recipient status</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unified_sharing.share.user_status_updated</span></code></p></td>
+<td><p>A recipient changed their status for a share, for example accepted it.</p></td>
+</tr>
+<tr class="row-even"><td><p>Add share source</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unified_sharing.source.added</span></code></p></td>
+<td><p>A source, for example a file, was added to a share.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Remove share source</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unified_sharing.source.removed</span></code></p></td>
+<td><p>A source was removed from a share.</p></td>
+</tr>
+<tr class="row-even"><td><p>Add share recipient</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unified_sharing.recipient.added</span></code></p></td>
+<td><p>A recipient was added to a share.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Remove share recipient</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unified_sharing.recipient.removed</span></code></p></td>
+<td><p>A recipient was removed from a share.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change recipient secret</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unified_sharing.recipient_secret.updated</span></code></p></td>
+<td><p>The secret of a share recipient, for example the password of a link, was changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change share property</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unified_sharing.property.updated</span></code></p></td>
+<td><p>A property of a share was changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change share permission</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unified_sharing.permission.updated</span></code></p></td>
+<td><p>A permission of a share was granted or revoked.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change recipient permission</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unified_sharing.recipient_permission.updated</span></code></p></td>
+<td><p>A permission of a single share recipient was granted or revoked.</p></td>
+</tr>
+<tr class="row-even"><td><p>Select permission preset</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unified_sharing.permission_preset.selected</span></code></p></td>
+<td><p>A permission preset was selected for a share.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="federated-sharing">
+<h2>Federated sharing<a class="headerlink" href="#federated-sharing" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Receive federated share</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federatedfilesharing.share.received</span></code></p></td>
+<td><p>Another server shared a file or folder with a user of this server.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Federated share accepted</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federatedfilesharing.share.accepted</span></code></p></td>
+<td><p>The recipient on another server accepted a share from this server.</p></td>
+</tr>
+<tr class="row-even"><td><p>Federated share declined</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federatedfilesharing.share.declined</span></code></p></td>
+<td><p>The recipient on another server declined a share from this server.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Federated share removed</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federatedfilesharing.share.unshared</span></code></p></td>
+<td><p>The other server removed a federated share, for example because its owner deleted it.</p></td>
+</tr>
+<tr class="row-even"><td><p>Federated re-share revoked</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federatedfilesharing.share.revoked</span></code></p></td>
+<td><p>The owner or the re-sharer on another server revoked a federated re-share.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change federated share permissions</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federatedfilesharing.share.permissions_updated</span></code></p></td>
+<td><p>The other server changed the permissions of a federated share.</p></td>
+</tr>
+<tr class="row-even"><td><p>Accept federated share</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files_sharing.remote_share.accepted</span></code></p></td>
+<td><p>A user of this server accepted a share from another server.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Decline federated share</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files_sharing.remote_share.declined</span></code></p></td>
+<td><p>A user of this server declined a share from another server.</p></td>
+</tr>
+<tr class="row-even"><td><p>Remove federated share</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files_sharing.remote_share.removed</span></code></p></td>
+<td><p>A user of this server removed a share from another server.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Receive cloud federation share</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cloud_federation_api.share.received</span></code></p></td>
+<td><p>Another server created a share with this server through the Open Cloud Mesh API.</p></td>
+</tr>
+<tr class="row-even"><td><p>Receive cloud federation notification</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cloud_federation_api.notification.received</span></code></p></td>
+<td><p>Another server sent a notification about a share through the Open Cloud Mesh API.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Add trusted server</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation.trusted_server.added</span></code></p></td>
+<td><p>A server was added to the trusted servers.</p></td>
+</tr>
+<tr class="row-even"><td><p>Remove trusted server</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation.trusted_server.removed</span></code></p></td>
+<td><p>A server was removed from the trusted servers.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exchange shared secret</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation.shared_secret.exchanged</span></code></p></td>
+<td><p>A shared secret was exchanged with a trusted server.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="external-storage">
+<h2>External storage<a class="headerlink" href="#external-storage" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Create external storage</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files_external.storage.created</span></code></p></td>
+<td><p>An external storage was configured.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change external storage</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files_external.storage.updated</span></code></p></td>
+<td><p>The configuration of an external storage was changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Delete external storage</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files_external.storage.deleted</span></code></p></td>
+<td><p>An external storage was removed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change global credentials</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files_external.credentials.updated</span></code></p></td>
+<td><p>The global credentials for external storages were changed, by an administrator or for a user.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change storage credentials</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files_external.user_credentials.updated</span></code></p></td>
+<td><p>A user changed their credentials for an external storage.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="encryption">
+<h2>Encryption<a class="headerlink" href="#encryption" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Change home storage encryption</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">encryption.home_storage.updated</span></code></p></td>
+<td><p>Encryption of the home storages was enabled or disabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enable recovery key</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">encryption.recovery_key.enabled</span></code></p></td>
+<td><p>The recovery key was enabled.</p></td>
+</tr>
+<tr class="row-even"><td><p>Disable recovery key</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">encryption.recovery_key.disabled</span></code></p></td>
+<td><p>The recovery key was disabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change recovery key password</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">encryption.recovery_key.password_changed</span></code></p></td>
+<td><p>The password of the recovery key was changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change recovery access</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">encryption.user_recovery.updated</span></code></p></td>
+<td><p>A user allowed or denied recovering their files with the recovery key.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Recover user files</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">encryption.user_files.recovered</span></code></p></td>
+<td><p>The files of a user were recovered with the recovery key.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change private key password</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">encryption.private_key.password_changed</span></code></p></td>
+<td><p>A user changed the password of their private key.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Regenerate encryption keys</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">encryption.user_keys.regenerated</span></code></p></td>
+<td><p>The encryption keys of a user were regenerated.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="calendars-and-contacts">
+<h2>Calendars and contacts<a class="headerlink" href="#calendars-and-contacts" title="Link to this heading"></a></h2>
+<p>Entries for calendar objects and cards only contain their URI, never their content. Changes to the birthday calendar and
+to the system address book are not recorded.</p>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Create calendar</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.calendar.created</span></code></p></td>
+<td><p>A calendar was created.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Delete calendar</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.calendar.deleted</span></code></p></td>
+<td><p>A calendar was permanently deleted.</p></td>
+</tr>
+<tr class="row-even"><td><p>Move calendar to trash</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.calendar.trashed</span></code></p></td>
+<td><p>A calendar was moved to the trash bin.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Restore calendar</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.calendar.restored</span></code></p></td>
+<td><p>A calendar was restored from the trash bin.</p></td>
+</tr>
+<tr class="row-even"><td><p>Publish calendar</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.calendar.published</span></code></p></td>
+<td><p>A calendar was published with a public link.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Unpublish calendar</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.calendar.unpublished</span></code></p></td>
+<td><p>The public link of a calendar was removed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Export calendar</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.calendar.exported</span></code></p></td>
+<td><p>A calendar was exported.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change calendar shares</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.calendar_share.updated</span></code></p></td>
+<td><p>A calendar was shared with or unshared from users or groups.</p></td>
+</tr>
+<tr class="row-even"><td><p>Grant calendar delegation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.calendar_delegation.granted</span></code></p></td>
+<td><p>A user allowed another user to access their calendars as a delegate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Revoke calendar delegation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.calendar_delegation.revoked</span></code></p></td>
+<td><p>A calendar delegation was removed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Create calendar object</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.calendar_object.created</span></code></p></td>
+<td><p>An event or task was created.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change calendar object</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.calendar_object.updated</span></code></p></td>
+<td><p>An event or task was changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Delete calendar object</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.calendar_object.deleted</span></code></p></td>
+<td><p>An event or task was permanently deleted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Move calendar object to trash</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.calendar_object.trashed</span></code></p></td>
+<td><p>An event or task was moved to the trash bin.</p></td>
+</tr>
+<tr class="row-even"><td><p>Restore calendar object</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.calendar_object.restored</span></code></p></td>
+<td><p>An event or task was restored from the trash bin.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Move calendar object</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.calendar_object.moved</span></code></p></td>
+<td><p>An event or task was moved to another calendar.</p></td>
+</tr>
+<tr class="row-even"><td><p>Enable birthday calendars</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.birthday_calendar.enabled</span></code></p></td>
+<td><p>An administrator enabled the birthday calendars.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Disable birthday calendars</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.birthday_calendar.disabled</span></code></p></td>
+<td><p>An administrator disabled the birthday calendars.</p></td>
+</tr>
+<tr class="row-even"><td><p>Accept federated calendar</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.federated_calendar.accepted</span></code></p></td>
+<td><p>A user accepted a calendar shared from another server.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Decline federated calendar</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.federated_calendar.declined</span></code></p></td>
+<td><p>A user declined a calendar shared from another server.</p></td>
+</tr>
+<tr class="row-even"><td><p>Create address book</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.addressbook.created</span></code></p></td>
+<td><p>An address book was created.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Delete address book</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.addressbook.deleted</span></code></p></td>
+<td><p>An address book was deleted.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change address book shares</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.addressbook_share.updated</span></code></p></td>
+<td><p>An address book was shared with or unshared from users or groups.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Create contact</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.card.created</span></code></p></td>
+<td><p>A contact was created.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change contact</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.card.updated</span></code></p></td>
+<td><p>A contact was changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Delete contact</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.card.deleted</span></code></p></td>
+<td><p>A contact was deleted.</p></td>
+</tr>
+<tr class="row-even"><td><p>Move contact</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.card.moved</span></code></p></td>
+<td><p>A contact was moved to another address book.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Create direct download link</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dav.direct_link.created</span></code></p></td>
+<td><p>A temporary direct download link for a file was created.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="apps-and-configuration">
+<h2>Apps and configuration<a class="headerlink" href="#apps-and-configuration" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Enable app</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">apps.app.enabled</span></code></p></td>
+<td><p>An app was enabled, for everyone or for some groups.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Disable app</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">apps.app.disabled</span></code></p></td>
+<td><p>An app was disabled.</p></td>
+</tr>
+<tr class="row-even"><td><p>Update app</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">apps.app.updated</span></code></p></td>
+<td><p>An app was updated.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Uninstall app</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">apps.app.uninstalled</span></code></p></td>
+<td><p>An app was removed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change app setting</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">config.app_value.updated</span></code></p></td>
+<td><p>An app configuration value was changed through the provisioning API. The value itself is not recorded.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Delete app setting</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">config.app_value.deleted</span></code></p></td>
+<td><p>An app configuration value was deleted through the provisioning API.</p></td>
+</tr>
+<tr class="row-even"><td><p>Run occ command</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">console.command.executed</span></code></p></td>
+<td><p>An occ command was run.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="administration-settings">
+<h2>Administration settings<a class="headerlink" href="#administration-settings" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Change mail server settings</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">settings.mail.updated</span></code></p></td>
+<td><p>The settings of the email server were changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change mail server credentials</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">settings.mail_credentials.updated</span></code></p></td>
+<td><p>The credentials of the email server were changed. The password is not recorded.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change administration delegation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">settings.delegation.updated</span></code></p></td>
+<td><p>The groups allowed to manage an administration setting were changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change AI settings</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">settings.ai.updated</span></code></p></td>
+<td><p>An AI setting, for example the provider of a task type, was changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change app setting form value</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">settings.declarative_value.updated</span></code></p></td>
+<td><p>A value of a settings form provided by an app was changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Apply configuration preset</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">settings.preset.applied</span></code></p></td>
+<td><p>A configuration preset was applied.</p></td>
+</tr>
+<tr class="row-even"><td><p>Download log file</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">settings.log.downloaded</span></code></p></td>
+<td><p>The Nextcloud log file was downloaded.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change theming setting</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">theming.setting.updated</span></code></p></td>
+<td><p>A theming setting, for example the name or a color, was changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Reset theming setting</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">theming.setting.reset</span></code></p></td>
+<td><p>One or all theming settings were reset to their default values.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Upload theming image</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">theming.image.uploaded</span></code></p></td>
+<td><p>A theming image, for example the logo or the background, was uploaded.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change update channel</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">updatenotification.channel.updated</span></code></p></td>
+<td><p>The update channel was changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Create updater token</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">updatenotification.updater_token.created</span></code></p></td>
+<td><p>A token for the web updater was created.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ldap">
+<h2>LDAP<a class="headerlink" href="#ldap" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Create LDAP configuration</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user_ldap.config.created</span></code></p></td>
+<td><p>An LDAP server configuration was created.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Copy LDAP configuration</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user_ldap.config.copied</span></code></p></td>
+<td><p>An LDAP server configuration was copied.</p></td>
+</tr>
+<tr class="row-even"><td><p>Change LDAP configuration</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user_ldap.config.updated</span></code></p></td>
+<td><p>An LDAP server configuration was changed. Only the names of the changed settings are recorded.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Delete LDAP configuration</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user_ldap.config.deleted</span></code></p></td>
+<td><p>An LDAP server configuration was deleted.</p></td>
+</tr>
+<tr class="row-even"><td><p>Reveal LDAP bind password</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user_ldap.config.password_revealed</span></code></p></td>
+<td><p>The bind password of an LDAP server configuration was shown.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Clear LDAP mappings</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user_ldap.mapping.cleared</span></code></p></td>
+<td><p>The user or group mappings of LDAP were cleared.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="integrations">
+<h2>Integrations<a class="headerlink" href="#integrations" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Create OAuth 2.0 client</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">oauth2.client.created</span></code></p></td>
+<td><p>An OAuth 2.0 client was added.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Delete OAuth 2.0 client</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">oauth2.client.deleted</span></code></p></td>
+<td><p>An OAuth 2.0 client was removed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Create webhook</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">webhook_listeners.webhook.created</span></code></p></td>
+<td><p>A webhook was registered.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change webhook</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">webhook_listeners.webhook.updated</span></code></p></td>
+<td><p>A webhook was changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Delete webhook</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">webhook_listeners.webhook.deleted</span></code></p></td>
+<td><p>A webhook was removed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Delete webhooks of app</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">webhook_listeners.webhook.deleted_by_app</span></code></p></td>
+<td><p>All webhooks registered by an app were removed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Create Flow rule</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">workflowengine.rule.created</span></code></p></td>
+<td><p>A Flow rule was created, by an administrator or a user.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change Flow rule</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">workflowengine.rule.updated</span></code></p></td>
+<td><p>A Flow rule was changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Delete Flow rule</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">workflowengine.rule.deleted</span></code></p></td>
+<td><p>A Flow rule was deleted.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="system-tags">
+<h2>System tags<a class="headerlink" href="#system-tags" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Create system tag</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">systemtags.tag.created</span></code></p></td>
+<td><p>A system tag was created.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change system tag</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">systemtags.tag.updated</span></code></p></td>
+<td><p>The name, visibility or assignability of a system tag was changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Delete system tag</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">systemtags.tag.deleted</span></code></p></td>
+<td><p>A system tag was deleted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change system tag groups</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">systemtags.tag_groups.updated</span></code></p></td>
+<td><p>The groups allowed to assign a restricted system tag were changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Assign restricted system tag</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">systemtags.tag.assigned</span></code></p></td>
+<td><p>A restricted or invisible system tag was assigned to files.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Unassign restricted system tag</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">systemtags.tag.unassigned</span></code></p></td>
+<td><p>A restricted or invisible system tag was removed from files.</p></td>
+</tr>
+<tr class="row-even"><td><p>Generate backup codes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">twofactor_backupcodes.codes.generated</span></code></p></td>
+<td><p>Two-factor backup codes were generated for a user.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="audit_log.html" class="btn btn-neutral float-left" title="Admin audit log" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../maintenance/index.html" class="btn btn-neutral float-right" title="Maintenance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-admin">
+      ☁️ 36
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-admin" class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+          >
+            36 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            35 (latest)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/admin_manual"
+             
+          >
+            34 (stable)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/33/admin_manual"
+             
+          >
+            33 (stable)
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

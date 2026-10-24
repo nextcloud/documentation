@@ -95,7 +95,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#custom-log-file">Custom log file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#structured-data-logging">Structured data logging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#listening-to-log-events">Listening to log events</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#admin-audit-logging">Admin audit logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#admin-audit-logging">Admin audit logging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#operation-identifier">Operation identifier</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="setting.html">Settings</a></li>
@@ -407,7 +410,7 @@ to an external monitoring service), you can listen for the
 <h2>Admin audit logging<a class="headerlink" href="#admin-audit-logging" title="Link to this heading"></a></h2>
 <p>If you want to log things less for system administration but for compliance reasons, e.g. who accessed which file,
 who changed the password of an item or made it public, the
-<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/logging_configuration.html#admin-audit-log">admin audit log</a>
+<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_monitoring/audit_log.html">admin audit log</a>
 is the correct place.</p>
 <p>You can easily add a log by simply emitting an <code class="docutils literal notranslate"><span class="pre">OCP\Log\Audit\CriticalActionPerformedEvent</span></code> event:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
@@ -432,6 +435,33 @@ written in clear text to the audit log:</p>
 <span class="p">);</span>
 </pre></div>
 </div>
+<p>Each entry in the audit log contains the message with the parameters inserted, and the parameters themselves as a
+JSON object in <code class="docutils literal notranslate"><span class="pre">data.params</span></code>. The keys of your parameters array become the keys of that object, so use short and
+descriptive names, for example <code class="docutils literal notranslate"><span class="pre">user</span></code>, <code class="docutils literal notranslate"><span class="pre">path</span></code> or <code class="docutils literal notranslate"><span class="pre">shareId</span></code>. The values must be scalars, <code class="docutils literal notranslate"><span class="pre">null</span></code> or
+<code class="docutils literal notranslate"><span class="pre">\DateTimeInterface</span></code> objects. When <code class="docutils literal notranslate"><span class="pre">$obfuscateParameters</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">data.params</span></code> is left out.</p>
+<section id="operation-identifier">
+<h3>Operation identifier<a class="headerlink" href="#operation-identifier" title="Link to this heading"></a></h3>
+<p>Since Nextcloud 36, the constructor accepts an optional fourth parameter <code class="docutils literal notranslate"><span class="pre">?string</span> <span class="pre">$operation</span></code>. It is a stable
+identifier of the action in the form <code class="docutils literal notranslate"><span class="pre">&lt;app&gt;.&lt;entity&gt;.&lt;action&gt;</span></code>, using lowercase letters, digits and underscores, for
+example <code class="docutils literal notranslate"><span class="pre">myapp.document.published</span></code>. It is written to <code class="docutils literal notranslate"><span class="pre">data.operation</span></code> and lets administrators filter and alert on
+your actions without parsing the message. Any other form throws an <code class="docutils literal notranslate"><span class="pre">\InvalidArgumentException</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The operation identifier will become required in a future Nextcloud version. Pass one for every event you emit,
+so your app keeps working when that happens.</p>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$event</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\OCP\Log\Audit\CriticalActionPerformedEvent</span><span class="p">(</span>
+    <span class="s1">'Document "%s" published by "%s"'</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">'document'</span> <span class="o">=&gt;</span> <span class="nv">$documentId</span><span class="p">,</span> <span class="s1">'user'</span> <span class="o">=&gt;</span> <span class="nv">$userId</span><span class="p">],</span>
+    <span class="k">false</span><span class="p">,</span>
+    <span class="s1">'myapp.document.published'</span>
+<span class="p">);</span>
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">dispatchTyped</span><span class="p">(</span><span class="nv">$event</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Treat the identifier as part of your app’s API: administrators may rely on it in their filters, so do not change it
+once it was released.</p>
+</section>
 </section>
 </section>
 
@@ -447,7 +477,7 @@ written in clear text to the audit log:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Oct 06, 2026.
+      <span class="lastupdated">Last updated on Oct 24, 2026.
       </span></p>
   </div>
 
