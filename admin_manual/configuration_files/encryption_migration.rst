@@ -17,7 +17,13 @@ On the command line run:
 
  occ encryption:scan:legacy-format
 
+.. note:: This command is provided by the **Default encryption module** app
+   (``encryption``). If that app is disabled, ``occ`` reports that there are no
+   commands in the ``encryption:scan`` namespace. Temporarily enable it with
+   ``occ app:enable encryption``, run the scan, then disable it again if you do
+   not otherwise use server-side encryption. This is **not** the separate
+   End-to-end encryption app.
+
 The command will tell you if you can remove the legacy encryption mode.
 If so set the `encryption.legacy_format_support` in your config.php to 'false'.
-
 
