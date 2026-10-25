@@ -857,6 +857,24 @@ Enabling this sends a "heartbeat" to the server to keep it from timing out.
 
 Defaults to ``true``
 
+archive_report_missing_files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+    'archive_report_missing_files' => true,
+
+When enabled, this flag allows the download of a directory to proceed
+even if some files or subdirectories are marked as non-downloadable.
+
+If files are corrupted, missing, or the server encounter temporary errors
+they are logged in a `missing_files[_unique_id].json` within the archive,
+along with the cause. When disabled, the download is denied if any file
+or subdirectory is marked as non-downloadable. Files that cannot be read
+while the archive is being streamed are left out or incomplete, and only
+logged in the server log.
+
 auto_logout
 ^^^^^^^^^^^
 
